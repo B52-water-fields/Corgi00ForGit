@@ -2,9 +2,72 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>新人研修用［軽減税率内訳計算］</title>
 </head>
+<script type="text/javascript">
+function keisan(){
+var taxtype;
+if(document.getElementById("TaxType0").checked){
+taxtype="0"
+}else{
+taxtype="1"
+}
+taxtype = test.TaxType.value;
+var totalcost;
+totalcost  = test.TotalCost.value;
+var totaltax;
+totaltax  = test.TotalTax.value;
+if("0"===taxtype){
+totalcost=totalcost-totaltax
+}
+var cost10p;
+cost10p = ((totalcost*8)-(totaltax*100))/(-2);
+cost10p = cost10p+0.5;
+cost10p = parseInt(cost10p);
+var cost08p;
+cost08p = totalcost-cost10p;
+var tax10p;
+var tax08p;
+tax10p = cost10p*0.10;
+tax10p = tax10p+0.5;
+tax10p = parseInt(tax10p);
+tax08p = totaltax-tax10p;
+document.test.Cost08P.value =cost08p;
+document.test.Cost10P.value = cost10p;
+document.test.Tax08P.value = tax08p;
+document.test.Tax10P.value = tax10p;
+}
+</script>
 <body>
-
+<form name="test" action="Sample2.html">
+<div>	
+<p>合計金額<br>
+<input type="text" name="TotalCost">
+<input type="radio" name="TaxType" id="TaxType0" value="0" checked=""> 税込合計
+<input type="radio" name="TaxType" id="TaxType1" value="1"> 税別合計
+</p>
+<p>消費税<br>
+<input type="text" name="TotalTax">
+</p>
+</div>
+<div> 
+<div>
+<input type="button" value="＝" onclick="keisan()">
+</div>
+<div>
+<p>
+計算結果<br>
+08%:
+<input type="text" id="Cost08P" neme="Cost08P">
+<input type="text" id="Tax08P" neme="Tax08P">
+</p>
+</div>
+<div>
+10%:
+<input type="text" id="Cost10P" neme="Cost10P">
+<input type="text" id="Tax10P" neme="Tax10P">
+</div>
+</div>
+</form>
 </body>
 </html>
