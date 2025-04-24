@@ -8,5 +8,11 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/ECLIPCE/juniversalchardet/juniversalchardet-1.0.3.jar"/>
 	<classpathentry kind="lib" path="C:/ECLIPCE/commons-io-2.11.0/commons-io-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/poi-3.17/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/poi-3.17/poi-excelant-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/poi-3.17/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/poi-3.17/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/poi-3.17/poi-scratchpad-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/apache-ant-1.10.3/lib/ant.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
