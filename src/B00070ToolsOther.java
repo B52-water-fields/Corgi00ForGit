@@ -11,7 +11,7 @@ import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
 
 public class B00070ToolsOther{
-	//その他のツール
+	//その他のツール達
 	
 	//税込み合計金額→金額・税率（パーセント10%の場合10）を受け取って内税計算し、税別金額・消費税を返却する
 	public static int[] InsideTaxCalc(int TotalCost,int TaxRate) {
