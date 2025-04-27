@@ -91,8 +91,6 @@ public class A00000Main{
     		if(!IniRead.get(i).equals(IniRead.get(i).replace("MySqlDefaultSchemaOLD", ""))) {
     			MySqlDefaultSchemaOLD = IniRead.get(i).replace("MySqlDefaultSchemaOLD", "").replace(" ", "").replace("=", "").replace("\"", "").replace(";", "");
     		}
-    	}    	
-    	
-        
+    	}
     }
 }
