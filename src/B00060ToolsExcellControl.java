@@ -170,84 +170,84 @@ public class B00060ToolsExcellControl{
 		EXCELL_EXISTENCE(FP);
 		EXCELL_SHEET_REFRESH(FP,Sheet_name);
 		if(SET.length>0){
-		if(SET[0].length>0){
-			Workbook book;
-			try {
-				book = WorkbookFactory.create(new FileInputStream(FP));
-				Sheet sheet = book.getSheet(Sheet_name);
-				FileOutputStream out = new FileOutputStream(FP);
-				int counter = 0;
-				//対象シートのセルを除去
-				for (Row row : sheet) {
-					counter = counter+1;
-				}
-				for(int i=0;i<counter;i++){
-					Row row = sheet.getRow(counter-1-i);
-					sheet.removeRow(row);
-				}
-				//対象シートの各セルに値をセット
-				for(int i01=0;i01<SET.length;i01++){
-					Row row = sheet.createRow(i01);
-					for(int i02=0;i02<SET[i01].length;i02++){
-					    Cell set_cell = row.createCell(i02);
-					    if(SET[i01][i02]==null){SET[i01][i02]="";}
-				    	DataFormat format = book.createDataFormat();
-				    	CellStyle  style = book.createCellStyle();
-				    	if(null==SET[i01][i02]) {SET[i01][i02]="";}
-					    if(MFG==0){
-					    	set_cell.setCellValue(SET[i01][i02]);
-					    }else{
-					    	//数字のみの文字列"."一個までは数字とみなす
-						    //数字のみの文字列に変換後、文字列長に変化なければ数値とみなして値セット
-						    String WS = B00020ToolsTextControl.num_only_String02(SET[i01][i02]);
-						    if(SET[i01][i02].length()>1){
-							    if("-".equals(SET[i01][i02].substring(0,1))){
-					    			WS = "-"+B00020ToolsTextControl.num_only_String02(SET[i01][i02]);
-					    		}
-						    }
-						    if(SET[i01][i02].length()==WS.length()&&!("".equals(SET[i01][i02]))){
-						    	Double WD = Double.parseDouble(WS);
-						    	//Double WD = Double.parseDouble(SET[i01][i02]);
-						    	//セルの書式を数値として扱わせるために数式として格納
-						    	set_cell.setCellFormula(""+WD);
+			if(SET[0].length>0){
+				Workbook book;
+				try {
+					book = WorkbookFactory.create(new FileInputStream(FP));
+					Sheet sheet = book.getSheet(Sheet_name);
+					FileOutputStream out = new FileOutputStream(FP);
+					int counter = 0;
+					//対象シートのセルを除去
+					for (Row row : sheet) {
+						counter = counter+1;
+					}
+					for(int i=0;i<counter;i++){
+						Row row = sheet.getRow(counter-1-i);
+						sheet.removeRow(row);
+					}
+					//対象シートの各セルに値をセット
+					for(int i01=0;i01<SET.length;i01++){
+						Row row = sheet.createRow(i01);
+						for(int i02=0;i02<SET[i01].length;i02++){
+						    Cell set_cell = row.createCell(i02);
+						    if(SET[i01][i02]==null){SET[i01][i02]="";}
+					    	DataFormat format = book.createDataFormat();
+					    	CellStyle  style = book.createCellStyle();
+					    	if(null==SET[i01][i02]) {SET[i01][i02]="";}
+						    if(MFG==0){
+						    	set_cell.setCellValue(SET[i01][i02]);
 						    }else{
-						    	//計算式の文字列（※1文字目が=で始まる場合は計算式として処理）
-						    	if(SET[i01][i02].length()>0){
-						    		if("=".equals(SET[i01][i02].substring(0,1))){
-								    	set_cell.setCellFormula(SET[i01][i02].substring(1, SET[i01][i02].length()));
-								    }else{
-								    	set_cell.setCellValue(SET[i01][i02]);
-								    }
-						    	}else{
-						    		set_cell.setCellValue(SET[i01][i02]);
-						    	}
+						    	//数字のみの文字列"."一個までは数字とみなす
+							    //数字のみの文字列に変換後、文字列長に変化なければ数値とみなして値セット
+							    String WS = B00020ToolsTextControl.num_only_String02(SET[i01][i02]);
+							    if(SET[i01][i02].length()>1){
+								    if("-".equals(SET[i01][i02].substring(0,1))){
+						    			WS = "-"+B00020ToolsTextControl.num_only_String02(SET[i01][i02]);
+						    		}
+							    }
+							    if(SET[i01][i02].length()==WS.length()&&!("".equals(SET[i01][i02]))){
+							    	Double WD = Double.parseDouble(WS);
+							    	//Double WD = Double.parseDouble(SET[i01][i02]);
+							    	//セルの書式を数値として扱わせるために数式として格納
+							    	set_cell.setCellFormula(""+WD);
+							    }else{
+							    	//計算式の文字列（※1文字目が=で始まる場合は計算式として処理）
+							    	if(SET[i01][i02].length()>0){
+							    		if("=".equals(SET[i01][i02].substring(0,1))){
+									    	set_cell.setCellFormula(SET[i01][i02].substring(1, SET[i01][i02].length()));
+									    }else{
+									    	set_cell.setCellValue(SET[i01][i02]);
+									    }
+							    	}else{
+							    		set_cell.setCellValue(SET[i01][i02]);
+							    	}
+							    }
 						    }
-					    }
-					    //セル結合
-						//sheet.addMergedRegion(new CellRangeAddress(1, 2, 3, 4));
-					    //↑2行目～3行目　4列目～5列目を結合する　※1行目1列目　0で表現されるため上記表現
+						    //セル結合
+							//sheet.addMergedRegion(new CellRangeAddress(1, 2, 3, 4));
+						    //↑2行目～3行目　4列目～5列目を結合する　※1行目1列目　0で表現されるため上記表現
+						}
 					}
-				}
-
-				book.write(out);
-				out.close();
-				book.close();
-				System.gc();
-				System.gc();
-
-				if(OPFG==1){
-					File file = new File(FP);
-			        Desktop desktop = Desktop.getDesktop();
-			        try {
-						desktop.open(file);
-					} catch (IOException e1) {
-						e1.printStackTrace();
+	
+					book.write(out);
+					out.close();
+					book.close();
+					System.gc();
+					System.gc();
+	
+					if(OPFG==1){
+						File file = new File(FP);
+				        Desktop desktop = Desktop.getDesktop();
+				        try {
+							desktop.open(file);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 					}
+				} catch (EncryptedDocumentException | InvalidFormatException | IOException e) {
+					e.printStackTrace();
 				}
-			} catch (EncryptedDocumentException | InvalidFormatException | IOException e) {
-				e.printStackTrace();
 			}
-		}
 		}
 	}
 

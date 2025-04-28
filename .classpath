@@ -14,5 +14,7 @@
 	<classpathentry kind="lib" path="C:/ECLIPCE/poi-3.17/poi-ooxml-schemas-3.17.jar"/>
 	<classpathentry kind="lib" path="C:/ECLIPCE/poi-3.17/poi-scratchpad-3.17.jar"/>
 	<classpathentry kind="lib" path="C:/ECLIPCE/apache-ant-1.10.3/lib/ant.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/Jsch/jsch-0.1.55.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/mysql-connector-java-5.1.48/mysql-connector-java-5.1.48.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

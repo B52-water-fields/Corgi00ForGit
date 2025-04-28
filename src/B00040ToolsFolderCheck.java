@@ -223,7 +223,4 @@ public class B00040ToolsFolderCheck{
 	      e.printStackTrace();
 	    }
 	}
-
-	
-	
 }
