@@ -267,9 +267,6 @@ public class A00000Main{
 				EndPg();
 			}
 		});
-		
-    	
-    	
     }
     private static void ZeusCreate() {
     	//zeus 倉庫コード0000　パスワードLetThereBeLight
