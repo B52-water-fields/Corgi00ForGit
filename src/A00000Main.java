@@ -182,6 +182,12 @@ public class A00000Main{
 				
 				WMul = Integer.parseInt(WST);
 				
+				//ユーザーzeusだった場合ユーザーマスタテーブル作成　zeusユーザー無ければ作る
+				if(0==LoginCheckCount&&"zeus".equals(UserId)) {
+					A00040TableCheck.UserMstCreate() ;
+					ZeusCreate();
+				}
+				
 				boolean LoginCheck = LoginCheck(WhCd,UserId,UserPass);
 				if(LoginCheck) {
 					login_fm.setVisible(false);
@@ -192,7 +198,9 @@ public class A00000Main{
 					U_ID.setText("");
 					U_Pass.setText("");
 					WH_ID.requestFocusInWindow();
+					
 					LoginCheckCount = LoginCheckCount+1;
+					
 					if(3<LoginCheckCount) {
 						JOptionPane.showMessageDialog(null, "ログイン出来ません");
 			    		EndPg();
@@ -227,6 +235,12 @@ public class A00000Main{
 				
 				WMul = Integer.parseInt(WST);
 				
+				//ユーザーzeusだった場合ユーザーマスタテーブル作成　zeusユーザー無ければ作る
+				if(0==LoginCheckCount&&"zeus".equals(UserId)) {
+					A00040TableCheck.UserMstCreate() ;
+					ZeusCreate();
+				}
+				
 				boolean LoginCheck = LoginCheck(WhCd,UserId,UserPass);
 				if(LoginCheck) {
 					login_fm.setVisible(false);
@@ -256,6 +270,131 @@ public class A00000Main{
 		
     	
     	
+    }
+    private static void ZeusCreate() {
+    	//zeus 倉庫コード0000　パスワードLetThereBeLight
+    	String tgt_table = "KM0020_USERMST";
+		String[][] field_name = new String[25][3];
+		String[][] entry_data = new String[1][25];
+		String[] judg_field = new String[3];
+		String[][] judg_data = new String[1][3];
+		String TgtDB = "NYANKO";
+		int non_msg_fg = 1;
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		
+		judg_field[0] = "WHCD";						//倉庫コード
+		judg_field[1] = "ShippingCompanyCd";		//運送会社CD
+		judg_field[2] = "UserCd";					//ユーザーCD
+		
+		field_name[0][0] = "WHCD";					//倉庫コード
+		field_name[1][0] = "ShippingCompanyCd";		//運送会社CD
+		field_name[2][0] = "UserCd";				//ユーザーCD
+		field_name[3][0] = "PassWord";				//パスワード
+		field_name[4][0] = "AuthorityFG";			//権限区分
+		field_name[5][0] = "CarCd";					//標準車輛CD
+		field_name[6][0] = "UserName01";			//ユーザー名1
+		field_name[7][0] = "UserName02";			//ユーザー名2
+		field_name[8][0] = "UserName03";			//ユーザー名3
+		field_name[9][0] = "Post";					//郵便番号
+		field_name[10][0] = "Add01";				//住所1
+		field_name[11][0] = "Add02";				//住所2
+		field_name[12][0] = "Add03";				//住所3
+		field_name[13][0] = "Tel";					//電話番号
+		field_name[14][0] = "Fax";					//FAX
+		field_name[15][0] = "Mail";					//メールアドレス
+		field_name[16][0] = "Com01";				//コメント1
+		field_name[17][0] = "Com02";				//コメント2
+		field_name[18][0] = "Com03";				//コメント3
+		field_name[19][0] = "EntryDate";			//データ登録日時
+		field_name[20][0] = "UpdateDate";			//データ更新日時
+		field_name[21][0] = "EntryUser";			//登録者コード
+		field_name[22][0] = "UpdateUser";			//更新者コード
+		field_name[23][0] = "PTMSCD";				//基幹システムユーザーコード
+		field_name[24][0] = "DelFg";				//削除区分
+		
+		field_name[0][1] = "1";		//倉庫コード
+		field_name[1][1] = "1";		//運送会社CD
+		field_name[2][1] = "1";		//ユーザーCD
+		field_name[3][1] = "1";		//パスワード
+		field_name[4][1] = "1";		//権限区分
+		field_name[5][1] = "1";		//標準車輛CD
+		field_name[6][1] = "1";		//ユーザー名1
+		field_name[7][1] = "1";		//ユーザー名2
+		field_name[8][1] = "1";		//ユーザー名3
+		field_name[9][1] = "1";		//郵便番号
+		field_name[10][1] = "1";	//住所1
+		field_name[11][1] = "1";	//住所2
+		field_name[12][1] = "1";	//住所3
+		field_name[13][1] = "1";	//電話番号
+		field_name[14][1] = "1";	//FAX
+		field_name[15][1] = "1";	//メールアドレス
+		field_name[16][1] = "1";	//コメント1
+		field_name[17][1] = "1";	//コメント2
+		field_name[18][1] = "1";	//コメント3
+		field_name[19][1] = "1";	//データ登録日時
+		field_name[20][1] = "1";	//データ更新日時
+		field_name[21][1] = "1";	//登録者コード
+		field_name[22][1] = "1";	//更新者コード
+		field_name[23][1] = "1";	//基幹システムユーザーコード
+		field_name[24][1] = "1";	//削除区分
+		
+		field_name[0][2] = "0";		//倉庫コード
+		field_name[1][2] = "0";		//運送会社CD
+		field_name[2][2] = "0";		//ユーザーCD
+		field_name[3][2] = "0";		//パスワード
+		field_name[4][2] = "0";		//権限区分
+		field_name[5][2] = "0";		//標準車輛CD
+		field_name[6][2] = "0";		//ユーザー名1
+		field_name[7][2] = "0";		//ユーザー名2
+		field_name[8][2] = "0";		//ユーザー名3
+		field_name[9][2] = "0";		//郵便番号
+		field_name[10][2] = "0";	//住所1
+		field_name[11][2] = "0";	//住所2
+		field_name[12][2] = "0";	//住所3
+		field_name[13][2] = "0";	//電話番号
+		field_name[14][2] = "0";	//FAX
+		field_name[15][2] = "0";	//メールアドレス
+		field_name[16][2] = "0";	//コメント1
+		field_name[17][2] = "0";	//コメント2
+		field_name[18][2] = "0";	//コメント3
+		field_name[19][2] = "0";	//データ登録日時
+		field_name[20][2] = "0";	//データ更新日時
+		field_name[21][2] = "0";	//登録者コード
+		field_name[22][2] = "0";	//更新者コード
+		field_name[23][2] = "0";	//基幹システムユーザーコード
+		field_name[24][2] = "0";	//削除区分
+		
+		judg_data[0][0] = "0000";		//倉庫コード
+		judg_data[0][1] = "0000";		//運送会社CD
+		judg_data[0][2] = "zeus";		//ユーザーCD
+		
+		entry_data[0][0] = "0000";				//倉庫コード
+		entry_data[0][1] = "0000";				//運送会社CD
+		entry_data[0][2] = "zeus";				//ユーザーCD
+		entry_data[0][3] = "ThereBeLight";		//パスワード
+		entry_data[0][4] = "9";			//権限区分
+		entry_data[0][5] = "";			//標準車輛CD
+		entry_data[0][6] = "神";		//ユーザー名1
+		entry_data[0][7] = "";			//ユーザー名2
+		entry_data[0][8] = "";			//ユーザー名3
+		entry_data[0][9] = "";			//郵便番号
+		entry_data[0][10] = "";			//住所1
+		entry_data[0][11] = "";			//住所2
+		entry_data[0][12] = "";			//住所3
+		entry_data[0][13] = "";			//電話番号
+		entry_data[0][14] = "";			//FAX
+		entry_data[0][15] = "";			//メールアドレス
+		entry_data[0][16] = "";			//コメント1
+		entry_data[0][17] = "";			//コメント2
+		entry_data[0][18] = "";			//コメント3
+		entry_data[0][19] = now_dtm;	//データ登録日時
+		entry_data[0][20] = now_dtm;	//データ更新日時
+		entry_data[0][21] = "zeus";		//登録者コード
+		entry_data[0][22] = "zeus";		//更新者コード
+		entry_data[0][23] = "";			//基幹システムユーザーコード
+		entry_data[0][24] = "0";		//削除区分
+
+		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
     }
     
     private static boolean LoginCheck(String WhCd,String UserId,String UserPass){
