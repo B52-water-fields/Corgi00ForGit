@@ -458,6 +458,9 @@ public class A00000Main{
     	if(100>WMul) {WMul=100;}
     	Mul = WMul;
     	JOptionPane.showMessageDialog(null, "ログイン成功");
+    	
+    	
+    	
     }
     
     
