@@ -463,8 +463,6 @@ public class A00000Main{
     	
     }
     
-    
-    
     private static void SqlSetting() {
     	 //MYSQLへの接続設定読込外部ファイルにMYSQLデータベースへの接続設定を読込        
     	ArrayList<String> IniRead = B00010ToolsTextRead.TxtReadRtArray(IniPth,"UTF-8");
