@@ -130,13 +130,13 @@ public class A00000Main{
 		JButton login_exit_btn=new JButton();
 		login_exit_btn.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
 		login_exit_btn.setText("EXIT");
-		login_exit_btn.setBounds(180*A00000Main.Mul/A00000Main.Div, 120*A00000Main.Mul/A00000Main.Div, 100*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
+		login_exit_btn.setBounds(50*A00000Main.Mul/A00000Main.Div, 120*A00000Main.Mul/A00000Main.Div, 100*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
 	
 		//ENTRYボタン
 		JButton login_entry_btn=new JButton();
 		login_entry_btn.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
 		login_entry_btn.setText("ENTRY");
-		login_entry_btn.setBounds(50*A00000Main.Mul/A00000Main.Div, 120*A00000Main.Mul/A00000Main.Div, 100*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
+		login_entry_btn.setBounds(180*A00000Main.Mul/A00000Main.Div, 120*A00000Main.Mul/A00000Main.Div, 100*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
 	
 		final DecimalFormat df = new DecimalFormat("####");
 		
@@ -181,11 +181,14 @@ public class A00000Main{
 				if("".equals(WST)) {WST = "100";}
 				
 				WMul = Integer.parseInt(WST);
-				
-				//ユーザーzeusだった場合ユーザーマスタテーブル作成　zeusユーザー無ければ作る
-				if(0==LoginCheckCount&&"zeus".equals(UserId)) {
-					A00040TableCheck.UserMstCreate() ;
-					ZeusCreate();
+								
+				if(0==LoginCheckCount) {
+					//ユーザーマスタテーブル泣ければ作成
+					A00040TableCheck.UserMstCreate();
+					//ユーザーzeusだった場合、zeusユーザー無ければ作る
+					if("zeus".equals(UserId)) {
+						ZeusCreate();
+					}
 				}
 				
 				boolean LoginCheck = LoginCheck(WhCd,UserId,UserPass);
@@ -210,6 +213,7 @@ public class A00000Main{
 				}
 			}
 		});
+		
 		WH_ID.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				U_ID.requestFocusInWindow();
@@ -235,10 +239,13 @@ public class A00000Main{
 				
 				WMul = Integer.parseInt(WST);
 				
-				//ユーザーzeusだった場合ユーザーマスタテーブル作成　zeusユーザー無ければ作る
-				if(0==LoginCheckCount&&"zeus".equals(UserId)) {
-					A00040TableCheck.UserMstCreate() ;
-					ZeusCreate();
+				if(0==LoginCheckCount) {
+					//ユーザーマスタテーブル泣ければ作成
+					A00040TableCheck.UserMstCreate();
+					//ユーザーzeusだった場合、zeusユーザー無ければ作る
+					if("zeus".equals(UserId)) {
+						ZeusCreate();
+					}
 				}
 				
 				boolean LoginCheck = LoginCheck(WhCd,UserId,UserPass);
@@ -375,8 +382,8 @@ public class A00000Main{
 		entry_data[0][7] = "";			//ユーザー名2
 		entry_data[0][8] = "";			//ユーザー名3
 		entry_data[0][9] = "";			//郵便番号
-		entry_data[0][10] = "";			//住所1
-		entry_data[0][11] = "";			//住所2
+		entry_data[0][10] = "Leof. Vasilisis Amalias 50,";	//住所1
+		entry_data[0][11] = "Athina 105 58 Greece";			//住所2
 		entry_data[0][12] = "";			//住所3
 		entry_data[0][13] = "";			//電話番号
 		entry_data[0][14] = "";			//FAX
@@ -386,8 +393,8 @@ public class A00000Main{
 		entry_data[0][18] = "";			//コメント3
 		entry_data[0][19] = now_dtm;	//データ登録日時
 		entry_data[0][20] = now_dtm;	//データ更新日時
-		entry_data[0][21] = "zeus";		//登録者コード
-		entry_data[0][22] = "zeus";		//更新者コード
+		entry_data[0][21] = "(0000)zeus";		//登録者コード
+		entry_data[0][22] = "(0000)zeus";		//更新者コード
 		entry_data[0][23] = "";			//基幹システムユーザーコード
 		entry_data[0][24] = "0";		//削除区分
 
@@ -457,6 +464,11 @@ public class A00000Main{
     private static void LoginStr() {
     	if(100>WMul) {WMul=100;}
     	Mul = WMul;
+    	//ログインユーザーがzeusだった場合天地創造（データベースの存在チェック・フィールドのカラムの不足チェック走らせる）
+    	if(LoginUserWH.equals("0000") && LoginUserId.equals("zeus")) {
+    		A00040TableCheck.TableCheck();
+    	}
+    	
     	JOptionPane.showMessageDialog(null, "ログイン成功");
     	
     	
