@@ -6,6 +6,41 @@ import java.util.ArrayList;
 
 public class A00040TableCheck{
 	//必要テーブルをチェック→無ければ作る
+	// ================================================================
+    //  A00040TableCheck（創世記／テーブル自動治癒エンジン）
+    // ================================================================
+    //
+    //  このクラスは、ユーザーID「zeus」ログイン時に起動します。
+    //  （ユーザーマスタと zeus ユーザーはシステム起動時に自動降臨します）
+    //
+    //  ■役割
+    //    システムで利用する全テーブルについて、
+    //      ・存在チェック
+    //      ・未存在時の CREATE TABLE
+    //      ・必要カラムの存在チェック
+    //      ・不足カラムの ALTER TABLE ADD
+    //    を一括で行う、“Corgiが信じる正しいデータベース定義書”です。
+    //
+    //  ■この神殿で起きる自動治癒
+    //      テーブルが DROP された      → CREATE TABLE で復元
+    //      テーブル名が変更された     → CREATE TABLE で復元
+    //      カラムが削除された          → ALTER TABLE ADD で復元
+    //      カラム名が変更された        → ALTER TABLE ADD で復元
+    //
+    //    ※すべて自動復元され、システム構造の整合性が保たれます。
+    //
+    //  ■ただし治癒しないもの
+    //      ・データ型の変更（内臓に相当するため非対象）
+    //      ・既存データの復元（神殿は外傷のみ治癒します）
+    //      ・余分に追加されたカラムの削除（“削除の儀式”は行いません）
+    //
+    //  ■追加開発時の注意
+    //      データベース構造に変更があった場合、
+    //      必ずこのクラスにも定義を追記してください。
+    //      このクラスこそがスキーマの唯一の真実となります。
+    //
+    // ================================================================
+
 	public static void TableCheck() {
 		PostDBCheck();		//郵便番号データベースの必要なテーブルを確認する
 		NyankoDBCheck();	//NYANKOデータベースの必要なテーブルを確認する
@@ -84,7 +119,14 @@ public class A00040TableCheck{
 		boolean KM0124_CourseDeliveryMSTUnHitkFg = true; 
 		boolean KM0125_MyDriverMSTUnHitkFg = true; 
 		boolean KM0126_MyDriverListUnHitkFg = true;
-		
+		boolean KT0010_OKURI_HDUnHitkFg = true; 
+		boolean KT0011_OKURI_MSUnHitkFg = true; 
+		boolean KT0012_OKURI_PROGRESSUnHitkFg = true; 
+		boolean KT0013_SEIKYUUnHitkFg = true; 
+		boolean KT0023_SHIHARAIUnHitkFg = true; 
+		boolean KT0040_PrintControlUnHitkFg = true; 
+		boolean KT020_HAISHA_HDUnHitkFg = true; 
+		boolean KT021_HAISHA_MSUnHitkFg = true; 
 		
 		for(int i=0;i<TableName.length;i++) {
 			switch(TableName[i]){
@@ -168,6 +210,30 @@ public class A00040TableCheck{
 					break;
 				case "KM0126_MyDriverList":
 					KM0126_MyDriverListUnHitkFg = false;
+					break;
+				case "KT0010_OKURI_HD":
+					KT0010_OKURI_HDUnHitkFg = false; 
+					break;
+				case "KT0011_OKURI_MS":
+					KT0011_OKURI_MSUnHitkFg = false; 
+					break;
+				case "KT0012_OKURI_PROGRESS":
+					KT0012_OKURI_PROGRESSUnHitkFg = false; 
+					break;
+				case "KT0013_SEIKYU":
+					KT0013_SEIKYUUnHitkFg = false; 
+					break;
+				case "KT0023_SHIHARAI":
+					KT0023_SHIHARAIUnHitkFg = false; 
+					break;
+				case "KT0040_PrintControl":
+					KT0040_PrintControlUnHitkFg = false;
+					break;
+				case "KT020_HAISHA_HD":
+					KT020_HAISHA_HDUnHitkFg = false; 
+					break;
+				case "KT021_HAISHA_MS":
+					KT021_HAISHA_MSUnHitkFg = false; 
 					break;
 				default:
 					break;
@@ -285,7 +351,38 @@ public class A00040TableCheck{
 			String sql = KM0126_MyDriverListCreateSql();
 			KickSql("NANKO",sql);
 		}
-		
+		if(KT0010_OKURI_HDUnHitkFg) {
+			String sql = KT0010_OKURI_HDCreateSql();
+			KickSql("NANKO",sql);
+		}
+		if(KT0011_OKURI_MSUnHitkFg) {
+			String sql = KT0011_OKURI_MSCreateSql();
+			KickSql("NANKO",sql);
+		}
+		if(KT0012_OKURI_PROGRESSUnHitkFg) {
+			String sql = KT0012_OKURI_PROGRESSCreateSql();
+			KickSql("NANKO",sql);
+		}
+		if(KT0013_SEIKYUUnHitkFg) {
+			String sql = KT0013_SEIKYUCreateSql();
+			KickSql("NANKO",sql);
+		}
+		if(KT0023_SHIHARAIUnHitkFg) {
+			String sql = KT0023_SHIHARAICreateSql();
+			KickSql("NANKO",sql);
+		}
+		if(KT0040_PrintControlUnHitkFg) {
+			String sql = KT0040_PrintControlCreateSql();
+			KickSql("NANKO",sql);
+		}
+		if(KT020_HAISHA_HDUnHitkFg) {
+			String sql = KT020_HAISHA_HDCreateSql();
+			KickSql("NANKO",sql);
+		}
+		if(KT021_HAISHA_MSUnHitkFg) {
+			String sql = KT021_HAISHA_MSCreateSql();
+			KickSql("NANKO",sql);
+		}
 		
 		
 		//テーブルのフィールドチェック ⇒ 必要フィールドなければ作る
@@ -1044,7 +1141,7 @@ public class A00040TableCheck{
 
 		ColumnList = ColumnList("NANKO","KM0090_PAYBASEMST");
 		NeedColmn = new String[54];
-		NeedColmn[ 0] = "`ShippingCompanyCd";
+		NeedColmn[ 0] = "ShippingCompanyCd";
 		NeedColmn[ 1] = "DeliveryTypeCd";
 		NeedColmn[ 2] = "DeliveryTypeCd02";
 		NeedColmn[ 3] = "DeliveryTypeCd03";
@@ -1239,7 +1336,7 @@ public class A00040TableCheck{
 	
 		ColumnList = ColumnList("NANKO","KM0123_CourseMST");
 		NeedColmn = new String[13];
-		NeedColmn[ 0] = "`WhCd";
+		NeedColmn[ 0] = "WhCd";
 		NeedColmn[ 1] = "CourseGpCd";
 		NeedColmn[ 2] = "CourseCd";
 		NeedColmn[ 3] = "CourseName";
@@ -1362,9 +1459,456 @@ public class A00040TableCheck{
 			String sql = KM0126_MyDriverListAltherTableSql(NoHitColumn);
 			KickSql("NANKO",sql);
 		}
-		
-		
 
+		ColumnList = ColumnList("NANKO","KT0010_OKURI_HD");
+		NeedColmn = new String[99];
+		NeedColmn[ 0] = "cl_cd";
+		NeedColmn[ 1] = "InvoiceWHCD";
+		NeedColmn[ 2] = "OkuriNo";
+		NeedColmn[ 3] = "ClDeliNo";
+		NeedColmn[ 4] = "PickupWHCD";
+		NeedColmn[ 5] = "PurposeFG";
+		NeedColmn[ 6] = "PlanDate";
+		NeedColmn[ 7] = "ShipDate";
+		NeedColmn[ 8] = "SPPlanDate";
+		NeedColmn[ 9] = "SPDate";
+		NeedColmn[10] = "SPTimeFG";
+		NeedColmn[11] = "SPTimeStr";
+		NeedColmn[12] = "SPTimeEnd";
+		NeedColmn[13] = "TotalWeight";
+		NeedColmn[14] = "TotalSize";
+		NeedColmn[15] = "TotalQty";
+		NeedColmn[16] = "DeliveryTypeCd";
+		NeedColmn[17] = "DeliTypeName";
+		NeedColmn[18] = "DeliveryTypeCd02";
+		NeedColmn[19] = "DeliTypeName02";
+		NeedColmn[20] = "DeliveryTypeCd03";
+		NeedColmn[21] = "DeliTypeName03";
+		NeedColmn[22] = "DeliveryTypeCd04";
+		NeedColmn[23] = "DeliTypeName04";
+		NeedColmn[24] = "DeliveryTypeCd05";
+		NeedColmn[25] = "DeliTypeName05";
+		NeedColmn[26] = "CodFG";
+		NeedColmn[27] = "CodPayTotal";
+		NeedColmn[28] = "CodPay";
+		NeedColmn[29] = "CodConsumptionTax";
+		NeedColmn[30] = "ChildrenFG";
+		NeedColmn[31] = "ParentOkuriNo";
+		NeedColmn[32] = "NiokuriCd";
+		NeedColmn[33] = "NiokuriDepartmentCd";
+		NeedColmn[34] = "NiokuriName01";
+		NeedColmn[35] = "NiokuriName02";
+		NeedColmn[36] = "NiokuriName03";
+		NeedColmn[37] = "NiokuriPost";
+		NeedColmn[38] = "NiokuriAdd01";
+		NeedColmn[39] = "NiokuriAdd02";
+		NeedColmn[40] = "NiokuriAdd03";
+		NeedColmn[41] = "NioKuriTel";
+		NeedColmn[42] = "NioKuriFax";
+		NeedColmn[43] = "NioKuriMail";
+		NeedColmn[44] = "NiokuriMunicCd";
+		NeedColmn[45] = "DeliCd";
+		NeedColmn[46] = "ClDeliCd";
+		NeedColmn[47] = "DeliDepartmentCd";
+		NeedColmn[48] = "DeliName01";
+		NeedColmn[49] = "DeliName02";
+		NeedColmn[50] = "DeliName03";
+		NeedColmn[51] = "DeliPost";
+		NeedColmn[52] = "DeliAdd01";
+		NeedColmn[53] = "DeliAdd02";
+		NeedColmn[54] = "DeliAdd03";
+		NeedColmn[55] = "DeliTel";
+		NeedColmn[56] = "DeliFax";
+		NeedColmn[57] = "DeliMail";
+		NeedColmn[58] = "DeliMunicCd";
+		NeedColmn[59] = "Com01";
+		NeedColmn[60] = "Com02";
+		NeedColmn[61] = "Com03";
+		NeedColmn[62] = "Com04";
+		NeedColmn[63] = "Com05";
+		NeedColmn[64] = "Status";
+		NeedColmn[65] = "TaxFg";
+		NeedColmn[66] = "TaxRate";
+		NeedColmn[67] = "DeliFee";
+		NeedColmn[68] = "AddDeliFee01";
+		NeedColmn[69] = "AddDeliFee02";
+		NeedColmn[70] = "AddDeliFee03";
+		NeedColmn[71] = "HaighWayFee01";
+		NeedColmn[72] = "HaighWayFee02";
+		NeedColmn[73] = "ConsumptionTax";
+		NeedColmn[74] = "WithOutTaxTotal";
+		NeedColmn[75] = "TotalFee";
+		NeedColmn[76] = "FeeFixFG";
+		NeedColmn[77] = "FeeFixDate";
+		NeedColmn[78] = "ReceiptStampFG";
+		NeedColmn[79] = "ReceiptStampDate";
+		NeedColmn[80] = "InvoiceStatus";
+		NeedColmn[81] = "EntryDate";
+		NeedColmn[82] = "UpdateDate";
+		NeedColmn[83] = "EntryUser";
+		NeedColmn[84] = "UpdateUser";
+		NeedColmn[85] = "EntryPG";
+		NeedColmn[86] = "UpdatePG";
+		NeedColmn[87] = "UseFeeBasePtCd";
+		NeedColmn[88] = "WmsStatus";
+		NeedColmn[89] = "WmsShipDate";
+		NeedColmn[90] = "CourseGpCd";
+		NeedColmn[91] = "CourseCD";
+		NeedColmn[92] = "CourseCDEda";
+		NeedColmn[93] = "PitGrp";
+		NeedColmn[94] = "Pit01";
+		NeedColmn[95] = "Pit02";
+		NeedColmn[96] = "Pit03";
+		NeedColmn[97] = "Pit04";
+		NeedColmn[98] = "Pit05";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn&&0<NoHitColumn.size()) {
+			String sql = KT0010_OKURI_HDAltherTableSql(NoHitColumn);
+			KickSql("NANKO",sql);
+		}
+
+		ColumnList = ColumnList("NANKO","KT0011_OKURI_MS");
+		NeedColmn = new String[40];
+		NeedColmn[ 0] = "cl_cd";
+		NeedColmn[ 1] = "InvoiceWHCD";
+		NeedColmn[ 2] = "OkuriNo";
+		NeedColmn[ 3] = "MsNo";
+		NeedColmn[ 4] = "DeliNo";
+		NeedColmn[ 5] = "DelliMsNo";
+		NeedColmn[ 6] = "ClOrderNo";
+		NeedColmn[ 7] = "ClGpCd";
+		NeedColmn[ 8] = "ItemCd";
+		NeedColmn[ 9] = "ItemName01";
+		NeedColmn[10] = "ItemName02";
+		NeedColmn[11] = "ItemName03";
+		NeedColmn[12] = "UnitWeight";
+		NeedColmn[13] = "UnitSize";
+		NeedColmn[14] = "Qty";
+		NeedColmn[15] = "PackingQty";
+		NeedColmn[16] = "UnitName";
+		NeedColmn[17] = "SubTotalWeight";
+		NeedColmn[18] = "SubTotalSize";
+		NeedColmn[19] = "UnitPrice";
+		NeedColmn[20] = "SubTotalPrice";
+		NeedColmn[21] = "CategoryCd";
+		NeedColmn[22] = "CategoryName";
+		NeedColmn[23] = "TildFG";
+		NeedColmn[24] = "TildName";
+		NeedColmn[25] = "Com01";
+		NeedColmn[26] = "Com02";
+		NeedColmn[27] = "Com03";
+		NeedColmn[28] = "Com04";
+		NeedColmn[29] = "Com05";
+		NeedColmn[30] = "EntryDate";
+		NeedColmn[31] = "UpdateDate";
+		NeedColmn[32] = "EntryUser";
+		NeedColmn[33] = "UpdateUser";
+		NeedColmn[34] = "Lot";
+		NeedColmn[35] = "ExpDate";
+		NeedColmn[36] = "PackingType";
+		NeedColmn[37] = "ClItemCd";
+		NeedColmn[38] = "ItemMDNo";
+		NeedColmn[39] = "JanCd";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn&&0<NoHitColumn.size()) {
+			String sql = KT0011_OKURI_MSAltherTableSql(NoHitColumn);
+			KickSql("NANKO",sql);
+		}
+
+		ColumnList = ColumnList("NANKO","KT0012_OKURI_PROGRESS");
+		NeedColmn = new String[15];
+		NeedColmn[ 0] = "cl_cd";
+		NeedColmn[ 1] = "InvoiceWHCD";
+		NeedColmn[ 2] = "OkuriNo";
+		NeedColmn[ 3] = "ProgressNo";
+		NeedColmn[ 4] = "ProgressCd";
+		NeedColmn[ 5] = "ProgressName";
+		NeedColmn[ 6] = "Com01";
+		NeedColmn[ 7] = "Com02";
+		NeedColmn[ 8] = "Com03";
+		NeedColmn[ 9] = "Com04";
+		NeedColmn[10] = "Com05";
+		NeedColmn[11] = "EntryDate";
+		NeedColmn[12] = "UpdateDate";
+		NeedColmn[13] = "EntryUser";
+		NeedColmn[14] = "UpdateUser";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn&&0<NoHitColumn.size()) {
+			String sql = KT0012_OKURI_PROGRESSAltherTableSql(NoHitColumn);
+			KickSql("NANKO",sql);
+		}
+
+		ColumnList = ColumnList("NANKO","KT0013_SEIKYU");
+		NeedColmn = new String[28];
+		NeedColmn[ 0] = "cl_cd";
+		NeedColmn[ 1] = "InvoiceWHCD";
+		NeedColmn[ 2] = "SeikyuNo";
+		NeedColmn[ 3] = "OkuriNo";
+		NeedColmn[ 4] = "SeikyuDate";
+		NeedColmn[ 5] = "ShimeDate";
+		NeedColmn[ 6] = "TaxFg";
+		NeedColmn[ 7] = "TaxRate";
+		NeedColmn[ 8] = "DeliFee";
+		NeedColmn[ 9] = "AddDeliFee01";
+		NeedColmn[10] = "AddDeliFee02";
+		NeedColmn[11] = "AddDeliFee03";
+		NeedColmn[12] = "HaighWayFee01";
+		NeedColmn[13] = "HaighWayFee02";
+		NeedColmn[14] = "ConsumptionTax";
+		NeedColmn[15] = "WithOutTaxTotal";
+		NeedColmn[16] = "TotalFee";
+		NeedColmn[17] = "Com01";
+		NeedColmn[18] = "Com02";
+		NeedColmn[19] = "Com03";
+		NeedColmn[20] = "Com04";
+		NeedColmn[21] = "Com05";
+		NeedColmn[22] = "EntryDate";
+		NeedColmn[23] = "UpdateDate";
+		NeedColmn[24] = "EntryUser";
+		NeedColmn[25] = "UpdateUser";
+		NeedColmn[26] = "PrtFg";
+		NeedColmn[27] = "DataOutFg";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn&&0<NoHitColumn.size()) {
+			String sql = KT0013_SEIKYUAltherTableSql(NoHitColumn);
+			KickSql("NANKO",sql);
+		}
+
+		ColumnList = ColumnList("NANKO","KT0023_SHIHARAI");
+		NeedColmn = new String[21];
+		NeedColmn[ 0] = "DeliWHCD";
+		NeedColmn[ 1] = "DeliCompCd";
+		NeedColmn[ 2] = "ShiharaiNo";
+		NeedColmn[ 3] = "HaishaNo";
+		NeedColmn[ 4] = "ShiharaiDate";
+		NeedColmn[ 5] = "ShimeDate";
+		NeedColmn[ 6] = "TaxFg";
+		NeedColmn[ 7] = "TaxRate";
+		NeedColmn[ 8] = "DeliPay";
+		NeedColmn[ 9] = "AddDeliPay01";
+		NeedColmn[10] = "AddDeliPay02";
+		NeedColmn[11] = "AddDeliPay03";
+		NeedColmn[12] = "HaighWayPay01";
+		NeedColmn[13] = "HaighWayPay02";
+		NeedColmn[14] = "ConsumptionTax";
+		NeedColmn[15] = "WithOutTaxTotal";
+		NeedColmn[16] = "TotalPay";
+		NeedColmn[17] = "EntryDate";
+		NeedColmn[18] = "UpdateDate";
+		NeedColmn[19] = "EntryUser";
+		NeedColmn[20] = "UpdateUser";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn&&0<NoHitColumn.size()) {
+			String sql = KT0023_SHIHARAIAltherTableSql(NoHitColumn);
+			KickSql("NANKO",sql);
+		}
+	
+		ColumnList = ColumnList("NANKO","KT0040_PrintControl");
+		NeedColmn = new String[10];
+		NeedColmn[ 0] = "PrintCd";
+		NeedColmn[ 1] = "OkuriNo";
+		NeedColmn[ 2] = "Key01";
+		NeedColmn[ 3] = "Key02";
+		NeedColmn[ 4] = "Key03";
+		NeedColmn[ 5] = "Key04";
+		NeedColmn[ 6] = "EntryDate";
+		NeedColmn[ 7] = "UpdateDate";
+		NeedColmn[ 8] = "EntryUser";
+		NeedColmn[ 9] = "UpdateUser";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn&&0<NoHitColumn.size()) {
+			String sql = KT0040_PrintControlAltherTableSql(NoHitColumn);
+			KickSql("NANKO",sql);
+		}
+
+		ColumnList = ColumnList("NANKO","KT020_HAISHA_HD");
+		NeedColmn = new String[47];
+		NeedColmn[ 0] = "DeliWHCD";
+		NeedColmn[ 1] = "HaishaNo";
+		NeedColmn[ 2] = "PlanDate";
+		NeedColmn[ 3] = "ShipDate";
+		NeedColmn[ 4] = "SPPlanDate";
+		NeedColmn[ 5] = "SPDate";
+		NeedColmn[ 6] = "TotalWeight";
+		NeedColmn[ 7] = "TotalSize";
+		NeedColmn[ 8] = "TotalQty";
+		NeedColmn[ 9] = "DeliveryTypeCd";
+		NeedColmn[10] = "DeliTypeName";
+		NeedColmn[11] = "DeliveryTypeCd02";
+		NeedColmn[12] = "DeliTypeName02";
+		NeedColmn[13] = "DeliveryTypeCd03";
+		NeedColmn[14] = "DeliTypeName03";
+		NeedColmn[15] = "DeliveryTypeCd04";
+		NeedColmn[16] = "DeliTypeName04";
+		NeedColmn[17] = "DeliveryTypeCd05";
+		NeedColmn[18] = "DeliTypeName05";
+		NeedColmn[19] = "DeliCompCd";
+		NeedColmn[20] = "DeliCompName";
+		NeedColmn[21] = "CarCd";
+		NeedColmn[22] = "CarName";
+		NeedColmn[23] = "DriverCd";
+		NeedColmn[24] = "DriverName";
+		NeedColmn[25] = "Status";
+		NeedColmn[26] = "TaxFg";
+		NeedColmn[27] = "TaxRate";
+		NeedColmn[28] = "DeliPay";
+		NeedColmn[29] = "AddDeliPay01";
+		NeedColmn[30] = "AddDeliPay02";
+		NeedColmn[31] = "AddDeliPay03";
+		NeedColmn[32] = "HaighWayPay01";
+		NeedColmn[33] = "HaighWayPay02";
+		NeedColmn[34] = "ConsumptionTax";
+		NeedColmn[35] = "WithOutTaxTotal";
+		NeedColmn[36] = "TotalPay";
+		NeedColmn[37] = "PayFixFG";
+		NeedColmn[38] = "PayFixDate";
+		NeedColmn[39] = "InvoiceStatus";
+		NeedColmn[40] = "ChildrenFG";
+		NeedColmn[41] = "ParentHaishaNo";
+		NeedColmn[42] = "EntryDate";
+		NeedColmn[43] = "UpdateDate";
+		NeedColmn[44] = "EntryUser";
+		NeedColmn[45] = "UpdateUser";
+		NeedColmn[46] = "UsePayBasePtCd";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn&&0<NoHitColumn.size()) {
+			String sql = KT020_HAISHA_HDAltherTableSql(NoHitColumn);
+			KickSql("NANKO",sql);
+		}
+
+		ColumnList = ColumnList("NANKO","KT021_HAISHA_MS");
+		NeedColmn = new String[22];
+		NeedColmn[ 0] = "DeliWHCD";
+		NeedColmn[ 1] = "HaishaNo";
+		NeedColmn[ 2] = "BinNo";
+		NeedColmn[ 3] = "MsNo";
+		NeedColmn[ 4] = "InvoiceWHCD";
+		NeedColmn[ 5] = "cl_cd";
+		NeedColmn[ 6] = "OkuriNo";
+		NeedColmn[ 7] = "Status";
+		NeedColmn[ 8] = "FG01";
+		NeedColmn[ 9] = "FG02";
+		NeedColmn[10] = "FG03";
+		NeedColmn[11] = "FG04";
+		NeedColmn[12] = "FG05";
+		NeedColmn[13] = "Com01";
+		NeedColmn[14] = "Com02";
+		NeedColmn[15] = "Com03";
+		NeedColmn[16] = "Com04";
+		NeedColmn[17] = "Com05";
+		NeedColmn[18] = "EntryDate";
+		NeedColmn[19] = "UpdateDate";
+		NeedColmn[20] = "EntryUser";
+		NeedColmn[21] = "UpdateUser";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn&&0<NoHitColumn.size()) {
+			String sql = KT021_HAISHA_MSAltherTableSql(NoHitColumn);
+			KickSql("NANKO",sql);
+		}
 	}
 	
 	
@@ -3740,7 +4284,7 @@ public class A00040TableCheck{
 					sql = sql + " ADD SetBinNo int(11) DEFAULT '1'";
 					break;
 			  	case "EntryDate":
-					sql = sql + " ADD EntryDate datetime DEFAULT NULL COMMENT";
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
 					break;
 			  	case "UpdateDate":
 					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
@@ -3947,6 +4491,1322 @@ public class A00040TableCheck{
 		}
 		return sql;
 	}
+	
+	private static String KT0010_OKURI_HDCreateSql() {
+		//送り状ヘッダテーブルを作るNYANKO
+		String sql = ""
+				+"CREATE TABLE `KT0010_OKURI_HD` ("
+				+"  `cl_cd` varchar(20) NOT NULL,"
+				+"  `InvoiceWHCD` varchar(20) NOT NULL,"
+				+"  `OkuriNo` int(11) NOT NULL,"
+				+"  `ClDeliNo` varchar(50) DEFAULT NULL,"
+				+"  `PickupWHCD` varchar(20) DEFAULT NULL,"
+				+"  `PurposeFG` int(11) DEFAULT '0',"
+				+"  `PlanDate` datetime DEFAULT NULL,"
+				+"  `ShipDate` datetime DEFAULT NULL,"
+				+"  `SPPlanDate` datetime DEFAULT NULL,"
+				+"  `SPDate` datetime DEFAULT NULL,"
+				+"  `SPTimeFG` varchar(20) DEFAULT NULL,"
+				+"  `SPTimeStr` varchar(20) DEFAULT NULL,"
+				+"  `SPTimeEnd` varchar(20) DEFAULT NULL,"
+				+"  `TotalWeight` float DEFAULT '0',"
+				+"  `TotalSize` float DEFAULT '0',"
+				+"  `TotalQty` float DEFAULT '0',"
+				+"  `DeliveryTypeCd` varchar(20) DEFAULT NULL,"
+				+"  `DeliTypeName` varchar(50) DEFAULT NULL,"
+				+"  `DeliveryTypeCd02` varchar(20) DEFAULT NULL,"
+				+"  `DeliTypeName02` varchar(50) DEFAULT NULL,"
+				+"  `DeliveryTypeCd03` varchar(20) DEFAULT NULL,"
+				+"  `DeliTypeName03` varchar(50) DEFAULT NULL,"
+				+"  `DeliveryTypeCd04` varchar(20) DEFAULT NULL,"
+				+"  `DeliTypeName04` varchar(50) DEFAULT NULL,"
+				+"  `DeliveryTypeCd05` varchar(20) DEFAULT NULL,"
+				+"  `DeliTypeName05` varchar(50) DEFAULT NULL,"
+				+"  `CodFG` int(11) DEFAULT '0',"
+				+"  `CodPayTotal` int(11) DEFAULT '0',"
+				+"  `CodPay` int(11) DEFAULT '0',"
+				+"  `CodConsumptionTax` int(11) DEFAULT '0',"
+				+"  `ChildrenFG` int(11) DEFAULT '0',"
+				+"  `ParentOkuriNo` int(11) DEFAULT '0',"
+				+"  `NiokuriCd` varchar(20) DEFAULT NULL,"
+				+"  `NiokuriDepartmentCd` varchar(20) DEFAULT NULL,"
+				+"  `NiokuriName01` varchar(50) DEFAULT NULL,"
+				+"  `NiokuriName02` varchar(50) DEFAULT NULL,"
+				+"  `NiokuriName03` varchar(50) DEFAULT NULL,"
+				+"  `NiokuriPost` varchar(20) DEFAULT NULL,"
+				+"  `NiokuriAdd01` varchar(100) DEFAULT NULL,"
+				+"  `NiokuriAdd02` varchar(100) DEFAULT NULL,"
+				+"  `NiokuriAdd03` varchar(100) DEFAULT NULL,"
+				+"  `NioKuriTel` varchar(20) DEFAULT NULL,"
+				+"  `NioKuriFax` varchar(20) DEFAULT NULL,"
+				+"  `NioKuriMail` varchar(200) DEFAULT NULL,"
+				+"  `NiokuriMunicCd` varchar(20) DEFAULT NULL,"
+				+"  `DeliCd` varchar(20) DEFAULT NULL,"
+				+"  `ClDeliCd` varchar(20) DEFAULT NULL,"
+				+"  `DeliDepartmentCd` varchar(20) DEFAULT NULL,"
+				+"  `DeliName01` varchar(50) DEFAULT NULL,"
+				+"  `DeliName02` varchar(50) DEFAULT NULL,"
+				+"  `DeliName03` varchar(50) DEFAULT NULL,"
+				+"  `DeliPost` varchar(20) DEFAULT NULL,"
+				+"  `DeliAdd01` varchar(100) DEFAULT NULL,"
+				+"  `DeliAdd02` varchar(100) DEFAULT NULL,"
+				+"  `DeliAdd03` varchar(100) DEFAULT NULL,"
+				+"  `DeliTel` varchar(20) DEFAULT NULL,"
+				+"  `DeliFax` varchar(20) DEFAULT NULL,"
+				+"  `DeliMail` varchar(200) DEFAULT NULL,"
+				+"  `DeliMunicCd` varchar(20) DEFAULT NULL,"
+				+"  `Com01` varchar(300) DEFAULT NULL,"
+				+"  `Com02` varchar(300) DEFAULT NULL,"
+				+"  `Com03` varchar(300) DEFAULT NULL,"
+				+"  `Com04` varchar(300) DEFAULT NULL,"
+				+"  `Com05` varchar(300) DEFAULT NULL,"
+				+"  `Status` int(11) DEFAULT '0',"
+				+"  `TaxFg` int(11) DEFAULT '0',"
+				+"  `TaxRate` int(11) DEFAULT '0',"
+				+"  `DeliFee` int(11) DEFAULT '0',"
+				+"  `AddDeliFee01` int(11) DEFAULT '0',"
+				+"  `AddDeliFee02` int(11) DEFAULT '0',"
+				+"  `AddDeliFee03` int(11) DEFAULT '0',"
+				+"  `HaighWayFee01` int(11) DEFAULT '0',"
+				+"  `HaighWayFee02` int(11) DEFAULT '0',"
+				+"  `ConsumptionTax` int(11) DEFAULT '0',"
+				+"  `WithOutTaxTotal` int(11) DEFAULT '0',"
+				+"  `TotalFee` int(11) DEFAULT '0',"
+				+"  `FeeFixFG` int(11) DEFAULT '0',"
+				+"  `FeeFixDate` datetime DEFAULT NULL,"
+				+"  `ReceiptStampFG` int(11) DEFAULT '0',"
+				+"  `ReceiptStampDate` datetime DEFAULT NULL,"
+				+"  `InvoiceStatus` int(11) DEFAULT '0',"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  `EntryPG` varchar(50) DEFAULT NULL,"
+				+"  `UpdatePG` varchar(50) DEFAULT NULL,"
+				+"  `UseFeeBasePtCd` varchar(20) DEFAULT NULL,"
+				+"  `WmsStatus` int(11) DEFAULT '0',"
+				+"  `WmsShipDate` datetime DEFAULT NULL,"
+				+"  `CourseGpCd` varchar(20) DEFAULT NULL,"
+				+"  `CourseCD` varchar(20) DEFAULT NULL,"
+				+"  `CourseCDEda` int(11) DEFAULT '0',"
+				+"  `PitGrp` varchar(20) DEFAULT NULL,"
+				+"  `Pit01` varchar(20) DEFAULT NULL,"
+				+"  `Pit02` varchar(20) DEFAULT NULL,"
+				+"  `Pit03` varchar(20) DEFAULT NULL,"
+				+"  `Pit04` varchar(20) DEFAULT NULL,"
+				+"  `Pit05` varchar(20) DEFAULT NULL,"
+				+"  PRIMARY KEY (`OkuriNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='荷物を配達する単位でデータ生成される送り状データ';";
+		return sql;
+	}
+
+
+	private static String KT0010_OKURI_HDAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KT0010_OKURI_HD";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "cl_cd":
+					sql = sql + " ADD cl_cd varchar(20) NOT NULL";
+					break;
+				case "InvoiceWHCD":
+					sql = sql + " ADD InvoiceWHCD varchar(20) NOT NULL";
+					break;
+				case "OkuriNo":
+					sql = sql + " ADD OkuriNo int(11) NOT NULL";
+					break;
+				case "ClDeliNo":
+					sql = sql + " ADD ClDeliNo varchar(50) DEFAULT NULL";
+					break;
+				case "PickupWHCD":
+					sql = sql + " ADD PickupWHCD varchar(20) DEFAULT NULL";
+					break;
+				case "PurposeFG":
+					sql = sql + " ADD PurposeFG int(11) DEFAULT '0'";
+					break;
+				case "PlanDate":
+					sql = sql + " ADD PlanDate datetime DEFAULT NULL";
+					break;
+				case "ShipDate":
+					sql = sql + " ADD ShipDate datetime DEFAULT NULL";
+					break;
+				case "SPPlanDate":
+					sql = sql + " ADD SPPlanDate datetime DEFAULT NULL";
+					break;
+				case "SPDate":
+					sql = sql + " ADD SPDate datetime DEFAULT NULL";
+					break;
+				case "SPTimeFG":
+					sql = sql + " ADD SPTimeFG varchar(20) DEFAULT NULL";
+					break;
+				case "SPTimeStr":
+					sql = sql + " ADD SPTimeStr varchar(20) DEFAULT NULL";
+					break;
+				case "SPTimeEnd":
+					sql = sql + " ADD SPTimeEnd varchar(20) DEFAULT NULL";
+					break;
+				case "TotalWeight":
+					sql = sql + " ADD TotalWeight float DEFAULT '0'";
+					break;
+				case "TotalSize":
+					sql = sql + " ADD TotalSize float DEFAULT '0'";
+					break;
+				case "TotalQty":
+					sql = sql + " ADD TotalQty float DEFAULT '0'";
+					break;
+				case "DeliveryTypeCd":
+					sql = sql + " ADD DeliveryTypeCd varchar(20) DEFAULT NULL";
+					break;
+				case "DeliTypeName":
+					sql = sql + " ADD DeliTypeName varchar(50) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd02":
+					sql = sql + " ADD DeliveryTypeCd02 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliTypeName02":
+					sql = sql + " ADD DeliTypeName02 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd03":
+					sql = sql + " ADD DeliveryTypeCd03 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliTypeName03":
+					sql = sql + " ADD DeliTypeName03 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd04":
+					sql = sql + " ADD DeliveryTypeCd04 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliTypeName04":
+					sql = sql + " ADD DeliTypeName04 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd05":
+					sql = sql + " ADD DeliveryTypeCd05 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliTypeName05":
+					sql = sql + " ADD DeliTypeName05 varchar(50) DEFAULT NULL";
+					break;
+				case "CodFG":
+					sql = sql + " ADD CodFG int(11) DEFAULT '0'";
+					break;
+				case "CodPayTotal":
+					sql = sql + " ADD CodPayTotal int(11) DEFAULT '0'";
+					break;
+				case "CodPay":
+					sql = sql + " ADD CodPay int(11) DEFAULT '0'";
+					break;
+				case "CodConsumptionTax":
+					sql = sql + " ADD CodConsumptionTax int(11) DEFAULT '0'";
+					break;
+				case "ChildrenFG":
+					sql = sql + " ADD ChildrenFG int(11) DEFAULT '0'";
+					break;
+				case "ParentOkuriNo":
+					sql = sql + " ADD ParentOkuriNo int(11) DEFAULT '0'";
+					break;
+				case "NiokuriCd":
+					sql = sql + " ADD NiokuriCd varchar(20) DEFAULT NULL";
+					break;
+				case "NiokuriDepartmentCd":
+					sql = sql + " ADD NiokuriDepartmentCd varchar(20) DEFAULT NULL";
+					break;
+				case "NiokuriName01":
+					sql = sql + " ADD NiokuriName01 varchar(50) DEFAULT NULL";
+					break;
+				case "NiokuriName02":
+					sql = sql + " ADD NiokuriName02 varchar(50) DEFAULT NULL";
+					break;
+				case "NiokuriName03":
+					sql = sql + " ADD NiokuriName03 varchar(50) DEFAULT NULL";
+					break;
+				case "NiokuriPost":
+					sql = sql + " ADD NiokuriPost varchar(20) DEFAULT NULL";
+					break;
+				case "NiokuriAdd01":
+					sql = sql + " ADD NiokuriAdd01 varchar(100) DEFAULT NULL";
+					break;
+				case "NiokuriAdd02":
+					sql = sql + " ADD NiokuriAdd02 varchar(100) DEFAULT NULL";
+					break;
+				case "NiokuriAdd03":
+					sql = sql + " ADD NiokuriAdd03 varchar(100) DEFAULT NULL";
+					break;
+				case "NioKuriTel":
+					sql = sql + " ADD NioKuriTel varchar(20) DEFAULT NULL";
+					break;
+				case "NioKuriFax":
+					sql = sql + " ADD NioKuriFax varchar(20) DEFAULT NULL";
+					break;
+				case "NioKuriMail":
+					sql = sql + " ADD NioKuriMail varchar(200) DEFAULT NULL";
+					break;
+				case "NiokuriMunicCd":
+					sql = sql + " ADD NiokuriMunicCd varchar(20) DEFAULT NULL";
+					break;
+				case "DeliCd":
+					sql = sql + " ADD DeliCd varchar(20) DEFAULT NULL";
+					break;
+				case "ClDeliCd":
+					sql = sql + " ADD ClDeliCd varchar(20) DEFAULT NULL";
+					break;
+				case "DeliDepartmentCd":
+					sql = sql + " ADD DeliDepartmentCd varchar(20) DEFAULT NULL";
+					break;
+				case "DeliName01":
+					sql = sql + " ADD DeliName01 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliName02":
+					sql = sql + " ADD DeliName02 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliName03":
+					sql = sql + " ADD DeliName03 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliPost":
+					sql = sql + " ADD DeliPost varchar(20) DEFAULT NULL";
+					break;
+				case "DeliAdd01":
+					sql = sql + " ADD DeliAdd01 varchar(100) DEFAULT NULL";
+					break;
+				case "DeliAdd02":
+					sql = sql + " ADD DeliAdd02 varchar(100) DEFAULT NULL";
+					break;
+				case "DeliAdd03":
+					sql = sql + " ADD DeliAdd03 varchar(100) DEFAULT NULL";
+					break;
+				case "DeliTel":
+					sql = sql + " ADD DeliTel varchar(20) DEFAULT NULL";
+					break;
+				case "DeliFax":
+					sql = sql + " ADD DeliFax varchar(20) DEFAULT NULL";
+					break;
+				case "DeliMail":
+					sql = sql + " ADD DeliMail varchar(200) DEFAULT NULL";
+					break;
+				case "DeliMunicCd":
+					sql = sql + " ADD DeliMunicCd varchar(20) DEFAULT NULL";
+					break;
+				case "Com01":
+					sql = sql + " ADD Com01 varchar(300) DEFAULT NULL";
+					break;
+				case "Com02":
+					sql = sql + " ADD Com02 varchar(300) DEFAULT NULL";
+					break;
+				case "Com03":
+					sql = sql + " ADD Com03 varchar(300) DEFAULT NULL";
+					break;
+				case "Com04":
+					sql = sql + " ADD Com04 varchar(300) DEFAULT NULL";
+					break;
+				case "Com05":
+					sql = sql + " ADD Com05 varchar(300) DEFAULT NULL";
+					break;
+				case "Status":
+					sql = sql + " ADD Status int(11) DEFAULT '0'";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) DEFAULT '0'";
+					break;
+				case "DeliFee":
+					sql = sql + " ADD DeliFee int(11) DEFAULT '0'";
+					break;
+				case "AddDeliFee01":
+					sql = sql + " ADD AddDeliFee01 int(11) DEFAULT '0'";
+					break;
+				case "AddDeliFee02":
+					sql = sql + " ADD AddDeliFee02 int(11) DEFAULT '0'";
+					break;
+				case "AddDeliFee03":
+					sql = sql + " ADD AddDeliFee03 int(11) DEFAULT '0'";
+					break;
+				case "HaighWayFee01":
+					sql = sql + " ADD HaighWayFee01 int(11) DEFAULT '0'";
+					break;
+				case "HaighWayFee02":
+					sql = sql + " ADD HaighWayFee02 int(11) DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) DEFAULT '0'";
+					break;
+				case "TotalFee":
+					sql = sql + " ADD TotalFee int(11) DEFAULT '0'";
+					break;
+				case "FeeFixFG":
+					sql = sql + " ADD FeeFixFG int(11) DEFAULT '0'";
+					break;
+				case "FeeFixDate":
+					sql = sql + " ADD FeeFixDate datetime DEFAULT NULL";
+					break;
+				case "ReceiptStampFG":
+					sql = sql + " ADD ReceiptStampFG int(11) DEFAULT '0'";
+					break;
+				case "ReceiptStampDate":
+					sql = sql + " ADD ReceiptStampDate datetime DEFAULT NULL";
+					break;
+				case "InvoiceStatus":
+					sql = sql + " ADD InvoiceStatus int(11) DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "EntryPG":
+					sql = sql + " ADD EntryPG varchar(50) DEFAULT NULL";
+					break;
+				case "UpdatePG":
+					sql = sql + " ADD UpdatePG varchar(50) DEFAULT NULL";
+					break;
+				case "UseFeeBasePtCd":
+					sql = sql + " ADD UseFeeBasePtCd varchar(20) DEFAULT NULL";
+					break;
+				case "WmsStatus":
+					sql = sql + " ADD WmsStatus int(11) DEFAULT '0'";
+					break;
+				case "WmsShipDate":
+					sql = sql + " ADD WmsShipDate datetime DEFAULT NULL";
+					break;
+				case "CourseGpCd":
+					sql = sql + " ADD CourseGpCd varchar(20) DEFAULT NULL";
+					break;
+				case "CourseCD":
+					sql = sql + " ADD CourseCD varchar(20) DEFAULT NULL";
+					break;
+				case "CourseCDEda":
+					sql = sql + " ADD CourseCDEda int(11) DEFAULT '0'";
+					break;
+				case "PitGrp":
+					sql = sql + " ADD PitGrp varchar(20) DEFAULT NULL";
+					break;
+				case "Pit01":
+					sql = sql + " ADD Pit01 varchar(20) DEFAULT NULL";
+					break;
+				case "Pit02":
+					sql = sql + " ADD Pit02 varchar(20) DEFAULT NULL";
+					break;
+				case "Pit03":
+					sql = sql + " ADD Pit03 varchar(20) DEFAULT NULL";
+					break;
+				case "Pit04":
+					sql = sql + " ADD Pit04 varchar(20) DEFAULT NULL";
+					break;
+				case "Pit05":
+					sql = sql + " ADD Pit05 varchar(20) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		return sql;
+	}
+
+
+	private static String KT0011_OKURI_MSCreateSql() {
+		//送り状明細テーブルを作るNYANKO
+		String sql = ""
+				+"CREATE TABLE `KT0011_OKURI_MS` ("
+				+"  `cl_cd` varchar(20) NOT NULL,"
+				+"  `InvoiceWHCD` varchar(20) NOT NULL,"
+				+"  `OkuriNo` int(11) NOT NULL,"
+				+"  `MsNo` int(11) NOT NULL,"
+				+"  `DeliNo` varchar(20) DEFAULT '0',"
+				+"  `DelliMsNo` int(11) DEFAULT '0',"
+				+"  `ClOrderNo` varchar(50) DEFAULT NULL,"
+				+"  `ClGpCd` varchar(20) DEFAULT NULL,"
+				+"  `ItemCd` varchar(20) DEFAULT NULL,"
+				+"  `ItemName01` varchar(100) DEFAULT NULL,"
+				+"  `ItemName02` varchar(100) DEFAULT NULL,"
+				+"  `ItemName03` varchar(100) DEFAULT NULL,"
+				+"  `UnitWeight` float DEFAULT '0',"
+				+"  `UnitSize` float DEFAULT '0',"
+				+"  `Qty` float DEFAULT '0',"
+				+"  `PackingQty` int(11) NOT NULL DEFAULT '0',"
+				+"  `UnitName` varchar(20) NOT NULL,"
+				+"  `SubTotalWeight` float DEFAULT '0',"
+				+"  `SubTotalSize` float DEFAULT '0',"
+				+"  `UnitPrice` float DEFAULT '0',"
+				+"  `SubTotalPrice` float DEFAULT '0',"
+				+"  `CategoryCd` varchar(20) DEFAULT NULL,"
+				+"  `CategoryName` varchar(50) DEFAULT NULL,"
+				+"  `TildFG` varchar(20) DEFAULT NULL,"
+				+"  `TildName` varchar(50) DEFAULT NULL,"
+				+"  `Com01` varchar(300) DEFAULT NULL,"
+				+"  `Com02` varchar(300) DEFAULT NULL,"
+				+"  `Com03` varchar(300) DEFAULT NULL,"
+				+"  `Com04` varchar(300) DEFAULT NULL,"
+				+"  `Com05` varchar(300) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  `Lot` varchar(20) DEFAULT NULL,"
+				+"  `ExpDate` datetime DEFAULT NULL,"
+				+"  `PackingType` int(11) NOT NULL DEFAULT '0',"
+				+"  `ClItemCd` varchar(20) DEFAULT NULL,"
+				+"  `ItemMDNo` varchar(20) DEFAULT NULL,"
+				+"  `JanCd` varchar(20) DEFAULT NULL,"
+				+"  PRIMARY KEY (`OkuriNo`,`MsNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='KT0010_OKURI_HD送り状データヘッダの内訳情報cl_cdとInvoiceWHCDでKT0010_OKURI_HD送り状データヘッダを特定';";
+		return sql;
+	}
+
+	private static String KT0011_OKURI_MSAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KT0011_OKURI_MS";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "cl_cd":
+					sql = sql + " ADD cl_cd varchar(20) NOT NULL";
+					break;
+				case "InvoiceWHCD":
+					sql = sql + " ADD InvoiceWHCD varchar(20) NOT NULL";
+					break;
+				case "OkuriNo":
+					sql = sql + " ADD OkuriNo int(11) NOT NULL";
+					break;
+				case "MsNo":
+					sql = sql + " ADD MsNo int(11) NOT NULL";
+					break;
+				case "DeliNo":
+					sql = sql + " ADD DeliNo varchar(20) DEFAULT '0'";
+					break;
+				case "DelliMsNo":
+					sql = sql + " ADD DelliMsNo int(11) DEFAULT '0'";
+					break;
+				case "ClOrderNo":
+					sql = sql + " ADD ClOrderNo varchar(50) DEFAULT NULL";
+					break;
+				case "ClGpCd":
+					sql = sql + " ADD ClGpCd varchar(20) DEFAULT NULL";
+					break;
+				case "ItemCd":
+					sql = sql + " ADD ItemCd varchar(20) DEFAULT NULL";
+					break;
+				case "ItemName01":
+					sql = sql + " ADD ItemName01 varchar(100) DEFAULT NULL";
+					break;
+				case "ItemName02":
+					sql = sql + " ADD ItemName02 varchar(100) DEFAULT NULL";
+					break;
+				case "ItemName03":
+					sql = sql + " ADD ItemName03 varchar(100) DEFAULT NULL";
+					break;
+				case "UnitWeight":
+					sql = sql + " ADD UnitWeight float DEFAULT '0'";
+					break;
+				case "UnitSize":
+					sql = sql + " ADD UnitSize float DEFAULT '0'";
+					break;
+				case "Qty":
+					sql = sql + " ADD Qty float DEFAULT '0'";
+					break;
+				case "PackingQty":
+					sql = sql + " ADD PackingQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "UnitName":
+					sql = sql + " ADD UnitName varchar(20) NOT NULL";
+					break;
+				case "SubTotalWeight":
+					sql = sql + " ADD SubTotalWeight float DEFAULT '0'";
+					break;
+				case "SubTotalSize":
+					sql = sql + " ADD SubTotalSize float DEFAULT '0'";
+					break;
+				case "UnitPrice":
+					sql = sql + " ADD UnitPrice float DEFAULT '0'";
+					break;
+				case "SubTotalPrice":
+					sql = sql + " ADD SubTotalPrice float DEFAULT '0'";
+					break;
+				case "CategoryCd":
+					sql = sql + " ADD CategoryCd varchar(20) DEFAULT NULL";
+					break;
+				case "CategoryName":
+					sql = sql + " ADD CategoryName varchar(50) DEFAULT NULL";
+					break;
+				case "TildFG":
+					sql = sql + " ADD TildFG varchar(20) DEFAULT NULL";
+					break;
+				case "TildName":
+					sql = sql + " ADD TildName varchar(50) DEFAULT NULL";
+					break;
+				case "Com01":
+					sql = sql + " ADD Com01 varchar(300) DEFAULT NULL";
+					break;
+				case "Com02":
+					sql = sql + " ADD Com02 varchar(300) DEFAULT NULL";
+					break;
+				case "Com03":
+					sql = sql + " ADD Com03 varchar(300) DEFAULT NULL";
+					break;
+				case "Com04":
+					sql = sql + " ADD Com04 varchar(300) DEFAULT NULL";
+					break;
+				case "Com05":
+					sql = sql + " ADD Com05 varchar(300) DEFAULT NULL";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "Lot":
+					sql = sql + " ADD Lot varchar(20) DEFAULT NULL";
+					break;
+				case "ExpDate":
+					sql = sql + " ADD ExpDate datetime DEFAULT NULL";
+					break;
+				case "PackingType":
+					sql = sql + " ADD PackingType int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ClItemCd":
+					sql = sql + " ADD ClItemCd varchar(20) DEFAULT NULL";
+					break;
+				case "ItemMDNo":
+					sql = sql + " ADD ItemMDNo varchar(20) DEFAULT NULL";
+					break;
+				case "JanCd":
+					sql = sql + " ADD JanCd varchar(20) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		return sql;
+	}
+
+
+	private static String KT0012_OKURI_PROGRESSCreateSql() {
+		//送り状配送進捗を作るNYANKO
+		String sql = ""
+				+"CREATE TABLE `KT0012_OKURI_PROGRESS` ("
+				+"  `cl_cd` varchar(20) NOT NULL,"
+				+"  `InvoiceWHCD` varchar(20) NOT NULL,"
+				+"  `OkuriNo` int(11) NOT NULL,"
+				+"  `ProgressNo` int(11) NOT NULL,"
+				+"  `ProgressCd` varchar(20) NOT NULL,"
+				+"  `ProgressName` varchar(100) NOT NULL,"
+				+"  `Com01` varchar(300) DEFAULT NULL,"
+				+"  `Com02` varchar(300) DEFAULT NULL,"
+				+"  `Com03` varchar(300) DEFAULT NULL,"
+				+"  `Com04` varchar(300) DEFAULT NULL,"
+				+"  `Com05` varchar(300) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`cl_cd`,`InvoiceWHCD`,`OkuriNo`,`ProgressNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='送り状単位の進捗情報を累積格納する EX）配達完了・遅配連絡等';";
+		return sql;
+	}
+
+	private static String KT0012_OKURI_PROGRESSAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KT0012_OKURI_PROGRESS";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "cl_cd":
+					sql = sql + " ADD cl_cd varchar(20) NOT NULL";
+					break;
+				case "InvoiceWHCD":
+					sql = sql + " ADD InvoiceWHCD varchar(20) NOT NULL";
+					break;
+				case "OkuriNo":
+					sql = sql + " ADD OkuriNo int(11) NOT NULL";
+					break;
+				case "ProgressNo":
+					sql = sql + " ADD ProgressNo int(11) NOT NULL";
+					break;
+				case "ProgressCd":
+					sql = sql + " ADD ProgressCd varchar(20) NOT NULL";
+					break;
+				case "ProgressName":
+					sql = sql + " ADD ProgressName varchar(100) NOT NULL";
+					break;
+				case "Com01":
+					sql = sql + " ADD Com01 varchar(300) DEFAULT NULL";
+					break;
+				case "Com02":
+					sql = sql + " ADD Com02 varchar(300) DEFAULT NULL";
+					break;
+				case "Com03":
+					sql = sql + " ADD Com03 varchar(300) DEFAULT NULL";
+					break;
+				case "Com04":
+					sql = sql + " ADD Com04 varchar(300) DEFAULT NULL";
+					break;
+				case "Com05":
+					sql = sql + " ADD Com05 varchar(300) DEFAULT NULL";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		return sql;
+	}
+
+
+	private static String KT0013_SEIKYUCreateSql() {
+		//運賃請求データを作るNYANKO
+		String sql = ""
+				+"CREATE TABLE `KT0013_SEIKYU` ("
+				+"  `cl_cd` varchar(20) NOT NULL,"
+				+"  `InvoiceWHCD` varchar(20) NOT NULL,"
+				+"  `SeikyuNo` int(11) NOT NULL,"
+				+"  `OkuriNo` int(11) NOT NULL,"
+				+"  `SeikyuDate` datetime NOT NULL,"
+				+"  `ShimeDate` datetime NOT NULL,"
+				+"  `TaxFg` int(11) DEFAULT '0',"
+				+"  `TaxRate` int(11) DEFAULT '0',"
+				+"  `DeliFee` int(11) DEFAULT '0',"
+				+"  `AddDeliFee01` int(11) DEFAULT '0',"
+				+"  `AddDeliFee02` int(11) DEFAULT '0',"
+				+"  `AddDeliFee03` int(11) DEFAULT '0',"
+				+"  `HaighWayFee01` int(11) DEFAULT '0',"
+				+"  `HaighWayFee02` int(11) DEFAULT '0',"
+				+"  `ConsumptionTax` int(11) DEFAULT '0',"
+				+"  `WithOutTaxTotal` int(11) DEFAULT '0',"
+				+"  `TotalFee` int(11) DEFAULT '0',"
+				+"  `Com01` varchar(300) DEFAULT NULL,"
+				+"  `Com02` varchar(300) DEFAULT NULL,"
+				+"  `Com03` varchar(300) DEFAULT NULL,"
+				+"  `Com04` varchar(300) DEFAULT NULL,"
+				+"  `Com05` varchar(300) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  `PrtFg` int(11) DEFAULT '0',"
+				+"  `DataOutFg` int(11) DEFAULT '0',"
+				+"  PRIMARY KEY (`cl_cd`,`InvoiceWHCD`,`SeikyuNo`,`OkuriNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='送り状単位で請求明細データを生成する';";
+		return sql;
+	}
+
+	private static String KT0013_SEIKYUAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KT0013_SEIKYU";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "cl_cd":
+					sql = sql + " ADD cl_cd varchar(20) NOT NULL";
+					break;
+				case "InvoiceWHCD":
+					sql = sql + " ADD InvoiceWHCD varchar(20) NOT NULL";
+					break;
+				case "SeikyuNo":
+					sql = sql + " ADD SeikyuNo int(11) NOT NULL";
+					break;
+				case "OkuriNo":
+					sql = sql + " ADD OkuriNo int(11) NOT NULL";
+					break;
+				case "SeikyuDate":
+					sql = sql + " ADD SeikyuDate datetime NOT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) DEFAULT '0'";
+					break;
+				case "DeliFee":
+					sql = sql + " ADD DeliFee int(11) DEFAULT '0'";
+					break;
+				case "AddDeliFee01":
+					sql = sql + " ADD AddDeliFee01 int(11) DEFAULT '0'";
+					break;
+				case "AddDeliFee02":
+					sql = sql + " ADD AddDeliFee02 int(11) DEFAULT '0'";
+					break;
+				case "AddDeliFee03":
+					sql = sql + " ADD AddDeliFee03 int(11) DEFAULT '0'";
+					break;
+				case "HaighWayFee01":
+					sql = sql + " ADD HaighWayFee01 int(11) DEFAULT '0'";
+					break;
+				case "HaighWayFee02":
+					sql = sql + " ADD HaighWayFee02 int(11) DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) DEFAULT '0'";
+					break;
+				case "TotalFee":
+					sql = sql + " ADD TotalFee int(11) DEFAULT '0'";
+					break;
+				case "Com01":
+					sql = sql + " ADD Com01 varchar(300) DEFAULT NULL";
+					break;
+				case "Com02":
+					sql = sql + " ADD Com02 varchar(300) DEFAULT NULL";
+					break;
+				case "Com03":
+					sql = sql + " ADD Com03 varchar(300) DEFAULT NULL";
+					break;
+				case "Com04":
+					sql = sql + " ADD Com04 varchar(300) DEFAULT NULL";
+					break;
+				case "Com05":
+					sql = sql + " ADD Com05 varchar(300) DEFAULT NULL";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "PrtFg":
+					sql = sql + " ADD PrtFg int(11) DEFAULT '0'";
+					break;
+				case "DataOutFg":
+					sql = sql + " ADD DataOutFg int(11) DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		return sql;
+	}
+
+
+	private static String KT0023_SHIHARAICreateSql() {
+		//運賃支払データを作るNYANKO
+		String sql = ""
+				+"CREATE TABLE `KT0023_SHIHARAI` ("
+				+"  `DeliWHCD` varchar(20) NOT NULL,"
+				+"  `DeliCompCd` varchar(20) NOT NULL,"
+				+"  `ShiharaiNo` int(11) NOT NULL,"
+				+"  `HaishaNo` int(11) NOT NULL,"
+				+"  `ShiharaiDate` datetime NOT NULL,"
+				+"  `ShimeDate` datetime NOT NULL,"
+				+"  `TaxFg` int(11) DEFAULT '0',"
+				+"  `TaxRate` int(11) DEFAULT '0',"
+				+"  `DeliPay` int(11) DEFAULT '0',"
+				+"  `AddDeliPay01` int(11) DEFAULT '0',"
+				+"  `AddDeliPay02` int(11) DEFAULT '0',"
+				+"  `AddDeliPay03` int(11) DEFAULT '0',"
+				+"  `HaighWayPay01` int(11) DEFAULT '0',"
+				+"  `HaighWayPay02` int(11) DEFAULT '0',"
+				+"  `ConsumptionTax` int(11) DEFAULT '0',"
+				+"  `WithOutTaxTotal` int(11) DEFAULT '0',"
+				+"  `TotalPay` int(11) DEFAULT '0',"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`DeliWHCD`,`DeliCompCd`,`ShiharaiNo`,`HaishaNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配車単位(KT0020_HAISHA_HD)で支払データを生成する';";
+		return sql;
+	}
+
+	private static String KT0023_SHIHARAIAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KT0023_SHIHARAI";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "DeliWHCD":
+					sql = sql + " ADD DeliWHCD varchar(20) NOT NULL";
+					break;
+				case "DeliCompCd":
+					sql = sql + " ADD DeliCompCd varchar(20) NOT NULL";
+					break;
+				case "ShiharaiNo":
+					sql = sql + " ADD ShiharaiNo int(11) NOT NULL";
+					break;
+				case "HaishaNo":
+					sql = sql + " ADD HaishaNo int(11) NOT NULL";
+					break;
+				case "ShiharaiDate":
+					sql = sql + " ADD ShiharaiDate datetime NOT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) DEFAULT '0'";
+					break;
+				case "DeliPay":
+					sql = sql + " ADD DeliPay int(11) DEFAULT '0'";
+					break;
+				case "AddDeliPay01":
+					sql = sql + " ADD AddDeliPay01 int(11) DEFAULT '0'";
+					break;
+				case "AddDeliPay02":
+					sql = sql + " ADD AddDeliPay02 int(11) DEFAULT '0'";
+					break;
+				case "AddDeliPay03":
+					sql = sql + " ADD AddDeliPay03 int(11) DEFAULT '0'";
+					break;
+				case "HaighWayPay01":
+					sql = sql + " ADD HaighWayPay01 int(11) DEFAULT '0'";
+					break;
+				case "HaighWayPay02":
+					sql = sql + " ADD HaighWayPay02 int(11) DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) DEFAULT '0'";
+					break;
+				case "TotalPay":
+					sql = sql + " ADD TotalPay int(11) DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		return sql;
+	}
+
+	
+	private static String KT0040_PrintControlCreateSql(){
+		//印刷制御を作るNYANKO
+		String sql = ""
+				+"CREATE TABLE `KT0040_PrintControl` ("
+				+"  `PrintCd` varchar(50) NOT NULL COMMENT '印刷帳票CD',"
+				+"  `OkuriNo` int(11) NOT NULL DEFAULT '0' COMMENT '送り状番号等',"
+				+"  `Key01` int(11) NOT NULL DEFAULT '0' COMMENT 'サブキー01',"
+				+"  `Key02` int(11) NOT NULL DEFAULT '0' COMMENT 'サブキー02',"
+				+"  `Key03` int(11) NOT NULL DEFAULT '0' COMMENT 'サブキー03',"
+				+"  `Key04` int(11) NOT NULL DEFAULT '0' COMMENT 'サブキー04',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  PRIMARY KEY (`PrintCd`,`OkuriNo`,`Key01`,`Key02`,`Key03`,`Key04`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='印刷制御';"
+				;
+		return sql;
+	}
+
+	private static String KT0040_PrintControlAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KT0040_PrintControl";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "PrintCd":
+					sql = sql + " ADD PrintCd varchar(50) NOT NULL";
+					break;
+				case "OkuriNo":
+					sql = sql + " ADD OkuriNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "Key01":
+					sql = sql + " ADD Key01 int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "Key02":
+					sql = sql + " ADD Key02 int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "Key03":
+					sql = sql + " ADD Key03 int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "Key04":
+					sql = sql + " ADD Key04 int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		return sql;
+	}
+	
+
+	private static String KT020_HAISHA_HDCreateSql() {
+		//配車ヘッダを作るNYANKO
+		String sql = ""
+				+"CREATE TABLE `KT020_HAISHA_HD` ("
+				+"  `DeliWHCD` varchar(20) NOT NULL,"
+				+"  `HaishaNo` int(11) NOT NULL,"
+				+"  `PlanDate` datetime DEFAULT NULL,"
+				+"  `ShipDate` datetime DEFAULT NULL,"
+				+"  `SPPlanDate` datetime DEFAULT NULL,"
+				+"  `SPDate` datetime DEFAULT NULL,"
+				+"  `TotalWeight` float DEFAULT '0',"
+				+"  `TotalSize` float DEFAULT '0',"
+				+"  `TotalQty` int(11) DEFAULT '0',"
+				+"  `DeliveryTypeCd` varchar(20) NOT NULL,"
+				+"  `DeliTypeName` varchar(50) DEFAULT NULL,"
+				+"  `DeliveryTypeCd02` varchar(20) NOT NULL,"
+				+"  `DeliTypeName02` varchar(50) DEFAULT NULL,"
+				+"  `DeliveryTypeCd03` varchar(20) NOT NULL,"
+				+"  `DeliTypeName03` varchar(50) DEFAULT NULL,"
+				+"  `DeliveryTypeCd04` varchar(20) NOT NULL,"
+				+"  `DeliTypeName04` varchar(50) DEFAULT NULL,"
+				+"  `DeliveryTypeCd05` varchar(20) NOT NULL,"
+				+"  `DeliTypeName05` varchar(50) DEFAULT NULL,"
+				+"  `DeliCompCd` varchar(20) DEFAULT NULL,"
+				+"  `DeliCompName` varchar(100) DEFAULT NULL,"
+				+"  `CarCd` varchar(20) DEFAULT NULL,"
+				+"  `CarName` varchar(100) DEFAULT NULL,"
+				+"  `DriverCd` varchar(20) DEFAULT NULL,"
+				+"  `DriverName` varchar(100) DEFAULT NULL,"
+				+"  `Status` int(11) DEFAULT '0',"
+				+"  `TaxFg` int(11) DEFAULT '0',"
+				+"  `TaxRate` int(11) DEFAULT '0',"
+				+"  `DeliPay` int(11) DEFAULT '0',"
+				+"  `AddDeliPay01` int(11) DEFAULT '0',"
+				+"  `AddDeliPay02` int(11) DEFAULT '0',"
+				+"  `AddDeliPay03` int(11) DEFAULT '0',"
+				+"  `HaighWayPay01` int(11) DEFAULT '0',"
+				+"  `HaighWayPay02` int(11) DEFAULT '0',"
+				+"  `ConsumptionTax` int(11) DEFAULT '0',"
+				+"  `WithOutTaxTotal` int(11) DEFAULT '0',"
+				+"  `TotalPay` int(11) DEFAULT '0',"
+				+"  `PayFixFG` int(11) DEFAULT '0',"
+				+"  `PayFixDate` datetime DEFAULT NULL,"
+				+"  `InvoiceStatus` int(11) DEFAULT '0',"
+				+"  `ChildrenFG` int(11) DEFAULT '0',"
+				+"  `ParentHaishaNo` int(11) DEFAULT '0',"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  `UsePayBasePtCd` varchar(20) DEFAULT NULL,"
+				+"  PRIMARY KEY (`DeliWHCD`,`HaishaNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配車ヘッダ';";
+		return sql;
+	}
+
+	private static String KT020_HAISHA_HDAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KT020_HAISHA_HD";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "DeliWHCD":
+					sql = sql + " ADD DeliWHCD varchar(20) NOT NULL";
+					break;
+				case "HaishaNo":
+					sql = sql + " ADD HaishaNo int(11) NOT NULL";
+					break;
+				case "PlanDate":
+					sql = sql + " ADD PlanDate datetime DEFAULT NULL";
+					break;
+				case "ShipDate":
+					sql = sql + " ADD ShipDate datetime DEFAULT NULL";
+					break;
+				case "SPPlanDate":
+					sql = sql + " ADD SPPlanDate datetime DEFAULT NULL";
+					break;
+				case "SPDate":
+					sql = sql + " ADD SPDate datetime DEFAULT NULL";
+					break;
+				case "TotalWeight":
+					sql = sql + " ADD TotalWeight float DEFAULT '0'";
+					break;
+				case "TotalSize":
+					sql = sql + " ADD TotalSize float DEFAULT '0'";
+					break;
+				case "TotalQty":
+					sql = sql + " ADD TotalQty int(11) DEFAULT '0'";
+					break;
+				case "DeliveryTypeCd":
+					sql = sql + " ADD DeliveryTypeCd varchar(20) NOT NULL";
+					break;
+				case "DeliTypeName":
+					sql = sql + " ADD DeliTypeName varchar(50) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd02":
+					sql = sql + " ADD DeliveryTypeCd02 varchar(20) NOT NULL";
+					break;
+				case "DeliTypeName02":
+					sql = sql + " ADD DeliTypeName02 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd03":
+					sql = sql + " ADD DeliveryTypeCd03 varchar(20) NOT NULL";
+					break;
+				case "DeliTypeName03":
+					sql = sql + " ADD DeliTypeName03 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd04":
+					sql = sql + " ADD DeliveryTypeCd04 varchar(20) NOT NULL";
+					break;
+				case "DeliTypeName04":
+					sql = sql + " ADD DeliTypeName04 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd05":
+					sql = sql + " ADD DeliveryTypeCd05 varchar(20) NOT NULL";
+					break;
+				case "DeliTypeName05":
+					sql = sql + " ADD DeliTypeName05 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliCompCd":
+					sql = sql + " ADD DeliCompCd varchar(20) DEFAULT NULL";
+					break;
+				case "DeliCompName":
+					sql = sql + " ADD DeliCompName varchar(100) DEFAULT NULL";
+					break;
+				case "CarCd":
+					sql = sql + " ADD CarCd varchar(20) DEFAULT NULL";
+					break;
+				case "CarName":
+					sql = sql + " ADD CarName varchar(100) DEFAULT NULL";
+					break;
+				case "DriverCd":
+					sql = sql + " ADD DriverCd varchar(20) DEFAULT NULL";
+					break;
+				case "DriverName":
+					sql = sql + " ADD DriverName varchar(100) DEFAULT NULL";
+					break;
+				case "Status":
+					sql = sql + " ADD Status int(11) DEFAULT '0'";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) DEFAULT '0'";
+					break;
+				case "DeliPay":
+					sql = sql + " ADD DeliPay int(11) DEFAULT '0'";
+					break;
+				case "AddDeliPay01":
+					sql = sql + " ADD AddDeliPay01 int(11) DEFAULT '0'";
+					break;
+				case "AddDeliPay02":
+					sql = sql + " ADD AddDeliPay02 int(11) DEFAULT '0'";
+					break;
+				case "AddDeliPay03":
+					sql = sql + " ADD AddDeliPay03 int(11) DEFAULT '0'";
+					break;
+				case "HaighWayPay01":
+					sql = sql + " ADD HaighWayPay01 int(11) DEFAULT '0'";
+					break;
+				case "HaighWayPay02":
+					sql = sql + " ADD HaighWayPay02 int(11) DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) DEFAULT '0'";
+					break;
+				case "TotalPay":
+					sql = sql + " ADD TotalPay int(11) DEFAULT '0'";
+					break;
+				case "PayFixFG":
+					sql = sql + " ADD PayFixFG int(11) DEFAULT '0'";
+					break;
+				case "PayFixDate":
+					sql = sql + " ADD PayFixDate datetime DEFAULT NULL";
+					break;
+				case "InvoiceStatus":
+					sql = sql + " ADD InvoiceStatus int(11) DEFAULT '0'";
+					break;
+				case "ChildrenFG":
+					sql = sql + " ADD ChildrenFG int(11) DEFAULT '0'";
+					break;
+				case "ParentHaishaNo":
+					sql = sql + " ADD ParentHaishaNo int(11) DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "UsePayBasePtCd":
+					sql = sql + " ADD UsePayBasePtCd varchar(20) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		return sql;
+	}
+
+
+	private static String KT021_HAISHA_MSCreateSql() {
+		//配車明細を作るNYANKO
+		String sql = ""
+				+"CREATE TABLE `KT021_HAISHA_MS` ("
+				+"  `DeliWHCD` varchar(20) NOT NULL,"
+				+"  `HaishaNo` int(11) NOT NULL,"
+				+"  `BinNo` int(11) NOT NULL DEFAULT '1',"
+				+"  `MsNo` int(11) NOT NULL,"
+				+"  `InvoiceWHCD` varchar(20) NOT NULL,"
+				+"  `cl_cd` varchar(20) NOT NULL,"
+				+"  `OkuriNo` int(11) NOT NULL DEFAULT '0',"
+				+"  `Status` int(11) DEFAULT '0',"
+				+"  `FG01` int(11) DEFAULT '0',"
+				+"  `FG02` int(11) DEFAULT '0',"
+				+"  `FG03` int(11) DEFAULT '0',"
+				+"  `FG04` int(11) DEFAULT '0',"
+				+"  `FG05` int(11) DEFAULT '0',"
+				+"  `Com01` varchar(300) DEFAULT NULL,"
+				+"  `Com02` varchar(300) DEFAULT NULL,"
+				+"  `Com03` varchar(300) DEFAULT NULL,"
+				+"  `Com04` varchar(300) DEFAULT NULL,"
+				+"  `Com05` varchar(300) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`DeliWHCD`,`HaishaNo`,`BinNo`,`MsNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配車明細';";
+		return sql;
+	}
+
+
+	private static String KT021_HAISHA_MSAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KT021_HAISHA_MS";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "DeliWHCD":
+					sql = sql + " ADD DeliWHCD varchar(20) NOT NULL";
+					break;
+				case "HaishaNo":
+					sql = sql + " ADD HaishaNo int(11) NOT NULL";
+					break;
+				case "BinNo":
+					sql = sql + " ADD BinNo int(11) NOT NULL DEFAULT '1'";
+					break;
+				case "MsNo":
+					sql = sql + " ADD MsNo int(11) NOT NULL";
+					break;
+				case "InvoiceWHCD":
+					sql = sql + " ADD InvoiceWHCD varchar(20) NOT NULL";
+					break;
+				case "cl_cd":
+					sql = sql + " ADD cl_cd varchar(20) NOT NULL";
+					break;
+				case "OkuriNo":
+					sql = sql + " ADD OkuriNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "Status":
+					sql = sql + " ADD Status int(11) DEFAULT '0'";
+					break;
+				case "FG01":
+					sql = sql + " ADD FG01 int(11) DEFAULT '0'";
+					break;
+				case "FG02":
+					sql = sql + " ADD FG02 int(11) DEFAULT '0'";
+					break;
+				case "FG03":
+					sql = sql + " ADD FG03 int(11) DEFAULT '0'";
+					break;
+				case "FG04":
+					sql = sql + " ADD FG04 int(11) DEFAULT '0'";
+					break;
+				case "FG05":
+					sql = sql + " ADD FG05 int(11) DEFAULT '0'";
+					break;
+				case "Com01":
+					sql = sql + " ADD Com01 varchar(300) DEFAULT NULL";
+					break;
+				case "Com02":
+					sql = sql + " ADD Com02 varchar(300) DEFAULT NULL";
+					break;
+				case "Com03":
+					sql = sql + " ADD Com03 varchar(300) DEFAULT NULL";
+					break;
+				case "Com04":
+					sql = sql + " ADD Com04 varchar(300) DEFAULT NULL";
+					break;
+				case "Com05":
+					sql = sql + " ADD Com05 varchar(300) DEFAULT NULL";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		return sql;
+	}
+
+
 
 	
 	
