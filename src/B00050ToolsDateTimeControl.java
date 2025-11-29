@@ -128,7 +128,7 @@ public class B00050ToolsDateTimeControl{
 		String[] dtm_String = new String[f0.length];
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy'/'MM'/'dd' 'HH':'mm':'ss");
 		for(int i=0;i<f0.length;i++){
-			dtm_String[i] = sdf2.format(f0).substring(11, 19);
+			dtm_String[i] = sdf2.format(f0[i]).substring(11, 19);
 		}
 		return dtm_String;
 	}

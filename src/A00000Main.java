@@ -90,7 +90,7 @@ public class A00000Main{
   		//ログイン画面起動
 		final JFrame login_fm = new JFrame();
 		//ウィンドウタイトルの設定
-		login_fm.setTitle("WANKログイン");
+		login_fm.setTitle("Corgi00ログイン");
 		//表示位置サイズの設定（表示横位置,表示縦位置,横幅,縦幅）
 		login_fm.setBounds(200*A00000Main.Mul/A00000Main.Div, 200*A00000Main.Mul/A00000Main.Div, 400*A00000Main.Mul/A00000Main.Div, 300*A00000Main.Mul/A00000Main.Div);
 		//レイアウト無効
