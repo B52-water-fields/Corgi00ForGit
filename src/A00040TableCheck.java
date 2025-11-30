@@ -6094,7 +6094,6 @@ public class A00040TableCheck{
 		
 		ColumnList = ColumnList("WANKO","WM0000PARAMETER");
 		NeedColmn = new String[29];
-
 		NeedColmn[ 0] = "ClWh";
 		NeedColmn[ 1] = "ClCd";
 		NeedColmn[ 2] = "ParaCd";
@@ -6145,7 +6144,6 @@ public class A00040TableCheck{
 		
 		ColumnList = ColumnList("WANKO","WM0010LOCATIONMST");
 		NeedColmn = new String[8];
-
 		NeedColmn[ 0] = "ClCd";
 		NeedColmn[ 1] = "WhCd";
 		NeedColmn[ 2] = "Loc";
@@ -6172,8 +6170,1267 @@ public class A00040TableCheck{
 			String sql = WM0010LOCATIONMSTAltherTableSql(NoHitColumn);
 			KickSql("WANKO",sql);
 		}
-
+/*
+		ColumnList = ColumnList("WANKO","WM0010Supplier");
+		NeedColmn = new String[27];
+		NeedColmn[ 0] = "ClWh` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "ClCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "SPCd` varchar(20) NOT NULL,"
+		NeedColmn[ 3] = "SPName01` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 4] = "SPName02` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 5] = "SPName03` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 6] = "SPPost` varchar(10) DEFAULT NULL,"
+		NeedColmn[ 7] = "SPAdd01` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 8] = "SPAdd02` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 9] = "SPAdd03` varchar(100) DEFAULT NULL,"
+		NeedColmn[10] = "SPTel` varchar(20) DEFAULT NULL,"
+		NeedColmn[11] = "SPFax` varchar(20) DEFAULT NULL,"
+		NeedColmn[12] = "SPMail` varchar(200) DEFAULT NULL,"
+		NeedColmn[13] = "Com01` varchar(100) DEFAULT NULL,"
+		NeedColmn[14] = "Com02` varchar(100) DEFAULT NULL,"
+		NeedColmn[15] = "Com03` varchar(100) DEFAULT NULL,"
+		NeedColmn[16] = "PTMSCDBMN` varchar(12) DEFAULT NULL,"
+		NeedColmn[17] = "PTMSCDNINUSHI` varchar(12) DEFAULT NULL,"
+		NeedColmn[18] = "PaySite` int(11) DEFAULT '1',"
+		NeedColmn[19] = "PayDate` int(11) DEFAULT '99',"
+		NeedColmn[20] = "ShimeDate` int(11) DEFAULT '99',"
+		NeedColmn[21] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[22] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[23] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[24] = "UpdateUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[25] = "DECD` varchar(20) DEFAULT NULL,"
+		NeedColmn[26] = "DepartmentCd` varchar(20) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0010SupplierAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+	
+		ColumnList = ColumnList("WANKO","WM0015_BerthMst");
+		NeedColmn = new String[7];
+		NeedColmn[ 0] = "WhCd` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "BerthCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "BerthName` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 3] = "ENTRY_DATE` datetime DEFAULT NULL,"
+		NeedColmn[ 4] = "UPDATE_DATE` datetime DEFAULT NULL,"
+		NeedColmn[ 5] = "ENTRY_USER` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 6] = "UPDATE_USER` varchar(50) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0015_BerthMstAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
 		
+		ColumnList = ColumnList("WANKO","WM0016_PitGlpMST");
+		NeedColmn = new String[];
+		NeedColmn[ 0] = "WhCd` varchar(20) NOT NULL COMMENT '出発倉庫コード',"
+		NeedColmn[ 1] = "PitGlpCd` varchar(20) NOT NULL COMMENT 'ピットグループコード',"
+		NeedColmn[ 2] = "PitGlpName` varchar(100) DEFAULT NULL COMMENT 'ピットグループ名',"
+		NeedColmn[ 3] = "EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+		NeedColmn[ 4] = "UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+		NeedColmn[ 5] = "EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+		NeedColmn[ 6] = "UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0016_PitGlpMSTAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WM0017_PitMST");
+		NeedColmn = new String[27];
+		NeedColmn[ 0] = "WhCd` varchar(20) NOT NULL COMMENT '出発倉庫コード',"
+		NeedColmn[ 1] = "PitGlpCd` varchar(20) NOT NULL COMMENT 'ピットグループコード',"
+		NeedColmn[ 2] = "PitCd` varchar(20) NOT NULL COMMENT 'ピットコード',"
+		NeedColmn[ 3] = "PitName` varchar(100) DEFAULT NULL COMMENT 'ピット名',"
+		NeedColmn[ 4] = "Status` int(11) NOT NULL DEFAULT '0' COMMENT 'ピット占有状態',"
+		NeedColmn[ 5] = "TakeCoursePlanDate` datetime DEFAULT NULL COMMENT '占有中コース出荷予定日',"
+		NeedColmn[ 6] = "TakeCourseGpCd` varchar(20) DEFAULT NULL COMMENT '占有中コースグループコード',"
+		NeedColmn[ 7] = "TakeCourseCd` varchar(20) DEFAULT NULL COMMENT '占有中コースCd',"
+		NeedColmn[ 8] = "TakeCourseEda` int(11) NOT NULL DEFAULT '0' COMMENT '占有中コース枝番',"
+		NeedColmn[ 9] = "TakeCourseDeliveryCd` varchar(20) DEFAULT NULL COMMENT '占有中コース指定届先CD',"
+		NeedColmn[10] = "TakeCourseDptCd` varchar(20) DEFAULT NULL COMMENT '占有中コース指定届先部署CD',"
+		NeedColmn[11] = "TakeCourse01PlanDate` datetime DEFAULT NULL COMMENT '待機コース01出荷予定日',"
+		NeedColmn[12] = "TakeCourse01GpCd` varchar(20) DEFAULT NULL COMMENT '待機コース01グループコード',"
+		NeedColmn[13] = "TakeCourse01Cd` varchar(20) DEFAULT NULL COMMENT '待機コース01Cd',"
+		NeedColmn[14] = "TakeCourse01Eda` int(11) DEFAULT '0' COMMENT '待機コース01枝番',"
+		NeedColmn[15] = "TakeCourse01DeliveryCd` varchar(20) DEFAULT NULL COMMENT '待機コース01指定届先CD',"
+		NeedColmn[16] = "TakeCourse01DptCd` varchar(20) DEFAULT NULL COMMENT '待機コース01指定届先部署CD',"
+		NeedColmn[17] = "TakeCourse02PlanDate` datetime DEFAULT NULL COMMENT '待機コース02出荷予定日',"
+		NeedColmn[18] = "TakeCourse02GpCd` varchar(20) DEFAULT NULL COMMENT '待機コース02グループコード',"
+		NeedColmn[19] = "TakeCourse02Cd` varchar(20) DEFAULT NULL COMMENT '待機コース02Cd',"
+		NeedColmn[20] = "TakeCourse02Eda` int(11) DEFAULT '0' COMMENT '待機コース02枝番',"
+		NeedColmn[21] = "TakeCourse02DeliveryCd` varchar(20) DEFAULT NULL COMMENT '待機コース02指定届先CD',"
+		NeedColmn[22] = "TakeCourse02DptCd` varchar(20) DEFAULT NULL COMMENT '待機コース02指定届先部署CD',"
+		NeedColmn[23] = "EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+		NeedColmn[24] = "UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+		NeedColmn[25] = "EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+		NeedColmn[26] = "UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0017_PitMSTAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WM0020AdjustReason");
+		NeedColmn = new String[8];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "AdjustReasonCd` varchar(20) NOT NULL,"
+		NeedColmn[ 3] = "AdjustReasonName` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 4] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[ 5] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[ 6] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 7] = "UpdateUser` varchar(50) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0020AdjustReasonAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		ColumnList = ColumnList("WANKO","WM0031WhFeeBaseMstIn");
+		NeedColmn = new String[21];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+		NeedColmn[ 2] = "ArrivalFeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '入荷料金コード',"
+		NeedColmn[ 3] = "ArrivalFeeName` varchar(100) DEFAULT NULL COMMENT '入荷料金名',"
+		NeedColmn[ 4] = "DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+		NeedColmn[ 5] = "DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+		NeedColmn[ 6] = "DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+		NeedColmn[ 7] = "DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+		NeedColmn[ 8] = "DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+		NeedColmn[ 9] = "TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+		NeedColmn[10] = "CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+		NeedColmn[11] = "ShimeDate` int(11) NOT NULL DEFAULT '99' COMMENT '締め日',"
+		NeedColmn[12] = "ArrivalBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷基本料金',"
+		NeedColmn[13] = "ArrivalSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷伝票基本料金',"
+		NeedColmn[14] = "ArrivalUnitFee` float NOT NULL DEFAULT '0' COMMENT '入荷料単価',"
+		NeedColmn[15] = "FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+		NeedColmn[16] = "SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+		NeedColmn[17] = "EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+		NeedColmn[18] = "UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+		NeedColmn[19] = "EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+		NeedColmn[20] = "UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0031WhFeeBaseMstInAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WM0032WhFeeBaseMstOut");
+		NeedColmn = new String[21];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+		NeedColmn[ 2] = "ShipFeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '出荷料金コード',"
+		NeedColmn[ 3] = "ShipFeeName` varchar(100) DEFAULT NULL COMMENT '出荷料金名',"
+		NeedColmn[ 4] = "DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+		NeedColmn[ 5] = "DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+		NeedColmn[ 6] = "DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+		NeedColmn[ 7] = "DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+		NeedColmn[ 8] = "DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+		NeedColmn[ 9] = "TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+		NeedColmn[10] = "CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+		NeedColmn[11] = "ShimeDate` int(11) NOT NULL DEFAULT '99' COMMENT '締め日',"
+		NeedColmn[12] = "ShipBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '出荷基本料金',"
+		NeedColmn[13] = "ShipSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '出荷伝票基本料金',"
+		NeedColmn[14] = "ShipUnitFee` float NOT NULL DEFAULT '0' COMMENT '出荷料単価',"
+		NeedColmn[15] = "FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+		NeedColmn[16] = "SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+		NeedColmn[17] = "EntryDate` timestamp NULL DEFAULT NULL COMMENT '登録日',"
+		NeedColmn[18] = "UpdateDate` timestamp NULL DEFAULT NULL COMMENT '更新日',"
+		NeedColmn[19] = "EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+		NeedColmn[20] = "UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0032WhFeeBaseMstOutAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WM0033WhFeeBaseMstStock");
+		NeedColmn = new String[21];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+		NeedColmn[ 2] = "StockFeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '保管料金コード',"
+		NeedColmn[ 3] = "StockFeeName` varchar(100) DEFAULT NULL COMMENT '保管料金名',"
+		NeedColmn[ 4] = "DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+		NeedColmn[ 5] = "DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+		NeedColmn[ 6] = "DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+		NeedColmn[ 7] = "DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+		NeedColmn[ 8] = "DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+		NeedColmn[ 9] = "TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+		NeedColmn[10] = "CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+		NeedColmn[11] = "CuttingDate` varchar(100) DEFAULT NULL COMMENT '期締め設定',"
+		NeedColmn[12] = "ShimeDate` int(11) NOT NULL DEFAULT '99' COMMENT '締め日',"
+		NeedColmn[13] = "StockBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '保管基本料金',"
+		NeedColmn[14] = "StockUnitFee` float NOT NULL DEFAULT '0' COMMENT '保管料単価',"
+		NeedColmn[15] = "FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+		NeedColmn[16] = "SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+		NeedColmn[17] = "EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+		NeedColmn[18] = "UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+		NeedColmn[19] = "EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+		NeedColmn[20] = "UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0033WhFeeBaseMstStockAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WM0034WhFeeBaseMstAdjust");
+		NeedColmn = new String[21];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+		NeedColmn[ 2] = "AdjustFeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '調整料金コード',"
+		NeedColmn[ 3] = "AdjustFeeName` varchar(100) DEFAULT NULL COMMENT '調整料金名',"
+		NeedColmn[ 4] = "DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+		NeedColmn[ 5] = "DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+		NeedColmn[ 6] = "DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+		NeedColmn[ 7] = "DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+		NeedColmn[ 8] = "DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+		NeedColmn[ 9] = "TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+		NeedColmn[10] = "CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+		NeedColmn[11] = "AdjustReasonCd` varchar(20) DEFAULT NULL COMMENT '調整理由CD',"
+		NeedColmn[12] = "ShimeDate` int(11) NOT NULL DEFAULT '99' COMMENT '締め日',"
+		NeedColmn[13] = "AdjustBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '調整基本料金',"
+		NeedColmn[14] = "AdjustUnitFee` float NOT NULL DEFAULT '0' COMMENT '調整料単価',"
+		NeedColmn[15] = "FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+		NeedColmn[16] = "SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+		NeedColmn[17] = "EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+		NeedColmn[18] = "UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+		NeedColmn[19] = "EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+		NeedColmn[20] = "UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0034WhFeeBaseMstAdjustAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW0010ArrivalPlanHd");
+		NeedColmn = new String[23];
+		NeedColmn[ 0] = "ClWh` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "ClCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "ArrNo` varchar(50) NOT NULL,"
+		NeedColmn[ 3] = "ClArrNo` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 4] = "PlanDate` datetime DEFAULT NULL,"
+		NeedColmn[ 5] = "ActualDate` datetime DEFAULT NULL,"
+		NeedColmn[ 6] = "SpCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 7] = "SpName01` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 8] = "SpName02` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 9] = "SpName03` varchar(100) DEFAULT NULL,"
+		NeedColmn[10] = "SpPost` varchar(20) DEFAULT NULL,"
+		NeedColmn[11] = "SpAdd01` varchar(100) DEFAULT NULL,"
+		NeedColmn[12] = "SpAdd02` varchar(100) DEFAULT NULL,"
+		NeedColmn[13] = "SpAdd03` varchar(100) DEFAULT NULL,"
+		NeedColmn[14] = "SpTel` varchar(20) DEFAULT NULL,"
+		NeedColmn[15] = "ArCom01` varchar(100) DEFAULT NULL,"
+		NeedColmn[16] = "ArCom02` varchar(100) DEFAULT NULL,"
+		NeedColmn[17] = "ArCom03` varchar(100) DEFAULT NULL,"
+		NeedColmn[18] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[19] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[20] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[21] = "UpdateUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[22] = "FixFg` int(11) DEFAULT '0',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW0010ArrivalPlanHdAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW0011ArrivalPlanMs");
+		NeedColmn = new String[20];
+		NeedColmn[ 0] = "ClWh` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "ClCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "ArrNo` varchar(20) NOT NULL,"
+		NeedColmn[ 3] = "MsNo` int(11) NOT NULL DEFAULT '1',"
+		NeedColmn[ 4] = "ItemCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 5] = "ClItemCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 6] = "JanCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 7] = "ItemMdNo` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 8] = "ItemName` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 9] = "lot` varchar(50) DEFAULT NULL,"
+		NeedColmn[10] = "ExpDate` datetime DEFAULT NULL,"
+		NeedColmn[11] = "PlanQty` int(11) DEFAULT '0',"
+		NeedColmn[12] = "ActualQty` int(11) DEFAULT '0',"
+		NeedColmn[13] = "ActualDate` datetime DEFAULT NULL,"
+		NeedColmn[14] = "Com01` varchar(200) DEFAULT NULL,"
+		NeedColmn[15] = "Com02` varchar(200) DEFAULT NULL,"
+		NeedColmn[16] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[17] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[18] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[19] = "UpdateUser` varchar(50) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW0011ArrivalPlanMsAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW0012ArrivalHd");
+		NeedColmn = new String[23];
+		NeedColmn[ 0] = "ClWh` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "ClCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "ArrNo` varchar(50) NOT NULL,"
+		NeedColmn[ 3] = "ArrCount` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[ 4] = "ClArrNo` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 5] = "PlanDate` datetime DEFAULT NULL,"
+		NeedColmn[ 6] = "ActualDate` datetime DEFAULT NULL,"
+		NeedColmn[ 7] = "SpCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 8] = "SpName01` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 9] = "SpName02` varchar(50) DEFAULT NULL,"
+		NeedColmn[10] = "SpName03` varchar(50) DEFAULT NULL,"
+		NeedColmn[11] = "SpPost` varchar(20) DEFAULT NULL,"
+		NeedColmn[12] = "SpAdd01` varchar(100) DEFAULT NULL,"
+		NeedColmn[13] = "SpAdd02` varchar(100) DEFAULT NULL,"
+		NeedColmn[14] = "SpAdd03` varchar(100) DEFAULT NULL,"
+		NeedColmn[15] = "SpTel` varchar(20) DEFAULT NULL,"
+		NeedColmn[16] = "ArCom01` varchar(100) DEFAULT NULL,"
+		NeedColmn[17] = "ArCom02` varchar(100) DEFAULT NULL,"
+		NeedColmn[18] = "ArCom03` varchar(100) DEFAULT NULL,"
+		NeedColmn[19] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[20] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[21] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[22] = "UpdateUser` varchar(50) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW0012ArrivalHdAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW0013ArrivaMs");
+		NeedColmn = new String[22];
+		NeedColmn[ 0] = "ClWh` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "ClCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "ArrNo` varchar(20) NOT NULL,"
+		NeedColmn[ 3] = "ArrCount` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[ 4] = "MsNo` int(11) NOT NULL DEFAULT '1',"
+		NeedColmn[ 5] = "MsSeq` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[ 6] = "ItemCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 7] = "ClItemCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 8] = "JanCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 9] = "ItemMdNo` varchar(20) DEFAULT NULL,"
+		NeedColmn[10] = "ItemName` varchar(100) DEFAULT NULL,"
+		NeedColmn[11] = "Lot` varchar(50) DEFAULT NULL,"
+		NeedColmn[12] = "ExpDate` datetime DEFAULT NULL,"
+		NeedColmn[13] = "PlanQty` int(11) DEFAULT '0',"
+		NeedColmn[14] = "ActualQty` int(11) DEFAULT '0',"
+		NeedColmn[15] = "ActualDate` datetime DEFAULT NULL,"
+		NeedColmn[16] = "Com01` varchar(200) DEFAULT NULL,"
+		NeedColmn[17] = "Com02` varchar(200) DEFAULT NULL,"
+		NeedColmn[18] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[19] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[20] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[21] = "UpdateUser` varchar(50) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW0013ArrivaMsAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW0015Stock");
+		NeedColmn = new String[18];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "Loc` varchar(15) NOT NULL,"
+		NeedColmn[ 3] = "ItemCd` varchar(20) NOT NULL,"
+		NeedColmn[ 4] = "Lot` varchar(20) NOT NULL,"
+		NeedColmn[ 5] = "Expdate` datetime NOT NULL,"
+		NeedColmn[ 6] = "ActualDate` datetime NOT NULL,"
+		NeedColmn[ 7] = "Qty` int(11) DEFAULT '0',"
+		NeedColmn[ 8] = "ShipPlanQty` int(11) DEFAULT '0',"
+		NeedColmn[ 9] = "PossibleQty` int(11) DEFAULT '0',"
+		NeedColmn[10] = "ItemName` varchar(100) DEFAULT NULL,"
+		NeedColmn[11] = "ClItemCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[12] = "JanCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[13] = "ItemMdNo` varchar(20) DEFAULT NULL,"
+		NeedColmn[14] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[15] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[16] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[17] = "UpdateUser` varchar(50) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW0015StockAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW0016StockAdjust");
+		NeedColmn = new String[24];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "AdjustNo` int(11) NOT NULL,"
+		NeedColmn[ 3] = "AdjustReasonCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 4] = "AdjustReasonName` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 5] = "Adjustdate` datetime DEFAULT NULL,"
+		NeedColmn[ 6] = "Loc` varchar(15) DEFAULT NULL,"
+		NeedColmn[ 7] = "ItemCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 8] = "ItemName` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 9] = "Lot` varchar(20) DEFAULT NULL,"
+		NeedColmn[10] = "ExpDate` datetime DEFAULT NULL,"
+		NeedColmn[11] = "ActualDate` datetime DEFAULT NULL,"
+		NeedColmn[12] = "BeforeQty` int(11) DEFAULT '0',"
+		NeedColmn[13] = "ShipPlanQty` int(11) DEFAULT '0',"
+		NeedColmn[14] = "PossibleQty` int(11) DEFAULT '0',"
+		NeedColmn[15] = "AdjustQty` int(11) DEFAULT '0',"
+		NeedColmn[16] = "AdjustCom01` varchar(100) DEFAULT NULL,"
+		NeedColmn[17] = "AdjustCom02` varchar(100) DEFAULT NULL,"
+		NeedColmn[18] = "AdjustCom03` varchar(100) DEFAULT NULL,"
+		NeedColmn[19] = "AfterQty` int(11) DEFAULT '0',"
+		NeedColmn[20] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[21] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[22] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[23] = "UpdateUser` varchar(50) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW0016StockAdjustAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW0020ShipPlovision");
+		NeedColmn = new String[34];
+		NeedColmn[ 0] = "cl_cd` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "InvoiceWHCD` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "OkuriNo` int(11) NOT NULL,"
+		NeedColmn[ 3] = "MsNo` int(11) NOT NULL,"
+		NeedColmn[ 4] = "Seq` int(11) NOT NULL,"
+		NeedColmn[ 5] = "OrderItemCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 6] = "OrderItemName01` varchar(100) DEFAULT NULL,"
+		NeedColmn[ 7] = "OrderLot` varchar(20) DEFAULT NULL,"
+		NeedColmn[ 8] = "OrderExpDate` datetime DEFAULT NULL,"
+		NeedColmn[ 9] = "OrderQty` int(11) DEFAULT '0',"
+		NeedColmn[10] = "ShipWhCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[11] = "ShipLoc` varchar(15) DEFAULT NULL,"
+		NeedColmn[12] = "ShipItemCd` varchar(20) DEFAULT NULL,"
+		NeedColmn[13] = "ShipLot` varchar(20) DEFAULT NULL,"
+		NeedColmn[14] = "ShipExpdate` datetime DEFAULT NULL,"
+		NeedColmn[15] = "ShipActualDate` datetime DEFAULT NULL,"
+		NeedColmn[16] = "ShipQty` int(11) DEFAULT '0',"
+		NeedColmn[17] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[18] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[19] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[20] = "UpdateUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[21] = "FixFg` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[22] = "PackingType` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[23] = "PackingQty` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[24] = "UnitName` varchar(20) DEFAULT NULL,"
+		NeedColmn[25] = "PackingUnitQty` int(11) DEFAULT '1',"
+		NeedColmn[26] = "BRShipQty` int(11) DEFAULT '0',"
+		NeedColmn[27] = "CTShipQty` int(11) DEFAULT '0',"
+		NeedColmn[28] = "CSShipQty` int(11) DEFAULT '0',"
+		NeedColmn[29] = "PLShipQty` int(11) DEFAULT '0',"
+		NeedColmn[30] = "BRUnitName` varchar(20) DEFAULT NULL,"
+		NeedColmn[31] = "CTUnitName` varchar(20) DEFAULT NULL,"
+		NeedColmn[32] = "CSUnitName` varchar(20) DEFAULT NULL,"
+		NeedColmn[33] = "PLUnitName` varchar(20) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW0020ShipPlovisionAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW0025BerthReservation");
+		NeedColmn = new String[10];
+		NeedColmn[ 0] = "WhCd` varchar(20) NOT NULL,"
+		NeedColmn[ 1] = "BerthCd` varchar(20) NOT NULL,"
+		NeedColmn[ 2] = "ReserveDate` datetime NOT NULL,"
+		NeedColmn[ 3] = "ReserveTimeStr` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[ 4] = "ReserveTimeEnd` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[ 5] = "HaishaNo` int(11) NOT NULL DEFAULT '0',"
+		NeedColmn[ 6] = "EntryDate` datetime DEFAULT NULL,"
+		NeedColmn[ 7] = "UpdateDate` datetime DEFAULT NULL,"
+		NeedColmn[ 8] = "EntryUser` varchar(50) DEFAULT NULL,"
+		NeedColmn[ 9] = "UpdateUser` varchar(50) DEFAULT NULL,"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW0025BerthReservationAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW013101WhFeeInHd");
+		NeedColmn = new String[33];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+		NeedColmn[ 2] = "ArrivalFeeCd` varchar(20) NOT NULL COMMENT '入荷料金コード',"
+		NeedColmn[ 3] = "ArrivalFeeName` varchar(100) DEFAULT NULL COMMENT '入荷料金名',"
+		NeedColmn[ 4] = "DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+		NeedColmn[ 5] = "DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+		NeedColmn[ 6] = "DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+		NeedColmn[ 7] = "DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+		NeedColmn[ 8] = "DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+		NeedColmn[ 9] = "TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+		NeedColmn[10] = "CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+		NeedColmn[11] = "ShimeDate` datetime NOT NULL COMMENT '締め日',"
+		NeedColmn[12] = "FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+		NeedColmn[13] = "SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+		NeedColmn[14] = "ArrivalBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷基本料金',"
+		NeedColmn[15] = "ArrivalSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷伝票基本料金',"
+		NeedColmn[16] = "ArrivalSlipFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '入荷伝票基本料金合計',"
+		NeedColmn[17] = "ArrivalUnitFee` float NOT NULL DEFAULT '0' COMMENT '入荷料単価',"
+		NeedColmn[18] = "ArrivalQtyTotal` int(11) NOT NULL DEFAULT '0' COMMENT '入荷数合計',"
+		NeedColmn[19] = "ArrivalVolTotal` float NOT NULL DEFAULT '0' COMMENT '入荷量合計',"
+		NeedColmn[20] = "ArrivalFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '入荷料',"
+		NeedColmn[21] = "TaxFg` int(11) NOT NULL DEFAULT '0' COMMENT '税区分',"
+		NeedColmn[22] = "TaxRate` int(11) NOT NULL DEFAULT '0' COMMENT '税率',"
+		NeedColmn[23] = "ConsumptionTax` int(11) NOT NULL DEFAULT '0' COMMENT '消費税',"
+		NeedColmn[24] = "WithOutTaxTotal` int(11) NOT NULL DEFAULT '0' COMMENT '税別合計金額',"
+		NeedColmn[25] = "TotalFee` int(11) NOT NULL DEFAULT '0' COMMENT '税込請求額合計',"
+		NeedColmn[26] = "FeeFixFg` int(11) NOT NULL DEFAULT '0' COMMENT '確定区分',"
+		NeedColmn[27] = "EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+		NeedColmn[28] = "UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+		NeedColmn[29] = "EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+		NeedColmn[30] = "UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+		NeedColmn[31] = "FeeNo` int(11) NOT NULL DEFAULT '0' COMMENT 'パラメータマスタから採番',"
+		NeedColmn[32] = "SlipCount` int(11) NOT NULL DEFAULT '0' COMMENT '伝票枚数',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013101WhFeeInHdAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW013102WhFeeInMs");
+		NeedColmn = new String[34];
+		NeedColmn[ 0] = "ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+		NeedColmn[ 1] = "WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+		NeedColmn[ 2] = "ArrivalFeeCd` varchar(20) NOT NULL COMMENT '入荷料金コード',"
+		NeedColmn[ 3] = "ShimeDate` datetime NOT NULL COMMENT '締め日',"
+		NeedColmn[ 4] = "ArrNo` varchar(20) NOT NULL COMMENT '入荷予定NO',"
+		NeedColmn[ 5] = "ArrCount` int(11) NOT NULL COMMENT '入荷予定枝番',"
+		NeedColmn[ 6] = "MsSeq` int(11) NOT NULL COMMENT '明細シーケンシャル番号',"
+		NeedColmn[ 7] = "ClGpCD` varchar(20) DEFAULT NULL COMMENT '荷主グループ',"
+		NeedColmn[ 8] = "ItemCd` varchar(20) NOT NULL COMMENT '商品コード',"
+		NeedColmn[ 9] = "ClItemCd` varchar(20) NOT NULL COMMENT '荷主商品コード',"
+		NeedColmn[10] = "JanCd` varchar(20) NOT NULL COMMENT 'ソースマーク_BCD',"
+		NeedColmn[11] = "ItemMdNo` varchar(20) NOT NULL COMMENT '商品型番',"
+		NeedColmn[12] = "ItemName` varchar(100) NOT NULL COMMENT '商品名',"
+		NeedColmn[13] = "Lot` varchar(20) NOT NULL COMMENT 'ロット',"
+		NeedColmn[14] = "ExpDate` datetime NOT NULL COMMENT '消費期限',"
+		NeedColmn[15] = "PlanQty` int(11) NOT NULL DEFAULT '0' COMMENT '予定数量',"
+		NeedColmn[16] = "ActualQty` int(11) NOT NULL DEFAULT '0' COMMENT '実績数',"
+		NeedColmn[17] = "ActualDate` datetime NOT NULL COMMENT '入荷日',"
+		NeedColmn[18] = "Com01` varchar(200) NOT NULL COMMENT 'コメント1',"
+		NeedColmn[19] = "Com02` varchar(200) NOT NULL COMMENT 'コメント2',"
+		NeedColmn[20] = "ArrivalSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷伝票基本料金',"
+		NeedColmn[21] = "ArrivalUnitFee` float NOT NULL DEFAULT '0' COMMENT '入荷料単価',"
+		NeedColmn[22] = "ItemWeight` float NOT NULL DEFAULT '0' COMMENT '商品重量',"
+		NeedColmn[23] = "ItemSize` float NOT NULL DEFAULT '0' COMMENT '商品サイズ',"
+		NeedColmn[24] = "FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+		NeedColmn[25] = "ArrivalQty` int(11) NOT NULL DEFAULT '0' COMMENT '入荷数',"
+		NeedColmn[26] = "ArrivalVol` float NOT NULL DEFAULT '0' COMMENT '入荷量',"
+		NeedColmn[27] = "ArrivalFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷料',"
+		NeedColmn[28] = "EntryDate` datetime NOT NULL COMMENT '登録日',"
+		NeedColmn[29] = "UpdateDate` datetime NOT NULL COMMENT '更新日',"
+		NeedColmn[30] = "EntryUser` varchar(50) NOT NULL COMMENT '登録者',"
+		NeedColmn[31] = "UpdateUser` varchar(50) NOT NULL COMMENT '更新者',"
+		NeedColmn[32] = "ClArrNo` varchar(50) DEFAULT NULL COMMENT '荷主予定番号',"
+		NeedColmn[33] = "FeeNo` int(11) NOT NULL DEFAULT '0',"
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013102WhFeeInMsAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		*/
+		ColumnList = ColumnList("WANKO","WW013201WhFeeOutHd");
+		NeedColmn = new String[33];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "ShipFeeCd";
+		NeedColmn[ 3] = "ShipFeeName";
+		NeedColmn[ 4] = "DeliveryTypeCd01";
+		NeedColmn[ 5] = "DeliveryTypeCd02";
+		NeedColmn[ 6] = "DeliveryTypeCd03";
+		NeedColmn[ 7] = "DeliveryTypeCd04";
+		NeedColmn[ 8] = "DeliveryTypeCd05";
+		NeedColmn[ 9] = "TildFG";
+		NeedColmn[10] = "CategoryCd";
+		NeedColmn[11] = "ShimeDate";
+		NeedColmn[12] = "FeeUnit";
+		NeedColmn[13] = "SummaryFg";
+		NeedColmn[14] = "ShipBaseFee";
+		NeedColmn[15] = "ShipSlipFee";
+		NeedColmn[16] = "ShipSlipFeeTotal";
+		NeedColmn[17] = "ShipUnitFee";
+		NeedColmn[18] = "ShipQtyTotal";
+		NeedColmn[19] = "ShipVolTotal";
+		NeedColmn[20] = "ShipFeeTotal";
+		NeedColmn[21] = "TaxFg";
+		NeedColmn[22] = "TaxRate";
+		NeedColmn[23] = "ConsumptionTax";
+		NeedColmn[24] = "WithOutTaxTotal";
+		NeedColmn[25] = "TotalFee";
+		NeedColmn[26] = "FeeFixFg";
+		NeedColmn[27] = "EntryDate";
+		NeedColmn[28] = "UpdateDate";
+		NeedColmn[29] = "EntryUser";
+		NeedColmn[30] = "UpdateUser";
+		NeedColmn[31] = "FeeNo";
+		NeedColmn[32] = "SlipCount";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013201WhFeeOutHdAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW013202WhFeeOutMs");
+		NeedColmn = new String[76];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "ShipFeeCd";
+		NeedColmn[ 3] = "ShimeDate";
+		NeedColmn[ 4] = "OkuriNo";
+		NeedColmn[ 5] = "MsNo";
+		NeedColmn[ 6] = "Seq";
+		NeedColmn[ 7] = "ClGpCD";
+		NeedColmn[ 8] = "OrderItemCd";
+		NeedColmn[ 9] = "ClItemCd";
+		NeedColmn[10] = "OrderItemName01";
+		NeedColmn[11] = "OrderLot";
+		NeedColmn[12] = "OrderExpDate";
+		NeedColmn[13] = "OrderQty";
+		NeedColmn[14] = "ShipWhCd";
+		NeedColmn[15] = "ShipLoc";
+		NeedColmn[16] = "ShipItemCd";
+		NeedColmn[17] = "ShipLot";
+		NeedColmn[18] = "ShipExpdate";
+		NeedColmn[19] = "ShipActualDate";
+		NeedColmn[20] = "WmsShipDate";
+		NeedColmn[21] = "FixFg";
+		NeedColmn[22] = "PackingType";
+		NeedColmn[23] = "PackingQty";
+		NeedColmn[24] = "UnitName";
+		NeedColmn[25] = "PackingUnitQty";
+		NeedColmn[26] = "BRShipQty";
+		NeedColmn[27] = "CTShipQty";
+		NeedColmn[28] = "CSShipQty";
+		NeedColmn[29] = "PLShipQty";
+		NeedColmn[30] = "BRUnitName";
+		NeedColmn[31] = "CTUnitName";
+		NeedColmn[32] = "CSUnitName";
+		NeedColmn[33] = "PLUnitName";
+		NeedColmn[34] = "ShipSlipFee";
+		NeedColmn[35] = "ShipUnitFee";
+		NeedColmn[36] = "ItemWeight";
+		NeedColmn[37] = "ItemSize";
+		NeedColmn[38] = "FeeUnit";
+		NeedColmn[39] = "ShipQty";
+		NeedColmn[40] = "ShipVol";
+		NeedColmn[41] = "ShipFee";
+		NeedColmn[42] = "EntryDate";
+		NeedColmn[43] = "UpdateDate";
+		NeedColmn[44] = "EntryUser";
+		NeedColmn[45] = "UpdateUser";
+		NeedColmn[46] = "ClDeliNo";
+		NeedColmn[47] = "ClOrderNo";
+		NeedColmn[48] = "NiokuriCd";
+		NeedColmn[49] = "NiokuriDepartmentCd";
+		NeedColmn[50] = "NiokuriName01";
+		NeedColmn[51] = "NiokuriName02";
+		NeedColmn[52] = "NiokuriName03";
+		NeedColmn[53] = "NiokuriPost";
+		NeedColmn[54] = "NiokuriAdd01";
+		NeedColmn[55] = "NiokuriAdd02";
+		NeedColmn[56] = "NiokuriAdd03";
+		NeedColmn[57] = "NioKuriTel";
+		NeedColmn[58] = "NioKuriFax";
+		NeedColmn[59] = "NioKuriMail";
+		NeedColmn[60] = "NiokuriMunicCd";
+		NeedColmn[61] = "DeliCd";
+		NeedColmn[62] = "ClDeliCd";
+		NeedColmn[63] = "DeliDepartmentCd";
+		NeedColmn[64] = "DeliName01";
+		NeedColmn[65] = "DeliName02";
+		NeedColmn[66] = "DeliName03";
+		NeedColmn[67] = "DeliPost";
+		NeedColmn[68] = "DeliAdd01";
+		NeedColmn[69] = "DeliAdd02";
+		NeedColmn[70] = "DeliAdd03";
+		NeedColmn[71] = "DeliTel";
+		NeedColmn[72] = "DeliFax";
+		NeedColmn[73] = "DeliMail";
+		NeedColmn[74] = "DeliMunicCd";
+		NeedColmn[75] = "FeeNo";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013202WhFeeOutMsAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW013301WhFeeStockHd");
+		NeedColmn = new String[35];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "StockFeeCd";
+		NeedColmn[ 3] = "StockFeeName";
+		NeedColmn[ 4] = "DeliveryTypeCd01";
+		NeedColmn[ 5] = "DeliveryTypeCd02";
+		NeedColmn[ 6] = "DeliveryTypeCd03";
+		NeedColmn[ 7] = "DeliveryTypeCd04";
+		NeedColmn[ 8] = "DeliveryTypeCd05";
+		NeedColmn[ 9] = "TildFG";
+		NeedColmn[10] = "CategoryCd";
+		NeedColmn[11] = "ShimeDate";
+		NeedColmn[12] = "CuttingDate";
+		NeedColmn[13] = "StockBaseFee";
+		NeedColmn[14] = "StockUnitFee";
+		NeedColmn[15] = "FeeUnit";
+		NeedColmn[16] = "SummaryFg";
+		NeedColmn[17] = "StrStockQtyTotal";
+		NeedColmn[18] = "ArrivalQtyTotal";
+		NeedColmn[19] = "FeeQtyTotal";
+		NeedColmn[20] = "StrStockVolTotal";
+		NeedColmn[21] = "ArrivalVolTotal";
+		NeedColmn[22] = "FeeVolTotal";
+		NeedColmn[23] = "StockFeeTotal";
+		NeedColmn[24] = "TaxFg";
+		NeedColmn[25] = "TaxRate";
+		NeedColmn[26] = "ConsumptionTax";
+		NeedColmn[27] = "WithOutTaxTotal";
+		NeedColmn[28] = "TotalFee";
+		NeedColmn[29] = "FeeFixFg";
+		NeedColmn[30] = "EntryDate";
+		NeedColmn[31] = "UpdateDate";
+		NeedColmn[32] = "EntryUser";
+		NeedColmn[33] = "UpdateUser";
+		NeedColmn[34] = "FeeNo";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013301WhFeeStockHdAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW013302WhFeeStockMs");
+		NeedColmn = new String[31];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "StockFeeCd";
+		NeedColmn[ 3] = "ShimeDate";
+		NeedColmn[ 4] = "CuttingDate";
+		NeedColmn[ 5] = "ClGpCD";
+		NeedColmn[ 6] = "ItemCd";
+		NeedColmn[ 7] = "Lot";
+		NeedColmn[ 8] = "Expdate";
+		NeedColmn[ 9] = "ClItemCd";
+		NeedColmn[10] = "ItemName";
+		NeedColmn[11] = "StockUnitFee";
+		NeedColmn[12] = "FeeUnit";
+		NeedColmn[13] = "SummaryFg";
+		NeedColmn[14] = "ItemWeight";
+		NeedColmn[15] = "ItemSize";
+		NeedColmn[16] = "StrStockQty";
+		NeedColmn[17] = "ArrivalQty";
+		NeedColmn[18] = "FeeQty";
+		NeedColmn[19] = "StrStockVol";
+		NeedColmn[20] = "ArrivalVol";
+		NeedColmn[21] = "FeeVol";
+		NeedColmn[22] = "StockFee";
+		NeedColmn[23] = "EntryDate";
+		NeedColmn[24] = "UpdateDate";
+		NeedColmn[25] = "EntryUser";
+		NeedColmn[26] = "UpdateUser";
+		NeedColmn[27] = "FeeNo";
+		NeedColmn[28] = "ShipQty";
+		NeedColmn[29] = "AdjustQty";
+		NeedColmn[30] = "EndStockQty";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013302WhFeeStockMsAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW013401WhFeeAdjustHd");
+		NeedColmn = new String[31];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "AdjustFeeCd";
+		NeedColmn[ 3] = "AdjustFeeName";
+		NeedColmn[ 4] = "DeliveryTypeCd01";
+		NeedColmn[ 5] = "DeliveryTypeCd02";
+		NeedColmn[ 6] = "DeliveryTypeCd03";
+		NeedColmn[ 7] = "DeliveryTypeCd04";
+		NeedColmn[ 8] = "DeliveryTypeCd05";
+		NeedColmn[ 9] = "TildFG";
+		NeedColmn[10] = "CategoryCd";
+		NeedColmn[11] = "AdjustReasonCd";
+		NeedColmn[12] = "ShimeDate";
+		NeedColmn[13] = "AdjustBaseFee";
+		NeedColmn[14] = "AdjustUnitFee";
+		NeedColmn[15] = "FeeUnit";
+		NeedColmn[16] = "SummaryFg";
+		NeedColmn[17] = "AdjustQtyTotal";
+		NeedColmn[18] = "AdjustVolTotal";
+		NeedColmn[19] = "AdjustFeeTotal";
+		NeedColmn[20] = "TaxFg";
+		NeedColmn[21] = "TaxRate";
+		NeedColmn[22] = "ConsumptionTax";
+		NeedColmn[23] = "WithOutTaxTotal";
+		NeedColmn[24] = "TotalFee";
+		NeedColmn[25] = "FeeFixFg";
+		NeedColmn[26] = "EntryDate";
+		NeedColmn[27] = "UpdateDate";
+		NeedColmn[28] = "EntryUser";
+		NeedColmn[29] = "UpdateUser";
+		NeedColmn[30] = "FeeNo";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013401WhFeeAdjustHdAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW013402WhFeeAdjustMs");
+		NeedColmn = new String[38];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "AdjustFeeCd";
+		NeedColmn[ 3] = "ShimeDate";
+		NeedColmn[ 4] = "AdjustNo";
+		NeedColmn[ 5] = "AdjustReasonCd";
+		NeedColmn[ 6] = "AdjustReasonName";
+		NeedColmn[ 7] = "Adjustdate";
+		NeedColmn[ 8] = "Wh";
+		NeedColmn[ 9] = "Loc";
+		NeedColmn[10] = "ClGpCD";
+		NeedColmn[11] = "ItemCd";
+		NeedColmn[12] = "ClItemCd";
+		NeedColmn[13] = "ItemName";
+		NeedColmn[14] = "Lot";
+		NeedColmn[15] = "ExpDate";
+		NeedColmn[16] = "ActualDate";
+		NeedColmn[17] = "BeforeQty";
+		NeedColmn[18] = "ShipPlanQty";
+		NeedColmn[19] = "PossibleQty";
+		NeedColmn[20] = "AdjustQty";
+		NeedColmn[21] = "AdjustCom01";
+		NeedColmn[22] = "AdjustCom02";
+		NeedColmn[23] = "AdjustCom03";
+		NeedColmn[24] = "AfterQty";
+		NeedColmn[25] = "AdjustUnitFee";
+		NeedColmn[26] = "FeeUnit";
+		NeedColmn[27] = "SummaryFg";
+		NeedColmn[28] = "ItemWeight";
+		NeedColmn[29] = "ItemSize";
+		NeedColmn[30] = "AdjustAbsoluteQty";
+		NeedColmn[31] = "AdjustVol";
+		NeedColmn[32] = "AdjustFee";
+		NeedColmn[33] = "EntryDate";
+		NeedColmn[34] = "UpdateDate";
+		NeedColmn[35] = "EntryUser";
+		NeedColmn[36] = "UpdateUser";
+		NeedColmn[37] = "FeeNo";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013402WhFeeAdjustMsAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW013501WhFeeOther");
+		NeedColmn = new String[19];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "ShimeDate";
+		NeedColmn[ 3] = "Seq";
+		NeedColmn[ 4] = "OthereFeeName";
+		NeedColmn[ 5] = "OthereUnitFee";
+		NeedColmn[ 6] = "OthereQty";
+		NeedColmn[ 7] = "OthereFee";
+		NeedColmn[ 8] = "TaxFg";
+		NeedColmn[ 9] = "TaxRate";
+		NeedColmn[10] = "ConsumptionTax";
+		NeedColmn[11] = "WithOutTaxTotal";
+		NeedColmn[12] = "TotalFee";
+		NeedColmn[13] = "FeeFixFg";
+		NeedColmn[14] = "EntryDate";
+		NeedColmn[15] = "UpdateDate";
+		NeedColmn[16] = "EntryUser";
+		NeedColmn[17] = "UpdateUser";
+		NeedColmn[18] = "FeeNo";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW013501WhFeeOtherAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WW014001WhFeeInvoice");
+		NeedColmn = new String[31];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "FeeNo";
+		NeedColmn[ 3] = "FeeType";
+		NeedColmn[ 4] = "FeeCd";
+		NeedColmn[ 5] = "Seq";
+		NeedColmn[ 6] = "FeeName";
+		NeedColmn[ 7] = "ShimeDate";
+		NeedColmn[ 8] = "CuttingDate";
+		NeedColmn[ 9] = "BaseFee";
+		NeedColmn[10] = "SlipFee";
+		NeedColmn[11] = "SlipFeeTotal";
+		NeedColmn[12] = "ShipUnitFee";
+		NeedColmn[13] = "VolTotal";
+		NeedColmn[14] = "FeeUnit";
+		NeedColmn[15] = "ShipFeeTotal";
+		NeedColmn[16] = "TaxFg";
+		NeedColmn[17] = "TaxRate";
+		NeedColmn[18] = "ConsumptionTax";
+		NeedColmn[19] = "WithOutTaxTotal";
+		NeedColmn[20] = "TotalFee";
+		NeedColmn[21] = "PrtFg";
+		NeedColmn[22] = "DataOutFg";
+		NeedColmn[23] = "AllTotalConsumptionTax";
+		NeedColmn[24] = "AllTotalWithOutTaxTotal";
+		NeedColmn[25] = "AllTotalFee";
+		NeedColmn[26] = "EntryDate";
+		NeedColmn[27] = "UpdateDate";
+		NeedColmn[28] = "EntryUser";
+		NeedColmn[29] = "UpdateUser";
+		NeedColmn[30] = "SlipCount";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW014001WhFeeInvoiceAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
 	}
 	
 	private static String WM0000PARAMETERTableCreateSql() {
@@ -6940,6 +8197,37 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫入荷料明細';";
 		return sql;
 	}
+/*
+
+	private static String AltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				case "Type":
+					sql = sql + " ADD  float DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+	
+*/
 	
 	private static String WW013201WhFeeOutHdTableCreateSql() {
 		//倉庫出荷料ヘッダテーブルを作る
@@ -6982,6 +8270,120 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫出荷料';";
 		return sql;
 	}
+
+	private static String WW013201WhFeeOutHdAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW013201WhFeeOutHd";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd varchar(20) NOT NULL";
+					break;
+				case "ShipFeeCd":
+					sql = sql + " ADD ShipFeeCd varchar(20) NOT NULL";
+					break;
+				case "ShipFeeName":
+					sql = sql + " ADD ShipFeeName varchar(100) NOT NULL";
+					break;
+				case "DeliveryTypeCd01":
+					sql = sql + " ADD DeliveryTypeCd01 varchar(20) NOT NULL";
+					break;
+				case "DeliveryTypeCd02":
+					sql = sql + " ADD DeliveryTypeCd02 varchar(20) NOT NULL";
+					break;
+				case "DeliveryTypeCd03":
+					sql = sql + " ADD DeliveryTypeCd03 varchar(20) NOT NULL";
+					break;
+				case "DeliveryTypeCd04":
+					sql = sql + " ADD DeliveryTypeCd04 varchar(20) NOT NULL";
+					break;
+				case "DeliveryTypeCd05":
+					sql = sql + " ADD DeliveryTypeCd05 varchar(20) NOT NULL";
+					break;
+				case "TildFG":
+					sql = sql + " ADD TildFG varchar(20) NOT NULL";
+					break;
+				case "CategoryCd":
+					sql = sql + " ADD CategoryCd varchar(20) NOT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "FeeUnit":
+					sql = sql + " ADD FeeUnit int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "SummaryFg":
+					sql = sql + " ADD SummaryFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipBaseFee":
+					sql = sql + " ADD ShipBaseFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipSlipFee":
+					sql = sql + " ADD ShipSlipFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipSlipFeeTotal":
+					sql = sql + " ADD ShipSlipFeeTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipUnitFee":
+					sql = sql + " ADD ShipUnitFee float NOT NULL DEFAULT '0'";
+					break;
+				case "ShipQtyTotal":
+					sql = sql + " ADD ShipQtyTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipVolTotal":
+					sql = sql + " ADD ShipVolTotal float NOT NULL DEFAULT '0'";
+					break;
+				case "ShipFeeTotal":
+					sql = sql + " ADD ShipFeeTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TotalFee":
+					sql = sql + " ADD TotalFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "FeeFixFg":
+					sql = sql + " ADD FeeFixFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime  DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime  DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50)  DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50)  DEFAULT NULL";
+					break;
+				case "FeeNo":
+					sql = sql + " ADD FeeNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "SlipCount":
+					sql = sql + " ADD SlipCount int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+
 	
 	private static String WW013202WhFeeOutMsTableCreateSql() {
 		//倉庫出荷料明細テーブルを作る
@@ -7067,6 +8469,249 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫出荷料明細';";
 		return sql;
 	}
+
+	private static String WW013202WhFeeOutMsAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW013202WhFeeOutMs";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd varchar(20) NOT NULL";
+					break;
+				case "ShipFeeCd":
+					sql = sql + " ADD ShipFeeCd varchar(20) NOT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "OkuriNo":
+					sql = sql + " ADD OkuriNo int(11) NOT NULL";
+					break;
+				case "MsNo":
+					sql = sql + " ADD MsNo int(11) NOT NULL";
+					break;
+				case "Seq":
+					sql = sql + " ADD Seq int(11) NOT NULL";
+					break;
+				case "ClGpCD":
+					sql = sql + " ADD ClGpCD varchar(20) DEFAULT NULL";
+					break;
+				case "OrderItemCd":
+					sql = sql + " ADD OrderItemCd varchar(20) DEFAULT NULL";
+					break;
+				case "ClItemCd":
+					sql = sql + " ADD ClItemCd varchar(20) DEFAULT NULL";
+					break;
+				case "OrderItemName01":
+					sql = sql + " ADD OrderItemName01 varchar(100) DEFAULT NULL";
+					break;
+				case "OrderLot":
+					sql = sql + " ADD OrderLot varchar(20) DEFAULT NULL";
+					break;
+				case "OrderExpDate":
+					sql = sql + " ADD OrderExpDate datetime DEFAULT NULL";
+					break;
+				case "OrderQty":
+					sql = sql + " ADD OrderQty float NOT NULL DEFAULT '0'";
+					break;
+				case "ShipWhCd":
+					sql = sql + " ADD ShipWhCd varchar(20) DEFAULT NULL";
+					break;
+				case "ShipLoc":
+					sql = sql + " ADD ShipLoc varchar(15) DEFAULT NULL";
+					break;
+				case "ShipItemCd":
+					sql = sql + " ADD ShipItemCd varchar(20) DEFAULT NULL";
+					break;
+				case "ShipLot":
+					sql = sql + " ADD ShipLot varchar(20) DEFAULT NULL";
+					break;
+				case "ShipExpdate":
+					sql = sql + " ADD ShipExpdate datetime DEFAULT NULL";
+					break;
+				case "ShipActualDate":
+					sql = sql + " ADD ShipActualDate datetime DEFAULT NULL";
+					break;
+				case "WmsShipDate":
+					sql = sql + " ADD WmsShipDate datetime NOT NULL DEFAULT '0000-00-00 00:00:00'";
+					break;
+				case "FixFg":
+					sql = sql + " ADD FixFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "PackingType":
+					sql = sql + " ADD PackingType int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "PackingQty":
+					sql = sql + " ADD PackingQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "UnitName":
+					sql = sql + " ADD UnitName varchar(20) DEFAULT NULL";
+					break;
+				case "PackingUnitQty":
+					sql = sql + " ADD PackingUnitQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "BRShipQty":
+					sql = sql + " ADD BRShipQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "CTShipQty":
+					sql = sql + " ADD CTShipQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "CSShipQty":
+					sql = sql + " ADD CSShipQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "PLShipQty":
+					sql = sql + " ADD PLShipQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "BRUnitName":
+					sql = sql + " ADD BRUnitName varchar(20) DEFAULT NULL";
+					break;
+				case "CTUnitName":
+					sql = sql + " ADD CTUnitName varchar(20) DEFAULT NULL";
+					break;
+				case "CSUnitName":
+					sql = sql + " ADD CSUnitName varchar(20) DEFAULT NULL";
+					break;
+				case "PLUnitName":
+					sql = sql + " ADD PLUnitName varchar(20) DEFAULT NULL";
+					break;
+				case "ShipSlipFee":
+					sql = sql + " ADD ShipSlipFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipUnitFee":
+					sql = sql + " ADD ShipUnitFee float NOT NULL DEFAULT '0'";
+					break;
+				case "ItemWeight":
+					sql = sql + " ADD ItemWeight float NOT NULL DEFAULT '0'";
+					break;
+				case "ItemSize":
+					sql = sql + " ADD ItemSize float NOT NULL DEFAULT '0'";
+					break;
+				case "FeeUnit":
+					sql = sql + " ADD FeeUnit int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipQty":
+					sql = sql + " ADD ShipQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipVol":
+					sql = sql + " ADD ShipVol float NOT NULL DEFAULT '0'";
+					break;
+				case "ShipFee":
+					sql = sql + " ADD ShipFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "ClDeliNo":
+					sql = sql + " ADD ClDeliNo varchar(50) DEFAULT NULL";
+					break;
+				case "ClOrderNo":
+					sql = sql + " ADD ClOrderNo varchar(50) DEFAULT NULL";
+					break;
+				case "NiokuriCd":
+					sql = sql + " ADD NiokuriCd varchar(20) DEFAULT NULL";
+					break;
+				case "NiokuriDepartmentCd":
+					sql = sql + " ADD NiokuriDepartmentCd varchar(20) DEFAULT NULL";
+					break;
+				case "NiokuriName01":
+					sql = sql + " ADD NiokuriName01 varchar(50) DEFAULT NULL";
+					break;
+				case "NiokuriName02":
+					sql = sql + " ADD NiokuriName02 varchar(50) DEFAULT NULL";
+					break;
+				case "NiokuriName03":
+					sql = sql + " ADD NiokuriName03 varchar(50) DEFAULT NULL";
+					break;
+				case "NiokuriPost":
+					sql = sql + " ADD NiokuriPost varchar(20) DEFAULT NULL";
+					break;
+				case "NiokuriAdd01":
+					sql = sql + " ADD NiokuriAdd01 varchar(100) DEFAULT NULL";
+					break;
+				case "NiokuriAdd02":
+					sql = sql + " ADD NiokuriAdd02 varchar(100) DEFAULT NULL";
+					break;
+				case "NiokuriAdd03":
+					sql = sql + " ADD NiokuriAdd03 varchar(100) DEFAULT NULL";
+					break;
+				case "NioKuriTel":
+					sql = sql + " ADD NioKuriTel varchar(20) DEFAULT NULL";
+					break;
+				case "NioKuriFax":
+					sql = sql + " ADD NioKuriFax varchar(20) DEFAULT NULL";
+					break;
+				case "NioKuriMail":
+					sql = sql + " ADD NioKuriMail varchar(200) DEFAULT NULL";
+					break;
+				case "NiokuriMunicCd":
+					sql = sql + " ADD NiokuriMunicCd varchar(20) DEFAULT NULL";
+					break;
+				case "DeliCd":
+					sql = sql + " ADD DeliCd varchar(20) DEFAULT NULL";
+					break;
+				case "ClDeliCd":
+					sql = sql + " ADD ClDeliCd varchar(20) DEFAULT NULL";
+					break;
+				case "DeliDepartmentCd":
+					sql = sql + " ADD DeliDepartmentCd varchar(20) DEFAULT NULL";
+					break;
+				case "DeliName01":
+					sql = sql + " ADD DeliName01 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliName02":
+					sql = sql + " ADD DeliName02 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliName03":
+					sql = sql + " ADD DeliName03 varchar(50) DEFAULT NULL";
+					break;
+				case "DeliPost":
+					sql = sql + " ADD DeliPost varchar(20) DEFAULT NULL";
+					break;
+				case "DeliAdd01":
+					sql = sql + " ADD DeliAdd01 varchar(100) DEFAULT NULL";
+					break;
+				case "DeliAdd02":
+					sql = sql + " ADD DeliAdd02 varchar(100) DEFAULT NULL";
+					break;
+				case "DeliAdd03":
+					sql = sql + " ADD DeliAdd03 varchar(100) DEFAULT NULL";
+					break;
+				case "DeliTel":
+					sql = sql + " ADD DeliTel varchar(20) DEFAULT NULL";
+					break;
+				case "DeliFax":
+					sql = sql + " ADD DeliFax varchar(20) DEFAULT NULL";
+					break;
+				case "DeliMail":
+					sql = sql + " ADD DeliMail varchar(200) DEFAULT NULL";
+					break;
+				case "DeliMunicCd":
+					sql = sql + " ADD DeliMunicCd varchar(20) DEFAULT NULL";
+					break;
+				case "FeeNo":
+					sql = sql + " ADD FeeNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+
 	
 	private static String WW013301WhFeeStockHdTableCreateSql() {
 		//倉庫保管料ヘッダテーブルを作る
@@ -7111,6 +8756,126 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫保管料ヘッダ';";
 		return sql;
 	}
+
+	private static String WW013301WhFeeStockHdAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW013301WhFeeStockHd";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd varchar(20) NOT NULL";
+					break;
+				case "StockFeeCd":
+					sql = sql + " ADD StockFeeCd varchar(20) NOT NULL";
+					break;
+				case "StockFeeName":
+					sql = sql + " ADD StockFeeName varchar(100) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd01":
+					sql = sql + " ADD DeliveryTypeCd01 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd02":
+					sql = sql + " ADD DeliveryTypeCd02 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd03":
+					sql = sql + " ADD DeliveryTypeCd03 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd04":
+					sql = sql + " ADD DeliveryTypeCd04 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd05":
+					sql = sql + " ADD DeliveryTypeCd05 varchar(20) DEFAULT NULL";
+					break;
+				case "TildFG":
+					sql = sql + " ADD TildFG varchar(20) DEFAULT NULL";
+					break;
+				case "CategoryCd":
+					sql = sql + " ADD CategoryCd varchar(20) DEFAULT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "CuttingDate":
+					sql = sql + " ADD CuttingDate datetime NOT NULL";
+					break;
+				case "StockBaseFee":
+					sql = sql + " ADD StockBaseFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "StockUnitFee":
+					sql = sql + " ADD StockUnitFee float NOT NULL DEFAULT '0'";
+					break;
+				case "FeeUnit":
+					sql = sql + " ADD FeeUnit int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "SummaryFg":
+					sql = sql + " ADD SummaryFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "StrStockQtyTotal":
+					sql = sql + " ADD StrStockQtyTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ArrivalQtyTotal":
+					sql = sql + " ADD ArrivalQtyTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "FeeQtyTotal":
+					sql = sql + " ADD FeeQtyTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "StrStockVolTotal":
+					sql = sql + " ADD StrStockVolTotal float NOT NULL DEFAULT '0'";
+					break;
+				case "ArrivalVolTotal":
+					sql = sql + " ADD ArrivalVolTotal float NOT NULL DEFAULT '0'";
+					break;
+				case "FeeVolTotal":
+					sql = sql + " ADD FeeVolTotal float NOT NULL DEFAULT '0'";
+					break;
+				case "StockFeeTotal":
+					sql = sql + " ADD StockFeeTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TotalFee":
+					sql = sql + " ADD TotalFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "FeeFixFg":
+					sql = sql + " ADD FeeFixFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "FeeNo":
+					sql = sql + " ADD FeeNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+
 	
 	private static String WW013302WhFeeStockMsTableCreateSql() {
 		//倉庫保管料明細テーブルを作る
@@ -7151,6 +8916,114 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫保管料明細';";
 		return sql;
 	}
+
+	private static String WW013302WhFeeStockMsAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW013302WhFeeStockMs";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL COMMENT";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd varchar(20) NOT NULL COMMENT";
+					break;
+				case "StockFeeCd":
+					sql = sql + " ADD StockFeeCd varchar(20) NOT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "CuttingDate":
+					sql = sql + " ADD CuttingDate datetime NOT NULL";
+					break;
+				case "ClGpCD":
+					sql = sql + " ADD ClGpCD varchar(20) NOT NULL";
+					break;
+				case "ItemCd":
+					sql = sql + " ADD ItemCd varchar(20) NOT NULL";
+					break;
+				case "Lot":
+					sql = sql + " ADD Lot varchar(20) NOT NULL";
+					break;
+				case "Expdate":
+					sql = sql + " ADD Expdate datetime NOT NULL";
+					break;
+				case "ClItemCd":
+					sql = sql + " ADD ClItemCd varchar(20) DEFAULT NULL";
+					break;
+				case "ItemName":
+					sql = sql + " ADD ItemName varchar(100) DEFAULT NULL";
+					break;
+				case "StockUnitFee":
+					sql = sql + " ADD StockUnitFee float NOT NULL DEFAULT '0'";
+					break;
+				case "FeeUnit":
+					sql = sql + " ADD FeeUnit int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "SummaryFg":
+					sql = sql + " ADD SummaryFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ItemWeight":
+					sql = sql + " ADD ItemWeight float NOT NULL DEFAULT '0'";
+					break;
+				case "ItemSize":
+					sql = sql + " ADD ItemSize float NOT NULL DEFAULT '0'";
+					break;
+				case "StrStockQty":
+					sql = sql + " ADD StrStockQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ArrivalQty":
+					sql = sql + " ADD ArrivalQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "FeeQty":
+					sql = sql + " ADD FeeQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "StrStockVol":
+					sql = sql + " ADD StrStockVol float NOT NULL DEFAULT '0'";
+					break;
+				case "ArrivalVol":
+					sql = sql + " ADD ArrivalVol float NOT NULL DEFAULT '0'";
+					break;
+				case "FeeVol":
+					sql = sql + " ADD FeeVol float NOT NULL DEFAULT '0'";
+					break;
+				case "StockFee":
+					sql = sql + " ADD StockFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "FeeNo":
+					sql = sql + " ADD FeeNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipQty":
+					sql = sql + " ADD ShipQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustQty":
+					sql = sql + " ADD AdjustQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EndStockQty":
+					sql = sql + " ADD EndStockQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+
 	
 	private static String WW013401WhFeeAdjustHdTableCreateSql() {
 		//倉庫在庫調整料ヘッダテーブルを作る
@@ -7191,6 +9064,114 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫在庫調整料ヘッダ';";
 		return sql;
 	}
+
+	private static String WW013401WhFeeAdjustHdAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW013401WhFeeAdjustHd";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd varchar(20) NOT NULL";
+					break;
+				case "AdjustFeeCd":
+					sql = sql + " ADD AdjustFeeCd varchar(20) NOT NULL";
+					break;
+				case "AdjustFeeName":
+					sql = sql + " ADD AdjustFeeName varchar(100) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd01":
+					sql = sql + " ADD DeliveryTypeCd01 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd02":
+					sql = sql + " ADD DeliveryTypeCd02 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd03":
+					sql = sql + " ADD DeliveryTypeCd03 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd04":
+					sql = sql + " ADD DeliveryTypeCd04 varchar(20) DEFAULT NULL";
+					break;
+				case "DeliveryTypeCd05":
+					sql = sql + " ADD DeliveryTypeCd05 varchar(20) DEFAULT NULL";
+					break;
+				case "TildFG":
+					sql = sql + " ADD TildFG varchar(20) DEFAULT NULL";
+					break;
+				case "CategoryCd":
+					sql = sql + " ADD CategoryCd varchar(20) DEFAULT NULL";
+					break;
+				case "AdjustReasonCd":
+					sql = sql + " ADD AdjustReasonCd varchar(20) DEFAULT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "AdjustBaseFee":
+					sql = sql + " ADD AdjustBaseFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustUnitFee":
+					sql = sql + " ADD AdjustUnitFee float NOT NULL DEFAULT '0'";
+					break;
+				case "FeeUnit":
+					sql = sql + " ADD FeeUnit int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "SummaryFg":
+					sql = sql + " ADD SummaryFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustQtyTotal":
+					sql = sql + " ADD AdjustQtyTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustVolTotal":
+					sql = sql + " ADD AdjustVolTotal float NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustFeeTotal":
+					sql = sql + " ADD AdjustFeeTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TotalFee":
+					sql = sql + " ADD TotalFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "FeeFixFg":
+					sql = sql + " ADD FeeFixFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "FeeNo":
+					sql = sql + " ADD FeeNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+
 	
 	private static String WW013402WhFeeAdjustMsTableCreateSql() {
 		//倉庫在庫調整料明細テーブルを作る
@@ -7238,6 +9219,135 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫在庫調整料明細';";
 		return sql;
 	}
+
+	private static String WW013402WhFeeAdjustMsAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW013402WhFeeAdjustMs";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd varchar(20) NOT NULL";
+					break;
+				case "AdjustFeeCd":
+					sql = sql + " ADD AdjustFeeCd varchar(20) NOT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "AdjustNo":
+					sql = sql + " ADD AdjustNo int(11) NOT NULL";
+					break;
+				case "AdjustReasonCd":
+					sql = sql + " ADD AdjustReasonCd varchar(20) DEFAULT NULL";
+					break;
+				case "AdjustReasonName":
+					sql = sql + " ADD AdjustReasonName varchar(100) DEFAULT NULL";
+					break;
+				case "Adjustdate":
+					sql = sql + " ADD Adjustdate datetime DEFAULT NULL";
+					break;
+				case "Wh":
+					sql = sql + " ADD Wh varchar(20) DEFAULT NULL";
+					break;
+				case "Loc":
+					sql = sql + " ADD Loc varchar(15) DEFAULT NULL";
+					break;
+				case "ClGpCD":
+					sql = sql + " ADD ClGpCD varchar(20) DEFAULT NULL";
+					break;
+				case "ItemCd":
+					sql = sql + " ADD ItemCd varchar(20) DEFAULT NULL";
+					break;
+				case "ClItemCd":
+					sql = sql + " ADD ClItemCd varchar(20) DEFAULT NULL";
+					break;
+				case "ItemName":
+					sql = sql + " ADD ItemName varchar(100) DEFAULT NULL";
+					break;
+				case "Lot":
+					sql = sql + " ADD Lot varchar(20) DEFAULT NULL";
+					break;
+				case "ExpDate":
+					sql = sql + " ADD ExpDate datetime DEFAULT NULL";
+					break;
+				case "ActualDate":
+					sql = sql + " ADD ActualDate datetime DEFAULT NULL";
+					break;
+				case "BeforeQty":
+					sql = sql + " ADD BeforeQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipPlanQty":
+					sql = sql + " ADD ShipPlanQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "PossibleQty":
+					sql = sql + " ADD PossibleQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustQty":
+					sql = sql + " ADD AdjustQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustCom01":
+					sql = sql + " ADD AdjustCom01 varchar(100) DEFAULT NULL";
+					break;
+				case "AdjustCom02":
+					sql = sql + " ADD AdjustCom02 varchar(100) DEFAULT NULL";
+					break;
+				case "AdjustCom03":
+					sql = sql + " ADD AdjustCom03 varchar(100) DEFAULT NULL";
+					break;
+				case "AfterQty":
+					sql = sql + " ADD AfterQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustUnitFee":
+					sql = sql + " ADD AdjustUnitFee float NOT NULL DEFAULT '0'";
+					break;
+				case "FeeUnit":
+					sql = sql + " ADD FeeUnit int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "SummaryFg":
+					sql = sql + " ADD SummaryFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ItemWeight":
+					sql = sql + " ADD ItemWeight float NOT NULL DEFAULT '0'";
+					break;
+				case "ItemSize":
+					sql = sql + " ADD ItemSize float NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustAbsoluteQty":
+					sql = sql + " ADD AdjustAbsoluteQty int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustVol":
+					sql = sql + " ADD AdjustVol float NOT NULL DEFAULT '0'";
+					break;
+				case "AdjustFee":
+					sql = sql + " ADD AdjustFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "FeeNo":
+					sql = sql + " ADD FeeNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+
 	
 	private static String WW013501WhFeeOtherTableCreateSql() {
 		//倉庫その他請求ヘッダテーブルを作る
@@ -7266,6 +9376,78 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫その他請求ヘッダ';";
 		return sql;
 	}
+
+	private static String WW013501WhFeeOtherAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW013501WhFeeOther";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd int(20) NOT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "Seq":
+					sql = sql + " ADD Seq int(11) NOT NULL";
+					break;
+				case "OthereFeeName":
+					sql = sql + " ADD OthereFeeName varchar(200) DEFAULT NULL";
+					break;
+				case "OthereUnitFee":
+					sql = sql + " ADD OthereUnitFee float NOT NULL DEFAULT '0'";
+					break;
+				case "OthereQty":
+					sql = sql + " ADD OthereQty float NOT NULL DEFAULT '0'";
+					break;
+				case "OthereFee":
+					sql = sql + " ADD OthereFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TotalFee":
+					sql = sql + " ADD TotalFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "FeeFixFg":
+					sql = sql + " ADD FeeFixFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "FeeNo":
+					sql = sql + " ADD FeeNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+
 	
 	private static String WW014001WhFeeInvoiceTableCreateSql() {
 		//倉庫その他請求明細テーブルを作る
@@ -7306,10 +9488,113 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫その他請求明細';";
 		return sql;
 	}
-	
-	
-	
-	
+
+	private static String WW014001WhFeeInvoiceAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW014001WhFeeInvoice";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL DEFAULT ''";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd varchar(20) NOT NULL DEFAULT ''";
+					break;
+				case "FeeNo":
+					sql = sql + " ADD FeeNo int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "FeeType":
+					sql = sql + " ADD FeeType varchar(20) NOT NULL DEFAULT ''";
+					break;
+				case "FeeCd":
+					sql = sql + " ADD FeeCd varchar(20) NOT NULL DEFAULT ''";
+					break;
+				case "Seq":
+					sql = sql + " ADD Seq int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "FeeName":
+					sql = sql + " ADD FeeName varchar(200) NOT NULL DEFAULT ''";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate datetime NOT NULL";
+					break;
+				case "CuttingDate":
+					sql = sql + " ADD CuttingDate datetime DEFAULT NULL";
+					break;
+				case "BaseFee":
+					sql = sql + " ADD BaseFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "SlipFee":
+					sql = sql + " ADD SlipFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "SlipFeeTotal":
+					sql = sql + " ADD SlipFeeTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipUnitFee":
+					sql = sql + " ADD ShipUnitFee float NOT NULL DEFAULT '0'";
+					break;
+				case "VolTotal":
+					sql = sql + " ADD VolTotal float NOT NULL DEFAULT '0'";
+					break;
+				case "FeeUnit":
+					sql = sql + " ADD FeeUnit int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ShipFeeTotal":
+					sql = sql + " ADD ShipFeeTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxFg":
+					sql = sql + " ADD TaxFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TaxRate":
+					sql = sql + " ADD TaxRate int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "ConsumptionTax":
+					sql = sql + " ADD ConsumptionTax int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "WithOutTaxTotal":
+					sql = sql + " ADD WithOutTaxTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "TotalFee":
+					sql = sql + " ADD TotalFee int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "PrtFg":
+					sql = sql + " ADD PrtFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "DataOutFg":
+					sql = sql + " ADD DataOutFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AllTotalConsumptionTax":
+					sql = sql + " ADD AllTotalConsumptionTax int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AllTotalWithOutTaxTotal":
+					sql = sql + " ADD AllTotalWithOutTaxTotal int(11) NOT NULL DEFAULT '0'";
+					break;
+				case "AllTotalFee":
+					sql = sql + " ADD AllTotalFee int(11) DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "SlipCount":
+					sql = sql + " ADD SlipCount int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
 	
 	
 	
