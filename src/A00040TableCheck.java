@@ -22,10 +22,10 @@ public class A00040TableCheck{
     //    を一括で行う、“Corgiが信じる正しいデータベース定義書”です。
     //
     //  ■この神殿で起きる自動治癒
-    //      テーブルが DROP された      → CREATE TABLE で復元
+    //      テーブルが DROP された     → CREATE TABLE で復元
     //      テーブル名が変更された     → CREATE TABLE で復元
-    //      カラムが削除された          → ALTER TABLE ADD で復元
-    //      カラム名が変更された        → ALTER TABLE ADD で復元
+    //      カラムが削除された         → ALTER TABLE ADD で復元
+    //      カラム名が変更された       → ALTER TABLE ADD で復元
     //
     //    ※すべて自動復元され、システム構造の整合性が保たれます。
     //
@@ -42,12 +42,14 @@ public class A00040TableCheck{
     // ================================================================
 
 	public static void TableCheck() {
-		PostDBCheck();		//郵便番号データベースの必要なテーブルを確認する
+		
 		NyankoDBCheck();	//NYANKOデータベースの必要なテーブルを確認する
+		WankoDBCheck();		//WANKOデータベースの必要なテーブルを確認する
+		PostDBCheck();		//郵便番号データベースの必要なテーブルを確認する
 		/*
 		
 		
-		WankoDBCheck();		//WANKOデータベースの必要なテーブルを確認する
+		
 		OldDBCheck();		//OLDデータベースの必要なテーブルを確認する
 		*/
 		
@@ -55,16 +57,16 @@ public class A00040TableCheck{
 	public static void UserMstCreate() {
 		//ユーザーマスタテーブル作る
 		String[] TableName = TabeleList("NYANKO");
-		boolean KM0020_USERMSTUnHitkFg = true;
+		boolean KM0020_USERMSTUnHitFg = true;
 		for(int i=0;i<TableName.length;i++) {
 			switch(TableName[i]){
 				case "KM0020_USERMST":
-					KM0020_USERMSTUnHitkFg = false; 
+					KM0020_USERMSTUnHitFg = false; 
 					break;
 				default :break;
 			}
 		}
-		if(KM0020_USERMSTUnHitkFg) {
+		if(KM0020_USERMSTUnHitFg) {
 			A00010DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement CreateTablestmt = null;
@@ -92,294 +94,294 @@ public class A00040TableCheck{
 	//NYANKOデータベースの必要なテーブルを確認する
 	private static void NyankoDBCheck() {
 		String[] TableName=TabeleList("NANKO");
-		boolean KM0000_PARAMETERUnHitkFg = true; 
-		boolean KM0005_MUNICUnHitkFg = true; 
-		boolean KM0010_WHMSTUnHitkFg = true; 
-		boolean KM0020_USERMSTUnHitkFg = true;
-		boolean KM0030_CLIENTMSTUnHitkFg = true; 
-		boolean KM0031_CLIENT_GROUPUnHitkFg = true; 
-		boolean KM0040_DELIVERYMSTUnHitkFg = true; 
-		boolean KM0041_DELIVERY_COMVERSIONMSTUnHitkFg = true; 
-		boolean KM0050_DELIVERY_TYPEMSTUnHitkFg = true; 
-		boolean KM0060_ITEMMSTUnHitkFg = true; 
-		boolean KM0061_ITEMMSTSUBUnHitkFg = true; 
-		boolean KM0062_ItemComversionMstUnHitkFg = true; 
-		boolean KM0070_SHIPPINGCOMPANYMSTUnHitkFg = true; 
-		boolean KM0071_CARMSTUnHitkFg = true; 
-		boolean KM0080_FEEBASEMSTUnHitkFg = true; 
-		boolean KM0081_FEEMSTUnHitkFg = true; 
-		boolean KM0082_FEELOGICTYPEMSTUnHitkFg = true; 
-		boolean KM0090_CAUTIONUnHitkFg = true; 
-		boolean KM0090_PAYBASEMSTUnHitkFg = true; 
-		boolean KM0091_PAYMSTUnHitkFg = true; 
-		boolean KM0100_OKURIPROGRESSMSTUnHitkFg = true; 
-		boolean KM0110_CALLPGMSTUnHitkFg = true; 
-		boolean KM0122_CourseGlpMSTUnHitkFg = true;
-		boolean KM0123_CourseMSTUnHitkFg = true; 
-		boolean KM0124_CourseDeliveryMSTUnHitkFg = true; 
-		boolean KM0125_MyDriverMSTUnHitkFg = true; 
-		boolean KM0126_MyDriverListUnHitkFg = true;
-		boolean KT0010_OKURI_HDUnHitkFg = true; 
-		boolean KT0011_OKURI_MSUnHitkFg = true; 
-		boolean KT0012_OKURI_PROGRESSUnHitkFg = true; 
-		boolean KT0013_SEIKYUUnHitkFg = true; 
-		boolean KT0023_SHIHARAIUnHitkFg = true; 
-		boolean KT0040_PrintControlUnHitkFg = true; 
-		boolean KT020_HAISHA_HDUnHitkFg = true; 
-		boolean KT021_HAISHA_MSUnHitkFg = true; 
+		boolean KM0000_PARAMETERUnHitFg = true; 
+		boolean KM0005_MUNICUnHitFg = true; 
+		boolean KM0010_WHMSTUnHitFg = true; 
+		boolean KM0020_USERMSTUnHitFg = true;
+		boolean KM0030_CLIENTMSTUnHitFg = true; 
+		boolean KM0031_CLIENT_GROUPUnHitFg = true; 
+		boolean KM0040_DELIVERYMSTUnHitFg = true; 
+		boolean KM0041_DELIVERY_COMVERSIONMSTUnHitFg = true; 
+		boolean KM0050_DELIVERY_TYPEMSTUnHitFg = true; 
+		boolean KM0060_ITEMMSTUnHitFg = true; 
+		boolean KM0061_ITEMMSTSUBUnHitFg = true; 
+		boolean KM0062_ItemComversionMstUnHitFg = true; 
+		boolean KM0070_SHIPPINGCOMPANYMSTUnHitFg = true; 
+		boolean KM0071_CARMSTUnHitFg = true; 
+		boolean KM0080_FEEBASEMSTUnHitFg = true; 
+		boolean KM0081_FEEMSTUnHitFg = true; 
+		boolean KM0082_FEELOGICTYPEMSTUnHitFg = true; 
+		boolean KM0090_CAUTIONUnHitFg = true; 
+		boolean KM0090_PAYBASEMSTUnHitFg = true; 
+		boolean KM0091_PAYMSTUnHitFg = true; 
+		boolean KM0100_OKURIPROGRESSMSTUnHitFg = true; 
+		boolean KM0110_CALLPGMSTUnHitFg = true; 
+		boolean KM0122_CourseGlpMSTUnHitFg = true;
+		boolean KM0123_CourseMSTUnHitFg = true; 
+		boolean KM0124_CourseDeliveryMSTUnHitFg = true; 
+		boolean KM0125_MyDriverMSTUnHitFg = true; 
+		boolean KM0126_MyDriverListUnHitFg = true;
+		boolean KT0010_OKURI_HDUnHitFg = true; 
+		boolean KT0011_OKURI_MSUnHitFg = true; 
+		boolean KT0012_OKURI_PROGRESSUnHitFg = true; 
+		boolean KT0013_SEIKYUUnHitFg = true; 
+		boolean KT0023_SHIHARAIUnHitFg = true; 
+		boolean KT0040_PrintControlUnHitFg = true; 
+		boolean KT020_HAISHA_HDUnHitFg = true; 
+		boolean KT021_HAISHA_MSUnHitFg = true; 
 		
 		for(int i=0;i<TableName.length;i++) {
 			switch(TableName[i]){
 				case "KM0000_PARAMETER":
-					KM0000_PARAMETERUnHitkFg = false; 
+					KM0000_PARAMETERUnHitFg = false; 
 					break;
 				case "KM0005_MUNIC":
-					KM0005_MUNICUnHitkFg = false; 
+					KM0005_MUNICUnHitFg = false; 
 					break;
 				case "KM0010_WHMST":
-					KM0010_WHMSTUnHitkFg = false; 
+					KM0010_WHMSTUnHitFg = false; 
 					break;
 				case "KM0020_USERMST":
-					KM0020_USERMSTUnHitkFg = false; 
+					KM0020_USERMSTUnHitFg = false; 
 					break;
 				case "KM0030_CLIENTMST":
-					KM0030_CLIENTMSTUnHitkFg = false; 
+					KM0030_CLIENTMSTUnHitFg = false; 
 					break;
 				case "KM0031_CLIENT_GROUP":
-					KM0031_CLIENT_GROUPUnHitkFg = false; 
+					KM0031_CLIENT_GROUPUnHitFg = false; 
 					break;
 				case "KM0040_DELIVERYMST":
-					KM0040_DELIVERYMSTUnHitkFg = false; 
+					KM0040_DELIVERYMSTUnHitFg = false; 
 					break;
 				case "KM0041_DELIVERY_COMVERSIONMST":
-					KM0041_DELIVERY_COMVERSIONMSTUnHitkFg = false; 
+					KM0041_DELIVERY_COMVERSIONMSTUnHitFg = false; 
 					break;
 				case "KM0050_DELIVERY_TYPEMST":
-					KM0050_DELIVERY_TYPEMSTUnHitkFg = false; 
+					KM0050_DELIVERY_TYPEMSTUnHitFg = false; 
 					break;
 				case "KM0060_ITEMMST":
-					KM0060_ITEMMSTUnHitkFg = false; 
+					KM0060_ITEMMSTUnHitFg = false; 
 					break;
 				case "KM0061_ITEMMSTSUB":
-					KM0061_ITEMMSTSUBUnHitkFg = false; 
+					KM0061_ITEMMSTSUBUnHitFg = false; 
 					break;
 				case "KM0062_ItemComversionMst":
-					KM0062_ItemComversionMstUnHitkFg = false; 
+					KM0062_ItemComversionMstUnHitFg = false; 
 					break;
 				case "KM0070_SHIPPINGCOMPANYMST":
-					KM0070_SHIPPINGCOMPANYMSTUnHitkFg = false; 
+					KM0070_SHIPPINGCOMPANYMSTUnHitFg = false; 
 					break;
 				case "KM0071_CARMST":
-					KM0071_CARMSTUnHitkFg = false; 
+					KM0071_CARMSTUnHitFg = false; 
 					break;
 				case "KM0080_FEEBASEMST":
-					KM0080_FEEBASEMSTUnHitkFg = false; 
+					KM0080_FEEBASEMSTUnHitFg = false; 
 					break;
 				case "KM0081_FEEMST":
-					KM0081_FEEMSTUnHitkFg = false; 
+					KM0081_FEEMSTUnHitFg = false; 
 					break;
 				case "KM0082_FEELOGICTYPEMST":
-					KM0082_FEELOGICTYPEMSTUnHitkFg = false; 
+					KM0082_FEELOGICTYPEMSTUnHitFg = false; 
 					break;
 				case "KM0090_CAUTION":
-					KM0090_CAUTIONUnHitkFg = false; 
+					KM0090_CAUTIONUnHitFg = false; 
 					break;
 				case "KM0090_PAYBASEMST":
-					KM0090_PAYBASEMSTUnHitkFg = false; 
+					KM0090_PAYBASEMSTUnHitFg = false; 
 					break;
 				case "KM0091_PAYMST":
-					KM0091_PAYMSTUnHitkFg = false; 
+					KM0091_PAYMSTUnHitFg = false; 
 					break;
 				case "KM0100_OKURIPROGRESSMST":
-					KM0100_OKURIPROGRESSMSTUnHitkFg = false; 
+					KM0100_OKURIPROGRESSMSTUnHitFg = false; 
 					break;
 				case "KM0110_CALLPGMST":
-					KM0110_CALLPGMSTUnHitkFg = false; 
+					KM0110_CALLPGMSTUnHitFg = false; 
 					break;
 				case "KM0122_CourseGlpMST":
-					KM0122_CourseGlpMSTUnHitkFg = false;
+					KM0122_CourseGlpMSTUnHitFg = false;
 					break;
 				case "KM0123_CourseMST":
-					KM0123_CourseMSTUnHitkFg = false;
+					KM0123_CourseMSTUnHitFg = false;
 					break;
 				case "KM0124_CourseDeliveryMST":
-					KM0124_CourseDeliveryMSTUnHitkFg = false;
+					KM0124_CourseDeliveryMSTUnHitFg = false;
 					break;
 				case "KM0125_MyDriverMST":
-					KM0125_MyDriverMSTUnHitkFg = false;
+					KM0125_MyDriverMSTUnHitFg = false;
 					break;
 				case "KM0126_MyDriverList":
-					KM0126_MyDriverListUnHitkFg = false;
+					KM0126_MyDriverListUnHitFg = false;
 					break;
 				case "KT0010_OKURI_HD":
-					KT0010_OKURI_HDUnHitkFg = false; 
+					KT0010_OKURI_HDUnHitFg = false; 
 					break;
 				case "KT0011_OKURI_MS":
-					KT0011_OKURI_MSUnHitkFg = false; 
+					KT0011_OKURI_MSUnHitFg = false; 
 					break;
 				case "KT0012_OKURI_PROGRESS":
-					KT0012_OKURI_PROGRESSUnHitkFg = false; 
+					KT0012_OKURI_PROGRESSUnHitFg = false; 
 					break;
 				case "KT0013_SEIKYU":
-					KT0013_SEIKYUUnHitkFg = false; 
+					KT0013_SEIKYUUnHitFg = false; 
 					break;
 				case "KT0023_SHIHARAI":
-					KT0023_SHIHARAIUnHitkFg = false; 
+					KT0023_SHIHARAIUnHitFg = false; 
 					break;
 				case "KT0040_PrintControl":
-					KT0040_PrintControlUnHitkFg = false;
+					KT0040_PrintControlUnHitFg = false;
 					break;
 				case "KT020_HAISHA_HD":
-					KT020_HAISHA_HDUnHitkFg = false; 
+					KT020_HAISHA_HDUnHitFg = false; 
 					break;
 				case "KT021_HAISHA_MS":
-					KT021_HAISHA_MSUnHitkFg = false; 
+					KT021_HAISHA_MSUnHitFg = false; 
 					break;
 				default:
 					break;
 			}
 		}
 		
-		if(KM0000_PARAMETERUnHitkFg) {
+		if(KM0000_PARAMETERUnHitFg) {
 			String sql = KM0000_PARAMETERCreateSql();
 			KickSql("NANKO",sql);
 		}
 		
-		if(KM0005_MUNICUnHitkFg) {
+		if(KM0005_MUNICUnHitFg) {
 			String sql = KM0005_MUNICCreateSql();
 			KickSql("NANKO",sql);
 		}
 		
-		if(KM0010_WHMSTUnHitkFg) {
+		if(KM0010_WHMSTUnHitFg) {
 			String sql = KM0010_WHMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
 		
-		if(KM0020_USERMSTUnHitkFg) {
+		if(KM0020_USERMSTUnHitFg) {
 			String sql = KM0020_USERMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0030_CLIENTMSTUnHitkFg) {
+		if(KM0030_CLIENTMSTUnHitFg) {
 			String sql = KM0030_CLIENTMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0031_CLIENT_GROUPUnHitkFg) {
+		if(KM0031_CLIENT_GROUPUnHitFg) {
 			String sql = KM0031_CLIENT_GROUPCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0040_DELIVERYMSTUnHitkFg) {
+		if(KM0040_DELIVERYMSTUnHitFg) {
 			String sql = KM0040_DELIVERYMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0041_DELIVERY_COMVERSIONMSTUnHitkFg) {
+		if(KM0041_DELIVERY_COMVERSIONMSTUnHitFg) {
 			String sql = KM0041_DELIVERY_COMVERSIONMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0050_DELIVERY_TYPEMSTUnHitkFg) {
+		if(KM0050_DELIVERY_TYPEMSTUnHitFg) {
 			String sql = KM0050_DELIVERY_TYPEMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0060_ITEMMSTUnHitkFg) {
+		if(KM0060_ITEMMSTUnHitFg) {
 			String sql = KM0060_ITEMMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0061_ITEMMSTSUBUnHitkFg) {
+		if(KM0061_ITEMMSTSUBUnHitFg) {
 			String sql = KM0061_ITEMMSTSUBCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0062_ItemComversionMstUnHitkFg) {
+		if(KM0062_ItemComversionMstUnHitFg) {
 			String sql = KM0062_ItemComversionMstCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0070_SHIPPINGCOMPANYMSTUnHitkFg) {
+		if(KM0070_SHIPPINGCOMPANYMSTUnHitFg) {
 			String sql = KM0070_SHIPPINGCOMPANYMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0071_CARMSTUnHitkFg) {
+		if(KM0071_CARMSTUnHitFg) {
 			String sql = KM0071_CARMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0080_FEEBASEMSTUnHitkFg) {
+		if(KM0080_FEEBASEMSTUnHitFg) {
 			String sql = KM0080_FEEBASEMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0081_FEEMSTUnHitkFg) {
+		if(KM0081_FEEMSTUnHitFg) {
 			String sql = KM0081_FEEMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0082_FEELOGICTYPEMSTUnHitkFg) {
+		if(KM0082_FEELOGICTYPEMSTUnHitFg) {
 			String sql = KM0082_FEELOGICTYPEMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0090_CAUTIONUnHitkFg) {
+		if(KM0090_CAUTIONUnHitFg) {
 			String sql = KM0090_CAUTIONCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0090_PAYBASEMSTUnHitkFg) {
+		if(KM0090_PAYBASEMSTUnHitFg) {
 			String sql = KM0090_PAYBASEMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0091_PAYMSTUnHitkFg) {
+		if(KM0091_PAYMSTUnHitFg) {
 			String sql = KM0091_PAYMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0100_OKURIPROGRESSMSTUnHitkFg) {
+		if(KM0100_OKURIPROGRESSMSTUnHitFg) {
 			String sql = KM0100_OKURIPROGRESSMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0110_CALLPGMSTUnHitkFg) {
+		if(KM0110_CALLPGMSTUnHitFg) {
 			String sql = KM0110_CALLPGMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0122_CourseGlpMSTUnHitkFg) {
+		if(KM0122_CourseGlpMSTUnHitFg) {
 			String sql = KM0122_CourseGlpMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0123_CourseMSTUnHitkFg) {
+		if(KM0123_CourseMSTUnHitFg) {
 			String sql = KM0123_CourseMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0124_CourseDeliveryMSTUnHitkFg) {
+		if(KM0124_CourseDeliveryMSTUnHitFg) {
 			String sql = KM0124_CourseDeliveryMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0125_MyDriverMSTUnHitkFg) {
+		if(KM0125_MyDriverMSTUnHitFg) {
 			String sql = KM0125_MyDriverMSTCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KM0126_MyDriverListUnHitkFg) {
+		if(KM0126_MyDriverListUnHitFg) {
 			String sql = KM0126_MyDriverListCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KT0010_OKURI_HDUnHitkFg) {
+		if(KT0010_OKURI_HDUnHitFg) {
 			String sql = KT0010_OKURI_HDCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KT0011_OKURI_MSUnHitkFg) {
+		if(KT0011_OKURI_MSUnHitFg) {
 			String sql = KT0011_OKURI_MSCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KT0012_OKURI_PROGRESSUnHitkFg) {
+		if(KT0012_OKURI_PROGRESSUnHitFg) {
 			String sql = KT0012_OKURI_PROGRESSCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KT0013_SEIKYUUnHitkFg) {
+		if(KT0013_SEIKYUUnHitFg) {
 			String sql = KT0013_SEIKYUCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KT0023_SHIHARAIUnHitkFg) {
+		if(KT0023_SHIHARAIUnHitFg) {
 			String sql = KT0023_SHIHARAICreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KT0040_PrintControlUnHitkFg) {
+		if(KT0040_PrintControlUnHitFg) {
 			String sql = KT0040_PrintControlCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KT020_HAISHA_HDUnHitkFg) {
+		if(KT020_HAISHA_HDUnHitFg) {
 			String sql = KT020_HAISHA_HDCreateSql();
 			KickSql("NANKO",sql);
 		}
-		if(KT021_HAISHA_MSUnHitkFg) {
+		if(KT021_HAISHA_MSUnHitFg) {
 			String sql = KT021_HAISHA_MSCreateSql();
 			KickSql("NANKO",sql);
 		}
@@ -2039,6 +2041,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	
@@ -2073,6 +2076,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	
@@ -2163,6 +2167,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	
@@ -2284,6 +2289,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	private static String KM0030_CLIENTMSTCreateSql() {
@@ -2321,91 +2327,92 @@ public class A00040TableCheck{
 	}
 	
 	private static String  KM0030_CLIENTMSTAltherTableSql(ArrayList<String> NoHitColumn){
-			String sql = ""
-					+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST";
-			for(int i=0;i<NoHitColumn.size();i++) {
-				if(0<i) {sql = sql + ",";}
-				switch(NoHitColumn.get(i)) {
-					case "cl_cd":
-						sql = sql + " ADD cl_cd varchar(20) NOT NULL";
-						break;
-					case "ClGpCD":
-						sql = sql + " ADD ClGpCD varchar(50) DEFAULT NULL";
-						break;
-					case "WHCD":
-						sql = sql + " ADD WHCD varchar(20) NOT NULL";
-						break;
-					case "CLName01":
-						sql = sql + " ADD CLName01 varchar(50) DEFAULT NULL";
-						break;
-					case "CLName02":
-						sql = sql + " ADD CLName02 varchar(50) DEFAULT NULL";
-						break;
-					case "CLName03":
-						sql = sql + " ADD CLName03 varchar(50) DEFAULT NULL";
-						break;
-					case "Post":
-						sql = sql + " ADD Post varchar(20) DEFAULT NULL";
-						break;
-					case "Add01":
-						sql = sql + " ADD Add01 varchar(100) DEFAULT NULL";
-						break;
-					case "Add02":
-						sql = sql + " ADD Add02 varchar(100) DEFAULT NULL";
-						break;
-					case "Add03":
-						sql = sql + " ADD Add03 varchar(100) DEFAULT NULL";
-						break;
-					case "Tel":
-						sql = sql + " ADD Tel varchar(20) DEFAULT NULL";
-						break;
-					case "Fax":
-						sql = sql + " ADD Fax varchar(20) DEFAULT NULL";
-						break;
-					case "Mail":
-						sql = sql + " ADD Mail varchar(100) DEFAULT NULL";
-						break;
-					case "MunicCd":
-						sql = sql + " ADD MunicCd varchar(20) DEFAULT NULL";
-						break;
-					case "Com01":
-						sql = sql + " ADD Com01 varchar(100) DEFAULT NULL";
-						break;
-					case "Com02":
-						sql = sql + " ADD Com02 varchar(100) DEFAULT NULL";
-						break;
-					case "Com03":
-						sql = sql + " ADD Com03 varchar(100) DEFAULT NULL";
-						break;
-					case "ShimeDate":
-						sql = sql + " ADD ShimeDate int(11) DEFAULT '99'";
-						break;
-					case "ShimeBasis":
-						sql = sql + " ADD ShimeBasis int(11) DEFAULT '0'";
-						break;
-					case "EntryDate":
-						sql = sql + " ADD EntryDate datetime DEFAULT NULL";
-						break;
-					case "UpdateDate":
-						sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
-						break;
-					case "EntryUser":
-						sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
-						break;
-					case "UpdateUser":
-						sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
-						break;
-					case "PTMSCD":
-						sql = sql + " ADD PTMSCD varchar(20) DEFAULT NULL";
-						break;
-					case "DelFg":
-						sql = sql + " ADD DelFg int(11) NOT NULL DEFAULT '0'";
-						break;
-					default:
-						break;
-				}
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "cl_cd":
+					sql = sql + " ADD cl_cd varchar(20) NOT NULL";
+					break;
+				case "ClGpCD":
+					sql = sql + " ADD ClGpCD varchar(50) DEFAULT NULL";
+					break;
+				case "WHCD":
+					sql = sql + " ADD WHCD varchar(20) NOT NULL";
+					break;
+				case "CLName01":
+					sql = sql + " ADD CLName01 varchar(50) DEFAULT NULL";
+					break;
+				case "CLName02":
+					sql = sql + " ADD CLName02 varchar(50) DEFAULT NULL";
+					break;
+				case "CLName03":
+					sql = sql + " ADD CLName03 varchar(50) DEFAULT NULL";
+					break;
+				case "Post":
+					sql = sql + " ADD Post varchar(20) DEFAULT NULL";
+					break;
+				case "Add01":
+					sql = sql + " ADD Add01 varchar(100) DEFAULT NULL";
+					break;
+				case "Add02":
+					sql = sql + " ADD Add02 varchar(100) DEFAULT NULL";
+					break;
+				case "Add03":
+					sql = sql + " ADD Add03 varchar(100) DEFAULT NULL";
+					break;
+				case "Tel":
+					sql = sql + " ADD Tel varchar(20) DEFAULT NULL";
+					break;
+				case "Fax":
+					sql = sql + " ADD Fax varchar(20) DEFAULT NULL";
+					break;
+				case "Mail":
+					sql = sql + " ADD Mail varchar(100) DEFAULT NULL";
+					break;
+				case "MunicCd":
+					sql = sql + " ADD MunicCd varchar(20) DEFAULT NULL";
+					break;
+				case "Com01":
+					sql = sql + " ADD Com01 varchar(100) DEFAULT NULL";
+					break;
+				case "Com02":
+					sql = sql + " ADD Com02 varchar(100) DEFAULT NULL";
+					break;
+				case "Com03":
+					sql = sql + " ADD Com03 varchar(100) DEFAULT NULL";
+					break;
+				case "ShimeDate":
+					sql = sql + " ADD ShimeDate int(11) DEFAULT '99'";
+					break;
+				case "ShimeBasis":
+					sql = sql + " ADD ShimeBasis int(11) DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				case "PTMSCD":
+					sql = sql + " ADD PTMSCD varchar(20) DEFAULT NULL";
+					break;
+				case "DelFg":
+					sql = sql + " ADD DelFg int(11) NOT NULL DEFAULT '0'";
+					break;
+				default:
+					break;
 			}
-			return sql;
+		}
+		sql = sql + ";";
+		return sql;
 	 }
 
 	private static String KM0031_CLIENT_GROUPCreateSql() {
@@ -2511,6 +2518,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -2633,6 +2641,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -2719,6 +2728,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -2769,6 +2779,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	
@@ -2875,6 +2886,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	
@@ -3070,6 +3082,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -3113,6 +3126,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -3228,6 +3242,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -3303,6 +3318,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -3542,6 +3558,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -3621,6 +3638,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -3684,6 +3702,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -3755,6 +3774,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	private static String KM0090_PAYBASEMSTCreateSql() {
@@ -3992,6 +4012,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -4071,6 +4092,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -4122,6 +4144,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -4177,6 +4200,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	private static String KM0122_CourseGlpMSTCreateSql() {
@@ -4227,6 +4251,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	
@@ -4302,6 +4327,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -4361,6 +4387,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -4421,6 +4448,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -4489,6 +4517,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	
@@ -4908,6 +4937,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -5091,6 +5121,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -5174,6 +5205,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -5309,6 +5341,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -5416,6 +5449,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -5480,6 +5514,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 	
@@ -5691,6 +5726,7 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
 		return sql;
 	}
 
@@ -5803,11 +5839,1478 @@ public class A00040TableCheck{
 					break;
 			}
 		}
+		sql = sql + ";";
+		return sql;
+	}
+	
+	//WANKOデータベースの必要なテーブルを確認する
+	private static void WankoDBCheck() {
+		String[] TableName=TabeleList("WANKO");
+		
+		boolean WM0000PARAMETERUnHitFg = true;
+		boolean WM0010LOCATIONMSTUnHitFg = true;
+		boolean WM0010SupplierUnHitFg = true;
+		boolean WM0015_BerthMstUnHitFg = true;
+		boolean WM0016_PitGlpMSTUnHitFg = true;
+		boolean WM0017_PitMSTUnHitFg = true;
+		boolean WM0020AdjustReasonUnHitFg = true;
+		boolean WM0031WhFeeBaseMstInUnHitFg = true;
+		boolean WM0032WhFeeBaseMstOutUnHitFg = true;
+		boolean WM0033WhFeeBaseMstStockUnHitFg = true;
+		boolean WM0034WhFeeBaseMstAdjustUnHitFg = true;
+		boolean WW0010ArrivalPlanHdUnHitFg = true;
+		boolean WW0011ArrivalPlanMsUnHitFg = true;
+		boolean WW0012ArrivalHdUnHitFg = true;
+		boolean WW0013ArrivaMsUnHitFg = true;
+		boolean WW0015StockUnHitFg = true;
+		boolean WW0016StockAdjustUnHitFg = true;
+		boolean WW0020ShipPlovisionUnHitFg = true;
+		boolean WW0025BerthReservationUnHitFg = true;
+		boolean WW013101WhFeeInHdUnHitFg = true;
+		boolean WW013102WhFeeInMsUnHitFg = true;
+		boolean WW013201WhFeeOutHdUnHitFg = true;
+		boolean WW013202WhFeeOutMsUnHitFg = true;
+		boolean WW013301WhFeeStockHdUnHitFg = true;
+		boolean WW013302WhFeeStockMsUnHitFg = true;
+		boolean WW013401WhFeeAdjustHdUnHitFg = true;
+		boolean WW013402WhFeeAdjustMsUnHitFg = true;
+		boolean WW013501WhFeeOtherUnHitFg = true;
+		boolean WW014001WhFeeInvoiceUnHitFg = true;
+
+		for(int i=0;i<TableName.length;i++) {
+			switch(TableName[i]){
+				case "WM0000PARAMETER":
+					WM0000PARAMETERUnHitFg = false; 
+					break;
+				case "WM0010LOCATIONMST":
+					WM0010LOCATIONMSTUnHitFg = false; 
+					break;
+				case "WM0010Supplier":
+					WM0010SupplierUnHitFg = false; 
+					break;
+				case "WM0015_BerthMst":
+					WM0015_BerthMstUnHitFg = false; 
+					break;
+				case "WM0016_PitGlpMST":
+					WM0016_PitGlpMSTUnHitFg = false;
+					break;
+				case "WM0017_PitMST":
+					WM0017_PitMSTUnHitFg = false; 
+					break;
+				case "WM0020AdjustReason":
+					WM0020AdjustReasonUnHitFg = false; 
+					break;
+				case "WM0031WhFeeBaseMstIn":
+					WM0031WhFeeBaseMstInUnHitFg = false; 
+					break;
+				case "WM0032WhFeeBaseMstOut":
+					WM0032WhFeeBaseMstOutUnHitFg = false; 
+					break;
+				case "WM0033WhFeeBaseMstStock":
+					WM0033WhFeeBaseMstStockUnHitFg = false; 
+					break;
+				case "WM0034WhFeeBaseMstAdjust":
+					WM0034WhFeeBaseMstAdjustUnHitFg = false; 
+					break;
+				case "WW0010ArrivalPlanHd":
+					WW0010ArrivalPlanHdUnHitFg = false; 
+					break;
+				case "WW0011ArrivalPlanMs":
+					WW0011ArrivalPlanMsUnHitFg = false; 
+					break;
+				case "WW0012ArrivalHd":
+					WW0012ArrivalHdUnHitFg = false; 
+					break;
+				case "WW0013ArrivaMs":
+					WW0013ArrivaMsUnHitFg = false; 
+					break;
+				case "WW0015Stock":
+					WW0015StockUnHitFg = false; 
+					break;
+				case "WW0016StockAdjust":
+					WW0016StockAdjustUnHitFg = false; 
+					break;
+				case "WW0020ShipPlovision":
+					WW0020ShipPlovisionUnHitFg = false; 
+					break;
+				case "WW0025BerthReservation":
+					WW0025BerthReservationUnHitFg = false; 
+					break;
+				case "WW013101WhFeeInHd":
+					WW013101WhFeeInHdUnHitFg = false; 
+					break;
+				case "WW013102WhFeeInMs":
+					WW013102WhFeeInMsUnHitFg = false; 
+					break;
+				case "WW013201WhFeeOutHd":
+					WW013201WhFeeOutHdUnHitFg = false; 
+					break;
+				case "WW013202WhFeeOutMs":
+					WW013202WhFeeOutMsUnHitFg = false; 
+					break;
+				case "WW013301WhFeeStockHd":
+					WW013301WhFeeStockHdUnHitFg = false; 
+					break;
+				case "WW013302WhFeeStockMs":
+					WW013302WhFeeStockMsUnHitFg = false; 
+					break;
+				case "WW013401WhFeeAdjustHd":
+					WW013401WhFeeAdjustHdUnHitFg = false; 
+					break;
+				case "WW013402WhFeeAdjustMs":
+					WW013402WhFeeAdjustMsUnHitFg = false; 
+					break;
+				case "WW013501WhFeeOther":
+					WW013501WhFeeOtherUnHitFg = false; 
+					break;
+				case "WW014001WhFeeInvoice":
+					WW014001WhFeeInvoiceUnHitFg = false; 
+					break;
+				default:
+					break;
+			}
+		}
+		if(WM0000PARAMETERUnHitFg) {
+			String sql = WM0000PARAMETERTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0010LOCATIONMSTUnHitFg) {
+			String sql = WM0010LOCATIONMSTTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0010SupplierUnHitFg) {
+			String sql = WM0010SupplierTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0015_BerthMstUnHitFg) {
+			String sql = WM0015_BerthMstTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0016_PitGlpMSTUnHitFg) {
+			String sql = WM0016_PitGlpMSTTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0017_PitMSTUnHitFg) {
+			String sql = WM0017_PitMSTTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0020AdjustReasonUnHitFg) {
+			String sql = WM0020AdjustReasonTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0031WhFeeBaseMstInUnHitFg) {
+			String sql = WM0031WhFeeBaseMstInTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0032WhFeeBaseMstOutUnHitFg) {
+			String sql = WM0032WhFeeBaseMstOutTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0033WhFeeBaseMstStockUnHitFg) {
+			String sql = WM0033WhFeeBaseMstStockTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WM0034WhFeeBaseMstAdjustUnHitFg) {
+			String sql = WM0034WhFeeBaseMstAdjustTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW0010ArrivalPlanHdUnHitFg) {
+			String sql = WW0010ArrivalPlanHdTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW0011ArrivalPlanMsUnHitFg) {
+			String sql = WW0011ArrivalPlanMsTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW0012ArrivalHdUnHitFg) {
+			String sql = WW0012ArrivalHdTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW0013ArrivaMsUnHitFg) {
+			String sql = WW0013ArrivaMsTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW0015StockUnHitFg) {
+			String sql = WW0015StockTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW0016StockAdjustUnHitFg) {
+			String sql = WW0016StockAdjustTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW0020ShipPlovisionUnHitFg) {
+			String sql = WW0020ShipPlovisionTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW0025BerthReservationUnHitFg) {
+			String sql = WW0025BerthReservationTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013101WhFeeInHdUnHitFg) {
+			String sql = WW013101WhFeeInHdTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013102WhFeeInMsUnHitFg) {
+			String sql = WW013102WhFeeInMsTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013201WhFeeOutHdUnHitFg) {
+			String sql = WW013201WhFeeOutHdTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013202WhFeeOutMsUnHitFg) {
+			String sql = WW013202WhFeeOutMsTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013301WhFeeStockHdUnHitFg) {
+			String sql = WW013301WhFeeStockHdTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013302WhFeeStockMsUnHitFg) {
+			String sql = WW013302WhFeeStockMsTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013401WhFeeAdjustHdUnHitFg) {
+			String sql = WW013401WhFeeAdjustHdTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013402WhFeeAdjustMsUnHitFg) {
+			String sql = WW013402WhFeeAdjustMsTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW013501WhFeeOtherUnHitFg) {
+			String sql = WW013501WhFeeOtherTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW014001WhFeeInvoiceUnHitFg) {
+			String sql = WW014001WhFeeInvoiceTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		
+		//テーブルのフィールドチェック ⇒ 必要フィールドなければ作る
+		String[] ColumnList = null;
+		String[] NeedColmn = null;
+		ArrayList<String> NoHitColumn = null;
+		
+		ColumnList = ColumnList("WANKO","WM0000PARAMETER");
+		NeedColmn = new String[29];
+
+		NeedColmn[ 0] = "ClWh";
+		NeedColmn[ 1] = "ClCd";
+		NeedColmn[ 2] = "ParaCd";
+		NeedColmn[ 3] = "ParaCdSeq";
+		NeedColmn[ 4] = "ParaName";
+		NeedColmn[ 5] = "ParaTxt01";
+		NeedColmn[ 6] = "ParaTxt02";
+		NeedColmn[ 7] = "ParaTxt03";
+		NeedColmn[ 8] = "ParaTxt04";
+		NeedColmn[ 9] = "ParaTxt05";
+		NeedColmn[10] = "ParaTxt06";
+		NeedColmn[11] = "ParaTxt07";
+		NeedColmn[12] = "ParaTxt08";
+		NeedColmn[13] = "ParaTxt09";
+		NeedColmn[14] = "ParaTxt10";
+		NeedColmn[15] = "ParaInt01";
+		NeedColmn[16] = "ParaInt02";
+		NeedColmn[17] = "ParaInt03";
+		NeedColmn[18] = "ParaInt04";
+		NeedColmn[19] = "ParaInt05";
+		NeedColmn[20] = "ParaInt06";
+		NeedColmn[21] = "ParaInt07";
+		NeedColmn[22] = "ParaInt08";
+		NeedColmn[23] = "ParaInt09";
+		NeedColmn[24] = "ParaInt10";
+		NeedColmn[25] = "EntryDate";
+		NeedColmn[26] = "UpdateDate";
+		NeedColmn[27] = "EntryUser";
+		NeedColmn[28] = "UpdateUser";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0000PARAMETERAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		ColumnList = ColumnList("WANKO","WM0010LOCATIONMST");
+		NeedColmn = new String[8];
+
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "WhCd";
+		NeedColmn[ 2] = "Loc";
+		NeedColmn[ 3] = "EntryDate";
+		NeedColmn[ 4] = "UpdateDate";
+		NeedColmn[ 5] = "EntryUser";
+		NeedColmn[ 6] = "UpdateUser";
+		NeedColmn[ 7] = "Type";
+				
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WM0010LOCATIONMSTAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+
+		
+	}
+	
+	private static String WM0000PARAMETERTableCreateSql() {
+		//パラメータマスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0000PARAMETER` ("
+				+"  `ClWh` varchar(20) NOT NULL,"
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `ParaCd` varchar(20) NOT NULL,"
+				+"  `ParaCdSeq` int(11) NOT NULL,"
+				+"  `ParaName` varchar(200) DEFAULT '',"
+				+"  `ParaTxt01` varchar(200) DEFAULT '',"
+				+"  `ParaTxt02` varchar(200) DEFAULT '',"
+				+"  `ParaTxt03` varchar(200) DEFAULT '',"
+				+"  `ParaTxt04` varchar(200) DEFAULT '',"
+				+"  `ParaTxt05` varchar(200) DEFAULT '',"
+				+"  `ParaTxt06` varchar(200) DEFAULT '',"
+				+"  `ParaTxt07` varchar(200) DEFAULT '',"
+				+"  `ParaTxt08` varchar(200) DEFAULT '',"
+				+"  `ParaTxt09` varchar(200) DEFAULT '',"
+				+"  `ParaTxt10` varchar(200) DEFAULT '',"
+				+"  `ParaInt01` int(11) DEFAULT '0',"
+				+"  `ParaInt02` int(11) DEFAULT '0',"
+				+"  `ParaInt03` int(11) DEFAULT '0',"
+				+"  `ParaInt04` int(11) DEFAULT '0',"
+				+"  `ParaInt05` int(11) DEFAULT '0',"
+				+"  `ParaInt06` int(11) DEFAULT '0',"
+				+"  `ParaInt07` int(11) DEFAULT '0',"
+				+"  `ParaInt08` int(11) DEFAULT '0',"
+				+"  `ParaInt09` int(11) DEFAULT '0',"
+				+"  `ParaInt10` int(11) DEFAULT '0',"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`ClWh`,`ClCd`,`ParaCd`,`ParaCdSeq`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='WANKOパラメータマスタ';";
+		return sql;
+	}
+	
+	private static String WM0000PARAMETERAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WM0000PARAMETER";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClWh":
+					sql = sql + " ADD ClWh varchar(20) NOT NULL";
+					break;
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL";
+					break;
+				case "ParaCd":
+					sql = sql + " ADD ParaCd varchar(20) NOT NULL";
+					break;
+				case "ParaCdSeq":
+					sql = sql + " ADD ParaCdSeq int(11) NOT NULL";
+					break;
+				case "ParaName":
+					sql = sql + " ADD ParaName varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt01":
+					sql = sql + " ADD ParaTxt01 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt02":
+					sql = sql + " ADD ParaTxt02 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt03":
+					sql = sql + " ADD ParaTxt03 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt04":
+					sql = sql + " ADD ParaTxt04 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt05":
+					sql = sql + " ADD ParaTxt05 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt06":
+					sql = sql + " ADD ParaTxt06 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt07":
+					sql = sql + " ADD ParaTxt07 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt08":
+					sql = sql + " ADD ParaTxt08 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt09":
+					sql = sql + " ADD ParaTxt09 varchar(200) DEFAULT ''";
+					break;
+				case "ParaTxt10":
+					sql = sql + " ADD ParaTxt10 varchar(200) DEFAULT ''";
+					break;
+				case "ParaInt01":
+					sql = sql + " ADD ParaInt01 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt02":
+					sql = sql + " ADD ParaInt02 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt03":
+					sql = sql + " ADD ParaInt03 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt04":
+					sql = sql + " ADD ParaInt04 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt05":
+					sql = sql + " ADD ParaInt05 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt06":
+					sql = sql + " ADD ParaInt06 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt07":
+					sql = sql + " ADD ParaInt07 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt08":
+					sql = sql + " ADD ParaInt08 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt09":
+					sql = sql + " ADD ParaInt09 int(11) DEFAULT '0'";
+					break;
+				case "ParaInt10":
+					sql = sql + " ADD ParaInt10 int(11) DEFAULT '0'";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+	
+	
+	private static String WM0010LOCATIONMSTTableCreateSql() {
+		//ロケーションマスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0010LOCATIONMST` ("
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `WhCd` varchar(20) NOT NULL,"
+				+"  `Loc` varchar(20) NOT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) NOT NULL,"
+				+"  `UpdateUser` varchar(50) NOT NULL,"
+				+"  `Type` float DEFAULT '0',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`Loc`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ロケーションマスタ';";
 		return sql;
 	}
 
+	private static String WM0010LOCATIONMSTAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WM0010LOCATIONMST";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL";
+					break;
+				case "WhCd":
+					sql = sql + " ADD WhCd varchar(20) NOT NULL";
+					break;
+				case "Loc":
+					sql = sql + " ADD Loc varchar(20) NOT NULL";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) NOT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) NOT NULL";
+					break;
+				case "Type":
+					sql = sql + " ADD Type float DEFAULT '0'";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
+	
 
-
+	private static String WM0010SupplierTableCreateSql() {
+		//仕入先マスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0010Supplier` ("
+				+"  `ClWh` varchar(20) NOT NULL,"
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `SPCd` varchar(20) NOT NULL,"
+				+"  `SPName01` varchar(50) DEFAULT NULL,"
+				+"  `SPName02` varchar(50) DEFAULT NULL,"
+				+"  `SPName03` varchar(50) DEFAULT NULL,"
+				+"  `SPPost` varchar(10) DEFAULT NULL,"
+				+"  `SPAdd01` varchar(100) DEFAULT NULL,"
+				+"  `SPAdd02` varchar(100) DEFAULT NULL,"
+				+"  `SPAdd03` varchar(100) DEFAULT NULL,"
+				+"  `SPTel` varchar(20) DEFAULT NULL,"
+				+"  `SPFax` varchar(20) DEFAULT NULL,"
+				+"  `SPMail` varchar(200) DEFAULT NULL,"
+				+"  `Com01` varchar(100) DEFAULT NULL,"
+				+"  `Com02` varchar(100) DEFAULT NULL,"
+				+"  `Com03` varchar(100) DEFAULT NULL,"
+				+"  `PTMSCDBMN` varchar(12) DEFAULT NULL,"
+				+"  `PTMSCDNINUSHI` varchar(12) DEFAULT NULL,"
+				+"  `PaySite` int(11) DEFAULT '1',"
+				+"  `PayDate` int(11) DEFAULT '99',"
+				+"  `ShimeDate` int(11) DEFAULT '99',"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  `DECD` varchar(20) DEFAULT NULL,"
+				+"  `DepartmentCd` varchar(20) DEFAULT NULL,"
+				+"  PRIMARY KEY (`ClWh`,`ClCd`,`SPCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='仕入先マスタ';";
+		return sql;
+	}
+	
+	private static String WM0015_BerthMstTableCreateSql() {
+		//出荷バースマスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0015_BerthMst` ("
+				+"  `WhCd` varchar(20) NOT NULL,"
+				+"  `BerthCd` varchar(20) NOT NULL,"
+				+"  `BerthName` varchar(100) DEFAULT NULL,"
+				+"  `ENTRY_DATE` datetime DEFAULT NULL,"
+				+"  `UPDATE_DATE` datetime DEFAULT NULL,"
+				+"  `ENTRY_USER` varchar(50) DEFAULT NULL,"
+				+"  `UPDATE_USER` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`WhCd`,`BerthCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='出荷バースマスタ';";
+		return sql;
+	}
+	private static String WM0016_PitGlpMSTTableCreateSql() {
+		//仕分けピットグループマスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0016_PitGlpMST` ("
+			  	+"  `WhCd` varchar(20) NOT NULL COMMENT '出発倉庫コード',"
+			  	+"  `PitGlpCd` varchar(20) NOT NULL COMMENT 'ピットグループコード',"
+			  	+"  `PitGlpName` varchar(100) DEFAULT NULL COMMENT 'ピットグループ名',"
+			  	+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+			  	+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+			  	+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+			  	+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+			  	+"  PRIMARY KEY (`WhCd`,`PitGlpCd`)"
+				+")  ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='仕分けピットグループマスタ';";
+		return sql;
+	}
+	
+	private static String WM0017_PitMSTTableCreateSql() {
+		//仕分けピットマスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0017_PitMST` ("
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '出発倉庫コード',"
+				+"  `PitGlpCd` varchar(20) NOT NULL COMMENT 'ピットグループコード',"
+				+"  `PitCd` varchar(20) NOT NULL COMMENT 'ピットコード',"
+				+"  `PitName` varchar(100) DEFAULT NULL COMMENT 'ピット名',"
+				+"  `Status` int(11) NOT NULL DEFAULT '0' COMMENT 'ピット占有状態',"
+				+"  `TakeCoursePlanDate` datetime DEFAULT NULL COMMENT '占有中コース出荷予定日',"
+				+"  `TakeCourseGpCd` varchar(20) DEFAULT NULL COMMENT '占有中コースグループコード',"
+				+"  `TakeCourseCd` varchar(20) DEFAULT NULL COMMENT '占有中コースCd',"
+				+"  `TakeCourseEda` int(11) NOT NULL DEFAULT '0' COMMENT '占有中コース枝番',"
+				+"  `TakeCourseDeliveryCd` varchar(20) DEFAULT NULL COMMENT '占有中コース指定届先CD',"
+				+"  `TakeCourseDptCd` varchar(20) DEFAULT NULL COMMENT '占有中コース指定届先部署CD',"
+				+"  `TakeCourse01PlanDate` datetime DEFAULT NULL COMMENT '待機コース01出荷予定日',"
+				+"  `TakeCourse01GpCd` varchar(20) DEFAULT NULL COMMENT '待機コース01グループコード',"
+				+"  `TakeCourse01Cd` varchar(20) DEFAULT NULL COMMENT '待機コース01Cd',"
+				+"  `TakeCourse01Eda` int(11) DEFAULT '0' COMMENT '待機コース01枝番',"
+				+"  `TakeCourse01DeliveryCd` varchar(20) DEFAULT NULL COMMENT '待機コース01指定届先CD',"
+				+"  `TakeCourse01DptCd` varchar(20) DEFAULT NULL COMMENT '待機コース01指定届先部署CD',"
+				+"  `TakeCourse02PlanDate` datetime DEFAULT NULL COMMENT '待機コース02出荷予定日',"
+				+"  `TakeCourse02GpCd` varchar(20) DEFAULT NULL COMMENT '待機コース02グループコード',"
+				+"  `TakeCourse02Cd` varchar(20) DEFAULT NULL COMMENT '待機コース02Cd',"
+				+"  `TakeCourse02Eda` int(11) DEFAULT '0' COMMENT '待機コース02枝番',"
+				+"  `TakeCourse02DeliveryCd` varchar(20) DEFAULT NULL COMMENT '待機コース02指定届先CD',"
+				+"  `TakeCourse02DptCd` varchar(20) DEFAULT NULL COMMENT '待機コース02指定届先部署CD',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  PRIMARY KEY (`WhCd`,`PitGlpCd`,`PitCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='仕分けピットマスタ';";
+		return sql;
+	}
+	
+	private static String WM0020AdjustReasonTableCreateSql() {
+		//調整理由マスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0020AdjustReason` ("
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `WhCd` varchar(20) NOT NULL,"
+				+"  `AdjustReasonCd` varchar(20) NOT NULL,"
+				+"  `AdjustReasonName` varchar(100) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`AdjustReasonCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='調整理由マスタ';";
+		return sql;
+	}
+	
+	private static String WM0031WhFeeBaseMstInTableCreateSql() {
+		//倉庫入荷料単価マスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0031WhFeeBaseMstIn` ("
+				+"  `ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+				+"  `ArrivalFeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '入荷料金コード',"
+				+"  `ArrivalFeeName` varchar(100) DEFAULT NULL COMMENT '入荷料金名',"
+				+"  `DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+				+"  `DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+				+"  `DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+				+"  `DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+				+"  `DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+				+"  `TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+				+"  `CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+				+"  `ShimeDate` int(11) NOT NULL DEFAULT '99' COMMENT '締め日',"
+				+"  `ArrivalBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷基本料金',"
+				+"  `ArrivalSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷伝票基本料金',"
+				+"  `ArrivalUnitFee` float NOT NULL DEFAULT '0' COMMENT '入荷料単価',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`ArrivalFeeCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫入荷料単価マスタ';";
+		return sql;
+	}
+	
+	private static String WM0032WhFeeBaseMstOutTableCreateSql() {
+		//倉庫出荷料単価マスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0032WhFeeBaseMstOut` ("
+				+"  `ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+				+"  `ShipFeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '出荷料金コード',"
+				+"  `ShipFeeName` varchar(100) DEFAULT NULL COMMENT '出荷料金名',"
+				+"  `DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+				+"  `DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+				+"  `DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+				+"  `DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+				+"  `DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+				+"  `TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+				+"  `CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+				+"  `ShimeDate` int(11) NOT NULL DEFAULT '99' COMMENT '締め日',"
+				+"  `ShipBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '出荷基本料金',"
+				+"  `ShipSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '出荷伝票基本料金',"
+				+"  `ShipUnitFee` float NOT NULL DEFAULT '0' COMMENT '出荷料単価',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `EntryDate` timestamp NULL DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` timestamp NULL DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`ShipFeeCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫出荷料単価マスタ';";
+		return sql;
+	}
+	
+	private static String WM0033WhFeeBaseMstStockTableCreateSql() {
+		//倉庫保管料単価マスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0033WhFeeBaseMstStock` ("
+				+"  `ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+				+"  `StockFeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '保管料金コード',"
+				+"  `StockFeeName` varchar(100) DEFAULT NULL COMMENT '保管料金名',"
+				+"  `DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+				+"  `DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+				+"  `DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+				+"  `DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+				+"  `DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+				+"  `TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+				+"  `CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+				+"  `CuttingDate` varchar(100) DEFAULT NULL COMMENT '期締め設定',"
+				+"  `ShimeDate` int(11) NOT NULL DEFAULT '99' COMMENT '締め日',"
+				+"  `StockBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '保管基本料金',"
+				+"  `StockUnitFee` float NOT NULL DEFAULT '0' COMMENT '保管料単価',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`StockFeeCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫保管料単価マスタ';";
+		return sql;
+	}
+	
+	private static String WM0034WhFeeBaseMstAdjustTableCreateSql() {
+		//倉庫在庫調整料単価マスタテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WM0034WhFeeBaseMstAdjust` ("
+				+"  `ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+				+"  `AdjustFeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '調整料金コード',"
+				+"  `AdjustFeeName` varchar(100) DEFAULT NULL COMMENT '調整料金名',"
+				+"  `DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+				+"  `DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+				+"  `DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+				+"  `DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+				+"  `DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+				+"  `TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+				+"  `CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+				+"  `AdjustReasonCd` varchar(20) DEFAULT NULL COMMENT '調整理由CD',"
+				+"  `ShimeDate` int(11) NOT NULL DEFAULT '99' COMMENT '締め日',"
+				+"  `AdjustBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '調整基本料金',"
+				+"  `AdjustUnitFee` float NOT NULL DEFAULT '0' COMMENT '調整料単価',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`AdjustFeeCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫在庫調整料単価マスタ';";
+		return sql;
+	}
+	
+	private static String WW0010ArrivalPlanHdTableCreateSql() {
+		//入荷予定ヘッダテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW0010ArrivalPlanHd` ("
+				+"  `ClWh` varchar(20) NOT NULL,"
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `ArrNo` varchar(50) NOT NULL,"
+				+"  `ClArrNo` varchar(50) DEFAULT NULL,"
+				+"  `PlanDate` datetime DEFAULT NULL,"
+				+"  `ActualDate` datetime DEFAULT NULL,"
+				+"  `SpCd` varchar(20) DEFAULT NULL,"
+				+"  `SpName01` varchar(100) DEFAULT NULL,"
+				+"  `SpName02` varchar(100) DEFAULT NULL,"
+				+"  `SpName03` varchar(100) DEFAULT NULL,"
+				+"  `SpPost` varchar(20) DEFAULT NULL,"
+				+"  `SpAdd01` varchar(100) DEFAULT NULL,"
+				+"  `SpAdd02` varchar(100) DEFAULT NULL,"
+				+"  `SpAdd03` varchar(100) DEFAULT NULL,"
+				+"  `SpTel` varchar(20) DEFAULT NULL,"
+				+"  `ArCom01` varchar(100) DEFAULT NULL,"
+				+"  `ArCom02` varchar(100) DEFAULT NULL,"
+				+"  `ArCom03` varchar(100) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  `FixFg` int(11) DEFAULT '0',"
+				+"  PRIMARY KEY (`ClWh`,`ClCd`,`ArrNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='入荷予定ヘッダ';";
+		return sql;
+	}
+	
+	private static String WW0011ArrivalPlanMsTableCreateSql() {
+		//入荷予定明細テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW0011ArrivalPlanMs` ("
+				+"  `ClWh` varchar(20) NOT NULL,"
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `ArrNo` varchar(20) NOT NULL,"
+				+"  `MsNo` int(11) NOT NULL DEFAULT '1',"
+				+"  `ItemCd` varchar(20) DEFAULT NULL,"
+				+"  `ClItemCd` varchar(20) DEFAULT NULL,"
+				+"  `JanCd` varchar(20) DEFAULT NULL,"
+				+"  `ItemMdNo` varchar(20) DEFAULT NULL,"
+				+"  `ItemName` varchar(100) DEFAULT NULL,"
+				+"  `lot` varchar(50) DEFAULT NULL,"
+				+"  `ExpDate` datetime DEFAULT NULL,"
+				+"  `PlanQty` int(11) DEFAULT '0',"
+				+"  `ActualQty` int(11) DEFAULT '0',"
+				+"  `ActualDate` datetime DEFAULT NULL,"
+				+"  `Com01` varchar(200) DEFAULT NULL,"
+				+"  `Com02` varchar(200) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`ClWh`,`ClCd`,`ArrNo`,`MsNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='入荷予定明細';";
+		return sql;
+	}
+	private static String WW0012ArrivalHdTableCreateSql() {
+		//入荷実績ヘッダテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW0012ArrivalHd` ("
+				+"  `ClWh` varchar(20) NOT NULL,"
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `ArrNo` varchar(50) NOT NULL,"
+				+"  `ArrCount` int(11) NOT NULL DEFAULT '0',"
+				+"  `ClArrNo` varchar(50) DEFAULT NULL,"
+				+"  `PlanDate` datetime DEFAULT NULL,"
+				+"  `ActualDate` datetime DEFAULT NULL,"
+				+"  `SpCd` varchar(20) DEFAULT NULL,"
+				+"  `SpName01` varchar(50) DEFAULT NULL,"
+				+"  `SpName02` varchar(50) DEFAULT NULL,"
+				+"  `SpName03` varchar(50) DEFAULT NULL,"
+				+"  `SpPost` varchar(20) DEFAULT NULL,"
+				+"  `SpAdd01` varchar(100) DEFAULT NULL,"
+				+"  `SpAdd02` varchar(100) DEFAULT NULL,"
+				+"  `SpAdd03` varchar(100) DEFAULT NULL,"
+				+"  `SpTel` varchar(20) DEFAULT NULL,"
+				+"  `ArCom01` varchar(100) DEFAULT NULL,"
+				+"  `ArCom02` varchar(100) DEFAULT NULL,"
+				+"  `ArCom03` varchar(100) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`ClWh`,`ClCd`,`ArrNo`,`ArrCount`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='入荷実績ヘッダ';";
+		return sql;
+	}
+	
+	private static String WW0013ArrivaMsTableCreateSql() {
+		//入荷実績明細テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW0013ArrivaMs` ("
+				+"  `ClWh` varchar(20) NOT NULL,"
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `ArrNo` varchar(20) NOT NULL,"
+				+"  `ArrCount` int(11) NOT NULL DEFAULT '0',"
+				+"  `MsNo` int(11) NOT NULL DEFAULT '1',"
+				+"  `MsSeq` int(11) NOT NULL DEFAULT '0',"
+				+"  `ItemCd` varchar(20) DEFAULT NULL,"
+				+"  `ClItemCd` varchar(20) DEFAULT NULL,"
+				+"  `JanCd` varchar(20) DEFAULT NULL,"
+				+"  `ItemMdNo` varchar(20) DEFAULT NULL,"
+				+"  `ItemName` varchar(100) DEFAULT NULL,"
+				+"  `Lot` varchar(50) DEFAULT NULL,"
+				+"  `ExpDate` datetime DEFAULT NULL,"
+				+"  `PlanQty` int(11) DEFAULT '0',"
+				+"  `ActualQty` int(11) DEFAULT '0',"
+				+"  `ActualDate` datetime DEFAULT NULL,"
+				+"  `Com01` varchar(200) DEFAULT NULL,"
+				+"  `Com02` varchar(200) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`ClWh`,`ClCd`,`ArrNo`,`ArrCount`,`MsNo`,`MsSeq`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='入荷実績明細';";
+		return sql;
+	}
+	private static String WW0015StockTableCreateSql() {
+		//在庫テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW0015Stock` ("
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `WhCd` varchar(20) NOT NULL,"
+				+"  `Loc` varchar(15) NOT NULL,"
+				+"  `ItemCd` varchar(20) NOT NULL,"
+				+"  `Lot` varchar(20) NOT NULL,"
+				+"  `Expdate` datetime NOT NULL,"
+				+"  `ActualDate` datetime NOT NULL,"
+				+"  `Qty` int(11) DEFAULT '0',"
+				+"  `ShipPlanQty` int(11) DEFAULT '0',"
+				+"  `PossibleQty` int(11) DEFAULT '0',"
+				+"  `ItemName` varchar(100) DEFAULT NULL,"
+				+"  `ClItemCd` varchar(20) DEFAULT NULL,"
+				+"  `JanCd` varchar(20) DEFAULT NULL,"
+				+"  `ItemMdNo` varchar(20) DEFAULT NULL,"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`Loc`,`ItemCd`,`Lot`,`Expdate`,`ActualDate`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='在庫';";
+		return sql;
+	}
+	
+	private static String WW0016StockAdjustTableCreateSql() {
+		//在庫調整テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW0016StockAdjust` ("
+				+"  `ClCd` varchar(20) NOT NULL,"
+				+"  `WhCd` varchar(20) NOT NULL,"
+				+"  `AdjustNo` int(11) NOT NULL,"
+				+"  `AdjustReasonCd` varchar(20) DEFAULT NULL,"
+				+"  `AdjustReasonName` varchar(100) DEFAULT NULL,"
+				+"  `Adjustdate` datetime DEFAULT NULL,"
+				+"  `Loc` varchar(15) DEFAULT NULL,"
+				+"  `ItemCd` varchar(20) DEFAULT NULL,"
+				+"  `ItemName` varchar(100) DEFAULT NULL,"
+				+"  `Lot` varchar(20) DEFAULT NULL,"
+				+"  `ExpDate` datetime DEFAULT NULL,"
+				+"  `ActualDate` datetime DEFAULT NULL,"
+				+"  `BeforeQty` int(11) DEFAULT '0',"
+				+"  `ShipPlanQty` int(11) DEFAULT '0',"
+				+"  `PossibleQty` int(11) DEFAULT '0',"
+				+"  `AdjustQty` int(11) DEFAULT '0',"
+				+"  `AdjustCom01` varchar(100) DEFAULT NULL,"
+				+"  `AdjustCom02` varchar(100) DEFAULT NULL,"
+				+"  `AdjustCom03` varchar(100) DEFAULT NULL,"
+				+"  `AfterQty` int(11) DEFAULT '0',"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`AdjustNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='在庫調整';";
+		return sql;
+	}
+	
+	private static String WW0020ShipPlovisionTableCreateSql() {
+		//引当結果テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW0020ShipPlovision` ("
+				+"  `cl_cd` varchar(20) NOT NULL,"
+				+"  `InvoiceWHCD` varchar(20) NOT NULL,"
+				+"  `OkuriNo` int(11) NOT NULL,"
+				+"  `MsNo` int(11) NOT NULL,"
+				+"  `Seq` int(11) NOT NULL,"
+				+"  `OrderItemCd` varchar(20) DEFAULT NULL,"
+				+"  `OrderItemName01` varchar(100) DEFAULT NULL,"
+				+"  `OrderLot` varchar(20) DEFAULT NULL,"
+				+"  `OrderExpDate` datetime DEFAULT NULL,"
+				+"  `OrderQty` int(11) DEFAULT '0',"
+				+"  `ShipWhCd` varchar(20) DEFAULT NULL,"
+				+"  `ShipLoc` varchar(15) DEFAULT NULL,"
+				+"  `ShipItemCd` varchar(20) DEFAULT NULL,"
+				+"  `ShipLot` varchar(20) DEFAULT NULL,"
+				+"  `ShipExpdate` datetime DEFAULT NULL,"
+				+"  `ShipActualDate` datetime DEFAULT NULL,"
+				+"  `ShipQty` int(11) DEFAULT '0',"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  `FixFg` int(11) NOT NULL DEFAULT '0',"
+				+"  `PackingType` int(11) NOT NULL DEFAULT '0',"
+				+"  `PackingQty` int(11) NOT NULL DEFAULT '0',"
+				+"  `UnitName` varchar(20) DEFAULT NULL,"
+				+"  `PackingUnitQty` int(11) DEFAULT '1',"
+				+"  `BRShipQty` int(11) DEFAULT '0',"
+				+"  `CTShipQty` int(11) DEFAULT '0',"
+				+"  `CSShipQty` int(11) DEFAULT '0',"
+				+"  `PLShipQty` int(11) DEFAULT '0',"
+				+"  `BRUnitName` varchar(20) DEFAULT NULL,"
+				+"  `CTUnitName` varchar(20) DEFAULT NULL,"
+				+"  `CSUnitName` varchar(20) DEFAULT NULL,"
+				+"  `PLUnitName` varchar(20) DEFAULT NULL,"
+				+"  PRIMARY KEY (`cl_cd`,`InvoiceWHCD`,`OkuriNo`,`MsNo`,`Seq`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='引当結果';";
+		return sql;
+	}
+	
+	private static String WW0025BerthReservationTableCreateSql() {
+		//出荷バース予約テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW0025BerthReservation` ("
+				+"  `WhCd` varchar(20) NOT NULL,"
+				+"  `BerthCd` varchar(20) NOT NULL,"
+				+"  `ReserveDate` datetime NOT NULL,"
+				+"  `ReserveTimeStr` int(11) NOT NULL DEFAULT '0',"
+				+"  `ReserveTimeEnd` int(11) NOT NULL DEFAULT '0',"
+				+"  `HaishaNo` int(11) NOT NULL DEFAULT '0',"
+				+"  `EntryDate` datetime DEFAULT NULL,"
+				+"  `UpdateDate` datetime DEFAULT NULL,"
+				+"  `EntryUser` varchar(50) DEFAULT NULL,"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
+				+"  PRIMARY KEY (`HaishaNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='出荷バース予約';";
+		return sql;
+	}
+	
+	private static String WW013101WhFeeInHdTableCreateSql() {
+		//倉庫入荷料ヘッダテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013101WhFeeInHd` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `ArrivalFeeCd` varchar(20) NOT NULL COMMENT '入荷料金コード',"
+				+"  `ArrivalFeeName` varchar(100) DEFAULT NULL COMMENT '入荷料金名',"
+				+"  `DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+				+"  `DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+				+"  `DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+				+"  `DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+				+"  `DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+				+"  `TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+				+"  `CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `ArrivalBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷基本料金',"
+				+"  `ArrivalSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷伝票基本料金',"
+				+"  `ArrivalSlipFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '入荷伝票基本料金合計',"
+				+"  `ArrivalUnitFee` float NOT NULL DEFAULT '0' COMMENT '入荷料単価',"
+				+"  `ArrivalQtyTotal` int(11) NOT NULL DEFAULT '0' COMMENT '入荷数合計',"
+				+"  `ArrivalVolTotal` float NOT NULL DEFAULT '0' COMMENT '入荷量合計',"
+				+"  `ArrivalFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '入荷料',"
+				+"  `TaxFg` int(11) NOT NULL DEFAULT '0' COMMENT '税区分',"
+				+"  `TaxRate` int(11) NOT NULL DEFAULT '0' COMMENT '税率',"
+				+"  `ConsumptionTax` int(11) NOT NULL DEFAULT '0' COMMENT '消費税',"
+				+"  `WithOutTaxTotal` int(11) NOT NULL DEFAULT '0' COMMENT '税別合計金額',"
+				+"  `TotalFee` int(11) NOT NULL DEFAULT '0' COMMENT '税込請求額合計',"
+				+"  `FeeFixFg` int(11) NOT NULL DEFAULT '0' COMMENT '確定区分',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0' COMMENT 'パラメータマスタから採番',"
+				+"  `SlipCount` int(11) NOT NULL DEFAULT '0' COMMENT '伝票枚数',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`ArrivalFeeCd`,`ShimeDate`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫入荷料ヘッダ';";
+		return sql;
+	}
+	
+	private static String WW013102WhFeeInMsTableCreateSql() {
+		//倉庫入荷料明細テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013102WhFeeInMs` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `ArrivalFeeCd` varchar(20) NOT NULL COMMENT '入荷料金コード',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `ArrNo` varchar(20) NOT NULL COMMENT '入荷予定NO',"
+				+"  `ArrCount` int(11) NOT NULL COMMENT '入荷予定枝番',"
+				+"  `MsSeq` int(11) NOT NULL COMMENT '明細シーケンシャル番号',"
+				+"  `ClGpCD` varchar(20) DEFAULT NULL COMMENT '荷主グループ',"
+				+"  `ItemCd` varchar(20) NOT NULL COMMENT '商品コード',"
+				+"  `ClItemCd` varchar(20) NOT NULL COMMENT '荷主商品コード',"
+				+"  `JanCd` varchar(20) NOT NULL COMMENT 'ソースマーク_BCD',"
+				+"  `ItemMdNo` varchar(20) NOT NULL COMMENT '商品型番',"
+				+"  `ItemName` varchar(100) NOT NULL COMMENT '商品名',"
+				+"  `Lot` varchar(20) NOT NULL COMMENT 'ロット',"
+				+"  `ExpDate` datetime NOT NULL COMMENT '消費期限',"
+				+"  `PlanQty` int(11) NOT NULL DEFAULT '0' COMMENT '予定数量',"
+				+"  `ActualQty` int(11) NOT NULL DEFAULT '0' COMMENT '実績数',"
+				+"  `ActualDate` datetime NOT NULL COMMENT '入荷日',"
+				+"  `Com01` varchar(200) NOT NULL COMMENT 'コメント1',"
+				+"  `Com02` varchar(200) NOT NULL COMMENT 'コメント2',"
+				+"  `ArrivalSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷伝票基本料金',"
+				+"  `ArrivalUnitFee` float NOT NULL DEFAULT '0' COMMENT '入荷料単価',"
+				+"  `ItemWeight` float NOT NULL DEFAULT '0' COMMENT '商品重量',"
+				+"  `ItemSize` float NOT NULL DEFAULT '0' COMMENT '商品サイズ',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `ArrivalQty` int(11) NOT NULL DEFAULT '0' COMMENT '入荷数',"
+				+"  `ArrivalVol` float NOT NULL DEFAULT '0' COMMENT '入荷量',"
+				+"  `ArrivalFee` int(11) NOT NULL DEFAULT '0' COMMENT '入荷料',"
+				+"  `EntryDate` datetime NOT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime NOT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) NOT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) NOT NULL COMMENT '更新者',"
+				+"  `ClArrNo` varchar(50) DEFAULT NULL COMMENT '荷主予定番号',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`ArrivalFeeCd`,`ShimeDate`,`ArrNo`,`ArrCount`,`MsSeq`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫入荷料明細';";
+		return sql;
+	}
+	
+	private static String WW013201WhFeeOutHdTableCreateSql() {
+		//倉庫出荷料ヘッダテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013201WhFeeOutHd` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `ShipFeeCd` varchar(20) NOT NULL COMMENT '出荷料金コード',"
+				+"  `ShipFeeName` varchar(100) NOT NULL COMMENT '出荷料金名',"
+				+"  `DeliveryTypeCd01` varchar(20) NOT NULL COMMENT '運送タイプコード01',"
+				+"  `DeliveryTypeCd02` varchar(20) NOT NULL COMMENT '運送タイプコード02',"
+				+"  `DeliveryTypeCd03` varchar(20) NOT NULL COMMENT '運送タイプコード03',"
+				+"  `DeliveryTypeCd04` varchar(20) NOT NULL COMMENT '運送タイプコード04',"
+				+"  `DeliveryTypeCd05` varchar(20) NOT NULL COMMENT '運送タイプコード05',"
+				+"  `TildFG` varchar(20) NOT NULL COMMENT '温度区分',"
+				+"  `CategoryCd` varchar(20) NOT NULL COMMENT '商品カテゴリCD',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `ShipBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '出荷基本料金',"
+				+"  `ShipSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '出荷伝票基本料金',"
+				+"  `ShipSlipFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '出荷伝票基本料金合計',"
+				+"  `ShipUnitFee` float NOT NULL DEFAULT '0' COMMENT '出荷料単価',"
+				+"  `ShipQtyTotal` int(11) NOT NULL DEFAULT '0' COMMENT '出荷数合計',"
+				+"  `ShipVolTotal` float NOT NULL DEFAULT '0' COMMENT '出荷量合計',"
+				+"  `ShipFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '出荷料',"
+				+"  `TaxFg` int(11) NOT NULL DEFAULT '0' COMMENT '税区分',"
+				+"  `TaxRate` int(11) NOT NULL DEFAULT '0' COMMENT '税率',"
+				+"  `ConsumptionTax` int(11) NOT NULL DEFAULT '0' COMMENT '消費税',"
+				+"  `WithOutTaxTotal` int(11) NOT NULL DEFAULT '0' COMMENT '税別合計金額',"
+				+"  `TotalFee` int(11) NOT NULL DEFAULT '0' COMMENT '税込請求額合計',"
+				+"  `FeeFixFg` int(11) NOT NULL DEFAULT '0' COMMENT '確定区分',"
+				+"  `EntryDate` datetime NOT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime NOT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) NOT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) NOT NULL COMMENT '更新者',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0',"
+				+"  `SlipCount` int(11) NOT NULL DEFAULT '0' COMMENT '伝票枚数',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`ShipFeeCd`,`ShimeDate`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫出荷料';";
+		return sql;
+	}
+	
+	private static String WW013202WhFeeOutMsTableCreateSql() {
+		//倉庫出荷料明細テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013202WhFeeOutMs` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `ShipFeeCd` varchar(20) NOT NULL COMMENT '出荷料金コード',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `OkuriNo` int(11) NOT NULL COMMENT '送り状番号',"
+				+"  `MsNo` int(11) NOT NULL COMMENT '明細番号',"
+				+"  `Seq` int(11) NOT NULL COMMENT '引当枝番',"
+				+"  `ClGpCD` varchar(20) DEFAULT NULL COMMENT '荷主グループ',"
+				+"  `OrderItemCd` varchar(20) DEFAULT NULL COMMENT '商品コード',"
+				+"  `ClItemCd` varchar(20) DEFAULT NULL COMMENT '荷主商品コード',"
+				+"  `OrderItemName01` varchar(100) DEFAULT NULL COMMENT '品名01',"
+				+"  `OrderLot` varchar(20) DEFAULT NULL COMMENT '受注ロット指定',"
+				+"  `OrderExpDate` datetime DEFAULT NULL COMMENT '受注賞味期限指定',"
+				+"  `OrderQty` float NOT NULL DEFAULT '0' COMMENT '受注個数',"
+				+"  `ShipWhCd` varchar(20) DEFAULT NULL COMMENT '倉庫コード',"
+				+"  `ShipLoc` varchar(15) DEFAULT NULL COMMENT 'ロケーション',"
+				+"  `ShipItemCd` varchar(20) DEFAULT NULL COMMENT '商品コード',"
+				+"  `ShipLot` varchar(20) DEFAULT NULL COMMENT 'ロット',"
+				+"  `ShipExpdate` datetime DEFAULT NULL COMMENT '消費期限',"
+				+"  `ShipActualDate` datetime DEFAULT NULL COMMENT '入荷実績日',"
+				+"  `WmsShipDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '倉庫出荷日',"
+				+"  `FixFg` int(11) NOT NULL DEFAULT '0' COMMENT '引落済フラグ',"
+				+"  `PackingType` int(11) NOT NULL DEFAULT '0' COMMENT '荷姿タイプ',"
+				+"  `PackingQty` int(11) NOT NULL DEFAULT '0' COMMENT '荷姿数量',"
+				+"  `UnitName` varchar(20) DEFAULT NULL COMMENT '荷姿単位',"
+				+"  `PackingUnitQty` int(11) NOT NULL DEFAULT '0' COMMENT '荷姿単位のバラ入数',"
+				+"  `BRShipQty` int(11) NOT NULL DEFAULT '0' COMMENT 'バラ数量',"
+				+"  `CTShipQty` int(11) NOT NULL DEFAULT '0' COMMENT 'カートン数量',"
+				+"  `CSShipQty` int(11) NOT NULL DEFAULT '0' COMMENT 'ケース数量',"
+				+"  `PLShipQty` int(11) NOT NULL DEFAULT '0' COMMENT 'パレット数量',"
+				+"  `BRUnitName` varchar(20) DEFAULT NULL COMMENT 'バラ単位名',"
+				+"  `CTUnitName` varchar(20) DEFAULT NULL COMMENT 'カートン単位名',"
+				+"  `CSUnitName` varchar(20) DEFAULT NULL COMMENT 'ケース単位名',"
+				+"  `PLUnitName` varchar(20) DEFAULT NULL COMMENT 'パレット単位名',"
+				+"  `ShipSlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '出荷伝票基本料金',"
+				+"  `ShipUnitFee` float NOT NULL DEFAULT '0' COMMENT '出荷料単価',"
+				+"  `ItemWeight` float NOT NULL DEFAULT '0' COMMENT '商品重量',"
+				+"  `ItemSize` float NOT NULL DEFAULT '0' COMMENT '商品サイズ',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `ShipQty` int(11) NOT NULL DEFAULT '0' COMMENT '出荷数',"
+				+"  `ShipVol` float NOT NULL DEFAULT '0' COMMENT '出荷量',"
+				+"  `ShipFee` int(11) NOT NULL DEFAULT '0' COMMENT '出荷料',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  `ClDeliNo` varchar(50) DEFAULT NULL COMMENT '荷主管理番号',"
+				+"  `ClOrderNo` varchar(50) DEFAULT NULL COMMENT '荷主管理番号',"
+				+"  `NiokuriCd` varchar(20) DEFAULT NULL COMMENT '荷送り人コード',"
+				+"  `NiokuriDepartmentCd` varchar(20) DEFAULT NULL COMMENT '部署CD',"
+				+"  `NiokuriName01` varchar(50) DEFAULT NULL COMMENT '荷送り人名01',"
+				+"  `NiokuriName02` varchar(50) DEFAULT NULL COMMENT '荷送り人名02',"
+				+"  `NiokuriName03` varchar(50) DEFAULT NULL COMMENT '荷送り人名03',"
+				+"  `NiokuriPost` varchar(20) DEFAULT NULL COMMENT '荷送り人郵便番号',"
+				+"  `NiokuriAdd01` varchar(100) DEFAULT NULL COMMENT '荷送り人住所01',"
+				+"  `NiokuriAdd02` varchar(100) DEFAULT NULL COMMENT '荷送り人住所02',"
+				+"  `NiokuriAdd03` varchar(100) DEFAULT NULL COMMENT '荷送り人住所03',"
+				+"  `NioKuriTel` varchar(20) DEFAULT NULL COMMENT '荷送り人TEL',"
+				+"  `NioKuriFax` varchar(20) DEFAULT NULL COMMENT '荷送り人FAX',"
+				+"  `NioKuriMail` varchar(200) DEFAULT NULL COMMENT '荷送り人MAIL',"
+				+"  `NiokuriMunicCd` varchar(20) DEFAULT NULL COMMENT '荷送人市区町村CD',"
+				+"  `DeliCd` varchar(20) DEFAULT NULL COMMENT '荷届け先コード',"
+				+"  `ClDeliCd` varchar(20) DEFAULT NULL COMMENT '荷主荷届け先コード',"
+				+"  `DeliDepartmentCd` varchar(20) DEFAULT NULL COMMENT '部署CD',"
+				+"  `DeliName01` varchar(50) DEFAULT NULL COMMENT '荷届け先名01',"
+				+"  `DeliName02` varchar(50) DEFAULT NULL COMMENT '荷届け先名02',"
+				+"  `DeliName03` varchar(50) DEFAULT NULL COMMENT '荷届け先名03',"
+				+"  `DeliPost` varchar(20) DEFAULT NULL COMMENT '荷届け先郵便番号',"
+				+"  `DeliAdd01` varchar(100) DEFAULT NULL COMMENT '荷届け先住所01',"
+				+"  `DeliAdd02` varchar(100) DEFAULT NULL COMMENT '荷届け先住所02',"
+				+"  `DeliAdd03` varchar(100) DEFAULT NULL COMMENT '荷届け先住所03',"
+				+"  `DeliTel` varchar(20) DEFAULT NULL COMMENT '荷届け先TEL',"
+				+"  `DeliFax` varchar(20) DEFAULT NULL COMMENT '荷届け先FAX',"
+				+"  `DeliMail` varchar(200) DEFAULT NULL COMMENT '荷届け先MAIL',"
+				+"  `DeliMunicCd` varchar(20) DEFAULT NULL COMMENT '荷届先市区町村CD',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`ShipFeeCd`,`ShimeDate`,`OkuriNo`,`MsNo`,`Seq`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫出荷料明細';";
+		return sql;
+	}
+	
+	private static String WW013301WhFeeStockHdTableCreateSql() {
+		//倉庫保管料ヘッダテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013301WhFeeStockHd` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `StockFeeCd` varchar(20) NOT NULL COMMENT '保管料金コード',"
+				+"  `StockFeeName` varchar(100) DEFAULT NULL COMMENT '保管料金名',"
+				+"  `DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+				+"  `DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+				+"  `DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+				+"  `DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+				+"  `DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+				+"  `TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+				+"  `CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `CuttingDate` datetime NOT NULL COMMENT '期締め日',"
+				+"  `StockBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '保管基本料金',"
+				+"  `StockUnitFee` float NOT NULL DEFAULT '0' COMMENT '保管料単価',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `StrStockQtyTotal` int(11) NOT NULL DEFAULT '0' COMMENT '期初在庫数(バラ)',"
+				+"  `ArrivalQtyTotal` int(11) NOT NULL DEFAULT '0' COMMENT '期中入荷数(バラ)',"
+				+"  `FeeQtyTotal` int(11) NOT NULL DEFAULT '0' COMMENT '請求対象数(バラ）',"
+				+"  `StrStockVolTotal` float NOT NULL DEFAULT '0' COMMENT '期初在庫量',"
+				+"  `ArrivalVolTotal` float NOT NULL DEFAULT '0' COMMENT '期中入荷量',"
+				+"  `FeeVolTotal` float NOT NULL DEFAULT '0' COMMENT '請求対象量',"
+				+"  `StockFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '保管料',"
+				+"  `TaxFg` int(11) NOT NULL DEFAULT '0' COMMENT '税区分',"
+				+"  `TaxRate` int(11) NOT NULL DEFAULT '0' COMMENT '税率',"
+				+"  `ConsumptionTax` int(11) NOT NULL DEFAULT '0' COMMENT '消費税',"
+				+"  `WithOutTaxTotal` int(11) NOT NULL DEFAULT '0' COMMENT '税別合計金額',"
+				+"  `TotalFee` int(11) NOT NULL DEFAULT '0' COMMENT '税込請求額合計',"
+				+"  `FeeFixFg` int(11) NOT NULL DEFAULT '0' COMMENT '確定区分',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`StockFeeCd`,`ShimeDate`,`CuttingDate`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫保管料ヘッダ';";
+		return sql;
+	}
+	
+	private static String WW013302WhFeeStockMsTableCreateSql() {
+		//倉庫保管料明細テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013302WhFeeStockMs` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `StockFeeCd` varchar(20) NOT NULL COMMENT '保管料金コード',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `CuttingDate` datetime NOT NULL COMMENT '期締め日',"
+				+"  `ClGpCD` varchar(20) NOT NULL COMMENT '荷主グループ',"
+				+"  `ItemCd` varchar(20) NOT NULL COMMENT '商品コード',"
+				+"  `Lot` varchar(20) NOT NULL COMMENT 'ロット',"
+				+"  `Expdate` datetime NOT NULL COMMENT '消費期限',"
+				+"  `ClItemCd` varchar(20) DEFAULT NULL COMMENT '荷主商品コード',"
+				+"  `ItemName` varchar(100) DEFAULT NULL COMMENT '商品名',"
+				+"  `StockUnitFee` float NOT NULL DEFAULT '0' COMMENT '保管料単価',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `ItemWeight` float NOT NULL DEFAULT '0' COMMENT '商品重量',"
+				+"  `ItemSize` float NOT NULL DEFAULT '0' COMMENT '商品サイズ',"
+				+"  `StrStockQty` int(11) NOT NULL DEFAULT '0' COMMENT '期初在庫数(バラ)',"
+				+"  `ArrivalQty` int(11) NOT NULL DEFAULT '0' COMMENT '期中入荷数(バラ)',"
+				+"  `FeeQty` int(11) NOT NULL DEFAULT '0' COMMENT '請求対象数(バラ）',"
+				+"  `StrStockVol` float NOT NULL DEFAULT '0' COMMENT '期初在庫量',"
+				+"  `ArrivalVol` float NOT NULL DEFAULT '0' COMMENT '期中入荷量',"
+				+"  `FeeVol` float NOT NULL DEFAULT '0' COMMENT '請求対象量',"
+				+"  `StockFee` int(11) NOT NULL DEFAULT '0' COMMENT '保管料',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0',"
+				+"  `ShipQty` int(11) NOT NULL DEFAULT '0' COMMENT '期中出荷数',"
+				+"  `AdjustQty` int(11) NOT NULL DEFAULT '0' COMMENT '期中調整数',"
+				+"  `EndStockQty` int(11) NOT NULL DEFAULT '0' COMMENT '期末在庫数',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`StockFeeCd`,`ShimeDate`,`CuttingDate`,`ClGpCD`,`ItemCd`,`Lot`,`Expdate`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫保管料明細';";
+		return sql;
+	}
+	
+	private static String WW013401WhFeeAdjustHdTableCreateSql() {
+		//倉庫在庫調整料ヘッダテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013401WhFeeAdjustHd` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `AdjustFeeCd` varchar(20) NOT NULL COMMENT '調整料金コード',"
+				+"  `AdjustFeeName` varchar(100) DEFAULT NULL COMMENT '調整料金名',"
+				+"  `DeliveryTypeCd01` varchar(20) DEFAULT NULL COMMENT '運送タイプコード01',"
+				+"  `DeliveryTypeCd02` varchar(20) DEFAULT NULL COMMENT '運送タイプコード02',"
+				+"  `DeliveryTypeCd03` varchar(20) DEFAULT NULL COMMENT '運送タイプコード03',"
+				+"  `DeliveryTypeCd04` varchar(20) DEFAULT NULL COMMENT '運送タイプコード04',"
+				+"  `DeliveryTypeCd05` varchar(20) DEFAULT NULL COMMENT '運送タイプコード05',"
+				+"  `TildFG` varchar(20) DEFAULT NULL COMMENT '温度区分',"
+				+"  `CategoryCd` varchar(20) DEFAULT NULL COMMENT '商品カテゴリCD',"
+				+"  `AdjustReasonCd` varchar(20) DEFAULT NULL COMMENT '調整理由CD',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `AdjustBaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '調整基本料金',"
+				+"  `AdjustUnitFee` float NOT NULL DEFAULT '0' COMMENT '調整料単価',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `AdjustQtyTotal` int(11) NOT NULL DEFAULT '0' COMMENT '調整数合計',"
+				+"  `AdjustVolTotal` float NOT NULL DEFAULT '0' COMMENT '調整量合計',"
+				+"  `AdjustFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '調整料',"
+				+"  `TaxFg` int(11) NOT NULL DEFAULT '0' COMMENT '税区分',"
+				+"  `TaxRate` int(11) NOT NULL DEFAULT '0' COMMENT '税率',"
+				+"  `ConsumptionTax` int(11) NOT NULL DEFAULT '0' COMMENT '消費税',"
+				+"  `WithOutTaxTotal` int(11) NOT NULL DEFAULT '0' COMMENT '税別合計金額',"
+				+"  `TotalFee` int(11) NOT NULL DEFAULT '0' COMMENT '税込請求額合計',"
+				+"  `FeeFixFg` int(11) NOT NULL DEFAULT '0' COMMENT '確定区分',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`AdjustFeeCd`,`ShimeDate`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫在庫調整料ヘッダ';";
+		return sql;
+	}
+	
+	private static String WW013402WhFeeAdjustMsTableCreateSql() {
+		//倉庫在庫調整料明細テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013402WhFeeAdjustMs` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `AdjustFeeCd` varchar(20) NOT NULL COMMENT '調整料金コード',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `AdjustNo` int(11) NOT NULL COMMENT '調整番号',"
+				+"  `AdjustReasonCd` varchar(20) DEFAULT NULL COMMENT '調整理由コード',"
+				+"  `AdjustReasonName` varchar(100) DEFAULT NULL COMMENT '調整理由名',"
+				+"  `Adjustdate` datetime DEFAULT NULL COMMENT '調整日',"
+				+"  `Wh` varchar(20) DEFAULT NULL COMMENT '調整元倉庫',"
+				+"  `Loc` varchar(15) DEFAULT NULL COMMENT '調整元ロケ',"
+				+"  `ClGpCD` varchar(20) DEFAULT NULL COMMENT '荷主グループ',"
+				+"  `ItemCd` varchar(20) DEFAULT NULL COMMENT '調整元商品CD',"
+				+"  `ClItemCd` varchar(20) DEFAULT NULL COMMENT '荷主商品コード',"
+				+"  `ItemName` varchar(100) DEFAULT NULL COMMENT '調整元商品名',"
+				+"  `Lot` varchar(20) DEFAULT NULL COMMENT '調整元ロット',"
+				+"  `ExpDate` datetime DEFAULT NULL COMMENT '調整元賞味期限',"
+				+"  `ActualDate` datetime DEFAULT NULL COMMENT '調整元入荷日',"
+				+"  `BeforeQty` int(11) NOT NULL DEFAULT '0' COMMENT '調整元在庫数',"
+				+"  `ShipPlanQty` int(11) NOT NULL DEFAULT '0' COMMENT '調整元引当済数',"
+				+"  `PossibleQty` int(11) NOT NULL DEFAULT '0' COMMENT '調整元出荷可能数',"
+				+"  `AdjustQty` int(11) NOT NULL DEFAULT '0' COMMENT '調整数',"
+				+"  `AdjustCom01` varchar(100) DEFAULT NULL COMMENT '調整理由コメント01',"
+				+"  `AdjustCom02` varchar(100) DEFAULT NULL COMMENT '調整理由コメント02',"
+				+"  `AdjustCom03` varchar(100) DEFAULT NULL COMMENT '調整理由コメント03',"
+				+"  `AfterQty` int(11) NOT NULL DEFAULT '0' COMMENT '調整後在庫数',"
+				+"  `AdjustUnitFee` float NOT NULL DEFAULT '0' COMMENT '調整料単価',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `SummaryFg` int(11) NOT NULL DEFAULT '0' COMMENT '集計区分',"
+				+"  `ItemWeight` float NOT NULL DEFAULT '0' COMMENT '商品重量',"
+				+"  `ItemSize` float NOT NULL DEFAULT '0' COMMENT '商品サイズ',"
+				+"  `AdjustAbsoluteQty` int(11) NOT NULL DEFAULT '0' COMMENT '調整数（絶対値）',"
+				+"  `AdjustVol` float NOT NULL DEFAULT '0' COMMENT '調整量',"
+				+"  `AdjustFee` int(11) NOT NULL DEFAULT '0' COMMENT '調整料',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`AdjustFeeCd`,`ShimeDate`,`AdjustNo`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫在庫調整料明細';";
+		return sql;
+	}
+	
+	private static String WW013501WhFeeOtherTableCreateSql() {
+		//倉庫その他請求ヘッダテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW013501WhFeeOther` ("
+				+"  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',"
+				+"  `WhCd` int(20) NOT NULL COMMENT '倉庫コード',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `Seq` int(11) NOT NULL COMMENT 'シーケンシャル番号',"
+				+"  `OthereFeeName` varchar(200) DEFAULT NULL COMMENT '料金名',"
+				+"  `OthereUnitFee` float NOT NULL DEFAULT '0' COMMENT '単価',"
+				+"  `OthereQty` float NOT NULL DEFAULT '0' COMMENT '数量',"
+				+"  `OthereFee` int(11) NOT NULL DEFAULT '0' COMMENT '金額',"
+				+"  `TaxFg` int(11) NOT NULL DEFAULT '0' COMMENT '税区分',"
+				+"  `TaxRate` int(11) NOT NULL DEFAULT '0' COMMENT '税率',"
+				+"  `ConsumptionTax` int(11) NOT NULL DEFAULT '0' COMMENT '消費税',"
+				+"  `WithOutTaxTotal` int(11) NOT NULL DEFAULT '0' COMMENT '税別合計金額',"
+				+"  `TotalFee` int(11) NOT NULL DEFAULT '0' COMMENT '税込請求額合計',"
+				+"  `FeeFixFg` int(11) NOT NULL DEFAULT '0' COMMENT '確定区分',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`ShimeDate`,`Seq`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫その他請求ヘッダ';";
+		return sql;
+	}
+	
+	private static String WW014001WhFeeInvoiceTableCreateSql() {
+		//倉庫その他請求明細テーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW014001WhFeeInvoice` ("
+				+"  `ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+				+"  `WhCd` varchar(20) NOT NULL DEFAULT '' COMMENT '倉庫コード',"
+				+"  `FeeNo` int(11) NOT NULL DEFAULT '0' COMMENT '請求番号',"
+				+"  `FeeType` varchar(20) NOT NULL DEFAULT '' COMMENT '料金タイプ',"
+				+"  `FeeCd` varchar(20) NOT NULL DEFAULT '' COMMENT '料金コード',"
+				+"  `Seq` int(11) NOT NULL DEFAULT '0' COMMENT 'シーケンシャル番号',"
+				+"  `FeeName` varchar(200) NOT NULL DEFAULT '' COMMENT '料金名',"
+				+"  `ShimeDate` datetime NOT NULL COMMENT '締め日',"
+				+"  `CuttingDate` datetime DEFAULT NULL COMMENT '期締め日',"
+				+"  `BaseFee` int(11) NOT NULL DEFAULT '0' COMMENT '基本料金',"
+				+"  `SlipFee` int(11) NOT NULL DEFAULT '0' COMMENT '伝票基本料金単価',"
+				+"  `SlipFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '伝票基本料金合計',"
+				+"  `ShipUnitFee` float NOT NULL DEFAULT '0' COMMENT '料金単価',"
+				+"  `VolTotal` float NOT NULL DEFAULT '0' COMMENT '量合計',"
+				+"  `FeeUnit` int(11) NOT NULL DEFAULT '0' COMMENT '課金単位',"
+				+"  `ShipFeeTotal` int(11) NOT NULL DEFAULT '0' COMMENT '料金',"
+				+"  `TaxFg` int(11) NOT NULL DEFAULT '0' COMMENT '税区分',"
+				+"  `TaxRate` int(11) NOT NULL DEFAULT '0' COMMENT '税率',"
+				+"  `ConsumptionTax` int(11) NOT NULL DEFAULT '0' COMMENT '消費税',"
+				+"  `WithOutTaxTotal` int(11) NOT NULL DEFAULT '0' COMMENT '税別合計金額',"
+				+"  `TotalFee` int(11) NOT NULL DEFAULT '0' COMMENT '税込請求額合計',"
+				+"  `PrtFg` int(11) NOT NULL DEFAULT '0' COMMENT '請求書印刷区分',"
+				+"  `DataOutFg` int(11) NOT NULL DEFAULT '0' COMMENT '請求データ抽出区分',"
+				+"  `AllTotalConsumptionTax` int(11) NOT NULL DEFAULT '0' COMMENT '請求単位の消費税',"
+				+"  `AllTotalWithOutTaxTotal` int(11) NOT NULL DEFAULT '0' COMMENT '請求単位の税別合計金額',"
+				+"  `AllTotalFee` int(11) DEFAULT '0' COMMENT '請求単位の税込請求額合計',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者',"
+				+"  `SlipCount` int(11) NOT NULL DEFAULT '0' COMMENT '伝票枚数',"
+				+"  PRIMARY KEY (`ClCd`,`WhCd`,`FeeNo`,`FeeType`,`FeeCd`,`Seq`,`ShimeDate`,`TaxFg`,`TaxRate`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫その他請求明細';";
+		return sql;
+	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -5815,19 +7318,19 @@ public class A00040TableCheck{
 	private static void PostDBCheck() {
 		String[] TableName=TabeleList("POST");
 		
-		boolean PostUnHitkFg = true; 
+		boolean PostUnHitFg = true; 
 		
 		for(int i=0;i<TableName.length;i++) {
 			switch(TableName[i]){
 				case "M0010_PostMst":
-					PostUnHitkFg = false; 
+					PostUnHitFg = false; 
 					break;
 				default:
 					break;
 			}
 		}
 		
-		if(PostUnHitkFg) {
+		if(PostUnHitFg) {
 			String sql = PostMstTableCreateSql();
 			KickSql("POST",sql);
 		}
@@ -5881,28 +7384,29 @@ public class A00040TableCheck{
 		int counter = 0;
 		String sql = ""
 			+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst";
-			for(int i=0;i<NoHitColumn.size();i++) {
-				if(0<i) {sql = sql + ",";}
-				switch(NoHitColumn.get(i)) {
-					case "POST":
-						sql = sql + " ADD POST varchar(10) NOT NULL";
-						break;
-					case "PREFECTURES":
-						sql = sql + " ADD PREFECTURES varchar(20) DEFAULT NULL";
-						break;
-					case "MUNICI01":
-						sql = sql + " ADD MUNICI01 varchar(100) DEFAULT NULL";
-						break;
-					case "MUNICI02":
-						sql = sql + " ADD MUNICI02 varchar(100) DEFAULT NULL";
-						break;
-					case "MUNICIPALITY_CD":
-						sql = sql + " ADD MUNICIPALITY_CD varchar(10) DEFAULT NULL";
-						break;
-					default:
-						break;
-				}
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "POST":
+					sql = sql + " ADD POST varchar(10) NOT NULL";
+					break;
+				case "PREFECTURES":
+					sql = sql + " ADD PREFECTURES varchar(20) DEFAULT NULL";
+					break;
+				case "MUNICI01":
+					sql = sql + " ADD MUNICI01 varchar(100) DEFAULT NULL";
+					break;
+				case "MUNICI02":
+					sql = sql + " ADD MUNICI02 varchar(100) DEFAULT NULL";
+					break;
+				case "MUNICIPALITY_CD":
+					sql = sql + " ADD MUNICIPALITY_CD varchar(10) DEFAULT NULL";
+					break;
+				default:
+					break;
 			}
+		}
+		sql = sql + ";";
 		return sql;
 	}
 	
