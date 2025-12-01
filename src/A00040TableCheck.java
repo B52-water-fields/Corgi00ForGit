@@ -47,10 +47,7 @@ public class A00040TableCheck{
 		WankoDBCheck();		//WANKOデータベースの必要なテーブルを確認する
 		PostDBCheck();		//郵便番号データベースの必要なテーブルを確認する
 		/*
-		
-		
-		
-		OldDBCheck();		//OLDデータベースの必要なテーブルを確認する
+		OldDBCheck();		//OLDデータベースの必要なテーブルを確認する⇒別クラスで対応
 		*/
 		
 	}
