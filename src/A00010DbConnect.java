@@ -10,6 +10,23 @@ import com.jcraft.jsch.Session;
 
 public class A00010DbConnect {
 	//データベースに接続する
+	// ================================================================================================================================
+    //  A00010DbConnect（スフィンクス／旅人への試練）
+    // ================================================================================================================================
+    //
+    //このクラスは、A00000Mainでiniファイル読み込んだ又は、直書きされた
+	//SSH接続情報およびデータベース接続情報を元にデータベースへの扉を開くクラスです
+	//
+	//旅人が希望する論理DB名（WANKO / NYANKO / POST / OLD ...）の呪文に応じて、
+	//SSH接続が生きていればそのままデータベースの門を開きます。
+	//SSH接続がタイムアウト等で道が崩れていた場合、道を整えて(再度SSH接続を実施して)から門を開きます
+	//
+	//このクラス利用後は追手に気付かれないように、以下を呼び出して焚火の跡を消しておくことを強く推奨します
+	//close()		: DB 接続のみを閉じる
+	//Fullclose()	: DB 接続と SSH セッションの双方を閉じる
+	//
+    // ================================================================================================================================
+	
 	public static Connection conn;
 	public static Session session;
 	
@@ -32,7 +49,7 @@ public class A00010DbConnect {
 			MySqlDefaultSchema = A00000Main.MySqlDefaultSchemaWANKO;
 		}else if("NANKO".equals(TgtDB)){
 			MySqlDefaultSchema = A00000Main.MySqlDefaultSchemaNYANKO;
-			
+			//あちこちでNANKOの名前で呼び出した結果NANKOとNYANKOの両方をNYANKO扱いにするようにここで吸収してます（言い訳）
 		}else if("POST".equals(TgtDB)){
 			MySqlDefaultSchema = A00000Main.MySqlDefaultSchemaPOST;
 			
