@@ -8,18 +8,37 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 public class A00020InsertUdateSQL{
+	//
+	//データの登録更新をまとめて行います
+	// ==========================================================================
+    //  A00020InsertUdateSQL（ウリエル／判断と裁定の天使　データベースの園の門番）
+    // ==========================================================================
+    //
+    //このクラスは、以下のデータを引き渡された際に、データの登録・更新を判断し、データベースに書き込みます。
+	//
+	//tgt_table		：対象テーブル名
+	//
+	//field_name	：field_name[i][0]テーブルフィールド名
+	//
+	//judg_field	：存在チェックフィールド名	※WHERE条件
+	//				　field_name[i][1]登録対象区分　"1"が対象	※全て0なら登録を行わない
+	//				　field_name[i][2]更新対象区分　"1"が対象　 ※全て0なら更新を行わない
+	//
+	//entry_data	：登録データentry_data[i01][i02]　i01：登録データ明細行数 i02：各フィールドに対応する値
+	//				  登録データentry_data[i01][i02]の値が"null"だった場合NULLセット
+	//
+	//judg_data		：存在チェックデータ値		※WHERE条件値　完全一致のみ考慮
+	//				  judg_data[i01][i02]　i01：登録データ明細行数 i02：WHERE条件各フィールドに対応する値
+	//				  
+	//non_msg_fg	：1なら完了時にメッセージ表示しない
+	//
+	//
+	//羊の群れに対応する前提：複数件のデータがバッチ的に処理されることを想定しています（もちろん　judg_dataとentry_dataが1行1件でも普通に動きます）
+    //
+    // ==========================================================================
+	
 	public static void RUN_SQLS_EU(String tgt_table,String[][] field_name,String[][] entry_data,String[] judg_field,String[][] judg_data,int non_msg_fg,String TgtDB){
 		//データの登録更新をまとめて行う
-		//tgt_table		：対象テーブル名
-		//field_name	：field_name[i][0]テーブルフィールド名
-		//				：field_name[i][1]登録対象区分　"1"が対象	※全て0なら登録を行わない
-		//				：field_name[i][2]更新対象区分　"1"が対象　 ※全て0なら更新を行わない
-		//entry_data	：登録データentry_data[i01][i02]　i01：登録データ明細行数 i02：各フィールドに対応する値
-		//judg_field	：存在チェックフィールド名	※WHWRE条件
-		//judg_data		：存在チェックデータ値		※WHERE条件値　完全一致のみ考慮
-		//				judg_data[i01][i02]　i01：登録データ明細行数 i02：WHERE条件各フィールドに対応する値
-		//non_msg_fg	:1なら完了時にメッセージ表示しない
-		//※entry_data	：登録データentry_data[i01][i02]の値が"null"だった場合NULLセット
 
 		ResultSet rset01=null;
 		PreparedStatement stmt01=null;
