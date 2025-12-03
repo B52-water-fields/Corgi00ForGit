@@ -33,10 +33,10 @@ public class A00000Main{
 	//同じスキーマに揃えても動くと思います（未検証）
 	//但しOLDだけは古いデータ退避用なので別スキーマの方が良いと思います
 	//中身のテーブルは後ほど自動生成します
-	public static String MySqlDefaultSchemaWANKO = "WANKOscjema";
-	public static String MySqlDefaultSchemaNYANKO = "NYANKOscjema";
-	public static String MySqlDefaultSchemaPOST = "POSTscjema";
-	public static String MySqlDefaultSchemaOLD = "OLDscjema";
+	public static String MySqlDefaultSchemaWANKO = "WANKOscjema";		//在庫管理系データベース
+	public static String MySqlDefaultSchemaNYANKO = "NYANKOscjema";		//配送管理系データベース
+	public static String MySqlDefaultSchemaPOST = "POSTscjema";			//郵便番号データベース
+	public static String MySqlDefaultSchemaOLD = "OLDscjema";			//古いトランザクションデータバックアップ先
 	
 	public static int Div = 100;
 	public static int Mul = 100;
@@ -467,6 +467,7 @@ public class A00000Main{
     	//ログインユーザーがzeusだった場合天地創造（データベースの存在チェック・フィールドのカラムの不足チェック走らせる）
     	if(LoginUserWH.equals("0000") && LoginUserId.equals("zeus")) {
     		A00040TableCheck.TableCheck();
+    		A00050OldDataTableCheck.OldDataTableCheck();
     	}
     	
     	JOptionPane.showMessageDialog(null, "ログイン成功");
