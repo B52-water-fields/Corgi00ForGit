@@ -6,6 +6,83 @@ import java.util.Calendar;
 
 public class B00050ToolsDateTimeControl{
 	//日付や時刻に対して定型的な処理を行うクラス
+	// ==========================================================================
+    //  B00050ToolsDateTimeControl（クロノス／時の番人）
+    // ==========================================================================
+    //日付時刻を （文字列）YYYY/MM/DD HH:MM:SS で取り扱えるようにします
+	//YYYY/MM/DD HH:MM:SSで受け取った文字列の日付をTimestampにして返却します
+	//
+	//本クラスで扱う Timestamp 配列は [0] が日付（00:00:00）、[1] が日付＋時刻 という約束です。
+	//以下クロノス、時の魔法書です
+	//
+    //B00050ToolsDateTimeControl.dtm()：現在の日付時刻タイムスタンプを返却します
+	//戻り値:Timestamp[2] 
+	//
+	//B00050ToolsDateTimeControl.dtmString(Timestamp[] f0)	:複数のタイムスタンプをrt[i][0]日付　rt[i][1]日付時刻の文字列で返します
+	//戻り値:String[][2]
+	//
+	//B00050ToolsDateTimeControl.dtmString2(Timestamp f0)	:単一のタイムスタンプをrt[0]日付　rt[1]日付時刻の文字列で返します
+	//戻り値:String[2]
+	//
+	//B00050ToolsDateTimeControl.dtmTimestamp(String[] f0)	：YYYY/MM/DD 又はYYYY/MM/DD HH:MM:SSの配列の文字列で受け取った日付時刻を対応するタイムスタンプの配列にして返却します
+	//戻り値:Timestamp[][2]									戻り値rt[i][0]は00：00：00のタイムスタンプ　rt[i][1]は受け取ったタイムスタンプの時刻が返ります
+	//														※YYYY/MM/DDを受け取った場合どちらも00：00：00のタイムスタンプになります
+	//
+	//B00050ToolsDateTimeControl.dtmTimestamp2(String f0)	：YYYY/MM/DD 又はYYYY/MM/DD HH:MM:SSの単一の文字列で受け取った日付時刻を対応するタイムスタンプの配列にして返却します
+	//戻り値:Timestamp[2]									戻り値rt[0]は00：00：00のタイムスタンプ　rt[1]は受け取ったタイムスタンプの時刻が返ります
+	//														※YYYY/MM/DDを受け取った場合どちらも00：00：00のタイムスタンプになります
+	//
+	//B00050ToolsDateTimeControl.dtmHMS(Timestamp[] f0)		:タイムスタンプの各配列要素から対応する時刻をHH:MM:SSの文字列で返却します
+	//戻り値:String[]
+	//
+	//B00050ToolsDateTimeControl.dtmHMS2(Timestamp f0)		:単一のタイムスタンプのから対応する時刻をHH:MM:SSの文字列で返却します
+	//戻り値:String
+	//
+	//B00050ToolsDateTimeControl.ddif(Timestamp f0,Timestamp f1)	:タイムスタンプFROM～TO受け取って差分日数を返却します
+	//戻り値:int
+	//
+	//B00050ToolsDateTimeControl.ndate_before(Timestamp f0,int nd)	:タイムスタンプと遡る日数を受け取ってN日前のタイムスタンプを返却します
+	//戻り値:Timestamp
+	//
+	//B00050ToolsDateTimeControl.ndate_after(Timestamp f0,int nd)	:タイムスタンプと先に進む日数を受け取ってN日後のタイムスタンプを返却します
+	//戻り値:Timestamp
+	//
+	//B00050ToolsDateTimeControl.nhour_before(Timestamp f0,BigDecimal nd)	:タイムスタンプと遡る時間を受け取ってN時間前のタイムスタンプを返却します※1.5時間前なら1.5渡します
+    //戻り値:Timestamp
+	//
+	//B00050ToolsDateTimeControl.nhour_after(Timestamp f0,BigDecimal nd)	:タイムスタンプと先に進む時間を受け取ってN時間後のタイムスタンプを返却します※1.5時間後なら1.5渡します
+	//戻り値:Timestamp
+	//
+	//B00050ToolsDateTimeControl.month_str_end(String year,String month)	:YYYYとMMの文字列を受け取って対象年月の月末月初のタイムスタンプを返却します
+	//戻り値:Timestamp[2]														rt[0]:対象月初タイムスタンプ
+	//																			rt[1]:対象月末タイムスタンプ
+	//
+	//B00050ToolsDateTimeControl.month_str_end2(Timestamp dtm)				:受け取ったタイムスタンプと同年同月の月末月初を返します
+	//戻り値:Timestamp[2]														rt[0]:対象月初タイムスタンプ
+	//																			rt[1]:対象月末タイムスタンプ
+	//
+	//B00050ToolsDateTimeControl.week_day(Timestamp f1)						:受け取ったタイムスタンプの曜日を対応する数値で返却します
+	//戻り値:int																日曜日：1　月曜日：2　火曜日：3　水曜日：4　木曜日：5　金曜日：6　土曜日：7
+	//
+	//B00050ToolsDateTimeControl.hdif(Timestamp f0,Timestamp f1)			:タイムスタンプFROM～TO受け取って差分時間返します
+	//戻り値:BigDecimal
+	//
+	//B00050ToolsDateTimeControl.N_MONTH_AFTER_FIRSTDAY_MODE(Timestamp f0,int f1)			:タイムスタンプfromとNケ月後を受け取ってNヶ月後のTimeStamp返します
+	//戻り値:Timestamp																			Nヶ月後同日がなければ加算
+	//																							EX）2019/01/31,1 ⇒2019/02/31　存在しないので　2019/03/01 hh:mm:ss
+	//
+	//B00050ToolsDateTimeControl.N_MONTH_AFTER_LASTDAY_MODE(Timestamp f0,int f1)			:タイムスタンプfromとNケ月後を受け取ってNヶ月後のTimeStamp返します
+	//戻り値:Timestamp																			Nヶ月後同日がなければ減算
+	//																							EX）2019/01/31,1 ⇒2019/02/31　存在しないので　2019/02/28
+	//
+	//B00050ToolsDateTimeControl.DateStyleRt(String DateString)		 						:日付文字列yyyymmdd(8桁数字)又は　yyyy/m/dを受け取ってyyyy/mm/ddの文字列にして返却する
+	//戻り値:String																				↓DateFormatの下位互換（でもこの2パターンだとわかっていればこっち使う）
+	//
+	//B00050ToolsDateTimeControl.DateFormat(String CSt)										:日付項目yyyy/mm/ddにする　日付っぽい形式の文字列をyyyy/mm/ddの文字列にします
+	//戻り値:String																				頑張れなかったら空白が返ります
+	//
+	//
+    // ==========================================================================
 	
 
 	//現在の日付時刻Timestampを返す
@@ -601,14 +678,14 @@ public class B00050ToolsDateTimeControl{
 				rt="";
 			}
 		}
-		if(""!=rt) {
+		if(!"".equals(rt)) {
 			//月の項目が01～12　日付項目が01～31でなければ空白返却
 			if(10==rt.length()) {
 				String RtDate = rt.substring(8,10);
 				String RtMonth = rt.substring(5,7);
 				if(12<Integer.parseInt(RtMonth)) {rt = "";}
 				if(31<Integer.parseInt(RtDate)) {rt = "";}
-				if(""!=rt) {rt=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtmTimestamp2(rt)[0])[0];}
+				if(!"".equals(rt)) {rt=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtmTimestamp2(rt)[0])[0];}
 			}else {
 				rt = "";
 			}
