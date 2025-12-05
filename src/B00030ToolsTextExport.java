@@ -8,7 +8,9 @@ import javax.swing.JOptionPane;
 
 public class B00030ToolsTextExport{
 	//テキスト出力を行うためのツール群
-	
+	// ==========================================================================
+    //  B00030ToolsTextExport（プロメーテウス）
+    // ==========================================================================
 	
 	//行ごとのArrayListを受け取って、指定されたファイルパスにテキストデータ出力する
 	public static void txt_exp2(ArrayList<String> line_txt,String fp,String TxtType){
