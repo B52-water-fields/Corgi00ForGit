@@ -284,11 +284,4 @@ public class B00110FrameParts{
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 }
