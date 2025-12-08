@@ -31,6 +31,7 @@ public class A00000Main{
 	MySqlDefaultSchemaNYANKO = "NYANKOscjema";
 	MySqlDefaultSchemaPOST = "POSTscjema";
 	MySqlDefaultSchemaOLD = "OLDscjema";
+	PasswordExpireDays = 180;
 	*/
 	//
 	
@@ -73,12 +74,15 @@ public class A00000Main{
 	public static String LoginUserCompany = "";
 	public static String LoginUserAuthorityFG = "";
 	public static String LoginUserClient="";
+	public static String LoginUserLastUpDate="";
 	
 	public static String ClWh = "";
 	public static String ClWhName = "";
 	public static String ClCd = "";
 	public static String ClName = "";
 	public static String ClGp = "";
+	
+	public static int PasswordExpireDays = 180;		//パスワード有効期限推奨日数（パスワード変更履歴ではなく、ユーザーマスタの最終更新日時で判定）0なら更新永遠に気にしない
 	
 	/*===========================================================================================================================
 	
@@ -308,9 +312,8 @@ public class A00000Main{
 			SelectCl[i] = "("+ClList[i][0]+")"+ClList[i][5];
 		}
 		
-		JLabel LbCLList = B00110FrameParts.JLabelSet(	 20,40,100,20,"荷主選択:",11,1);
-		final JComboBox TbCLList = B00110FrameParts.JComboBoxSet(120,40,300,20,SelectCl,11);
-		
+		JLabel LbCLList = B00110FrameParts.JLabelSet(	 20,80,100,20,"荷主選択:",11,1);
+		final JComboBox TbCLList = B00110FrameParts.JComboBoxSet(120,80,300,20,SelectCl,11);
 		
 		if(null==ClCd||"".equals(ClCd)) {
 			TbCLList.setSelectedIndex(0);
@@ -461,7 +464,7 @@ public class A00000Main{
 		entry_data[0][0] = "0000";				//倉庫コード
 		entry_data[0][1] = "SC00000";			//運送会社CD
 		entry_data[0][2] = "zeus";				//ユーザーCD
-		entry_data[0][3] = "ThereBeLight";		//パスワード
+		entry_data[0][3] = "LetThereBeLight";	//パスワード
 		entry_data[0][4] = "9";			//権限区分
 		entry_data[0][5] = "";			//標準車輛CD
 		entry_data[0][6] = "神";		//ユーザー名1
@@ -505,6 +508,7 @@ public class A00000Main{
 				+ ",KM0070_SHIPPINGCOMPANYMST.ShippingCompanyName01 as ShippingCompanyName01"
 				+ ",KM0020_USERMST.AuthorityFG as AuthorityFG"
 				+ ",KM0020_USERMST.MainClient as MainClient"
+				+ ",KM0020_USERMST.UpdateDate as UpdateDate"
 				+ " FROM KM0020_USERMST"
 				+ " LEFT OUTER JOIN KM0010_WHMST ON("
 				+ " KM0020_USERMST.WHCD = KM0010_WHMST.WHCD"
@@ -533,12 +537,14 @@ public class A00000Main{
 			rset01.beforeFirst();
 			while (rset01.next()) {
 				LoginCheck = true;
-				LoginUserWH		= rset01.getString("WH_CD");
-				LoginUserWhName	= rset01.getString("WHName");
-				LoginUserId		= rset01.getString("USER_CD");
-				LoginUserName		= rset01.getString("USER_NAME");
-				LoginUserCompany	= rset01.getString("ShippingCompanyCd");
-				LoginUserClient	= rset01.getString("MainClient");
+				if(null==rset01.getString("WH_CD")){LoginUserWH="";}else{LoginUserWH=rset01.getString("WH_CD");}	
+				if(null==rset01.getString("WHName")){LoginUserWhName="";}else{LoginUserWhName=rset01.getString("WHName");}	
+				if(null==rset01.getString("USER_CD")){LoginUserId="";}else{LoginUserId=rset01.getString("USER_CD");}	
+				if(null==rset01.getString("USER_NAME")){LoginUserName="";}else{LoginUserName=rset01.getString("USER_NAME");}	
+				if(null==rset01.getString("ShippingCompanyCd")){LoginUserCompany="";}else{LoginUserCompany=rset01.getString("ShippingCompanyCd");}	
+				if(null==rset01.getString("MainClient")){LoginUserClient="";}else{LoginUserClient=rset01.getString("MainClient");}	
+				if(null==rset01.getTimestamp("UpdateDate")) {LoginUserLastUpDate = "";}else{LoginUserLastUpDate=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	
+				
 				if(null==rset01.getString("AuthorityFG")||"".equals(rset01.getString("AuthorityFG"))){LoginUserAuthorityFG = "0";}else{
 					LoginUserAuthorityFG = rset01.getString("AuthorityFG");
 				};
@@ -571,6 +577,12 @@ public class A00000Main{
     		B00100DefaultVariable.DefaultShippingCompany();
     		LoginCheck(WhCd,UserId,UserPass);
     		B00120TableSelectSql.TableSelectSql();
+    	}
+    	//ユーザー情報の更新がパスワード有効期限推奨日数よりも前だったら警告
+    	if(0<PasswordExpireDays) {
+    		if("".equals(PasswordExpireDays)||0>B00050ToolsDateTimeControl.ddif(B00050ToolsDateTimeControl.ndate_before(B00050ToolsDateTimeControl.dtm()[0],PasswordExpireDays),B00050ToolsDateTimeControl.dtmTimestamp2(LoginUserLastUpDate)[0])) {
+    			JOptionPane.showMessageDialog(null, "ユーザー情報の最終更新が"+PasswordExpireDays+"より前です\nパスワード更新しやがれください");
+    		}
     	}
     	ClSelect() ;
     }
@@ -661,6 +673,11 @@ public class A00000Main{
     		}
     		if(!IniRead.get(i).equals(IniRead.get(i).replace("MySqlDefaultSchemaOLD", ""))) {
     			MySqlDefaultSchemaOLD = IniRead.get(i).replace("MySqlDefaultSchemaOLD", "").replace(" ", "").replace("=", "").replace("\"", "").replace(";", "").replace("String", "");
+    		}
+    		if(!IniRead.get(i).equals(IniRead.get(i).replace("PasswordExpireDays", ""))) {
+    			String WST = B00020ToolsTextControl.num_only_String(IniRead.get(i));
+    			if("".equals(WST)) {WST = "180";}
+    			PasswordExpireDays = Integer.parseInt(WST);
     		}
     	}
     }
