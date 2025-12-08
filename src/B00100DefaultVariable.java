@@ -1,4 +1,102 @@
 public class B00100DefaultVariable{
+	static String[][] LocType;							//ロケタイプ設定値
+	static String[][] SearchLocType;					//ロケタイプ検索値
+	static String DefaultTroughLoc="ZZZ2222222";		//スルー型運用の場合スルー引当用ロケ
+	
+	static String DefaultActualDate = "1941/12/08";	//入荷日管理しない場合の入荷実績日
+	static String DefaultExpDate = "3000/01/01";		//消費期限管理しない場合の消費期限
+	static boolean ActualDateUnControl = false;		//入荷日管理しない
+	static String[][] ArryvalFixFgList;				//入荷状況リスト
+	static String[][] SearchArryvalFixFgList;		//入荷状況リスト
+	static int NormalTaxRate;							//消費税率　※10%なら10
+	static int[] TaxRateList;							//消費税率のリスト　※10%なら10　Ex）10,8,0
+	static Object[][] TildFG;							//0:常温必須
+	static Object[][] SearchTildFG;
+	static String PictSetFolder;						//画像保存先フォルダ
+	static String ErrSoundPath;						//エラー音パス
+	static String OKSoundPath;							//OK音パス
+	
+
+	//検索条件 登録条件選択リスト用配列設定
+	static Object[][] SearchFeeFixFGList;
+	static Object[][] SearchInvoiceStatusList;
+	static Object[][] InvoiceStatusList;
+	static Object[][] SearchFeeFixList;			//金額確定フラグ検索値(請求)
+	static Object[][] FeeFixFGList;				//金額確定フラグ設定値(請求)
+	static Object[][] SearchPayFixList;			//金額確定フラグ検索値(支払)
+	static Object[][] PayFixFGList;				//金額確定フラグ設定値(支払)
+	static Object[][] SearchStatusList;
+	static Object[][] StatusList;
+	static Object[][] WmsStatusList;
+	static Object[][] SearchWmsStatusList;
+
+	static Object[][] SearchDeliveryType01;
+	static Object[][] SearchDeliveryType02;
+	static Object[][] SearchDeliveryType03;
+	static Object[][] SearchDeliveryType04;
+	static Object[][] SearchDeliveryType05;
+
+	static Object[][] DeliveryType01;
+	static Object[][] DeliveryType02;
+	static Object[][] DeliveryType03;
+	static Object[][] DeliveryType04;
+	static Object[][] DeliveryType05;
+	static String DefaultPtmsItemCd;
+	
+	static Object[][] WhList;						//倉庫リスト
+	static Object[][] SearchWhList;				//倉庫リスト
+	
+	static Object[][] SupplierList;				//仕入先リスト
+	
+	static Object[][] RouteGloupList;				//自動配車グループリスト	
+	static Object[][] SearchRouteGloupList;		//自動配車グループリスト検索条件用
+	static Object[][] PurposeList;					//送り状目的区分	
+	static Object[][] ChildrenFGList;				//赤黒区分
+	static Object[][] ReceiptStampFGList;		//受領印区分
+	
+	static Object[][] CODList;
+	static Object[][] TaxFgList;
+	static Object[][] UnitTypeList;
+	static Object[][] SearchCODList;
+	static Object[][] SearchTaxFgList;
+	static Object[][] SearchUnitTypeList;
+
+	static String[] DeliveryWildCard;
+	
+	static Object[][] SearchClList;				//検索用荷主一覧
+	static Object[][] ClList;						//設定用荷主一覧
+	
+	static Object[][] SearchClGpList;				//検索用荷主グループ一覧
+	static Object[][] ClGpList;					//設定用荷主一覧
+	
+	static Object[][] FeeLogicTypeList;			//運賃計算タイプ(請求)
+	static Object[][] PayLogicTypeList;			//運賃計算タイプ(支払)
+	
+	static Object[][] SearchCautionTiming;		//注意事項タイミング
+	static Object[][] CautionTiming;				//注意事項タイミング
+	
+	static String ShipForcedDeliCd;				//強制出荷届先Cｄ
+	static String ShipForcedDeliDepartmentCd;	//強制出荷届先部署Cｄ
+	
+	static Object[][] WhFeeUnitList;				//倉庫入出荷保管料課金単位リスト
+	static Object[][] WhFeeSummaryFgList;		//倉庫入出荷保管料集計区分リスト
+	static String[] DateList;						//1日～28日　末日99のリスト
+	static Object[][] DeliFeeNorm;					//運賃請求基準　発請求/着請求
+	
+	static String[][] LayoutPt;					//送り状データ取り込みパターン
+	static String[][] HaisyaDataLayoutPt;		//運送会社向け配車データ出力パターン
+	
+	
+	static String[][] DelList;					//削除区分
+	
+	static Object[][] SerachAuthorityFG;		//ユーザー権限区分
+	static Object[][] AuthorityFG;
+	
+	static int Cl_OldDataRenewDate = 93;		//これより古い荷主管理番号は先頭にOldつけて重複から外す
+	
+	
+	
+	
 	
 	
 	// ==========================================================================
