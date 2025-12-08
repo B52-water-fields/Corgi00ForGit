@@ -24,17 +24,14 @@ public class W00010MainMenu{
 		main_fm.setVisible(true);
 		
 		//業務メニューボタン
-		JButton Work_btn=B00110FrameParts.BtnSet( 10,40,120,20,"業務メニュー",11);
+		JButton Work_btn=B00110FrameParts.BtnSet(    10,40,120,20,"業務メニュー",11);
 		main_fm.add(Work_btn);
 		//マスタボタン
-		JButton Mst_btn=B00110FrameParts.BtnSet( 150,40,120,20,"マスタメニュー",11);
+		JButton Mst_btn=B00110FrameParts.BtnSet(    150,40,120,20,"マスタメニュー",11);
 		main_fm.add(Mst_btn);
 		//荷主選択ボタン
 		JButton ClSelect_btn=B00110FrameParts.BtnSet(290,40,120,20,"荷主選択",11);
 		main_fm.add(ClSelect_btn);
-		
-
-		
 		
 		//業務メニューボタン押下時の挙動
 		Work_btn.addActionListener(new AbstractAction(){
@@ -44,7 +41,7 @@ public class W00010MainMenu{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				//WW00000WorkMenu.WorkMain(0,0);
+				W00030WorkMain.WorkMain(0,0);
 			}
 		});
 		
@@ -56,7 +53,7 @@ public class W00010MainMenu{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				//WM00000MstMain.MstMain(0,0);
+				W00020MstMain.MstMain(0,0);
 			}
 		});
 		
@@ -72,7 +69,6 @@ public class W00010MainMenu{
 				A00000Main.ClSelect();
 			}
 		});
-		
 
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){

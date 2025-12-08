@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -39,6 +40,9 @@ public class B00110FrameParts{
 				break;
 			case "KN": 
 				BackGroundColor = Color.decode("#ffe4e1"); 	//管理系バックグラウンドカラー　ミストローズ
+				break;
+			case "White":	
+				BackGroundColor = Color.decode("#FFFFFF");
 				break;
 			default:
 				break;
@@ -265,8 +269,17 @@ public class B00110FrameParts{
 		return rt;
 	}
 	
-	
-	
+	/*===========================================================================
+ 	パネル配置
+	===========================================================================*/
+	public static JPanel JPanelSet(int x,int y,int GetWidth,int GetHeight,String ColorType) {
+		JPanel PN = new JPanel();
+		
+		PN.setBounds(x*A00000Main.Mul/A00000Main.Div,y*A00000Main.Mul/A00000Main.Div,GetWidth*A00000Main.Mul/A00000Main.Div,GetHeight*A00000Main.Mul/A00000Main.Div);
+		PN.setLayout(null);
+		PN.setBackground(SelectColer(ColorType));
+		return PN;
+	}
 	
 	
 	
