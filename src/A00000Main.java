@@ -15,7 +15,28 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class A00000Main{
-	//本番環境MySQL接続設定とMySqlのスキーマ設定
+	//本番環境MySQL接続設定とMySqlのスキーマ設定　"C:\\MIZUNO\\WMS\\Corgi00ini.txt"に以下をコピーして、ご自身の環境にあわせて記入して設定してください
+	/*
+	DefaultSshHostName = "your.ssh.server.com";
+	DefaultSshUserName = "ssh_user";
+	DefaultSshKeyFld = "/path/to/key";
+	DefaultSshKeyFileName = "KeyName.key";
+	DefaultSshPass = "sshPassword";
+	DefaultMySqlHostName = "your.mysql.server.com";
+	DefaultMySqlUser = "MysqlUserName";
+	DefaultMySqlPass = "MysqlUserPassWord";
+	DefaultSshHostPort = 22;
+	DefaultMySqlSverPort = 3306;
+	MySqlDefaultSchemaWANKO = "WANKOscjema";
+	MySqlDefaultSchemaNYANKO = "NYANKOscjema";
+	MySqlDefaultSchemaPOST = "POSTscjema";
+	MySqlDefaultSchemaOLD = "OLDscjema";
+	*/
+	//
+	
+	//iniファイルの置き場所 フルパス
+	public static String IniPth = "C:\\MIZUNO\\WMS\\Corgi00ini.txt";
+	
 	public static String DefaultSshHostName = "your.ssh.server.com";    		//SSH接続サーバアドレス
 	public static String DefaultSshUserName = "ssh_user";			    	//SSH接続ユーザー名
 	public static String DefaultSshKeyFld = "/path/to/key";			    	//SSHキーを置くフォルダパス
@@ -43,27 +64,6 @@ public class A00000Main{
 	
 	public static String DefaultFont = "ＭＳ ゴシック";
 	
-	//iniファイルの置き場所 フルパス
-	public static String IniPth = "C:\\MIZUNO\\WMS\\Corgi00ini.txt";
-	/*
-	以下をコピーしてご自身の環境にあわせて記入してIniファイルに設定するか↑に直書きしてください
-	DefaultSshHostName = "your.ssh.server.com";
-	DefaultSshUserName = "ssh_user";
-	DefaultSshKeyFld = "/path/to/key";
-	DefaultSshKeyFileName = "KeyName.key";
-	DefaultSshPass = "sshPassword";
-	DefaultMySqlHostName = "your.mysql.server.com";
-	DefaultMySqlUser = "MysqlUserName";
-	DefaultMySqlPass = "MysqlUserPassWord";
-	DefaultSshHostPort = 22;
-	DefaultMySqlSverPort = 3306;
-	MySqlDefaultSchemaWANKO = "WANKOscjema";
-	MySqlDefaultSchemaNYANKO = "NYANKOscjema";
-	MySqlDefaultSchemaPOST = "POSTscjema";
-	MySqlDefaultSchemaOLD = "OLDscjema";
-	
-	*/
-	
 	private static int LoginCheckCount;
 	
 	public static String LoginUserWH = "";
@@ -79,6 +79,52 @@ public class A00000Main{
 	public static String ClCd = "";
 	public static String ClName = "";
 	public static String ClGp = "";
+	
+	/*===========================================================================================================================
+	
+ 	main(String[] args)		:起動
+ 	SqlSetting()			:MYSQLへの接続設定読込外部ファイルにMYSQLデータベースへの接続設定を読込
+ 	
+ 	LogIn()					:ログイン画面
+ 	
+ 	ZeusCreate()			:zeusログイン時（KM0020_USERMST）ユーザーマスタにzeusが絶対に存在するようにzeusは登録
+ 							 ※ユーザーマスタテーブルが存在しない場合に備えてテーブルもこの段階で、なければ作られます
+ 	
+ 	LoginCheck(String WhCd,String UserId,String UserPass)
+ 							:ログイン入力情報とユーザーマスタ情報を比較OKなら通す
+ 	
+ 	LoginStr(String WhCd,String UserId,String UserPass) 
+ 							:ログインユーザーがzeusだった場合
+ 							 A00040TableCheck.TableCheck()と A00050OldDataTableCheck.OldDataTableCheck()起動して
+ 							 天地創造・世界の修復（各スキーマに必要テーブル自動生成＆各テーブルのフィールドチェック）
+ 							 
+ 							 ⇒ログインユーザーの権限に応じて先に進む（権限なければ強制終了）
+ 	
+ 	EndPg()					:システム強制終了
+ 	
+ 	
+ 	以下は別クラスから呼ばれます
+ 	LoginCheck()			:ユーザーがログイン中かどうかを判定、ログインできていなければ強制終了
+ 	
+ 	ClSelect()				:ログイン中のユーザーが選択可能な荷主を一覧表示⇒選択⇒業務画面へ
+ 	
+ 	
+ 	以下の変数はログイン時に決定された基本情報として、別クラスのあちこちで使います
+ 	public static String LoginUserWH = "";
+	public static String LoginUserWhName = "";
+	public static String LoginUserId = "";
+	public static String LoginUserName = "";
+	public static String LoginUserCompany = "";
+	public static String LoginUserAuthorityFG = "";
+	public static String LoginUserClient="";
+	
+	public static String ClWh = "";
+	public static String ClWhName = "";
+	public static String ClCd = "";
+	public static String ClName = "";
+	public static String ClGp = "";
+ 	
+	===========================================================================================================================*/
 	
     public static void main(String[] args) {
     	SqlSetting();//MYSQLへの接続設定読込外部ファイルにMYSQLデータベースへの接続設定を読込
@@ -97,9 +143,9 @@ public class A00000Main{
 		final JPasswordField 	U_Pass 	= B00110FrameParts.JPasswordFieldSet(	100,80,150,20,"",11,0);				//ユーザーパスワード入力BOX
 	
 		//入力BOX説明
-		JLabel WH_ID_LB  = B00110FrameParts.JLabelSet(	20,20,150,20,"倉庫コード;",11,1);
-		JLabel U_ID_LB   = B00110FrameParts.JLabelSet(	20,50,150,20,"ユーザーID;",11,1);
-		JLabel U_Pass_LB = B00110FrameParts.JLabelSet(	20,80,150,20,"パスワード;",11,1);
+		JLabel WH_ID_LB  = B00110FrameParts.JLabelSet(	20,20,150,20,"倉庫コード:",11,1);
+		JLabel U_ID_LB   = B00110FrameParts.JLabelSet(	20,50,150,20,"ユーザーID:",11,1);
+		JLabel U_Pass_LB = B00110FrameParts.JLabelSet(	20,80,150,20,"パスワード:",11,1);
 	
 	
 		//EXITボタン
@@ -197,7 +243,7 @@ public class A00000Main{
 				WMul = Integer.parseInt(WST);
 				
 				if(0==LoginCheckCount) {
-					//ユーザーマスタテーブル泣ければ作成
+					//ユーザーマスタテーブル無ければ作成
 					A00040TableCheck.UserMstCreate();
 					//ユーザーzeusだった場合、zeusユーザー無ければ作る
 					if("zeus".equals(UserId)) {
@@ -220,7 +266,6 @@ public class A00000Main{
 						JOptionPane.showMessageDialog(null, "ログイン出来ません");
 			    		EndPg();
 			    	}else {
-			    		LoginCheckCount=LoginCheckCount+1;
 			    	}
 				}
 			}
@@ -232,6 +277,90 @@ public class A00000Main{
 			}
 		});
     }
+    
+    public static void LoginCheck() {
+		//ログイン状態を確認してログインできていなければ終了
+		if(null==LoginUserId||null==LoginUserWH
+				||"".equals(LoginUserId)||"".equals(LoginUserWH)) {
+			EndPg();
+		}
+	}
+    
+    public static void ClSelect() {
+    	//荷主選択
+    	final JFrame main_fm = B00110FrameParts.FrameCreate(20,20,500,250,"Corgi荷主選択","");
+		JLabel userinfo = B00110FrameParts.UserInfo();
+		JButton exit_btn = B00110FrameParts.ExitBtn();
+		JButton entry_btn = B00110FrameParts.EntryBtn();
+		
+		Object[][] WorkClList = ClList();
+		//荷主マスタ戻り値空だった場合、荷主グループClGp000配下に荷主を１件作る
+		if(null==WorkClList||0==WorkClList.length) {
+			B00101DefaultVariableWarehouse.DefaultClCreate(LoginUserWH);
+			WorkClList = ClList();
+		}
+		
+		Object[][] ClList = WorkClList;
+		
+		Object[] SelectCl = new Object[ClList.length];
+		
+		for(int i=0;i<ClList.length;i++) {
+			SelectCl[i] = "("+ClList[i][0]+")"+ClList[i][5];
+		}
+		
+		JLabel LbCLList = B00110FrameParts.JLabelSet(	 20,40,100,20,"荷主選択:",11,1);
+		final JComboBox TbCLList = B00110FrameParts.JComboBoxSet(120,40,300,20,SelectCl,11);
+		
+		
+		if(null==ClCd||"".equals(ClCd)) {
+			TbCLList.setSelectedIndex(0);
+			for(int i=0;i<ClList.length;i++) {
+				if((""+ClList[i][0]).equals(LoginUserClient)){
+					TbCLList.setSelectedIndex(i);
+				}
+			}
+		}else {
+			for(int i=0;i<ClList.length;i++) {
+				if((""+ClList[i][0]).equals(ClCd)){
+					TbCLList.setSelectedIndex(i);
+				}
+			}
+		}
+		
+		main_fm.add(LbCLList);
+		main_fm.add(TbCLList);
+		main_fm.add(entry_btn);
+		
+		main_fm.add(userinfo);
+		main_fm.add(exit_btn);
+		main_fm.setVisible(true);
+
+		
+		//EXITボタン押下時の挙動
+		exit_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				A00000Main.EndPg();
+			}
+		});
+		
+		//Entryボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				ClWh = ""+ClList[TbCLList.getSelectedIndex()][3];
+				ClWhName = ""+ClList[TbCLList.getSelectedIndex()][4];
+				ClCd = ""+ClList[TbCLList.getSelectedIndex()][0];
+				ClName = ""+ClList[TbCLList.getSelectedIndex()][5];
+				ClGp = ""+ClList[TbCLList.getSelectedIndex()][1];
+				
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				W00010MainMenu.MainMenu(0,0);
+			}
+		});
+    }
+    
     private static void ZeusCreate() {
     	//zeus 倉庫コード0000　パスワードLetThereBeLight
     	String tgt_table = "KM0020_USERMST";
@@ -445,91 +574,6 @@ public class A00000Main{
     	}
     	ClSelect() ;
     }
-    
-
-    
-    public static void ClSelect() {
-    	//荷主選択
-    	final JFrame main_fm = B00110FrameParts.FrameCreate(20,20,500,250,"Corgi荷主選択","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
-		
-		Object[][] WorkClList = ClList();
-		//荷主マスタ戻り値空だった場合、荷主グループClGp000配下に荷主を１件作る
-		if(null==WorkClList||0==WorkClList.length) {
-			B00101DefaultVariableWarehouse.DefaultClCreate(LoginUserWH);
-			WorkClList = ClList();
-		}
-		
-		Object[][] ClList = WorkClList;
-		
-		Object[] SelectCl = new Object[ClList.length];
-		
-		for(int i=0;i<ClList.length;i++) {
-			SelectCl[i] = "("+ClList[i][0]+")"+ClList[i][5];
-		}
-		
-		JLabel LbCLList = B00110FrameParts.JLabelSet(	 20,40,100,20,"荷主選択:",11,1);
-		final JComboBox TbCLList = B00110FrameParts.JComboBoxSet(120,40,300,20,SelectCl,11);
-		
-		
-		if(null==ClCd||"".equals(ClCd)) {
-			TbCLList.setSelectedIndex(0);
-			for(int i=0;i<ClList.length;i++) {
-				if((""+ClList[i][0]).equals(LoginUserClient)){
-					TbCLList.setSelectedIndex(i);
-				}
-			}
-		}else {
-			for(int i=0;i<ClList.length;i++) {
-				if((""+ClList[i][0]).equals(ClCd)){
-					TbCLList.setSelectedIndex(i);
-				}
-			}
-		}
-		
-		main_fm.add(LbCLList);
-		main_fm.add(TbCLList);
-		main_fm.add(entry_btn);
-		
-		main_fm.add(userinfo);
-		main_fm.add(exit_btn);
-		main_fm.setVisible(true);
-
-		
-		//EXITボタン押下時の挙動
-		exit_btn.addActionListener(new AbstractAction(){
-			public void actionPerformed(ActionEvent e){
-				main_fm.setVisible(false);
-				main_fm.dispose();
-				A00000Main.EndPg();
-			}
-		});
-		
-		//Entryボタン押下時の挙動
-		entry_btn.addActionListener(new AbstractAction(){
-			public void actionPerformed(ActionEvent e){
-				ClWh = ""+ClList[TbCLList.getSelectedIndex()][3];
-				ClWhName = ""+ClList[TbCLList.getSelectedIndex()][4];
-				ClCd = ""+ClList[TbCLList.getSelectedIndex()][0];
-				ClName = ""+ClList[TbCLList.getSelectedIndex()][5];
-				ClGp = ""+ClList[TbCLList.getSelectedIndex()][1];
-				
-				main_fm.setVisible(false);
-				main_fm.dispose();
-				W00010MainMenu.MainMenu(0,0);
-			}
-		});
-    }
-    
-    public static void LoginCheck() {
-		//ログイン状態を確認してログインできていなければ終了
-		if(null==LoginUserId||null==LoginUserWH
-				||"".equals(LoginUserId)||"".equals(LoginUserWH)) {
-			EndPg();
-		}
-	}
     
     private static Object[][] ClList(){
     	ArrayList SearchCLCD = new ArrayList();

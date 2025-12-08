@@ -7,7 +7,7 @@ public class B00101DefaultVariableWarehouse{
 	}
 	
 	public static void DefaultClCreate(String WhCd) {
-		//ログインしようとしている倉庫に荷主が設定されていない場合用に荷主グループClGp000配下で荷主Cl0000を一つ作る
+		//倉庫に荷主が設定されていない場合用に荷主グループClGp000配下で荷主Cl0000を一つ作る
 		if(null==WhCd) {WhCd="";}
 		
 		//倉庫マスタ取得
