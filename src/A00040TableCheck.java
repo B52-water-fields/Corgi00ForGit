@@ -504,7 +504,7 @@ public class A00040TableCheck{
 		
 		
 		ColumnList = ColumnList("NANKO","KM0020_USERMST");
-		NeedColmn = new String[25];
+		NeedColmn = new String[26];
 		
 		NeedColmn[ 0] = "WHCD";
 		NeedColmn[ 1] = "ShippingCompanyCd";
@@ -531,6 +531,7 @@ public class A00040TableCheck{
 		NeedColmn[22] = "UpdateUser";
 		NeedColmn[23] = "PTMSCD";
 		NeedColmn[24] = "DelFg";
+		NeedColmn[25] = "MainClient";
 		
 		NoHitColumn = new ArrayList<String>();
 		for(int i01=0;i01<NeedColmn.length;i01++) {
@@ -2196,6 +2197,7 @@ public class A00040TableCheck{
 				+"  `EntryUser` varchar(50) DEFAULT NULL,"
 				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
 				+"  `PTMSCD` varchar(20) DEFAULT NULL,"
+				+"  `MainClient` varchar(20) DEFAULT NULL,"
 				+"  `DelFg` tinyint(1) NOT NULL DEFAULT '0',"
 				+"  PRIMARY KEY (`WHCD`,`ShippingCompanyCd`,`UserCd`)"
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ユーザー（乗務員）マスタ';";
@@ -2281,6 +2283,9 @@ public class A00040TableCheck{
 					break;
 				case "DelFg":
 					sql = sql + " ADD DelFg tinyint(1) NOT NULL DEFAULT '0'";
+					break;
+				case "MainClient":
+					sql = sql + " ADD MainClient varchar(20) DEFAULT NULL";
 					break;
 				default:
 					break;

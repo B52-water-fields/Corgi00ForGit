@@ -221,7 +221,7 @@ public class A00050OldDataTableCheck{
 	}
 	
 	
-	private static String[][] ColumnList(String TgtDB,String TgtTable) {
+	public static String[][] ColumnList(String TgtDB,String TgtTable) {
 		//データベース・テーブルを指定してフィールド名一覧を返却する
 		String[][] rt=new String[0][0];
 		A00010DbConnect.DB_CONN(TgtDB);
@@ -256,6 +256,7 @@ public class A00050OldDataTableCheck{
 				+ " FROM INFORMATION_SCHEMA.COLUMNS\n"
 				+ " WHERE TABLE_SCHEMA = '"+MySqlDefaultSchema+"'\n"
 				+ " AND TABLE_NAME = '"+TgtTable+"'";
+		//System.out.println(sql);
 
 		try {
 			stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,

@@ -1,13 +1,12 @@
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -73,8 +72,10 @@ public class A00000Main{
 	public static String LoginUserName = "";
 	public static String LoginUserCompany = "";
 	public static String LoginUserAuthorityFG = "";
+	public static String LoginUserClient="";
 	
 	public static String ClWh = "";
+	public static String ClWhName = "";
 	public static String ClCd = "";
 	public static String ClName = "";
 	public static String ClGp = "";
@@ -88,72 +89,28 @@ public class A00000Main{
     private static void LogIn() {
     	//データベースに接続しユーザーマスターを読み込んでログイン画面表示
   		//ログイン画面起動
-		final JFrame login_fm = new JFrame();
-		//ウィンドウタイトルの設定
-		login_fm.setTitle("Corgi00ログイン");
-		//表示位置サイズの設定（表示横位置,表示縦位置,横幅,縦幅）
-		login_fm.setBounds(200*A00000Main.Mul/A00000Main.Div, 200*A00000Main.Mul/A00000Main.Div, 400*A00000Main.Mul/A00000Main.Div, 300*A00000Main.Mul/A00000Main.Div);
-		//レイアウト無効
-		login_fm.setLayout(null);
-		//ウィンドウの閉じるボタンでプログラム終了しない
-		//閉じるボタンでDBのコネクション閉じてから終了させたい為
-		login_fm.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		final JFrame login_fm = B00110FrameParts.FrameCreate(20,20,400,300,"Corgi00ログイン","");
 	
 		//ユーザーID入力BOX
-		final JTextField WH_ID = new JTextField("");				//ユーザー所属倉庫ID入力BOX
-		final JTextField U_ID = new JTextField("");					//ユーザーID入力BOX
-		final JPasswordField U_Pass = new JPasswordField("");		//ユーザーパスワード入力BOX
-	
-		WH_ID.setFont(new Font(  A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-		U_ID.setFont(new Font(   A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-		U_Pass.setFont(new Font( A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-	
-		WH_ID.setBounds( 100*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div, 150*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
-		U_ID.setBounds(  100*A00000Main.Mul/A00000Main.Div, 50*A00000Main.Mul/A00000Main.Div, 150*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
-		U_Pass.setBounds(100*A00000Main.Mul/A00000Main.Div, 80*A00000Main.Mul/A00000Main.Div, 150*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
+		final JTextField 		WH_ID 	= B00110FrameParts.JTextFieldSet(		100,20,150,20,"",11,0);				//ユーザー所属倉庫ID入力BOX
+		final JTextField 		U_ID 	= B00110FrameParts.JTextFieldSet(		100,50,150,20,"",11,0);				//ユーザーID入力BOX
+		final JPasswordField 	U_Pass 	= B00110FrameParts.JPasswordFieldSet(	100,80,150,20,"",11,0);				//ユーザーパスワード入力BOX
 	
 		//入力BOX説明
-		JLabel WH_ID_LB  = new JLabel("倉庫コード");
-		JLabel U_ID_LB   = new JLabel("ユーザーID");
-		JLabel U_Pass_LB = new JLabel("パスワード");
-	
-		WH_ID_LB.setFont(new Font(  A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-		U_ID_LB.setFont(new Font(   A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-		U_Pass_LB.setFont(new Font( A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-	
-		WH_ID_LB.setBounds(  20*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div, 150*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
-		U_ID_LB.setBounds(   20*A00000Main.Mul/A00000Main.Div, 50*A00000Main.Mul/A00000Main.Div, 150*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
-		U_Pass_LB.setBounds( 20*A00000Main.Mul/A00000Main.Div, 80*A00000Main.Mul/A00000Main.Div, 150*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
+		JLabel WH_ID_LB  = B00110FrameParts.JLabelSet(	20,20,150,20,"倉庫コード;",11,1);
+		JLabel U_ID_LB   = B00110FrameParts.JLabelSet(	20,50,150,20,"ユーザーID;",11,1);
+		JLabel U_Pass_LB = B00110FrameParts.JLabelSet(	20,80,150,20,"パスワード;",11,1);
 	
 	
 		//EXITボタン
-		JButton login_exit_btn=new JButton();
-		login_exit_btn.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-		login_exit_btn.setText("EXIT");
-		login_exit_btn.setBounds(50*A00000Main.Mul/A00000Main.Div, 120*A00000Main.Mul/A00000Main.Div, 100*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
+		JButton login_exit_btn=B00110FrameParts.BtnSet(50,120,100,20,"EXIT",11);
 	
 		//ENTRYボタン
-		JButton login_entry_btn=new JButton();
-		login_entry_btn.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-		login_entry_btn.setText("ENTRY");
-		login_entry_btn.setBounds(180*A00000Main.Mul/A00000Main.Div, 120*A00000Main.Mul/A00000Main.Div, 100*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
-	
-		final DecimalFormat df = new DecimalFormat("####");
+		JButton login_entry_btn=B00110FrameParts.BtnSet(180,120,100,20,"ENTRY",11);
 		
-		JLabel LB_Magn = new JLabel("表示倍率(%)");
-		final JFormattedTextField TB_Magn=new JFormattedTextField(df);
-		
-		TB_Magn.setText(""+Mul);
-		
-		LB_Magn.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-		TB_Magn.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 11*A00000Main.Mul/A00000Main.Div));
-		
-		LB_Magn.setHorizontalAlignment(JLabel.RIGHT);
-		TB_Magn.setHorizontalAlignment(JLabel.RIGHT);
-		
-		LB_Magn.setBounds( 10*A00000Main.Mul/A00000Main.Div, 200*A00000Main.Mul/A00000Main.Div, 150*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
-		TB_Magn.setBounds(160*A00000Main.Mul/A00000Main.Div, 200*A00000Main.Mul/A00000Main.Div, 100*A00000Main.Mul/A00000Main.Div, 20*A00000Main.Mul/A00000Main.Div);
-		
+		//表示倍率
+		JLabel LB_Magn = B00110FrameParts.JLabelSet(	10,200,150,20,"表示倍率(%);",11,1);
+		final JFormattedTextField TB_Magn=B00110FrameParts.JFormattedTextFieldSet(	160,200,100,20,""+Mul,11,1,"####");	
 
 		login_fm.add(login_exit_btn);
 		login_fm.add(login_entry_btn);
@@ -183,7 +140,7 @@ public class A00000Main{
 				WMul = Integer.parseInt(WST);
 								
 				if(0==LoginCheckCount) {
-					//ユーザーマスタテーブル泣ければ作成
+					//ユーザーマスタテーブル無ければ作成
 					A00040TableCheck.UserMstCreate();
 					//ユーザーzeusだった場合、zeusユーザー無ければ作る
 					if("zeus".equals(UserId)) {
@@ -195,7 +152,7 @@ public class A00000Main{
 				if(LoginCheck) {
 					login_fm.setVisible(false);
 					login_fm.dispose();
-					LoginStr() ;
+					LoginStr(WhCd,UserId,UserPass) ;
 				}else {
 					WH_ID.setText("");
 					U_ID.setText("");
@@ -252,7 +209,7 @@ public class A00000Main{
 				if(LoginCheck) {
 					login_fm.setVisible(false);
 					login_fm.dispose();
-					LoginStr() ;
+					LoginStr(WhCd,UserId,UserPass) ;
 				}else {
 					WH_ID.setText("");
 					U_ID.setText("");
@@ -369,11 +326,11 @@ public class A00000Main{
 		field_name[24][2] = "0";	//削除区分
 		
 		judg_data[0][0] = "0000";		//倉庫コード
-		judg_data[0][1] = "0000";		//運送会社CD
+		judg_data[0][1] = "SC00000";		//運送会社CD
 		judg_data[0][2] = "zeus";		//ユーザーCD
 		
 		entry_data[0][0] = "0000";				//倉庫コード
-		entry_data[0][1] = "0000";				//運送会社CD
+		entry_data[0][1] = "SC00000";			//運送会社CD
 		entry_data[0][2] = "zeus";				//ユーザーCD
 		entry_data[0][3] = "ThereBeLight";		//パスワード
 		entry_data[0][4] = "9";			//権限区分
@@ -411,12 +368,22 @@ public class A00000Main{
     	
 		String sql = "SELECT"
 				+ " KM0020_USERMST.WHCD as WH_CD"
+				+ ",KM0010_WHMST.WHName as WHName"
 				+ ",KM0020_USERMST.UserCd as USER_CD"
 				+ ",KM0020_USERMST.PassWord as USER_PASS"
 				+ ",KM0020_USERMST.UserName01 as USER_NAME"
 				+ ",KM0020_USERMST.ShippingCompanyCd as ShippingCompanyCd"
+				+ ",KM0070_SHIPPINGCOMPANYMST.ShippingCompanyName01 as ShippingCompanyName01"
 				+ ",KM0020_USERMST.AuthorityFG as AuthorityFG"
+				+ ",KM0020_USERMST.MainClient as MainClient"
 				+ " FROM KM0020_USERMST"
+				+ " LEFT OUTER JOIN KM0010_WHMST ON("
+				+ " KM0020_USERMST.WHCD = KM0010_WHMST.WHCD"
+				+ ")"
+				+ " LEFT OUTER JOIN KM0070_SHIPPINGCOMPANYMST ON("
+				+ " KM0020_USERMST.ShippingCompanyCd = KM0070_SHIPPINGCOMPANYMST.ShippingCompanyCd"
+				+ ")"
+				+ " "
 				+ " WHERE "
 				+ "KM0020_USERMST.WHCD = ?"
 				+ " AND "
@@ -437,10 +404,12 @@ public class A00000Main{
 			rset01.beforeFirst();
 			while (rset01.next()) {
 				LoginCheck = true;
-				LoginUserWH    = rset01.getString("WH_CD");
-				LoginUserId    = rset01.getString("USER_CD");
-				LoginUserName  = rset01.getString("USER_NAME");
-				LoginUserCompany = rset01.getString("ShippingCompanyCd");
+				LoginUserWH		= rset01.getString("WH_CD");
+				LoginUserWhName	= rset01.getString("WHName");
+				LoginUserId		= rset01.getString("USER_CD");
+				LoginUserName		= rset01.getString("USER_NAME");
+				LoginUserCompany	= rset01.getString("ShippingCompanyCd");
+				LoginUserClient	= rset01.getString("MainClient");
 				if(null==rset01.getString("AuthorityFG")||"".equals(rset01.getString("AuthorityFG"))){LoginUserAuthorityFG = "0";}else{
 					LoginUserAuthorityFG = rset01.getString("AuthorityFG");
 				};
@@ -461,19 +430,145 @@ public class A00000Main{
     	return LoginCheck;
     }
     
-    private static void LoginStr() {
+    private static void LoginStr(String WhCd,String UserId,String UserPass) {
     	if(100>WMul) {WMul=100;}
     	Mul = WMul;
     	//ログインユーザーがzeusだった場合天地創造（データベースの存在チェック・フィールドのカラムの不足チェック走らせる）
     	if(LoginUserWH.equals("0000") && LoginUserId.equals("zeus")) {
     		A00040TableCheck.TableCheck();
     		A00050OldDataTableCheck.OldDataTableCheck();
+    		
+    		B00100DefaultVariable.DefaultClGp();
+    		B00100DefaultVariable.DefaultShippingCompany();
+    		LoginCheck(WhCd,UserId,UserPass);
+    		B00120TableSelectSql.TableSelectSql();
     	}
+    	ClSelect() ;
+    }
+    
+
+    
+    public static void ClSelect() {
+    	//荷主選択
+    	final JFrame main_fm = B00110FrameParts.FrameCreate(20,20,500,250,"Corgi荷主選択","");
+		JLabel userinfo = B00110FrameParts.UserInfo();
+		JButton exit_btn = B00110FrameParts.ExitBtn();
+		JButton entry_btn = B00110FrameParts.EntryBtn();
+		
+		Object[][] WorkClList = ClList();
+		//荷主マスタ戻り値空だった場合、荷主グループClGp000配下に荷主を１件作る
+		if(null==WorkClList||0==WorkClList.length) {
+			B00101DefaultVariableWarehouse.DefaultClCreate(LoginUserWH);
+			WorkClList = ClList();
+		}
+		
+		Object[][] ClList = WorkClList;
+		
+		Object[] SelectCl = new Object[ClList.length];
+		
+		for(int i=0;i<ClList.length;i++) {
+			SelectCl[i] = "("+ClList[i][0]+")"+ClList[i][5];
+		}
+		
+		JLabel LbCLList = B00110FrameParts.JLabelSet(	 20,40,100,20,"荷主選択:",11,1);
+		final JComboBox TbCLList = B00110FrameParts.JComboBoxSet(120,40,300,20,SelectCl,11);
+		
+		
+		if(null==ClCd||"".equals(ClCd)) {
+			TbCLList.setSelectedIndex(0);
+			for(int i=0;i<ClList.length;i++) {
+				if((""+ClList[i][0]).equals(LoginUserClient)){
+					TbCLList.setSelectedIndex(i);
+				}
+			}
+		}else {
+			for(int i=0;i<ClList.length;i++) {
+				if((""+ClList[i][0]).equals(ClCd)){
+					TbCLList.setSelectedIndex(i);
+				}
+			}
+		}
+		
+		main_fm.add(LbCLList);
+		main_fm.add(TbCLList);
+		main_fm.add(entry_btn);
+		
+		main_fm.add(userinfo);
+		main_fm.add(exit_btn);
+		main_fm.setVisible(true);
+
+		
+		//EXITボタン押下時の挙動
+		exit_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				A00000Main.EndPg();
+			}
+		});
+		
+		//Entryボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				ClWh = ""+ClList[TbCLList.getSelectedIndex()][3];
+				ClWhName = ""+ClList[TbCLList.getSelectedIndex()][4];
+				ClCd = ""+ClList[TbCLList.getSelectedIndex()][0];
+				ClName = ""+ClList[TbCLList.getSelectedIndex()][5];
+				ClGp = ""+ClList[TbCLList.getSelectedIndex()][1];
+				
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				W00010MainMenu.MainMenu(0,0);
+			}
+		});
+    }
+    
+    public static void LoginCheck() {
+		//ログイン状態を確認してログインできていなければ終了
+		if(null==LoginUserId||null==LoginUserWH
+				||"".equals(LoginUserId)||"".equals(LoginUserWH)) {
+			EndPg();
+		}
+	}
+    
+    private static Object[][] ClList(){
+    	ArrayList SearchCLCD = new ArrayList();
+    	ArrayList SearchCLName = new ArrayList();
+    	ArrayList SearchPost = new ArrayList();
+    	ArrayList searchAdd = new ArrayList();
+		ArrayList SearchTel = new ArrayList();
+		ArrayList SearchFax = new ArrayList();
+		ArrayList SearchMail = new ArrayList(); 
+		ArrayList SearchCom = new ArrayList();
+		ArrayList SearchWHCD = new ArrayList();
+		boolean AllSearch = false;
+		
+		switch (LoginUserAuthorityFG) {
+			case "0"://一般ユーザー
+				SearchWHCD.add(LoginUserWH);
+				break;
+			case "1"://乗務員
+				JOptionPane.showMessageDialog(null, "利用権限がありません");
+				EndPg();
+				break;
+			case "2"://荷主ユーザー
+				SearchWHCD.add(LoginUserWH);
+				SearchCLCD.add(LoginUserClient);
+				break;
+			case "9":
+				AllSearch = true;
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "利用権限がありません");
+				EndPg();
+				break;
+				
+		}
+    	Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+    				SearchCLCD, SearchCLName, SearchPost, searchAdd,
+    				SearchTel, SearchFax, SearchMail,  SearchCom, SearchWHCD, AllSearch);
     	
-    	JOptionPane.showMessageDialog(null, "ログイン成功");
-    	
-    	
-    	
+    	return ClMstRt;
     }
     
     private static void SqlSetting() {
