@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -10,7 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class B00110FrameParts{
 	static int Width;
@@ -281,7 +285,34 @@ public class B00110FrameParts{
 		return PN;
 	}
 	
+	/*===========================================================================
+	テーブルセル表示位置設定用
+	===========================================================================*/
+	public static DefaultTableCellRenderer rightCellRenderer() {
+			DefaultTableCellRenderer rightCellRenderer = new DefaultTableCellRenderer();
+			rightCellRenderer.setHorizontalAlignment(JLabel.RIGHT);
+			return rightCellRenderer;
+	}
+	public static DefaultTableCellRenderer leftCellRenderer() {
+			DefaultTableCellRenderer leftCellRenderer = new DefaultTableCellRenderer();
+			leftCellRenderer.setHorizontalAlignment(JLabel.LEFT);
+			return leftCellRenderer;
+	}
+	public static DefaultTableCellRenderer centerCellRenderer() {
+			DefaultTableCellRenderer centerCellRenderer =  new DefaultTableCellRenderer();
+			centerCellRenderer.setHorizontalAlignment(JLabel.CENTER);
+			return centerCellRenderer;
+	}
 	
-	
-	
+	/*===========================================================================
+ 	スクロールパネル配置
+	===========================================================================*/
+	public static JScrollPane JScrollPaneSet(int x,int y,int Width,int Height,Component SetOb) {
+		JScrollPane scpn01= new JScrollPane(SetOb);
+		scpn01.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scpn01.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scpn01.setBounds(x*A00000Main.Mul/A00000Main.Div,y*A00000Main.Mul/A00000Main.Div,Width*A00000Main.Mul/A00000Main.Div,Height*A00000Main.Mul/A00000Main.Div);
+		
+		return scpn01;
+	}
 }

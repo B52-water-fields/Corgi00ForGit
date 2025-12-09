@@ -13,23 +13,23 @@ public class M00001WhMstRt{
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		String sql = " select "
-				+"(KM0010_WHMST.WHCD) as WHCD,\n"				//倉庫コード
-				+"(KM0010_WHMST.WHName) as WHName,\n"			//拠点倉庫名
-				+"(KM0010_WHMST.Post) as Post,\n"				//拠点倉庫郵便番号
-				+"(KM0010_WHMST.Add01) as Add01,\n"				//拠点倉庫住所1
-				+"(KM0010_WHMST.Add02) as Add02,\n"				//拠点倉庫住所2
-				+"(KM0010_WHMST.Tel) as Tel,\n"					//拠点倉庫電話
-				+"(KM0010_WHMST.Fax) as Fax,\n"					//拠点倉庫FAX
-				+"(KM0010_WHMST.Mail) as Mail,\n"				//拠点倉庫MAIL
-				+"(KM0010_WHMST.Com01) as Com01,\n"				//コメント１
-				+"(KM0010_WHMST.Com02) as Com02,\n"				//コメント２
-				+"(KM0010_WHMST.Com03) as Com03,\n"				//コメント３
-				+"(KM0010_WHMST.PTMSCD) as PTMSCD,\n"			//みらいシステム連携用事業所CD
-				+"(KM0010_WHMST.EntryDate) as EntryDate,\n"		//登録者コード
-				+"(KM0010_WHMST.UpdateDate) as UpdateDate,\n"	//更新者コード
-				+"(KM0010_WHMST.EntryUser) as EntryUser,\n"		//データ登録日時
-				+"(KM0010_WHMST.UpdateUser) as UpdateUser\n"	//データ更新日時
-				+ " from KM0010_WHMST"
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHCD) as WHCD,\n"				//倉庫コード
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHName) as WHName,\n"			//拠点倉庫名
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Post) as Post,\n"				//拠点倉庫郵便番号
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Add01) as Add01,\n"				//拠点倉庫住所1
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Add02) as Add02,\n"				//拠点倉庫住所2
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Tel) as Tel,\n"					//拠点倉庫電話
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Fax) as Fax,\n"					//拠点倉庫FAX
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Mail) as Mail,\n"				//拠点倉庫MAIL
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Com01) as Com01,\n"				//コメント１
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Com02) as Com02,\n"				//コメント２
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Com03) as Com03,\n"				//コメント３
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.PTMSCD) as PTMSCD,\n"			//基幹システム連携用事業所CD
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.EntryDate) as EntryDate,\n"		//登録者コード
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.UpdateDate) as UpdateDate,\n"	//更新者コード
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.EntryUser) as EntryUser,\n"		//データ登録日時
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.UpdateUser) as UpdateUser\n"	//データ更新日時
+				+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST"
 				+ " where 1=1";
 		
 		if(null!=SearchWHCD&&0<SearchWHCD.size()){
@@ -37,7 +37,7 @@ public class M00001WhMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchWHCD.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.WHCD = '"+SearchWHCD.get(i)+"'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHCD = '"+SearchWHCD.get(i)+"'";
 			}
 			sql = sql + ")";
 		}
@@ -46,7 +46,7 @@ public class M00001WhMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchWHName.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.WHName like '%"+SearchWHName.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHName like '%"+SearchWHName.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -55,7 +55,7 @@ public class M00001WhMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchPost.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.Post like '"+SearchPost.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Post like '"+SearchPost.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -64,8 +64,8 @@ public class M00001WhMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchAdd.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.Add01 like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or KM0010_WHMST.Add02 like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Add01 like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Add02 like '%"+SearchAdd.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -74,7 +74,7 @@ public class M00001WhMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchTel.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.Tel like '%"+SearchTel.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Tel like '%"+SearchTel.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -83,7 +83,7 @@ public class M00001WhMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchFax.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.Fax like '%"+SearchFax.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Fax like '%"+SearchFax.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -92,18 +92,19 @@ public class M00001WhMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchMail.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.Mail like '%"+SearchMail.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Mail like '%"+SearchMail.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
+		
 		if(null!=SearchCom&&0<SearchCom.size()){
 			SearchKick = true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchCom.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.Com01 like '%"+SearchCom.get(i)+"%'";
-				sql = sql + " or KM0010_WHMST.Com02 like '%"+SearchCom.get(i)+"%'";
-				sql = sql + " or KM0010_WHMST.Com03 like '%"+SearchCom.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Com01 like '%"+SearchCom.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Com02 like '%"+SearchCom.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.Com03 like '%"+SearchCom.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -112,15 +113,15 @@ public class M00001WhMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchPTMSCD.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " KM0010_WHMST.PTMSCD = '"+SearchPTMSCD.get(i)+"'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.PTMSCD = '"+SearchPTMSCD.get(i)+"'";
 			}
 			sql = sql + ")";
 		}
 		
-		sql = sql + " order by KM0010_WHMST.WHCD";
-		//System.out.println(sql);
+		sql = sql + " order by "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHCD";
+		
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NANKO");
+			A00010DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			Statement stmt01 = null;
 			try {
@@ -147,7 +148,7 @@ public class M00001WhMstRt{
 					if(null==rset01.getString("Com01")){rt[counter][8]="";}else{rt[counter][8]=rset01.getString("Com01");}				//コメント１
 					if(null==rset01.getString("Com02")){rt[counter][9]="";}else{rt[counter][9]=rset01.getString("Com02");}				//コメント２
 					if(null==rset01.getString("Com03")){rt[counter][10]="";}else{rt[counter][10]=rset01.getString("Com03");}			//コメント３
-					if(null==rset01.getString("PTMSCD")){rt[counter][11]="";}else{rt[counter][11]=rset01.getString("PTMSCD");}			//みらいシステム連携用事業所CD
+					if(null==rset01.getString("PTMSCD")){rt[counter][11]="";}else{rt[counter][11]=rset01.getString("PTMSCD");}			//基幹システム連携用事業所CD
 					if(null==rset01.getTimestamp("EntryDate")){rt[counter][12]="";}else{rt[counter][12]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
 					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][13]="";}else{rt[counter][13]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//データ更新日時
 					if(null==rset01.getString("EntryUser")){rt[counter][14]="";}else{rt[counter][14]=rset01.getString("EntryUser");}		//登録者

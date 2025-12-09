@@ -26,14 +26,14 @@ public class M00042CautionMstRt{
 			+"(KM0090_CAUTION.UpdateDate) as UpdateDate,\n"			//データ更新日時
 			+"(KM0090_CAUTION.EntryUser) as EntryUser,\n"			//登録者コード
 			+"(KM0090_CAUTION.UpdateUser) as UpdateUser\n"			//更新者コード
-			+ " from KM0090_CAUTION\n"
-			+ " left outer join KM0031_CLIENT_GROUP"
+			+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0090_CAUTION\n"
+			+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP"
 			+ " on("
-			+ " KM0090_CAUTION.ClGpCD = KM0031_CLIENT_GROUP.ClGpCD"
+			+ " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0090_CAUTION.ClGpCD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD"
 			+ " )"
-			+ " left outer join KM0040_DELIVERYMST"
+			+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST"
 			+ " on("
-			+ " KM0090_CAUTION.DECD = KM0040_DELIVERYMST.DECD"
+			+ " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0090_CAUTION.DECD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST.DECD"
 			+ " )"
 			+ " where 1=1\n";
 	

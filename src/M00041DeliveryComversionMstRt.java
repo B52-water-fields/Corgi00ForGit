@@ -43,10 +43,10 @@ public class M00041DeliveryComversionMstRt{
 				+"(KM0041_DELIVERY_COMVERSIONMST.EntryUser) as EntryUser,\n"		//登録者コード
 				+"(KM0041_DELIVERY_COMVERSIONMST.UpdateUser) as UpdateUser,\n"		//更新者コード
 				+"(KM0041_DELIVERY_COMVERSIONMST.MstPriorityFirstFg) as MstPriorityFirstFg \n"	//マスタ優先フラグ
-				+ " from KM0041_DELIVERY_COMVERSIONMST"
-				+ " left outer join KM0040_DELIVERYMST"
-				+ " on (KM0041_DELIVERY_COMVERSIONMST.DECD = KM0040_DELIVERYMST.DECD"
-				+ " and KM0041_DELIVERY_COMVERSIONMST.DepartmentCd = KM0040_DELIVERYMST.DepartmentCd)"
+				+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0041_DELIVERY_COMVERSIONMST"
+				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST"
+				+ " on ("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0041_DELIVERY_COMVERSIONMST.DECD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST.DECD"
+				+ " and "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0041_DELIVERY_COMVERSIONMST.DepartmentCd = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST.DepartmentCd)"
 				+ " where 1=1 ";
 		
 		if(null!=SearchClGpCD&&0<SearchClGpCD.size()) {

@@ -43,18 +43,18 @@ public class M00020UserMstRt{
 				+"(KM0020_USERMST.UpdateUser) as UpdateUser,\n"										//データ更新日時
 				+"(KM0020_USERMST.PTMSCD) as PTMSCD,\n"												//基幹システムユーザーコード
 				+"(KM0020_USERMST.DelFg) as DelFg\n"												//削除区分
-				+ " from KM0020_USERMST \n"
-				+ " left outer join KM0070_SHIPPINGCOMPANYMST\n"
-				+ " on(KM0020_USERMST.ShippingCompanyCd = KM0070_SHIPPINGCOMPANYMST.ShippingCompanyCd)\n"
-				+ " left outer join KM0071_CARMST\n"
+				+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST \n"
+				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0070_SHIPPINGCOMPANYMST\n"
+				+ " on("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.ShippingCompanyCd = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0070_SHIPPINGCOMPANYMST.ShippingCompanyCd)\n"
+				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0071_CARMST\n"
 				+ " on(\n"
-				+ " KM0020_USERMST.WHCD = KM0071_CARMST.WHCD\n"
-				+ "	and KM0020_USERMST.ShippingCompanyCd=KM0071_CARMST.ShippingCompanyCd\n"
-				+ " and KM0020_USERMST.CarCd = KM0071_CARMST.CarCd\n"
+				+ " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.WHCD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0071_CARMST.WHCD\n"
+				+ "	and "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.ShippingCompanyCd="+A00000Main.MySqlDefaultSchemaNYANKO+".KM0071_CARMST.ShippingCompanyCd\n"
+				+ " and "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.CarCd = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0071_CARMST.CarCd\n"
 				+ " )\n"
-				+ " left outer join KM0010_WHMST"
+				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST"
 				+ " on(\n"
-				+ " KM0020_USERMST.WHCD = KM0010_WHMST.WHCD"
+				+ " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.WHCD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHCD"
 				+ " )\n"
 				+ " where 1=1";	
 		

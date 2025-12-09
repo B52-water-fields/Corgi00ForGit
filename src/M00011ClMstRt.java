@@ -38,11 +38,11 @@ public class M00011ClMstRt{
 		+"(KM0030_CLIENTMST.EntryUser) as EntryUser,"	//登録者コード
 		+"(KM0030_CLIENTMST.UpdateUser) as UpdateUser,"	//更新者コード
 		+"(KM0030_CLIENTMST.PTMSCD) as PTMSCD"			//基幹システム荷主コード
-		+" from KM0030_CLIENTMST"
-		+ " left outer join KM0031_CLIENT_GROUP "
-		+ " on(KM0030_CLIENTMST.ClGpCD = KM0031_CLIENT_GROUP.ClGpCD)"
-		+ " left outer join KM0010_WHMST"
-		+ " on(KM0030_CLIENTMST.WHCD = KM0010_WHMST.WHCD)"
+		+" from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST"
+		+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP "
+		+ " on("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST.ClGpCD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD)"
+		+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST"
+		+ " on("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST.WHCD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHCD)"
 		+ " where "
 		+ " KM0030_CLIENTMST.DelFg <> 1 ";
 

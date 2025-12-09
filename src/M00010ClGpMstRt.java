@@ -12,34 +12,34 @@ public class M00010ClGpMstRt{
 		Object[][] rt = new Object[0][19];
 		
 		String sql = "select "
-				+"(KM0031_CLIENT_GROUP.ClGpCD) as ClGpCD,\n"			//荷主グループCD
-				+"(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"	//荷主名1
-				+"(KM0031_CLIENT_GROUP.CLGpName02) as CLGpName02,\n"	//荷主名2
-				+"(KM0031_CLIENT_GROUP.CLGpName03) as CLGpName03,\n"	//荷主名3
-				+"(KM0031_CLIENT_GROUP.Post) as Post,\n"				//郵便番号
-				+"(KM0031_CLIENT_GROUP.Add01) as Add01,\n"				//住所1
-				+"(KM0031_CLIENT_GROUP.Add02) as Add02,\n"				//住所2
-				+"(KM0031_CLIENT_GROUP.Add03) as Add03,\n"				//住所3
-				+"(KM0031_CLIENT_GROUP.Tel) as Tel,\n"					//電話番号
-				+"(KM0031_CLIENT_GROUP.Fax) as Fax,\n"					//FAX
-				+"(KM0031_CLIENT_GROUP.Mail) as Mail,\n"				//メールアドレス
-				+"(KM0031_CLIENT_GROUP.Com01) as Com01,\n"				//コメント1
-				+"(KM0031_CLIENT_GROUP.Com02) as Com02,\n"				//コメント2
-				+"(KM0031_CLIENT_GROUP.Com03) as Com03,\n"				//コメント3
-				+"(KM0031_CLIENT_GROUP.EntryDate) as EntryDate,\n"		//データ登録日時
-				+"(KM0031_CLIENT_GROUP.UpdateDate) as UpdateDate,\n"	//データ更新日時
-				+"(KM0031_CLIENT_GROUP.EntryUser) as EntryUser,\n"		//登録者コード
-				+"(KM0031_CLIENT_GROUP.UpdateUser) as UpdateUser,\n"	//更新者コード
-				+"(KM0031_CLIENT_GROUP.PassWord) as PassWord \n"		//パスワード
-				+" from KM0031_CLIENT_GROUP "
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD) as ClGpCD,\n"			//荷主グループCD
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"	//荷主名1
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName02) as CLGpName02,\n"	//荷主名2
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName03) as CLGpName03,\n"	//荷主名3
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Post) as Post,\n"				//郵便番号
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Add01) as Add01,\n"				//住所1
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Add02) as Add02,\n"				//住所2
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Add03) as Add03,\n"				//住所3
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Tel) as Tel,\n"					//電話番号
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Fax) as Fax,\n"					//FAX
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Mail) as Mail,\n"				//メールアドレス
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Com01) as Com01,\n"				//コメント1
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Com02) as Com02,\n"				//コメント2
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Com03) as Com03,\n"				//コメント3
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.EntryDate) as EntryDate,\n"		//データ登録日時
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.UpdateDate) as UpdateDate,\n"	//データ更新日時
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.EntryUser) as EntryUser,\n"		//登録者コード
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.UpdateUser) as UpdateUser,\n"	//更新者コード
+				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.PassWord) as PassWord \n"		//パスワード
+				+" from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP "
 				+" where 1=1 ";
-		
+
 		if(null!=SearchClGpCD && 0<SearchClGpCD.size()) {
 			SearchKick = true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchClGpCD.size();i++) {
 				if(0<i) {sql = sql+" or ";}
-				sql = sql + " KM0031_CLIENT_GROUP.ClGpCD = '"+SearchClGpCD.get(i)+"'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD = '"+SearchClGpCD.get(i)+"'";
 			}
 			sql = sql + ")";
 		}
@@ -49,9 +49,9 @@ public class M00010ClGpMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchCLGpName.size();i++) {
 				if(0<i) {sql = sql+" or ";}
-				sql = sql + " KM0031_CLIENT_GROUP.CLGpName01 like '%"+SearchCLGpName.get(i)+"%'";
-				sql = sql + " or KM0031_CLIENT_GROUP.CLGpName02 like '%"+SearchCLGpName.get(i)+"%'";
-				sql = sql + " or KM0031_CLIENT_GROUP.CLGpName03 like '%"+SearchCLGpName.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName01 like '%"+SearchCLGpName.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName02 like '%"+SearchCLGpName.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName03 like '%"+SearchCLGpName.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -60,7 +60,7 @@ public class M00010ClGpMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchPost.size();i++) {
 				if(0<i) {sql = sql+" or ";}
-				sql = sql + " KM0031_CLIENT_GROUP.Post like '"+SearchPost.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Post like '"+SearchPost.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -69,9 +69,9 @@ public class M00010ClGpMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchAdd.size();i++) {
 				if(0<i) {sql = sql+" or ";}
-				sql = sql + " KM0031_CLIENT_GROUP.Add01 like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or KM0031_CLIENT_GROUP.Add02 like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or KM0031_CLIENT_GROUP.Add03 like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Add01 like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Add02 like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Add03 like '%"+SearchAdd.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -80,7 +80,7 @@ public class M00010ClGpMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchTel.size();i++) {
 				if(0<i) {sql = sql+" or ";}
-				sql = sql + " KM0031_CLIENT_GROUP.Tel like '%"+SearchTel.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Tel like '%"+SearchTel.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -89,7 +89,7 @@ public class M00010ClGpMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchFax.size();i++) {
 				if(0<i) {sql = sql+" or ";}
-				sql = sql + " KM0031_CLIENT_GROUP.Fax like '%"+SearchFax.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Fax like '%"+SearchFax.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -98,7 +98,7 @@ public class M00010ClGpMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchMail.size();i++) {
 				if(0<i) {sql = sql+" or ";}
-				sql = sql + " KM0031_CLIENT_GROUP.Mail like '%"+SearchMail.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Mail like '%"+SearchMail.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
@@ -107,13 +107,14 @@ public class M00010ClGpMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchCom.size();i++) {
 				if(0<i) {sql = sql+" or ";}
-				sql = sql + " KM0031_CLIENT_GROUP.Com01 like '%"+SearchCom.get(i)+"%'";
-				sql = sql + " or KM0031_CLIENT_GROUP.Com02 like '%"+SearchCom.get(i)+"%'";
-				sql = sql + " or KM0031_CLIENT_GROUP.Com03 like '%"+SearchCom.get(i)+"%'";
+				sql = sql + " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Com01 like '%"+SearchCom.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Com02 like '%"+SearchCom.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Com03 like '%"+SearchCom.get(i)+"%'";
 			}
 			sql = sql + ")";
 		}
-		sql = sql + "order by KM0031_CLIENT_GROUP.ClGpCD";
+		sql = sql + "order by "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD";
+
 		if(SearchKick) {
 			A00010DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;

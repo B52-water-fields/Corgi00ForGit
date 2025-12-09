@@ -15,12 +15,12 @@ public class M10010PostMstRt{
 		if(AllSearch) {SearchKick = true;}
 
 		String sql = "select "
-				+"(M0010_PostMst.POST) as POST,"
-				+"(M0010_PostMst.PREFECTURES) as PREFECTURES,"
-				+"(M0010_PostMst.MUNICI01) as MUNICI01,"
-				+"(M0010_PostMst.MUNICI02) as MUNICI02,"
-				+"(M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD"
-				+ " from M0010_PostMst"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST) as POST,"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES) as PREFECTURES,"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01) as MUNICI01,"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02) as MUNICI02,"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD"
+				+ " from "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst"
 				+ " where 1=1";
 		if(null!=SearchPOST && 0<SearchPOST.size()){
 			SearchKick = true;
@@ -28,7 +28,7 @@ public class M10010PostMstRt{
 				String WST = ""+SearchPOST.get(i);
 				WST = B00020ToolsTextControl.num_only_String(WST);
 				if(i==0) {sql = sql + " and(";}else {sql = sql + " or ";}
-				sql = sql + "M0010_PostMst.POST like '"+WST+"%'";
+				sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST like '"+WST+"%'";
 			}
 			sql=sql+")";
 		}
@@ -37,12 +37,13 @@ public class M10010PostMstRt{
 			SearchKick = true;
 			for(int i=0;i<SearchAdd.size();i++) {
 				if(i==0) {sql = sql + " and(";}else {sql = sql + " or ";}
-				sql = sql + "M0010_PostMst.PREFECTURES like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or M0010_PostMst.MUNICI01 like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or M0010_PostMst.MUNICI02 like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01 like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + " or "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02 like '%"+SearchAdd.get(i)+"%'";
 			}
 			sql=sql+")";
 		}
+
 		if(SearchKick) {
 			A00010DbConnect.DB_CONN("POST");
 			ResultSet rset01 = null;
@@ -90,10 +91,10 @@ public class M10010PostMstRt{
 		boolean KickFg=false;
 		if(AllSearch) {KickFg=true;}
 		String sql = "select "
-				+"max(M0010_PostMst.PREFECTURES) as PREFECTURES,"
-				+"max(M0010_PostMst.MUNICI01) as MUNICI01,"
-				+"(M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD"
-				+ " from M0010_PostMst"
+				+"max("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES) as PREFECTURES,"
+				+"max("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01) as MUNICI01,"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD"
+				+ " from "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst"
 				+ " where 1=1";
 		if(null!=SearchName&&0<SearchName.size()) {
 			KickFg=true;
@@ -102,13 +103,14 @@ public class M10010PostMstRt{
 				if(i>0) {
 					sql = sql + " or ";
 				}
-				sql = sql + "CONCAT (M0010_PostMst.PREFECTURES,M0010_PostMst.MUNICI01,M0010_PostMst.MUNICI02) like '%"+SearchName.get(i)+"%'";
+				sql = sql + "CONCAT ("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES,"+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01,"+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02) like '%"+SearchName.get(i)+"%'";
 			}
 			sql = sql+")";
 		}
 		
-		sql = sql + " group by M0010_PostMst.MUNICIPALITY_CD order by M0010_PostMst.MUNICIPALITY_CD";
+		sql = sql + " group by "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD order by "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD";
 		//System.out.println(sql);
+
 		if(KickFg) {
 			A00010DbConnect.DB_CONN("POST");
 			ResultSet rset01 = null;
@@ -150,14 +152,15 @@ public class M10010PostMstRt{
 	}
 	public static Object[][] PrefecuturesRt(ArrayList SearchName,boolean AllSearch){
 		//県マスタ返却
+
 			Object[][] rt = new Object[0][2];
 			boolean KickFg=false;
 			if(AllSearch) {KickFg=true;}
 			String sql = "select "
-					+"(M0010_PostMst.PREFECTURES) as PREFECTURES,"
-					+"(M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD,"
-					+"LEFT(M0010_PostMst.MUNICIPALITY_CD,2) as PREFECTURES_CD"
-					+ " from M0010_PostMst"
+					+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES) as PREFECTURES,"
+					+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD,"
+					+"LEFT("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD,2) as PREFECTURES_CD"
+					+ " from "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst"
 					+ " where 1=1";
 			if(null!=SearchName&&0<SearchName.size()) {
 				KickFg=true;
@@ -166,7 +169,7 @@ public class M10010PostMstRt{
 					if(i>0) {
 						sql = sql + " or ";
 					}
-					sql = sql + "M0010_PostMst.PREFECTURES like '%"+SearchName.get(i)+"%'";
+					sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES like '%"+SearchName.get(i)+"%'";
 				}
 				sql = sql+")";
 			}
@@ -177,7 +180,7 @@ public class M10010PostMstRt{
 					+ " from ("+ sql + ") as SD";
 			
 			sql = sql + " group by PREFECTURES_CD order by PREFECTURES_CD";
-			
+
 			//System.out.println(sql);
 			if(KickFg) {
 				A00010DbConnect.DB_CONN("POST");

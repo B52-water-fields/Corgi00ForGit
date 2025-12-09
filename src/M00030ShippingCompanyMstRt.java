@@ -34,7 +34,7 @@ public class M00030ShippingCompanyMstRt{
 				+"(KM0070_SHIPPINGCOMPANYMST.UpdateUser) as UpdateUser,\n"		//更新者コード
 				+"(KM0070_SHIPPINGCOMPANYMST.PTMSCD) as PTMSCD,\n"				//基幹システム傭車コード
 				+"(KM0070_SHIPPINGCOMPANYMST.ExportDataType) as ExportDataType\n"	//データ抽出タイプ
-				+ " from KM0070_SHIPPINGCOMPANYMST"
+				+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0070_SHIPPINGCOMPANYMST"
 				+ " where 1=1 ";
 		
 		if(null!=SearchShippingCompanyCd && 0<SearchShippingCompanyCd.size()){

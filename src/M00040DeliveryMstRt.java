@@ -49,7 +49,7 @@ public class M00040DeliveryMstRt{
 			+"(KM0040_DELIVERYMST.LastClient) as LastClient,\n"			//更新した荷主CD
 			+"(KM0040_DELIVERYMST.DelFg) as DelFg\n"					//削除区分
 			
-			+" from KM0040_DELIVERYMST"
+			+" from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST"
 			+" where 1=1\n";
 		
 		if(null!=SearchDECD && 0<SearchDECD.size()){						//検索条件届先CD

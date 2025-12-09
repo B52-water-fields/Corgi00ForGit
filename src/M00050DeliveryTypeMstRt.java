@@ -20,7 +20,7 @@ public class M00050DeliveryTypeMstRt{
 		+"(KM0050_DELIVERY_TYPEMST.UpdateDate) as UpdateDate,"				//データ更新日時
 		+"(KM0050_DELIVERY_TYPEMST.EntryUser) as EntryUser,"				//登録者コード
 		+"(KM0050_DELIVERY_TYPEMST.UpdateUser) as UpdateUser"				//更新者コード
-		+" from KM0050_DELIVERY_TYPEMST"
+		+" from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0050_DELIVERY_TYPEMST"
 		+" where 1=1";
 
 		if(null!=SearchDeliveryTypeNo&&0<SearchDeliveryTypeNo.size()) {
