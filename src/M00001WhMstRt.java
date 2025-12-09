@@ -171,4 +171,44 @@ public class M00001WhMstRt{
 		}
 		return rt;
 	}
+	
+	//倉庫コードを自動採番する
+	public static String NewWhCdGet() {
+		//倉庫マスタ取得
+		ArrayList SearchWHCD = new ArrayList();
+		ArrayList SearchWHName = new ArrayList();
+		ArrayList SearchPost = new ArrayList();
+		ArrayList SearchAdd = new ArrayList();
+		ArrayList SearchTel = new ArrayList();
+		ArrayList SearchFax = new ArrayList();
+		ArrayList SearchMail = new ArrayList();
+		ArrayList SearchCom = new ArrayList();
+		ArrayList SearchPTMSCD = new ArrayList();
+		boolean AllSearch = true;
+		
+		Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+					SearchWHCD, SearchWHName, SearchPost,
+					SearchAdd, SearchTel, SearchFax, SearchMail,
+					SearchCom, SearchPTMSCD,AllSearch);
+		
+		int WhNo = 0;
+    	
+    	for(int i=0;i<WhMstRt.length;i++) {
+    		if("AT".equals((""+WhMstRt[i][0]).substring(0,2))&&9==(""+WhMstRt[i][0]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+WhMstRt[i][0]);
+    			if(7==WST.length()) {
+    				int wint = Integer.parseInt(WST);
+    				if(WhNo<wint) {
+    					WhNo=wint;
+    				}
+    			}
+    		}
+    	}
+    	WhNo = WhNo+1;
+    	String rt = "0000000"+WhNo;
+    	rt = "AT"+rt.substring(rt.length()-7,rt.length());
+    	
+    	return rt;
+	}
+	
 }

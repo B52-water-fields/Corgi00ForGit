@@ -20,6 +20,7 @@ public class B00110FrameParts{
 	static int Width;
 	static int Height;
 	
+	//フレームを FrameCreate(int x,int y,int GetWidth,int GetHeight,String Title,String ColorType)で宣言後、中のパーツの設定をしてください
 	
 	public static Color SelectColer(String ColorType) {
 		Color BackGroundColor = Color.decode("#e1f0ff");

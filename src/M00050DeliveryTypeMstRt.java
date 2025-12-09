@@ -97,8 +97,6 @@ public class M00050DeliveryTypeMstRt{
 			}
 			A00010DbConnect.close();
 		}
-
-
 		return rt;
 	}
 }

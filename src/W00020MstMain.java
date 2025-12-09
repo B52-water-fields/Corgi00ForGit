@@ -62,7 +62,7 @@ public class W00020MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00010WhMstSerach.WhMstSerach(0, 0);
+				WM00010WhMstSearch.WhMstSearch(0, 0);
 			}
 		});
 		

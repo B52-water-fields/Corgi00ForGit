@@ -17,11 +17,11 @@ import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class WM00010WhMstSerach{
+public class WM00010WhMstSearch{
 	static int SetX;
 	static int SetY;
 	static boolean RenewFg;
-	public static void WhMstSerach(int x,int y) {
+	public static void WhMstSearch(int x,int y) {
 		A00000Main.LoginCheck();
 		if(0==SetX) {SetX=100;}
 		if(0==SetY) {SetY=100;}
@@ -66,7 +66,7 @@ public class WM00010WhMstSerach{
 		final JTextField TB_SearchPTMSCD  = B00110FrameParts.JTextFieldSet(	450,100,100,20,"",11,0);
 		
 		JLabel LB2_SearchWHCD  = B00110FrameParts.JLabelSet(	200, 25,100,20,"と一致"   ,11,0);
-		JLabel LB2_SearchWHName  = B00110FrameParts.JLabelSet(	250, 50,100,20,"を含む:"  ,11,0);
+		JLabel LB2_SearchWHName  = B00110FrameParts.JLabelSet(	250, 50,100,20,"を含む"   ,11,0);
 		JLabel LB2_SearchPost  = B00110FrameParts.JLabelSet(	200, 75,100,20,"で始まる" ,11,0);
 		JLabel LB2_SearchAdd  = B00110FrameParts.JLabelSet(	250,100,100,20,"を含む"   ,11,0);
 		JLabel LB2_SearchCom  = B00110FrameParts.JLabelSet(	250,125,100,20,"を含む"   ,11,0);
@@ -206,7 +206,7 @@ public class WM00010WhMstSerach{
 					String GetSearchFax    = TB_SearchFax.getText();	if(null==GetSearchFax   ){GetSearchFax    = "";}
 					String GetSearchMail   = TB_SearchMail.getText();	if(null==GetSearchMail  ){GetSearchMail   = "";}		
 					String GetSearchPTMSCD = TB_SearchPTMSCD.getText();	if(null==GetSearchPTMSCD){GetSearchPTMSCD = "";}
-					System.out.println(GetSearchPTMSCD);
+					
 					ArrayList SearchWHCD = new ArrayList();
 					ArrayList SearchWHName = new ArrayList();
 					ArrayList SearchPost = new ArrayList();
@@ -222,10 +222,10 @@ public class WM00010WhMstSerach{
 					if(!"".equals(GetSearchWHName)){SearchWHName.add(GetSearchWHName);}
 					if(!"".equals(GetSearchPost  )){SearchPost.add(  GetSearchPost);}
 					if(!"".equals(GetSearchAdd   )){SearchAdd.add(   GetSearchAdd);}
-					if(!"".equals(GetSearchCom   )){SearchTel.add(   GetSearchCom);}
-					if(!"".equals(GetSearchTel   )){SearchFax.add(   GetSearchTel);}
-					if(!"".equals(GetSearchFax   )){SearchMail.add(  GetSearchFax);}
-					if(!"".equals(GetSearchMail  )){SearchCom.add(   GetSearchMail);}		
+					if(!"".equals(GetSearchCom   )){SearchCom.add(   GetSearchCom);}
+					if(!"".equals(GetSearchTel   )){SearchTel.add(   GetSearchTel);}
+					if(!"".equals(GetSearchFax   )){SearchFax.add(   GetSearchFax);}
+					if(!"".equals(GetSearchMail  )){SearchMail.add(  GetSearchMail);}		
 					if(!"".equals(GetSearchPTMSCD)){SearchPTMSCD.add(GetSearchPTMSCD);}
 
 					Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
@@ -261,6 +261,44 @@ public class WM00010WhMstSerach{
 				}
 			}
 		});
+		//修正ボタン
+		RenewBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				RenewFg = false;
+				String TgtWhCd = "";
+				int RowCount = tableModel_ms01.getRowCount();
+				for(int i=0;i<RowCount;i++) {
+					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+						TgtWhCd = ""+tableModel_ms01.getValueAt(i, 1);
+					}
+				}
+				if(null!=TgtWhCd&&!"".equals(TgtWhCd)) {
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+	
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WM00011WhMstRenewAndCreate.WhMstRenewAndCreate(0,0,TgtWhCd);
+				}
+				RenewFg = true;
+			}
+		});
+				
+		//新規登録ボタン
+		CreateBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				RenewFg = false;
+				String TgtWhCd = "";
+				
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00011WhMstRenewAndCreate.WhMstRenewAndCreate(0,0,TgtWhCd);
+				RenewFg = true;
+			}
+		});		
 		
 		//CSVボタン押下時の挙動
 		CsvBtn.addActionListener(new AbstractAction(){
