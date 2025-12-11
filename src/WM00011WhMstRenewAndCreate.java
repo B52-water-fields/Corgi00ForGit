@@ -159,6 +159,10 @@ public class WM00011WhMstRenewAndCreate{
 				String GetCom03 = TB_Com03.getText();	if(null==GetCom03){GetCom03 = "";}		//コメント３
 				String GetPTMSCD = TB_PTMSCD.getText();	if(null==GetPTMSCD){GetPTMSCD = "";}	//基幹SysCD
 				
+				GetPost = B00020ToolsTextControl.num_only_String(GetPost);
+				GetTel  = B00020ToolsTextControl.num_only_String(GetTel);
+				GetFax  = B00020ToolsTextControl.num_only_String(GetFax);
+				
 				String SetWh = B00101DefaultVariableWarehouse.RenewAndCreateWh(
 						GetWHCD,	//倉庫コード
 						GetWHName,	//拠点倉庫名

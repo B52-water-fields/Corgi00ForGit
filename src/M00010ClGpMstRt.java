@@ -115,6 +115,7 @@ public class M00010ClGpMstRt{
 		}
 		sql = sql + "order by "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD";
 
+		//System.out.println(sql);
 		if(SearchKick) {
 			A00010DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;

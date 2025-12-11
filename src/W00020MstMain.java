@@ -44,6 +44,10 @@ public class W00020MstMain{
 		JButton UserMst = B00110FrameParts.BtnSet(20,50,130,20,"ユーザー・乗務員",11);
 		PN_AboutALL.add(UserMst);
 		
+		//荷主グループ
+		JButton ClGpMst = B00110FrameParts.BtnSet(20,75,130,20,"荷主グループ",11);
+		PN_AboutALL.add(ClGpMst);
+		
 		//郵便番号
 		JButton PostMst = B00110FrameParts.BtnSet(600,175,130,20,"郵便番号",11);
 		PN_AboutALL.add(PostMst);
@@ -65,7 +69,17 @@ public class W00020MstMain{
 				WM00010WhMstSearch.WhMstSearch(0, 0);
 			}
 		});
-		
+		//荷主グループ
+		ClGpMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00020ClGlpMstSearch.ClGlpMstSearch(0,0);
+			}
+		});
 		
 		//郵便番号
 		PostMst.addActionListener(new AbstractAction(){

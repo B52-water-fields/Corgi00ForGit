@@ -207,6 +207,10 @@ public class WM00010WhMstSearch{
 					String GetSearchMail   = TB_SearchMail.getText();	if(null==GetSearchMail  ){GetSearchMail   = "";}		
 					String GetSearchPTMSCD = TB_SearchPTMSCD.getText();	if(null==GetSearchPTMSCD){GetSearchPTMSCD = "";}
 					
+					GetSearchPost = B00020ToolsTextControl.num_only_String(GetSearchPost);
+					GetSearchTel  = B00020ToolsTextControl.num_only_String(GetSearchTel);
+					GetSearchFax  = B00020ToolsTextControl.num_only_String(GetSearchFax);
+					
 					ArrayList SearchWHCD = new ArrayList();
 					ArrayList SearchWHName = new ArrayList();
 					ArrayList SearchPost = new ArrayList();

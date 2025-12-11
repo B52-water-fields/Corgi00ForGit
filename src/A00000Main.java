@@ -127,6 +127,10 @@ public class A00000Main{
 	public static String ClCd = "";
 	public static String ClName = "";
 	public static String ClGp = "";
+	
+	public static int Div = 100;
+	public static int Mul = 100;
+	public static int WMul = 120;
  	
 	===========================================================================================================================*/
 	
