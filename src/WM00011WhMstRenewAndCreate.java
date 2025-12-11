@@ -1,4 +1,6 @@
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -142,6 +144,33 @@ public class WM00011WhMstRenewAndCreate{
 
 		TB_WHName.requestFocusInWindow();
 		main_fm.setVisible(true);
+		
+		//郵便番号フォーカス消失時の挙動
+		TB_Post.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				String GetPost = TB_Post.getText();	if(null==GetPost) {GetPost="";}
+				GetPost = B00020ToolsTextControl.Trim(B00020ToolsTextControl.num_only_String(GetPost));
+				TB_Add01.setText("");
+				TB_Add02.setText("");
+				
+				ArrayList SearchPOST = new ArrayList();
+				ArrayList SearchAdd = new ArrayList();
+				boolean AllSearch = false;
+				
+				SearchPOST.add(GetPost);
+				
+				Object[][] PostRt = M10010PostMstRt.PostRt(
+							SearchPOST,
+							SearchAdd,
+							AllSearch);
+				
+				if(0<PostRt.length) {
+					TB_Add01.setText(""+PostRt[0][1]+PostRt[0][2]);
+					TB_Add02.setText(""+PostRt[0][3]);
+				}
+			}
+		});
 		
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){

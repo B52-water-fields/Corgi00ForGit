@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -134,6 +136,10 @@ public class WM00010WhMstSearch{
 				,"更新者"
 				};
 		
+		
+		//編集可能カラムの指定
+		B10010TableControl.RenewTgt = new int[1];
+		B10010TableControl.RenewTgt[0] = 0;
 		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
@@ -302,7 +308,28 @@ public class WM00010WhMstSearch{
 				WM00011WhMstRenewAndCreate.WhMstRenewAndCreate(0,0,TgtWhCd);
 				RenewFg = true;
 			}
-		});		
+		});	
+		
+		//チェックボックス操作時の挙動
+		tableModel_ms01.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = tb01.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							if("true".equals(""+tb01.getValueAt(i,0))){
+								tableModel_ms01.setValueAt(setBL, i, 0);
+							}
+						}else {
+	
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//CSVボタン押下時の挙動
 		CsvBtn.addActionListener(new AbstractAction(){

@@ -172,4 +172,41 @@ public class M00010ClGpMstRt{
 		}
 		return rt;
 	}
+	
+	//荷主グループコードを自動採番する
+	public static String NewWhCdGet() {
+		//荷主グループマスタ取得
+		ArrayList SearchClGpCD = new ArrayList();
+		ArrayList SearchCLGpName = new ArrayList();
+		ArrayList SearchPost = new ArrayList();
+		ArrayList SearchAdd = new ArrayList();
+		ArrayList SearchTel = new ArrayList();
+		ArrayList SearchFax = new ArrayList();
+		ArrayList SearchMail = new ArrayList();
+		ArrayList SearchCom = new ArrayList();
+		boolean AllSearch = true;
+		
+		Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
+						SearchClGpCD,SearchCLGpName,SearchPost,
+						SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,AllSearch);
+		
+		int ClGpNo = 0;
+    	
+    	for(int i=0;i<ClGpMstRt.length;i++) {
+    		if("AT".equals((""+ClGpMstRt[i][0]).substring(0,2))&&9==(""+ClGpMstRt[i][0]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+ClGpMstRt[i][0]);
+    			if(7==WST.length()) {
+    				int wint = Integer.parseInt(WST);
+    				if(ClGpNo<wint) {
+    					ClGpNo=wint;
+    				}
+    			}
+    		}
+    	}
+    	ClGpNo = ClGpNo+1;
+    	String rt = "0000000"+ClGpNo;
+    	rt = "AT"+rt.substring(rt.length()-7,rt.length());
+    	
+    	return rt;
+	}
 }

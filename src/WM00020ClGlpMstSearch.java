@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -125,6 +127,9 @@ public class WM00020ClGlpMstSearch{
 				,"パスワード"
 				};
 	
+		//編集可能カラムの指定
+		B10010TableControl.RenewTgt = new int[1];
+		B10010TableControl.RenewTgt[0] = 0;
 		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
@@ -260,7 +265,69 @@ public class WM00020ClGlpMstSearch{
 			}
 		});
 		
+		//修正ボタン押下時の挙動
+		RenewBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_ms01.getRowCount();
+					String TgtClGp = "";
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+							TgtClGp = ""+tableModel_ms01.getValueAt(i, 1);	if(null==TgtClGp) {TgtClGp="";}
+						}
+					}
+					if(!"".equals(TgtClGp)) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00021ClGpMstRenewAndCrwate.ClGpMstRenewAndCrwate(0,0,TgtClGp);
+					}
+					RenewFg = true;
+				}
+			}
+		});
 		
+		//新規登録ボタン押下時の挙動
+		CreateBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WM00021ClGpMstRenewAndCrwate.ClGpMstRenewAndCrwate(0,0,"");
+					
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//チェックボックス操作時の挙動
+		tableModel_ms01.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = tb01.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							if("true".equals(""+tb01.getValueAt(i,0))){
+								tableModel_ms01.setValueAt(setBL, i, 0);
+							}
+						}else {
+	
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){

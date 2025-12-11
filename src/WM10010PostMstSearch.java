@@ -72,6 +72,9 @@ public class WM10010PostMstSearch{
 				,"市区町村CD"
 				};
 		
+		//編集可能カラムの指定
+		B10010TableControl.RenewTgt = new int[1];
+		B10010TableControl.RenewTgt[0] = 0;
 		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
