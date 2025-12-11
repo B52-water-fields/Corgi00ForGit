@@ -64,10 +64,10 @@ public class WM00021ClGpMstRenewAndCrwate{
 		final JTextField TB_Com01		 = B00110FrameParts.JTextFieldSet(100,315,250,20,"",11,0);	//コメント1
 		final JTextField TB_Com02		 = B00110FrameParts.JTextFieldSet(100,340,250,20,"",11,0);	//コメント2
 		final JTextField TB_Com03		 = B00110FrameParts.JTextFieldSet(100,365,250,20,"",11,0);	//コメント3
-		final JTextField TB_EntryDate	 = B00110FrameParts.JTextFieldSet(100,390,100,20,"",11,0);	//データ登録日時
-		final JTextField TB_UpdateDate	 = B00110FrameParts.JTextFieldSet(100,415,100,20,"",11,0);	//データ更新日時
-		final JTextField TB_EntryUser	 = B00110FrameParts.JTextFieldSet(100,440,100,20,"",11,0);	//登録者コード
-		final JTextField TB_UpdateUser	 = B00110FrameParts.JTextFieldSet(100,465,100,20,"",11,0);	//更新者コード
+		final JTextField TB_EntryDate	 = B00110FrameParts.JTextFieldSet(100,390,250,20,"",11,0);	//データ登録日時
+		final JTextField TB_UpdateDate	 = B00110FrameParts.JTextFieldSet(100,415,250,20,"",11,0);	//データ更新日時
+		final JTextField TB_EntryUser	 = B00110FrameParts.JTextFieldSet(100,440,250,20,"",11,0);	//登録者コード
+		final JTextField TB_UpdateUser	 = B00110FrameParts.JTextFieldSet(100,465,250,20,"",11,0);	//更新者コード
 		final JTextField TB_PassWord	 = B00110FrameParts.JTextFieldSet(100,490,100,20,"",11,0);	//パスワード
 		
 		TB_ClGpCD.setEnabled(false);
