@@ -217,15 +217,15 @@ public class WM00010WhMstSearch{
 					GetSearchTel  = B00020ToolsTextControl.num_only_String(GetSearchTel);
 					GetSearchFax  = B00020ToolsTextControl.num_only_String(GetSearchFax);
 					
-					ArrayList SearchWHCD = new ArrayList();
-					ArrayList SearchWHName = new ArrayList();
-					ArrayList SearchPost = new ArrayList();
-					ArrayList SearchAdd = new ArrayList();
-					ArrayList SearchTel = new ArrayList();
-					ArrayList SearchFax = new ArrayList();
-					ArrayList SearchMail = new ArrayList();
-					ArrayList SearchCom = new ArrayList();
-					ArrayList SearchPTMSCD = new ArrayList();
+					ArrayList<String> SearchWHCD = new ArrayList<String>();
+					ArrayList<String> SearchWHName = new ArrayList<String>();
+					ArrayList<String> SearchPost = new ArrayList<String>();
+					ArrayList<String> SearchAdd = new ArrayList<String>();
+					ArrayList<String> SearchTel = new ArrayList<String>();
+					ArrayList<String> SearchFax = new ArrayList<String>();
+					ArrayList<String> SearchMail = new ArrayList<String>();
+					ArrayList<String> SearchCom = new ArrayList<String>();
+					ArrayList<String> SearchPTMSCD = new ArrayList<String>();
 					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchWHCD  )){SearchWHCD.add(  GetSearchWHCD);}
@@ -380,7 +380,6 @@ public class WM00010WhMstSearch{
 				}
 			}
 		});
-		
 		
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){

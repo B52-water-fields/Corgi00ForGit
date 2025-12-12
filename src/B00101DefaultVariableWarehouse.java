@@ -131,15 +131,15 @@ public class B00101DefaultVariableWarehouse{
 		if(null==WhCd) {WhCd="";}
 		
 		//倉庫マスタ取得
-		ArrayList SearchWHCD = new ArrayList();
-		ArrayList SearchWHName = new ArrayList();
-		ArrayList SearchPost = new ArrayList();
-		ArrayList SearchAdd = new ArrayList();
-		ArrayList SearchTel = new ArrayList();
-		ArrayList SearchFax = new ArrayList();
-		ArrayList SearchMail = new ArrayList();
-		ArrayList SearchCom = new ArrayList();
-		ArrayList SearchPTMSCD = new ArrayList();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		ArrayList<String> SearchWHName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchPTMSCD = new ArrayList<String>();
 		boolean AllSearch = false;
 		
 		SearchWHCD.add(WhCd);
@@ -153,21 +153,22 @@ public class B00101DefaultVariableWarehouse{
 		
 		if(null!=WhMstRt && 0<WhMstRt.length) {
 			//倉庫が担当する荷主が存在しない場合荷主作る
-			ArrayList SearchCLCD = new ArrayList();
-			ArrayList SearchCLName = new ArrayList();
-			SearchPost = new ArrayList();
-			ArrayList searchAdd = new ArrayList();
-			SearchTel = new ArrayList();
-			SearchFax = new ArrayList();
-			SearchMail = new ArrayList();
-			SearchCom = new ArrayList();
-			SearchWHCD = new ArrayList();
+			ArrayList<String> SearchClGpCD = new ArrayList<String>();
+			ArrayList<String> SearchCLCD = new ArrayList<String>();
+			ArrayList<String> SearchCLName = new ArrayList<String>();
+			SearchPost = new ArrayList<String>();
+			ArrayList<String> searchAdd = new ArrayList<String>();
+			SearchTel = new ArrayList<String>();
+			SearchFax = new ArrayList<String>();
+			SearchMail = new ArrayList<String>();
+			SearchCom = new ArrayList<String>();
+			SearchWHCD = new ArrayList<String>();
 			AllSearch = false;
 			
 			SearchWHCD.add(WhCd);
 			
 			Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
-						SearchCLCD,SearchCLName,SearchPost,searchAdd,
+						SearchClGpCD,SearchCLCD,SearchCLName,SearchPost,searchAdd,
 						SearchTel,SearchFax,SearchMail, SearchCom,SearchWHCD,AllSearch);
 			
 			

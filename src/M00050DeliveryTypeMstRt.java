@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class M00050DeliveryTypeMstRt{
 	public static Object[][] DeliveryTypeMstRt(
-			ArrayList SearchDeliveryTypeNo,
-			ArrayList SearchDeliveryTypeCd,
-			ArrayList SearchDeliveryTypeName,
+			ArrayList<String> SearchDeliveryTypeNo,
+			ArrayList<String> SearchDeliveryTypeCd,
+			ArrayList<String> SearchDeliveryTypeName,
 			boolean AllSearch){
 		Object[][] rt = new Object[0][7];
 		boolean SearchKick = false;

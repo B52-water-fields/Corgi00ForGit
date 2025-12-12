@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class M00010ClGpMstRt{
 	public static Object[][] ClGpMstRt(
-			ArrayList SearchClGpCD,ArrayList SearchCLGpName,ArrayList SearchPost,
-			ArrayList SearchAdd,ArrayList SearchTel,ArrayList SearchFax,ArrayList SearchMail,ArrayList SearchCom,boolean AllSearch){
+			ArrayList<String> SearchClGpCD,ArrayList<String> SearchCLGpName,ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,ArrayList<String> SearchTel,ArrayList<String> SearchFax,ArrayList<String> SearchMail,ArrayList<String> SearchCom,boolean AllSearch){
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		Object[][] rt = new Object[0][19];
@@ -135,9 +135,9 @@ public class M00010ClGpMstRt{
 				rset01.beforeFirst();
 				while (rset01.next()) {
 					if(null==rset01.getString("ClGpCD")){rt[counter][0] = "";}else{rt[counter][0] = rset01.getString("ClGpCD");}			//荷主グループCD
-					if(null==rset01.getString("CLGpName01")){rt[counter][1] = "";}else{rt[counter][1] = rset01.getString("CLGpName01");}	//荷主名1
-					if(null==rset01.getString("CLGpName02")){rt[counter][2] = "";}else{rt[counter][2] = rset01.getString("CLGpName02");}	//荷主名2
-					if(null==rset01.getString("CLGpName03")){rt[counter][3] = "";}else{rt[counter][3] = rset01.getString("CLGpName03");}	//荷主名3
+					if(null==rset01.getString("CLGpName01")){rt[counter][1] = "";}else{rt[counter][1] = rset01.getString("CLGpName01");}	//荷主グループ名1
+					if(null==rset01.getString("CLGpName02")){rt[counter][2] = "";}else{rt[counter][2] = rset01.getString("CLGpName02");}	//荷主グループ名2
+					if(null==rset01.getString("CLGpName03")){rt[counter][3] = "";}else{rt[counter][3] = rset01.getString("CLGpName03");}	//荷主グループ名3
 					if(null==rset01.getString("Post")){rt[counter][4] = "";}else{rt[counter][4] = rset01.getString("Post");}				//郵便番号
 					if(null==rset01.getString("Add01")){rt[counter][5] = "";}else{rt[counter][5] = rset01.getString("Add01");}				//住所1
 					if(null==rset01.getString("Add02")){rt[counter][6] = "";}else{rt[counter][6] = rset01.getString("Add02");}				//住所2
@@ -176,14 +176,14 @@ public class M00010ClGpMstRt{
 	//荷主グループコードを自動採番する
 	public static String NewWhCdGet() {
 		//荷主グループマスタ取得
-		ArrayList SearchClGpCD = new ArrayList();
-		ArrayList SearchCLGpName = new ArrayList();
-		ArrayList SearchPost = new ArrayList();
-		ArrayList SearchAdd = new ArrayList();
-		ArrayList SearchTel = new ArrayList();
-		ArrayList SearchFax = new ArrayList();
-		ArrayList SearchMail = new ArrayList();
-		ArrayList SearchCom = new ArrayList();
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLGpName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
 		boolean AllSearch = true;
 		
 		Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(

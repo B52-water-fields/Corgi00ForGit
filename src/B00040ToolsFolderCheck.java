@@ -105,7 +105,6 @@ public class B00040ToolsFolderCheck{
 
 		//FNファイル名最終から"."の位置を特定し拡張子を取得
 		//拡張子の取得に失敗したら.bakで保存
-		String source_fp = FP+"/"+FN;	//元ファイルフルパス
 		String ext = ".bak";
 		int cfg=0;
 		int i=FN.length();
@@ -151,7 +150,7 @@ public class B00040ToolsFolderCheck{
 		//ファイル名の一覧を取得する
         File file = new File(FP);
         File files[] = file.listFiles();
-        ArrayList file_list_ar = new ArrayList();
+        ArrayList<String> file_list_ar = new ArrayList<String>();
         //取得した一覧を文字列に格納する
         for (int i=0; i<files.length; i++) {
         	file_list_ar.add(""+files[i]);

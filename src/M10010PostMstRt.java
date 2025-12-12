@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class M10010PostMstRt{
 	public static Object[][] PostRt(
-			ArrayList SearchPOST,
-			ArrayList SearchAdd,
+			ArrayList<String> SearchPOST,
+			ArrayList<String> SearchAdd,
 			boolean AllSearch){
 		//郵便番号を受け取って郵便番号マスタから検索結果を返却する
 		Object[][] rt = new Object[0][5];
@@ -85,7 +85,7 @@ public class M10010PostMstRt{
 		}
 		return rt;
 	}
-	public static Object[][] MunicipalityRt(ArrayList SearchName,boolean AllSearch){
+	public static Object[][] MunicipalityRt(ArrayList<String> SearchName,boolean AllSearch){
 	//市区町村マスタ返却
 		Object[][] rt = new Object[0][3];
 		boolean KickFg=false;
@@ -150,7 +150,7 @@ public class M10010PostMstRt{
 		}
 		return rt;
 	}
-	public static Object[][] PrefecuturesRt(ArrayList SearchName,boolean AllSearch){
+	public static Object[][] PrefecuturesRt(ArrayList<String> SearchName,boolean AllSearch){
 		//県マスタ返却
 
 			Object[][] rt = new Object[0][2];

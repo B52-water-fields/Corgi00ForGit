@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class B00100DefaultVariable{
 	static String[][] LocType;							//ロケタイプ設定値
 	static String[][] SearchLocType;					//ロケタイプ検索値
@@ -67,7 +69,7 @@ public class B00100DefaultVariable{
 	static Object[][] ClList;						//設定用荷主一覧
 	
 	static Object[][] SearchClGpList;				//検索用荷主グループ一覧
-	static Object[][] ClGpList;					//設定用荷主一覧
+	static Object[][] ClGpList;					//設定用荷主グループ一覧
 	
 	static Object[][] FeeLogicTypeList;			//運賃計算タイプ(請求)
 	static Object[][] PayLogicTypeList;			//運賃計算タイプ(支払)
@@ -94,10 +96,85 @@ public class B00100DefaultVariable{
 	
 	static int Cl_OldDataRenewDate = 93;		//これより古い荷主管理番号は先頭にOldつけて重複から外す
 	
+	public static void DefaultVariable() {
+		//ログイン⇒荷主決定時に前提情報を取得する
+		
+		
+		WhList();		//倉庫一覧生成
+		ClGpList();	//荷主グループ一覧生成
+		
+		
+	}
 	
+	public static void WhList() {
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		ArrayList<String> SearchWHName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchPTMSCD = new ArrayList<String>();
+		boolean AllSearch = true;
+		
+		Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+					SearchWHCD,SearchWHName,SearchPost,
+					SearchAdd,SearchTel,SearchFax,SearchMail,
+					SearchCom,SearchPTMSCD,
+					AllSearch);
+				
+		WhList 		= new Object[3][WhMstRt.length];						//倉庫リスト
+		SearchWhList 	= new Object[3][WhMstRt.length+1];				//倉庫リスト
+		
+		SearchWhList[0][0] = "未指定";
+		SearchWhList[1][0] = "";
+		SearchWhList[2][0] = "";
+		
+		
+		for(int i=0;i<WhMstRt.length;i++) {
+			WhList[0][i] = "" + WhMstRt[i][0] + ":" + WhMstRt[i][1];
+			WhList[1][i] = "" + WhMstRt[i][0];
+			WhList[2][i] = "" + WhMstRt[i][1];
+			
+			SearchWhList[0][i+1] = "" + WhMstRt[i][0] + ":" + WhMstRt[i][1];
+			SearchWhList[1][i+1] = "" + WhMstRt[i][0];
+			SearchWhList[2][i+1] = "" + WhMstRt[i][1];
+		}
+	}
 	
-	
-	
+	public static void ClGpList() {
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLGpName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		boolean AllSearch = true;
+		
+		Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
+					SearchClGpCD,SearchCLGpName,SearchPost,
+					SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,AllSearch);
+		
+		SearchClGpList 	= new Object[3][ClGpMstRt.length+1];				//検索用荷主グループ一覧
+		ClGpList 			= new Object[3][ClGpMstRt.length];					//設定用荷主グループ一覧
+		
+		SearchClGpList[0][0] = "未指定";
+		SearchClGpList[1][0] = "";
+		SearchClGpList[2][0] = "";
+		
+		for(int i=0;i<ClGpMstRt.length;i++) {
+			ClGpList[0][i] = "" + ClGpMstRt[i][0] + ":" + ClGpMstRt[i][1];
+			ClGpList[1][i] = "" + ClGpMstRt[i][0];
+			ClGpList[2][i] = "" + ClGpMstRt[i][1];
+			
+			SearchClGpList[0][i+1] = "" + ClGpMstRt[i][0] + ":" + ClGpMstRt[i][1];
+			SearchClGpList[1][i+1] = "" + ClGpMstRt[i][0];
+			SearchClGpList[2][i+1] = "" + ClGpMstRt[i][1];
+		}
+	}
 	
 	// ==========================================================================
     //  zeusログイン時に始まりの情報を登録する

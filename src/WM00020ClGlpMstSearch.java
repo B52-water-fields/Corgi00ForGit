@@ -1,5 +1,8 @@
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -104,6 +107,7 @@ public class WM00020ClGlpMstSearch{
 		//検索ボタン
 		JButton SearchBtn = B00110FrameParts.BtnSet(450,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
+		
 		String[] columnNames01 = {
 				"FG"
 				,"荷主グループCD"
@@ -211,14 +215,14 @@ public class WM00020ClGlpMstSearch{
 					GetSearchTel  = B00020ToolsTextControl.num_only_String(GetSearchTel);
 					GetSearchFax  = B00020ToolsTextControl.num_only_String(GetSearchFax);
 					
-					ArrayList SearchClGpCD = new ArrayList();
-					ArrayList SearchCLGpName = new ArrayList();
-					ArrayList SearchPost = new ArrayList();
-					ArrayList SearchAdd = new ArrayList();
-					ArrayList SearchTel = new ArrayList();
-					ArrayList SearchFax = new ArrayList();
-					ArrayList SearchMail = new ArrayList();
-					ArrayList SearchCom = new ArrayList();
+					ArrayList<String> SearchClGpCD = new ArrayList<String>();
+					ArrayList<String> SearchCLGpName = new ArrayList<String>();
+					ArrayList<String> SearchPost = new ArrayList<String>();
+					ArrayList<String> SearchAdd = new ArrayList<String>();
+					ArrayList<String> SearchTel = new ArrayList<String>();
+					ArrayList<String> SearchFax = new ArrayList<String>();
+					ArrayList<String> SearchMail = new ArrayList<String>();
+					ArrayList<String> SearchCom = new ArrayList<String>();
 					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchClGpCD)){SearchClGpCD.add(GetSearchClGpCD);}
@@ -322,6 +326,56 @@ public class WM00020ClGlpMstSearch{
 							}
 						}else {
 	
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//CSVボタン押下時の挙動
+		CsvBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String Selected = B00080FolderSelect.FolderSelect("出力先選択");
+					if(null!=Selected) {
+						int row_count = tb01.getRowCount();
+						int col_count = tb01.getColumnCount();
+						String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+						String FileName = "荷主グループマスタ検索結果"+NowDTM+".csv";
+						ArrayList<String> OutString = new ArrayList<String>();
+						
+						String SetSt = "";
+						for(int i=0;i<col_count;i++) {
+							//項目名取得
+							SetSt=SetSt+tb01.getColumnName(i)+",";
+						}
+						OutString.add(SetSt);
+						for(int i=0;i<row_count;i++){
+							SetSt = "";
+							for(int i01=0;i01<col_count;i01++) {
+								//項目値取得カンマ除去 改行コード除去
+								String WST = ""+tb01.getValueAt(i,i01);
+								SetSt=SetSt+WST.replace(",", "").replace("\n", "").replace("\"", "")+",";
+							}
+							OutString.add(SetSt);
+						}
+						String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+						now_dtm=now_dtm.replace("/", "").replace(":", "").replace(" ", "");
+						FileName = now_dtm + FileName;
+
+						//ファイルに出力
+						String FP = Selected+"\\"+FileName;
+						B00030ToolsTextExport.txt_exp2(OutString,FP,"UTF-8");
+
+						//ファイル開く
+						File file = new File(FP);
+						Desktop desktop = Desktop.getDesktop();
+						try {
+							desktop.open(file);
+						} catch (IOException e1) {
+							e1.printStackTrace();
 						}
 					}
 					RenewFg = true;

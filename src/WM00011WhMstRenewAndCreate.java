@@ -70,15 +70,15 @@ public class WM00011WhMstRenewAndCreate{
 		TB_UpdateUser.setEditable(false);	//更新者
 		
 		if(!"".equals(TgtWhCd)) {
-			ArrayList SearchWHCD = new ArrayList();
-			ArrayList SearchWHName = new ArrayList();
-			ArrayList SearchPost = new ArrayList();
-			ArrayList SearchAdd = new ArrayList();
-			ArrayList SearchTel = new ArrayList();
-			ArrayList SearchFax = new ArrayList();
-			ArrayList SearchMail = new ArrayList();
-			ArrayList SearchCom = new ArrayList();
-			ArrayList SearchPTMSCD = new ArrayList();
+			ArrayList<String> SearchWHCD = new ArrayList<String>();
+			ArrayList<String> SearchWHName = new ArrayList<String>();
+			ArrayList<String> SearchPost = new ArrayList<String>();
+			ArrayList<String> SearchAdd = new ArrayList<String>();
+			ArrayList<String> SearchTel = new ArrayList<String>();
+			ArrayList<String> SearchFax = new ArrayList<String>();
+			ArrayList<String> SearchMail = new ArrayList<String>();
+			ArrayList<String> SearchCom = new ArrayList<String>();
+			ArrayList<String> SearchPTMSCD = new ArrayList<String>();
 			boolean AllSearch = false;
 			
 			SearchWHCD.add(TgtWhCd);
@@ -154,8 +154,8 @@ public class WM00011WhMstRenewAndCreate{
 				TB_Add01.setText("");
 				TB_Add02.setText("");
 				
-				ArrayList SearchPOST = new ArrayList();
-				ArrayList SearchAdd = new ArrayList();
+				ArrayList<String> SearchPOST = new ArrayList<String>();
+				ArrayList<String> SearchAdd = new ArrayList<String>();
 				boolean AllSearch = false;
 				
 				SearchPOST.add(GetPost);

@@ -134,8 +134,8 @@ public class WM10010PostMstSearch{
 					String GetSearchPOST = TB_SearchPOST.getText();	if(null==GetSearchPOST) {GetSearchPOST="";}
 					String GetSearchAdd = TB_SearchAdd.getText();	if(null==GetSearchAdd) {GetSearchAdd="";}
 					
-					ArrayList SearchPOST = new ArrayList();
-					ArrayList SearchAdd = new ArrayList();
+					ArrayList<String> SearchPOST = new ArrayList<String>();
+					ArrayList<String> SearchAdd = new ArrayList<String>();
 					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchPOST)) {

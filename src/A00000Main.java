@@ -361,6 +361,9 @@ public class A00000Main{
 				ClName = ""+ClList[TbCLList.getSelectedIndex()][5];
 				ClGp = ""+ClList[TbCLList.getSelectedIndex()][1];
 				
+				//荷主毎に決定する変数取得
+				B00100DefaultVariable.DefaultVariable();
+				
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				W00010MainMenu.MainMenu(0,0);
@@ -596,15 +599,16 @@ public class A00000Main{
     }
     
     private static Object[][] ClList(){
-    	ArrayList SearchCLCD = new ArrayList();
-    	ArrayList SearchCLName = new ArrayList();
-    	ArrayList SearchPost = new ArrayList();
-    	ArrayList searchAdd = new ArrayList();
-		ArrayList SearchTel = new ArrayList();
-		ArrayList SearchFax = new ArrayList();
-		ArrayList SearchMail = new ArrayList(); 
-		ArrayList SearchCom = new ArrayList();
-		ArrayList SearchWHCD = new ArrayList();
+    	ArrayList<String> SearchClGpCD = new ArrayList<String>();
+    	ArrayList<String> SearchCLCD = new ArrayList<String>();
+    	ArrayList<String> SearchCLName = new ArrayList<String>();
+    	ArrayList<String> SearchPost = new ArrayList<String>();
+    	ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>(); 
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
 		boolean AllSearch = false;
 		
 		switch (LoginUserAuthorityFG) {
@@ -629,7 +633,7 @@ public class A00000Main{
 				
 		}
     	Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
-    				SearchCLCD, SearchCLName, SearchPost, searchAdd,
+    				SearchClGpCD,SearchCLCD, SearchCLName, SearchPost, searchAdd,
     				SearchTel, SearchFax, SearchMail,  SearchCom, SearchWHCD, AllSearch);
     	
     	return ClMstRt;

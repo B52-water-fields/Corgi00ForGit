@@ -5,39 +5,39 @@ import java.util.ArrayList;
 
 public class M00011ClMstRt{
 	public static Object[][] ClMstRt(
-			ArrayList SearchCLCD,ArrayList SearchCLName,ArrayList SearchPost,ArrayList searchAdd,
-			ArrayList SearchTel,ArrayList SearchFax,ArrayList SearchMail, ArrayList SearchCom,ArrayList SearchWHCD,boolean AllSearch){
+			ArrayList<String> SearchClGpCD,ArrayList<String> SearchCLCD,ArrayList<String> SearchCLName,ArrayList<String> SearchPost,ArrayList<String> searchAdd,
+			ArrayList<String> SearchTel,ArrayList<String> SearchFax,ArrayList<String> SearchMail, ArrayList<String> SearchCom,ArrayList<String> SearchWHCD,boolean AllSearch){
 		//検索条件を受け取って一致する荷主マスタの配列を返却する
 		//AllSearch false なら検索条件何も指定されていなければ検索しない
 		Object[][] rt = new Object[0][25];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		String sql =  "select "
-		+"(KM0030_CLIENTMST.cl_cd) as cl_cd,"			//荷主CD
-		+"(KM0030_CLIENTMST.ClGpCD) as ClGpCD,"			//荷主グループCD
+		+"(KM0030_CLIENTMST.cl_cd) as cl_cd,"				//荷主CD
+		+"(KM0030_CLIENTMST.ClGpCD) as ClGpCD,"				//荷主グループCD
 		+"(KM0031_CLIENT_GROUP.ClGpName01) as ClGpName,"	//グループ名1
-		+"(KM0030_CLIENTMST.WHCD) as WHCD,"				//担当倉庫
-		+"(KM0010_WHMST.WHName) as WHName,"				//担当倉庫名
-		+"(KM0030_CLIENTMST.CLName01) as CLName01,"		//荷主名1
-		+"(KM0030_CLIENTMST.CLName02) as CLName02,"		//荷主名2
-		+"(KM0030_CLIENTMST.CLName03) as CLName03,"		//荷主名3
-		+"(KM0030_CLIENTMST.Post) as Post,"				//郵便番号
-		+"(KM0030_CLIENTMST.Add01) as Add01,"			//住所1
-		+"(KM0030_CLIENTMST.Add02) as Add02,"			//住所2
-		+"(KM0030_CLIENTMST.Add03) as Add03,"			//住所3
-		+"(KM0030_CLIENTMST.Tel) as Tel,"				//電話番号
-		+"(KM0030_CLIENTMST.Fax) as Fax,"				//FAX
-		+"(KM0030_CLIENTMST.Mail) as Mail,"				//メールアドレス
-		+"(KM0030_CLIENTMST.Com01) as Com01,"			//コメント1
-		+"(KM0030_CLIENTMST.Com02) as Com02,"			//コメント2
-		+"(KM0030_CLIENTMST.Com03) as Com03,"			//コメント3
-		+"(KM0030_CLIENTMST.ShimeDate) as ShimeDate,"	//締日
-		+"(KM0030_CLIENTMST.ShimeBasis) as ShimeBasis,"	//請求基準
-		+"(KM0030_CLIENTMST.EntryDate) as EntryDate,"	//データ登録日時
-		+"(KM0030_CLIENTMST.UpdateDate) as UpdateDate,"	//データ更新日時
-		+"(KM0030_CLIENTMST.EntryUser) as EntryUser,"	//登録者コード
-		+"(KM0030_CLIENTMST.UpdateUser) as UpdateUser,"	//更新者コード
-		+"(KM0030_CLIENTMST.PTMSCD) as PTMSCD"			//基幹システム荷主コード
+		+"(KM0030_CLIENTMST.WHCD) as WHCD,"					//担当倉庫
+		+"(KM0010_WHMST.WHName) as WHName,"					//担当倉庫名
+		+"(KM0030_CLIENTMST.CLName01) as CLName01,"			//荷主名1
+		+"(KM0030_CLIENTMST.CLName02) as CLName02,"			//荷主名2
+		+"(KM0030_CLIENTMST.CLName03) as CLName03,"			//荷主名3
+		+"(KM0030_CLIENTMST.Post) as Post,"					//郵便番号
+		+"(KM0030_CLIENTMST.Add01) as Add01,"				//住所1
+		+"(KM0030_CLIENTMST.Add02) as Add02,"				//住所2
+		+"(KM0030_CLIENTMST.Add03) as Add03,"				//住所3
+		+"(KM0030_CLIENTMST.Tel) as Tel,"					//電話番号
+		+"(KM0030_CLIENTMST.Fax) as Fax,"					//FAX
+		+"(KM0030_CLIENTMST.Mail) as Mail,"					//メールアドレス
+		+"(KM0030_CLIENTMST.Com01) as Com01,"				//コメント1
+		+"(KM0030_CLIENTMST.Com02) as Com02,"				//コメント2
+		+"(KM0030_CLIENTMST.Com03) as Com03,"				//コメント3
+		+"(KM0030_CLIENTMST.ShimeDate) as ShimeDate,"		//締日
+		+"(KM0030_CLIENTMST.ShimeBasis) as ShimeBasis,"		//請求基準
+		+"(KM0030_CLIENTMST.EntryDate) as EntryDate,"		//データ登録日時
+		+"(KM0030_CLIENTMST.UpdateDate) as UpdateDate,"		//データ更新日時
+		+"(KM0030_CLIENTMST.EntryUser) as EntryUser,"		//登録者コード
+		+"(KM0030_CLIENTMST.UpdateUser) as UpdateUser,"		//更新者コード
+		+"(KM0030_CLIENTMST.PTMSCD) as PTMSCD"				//基幹システム荷主コード
 		+" from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST"
 		+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP "
 		+ " on("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST.ClGpCD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD)"
@@ -46,6 +46,16 @@ public class M00011ClMstRt{
 		+ " where "
 		+ " KM0030_CLIENTMST.DelFg <> 1 ";
 
+		if(null !=SearchClGpCD && SearchClGpCD.size()>0) {
+			SearchKick = true;
+			sql = sql +"and(";
+			for(int i=0;i<SearchClGpCD.size();i++) {
+				if(i>0) {sql=sql+" or ";}
+				sql = sql + "KM0030_CLIENTMST.ClGpCD ='" + SearchClGpCD.get(i) + "'";
+			}
+			sql = sql +")";
+		}
+		
 		if(null !=SearchWHCD && SearchWHCD.size()>0) {
 			SearchKick = true;
 			sql = sql +"and(";
@@ -199,19 +209,20 @@ public class M00011ClMstRt{
 	}
 	
 	public static String NewClCdGet() {
-		ArrayList SearchCLCD = new ArrayList();
-    	ArrayList SearchCLName = new ArrayList();
-    	ArrayList SearchPost = new ArrayList();
-    	ArrayList searchAdd = new ArrayList();
-		ArrayList SearchTel = new ArrayList();
-		ArrayList SearchFax = new ArrayList();
-		ArrayList SearchMail = new ArrayList(); 
-		ArrayList SearchCom = new ArrayList();
-		ArrayList SearchWHCD = new ArrayList();
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLCD = new ArrayList<String>();
+    	ArrayList<String> SearchCLName = new ArrayList<String>();
+    	ArrayList<String> SearchPost = new ArrayList<String>();
+    	ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>(); 
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
 		boolean AllSearch = true;
     	
     	Object[][] ClMstRt = ClMstRt(
-				SearchCLCD, SearchCLName, SearchPost, searchAdd,
+    			SearchClGpCD,SearchCLCD, SearchCLName, SearchPost, searchAdd,
 				SearchTel, SearchFax, SearchMail,  SearchCom, SearchWHCD, AllSearch);
     	
     	int ClientNo = 0;

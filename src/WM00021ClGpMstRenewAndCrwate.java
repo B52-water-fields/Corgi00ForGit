@@ -117,14 +117,14 @@ public class WM00021ClGpMstRenewAndCrwate{
 		main_fm.add(TB_PassWord);
 		
 		if(!"".equals(TgtClGpCd)) {
-			ArrayList SearchClGpCD = new ArrayList();
-			ArrayList SearchCLGpName = new ArrayList();
-			ArrayList SearchPost = new ArrayList();
-			ArrayList SearchAdd = new ArrayList();
-			ArrayList SearchTel = new ArrayList();
-			ArrayList SearchFax = new ArrayList();
-			ArrayList SearchMail = new ArrayList();
-			ArrayList SearchCom = new ArrayList();
+			ArrayList<String> SearchClGpCD = new ArrayList<String>();
+			ArrayList<String> SearchCLGpName = new ArrayList<String>();
+			ArrayList<String> SearchPost = new ArrayList<String>();
+			ArrayList<String> SearchAdd = new ArrayList<String>();
+			ArrayList<String> SearchTel = new ArrayList<String>();
+			ArrayList<String> SearchFax = new ArrayList<String>();
+			ArrayList<String> SearchMail = new ArrayList<String>();
+			ArrayList<String> SearchCom = new ArrayList<String>();
 			boolean AllSearch = false;
 			
 			SearchClGpCD.add(TgtClGpCd);
@@ -168,8 +168,8 @@ public class WM00021ClGpMstRenewAndCrwate{
 				TB_Add02.setText("");
 				TB_Add03.setText("");
 				
-				ArrayList SearchPOST = new ArrayList();
-				ArrayList SearchAdd = new ArrayList();
+				ArrayList<String> SearchPOST = new ArrayList<String>();
+				ArrayList<String> SearchAdd = new ArrayList<String>();
 				boolean AllSearch = false;
 				
 				SearchPOST.add(GetPost);
@@ -324,12 +324,16 @@ public class WM00021ClGpMstRenewAndCrwate{
 					
 					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
+					//荷主グループ一覧更新
+					B00100DefaultVariable.ClGpList();
+					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();
 	
 					main_fm.setVisible(false);
 					main_fm.dispose();
 					ClGpMstRenewAndCrwate(0,0,GetClGpCD);
+					
 				}else {
 					JOptionPane.showMessageDialog(null, "荷主グループ名は必要ですよ");
 				}

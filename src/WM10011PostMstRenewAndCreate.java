@@ -45,8 +45,8 @@ public class WM10011PostMstRenewAndCreate{
 		TB_Post.setText(TgtPost);
 		
 		if(!"".equals(TgtPost)) {
-			ArrayList SearchPOST = new ArrayList();
-			ArrayList SearchAdd = new ArrayList();
+			ArrayList<String> SearchPOST = new ArrayList<String>();
+			ArrayList<String> SearchAdd = new ArrayList<String>();
 			boolean AllSearch = false;
 			
 			SearchPOST.add(TgtPost);
