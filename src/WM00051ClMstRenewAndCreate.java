@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class WM00051ClMstRenewAndCreate{
@@ -214,6 +215,205 @@ public class WM00051ClMstRenewAndCreate{
 		main_fm.add(TB_PTMSCD);
 		
 		main_fm.setVisible(true);
+		
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				String Getcl_cd 		= TB_cl_cd.getText();		//荷主CD
+				String GetClGpCD 		= ""+B00100DefaultVariable.ClGpList[1][TB_ClGpCD.getSelectedIndex()];	//荷主グループCD
+				String GetWHCD 			= ""+B00100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];		//担当倉庫
+				String GetCLName01 		= TB_CLName01.getText();	//荷主名1
+				String GetCLName02 		= TB_CLName02.getText();	//荷主名2
+				String GetCLName03 		= TB_CLName03.getText();	//荷主名3
+				String GetPost 			= TB_Post.getText();		//郵便番号
+				String GetAdd01 		= TB_Add01.getText();		//住所1
+				String GetAdd02 		= TB_Add02.getText();		//住所2
+				String GetAdd03 		= TB_Add03.getText();		//住所3
+				String GetTel 			= TB_Tel.getText();			//電話番号
+				String GetFax			= TB_Fax.getText();			//FAX
+				String GetMail 			= TB_Mail.getText();		//メールアドレス
+				String GetCom01 		= TB_Com01.getText();		//コメント1
+				String GetCom02 		= TB_Com02.getText();		//コメント2
+				String GetCom03 		= TB_Com03.getText();		//コメント3
+				String GetShimeDate 	= ""+B00100DefaultVariable.ShimeDateList[TB_ShimeDate.getSelectedIndex()];	//運賃締日
+				String GetShimeBasis 	= ""+B00100DefaultVariable.DeliFeeNorm[1][TB_ShimeBasis.getSelectedIndex()];	//請求基準
+				String GetPTMSCD 		= TB_PTMSCD.getText();		//基幹SYS荷主コード
+				
+				if(null==Getcl_cd		){Getcl_cd 		= "";}
+				if(null==GetClGpCD		){GetClGpCD 	= "";}
+				if(null==GetWHCD		){GetWHCD 		= "";}
+				if(null==GetCLName01	){GetCLName01 	= "";}
+				if(null==GetCLName02	){GetCLName02 	= "";}
+				if(null==GetCLName03	){GetCLName03 	= "";}
+				if(null==GetPost		){GetPost 		= "";}
+				if(null==GetAdd01		){GetAdd01 		= "";}
+				if(null==GetAdd02		){GetAdd02 		= "";}
+				if(null==GetAdd03		){GetAdd03 		= "";}
+				if(null==GetTel			){GetTel 		= "";}
+				if(null==GetFax			){GetFax 		= "";}
+				if(null==GetMail		){GetMail 		= "";}
+				if(null==GetCom01		){GetCom01 		= "";}
+				if(null==GetCom02		){GetCom02 		= "";}
+				if(null==GetCom03		){GetCom03 		= "";}
+				if(null==GetShimeDate	){GetShimeDate 	= "";}
+				if(null==GetShimeBasis	){GetShimeBasis	= "";}
+				if(null==GetPTMSCD		){GetPTMSCD 	= "";}
+				
+				Getcl_cd		= B00020ToolsTextControl.Trim(Getcl_cd);
+				GetClGpCD		= B00020ToolsTextControl.Trim(GetClGpCD);
+				GetWHCD			= B00020ToolsTextControl.Trim(GetWHCD);
+				GetCLName01		= B00020ToolsTextControl.Trim(GetCLName01);
+				GetCLName02		= B00020ToolsTextControl.Trim(GetCLName02);
+				GetCLName03		= B00020ToolsTextControl.Trim(GetCLName03);
+				GetPost			= B00020ToolsTextControl.Trim(GetPost);
+				GetAdd01		= B00020ToolsTextControl.Trim(GetAdd01);
+				GetAdd02		= B00020ToolsTextControl.Trim(GetAdd02);
+				GetAdd03		= B00020ToolsTextControl.Trim(GetAdd03);
+				GetTel			= B00020ToolsTextControl.Trim(GetTel);
+				GetFax			= B00020ToolsTextControl.Trim(GetFax);
+				GetMail			= B00020ToolsTextControl.Trim(GetMail);
+				GetCom01		= B00020ToolsTextControl.Trim(GetCom01);
+				GetCom02		= B00020ToolsTextControl.Trim(GetCom02);
+				GetCom03		= B00020ToolsTextControl.Trim(GetCom03);
+				GetShimeDate	= B00020ToolsTextControl.Trim(GetShimeDate);
+				GetShimeBasis	= B00020ToolsTextControl.Trim(GetShimeBasis);
+				GetPTMSCD		= B00020ToolsTextControl.Trim(GetPTMSCD);
+				
+				GetPost			= B00020ToolsTextControl.num_only_String(GetPost);
+				GetTel			= B00020ToolsTextControl.num_only_String(GetTel);
+				GetFax			= B00020ToolsTextControl.num_only_String(GetFax);
+				GetShimeDate	= B00020ToolsTextControl.num_only_String(GetShimeDate);	if("".equals(GetShimeDate)) {GetShimeDate   = "99";}
+				GetShimeBasis	= B00020ToolsTextControl.num_only_String(GetShimeBasis);	if("".equals(GetShimeBasis)) {GetShimeBasis = "0";}
+				
+				if(!"".equals(GetCLName01)) {
+					if("".equals(Getcl_cd)) {
+						Getcl_cd = M00011ClMstRt.NewClCdGet();
+					}
+					String tgt_table = "KM0030_CLIENTMST";
+					String[][] field_name = new String[23][3];
+					String[][] entry_data = new String[1][23];
+					String[] judg_field = new String[1];
+					String[][] judg_data = new String[1][1];
+					String TgtDB = "NYANKO";
+					int non_msg_fg = 1;
+					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+
+					judg_field[ 0] = "cl_cd";		//荷主CD
+					
+					field_name[ 0][0] = "cl_cd";		//荷主CD
+					field_name[ 1][0] = "ClGpCD";		//荷主グループCD
+					field_name[ 2][0] = "WHCD";			//担当倉庫
+					field_name[ 3][0] = "CLName01";		//荷主名1
+					field_name[ 4][0] = "CLName02";		//荷主名2
+					field_name[ 5][0] = "CLName03";		//荷主名3
+					field_name[ 6][0] = "Post";			//郵便番号
+					field_name[ 7][0] = "Add01";		//住所1
+					field_name[ 8][0] = "Add02";		//住所2
+					field_name[ 9][0] = "Add03";		//住所3
+					field_name[10][0] = "Tel";			//電話番号
+					field_name[11][0] = "Fax";			//FAX
+					field_name[12][0] = "Mail";			//メールアドレス
+					field_name[13][0] = "Com01";		//コメント1
+					field_name[14][0] = "Com02";		//コメント2
+					field_name[15][0] = "Com03";		//コメント3
+					field_name[16][0] = "ShimeDate";	//運賃締日
+					field_name[17][0] = "ShimeBasis";	//請求基準
+					field_name[18][0] = "EntryDate";	//データ登録日時
+					field_name[19][0] = "UpdateDate";	//データ更新日時
+					field_name[20][0] = "EntryUser";	//登録者コード
+					field_name[21][0] = "UpdateUser";	//更新者コード
+					field_name[22][0] = "PTMSCD";		//基幹システム荷主コード
+
+					field_name[ 0][1] = "1";	//荷主CD
+					field_name[ 1][1] = "1";	//荷主グループCD
+					field_name[ 2][1] = "1";	//担当倉庫
+					field_name[ 3][1] = "1";	//荷主名1
+					field_name[ 4][1] = "1";	//荷主名2
+					field_name[ 5][1] = "1";	//荷主名3
+					field_name[ 6][1] = "1";	//郵便番号
+					field_name[ 7][1] = "1";	//住所1
+					field_name[ 8][1] = "1";	//住所2
+					field_name[ 9][1] = "1";	//住所3
+					field_name[10][1] = "1";	//電話番号
+					field_name[11][1] = "1";	//FAX
+					field_name[12][1] = "1";	//メールアドレス
+					field_name[13][1] = "1";	//コメント1
+					field_name[14][1] = "1";	//コメント2
+					field_name[15][1] = "1";	//コメント3
+					field_name[16][1] = "1";	//運賃締日
+					field_name[17][1] = "1";	//請求基準
+					field_name[18][1] = "1";	//データ登録日時
+					field_name[19][1] = "1";	//データ更新日時
+					field_name[20][1] = "1";	//登録者コード
+					field_name[21][1] = "1";	//更新者コード
+					field_name[22][1] = "1";	//基幹システム荷主コード
+					
+					field_name[ 0][2] = "1";	//荷主CD
+					field_name[ 1][2] = "1";	//荷主グループCD
+					field_name[ 2][2] = "1";	//担当倉庫
+					field_name[ 3][2] = "1";	//荷主名1
+					field_name[ 4][2] = "1";	//荷主名2
+					field_name[ 5][2] = "1";	//荷主名3
+					field_name[ 6][2] = "1";	//郵便番号
+					field_name[ 7][2] = "1";	//住所1
+					field_name[ 8][2] = "1";	//住所2
+					field_name[ 9][2] = "1";	//住所3
+					field_name[10][2] = "1";	//電話番号
+					field_name[11][2] = "1";	//FAX
+					field_name[12][2] = "1";	//メールアドレス
+					field_name[13][2] = "1";	//コメント1
+					field_name[14][2] = "1";	//コメント2
+					field_name[15][2] = "1";	//コメント3
+					field_name[16][2] = "1";	//運賃締日
+					field_name[17][2] = "1";	//請求基準
+					field_name[18][2] = "0";	//データ登録日時
+					field_name[19][2] = "1";	//データ更新日時
+					field_name[20][2] = "0";	//登録者コード
+					field_name[21][2] = "1";	//更新者コード
+					field_name[22][2] = "1";	//基幹システム荷主コード
+					
+					judg_data[0][0] = Getcl_cd;
+					
+					entry_data[0][ 0] = Getcl_cd;		//荷主CD
+					entry_data[0][ 1] = GetClGpCD;		//荷主グループCD
+					entry_data[0][ 2] = GetWHCD;		//担当倉庫
+					entry_data[0][ 3] = GetCLName01;	//荷主名1
+					entry_data[0][ 4] = GetCLName02;	//荷主名2
+					entry_data[0][ 5] = GetCLName03;	//荷主名3
+					entry_data[0][ 6] = GetPost;		//郵便番号
+					entry_data[0][ 7] = GetAdd01;		//住所1
+					entry_data[0][ 8] = GetAdd02;		//住所2
+					entry_data[0][ 9] = GetAdd03;		//住所3
+					entry_data[0][10] = GetTel;			//電話番号
+					entry_data[0][11] = GetFax;			//FAX
+					entry_data[0][12] = GetMail;		//メールアドレス
+					entry_data[0][13] = GetCom01;		//コメント1
+					entry_data[0][14] = GetCom02;		//コメント2
+					entry_data[0][15] = GetCom03;		//コメント3
+					entry_data[0][16] = GetShimeDate;	//運賃締日
+					entry_data[0][17] = GetShimeBasis;	//請求基準
+					entry_data[0][18] = now_dtm;		//データ登録日時
+					entry_data[0][19] = now_dtm;		//データ更新日時
+					entry_data[0][20] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
+					entry_data[0][21] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
+					entry_data[0][22] = GetPTMSCD;	//基幹システム荷主コード
+					
+					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					
+					//荷主一覧更新
+					B00100DefaultVariable.ClList();
+					
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+	
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					ClMstRenewAndCreate(0,0,Getcl_cd);
+				}else {
+					JOptionPane.showMessageDialog(null, "荷主名は必要ですよ");
+				}
+			}
+		});
 		
 		//郵便番号フォーカス消失時の挙動
 		TB_Post.addFocusListener(new FocusAdapter(){

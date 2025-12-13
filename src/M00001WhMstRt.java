@@ -194,7 +194,7 @@ public class M00001WhMstRt{
 		int WhNo = 0;
     	
     	for(int i=0;i<WhMstRt.length;i++) {
-    		if("AT".equals((""+WhMstRt[i][0]).substring(0,2))&&9==(""+WhMstRt[i][0]).length()) {
+    		if("ATWH".equals((""+WhMstRt[i][0]).substring(0,4))&&11==(""+WhMstRt[i][0]).length()) {
     			String WST = B00020ToolsTextControl.num_only_String(""+WhMstRt[i][0]);
     			if(7==WST.length()) {
     				int wint = Integer.parseInt(WST);
@@ -206,7 +206,7 @@ public class M00001WhMstRt{
     	}
     	WhNo = WhNo+1;
     	String rt = "0000000"+WhNo;
-    	rt = "AT"+rt.substring(rt.length()-7,rt.length());
+    	rt = "ATWH"+rt.substring(rt.length()-7,rt.length());
     	
     	return rt;
 	}

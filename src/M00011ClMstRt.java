@@ -228,7 +228,7 @@ public class M00011ClMstRt{
     	int ClientNo = 0;
     	
     	for(int i=0;i<ClMstRt.length;i++) {
-    		if("AT".equals((""+ClMstRt[i][0]).substring(0,2))&&9==(""+ClMstRt[i][0]).length()) {
+    		if("ATCL".equals((""+ClMstRt[i][0]).substring(0,4))&&11==(""+ClMstRt[i][0]).length()) {
     			String WST = B00020ToolsTextControl.num_only_String(""+ClMstRt[i][0]);
     			if(7==WST.length()) {
     				int wint = Integer.parseInt(WST);
@@ -240,7 +240,7 @@ public class M00011ClMstRt{
     	}
     	ClientNo = ClientNo+1;
     	String rt = "0000000"+ClientNo;
-    	rt = "AT"+rt.substring(rt.length()-7,rt.length());
+    	rt = "ATCL"+rt.substring(rt.length()-7,rt.length());
     	
     	return rt;
 	}

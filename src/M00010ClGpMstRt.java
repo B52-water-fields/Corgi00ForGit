@@ -193,7 +193,7 @@ public class M00010ClGpMstRt{
 		int ClGpNo = 0;
     	
     	for(int i=0;i<ClGpMstRt.length;i++) {
-    		if("AT".equals((""+ClGpMstRt[i][0]).substring(0,2))&&9==(""+ClGpMstRt[i][0]).length()) {
+    		if("ATGR".equals((""+ClGpMstRt[i][0]).substring(0,4))&&11==(""+ClGpMstRt[i][0]).length()) {
     			String WST = B00020ToolsTextControl.num_only_String(""+ClGpMstRt[i][0]);
     			if(7==WST.length()) {
     				int wint = Integer.parseInt(WST);
@@ -205,7 +205,7 @@ public class M00010ClGpMstRt{
     	}
     	ClGpNo = ClGpNo+1;
     	String rt = "0000000"+ClGpNo;
-    	rt = "AT"+rt.substring(rt.length()-7,rt.length());
+    	rt = "ATGR"+rt.substring(rt.length()-7,rt.length());
     	
     	return rt;
 	}

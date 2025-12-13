@@ -62,7 +62,6 @@ public class WM00050ClMstSearch{
 		final JComboBox  TB_SearchWHCD	  	 = B00110FrameParts.JComboBoxSet( 100, 75,200,20,B00100DefaultVariable.SearchWhList[0],11);		//担当倉庫
 		final JTextField TB_SearchCLName	 = B00110FrameParts.JTextFieldSet(100,100,200,20,"",11,0);	//荷主名
 		final JTextField TB_searchAdd		 = B00110FrameParts.JTextFieldSet(100,125,200,20,"",11,0);	//住所
-		
 
 		final JTextField TB_SearchPost		 = B00110FrameParts.JTextFieldSet(450, 25,100,20,"",11,0);	//郵便
 		final JTextField TB_SearchTel		 = B00110FrameParts.JTextFieldSet(450, 50,100,20,"",11,0);	//Tel
@@ -75,7 +74,6 @@ public class WM00050ClMstSearch{
 		JLabel LB2_SearchWHCD	  = B00110FrameParts.JLabelSet(300, 75, 50,20,"と一致"		,11,0);
 		JLabel LB2_SearchCLName	  = B00110FrameParts.JLabelSet(300,100, 50,20,"を含む"		,11,0);
 		JLabel LB2_searchAdd	  = B00110FrameParts.JLabelSet(300,125, 50,20,"を含む"		,11,0);
-		
 		
 		JLabel LB2_SearchPost	  = B00110FrameParts.JLabelSet(550, 25, 50,20,"で始まる"	,11,0);
 		JLabel LB2_SearchTel	  = B00110FrameParts.JLabelSet(550, 50, 50,20,"を含む"		,11,0);
