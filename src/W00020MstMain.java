@@ -73,6 +73,19 @@ public class W00020MstMain{
 				WM00010WhMstSearch.WhMstSearch(0, 0);
 			}
 		});
+		
+		//ユーザー
+		UserMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00030UserMstSearch.UserMstSearch(0, 0);
+			}
+		});
+		
 		//荷主グループ
 		ClGpMst.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){

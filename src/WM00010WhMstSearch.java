@@ -1,8 +1,5 @@
-import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -336,46 +333,7 @@ public class WM00010WhMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					String Selected = B00080FolderSelect.FolderSelect("出力先選択");
-					if(null!=Selected) {
-						int row_count = tb01.getRowCount();
-						int col_count = tb01.getColumnCount();
-						String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
-						String FileName = "倉庫マスタ検索結果"+NowDTM+".csv";
-						ArrayList<String> OutString = new ArrayList<String>();
-						
-						String SetSt = "";
-						for(int i=0;i<col_count;i++) {
-							//項目名取得
-							SetSt=SetSt+tb01.getColumnName(i)+",";
-						}
-						OutString.add(SetSt);
-						for(int i=0;i<row_count;i++){
-							SetSt = "";
-							for(int i01=0;i01<col_count;i01++) {
-								//項目値取得カンマ除去 改行コード除去
-								String WST = ""+tb01.getValueAt(i,i01);
-								SetSt=SetSt+WST.replace(",", "").replace("\n", "").replace("\"", "")+",";
-							}
-							OutString.add(SetSt);
-						}
-						String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
-						now_dtm=now_dtm.replace("/", "").replace(":", "").replace(" ", "");
-						FileName = now_dtm + FileName;
-
-						//ファイルに出力
-						String FP = Selected+"\\"+FileName;
-						B00030ToolsTextExport.txt_exp2(OutString,FP,"UTF-8");
-
-						//ファイル開く
-						File file = new File(FP);
-						Desktop desktop = Desktop.getDesktop();
-						try {
-							desktop.open(file);
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
-					}
+					B10010TableControl.TableOutPutCsv("出力先選択","倉庫マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
