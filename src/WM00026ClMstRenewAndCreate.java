@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class WM00051ClMstRenewAndCreate{
+public class WM00026ClMstRenewAndCreate{
 	static int SetX;
 	static int SetY;
 	public static void ClMstRenewAndCreate(int x,int y,String TgtClCd) {
@@ -451,7 +451,7 @@ public class WM00051ClMstRenewAndCreate{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00050ClMstSearch.ClMstSearch(0, 0);
+				WM00025ClMstSearch.ClMstSearch(0, 0);
 			}
 		});
 	}

@@ -3,7 +3,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 public class M00031CarMstRt{
-	public static Object[][] CarMstRt(ArrayList SearchWHCD,ArrayList SearchShippingCompanyCd,ArrayList SearchCarCd,ArrayList SearchCarName,boolean AllSearch){
+	public static Object[][] CarMstRt(
+			ArrayList<String> SearchWHCD,
+			ArrayList<String> SearchShippingCompanyCd,
+			ArrayList<String> SearchCarCd,
+			ArrayList<String> SearchCarName,
+			boolean AllSearch){
 		Object[][] rt = new Object[0][19];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

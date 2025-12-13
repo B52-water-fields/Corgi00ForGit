@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class WM00050ClMstSearch{
+public class WM00025ClMstSearch{
 	static int SetX;
 	static int SetY;
 	static boolean RenewFg;
@@ -326,7 +326,7 @@ public class WM00050ClMstSearch{
 
 						main_fm.setVisible(false);
 						main_fm.dispose();
-						WM00051ClMstRenewAndCreate.ClMstRenewAndCreate(0,0,TgtCl);
+						WM00026ClMstRenewAndCreate.ClMstRenewAndCreate(0,0,TgtCl);
 					}
 					RenewFg = true;
 				}
@@ -344,7 +344,7 @@ public class WM00050ClMstSearch{
 
 					main_fm.setVisible(false);
 					main_fm.dispose();
-					WM00051ClMstRenewAndCreate.ClMstRenewAndCreate(0,0,"");
+					WM00026ClMstRenewAndCreate.ClMstRenewAndCreate(0,0,"");
 					
 					RenewFg = true;
 				}

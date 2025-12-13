@@ -5,9 +5,15 @@ import java.util.ArrayList;
 
 public class M00042CautionMstRt{
 	public static Object[][] CautionMstRt(
-			ArrayList SearchCautionCd,ArrayList SearchClGpCD,ArrayList SearchDECD,
-			ArrayList SearchDepartmentCd,ArrayList SearchCautionTiming,ArrayList SearchCautionName,
-			ArrayList SearchCaution,ArrayList SearchDeName,boolean AllSearch){
+			ArrayList<String> SearchCautionCd,
+			ArrayList<String> SearchClGpCD,
+			ArrayList<String> SearchDECD,
+			ArrayList<String> SearchDepartmentCd,
+			ArrayList<String> SearchCautionTiming,
+			ArrayList<String> SearchCautionName,
+			ArrayList<String> SearchCaution,
+			ArrayList<String> SearchDeName,
+			boolean AllSearch){
 	Object[][] rt = new Object[0][13];
 	boolean SearchKick = false;
 	if(AllSearch) {SearchKick = true;}

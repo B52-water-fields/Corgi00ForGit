@@ -5,8 +5,17 @@ import java.util.ArrayList;
 
 public class M00011ClMstRt{
 	public static Object[][] ClMstRt(
-			ArrayList<String> SearchClGpCD,ArrayList<String> SearchCLCD,ArrayList<String> SearchCLName,ArrayList<String> SearchPost,ArrayList<String> searchAdd,
-			ArrayList<String> SearchTel,ArrayList<String> SearchFax,ArrayList<String> SearchMail, ArrayList<String> SearchCom,ArrayList<String> SearchWHCD,boolean AllSearch){
+			ArrayList<String> SearchClGpCD,
+			ArrayList<String> SearchCLCD,
+			ArrayList<String> SearchCLName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> searchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			ArrayList<String> SearchWHCD,
+			boolean AllSearch){
 		//検索条件を受け取って一致する荷主マスタの配列を返却する
 		//AllSearch false なら検索条件何も指定されていなければ検索しない
 		Object[][] rt = new Object[0][25];
@@ -244,6 +253,4 @@ public class M00011ClMstRt{
     	
     	return rt;
 	}
-	
-	
 }

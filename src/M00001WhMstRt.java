@@ -5,9 +5,15 @@ import java.util.ArrayList;
 
 public class M00001WhMstRt{
 	public static Object[][] WhMstRt(
-			ArrayList SearchWHCD,ArrayList SearchWHName,ArrayList SearchPost,
-			ArrayList SearchAdd,ArrayList SearchTel,ArrayList SearchFax,ArrayList SearchMail,
-			ArrayList SearchCom,ArrayList SearchPTMSCD,
+			ArrayList<String> SearchWHCD,
+			ArrayList<String> SearchWHName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			ArrayList<String> SearchPTMSCD,
 			boolean AllSearch){
 		Object[][] rt = new Object[0][16];
 		boolean SearchKick = false;

@@ -5,8 +5,15 @@ import java.util.ArrayList;
 
 public class M00010ClGpMstRt{
 	public static Object[][] ClGpMstRt(
-			ArrayList<String> SearchClGpCD,ArrayList<String> SearchCLGpName,ArrayList<String> SearchPost,
-			ArrayList<String> SearchAdd,ArrayList<String> SearchTel,ArrayList<String> SearchFax,ArrayList<String> SearchMail,ArrayList<String> SearchCom,boolean AllSearch){
+			ArrayList<String> SearchClGpCD,
+			ArrayList<String> SearchCLGpName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			boolean AllSearch){
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		Object[][] rt = new Object[0][19];

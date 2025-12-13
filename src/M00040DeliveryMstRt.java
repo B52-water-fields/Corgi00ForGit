@@ -5,17 +5,17 @@ import java.util.ArrayList;
 
 public class M00040DeliveryMstRt{
 	public static Object[][] DeliveryMstRt(
-			ArrayList SearchDECD,			//検索条件届先CD
-			ArrayList SearchDepartmentCd,	//検索条件届先部署CD
-			ArrayList SearchDEName,			//検索条件届先名
-			ArrayList SearchPost,			//検索条件届先郵便
-			ArrayList SearchAdd,			//検索条件届先住所
-			ArrayList SearchTel,			//検索条件届先TEL
-			ArrayList SearchFax,			//検索条件届先FAX
-			ArrayList SearchMail,			//検索条件届先MAIL
-			ArrayList SearchCom,			//検索条件届先コメント
-			ArrayList SearchPrefecturesCd,	//検索条件届先県CD
-			ArrayList SearchMunicipalityCd,	//検索条件届先市区町村CD
+			ArrayList<String> SearchDECD,			//検索条件届先CD
+			ArrayList<String> SearchDepartmentCd,	//検索条件届先部署CD
+			ArrayList<String> SearchDEName,			//検索条件届先名
+			ArrayList<String> SearchPost,			//検索条件届先郵便
+			ArrayList<String> SearchAdd,			//検索条件届先住所
+			ArrayList<String> SearchTel,			//検索条件届先TEL
+			ArrayList<String> SearchFax,			//検索条件届先FAX
+			ArrayList<String> SearchMail,			//検索条件届先MAIL
+			ArrayList<String> SearchCom,			//検索条件届先コメント
+			ArrayList<String> SearchPrefecturesCd,	//検索条件届先県CD
+			ArrayList<String> SearchMunicipalityCd,	//検索条件届先市区町村CD
 			boolean AllSearch
 			){
 		Object[][] rt = new Object[0][25];

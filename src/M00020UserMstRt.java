@@ -4,9 +4,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00020UserMstRt{
-	public static Object[][] UserMstRt(ArrayList SearchWHCD,ArrayList SearchShippingCompanyCd,ArrayList SearchAuthorityFG,
-			ArrayList SearchUserCd,ArrayList SearchUserName,ArrayList SearchCarCd,ArrayList SearchCarName,
-			ArrayList SearchPost,ArrayList SearchAdd,ArrayList SearchTel,ArrayList SearchFax,ArrayList SearchMail,ArrayList SearchCom,
+	public static Object[][] UserMstRt(
+			ArrayList<String> SearchWHCD,
+			ArrayList<String> SearchShippingCompanyCd,
+			ArrayList<String> SearchAuthorityFG,
+			ArrayList<String> SearchUserCd,
+			ArrayList<String> SearchUserName,
+			ArrayList<String> SearchCarCd,
+			ArrayList<String> SearchCarName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
 			boolean AllSearch){
 		Object[][] rt = new Object[0][29];
 		boolean SearchKick = false;
@@ -258,4 +269,46 @@ public class M00020UserMstRt{
 		}
 		return rt;
 	}
+	public static String NewUserCdGet() {
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
+		ArrayList<String> SearchAuthorityFG = new ArrayList<String>();
+		ArrayList<String> SearchUserCd = new ArrayList<String>();
+		ArrayList<String> SearchUserName = new ArrayList<String>();
+		ArrayList<String> SearchCarCd = new ArrayList<String>();
+		ArrayList<String> SearchCarName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		boolean AllSearch = true;
+    	
+    	Object[][] UserMstRt = UserMstRt(SearchWHCD,SearchShippingCompanyCd,SearchAuthorityFG,
+    			SearchUserCd,SearchUserName,SearchCarCd,SearchCarName,
+    			SearchPost,SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,
+    			AllSearch);
+    	
+    	int UserNo = 0;
+    	
+    	for(int i=0;i<UserMstRt.length;i++) {
+    		if("ATUS".equals((""+UserMstRt[i][0]).substring(0,4))&&11==(""+UserMstRt[i][0]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+UserMstRt[i][0]);
+    			if(7==WST.length()) {
+    				int wint = Integer.parseInt(WST);
+    				if(UserNo<wint) {
+    					UserNo=wint;
+    				}
+    			}
+    		}
+    	}
+    	UserNo = UserNo+1;
+    	String rt = "0000000"+UserNo;
+    	rt = "ATCL"+rt.substring(rt.length()-7,rt.length());
+    	
+    	return rt;
+	}
+	
+	
 }

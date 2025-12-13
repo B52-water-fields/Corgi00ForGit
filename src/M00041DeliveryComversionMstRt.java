@@ -4,9 +4,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00041DeliveryComversionMstRt{
-	public static Object[][] DeliveryComversionMstRt(ArrayList SearchClGpCD,ArrayList SearchCldeCD,ArrayList SearchDECD,ArrayList SearchDepartmentCd,
-			ArrayList SearchName,ArrayList SearchAdd,ArrayList SearchPost,ArrayList SearchTel,ArrayList SearchFax,
-			ArrayList SearchMail,ArrayList SearchCom,boolean AllSearch){
+	public static Object[][] DeliveryComversionMstRt(
+			ArrayList<String> SearchClGpCD,
+			ArrayList<String> SearchCldeCD,
+			ArrayList<String> SearchDECD,
+			ArrayList<String> SearchDepartmentCd,
+			ArrayList<String> SearchName,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			boolean AllSearch){
 		Object[][] rt = new Object[0][32];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

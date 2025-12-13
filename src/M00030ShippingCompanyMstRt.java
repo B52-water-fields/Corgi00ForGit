@@ -4,8 +4,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 public class M00030ShippingCompanyMstRt{
 	public static Object[][] ShippingCompanyMstRt(
-			ArrayList<String> SearchShippingCompanyCd,ArrayList<String> SearchCompanyName,ArrayList<String> SearchPost,ArrayList<String> SearchAdd,
-			ArrayList<String> SearchTel,ArrayList<String> SearchFax,ArrayList<String> SearchMail,ArrayList<String> SearchCom,boolean AllSearch){
+			ArrayList<String> SearchShippingCompanyCd,
+			ArrayList<String> SearchCompanyName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			boolean AllSearch){
 		Object[][] rt = new Object[0][22];
 		
 		boolean SearchKick = false;
