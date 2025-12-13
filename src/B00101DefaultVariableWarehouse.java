@@ -120,6 +120,7 @@ public class B00101DefaultVariableWarehouse{
 		entry_data[ 0][15] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
 		
 		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		B00100DefaultVariable.WhList();
 		
 		DefaultVariableWarehouse(GetWHCD);
 		
@@ -287,6 +288,7 @@ public class B00101DefaultVariableWarehouse{
 				entry_data[0][22] = "";	//基幹システム連携用荷主コード
 				
 				A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+				B00100DefaultVariable.ClList();
 			}
 		}
 	}

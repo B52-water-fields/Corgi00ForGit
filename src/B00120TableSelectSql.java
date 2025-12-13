@@ -15,7 +15,7 @@ public class B00120TableSelectSql{
 	}
 	
 	public static void TableSelectSqlCore(String TgtDB,String TgtTable) {
-		//対象テーブルのカラム情報取得
+		//対象テーブルのカラム情報取得　開発コピペ用
 		String[][] ColumnList = A00050OldDataTableCheck.ColumnList(TgtDB,TgtTable);
 		if(0<ColumnList.length) {
 			String sql = "\"select \"\n+\"";

@@ -1,6 +1,29 @@
 import java.util.ArrayList;
 
 public class B00100DefaultVariable{
+	//設定用条件
+	static String[] 	ShimeDateList;				//1日～28日　末日99のリスト
+	static Object[][] 	DeliFeeNorm;					//運賃請求基準　発請求/着請求
+	
+	//検索条件 登録条件マスタを元に選択リスト用配列設定
+	static Object[][] SearchWhList;					//倉庫リスト
+	static Object[][] WhList;							//倉庫リスト
+	
+	static Object[][] SearchClGpList;					//検索用荷主グループ一覧
+	static Object[][] ClGpList;						//設定用荷主グループ一覧
+	
+	static Object[][] SearchClList;					//検索用荷主一覧
+	static Object[][] ClList;							//設定用荷主一覧
+	
+	static Object[][] SearchShippingCompanyList;	//検索用運送会社一覧
+	static Object[][] ShippingCompanyList;			//設定用運送会社一覧
+	
+	/*
+	====================================================================
+	↑設定確認済み
+	====================================================================
+	*/
+	
 	static String[][] LocType;							//ロケタイプ設定値
 	static String[][] SearchLocType;					//ロケタイプ検索値
 	static String DefaultTroughLoc="ZZZ2222222";		//スルー型運用の場合スルー引当用ロケ
@@ -18,6 +41,7 @@ public class B00100DefaultVariable{
 	static String ErrSoundPath;						//エラー音パス
 	static String OKSoundPath;							//OK音パス
 	
+	static int Cl_OldDataRenewDate = 93;				//これより古い荷主管理番号は先頭にOldつけて重複から外す
 
 	//検索条件 登録条件選択リスト用配列設定
 	static Object[][] SearchFeeFixFGList;
@@ -45,8 +69,8 @@ public class B00100DefaultVariable{
 	static Object[][] DeliveryType05;
 	static String DefaultPtmsItemCd;
 	
-	static Object[][] WhList;						//倉庫リスト
-	static Object[][] SearchWhList;				//倉庫リスト
+
+	
 	
 	static Object[][] SupplierList;				//仕入先リスト
 	
@@ -65,11 +89,9 @@ public class B00100DefaultVariable{
 
 	static String[] DeliveryWildCard;
 	
-	static Object[][] SearchClList;				//検索用荷主一覧
-	static Object[][] ClList;						//設定用荷主一覧
+
 	
-	static Object[][] SearchClGpList;				//検索用荷主グループ一覧
-	static Object[][] ClGpList;					//設定用荷主グループ一覧
+
 	
 	static Object[][] FeeLogicTypeList;			//運賃計算タイプ(請求)
 	static Object[][] PayLogicTypeList;			//運賃計算タイプ(支払)
@@ -82,8 +104,7 @@ public class B00100DefaultVariable{
 	
 	static Object[][] WhFeeUnitList;				//倉庫入出荷保管料課金単位リスト
 	static Object[][] WhFeeSummaryFgList;		//倉庫入出荷保管料集計区分リスト
-	static String[] DateList;						//1日～28日　末日99のリスト
-	static Object[][] DeliFeeNorm;					//運賃請求基準　発請求/着請求
+	
 	
 	static String[][] LayoutPt;					//送り状データ取り込みパターン
 	static String[][] HaisyaDataLayoutPt;		//運送会社向け配車データ出力パターン
@@ -94,15 +115,18 @@ public class B00100DefaultVariable{
 	static Object[][] SerachAuthorityFG;		//ユーザー権限区分
 	static Object[][] AuthorityFG;
 	
-	static int Cl_OldDataRenewDate = 93;		//これより古い荷主管理番号は先頭にOldつけて重複から外す
+
 	
 	public static void DefaultVariable() {
 		//ログイン⇒荷主決定時に前提情報を取得する
+		//荷主選択処理後も呼び出されます
+		WhList();						//倉庫一覧生成
+		ClGpList();					//荷主グループ一覧生成
+		ClList();						//荷主一覧生成
+		ShippingCompanyList();		//運送会社一覧生成
 		
 		
-		WhList();		//倉庫一覧生成
-		ClGpList();	//荷主グループ一覧生成
-		
+		ShimeList();					//締め日・締め条件リスト生成
 		
 	}
 	
@@ -124,7 +148,7 @@ public class B00100DefaultVariable{
 					SearchCom,SearchPTMSCD,
 					AllSearch);
 				
-		WhList 		= new Object[3][WhMstRt.length];						//倉庫リスト
+		WhList 		= new Object[3][WhMstRt.length];				//倉庫リスト
 		SearchWhList 	= new Object[3][WhMstRt.length+1];				//倉庫リスト
 		
 		SearchWhList[0][0] = "未指定";
@@ -174,6 +198,119 @@ public class B00100DefaultVariable{
 			SearchClGpList[1][i+1] = "" + ClGpMstRt[i][0];
 			SearchClGpList[2][i+1] = "" + ClGpMstRt[i][1];
 		}
+	}
+	
+	public static void ClList() {
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLCD = new ArrayList<String>();
+		ArrayList<String> SearchCLName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		boolean AllSearch = true;
+		
+		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+					SearchClGpCD,SearchCLCD,SearchCLName,SearchPost,searchAdd,
+					SearchTel,SearchFax,SearchMail,SearchCom,SearchWHCD,AllSearch);
+		
+
+		SearchClList 	= new Object[3][ClMstRt.length+1];			//検索用荷主グループ一覧
+		ClList 		= new Object[3][ClMstRt.length];			//設定用荷主グループ一覧
+		
+		SearchClList[0][0] = "未指定";
+		SearchClList[1][0] = "";
+		SearchClList[2][0] = "";
+		
+		for(int i=0;i<ClMstRt.length;i++) {
+			ClList[0][i] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][1];
+			ClList[1][i] = "" + ClMstRt[i][0];
+			ClList[2][i] = "" + ClMstRt[i][1];
+			
+			SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][1];
+			SearchClList[1][i+1] = "" + ClMstRt[i][0];
+			SearchClList[2][i+1] = "" + ClMstRt[i][1];
+		}
+	}
+	
+	public static void ShippingCompanyList() {
+		ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
+		ArrayList<String> SearchCompanyName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		boolean AllSearch = true;
+		
+		Object[][] ShippingCompanyMstRt = M00030ShippingCompanyMstRt.ShippingCompanyMstRt(
+					SearchShippingCompanyCd,SearchCompanyName,SearchPost,SearchAdd,
+					SearchTel,SearchFax,SearchMail,SearchCom,AllSearch);
+		
+		SearchShippingCompanyList 	= new Object[3][ShippingCompanyMstRt.length+1];		//検索用荷主グループ一覧
+		ShippingCompanyList 		= new Object[3][ShippingCompanyMstRt.length];			//設定用荷主グループ一覧
+		
+		SearchShippingCompanyList[0][0] = "未指定";
+		SearchShippingCompanyList[1][0] = "";
+		SearchShippingCompanyList[2][0] = "";
+		
+		for(int i=0;i<ShippingCompanyMstRt.length;i++) {
+			ShippingCompanyList[0][i] = "" + ShippingCompanyMstRt[i][0] + ":" + ShippingCompanyMstRt[i][1];
+			ShippingCompanyList[1][i] = "" + ShippingCompanyMstRt[i][0];
+			ShippingCompanyList[2][i] = "" + ShippingCompanyMstRt[i][1];
+			
+			SearchShippingCompanyList[0][i+1] = "" + ShippingCompanyMstRt[i][0] + ":" + ShippingCompanyMstRt[i][1];
+			SearchShippingCompanyList[1][i+1] = "" + ShippingCompanyMstRt[i][0];
+			SearchShippingCompanyList[2][i+1] = "" + ShippingCompanyMstRt[i][1];
+		}
+	}
+	
+	private static void ShimeList() {
+		ShimeDateList=new String[29];							//1日～28日　末日99のリスト
+		DeliFeeNorm = new String[3][2];						//運賃請求基準　発請求/着請求
+		
+		ShimeDateList[ 0] =  "1";
+		ShimeDateList[ 1] =  "2";
+		ShimeDateList[ 2] =  "3";
+		ShimeDateList[ 3] =  "4";
+		ShimeDateList[ 4] =  "5";
+		ShimeDateList[ 5] =  "6";
+		ShimeDateList[ 6] =  "7";
+		ShimeDateList[ 7] =  "8";
+		ShimeDateList[ 8] =  "9";
+		ShimeDateList[ 9] = "10";
+		ShimeDateList[10] = "11";
+		ShimeDateList[11] = "12";
+		ShimeDateList[12] = "13";
+		ShimeDateList[13] = "14";
+		ShimeDateList[14] = "15";
+		ShimeDateList[15] = "16";
+		ShimeDateList[16] = "17";
+		ShimeDateList[17] = "18";
+		ShimeDateList[18] = "19";
+		ShimeDateList[19] = "20";
+		ShimeDateList[20] = "21";
+		ShimeDateList[21] = "22";
+		ShimeDateList[22] = "23";
+		ShimeDateList[23] = "24";
+		ShimeDateList[24] = "25";
+		ShimeDateList[25] = "26";
+		ShimeDateList[26] = "27";
+		ShimeDateList[27] = "28";
+		ShimeDateList[28] = "99";
+		
+		DeliFeeNorm[0][0] = "0:発日請求";
+		DeliFeeNorm[0][1] = "1:着日請求";
+		
+		DeliFeeNorm[1][0] = "0";
+		DeliFeeNorm[1][1] = "1";
+		
+		DeliFeeNorm[2][0] = "発日請求";
+		DeliFeeNorm[2][1] = "着日請求";
 	}
 	
 	// ==========================================================================
@@ -277,6 +414,7 @@ public class B00100DefaultVariable{
 		entry_data[0][18] ="";				//パスワード
 		
 		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		B00100DefaultVariable.ClGpList();
 	}
 	
 	//zeusログイン時、基本の運送会社　自社SC00000を作る
@@ -383,6 +521,7 @@ public class B00100DefaultVariable{
 		entry_data[0][20] = "";			//基幹システム連携用傭車コード
 
 		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		B00100DefaultVariable.ShippingCompanyList();
 	}
 	
 	//zeusログイン時、自分が所属する倉庫マスタ作成
@@ -469,6 +608,7 @@ public class B00100DefaultVariable{
 		entry_data[0][15] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;		//更新者コード
 
 		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		B00100DefaultVariable.WhList();
 		B00101DefaultVariableWarehouse.DefaultVariableWarehouse("0000");
 	}
 }
