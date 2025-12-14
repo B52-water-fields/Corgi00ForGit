@@ -318,7 +318,6 @@ public class WM00026ClMstRenewAndCreate{
 							,{"PTMSCD",		"1","1",GetPTMSCD}		//基幹システム荷主コード
 					};
 					
-					
 					String tgt_table = "KM0030_CLIENTMST";
 					String[][] field_name = new String[SetString.length][3];
 					String[][] entry_data = new String[1][SetString.length];
