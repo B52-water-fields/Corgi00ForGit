@@ -525,6 +525,8 @@ public class A00000Main{
 				+ ")"
 				+ " "
 				+ " WHERE "
+				+ ""+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.DelFg = 0"
+				+ " AND "
 				+ ""+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.WHCD = ?"
 				+ " AND "
 				+ ""+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.UserCd = ?"

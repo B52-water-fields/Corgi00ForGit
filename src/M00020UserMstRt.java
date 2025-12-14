@@ -18,8 +18,9 @@ public class M00020UserMstRt{
 			ArrayList<String> SearchFax,
 			ArrayList<String> SearchMail,
 			ArrayList<String> SearchCom,
+			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
-		Object[][] rt = new Object[0][29];
+		Object[][] rt = new Object[0][32];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -53,7 +54,10 @@ public class M00020UserMstRt{
 				+"(KM0020_USERMST.EntryUser) as EntryUser,\n"										//データ登録日時
 				+"(KM0020_USERMST.UpdateUser) as UpdateUser,\n"										//データ更新日時
 				+"(KM0020_USERMST.PTMSCD) as PTMSCD,\n"												//基幹システムユーザーコード
-				+"(KM0020_USERMST.DelFg) as DelFg\n"												//削除区分
+				+"(KM0020_USERMST.DelFg) as DelFg,\n"												//削除区分
+				+"(KM0020_USERMST.MainClient) as MainClient,\n"										//主要担当荷主CD
+				+"(KM0030_CLIENTMST.CLName01) as CLName01\n"										//主要担当荷主名
+
 				+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST \n"
 				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0070_SHIPPINGCOMPANYMST\n"
 				+ " on("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.ShippingCompanyCd = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0070_SHIPPINGCOMPANYMST.ShippingCompanyCd)\n"
@@ -66,6 +70,10 @@ public class M00020UserMstRt{
 				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST"
 				+ " on(\n"
 				+ " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.WHCD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHCD"
+				+ " )\n"
+				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST"
+				+ " on(\n"
+				+ " "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0020_USERMST.MainClient = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST.cl_cd"
 				+ " )\n"
 				+ " where 1=1";	
 		
@@ -195,10 +203,14 @@ public class M00020UserMstRt{
 			sql=sql+")";
 		}
 		
-		if(AllSearch) {
-			
-		}else {
-			sql = sql + " and KM0020_USERMST.DelFg = 0";
+		if(null!=SearchDelFg && 0<SearchDelFg.size()) {
+			SearchKick=true;
+			sql = sql + " and(";
+			for(int i=0;i<SearchDelFg.size();i++) {
+				if(0<i) {sql=sql+" or ";}
+				sql = sql + " KM0020_USERMST.DelFg = '"+SearchDelFg.get(i)+"'";
+			}
+			sql=sql+")";
 		}
 		
 		sql = sql + " order by KM0020_USERMST.ShippingCompanyCd,KM0020_USERMST.UserCd";
@@ -216,7 +228,7 @@ public class M00020UserMstRt{
 				while (rset01.next()) {
 					counter=counter+1;
 				}
-				rt = new Object[counter][30];
+				rt = new Object[counter][32];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
@@ -245,11 +257,13 @@ public class M00020UserMstRt{
 					if(null==rset01.getString("Com03")){rt[counter][22]="";}else{rt[counter][22]=rset01.getString("Com03");}												//コメント3
 					if(null==rset01.getTimestamp("EntryDate")){rt[counter][23]="";}else{rt[counter][23]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//データ登録日時
 					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][24]="";}else{rt[counter][24]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
-					if(null==rset01.getString("EntryUser")){rt[counter][25]="";}else{rt[counter][25]=rset01.getString("EntryUser");}		//登録者コード
-					if(null==rset01.getString("UpdateUser")){rt[counter][26]="";}else{rt[counter][26]=rset01.getString("UpdateUser");}		//更新者コード
+					if(null==rset01.getString("EntryUser")){rt[counter][25]="";}else{rt[counter][25]=rset01.getString("EntryUser");}										//登録者コード
+					if(null==rset01.getString("UpdateUser")){rt[counter][26]="";}else{rt[counter][26]=rset01.getString("UpdateUser");}										//更新者コード
 					if(null==rset01.getString("PTMSCD")){rt[counter][27]="";}else{rt[counter][27]=rset01.getString("PTMSCD");}												//基幹システムユーザーコード
 					rt[counter][28] = rset01.getInt("DelFg");//削除区分
 					if(null==rset01.getString("WHName")){rt[counter][29]="";}else{rt[counter][29]=rset01.getString("WHName");}												//倉庫名
+					if(null==rset01.getString("MainClient")){rt[counter][30]="";}else{rt[counter][30]=rset01.getString("MainClient");}										//主要担当荷主CD
+					if(null==rset01.getString("CLName01")){rt[counter][31]="";}else{rt[counter][31]=rset01.getString("CLName01");}											//主要担当荷主名
 					
 					counter=counter+1;
 				}
@@ -283,11 +297,12 @@ public class M00020UserMstRt{
 		ArrayList<String> SearchFax = new ArrayList<String>();
 		ArrayList<String> SearchMail = new ArrayList<String>();
 		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchDelFg = new ArrayList<String>();
 		boolean AllSearch = true;
     	
     	Object[][] UserMstRt = UserMstRt(SearchWHCD,SearchShippingCompanyCd,SearchAuthorityFG,
     			SearchUserCd,SearchUserName,SearchCarCd,SearchCarName,
-    			SearchPost,SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,
+    			SearchPost,SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,SearchDelFg,
     			AllSearch);
     	
     	int UserNo = 0;

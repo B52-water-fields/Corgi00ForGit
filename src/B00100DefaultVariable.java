@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class B00100DefaultVariable{
 	//設定用条件
-	static String[] 	ShimeDateList;				//1日～28日　末日99のリスト
+	static String[][] 	ShimeDateList;				//1日～28日　末日99のリスト
 	static Object[][] 	DeliFeeNorm;					//運賃請求基準　発請求/着請求
 	
 	//検索条件 登録条件マスタを元に選択リスト用配列設定
@@ -17,6 +17,12 @@ public class B00100DefaultVariable{
 	
 	static Object[][] SearchShippingCompanyList;	//検索用運送会社一覧
 	static Object[][] ShippingCompanyList;			//設定用運送会社一覧
+	
+	static String[][] SearchDelList= {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
+	static String[][] DelList= {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};							//設定用削除区分
+	
+	static Object[][] SerachAuthorityFG;			//検索用ユーザー権限区分
+	static Object[][] AuthorityFG;					//設定用ユーザー権限区分
 	
 	/*
 	====================================================================
@@ -110,10 +116,6 @@ public class B00100DefaultVariable{
 	static String[][] HaisyaDataLayoutPt;		//運送会社向け配車データ出力パターン
 	
 	
-	static String[][] DelList;					//削除区分
-	
-	static Object[][] SerachAuthorityFG;		//ユーザー権限区分
-	static Object[][] AuthorityFG;
 	
 
 	
@@ -127,8 +129,10 @@ public class B00100DefaultVariable{
 		
 		
 		ShimeList();					//締め日・締め条件リスト生成
-		
+		AuthorityFG();					//管理者ログイン時のみ権利権限設定
 	}
+	
+	
 	
 	public static void WhList() {
 		ArrayList<String> SearchWHCD = new ArrayList<String>();
@@ -270,38 +274,98 @@ public class B00100DefaultVariable{
 	}
 	
 	private static void ShimeList() {
-		ShimeDateList=new String[29];							//1日～28日　末日99のリスト
+		ShimeDateList=new String[3][29];							//1日～28日　末日99のリスト
 		DeliFeeNorm = new String[3][2];						//運賃請求基準　発請求/着請求
 		
-		ShimeDateList[ 0] =  "1";
-		ShimeDateList[ 1] =  "2";
-		ShimeDateList[ 2] =  "3";
-		ShimeDateList[ 3] =  "4";
-		ShimeDateList[ 4] =  "5";
-		ShimeDateList[ 5] =  "6";
-		ShimeDateList[ 6] =  "7";
-		ShimeDateList[ 7] =  "8";
-		ShimeDateList[ 8] =  "9";
-		ShimeDateList[ 9] = "10";
-		ShimeDateList[10] = "11";
-		ShimeDateList[11] = "12";
-		ShimeDateList[12] = "13";
-		ShimeDateList[13] = "14";
-		ShimeDateList[14] = "15";
-		ShimeDateList[15] = "16";
-		ShimeDateList[16] = "17";
-		ShimeDateList[17] = "18";
-		ShimeDateList[18] = "19";
-		ShimeDateList[19] = "20";
-		ShimeDateList[20] = "21";
-		ShimeDateList[21] = "22";
-		ShimeDateList[22] = "23";
-		ShimeDateList[23] = "24";
-		ShimeDateList[24] = "25";
-		ShimeDateList[25] = "26";
-		ShimeDateList[26] = "27";
-		ShimeDateList[27] = "28";
-		ShimeDateList[28] = "99";
+		ShimeDateList[0][ 0] =  "1日";
+		ShimeDateList[0][ 1] =  "2日";
+		ShimeDateList[0][ 2] =  "3日";
+		ShimeDateList[0][ 3] =  "4日";
+		ShimeDateList[0][ 4] =  "5日";
+		ShimeDateList[0][ 5] =  "6日";
+		ShimeDateList[0][ 6] =  "7日";
+		ShimeDateList[0][ 7] =  "8日";
+		ShimeDateList[0][ 8] =  "9日";
+		ShimeDateList[0][ 9] = "10日";
+		ShimeDateList[0][10] = "11日";
+		ShimeDateList[0][11] = "12日";
+		ShimeDateList[0][12] = "13日";
+		ShimeDateList[0][13] = "14日";
+		ShimeDateList[0][14] = "15日";
+		ShimeDateList[0][15] = "16日";
+		ShimeDateList[0][16] = "17日";
+		ShimeDateList[0][17] = "18日";
+		ShimeDateList[0][18] = "19日";
+		ShimeDateList[0][19] = "20日";
+		ShimeDateList[0][20] = "21日";
+		ShimeDateList[0][21] = "22日";
+		ShimeDateList[0][22] = "23日";
+		ShimeDateList[0][23] = "24日";
+		ShimeDateList[0][24] = "25日";
+		ShimeDateList[0][25] = "26日";
+		ShimeDateList[0][26] = "27日";
+		ShimeDateList[0][27] = "28日";
+		ShimeDateList[0][28] = "月末";
+		
+		ShimeDateList[1][ 0] =  "1";
+		ShimeDateList[1][ 1] =  "2";
+		ShimeDateList[1][ 2] =  "3";
+		ShimeDateList[1][ 3] =  "4";
+		ShimeDateList[1][ 4] =  "5";
+		ShimeDateList[1][ 5] =  "6";
+		ShimeDateList[1][ 6] =  "7";
+		ShimeDateList[1][ 7] =  "8";
+		ShimeDateList[1][ 8] =  "9";
+		ShimeDateList[1][ 9] = "10";
+		ShimeDateList[1][10] = "11";
+		ShimeDateList[1][11] = "12";
+		ShimeDateList[1][12] = "13";
+		ShimeDateList[1][13] = "14";
+		ShimeDateList[1][14] = "15";
+		ShimeDateList[1][15] = "16";
+		ShimeDateList[1][16] = "17";
+		ShimeDateList[1][17] = "18";
+		ShimeDateList[1][18] = "19";
+		ShimeDateList[1][19] = "20";
+		ShimeDateList[1][20] = "21";
+		ShimeDateList[1][21] = "22";
+		ShimeDateList[1][22] = "23";
+		ShimeDateList[1][23] = "24";
+		ShimeDateList[1][24] = "25";
+		ShimeDateList[1][25] = "26";
+		ShimeDateList[1][26] = "27";
+		ShimeDateList[1][27] = "28";
+		ShimeDateList[1][28] = "99";
+		
+		ShimeDateList[2][ 0] =  "1日";
+		ShimeDateList[2][ 1] =  "2日";
+		ShimeDateList[2][ 2] =  "3日";
+		ShimeDateList[2][ 3] =  "4日";
+		ShimeDateList[2][ 4] =  "5日";
+		ShimeDateList[2][ 5] =  "6日";
+		ShimeDateList[2][ 6] =  "7日";
+		ShimeDateList[2][ 7] =  "8日";
+		ShimeDateList[2][ 8] =  "9日";
+		ShimeDateList[2][ 9] = "10日";
+		ShimeDateList[2][10] = "11日";
+		ShimeDateList[2][11] = "12日";
+		ShimeDateList[2][12] = "13日";
+		ShimeDateList[2][13] = "14日";
+		ShimeDateList[2][14] = "15日";
+		ShimeDateList[2][15] = "16日";
+		ShimeDateList[2][16] = "17日";
+		ShimeDateList[2][17] = "18日";
+		ShimeDateList[2][18] = "19日";
+		ShimeDateList[2][19] = "20日";
+		ShimeDateList[2][20] = "21日";
+		ShimeDateList[2][21] = "22日";
+		ShimeDateList[2][22] = "23日";
+		ShimeDateList[2][23] = "24日";
+		ShimeDateList[2][24] = "25日";
+		ShimeDateList[2][25] = "26日";
+		ShimeDateList[2][26] = "27日";
+		ShimeDateList[2][27] = "28日";
+		ShimeDateList[2][28] = "月末";
 		
 		DeliFeeNorm[0][0] = "0:発日請求";
 		DeliFeeNorm[0][1] = "1:着日請求";
@@ -311,6 +375,73 @@ public class B00100DefaultVariable{
 		
 		DeliFeeNorm[2][0] = "発日請求";
 		DeliFeeNorm[2][1] = "着日請求";
+	}
+	
+	private static void AuthorityFG(){
+		if("9".equals(A00000Main.LoginUserAuthorityFG)) {
+			SerachAuthorityFG = new String[3][5];		//検索用ユーザー権限区分
+			AuthorityFG = new String[3][4];			//設定用ユーザー権限区分
+			
+			SerachAuthorityFG[0][0] = "0:SYS利用者";
+			SerachAuthorityFG[1][0] = "0";
+			SerachAuthorityFG[2][0] = "システム利用者";		
+			AuthorityFG[0][0] = "0:システム利用者";
+			AuthorityFG[1][0] = "0";
+			AuthorityFG[2][0] = "システム利用者";
+			
+			SerachAuthorityFG[0][1] = "1:乗務員";
+			SerachAuthorityFG[1][1] = "1";
+			SerachAuthorityFG[2][1] = "乗務員";		
+			AuthorityFG[0][1] = "1:乗務員";
+			AuthorityFG[1][1] = "1";
+			AuthorityFG[2][1] = "乗務員";
+			
+			SerachAuthorityFG[0][2] = "2:荷主ユーザー";
+			SerachAuthorityFG[1][2] = "2";
+			SerachAuthorityFG[2][2] = "荷主ユーザー";		
+			AuthorityFG[0][2] = "2:荷主ユーザー";
+			AuthorityFG[1][2] = "2";
+			AuthorityFG[2][2] = "荷主ユーザー";
+			
+			SerachAuthorityFG[0][3] = "9:管理ユーザー";
+			SerachAuthorityFG[1][3] = "9";
+			SerachAuthorityFG[2][3] = "管理ユーザー";		
+			AuthorityFG[0][3] = "9:管理ユーザー";
+			AuthorityFG[1][3] = "9";
+			AuthorityFG[2][3] = "管理ユーザー";
+			
+			SerachAuthorityFG[0][4] = "未指定";
+			SerachAuthorityFG[1][4] = "";
+			SerachAuthorityFG[2][4] = "";	
+		}else {
+			SerachAuthorityFG = new String[3][4];		//検索用ユーザー権限区分
+			AuthorityFG = new String[3][3];			//設定用ユーザー権限区分
+			
+			SerachAuthorityFG[0][0] = "0:SYS利用者";
+			SerachAuthorityFG[1][0] = "0";
+			SerachAuthorityFG[2][0] = "システム利用者";		
+			AuthorityFG[0][0] = "0:システム利用者";
+			AuthorityFG[1][0] = "0";
+			AuthorityFG[2][0] = "システム利用者";
+			
+			SerachAuthorityFG[0][1] = "1:乗務員";
+			SerachAuthorityFG[1][1] = "1";
+			SerachAuthorityFG[2][1] = "乗務員";		
+			AuthorityFG[0][1] = "1:乗務員";
+			AuthorityFG[1][1] = "1";
+			AuthorityFG[2][1] = "乗務員";
+			
+			SerachAuthorityFG[0][2] = "2:荷主ユーザー";
+			SerachAuthorityFG[1][2] = "2";
+			SerachAuthorityFG[2][2] = "荷主ユーザー";		
+			AuthorityFG[0][2] = "2:荷主ユーザー";
+			AuthorityFG[1][2] = "2";
+			AuthorityFG[2][2] = "荷主ユーザー";
+			
+			SerachAuthorityFG[0][3] = "未指定";
+			SerachAuthorityFG[1][3] = "";
+			SerachAuthorityFG[2][3] = "";	
+		}
 	}
 	
 	// ==========================================================================

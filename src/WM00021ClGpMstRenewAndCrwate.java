@@ -229,99 +229,51 @@ public class WM00021ClGpMstRenewAndCrwate{
 					if("".equals(GetClGpCD)) {
 						GetClGpCD = M00010ClGpMstRt.NewWhCdGet();
 					}
+					
+					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					
+					String[][] SetString = {
+							{"ClGpCD"		,"1","1",GetClGpCD}			//荷主グループCD
+							,{"CLGpName01"	,"1","1",GetCLGpName01}		//荷主名1
+							,{"CLGpName02"	,"1","1",GetCLGpName02}		//荷主名2
+							,{"CLGpName03"	,"1","1",GetCLGpName03}		//荷主名3"
+							,{"Post"		,"1","1",GetPost}			//郵便番号
+							,{"Add01"		,"1","1",GetAdd01}			//住所1
+							,{"Add02"		,"1","1",GetAdd02}			//住所2
+							,{"Add03"		,"1","1",GetAdd03}			//住所3
+							,{"Tel"			,"1","1",GetTel}			//電話番号
+							,{"Fax"			,"1","1",GetFax}			//FAX
+							,{"Mail"		,"1","1",GetMail}			//メールアドレス
+							,{"Com01"		,"1","1",GetCom01}			//コメント1
+							,{"Com02"		,"1","1",GetCom02}			//コメント2
+							,{"Com03"		,"1","1",GetCom03}			//コメント3
+							,{"EntryDate"	,"1","0",now_dtm}			//データ登録日時
+							,{"UpdateDate"	,"1","1",now_dtm}			//データ更新日時
+							,{"EntryUser"	,"1","0","(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}		//登録者コード
+							,{"UpdateUser"	,"1","1","(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//更新者コード
+							,{"PassWord"	,"1","1",GetPassWord}		//パスワード
+
+					};
+					
 					String tgt_table = "KM0031_CLIENT_GROUP";
-					String[][] field_name = new String[19][3];
-					String[][] entry_data = new String[1][19];
+					String[][] field_name = new String[SetString.length][3];
+					String[][] entry_data = new String[1][SetString.length];
 					String[] judg_field = new String[1];
 					String[][] judg_data = new String[1][1];
 					String TgtDB = "NYANKO";
 					int non_msg_fg = 1;
-					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
 					
+
 					judg_field[ 0] = "ClGpCD";		//荷主グループCD
-					
-					field_name[ 0][0] = "ClGpCD";		//荷主グループCD
-					field_name[ 1][0] = "CLGpName01";	//荷主名1
-					field_name[ 2][0] = "CLGpName02";	//荷主名2
-					field_name[ 3][0] = "CLGpName03";	//荷主名3
-					field_name[ 4][0] = "Post";			//郵便番号
-					field_name[ 5][0] = "Add01";		//住所1
-					field_name[ 6][0] = "Add02";		//住所2
-					field_name[ 7][0] = "Add03";		//住所3
-					field_name[ 8][0] = "Tel";			//電話番号
-					field_name[ 9][0] = "Fax";			//FAX
-					field_name[10][0] = "Mail";			//メールアドレス
-					field_name[11][0] = "Com01";		//コメント1
-					field_name[12][0] = "Com02";		//コメント2
-					field_name[13][0] = "Com03";		//コメント3
-					field_name[14][0] = "EntryDate";	//データ登録日時
-					field_name[15][0] = "UpdateDate";	//データ更新日時
-					field_name[16][0] = "EntryUser";	//登録者コード
-					field_name[17][0] = "UpdateUser";	//更新者コード
-					field_name[18][0] = "PassWord";		//パスワード
-	
-					field_name[ 0][1] = "1";	//荷主グループCD
-					field_name[ 1][1] = "1";	//荷主名1
-					field_name[ 2][1] = "1";	//荷主名2
-					field_name[ 3][1] = "1";	//荷主名3
-					field_name[ 4][1] = "1";	//郵便番号
-					field_name[ 5][1] = "1";	//住所1
-					field_name[ 6][1] = "1";	//住所2
-					field_name[ 7][1] = "1";	//住所3
-					field_name[ 8][1] = "1";	//電話番号
-					field_name[ 9][1] = "1";	//FAX
-					field_name[10][1] = "1";	//メールアドレス
-					field_name[11][1] = "1";	//コメント1
-					field_name[12][1] = "1";	//コメント2
-					field_name[13][1] = "1";	//コメント3
-					field_name[14][1] = "1";	//データ登録日時
-					field_name[15][1] = "1";	//データ更新日時
-					field_name[16][1] = "1";	//登録者コード
-					field_name[17][1] = "1";	//更新者コード
-					field_name[18][1] = "1";	//パスワード
-					
-					field_name[ 0][2] = "1";	//荷主グループCD
-					field_name[ 1][2] = "1";	//荷主名1
-					field_name[ 2][2] = "1";	//荷主名2
-					field_name[ 3][2] = "1";	//荷主名3
-					field_name[ 4][2] = "1";	//郵便番号
-					field_name[ 5][2] = "1";	//住所1
-					field_name[ 6][2] = "1";	//住所2
-					field_name[ 7][2] = "1";	//住所3
-					field_name[ 8][2] = "1";	//電話番号
-					field_name[ 9][2] = "1";	//FAX
-					field_name[10][2] = "1";	//メールアドレス
-					field_name[11][2] = "1";	//コメント1
-					field_name[12][2] = "1";	//コメント2
-					field_name[13][2] = "1";	//コメント3
-					field_name[14][2] = "0";	//データ登録日時
-					field_name[15][2] = "1";	//データ更新日時
-					field_name[16][2] = "0";	//登録者コード
-					field_name[17][2] = "1";	//更新者コード
-					field_name[18][2] = "1";	//パスワード
-					
 					judg_data[0][ 0] = GetClGpCD;	//荷主グループCD
 					
-					entry_data[0][ 0] = GetClGpCD;		//荷主グループCD
-					entry_data[0][ 1] = GetCLGpName01;	//荷主名1
-					entry_data[0][ 2] = GetCLGpName02;	//荷主名2
-					entry_data[0][ 3] = GetCLGpName03;	//荷主名3
-					entry_data[0][ 4] = GetPost;		//郵便番号
-					entry_data[0][ 5] = GetAdd01;		//住所1
-					entry_data[0][ 6] = GetAdd02;		//住所2
-					entry_data[0][ 7] = GetAdd03;		//住所3
-					entry_data[0][ 8] = GetTel;			//電話番号
-					entry_data[0][ 9] = GetFax;			//FAX
-					entry_data[0][10] = GetMail;		//メールアドレス
-					entry_data[0][11] = GetCom01;		//コメント1
-					entry_data[0][12] = GetCom02;		//コメント2
-					entry_data[0][13] = GetCom03;		//コメント3
-					entry_data[0][14] = now_dtm;		//データ登録日時
-					entry_data[0][15] = now_dtm;		//データ更新日時
-					entry_data[0][16] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
-					entry_data[0][17] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
-					entry_data[0][18] = GetPassWord;	//パスワード
-					
+					for(int i=0;i<SetString.length;i++) {
+						field_name[i][0] = SetString[i][0];
+						field_name[i][1] = SetString[i][1];
+						field_name[i][2] = SetString[i][2];
+						entry_data[0][i] = SetString[i][3];
+					}
+
 					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					//荷主グループ一覧更新

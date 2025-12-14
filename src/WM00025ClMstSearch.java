@@ -242,6 +242,10 @@ public class WM00025ClMstSearch{
 					if(null==GetSearchMail){GetSearchMail = "";}
 					if(null==GetSearchCom){GetSearchCom = "";}
 					
+					GetSearchPost = B00020ToolsTextControl.num_only_String(GetSearchPost);
+					GetSearchTel  = B00020ToolsTextControl.num_only_String(GetSearchTel);
+					GetSearchFax  = B00020ToolsTextControl.num_only_String(GetSearchFax);
+					
 					ArrayList<String> SearchClGpCD = new ArrayList<String>();
 					ArrayList<String> SearchCLCD = new ArrayList<String>();
 					ArrayList<String> SearchCLName = new ArrayList<String>();
@@ -323,7 +327,7 @@ public class WM00025ClMstSearch{
 
 						main_fm.setVisible(false);
 						main_fm.dispose();
-						WM00031UserMstRenewAndCreate.UserMstRenewAndCreate(0,0,TgtCl);
+						WM00026ClMstRenewAndCreate.ClMstRenewAndCreate(0,0,TgtCl);
 					}
 					RenewFg = true;
 				}
@@ -341,7 +345,7 @@ public class WM00025ClMstSearch{
 
 					main_fm.setVisible(false);
 					main_fm.dispose();
-					WM00031UserMstRenewAndCreate.UserMstRenewAndCreate(0,0,"");
+					WM00026ClMstRenewAndCreate.ClMstRenewAndCreate(0,0,"");
 					
 					RenewFg = true;
 				}
@@ -374,7 +378,7 @@ public class WM00025ClMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","ユーザーマスタ検索結果",tb01);
+					B10010TableControl.TableOutPutCsv("出力先選択","荷主マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
