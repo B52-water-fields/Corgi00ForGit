@@ -966,7 +966,7 @@ public class A00040TableCheck{
 		}
 
 		ColumnList = ColumnList("NANKO","KM0080_FEEBASEMST");
-		NeedColmn = new String[54];
+		NeedColmn = new String[84];
 		NeedColmn[ 0] = "cl_cd";
 		NeedColmn[ 1] = "DeliveryTypeCd";
 		NeedColmn[ 2] = "DeliveryTypeCd02";
@@ -1021,6 +1021,36 @@ public class A00040TableCheck{
 		NeedColmn[51] = "DelFg";
 		NeedColmn[52] = "DelijudgeJisFg";
 		NeedColmn[53] = "AddDeliFee03UnitFee";
+		NeedColmn[54] = "Range11";
+		NeedColmn[55] = "RangeBaseFee11";
+		NeedColmn[56] = "RangeUnitFee11";
+		NeedColmn[57] = "Range12";
+		NeedColmn[58] = "RangeBaseFee12";
+		NeedColmn[59] = "RangeUnitFee12";
+		NeedColmn[60] = "Range13";
+		NeedColmn[61] = "RangeBaseFee13";
+		NeedColmn[62] = "RangeUnitFee13";
+		NeedColmn[63] = "Range14";
+		NeedColmn[64] = "RangeBaseFee14";
+		NeedColmn[65] = "RangeUnitFee14";
+		NeedColmn[66] = "Range15";
+		NeedColmn[67] = "RangeBaseFee15";
+		NeedColmn[68] = "RangeUnitFee15";
+		NeedColmn[69] = "Range16";
+		NeedColmn[70] = "RangeBaseFee16";
+		NeedColmn[71] = "RangeUnitFee16";
+		NeedColmn[72] = "Range17";
+		NeedColmn[73] = "RangeBaseFee17";
+		NeedColmn[74] = "RangeUnitFee17";
+		NeedColmn[75] = "Range18";
+		NeedColmn[76] = "RangeBaseFee18";
+		NeedColmn[77] = "RangeUnitFee18";
+		NeedColmn[78] = "Range19";
+		NeedColmn[79] = "RangeBaseFee19";
+		NeedColmn[80] = "RangeUnitFee19";
+		NeedColmn[81] = "Range20";
+		NeedColmn[82] = "RangeBaseFee20";
+		NeedColmn[83] = "RangeUnitFee20";
 		
 		NoHitColumn = new ArrayList<String>();
 		for(int i01=0;i01<NeedColmn.length;i01++) {
@@ -1140,7 +1170,7 @@ public class A00040TableCheck{
 		}
 
 		ColumnList = ColumnList("NANKO","KM0090_PAYBASEMST");
-		NeedColmn = new String[54];
+		NeedColmn = new String[84];
 		NeedColmn[ 0] = "ShippingCompanyCd";
 		NeedColmn[ 1] = "DeliveryTypeCd";
 		NeedColmn[ 2] = "DeliveryTypeCd02";
@@ -1195,6 +1225,36 @@ public class A00040TableCheck{
 		NeedColmn[51] = "DelFg";
 		NeedColmn[52] = "AddDeliFee03UnitFee";
 		NeedColmn[53] = "SummaryType";
+		NeedColmn[54] = "Range11";
+		NeedColmn[55] = "RangeBaseFee11";
+		NeedColmn[56] = "RangeUnitFee11";
+		NeedColmn[57] = "Range12";
+		NeedColmn[58] = "RangeBaseFee12";
+		NeedColmn[59] = "RangeUnitFee12";
+		NeedColmn[60] = "Range13";
+		NeedColmn[61] = "RangeBaseFee13";
+		NeedColmn[62] = "RangeUnitFee13";
+		NeedColmn[63] = "Range14";
+		NeedColmn[64] = "RangeBaseFee14";
+		NeedColmn[65] = "RangeUnitFee14";
+		NeedColmn[66] = "Range15";
+		NeedColmn[67] = "RangeBaseFee15";
+		NeedColmn[68] = "RangeUnitFee15";
+		NeedColmn[69] = "Range16";
+		NeedColmn[70] = "RangeBaseFee16";
+		NeedColmn[71] = "RangeUnitFee16";
+		NeedColmn[72] = "Range17";
+		NeedColmn[73] = "RangeBaseFee17";
+		NeedColmn[74] = "RangeUnitFee17";
+		NeedColmn[75] = "Range18";
+		NeedColmn[76] = "RangeBaseFee18";
+		NeedColmn[77] = "RangeUnitFee18";
+		NeedColmn[78] = "Range19";
+		NeedColmn[79] = "RangeBaseFee19";
+		NeedColmn[80] = "RangeUnitFee19";
+		NeedColmn[81] = "Range20";
+		NeedColmn[82] = "RangeBaseFee20";
+		NeedColmn[83] = "RangeUnitFee20";
 		
 		NoHitColumn = new ArrayList<String>();
 		for(int i01=0;i01<NeedColmn.length;i01++) {
@@ -3371,6 +3431,34 @@ public class A00040TableCheck{
 				+"  `Range10` float DEFAULT '0',"
 				+"  `RangeBaseFee10` int(11) DEFAULT '0',"
 				+"  `RangeUnitFee10` float DEFAULT '0',"
+				+"  `Range11` float DEFAULT '0',"
+				+"  `RangeBaseFee11` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee11` float DEFAULT '0',"
+				+"  `Range12` float DEFAULT '0',"
+				+"  `RangeBaseFee12` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee12` float DEFAULT '0',"
+				+"  `Range13` float DEFAULT '0',"
+				+"  `RangeBaseFee13` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee13` float DEFAULT '0',"
+				+"  `Range14` float DEFAULT '0',"
+				+"  `RangeBaseFee14` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee14` float DEFAULT '0',"
+				+"  `Range15` float DEFAULT '0',"
+				+"  `RangeBaseFee15` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee15` float DEFAULT '0',"
+				+"  `Range16` float DEFAULT '0',"
+				+"  `RangeBaseFee16` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee16` float DEFAULT '0',"
+				+"  `Range17` float DEFAULT '0',"
+				+"  `RangeBaseFee17` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee17` float DEFAULT '0',"
+				+"  `Range18` float DEFAULT '0',"
+				+"  `RangeBaseFee18` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee18` float DEFAULT '0',"
+				+"  `Range19` float DEFAULT '0',"
+				+"  `RangeBaseFee19` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee19` float DEFAULT '0',"
+				+"  `Range20` float DEFAULT '0',"
 				+"  `AddDeliFee01` int(11) DEFAULT '0',"
 				+"  `AddDeliFee02` int(11) DEFAULT '0',"
 				+"  `AddDeliFee03` int(11) DEFAULT '0',"
@@ -3519,6 +3607,96 @@ public class A00040TableCheck{
 					break;
 				case "RangeUnitFee10":
 					sql = sql + " ADD RangeUnitFee10 float DEFAULT '0'";
+					break;
+				case "Range11":
+					sql = sql + " ADD Range11 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee11":
+					sql = sql + " ADD RangeBaseFee11 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee11":
+					sql = sql + " ADD RangeUnitFee11 float DEFAULT '0'";
+					break;
+				case "Range12":
+					sql = sql + " ADD Range12 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee12":
+					sql = sql + " ADD RangeBaseFee12 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee12":
+					sql = sql + " ADD RangeUnitFee12 float DEFAULT '0'";
+					break;
+				case "Range13":
+					sql = sql + " ADD Range13 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee13":
+					sql = sql + " ADD RangeBaseFee13 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee13":
+					sql = sql + " ADD RangeUnitFee13 float DEFAULT '0'";
+					break;
+				case "Range14":
+					sql = sql + " ADD Range14 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee14":
+					sql = sql + " ADD RangeBaseFee14 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee14":
+					sql = sql + " ADD RangeUnitFee14 float DEFAULT '0'";
+					break;
+				case "Range15":
+					sql = sql + " ADD Range15 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee15":
+					sql = sql + " ADD RangeBaseFee15 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee15":
+					sql = sql + " ADD RangeUnitFee15 float DEFAULT '0'";
+					break;
+				case "Range16":
+					sql = sql + " ADD Range16 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee16":
+					sql = sql + " ADD RangeBaseFee16 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee16":
+					sql = sql + " ADD RangeUnitFee16 float DEFAULT '0'";
+					break;
+				case "Range17":
+					sql = sql + " ADD Range17 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee17":
+					sql = sql + " ADD RangeBaseFee17 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee17":
+					sql = sql + " ADD RangeUnitFee17 float DEFAULT '0'";
+					break;
+				case "Range18":
+					sql = sql + " ADD Range18 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee18":
+					sql = sql + " ADD RangeBaseFee18 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee18":
+					sql = sql + " ADD RangeUnitFee18 float DEFAULT '0'";
+					break;
+				case "Range19":
+					sql = sql + " ADD Range19 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee19":
+					sql = sql + " ADD RangeBaseFee19 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee19":
+					sql = sql + " ADD RangeUnitFee19 float DEFAULT '0'";
+					break;
+				case "Range20":
+					sql = sql + " ADD Range20 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee20":
+					sql = sql + " ADD RangeBaseFee20 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee20":
+					sql = sql + " ADD RangeUnitFee20 float DEFAULT '0'";
 					break;
 				case "AddDeliFee01":
 					sql = sql + " ADD AddDeliFee01 int(11) DEFAULT '0'";
@@ -3825,6 +4003,34 @@ public class A00040TableCheck{
 				+"  `Range10` float DEFAULT '0',"
 				+"  `RangeBaseFee10` int(11) DEFAULT '0',"
 				+"  `RangeUnitFee10` float DEFAULT '0',"
+				+"  `Range11` float DEFAULT '0',"
+				+"  `RangeBaseFee11` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee11` float DEFAULT '0',"
+				+"  `Range12` float DEFAULT '0',"
+				+"  `RangeBaseFee12` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee12` float DEFAULT '0',"
+				+"  `Range13` float DEFAULT '0',"
+				+"  `RangeBaseFee13` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee13` float DEFAULT '0',"
+				+"  `Range14` float DEFAULT '0',"
+				+"  `RangeBaseFee14` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee14` float DEFAULT '0',"
+				+"  `Range15` float DEFAULT '0',"
+				+"  `RangeBaseFee15` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee15` float DEFAULT '0',"
+				+"  `Range16` float DEFAULT '0',"
+				+"  `RangeBaseFee16` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee16` float DEFAULT '0',"
+				+"  `Range17` float DEFAULT '0',"
+				+"  `RangeBaseFee17` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee17` float DEFAULT '0',"
+				+"  `Range18` float DEFAULT '0',"
+				+"  `RangeBaseFee18` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee18` float DEFAULT '0',"
+				+"  `Range19` float DEFAULT '0',"
+				+"  `RangeBaseFee19` int(11) DEFAULT '0',"
+				+"  `RangeUnitFee19` float DEFAULT '0',"
+				+"  `Range20` float DEFAULT '0',"
 				+"  `AddDeliFee01` int(11) DEFAULT '0',"
 				+"  `AddDeliFee02` int(11) DEFAULT '0',"
 				+"  `AddDeliFee03` int(11) DEFAULT '0',"
@@ -3973,6 +4179,96 @@ public class A00040TableCheck{
 					break;
 				case "RangeUnitFee10":
 					sql = sql + " ADD RangeUnitFee10 float DEFAULT '0'";
+					break;
+				case "Range11":
+					sql = sql + " ADD Range11 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee11":
+					sql = sql + " ADD RangeBaseFee11 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee11":
+					sql = sql + " ADD RangeUnitFee11 float DEFAULT '0'";
+					break;
+				case "Range12":
+					sql = sql + " ADD Range12 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee12":
+					sql = sql + " ADD RangeBaseFee12 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee12":
+					sql = sql + " ADD RangeUnitFee12 float DEFAULT '0'";
+					break;
+				case "Range13":
+					sql = sql + " ADD Range13 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee13":
+					sql = sql + " ADD RangeBaseFee13 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee13":
+					sql = sql + " ADD RangeUnitFee13 float DEFAULT '0'";
+					break;
+				case "Range14":
+					sql = sql + " ADD Range14 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee14":
+					sql = sql + " ADD RangeBaseFee14 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee14":
+					sql = sql + " ADD RangeUnitFee14 float DEFAULT '0'";
+					break;
+				case "Range15":
+					sql = sql + " ADD Range15 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee15":
+					sql = sql + " ADD RangeBaseFee15 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee15":
+					sql = sql + " ADD RangeUnitFee15 float DEFAULT '0'";
+					break;
+				case "Range16":
+					sql = sql + " ADD Range16 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee16":
+					sql = sql + " ADD RangeBaseFee16 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee16":
+					sql = sql + " ADD RangeUnitFee16 float DEFAULT '0'";
+					break;
+				case "Range17":
+					sql = sql + " ADD Range17 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee17":
+					sql = sql + " ADD RangeBaseFee17 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee17":
+					sql = sql + " ADD RangeUnitFee17 float DEFAULT '0'";
+					break;
+				case "Range18":
+					sql = sql + " ADD Range18 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee18":
+					sql = sql + " ADD RangeBaseFee18 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee18":
+					sql = sql + " ADD RangeUnitFee18 float DEFAULT '0'";
+					break;
+				case "Range19":
+					sql = sql + " ADD Range19 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee19":
+					sql = sql + " ADD RangeBaseFee19 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee19":
+					sql = sql + " ADD RangeUnitFee19 float DEFAULT '0'";
+					break;
+				case "Range20":
+					sql = sql + " ADD Range20 float DEFAULT '0'";
+					break;
+				case "RangeBaseFee20":
+					sql = sql + " ADD RangeBaseFee20 int(11) DEFAULT '0'";
+					break;
+				case "RangeUnitFee20":
+					sql = sql + " ADD RangeUnitFee20 float DEFAULT '0'";
 					break;
 				case "AddDeliFee01":
 					sql = sql + " ADD AddDeliFee01 int(11) DEFAULT '0'";
