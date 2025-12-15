@@ -44,6 +44,10 @@ public class W00020MstMain{
 		JButton UserMst = B00110FrameParts.BtnSet(20,50,130,20,"ユーザー・乗務員",11);
 		PN_AboutALL.add(UserMst);
 		
+		//車輛
+		JButton CarMst = B00110FrameParts.BtnSet(160,50,130,20,"車輛",11);
+		PN_AboutALL.add(CarMst);
+		
 		//荷主グループ
 		JButton ClGpMst = B00110FrameParts.BtnSet(20,75,130,20,"荷主グループ",11);
 		PN_AboutALL.add(ClGpMst);
@@ -83,6 +87,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00030UserMstSearch.UserMstSearch(0, 0);
+			}
+		});
+		
+		//車輛
+		CarMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00035CarMstSearch.CarMstSearch(0,0);
 			}
 		});
 		
