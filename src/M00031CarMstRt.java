@@ -3,6 +3,34 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 public class M00031CarMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingCarMstRt(){
+		Object[][] RtSettingCarMstRt = {
+				 {"WHCD"					,(int) 0	,"String"	,"担当倉庫"}
+				,{"ShippingCompanyCd"		,(int) 1	,"String"	,"運送会社CD"}
+				,{"ShippingCompanyName01"	,(int) 2	,"String"	,"運送会社名1"}
+				,{"ShippingCompanyName02"	,(int) 3	,"String"	,"運送会社名2"}
+				,{"ShippingCompanyName03"	,(int) 4	,"String"	,"運送会社名3"}
+				,{"CarCd"					,(int) 5	,"String"	,"車輛CD"}
+				,{"CarName01"				,(int) 6	,"String"	,"車輛名01"}
+				,{"CarName02"				,(int) 7	,"String"	,"車輛名02"}
+				,{"CarName03"				,(int) 8	,"String"	,"車輛名03"}
+				,{"DriverCd"				,(int) 9	,"String"	,"乗務員CD"}
+				,{"UserName01"				,(int)10	,"String"	,"ユーザー名1"}
+				,{"UserName02"				,(int)11	,"String"	,"ユーザー名2"}
+				,{"UserName03"				,(int)12	,"String"	,"ユーザー名3"}
+				,{"PTMSCD"					,(int)13	,"String"	,"基幹システム車輛コード"}
+				,{"EntryDate"				,(int)14	,"String"	,"データ登録日時"}
+				,{"UpdateDate"				,(int)15	,"String"	,"データ更新日時"}
+				,{"EntryUser"				,(int)16	,"String"	,"登録者コード"}
+				,{"UpdateUser"				,(int)17	,"String"	,"更新者コード"}
+				,{"DelFg"					,(int)18	,"int"		,"削除フラグ"}
+				,{"WHName"					,(int)19	,"String"	,"倉庫名"}
+				};
+		
+		return RtSettingCarMstRt;
+	}
+
 	public static Object[][] CarMstRt(
 			ArrayList<String> SearchWHCD,
 			ArrayList<String> SearchShippingCompanyCd,
