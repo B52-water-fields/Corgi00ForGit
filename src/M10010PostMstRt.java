@@ -27,6 +27,16 @@ public class M10010PostMstRt{
 		
 		return RtSettingMunicipalityRt;
 	}
+	public static Object[][] RtSettingPrefecuturesRt(){
+		//県マスタ戻り値
+		Object[][] RtSettingMunicipalityRt = {
+				{"PREFECTURES_CD"	,(int) 0	,"String"	,"県CD"}
+				,{"PREFECTURES"		,(int) 1	,"String"	,"県名"}
+				};
+		
+		return RtSettingMunicipalityRt;
+	}
+	
 	
 	public static Object[][] PostRt(
 			ArrayList<String> SearchPOST,
