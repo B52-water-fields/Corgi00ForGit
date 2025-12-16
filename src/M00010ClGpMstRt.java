@@ -4,6 +4,33 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00010ClGpMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingClGpMstRt(){
+		Object[][] RtSettingClGpMstRt = {
+				 {"ClGpCD"		,(int) 0	,"String"	,"荷主グループCD"}
+				,{"CLGpName01"	,(int) 1	,"String"	,"荷主グループ名1"}
+				,{"CLGpName02"	,(int) 2	,"String"	,"/荷主グループ名2"}
+				,{"CLGpName03"	,(int) 3	,"String"	,"荷主グループ名3"}
+				,{"Post"		,(int) 4	,"String"	,"郵便番号"}
+				,{"Add01"		,(int) 5	,"String"	,"住所1"}
+				,{"Add02"		,(int) 6	,"String"	,"住所2"}
+				,{"Add03"		,(int) 7	,"String"	,"住所3"}
+				,{"Tel"			,(int) 8	,"String"	,"電話番号"}
+				,{"Fax"			,(int) 9	,"String"	,"FAX"}
+				,{"Mail"		,(int)10	,"String"	,"メールアドレス"}
+				,{"Com01"		,(int)11	,"String"	,"コメント1"}
+				,{"Com02"		,(int)12	,"String"	,"コメント2"}
+				,{"Com03"		,(int)13	,"String"	,"コメント3"}
+				,{"EntryDate"	,(int)14	,"String"	,"データ登録日時"}
+				,{"UpdateDate"	,(int)15	,"String"	,"データ更新日時"}
+				,{"EntryUser"	,(int)16	,"String"	,"登録者コード"}
+				,{"UpdateUser"	,(int)17	,"String"	,"更新者コード"}
+				,{"PassWord"	,(int)18	,"String"	,"パスワード"}
+				};
+		
+		return RtSettingClGpMstRt;
+	}
+	
 	public static Object[][] ClGpMstRt(
 			ArrayList<String> SearchClGpCD,
 			ArrayList<String> SearchCLGpName,

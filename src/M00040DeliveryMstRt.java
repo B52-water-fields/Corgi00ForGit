@@ -4,6 +4,39 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00040DeliveryMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingDeliveryMstRt(){
+		Object[][] RtSettingDeliveryMstRt = {
+				 {"DECD"			,(int) 0	,"String"	,"納品先コード"}
+				,{"DepartmentCd"	,(int) 1	,"String"	,"部署CD"}
+				,{"DEName01"		,(int) 2	,"String"	,"納品先名1"}
+				,{"DEName02"		,(int) 3	,"String"	,"納品先名2"}
+				,{"DEName03"		,(int) 4	,"String"	,"納品先名3"}
+				,{"Post"			,(int) 5	,"String"	,"納品先郵便"}
+				,{"Add01"			,(int) 6	,"String"	,"納品先住所1"}
+				,{"Add02"			,(int) 7	,"String"	,"納品先住所2"}
+				,{"Add03"			,(int) 8	,"String"	,"納品先住所3"}
+				,{"Tel"				,(int) 9	,"String"	,"納品先電話"}
+				,{"Fax"				,(int)10	,"String"	,"納品先FAX"}
+				,{"Mail"			,(int)11	,"String"	,"納品先MAIL"}
+				,{"Com01"			,(int)12	,"String"	,"コメント1"}
+				,{"Com02"			,(int)13	,"String"	,"コメント2"}
+				,{"Com03"			,(int)14	,"String"	,"コメント3"}
+				,{"PrefecturesCd"	,(int)15	,"String"	,"JIS県CD2桁"}
+				,{"MunicipalityCd"	,(int)16	,"String"	,"JIS市区町村CD5桁"}
+				,{"PTMSCD"			,(int)17	,"String"	,"基幹システム発着地コード"}
+				,{"EntryDate"		,(int)18	,"String"	,"データ登録日時"}
+				,{"UpdateDate"		,(int)19	,"String"	,"データ更新日時"}
+				,{"EntryUser"		,(int)20	,"String"	,"登録者コード"}
+				,{"UpdateUser"		,(int)21	,"String"	,"更新者コード"}
+				,{"FirstClient"		,(int)22	,"String"	,"登録した荷主CD"}
+				,{"LastClient"		,(int)23	,"String"	,"更新した荷主CD"}
+				,{"DelFg"			,(int)24	,"int"		,"削除区分"}
+				};
+		
+		return RtSettingDeliveryMstRt;
+	}
+	
 	public static Object[][] DeliveryMstRt(
 			ArrayList<String> SearchDECD,			//検索条件届先CD
 			ArrayList<String> SearchDepartmentCd,	//検索条件届先部署CD

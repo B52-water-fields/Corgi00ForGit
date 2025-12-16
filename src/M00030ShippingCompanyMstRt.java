@@ -3,6 +3,36 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 public class M00030ShippingCompanyMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingShippingCompanyMstRt(){
+		Object[][] RtSettingShippingCompanyMstRt = {
+				 {"ShippingCompanyCd"		,(int) 0	,"String"	,"運送会社CD"}
+				,{"ShippingCompanyName01"	,(int) 1	,"String"	,"運送会社名1"}
+				,{"ShippingCompanyName02"	,(int) 2	,"String"	,"運送会社名2"}
+				,{"ShippingCompanyName03"	,(int) 3	,"String"	,"運送会社名3"}
+				,{"Post"					,(int) 4	,"String"	,"運送会社郵便"}
+				,{"Add01"					,(int) 5	,"String"	,"運送会社住所1"}
+				,{"Add02"					,(int) 6	,"String"	,"運送会社住所2"}
+				,{"Add03"					,(int) 7	,"String"	,"運送会社住所3"}
+				,{"Tel"						,(int) 8	,"String"	,"運送会社電話"}
+				,{"Fax"						,(int) 9	,"String"	,"運送会社FAX"}
+				,{"Mail"					,(int)10	,"String"	,"運送会社MAIL"}
+				,{"Com01"					,(int)11	,"String"	,"コメント1"}
+				,{"Com02"					,(int)12	,"String"	,"コメント2"}
+				,{"Com03"					,(int)13	,"String"	,"コメント3"}
+				,{"ShimeDate"				,(int)14	,"String"	,"締日"}
+				,{"ShimeBasis"				,(int)15	,"String"	,"請求基準"}
+				,{"EntryDate"				,(int)16	,"String"	,"データ登録日時"}
+				,{"UpdateDate"				,(int)17	,"String"	,"データ更新日時"}
+				,{"EntryUser"				,(int)18	,"String"	,"登録者コード"}
+				,{"UpdateUser"				,(int)19	,"String"	,"更新者コード"}
+				,{"PTMSCD"					,(int)20	,"String"	,"基幹システム傭車コード"}
+				,{"ExportDataType"			,(int)21	,"String"	,"データ抽出タイプ"}
+				};
+		
+		return RtSettingShippingCompanyMstRt;
+	}
+	
 	public static Object[][] ShippingCompanyMstRt(
 			ArrayList<String> SearchShippingCompanyCd,
 			ArrayList<String> SearchCompanyName,

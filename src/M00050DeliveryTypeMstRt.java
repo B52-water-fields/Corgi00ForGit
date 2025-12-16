@@ -4,6 +4,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00050DeliveryTypeMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingDeliveryTypeMstRt(){
+		Object[][] RtSettingDeliveryTypeMstRt = {
+				 {"DeliveryTypeCd"		,(int) 1	,"String"	,"運送タイプコード"}
+				,{"DeliveryTypeName"	,(int) 2	,"String"	,"運送タイプ名"}
+				,{"EntryDate"			,(int) 3	,"String"	,"データ登録日時"}
+				,{"UpdateDate"			,(int) 4	,"String"	,"データ更新日時"}
+				,{"EntryUser"			,(int) 5	,"String"	,"登録者コード"}
+				,{"UpdateUser"			,(int) 6	,"String"	,"更新者コード"}
+				};
+		
+		return RtSettingDeliveryTypeMstRt;
+	}
 	public static Object[][] DeliveryTypeMstRt(
 			ArrayList<String> SearchDeliveryTypeNo,
 			ArrayList<String> SearchDeliveryTypeCd,

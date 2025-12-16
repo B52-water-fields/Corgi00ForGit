@@ -4,6 +4,30 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M10010PostMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingPostRt(){
+		Object[][] RtSettingPostRt = {
+				 {"POST"			,(int) 0	,"String"	,"郵便番号"}
+				,{"PREFECTURES"		,(int) 1	,"String"	,"県"}
+				,{"MUNICI01"		,(int) 2	,"String"	,"市区町村"}
+				,{"MUNICI02"		,(int) 3	,"String"	,"町丁目"}
+				,{"MUNICIPALITY_CD"	,(int) 4	,"String"	,"市区町村CD"}
+				};
+		
+		return RtSettingPostRt;
+	}
+	
+	public static Object[][] RtSettingMunicipalityRt(){
+		//市区町村マスタ戻り値
+		Object[][] RtSettingMunicipalityRt = {
+				{"PREFECTURES"		,(int) 0	,"String"	,"県"}
+				,{"MUNICI01"		,(int) 1	,"String"	,"市区町村"}
+				,{"MUNICIPALITY_CD"	,(int) 2	,"String"	,"市区町村CD"}
+				};
+		
+		return RtSettingMunicipalityRt;
+	}
+	
 	public static Object[][] PostRt(
 			ArrayList<String> SearchPOST,
 			ArrayList<String> SearchAdd,

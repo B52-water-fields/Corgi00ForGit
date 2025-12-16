@@ -4,6 +4,45 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00041DeliveryComversionMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingDeliveryComversionMstRt(){
+		Object[][] RtSettingDeliveryComversionMstRt = {
+				 {"ClGpCD"				,(int) 0	,"String"	,"荷主グループコード"}
+				,{"CL_DECD"				,(int) 1	,"String"	,"荷主届け先コード"}
+				,{"DECD"				,(int) 2	,"String"	,"届け先コード"}
+				,{"DepartmentCd"		,(int) 3	,"String"	,"部署CD"}
+				,{"DEName01"			,(int) 4	,"String"	,"納品先名1"}
+				,{"DEName02"			,(int) 5	,"String"	,"納品先名2"}
+				,{"DEName03"			,(int) 6	,"String"	,"納品先名3"}
+				,{"Post"				,(int) 7	,"String"	,"納品先郵便"}
+				,{"Add01"				,(int) 8	,"String"	,"納品先住所1"}
+				,{"Add02"				,(int) 9	,"String"	,"納品先住所2"}
+				,{"Add03"				,(int)10	,"String"	,"納品先住所3"}
+				,{"Tel"					,(int)11	,"String"	,"納品先電話"}
+				,{"Fax"					,(int)12	,"String"	,"納品先FAX"}
+				,{"Mail"				,(int)13	,"String"	,"納品先MAIL"}
+				,{"DeCom01"				,(int)14	,"String"	,"(届け先マスタ)コメント1"}
+				,{"DeCom02"				,(int)15	,"String"	,"(届け先マスタ)コメント2"}
+				,{"DeCom03"				,(int)16	,"String"	,"(届け先マスタ)コメント3"}
+				,{"PrefecturesCd"		,(int)17	,"String"	,"JIS県CD2桁"}
+				,{"MunicipalityCd"		,(int)18	,"String"	,"JIS市区町村CD5桁"}
+				,{"PTMSCD"				,(int)19	,"String"	,"基幹システム発着地コード"}
+				,{"SetName"				,(int)20	,"String"	,"送り状登録名"}
+				,{"Com01"				,(int)21	,"String"	,"コメント01"}
+				,{"Com02"				,(int)22	,"String"	,"コメント02"}
+				,{"Com03"				,(int)23	,"String"	,"コメント03"}
+				,{"Com04"				,(int)24	,"String"	,"コメント04"}
+				,{"Com05"				,(int)25	,"String"	,"コメント05"}
+				,{"EntryDate"			,(int)26	,"String"	,"データ登録日時"}
+				,{"UpdateDate"			,(int)27	,"String"	,"データ更新日時"}
+				,{"EntryUser"			,(int)28	,"String"	,"登録者コード"}
+				,{"UpdateUser"			,(int)29	,"String"	,"更新者コード"}
+				,{"MstPriorityFirstFg"	,(int)30	,"int"		,"マスタ優先フラグ"}
+				};
+		
+		return RtSettingDeliveryComversionMstRt;
+	}
+	
 	public static Object[][] DeliveryComversionMstRt(
 			ArrayList<String> SearchClGpCD,
 			ArrayList<String> SearchCldeCD,
@@ -24,7 +63,7 @@ public class M00041DeliveryComversionMstRt{
 		String sql = "select "
 				+"(KM0041_DELIVERY_COMVERSIONMST.ClGpCD) as ClGpCD,\n"				//荷主コード
 				+"(KM0041_DELIVERY_COMVERSIONMST.CL_DECD) as CL_DECD,\n"			//荷主届け先コード
-				+"(KM0041_DELIVERY_COMVERSIONMST.DECD) as DECD,\n"					//宮田運輸届け先コード
+				+"(KM0041_DELIVERY_COMVERSIONMST.DECD) as DECD,\n"					//届け先コード
 				+"(KM0041_DELIVERY_COMVERSIONMST.DepartmentCd) as DepartmentCd,\n"	//部署CD
 				+"(KM0040_DELIVERYMST.DEName01) as DEName01,\n"						//納品先名1
 				+"(KM0040_DELIVERYMST.DEName02) as DEName02,\n"						//納品先名2
@@ -203,7 +242,7 @@ public class M00041DeliveryComversionMstRt{
 				while (rset01.next()) {
 					if(null==rset01.getString("ClGpCD")) {rt[counter][0] = "";}else {rt[counter][0] = rset01.getString("ClGpCD");}						//荷主グループコード
 					if(null==rset01.getString("CL_DECD")) {rt[counter][1] = "";}else {rt[counter][1] = rset01.getString("CL_DECD");}					//荷主届け先コード
-					if(null==rset01.getString("DECD")) {rt[counter][2] = "";}else {rt[counter][2] = rset01.getString("DECD");}							//宮田運輸届け先コード
+					if(null==rset01.getString("DECD")) {rt[counter][2] = "";}else {rt[counter][2] = rset01.getString("DECD");}							//届け先コード
 					if(null==rset01.getString("DepartmentCd")) {rt[counter][3] = "";}else {rt[counter][3] = rset01.getString("DepartmentCd");}			//部署CD
 					if(null==rset01.getString("DEName01")) {rt[counter][4] = "";}else {rt[counter][4] = rset01.getString("DEName01");}					//納品先名1
 					if(null==rset01.getString("DEName02")) {rt[counter][5] = "";}else {rt[counter][5] = rset01.getString("DEName02");}					//納品先名2

@@ -4,6 +4,41 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00000ParameterMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingParameterMstRtNANKO(){
+		Object[][] RtSettingParameterMstRtNANKO = {
+				 {"ParaCd"		,(int) 0	,"String"	,"パラメータコード"}
+				,{"ParaCdSeq"	,(int) 1	,"String"	,"ナンバリング"}
+				,{"ParaName"	,(int) 2	,"String"	,"パラメータ名"}
+				,{"ParaTxt01"	,(int) 3	,"String"	,"パラメータテキスト項目01"}
+				,{"ParaTxt02"	,(int) 4	,"String"	,"パラメータテキスト項目02"}
+				,{"ParaTxt03"	,(int) 5	,"String"	,"パラメータテキスト項目03"}
+				,{"ParaTxt04"	,(int) 6	,"String"	,"パラメータテキスト項目04"}
+				,{"ParaTxt05"	,(int) 7	,"String"	,"パラメータテキスト項目05"}
+				,{"ParaTxt06"	,(int) 8	,"String"	,"パラメータテキスト項目06"}
+				,{"ParaTxt07"	,(int) 9	,"String"	,"パラメータテキスト項目07"}
+				,{"ParaTxt08"	,(int)10	,"String"	,"パラメータテキスト項目08"}
+				,{"ParaTxt09"	,(int)11	,"String"	,"パラメータテキスト項目09"}
+				,{"ParaTxt10"	,(int)12	,"String"	,"パラメータテキスト項目10"}
+				,{"ParaInt01"	,(int)13	,"int"		,"パラメータ数値項目01"}
+				,{"ParaInt02"	,(int)14	,"int"		,"パラメータ数値項目02"}
+				,{"ParaInt03"	,(int)15	,"int"		,"パラメータ数値項目03"}
+				,{"ParaInt04"	,(int)16	,"int"		,"パラメータ数値項目04"}
+				,{"ParaInt05"	,(int)17	,"int"		,"パラメータ数値項目05"}
+				,{"ParaInt06"	,(int)18	,"int"		,"パラメータ数値項目06"}
+				,{"ParaInt07"	,(int)19	,"int"		,"パラメータ数値項目07"}
+				,{"ParaInt08"	,(int)20	,"int"		,"パラメータ数値項目08"}
+				,{"ParaInt09"	,(int)21	,"int"		,"パラメータ数値項目09"}
+				,{"ParaInt10"	,(int)22	,"int"		,"パラメータ数値項目10"}
+				,{"EntryDate"	,(int)23	,"String"	,"登録日"}
+				,{"UpdateDate"	,(int)24	,"String"	,"更新日"}
+				,{"EntryUser"	,(int)25	,"String"	,"登録者"}
+				,{"UpdateUser"	,(int)26	,"String"	,"更新者"}
+				};
+		
+		return RtSettingParameterMstRtNANKO;
+	}
+	
 	public static Object[][] ParameterMstRtNANKO(
 			ArrayList SearchParaCd,	ArrayList SearchParaCdSeq,ArrayList SearchParaName,
 			ArrayList SearchParaTxt01,ArrayList SearchParaTxt02,ArrayList SearchParaTxt03,ArrayList SearchParaTxt04,ArrayList SearchParaTxt05,

@@ -4,6 +4,45 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00020UserMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingUserMstRt(){
+		Object[][] RtSettingUserMstRt = {
+				 {"WHCD"					,(int) 0	,"String"	,"倉庫コード"}
+				,{"ShippingCompanyCd"		,(int) 1	,"String"	,"運送会社CD"}
+				,{"ShippingCompanyName01"	,(int) 2	,"String"	,"運送会社名"}
+				,{"UserCd"					,(int) 3	,"String"	,"ユーザーCD"}
+				,{"PassWord"				,(int) 4	,"String"	,"パスワード"}
+				,{"AuthorityFG"				,(int) 5	,"String"	,"権限区分"}
+				,{"CarCd"					,(int) 6	,"String"	,"標準車輛CD"}
+				,{"CarName01"				,(int) 7	,"String"	,"車両名称01"}
+				,{"CarName02"				,(int) 8	,"String"	,"車両名称02"}
+				,{"CarName03"				,(int) 9	,"String"	,"車両名称03"}
+				,{"UserName01"				,(int)10	,"String"	,"ユーザー名1"}
+				,{"UserName02"				,(int)11	,"String"	,"ユーザー名2"}
+				,{"UserName03"				,(int)12	,"String"	,"ユーザー名3"}
+				,{"Post"					,(int)13	,"String"	,"郵便番号"}
+				,{"Add01"					,(int)14	,"String"	,"住所1"}
+				,{"Add02"					,(int)15	,"String"	,"住所2"}
+				,{"Add03"					,(int)16	,"String"	,"住所3"}
+				,{"Tel"						,(int)17	,"String"	,"電話番号"}
+				,{"Fax"						,(int)18	,"String"	,"FAX"}
+				,{"Mail"					,(int)19	,"String"	,"メールアドレス"}
+				,{"Com01"					,(int)20	,"String"	,"コメント1"}
+				,{"Com02"					,(int)21	,"String"	,"コメント2"}
+				,{"Com03"					,(int)22	,"String"	,"コメント3"}
+				,{"EntryDate"				,(int)23	,"String"	,"データ登録日時"}
+				,{"UpdateDate"				,(int)24	,"String"	,"データ更新日時"}
+				,{"EntryUser"				,(int)25	,"String"	,"登録者コード"}
+				,{"UpdateUser"				,(int)26	,"String"	,"更新者コード"}
+				,{"PTMSCD"					,(int)27	,"String"	,"基幹システムユーザーコード"}
+				,{"DelFg"					,(int)28	,"int"		,"削除区分"}
+				,{"WHName"					,(int)29	,"String"	,"倉庫名"}
+				,{"MainClient"				,(int)30	,"String"	,"主要担当荷主CD"}
+				,{"CLName01"				,(int)31	,"String"	,"主要担当荷主名"}
+				};
+		
+		return RtSettingUserMstRt;
+	}
 	public static Object[][] UserMstRt(
 			ArrayList<String> SearchWHCD,
 			ArrayList<String> SearchShippingCompanyCd,

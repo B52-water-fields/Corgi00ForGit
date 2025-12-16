@@ -4,6 +4,27 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00042CautionMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingCautionMstRt(){
+		Object[][] RtSettingCautionMstRt = {
+				 {"CautionCd"		,(int) 0	,"String"	,"注意事項コード"}
+				,{"ClGpCD"			,(int) 1	,"String"	,"荷主グループコード"}
+				,{"CLGpName01"		,(int) 2	,"String"	,"荷主グループ名"}
+				,{"DECD"			,(int) 3	,"String"	,"納品先コード"}
+				,{"DepartmentCd"	,(int) 4	,"String"	,"部署CD"}
+				,{"DEName01"		,(int) 5	,"String"	,"届先名"}
+				,{"CautionTiming"	,(int) 6	,"int"		,"注意事項タイミング"}
+				,{"CautionName"		,(int) 7	,"String"	,"注意事項名"}
+				,{"Caution"			,(int) 8	,"String"	,"注意事項内容"}
+				,{"EntryDate"		,(int) 9	,"String"	,"データ登録日時"}
+				,{"UpdateDate"		,(int)10	,"String"	,"データ更新日時"}
+				,{"EntryUser"		,(int)11	,"String"	,"登録者コード"}
+				,{"UpdateUser"		,(int)12	,"String"	,"更新者コード"}
+				};
+		
+		return RtSettingCautionMstRt;
+	}
+	
 	public static Object[][] CautionMstRt(
 			ArrayList<String> SearchCautionCd,
 			ArrayList<String> SearchClGpCD,

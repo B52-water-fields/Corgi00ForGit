@@ -4,6 +4,29 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00001WhMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingWhMstRt(){
+		Object[][] RtSettingWhMstRt = {
+				 {"WHCD"		,(int) 0	,"String"	,"倉庫コード"}
+				,{"WHName"		,(int) 1	,"String"	,"拠点倉庫名"}
+				,{"Post"		,(int) 2	,"String"	,"拠点倉庫郵便番号"}
+				,{"Add01"		,(int) 3	,"String"	,"拠点倉庫住所1"}
+				,{"Add02"		,(int) 4	,"String"	,"拠点倉庫住所2"}
+				,{"Tel"			,(int) 5	,"String"	,"拠点倉庫電話"}
+				,{"Fax"			,(int) 6	,"String"	,"拠点倉庫FAX"}
+				,{"Mail"		,(int) 7	,"String"	,"拠点倉庫MAIL"}
+				,{"Com01"		,(int) 8	,"String"	,"コメント１"}
+				,{"Com02"		,(int) 9	,"String"	,"コメント２"}
+				,{"Com03"		,(int)10	,"String"	,"コメント３"}
+				,{"PTMSCD"		,(int)11	,"String"	,"基幹システム連携用事業所CD"}
+				,{"EntryDate"	,(int)12	,"String"	,"データ登録日時"}
+				,{"UpdateDate"	,(int)13	,"String"	,"データ更新日時"}
+				,{"EntryUser"	,(int)14	,"String"	,"登録者"}
+				,{"UpdateUser"	,(int)15	,"String"	,"更新者"}
+				};
+		
+		return RtSettingWhMstRt;
+	}
 	public static Object[][] WhMstRt(
 			ArrayList<String> SearchWHCD,
 			ArrayList<String> SearchWHName,

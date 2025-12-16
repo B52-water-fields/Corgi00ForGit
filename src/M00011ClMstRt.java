@@ -4,6 +4,39 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00011ClMstRt{
+	//戻り値カラム
+	public static Object[][] RtSettingClMstRt(){
+		Object[][] RtSettingClMstRt = {
+				 {"cl_cd"		,(int)  0	,"String"	,"荷主CD"}
+				,{"ClGpCD"		,(int)  1	,"String"	,"荷主グループCD"}
+				,{"ClGpName"	,(int)  2	,"String"	,"グループ名1"}
+				,{"WHCD"		,(int)  3	,"String"	,"担当倉庫"}
+				,{"WHName"		,(int)  4	,"String"	,"担当倉庫名"}
+				,{"CLName01"	,(int)  5	,"String"	,"荷主名1"}
+				,{"CLName02"	,(int)  6	,"String"	,"荷主名2"}
+				,{"CLName03"	,(int)  7	,"String"	,"荷主名3"}
+				,{"Post"		,(int)  8	,"String"	,"郵便番号"}
+				,{"Add01"		,(int)  9	,"String"	,"住所1"}
+				,{"Add02"		,(int) 10	,"String"	,"住所2"}
+				,{"Add03"		,(int) 11	,"String"	,"住所3"}
+				,{"Tel"			,(int) 12	,"String"	,"電話番号"}
+				,{"Fax"			,(int) 13	,"String"	,"FAX"}
+				,{"Mail"		,(int) 14	,"String"	,"メールアドレス"}
+				,{"Com01"		,(int) 15	,"String"	,"コメント1"}
+				,{"Com02"		,(int) 16	,"String"	,"コメント2"}
+				,{"Com03"		,(int) 17	,"String"	,"コメント3"}
+				,{"ShimeDate"	,(int) 18	,"int"		,"締日"}
+				,{"ShimeBasis"	,(int) 19	,"int"		,"請求基準"}
+				,{"EntryDate"	,(int) 20	,"String"	,"データ登録日時"}
+				,{"UpdateDate"	,(int) 21	,"String"	,"データ更新日時"}
+				,{"EntryUser"	,(int) 22	,"String"	,"登録者コード"}
+				,{"UpdateUser"	,(int) 23	,"String"	,"更新者コード"}
+				,{"PTMSCD"		,(int) 24	,"String"	,"基幹システム荷主コード"}
+				};
+		
+		return RtSettingClMstRt;
+	}
+	
 	public static Object[][] ClMstRt(
 			ArrayList<String> SearchClGpCD,
 			ArrayList<String> SearchCLCD,
