@@ -4,8 +4,7 @@ public class B00100DefaultVariable{
 	//設定用条件
 	static String[][] 	ShimeDateList;				//1日～28日　末日99のリスト
 	static Object[][] 	DeliFeeNorm;					//運賃請求基準　発請求/着請求
-	
-	//検索条件 登録条件マスタを元に選択リスト用配列設定
+
 	static Object[][] SearchWhList;					//倉庫リスト
 	static Object[][] WhList;							//倉庫リスト
 	
@@ -18,31 +17,89 @@ public class B00100DefaultVariable{
 	static Object[][] SearchShippingCompanyList;	//検索用運送会社一覧
 	static Object[][] ShippingCompanyList;			//設定用運送会社一覧
 	
-	static String[][] SearchDelList= {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
-	static String[][] DelList= {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};							//設定用削除区分
+	static String[][] SearchDelList = {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
+	static String[][] DelList = {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};							//設定用削除区分
 	
-	static Object[][] SerachAuthorityFG;			//検索用ユーザー権限区分
-	static Object[][] AuthorityFG;					//設定用ユーザー権限区分
+	static Object[][] SerachAuthorityFG;				//検索用ユーザー権限区分
+	static Object[][] AuthorityFG;						//設定用ユーザー権限区分
+	
+	static String[][] HaisyaDataLayoutPt;			//運送会社向け配車データ出力パターン
+	
+	static String[][] SearchLocType = {{"未指定","0:通常","1:保管","8:入荷時","9:引当禁止"},{"","0","1","8","9"},{"","通常","保管","入荷時","引当禁止"}};		//ロケタイプ検索値
+	static String[][] LocType = {{"0:通常","1:保管","8:入荷時","9:引当禁止"},{"0","1","8","9"},{"通常","保管","入荷時","引当禁止"}};							//ロケタイプ設定値
+	
+	static String DefaultActualDate 	= "1941/12/08";	//入荷日管理しない場合の入荷実績日
+	
+	static String DefaultTroughLoc	= "ZZZ2222222";	//スルー型運用の場合スルー引当用ロケ
+	
+	static String DefaultExpDate 		= "3000/01/01";	//消費期限管理しない場合の消費期限
+	
+	static String DefaultPtmsItemCd = "0001";			//基幹システム商品CD
+	
+	static String[][] SearchStatusList = {{"未指定","0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"","0","1","2","3","8","9"}};	//検索条件：状況
+	static String[][] StatusList = {{"0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"0","1","2","3","8","9"}};						//状況
+	
+	static Object[][] SearchWmsStatusList = {{"未指定","0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"","0","1","2","3","8","7","9"}};	//検索条件：倉庫状況
+	static Object[][] WmsStatusList = {{"0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"0","1","2","3","8","7","9"}};						//倉庫状況
+	
+	static String[][] SearchArryvalFixFgList = {{"未指定","0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"","0","1","2","9"},{"","未入荷","入荷済","分納待","キャンセル"}};		//入荷状況リスト
+	static String[][] ArryvalFixFgList = {{"0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"0","1","2","9"},{"未入荷","入荷済","分納待","キャンセル"}};								//入荷状況リスト
+	
+	static Object[][] SearchCautionTiming = {{"未指定","0:納品時","1:出荷時"},{"","0","1"},{"","納品時","出荷時"}};		//検索条件：注意事項タイミング
+	static Object[][] CautionTiming = {{"0:納品時","1:出荷時"},{"0","1"},{"納品時","出荷時"}};							//注意事項タイミング
+	
+	static Object[][] ChildrenFGList = {{"0:親伝票","1:子伝票"},{"0","1"},{"親伝票","子伝票"}};				//赤黒区分
+	
+	static Object[][] SearchTildFG = {{"未指定","0:常温","1:冷蔵","2:冷凍","3:チルド"},{"","0","1","2","3"},{"","常温","冷蔵","冷凍","チルド"}};
+	static Object[][] TildFG = {{"0:常温","1:冷蔵","2:冷凍","3:チルド"},{"0","1","2","3"},{"常温","冷蔵","冷凍","チルド"}};								//0:常温必須
+	
+	static Object[][] ReceiptStampFGList = {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};	//受領印区分
+	
+	static Object[][] SearchInvoiceStatusList = {{"未指定","0:未請求","1:請求済","9:対象外"},{"","0","1","9"},{"","未請求","請求済","対象外"}};			//請求区分
+	static Object[][] InvoiceStatusList = {{"0:未請求","1:請求済","9:対象外"},{"0","1","9"},{"未請求","請求済","対象外"}};
+	
+	static Object[][] SearchFeeFixFgList = {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(請求)
+	static Object[][] FeeFixFgList = {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};										//金額確定フラグ設定値(請求)
+	
+	static Object[][] SearchPayFixFgList = {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(支払)
+	static Object[][] PayFixFgList = {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};										//金額確定フラグ設定値(支払)
+	
+	static Object[][] SearchCODList = {{"未指定","0:一般","1:代引"},{"","0","1"},{"","一般","代引"}};		//検索条件：代引区分
+	static Object[][] CODList = {{"0:一般","1:代引"},{"0","1"},{"一般","代引"}};							//代引区分
+	
+	static Object[][] SearchTaxFgList = {{"未指定","0:外税","1:内税","2:非課税"},{"","0","1","2"},{"","外税","内税","非課税"}};	//検索条件：外税内税区分
+	static Object[][] TaxFgList = {{"0:外税","1:内税","2:非課税"},{"0","1","2"},{"外税","内税","非課税"}};	//外税内税区分
+	
+	static Object[][] SearchUnitTypeList = {{"未指定","0:バラ","1:カートン","2:ケース","3：パレット"},{"","0","1","2","3"},{"","バラ","カートン","ケース","パレット"}};
+	static Object[][] UnitTypeList = {{"0:バラ","1:カートン","2:ケース","3：パレット"},{"0","1","2","3"},{"バラ","カートン","ケース","パレット"}};
+	
+	static Object[][] PurposeList = {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
+	
+	
+	
+	
+	
+	/*	
+	PurposeList[0][0] = "";
+		PurposeList[0][1] = "";
+		PurposeList[0][2] = "";
+		PurposeList[0][3] = "";
+	
+	*/
+	
 	
 	/*
 	====================================================================
 	↑設定確認済み
 	====================================================================
 	*/
+
 	
-	static String[][] LocType;							//ロケタイプ設定値
-	static String[][] SearchLocType;					//ロケタイプ検索値
-	static String DefaultTroughLoc="ZZZ2222222";		//スルー型運用の場合スルー引当用ロケ
-	
-	static String DefaultActualDate = "1941/12/08";	//入荷日管理しない場合の入荷実績日
-	static String DefaultExpDate = "3000/01/01";		//消費期限管理しない場合の消費期限
 	static boolean ActualDateUnControl = false;		//入荷日管理しない
-	static String[][] ArryvalFixFgList;				//入荷状況リスト
-	static String[][] SearchArryvalFixFgList;		//入荷状況リスト
+	
 	static int NormalTaxRate;							//消費税率　※10%なら10
 	static int[] TaxRateList;							//消費税率のリスト　※10%なら10　Ex）10,8,0
-	static Object[][] TildFG;							//0:常温必須
-	static Object[][] SearchTildFG;
+	
 	static String PictSetFolder;						//画像保存先フォルダ
 	static String ErrSoundPath;						//エラー音パス
 	static String OKSoundPath;							//OK音パス
@@ -50,17 +107,6 @@ public class B00100DefaultVariable{
 	static int Cl_OldDataRenewDate = 93;				//これより古い荷主管理番号は先頭にOldつけて重複から外す
 
 	//検索条件 登録条件選択リスト用配列設定
-	static Object[][] SearchFeeFixFGList;
-	static Object[][] SearchInvoiceStatusList;
-	static Object[][] InvoiceStatusList;
-	static Object[][] SearchFeeFixList;			//金額確定フラグ検索値(請求)
-	static Object[][] FeeFixFGList;				//金額確定フラグ設定値(請求)
-	static Object[][] SearchPayFixList;			//金額確定フラグ検索値(支払)
-	static Object[][] PayFixFGList;				//金額確定フラグ設定値(支払)
-	static Object[][] SearchStatusList;
-	static Object[][] StatusList;
-	static Object[][] WmsStatusList;
-	static Object[][] SearchWmsStatusList;
 
 	static Object[][] SearchDeliveryType01;
 	static Object[][] SearchDeliveryType02;
@@ -73,47 +119,26 @@ public class B00100DefaultVariable{
 	static Object[][] DeliveryType03;
 	static Object[][] DeliveryType04;
 	static Object[][] DeliveryType05;
-	static String DefaultPtmsItemCd;
-	
-
 	
 	
 	static Object[][] SupplierList;				//仕入先リスト
 	
 	static Object[][] RouteGloupList;				//自動配車グループリスト	
 	static Object[][] SearchRouteGloupList;		//自動配車グループリスト検索条件用
-	static Object[][] PurposeList;					//送り状目的区分	
-	static Object[][] ChildrenFGList;				//赤黒区分
-	static Object[][] ReceiptStampFGList;		//受領印区分
-	
-	static Object[][] CODList;
-	static Object[][] TaxFgList;
-	static Object[][] UnitTypeList;
-	static Object[][] SearchCODList;
-	static Object[][] SearchTaxFgList;
-	static Object[][] SearchUnitTypeList;
 
 	static String[] DeliveryWildCard;
-	
-
-	
-
 	
 	static Object[][] FeeLogicTypeList;			//運賃計算タイプ(請求)
 	static Object[][] PayLogicTypeList;			//運賃計算タイプ(支払)
 	
-	static Object[][] SearchCautionTiming;		//注意事項タイミング
-	static Object[][] CautionTiming;				//注意事項タイミング
+	static Object[][] WhFeeUnitList;				//倉庫入出荷保管料課金単位リスト
+	static Object[][] WhFeeSummaryFgList;		//倉庫入出荷保管料集計区分リスト
 	
 	static String ShipForcedDeliCd;				//強制出荷届先Cｄ
 	static String ShipForcedDeliDepartmentCd;	//強制出荷届先部署Cｄ
 	
-	static Object[][] WhFeeUnitList;				//倉庫入出荷保管料課金単位リスト
-	static Object[][] WhFeeSummaryFgList;		//倉庫入出荷保管料集計区分リスト
-	
-	
 	static String[][] LayoutPt;					//送り状データ取り込みパターン
-	static String[][] HaisyaDataLayoutPt;		//運送会社向け配車データ出力パターン
+	
 	
 	
 	
@@ -130,9 +155,19 @@ public class B00100DefaultVariable{
 		
 		ShimeList();					//締め日・締め条件リスト生成
 		AuthorityFG();					//管理者ログイン時のみ権利権限設定
+		
+		HaisyaDataLayoutPt();		//運送会社向け配車データ出力パターン
 	}
 	
+	private static void HaisyaDataLayoutPt() {		//運送会社向け配車データ出力パターン
+		HaisyaDataLayoutPt = new String[3][1];
+		
+		HaisyaDataLayoutPt[0][0] = "Normal:標準";
+		HaisyaDataLayoutPt[1][0] = "Normal";
+		HaisyaDataLayoutPt[2][0] = "標準";
+	}
 	
+
 	
 	public static void WhList() {
 		ArrayList<String> SearchWHCD = new ArrayList<String>();

@@ -40,6 +40,10 @@ public class W00020MstMain{
 		JButton WhMst = B00110FrameParts.BtnSet(20,25,130,20,"倉庫・事業所",11);
 		PN_AboutALL.add(WhMst);
 		
+		//運送会社
+		JButton ShippingCompanyMst = B00110FrameParts.BtnSet(160,25,130,20,"運送会社",11);
+		PN_AboutALL.add(ShippingCompanyMst);
+		
 		//ユーザー
 		JButton UserMst = B00110FrameParts.BtnSet(20,50,130,20,"ユーザー・乗務員",11);
 		PN_AboutALL.add(UserMst);
@@ -75,6 +79,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00010WhMstSearch.WhMstSearch(0, 0);
+			}
+		});
+		
+		//運送会社
+		ShippingCompanyMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00040ShippingCompanyMstSearch.ShippingCompanyMstSearch(0, 0);
 			}
 		});
 		

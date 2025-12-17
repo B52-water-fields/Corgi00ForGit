@@ -211,4 +211,47 @@ public class M00030ShippingCompanyMstRt{
 		}
 		return rt;
 	}
+	
+	public static String NewShipingCompanyCdGet() {
+		ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
+		ArrayList<String> SearchCompanyName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		boolean AllSearch = true;
+    	
+    	Object[][] ShippingCompanyMstRt = ShippingCompanyMstRt(
+    			SearchShippingCompanyCd,
+    			SearchCompanyName,
+    			SearchPost,
+    			SearchAdd,
+    			SearchTel,
+    			SearchFax,
+    			SearchMail,
+    			SearchCom,
+    			AllSearch);
+    	
+    	int ClientNo = 0;
+    	
+    	for(int i=0;i<ShippingCompanyMstRt.length;i++) {
+    		if("ATSC".equals((""+ShippingCompanyMstRt[i][0]).substring(0,4))&&11==(""+ShippingCompanyMstRt[i][0]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+ShippingCompanyMstRt[i][0]);
+    			if(7==WST.length()) {
+    				int wint = Integer.parseInt(WST);
+    				if(ClientNo<wint) {
+    					ClientNo=wint;
+    				}
+    			}
+    		}
+    	}
+    	ClientNo = ClientNo+1;
+    	String rt = "0000000"+ClientNo;
+    	rt = "ATSC"+rt.substring(rt.length()-7,rt.length());
+    	
+    	return rt;
+	}
+	
 }
