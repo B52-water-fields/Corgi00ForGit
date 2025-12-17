@@ -63,7 +63,6 @@ public class WM00011WhMstRenewAndCreate{
 		final JTextField TB_EntryUser  	= B00110FrameParts.JTextFieldSet(100,390,200,20,"",11,0);	//登録者
 		final JTextField TB_UpdateUser  = B00110FrameParts.JTextFieldSet(100,415,200,20,"",11,0);	//更新者
 		
-		TB_WHCD.setEnabled(false);
 		TB_EntryDate.setEditable(false);	//データ登録日時
 		TB_UpdateDate.setEditable(false);	//データ更新日時
 		TB_EntryUser.setEditable(false);	//登録者
@@ -187,6 +186,8 @@ public class WM00011WhMstRenewAndCreate{
 				String GetCom02 = TB_Com02.getText();	if(null==GetCom02){GetCom02 = "";}		//コメント２
 				String GetCom03 = TB_Com03.getText();	if(null==GetCom03){GetCom03 = "";}		//コメント３
 				String GetPTMSCD = TB_PTMSCD.getText();	if(null==GetPTMSCD){GetPTMSCD = "";}	//基幹SysCD
+				
+				GetWHCD	= B00020ToolsTextControl.only1byte_String(GetWHCD);
 				
 				GetPost = B00020ToolsTextControl.num_only_String(GetPost);
 				GetTel  = B00020ToolsTextControl.num_only_String(GetTel);

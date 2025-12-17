@@ -36,6 +36,7 @@ public class M00031CarMstRt{
 			ArrayList<String> SearchShippingCompanyCd,
 			ArrayList<String> SearchCarCd,
 			ArrayList<String> SearchCarName,
+			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
 		Object[][] rt = new Object[0][19];
 		boolean SearchKick = false;
@@ -132,10 +133,19 @@ public class M00031CarMstRt{
 			}
 			sql = sql +	")";
 		}
-		if(AllSearch) {
-			
-		}else {
-			sql = sql + " and KM0071_CARMST.DelFg = 0";
+		
+		if(null!=SearchDelFg && 0<SearchDelFg.size()){
+			SearchKick = true;
+			for(int i=0;i<SearchDelFg.size();i++){
+				if(0==i){
+					sql = sql + "\n and(";
+				}else{
+					sql = sql + " or ";
+				}
+				String Wst = ""+SearchDelFg.get(i);
+				sql = sql + "KM0071_CARMST.DelFg = '"+Wst+"'";
+			}
+			sql = sql +	")";
 		}
 		
 		sql = sql + " order by KM0071_CARMST.WHCD,KM0071_CARMST.ShippingCompanyCd,KM0071_CARMST.CarCd";

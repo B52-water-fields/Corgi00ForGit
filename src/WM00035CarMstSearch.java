@@ -46,31 +46,37 @@ public class WM00035CarMstSearch{
 		JLabel LB_SearchShippingCompanyCd	= B00110FrameParts.JLabelSet(  0, 50,100,20,"所属会社:",	11,1);
 		JLabel LB_SearchCarCd				= B00110FrameParts.JLabelSet(  0, 75,100,20,"車輛CD:",		11,1);
 		JLabel LB_SearchCarName				= B00110FrameParts.JLabelSet(  0,100,100,20,"車輛名:",		11,1);
+		JLabel LB_SearchDelFg				= B00110FrameParts.JLabelSet(  0,125,100,20,"削除区分:",	11,1);
 		
 		final JComboBox  TB_SearchWHCD				= B00110FrameParts.JComboBoxSet( 100, 25,200,20,B00100DefaultVariable.SearchWhList[0],11);					//所属倉庫
 		final JComboBox  TB_SearchShippingCompanyCd	= B00110FrameParts.JComboBoxSet( 100, 50,200,20,B00100DefaultVariable.SearchShippingCompanyList[0],11);	//所属会社
 		final JTextField TB_SearchCarCd				= B00110FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);	//車輛CD
 		final JTextField TB_SearchCarName			= B00110FrameParts.JTextFieldSet(100,100,200,20,"",11,0);	//車輛名
+		final JComboBox  TB_SearchDelFg				= B00110FrameParts.JComboBoxSet( 100,125,100,20,B00100DefaultVariable.SearchDelList[0],11);	//削除区分
 		
 		JLabel LB2_SearchWHCD				= B00110FrameParts.JLabelSet(  0, 25, 50,20,"",		11,0);
 		JLabel LB2_SearchShippingCompanyCd	= B00110FrameParts.JLabelSet(  0, 50, 50,20,"",		11,0);
 		JLabel LB2_SearchCarCd				= B00110FrameParts.JLabelSet(200, 75, 50,20,"と一致",	11,0);
 		JLabel LB2_SearchCarName			= B00110FrameParts.JLabelSet(300,100, 50,20,"を含む",	11,0);
+		JLabel LB2_SearchDelFg				= B00110FrameParts.JLabelSet(200,125, 50,20,"",		11,0);
 		
 		PN_Search.add(LB_SearchWHCD);
 		PN_Search.add(LB_SearchShippingCompanyCd);
 		PN_Search.add(LB_SearchCarCd);
 		PN_Search.add(LB_SearchCarName);
+		PN_Search.add(LB_SearchDelFg);
 		
 		PN_Search.add(TB_SearchWHCD);
 		PN_Search.add(TB_SearchShippingCompanyCd);
 		PN_Search.add(TB_SearchCarCd);
 		PN_Search.add(TB_SearchCarName);
+		PN_Search.add(TB_SearchDelFg);
 		
 		PN_Search.add(LB2_SearchWHCD);
 		PN_Search.add(LB2_SearchShippingCompanyCd);
 		PN_Search.add(LB2_SearchCarCd);
 		PN_Search.add(LB2_SearchCarName);
+		PN_Search.add(LB2_SearchDelFg);
 		
 		Object[][] RtSettingCarMstRt = M00031CarMstRt.RtSettingCarMstRt();
 		
@@ -123,7 +129,7 @@ public class WM00035CarMstSearch{
 		main_fm.add(CreateBtn);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(200,125,100,20,"検索",11);
+		JButton SearchBtn = B00110FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		main_fm.setVisible(true);
@@ -144,40 +150,46 @@ public class WM00035CarMstSearch{
 					String GetSearchShippingCompanyCd	= ""+B00100DefaultVariable.SearchShippingCompanyList[1][TB_SearchShippingCompanyCd.getSelectedIndex()];	//所属会社
 					String GetSearchCarCd= TB_SearchCarCd.getText();
 					String GetSearchCarName= TB_SearchCarName.getText();
+					String GetSearchDelFg				= ""+B00100DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];			//削除区分
 					
 					if(null==GetSearchWHCD				){GetSearchWHCD = "";}
 					if(null==GetSearchShippingCompanyCd	){GetSearchShippingCompanyCd = "";}
 					if(null==GetSearchCarCd				){GetSearchCarCd = "";}
 					if(null==GetSearchCarName			){GetSearchCarName = "";}
+					if(null==GetSearchDelFg				){GetSearchDelFg = "";}
 					
 					GetSearchWHCD	 			= B00020ToolsTextControl.Trim(GetSearchWHCD);
 					GetSearchShippingCompanyCd	= B00020ToolsTextControl.Trim(GetSearchShippingCompanyCd);
 					GetSearchCarCd	 			= B00020ToolsTextControl.Trim(GetSearchCarCd);
 					GetSearchCarName	 		= B00020ToolsTextControl.Trim(GetSearchCarName);
+					GetSearchDelFg	 			= B00020ToolsTextControl.Trim(GetSearchDelFg);
 					
 					ArrayList<String> SearchWHCD = new ArrayList<String>();
 					ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
 					ArrayList<String> SearchCarCd = new ArrayList<String>();
 					ArrayList<String> SearchCarName = new ArrayList<String>();
-					boolean AllSearch = false;
+					ArrayList<String> SearchDelFg = new ArrayList<String>();
+					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchWHCD)){SearchWHCD.add(GetSearchWHCD);}
 					if(!"".equals(GetSearchShippingCompanyCd)){SearchShippingCompanyCd.add(GetSearchShippingCompanyCd);}
 					if(!"".equals(GetSearchCarCd)){SearchCarCd.add(GetSearchCarCd);}
 					if(!"".equals(GetSearchCarName)){SearchCarName.add(GetSearchCarName);}
+					if(!"".equals(GetSearchDelFg)){SearchDelFg.add(GetSearchDelFg);}
 					
 					Object[][] CarMstRt = M00031CarMstRt.CarMstRt(
 									SearchWHCD,
 									SearchShippingCompanyCd,
 									SearchCarCd,
 									SearchCarName,
+									SearchDelFg,
 									AllSearch);
 					
 					for(int i=0;i<CarMstRt.length;i++) {
 						Object[] SetOb= new Object[CarMstRt[i].length+1];
 						SetOb[0] = false;
 						for(int i01=0;i01<CarMstRt[i].length;i01++) {
-							SetOb[i+1] = CarMstRt[i][i01];
+							SetOb[i01+1] = CarMstRt[i][i01];
 						}
 						tableModel_ms01.addRow(SetOb);;
 					}

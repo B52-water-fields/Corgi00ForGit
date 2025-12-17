@@ -230,13 +230,13 @@ public class B00100DefaultVariable{
 		SearchClList[2][0] = "";
 		
 		for(int i=0;i<ClMstRt.length;i++) {
-			ClList[0][i] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][1];
+			ClList[0][i] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
 			ClList[1][i] = "" + ClMstRt[i][0];
-			ClList[2][i] = "" + ClMstRt[i][1];
+			ClList[2][i] = "" + ClMstRt[i][5];
 			
-			SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][1];
+			SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
 			SearchClList[1][i+1] = "" + ClMstRt[i][0];
-			SearchClList[2][i+1] = "" + ClMstRt[i][1];
+			SearchClList[2][i+1] = "" + ClMstRt[i][5];
 		}
 	}
 	

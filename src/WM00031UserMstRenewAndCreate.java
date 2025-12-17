@@ -15,8 +15,11 @@ public class WM00031UserMstRenewAndCreate{
 	static int SetX;
 	static int SetY;
 	static boolean RenewFg;
+	static Object[][] SearchClList;
+	
 	public static void UserMstRenewAndCreate(int x,int y,String TgtWhCd,String TgtShippingCompanyCd,String TgtUserCd) {
 		RenewFg = false;
+		SearchClList = B00100DefaultVariable.SearchClList;
 		
 		if(null==TgtWhCd) {TgtWhCd="";}
 		if(null==TgtShippingCompanyCd) {TgtShippingCompanyCd="";}
@@ -36,8 +39,15 @@ public class WM00031UserMstRenewAndCreate{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
+		
 		JButton Check_btn = B00110FrameParts.BtnSet(B00110FrameParts.Width-140, 90,100,20,"CD確認",11);	//ユーザーCDの存在確認
 		main_fm.add(Check_btn);
+		
+		JButton CdRenew_btn = B00110FrameParts.BtnSet(B00110FrameParts.Width-140,115,100,20,"CD修正Mode",11);		//ユーザーCDの存在確認
+		main_fm.add(CdRenew_btn);
+		
+		JButton NewCreate_btn = B00110FrameParts.BtnSet(B00110FrameParts.Width-140,140,100,20,"新規登録Mode",10);	//新規登録モードへ
+		main_fm.add(NewCreate_btn);
 		
 		JLabel LB_WHCD				= B00110FrameParts.JLabelSet(  0, 40,100,20,"倉庫コード:",		11,1);
 		JLabel LB_ShippingCompanyCd	= B00110FrameParts.JLabelSet(  0, 65,100,20,"運送会社CD:",		11,1);
@@ -45,16 +55,16 @@ public class WM00031UserMstRenewAndCreate{
 		JLabel LB_MainClient		= B00110FrameParts.JLabelSet(  0,115,100,20,"主要担当荷主:",	11,1);
 		JLabel LB_AuthorityFG		= B00110FrameParts.JLabelSet(  0,140,100,20,"権限区分:",		11,1);
 		JLabel LB_PassWord			= B00110FrameParts.JLabelSet(  0,165,100,20,"パスワード:",		11,1);
-		JLabel LB_UserName01		= B00110FrameParts.JLabelSet(  0,190,100,20,"ユーザー名1:",		11,1);
-		JLabel LB_UserName02		= B00110FrameParts.JLabelSet(  0,215,100,20,"ユーザー名2:",		11,1);
-		JLabel LB_UserName03		= B00110FrameParts.JLabelSet(  0,240,100,20,"ユーザー名3:",		11,1);
+		JLabel LB_UserName01		= B00110FrameParts.JLabelSet(  0,190,100,20,"ユーザー名1:",	11,1);
+		JLabel LB_UserName02		= B00110FrameParts.JLabelSet(  0,215,100,20,"ユーザー名2:",	11,1);
+		JLabel LB_UserName03		= B00110FrameParts.JLabelSet(  0,240,100,20,"ユーザー名3:",	11,1);
 		JLabel LB_CarCd				= B00110FrameParts.JLabelSet(  0,265,100,20,"標準車輛:",		11,1);
 		JLabel LB_Post				= B00110FrameParts.JLabelSet(  0,290,100,20,"郵便番号:",		11,1);
 		JLabel LB_Add01				= B00110FrameParts.JLabelSet(  0,315,100,20,"住所1:",			11,1);
 		JLabel LB_Add02				= B00110FrameParts.JLabelSet(  0,340,100,20,"住所2:",			11,1);
 		JLabel LB_Add03				= B00110FrameParts.JLabelSet(  0,365,100,20,"住所3:",			11,1);
-		JLabel LB_Tel				= B00110FrameParts.JLabelSet(  0,390,100,20,"Tel:",				11,1);
-		JLabel LB_Fax				= B00110FrameParts.JLabelSet(  0,415,100,20,"FAX:",				11,1);
+		JLabel LB_Tel				= B00110FrameParts.JLabelSet(  0,390,100,20,"Tel:",			11,1);
+		JLabel LB_Fax				= B00110FrameParts.JLabelSet(  0,415,100,20,"FAX:",			11,1);
 		JLabel LB_Mail				= B00110FrameParts.JLabelSet(  0,440,100,20,"Mail:",			11,1);
 		JLabel LB_Com01				= B00110FrameParts.JLabelSet(  0,465,100,20,"コメント1:",		11,1);
 		JLabel LB_Com02				= B00110FrameParts.JLabelSet(  0,490,100,20,"コメント2:",		11,1);
@@ -69,7 +79,7 @@ public class WM00031UserMstRenewAndCreate{
 		final JComboBox  TB_WHCD				= B00110FrameParts.JComboBoxSet( 100, 40,250,20,B00100DefaultVariable.WhList[0],	11);					//倉庫コード
 		final JComboBox  TB_ShippingCompanyCd	= B00110FrameParts.JComboBoxSet( 100, 65,250,20,B00100DefaultVariable.ShippingCompanyList[0],	11);	//運送会社CD
 		final JTextField TB_UserCd				= B00110FrameParts.JTextFieldSet(100, 90,100,20,"",11,0);	//ユーザーCD
-		final JComboBox  TB_MainClient			= B00110FrameParts.JComboBoxSet( 100,115,250,20,B00100DefaultVariable.SearchClList[0],	11);			//主要担当荷主
+		final JComboBox  TB_MainClient			= B00110FrameParts.JComboBoxSet( 100,115,250,20,SearchClList[0],	11);								//主要担当荷主
 		final JComboBox  TB_AuthorityFG			= B00110FrameParts.JComboBoxSet( 100,140,250,20,B00100DefaultVariable.AuthorityFG[0],	11);			//権限区分
 		final JTextField TB_PassWord			= B00110FrameParts.JTextFieldSet(100,165,100,20,"",11,0);	//パスワード
 		final JTextField TB_UserName01			= B00110FrameParts.JTextFieldSet(100,190,250,20,"",11,0);	//ユーザー名1
@@ -111,28 +121,66 @@ public class WM00031UserMstRenewAndCreate{
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.SearchClList[1].length;i++){
-			if((""+B00100DefaultVariable.SearchClList[1][i]).equals(""+A00000Main.ClCd)){
-				TB_MainClient.setSelectedIndex(i);
+		//主要担当荷主を選択中の倉庫配下の荷主だけにする
+		String GetWHCD	= ""+B00100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLCD = new ArrayList<String>();
+		ArrayList<String> SearchCLName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		SearchWHCD.add(GetWHCD);
+		
+		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+				SearchClGpCD,
+				SearchCLCD,
+				SearchCLName,
+				SearchPost,
+				searchAdd,
+				SearchTel,
+				SearchFax,
+				SearchMail,
+				SearchCom,
+				SearchWHCD,
+				AllSearch);
+		if(0<ClMstRt.length) {
+			TB_MainClient.removeAllItems();
+			
+			SearchClList = new Object[3][ClMstRt.length+1];
+			SearchClList[0][0] = "未指定";
+			SearchClList[1][0] = "";
+			SearchClList[2][0] = "";
+			TB_MainClient.addItem(SearchClList[0][0]);
+			for(int i=0;i<ClMstRt.length;i++) {
+				SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
+				SearchClList[1][i+1] = "" + ClMstRt[i][0];
+				SearchClList[2][i+1] = "" + ClMstRt[i][5];
+				TB_MainClient.addItem(SearchClList[0][i+1]);
 			}
 		}
 		
 		if(!"".equals(TgtWhCd)&&!"".equals(TgtShippingCompanyCd)&&!"".equals(TgtUserCd)) {
-			ArrayList<String> SearchWHCD = new ArrayList<String>();
+			SearchWHCD = new ArrayList<String>();
 			ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
 			ArrayList<String> SearchAuthorityFG = new ArrayList<String>();
 			ArrayList<String> SearchUserCd = new ArrayList<String>();
 			ArrayList<String> SearchUserName = new ArrayList<String>();
 			ArrayList<String> SearchCarCd = new ArrayList<String>();
 			ArrayList<String> SearchCarName = new ArrayList<String>();
-			ArrayList<String> SearchPost = new ArrayList<String>();
+			SearchPost = new ArrayList<String>();
 			ArrayList<String> SearchAdd = new ArrayList<String>();
-			ArrayList<String> SearchTel = new ArrayList<String>();
-			ArrayList<String> SearchFax = new ArrayList<String>();
-			ArrayList<String> SearchMail = new ArrayList<String>();
-			ArrayList<String> SearchCom = new ArrayList<String>();
+			SearchTel = new ArrayList<String>();
+			SearchFax = new ArrayList<String>();
+			SearchMail = new ArrayList<String>();
+			SearchCom = new ArrayList<String>();
 			ArrayList<String> SearchDelFg = new ArrayList<String>();
-			boolean AllSearch = false;
+			AllSearch = false;
 			
 			SearchWHCD.add(TgtWhCd);
 			SearchShippingCompanyCd.add(TgtShippingCompanyCd);
@@ -180,8 +228,52 @@ public class WM00031UserMstRenewAndCreate{
 						}
 					}
 					
-					for(int i=0;i<B00100DefaultVariable.SearchClList[1].length;i++){
-						if((""+B00100DefaultVariable.SearchClList[1][i]).equals(""+UserMstRt[0][30])){
+					//主要担当荷主を選択中の倉庫配下の荷主だけにする
+					GetWHCD	= ""+B00100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];
+					SearchClGpCD = new ArrayList<String>();
+					SearchCLCD = new ArrayList<String>();
+					SearchCLName = new ArrayList<String>();
+					SearchPost = new ArrayList<String>();
+					searchAdd = new ArrayList<String>();
+					SearchTel = new ArrayList<String>();
+					SearchFax = new ArrayList<String>();
+					SearchMail = new ArrayList<String>();
+					SearchCom = new ArrayList<String>();
+					SearchWHCD = new ArrayList<String>();
+					AllSearch = false;
+					
+					SearchWHCD.add(GetWHCD);
+					
+					ClMstRt = M00011ClMstRt.ClMstRt(
+							SearchClGpCD,
+							SearchCLCD,
+							SearchCLName,
+							SearchPost,
+							searchAdd,
+							SearchTel,
+							SearchFax,
+							SearchMail,
+							SearchCom,
+							SearchWHCD,
+							AllSearch);
+					if(0<ClMstRt.length) {
+						TB_MainClient.removeAllItems();
+						
+						SearchClList = new Object[3][ClMstRt.length+1];
+						SearchClList[0][0] = "未指定";
+						SearchClList[1][0] = "";
+						SearchClList[2][0] = "";
+						TB_MainClient.addItem(SearchClList[0][0]);
+						for(int i=0;i<ClMstRt.length;i++) {
+							SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
+							SearchClList[1][i+1] = "" + ClMstRt[i][0];
+							SearchClList[2][i+1] = "" + ClMstRt[i][5];
+							TB_MainClient.addItem(SearchClList[0][i+1]);
+						}
+					}
+					
+					for(int i=0;i<SearchClList[1].length;i++){
+						if((""+SearchClList[1][i]).equals(""+UserMstRt[0][30])){
 							TB_MainClient.setSelectedIndex(i);
 						}
 					}
@@ -290,6 +382,81 @@ public class WM00031UserMstRenewAndCreate{
 		main_fm.setVisible(true);
 		RenewFg = true;
 		
+		//倉庫選択時の挙動
+		TB_WHCD.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					//主要担当荷主を選択中の倉庫配下の荷主だけにする
+					String GetWHCD	= ""+B00100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];
+					ArrayList<String> SearchClGpCD = new ArrayList<String>();
+					ArrayList<String> SearchCLCD = new ArrayList<String>();
+					ArrayList<String> SearchCLName = new ArrayList<String>();
+					ArrayList<String> SearchPost = new ArrayList<String>();
+					ArrayList<String> searchAdd = new ArrayList<String>();
+					ArrayList<String> SearchTel = new ArrayList<String>();
+					ArrayList<String> SearchFax = new ArrayList<String>();
+					ArrayList<String> SearchMail = new ArrayList<String>();
+					ArrayList<String> SearchCom = new ArrayList<String>();
+					ArrayList<String> SearchWHCD = new ArrayList<String>();
+					boolean AllSearch = false;
+					
+					SearchWHCD.add(GetWHCD);
+					
+					Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+							SearchClGpCD,
+							SearchCLCD,
+							SearchCLName,
+							SearchPost,
+							searchAdd,
+							SearchTel,
+							SearchFax,
+							SearchMail,
+							SearchCom,
+							SearchWHCD,
+							AllSearch);
+					if(0<ClMstRt.length) {
+						TB_MainClient.removeAllItems();
+						
+						SearchClList = new Object[3][ClMstRt.length+1];
+						SearchClList[0][0] = "未指定";
+						SearchClList[1][0] = "";
+						SearchClList[2][0] = "";
+						TB_MainClient.addItem(SearchClList[0][0]);
+						for(int i=0;i<ClMstRt.length;i++) {
+							SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
+							SearchClList[1][i+1] = "" + ClMstRt[i][0];
+							SearchClList[2][i+1] = "" + ClMstRt[i][5];
+							TB_MainClient.addItem(SearchClList[0][i+1]);
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//コード変更を許可する
+		CdRenew_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				TB_WHCD.setEnabled(true);
+				TB_ShippingCompanyCd.setEnabled(true);
+				TB_UserCd.setEnabled(true);
+			}
+		});
+		
+		//新規登録ボタン
+		NewCreate_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00031UserMstRenewAndCreate.UserMstRenewAndCreate(0, 0,"","","");
+			}
+		});
+		
+		
 		//ユーザーCDの存在確認押下時の挙動
 		Check_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
@@ -358,7 +525,7 @@ public class WM00031UserMstRenewAndCreate{
 							}
 							if(KickFg) {
 								KickFg = false;
-								int option = JOptionPane.showConfirmDialog(null, "既に登録されているユーザーコードです\\現在の登録情報をセットしますか？","更新確認", JOptionPane.YES_NO_OPTION,
+								int option = JOptionPane.showConfirmDialog(null, "既に登録されているユーザーコードです\n現在の登録情報をセットしますか？","更新確認", JOptionPane.YES_NO_OPTION,
 									      JOptionPane.WARNING_MESSAGE);
 								if (option == JOptionPane.YES_OPTION){
 									KickFg = true;
@@ -379,8 +546,8 @@ public class WM00031UserMstRenewAndCreate{
 										}
 									}
 									
-									for(int i=0;i<B00100DefaultVariable.SearchClList[1].length;i++){
-										if((""+B00100DefaultVariable.SearchClList[1][i]).equals(""+UserMstRt[0][30])){
+									for(int i=0;i<SearchClList[1].length;i++){
+										if((""+SearchClList[1][i]).equals(""+UserMstRt[0][30])){
 											TB_MainClient.setSelectedIndex(i);
 										}
 									}
@@ -440,7 +607,7 @@ public class WM00031UserMstRenewAndCreate{
 					RenewFg = false;
 					String GetWHCD				= ""+B00100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];								//倉庫コード
 					String GetShippingCompanyCd	= ""+B00100DefaultVariable.ShippingCompanyList[1][TB_ShippingCompanyCd.getSelectedIndex()];	//運送会社CD
-					String GetMainClient		= ""+B00100DefaultVariable.SearchClList[1][TB_MainClient.getSelectedIndex()];					//主要担当荷主
+					String GetMainClient		= ""+SearchClList[1][TB_MainClient.getSelectedIndex()];										//主要担当荷主
 					String GetAuthorityFG		= ""+B00100DefaultVariable.AuthorityFG[1][TB_AuthorityFG.getSelectedIndex()];					//権限区分
 					String GetDelFg				= ""+B00100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];							//削除区分
 					
@@ -526,7 +693,16 @@ public class WM00031UserMstRenewAndCreate{
 					GetAuthorityFG	= B00020ToolsTextControl.num_only_String(GetAuthorityFG);	if("".equals(GetAuthorityFG)) {GetAuthorityFG   = "0";}
 					GetDelFg		= B00020ToolsTextControl.num_only_String(GetDelFg);	if("".equals(GetDelFg)) {GetDelFg = "0";}
 					
+					GetUserCd		= B00020ToolsTextControl.only1byte_String(GetUserCd);
+					
+					boolean KickFg = false;
+					
 					if(!"".equals(GetWHCD)&&!"".equals(GetShippingCompanyCd)&&!"".equals(GetUserCd)) {
+						KickFg = true;
+					}else {
+						JOptionPane.showMessageDialog(null, "ユーザーコードは必須です");
+					}
+					if(KickFg) {
 						//更新権限のないユーザーを更新してしまうのを防止する
 						ArrayList<String> SearchWHCD = new ArrayList<String>();
 						ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
@@ -564,7 +740,6 @@ public class WM00031UserMstRenewAndCreate{
 									SearchCom,
 									SearchDelFg,
 									AllSearch);
-						boolean KickFg = false;
 						if(0<UserMstRt.length) {
 							if("9".equals(""+UserMstRt[0][5])) {
 								if("9".equals(A00000Main.LoginUserAuthorityFG)) {
@@ -575,6 +750,15 @@ public class WM00031UserMstRenewAndCreate{
 								}
 							}else {
 								KickFg = true;
+							}
+							if(KickFg) {
+								int option = JOptionPane.showConfirmDialog(null, "既に登録されているユーザーコードです\n登録情報で上書きしますか？","更新確認", JOptionPane.YES_NO_OPTION,
+									      JOptionPane.WARNING_MESSAGE);
+								if (option == JOptionPane.YES_OPTION){
+									KickFg = true;
+								}else {
+									KickFg = false;
+								}
 							}
 						}else {
 							KickFg = true;
