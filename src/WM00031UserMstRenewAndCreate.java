@@ -202,8 +202,6 @@ public class WM00031UserMstRenewAndCreate{
 						SearchCom,
 						SearchDelFg,
 						AllSearch);
-
-			
 			
 			if(0<UserMstRt.length) {
 				//権限が9：管理者だった場合、管理者権限でなければ更新させない
@@ -316,14 +314,12 @@ public class WM00031UserMstRenewAndCreate{
 					TB_UserCd.setEnabled(false);
 				}
 			}
-			
 		}
 		
 		TB_EntryDate.setEditable(false);	//データ登録日時
 		TB_UpdateDate.setEditable(false);	//データ更新日時
 		TB_EntryUser.setEditable(false);	//登録者コード
 		TB_UpdateUser.setEditable(false);	//更新者コード
-		
 		
 		main_fm.add(LB_WHCD);
 		main_fm.add(LB_ShippingCompanyCd);
