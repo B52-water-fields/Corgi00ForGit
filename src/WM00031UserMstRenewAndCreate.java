@@ -596,7 +596,6 @@ public class WM00031UserMstRenewAndCreate{
 					}
 					RenewFg = true;
 				}
-				
 			}
 		});
 		
@@ -696,12 +695,40 @@ public class WM00031UserMstRenewAndCreate{
 					GetUserCd		= B00020ToolsTextControl.only1byte_String(GetUserCd);
 					
 					boolean KickFg = false;
-					
-					if(!"".equals(GetWHCD)&&!"".equals(GetShippingCompanyCd)&&!"".equals(GetUserCd)) {
+					//必須チェック
+					if(!"".equals(GetWHCD)&&!"".equals(GetShippingCompanyCd)&&!"".equals(GetUserCd)&&!"".equals(GetUserName01)) {
 						KickFg = true;
 					}else {
-						JOptionPane.showMessageDialog(null, "ユーザーコードは必須です");
+						JOptionPane.showMessageDialog(null, "所属倉庫・所属運送会社・ユーザーコード・ユーザー名は必須です");
+						KickFg = false;
 					}
+					//乗務員でなければパスワード必須
+					if(KickFg) {
+						if("1".equals(GetAuthorityFG)) {
+							KickFg = true;
+						}else {
+							if("".equals(GetPassWord)) {
+								JOptionPane.showMessageDialog(null, "パスワードは必須です");
+								KickFg = false;
+							}else {
+								KickFg = true;
+							}
+						}
+					}
+					//荷主ユーザーの場合主要担当荷主必須
+					if(KickFg) {
+						if("2".equals(GetAuthorityFG)) {
+							if("".equals(GetMainClient)) {
+								JOptionPane.showMessageDialog(null, "荷主ユーザーは荷主を設定してください");
+								KickFg = false;
+							}else {
+								KickFg = true;
+							}
+						}else {
+							KickFg = true;
+						}
+					}
+					
 					if(KickFg) {
 						//更新権限のないユーザーを更新してしまうのを防止する
 						ArrayList<String> SearchWHCD = new ArrayList<String>();
@@ -827,8 +854,8 @@ public class WM00031UserMstRenewAndCreate{
 							main_fm.dispose();
 							UserMstRenewAndCreate(0,0,GetWHCD,GetShippingCompanyCd,GetUserCd);
 						}
-						RenewFg = true;
 					}
+					RenewFg = true;
 				}
 			}
 		});
