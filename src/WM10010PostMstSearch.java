@@ -354,7 +354,7 @@ public class WM10010PostMstSearch{
 								entry_data[i][15] = "";
 							}
 							entry_data[i][16] = ""+MunicipalityRt[i][2];	//JIS市区町村CD5桁
-							entry_data[i][17] = ""+MunicipalityRt[i][2];	//みらいシステム発着地コード
+							entry_data[i][17] = ""+MunicipalityRt[i][2];	//基幹システム発着地コード
 							entry_data[i][18] = now_dtm;	//データ登録日時
 							entry_data[i][19] = now_dtm;	//データ更新日時
 							entry_data[i][20] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
