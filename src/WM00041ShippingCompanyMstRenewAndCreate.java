@@ -274,7 +274,7 @@ public class WM00041ShippingCompanyMstRenewAndCreate{
 					
 					if(!"".equals(GetShippingCompanyName01)) {
 						if("".equals(GetShippingCompanyCd)) {
-							GetShippingCompanyCd = M00030ShippingCompanyMstRt.NewShipingCompanyCdGet();
+							GetShippingCompanyCd = M00030ShippingCompanyMstRt.NewShipingCompanyCdGet(1)[0];
 						}
 						String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
 						

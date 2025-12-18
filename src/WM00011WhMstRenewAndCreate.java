@@ -29,22 +29,22 @@ public class WM00011WhMstRenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 
-		JLabel LB_WHCD  		= B00110FrameParts.JLabelSet(  0, 40,100,20,"倉庫コード:",11,1);
-		JLabel LB_WHName  		= B00110FrameParts.JLabelSet(  0, 65,100,20,"拠点倉庫名:",11,1);
-		JLabel LB_Post  		= B00110FrameParts.JLabelSet(  0, 90,100,20,"拠点倉庫郵便番号:",11,1);
-		JLabel LB_Add01  		= B00110FrameParts.JLabelSet(  0,115,100,20,"拠点倉庫住所1:",11,1);
-		JLabel LB_Add02  		= B00110FrameParts.JLabelSet(  0,140,100,20,"拠点倉庫住所2:",11,1);
-		JLabel LB_Tel 			= B00110FrameParts.JLabelSet(  0,165,100,20,"拠点倉庫電話:",11,1);
-		JLabel LB_Fax  			= B00110FrameParts.JLabelSet(  0,190,100,20,"拠点倉庫FAX:",11,1);
-		JLabel LB_Mail  		= B00110FrameParts.JLabelSet(  0,215,100,20,"拠点倉庫MAIL:",11,1);
-		JLabel LB_Com01  		= B00110FrameParts.JLabelSet(  0,240,100,20,"コメント１:",11,1);
-		JLabel LB_Com02  		= B00110FrameParts.JLabelSet(  0,265,100,20,"コメント２:",11,1);
-		JLabel LB_Com03  		= B00110FrameParts.JLabelSet(  0,290,100,20,"コメント３:",11,1);
-		JLabel LB_PTMSCD  		= B00110FrameParts.JLabelSet(  0,315,100,20,"基幹SysCD:",11,1);
-		JLabel LB_EntryDate  	= B00110FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:",11,1);
-		JLabel LB_UpdateDate  	= B00110FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:",11,1);
-		JLabel LB_EntryUser  	= B00110FrameParts.JLabelSet(  0,390,100,20,"登録者:",11,1);
-		JLabel LB_UpdateUser  	= B00110FrameParts.JLabelSet(  0,415,100,20,"更新者:",11,1);
+		JLabel LB_WHCD  		= B00110FrameParts.JLabelSet(  0, 40,100,20,"倉庫コード:"			,11,1);
+		JLabel LB_WHName  		= B00110FrameParts.JLabelSet(  0, 65,100,20,"拠点倉庫名:"			,11,1);
+		JLabel LB_Post  		= B00110FrameParts.JLabelSet(  0, 90,100,20,"拠点倉庫郵便番号:"	,11,1);
+		JLabel LB_Add01  		= B00110FrameParts.JLabelSet(  0,115,100,20,"拠点倉庫住所1:"		,11,1);
+		JLabel LB_Add02  		= B00110FrameParts.JLabelSet(  0,140,100,20,"拠点倉庫住所2:"		,11,1);
+		JLabel LB_Tel 			= B00110FrameParts.JLabelSet(  0,165,100,20,"拠点倉庫電話:"		,11,1);
+		JLabel LB_Fax  			= B00110FrameParts.JLabelSet(  0,190,100,20,"拠点倉庫FAX:"			,11,1);
+		JLabel LB_Mail  		= B00110FrameParts.JLabelSet(  0,215,100,20,"拠点倉庫MAIL:"		,11,1);
+		JLabel LB_Com01  		= B00110FrameParts.JLabelSet(  0,240,100,20,"コメント１:"			,11,1);
+		JLabel LB_Com02  		= B00110FrameParts.JLabelSet(  0,265,100,20,"コメント２:"			,11,1);
+		JLabel LB_Com03  		= B00110FrameParts.JLabelSet(  0,290,100,20,"コメント３:"			,11,1);
+		JLabel LB_PTMSCD  		= B00110FrameParts.JLabelSet(  0,315,100,20,"基幹SysCD:"			,11,1);
+		JLabel LB_EntryDate  	= B00110FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:"		,11,1);
+		JLabel LB_UpdateDate  	= B00110FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:"		,11,1);
+		JLabel LB_EntryUser  	= B00110FrameParts.JLabelSet(  0,390,100,20,"登録者:"				,11,1);
+		JLabel LB_UpdateUser  	= B00110FrameParts.JLabelSet(  0,415,100,20,"更新者:"				,11,1);
 		
 		final JTextField TB_WHCD  		= B00110FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//倉庫コード
 		final JTextField TB_WHName  	= B00110FrameParts.JTextFieldSet(100, 65,200,20,"",11,0);	//拠点倉庫名

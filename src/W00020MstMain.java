@@ -44,6 +44,10 @@ public class W00020MstMain{
 		JButton ShippingCompanyMst = B00110FrameParts.BtnSet(160,25,130,20,"運送会社",11);
 		PN_AboutALL.add(ShippingCompanyMst);
 		
+		//届先
+		JButton DeliveryMst = B00110FrameParts.BtnSet(440,25,130,20,"届先",11);
+		PN_AboutALL.add(DeliveryMst);
+		
 		//ユーザー
 		JButton UserMst = B00110FrameParts.BtnSet(20,50,130,20,"ユーザー・乗務員",11);
 		PN_AboutALL.add(UserMst);
@@ -59,6 +63,10 @@ public class W00020MstMain{
 		//荷主
 		JButton ClMst = B00110FrameParts.BtnSet(160,75,130,20,"荷主",11);
 		PN_AboutALL.add(ClMst);
+		
+		//運送タイプ
+		JButton DeliveryTypeMst = B00110FrameParts.BtnSet(20,100,130,20,"運送タイプ",11);
+		PN_AboutALL.add(DeliveryTypeMst);
 		
 		//郵便番号
 		JButton PostMst = B00110FrameParts.BtnSet(600,175,130,20,"郵便番号",11);
@@ -91,6 +99,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00040ShippingCompanyMstSearch.ShippingCompanyMstSearch(0, 0);
+			}
+		});
+		
+		//届先
+		DeliveryMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00060DeliveryMstSearch.DeliveryMstSearch(0, 0);
 			}
 		});
 		
@@ -138,6 +158,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00025ClMstSearch.ClMstSearch(0,0) ;
+			}
+		});
+		
+		//運送タイプ
+		DeliveryTypeMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00050DeliveryTypeMstSearch.DeliveryTypeMstSearch(0,0) ;
 			}
 		});
 		

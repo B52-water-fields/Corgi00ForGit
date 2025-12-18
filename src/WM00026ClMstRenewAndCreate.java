@@ -287,7 +287,7 @@ public class WM00026ClMstRenewAndCreate{
 				
 				if(!"".equals(GetCLName01)) {
 					if("".equals(Getcl_cd)) {
-						Getcl_cd = M00011ClMstRt.NewClCdGet();
+						Getcl_cd = M00011ClMstRt.NewClCdGet(1)[0];
 					}
 					
 					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];

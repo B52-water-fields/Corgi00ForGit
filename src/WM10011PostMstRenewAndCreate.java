@@ -19,10 +19,10 @@ public class WM10011PostMstRenewAndCreate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,780,250,"Corgi00郵便番号登録・修正","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,250,"Corgi00郵便番号登録・修正","");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.BtnSet(100,170,100,20,"登録",11);
+		JButton entry_btn = B00110FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);

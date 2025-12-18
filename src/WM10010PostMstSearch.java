@@ -114,6 +114,10 @@ public class WM10010PostMstSearch{
 		JButton CreateSumBtn = B00110FrameParts.BtnSet(	370,660,100,20,"一括登録",11);
 		main_fm.add(CreateSumBtn);
 		
+		//JIS⇒届先ボタン
+		JButton JisToDeliveryBtn = B00110FrameParts.BtnSet(490,660,100,20,"JIS⇒届先Mst",10);
+		main_fm.add(JisToDeliveryBtn);
+		
 		main_fm.setVisible(true);
 		
 		RenewFg = true;
@@ -262,6 +266,115 @@ public class WM10010PostMstSearch{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				W00020MstMain.MstMain(0, 0);
+			}
+		});
+		
+		//JIS⇒届先ボタン
+		//JISコードベースで届先マスタに登録する
+		JisToDeliveryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					ArrayList<String> SearchName = new ArrayList<String>();
+					boolean AllSearch = true;
+					Object[][] MunicipalityRt = M10010PostMstRt.MunicipalityRt(SearchName,AllSearch);
+					
+					String[][] SetString = {
+									 {"DECD"			,"1","1"}	//納品先コード
+									,{"DepartmentCd"	,"1","1"}	//部署CD
+									,{"DEName01"		,"1","1"}	//納品先名1
+									,{"DEName02"		,"1","1"}	//納品先名2
+									,{"DEName03"		,"1","1"}	//納品先名3
+									,{"Post"			,"1","1"}	//納品先郵便
+									,{"Add01"			,"1","1"}	//納品先住所1
+									,{"Add02"			,"1","1"}	//納品先住所2
+									,{"Add03"			,"1","1"}	//納品先住所3
+									,{"Tel"				,"1","1"}	//納品先電話
+									,{"Fax"				,"1","1"}	//納品先FAX
+									,{"Mail"			,"1","1"}	//納品先MAIL
+									,{"Com01"			,"1","1"}	//コメント1
+									,{"Com02"			,"1","1"}	//コメント2
+									,{"Com03"			,"1","1"}	//コメント3
+									,{"PrefecturesCd"	,"1","1"}	//JIS県CD2桁
+									,{"MunicipalityCd"	,"1","1"}	//JIS市区町村CD5桁
+									,{"PTMSCD"			,"1","1"}	//基幹システム発着地コード
+									,{"EntryDate"		,"1","0"}	//データ登録日時
+									,{"UpdateDate"		,"1","1"}	//データ更新日時
+									,{"EntryUser"		,"1","0"}	//登録者コード
+									,{"UpdateUser"		,"1","1"}	//更新者コード
+									,{"FirstClient"		,"1","0"}	//登録した荷主CD
+									,{"LastClient"		,"1","1"}	//更新した荷主CD
+									,{"DelFg"			,"1","1"}	//削除区分
+									};
+					
+					
+					
+					String tgt_table = "KM0040_DELIVERYMST";
+					String[][] field_name = new String[SetString.length][3];
+					String[][] entry_data = new String[MunicipalityRt.length][SetString.length];
+					String[] judg_field = new String[2];
+					String[][] judg_data = new String[MunicipalityRt.length][2];
+					String TgtDB = "NYANKO";
+					int non_msg_fg = 0;
+					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					
+					judg_field[0] = "DECD";
+					judg_field[1] = "DepartmentCd";
+					
+					for(int i=0;i<SetString.length;i++) {
+						field_name[i][0] = SetString[i][0];
+						field_name[i][1] = SetString[i][1];
+						field_name[i][2] = SetString[i][2];
+					}
+					
+					if(0<MunicipalityRt.length) {
+						for(int i=0;i<MunicipalityRt.length;i++) {
+							judg_data[i][0] = "JIS"+MunicipalityRt[i][2];
+							judg_data[i][1] = "JIS";
+							
+							entry_data[i][ 0] = "JIS"+MunicipalityRt[i][2];	//納品先コード
+							entry_data[i][ 1] = "JIS";	//部署CD
+							entry_data[i][ 2] = "" + MunicipalityRt[i][0] + MunicipalityRt[i][1];	//納品先名1
+							entry_data[i][ 3] = "";	//納品先名2
+							entry_data[i][ 4] = "";	//納品先名3
+							entry_data[i][ 5] = "";	//納品先郵便
+							entry_data[i][ 6] = "";	//納品先住所1
+							entry_data[i][ 7] = "";	//納品先住所2
+							entry_data[i][ 8] = "";	//納品先住所3
+							entry_data[i][ 9] = "";	//納品先電話
+							entry_data[i][10] = "";	//納品先FAX
+							entry_data[i][11] = "";	//納品先MAIL
+							entry_data[i][12] = "";	//コメント1
+							entry_data[i][13] = "";	//コメント2
+							entry_data[i][14] = "";	//コメント3
+							if(2<(""+MunicipalityRt[i][2]).length()) {
+								entry_data[i][15] = (""+MunicipalityRt[i][2]).substring(0,2);	//JIS県CD2桁
+							}else {
+								entry_data[i][15] = "";
+							}
+							entry_data[i][16] = ""+MunicipalityRt[i][2];	//JIS市区町村CD5桁
+							entry_data[i][17] = ""+MunicipalityRt[i][2];	//みらいシステム発着地コード
+							entry_data[i][18] = now_dtm;	//データ登録日時
+							entry_data[i][19] = now_dtm;	//データ更新日時
+							entry_data[i][20] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
+							entry_data[i][21] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
+							entry_data[i][22] = "" + A00000Main.ClCd;	//登録した荷主CD
+							entry_data[i][23] = "" + A00000Main.ClCd;	//更新した荷主CD
+							entry_data[i][24] = "0";	//削除区分
+							
+
+						}
+						A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					}
+					
+					
+					
+					
+
+					
+					RenewFg = true;
+				}
 			}
 		});
 	}

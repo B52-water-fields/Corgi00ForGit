@@ -202,7 +202,7 @@ public class M00001WhMstRt{
 	}
 	
 	//倉庫コードを自動採番する
-	public static String NewWhCdGet() {
+	public static String[] NewWhCdGet(int NeedCount) {
 		//倉庫マスタ取得
 		ArrayList SearchWHCD = new ArrayList();
 		ArrayList SearchWHName = new ArrayList();
@@ -233,9 +233,13 @@ public class M00001WhMstRt{
     			}
     		}
     	}
-    	WhNo = WhNo+1;
-    	String rt = "0000000"+WhNo;
-    	rt = "ATWH"+rt.substring(rt.length()-7,rt.length());
+    	
+    	String[] rt = new String[NeedCount];
+    	for(int i=0;i<NeedCount;i++) {
+	    	WhNo = WhNo+1;
+	    	rt[i] = "0000000"+WhNo;
+	    	rt[i] = "ATWH"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    	}
     	
     	return rt;
 	}

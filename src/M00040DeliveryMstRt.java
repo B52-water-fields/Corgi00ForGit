@@ -49,6 +49,7 @@ public class M00040DeliveryMstRt{
 			ArrayList<String> SearchCom,			//検索条件届先コメント
 			ArrayList<String> SearchPrefecturesCd,	//検索条件届先県CD
 			ArrayList<String> SearchMunicipalityCd,	//検索条件届先市区町村CD
+			ArrayList<String> SearchDelFg,			//検索条件削除区分
 			boolean AllSearch
 			){
 		Object[][] rt = new Object[0][25];
@@ -190,11 +191,14 @@ public class M00040DeliveryMstRt{
 			}
 			sql= sql + ")\n";
 		}
-		
-		
-		if(AllSearch) {
-		}else {
-			sql = sql + " and KM0040_DELIVERYMST.DelFg = '0'";
+		if(null!=SearchDelFg && 0<SearchDelFg.size()){	//検索条件届先市区町村CD
+			SearchKick=true;
+			sql = sql + " and(";
+			for(int i=0;i<SearchDelFg.size();i++){
+				if(0<i){sql = sql + " or ";}
+				sql = sql + "KM0040_DELIVERYMST.DelFg ='"+SearchDelFg.get(i)+"'";
+			}
+			sql= sql + ")\n";
 		}
 		
 		sql = sql + " order by KM0040_DELIVERYMST.DECD,KM0040_DELIVERYMST.DepartmentCd";
@@ -262,4 +266,61 @@ public class M00040DeliveryMstRt{
 		}
 		return rt;
 	}
+	
+	public static String[] DeliveryCdGet(int NeedCount) {
+		ArrayList<String> SearchDECD = new <String>ArrayList();
+		ArrayList<String> SearchDepartmentCd = new <String>ArrayList();
+		ArrayList<String> SearchDEName = new <String>ArrayList();
+		ArrayList<String> SearchPost = new <String>ArrayList();
+		ArrayList<String> SearchAdd = new <String>ArrayList();
+		ArrayList<String> SearchTel = new <String>ArrayList();
+		ArrayList<String> SearchFax = new <String>ArrayList();
+		ArrayList<String> SearchMail = new <String>ArrayList();
+		ArrayList<String> SearchCom = new <String>ArrayList();
+		ArrayList<String> SearchPrefecturesCd = new <String>ArrayList();
+		ArrayList<String> SearchMunicipalityCd = new <String>ArrayList();
+		ArrayList<String> SearchDelFg = new <String>ArrayList();
+		boolean AllSearch = true;
+    	
+    	Object[][] DeliveryMstRt = DeliveryMstRt(
+    			SearchDECD,				//検索条件届先CD
+    			SearchDepartmentCd,		//検索条件届先部署CD
+    			SearchDEName,			//検索条件届先名
+    			SearchPost,				//検索条件届先郵便
+    			SearchAdd,				//検索条件届先住所
+    			SearchTel,				//検索条件届先TEL
+    			SearchFax,				//検索条件届先FAX
+    			SearchMail,				//検索条件届先MAIL
+    			SearchCom,				//検索条件届先コメント
+    			SearchPrefecturesCd,	//検索条件届先県CD
+    			SearchMunicipalityCd,	//検索条件届先市区町村CD
+    			SearchDelFg,			//検索条件削除区分
+    			AllSearch
+    			);
+    	
+    	int DENo = 0;
+    	
+    	for(int i=0;i<DeliveryMstRt.length;i++) {
+    		if("AT".equals((""+DeliveryMstRt[i][0]).substring(0,2))&&11==(""+DeliveryMstRt[i][0]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][0]);
+    			if(9==WST.length()) {
+    				int wint = Integer.parseInt(WST);
+    				if(DENo<wint) {
+    					DENo=wint;
+    				}
+    			}
+    		}
+    	}
+
+    	String[] rt = new String[NeedCount];
+    	for(int i=0;i<NeedCount;i++) {
+    		DENo = DENo+1;
+	    	rt[i] = "000000000"+DENo;
+	    	rt[i] = "AT"+rt[i].substring(rt[i].length()-9,rt[i].length());
+    	}
+    	
+    	return rt;
+	}
+	
+	
 }

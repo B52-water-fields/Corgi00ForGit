@@ -7,7 +7,8 @@ public class M00050DeliveryTypeMstRt{
 	//戻り値カラム
 	public static Object[][] RtSettingDeliveryTypeMstRt(){
 		Object[][] RtSettingDeliveryTypeMstRt = {
-				 {"DeliveryTypeCd"		,(int) 1	,"String"	,"運送タイプコード"}
+				 {"DeliveryTypeNo"		,(int) 0	,"String"	,"タイプ番号"}
+				,{"DeliveryTypeCd"		,(int) 1	,"String"	,"運送タイプコード"}
 				,{"DeliveryTypeName"	,(int) 2	,"String"	,"運送タイプ名"}
 				,{"EntryDate"			,(int) 3	,"String"	,"データ登録日時"}
 				,{"UpdateDate"			,(int) 4	,"String"	,"データ更新日時"}

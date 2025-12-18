@@ -227,7 +227,7 @@ public class WM00021ClGpMstRenewAndCrwate{
 				
 				if(!"".equals(GetCLGpName01)) {
 					if("".equals(GetClGpCD)) {
-						GetClGpCD = M00010ClGpMstRt.NewWhCdGet();
+						GetClGpCD = M00010ClGpMstRt.NewWhCdGet(1)[0];
 					}
 					
 					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];

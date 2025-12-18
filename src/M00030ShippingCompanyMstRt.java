@@ -212,7 +212,7 @@ public class M00030ShippingCompanyMstRt{
 		return rt;
 	}
 	
-	public static String NewShipingCompanyCdGet() {
+	public static String[] NewShipingCompanyCdGet(int NeedCount) {
 		ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
 		ArrayList<String> SearchCompanyName = new ArrayList<String>();
 		ArrayList<String> SearchPost = new ArrayList<String>();
@@ -234,22 +234,26 @@ public class M00030ShippingCompanyMstRt{
     			SearchCom,
     			AllSearch);
     	
-    	int ClientNo = 0;
+    	int SCNo = 0;
     	
     	for(int i=0;i<ShippingCompanyMstRt.length;i++) {
     		if("ATSC".equals((""+ShippingCompanyMstRt[i][0]).substring(0,4))&&11==(""+ShippingCompanyMstRt[i][0]).length()) {
     			String WST = B00020ToolsTextControl.num_only_String(""+ShippingCompanyMstRt[i][0]);
     			if(7==WST.length()) {
     				int wint = Integer.parseInt(WST);
-    				if(ClientNo<wint) {
-    					ClientNo=wint;
+    				if(SCNo<wint) {
+    					SCNo=wint;
     				}
     			}
     		}
     	}
-    	ClientNo = ClientNo+1;
-    	String rt = "0000000"+ClientNo;
-    	rt = "ATSC"+rt.substring(rt.length()-7,rt.length());
+
+    	String[] rt = new String[NeedCount];
+    	for(int i=0;i<NeedCount;i++) {
+    		SCNo = SCNo+1;
+	    	rt[i] = "0000000"+SCNo;
+	    	rt[i] = "ATSC"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    	}
     	
     	return rt;
 	}

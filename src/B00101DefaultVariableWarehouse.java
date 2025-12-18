@@ -36,7 +36,7 @@ public class B00101DefaultVariableWarehouse{
 		if(null==GetPTMSCD){GetPTMSCD="";}	//基幹SysCD
 		
 		if(null==GetWHCD||"".equals(GetWHCD)) {
-			GetWHCD = M00001WhMstRt.NewWhCdGet();
+			GetWHCD = M00001WhMstRt.NewWhCdGet(1)[0];
 		}
 		String tgt_table = "KM0010_WHMST";
 		String[][] field_name = new String[16][3];
@@ -176,7 +176,7 @@ public class B00101DefaultVariableWarehouse{
 			
 			if(0>=ClMstRt.length) {
 		    	//新規荷主コードを採番
-				String GetClCd = M00011ClMstRt.NewClCdGet();
+				String GetClCd = M00011ClMstRt.NewClCdGet(1)[0];
 				
 				String tgt_table = "KM0030_CLIENTMST";
 				String[][] field_name = new String[23][3];

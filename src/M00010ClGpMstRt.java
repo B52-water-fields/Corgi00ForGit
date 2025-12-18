@@ -208,7 +208,7 @@ public class M00010ClGpMstRt{
 	}
 	
 	//荷主グループコードを自動採番する
-	public static String NewWhCdGet() {
+	public static String[] NewWhCdGet(int NeedCount) {
 		//荷主グループマスタ取得
 		ArrayList<String> SearchClGpCD = new ArrayList<String>();
 		ArrayList<String> SearchCLGpName = new ArrayList<String>();
@@ -237,9 +237,13 @@ public class M00010ClGpMstRt{
     			}
     		}
     	}
-    	ClGpNo = ClGpNo+1;
-    	String rt = "0000000"+ClGpNo;
-    	rt = "ATGR"+rt.substring(rt.length()-7,rt.length());
+    	
+    	String[] rt = new String[NeedCount];
+    	for(int i=0;i<NeedCount;i++) {
+    		ClGpNo = ClGpNo+1;
+	    	rt[i] = "0000000"+ClGpNo;
+	    	rt[i] = "ATGR"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    	}
     	
     	return rt;
 	}

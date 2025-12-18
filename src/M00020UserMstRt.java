@@ -322,7 +322,7 @@ public class M00020UserMstRt{
 		}
 		return rt;
 	}
-	public static String NewUserCdGet() {
+	public static String[] NewUserCdGet(int NeedCount) {
 		ArrayList<String> SearchWHCD = new ArrayList<String>();
 		ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
 		ArrayList<String> SearchAuthorityFG = new ArrayList<String>();
@@ -357,9 +357,13 @@ public class M00020UserMstRt{
     			}
     		}
     	}
-    	UserNo = UserNo+1;
-    	String rt = "0000000"+UserNo;
-    	rt = "ATCL"+rt.substring(rt.length()-7,rt.length());
+
+    	String[] rt = new String[NeedCount];
+    	for(int i=0;i<NeedCount;i++) {
+    		UserNo = UserNo+1;
+	    	rt[i] = "0000000"+UserNo;
+	    	rt[i] = "ATUS"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    	}
     	
     	return rt;
 	}

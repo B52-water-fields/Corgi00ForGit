@@ -250,7 +250,7 @@ public class M00011ClMstRt{
 		return rt;
 	}
 	
-	public static String NewClCdGet() {
+	public static String[] NewClCdGet(int NeedCount) {
 		ArrayList<String> SearchClGpCD = new ArrayList<String>();
 		ArrayList<String> SearchCLCD = new ArrayList<String>();
     	ArrayList<String> SearchCLName = new ArrayList<String>();
@@ -280,9 +280,13 @@ public class M00011ClMstRt{
     			}
     		}
     	}
-    	ClientNo = ClientNo+1;
-    	String rt = "0000000"+ClientNo;
-    	rt = "ATCL"+rt.substring(rt.length()-7,rt.length());
+
+    	String[] rt = new String[NeedCount];
+    	for(int i=0;i<NeedCount;i++) {
+    		ClientNo = ClientNo+1;
+	    	rt[i] = "0000000"+ClientNo;
+	    	rt[i] = "ATCL"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    	}
     	
     	return rt;
 	}
