@@ -367,12 +367,6 @@ public class WM10010PostMstSearch{
 						}
 						A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					}
-					
-					
-					
-					
-
-					
 					RenewFg = true;
 				}
 			}
