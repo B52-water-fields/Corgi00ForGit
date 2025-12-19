@@ -186,13 +186,14 @@ public class B00060ToolsExcellControl{
 						sheet.removeRow(row);
 					}
 					//対象シートの各セルに値をセット
+					DataFormat format = book.createDataFormat();
+			    	CellStyle  style = book.createCellStyle();
+					
 					for(int i01=0;i01<SET.length;i01++){
 						Row row = sheet.createRow(i01);
 						for(int i02=0;i02<SET[i01].length;i02++){
 						    Cell set_cell = row.createCell(i02);
 						    if(SET[i01][i02]==null){SET[i01][i02]="";}
-					    	DataFormat format = book.createDataFormat();
-					    	CellStyle  style = book.createCellStyle();
 					    	if(null==SET[i01][i02]) {SET[i01][i02]="";}
 						    if(MFG==0){
 						    	set_cell.setCellValue(SET[i01][i02]);
