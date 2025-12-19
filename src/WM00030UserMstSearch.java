@@ -144,6 +144,10 @@ public class WM00030UserMstSearch{
 		PN_Search.add(LB2_SearchMail);
 		PN_Search.add(LB2_SearchCom);
 		
+		//検索ボタン
+		JButton SearchBtn = B00110FrameParts.BtnSet(		400,150,100,20,"検索",11);
+		PN_Search.add(SearchBtn);
+		
 		String[] columnNames01 = {
 				"FG"
 				,"倉庫CD"
@@ -232,23 +236,23 @@ public class WM00030UserMstSearch{
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(130,660,100,20,"修正",11);
+		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
-		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(400,150,100,20,"検索",11);
-		PN_Search.add(SearchBtn);
+		//Excelボタン
+		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		main_fm.add(ExcelBtn);
 		
 		main_fm.setVisible(true);
 		
@@ -469,6 +473,17 @@ public class WM00030UserMstSearch{
 				if(RenewFg) {
 					RenewFg = false;
 					B10010TableControl.TableOutPutCsv("出力先選択","ユーザーマスタ検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//エクセル出力ボタン押下時の挙動
+		ExcelBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					B10010TableControl.TableOutPutExcel("出力先選択","ユーザーマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
