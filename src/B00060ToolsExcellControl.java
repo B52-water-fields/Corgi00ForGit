@@ -35,7 +35,7 @@ public class B00060ToolsExcellControl{
 					Workbook book = new XSSFWorkbook();
 					FileOutputStream out = new FileOutputStream(FP);
 					Sheet sheet = book.createSheet("create_book_wook");
-					//A1セルだけ作るって値をセット
+					//A1セルだけ作って値をセット
 				    Row row = sheet.createRow(0);
 				    Cell a1 = row.createCell(0);
 				    a1.setCellValue("エクセル新規作成初期シート");

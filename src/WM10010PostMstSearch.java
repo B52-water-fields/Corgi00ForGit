@@ -118,6 +118,10 @@ public class WM10010PostMstSearch{
 		JButton JisToDeliveryBtn = B00110FrameParts.BtnSet(490,660,100,20,"JIS⇒届先Mst",10);
 		main_fm.add(JisToDeliveryBtn);
 		
+		//エクセル出漁ボタン
+		JButton ExcelBtn = B00110FrameParts.BtnSet(	610,660,100,20,"Excel出力",11);
+		main_fm.add(ExcelBtn);
+		
 		main_fm.setVisible(true);
 		
 		RenewFg = true;
@@ -252,6 +256,16 @@ public class WM10010PostMstSearch{
 				if(RenewFg) {
 					RenewFg = false;
 					B10010TableControl.TableOutPutCsv("出力先選択","郵便番号検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		//エクセル出力ボタン押下時の挙動
+		ExcelBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					B10010TableControl.TableOutPutExcel("出力先選択","郵便番号検索結果",tb01);
 					RenewFg = true;
 				}
 			}

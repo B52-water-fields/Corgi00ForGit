@@ -268,18 +268,18 @@ public class M00040DeliveryMstRt{
 	}
 	
 	public static String[] DeliveryCdGet(int NeedCount) {
-		ArrayList<String> SearchDECD = new <String>ArrayList();
-		ArrayList<String> SearchDepartmentCd = new <String>ArrayList();
-		ArrayList<String> SearchDEName = new <String>ArrayList();
-		ArrayList<String> SearchPost = new <String>ArrayList();
-		ArrayList<String> SearchAdd = new <String>ArrayList();
-		ArrayList<String> SearchTel = new <String>ArrayList();
-		ArrayList<String> SearchFax = new <String>ArrayList();
-		ArrayList<String> SearchMail = new <String>ArrayList();
-		ArrayList<String> SearchCom = new <String>ArrayList();
-		ArrayList<String> SearchPrefecturesCd = new <String>ArrayList();
-		ArrayList<String> SearchMunicipalityCd = new <String>ArrayList();
-		ArrayList<String> SearchDelFg = new <String>ArrayList();
+		ArrayList<String> SearchDECD = new ArrayList<String>();
+		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
+		ArrayList<String> SearchDEName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
+		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
+		ArrayList<String> SearchDelFg = new ArrayList<String>();
 		boolean AllSearch = true;
     	
     	Object[][] DeliveryMstRt = DeliveryMstRt(
