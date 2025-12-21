@@ -225,7 +225,7 @@ public class WM00020ClGlpMstSearch{
 					ArrayList<String> SearchMail = new ArrayList<String>();
 					ArrayList<String> SearchCom = new ArrayList<String>();
 					boolean AllSearch = true;
-					System.out.println(GetSearchAdd+":ADD");
+					
 					if(!"".equals(GetSearchClGpCD)){SearchClGpCD.add(GetSearchClGpCD);}
 					if(!"".equals(GetSearchCLGpName)){SearchCLGpName.add(GetSearchCLGpName);}
 					if(!"".equals(GetSearchPost)){SearchPost.add(GetSearchPost);}

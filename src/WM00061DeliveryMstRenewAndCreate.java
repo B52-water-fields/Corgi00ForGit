@@ -799,42 +799,58 @@ public class WM00061DeliveryMstRenewAndCreate{
 		TB_Post.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
-				if(RenewFg) {
-					RenewFg = false;
-					String GetPost = TB_Post.getText();	if(null==GetPost) {GetPost="";}
-					GetPost = B00020ToolsTextControl.Trim(B00020ToolsTextControl.num_only_String(GetPost));
-					TB_Add01.setText("");
-					TB_Add02.setText("");
-					TB_Add03.setText("");
-					TB_PrefecturesCd.setText("");
-					TB_MunicipalityCd.setText("");
+				String GetPost = TB_Post.getText();	if(null==GetPost) {GetPost="";}
+				GetPost = B00020ToolsTextControl.Trim(B00020ToolsTextControl.num_only_String(GetPost));
+				TB_Post.setText(GetPost);
+				TB_PrefecturesCd.setText("");
+				TB_MunicipalityCd.setText("");
+				
+				ArrayList<String> SearchPOST = new ArrayList<String>();
+				ArrayList<String> SearchAdd = new ArrayList<String>();
+				boolean AllSearch = false;
+				
+				if(!"".equals(GetPost)) {
+					SearchPOST.add(GetPost);
+				}
+				
+				Object[][] PostRt = M10010PostMstRt.PostRt(
+							SearchPOST,
+							SearchAdd,
+							AllSearch);
+				
+				if(0<PostRt.length) {
+					boolean KickFg = false;
+					String GetAdd01 = TB_Add01.getText();	if(null==GetAdd01) {GetAdd01="";}
+					String GetAdd02 = TB_Add02.getText();	if(null==GetAdd02) {GetAdd02="";}
 					
-					TB_Post.setText(GetPost);
-					
-					ArrayList<String> SearchPOST = new ArrayList<String>();
-					ArrayList<String> SearchAdd = new ArrayList<String>();
-					boolean AllSearch = false;
-					
-					if(!"".equals(GetPost)) {
-						SearchPOST.add(GetPost);
+					if("".equals(GetAdd01)&&"".equals(GetAdd02)) {
+						KickFg = true;
 					}
 					
-					Object[][] PostRt = M10010PostMstRt.PostRt(
-								SearchPOST,
-								SearchAdd,
-								AllSearch);
+					if(!KickFg) {
+						int option = JOptionPane.showConfirmDialog(null, "郵便番号を元に住所上書きしますか？","登録確認", JOptionPane.YES_NO_OPTION,
+							      JOptionPane.WARNING_MESSAGE);
+						if (option == JOptionPane.YES_OPTION){
+							KickFg = true;
+						}else {
+							KickFg = false;
+						}
+					}
 					
-					if(0<PostRt.length) {
+					if(KickFg) {
+						TB_Add01.setText("");
+						TB_Add02.setText("");
+						TB_Add03.setText("");
+						
 						TB_Add01.setText(""+PostRt[0][1]+PostRt[0][2]);
 						TB_Add02.setText(""+PostRt[0][3]);
-						if(2<(""+PostRt[0][4]).length()) {
-							TB_PrefecturesCd.setText((""+PostRt[0][4]).substring(0,2));
-						}else {
-							TB_PrefecturesCd.setText("");
-						}
-						TB_MunicipalityCd.setText(""+PostRt[0][4]);
 					}
-					RenewFg = true;
+					if(2<(""+PostRt[0][4]).length()) {
+						TB_PrefecturesCd.setText((""+PostRt[0][4]).substring(0,2));
+					}else {
+						TB_PrefecturesCd.setText("");
+					}
+					TB_MunicipalityCd.setText(""+PostRt[0][4]);
 				}
 			}
 		});
