@@ -193,6 +193,8 @@ public class WM00030UserMstSearch{
 		tb01.setRowHeight(20*A00000Main.Mul/A00000Main.Div);
 		tb01.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 12*A00000Main.Mul/A00000Main.Div));
 		
+		B10010TableControl.AddSort(tb01,tableModel_ms01);
+		
 		DefaultTableColumnModel columnModel01
 		= (DefaultTableColumnModel)tb01.getColumnModel();
 		
@@ -369,7 +371,7 @@ public class WM00030UserMstSearch{
 						SetOb[ 6] = ""+UserMstRt[i][10];	//ユーザー名1
 						SetOb[ 7] = ""+UserMstRt[i][11];	//ユーザー名2
 						SetOb[ 8] = ""+UserMstRt[i][12];	//ユーザー名3
-						SetOb[ 9] = ""+UserMstRt[i][5];		//権限区分
+						SetOb[ 9] = (int)UserMstRt[i][5];	//権限区分
 						SetOb[10] = ""+UserMstRt[i][6];		//標準車輛CD
 						SetOb[11] = ""+UserMstRt[i][7];		//車両名称01
 						SetOb[12] = ""+UserMstRt[i][8];		//車両名称02
@@ -389,7 +391,7 @@ public class WM00030UserMstSearch{
 						SetOb[26] = ""+UserMstRt[i][23];	//データ登録日時
 						SetOb[27] = ""+UserMstRt[i][24];	//データ更新日時
 						SetOb[28] = ""+UserMstRt[i][27];	//基幹システムユーザーコード
-						SetOb[29] = ""+UserMstRt[i][28];	//削除区分
+						SetOb[29] = (int)UserMstRt[i][28];	//削除区分
 						SetOb[30] = ""+UserMstRt[i][30];	//主要担当荷主CD
 						SetOb[31] = ""+UserMstRt[i][31];	//主要担当荷主名
 						tableModel_ms01.addRow(SetOb);

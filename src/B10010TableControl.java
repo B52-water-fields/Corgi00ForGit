@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class B10010TableControl{
 	//明細業表示テーブル制御
@@ -14,23 +16,10 @@ public class B10010TableControl{
 		MyTableModel01(String[] columnNames, int rowNum){
 			super(columnNames, rowNum);
 		}
-		//RenewTgtのデータは項目のクラス取得する
+		//項目のクラス取得する
 		public Class getColumnClass(int col){
-			boolean Renew = false;
-			if(null==RenewTgt) {RenewTgt = new int[0];}
-			for(int i=0;i<RenewTgt.length;i++) {
-				if(RenewTgt[i]==col) {
-					Renew = true;
-				}
-			}
-			
-			if(Renew){
-				Object ob = getValueAt(0,col);
-				return ob.getClass();
-			}else{
-				Object ob = new Object();
-				return ob.getClass();
-			}
+			Object ob = getValueAt(0,col);
+			return ob.getClass();
 		}
 		//RenewTgt以外編集不可
 		public boolean isCellEditable(int row, int column) {
@@ -50,7 +39,9 @@ public class B10010TableControl{
 			}
 		}
 	}
-	
+	public static void AddSort(JTable TgtTable,TableModel TgtTableModel) {
+		TgtTable.setRowSorter(new TableRowSorter(TgtTableModel));
+	}
 	//テーブル情報をcsv出力する
 	public static void TableOutPutCsv(String SelectMSG,String OutPutName,JTable TgtTable) {
 		String Selected = B00080FolderSelect.FolderSelect(SelectMSG);

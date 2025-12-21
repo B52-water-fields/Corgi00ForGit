@@ -1016,4 +1016,100 @@ public class B00100DefaultVariable{
 		B00100DefaultVariable.WhList();
 		B00101DefaultVariableWarehouse.DefaultVariableWarehouse("0000");
 	}
+	
+	
+	//zeusログイン時、郵便番号0000000作る
+	public static void Post0000000(){
+		String tgt_table = "M0010_PostMst";
+		String[][] field_name = new String[5][3];
+		String[][] entry_data = new String[1][5];
+		String[] judg_field = new String[1];
+		String[][] judg_data = new String[1][1];
+		String TgtDB = "POST";
+		int non_msg_fg = 1;
+		
+		judg_field[0] = "POST";					//郵便番号
+		
+		field_name[0][0] = "POST";				//郵便番号
+		field_name[1][0] = "PREFECTURES";		//県
+		field_name[2][0] = "MUNICI01";			//市区町村
+		field_name[3][0] = "MUNICI02";			//町丁目
+		field_name[4][0] = "MUNICIPALITY_CD";	//市区町村CD
+
+		field_name[0][1] = "1";	//郵便番号
+		field_name[1][1] = "1";	//県
+		field_name[2][1] = "1";	//市区町村
+		field_name[3][1] = "1";	//町丁目
+		field_name[4][1] = "1";	//市区町村CD
+
+		field_name[0][2] = "0";	//郵便番号
+		field_name[1][2] = "0";	//県
+		field_name[2][2] = "0";	//市区町村
+		field_name[3][2] = "0";	//町丁目
+		field_name[4][2] = "0";	//市区町村CD
+		
+		judg_data[0][0] = "0000000";	//郵便番号
+		
+		entry_data[0][0] = "0000000";	//郵便番号
+		entry_data[0][1] = "Yggdrasill";//県
+		entry_data[0][2] = "Glitnir";	//市区町村
+		entry_data[0][3] = "Walhalla";	//町丁目
+		entry_data[0][4] = "00000";	//市区町村CD
+		
+		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+	}
+	//zeusログイン時、強制出荷用届け先0000000作る
+	public static void ForcedShipmentCD(){
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String[][] SetString = {
+				 {"DECD"			,"1","0","ForcedShip"}	//納品先コード
+				,{"DepartmentCd"	,"1","0","0000"}		//部署CD
+				,{"DEName01"		,"1","0","強制出荷"}	//納品先名1
+				,{"DEName02"		,"1","0",""}			//納品先名2
+				,{"DEName03"		,"1","0",""}			//納品先名3
+				,{"Post"			,"1","0","0000000"}		//納品先郵便
+				,{"Add01"			,"1","0","Walhalla　Glitnir　Yggdrasill"}	//納品先住所1
+				,{"Add02"			,"1","0",""}		//納品先住所2
+				,{"Add03"			,"1","0",""}		//納品先住所3
+				,{"Tel"				,"1","0",""}		//納品先電話
+				,{"Fax"				,"1","0",""}		//納品先FAX
+				,{"Mail"			,"1","0",""}		//納品先MAIL
+				,{"Com01"			,"1","0",""}		//コメント1
+				,{"Com02"			,"1","0",""}		//コメント2
+				,{"Com03"			,"1","0",""}		//コメント3
+				,{"PrefecturesCd"	,"1","0","00"}		//JIS県CD2桁
+				,{"MunicipalityCd"	,"1","0","00000"}	//JIS市区町村CD5桁
+				,{"PTMSCD"			,"1","0",""}		//基幹システム発着地コード
+				,{"EntryDate"		,"1","0",now_dtm}	//データ登録日時
+				,{"UpdateDate"		,"1","0",now_dtm}	//データ更新日時
+				,{"EntryUser"		,"1","0","(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//登録者コード
+				,{"UpdateUser"		,"1","0","(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//更新者コード
+				,{"FirstClient"		,"1","0",A00000Main.ClCd}	//登録した荷主CD
+				,{"LastClient"		,"1","0",A00000Main.ClCd}	//更新した荷主CD
+				,{"DelFg"			,"1","0","0"}	//削除区分
+		};
+		
+		String tgt_table = "KM0040_DELIVERYMST";
+		String[][] field_name = new String[SetString.length][3];
+		String[][] entry_data = new String[1][SetString.length];
+		String[] judg_field = new String[2];
+		String[][] judg_data = new String[1][2];
+		String TgtDB = "NYANKO";
+		int non_msg_fg = 1;
+		
+		judg_field[0] = "DECD";	//納品先コード
+		judg_field[1] = "DepartmentCd";	//部署CD
+		
+		judg_data[0][0] = "ForcedShip";	//納品先コード
+		judg_data[0][1] = "0000";		//部署CD
+
+		for(int i=0;i<SetString.length;i++) {
+			field_name[i][0] = SetString[i][0];
+			field_name[i][1] = SetString[i][1];
+			field_name[i][2] = SetString[i][2];
+			entry_data[0][i] = SetString[i][3];
+		}
+		
+		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+	}
 }

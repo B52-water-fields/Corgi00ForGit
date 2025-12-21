@@ -79,6 +79,8 @@ public class WM10010PostMstSearch{
 		tb01.setRowHeight(20*A00000Main.Mul/A00000Main.Div);
 		tb01.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 12*A00000Main.Mul/A00000Main.Div));
 		
+		B10010TableControl.AddSort(tb01,tableModel_ms01);
+		
 		DefaultTableColumnModel columnModel01
 		= (DefaultTableColumnModel)tb01.getColumnModel();
 
@@ -118,9 +120,13 @@ public class WM10010PostMstSearch{
 		JButton JisToDeliveryBtn = B00110FrameParts.BtnSet(490,660,100,20,"JIS⇒届先Mst",10);
 		main_fm.add(JisToDeliveryBtn);
 		
-		//エクセル出漁ボタン
+		//エクセル出力ボタン
 		JButton ExcelBtn = B00110FrameParts.BtnSet(	610,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
+		
+		//エクセル取込ボタン
+		JButton ExcelInBtn = B00110FrameParts.BtnSet(	610,635,100,20,"Excel取込",11);
+		main_fm.add(ExcelInBtn);
 		
 		main_fm.setVisible(true);
 		
@@ -266,6 +272,30 @@ public class WM10010PostMstSearch{
 				if(RenewFg) {
 					RenewFg = false;
 					B10010TableControl.TableOutPutExcel("出力先選択","郵便番号検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//エクセル取込ボタン
+		ExcelInBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					String SheetName = "郵便番号検索結果";
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM10013PostMstExcelEntry.PostMstExcelEntry(0,0,Selected);
+					}
 					RenewFg = true;
 				}
 			}

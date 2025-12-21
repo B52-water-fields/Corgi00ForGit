@@ -175,6 +175,8 @@ public class WM00060DeliveryMstSearch{
 		tb01.setRowHeight(20*A00000Main.Mul/A00000Main.Div);
 		tb01.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 12*A00000Main.Mul/A00000Main.Div));
 		
+		B10010TableControl.AddSort(tb01,tableModel_ms01);
+		
 		DefaultTableColumnModel columnModel01
 		= (DefaultTableColumnModel)tb01.getColumnModel();
 		
@@ -206,11 +208,13 @@ public class WM00060DeliveryMstSearch{
 		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
-		//CSVボタン
+		//Excel出力ボタン
 		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
-		
+		//Excel取込ボタン
+		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		main_fm.add(ExcelEntryBtn);
 		
 		main_fm.setVisible(true);
 		RenewFg = true;

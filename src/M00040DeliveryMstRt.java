@@ -32,6 +32,8 @@ public class M00040DeliveryMstRt{
 				,{"FirstClient"		,(int)22	,"String"	,"登録した荷主CD"}
 				,{"LastClient"		,(int)23	,"String"	,"更新した荷主CD"}
 				,{"DelFg"			,(int)24	,"int"		,"削除区分"}
+				,{"FirstClientName"	,(int)25	,"String"	,"登録した荷主名"}
+				,{"LastClientName"	,(int)26	,"String"	,"登録した荷主名"}
 				};
 		
 		return RtSettingDeliveryMstRt;
@@ -52,7 +54,7 @@ public class M00040DeliveryMstRt{
 			ArrayList<String> SearchDelFg,			//検索条件削除区分
 			boolean AllSearch
 			){
-		Object[][] rt = new Object[0][25];
+		Object[][] rt = new Object[0][27];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick=true;}
 		
@@ -81,9 +83,19 @@ public class M00040DeliveryMstRt{
 			+"(KM0040_DELIVERYMST.UpdateUser) as UpdateUser,\n"			//更新者コード
 			+"(KM0040_DELIVERYMST.FirstClient) as FirstClient,\n"		//登録した荷主CD
 			+"(KM0040_DELIVERYMST.LastClient) as LastClient,\n"			//更新した荷主CD
-			+"(KM0040_DELIVERYMST.DelFg) as DelFg\n"					//削除区分
+			+"(KM0040_DELIVERYMST.DelFg) as DelFg,\n"					//削除区分
+			+"(FCL.CLName01) as FirstClientName,\n"						//登録した荷主名
+			+"(LCL.CLName01) as LastClientName\n"						//登録した荷主名
 			
 			+" from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST"
+			+" left outer join " +A00000Main.MySqlDefaultSchemaNYANKO + ".KM0030_CLIENTMST as FCL"
+			+" on("
+			+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST.FirstClient = FCL.cl_cd"
+			+")\n"
+			+" left outer join " +A00000Main.MySqlDefaultSchemaNYANKO + ".KM0030_CLIENTMST as LCL"
+			+" on("
+			+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST.FirstClient = LCL.cl_cd"
+			+")\n"
 			+" where 1=1\n";
 		
 		if(null!=SearchDECD && 0<SearchDECD.size()){						//検索条件届先CD
@@ -218,7 +230,7 @@ public class M00040DeliveryMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][25];
+				rt = new Object[counter][27];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
@@ -247,7 +259,8 @@ public class M00040DeliveryMstRt{
 					if(null==rset01.getString("FirstClient")){rt[counter][22] = "";}else{rt[counter][22] = rset01.getString("FirstClient");}		//登録した荷主CD
 					if(null==rset01.getString("LastClient")){rt[counter][23] = "";}else{rt[counter][23] = rset01.getString("LastClient");}			//更新した荷主CD
 					rt[counter][24] = rset01.getInt("DelFg");				//削除区分
-
+					if(null==rset01.getString("FirstClientName")){rt[counter][25] = "";}else{rt[counter][25] = rset01.getString("FirstClientName");}//登録した荷主名
+					if(null==rset01.getString("LastClientName")){rt[counter][26] = "";}else{rt[counter][26] = rset01.getString("LastClientName");}	//登録した荷主名
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}

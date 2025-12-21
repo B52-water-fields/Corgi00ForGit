@@ -276,7 +276,7 @@ public class M00020UserMstRt{
 					if(null==rset01.getString("ShippingCompanyName01")){rt[counter][2]="";}else{rt[counter][2]=rset01.getString("ShippingCompanyName01");}					//運送会社名
 					if(null==rset01.getString("UserCd")){rt[counter][3]="";}else{rt[counter][3]=rset01.getString("UserCd");}												//ユーザーCD
 					if(null==rset01.getString("PassWord")){rt[counter][4]="";}else{rt[counter][4]=rset01.getString("PassWord");}											//パスワード
-					if(null==rset01.getString("AuthorityFG")){rt[counter][5]="";}else{rt[counter][5]=rset01.getString("AuthorityFG");}										//権限区分
+					rt[counter][5]=rset01.getInt("AuthorityFG");//権限区分
 					if(null==rset01.getString("CarCd")){rt[counter][6]="";}else{rt[counter][6]=rset01.getString("CarCd");}													//標準車輛CD
 					if(null==rset01.getString("CarName01")){rt[counter][7]="";}else{rt[counter][7]=rset01.getString("CarName01");}											//車両名称01
 					if(null==rset01.getString("CarName02")){rt[counter][8]="";}else{rt[counter][8]=rset01.getString("CarName02");}											//車両名称02

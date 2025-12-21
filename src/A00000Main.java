@@ -588,6 +588,8 @@ public class A00000Main{
     		
     		B00100DefaultVariable.DefaultClGp();
     		B00100DefaultVariable.DefaultShippingCompany();
+    		B00100DefaultVariable.Post0000000();
+    		B00100DefaultVariable.ForcedShipmentCD();
     		LoginCheck(WhCd,UserId,UserPass);
     		B00120TableSelectSql.TableSelectSql();
     	}
