@@ -39,8 +39,13 @@ public class B10010TableControl{
 			}
 		}
 	}
-	public static void AddSort(JTable TgtTable,TableModel TgtTableModel) {
+	//テーブルソートON
+	public static void AddSortON(JTable TgtTable,TableModel TgtTableModel) {
 		TgtTable.setRowSorter(new TableRowSorter(TgtTableModel));
+	}
+	//テーブルソートOFF
+	public static void AddSortOFF(JTable TgtTable,TableModel TgtTableModel) {
+		TgtTable.setRowSorter(null);
 	}
 	//テーブル情報をcsv出力する
 	public static void TableOutPutCsv(String SelectMSG,String OutPutName,JTable TgtTable) {

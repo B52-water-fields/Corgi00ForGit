@@ -144,8 +144,6 @@ public class WM00010WhMstSearch{
 		tb01.setRowHeight(20*A00000Main.Mul/A00000Main.Div);
 		tb01.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 12*A00000Main.Mul/A00000Main.Div));
 		
-		B10010TableControl.AddSort(tb01,tableModel_ms01);
-		
 		DefaultTableColumnModel columnModel01
 		= (DefaultTableColumnModel)tb01.getColumnModel();
 		
@@ -268,7 +266,11 @@ public class WM00010WhMstSearch{
 						
 						tableModel_ms01.addRow(SetOb);
 					}
-					
+					if(0<WhMstRt.length) {
+						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+					}else {
+						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+					}
 					RenewFg = true;
 				}
 			}

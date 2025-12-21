@@ -138,8 +138,6 @@ public class WM00020ClGlpMstSearch{
 		tb01.setRowHeight(20*A00000Main.Mul/A00000Main.Div);
 		tb01.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 12*A00000Main.Mul/A00000Main.Div));
 		
-		B10010TableControl.AddSort(tb01,tableModel_ms01);
-		
 		DefaultTableColumnModel columnModel01
 		= (DefaultTableColumnModel)tb01.getColumnModel();
 		
@@ -206,13 +204,13 @@ public class WM00020ClGlpMstSearch{
 
 					String GetSearchClGpCD = TB_SearchClGpCD.getText();		if(null==GetSearchClGpCD){GetSearchClGpCD="";}
 					String GetSearchCLGpName = TB_SearchCLGpName .getText();if(null==GetSearchCLGpName){GetSearchCLGpName="";}
-					String GetSearchPost = TB_SearchClGpCD.getText();		if(null==GetSearchPost){GetSearchPost="";}
-					String GetSearchAdd = TB_SearchClGpCD.getText();		if(null==GetSearchAdd){GetSearchAdd="";}
-					String GetSearchCom = TB_SearchClGpCD.getText();		if(null==GetSearchCom){GetSearchCom="";}
+					String GetSearchPost = TB_SearchPost.getText();		if(null==GetSearchPost){GetSearchPost="";}
+					String GetSearchAdd = TB_SearchAdd.getText();		if(null==GetSearchAdd){GetSearchAdd="";}
+					String GetSearchCom = TB_SearchCom.getText();		if(null==GetSearchCom){GetSearchCom="";}
 					
-					String GetSearchTel = TB_SearchClGpCD.getText();		if(null==GetSearchTel){GetSearchTel="";}
-					String GetSearchFax = TB_SearchClGpCD.getText();		if(null==GetSearchFax){GetSearchFax="";}
-					String GetSearchMail = TB_SearchClGpCD.getText();		if(null==GetSearchMail){GetSearchMail="";}
+					String GetSearchTel = TB_SearchTel.getText();		if(null==GetSearchTel){GetSearchTel="";}
+					String GetSearchFax = TB_SearchFax.getText();		if(null==GetSearchFax){GetSearchFax="";}
+					String GetSearchMail = TB_SearchMail.getText();		if(null==GetSearchMail){GetSearchMail="";}
 					
 					GetSearchPost = B00020ToolsTextControl.num_only_String(GetSearchPost);
 					GetSearchTel  = B00020ToolsTextControl.num_only_String(GetSearchTel);
@@ -227,7 +225,7 @@ public class WM00020ClGlpMstSearch{
 					ArrayList<String> SearchMail = new ArrayList<String>();
 					ArrayList<String> SearchCom = new ArrayList<String>();
 					boolean AllSearch = true;
-					
+					System.out.println(GetSearchAdd+":ADD");
 					if(!"".equals(GetSearchClGpCD)){SearchClGpCD.add(GetSearchClGpCD);}
 					if(!"".equals(GetSearchCLGpName)){SearchCLGpName.add(GetSearchCLGpName);}
 					if(!"".equals(GetSearchPost)){SearchPost.add(GetSearchPost);}
@@ -266,6 +264,11 @@ public class WM00020ClGlpMstSearch{
 						SetOb[19] = ""+ClGpMstRt[i][18];
 						
 						tableModel_ms01.addRow(SetOb);
+					}
+					if(0<ClGpMstRt.length) {
+						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+					}else {
+						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}

@@ -79,8 +79,6 @@ public class WM10010PostMstSearch{
 		tb01.setRowHeight(20*A00000Main.Mul/A00000Main.Div);
 		tb01.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 12*A00000Main.Mul/A00000Main.Div));
 		
-		B10010TableControl.AddSort(tb01,tableModel_ms01);
-		
 		DefaultTableColumnModel columnModel01
 		= (DefaultTableColumnModel)tb01.getColumnModel();
 
@@ -168,6 +166,11 @@ public class WM10010PostMstSearch{
 						SetOb[4] = ""+PostRt[i][3];	//町丁目
 						SetOb[5] = ""+PostRt[i][4];	//市区町村CD
 						tableModel_ms01.addRow(SetOb);
+					}
+					if(0<PostRt.length) {
+						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+					}else {
+						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}

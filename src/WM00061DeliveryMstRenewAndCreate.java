@@ -730,6 +730,12 @@ public class WM00061DeliveryMstRenewAndCreate{
 									
 									tableModel_ms01.addRow(SetOb);
 								}
+								if(0<SameDelivery.length) {
+									B10010TableControl.AddSortON(tb01,tableModel_ms01);
+								}else {
+									B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+								}
+								
 								SameDelivery_fm.setVisible(true);
 							}
 							
