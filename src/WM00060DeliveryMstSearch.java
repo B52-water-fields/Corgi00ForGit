@@ -379,9 +379,7 @@ public class WM00060DeliveryMstSearch{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							if((Boolean)tb01.getValueAt(i,0)){
-								tableModel_ms01.setValueAt(setBL, i, 0);
-							}
+							tableModel_ms01.setValueAt(setBL, i, 0);
 						}else {
 	
 						}
