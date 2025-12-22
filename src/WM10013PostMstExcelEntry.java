@@ -48,8 +48,6 @@ public class WM10013PostMstExcelEntry{
 		main_fm.add(LB_SheetList);
 		main_fm.add(TB_SheetList);	//シート一覧
 		
-		
-		
 		main_fm.setVisible(true);
 		RenewFg = true;
 		

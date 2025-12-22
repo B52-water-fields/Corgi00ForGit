@@ -293,6 +293,7 @@ public class B00110FrameParts{
 			DefaultTableCellRenderer rightCellRenderer = new DefaultTableCellRenderer();
 			rightCellRenderer.setHorizontalAlignment(JLabel.RIGHT);
 			return rightCellRenderer;
+			
 	}
 	public static DefaultTableCellRenderer leftCellRenderer() {
 			DefaultTableCellRenderer leftCellRenderer = new DefaultTableCellRenderer();
@@ -304,7 +305,7 @@ public class B00110FrameParts{
 			centerCellRenderer.setHorizontalAlignment(JLabel.CENTER);
 			return centerCellRenderer;
 	}
-	
+
 	/*===========================================================================
  	スクロールパネル配置
 	===========================================================================*/

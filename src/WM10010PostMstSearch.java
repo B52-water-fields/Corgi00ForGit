@@ -287,7 +287,6 @@ public class WM10010PostMstSearch{
 					String[] file_type = {".xlsx"};
 					String file_type_name = "エクセルファイル";
 					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
-					String SheetName = "郵便番号検索結果";
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						SetX=main_fm.getX();

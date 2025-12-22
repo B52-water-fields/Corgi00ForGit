@@ -39,6 +39,7 @@ public class B10010TableControl{
 			}
 		}
 	}
+
 	//テーブルソートON
 	public static void AddSortON(JTable TgtTable,TableModel TgtTableModel) {
 		TgtTable.setRowSorter(new TableRowSorter(TgtTableModel));

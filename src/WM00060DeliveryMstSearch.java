@@ -168,6 +168,7 @@ public class WM00060DeliveryMstSearch{
 		//編集可能カラムの指定
 		B10010TableControl.RenewTgt = new int[1];
 		B10010TableControl.RenewTgt[0] = 0;
+
 		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
@@ -190,6 +191,7 @@ public class WM00060DeliveryMstSearch{
 		//スクロール用設定
 		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,210,870,395,tb01);
 		main_fm.add(scpn01);
+
 		
 		//CSVボタン
 		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
@@ -321,7 +323,7 @@ public class WM00060DeliveryMstSearch{
 						for(int i01=0;i01<DeliveryMstRt[i].length;i01++) {
 							SetOb[i01+1] = DeliveryMstRt[i][i01];
 						}
-						tableModel_ms01.addRow(SetOb);;
+						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<DeliveryMstRt.length) {
 						B10010TableControl.AddSortON(tb01,tableModel_ms01);
@@ -410,6 +412,29 @@ public class WM00060DeliveryMstSearch{
 				if(RenewFg) {
 					RenewFg = false;
 					B10010TableControl.TableOutPutExcel("出力先選択","届先マスタ検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//Excel取込ボタン
+		ExcelEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00062DeliveryMstExcelEntry.DeliveryMstExcelEntry(0,0,Selected);
+					}
 					RenewFg = true;
 				}
 			}
