@@ -34,9 +34,10 @@ public class WM00060DeliveryMstSearch{
 		RenewFg = false;
 		
 		ArrayList<String> SearchName = new ArrayList<String>();
+		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		boolean AllSearch = true;
 		Object[][] PrefecuturesRt = M10010PostMstRt.PrefecuturesRt(SearchName,AllSearch);
-		Object[][] MunicipalityRt = M10010PostMstRt.MunicipalityRt(SearchName,AllSearch);
+		Object[][] MunicipalityRt = M10010PostMstRt.MunicipalityRt(SearchName,SearchMunicipalityCd,AllSearch);
 		
 		PrefecturesCdList = new String[3][PrefecuturesRt.length+1];
 		MunicipalityCd = new String[3][MunicipalityRt.length+1];

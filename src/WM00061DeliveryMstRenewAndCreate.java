@@ -808,6 +808,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 				ArrayList<String> SearchPOST = new ArrayList<String>();
 				ArrayList<String> SearchAdd = new ArrayList<String>();
 				boolean AllSearch = false;
+				boolean PostPerfectMatch = true;
 				
 				if(!"".equals(GetPost)) {
 					SearchPOST.add(GetPost);
@@ -816,7 +817,8 @@ public class WM00061DeliveryMstRenewAndCreate{
 				Object[][] PostRt = M10010PostMstRt.PostRt(
 							SearchPOST,
 							SearchAdd,
-							AllSearch);
+							AllSearch,
+							PostPerfectMatch);
 				
 				if(0<PostRt.length) {
 					boolean KickFg = false;
@@ -1026,6 +1028,55 @@ public class WM00061DeliveryMstRenewAndCreate{
 		GetMunicipalityCd	= B00020ToolsTextControl.num_only_String(GetMunicipalityCd);
 		
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		
+		//現在の市区町村CDを仮格納
+		String WorkMunicipalityCd = GetMunicipalityCd;
+		
+		boolean KickFg = true;
+		//郵便番号を元に市区町村CD設定
+		if(!"".equals(GetPost)) {
+			ArrayList<String> SearchPOST = new ArrayList<String>();
+			ArrayList<String> SearchAddT = new ArrayList<String>();
+			boolean AllSearch = false;
+			boolean PostPerfectMatch = true;
+			SearchPOST.add(GetPost);
+			
+			Object[][] PostRt = M10010PostMstRt.PostRt(SearchPOST, SearchAddT, AllSearch, PostPerfectMatch);
+			if(0<PostRt.length) {
+				GetMunicipalityCd = ""+PostRt[0][4];
+				KickFg = false;
+			}
+		}
+		
+		
+		//住所を元に市区町村CD設定それでも無理なら諦めて"00000"設定
+		if(KickFg) {
+			String[] AddList = {GetAdd01+GetAdd02+GetAdd03};
+			
+			String[][] AddToMunicipality = M10010PostMstRt.AddToMunicipality(AddList);
+			
+			GetMunicipalityCd = AddToMunicipality[0][1];
+			if("".equals(GetMunicipalityCd)) {GetMunicipalityCd = "00000";}
+			
+		}
+		//設定しようとしている市区町村CDと判定された市区町村Cdが異なる場合確認
+		if(GetMunicipalityCd.equals(WorkMunicipalityCd)||"".equals(WorkMunicipalityCd)) {
+			
+		}else {
+			int option = JOptionPane.showConfirmDialog(null, "登録しようとしている市区町村コードが\n正しくない可能性があります\n設定値を優先しますか？","登録確認", JOptionPane.YES_NO_OPTION,
+				      JOptionPane.WARNING_MESSAGE);
+			if (option == JOptionPane.YES_OPTION){
+				GetMunicipalityCd = WorkMunicipalityCd;
+			}else {
+			}
+		}
+		
+		if(2<=GetMunicipalityCd.length()) {
+			GetPrefecturesCd = GetMunicipalityCd.substring(0,2);
+		}else {
+			GetPrefecturesCd = "00";
+		}
+		
 		
 		String[][] SetString = {
 				{"DECD"				,"1","1",GetDECD}			//納品先コード

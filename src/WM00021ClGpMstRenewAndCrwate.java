@@ -169,6 +169,7 @@ public class WM00021ClGpMstRenewAndCrwate{
 				ArrayList<String> SearchPOST = new ArrayList<String>();
 				ArrayList<String> SearchAdd = new ArrayList<String>();
 				boolean AllSearch = false;
+				boolean PostPerfectMatch = true;
 				
 				if(!"".equals(GetPost)) {
 					SearchPOST.add(GetPost);
@@ -177,7 +178,8 @@ public class WM00021ClGpMstRenewAndCrwate{
 				Object[][] PostRt = M10010PostMstRt.PostRt(
 							SearchPOST,
 							SearchAdd,
-							AllSearch);
+							AllSearch,
+							PostPerfectMatch);
 				
 				if(0<PostRt.length) {
 					boolean KickFg = false;

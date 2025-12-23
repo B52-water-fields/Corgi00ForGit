@@ -48,10 +48,11 @@ public class WM10011PostMstRenewAndCreate{
 			ArrayList<String> SearchPOST = new ArrayList<String>();
 			ArrayList<String> SearchAdd = new ArrayList<String>();
 			boolean AllSearch = false;
+			boolean PostPerfectMatch = true;
 			
 			SearchPOST.add(TgtPost);
 			
-			Object[][] PostRt = M10010PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch);
+			Object[][] PostRt = M10010PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch,PostPerfectMatch);
 			
 			if(0<PostRt.length) {
 				TB_Post.setText(          ""+PostRt[0][0]);
