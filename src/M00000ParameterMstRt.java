@@ -1,6 +1,6 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00000ParameterMstRt{
@@ -40,13 +40,13 @@ public class M00000ParameterMstRt{
 	}
 	
 	public static Object[][] ParameterMstRtNANKO(
-			ArrayList SearchParaCd,	ArrayList SearchParaCdSeq,ArrayList SearchParaName,
-			ArrayList SearchParaTxt01,ArrayList SearchParaTxt02,ArrayList SearchParaTxt03,ArrayList SearchParaTxt04,ArrayList SearchParaTxt05,
-			ArrayList SearchParaTxt06,ArrayList SearchParaTxt07,ArrayList SearchParaTxt08,ArrayList SearchParaTxt09,ArrayList SearchParaTxt10,
-			ArrayList SearchParaInt01Str,ArrayList SearchParaInt02Str,ArrayList SearchParaInt03Str,ArrayList SearchParaInt04Str,ArrayList SearchParaInt05Str,
-			ArrayList SearchParaInt06Str,ArrayList SearchParaInt07Str,ArrayList SearchParaInt08Str,ArrayList SearchParaInt09Str,ArrayList SearchParaInt10Str,
-			ArrayList SearchParaInt01End,ArrayList SearchParaInt02End,ArrayList SearchParaInt03End,ArrayList SearchParaInt04End,ArrayList SearchParaInt05End,
-			ArrayList SearchParaInt06End,ArrayList SearchParaInt07End,ArrayList SearchParaInt08End,ArrayList SearchParaInt09End,ArrayList SearchParaInt10End,
+			ArrayList<String> SearchParaCd,	ArrayList<String> SearchParaCdSeq,ArrayList<String> SearchParaName,
+			ArrayList<String> SearchParaTxt01,ArrayList<String> SearchParaTxt02,ArrayList<String> SearchParaTxt03,ArrayList<String> SearchParaTxt04,ArrayList<String> SearchParaTxt05,
+			ArrayList<String> SearchParaTxt06,ArrayList<String> SearchParaTxt07,ArrayList<String> SearchParaTxt08,ArrayList<String> SearchParaTxt09,ArrayList<String> SearchParaTxt10,
+			ArrayList<Integer> SearchParaInt01Str,ArrayList<Integer> SearchParaInt02Str,ArrayList<Integer> SearchParaInt03Str,ArrayList<Integer> SearchParaInt04Str,ArrayList<Integer> SearchParaInt05Str,
+			ArrayList<Integer> SearchParaInt06Str,ArrayList<Integer> SearchParaInt07Str,ArrayList<Integer> SearchParaInt08Str,ArrayList<Integer> SearchParaInt09Str,ArrayList<Integer> SearchParaInt10Str,
+			ArrayList<Integer> SearchParaInt01End,ArrayList<Integer> SearchParaInt02End,ArrayList<Integer> SearchParaInt03End,ArrayList<Integer> SearchParaInt04End,ArrayList<Integer> SearchParaInt05End,
+			ArrayList<Integer> SearchParaInt06End,ArrayList<Integer> SearchParaInt07End,ArrayList<Integer> SearchParaInt08End,ArrayList<Integer> SearchParaInt09End,ArrayList<Integer> SearchParaInt10End,
 			Boolean AllSearch){
 		//NYANKOパラメータ返却
 		Object[][] rt=new Object[0][27];
@@ -54,42 +54,43 @@ public class M00000ParameterMstRt{
 		if(AllSearch) {
 			SearchKick = true;
 		}
-		String sql= "Select "
-			+"(KM0000_PARAMETER.ParaCd) as ParaCd,"			//パラメータコード
-			+"(KM0000_PARAMETER.ParaCdSeq) as ParaCdSeq,"	//ナンバリング
-			+"(KM0000_PARAMETER.ParaName) as ParaName,"		//パラメータ名
-			+"(KM0000_PARAMETER.ParaTxt01) as ParaTxt01,"	//パラメータテキスト項目01
-			+"(KM0000_PARAMETER.ParaTxt02) as ParaTxt02,"	//パラメータテキスト項目02
-			+"(KM0000_PARAMETER.ParaTxt03) as ParaTxt03,"	//パラメータテキスト項目03
-			+"(KM0000_PARAMETER.ParaTxt04) as ParaTxt04,"	//パラメータテキスト項目04
-			+"(KM0000_PARAMETER.ParaTxt05) as ParaTxt05,"	//パラメータテキスト項目05
-			+"(KM0000_PARAMETER.ParaTxt06) as ParaTxt06,"	//パラメータテキスト項目06
-			+"(KM0000_PARAMETER.ParaTxt07) as ParaTxt07,"	//パラメータテキスト項目07
-			+"(KM0000_PARAMETER.ParaTxt08) as ParaTxt08,"	//パラメータテキスト項目08
-			+"(KM0000_PARAMETER.ParaTxt09) as ParaTxt09,"	//パラメータテキスト項目09
-			+"(KM0000_PARAMETER.ParaTxt10) as ParaTxt10,"	//パラメータテキスト項目10
-			+"(KM0000_PARAMETER.ParaInt01) as ParaInt01,"	//パラメータ数値項目01
-			+"(KM0000_PARAMETER.ParaInt02) as ParaInt02,"	//パラメータ数値項目02
-			+"(KM0000_PARAMETER.ParaInt03) as ParaInt03,"	//パラメータ数値項目03
-			+"(KM0000_PARAMETER.ParaInt04) as ParaInt04,"	//パラメータ数値項目04
-			+"(KM0000_PARAMETER.ParaInt05) as ParaInt05,"	//パラメータ数値項目05
-			+"(KM0000_PARAMETER.ParaInt06) as ParaInt06,"	//パラメータ数値項目06
-			+"(KM0000_PARAMETER.ParaInt07) as ParaInt07,"	//パラメータ数値項目07
-			+"(KM0000_PARAMETER.ParaInt08) as ParaInt08,"	//パラメータ数値項目08
-			+"(KM0000_PARAMETER.ParaInt09) as ParaInt09,"	//パラメータ数値項目09
-			+"(KM0000_PARAMETER.ParaInt10) as ParaInt10,"	//パラメータ数値項目10
-			+"(KM0000_PARAMETER.EntryDate) as EntryDate,"
-			+"(KM0000_PARAMETER.UpdateDate) as UpdateDate,"
-			+"(KM0000_PARAMETER.EntryUser) as EntryUser,"
-			+"(KM0000_PARAMETER.UpdateUser) as UpdateUser"
-			+ " from KM0000_PARAMETER "
-			+ " where 1=1";
+		String sql= "Select \n"
+			+"(KM0000_PARAMETER.ParaCd) as ParaCd,\n"			//パラメータコード
+			+"(KM0000_PARAMETER.ParaCdSeq) as ParaCdSeq,\n"		//ナンバリング
+			+"(KM0000_PARAMETER.ParaName) as ParaName,\n"		//パラメータ名
+			+"(KM0000_PARAMETER.ParaTxt01) as ParaTxt01,\n"		//パラメータテキスト項目01
+			+"(KM0000_PARAMETER.ParaTxt02) as ParaTxt02,\n"		//パラメータテキスト項目02
+			+"(KM0000_PARAMETER.ParaTxt03) as ParaTxt03,\n"		//パラメータテキスト項目03
+			+"(KM0000_PARAMETER.ParaTxt04) as ParaTxt04,\n"		//パラメータテキスト項目04
+			+"(KM0000_PARAMETER.ParaTxt05) as ParaTxt05,\n"		//パラメータテキスト項目05
+			+"(KM0000_PARAMETER.ParaTxt06) as ParaTxt06,\n"		//パラメータテキスト項目06
+			+"(KM0000_PARAMETER.ParaTxt07) as ParaTxt07,\n"		//パラメータテキスト項目07
+			+"(KM0000_PARAMETER.ParaTxt08) as ParaTxt08,\n"		//パラメータテキスト項目08
+			+"(KM0000_PARAMETER.ParaTxt09) as ParaTxt09,\n"		//パラメータテキスト項目09
+			+"(KM0000_PARAMETER.ParaTxt10) as ParaTxt10,\n"		//パラメータテキスト項目10
+			+"(KM0000_PARAMETER.ParaInt01) as ParaInt01,\n"		//パラメータ数値項目01
+			+"(KM0000_PARAMETER.ParaInt02) as ParaInt02,\n"		//パラメータ数値項目02
+			+"(KM0000_PARAMETER.ParaInt03) as ParaInt03,\n"		//パラメータ数値項目03
+			+"(KM0000_PARAMETER.ParaInt04) as ParaInt04,\n"		//パラメータ数値項目04
+			+"(KM0000_PARAMETER.ParaInt05) as ParaInt05,\n"		//パラメータ数値項目05
+			+"(KM0000_PARAMETER.ParaInt06) as ParaInt06,\n"		//パラメータ数値項目06
+			+"(KM0000_PARAMETER.ParaInt07) as ParaInt07,\n"		//パラメータ数値項目07
+			+"(KM0000_PARAMETER.ParaInt08) as ParaInt08,\n"		//パラメータ数値項目08
+			+"(KM0000_PARAMETER.ParaInt09) as ParaInt09,\n"		//パラメータ数値項目09
+			+"(KM0000_PARAMETER.ParaInt10) as ParaInt10,\n"		//パラメータ数値項目10
+			+"(KM0000_PARAMETER.EntryDate) as EntryDate,\n"
+			+"(KM0000_PARAMETER.UpdateDate) as UpdateDate,\n"
+			+"(KM0000_PARAMETER.EntryUser) as EntryUser,\n"
+			+"(KM0000_PARAMETER.UpdateUser) as UpdateUser\n"
+			+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0000_PARAMETER \n"
+			+ " where 1=1\n";
+
 		if(null!=SearchParaCd && 0<SearchParaCd.size()){
 			SearchKick = true;
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaCd.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaCd ='"+SearchParaCd.get(i)+"'";
+				sql = sql + "KM0000_PARAMETER.ParaCd =?";
 			}
 			sql = sql + ")";
 		}
@@ -99,7 +100,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaCdSeq.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaCdSeq ='"+SearchParaCdSeq.get(i)+"'";
+				sql = sql + "KM0000_PARAMETER.ParaCdSeq =?";
 			}
 			sql = sql + ")";
 		}
@@ -108,7 +109,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaName.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaName like '%"+SearchParaName.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaName like ?";
 			}
 			sql = sql + ")";
 		}
@@ -117,7 +118,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt01.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt01 like '%"+SearchParaTxt01.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt01 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -127,7 +128,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt02.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt02 like '%"+SearchParaTxt02.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt02 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -137,7 +138,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt03.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt03 like '%"+SearchParaTxt03.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt03 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -147,7 +148,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt04.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt04 like '%"+SearchParaTxt04.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt04 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -157,7 +158,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt05.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt05 like '%"+SearchParaTxt05.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt05 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -167,7 +168,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt06.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt06 like '%"+SearchParaTxt06.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt06 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -177,7 +178,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt07.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt07 like '%"+SearchParaTxt07.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt07 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -187,7 +188,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt08.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt08 like '%"+SearchParaTxt08.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt08 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -197,7 +198,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt09.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt09 like '%"+SearchParaTxt09.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt09 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -207,7 +208,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaTxt10.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaTxt10 like '%"+SearchParaTxt10.get(i)+"%'";
+				sql = sql + "KM0000_PARAMETER.ParaTxt10 like ?";
 			}
 			sql = sql + ")";
 		}
@@ -217,7 +218,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt01Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt01 >= "+SearchParaInt01Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt01 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -227,7 +228,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt02Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt02 >= "+SearchParaInt02Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt02 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -237,7 +238,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt03Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt03 >= "+SearchParaInt03Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt03 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -247,7 +248,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt04Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt04 >= "+SearchParaInt04Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt04 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -257,7 +258,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt05Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt05 >= "+SearchParaInt05Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt05 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -267,7 +268,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt06Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt06 >= "+SearchParaInt06Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt06 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -277,7 +278,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt07Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt07 >= "+SearchParaInt07Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt07 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -287,7 +288,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt08Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt08 >= "+SearchParaInt08Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt08 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -297,7 +298,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt09Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt09 >= "+SearchParaInt09Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt09 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -307,7 +308,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt10Str.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt10 >= "+SearchParaInt10Str.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt10 >= ?";
 			}
 			sql = sql + ")";
 		}
@@ -317,7 +318,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt01End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt01 <= "+SearchParaInt01End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt01 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -327,7 +328,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt02End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt02 <= "+SearchParaInt02End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt02 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -337,7 +338,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt03End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt03 <= "+SearchParaInt03End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt03 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -347,7 +348,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt04End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt04 <= "+SearchParaInt04End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt04 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -357,7 +358,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt05End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt05 <= "+SearchParaInt05End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt05 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -367,7 +368,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt06End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt06 <= "+SearchParaInt06End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt06 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -377,7 +378,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt07End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt07 <= "+SearchParaInt07End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt07 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -387,7 +388,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt08End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt08 <= "+SearchParaInt08End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt08 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -397,7 +398,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt09End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt09 <= "+SearchParaInt09End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt09 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -407,7 +408,7 @@ public class M00000ParameterMstRt{
 			sql = sql + " and (";
 			for(int i=0;i<SearchParaInt10End.size();i++){
 				if(i>0){sql = sql + " or ";}
-				sql = sql + "KM0000_PARAMETER.ParaInt10 <= "+SearchParaInt10End.get(i)+"";
+				sql = sql + "KM0000_PARAMETER.ParaInt10 <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -416,11 +417,240 @@ public class M00000ParameterMstRt{
 		if(true==SearchKick) {
 			A00010DbConnect.DB_CONN("NANKO");
 			ResultSet rset01 = null;
-			Statement stmt01 = null;
+			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-					      ResultSet.CONCUR_UPDATABLE);
-				rset01 = stmt01.executeQuery(sql);
+				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				int StmtCount = 0;
+				if(null!=SearchParaCd && 0<SearchParaCd.size()){
+					for(int i=0;i<SearchParaCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchParaCd.get(i));
+					}
+				}
+
+				if(null!=SearchParaCdSeq && 0<SearchParaCdSeq.size()){
+					for(int i=0;i<SearchParaCdSeq.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchParaCdSeq.get(i));
+					}
+				}
+				if(null!=SearchParaName && 0<SearchParaName.size()){
+					for(int i=0;i<SearchParaName.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaName.get(i)+"%");
+					}
+				}
+				if(null!=SearchParaTxt01 && 0<SearchParaTxt01.size()){
+					for(int i=0;i<SearchParaTxt01.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt01.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaTxt02 && 0<SearchParaTxt02.size()){
+					for(int i=0;i<SearchParaTxt02.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt02.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaTxt03 && 0<SearchParaTxt03.size()){
+					for(int i=0;i<SearchParaTxt03.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt03.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaTxt04 && 0<SearchParaTxt04.size()){
+					for(int i=0;i<SearchParaTxt04.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt04.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaTxt05 && 0<SearchParaTxt05.size()){
+					for(int i=0;i<SearchParaTxt05.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt05.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaTxt06 && 0<SearchParaTxt06.size()){
+					for(int i=0;i<SearchParaTxt06.size();i++){
+						if(i>0){sql = sql + " or ";}
+						sql = sql + "KM0000_PARAMETER.ParaTxt06 like '%"+SearchParaTxt06.get(i)+"%'";
+					}
+				}
+
+				if(null!=SearchParaTxt07 && 0<SearchParaTxt07.size()){
+					for(int i=0;i<SearchParaTxt07.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt07.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaTxt08 && 0<SearchParaTxt08.size()){
+					for(int i=0;i<SearchParaTxt08.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt08.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaTxt09 && 0<SearchParaTxt09.size()){
+					for(int i=0;i<SearchParaTxt09.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt09.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaTxt10 && 0<SearchParaTxt10.size()){
+					for(int i=0;i<SearchParaTxt10.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt10.get(i)+"%");
+					}
+				}
+
+				if(null!=SearchParaInt01Str && 0<SearchParaInt01Str.size()){
+					for(int i=0;i<SearchParaInt01Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt01Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt02Str && 0<SearchParaInt02Str.size()){
+					for(int i=0;i<SearchParaInt02Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt02Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt03Str && 0<SearchParaInt03Str.size()){
+					for(int i=0;i<SearchParaInt03Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt03Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt04Str && 0<SearchParaInt04Str.size()){
+					for(int i=0;i<SearchParaInt04Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt04Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt05Str && 0<SearchParaInt05Str.size()){
+					for(int i=0;i<SearchParaInt05Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt05Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt06Str && 0<SearchParaInt06Str.size()){
+					for(int i=0;i<SearchParaInt06Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt06Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt07Str && 0<SearchParaInt07Str.size()){
+					for(int i=0;i<SearchParaInt07Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt07Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt08Str && 0<SearchParaInt08Str.size()){
+					for(int i=0;i<SearchParaInt08Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt08Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt09Str && 0<SearchParaInt09Str.size()){
+					for(int i=0;i<SearchParaInt09Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt09Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt10Str && 0<SearchParaInt10Str.size()){
+					for(int i=0;i<SearchParaInt10Str.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt10Str.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt01End && 0<SearchParaInt01End.size()){
+					for(int i=0;i<SearchParaInt01End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt01End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt02End && 0<SearchParaInt02End.size()){
+					for(int i=0;i<SearchParaInt02End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt02End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt03End && 0<SearchParaInt03End.size()){
+					for(int i=0;i<SearchParaInt03End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt03End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt04End && 0<SearchParaInt04End.size()){
+					for(int i=0;i<SearchParaInt04End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt04End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt05End && 0<SearchParaInt05End.size()){
+					for(int i=0;i<SearchParaInt05End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt05End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt06End && 0<SearchParaInt06End.size()){
+					for(int i=0;i<SearchParaInt06End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt06End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt07End && 0<SearchParaInt07End.size()){
+					for(int i=0;i<SearchParaInt07End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt07End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt08End && 0<SearchParaInt08End.size()){
+					for(int i=0;i<SearchParaInt08End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt08End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt09End && 0<SearchParaInt09End.size()){
+					for(int i=0;i<SearchParaInt09End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt09End.get(i));
+					}
+				}
+
+				if(null!=SearchParaInt10End && 0<SearchParaInt10End.size()){
+					for(int i=0;i<SearchParaInt10End.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setInt(StmtCount, SearchParaInt10End.get(i));
+					}
+				}
+				rset01 = stmt01.executeQuery();
+				
 				int counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

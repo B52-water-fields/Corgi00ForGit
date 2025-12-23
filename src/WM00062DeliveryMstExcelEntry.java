@@ -65,7 +65,6 @@ public class WM00062DeliveryMstExcelEntry{
 			}
 		});
 		
-		
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
@@ -191,54 +190,33 @@ public class WM00062DeliveryMstExcelEntry{
 		Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
 		if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
 			for(int i=0;i<ExcellRead.length;i++) {
-				Object[] SetOb = new Object[6];
-				
-				SetOb[0] = B00020ToolsTextControl.num_only_String(""+ExcellRead[i][1]);	//郵便番号
+				Object[] SetOb = new Object[17];
 				if(!"".equals(""+SetOb[0])) {
-					SetOb[1] = ExcellRead[i][2];
-					SetOb[2] = ExcellRead[i][3];
-					SetOb[3] = ExcellRead[i][4];
-					SetOb[4] = ExcellRead[i][5];
-					/*
-					ExcellRead[i][ 0]=1;	//Fg
-					ExcellRead[i][ 1]=1;	//納品先コード
-					ExcellRead[i][ 2]=1;	//部署CD
-					ExcellRead[i][ 3]=1;	//納品先名1
-					ExcellRead[i][ 4]=1;	//納品先名2
-					ExcellRead[i][ 5]=1;	//納品先名3
-					ExcellRead[i][ 6]=1;	//納品先郵便
-					ExcellRead[i][ 7]=1;	//納品先住所1
-					ExcellRead[i][ 8]=1;	//納品先住所2
-					ExcellRead[i][ 9]=1;	//納品先住所3
-					ExcellRead[i][10]=1;	//納品先電話
-					ExcellRead[i][11]=1;	//納品先FAX
-					ExcellRead[i][12]=1;	//納品先MAIL
-					ExcellRead[i][13]=1;	//コメント1
-					ExcellRead[i][14]=1;	//コメント2"
-					ExcellRead[i][15]=1;	//コメント3
-					ExcellRead[i][16]=1;	//JIS県CD2桁
-					ExcellRead[i][17]=1;	//JIS市区町村CD5桁
-					ExcellRead[i][18]=1;	//基幹システム発着地コード
-					ExcellRead[i][19]=1;	//データ登録日時
-					ExcellRead[i][20]=1;	//データ更新日時
-					ExcellRead[i][21]=1;	//登録者コード
-					ExcellRead[i][22]=1;	//更新者コード
-					ExcellRead[i][23]=1;	//登録した荷主CD
-					ExcellRead[i][24]=1;	//更新した荷主CD
-					ExcellRead[i][25]=1;	//削除区分
-					ExcellRead[i][26]=1;	//登録した荷主名
-					ExcellRead[i][27]=1;	//登録した荷主名
 					
-					*/
+					SetOb[ 0] = ""+ExcellRead[i][ 1];	//納品先コード
+					SetOb[ 1] = ""+ExcellRead[i][ 2];	//部署CD
+					SetOb[ 2] = ""+ExcellRead[i][ 3];	//納品先名1
+					SetOb[ 3] = ""+ExcellRead[i][ 4];	//納品先名2
+					SetOb[ 4] = ""+ExcellRead[i][ 5];	//納品先名3
+					SetOb[ 5] = B00020ToolsTextControl.num_only_String(""+ExcellRead[i][ 6]);	//納品先郵便
+					SetOb[ 6] = ""+ExcellRead[i][ 7];	//納品先住所1
+					SetOb[ 7] = ""+ExcellRead[i][ 8];	//納品先住所2
+					SetOb[ 8] = ""+ExcellRead[i][ 9];	//納品先住所3
+					SetOb[ 9] = B00020ToolsTextControl.num_only_String(""+ExcellRead[i][10]);	//納品先電話
+					SetOb[10] = B00020ToolsTextControl.num_only_String(""+ExcellRead[i][11]);	//納品先FAX
+					SetOb[11] = ""+ExcellRead[i][12];	//納品先MAIL
+					SetOb[12] = ""+ExcellRead[i][13];	//コメント1
+					SetOb[13] = ""+ExcellRead[i][14];	//コメント2
+					SetOb[14] = ""+ExcellRead[i][15];	//コメント3
+					SetOb[15] = ""+ExcellRead[i][18];	//基幹システム発着地コード
+					SetOb[16] = ""+ExcellRead[i][25];	//削除区分
 					
 					tableModel_ms01.addRow(SetOb);
 				}
 			}
 		}
-		
 
 		final JCheckBox PostNeed =new JCheckBox();
-		
 	
 		main_fm.setVisible(true);
 		RenewFg = true;

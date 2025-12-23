@@ -1048,7 +1048,6 @@ public class WM00061DeliveryMstRenewAndCreate{
 			}
 		}
 		
-		
 		//住所を元に市区町村CD設定それでも無理なら諦めて"00000"設定
 		if(KickFg) {
 			String[] AddList = {GetAdd01+GetAdd02+GetAdd03};
@@ -1063,7 +1062,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 		if(GetMunicipalityCd.equals(WorkMunicipalityCd)||"".equals(WorkMunicipalityCd)) {
 			
 		}else {
-			int option = JOptionPane.showConfirmDialog(null, "登録しようとしている市区町村コードが\n正しくない可能性があります\n設定値を優先しますか？","登録確認", JOptionPane.YES_NO_OPTION,
+			int option = JOptionPane.showConfirmDialog(null, "登録しようとしている市区町村コードが\n正しくない可能性がありますが\n設定値を優先しますか？","登録確認", JOptionPane.YES_NO_OPTION,
 				      JOptionPane.WARNING_MESSAGE);
 			if (option == JOptionPane.YES_OPTION){
 				GetMunicipalityCd = WorkMunicipalityCd;

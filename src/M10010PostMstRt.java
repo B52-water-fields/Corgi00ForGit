@@ -1,11 +1,26 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M10010PostMstRt{
-	//戻り値カラム
+	
 	public static Object[][] RtSettingPostRt(){
+		//戻り値カラム
+		/*
+		コピペ用
+		ArrayList<String> SearchPOST = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		boolean AllSearch = false;
+		boolean PostPerfectMatch = false;
+		
+		Object[][] PostRt = M10010PostMstRt.PostRt(
+												SearchPOST,
+												SearchAdd,
+												AllSearch,
+												PostPerfectMatch);
+		*/
 		Object[][] RtSettingPostRt = {
 				 {"POST"			,(int) 0	,"String"	,"郵便番号"}
 				,{"PREFECTURES"		,(int) 1	,"String"	,"県"}
@@ -19,6 +34,17 @@ public class M10010PostMstRt{
 	
 	public static Object[][] RtSettingMunicipalityRt(){
 		//市区町村マスタ戻り値
+		/*
+		コピペ用		
+		ArrayList<String> SearchName = new ArrayList<String>();
+		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		Object[][] MunicipalityRt = M10010PostMstRt.MunicipalityRt(
+																SearchName,
+																SearchMunicipalityCd,
+																AllSearch);
+		*/
 		Object[][] RtSettingMunicipalityRt = {
 				{"PREFECTURES"		,(int) 0	,"String"	,"県"}
 				,{"MUNICI01"		,(int) 1	,"String"	,"市区町村"}
@@ -29,12 +55,33 @@ public class M10010PostMstRt{
 	}
 	public static Object[][] RtSettingPrefecuturesRt(){
 		//県マスタ戻り値
-		Object[][] RtSettingMunicipalityRt = {
+		/*
+		コピペ用
+		Object[][] PrefecuturesRt = M10010PostMstRt.PrefecuturesRt();
+		*/
+		Object[][] RtSettingPrefecuturesRt = {
 				{"PREFECTURES_CD"	,(int) 0	,"String"	,"県CD"}
 				,{"PREFECTURES"		,(int) 1	,"String"	,"県名"}
 				};
 		
-		return RtSettingMunicipalityRt;
+		return RtSettingPrefecuturesRt;
+	}
+	
+	public static Object[][] RtAddToMunicipality(){
+		//住所一覧に対してJIS判定して結果を返却する
+		/*
+		コピペ用
+		String[] AddList = new String[0];
+		
+		Object[][] AddToMunicipality = M10010PostMstRt.AddToMunicipality(
+																	AddList);
+		*/
+		Object[][] RtAddToMunicipality = {
+				{"TgtAdd"				,(int) 0	,"String"	,"対象住所"}
+				,{"MUNICIPALITY_CD"		,(int) 1	,"String"	,"判定JISCD"}
+				};
+		return RtAddToMunicipality;
+		
 	}
 	
 	
@@ -50,13 +97,13 @@ public class M10010PostMstRt{
 		if(AllSearch) {SearchKick = true;}
 
 		String sql = "select "
-				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST) as POST,"
-				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES) as PREFECTURES,"
-				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01) as MUNICI01,"
-				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02) as MUNICI02,"
-				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD"
-				+ " from "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst"
-				+ " where 1=1";
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST) as POST,\n"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES) as PREFECTURES,\n"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01) as MUNICI01,\n"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02) as MUNICI02,\n"
+				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD\n"
+				+ " from "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst\n"
+				+ " where 1=1\n";
 		if(null!=SearchPOST && 0<SearchPOST.size()){
 			SearchKick = true;
 			if(PostPerfectMatch) {
@@ -64,14 +111,14 @@ public class M10010PostMstRt{
 					String WST = ""+SearchPOST.get(i);
 					WST = B00020ToolsTextControl.num_only_String(WST);
 					if(i==0) {sql = sql + " and(";}else {sql = sql + " or ";}
-					sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST = '"+WST+"'";
+					sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST = ?\n";
 				}
 			}else {
 				for(int i=0;i<SearchPOST.size();i++) {
 					String WST = ""+SearchPOST.get(i);
 					WST = B00020ToolsTextControl.num_only_String(WST);
 					if(i==0) {sql = sql + " and(";}else {sql = sql + " or ";}
-					sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST like '"+WST+"%'";
+					sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST like ?\n";
 				}
 			}
 			sql=sql+")";
@@ -81,21 +128,51 @@ public class M10010PostMstRt{
 			SearchKick = true;
 			for(int i=0;i<SearchAdd.size();i++) {
 				if(i==0) {sql = sql + " and(";}else {sql = sql + " or ";}
-				sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01 like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02 like '%"+SearchAdd.get(i)+"%'";
+				
+				sql = sql + "CONCAT ("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES\n";
+				sql = sql + ","+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01\n";
+				sql = sql + ","+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02) like ?\n";
 			}
 			sql=sql+")";
 		}
-
+		
+		//System.out.println(sql);
 		if(SearchKick) {
 			A00010DbConnect.DB_CONN("POST");
+			
 			ResultSet rset01 = null;
-			Statement stmt01 = null;
+			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-					      ResultSet.CONCUR_UPDATABLE);
-				rset01 = stmt01.executeQuery(sql);
+				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				int StmtCount = 0;
+				if(null!=SearchPOST && 0<SearchPOST.size()){
+					if(PostPerfectMatch) {
+						for(int i=0;i<SearchPOST.size();i++) {
+							String WST = ""+SearchPOST.get(i);
+							WST = B00020ToolsTextControl.num_only_String(WST);
+							
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, WST);
+						}
+					}else {
+						for(int i=0;i<SearchPOST.size();i++) {
+							String WST = ""+SearchPOST.get(i);
+							WST = B00020ToolsTextControl.num_only_String(WST);
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, WST+"%");
+						}
+					}
+				}
+
+				if(null!=SearchAdd && 0<SearchAdd.size()){
+					SearchKick = true;
+					for(int i=0;i<SearchAdd.size();i++) {
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchAdd.get(i)+"%");
+					}
+				}				
+				rset01 = stmt01.executeQuery();
+				
 				int counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
@@ -147,7 +224,9 @@ public class M10010PostMstRt{
 				if(i>0) {
 					sql = sql + " or ";
 				}
-				sql = sql + "CONCAT ("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES,"+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01,"+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02) like '%"+SearchName.get(i)+"%'";
+				sql = sql + "CONCAT ("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES,"
+							+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI01,"
+							+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICI02) like ?";
 			}
 			sql = sql+")";
 		}
@@ -159,7 +238,7 @@ public class M10010PostMstRt{
 				if(i>0) {
 					sql = sql + " or ";
 				}
-				sql = sql + A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD = '"+SearchMunicipalityCd.get(i)+"'";
+				sql = sql + A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD = ?";
 			}
 			sql = sql+")";
 		}
@@ -170,11 +249,29 @@ public class M10010PostMstRt{
 		if(KickFg) {
 			A00010DbConnect.DB_CONN("POST");
 			ResultSet rset01 = null;
-			Statement stmt01 = null;
+			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-					      ResultSet.CONCUR_UPDATABLE);
-				rset01 = stmt01.executeQuery(sql);
+				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				int StmtCount = 0;
+				if(null!=SearchName&&0<SearchName.size()) {
+					KickFg=true;
+					sql = sql + " and(";
+					for(int i=0;i<SearchName.size();i++) {
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchName.get(i)+"%");
+					}
+				}
+				
+				if(null!=SearchMunicipalityCd&&0<SearchMunicipalityCd.size()) {
+					KickFg=true;
+					sql = sql + " and(";
+					for(int i=0;i<SearchMunicipalityCd.size();i++) {
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchMunicipalityCd.get(i));
+					}
+				}
+				rset01 = stmt01.executeQuery();
+				
 				int counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
@@ -206,29 +303,18 @@ public class M10010PostMstRt{
 		}
 		return rt;
 	}
-	public static Object[][] PrefecuturesRt(ArrayList<String> SearchName,boolean AllSearch){
+	public static Object[][] PrefecuturesRt(){
 	//県マスタ返却
 
 		Object[][] rt = new Object[0][2];
 		boolean KickFg=false;
-		if(AllSearch) {KickFg=true;}
+		KickFg=true;
 		String sql = "select "
 				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES) as PREFECTURES,"
 				+"("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD) as MUNICIPALITY_CD,"
 				+"LEFT("+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.MUNICIPALITY_CD,2) as PREFECTURES_CD"
 				+ " from "+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst"
 				+ " where 1=1";
-		if(null!=SearchName&&0<SearchName.size()) {
-			KickFg=true;
-			sql = sql + " and(";
-			for(int i=0;i<SearchName.size();i++) {
-				if(i>0) {
-					sql = sql + " or ";
-				}
-				sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.PREFECTURES like '%"+SearchName.get(i)+"%'";
-			}
-			sql = sql+")";
-		}
 		
 		sql = " select "
 				+ "max(SD.PREFECTURES) as PREFECTURES,"
@@ -409,35 +495,39 @@ public class M10010PostMstRt{
 		}
 		A00010DbConnect.close();
 		
-		//市区町村名が"区""町""村"で終わる市区町村をリストアップ
+		//市区町村名が"区""町""村"で終わる市区町村をリストアップ "市区","郡町","郡村"で終わる住所は判定捨てる
 		ArrayList<String> WCAdd = new ArrayList<String>();
 		ArrayList<String> WCJis = new ArrayList<String>();
 		for(int i=0;i<WRT.length;i++) {
 			if(0<(""+WRT[i][0]).length() && ("区").equals((""+WRT[i][0]).substring((""+WRT[i][0]).length()-1,(""+WRT[i][0]).length()))) {
-				//市でスプリット
-				String[] WST = (""+WRT[i][0]).split("市");
-				WCAdd.add(WST[WST.length-1]);
-				WCJis.add(""+WRT[i][1]);
+				if(1<(""+WRT[i][0]).length() && ("市区").equals((""+WRT[i][0]).substring((""+WRT[i][0]).length()-2,(""+WRT[i][0]).length()))) {
+					
+				}else {
+					//市でスプリット
+					String[] WST = (""+WRT[i][0]).split("市");
+					WCAdd.add(WST[WST.length-1]);
+					WCJis.add(""+WRT[i][1]);
+				}
 			}
 			if(0<(""+WRT[i][0]).length() && ("町").equals((""+WRT[i][0]).substring((""+WRT[i][0]).length()-1,(""+WRT[i][0]).length()))) {
-				//郡でスプリット
-				String[] WST = (""+WRT[i][0]).split("郡");
-				//郡でスプリットできなければ島でスプリット
-				if(1==WST.length) {
-					WST = (""+WRT[i][0]).split("島");
+				if(1<(""+WRT[i][0]).length() && ("郡町").equals((""+WRT[i][0]).substring((""+WRT[i][0]).length()-2,(""+WRT[i][0]).length()))) {
+					
+				}else {
+					//郡でスプリット
+					String[] WST = (""+WRT[i][0]).split("郡");
+					WCAdd.add(WST[WST.length-1]);
+					WCJis.add(""+WRT[i][1]);
 				}
-				WCAdd.add(WST[WST.length-1]);
-				WCJis.add(""+WRT[i][1]);
 			}
 			if(0<(""+WRT[i][0]).length() && ("村").equals((""+WRT[i][0]).substring((""+WRT[i][0]).length()-1,(""+WRT[i][0]).length()))) {
-				//郡でスプリット
-				String[] WST = (""+WRT[i][0]).split("郡");
-				//郡でスプリットできなければ島でスプリット
-				if(1==WST.length) {
-					WST = (""+WRT[i][0]).split("島");
+				if(1<(""+WRT[i][0]).length() && ("郡村").equals((""+WRT[i][0]).substring((""+WRT[i][0]).length()-2,(""+WRT[i][0]).length()))) {
+					
+				}else {
+					//郡でスプリット
+					String[] WST = (""+WRT[i][0]).split("郡");
+					WCAdd.add(WST[WST.length-1]);
+					WCJis.add(""+WRT[i][1]);
 				}
-				WCAdd.add(WST[WST.length-1]);
-				WCJis.add(""+WRT[i][1]);
 			}
 		}
 		ArrayList<String> CAdd = new ArrayList<String>();
@@ -455,6 +545,8 @@ public class M10010PostMstRt{
 				if(UnHitFg) {
 					CAdd.add(WCAdd.get(i01));
 					CJis.add(WCJis.get(i01));
+				}else {
+					//System.out.println(WCAdd.get(i01));
 				}
 			}
 		}
@@ -533,9 +625,4 @@ public class M10010PostMstRt{
 		//System.out.println(rt[0][1]);
 		return rt;
 	}
-	
-	
-	
-	
-	
 }
