@@ -273,6 +273,16 @@ public class WM00060DeliveryMstSearch{
 					GetSearchPost			= B00020ToolsTextControl.num_only_String(GetSearchPost);
 					GetSearchTel			= B00020ToolsTextControl.num_only_String(GetSearchTel);
 					GetSearchFax			= B00020ToolsTextControl.num_only_String(GetSearchFax);
+					
+					TB_SearchDECD.setText(GetSearchDECD);
+					TB_SearchDepartmentCd.setText(GetSearchDepartmentCd);
+					TB_SearchDEName.setText(GetSearchDEName);
+					TB_SearchPost.setText(GetSearchPost);
+					TB_SearchAdd.setText(GetSearchAdd);
+					TB_SearchTel.setText(GetSearchTel);
+					TB_SearchFax.setText(GetSearchFax);
+					TB_SearchMail.setText(GetSearchMail);
+					TB_SearchCom.setText(GetSearchCom);
 
 					ArrayList<String> SearchDECD = new ArrayList<String>();
 					ArrayList<String> SearchDepartmentCd = new ArrayList<String>();

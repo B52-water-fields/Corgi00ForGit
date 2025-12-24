@@ -1,6 +1,6 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00050DeliveryTypeMstRt{
@@ -42,7 +42,7 @@ public class M00050DeliveryTypeMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchDeliveryTypeNo.size();i++) {
 				if(i>0) {sql = sql + " or ";}
-				sql = sql + "KM0050_DELIVERY_TYPEMST.DeliveryTypeNo = '"+ SearchDeliveryTypeNo.get(i) +"'";
+				sql = sql + "KM0050_DELIVERY_TYPEMST.DeliveryTypeNo = ?";
 			}
 			sql = sql + ")";
 		}
@@ -52,7 +52,7 @@ public class M00050DeliveryTypeMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchDeliveryTypeCd.size();i++) {
 				if(i>0) {sql = sql + " or ";}
-				sql = sql + "KM0050_DELIVERY_TYPEMST.DeliveryTypeCd = '"+ SearchDeliveryTypeCd.get(i) +"'";
+				sql = sql + "KM0050_DELIVERY_TYPEMST.DeliveryTypeCd = ?";
 			}
 			sql = sql + ")";
 		}
@@ -62,7 +62,7 @@ public class M00050DeliveryTypeMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchDeliveryTypeName.size();i++) {
 				if(i>0) {sql = sql + " or ";}
-				sql = sql + "KM0050_DELIVERY_TYPEMST.DeliveryTypeName like '%"+ SearchDeliveryTypeName.get(i) +"%'";
+				sql = sql + "KM0050_DELIVERY_TYPEMST.DeliveryTypeName like ?";
 			}
 			sql = sql + ")";
 		}
@@ -71,13 +71,35 @@ public class M00050DeliveryTypeMstRt{
 
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NANKO");
+			A00010DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
-			Statement stmt01 = null;
+			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-					      ResultSet.CONCUR_UPDATABLE);
-				rset01 = stmt01.executeQuery(sql);
+				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				int StmtCount = 0;
+				
+				if(null!=SearchDeliveryTypeNo&&0<SearchDeliveryTypeNo.size()) {
+					for(int i=0;i<SearchDeliveryTypeNo.size();i++) {
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchDeliveryTypeNo.get(i)+"");
+					}
+				}
+
+				if(null!=SearchDeliveryTypeCd&&0<SearchDeliveryTypeCd.size()) {
+					for(int i=0;i<SearchDeliveryTypeCd.size();i++) {
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchDeliveryTypeCd.get(i)+"");
+					}
+				}
+
+				if(null!=SearchDeliveryTypeName&&0<SearchDeliveryTypeName.size()) {
+					for(int i=0;i<SearchDeliveryTypeName.size();i++) {
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchDeliveryTypeName.get(i)+"%");
+					}
+				}
+				rset01 = stmt01.executeQuery();
+				
 				int counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

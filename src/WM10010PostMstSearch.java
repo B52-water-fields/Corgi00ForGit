@@ -143,6 +143,17 @@ public class WM10010PostMstSearch{
 					String GetSearchPOST = TB_SearchPOST.getText();	if(null==GetSearchPOST) {GetSearchPOST="";}
 					String GetSearchAdd = TB_SearchAdd.getText();	if(null==GetSearchAdd) {GetSearchAdd="";}
 					
+					if(null==GetSearchPOST	){GetSearchPOST = "";}
+					if(null==GetSearchAdd	){GetSearchAdd 	= "";}
+					
+					GetSearchPOST	= B00020ToolsTextControl.Trim(GetSearchPOST);
+					GetSearchAdd	= B00020ToolsTextControl.Trim(GetSearchAdd);
+					
+					GetSearchPOST			= B00020ToolsTextControl.num_only_String(GetSearchPOST);
+					
+					TB_SearchPOST.setText(GetSearchPOST);
+					TB_SearchAdd.setText(GetSearchAdd);
+					
 					ArrayList<String> SearchPOST = new ArrayList<String>();
 					ArrayList<String> SearchAdd = new ArrayList<String>();
 					boolean AllSearch = true;

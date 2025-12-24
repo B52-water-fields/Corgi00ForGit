@@ -1,6 +1,6 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00040DeliveryMstRt{
@@ -98,41 +98,41 @@ public class M00040DeliveryMstRt{
 			+")\n"
 			+" where 1=1\n";
 		
-		if(null!=SearchDECD && 0<SearchDECD.size()){						//検索条件届先CD
+		if(null!=SearchDECD && 0<SearchDECD.size()){					//検索条件届先CD
 			SearchKick=true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchDECD.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.DECD ='"+SearchDECD.get(i)+"'";
+				sql = sql + "KM0040_DELIVERYMST.DECD = ?";
 			}
 			sql= sql + ")\n";
 		}
-		if(null!=SearchDepartmentCd && 0<SearchDepartmentCd.size()){		//検索条件届先部署CD
+		if(null!=SearchDepartmentCd && 0<SearchDepartmentCd.size()){	//検索条件届先部署CD
 			SearchKick=true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchDepartmentCd.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.DepartmentCd ='"+SearchDepartmentCd.get(i)+"'";
+				sql = sql + "KM0040_DELIVERYMST.DepartmentCd = ?";
 			}
 			sql= sql + ")\n";
 		}
-		if(null!=SearchDEName && 0<SearchDEName.size()){					//検索条件届先名
+		if(null!=SearchDEName && 0<SearchDEName.size()){				//検索条件届先名
 			SearchKick=true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchDEName.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.DEName01 like '%"+SearchDEName.get(i)+"%'";
-				sql = sql + " or KM0040_DELIVERYMST.DEName02 like '%"+SearchDEName.get(i)+"%'";
-				sql = sql + " or KM0040_DELIVERYMST.DEName03 like '%"+SearchDEName.get(i)+"%'";
+				sql = sql + "KM0040_DELIVERYMST.DEName01 like ?";
+				sql = sql + " or KM0040_DELIVERYMST.DEName02 like ?";
+				sql = sql + " or KM0040_DELIVERYMST.DEName03 like ?";
 			}
 			sql= sql + ")\n";
 		}
-		if(null!=SearchPost && 0<SearchPost.size()){						//検索条件届先郵便
+		if(null!=SearchPost && 0<SearchPost.size()){					//検索条件届先郵便
 			SearchKick=true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchPost.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.Post like '"+SearchPost.get(i)+"%'";
+				sql = sql + "KM0040_DELIVERYMST.Post like ?";
 			}
 			sql= sql + ")\n";
 		}
@@ -141,9 +141,9 @@ public class M00040DeliveryMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchAdd.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.Add01 like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or KM0040_DELIVERYMST.Add02 like '%"+SearchAdd.get(i)+"%'";
-				sql = sql + " or KM0040_DELIVERYMST.Add03 like '%"+SearchAdd.get(i)+"%'";
+				sql = sql + " CONCAT (KM0040_DELIVERYMST.Add01";
+				sql = sql + " , KM0040_DELIVERYMST.Add02";
+				sql = sql + " , KM0040_DELIVERYMST.Add03) like ?";
 			}
 			sql= sql + ")\n";
 		}
@@ -152,7 +152,7 @@ public class M00040DeliveryMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchTel.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.Tel like '%"+SearchTel.get(i)+"%'";
+				sql = sql + "KM0040_DELIVERYMST.Tel like ?";
 			}
 			sql= sql + ")\n";
 		}
@@ -161,16 +161,16 @@ public class M00040DeliveryMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchFax.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.Fax like '%"+SearchFax.get(i)+"%'";
+				sql = sql + "KM0040_DELIVERYMST.Fax like ?";
 			}
 			sql= sql + ")\n";
 		}
-		if(null!=SearchMail && 0<SearchMail.size()){						//検索条件届先MAIL
+		if(null!=SearchMail && 0<SearchMail.size()){					//検索条件届先MAIL
 			SearchKick=true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchMail.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.Mail like '%"+SearchMail.get(i)+"%'";
+				sql = sql + "KM0040_DELIVERYMST.Mail like ?";
 			}
 			sql= sql + ")\n";
 		}
@@ -179,9 +179,9 @@ public class M00040DeliveryMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchCom.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.Com01 like '%"+SearchCom.get(i)+"%'";
-				sql = sql + " or KM0040_DELIVERYMST.Com02 like '%"+SearchCom.get(i)+"%'";
-				sql = sql + " or KM0040_DELIVERYMST.Com03 like '%"+SearchCom.get(i)+"%'";
+				sql = sql + "KM0040_DELIVERYMST.Com01 like ?";
+				sql = sql + " or KM0040_DELIVERYMST.Com02 like ?";
+				sql = sql + " or KM0040_DELIVERYMST.Com03 like ?";
 			}
 			sql= sql + ")\n";
 		}
@@ -190,25 +190,25 @@ public class M00040DeliveryMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchPrefecturesCd.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.PrefecturesCd ='"+SearchPrefecturesCd.get(i)+"'";
+				sql = sql + "KM0040_DELIVERYMST.PrefecturesCd = ?";
 			}
 			sql= sql + ")";
 		}
-		if(null!=SearchMunicipalityCd && 0<SearchMunicipalityCd.size()){	//検索条件届先市区町村CD
+		if(null!=SearchMunicipalityCd && 0<SearchMunicipalityCd.size()){//検索条件届先市区町村CD
 			SearchKick=true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchMunicipalityCd.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.MunicipalityCd ='"+SearchMunicipalityCd.get(i)+"'";
+				sql = sql + "KM0040_DELIVERYMST.MunicipalityCd = ?";
 			}
 			sql= sql + ")\n";
 		}
-		if(null!=SearchDelFg && 0<SearchDelFg.size()){	//検索条件届先市区町村CD
+		if(null!=SearchDelFg && 0<SearchDelFg.size()){					//検索条件届先市区町村CD
 			SearchKick=true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchDelFg.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + "KM0040_DELIVERYMST.DelFg ='"+SearchDelFg.get(i)+"'";
+				sql = sql + "KM0040_DELIVERYMST.DelFg = ?";
 			}
 			sql= sql + ")\n";
 		}
@@ -219,11 +219,93 @@ public class M00040DeliveryMstRt{
 		if(SearchKick) {
 			A00010DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
-			Statement stmt01 = null;
+			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-					      ResultSet.CONCUR_UPDATABLE);
-				rset01 = stmt01.executeQuery(sql);
+				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				int StmtCount = 0;
+				
+				if(null!=SearchDECD && 0<SearchDECD.size()){
+					for(int i=0;i<SearchDECD.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchDECD.get(i)+"");
+					}
+				}
+				if(null!=SearchDepartmentCd && 0<SearchDepartmentCd.size()){
+					for(int i=0;i<SearchDepartmentCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchDepartmentCd.get(i)+"");
+					}
+				}
+				if(null!=SearchDEName && 0<SearchDEName.size()){
+					for(int i=0;i<SearchDEName.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchDEName.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchDEName.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchDEName.get(i)+"%");
+					}
+				}
+				if(null!=SearchPost && 0<SearchPost.size()){
+					for(int i=0;i<SearchPost.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchPost.get(i)+"%");
+					}
+				}
+				if(null!=SearchAdd && 0<SearchAdd.size()){
+					for(int i=0;i<SearchAdd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchAdd.get(i)+"%");
+					}
+				}
+				if(null!=SearchTel && 0<SearchTel.size()){
+					for(int i=0;i<SearchTel.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchTel.get(i)+"%");
+					}
+				}
+				if(null!=SearchFax && 0<SearchFax.size()){
+					for(int i=0;i<SearchFax.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchFax.get(i)+"%");
+					}
+				}
+				if(null!=SearchMail && 0<SearchMail.size()){
+					for(int i=0;i<SearchMail.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchMail.get(i)+"%");
+					}
+				}
+				if(null!=SearchCom && 0<SearchCom.size()){
+					for(int i=0;i<SearchCom.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCom.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCom.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCom.get(i)+"%");
+					}
+				}
+				if(null!=SearchPrefecturesCd && 0<SearchPrefecturesCd.size()){
+					for(int i=0;i<SearchPrefecturesCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchPrefecturesCd.get(i)+"");
+					}
+				}
+				if(null!=SearchMunicipalityCd && 0<SearchMunicipalityCd.size()){
+					for(int i=0;i<SearchMunicipalityCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchMunicipalityCd.get(i)+"");
+					}
+				}
+				if(null!=SearchDelFg && 0<SearchDelFg.size()){
+					for(int i=0;i<SearchDelFg.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchDelFg.get(i)+"");
+					}
+				}
+				rset01 = stmt01.executeQuery();
+				
 				int counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

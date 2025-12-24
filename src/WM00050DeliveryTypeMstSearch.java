@@ -156,6 +156,9 @@ public class WM00050DeliveryTypeMstSearch{
 					GetSearchDeliveryTypeName	= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeName);
 					
 					GetSearchDeliveryTypeNo		= B00020ToolsTextControl.num_only_String(GetSearchDeliveryTypeNo);
+					
+					TB_SearchDeliveryTypeCd.setText(GetSearchDeliveryTypeCd);
+					TB_SearchDeliveryTypeName.setText(GetSearchDeliveryTypeName);
 
 					ArrayList<String> SearchDeliveryTypeNo = new ArrayList<String>();
 					ArrayList<String> SearchDeliveryTypeCd = new ArrayList<String>();

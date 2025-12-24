@@ -1,6 +1,6 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 public class M00031CarMstRt{
 	//戻り値カラム
@@ -79,6 +79,7 @@ public class M00031CarMstRt{
 			+" "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0071_CARMST.WHCD = "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHCD"
 			+")\n"
 			+" where 1=1 ";
+		
 		if(null!=SearchWHCD && 0<SearchWHCD.size()){
 			SearchKick = true;
 			for(int i=0;i<SearchWHCD.size();i++){
@@ -87,8 +88,7 @@ public class M00031CarMstRt{
 				}else{
 					sql = sql + " or ";
 				}
-				String Wst = ""+SearchWHCD.get(i);
-				sql = sql + "KM0071_CARMST.WHCD = '"+Wst+"'";
+				sql = sql + "KM0071_CARMST.WHCD = ?";
 			}
 			sql = sql +	")";
 		}
@@ -100,8 +100,7 @@ public class M00031CarMstRt{
 				}else{
 					sql = sql + " or ";
 				}
-				String Wst = ""+SearchShippingCompanyCd.get(i);
-				sql = sql + "KM0071_CARMST.ShippingCompanyCd = '"+Wst+"'";
+				sql = sql + "KM0071_CARMST.ShippingCompanyCd = ?";
 			}
 			sql = sql +	")";
 		}
@@ -113,8 +112,7 @@ public class M00031CarMstRt{
 				}else{
 					sql = sql + " or ";
 				}
-				String Wst = ""+SearchCarCd.get(i);
-				sql = sql + "KM0071_CARMST.CarCd = '"+Wst+"'";
+				sql = sql + "KM0071_CARMST.CarCd = ?";
 			}
 			sql = sql +	")";
 		}
@@ -126,10 +124,9 @@ public class M00031CarMstRt{
 				}else{
 					sql = sql + " or ";
 				}
-				String Wst = ""+SearchCarName.get(i);
-				sql = sql + "KM0071_CARMST.CarName01 like '%"+Wst+"%'";
-				sql = sql + " or KM0071_CARMST.CarName02 like '%"+Wst+"%'";
-				sql = sql + " or KM0071_CARMST.CarName03 like '%"+Wst+"%'";
+				sql = sql + "KM0071_CARMST.CarName01 like ?";
+				sql = sql + " or KM0071_CARMST.CarName02 like ?";
+				sql = sql + " or KM0071_CARMST.CarName03 like ?";
 			}
 			sql = sql +	")";
 		}
@@ -142,8 +139,7 @@ public class M00031CarMstRt{
 				}else{
 					sql = sql + " or ";
 				}
-				String Wst = ""+SearchDelFg.get(i);
-				sql = sql + "KM0071_CARMST.DelFg = '"+Wst+"'";
+				sql = sql + "KM0071_CARMST.DelFg = ?";
 			}
 			sql = sql +	")";
 		}
@@ -153,11 +149,48 @@ public class M00031CarMstRt{
 		if(SearchKick) {
 			A00010DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
-			Statement stmt01 = null;
+			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-					      ResultSet.CONCUR_UPDATABLE);
-				rset01 = stmt01.executeQuery(sql);
+				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				int StmtCount = 0;
+				
+				if(null!=SearchWHCD && 0<SearchWHCD.size()){
+					for(int i=0;i<SearchWHCD.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchWHCD.get(i)+"");
+					}
+				}
+				if(null!=SearchShippingCompanyCd && 0<SearchShippingCompanyCd.size()){
+					for(int i=0;i<SearchShippingCompanyCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchShippingCompanyCd.get(i)+"");
+					}
+				}
+				if(null!=SearchCarCd && 0<SearchCarCd.size()){
+					for(int i=0;i<SearchCarCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchCarCd.get(i)+"");
+					}
+				}
+				if(null!=SearchCarName && 0<SearchCarName.size()){
+					for(int i=0;i<SearchCarName.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCarName.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCarName.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCarName.get(i)+"%");
+					}
+				}
+				
+				if(null!=SearchDelFg && 0<SearchDelFg.size()){
+					for(int i=0;i<SearchDelFg.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchDelFg.get(i)+"");
+					}
+				}
+				rset01 = stmt01.executeQuery();
+				
 				int counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

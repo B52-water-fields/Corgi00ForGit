@@ -303,6 +303,18 @@ public class WM00030UserMstSearch{
 					GetSearchTel  = B00020ToolsTextControl.num_only_String(GetSearchTel);
 					GetSearchFax  = B00020ToolsTextControl.num_only_String(GetSearchFax);
 					
+
+					TB_SearchUserCd.setText(GetSearchUserCd);
+					TB_SearchUserName.setText(GetSearchUserName);
+					TB_SearchCarCd.setText(GetSearchCarCd);
+					TB_SearchCarName.setText(GetSearchCarName);
+					TB_SearchPost.setText(GetSearchPost);
+					TB_SearchAdd.setText(GetSearchAdd);
+					TB_SearchTel.setText(GetSearchTel);
+					TB_SearchFax.setText(GetSearchFax);
+					TB_SearchMail.setText(GetSearchMail);
+					TB_SearchCom.setText(GetSearchCom);
+					
 					ArrayList<String> SearchWHCD = new ArrayList<String>();
 					ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
 					ArrayList<String> SearchAuthorityFG = new ArrayList<String>();

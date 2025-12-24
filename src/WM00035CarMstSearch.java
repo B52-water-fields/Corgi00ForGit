@@ -171,6 +171,9 @@ public class WM00035CarMstSearch{
 					GetSearchCarName	 		= B00020ToolsTextControl.Trim(GetSearchCarName);
 					GetSearchDelFg	 			= B00020ToolsTextControl.Trim(GetSearchDelFg);
 					
+					TB_SearchCarCd.setText(GetSearchCarCd);
+					TB_SearchCarName.setText(GetSearchCarName);
+					
 					ArrayList<String> SearchWHCD = new ArrayList<String>();
 					ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
 					ArrayList<String> SearchCarCd = new ArrayList<String>();

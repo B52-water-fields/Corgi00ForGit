@@ -194,6 +194,15 @@ public class WM00040ShippingCompanyMstSearch{
 					GetSearchMail				= B00020ToolsTextControl.Trim(GetSearchMail);
 					GetSearchCom				= B00020ToolsTextControl.Trim(GetSearchCom);
 					
+					TB_SearchShippingCompanyCd.setText(GetSearchShippingCompanyCd);
+					TB_SearchCompanyName.setText(GetSearchCompanyName);
+					TB_SearchPost.setText(GetSearchPost);
+					TB_SearchAdd.setText(GetSearchAdd);
+					TB_SearchTel.setText(GetSearchTel);
+					TB_SearchFax.setText(GetSearchFax);
+					TB_SearchMail.setText(GetSearchMail);
+					TB_SearchCom.setText(GetSearchCom);
+					
 					ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
 					ArrayList<String> SearchCompanyName = new ArrayList<String>();
 					ArrayList<String> SearchPost = new ArrayList<String>();

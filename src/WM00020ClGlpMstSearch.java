@@ -235,6 +235,16 @@ public class WM00020ClGlpMstSearch{
 					if(!"".equals(GetSearchTel)){SearchTel.add(GetSearchTel);}
 					if(!"".equals(GetSearchFax)){SearchFax.add(GetSearchFax);}
 					if(!"".equals(GetSearchMail)){SearchMail.add(GetSearchMail);}
+					
+					TB_SearchClGpCD.setText(GetSearchClGpCD);
+					TB_SearchCLGpName.setText(GetSearchCLGpName);
+					TB_SearchPost.setText(GetSearchPost);
+					TB_SearchAdd.setText(GetSearchAdd);
+					TB_SearchCom.setText(GetSearchCom);
+					
+					TB_SearchTel.setText(GetSearchTel);
+					TB_SearchFax.setText(GetSearchFax);
+					TB_SearchMail.setText(GetSearchMail);
 
 					Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
 								SearchClGpCD,SearchCLGpName,SearchPost,

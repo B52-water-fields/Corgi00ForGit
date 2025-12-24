@@ -237,6 +237,16 @@ public class WM00010WhMstSearch{
 					if(!"".equals(GetSearchFax   )){SearchFax.add(   GetSearchFax);}
 					if(!"".equals(GetSearchMail  )){SearchMail.add(  GetSearchMail);}		
 					if(!"".equals(GetSearchPTMSCD)){SearchPTMSCD.add(GetSearchPTMSCD);}
+					
+					TB_SearchWHCD.setText(GetSearchWHCD);
+					TB_SearchWHName.setText(GetSearchWHName);
+					TB_SearchPost.setText(GetSearchPost);
+					TB_SearchAdd.setText(GetSearchAdd);
+					TB_SearchCom.setText(GetSearchCom);
+					TB_SearchTel.setText(GetSearchTel);
+					TB_SearchFax.setText(GetSearchFax);
+					TB_SearchMail.setText(GetSearchMail);
+					TB_SearchPTMSCD.setText(GetSearchPTMSCD);
 
 					Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
 								SearchWHCD,SearchWHName,SearchPost,

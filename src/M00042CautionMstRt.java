@@ -1,6 +1,6 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class M00042CautionMstRt{
@@ -69,7 +69,7 @@ public class M00042CautionMstRt{
 		sql=sql+" and(";
 		for(int i=0;i<SearchCautionCd.size();i++){
 			if(0<i){sql = sql+" or ";}
-			sql = sql + " KM0090_CAUTION.CautionCd='"+SearchCautionCd.get(i)+"'";
+			sql = sql + " KM0090_CAUTION.CautionCd = ?";
 		}
 		sql=sql+")";
 	}
@@ -78,7 +78,7 @@ public class M00042CautionMstRt{
 		sql=sql+" and(";
 		for(int i=0;i<SearchClGpCD.size();i++){
 			if(0<i){sql = sql+" or ";}
-			sql = sql + " KM0090_CAUTION.ClGpCD='"+SearchClGpCD.get(i)+"'";
+			sql = sql + " KM0090_CAUTION.ClGpCD = ?";
 		}
 		sql=sql+")";
 	}
@@ -87,7 +87,7 @@ public class M00042CautionMstRt{
 		sql=sql+" and(";
 		for(int i=0;i<SearchDECD.size();i++){
 			if(0<i){sql = sql+" or ";}
-			sql = sql + " KM0090_CAUTION.DECD='"+SearchDECD.get(i)+"'";
+			sql = sql + " KM0090_CAUTION.DECD = ?";
 		}
 		sql=sql+")";
 	}
@@ -96,7 +96,7 @@ public class M00042CautionMstRt{
 		sql=sql+" and(";
 		for(int i=0;i<SearchDepartmentCd.size();i++){
 			if(0<i){sql = sql+" or ";}
-			sql = sql + " KM0090_CAUTION.DepartmentCd='"+SearchDepartmentCd.get(i)+"'";
+			sql = sql + " KM0090_CAUTION.DepartmentCd = ?";
 		}
 		sql=sql+")";
 	}
@@ -105,7 +105,7 @@ public class M00042CautionMstRt{
 		sql=sql+" and(";
 		for(int i=0;i<SearchCautionTiming.size();i++){
 			if(0<i){sql = sql+" or ";}
-			sql = sql + " KM0090_CAUTION.CautionTiming='"+SearchCautionTiming.get(i)+"'";
+			sql = sql + " KM0090_CAUTION.CautionTiming = ?";
 		}
 		sql=sql+")";
 	}
@@ -114,7 +114,7 @@ public class M00042CautionMstRt{
 		sql=sql+" and(";
 		for(int i=0;i<SearchCautionName.size();i++){
 			if(0<i){sql = sql+" or ";}
-			sql = sql + " KM0090_CAUTION.CautionName='"+SearchCautionName.get(i)+"'";
+			sql = sql + " KM0090_CAUTION.CautionName like ?";
 		}
 		sql=sql+")";
 	}
@@ -123,7 +123,7 @@ public class M00042CautionMstRt{
 		sql=sql+" and(";
 		for(int i=0;i<SearchCaution.size();i++){
 			if(0<i){sql = sql+" or ";}
-			sql = sql + " KM0090_CAUTION.Caution like '%"+SearchCaution.get(i)+"%'";
+			sql = sql + " KM0090_CAUTION.Caution like ?";
 		}
 		sql=sql+")";
 	}		
@@ -132,9 +132,9 @@ public class M00042CautionMstRt{
 		sql=sql+" and(";
 		for(int i=0;i<SearchDeName.size();i++){
 			if(0<i){sql = sql+" or ";}
-			sql = sql + " KM0040_DELIVERYMST.DEName01 like '%"+SearchDeName.get(i)+"%'";
-			sql = sql + " or KM0040_DELIVERYMST.DEName02 like '%"+SearchDeName.get(i)+"%'";
-			sql = sql + " or KM0040_DELIVERYMST.DEName03 like '%"+SearchDeName.get(i)+"%'";
+			sql = sql + " KM0040_DELIVERYMST.DEName01 like ?";
+			sql = sql + " or KM0040_DELIVERYMST.DEName02 like ?";
+			sql = sql + " or KM0040_DELIVERYMST.DEName03 like ?";
 		}
 		sql=sql+")";
 	}
@@ -144,11 +144,65 @@ public class M00042CautionMstRt{
 		//System.out.println(sql);
 		A00010DbConnect.DB_CONN("NYANKO");
 		ResultSet rset01 = null;
-		Statement stmt01 = null;
+		PreparedStatement stmt01 = null;
 		try {
-			stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-				      ResultSet.CONCUR_UPDATABLE);
-			rset01 = stmt01.executeQuery(sql);
+			stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+			int StmtCount = 0;
+			
+			if(null!=SearchCautionCd && 0<SearchCautionCd.size()){
+				for(int i=0;i<SearchCautionCd.size();i++){
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, ""+SearchCautionCd.get(i)+"");
+				}
+			}
+			if(null!= SearchClGpCD && 0<SearchClGpCD.size()){
+				for(int i=0;i<SearchClGpCD.size();i++){
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, ""+SearchClGpCD.get(i)+"");
+				}
+			}
+			if(null!=SearchDECD && 0<SearchDECD.size()){
+				for(int i=0;i<SearchDECD.size();i++){
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, ""+SearchDECD.get(i)+"");
+				}
+			}
+			if(null!= SearchDepartmentCd && 0<SearchDepartmentCd.size()){
+				for(int i=0;i<SearchDepartmentCd.size();i++){
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, ""+SearchDepartmentCd.get(i)+"");
+				}
+			}
+			if(null!=SearchCautionTiming && 0<SearchCautionTiming.size()){
+				for(int i=0;i<SearchCautionTiming.size();i++){
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, ""+SearchCautionTiming.get(i)+"");
+				}
+			}
+			if(null!= SearchCautionName && 0<SearchCautionName.size()){
+				for(int i=0;i<SearchCautionName.size();i++){
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, "%"+SearchCautionName.get(i)+"%");
+				}
+			}
+			if(null!=SearchCaution && 0<SearchCaution.size()){
+				for(int i=0;i<SearchCaution.size();i++){
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, "%"+SearchCaution.get(i)+"%");
+				}
+			}		
+			if(null!=SearchDeName && 0<SearchDeName.size()){
+				for(int i=0;i<SearchDeName.size();i++){
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, "%"+SearchDeName.get(i)+"%");
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, "%"+SearchDeName.get(i)+"%");
+					StmtCount = StmtCount+1;
+					stmt01.setString(StmtCount, "%"+SearchDeName.get(i)+"%");
+				}
+			}
+			rset01 = stmt01.executeQuery();
+			
 			int counter = 0;
 			rset01.beforeFirst();
 			while (rset01.next()) {

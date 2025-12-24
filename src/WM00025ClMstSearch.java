@@ -273,6 +273,16 @@ public class WM00025ClMstSearch{
 					if(!"".equals(GetSearchMail)){SearchMail.add(GetSearchMail);}
 					if(!"".equals(GetSearchCom)){SearchCom.add(GetSearchCom);}
 					
+					
+					TB_SearchCLCD.setText(GetSearchCLCD);
+					TB_SearchCLName.setText(GetSearchCLName);
+					TB_searchAdd.setText(GetsearchAdd);
+					TB_SearchPost.setText(GetSearchPost);
+					TB_SearchTel.setText(GetSearchTel);
+					TB_SearchFax.setText(GetSearchFax);
+					TB_SearchMail.setText(GetSearchMail);
+					TB_SearchCom.setText(GetSearchCom);
+					
 					Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
 								SearchClGpCD,SearchCLCD,SearchCLName,SearchPost,searchAdd,
 								SearchTel,SearchFax,SearchMail,SearchCom,SearchWHCD,AllSearch);
