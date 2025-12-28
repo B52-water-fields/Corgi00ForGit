@@ -354,7 +354,6 @@ public class B00060ToolsExcellControl{
 		} catch (EncryptedDocumentException | InvalidFormatException | IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public static int ABC_INT_RT(String get_st){
