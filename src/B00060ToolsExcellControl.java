@@ -400,10 +400,6 @@ public class B00060ToolsExcellControl{
 		//ColumnType[i]=2:日付時刻
 		//※日付時刻型はyyyy/mm/dd hh:mm:ss 又は空白文字列を返却する
 		Object[][] rt = new Object[0][0];
-		int MaxRow = 1048576;
-		int MaxCal = 16383;
-		int TgtEndRow = 0;
-		int TgtEndcal = 0;
 		try {
 			Workbook book = WorkbookFactory.create(new FileInputStream(FP));
 			Sheet sheet = book.getSheet(SheetName);
@@ -529,13 +525,25 @@ public class B00060ToolsExcellControl{
 		return rt;
 	}
 	
-	public static Object[][] ExcellRead2(String FP,String SheetName){
+	public static Object[][] ExcellRead2(String FP,String SheetName,int FMaxRow,int FMaxCal){
 		//配列要素としてエクセルのデータを返却
+		//FMaxRow指定していなければ最終行まで読み取り
+		//FMaxRow指定していれば指定行を最大として読み取る
+		//FMaxCal指定していなければ最終カラムまで読み取り
+		//FMaxCal指定していれば指定カラムを最大として読み取る
+		//EX:1行目15カラムまでをしていてrt[1][1]～rt[1][15]を取りたい場合
+		//   FMaxRow = 1 FMaxCal = 15 を引数にする
+		
+		
 		Object[][] rt = new Object[0][0];
 		int MaxRow = 1048576; 	//エクセルの最大行数
 		int MaxCal = 16383;		//エクセルの最大の列数
 		int TgtEndRow = 0;
 		int TgtEndcal = 0;
+		
+		if(0!=FMaxRow) {MaxRow = FMaxRow;}
+		if(0!=FMaxCal) {MaxCal = FMaxCal;}
+		
 		try {
 			Workbook book = WorkbookFactory.create(new FileInputStream(FP));
 			Sheet sheet = book.getSheet(SheetName);
@@ -544,6 +552,8 @@ public class B00060ToolsExcellControl{
 				 Row row = sheet.getRow(i);
 				 if(null!=row) {
 					 TgtEndRow=TgtEndRow+1;
+				 }else {
+					 i=MaxRow+1;
 				 }
 			}
 			//NULLを返さない=情報が格納されている列の最大値を格納
@@ -556,6 +566,8 @@ public class B00060ToolsExcellControl{
 							if(TgtEndcal<i02+1) {
 								TgtEndcal=i02+1;
 							}
+						}else {
+							i02=MaxCal+1;
 						}
 					}
 				}

@@ -275,12 +275,13 @@ public class WM00061DeliveryMstRenewAndCreate{
 		SameDelivery_fm.add(SameDelivery_userinfo);
 		SameDelivery_fm.add(SameDelivery_exit_btn);
 		JLabel LB_Msg  = B00110FrameParts.JLabelSet(	10,40,300,20,"以下の届先と重複していませんか？" ,11,0);
+		SameDelivery_fm.add(LB_Msg);
 		
 		String[] columnNames01 = {
 								"Fg"
 								,"届先CD"
 								,"部署CD"
-								,"届先名"
+								,"届先名1"
 								,"届先住所"};
 		
 		//編集可能カラムの指定
@@ -302,8 +303,8 @@ public class WM00061DeliveryMstRenewAndCreate{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
 		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先CD
 		column = columnModel01.getColumn( 2);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//部署CD
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(250*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先名
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(250*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先名
+		column = columnModel01.getColumn( 3);	column.setPreferredWidth(250*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先名1
+		column = columnModel01.getColumn( 4);	column.setPreferredWidth(250*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先住所
 		
 		//スクロール用設定
 		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,60,610,300,tb01);
@@ -541,7 +542,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
 							GetDECD = ""+tableModel_ms01.getValueAt(i, 1);
-							GetDepartmentCd = NewDepartmentCd(GetDECD);
+							GetDepartmentCd = M00040DeliveryMstRt.NewDepartmentCd(GetDECD);
 							KickFg = true;
 						}
 					}
@@ -725,8 +726,8 @@ public class WM00061DeliveryMstRenewAndCreate{
 									SetOb[0] = false;
 									SetOb[ 1] = ""+SameDelivery[i][0];	//届先CD
 									SetOb[ 2] = ""+SameDelivery[i][1];	//部署CD
-									SetOb[ 3] = ""+SameDelivery[i][2];	//届先名
-									SetOb[ 4] = ""+SameDelivery[i][6];	//届先名
+									SetOb[ 3] = ""+SameDelivery[i][2];	//届先名１
+									SetOb[ 4] = ""+SameDelivery[i][6]+SameDelivery[i][7]+SameDelivery[i][8];	//届先住所
 									
 									tableModel_ms01.addRow(SetOb);
 								}
@@ -788,7 +789,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 				if(RenewFg) {
 					RenewFg = false;
 					String GetDECD = TB_DECD.getText();
-					String NewDepartmentCd = NewDepartmentCd(GetDECD);
+					String NewDepartmentCd = M00040DeliveryMstRt.NewDepartmentCd(GetDECD);
 					TB_DepartmentCd.setText(NewDepartmentCd);
 					RenewFg = true;
 				}
@@ -909,55 +910,6 @@ public class WM00061DeliveryMstRenewAndCreate{
 				);
 		
 		return DeliveryMstRt;
-	}
-	
-	private static String NewDepartmentCd(String GetDECD) {
-		ArrayList<String> SearchDECD = new ArrayList<String>();
-		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
-		ArrayList<String> SearchDEName = new ArrayList<String>();
-		ArrayList<String> SearchPost = new ArrayList<String>();
-		ArrayList<String> SearchAdd = new ArrayList<String>();
-		ArrayList<String> SearchTel = new ArrayList<String>();
-		ArrayList<String> SearchFax = new ArrayList<String>();
-		ArrayList<String> SearchMail = new ArrayList<String>();
-		ArrayList<String> SearchCom = new ArrayList<String>();
-		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
-		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
-		ArrayList<String> SearchDelFg = new ArrayList<String>();
-		boolean AllSearch = false;
-		
-		SearchDECD.add(GetDECD);
-		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
-				SearchDECD,	
-				SearchDepartmentCd,
-				SearchDEName,
-				SearchPost,
-				SearchAdd,
-				SearchTel,
-				SearchFax,
-				SearchMail,
-				SearchCom,
-				SearchPrefecturesCd,
-				SearchMunicipalityCd,
-				SearchDelFg,
-				AllSearch
-				);
-		int DeptNo = 0;
-		for(int i=0;i<DeliveryMstRt.length;i++) {
-			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][ 1]);
-			if("".equals(WST)) {WST = "0";}
-			int WINT = Integer.parseInt(WST);
-			if(WINT>DeptNo) {
-				DeptNo = WINT;
-			}
-		}
-		DeptNo = DeptNo+1;
-		String WST = "0000"+DeptNo;
-		WST = WST.substring(WST.length()-4,WST.length());
-		if(9999<DeptNo) {
-			WST = ""+DeptNo;
-		}
-		return WST;
 	}
 	
 	private static void DeliveryEntry(

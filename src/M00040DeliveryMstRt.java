@@ -6,6 +6,38 @@ import java.util.ArrayList;
 public class M00040DeliveryMstRt{
 	//戻り値カラム
 	public static Object[][] RtSettingDeliveryMstRt(){
+		/*
+		コピペ用
+		ArrayList<String> SearchDECD = new ArrayList<String>();
+		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
+		ArrayList<String> SearchDEName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
+		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
+		ArrayList<String> SearchDelFg = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		M00040DeliveryMstRt.DeliveryMstRt(
+			SearchDECD,
+			SearchDepartmentCd,
+			SearchDEName,
+			SearchPost,
+			SearchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			SearchPrefecturesCd,
+			SearchMunicipalityCd,
+			SearchDelFg,
+			AllSearch
+			);
+		*/
 		Object[][] RtSettingDeliveryMstRt = {
 				 {"DECD"			,(int) 0	,"String"	,"納品先コード"}
 				,{"DepartmentCd"	,(int) 1	,"String"	,"部署CD"}
@@ -417,5 +449,52 @@ public class M00040DeliveryMstRt{
     	return rt;
 	}
 	
-	
+	public static String NewDepartmentCd(String GetDECD) {
+		ArrayList<String> SearchDECD = new ArrayList<String>();
+		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
+		ArrayList<String> SearchDEName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> SearchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
+		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
+		ArrayList<String> SearchDelFg = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		SearchDECD.add(GetDECD);
+		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+				SearchDECD,	
+				SearchDepartmentCd,
+				SearchDEName,
+				SearchPost,
+				SearchAdd,
+				SearchTel,
+				SearchFax,
+				SearchMail,
+				SearchCom,
+				SearchPrefecturesCd,
+				SearchMunicipalityCd,
+				SearchDelFg,
+				AllSearch
+				);
+		int DeptNo = 0;
+		for(int i=0;i<DeliveryMstRt.length;i++) {
+			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][ 1]);
+			if("".equals(WST)) {WST = "0";}
+			int WINT = Integer.parseInt(WST);
+			if(WINT>DeptNo) {
+				DeptNo = WINT;
+			}
+		}
+		DeptNo = DeptNo+1;
+		String WST = "0000"+DeptNo;
+		WST = WST.substring(WST.length()-4,WST.length());
+		if(9999<DeptNo) {
+			WST = ""+DeptNo;
+		}
+		return WST;
+	}
 }

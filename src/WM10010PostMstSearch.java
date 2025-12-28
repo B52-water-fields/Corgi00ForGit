@@ -60,6 +60,8 @@ public class WM10010PostMstSearch{
 		JButton SearchBtn = B00110FrameParts.BtnSet(100,75,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
+		//エクセル取込時に先頭行columnNames01とヘッダ行の名称一致でレイアウト確認＆取込列判定します
+		//"郵便番号","県","市区町村","町丁目","市区町村CD"との名称一致をみて列判定するので名称重複＆不足しないでください
 		String[] columnNames01 = {
 				"FG"
 				,"郵便番号"
@@ -301,6 +303,7 @@ public class WM10010PostMstSearch{
 					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
 

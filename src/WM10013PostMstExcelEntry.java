@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableColumnModel;
@@ -132,33 +133,92 @@ public class WM10013PostMstExcelEntry{
 		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,700,550,tb01);
 		main_fm.add(scpn01);
 		
-		int[] ClmnType = new int[6];
 		
-		ClmnType[ 0]=1;	//FG
-		ClmnType[ 1]=1;	//郵便番号
-		ClmnType[ 2]=1;	//県
-		ClmnType[ 3]=1;	//市区町村
-		ClmnType[ 4]=1;	//町丁目
-		ClmnType[ 5]=1;	//市区町村CD
+		//ヘッダ行取得⇒フィールド名判定
+		//必要フィールドなければシート選択に戻る
+		Object[][] HeaderRead = B00060ToolsExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		boolean ErrFg = false;
 		
-		Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
-		if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
-			for(int i=0;i<ExcellRead.length;i++) {
-				Object[] SetOb = new Object[6];
+		String[] NeedCol = {
+						 "郵便番号"
+						,"県"
+						,"市区町村"
+						,"町丁目"
+						,"市区町村CD"
+						};
+		
+		int[] TgtCol = {
+						 -1	//郵便番号
+						,-1	//県
+						,-1	//市区町村
+						,-1	//町丁目
+						,-1	//市区町村CD
+						};
+		if(null==HeaderRead||0==HeaderRead.length) {
+			ErrFg = true;
+		}else {
+			for(int i01=0;i01<NeedCol.length;i01++) {
+				boolean UnHitFg = true;
 				
-				SetOb[0] = B00020ToolsTextControl.num_only_String(""+ExcellRead[i][1]);	//郵便番号
-				if(!"".equals(""+SetOb[0])) {
-					SetOb[1] = ExcellRead[i][2];
-					SetOb[2] = ExcellRead[i][3];
-					SetOb[3] = ExcellRead[i][4];
-					SetOb[4] = ExcellRead[i][5];
-					
-					tableModel_ms01.addRow(SetOb);
+				for(int i02=0;i02<HeaderRead[0].length;i02++) {
+					if(NeedCol[i01].equals(""+HeaderRead[0][i02])) {
+						UnHitFg = false;
+						TgtCol[i01] = i02;
+						
+						i02=1+HeaderRead[0].length;
+					}
+				}
+				if(UnHitFg) {
+					ErrFg = true;
 				}
 			}
 		}
 		
-		main_fm.setVisible(true);
+		if(ErrFg) {
+			JOptionPane.showMessageDialog(null, "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n"
+													+ "郵便番号,県,市区町村,町丁目,市区町村CD が必要です");
+			PostMstExcelEntry(0,0,TgtFilePath);
+		}else {
+			int[] ClmnType = new int[HeaderRead[0].length];
+			for(int i=0;i<ClmnType.length;i++) {ClmnType[i]=1;}
+
+			ClmnType[TgtCol[0]]=1;	//郵便番号
+			ClmnType[TgtCol[1]]=1;	//県
+			ClmnType[TgtCol[2]]=1;	//市区町村
+			ClmnType[TgtCol[3]]=1;	//町丁目
+			ClmnType[TgtCol[4]]=1;	//市区町村CD
+			
+			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			
+			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
+				for(int i=0;i<ExcellRead.length;i++) {
+					Object[] SetOb = new Object[6];
+					
+					SetOb[0] = B00020ToolsTextControl.num_only_String(""+ExcellRead[i][TgtCol[0]]);	//郵便番号
+					if(!"".equals(""+SetOb[0])) {
+						
+						if(null==ExcellRead[i][TgtCol[1]]){ExcellRead[i][TgtCol[1]]="";}
+						if(null==ExcellRead[i][TgtCol[2]]){ExcellRead[i][TgtCol[2]]="";}
+						if(null==ExcellRead[i][TgtCol[3]]){ExcellRead[i][TgtCol[3]]="";}
+						if(null==ExcellRead[i][TgtCol[4]]){ExcellRead[i][TgtCol[4]]="";}
+						
+						ExcellRead[i][TgtCol[1]] = B00020ToolsTextControl.Trim(""+ExcellRead[i][TgtCol[1]]);
+						ExcellRead[i][TgtCol[2]] = B00020ToolsTextControl.Trim(""+ExcellRead[i][TgtCol[2]]);
+						ExcellRead[i][TgtCol[3]] = B00020ToolsTextControl.Trim(""+ExcellRead[i][TgtCol[3]]);
+						ExcellRead[i][TgtCol[4]] = B00020ToolsTextControl.Trim(""+ExcellRead[i][TgtCol[4]]);
+						
+						SetOb[1] = ExcellRead[i][TgtCol[1]];
+						SetOb[2] = ExcellRead[i][TgtCol[2]];
+						SetOb[3] = ExcellRead[i][TgtCol[3]];
+						SetOb[4] = ExcellRead[i][TgtCol[4]];
+						
+						tableModel_ms01.addRow(SetOb);
+					}
+				}
+			}
+			
+			main_fm.setVisible(true);
+		}
 		RenewFg = true;
 		
 		//Entryボタン押下時の挙動
@@ -231,5 +291,4 @@ public class WM10013PostMstExcelEntry{
 			}
 		});
 	}
-	
 }

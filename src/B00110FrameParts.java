@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -156,7 +157,7 @@ public class B00110FrameParts{
  	コンボBOX配置
 	===========================================================================*/
 	public static JComboBox JComboBoxSet(int x,int y,int Width,int Height,Object[] SetOb,int TextSize) {
-		//テキスト入力BOX
+		//コンボBOX配置
 		if(0>=TextSize) {TextSize=11;}
 		JComboBox rt = new JComboBox(SetOb);
 		rt.setFont(new Font(  A00000Main.DefaultFont, Font.PLAIN, TextSize*A00000Main.Mul/A00000Main.Div));
@@ -165,6 +166,19 @@ public class B00110FrameParts{
 		
 		return rt;
 	}
+	/*===========================================================================
+ 	チェックBOX配置
+	===========================================================================*/
+	public static JCheckBox JCheckBoxSet(int x,int y,int Width,int Height,String SetMsg,int TextSize) {
+		//チェックBOX配置
+		if(0>=TextSize) {TextSize=11;}
+		JCheckBox rt = new JCheckBox(SetMsg);
+		rt.setFont(new Font(  A00000Main.DefaultFont, Font.PLAIN, TextSize*A00000Main.Mul/A00000Main.Div));
+		rt.setBounds( x*A00000Main.Mul/A00000Main.Div, y*A00000Main.Mul/A00000Main.Div, Width*A00000Main.Mul/A00000Main.Div, Height*A00000Main.Mul/A00000Main.Div);
+		
+		return rt;
+	}
+	
 	
 	/*===========================================================================
  	入力BOX配置
