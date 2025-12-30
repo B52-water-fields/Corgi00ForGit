@@ -3,6 +3,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 public class M00030ShippingCompanyMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
+	ArrayList<String> SearchCompanyName = new ArrayList<String>();
+	ArrayList<String> SearchPost = new ArrayList<String>();
+	ArrayList<String> SearchAdd = new ArrayList<String>();
+	ArrayList<String> SearchTel = new ArrayList<String>();
+	ArrayList<String> SearchFax = new ArrayList<String>();
+	ArrayList<String> SearchMail = new ArrayList<String>();
+	ArrayList<String> SearchCom = new ArrayList<String>();
+	boolean AllSearch = false;
+	
+	Object[][] ShippingCompanyMstRt = M00030ShippingCompanyMstRt.ShippingCompanyMstRt(
+			SearchShippingCompanyCd,
+			SearchCompanyName,
+			SearchPost,
+			SearchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			AllSearch);
+	
+	*/
 	//戻り値カラム
 	public static Object[][] RtSettingShippingCompanyMstRt(){
 		Object[][] RtSettingShippingCompanyMstRt = {

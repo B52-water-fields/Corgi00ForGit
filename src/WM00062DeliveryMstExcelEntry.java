@@ -558,7 +558,9 @@ public class WM00062DeliveryMstExcelEntry{
 						
 						for(int i=0;i<TelDuplicationCheck.length;i++) {
 							//郵便番号一致で重複候補とする
-							if(GetPost.equals(""+TelDuplicationCheck[i][5])) {
+							//郵便番号空白なら電話番号で重複候補とする
+							if(GetPost.equals(""+TelDuplicationCheck[i][5])
+									||GetPost.equals("")) {
 								Object[] SetOb = new Object[5];
 								SetOb[ 0] = false;
 								SetOb[ 1] = ""+TelDuplicationCheck[i][0];	//届先CD
@@ -621,12 +623,15 @@ public class WM00062DeliveryMstExcelEntry{
 						TelDuplicationCheckAny = TelDuplicationCheckAny(GetDECDList,GetDepartmentCdList,GetPostList,GetTelList);
 					}
 					//重複チェック⇒重複分除外　※重複チェックしない場合TelDuplicationCheckAnyがゼロ行なのでHitしない
+					//郵便番号空白なら電話番号のみで重複チェック
 					int TgtCount = 0;
 					for(int i=0;i<RowCount;i++) {
 						boolean UnHitFg = true;
 						boolean MineFg = false;
 						for(int i01=0;i01<TelDuplicationCheckAny.length;i01++) {
-							if(GetPostList[i].equals(""+TelDuplicationCheckAny[i01][5])&&GetTelList[i].equals(""+TelDuplicationCheckAny[i01][9])) {
+							if((GetPostList[i].equals(""+TelDuplicationCheckAny[i01][5])&&GetTelList[i].equals(""+TelDuplicationCheckAny[i01][9]))
+									||(GetPostList[i].equals("")&&GetTelList[i].equals(""+TelDuplicationCheckAny[i01][9]))
+									) {
 								UnHitFg = false;
 							}
 							if(GetDECDList[i].equals(""+TelDuplicationCheckAny[i01][0])) {
@@ -678,7 +683,7 @@ public class WM00062DeliveryMstExcelEntry{
 						String[] judg_field = new String[2];
 						String[][] judg_data = new String[TgtCount][2];
 						String TgtDB = "NYANKO";
-						int non_msg_fg = 1;
+						int non_msg_fg = 0;
 
 						judg_field[0] = "DECD";				//納品先コード
 						judg_field[1] = "DepartmentCd";		//部署CD
@@ -923,6 +928,21 @@ public class WM00062DeliveryMstExcelEntry{
 							for(int i=0;i<RemoveRow.size();i++) {
 								tableModel_ms01.removeRow(RemoveRow.get(RemoveRow.size()-i-1));
 							}
+						}
+						
+						//除外した結果0行になったら検索画面に戻る
+						RowCount = tableModel_ms01.getRowCount();
+						if(0>=RowCount) {
+							JOptionPane.showMessageDialog(null, "全件登録完了　届先検索画面に戻ります");
+							SetX=main_fm.getX();
+							SetY=main_fm.getY();
+							
+							SameDelivery_fm.setVisible(false);
+							SameDelivery_fm.dispose();
+
+							main_fm.setVisible(false);
+							main_fm.dispose();
+							WM00060DeliveryMstSearch.DeliveryMstSearch(0, 0);
 						}
 					}
 					

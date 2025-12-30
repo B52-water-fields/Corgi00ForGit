@@ -4,6 +4,41 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class M00020UserMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchWHCD = new ArrayList<String>();
+	ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
+	ArrayList<String> SearchAuthorityFG = new ArrayList<String>();
+	ArrayList<String> SearchUserCd = new ArrayList<String>();
+	ArrayList<String> SearchUserName = new ArrayList<String>();
+	ArrayList<String> SearchCarCd = new ArrayList<String>();
+	ArrayList<String> SearchCarName = new ArrayList<String>();
+	ArrayList<String> SearchPost = new ArrayList<String>();
+	ArrayList<String> SearchAdd = new ArrayList<String>();
+	ArrayList<String> SearchTel = new ArrayList<String>();
+	ArrayList<String> SearchFax = new ArrayList<String>();
+	ArrayList<String> SearchMail = new ArrayList<String>();
+	ArrayList<String> SearchCom = new ArrayList<String>();
+	ArrayList<String> SearchDelFg = new ArrayList<String>();
+	boolean AllSearch = false;
+	
+	Object[][] UserMstRt = M00020UserMstRt.UserMstRt(
+			SearchWHCD,
+			SearchShippingCompanyCd,
+			SearchAuthorityFG,
+			SearchUserCd,
+			SearchUserName,
+			SearchCarCd,
+			SearchCarName,
+			SearchPost,
+			SearchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			SearchDelFg,
+			AllSearch);
+	*/
 	//戻り値カラム
 	public static Object[][] RtSettingUserMstRt(){
 		Object[][] RtSettingUserMstRt = {

@@ -4,6 +4,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class M00001WhMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchWHCD = new ArrayList<String>();
+	ArrayList<String> SearchWHName = new ArrayList<String>();
+	ArrayList<String> SearchPost = new ArrayList<String>();
+	ArrayList<String> SearchAdd = new ArrayList<String>();
+	ArrayList<String> SearchTel = new ArrayList<String>();
+	ArrayList<String> SearchFax = new ArrayList<String>();
+	ArrayList<String> SearchMail = new ArrayList<String>();
+	ArrayList<String> SearchCom = new ArrayList<String>();
+	ArrayList<String> SearchPTMSCD = new ArrayList<String>();
+	boolean AllSearch = false;
+	
+	Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+			SearchWHCD,
+			SearchWHName,
+			SearchPost,
+			SearchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			SearchPTMSCD,
+			AllSearch);
+	
+	*/
 	//戻り値カラム
 	public static Object[][] RtSettingWhMstRt(){
 		Object[][] RtSettingWhMstRt = {

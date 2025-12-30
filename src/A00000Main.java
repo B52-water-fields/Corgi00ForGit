@@ -37,6 +37,8 @@ public class A00000Main{
 	
 	//iniファイルの置き場所 フルパス
 	public static String IniPth = "C:\\MIZUNO\\WMS\\Corgi00ini.txt";
+	public static String MainFLD = "C:\\MIZUNO\\WMS";
+	
 	
 	public static String DefaultSshHostName = "your.ssh.server.com";    		//SSH接続サーバアドレス
 	public static String DefaultSshUserName = "ssh_user";			    	//SSH接続ユーザー名

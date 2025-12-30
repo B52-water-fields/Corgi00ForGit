@@ -3,6 +3,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 public class M00031CarMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchWHCD = new ArrayList<String>();
+	ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
+	ArrayList<String> SearchCarCd = new ArrayList<String>();
+	ArrayList<String> SearchCarName = new ArrayList<String>();
+	ArrayList<String> SearchDelFg = new ArrayList<String>();
+	boolean AllSearch = false;
+	
+	Object[][] CarMstRt = M00031CarMstRt.CarMstRt(
+			SearchWHCD,
+			SearchShippingCompanyCd,
+			SearchCarCd,
+			SearchCarName,
+			SearchDelFg,
+			AllSearch);
+	*/
 	//戻り値カラム
 	public static Object[][] RtSettingCarMstRt(){
 		Object[][] RtSettingCarMstRt = {

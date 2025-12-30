@@ -137,6 +137,10 @@ public class WM00035CarMstSearch{
 		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
+		//Excel取込ボタン
+		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		main_fm.add(ExcelEntryBtn);
+		
 		main_fm.setVisible(true);
 		RenewFg = true;
 		
@@ -296,6 +300,29 @@ public class WM00035CarMstSearch{
 				if(RenewFg) {
 					RenewFg = false;
 					B10010TableControl.TableOutPutExcel("出力先選択","車輛マスタ検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//Excel取込ボタン
+		ExcelEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00037CarMstExcelEntry.CarMstExcelEntry(0,0,Selected);
+					}
 					RenewFg = true;
 				}
 			}

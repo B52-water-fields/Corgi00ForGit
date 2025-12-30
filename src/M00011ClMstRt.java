@@ -4,6 +4,34 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class M00011ClMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchClGpCD = new ArrayList<String>();
+	ArrayList<String> SearchCLCD = new ArrayList<String>();
+	ArrayList<String> SearchCLName = new ArrayList<String>();
+	ArrayList<String> SearchPost = new ArrayList<String>();
+	ArrayList<String> searchAdd = new ArrayList<String>();
+	ArrayList<String> SearchTel = new ArrayList<String>();
+	ArrayList<String> SearchFax = new ArrayList<String>();
+	ArrayList<String> SearchMail = new ArrayList<String>();
+	ArrayList<String> SearchCom = new ArrayList<String>();
+	ArrayList<String> SearchWHCD = new ArrayList<String>();
+	boolean AllSearch = false;
+	
+	Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		SearchClGpCD,
+		SearchCLCD,
+		SearchCLName,
+		SearchPost,
+		searchAdd,
+		SearchTel,
+		SearchFax,
+		SearchMail,
+		SearchCom,
+		SearchWHCD,
+		AllSearch);
+	*/
+	
 	//戻り値カラム
 	public static Object[][] RtSettingClMstRt(){
 		Object[][] RtSettingClMstRt = {

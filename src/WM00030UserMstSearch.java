@@ -181,6 +181,7 @@ public class WM00030UserMstSearch{
 				,"削除区分"
 				,"主要担当荷主CD"
 				,"主要担当荷主名"
+				,"パスワード"
 				};
 		
 		//編集可能カラムの指定
@@ -230,6 +231,7 @@ public class WM00030UserMstSearch{
 		column = columnModel01.getColumn(29);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//削除区分
 		column = columnModel01.getColumn(30);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//主要担当荷主CD
 		column = columnModel01.getColumn(31);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//主要担当荷主名
+		column = columnModel01.getColumn(32);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//パスワード
 		
 		//スクロール用設定
 		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,230,820,375,tb01);
@@ -253,6 +255,10 @@ public class WM00030UserMstSearch{
 		//Excelボタン
 		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
+		
+		//Excel取込ボタン
+		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		main_fm.add(ExcelEntryBtn);
 		
 		main_fm.setVisible(true);
 		
@@ -370,22 +376,22 @@ public class WM00030UserMstSearch{
 								AllSearch);
 					
 					for(int i=0;i<UserMstRt.length;i++) {
-						Object[] SetOb = new Object[32];
+						Object[] SetOb = new Object[33];
 						
 						SetOb[ 0] = false;	//FG
-						SetOb[ 1] = ""+UserMstRt[i][0];		//倉庫CD
-						SetOb[ 2] = ""+UserMstRt[i][1];		//運送会社CD
-						SetOb[ 3] = ""+UserMstRt[i][3];		//ユーザーCD
+						SetOb[ 1] = ""+UserMstRt[i][ 0];	//倉庫CD
+						SetOb[ 2] = ""+UserMstRt[i][ 1];	//運送会社CD
+						SetOb[ 3] = ""+UserMstRt[i][ 3];	//ユーザーCD
 						SetOb[ 4] = ""+UserMstRt[i][29];	//倉庫名
-						SetOb[ 5] = ""+UserMstRt[i][2];		//運送会社名
+						SetOb[ 5] = ""+UserMstRt[i][ 2];	//運送会社名
 						SetOb[ 6] = ""+UserMstRt[i][10];	//ユーザー名1
 						SetOb[ 7] = ""+UserMstRt[i][11];	//ユーザー名2
 						SetOb[ 8] = ""+UserMstRt[i][12];	//ユーザー名3
-						SetOb[ 9] = (int)UserMstRt[i][5];	//権限区分
-						SetOb[10] = ""+UserMstRt[i][6];		//標準車輛CD
-						SetOb[11] = ""+UserMstRt[i][7];		//車両名称01
-						SetOb[12] = ""+UserMstRt[i][8];		//車両名称02
-						SetOb[13] = ""+UserMstRt[i][9];		//車両名称03
+						SetOb[ 9] = (int)UserMstRt[i][ 5];	//権限区分
+						SetOb[10] = ""+UserMstRt[i][ 6];	//標準車輛CD
+						SetOb[11] = ""+UserMstRt[i][ 7];	//車両名称01
+						SetOb[12] = ""+UserMstRt[i][ 8];	//車両名称02
+						SetOb[13] = ""+UserMstRt[i][ 9];	//車両名称03
 						SetOb[14] = ""+UserMstRt[i][13];	//郵便番号
 						SetOb[15] = ""+UserMstRt[i][14];	//住所1
 						SetOb[16] = ""+UserMstRt[i][15];	//住所2
@@ -404,6 +410,12 @@ public class WM00030UserMstSearch{
 						SetOb[29] = (int)UserMstRt[i][28];	//削除区分
 						SetOb[30] = ""+UserMstRt[i][30];	//主要担当荷主CD
 						SetOb[31] = ""+UserMstRt[i][31];	//主要担当荷主名
+						SetOb[32] = ""+UserMstRt[i][ 4];	//パスワード
+						//パスワードは一覧に出さない
+						if("".equals(""+UserMstRt[i][ 4])) {
+						}else {
+							SetOb[32] = "********";
+						}
 						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<UserMstRt.length) {
@@ -498,6 +510,29 @@ public class WM00030UserMstSearch{
 				if(RenewFg) {
 					RenewFg = false;
 					B10010TableControl.TableOutPutExcel("出力先選択","ユーザーマスタ検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//Excel取込ボタン押下時の挙動
+		ExcelEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00032UserMstExcelEntry.UserMstExcelEntry(0,0,Selected);
+					}
 					RenewFg = true;
 				}
 			}
