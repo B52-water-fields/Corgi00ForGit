@@ -255,22 +255,22 @@ public class M00001WhMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("WHCD")){rt[counter][0]="";}else{rt[counter][0]=rset01.getString("WHCD");}				//倉庫コード
-					if(null==rset01.getString("WHName")){rt[counter][1]="";}else{rt[counter][1]=rset01.getString("WHName");}			//拠点倉庫名
-					if(null==rset01.getString("Post")){rt[counter][2]="";}else{rt[counter][2]=rset01.getString("Post");}				//拠点倉庫郵便番号
-					if(null==rset01.getString("Add01")){rt[counter][3]="";}else{rt[counter][3]=rset01.getString("Add01");}				//拠点倉庫住所1
-					if(null==rset01.getString("Add02")){rt[counter][4]="";}else{rt[counter][4]=rset01.getString("Add02");}				//拠点倉庫住所2
-					if(null==rset01.getString("Tel")){rt[counter][5]="";}else{rt[counter][5]=rset01.getString("Tel");}					//拠点倉庫電話
-					if(null==rset01.getString("Fax")){rt[counter][6]="";}else{rt[counter][6]=rset01.getString("Fax");}					//拠点倉庫FAX
-					if(null==rset01.getString("Mail")){rt[counter][7]="";}else{rt[counter][7]=rset01.getString("Mail");}				//拠点倉庫MAIL
-					if(null==rset01.getString("Com01")){rt[counter][8]="";}else{rt[counter][8]=rset01.getString("Com01");}				//コメント１
-					if(null==rset01.getString("Com02")){rt[counter][9]="";}else{rt[counter][9]=rset01.getString("Com02");}				//コメント２
-					if(null==rset01.getString("Com03")){rt[counter][10]="";}else{rt[counter][10]=rset01.getString("Com03");}			//コメント３
-					if(null==rset01.getString("PTMSCD")){rt[counter][11]="";}else{rt[counter][11]=rset01.getString("PTMSCD");}			//基幹システム連携用事業所CD
-					if(null==rset01.getTimestamp("EntryDate")){rt[counter][12]="";}else{rt[counter][12]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
+					if(null==rset01.getString("WHCD")){			rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("WHCD");}				//倉庫コード
+					if(null==rset01.getString("WHName")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("WHName");}			//拠点倉庫名
+					if(null==rset01.getString("Post")){			rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("Post");}				//拠点倉庫郵便番号
+					if(null==rset01.getString("Add01")){		rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("Add01");}			//拠点倉庫住所1
+					if(null==rset01.getString("Add02")){		rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("Add02");}			//拠点倉庫住所2
+					if(null==rset01.getString("Tel")){			rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("Tel");}				//拠点倉庫電話
+					if(null==rset01.getString("Fax")){			rt[counter][ 6]="";}else{rt[counter][ 6]=rset01.getString("Fax");}				//拠点倉庫FAX
+					if(null==rset01.getString("Mail")){			rt[counter][ 7]="";}else{rt[counter][ 7]=rset01.getString("Mail");}				//拠点倉庫MAIL
+					if(null==rset01.getString("Com01")){		rt[counter][ 8]="";}else{rt[counter][ 8]=rset01.getString("Com01");}			//コメント１
+					if(null==rset01.getString("Com02")){		rt[counter][ 9]="";}else{rt[counter][ 9]=rset01.getString("Com02");}			//コメント２
+					if(null==rset01.getString("Com03")){		rt[counter][10]="";}else{rt[counter][10]=rset01.getString("Com03");}			//コメント３
+					if(null==rset01.getString("PTMSCD")){		rt[counter][11]="";}else{rt[counter][11]=rset01.getString("PTMSCD");}			//基幹システム連携用事業所CD
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][12]="";}else{rt[counter][12]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
 					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][13]="";}else{rt[counter][13]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//データ更新日時
-					if(null==rset01.getString("EntryUser")){rt[counter][14]="";}else{rt[counter][14]=rset01.getString("EntryUser");}		//登録者
-					if(null==rset01.getString("UpdateUser")){rt[counter][15]="";}else{rt[counter][15]=rset01.getString("UpdateUser");}		//更新者
+					if(null==rset01.getString("EntryUser")){	rt[counter][14]="";}else{rt[counter][14]=rset01.getString("EntryUser");}		//登録者
+					if(null==rset01.getString("UpdateUser")){	rt[counter][15]="";}else{rt[counter][15]=rset01.getString("UpdateUser");}		//更新者
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}

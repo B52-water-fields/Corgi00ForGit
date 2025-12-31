@@ -4,6 +4,35 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class M00041DeliveryComversionMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchClGpCD = ArrayList<String>();
+	ArrayList<String> SearchCldeCD = ArrayList<String>();
+	ArrayList<String> SearchDECD = ArrayList<String>();
+	ArrayList<String> SearchDepartmentCd = ArrayList<String>();
+	ArrayList<String> SearchName = ArrayList<String>();
+	ArrayList<String> SearchAdd = ArrayList<String>();
+	ArrayList<String> SearchPost = ArrayList<String>();
+	ArrayList<String> SearchTel = ArrayList<String>();
+	ArrayList<String> SearchFax = ArrayList<String>();
+	ArrayList<String> SearchMail = ArrayList<String>();
+	ArrayList<String> SearchCom = ArrayList<String>();
+	boolean AllSearch = false;
+	
+	Object[][] DeliveryComversionMstRt = M00041DeliveryComversionMstRt.DeliveryComversionMstRt(
+			SearchClGpCD,
+			SearchCldeCD,
+			SearchDECD,
+			SearchDepartmentCd,
+			SearchName,
+			SearchAdd,
+			SearchPost,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			AllSearch);
+	*/
 	//戻り値カラム
 	public static Object[][] RtSettingDeliveryComversionMstRt(){
 		Object[][] RtSettingDeliveryComversionMstRt = {
@@ -338,37 +367,37 @@ public class M00041DeliveryComversionMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("ClGpCD")) {rt[counter][0] = "";}else {rt[counter][0] = rset01.getString("ClGpCD");}						//荷主グループコード
-					if(null==rset01.getString("CL_DECD")) {rt[counter][1] = "";}else {rt[counter][1] = rset01.getString("CL_DECD");}					//荷主届け先コード
-					if(null==rset01.getString("DECD")) {rt[counter][2] = "";}else {rt[counter][2] = rset01.getString("DECD");}							//届け先コード
-					if(null==rset01.getString("DepartmentCd")) {rt[counter][3] = "";}else {rt[counter][3] = rset01.getString("DepartmentCd");}			//部署CD
-					if(null==rset01.getString("DEName01")) {rt[counter][4] = "";}else {rt[counter][4] = rset01.getString("DEName01");}					//納品先名1
-					if(null==rset01.getString("DEName02")) {rt[counter][5] = "";}else {rt[counter][5] = rset01.getString("DEName02");}					//納品先名2
-					if(null==rset01.getString("DEName03")) {rt[counter][6] = "";}else {rt[counter][6] = rset01.getString("DEName03");}					//納品先名3
-					if(null==rset01.getString("Post")) {rt[counter][7] = "";}else {rt[counter][7] = rset01.getString("Post");}							//納品先郵便
-					if(null==rset01.getString("Add01")) {rt[counter][8] = "";}else {rt[counter][8] = rset01.getString("Add01");}						//納品先住所1
-					if(null==rset01.getString("Add02")) {rt[counter][9] = "";}else {rt[counter][9] = rset01.getString("Add02");}						//納品先住所2
-					if(null==rset01.getString("Add03")) {rt[counter][10] = "";}else {rt[counter][10] = rset01.getString("Add03");}						//納品先住所3
-					if(null==rset01.getString("Tel")) {rt[counter][11] = "";}else {rt[counter][11] = rset01.getString("Tel");}							//納品先電話
-					if(null==rset01.getString("Fax")) {rt[counter][12] = "";}else {rt[counter][12] = rset01.getString("Fax");}							//納品先FAX
-					if(null==rset01.getString("Mail")) {rt[counter][13] = "";}else {rt[counter][13] = rset01.getString("Mail");}						//納品先MAIL
-					if(null==rset01.getString("DeCom01")) {rt[counter][14] = "";}else {rt[counter][14] = rset01.getString("DeCom01");}					//(届け先マスタ)コメント1
-					if(null==rset01.getString("DeCom02")) {rt[counter][15] = "";}else {rt[counter][15] = rset01.getString("DeCom02");}					//(届け先マスタ)コメント2
-					if(null==rset01.getString("DeCom03")) {rt[counter][16] = "";}else {rt[counter][16] = rset01.getString("DeCom03");}					//(届け先マスタ)コメント3
-					if(null==rset01.getString("PrefecturesCd")) {rt[counter][17] = "";}else {rt[counter][17] = rset01.getString("PrefecturesCd");}		//JIS県CD2桁
-					if(null==rset01.getString("MunicipalityCd")) {rt[counter][18] = "";}else {rt[counter][18] = rset01.getString("MunicipalityCd");}	//JIS市区町村CD5桁
-					if(null==rset01.getString("PTMSCD")) {rt[counter][19] = "";}else {rt[counter][19] = rset01.getString("PTMSCD");}					//基幹システム発着地コード
-					if(null==rset01.getString("SetName")) {rt[counter][20] = "";}else {rt[counter][20] = rset01.getString("SetName");}					//送り状登録名
-					if(null==rset01.getString("Com01")) {rt[counter][21] = "";}else {rt[counter][21] = rset01.getString("Com01");}						//コメント01
-					if(null==rset01.getString("Com02")) {rt[counter][22] = "";}else {rt[counter][22] = rset01.getString("Com02");}						//コメント02
-					if(null==rset01.getString("Com03")) {rt[counter][23] = "";}else {rt[counter][23] = rset01.getString("Com03");}						//コメント03
-					if(null==rset01.getString("Com04")) {rt[counter][24] = "";}else {rt[counter][24] = rset01.getString("Com04");}						//コメント04
-					if(null==rset01.getString("Com05")) {rt[counter][25] = "";}else {rt[counter][25] = rset01.getString("Com05");}						//コメント05
-					if(null==rset01.getTimestamp("EntryDate")){rt[counter][26] = "";}else{rt[counter][26] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][27] = "";}else{rt[counter][27] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
-					if(null==rset01.getString("EntryUser")) {rt[counter][28] = "";}else {rt[counter][28] = rset01.getString("EntryUser");}				//登録者コード
-					if(null==rset01.getString("UpdateUser")) {rt[counter][29] = "";}else {rt[counter][29] = rset01.getString("UpdateUser");}			//更新者コード
-					rt[counter][30] = rset01.getInt("MstPriorityFirstFg");																				//マスタ優先フラグ
+					if(null==rset01.getString("ClGpCD")) {			rt[counter][ 0] = "";}else {rt[counter][ 0] = rset01.getString("ClGpCD");}				//荷主グループコード
+					if(null==rset01.getString("CL_DECD")) {			rt[counter][ 1] = "";}else {rt[counter][ 1] = rset01.getString("CL_DECD");}				//荷主届け先コード
+					if(null==rset01.getString("DECD")) {			rt[counter][ 2] = "";}else {rt[counter][ 2] = rset01.getString("DECD");}				//届け先コード
+					if(null==rset01.getString("DepartmentCd")) {	rt[counter][ 3] = "";}else {rt[counter][ 3] = rset01.getString("DepartmentCd");}		//部署CD
+					if(null==rset01.getString("DEName01")) {		rt[counter][ 4] = "";}else {rt[counter][ 4] = rset01.getString("DEName01");}			//納品先名1
+					if(null==rset01.getString("DEName02")) {		rt[counter][ 5] = "";}else {rt[counter][ 5] = rset01.getString("DEName02");}			//納品先名2
+					if(null==rset01.getString("DEName03")) {		rt[counter][ 6] = "";}else {rt[counter][ 6] = rset01.getString("DEName03");}			//納品先名3
+					if(null==rset01.getString("Post")) {			rt[counter][ 7] = "";}else {rt[counter][ 7] = rset01.getString("Post");}				//納品先郵便
+					if(null==rset01.getString("Add01")) {			rt[counter][ 8] = "";}else {rt[counter][ 8] = rset01.getString("Add01");}				//納品先住所1
+					if(null==rset01.getString("Add02")) {			rt[counter][ 9] = "";}else {rt[counter][ 9] = rset01.getString("Add02");}				//納品先住所2
+					if(null==rset01.getString("Add03")) {			rt[counter][10] = "";}else {rt[counter][10] = rset01.getString("Add03");}				//納品先住所3
+					if(null==rset01.getString("Tel")) {				rt[counter][11] = "";}else {rt[counter][11] = rset01.getString("Tel");}					//納品先電話
+					if(null==rset01.getString("Fax")) {				rt[counter][12] = "";}else {rt[counter][12] = rset01.getString("Fax");}					//納品先FAX
+					if(null==rset01.getString("Mail")) {			rt[counter][13] = "";}else {rt[counter][13] = rset01.getString("Mail");}				//納品先MAIL
+					if(null==rset01.getString("DeCom01")) {			rt[counter][14] = "";}else {rt[counter][14] = rset01.getString("DeCom01");}				//(届け先マスタ)コメント1
+					if(null==rset01.getString("DeCom02")) {			rt[counter][15] = "";}else {rt[counter][15] = rset01.getString("DeCom02");}				//(届け先マスタ)コメント2
+					if(null==rset01.getString("DeCom03")) {			rt[counter][16] = "";}else {rt[counter][16] = rset01.getString("DeCom03");}				//(届け先マスタ)コメント3
+					if(null==rset01.getString("PrefecturesCd")) {	rt[counter][17] = "";}else {rt[counter][17] = rset01.getString("PrefecturesCd");}		//JIS県CD2桁
+					if(null==rset01.getString("MunicipalityCd")) {	rt[counter][18] = "";}else {rt[counter][18] = rset01.getString("MunicipalityCd");}		//JIS市区町村CD5桁
+					if(null==rset01.getString("PTMSCD")) {			rt[counter][19] = "";}else {rt[counter][19] = rset01.getString("PTMSCD");}				//基幹システム発着地コード
+					if(null==rset01.getString("SetName")) {			rt[counter][20] = "";}else {rt[counter][20] = rset01.getString("SetName");}				//送り状登録名
+					if(null==rset01.getString("Com01")) {			rt[counter][21] = "";}else {rt[counter][21] = rset01.getString("Com01");}				//コメント01
+					if(null==rset01.getString("Com02")) {			rt[counter][22] = "";}else {rt[counter][22] = rset01.getString("Com02");}				//コメント02
+					if(null==rset01.getString("Com03")) {			rt[counter][23] = "";}else {rt[counter][23] = rset01.getString("Com03");}				//コメント03
+					if(null==rset01.getString("Com04")) {			rt[counter][24] = "";}else {rt[counter][24] = rset01.getString("Com04");}				//コメント04
+					if(null==rset01.getString("Com05")) {			rt[counter][25] = "";}else {rt[counter][25] = rset01.getString("Com05");}				//コメント05
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][26] = "";}else {rt[counter][26] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][27] = "";}else {rt[counter][27] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
+					if(null==rset01.getString("EntryUser")) {		rt[counter][28] = "";}else {rt[counter][28] = rset01.getString("EntryUser");}			//登録者コード
+					if(null==rset01.getString("UpdateUser")) {		rt[counter][29] = "";}else {rt[counter][29] = rset01.getString("UpdateUser");}			//更新者コード
+					rt[counter][30] = rset01.getInt("MstPriorityFirstFg");																					//マスタ優先フラグ
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}

@@ -4,6 +4,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class M00042CautionMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchCautionCd = ArrayList<String>();
+	ArrayList<String> SearchClGpCD = ArrayList<String>();
+	ArrayList<String> SearchDECD = ArrayList<String>();
+	ArrayList<String> SearchDepartmentCd = ArrayList<String>();
+	ArrayList<String> SearchCautionTiming = ArrayList<String>();
+	ArrayList<String> SearchCautionName = ArrayList<String>();
+	ArrayList<String> SearchCaution = ArrayList<String>();
+	ArrayList<String> SearchDeName = ArrayList<String>();
+	boolean AllSearch = false;
+	
+	Object[][] CautionMstRt = M00042CautionMstRt.CautionMstRt(
+			SearchCautionCd,
+			SearchClGpCD,
+			SearchDECD,
+			SearchDepartmentCd,
+			SearchCautionTiming,
+			SearchCautionName,
+			SearchCaution,
+			SearchDeName,
+			AllSearch);
+	
+	*/
 	//戻り値カラム
 	public static Object[][] RtSettingCautionMstRt(){
 		Object[][] RtSettingCautionMstRt = {
@@ -20,6 +44,9 @@ public class M00042CautionMstRt{
 				,{"UpdateDate"		,(int)10	,"String"	,"データ更新日時"}
 				,{"EntryUser"		,(int)11	,"String"	,"登録者コード"}
 				,{"UpdateUser"		,(int)12	,"String"	,"更新者コード"}
+				,{"Add01"			,(int)13	,"String"	,"届先住所1"}
+				,{"Add02"			,(int)14	,"String"	,"届先住所2"}
+				,{"Add03"			,(int)15	,"String"	,"届先住所3"}
 				};
 		
 		return RtSettingCautionMstRt;
@@ -52,7 +79,10 @@ public class M00042CautionMstRt{
 				+"(KM0090_CAUTION.EntryDate) as EntryDate,\n"			//データ登録日時
 				+"(KM0090_CAUTION.UpdateDate) as UpdateDate,\n"			//データ更新日時
 				+"(KM0090_CAUTION.EntryUser) as EntryUser,\n"			//登録者コード
-				+"(KM0090_CAUTION.UpdateUser) as UpdateUser\n"			//更新者コード
+				+"(KM0090_CAUTION.UpdateUser) as UpdateUser,\n"			//更新者コード
+				+"(KM0040_DELIVERYMST.Add01) as Add01,\n"				//届先住所1
+				+"(KM0040_DELIVERYMST.Add02) as Add02,\n"				//届先住所2
+				+"(KM0040_DELIVERYMST.Add03) as Add03\n"				//届先住所3
 				+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0090_CAUTION\n"
 				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP"
 				+ " on("
@@ -209,23 +239,26 @@ public class M00042CautionMstRt{
 					counter=counter+1;
 				}
 	
-				rt = new Object[counter][13];
+				rt = new Object[counter][16];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("CautionCd")){rt[counter][0]="";}else{rt[counter][0]=rset01.getString("CautionCd");}												//注意事項コード
-					if(null==rset01.getString("ClGpCD")){rt[counter][1]="";}else{rt[counter][1]=rset01.getString("ClGpCD");}													//荷主グループコード
-					if(null==rset01.getString("CLGpName01")){rt[counter][2]="";}else{rt[counter][2]=rset01.getString("CLGpName01");}											//荷主グループ名
-					if(null==rset01.getString("DECD")){rt[counter][3]="";}else{rt[counter][3]=rset01.getString("DECD");}														//納品先コード
-					if(null==rset01.getString("DepartmentCd")){rt[counter][4]="";}else{rt[counter][4]=rset01.getString("DepartmentCd");}										//部署CD
-					if(null==rset01.getString("DEName01")){rt[counter][5]="";}else{rt[counter][5]=rset01.getString("DEName01");}												//届先名
-					rt[counter][6]=rset01.getInt("CautionTiming");																												//注意事項タイミング
-					if(null==rset01.getString("CautionName")){rt[counter][7]="";}else{rt[counter][7]=rset01.getString("CautionName");}											//注意事項名
-					if(null==rset01.getString("Caution")){rt[counter][8]="";}else{rt[counter][8]=rset01.getString("Caution");}													//注意事項内容
-					if(null==rset01.getTimestamp("EntryDate")){rt[counter][9]="";}else{rt[counter][9]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
+					if(null==rset01.getString("CautionCd")){	rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("CautionCd");}					//注意事項コード
+					if(null==rset01.getString("ClGpCD")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("ClGpCD");}						//荷主グループコード
+					if(null==rset01.getString("CLGpName01")){	rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("CLGpName01");}					//荷主グループ名
+					if(null==rset01.getString("DECD")){			rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("DECD");}							//納品先コード
+					if(null==rset01.getString("DepartmentCd")){	rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("DepartmentCd");}					//部署CD
+					if(null==rset01.getString("DEName01")){		rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("DEName01");}						//届先名
+					rt[counter][6]=rset01.getInt("CautionTiming");																							//注意事項タイミング
+					if(null==rset01.getString("CautionName")){	rt[counter][ 7]="";}else{rt[counter][ 7]=rset01.getString("CautionName");}					//注意事項名
+					if(null==rset01.getString("Caution")){		rt[counter][ 8]="";}else{rt[counter][ 8]=rset01.getString("Caution");}						//注意事項内容
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ 9]="";}else{rt[counter][ 9]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
 					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][10]="";}else{rt[counter][10]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
-					if(null==rset01.getString("EntryUser")){rt[counter][11]="";}else{rt[counter][11]=rset01.getString("EntryUser");}											//登録者コード
-					if(null==rset01.getString("UpdateUser")){rt[counter][12]="";}else{rt[counter][12]=rset01.getString("UpdateUser");}											//更新者コード
+					if(null==rset01.getString("EntryUser")){	rt[counter][11]="";}else{rt[counter][11]=rset01.getString("EntryUser");}					//登録者コード
+					if(null==rset01.getString("UpdateUser")){	rt[counter][12]="";}else{rt[counter][12]=rset01.getString("UpdateUser");}					//更新者コード
+					if(null==rset01.getString("Add01")){		rt[counter][13]="";}else{rt[counter][13]=rset01.getString("Add01");}						//届先住所1
+					if(null==rset01.getString("Add02")){		rt[counter][14]="";}else{rt[counter][14]=rset01.getString("Add02");}						//届先住所2
+					if(null==rset01.getString("Add03")){		rt[counter][15]="";}else{rt[counter][15]=rset01.getString("Add03");}						//届先住所3
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}

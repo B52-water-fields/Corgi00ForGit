@@ -48,6 +48,10 @@ public class W00020MstMain{
 		JButton DeliveryMst = B00110FrameParts.BtnSet(440,25,130,20,"届先",11);
 		PN_AboutALL.add(DeliveryMst);
 		
+		//届先注意事項
+		JButton CautionMst = B00110FrameParts.BtnSet(580,25,130,20,"届先注意事項",11);
+		PN_AboutALL.add(CautionMst);
+		
 		//ユーザー
 		JButton UserMst = B00110FrameParts.BtnSet(20,50,130,20,"ユーザー・乗務員",11);
 		PN_AboutALL.add(UserMst);
@@ -111,6 +115,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00060DeliveryMstSearch.DeliveryMstSearch(0, 0);
+			}
+		});
+		
+		//届先注意事項
+		CautionMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00070CautionMstSearch.CautionMstSearch(0, 0);
 			}
 		});
 		

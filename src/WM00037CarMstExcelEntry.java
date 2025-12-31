@@ -274,7 +274,7 @@ public class WM00037CarMstExcelEntry{
 				for(int i=0;i<ExcellRead.length;i++) {
 					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])||!"".equals(""+ExcellRead[i][TgtCol[ 1]])||!"".equals(""+ExcellRead[i][TgtCol[ 2]])) {
 						Object[] SetOb = new Object[17];
-						SetOb[0] = false;
+						SetOb[ 0] = false;
 						SetOb[ 1] = ""+ExcellRead[i][TgtCol[ 0]];	//担当倉庫
 						SetOb[ 2] = "";	//倉庫名
 						SetOb[ 3] = ""+ExcellRead[i][TgtCol[ 1]];	//運送会社CD
@@ -403,6 +403,83 @@ public class WM00037CarMstExcelEntry{
 			main_fm.setVisible(true);
 		}
 		RenewFg = true;
+		
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				int RowCount = tableModel_ms01.getRowCount();
+				if(RenewFg&&0<RowCount) {
+					RenewFg = false;
+					String[][] SetString = {
+							{"WHCD"					,"1","1"}	//担当倉庫
+							,{"ShippingCompanyCd"	,"1","1"}	//運送会社CD
+							,{"CarCd"				,"1","1"}	//車輛CD
+							,{"CarName01"			,"1","1"}	//車輛名01
+							,{"CarName02"			,"1","1"}	//車輛名02
+							,{"CarName03"			,"1","1"}	//車輛名03
+							,{"DriverCd"			,"1","1"}	//乗務員CD
+							,{"PTMSCD"				,"1","1"}	//基幹システム車輛コード
+							,{"EntryDate"			,"1","1"}	//データ登録日時
+							,{"UpdateDate"			,"1","1"}	//データ更新日時
+							,{"EntryUser"			,"1","1"}	//登録者コード
+							,{"UpdateUser"			,"1","1"}	//更新者コード
+							,{"DelFg"				,"1","1"}	//削除フラグ
+							};
+					
+					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					
+					String tgt_table = "KM0071_CARMST";
+					String[][] field_name = new String[SetString.length][3];
+					String[][] entry_data = new String[RowCount][SetString.length];
+					String[] judg_field = new String[3];
+					String[][] judg_data = new String[RowCount][3];
+					String TgtDB = "NYANKO";
+					int non_msg_fg = 0;
+	
+					judg_field[0] = "WHCD";					//倉庫コード
+					judg_field[1] = "ShippingCompanyCd";	//運送会社CD
+					judg_field[2] = "CarCd";				//ユーザーCD
+					
+					
+					for(int i=0;i<SetString.length;i++) {
+						field_name[i][0] = SetString[i][0];
+						field_name[i][1] = SetString[i][1];
+						field_name[i][2] = SetString[i][2];
+					}
+					for(int i=0;i<RowCount;i++) {
+						judg_data[i][ 0] = ""+tableModel_ms01.getValueAt(i, 1);	//担当倉庫
+						judg_data[i][ 1] = ""+tableModel_ms01.getValueAt(i, 3);	//運送会社CD
+						judg_data[i][ 2] = ""+tableModel_ms01.getValueAt(i, 7);	//車輛CD
+						
+						entry_data[i][ 0] =	""+tableModel_ms01.getValueAt(i, 1);	//担当倉庫
+						entry_data[i][ 1] = ""+tableModel_ms01.getValueAt(i, 3);	//運送会社CD
+						entry_data[i][ 2] =	""+tableModel_ms01.getValueAt(i, 7);	//車輛CD
+						entry_data[i][ 3] =	""+tableModel_ms01.getValueAt(i, 8);	//車輛名01
+						entry_data[i][ 4] =	""+tableModel_ms01.getValueAt(i, 9);	//車輛名02
+						entry_data[i][ 5] =	""+tableModel_ms01.getValueAt(i,10);	//車輛名03
+						entry_data[i][ 6] =	""+tableModel_ms01.getValueAt(i,11);	//乗務員CD
+						entry_data[i][ 7] =	""+tableModel_ms01.getValueAt(i,15);	//基幹システム車輛コード
+						entry_data[i][ 8] =	now_dtm;	//データ登録日時
+						entry_data[i][ 9] =	now_dtm;	//データ更新日時
+						entry_data[i][10] =	"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
+						entry_data[i][11] =	"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
+						entry_data[i][12] =	""+tableModel_ms01.getValueAt(i,16);	//削除フラグ
+					}
+					
+					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+	
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WM00035CarMstSearch.CarMstSearch(0, 0);
+					
+					RenewFg = true;
+				}
+			}
+		});
+		
 		
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){

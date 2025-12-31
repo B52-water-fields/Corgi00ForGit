@@ -81,7 +81,6 @@ public class M10010PostMstRt{
 				,{"MUNICIPALITY_CD"		,(int) 1	,"String"	,"判定JISCD"}
 				};
 		return RtAddToMunicipality;
-		
 	}
 	
 	
@@ -183,11 +182,11 @@ public class M10010PostMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("POST")){rt[counter][0]="";}else{rt[counter][0]=rset01.getString("POST");}						//郵便番号
-					if(null==rset01.getString("PREFECTURES")){rt[counter][1]="";}else{rt[counter][1]=rset01.getString("PREFECTURES");}			//県
-					if(null==rset01.getString("MUNICI01")){rt[counter][2]="";}else{rt[counter][2]=rset01.getString("MUNICI01");}				//市区町村
-					if(null==rset01.getString("MUNICI02")){rt[counter][3]="";}else{rt[counter][3]=rset01.getString("MUNICI02");}				//町丁目
-					if(null==rset01.getString("MUNICIPALITY_CD")){rt[counter][4]="";}else{rt[counter][4]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
+					if(null==rset01.getString("POST")){				rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("POST");}				//郵便番号
+					if(null==rset01.getString("PREFECTURES")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("PREFECTURES");}		//県
+					if(null==rset01.getString("MUNICI01")){			rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("MUNICI01");}			//市区町村
+					if(null==rset01.getString("MUNICI02")){			rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("MUNICI02");}			//町丁目
+					if(null==rset01.getString("MUNICIPALITY_CD")){	rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
@@ -282,9 +281,9 @@ public class M10010PostMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("PREFECTURES")){rt[counter][0]="";}else{rt[counter][0]=rset01.getString("PREFECTURES");}			//県
-					if(null==rset01.getString("MUNICI01")){rt[counter][1]="";}else{rt[counter][1]=rset01.getString("MUNICI01");}				//市区町村
-					if(null==rset01.getString("MUNICIPALITY_CD")){rt[counter][2]="";}else{rt[counter][2]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
+					if(null==rset01.getString("PREFECTURES")){		rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("PREFECTURES");}		//県
+					if(null==rset01.getString("MUNICI01")){			rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("MUNICI01");}			//市区町村
+					if(null==rset01.getString("MUNICIPALITY_CD")){	rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
@@ -342,8 +341,8 @@ public class M10010PostMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("PREFECTURES_CD")){rt[counter][0]="";}else{rt[counter][0]=rset01.getString("PREFECTURES_CD");}		//県CD
-					if(null==rset01.getString("PREFECTURES")){rt[counter][1]="";}else{rt[counter][1]=rset01.getString("PREFECTURES");}				//県名
+					if(null==rset01.getString("PREFECTURES_CD")){	rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("PREFECTURES_CD");}		//県CD
+					if(null==rset01.getString("PREFECTURES")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("PREFECTURES");}			//県名
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
@@ -409,8 +408,8 @@ public class M10010PostMstRt{
 			counter = 0;
 			rset01.beforeFirst();
 			while (rset01.next()) {
-				if(null==rset01.getString("MUNICI01")){rt[counter][0]="";}else{rt[counter][0]=rset01.getString("MUNICI01");}				//市区町村名
-				if(null==rset01.getString("MUNICIPALITY_CD")){rt[counter][1]="";}else{rt[counter][1]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
+				if(null==rset01.getString("MUNICI01")){			rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("MUNICI01");}			//市区町村名
+				if(null==rset01.getString("MUNICIPALITY_CD")){	rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
 				counter=counter+1;
 			}
 			if(rset01!=null){rset01.close();}
@@ -477,8 +476,8 @@ public class M10010PostMstRt{
 			counter = 0;
 			rset01.beforeFirst();
 			while (rset01.next()) {
-				if(null==rset01.getString("MUNICI01")){WRT[counter][0]="";}else{WRT[counter][0]=rset01.getString("MUNICI01");}					//市区町村名
-				if(null==rset01.getString("MUNICIPALITY_CD")){WRT[counter][1]="";}else{WRT[counter][1]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
+				if(null==rset01.getString("MUNICI01")){			WRT[counter][ 0]="";}else{WRT[counter][ 0]=rset01.getString("MUNICI01");}			//市区町村名
+				if(null==rset01.getString("MUNICIPALITY_CD")){	WRT[counter][ 1]="";}else{WRT[counter][ 1]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
 				counter=counter+1;
 			}
 			if(rset01!=null){rset01.close();}

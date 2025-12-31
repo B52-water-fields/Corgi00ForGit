@@ -4,6 +4,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class M00050DeliveryTypeMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchDeliveryTypeNo = ArrayList<String>();
+	ArrayList<String> SearchDeliveryTypeCd = ArrayList<String>();
+	ArrayList<String> SearchDeliveryTypeName = ArrayList<String>();
+	boolean AllSearch = false;
+			
+	Object[][] DeliveryTypeMstRt(
+			SearchDeliveryTypeNo,
+			SearchDeliveryTypeCd,
+			SearchDeliveryTypeName,
+			AllSearch);
+	*/
 	//戻り値カラム
 	public static Object[][] RtSettingDeliveryTypeMstRt(){
 		Object[][] RtSettingDeliveryTypeMstRt = {
@@ -110,13 +123,13 @@ public class M00050DeliveryTypeMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					rt[counter][0]=rset01.getInt("DeliveryTypeNo");		//タイプ番号
-					if(null==rset01.getString("DeliveryTypeCd")){rt[counter][1]="";}else{rt[counter][1]=rset01.getString("DeliveryTypeCd");}			//運送タイプコード
-					if(null==rset01.getString("DeliveryTypeName")){rt[counter][2]="";}else{rt[counter][2]=rset01.getString("DeliveryTypeName");}		//運送タイプ名
-					if(null==rset01.getTimestamp("EntryDate")){rt[counter][3]="";}else{rt[counter][3]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][4]="";}else{rt[counter][4]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
-					if(null==rset01.getString("EntryUser")){rt[counter][5]="";}else{rt[counter][5]=rset01.getString("EntryUser");}			//登録者コード
-					if(null==rset01.getString("UpdateUser")){rt[counter][6]="";}else{rt[counter][6]=rset01.getString("UpdateUser");}		//更新者コード
+					rt[counter][ 0]=rset01.getInt("DeliveryTypeNo");		//タイプ番号
+					if(null==rset01.getString("DeliveryTypeCd")){	rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("DeliveryTypeCd");}		//運送タイプコード
+					if(null==rset01.getString("DeliveryTypeName")){	rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("DeliveryTypeName");}		//運送タイプ名
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ 3]="";}else{rt[counter][ 3]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ 4]="";}else{rt[counter][ 4]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getString("EntryUser")){		rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("EntryUser");}			//登録者コード
+					if(null==rset01.getString("UpdateUser")){		rt[counter][ 6]="";}else{rt[counter][ 6]=rset01.getString("UpdateUser");}			//更新者コード
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}

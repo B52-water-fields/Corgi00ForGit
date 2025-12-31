@@ -107,24 +107,7 @@ public class A00050OldDataTableCheck{
 	}
 	
 	private static void CreateTable(String TgtDB,String[][] TableLayout) {
-		//バックアップデータ作成先のスキーマ、テーブルのレイアウトを受けてテーブル作成用のSQL文生成⇒実行
-		String MySqlDefaultSchema = ""+A00000Main.MySqlDefaultSchemaOLD;
-
-		if("WANKO".equals(TgtDB)) {
-			MySqlDefaultSchema = A00000Main.MySqlDefaultSchemaWANKO;
-		}else if("NYANKO".equals(TgtDB)){
-			MySqlDefaultSchema = A00000Main.MySqlDefaultSchemaNYANKO;
-			
-		}else if("POST".equals(TgtDB)){
-			MySqlDefaultSchema = A00000Main.MySqlDefaultSchemaPOST;
-			
-		}else if("OLD".equals(TgtDB)) {
-			MySqlDefaultSchema = A00000Main.MySqlDefaultSchemaOLD;
-			
-		}else {
-			
-		}
-		
+		//バックアップデータ作成先のスキーマ、テーブルのレイアウトを受けてテーブル作成用のSQL文生成⇒実行		
 		String sql = "CREATE TABLE `"+TableLayout[0][ 2]+"` (";
 			for(int i=0;i<TableLayout.length;i++) {
 				if(0<i) {sql = sql+",";}
