@@ -6,14 +6,14 @@ import java.util.ArrayList;
 public class M00042CautionMstRt{
 	/*
 	コピペ用
-	ArrayList<String> SearchCautionCd = ArrayList<String>();
-	ArrayList<String> SearchClGpCD = ArrayList<String>();
-	ArrayList<String> SearchDECD = ArrayList<String>();
-	ArrayList<String> SearchDepartmentCd = ArrayList<String>();
-	ArrayList<String> SearchCautionTiming = ArrayList<String>();
-	ArrayList<String> SearchCautionName = ArrayList<String>();
-	ArrayList<String> SearchCaution = ArrayList<String>();
-	ArrayList<String> SearchDeName = ArrayList<String>();
+	ArrayList<String> SearchCautionCd = new ArrayList<String>();
+	ArrayList<String> SearchClGpCD = new ArrayList<String>();
+	ArrayList<String> SearchDECD = new ArrayList<String>();
+	ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
+	ArrayList<String> SearchCautionTiming = new ArrayList<String>();
+	ArrayList<String> SearchCautionName = new ArrayList<String>();
+	ArrayList<String> SearchCaution = new ArrayList<String>();
+	ArrayList<String> SearchDeName = new ArrayList<String>();
 	boolean AllSearch = false;
 	
 	Object[][] CautionMstRt = M00042CautionMstRt.CautionMstRt(
