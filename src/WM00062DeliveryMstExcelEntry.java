@@ -1235,6 +1235,7 @@ public class WM00062DeliveryMstExcelEntry{
 		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		ArrayList<String> SearchDelFg = new ArrayList<String>();
+		boolean SearcNotJis = false;
 		boolean AllSearch = false;
 		
 		for(int i=0;i<GetDECD.length;i++) {
@@ -1254,6 +1255,7 @@ public class WM00062DeliveryMstExcelEntry{
 			SearchPrefecturesCd,
 			SearchMunicipalityCd,
 			SearchDelFg,
+			SearcNotJis,
 			AllSearch
 			);
 		SearchDECD = new ArrayList<String>();
@@ -1289,6 +1291,7 @@ public class WM00062DeliveryMstExcelEntry{
 				SearchPrefecturesCd,
 				SearchMunicipalityCd,
 				SearchDelFg,
+				SearcNotJis,
 				AllSearch
 				);
 		return rt;

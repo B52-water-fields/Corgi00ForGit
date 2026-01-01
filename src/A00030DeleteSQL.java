@@ -2,10 +2,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 public class A00030DeleteSQL{
-	public static void DeleteSql(String tgt_table,String[] judg_field,String[][] judg_data,int non_msg_fg,String TgtDB){
+	public static void DeleteSql(String tgt_table,String[] judg_field,String[][] judg_data,String TgtDB){
 		//データ削除をまとめて行う
 		//tgt_table		：対象テーブル名
 		//judg_field	：存在チェックフィールド名	※WHWRE条件
@@ -16,10 +14,9 @@ public class A00030DeleteSQL{
 		A00010DbConnect.DB_CONN(TgtDB);
 
 		if(null==tgt_table){tgt_table="";}
-		if(0!=non_msg_fg){non_msg_fg=1;}
+		
 		if(null!=judg_data && 0<judg_data.length && null!=judg_field && 0<judg_field.length) {
 			String sql="";	//sql文
-			int del_count = 0;
 			sql = "delete from "+tgt_table+" where ";
 
 			for(int i=0;i<judg_field.length;i++) {
@@ -59,9 +56,6 @@ public class A00030DeleteSQL{
 				}
 			}
 			A00010DbConnect.close();
-			if(non_msg_fg!=1){
-				JOptionPane.showMessageDialog(null, del_count + "件のデータ削除しました");
-			}
 		}
 	}
 }

@@ -174,6 +174,7 @@ public class WM00051DeliveryTypeMstRenewAndCreate{
 						}
 						
 						A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+						B00100DefaultVariable.DeliveryType();
 						
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
@@ -182,6 +183,7 @@ public class WM00051DeliveryTypeMstRenewAndCreate{
 						main_fm.dispose();
 						
 						WM00051DeliveryTypeMstRenewAndCreate.DeliveryTypeMstRenewAndCreate(0,0,GetSearchDeliveryTypeNo,GetDeliveryTypeCd);
+						
 					}else {
 						JOptionPane.showMessageDialog(null, "運送タイプNo・CD・名称は必須です");
 					}

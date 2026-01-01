@@ -8,21 +8,22 @@ public class M00040DeliveryMstRt{
 	public static Object[][] RtSettingDeliveryMstRt(){
 		/*
 		コピペ用
-		ArrayList<String> SearchDECD = new ArrayList<String>();
-		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
-		ArrayList<String> SearchDEName = new ArrayList<String>();
-		ArrayList<String> SearchPost = new ArrayList<String>();
-		ArrayList<String> SearchAdd = new ArrayList<String>();
-		ArrayList<String> SearchTel = new ArrayList<String>();
-		ArrayList<String> SearchFax = new ArrayList<String>();
-		ArrayList<String> SearchMail = new ArrayList<String>();
-		ArrayList<String> SearchCom = new ArrayList<String>();
-		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
-		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
-		ArrayList<String> SearchDelFg = new ArrayList<String>();
+		ArrayList<String> SearchDECD 			= new ArrayList<String>();
+		ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
+		ArrayList<String> SearchDEName 			= new ArrayList<String>();
+		ArrayList<String> SearchPost 			= new ArrayList<String>();
+		ArrayList<String> SearchAdd 			= new ArrayList<String>();
+		ArrayList<String> SearchTel 			= new ArrayList<String>();
+		ArrayList<String> SearchFax 			= new ArrayList<String>();
+		ArrayList<String> SearchMail 			= new ArrayList<String>();
+		ArrayList<String> SearchCom 			= new ArrayList<String>();
+		ArrayList<String> SearchPrefecturesCd 	= new ArrayList<String>();
+		ArrayList<String> SearchMunicipalityCd 	= new ArrayList<String>();
+		ArrayList<String> SearchDelFg 			= new ArrayList<String>();
+		boolean SearcNotJis = true;
 		boolean AllSearch = false;
 		
-		M00040DeliveryMstRt.DeliveryMstRt(
+		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
 			SearchDECD,
 			SearchDepartmentCd,
 			SearchDEName,
@@ -35,6 +36,7 @@ public class M00040DeliveryMstRt{
 			SearchPrefecturesCd,
 			SearchMunicipalityCd,
 			SearchDelFg,
+			SearcNotJis,
 			AllSearch
 			);
 		*/
@@ -84,10 +86,12 @@ public class M00040DeliveryMstRt{
 			ArrayList<String> SearchPrefecturesCd,	//検索条件届先県CD
 			ArrayList<String> SearchMunicipalityCd,	//検索条件届先市区町村CD
 			ArrayList<String> SearchDelFg,			//検索条件削除区分
+			boolean SearcNotJis,					//検索条件JIS由来除く
 			boolean AllSearch
 			){
 		Object[][] rt = new Object[0][27];
 		boolean SearchKick = false;
+		
 		if(AllSearch) {SearchKick=true;}
 		
 		String sql = " select "
@@ -129,6 +133,8 @@ public class M00040DeliveryMstRt{
 			+A00000Main.MySqlDefaultSchemaNYANKO+".KM0040_DELIVERYMST.FirstClient = LCL.cl_cd"
 			+")\n"
 			+" where 1=1\n";
+		
+		if(SearcNotJis) {sql = sql+ " and KM0040_DELIVERYMST.DepartmentCd != 'JIS'\n";}
 		
 		if(null!=SearchDECD && 0<SearchDECD.size()){					//検索条件届先CD
 			SearchKick=true;
@@ -407,6 +413,7 @@ public class M00040DeliveryMstRt{
 		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		ArrayList<String> SearchDelFg = new ArrayList<String>();
+		boolean SearcNotJis = true;
 		boolean AllSearch = true;
     	
     	Object[][] DeliveryMstRt = DeliveryMstRt(
@@ -422,6 +429,7 @@ public class M00040DeliveryMstRt{
     			SearchPrefecturesCd,	//検索条件届先県CD
     			SearchMunicipalityCd,	//検索条件届先市区町村CD
     			SearchDelFg,			//検索条件削除区分
+    			SearcNotJis,
     			AllSearch
     			);
     	
@@ -462,6 +470,7 @@ public class M00040DeliveryMstRt{
 		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		ArrayList<String> SearchDelFg = new ArrayList<String>();
+		boolean SearcNotJis = false;
 		boolean AllSearch = false;
 		
 		SearchDECD.add(GetDECD);
@@ -478,6 +487,7 @@ public class M00040DeliveryMstRt{
 				SearchPrefecturesCd,
 				SearchMunicipalityCd,
 				SearchDelFg,
+				SearcNotJis,
 				AllSearch
 				);
 		int DeptNo = 0;

@@ -6,14 +6,14 @@ import java.util.ArrayList;
 public class M00042CautionMstRt{
 	/*
 	コピペ用
-	ArrayList<String> SearchCautionCd = new ArrayList<String>();
-	ArrayList<String> SearchClGpCD = new ArrayList<String>();
-	ArrayList<String> SearchDECD = new ArrayList<String>();
-	ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
-	ArrayList<String> SearchCautionTiming = new ArrayList<String>();
-	ArrayList<String> SearchCautionName = new ArrayList<String>();
-	ArrayList<String> SearchCaution = new ArrayList<String>();
-	ArrayList<String> SearchDeName = new ArrayList<String>();
+	ArrayList<String> SearchCautionCd 		= new ArrayList<String>();
+	ArrayList<String> SearchClGpCD 			= new ArrayList<String>();
+	ArrayList<String> SearchDECD 			= new ArrayList<String>();
+	ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
+	ArrayList<String> SearchCautionTiming 	= new ArrayList<String>();
+	ArrayList<String> SearchCautionName 	= new ArrayList<String>();
+	ArrayList<String> SearchCaution 		= new ArrayList<String>();
+	ArrayList<String> SearchDeName 			= new ArrayList<String>();
 	boolean AllSearch = false;
 	
 	Object[][] CautionMstRt = M00042CautionMstRt.CautionMstRt(
@@ -34,7 +34,7 @@ public class M00042CautionMstRt{
 				 {"CautionCd"		,(int) 0	,"String"	,"注意事項コード"}
 				,{"ClGpCD"			,(int) 1	,"String"	,"荷主グループコード"}
 				,{"CLGpName01"		,(int) 2	,"String"	,"荷主グループ名"}
-				,{"DECD"			,(int) 3	,"String"	,"納品先コード"}
+				,{"DECD"			,(int) 3	,"String"	,"届先コード"}
 				,{"DepartmentCd"	,(int) 4	,"String"	,"部署CD"}
 				,{"DEName01"		,(int) 5	,"String"	,"届先名"}
 				,{"CautionTiming"	,(int) 6	,"int"		,"注意事項タイミング"}
@@ -68,21 +68,21 @@ public class M00042CautionMstRt{
 		
 		String sql = " select \n"
 				+"(KM0090_CAUTION.CautionCd) as CautionCd,\n"			//注意事項コード
-				+"(KM0090_CAUTION.ClGpCD) as ClGpCD,\n"					//荷主グループコード
-				+"(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"	//荷主グループ名
+				+"max(KM0090_CAUTION.ClGpCD) as ClGpCD,\n"				//荷主グループコード
+				+"max(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"	//荷主グループ名
 				+"(KM0090_CAUTION.DECD) as DECD,\n"						//納品先コード
 				+"(KM0090_CAUTION.DepartmentCd) as DepartmentCd,\n"		//部署CD
-				+"(KM0040_DELIVERYMST.DEName01) as DEName01,\n"			//届先名
+				+"max(KM0040_DELIVERYMST.DEName01) as DEName01,\n"		//届先名
 				+"(KM0090_CAUTION.CautionTiming) as CautionTiming,\n"	//注意事項タイミング
-				+"(KM0090_CAUTION.CautionName) as CautionName,\n"		//注意事項名
-				+"(KM0090_CAUTION.Caution) as Caution,\n"				//注意事項内容
-				+"(KM0090_CAUTION.EntryDate) as EntryDate,\n"			//データ登録日時
-				+"(KM0090_CAUTION.UpdateDate) as UpdateDate,\n"			//データ更新日時
-				+"(KM0090_CAUTION.EntryUser) as EntryUser,\n"			//登録者コード
-				+"(KM0090_CAUTION.UpdateUser) as UpdateUser,\n"			//更新者コード
-				+"(KM0040_DELIVERYMST.Add01) as Add01,\n"				//届先住所1
-				+"(KM0040_DELIVERYMST.Add02) as Add02,\n"				//届先住所2
-				+"(KM0040_DELIVERYMST.Add03) as Add03\n"				//届先住所3
+				+"max(KM0090_CAUTION.CautionName) as CautionName,\n"	//注意事項名
+				+"max(KM0090_CAUTION.Caution) as Caution,\n"			//注意事項内容
+				+"max(KM0090_CAUTION.EntryDate) as EntryDate,\n"		//データ登録日時
+				+"max(KM0090_CAUTION.UpdateDate) as UpdateDate,\n"		//データ更新日時
+				+"max(KM0090_CAUTION.EntryUser) as EntryUser,\n"		//登録者コード
+				+"max(KM0090_CAUTION.UpdateUser) as UpdateUser,\n"		//更新者コード
+				+"max(KM0040_DELIVERYMST.Add01) as Add01,\n"			//届先住所1
+				+"max(KM0040_DELIVERYMST.Add02) as Add02,\n"			//届先住所2
+				+"max(KM0040_DELIVERYMST.Add03) as Add03\n"				//届先住所3
 				+ " from "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0090_CAUTION\n"
 				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP"
 				+ " on("
@@ -168,7 +168,8 @@ public class M00042CautionMstRt{
 			}
 			sql=sql+")";
 		}
-		sql = sql + " order by KM0090_CAUTION.CautionCd,KM0090_CAUTION.CautionTiming\n";
+		sql = sql + " group by KM0090_CAUTION.CautionCd,KM0090_CAUTION.CautionTiming,KM0090_CAUTION.DECD,KM0090_CAUTION.DepartmentCd\n";
+		sql = sql + " order by KM0090_CAUTION.CautionCd,KM0090_CAUTION.CautionTiming,KM0090_CAUTION.DECD,KM0090_CAUTION.DepartmentCd\n";
 		
 		if(SearchKick) {
 			//System.out.println(sql);
@@ -276,5 +277,55 @@ public class M00042CautionMstRt{
 			A00010DbConnect.close();
 		}
 		return rt;
+	}
+	
+	public static String[] NewCautionCdGet(int NeedCount) {
+		ArrayList<String> SearchCautionCd = new ArrayList<String>();
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchDECD = new ArrayList<String>();
+		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
+		ArrayList<String> SearchCautionTiming = new ArrayList<String>();
+		ArrayList<String> SearchCautionName = new ArrayList<String>();
+		ArrayList<String> SearchCaution = new ArrayList<String>();
+		ArrayList<String> SearchDeName = new ArrayList<String>();
+		boolean AllSearch = true;
+		
+		Object[][] CautionMstRt = M00042CautionMstRt.CautionMstRt(
+				SearchCautionCd,
+				SearchClGpCD,
+				SearchDECD,
+				SearchDepartmentCd,
+				SearchCautionTiming,
+				SearchCautionName,
+				SearchCaution,
+				SearchDeName,
+				AllSearch);
+    	
+    	int CautionNo = 0;
+    	
+    	for(int i=0;i<CautionMstRt.length;i++) {
+    		if("ATCT".equals((""+CautionMstRt[i][0]).substring(0,4))&&13==(""+CautionMstRt[i][0]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+CautionMstRt[i][0]);
+    			if(9==WST.length()) {
+    				int wint = Integer.parseInt(WST);
+    				if(CautionNo<wint) {
+    					CautionNo=wint;
+    				}
+    			}
+    		}
+    	}
+
+    	String[] rt = new String[NeedCount];
+    	for(int i=0;i<NeedCount;i++) {
+    		CautionNo = CautionNo+1;
+    		if(1000000000>CautionNo) {
+		    	rt[i] = "000000000"+CautionNo;
+		    	rt[i] = "ATCT"+rt[i].substring(rt[i].length()-9,rt[i].length());
+    		}else {
+    			rt[i] = "ATCT"+CautionNo;
+    		}
+    	}
+    	
+    	return rt;
 	}
 }

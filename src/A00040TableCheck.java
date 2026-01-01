@@ -3894,7 +3894,7 @@ public class A00040TableCheck{
 				+"  `CautionCd` varchar(20) NOT NULL,"
 				+"  `ClGpCD` varchar(20) DEFAULT NULL,"
 				+"  `DECD` varchar(20) NOT NULL,"
-				+"  `DepartmentCd` varchar(20) DEFAULT NULL,"
+				+"  `DepartmentCd` varchar(20)  NOT NULL DEFAULT '',"
 				+"  `CautionTiming` int(11) NOT NULL DEFAULT '0',"
 				+"  `CautionName` varchar(100) DEFAULT NULL,"
 				+"  `Caution` varchar(300) DEFAULT NULL,"
@@ -3903,7 +3903,7 @@ public class A00040TableCheck{
 				+"  `EntryUser` varchar(50) DEFAULT NULL,"
 				+"  `UpdateUser` varchar(50) DEFAULT NULL,"
 				+"  `DelFg` int(11) DEFAULT '0',"
-				+"  PRIMARY KEY (`CautionCd`,`DECD`)"
+				+"  PRIMARY KEY (`CautionCd`,`DECD`,`DepartmentCd`)"
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='注意事項マスタ';";
 		return sql;
 	}
@@ -3924,7 +3924,7 @@ public class A00040TableCheck{
 					sql = sql + " ADD DECD varchar(20) NOT NULL";
 					break;
 				case "DepartmentCd":
-					sql = sql + " ADD DepartmentCd varchar(20) DEFAULT NULL";
+					sql = sql + " ADD DepartmentCd varchar(20) NOT NULL DEFAULT ''";
 					break;
 				case "CautionTiming":
 					sql = sql + " ADD CautionTiming int(11) NOT NULL DEFAULT '0'";

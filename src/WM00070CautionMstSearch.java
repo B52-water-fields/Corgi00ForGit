@@ -167,6 +167,13 @@ public class WM00070CautionMstSearch{
 		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
+		JLabel LB_DeleteBtn  = B00110FrameParts.JLabelSet(	610,640,100,20,"チェック行を" ,11,2);
+		main_fm.add(LB_DeleteBtn);
+		
+		//削除ボタン
+		JButton DeleteBtn = B00110FrameParts.BtnSet(	610,660,100,20,"削除",11);
+		main_fm.add(DeleteBtn);
+		
 		main_fm.setVisible(true);
 		RenewFg = true;
 		
@@ -246,6 +253,101 @@ public class WM00070CautionMstSearch{
 							SetOb[i01+1] = ""+CautionMstRt[i][i01];
 						}
 						tableModel_ms01.addRow(SetOb);
+					}
+					if(0<CautionMstRt.length) {
+						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+					}else {
+						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//修正ボタン押下時の挙動
+		RenewBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_ms01.getRowCount();
+					String TgtCautionCd = "";
+					String TgtDECD = "";
+					String TgtDepartmentCd = "";
+					
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+							TgtCautionCd 	= ""+tableModel_ms01.getValueAt(i, 1);
+							TgtDECD 		= ""+tableModel_ms01.getValueAt(i, 4);
+							TgtDepartmentCd	= ""+tableModel_ms01.getValueAt(i, 5);
+						}
+					}
+					if(!"".equals(TgtCautionCd) && !"".equals(TgtDECD)) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+		
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						
+						WM00071CautionMstRenewAndCreate.CautionMstRenewAndCreate(0,0,TgtCautionCd,TgtDECD,TgtDepartmentCd);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//新規登録ボタン押下時の挙動
+		CreateBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+	
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					
+					WM00071CautionMstRenewAndCreate.CautionMstRenewAndCreate(0,0,"","","");
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//削除ボタン押下時の挙動
+		DeleteBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_ms01.getRowCount();
+					String TgtCautionCd = "";
+					String TgtDECD = "";
+					String TgtDepartmentCd = "";
+					int RemoveTgt = -1;
+					
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+							RemoveTgt = i;
+						}
+					}
+					if(0<=RemoveTgt) {
+						TgtCautionCd 	= ""+tableModel_ms01.getValueAt(RemoveTgt, 1);
+						TgtDECD 		= ""+tableModel_ms01.getValueAt(RemoveTgt, 4);
+						TgtDepartmentCd	= ""+tableModel_ms01.getValueAt(RemoveTgt, 5);
+						tableModel_ms01.removeRow(RemoveTgt);
+						
+						String tgt_table = "KM0090_CAUTION";
+						String[] judg_field = new String[3];
+						String[][] judg_data = new String[1][3];
+						String TgtDB = "NYANKO";
+						
+						judg_field[0] = "CautionCd";	//注意事項コード
+						judg_field[1] = "DECD";			//運送タイプコード
+						judg_field[2] = "DepartmentCd";	//部署CD
+		
+						judg_data[0][0] = TgtCautionCd;		//注意事項コード
+						judg_data[0][1] = TgtDECD;			//届先コード
+						judg_data[0][2] = TgtDepartmentCd;	//部署CD
+						
+						A00030DeleteSQL.DeleteSql(tgt_table,judg_field,judg_data,TgtDB);
 					}
 					RenewFg = true;
 				}

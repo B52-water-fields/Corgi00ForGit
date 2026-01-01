@@ -201,6 +201,8 @@ public class WM00011WhMstRenewAndCreate{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
+				boolean KickFg = false;
+				
 				String GetWHCD  = TB_WHCD.getText();	if(null==GetWHCD){GetWHCD = "";}		//倉庫コード
 				String GetWHName = TB_WHName.getText();	if(null==GetWHName){GetWHName = "";}	//拠点倉庫名
 				String GetPost = TB_Post.getText();		if(null==GetPost){GetPost = "";}		//拠点倉庫郵便番号
@@ -220,27 +222,69 @@ public class WM00011WhMstRenewAndCreate{
 				GetTel  = B00020ToolsTextControl.num_only_String(GetTel);
 				GetFax  = B00020ToolsTextControl.num_only_String(GetFax);
 				
-				String SetWh = B00101DefaultVariableWarehouse.RenewAndCreateWh(
-						GetWHCD,	//倉庫コード
-						GetWHName,	//拠点倉庫名
-						GetPost,	//拠点倉庫郵便番号
-						GetAdd01,	//拠点倉庫住所1
-						GetAdd02,	//拠点倉庫住所2
-						GetTel,		//拠点倉庫電話
-						GetFax,		//拠点倉庫FAX
-						GetMail,	//拠点倉庫MAIL
-						GetCom01,	//コメント１
-						GetCom02,	//コメント２
-						GetCom03,	//コメント３
-						GetPTMSCD	//基幹SysCD
-						);
-				
-				SetX=main_fm.getX();
-				SetY=main_fm.getY();
-
-				main_fm.setVisible(false);
-				main_fm.dispose();
-				WhMstRenewAndCreate(0,0,SetWh);
+				if("".equals(GetWHCD)) {
+					JOptionPane.showMessageDialog(null, "倉庫コードは必須です");
+					KickFg = false;
+				}else {
+					ArrayList<String> SearchWHCD = new ArrayList<String>();
+					ArrayList<String> SearchWHName = new ArrayList<String>();
+					ArrayList<String> SearchPost = new ArrayList<String>();
+					ArrayList<String> SearchAdd = new ArrayList<String>();
+					ArrayList<String> SearchTel = new ArrayList<String>();
+					ArrayList<String> SearchFax = new ArrayList<String>();
+					ArrayList<String> SearchMail = new ArrayList<String>();
+					ArrayList<String> SearchCom = new ArrayList<String>();
+					ArrayList<String> SearchPTMSCD = new ArrayList<String>();
+					boolean AllSearch = false;
+					
+					SearchWHCD.add(GetWHCD);
+					
+					Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+							SearchWHCD,
+							SearchWHName,
+							SearchPost,
+							SearchAdd,
+							SearchTel,
+							SearchFax,
+							SearchMail,
+							SearchCom,
+							SearchPTMSCD,
+							AllSearch);
+					if(0<WhMstRt.length) {
+						int option = JOptionPane.showConfirmDialog(null, "登録済みの倉庫情報ですが更新しますか？","登録確認", JOptionPane.YES_NO_OPTION,
+							      JOptionPane.WARNING_MESSAGE);
+						if (option == JOptionPane.YES_OPTION){
+							KickFg = true;
+						}else {
+							KickFg = false;
+						}
+					}else {
+						KickFg = true;
+					}
+				}
+				if(KickFg) {	
+					String SetWh = B00101DefaultVariableWarehouse.RenewAndCreateWh(
+							GetWHCD,	//倉庫コード
+							GetWHName,	//拠点倉庫名
+							GetPost,	//拠点倉庫郵便番号
+							GetAdd01,	//拠点倉庫住所1
+							GetAdd02,	//拠点倉庫住所2
+							GetTel,		//拠点倉庫電話
+							GetFax,		//拠点倉庫FAX
+							GetMail,	//拠点倉庫MAIL
+							GetCom01,	//コメント１
+							GetCom02,	//コメント２
+							GetCom03,	//コメント３
+							GetPTMSCD	//基幹SysCD
+							);
+					
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+	
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WhMstRenewAndCreate(0,0,SetWh);
+				}
 			}
 		});
 		

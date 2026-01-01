@@ -134,12 +134,6 @@ public class B00100DefaultVariable{
 	
 	static String ShipForcedDeliCd;				//強制出荷届先Cｄ
 	static String ShipForcedDeliDepartmentCd;	//強制出荷届先部署Cｄ
-	
-	
-	
-	
-	
-	
 
 	
 	public static void DefaultVariable() {

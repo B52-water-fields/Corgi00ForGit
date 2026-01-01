@@ -115,6 +115,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 			ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
 			ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 			ArrayList<String> SearchDelFg = new ArrayList<String>();
+			boolean SearcNotJis = false;
 			boolean AllSearch = false;
 			
 			SearchDECD.add(DECD);
@@ -133,6 +134,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 					SearchPrefecturesCd,
 					SearchMunicipalityCd,
 					SearchDelFg,
+					SearcNotJis,
 					AllSearch
 					);
 			if(0<DeliveryMstRt.length) {
@@ -887,6 +889,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 		ArrayList<String> SearchPrefecturesCd = new ArrayList<String>();
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		ArrayList<String> SearchDelFg = new ArrayList<String>();
+		boolean SearcNotJis = false;
 		boolean AllSearch = false;
 		
 		if(null!=GetPost && !"".equals(GetPost) && null!=GetTel && !"".equals(GetTel)) {
@@ -906,6 +909,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 				SearchPrefecturesCd,
 				SearchMunicipalityCd,
 				SearchDelFg,
+				SearcNotJis,
 				AllSearch
 				);
 		

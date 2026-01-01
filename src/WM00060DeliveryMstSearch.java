@@ -87,6 +87,7 @@ public class WM00060DeliveryMstSearch{
 		JLabel LB_SearchPrefecturesCd	= B00110FrameParts.JLabelSet(500, 25,100,20,"届先県CD:"		,11,1);
 		JLabel LB_SearchMunicipalityCd	= B00110FrameParts.JLabelSet(500, 50,100,20,"届先市区町村CD:"	,11,1);
 		JLabel LB_SearchDelFg			= B00110FrameParts.JLabelSet(500, 75,100,20,"削除区分:"		,11,1);
+		JLabel LB_SearcNotJis			= B00110FrameParts.JLabelSet(500,100,100,20,"JIS由来届先:"		,11,1);
 		
 		final JTextField  TB_SearchDECD				= B00110FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//届先CD
 		final JTextField  TB_SearchDepartmentCd		= B00110FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//届先部署CD
@@ -100,6 +101,8 @@ public class WM00060DeliveryMstSearch{
 		final JComboBox   TB_SearchPrefecturesCd	= B00110FrameParts.JComboBoxSet( 600, 25,100,20,PrefecturesCdList[0],11);					//届先県CD
 		final JComboBox   TB_SearchMunicipalityCd	= B00110FrameParts.JComboBoxSet( 600, 50,200,20,MunicipalityCd[0],11);						//届先市区町村CD
 		final JComboBox   TB_SearchDelFg			= B00110FrameParts.JComboBoxSet( 600, 75,100,20,B00100DefaultVariable.SearchDelList[0],11);	//削除区分
+		String[] JisSelect = {"含まない","含む"};
+		final JComboBox   TB_SearcNotJis			= B00110FrameParts.JComboBoxSet( 600,100,100,20,JisSelect,11);	//削除区分
 		
 		JLabel LB2_SearchDECD			= B00110FrameParts.JLabelSet(200, 25, 50,20,"と一致"		,11,0);
 		JLabel LB2_SearchDepartmentCd	= B00110FrameParts.JLabelSet(200, 50, 50,20,"と一致"		,11,0);
@@ -113,6 +116,7 @@ public class WM00060DeliveryMstSearch{
 		JLabel LB2_SearchPrefecturesCd	= B00110FrameParts.JLabelSet(700, 25, 50,20,""				,11,0);
 		JLabel LB2_SearchMunicipalityCd	= B00110FrameParts.JLabelSet(800, 50, 50,20,""				,11,0);
 		JLabel LB2_SearchDelFg			= B00110FrameParts.JLabelSet(700, 75, 50,20,""				,11,0);
+		JLabel LB2_SearcNotJis			= B00110FrameParts.JLabelSet(700,100, 50,20,""				,11,0);
 
 		PN_Search.add(LB_SearchDECD);
 		PN_Search.add(LB_SearchDepartmentCd);
@@ -126,6 +130,7 @@ public class WM00060DeliveryMstSearch{
 		PN_Search.add(LB_SearchPrefecturesCd);
 		PN_Search.add(LB_SearchMunicipalityCd);
 		PN_Search.add(LB_SearchDelFg);
+		PN_Search.add(LB_SearcNotJis);
 		
 		PN_Search.add(TB_SearchDECD);
 		PN_Search.add(TB_SearchDepartmentCd);
@@ -139,6 +144,7 @@ public class WM00060DeliveryMstSearch{
 		PN_Search.add(TB_SearchPrefecturesCd);
 		PN_Search.add(TB_SearchMunicipalityCd);
 		PN_Search.add(TB_SearchDelFg);
+		PN_Search.add(TB_SearcNotJis);
 		
 		PN_Search.add(LB2_SearchDECD);
 		PN_Search.add(LB2_SearchDepartmentCd);
@@ -152,6 +158,7 @@ public class WM00060DeliveryMstSearch{
 		PN_Search.add(LB2_SearchPrefecturesCd);
 		PN_Search.add(LB2_SearchMunicipalityCd);
 		PN_Search.add(LB2_SearchDelFg);
+		PN_Search.add(LB2_SearcNotJis);
 
 		//検索ボタン
 		JButton SearchBtn = B00110FrameParts.BtnSet(600,125,100,20,"検索",11);
@@ -243,6 +250,8 @@ public class WM00060DeliveryMstSearch{
 					String GetSearchPrefecturesCd 	= PrefecturesCdList[1][TB_SearchPrefecturesCd.getSelectedIndex()];			//届先県CD
 					String GetSearchMunicipalityCd 	= MunicipalityCd[1][TB_SearchMunicipalityCd.getSelectedIndex()];				//届先市区町村CD
 					String GetSearchDelFg 			= B00100DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];	//削除区分
+					boolean SearcNotJis = false;
+					if(0==TB_SearcNotJis.getSelectedIndex()) {SearcNotJis = true;}else {SearcNotJis = false;}
 
 					if(null==GetSearchDECD			){GetSearchDECD 			= "";}
 					if(null==GetSearchDepartmentCd	){GetSearchDepartmentCd 	= "";}
@@ -324,6 +333,7 @@ public class WM00060DeliveryMstSearch{
 							SearchPrefecturesCd,	//検索条件届先県CD
 							SearchMunicipalityCd,	//検索条件届先市区町村CD
 							SearchDelFg,			//検索条件削除区分
+							SearcNotJis,
 							AllSearch
 							);
 					
