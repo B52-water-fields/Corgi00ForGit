@@ -70,7 +70,7 @@ public class M00042CautionMstRt{
 				+"(KM0090_CAUTION.CautionCd) as CautionCd,\n"			//注意事項コード
 				+"max(KM0090_CAUTION.ClGpCD) as ClGpCD,\n"				//荷主グループコード
 				+"max(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"	//荷主グループ名
-				+"(KM0090_CAUTION.DECD) as DECD,\n"						//納品先コード
+				+"(KM0090_CAUTION.DECD) as DECD,\n"						//届先コード
 				+"(KM0090_CAUTION.DepartmentCd) as DepartmentCd,\n"		//部署CD
 				+"max(KM0040_DELIVERYMST.DEName01) as DEName01,\n"		//届先名
 				+"(KM0090_CAUTION.CautionTiming) as CautionTiming,\n"	//注意事項タイミング
@@ -247,7 +247,7 @@ public class M00042CautionMstRt{
 					if(null==rset01.getString("CautionCd")){	rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("CautionCd");}					//注意事項コード
 					if(null==rset01.getString("ClGpCD")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("ClGpCD");}						//荷主グループコード
 					if(null==rset01.getString("CLGpName01")){	rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("CLGpName01");}					//荷主グループ名
-					if(null==rset01.getString("DECD")){			rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("DECD");}							//納品先コード
+					if(null==rset01.getString("DECD")){			rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("DECD");}							//届先コード
 					if(null==rset01.getString("DepartmentCd")){	rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("DepartmentCd");}					//部署CD
 					if(null==rset01.getString("DEName01")){		rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("DEName01");}						//届先名
 					rt[counter][6]=rset01.getInt("CautionTiming");																							//注意事項タイミング

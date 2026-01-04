@@ -35,6 +35,10 @@ public class W00020MstMain{
 		JPanel PN_AboutALL 		= B00110FrameParts.JPanelSet( 10,460,740,200,"White");
 		JLabel LB_AboutALL 		= B00110FrameParts.JLabelSet( 10,  0,150,20,"全体設定",11,0);
 		PN_AboutALL.add(LB_AboutALL);
+		
+		//届先変換
+		JButton DeliveryComversionMst = B00110FrameParts.BtnSet( 20, 25,130,20,"届先変換",11);
+		PN_AboutClient.add(DeliveryComversionMst);
 
 		//倉庫・事業所
 		JButton WhMst 				= B00110FrameParts.BtnSet( 20, 25,130,20,"倉庫・事業所",11);
@@ -82,6 +86,19 @@ public class W00020MstMain{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.setVisible(true);
+		
+		//届先変換
+		DeliveryComversionMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00065DeliveryComversionMstSerarch.DeliveryComversionMstSerarch(0, 0);
+			}
+		});
+		
 		//倉庫・事業所
 		WhMst.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){

@@ -4,55 +4,58 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class M00040DeliveryMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchDECD 			= new ArrayList<String>();
+	ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
+	ArrayList<String> SearchDEName 			= new ArrayList<String>();
+	ArrayList<String> SearchPost 			= new ArrayList<String>();
+	ArrayList<String> SearchAdd 			= new ArrayList<String>();
+	ArrayList<String> SearchTel 			= new ArrayList<String>();
+	ArrayList<String> SearchFax 			= new ArrayList<String>();
+	ArrayList<String> SearchMail 			= new ArrayList<String>();
+	ArrayList<String> SearchCom 			= new ArrayList<String>();
+	ArrayList<String> SearchPrefecturesCd 	= new ArrayList<String>();
+	ArrayList<String> SearchMunicipalityCd 	= new ArrayList<String>();
+	ArrayList<String> SearchDelFg 			= new ArrayList<String>();
+	boolean SearcNotJis = true;
+	boolean SearchTelExactMatch = false;
+	boolean AllSearch = false;
+	
+	Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+		SearchDECD,
+		SearchDepartmentCd,
+		SearchDEName,
+		SearchPost,
+		SearchAdd,
+		SearchTel,
+		SearchFax,
+		SearchMail,
+		SearchCom,
+		SearchPrefecturesCd,
+		SearchMunicipalityCd,
+		SearchDelFg,
+		SearcNotJis,
+		SearchTelExactMatch,
+		AllSearch
+		);
+	*/
+	
 	//戻り値カラム
 	public static Object[][] RtSettingDeliveryMstRt(){
-		/*
-		コピペ用
-		ArrayList<String> SearchDECD 			= new ArrayList<String>();
-		ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
-		ArrayList<String> SearchDEName 			= new ArrayList<String>();
-		ArrayList<String> SearchPost 			= new ArrayList<String>();
-		ArrayList<String> SearchAdd 			= new ArrayList<String>();
-		ArrayList<String> SearchTel 			= new ArrayList<String>();
-		ArrayList<String> SearchFax 			= new ArrayList<String>();
-		ArrayList<String> SearchMail 			= new ArrayList<String>();
-		ArrayList<String> SearchCom 			= new ArrayList<String>();
-		ArrayList<String> SearchPrefecturesCd 	= new ArrayList<String>();
-		ArrayList<String> SearchMunicipalityCd 	= new ArrayList<String>();
-		ArrayList<String> SearchDelFg 			= new ArrayList<String>();
-		boolean SearcNotJis = true;
-		boolean AllSearch = false;
-		
-		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
-			SearchDECD,
-			SearchDepartmentCd,
-			SearchDEName,
-			SearchPost,
-			SearchAdd,
-			SearchTel,
-			SearchFax,
-			SearchMail,
-			SearchCom,
-			SearchPrefecturesCd,
-			SearchMunicipalityCd,
-			SearchDelFg,
-			SearcNotJis,
-			AllSearch
-			);
-		*/
 		Object[][] RtSettingDeliveryMstRt = {
-				 {"DECD"			,(int) 0	,"String"	,"納品先コード"}
+				 {"DECD"			,(int) 0	,"String"	,"届先コード"}
 				,{"DepartmentCd"	,(int) 1	,"String"	,"部署CD"}
-				,{"DEName01"		,(int) 2	,"String"	,"納品先名1"}
-				,{"DEName02"		,(int) 3	,"String"	,"納品先名2"}
-				,{"DEName03"		,(int) 4	,"String"	,"納品先名3"}
-				,{"Post"			,(int) 5	,"String"	,"納品先郵便"}
-				,{"Add01"			,(int) 6	,"String"	,"納品先住所1"}
-				,{"Add02"			,(int) 7	,"String"	,"納品先住所2"}
-				,{"Add03"			,(int) 8	,"String"	,"納品先住所3"}
-				,{"Tel"				,(int) 9	,"String"	,"納品先電話"}
-				,{"Fax"				,(int)10	,"String"	,"納品先FAX"}
-				,{"Mail"			,(int)11	,"String"	,"納品先MAIL"}
+				,{"DEName01"		,(int) 2	,"String"	,"届先名1"}
+				,{"DEName02"		,(int) 3	,"String"	,"届先名2"}
+				,{"DEName03"		,(int) 4	,"String"	,"届先名3"}
+				,{"Post"			,(int) 5	,"String"	,"届先郵便"}
+				,{"Add01"			,(int) 6	,"String"	,"届先住所1"}
+				,{"Add02"			,(int) 7	,"String"	,"届先住所2"}
+				,{"Add03"			,(int) 8	,"String"	,"届先住所3"}
+				,{"Tel"				,(int) 9	,"String"	,"届先電話"}
+				,{"Fax"				,(int)10	,"String"	,"届先FAX"}
+				,{"Mail"			,(int)11	,"String"	,"届先MAIL"}
 				,{"Com01"			,(int)12	,"String"	,"コメント1"}
 				,{"Com02"			,(int)13	,"String"	,"コメント2"}
 				,{"Com03"			,(int)14	,"String"	,"コメント3"}
@@ -87,6 +90,7 @@ public class M00040DeliveryMstRt{
 			ArrayList<String> SearchMunicipalityCd,	//検索条件届先市区町村CD
 			ArrayList<String> SearchDelFg,			//検索条件削除区分
 			boolean SearcNotJis,					//検索条件JIS由来除く
+			boolean SearchTelExactMatch,			//電話番号完全一致
 			boolean AllSearch
 			){
 		Object[][] rt = new Object[0][27];
@@ -95,18 +99,18 @@ public class M00040DeliveryMstRt{
 		if(AllSearch) {SearchKick=true;}
 		
 		String sql = " select "
-			+"(KM0040_DELIVERYMST.DECD) as DECD,\n"						//納品先コード
+			+"(KM0040_DELIVERYMST.DECD) as DECD,\n"						//届先コード
 			+"(KM0040_DELIVERYMST.DepartmentCd) as DepartmentCd,\n"		//部署CD
-			+"(KM0040_DELIVERYMST.DEName01) as DEName01,\n"				//納品先名1
-			+"(KM0040_DELIVERYMST.DEName02) as DEName02,\n"				//納品先名2
-			+"(KM0040_DELIVERYMST.DEName03) as DEName03,\n"				//納品先名3
-			+"(KM0040_DELIVERYMST.Post) as Post,\n"						//納品先郵便
-			+"(KM0040_DELIVERYMST.Add01) as Add01,\n"					//納品先住所1
-			+"(KM0040_DELIVERYMST.Add02) as Add02,\n"					//納品先住所2
-			+"(KM0040_DELIVERYMST.Add03) as Add03,\n"					//納品先住所3
-			+"(KM0040_DELIVERYMST.Tel) as Tel,\n"						//納品先電話
-			+"(KM0040_DELIVERYMST.Fax) as Fax,\n"						//納品先FAX
-			+"(KM0040_DELIVERYMST.Mail) as Mail,\n"						//納品先MAIL
+			+"(KM0040_DELIVERYMST.DEName01) as DEName01,\n"				//届先名1
+			+"(KM0040_DELIVERYMST.DEName02) as DEName02,\n"				//届先名2
+			+"(KM0040_DELIVERYMST.DEName03) as DEName03,\n"				//届先名3
+			+"(KM0040_DELIVERYMST.Post) as Post,\n"						//届先郵便
+			+"(KM0040_DELIVERYMST.Add01) as Add01,\n"					//届先住所1
+			+"(KM0040_DELIVERYMST.Add02) as Add02,\n"					//届先住所2
+			+"(KM0040_DELIVERYMST.Add03) as Add03,\n"					//届先住所3
+			+"(KM0040_DELIVERYMST.Tel) as Tel,\n"						//届先電話
+			+"(KM0040_DELIVERYMST.Fax) as Fax,\n"						//届先FAX
+			+"(KM0040_DELIVERYMST.Mail) as Mail,\n"						//届先MAIL
 			+"(KM0040_DELIVERYMST.Com01) as Com01,\n"					//コメント1
 			+"(KM0040_DELIVERYMST.Com02) as Com02,\n"					//コメント2
 			+"(KM0040_DELIVERYMST.Com03) as Com03,\n"					//コメント3
@@ -299,7 +303,11 @@ public class M00040DeliveryMstRt{
 				if(null!=SearchTel && 0<SearchTel.size()){
 					for(int i=0;i<SearchTel.size();i++){
 						StmtCount = StmtCount+1;
-						stmt01.setString(StmtCount, "%"+SearchTel.get(i)+"%");
+						if(SearchTelExactMatch){
+							stmt01.setString(StmtCount, ""+SearchTel.get(i)+"");
+						}else {
+							stmt01.setString(StmtCount, "%"+SearchTel.get(i)+"%");
+						}
 					}
 				}
 				if(null!=SearchFax && 0<SearchFax.size()){
@@ -354,18 +362,18 @@ public class M00040DeliveryMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("DECD")){				rt[counter][ 0] = "";}else{rt[counter][ 0] = rset01.getString("DECD");}				//納品先コード
+					if(null==rset01.getString("DECD")){				rt[counter][ 0] = "";}else{rt[counter][ 0] = rset01.getString("DECD");}				//届先コード
 					if(null==rset01.getString("DepartmentCd")){		rt[counter][ 1] = "";}else{rt[counter][ 1] = rset01.getString("DepartmentCd");}		//部署CD
-					if(null==rset01.getString("DEName01")){			rt[counter][ 2] = "";}else{rt[counter][ 2] = rset01.getString("DEName01");}			//納品先名1
-					if(null==rset01.getString("DEName02")){			rt[counter][ 3] = "";}else{rt[counter][ 3] = rset01.getString("DEName02");}			//納品先名2
-					if(null==rset01.getString("DEName03")){			rt[counter][ 4] = "";}else{rt[counter][ 4] = rset01.getString("DEName03");}			//納品先名3
-					if(null==rset01.getString("Post")){				rt[counter][ 5] = "";}else{rt[counter][ 5] = rset01.getString("Post");	}			//納品先郵便
-					if(null==rset01.getString("Add01")){			rt[counter][ 6] = "";}else{rt[counter][ 6] = rset01.getString("Add01");}			//納品先住所1
-					if(null==rset01.getString("Add02")){			rt[counter][ 7] = "";}else{rt[counter][ 7] = rset01.getString("Add02");}			//納品先住所2
-					if(null==rset01.getString("Add03")){			rt[counter][ 8] = "";}else{rt[counter][ 8] = rset01.getString("Add03");}			//納品先住所3
-					if(null==rset01.getString("Tel")){				rt[counter][ 9] = "";}else{rt[counter][ 9] = rset01.getString("Tel");}				//納品先電話
-					if(null==rset01.getString("Fax")){				rt[counter][10] = "";}else{rt[counter][10] = rset01.getString("Fax");}				//納品先FAX
-					if(null==rset01.getString("Mail")){				rt[counter][11] = "";}else{rt[counter][11] = rset01.getString("Mail");}				//納品先MAIL
+					if(null==rset01.getString("DEName01")){			rt[counter][ 2] = "";}else{rt[counter][ 2] = rset01.getString("DEName01");}			//届先名1
+					if(null==rset01.getString("DEName02")){			rt[counter][ 3] = "";}else{rt[counter][ 3] = rset01.getString("DEName02");}			//届先名2
+					if(null==rset01.getString("DEName03")){			rt[counter][ 4] = "";}else{rt[counter][ 4] = rset01.getString("DEName03");}			//届先名3
+					if(null==rset01.getString("Post")){				rt[counter][ 5] = "";}else{rt[counter][ 5] = rset01.getString("Post");	}			//届先郵便
+					if(null==rset01.getString("Add01")){			rt[counter][ 6] = "";}else{rt[counter][ 6] = rset01.getString("Add01");}			//届先住所1
+					if(null==rset01.getString("Add02")){			rt[counter][ 7] = "";}else{rt[counter][ 7] = rset01.getString("Add02");}			//届先住所2
+					if(null==rset01.getString("Add03")){			rt[counter][ 8] = "";}else{rt[counter][ 8] = rset01.getString("Add03");}			//届先住所3
+					if(null==rset01.getString("Tel")){				rt[counter][ 9] = "";}else{rt[counter][ 9] = rset01.getString("Tel");}				//届先電話
+					if(null==rset01.getString("Fax")){				rt[counter][10] = "";}else{rt[counter][10] = rset01.getString("Fax");}				//届先FAX
+					if(null==rset01.getString("Mail")){				rt[counter][11] = "";}else{rt[counter][11] = rset01.getString("Mail");}				//届先MAIL
 					if(null==rset01.getString("Com01")){			rt[counter][12] = "";}else{rt[counter][12] = rset01.getString("Com01");}			//コメント1
 					if(null==rset01.getString("Com02")){			rt[counter][13] = "";}else{rt[counter][13] = rset01.getString("Com02");}			//コメント2
 					if(null==rset01.getString("Com03")){			rt[counter][14] = "";}else{rt[counter][14] = rset01.getString("Com03");}			//コメント3
@@ -414,6 +422,7 @@ public class M00040DeliveryMstRt{
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		ArrayList<String> SearchDelFg = new ArrayList<String>();
 		boolean SearcNotJis = true;
+		boolean SearchTelExactMatch = false;
 		boolean AllSearch = true;
     	
     	Object[][] DeliveryMstRt = DeliveryMstRt(
@@ -430,6 +439,7 @@ public class M00040DeliveryMstRt{
     			SearchMunicipalityCd,	//検索条件届先市区町村CD
     			SearchDelFg,			//検索条件削除区分
     			SearcNotJis,
+    			SearchTelExactMatch,
     			AllSearch
     			);
     	
@@ -471,6 +481,7 @@ public class M00040DeliveryMstRt{
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		ArrayList<String> SearchDelFg = new ArrayList<String>();
 		boolean SearcNotJis = false;
+		boolean SearchTelExactMatch = false;
 		boolean AllSearch = false;
 		
 		SearchDECD.add(GetDECD);
@@ -488,6 +499,7 @@ public class M00040DeliveryMstRt{
 				SearchMunicipalityCd,
 				SearchDelFg,
 				SearcNotJis,
+				SearchTelExactMatch,
 				AllSearch
 				);
 		int DeptNo = 0;

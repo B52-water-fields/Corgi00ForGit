@@ -68,13 +68,12 @@ public class M10010PostMstRt{
 	}
 	
 	public static Object[][] RtAddToMunicipality(){
-		//住所一覧に対してJIS判定して結果を返却する
+		//住所一覧に対してJIS判定して結果を返却する ※特定できなかった場合"00000"返却
 		/*
 		コピペ用
 		String[] AddList = new String[0];
 		
-		Object[][] AddToMunicipality = M10010PostMstRt.AddToMunicipality(
-																	AddList);
+		Object[][] AddToMunicipality = M10010PostMstRt.AddToMunicipality(AddList);
 		*/
 		Object[][] RtAddToMunicipality = {
 				{"TgtAdd"				,(int) 0	,"String"	,"対象住所"}
@@ -560,7 +559,7 @@ public class M10010PostMstRt{
 		return rt;
 	}
 	
-	//住所一覧を受け取って対応するJIS市区町村CDを返却する
+	//住所一覧を受け取って対応するJIS市区町村CDを返却する ※特定できなかった場合"00000"返却
 	public static String[][] AddToMunicipality(String[] AddList){
 		
 		if(null==AddList) {AddList = new String[0];}
@@ -580,7 +579,7 @@ public class M10010PostMstRt{
 			boolean UnHitFg = true;
 			if(null==AddList[i]) {AddList[i]="";}
 			rt[i][0] = ""+AddList[i];
-			rt[i][1] = "";
+			rt[i][1] = "00000";
 			
 			for(int i01=0;i01<MunicipalityRt.length;i01++) {
 				//〇〇県××市を含む場合市区町村特定できたものとする

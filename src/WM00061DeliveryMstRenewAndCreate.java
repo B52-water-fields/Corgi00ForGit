@@ -45,18 +45,18 @@ public class WM00061DeliveryMstRenewAndCreate{
 			main_fm.add(entry_btn);
 		}
 		
-		JLabel LB_DECD				= B00110FrameParts.JLabelSet(  0, 40,100,20,"納品先コード:",	11,1);
+		JLabel LB_DECD				= B00110FrameParts.JLabelSet(  0, 40,100,20,"届先コード:",		11,1);
 		JLabel LB_DepartmentCd		= B00110FrameParts.JLabelSet(  0, 65,100,20,"部署CD:",			11,1);
-		JLabel LB_DEName01			= B00110FrameParts.JLabelSet(  0, 90,100,20,"納品先名1:",		11,1);
-		JLabel LB_DEName02			= B00110FrameParts.JLabelSet(  0,115,100,20,"納品先名2:",		11,1);
-		JLabel LB_DEName03			= B00110FrameParts.JLabelSet(  0,140,100,20,"納品先名3:",		11,1);
-		JLabel LB_Post				= B00110FrameParts.JLabelSet(  0,165,100,20,"納品先郵便:",		11,1);
-		JLabel LB_Add01				= B00110FrameParts.JLabelSet(  0,190,100,20,"納品先住所1:",	11,1);
-		JLabel LB_Add02				= B00110FrameParts.JLabelSet(  0,215,100,20,"納品先住所2:",	11,1);
-		JLabel LB_Add03				= B00110FrameParts.JLabelSet(  0,240,100,20,"納品先住所3:",	11,1);
-		JLabel LB_Tel				= B00110FrameParts.JLabelSet(  0,265,100,20,"納品先電話:",		11,1);
-		JLabel LB_Fax				= B00110FrameParts.JLabelSet(  0,290,100,20,"納品先FAX:",		11,1);
-		JLabel LB_Mail				= B00110FrameParts.JLabelSet(  0,315,100,20,"納品先MAIL:",		11,1);
+		JLabel LB_DEName01			= B00110FrameParts.JLabelSet(  0, 90,100,20,"届先名1:",		11,1);
+		JLabel LB_DEName02			= B00110FrameParts.JLabelSet(  0,115,100,20,"届先名2:",		11,1);
+		JLabel LB_DEName03			= B00110FrameParts.JLabelSet(  0,140,100,20,"届先名3:",		11,1);
+		JLabel LB_Post				= B00110FrameParts.JLabelSet(  0,165,100,20,"届先郵便:",		11,1);
+		JLabel LB_Add01				= B00110FrameParts.JLabelSet(  0,190,100,20,"届先住所1:",		11,1);
+		JLabel LB_Add02				= B00110FrameParts.JLabelSet(  0,215,100,20,"届先住所2:",		11,1);
+		JLabel LB_Add03				= B00110FrameParts.JLabelSet(  0,240,100,20,"届先住所3:",		11,1);
+		JLabel LB_Tel				= B00110FrameParts.JLabelSet(  0,265,100,20,"届先電話:",		11,1);
+		JLabel LB_Fax				= B00110FrameParts.JLabelSet(  0,290,100,20,"届先FAX:",		11,1);
+		JLabel LB_Mail				= B00110FrameParts.JLabelSet(  0,315,100,20,"届先MAIL:",		11,1);
 		JLabel LB_Com01				= B00110FrameParts.JLabelSet(  0,340,100,20,"コメント1:",		11,1);
 		JLabel LB_Com02				= B00110FrameParts.JLabelSet(  0,365,100,20,"コメント2:",		11,1);
 		JLabel LB_Com03				= B00110FrameParts.JLabelSet(  0,390,100,20,"コメント3:",		11,1);
@@ -70,20 +70,20 @@ public class WM00061DeliveryMstRenewAndCreate{
 		JLabel LB_FirstClient		= B00110FrameParts.JLabelSet(  0,590,100,20,"登録した荷主:",	11,1);
 		JLabel LB_LastClient		= B00110FrameParts.JLabelSet(  0,615,100,20,"更新した荷主:",	11,1);
 		JLabel LB_DelFg				= B00110FrameParts.JLabelSet(  0,640,100,20,"削除区分:",		11,1);
-		JLabel LB_MSG				= B00110FrameParts.JLabelSet(  0,665,300,20,"JIS納品先は郵便番号マスタから生成してください",	11,1);
+		JLabel LB_MSG				= B00110FrameParts.JLabelSet(  0,665,300,20,"JIS届先は郵便番号マスタから生成してください",	11,1);
 
-		final JTextField TB_DECD			= B00110FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//納品先コード
+		final JTextField TB_DECD			= B00110FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//届先コード
 		final JTextField TB_DepartmentCd	= B00110FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//部署CD
-		final JTextField TB_DEName01		= B00110FrameParts.JTextFieldSet(100, 90,250,20,"",11,0);			//納品先名1
-		final JTextField TB_DEName02		= B00110FrameParts.JTextFieldSet(100,115,250,20,"",11,0);			//納品先名2
-		final JTextField TB_DEName03		= B00110FrameParts.JTextFieldSet(100,140,250,20,"",11,0);			//納品先名3
-		final JTextField TB_Post			= B00110FrameParts.JTextFieldSet(100,165,100,20,"",11,0);			//納品先郵便
-		final JTextField TB_Add01			= B00110FrameParts.JTextFieldSet(100,190,250,20,"",11,0);			//納品先住所1
-		final JTextField TB_Add02			= B00110FrameParts.JTextFieldSet(100,215,250,20,"",11,0);			//納品先住所2
-		final JTextField TB_Add03			= B00110FrameParts.JTextFieldSet(100,240,250,20,"",11,0);			//納品先住所3
-		final JTextField TB_Tel				= B00110FrameParts.JTextFieldSet(100,265,100,20,"",11,0);			//納品先電話
-		final JTextField TB_Fax				= B00110FrameParts.JTextFieldSet(100,290,100,20,"",11,0);			//納品先FAX
-		final JTextField TB_Mail			= B00110FrameParts.JTextFieldSet(100,315,100,20,"",11,0);			//納品先MAIL
+		final JTextField TB_DEName01		= B00110FrameParts.JTextFieldSet(100, 90,250,20,"",11,0);			//届先名1
+		final JTextField TB_DEName02		= B00110FrameParts.JTextFieldSet(100,115,250,20,"",11,0);			//届先名2
+		final JTextField TB_DEName03		= B00110FrameParts.JTextFieldSet(100,140,250,20,"",11,0);			//届先名3
+		final JTextField TB_Post			= B00110FrameParts.JTextFieldSet(100,165,100,20,"",11,0);			//届先郵便
+		final JTextField TB_Add01			= B00110FrameParts.JTextFieldSet(100,190,250,20,"",11,0);			//届先住所1
+		final JTextField TB_Add02			= B00110FrameParts.JTextFieldSet(100,215,250,20,"",11,0);			//届先住所2
+		final JTextField TB_Add03			= B00110FrameParts.JTextFieldSet(100,240,250,20,"",11,0);			//届先住所3
+		final JTextField TB_Tel				= B00110FrameParts.JTextFieldSet(100,265,100,20,"",11,0);			//届先電話
+		final JTextField TB_Fax				= B00110FrameParts.JTextFieldSet(100,290,100,20,"",11,0);			//届先FAX
+		final JTextField TB_Mail			= B00110FrameParts.JTextFieldSet(100,315,100,20,"",11,0);			//届先MAIL
 		final JTextField TB_Com01			= B00110FrameParts.JTextFieldSet(100,340,250,20,"",11,0);			//コメント1
 		final JTextField TB_Com02			= B00110FrameParts.JTextFieldSet(100,365,250,20,"",11,0);			//コメント2
 		final JTextField TB_Com03			= B00110FrameParts.JTextFieldSet(100,390,250,20,"",11,0);			//コメント3
@@ -116,6 +116,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 			ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 			ArrayList<String> SearchDelFg = new ArrayList<String>();
 			boolean SearcNotJis = false;
+			boolean SearchTelExactMatch = false;
 			boolean AllSearch = false;
 			
 			SearchDECD.add(DECD);
@@ -135,6 +136,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 					SearchMunicipalityCd,
 					SearchDelFg,
 					SearcNotJis,
+					SearchTelExactMatch,
 					AllSearch
 					);
 			if(0<DeliveryMstRt.length) {
@@ -709,7 +711,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 								GetDepartmentCd = "0000";
 							}
 						}else {
-							//新規の場合　同一郵便番号・同一電話番号の納品先があれば候補を出力⇒選択or完全新規
+							//新規の場合　同一郵便番号・同一電話番号の届先があれば候補を出力⇒選択or完全新規
 							Object[][] SameDelivery = SameDelivery(GetPost,GetTel);
 							
 							if(0==SameDelivery.length) {
@@ -877,6 +879,9 @@ public class WM00061DeliveryMstRenewAndCreate{
 	}
 	
 	private static Object[][] SameDelivery(String GetPost,String GetTel) {
+		if(null==GetPost) {GetPost="";}
+		if(null==GetTel) {GetTel="";}
+		
 		ArrayList<String> SearchDECD = new ArrayList<String>();
 		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();
 		ArrayList<String> SearchDEName = new ArrayList<String>();
@@ -890,12 +895,16 @@ public class WM00061DeliveryMstRenewAndCreate{
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		ArrayList<String> SearchDelFg = new ArrayList<String>();
 		boolean SearcNotJis = false;
+		boolean SearchTelExactMatch = true;
 		boolean AllSearch = false;
 		
-		if(null!=GetPost && !"".equals(GetPost) && null!=GetTel && !"".equals(GetTel)) {
+		if(null!=GetPost) {
 			SearchPost.add(GetPost);
+		}
+		if(!"".equals(GetTel)) {
 			SearchTel.add(GetTel);
 		}
+		
 		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
 				SearchDECD,	
 				SearchDepartmentCd,
@@ -910,6 +919,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 				SearchMunicipalityCd,
 				SearchDelFg,
 				SearcNotJis,
+				SearchTelExactMatch,
 				AllSearch
 				);
 		
@@ -1034,18 +1044,18 @@ public class WM00061DeliveryMstRenewAndCreate{
 		
 		
 		String[][] SetString = {
-				{"DECD"				,"1","1",GetDECD}			//納品先コード
+				{"DECD"				,"1","1",GetDECD}			//届先コード
 				,{"DepartmentCd"	,"1","1",GetDepartmentCd}	//部署CD
-				,{"DEName01"		,"1","1",GetDEName01}		//納品先名1
-				,{"DEName02"		,"1","1",GetDEName02}		//納品先名2
-				,{"DEName03"		,"1","1",GetDEName03}		//納品先名3
-				,{"Post"			,"1","1",GetPost}			//納品先郵便
-				,{"Add01"			,"1","1",GetAdd01}			//納品先住所1
-				,{"Add02"			,"1","1",GetAdd02}			//納品先住所2
-				,{"Add03"			,"1","1",GetAdd03}			//納品先住所3
-				,{"Tel"				,"1","1",GetTel}			//納品先電話
-				,{"Fax"				,"1","1",GetFax}			//納品先FAX
-				,{"Mail"			,"1","1",GetMail}			//納品先MAIL
+				,{"DEName01"		,"1","1",GetDEName01}		//届先名1
+				,{"DEName02"		,"1","1",GetDEName02}		//届先名2
+				,{"DEName03"		,"1","1",GetDEName03}		//届先名3
+				,{"Post"			,"1","1",GetPost}			//届先郵便
+				,{"Add01"			,"1","1",GetAdd01}			//届先住所1
+				,{"Add02"			,"1","1",GetAdd02}			//届先住所2
+				,{"Add03"			,"1","1",GetAdd03}			//届先住所3
+				,{"Tel"				,"1","1",GetTel}			//届先電話
+				,{"Fax"				,"1","1",GetFax}			//届先FAX
+				,{"Mail"			,"1","1",GetMail}			//届先MAIL
 				,{"Com01"			,"1","1",GetCom01}			//コメント1
 				,{"Com02"			,"1","1",GetCom02}			//コメント2
 				,{"Com03"			,"1","1",GetCom03}			//コメント3
@@ -1070,7 +1080,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 		String TgtDB = "NYANKO";
 		int non_msg_fg = 1;
 
-		judg_field[0] = "DECD";				//納品先コード
+		judg_field[0] = "DECD";				//届先コード
 		judg_field[1] = "DepartmentCd";		//部署CD
 		judg_data[0][0] = GetDECD;
 		judg_data[0][1] = GetDepartmentCd;

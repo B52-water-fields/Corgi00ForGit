@@ -72,13 +72,13 @@ public class WM00050DeliveryTypeMstSearch{
 		JButton SearchBtn = B00110FrameParts.BtnSet(100,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingCarMstRt = M00050DeliveryTypeMstRt.RtSettingDeliveryTypeMstRt();
+		Object[][] RtSettingDeliveryTypeMstRt = M00050DeliveryTypeMstRt.RtSettingDeliveryTypeMstRt();
 		
-		String[] columnNames01 = new String[RtSettingCarMstRt.length+1];
+		String[] columnNames01 = new String[RtSettingDeliveryTypeMstRt.length+1];
 		
 		columnNames01[0] = "Fg";
-		for(int i=0;i<RtSettingCarMstRt.length;i++) {
-			columnNames01[1+i] = ""+RtSettingCarMstRt[i][3];
+		for(int i=0;i<RtSettingDeliveryTypeMstRt.length;i++) {
+			columnNames01[1+i] = ""+RtSettingDeliveryTypeMstRt[i][3];
 		}
 		
 		//編集可能カラムの指定
@@ -99,7 +99,7 @@ public class WM00050DeliveryTypeMstSearch{
 		
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
 		
-		for(int i=0;i<RtSettingCarMstRt.length;i++) {
+		for(int i=0;i<RtSettingDeliveryTypeMstRt.length;i++) {
 			column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
 		}
 		

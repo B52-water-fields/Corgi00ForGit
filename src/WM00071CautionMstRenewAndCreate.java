@@ -521,6 +521,7 @@ public class WM00071CautionMstRenewAndCreate{
 					ArrayList<String> SearchMunicipalityCd 	= new ArrayList<String>();
 					ArrayList<String> SearchDelFg 			= new ArrayList<String>();
 					boolean SearcNotJis = true;
+					boolean SearchTelExactMatch = false;
 					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchDeliveryName	)){SearchDEName.add(GetSearchDeliveryName);}
@@ -541,6 +542,7 @@ public class WM00071CautionMstRenewAndCreate{
 						SearchMunicipalityCd,
 						SearchDelFg,
 						SearcNotJis,
+						SearchTelExactMatch,
 						AllSearch
 						);
 					
@@ -712,6 +714,7 @@ public class WM00071CautionMstRenewAndCreate{
 						ArrayList<String> SearchMunicipalityCd 	= new ArrayList<String>();
 						ArrayList<String> SearchDelFg 			= new ArrayList<String>();
 						boolean SearcNotJis = true;
+						boolean SearchTelExactMatch = false;
 						boolean AllSearch = false;
 						
 						SearchDECD.add(GetDECD);
@@ -730,6 +733,7 @@ public class WM00071CautionMstRenewAndCreate{
 							SearchMunicipalityCd,
 							SearchDelFg,
 							SearcNotJis,
+							SearchTelExactMatch,
 							AllSearch
 							);
 						
@@ -807,6 +811,7 @@ public class WM00071CautionMstRenewAndCreate{
 						ArrayList<String> SearchMunicipalityCd 	= new ArrayList<String>();
 						ArrayList<String> SearchDelFg 			= new ArrayList<String>();
 						boolean SearcNotJis = true;
+						boolean SearchTelExactMatch = false;
 						boolean AllSearch = false;
 						
 						SearchDECD.add(GetDECD);
@@ -825,6 +830,7 @@ public class WM00071CautionMstRenewAndCreate{
 							SearchMunicipalityCd,
 							SearchDelFg,
 							SearcNotJis,
+							SearchTelExactMatch,
 							AllSearch
 							);
 						
