@@ -346,7 +346,7 @@ public class WM00067DeliveryComversionMstExcelEntry{
 						SetOb[21] = ""+ExcellRead[i][TgtCol[20]];	//届先電話
 						SetOb[22] = ""+ExcellRead[i][TgtCol[21]];	//届先FAX
 						SetOb[23] = ""+ExcellRead[i][TgtCol[22]];	//届先MAIL
-						SetOb[24] = "0";//届先Mst存在Fg
+						SetOb[24] = "0";//届先Mst存在Fg  1:新規　2:更新
 						
 						//届先名1が空白であれば届先コード・部署コード必須
 						boolean DeliRenewCheckFg = false;
@@ -391,9 +391,6 @@ public class WM00067DeliveryComversionMstExcelEntry{
 										if(1==HitCount) {
 											
 										}
-										
-										
-										
 									}
 								}
 							}
