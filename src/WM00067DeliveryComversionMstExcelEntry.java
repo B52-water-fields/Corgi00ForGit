@@ -348,8 +348,42 @@ public class WM00067DeliveryComversionMstExcelEntry{
 						SetOb[23] = ""+ExcellRead[i][TgtCol[22]];	//届先MAIL
 						SetOb[24] = "0";//届先Mst存在Fg  1:新規　2:更新
 						
-						//届先名1が空白であれば届先コード・部署コード必須
+						//届先コードを元に新規更新の判定
+						int HitCount = 0;
 						boolean DeliRenewCheckFg = false;
+						if(DeliRenewCheckFg) {
+							//届先CDコード空白なら届先新規登録扱い確定
+							if("".equals(""+ExcellRead[i][TgtCol[ 3]])) {
+								SetOb[24] = "1";//届先Mst存在Fg
+							}else {
+								//存在しない届先CDコード設定しようとしていた場合新規登録扱い
+								boolean UnHitFg = true;
+								for(int i01=0;i01<DeliveryMstRt.length;i01++) {
+									if((""+DeliveryMstRt[i01][ 0]).equals(""+ExcellRead[i][TgtCol[ 3]])) {
+										if((""+DeliveryMstRt[i01][ 1]).equals(""+ExcellRead[i][TgtCol[ 4]])) {
+											SetOb[24] = "2";//届先Mst存在Fg
+											UnHitFg = false;
+											HitCount = HitCount+1;
+										}
+									}
+								}
+								if(UnHitFg) {
+									SetOb[24] = "1";//届先Mst存在Fg
+								}
+							}
+						}
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						//届先名1が空白であれば届先コード・部署コード必須
+						
 						if(("").equals(""+SetOb[14])	//届先名1
 								) {
 							if("".equals(""+SetOb[ 4]) || "".equals(""+SetOb[ 5])) {
@@ -363,38 +397,7 @@ public class WM00067DeliveryComversionMstExcelEntry{
 							DeliRenewCheckFg = true;
 						}
 						
-						int HitCount = 0;
-						if(DeliRenewCheckFg) {
-							//届先CDコード空白なら届先新規登録扱い確定
-							if("".equals(""+ExcellRead[i][TgtCol[ 3]])) {
-								SetOb[24] = "1";//届先Mst存在Fg
-							}else {
-								//存在しない届先CDコード設定しようとしていた場合新規登録扱い
-								boolean UnHitFg = true;
-								for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-									if((""+DeliveryMstRt[i01][ 0]).equals(""+ExcellRead[i][TgtCol[ 3]])) {
-										UnHitFg = false;
-										HitCount = HitCount+1;
-										if((""+DeliveryMstRt[i01][ 1]).equals(""+ExcellRead[i][TgtCol[ 4]])) {
-											SetOb[24] = "2";//届先Mst存在Fg
-										}
-									}
-								}
-								if(UnHitFg) {
-									SetOb[24] = "1";//届先Mst存在Fg
-								}
-							}
-							
-							if("0".equals(""+SetOb[24])&&!("").equals(""+ExcellRead[i][TgtCol[13]])) {
-								for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-									if((""+DeliveryMstRt[i01][ 0]).equals(""+ExcellRead[i][TgtCol[ 3]])) {
-										if(1==HitCount) {
-											
-										}
-									}
-								}
-							}
-						}
+						
 						
 						tableModel_ms01.addRow(SetOb);
 					}
