@@ -6,27 +6,122 @@ import javax.sound.sampled.SourceDataLine;
 public class B00130SoundCreate{
 	public static void OK() {
 		byte[][] OkSound = {
-				Sound(261.626  	,200,0.5),
-				Sound(329.628  	,200,0.5),
-				Sound(261.626  	,200,0.5),
-				Sound(329.628  	,200,0.5),
-				Sound(523.251  	,200,0.5),
-				Sound(0  		,200,0.5),
-				Sound(523.251  	,200,0.5)
-				};
+			Sound(261.626  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(261.626  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(523.251  	,200,0.5),
+			Sound(0  		,200,0.5),
+			Sound(523.251  	,200,0.5)
+			};
 		SoundCall(OkSound);
 	}
 	public static void NG() {
 		byte[][] OkSound = {
-				Sound(261.626  	,200,0.5),
-				Sound(329.628  	,200,0.5),
-				Sound(261.626  	,200,0.5),
-				Sound(329.628  	,200,0.5),
-				Sound(130.813  	,200,0.5),
-				Sound(0  		,200,0.5),
-				Sound(130.813  	,800,0.8)
-				};
+			Sound(261.626  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(261.626  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(130.813  	,200,0.5),
+			Sound(0  		,200,0.5),
+			Sound(130.813  	,800,0.8)
+			};
 		SoundCall(OkSound);
+	}
+	public static void Alert() {
+		byte[][] Sound = {
+			Sound(261.626  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(261.626  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(0  	,200,0.5),
+			Sound(523.251  	,800,0.5),
+			Sound(0  	,200,0.5),
+			Sound(261.626  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(261.626  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(0  	,200,0.5),
+			Sound(523.251  	,800,0.5)
+		};
+		SoundCall(Sound);
+	}
+	
+	public static void Alert2() {
+		byte[][] Sound = {
+			Sound(329.628  	,800,0.5),
+			Sound(440.000  	,200,0.5),
+			Sound(391.995  	,200,0.5),
+			Sound(0  	,200,0.5),
+			Sound(329.628  	,800,0.5),
+			Sound(440.000  	,200,0.5),
+			Sound(391.995  	,200,0.5)
+		};
+		SoundCall(Sound);
+	}
+	
+	public static void LVUP() {
+		byte[][] Sound = {
+			Sound(349.228  	,100,0.5),
+			Sound(0  	,100,0.5),
+			Sound(349.228  	,100,0.5),
+			Sound(0  	,100,0.5),
+			Sound(349.228  	,100,0.5),
+			Sound(0  	,100,0.5),
+			Sound(349.228  	,100,0.5),
+			Sound(0  	,100,0.5),
+			Sound(311.127  	,200,0.5),
+			Sound(0  	,100,0.5),
+			Sound(391.995  	,400,0.5),
+			Sound(0  	,200,0.5),
+			Sound(349.228  	,800,0.5)
+		};
+		SoundCall(Sound);
+	}
+	
+	public static void CAT() {
+		byte[][] Sound = {
+			Sound(293.665  	,200,0.5),
+			Sound(261.626  	,200,0.5),
+			Sound(174.614  	,200,0.5),
+			Sound(349.228  	,200,0.5),
+			Sound(349.228  	,200,0.5),
+			Sound(293.665  	,200,0.5),
+			Sound(261.626  	,200,0.5),
+			Sound(174.614  	,200,0.5),
+			Sound(349.228  	,200,0.5),
+			Sound(349.228  	,200,0.5),
+			Sound(293.665  	,200,0.5),
+			Sound(261.626  	,200,0.5),
+			Sound(174.614  	,200,0.5),
+			Sound(349.228  	,200,0.5),
+			Sound(146.832  	,200,0.5),
+			Sound(349.228  	,200,0.5),
+			Sound(130.813  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(329.628  	,200,0.5)
+		};
+		SoundCall(Sound);
+	}
+	
+	public static void Condor(){
+		byte[][] Sound = {
+			Sound(220.000  	,400,0.5),
+			Sound(277.183  	,100,0.5),
+			Sound(293.665  	,200,0.5),
+			Sound(277.183  	,200,0.5),
+			Sound(293.665  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(349.228  	,200,0.5),
+			Sound(329.628  	,200,0.5),
+			Sound(349.228  	,200,0.5),
+			Sound(391.995  	,200,0.5),
+			Sound(493.883  	,100,0.5),
+			Sound(440.000  	,800,0.5),
+			Sound(523.251  	,100,0.5),
+			Sound(440.000  	,800,0.5)
+		};
+		SoundCall(Sound);
 	}
 	
 	public static void SoundCreate() {
@@ -47,11 +142,11 @@ public class B00130SoundCreate{
 		double DS3  = 155.563;	//レ#3		
 		double E3   = 164.814;	//ミ3		
 		double F3   = 174.614;	//ファ3		
-		double FS3  = 184.997;	//ファ#3		
-		double G3   = 195.998;	//ソ3		
+		double FS3  = 184.997;	//ファ#3
+		double G3   = 195.998;	//ソ3
 		double GS3  = 207.652;	//ソ#3	
-		double A3   = 220.000;	//ラ3		
-		double AS3  = 233.082;	//ラ#3		
+		double A3   = 220.000;	//ラ3
+		double AS3  = 233.082;	//ラ#3
 		double B3   = 246.942;	//シ3
         double C4   = 261.626;	//ド4		
 		double CS4  = 277.183;	//ド#4		
