@@ -585,7 +585,7 @@ public class A00000Main{
     private static void LoginStr(String WhCd,String UserId,String UserPass) {
     	if(100>WMul) {WMul=100;}
     	Mul = WMul;
-    	B00130SoundCreate.SoundCreate();
+    	
     	//ログインユーザーがzeusだった場合天地創造（データベースの存在チェック・フィールドのカラムの不足チェック走らせる）
     	if(LoginUserWH.equals("0000") && LoginUserId.equals("zeus")) {
     		A00040TableCheck.TableCheck();

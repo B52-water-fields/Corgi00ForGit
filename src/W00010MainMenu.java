@@ -14,7 +14,7 @@ public class W00010MainMenu{
 		if(0==SetY) {SetY=100;}
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
-
+		
 		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,700,750,"Corgiメインメニュー","");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();

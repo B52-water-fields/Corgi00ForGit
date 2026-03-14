@@ -237,8 +237,6 @@ public class M00001WhMstRt{
 					}
 				}
 				if(null!=SearchPTMSCD&&0<SearchPTMSCD.size()){
-					SearchKick = true;
-					sql = sql + " and(";
 					for(int i=0;i<SearchPTMSCD.size();i++){
 						StmtCount = StmtCount+1;
 						stmt01.setString(StmtCount, SearchPTMSCD.get(i));

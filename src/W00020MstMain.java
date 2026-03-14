@@ -39,6 +39,10 @@ public class W00020MstMain{
 		//届先変換
 		JButton DeliveryComversionMst = B00110FrameParts.BtnSet( 20, 25,130,20,"届先変換",11);
 		PN_AboutClient.add(DeliveryComversionMst);
+		
+		//届先変換
+		JButton ItemMst = B00110FrameParts.BtnSet( 20, 50,130,20,"商品マスタ",11);
+		PN_AboutClient.add(ItemMst);
 
 		//倉庫・事業所
 		JButton WhMst 				= B00110FrameParts.BtnSet( 20, 25,130,20,"倉庫・事業所",11);
@@ -86,6 +90,18 @@ public class W00020MstMain{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.setVisible(true);
+		
+		//商品マスタ
+		ItemMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00080ItemMstSearch.ItemMstSearch(0,0);
+			}
+		});
 		
 		//届先変換
 		DeliveryComversionMst.addActionListener(new AbstractAction(){

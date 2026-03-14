@@ -147,7 +147,7 @@ public class B00010ToolsTextRead{
 			//","区切りの存在を疑う ",又は,"が発生しているはず
 			boolean DoubleQuotationFg=false;
 			for(int i=0;i<TgtArray.size();i++) {
-				if((""+TgtArray.get(i)).equals((""+TgtArray.get(i)).replace("\",", ""))||(""+TgtArray.get(i)).equals((""+TgtArray.get(i)).replace(",\'", ""))) {
+				if(!(""+TgtArray.get(i)).equals((""+TgtArray.get(i)).replace("\",", ""))||!(""+TgtArray.get(i)).equals((""+TgtArray.get(i)).replace(",\'", ""))) {
 					DoubleQuotationFg=true;
 				}
 			}

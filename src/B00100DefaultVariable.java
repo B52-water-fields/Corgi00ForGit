@@ -5,8 +5,8 @@ public class B00100DefaultVariable{
 	static String[][] HaisyaDataLayoutPt;			//運送会社向け配車データ出力パターン ※個別開発ごとにHaisyaDataLayoutPt()修正
 	static String[][] LayoutPt;						//荷主データ⇒送り状データ取り込みパターン　※個別開発ごとにLayoutPt()修正
 	
-	static String[][] 	ShimeDateList;				//1日～28日　末日99のリスト
-	static String[][] 	DeliFeeNorm;					//運賃請求基準　発請求/着請求
+	static String[][] ShimeDateList;					//1日～28日　末日99のリスト
+	static String[][] DeliFeeNorm;						//運賃請求基準　発請求/着請求
 
 	static String[][] SearchWhList;					//倉庫リスト
 	static String[][] WhList;							//倉庫リスト

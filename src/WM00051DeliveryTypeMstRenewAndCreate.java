@@ -72,7 +72,7 @@ public class WM00051DeliveryTypeMstRenewAndCreate{
 					AllSearch);
 			
 			if(0<DeliveryTypeMstRt.length) {
-				TB_SearchDeliveryTypeNo.setSelectedIndex((int)DeliveryTypeMstRt[0][0]);
+				TB_SearchDeliveryTypeNo.setSelectedIndex((int)DeliveryTypeMstRt[0][0]-1);
 				TB_DeliveryTypeCd.setText(		""+DeliveryTypeMstRt[0][1]);
 				TB_DeliveryTypeName.setText(	""+DeliveryTypeMstRt[0][2]);
 				TB_EntryDate.setText(			""+DeliveryTypeMstRt[0][3]);
