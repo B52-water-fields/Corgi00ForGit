@@ -32,12 +32,16 @@ public class A00000Main{
 	MySqlDefaultSchemaPOST = "POSTscjema";
 	MySqlDefaultSchemaOLD = "OLDscjema";
 	PasswordExpireDays = 180;
+	FileFldPth = "C:\MIZUNO\WMS";
 	*/
 	//
 	
 	//iniファイルの置き場所 フルパス
 	public static String IniPth = "C:\\MIZUNO\\WMS\\Corgi00ini.txt";
-	public static String MainFLD = "C:\\MIZUNO\\WMS";
+	public static String MainFLD = "C:\\MIZUNO\\WMS";							//ローカルのフォルダです無ければ作ります
+	
+	//画像等共有フォルダパス
+	public static String FileFldPth = "C:\\MIZUNO\\WMS";						//共有フォルダ等指定してください
 	
 	
 	public static String DefaultSshHostName = "your.ssh.server.com";    		//SSH接続サーバアドレス
@@ -700,6 +704,9 @@ public class A00000Main{
     			String WST = B00020ToolsTextControl.num_only_String(IniRead.get(i));
     			if("".equals(WST)) {WST = "180";}
     			PasswordExpireDays = Integer.parseInt(WST);
+    		}
+    		if(!IniRead.get(i).equals(IniRead.get(i).replace("FileFldPth", ""))) {
+    			FileFldPth = IniRead.get(i).replace("FileFldPth", "").replace(" ", "").replace("=", "").replace("\"", "").replace(";", "").replace("String", "");
     		}
     	}
     }

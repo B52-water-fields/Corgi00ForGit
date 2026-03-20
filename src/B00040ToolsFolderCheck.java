@@ -36,7 +36,7 @@ public class B00040ToolsFolderCheck{
         }
         return rt;
 	}
-	//フォルダ存在チェックのみ→なければfalse返す
+	//ファイル・フォルダ存在チェックのみ→なければfalse返す
 	public static boolean FLD_CHECK_ONRY(String FLD_PATH){
 		File file_dir = new File(FLD_PATH);
 		boolean rt = true;
@@ -46,6 +46,7 @@ public class B00040ToolsFolderCheck{
         }
         return rt;
 	}
+	
 	//フルパスからファイル名取得
 	public static String FILENAME(String path) {
         File file = new File(path);

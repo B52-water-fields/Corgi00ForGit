@@ -28,7 +28,7 @@ public class M00070ItemMstRt{
 	ArrayList<String> SearchDelFg = new ArrayList<String>();			//削除フラグ
 	boolean AllSearch = false;
 	
-	Object[][] WhMstRt = M00070ItemMstRt.ItemMstRt(
+	Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
 			SearchClGpCd,			//荷主グループコード
 			SearchItemCd,			//商品コード
 			SearchCLItemCd,			//荷主商品コード

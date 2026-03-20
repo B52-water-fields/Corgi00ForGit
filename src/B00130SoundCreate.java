@@ -19,6 +19,10 @@ public class B00130SoundCreate{
 	static double AS  = 58.270;	//ラ#
 	static double B   = 61.735;	//シ
 	
+	//G7を100msボリューム0.5で鳴らしたいときは
+	//Sound(C	,7	,100	,0.5)
+	//で指定します
+	
 	public static void OK() {
 		byte[][] Sound = {
 				Sound(C	,5  ,100	,0.5),

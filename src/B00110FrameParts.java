@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -131,7 +132,6 @@ public class B00110FrameParts{
  	ラベル配置
 	===========================================================================*/
 	public static JLabel JLabelSet(int x,int y,int Width,int Height,String DefaultText,int TextSize,int set) {
-		//テキスト入力BOX
 		if(0>=TextSize) {TextSize=11;}
 		JLabel rt = new JLabel(DefaultText);
 		rt.setFont(new Font(  A00000Main.DefaultFont, Font.PLAIN, TextSize*A00000Main.Mul/A00000Main.Div));
@@ -148,6 +148,15 @@ public class B00110FrameParts{
 			default:
 				break;
 		}
+		rt.setBounds( x*A00000Main.Mul/A00000Main.Div, y*A00000Main.Mul/A00000Main.Div, Width*A00000Main.Mul/A00000Main.Div, Height*A00000Main.Mul/A00000Main.Div);
+		
+		return rt;
+	}
+	/*===========================================================================
+ 	ラベル画像配置
+	===========================================================================*/
+	public static JLabel JLabelPictSet(int x,int y,int Width,int Height,ImageIcon ItemImage01,int set) {
+		JLabel rt = new JLabel(ItemImage01);
 		rt.setBounds( x*A00000Main.Mul/A00000Main.Div, y*A00000Main.Mul/A00000Main.Div, Width*A00000Main.Mul/A00000Main.Div, Height*A00000Main.Mul/A00000Main.Div);
 		
 		return rt;
