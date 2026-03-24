@@ -48,6 +48,43 @@ public class M00000ParameterMstRt{
 			ArrayList<Integer> SearchParaInt01End,ArrayList<Integer> SearchParaInt02End,ArrayList<Integer> SearchParaInt03End,ArrayList<Integer> SearchParaInt04End,ArrayList<Integer> SearchParaInt05End,
 			ArrayList<Integer> SearchParaInt06End,ArrayList<Integer> SearchParaInt07End,ArrayList<Integer> SearchParaInt08End,ArrayList<Integer> SearchParaInt09End,ArrayList<Integer> SearchParaInt10End,
 			Boolean AllSearch){
+		
+		SearchParaCd 	= B00150ArrayListControl.ArryListStringUniqueList(SearchParaCd);
+		SearchParaCdSeq = B00150ArrayListControl.ArryListStringUniqueList(SearchParaCdSeq);
+		SearchParaName 	= B00150ArrayListControl.ArryListStringUniqueList(SearchParaName);
+		SearchParaTxt01 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt01);
+		SearchParaTxt02 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt02);
+		SearchParaTxt03 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt03);
+		SearchParaTxt04 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt04);
+		SearchParaTxt05 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt05);
+		SearchParaTxt06 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt06);
+		SearchParaTxt07 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt07);
+		SearchParaTxt08 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt08);
+		SearchParaTxt09 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt09);
+		SearchParaTxt10 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt10);
+		
+		SearchParaInt01Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01Str);
+		SearchParaInt02Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02Str);
+		SearchParaInt03Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt03Str);
+		SearchParaInt04Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt04Str);
+		SearchParaInt05Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt05Str);
+		SearchParaInt06Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt06Str);
+		SearchParaInt07Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt07Str);
+		SearchParaInt08Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt08Str);
+		SearchParaInt09Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt09Str);
+		SearchParaInt10Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt10Str);
+		SearchParaInt01End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01End);
+		SearchParaInt02End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02End);
+		SearchParaInt03End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt03End);
+		SearchParaInt04End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt04End);
+		SearchParaInt05End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt05End);
+		SearchParaInt06End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt06End);
+		SearchParaInt07End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt07End);
+		SearchParaInt08End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt08End);
+		SearchParaInt09End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt09End);
+		SearchParaInt10End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt10End);
+		
+		
 		//NYANKOパラメータ返却
 		Object[][] rt=new Object[0][27];
 		boolean SearchKick = false;

@@ -64,6 +64,16 @@ public class M00010ClGpMstRt{
 			ArrayList<String> SearchMail,
 			ArrayList<String> SearchCom,
 			boolean AllSearch){
+		
+		SearchClGpCD	= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchCLGpName	= B00150ArrayListControl.ArryListStringUniqueList(SearchCLGpName);
+		SearchPost		= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd		= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel		= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax		= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail		= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom		= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		Object[][] rt = new Object[0][19];

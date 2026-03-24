@@ -51,6 +51,13 @@ public class M00080ItemComversionMstRt{
 			ArrayList<String> SearchCLItemCd,			//荷主商品コード
 			ArrayList<String> SearchItemName,			//商品名
 			boolean AllSearch){
+		
+		SearchClGpCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
+		SearchClCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchClCd);
+		SearchItemCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchItemCd);
+		SearchCLItemCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchCLItemCd);
+		SearchItemName	= B00150ArrayListControl.ArryListStringUniqueList(SearchItemName);
+		
 		Object[][] rt = new Object[0][16];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

@@ -79,6 +79,18 @@ public class M00011ClMstRt{
 			boolean AllSearch){
 		//検索条件を受け取って一致する荷主マスタの配列を返却する
 		//AllSearch false なら検索条件何も指定されていなければ検索しない
+		SearchClGpCD	= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchCLCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchCLCD);
+		SearchCLName	= B00150ArrayListControl.ArryListStringUniqueList(SearchCLName);
+		SearchPost		= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
+		searchAdd		= B00150ArrayListControl.ArryListStringUniqueList(searchAdd);
+		SearchTel		= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax		= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail		= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom		= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchWHCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchWHCD);
+		
+		
 		Object[][] rt = new Object[0][25];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

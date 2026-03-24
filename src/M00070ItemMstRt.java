@@ -145,6 +145,28 @@ public class M00070ItemMstRt{
 			ArrayList<String> SearchTildName,			//温度区分名
 			ArrayList<String> SearchDelFg,				//削除フラグ
 			boolean AllSearch){
+		
+		SearchClGpCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
+		SearchItemCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemCd);
+		SearchCLItemCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchCLItemCd);
+		SearchItemName			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemName);
+		SearchDeliveryTypeCd01	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd01);
+		SearchDeliveryTypeCd02	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd02);
+		SearchDeliveryTypeCd03	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd03);
+		SearchDeliveryTypeCd04	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd04);
+		SearchDeliveryTypeCd05	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd05);
+		SearchItemMDNo			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemMDNo);
+		SearchCategoryCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchCategoryCd);
+		SearchCategoryName		= B00150ArrayListControl.ArryListStringUniqueList(SearchCategoryName);
+		SearchItemColorCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemColorCd);
+		SearchItemColorName		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemColorName);
+		SearchItemSizeCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemSizeCd);
+		SearchItemSizeName		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemSizeName);
+		SearchJanCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchJanCd);
+		SearchTildFG			= B00150ArrayListControl.ArryListStringUniqueList(SearchTildFG);
+		SearchTildName			= B00150ArrayListControl.ArryListStringUniqueList(SearchTildName);
+		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		
 		Object[][] rt = new Object[0][0];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

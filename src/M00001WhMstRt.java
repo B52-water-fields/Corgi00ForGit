@@ -64,6 +64,17 @@ public class M00001WhMstRt{
 			ArrayList<String> SearchCom,
 			ArrayList<String> SearchPTMSCD,
 			boolean AllSearch){
+		
+		SearchWHCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchWHCD);
+		SearchWHName	= B00150ArrayListControl.ArryListStringUniqueList(SearchWHName);
+		SearchPost		= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd		= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel		= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax		= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail		= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom		= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchPTMSCD	= B00150ArrayListControl.ArryListStringUniqueList(SearchPTMSCD);
+		
 		Object[][] rt = new Object[0][16];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

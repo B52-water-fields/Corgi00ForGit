@@ -93,6 +93,20 @@ public class M00040DeliveryMstRt{
 			boolean SearchTelExactMatch,			//電話番号完全一致
 			boolean AllSearch
 			){
+		
+		SearchDECD				= B00150ArrayListControl.ArryListStringUniqueList(SearchDECD);
+		SearchDepartmentCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
+		SearchDEName			= B00150ArrayListControl.ArryListStringUniqueList(SearchDEName);
+		SearchPost				= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd				= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel				= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax				= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail				= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchPrefecturesCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchPrefecturesCd);
+		SearchMunicipalityCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
+		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		
 		Object[][] rt = new Object[0][27];
 		boolean SearchKick = false;
 		

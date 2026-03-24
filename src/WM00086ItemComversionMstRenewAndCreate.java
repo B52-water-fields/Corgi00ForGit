@@ -450,7 +450,7 @@ public class WM00086ItemComversionMstRenewAndCreate{
 				if(KickFg) {
 					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
 					
-					String[][] ItemMstSetString = {
+					String[][] ItemComversionMstSetString = {
 							 {"ClGpCd"		,"1","1",GetClGpCd}		//荷主グループコード
 							,{"ClCd"		,"1","1",GetClCd}		//荷主コード
 							,{"ClItemCd"	,"1","1",GetCLItemCd}	//荷主商品コード
@@ -458,8 +458,8 @@ public class WM00086ItemComversionMstRenewAndCreate{
 							,{"PackingType"	,"1","1",GetUnitType}	//荷姿タイプ
 							};
 					String tgt_table = "KM0062_ItemComversionMst";
-					String[][] field_name = new String[ItemMstSetString.length][3];
-					String[][] entry_data = new String[1][ItemMstSetString.length];
+					String[][] field_name = new String[ItemComversionMstSetString.length][3];
+					String[][] entry_data = new String[1][ItemComversionMstSetString.length];
 					String[] judg_field = new String[3];
 					String[][] judg_data = new String[1][3];
 					String TgtDB = "NYANKO";
@@ -473,11 +473,11 @@ public class WM00086ItemComversionMstRenewAndCreate{
 					judg_data[0][1] = GetClCd;		//荷主コード
 					judg_data[0][2] = GetCLItemCd;	//荷主商品コード
 					
-					for(int i=0;i<ItemMstSetString.length;i++) {
-						field_name[i][0] = ItemMstSetString[i][0];
-						field_name[i][1] = ItemMstSetString[i][1];
-						field_name[i][2] = ItemMstSetString[i][2];
-						entry_data[0][i] = ItemMstSetString[i][3];
+					for(int i=0;i<ItemComversionMstSetString.length;i++) {
+						field_name[i][0] = ItemComversionMstSetString[i][0];
+						field_name[i][1] = ItemComversionMstSetString[i][1];
+						field_name[i][2] = ItemComversionMstSetString[i][2];
+						entry_data[0][i] = ItemComversionMstSetString[i][3];
 					}
 					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					

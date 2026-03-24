@@ -95,6 +95,23 @@ public class M00060DeliveryComversionMstRt{
 											ArrayList<String> SearchDelFg,
 											ArrayList<String> SearchMstPriorityFirstFg,
 											boolean AllSearch){
+		
+		SearchClGpCD				= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchCLGpName				= B00150ArrayListControl.ArryListStringUniqueList(SearchCLGpName);
+		SearchCL_DECD				= B00150ArrayListControl.ArryListStringUniqueList(SearchCL_DECD);
+		SearchDECD					= B00150ArrayListControl.ArryListStringUniqueList(SearchDECD);
+		SearchDepartmentCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
+		SearchDEName				= B00150ArrayListControl.ArryListStringUniqueList(SearchDEName);
+		SearchPost					= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd					= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel					= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax					= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail					= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchSetName				= B00150ArrayListControl.ArryListStringUniqueList(SearchSetName);
+		SearchCom					= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchDelFg					= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		SearchMstPriorityFirstFg	= B00150ArrayListControl.ArryListStringUniqueList(SearchMstPriorityFirstFg);
+		
 		Object[][] rt = new Object[0][27];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

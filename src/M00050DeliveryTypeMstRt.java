@@ -36,6 +36,11 @@ public class M00050DeliveryTypeMstRt{
 			ArrayList<String> SearchDeliveryTypeCd,
 			ArrayList<String> SearchDeliveryTypeName,
 			boolean AllSearch){
+		
+		SearchDeliveryTypeNo	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeNo);
+		SearchDeliveryTypeCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd);
+		SearchDeliveryTypeName	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeName);
+		
 		Object[][] rt = new Object[0][7];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

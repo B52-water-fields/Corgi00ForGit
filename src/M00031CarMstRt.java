@@ -55,6 +55,13 @@ public class M00031CarMstRt{
 			ArrayList<String> SearchCarName,
 			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
+		
+		SearchWHCD				= B00150ArrayListControl.ArryListStringUniqueList(SearchWHCD);
+		SearchShippingCompanyCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
+		SearchCarCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchCarCd);
+		SearchCarName			= B00150ArrayListControl.ArryListStringUniqueList(SearchCarName);
+		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		
 		Object[][] rt = new Object[0][19];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

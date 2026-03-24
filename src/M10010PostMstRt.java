@@ -88,6 +88,10 @@ public class M10010PostMstRt{
 			ArrayList<String> SearchAdd,
 			boolean AllSearch
 			,boolean PostPerfectMatch){
+		
+		SearchPOST	= B00150ArrayListControl.ArryListStringUniqueList(SearchPOST);
+		SearchAdd	= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		
 		//郵便番号を受け取って郵便番号マスタから検索結果を返却する
 		Object[][] rt = new Object[0][5];
 
@@ -205,7 +209,11 @@ public class M10010PostMstRt{
 		return rt;
 	}
 	public static Object[][] MunicipalityRt(ArrayList<String> SearchName,ArrayList<String> SearchMunicipalityCd,boolean AllSearch){
-	//市区町村マスタ返却
+		//市区町村マスタ返却
+		
+		SearchName				= B00150ArrayListControl.ArryListStringUniqueList(SearchName);
+		SearchMunicipalityCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
+		
 		Object[][] rt = new Object[0][3];
 		boolean KickFg=false;
 		if(AllSearch) {KickFg=true;}
@@ -302,7 +310,7 @@ public class M10010PostMstRt{
 		return rt;
 	}
 	public static Object[][] PrefecuturesRt(){
-	//県マスタ返却
+		//県マスタ返却
 
 		Object[][] rt = new Object[0][2];
 		boolean KickFg=false;

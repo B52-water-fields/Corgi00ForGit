@@ -62,6 +62,17 @@ public class M00042CautionMstRt{
 			ArrayList<String> SearchCaution,
 			ArrayList<String> SearchDeName,
 			boolean AllSearch){
+		
+		SearchCautionCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchCautionCd);
+		SearchClGpCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchDECD			= B00150ArrayListControl.ArryListStringUniqueList(SearchDECD);
+		SearchDepartmentCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
+		SearchCautionTiming	= B00150ArrayListControl.ArryListStringUniqueList(SearchCautionTiming);
+		SearchCautionName	= B00150ArrayListControl.ArryListStringUniqueList(SearchCautionName);
+		SearchCaution		= B00150ArrayListControl.ArryListStringUniqueList(SearchCaution);
+		SearchDeName		= B00150ArrayListControl.ArryListStringUniqueList(SearchDeName);
+		
+		
 		Object[][] rt = new Object[0][13];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}

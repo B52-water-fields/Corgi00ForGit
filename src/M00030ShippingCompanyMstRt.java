@@ -67,6 +67,16 @@ public class M00030ShippingCompanyMstRt{
 			ArrayList<String> SearchMail,
 			ArrayList<String> SearchCom,
 			boolean AllSearch){
+		
+		SearchShippingCompanyCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
+		SearchCompanyName		= B00150ArrayListControl.ArryListStringUniqueList(SearchCompanyName);
+		SearchPost				= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd				= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel				= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax				= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail				= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		
 		Object[][] rt = new Object[0][22];
 		
 		boolean SearchKick = false;

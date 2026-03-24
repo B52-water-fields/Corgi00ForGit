@@ -94,6 +94,22 @@ public class M00020UserMstRt{
 			ArrayList<String> SearchCom,
 			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
+		
+		SearchWHCD				= B00150ArrayListControl.ArryListStringUniqueList(SearchWHCD);
+		SearchShippingCompanyCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
+		SearchAuthorityFG		= B00150ArrayListControl.ArryListStringUniqueList(SearchAuthorityFG);
+		SearchUserCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchUserCd);
+		SearchUserName			= B00150ArrayListControl.ArryListStringUniqueList(SearchUserName);
+		SearchCarCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchCarCd);
+		SearchCarName			= B00150ArrayListControl.ArryListStringUniqueList(SearchCarName);
+		SearchPost				= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd				= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel				= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax				= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail				= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		
 		Object[][] rt = new Object[0][32];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
