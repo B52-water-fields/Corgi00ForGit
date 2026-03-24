@@ -28,6 +28,13 @@ public class WM00081ItemMstRenewAndCreate{
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		JButton entry_btn = B00110FrameParts.EntryBtn();
+
+		main_fm.add(userinfo);
+		main_fm.add(exit_btn);
+		main_fm.add(entry_btn);
+		
+		//更新モードから切替えて商品コード入力可能にするためのボタン
+		JButton NewEntryBtn = B00110FrameParts.BtnSet(220, 55, 80,20,"モード切替",9);	//新規登録
 		
 		JLabel LB_ClGpCd				= B00110FrameParts.JLabelSet(  10, 30,100,20,"荷主グループコード:"		,10,1);
 		JLabel LB_ItemCd				= B00110FrameParts.JLabelSet(  10, 55,100,20,"商品コード:"				,10,1);
@@ -194,7 +201,7 @@ public class WM00081ItemMstRenewAndCreate{
 		
 		if(null==TgtClgpCd||"".equals(TgtClgpCd)) {TgtClgpCd = A00000Main.ClGp;}
 		for(int i=0;i<B00100DefaultVariable.ClGpList[1].length;i++) {
-			if(TgtClgpCd.equals(""+B00100DefaultVariable.ClGpList[0][i])) {
+			if(TgtClgpCd.equals(""+B00100DefaultVariable.ClGpList[1][i])) {
 				TB_ClGpCd.setSelectedIndex(i);
 			}
 		}
@@ -374,6 +381,7 @@ public class WM00081ItemMstRenewAndCreate{
 		}
 		
 		if(!"".equals(TgtItemCd)) {
+			main_fm.add(NewEntryBtn);
 			TB_ItemCd.setText(TgtItemCd);
 			TB_ItemCd.setEnabled(false);
 			LB_CLItemCd.requestFocusInWindow();
@@ -576,11 +584,6 @@ public class WM00081ItemMstRenewAndCreate{
 		main_fm.add(TB_ItemImagePath05);
 		main_fm.add(ItemImage05Btn);
 		main_fm.add(TB_ItemImage05);
-		
-		
-		main_fm.add(userinfo);
-		main_fm.add(exit_btn);
-		main_fm.add(entry_btn);
 		
 		main_fm.setVisible(true);
 		if(!"".equals(TgtItemCd)) {
@@ -1051,6 +1054,7 @@ public class WM00081ItemMstRenewAndCreate{
 							String Rotate = ItemImage01Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
 							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath01);
+							GetItemImageSetPath01 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_01."+FileType;
 							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath01);
 						}else {
 							GetItemImageSetPath01 = GetItemImageEntryPath01;
@@ -1064,6 +1068,7 @@ public class WM00081ItemMstRenewAndCreate{
 							String Rotate = ItemImage02Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
 							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath02);
+							GetItemImageSetPath02 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_02."+FileType;
 							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath02);
 						}else {
 							GetItemImageSetPath02 = GetItemImageEntryPath02;
@@ -1077,6 +1082,7 @@ public class WM00081ItemMstRenewAndCreate{
 							String Rotate = ItemImage03Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
 							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath03);
+							GetItemImageSetPath03 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_03."+FileType;
 							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath03);
 						}else {
 							GetItemImageSetPath03 = GetItemImageEntryPath03;
@@ -1090,6 +1096,7 @@ public class WM00081ItemMstRenewAndCreate{
 							String Rotate = ItemImage04Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
 							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath04);
+							GetItemImageSetPath04 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_04."+FileType;
 							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath04);
 						}else {
 							GetItemImageSetPath04 = GetItemImageEntryPath04;
@@ -1103,6 +1110,7 @@ public class WM00081ItemMstRenewAndCreate{
 							String Rotate = ItemImage05Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
 							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath05);
+							GetItemImageSetPath05 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_05."+FileType;
 							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath05);
 						}else {
 							GetItemImageSetPath05 = GetItemImageEntryPath05;
@@ -1249,6 +1257,17 @@ public class WM00081ItemMstRenewAndCreate{
 					main_fm.dispose();
 					ItemMstRenewAndCreate(0,0,GetClGpCd,GetItemCd);
 				}
+			}
+		});
+		
+		NewEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				ItemMstRenewAndCreate(0,0,"","");
 			}
 		});
 		

@@ -235,7 +235,7 @@ public class WM00026ClMstRenewAndCreate{
 				String GetCom01 		= TB_Com01.getText();		//コメント1
 				String GetCom02 		= TB_Com02.getText();		//コメント2
 				String GetCom03 		= TB_Com03.getText();		//コメント3
-				String GetShimeDate 	= ""+B00100DefaultVariable.ShimeDateList[TB_ShimeDate.getSelectedIndex()];	//運賃締日
+				String GetShimeDate 	= ""+B00100DefaultVariable.ShimeDateList[1][TB_ShimeDate.getSelectedIndex()];	//運賃締日
 				String GetShimeBasis 	= ""+B00100DefaultVariable.DeliFeeNorm[1][TB_ShimeBasis.getSelectedIndex()];	//請求基準
 				String GetPTMSCD 		= TB_PTMSCD.getText();		//基幹SYS荷主コード
 				

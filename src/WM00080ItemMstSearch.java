@@ -100,7 +100,7 @@ public class WM00080ItemMstSearch{
 		JLabel LB2_SearchItemSizeName  					= B00110FrameParts.JLabelSet(	    850,175, 80,20,"を含む"					,11,0);	//商品サイス名
 		
 		for(int i=0;i<B00100DefaultVariable.SearchClGpList[1].length;i++) {
-			if(B00100DefaultVariable.SearchClGpList[1].equals(A00000Main.ClGp)) {
+			if(A00000Main.ClGp.equals(B00100DefaultVariable.SearchClGpList[1][i])) {
 				TB_SearchClGpCd.setSelectedIndex(i);
 			}
 		}
@@ -386,6 +386,28 @@ public class WM00080ItemMstSearch{
 						B10010TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
 						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		//Excel取込ボタン押下時の挙動
+		ExcelEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00082ItemMstExcelEntry.ItemMstExcelEntry(0,0,Selected);
 					}
 					RenewFg = true;
 				}

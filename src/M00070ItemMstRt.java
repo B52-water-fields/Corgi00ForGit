@@ -54,7 +54,7 @@ public class M00070ItemMstRt{
 	*/
 	//戻り値カラム
 	public static Object[][] RtSettingItemMstRt(){
-		Object[][] RtSettingWhMstRt = {
+		Object[][] RtSettingItemMstRt = {
 				 {"ClGpCd"					,(int) 0	,"String"	,"荷主グループコード"}
 				,{"CLGpName01"				,(int) 1	,"String"	,"荷主グループ名1"}
 				,{"ItemCd"					,(int) 2	,"String"	,"商品コード"}
@@ -121,7 +121,7 @@ public class M00070ItemMstRt{
 				,{"DelFg"					,(int)63	,"String"	,"削除フラグ"}
 				};
 		
-		return RtSettingWhMstRt;
+		return RtSettingItemMstRt;
 	}
 	public static Object[][] ItemMstRt(
 			ArrayList<String> SearchClGpCd,				//荷主グループコード
