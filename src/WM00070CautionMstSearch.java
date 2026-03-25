@@ -21,9 +21,6 @@ public class WM00070CautionMstSearch{
 	static int SetX;
 	static int SetY;
 	static boolean RenewFg;
-	
-	static String[][] PrefecturesCdList;
-	static String[][] MunicipalityCd;
 	public static void CautionMstSearch(int x,int y) {
 		A00000Main.LoginCheck();
 		if(0==SetX) {SetX=100;}

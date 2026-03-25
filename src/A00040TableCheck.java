@@ -6441,15 +6441,16 @@ public class A00040TableCheck{
 		}
 		
 		ColumnList = ColumnList("WANKO","WM0010LOCATIONMST");
-		NeedColmn = new String[8];
+		NeedColmn = new String[9];
 		NeedColmn[ 0] = "ClCd";
 		NeedColmn[ 1] = "WhCd";
 		NeedColmn[ 2] = "Loc";
-		NeedColmn[ 3] = "EntryDate";
-		NeedColmn[ 4] = "UpdateDate";
-		NeedColmn[ 5] = "EntryUser";
-		NeedColmn[ 6] = "UpdateUser";
-		NeedColmn[ 7] = "Type";
+		NeedColmn[ 3] = "LocName";
+		NeedColmn[ 4] = "EntryDate";
+		NeedColmn[ 5] = "UpdateDate";
+		NeedColmn[ 6] = "EntryUser";
+		NeedColmn[ 7] = "UpdateUser";
+		NeedColmn[ 8] = "Type";
 				
 		NoHitColumn = new ArrayList<String>();
 		for(int i01=0;i01<NeedColmn.length;i01++) {
@@ -7879,6 +7880,7 @@ public class A00040TableCheck{
 				+"  `ClCd` varchar(20) NOT NULL,"
 				+"  `WhCd` varchar(20) NOT NULL,"
 				+"  `Loc` varchar(20) NOT NULL,"
+				+"  `LocName` varchar(20) NOT NULL,"
 				+"  `EntryDate` datetime DEFAULT NULL,"
 				+"  `UpdateDate` datetime DEFAULT NULL,"
 				+"  `EntryUser` varchar(50) NOT NULL,"
@@ -7903,6 +7905,9 @@ public class A00040TableCheck{
 					break;
 				case "Loc":
 					sql = sql + " ADD Loc varchar(20) NOT NULL";
+					break;
+				case "LocName":
+					sql = sql + " ADD LocName varchar(20) NOT NULL";
 					break;
 				case "EntryDate":
 					sql = sql + " ADD EntryDate datetime DEFAULT NULL";

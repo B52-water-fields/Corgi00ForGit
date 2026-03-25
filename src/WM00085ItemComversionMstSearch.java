@@ -194,7 +194,7 @@ public class WM00085ItemComversionMstSearch{
 					ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
 					ArrayList<String> SearchCLItemCd = new ArrayList<String>();		//荷主商品コード
 					ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名
-					boolean AllSearch = false;
+					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchClGpCd	)){SearchClGpCd.add(GetSearchClGpCd);}		//荷主グループコード
 					if(!"".equals(GetSearchClCd		)){SearchClCd.add(GetSearchClCd);}			//荷主コード

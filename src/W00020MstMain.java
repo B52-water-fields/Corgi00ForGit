@@ -22,70 +22,74 @@ public class W00020MstMain{
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		
 		//荷主設定パネル
-		JPanel PN_AboutClient 	= B00110FrameParts.JPanelSet( 10, 40,740,235,"White");
-		JLabel LB_AboutClient 	= B00110FrameParts.JLabelSet( 10,  0,150,20,"荷主毎設定",11,0);
+		JPanel PN_AboutClient 	= B00110FrameParts.JPanelSet(		 10, 40,740,235,"White");
+		JLabel LB_AboutClient 	= B00110FrameParts.JLabelSet(		 10,  0,150,20,"荷主毎設定",11,0);
 		PN_AboutClient.add(LB_AboutClient);
 		
 		//配車設定パネル
-		JPanel PN_AboutHaisya 	= B00110FrameParts.JPanelSet( 10,280,740,175,"White");
-		JLabel LB_AboutHaisya 	= B00110FrameParts.JLabelSet( 10,  0,150,20,"配車設定",11,0);
+		JPanel PN_AboutHaisya 	= B00110FrameParts.JPanelSet(		 10,280,740,175,"White");
+		JLabel LB_AboutHaisya 	= B00110FrameParts.JLabelSet(		 10,  0,150,20,"配車設定",11,0);
 		PN_AboutHaisya.add(LB_AboutHaisya);
 		
 		//全体設定パネル
-		JPanel PN_AboutALL 		= B00110FrameParts.JPanelSet( 10,460,740,200,"White");
-		JLabel LB_AboutALL 		= B00110FrameParts.JLabelSet( 10,  0,150,20,"全体設定",11,0);
+		JPanel PN_AboutALL 		= B00110FrameParts.JPanelSet(		 10,460,740,200,"White");
+		JLabel LB_AboutALL 		= B00110FrameParts.JLabelSet(		 10,  0,150,20,"全体設定",11,0);
 		PN_AboutALL.add(LB_AboutALL);
 		
 		//届先変換
-		JButton DeliveryComversionMst = B00110FrameParts.BtnSet( 20, 25,130,20,"届先変換",11);
+		JButton DeliveryComversionMst = B00110FrameParts.BtnSet(	 20, 25,130,20,"届先変換",11);
 		PN_AboutClient.add(DeliveryComversionMst);
 		
 		//商品マスタ
-		JButton ItemMst = B00110FrameParts.BtnSet( 20, 50,130,20,"商品マスタ",11);
+		JButton ItemMst = B00110FrameParts.BtnSet(					 20, 50,130,20,"商品マスタ",11);
 		PN_AboutClient.add(ItemMst);
 		
 		//商品変換マスタ
-		JButton ItemComversionMst = B00110FrameParts.BtnSet(160, 50,130,20,"商品変換マスタ",11);
+		JButton ItemComversionMst = B00110FrameParts.BtnSet(		160, 50,130,20,"商品変換マスタ",11);
 		PN_AboutClient.add(ItemComversionMst);
+		
+		//ロケーションマスタ
+		JButton LocationMst = B00110FrameParts.BtnSet(				 20, 75,130,20,"ロケーション",11);
+		PN_AboutClient.add(LocationMst);
 
 		//倉庫・事業所
-		JButton WhMst 				= B00110FrameParts.BtnSet( 20, 25,130,20,"倉庫・事業所",11);
+		JButton WhMst 				= B00110FrameParts.BtnSet(		 20, 25,130,20,"倉庫・事業所",11);
 		PN_AboutALL.add(WhMst);
 		
 		//運送会社
-		JButton ShippingCompanyMst 	= B00110FrameParts.BtnSet(160, 25,130,20,"運送会社",11);
+		JButton ShippingCompanyMst 	= B00110FrameParts.BtnSet(		160, 25,130,20,"運送会社",11);
 		PN_AboutALL.add(ShippingCompanyMst);
 		
 		//届先
-		JButton DeliveryMst 		= B00110FrameParts.BtnSet(440, 25,130,20,"届先",11);
+		JButton DeliveryMst 		= B00110FrameParts.BtnSet(		440, 25,130,20,"届先",11);
 		PN_AboutALL.add(DeliveryMst);
 		
 		//届先注意事項
-		JButton CautionMst 			= B00110FrameParts.BtnSet(580, 25,130,20,"届先注意事項",11);
+		JButton CautionMst 			= B00110FrameParts.BtnSet(		580, 25,130,20,"届先注意事項",11);
 		PN_AboutALL.add(CautionMst);
 		
 		//ユーザー
-		JButton UserMst 			= B00110FrameParts.BtnSet( 20, 50,130,20,"ユーザー・乗務員",11);
+		JButton UserMst 			= B00110FrameParts.BtnSet(		 20, 50,130,20,"ユーザー・乗務員",11);
 		PN_AboutALL.add(UserMst);
 		
 		//車輛
-		JButton CarMst 				= B00110FrameParts.BtnSet(160, 50,130,20,"車輛",11);
+		JButton CarMst 				= B00110FrameParts.BtnSet(		160, 50,130,20,"車輛",11);
 		PN_AboutALL.add(CarMst);
 		
 		//荷主グループ
-		JButton ClGpMst 			= B00110FrameParts.BtnSet( 20, 75,130,20,"荷主グループ",11);
+		JButton ClGpMst 			= B00110FrameParts.BtnSet(		 20, 75,130,20,"荷主グループ",11);
 		PN_AboutALL.add(ClGpMst);
 		
 		//荷主
-		JButton ClMst 				= B00110FrameParts.BtnSet(160, 75,130,20,"荷主",11);
+		JButton ClMst 				= B00110FrameParts.BtnSet(		160, 75,130,20,"荷主",11);
 		PN_AboutALL.add(ClMst);
 		
 		//運送タイプ
-		JButton DeliveryTypeMst 	= B00110FrameParts.BtnSet( 20,100,130,20,"運送タイプ",11);
+		JButton DeliveryTypeMst 	= B00110FrameParts.BtnSet(		 20,100,130,20,"運送タイプ",11);
 		PN_AboutALL.add(DeliveryTypeMst);
 		
 		//郵便番号
-		JButton PostMst 			= B00110FrameParts.BtnSet(580,175,130,20,"郵便番号",11);
+		JButton PostMst 			= B00110FrameParts.BtnSet(		580,175,130,20,"郵便番号",11);
 		PN_AboutALL.add(PostMst);
 
 		main_fm.add(PN_AboutClient);
@@ -116,6 +120,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00085ItemComversionMstSearch.ItemComversionMstSearch(0,0);
+			}
+		});
+		
+		//ロケーションマスタ
+		LocationMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00090LocationMstSearch.LocationMstSearch(0,0);
 			}
 		});
 		

@@ -328,7 +328,7 @@ public class WM00080ItemMstSearch{
 					ArrayList<String> SearchTildFG = new ArrayList<String>();			//温度区分
 					ArrayList<String> SearchTildName = new ArrayList<String>();			//温度区分名
 					ArrayList<String> SearchDelFg = new ArrayList<String>();			//削除フラグ
-					boolean AllSearch = false;
+					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchClGpCd			)){SearchClGpCd.add(GetSearchClGpCd);}			//荷主グループコード
 					if(!"".equals(GetSearchItemCd			)){SearchItemCd.add(GetSearchItemCd);}						//商品コード
