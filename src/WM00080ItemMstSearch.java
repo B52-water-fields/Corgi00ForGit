@@ -108,7 +108,7 @@ public class WM00080ItemMstSearch{
 		if("9".equals(A00000Main.LoginUserAuthorityFG)) {
 			//管理者以外は荷主グループコード変更禁止
 		}else {
-			TB_SearchClGpCd.setEditable(false);
+			TB_SearchClGpCd.setEnabled(RenewFg);
 		}
 		
 		PN_Search.add(PN_SearchLabel);

@@ -69,8 +69,8 @@ public class WM00090LocationMstSearch{
 		if("9".equals(A00000Main.LoginUserAuthorityFG)) {
 			
 		}else {
-			TB_SearchClCd.setEditable(false);
-			TB_SearchWhCd.setEditable(false);
+			TB_SearchClCd.setEnabled(false);
+			TB_SearchWhCd.setEnabled(false);
 		}
 		
 		PN_Search.add(LB_SearchClCd);
@@ -149,11 +149,7 @@ public class WM00090LocationMstSearch{
 		
 		//Excel取込ボタン
 		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
-		main_fm.add(ExcelEntryBtn);
-		
-		JLabel LB_DeleteBtn  = B00110FrameParts.JLabelSet(	610,640,100,20,"チェック行を" ,11,2);
-		main_fm.add(LB_DeleteBtn);
-		
+		main_fm.add(ExcelEntryBtn);	
 		
 		main_fm.setVisible(true);
 		RenewFg = true;
@@ -227,7 +223,79 @@ public class WM00090LocationMstSearch{
 			}
 		});
 		
+		//修正ボタン
+		RenewBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_ms01.getRowCount();
+					String TgtClCd 	= "";
+					String TgtWhCd 	= "";
+					String TgtLoc 	= "";
+					boolean KickFg = false;
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+							TgtClCd = ""+tableModel_ms01.getValueAt(i, 1);
+							TgtWhCd = ""+tableModel_ms01.getValueAt(i, 3);
+							TgtLoc 	= ""+tableModel_ms01.getValueAt(i, 5);
+							KickFg = true;
+						}
+					}
+					if(KickFg) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00091LocationMstRenewAndCreate.LocationMstRenewAndCreate(0,0,TgtClCd,TgtWhCd,TgtLoc);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+				
+		//新規登録ボタン
+		CreateBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					
+					String TgtClCd 	= "";
+					String TgtWhCd 	= "";
+					String TgtLoc 	= "";
+					WM00091LocationMstRenewAndCreate.LocationMstRenewAndCreate(0,0,TgtClCd,TgtWhCd,TgtLoc);
+					RenewFg = true;
+				}
+			}
+		});
 		
+		//Excel取込ボタン押下時の挙動
+		ExcelEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00092LocationMstExcelEntry.LocationMstExcelEntry(0,0,Selected);
+					}
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//チェックボックス操作時の挙動
 		tableModel_ms01.addTableModelListener(new TableModelListener(){

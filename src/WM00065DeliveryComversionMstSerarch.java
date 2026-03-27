@@ -128,8 +128,8 @@ public class WM00065DeliveryComversionMstSerarch{
 				TB_SearchCLGpName.setText(""+ClGpMstRt[0][1]);
 			}
 		}
-		TB_SearchClGpCD.setEditable(false);
-		TB_SearchCLGpName.setEditable(false);
+		TB_SearchClGpCD.setEnabled(false);
+		TB_SearchCLGpName.setEnabled(false);
 		
 		PN_Search.add(LB_SearchClGpCD);
 		PN_Search.add(LB_SearchCLGpName);
