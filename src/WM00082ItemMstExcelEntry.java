@@ -698,21 +698,21 @@ public class WM00082ItemMstExcelEntry{
 			//画像パスが空白だった場合既存のマスタ情報をセットする
 			if("".equals(GetItemImagePath01[i01])||"".equals(GetItemImagePath02[i01])||"".equals(GetItemImagePath03[i01])||"".equals(GetItemImagePath04[i01])||"".equals(GetItemImagePath05[i01])) {
 				for(int i02=0;i02<ItemMstRt.length;i02++) {
-					if(GetClGpCd[i01].equals(""+ItemMstRt[i02][0])&&GetItemCd[i01].equals(""+ItemMstRt[i02][2])) {
+					if(GetClGpCd[i01].equals(""+ItemMstRt[i02][M00070ItemMstRt.ColClGpCd])&&GetItemCd[i01].equals(""+ItemMstRt[i02][M00070ItemMstRt.ColItemCd])) {
 						if("".equals(GetItemImagePath01[i01])) {
-							GetItemImagePath01[i01] = ""+ItemMstRt[i02][53];
+							GetItemImagePath01[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass01];
 						}
 						if("".equals(GetItemImagePath02[i01])) {
-							GetItemImagePath02[i01] = ""+ItemMstRt[i02][54];
+							GetItemImagePath02[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass02];
 						}
 						if("".equals(GetItemImagePath03[i01])) {
-							GetItemImagePath03[i01] = ""+ItemMstRt[i02][55];
+							GetItemImagePath03[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass03];
 						}
 						if("".equals(GetItemImagePath04[i01])) {
-							GetItemImagePath04[i01] = ""+ItemMstRt[i02][56];
+							GetItemImagePath04[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass04];
 						}
 						if("".equals(GetItemImagePath05[i01])) {
-							GetItemImagePath05[i01] = ""+ItemMstRt[i02][57];
+							GetItemImagePath05[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass05];
 						}
 						i02=ItemMstRt.length+1;
 					}
@@ -931,7 +931,7 @@ public class WM00082ItemMstExcelEntry{
 		for(int i=0;i<CheckOb.length;i++) {
 			boolean UnHitFg = true;
 			for(int i01=0;i01<ClGpMstRt.length;i01++) {
-				if((""+CheckOb[i][1]).equals(""+ClGpMstRt[i01][0])) {
+				if((""+CheckOb[i][1]).equals(""+ClGpMstRt[i01][M00010ClGpMstRt.ColClGpCD])) {
 					UnHitFg = false;
 					i01=ClGpMstRt.length+1;
 				}

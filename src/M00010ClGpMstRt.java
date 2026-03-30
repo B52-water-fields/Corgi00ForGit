@@ -26,29 +26,69 @@ public class M00010ClGpMstRt{
 			SearchMail,
 			SearchCom,
 			AllSearch);
+			
+	String GetClGpCD		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]		//荷主グループCD
+	String GetCLGpName01	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName01]	//荷主グループ名1
+	String GetCLGpName02	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName02]	//荷主グループ名2
+	String GetCLGpName03	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName03]	//荷主グループ名3
+	String GetPost			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColPost]			//郵便番号
+	String GetAdd01			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColAdd01]		//住所1
+	String GetAdd02			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColAdd02]		//住所2
+	String GetAdd03			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColAdd03]		//住所3
+	String GetTel			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColTel]			//電話番号
+	String GetFax			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColFax]			//FAX
+	String GetMail			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColMail]			//メールアドレス
+	String GetCom01			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCom01]		//コメント1
+	String GetCom02			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCom02]		//コメント2
+	String GetCom03			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCom03]		//コメント3
+	String GetEntryDate		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColEntryDate]	//データ登録日時
+	String GetUpdateDate	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColUpdateDate]	//データ更新日時
+	String GetEntryUser		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColEntryUser]	//登録者コード
+	String GetUpdateUser	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColUpdateUser]	//更新者コード
+	String GetPassWord		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColPassWord]		//パスワード
 	*/
 	//戻り値カラム
+	static int ColClGpCD		= (int) 0;	//荷主グループCD
+	static int ColCLGpName01	= (int) 1;	//荷主グループ名1
+	static int ColCLGpName02	= (int) 2;	///荷主グループ名2
+	static int ColCLGpName03	= (int) 3;	//荷主グループ名3
+	static int ColPost			= (int) 4;	//郵便番号
+	static int ColAdd01		= (int) 5;	//住所1
+	static int ColAdd02		= (int) 6;	//住所2
+	static int ColAdd03		= (int) 7;	//住所3
+	static int ColTel			= (int) 8;	//電話番号
+	static int ColFax			= (int) 9;	//FAX"}
+	static int ColMail			= (int)10;	//メールアドレス
+	static int ColCom01		= (int)11;	//コメント1
+	static int ColCom02		= (int)12;	//コメント2
+	static int ColCom03		= (int)13;	//コメント3
+	static int ColEntryDate	= (int)14;	//データ登録日時
+	static int ColUpdateDate	= (int)15;	//データ更新日時
+	static int ColEntryUser	= (int)16;	//"登録者コード
+	static int ColUpdateUser	= (int)17;	//更新者コード
+	static int ColPassWord		= (int)18;	//パスワード
+	
 	public static Object[][] RtSettingClGpMstRt(){
 		Object[][] RtSettingClGpMstRt = {
-				 {"ClGpCD"		,(int) 0	,"String"	,"荷主グループCD"}
-				,{"CLGpName01"	,(int) 1	,"String"	,"荷主グループ名1"}
-				,{"CLGpName02"	,(int) 2	,"String"	,"/荷主グループ名2"}
-				,{"CLGpName03"	,(int) 3	,"String"	,"荷主グループ名3"}
-				,{"Post"		,(int) 4	,"String"	,"郵便番号"}
-				,{"Add01"		,(int) 5	,"String"	,"住所1"}
-				,{"Add02"		,(int) 6	,"String"	,"住所2"}
-				,{"Add03"		,(int) 7	,"String"	,"住所3"}
-				,{"Tel"			,(int) 8	,"String"	,"電話番号"}
-				,{"Fax"			,(int) 9	,"String"	,"FAX"}
-				,{"Mail"		,(int)10	,"String"	,"メールアドレス"}
-				,{"Com01"		,(int)11	,"String"	,"コメント1"}
-				,{"Com02"		,(int)12	,"String"	,"コメント2"}
-				,{"Com03"		,(int)13	,"String"	,"コメント3"}
-				,{"EntryDate"	,(int)14	,"String"	,"データ登録日時"}
-				,{"UpdateDate"	,(int)15	,"String"	,"データ更新日時"}
-				,{"EntryUser"	,(int)16	,"String"	,"登録者コード"}
-				,{"UpdateUser"	,(int)17	,"String"	,"更新者コード"}
-				,{"PassWord"	,(int)18	,"String"	,"パスワード"}
+				 {"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"}
+				,{"CLGpName01"	,ColCLGpName01	,"String"	,"荷主グループ名1"}
+				,{"CLGpName02"	,ColCLGpName02	,"String"	,"荷主グループ名2"}
+				,{"CLGpName03"	,ColCLGpName03	,"String"	,"荷主グループ名3"}
+				,{"Post"		,ColPost			,"String"	,"郵便番号"}
+				,{"Add01"		,ColAdd01			,"String"	,"住所1"}
+				,{"Add02"		,ColAdd02			,"String"	,"住所2"}
+				,{"Add03"		,ColAdd03			,"String"	,"住所3"}
+				,{"Tel"			,ColTel			,"String"	,"電話番号"}
+				,{"Fax"			,ColFax			,"String"	,"FAX"}
+				,{"Mail"		,ColMail			,"String"	,"メールアドレス"}
+				,{"Com01"		,ColCom01			,"String"	,"コメント1"}
+				,{"Com02"		,ColCom02			,"String"	,"コメント2"}
+				,{"Com03"		,ColCom03			,"String"	,"コメント3"}
+				,{"EntryDate"	,ColEntryDate		,"String"	,"データ登録日時"}
+				,{"UpdateDate"	,ColUpdateDate	,"String"	,"データ更新日時"}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"}
+				,{"PassWord"	,ColPassWord		,"String"	,"パスワード"}
 				};
 		
 		return RtSettingClGpMstRt;
@@ -259,25 +299,25 @@ public class M00010ClGpMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("ClGpCD")){		rt[counter][ 0] = "";}else{rt[counter][ 0] = rset01.getString("ClGpCD");}		//荷主グループCD
-					if(null==rset01.getString("CLGpName01")){	rt[counter][ 1] = "";}else{rt[counter][ 1] = rset01.getString("CLGpName01");}	//荷主グループ名1
-					if(null==rset01.getString("CLGpName02")){	rt[counter][ 2] = "";}else{rt[counter][ 2] = rset01.getString("CLGpName02");}	//荷主グループ名2
-					if(null==rset01.getString("CLGpName03")){	rt[counter][ 3] = "";}else{rt[counter][ 3] = rset01.getString("CLGpName03");}	//荷主グループ名3
-					if(null==rset01.getString("Post")){			rt[counter][ 4] = "";}else{rt[counter][ 4] = rset01.getString("Post");}			//郵便番号
-					if(null==rset01.getString("Add01")){		rt[counter][ 5] = "";}else{rt[counter][ 5] = rset01.getString("Add01");}		//住所1
-					if(null==rset01.getString("Add02")){		rt[counter][ 6] = "";}else{rt[counter][ 6] = rset01.getString("Add02");}		//住所2
-					if(null==rset01.getString("Add03")){		rt[counter][ 7] = "";}else{rt[counter][ 7] = rset01.getString("Add03");}		//住所3
-					if(null==rset01.getString("Tel")){			rt[counter][ 8] = "";}else{rt[counter][ 8] = rset01.getString("Tel");}			//電話番号
-					if(null==rset01.getString("Fax")){			rt[counter][ 9] = "";}else{rt[counter][ 9] = rset01.getString("Fax");}			//FAX
-					if(null==rset01.getString("Mail")){			rt[counter][10] = "";}else{rt[counter][10] = rset01.getString("Mail");}			//メールアドレス
-					if(null==rset01.getString("Com01")){		rt[counter][11] = "";}else{rt[counter][11] = rset01.getString("Com01");}		//コメント1
-					if(null==rset01.getString("Com02")){		rt[counter][12] = "";}else{rt[counter][12] = rset01.getString("Com02");}		//コメント2
-					if(null==rset01.getString("Com03")){		rt[counter][13] = "";}else{rt[counter][13] = rset01.getString("Com03");}		//コメント3
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][14] = "";}else{rt[counter][14] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][15] = "";}else{rt[counter][15] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
-					if(null==rset01.getString("EntryUser")){	rt[counter][16] = "";}else{rt[counter][16] = rset01.getString("EntryUser");}	//登録者コード
-					if(null==rset01.getString("UpdateUser")){	rt[counter][17] = "";}else{rt[counter][17] = rset01.getString("UpdateUser");}	//更新者コード
-					if(null==rset01.getString("PassWord")){		rt[counter][18] = "";}else{rt[counter][18] = rset01.getString("PassWord");}		//パスワード
+					if(null==rset01.getString("ClGpCD")){		rt[counter][ColClGpCD] 		= "";}else{rt[counter][ColClGpCD] 		= rset01.getString("ClGpCD");}		//荷主グループCD
+					if(null==rset01.getString("CLGpName01")){	rt[counter][ColCLGpName01] 	= "";}else{rt[counter][ColCLGpName01]	= rset01.getString("CLGpName01");}	//荷主グループ名1
+					if(null==rset01.getString("CLGpName02")){	rt[counter][ColCLGpName02] 	= "";}else{rt[counter][ColCLGpName02]	= rset01.getString("CLGpName02");}	//荷主グループ名2
+					if(null==rset01.getString("CLGpName03")){	rt[counter][ColCLGpName03] 	= "";}else{rt[counter][ColCLGpName03]	= rset01.getString("CLGpName03");}	//荷主グループ名3
+					if(null==rset01.getString("Post")){			rt[counter][ColPost] 			= "";}else{rt[counter][ColPost] 		= rset01.getString("Post");}		//郵便番号
+					if(null==rset01.getString("Add01")){		rt[counter][ColAdd01] 			= "";}else{rt[counter][ColAdd01] 		= rset01.getString("Add01");}		//住所1
+					if(null==rset01.getString("Add02")){		rt[counter][ColAdd02] 			= "";}else{rt[counter][ColAdd02]		= rset01.getString("Add02");}		//住所2
+					if(null==rset01.getString("Add03")){		rt[counter][ColAdd03] 			= "";}else{rt[counter][ColAdd03]		= rset01.getString("Add03");}		//住所3
+					if(null==rset01.getString("Tel")){			rt[counter][ColTel] 			= "";}else{rt[counter][ColTel]			= rset01.getString("Tel");}			//電話番号
+					if(null==rset01.getString("Fax")){			rt[counter][ColFax] 			= "";}else{rt[counter][ColFax]			= rset01.getString("Fax");}			//FAX
+					if(null==rset01.getString("Mail")){			rt[counter][ColMail] 			= "";}else{rt[counter][ColMail]		= rset01.getString("Mail");}		//メールアドレス
+					if(null==rset01.getString("Com01")){		rt[counter][ColCom01] 			= "";}else{rt[counter][ColCom01]		= rset01.getString("Com01");}		//コメント1
+					if(null==rset01.getString("Com02")){		rt[counter][ColCom02] 			= "";}else{rt[counter][ColCom02]		= rset01.getString("Com02");}		//コメント2
+					if(null==rset01.getString("Com03")){		rt[counter][ColCom03] 			= "";}else{rt[counter][ColCom03]		= rset01.getString("Com03");}		//コメント3
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate] 	= "";}else{rt[counter][ColEntryDate]	= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate] 	= "";}else{rt[counter][ColUpdateDate]	= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getString("EntryUser")){	rt[counter][ColEntryUser] 	= "";}else{rt[counter][ColEntryUser]	= rset01.getString("EntryUser");}	//登録者コード
+					if(null==rset01.getString("UpdateUser")){	rt[counter][ColUpdateUser] 	= "";}else{rt[counter][ColUpdateUser]	= rset01.getString("UpdateUser");}	//更新者コード
+					if(null==rset01.getString("PassWord")){		rt[counter][ColPassWord] 		= "";}else{rt[counter][ColPassWord]	= rset01.getString("PassWord");}		//パスワード
 					
 					counter=counter+1;
 				}
@@ -318,8 +358,8 @@ public class M00010ClGpMstRt{
 		int ClGpNo = 0;
     	
     	for(int i=0;i<ClGpMstRt.length;i++) {
-    		if("ATGR".equals((""+ClGpMstRt[i][0]).substring(0,4))&&11==(""+ClGpMstRt[i][0]).length()) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+ClGpMstRt[i][0]);
+    		if("ATGR".equals((""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).substring(0,4))&&11==(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]);
     			if(7==WST.length()) {
     				int wint = Integer.parseInt(WST);
     				if(ClGpNo<wint) {

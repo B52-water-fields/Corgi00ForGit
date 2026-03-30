@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class M00001WhMstRt{
 	/*
 	コピペ用
-	ArrayList<String> SearchWHCD = new ArrayList<String>();
-	ArrayList<String> SearchWHName = new ArrayList<String>();
-	ArrayList<String> SearchPost = new ArrayList<String>();
-	ArrayList<String> SearchAdd = new ArrayList<String>();
-	ArrayList<String> SearchTel = new ArrayList<String>();
-	ArrayList<String> SearchFax = new ArrayList<String>();
-	ArrayList<String> SearchMail = new ArrayList<String>();
-	ArrayList<String> SearchCom = new ArrayList<String>();
-	ArrayList<String> SearchPTMSCD = new ArrayList<String>();
+	ArrayList<String> SearchWHCD 	= new ArrayList<String>();
+	ArrayList<String> SearchWHName 	= new ArrayList<String>();
+	ArrayList<String> SearchPost 	= new ArrayList<String>();
+	ArrayList<String> SearchAdd 	= new ArrayList<String>();
+	ArrayList<String> SearchTel 	= new ArrayList<String>();
+	ArrayList<String> SearchFax 	= new ArrayList<String>();
+	ArrayList<String> SearchMail 	= new ArrayList<String>();
+	ArrayList<String> SearchCom 	= new ArrayList<String>();
+	ArrayList<String> SearchPTMSCD 	= new ArrayList<String>();
 	boolean AllSearch = false;
 	
 	Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
@@ -28,27 +28,62 @@ public class M00001WhMstRt{
 			SearchCom,
 			SearchPTMSCD,
 			AllSearch);
+			
+	String GetNoWHCD		= (String)WhMstRt[i][M00001WhMstRt.ColNoWHCD];			//倉庫コード
+	String GetNoWHName		= (String)WhMstRt[i][M00001WhMstRt.ColNoWHName];		//拠点倉庫名
+	String GetNoPost		= (String)WhMstRt[i][M00001WhMstRt.ColNoPost];			//拠点倉庫郵便番号
+	String GetNoAdd01		= (String)WhMstRt[i][M00001WhMstRt.ColNoAdd01];			//拠点倉庫住所1
+	String GetNoAdd02		= (String)WhMstRt[i][M00001WhMstRt.ColNoAdd02];			//拠点倉庫住所2
+	String GetNoTel			= (String)WhMstRt[i][M00001WhMstRt.ColNoTel];			//拠点倉庫電話
+	String GetNoFax			= (String)WhMstRt[i][M00001WhMstRt.ColNoFax];			//拠点倉庫FAX
+	String GetNoMail		= (String)WhMstRt[i][M00001WhMstRt.ColNoMail];			//拠点倉庫MAIL
+	String GetNoCom01		= (String)WhMstRt[i][M00001WhMstRt.ColNoCom01];			//コメント１
+	String GetNoCom02		= (String)WhMstRt[i][M00001WhMstRt.ColNoCom02];			//コメント２
+	String GetNoCom03		= (String)WhMstRt[i][M00001WhMstRt.ColNoCom03];			//コメント３
+	String GetNoPTMSCD		= (String)WhMstRt[i][M00001WhMstRt.ColNoPTMSCD];		//基幹システム連携用事業所CD
+	String GetNoEntryDate	= (String)WhMstRt[i][M00001WhMstRt.ColNoEntryDate];		//データ登録日時
+	String GetNoUpdateDate	= (String)WhMstRt[i][M00001WhMstRt.ColNoUpdateDate];	//データ更新日時
+	String GetNoEntryUser	= (String)WhMstRt[i][M00001WhMstRt.ColNoEntryUser];		//登録者
+	String GetNoUpdateUser	= (String)WhMstRt[i][M00001WhMstRt.ColNoUpdateUser];	//更新者
+			
 	
 	*/
 	//戻り値カラム
+	static int ColNoWHCD 			= (int) 0;	//倉庫コード
+	static int ColNoWHName 		= (int) 1;	//拠点倉庫名
+	static int ColNoPost 			= (int) 2;	//拠点倉庫郵便番号
+	static int ColNoAdd01 			= (int) 3;	//拠点倉庫住所1
+	static int ColNoAdd02 			= (int) 4;	//拠点倉庫住所2
+	static int ColNoTel 			= (int) 5;	//拠点倉庫電話
+	static int ColNoFax 			= (int) 6;	//拠点倉庫FAX
+	static int ColNoMail 			= (int) 7;	//拠点倉庫MAIL
+	static int ColNoCom01 			= (int) 8;	//コメント１
+	static int ColNoCom02 			= (int) 9;	//コメント２
+	static int ColNoCom03 			= (int)10;	//コメント３
+	static int ColNoPTMSCD 		= (int)11;	//基幹システム連携用事業所CD
+	static int ColNoEntryDate 	= (int)12;	//データ登録日時
+	static int ColNoUpdateDate 	= (int)13;	//データ更新日時
+	static int ColNoEntryUser 	= (int)14;	//登録者
+	static int ColNoUpdateUser 	= (int)15;	//更新者
+	
 	public static Object[][] RtSettingWhMstRt(){
 		Object[][] RtSettingWhMstRt = {
-				 {"WHCD"		,(int) 0	,"String"	,"倉庫コード"}
-				,{"WHName"		,(int) 1	,"String"	,"拠点倉庫名"}
-				,{"Post"		,(int) 2	,"String"	,"拠点倉庫郵便番号"}
-				,{"Add01"		,(int) 3	,"String"	,"拠点倉庫住所1"}
-				,{"Add02"		,(int) 4	,"String"	,"拠点倉庫住所2"}
-				,{"Tel"			,(int) 5	,"String"	,"拠点倉庫電話"}
-				,{"Fax"			,(int) 6	,"String"	,"拠点倉庫FAX"}
-				,{"Mail"		,(int) 7	,"String"	,"拠点倉庫MAIL"}
-				,{"Com01"		,(int) 8	,"String"	,"コメント１"}
-				,{"Com02"		,(int) 9	,"String"	,"コメント２"}
-				,{"Com03"		,(int)10	,"String"	,"コメント３"}
-				,{"PTMSCD"		,(int)11	,"String"	,"基幹システム連携用事業所CD"}
-				,{"EntryDate"	,(int)12	,"String"	,"データ登録日時"}
-				,{"UpdateDate"	,(int)13	,"String"	,"データ更新日時"}
-				,{"EntryUser"	,(int)14	,"String"	,"登録者"}
-				,{"UpdateUser"	,(int)15	,"String"	,"更新者"}
+				 {"WHCD"		,ColNoWHCD			,"String"	,"倉庫コード"}
+				,{"WHName"		,ColNoWHName		,"String"	,"拠点倉庫名"}
+				,{"Post"		,ColNoPost			,"String"	,"拠点倉庫郵便番号"}
+				,{"Add01"		,ColNoAdd01		,"String"	,"拠点倉庫住所1"}
+				,{"Add02"		,ColNoAdd02		,"String"	,"拠点倉庫住所2"}
+				,{"Tel"			,ColNoTel			,"String"	,"拠点倉庫電話"}
+				,{"Fax"			,ColNoFax			,"String"	,"拠点倉庫FAX"}
+				,{"Mail"		,ColNoMail			,"String"	,"拠点倉庫MAIL"}
+				,{"Com01"		,ColNoCom01		,"String"	,"コメント１"}
+				,{"Com02"		,ColNoCom02		,"String"	,"コメント２"}
+				,{"Com03"		,ColNoCom03		,"String"	,"コメント３"}
+				,{"PTMSCD"		,ColNoPTMSCD		,"String"	,"基幹システム連携用事業所CD"}
+				,{"EntryDate"	,ColNoEntryDate	,"String"	,"データ登録日時"}
+				,{"UpdateDate"	,ColNoUpdateDate	,"String"	,"データ更新日時"}
+				,{"EntryUser"	,ColNoEntryUser	,"String"	,"登録者"}
+				,{"UpdateUser"	,ColNoUpdateUser	,"String"	,"更新者"}
 				};
 		
 		return RtSettingWhMstRt;
@@ -264,22 +299,22 @@ public class M00001WhMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("WHCD")){			rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("WHCD");}				//倉庫コード
-					if(null==rset01.getString("WHName")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("WHName");}			//拠点倉庫名
-					if(null==rset01.getString("Post")){			rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("Post");}				//拠点倉庫郵便番号
-					if(null==rset01.getString("Add01")){		rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("Add01");}			//拠点倉庫住所1
-					if(null==rset01.getString("Add02")){		rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("Add02");}			//拠点倉庫住所2
-					if(null==rset01.getString("Tel")){			rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("Tel");}				//拠点倉庫電話
-					if(null==rset01.getString("Fax")){			rt[counter][ 6]="";}else{rt[counter][ 6]=rset01.getString("Fax");}				//拠点倉庫FAX
-					if(null==rset01.getString("Mail")){			rt[counter][ 7]="";}else{rt[counter][ 7]=rset01.getString("Mail");}				//拠点倉庫MAIL
-					if(null==rset01.getString("Com01")){		rt[counter][ 8]="";}else{rt[counter][ 8]=rset01.getString("Com01");}			//コメント１
-					if(null==rset01.getString("Com02")){		rt[counter][ 9]="";}else{rt[counter][ 9]=rset01.getString("Com02");}			//コメント２
-					if(null==rset01.getString("Com03")){		rt[counter][10]="";}else{rt[counter][10]=rset01.getString("Com03");}			//コメント３
-					if(null==rset01.getString("PTMSCD")){		rt[counter][11]="";}else{rt[counter][11]=rset01.getString("PTMSCD");}			//基幹システム連携用事業所CD
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][12]="";}else{rt[counter][12]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][13]="";}else{rt[counter][13]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//データ更新日時
-					if(null==rset01.getString("EntryUser")){	rt[counter][14]="";}else{rt[counter][14]=rset01.getString("EntryUser");}		//登録者
-					if(null==rset01.getString("UpdateUser")){	rt[counter][15]="";}else{rt[counter][15]=rset01.getString("UpdateUser");}		//更新者
+					if(null==rset01.getString("WHCD")){			rt[counter][ColNoWHCD]			="";}else{rt[counter][ColNoWHCD]			=rset01.getString("WHCD");}			//倉庫コード
+					if(null==rset01.getString("WHName")){		rt[counter][ColNoWHName]		="";}else{rt[counter][ColNoWHName]			=rset01.getString("WHName");}		//拠点倉庫名
+					if(null==rset01.getString("Post")){			rt[counter][ColNoPost]			="";}else{rt[counter][ColNoPost]			=rset01.getString("Post");}			//拠点倉庫郵便番号
+					if(null==rset01.getString("Add01")){		rt[counter][ColNoAdd01]		="";}else{rt[counter][ColNoAdd01]			=rset01.getString("Add01");}		//拠点倉庫住所1
+					if(null==rset01.getString("Add02")){		rt[counter][ColNoAdd02]		="";}else{rt[counter][ColNoAdd02]			=rset01.getString("Add02");}		//拠点倉庫住所2
+					if(null==rset01.getString("Tel")){			rt[counter][ColNoTel]			="";}else{rt[counter][ColNoTel]			=rset01.getString("Tel");}			//拠点倉庫電話
+					if(null==rset01.getString("Fax")){			rt[counter][ColNoFax]			="";}else{rt[counter][ColNoFax]			=rset01.getString("Fax");}			//拠点倉庫FAX
+					if(null==rset01.getString("Mail")){			rt[counter][ColNoMail]			="";}else{rt[counter][ColNoMail]			=rset01.getString("Mail");}			//拠点倉庫MAIL
+					if(null==rset01.getString("Com01")){		rt[counter][ColNoCom01]		="";}else{rt[counter][ColNoCom01]			=rset01.getString("Com01");}		//コメント１
+					if(null==rset01.getString("Com02")){		rt[counter][ColNoCom02]		="";}else{rt[counter][ColNoCom02]			=rset01.getString("Com02");}		//コメント２
+					if(null==rset01.getString("Com03")){		rt[counter][ColNoCom03]		="";}else{rt[counter][ColNoCom03]			=rset01.getString("Com03");}		//コメント３
+					if(null==rset01.getString("PTMSCD")){		rt[counter][ColNoPTMSCD]		="";}else{rt[counter][ColNoPTMSCD]			=rset01.getString("PTMSCD");}		//基幹システム連携用事業所CD
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColNoEntryDate]	="";}else{rt[counter][ColNoEntryDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColNoUpdateDate]	="";}else{rt[counter][ColNoUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getString("EntryUser")){	rt[counter][ColNoEntryUser]	="";}else{rt[counter][ColNoEntryUser]		=rset01.getString("EntryUser");}			//登録者
+					if(null==rset01.getString("UpdateUser")){	rt[counter][ColNoUpdateUser]	="";}else{rt[counter][ColNoUpdateUser]	=rset01.getString("UpdateUser");}		//更新者
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
@@ -321,8 +356,8 @@ public class M00001WhMstRt{
 		int WhNo = 0;
     	
     	for(int i=0;i<WhMstRt.length;i++) {
-    		if("ATWH".equals((""+WhMstRt[i][0]).substring(0,4))&&11==(""+WhMstRt[i][0]).length()) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+WhMstRt[i][0]);
+    		if("ATWH".equals((""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).substring(0,4))&&11==(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]);
     			if(7==WST.length()) {
     				int wint = Integer.parseInt(WST);
     				if(WhNo<wint) {

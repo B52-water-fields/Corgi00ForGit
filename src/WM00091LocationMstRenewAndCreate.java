@@ -164,10 +164,10 @@ public class WM00091LocationMstRenewAndCreate{
 							AllSearch);
 					
 					if(0<LocationMstRt.length) {
-						if(GetType.equals(""+LocationMstRt[0][6])) {
+						if(GetType.equals(""+LocationMstRt[0][M00090LocationMstRt.ColType])) {
 							
 						}else {
-							String BefoureType = ""+LocationMstRt[0][6];
+							String BefoureType = ""+LocationMstRt[0][M00090LocationMstRt.ColType];
 							StockTypeChange(
 									GetClCd,
 									GetWhCd,

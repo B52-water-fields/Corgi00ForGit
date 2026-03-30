@@ -318,8 +318,8 @@ public class WM00037CarMstExcelEntry{
 						if(!"".equals(""+SetOb[ 1])) {
 							UnHitFg = true;
 							for(int i01=0;i01<WhMstRt.length;i01++) {
-								if((""+SetOb[ 1]).equals(""+WhMstRt[i01][0])) {
-									SetOb[ 2] = ""+WhMstRt[i01][1];	//倉庫名
+								if((""+SetOb[ 1]).equals(""+WhMstRt[i01][M00001WhMstRt.ColNoWHCD])) {
+									SetOb[ 2] = ""+WhMstRt[i01][M00001WhMstRt.ColNoWHName];	//倉庫名
 									UnHitFg = false;
 								}
 							}
@@ -333,10 +333,10 @@ public class WM00037CarMstExcelEntry{
 						if(!"".equals(""+SetOb[ 3])) {
 							UnHitFg = true;
 							for(int i01=0;i01<ShippingCompanyMstRt.length;i01++) {
-								if((""+SetOb[ 3]).equals(""+ShippingCompanyMstRt[i01][0])) {
-									SetOb[ 4] = ""+ShippingCompanyMstRt[i01][1];	//運送会社名1
-									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][2];	//運送会社名2
-									SetOb[ 6] = ""+ShippingCompanyMstRt[i01][3];	//運送会社名3
+								if((""+SetOb[ 3]).equals(""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyCd])) {
+									SetOb[ 4] = ""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名1
+									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社名2
+									SetOb[ 6] = ""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社名3
 									UnHitFg = false;
 								}
 							}
@@ -350,13 +350,13 @@ public class WM00037CarMstExcelEntry{
 						if(!"".equals(""+SetOb[11])) {
 							UnHitFg = true;
 							for(int i01=0;i01<UserMstRt.length;i01++) {
-								if((""+SetOb[ 1]).equals(""+UserMstRt[i01][0])
-									&& (""+SetOb[ 3]).equals(""+UserMstRt[i01][1])
-									&& (""+SetOb[11]).equals(""+UserMstRt[i01][3])
+								if((""+SetOb[ 1]).equals(""+UserMstRt[i01][M00020UserMstRt.ColWHCD])
+									&& (""+SetOb[ 3]).equals(""+UserMstRt[i01][M00020UserMstRt.ColShippingCompanyCd])
+									&& (""+SetOb[11]).equals(""+UserMstRt[i01][M00020UserMstRt.ColUserCd])
 									) {
-									SetOb[12] = ""+UserMstRt[i01][10];	//ユーザー名1
-									SetOb[13] = ""+UserMstRt[i01][11];	//ユーザー名2
-									SetOb[14] = ""+UserMstRt[i01][12];	//ユーザー名3
+									SetOb[12] = ""+UserMstRt[i01][M00020UserMstRt.ColUserName01];	//ユーザー名1
+									SetOb[13] = ""+UserMstRt[i01][M00020UserMstRt.ColUserName02];	//ユーザー名2
+									SetOb[14] = ""+UserMstRt[i01][M00020UserMstRt.ColUserName03];	//ユーザー名3
 									UnHitFg = false;
 								}
 							}

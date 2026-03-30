@@ -198,13 +198,13 @@ public class B00100DefaultVariable{
 		
 		
 		for(int i=0;i<WhMstRt.length;i++) {
-			WhList[0][i] = "" + WhMstRt[i][0] + ":" + WhMstRt[i][1];
-			WhList[1][i] = "" + WhMstRt[i][0];
+			WhList[0][i] = "" + WhMstRt[i][M00001WhMstRt.ColNoWHCD] + ":" + WhMstRt[i][M00001WhMstRt.ColNoWHName];
+			WhList[1][i] = "" + WhMstRt[i][M00001WhMstRt.ColNoWHCD];
 			WhList[2][i] = "" + WhMstRt[i][1];
 			
-			SearchWhList[0][i+1] = "" + WhMstRt[i][0] + ":" + WhMstRt[i][1];
-			SearchWhList[1][i+1] = "" + WhMstRt[i][0];
-			SearchWhList[2][i+1] = "" + WhMstRt[i][1];
+			SearchWhList[0][i+1] = "" + WhMstRt[i][M00001WhMstRt.ColNoWHCD] + ":" + WhMstRt[i][M00001WhMstRt.ColNoWHName];
+			SearchWhList[1][i+1] = "" + WhMstRt[i][M00001WhMstRt.ColNoWHCD];
+			SearchWhList[2][i+1] = "" + WhMstRt[i][M00001WhMstRt.ColNoWHName];
 		}
 	}
 	
@@ -231,13 +231,13 @@ public class B00100DefaultVariable{
 		SearchClGpList[2][0] = "";
 		
 		for(int i=0;i<ClGpMstRt.length;i++) {
-			ClGpList[0][i] = "" + ClGpMstRt[i][0] + ":" + ClGpMstRt[i][1];
-			ClGpList[1][i] = "" + ClGpMstRt[i][0];
-			ClGpList[2][i] = "" + ClGpMstRt[i][1];
+			ClGpList[0][i] = "" + ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD] + ":" + ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName01];
+			ClGpList[1][i] = "" + ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD];
+			ClGpList[2][i] = "" + ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName01];
 			
-			SearchClGpList[0][i+1] = "" + ClGpMstRt[i][0] + ":" + ClGpMstRt[i][1];
-			SearchClGpList[1][i+1] = "" + ClGpMstRt[i][0];
-			SearchClGpList[2][i+1] = "" + ClGpMstRt[i][1];
+			SearchClGpList[0][i+1] = "" + ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD] + ":" + ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName01];
+			SearchClGpList[1][i+1] = "" + ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD];
+			SearchClGpList[2][i+1] = "" + ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName01];
 		}
 	}
 	
@@ -267,13 +267,13 @@ public class B00100DefaultVariable{
 		SearchClList[2][0] = "";
 		
 		for(int i=0;i<ClMstRt.length;i++) {
-			ClList[0][i] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
-			ClList[1][i] = "" + ClMstRt[i][0];
-			ClList[2][i] = "" + ClMstRt[i][5];
+			ClList[0][i] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M00011ClMstRt.ColCLName01];
+			ClList[1][i] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd];
+			ClList[2][i] = "" + ClMstRt[i][M00011ClMstRt.ColCLName01];
 			
-			SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
-			SearchClList[1][i+1] = "" + ClMstRt[i][0];
-			SearchClList[2][i+1] = "" + ClMstRt[i][5];
+			SearchClList[0][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M00011ClMstRt.ColCLName01];
+			SearchClList[1][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd];
+			SearchClList[2][i+1] = "" + ClMstRt[i][M00011ClMstRt.ColCLName01];
 		}
 	}
 	
@@ -300,13 +300,13 @@ public class B00100DefaultVariable{
 		SearchShippingCompanyList[2][0] = "";
 		
 		for(int i=0;i<ShippingCompanyMstRt.length;i++) {
-			ShippingCompanyList[0][i] = "" + ShippingCompanyMstRt[i][0] + ":" + ShippingCompanyMstRt[i][1];
-			ShippingCompanyList[1][i] = "" + ShippingCompanyMstRt[i][0];
-			ShippingCompanyList[2][i] = "" + ShippingCompanyMstRt[i][1];
+			ShippingCompanyList[0][i] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd] + ":" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName01];
+			ShippingCompanyList[1][i] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd];
+			ShippingCompanyList[2][i] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName01];
 			
-			SearchShippingCompanyList[0][i+1] = "" + ShippingCompanyMstRt[i][0] + ":" + ShippingCompanyMstRt[i][1];
-			SearchShippingCompanyList[1][i+1] = "" + ShippingCompanyMstRt[i][0];
-			SearchShippingCompanyList[2][i+1] = "" + ShippingCompanyMstRt[i][1];
+			SearchShippingCompanyList[0][i+1] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd] + ":" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName01];
+			SearchShippingCompanyList[1][i+1] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd];
+			SearchShippingCompanyList[2][i+1] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName01];
 		}
 	}
 	

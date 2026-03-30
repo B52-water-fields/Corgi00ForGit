@@ -321,7 +321,7 @@ public class A00000Main{
 		Object[] SelectCl = new Object[ClList.length];
 		
 		for(int i=0;i<ClList.length;i++) {
-			SelectCl[i] = "("+ClList[i][0]+")"+ClList[i][5];
+			SelectCl[i] = "("+ClList[i][M00011ClMstRt.Colcl_cd]+")"+ClList[i][M00011ClMstRt.ColCLName01];
 		}
 		
 		JLabel LbCLList = B00110FrameParts.JLabelSet(	 20,80,100,20,"荷主選択:",11,1);
@@ -330,13 +330,13 @@ public class A00000Main{
 		if(null==ClCd||"".equals(ClCd)) {
 			TbCLList.setSelectedIndex(0);
 			for(int i=0;i<ClList.length;i++) {
-				if((""+ClList[i][0]).equals(LoginUserClient)){
+				if((""+ClList[i][M00011ClMstRt.Colcl_cd]).equals(LoginUserClient)){
 					TbCLList.setSelectedIndex(i);
 				}
 			}
 		}else {
 			for(int i=0;i<ClList.length;i++) {
-				if((""+ClList[i][0]).equals(ClCd)){
+				if((""+ClList[i][M00011ClMstRt.Colcl_cd]).equals(ClCd)){
 					TbCLList.setSelectedIndex(i);
 				}
 			}

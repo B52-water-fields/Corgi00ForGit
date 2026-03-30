@@ -6,27 +6,46 @@ import java.util.ArrayList;
 public class M00050DeliveryTypeMstRt{
 	/*
 	コピペ用
-	ArrayList<String> SearchDeliveryTypeNo = ArrayList<String>();
-	ArrayList<String> SearchDeliveryTypeCd = ArrayList<String>();
-	ArrayList<String> SearchDeliveryTypeName = ArrayList<String>();
+	ArrayList<String> SearchDeliveryTypeNo 		= ArrayList<String>();
+	ArrayList<String> SearchDeliveryTypeCd 		= ArrayList<String>();
+	ArrayList<String> SearchDeliveryTypeName	= ArrayList<String>();
 	boolean AllSearch = false;
 			
-	Object[][] DeliveryTypeMstRt(
+	Object[][] DeliveryTypeMstRt = M00050DeliveryTypeMstRt.DeliveryTypeMstRt(
 			SearchDeliveryTypeNo,
 			SearchDeliveryTypeCd,
 			SearchDeliveryTypeName,
 			AllSearch);
+			
+	int GetDeliveryTypeNo		= (int)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColDeliveryTypeNo];			//タイプ番号
+	String GetDeliveryTypeCd	= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd];		//運送タイプコード
+	String GetDeliveryTypeName	= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];	//運送タイプ名
+	String GetEntryDate			= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColEntryDate];			//データ登録日時
+	String GetUpdateDate		= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColUpdateDate];			//データ更新日時
+	String GetEntryUser			= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColEntryUser];			//登録者コード
+	String GetUpdateUser		= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColUpdateUser];			//更新者コード
+			
 	*/
+	
+	
 	//戻り値カラム
+	static int ColDeliveryTypeNo		= (int) 0;	//タイプ番号
+	static int ColDeliveryTypeCd		= (int) 1;	//運送タイプコード
+	static int ColDeliveryTypeName	= (int) 2;	//運送タイプ名
+	static int ColEntryDate			= (int) 3;	//"データ登録日時
+	static int ColUpdateDate			= (int) 4;	//データ更新日時
+	static int ColEntryUser			= (int) 5;	//登録者コード
+	static int ColUpdateUser			= (int) 6;	//更新者コード
+	
 	public static Object[][] RtSettingDeliveryTypeMstRt(){
 		Object[][] RtSettingDeliveryTypeMstRt = {
-				 {"DeliveryTypeNo"		,(int) 0	,"String"	,"タイプ番号"}
-				,{"DeliveryTypeCd"		,(int) 1	,"String"	,"運送タイプコード"}
-				,{"DeliveryTypeName"	,(int) 2	,"String"	,"運送タイプ名"}
-				,{"EntryDate"			,(int) 3	,"String"	,"データ登録日時"}
-				,{"UpdateDate"			,(int) 4	,"String"	,"データ更新日時"}
-				,{"EntryUser"			,(int) 5	,"String"	,"登録者コード"}
-				,{"UpdateUser"			,(int) 6	,"String"	,"更新者コード"}
+				 {"DeliveryTypeNo"		,ColDeliveryTypeNo	,"int"		,"タイプ番号"}
+				,{"DeliveryTypeCd"		,ColDeliveryTypeCd	,"String"	,"運送タイプコード"}
+				,{"DeliveryTypeName"	,ColDeliveryTypeName	,"String"	,"運送タイプ名"}
+				,{"EntryDate"			,ColEntryDate			,"String"	,"データ登録日時"}
+				,{"UpdateDate"			,ColUpdateDate		,"String"	,"データ更新日時"}
+				,{"EntryUser"			,ColEntryUser			,"String"	,"登録者コード"}
+				,{"UpdateUser"			,ColUpdateUser		,"String"	,"更新者コード"}
 				};
 		
 		return RtSettingDeliveryTypeMstRt;
@@ -128,13 +147,14 @@ public class M00050DeliveryTypeMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					rt[counter][ 0]=rset01.getInt("DeliveryTypeNo");		//タイプ番号
-					if(null==rset01.getString("DeliveryTypeCd")){	rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("DeliveryTypeCd");}		//運送タイプコード
-					if(null==rset01.getString("DeliveryTypeName")){	rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("DeliveryTypeName");}		//運送タイプ名
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ 3]="";}else{rt[counter][ 3]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ 4]="";}else{rt[counter][ 4]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
-					if(null==rset01.getString("EntryUser")){		rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("EntryUser");}			//登録者コード
-					if(null==rset01.getString("UpdateUser")){		rt[counter][ 6]="";}else{rt[counter][ 6]=rset01.getString("UpdateUser");}			//更新者コード
+					rt[counter][ColDeliveryTypeNo]=rset01.getInt("DeliveryTypeNo");		//タイプ番号
+					if(null==rset01.getString("DeliveryTypeCd")){	rt[counter][ColDeliveryTypeCd]	="";}else{rt[counter][ColDeliveryTypeCd]		=rset01.getString("DeliveryTypeCd");}		//運送タイプコード
+					if(null==rset01.getString("DeliveryTypeName")){	rt[counter][ColDeliveryTypeName]	="";}else{rt[counter][ColDeliveryTypeName]	=rset01.getString("DeliveryTypeName");}		//運送タイプ名
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]			="";}else{rt[counter][ColEntryDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser]			="";}else{rt[counter][ColEntryUser]			=rset01.getString("EntryUser");}			//登録者コード
+					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]			=rset01.getString("UpdateUser");}			//更新者コード
+					
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}

@@ -257,22 +257,22 @@ public class WM00010WhMstSearch{
 					for(int i=0;i<WhMstRt.length;i++) {
 						Object[] SetOb = new Object[17];
 						SetOb[ 0] = false;
-						SetOb[ 1] = ""+WhMstRt[i][ 0];
-						SetOb[ 2] = ""+WhMstRt[i][ 1];
-						SetOb[ 3] = ""+WhMstRt[i][ 2];
-						SetOb[ 4] = ""+WhMstRt[i][ 3];
-						SetOb[ 5] = ""+WhMstRt[i][ 4];
-						SetOb[ 6] = ""+WhMstRt[i][ 5];
-						SetOb[ 7] = ""+WhMstRt[i][ 6];
-						SetOb[ 8] = ""+WhMstRt[i][ 7];
-						SetOb[ 9] = ""+WhMstRt[i][ 8];
-						SetOb[10] = ""+WhMstRt[i][ 9];
-						SetOb[11] = ""+WhMstRt[i][10];
-						SetOb[12] = ""+WhMstRt[i][11];
-						SetOb[13] = ""+WhMstRt[i][12];
-						SetOb[14] = ""+WhMstRt[i][13];
-						SetOb[15] = ""+WhMstRt[i][14];
-						SetOb[16] = ""+WhMstRt[i][15];
+						SetOb[ 1] = ""+WhMstRt[i][M00001WhMstRt.ColNoWHCD];
+						SetOb[ 2] = ""+WhMstRt[i][M00001WhMstRt.ColNoWHName];
+						SetOb[ 3] = ""+WhMstRt[i][M00001WhMstRt.ColNoPost];
+						SetOb[ 4] = ""+WhMstRt[i][M00001WhMstRt.ColNoAdd01];
+						SetOb[ 5] = ""+WhMstRt[i][M00001WhMstRt.ColNoAdd02];
+						SetOb[ 6] = ""+WhMstRt[i][M00001WhMstRt.ColNoTel];
+						SetOb[ 7] = ""+WhMstRt[i][M00001WhMstRt.ColNoFax];
+						SetOb[ 8] = ""+WhMstRt[i][M00001WhMstRt.ColNoMail];
+						SetOb[ 9] = ""+WhMstRt[i][M00001WhMstRt.ColNoCom01];
+						SetOb[10] = ""+WhMstRt[i][M00001WhMstRt.ColNoCom02];
+						SetOb[11] = ""+WhMstRt[i][M00001WhMstRt.ColNoCom03];
+						SetOb[12] = ""+WhMstRt[i][M00001WhMstRt.ColNoPTMSCD];
+						SetOb[13] = ""+WhMstRt[i][M00001WhMstRt.ColNoEntryDate];
+						SetOb[14] = ""+WhMstRt[i][M00001WhMstRt.ColNoUpdateDate];
+						SetOb[15] = ""+WhMstRt[i][M00001WhMstRt.ColNoEntryUser];
+						SetOb[16] = ""+WhMstRt[i][M00001WhMstRt.ColNoUpdateUser];
 						
 						tableModel_ms01.addRow(SetOb);
 					}

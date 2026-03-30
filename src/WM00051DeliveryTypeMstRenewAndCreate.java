@@ -72,13 +72,13 @@ public class WM00051DeliveryTypeMstRenewAndCreate{
 					AllSearch);
 			
 			if(0<DeliveryTypeMstRt.length) {
-				TB_SearchDeliveryTypeNo.setSelectedIndex((int)DeliveryTypeMstRt[0][0]-1);
-				TB_DeliveryTypeCd.setText(		""+DeliveryTypeMstRt[0][1]);
-				TB_DeliveryTypeName.setText(	""+DeliveryTypeMstRt[0][2]);
-				TB_EntryDate.setText(			""+DeliveryTypeMstRt[0][3]);
-				TB_UpdateDate.setText(			""+DeliveryTypeMstRt[0][4]);
-				TB_EntryUser.setText(			""+DeliveryTypeMstRt[0][5]);
-				TB_UpdateUser.setText(			""+DeliveryTypeMstRt[0][6]);
+				TB_SearchDeliveryTypeNo.setSelectedIndex((int)DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColDeliveryTypeNo]-1);
+				TB_DeliveryTypeCd.setText(		""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColDeliveryTypeCd]);
+				TB_DeliveryTypeName.setText(	""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColDeliveryTypeName]);
+				TB_EntryDate.setText(			""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColEntryDate]);
+				TB_UpdateDate.setText(			""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColUpdateDate]);
+				TB_EntryUser.setText(			""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColEntryUser]);
+				TB_UpdateUser.setText(			""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColUpdateUser]);
 			}
 		}
 		

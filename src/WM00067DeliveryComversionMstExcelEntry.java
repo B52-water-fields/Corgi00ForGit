@@ -359,8 +359,8 @@ public class WM00067DeliveryComversionMstExcelEntry{
 								//存在しない届先CDコード設定しようとしていた場合新規登録扱い
 								boolean UnHitFg = true;
 								for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-									if((""+DeliveryMstRt[i01][ 0]).equals(""+ExcellRead[i][TgtCol[ 3]])) {
-										if((""+DeliveryMstRt[i01][ 1]).equals(""+ExcellRead[i][TgtCol[ 4]])) {
+									if((""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDECD]).equals(""+ExcellRead[i][TgtCol[ 3]])) {
+										if((""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDepartmentCd]).equals(""+ExcellRead[i][TgtCol[ 4]])) {
 											SetOb[24] = "2";//届先Mst存在Fg
 											UnHitFg = false;
 											HitCount = HitCount+1;

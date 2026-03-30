@@ -253,25 +253,25 @@ public class WM00020ClGlpMstSearch{
 					for(int i=0;i<ClGpMstRt.length;i++) {
 						Object[] SetOb = new Object[20];
 						SetOb[ 0] = false;
-						SetOb[ 1] = ""+ClGpMstRt[i][ 0];
-						SetOb[ 2] = ""+ClGpMstRt[i][ 1];
-						SetOb[ 3] = ""+ClGpMstRt[i][ 2];
-						SetOb[ 4] = ""+ClGpMstRt[i][ 3];
-						SetOb[ 5] = ""+ClGpMstRt[i][ 4];
-						SetOb[ 6] = ""+ClGpMstRt[i][ 5];
-						SetOb[ 7] = ""+ClGpMstRt[i][ 6];
-						SetOb[ 8] = ""+ClGpMstRt[i][ 7];
-						SetOb[ 9] = ""+ClGpMstRt[i][ 8];
-						SetOb[10] = ""+ClGpMstRt[i][ 9];
-						SetOb[11] = ""+ClGpMstRt[i][10];
-						SetOb[12] = ""+ClGpMstRt[i][11];
-						SetOb[13] = ""+ClGpMstRt[i][12];
-						SetOb[14] = ""+ClGpMstRt[i][13];
-						SetOb[15] = ""+ClGpMstRt[i][14];
-						SetOb[16] = ""+ClGpMstRt[i][15];
-						SetOb[17] = ""+ClGpMstRt[i][16];
-						SetOb[18] = ""+ClGpMstRt[i][17];
-						SetOb[19] = ""+ClGpMstRt[i][18];
+						SetOb[ 1] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD];
+						SetOb[ 2] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName01];
+						SetOb[ 3] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName02];
+						SetOb[ 4] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName03];
+						SetOb[ 5] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColPost];
+						SetOb[ 6] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColAdd01];
+						SetOb[ 7] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColAdd02];
+						SetOb[ 8] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColAdd03];
+						SetOb[ 9] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColTel];
+						SetOb[10] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColFax];
+						SetOb[11] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColMail];
+						SetOb[12] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColCom01];
+						SetOb[13] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColCom02];
+						SetOb[14] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColCom03];
+						SetOb[15] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColEntryDate];
+						SetOb[16] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColUpdateDate];
+						SetOb[17] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColEntryUser];
+						SetOb[18] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColUpdateUser];
+						SetOb[19] = ""+ClGpMstRt[i][M00010ClGpMstRt.ColPassWord];
 						
 						tableModel_ms01.addRow(SetOb);
 					}

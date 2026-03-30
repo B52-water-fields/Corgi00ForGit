@@ -125,7 +125,7 @@ public class WM00065DeliveryComversionMstSerarch{
 					SearchCom,
 					AllSearch);
 			if(0<ClGpMstRt.length) {
-				TB_SearchCLGpName.setText(""+ClGpMstRt[0][1]);
+				TB_SearchCLGpName.setText(""+ClGpMstRt[0][M00010ClGpMstRt.ColCLGpName01]);
 			}
 		}
 		TB_SearchClGpCD.setEnabled(false);

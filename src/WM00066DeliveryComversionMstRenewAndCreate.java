@@ -149,7 +149,7 @@ public class WM00066DeliveryComversionMstRenewAndCreate{
 					AllSearch);
 			
 			if(0<ClGpMstRt.length) {
-				TB_CLGpName01.setText(""+ClGpMstRt[0][1]);
+				TB_CLGpName01.setText(""+ClGpMstRt[0][M00010ClGpMstRt.ColCLGpName01]);
 			}
 		}
 		
@@ -199,37 +199,37 @@ public class WM00066DeliveryComversionMstRenewAndCreate{
 									SearchMstPriorityFirstFg,
 									AllSearch);
 				if(0<DeliveryComversionMstRt.length) {
-					TB_ClGpCD.setText(		""+DeliveryComversionMstRt[0][ 0]);
-					TB_CLGpName01.setText(	""+DeliveryComversionMstRt[0][ 1]);
-					TB_CL_DECD.setText(		""+DeliveryComversionMstRt[0][ 2]);
-					TB_DECD.setText(		""+DeliveryComversionMstRt[0][ 3]);
-					TB_DepartmentCd.setText(""+DeliveryComversionMstRt[0][ 4]);
-					TB_DEName01.setText(	""+DeliveryComversionMstRt[0][ 5]);
-					TB_DEName02.setText(	""+DeliveryComversionMstRt[0][ 6]);
-					TB_DEName03.setText(	""+DeliveryComversionMstRt[0][ 7]);
-					TB_Post.setText(		""+DeliveryComversionMstRt[0][ 8]);
-					TB_Add01.setText(		""+DeliveryComversionMstRt[0][ 9]);
-					TB_Add02.setText(		""+DeliveryComversionMstRt[0][10]);
-					TB_Add03.setText(		""+DeliveryComversionMstRt[0][11]);
-					TB_Tel.setText(			""+DeliveryComversionMstRt[0][12]);
-					TB_Fax.setText(			""+DeliveryComversionMstRt[0][13]);
-					TB_Mail.setText(		""+DeliveryComversionMstRt[0][14]);
-					TB_SetName.setText(		""+DeliveryComversionMstRt[0][15]);
-					TB_Com01.setText(		""+DeliveryComversionMstRt[0][16]);
-					TB_Com02.setText(		""+DeliveryComversionMstRt[0][17]);
-					TB_Com03.setText(		""+DeliveryComversionMstRt[0][18]);
-					TB_Com04.setText(		""+DeliveryComversionMstRt[0][19]);
-					TB_Com05.setText(		""+DeliveryComversionMstRt[0][20]);
+					TB_ClGpCD.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColClGpCD]);
+					TB_CLGpName01.setText(	""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColCLGpName01]);
+					TB_CL_DECD.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColCL_DECD]);
+					TB_DECD.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColDECD]);
+					TB_DepartmentCd.setText(""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColDepartmentCd]);
+					TB_DEName01.setText(	""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColDEName01]);
+					TB_DEName02.setText(	""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColDEName02]);
+					TB_DEName03.setText(	""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColDEName03]);
+					TB_Post.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColPost]);
+					TB_Add01.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColAdd01]);
+					TB_Add02.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColAdd02]);
+					TB_Add03.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColAdd03]);
+					TB_Tel.setText(			""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColTel]);
+					TB_Fax.setText(			""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColFax]);
+					TB_Mail.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColMail]);
+					TB_SetName.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColSetName]);
+					TB_Com01.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColCom01]);
+					TB_Com02.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColCom02]);
+					TB_Com03.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColCom03]);
+					TB_Com04.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColCom04]);
+					TB_Com05.setText(		""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColCom05]);
 					for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-						if(B00100DefaultVariable.DelList[1][i].equals(""+DeliveryComversionMstRt[0][25])) {
+						if(B00100DefaultVariable.DelList[1][i].equals(""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColDelFg])) {
 							TB_DelFg.setSelectedIndex(i);
 						}
 					}
-					if(1==(int)DeliveryComversionMstRt[0][26]){TB_MstPriorityFirstFg.setSelectedIndex(1);}else {TB_MstPriorityFirstFg.setSelectedIndex(0);}
-					TB_EntryDate.setText(	""+DeliveryComversionMstRt[0][21]);
-					TB_UpdateDate.setText(	""+DeliveryComversionMstRt[0][22]);
-					TB_EntryUser.setText(	""+DeliveryComversionMstRt[0][23]);
-					TB_UpdateUser.setText(	""+DeliveryComversionMstRt[0][24]);
+					if(1==(int)DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColMstPriorityFirstFg]){TB_MstPriorityFirstFg.setSelectedIndex(1);}else {TB_MstPriorityFirstFg.setSelectedIndex(0);}
+					TB_EntryDate.setText(	""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColEntryDate]);
+					TB_UpdateDate.setText(	""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColUpdateDate]);
+					TB_EntryUser.setText(	""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColEntryUser]);
+					TB_UpdateUser.setText(	""+DeliveryComversionMstRt[0][M00060DeliveryComversionMstRt.ColUpdateUser]);
 				}
 			}
 		}

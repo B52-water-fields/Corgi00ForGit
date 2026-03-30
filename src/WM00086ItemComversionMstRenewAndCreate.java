@@ -134,18 +134,18 @@ public class WM00086ItemComversionMstRenewAndCreate{
 			if(0<ItemComversionMstRt.length) {
 				TB_UnitType.setSelectedIndex(0);
 				for(int i=0;i<B00100DefaultVariable.UnitTypeList[1].length;i++) {
-					if((""+B00100DefaultVariable.UnitTypeList[1][i]).equals(""+ItemComversionMstRt[0][ 6])) {
+					if((""+B00100DefaultVariable.UnitTypeList[1][i]).equals(""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColPackingType])) {
 						TB_UnitType.setSelectedIndex(i);
 					}
 				}
 				
-				TB_ItemCd.setText(		""+ItemComversionMstRt[0][ 5]);
-				TB_ItemName01.setText(	""+ItemComversionMstRt[0][ 7]);
-				TB_ItemName02.setText(	""+ItemComversionMstRt[0][ 8]);
-				TB_ItemName03.setText(	""+ItemComversionMstRt[0][ 9]);
-				TB_CtQty.setText(		""+ItemComversionMstRt[0][13]);
-				TB_CsQty.setText(		""+ItemComversionMstRt[0][14]);
-				TB_PlQty.setText(		""+ItemComversionMstRt[0][15]);
+				TB_ItemCd.setText(		""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColItemCd]);
+				TB_ItemName01.setText(	""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColItemName01]);
+				TB_ItemName02.setText(	""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColItemName02]);
+				TB_ItemName03.setText(	""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColItemName03]);
+				TB_CtQty.setText(		""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColCtQty]);
+				TB_CsQty.setText(		""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColCsQty]);
+				TB_PlQty.setText(		""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColPlQty]);
 			}
 		}
 		
@@ -531,17 +531,17 @@ public class WM00086ItemComversionMstRenewAndCreate{
 				case 0:
 					break;
 				case 1:
-					if(0==(int)ItemMstRt[0][18]) {
+					if(0==(int)ItemMstRt[0][M00070ItemMstRt.ColCtQty]) {
 						ErrMsg.add("変換先の商品マスタにはカートンの概念がありません。やり直し。");
 					}
 					break;
 				case 2:
-					if(0==(int)ItemMstRt[0][19]) {
+					if(0==(int)ItemMstRt[0][M00070ItemMstRt.ColCsQty]) {
 						ErrMsg.add("変換先の商品マスタにはケースの概念がありません。やり直し。");
 					}
 					break;
 				case 3:
-					if(0==(int)ItemMstRt[0][20]) {
+					if(0==(int)ItemMstRt[0][M00070ItemMstRt.ColPlQty]) {
 						ErrMsg.add("変換先の商品マスタにはパレットの概念がありません。やり直し。");
 					}
 					break;

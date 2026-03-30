@@ -120,46 +120,46 @@ public class WM00026ClMstRenewAndCreate{
 						SearchTel,SearchFax,SearchMail,SearchCom,SearchWHCD,AllSearch);
 			
 			if(0<ClMstRt.length) {
-				TB_cl_cd.setText(""+ClMstRt[0][0]);
-				TB_CLName01.setText(""+ClMstRt[0][5]);
-				TB_CLName02.setText(""+ClMstRt[0][6]);
-				TB_CLName03.setText(""+ClMstRt[0][7]);
-				TB_Post.setText(""+ClMstRt[0][8]);
-				TB_Add01.setText(""+ClMstRt[0][9]);
-				TB_Add02.setText(""+ClMstRt[0][10]);
-				TB_Add03.setText(""+ClMstRt[0][11]);
-				TB_Tel.setText(""+ClMstRt[0][12]);
-				TB_Fax.setText(""+ClMstRt[0][13]);
-				TB_Mail.setText(""+ClMstRt[0][14]);
-				TB_Com01.setText(""+ClMstRt[0][15]);
-				TB_Com02.setText(""+ClMstRt[0][16]);
-				TB_Com03.setText(""+ClMstRt[0][17]);
-				TB_EntryDate.setText(""+ClMstRt[0][20]);
-				TB_UpdateDate.setText(""+ClMstRt[0][21]);
-				TB_EntryUser.setText(""+ClMstRt[0][22]);
-				TB_UpdateUser.setText(""+ClMstRt[0][23]);
-				TB_PTMSCD.setText(""+ClMstRt[0][24]);
+				TB_cl_cd.setText(		""+ClMstRt[0][M00011ClMstRt.Colcl_cd]);
+				TB_CLName01.setText(	""+ClMstRt[0][M00011ClMstRt.ColCLName01]);
+				TB_CLName02.setText(	""+ClMstRt[0][M00011ClMstRt.ColCLName02]);
+				TB_CLName03.setText(	""+ClMstRt[0][M00011ClMstRt.ColCLName03]);
+				TB_Post.setText(		""+ClMstRt[0][M00011ClMstRt.ColPost]);
+				TB_Add01.setText(		""+ClMstRt[0][M00011ClMstRt.ColAdd01]);
+				TB_Add02.setText(		""+ClMstRt[0][M00011ClMstRt.ColAdd02]);
+				TB_Add03.setText(		""+ClMstRt[0][M00011ClMstRt.ColAdd03]);
+				TB_Tel.setText(			""+ClMstRt[0][M00011ClMstRt.ColTel]);
+				TB_Fax.setText(			""+ClMstRt[0][M00011ClMstRt.ColFax]);
+				TB_Mail.setText(		""+ClMstRt[0][M00011ClMstRt.ColMail]);
+				TB_Com01.setText(		""+ClMstRt[0][M00011ClMstRt.ColCom01]);
+				TB_Com02.setText(		""+ClMstRt[0][M00011ClMstRt.ColCom02]);
+				TB_Com03.setText(		""+ClMstRt[0][M00011ClMstRt.ColCom03]);
+				TB_EntryDate.setText(	""+ClMstRt[0][M00011ClMstRt.ColEntryDate]);
+				TB_UpdateDate.setText(	""+ClMstRt[0][M00011ClMstRt.ColUpdateDate]);
+				TB_EntryUser.setText(	""+ClMstRt[0][M00011ClMstRt.ColEntryUser]);
+				TB_UpdateUser.setText(	""+ClMstRt[0][M00011ClMstRt.ColUpdateUser]);
+				TB_PTMSCD.setText(		""+ClMstRt[0][M00011ClMstRt.ColPTMSCD]);
 				
 				for(int i=0;i<B00100DefaultVariable.ClGpList[1].length;i++) {
-					if((""+ClMstRt[0][1]).equals(""+B00100DefaultVariable.ClGpList[1][i])) {
+					if((""+ClMstRt[0][M00011ClMstRt.ColClGpCD]).equals(""+B00100DefaultVariable.ClGpList[1][i])) {
 						TB_ClGpCD.setSelectedIndex(i);
 					}
 				}
 				
 				for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-					if((""+ClMstRt[0][3]).equals(""+B00100DefaultVariable.WhList[1][i])) {
+					if((""+ClMstRt[0][M00011ClMstRt.ColWHCD]).equals(""+B00100DefaultVariable.WhList[1][i])) {
 						TB_WHCD.setSelectedIndex(i);
 					}
 				}
 				
 				for(int i=0;i<B00100DefaultVariable.ShimeDateList.length;i++) {
-					if((""+ClMstRt[0][18]).equals(""+B00100DefaultVariable.ShimeDateList[i])) {
+					if((""+ClMstRt[0][M00011ClMstRt.ColShimeDate]).equals(""+B00100DefaultVariable.ShimeDateList[i])) {
 						TB_ShimeDate.setSelectedIndex(i);
 					}
 				}
 				
 				for(int i=0;i<B00100DefaultVariable.DeliFeeNorm[1].length;i++) {
-					if((""+ClMstRt[0][19]).equals(""+B00100DefaultVariable.DeliFeeNorm[1][i])) {
+					if((""+ClMstRt[0][M00011ClMstRt.ColShimeBasis]).equals(""+B00100DefaultVariable.DeliFeeNorm[1][i])) {
 						TB_ShimeBasis.setSelectedIndex(i);
 					}
 				}

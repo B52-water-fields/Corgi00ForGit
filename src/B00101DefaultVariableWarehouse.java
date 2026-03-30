@@ -265,9 +265,9 @@ public class B00101DefaultVariableWarehouse{
 				
 				entry_data[0][0] = GetClCd;					//荷主CD
 				entry_data[0][1] = "ClGp000";					//荷主グループCD
-				entry_data[0][2] = ""+WhMstRt[0][0];			//担当倉庫
-				entry_data[0][3] = "TMGHD"+WhMstRt[0][1]+"荷主";//荷主名1
-				entry_data[0][4] = "TMGHD"+WhMstRt[0][0];		//荷主名2
+				entry_data[0][2] = ""+WhMstRt[0][M00001WhMstRt.ColNoWHCD];			//担当倉庫
+				entry_data[0][3] = "TMGHD"+WhMstRt[0][M00001WhMstRt.ColNoWHName]+"荷主";//荷主名1
+				entry_data[0][4] = "TMGHD"+WhMstRt[0][M00001WhMstRt.ColNoWHName];		//荷主名2
 				entry_data[0][5] = "";							//荷主名3
 				entry_data[0][6] = "5160023";					//郵便番号
 				entry_data[0][7] = "三重県伊勢市";				//住所1

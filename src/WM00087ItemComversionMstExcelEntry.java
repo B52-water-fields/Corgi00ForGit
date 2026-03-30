@@ -471,7 +471,7 @@ public class WM00087ItemComversionMstExcelEntry{
 			
 			UnHitFg = true;
 			for(int i01=0;i01<ClGpMstRt.length;i01++) {
-				if((""+CheckOb[i][1]).equals(""+ClGpMstRt[i01][0])) {
+				if((""+CheckOb[i][1]).equals(""+ClGpMstRt[i01][M00010ClGpMstRt.ColClGpCD])) {
 					UnHitFg = false;
 					i01=ClGpMstRt.length+1;
 				}
@@ -484,7 +484,7 @@ public class WM00087ItemComversionMstExcelEntry{
 			
 			UnHitFg = true;
 			for(int i01=0;i01<ClMstRt.length;i01++) {
-				if((""+CheckOb[i][1]).equals(""+ClMstRt[i01][1])&&(""+CheckOb[i][2]).equals(""+ClMstRt[i01][0])) {
+				if((""+CheckOb[i][1]).equals(""+ClMstRt[i01][M00011ClMstRt.ColClGpCD])&&(""+CheckOb[i][2]).equals(""+ClMstRt[i01][M00011ClMstRt.Colcl_cd])) {
 					UnHitFg = false;
 					i01=ClMstRt.length+1;
 				}
@@ -496,27 +496,27 @@ public class WM00087ItemComversionMstExcelEntry{
 			
 			UnHitFg = true;
 			for(int i01=0;i01<ItemMstRt.length;i01++) {
-				if((""+CheckOb[i][1]).equals(""+ItemMstRt[i01][0])&&(""+CheckOb[i][4]).equals(""+ItemMstRt[i01][2])) {
+				if((""+CheckOb[i][1]).equals(""+ItemMstRt[i01][M00070ItemMstRt.ColClGpCd])&&(""+CheckOb[i][4]).equals(""+ItemMstRt[i01][M00070ItemMstRt.ColItemCd])) {
 					UnHitFg = false;
 					switch(""+CheckOb[i][5]) {
 						case "0":
 							break;
 						case "1":
-							if(0>=(int)ItemMstRt[i01][18]) {
+							if(0>=(int)ItemMstRt[i01][M00070ItemMstRt.ColCtQty]) {
 								int wint = i+1;
-								ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][2]+")"+ItemMstRt[i01][4]+"にはカートン設定されていません");
+								ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M00070ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M00070ItemMstRt.ColItemName01]+"にはカートン設定されていません");
 							}
 							break;
 						case "2":
-							if(0>=(int)ItemMstRt[i01][19]) {
+							if(0>=(int)ItemMstRt[i01][M00070ItemMstRt.ColCsQty]) {
 								int wint = i+1;
-								ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][2]+")"+ItemMstRt[i01][4]+"にはケース設定されていません");
+								ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M00070ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M00070ItemMstRt.ColItemName01]+"にはケース設定されていません");
 							}
 							break;
 						case "3":
-							if(0>=(int)ItemMstRt[i01][20]) {
+							if(0>=(int)ItemMstRt[i01][M00070ItemMstRt.ColPlQty]) {
 								int wint = i+1;
-								ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][2]+")"+ItemMstRt[i01][4]+"にはパレット設定されていません");
+								ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M00070ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M00070ItemMstRt.ColItemName01]+"にはパレット設定されていません");
 							}
 							break;
 						default:

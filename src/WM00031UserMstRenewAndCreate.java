@@ -158,9 +158,9 @@ public class WM00031UserMstRenewAndCreate{
 			SearchClList[2][0] = "";
 			TB_MainClient.addItem(SearchClList[0][0]);
 			for(int i=0;i<ClMstRt.length;i++) {
-				SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
-				SearchClList[1][i+1] = "" + ClMstRt[i][0];
-				SearchClList[2][i+1] = "" + ClMstRt[i][5];
+				SearchClList[0][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M00011ClMstRt.ColCLName01];
+				SearchClList[1][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd];
+				SearchClList[2][i+1] = "" + ClMstRt[i][M00011ClMstRt.ColCLName01];
 				TB_MainClient.addItem(SearchClList[0][i+1]);
 			}
 		}
@@ -206,7 +206,7 @@ public class WM00031UserMstRenewAndCreate{
 			if(0<UserMstRt.length) {
 				//権限が9：管理者だった場合、管理者権限でなければ更新させない
 				boolean KickFg = true;
-				if("9".equals(""+UserMstRt[0][5])) {
+				if("9".equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])) {
 					KickFg = false;
 				}
 				if("9".equals(A00000Main.LoginUserAuthorityFG)) {
@@ -215,13 +215,13 @@ public class WM00031UserMstRenewAndCreate{
 				
 				if(KickFg) {
 					for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++){
-						if((""+B00100DefaultVariable.WhList[1][i]).equals(""+UserMstRt[0][0])){
+						if((""+B00100DefaultVariable.WhList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColWHCD])){
 							TB_WHCD.setSelectedIndex(i);
 						}
 					}
 					
 					for(int i=0;i<B00100DefaultVariable.ShippingCompanyList[1].length;i++){
-						if((""+B00100DefaultVariable.ShippingCompanyList[1][i]).equals(""+UserMstRt[0][1])){
+						if((""+B00100DefaultVariable.ShippingCompanyList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColShippingCompanyCd])){
 							TB_ShippingCompanyCd.setSelectedIndex(i);
 						}
 					}
@@ -263,51 +263,51 @@ public class WM00031UserMstRenewAndCreate{
 						SearchClList[2][0] = "";
 						TB_MainClient.addItem(SearchClList[0][0]);
 						for(int i=0;i<ClMstRt.length;i++) {
-							SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
-							SearchClList[1][i+1] = "" + ClMstRt[i][0];
-							SearchClList[2][i+1] = "" + ClMstRt[i][5];
+							SearchClList[0][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M00011ClMstRt.ColCLName01];
+							SearchClList[1][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd];
+							SearchClList[2][i+1] = "" + ClMstRt[i][M00011ClMstRt.ColCLName01];
 							TB_MainClient.addItem(SearchClList[0][i+1]);
 						}
 					}
 					
 					for(int i=0;i<SearchClList[1].length;i++){
-						if((""+SearchClList[1][i]).equals(""+UserMstRt[0][30])){
+						if((""+SearchClList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColMainClient])){
 							TB_MainClient.setSelectedIndex(i);
 						}
 					}
 					
 					for(int i=0;i<B00100DefaultVariable.AuthorityFG[1].length;i++){
-						if((""+B00100DefaultVariable.AuthorityFG[1][i]).equals(""+UserMstRt[0][5])){
+						if((""+B00100DefaultVariable.AuthorityFG[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])){
 							TB_AuthorityFG.setSelectedIndex(i);
 						}
 					}
 					
 					for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++){
-						if((""+B00100DefaultVariable.DelList[1][i]).equals(""+UserMstRt[0][28])){
+						if((""+B00100DefaultVariable.DelList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColDelFg])){
 							TB_DelFg.setSelectedIndex(i);
 						}
 					}
-					TB_UserCd.setText(		""+UserMstRt[0][3]);
-					TB_PassWord.setText(	""+UserMstRt[0][4]);
-					TB_UserName01.setText(	""+UserMstRt[0][10]);
-					TB_UserName02.setText(	""+UserMstRt[0][11]);
-					TB_UserName03.setText(	""+UserMstRt[0][12]);
-					TB_CarCd.setText(		""+UserMstRt[0][6]);
-					TB_Post.setText(		""+UserMstRt[0][13]);
-					TB_Add01.setText(		""+UserMstRt[0][14]);
-					TB_Add02.setText(		""+UserMstRt[0][15]);
-					TB_Add03.setText(		""+UserMstRt[0][16]);
-					TB_Tel.setText(			""+UserMstRt[0][17]);
-					TB_Fax.setText(			""+UserMstRt[0][18]);
-					TB_Mail.setText(		""+UserMstRt[0][19]);
-					TB_Com01.setText(		""+UserMstRt[0][20]);
-					TB_Com02.setText(		""+UserMstRt[0][21]);
-					TB_Com03.setText(		""+UserMstRt[0][22]);
-					TB_EntryDate.setText(	""+UserMstRt[0][23]);
-					TB_UpdateDate.setText(	""+UserMstRt[0][24]);
-					TB_EntryUser.setText(	""+UserMstRt[0][25]);
-					TB_UpdateUser.setText(	""+UserMstRt[0][26]);
-					TB_PTMSCD.setText(		""+UserMstRt[0][27]);
+					TB_UserCd.setText(		""+UserMstRt[0][M00020UserMstRt.ColUserCd]);
+					TB_PassWord.setText(	""+UserMstRt[0][M00020UserMstRt.ColPassWord]);
+					TB_UserName01.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName01]);
+					TB_UserName02.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName02]);
+					TB_UserName03.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName03]);
+					TB_CarCd.setText(		""+UserMstRt[0][M00020UserMstRt.ColCarCd]);
+					TB_Post.setText(		""+UserMstRt[0][M00020UserMstRt.ColPost]);
+					TB_Add01.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd01]);
+					TB_Add02.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd02]);
+					TB_Add03.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd03]);
+					TB_Tel.setText(			""+UserMstRt[0][M00020UserMstRt.ColTel]);
+					TB_Fax.setText(			""+UserMstRt[0][M00020UserMstRt.ColFax]);
+					TB_Mail.setText(		""+UserMstRt[0][M00020UserMstRt.ColMail]);
+					TB_Com01.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom01]);
+					TB_Com02.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom02]);
+					TB_Com03.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom03]);
+					TB_EntryDate.setText(	""+UserMstRt[0][M00020UserMstRt.ColEntryDate]);
+					TB_UpdateDate.setText(	""+UserMstRt[0][M00020UserMstRt.ColUpdateDate]);
+					TB_EntryUser.setText(	""+UserMstRt[0][M00020UserMstRt.ColEntryUser]);
+					TB_UpdateUser.setText(	""+UserMstRt[0][M00020UserMstRt.ColUpdateUser]);
+					TB_PTMSCD.setText(		""+UserMstRt[0][M00020UserMstRt.ColPTMSCD]);
 					
 					TB_WHCD.setEnabled(false);
 					TB_ShippingCompanyCd.setEnabled(false);
@@ -420,9 +420,9 @@ public class WM00031UserMstRenewAndCreate{
 						SearchClList[2][0] = "";
 						TB_MainClient.addItem(SearchClList[0][0]);
 						for(int i=0;i<ClMstRt.length;i++) {
-							SearchClList[0][i+1] = "" + ClMstRt[i][0] + ":" + ClMstRt[i][5];
-							SearchClList[1][i+1] = "" + ClMstRt[i][0];
-							SearchClList[2][i+1] = "" + ClMstRt[i][5];
+							SearchClList[0][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M00011ClMstRt.ColCLName01];
+							SearchClList[1][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd];
+							SearchClList[2][i+1] = "" + ClMstRt[i][M00011ClMstRt.ColCLName01];
 							TB_MainClient.addItem(SearchClList[0][i+1]);
 						}
 					}
@@ -510,7 +510,7 @@ public class WM00031UserMstRenewAndCreate{
 						
 						if(0<UserMstRt.length) {
 							boolean KickFg = false;
-							if("9".equals(""+UserMstRt[0][5])) {
+							if("9".equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])) {
 								if("9".equals(A00000Main.LoginUserAuthorityFG)) {
 									KickFg = true;
 								}else {
@@ -531,55 +531,55 @@ public class WM00031UserMstRenewAndCreate{
 								
 								if(KickFg) {
 									for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++){
-										if((""+B00100DefaultVariable.WhList[1][i]).equals(""+UserMstRt[0][0])){
+										if((""+B00100DefaultVariable.WhList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColWHCD])){
 											TB_WHCD.setSelectedIndex(i);
 										}
 									}
 									
 									for(int i=0;i<B00100DefaultVariable.ShippingCompanyList[1].length;i++){
-										if((""+B00100DefaultVariable.ShippingCompanyList[1][i]).equals(""+UserMstRt[0][1])){
+										if((""+B00100DefaultVariable.ShippingCompanyList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColShippingCompanyCd])){
 											TB_ShippingCompanyCd.setSelectedIndex(i);
 										}
 									}
 									
 									for(int i=0;i<SearchClList[1].length;i++){
-										if((""+SearchClList[1][i]).equals(""+UserMstRt[0][30])){
+										if((""+SearchClList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColMainClient])){
 											TB_MainClient.setSelectedIndex(i);
 										}
 									}
 									
 									for(int i=0;i<B00100DefaultVariable.AuthorityFG[1].length;i++){
-										if((""+B00100DefaultVariable.AuthorityFG[1][i]).equals(""+UserMstRt[0][5])){
+										if((""+B00100DefaultVariable.AuthorityFG[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])){
 											TB_AuthorityFG.setSelectedIndex(i);
 										}
 									}
 									
 									for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++){
-										if((""+B00100DefaultVariable.DelList[1][i]).equals(""+UserMstRt[0][28])){
+										if((""+B00100DefaultVariable.DelList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColDelFg])){
 											TB_DelFg.setSelectedIndex(i);
 										}
 									}
-									TB_UserCd.setText(		""+UserMstRt[0][3]);
-									TB_PassWord.setText(	""+UserMstRt[0][4]);
-									TB_UserName01.setText(	""+UserMstRt[0][10]);
-									TB_UserName02.setText(	""+UserMstRt[0][11]);
-									TB_UserName03.setText(	""+UserMstRt[0][12]);
-									TB_CarCd.setText(		""+UserMstRt[0][6]);
-									TB_Post.setText(		""+UserMstRt[0][13]);
-									TB_Add01.setText(		""+UserMstRt[0][14]);
-									TB_Add02.setText(		""+UserMstRt[0][15]);
-									TB_Add03.setText(		""+UserMstRt[0][16]);
-									TB_Tel.setText(			""+UserMstRt[0][17]);
-									TB_Fax.setText(			""+UserMstRt[0][18]);
-									TB_Mail.setText(		""+UserMstRt[0][19]);
-									TB_Com01.setText(		""+UserMstRt[0][20]);
-									TB_Com02.setText(		""+UserMstRt[0][21]);
-									TB_Com03.setText(		""+UserMstRt[0][22]);
-									TB_EntryDate.setText(	""+UserMstRt[0][23]);
-									TB_UpdateDate.setText(	""+UserMstRt[0][24]);
-									TB_EntryUser.setText(	""+UserMstRt[0][25]);
-									TB_UpdateUser.setText(	""+UserMstRt[0][26]);
-									TB_PTMSCD.setText(		""+UserMstRt[0][27]);
+									TB_UserCd.setText(		""+UserMstRt[0][M00020UserMstRt.ColUserCd]);
+									TB_PassWord.setText(	""+UserMstRt[0][M00020UserMstRt.ColPassWord	]);
+									TB_UserName01.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName01]);
+									TB_UserName02.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName02]);
+									TB_UserName03.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName03]);
+									TB_CarCd.setText(		""+UserMstRt[0][M00020UserMstRt.ColCarCd]);
+									TB_Post.setText(		""+UserMstRt[0][M00020UserMstRt.ColPost]);
+									TB_Add01.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd01]);
+									TB_Add02.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd02]);
+									TB_Add03.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd03]);
+									TB_Tel.setText(			""+UserMstRt[0][M00020UserMstRt.ColTel]);
+									TB_Fax.setText(			""+UserMstRt[0][M00020UserMstRt.ColFax]);
+									TB_Mail.setText(		""+UserMstRt[0][M00020UserMstRt.ColMail]);
+									TB_Com01.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom01]);
+									TB_Com02.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom02]);
+									TB_Com03.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom03]);
+									TB_EntryDate.setText(	""+UserMstRt[0][M00020UserMstRt.ColEntryDate]);
+									TB_UpdateDate.setText(	""+UserMstRt[0][M00020UserMstRt.ColUpdateDate]);
+									TB_EntryUser.setText(	""+UserMstRt[0][M00020UserMstRt.ColEntryUser]);
+									TB_UpdateUser.setText(	""+UserMstRt[0][M00020UserMstRt.ColUpdateUser]);
+									TB_PTMSCD.setText(		""+UserMstRt[0][M00020UserMstRt.ColPTMSCD]);
 									
 									TB_WHCD.setEnabled(false);
 									TB_ShippingCompanyCd.setEnabled(false);
@@ -764,7 +764,7 @@ public class WM00031UserMstRenewAndCreate{
 									SearchDelFg,
 									AllSearch);
 						if(0<UserMstRt.length) {
-							if("9".equals(""+UserMstRt[0][5])) {
+							if("9".equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])) {
 								if("9".equals(A00000Main.LoginUserAuthorityFG)) {
 									KickFg = true;
 								}else {

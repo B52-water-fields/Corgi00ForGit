@@ -39,38 +39,95 @@ public class M00040DeliveryMstRt{
 		SearchTelExactMatch,
 		AllSearch
 		);
+		
+	String GetDECD				= DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD];			//届先コード
+	String GetDepartmentCd		= DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd];	//部署CD
+	String GetDEName01			= DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName01];		//届先名1
+	String GetDEName02			= DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName02];		//届先名2
+	String GetDEName03			= DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName03];		//届先名3
+	String GetPost				= DeliveryMstRt[i][M00040DeliveryMstRt.ColPost];			//届先郵便
+	String GetAdd01				= DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd01];			//届先住所1
+	String GetAdd02				= DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd02];			//届先住所2
+	String GetAdd03				= DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd03];			//届先住所3
+	String GetTel				= DeliveryMstRt[i][M00040DeliveryMstRt.ColTel];				//届先電話
+	String GetFax				= DeliveryMstRt[i][M00040DeliveryMstRt.ColFax];				//届先FAX
+	String GetMail				= DeliveryMstRt[i][M00040DeliveryMstRt.ColMail];			//届先MAIL
+	String GetCom01				= DeliveryMstRt[i][M00040DeliveryMstRt.ColCom01];			//コメント1
+	String GetCom02				= DeliveryMstRt[i][M00040DeliveryMstRt.ColCom02];			//コメント2
+	String GetCom03				= DeliveryMstRt[i][M00040DeliveryMstRt.ColCom03];			//コメント3
+	String GetPrefecturesCd		= DeliveryMstRt[i][M00040DeliveryMstRt.ColPrefecturesCd];	//JIS県CD2桁
+	String GetMunicipalityCd	= DeliveryMstRt[i][M00040DeliveryMstRt.ColMunicipalityCd];	//JIS市区町村CD5桁
+	String GetPTMSCD			= DeliveryMstRt[i][M00040DeliveryMstRt.ColPTMSCD];			//基幹システム発着地コード
+	String GetEntryDate			= DeliveryMstRt[i][M00040DeliveryMstRt.ColEntryDate];		//データ登録日時
+	String GetUpdateDate		= DeliveryMstRt[i][M00040DeliveryMstRt.ColUpdateDate];		//データ更新日時
+	String GetEntryUser			= DeliveryMstRt[i][M00040DeliveryMstRt.ColEntryUser];		//登録者コード
+	String GetUpdateUser		= DeliveryMstRt[i][M00040DeliveryMstRt.ColUpdateUser];		//更新者コード
+	String GetFirstClient		= DeliveryMstRt[i][M00040DeliveryMstRt.ColFirstClient];		//登録した荷主CD
+	String GetLastClient		= DeliveryMstRt[i][M00040DeliveryMstRt.ColLastClient];		//更新した荷主CD
+	String GetDelFg				= DeliveryMstRt[i][M00040DeliveryMstRt.ColDelFg];			//削除区分
+	String GetFirstClientName	= DeliveryMstRt[i][M00040DeliveryMstRt.ColFirstClientName];	//登録した荷主名
+	String GetLastClientName	= DeliveryMstRt[i][M00040DeliveryMstRt.ColLastClientName];	//登録した荷主名
+		
 	*/
 	
 	//戻り値カラム
+	static int ColDECD				= (int) 0;	//届先コード
+	static int ColDepartmentCd	= (int) 1;	//部署CD
+	static int ColDEName01			= (int) 2;	//届先名1
+	static int ColDEName02			= (int) 3;	//届先名2
+	static int ColDEName03			= (int) 4;	//届先名3
+	static int ColPost				= (int) 5;	//届先郵便
+	static int ColAdd01			= (int) 6;	//届先住所1
+	static int ColAdd02			= (int) 7;	//届先住所2
+	static int ColAdd03			= (int) 8;	//届先住所3
+	static int ColTel				= (int) 9;	//届先電話
+	static int ColFax				= (int)10;	//届先FAX
+	static int ColMail				= (int)11;	//届先MAIL
+	static int ColCom01			= (int)12;	//コメント1
+	static int ColCom02			= (int)13;	//コメント2
+	static int ColCom03			= (int)14;	//コメント3
+	static int ColPrefecturesCd	= (int)15;	//JIS県CD2桁
+	static int ColMunicipalityCd	= (int)16;	//JIS市区町村CD5桁
+	static int ColPTMSCD			= (int)17;	//基幹システム発着地コード
+	static int ColEntryDate		= (int)18;	//データ登録日時
+	static int ColUpdateDate		= (int)19;	//データ更新日時
+	static int ColEntryUser		= (int)20;	//登録者コード
+	static int ColUpdateUser		= (int)21;	//更新者コード
+	static int ColFirstClient		= (int)22;	//登録した荷主CD
+	static int ColLastClient		= (int)23;	//更新した荷主CD
+	static int ColDelFg			= (int)24;	//削除区分
+	static int ColFirstClientName= (int)25;	//登録した荷主名
+	static int ColLastClientName	= (int)26;	//登録した荷主名
+	
 	public static Object[][] RtSettingDeliveryMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {
-				 {"DECD"			,(int) 0	,"String"	,"届先コード"}
-				,{"DepartmentCd"	,(int) 1	,"String"	,"部署CD"}
-				,{"DEName01"		,(int) 2	,"String"	,"届先名1"}
-				,{"DEName02"		,(int) 3	,"String"	,"届先名2"}
-				,{"DEName03"		,(int) 4	,"String"	,"届先名3"}
-				,{"Post"			,(int) 5	,"String"	,"届先郵便"}
-				,{"Add01"			,(int) 6	,"String"	,"届先住所1"}
-				,{"Add02"			,(int) 7	,"String"	,"届先住所2"}
-				,{"Add03"			,(int) 8	,"String"	,"届先住所3"}
-				,{"Tel"				,(int) 9	,"String"	,"届先電話"}
-				,{"Fax"				,(int)10	,"String"	,"届先FAX"}
-				,{"Mail"			,(int)11	,"String"	,"届先MAIL"}
-				,{"Com01"			,(int)12	,"String"	,"コメント1"}
-				,{"Com02"			,(int)13	,"String"	,"コメント2"}
-				,{"Com03"			,(int)14	,"String"	,"コメント3"}
-				,{"PrefecturesCd"	,(int)15	,"String"	,"JIS県CD2桁"}
-				,{"MunicipalityCd"	,(int)16	,"String"	,"JIS市区町村CD5桁"}
-				,{"PTMSCD"			,(int)17	,"String"	,"基幹システム発着地コード"}
-				,{"EntryDate"		,(int)18	,"String"	,"データ登録日時"}
-				,{"UpdateDate"		,(int)19	,"String"	,"データ更新日時"}
-				,{"EntryUser"		,(int)20	,"String"	,"登録者コード"}
-				,{"UpdateUser"		,(int)21	,"String"	,"更新者コード"}
-				,{"FirstClient"		,(int)22	,"String"	,"登録した荷主CD"}
-				,{"LastClient"		,(int)23	,"String"	,"更新した荷主CD"}
-				,{"DelFg"			,(int)24	,"int"		,"削除区分"}
-				,{"FirstClientName"	,(int)25	,"String"	,"登録した荷主名"}
-				,{"LastClientName"	,(int)26	,"String"	,"登録した荷主名"}
+				 {"DECD"			,ColDECD				,"String"	,"届先コード"}
+				,{"DepartmentCd"	,ColDepartmentCd		,"String"	,"部署CD"}
+				,{"DEName01"		,ColDEName01			,"String"	,"届先名1"}
+				,{"DEName02"		,ColDEName02			,"String"	,"届先名2"}
+				,{"DEName03"		,ColDEName03			,"String"	,"届先名3"}
+				,{"Post"			,ColPost				,"String"	,"届先郵便"}
+				,{"Add01"			,ColAdd01				,"String"	,"届先住所1"}
+				,{"Add02"			,ColAdd02				,"String"	,"届先住所2"}
+				,{"Add03"			,ColAdd03				,"String"	,"届先住所3"}
+				,{"Tel"				,ColTel				,"String"	,"届先電話"}
+				,{"Fax"				,ColFax				,"String"	,"届先FAX"}
+				,{"Mail"			,ColMail				,"String"	,"届先MAIL"}
+				,{"Com01"			,ColCom01				,"String"	,"コメント1"}
+				,{"Com02"			,ColCom02				,"String"	,"コメント2"}
+				,{"Com03"			,ColCom03				,"String"	,"コメント3"}
+				,{"PrefecturesCd"	,ColPrefecturesCd		,"String"	,"JIS県CD2桁"}
+				,{"MunicipalityCd"	,ColMunicipalityCd	,"String"	,"JIS市区町村CD5桁"}
+				,{"PTMSCD"			,ColPTMSCD				,"String"	,"基幹システム発着地コード"}
+				,{"EntryDate"		,ColEntryDate			,"String"	,"データ登録日時"}
+				,{"UpdateDate"		,ColUpdateDate		,"String"	,"データ更新日時"}
+				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者コード"}
+				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者コード"}
+				,{"FirstClient"		,ColFirstClient		,"String"	,"登録した荷主CD"}
+				,{"LastClient"		,ColLastClient		,"String"	,"更新した荷主CD"}
+				,{"DelFg"			,ColDelFg				,"int"		,"削除区分"}
+				,{"FirstClientName"	,ColFirstClientName	,"String"	,"登録した荷主名"}
+				,{"LastClientName"	,ColLastClientName	,"String"	,"登録した荷主名"}
 				};
 		
 		return RtSettingDeliveryMstRt;
@@ -376,33 +433,34 @@ public class M00040DeliveryMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("DECD")){				rt[counter][ 0] = "";}else{rt[counter][ 0] = rset01.getString("DECD");}				//届先コード
-					if(null==rset01.getString("DepartmentCd")){		rt[counter][ 1] = "";}else{rt[counter][ 1] = rset01.getString("DepartmentCd");}		//部署CD
-					if(null==rset01.getString("DEName01")){			rt[counter][ 2] = "";}else{rt[counter][ 2] = rset01.getString("DEName01");}			//届先名1
-					if(null==rset01.getString("DEName02")){			rt[counter][ 3] = "";}else{rt[counter][ 3] = rset01.getString("DEName02");}			//届先名2
-					if(null==rset01.getString("DEName03")){			rt[counter][ 4] = "";}else{rt[counter][ 4] = rset01.getString("DEName03");}			//届先名3
-					if(null==rset01.getString("Post")){				rt[counter][ 5] = "";}else{rt[counter][ 5] = rset01.getString("Post");	}			//届先郵便
-					if(null==rset01.getString("Add01")){			rt[counter][ 6] = "";}else{rt[counter][ 6] = rset01.getString("Add01");}			//届先住所1
-					if(null==rset01.getString("Add02")){			rt[counter][ 7] = "";}else{rt[counter][ 7] = rset01.getString("Add02");}			//届先住所2
-					if(null==rset01.getString("Add03")){			rt[counter][ 8] = "";}else{rt[counter][ 8] = rset01.getString("Add03");}			//届先住所3
-					if(null==rset01.getString("Tel")){				rt[counter][ 9] = "";}else{rt[counter][ 9] = rset01.getString("Tel");}				//届先電話
-					if(null==rset01.getString("Fax")){				rt[counter][10] = "";}else{rt[counter][10] = rset01.getString("Fax");}				//届先FAX
-					if(null==rset01.getString("Mail")){				rt[counter][11] = "";}else{rt[counter][11] = rset01.getString("Mail");}				//届先MAIL
-					if(null==rset01.getString("Com01")){			rt[counter][12] = "";}else{rt[counter][12] = rset01.getString("Com01");}			//コメント1
-					if(null==rset01.getString("Com02")){			rt[counter][13] = "";}else{rt[counter][13] = rset01.getString("Com02");}			//コメント2
-					if(null==rset01.getString("Com03")){			rt[counter][14] = "";}else{rt[counter][14] = rset01.getString("Com03");}			//コメント3
-					if(null==rset01.getString("PrefecturesCd")){	rt[counter][15] = "";}else{rt[counter][15] = rset01.getString("PrefecturesCd");}	//JIS県CD2桁
-					if(null==rset01.getString("MunicipalityCd")){	rt[counter][16] = "";}else{rt[counter][16] = rset01.getString("MunicipalityCd");}	//JIS市区町村CD5桁
-					if(null==rset01.getString("PTMSCD")){			rt[counter][17] = "";}else{rt[counter][17] = rset01.getString("PTMSCD");}			//基幹システム発着地コード
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][18] = "";}else{rt[counter][18] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][19] = "";}else{rt[counter][19] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
-					if(null==rset01.getString("EntryUser")){		rt[counter][20] = "";}else{rt[counter][20] = rset01.getString("EntryUser");}		//登録者コード
-					if(null==rset01.getString("UpdateUser")){		rt[counter][21] = "";}else{rt[counter][21] = rset01.getString("UpdateUser");}		//更新者コード
-					if(null==rset01.getString("FirstClient")){		rt[counter][22] = "";}else{rt[counter][22] = rset01.getString("FirstClient");}		//登録した荷主CD
-					if(null==rset01.getString("LastClient")){		rt[counter][23] = "";}else{rt[counter][23] = rset01.getString("LastClient");}		//更新した荷主CD
-					rt[counter][24] = rset01.getInt("DelFg");				//削除区分
-					if(null==rset01.getString("FirstClientName")){	rt[counter][25] = "";}else{rt[counter][25] = rset01.getString("FirstClientName");}	//登録した荷主名
-					if(null==rset01.getString("LastClientName")){	rt[counter][26] = "";}else{rt[counter][26] = rset01.getString("LastClientName");}	//登録した荷主名
+					if(null==rset01.getString("DECD")){				rt[counter][ColDECD] 				= "";}else{rt[counter][ColDECD] 				= rset01.getString("DECD");}			//届先コード
+					if(null==rset01.getString("DepartmentCd")){		rt[counter][ColDepartmentCd] 		= "";}else{rt[counter][ColDepartmentCd] 		= rset01.getString("DepartmentCd");}	//部署CD
+					if(null==rset01.getString("DEName01")){			rt[counter][ColDEName01] 			= "";}else{rt[counter][ColDEName01] 			= rset01.getString("DEName01");}		//届先名1
+					if(null==rset01.getString("DEName02")){			rt[counter][ColDEName02] 			= "";}else{rt[counter][ColDEName02] 			= rset01.getString("DEName02");}		//届先名2
+					if(null==rset01.getString("DEName03")){			rt[counter][ColDEName03] 			= "";}else{rt[counter][ColDEName03] 			= rset01.getString("DEName03");}		//届先名3
+					if(null==rset01.getString("Post")){				rt[counter][ColPost] 				= "";}else{rt[counter][ColPost] 				= rset01.getString("Post");	}			//届先郵便
+					if(null==rset01.getString("Add01")){			rt[counter][ColAdd01] 				= "";}else{rt[counter][ColAdd01] 				= rset01.getString("Add01");}			//届先住所1
+					if(null==rset01.getString("Add02")){			rt[counter][ColAdd02] 				= "";}else{rt[counter][ColAdd02] 				= rset01.getString("Add02");}			//届先住所2
+					if(null==rset01.getString("Add03")){			rt[counter][ColAdd03] 				= "";}else{rt[counter][ColAdd03] 				= rset01.getString("Add03");}			//届先住所3
+					if(null==rset01.getString("Tel")){				rt[counter][ColTel] 				= "";}else{rt[counter][ColTel] 				= rset01.getString("Tel");}				//届先電話
+					if(null==rset01.getString("Fax")){				rt[counter][ColFax] 				= "";}else{rt[counter][ColFax] 				= rset01.getString("Fax");}				//届先FAX
+					if(null==rset01.getString("Mail")){				rt[counter][ColMail] 				= "";}else{rt[counter][ColMail] 				= rset01.getString("Mail");}			//届先MAIL
+					if(null==rset01.getString("Com01")){			rt[counter][ColCom01] 				= "";}else{rt[counter][ColCom01] 				= rset01.getString("Com01");}			//コメント1
+					if(null==rset01.getString("Com02")){			rt[counter][ColCom02] 				= "";}else{rt[counter][ColCom02] 				= rset01.getString("Com02");}			//コメント2
+					if(null==rset01.getString("Com03")){			rt[counter][ColCom03] 				= "";}else{rt[counter][ColCom03] 				= rset01.getString("Com03");}			//コメント3
+					if(null==rset01.getString("PrefecturesCd")){	rt[counter][ColPrefecturesCd] 	= "";}else{rt[counter][ColPrefecturesCd] 		= rset01.getString("PrefecturesCd");}	//JIS県CD2桁
+					if(null==rset01.getString("MunicipalityCd")){	rt[counter][ColMunicipalityCd] 	= "";}else{rt[counter][ColMunicipalityCd] 	= rset01.getString("MunicipalityCd");}	//JIS市区町村CD5桁
+					if(null==rset01.getString("PTMSCD")){			rt[counter][ColPTMSCD] 			= "";}else{rt[counter][ColPTMSCD] 				= rset01.getString("PTMSCD");}			//基幹システム発着地コード
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate] 		= "";}else{rt[counter][ColEntryDate] 			= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate] 		= "";}else{rt[counter][ColUpdateDate] 		= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
+					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser] 		= "";}else{rt[counter][ColEntryUser] 			= rset01.getString("EntryUser");}		//登録者コード
+					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser] 		= "";}else{rt[counter][ColUpdateUser] 		= rset01.getString("UpdateUser");}		//更新者コード
+					if(null==rset01.getString("FirstClient")){		rt[counter][ColFirstClient] 		= "";}else{rt[counter][ColFirstClient] 		= rset01.getString("FirstClient");}		//登録した荷主CD
+					if(null==rset01.getString("LastClient")){		rt[counter][ColLastClient] 		= "";}else{rt[counter][ColLastClient] 		= rset01.getString("LastClient");}		//更新した荷主CD
+					rt[counter][ColDelFg] = rset01.getInt("DelFg");				//削除区分
+					if(null==rset01.getString("FirstClientName")){	rt[counter][ColFirstClientName] 	= "";}else{rt[counter][ColFirstClientName] 	= rset01.getString("FirstClientName");}	//登録した荷主名
+					if(null==rset01.getString("LastClientName")){	rt[counter][ColLastClientName] 	= "";}else{rt[counter][ColLastClientName] 	= rset01.getString("LastClientName");}	//登録した荷主名
+					
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
@@ -460,8 +518,8 @@ public class M00040DeliveryMstRt{
     	int DENo = 0;
     	
     	for(int i=0;i<DeliveryMstRt.length;i++) {
-    		if("AT".equals((""+DeliveryMstRt[i][0]).substring(0,2))&&11==(""+DeliveryMstRt[i][0]).length()) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][0]);
+    		if("AT".equals((""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).substring(0,2))&&11==(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]);
     			if(9==WST.length()) {
     				int wint = Integer.parseInt(WST);
     				if(DENo<wint) {
@@ -518,7 +576,7 @@ public class M00040DeliveryMstRt{
 				);
 		int DeptNo = 0;
 		for(int i=0;i<DeliveryMstRt.length;i++) {
-			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][ 1]);
+			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd]);
 			if("".equals(WST)) {WST = "0";}
 			int WINT = Integer.parseInt(WST);
 			if(WINT>DeptNo) {

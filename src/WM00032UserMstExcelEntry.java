@@ -344,8 +344,8 @@ public class WM00032UserMstExcelEntry{
 				
 				Object[][] ShippingCompanyMstRt = ShippingCompanyMstRt(TgtShippingCompanyCd);
 				Object[][] CarMstRt = CarMstRt(TgtCarCd);
-				Object[][] ClMstRt = ClMstRt(TgthCLCD);
-				Object[][] WhMstRt = WhMstRt(TgtWHCD);
+				Object[][] ClMstRt 	= ClMstRt(TgthCLCD);
+				Object[][] WhMstRt 	= WhMstRt(TgtWHCD);
 				ArrayList<String> ErrMsg = new ArrayList<String>();
 				
 				for(int i=0;i<ExcellRead.length;i++) {
@@ -422,8 +422,8 @@ public class WM00032UserMstExcelEntry{
 						if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])) {
 							UnHitFg = true;
 							for(int i01=0;i01<WhMstRt.length;i01++) {
-								if((""+ExcellRead[i][TgtCol[ 0]]).equals(""+WhMstRt[i01][0])) {
-									SetOb[ 4] = ""+WhMstRt[i01][1];	//倉庫名
+								if((""+ExcellRead[i][TgtCol[ 0]]).equals(""+WhMstRt[i01][M00001WhMstRt.ColNoWHCD])) {
+									SetOb[ 4] = ""+WhMstRt[i01][M00001WhMstRt.ColNoWHName];	//倉庫名
 									UnHitFg = false;
 								}
 							}
@@ -437,8 +437,8 @@ public class WM00032UserMstExcelEntry{
 						if(!"".equals(""+ExcellRead[i][TgtCol[ 1]])) {
 							UnHitFg = true;
 							for(int i01=0;i01<ShippingCompanyMstRt.length;i01++) {
-								if((""+ExcellRead[i][TgtCol[ 1]]).equals(""+ShippingCompanyMstRt[i01][0])) {
-									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][1];	//運送会社名
+								if((""+ExcellRead[i][TgtCol[ 1]]).equals(""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyCd])) {
+									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名
 									UnHitFg = false;
 								}
 							}
@@ -464,13 +464,13 @@ public class WM00032UserMstExcelEntry{
 						if(!"".equals(""+ExcellRead[i][TgtCol[ 7]])) {
 							UnHitFg = true;
 							for(int i01=0;i01<CarMstRt.length;i01++) {
-								if((""+ExcellRead[i][TgtCol[ 0]]).equals(""+CarMstRt[i01][0])
-									&& (""+ExcellRead[i][TgtCol[ 1]]).equals(""+CarMstRt[i01][1])
-									&& (""+ExcellRead[i][TgtCol[ 7]]).equals(""+CarMstRt[i01][5])
+								if((""+ExcellRead[i][TgtCol[ 0]]).equals(""+CarMstRt[i01][M00031CarMstRt.ColWHCD])
+									&& (""+ExcellRead[i][TgtCol[ 1]]).equals(""+CarMstRt[i01][M00031CarMstRt.ColShippingCompanyCd])
+									&& (""+ExcellRead[i][TgtCol[ 7]]).equals(""+CarMstRt[i01][M00031CarMstRt.ColCarCd])
 									) {
-									SetOb[11] = ""+CarMstRt[i01][6];	//車両名称01
-									SetOb[12] = ""+CarMstRt[i01][7];	//車両名称02
-									SetOb[13] = ""+CarMstRt[i01][8];	//車両名称03
+									SetOb[11] = ""+CarMstRt[i01][M00031CarMstRt.ColCarName01];	//車両名称01
+									SetOb[12] = ""+CarMstRt[i01][M00031CarMstRt.ColCarName02];	//車両名称02
+									SetOb[13] = ""+CarMstRt[i01][M00031CarMstRt.ColCarName03];	//車両名称03
 									UnHitFg = false;
 								}
 							}
@@ -482,8 +482,8 @@ public class WM00032UserMstExcelEntry{
 						if(!"".equals(""+ExcellRead[i][TgtCol[20]])) {
 							UnHitFg = true;
 							for(int i01=0;i01<ClMstRt.length;i01++) {
-								if((""+ExcellRead[i][TgtCol[20]]).equals(""+ClMstRt[i01][0])) {
-									SetOb[27] = ""+ClMstRt[i01][5];	//主要担当荷主名
+								if((""+ExcellRead[i][TgtCol[20]]).equals(""+ClMstRt[i01][M00011ClMstRt.Colcl_cd])) {
+									SetOb[27] = ""+ClMstRt[i01][M00011ClMstRt.ColCLName01];	//主要担当荷主名
 									UnHitFg = false;
 								}
 							}

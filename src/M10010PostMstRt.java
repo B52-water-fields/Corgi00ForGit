@@ -6,6 +6,12 @@ import java.util.ArrayList;
 
 public class M10010PostMstRt{
 	
+	static int ColPOST					= (int) 0;	//郵便番号
+	static int ColPREFECTURES			= (int) 1;	//県
+	static int ColMUNICI01				= (int) 2;	//市区町村
+	static int ColMUNICI02				= (int) 3;	//町丁目
+	static int ColMUNICIPALITY_CD	= (int) 4;	//市区町村CD
+	
 	public static Object[][] RtSettingPostRt(){
 		//戻り値カラム
 		/*
@@ -20,17 +26,29 @@ public class M10010PostMstRt{
 												SearchAdd,
 												AllSearch,
 												PostPerfectMatch);
+												
+		String GetPOST				= (String)PostRt[i][M10010PostMstRt.ColPOST];				//郵便番号
+		String GetPREFECTURES		= (String)PostRt[i][M10010PostMstRt.ColPREFECTURES];		//県
+		String GetMUNICI01			= (String)PostRt[i][M10010PostMstRt.ColMUNICI01];			//市区町村
+		String GetMUNICI02			= (String)PostRt[i][M10010PostMstRt.ColMUNICI02];			//町丁目
+		String GetMUNICIPALITY_CD 	= (String)PostRt[i][M10010PostMstRt.ColMUNICIPALITY_CD];	//市区町村CD
+		
 		*/
+		
 		Object[][] RtSettingPostRt = {
-				 {"POST"			,(int) 0	,"String"	,"郵便番号"}
-				,{"PREFECTURES"		,(int) 1	,"String"	,"県"}
-				,{"MUNICI01"		,(int) 2	,"String"	,"市区町村"}
-				,{"MUNICI02"		,(int) 3	,"String"	,"町丁目"}
-				,{"MUNICIPALITY_CD"	,(int) 4	,"String"	,"市区町村CD"}
+				 {"POST"			,ColPOST				,"String"	,"郵便番号"}
+				,{"PREFECTURES"		,ColPREFECTURES		,"String"	,"県"}
+				,{"MUNICI01"		,ColMUNICI01			,"String"	,"市区町村"}
+				,{"MUNICI02"		,ColMUNICI02			,"String"	,"町丁目"}
+				,{"MUNICIPALITY_CD"	,ColMUNICIPALITY_CD	,"String"	,"市区町村CD"}
 				};
 		
 		return RtSettingPostRt;
 	}
+	
+	static int ColMunicipalityRtPREFECTURES			= (int) 0;	//県
+	static int ColMunicipalityRtMUNICI01			= (int) 1;	//市区町村
+	static int ColMunicipalityRtMUNICIPALITY_CD	= (int) 2;	//市区町村CD
 	
 	public static Object[][] RtSettingMunicipalityRt(){
 		//市区町村マスタ戻り値
@@ -44,28 +62,42 @@ public class M10010PostMstRt{
 																SearchName,
 																SearchMunicipalityCd,
 																AllSearch);
+																
+		String GetPREFECTURES		= (String)MunicipalityRt[i][M10010PostMstRt.ColMunicipalityRtPREFECTURES];			//県
+		String GetMUNICI01			= (String)MunicipalityRt[i][M10010PostMstRt.ColMunicipalityRtMUNICI01];				//市区町村
+		String GetMUNICIPALITY_CD	= (String)MunicipalityRt[i][M10010PostMstRt.ColMunicipalityRtMUNICIPALITY_CD];		//市区町村CD
 		*/
 		Object[][] RtSettingMunicipalityRt = {
-				{"PREFECTURES"		,(int) 0	,"String"	,"県"}
-				,{"MUNICI01"		,(int) 1	,"String"	,"市区町村"}
-				,{"MUNICIPALITY_CD"	,(int) 2	,"String"	,"市区町村CD"}
+				{"PREFECTURES"		,ColMunicipalityRtPREFECTURES		,"String"	,"県"}
+				,{"MUNICI01"		,ColMunicipalityRtMUNICI01			,"String"	,"市区町村"}
+				,{"MUNICIPALITY_CD"	,ColMunicipalityRtMUNICIPALITY_CD	,"String"	,"市区町村CD"}
 				};
 		
 		return RtSettingMunicipalityRt;
 	}
+	
+	static int ColPrefecuturesRtPREFECTURES_CD	= (int) 0;	//県CD
+	static int ColPrefecuturesRtPREFECTURES		= (int) 1;	//県名
+	
 	public static Object[][] RtSettingPrefecuturesRt(){
 		//県マスタ戻り値
 		/*
 		コピペ用
 		Object[][] PrefecuturesRt = M10010PostMstRt.PrefecuturesRt();
+		
+		String GetPREFECTURES_CD	=(String)PrefecuturesRt[i][M10010PostMstRt.ColPrefecuturesRtPREFECTURES_CD];	//県CD
+		String GetPREFECTURES		=(String)PrefecuturesRt[i][M10010PostMstRt.ColPrefecuturesRtPREFECTURES;		//県名
 		*/
 		Object[][] RtSettingPrefecuturesRt = {
-				{"PREFECTURES_CD"	,(int) 0	,"String"	,"県CD"}
-				,{"PREFECTURES"		,(int) 1	,"String"	,"県名"}
+				{"PREFECTURES_CD"	,ColPrefecuturesRtPREFECTURES_CD	,"String"	,"県CD"}
+				,{"PREFECTURES"		,ColPrefecuturesRtPREFECTURES		,"String"	,"県名"}
 				};
 		
 		return RtSettingPrefecuturesRt;
 	}
+	
+	static int ColAddToMunicipalityTgtAdd			= (int) 0;	//対象住所
+	static int ColAddToMunicipalityMUNICIPALITY_CD	= (int) 1;	//判定JISCD
 	
 	public static Object[][] RtAddToMunicipality(){
 		//住所一覧に対してJIS判定して結果を返却する ※特定できなかった場合"00000"返却
@@ -74,10 +106,13 @@ public class M10010PostMstRt{
 		String[] AddList = new String[0];
 		
 		Object[][] AddToMunicipality = M10010PostMstRt.AddToMunicipality(AddList);
+		
+		String GetTgtAdd			= (String)AddToMunicipality[i][M10010PostMstRt.ColAddToMunicipalityTgtAdd];				//対象住所
+		String GetMUNICIPALITY_CD	= (String)AddToMunicipality[i][M10010PostMstRt.ColAddToMunicipalityMUNICIPALITY_CD];	//判定JISCD
 		*/
 		Object[][] RtAddToMunicipality = {
-				{"TgtAdd"				,(int) 0	,"String"	,"対象住所"}
-				,{"MUNICIPALITY_CD"		,(int) 1	,"String"	,"判定JISCD"}
+				{"TgtAdd"				,ColAddToMunicipalityTgtAdd				,"String"	,"対象住所"}
+				,{"MUNICIPALITY_CD"		,ColAddToMunicipalityMUNICIPALITY_CD	,"String"	,"判定JISCD"}
 				};
 		return RtAddToMunicipality;
 	}
@@ -185,11 +220,12 @@ public class M10010PostMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("POST")){				rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("POST");}				//郵便番号
-					if(null==rset01.getString("PREFECTURES")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("PREFECTURES");}		//県
-					if(null==rset01.getString("MUNICI01")){			rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("MUNICI01");}			//市区町村
-					if(null==rset01.getString("MUNICI02")){			rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("MUNICI02");}			//町丁目
-					if(null==rset01.getString("MUNICIPALITY_CD")){	rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
+					if(null==rset01.getString("POST")){				rt[counter][ColPOST]				="";}else{rt[counter][ColPOST]					=rset01.getString("POST");}				//郵便番号
+					if(null==rset01.getString("PREFECTURES")){		rt[counter][ColPREFECTURES]		="";}else{rt[counter][ColPREFECTURES]			=rset01.getString("PREFECTURES");}		//県
+					if(null==rset01.getString("MUNICI01")){			rt[counter][ColMUNICI01]			="";}else{rt[counter][ColMUNICI01]				=rset01.getString("MUNICI01");}			//市区町村
+					if(null==rset01.getString("MUNICI02")){			rt[counter][ColMUNICI02]			="";}else{rt[counter][ColMUNICI02]				=rset01.getString("MUNICI02");}			//町丁目
+					if(null==rset01.getString("MUNICIPALITY_CD")){	rt[counter][ColMUNICIPALITY_CD]	="";}else{rt[counter][ColMUNICIPALITY_CD]	=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
+					
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
@@ -288,9 +324,10 @@ public class M10010PostMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("PREFECTURES")){		rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("PREFECTURES");}		//県
-					if(null==rset01.getString("MUNICI01")){			rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("MUNICI01");}			//市区町村
-					if(null==rset01.getString("MUNICIPALITY_CD")){	rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
+					if(null==rset01.getString("PREFECTURES")){		rt[counter][ColMunicipalityRtPREFECTURES]		="";}else{rt[counter][ColMunicipalityRtPREFECTURES]			=rset01.getString("PREFECTURES");}		//県
+					if(null==rset01.getString("MUNICI01")){			rt[counter][ColMunicipalityRtMUNICI01]			="";}else{rt[counter][ColMunicipalityRtMUNICI01]			=rset01.getString("MUNICI01");}			//市区町村
+					if(null==rset01.getString("MUNICIPALITY_CD")){	rt[counter][ColMunicipalityRtMUNICIPALITY_CD]	="";}else{rt[counter][ColMunicipalityRtMUNICIPALITY_CD]	=rset01.getString("MUNICIPALITY_CD");}	//市区町村CD
+					
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
@@ -348,8 +385,9 @@ public class M10010PostMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("PREFECTURES_CD")){	rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("PREFECTURES_CD");}		//県CD
-					if(null==rset01.getString("PREFECTURES")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("PREFECTURES");}			//県名
+					if(null==rset01.getString("PREFECTURES_CD")){	rt[counter][ColPrefecuturesRtPREFECTURES_CD]	="";}else{rt[counter][ColPrefecuturesRtPREFECTURES_CD]	=rset01.getString("PREFECTURES_CD");}	//県CD
+					if(null==rset01.getString("PREFECTURES")){		rt[counter][ColPrefecuturesRtPREFECTURES]		="";}else{rt[counter][ColPrefecuturesRtPREFECTURES]		=rset01.getString("PREFECTURES");}		//県名
+					
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}

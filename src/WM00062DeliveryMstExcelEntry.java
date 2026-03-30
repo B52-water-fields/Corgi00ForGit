@@ -635,12 +635,12 @@ public class WM00062DeliveryMstExcelEntry{
 						boolean UnHitFg = true;
 						boolean MineFg = false;
 						for(int i01=0;i01<TelDuplicationCheckAny.length;i01++) {
-							if((GetPostList[i].equals(""+TelDuplicationCheckAny[i01][5])&&GetTelList[i].equals(""+TelDuplicationCheckAny[i01][9]))
-									||(GetPostList[i].equals("")&&GetTelList[i].equals(""+TelDuplicationCheckAny[i01][9]))
+							if((GetPostList[i].equals(""+TelDuplicationCheckAny[i01][M00040DeliveryMstRt.ColPost])&&GetTelList[i].equals(""+TelDuplicationCheckAny[i01][M00040DeliveryMstRt.ColTel]))
+									||(GetPostList[i].equals("")&&GetTelList[i].equals(""+TelDuplicationCheckAny[i01][M00040DeliveryMstRt.ColTel]))
 									) {
 								UnHitFg = false;
 							}
-							if(GetDECDList[i].equals(""+TelDuplicationCheckAny[i01][0])) {
+							if(GetDECDList[i].equals(""+TelDuplicationCheckAny[i01][M00040DeliveryMstRt.ColDECD])) {
 								MineFg = true;
 							}
 						}
@@ -1337,8 +1337,8 @@ public class WM00062DeliveryMstExcelEntry{
 						if(!"".equals(CeckDECD[i])) {
 							boolean UnHitFg = true;
 							for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-								if(CeckDECD[i].equals(""+DeliveryMstRt[i01][0])
-										&& CeckDepartmentCd[i].equals(""+DeliveryMstRt[i01][1])
+								if(CeckDECD[i].equals(""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDECD])
+										&& CeckDepartmentCd[i].equals(""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDepartmentCd])
 										) {
 									UnHitFg = false;
 								}
@@ -1380,8 +1380,8 @@ public class WM00062DeliveryMstExcelEntry{
 						if(0==UpdateFg[i] ||("".equals(CeckPost[i]) && "".equals(CeckTel[i])) ) {
 							boolean UnHitFg = true;
 							for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-								if(("".equals(CeckPost[i])||(""+DeliveryMstRt[i01][5]).equals(CeckPost[i]))
-										&& (""+DeliveryMstRt[i01][9]).equals(CeckTel[i])
+								if(("".equals(CeckPost[i])||(""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColPost]).equals(CeckPost[i]))
+										&& (""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColTel]).equals(CeckTel[i])
 										) {
 									DuplicationCount[i] = DuplicationCount[i]+1;
 									OutPutRowCount 		= OutPutRowCount+1;
@@ -1458,8 +1458,8 @@ public class WM00062DeliveryMstExcelEntry{
 							if(0==UpdateFg[i] ||("".equals(CeckPost[i]) && "".equals(CeckTel[i])) ) {
 								boolean UnHitFg = true;
 								for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-									if(("".equals(CeckPost[i])||(""+DeliveryMstRt[i01][5]).equals(CeckPost[i]))
-											&& (""+DeliveryMstRt[i01][9]).equals(CeckTel[i])
+									if(("".equals(CeckPost[i])||(""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColPost]).equals(CeckPost[i]))
+											&& (""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColTel]).equals(CeckTel[i])
 											) {
 										MsCount 			= MsCount+1;
 										OutPutRowCount 		= OutPutRowCount+1;
@@ -1485,23 +1485,23 @@ public class WM00062DeliveryMstExcelEntry{
 										OutString[OutPutRowCount][17] = ""+UpdateFg[i]; 			//ステータス
 										OutString[OutPutRowCount][18] = ""+DuplicationCount[i]; 	//重複候補件数
 										OutString[OutPutRowCount][19] = ""+MsCount; 				//候補内Seq
-										OutString[OutPutRowCount][20] = ""+DeliveryMstRt[i01][ 0]; 	//重複候補_届先コード
-										OutString[OutPutRowCount][21] = ""+DeliveryMstRt[i01][ 1]; 	//重複候補_部署CD
-										OutString[OutPutRowCount][22] = ""+DeliveryMstRt[i01][ 2]; 	//重複候補_届先名1
-										OutString[OutPutRowCount][23] = ""+DeliveryMstRt[i01][ 3]; 	//重複候補_届先名2
-										OutString[OutPutRowCount][24] = ""+DeliveryMstRt[i01][ 4]; 	//重複候補_届先名3
-										OutString[OutPutRowCount][25] = ""+DeliveryMstRt[i01][ 5]; 	//重複候補_届先郵便
-										OutString[OutPutRowCount][26] = ""+DeliveryMstRt[i01][ 6]; 	//重複候補_届先住所1
-										OutString[OutPutRowCount][27] = ""+DeliveryMstRt[i01][ 7]; 	//重複候補_届先住所2
-										OutString[OutPutRowCount][28] = ""+DeliveryMstRt[i01][ 8]; 	//重複候補_届先住所3
-										OutString[OutPutRowCount][29] = ""+DeliveryMstRt[i01][ 9]; 	//重複候補_届先電話
-										OutString[OutPutRowCount][30] = ""+DeliveryMstRt[i01][10]; 	//重複候補_届先FAX
-										OutString[OutPutRowCount][31] = ""+DeliveryMstRt[i01][11]; 	//重複候補_届先MAIL
-										OutString[OutPutRowCount][32] = ""+DeliveryMstRt[i01][12]; 	//重複候補_コメント1
-										OutString[OutPutRowCount][33] = ""+DeliveryMstRt[i01][13]; 	//重複候補_コメント2
-										OutString[OutPutRowCount][34] = ""+DeliveryMstRt[i01][14]; 	//重複候補_コメント3
-										OutString[OutPutRowCount][35] = ""+DeliveryMstRt[i01][17]; 	//重複候補_基幹システム発着地コード
-										OutString[OutPutRowCount][36] = ""+DeliveryMstRt[i01][24]; 	//重複候補_削除区分
+										OutString[OutPutRowCount][20] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDECD]; 			//重複候補_届先コード
+										OutString[OutPutRowCount][21] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDepartmentCd]; 	//重複候補_部署CD
+										OutString[OutPutRowCount][22] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDEName01]; 		//重複候補_届先名1
+										OutString[OutPutRowCount][23] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDEName02]; 		//重複候補_届先名2
+										OutString[OutPutRowCount][24] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDEName03]; 		//重複候補_届先名3
+										OutString[OutPutRowCount][25] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColPost]; 			//重複候補_届先郵便
+										OutString[OutPutRowCount][26] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColAdd01]; 			//重複候補_届先住所1
+										OutString[OutPutRowCount][27] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColAdd02]; 			//重複候補_届先住所2
+										OutString[OutPutRowCount][28] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColAdd03]; 			//重複候補_届先住所3
+										OutString[OutPutRowCount][29] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColTel]; 			//重複候補_届先電話
+										OutString[OutPutRowCount][30] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColFax]; 			//重複候補_届先FAX
+										OutString[OutPutRowCount][31] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColMail]; 			//重複候補_届先MAIL
+										OutString[OutPutRowCount][32] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColCom01]; 			//重複候補_コメント1
+										OutString[OutPutRowCount][33] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColCom02]; 			//重複候補_コメント2
+										OutString[OutPutRowCount][34] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColCom03]; 			//重複候補_コメント3
+										OutString[OutPutRowCount][35] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColPTMSCD]; 			//重複候補_基幹システム発着地コード
+										OutString[OutPutRowCount][36] = ""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDelFg]; 			//重複候補_削除区分
 									}
 								}
 								if(UnHitFg) {
@@ -1660,7 +1660,7 @@ public class WM00062DeliveryMstExcelEntry{
 			boolean UnHitFg = true;
 			if(!"".equals(GetDECD[i])) {
 				for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-					if((""+DeliveryMstRt[i01][0]).equals(GetDECD[i])) {
+					if((""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDECD]).equals(GetDECD[i])) {
 						UnHitFg = false;
 					}
 				}

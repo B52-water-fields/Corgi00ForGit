@@ -4,36 +4,141 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class M00000ParameterMstRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchParaCd			= new ArrayList<String>();
+	ArrayList<String> SearchParaCdSeq		= new ArrayList<String>();
+	ArrayList<String> SearchParaName		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt01		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt02		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt03		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt04		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt05		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt06		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt07		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt08		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt09		= new ArrayList<String>();
+	ArrayList<String> SearchParaTxt10		= new ArrayList<String>();
+	ArrayList<Integer> SearchParaInt01Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt02Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt03Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt04Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt05Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt06Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt07Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt08Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt09Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt10Str	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt01End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt02End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt03End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt04End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt05End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt06End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt07End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt08End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt09End	= new ArrayList<Integer>();
+	ArrayList<Integer> SearchParaInt10End	= new ArrayList<Integer>();
+	Boolean AllSearch = false;
+	
+	Object[][] ParameterMstRtNANKO = M00000ParameterMstRt.ParameterMstRtNANKO(
+			SearchParaCd,SearchParaCdSeq,SearchParaName,
+			SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
+			SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
+			SearchParaInt01Str,SearchParaInt02Str,SearchParaInt03Str,SearchParaInt04Str,SearchParaInt05Str,
+			SearchParaInt06Str,SearchParaInt07Str,SearchParaInt08Str,SearchParaInt09Str,SearchParaInt10Str,
+			SearchParaInt01End,SearchParaInt02End,SearchParaInt03End,SearchParaInt04End,SearchParaInt05End,
+			SearchParaInt06End,SearchParaInt07End,SearchParaInt08End,SearchParaInt09End,SearchParaInt10End,
+			AllSearch);
+			
+	String GetParaCd		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaCd];		//パラメータコード
+	String GetParaCdSeq		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaCdSeq];	//ナンバリング
+	String GetParaName		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaName];		//パラメータ名
+	String GetParaTxt01		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt01];	//パラメータテキスト項目01
+	String GetParaTxt02		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt02];	//パラメータテキスト項目02
+	String GetParaTxt03		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt03];	//パラメータテキスト項目03
+	String GetParaTxt04		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt04];	//パラメータテキスト項目04
+	String GetParaTxt05		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt05];	//パラメータテキスト項目05
+	String GetParaTxt06		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt06];	//パラメータテキスト項目06
+	String GetParaTxt07		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt07];	//パラメータテキスト項目07
+	String GetParaTxt08		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt08];	//パラメータテキスト項目08
+	String GetParaTxt09		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt09];	//パラメータテキスト項目09
+	String GetParaTxt10		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt10];	//パラメータテキスト項目10
+	int GetParaInt01		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt01];		//パラメータ数値項目01
+	int GetParaInt02		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt02];		//パラメータ数値項目02
+	int GetParaInt03		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt03];		//パラメータ数値項目03
+	int GetParaInt04		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt04];		//パラメータ数値項目04
+	int GetParaInt05		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt05];		//パラメータ数値項目05
+	int GetParaInt06		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt06];		//パラメータ数値項目06
+	int GetParaInt07		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt07];		//パラメータ数値項目07
+	int GetParaInt08		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt08];		//パラメータ数値項目08
+	int GetParaInt09		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt09];		//パラメータ数値項目09
+	int GetParaInt10		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt10];		//パラメータ数値項目10
+	String GetEntryDate		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColEntryDate];	//登録日
+	String GetUpdateDate	= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColUpdateDate];	//更新日
+	String GetEntryUser		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColEntryUser];	//登録者
+	String GetUpdateUser	= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColUpdateUser];	//更新者
+	
+	*/
+	
 	//戻り値カラム
+	static int ColParaCd		= (int) 0;	//パラメータコード
+	static int ColParaCdSeq	= (int) 1;	//ナンバリング
+	static int ColParaName		= (int) 2;	//パラメータ名
+	static int ColParaTxt01	= (int) 3;	//パラメータテキスト項目01
+	static int ColParaTxt02	= (int) 4;	//パラメータテキスト項目02
+	static int ColParaTxt03	= (int) 5;	//パラメータテキスト項目03
+	static int ColParaTxt04	= (int) 6;	//パラメータテキスト項目04
+	static int ColParaTxt05	= (int) 7;	//パラメータテキスト項目05
+	static int ColParaTxt06	= (int) 8;	//パラメータテキスト項目06
+	static int ColParaTxt07	= (int) 9;	//パラメータテキスト項目07
+	static int ColParaTxt08	= (int)10;	//パラメータテキスト項目08
+	static int ColParaTxt09	= (int)11;	//パラメータテキスト項目09
+	static int ColParaTxt10	= (int)12;	//パラメータテキスト項目10
+	static int ColParaInt01	= (int)13;	//パラメータ数値項目01
+	static int ColParaInt02	= (int)14;	//パラメータ数値項目02
+	static int ColParaInt03	= (int)15;	//パラメータ数値項目03
+	static int ColParaInt04	= (int)16;	//パラメータ数値項目04
+	static int ColParaInt05	= (int)17;	//パラメータ数値項目05
+	static int ColParaInt06	= (int)18;	//パラメータ数値項目06
+	static int ColParaInt07	= (int)19;	//パラメータ数値項目07
+	static int ColParaInt08	= (int)20;	//パラメータ数値項目08
+	static int ColParaInt09	= (int)21;	//パラメータ数値項目09
+	static int ColParaInt10	= (int)22;	//パラメータ数値項目10
+	static int ColEntryDate	= (int)23;	//登録日
+	static int ColUpdateDate	= (int)24;	//更新日
+	static int ColEntryUser	= (int)25;	//登録者
+	static int ColUpdateUser	= (int)26;	//更新者
+	
 	public static Object[][] RtSettingParameterMstRtNANKO(){
 		Object[][] RtSettingParameterMstRtNANKO = {
-				 {"ParaCd"		,(int) 0	,"String"	,"パラメータコード"}
-				,{"ParaCdSeq"	,(int) 1	,"String"	,"ナンバリング"}
-				,{"ParaName"	,(int) 2	,"String"	,"パラメータ名"}
-				,{"ParaTxt01"	,(int) 3	,"String"	,"パラメータテキスト項目01"}
-				,{"ParaTxt02"	,(int) 4	,"String"	,"パラメータテキスト項目02"}
-				,{"ParaTxt03"	,(int) 5	,"String"	,"パラメータテキスト項目03"}
-				,{"ParaTxt04"	,(int) 6	,"String"	,"パラメータテキスト項目04"}
-				,{"ParaTxt05"	,(int) 7	,"String"	,"パラメータテキスト項目05"}
-				,{"ParaTxt06"	,(int) 8	,"String"	,"パラメータテキスト項目06"}
-				,{"ParaTxt07"	,(int) 9	,"String"	,"パラメータテキスト項目07"}
-				,{"ParaTxt08"	,(int)10	,"String"	,"パラメータテキスト項目08"}
-				,{"ParaTxt09"	,(int)11	,"String"	,"パラメータテキスト項目09"}
-				,{"ParaTxt10"	,(int)12	,"String"	,"パラメータテキスト項目10"}
-				,{"ParaInt01"	,(int)13	,"int"		,"パラメータ数値項目01"}
-				,{"ParaInt02"	,(int)14	,"int"		,"パラメータ数値項目02"}
-				,{"ParaInt03"	,(int)15	,"int"		,"パラメータ数値項目03"}
-				,{"ParaInt04"	,(int)16	,"int"		,"パラメータ数値項目04"}
-				,{"ParaInt05"	,(int)17	,"int"		,"パラメータ数値項目05"}
-				,{"ParaInt06"	,(int)18	,"int"		,"パラメータ数値項目06"}
-				,{"ParaInt07"	,(int)19	,"int"		,"パラメータ数値項目07"}
-				,{"ParaInt08"	,(int)20	,"int"		,"パラメータ数値項目08"}
-				,{"ParaInt09"	,(int)21	,"int"		,"パラメータ数値項目09"}
-				,{"ParaInt10"	,(int)22	,"int"		,"パラメータ数値項目10"}
-				,{"EntryDate"	,(int)23	,"String"	,"登録日"}
-				,{"UpdateDate"	,(int)24	,"String"	,"更新日"}
-				,{"EntryUser"	,(int)25	,"String"	,"登録者"}
-				,{"UpdateUser"	,(int)26	,"String"	,"更新者"}
+				 {"ParaCd"		,ColParaCd			,"String"	,"パラメータコード"}
+				,{"ParaCdSeq"	,ColParaCdSeq		,"String"	,"ナンバリング"}
+				,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"}
+				,{"ParaTxt01"	,ColParaTxt01		,"String"	,"パラメータテキスト項目01"}
+				,{"ParaTxt02"	,ColParaTxt02		,"String"	,"パラメータテキスト項目02"}
+				,{"ParaTxt03"	,ColParaTxt03		,"String"	,"パラメータテキスト項目03"}
+				,{"ParaTxt04"	,ColParaTxt04		,"String"	,"パラメータテキスト項目04"}
+				,{"ParaTxt05"	,ColParaTxt05		,"String"	,"パラメータテキスト項目05"}
+				,{"ParaTxt06"	,ColParaTxt06		,"String"	,"パラメータテキスト項目06"}
+				,{"ParaTxt07"	,ColParaTxt07		,"String"	,"パラメータテキスト項目07"}
+				,{"ParaTxt08"	,ColParaTxt08		,"String"	,"パラメータテキスト項目08"}
+				,{"ParaTxt09"	,ColParaTxt09		,"String"	,"パラメータテキスト項目09"}
+				,{"ParaTxt10"	,ColParaTxt10		,"String"	,"パラメータテキスト項目10"}
+				,{"ParaInt01"	,ColParaInt01		,"int"		,"パラメータ数値項目01"}
+				,{"ParaInt02"	,ColParaInt02		,"int"		,"パラメータ数値項目02"}
+				,{"ParaInt03"	,ColParaInt03		,"int"		,"パラメータ数値項目03"}
+				,{"ParaInt04"	,ColParaInt04		,"int"		,"パラメータ数値項目04"}
+				,{"ParaInt05"	,ColParaInt05		,"int"		,"パラメータ数値項目05"}
+				,{"ParaInt06"	,ColParaInt06		,"int"		,"パラメータ数値項目06"}
+				,{"ParaInt07"	,ColParaInt07		,"int"		,"パラメータ数値項目07"}
+				,{"ParaInt08"	,ColParaInt08		,"int"		,"パラメータ数値項目08"}
+				,{"ParaInt09"	,ColParaInt09		,"int"		,"パラメータ数値項目09"}
+				,{"ParaInt10"	,ColParaInt10		,"int"		,"パラメータ数値項目10"}
+				,{"EntryDate"	,ColEntryDate		,"String"	,"登録日"}
+				,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日"}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"}
 				};
 		
 		return RtSettingParameterMstRtNANKO;
@@ -698,33 +803,34 @@ public class M00000ParameterMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("ParaCd")){rt[counter][0]="";}else{rt[counter][0]=rset01.getString("ParaCd");}			//パラメータコード
-					if(null==rset01.getString("ParaCdSeq")){rt[counter][1]="";}else{rt[counter][1]=rset01.getString("ParaCdSeq");}		//ナンバリング
-					if(null==rset01.getString("ParaName")){rt[counter][2]="";}else{rt[counter][2]=rset01.getString("ParaName");}		//パラメータ名
-					if(null==rset01.getString("ParaTxt01")){rt[counter][3]="";}else{rt[counter][3]=rset01.getString("ParaTxt01");}		//パラメータテキスト項目01
-					if(null==rset01.getString("ParaTxt02")){rt[counter][4]="";}else{rt[counter][4]=rset01.getString("ParaTxt02");}		//パラメータテキスト項目02
-					if(null==rset01.getString("ParaTxt03")){rt[counter][5]="";}else{rt[counter][5]=rset01.getString("ParaTxt03");}		//パラメータテキスト項目03
-					if(null==rset01.getString("ParaTxt04")){rt[counter][6]="";}else{rt[counter][6]=rset01.getString("ParaTxt04");}		//パラメータテキスト項目04
-					if(null==rset01.getString("ParaTxt05")){rt[counter][7]="";}else{rt[counter][7]=rset01.getString("ParaTxt05");}		//パラメータテキスト項目05
-					if(null==rset01.getString("ParaTxt06")){rt[counter][8]="";}else{rt[counter][8]=rset01.getString("ParaTxt06");}		//パラメータテキスト項目06
-					if(null==rset01.getString("ParaTxt07")){rt[counter][9]="";}else{rt[counter][9]=rset01.getString("ParaTxt07");}		//パラメータテキスト項目07
-					if(null==rset01.getString("ParaTxt08")){rt[counter][10]="";}else{rt[counter][10]=rset01.getString("ParaTxt08");}	//パラメータテキスト項目08
-					if(null==rset01.getString("ParaTxt09")){rt[counter][11]="";}else{rt[counter][11]=rset01.getString("ParaTxt09");}	//パラメータテキスト項目09
-					if(null==rset01.getString("ParaTxt10")){rt[counter][12]="";}else{rt[counter][12]=rset01.getString("ParaTxt10");}	//パラメータテキスト項目10
-					rt[counter][13]=rset01.getInt("ParaInt01");	//パラメータ数値項目01
-					rt[counter][14]=rset01.getInt("ParaInt02");	//パラメータ数値項目02
-					rt[counter][15]=rset01.getInt("ParaInt03");	//パラメータ数値項目03
-					rt[counter][16]=rset01.getInt("ParaInt04");	//パラメータ数値項目04
-					rt[counter][17]=rset01.getInt("ParaInt05");	//パラメータ数値項目05
-					rt[counter][18]=rset01.getInt("ParaInt06");	//パラメータ数値項目06
-					rt[counter][19]=rset01.getInt("ParaInt07");	//パラメータ数値項目07
-					rt[counter][20]=rset01.getInt("ParaInt08");	//パラメータ数値項目08
-					rt[counter][21]=rset01.getInt("ParaInt09");	//パラメータ数値項目09
-					rt[counter][22]=rset01.getInt("ParaInt10");	//パラメータ数値項目10
-					if(null==rset01.getTimestamp("EntryDate")){rt[counter][23]="";}else{rt[counter][23]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][24]="";}else{rt[counter][24]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//更新日
-					if(null==rset01.getString("EntryUser")){rt[counter][25]="";}else{rt[counter][25]=rset01.getString("EntryUser");}		//登録者
-					if(null==rset01.getString("UpdateUser")){rt[counter][26]="";}else{rt[counter][26]=rset01.getString("UpdateUser");}		//更新者
+					if(null==rset01.getString("ParaCd")){rt[counter][ColParaCd]="";}else{rt[counter][ColParaCd]=rset01.getString("ParaCd");}						//パラメータコード
+					if(null==rset01.getString("ParaCdSeq")){rt[counter][ColParaCdSeq]="";}else{rt[counter][ColParaCdSeq]=rset01.getString("ParaCdSeq");}		//ナンバリング
+					if(null==rset01.getString("ParaName")){rt[counter][ColParaName]="";}else{rt[counter][ColParaName]=rset01.getString("ParaName");}				//パラメータ名
+					if(null==rset01.getString("ParaTxt01")){rt[counter][ColParaTxt01]="";}else{rt[counter][ColParaTxt01]=rset01.getString("ParaTxt01");}		//パラメータテキスト項目01
+					if(null==rset01.getString("ParaTxt02")){rt[counter][ColParaTxt02]="";}else{rt[counter][ColParaTxt02]=rset01.getString("ParaTxt02");}		//パラメータテキスト項目02
+					if(null==rset01.getString("ParaTxt03")){rt[counter][ColParaTxt03]="";}else{rt[counter][ColParaTxt03]=rset01.getString("ParaTxt03");}		//パラメータテキスト項目03
+					if(null==rset01.getString("ParaTxt04")){rt[counter][ColParaTxt04]="";}else{rt[counter][ColParaTxt04]=rset01.getString("ParaTxt04");}		//パラメータテキスト項目04
+					if(null==rset01.getString("ParaTxt05")){rt[counter][ColParaTxt05]="";}else{rt[counter][ColParaTxt05]=rset01.getString("ParaTxt05");}		//パラメータテキスト項目05
+					if(null==rset01.getString("ParaTxt06")){rt[counter][ColParaTxt06]="";}else{rt[counter][ColParaTxt06]=rset01.getString("ParaTxt06");}		//パラメータテキスト項目06
+					if(null==rset01.getString("ParaTxt07")){rt[counter][ColParaTxt07]="";}else{rt[counter][ColParaTxt07]=rset01.getString("ParaTxt07");}		//パラメータテキスト項目07
+					if(null==rset01.getString("ParaTxt08")){rt[counter][ColParaTxt08]="";}else{rt[counter][ColParaTxt08]=rset01.getString("ParaTxt08");}		//パラメータテキスト項目08
+					if(null==rset01.getString("ParaTxt09")){rt[counter][ColParaTxt09]="";}else{rt[counter][ColParaTxt09]=rset01.getString("ParaTxt09");}		//パラメータテキスト項目09
+					if(null==rset01.getString("ParaTxt10")){rt[counter][ColParaTxt10]="";}else{rt[counter][ColParaTxt10]=rset01.getString("ParaTxt10");}		//パラメータテキスト項目10
+					rt[counter][ColParaInt01]=rset01.getInt("ParaInt01");	//パラメータ数値項目01
+					rt[counter][ColParaInt02]=rset01.getInt("ParaInt02");	//パラメータ数値項目02
+					rt[counter][ColParaInt03]=rset01.getInt("ParaInt03");	//パラメータ数値項目03
+					rt[counter][ColParaInt04]=rset01.getInt("ParaInt04");	//パラメータ数値項目04
+					rt[counter][ColParaInt05]=rset01.getInt("ParaInt05");	//パラメータ数値項目05
+					rt[counter][ColParaInt06]=rset01.getInt("ParaInt06");	//パラメータ数値項目06
+					rt[counter][ColParaInt07]=rset01.getInt("ParaInt07");	//パラメータ数値項目07
+					rt[counter][ColParaInt08]=rset01.getInt("ParaInt08");	//パラメータ数値項目08
+					rt[counter][ColParaInt09]=rset01.getInt("ParaInt09");	//パラメータ数値項目09
+					rt[counter][ColParaInt10]=rset01.getInt("ParaInt10");	//パラメータ数値項目10
+					if(null==rset01.getTimestamp("EntryDate")){rt[counter][ColEntryDate]="";}else{rt[counter][ColEntryDate]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]="";}else{rt[counter][ColUpdateDate]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
+					if(null==rset01.getString("EntryUser")){rt[counter][ColEntryUser]="";}else{rt[counter][ColEntryUser]=rset01.getString("EntryUser");}		//登録者
+					if(null==rset01.getString("UpdateUser")){rt[counter][ColUpdateUser]="";}else{rt[counter][ColUpdateUser]=rset01.getString("UpdateUser");}	//更新者
+					
 					counter=counter+1;
 				}
 

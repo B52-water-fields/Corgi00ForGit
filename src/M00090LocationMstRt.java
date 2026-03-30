@@ -20,20 +20,47 @@ public class M00090LocationMstRt{
 			SearchLocName,	//ロケーション名
 			SearchType,		//ロケタイプ
 			AllSearch);
+			
+	String GetClCd			= (String)LocationMstRt[i][M00090LocationMstRt.ColClCd];		//荷主コード
+	String GetCLName01		= (String)LocationMstRt[i][M00090LocationMstRt.ColCLName01];	//荷主名1
+	String GetWhCd			= (String)LocationMstRt[i][M00090LocationMstRt.ColWhCd];		//倉庫コード
+	String GetWHName		= (String)LocationMstRt[i][M00090LocationMstRt.ColWHName];		//拠点倉庫名
+	String GetLoc			= (String)LocationMstRt[i][M00090LocationMstRt.ColLoc];			//ロケーション
+	String GetLocName		= (String)LocationMstRt[i][M00090LocationMstRt.ColLocName];		//ロケーション名
+	int GetType				= (int)LocationMstRt[i][M00090LocationMstRt.ColType];			//ロケタイプ
+	String GetEntryDate		= (String)LocationMstRt[i][M00090LocationMstRt.ColEntryDate];	//登録日
+	String GetUpdateDate	= (String)LocationMstRt[i][M00090LocationMstRt.ColUpdateDate];	//更新日
+	String GetEntryUser		= (String)LocationMstRt[i][M00090LocationMstRt.ColEntryUser];	//登録者
+	String GetUpdateUser	= (String)LocationMstRt[i][M00090LocationMstRt.ColUpdateUser];	//更新者
+	
 	*/
+	
+	//戻り値カラム
+	static int ColClCd			= (int) 0;	//荷主コード
+	static int ColCLName01		= (int) 1;	//荷主名1
+	static int ColWhCd			= (int) 2;	//倉庫コード
+	static int ColWHName		= (int) 3;	//拠点倉庫名
+	static int ColLoc			= (int) 4;	//ロケーション
+	static int ColLocName		= (int) 5;	//ロケーション名
+	static int ColType			= (int) 6;	//ロケタイプ
+	static int ColEntryDate	= (int) 7;	//登録日
+	static int ColUpdateDate	= (int) 8;	//更新日
+	static int ColEntryUser	= (int) 9;	//登録者
+	static int ColUpdateUser	= (int)10;	//更新者
+	
 	public static Object[][] RtSettingLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {
-				 {"ClCd"		,(int) 0	,"String"	,"荷主コード"}
-				,{"CLName01"	,(int) 1	,"String"	,"荷主名1"}
-				,{"WhCd"		,(int) 2	,"String"	,"倉庫コード"}
-				,{"WHName"		,(int) 3	,"String"	,"拠点倉庫名"}
-				,{"Loc"			,(int) 4	,"String"	,"ロケーション"}
-				,{"LocName"		,(int) 5	,"String"	,"ロケーション名"}
-				,{"Type"		,(int) 6	,"int"		,"ロケタイプ"}
-				,{"EntryDate"	,(int) 7	,"String"	,"登録日"}
-				,{"UpdateDate"	,(int) 8	,"String"	,"更新日"}
-				,{"EntryUser"	,(int) 9	,"String"	,"登録者"}
-				,{"UpdateUser"	,(int)10	,"String"	,"更新者"}
+				 {"ClCd"		,ColClCd			,"String"	,"荷主コード"}
+				,{"CLName01"	,ColCLName01		,"String"	,"荷主名1"}
+				,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"}
+				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名"}
+				,{"Loc"			,ColLoc			,"String"	,"ロケーション"}
+				,{"LocName"		,ColLocName		,"String"	,"ロケーション名"}
+				,{"Type"		,ColType			,"int"		,"ロケタイプ"}
+				,{"EntryDate"	,ColEntryDate		,"String"	,"登録日"}
+				,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日"}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"}
 				};
 		
 		return RtSettingLocationMstRt;
@@ -185,17 +212,18 @@ public class M00090LocationMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("ClCd")){				rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("ClCd");}			//荷主コード
-					if(null==rset01.getString("CLName01")){			rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("CLName01");}		//荷主名1
-					if(null==rset01.getString("WhCd")){				rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("WhCd");}			//倉庫コード
-					if(null==rset01.getString("WHName")){			rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("WHName");}		//拠点倉庫名
-					if(null==rset01.getString("Loc")){				rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("Loc");}			//ロケーション
-					if(null==rset01.getString("LocName")){			rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("LocName");}		//ロケーション名
-					rt[counter][ 6]=rset01.getInt("Type");																						//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ 7]="";}else{rt[counter][ 7]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//登録日
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ 8]="";}else{rt[counter][ 8]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//更新日
-					if(null==rset01.getString("EntryUser")){		rt[counter][ 9]="";}else{rt[counter][ 9]=rset01.getString("EntryUser");}		//登録者
-					if(null==rset01.getString("UpdateUser")){		rt[counter][10]="";}else{rt[counter][10]=rset01.getString("UpdateUser");}		//更新者
+					if(null==rset01.getString("ClCd")){				rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}				//荷主コード
+					if(null==rset01.getString("CLName01")){			rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}			//荷主名1
+					if(null==rset01.getString("WhCd")){				rt[counter][ColWhCd]			="";}else{rt[counter][ColWhCd]			=rset01.getString("WhCd");}				//倉庫コード
+					if(null==rset01.getString("WHName")){			rt[counter][ColWHName]			="";}else{rt[counter][ColWHName]		=rset01.getString("WHName");}			//拠点倉庫名
+					if(null==rset01.getString("Loc")){				rt[counter][ColLoc]			="";}else{rt[counter][ColLoc]			=rset01.getString("Loc");}				//ロケーション
+					if(null==rset01.getString("LocName")){			rt[counter][ColLocName]		="";}else{rt[counter][ColLocName]		=rset01.getString("LocName");}			//ロケーション名
+					rt[counter][ColType]=rset01.getInt("Type");																													//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//登録日
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//更新日
+					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}		//登録者
+					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}		//更新者
+					
 					counter=counter+1;
 				}
 				

@@ -26,27 +26,61 @@ public class M00042CautionMstRt{
 			SearchCaution,
 			SearchDeName,
 			AllSearch);
+			
+	String GetCautionCd		= (String)CautionMstRt[i][ColCautionCd];	//注意事項コード
+	String GetClGpCD		= (String)CautionMstRt[i][ColClGpCD];		//荷主グループコード
+	String GetCLGpName01	= (String)CautionMstRt[i][ColCLGpName01];	//荷主グループ名
+	String GetDECD			= (String)CautionMstRt[i][ColDECD];			//届先コード
+	String GetDepartmentCd	= (String)CautionMstRt[i][ColDepartmentCd];	//部署CD
+	String GetDEName01		= (String)CautionMstRt[i][ColDEName01];		//届先名
+	int GetCautionTiming	= (int)CautionMstRt[i][ColCautionTiming];	//注意事項タイミング
+	String GetCautionName	= (String)CautionMstRt[i][ColCautionName];	//注意事項名
+	String GetCaution		= (String)CautionMstRt[i][ColCaution];		//注意事項内容
+	String GetEntryDate		= (String)CautionMstRt[i][ColEntryDate];	//データ登録日時
+	String GetUpdateDate	= (String)CautionMstRt[i][ColUpdateDate];	//データ更新日時
+	String GetEntryUser		= (String)CautionMstRt[i][ColEntryUser];	//登録者コード
+	String GetUpdateUser	= (String)CautionMstRt[i][ColUpdateUser];	//更新者コード
+	String GetAdd01			= (String)CautionMstRt[i][ColAdd01];		//届先住所1
+	String GetAdd02			= (String)CautionMstRt[i][ColAdd02];		//届先住所2
+	String GetAdd03			= (String)CautionMstRt[i][ColAdd03];		//届先住所3
 	
 	*/
 	//戻り値カラム
+	static int ColCautionCd		= (int) 0;	//注意事項コード
+	static int ColClGpCD			= (int) 1;	//荷主グループコード
+	static int ColCLGpName01		= (int) 2;	//荷主グループ名
+	static int ColDECD				= (int) 3;	//届先コード
+	static int ColDepartmentCd	= (int) 4;	//部署CD
+	static int ColDEName01			= (int) 5;	//届先名
+	static int ColCautionTiming	= (int) 6;	//注意事項タイミング
+	static int ColCautionName		= (int) 7;	//注意事項名
+	static int ColCaution			= (int) 8;	//注意事項内容
+	static int ColEntryDate		= (int) 9;	//データ登録日時
+	static int ColUpdateDate		= (int)10;	//データ更新日時
+	static int ColEntryUser		= (int)11;	//登録者コード
+	static int ColUpdateUser		= (int)12;	//更新者コード
+	static int ColAdd01			= (int)13;	//届先住所1
+	static int ColAdd02			= (int)14;	//届先住所2
+	static int ColAdd03			= (int)15;	//届先住所3
+	
 	public static Object[][] RtSettingCautionMstRt(){
 		Object[][] RtSettingCautionMstRt = {
-				 {"CautionCd"		,(int) 0	,"String"	,"注意事項コード"}
-				,{"ClGpCD"			,(int) 1	,"String"	,"荷主グループコード"}
-				,{"CLGpName01"		,(int) 2	,"String"	,"荷主グループ名"}
-				,{"DECD"			,(int) 3	,"String"	,"届先コード"}
-				,{"DepartmentCd"	,(int) 4	,"String"	,"部署CD"}
-				,{"DEName01"		,(int) 5	,"String"	,"届先名"}
-				,{"CautionTiming"	,(int) 6	,"int"		,"注意事項タイミング"}
-				,{"CautionName"		,(int) 7	,"String"	,"注意事項名"}
-				,{"Caution"			,(int) 8	,"String"	,"注意事項内容"}
-				,{"EntryDate"		,(int) 9	,"String"	,"データ登録日時"}
-				,{"UpdateDate"		,(int)10	,"String"	,"データ更新日時"}
-				,{"EntryUser"		,(int)11	,"String"	,"登録者コード"}
-				,{"UpdateUser"		,(int)12	,"String"	,"更新者コード"}
-				,{"Add01"			,(int)13	,"String"	,"届先住所1"}
-				,{"Add02"			,(int)14	,"String"	,"届先住所2"}
-				,{"Add03"			,(int)15	,"String"	,"届先住所3"}
+				 {"CautionCd"		,ColCautionCd		,"String"	,"注意事項コード"}
+				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループコード"}
+				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ名"}
+				,{"DECD"			,ColDECD			,"String"	,"届先コード"}
+				,{"DepartmentCd"	,ColDepartmentCd	,"String"	,"部署CD"}
+				,{"DEName01"		,ColDEName01		,"String"	,"届先名"}
+				,{"CautionTiming"	,ColCautionTiming	,"int"		,"注意事項タイミング"}
+				,{"CautionName"		,ColCautionName	,"String"	,"注意事項名"}
+				,{"Caution"			,ColCaution		,"String"	,"注意事項内容"}
+				,{"EntryDate"		,ColEntryDate		,"String"	,"データ登録日時"}
+				,{"UpdateDate"		,ColUpdateDate	,"String"	,"データ更新日時"}
+				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者コード"}
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者コード"}
+				,{"Add01"			,ColAdd01			,"String"	,"届先住所1"}
+				,{"Add02"			,ColAdd02			,"String"	,"届先住所2"}
+				,{"Add03"			,ColAdd03			,"String"	,"届先住所3"}
 				};
 		
 		return RtSettingCautionMstRt;
@@ -255,22 +289,23 @@ public class M00042CautionMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("CautionCd")){	rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("CautionCd");}					//注意事項コード
-					if(null==rset01.getString("ClGpCD")){		rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("ClGpCD");}						//荷主グループコード
-					if(null==rset01.getString("CLGpName01")){	rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("CLGpName01");}					//荷主グループ名
-					if(null==rset01.getString("DECD")){			rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("DECD");}							//届先コード
-					if(null==rset01.getString("DepartmentCd")){	rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("DepartmentCd");}					//部署CD
-					if(null==rset01.getString("DEName01")){		rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("DEName01");}						//届先名
-					rt[counter][6]=rset01.getInt("CautionTiming");																							//注意事項タイミング
-					if(null==rset01.getString("CautionName")){	rt[counter][ 7]="";}else{rt[counter][ 7]=rset01.getString("CautionName");}					//注意事項名
-					if(null==rset01.getString("Caution")){		rt[counter][ 8]="";}else{rt[counter][ 8]=rset01.getString("Caution");}						//注意事項内容
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ 9]="";}else{rt[counter][ 9]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][10]="";}else{rt[counter][10]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
-					if(null==rset01.getString("EntryUser")){	rt[counter][11]="";}else{rt[counter][11]=rset01.getString("EntryUser");}					//登録者コード
-					if(null==rset01.getString("UpdateUser")){	rt[counter][12]="";}else{rt[counter][12]=rset01.getString("UpdateUser");}					//更新者コード
-					if(null==rset01.getString("Add01")){		rt[counter][13]="";}else{rt[counter][13]=rset01.getString("Add01");}						//届先住所1
-					if(null==rset01.getString("Add02")){		rt[counter][14]="";}else{rt[counter][14]=rset01.getString("Add02");}						//届先住所2
-					if(null==rset01.getString("Add03")){		rt[counter][15]="";}else{rt[counter][15]=rset01.getString("Add03");}						//届先住所3
+					if(null==rset01.getString("CautionCd")){	rt[counter][ColCautionCd]		="";}else{rt[counter][ColCautionCd]		=rset01.getString("CautionCd");}					//注意事項コード
+					if(null==rset01.getString("ClGpCD")){		rt[counter][ColClGpCD]			="";}else{rt[counter][ColClGpCD]			=rset01.getString("ClGpCD");}						//荷主グループコード
+					if(null==rset01.getString("CLGpName01")){	rt[counter][ColCLGpName01]	="";}else{rt[counter][ColCLGpName01]		=rset01.getString("CLGpName01");}					//荷主グループ名
+					if(null==rset01.getString("DECD")){			rt[counter][ColDECD]			="";}else{rt[counter][ColDECD]				=rset01.getString("DECD");}							//届先コード
+					if(null==rset01.getString("DepartmentCd")){	rt[counter][ColDepartmentCd]	="";}else{rt[counter][ColDepartmentCd]	=rset01.getString("DepartmentCd");}					//部署CD
+					if(null==rset01.getString("DEName01")){		rt[counter][ColDEName01]		="";}else{rt[counter][ColDEName01]			=rset01.getString("DEName01");}						//届先名
+					rt[counter][ColCautionTiming]=rset01.getInt("CautionTiming");																												//注意事項タイミング
+					if(null==rset01.getString("CautionName")){	rt[counter][ColCautionName]	="";}else{rt[counter][ColCautionName]		=rset01.getString("CautionName");}					//注意事項名
+					if(null==rset01.getString("Caution")){		rt[counter][ColCaution]		="";}else{rt[counter][ColCaution]			=rset01.getString("Caution");}						//注意事項内容
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getString("EntryUser")){	rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]		=rset01.getString("EntryUser");}					//登録者コード
+					if(null==rset01.getString("UpdateUser")){	rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]		=rset01.getString("UpdateUser");}					//更新者コード
+					if(null==rset01.getString("Add01")){		rt[counter][ColAdd01]			="";}else{rt[counter][ColAdd01]			=rset01.getString("Add01");}						//届先住所1
+					if(null==rset01.getString("Add02")){		rt[counter][ColAdd02]			="";}else{rt[counter][ColAdd02]			=rset01.getString("Add02");}						//届先住所2
+					if(null==rset01.getString("Add03")){		rt[counter][ColAdd03]			="";}else{rt[counter][ColAdd03]			=rset01.getString("Add03");}						//届先住所3
+					
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
@@ -315,8 +350,8 @@ public class M00042CautionMstRt{
     	int CautionNo = 0;
     	
     	for(int i=0;i<CautionMstRt.length;i++) {
-    		if("ATCT".equals((""+CautionMstRt[i][0]).substring(0,4))&&13==(""+CautionMstRt[i][0]).length()) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+CautionMstRt[i][0]);
+    		if("ATCT".equals((""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).substring(0,4))&&13==(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).length()) {
+    			String WST = B00020ToolsTextControl.num_only_String(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]);
     			if(9==WST.length()) {
     				int wint = Integer.parseInt(WST);
     				if(CautionNo<wint) {

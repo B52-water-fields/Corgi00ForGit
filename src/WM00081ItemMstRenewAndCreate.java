@@ -258,120 +258,120 @@ public class WM00081ItemMstRenewAndCreate{
 					AllSearch);
 			
 			if(0<ItemMstRt.length) {
-				TB_CLItemCd.setText(""+ItemMstRt[0][ 3]);			//荷主商品コード
-				TB_ItemName01.setText(""+ItemMstRt[0][ 4]);			//商品名1
-				TB_ItemName02.setText(""+ItemMstRt[0][ 5]);			//商品名2
-				TB_ItemName03.setText(""+ItemMstRt[0][ 6]);			//商品名3
+				TB_CLItemCd.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCLItemCd]);				//荷主商品コード
+				TB_ItemName01.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemName01]);		//商品名1
+				TB_ItemName02.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemName02]);		//商品名2
+				TB_ItemName03.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemName03]);		//商品名3
 				for(int i=0;i<B00100DefaultVariable.DeliveryType01[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType01[1][i].equals(""+ItemMstRt[0][ 7])) {
+					if(B00100DefaultVariable.DeliveryType01[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd01])) {
 						TB_DeliveryTypeCd01.setSelectedIndex(i);;				//運送タイプコード01
 					}
 				}
 				for(int i=0;i<B00100DefaultVariable.DeliveryType02[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType02[1][i].equals(""+ItemMstRt[0][ 9])) {
+					if(B00100DefaultVariable.DeliveryType02[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd02])) {
 						TB_DeliveryTypeCd02.setSelectedIndex(i);;				//運送タイプコード02
 					}
 				}
 				for(int i=0;i<B00100DefaultVariable.DeliveryType03[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType03[1][i].equals(""+ItemMstRt[0][11])) {
+					if(B00100DefaultVariable.DeliveryType03[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd03])) {
 						TB_DeliveryTypeCd03.setSelectedIndex(i);;				//運送タイプコード03
 					}
 				}
 				for(int i=0;i<B00100DefaultVariable.DeliveryType04[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType04[1][i].equals(""+ItemMstRt[0][13])) {
+					if(B00100DefaultVariable.DeliveryType04[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd04])) {
 						TB_DeliveryTypeCd04.setSelectedIndex(i);;				//運送タイプコード04
 					}
 				}
 				for(int i=0;i<B00100DefaultVariable.DeliveryType05[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType05[1][i].equals(""+ItemMstRt[0][15])) {
+					if(B00100DefaultVariable.DeliveryType05[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd05])) {
 						TB_DeliveryTypeCd05.setSelectedIndex(i);;				//運送タイプコード05
 					}
 				}
-				TB_PTMSCD.setText(""+ItemMstRt[0][17]);				//基幹システム商品コード
-				TB_CtQty.setText(""+ItemMstRt[0][18]);				//カートン入数
-				TB_CsQty.setText(""+ItemMstRt[0][19]);				//ケース入数
-				TB_PlQty.setText(""+ItemMstRt[0][20]);				//パレット入数
-				TB_JanCd.setText(""+ItemMstRt[0][21]);				//JANCD
-				TB_CtJan.setText(""+ItemMstRt[0][22]);				//カートンバーコード
-				TB_CsJan.setText(""+ItemMstRt[0][23]);				//ケースバーコード
-				TB_PlJan.setText(""+ItemMstRt[0][24]);				//パレットバーコード
-				TB_CtName.setText(""+ItemMstRt[0][25]);				//カートン商品名称
-				TB_CsName.setText(""+ItemMstRt[0][26]);				//ケース商品名称
-				TB_PlName.setText(""+ItemMstRt[0][27]);				//パレット商品名称
-				TB_UnitName.setText(""+ItemMstRt[0][28]);			//商品単位
-				TB_CtUnitName.setText(""+ItemMstRt[0][29]);			//カートン商品単位
-				TB_CsUnitName.setText(""+ItemMstRt[0][30]);			//ケース商品単位
-				TB_PlUnitName.setText(""+ItemMstRt[0][31]);			//パレット商品単位
-				TB_ItemWeight.setText(""+ItemMstRt[0][32]);			//商品重量
-				TB_CtWeight.setText(""+ItemMstRt[0][33]);			//カートン重量
-				TB_CsWeight.setText(""+ItemMstRt[0][34]);			//ケース重量
-				TB_PlWeight.setText(""+ItemMstRt[0][35]);			//パレット重量
-				TB_ItemSize.setText(""+ItemMstRt[0][36]);			//商品サイズ
-				TB_CtSize.setText(""+ItemMstRt[0][37]);				//カートンサイズ
-				TB_CsSize.setText(""+ItemMstRt[0][38]);				//ケースサイズ
-				TB_PlSize.setText(""+ItemMstRt[0][39]);				//パレットサイズ
-				TB_RecomendLoc.setText(""+ItemMstRt[0][40]);		//推奨ロケ
-				TB_ItemMDNo.setText(""+ItemMstRt[0][41]);			//商品モデル番号（型番）
-				TB_CategoryCd.setText(""+ItemMstRt[0][42]);			//商品カテゴリCD
-				TB_CategoryName.setText(""+ItemMstRt[0][43]);		//商品カテゴリ名
-				TB_ItemColorCd.setText(""+ItemMstRt[0][44]);		//商品カラーコード
-				TB_ItemColorName.setText(""+ItemMstRt[0][45]);		//商品カラー名
-				TB_ItemSizeCd.setText(""+ItemMstRt[0][46]);			//商品サイズコード
-				TB_ItemSizeName.setText(""+ItemMstRt[0][47]);		//商品サイス名
-				TB_Com01.setText(""+ItemMstRt[0][48]);				//コメント1
-				TB_Com02.setText(""+ItemMstRt[0][49]);				//コメント2
-				TB_Com03.setText(""+ItemMstRt[0][50]);				//コメント3
+				TB_PTMSCD.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPTMSCD]);					//基幹システム商品コード
+				TB_CtQty.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCtQty]);					//カートン入数
+				TB_CsQty.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCsQty]);					//ケース入数
+				TB_PlQty.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPlQty]);					//パレット入数
+				TB_JanCd.setText(""+ItemMstRt[0][M00070ItemMstRt.ColJanCd]);					//JANCD
+				TB_CtJan.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCtJan]);					//カートンバーコード
+				TB_CsJan.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCsJan]);					//ケースバーコード
+				TB_PlJan.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPlJan]);					//パレットバーコード
+				TB_CtName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCtName]);					//カートン商品名称
+				TB_CsName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCsName]);					//ケース商品名称
+				TB_PlName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPlName]);					//パレット商品名称
+				TB_UnitName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColUnitName]);				//商品単位
+				TB_CtUnitName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCtUnitName]);		//カートン商品単位
+				TB_CsUnitName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCsUnitName]);		//ケース商品単位
+				TB_PlUnitName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPlUnitName]);		//パレット商品単位
+				TB_ItemWeight.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemWeight]);		//商品重量
+				TB_CtWeight.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCtWeight]);				//カートン重量
+				TB_CsWeight.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCsWeight]);				//ケース重量
+				TB_PlWeight.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPlWeight]);				//パレット重量
+				TB_ItemSize.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemSize]);				//商品サイズ
+				TB_CtSize.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCtSize]);					//カートンサイズ
+				TB_CsSize.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCsSize]);					//ケースサイズ
+				TB_PlSize.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPlSize]);					//パレットサイズ
+				TB_RecomendLoc.setText(""+ItemMstRt[0][M00070ItemMstRt.ColRecomendLoc]);		//推奨ロケ
+				TB_ItemMDNo.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemMDNo]);				//商品モデル番号（型番）
+				TB_CategoryCd.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCategoryCd]);		//商品カテゴリCD
+				TB_CategoryName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCategoryName]);	//商品カテゴリ名
+				TB_ItemColorCd.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemColorCd]);		//商品カラーコード
+				TB_ItemColorName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemColorName]);	//商品カラー名
+				TB_ItemSizeCd.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemSizeCd]);		//商品サイズコード
+				TB_ItemSizeName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemSizeName]);	//商品サイス名
+				TB_Com01.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom01]);					//コメント1
+				TB_Com02.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom02]);					//コメント2
+				TB_Com03.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom03]);					//コメント3
 				for(int i=0;i<B00100DefaultVariable.TildFG[1].length;i++) {
-					if(B00100DefaultVariable.TildFG[1][i].equals(""+ItemMstRt[0][51])) {
+					if(B00100DefaultVariable.TildFG[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColTildFG])) {
 						TB_TildFG.setSelectedIndex(i);;				//温度区分
 					}
 				}
-				TB_ExpDateHowLong.setText(""+ItemMstRt[0][58]);		//賞味期限日数
-				TB_EntryDate.setText(""+ItemMstRt[0][59]);			//データ登録日時
-				TB_UpdateDate.setText(""+ItemMstRt[0][60]);			//データ更新日時
-				TB_EntryUser.setText(""+ItemMstRt[0][61]);			//登録者コード
-				TB_UpdateUser.setText(""+ItemMstRt[0][62]);			//更新者コード
+				TB_ExpDateHowLong.setText(""+ItemMstRt[0][M00070ItemMstRt.ColExpDateHowLong]);	//賞味期限日数
+				TB_EntryDate.setText(""+ItemMstRt[0][M00070ItemMstRt.ColEntryDate]);				//データ登録日時
+				TB_UpdateDate.setText(""+ItemMstRt[0][M00070ItemMstRt.ColUpdateDate]);			//データ更新日時
+				TB_EntryUser.setText(""+ItemMstRt[0][M00070ItemMstRt.ColEntryUser]);				//登録者コード
+				TB_UpdateUser.setText(""+ItemMstRt[0][M00070ItemMstRt.ColUpdateUser]);			//更新者コード
 				
 				for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-					if(B00100DefaultVariable.DelList[1][i].equals(""+ItemMstRt[0][63])) {
+					if(B00100DefaultVariable.DelList[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDelFg])) {
 						TB_DelFg.setSelectedIndex(i);;				//削除フラグ
 					}
 				}
-				TB_ItemImageEntryPath01.setText(""+ItemMstRt[0][53]);			//画像パス01 
-				TB_ItemImageEntryPath02.setText(""+ItemMstRt[0][54]);			//画像パス02 
-				TB_ItemImageEntryPath03.setText(""+ItemMstRt[0][55]);			//画像パス03 
-				TB_ItemImageEntryPath04.setText(""+ItemMstRt[0][56]);			//画像パス04
-				TB_ItemImageEntryPath05.setText(""+ItemMstRt[0][57]);			//画像パス05
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][53])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][53]);
+				TB_ItemImageEntryPath01.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass01]);			//画像パス01 
+				TB_ItemImageEntryPath02.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass02]);			//画像パス02 
+				TB_ItemImageEntryPath03.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass03]);			//画像パス03 
+				TB_ItemImageEntryPath04.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass04]);			//画像パス04
+				TB_ItemImageEntryPath05.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass05]);			//画像パス05
+				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass01])) {
+					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass01]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage01.setIcon(Setimage);
 					}
 				}
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][54])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][54]);
+				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass02])) {
+					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass02]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage02.setIcon(Setimage);
 					}
 				}
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][55])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][55]);
+				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass03])) {
+					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass03]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage03.setIcon(Setimage);
 					}
 				}
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][56])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][56]);
+				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass04])) {
+					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass04]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage04.setIcon(Setimage);
 					}
 				}
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][57])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][57]);
+				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass05])) {
+					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass05]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage05.setIcon(Setimage);

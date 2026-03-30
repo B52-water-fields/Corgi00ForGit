@@ -90,22 +90,22 @@ public class WM00011WhMstRenewAndCreate{
 					AllSearch);
 			
 			if(0<WhMstRt.length) {
-				TB_WHCD.setText(		""+WhMstRt[0][ 0]);	//倉庫コード
-				TB_WHName .setText(		""+WhMstRt[0][ 1]);	//拠点倉庫名
-				TB_Post.setText(		""+WhMstRt[0][ 2]);	//拠点倉庫郵便番号
-				TB_Add01.setText(		""+WhMstRt[0][ 3]);	//拠点倉庫住所1
-				TB_Add02.setText(		""+WhMstRt[0][ 4]);	//拠点倉庫住所2
-				TB_Tel.setText(			""+WhMstRt[0][ 5]);	//拠点倉庫電話
-				TB_Fax.setText(			""+WhMstRt[0][ 6]);	//拠点倉庫FAX
-				TB_Mail.setText(		""+WhMstRt[0][ 7]);	//拠点倉庫MAIL
-				TB_Com01.setText(		""+WhMstRt[0][ 8]);	//コメント１
-				TB_Com02.setText(		""+WhMstRt[0][ 9]);	//コメント２
-				TB_Com03.setText(		""+WhMstRt[0][10]);	//コメント３
-				TB_PTMSCD.setText(		""+WhMstRt[0][11]);	//基幹SysCD
-				TB_EntryDate.setText(	""+WhMstRt[0][12]);	//データ登録日時
-				TB_UpdateDate.setText(	""+WhMstRt[0][13]);	//データ更新日時
-				TB_EntryUser.setText(	""+WhMstRt[0][14]);	//登録者
-				TB_UpdateUser.setText(	""+WhMstRt[0][15]);	//更新者
+				TB_WHCD.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoWHCD]);			//倉庫コード
+				TB_WHName .setText(		""+WhMstRt[0][M00001WhMstRt.ColNoWHName]);			//拠点倉庫名
+				TB_Post.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoPost]);			//拠点倉庫郵便番号
+				TB_Add01.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoAdd01]);			//拠点倉庫住所1
+				TB_Add02.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoAdd02]);			//拠点倉庫住所2
+				TB_Tel.setText(			""+WhMstRt[0][M00001WhMstRt.ColNoTel]);			//拠点倉庫電話
+				TB_Fax.setText(			""+WhMstRt[0][M00001WhMstRt.ColNoFax]);			//拠点倉庫FAX
+				TB_Mail.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoMail]);			//拠点倉庫MAIL
+				TB_Com01.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoCom01]);			//コメント１
+				TB_Com02.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoCom02]);			//コメント２
+				TB_Com03.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoCom03]);			//コメント３
+				TB_PTMSCD.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoPTMSCD]);			//基幹SysCD
+				TB_EntryDate.setText(	""+WhMstRt[0][M00001WhMstRt.ColNoEntryDate]);		//データ登録日時
+				TB_UpdateDate.setText(	""+WhMstRt[0][M00001WhMstRt.ColNoUpdateDate]);	//データ更新日時
+				TB_EntryUser.setText(	""+WhMstRt[0][M00001WhMstRt.ColNoEntryUser]);		//登録者
+				TB_UpdateUser.setText(	""+WhMstRt[0][M00001WhMstRt.ColNoUpdateUser]);	//更新者
 			}
 		}
 		main_fm.add(LB_WHCD);

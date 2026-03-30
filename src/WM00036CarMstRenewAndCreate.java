@@ -100,28 +100,28 @@ public class WM00036CarMstRenewAndCreate{
 					AllSearch);
 			if(0<CarMstRt.length) {
 				for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-					if((""+CarMstRt[0][ 0]).equals(""+B00100DefaultVariable.WhList[1][i])) {
+					if((""+CarMstRt[0][M00031CarMstRt.ColWHCD]).equals(""+B00100DefaultVariable.WhList[1][i])) {
 						TB_WHCD.setSelectedIndex(i);
 					}
 				}
 				for(int i=0;i<B00100DefaultVariable.ShippingCompanyList[1].length;i++) {
-					if((""+CarMstRt[0][ 1]).equals(""+B00100DefaultVariable.ShippingCompanyList[1][i])) {
+					if((""+CarMstRt[0][M00031CarMstRt.ColShippingCompanyCd]).equals(""+B00100DefaultVariable.ShippingCompanyList[1][i])) {
 						TB_ShippingCompanyCd.setSelectedIndex(i);
 					}
 				}
-				TB_CarCd.setText(""+CarMstRt[0][ 5]);		//車輛CD
-				TB_CarName01.setText(""+CarMstRt[0][ 6]);	//車輛名01
-				TB_CarName02.setText(""+CarMstRt[0][ 7]);	//車輛名02
-				TB_CarName03.setText(""+CarMstRt[0][ 8]);	//車輛名03
-				TB_DriverCd.setText(""+CarMstRt[0][ 9]);	//乗務員CD
-				TB_PTMSCD.setText(""+CarMstRt[0][13]);		//基幹SYS車輛Cd
-				TB_EntryDate.setText(""+CarMstRt[0][14]);	//データ登録日時
-				TB_UpdateDate.setText(""+CarMstRt[0][15]);	//データ更新日時
-				TB_EntryUser.setText(""+CarMstRt[0][16]);	//登録者コード
-				TB_UpdateUser.setText(""+CarMstRt[0][17]);	//更新者コード
+				TB_CarCd.setText(		""+CarMstRt[0][M00031CarMstRt.ColCarCd]);			//車輛CD
+				TB_CarName01.setText(	""+CarMstRt[0][M00031CarMstRt.ColCarName01]);		//車輛名01
+				TB_CarName02.setText(	""+CarMstRt[0][M00031CarMstRt.ColCarName02]);		//車輛名02
+				TB_CarName03.setText(	""+CarMstRt[0][M00031CarMstRt.ColCarName03]);		//車輛名03
+				TB_DriverCd.setText(	""+CarMstRt[0][M00031CarMstRt.ColDriverCd]);		//乗務員CD
+				TB_PTMSCD.setText(		""+CarMstRt[0][M00031CarMstRt.ColPTMSCD]);			//基幹SYS車輛Cd
+				TB_EntryDate.setText(	""+CarMstRt[0][M00031CarMstRt.ColEntryDate]);		//データ登録日時
+				TB_UpdateDate.setText(	""+CarMstRt[0][M00031CarMstRt.ColUpdateDate]);	//データ更新日時
+				TB_EntryUser.setText(	""+CarMstRt[0][M00031CarMstRt.ColEntryUser]);		//登録者コード
+				TB_UpdateUser.setText(	""+CarMstRt[0][M00031CarMstRt.ColUpdateUser]);	//更新者コード
 				
 				for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-					if((""+CarMstRt[0][18]).equals(""+B00100DefaultVariable.DelList[1][i])) {
+					if((""+CarMstRt[0][M00031CarMstRt.ColDelFg]).equals(""+B00100DefaultVariable.DelList[1][i])) {
 						TB_DelFg.setSelectedIndex(i);
 					}
 				}
@@ -246,28 +246,28 @@ public class WM00036CarMstRenewAndCreate{
 						
 						if(KickFg) {
 							for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-								if((""+CarMstRt[0][ 0]).equals(""+B00100DefaultVariable.WhList[1][i])) {
+								if((""+CarMstRt[0][M00031CarMstRt.ColWHCD]).equals(""+B00100DefaultVariable.WhList[1][i])) {
 									TB_WHCD.setSelectedIndex(i);
 								}
 							}
 							for(int i=0;i<B00100DefaultVariable.ShippingCompanyList[1].length;i++) {
-								if((""+CarMstRt[0][ 1]).equals(""+B00100DefaultVariable.ShippingCompanyList[1][i])) {
+								if((""+CarMstRt[0][M00031CarMstRt.ColShippingCompanyCd]).equals(""+B00100DefaultVariable.ShippingCompanyList[1][i])) {
 									TB_ShippingCompanyCd.setSelectedIndex(i);
 								}
 							}
-							TB_CarCd.setText(""+CarMstRt[0][ 5]);		//車輛CD
-							TB_CarName01.setText(""+CarMstRt[0][ 6]);	//車輛名01
-							TB_CarName02.setText(""+CarMstRt[0][ 7]);	//車輛名02
-							TB_CarName03.setText(""+CarMstRt[0][ 8]);	//車輛名03
-							TB_DriverCd.setText(""+CarMstRt[0][ 9]);	//乗務員CD
-							TB_PTMSCD.setText(""+CarMstRt[0][13]);		//基幹SYS車輛Cd
-							TB_EntryDate.setText(""+CarMstRt[0][14]);	//データ登録日時
-							TB_UpdateDate.setText(""+CarMstRt[0][15]);	//データ更新日時
-							TB_EntryUser.setText(""+CarMstRt[0][16]);	//登録者コード
-							TB_UpdateUser.setText(""+CarMstRt[0][17]);	//更新者コード
+							TB_CarCd.setText(		""+CarMstRt[0][M00031CarMstRt.ColCarCd]);			//車輛CD
+							TB_CarName01.setText(	""+CarMstRt[0][M00031CarMstRt.ColCarName01]);		//車輛名01
+							TB_CarName02.setText(	""+CarMstRt[0][M00031CarMstRt.ColCarName02]);		//車輛名02
+							TB_CarName03.setText(	""+CarMstRt[0][M00031CarMstRt.ColCarName03]);		//車輛名03
+							TB_DriverCd.setText(	""+CarMstRt[0][M00031CarMstRt.ColDriverCd]);		//乗務員CD
+							TB_PTMSCD.setText(		""+CarMstRt[0][M00031CarMstRt.ColPTMSCD]);			//基幹SYS車輛Cd
+							TB_EntryDate.setText(	""+CarMstRt[0][M00031CarMstRt.ColEntryDate]);		//データ登録日時
+							TB_UpdateDate.setText(	""+CarMstRt[0][M00031CarMstRt.ColUpdateDate]);	//データ更新日時
+							TB_EntryUser.setText(	""+CarMstRt[0][M00031CarMstRt.ColEntryUser]);		//登録者コード
+							TB_UpdateUser.setText(	""+CarMstRt[0][M00031CarMstRt.ColUpdateUser]);	//更新者コード
 							
 							for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-								if((""+CarMstRt[0][18]).equals(""+B00100DefaultVariable.DelList[1][i])) {
+								if((""+CarMstRt[0][M00031CarMstRt.ColDelFg]).equals(""+B00100DefaultVariable.DelList[1][i])) {
 									TB_DelFg.setSelectedIndex(i);
 								}
 							}

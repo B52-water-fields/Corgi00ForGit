@@ -105,25 +105,25 @@ public class WM00071CautionMstRenewAndCreate{
 					AllSearch);
 			
 			for(int i=0;i<CautionMstRt.length;i++) {
-				if(CautionCd.equals(""+CautionMstRt[i][0]) && DECD.equals(""+CautionMstRt[i][3])) {
+				if(CautionCd.equals(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]) && DECD.equals(""+CautionMstRt[i][M00042CautionMstRt.ColDECD])) {
 					for(int i01=0;i01<B00100DefaultVariable.CautionTiming[1].length;i01++) {
-						TB_CautionCd.setText(	""+CautionMstRt[i][ 0]);		//注意事項コード
-						TB_ClGpCD.setText(		""+CautionMstRt[i][ 1]);		//荷主グループコード
-						TB_CLGpName01.setText(	""+CautionMstRt[i][ 2]);		//荷主グループ名
-						TB_DECD.setText(		""+CautionMstRt[i][ 3]);		//届先コード
-						TB_DepartmentCd.setText(""+CautionMstRt[i][ 4]);		//部署CD
-						TB_DEName01.setText(	""+CautionMstRt[i][ 5]);		//届先名
-						TB_Add01.setText(		""+CautionMstRt[i][13]);		//届先住所1
-						TB_Add02.setText(		""+CautionMstRt[i][14]);		//届先住所2
-						TB_Add03.setText(		""+CautionMstRt[i][15]);		//届先住所3
-						TB_CautionName.setText(	""+CautionMstRt[i][ 7]);		//注意事項名
-						TB_Caution.setText(		""+CautionMstRt[i][ 8]);		//注意事項内容
-						TB_EntryDate.setText(	""+CautionMstRt[i][ 9]);		//データ登録日時
-						TB_UpdateDate.setText(	""+CautionMstRt[i][10]);		//データ更新日時
-						TB_EntryUser.setText(	""+CautionMstRt[i][11]);		//登録者コード
-						TB_UpdateUser.setText(	""+CautionMstRt[i][12]);		//更新者コード
+						TB_CautionCd.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]);		//注意事項コード
+						TB_ClGpCD.setText(		""+CautionMstRt[i][M00042CautionMstRt.ColClGpCD]);			//荷主グループコード
+						TB_CLGpName01.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColCLGpName01]);	//荷主グループ名
+						TB_DECD.setText(		""+CautionMstRt[i][M00042CautionMstRt.ColDECD]);			//届先コード
+						TB_DepartmentCd.setText(""+CautionMstRt[i][M00042CautionMstRt.ColDepartmentCd]);	//部署CD
+						TB_DEName01.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColDEName01]);		//届先名
+						TB_Add01.setText(		""+CautionMstRt[i][M00042CautionMstRt.ColAdd01]);			//届先住所1
+						TB_Add02.setText(		""+CautionMstRt[i][M00042CautionMstRt.ColAdd02]);			//届先住所2
+						TB_Add03.setText(		""+CautionMstRt[i][M00042CautionMstRt.ColAdd03]);			//届先住所3
+						TB_CautionName.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColCautionName]);	//注意事項名
+						TB_Caution.setText(		""+CautionMstRt[i][M00042CautionMstRt.ColCaution]);		//注意事項内容
+						TB_EntryDate.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColEntryDate]);		//データ登録日時
+						TB_UpdateDate.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColUpdateDate]);	//データ更新日時
+						TB_EntryUser.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColEntryUser]);		//登録者コード
+						TB_UpdateUser.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColUpdateUser]);	//更新者コード
 						
-						if(B00100DefaultVariable.CautionTiming[1][i01].equals(""+CautionMstRt[i][6])) {
+						if(B00100DefaultVariable.CautionTiming[1][i01].equals(""+CautionMstRt[i][M00042CautionMstRt.ColCautionTiming])) {
 							TB_CautionTiming.setSelectedIndex(i01);	//注意事項タイミング
 						}
 					}
@@ -550,16 +550,16 @@ public class WM00071CautionMstRenewAndCreate{
 						/*
 						部署コードJISは注意事項対象外
 						*/
-						if(!"JIS".equals(""+DeliveryMstRt[i][ 1])) {
+						if(!"JIS".equals(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd])) {
 							Object[] SetOb = new Object[8];
 							SetOb[ 0] = false;
-							SetOb[ 1] = ""+DeliveryMstRt[i][ 0];	//届先CD
-							SetOb[ 2] = ""+DeliveryMstRt[i][ 1];	//届先部署CD
-							SetOb[ 3] = ""+DeliveryMstRt[i][ 2];	//届先名
-							SetOb[ 4] = ""+DeliveryMstRt[i][ 6];	//住所1
-							SetOb[ 5] = ""+DeliveryMstRt[i][ 7];	//住所2
-							SetOb[ 6] = ""+DeliveryMstRt[i][ 8];	//住所3
-							SetOb[ 7] = ""+DeliveryMstRt[i][ 9];	//TEL
+							SetOb[ 1] = ""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD];	//届先CD
+							SetOb[ 2] = ""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd];	//届先部署CD
+							SetOb[ 3] = ""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName01];	//届先名
+							SetOb[ 4] = ""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd01];	//住所1
+							SetOb[ 5] = ""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd02];	//住所2
+							SetOb[ 6] = ""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd03];	//住所3
+							SetOb[ 7] = ""+DeliveryMstRt[i][M00040DeliveryMstRt.ColTel];	//TEL
 							
 							tableModel_delivery.addRow(SetOb);
 						}
@@ -669,7 +669,7 @@ public class WM00071CautionMstRenewAndCreate{
 								SearchCom,
 								AllSearch);
 						if(0<ClGpMstRt.length) {
-							TB_CLGpName01.setText(""+ClGpMstRt[0][1]);
+							TB_CLGpName01.setText(""+ClGpMstRt[0][M00010ClGpMstRt.ColCLGpName01]);
 						}else {
 							JOptionPane.showMessageDialog(null, "存在しない荷主グループコードです");
 							TB_ClGpCD.setText("");
@@ -739,28 +739,28 @@ public class WM00071CautionMstRenewAndCreate{
 						
 						if(0<DeliveryMstRt.length) {
 							if("".equals(GetDepartmentCd)) {
-								TB_DEName01.setText(""+DeliveryMstRt[0][2]);
-								TB_Add01.setText(""+DeliveryMstRt[0][6]);
-								TB_Add02.setText(""+DeliveryMstRt[0][7]);
-								TB_Add03.setText(""+DeliveryMstRt[0][8]);
+								TB_DEName01.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName01]);
+								TB_Add01.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd01]);
+								TB_Add02.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd02]);
+								TB_Add03.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd03]);
 							}else {
 								boolean UnHitFg=true;
 								for(int i=0;i<DeliveryMstRt.length;i++) {
-									if(GetDepartmentCd.equals(""+DeliveryMstRt[i][1])) {
-										TB_DEName01.setText(""+DeliveryMstRt[i][2]);
-										TB_Add01.setText(""+DeliveryMstRt[i][6]);
-										TB_Add02.setText(""+DeliveryMstRt[i][7]);
-										TB_Add03.setText(""+DeliveryMstRt[i][8]);
+									if(GetDepartmentCd.equals(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd])) {
+										TB_DEName01.setText(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName01]);
+										TB_Add01.setText(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd01]);
+										TB_Add02.setText(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd02]);
+										TB_Add03.setText(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd03]);
 										UnHitFg=false;
 									}
 								}
 								if(UnHitFg) {
 									JOptionPane.showMessageDialog(null, "存在しない届先部署です部署設定外します");
 									TB_DepartmentCd.setText("");
-									TB_DEName01.setText(""+DeliveryMstRt[0][2]);
-									TB_Add01.setText(""+DeliveryMstRt[0][6]);
-									TB_Add02.setText(""+DeliveryMstRt[0][7]);
-									TB_Add03.setText(""+DeliveryMstRt[0][8]);
+									TB_DEName01.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName01]);
+									TB_Add01.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd01]);
+									TB_Add02.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd02]);
+									TB_Add03.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd03]);
 								}
 							}
 						}else {
@@ -836,28 +836,28 @@ public class WM00071CautionMstRenewAndCreate{
 						
 						if(0<DeliveryMstRt.length) {
 							if("".equals(GetDepartmentCd)) {
-								TB_DEName01.setText(""+DeliveryMstRt[0][2]);
-								TB_Add01.setText(""+DeliveryMstRt[0][6]);
-								TB_Add02.setText(""+DeliveryMstRt[0][7]);
-								TB_Add03.setText(""+DeliveryMstRt[0][8]);
+								TB_DEName01.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName01]);
+								TB_Add01.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd01]);
+								TB_Add02.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd02]);
+								TB_Add03.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd03]);
 							}else {
 								boolean UnHitFg=true;
 								for(int i=0;i<DeliveryMstRt.length;i++) {
-									if(GetDepartmentCd.equals(""+DeliveryMstRt[i][1])) {
-										TB_DEName01.setText(""+DeliveryMstRt[i][2]);
-										TB_Add01.setText(""+DeliveryMstRt[i][6]);
-										TB_Add02.setText(""+DeliveryMstRt[i][7]);
-										TB_Add03.setText(""+DeliveryMstRt[i][8]);
+									if(GetDepartmentCd.equals(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd])) {
+										TB_DEName01.setText(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName01]);
+										TB_Add01.setText(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd01]);
+										TB_Add02.setText(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd02]);
+										TB_Add03.setText(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd03]);
 										UnHitFg=false;
 									}
 								}
 								if(UnHitFg) {
 									JOptionPane.showMessageDialog(null, "存在しない届先部署です部署設定外します");
 									TB_DepartmentCd.setText("");
-									TB_DEName01.setText(""+DeliveryMstRt[0][2]);
-									TB_Add01.setText(""+DeliveryMstRt[0][6]);
-									TB_Add02.setText(""+DeliveryMstRt[0][7]);
-									TB_Add03.setText(""+DeliveryMstRt[0][8]);
+									TB_DEName01.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName01]);
+									TB_Add01.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd01]);
+									TB_Add02.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd02]);
+									TB_Add03.setText(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd03]);
 								}
 							}
 						}else {

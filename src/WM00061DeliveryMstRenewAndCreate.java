@@ -140,38 +140,38 @@ public class WM00061DeliveryMstRenewAndCreate{
 					AllSearch
 					);
 			if(0<DeliveryMstRt.length) {
-				TB_DECD.setText(			""+DeliveryMstRt[0][ 0]);
-				TB_DepartmentCd.setText(	""+DeliveryMstRt[0][ 1]);
-				TB_DEName01.setText(		""+DeliveryMstRt[0][ 2]);
-				TB_DEName02.setText(		""+DeliveryMstRt[0][ 3]);
-				TB_DEName03.setText(		""+DeliveryMstRt[0][ 4]);
-				TB_Post.setText(			""+DeliveryMstRt[0][ 5]);
-				TB_Add01.setText(			""+DeliveryMstRt[0][ 6]);
-				TB_Add02.setText(			""+DeliveryMstRt[0][ 7]);
-				TB_Add03.setText(			""+DeliveryMstRt[0][ 8]);
-				TB_Tel.setText(				""+DeliveryMstRt[0][ 9]);
-				TB_Fax.setText(				""+DeliveryMstRt[0][10]);
-				TB_Mail.setText(			""+DeliveryMstRt[0][11]);
-				TB_Com01.setText(			""+DeliveryMstRt[0][12]);
-				TB_Com02.setText(			""+DeliveryMstRt[0][13]);
-				TB_Com03.setText(			""+DeliveryMstRt[0][14]);
-				TB_PrefecturesCd.setText(	""+DeliveryMstRt[0][15]);
-				TB_MunicipalityCd.setText(	""+DeliveryMstRt[0][16]);
-				TB_PTMSCD.setText(			""+DeliveryMstRt[0][17]);
-				TB_EntryDate.setText(		""+DeliveryMstRt[0][18]);
-				TB_UpdateDate.setText(		""+DeliveryMstRt[0][19]);
-				TB_EntryUser.setText(		""+DeliveryMstRt[0][20]);
-				TB_UpdateUser.setText(		""+DeliveryMstRt[0][21]);
-				TB_FirstClient.setText(		"("+DeliveryMstRt[0][22]+")"+DeliveryMstRt[0][25]);
-				TB_LastClient.setText(		"("+DeliveryMstRt[0][23]+")"+DeliveryMstRt[0][26]);
+				TB_DECD.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDECD]);
+				TB_DepartmentCd.setText(	""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDepartmentCd]);
+				TB_DEName01.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName01]);
+				TB_DEName02.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName02]);
+				TB_DEName03.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName03]);
+				TB_Post.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColPost]);
+				TB_Add01.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd01]);
+				TB_Add02.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd02]);
+				TB_Add03.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd03]);
+				TB_Tel.setText(				""+DeliveryMstRt[0][M00040DeliveryMstRt.ColTel]);
+				TB_Fax.setText(				""+DeliveryMstRt[0][M00040DeliveryMstRt.ColFax]);
+				TB_Mail.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColMail]);
+				TB_Com01.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColCom01]);
+				TB_Com02.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColCom02]);
+				TB_Com03.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColCom03]);
+				TB_PrefecturesCd.setText(	""+DeliveryMstRt[0][M00040DeliveryMstRt.ColPrefecturesCd]);
+				TB_MunicipalityCd.setText(	""+DeliveryMstRt[0][M00040DeliveryMstRt.ColMunicipalityCd]);
+				TB_PTMSCD.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColPTMSCD]);
+				TB_EntryDate.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColEntryDate]);
+				TB_UpdateDate.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColUpdateDate]);
+				TB_EntryUser.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColEntryUser]);
+				TB_UpdateUser.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColUpdateUser]);
+				TB_FirstClient.setText(		"("+DeliveryMstRt[0][22]+")"+DeliveryMstRt[0][M00040DeliveryMstRt.ColFirstClientName]);
+				TB_LastClient.setText(		"("+DeliveryMstRt[0][23]+")"+DeliveryMstRt[0][M00040DeliveryMstRt.ColLastClientName]);
 				for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-					if(B00100DefaultVariable.DelList[1][i].equals(""+DeliveryMstRt[0][24])) {
+					if(B00100DefaultVariable.DelList[1][i].equals(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDelFg])) {
 						TB_DelFg.setSelectedIndex(i);
 					}
 				}
 				
 				//JISコード届け先はメンテナンス禁止
-				if("JIS".equals(""+DeliveryMstRt[0][ 1])) {
+				if("JIS".equals(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDepartmentCd])) {
 					TB_DECD.setEnabled(false);
 					TB_DepartmentCd.setEnabled(false);
 					TB_DEName01.setEnabled(false);
@@ -728,10 +728,10 @@ public class WM00061DeliveryMstRenewAndCreate{
 									Object[] SetOb = new Object[5];
 									
 									SetOb[0] = false;
-									SetOb[ 1] = ""+SameDelivery[i][0];	//届先CD
-									SetOb[ 2] = ""+SameDelivery[i][1];	//部署CD
-									SetOb[ 3] = ""+SameDelivery[i][2];	//届先名１
-									SetOb[ 4] = ""+SameDelivery[i][6]+SameDelivery[i][7]+SameDelivery[i][8];	//届先住所
+									SetOb[ 1] = ""+SameDelivery[i][M00040DeliveryMstRt.ColDECD];			//届先CD
+									SetOb[ 2] = ""+SameDelivery[i][M00040DeliveryMstRt.ColDepartmentCd];	//部署CD
+									SetOb[ 3] = ""+SameDelivery[i][M00040DeliveryMstRt.ColDEName01];		//届先名１
+									SetOb[ 4] = ""+SameDelivery[i][M00040DeliveryMstRt.ColAdd01]+SameDelivery[i][M00040DeliveryMstRt.ColAdd02]+SameDelivery[i][M00040DeliveryMstRt.ColAdd03];	//届先住所
 									
 									tableModel_ms01.addRow(SetOb);
 								}

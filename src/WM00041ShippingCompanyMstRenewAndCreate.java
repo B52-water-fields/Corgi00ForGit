@@ -114,38 +114,38 @@ public class WM00041ShippingCompanyMstRenewAndCreate{
 					AllSearch);
 			
 			if(0<ShippingCompanyMstRt.length) {
-				TB_ShippingCompanyCd.setText(		""+ShippingCompanyMstRt[0][ 0]);	//運送会社CD
-				TB_ShippingCompanyName01.setText(	""+ShippingCompanyMstRt[0][ 1]);	//運送会社名1
-				TB_ShippingCompanyName02.setText(	""+ShippingCompanyMstRt[0][ 2]);	//運送会社名2
-				TB_ShippingCompanyName03.setText(	""+ShippingCompanyMstRt[0][ 3]);	//運送会社名3
-				TB_Post.setText(					""+ShippingCompanyMstRt[0][ 4]);	//運送会社郵便
-				TB_Add01.setText(					""+ShippingCompanyMstRt[0][ 5]);	//運送会社住所1
-				TB_Add02.setText(					""+ShippingCompanyMstRt[0][ 6]);	//運送会社住所2
-				TB_Add03.setText(					""+ShippingCompanyMstRt[0][ 7]);	//運送会社住所3
-				TB_Tel.setText(						""+ShippingCompanyMstRt[0][ 8]);	//運送会社電話
-				TB_Fax.setText(						""+ShippingCompanyMstRt[0][ 9]);	//運送会社FAX
-				TB_Mail.setText(					""+ShippingCompanyMstRt[0][10]);	//運送会社MAIL
-				TB_Com01.setText(					""+ShippingCompanyMstRt[0][11]);	//コメント1
-				TB_Com02.setText(					""+ShippingCompanyMstRt[0][12]);	//コメント2
-				TB_Com03.setText(					""+ShippingCompanyMstRt[0][13]);	//コメント3
-				TB_EntryDate.setText(				""+ShippingCompanyMstRt[0][16]);	//データ登録日時
-				TB_UpdateDate.setText(				""+ShippingCompanyMstRt[0][17]);	//データ更新日時
-				TB_EntryUser.setText(				""+ShippingCompanyMstRt[0][18]);	//登録者コード
-				TB_UpdateUser.setText(				""+ShippingCompanyMstRt[0][19]);	//更新者コード
-				TB_PTMSCD.setText(					""+ShippingCompanyMstRt[0][20]);	//基幹SYS傭車CD
+				TB_ShippingCompanyCd.setText(		""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShippingCompanyCd]);		//運送会社CD
+				TB_ShippingCompanyName01.setText(	""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShippingCompanyName01]);	//運送会社名1
+				TB_ShippingCompanyName02.setText(	""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShippingCompanyName02]);	//運送会社名2
+				TB_ShippingCompanyName03.setText(	""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShippingCompanyName03]);	//運送会社名3
+				TB_Post.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColPost]);						//運送会社郵便
+				TB_Add01.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColAdd01]);						//運送会社住所1
+				TB_Add02.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColAdd02]);						//運送会社住所2
+				TB_Add03.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColAdd03]);						//運送会社住所3
+				TB_Tel.setText(						""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColTel]);						//運送会社電話
+				TB_Fax.setText(						""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColFax]);						//運送会社FAX
+				TB_Mail.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColMail]);						//運送会社MAIL
+				TB_Com01.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColCom01]);						//コメント1
+				TB_Com02.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColCom02]);						//コメント2
+				TB_Com03.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColCom03]);						//コメント3
+				TB_EntryDate.setText(				""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColEntryDate]);					//データ登録日時
+				TB_UpdateDate.setText(				""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColUpdateDate]);				//データ更新日時
+				TB_EntryUser.setText(				""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColEntryUser]);					//登録者コード
+				TB_UpdateUser.setText(				""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColUpdateUser]);				//更新者コード
+				TB_PTMSCD.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColPTMSCD]);						//基幹SYS傭車CD
 				
 				for(int i=0;i<B00100DefaultVariable.ShimeDateList[1].length;i++) {
-					if((""+B00100DefaultVariable.ShimeDateList[1][i]).equals(""+ShippingCompanyMstRt[0][14])){
+					if((""+B00100DefaultVariable.ShimeDateList[1][i]).equals(""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShimeDate])){
 						TB_ShimeDate.setSelectedIndex(i);
 					}
 				}
 				for(int i=0;i<B00100DefaultVariable.DeliFeeNorm[1].length;i++) {
-					if((""+B00100DefaultVariable.DeliFeeNorm[1][i]).equals(""+ShippingCompanyMstRt[0][15])){
+					if((""+B00100DefaultVariable.DeliFeeNorm[1][i]).equals(""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShimeBasis])){
 						TB_ShimeBasis.setSelectedIndex(i);
 					}
 				}
 				for(int i=0;i<B00100DefaultVariable.HaisyaDataLayoutPt[1].length;i++) {
-					if((""+B00100DefaultVariable.HaisyaDataLayoutPt[1][i]).equals(""+ShippingCompanyMstRt[0][21])){
+					if((""+B00100DefaultVariable.HaisyaDataLayoutPt[1][i]).equals(""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColExportDataType])){
 						TB_ExportDataType.setSelectedIndex(i);
 					}
 				}

@@ -379,40 +379,41 @@ public class WM00030UserMstSearch{
 						Object[] SetOb = new Object[33];
 						
 						SetOb[ 0] = false;	//FG
-						SetOb[ 1] = ""+UserMstRt[i][ 0];	//倉庫CD
-						SetOb[ 2] = ""+UserMstRt[i][ 1];	//運送会社CD
-						SetOb[ 3] = ""+UserMstRt[i][ 3];	//ユーザーCD
-						SetOb[ 4] = ""+UserMstRt[i][29];	//倉庫名
-						SetOb[ 5] = ""+UserMstRt[i][ 2];	//運送会社名
-						SetOb[ 6] = ""+UserMstRt[i][10];	//ユーザー名1
-						SetOb[ 7] = ""+UserMstRt[i][11];	//ユーザー名2
-						SetOb[ 8] = ""+UserMstRt[i][12];	//ユーザー名3
-						SetOb[ 9] = (int)UserMstRt[i][ 5];	//権限区分
-						SetOb[10] = ""+UserMstRt[i][ 6];	//標準車輛CD
-						SetOb[11] = ""+UserMstRt[i][ 7];	//車両名称01
-						SetOb[12] = ""+UserMstRt[i][ 8];	//車両名称02
-						SetOb[13] = ""+UserMstRt[i][ 9];	//車両名称03
-						SetOb[14] = ""+UserMstRt[i][13];	//郵便番号
-						SetOb[15] = ""+UserMstRt[i][14];	//住所1
-						SetOb[16] = ""+UserMstRt[i][15];	//住所2
-						SetOb[17] = ""+UserMstRt[i][16];	//住所3
-						SetOb[18] = ""+UserMstRt[i][17];	//電話番号
-						SetOb[19] = ""+UserMstRt[i][18];	///FAX
-						SetOb[20] = ""+UserMstRt[i][19];	//メールアドレス
-						SetOb[21] = ""+UserMstRt[i][20];	//コメント1
-						SetOb[22] = ""+UserMstRt[i][21];	//コメント2
-						SetOb[23] = ""+UserMstRt[i][22];	//コメント3
-						SetOb[24] = ""+UserMstRt[i][25];	//登録者コード
-						SetOb[25] = ""+UserMstRt[i][26];	//更新者コード
-						SetOb[26] = ""+UserMstRt[i][23];	//データ登録日時
-						SetOb[27] = ""+UserMstRt[i][24];	//データ更新日時
-						SetOb[28] = ""+UserMstRt[i][27];	//基幹システムユーザーコード
-						SetOb[29] = (int)UserMstRt[i][28];	//削除区分
-						SetOb[30] = ""+UserMstRt[i][30];	//主要担当荷主CD
-						SetOb[31] = ""+UserMstRt[i][31];	//主要担当荷主名
-						SetOb[32] = ""+UserMstRt[i][ 4];	//パスワード
+						SetOb[ 1] = ""+UserMstRt[i][M00020UserMstRt.ColWHCD];						//倉庫CD
+						SetOb[ 2] = ""+UserMstRt[i][M00020UserMstRt.ColShippingCompanyCd];		//運送会社CD
+						SetOb[ 3] = ""+UserMstRt[i][M00020UserMstRt.ColUserCd];					//ユーザーCD
+						SetOb[ 4] = ""+UserMstRt[i][M00020UserMstRt.ColWHName];					//倉庫名
+						SetOb[ 5] = ""+UserMstRt[i][M00020UserMstRt.ColShippingCompanyName01];	//運送会社名
+						SetOb[ 6] = ""+UserMstRt[i][M00020UserMstRt.ColUserName01];				//ユーザー名1
+						SetOb[ 7] = ""+UserMstRt[i][M00020UserMstRt.ColUserName02];				//ユーザー名2
+						SetOb[ 8] = ""+UserMstRt[i][M00020UserMstRt.ColUserName03];				//ユーザー名3
+						SetOb[ 9] = (int)UserMstRt[i][M00020UserMstRt.ColAuthorityFG];			//権限区分
+						SetOb[10] = ""+UserMstRt[i][M00020UserMstRt.ColCarCd];						//標準車輛CD
+						SetOb[11] = ""+UserMstRt[i][M00020UserMstRt.ColCarName01];				//車両名称01
+						SetOb[12] = ""+UserMstRt[i][M00020UserMstRt.ColCarName02];				//車両名称02
+						SetOb[13] = ""+UserMstRt[i][M00020UserMstRt.ColCarName03];				//車両名称03
+						SetOb[14] = ""+UserMstRt[i][M00020UserMstRt.ColPost];						//郵便番号
+						SetOb[15] = ""+UserMstRt[i][M00020UserMstRt.ColAdd01];						//住所1
+						SetOb[16] = ""+UserMstRt[i][M00020UserMstRt.ColAdd02];						//住所2
+						SetOb[17] = ""+UserMstRt[i][M00020UserMstRt.ColAdd03];						//住所3
+						SetOb[18] = ""+UserMstRt[i][M00020UserMstRt.ColTel];						//電話番号
+						SetOb[19] = ""+UserMstRt[i][M00020UserMstRt.ColFax];						///FAX
+						SetOb[20] = ""+UserMstRt[i][M00020UserMstRt.ColMail];						//メールアドレス
+						SetOb[21] = ""+UserMstRt[i][M00020UserMstRt.ColCom01];						//コメント1
+						SetOb[22] = ""+UserMstRt[i][M00020UserMstRt.ColCom02];						//コメント2
+						SetOb[23] = ""+UserMstRt[i][M00020UserMstRt.ColCom03];						//コメント3
+						SetOb[24] = ""+UserMstRt[i][M00020UserMstRt.ColEntryUser];				//登録者コード
+						SetOb[25] = ""+UserMstRt[i][M00020UserMstRt.ColUpdateUser];				//更新者コード
+						SetOb[26] = ""+UserMstRt[i][M00020UserMstRt.ColEntryDate];				//データ登録日時
+						SetOb[27] = ""+UserMstRt[i][M00020UserMstRt.ColUpdateDate];				//データ更新日時
+						SetOb[28] = ""+UserMstRt[i][M00020UserMstRt.ColPTMSCD];					//基幹システムユーザーコード
+						SetOb[29] = (int)UserMstRt[i][M00020UserMstRt.ColDelFg];					//削除区分
+						SetOb[30] = ""+UserMstRt[i][M00020UserMstRt.ColMainClient];				//主要担当荷主CD
+						SetOb[31] = ""+UserMstRt[i][M00020UserMstRt.ColCLName01];					//主要担当荷主名
+						SetOb[32] = ""+UserMstRt[i][M00020UserMstRt.ColPassWord];					//パスワード
+						
 						//パスワードは一覧に出さない
-						if("".equals(""+UserMstRt[i][ 4])) {
+						if("".equals(""+UserMstRt[i][M00020UserMstRt.ColPassWord])) {
 						}else {
 							SetOb[32] = "********";
 						}

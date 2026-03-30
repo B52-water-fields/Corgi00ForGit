@@ -19,30 +19,73 @@ public class M00031CarMstRt{
 			SearchCarName,
 			SearchDelFg,
 			AllSearch);
+			
+	String GetWHCD					= (String)CarMstRt[i][ColWHCD];						//担当倉庫
+	String GetShippingCompanyCd		= (String)CarMstRt[i][ColShippingCompanyCd];		//運送会社CD
+	String GetShippingCompanyName01	= (String)CarMstRt[i][ColShippingCompanyName01];	//運送会社名1
+	String GetShippingCompanyName02	= (String)CarMstRt[i][ColShippingCompanyName02];	//運送会社名2
+	String GetShippingCompanyName03	= (String)CarMstRt[i][ColShippingCompanyName03];	//運送会社名3
+	String GetCarCd					= (String)CarMstRt[i][ColCarCd];					//車輛CD
+	String GetCarName01				= (String)CarMstRt[i][ColCarName01];				//車輛名01
+	String GetCarName02				= (String)CarMstRt[i][ColCarName02];				//車輛名02
+	String GetCarName03				= (String)CarMstRt[i][ColCarName03];				//車輛名03
+	String GetDriverCd				= (String)CarMstRt[i][ColDriverCd];					//乗務員CD
+	String GetUserName01			= (String)CarMstRt[i][ColUserName01];				//ユーザー名1
+	String GetUserName02			= (String)CarMstRt[i][ColUserName02];				//ユーザー名2
+	String GetUserName03			= (String)CarMstRt[i][ColUserName03];				//ユーザー名3
+	String GetPTMSCD				= (String)CarMstRt[i][ColPTMSCD];					//基幹システム車輛コード
+	String GetEntryDate				= (String)CarMstRt[i][ColEntryDate];				//データ登録日時
+	String GetUpdateDate			= (String)CarMstRt[i][ColUpdateDate];				//データ更新日時
+	String GetEntryUser				= (String)CarMstRt[i][ColEntryUser];				//登録者コード
+	String GetUpdateUser			= (String)CarMstRt[i][ColUpdateUser];				//更新者コード
+	int GetDelFg					= (String)CarMstRt[i][ColDelFg];					//削除フラグ
+	String GetWHName				= (String)CarMstRt[i][ColWHName];					//倉庫名
+			
 	*/
 	//戻り値カラム
+	static int ColWHCD						= (int) 0;	//担当倉庫
+	static int ColShippingCompanyCd		= (int) 1;	//運送会社CD
+	static int ColShippingCompanyName01	= (int) 2;	//運送会社名1
+	static int ColShippingCompanyName02	= (int) 3;	//運送会社名2
+	static int ColShippingCompanyName03	= (int) 4;	//運送会社名3
+	static int ColCarCd					= (int) 5;	//車輛CD
+	static int ColCarName01				= (int) 6;	//車輛名01
+	static int ColCarName02				= (int) 7;	//車輛名02
+	static int ColCarName03				= (int) 8;	//車輛名03
+	static int ColDriverCd					= (int) 9;	//乗務員CD
+	static int ColUserName01				= (int)10;	//ユーザー名1
+	static int ColUserName02				= (int)11;	//ユーザー名2
+	static int ColUserName03				= (int)12;	//ユーザー名3
+	static int ColPTMSCD					= (int)13;	//基幹システム車輛コード
+	static int ColEntryDate				= (int)14;	//データ登録日時
+	static int ColUpdateDate				= (int)15;	//データ更新日時
+	static int ColEntryUser				= (int)16;	//登録者コード
+	static int ColUpdateUser				= (int)17;	//更新者コード
+	static int ColDelFg					= (int)18;	//削除フラグ
+	static int ColWHName					= (int)19;	//倉庫名
+	
 	public static Object[][] RtSettingCarMstRt(){
 		Object[][] RtSettingCarMstRt = {
-				 {"WHCD"					,(int) 0	,"String"	,"担当倉庫"}
-				,{"ShippingCompanyCd"		,(int) 1	,"String"	,"運送会社CD"}
-				,{"ShippingCompanyName01"	,(int) 2	,"String"	,"運送会社名1"}
-				,{"ShippingCompanyName02"	,(int) 3	,"String"	,"運送会社名2"}
-				,{"ShippingCompanyName03"	,(int) 4	,"String"	,"運送会社名3"}
-				,{"CarCd"					,(int) 5	,"String"	,"車輛CD"}
-				,{"CarName01"				,(int) 6	,"String"	,"車輛名01"}
-				,{"CarName02"				,(int) 7	,"String"	,"車輛名02"}
-				,{"CarName03"				,(int) 8	,"String"	,"車輛名03"}
-				,{"DriverCd"				,(int) 9	,"String"	,"乗務員CD"}
-				,{"UserName01"				,(int)10	,"String"	,"ユーザー名1"}
-				,{"UserName02"				,(int)11	,"String"	,"ユーザー名2"}
-				,{"UserName03"				,(int)12	,"String"	,"ユーザー名3"}
-				,{"PTMSCD"					,(int)13	,"String"	,"基幹システム車輛コード"}
-				,{"EntryDate"				,(int)14	,"String"	,"データ登録日時"}
-				,{"UpdateDate"				,(int)15	,"String"	,"データ更新日時"}
-				,{"EntryUser"				,(int)16	,"String"	,"登録者コード"}
-				,{"UpdateUser"				,(int)17	,"String"	,"更新者コード"}
-				,{"DelFg"					,(int)18	,"int"		,"削除フラグ"}
-				,{"WHName"					,(int)19	,"String"	,"倉庫名"}
+				 {"WHCD"					,ColWHCD						,"String"	,"担当倉庫"}
+				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"}
+				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社名1"}
+				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社名2"}
+				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社名3"}
+				,{"CarCd"					,ColCarCd						,"String"	,"車輛CD"}
+				,{"CarName01"				,ColCarName01					,"String"	,"車輛名01"}
+				,{"CarName02"				,ColCarName02					,"String"	,"車輛名02"}
+				,{"CarName03"				,ColCarName03					,"String"	,"車輛名03"}
+				,{"DriverCd"				,ColDriverCd					,"String"	,"乗務員CD"}
+				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"}
+				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"}
+				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"}
+				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム車輛コード"}
+				,{"EntryDate"				,ColEntryDate					,"String"	,"データ登録日時"}
+				,{"UpdateDate"				,ColUpdateDate				,"String"	,"データ更新日時"}
+				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"}
+				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"}
+				,{"DelFg"					,ColDelFg						,"int"		,"削除フラグ"}
+				,{"WHName"					,ColWHName						,"String"	,"倉庫名"}
 				};
 		
 		return RtSettingCarMstRt;
@@ -225,26 +268,27 @@ public class M00031CarMstRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("WHCD")){					rt[counter][ 0] = "";}else{rt[counter][ 0] = rset01.getString("WHCD");}						//担当倉庫
-					if(null==rset01.getString("ShippingCompanyCd")){	rt[counter][ 1] = "";}else{rt[counter][ 1] = rset01.getString("ShippingCompanyCd");}		//運送会社CD
-					if(null==rset01.getString("ShippingCompanyName01")){rt[counter][ 2] = "";}else{rt[counter][ 2] = rset01.getString("ShippingCompanyName01");}	//運送会社名1
-					if(null==rset01.getString("ShippingCompanyName02")){rt[counter][ 3] = "";}else{rt[counter][ 3] = rset01.getString("ShippingCompanyName02");}	//運送会社名2
-					if(null==rset01.getString("ShippingCompanyName03")){rt[counter][ 4] = "";}else{rt[counter][ 4] = rset01.getString("ShippingCompanyName03");}	//運送会社名3
-					if(null==rset01.getString("CarCd")){				rt[counter][ 5] = "";}else{rt[counter][ 5] = rset01.getString("CarCd");}					//車輛CD
-					if(null==rset01.getString("CarName01")){			rt[counter][ 6] = "";}else{rt[counter][ 6] = rset01.getString("CarName01");}				//車輛名01
-					if(null==rset01.getString("CarName02")){			rt[counter][ 7] = "";}else{rt[counter][ 7] = rset01.getString("CarName02");}				//車輛名02
-					if(null==rset01.getString("CarName03")){			rt[counter][ 8] = "";}else{rt[counter][ 8] = rset01.getString("CarName03");}				//車輛名03
-					if(null==rset01.getString("DriverCd")){				rt[counter][ 9] = "";}else{rt[counter][ 9] = rset01.getString("DriverCd");}					//乗務員CD
-					if(null==rset01.getString("UserName01")){			rt[counter][10] = "";}else{rt[counter][10] = rset01.getString("UserName01");}				//ユーザー名1
-					if(null==rset01.getString("UserName02")){			rt[counter][11] = "";}else{rt[counter][11] = rset01.getString("UserName02");}				//ユーザー名2
-					if(null==rset01.getString("UserName03")){			rt[counter][12] = "";}else{rt[counter][12] = rset01.getString("UserName03");}				//ユーザー名3
-					if(null==rset01.getString("PTMSCD")){				rt[counter][13] = "";}else{rt[counter][13] = rset01.getString("PTMSCD");}					//基幹システム車輛コード
-					if(null==rset01.getTimestamp("EntryDate")){			rt[counter][14] = "";}else{rt[counter][14] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){		rt[counter][15] = "";}else{rt[counter][15] = B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
-					if(null==rset01.getString("EntryUser")){			rt[counter][16] = "";}else{rt[counter][16] = rset01.getString("EntryUser");}				//登録者コード
-					if(null==rset01.getString("UpdateUser")){			rt[counter][17] = "";}else{rt[counter][17] = rset01.getString("UpdateUser");}				//更新者コード
-					rt[counter][18] = rset01.getInt("DelFg");	//削除フラグ
-					if(null==rset01.getString("WHName")){				rt[counter][19]="";}else{rt[counter][19]=rset01.getString("WHName");}						//倉庫名
+					if(null==rset01.getString("WHCD")){					rt[counter][ColWHCD] 						= "";}else{rt[counter][ColWHCD] 						= rset01.getString("WHCD");}					//担当倉庫
+					if(null==rset01.getString("ShippingCompanyCd")){	rt[counter][ColShippingCompanyCd] 		= "";}else{rt[counter][ColShippingCompanyCd] 		= rset01.getString("ShippingCompanyCd");}		//運送会社CD
+					if(null==rset01.getString("ShippingCompanyName01")){rt[counter][ColShippingCompanyName01] 	= "";}else{rt[counter][ColShippingCompanyName01] 	= rset01.getString("ShippingCompanyName01");}	//運送会社名1
+					if(null==rset01.getString("ShippingCompanyName02")){rt[counter][ColShippingCompanyName02] 	= "";}else{rt[counter][ColShippingCompanyName02] 	= rset01.getString("ShippingCompanyName02");}	//運送会社名2
+					if(null==rset01.getString("ShippingCompanyName03")){rt[counter][ColShippingCompanyName03] 	= "";}else{rt[counter][ColShippingCompanyName03] 	= rset01.getString("ShippingCompanyName03");}	//運送会社名3
+					if(null==rset01.getString("CarCd")){				rt[counter][ColCarCd] 						= "";}else{rt[counter][ColCarCd] 						= rset01.getString("CarCd");}					//車輛CD
+					if(null==rset01.getString("CarName01")){			rt[counter][ColCarName01] 				= "";}else{rt[counter][ColCarName01] 					= rset01.getString("CarName01");}				//車輛名01
+					if(null==rset01.getString("CarName02")){			rt[counter][ColCarName02] 				= "";}else{rt[counter][ColCarName02] 					= rset01.getString("CarName02");}				//車輛名02
+					if(null==rset01.getString("CarName03")){			rt[counter][ColCarName03] 				= "";}else{rt[counter][ColCarName03] 					= rset01.getString("CarName03");}				//車輛名03
+					if(null==rset01.getString("DriverCd")){				rt[counter][ColDriverCd] 					= "";}else{rt[counter][ColDriverCd] 					= rset01.getString("DriverCd");}				//乗務員CD
+					if(null==rset01.getString("UserName01")){			rt[counter][ColUserName01] 				= "";}else{rt[counter][ColUserName01] 				= rset01.getString("UserName01");}				//ユーザー名1
+					if(null==rset01.getString("UserName02")){			rt[counter][ColUserName02] 				= "";}else{rt[counter][ColUserName02] 				= rset01.getString("UserName02");}				//ユーザー名2
+					if(null==rset01.getString("UserName03")){			rt[counter][ColUserName03] 				= "";}else{rt[counter][ColUserName03] 				= rset01.getString("UserName03");}				//ユーザー名3
+					if(null==rset01.getString("PTMSCD")){				rt[counter][ColPTMSCD] 					= "";}else{rt[counter][ColPTMSCD] 						= rset01.getString("PTMSCD");}					//基幹システム車輛コード
+					if(null==rset01.getTimestamp("EntryDate")){			rt[counter][ColEntryDate] 				= "";}else{rt[counter][ColEntryDate] 					= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){		rt[counter][ColUpdateDate] 				= "";}else{rt[counter][ColUpdateDate] 				= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
+					if(null==rset01.getString("EntryUser")){			rt[counter][ColEntryUser] 				= "";}else{rt[counter][ColEntryUser] 					= rset01.getString("EntryUser");}				//登録者コード
+					if(null==rset01.getString("UpdateUser")){			rt[counter][ColUpdateUser] 				= "";}else{rt[counter][ColUpdateUser] 				= rset01.getString("UpdateUser");}				//更新者コード
+					rt[counter][ColDelFg] = rset01.getInt("DelFg");	//削除フラグ
+					if(null==rset01.getString("WHName")){				rt[counter][ColWHName]						= "";}else{rt[counter][ColWHName]						=rset01.getString("WHName");}					//倉庫名
+					
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
