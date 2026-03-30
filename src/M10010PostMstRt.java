@@ -657,11 +657,13 @@ public class M10010PostMstRt{
 			if(UnHitFg) {
 				//△△区　△△町 △△村で始まる場合特定できたものとする
 				for(int i01=0;i01<LastCharange.length;i01++) {
-					String WST = rt[i][0].substring(0,(""+LastCharange[i01][0]).length());
-					if((""+LastCharange[i01][0]).equals(WST)){
-						rt[i][1] = ""+LastCharange[i01][1];
-						UnHitFg  = false;
-						i01=LastCharange.length+1;
+					if((""+LastCharange[i01][0]).length()<rt[i][0].length()) {
+						String WST = rt[i][0].substring(0,(""+LastCharange[i01][0]).length());
+						if((""+LastCharange[i01][0]).equals(WST)){
+							rt[i][1] = ""+LastCharange[i01][1];
+							UnHitFg  = false;
+							i01=LastCharange.length+1;
+						}
 					}
 				}
 			}
