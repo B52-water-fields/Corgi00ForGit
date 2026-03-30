@@ -180,8 +180,6 @@ public class WM00091LocationMstRenewAndCreate{
 					
 					
 					
-					
-					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();
 
