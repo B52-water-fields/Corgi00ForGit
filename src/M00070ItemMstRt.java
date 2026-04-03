@@ -21,7 +21,7 @@ public class M00070ItemMstRt{
 	ArrayList<String> SearchItemColorCd 		= new ArrayList<String>();	//商品カラーコード
 	ArrayList<String> SearchItemColorName 		= new ArrayList<String>();	//商品カラー名
 	ArrayList<String> SearchItemSizeCd 			= new ArrayList<String>();	//商品サイズコード
-	ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイス名
+	ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイズ名
 	ArrayList<String> SearchJanCd 				= new ArrayList<String>();	//JANCD
 	ArrayList<String> SearchTildFG 				= new ArrayList<String>();	//温度区分
 	ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
@@ -44,7 +44,7 @@ public class M00070ItemMstRt{
 			SearchItemColorCd,		//商品カラーコード
 			SearchItemColorName,	//商品カラー名
 			SearchItemSizeCd,		//商品サイズコード
-			SearchItemSizeName,		//商品サイス名
+			SearchItemSizeName,		//商品サイズ名
 			SearchJanCd,			//JANCD
 			SearchTildFG,			//温度区分
 			SearchTildName,			//温度区分名
@@ -98,7 +98,7 @@ public class M00070ItemMstRt{
 	String GetItemColorCd			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemColorCd];			//商品カラーコード
 	String GetItemColorName			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemColorName];		//商品カラー名
 	String GetItemSizeCd			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemSizeCd];			//商品サイズコード
-	String GetItemSizeName			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemSizeName];		//商品サイス名
+	String GetItemSizeName			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemSizeName];		//商品サイズ名
 	String GetCom01					= (String)ItemMstRt[i][M00070ItemMstRt.ColCom01];				//コメント1
 	String GetCom02					= (String)ItemMstRt[i][M00070ItemMstRt.ColCom02];				//コメント2
 	String GetCom03					= (String)ItemMstRt[i][M00070ItemMstRt.ColCom03];				//コメント3
@@ -165,7 +165,7 @@ public class M00070ItemMstRt{
 	static int ColItemColorCd			= (int)44;	//商品カラーコード
 	static int ColItemColorName		= (int)45;	//商品カラー名
 	static int ColItemSizeCd			= (int)46;	//商品サイズコード
-	static int ColItemSizeName		= (int)47;	//商品サイス名
+	static int ColItemSizeName		= (int)47;	//商品サイズ名
 	static int ColCom01				= (int)48;	//コメント1
 	static int ColCom02				= (int)49;	//コメント2
 	static int ColCom03				= (int)50;	//コメント3
@@ -232,7 +232,7 @@ public class M00070ItemMstRt{
 				,{"ItemColorCd"				,ColItemColorCd			,"String"	,"商品カラーコード"}
 				,{"ItemColorName"			,ColItemColorName			,"String"	,"商品カラー名"}
 				,{"ItemSizeCd"				,ColItemSizeCd			,"String"	,"商品サイズコード"}
-				,{"ItemSizeName"			,ColItemSizeName			,"String"	,"商品サイス名"}
+				,{"ItemSizeName"			,ColItemSizeName			,"String"	,"商品サイズ名"}
 				,{"Com01"					,ColCom01					,"String"	,"コメント1"}
 				,{"Com02"					,ColCom02					,"String"	,"コメント2"}
 				,{"Com03"					,ColCom03					,"String"	,"コメント3"}
@@ -269,7 +269,7 @@ public class M00070ItemMstRt{
 			ArrayList<String> SearchItemColorCd,		//商品カラーコード
 			ArrayList<String> SearchItemColorName,		//商品カラー名
 			ArrayList<String> SearchItemSizeCd,			//商品サイズコード
-			ArrayList<String> SearchItemSizeName,		//商品サイス名
+			ArrayList<String> SearchItemSizeName,		//商品サイズ名
 			ArrayList<String> SearchJanCd,				//JANCD
 			ArrayList<String> SearchTildFG,				//温度区分
 			ArrayList<String> SearchTildName,			//温度区分名
@@ -349,7 +349,7 @@ public class M00070ItemMstRt{
 				+"(KM0061_ITEMMSTSUB.ItemColorCd) as ItemColorCd,\n"		//商品カラーコード
 				+"(KM0061_ITEMMSTSUB.ItemColorName) as ItemColorName,\n"	//商品カラー名
 				+"(KM0061_ITEMMSTSUB.ItemSizeCd) as ItemSizeCd,\n"			//商品サイズコード
-				+"(KM0061_ITEMMSTSUB.ItemSizeName) as ItemSizeName,\n"		//商品サイス名
+				+"(KM0061_ITEMMSTSUB.ItemSizeName) as ItemSizeName,\n"		//商品サイズ名
 				+"(KM0061_ITEMMSTSUB.Com01) as Com01,\n"					//コメント1
 				+"(KM0061_ITEMMSTSUB.Com02) as Com02,\n"					//コメント2
 				+"(KM0061_ITEMMSTSUB.Com03) as Com03,\n"					//コメント3
@@ -782,7 +782,7 @@ public class M00070ItemMstRt{
 					if(null==rset01.getString("ItemColorCd")){			rt[counter][ColItemColorCd]			="";}else{rt[counter][ColItemColorCd]			=rset01.getString("ItemColorCd");}			//商品カラーコード
 					if(null==rset01.getString("ItemColorName")){		rt[counter][ColItemColorName]			="";}else{rt[counter][ColItemColorName]		=rset01.getString("ItemColorName");}		//商品カラー名
 					if(null==rset01.getString("ItemSizeCd")){			rt[counter][ColItemSizeCd]			="";}else{rt[counter][ColItemSizeCd]			=rset01.getString("ItemSizeCd");}			//商品サイズコード
-					if(null==rset01.getString("ItemSizeName")){			rt[counter][ColItemSizeName]			="";}else{rt[counter][ColItemSizeName]		=rset01.getString("ItemSizeName");}			//商品サイス名
+					if(null==rset01.getString("ItemSizeName")){			rt[counter][ColItemSizeName]			="";}else{rt[counter][ColItemSizeName]		=rset01.getString("ItemSizeName");}			//商品サイズ名
 					if(null==rset01.getString("Com01")){				rt[counter][ColCom01]					="";}else{rt[counter][ColCom01]				=rset01.getString("Com01");}				//コメント1
 					if(null==rset01.getString("Com02")){				rt[counter][ColCom02]					="";}else{rt[counter][ColCom02]				=rset01.getString("Com02");}				//コメント2
 					if(null==rset01.getString("Com03")){				rt[counter][ColCom03]					="";}else{rt[counter][ColCom03]				=rset01.getString("Com03");}				//コメント3

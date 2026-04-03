@@ -39,13 +39,7 @@ public class WM00082ItemMstExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		String SheetName = "";
-		
 		final String[] SheetList = B00060ToolsExcellControl.ExcellSheetList(TgtFilePath);
-		
-		if(1==SheetList.length) {
-			SheetName = SheetList[0];
-		}
 		
 		JLabel LB_SheetList				= B00110FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
 		final JComboBox   TB_SheetList	= B00110FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
@@ -99,71 +93,67 @@ public class WM00082ItemMstExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		String[] NeedCol = {
-					 "荷主グループコード"
-					,"商品コード"
-					,"荷主商品コード"
-					,"商品名1"
-					,"商品名2"
-					,"商品名3"
-					,"運送タイプコード01"
-					,"運送タイプコード02"
-					,"運送タイプコード03"
-					,"運送タイプコード04"
-					,"運送タイプコード05"
-					,"基幹システム商品コード"
-					,"カートン入数"
-					,"ケース入数"
-					,"パレット入数"
-					,"JANCD"
-					,"カートンバーコード"
-					,"ケースバーコード"
-					,"パレットバーコード"
-					,"カートン商品名称"
-					,"ケース商品名称"
-					,"パレット商品名称"
-					,"商品単位"
-					,"カートン商品単位"
-					,"ケース商品単位"
-					,"パレット商品単位"
-					,"商品重量"
-					,"カートン重量"
-					,"ケース重量"
-					,"パレット重量"
-					,"商品サイズ"
-					,"カートンサイズ"
-					,"ケースサイズ"
-					,"パレットサイズ"
-					,"推奨ロケ"
-					,"商品モデル番号（型番）"
-					,"商品カテゴリCD"
-					,"商品カテゴリ名"
-					,"商品カラーコード"
-					,"商品カラー名"
-					,"商品サイズコード"
-					,"商品サイス名"
-					,"コメント1"
-					,"コメント2"
-					,"コメント3"
-					,"温度区分"
-					,"画像パス01"
-					,"画像パス02"
-					,"画像パス03"
-					,"画像パス04"
-					,"画像パス05"
-					,"賞味期限日数"
-					,"削除フラグ"
-					};
-		int[] TgtCol = new int[NeedCol.length];
-		for(int i=0;i<NeedCol.length;i++) {TgtCol[i] = -1;}
-		
-		
+		Object[][] NeedCol = {
+					 {"荷主グループコード"		,1, 0}
+					,{"商品コード"				,1, 1}
+					,{"荷主商品コード"			,1, 2}
+					,{"商品名1"					,1, 3}
+					,{"商品名2"					,1, 4}
+					,{"商品名3"					,1, 5}
+					,{"運送タイプコード01"		,1, 6}
+					,{"運送タイプコード02"		,1, 7}
+					,{"運送タイプコード03"		,1, 8}
+					,{"運送タイプコード04"		,1, 9}
+					,{"運送タイプコード05"		,1,10}
+					,{"基幹システム商品コード"	,1,11}
+					,{"カートン入数"			,0,12}
+					,{"ケース入数"				,0,13}
+					,{"パレット入数"			,0,14}
+					,{"JANCD"					,1,15}
+					,{"カートンバーコード"		,1,16}
+					,{"ケースバーコード"		,1,17}
+					,{"パレットバーコード"		,1,18}
+					,{"カートン商品名称"		,1,19}
+					,{"ケース商品名称"			,1,20}
+					,{"パレット商品名称"		,1,21}
+					,{"商品単位"				,1,22}
+					,{"カートン商品単位"		,1,23}
+					,{"ケース商品単位"			,1,24}
+					,{"パレット商品単位"		,1,25}
+					,{"商品重量"				,0,26}
+					,{"カートン重量"			,0,27}
+					,{"ケース重量"				,0,28}
+					,{"パレット重量"			,0,29}
+					,{"商品サイズ"				,0,30}
+					,{"カートンサイズ"			,0,31}
+					,{"ケースサイズ"			,0,32}
+					,{"パレットサイズ"			,0,33}
+					,{"推奨ロケ"				,1,34}
+					,{"商品モデル番号（型番）"	,1,35}
+					,{"商品カテゴリCD"			,1,36}
+					,{"商品カテゴリ名"			,1,37}
+					,{"商品カラーコード"		,1,38}
+					,{"商品カラー名"			,1,39}
+					,{"商品サイズコード"		,1,40}
+					,{"商品サイズ名"			,1,41}
+					,{"コメント1"				,1,42}
+					,{"コメント2"				,1,43}
+					,{"コメント3"				,1,44}
+					,{"温度区分"				,1,45}
+					,{"画像パス01"				,1,46}
+					,{"画像パス02"				,1,47}
+					,{"画像パス03"				,1,48}
+					,{"画像パス04"				,1,49}
+					,{"画像パス05"				,1,50}
+					,{"賞味期限日数"			,1,51}
+					,{"削除フラグ"				,1,52}
+					};//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています※データ内の重複はチェックしません",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = new String[NeedCol.length+1];
 		columnNames01[0] = "Fg";
-		for(int i=0;i<NeedCol.length;i++) {columnNames01[i+1] = NeedCol[i];}
+		for(int i=0;i<NeedCol.length;i++) {columnNames01[i+1] = (String)NeedCol[i][0];}
 		
 		//編集可能カラムの指定
 		B10010TableControl.RenewTgt = new int[1];
@@ -183,59 +173,13 @@ public class WM00082ItemMstExcelEntry{
 		TableColumn column = null;
 		
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主グループCD
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品コード
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主商品コード
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品名1
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品名2
-		column = columnModel01.getColumn( 6);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品名3
-		column = columnModel01.getColumn( 7);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//運送タイプコード01
-		column = columnModel01.getColumn( 8);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//運送タイプコード02
-		column = columnModel01.getColumn( 9);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//運送タイプコード03
-		column = columnModel01.getColumn(10);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//運送タイプコード04
-		column = columnModel01.getColumn(11);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//運送タイプコード05
-		column = columnModel01.getColumn(12);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//基幹システム商品コード
-		column = columnModel01.getColumn(13);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//カートン入数
-		column = columnModel01.getColumn(14);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//ケース入数
-		column = columnModel01.getColumn(15);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//パレット入数
-		column = columnModel01.getColumn(16);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//JANCD
-		column = columnModel01.getColumn(17);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//カートンバーコード
-		column = columnModel01.getColumn(18);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//ケースバーコード
-		column = columnModel01.getColumn(19);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//パレットバーコード
-		column = columnModel01.getColumn(20);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//カートン商品名称
-		column = columnModel01.getColumn(21);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//ケース商品名称
-		column = columnModel01.getColumn(22);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//パレット商品名称
-		column = columnModel01.getColumn(23);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品単位
-		column = columnModel01.getColumn(24);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//カートン商品単位
-		column = columnModel01.getColumn(25);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//ケース商品単位
-		column = columnModel01.getColumn(26);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//パレット商品単位
-		column = columnModel01.getColumn(27);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//商品重量
-		column = columnModel01.getColumn(28);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//カートン重量
-		column = columnModel01.getColumn(29);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//ケース重量
-		column = columnModel01.getColumn(30);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//パレット重量
-		column = columnModel01.getColumn(31);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//商品サイズ
-		column = columnModel01.getColumn(32);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//カートンサイズ
-		column = columnModel01.getColumn(33);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//ケースサイズ
-		column = columnModel01.getColumn(34);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	//パレットサイズ
-		column = columnModel01.getColumn(35);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//推奨ロケ
-		column = columnModel01.getColumn(36);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品モデル番号（型番）
-		column = columnModel01.getColumn(37);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品カテゴリCD
-		column = columnModel01.getColumn(38);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品カテゴリ名
-		column = columnModel01.getColumn(39);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品カラーコード
-		column = columnModel01.getColumn(40);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品カラー名
-		column = columnModel01.getColumn(41);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品サイズコード
-		column = columnModel01.getColumn(42);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//商品サイス名
-		column = columnModel01.getColumn(43);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント1
-		column = columnModel01.getColumn(44);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント2
-		column = columnModel01.getColumn(45);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント3
-		column = columnModel01.getColumn(46);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//温度区分
-		column = columnModel01.getColumn(47);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//画像パス01
-		column = columnModel01.getColumn(48);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//画像パス02
-		column = columnModel01.getColumn(49);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//画像パス03
-		column = columnModel01.getColumn(50);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//画像パス04
-		column = columnModel01.getColumn(51);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//画像パス05
-		column = columnModel01.getColumn(52);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//賞味期限日数
-		column = columnModel01.getColumn(53);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//削除フラグ
+		for(int i=1;i<NeedCol.length;i++) {
+			if(0==(int)NeedCol[i][1]) {
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	
+			}else {
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	
+			}
+		}
 		
 		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,800,600,tb01);
 		main_fm.add(scpn01);
@@ -252,9 +196,9 @@ public class WM00082ItemMstExcelEntry{
 				boolean UnHitFg = true;
 				
 				for(int i02=0;i02<HeaderRead[0].length;i02++) {
-					if(NeedCol[i01].equals(""+HeaderRead[0][i02])) {
+					if(((String)NeedCol[i01][0]).equals(""+HeaderRead[0][i02])) {
 						UnHitFg = false;
-						TgtCol[i01] = i02;
+						NeedCol[i01][2] = i02;
 						
 						i02=1+HeaderRead[0].length;
 					}
@@ -265,19 +209,13 @@ public class WM00082ItemMstExcelEntry{
 			}
 		}
 		
-		if(ErrFg) {
-			SetX=main_fm.getX();
-			SetY=main_fm.getY();
-
-			main_fm.setVisible(false);
-			main_fm.dispose();
-			
+		if(ErrFg) {	
 			String Msg = "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n";
 			for(int i=0;i<NeedCol.length;i++) {
 				if(0<i&&0==i%5) {
-					Msg = Msg + NeedCol[i] + ",\n";
+					Msg = Msg + NeedCol[i][0] + ",\n";
 				}else {
-					Msg = Msg + NeedCol[i] + ",";
+					Msg = Msg + NeedCol[i][0] + ",";
 				}
 			}
 			Msg = Msg+"\nがヘッダに必要です";
@@ -287,64 +225,12 @@ public class WM00082ItemMstExcelEntry{
 		}else {
 			int[] ClmnType = new int[HeaderRead[0].length];
 			for(int i=0;i<ClmnType.length;i++) {ClmnType[i]=1;}
-			
-			ClmnType[TgtCol[ 0]]=1;	//荷主グループコード
-			ClmnType[TgtCol[ 1]]=1;	//商品コード
-			ClmnType[TgtCol[ 2]]=1;	//荷主商品コード
-			ClmnType[TgtCol[ 3]]=1;	//商品名1
-			ClmnType[TgtCol[ 4]]=1;	//商品名2
-			ClmnType[TgtCol[ 5]]=1;	//商品名3
-			ClmnType[TgtCol[ 6]]=1;	//運送タイプコード01
-			ClmnType[TgtCol[ 7]]=1;	//運送タイプコード02
-			ClmnType[TgtCol[ 8]]=1;	//運送タイプコード03
-			ClmnType[TgtCol[ 9]]=1;	//運送タイプコード04
-			ClmnType[TgtCol[10]]=1;	//運送タイプコード05
-			ClmnType[TgtCol[11]]=1;	//基幹システム商品コード
-			ClmnType[TgtCol[12]]=0;	//カートン入数
-			ClmnType[TgtCol[13]]=0;	//ケース入数
-			ClmnType[TgtCol[14]]=0;	//パレット入数
-			ClmnType[TgtCol[15]]=1;	//JANCD
-			ClmnType[TgtCol[16]]=1;	//カートンバーコード
-			ClmnType[TgtCol[17]]=1;	//ケースバーコード
-			ClmnType[TgtCol[18]]=1;	//パレットバーコード
-			ClmnType[TgtCol[19]]=1;	//カートン商品名称
-			ClmnType[TgtCol[20]]=1;	//ケース商品名称
-			ClmnType[TgtCol[21]]=1;	//パレット商品名称
-			ClmnType[TgtCol[22]]=1;	//商品単位
-			ClmnType[TgtCol[23]]=1;	//カートン商品単位
-			ClmnType[TgtCol[24]]=1;	//ケース商品単位
-			ClmnType[TgtCol[25]]=1;	//パレット商品単位
-			ClmnType[TgtCol[26]]=0;	//商品重量
-			ClmnType[TgtCol[27]]=0;	//カートン重量
-			ClmnType[TgtCol[28]]=0;	//ケース重量
-			ClmnType[TgtCol[29]]=0;	//パレット重量
-			ClmnType[TgtCol[30]]=0;	//商品サイズ
-			ClmnType[TgtCol[31]]=0;	//カートンサイズ
-			ClmnType[TgtCol[32]]=0;	//ケースサイズ
-			ClmnType[TgtCol[33]]=0;	//パレットサイズ
-			ClmnType[TgtCol[34]]=1;	//推奨ロケ
-			ClmnType[TgtCol[35]]=1;	//商品モデル番号（型番）
-			ClmnType[TgtCol[36]]=1;	//商品カテゴリCD
-			ClmnType[TgtCol[37]]=1;	//商品カテゴリ名
-			ClmnType[TgtCol[38]]=1;	//商品カラーコード
-			ClmnType[TgtCol[39]]=1;	//商品カラー名
-			ClmnType[TgtCol[40]]=1;	//商品サイズコード
-			ClmnType[TgtCol[41]]=1;	//商品サイス名
-			ClmnType[TgtCol[42]]=1;	//コメント1
-			ClmnType[TgtCol[43]]=1;	//コメント2
-			ClmnType[TgtCol[44]]=1;	//コメント3
-			ClmnType[TgtCol[45]]=1;	//温度区分
-			ClmnType[TgtCol[46]]=1;	//画像パス01
-			ClmnType[TgtCol[47]]=1;	//画像パス02
-			ClmnType[TgtCol[48]]=1;	//画像パス03
-			ClmnType[TgtCol[49]]=1;	//画像パス04
-			ClmnType[TgtCol[50]]=1;	//画像パス05
-			ClmnType[TgtCol[51]]=1;	//賞味期限日数
-			ClmnType[TgtCol[52]]=1;	//削除フラグ
+
+			for(int i01=0;i01<NeedCol.length;i01++) {
+				ClmnType[(int)NeedCol[i01][2]]=(int)NeedCol[i01][1];
+			}
 			
 			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
-			
-			ArrayList<String> ErrMsg = new ArrayList<String>();
 			Object[][] CheckOb = new Object[ExcellRead.length][NeedCol.length+1];
 			
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
@@ -352,16 +238,16 @@ public class WM00082ItemMstExcelEntry{
 					Object[] SetOb = new Object[NeedCol.length+1];
 					CheckOb[i][0] = false;
 					SetOb[ 0] = false;
+					
 					for(int i01=0;i01<NeedCol.length;i01++) {
-						SetOb[i01+1] = ExcellRead[i][TgtCol[i01]];
-						CheckOb[i][i01+1]=ExcellRead[i][TgtCol[i01]];
+						SetOb[i01+1] = ExcellRead[i][(int)NeedCol[i01][2]];
+						CheckOb[i][i01+1]=ExcellRead[i][(int)NeedCol[i01][2]];
 					}
 					tableModel_ms01.addRow(SetOb);
 				}
-				ErrMsg = ErrRt(CheckOb);
 			}
-			
-			
+			String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+			ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
 			if(null!=ErrMsg && 0<ErrMsg.size()) {
 				ErrView(ErrMsg);
 				
@@ -391,11 +277,12 @@ public class WM00082ItemMstExcelEntry{
 							CheckOb[i01][i02] = tableModel_ms01.getValueAt(i01, i02);
 						}
 					}
-					ArrayList<String> ErrMsg = ErrRt(CheckOb);
+					String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+					ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
 					if(null!=ErrMsg && 0<ErrMsg.size()) {
 						ErrView(ErrMsg);
 					}else {
-						DataEntry(CheckOb);
+						DataEntry(CheckOb,TableCol);
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
 	
@@ -420,151 +307,406 @@ public class WM00082ItemMstExcelEntry{
 		});
 	}
 	
-	private static void DataEntry(Object[][] CheckOb) {
-		String[] GetClGpCd 				= new String[CheckOb.length];		//荷主グループコード
-		String[] GetItemCd 				= new String[CheckOb.length];		//商品コード
-		String[] GetCLItemCd 			= new String[CheckOb.length];		//荷主商品コード
-		String[] GetItemName01 			= new String[CheckOb.length];		//商品名1
-		String[] GetItemName02 			= new String[CheckOb.length];		//商品名2
-		String[] GetItemName03 			= new String[CheckOb.length];		//商品名3
-		String[] GetDeliveryTypeCd01 	= new String[CheckOb.length];		//運送タイプコード01
-		String[] GetDeliveryTypeCd02 	= new String[CheckOb.length];		//運送タイプコード02
-		String[] GetDeliveryTypeCd03 	= new String[CheckOb.length];		//運送タイプコード03
-		String[] GetDeliveryTypeCd04 	= new String[CheckOb.length];		//運送タイプコード04
-		String[] GetDeliveryTypeCd05 	= new String[CheckOb.length];		//運送タイプコード05
-		String[] GetPTMSCD 				= new String[CheckOb.length];		//基幹SYS商品コード
-		String[] GetRecomendLoc 		= new String[CheckOb.length];		//推奨ロケ
-		String[] GetItemMDNo 			= new String[CheckOb.length];		//商品型番
-		String[] GetCategoryCd 			= new String[CheckOb.length];		//商品カテゴリCD
-		String[] GetCategoryName 		= new String[CheckOb.length];		//商品カテゴリ名
-		String[] GetItemColorCd 		= new String[CheckOb.length];		//商品カラーコード
-		String[] GetItemColorName 		= new String[CheckOb.length];		//商品カラー名
-		String[] GetItemSizeCd 			= new String[CheckOb.length];		//商品サイズコード
-		String[] GetItemSizeName 		= new String[CheckOb.length];		//商品サイス名
-		String[] GetTildFG 				= new String[CheckOb.length];		//温度区分
-		String[] GetExpDateHowLong 		= new String[CheckOb.length];		//賞味期限日数
-		String[] GetCtQty 				= new String[CheckOb.length];		//カートン入数
-		String[] GetCsQty 				= new String[CheckOb.length];		//ケース入数
-		String[] GetPlQty 				= new String[CheckOb.length];		//パレット入数
-		String[] GetItemWeight 			= new String[CheckOb.length];		//商品重量
-		String[] GetCtWeight 			= new String[CheckOb.length];		//カートン重量
-		String[] GetCsWeight 			= new String[CheckOb.length];		//ケース重量
-		String[] GetPlWeight 			= new String[CheckOb.length];		//パレット重量
-		String[] GetItemSize 			= new String[CheckOb.length];		//商品サイズ
-		String[] GetCtSize 				= new String[CheckOb.length];		//カートンサイズ
-		String[] GetCsSize 				= new String[CheckOb.length];		//ケースサイズ
-		String[] GetPlSize 				= new String[CheckOb.length];		//パレットサイズ
-		String[] GetCtName 				= new String[CheckOb.length];		//カートン商品名称
-		String[] GetCsName 				= new String[CheckOb.length];		//ケース商品名称
-		String[] GetPlName 				= new String[CheckOb.length];		//パレット商品名称
-		String[] GetUnitName 			= new String[CheckOb.length];		//商品単位
-		String[] GetCtUnitName 			= new String[CheckOb.length];		//カートン商品単位
-		String[] GetCsUnitName 			= new String[CheckOb.length];		//ケース商品単位
-		String[] GetPlUnitName 			= new String[CheckOb.length];		//パレット商品単位
-		String[] GetJanCd 				= new String[CheckOb.length];		//JANCD
-		String[] GetCtJan 				= new String[CheckOb.length];		//カートンバーコード
-		String[] GetCsJan 				= new String[CheckOb.length];		//ケースバーコード
-		String[] GetPlJan 				= new String[CheckOb.length];		//パレットバーコード
-		String[] GetCom01 				= new String[CheckOb.length];		//コメント1
-		String[] GetCom02 				= new String[CheckOb.length];		//コメント2
-		String[] GetCom03 				= new String[CheckOb.length];		//コメント3
-		String[] GetDelFg 				= new String[CheckOb.length];		//削除フラグ
-		String[] GetItemImagePath01 	= new String[CheckOb.length];		//画像パス01 
-		String[] GetItemImagePath02 	= new String[CheckOb.length];		//画像パス02
-		String[] GetItemImagePath03 	= new String[CheckOb.length];		//画像パス03
-		String[] GetItemImagePath04 	= new String[CheckOb.length];		//画像パス04
-		String[] GetItemImagePath05 	= new String[CheckOb.length];		//画像パス05
-		String[] GetTildName 			= new String[CheckOb.length];		//温度区分名
+	private static void DataEntry(Object[][] CheckOb,String[]TableCol) {
+		int ColClGpCd			=  1;		//荷主グループコード
+		int ColItemCd			=  2;		//商品コード
+		int ColCLItemCd			=  3;		//荷主商品コード
+		int ColItemName01		=  4;		//商品名1
+		int ColItemName02		=  5;		//商品名2
+		int ColItemName03		=  6;		//商品名3
+		int ColDeliveryTypeCd01	=  7;		//運送タイプコード01
+		int ColDeliveryTypeCd02	=  8;		//運送タイプコード02
+		int ColDeliveryTypeCd03	=  9;		//運送タイプコード03
+		int ColDeliveryTypeCd04	= 10;		//運送タイプコード04
+		int ColDeliveryTypeCd05	= 11;		//運送タイプコード05
+		int ColPTMSCD			= 12;		//基幹SYS商品コード
+		int ColCtQty			= 13;		//カートン入数
+		int ColCsQty			= 14;		//ケース入数
+		int ColPlQty			= 15;		//パレット入数
+		int ColJanCd			= 16;		//JANCD
+		int ColCtJan			= 17;		//カートンバーコード
+		int ColCsJan			= 18;		//ケースバーコード
+		int ColPlJan			= 19;		//パレットバーコード
+		int ColCtName			= 20;		//カートン商品名称
+		int ColCsName			= 21;		//ケース商品名称
+		int ColPlName			= 22;		//パレット商品名称
+		int ColUnitName			= 23;		//商品単位
+		int ColCtUnitName		= 24;		//カートン商品単位
+		int ColCsUnitName		= 25;		//ケース商品単位
+		int ColPlUnitName		= 26;		//パレット商品単位
+		int ColItemWeight		= 27;		//商品重量
+		int ColCtWeight			= 28;		//カートン重量
+		int ColCsWeight			= 29;		//ケース重量
+		int ColPlWeight			= 30;		//パレット重量
+		int ColItemSize			= 31;		//商品サイズ
+		int ColCtSize			= 32;		//カートンサイズ
+		int ColCsSize			= 33;		//ケースサイズ
+		int ColPlSize			= 34;		//パレットサイズ
+		int ColRecomendLoc		= 35;		//推奨ロケ
+		int ColItemMDNo			= 36;		//商品型番
+		int ColCategoryCd		= 37;		//商品カテゴリCD
+		int ColCategoryName		= 38;		//商品カテゴリ名
+		int ColItemColorCd		= 39;		//商品カラーコード
+		int ColItemColorName	= 40;		//商品カラー名
+		int ColItemSizeCd		= 41;		//商品サイズコード
+		int ColItemSizeName		= 42;		//商品サイズ名
+		int ColCom01			= 43;		//コメント1
+		int ColCom02			= 44;		//コメント2
+		int ColCom03			= 45;		//コメント3
+		int ColTildFG			= 46;		//温度区分
+		int ColItemImagePath01	= 47;		//画像パス01 
+		int ColItemImagePath02	= 48;		//画像パス02
+		int ColItemImagePath03	= 49;		//画像パス03
+		int ColItemImagePath04	= 50;		//画像パス04
+		int ColItemImagePath05	= 51;		//画像パス05
+		int ColExpDateHowLong	= 52;		//賞味期限日数
+		int ColDelFg			= 53;		//削除フラグ
 		
+		for(int i=0;i<TableCol.length;i++) {
+			switch(TableCol[i]) {
+				case "荷主グループコード":
+					ColClGpCd = i;
+					break;
+				case "商品コード":
+					ColItemCd = i;
+					break;
+				case "荷主商品コード":
+					ColCLItemCd = i;
+					break;
+				case "商品名1":
+					ColItemName01 = i;
+					break;
+				case "商品名2":
+					ColItemName02 = i;
+					break;
+				case "商品名3":
+					ColItemName03 = i;
+					break;
+				case "運送タイプコード01":
+					ColDeliveryTypeCd01 = i;
+					break;
+				case "運送タイプコード02":
+					ColDeliveryTypeCd02 = i;
+					break;
+				case "運送タイプコード03":
+					ColDeliveryTypeCd03 = i;
+					break;
+				case "運送タイプコード04":
+					ColDeliveryTypeCd04 = i;
+					break;
+				case "運送タイプコード05":
+					ColDeliveryTypeCd05 = i;
+					break;
+				case "基幹システム商品コード":
+					ColPTMSCD = i;
+					break;
+				case "カートン入数":
+					ColCtQty = i;
+					break;
+				case "ケース入数":
+					ColCsQty = i;
+					break;
+				case "パレット入数":
+					ColPlQty = i;
+					break;
+				case "JANCD":
+					ColJanCd = i;
+					break;
+				case "カートンバーコード":
+					ColCtJan = i;
+					break;
+				case "ケースバーコード":
+					ColCsJan = i;
+					break;
+				case "パレットバーコード":
+					ColPlJan = i;
+					break;
+				case "カートン商品名称":
+					ColCtName = i;
+					break;
+				case "ケース商品名称":
+					ColCsName = i;
+					break;
+				case "パレット商品名称":
+					ColPlName = i;
+					break;
+				case "商品単位":
+					ColUnitName = i;
+					break;
+				case "カートン商品単位":
+					ColCtUnitName = i;
+					break;
+				case "ケース商品単位":
+					ColCsUnitName = i;
+					break;
+				case "パレット商品単位":
+					ColPlUnitName = i;
+					break;
+				case "商品重量":
+					ColItemWeight = i;
+					break;
+				case "カートン重量":
+					ColCtWeight = i;
+					break;
+				case "ケース重量":
+					ColCsWeight = i;
+					break;
+				case "パレット重量":
+					ColPlWeight = i;
+					break;
+				case "商品サイズ":
+					ColItemSize = i;
+					break;
+				case "カートンサイズ":
+					ColCtSize = i;
+					break;
+				case "ケースサイズ":
+					ColCsSize = i;
+					break;
+				case "パレットサイズ":
+					ColPlSize = i;
+					break;
+				case "推奨ロケ":
+					ColRecomendLoc = i;
+					break;
+				case "商品モデル番号（型番）":
+					ColItemMDNo = i;
+					break;
+				case "商品カテゴリCD":
+					ColCategoryCd = i;
+					break;
+				case "商品カテゴリ名":
+					ColCategoryName = i;
+					break;
+				case "商品カラーコード":
+					ColItemColorCd = i;
+					break;
+				case "商品カラー名":
+					ColItemColorName = i;
+					break;
+				case "商品サイズコード":
+					ColItemSizeCd = i;
+					break;
+				case "商品サイズ名":
+					ColItemSizeName = i;
+					break;
+				case "コメント1":
+					ColCom01 = i;
+					break;
+				case "コメント2":
+					ColCom02 = i;
+					break;
+				case "コメント3":
+					ColCom03 = i;
+					break;
+				case "温度区分":
+					ColTildFG = i;
+					break;
+				case "画像パス01":
+					ColItemImagePath01 = i;
+					break;
+				case "画像パス02":
+					ColItemImagePath02 = i;
+					break;
+				case "画像パス03":
+					ColItemImagePath03 = i;
+					break;
+				case "画像パス04":
+					ColItemImagePath04 = i;
+					break;
+				case "画像パス05":
+					ColItemImagePath05 = i;
+					break;
+				case "賞味期限日数":
+					ColExpDateHowLong = i;
+					break;
+				case "削除フラグ":
+					ColDelFg = i;
+					break;
+				default:
+					break;
+			}
+		}
+		int EntryCount = 0;
+		for(int i=0;i<CheckOb.length;i++) {
+			//商品CD・商品名が空白ならSKIP
+			if("".equals(""+CheckOb[i][ColItemCd])
+					&& "".equals(""+CheckOb[i][ColItemName01])
+					) {
+			}else {
+				EntryCount = EntryCount+1;
+			}
+		}
+		
+		String[] GetClGpCd 				= new String[EntryCount];		//荷主グループコード
+		String[] GetItemCd 				= new String[EntryCount];		//商品コード
+		String[] GetCLItemCd 			= new String[EntryCount];		//荷主商品コード
+		String[] GetItemName01 			= new String[EntryCount];		//商品名1
+		String[] GetItemName02 			= new String[EntryCount];		//商品名2
+		String[] GetItemName03 			= new String[EntryCount];		//商品名3
+		String[] GetDeliveryTypeCd01 	= new String[EntryCount];		//運送タイプコード01
+		String[] GetDeliveryTypeCd02 	= new String[EntryCount];		//運送タイプコード02
+		String[] GetDeliveryTypeCd03 	= new String[EntryCount];		//運送タイプコード03
+		String[] GetDeliveryTypeCd04 	= new String[EntryCount];		//運送タイプコード04
+		String[] GetDeliveryTypeCd05 	= new String[EntryCount];		//運送タイプコード05
+		String[] GetPTMSCD 				= new String[EntryCount];		//基幹SYS商品コード
+		String[] GetRecomendLoc 		= new String[EntryCount];		//推奨ロケ
+		String[] GetItemMDNo 			= new String[EntryCount];		//商品型番
+		String[] GetCategoryCd 			= new String[EntryCount];		//商品カテゴリCD
+		String[] GetCategoryName 		= new String[EntryCount];		//商品カテゴリ名
+		String[] GetItemColorCd 		= new String[EntryCount];		//商品カラーコード
+		String[] GetItemColorName 		= new String[EntryCount];		//商品カラー名
+		String[] GetItemSizeCd 			= new String[EntryCount];		//商品サイズコード
+		String[] GetItemSizeName 		= new String[EntryCount];		//商品サイズ名
+		String[] GetTildFG 				= new String[EntryCount];		//温度区分
+		String[] GetExpDateHowLong 		= new String[EntryCount];		//賞味期限日数
+		String[] GetCtQty 				= new String[EntryCount];		//カートン入数
+		String[] GetCsQty 				= new String[EntryCount];		//ケース入数
+		String[] GetPlQty 				= new String[EntryCount];		//パレット入数
+		String[] GetItemWeight 			= new String[EntryCount];		//商品重量
+		String[] GetCtWeight 			= new String[EntryCount];		//カートン重量
+		String[] GetCsWeight 			= new String[EntryCount];		//ケース重量
+		String[] GetPlWeight 			= new String[EntryCount];		//パレット重量
+		String[] GetItemSize 			= new String[EntryCount];		//商品サイズ
+		String[] GetCtSize 				= new String[EntryCount];		//カートンサイズ
+		String[] GetCsSize 				= new String[EntryCount];		//ケースサイズ
+		String[] GetPlSize 				= new String[EntryCount];		//パレットサイズ
+		String[] GetCtName 				= new String[EntryCount];		//カートン商品名称
+		String[] GetCsName 				= new String[EntryCount];		//ケース商品名称
+		String[] GetPlName 				= new String[EntryCount];		//パレット商品名称
+		String[] GetUnitName 			= new String[EntryCount];		//商品単位
+		String[] GetCtUnitName 			= new String[EntryCount];		//カートン商品単位
+		String[] GetCsUnitName 			= new String[EntryCount];		//ケース商品単位
+		String[] GetPlUnitName 			= new String[EntryCount];		//パレット商品単位
+		String[] GetJanCd 				= new String[EntryCount];		//JANCD
+		String[] GetCtJan 				= new String[EntryCount];		//カートンバーコード
+		String[] GetCsJan 				= new String[EntryCount];		//ケースバーコード
+		String[] GetPlJan 				= new String[EntryCount];		//パレットバーコード
+		String[] GetCom01 				= new String[EntryCount];		//コメント1
+		String[] GetCom02 				= new String[EntryCount];		//コメント2
+		String[] GetCom03 				= new String[EntryCount];		//コメント3
+		String[] GetDelFg 				= new String[EntryCount];		//削除フラグ
+		String[] GetItemImagePath01 	= new String[EntryCount];		//画像パス01 
+		String[] GetItemImagePath02 	= new String[EntryCount];		//画像パス02
+		String[] GetItemImagePath03 	= new String[EntryCount];		//画像パス03
+		String[] GetItemImagePath04 	= new String[EntryCount];		//画像パス04
+		String[] GetItemImagePath05 	= new String[EntryCount];		//画像パス05
+		String[] GetTildName 			= new String[EntryCount];		//温度区分名
+		
+		
+		EntryCount = 0;
 		for(int i01=0;i01<CheckOb.length;i01++) {
 			for(int i02=0;i02<CheckOb[i01].length;i02++) {
 				CheckOb[i01][i02] = B00020ToolsTextControl.Trim(""+CheckOb[i01][i02]);
 			}
-			GetClGpCd[i01] 				= ""+CheckOb[i01][ 1];		//荷主グループコード
-			GetItemCd[i01] 				= ""+CheckOb[i01][ 2];		//商品コード
-			GetCLItemCd[i01] 			= ""+CheckOb[i01][ 3];		//荷主商品コード
-			GetItemName01[i01] 			= ""+CheckOb[i01][ 4];		//商品名1
-			GetItemName02[i01] 			= ""+CheckOb[i01][ 5];		//商品名2
-			GetItemName03[i01] 			= ""+CheckOb[i01][ 6];		//商品名3
-			GetDeliveryTypeCd01[i01] 	= ""+CheckOb[i01][ 7];		//運送タイプコード01
-			GetDeliveryTypeCd02[i01] 	= ""+CheckOb[i01][ 8];		//運送タイプコード02
-			GetDeliveryTypeCd03[i01] 	= ""+CheckOb[i01][ 9];		//運送タイプコード03
-			GetDeliveryTypeCd04[i01] 	= ""+CheckOb[i01][10];		//運送タイプコード04
-			GetDeliveryTypeCd05[i01] 	= ""+CheckOb[i01][11];		//運送タイプコード05
-			GetPTMSCD[i01] 				= ""+CheckOb[i01][12];		//基幹SYS商品コード
-			GetRecomendLoc[i01] 		= ""+CheckOb[i01][35];		//推奨ロケ
-			GetItemMDNo[i01] 			= ""+CheckOb[i01][36];		//商品型番
-			GetCategoryCd[i01] 			= ""+CheckOb[i01][37];		//商品カテゴリCD
-			GetCategoryName[i01] 		= ""+CheckOb[i01][38];		//商品カテゴリ名
-			GetItemColorCd[i01] 		= ""+CheckOb[i01][39];		//商品カラーコード
-			GetItemColorName[i01] 		= ""+CheckOb[i01][40];		//商品カラー名
-			GetItemSizeCd[i01] 			= ""+CheckOb[i01][41];		//商品サイズコード
-			GetItemSizeName[i01] 		= ""+CheckOb[i01][42];		//商品サイス名
-			GetTildFG[i01] 				= ""+CheckOb[i01][46];		//温度区分
-			GetExpDateHowLong[i01] 		= ""+CheckOb[i01][52];		//賞味期限日数
-			GetCtQty[i01] 				= ""+CheckOb[i01][13];		//カートン入数
-			GetCsQty[i01] 				= ""+CheckOb[i01][14];		//ケース入数
-			GetPlQty[i01] 				= ""+CheckOb[i01][15];		//パレット入数
-			GetItemWeight[i01] 			= ""+CheckOb[i01][27];		//商品重量
-			GetCtWeight[i01] 			= ""+CheckOb[i01][28];		//カートン重量
-			GetCsWeight[i01] 			= ""+CheckOb[i01][29];		//ケース重量
-			GetPlWeight[i01] 			= ""+CheckOb[i01][30];		//パレット重量
-			GetItemSize[i01] 			= ""+CheckOb[i01][31];		//商品サイズ
-			GetCtSize[i01] 				= ""+CheckOb[i01][32];		//カートンサイズ
-			GetCsSize[i01] 				= ""+CheckOb[i01][33];		//ケースサイズ
-			GetPlSize[i01] 				= ""+CheckOb[i01][34];		//パレットサイズ
-			GetCtName[i01] 				= ""+CheckOb[i01][20];		//カートン商品名称
-			GetCsName[i01] 				= ""+CheckOb[i01][21];		//ケース商品名称
-			GetPlName[i01] 				= ""+CheckOb[i01][22];		//パレット商品名称
-			GetUnitName[i01] 			= ""+CheckOb[i01][23];		//商品単位
-			GetCtUnitName[i01] 			= ""+CheckOb[i01][24];		//カートン商品単位
-			GetCsUnitName[i01] 			= ""+CheckOb[i01][25];		//ケース商品単位
-			GetPlUnitName[i01] 			= ""+CheckOb[i01][26];		//パレット商品単位
-			GetJanCd[i01] 				= ""+CheckOb[i01][16];		//JANCD
-			GetCtJan[i01] 				= ""+CheckOb[i01][17];		//カートンバーコード
-			GetCsJan[i01] 				= ""+CheckOb[i01][18];		//ケースバーコード
-			GetPlJan[i01] 				= ""+CheckOb[i01][19];		//パレットバーコード
-			GetCom01[i01] 				= ""+CheckOb[i01][43];		//コメント1
-			GetCom02[i01] 				= ""+CheckOb[i01][44];		//コメント2
-			GetCom03[i01] 				= ""+CheckOb[i01][45];		//コメント3
-			GetDelFg[i01] 				= ""+CheckOb[i01][53];		//削除フラグ
-			GetItemImagePath01[i01] 	= ""+CheckOb[i01][47];		//画像パス01 
-			GetItemImagePath02[i01] 	= ""+CheckOb[i01][48];		//画像パス02
-			GetItemImagePath03[i01] 	= ""+CheckOb[i01][49];		//画像パス03
-			GetItemImagePath04[i01] 	= ""+CheckOb[i01][50];		//画像パス04
-			GetItemImagePath05[i01] 	= ""+CheckOb[i01][51];		//画像パス05
+			//商品CD・商品名が空白ならSKIP
+			if("".equals(""+CheckOb[i01][ColItemCd])
+					&& "".equals(""+CheckOb[i01][ColItemName01])
+					) {
+			}else {
+				GetClGpCd[EntryCount] 				= ""+CheckOb[i01][ColClGpCd];			//荷主グループコード
+				GetItemCd[EntryCount] 				= ""+CheckOb[i01][ColItemCd];			//商品コード
+				GetCLItemCd[EntryCount] 			= ""+CheckOb[i01][ColCLItemCd];			//荷主商品コード
+				GetItemName01[EntryCount] 			= ""+CheckOb[i01][ColItemName01];		//商品名1
+				GetItemName02[EntryCount] 			= ""+CheckOb[i01][ColItemName02];		//商品名2
+				GetItemName03[EntryCount] 			= ""+CheckOb[i01][ColItemName03];		//商品名3
+				GetDeliveryTypeCd01[EntryCount] 	= ""+CheckOb[i01][ColDeliveryTypeCd01];	//運送タイプコード01
+				GetDeliveryTypeCd02[EntryCount] 	= ""+CheckOb[i01][ColDeliveryTypeCd02];	//運送タイプコード02
+				GetDeliveryTypeCd03[EntryCount] 	= ""+CheckOb[i01][ColDeliveryTypeCd03];	//運送タイプコード03
+				GetDeliveryTypeCd04[EntryCount] 	= ""+CheckOb[i01][ColDeliveryTypeCd04];	//運送タイプコード04
+				GetDeliveryTypeCd05[EntryCount] 	= ""+CheckOb[i01][ColDeliveryTypeCd05];	//運送タイプコード05
+				GetPTMSCD[EntryCount] 				= ""+CheckOb[i01][ColPTMSCD];			//基幹SYS商品コード
+				GetCtQty[EntryCount] 				= ""+CheckOb[i01][ColCtQty];			//カートン入数
+				GetCsQty[EntryCount] 				= ""+CheckOb[i01][ColCsQty];			//ケース入数
+				GetPlQty[EntryCount] 				= ""+CheckOb[i01][ColPlQty];			//パレット入数
+				GetJanCd[EntryCount] 				= ""+CheckOb[i01][ColJanCd];			//JANCD
+				GetCtJan[EntryCount] 				= ""+CheckOb[i01][ColCtJan];			//カートンバーコード
+				GetCsJan[EntryCount] 				= ""+CheckOb[i01][ColCsJan];			//ケースバーコード
+				GetPlJan[EntryCount] 				= ""+CheckOb[i01][ColPlJan];			//パレットバーコード
+				GetCtName[EntryCount] 				= ""+CheckOb[i01][ColCtName];			//カートン商品名称
+				GetCsName[EntryCount] 				= ""+CheckOb[i01][ColCsName];			//ケース商品名称
+				GetPlName[EntryCount] 				= ""+CheckOb[i01][ColPlName];			//パレット商品名称
+				GetUnitName[EntryCount] 			= ""+CheckOb[i01][ColUnitName];			//商品単位
+				GetCtUnitName[EntryCount] 			= ""+CheckOb[i01][ColCtUnitName];		//カートン商品単位
+				GetCsUnitName[EntryCount] 			= ""+CheckOb[i01][ColCsUnitName];		//ケース商品単位
+				GetPlUnitName[EntryCount] 			= ""+CheckOb[i01][ColPlUnitName];		//パレット商品単位
+				GetItemWeight[EntryCount] 			= ""+CheckOb[i01][ColItemWeight];		//商品重量
+				GetCtWeight[EntryCount] 			= ""+CheckOb[i01][ColCtWeight];			//カートン重量
+				GetCsWeight[EntryCount] 			= ""+CheckOb[i01][ColCsWeight];			//ケース重量
+				GetPlWeight[EntryCount] 			= ""+CheckOb[i01][ColPlWeight];			//パレット重量
+				GetItemSize[EntryCount] 			= ""+CheckOb[i01][ColItemSize];			//商品サイズ
+				GetCtSize[EntryCount] 				= ""+CheckOb[i01][ColCtSize];			//カートンサイズ
+				GetCsSize[EntryCount] 				= ""+CheckOb[i01][ColCsSize];			//ケースサイズ
+				GetPlSize[EntryCount] 				= ""+CheckOb[i01][ColPlSize];			//パレットサイズ
+				GetRecomendLoc[EntryCount] 			= ""+CheckOb[i01][ColRecomendLoc];		//推奨ロケ
+				GetItemMDNo[EntryCount] 			= ""+CheckOb[i01][ColItemMDNo];			//商品型番
+				GetCategoryCd[EntryCount] 			= ""+CheckOb[i01][ColCategoryCd];		//商品カテゴリCD
+				GetCategoryName[EntryCount] 		= ""+CheckOb[i01][ColCategoryName];		//商品カテゴリ名
+				GetItemColorCd[EntryCount] 			= ""+CheckOb[i01][ColItemColorCd];		//商品カラーコード
+				GetItemColorName[EntryCount] 		= ""+CheckOb[i01][ColItemColorName];	//商品カラー名
+				GetItemSizeCd[EntryCount] 			= ""+CheckOb[i01][ColItemSizeCd];		//商品サイズコード
+				GetItemSizeName[EntryCount] 		= ""+CheckOb[i01][ColItemSizeName];		//商品サイズ名
+				GetCom01[EntryCount] 				= ""+CheckOb[i01][ColCom01];			//コメント1
+				GetCom02[EntryCount] 				= ""+CheckOb[i01][ColCom02];			//コメント2
+				GetCom03[EntryCount] 				= ""+CheckOb[i01][ColCom03];			//コメント3
+				GetTildFG[EntryCount] 				= ""+CheckOb[i01][ColTildFG];			//温度区分
+				GetItemImagePath01[EntryCount] 		= ""+CheckOb[i01][ColItemImagePath01];	//画像パス01 
+				GetItemImagePath02[EntryCount] 		= ""+CheckOb[i01][ColItemImagePath02];	//画像パス02
+				GetItemImagePath03[EntryCount] 		= ""+CheckOb[i01][ColItemImagePath03];	//画像パス03
+				GetItemImagePath04[EntryCount] 		= ""+CheckOb[i01][ColItemImagePath04];	//画像パス04
+				GetItemImagePath05[EntryCount] 		= ""+CheckOb[i01][ColItemImagePath05];	//画像パス05
+				GetExpDateHowLong[EntryCount] 		= ""+CheckOb[i01][ColExpDateHowLong];	//賞味期限日数
+				GetDelFg[EntryCount] 				= ""+CheckOb[i01][ColDelFg];			//削除フラグ
+				
+				
+				GetExpDateHowLong[EntryCount] 		= B00020ToolsTextControl.num_only_String02(GetExpDateHowLong[EntryCount]);	//賞味期限日数
+				GetCtQty[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetCtQty[EntryCount]);				//カートン入数
+				GetCsQty[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetCsQty[EntryCount]);				//ケース入数
+				GetPlQty[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetPlQty[EntryCount]);				//パレット入数
+				GetItemWeight[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetItemWeight[EntryCount]);		//商品重量
+				GetCtWeight[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetCtWeight[EntryCount]);			//カートン重量
+				GetCsWeight[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetCsWeight[EntryCount]);			//ケース重量
+				GetPlWeight[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetPlWeight[EntryCount]);			//パレット重量
+				GetItemSize[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetItemSize[EntryCount]);			//商品サイズ
+				GetCtSize[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetCtSize[EntryCount]);			//カートンサイズ
+				GetCsSize[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetCsSize[EntryCount]);			//ケースサイズ
+				GetPlSize[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetPlSize[EntryCount]);			//パレットサイズ
+				
+				if("".equals(GetExpDateHowLong[EntryCount]	)){GetExpDateHowLong[EntryCount]	="0";}		//賞味期限日数
+				if("".equals(GetCtQty[EntryCount]			)){GetCtQty[EntryCount]				="0";}		//カートン入数
+				if("".equals(GetCsQty[EntryCount]			)){GetCsQty[EntryCount]				="0";}		//ケース入数
+				if("".equals(GetPlQty[EntryCount]			)){GetPlQty[EntryCount]				="0";}		//パレット入数
+				if("".equals(GetItemWeight[EntryCount]		)){GetItemWeight[EntryCount]		="0";}		//商品重量
+				if("".equals(GetCtWeight[EntryCount]		)){GetCtWeight[EntryCount]			="0";}		//カートン重量
+				if("".equals(GetCsWeight[EntryCount]		)){GetCsWeight[EntryCount]			="0";}		//ケース重量
+				if("".equals(GetPlWeight[EntryCount]		)){GetPlWeight[EntryCount]			="0";}		//パレット重量
+				if("".equals(GetItemSize[EntryCount]		)){GetItemSize[EntryCount]			="0";}		//商品サイズ
+				if("".equals(GetCtSize[EntryCount]			)){GetCtSize[EntryCount]			="0";}		//カートンサイズ
+				if("".equals(GetCsSize[EntryCount]			)){GetCsSize[EntryCount]			="0";}		//ケースサイズ
+				if("".equals(GetPlSize[EntryCount]			)){GetPlSize[EntryCount]			="0";}		//パレットサイズ
+				
+				float WFT = (float)0;
+				
+				WFT=Float.parseFloat(GetExpDateHowLong[EntryCount]);
+				GetExpDateHowLong[EntryCount] = ""+(int)WFT;		//賞味期限日数
 			
-			GetExpDateHowLong[i01] 		= B00020ToolsTextControl.num_only_String02(GetExpDateHowLong[i01]);		//賞味期限日数
-			GetCtQty[i01] 				= B00020ToolsTextControl.num_only_String02(GetCtQty[i01]);				//カートン入数
-			GetCsQty[i01] 				= B00020ToolsTextControl.num_only_String02(GetCsQty[i01]);				//ケース入数
-			GetPlQty[i01] 				= B00020ToolsTextControl.num_only_String02(GetPlQty[i01]);				//パレット入数
-			GetItemWeight[i01] 			= B00020ToolsTextControl.num_only_String02(GetItemWeight[i01]);			//商品重量
-			GetCtWeight[i01] 			= B00020ToolsTextControl.num_only_String02(GetCtWeight[i01]);				//カートン重量
-			GetCsWeight[i01] 			= B00020ToolsTextControl.num_only_String02(GetCsWeight[i01]);				//ケース重量
-			GetPlWeight[i01] 			= B00020ToolsTextControl.num_only_String02(GetPlWeight[i01]);				//パレット重量
-			GetItemSize[i01] 			= B00020ToolsTextControl.num_only_String02(GetItemSize[i01]);				//商品サイズ
-			GetCtSize[i01] 				= B00020ToolsTextControl.num_only_String02(GetCtSize[i01]);				//カートンサイズ
-			GetCsSize[i01] 				= B00020ToolsTextControl.num_only_String02(GetCsSize[i01]);				//ケースサイズ
-			GetPlSize[i01] 				= B00020ToolsTextControl.num_only_String02(GetPlSize[i01]);				//パレットサイズ
-			
-			if("".equals(GetExpDateHowLong[i01]	)){GetExpDateHowLong[i01]="0";}		//賞味期限日数
-			if("".equals(GetCtQty[i01]			)){GetCtQty[i01]="0";}				//カートン入数
-			if("".equals(GetCsQty[i01]			)){GetCsQty[i01]="0";}				//ケース入数
-			if("".equals(GetPlQty[i01]			)){GetPlQty[i01]="0";}				//パレット入数
-			if("".equals(GetItemWeight[i01]		)){GetItemWeight[i01]="0";}			//商品重量
-			if("".equals(GetCtWeight[i01]		)){GetCtWeight[i01]="0";}			//カートン重量
-			if("".equals(GetCsWeight[i01]		)){GetCsWeight[i01]="0";}			//ケース重量
-			if("".equals(GetPlWeight[i01]		)){GetPlWeight[i01]="0";}			//パレット重量
-			if("".equals(GetItemSize[i01]		)){GetItemSize[i01]="0";}			//商品サイズ
-			if("".equals(GetCtSize[i01]			)){GetCtSize[i01]="0";}				//カートンサイズ
-			if("".equals(GetCsSize[i01]			)){GetCsSize[i01]="0";}				//ケースサイズ
-			if("".equals(GetPlSize[i01]			)){GetPlSize[i01]="0";}				//パレットサイズ
-			
-			GetTildName[i01] = "";
-			for(int i02 =0;i02<B00100DefaultVariable.TildFG[1].length;i02++) {
-				if(GetTildFG[i01].equals(B00100DefaultVariable.TildFG[1][i02])) {
-					GetTildName[i01] = B00100DefaultVariable.TildFG[2][i02];
+				WFT=Float.parseFloat(GetCtQty[EntryCount]);
+				GetCtQty[EntryCount] = ""+(int)WFT;		//カートン入数
+		
+				WFT=Float.parseFloat(GetCsQty[EntryCount]);
+				GetCsQty[EntryCount] = ""+(int)WFT;		//ケース入数
+	
+				WFT=Float.parseFloat(GetPlQty[EntryCount]);
+				GetPlQty[EntryCount] = ""+(int)WFT;		//パレット入数
+				
+				
+				GetTildName[EntryCount]	= "";
+				for(int i02 =0;i02<B00100DefaultVariable.TildFG[1].length;i02++) {
+					if(GetTildFG[EntryCount].equals(B00100DefaultVariable.TildFG[1][i02])) {
+						GetTildName[EntryCount] = B00100DefaultVariable.TildFG[2][i02];
+					}
 				}
+				EntryCount = EntryCount+1;
 			}
 		}
 		//現在登録済みの商品マスタ取得
@@ -583,14 +725,15 @@ public class WM00082ItemMstExcelEntry{
 		ArrayList<String> SearchItemColorCd = new ArrayList<String>();		//商品カラーコード
 		ArrayList<String> SearchItemColorName = new ArrayList<String>();	//商品カラー名
 		ArrayList<String> SearchItemSizeCd = new ArrayList<String>();		//商品サイズコード
-		ArrayList<String> SearchItemSizeName = new ArrayList<String>();		//商品サイス名
+		ArrayList<String> SearchItemSizeName = new ArrayList<String>();		//商品サイズ名
 		ArrayList<String> SearchJanCd = new ArrayList<String>();			//JANCD
 		ArrayList<String> SearchTildFG = new ArrayList<String>();			//温度区分
 		ArrayList<String> SearchTildName = new ArrayList<String>();			//温度区分名
 		ArrayList<String> SearchDelFg = new ArrayList<String>();			//削除フラグ
 		boolean AllSearch = false;
 		
-		for(int i=0;i<CheckOb.length;i++) {
+		for(int i=0;i<EntryCount;i++) {
+			SearchClGpCd.add(""+GetClGpCd[i]);
 			SearchItemCd.add(""+GetItemCd[i]);
 		}
 		
@@ -610,7 +753,7 @@ public class WM00082ItemMstExcelEntry{
 				SearchItemColorCd,		//商品カラーコード
 				SearchItemColorName,	//商品カラー名
 				SearchItemSizeCd,		//商品サイズコード
-				SearchItemSizeName,		//商品サイス名
+				SearchItemSizeName,		//商品サイズ名
 				SearchJanCd,			//JANCD
 				SearchTildFG,			//温度区分
 				SearchTildName,			//温度区分名
@@ -623,7 +766,7 @@ public class WM00082ItemMstExcelEntry{
 		B00040ToolsFolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage");
 		B00040ToolsFolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd);
 		
-		for(int i01=0;i01<CheckOb.length;i01++) {
+		for(int i01=0;i01<EntryCount;i01++) {
 			if(!"".equals(GetItemImagePath01[i01])){		//画像パス01 
 				String SavePath = A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd[i01];
 				String FullSavePath = SavePath+"\\"+GetItemCd[i01]+"_01.";
@@ -746,23 +889,17 @@ public class WM00082ItemMstExcelEntry{
 				 ,{"UnitName"			,"1","1"}	//商品単位
 				};
 		String tgt_table = "KM0060_ITEMMST";
-		String[][] field_name = new String[ItemMstSetString.length][3];
-		String[][] entry_data = new String[CheckOb.length][ItemMstSetString.length];
+		String[][] field_name = ItemMstSetString;
+		String[][] entry_data = new String[EntryCount][ItemMstSetString.length];
 		String[] judg_field = new String[2];
-		String[][] judg_data = new String[CheckOb.length][2];
+		String[][] judg_data = new String[EntryCount][2];
 		String TgtDB = "NYANKO";
 		int non_msg_fg = 1;
 
 		judg_field[0] = "ClGpCd";			//荷主グループコード
 		judg_field[1] = "ItemCd";			//商品コード
 		
-		for(int i=0;i<ItemMstSetString.length;i++) {
-			field_name[i][0] = ItemMstSetString[i][0];
-			field_name[i][1] = ItemMstSetString[i][1];
-			field_name[i][2] = ItemMstSetString[i][2];
-		}
-		
-		for(int i01=0;i01<CheckOb.length;i01++) {
+		for(int i01=0;i01<EntryCount;i01++) {
 			judg_data[i01][0] = GetClGpCd[i01];		//荷主グループコード
 			judg_data[i01][1] = GetItemCd[i01];		//商品コード
 			
@@ -788,7 +925,9 @@ public class WM00082ItemMstExcelEntry{
 			entry_data[i01][19] = GetJanCd[i01];	//JANCD
 			entry_data[i01][20] = GetUnitName[i01];	//商品単位
 		}
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		if(0<EntryCount) {
+			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		}
 		
 		String[][] ItemMstSubSetString = {
 				 {"ClGpCd"			,"1","1"}	//荷主グループコード
@@ -818,7 +957,7 @@ public class WM00082ItemMstExcelEntry{
 				,{"ItemColorCd"		,"1","1"}	//商品カラーコード
 				,{"ItemColorName"	,"1","1"}	//商品カラー名
 				,{"ItemSizeCd"		,"1","1"}	//商品サイズコード
-				,{"ItemSizeName"	,"1","1"}	//商品サイス名
+				,{"ItemSizeName"	,"1","1"}	//商品サイズ名
 				,{"Com01"			,"1","1"}	//コメント1
 				,{"Com02"			,"1","1"}	//コメント2
 				,{"Com03"			,"1","1"}	//コメント3
@@ -836,24 +975,20 @@ public class WM00082ItemMstExcelEntry{
 				,{"ExpDateHowLong"	,"1","1"}	//賞味期限日数
 				};
 		tgt_table = "KM0061_ITEMMSTSUB";
-		field_name = new String[ItemMstSubSetString.length][3];
-		entry_data = new String[CheckOb.length][ItemMstSubSetString.length];
+		field_name = ItemMstSubSetString;
+		entry_data = new String[EntryCount][ItemMstSubSetString.length];
 		judg_field = new String[2];
-		judg_data = new String[CheckOb.length][2];
+		judg_data = new String[EntryCount][2];
 		TgtDB = "NYANKO";
 		non_msg_fg = 1;
 
 		judg_field[0] = "ClGpCd";			//荷主グループコード
 		judg_field[1] = "ItemCd";			//商品コード
 		
-		for(int i=0;i<ItemMstSubSetString.length;i++) {
-			field_name[i][0] = ItemMstSubSetString[i][0];
-			field_name[i][1] = ItemMstSubSetString[i][1];
-			field_name[i][2] = ItemMstSubSetString[i][2];
-		}
-		for(int i01=0;i01<CheckOb.length;i01++) {
+		for(int i01=0;i01<EntryCount;i01++) {
 			judg_data[i01][0] = GetClGpCd[i01];		//荷主グループコード
 			judg_data[i01][1] = GetItemCd[i01];		//商品コード
+			
 			entry_data[i01][ 0] = GetClGpCd[i01];	//荷主グループコード
 			entry_data[i01][ 1] = GetItemCd[i01];	//商品コード
 			entry_data[i01][ 2] = GetCtQty[i01];	//カートン入数
@@ -881,7 +1016,7 @@ public class WM00082ItemMstExcelEntry{
 			entry_data[i01][24] = GetItemColorCd[i01];	//商品カラーコード
 			entry_data[i01][25] = GetItemColorName[i01];	//商品カラー名
 			entry_data[i01][26] = GetItemSizeCd[i01];	//商品サイズコード
-			entry_data[i01][27] = GetItemSizeName[i01];	//商品サイス名
+			entry_data[i01][27] = GetItemSizeName[i01];	//商品サイズ名
 			entry_data[i01][28] = GetCom01[i01];	//コメント1
 			entry_data[i01][29] = GetCom02[i01];	//コメント2
 			entry_data[i01][30] = GetCom03[i01];	//コメント3
@@ -898,12 +1033,233 @@ public class WM00082ItemMstExcelEntry{
 			entry_data[i01][41] = GetItemImagePath05[i01];	//画像パス05
 			entry_data[i01][42] = GetExpDateHowLong[i01];	//賞味期限日数
 		}
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		if(0<EntryCount) {
+			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		}
 	}
 	
-	private static ArrayList<String> ErrRt(Object[][] CheckOb) {
+	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[]TableCol) {
 		ArrayList<String> ErrMsg = new ArrayList<String>();
 		
+		int ColClGpCd			=  1;		//荷主グループコード
+		int ColItemCd			=  2;		//商品コード
+		int ColCLItemCd			=  3;		//荷主商品コード
+		int ColItemName01		=  4;		//商品名1
+		int ColItemName02		=  5;		//商品名2
+		int ColItemName03		=  6;		//商品名3
+		int ColDeliveryTypeCd01	=  7;		//運送タイプコード01
+		int ColDeliveryTypeCd02	=  8;		//運送タイプコード02
+		int ColDeliveryTypeCd03	=  9;		//運送タイプコード03
+		int ColDeliveryTypeCd04	= 10;		//運送タイプコード04
+		int ColDeliveryTypeCd05	= 11;		//運送タイプコード05
+		int ColPTMSCD			= 12;		//基幹SYS商品コード
+		int ColCtQty			= 13;		//カートン入数
+		int ColCsQty			= 14;		//ケース入数
+		int ColPlQty			= 15;		//パレット入数
+		int ColJanCd			= 16;		//JANCD
+		int ColCtJan			= 17;		//カートンバーコード
+		int ColCsJan			= 18;		//ケースバーコード
+		int ColPlJan			= 19;		//パレットバーコード
+		int ColCtName			= 20;		//カートン商品名称
+		int ColCsName			= 21;		//ケース商品名称
+		int ColPlName			= 22;		//パレット商品名称
+		int ColUnitName			= 23;		//商品単位
+		int ColCtUnitName		= 24;		//カートン商品単位
+		int ColCsUnitName		= 25;		//ケース商品単位
+		int ColPlUnitName		= 26;		//パレット商品単位
+		int ColItemWeight		= 27;		//商品重量
+		int ColCtWeight			= 28;		//カートン重量
+		int ColCsWeight			= 29;		//ケース重量
+		int ColPlWeight			= 30;		//パレット重量
+		int ColItemSize			= 31;		//商品サイズ
+		int ColCtSize			= 32;		//カートンサイズ
+		int ColCsSize			= 33;		//ケースサイズ
+		int ColPlSize			= 34;		//パレットサイズ
+		int ColRecomendLoc		= 35;		//推奨ロケ
+		int ColItemMDNo			= 36;		//商品型番
+		int ColCategoryCd		= 37;		//商品カテゴリCD
+		int ColCategoryName		= 38;		//商品カテゴリ名
+		int ColItemColorCd		= 39;		//商品カラーコード
+		int ColItemColorName	= 40;		//商品カラー名
+		int ColItemSizeCd		= 41;		//商品サイズコード
+		int ColItemSizeName		= 42;		//商品サイズ名
+		int ColCom01			= 43;		//コメント1
+		int ColCom02			= 44;		//コメント2
+		int ColCom03			= 45;		//コメント3
+		int ColTildFG			= 46;		//温度区分
+		int ColItemImagePath01	= 47;		//画像パス01 
+		int ColItemImagePath02	= 48;		//画像パス02
+		int ColItemImagePath03	= 49;		//画像パス03
+		int ColItemImagePath04	= 50;		//画像パス04
+		int ColItemImagePath05	= 51;		//画像パス05
+		int ColExpDateHowLong	= 52;		//賞味期限日数
+		int ColDelFg			= 53;		//削除フラグ
+		
+		for(int i=0;i<TableCol.length;i++) {
+			switch(TableCol[i]) {
+				case "荷主グループコード":
+					ColClGpCd = i;
+					break;
+				case "商品コード":
+					ColItemCd = i;
+					break;
+				case "荷主商品コード":
+					ColCLItemCd = i;
+					break;
+				case "商品名1":
+					ColItemName01 = i;
+					break;
+				case "商品名2":
+					ColItemName02 = i;
+					break;
+				case "商品名3":
+					ColItemName03 = i;
+					break;
+				case "運送タイプコード01":
+					ColDeliveryTypeCd01 = i;
+					break;
+				case "運送タイプコード02":
+					ColDeliveryTypeCd02 = i;
+					break;
+				case "運送タイプコード03":
+					ColDeliveryTypeCd03 = i;
+					break;
+				case "運送タイプコード04":
+					ColDeliveryTypeCd04 = i;
+					break;
+				case "運送タイプコード05":
+					ColDeliveryTypeCd05 = i;
+					break;
+				case "基幹システム商品コード":
+					ColPTMSCD = i;
+					break;
+				case "カートン入数":
+					ColCtQty = i;
+					break;
+				case "ケース入数":
+					ColCsQty = i;
+					break;
+				case "パレット入数":
+					ColPlQty = i;
+					break;
+				case "JANCD":
+					ColJanCd = i;
+					break;
+				case "カートンバーコード":
+					ColCtJan = i;
+					break;
+				case "ケースバーコード":
+					ColCsJan = i;
+					break;
+				case "パレットバーコード":
+					ColPlJan = i;
+					break;
+				case "カートン商品名称":
+					ColCtName = i;
+					break;
+				case "ケース商品名称":
+					ColCsName = i;
+					break;
+				case "パレット商品名称":
+					ColPlName = i;
+					break;
+				case "商品単位":
+					ColUnitName = i;
+					break;
+				case "カートン商品単位":
+					ColCtUnitName = i;
+					break;
+				case "ケース商品単位":
+					ColCsUnitName = i;
+					break;
+				case "パレット商品単位":
+					ColPlUnitName = i;
+					break;
+				case "商品重量":
+					ColItemWeight = i;
+					break;
+				case "カートン重量":
+					ColCtWeight = i;
+					break;
+				case "ケース重量":
+					ColCsWeight = i;
+					break;
+				case "パレット重量":
+					ColPlWeight = i;
+					break;
+				case "商品サイズ":
+					ColItemSize = i;
+					break;
+				case "カートンサイズ":
+					ColCtSize = i;
+					break;
+				case "ケースサイズ":
+					ColCsSize = i;
+					break;
+				case "パレットサイズ":
+					ColPlSize = i;
+					break;
+				case "推奨ロケ":
+					ColRecomendLoc = i;
+					break;
+				case "商品モデル番号（型番）":
+					ColItemMDNo = i;
+					break;
+				case "商品カテゴリCD":
+					ColCategoryCd = i;
+					break;
+				case "商品カテゴリ名":
+					ColCategoryName = i;
+					break;
+				case "商品カラーコード":
+					ColItemColorCd = i;
+					break;
+				case "商品カラー名":
+					ColItemColorName = i;
+					break;
+				case "商品サイズコード":
+					ColItemSizeCd = i;
+					break;
+				case "商品サイズ名":
+					ColItemSizeName = i;
+					break;
+				case "コメント1":
+					ColCom01 = i;
+					break;
+				case "コメント2":
+					ColCom02 = i;
+					break;
+				case "コメント3":
+					ColCom03 = i;
+					break;
+				case "温度区分":
+					ColTildFG = i;
+					break;
+				case "画像パス01":
+					ColItemImagePath01 = i;
+					break;
+				case "画像パス02":
+					ColItemImagePath02 = i;
+					break;
+				case "画像パス03":
+					ColItemImagePath03 = i;
+					break;
+				case "画像パス04":
+					ColItemImagePath04 = i;
+					break;
+				case "画像パス05":
+					ColItemImagePath05 = i;
+					break;
+				case "賞味期限日数":
+					ColExpDateHowLong = i;
+					break;
+				case "削除フラグ":
+					ColDelFg = i;
+					break;
+				default:
+					break;
+			}
+		}
 		ArrayList<String> SearchClGpCD 		= new ArrayList<String>();
 		ArrayList<String> SearchCLGpName 	= new ArrayList<String>();
 		ArrayList<String> SearchPost 		= new ArrayList<String>();
@@ -915,7 +1271,7 @@ public class WM00082ItemMstExcelEntry{
 		boolean AllSearch = false;
 		
 		for(int i=0;i<CheckOb.length;i++) {
-			SearchClGpCD.add(""+CheckOb[i][1]);
+			SearchClGpCD.add(""+CheckOb[i][ColClGpCd]);
 		}
 		Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
 				SearchClGpCD,
@@ -929,110 +1285,119 @@ public class WM00082ItemMstExcelEntry{
 				AllSearch);
 		
 		for(int i=0;i<CheckOb.length;i++) {
-			boolean UnHitFg = true;
-			for(int i01=0;i01<ClGpMstRt.length;i01++) {
-				if((""+CheckOb[i][1]).equals(""+ClGpMstRt[i01][M00010ClGpMstRt.ColClGpCD])) {
-					UnHitFg = false;
-					i01=ClGpMstRt.length+1;
+			//商品CD・商品名が空白ならSKIP
+			for(int i01=0;i01<CheckOb[i].length;i01++) {
+				CheckOb[i][i01] = B00020ToolsTextControl.Trim(""+CheckOb[i][i01]);
+			}
+			if("".equals(""+CheckOb[i][ColItemCd])
+					&& "".equals(""+CheckOb[i][ColItemName01])
+					) {
+			}else {
+				boolean UnHitFg = true;
+				for(int i01=0;i01<ClGpMstRt.length;i01++) {
+					if((""+CheckOb[i][ColClGpCd]).equals(""+ClGpMstRt[i01][M00010ClGpMstRt.ColClGpCD])) {
+						UnHitFg = false;
+						i01=ClGpMstRt.length+1;
+					}
 				}
-			}
-			if(UnHitFg) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー("+CheckOb[i][1]+")は荷主グループCDにありません");
-			}
-			
-			UnHitFg = true;
-			for(int i01=0;i01<B00100DefaultVariable.DeliveryType01[1].length;i01++) {
-				if((""+CheckOb[i][7]).equals(B00100DefaultVariable.DeliveryType01[1][i01])) {
-					UnHitFg = false;
-					i01=B00100DefaultVariable.DeliveryType01[1].length+1;
+				if(UnHitFg) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー("+CheckOb[i][ColClGpCd]+")は荷主グループCDにありません");
 				}
-			}
-			if(UnHitFg) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー("+CheckOb[i][7]+")は運送タイプCD01にありません");
-			}
-
-			UnHitFg = true;
-			for(int i01=0;i01<B00100DefaultVariable.DeliveryType02[1].length;i01++) {
-				if((""+CheckOb[i][8]).equals(B00100DefaultVariable.DeliveryType02[1][i01])) {
-					UnHitFg = false;
-					i01=B00100DefaultVariable.DeliveryType02[1].length+1;
+				
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.DeliveryType01[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd01]).equals(B00100DefaultVariable.DeliveryType01[1][i01])) {
+						UnHitFg = false;
+						i01=B00100DefaultVariable.DeliveryType01[1].length+1;
+					}
 				}
-			}
-			if(UnHitFg) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー("+CheckOb[i][8]+")は運送タイプCD02にありません");
-			}
-
-			UnHitFg = true;
-			for(int i01=0;i01<B00100DefaultVariable.DeliveryType03[1].length;i01++) {
-				if((""+CheckOb[i][9]).equals(B00100DefaultVariable.DeliveryType03[1][i01])) {
-					UnHitFg = false;
-					i01=B00100DefaultVariable.DeliveryType03[1].length+1;
+				if(UnHitFg) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー("+CheckOb[i][ColDeliveryTypeCd01]+")は運送タイプCD01にありません");
 				}
-			}
-			if(UnHitFg) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー("+CheckOb[i][9]+")は運送タイプCD03にありません");
-			}
-
-			UnHitFg = true;
-			for(int i01=0;i01<B00100DefaultVariable.DeliveryType04[1].length;i01++) {
-				if((""+CheckOb[i][10]).equals(B00100DefaultVariable.DeliveryType04[1][i01])) {
-					UnHitFg = false;
-					i01=B00100DefaultVariable.DeliveryType04[1].length+1;
+	
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.DeliveryType02[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd02]).equals(B00100DefaultVariable.DeliveryType02[1][i01])) {
+						UnHitFg = false;
+						i01=B00100DefaultVariable.DeliveryType02[1].length+1;
+					}
 				}
-			}
-			if(UnHitFg) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー("+CheckOb[i][10]+")は運送タイプCD04にありません");
-			}
-
-			UnHitFg = true;
-			for(int i01=0;i01<B00100DefaultVariable.DeliveryType05[1].length;i01++) {
-				if((""+CheckOb[i][11]).equals(B00100DefaultVariable.DeliveryType05[1][i01])) {
-					UnHitFg = false;
-					i01=B00100DefaultVariable.DeliveryType05[1].length+1;
+				if(UnHitFg) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー("+CheckOb[i][ColDeliveryTypeCd02]+")は運送タイプCD02にありません");
 				}
-			}
-			if(UnHitFg) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー("+CheckOb[i][11]+")は運送タイプCD05にありません");
-			}
-
-			UnHitFg = true;
-			for(int i01=0;i01<B00100DefaultVariable.TildFG[1].length;i01++) {
-				if((""+CheckOb[i][46]).equals(B00100DefaultVariable.TildFG[1][i01])) {
-					UnHitFg = false;
-					i01=B00100DefaultVariable.TildFG[1].length+1;
+	
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.DeliveryType03[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd03]).equals(B00100DefaultVariable.DeliveryType03[1][i01])) {
+						UnHitFg = false;
+						i01=B00100DefaultVariable.DeliveryType03[1].length+1;
+					}
 				}
-			}
-			if(UnHitFg) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー("+CheckOb[i][46]+")は温度区分にありません");
-			}
-
-			UnHitFg = true;
-			for(int i01=0;i01<B00100DefaultVariable.DelList[1].length;i01++) {
-				if((""+CheckOb[i][53]).equals(B00100DefaultVariable.DelList[1][i01])) {
-					UnHitFg = false;
-					i01=B00100DefaultVariable.DelList[1].length+1;
+				if(UnHitFg) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー("+CheckOb[i][ColDeliveryTypeCd03]+")は運送タイプCD03にありません");
 				}
-			}
-			if(UnHitFg) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー("+CheckOb[i][53]+")は削除区分にありません");
-			}
-			
-			if("".equals(""+CheckOb[i][2])) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー "+CheckOb[i][2]+"商品コードは必須です");
-			}
-			
-			if("".equals(""+CheckOb[i][4])) {
-				int wint=i+1;
-				ErrMsg.add(wint+"行目エラー "+CheckOb[i][4]+"商品名01は必須です");
+	
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.DeliveryType04[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd04]).equals(B00100DefaultVariable.DeliveryType04[1][i01])) {
+						UnHitFg = false;
+						i01=B00100DefaultVariable.DeliveryType04[1].length+1;
+					}
+				}
+				if(UnHitFg) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー("+CheckOb[i][ColDeliveryTypeCd04]+")は運送タイプCD04にありません");
+				}
+	
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.DeliveryType05[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd05]).equals(B00100DefaultVariable.DeliveryType05[1][i01])) {
+						UnHitFg = false;
+						i01=B00100DefaultVariable.DeliveryType05[1].length+1;
+					}
+				}
+				if(UnHitFg) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー("+CheckOb[i][ColDeliveryTypeCd05]+")は運送タイプCD05にありません");
+				}
+	
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.TildFG[1].length;i01++) {
+					if((""+CheckOb[i][ColTildFG]).equals(B00100DefaultVariable.TildFG[1][i01])) {
+						UnHitFg = false;
+						i01=B00100DefaultVariable.TildFG[1].length+1;
+					}
+				}
+				if(UnHitFg) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー("+CheckOb[i][ColTildFG]+")は温度区分にありません");
+				}
+	
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.DelList[1].length;i01++) {
+					if((""+CheckOb[i][ColDelFg]).equals(B00100DefaultVariable.DelList[1][i01])) {
+						UnHitFg = false;
+						i01=B00100DefaultVariable.DelList[1].length+1;
+					}
+				}
+				if(UnHitFg) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー("+CheckOb[i][ColDelFg]+")は削除区分にありません");
+				}
+				
+				if("".equals(""+CheckOb[i][ColItemCd])) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー "+CheckOb[i][ColItemCd]+"商品コードは必須です");
+				}
+				
+				if("".equals(""+CheckOb[i][ColItemName01])) {
+					int wint=i+1;
+					ErrMsg.add(wint+"行目エラー "+CheckOb[i][ColItemName01]+"商品名01は必須です");
+				}
 			}
 		}
 		return ErrMsg;

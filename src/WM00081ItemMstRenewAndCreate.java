@@ -78,13 +78,13 @@ public class WM00081ItemMstRenewAndCreate{
 		JLabel LB_ItemColorCd			= B00110FrameParts.JLabelSet( 910, 25,100,20,"商品カラーコード:"		,10,1);
 		JLabel LB_ItemColorName			= B00110FrameParts.JLabelSet( 910, 50,100,20,"商品カラー名:"			,10,1);
 		JLabel LB_ItemSizeCd			= B00110FrameParts.JLabelSet( 910, 75,100,20,"商品サイズコード:"		,10,1);
-		JLabel LB_ItemSizeName			= B00110FrameParts.JLabelSet( 910,100,100,20,"商品サイス名:"			,10,1);
+		JLabel LB_ItemSizeName			= B00110FrameParts.JLabelSet( 910,100,100,20,"商品サイズ名:"			,10,1);
 		JLabel LB_TildFG				= B00110FrameParts.JLabelSet( 910,125,100,20,"温度区分:"				,10,1);
 		JLabel LB_ExpDateHowLong		= B00110FrameParts.JLabelSet( 910,150,100,20,"賞味期限日数:"			,10,1);
 		final JTextField  TB_ItemColorCd			= B00110FrameParts.JTextFieldSet(1010, 25,100,20,"",11,0);			//商品カラーコード
 		final JTextField  TB_ItemColorName			= B00110FrameParts.JTextFieldSet(1010, 50,100,20,"",11,0);			//商品カラー名
 		final JTextField  TB_ItemSizeCd				= B00110FrameParts.JTextFieldSet(1010, 75,100,20,"",11,0);			//商品サイズコード
-		final JTextField  TB_ItemSizeName			= B00110FrameParts.JTextFieldSet(1010,100,100,20,"",11,0);			//商品サイス名
+		final JTextField  TB_ItemSizeName			= B00110FrameParts.JTextFieldSet(1010,100,100,20,"",11,0);			//商品サイズ名
 		final JComboBox   TB_TildFG					= B00110FrameParts.JComboBoxSet( 1010,125,100,20,B00100DefaultVariable.TildFG[0],11);	//温度区分
 		final JFormattedTextField TB_ExpDateHowLong	= B00110FrameParts.JFormattedTextFieldSet(	1010,150,100,20,"0",11,1,"#,###");			//賞味期限日数
 		
@@ -224,7 +224,7 @@ public class WM00081ItemMstRenewAndCreate{
 			ArrayList<String> SearchItemColorCd = new ArrayList<String>();		//商品カラーコード
 			ArrayList<String> SearchItemColorName = new ArrayList<String>();	//商品カラー名
 			ArrayList<String> SearchItemSizeCd = new ArrayList<String>();		//商品サイズコード
-			ArrayList<String> SearchItemSizeName = new ArrayList<String>();		//商品サイス名
+			ArrayList<String> SearchItemSizeName = new ArrayList<String>();		//商品サイズ名
 			ArrayList<String> SearchJanCd = new ArrayList<String>();			//JANCD
 			ArrayList<String> SearchTildFG = new ArrayList<String>();			//温度区分
 			ArrayList<String> SearchTildName = new ArrayList<String>();			//温度区分名
@@ -250,7 +250,7 @@ public class WM00081ItemMstRenewAndCreate{
 					SearchItemColorCd,		//商品カラーコード
 					SearchItemColorName,	//商品カラー名
 					SearchItemSizeCd,		//商品サイズコード
-					SearchItemSizeName,		//商品サイス名
+					SearchItemSizeName,		//商品サイズ名
 					SearchJanCd,			//JANCD
 					SearchTildFG,			//温度区分
 					SearchTildName,			//温度区分名
@@ -317,7 +317,7 @@ public class WM00081ItemMstRenewAndCreate{
 				TB_ItemColorCd.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemColorCd]);		//商品カラーコード
 				TB_ItemColorName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemColorName]);	//商品カラー名
 				TB_ItemSizeCd.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemSizeCd]);		//商品サイズコード
-				TB_ItemSizeName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemSizeName]);	//商品サイス名
+				TB_ItemSizeName.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemSizeName]);	//商品サイズ名
 				TB_Com01.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom01]);					//コメント1
 				TB_Com02.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom02]);					//コメント2
 				TB_Com03.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom03]);					//コメント3
@@ -903,7 +903,7 @@ public class WM00081ItemMstRenewAndCreate{
 				String GetItemColorCd 		= TB_ItemColorCd.getText();			//商品カラーコード
 				String GetItemColorName 	= TB_ItemColorName.getText();		//商品カラー名
 				String GetItemSizeCd 		= TB_ItemSizeCd.getText();			//商品サイズコード
-				String GetItemSizeName 		= TB_ItemSizeName.getText();		//商品サイス名
+				String GetItemSizeName 		= TB_ItemSizeName.getText();		//商品サイズ名
 				String GetTildFG 			= B00100DefaultVariable.TildFG[1][TB_TildFG.getSelectedIndex()];	//温度区分
 				String GetTildFGName 		= B00100DefaultVariable.TildFG[2][TB_TildFG.getSelectedIndex()];	//温度区分
 				String GetExpDateHowLong 	= TB_ExpDateHowLong.getText();		//賞味期限日数
@@ -971,7 +971,7 @@ public class WM00081ItemMstRenewAndCreate{
 				GetItemColorCd 			= B00020ToolsTextControl.Trim(GetItemColorCd);			//商品カラーコード
 				GetItemColorName 		= B00020ToolsTextControl.Trim(GetItemColorName);		//商品カラー名
 				GetItemSizeCd 			= B00020ToolsTextControl.Trim(GetItemSizeCd);			//商品サイズコード
-				GetItemSizeName 		= B00020ToolsTextControl.Trim(GetItemSizeName);			//商品サイス名
+				GetItemSizeName 		= B00020ToolsTextControl.Trim(GetItemSizeName);			//商品サイズ名
 				GetTildFG 				= B00020ToolsTextControl.Trim(GetTildFG);				//温度区分
 				GetTildFGName 			= B00020ToolsTextControl.Trim(GetTildFGName);			//温度区分名
 				GetExpDateHowLong 		= B00020ToolsTextControl.Trim(GetExpDateHowLong);		//賞味期限日数
@@ -1192,7 +1192,7 @@ public class WM00081ItemMstRenewAndCreate{
 							,{"ItemColorCd"		,"1","1",GetItemColorCd}		//商品カラーコード
 							,{"ItemColorName"	,"1","1",GetItemColorName}		//商品カラー名
 							,{"ItemSizeCd"		,"1","1",GetItemSizeCd}			//商品サイズコード
-							,{"ItemSizeName"	,"1","1",GetItemSizeName}		//商品サイス名
+							,{"ItemSizeName"	,"1","1",GetItemSizeName}		//商品サイズ名
 							,{"Com01"			,"1","1",GetCom01}				//コメント1
 							,{"Com02"			,"1","1",GetCom02}				//コメント2
 							,{"Com03"			,"1","1",GetCom03}				//コメント3

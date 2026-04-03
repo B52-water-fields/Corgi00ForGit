@@ -38,13 +38,7 @@ public class WM00092LocationMstExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		String SheetName = "";
-		
 		final String[] SheetList = B00060ToolsExcellControl.ExcellSheetList(TgtFilePath);
-		
-		if(1==SheetList.length) {
-			SheetName = SheetList[0];
-		}
 		
 		JLabel LB_SheetList				= B00110FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
 		final JComboBox   TB_SheetList	= B00110FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
@@ -287,7 +281,7 @@ public class WM00092LocationMstExcelEntry{
 					ColClName 	= i;
 					break;
 				case "倉庫コード":
-					ColClName 	= i;
+					ColWhCd 	= i;
 					break;
 				case "拠点倉庫名":
 					ColWhName 	= i;

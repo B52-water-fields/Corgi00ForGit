@@ -95,9 +95,9 @@ public class WM00080ItemMstSearch{
 		JLabel LB_SearchItemSizeCd  					= B00110FrameParts.JLabelSet(		620,150,130,20,"商品サイズコード:"		,11,1);
 		final JTextField TB_SearchItemSizeCd  			= B00110FrameParts.JTextFieldSet(	750,150,100,20,""						,11,0);	//商品サイズコード
 		JLabel LB2_SearchItemSizeCd  					= B00110FrameParts.JLabelSet(		850,150, 80,20,"と一致"					,11,0);	//商品サイズコード
-		JLabel LB_SearchItemSizeName  					= B00110FrameParts.JLabelSet(		620,175,130,20,"商品サイス名:"			,11,1);
-		final JTextField TB_SearchItemSizeName  		= B00110FrameParts.JTextFieldSet( 750,175,100,20,""						,11,0);	//商品サイス名
-		JLabel LB2_SearchItemSizeName  					= B00110FrameParts.JLabelSet(	    850,175, 80,20,"を含む"					,11,0);	//商品サイス名
+		JLabel LB_SearchItemSizeName  					= B00110FrameParts.JLabelSet(		620,175,130,20,"商品サイズ名:"			,11,1);
+		final JTextField TB_SearchItemSizeName  		= B00110FrameParts.JTextFieldSet( 750,175,100,20,""						,11,0);	//商品サイズ名
+		JLabel LB2_SearchItemSizeName  					= B00110FrameParts.JLabelSet(	    850,175, 80,20,"を含む"					,11,0);	//商品サイズ名
 		
 		for(int i=0;i<B00100DefaultVariable.SearchClGpList[1].length;i++) {
 			if(A00000Main.ClGp.equals(B00100DefaultVariable.SearchClGpList[1][i])) {
@@ -264,7 +264,7 @@ public class WM00080ItemMstSearch{
 					String GetSearchItemColorCd = TB_SearchItemColorCd.getText();		//商品カラーコード
 					String GetSearchItemColorName = TB_SearchItemColorName.getText();	//商品カラー名
 					String GetSearchItemSizeCd = TB_SearchItemSizeCd.getText();			//商品サイズコード
-					String GetSearchItemSizeName = TB_SearchItemSizeName.getText();		//商品サイス名
+					String GetSearchItemSizeName = TB_SearchItemSizeName.getText();		//商品サイズ名
 					
 					if(null==GetSearchClGpCd			) {GetSearchClGpCd= "";}			//荷主グループコード
 					if(null==GetSearchItemCd			) {GetSearchItemCd= "";}			//商品コード
@@ -285,7 +285,7 @@ public class WM00080ItemMstSearch{
 					if(null==GetSearchItemColorCd		) {GetSearchItemColorCd= "";}		//商品カラーコード
 					if(null==GetSearchItemColorName		) {GetSearchItemColorName= "";}		//商品カラー名
 					if(null==GetSearchItemSizeCd		) {GetSearchItemSizeCd= "";}		//商品サイズコード
-					if(null==GetSearchItemSizeName		) {GetSearchItemSizeName= "";}		//商品サイス名
+					if(null==GetSearchItemSizeName		) {GetSearchItemSizeName= "";}		//商品サイズ名
 					
 					GetSearchClGpCd				= B00020ToolsTextControl.Trim(GetSearchClGpCd);		//荷主グループコード
 					GetSearchItemCd				= B00020ToolsTextControl.Trim(GetSearchItemCd);				//商品コード
@@ -306,7 +306,7 @@ public class WM00080ItemMstSearch{
 					GetSearchItemColorCd		= B00020ToolsTextControl.Trim(GetSearchItemColorCd);		//商品カラーコード
 					GetSearchItemColorName		= B00020ToolsTextControl.Trim(GetSearchItemColorName);		//商品カラー名
 					GetSearchItemSizeCd			= B00020ToolsTextControl.Trim(GetSearchItemSizeCd);			//商品サイズコード
-					GetSearchItemSizeName		= B00020ToolsTextControl.Trim(GetSearchItemSizeName);		//商品サイス名
+					GetSearchItemSizeName		= B00020ToolsTextControl.Trim(GetSearchItemSizeName);		//商品サイズ名
 					
 					ArrayList<String> SearchClGpCd = new ArrayList<String>();			//荷主グループコード
 					ArrayList<String> SearchItemCd = new ArrayList<String>();			//商品コード
@@ -323,7 +323,7 @@ public class WM00080ItemMstSearch{
 					ArrayList<String> SearchItemColorCd = new ArrayList<String>();		//商品カラーコード
 					ArrayList<String> SearchItemColorName = new ArrayList<String>();	//商品カラー名
 					ArrayList<String> SearchItemSizeCd = new ArrayList<String>();		//商品サイズコード
-					ArrayList<String> SearchItemSizeName = new ArrayList<String>();		//商品サイス名
+					ArrayList<String> SearchItemSizeName = new ArrayList<String>();		//商品サイズ名
 					ArrayList<String> SearchJanCd = new ArrayList<String>();			//JANCD
 					ArrayList<String> SearchTildFG = new ArrayList<String>();			//温度区分
 					ArrayList<String> SearchTildName = new ArrayList<String>();			//温度区分名
@@ -349,7 +349,7 @@ public class WM00080ItemMstSearch{
 					if(!"".equals(GetSearchItemColorCd		)){SearchItemColorCd.add(GetSearchItemColorCd);}			//商品カラーコード
 					if(!"".equals(GetSearchItemColorName	)){SearchItemColorName.add(GetSearchItemColorName);}		//商品カラー名
 					if(!"".equals(GetSearchItemSizeCd		)){SearchItemSizeCd.add(GetSearchItemSizeCd);}				//商品サイズコード
-					if(!"".equals(GetSearchItemSizeName		)){SearchItemSizeName.add(GetSearchItemSizeName);}			//商品サイス名
+					if(!"".equals(GetSearchItemSizeName		)){SearchItemSizeName.add(GetSearchItemSizeName);}			//商品サイズ名
 					
 					Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
 							SearchClGpCd,			//荷主グループコード
@@ -367,7 +367,7 @@ public class WM00080ItemMstSearch{
 							SearchItemColorCd,		//商品カラーコード
 							SearchItemColorName,	//商品カラー名
 							SearchItemSizeCd,		//商品サイズコード
-							SearchItemSizeName,		//商品サイス名
+							SearchItemSizeName,		//商品サイズ名
 							SearchJanCd,			//JANCD
 							SearchTildFG,			//温度区分
 							SearchTildName,			//温度区分名
