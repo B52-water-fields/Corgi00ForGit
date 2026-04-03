@@ -259,10 +259,6 @@ public class B00040ToolsFolderCheck{
 		
 		String FilePath=FP+"\\"+FileName+"FileDelBat.bat";
 		
-		System.out.println(BatText);
-		System.out.println("****************");
-		System.out.println(FilePath);
-		
 		B00030ToolsTextExport.txt_exp3(OutPutTxt,FilePath);
 		
 		String bat_path = "cmd.exe /c start "+FilePath;
