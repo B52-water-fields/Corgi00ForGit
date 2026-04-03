@@ -26,8 +26,8 @@ public class B00100DefaultVariable{
 	static String[][] SerachAuthorityFG;				//検索用ユーザー権限区分
 	static String[][] AuthorityFG;						//設定用ユーザー権限区分
 	
-	static String[][] SearchLocType = {{"未指定","0:通常","1:保管","8:入荷時","9:引当禁止"},{"","0","1","8","9"},{"","通常","保管","入荷時","引当禁止"}};		//ロケタイプ検索値
-	static String[][] LocType = {{"0:通常","1:保管","8:入荷時","9:引当禁止"},{"0","1","8","9"},{"通常","保管","入荷時","引当禁止"}};							//ロケタイプ設定値
+	static String[][] SearchLocType = {{"未指定","0:通常","1:保管","8:入荷時","9:引当禁止"},{"","0","1","8","9"},{"","通常","保管","入荷時","引当禁止"},{"","1","1","0","0"}};		//ロケタイプ検索値{表示用,CD,名称,引当可能FG※引当対象なら1}
+	static String[][] LocType = {{"0:通常","1:保管","8:入荷時","9:引当禁止"},{"0","1","8","9"},{"通常","保管","入荷時","引当禁止"},{"1","1","0","0"}};									//ロケタイプ設定値{表示用,CD,名称,引当可能FG※引当対象なら1}
 	
 	static String DefaultActualDate 	= "1941/12/08";	//入荷日管理しない場合の入荷実績日
 	
@@ -88,12 +88,8 @@ public class B00100DefaultVariable{
 	static String[][] DeliveryType04;
 	static String[][] DeliveryType05;
 	
+	static int ErrTxtDelete = 45;	//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
 	
-	
-	/*	
-	
-	
-	*/
 	
 	
 	/*

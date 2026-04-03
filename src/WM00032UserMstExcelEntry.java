@@ -517,6 +517,9 @@ public class WM00032UserMstExcelEntry{
 					
 					B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 					
+					//古いエラーデータ削除
+					B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+					
 					//ファイル開く
 					File file = new File(ErrFP);
 					Desktop desktop = Desktop.getDesktop();
@@ -526,7 +529,6 @@ public class WM00032UserMstExcelEntry{
 						e1.printStackTrace();
 					}
 				}
-				
 			}
 			main_fm.setVisible(true);
 		}
@@ -633,6 +635,9 @@ public class WM00032UserMstExcelEntry{
 						entry_data[i][25] = ""+tableModel_ms01.getValueAt(i, 26);	//主要担当荷主CD
 					}
 					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					
+					//ファイルバックアップ
+					B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();

@@ -1058,6 +1058,9 @@ public class WM00082ItemMstExcelEntry{
 		
 		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		
+		//古いエラーデータ削除
+		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		
 		//ファイル開く
 		File file = new File(ErrFP);
 		Desktop desktop = Desktop.getDesktop();

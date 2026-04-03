@@ -51,6 +51,9 @@ public class WM00091LocationMstRenewAndCreate{
 		final JTextField  TB_EntryUser	= B00110FrameParts.JTextFieldSet(100,250,200,20,"",11,0);	//登録者
 		final JTextField  TB_UpdateUser	= B00110FrameParts.JTextFieldSet(100,275,200,20,"",11,0);	//更新者
 		
+		//モード切替ボタン
+		JButton ModeChangeBtn = B00110FrameParts.BtnSet(	210,100,100,20,"モード切替",10);
+		
 		TB_EntryDate.setEditable(false);
 		TB_UpdateDate.setEditable(false);
 		TB_EntryUser.setEditable(false);
@@ -78,6 +81,60 @@ public class WM00091LocationMstRenewAndCreate{
 		}else {
 			TB_ClCd.setEditable(false);
 			TB_WhCd.setEditable(false);
+		}
+		
+		if(!"".equals(TgtLoc)) {
+			ArrayList<String> SearchClCd 	= new ArrayList<String>();	//荷主コード
+			ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
+			ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
+			ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
+			ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+			boolean LocExactMatch = true;	//ロケーション完全一致
+			boolean AllSearch = false;
+			
+			SearchClCd.add(	TgtClCd);
+			SearchWhCd.add(	TgtWhCd);
+			SearchLoc.add(	TgtLoc);
+			
+			Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+					SearchClCd,		//荷主コード
+					SearchWhCd,		//倉庫コード
+					SearchLoc,		//ロケーション
+					SearchLocName,	//ロケーション名
+					SearchType,		//ロケタイプ
+					LocExactMatch,	//ロケーション完全一致
+					AllSearch);
+			
+			if(1==LocationMstRt.length) {
+				String GetClCd			= (String)LocationMstRt[0][M00090LocationMstRt.ColClCd];			//荷主コード
+				String GetCLName01		= (String)LocationMstRt[0][M00090LocationMstRt.ColCLName01];		//荷主名1
+				String GetWhCd			= (String)LocationMstRt[0][M00090LocationMstRt.ColWhCd];			//倉庫コード
+				String GetWHName		= (String)LocationMstRt[0][M00090LocationMstRt.ColWHName];			//拠点倉庫名
+				String GetLoc			= (String)LocationMstRt[0][M00090LocationMstRt.ColLoc];			//ロケーション
+				String GetLocName		= (String)LocationMstRt[0][M00090LocationMstRt.ColLocName];		//ロケーション名
+				int GetType				= (int)LocationMstRt[0][M00090LocationMstRt.ColType];				//ロケタイプ
+				String GetEntryDate		= (String)LocationMstRt[0][M00090LocationMstRt.ColEntryDate];		//登録日
+				String GetUpdateDate	= (String)LocationMstRt[0][M00090LocationMstRt.ColUpdateDate];	//更新日
+				String GetEntryUser		= (String)LocationMstRt[0][M00090LocationMstRt.ColEntryUser];		//登録者
+				String GetUpdateUser	= (String)LocationMstRt[0][M00090LocationMstRt.ColUpdateUser];	//更新者
+				
+				TB_Loc.setText(GetLoc);
+				TB_LocName.setText(GetLocName);
+				for(int i01=0;i01<B00100DefaultVariable.LocType[1].length;i01++) {
+					if(B00100DefaultVariable.LocType[1][i01].equals(""+GetType)) {
+						TB_Type.setSelectedIndex(i01);
+					}
+				}
+				TB_EntryDate.setText(GetEntryDate);
+				TB_UpdateDate.setText(GetUpdateDate);
+				TB_EntryUser.setText(GetEntryUser);
+				TB_UpdateUser.setText(GetUpdateUser);
+				
+				main_fm.add(ModeChangeBtn);
+				
+			}else {
+				TgtLoc = "";
+			}
 		}
 		
 		main_fm.add(LB_ClCd);
@@ -144,41 +201,11 @@ public class WM00091LocationMstRenewAndCreate{
 				if("".equals(GetLoc)) {
 					
 				}else {
-					//現状のロケーション情報を取得して、ロケタイプが変更されていた場合在庫情報を修正する
-					ArrayList<String> SearchClCd 	= new ArrayList<String>();	//荷主コード
-					ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
-					ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
-					ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
-					ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
-					boolean AllSearch = false;
-					SearchClCd.add(GetClCd);
-					SearchWhCd.add(GetWhCd);
-					SearchLoc.add(GetLoc);
+					String[][] RenewLoc = {
+							 {GetClCd,GetWhCd,GetLoc,GetType,GetLocName}
+							};
 					
-					Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
-							SearchClCd,		//荷主コード
-							SearchWhCd,		//倉庫コード
-							SearchLoc,		//ロケーション
-							SearchLocName,	//ロケーション名
-							SearchType,		//ロケタイプ
-							AllSearch);
-					
-					if(0<LocationMstRt.length) {
-						if(GetType.equals(""+LocationMstRt[0][M00090LocationMstRt.ColType])) {
-							
-						}else {
-							String BefoureType = ""+LocationMstRt[0][M00090LocationMstRt.ColType];
-							StockTypeChange(
-									GetClCd,
-									GetWhCd,
-									GetLoc,
-									BefoureType,
-									GetType
-									);
-						}
-					}
-					
-					
+					WM00093LocationMstRenewStockControl.LocationMstRenewStockControl(RenewLoc);
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();
@@ -187,10 +214,18 @@ public class WM00091LocationMstRenewAndCreate{
 					main_fm.dispose();
 					LocationMstRenewAndCreate(0,0,GetClCd,GetWhCd,GetLoc);
 				}
-				
-				
-				
-				
+			}
+		});
+		
+		//モード切替ボタン押下時の挙動
+		ModeChangeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				LocationMstRenewAndCreate(0,0,"","","");
 			}
 		});
 		

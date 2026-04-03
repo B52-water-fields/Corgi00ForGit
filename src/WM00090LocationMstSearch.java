@@ -22,6 +22,7 @@ public class WM00090LocationMstSearch{
 	static int SetY;
 	static boolean RenewFg;
 	public static void LocationMstSearch(int x,int y) {
+		
 		A00000Main.LoginCheck();
 		if(0==SetX) {SetX=100;}
 		if(0==SetY) {SetY=100;}
@@ -188,6 +189,7 @@ public class WM00090LocationMstSearch{
 					ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
 					ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
 					ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+					boolean LocExactMatch = false;	//ロケーション完全一致
 					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchClCd		)){SearchClCd.add(		GetSearchClCd);}	//荷主コード
@@ -202,6 +204,7 @@ public class WM00090LocationMstSearch{
 							SearchLoc,		//ロケーション
 							SearchLocName,	//ロケーション名
 							SearchType,		//ロケタイプ
+							LocExactMatch,	//ロケーション完全一致
 							AllSearch);
 					
 					for(int i=0;i<LocationMstRt.length;i++) {

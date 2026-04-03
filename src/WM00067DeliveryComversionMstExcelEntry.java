@@ -462,6 +462,8 @@ public class WM00067DeliveryComversionMstExcelEntry{
 				String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 				
 				B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+				//古いエラーデータ削除
+				B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
 				
 				//ファイル開く
 				File file = new File(ErrFP);

@@ -30,7 +30,7 @@ public class T00010StrokRt{
 	boolean LocExactMatch = false;				//ロケーション完全一致
 	boolean AllSearch = false;
 	
-	Object[][] LocationMstRt = T00010StrokRt.StrokRt(
+	Object[][] StrokRt = T00010StrokRt.StrokRt(
 			SearchClCd,				//荷主コード
 			SearchWhCd,				//倉庫コード
 			SearchLoc,				//ロケーション
@@ -53,27 +53,67 @@ public class T00010StrokRt{
 			LocSortFg,				//ロケ順⇒商品CD⇒賞味期限⇒ロット⇒入荷日順で並べ替え　false なら商品CD⇒賞味期限⇒ロット⇒入荷日⇒ロケ
 			LocExactMatch,			//ロケーション完全一致
 			AllSearch);
+			
+	String GetClCd			= (String)StrokRt[i][T00010StrokRt.ColClCd];		//荷主コード
+	String GetWhCd			= (String)StrokRt[i][T00010StrokRt.ColWhCd];		//倉庫コード
+	String GetLoc			= (String)StrokRt[i][T00010StrokRt.ColLoc];			//ロケーション
+	String GetItemCd		= (String)StrokRt[i][T00010StrokRt.ColItemCd];		//商品コード
+	String GetLot			= (String)StrokRt[i][T00010StrokRt.ColLot];			//ロット
+	String GetExpdate		= (String)StrokRt[i][T00010StrokRt.ColExpdate];		//消費期限
+	String GetActualDate	= (String)StrokRt[i][T00010StrokRt.ColActualDate];	//入荷実績日
+	int GetQty				= (int)StrokRt[i][T00010StrokRt.ColQty];			//数量
+	int GetShipPlanQty		= (int)StrokRt[i][T00010StrokRt.ColShipPlanQty];	//引当済数
+	int GetPossibleQty		= (int)StrokRt[i][T00010StrokRt.ColPossibleQty];	//出荷可能数
+	String GetItemName		= (String)StrokRt[i][T00010StrokRt.ColItemName];	//商品名
+	String GetClItemCd		= (String)StrokRt[i][T00010StrokRt.ColClItemCd];	//荷主商品コード
+	String GetJanCd			= (String)StrokRt[i][T00010StrokRt.ColJanCd];		//ソースマーク_BCD（バラ）
+	String GetItemMdNo		= (String)StrokRt[i][T00010StrokRt.ColItemMdNo];	//商品型番
+	String GetEntryDate		= (String)StrokRt[i][T00010StrokRt.ColEntryDate];	//登録日時
+	String GetUpdateDate	= (String)StrokRt[i][T00010StrokRt.ColUpdateDate];	//更新日時
+	String GetEntryUser		= (String)StrokRt[i][T00010StrokRt.ColEntryUser];	//登録者
+	String GetUpdateUser	= (String)StrokRt[i][T00010StrokRt.ColUpdateUser];	//更新者
+	
 	*/
+	
+	static int ColClCd			= (int) 0;	//荷主コード
+	static int ColWhCd			= (int) 1;	//倉庫コード
+	static int ColLoc			= (int) 2;	//ロケーション
+	static int ColItemCd		= (int) 3;	//商品コード
+	static int ColLot			= (int) 4;	//ロット
+	static int ColExpdate		= (int) 5;	//消費期限
+	static int ColActualDate	= (int) 6;	//入荷実績日
+	static int ColQty			= (int) 7;	//数量
+	static int ColShipPlanQty	= (int) 8;	//引当済数
+	static int ColPossibleQty	= (int) 9;	//出荷可能数
+	static int ColItemName		= (int)10;	//商品名
+	static int ColClItemCd		= (int)11;	//荷主商品コード
+	static int ColJanCd		= (int)12;	//ソースマーク_BCD（バラ）
+	static int ColItemMdNo		= (int)13;	//商品型番
+	static int ColEntryDate	= (int)14;	//登録日時
+	static int ColUpdateDate	= (int)15;	//更新日時
+	static int ColEntryUser	= (int)16;	//登録者
+	static int ColUpdateUser	= (int)17;	//更新者
+	
 	public static Object[][] RtStrokRt(){
 		Object[][] RtSettingLocationMstRt = {
-				 {"ClCd"			,(int) 0	,"String"	,"荷主コード"}
-				,{"WhCd"			,(int) 1	,"String"	,"倉庫コード"}
-				,{"Loc"				,(int) 2	,"String"	,"ロケーション"}
-				,{"ItemCd"			,(int) 3	,"String"	,"商品コード"}
-				,{"Lot"				,(int) 4	,"String"	,"ロット"}
-				,{"Expdate"			,(int) 5	,"String"	,"消費期限"}
-				,{"ActualDate"		,(int) 6	,"String"	,"入荷実績日"}
-				,{"Qty"				,(int) 7	,"int"		,"数量"}
-				,{"ShipPlanQty"		,(int) 8	,"int"		,"引当済数"}
-				,{"PossibleQty"		,(int) 9	,"int"		,"出荷可能数"}
-				,{"ItemName"		,(int)10	,"String"	,"商品名"}
-				,{"ClItemCd"		,(int)11	,"String"	,"荷主商品コード"}
-				,{"JanCd"			,(int)12	,"String"	,"ソースマーク_BCD（バラ）"}
-				,{"ItemMdNo"		,(int)13	,"String"	,"商品型番"}
-				,{"EntryDate"		,(int)14	,"String"	,"登録日時"}
-				,{"UpdateDate"		,(int)15	,"String"	,"更新日時"}
-				,{"EntryUser"		,(int)16	,"String"	,"登録者"}
-				,{"UpdateUser"		,(int)17	,"String"	,"更新者"}
+				 {"ClCd"			,ColClCd			,"String"	,"荷主コード"}
+				,{"WhCd"			,ColWhCd			,"String"	,"倉庫コード"}
+				,{"Loc"				,ColLoc			,"String"	,"ロケーション"}
+				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"}
+				,{"Lot"				,ColLot			,"String"	,"ロット"}
+				,{"Expdate"			,ColExpdate		,"String"	,"消費期限"}
+				,{"ActualDate"		,ColActualDate	,"String"	,"入荷実績日"}
+				,{"Qty"				,ColQty			,"int"		,"数量"}
+				,{"ShipPlanQty"		,ColShipPlanQty	,"int"		,"引当済数"}
+				,{"PossibleQty"		,ColPossibleQty	,"int"		,"出荷可能数"}
+				,{"ItemName"		,ColItemName		,"String"	,"商品名"}
+				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"}
+				,{"JanCd"			,ColJanCd			,"String"	,"ソースマーク_BCD（バラ）"}
+				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"}
+				,{"EntryDate"		,ColEntryDate		,"String"	,"登録日時"}
+				,{"UpdateDate"		,ColUpdateDate	,"String"	,"更新日時"}
+				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"}
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"}
 				};
 		
 		return RtSettingLocationMstRt;
@@ -531,24 +571,25 @@ public class T00010StrokRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("ClCd")){				rt[counter][ 0]="";}else{rt[counter][ 0]=rset01.getString("ClCd");}			//荷主コード
-					if(null==rset01.getString("WhCd")){				rt[counter][ 1]="";}else{rt[counter][ 1]=rset01.getString("WhCd");}			//倉庫コード
-					if(null==rset01.getString("Loc")){				rt[counter][ 2]="";}else{rt[counter][ 2]=rset01.getString("Loc");}			//ロケーション
-					if(null==rset01.getString("ItemCd")){			rt[counter][ 3]="";}else{rt[counter][ 3]=rset01.getString("ItemCd");}		//商品コード
-					if(null==rset01.getString("Lot")){				rt[counter][ 4]="";}else{rt[counter][ 4]=rset01.getString("Lot");}			//ロット
-					if(null==rset01.getString("Expdate")){			rt[counter][ 5]="";}else{rt[counter][ 5]=rset01.getString("Expdate");}		//消費期限
-					if(null==rset01.getString("ActualDate")){		rt[counter][ 6]="";}else{rt[counter][ 6]=rset01.getString("ActualDate");}	//入荷実績日
-					rt[counter][ 7]=rset01.getInt("Qty");				//数量
-					rt[counter][ 8]=rset01.getInt("ShipPlanQty");		//引当済数
-					rt[counter][ 9]=rset01.getInt("PossibleQty");		//出荷可能数
-					if(null==rset01.getString("ItemName")){			rt[counter][10]="";}else{rt[counter][10]=rset01.getString("ItemName");}		//商品名
-					if(null==rset01.getString("ClItemCd")){			rt[counter][11]="";}else{rt[counter][11]=rset01.getString("ClItemCd");}		//荷主商品コード
-					if(null==rset01.getString("JanCd")){			rt[counter][12]="";}else{rt[counter][12]=rset01.getString("JanCd");}		//ソースマーク_BCD（バラ）
-					if(null==rset01.getString("ItemMdNo")){			rt[counter][13]="";}else{rt[counter][13]=rset01.getString("ItemMdNo");}		//商品型番
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][14]="";}else{rt[counter][14]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][15]="";}else{rt[counter][15]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//更新日時
-					if(null==rset01.getString("EntryUser")){		rt[counter][16]="";}else{rt[counter][16]=rset01.getString("EntryUser");}	//登録者
-					if(null==rset01.getString("UpdateUser")){		rt[counter][17]="";}else{rt[counter][17]=rset01.getString("UpdateUser");}	//更新者
+					if(null==rset01.getString("ClCd")){				rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//荷主コード
+					if(null==rset01.getString("WhCd")){				rt[counter][ColWhCd]			="";}else{rt[counter][ColWhCd]			=rset01.getString("WhCd");}			//倉庫コード
+					if(null==rset01.getString("Loc")){				rt[counter][ColLoc]			="";}else{rt[counter][ColLoc]			=rset01.getString("Loc");}			//ロケーション
+					if(null==rset01.getString("ItemCd")){			rt[counter][ColItemCd]			="";}else{rt[counter][ColItemCd]		=rset01.getString("ItemCd");}		//商品コード
+					if(null==rset01.getString("Lot")){				rt[counter][ColLot]			="";}else{rt[counter][ColLot]			=rset01.getString("Lot");}			//ロット
+					if(null==rset01.getTimestamp("Expdate")){		rt[counter][ColExpdate]		="";}else{rt[counter][ColExpdate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("Expdate"))[0];}		//消費期限
+					if(null==rset01.getTimestamp("ActualDate")){	rt[counter][ColActualDate]	="";}else{rt[counter][ColActualDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("ActualDate"))[0];}		//入荷実績日
+					rt[counter][ColQty]=rset01.getInt("Qty");				//数量
+					rt[counter][ColShipPlanQty]=rset01.getInt("ShipPlanQty");		//引当済数
+					rt[counter][ColPossibleQty]=rset01.getInt("PossibleQty");		//出荷可能数
+					if(null==rset01.getString("ItemName")){			rt[counter][ColItemName]		="";}else{rt[counter][ColItemName]		=rset01.getString("ItemName");}		//商品名
+					if(null==rset01.getString("ClItemCd")){			rt[counter][ColClItemCd]		="";}else{rt[counter][ColClItemCd]		=rset01.getString("ClItemCd");}		//荷主商品コード
+					if(null==rset01.getString("JanCd")){			rt[counter][ColJanCd]			="";}else{rt[counter][ColJanCd]		=rset01.getString("JanCd");}		//ソースマーク_BCD（バラ）
+					if(null==rset01.getString("ItemMdNo")){			rt[counter][ColItemMdNo]		="";}else{rt[counter][ColItemMdNo]		=rset01.getString("ItemMdNo");}		//商品型番
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//更新日時
+					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}	//登録者
+					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}	//更新者
+					
 					counter=counter+1;
 				}
 				

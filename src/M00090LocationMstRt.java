@@ -11,6 +11,7 @@ public class M00090LocationMstRt{
 	ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
 	ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
 	ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+	boolean LocExactMatch = false;	//ロケーション完全一致
 	boolean AllSearch = false;
 	
 	Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
@@ -19,6 +20,7 @@ public class M00090LocationMstRt{
 			SearchLoc,		//ロケーション
 			SearchLocName,	//ロケーション名
 			SearchType,		//ロケタイプ
+			LocExactMatch,	//ロケーション完全一致
 			AllSearch);
 			
 	String GetClCd			= (String)LocationMstRt[i][M00090LocationMstRt.ColClCd];		//荷主コード
@@ -72,6 +74,7 @@ public class M00090LocationMstRt{
 			ArrayList<String> SearchLoc,		//ロケーション
 			ArrayList<String> SearchLocName,	//ロケーション名
 			ArrayList<String> SearchType,		//ロケタイプ
+			boolean LocExactMatch,	//ロケーション完全一致
 			boolean AllSearch){
 		
 		SearchClCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchClCd);		//荷主コード
@@ -132,7 +135,11 @@ public class M00090LocationMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchLoc.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " WM0010LOCATIONMST.Loc like ?";
+				if(LocExactMatch) {
+					sql = sql + " WM0010LOCATIONMST.Loc = ?";
+				}else {
+					sql = sql + " WM0010LOCATIONMST.Loc like ?";
+				}
 			}
 			sql = sql + ")";
 		}
@@ -183,8 +190,13 @@ public class M00090LocationMstRt{
 				
 				if(null!=SearchLoc&&0<SearchLoc.size()){
 					for(int i=0;i<SearchLoc.size();i++){
-						StmtCount = StmtCount+1;
-						stmt01.setString(StmtCount, ""+SearchLoc.get(i)+"%");
+						if(LocExactMatch) {
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchLoc.get(i)+"");
+						}else {
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchLoc.get(i)+"%");
+						}
 					}
 				}
 				

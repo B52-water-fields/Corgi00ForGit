@@ -132,6 +132,17 @@ public class B00040ToolsFolderCheck{
             System.out.println(e);
         }
 	}
+	
+	public static void FileBackUpNormal(String SelectedFile) {
+		//ファイル受け取ってバックアップする
+		//選択ファイルが存在するフォルダにBKフォルダ作ってバックアップ
+		String FileName 	= FILENAME(SelectedFile);
+		String FldPath 		= FILE_FLD(SelectedFile);
+		String BkFldPath 	= FldPath+"\\BK";
+		FLD_CHECK(BkFldPath);
+		
+		FILE_BACKUP(FldPath,BkFldPath,FileName);
+	}
 
 	//フォルダ内ファイル名（フルパスで）取得
 	public static String[] FILE_NAME(String FP){
@@ -211,7 +222,7 @@ public class B00040ToolsFolderCheck{
 	}
 	
 	public static void ToolsOldFileDelete(String FP ,String FileType,int DelDate) {
-		//フォルダにファイルパスと拡張子（Ex：csv pdf）を受け取って DelDate日数以前のファイルを削除する
+		//フォルダパスと拡張子（Ex：csv pdf）を受け取って DelDate日数以前のファイルを削除する
 		if(".".equals(FileType.substring(0,1))) {FileType=FileType.substring(1,FileType.length());}
 		
 		String BatText = "cd " +FP+"\n"
@@ -223,6 +234,34 @@ public class B00040ToolsFolderCheck{
 		OutPutTxt.add(BatText);
 		
 		String FilePath=FP+"\\"+FileType+"FileDelBat.bat";
+		
+		B00030ToolsTextExport.txt_exp3(OutPutTxt,FilePath);
+		
+		String bat_path = "cmd.exe /c start "+FilePath;
+		
+		try {
+	      Runtime.getRuntime().exec(bat_path);
+	    } catch (IOException e) {
+	      e.printStackTrace();
+	    }
+	}
+	
+	public static void ToolsOldFileDeleteWhereFileName(String FP ,String FileName,int DelDate) {
+		//フォルダパスとファイル名一部を受け取って 部分一致するDelDate日数以前のファイルを削除する
+		
+		String BatText = "cd " +FP+"\n"
+				+"forfiles /p "+FP+" /d -"+DelDate+" /m \"*"+FileName+"*\" /c \"cmd /c del @file\""+"\n"
+				+"exit\n";
+		
+		ArrayList<String> OutPutTxt = new ArrayList<String>();
+		
+		OutPutTxt.add(BatText);
+		
+		String FilePath=FP+"\\"+FileName+"FileDelBat.bat";
+		
+		System.out.println(BatText);
+		System.out.println("****************");
+		System.out.println(FilePath);
 		
 		B00030ToolsTextExport.txt_exp3(OutPutTxt,FilePath);
 		

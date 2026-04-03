@@ -48,6 +48,17 @@ public class B10010TableControl{
 	public static void AddSortOFF(JTable TgtTable,TableModel TgtTableModel) {
 		TgtTable.setRowSorter(null);
 	}
+	
+	//テーブルのフィールド名を配列要素として返却する
+	public static String[] TableFieldNameRt(JTable TgtTable) {
+		int col_count = TgtTable.getColumnCount();
+		String[] rt = new String[col_count];
+		for(int i=0;i<col_count;i++) {
+			//項目名取得
+			rt[i] = TgtTable.getColumnName(i)+"";
+		}
+		return rt;
+	}
 	//テーブル情報をcsv出力する
 	public static void TableOutPutCsv(String SelectMSG,String OutPutName,JTable TgtTable) {
 		String Selected = B00080FolderSelect.FolderSelect(SelectMSG);
