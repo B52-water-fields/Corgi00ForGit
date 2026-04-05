@@ -295,6 +295,8 @@ public class WM00092LocationMstExcelEntry{
 				case "ロケタイプ":
 					ColType 	= i;
 					break;
+				default:
+					break;
 			}
 		}
 		int EntryCount = 0;

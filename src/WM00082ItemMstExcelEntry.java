@@ -283,6 +283,9 @@ public class WM00082ItemMstExcelEntry{
 						ErrView(ErrMsg);
 					}else {
 						DataEntry(CheckOb,TableCol);
+						//ファイルバックアップ
+						B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+						
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
 	
@@ -989,43 +992,43 @@ public class WM00082ItemMstExcelEntry{
 			judg_data[i01][0] = GetClGpCd[i01];		//荷主グループコード
 			judg_data[i01][1] = GetItemCd[i01];		//商品コード
 			
-			entry_data[i01][ 0] = GetClGpCd[i01];	//荷主グループコード
-			entry_data[i01][ 1] = GetItemCd[i01];	//商品コード
-			entry_data[i01][ 2] = GetCtQty[i01];	//カートン入数
-			entry_data[i01][ 3] = GetCsQty[i01];	//ケース入数
-			entry_data[i01][ 4] = GetPlQty[i01];	//パレット入数
-			entry_data[i01][ 5] = GetCtJan[i01];	//カートンバーコード
-			entry_data[i01][ 6] = GetCsJan[i01];	//ケースバーコード
-			entry_data[i01][ 7] = GetPlJan[i01];	//パレットバーコード
-			entry_data[i01][ 8] = GetCtName[i01];	//カートン商品名称
-			entry_data[i01][ 9] = GetCsName[i01];	//ケース商品名称
-			entry_data[i01][10] = GetPlName[i01];	//パレット商品名称
-			entry_data[i01][11] = GetCtUnitName[i01];	//カートン商品単位
-			entry_data[i01][12] = GetCsUnitName[i01];	//ケース商品単位
-			entry_data[i01][13] = GetPlUnitName[i01];	//パレット商品単位
-			entry_data[i01][14] = GetCtWeight[i01];	//カートン重量
-			entry_data[i01][15] = GetCsWeight[i01];	//ケース重量
-			entry_data[i01][16] = GetPlWeight[i01];	//パレット重量
-			entry_data[i01][17] = GetCtSize[i01];	//カートンサイズ
-			entry_data[i01][18] = GetCsSize[i01];	//ケースサイズ
-			entry_data[i01][19] = GetPlSize[i01];	//パレットサイズ
-			entry_data[i01][20] = GetRecomendLoc[i01];	//推奨ロケ
-			entry_data[i01][21] = GetItemMDNo[i01];	//商品モデル番号（型番）
-			entry_data[i01][22] = GetCategoryCd[i01];	//商品カテゴリCD
-			entry_data[i01][23] = GetCategoryName[i01];	//商品カテゴリ名
-			entry_data[i01][24] = GetItemColorCd[i01];	//商品カラーコード
+			entry_data[i01][ 0] = GetClGpCd[i01];			//荷主グループコード
+			entry_data[i01][ 1] = GetItemCd[i01];			//商品コード
+			entry_data[i01][ 2] = GetCtQty[i01];			//カートン入数
+			entry_data[i01][ 3] = GetCsQty[i01];			//ケース入数
+			entry_data[i01][ 4] = GetPlQty[i01];			//パレット入数
+			entry_data[i01][ 5] = GetCtJan[i01];			//カートンバーコード
+			entry_data[i01][ 6] = GetCsJan[i01];			//ケースバーコード
+			entry_data[i01][ 7] = GetPlJan[i01];			//パレットバーコード
+			entry_data[i01][ 8] = GetCtName[i01];			//カートン商品名称
+			entry_data[i01][ 9] = GetCsName[i01];			//ケース商品名称
+			entry_data[i01][10] = GetPlName[i01];			//パレット商品名称
+			entry_data[i01][11] = GetCtUnitName[i01];		//カートン商品単位
+			entry_data[i01][12] = GetCsUnitName[i01];		//ケース商品単位
+			entry_data[i01][13] = GetPlUnitName[i01];		//パレット商品単位
+			entry_data[i01][14] = GetCtWeight[i01];			//カートン重量
+			entry_data[i01][15] = GetCsWeight[i01];			//ケース重量
+			entry_data[i01][16] = GetPlWeight[i01];			//パレット重量
+			entry_data[i01][17] = GetCtSize[i01];			//カートンサイズ
+			entry_data[i01][18] = GetCsSize[i01];			//ケースサイズ
+			entry_data[i01][19] = GetPlSize[i01];			//パレットサイズ
+			entry_data[i01][20] = GetRecomendLoc[i01];		//推奨ロケ
+			entry_data[i01][21] = GetItemMDNo[i01];			//商品モデル番号（型番）
+			entry_data[i01][22] = GetCategoryCd[i01];		//商品カテゴリCD
+			entry_data[i01][23] = GetCategoryName[i01];		//商品カテゴリ名
+			entry_data[i01][24] = GetItemColorCd[i01];		//商品カラーコード
 			entry_data[i01][25] = GetItemColorName[i01];	//商品カラー名
-			entry_data[i01][26] = GetItemSizeCd[i01];	//商品サイズコード
-			entry_data[i01][27] = GetItemSizeName[i01];	//商品サイズ名
-			entry_data[i01][28] = GetCom01[i01];	//コメント1
-			entry_data[i01][29] = GetCom02[i01];	//コメント2
-			entry_data[i01][30] = GetCom03[i01];	//コメント3
-			entry_data[i01][31] = now_dtm;	//データ登録日時
-			entry_data[i01][32] = now_dtm;	//データ更新日時
+			entry_data[i01][26] = GetItemSizeCd[i01];		//商品サイズコード
+			entry_data[i01][27] = GetItemSizeName[i01];		//商品サイズ名
+			entry_data[i01][28] = GetCom01[i01];			//コメント1
+			entry_data[i01][29] = GetCom02[i01];			//コメント2
+			entry_data[i01][30] = GetCom03[i01];			//コメント3
+			entry_data[i01][31] = now_dtm;					//データ登録日時
+			entry_data[i01][32] = now_dtm;					//データ更新日時
 			entry_data[i01][33] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
 			entry_data[i01][34] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
-			entry_data[i01][35] = GetTildFG[i01];	//温度区分
-			entry_data[i01][36] = GetTildName[i01];	//温度区分名
+			entry_data[i01][35] = GetTildFG[i01];			//温度区分
+			entry_data[i01][36] = GetTildName[i01];			//温度区分名
 			entry_data[i01][37] = GetItemImagePath01[i01];	//画像パス01
 			entry_data[i01][38] = GetItemImagePath02[i01];	//画像パス02
 			entry_data[i01][39] = GetItemImagePath03[i01];	//画像パス03

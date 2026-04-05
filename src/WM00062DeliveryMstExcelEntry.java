@@ -256,7 +256,7 @@ public class WM00062DeliveryMstExcelEntry{
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
 				for(int i=0;i<ExcellRead.length;i++) {
 					Object[] SetOb = new Object[NeedCol.length+1];
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])) {
+					if(!"".equals(""+ExcellRead[i][TgtCol[ 2]])) {
 						SetOb[ 0] = false;
 						SetOb[ 1] = ""+ExcellRead[i][TgtCol[ 0]];	//届先コード
 						SetOb[ 2] = ""+ExcellRead[i][TgtCol[ 1]];	//部署CD
@@ -939,6 +939,9 @@ public class WM00062DeliveryMstExcelEntry{
 						//除外した結果0行になったら検索画面に戻る
 						RowCount = tableModel_ms01.getRowCount();
 						if(0>=RowCount) {
+							//ファイルバックアップ
+							B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+							
 							JOptionPane.showMessageDialog(null, "全件登録完了　届先検索画面に戻ります");
 							SetX=main_fm.getX();
 							SetY=main_fm.getY();
@@ -949,6 +952,9 @@ public class WM00062DeliveryMstExcelEntry{
 							main_fm.setVisible(false);
 							main_fm.dispose();
 							WM00060DeliveryMstSearch.DeliveryMstSearch(0, 0);
+						}else {
+							JOptionPane.showMessageDialog(null, "重複と判定した届先は登録されていません内容確認してください\n"
+									+ "重複候補出力すると既存の届先と比較した結果を出力できます");
 						}
 					}
 					

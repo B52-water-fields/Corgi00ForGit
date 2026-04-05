@@ -93,66 +93,29 @@ public class WM00067DeliveryComversionMstExcelEntry{
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
+		main_fm.add(entry_btn);
 		
-		String[] NeedCol = {
-				 "荷主グループCD"
-				,"荷主グループ名"
-				,"荷主届先CD"
-				,"届先CD"
-				,"届先部署CD"
-				,"送り状登録名"
-				,"コメント01"
-				,"コメント02"
-				,"コメント03"
-				,"コメント04"
-				,"コメント05"
-				,"削除区分"
-				,"届先マスタ優先フラグ"
-				,"届先名1"
-				,"届先名2"
-				,"届先名3"
-				,"届先郵便"
-				,"届先住所1"
-				,"届先住所2"
-				,"届先住所3"
-				,"届先電話"
-				,"届先FAX"
-				,"届先MAIL"
+		Object[][] NeedCol = {
+				 {"荷主グループCD"		,1, 0}
+				,{"荷主届先CD"			,1, 1}
+				,{"届先CD"				,1, 2}
+				,{"届先部署CD"			,1, 3}
+				,{"送り状登録名"		,1, 4}
+				,{"コメント01"			,1, 5}
+				,{"コメント02"			,1, 6}
+				,{"コメント03"			,1, 7}
+				,{"コメント04"			,1, 8}
+				,{"コメント05"			,1, 9}
+				,{"削除区分"			,0,10}
+				,{"届先マスタ優先フラグ",0,11}
 				};
-
-		int[] TgtCol = {
-					 -1	//荷主グループCD
-					,-1	//荷主グループ名
-					,-1	//荷主届先CD
-					,-1	//届先CD
-					,-1	//届先部署CD
-					,-1	//送り状登録名
-					,-1	//コメント01
-					,-1	//コメント02
-					,-1	//コメント03
-					,-1	//コメント04
-					,-1	//コメント05
-					,-1	//削除区分
-					,-1	//届先マスタ優先フラグ
-					,-1	//届先名1
-					,-1	//届先名2
-					,-1	//届先名3
-					,-1	//届先郵便
-					,-1	//届先住所1
-					,-1	//届先住所2
-					,-1	//届先住所3
-					,-1	//届先電話
-					,-1	//届先FAX
-					,-1	//届先MAIL
-					};
 		
 		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています※データ内の重複はチェックしません",11,0);
 		main_fm.add(LB_SheetList);
 		
-		String[] columnNames01 = new String[NeedCol.length+2];
+		String[] columnNames01 = new String[NeedCol.length+1];
 		columnNames01[0] = "Fg";
-		for(int i=0;i<NeedCol.length;i++) {columnNames01[i+1] = NeedCol[i];}
-		columnNames01[NeedCol.length+1] = "届先Mst存在Fg";	//登録更新しない場合0　新規登録1　更新2 エラー9
+		for(int i=0;i<NeedCol.length;i++) {columnNames01[i+1] = (String)NeedCol[i][0];}
 		
 		//編集可能カラムの指定
 		B10010TableControl.RenewTgt = new int[1];
@@ -172,39 +135,22 @@ public class WM00067DeliveryComversionMstExcelEntry{
 		TableColumn column = null;
 		
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主グループCD
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主グループ名
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主届先CD
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先CD
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先部署CD
-		column = columnModel01.getColumn( 6);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//送り状登録名
-		column = columnModel01.getColumn( 7);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント01
-		column = columnModel01.getColumn( 8);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント02
-		column = columnModel01.getColumn( 9);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント03
-		column = columnModel01.getColumn(10);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント04
-		column = columnModel01.getColumn(11);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント05
-		column = columnModel01.getColumn(12);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//削除区分
-		column = columnModel01.getColumn(13);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先マスタ優先フラグ
-		column = columnModel01.getColumn(14);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先名1
-		column = columnModel01.getColumn(15);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先名2
-		column = columnModel01.getColumn(16);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先名3
-		column = columnModel01.getColumn(17);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先郵便
-		column = columnModel01.getColumn(18);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先住所1
-		column = columnModel01.getColumn(19);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先住所2
-		column = columnModel01.getColumn(20);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先住所3
-		column = columnModel01.getColumn(21);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先電話
-		column = columnModel01.getColumn(22);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先FAX
-		column = columnModel01.getColumn(23);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先MAIL
-		column = columnModel01.getColumn(24);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先Mst存在Fg
+		for(int i=1;i<NeedCol.length;i++) {
+			if(0==(int)NeedCol[i][1]) {
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	
+			}else {
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	
+			}
+		}
 		
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,800,325,tb01);
+		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,800,600,tb01);
 		main_fm.add(scpn01);
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
 		Object[][] HeaderRead = B00060ToolsExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
-
+		
 		if(null==HeaderRead||0==HeaderRead.length) {
 			ErrFg = true;
 		}else {
@@ -212,9 +158,9 @@ public class WM00067DeliveryComversionMstExcelEntry{
 				boolean UnHitFg = true;
 				
 				for(int i02=0;i02<HeaderRead[0].length;i02++) {
-					if(NeedCol[i01].equals(""+HeaderRead[0][i02])) {
+					if(((String)NeedCol[i01][0]).equals(""+HeaderRead[0][i02])) {
 						UnHitFg = false;
-						TgtCol[i01] = i02;
+						NeedCol[i01][2] = i02;
 						
 						i02=1+HeaderRead[0].length;
 					}
@@ -231,272 +177,78 @@ public class WM00067DeliveryComversionMstExcelEntry{
 
 			main_fm.setVisible(false);
 			main_fm.dispose();
-			JOptionPane.showMessageDialog(null, "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n"
-													+"荷主グループCD,荷主グループ名,荷主届先CD,届先CD,届先部署CD,送り状登録名\n"
-													+"コメント01,コメント02,コメント03,コメント04,コメント05,削除区分,届先マスタ優先フラグ\n"
-													+"届先名1,届先名2,届先名3,届先郵便,届先住所1,届先住所2,届先住所3,届先電話,届先FAX,届先MAIL\n"
-													+"がヘッダに必要です");
+			
+			String Msg = "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n";
+			for(int i=0;i<NeedCol.length;i++) {
+				if(0<i&&0==i%5) {
+					Msg = Msg + (String)NeedCol[i][0] + ",\n";
+				}else {
+					Msg = Msg + (String)NeedCol[i][0] + ",";
+				}
+			}
+			Msg = Msg+"\nがヘッダに必要です";
+			
+			JOptionPane.showMessageDialog(null, Msg);
 			DeliveryComversionMstExcelEntry(0,0,TgtFilePath);
 		}else {
 			int[] ClmnType = new int[HeaderRead[0].length];
 			for(int i=0;i<ClmnType.length;i++) {ClmnType[i]=1;}
 			
-			ClmnType[TgtCol[ 0]]=1;	//荷主グループCD
-			ClmnType[TgtCol[ 1]]=1;	//荷主グループ名
-			ClmnType[TgtCol[ 2]]=1;	//荷主届先CD
-			ClmnType[TgtCol[ 3]]=1;	//届先CD
-			ClmnType[TgtCol[ 4]]=1;	//届先部署CD
-			ClmnType[TgtCol[ 5]]=1;	//送り状登録名
-			ClmnType[TgtCol[ 6]]=1;	//コメント01
-			ClmnType[TgtCol[ 7]]=1;	//コメント02
-			ClmnType[TgtCol[ 8]]=1;	//コメント03
-			ClmnType[TgtCol[ 9]]=1;	//コメント04
-			ClmnType[TgtCol[10]]=1;	//コメント05
-			ClmnType[TgtCol[11]]=1;	//削除区分
-			ClmnType[TgtCol[12]]=1;	//届先マスタ優先フラグ
-			ClmnType[TgtCol[13]]=1;	//届先名1
-			ClmnType[TgtCol[14]]=1;	//届先名2
-			ClmnType[TgtCol[15]]=1;	//届先名3
-			ClmnType[TgtCol[16]]=1;	//届先郵便
-			ClmnType[TgtCol[17]]=1;	//届先住所1
-			ClmnType[TgtCol[18]]=1;	//届先住所2
-			ClmnType[TgtCol[19]]=1;	//届先住所3
-			ClmnType[TgtCol[20]]=1;	//届先電話
-			ClmnType[TgtCol[21]]=1;	//届先FAX
-			ClmnType[TgtCol[22]]=1;	//届先MAIL
-			
+			for(int i01=0;i01<NeedCol.length;i01++) {
+				ClmnType[(int)NeedCol[i01][2]]=(int)NeedCol[i01][1];
+			}
 			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
-			ArrayList<String> ErrMsg = new ArrayList<String>();
+			Object[][] CheckOb = new Object[ExcellRead.length][NeedCol.length+1];
 			
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
-				//届先マスタ取得
-				ArrayList<String> SearchDECD 			= new ArrayList<String>();
-				ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
-				ArrayList<String> SearchDEName 			= new ArrayList<String>();
-				ArrayList<String> SearchPost 			= new ArrayList<String>();
-				ArrayList<String> SearchAdd 			= new ArrayList<String>();
-				ArrayList<String> SearchTel 			= new ArrayList<String>();
-				ArrayList<String> SearchFax 			= new ArrayList<String>();
-				ArrayList<String> SearchMail 			= new ArrayList<String>();
-				ArrayList<String> SearchCom 			= new ArrayList<String>();
-				ArrayList<String> SearchPrefecturesCd 	= new ArrayList<String>();
-				ArrayList<String> SearchMunicipalityCd 	= new ArrayList<String>();
-				ArrayList<String> SearchDelFg 			= new ArrayList<String>();
-				boolean SearcNotJis = true;
-				boolean SearchTelExactMatch = false;
-				boolean AllSearch = false;
-				
-				//届先コードが一致する届先マスタ取得する
 				for(int i=0;i<ExcellRead.length;i++) {
 					Object[] SetOb = new Object[NeedCol.length+1];
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])&&!"".equals(""+ExcellRead[i][TgtCol[ 2]])) {
-						SearchDECD.add(""+ExcellRead[i][TgtCol[ 3]]);
+					CheckOb[i][0] = false;
+					SetOb[ 0] = false;
+					for(int i01=0;i01<NeedCol.length;i01++) {
+						SetOb[i01+1] = ExcellRead[i][(int)NeedCol[i01][2]];
+						CheckOb[i][i01+1]=ExcellRead[i][(int)NeedCol[i01][2]];
 					}
-				}
-				Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
-						SearchDECD,
-						SearchDepartmentCd,
-						SearchDEName,
-						SearchPost,
-						SearchAdd,
-						SearchTel,
-						SearchFax,
-						SearchMail,
-						SearchCom,
-						SearchPrefecturesCd,
-						SearchMunicipalityCd,
-						SearchDelFg,
-						SearcNotJis,
-						SearchTelExactMatch,
-						AllSearch
-						);
-				
-				
-				for(int i=0;i<ExcellRead.length;i++) {
-					boolean NonErrFgb = true;
-					Object[] SetOb = new Object[NeedCol.length+2];
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])&&!"".equals(""+ExcellRead[i][TgtCol[ 2]])) {
-						SetOb[ 0] = false;
-						SetOb[ 1] = ""+ExcellRead[i][TgtCol[ 0]];	//荷主グループCD
-						SetOb[ 2] = ""+ExcellRead[i][TgtCol[ 1]];	//荷主グループ名
-						SetOb[ 3] = ""+ExcellRead[i][TgtCol[ 2]];	//荷主届先CD
-						SetOb[ 4] = ""+ExcellRead[i][TgtCol[ 3]];	//届先CD
-						SetOb[ 5] = ""+ExcellRead[i][TgtCol[ 4]];	//届先部署CD
-						SetOb[ 6] = ""+ExcellRead[i][TgtCol[ 5]];	//送り状登録名
-						SetOb[ 7] = ""+ExcellRead[i][TgtCol[ 6]];	//コメント01
-						SetOb[ 8] = ""+ExcellRead[i][TgtCol[ 7]];	//コメント02
-						SetOb[ 9] = ""+ExcellRead[i][TgtCol[ 8]];	//コメント03
-						SetOb[10] = ""+ExcellRead[i][TgtCol[ 9]];	//コメント04
-						SetOb[11] = ""+ExcellRead[i][TgtCol[10]];	//コメント05
-						SetOb[12] = ""+ExcellRead[i][TgtCol[11]];	//削除区分
-						SetOb[13] = ""+ExcellRead[i][TgtCol[12]];	//届先マスタ優先フラグ
-						SetOb[14] = ""+ExcellRead[i][TgtCol[13]];	//届先名1
-						SetOb[15] = ""+ExcellRead[i][TgtCol[14]];	//届先名2
-						SetOb[16] = ""+ExcellRead[i][TgtCol[15]];	//届先名3
-						SetOb[17] = ""+ExcellRead[i][TgtCol[16]];	//届先郵便
-						SetOb[18] = ""+ExcellRead[i][TgtCol[17]];	//届先住所1
-						SetOb[19] = ""+ExcellRead[i][TgtCol[18]];	//届先住所2
-						SetOb[20] = ""+ExcellRead[i][TgtCol[19]];	//届先住所3
-						SetOb[21] = ""+ExcellRead[i][TgtCol[20]];	//届先電話
-						SetOb[22] = ""+ExcellRead[i][TgtCol[21]];	//届先FAX
-						SetOb[23] = ""+ExcellRead[i][TgtCol[22]];	//届先MAIL
-						SetOb[24] = "0";//届先Mst存在Fg  1:新規　2:更新
-						
-						//届先コードを元に新規更新の判定
-						int HitCount = 0;
-						boolean DeliRenewCheckFg = false;
-						if(DeliRenewCheckFg) {
-							//届先CDコード空白なら届先新規登録扱い確定
-							if("".equals(""+ExcellRead[i][TgtCol[ 3]])) {
-								SetOb[24] = "1";//届先Mst存在Fg
-							}else {
-								//存在しない届先CDコード設定しようとしていた場合新規登録扱い
-								boolean UnHitFg = true;
-								for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-									if((""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDECD]).equals(""+ExcellRead[i][TgtCol[ 3]])) {
-										if((""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDepartmentCd]).equals(""+ExcellRead[i][TgtCol[ 4]])) {
-											SetOb[24] = "2";//届先Mst存在Fg
-											UnHitFg = false;
-											HitCount = HitCount+1;
-										}
-									}
-								}
-								if(UnHitFg) {
-									SetOb[24] = "1";//届先Mst存在Fg
-								}
-							}
-						}
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						//届先名1が空白であれば届先コード・部署コード必須
-						
-						if(("").equals(""+SetOb[14])	//届先名1
-								) {
-							if("".equals(""+SetOb[ 4]) || "".equals(""+SetOb[ 5])) {
-								SetOb[23] = "9";//届先Mst存在Fg
-								int wint = i+1;
-								ErrMsg.add(wint+"行目エラー:"+"届先CD("+ExcellRead[i][TgtCol[ 3]]+") 部署CD("+ExcellRead[i][TgtCol[ 4]]+")で設定しようとしていますが設定必須です");
-							}else {
-								
-							}
-						}else {
-							DeliRenewCheckFg = true;
-						}
-						
-						
-						
-						tableModel_ms01.addRow(SetOb);
-					}
+					tableModel_ms01.addRow(SetOb);
 				}
 			}
-			JLabel MSG				= B00110FrameParts.JLabelSet(  10,400,300,20,"選択行をメンテナンスする",11,0);
-			main_fm.add(MSG);
 			
-			/*
-			JLabel LB_ClGpCD"				,(int) 0	,"String"	,"荷主グループCD"}
-			JLabel LB_CLGpName01"			,(int) 1	,"String"	,"荷主グループ名"}
-			JLabel LB_CL_DECD"				,(int) 2	,"String"	,"荷主届先CD"}
-			JLabel LB_DECD"				,(int) 3	,"String"	,"届先CD"}
-			JLabel LB_DepartmentCd"		,(int) 4	,"String"	,"届先部署CD"}
-			JLabel LB_DEName01"			,(int) 5	,"String"	,"届先名1"}
-			JLabel LB_DEName02"			,(int) 6	,"String"	,"届先名2"}
-			JLabel LB_DEName03"			,(int) 7	,"String"	,"届先名3"}
-			JLabel LB_Post"				,(int) 8	,"String"	,"届先郵便"}
-			JLabel LB_Add01"				,(int) 9	,"String"	,"届先住所1"}
-			JLabel LB_Add02"				,(int)10	,"String"	,"届先住所2"}
-			JLabel LB_Add03"				,(int)11	,"String"	,"届先住所3"}
-			JLabel LB_Tel"					,(int)12	,"String"	,"届先電話"}
-			JLabel LB_Fax"					,(int)13	,"String"	,"届先FAX"}
-			JLabel LB_Mail"				,(int)14	,"String"	,"届先MAIL"}
-			JLabel LB_SetName"				,(int)15	,"String"	,"送り状登録名"}
-			JLabel LB_Com01"				,(int)16	,"String"	,"コメント01"}
-			JLabel LB_Com02"				,(int)17	,"String"	,"コメント02"}
-			JLabel LB_Com03"				,(int)18	,"String"	,"コメント03"}
-			JLabel LB_Com04"				,(int)19	,"String"	,"コメント04"}
-			JLabel LB_Com05"				,(int)20	,"String"	,"コメント05"}
-			JLabel LB_EntryDate"			,(int)21	,"String"	,"データ登録日時"}
-			JLabel LB_UpdateDate"			,(int)22	,"String"	,"データ更新日時"}
-			JLabel LB_EntryUser"			,(int)23	,"String"	,"登録者コード"}
-			JLabel LB_UpdateUser"			,(int)24	,"String"	,"更新者コード"}
-			JLabel LB_DelFg"				,(int)25	,"int"		,"削除区分"}
-			JLabel LB_MstPriorityFirstFg"	,(int)26	,"int"		,"届先マスタ優先フラグ"}
+			String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+			ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
 			
-			*/
-			
-			
-			
-			
-			if(null==ErrMsg||0==ErrMsg.size()) {
-				main_fm.add(entry_btn);
+			if(null!=ErrMsg && 0<ErrMsg.size()) {
+				ErrView(ErrMsg);
+				
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00065DeliveryComversionMstSerarch.DeliveryComversionMstSerarch(0, 0);
 			}else {
-				//必要フォルダを生成する
-				String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
-				B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
-				FLD_PATH = A00000Main.MainFLD+"\\MstControl\\DeliveryComversionMst";
-				B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
-				FLD_PATH = A00000Main.MainFLD+"\\MstControl\\DeliveryComversionMst\\Err";
-				B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
-				FLD_PATH = A00000Main.MainFLD+"\\MstControl\\DeliveryComversionMst\\BK";
-				B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
-				
-				//ファイルに出力
-				
-				String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
-				
-				FLD_PATH = A00000Main.MainFLD+"\\MstControl\\DeliveryComversionMst\\Err";
-				
-				String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
-				
-				B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
-				//古いエラーデータ削除
-				B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
-				
-				//ファイル開く
-				File file = new File(ErrFP);
-				Desktop desktop = Desktop.getDesktop();
-				try {
-					desktop.open(file);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				main_fm.setVisible(true);
 			}
-			main_fm.setVisible(true);
-			
-			
-			
-			
-			
-			
-			
-			
-			//チェックボックス操作時の挙動
-			tableModel_ms01.addTableModelListener(new TableModelListener(){
-				public void tableChanged(TableModelEvent e){
-					if(RenewFg) {
-						RenewFg = false;
-						int row_count = tableModel_ms01.getRowCount();
-						Boolean setBL=Boolean.valueOf(false);
-						for(int i=0;i<row_count;i++){
-							if(i!=e.getFirstRow()){
-								tableModel_ms01.setValueAt(setBL, i, 0);
-							}else {
-								
-							}
-						}
-						RenewFg = true;
-					}
-				}
-			});
 		}
 		RenewFg = true;
+		
+		//チェックボックス操作時の挙動
+		tableModel_ms01.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = tableModel_ms01.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							tableModel_ms01.setValueAt(setBL, i, 0);
+						}else {
+							
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){
@@ -510,4 +262,184 @@ public class WM00067DeliveryComversionMstExcelEntry{
 			}
 		});
 	}
+	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[] TableCol){
+		ArrayList<String> ErrMsg = new ArrayList<String>();
+		
+		int ColClGpCD				= (int) 1;	//荷主グループCD
+		int ColCL_DECD				= (int) 2;	//荷主届先CD
+		int ColDECD					= (int) 3;	//届先CD
+		int ColDepartmentCd			= (int) 4;	//届先部署CD
+		int ColSetName				= (int) 5;	//送り状登録名
+		int ColCom01				= (int) 6;	//コメント01
+		int ColCom02				= (int) 7;	//コメント02
+		int ColCom03				= (int) 8;	//コメント03
+		int ColCom04				= (int) 9;	//コメント04
+		int ColCom05				= (int)10;	//コメント05
+		int ColDelFg				= (int)11;	//削除区分
+		int ColMstPriorityFirstFg	= (int)12;	//届先マスタ優先フラグ
+		
+		for(int i=0;i<TableCol.length;i++) {
+			switch(""+TableCol[i]) {
+				case "荷主グループCD":
+					ColClGpCD = i;
+					break;
+				case "荷主届先CD":
+					ColCL_DECD = i;
+					break;
+				case "届先CD":
+					ColDECD = i;
+					break;
+				case "届先部署CD":
+					ColDepartmentCd = i;
+					break;
+				case "送り状登録名":
+					ColSetName = i;
+					break;
+				case "コメント01":
+					ColCom01 = i;
+					break;
+				case "コメント02":
+					ColCom02 = i;
+					break;
+				case "コメント03":
+					ColCom03 = i;
+					break;
+				case "コメント04":
+					ColCom04 = i;
+					break;
+				case "コメント05":
+					ColCom05 = i;
+					break;
+				case "削除区分":
+					ColDelFg = i;
+					break;
+				case "届先マスタ優先フラグ":
+					ColMstPriorityFirstFg = i;
+					break;
+				default:
+					break;
+			}
+		}
+		//届先マスタ取得
+		ArrayList<String> SearchDECD 			= new ArrayList<String>();
+		ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
+		ArrayList<String> SearchDEName 			= new ArrayList<String>();
+		ArrayList<String> SearchPost 			= new ArrayList<String>();
+		ArrayList<String> SearchAdd 			= new ArrayList<String>();
+		ArrayList<String> SearchTel 			= new ArrayList<String>();
+		ArrayList<String> SearchFax 			= new ArrayList<String>();
+		ArrayList<String> SearchMail 			= new ArrayList<String>();
+		ArrayList<String> SearchCom 			= new ArrayList<String>();
+		ArrayList<String> SearchPrefecturesCd 	= new ArrayList<String>();
+		ArrayList<String> SearchMunicipalityCd 	= new ArrayList<String>();
+		ArrayList<String> SearchDelFg 			= new ArrayList<String>();
+		boolean SearcNotJis = true;
+		boolean SearchTelExactMatch = false;
+		boolean AllSearch = false;
+		
+		for(int i=0;i<CheckOb.length;i++) {
+			String WST = B00020ToolsTextControl.Trim(""+CheckOb[i][ColDECD]);
+			if(!"".equals(WST)) {
+				SearchDECD.add(WST);
+			}
+		}
+		
+		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+				SearchDECD,
+				SearchDepartmentCd,
+				SearchDEName,
+				SearchPost,
+				SearchAdd,
+				SearchTel,
+				SearchFax,
+				SearchMail,
+				SearchCom,
+				SearchPrefecturesCd,
+				SearchMunicipalityCd,
+				SearchDelFg,
+				SearcNotJis,
+				SearchTelExactMatch,
+				AllSearch
+				);
+		
+		for(int i=0;i<CheckOb.length;i++) {
+			for(int i01=0;i01<CheckOb[i].length;i01++) {
+				CheckOb[i][i01] = B00020ToolsTextControl.Trim(""+CheckOb[i][i01]);
+			}
+			String GetClGpCD				= ""+CheckOb[i][ColClGpCD];				//荷主グループCD
+			String GetCL_DECD				= ""+CheckOb[i][ColCL_DECD];			//荷主届先CD
+			String GetDECD					= ""+CheckOb[i][ColDECD];				//届先CD
+			String GetDepartmentCd			= ""+CheckOb[i][ColDepartmentCd];		//届先部署CD
+			String GetSetName				= ""+CheckOb[i][ColSetName];			//送り状登録名
+			String GetCom01					= ""+CheckOb[i][ColCom01];				//コメント01
+			String GetCom02					= ""+CheckOb[i][ColCom02];				//コメント02
+			String GetCom03					= ""+CheckOb[i][ColCom03];				//コメント03
+			String GetCom04					= ""+CheckOb[i][ColCom04];				//コメント04
+			String GetCom05					= ""+CheckOb[i][ColCom05];				//コメント05
+			String GetDelFg					= ""+CheckOb[i][ColDelFg];				//削除区分
+			String GetMstPriorityFirstFg	= ""+CheckOb[i][ColMstPriorityFirstFg];	//届先マスタ優先フラグ
+			
+			if("".equals(GetClGpCD)
+					&&"".equals(GetCL_DECD)
+					&&"".equals(GetDECD)
+					&&"".equals(GetDepartmentCd)
+					) {
+			}else {
+				if(!A00000Main.ClGp.equals(GetClGpCD)) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：("+GetClGpCD+")は現在作業中の荷主グループコードではありません別荷主の設定を投入しようとしていませんか？("+A00000Main.ClGp+")を設定してください。");
+				}
+				boolean UnHitFg = true;
+				for(int i01=0;i01<DeliveryMstRt.length;i01++) {
+					if(GetDECD.equals(""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDECD]) 
+							&& GetDepartmentCd.equals(""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDepartmentCd]) 
+							) {
+						UnHitFg = false;
+					}
+				}
+				if(UnHitFg) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：(届先："+GetDECD+"　部署："+GetDepartmentCd+")は届先マスタに存在しません");
+				}
+				if("".equals(GetCL_DECD)) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：荷主届け先コードは必須です");
+				}
+			}
+		}
+		return ErrMsg;
+	}
+	private static void ErrView(ArrayList<String>ErrMsg) {
+		//必要フォルダを生成する
+		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\DeliveryComversionMst";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\DeliveryComversionMst\\Err";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\DeliveryComversionMst\\BK";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		
+		//ファイルに出力
+		
+		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\DeliveryComversionMst\\Err";
+		
+		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
+		
+		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		//古いエラーデータ削除
+		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		
+		//ファイル開く
+		File file = new File(ErrFP);
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			desktop.open(file);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+	
 }
