@@ -88,6 +88,10 @@ public class W00020MstMain{
 		JButton DeliveryTypeMst 	= B00110FrameParts.BtnSet(		 20,100,130,20,"運送タイプ",11);
 		PN_AboutALL.add(DeliveryTypeMst);
 		
+		//共通パラメータ
+		JButton NyankoParameterMst 	= B00110FrameParts.BtnSet(		580,150,130,20,"共通パラメータ",11);
+		PN_AboutALL.add(NyankoParameterMst);
+		
 		//郵便番号
 		JButton PostMst 			= B00110FrameParts.BtnSet(		580,175,130,20,"郵便番号",11);
 		PN_AboutALL.add(PostMst);
@@ -251,6 +255,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00050DeliveryTypeMstSearch.DeliveryTypeMstSearch(0,0) ;
+			}
+		});
+		
+		//共通パラメータ
+		NyankoParameterMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00000ParameterMstNyankoSeach.ParameterMstNyankoSeach(0, 0);
 			}
 		});
 		

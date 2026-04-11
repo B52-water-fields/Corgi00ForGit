@@ -234,19 +234,20 @@ public class WM00092LocationMstExcelEntry{
 				}
 				ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
 				
-				if(null!=ErrMsg && 0<ErrMsg.size()) {
+				if(null!=ErrMsg && 0<ErrMsg.size() && 0<RowCount) {
 					ErrView(ErrMsg);
 				}else {
 					MstEntry(CheckOb,TableCol);
 					//ファイルバックアップ
 					B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
-				}
-				SetX=main_fm.getX();
-				SetY=main_fm.getY();
+					
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
 
-				main_fm.setVisible(false);
-				main_fm.dispose();
-				WM00090LocationMstSearch.LocationMstSearch(0, 0);
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WM00090LocationMstSearch.LocationMstSearch(0, 0);
+				}
 			}
 		});
 		

@@ -231,6 +231,42 @@ public class WM00067DeliveryComversionMstExcelEntry{
 		}
 		RenewFg = true;
 		
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+					int RowCount = tableModel_ms01.getRowCount();
+					int ColCount = tableModel_ms01.getColumnCount();
+					Object[][] CheckOb = new Object[RowCount][TableCol.length];
+					for(int i=0;i<RowCount;i++) {
+						for(int i01=0;i01<TableCol.length;i01++) {
+							CheckOb[i][i01] = ""+tableModel_ms01.getValueAt(i, i01);
+						}
+					}
+					ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
+					
+					if(null!=ErrMsg && 0<ErrMsg.size()&&0<RowCount) {
+						ErrView(ErrMsg);
+					}else {
+						MstEntry(CheckOb,TableCol);
+						//ファイルバックアップ
+						B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+						
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+		
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00065DeliveryComversionMstSerarch.DeliveryComversionMstSerarch(0, 0);
+					}
+					
+					RenewFg = true;
+				}
+			}
+		});
+		
 		//チェックボックス操作時の挙動
 		tableModel_ms01.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
@@ -262,6 +298,189 @@ public class WM00067DeliveryComversionMstExcelEntry{
 			}
 		});
 	}
+	private static void MstEntry(Object[][] CheckOb,String[] TableCol){
+		int ColClGpCD				= (int) 1;	//荷主グループCD
+		int ColCL_DECD				= (int) 2;	//荷主届先CD
+		int ColDECD					= (int) 3;	//届先CD
+		int ColDepartmentCd			= (int) 4;	//届先部署CD
+		int ColSetName				= (int) 5;	//送り状登録名
+		int ColCom01				= (int) 6;	//コメント01
+		int ColCom02				= (int) 7;	//コメント02
+		int ColCom03				= (int) 8;	//コメント03
+		int ColCom04				= (int) 9;	//コメント04
+		int ColCom05				= (int)10;	//コメント05
+		int ColDelFg				= (int)11;	//削除区分
+		int ColMstPriorityFirstFg	= (int)12;	//届先マスタ優先フラグ
+		
+		for(int i=0;i<TableCol.length;i++) {
+			switch(""+TableCol[i]) {
+				case "荷主グループCD":
+					ColClGpCD = i;
+					break;
+				case "荷主届先CD":
+					ColCL_DECD = i;
+					break;
+				case "届先CD":
+					ColDECD = i;
+					break;
+				case "届先部署CD":
+					ColDepartmentCd = i;
+					break;
+				case "送り状登録名":
+					ColSetName = i;
+					break;
+				case "コメント01":
+					ColCom01 = i;
+					break;
+				case "コメント02":
+					ColCom02 = i;
+					break;
+				case "コメント03":
+					ColCom03 = i;
+					break;
+				case "コメント04":
+					ColCom04 = i;
+					break;
+				case "コメント05":
+					ColCom05 = i;
+					break;
+				case "削除区分":
+					ColDelFg = i;
+					break;
+				case "届先マスタ優先フラグ":
+					ColMstPriorityFirstFg = i;
+					break;
+				default:
+					break;
+			}
+		}
+		int EntryCount = 0;
+		for(int i=0;i<CheckOb.length;i++) {
+			for(int i01=0;i01<CheckOb[i].length;i01++) {
+				CheckOb[i][i01] = B00020ToolsTextControl.Trim(""+CheckOb[i][i01]);
+			}
+			String GetClGpCD				= ""+CheckOb[i][ColClGpCD];				//荷主グループCD
+			String GetCL_DECD				= ""+CheckOb[i][ColCL_DECD];			//荷主届先CD
+			String GetDECD					= ""+CheckOb[i][ColDECD];				//届先CD
+			String GetDepartmentCd			= ""+CheckOb[i][ColDepartmentCd];		//届先部署CD
+			String GetSetName				= ""+CheckOb[i][ColSetName];			//送り状登録名
+			String GetCom01					= ""+CheckOb[i][ColCom01];				//コメント01
+			String GetCom02					= ""+CheckOb[i][ColCom02];				//コメント02
+			String GetCom03					= ""+CheckOb[i][ColCom03];				//コメント03
+			String GetCom04					= ""+CheckOb[i][ColCom04];				//コメント04
+			String GetCom05					= ""+CheckOb[i][ColCom05];				//コメント05
+			String GetDelFg					= ""+CheckOb[i][ColDelFg];				//削除区分
+			String GetMstPriorityFirstFg	= ""+CheckOb[i][ColMstPriorityFirstFg];	//届先マスタ優先フラグ
+			if("".equals(GetClGpCD)
+					&&"".equals(GetCL_DECD)
+					&&"".equals(GetDECD)
+					&&"".equals(GetDepartmentCd)
+					) {
+			}else {
+				EntryCount = EntryCount+1;
+			}
+		}
+		
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		
+		String[][] SetString = {
+				{"ClGpCD"				,"1","1"}	//荷主グループコード
+				,{"CL_DECD"				,"1","1"}	//荷主届け先コード
+				,{"DECD"				,"1","1"}	//届け先コード
+				,{"DepartmentCd"		,"1","1"}	//部署CD
+				,{"SetName"				,"1","1"}	//送り状登録名
+				,{"Com01"				,"1","1"}	//コメント01
+				,{"Com02"				,"1","1"}	//コメント02
+				,{"Com03"				,"1","1"}	//コメント03
+				,{"Com04"				,"1","1"}	//コメント04
+				,{"Com05"				,"1","1"}	//コメント05
+				,{"EntryDate"			,"1","0"}	//データ登録日時
+				,{"UpdateDate"			,"1","1"}	//データ更新日時
+				,{"EntryUser"			,"1","0"}	//登録者コード
+				,{"UpdateUser"			,"1","1"}	//更新者コード
+				,{"DelFg"				,"1","1"}	//削除区分
+				,{"MstPriorityFirstFg"	,"1","1"}	//届先マスタ優先フラグ
+				};
+		
+		String tgt_table = "KM0041_DELIVERY_COMVERSIONMST";
+		String[][] field_name = SetString;
+		String[][] entry_data = new String[EntryCount][SetString.length];
+		String[] judg_field = new String[2];
+		String[][] judg_data = new String[EntryCount][2];
+		String TgtDB = "NYANKO";
+		int non_msg_fg = 0;
+		
+		judg_field[0] = "ClGpCD";	//荷主グループコード
+		judg_field[1] = "CL_DECD";	//荷主届け先コード
+		
+		
+		EntryCount = 0;
+		for(int i=0;i<CheckOb.length;i++) {
+			for(int i01=0;i01<CheckOb[i].length;i01++) {
+				CheckOb[i][i01] = B00020ToolsTextControl.Trim(""+CheckOb[i][i01]);
+			}
+			String GetClGpCD				= ""+CheckOb[i][ColClGpCD];				//荷主グループCD
+			String GetCL_DECD				= ""+CheckOb[i][ColCL_DECD];			//荷主届先CD
+			String GetDECD					= ""+CheckOb[i][ColDECD];				//届先CD
+			String GetDepartmentCd			= ""+CheckOb[i][ColDepartmentCd];		//届先部署CD
+			String GetSetName				= ""+CheckOb[i][ColSetName];			//送り状登録名
+			String GetCom01					= ""+CheckOb[i][ColCom01];				//コメント01
+			String GetCom02					= ""+CheckOb[i][ColCom02];				//コメント02
+			String GetCom03					= ""+CheckOb[i][ColCom03];				//コメント03
+			String GetCom04					= ""+CheckOb[i][ColCom04];				//コメント04
+			String GetCom05					= ""+CheckOb[i][ColCom05];				//コメント05
+			String GetDelFg					= ""+CheckOb[i][ColDelFg];				//削除区分
+			String GetMstPriorityFirstFg	= ""+CheckOb[i][ColMstPriorityFirstFg];	//届先マスタ優先フラグ
+			
+			GetDelFg				= B00020ToolsTextControl.num_only_String02(GetDelFg);						//削除区分
+			GetMstPriorityFirstFg	= B00020ToolsTextControl.num_only_String02(GetMstPriorityFirstFg);		//届先マスタ優先フラグ
+			
+			if("".equals(GetDelFg				)) {GetDelFg 				= "0";}
+			if("".equals(GetMstPriorityFirstFg	)) {GetMstPriorityFirstFg 	= "0";}
+			
+			float WFT = (float)0;
+			WFT = Float.parseFloat(GetDelFg);
+			GetDelFg = ""+(int)WFT;
+			
+			WFT = Float.parseFloat(GetDelFg);
+			GetMstPriorityFirstFg = ""+(int)WFT;
+			
+			
+			if("".equals(GetClGpCD)
+					&&"".equals(GetCL_DECD)
+					&&"".equals(GetDECD)
+					&&"".equals(GetDepartmentCd)
+					) {
+			}else {
+				judg_data[EntryCount][0] = GetClGpCD;	//荷主グループコード
+				judg_data[EntryCount][1] = GetCL_DECD;	//荷主届け先コード
+				
+				entry_data[EntryCount][ 0] = GetClGpCD;			//荷主グループコード
+				entry_data[EntryCount][ 1] = GetCL_DECD;		//荷主届け先コード
+				entry_data[EntryCount][ 2] = GetDECD;			//届け先コード
+				entry_data[EntryCount][ 3] = GetDepartmentCd;	//部署CD
+				entry_data[EntryCount][ 4] = GetSetName;		//送り状登録名
+				entry_data[EntryCount][ 5] = GetCom01;			//コメント01
+				entry_data[EntryCount][ 6] = GetCom02;			//コメント02
+				entry_data[EntryCount][ 7] = GetCom03;			//コメント03
+				entry_data[EntryCount][ 8] = GetCom04;			//コメント04
+				entry_data[EntryCount][ 9] = GetCom05;			//コメント05
+				entry_data[EntryCount][10] = now_dtm;			//データ登録日時
+				entry_data[EntryCount][11] = now_dtm;			//データ更新日時
+				entry_data[EntryCount][12] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
+				entry_data[EntryCount][13] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
+				entry_data[EntryCount][14] = GetDelFg;	//削除区分
+				entry_data[EntryCount][15] = GetMstPriorityFirstFg;	//届先マスタ優先フラグ
+				
+				EntryCount = EntryCount+1;
+			}
+		}
+		if(0<EntryCount) {
+			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		}
+	}
+	
+	
 	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[] TableCol){
 		ArrayList<String> ErrMsg = new ArrayList<String>();
 		
@@ -379,6 +598,19 @@ public class WM00067DeliveryComversionMstExcelEntry{
 			String GetDelFg					= ""+CheckOb[i][ColDelFg];				//削除区分
 			String GetMstPriorityFirstFg	= ""+CheckOb[i][ColMstPriorityFirstFg];	//届先マスタ優先フラグ
 			
+			GetDelFg				= B00020ToolsTextControl.num_only_String02(GetDelFg);						//削除区分
+			GetMstPriorityFirstFg	= B00020ToolsTextControl.num_only_String02(GetMstPriorityFirstFg);		//届先マスタ優先フラグ
+			
+			if("".equals(GetDelFg				)) {GetDelFg 				= "0";}
+			if("".equals(GetMstPriorityFirstFg	)) {GetMstPriorityFirstFg 	= "0";}
+			
+			float WFT = (float)0;
+			WFT = Float.parseFloat(GetDelFg);
+			GetDelFg = ""+(int)WFT;
+			
+			WFT = Float.parseFloat(GetDelFg);
+			GetMstPriorityFirstFg = ""+(int)WFT;
+			
 			if("".equals(GetClGpCD)
 					&&"".equals(GetCL_DECD)
 					&&"".equals(GetDECD)
@@ -404,6 +636,26 @@ public class WM00067DeliveryComversionMstExcelEntry{
 				if("".equals(GetCL_DECD)) {
 					int wint = i+1;
 					ErrMsg.add(wint+"行目エラー：荷主届け先コードは必須です");
+				}
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.DelList[1].length;i++) {
+					if(GetDelFg.equals(B00100DefaultVariable.DelList[1][i01])) {
+						UnHitFg = false;
+					}
+				}
+				if(UnHitFg) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：削除区分：("+GetDelFg+")は区分として正しくありません");
+				}
+				UnHitFg = true;
+				for(int i01=0;i01<B00100DefaultVariable.MstPriorityFirstFg[1].length;i++) {
+					if(GetMstPriorityFirstFg.equals(B00100DefaultVariable.MstPriorityFirstFg[1][i01])) {
+						UnHitFg = false;
+					}
+				}
+				if(UnHitFg) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：マスタ優先区分：("+GetMstPriorityFirstFg+")は区分として正しくありません");
 				}
 			}
 		}

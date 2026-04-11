@@ -20,8 +20,32 @@ public class B00100DefaultVariable{
 	static String[][] SearchShippingCompanyList;	//検索用運送会社一覧
 	static String[][] ShippingCompanyList;			//設定用運送会社一覧
 	
+	static String[][] SearchDeliveryType01;
+	static String[][] SearchDeliveryType02;
+	static String[][] SearchDeliveryType03;
+	static String[][] SearchDeliveryType04;
+	static String[][] SearchDeliveryType05;
+
+	static String[][] DeliveryType01;
+	static String[][] DeliveryType02;
+	static String[][] DeliveryType03;
+	static String[][] DeliveryType04;
+	static String[][] DeliveryType05;
+	
+	static int ErrTxtDelete = 45;	//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
+	
+	
+	
 	static String[][] SearchDelList = {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
 	static String[][] DelList = {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};							//設定用削除区分
+	
+	
+	/*
+	 マスタ優先区分　※データ優先：荷主届け先変換時にデータ優先する。マスタ優先（名称：届先変換マスタ⇒届先マスタ　住所：届先マスタの情報をひく）
+	 当然に連携データに名称住所がなければマスタ情報をひく
+	*/
+	static String[][] SearchMstPriorityFirstFg = {{"0:データ優先","1:マスタ優先","未指定"},{"0","1",""},{"データ優先","マスタ優先",""}};	
+	static String[][] MstPriorityFirstFg = {{"0:データ優先","1:マスタ優先"},{"0","1"},{"データ優先","マスタ優先"}};							
 	
 	static String[][] SerachAuthorityFG;				//検索用ユーザー権限区分
 	static String[][] AuthorityFG;						//設定用ユーザー権限区分
@@ -76,19 +100,7 @@ public class B00100DefaultVariable{
 	
 	static String[][] PurposeList = {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
 	
-	static String[][] SearchDeliveryType01;
-	static String[][] SearchDeliveryType02;
-	static String[][] SearchDeliveryType03;
-	static String[][] SearchDeliveryType04;
-	static String[][] SearchDeliveryType05;
-
-	static String[][] DeliveryType01;
-	static String[][] DeliveryType02;
-	static String[][] DeliveryType03;
-	static String[][] DeliveryType04;
-	static String[][] DeliveryType05;
 	
-	static int ErrTxtDelete = 45;	//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
 	
 	
 	

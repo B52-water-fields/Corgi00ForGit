@@ -142,8 +142,9 @@ public class WM00011WhMstRenewAndCreate{
 		main_fm.add(TB_EntryUser);	//登録者
 		main_fm.add(TB_UpdateUser);	//更新者
 
-		TB_WHName.requestFocusInWindow();
 		main_fm.setVisible(true);
+		TB_WHName.requestFocusInWindow();
+		
 		
 		//郵便番号フォーカス消失時の挙動
 		TB_Post.addFocusListener(new FocusAdapter(){

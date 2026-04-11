@@ -293,7 +293,7 @@ public class WM00010WhMstSearch{
 				int RowCount = tableModel_ms01.getRowCount();
 				for(int i=0;i<RowCount;i++) {
 					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-						TgtWhCd = ""+tableModel_ms01.getValueAt(i, 1);
+						TgtWhCd = ""+tableModel_ms01.getValueAt(i, M00001WhMstRt.ColNoWHCD+1);
 					}
 				}
 				if(null!=TgtWhCd&&!"".equals(TgtWhCd)) {
