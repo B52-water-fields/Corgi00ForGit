@@ -17,11 +17,11 @@ import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class WM00002ParameterMstNyankoExcelEntry{
+public class WM00007ParameterMstWankoExcelEntry{
 	static int SetX;
 	static int SetY;
 	static boolean RenewFg;
-	public static void ParameterMstNyankoExcelEntry(int x,int y,String TgtFilePath) {
+	public static void ParameterMstWankoExcelEntry(int x,int y,String TgtFilePath) {
 		A00000Main.LoginCheck();
 		if(0==SetX) {SetX=100;}
 		if(0==SetY) {SetY=100;}
@@ -29,7 +29,7 @@ public class WM00002ParameterMstNyankoExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,200,"Corgi00共通パラメータ登録（エクセル）","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,200,"Corgi00荷主パラメータ登録（エクセル）","");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		JButton entry_btn = B00110FrameParts.EntryBtn();
@@ -59,7 +59,7 @@ public class WM00002ParameterMstNyankoExcelEntry{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				ParameterMstNyankoExcelEntryMain(0,0,TgtFilePath,SheetName);
+				ParameterMstWankoExcelEntryMain(0,0,TgtFilePath,SheetName);
 			}
 		});
 		
@@ -71,19 +71,19 @@ public class WM00002ParameterMstNyankoExcelEntry{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00000ParameterMstNyankoSeach.ParameterMstNyankoSeach(0, 0);
+				WM00005ParameterMstWankoSeach.ParameterMstWankoSeach(0, 0);
 			}
 		});
 	}
 	
-	public static void ParameterMstNyankoExcelEntryMain(int x,int y,String TgtFilePath,String SheetName) {
+	public static void ParameterMstWankoExcelEntryMain(int x,int y,String TgtFilePath,String SheetName){
 		A00000Main.LoginCheck();
 		if(0==SetX) {SetX=100;}
 		if(0==SetY) {SetY=100;}
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,750,800,"Corgi00ロケーションマスタ登録（エクセル）","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,750,800,"Corgi00荷主パラメータ登録（エクセル）","");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		JButton entry_btn = B00110FrameParts.EntryBtn();
@@ -93,32 +93,34 @@ public class WM00002ParameterMstNyankoExcelEntry{
 		main_fm.add(entry_btn);
 		
 		Object[][] NeedCol = {
-						 {"パラメータコード"			,1	, 0}
-						,{"ナンバリング"				,0	, 1}
-						,{"パラメータ名"				,1	, 2}
-						,{"パラメータテキスト項目01"	,1	, 3}
-						,{"パラメータテキスト項目02"	,1	, 4}
-						,{"パラメータテキスト項目03"	,1	, 5}
-						,{"パラメータテキスト項目04"	,1	, 6}
-						,{"パラメータテキスト項目05"	,1	, 7}
-						,{"パラメータテキスト項目06"	,1	, 8}
-						,{"パラメータテキスト項目07"	,1	, 9}
-						,{"パラメータテキスト項目08"	,1	,10}
-						,{"パラメータテキスト項目09"	,1	,11}
-						,{"パラメータテキスト項目10"	,1	,12}
-						,{"パラメータ数値項目01"		,0	,13}
-						,{"パラメータ数値項目02"		,0	,14}
-						,{"パラメータ数値項目03"		,0	,15}
-						,{"パラメータ数値項目04"		,0	,16}
-						,{"パラメータ数値項目05"		,0	,17}
-						,{"パラメータ数値項目06"		,0	,18}
-						,{"パラメータ数値項目07"		,0	,19}
-						,{"パラメータ数値項目08"		,0	,21}
-						,{"パラメータ数値項目09"		,0	,22}
-						,{"パラメータ数値項目10"		,0	,23}
-						};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
+				 {"担当倉庫コード"				,1	, 0}
+				,{"荷主コード"					,1	, 1}
+				,{"パラメータコード"			,1	, 2}
+				,{"ナンバリング"				,0	, 3}
+				,{"パラメータ名"				,1	, 4}
+				,{"パラメータテキスト項目01"	,1	, 5}
+				,{"パラメータテキスト項目02"	,1	, 6}
+				,{"パラメータテキスト項目03"	,1	, 7}
+				,{"パラメータテキスト項目04"	,1	, 8}
+				,{"パラメータテキスト項目05"	,1	, 9}
+				,{"パラメータテキスト項目06"	,1	,10}
+				,{"パラメータテキスト項目07"	,1	,11}
+				,{"パラメータテキスト項目08"	,1	,12}
+				,{"パラメータテキスト項目09"	,1	,13}
+				,{"パラメータテキスト項目10"	,1	,14}
+				,{"パラメータ数値項目01"		,0	,15}
+				,{"パラメータ数値項目02"		,0	,16}
+				,{"パラメータ数値項目03"		,0	,17}
+				,{"パラメータ数値項目04"		,0	,18}
+				,{"パラメータ数値項目05"		,0	,19}
+				,{"パラメータ数値項目06"		,0	,20}
+				,{"パラメータ数値項目07"		,0	,21}
+				,{"パラメータ数値項目08"		,0	,22}
+				,{"パラメータ数値項目09"		,0	,23}
+				,{"パラメータ数値項目10"		,0	,24}
+				};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 
-		
+
 		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
 		main_fm.add(LB_SheetList);
 		
@@ -129,7 +131,7 @@ public class WM00002ParameterMstNyankoExcelEntry{
 		//編集可能カラムの指定
 		B10010TableControl.RenewTgt = new int[1];
 		B10010TableControl.RenewTgt[0] = 0;
-
+		
 		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
@@ -181,7 +183,7 @@ public class WM00002ParameterMstNyankoExcelEntry{
 		if(ErrFg) {
 			SetX=main_fm.getX();
 			SetY=main_fm.getY();
-
+		
 			main_fm.setVisible(false);
 			main_fm.dispose();
 			
@@ -196,7 +198,7 @@ public class WM00002ParameterMstNyankoExcelEntry{
 			Msg = Msg+"\nがヘッダに必要です";
 			
 			JOptionPane.showMessageDialog(null, Msg);
-			ParameterMstNyankoExcelEntry(0,0,TgtFilePath);
+			ParameterMstWankoExcelEntry(0,0,TgtFilePath);
 		}else {
 			int[] ClmnType = new int[HeaderRead[0].length];
 			for(int i=0;i<ClmnType.length;i++) {ClmnType[i]=1;}
@@ -228,10 +230,10 @@ public class WM00002ParameterMstNyankoExcelEntry{
 				
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
-
+		
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00000ParameterMstNyankoSeach.ParameterMstNyankoSeach(0, 0);
+				WM00005ParameterMstWankoSeach.ParameterMstWankoSeach(0, 0);
 			}else {
 				main_fm.setVisible(true);
 			}
@@ -261,10 +263,10 @@ public class WM00002ParameterMstNyankoExcelEntry{
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();
-
+		
 					main_fm.setVisible(false);
 					main_fm.dispose();
-					WM00000ParameterMstNyankoSeach.ParameterMstNyankoSeach(0, 0);
+					WM00005ParameterMstWankoSeach.ParameterMstWankoSeach(0, 0);
 				}
 			}
 		});
@@ -274,41 +276,49 @@ public class WM00002ParameterMstNyankoExcelEntry{
 			public void actionPerformed(ActionEvent e){
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
-
+		
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00000ParameterMstNyankoSeach.ParameterMstNyankoSeach(0, 0);
+				WM00005ParameterMstWankoSeach.ParameterMstWankoSeach(0, 0);
 			}
 		});
 	}
 	
 	private static void MstEntry(Object[][] CheckOb,String[] TableCol) {
-		int ColParaCd		= (int) 0;	//パラメータコード
-		int ColParaCdSeq	= (int) 1;	//ナンバリング
-		int ColParaName		= (int) 2;	//パラメータ名
-		int ColParaTxt01	= (int) 3;	//パラメータテキスト項目01
-		int ColParaTxt02	= (int) 4;	//パラメータテキスト項目02
-		int ColParaTxt03	= (int) 5;	//パラメータテキスト項目03
-		int ColParaTxt04	= (int) 6;	//パラメータテキスト項目04
-		int ColParaTxt05	= (int) 7;	//パラメータテキスト項目05
-		int ColParaTxt06	= (int) 8;	//パラメータテキスト項目06
-		int ColParaTxt07	= (int) 9;	//パラメータテキスト項目07
-		int ColParaTxt08	= (int)10;	//パラメータテキスト項目08
-		int ColParaTxt09	= (int)11;	//パラメータテキスト項目09
-		int ColParaTxt10	= (int)12;	//パラメータテキスト項目10
-		int ColParaInt01	= (int)13;	//パラメータ数値項目01
-		int ColParaInt02	= (int)14;	//パラメータ数値項目02
-		int ColParaInt03	= (int)15;	//パラメータ数値項目03
-		int ColParaInt04	= (int)16;	//パラメータ数値項目04
-		int ColParaInt05	= (int)17;	//パラメータ数値項目05
-		int ColParaInt06	= (int)18;	//パラメータ数値項目06
-		int ColParaInt07	= (int)19;	//パラメータ数値項目07
-		int ColParaInt08	= (int)20;	//パラメータ数値項目08
-		int ColParaInt09	= (int)21;	//パラメータ数値項目09
-		int ColParaInt10	= (int)22;	//パラメータ数値項目10
+		int ColClWh			= (int) 0;	//担当倉庫コード
+		int ColClCd			= (int) 1;	//荷主コード
+		int ColParaCd		= (int) 2;	//パラメータコード
+		int ColParaCdSeq	= (int) 3;	//ナンバリング
+		int ColParaName		= (int) 4;	//パラメータ名
+		int ColParaTxt01	= (int) 5;	//パラメータテキスト項目01
+		int ColParaTxt02	= (int) 6;	//パラメータテキスト項目02
+		int ColParaTxt03	= (int) 7;	//パラメータテキスト項目03
+		int ColParaTxt04	= (int) 8;	//パラメータテキスト項目04
+		int ColParaTxt05	= (int) 9;	//パラメータテキスト項目05
+		int ColParaTxt06	= (int)10;	//パラメータテキスト項目06
+		int ColParaTxt07	= (int)11;	//パラメータテキスト項目07
+		int ColParaTxt08	= (int)12;	//パラメータテキスト項目08
+		int ColParaTxt09	= (int)13;	//パラメータテキスト項目09
+		int ColParaTxt10	= (int)14;	//パラメータテキスト項目10
+		int ColParaInt01	= (int)15;	//パラメータ数値項目01
+		int ColParaInt02	= (int)16;	//パラメータ数値項目02
+		int ColParaInt03	= (int)17;	//パラメータ数値項目03
+		int ColParaInt04	= (int)18;	//パラメータ数値項目04
+		int ColParaInt05	= (int)19;	//パラメータ数値項目05
+		int ColParaInt06	= (int)20;	//パラメータ数値項目06
+		int ColParaInt07	= (int)21;	//パラメータ数値項目07
+		int ColParaInt08	= (int)22;	//パラメータ数値項目08
+		int ColParaInt09	= (int)23;	//パラメータ数値項目09
+		int ColParaInt10	= (int)24;	//パラメータ数値項目10
 		
 		for(int i=0;i<TableCol.length;i++) {
 			switch(""+TableCol[i]) {
+				case "担当倉庫コード":
+					ColClWh = i;
+					break;
+				case "荷主コード":
+					ColClCd = i;
+					break;
 				case "パラメータコード":
 					ColParaCd = i;
 					break;
@@ -382,26 +392,30 @@ public class WM00002ParameterMstNyankoExcelEntry{
 		}
 		int EntryCount = 0;
 		for(int i=0;i<CheckOb.length;i++) {
-			String CheckParaCd	= ""+CheckOb[i][ColParaCd];			//パラメータコード
+			String CheckClWh		= ""+CheckOb[i][ColClWh];		//担当倉庫コード
+			String CheckClCd		= ""+CheckOb[i][ColClCd];		//荷主コード
+			String CheckParaCd		= ""+CheckOb[i][ColParaCd];		//パラメータコード
 			String CheckParaCdSeq	= ""+CheckOb[i][ColParaCdSeq];	//ナンバリング
-			String CheckParaName	= ""+CheckOb[i][ColParaName];	//パラメータ名
 			
-			CheckParaCd		= B00020ToolsTextControl.Trim(CheckParaCd);		//パラメータコード
-			CheckParaCdSeq	= B00020ToolsTextControl.Trim(CheckParaCdSeq);	//ナンバリング
-			CheckParaName		= B00020ToolsTextControl.Trim(CheckParaName);		//パラメータ名
+			CheckClWh		= B00020ToolsTextControl.Trim(CheckClWh);			//担当倉庫コード
+			CheckClCd		= B00020ToolsTextControl.Trim(CheckClCd);			//荷主コード
+			CheckParaCd		= B00020ToolsTextControl.Trim(CheckParaCd);			//パラメータコード
+			CheckParaCdSeq	= B00020ToolsTextControl.Trim(CheckParaCdSeq);		//ナンバリング
 			
 			CheckParaCdSeq	= B00020ToolsTextControl.num_only_String02(CheckParaCdSeq);	//ナンバリング
 			
-			if("".equals(CheckParaCd)
-					&&"".equals(CheckParaCdSeq)
-					&&"".equals(CheckParaName)
+			if("".equals(CheckClWh)
+					&& "".equals(CheckClCd)
+					&& "".equals(CheckParaCd)
+					&& "".equals(CheckParaCdSeq)
 					) {
-			}else{
+			}else {
 				EntryCount = EntryCount+1;
 			}
 		}
-		
-		String[] GetParaCd	= new String[EntryCount];		//パラメータコード
+		String[] GetClWh		= new String[EntryCount];	//担当倉庫コード
+		String[] GetClCd		= new String[EntryCount];	//荷主コード
+		String[] GetParaCd		= new String[EntryCount];	//パラメータコード
 		String[] GetParaCdSeq	= new String[EntryCount];	//ナンバリング
 		String[] GetParaName	= new String[EntryCount];	//パラメータ名
 		String[] GetParaTxt01	= new String[EntryCount];	//パラメータテキスト項目01
@@ -431,22 +445,28 @@ public class WM00002ParameterMstNyankoExcelEntry{
 		
 		EntryCount = 0;
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		
 		for(int i=0;i<CheckOb.length;i++) {
-			String CheckParaCd	= ""+CheckOb[i][ColParaCd];			//パラメータコード
+			String CheckClWh		= ""+CheckOb[i][ColClWh];		//担当倉庫コード
+			String CheckClCd		= ""+CheckOb[i][ColClCd];		//荷主コード
+			String CheckParaCd		= ""+CheckOb[i][ColParaCd];		//パラメータコード
 			String CheckParaCdSeq	= ""+CheckOb[i][ColParaCdSeq];	//ナンバリング
-			String CheckParaName	= ""+CheckOb[i][ColParaName];	//パラメータ名
 			
-			CheckParaCd		= B00020ToolsTextControl.Trim(CheckParaCd);		//パラメータコード
-			CheckParaCdSeq	= B00020ToolsTextControl.Trim(CheckParaCdSeq);	//ナンバリング
-			CheckParaName	= B00020ToolsTextControl.Trim(CheckParaName);		//パラメータ名
+			CheckClWh		= B00020ToolsTextControl.Trim(CheckClWh);			//担当倉庫コード
+			CheckClCd		= B00020ToolsTextControl.Trim(CheckClCd);			//荷主コード
+			CheckParaCd		= B00020ToolsTextControl.Trim(CheckParaCd);			//パラメータコード
+			CheckParaCdSeq	= B00020ToolsTextControl.Trim(CheckParaCdSeq);		//ナンバリング
 			
 			CheckParaCdSeq	= B00020ToolsTextControl.num_only_String02(CheckParaCdSeq);	//ナンバリング
 			
-			if("".equals(CheckParaCd)
-					&&"".equals(CheckParaCdSeq)
-					&&"".equals(CheckParaName)
+			if("".equals(CheckClWh)
+					&& "".equals(CheckClCd)
+					&& "".equals(CheckParaCd)
+					&& "".equals(CheckParaCdSeq)
 					) {
 			}else{
+				GetClWh[EntryCount]			= ""+CheckOb[i][ColClWh];		//担当倉庫コード
+				GetClCd[EntryCount]			= ""+CheckOb[i][ColClCd];		//荷主コード
 				GetParaCd[EntryCount]		= ""+CheckOb[i][ColParaCd];		//パラメータコード
 				GetParaCdSeq[EntryCount]	= ""+CheckOb[i][ColParaCdSeq];	//ナンバリング
 				GetParaName[EntryCount]		= ""+CheckOb[i][ColParaName];	//パラメータ名
@@ -470,11 +490,9 @@ public class WM00002ParameterMstNyankoExcelEntry{
 				GetParaInt08[EntryCount]	= ""+CheckOb[i][ColParaInt08];	//パラメータ数値項目08
 				GetParaInt09[EntryCount]	= ""+CheckOb[i][ColParaInt09];	//パラメータ数値項目09
 				GetParaInt10[EntryCount]	= ""+CheckOb[i][ColParaInt10];	//パラメータ数値項目10
-				GetEntryDate[EntryCount]	= now_dtm;	//登録日
-				GetUpdateDate[EntryCount]	= now_dtm;	//更新日
-				GetEntryUser[EntryCount]	= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者
-				GetUpdateUser[EntryCount]	= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者
 				
+				GetClWh[EntryCount]			= B00020ToolsTextControl.Trim(GetClWh[EntryCount]);			//担当倉庫コード
+				GetClCd[EntryCount]			= B00020ToolsTextControl.Trim(GetClCd[EntryCount]);			//荷主コード
 				GetParaCd[EntryCount]		= B00020ToolsTextControl.Trim(GetParaCd[EntryCount]);		//パラメータコード
 				GetParaCdSeq[EntryCount]	= B00020ToolsTextControl.Trim(GetParaCdSeq[EntryCount]);	//ナンバリング
 				GetParaName[EntryCount]		= B00020ToolsTextControl.Trim(GetParaName[EntryCount]);		//パラメータ名
@@ -511,36 +529,45 @@ public class WM00002ParameterMstNyankoExcelEntry{
 				GetParaInt09[EntryCount]	= B00020ToolsTextControl.num_only_String02(GetParaInt09[EntryCount]);	//パラメータ数値項目09
 				GetParaInt10[EntryCount]	= B00020ToolsTextControl.num_only_String02(GetParaInt10[EntryCount]);	//パラメータ数値項目10
 				
-				if("".equals(GetParaCdSeq[EntryCount])){GetParaCdSeq[EntryCount]	= "0";}	//ナンバリング
-				if("".equals(GetParaInt01[EntryCount])){GetParaInt01[EntryCount]	= "0";}	//パラメータ数値項目01
-				if("".equals(GetParaInt02[EntryCount])){GetParaInt02[EntryCount]	= "0";}	//パラメータ数値項目02
-				if("".equals(GetParaInt03[EntryCount])){GetParaInt03[EntryCount]	= "0";}	//パラメータ数値項目03
-				if("".equals(GetParaInt04[EntryCount])){GetParaInt04[EntryCount]	= "0";}	//パラメータ数値項目04
-				if("".equals(GetParaInt05[EntryCount])){GetParaInt05[EntryCount]	= "0";}	//パラメータ数値項目05
-				if("".equals(GetParaInt06[EntryCount])){GetParaInt06[EntryCount]	= "0";}	//パラメータ数値項目06
-				if("".equals(GetParaInt07[EntryCount])){GetParaInt07[EntryCount]	= "0";}	//パラメータ数値項目07
-				if("".equals(GetParaInt08[EntryCount])){GetParaInt08[EntryCount]	= "0";}	//パラメータ数値項目08
-				if("".equals(GetParaInt09[EntryCount])){GetParaInt09[EntryCount]	= "0";}	//パラメータ数値項目09
-				if("".equals(GetParaInt10[EntryCount])){GetParaInt10[EntryCount]	= "0";}	//パラメータ数値項目10
+				GetEntryDate[EntryCount]	= now_dtm;	//登録日
+				GetUpdateDate[EntryCount]	= now_dtm;	//更新日
+				GetEntryUser[EntryCount]	= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者
+				GetUpdateUser[EntryCount]	= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者
+				
+				
+				if("".equals(GetParaCdSeq[EntryCount])){GetParaCdSeq[EntryCount]="0";}	//ナンバリング
+				if("".equals(GetParaInt01[EntryCount])){GetParaInt01[EntryCount]="0";}	//パラメータ数値項目01
+				if("".equals(GetParaInt02[EntryCount])){GetParaInt02[EntryCount]="0";}	//パラメータ数値項目02
+				if("".equals(GetParaInt03[EntryCount])){GetParaInt03[EntryCount]="0";}	//パラメータ数値項目03
+				if("".equals(GetParaInt04[EntryCount])){GetParaInt04[EntryCount]="0";}	//パラメータ数値項目04
+				if("".equals(GetParaInt05[EntryCount])){GetParaInt05[EntryCount]="0";}	//パラメータ数値項目05
+				if("".equals(GetParaInt06[EntryCount])){GetParaInt06[EntryCount]="0";}	//パラメータ数値項目06
+				if("".equals(GetParaInt07[EntryCount])){GetParaInt07[EntryCount]="0";}	//パラメータ数値項目07
+				if("".equals(GetParaInt08[EntryCount])){GetParaInt08[EntryCount]="0";}	//パラメータ数値項目08
+				if("".equals(GetParaInt09[EntryCount])){GetParaInt09[EntryCount]="0";}	//パラメータ数値項目09
+				if("".equals(GetParaInt10[EntryCount])){GetParaInt10[EntryCount]="0";}	//パラメータ数値項目10
 				
 				float WFT = (float)0;
-				WFT = Float.parseFloat(GetParaCdSeq[EntryCount]);	GetParaCdSeq[EntryCount]	= ""+(int)WFT;	//ナンバリング
-				WFT = Float.parseFloat(GetParaInt01[EntryCount]);	GetParaInt01[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目01
-				WFT = Float.parseFloat(GetParaInt02[EntryCount]);	GetParaInt02[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目02
-				WFT = Float.parseFloat(GetParaInt03[EntryCount]);	GetParaInt03[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目03
-				WFT = Float.parseFloat(GetParaInt04[EntryCount]);	GetParaInt04[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目04
-				WFT = Float.parseFloat(GetParaInt05[EntryCount]);	GetParaInt05[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目05
-				WFT = Float.parseFloat(GetParaInt06[EntryCount]);	GetParaInt06[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目06
-				WFT = Float.parseFloat(GetParaInt07[EntryCount]);	GetParaInt07[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目07
-				WFT = Float.parseFloat(GetParaInt08[EntryCount]);	GetParaInt08[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目08
-				WFT = Float.parseFloat(GetParaInt09[EntryCount]);	GetParaInt09[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目09
-				WFT = Float.parseFloat(GetParaInt10[EntryCount]);	GetParaInt10[EntryCount]	= ""+(int)WFT;	//パラメータ数値項目10
+				WFT = Float.parseFloat(GetParaCdSeq[EntryCount]);	GetParaCdSeq[EntryCount]=""+(int)WFT;	//ナンバリング
+				WFT = Float.parseFloat(GetParaInt01[EntryCount]);	GetParaInt01[EntryCount]=""+(int)WFT;	//パラメータ数値項目01
+				WFT = Float.parseFloat(GetParaInt02[EntryCount]);	GetParaInt02[EntryCount]=""+(int)WFT;	//パラメータ数値項目02
+				WFT = Float.parseFloat(GetParaInt03[EntryCount]);	GetParaInt03[EntryCount]=""+(int)WFT;	//パラメータ数値項目03
+				WFT = Float.parseFloat(GetParaInt04[EntryCount]);	GetParaInt04[EntryCount]=""+(int)WFT;	//パラメータ数値項目04
+				WFT = Float.parseFloat(GetParaInt05[EntryCount]);	GetParaInt05[EntryCount]=""+(int)WFT;	//パラメータ数値項目05
+				WFT = Float.parseFloat(GetParaInt06[EntryCount]);	GetParaInt06[EntryCount]=""+(int)WFT;	//パラメータ数値項目06
+				WFT = Float.parseFloat(GetParaInt07[EntryCount]);	GetParaInt07[EntryCount]=""+(int)WFT;	//パラメータ数値項目07
+				WFT = Float.parseFloat(GetParaInt08[EntryCount]);	GetParaInt08[EntryCount]=""+(int)WFT;	//パラメータ数値項目08
+				WFT = Float.parseFloat(GetParaInt09[EntryCount]);	GetParaInt09[EntryCount]=""+(int)WFT;	//パラメータ数値項目09
+				WFT = Float.parseFloat(GetParaInt10[EntryCount]);	GetParaInt10[EntryCount]=""+(int)WFT;	//パラメータ数値項目10
 				
 				EntryCount = EntryCount+1;
 			}
 		}
+		
 		Object[][] SetString = {
-				 {"ParaCd"		,"1","1",GetParaCd		,"Key"}	//パラメータコード
+				 {"ClWh"		,"1","1",GetClWh		,"Key"}	//担当倉庫コード
+				,{"ClCd"		,"1","1",GetClCd		,"Key"}	//荷主コード
+				,{"ParaCd"		,"1","1",GetParaCd		,"Key"}	//パラメータコード
 				,{"ParaCdSeq"	,"1","1",GetParaCdSeq	,"Key"}	//ナンバリング
 				,{"ParaName"	,"1","1",GetParaName	,""}	//パラメータ名
 				,{"ParaTxt01"	,"1","1",GetParaTxt01	,""}	//パラメータテキスト項目01
@@ -574,12 +601,12 @@ public class WM00002ParameterMstNyankoExcelEntry{
 			if("Key".equals((String)SetString[i][4])) {KeyCount=KeyCount+1;}
 		}
 		
-		String tgt_table = "KM0000_PARAMETER";
+		String tgt_table = "WM0000PARAMETER";
 		String[][] field_name = new String[SetString.length][3];
 		String[][] entry_data = new String[EntryCount][SetString.length];
 		String[] judg_field = new String[KeyCount];
 		String[][] judg_data = new String[EntryCount][KeyCount];
-		String TgtDB = "NYANKO";
+		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
 		KeyCount = 0;
@@ -607,32 +634,40 @@ public class WM00002ParameterMstNyankoExcelEntry{
 	
 	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[] TableCol){
 		ArrayList<String> ErrMsg = new ArrayList<String>();
-		int ColParaCd		= (int) 0;	//パラメータコード
-		int ColParaCdSeq	= (int) 1;	//ナンバリング
-		int ColParaName		= (int) 2;	//パラメータ名
-		int ColParaTxt01	= (int) 3;	//パラメータテキスト項目01
-		int ColParaTxt02	= (int) 4;	//パラメータテキスト項目02
-		int ColParaTxt03	= (int) 5;	//パラメータテキスト項目03
-		int ColParaTxt04	= (int) 6;	//パラメータテキスト項目04
-		int ColParaTxt05	= (int) 7;	//パラメータテキスト項目05
-		int ColParaTxt06	= (int) 8;	//パラメータテキスト項目06
-		int ColParaTxt07	= (int) 9;	//パラメータテキスト項目07
-		int ColParaTxt08	= (int)10;	//パラメータテキスト項目08
-		int ColParaTxt09	= (int)11;	//パラメータテキスト項目09
-		int ColParaTxt10	= (int)12;	//パラメータテキスト項目10
-		int ColParaInt01	= (int)13;	//パラメータ数値項目01
-		int ColParaInt02	= (int)14;	//パラメータ数値項目02
-		int ColParaInt03	= (int)15;	//パラメータ数値項目03
-		int ColParaInt04	= (int)16;	//パラメータ数値項目04
-		int ColParaInt05	= (int)17;	//パラメータ数値項目05
-		int ColParaInt06	= (int)18;	//パラメータ数値項目06
-		int ColParaInt07	= (int)19;	//パラメータ数値項目07
-		int ColParaInt08	= (int)20;	//パラメータ数値項目08
-		int ColParaInt09	= (int)21;	//パラメータ数値項目09
-		int ColParaInt10	= (int)22;	//パラメータ数値項目10
+		int ColClWh			= (int) 0;	//担当倉庫コード
+		int ColClCd			= (int) 1;	//荷主コード
+		int ColParaCd		= (int) 2;	//パラメータコード
+		int ColParaCdSeq	= (int) 3;	//ナンバリング
+		int ColParaName		= (int) 4;	//パラメータ名
+		int ColParaTxt01	= (int) 5;	//パラメータテキスト項目01
+		int ColParaTxt02	= (int) 6;	//パラメータテキスト項目02
+		int ColParaTxt03	= (int) 7;	//パラメータテキスト項目03
+		int ColParaTxt04	= (int) 8;	//パラメータテキスト項目04
+		int ColParaTxt05	= (int) 9;	//パラメータテキスト項目05
+		int ColParaTxt06	= (int)10;	//パラメータテキスト項目06
+		int ColParaTxt07	= (int)11;	//パラメータテキスト項目07
+		int ColParaTxt08	= (int)12;	//パラメータテキスト項目08
+		int ColParaTxt09	= (int)13;	//パラメータテキスト項目09
+		int ColParaTxt10	= (int)14;	//パラメータテキスト項目10
+		int ColParaInt01	= (int)15;	//パラメータ数値項目01
+		int ColParaInt02	= (int)16;	//パラメータ数値項目02
+		int ColParaInt03	= (int)17;	//パラメータ数値項目03
+		int ColParaInt04	= (int)18;	//パラメータ数値項目04
+		int ColParaInt05	= (int)19;	//パラメータ数値項目05
+		int ColParaInt06	= (int)20;	//パラメータ数値項目06
+		int ColParaInt07	= (int)21;	//パラメータ数値項目07
+		int ColParaInt08	= (int)22;	//パラメータ数値項目08
+		int ColParaInt09	= (int)23;	//パラメータ数値項目09
+		int ColParaInt10	= (int)24;	//パラメータ数値項目10
 		
 		for(int i=0;i<TableCol.length;i++) {
 			switch(""+TableCol[i]) {
+				case "担当倉庫コード":
+					ColClWh = i;
+					break;
+				case "荷主コード":
+					ColClCd = i;
+					break;
 				case "パラメータコード":
 					ColParaCd = i;
 					break;
@@ -704,8 +739,9 @@ public class WM00002ParameterMstNyankoExcelEntry{
 					break;
 			}
 		}
-		
 		for(int i=0;i<CheckOb.length;i++) {
+			String GetClWh		= ""+CheckOb[i][ColClWh];		//担当倉庫コード
+			String GetClCd		= ""+CheckOb[i][ColClCd];		//荷主コード
 			String GetParaCd	= ""+CheckOb[i][ColParaCd];		//パラメータコード
 			String GetParaCdSeq	= ""+CheckOb[i][ColParaCdSeq];	//ナンバリング
 			String GetParaName	= ""+CheckOb[i][ColParaName];	//パラメータ名
@@ -730,6 +766,8 @@ public class WM00002ParameterMstNyankoExcelEntry{
 			String GetParaInt09	= ""+CheckOb[i][ColParaInt09];	//パラメータ数値項目09
 			String GetParaInt10	= ""+CheckOb[i][ColParaInt10];	//パラメータ数値項目10
 			
+			GetClWh			= B00020ToolsTextControl.Trim(GetClWh);			//担当倉庫コード
+			GetClCd			= B00020ToolsTextControl.Trim(GetClCd);			//荷主コード
 			GetParaCd		= B00020ToolsTextControl.Trim(GetParaCd);		//パラメータコード
 			GetParaCdSeq	= B00020ToolsTextControl.Trim(GetParaCdSeq);	//ナンバリング
 			GetParaName		= B00020ToolsTextControl.Trim(GetParaName);		//パラメータ名
@@ -766,11 +804,21 @@ public class WM00002ParameterMstNyankoExcelEntry{
 			GetParaInt09	= B00020ToolsTextControl.num_only_String02(GetParaInt09);	//パラメータ数値項目09
 			GetParaInt10	= B00020ToolsTextControl.num_only_String02(GetParaInt10);	//パラメータ数値項目10
 			
-			if("".equals(GetParaCd)
+			if("".equals(GetClWh)
+					&&"".equals(GetClCd)
+					&&"".equals(GetParaCd)
 					&&"".equals(GetParaCdSeq)
 					&&"".equals(GetParaName)
 					) {
 			}else{
+				if("".equals(GetClWh)) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：担当倉庫コードは必須です");
+				}
+				if("".equals(GetClCd)) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：荷主コードは必須です");
+				}
 				if("".equals(GetParaCd)) {
 					int wint = i+1;
 					ErrMsg.add(wint+"行目エラー：パラメータコードは必須です");
@@ -783,9 +831,17 @@ public class WM00002ParameterMstNyankoExcelEntry{
 					int wint = i+1;
 					ErrMsg.add(wint+"行目エラー：パラメータ名は必須です");
 				}
+				if(!A00000Main.ClWh.equals(GetClWh)) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：("+GetClWh+")は現在選択中の荷主担当倉庫と異なるです");
+				}
+				if(!A00000Main.ClCd.equals(GetClCd)) {
+					int wint = i+1;
+					ErrMsg.add(wint+"行目エラー：("+GetClCd+")は現在選択中の荷主と異なるです");
+				}
+				
 			}
 		}
-		
 		return ErrMsg;
 	}
 	
@@ -793,17 +849,17 @@ public class WM00002ParameterMstNyankoExcelEntry{
 		//必要フォルダを生成する
 		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
 		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ParameterMstNyanko";
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ParameterMstWanko";
 		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ParameterMstNyanko\\Err";
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ParameterMstWanko\\Err";
 		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ParameterMstNyanko\\BK";
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ParameterMstWanko\\BK";
 		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
 		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
-		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ParameterMstNyanko\\Err";
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ParameterMstWanko\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		
@@ -821,5 +877,4 @@ public class WM00002ParameterMstNyankoExcelEntry{
 			e1.printStackTrace();
 		}
 	}
-	
 }

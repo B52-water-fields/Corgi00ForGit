@@ -51,6 +51,11 @@ public class W00020MstMain{
 		//ロケーションマスタ
 		JButton LocationMst = B00110FrameParts.BtnSet(				 20, 75,130,20,"ロケーション",11);
 		PN_AboutClient.add(LocationMst);
+		
+		//荷主パラメータ
+		JButton WankoParameterMst 	= B00110FrameParts.BtnSet(		580,200,130,20,"荷主パラメータ",11);
+		PN_AboutClient.add(WankoParameterMst);
+		
 
 		//倉庫・事業所
 		JButton WhMst 				= B00110FrameParts.BtnSet(		 20, 25,130,20,"倉庫・事業所",11);
@@ -148,6 +153,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00065DeliveryComversionMstSerarch.DeliveryComversionMstSerarch(0, 0);
+			}
+		});
+		
+		//荷主パラメータ
+		WankoParameterMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00005ParameterMstWankoSeach.ParameterMstWankoSeach(0,0);
 			}
 		});
 		
