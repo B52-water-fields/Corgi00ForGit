@@ -34,7 +34,6 @@ public class M00090LocationMstRt{
 	String GetUpdateDate	= (String)LocationMstRt[i][M00090LocationMstRt.ColUpdateDate];	//更新日
 	String GetEntryUser		= (String)LocationMstRt[i][M00090LocationMstRt.ColEntryUser];	//登録者
 	String GetUpdateUser	= (String)LocationMstRt[i][M00090LocationMstRt.ColUpdateUser];	//更新者
-	
 	*/
 	
 	//戻り値カラム
@@ -86,7 +85,7 @@ public class M00090LocationMstRt{
 		Object[][] rt = new Object[0][11];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
-		
+				
 		String sql = " select \n"
 				+"(WM0010LOCATIONMST.ClCd) as ClCd,\n"				//荷主コード
 				+"(KM0030_CLIENTMST.CLName01) as CLName01,\n"		//荷主名1
