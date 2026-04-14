@@ -37,6 +37,7 @@ public class M00100SupplierRt{
 		
 		return RtSupplierRt;
 	}
+	
 	public static Object[][] M00100SupplierRt(
 			){
 		Object [][]rt = new Object[0][100];
