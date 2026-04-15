@@ -354,20 +354,156 @@ public class M00100SupplierRt{
 			}
 			sql = sql + ")";
 		}
+		sql = sql + " order by WM0010Supplier.ClW,WM0010Supplier.ClCd,WM0010Supplier.SPCd";
+		
 		//System.out.println(sql);
 		if(true==SearchKick) {
 			A00010DbConnect.DB_CONN("NANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
+				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				int StmtCount = 0;
 				
+				if(null!=SearchClWh && 0<SearchClWh.size()){					//担当倉庫
+					for(int i=0;i<SearchClWh.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchClWh.get(i)+"");
+					}
+				}
+				if(null!=SearchClCd && 0<SearchClCd.size()){					//荷主CD
+					for(int i=0;i<SearchClCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchClCd.get(i)+"");
+					}
+				}
+				if(null!=SearchSPCd && 0<SearchSPCd.size()){					//仕入先コード
+					for(int i=0;i<SearchSPCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchSPCd.get(i)+"");
+					}
+				}
+				if(null!=SearchSPName && 0<SearchSPName.size()){				//仕入先名
+					for(int i=0;i<SearchSPName.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchSPName.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchSPName.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchSPName.get(i)+"%");
+					}
+				}
+				if(null!=SearchSPPost && 0<SearchSPPost.size()){				//仕入先郵便
+					for(int i=0;i<SearchSPPost.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchSPPost.get(i)+"%");
+					}
+				}
+				if(null!=SearchSPAdd && 0<SearchSPAdd.size()){					//仕入先住所
+					for(int i=0;i<SearchSPAdd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchSPAdd.get(i)+"%");
+					}
+				}
+				if(null!=SearchSPTel && 0<SearchSPTel.size()){					//仕入先Tel
+					for(int i=0;i<SearchSPTel.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchSPTel.get(i)+"%");
+					}
+				}
+				if(null!=SearchSPFax && 0<SearchSPFax.size()){					//仕入先FAX
+					for(int i=0;i<SearchSPFax.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchSPFax.get(i)+"%");
+					}
+				}
+				if(null!=SearchSPMail && 0<SearchSPMail.size()){				//仕入先MAIL
+					for(int i=0;i<SearchSPMail.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchSPMail.get(i)+"%");
+					}
+				}
+				if(null!=SearchCom && 0<SearchCom.size()){						//コメント
+					for(int i=0;i<SearchCom.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCom.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCom.get(i)+"%");
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchCom.get(i)+"%");
+					}
+				}
+				if(null!=SearchPTMSCDBMN && 0<SearchPTMSCDBMN.size()){			//基幹Sysコード（部門）
+					for(int i=0;i<SearchPTMSCDBMN.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchPTMSCDBMN.get(i)+"");
+					}
+				}
+				if(null!=SearchPTMSCDNINUSHI && 0<SearchPTMSCDNINUSHI.size()){	//基幹Sysコード（荷主）
+					for(int i=0;i<SearchPTMSCDNINUSHI.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchPTMSCDNINUSHI.get(i)+"");
+					}
+				}
+				if(null!=SearchPaySiteStr && 0<SearchPaySiteStr.size()){		//支払いサイト（月数）開始
+					for(int i=0;i<SearchPaySiteStr.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchPaySiteStr.get(i)+"");
+					}
+				}
+				if(null!=SearchPayDateStr && 0<SearchPayDateStr.size()){		//支払日（日＝99）開始
+					for(int i=0;i<SearchPayDateStr.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchPayDateStr.get(i)+"");
+					}
+				}
+				if(null!=SearchShimeDateStr && 0<SearchShimeDateStr.size()){	//締め日（末日＝99）開始
+					for(int i=0;i<SearchShimeDateStr.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchShimeDateStr.get(i)+"");
+					}
+				}
+				if(null!=SearchPaySiteEnd && 0<SearchPaySiteEnd.size()){		//支払いサイト（月数）
+					for(int i=0;i<SearchPaySiteEnd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchPaySiteEnd.get(i)+"");
+					}
+				}
+				if(null!=SearchPayDateEnd && 0<SearchPayDateEnd.size()){		//支払日（日＝99）終了
+					for(int i=0;i<SearchPayDateEnd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchPayDateEnd.get(i)+"");
+					}
+				}
+				if(null!=SearchShimeDateEnd && 0<SearchShimeDateEnd.size()){	//締め日（末日＝99）終了
+					for(int i=0;i<SearchShimeDateEnd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchShimeDateEnd.get(i)+"");
+					}
+				}
+				if(null!=SearchDECD && 0<SearchDECD.size()){					//納品先コード
+					for(int i=0;i<SearchDECD.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchDECD.get(i)+"");
+					}
+				}
+				if(null!=SearchDepartmentCd && 0<SearchDepartmentCd.size()){	//部署CD
+					for(int i=0;i<SearchDepartmentCd.size();i++){
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, ""+SearchDepartmentCd.get(i)+"");
+					}
+				}
 				
+				rset01 = stmt01.executeQuery();
 				
-				
-				
-				
-				
-				
+				int counter = 0;
+				rset01.beforeFirst();
+				while (rset01.next()) {
+					counter=counter+1;
+				}
+				rt = new Object[counter][RtSupplierRt().length];
+				counter = 0;
+				rset01.beforeFirst();
 				
 				
 
