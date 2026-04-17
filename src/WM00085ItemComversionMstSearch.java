@@ -127,7 +127,11 @@ public class WM00085ItemComversionMstSearch{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
 		
 		for(int i=0;i<RtItemComversionMstRt.length;i++) {
-			column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+			if("int".equals((String)RtItemComversionMstRt[i][2])||"float".equals((String)RtItemComversionMstRt[i][2])) {
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+			}else {
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+			}
 		}
 		
 		//スクロール用設定

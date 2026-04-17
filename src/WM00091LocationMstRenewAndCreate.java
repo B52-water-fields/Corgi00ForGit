@@ -241,17 +241,4 @@ public class WM00091LocationMstRenewAndCreate{
 			}
 		});
 	}
-	
-	private static void StockTypeChange(
-			String GetClCd,
-			String GetWhCd,
-			String GetLoc,
-			String BefoureType,
-			String AfterType
-			) {
-		
-	}
-	
-	
-	
 }

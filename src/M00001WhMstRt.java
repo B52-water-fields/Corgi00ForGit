@@ -68,22 +68,22 @@ public class M00001WhMstRt{
 	
 	public static Object[][] RtSettingWhMstRt(){
 		Object[][] RtSettingWhMstRt = {
-				 {"WHCD"		,ColNoWHCD			,"String"	,"倉庫コード"}
-				,{"WHName"		,ColNoWHName		,"String"	,"拠点倉庫名"}
-				,{"Post"		,ColNoPost			,"String"	,"拠点倉庫郵便番号"}
-				,{"Add01"		,ColNoAdd01		,"String"	,"拠点倉庫住所1"}
-				,{"Add02"		,ColNoAdd02		,"String"	,"拠点倉庫住所2"}
-				,{"Tel"			,ColNoTel			,"String"	,"拠点倉庫電話"}
-				,{"Fax"			,ColNoFax			,"String"	,"拠点倉庫FAX"}
-				,{"Mail"		,ColNoMail			,"String"	,"拠点倉庫MAIL"}
-				,{"Com01"		,ColNoCom01		,"String"	,"コメント１"}
-				,{"Com02"		,ColNoCom02		,"String"	,"コメント２"}
-				,{"Com03"		,ColNoCom03		,"String"	,"コメント３"}
-				,{"PTMSCD"		,ColNoPTMSCD		,"String"	,"基幹システム連携用事業所CD"}
-				,{"EntryDate"	,ColNoEntryDate	,"String"	,"データ登録日時"}
-				,{"UpdateDate"	,ColNoUpdateDate	,"String"	,"データ更新日時"}
-				,{"EntryUser"	,ColNoEntryUser	,"String"	,"登録者"}
-				,{"UpdateUser"	,ColNoUpdateUser	,"String"	,"更新者"}
+				 {"WHCD"		,ColNoWHCD			,"String"	,"倉庫コード"					,"Key"}
+				,{"WHName"		,ColNoWHName		,"String"	,"拠点倉庫名"					,""}
+				,{"Post"		,ColNoPost			,"String"	,"拠点倉庫郵便番号"				,""}
+				,{"Add01"		,ColNoAdd01		,"String"	,"拠点倉庫住所1"				,""}
+				,{"Add02"		,ColNoAdd02		,"String"	,"拠点倉庫住所2"				,""}
+				,{"Tel"			,ColNoTel			,"String"	,"拠点倉庫電話"					,""}
+				,{"Fax"			,ColNoFax			,"String"	,"拠点倉庫FAX"					,""}
+				,{"Mail"		,ColNoMail			,"String"	,"拠点倉庫MAIL"					,""}
+				,{"Com01"		,ColNoCom01		,"String"	,"コメント１"					,""}
+				,{"Com02"		,ColNoCom02		,"String"	,"コメント２"					,""}
+				,{"Com03"		,ColNoCom03		,"String"	,"コメント３"					,""}
+				,{"PTMSCD"		,ColNoPTMSCD		,"String"	,"基幹システム連携用事業所CD"	,""}
+				,{"EntryDate"	,ColNoEntryDate	,"String"	,"データ登録日時"				,""}
+				,{"UpdateDate"	,ColNoUpdateDate	,"String"	,"データ更新日時"				,""}
+				,{"EntryUser"	,ColNoEntryUser	,"String"	,"登録者"						,""}
+				,{"UpdateUser"	,ColNoUpdateUser	,"String"	,"更新者"						,""}
 				};
 		
 		return RtSettingWhMstRt;

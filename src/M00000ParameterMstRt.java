@@ -115,33 +115,33 @@ public class M00000ParameterMstRt{
 	
 	public static Object[][] RtSettingParameterMstRtNANKO(){
 		Object[][] RtSettingParameterMstRtNANKO = {
-				 {"ParaCd"		,ColParaCd			,"String"	,"パラメータコード"}
-				,{"ParaCdSeq"	,ColParaCdSeq		,"String"	,"ナンバリング"}
-				,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"}
-				,{"ParaTxt01"	,ColParaTxt01		,"String"	,"パラメータテキスト項目01"}
-				,{"ParaTxt02"	,ColParaTxt02		,"String"	,"パラメータテキスト項目02"}
-				,{"ParaTxt03"	,ColParaTxt03		,"String"	,"パラメータテキスト項目03"}
-				,{"ParaTxt04"	,ColParaTxt04		,"String"	,"パラメータテキスト項目04"}
-				,{"ParaTxt05"	,ColParaTxt05		,"String"	,"パラメータテキスト項目05"}
-				,{"ParaTxt06"	,ColParaTxt06		,"String"	,"パラメータテキスト項目06"}
-				,{"ParaTxt07"	,ColParaTxt07		,"String"	,"パラメータテキスト項目07"}
-				,{"ParaTxt08"	,ColParaTxt08		,"String"	,"パラメータテキスト項目08"}
-				,{"ParaTxt09"	,ColParaTxt09		,"String"	,"パラメータテキスト項目09"}
-				,{"ParaTxt10"	,ColParaTxt10		,"String"	,"パラメータテキスト項目10"}
-				,{"ParaInt01"	,ColParaInt01		,"int"		,"パラメータ数値項目01"}
-				,{"ParaInt02"	,ColParaInt02		,"int"		,"パラメータ数値項目02"}
-				,{"ParaInt03"	,ColParaInt03		,"int"		,"パラメータ数値項目03"}
-				,{"ParaInt04"	,ColParaInt04		,"int"		,"パラメータ数値項目04"}
-				,{"ParaInt05"	,ColParaInt05		,"int"		,"パラメータ数値項目05"}
-				,{"ParaInt06"	,ColParaInt06		,"int"		,"パラメータ数値項目06"}
-				,{"ParaInt07"	,ColParaInt07		,"int"		,"パラメータ数値項目07"}
-				,{"ParaInt08"	,ColParaInt08		,"int"		,"パラメータ数値項目08"}
-				,{"ParaInt09"	,ColParaInt09		,"int"		,"パラメータ数値項目09"}
-				,{"ParaInt10"	,ColParaInt10		,"int"		,"パラメータ数値項目10"}
-				,{"EntryDate"	,ColEntryDate		,"String"	,"登録日"}
-				,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日"}
-				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"}
-				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"}
+				 {"ParaCd"		,ColParaCd			,"String"	,"パラメータコード"			,"Key"}
+				,{"ParaCdSeq"	,ColParaCdSeq		,"String"	,"ナンバリング"				,"Key"}
+				,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"				,""}
+				,{"ParaTxt01"	,ColParaTxt01		,"String"	,"パラメータテキスト項目01"	,""}
+				,{"ParaTxt02"	,ColParaTxt02		,"String"	,"パラメータテキスト項目02"	,""}
+				,{"ParaTxt03"	,ColParaTxt03		,"String"	,"パラメータテキスト項目03"	,""}
+				,{"ParaTxt04"	,ColParaTxt04		,"String"	,"パラメータテキスト項目04"	,""}
+				,{"ParaTxt05"	,ColParaTxt05		,"String"	,"パラメータテキスト項目05"	,""}
+				,{"ParaTxt06"	,ColParaTxt06		,"String"	,"パラメータテキスト項目06"	,""}
+				,{"ParaTxt07"	,ColParaTxt07		,"String"	,"パラメータテキスト項目07"	,""}
+				,{"ParaTxt08"	,ColParaTxt08		,"String"	,"パラメータテキスト項目08"	,""}
+				,{"ParaTxt09"	,ColParaTxt09		,"String"	,"パラメータテキスト項目09"	,""}
+				,{"ParaTxt10"	,ColParaTxt10		,"String"	,"パラメータテキスト項目10"	,""}
+				,{"ParaInt01"	,ColParaInt01		,"int"		,"パラメータ数値項目01"		,""}
+				,{"ParaInt02"	,ColParaInt02		,"int"		,"パラメータ数値項目02"		,""}
+				,{"ParaInt03"	,ColParaInt03		,"int"		,"パラメータ数値項目03"		,""}
+				,{"ParaInt04"	,ColParaInt04		,"int"		,"パラメータ数値項目04"		,""}
+				,{"ParaInt05"	,ColParaInt05		,"int"		,"パラメータ数値項目05"		,""}
+				,{"ParaInt06"	,ColParaInt06		,"int"		,"パラメータ数値項目06"		,""}
+				,{"ParaInt07"	,ColParaInt07		,"int"		,"パラメータ数値項目07"		,""}
+				,{"ParaInt08"	,ColParaInt08		,"int"		,"パラメータ数値項目08"		,""}
+				,{"ParaInt09"	,ColParaInt09		,"int"		,"パラメータ数値項目09"		,""}
+				,{"ParaInt10"	,ColParaInt10		,"int"		,"パラメータ数値項目10"		,""}
+				,{"EntryDate"	,ColEntryDate		,"String"	,"登録日"					,""}
+				,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日"					,""}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"					,""}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"					,""}
 				};
 		
 		return RtSettingParameterMstRtNANKO;

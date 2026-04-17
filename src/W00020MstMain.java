@@ -52,6 +52,10 @@ public class W00020MstMain{
 		JButton LocationMst = B00110FrameParts.BtnSet(				 20, 75,130,20,"ロケーション",11);
 		PN_AboutClient.add(LocationMst);
 		
+		//仕入先
+		JButton SupplierMst = B00110FrameParts.BtnSet(				 20,100,130,20,"仕入先",11);
+		PN_AboutClient.add(SupplierMst);
+		
 		//荷主パラメータ
 		JButton WankoParameterMst 	= B00110FrameParts.BtnSet(		580,200,130,20,"荷主パラメータ",11);
 		PN_AboutClient.add(WankoParameterMst);
@@ -153,6 +157,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00065DeliveryComversionMstSerarch.DeliveryComversionMstSerarch(0, 0);
+			}
+		});
+		
+		//仕入先
+		SupplierMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00100SupplierMstSearch.SupplierMstSearch(0,0);
 			}
 		});
 		
