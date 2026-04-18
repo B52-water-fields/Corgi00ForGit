@@ -462,6 +462,29 @@ public class WM00100SupplierMstSearch{
 			}
 		});
 		
+		//Excel取込ボタン
+		ExcelEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00102SupplierMstExcelEntry.SupplierMstExcelEntry(0,0,Selected);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
 		//チェックボックス操作時の挙動
 		tableModel_ms01.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){

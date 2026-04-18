@@ -1,7 +1,10 @@
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -229,7 +232,6 @@ public class WM00101SupplierMstRenewAndCreate{
 		main_fm.add(TB_DECD);
 		main_fm.add(TB_DepartmentCd);
 		main_fm.add(TB_DEName01);
-		
 		
 		main_fm.setVisible(true);
 		
@@ -521,6 +523,157 @@ public class WM00101SupplierMstRenewAndCreate{
 			}
 		});
 		
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					String GetClCd			= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
+					String GetWhCd			= B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//倉庫コード
+					String GetSPCd			= TB_SPCd.getText();			//仕入先コード
+					String GetSPName01		= TB_SPName01.getText();		//仕入先名1
+					String GetSPName02		= TB_SPName02.getText();		//仕入先名2
+					String GetSPName03		= TB_SPName03.getText();		//仕入先名3
+					String GetSPPost		= TB_SPPost.getText();			//仕入先郵便
+					String GetSPAdd01		= TB_SPAdd01.getText();			//仕入先住所1
+					String GetSPAdd02		= TB_SPAdd02.getText();			//仕入先住所2
+					String GetSPAdd03		= TB_SPAdd03.getText();			//仕入先住所3
+					String GetSPTel			= TB_SPTel.getText();			//仕入先電話
+					String GetSPFax			= TB_SPFax.getText();			//仕入先FAX
+					String GetSPMail		= TB_SPMail.getText();			//仕入先MAIL
+					String GetCom01			= TB_Com01.getText();			//コメント1
+					String GetCom02			= TB_Com02.getText();			//コメント2
+					String GetCom03			= TB_Com03.getText();			//コメント3
+					String GetPTMSCDBMN		= TB_PTMSCDBMN.getText();		//基幹Sysコード（部門）
+					String GetPTMSCDNINUSHI	= TB_PTMSCDNINUSHI.getText();	//基幹Sysコード（荷主）
+					String GetPaySite		= TB_PaySite.getText();			//支払いサイト（月数）
+					String GetPayDate		= B00100DefaultVariable.ShimeDateList[1][TB_PayDate.getSelectedIndex()];		//支払日（末日＝99）
+					String GetShimeDate		= B00100DefaultVariable.ShimeDateList[1][TB_ShimeDate.getSelectedIndex()];	//締め日（末日＝99）
+					String GetDECD			= TB_DECD.getText();			//納品先コード
+					String GetDepartmentCd	= TB_DepartmentCd.getText();	//部署CD
+					
+					if(null==GetClCd			){GetClCd				= "";}
+					if(null==GetWhCd			){GetWhCd				= "";}
+					if(null==GetSPCd			){GetSPCd				= "";}
+					if(null==GetSPName01		){GetSPName01			= "";}
+					if(null==GetSPName02		){GetSPName02			= "";}
+					if(null==GetSPName03		){GetSPName03			= "";}
+					if(null==GetSPPost			){GetSPPost				= "";}
+					if(null==GetSPAdd01			){GetSPAdd01			= "";}
+					if(null==GetSPAdd02			){GetSPAdd02			= "";}
+					if(null==GetSPAdd03			){GetSPAdd03			= "";}
+					if(null==GetSPTel			){GetSPTel				= "";}
+					if(null==GetSPFax			){GetSPFax				= "";}
+					if(null==GetSPMail			){GetSPMail				= "";}
+					if(null==GetCom01			){GetCom01				= "";}
+					if(null==GetCom02			){GetCom02				= "";}
+					if(null==GetCom03			){GetCom03				= "";}
+					if(null==GetPTMSCDBMN		){GetPTMSCDBMN			= "";}
+					if(null==GetPTMSCDNINUSHI	){GetPTMSCDNINUSHI		= "";}
+					if(null==GetPaySite			){GetPaySite			= "";}
+					if(null==GetPayDate			){GetPayDate			= "";}
+					if(null==GetShimeDate		){GetShimeDate			= "";}
+					if(null==GetDECD			){GetDECD				= "";}
+					if(null==GetDepartmentCd	){GetDepartmentCd		= "";}
+					
+					GetClCd				= B00020ToolsTextControl.Trim(GetClCd);
+					GetWhCd				= B00020ToolsTextControl.Trim(GetWhCd);
+					GetSPCd				= B00020ToolsTextControl.Trim(GetSPCd);
+					GetSPName01			= B00020ToolsTextControl.Trim(GetSPName01);
+					GetSPName02			= B00020ToolsTextControl.Trim(GetSPName02);
+					GetSPName03			= B00020ToolsTextControl.Trim(GetSPName03);
+					GetSPPost			= B00020ToolsTextControl.Trim(GetSPPost);
+					GetSPAdd01			= B00020ToolsTextControl.Trim(GetSPAdd01);
+					GetSPAdd02			= B00020ToolsTextControl.Trim(GetSPAdd02);
+					GetSPAdd03			= B00020ToolsTextControl.Trim(GetSPAdd03);
+					GetSPTel			= B00020ToolsTextControl.Trim(GetSPTel);
+					GetSPFax			= B00020ToolsTextControl.Trim(GetSPFax);
+					GetSPMail			= B00020ToolsTextControl.Trim(GetSPMail);
+					GetCom01			= B00020ToolsTextControl.Trim(GetCom01);
+					GetCom02			= B00020ToolsTextControl.Trim(GetCom02);
+					GetCom03			= B00020ToolsTextControl.Trim(GetCom03);
+					GetPTMSCDBMN		= B00020ToolsTextControl.Trim(GetPTMSCDBMN);
+					GetPTMSCDNINUSHI	= B00020ToolsTextControl.Trim(GetPTMSCDNINUSHI);
+					GetPaySite			= B00020ToolsTextControl.Trim(GetPaySite);
+					GetPayDate			= B00020ToolsTextControl.Trim(GetPayDate);
+					GetShimeDate		= B00020ToolsTextControl.Trim(GetShimeDate);
+					GetDECD				= B00020ToolsTextControl.Trim(GetDECD);
+					GetDepartmentCd		= B00020ToolsTextControl.Trim(GetDepartmentCd);
+					
+					GetPaySite			= B00020ToolsTextControl.num_only_String02(GetPaySite);
+					GetPayDate			= B00020ToolsTextControl.num_only_String02(GetPayDate);
+					GetShimeDate		= B00020ToolsTextControl.num_only_String02(GetShimeDate);
+					
+					if("".equals(GetPaySite)	){GetPaySite			= "1";}
+					if("".equals(GetPayDate)	){GetPayDate			= "99";}
+					if("".equals(GetShimeDate)	){GetShimeDate			= "99";}
+					
+					GetPaySite			= ""+(int)(Float.parseFloat(GetPaySite));
+					GetPayDate			= ""+(int)(Float.parseFloat(GetPayDate));
+					GetShimeDate		= ""+(int)(Float.parseFloat(GetShimeDate));
+					
+					ArrayList<String> ErrMsg = ErrCheck(
+							GetClCd,
+							GetWhCd,
+							GetSPCd,
+							GetSPName01,
+							GetSPName02,
+							GetSPName03,
+							GetSPPost,
+							GetSPAdd01,
+							GetSPAdd02,
+							GetSPAdd03,
+							GetSPTel,
+							GetSPFax,
+							GetSPMail,
+							GetCom01,
+							GetCom02,
+							GetCom03,
+							GetPTMSCDBMN,
+							GetPTMSCDNINUSHI,
+							GetPaySite,
+							GetPayDate,
+							GetShimeDate,
+							GetDECD,
+							GetDepartmentCd
+							);
+					
+					if(null==ErrMsg||0==ErrMsg.size()) {
+						DataEntry(
+								GetClCd,
+								GetWhCd,
+								GetSPCd,
+								GetSPName01,
+								GetSPName02,
+								GetSPName03,
+								GetSPPost,
+								GetSPAdd01,
+								GetSPAdd02,
+								GetSPAdd03,
+								GetSPTel,
+								GetSPFax,
+								GetSPMail,
+								GetCom01,
+								GetCom02,
+								GetCom03,
+								GetPTMSCDBMN,
+								GetPTMSCDNINUSHI,
+								GetPaySite,
+								GetPayDate,
+								GetShimeDate,
+								GetDECD,
+								GetDepartmentCd
+								);
+					}else {
+						ErrView(ErrMsg);
+					}
+					
+					RenewFg = true;
+				}
+			}
+		});
+		
 		//届先検索ボタン押下時の挙動
 		DeliverySerachBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
@@ -620,6 +773,101 @@ public class WM00101SupplierMstRenewAndCreate{
 				WM00100SupplierMstSearch.SupplierMstSearch(0, 0);
 			}
 		});
+	}
+	
+	private static ArrayList<String> ErrCheck(
+			String GetClCd,
+			String GetWhCd,
+			String GetSPCd,
+			String GetSPName01,
+			String GetSPName02,
+			String GetSPName03,
+			String GetSPPost,
+			String GetSPAdd01,
+			String GetSPAdd02,
+			String GetSPAdd03,
+			String GetSPTel,
+			String GetSPFax,
+			String GetSPMail,
+			String GetCom01,
+			String GetCom02,
+			String GetCom03,
+			String GetPTMSCDBMN,
+			String GetPTMSCDNINUSHI,
+			String GetPaySite,
+			String GetPayDate,
+			String GetShimeDate,
+			String GetDECD,
+			String GetDepartmentCd
+			) {
+		ArrayList<String> ErrMsg = new ArrayList<String>();
+		
+		if("".equals(GetSPName01)) {
+			ErrMsg.add("仕入先名01は必須です");
+		}
+		
+		
+		return ErrMsg;
+	}
+	
+	private static void DataEntry(
+			String GetClCd,
+			String GetWhCd,
+			String GetSPCd,
+			String GetSPName01,
+			String GetSPName02,
+			String GetSPName03,
+			String GetSPPost,
+			String GetSPAdd01,
+			String GetSPAdd02,
+			String GetSPAdd03,
+			String GetSPTel,
+			String GetSPFax,
+			String GetSPMail,
+			String GetCom01,
+			String GetCom02,
+			String GetCom03,
+			String GetPTMSCDBMN,
+			String GetPTMSCDNINUSHI,
+			String GetPaySite,
+			String GetPayDate,
+			String GetShimeDate,
+			String GetDECD,
+			String GetDepartmentCd
+			) {
+	}
+	
+	private static void ErrView(ArrayList<String>ErrMsg) {
+		//必要フォルダを生成する
+		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\SupplierMst";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\SupplierMst\\Err";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\SupplierMst\\BK";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		
+		//ファイルに出力
+		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\SupplierMst\\Err";
+		
+		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
+		
+		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		
+		//古いエラーデータ削除
+		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		
+		//ファイル開く
+		File file = new File(ErrFP);
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			desktop.open(file);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 	
 	private static Object[][] SupplierRt(String TgtClCd,String TgtWhCd,String TgSPCd){
