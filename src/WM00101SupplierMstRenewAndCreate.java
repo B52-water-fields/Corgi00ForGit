@@ -109,7 +109,6 @@ public class WM00101SupplierMstRenewAndCreate{
 		
 		TB_ClCd.setEnabled(false);
 		TB_WhCd.setEnabled(false);
-		TB_SPCd.setEnabled(false);
 		TB_EntryDate.setEditable(false);
 		TB_UpdateDate.setEditable(false);
 		TB_EntryUser.setEditable(false);
@@ -236,6 +235,9 @@ public class WM00101SupplierMstRenewAndCreate{
 		main_fm.setVisible(true);
 		
 		//届先検索ボタン
+		JButton GetSpCdBtn = B00110FrameParts.BtnSet(	350,100,100,20,"仕入先Cd採番",10);
+		
+		//届先検索ボタン
 		JButton DeliverySerachBtn = B00110FrameParts.BtnSet(	480,625,100,20,"届先検索",11);
 		main_fm.add(DeliverySerachBtn);
 		
@@ -359,7 +361,15 @@ public class WM00101SupplierMstRenewAndCreate{
 		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,210,770,400,tb01);
 		DeliverySerach_fm.add(scpn01);
 		
-		TB_SPName01.requestFocusInWindow();
+		String GetSpCd = TB_SPCd.getText();
+		if("".equals(GetSpCd)) {
+			main_fm.add(GetSpCdBtn);
+			TB_SPCd.setEnabled(true);
+			TB_SPCd.requestFocusInWindow();
+		}else {
+			TB_SPCd.setEnabled(false);
+			TB_SPName01.requestFocusInWindow();
+		}
 		RenewFg = true;
 		
 		//届先検索検索ボタン押下時の挙動
@@ -553,65 +563,7 @@ public class WM00101SupplierMstRenewAndCreate{
 					String GetDECD			= TB_DECD.getText();			//納品先コード
 					String GetDepartmentCd	= TB_DepartmentCd.getText();	//部署CD
 					
-					if(null==GetClCd			){GetClCd				= "";}
-					if(null==GetWhCd			){GetWhCd				= "";}
-					if(null==GetSPCd			){GetSPCd				= "";}
-					if(null==GetSPName01		){GetSPName01			= "";}
-					if(null==GetSPName02		){GetSPName02			= "";}
-					if(null==GetSPName03		){GetSPName03			= "";}
-					if(null==GetSPPost			){GetSPPost				= "";}
-					if(null==GetSPAdd01			){GetSPAdd01			= "";}
-					if(null==GetSPAdd02			){GetSPAdd02			= "";}
-					if(null==GetSPAdd03			){GetSPAdd03			= "";}
-					if(null==GetSPTel			){GetSPTel				= "";}
-					if(null==GetSPFax			){GetSPFax				= "";}
-					if(null==GetSPMail			){GetSPMail				= "";}
-					if(null==GetCom01			){GetCom01				= "";}
-					if(null==GetCom02			){GetCom02				= "";}
-					if(null==GetCom03			){GetCom03				= "";}
-					if(null==GetPTMSCDBMN		){GetPTMSCDBMN			= "";}
-					if(null==GetPTMSCDNINUSHI	){GetPTMSCDNINUSHI		= "";}
-					if(null==GetPaySite			){GetPaySite			= "";}
-					if(null==GetPayDate			){GetPayDate			= "";}
-					if(null==GetShimeDate		){GetShimeDate			= "";}
-					if(null==GetDECD			){GetDECD				= "";}
-					if(null==GetDepartmentCd	){GetDepartmentCd		= "";}
-					
-					GetClCd				= B00020ToolsTextControl.Trim(GetClCd);
-					GetWhCd				= B00020ToolsTextControl.Trim(GetWhCd);
-					GetSPCd				= B00020ToolsTextControl.Trim(GetSPCd);
-					GetSPName01			= B00020ToolsTextControl.Trim(GetSPName01);
-					GetSPName02			= B00020ToolsTextControl.Trim(GetSPName02);
-					GetSPName03			= B00020ToolsTextControl.Trim(GetSPName03);
-					GetSPPost			= B00020ToolsTextControl.Trim(GetSPPost);
-					GetSPAdd01			= B00020ToolsTextControl.Trim(GetSPAdd01);
-					GetSPAdd02			= B00020ToolsTextControl.Trim(GetSPAdd02);
-					GetSPAdd03			= B00020ToolsTextControl.Trim(GetSPAdd03);
-					GetSPTel			= B00020ToolsTextControl.Trim(GetSPTel);
-					GetSPFax			= B00020ToolsTextControl.Trim(GetSPFax);
-					GetSPMail			= B00020ToolsTextControl.Trim(GetSPMail);
-					GetCom01			= B00020ToolsTextControl.Trim(GetCom01);
-					GetCom02			= B00020ToolsTextControl.Trim(GetCom02);
-					GetCom03			= B00020ToolsTextControl.Trim(GetCom03);
-					GetPTMSCDBMN		= B00020ToolsTextControl.Trim(GetPTMSCDBMN);
-					GetPTMSCDNINUSHI	= B00020ToolsTextControl.Trim(GetPTMSCDNINUSHI);
-					GetPaySite			= B00020ToolsTextControl.Trim(GetPaySite);
-					GetPayDate			= B00020ToolsTextControl.Trim(GetPayDate);
-					GetShimeDate		= B00020ToolsTextControl.Trim(GetShimeDate);
-					GetDECD				= B00020ToolsTextControl.Trim(GetDECD);
-					GetDepartmentCd		= B00020ToolsTextControl.Trim(GetDepartmentCd);
-					
-					GetPaySite			= B00020ToolsTextControl.num_only_String02(GetPaySite);
-					GetPayDate			= B00020ToolsTextControl.num_only_String02(GetPayDate);
-					GetShimeDate		= B00020ToolsTextControl.num_only_String02(GetShimeDate);
-					
-					if("".equals(GetPaySite)	){GetPaySite			= "1";}
-					if("".equals(GetPayDate)	){GetPayDate			= "99";}
-					if("".equals(GetShimeDate)	){GetShimeDate			= "99";}
-					
-					GetPaySite			= ""+(int)(Float.parseFloat(GetPaySite));
-					GetPayDate			= ""+(int)(Float.parseFloat(GetPayDate));
-					GetShimeDate		= ""+(int)(Float.parseFloat(GetShimeDate));
+
 					
 					ArrayList<String> ErrMsg = ErrCheck(
 							GetClCd,
@@ -775,6 +727,120 @@ public class WM00101SupplierMstRenewAndCreate{
 		});
 	}
 	
+	private static String[] TxtTrim(
+			String GetClCd,
+			String GetWhCd,
+			String GetSPCd,
+			String GetSPName01,
+			String GetSPName02,
+			String GetSPName03,
+			String GetSPPost,
+			String GetSPAdd01,
+			String GetSPAdd02,
+			String GetSPAdd03,
+			String GetSPTel,
+			String GetSPFax,
+			String GetSPMail,
+			String GetCom01,
+			String GetCom02,
+			String GetCom03,
+			String GetPTMSCDBMN,
+			String GetPTMSCDNINUSHI,
+			String GetPaySite,
+			String GetPayDate,
+			String GetShimeDate,
+			String GetDECD,
+			String GetDepartmentCd
+			) {
+		String[] rt = new String[23];
+		
+		if(null==GetClCd			){GetClCd				= "";}
+		if(null==GetWhCd			){GetWhCd				= "";}
+		if(null==GetSPCd			){GetSPCd				= "";}
+		if(null==GetSPName01		){GetSPName01			= "";}
+		if(null==GetSPName02		){GetSPName02			= "";}
+		if(null==GetSPName03		){GetSPName03			= "";}
+		if(null==GetSPPost			){GetSPPost				= "";}
+		if(null==GetSPAdd01			){GetSPAdd01			= "";}
+		if(null==GetSPAdd02			){GetSPAdd02			= "";}
+		if(null==GetSPAdd03			){GetSPAdd03			= "";}
+		if(null==GetSPTel			){GetSPTel				= "";}
+		if(null==GetSPFax			){GetSPFax				= "";}
+		if(null==GetSPMail			){GetSPMail				= "";}
+		if(null==GetCom01			){GetCom01				= "";}
+		if(null==GetCom02			){GetCom02				= "";}
+		if(null==GetCom03			){GetCom03				= "";}
+		if(null==GetPTMSCDBMN		){GetPTMSCDBMN			= "";}
+		if(null==GetPTMSCDNINUSHI	){GetPTMSCDNINUSHI		= "";}
+		if(null==GetPaySite			){GetPaySite			= "";}
+		if(null==GetPayDate			){GetPayDate			= "";}
+		if(null==GetShimeDate		){GetShimeDate			= "";}
+		if(null==GetDECD			){GetDECD				= "";}
+		if(null==GetDepartmentCd	){GetDepartmentCd		= "";}
+		
+		GetClCd				= B00020ToolsTextControl.Trim(GetClCd);
+		GetWhCd				= B00020ToolsTextControl.Trim(GetWhCd);
+		GetSPCd				= B00020ToolsTextControl.Trim(GetSPCd);
+		GetSPName01			= B00020ToolsTextControl.Trim(GetSPName01);
+		GetSPName02			= B00020ToolsTextControl.Trim(GetSPName02);
+		GetSPName03			= B00020ToolsTextControl.Trim(GetSPName03);
+		GetSPPost			= B00020ToolsTextControl.Trim(GetSPPost);
+		GetSPAdd01			= B00020ToolsTextControl.Trim(GetSPAdd01);
+		GetSPAdd02			= B00020ToolsTextControl.Trim(GetSPAdd02);
+		GetSPAdd03			= B00020ToolsTextControl.Trim(GetSPAdd03);
+		GetSPTel			= B00020ToolsTextControl.Trim(GetSPTel);
+		GetSPFax			= B00020ToolsTextControl.Trim(GetSPFax);
+		GetSPMail			= B00020ToolsTextControl.Trim(GetSPMail);
+		GetCom01			= B00020ToolsTextControl.Trim(GetCom01);
+		GetCom02			= B00020ToolsTextControl.Trim(GetCom02);
+		GetCom03			= B00020ToolsTextControl.Trim(GetCom03);
+		GetPTMSCDBMN		= B00020ToolsTextControl.Trim(GetPTMSCDBMN);
+		GetPTMSCDNINUSHI	= B00020ToolsTextControl.Trim(GetPTMSCDNINUSHI);
+		GetPaySite			= B00020ToolsTextControl.Trim(GetPaySite);
+		GetPayDate			= B00020ToolsTextControl.Trim(GetPayDate);
+		GetShimeDate		= B00020ToolsTextControl.Trim(GetShimeDate);
+		GetDECD				= B00020ToolsTextControl.Trim(GetDECD);
+		GetDepartmentCd		= B00020ToolsTextControl.Trim(GetDepartmentCd);
+		
+		GetPaySite			= B00020ToolsTextControl.num_only_String02(GetPaySite);
+		GetPayDate			= B00020ToolsTextControl.num_only_String02(GetPayDate);
+		GetShimeDate		= B00020ToolsTextControl.num_only_String02(GetShimeDate);
+		
+		if("".equals(GetPaySite)	){GetPaySite			= "1";}
+		if("".equals(GetPayDate)	){GetPayDate			= "99";}
+		if("".equals(GetShimeDate)	){GetShimeDate			= "99";}
+		
+		GetPaySite			= ""+(int)(Float.parseFloat(GetPaySite));
+		GetPayDate			= ""+(int)(Float.parseFloat(GetPayDate));
+		GetShimeDate		= ""+(int)(Float.parseFloat(GetShimeDate));
+		
+		rt[ 0]= GetClCd;
+		rt[ 1]= GetWhCd;
+		rt[ 2]= GetSPCd;
+		rt[ 3]= GetSPName01;
+		rt[ 4]= GetSPName02;
+		rt[ 5]= GetSPName03;
+		rt[ 6]= GetSPPost;
+		rt[ 7]= GetSPAdd01;
+		rt[ 8]= GetSPAdd02;
+		rt[ 9]= GetSPAdd03;
+		rt[10]= GetSPTel;
+		rt[11]= GetSPFax;
+		rt[12]= GetSPMail;
+		rt[13]= GetCom01;
+		rt[14]= GetCom02;
+		rt[15]= GetCom03;
+		rt[16]= GetPTMSCDBMN;
+		rt[17]= GetPTMSCDNINUSHI;
+		rt[18]= GetPaySite;
+		rt[19]= GetPayDate;
+		rt[20]= GetShimeDate;
+		rt[21]= GetDECD;
+		rt[22]= GetDepartmentCd;
+		
+		return rt;
+	}
+	
 	private static ArrayList<String> ErrCheck(
 			String GetClCd,
 			String GetWhCd,
@@ -802,11 +868,61 @@ public class WM00101SupplierMstRenewAndCreate{
 			) {
 		ArrayList<String> ErrMsg = new ArrayList<String>();
 		
+		String[] TxtTrim = TxtTrim(
+				GetClCd,
+				GetWhCd,
+				GetSPCd,
+				GetSPName01,
+				GetSPName02,
+				GetSPName03,
+				GetSPPost,
+				GetSPAdd01,
+				GetSPAdd02,
+				GetSPAdd03,
+				GetSPTel,
+				GetSPFax,
+				GetSPMail,
+				GetCom01,
+				GetCom02,
+				GetCom03,
+				GetPTMSCDBMN,
+				GetPTMSCDNINUSHI,
+				GetPaySite,
+				GetPayDate,
+				GetShimeDate,
+				GetDECD,
+				GetDepartmentCd
+				);
+		GetClCd				= TxtTrim[0];
+		GetWhCd				= TxtTrim[1];
+		GetSPCd				= TxtTrim[2];
+		GetSPName01			= TxtTrim[3];
+		GetSPName02			= TxtTrim[4];
+		GetSPName03			= TxtTrim[5];
+		GetSPPost			= TxtTrim[6];
+		GetSPAdd01			= TxtTrim[7];
+		GetSPAdd02			= TxtTrim[8];
+		GetSPAdd03			= TxtTrim[9];
+		GetSPTel			= TxtTrim[10];
+		GetSPFax			= TxtTrim[11];
+		GetSPMail			= TxtTrim[12];
+		GetCom01			= TxtTrim[13];
+		GetCom02			= TxtTrim[14];
+		GetCom03			= TxtTrim[15];
+		GetPTMSCDBMN		= TxtTrim[16];
+		GetPTMSCDNINUSHI	= TxtTrim[17];
+		GetPaySite			= TxtTrim[18];
+		GetPayDate			= TxtTrim[19];
+		GetShimeDate		= TxtTrim[20];
+		GetDECD				= TxtTrim[21];
+		GetDepartmentCd		= TxtTrim[22];
+		
+		if("".equals(GetSPCd)) {
+			ErrMsg.add("仕入先CDは必須です");
+		}
 		if("".equals(GetSPName01)) {
 			ErrMsg.add("仕入先名01は必須です");
 		}
-		
-		
 		return ErrMsg;
 	}
 	
@@ -835,6 +951,120 @@ public class WM00101SupplierMstRenewAndCreate{
 			String GetDECD,
 			String GetDepartmentCd
 			) {
+		String[] TxtTrim = TxtTrim(
+				GetClCd,
+				GetWhCd,
+				GetSPCd,
+				GetSPName01,
+				GetSPName02,
+				GetSPName03,
+				GetSPPost,
+				GetSPAdd01,
+				GetSPAdd02,
+				GetSPAdd03,
+				GetSPTel,
+				GetSPFax,
+				GetSPMail,
+				GetCom01,
+				GetCom02,
+				GetCom03,
+				GetPTMSCDBMN,
+				GetPTMSCDNINUSHI,
+				GetPaySite,
+				GetPayDate,
+				GetShimeDate,
+				GetDECD,
+				GetDepartmentCd
+				);
+		GetClCd				= TxtTrim[0];
+		GetWhCd				= TxtTrim[1];
+		GetSPCd				= TxtTrim[2];
+		GetSPName01			= TxtTrim[3];
+		GetSPName02			= TxtTrim[4];
+		GetSPName03			= TxtTrim[5];
+		GetSPPost			= TxtTrim[6];
+		GetSPAdd01			= TxtTrim[7];
+		GetSPAdd02			= TxtTrim[8];
+		GetSPAdd03			= TxtTrim[9];
+		GetSPTel			= TxtTrim[10];
+		GetSPFax			= TxtTrim[11];
+		GetSPMail			= TxtTrim[12];
+		GetCom01			= TxtTrim[13];
+		GetCom02			= TxtTrim[14];
+		GetCom03			= TxtTrim[15];
+		GetPTMSCDBMN		= TxtTrim[16];
+		GetPTMSCDNINUSHI	= TxtTrim[17];
+		GetPaySite			= TxtTrim[18];
+		GetPayDate			= TxtTrim[19];
+		GetShimeDate		= TxtTrim[20];
+		GetDECD				= TxtTrim[21];
+		GetDepartmentCd		= TxtTrim[22];	
+		
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		
+		Object[][] SetString = {
+				 {"ClWh"			,"1","1","Key"	,GetWhCd}			//担当倉庫
+				,{"ClCd"			,"1","1","Key"	,GetClCd}			//荷主CD
+				,{"SPCd"			,"1","1","Key"	,GetSPCd}			//仕入先コード
+				,{"SPName01"		,"1","1",""		,GetSPName01}		//仕入先名1
+				,{"SPName02"		,"1","1",""		,GetSPName02}		//仕入先名2
+				,{"SPName03"		,"1","1",""		,GetSPName03}		//仕入先名3
+				,{"SPPost"			,"1","1",""		,GetSPPost}			//仕入先郵便
+				,{"SPAdd01"			,"1","1",""		,GetSPAdd01}		//仕入先住所1
+				,{"SPAdd02"			,"1","1",""		,GetSPAdd02}		//仕入先住所2
+				,{"SPAdd03"			,"1","1",""		,GetSPAdd03}		//仕入先住所3
+				,{"SPTel"			,"1","1",""		,GetSPTel}			//仕入先電話
+				,{"SPFax"			,"1","1",""		,GetSPFax}			//仕入先FAX
+				,{"SPMail"			,"1","1",""		,GetSPMail}			//仕入先MAIL
+				,{"Com01"			,"1","1",""		,GetCom01}			//コメント1
+				,{"Com02"			,"1","1",""		,GetCom02}			//コメント2
+				,{"Com03"			,"1","1",""		,GetCom03}			//コメント3
+				,{"PTMSCDBMN"		,"1","1",""		,GetPTMSCDBMN}		//プライムＴＭＳコード（部門）
+				,{"PTMSCDNINUSHI"	,"1","1",""		,GetPTMSCDNINUSHI}	//プライムＴＭＳコード（荷主）
+				,{"PaySite"			,"1","1",""		,GetPaySite}		//支払いサイト（月数）
+				,{"PayDate"			,"1","1",""		,GetPayDate}		//支払日　末日＝99
+				,{"ShimeDate"		,"1","1",""		,GetShimeDate}		//末日＝99
+				,{"EntryDate"		,"1","0",""		,now_dtm}			//登録日
+				,{"UpdateDate"		,"1","1",""		,now_dtm}			//更新日
+				,{"EntryUser"		,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//登録者
+				,{"UpdateUser"		,"1","1",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//更新者
+				,{"DECD"			,"1","1",""		,GetDECD}			//納品先コード
+				,{"DepartmentCd"	,"1","1",""		,GetDepartmentCd}	//部署CD
+				};
+		int KeyCount = 0;
+		for(int i=0;i<SetString.length;i++) {
+			if("Key".equals((String)SetString[i][3])) {
+				KeyCount	= KeyCount+1;
+			}
+		}
+		
+		String tgt_table = "WM0010Supplier";
+		String[][] field_name = new String[SetString.length][3];
+		String[][] entry_data = new String[1][SetString.length];
+		String[] judg_field = new String[KeyCount];
+		String[][] judg_data = new String[1][KeyCount];
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		KeyCount = 0;
+		for(int i=0;i<SetString.length;i++) {
+			field_name[i][0] = (String)SetString[i][0];
+			field_name[i][1] = (String)SetString[i][1];
+			field_name[i][2] = (String)SetString[i][2];
+			
+			entry_data[0][i] = (String)SetString[i][4];
+			
+			if("Key".equals((String)SetString[i][3])) {
+				judg_field[KeyCount] = (String)SetString[i][0];
+				
+				judg_data[0][KeyCount] = (String)SetString[i][4];
+				
+				KeyCount	= KeyCount+1;
+			}
+		}
+		if(0<entry_data.length) {
+			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		}
 	}
 	
 	private static void ErrView(ArrayList<String>ErrMsg) {
