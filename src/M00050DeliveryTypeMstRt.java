@@ -24,7 +24,6 @@ public class M00050DeliveryTypeMstRt{
 	String GetUpdateDate		= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColUpdateDate];			//データ更新日時
 	String GetEntryUser			= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColEntryUser];			//登録者コード
 	String GetUpdateUser		= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColUpdateUser];			//更新者コード
-			
 	*/
 	
 	
