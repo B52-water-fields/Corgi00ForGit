@@ -282,8 +282,19 @@ public class WM00102SupplierMstExcelEntry{
 			}
 		});
 	}
-	
 	private static void MstEntry(Object[][] CheckOb,String[] TableCol) {
+		Object[][] SetObRt = SetObRt(CheckOb,TableCol);
+	}
+	
+	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[] TableCol){
+		ArrayList<String> ErrMsg = new ArrayList<String>();
+		
+		Object[][] SetObRt = SetObRt(CheckOb,TableCol);
+		
+		return ErrMsg;
+	}
+	
+	private static Object[][] SetObRt(Object[][] CheckOb,String[] TableCol) {
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
 		
 		int ColClWh				= (int)0;	//担当倉庫
@@ -744,7 +755,7 @@ public class WM00102SupplierMstExcelEntry{
 						,{"UpdateUser"		,"1","1",""		,SetUpdateUser}
 						};
 		
-		
+		return SetOb;
 		
 	}
 	
@@ -886,14 +897,6 @@ public class WM00102SupplierMstExcelEntry{
 		Rt[BackDepartmentCd]	= GetDepartmentCd;
 		
 		return Rt;
-	}
-	
-	
-	
-	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[] TableCol){
-		ArrayList<String> ErrMsg = new ArrayList<String>();
-		
-		return ErrMsg;
 	}
 	
 	private static void ErrView(ArrayList<String>ErrMsg) {
