@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,6 +58,18 @@ public class B00040ToolsFolderCheck{
 	public static String FILE_FLD(String path) {
         String dirName = new File(path).getParent();
         return dirName;
+    }
+	
+	//フルパスからファイルサイズ取得
+	public static long FILESIZE(String path) {
+		Path p = Paths.get(path);
+		long FileSize=(long)0;
+		try {
+			FileSize = Files.size(p);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        return FileSize;
     }
 
 	//フルパスから拡張子取得

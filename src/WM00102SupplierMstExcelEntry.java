@@ -284,13 +284,145 @@ public class WM00102SupplierMstExcelEntry{
 	}
 	private static void MstEntry(Object[][] CheckOb,String[] TableCol) {
 		Object[][] SetObRt = SetObRt(CheckOb,TableCol);
+		
+		for(int i=0;i<SetObRt.length;i++) {
+			switch( (String)SetObRt[i][0]) {
+				case "SPCd"			:
+					//仕入れ先コード空白の場合新規にCd採番する
+					
+					break;
+				default:
+					break;
+			}
+		}
 	}
 	
 	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[] TableCol){
 		ArrayList<String> ErrMsg = new ArrayList<String>();
 		
 		Object[][] SetObRt = SetObRt(CheckOb,TableCol);
-		
+		for(int i=0;i<SetObRt.length;i++) {
+			switch( (String)SetObRt[i][0]) {
+				case "ClWh"			:
+					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++){
+						if(null==((String[])SetObRt[i][4])[i01]) {((String[])SetObRt[i][4])[i01]="";}
+						boolean CheckFg = false;
+						
+						if(A00000Main.ClWh.equals(((String[])SetObRt[i][4])[i01])) {
+							CheckFg = true;
+						}
+						
+						if(!CheckFg){
+							int wint = i01;
+							wint = wint+1;
+							ErrMsg.add(wint+"行目エラー:("+((String[])SetObRt[i][4])[i01]+")は現在作業中の倉庫コードではありません");
+						}
+					}
+					break;
+				case "ClCd"			:
+					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++){
+						if(null==((String[])SetObRt[i][4])[i01]) {((String[])SetObRt[i][4])[i01]="";}
+						boolean CheckFg = true;
+						
+						if(A00000Main.ClCd.equals(((String[])SetObRt[i][4])[i01])) {
+							CheckFg = true;
+						}
+						
+						if(!CheckFg){
+							int wint = i01;
+							wint = wint+1;
+							ErrMsg.add(wint+"行目エラー:("+((String[])SetObRt[i][4])[i01]+")は現在作業中の荷主コードではありません");
+						}
+					}
+					break;
+				case "SPCd"			:
+					break;
+				case "SPName01"		:
+					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++){
+						if(null==((String[])SetObRt[i][4])[i01]) {((String[])SetObRt[i][4])[i01]="";}
+						boolean CheckFg = true;
+						
+						if(!"".equals(((String[])SetObRt[i][4])[i01])) {
+							CheckFg = true;
+						}
+						
+						if(!CheckFg){
+							int wint = i01;
+							wint = wint+1;
+							ErrMsg.add(wint+"行目エラー:仕入先名01は必須です");
+						}
+					}
+					break;
+				case "SPName02"		:
+					break;
+				case "SPName03"		:
+					break;
+				case "SPPost"		:
+					break;
+				case "SPAdd01"		:
+					break;
+				case "SPAdd02"		:
+					break;
+				case "SPAdd03"		:
+					break;
+				case "SPTel"		:
+					break;
+				case "SPFax"		:
+					break;
+				case "SPMail"		:
+					break;
+				case "Com01"		:
+					break;
+				case "Com02"		:
+					break;
+				case "Com03"		:
+					break;
+				case "PTMSCDBMN"	:
+					break;
+				case "PTMSCDNINUSHI":
+					break;
+				case "PaySite"		:
+					break;
+				case "PayDate"		:
+					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++){
+						if(null==((String[])SetObRt[i][4])[i01]) {((String[])SetObRt[i][4])[i01]="";}
+						boolean CheckFg = B00102DefaultVariableCompare.ShimeDateListCheck(((String[])SetObRt[i][4])[i01]);
+						
+						if(!CheckFg){
+							int wint = i01;
+							wint = wint+1;
+							ErrMsg.add(wint+"行目エラー:("+((String[])SetObRt[i][4])[i01]+")は支払日設定として不正です");
+						}
+					}
+					break;
+				case "ShimeDate"	:
+					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++){
+						if(null==((String[])SetObRt[i][4])[i01]) {((String[])SetObRt[i][4])[i01]="";}
+						boolean CheckFg = B00102DefaultVariableCompare.ShimeDateListCheck(((String[])SetObRt[i][4])[i01]); 
+						
+						if(!CheckFg){
+							int wint = i01;
+							wint = wint+1;
+							ErrMsg.add(wint+"行目エラー:("+((String[])SetObRt[i][4])[i01]+")は請求日設定として不正です");
+						}
+					}
+					break;
+				case "DECD"			:
+					break;
+				case "DepartmentCd"	:
+					break;
+				case "EntryDate"	:
+					break;
+				case "UpdateDate"	:
+					break;
+				case "EntryUser"	:
+					break;
+				case "UpdateUser"	:
+					break;
+				default:
+					break;
+			}
+		}
 		return ErrMsg;
 	}
 	
