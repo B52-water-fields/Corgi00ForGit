@@ -356,22 +356,28 @@ public class M00001WhMstRt{
 		int WhNo = 0;
     	
     	for(int i=0;i<WhMstRt.length;i++) {
-    		if("ATWH".equals((""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).substring(0,4))&&11==(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).length()) {
+    		if(4<(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).length()&&"ATWH".equals((""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).substring(0,4))) {
     			String WST = B00020ToolsTextControl.num_only_String(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]);
-    			if(7==WST.length()) {
-    				int wint = Integer.parseInt(WST);
-    				if(WhNo<wint) {
-    					WhNo=wint;
-    				}
-    			}
+    			if("".equals(WST)){WST = "0";}
+				int wint = Integer.parseInt(WST);
+				if(WhNo<wint) {
+					WhNo=wint;
+				}
     		}
     	}
     	
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
 	    	WhNo = WhNo+1;
-	    	rt[i] = "0000000"+WhNo;
-	    	rt[i] = "ATWH"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    		if(MaxCount<WhNo) {
+    			rt[i] = "ATWH"+WhNo;
+    		}else {
+		    	rt[i] = SetZero+WhNo;
+		    	rt[i] = "ATWH"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
+    		}
     	}
     	
     	return rt;

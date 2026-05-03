@@ -350,7 +350,7 @@ public class M00042CautionMstRt{
     	int CautionNo = 0;
     	
     	for(int i=0;i<CautionMstRt.length;i++) {
-    		if("ATCT".equals((""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).substring(0,4))&&13==(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).length()) {
+    		if(4<(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).length()&&"ATCT".equals((""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).substring(0,4))) {
     			String WST = B00020ToolsTextControl.num_only_String(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]);
     			if(9==WST.length()) {
     				int wint = Integer.parseInt(WST);
@@ -362,13 +362,16 @@ public class M00042CautionMstRt{
     	}
 
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
     		CautionNo = CautionNo+1;
-    		if(1000000000>CautionNo) {
-		    	rt[i] = "000000000"+CautionNo;
-		    	rt[i] = "ATCT"+rt[i].substring(rt[i].length()-9,rt[i].length());
-    		}else {
+    		if(MaxCount<CautionNo) {
     			rt[i] = "ATCT"+CautionNo;
+    		}else {
+		    	rt[i] = SetZero+CautionNo;
+		    	rt[i] = "ATCT"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
     		}
     	}
     	

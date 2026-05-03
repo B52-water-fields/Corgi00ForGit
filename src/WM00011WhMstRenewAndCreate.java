@@ -223,8 +223,10 @@ public class WM00011WhMstRenewAndCreate{
 				GetTel  = B00020ToolsTextControl.num_only_String(GetTel);
 				GetFax  = B00020ToolsTextControl.num_only_String(GetFax);
 				
-				if("".equals(GetWHCD)) {
-					JOptionPane.showMessageDialog(null, "倉庫コードは必須です");
+				if("".equals(GetWHCD)) {GetWHCD = M00001WhMstRt.NewWhCdGet(1)[0];}
+				
+				if("".equals(GetWHName)) {
+					JOptionPane.showMessageDialog(null, "倉庫名は必須です");
 					KickFg = false;
 				}else {
 					ArrayList<String> SearchWHCD = new ArrayList<String>();

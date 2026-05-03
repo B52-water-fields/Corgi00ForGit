@@ -386,14 +386,17 @@ public class M00030ShippingCompanyMstRt{
     		}
     	}
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
     		SCNo = SCNo+1;
     		
-    		if(999999999<SCNo) {
+    		if(MaxCount<SCNo) {
     			rt[i] = "ATSC"+SCNo;
     		}else {
-		    	rt[i] = "000000000"+SCNo;
-		    	rt[i] = "ATSC"+rt[i].substring(rt[i].length()-9,rt[i].length());
+		    	rt[i] = SetZero+SCNo;
+		    	rt[i] = "ATSC"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
     		}
     	}
     	

@@ -529,13 +529,16 @@ public class M00040DeliveryMstRt{
     	}
 
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
     		DENo = DENo+1; 	
-    		if(999999999<DENo) {
+    		if(MaxCount<DENo) {
     			rt[i] = "AT"+DENo;
     		}else {
-		    	rt[i] = "000000000"+DENo;
-		    	rt[i] = "AT"+rt[i].substring(rt[i].length()-9,rt[i].length());
+		    	rt[i] = SetZero+DENo;
+		    	rt[i] = "AT"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
     		}
     	}
     	

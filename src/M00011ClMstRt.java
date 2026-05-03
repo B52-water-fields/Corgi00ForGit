@@ -449,13 +449,16 @@ public class M00011ClMstRt{
     	}
 
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
     		ClientNo = ClientNo+1;
-	    	if(999999999<ClientNo) {
+	    	if(MaxCount<ClientNo) {
     			rt[i] = "ATCL"+ClientNo;
     		}else {
-		    	rt[i] = "000000000"+ClientNo;
-		    	rt[i] = "ATCL"+rt[i].substring(rt[i].length()-9,rt[i].length());
+		    	rt[i] = SetZero+ClientNo;
+		    	rt[i] = "ATCL"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
     		}
     	}
     	

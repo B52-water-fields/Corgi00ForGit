@@ -241,13 +241,16 @@ public class M00110AdjustReasonRt{
     	}
     	
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
     		SpNo = SpNo+1;
-    		if(9999999<SpNo) {
+    		if(MaxCount<SpNo) {
     			rt[i] = "ATAJ"+SpNo;
     		}else {
-		    	rt[i] = "0000000"+SpNo;
-		    	rt[i] = "ATAJ"+rt[i].substring(rt[i].length()-7,rt[i].length());
+		    	rt[i] = SetZero+SpNo;
+		    	rt[i] = "ATAJ"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
     		}
     	}
     	

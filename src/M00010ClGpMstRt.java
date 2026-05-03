@@ -358,22 +358,28 @@ public class M00010ClGpMstRt{
 		int ClGpNo = 0;
     	
     	for(int i=0;i<ClGpMstRt.length;i++) {
-    		if("ATGR".equals((""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).substring(0,4))&&11==(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).length()) {
+    		if(4<(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).length()&&"ATGR".equals((""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).substring(0,4))) {
     			String WST = B00020ToolsTextControl.num_only_String(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]);
-    			if(7==WST.length()) {
-    				int wint = Integer.parseInt(WST);
-    				if(ClGpNo<wint) {
-    					ClGpNo=wint;
-    				}
-    			}
+    			if("".equals(WST)){WST = "0";}
+				int wint = Integer.parseInt(WST);
+				if(ClGpNo<wint) {
+					ClGpNo=wint;
+				}
     		}
     	}
     	
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
     		ClGpNo = ClGpNo+1;
-	    	rt[i] = "0000000"+ClGpNo;
-	    	rt[i] = "ATGR"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    		if(MaxCount<ClGpNo) {
+    			rt[i] = "ATGR"+ClGpNo;
+    		}else {
+		    	rt[i] = SetZero+ClGpNo;
+		    	rt[i] = "ATGR"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
+    		}
     	}
     	
     	return rt;

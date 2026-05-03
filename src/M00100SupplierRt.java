@@ -699,13 +699,16 @@ public class M00100SupplierRt{
     	}
     	
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
     		SpNo = SpNo+1;
-    		if(1000000000<=SpNo) {
+    		if(MaxCount<SpNo) {
     			rt[i] = "ATSP"+SpNo;
     		}else {
-		    	rt[i] = "000000000"+SpNo;
-		    	rt[i] = "ATSP"+rt[i].substring("000000000".length(),rt[i].length());
+		    	rt[i] = SetZero+SpNo;
+		    	rt[i] = "ATSP"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
     		}
     	}
     	

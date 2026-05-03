@@ -576,13 +576,16 @@ public class M00020UserMstRt{
     	}
 
     	String[] rt = new String[NeedCount];
+    	int MaxCount = 999999999;
+    	int wint = MaxCount+1;
+    	String SetZero = (""+wint).substring(1,(""+wint).length());
     	for(int i=0;i<NeedCount;i++) {
     		UserNo = UserNo+1;
-	    	if(999999999<UserNo) {
+	    	if(MaxCount<UserNo) {
     			rt[i] = "ATUS"+UserNo;
     		}else {
-		    	rt[i] = "000000000"+UserNo;
-		    	rt[i] = "ATUS"+rt[i].substring(rt[i].length()-7,rt[i].length());
+		    	rt[i] = SetZero+UserNo;
+		    	rt[i] = "ATUS"+rt[i].substring(rt[i].length()-SetZero.length(),rt[i].length());
     		}
     	}
     	
