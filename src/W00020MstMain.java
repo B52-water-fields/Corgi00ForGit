@@ -56,6 +56,10 @@ public class W00020MstMain{
 		JButton SupplierMst = B00110FrameParts.BtnSet(				 20,100,130,20,"仕入先",11);
 		PN_AboutClient.add(SupplierMst);
 		
+		//在庫調整理由
+		JButton AdjustReasonMst = B00110FrameParts.BtnSet(			 20,125,130,20,"在庫調整理由",11);
+		PN_AboutClient.add(AdjustReasonMst);
+		
 		//荷主パラメータ
 		JButton WankoParameterMst 	= B00110FrameParts.BtnSet(		580,200,130,20,"荷主パラメータ",11);
 		PN_AboutClient.add(WankoParameterMst);
@@ -169,6 +173,18 @@ public class W00020MstMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WM00100SupplierMstSearch.SupplierMstSearch(0,0);
+			}
+		});
+		
+		//在庫調整理由
+		AdjustReasonMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM00105AdjustReasonMstSerch.AdjustReasonMstSerch(0,0);
 			}
 		});
 		

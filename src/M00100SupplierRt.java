@@ -688,8 +688,9 @@ public class M00100SupplierRt{
 		int SpNo = 0;
     	
     	for(int i=0;i<SupplierRt.length;i++) {
-    		if("ATSP".equals((""+SupplierRt[i][M00100SupplierRt.ColSPCd]).substring(0,4))) {
+    		if(4<(""+SupplierRt[i][M00100SupplierRt.ColSPCd]).length()&&"ATSP".equals((""+SupplierRt[i][M00100SupplierRt.ColSPCd]).substring(0,4))) {
     			String WST = B00020ToolsTextControl.num_only_String(""+SupplierRt[i][M00100SupplierRt.ColSPCd]);
+    			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(SpNo<wint) {
 					SpNo=wint;
@@ -700,15 +701,14 @@ public class M00100SupplierRt{
     	String[] rt = new String[NeedCount];
     	for(int i=0;i<NeedCount;i++) {
     		SpNo = SpNo+1;
-    		if(9999999<SpNo) {
+    		if(1000000000<=SpNo) {
     			rt[i] = "ATSP"+SpNo;
     		}else {
-		    	rt[i] = "0000000"+SpNo;
-		    	rt[i] = "ATSP"+rt[i].substring(rt[i].length()-7,rt[i].length());
+		    	rt[i] = "000000000"+SpNo;
+		    	rt[i] = "ATSP"+rt[i].substring("000000000".length(),rt[i].length());
     		}
     	}
     	
     	return rt;
 	}
-	
 }

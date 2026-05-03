@@ -617,10 +617,19 @@ public class WM00101SupplierMstRenewAndCreate{
 								GetDECD,
 								GetDepartmentCd
 								);
+						
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+						
+						DeliverySerach_fm.setVisible(false);
+						DeliverySerach_fm.dispose();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						SupplierMstRenewAndCreate(0,0,GetClCd,GetWhCd,GetSPCd);
 					}else {
 						ErrView(ErrMsg);
 					}
-					
 					RenewFg = true;
 				}
 			}
@@ -805,6 +814,10 @@ public class WM00101SupplierMstRenewAndCreate{
 		GetPaySite			= B00020ToolsTextControl.num_only_String02(GetPaySite);
 		GetPayDate			= B00020ToolsTextControl.num_only_String02(GetPayDate);
 		GetShimeDate		= B00020ToolsTextControl.num_only_String02(GetShimeDate);
+		
+		GetSPPost			= B00020ToolsTextControl.num_only_String(GetSPPost);
+		GetSPTel			= B00020ToolsTextControl.num_only_String(GetSPTel);
+		GetSPFax			= B00020ToolsTextControl.num_only_String(GetSPFax);
 		
 		if("".equals(GetPaySite)	){GetPaySite			= "1";}
 		if("".equals(GetPayDate)	){GetPayDate			= "99";}
@@ -998,7 +1011,9 @@ public class WM00101SupplierMstRenewAndCreate{
 		GetPayDate			= TxtTrim[19];
 		GetShimeDate		= TxtTrim[20];
 		GetDECD				= TxtTrim[21];
-		GetDepartmentCd		= TxtTrim[22];	
+		GetDepartmentCd		= TxtTrim[22];
+		
+		if("".equals(GetSPCd)) {GetSPCd = M00100SupplierRt.NewSpCdGet(1)[0];}
 		
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
 		
@@ -1019,8 +1034,8 @@ public class WM00101SupplierMstRenewAndCreate{
 				,{"Com01"			,"1","1",""		,GetCom01}			//コメント1
 				,{"Com02"			,"1","1",""		,GetCom02}			//コメント2
 				,{"Com03"			,"1","1",""		,GetCom03}			//コメント3
-				,{"PTMSCDBMN"		,"1","1",""		,GetPTMSCDBMN}		//プライムＴＭＳコード（部門）
-				,{"PTMSCDNINUSHI"	,"1","1",""		,GetPTMSCDNINUSHI}	//プライムＴＭＳコード（荷主）
+				,{"PTMSCDBMN"		,"1","1",""		,GetPTMSCDBMN}		//基幹SYSコード（部門）
+				,{"PTMSCDNINUSHI"	,"1","1",""		,GetPTMSCDNINUSHI}	//基幹SYSコード（荷主）
 				,{"PaySite"			,"1","1",""		,GetPaySite}		//支払いサイト（月数）
 				,{"PayDate"			,"1","1",""		,GetPayDate}		//支払日　末日＝99
 				,{"ShimeDate"		,"1","1",""		,GetShimeDate}		//末日＝99
@@ -1031,40 +1046,13 @@ public class WM00101SupplierMstRenewAndCreate{
 				,{"DECD"			,"1","1",""		,GetDECD}			//納品先コード
 				,{"DepartmentCd"	,"1","1",""		,GetDepartmentCd}	//部署CD
 				};
-		int KeyCount = 0;
-		for(int i=0;i<SetString.length;i++) {
-			if("Key".equals((String)SetString[i][3])) {
-				KeyCount	= KeyCount+1;
-			}
-		}
-		
 		String tgt_table = "WM0010Supplier";
-		String[][] field_name = new String[SetString.length][3];
-		String[][] entry_data = new String[1][SetString.length];
-		String[] judg_field = new String[KeyCount];
-		String[][] judg_data = new String[1][KeyCount];
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		KeyCount = 0;
-		for(int i=0;i<SetString.length;i++) {
-			field_name[i][0] = (String)SetString[i][0];
-			field_name[i][1] = (String)SetString[i][1];
-			field_name[i][2] = (String)SetString[i][2];
-			
-			entry_data[0][i] = (String)SetString[i][4];
-			
-			if("Key".equals((String)SetString[i][3])) {
-				judg_field[KeyCount] = (String)SetString[i][0];
-				
-				judg_data[0][KeyCount] = (String)SetString[i][4];
-				
-				KeyCount	= KeyCount+1;
-			}
-		}
-		if(0<entry_data.length) {
-			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
-		}
+		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		
+		B00100DefaultVariable.SupplierList();
 	}
 	
 	private static void ErrView(ArrayList<String>ErrMsg) {

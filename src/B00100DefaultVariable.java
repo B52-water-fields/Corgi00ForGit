@@ -20,6 +20,9 @@ public class B00100DefaultVariable{
 	static String[][] SearchShippingCompanyList;	//検索用運送会社一覧
 	static String[][] ShippingCompanyList;			//設定用運送会社一覧
 	
+	static String[][] SearchSupplierList;			//検索用仕入先リスト
+	static String[][] SupplierList;					//設定用仕入先リスト
+	
 	static String[][] SearchDeliveryType01;
 	static String[][] SearchDeliveryType02;
 	static String[][] SearchDeliveryType03;
@@ -32,26 +35,32 @@ public class B00100DefaultVariable{
 	static String[][] DeliveryType04;
 	static String[][] DeliveryType05;
 	
-	static int ErrTxtDelete = 45;	//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
+	static int ErrTxtDelete 			= 45;	//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
+	
+	static int NormalTaxRate 			= 10;			//消費税率　※10%なら10
+	static int[] TaxRateList 			= {10,8,0};		//消費税率のリスト　※10%なら10　Ex）10,8,0
+	
+	static String[][] SearchTaxFgList	= {{"未指定","0:外税","1:内税","2:非課税"},{"","0","1","2"},{"","外税","内税","非課税"}};	//検索条件：外税内税区分
+	static String[][] TaxFgList 		= {{"0:外税","1:内税","2:非課税"},{"0","1","2"},{"外税","内税","非課税"}};					//外税内税区分
 	
 	
+	static String[][] SearchDelList 	= {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
+	static String[][] DelList 			= {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};						//設定用削除区分
 	
-	static String[][] SearchDelList = {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
-	static String[][] DelList = {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};							//設定用削除区分
-	
+	static boolean ActualDateUnControl;		//入荷日管理しない場合false※荷主毎パラメータマスタActualDateUnControl Seq = 0によって制御します
 	
 	/*
 	 マスタ優先区分　※データ優先：荷主届け先変換時にデータ優先する。マスタ優先（名称：届先変換マスタ⇒届先マスタ　住所：届先マスタの情報をひく）
 	 当然に連携データに名称住所がなければマスタ情報をひく
 	*/
-	static String[][] SearchMstPriorityFirstFg = {{"0:データ優先","1:マスタ優先","未指定"},{"0","1",""},{"データ優先","マスタ優先",""}};	
-	static String[][] MstPriorityFirstFg = {{"0:データ優先","1:マスタ優先"},{"0","1"},{"データ優先","マスタ優先"}};							
+	static String[][] SearchMstPriorityFirstFg 	= {{"0:データ優先","1:マスタ優先","未指定"},{"0","1",""},{"データ優先","マスタ優先",""}};	
+	static String[][] MstPriorityFirstFg 		= {{"0:データ優先","1:マスタ優先"},{"0","1"},{"データ優先","マスタ優先"}};							
 	
 	static String[][] SerachAuthorityFG;				//検索用ユーザー権限区分
 	static String[][] AuthorityFG;						//設定用ユーザー権限区分
 	
-	static String[][] SearchLocType = {{"未指定","0:通常","1:保管","8:入荷時","9:引当禁止"},{"","0","1","8","9"},{"","通常","保管","入荷時","引当禁止"},{"","1","1","0","0"}};		//ロケタイプ検索値{表示用,CD,名称,引当可能FG※引当対象なら1}
-	static String[][] LocType = {{"0:通常","1:保管","8:入荷時","9:引当禁止"},{"0","1","8","9"},{"通常","保管","入荷時","引当禁止"},{"1","1","0","0"}};									//ロケタイプ設定値{表示用,CD,名称,引当可能FG※引当対象なら1}
+	static String[][] SearchLocType 	= {{"未指定","0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"","0","1","7","8","9"},{"","通常","保管","スルーロケ","入荷時","引当禁止"},{"","1","1","0","0","0"}};		//ロケタイプ検索値{表示用,CD,名称,引当可能FG※引当対象なら1}
+	static String[][] LocType 			= {{"0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"0","1","7","8","9"},{"通常","保管","スルーロケ","入荷時","引当禁止"},{"1","1","0","0","0"}};									//ロケタイプ設定値{表示用,CD,名称,引当可能FG※引当対象なら1}
 	
 	static String DefaultActualDate 	= "1941/12/08";	//入荷日管理しない場合の入荷実績日
 	
@@ -59,75 +68,57 @@ public class B00100DefaultVariable{
 	
 	static String DefaultExpDate 		= "3000/01/01";	//消費期限管理しない場合の消費期限
 	
-	static String DefaultPtmsItemCd = "0001";			//基幹システム商品CD
+	static String DefaultPtmsItemCd 	= "0001";		//基幹システム商品CD
 	
-	static String[][] SearchStatusList = {{"未指定","0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"","0","1","2","3","8","9"}};	//検索条件：状況
-	static String[][] StatusList = {{"0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"0","1","2","3","8","9"}};						//状況
+	static String[][] SearchStatusList 			= {{"未指定","0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"","0","1","2","3","8","9"}};	//検索条件：状況
+	static String[][] StatusList 					= {{"0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"0","1","2","3","8","9"}};				//状況
 	
-	static String[][] SearchWmsStatusList = {{"未指定","0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"","0","1","2","3","8","7","9"}};	//検索条件：倉庫状況
-	static String[][] WmsStatusList = {{"0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"0","1","2","3","8","7","9"}};						//倉庫状況
+	static String[][] SearchWmsStatusList 		= {{"未指定","0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"","0","1","2","3","8","7","9"}};	//検索条件：倉庫状況
+	static String[][] WmsStatusList 				= {{"0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"0","1","2","3","8","7","9"}};				//倉庫状況
 	
-	static String[][] SearchArryvalFixFgList = {{"未指定","0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"","0","1","2","9"},{"","未入荷","入荷済","分納待","キャンセル"}};		//入荷状況リスト
-	static String[][] ArryvalFixFgList = {{"0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"0","1","2","9"},{"未入荷","入荷済","分納待","キャンセル"}};								//入荷状況リスト
+	static String[][] SearchArryvalFixFgList 	= {{"未指定","0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"","0","1","2","9"},{"","未入荷","入荷済","分納待","キャンセル"}};		//入荷状況リスト
+	static String[][] ArryvalFixFgList 			= {{"0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"0","1","2","9"},{"未入荷","入荷済","分納待","キャンセル"}};						//入荷状況リスト
 	
-	static String[][] SearchCautionTiming = {{"未指定","0:納品時","1:出荷時"},{"","0","1"},{"","納品時","出荷時"}};		//検索条件：注意事項タイミング
-	static String[][] CautionTiming = {{"0:納品時","1:出荷時"},{"0","1"},{"納品時","出荷時"}};							//注意事項タイミング
+	static String[][] SearchCautionTiming		= {{"未指定","0:納品時","1:出荷時"},{"","0","1"},{"","納品時","出荷時"}};		//検索条件：注意事項タイミング
+	static String[][] CautionTiming 				= {{"0:納品時","1:出荷時"},{"0","1"},{"納品時","出荷時"}};						//注意事項タイミング
 	
-	static String[][] ChildrenFGList = {{"0:親伝票","1:子伝票"},{"0","1"},{"親伝票","子伝票"}};				//赤黒区分
+	static String[][] ChildrenFGList 				= {{"0:親伝票","1:子伝票"},{"0","1"},{"親伝票","子伝票"}};				//赤黒区分
 	
-	static String[][] SearchTildFG = {{"未指定","0:常温","1:冷蔵","2:冷凍","3:チルド"},{"","0","1","2","3"},{"","常温","冷蔵","冷凍","チルド"}};
-	static String[][] TildFG = {{"0:常温","1:冷蔵","2:冷凍","3:チルド"},{"0","1","2","3"},{"常温","冷蔵","冷凍","チルド"}};								//0:常温必須
+	static String[][] SearchTildFG 				= {{"未指定","0:常温","1:冷蔵","2:冷凍","3:チルド"},{"","0","1","2","3"},{"","常温","冷蔵","冷凍","チルド"}};
+	static String[][] TildFG 						= {{"0:常温","1:冷蔵","2:冷凍","3:チルド"},{"0","1","2","3"},{"常温","冷蔵","冷凍","チルド"}};					//0:常温必須
 	
-	static String[][] ReceiptStampFGList = {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};	//受領印区分
+	static String[][] ReceiptStampFGList 		= {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};	//受領印区分
 	
-	static String[][] SearchInvoiceStatusList = {{"未指定","0:未請求","1:請求済","9:対象外"},{"","0","1","9"},{"","未請求","請求済","対象外"}};			//請求区分
-	static String[][] InvoiceStatusList = {{"0:未請求","1:請求済","9:対象外"},{"0","1","9"},{"未請求","請求済","対象外"}};
+	static String[][] SearchInvoiceStatusList 	= {{"未指定","0:未請求","1:請求済","9:対象外"},{"","0","1","9"},{"","未請求","請求済","対象外"}};				//請求区分
+	static String[][] InvoiceStatusList 			= {{"0:未請求","1:請求済","9:対象外"},{"0","1","9"},{"未請求","請求済","対象外"}};
 	
-	static String[][] SearchFeeFixFgList = {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(請求)
-	static String[][] FeeFixFgList = {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};										//金額確定フラグ設定値(請求)
+	static String[][] SearchFeeFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(請求)
+	static String[][] FeeFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(請求)
 	
-	static String[][] SearchPayFixFgList = {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(支払)
-	static String[][] PayFixFgList = {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};										//金額確定フラグ設定値(支払)
+	static String[][] SearchPayFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(支払)
+	static String[][] PayFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(支払)
 	
-	static String[][] SearchCODList = {{"未指定","0:一般","1:代引"},{"","0","1"},{"","一般","代引"}};		//検索条件：代引区分
-	static String[][] CODList = {{"0:一般","1:代引"},{"0","1"},{"一般","代引"}};							//代引区分
+	static String[][] SearchCODList 				= {{"未指定","0:一般","1:代引"},{"","0","1"},{"","一般","代引"}};		//検索条件：代引区分
+	static String[][] CODList 						= {{"0:一般","1:代引"},{"0","1"},{"一般","代引"}};						//代引区分
 	
-	static String[][] SearchTaxFgList = {{"未指定","0:外税","1:内税","2:非課税"},{"","0","1","2"},{"","外税","内税","非課税"}};	//検索条件：外税内税区分
-	static String[][] TaxFgList = {{"0:外税","1:内税","2:非課税"},{"0","1","2"},{"外税","内税","非課税"}};	//外税内税区分
+	static String[][] SearchUnitTypeList 		= {{"未指定","0:バラ","1:カートン","2:ケース","3：パレット"},{"","0","1","2","3"},{"","バラ","カートン","ケース","パレット"}};
+	static String[][] UnitTypeList 				= {{"0:バラ","1:カートン","2:ケース","3：パレット"},{"0","1","2","3"},{"バラ","カートン","ケース","パレット"}};
 	
-	static String[][] SearchUnitTypeList = {{"未指定","0:バラ","1:カートン","2:ケース","3：パレット"},{"","0","1","2","3"},{"","バラ","カートン","ケース","パレット"}};
-	static String[][] UnitTypeList = {{"0:バラ","1:カートン","2:ケース","3：パレット"},{"0","1","2","3"},{"バラ","カートン","ケース","パレット"}};
-	
-	static String[][] PurposeList = {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
-	
-	
-	
-	
+	static String[][] PurposeList 					= {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
 	
 	/*
 	====================================================================
 	↑設定確認済み
 	====================================================================
 	*/
-
 	
-	static boolean ActualDateUnControl = false;		//入荷日管理しない
 	
-	static int NormalTaxRate;							//消費税率　※10%なら10
-	static int[] TaxRateList;							//消費税率のリスト　※10%なら10　Ex）10,8,0
 	
-	static String PictSetFolder;						//画像保存先フォルダ
-	static String ErrSoundPath;						//エラー音パス
-	static String OKSoundPath;							//OK音パス
+	
 	
 	static int Cl_OldDataRenewDate = 93;				//これより古い荷主管理番号は先頭にOldつけて重複から外す
 
 	//検索条件 登録条件選択リスト用配列設定
-
-
-	
-	
-	static Object[][] SupplierList;				//仕入先リスト
 	
 	static Object[][] RouteGloupList;				//自動配車グループリスト	
 	static Object[][] SearchRouteGloupList;		//自動配車グループリスト検索条件用
@@ -143,6 +134,26 @@ public class B00100DefaultVariable{
 	static String ShipForcedDeliCd;				//強制出荷届先Cｄ
 	static String ShipForcedDeliDepartmentCd;	//強制出荷届先部署Cｄ
 
+	/*
+	荷主・運送会社ごとの個別開発時に追記していきます
+	*/
+	private static void HaisyaDataLayoutPt() {		//運送会社向け配車データ出力パターン
+		HaisyaDataLayoutPt = new String[3][1];
+		
+		HaisyaDataLayoutPt[0][0] = "Normal:標準";
+		HaisyaDataLayoutPt[1][0] = "Normal";
+		HaisyaDataLayoutPt[2][0] = "標準";
+	}
+	private static void LayoutPt() {				//荷主データ⇒送り状データ取り込みパターン
+		LayoutPt = new String[3][1];
+		
+		LayoutPt[0][0] = "Normal:標準";
+		LayoutPt[1][0] = "Normal";
+		LayoutPt[2][0] = "標準";
+	}
+	/*
+	個別開発時の追記ここまで
+	*/
 	
 	public static void DefaultVariable() {
 		//ログイン⇒荷主決定時に前提情報を取得する
@@ -151,7 +162,7 @@ public class B00100DefaultVariable{
 		ClGpList();					//荷主グループ一覧生成
 		ClList();						//荷主一覧生成
 		ShippingCompanyList();		//運送会社一覧生成
-		
+		SupplierList();				//仕入先リスト
 		
 		ShimeList();					//締め日・締め条件リスト生成
 		AuthorityFG();					//管理者ログイン時のみ権利権限設定
@@ -160,25 +171,93 @@ public class B00100DefaultVariable{
 		LayoutPt();					//荷主データ⇒送り状データ取り込みパターン
 		
 		DeliveryType();				//運送タイプ
+		ClDefaultLoc();				//基本のロケーション
+		
+		ClParameterCheck();			//荷主別パラメータマスタの値チェック
 	}
 	
-	private static void HaisyaDataLayoutPt() {		//運送会社向け配車データ出力パターン
-		HaisyaDataLayoutPt = new String[3][1];
+	public static void ClParameterCheck() {
+		ClParameterDefault();	//基本のパラメータ設定
 		
-		HaisyaDataLayoutPt[0][0] = "Normal:標準";
-		HaisyaDataLayoutPt[1][0] = "Normal";
-		HaisyaDataLayoutPt[2][0] = "標準";
-	}
-	
-	private static void LayoutPt() {				//荷主データ⇒送り状データ取り込みパターン
-		LayoutPt = new String[3][1];
-		
-		LayoutPt[0][0] = "Normal:標準";
-		LayoutPt[1][0] = "Normal";
-		LayoutPt[2][0] = "標準";
+		ClActualDateControl();	//入荷日管理するかどうか
 	}
 
+	public static void ClParameterDefault() {
+		ClActualDateControlDefault();	//パラメータマスタに入荷日管理しない設定で初期値設定
+	}
+	private static void ClActualDateControl() {
+		ActualDateUnControl = false;
+		Object[][] ParameterMstWankoRtFromParaCd = M00000ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("ActualDateUnControl");
+		if(0<ParameterMstWankoRtFromParaCd.length) {
+			for(int i=0;i<ParameterMstWankoRtFromParaCd.length;i++) {
+				if(0==(int)ParameterMstWankoRtFromParaCd[i][M00000ParameterMstWankoRt.ColParaCdSeq]&&0==(int)ParameterMstWankoRtFromParaCd[i][M00000ParameterMstWankoRt.ColParaInt01]) {		//パラメータ数値項目01 = 0なら入荷日管理する
+					ActualDateUnControl = true;
+				}
+			}
+		}
+	}
+	private static void ClActualDateControlDefault() {
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		//パラメータマスタ特に入荷予定日管理設定されていなければ入荷日管理"しない"で設定
+		Object[][] SetString = {
+					 {"ClWh"		,"1","0","Key"	,A00000Main.ClWh}					//担当倉庫コード
+					,{"ClCd"		,"1","0","Key"	,A00000Main.ClCd}					//荷主コード
+					,{"ParaCd"		,"1","0","Key"	,"ActualDateUnControl"}				//パラメータコード
+					,{"ParaCdSeq"	,"1","0","Key"	,"0"}					//ナンバリング
+					,{"ParaName"	,"1","0",""	,"入荷日管理設定"}			//パラメータ名
+					,{"ParaTxt01"	,"1","0",""	,"ParaInt01=0なら入荷日管理する"}				//パラメータテキスト項目01
+					,{"ParaTxt02"	,"1","0",""	,""}				//パラメータテキスト項目02
+					,{"ParaTxt03"	,"1","0",""	,""}				//パラメータテキスト項目03
+					,{"ParaTxt04"	,"1","0",""	,""}				//パラメータテキスト項目04
+					,{"ParaTxt05"	,"1","0",""	,""}				//パラメータテキスト項目05
+					,{"ParaTxt06"	,"1","0",""	,""}				//パラメータテキスト項目06
+					,{"ParaTxt07"	,"1","0",""	,""}				//パラメータテキスト項目07
+					,{"ParaTxt08"	,"1","0",""	,""}				//パラメータテキスト項目08
+					,{"ParaTxt09"	,"1","0",""	,""}				//パラメータテキスト項目09
+					,{"ParaTxt10"	,"1","0",""	,""}				//パラメータテキスト項目10
+					,{"ParaInt01"	,"1","0",""	,"1"}				//パラメータ数値項目01
+					,{"ParaInt02"	,"1","0",""	,"0"}				//パラメータ数値項目02
+					,{"ParaInt03"	,"1","0",""	,"0"}				//パラメータ数値項目03
+					,{"ParaInt04"	,"1","0",""	,"0"}				//パラメータ数値項目04
+					,{"ParaInt05"	,"1","0",""	,"0"}				//パラメータ数値項目05
+					,{"ParaInt06"	,"1","0",""	,"0"}				//パラメータ数値項目06
+					,{"ParaInt07"	,"1","0",""	,"0"}				//パラメータ数値項目07
+					,{"ParaInt08"	,"1","0",""	,"0"}				//パラメータ数値項目08
+					,{"ParaInt09"	,"1","0",""	,"0"}				//パラメータ数値項目09
+					,{"ParaInt10"	,"1","0",""	,"0"}				//パラメータ数値項目10
+					,{"EntryDate"	,"1","0",""	,now_dtm}				//登録日
+					,{"UpdateDate"	,"1","0",""	,now_dtm}				//更新日
+					,{"EntryUser"	,"1","0",""	,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//登録者
+					,{"UpdateUser"	,"1","0",""	,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//更新者
+					};
+		String tgt_table = "WM0000PARAMETER";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+	}
 	
+	private static void ClDefaultLoc() {
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		//スルー出荷用のロケーション"ZZZ2222222"つくる
+		Object[][] SetString = {
+				 {"ClCd"		,"1","0","Key"	,A00000Main.ClCd}					//荷主コード
+				,{"WhCd"		,"1","0","Key"	,A00000Main.ClWh}					//倉庫コード
+				,{"Loc"			,"1","0","Key"	,DefaultTroughLoc}				//ロケーション
+				,{"LocName"		,"1","0",""		,"(スルー出荷)"+DefaultTroughLoc}	//ロケーション名
+				,{"Type"		,"1","0",""		,"7"}								//ロケタイプ
+				,{"EntryDate"	,"1","0",""		,now_dtm}							//登録日
+				,{"UpdateDate"	,"1","0",""		,now_dtm}							//更新日
+				,{"EntryUser"	,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//登録者
+				,{"UpdateUser"	,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//更新者
+				};
+		String tgt_table = "WM0010LOCATIONMST";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+	}
+
 	public static void WhList() {
 		ArrayList<String> SearchWHCD = new ArrayList<String>();
 		ArrayList<String> SearchWHName = new ArrayList<String>();
@@ -315,6 +394,108 @@ public class B00100DefaultVariable{
 			SearchShippingCompanyList[0][i+1] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd] + ":" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName01];
 			SearchShippingCompanyList[1][i+1] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd];
 			SearchShippingCompanyList[2][i+1] = "" + ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName01];
+		}
+	}
+	
+	public static void SupplierList() {
+		//仕入先　0000000　強制入庫なければ作る
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		Object[][] SetString = {
+				 {"ClWh"			,"1","0","Key"	,A00000Main.ClWh}	//担当倉庫
+				,{"ClCd"			,"1","0","Key"	,A00000Main.ClCd}	//荷主CD
+				,{"SPCd"			,"1","0","Key"	,"0000000"}			//仕入先コード
+				,{"SPName01"		,"1","0",""		,"強制入庫"}		//仕入先名1
+				,{"SPName02"		,"1","0",""		,""}				//仕入先名2
+				,{"SPName03"		,"1","0",""		,""}				//仕入先名3
+				,{"SPPost"			,"1","0",""		,""}				//仕入先郵便
+				,{"SPAdd01"			,"1","0",""		,""}				//仕入先住所1
+				,{"SPAdd02"			,"1","0",""		,""}				//仕入先住所2
+				,{"SPAdd03"			,"1","0",""		,""}				//仕入先住所3
+				,{"SPTel"			,"1","0",""		,""}				//仕入先電話
+				,{"SPFax"			,"1","0",""		,""}				//仕入先FAX
+				,{"SPMail"			,"1","0",""		,""}				//仕入先MAIL
+				,{"Com01"			,"1","0",""		,""}				//コメント1
+				,{"Com02"			,"1","0",""		,""}				//コメント2
+				,{"Com03"			,"1","0",""		,""}				//コメント3
+				,{"PTMSCDBMN"		,"1","0",""		,""}				//基幹SYSコード（部門）
+				,{"PTMSCDNINUSHI"	,"1","0",""		,""}				//基幹SYSコード（荷主）
+				,{"PaySite"			,"1","0",""		,"1"}				//支払いサイト（月数）
+				,{"PayDate"			,"1","0",""		,"99"}				//支払日　末日＝99
+				,{"ShimeDate"		,"1","0",""		,"99"}				//末日＝99
+				,{"EntryDate"		,"1","0",""		,now_dtm}			//登録日
+				,{"UpdateDate"		,"1","0",""		,now_dtm}			//更新日
+				,{"EntryUser"		,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//登録者
+				,{"UpdateUser"		,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}	//更新者
+				,{"DECD"			,"1","0",""		,""}				//納品先コード
+				,{"DepartmentCd"	,"1","0",""		,""}				//部署CD
+				};
+		String tgt_table = "WM0010Supplier";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		
+		ArrayList<String> SearchClWh = new ArrayList<String>(); 			//担当倉庫
+		ArrayList<String> SearchClCd = new ArrayList<String>();				//荷主CD
+		ArrayList<String> SearchSPCd = new ArrayList<String>();				//仕入先コード
+		ArrayList<String> SearchSPName = new ArrayList<String>();			//仕入先名
+		ArrayList<String> SearchSPPost = new ArrayList<String>();			//仕入先郵便
+		ArrayList<String> SearchSPAdd = new ArrayList<String>();			//仕入先住所
+		ArrayList<String> SearchSPTel = new ArrayList<String>();			//仕入先電話
+		ArrayList<String> SearchSPFax = new ArrayList<String>();			//仕入先FAX
+		ArrayList<String> SearchSPMail = new ArrayList<String>();			//仕入先MAIL
+		ArrayList<String> SearchCom = new ArrayList<String>();				//コメント
+		ArrayList<String> SearchPTMSCDBMN = new ArrayList<String>();		//基幹Sysコード（部門）
+		ArrayList<String> SearchPTMSCDNINUSHI = new ArrayList<String>();	//基幹Sysコード（荷主）
+		ArrayList<Integer> SearchPaySiteStr = new ArrayList<Integer>();		//支払いサイト（月数）開始
+		ArrayList<Integer> SearchPayDateStr = new ArrayList<Integer>();		//支払日（日＝99）開始
+		ArrayList<Integer> SearchShimeDateStr = new ArrayList<Integer>();	//締め日（末日＝99）開始
+		ArrayList<Integer> SearchPaySiteEnd = new ArrayList<Integer>();		//支払いサイト（月数）終了
+		ArrayList<Integer> SearchPayDateEnd = new ArrayList<Integer>();		//支払日（日＝99）終了
+		ArrayList<Integer> SearchShimeDateEnd = new ArrayList<Integer>();	//締め日（末日＝99）終了
+		ArrayList<String> SearchDECD = new ArrayList<String>();				//納品先コード
+		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();		//部署CD
+		boolean AllSearch = false;
+		
+		SearchClWh.add(A00000Main.ClWh);
+		SearchClCd.add(A00000Main.ClCd);
+		
+		Object[][] SupplierRt = M00100SupplierRt.SupplierRt(
+				SearchClWh,				//担当倉庫
+				SearchClCd,				//荷主CD
+				SearchSPCd,				//仕入先コード
+				SearchSPName,			//仕入先名
+				SearchSPPost,			//仕入先郵便
+				SearchSPAdd,			//仕入先住所
+				SearchSPTel,			//仕入先電話
+				SearchSPFax,			//仕入先FAX
+				SearchSPMail,			//仕入先MAIL
+				SearchCom,				//コメント
+				SearchPTMSCDBMN,		//基幹Sysコード（部門）
+				SearchPTMSCDNINUSHI,	//基幹Sysコード（荷主）
+				SearchPaySiteStr,		//支払いサイト（月数）開始
+				SearchPayDateStr,		//支払日（日＝99）開始
+				SearchShimeDateStr,		//締め日（末日＝99）開始
+				SearchPaySiteEnd,		//支払いサイト（月数）終了
+				SearchPayDateEnd,		//支払日（日＝99）終了
+				SearchShimeDateEnd,		//締め日（末日＝99）終了
+				SearchDECD,				//納品先コード
+				SearchDepartmentCd,		//部署CD
+				AllSearch);
+		
+		SearchSupplierList = new String[SupplierRt.length+1][3];
+		SupplierList = new String[SupplierRt.length][3];
+		
+		SearchSupplierList[0][0] = "未指定";
+		
+		for(int i=0;i<SupplierRt.length;i++) {
+			SearchSupplierList[i+1][0] = SupplierRt[i][M00100SupplierRt.ColSPCd]+":"+SupplierRt[i][M00100SupplierRt.ColSPName01];
+			SearchSupplierList[i+1][0] = ""+SupplierRt[i][M00100SupplierRt.ColSPCd];
+			SearchSupplierList[i+1][0] = ""+SupplierRt[i][M00100SupplierRt.ColSPName01];
+			
+			SupplierList[i][0] = SupplierRt[i][M00100SupplierRt.ColSPCd]+":"+SupplierRt[i][M00100SupplierRt.ColSPName01];
+			SupplierList[i][0] = ""+SupplierRt[i][M00100SupplierRt.ColSPCd];
+			SupplierList[i][0] = ""+SupplierRt[i][M00100SupplierRt.ColSPName01];
 		}
 	}
 	
@@ -494,58 +675,58 @@ public class B00100DefaultVariable{
 		SearchDeliveryType05[2][0] = "";
 		
 		for(int i=0;i<DeliveryTypeMstRt01.length;i++) {
-			SearchDeliveryType01[0][i+1] 	= "" + DeliveryTypeMstRt01[i][1] + ":" + DeliveryTypeMstRt01[i][2];
-			DeliveryType01[0][i] 				= "" + DeliveryTypeMstRt01[i][1] + ":" + DeliveryTypeMstRt01[i][2]; 
+			SearchDeliveryType01[0][i+1] 	= "" + DeliveryTypeMstRt01[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt01[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType01[0][i] 				= "" + DeliveryTypeMstRt01[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt01[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 			
-			SearchDeliveryType01[1][i+1] 	= "" + DeliveryTypeMstRt01[i][1];
-			DeliveryType01[1][i] 				= "" + DeliveryTypeMstRt01[i][1]; 
+			SearchDeliveryType01[1][i+1] 	= "" + DeliveryTypeMstRt01[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd];
+			DeliveryType01[1][i] 				= "" + DeliveryTypeMstRt01[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd]; 
 			
-			SearchDeliveryType01[2][i+1] 	= "" + DeliveryTypeMstRt01[i][2];
-			DeliveryType01[2][i] 				= "" + DeliveryTypeMstRt01[i][2]; 
+			SearchDeliveryType01[2][i+1] 	= "" + DeliveryTypeMstRt01[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType01[2][i] 				= "" + DeliveryTypeMstRt01[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 		}
 		
 		for(int i=0;i<DeliveryTypeMstRt02.length;i++) {
-			SearchDeliveryType02[0][i+1] 	= "" + DeliveryTypeMstRt02[i][1] + ":" + DeliveryTypeMstRt02[i][2];
-			DeliveryType02[0][i] 				= "" + DeliveryTypeMstRt02[i][1] + ":" + DeliveryTypeMstRt02[i][2]; 
+			SearchDeliveryType02[0][i+1] 	= "" + DeliveryTypeMstRt02[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt02[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType02[0][i] 				= "" + DeliveryTypeMstRt02[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt02[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 			
-			SearchDeliveryType02[1][i+1] 	= "" + DeliveryTypeMstRt02[i][1];
-			DeliveryType02[1][i] 				= "" + DeliveryTypeMstRt02[i][1]; 
+			SearchDeliveryType02[1][i+1] 	= "" + DeliveryTypeMstRt02[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd];
+			DeliveryType02[1][i] 				= "" + DeliveryTypeMstRt02[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd]; 
 			
-			SearchDeliveryType02[2][i+1] 	= "" + DeliveryTypeMstRt02[i][2];
-			DeliveryType02[2][i] 				= "" + DeliveryTypeMstRt02[i][2]; 
+			SearchDeliveryType02[2][i+1] 	= "" + DeliveryTypeMstRt02[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType02[2][i] 				= "" + DeliveryTypeMstRt02[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 		}
 		
 		for(int i=0;i<DeliveryTypeMstRt03.length;i++) {
-			SearchDeliveryType03[0][i+1] 	= "" + DeliveryTypeMstRt03[i][1] + ":" + DeliveryTypeMstRt03[i][2];
-			DeliveryType03[0][i] 				= "" + DeliveryTypeMstRt03[i][1] + ":" + DeliveryTypeMstRt03[i][2]; 
+			SearchDeliveryType03[0][i+1] 	= "" + DeliveryTypeMstRt03[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt03[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType03[0][i] 				= "" + DeliveryTypeMstRt03[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt03[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 			
-			SearchDeliveryType03[1][i+1] 	= "" + DeliveryTypeMstRt03[i][1];
-			DeliveryType03[1][i] 				= "" + DeliveryTypeMstRt03[i][1]; 
+			SearchDeliveryType03[1][i+1] 	= "" + DeliveryTypeMstRt03[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd];
+			DeliveryType03[1][i] 				= "" + DeliveryTypeMstRt03[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd]; 
 			
-			SearchDeliveryType03[2][i+1] 	= "" + DeliveryTypeMstRt03[i][2];
-			DeliveryType03[2][i] 				= "" + DeliveryTypeMstRt03[i][2]; 
+			SearchDeliveryType03[2][i+1] 	= "" + DeliveryTypeMstRt03[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType03[2][i] 				= "" + DeliveryTypeMstRt03[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 		}
 		
 		for(int i=0;i<DeliveryTypeMstRt04.length;i++) {
-			SearchDeliveryType04[0][i+1] 	= "" + DeliveryTypeMstRt04[i][1] + ":" + DeliveryTypeMstRt04[i][2];
-			DeliveryType04[0][i] 				= "" + DeliveryTypeMstRt04[i][1] + ":" + DeliveryTypeMstRt04[i][2]; 
+			SearchDeliveryType04[0][i+1] 	= "" + DeliveryTypeMstRt04[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt04[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType04[0][i] 				= "" + DeliveryTypeMstRt04[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt04[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 			
-			SearchDeliveryType04[1][i+1] 	= "" + DeliveryTypeMstRt04[i][1];
-			DeliveryType04[1][i] 				= "" + DeliveryTypeMstRt04[i][1]; 
+			SearchDeliveryType04[1][i+1] 	= "" + DeliveryTypeMstRt04[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd];
+			DeliveryType04[1][i] 				= "" + DeliveryTypeMstRt04[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd]; 
 			
-			SearchDeliveryType04[2][i+1] 	= "" + DeliveryTypeMstRt04[i][2];
-			DeliveryType04[2][i] 				= "" + DeliveryTypeMstRt04[i][2]; 
+			SearchDeliveryType04[2][i+1] 	= "" + DeliveryTypeMstRt04[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType04[2][i] 				= "" + DeliveryTypeMstRt04[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 		}
 		
 		for(int i=0;i<DeliveryTypeMstRt05.length;i++) {
-			SearchDeliveryType05[0][i+1] 	= "" + DeliveryTypeMstRt05[i][1] + ":" + DeliveryTypeMstRt05[i][2];
-			DeliveryType05[0][i] 				= "" + DeliveryTypeMstRt05[i][1] + ":" + DeliveryTypeMstRt05[i][2]; 
+			SearchDeliveryType05[0][i+1] 	= "" + DeliveryTypeMstRt05[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt05[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType05[0][i] 				= "" + DeliveryTypeMstRt05[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd] + ":" + DeliveryTypeMstRt05[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 			
-			SearchDeliveryType05[1][i+1] 	= "" + DeliveryTypeMstRt05[i][1];
-			DeliveryType05[1][i] 				= "" + DeliveryTypeMstRt05[i][1]; 
+			SearchDeliveryType05[1][i+1] 	= "" + DeliveryTypeMstRt05[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd];
+			DeliveryType05[1][i] 				= "" + DeliveryTypeMstRt05[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd]; 
 			
-			SearchDeliveryType05[2][i+1] 	= "" + DeliveryTypeMstRt05[i][2];
-			DeliveryType05[2][i] 				= "" + DeliveryTypeMstRt05[i][2]; 
+			SearchDeliveryType05[2][i+1] 	= "" + DeliveryTypeMstRt05[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];
+			DeliveryType05[2][i] 				= "" + DeliveryTypeMstRt05[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName]; 
 		}
 	}
 	
@@ -1018,7 +1199,6 @@ public class B00100DefaultVariable{
 		B00100DefaultVariable.WhList();
 		B00101DefaultVariableWarehouse.DefaultVariableWarehouse("0000");
 	}
-	
 	
 	//zeusログイン時、郵便番号0000000作る
 	public static void Post0000000(){

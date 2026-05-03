@@ -518,22 +518,25 @@ public class M00040DeliveryMstRt{
     	int DENo = 0;
     	
     	for(int i=0;i<DeliveryMstRt.length;i++) {
-    		if("AT".equals((""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).substring(0,2))&&11==(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).length()) {
+    		if(2<(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).length()&&"AT".equals((""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).substring(0,2))) {
     			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]);
-    			if(9==WST.length()) {
-    				int wint = Integer.parseInt(WST);
-    				if(DENo<wint) {
-    					DENo=wint;
-    				}
-    			}
+    			if("".equals(WST)){WST = "0";}
+    			int wint = Integer.parseInt(WST);
+				if(DENo<wint) {
+					DENo=wint;
+				}
     		}
     	}
 
     	String[] rt = new String[NeedCount];
     	for(int i=0;i<NeedCount;i++) {
-    		DENo = DENo+1;
-	    	rt[i] = "000000000"+DENo;
-	    	rt[i] = "AT"+rt[i].substring(rt[i].length()-9,rt[i].length());
+    		DENo = DENo+1; 	
+    		if(999999999<DENo) {
+    			rt[i] = "AT"+DENo;
+    		}else {
+		    	rt[i] = "000000000"+DENo;
+		    	rt[i] = "AT"+rt[i].substring(rt[i].length()-9,rt[i].length());
+    		}
     	}
     	
     	return rt;

@@ -37,9 +37,90 @@ public class A00020InsertUdateSQL{
     //
     // ==========================================================================
 	
+	public static  void InsertUpdateOneRecord(Object[][] SetString,String tgt_table,String TgtDB,int non_msg_fg){
+		//1レコードについて登録更新を行う
+		/*
+		SetString[i]= {String,String,String,String,String}:{フィールド名,登録区分（対象の場合"1" 対象外の場合"0"）,更新区分（対象の場合"1" 対象外の場合"0"）,キー区分（対象の場合"Key" 対象外の場合""）,登録値}
+		*/
+		int KeyCount = 0;
+		for(int i=0;i<SetString.length;i++) {
+			if("Key".equals((String)SetString[i][3])) {
+				KeyCount	= KeyCount+1;
+			}
+		}
+		String[][] field_name 	= new String[SetString.length][3];
+		String[][] entry_data 	= new String[1][SetString.length];
+		String[]   judg_field 	= new String[KeyCount];
+		String[][] judg_data 	= new String[1][KeyCount];
+		
+		KeyCount = 0;
+		for(int i=0;i<SetString.length;i++) {
+			field_name[i][0] = (String)SetString[i][0];
+			field_name[i][1] = (String)SetString[i][1];
+			field_name[i][2] = (String)SetString[i][2];
+			
+			entry_data[0][i] = (String)SetString[i][4];
+			
+			if("Key".equals((String)SetString[i][3])) {
+				judg_field[KeyCount] = (String)SetString[i][0];
+				
+				judg_data[0][KeyCount] = (String)SetString[i][4];
+				
+				KeyCount	= KeyCount+1;
+			}
+		}
+		if(0<entry_data.length) {
+			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		}
+	}
+	public static  void InsertUpdateSomeRecord(Object[][] SetString,String tgt_table,String TgtDB,int non_msg_fg){
+		//複数レコードについて登録更新を行う
+		/*
+		SetString[i]= {String,String,String,String,String[]}:{フィールド名,登録区分（対象の場合"1" 対象外の場合"0"）,更新区分（対象の場合"1" 対象外の場合"0"）,キー区分（対象の場合"Key" 対象外の場合""）,登録値}
+		*/
+		boolean KickFg = true;
+		
+		if(KickFg) {
+			int KeyCount = 0;
+			int EntryCount = ((String[])SetString[0][4]).length;
+			
+			for(int i=0;i<SetString.length;i++) {
+				if("Key".equals((String)SetString[i][3])) {
+					KeyCount	= KeyCount+1;
+				}
+			}
+			String[][] field_name 	= new String[SetString.length][3];
+			String[][] entry_data 	= new String[EntryCount][SetString.length];
+			String[]   judg_field 	= new String[KeyCount];
+			String[][] judg_data 	= new String[EntryCount][KeyCount];
+			
+			KeyCount = 0;
+			for(int i=0;i<SetString.length;i++) {
+				field_name[i][0] = (String)SetString[i][0];
+				field_name[i][1] = (String)SetString[i][1];
+				field_name[i][2] = (String)SetString[i][2];
+				
+				for(int i01=0;i01<((String[])SetString[i][4]).length;i01++) {
+					entry_data[i01][i] =((String[])SetString[i][4])[i01];
+				}
+				
+				if("Key".equals((String)SetString[i][3])) {
+					judg_field[KeyCount] = (String)SetString[i][0];
+					
+					for(int i01=0;i01<((String[])SetString[i][4]).length;i01++) {
+						judg_data[i01][KeyCount] = ((String[])SetString[i][4])[i01];
+					}
+					KeyCount	= KeyCount+1;
+				}
+			}
+			if(0<entry_data.length) {
+				A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+			}
+		}
+	}
+	
 	public static void RUN_SQLS_EU(String tgt_table,String[][] field_name,String[][] entry_data,String[] judg_field,String[][] judg_data,int non_msg_fg,String TgtDB){
 		//データの登録更新をまとめて行う
-
 		ResultSet rset01=null;
 		PreparedStatement stmt01=null;
 		PreparedStatement stmt02=null;

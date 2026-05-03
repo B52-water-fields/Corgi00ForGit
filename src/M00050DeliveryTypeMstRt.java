@@ -30,7 +30,7 @@ public class M00050DeliveryTypeMstRt{
 	//戻り値カラム
 	static int ColDeliveryTypeNo		= (int) 0;	//タイプ番号
 	static int ColDeliveryTypeCd		= (int) 1;	//運送タイプコード
-	static int ColDeliveryTypeName		= (int) 2;	//運送タイプ名
+	static int ColDeliveryTypeName	= (int) 2;	//運送タイプ名
 	static int ColEntryDate			= (int) 3;	//"データ登録日時
 	static int ColUpdateDate			= (int) 4;	//データ更新日時
 	static int ColEntryUser			= (int) 5;	//登録者コード
@@ -40,10 +40,10 @@ public class M00050DeliveryTypeMstRt{
 		Object[][] RtSettingDeliveryTypeMstRt = {
 				 {"DeliveryTypeNo"		,ColDeliveryTypeNo		,"int"		,"タイプ番号"}
 				,{"DeliveryTypeCd"		,ColDeliveryTypeCd		,"String"	,"運送タイプコード"}
-				,{"DeliveryTypeName"	,ColDeliveryTypeName	,"String"	,"運送タイプ名"}
-				,{"EntryDate"			,ColEntryDate			,"String"	,"データ登録日時"}
+				,{"DeliveryTypeName"	,ColDeliveryTypeName		,"String"	,"運送タイプ名"}
+				,{"EntryDate"			,ColEntryDate				,"String"	,"データ登録日時"}
 				,{"UpdateDate"			,ColUpdateDate			,"String"	,"データ更新日時"}
-				,{"EntryUser"			,ColEntryUser			,"String"	,"登録者コード"}
+				,{"EntryUser"			,ColEntryUser				,"String"	,"登録者コード"}
 				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"}
 				};
 		

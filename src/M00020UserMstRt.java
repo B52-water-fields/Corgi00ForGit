@@ -565,22 +565,25 @@ public class M00020UserMstRt{
     	int UserNo = 0;
     	
     	for(int i=0;i<UserMstRt.length;i++) {
-    		if(11==(""+UserMstRt[i][M00020UserMstRt.ColUserCd]).length() && "ATUS".equals((""+UserMstRt[i][M00020UserMstRt.ColUserCd]).substring(0,4))) {
+    		if(4<(""+UserMstRt[i][M00020UserMstRt.ColUserCd]).length() && "ATUS".equals((""+UserMstRt[i][M00020UserMstRt.ColUserCd]).substring(0,4))) {
     			String WST = B00020ToolsTextControl.num_only_String(""+UserMstRt[i][M00020UserMstRt.ColUserCd]);
-    			if(7==WST.length()) {
-    				int wint = Integer.parseInt(WST);
-    				if(UserNo<wint) {
-    					UserNo=wint;
-    				}
-    			}
+    			if("".equals(WST)){WST = "0";}
+				int wint = Integer.parseInt(WST);
+				if(UserNo<wint) {
+					UserNo=wint;
+				}
     		}
     	}
 
     	String[] rt = new String[NeedCount];
     	for(int i=0;i<NeedCount;i++) {
     		UserNo = UserNo+1;
-	    	rt[i] = "0000000"+UserNo;
-	    	rt[i] = "ATUS"+rt[i].substring(rt[i].length()-7,rt[i].length());
+	    	if(999999999<UserNo) {
+    			rt[i] = "ATUS"+UserNo;
+    		}else {
+		    	rt[i] = "000000000"+UserNo;
+		    	rt[i] = "ATUS"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    		}
     	}
     	
     	return rt;

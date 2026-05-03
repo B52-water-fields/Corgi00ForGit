@@ -376,22 +376,25 @@ public class M00030ShippingCompanyMstRt{
     	int SCNo = 0;
     	
     	for(int i=0;i<ShippingCompanyMstRt.length;i++) {
-    		if("ATSC".equals((""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]).substring(0,4))&&11==(""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]).length()) {
+    		if(4<(""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]).length()&&"ATSC".equals((""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]).substring(0,4))) {
     			String WST = B00020ToolsTextControl.num_only_String(""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]);
-    			if(7==WST.length()) {
-    				int wint = Integer.parseInt(WST);
-    				if(SCNo<wint) {
-    					SCNo=wint;
-    				}
-    			}
+    			if("".equals(WST)){WST = "0";}
+				int wint = Integer.parseInt(WST);
+				if(SCNo<wint) {
+					SCNo=wint;
+				}
     		}
     	}
-
     	String[] rt = new String[NeedCount];
     	for(int i=0;i<NeedCount;i++) {
     		SCNo = SCNo+1;
-	    	rt[i] = "0000000"+SCNo;
-	    	rt[i] = "ATSC"+rt[i].substring(rt[i].length()-7,rt[i].length());
+    		
+    		if(999999999<SCNo) {
+    			rt[i] = "ATSC"+SCNo;
+    		}else {
+		    	rt[i] = "000000000"+SCNo;
+		    	rt[i] = "ATSC"+rt[i].substring(rt[i].length()-9,rt[i].length());
+    		}
     	}
     	
     	return rt;

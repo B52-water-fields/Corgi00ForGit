@@ -438,22 +438,25 @@ public class M00011ClMstRt{
     	int ClientNo = 0;
     	
     	for(int i=0;i<ClMstRt.length;i++) {
-    		if("ATCL".equals((""+ClMstRt[i][M00011ClMstRt.Colcl_cd]).substring(0,4))&&11==(""+ClMstRt[i][M00011ClMstRt.Colcl_cd]).length()) {
+    		if(4<(""+ClMstRt[i][M00011ClMstRt.Colcl_cd]).length()&&"ATCL".equals((""+ClMstRt[i][M00011ClMstRt.Colcl_cd]).substring(0,4))) {
     			String WST = B00020ToolsTextControl.num_only_String(""+ClMstRt[i][M00011ClMstRt.Colcl_cd]);
-    			if(7==WST.length()) {
-    				int wint = Integer.parseInt(WST);
-    				if(ClientNo<wint) {
-    					ClientNo=wint;
-    				}
-    			}
+    			if("".equals(WST)){WST = "0";}
+				int wint = Integer.parseInt(WST);
+				if(ClientNo<wint) {
+					ClientNo=wint;
+				}
     		}
     	}
 
     	String[] rt = new String[NeedCount];
     	for(int i=0;i<NeedCount;i++) {
     		ClientNo = ClientNo+1;
-	    	rt[i] = "0000000"+ClientNo;
-	    	rt[i] = "ATCL"+rt[i].substring(rt[i].length()-7,rt[i].length());
+	    	if(999999999<ClientNo) {
+    			rt[i] = "ATCL"+ClientNo;
+    		}else {
+		    	rt[i] = "000000000"+ClientNo;
+		    	rt[i] = "ATCL"+rt[i].substring(rt[i].length()-9,rt[i].length());
+    		}
     	}
     	
     	return rt;

@@ -264,7 +264,7 @@ public class WM00102SupplierMstExcelEntry{
 
 						main_fm.setVisible(false);
 						main_fm.dispose();
-						WM00090LocationMstSearch.LocationMstSearch(0, 0);
+						WM00100SupplierMstSearch.SupplierMstSearch(0, 0);
 					}
 				}
 			}
@@ -289,12 +289,33 @@ public class WM00102SupplierMstExcelEntry{
 			switch( (String)SetObRt[i][0]) {
 				case "SPCd"			:
 					//仕入れ先コード空白の場合新規にCd採番する
-					
+					int NeedCount = 0;
+					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
+						if("".equals(((String[])SetObRt[i][4])[i01])) {
+							NeedCount = NeedCount+1;
+						}
+					}
+					String[] SetSpCd	= M00100SupplierRt.NewSpCdGet(NeedCount);
+					NeedCount = 0;
+					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
+						if("".equals(((String[])SetObRt[i][4])[i01])) {
+							((String[])SetObRt[i][4])[i01] = SetSpCd[NeedCount];
+							NeedCount = NeedCount+1;
+						}
+					}
 					break;
 				default:
 					break;
 			}
 		}
+		
+		String tgt_table = "WM0010Supplier";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		A00020InsertUdateSQL.InsertUpdateSomeRecord(SetObRt,tgt_table,TgtDB,non_msg_fg);
+		B00100DefaultVariable.SupplierList();
+		
 	}
 	
 	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[] TableCol){
@@ -988,6 +1009,7 @@ public class WM00102SupplierMstExcelEntry{
 		GetDECD				= B00020ToolsTextControl.Trim(GetDECD);
 		GetDepartmentCd		= B00020ToolsTextControl.Trim(GetDepartmentCd);
 		
+		GetSPPost			= B00020ToolsTextControl.num_only_String(GetSPPost);
 		GetSPTel			= B00020ToolsTextControl.num_only_String(GetSPTel);
 		GetSPFax			= B00020ToolsTextControl.num_only_String(GetSPFax);
 		
