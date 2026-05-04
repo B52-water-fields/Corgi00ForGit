@@ -51,28 +51,28 @@ public class M00030ShippingCompanyMstRt{
 	
 	*/
 	//戻り値カラム
-	static int ColShippingCompanyCd		= (int) 0;	//運送会社CD
-	static int ColShippingCompanyName01	= (int) 1;	//運送会社名1
-	static int ColShippingCompanyName02	= (int) 2;	//運送会社名2
-	static int ColShippingCompanyName03	= (int) 3;	//運送会社名3
-	static int ColPost						= (int) 4;	//運送会社郵便
-	static int ColAdd01					= (int) 5;	//運送会社住所1
-	static int ColAdd02					= (int) 6;	//運送会社住所2
-	static int ColAdd03					= (int) 7;	//運送会社住所3
-	static int ColTel						= (int) 8;	//運送会社電話
-	static int ColFax						= (int) 9;	//運送会社FAX
-	static int ColMail						= (int)10;	//運送会社MAIL
-	static int ColCom01					= (int)11;	//コメント1
-	static int ColCom02					= (int)12;	//コメント2
-	static int ColCom03					= (int)13;	//コメント3
-	static int ColShimeDate				= (int)14;	//締日
-	static int ColShimeBasis				= (int)15;	//請求基準
-	static int ColEntryDate				= (int)16;	//データ登録日時
-	static int ColUpdateDate				= (int)17;	//データ更新日時
-	static int ColEntryUser				= (int)18;	//登録者コード
-	static int ColUpdateUser				= (int)19;	//更新者コード
-	static int ColPTMSCD					= (int)20;	//基幹システム傭車コード
-	static int ColExportDataType			= (int)21;	//データ抽出タイプ
+	static final  int ColShippingCompanyCd		= (int) 0;	//運送会社CD
+	static final  int ColShippingCompanyName01	= (int) 1;	//運送会社名1
+	static final  int ColShippingCompanyName02	= (int) 2;	//運送会社名2
+	static final  int ColShippingCompanyName03	= (int) 3;	//運送会社名3
+	static final  int ColPost						= (int) 4;	//運送会社郵便
+	static final  int ColAdd01						= (int) 5;	//運送会社住所1
+	static final  int ColAdd02						= (int) 6;	//運送会社住所2
+	static final  int ColAdd03						= (int) 7;	//運送会社住所3
+	static final  int ColTel						= (int) 8;	//運送会社電話
+	static final  int ColFax						= (int) 9;	//運送会社FAX
+	static final  int ColMail						= (int)10;	//運送会社MAIL
+	static final  int ColCom01						= (int)11;	//コメント1
+	static final  int ColCom02						= (int)12;	//コメント2
+	static final  int ColCom03						= (int)13;	//コメント3
+	static final  int ColShimeDate				= (int)14;	//締日
+	static final  int ColShimeBasis				= (int)15;	//請求基準
+	static final  int ColEntryDate				= (int)16;	//データ登録日時
+	static final  int ColUpdateDate				= (int)17;	//データ更新日時
+	static final  int ColEntryUser				= (int)18;	//登録者コード
+	static final  int ColUpdateUser				= (int)19;	//更新者コード
+	static final  int ColPTMSCD					= (int)20;	//基幹システム傭車コード
+	static final  int ColExportDataType			= (int)21;	//データ抽出タイプ
 	
 	public static Object[][] RtSettingShippingCompanyMstRt(){
 		Object[][] RtSettingShippingCompanyMstRt = {

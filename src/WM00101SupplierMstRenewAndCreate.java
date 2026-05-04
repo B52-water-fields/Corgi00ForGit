@@ -80,7 +80,7 @@ public class WM00101SupplierMstRenewAndCreate{
 		
 		final JComboBox   TB_ClCd				= B00110FrameParts.JComboBoxSet( 				130, 50,200,20,B00100DefaultVariable.ClList[0],11);	//荷主コード
 		final JComboBox   TB_WhCd				= B00110FrameParts.JComboBoxSet( 				130, 75,200,20,B00100DefaultVariable.WhList[0],11);	//倉庫コード
-		final JTextField  TB_SPCd				= B00110FrameParts.JTextFieldSet( 			130,100,200,20,"",11,0);	//仕入先コード
+		final JTextField  TB_SPCd				= B00110FrameParts.JTextFieldSet( 			130,100,200,20,TgSPCd,11,0);//仕入先コード
 		final JTextField  TB_SPName01			= B00110FrameParts.JTextFieldSet( 			130,125,200,20,"",11,0);	//仕入先名1
 		final JTextField  TB_SPName02			= B00110FrameParts.JTextFieldSet( 			130,150,200,20,"",11,0);	//仕入先名2
 		final JTextField  TB_SPName03			= B00110FrameParts.JTextFieldSet( 			130,175,200,20,"",11,0);	//仕入先名3
@@ -123,6 +123,7 @@ public class WM00101SupplierMstRenewAndCreate{
 		if("".equals(TgtClCd)) {TgtClCd= A00000Main.ClCd;}
 		if("".equals(TgtWhCd)) {TgtWhCd= A00000Main.ClWh;}
 		if(!"".equals(TgSPCd)) {
+			TB_SPCd.setEnabled(false);
 			Object[][] SupplierRt = SupplierRt(TgtClCd,TgtWhCd,TgSPCd);
 			if(1==SupplierRt.length) {
 				TB_SPName01.setText(		(String)SupplierRt[0][M00100SupplierRt.ColSPName01]);			//仕入先名1
@@ -634,6 +635,101 @@ public class WM00101SupplierMstRenewAndCreate{
 				}
 			}
 		});
+		//仕入先コードフォーカス消失時の挙動
+		TB_SPCd.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String GetClCd			= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
+					String GetWhCd			= B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//倉庫コード
+					String GetSPCd			= TB_SPCd.getText();			//仕入先コード
+					String GetSPName01		= TB_SPName01.getText();		//仕入先名1
+					String GetSPName02		= TB_SPName02.getText();		//仕入先名2
+					String GetSPName03		= TB_SPName03.getText();		//仕入先名3
+					String GetSPPost		= TB_SPPost.getText();			//仕入先郵便
+					String GetSPAdd01		= TB_SPAdd01.getText();			//仕入先住所1
+					String GetSPAdd02		= TB_SPAdd02.getText();			//仕入先住所2
+					String GetSPAdd03		= TB_SPAdd03.getText();			//仕入先住所3
+					String GetSPTel			= TB_SPTel.getText();			//仕入先電話
+					String GetSPFax			= TB_SPFax.getText();			//仕入先FAX
+					String GetSPMail		= TB_SPMail.getText();			//仕入先MAIL
+					String GetCom01			= TB_Com01.getText();			//コメント1
+					String GetCom02			= TB_Com02.getText();			//コメント2
+					String GetCom03			= TB_Com03.getText();			//コメント3
+					String GetPTMSCDBMN		= TB_PTMSCDBMN.getText();		//基幹Sysコード（部門）
+					String GetPTMSCDNINUSHI	= TB_PTMSCDNINUSHI.getText();	//基幹Sysコード（荷主）
+					String GetPaySite		= TB_PaySite.getText();			//支払いサイト（月数）
+					String GetPayDate		= B00100DefaultVariable.ShimeDateList[1][TB_PayDate.getSelectedIndex()];		//支払日（末日＝99）
+					String GetShimeDate		= B00100DefaultVariable.ShimeDateList[1][TB_ShimeDate.getSelectedIndex()];	//締め日（末日＝99）
+					String GetDECD			= TB_DECD.getText();			//納品先コード
+					String GetDepartmentCd	= TB_DepartmentCd.getText();	//部署CD
+					
+					String[] TxtTrim = TxtTrim(
+							GetClCd,
+							GetWhCd,
+							GetSPCd,
+							GetSPName01,
+							GetSPName02,
+							GetSPName03,
+							GetSPPost,
+							GetSPAdd01,
+							GetSPAdd02,
+							GetSPAdd03,
+							GetSPTel,
+							GetSPFax,
+							GetSPMail,
+							GetCom01,
+							GetCom02,
+							GetCom03,
+							GetPTMSCDBMN,
+							GetPTMSCDNINUSHI,
+							GetPaySite,
+							GetPayDate,
+							GetShimeDate,
+							GetDECD,
+							GetDepartmentCd
+							);
+					GetClCd				= TxtTrim[0];
+					GetWhCd				= TxtTrim[1];
+					GetSPCd				= TxtTrim[2];
+					GetSPName01			= TxtTrim[3];
+					GetSPName02			= TxtTrim[4];
+					GetSPName03			= TxtTrim[5];
+					GetSPPost			= TxtTrim[6];
+					GetSPAdd01			= TxtTrim[7];
+					GetSPAdd02			= TxtTrim[8];
+					GetSPAdd03			= TxtTrim[9];
+					GetSPTel			= TxtTrim[10];
+					GetSPFax			= TxtTrim[11];
+					GetSPMail			= TxtTrim[12];
+					GetCom01			= TxtTrim[13];
+					GetCom02			= TxtTrim[14];
+					GetCom03			= TxtTrim[15];
+					GetPTMSCDBMN		= TxtTrim[16];
+					GetPTMSCDNINUSHI	= TxtTrim[17];
+					GetPaySite			= TxtTrim[18];
+					GetPayDate			= TxtTrim[19];
+					GetShimeDate		= TxtTrim[20];
+					GetDECD				= TxtTrim[21];
+					GetDepartmentCd		= TxtTrim[22];
+					
+					if(!"".equals(GetSPCd)) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+						
+						DeliverySerach_fm.setVisible(false);
+						DeliverySerach_fm.dispose();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						SupplierMstRenewAndCreate(0,0,GetClCd,GetWhCd,GetSPCd);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
 		
 		//届先検索ボタン押下時の挙動
 		DeliverySerachBtn.addActionListener(new AbstractAction(){

@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class M10010PostMstRt{
 	
-	static int ColPOST					= (int) 0;	//郵便番号
-	static int ColPREFECTURES			= (int) 1;	//県
-	static int ColMUNICI01				= (int) 2;	//市区町村
-	static int ColMUNICI02				= (int) 3;	//町丁目
-	static int ColMUNICIPALITY_CD	= (int) 4;	//市区町村CD
+	static final int ColPOST					= (int) 0;	//郵便番号
+	static final int ColPREFECTURES			= (int) 1;	//県
+	static final int ColMUNICI01				= (int) 2;	//市区町村
+	static final int ColMUNICI02				= (int) 3;	//町丁目
+	static final int ColMUNICIPALITY_CD		= (int) 4;	//市区町村CD
 	
 	public static Object[][] RtSettingPostRt(){
 		//戻り値カラム
@@ -46,9 +46,9 @@ public class M10010PostMstRt{
 		return RtSettingPostRt;
 	}
 	
-	static int ColMunicipalityRtPREFECTURES			= (int) 0;	//県
-	static int ColMunicipalityRtMUNICI01			= (int) 1;	//市区町村
-	static int ColMunicipalityRtMUNICIPALITY_CD	= (int) 2;	//市区町村CD
+	static final int ColMunicipalityRtPREFECTURES			= (int) 0;	//県
+	static final int ColMunicipalityRtMUNICI01				= (int) 1;	//市区町村
+	static final int ColMunicipalityRtMUNICIPALITY_CD		= (int) 2;	//市区町村CD
 	
 	public static Object[][] RtSettingMunicipalityRt(){
 		//市区町村マスタ戻り値
@@ -76,8 +76,8 @@ public class M10010PostMstRt{
 		return RtSettingMunicipalityRt;
 	}
 	
-	static int ColPrefecuturesRtPREFECTURES_CD	= (int) 0;	//県CD
-	static int ColPrefecuturesRtPREFECTURES		= (int) 1;	//県名
+	static final int ColPrefecuturesRtPREFECTURES_CD	= (int) 0;	//県CD
+	static final int ColPrefecuturesRtPREFECTURES		= (int) 1;	//県名
 	
 	public static Object[][] RtSettingPrefecuturesRt(){
 		//県マスタ戻り値
@@ -96,8 +96,8 @@ public class M10010PostMstRt{
 		return RtSettingPrefecuturesRt;
 	}
 	
-	static int ColAddToMunicipalityTgtAdd			= (int) 0;	//対象住所
-	static int ColAddToMunicipalityMUNICIPALITY_CD	= (int) 1;	//判定JISCD
+	static final int ColAddToMunicipalityTgtAdd				= (int) 0;	//対象住所
+	static final int ColAddToMunicipalityMUNICIPALITY_CD	= (int) 1;	//判定JISCD
 	
 	public static Object[][] RtAddToMunicipality(){
 		//住所一覧に対してJIS判定して結果を返却する ※特定できなかった場合"00000"返却

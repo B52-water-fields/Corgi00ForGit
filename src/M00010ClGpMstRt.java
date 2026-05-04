@@ -48,25 +48,25 @@ public class M00010ClGpMstRt{
 	String GetPassWord		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColPassWord]		//パスワード
 	*/
 	//戻り値カラム
-	static int ColClGpCD		= (int) 0;	//荷主グループCD
-	static int ColCLGpName01	= (int) 1;	//荷主グループ名1
-	static int ColCLGpName02	= (int) 2;	///荷主グループ名2
-	static int ColCLGpName03	= (int) 3;	//荷主グループ名3
-	static int ColPost			= (int) 4;	//郵便番号
-	static int ColAdd01		= (int) 5;	//住所1
-	static int ColAdd02		= (int) 6;	//住所2
-	static int ColAdd03		= (int) 7;	//住所3
-	static int ColTel			= (int) 8;	//電話番号
-	static int ColFax			= (int) 9;	//FAX"}
-	static int ColMail			= (int)10;	//メールアドレス
-	static int ColCom01		= (int)11;	//コメント1
-	static int ColCom02		= (int)12;	//コメント2
-	static int ColCom03		= (int)13;	//コメント3
-	static int ColEntryDate	= (int)14;	//データ登録日時
-	static int ColUpdateDate	= (int)15;	//データ更新日時
-	static int ColEntryUser	= (int)16;	//"登録者コード
-	static int ColUpdateUser	= (int)17;	//更新者コード
-	static int ColPassWord		= (int)18;	//パスワード
+	static final  int ColClGpCD		= (int) 0;	//荷主グループCD
+	static final  int ColCLGpName01	= (int) 1;	//荷主グループ名1
+	static final  int ColCLGpName02	= (int) 2;	///荷主グループ名2
+	static final  int ColCLGpName03	= (int) 3;	//荷主グループ名3
+	static final  int ColPost			= (int) 4;	//郵便番号
+	static final  int ColAdd01			= (int) 5;	//住所1
+	static final  int ColAdd02			= (int) 6;	//住所2
+	static final  int ColAdd03			= (int) 7;	//住所3
+	static final  int ColTel			= (int) 8;	//電話番号
+	static final  int ColFax			= (int) 9;	//FAX"}
+	static final  int ColMail			= (int)10;	//メールアドレス
+	static final  int ColCom01			= (int)11;	//コメント1
+	static final  int ColCom02			= (int)12;	//コメント2
+	static final  int ColCom03			= (int)13;	//コメント3
+	static final  int ColEntryDate	= (int)14;	//データ登録日時
+	static final  int ColUpdateDate	= (int)15;	//データ更新日時
+	static final  int ColEntryUser	= (int)16;	//"登録者コード
+	static final  int ColUpdateUser	= (int)17;	//更新者コード
+	static final  int ColPassWord		= (int)18;	//パスワード
 	
 	public static Object[][] RtSettingClGpMstRt(){
 		Object[][] RtSettingClGpMstRt = {

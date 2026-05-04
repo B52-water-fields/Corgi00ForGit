@@ -40,22 +40,22 @@ public class M00080ItemComversionMstRt{
 	
 	*/
 	//戻り値カラム
-	static int ColClGpCd		= (int) 0;	//荷主グループコード
-	static int ColCLGpName01	= (int) 1;	//荷主グループ名1
-	static int ColClCd			= (int) 2;	//荷主コード
-	static int ColCLName01		= (int) 3;	//荷主名
-	static int ColClItemCd		= (int) 4;	//荷主商品コード
-	static int ColItemCd		= (int) 5;	//変換先商品コード
-	static int ColPackingType	= (int) 6;	//荷姿タイプ
-	static int ColItemName01	= (int) 7;	//商品名1
-	static int ColItemName02	= (int) 8;	//商品名2
-	static int ColItemName03	= (int) 9;	//商品名3
-	static int ColCtName		= (int)10;	//カートン商品名称
-	static int ColCsName		= (int)11;	//ケース商品名称
-	static int ColPlName		= (int)12;	//パレット商品名称
-	static int ColCtQty		= (int)13;	//カートン入数
-	static int ColCsQty		= (int)14;	//ケース入数
-	static int ColPlQty		= (int)15;	//パレット入数
+	static final int ColClGpCd			= (int) 0;	//荷主グループコード
+	static final int ColCLGpName01	= (int) 1;	//荷主グループ名1
+	static final int ColClCd			= (int) 2;	//荷主コード
+	static final int ColCLName01		= (int) 3;	//荷主名
+	static final int ColClItemCd		= (int) 4;	//荷主商品コード
+	static final int ColItemCd			= (int) 5;	//変換先商品コード
+	static final int ColPackingType	= (int) 6;	//荷姿タイプ
+	static final int ColItemName01	= (int) 7;	//商品名1
+	static final int ColItemName02	= (int) 8;	//商品名2
+	static final int ColItemName03	= (int) 9;	//商品名3
+	static final int ColCtName			= (int)10;	//カートン商品名称
+	static final int ColCsName			= (int)11;	//ケース商品名称
+	static final int ColPlName			= (int)12;	//パレット商品名称
+	static final int ColCtQty			= (int)13;	//カートン入数
+	static final int ColCsQty			= (int)14;	//ケース入数
+	static final int ColPlQty			= (int)15;	//パレット入数
 	
 	public static Object[][] RtItemComversionMstRt(){
 		Object[][] RtItemComversionMstRt = {

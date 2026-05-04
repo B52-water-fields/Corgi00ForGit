@@ -184,7 +184,7 @@ public class W00020MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00105AdjustReasonMstSerch.AdjustReasonMstSerch(0,0);
+				WM00105AdjustReasonMstSearch.AdjustReasonMstSearch(0,0);
 			}
 		});
 		

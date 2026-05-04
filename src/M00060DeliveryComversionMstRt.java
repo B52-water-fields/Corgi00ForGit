@@ -72,33 +72,33 @@ public class M00060DeliveryComversionMstRt{
 	*/
 	
 	//戻り値カラム
-	static int ColClGpCD					= (int) 0;	//荷主グループCD
-	static int ColCLGpName01				= (int) 1;	//荷主グループ名
-	static int ColCL_DECD					= (int) 2;	//荷主届先CD
-	static int ColDECD						= (int) 3;	//届先CD
-	static int ColDepartmentCd			= (int) 4;	//届先部署CD
-	static int ColDEName01					= (int) 5;	//届先名1
-	static int ColDEName02					= (int) 6;	//届先名2
-	static int ColDEName03					= (int) 7;	//届先名3
-	static int ColPost						= (int) 8;	//届先郵便
-	static int ColAdd01					= (int) 9;	//届先住所1
-	static int ColAdd02					= (int)10;	//届先住所2
-	static int ColAdd03					= (int)11;	//届先住所3
-	static int ColTel						= (int)12;	//届先電話
-	static int ColFax						= (int)13;	//届先FAX
-	static int ColMail						= (int)14;	//届先MAIL
-	static int ColSetName					= (int)15;	//送り状登録名
-	static int ColCom01					= (int)16;	//コメント01
-	static int ColCom02					= (int)17;	//コメント02
-	static int ColCom03					= (int)18;	//コメント03
-	static int ColCom04					= (int)19;	//コメント04
-	static int ColCom05					= (int)20;	//コメント05
-	static int ColEntryDate				= (int)21;	//データ登録日時
-	static int ColUpdateDate				= (int)22;	//データ更新日時
-	static int ColEntryUser				= (int)23;	//登録者コード
-	static int ColUpdateUser				= (int)24;	//更新者コード
-	static int ColDelFg					= (int)25;	//削除区分
-	static int ColMstPriorityFirstFg		= (int)26;	//届先マスタ優先フラグ
+	static final int ColClGpCD						= (int) 0;	//荷主グループCD
+	static final int ColCLGpName01				= (int) 1;	//荷主グループ名
+	static final int ColCL_DECD					= (int) 2;	//荷主届先CD
+	static final int ColDECD						= (int) 3;	//届先CD
+	static final int ColDepartmentCd				= (int) 4;	//届先部署CD
+	static final int ColDEName01					= (int) 5;	//届先名1
+	static final int ColDEName02					= (int) 6;	//届先名2
+	static final int ColDEName03					= (int) 7;	//届先名3
+	static final int ColPost						= (int) 8;	//届先郵便
+	static final int ColAdd01						= (int) 9;	//届先住所1
+	static final int ColAdd02						= (int)10;	//届先住所2
+	static final int ColAdd03						= (int)11;	//届先住所3
+	static final int ColTel						= (int)12;	//届先電話
+	static final int ColFax						= (int)13;	//届先FAX
+	static final int ColMail						= (int)14;	//届先MAIL
+	static final int ColSetName					= (int)15;	//送り状登録名
+	static final int ColCom01						= (int)16;	//コメント01
+	static final int ColCom02						= (int)17;	//コメント02
+	static final int ColCom03						= (int)18;	//コメント03
+	static final int ColCom04						= (int)19;	//コメント04
+	static final int ColCom05						= (int)20;	//コメント05
+	static final int ColEntryDate					= (int)21;	//データ登録日時
+	static final int ColUpdateDate				= (int)22;	//データ更新日時
+	static final int ColEntryUser					= (int)23;	//登録者コード
+	static final int ColUpdateUser				= (int)24;	//更新者コード
+	static final int ColDelFg						= (int)25;	//削除区分
+	static final int ColMstPriorityFirstFg		= (int)26;	//届先マスタ優先フラグ
 	
 	public static Object[][] RtDeliveryComversionMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {

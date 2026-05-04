@@ -28,13 +28,13 @@ public class M00050DeliveryTypeMstRt{
 	
 	
 	//戻り値カラム
-	static int ColDeliveryTypeNo		= (int) 0;	//タイプ番号
-	static int ColDeliveryTypeCd		= (int) 1;	//運送タイプコード
-	static int ColDeliveryTypeName	= (int) 2;	//運送タイプ名
-	static int ColEntryDate			= (int) 3;	//"データ登録日時
-	static int ColUpdateDate			= (int) 4;	//データ更新日時
-	static int ColEntryUser			= (int) 5;	//登録者コード
-	static int ColUpdateUser			= (int) 6;	//更新者コード
+	static final  int ColDeliveryTypeNo		= (int) 0;	//タイプ番号
+	static final  int ColDeliveryTypeCd		= (int) 1;	//運送タイプコード
+	static final  int ColDeliveryTypeName	= (int) 2;	//運送タイプ名
+	static final  int ColEntryDate			= (int) 3;	//"データ登録日時
+	static final  int ColUpdateDate			= (int) 4;	//データ更新日時
+	static final  int ColEntryUser			= (int) 5;	//登録者コード
+	static final  int ColUpdateUser			= (int) 6;	//更新者コード
 	
 	public static Object[][] RtSettingDeliveryTypeMstRt(){
 		Object[][] RtSettingDeliveryTypeMstRt = {

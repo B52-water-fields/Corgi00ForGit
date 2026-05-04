@@ -46,22 +46,22 @@ public class M00042CautionMstRt{
 	
 	*/
 	//戻り値カラム
-	static int ColCautionCd		= (int) 0;	//注意事項コード
-	static int ColClGpCD			= (int) 1;	//荷主グループコード
-	static int ColCLGpName01		= (int) 2;	//荷主グループ名
-	static int ColDECD				= (int) 3;	//届先コード
-	static int ColDepartmentCd	= (int) 4;	//部署CD
-	static int ColDEName01			= (int) 5;	//届先名
-	static int ColCautionTiming	= (int) 6;	//注意事項タイミング
-	static int ColCautionName		= (int) 7;	//注意事項名
-	static int ColCaution			= (int) 8;	//注意事項内容
-	static int ColEntryDate		= (int) 9;	//データ登録日時
-	static int ColUpdateDate		= (int)10;	//データ更新日時
-	static int ColEntryUser		= (int)11;	//登録者コード
-	static int ColUpdateUser		= (int)12;	//更新者コード
-	static int ColAdd01			= (int)13;	//届先住所1
-	static int ColAdd02			= (int)14;	//届先住所2
-	static int ColAdd03			= (int)15;	//届先住所3
+	static final  int ColCautionCd		= (int) 0;	//注意事項コード
+	static final  int ColClGpCD			= (int) 1;	//荷主グループコード
+	static final  int ColCLGpName01		= (int) 2;	//荷主グループ名
+	static final  int ColDECD				= (int) 3;	//届先コード
+	static final  int ColDepartmentCd		= (int) 4;	//部署CD
+	static final  int ColDEName01			= (int) 5;	//届先名
+	static final  int ColCautionTiming	= (int) 6;	//注意事項タイミング
+	static final  int ColCautionName		= (int) 7;	//注意事項名
+	static final  int ColCaution			= (int) 8;	//注意事項内容
+	static final  int ColEntryDate		= (int) 9;	//データ登録日時
+	static final  int ColUpdateDate		= (int)10;	//データ更新日時
+	static final  int ColEntryUser		= (int)11;	//登録者コード
+	static final  int ColUpdateUser		= (int)12;	//更新者コード
+	static final  int ColAdd01				= (int)13;	//届先住所1
+	static final  int ColAdd02				= (int)14;	//届先住所2
+	static final  int ColAdd03				= (int)15;	//届先住所3
 	
 	public static Object[][] RtSettingCautionMstRt(){
 		Object[][] RtSettingCautionMstRt = {

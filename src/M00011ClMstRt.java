@@ -59,31 +59,31 @@ public class M00011ClMstRt{
 	*/
 	
 	//戻り値カラム
-	static int Colcl_cd		= (int)  0;	//荷主CD
-	static int ColClGpCD		= (int)  1;	//荷主グループCD
-	static int ColClGpName		= (int)  2;	//グループ名1
-	static int ColWHCD			= (int)  3;	//担当倉庫
-	static int ColWHName		= (int)  4;	//担当倉庫名
-	static int ColCLName01		= (int)  5;	//荷主名1
-	static int ColCLName02		= (int)  6;	//荷主名2
-	static int ColCLName03		= (int)  7;	//荷主名3
-	static int ColPost			= (int)  8;	//郵便番号
-	static int ColAdd01		= (int)  9;	//住所1
-	static int ColAdd02		= (int) 10;	//住所2
-	static int ColAdd03		= (int) 11;	//住所3
-	static int ColTel			= (int) 12;	//電話番号
-	static int ColFax			= (int) 13;	//FAX
-	static int ColMail			= (int) 14;	//メールアドレス
-	static int ColCom01		= (int) 15;	//コメント1
-	static int ColCom02		= (int) 16;	//コメント2
-	static int ColCom03		= (int) 17;	//コメント3
-	static int ColShimeDate	= (int) 18;	//締日
-	static int ColShimeBasis	= (int) 19;	//請求基準
-	static int ColEntryDate	= (int) 20;	//データ登録日時
-	static int ColUpdateDate	= (int) 21;	//データ更新日時
-	static int ColEntryUser	= (int) 22;	//登録者コード
-	static int ColUpdateUser	= (int) 23;	//更新者コード
-	static int ColPTMSCD		= (int) 24;	//基幹システム荷主コード
+	static final  int Colcl_cd			= (int)  0;	//荷主CD
+	static final  int ColClGpCD		= (int)  1;	//荷主グループCD
+	static final  int ColClGpName		= (int)  2;	//グループ名1
+	static final  int ColWHCD			= (int)  3;	//担当倉庫
+	static final  int ColWHName		= (int)  4;	//担当倉庫名
+	static final  int ColCLName01		= (int)  5;	//荷主名1
+	static final  int ColCLName02		= (int)  6;	//荷主名2
+	static final  int ColCLName03		= (int)  7;	//荷主名3
+	static final  int ColPost			= (int)  8;	//郵便番号
+	static final  int ColAdd01			= (int)  9;	//住所1
+	static final  int ColAdd02			= (int) 10;	//住所2
+	static final  int ColAdd03			= (int) 11;	//住所3
+	static final  int ColTel			= (int) 12;	//電話番号
+	static final  int ColFax			= (int) 13;	//FAX
+	static final  int ColMail			= (int) 14;	//メールアドレス
+	static final  int ColCom01			= (int) 15;	//コメント1
+	static final  int ColCom02			= (int) 16;	//コメント2
+	static final  int ColCom03			= (int) 17;	//コメント3
+	static final  int ColShimeDate	= (int) 18;	//締日
+	static final  int ColShimeBasis	= (int) 19;	//請求基準
+	static final  int ColEntryDate	= (int) 20;	//データ登録日時
+	static final  int ColUpdateDate	= (int) 21;	//データ更新日時
+	static final  int ColEntryUser	= (int) 22;	//登録者コード
+	static final  int ColUpdateUser	= (int) 23;	//更新者コード
+	static final  int ColPTMSCD		= (int) 24;	//基幹システム荷主コード
 	
 	public static Object[][] RtSettingClMstRt(){
 		Object[][] RtSettingClMstRt = {

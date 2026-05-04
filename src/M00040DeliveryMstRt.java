@@ -71,33 +71,33 @@ public class M00040DeliveryMstRt{
 	*/
 	
 	//戻り値カラム
-	static int ColDECD				= (int) 0;	//届先コード
-	static int ColDepartmentCd	= (int) 1;	//部署CD
-	static int ColDEName01			= (int) 2;	//届先名1
-	static int ColDEName02			= (int) 3;	//届先名2
-	static int ColDEName03			= (int) 4;	//届先名3
-	static int ColPost				= (int) 5;	//届先郵便
-	static int ColAdd01			= (int) 6;	//届先住所1
-	static int ColAdd02			= (int) 7;	//届先住所2
-	static int ColAdd03			= (int) 8;	//届先住所3
-	static int ColTel				= (int) 9;	//届先電話
-	static int ColFax				= (int)10;	//届先FAX
-	static int ColMail				= (int)11;	//届先MAIL
-	static int ColCom01			= (int)12;	//コメント1
-	static int ColCom02			= (int)13;	//コメント2
-	static int ColCom03			= (int)14;	//コメント3
-	static int ColPrefecturesCd	= (int)15;	//JIS県CD2桁
-	static int ColMunicipalityCd	= (int)16;	//JIS市区町村CD5桁
-	static int ColPTMSCD			= (int)17;	//基幹システム発着地コード
-	static int ColEntryDate		= (int)18;	//データ登録日時
-	static int ColUpdateDate		= (int)19;	//データ更新日時
-	static int ColEntryUser		= (int)20;	//登録者コード
-	static int ColUpdateUser		= (int)21;	//更新者コード
-	static int ColFirstClient		= (int)22;	//登録した荷主CD
-	static int ColLastClient		= (int)23;	//更新した荷主CD
-	static int ColDelFg			= (int)24;	//削除区分
-	static int ColFirstClientName= (int)25;	//登録した荷主名
-	static int ColLastClientName	= (int)26;	//登録した荷主名
+	static final  int ColDECD				= (int) 0;	//届先コード
+	static final  int ColDepartmentCd		= (int) 1;	//部署CD
+	static final  int ColDEName01			= (int) 2;	//届先名1
+	static final  int ColDEName02			= (int) 3;	//届先名2
+	static final  int ColDEName03			= (int) 4;	//届先名3
+	static final  int ColPost				= (int) 5;	//届先郵便
+	static final  int ColAdd01				= (int) 6;	//届先住所1
+	static final  int ColAdd02				= (int) 7;	//届先住所2
+	static final  int ColAdd03				= (int) 8;	//届先住所3
+	static final  int ColTel				= (int) 9;	//届先電話
+	static final  int ColFax				= (int)10;	//届先FAX
+	static final  int ColMail				= (int)11;	//届先MAIL
+	static final  int ColCom01				= (int)12;	//コメント1
+	static final  int ColCom02				= (int)13;	//コメント2
+	static final  int ColCom03				= (int)14;	//コメント3
+	static final  int ColPrefecturesCd	= (int)15;	//JIS県CD2桁
+	static final  int ColMunicipalityCd	= (int)16;	//JIS市区町村CD5桁
+	static final  int ColPTMSCD			= (int)17;	//基幹システム発着地コード
+	static final  int ColEntryDate		= (int)18;	//データ登録日時
+	static final  int ColUpdateDate		= (int)19;	//データ更新日時
+	static final  int ColEntryUser		= (int)20;	//登録者コード
+	static final  int ColUpdateUser		= (int)21;	//更新者コード
+	static final  int ColFirstClient		= (int)22;	//登録した荷主CD
+	static final  int ColLastClient		= (int)23;	//更新した荷主CD
+	static final  int ColDelFg				= (int)24;	//削除区分
+	static final  int ColFirstClientName	= (int)25;	//登録した荷主名
+	static final  int ColLastClientName	= (int)26;	//登録した荷主名
 	
 	public static Object[][] RtSettingDeliveryMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {

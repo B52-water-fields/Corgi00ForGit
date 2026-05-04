@@ -49,22 +49,22 @@ public class M00001WhMstRt{
 	
 	*/
 	//戻り値カラム
-	static int ColNoWHCD 			= (int) 0;	//倉庫コード
-	static int ColNoWHName 		= (int) 1;	//拠点倉庫名
-	static int ColNoPost 			= (int) 2;	//拠点倉庫郵便番号
-	static int ColNoAdd01 			= (int) 3;	//拠点倉庫住所1
-	static int ColNoAdd02 			= (int) 4;	//拠点倉庫住所2
-	static int ColNoTel 			= (int) 5;	//拠点倉庫電話
-	static int ColNoFax 			= (int) 6;	//拠点倉庫FAX
-	static int ColNoMail 			= (int) 7;	//拠点倉庫MAIL
-	static int ColNoCom01 			= (int) 8;	//コメント１
-	static int ColNoCom02 			= (int) 9;	//コメント２
-	static int ColNoCom03 			= (int)10;	//コメント３
-	static int ColNoPTMSCD 		= (int)11;	//基幹システム連携用事業所CD
-	static int ColNoEntryDate 	= (int)12;	//データ登録日時
-	static int ColNoUpdateDate 	= (int)13;	//データ更新日時
-	static int ColNoEntryUser 	= (int)14;	//登録者
-	static int ColNoUpdateUser 	= (int)15;	//更新者
+	static final  int ColNoWHCD 			= (int) 0;	//倉庫コード
+	static final  int ColNoWHName 		= (int) 1;	//拠点倉庫名
+	static final  int ColNoPost 			= (int) 2;	//拠点倉庫郵便番号
+	static final  int ColNoAdd01 			= (int) 3;	//拠点倉庫住所1
+	static final  int ColNoAdd02 			= (int) 4;	//拠点倉庫住所2
+	static final  int ColNoTel 			= (int) 5;	//拠点倉庫電話
+	static final  int ColNoFax 			= (int) 6;	//拠点倉庫FAX
+	static final  int ColNoMail 			= (int) 7;	//拠点倉庫MAIL
+	static final  int ColNoCom01 			= (int) 8;	//コメント１
+	static final  int ColNoCom02 			= (int) 9;	//コメント２
+	static final  int ColNoCom03 			= (int)10;	//コメント３
+	static final  int ColNoPTMSCD 		= (int)11;	//基幹システム連携用事業所CD
+	static final  int ColNoEntryDate 	= (int)12;	//データ登録日時
+	static final  int ColNoUpdateDate 	= (int)13;	//データ更新日時
+	static final  int ColNoEntryUser 	= (int)14;	//登録者
+	static final  int ColNoUpdateUser 	= (int)15;	//更新者
 	
 	public static Object[][] RtSettingWhMstRt(){
 		Object[][] RtSettingWhMstRt = {

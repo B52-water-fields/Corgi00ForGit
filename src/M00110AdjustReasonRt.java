@@ -19,28 +19,28 @@ public class M00110AdjustReasonRt{
 																SearchAdjustReasonName,	//調整理由名
 																AllSearch);
 																
-	String GetClCd				= AdjustReasonRt[i][ColClCd];				//荷主コード
-	String GetCLName01			= AdjustReasonRt[i][ColCLName01];			//荷主名
-	String GetWhCd				= AdjustReasonRt[i][ColWhCd];				//倉庫コード
-	String GetWHName			= AdjustReasonRt[i][ColWHName];				//倉庫名
-	String GetAdjustReasonCd	= AdjustReasonRt[i][ColAdjustReasonCd];		//調整理由コード
-	String GetAdjustReasonName	= AdjustReasonRt[i][ColAdjustReasonName];	//調整理由名
-	String GetEntryDate			= AdjustReasonRt[i][ColEntryDate];			//登録日
-	String GetUpdateDate		= AdjustReasonRt[i][ColUpdateDate];			//更新日
-	String GetEntryUser			= AdjustReasonRt[i][ColEntryUser];			//登録者
-	String GetUpdateUser		= AdjustReasonRt[i][ColUpdateUser];			//更新者
+	String GetClCd				= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColClCd];				//荷主コード
+	String GetCLName01			= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColCLName01];			//荷主名
+	String GetWhCd				= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColWhCd];				//倉庫コード
+	String GetWHName			= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColWHName];			//倉庫名
+	String GetAdjustReasonCd	= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonCd];	//調整理由コード
+	String GetAdjustReasonName	= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonName];	//調整理由名
+	String GetEntryDate			= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColEntryDate];			//登録日
+	String GetUpdateDate		= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColUpdateDate];		//更新日
+	String GetEntryUser			= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColEntryUser];			//登録者
+	String GetUpdateUser		= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColUpdateUser];		//更新者
 	
 	*/
-	static int ColClCd					=  0;	//荷主コード
-	static int ColCLName01				=  1;	//荷主名
-	static int ColWhCd					=  2;	//倉庫コード
-	static int ColWHName				=  3;	//倉庫名
-	static int ColAdjustReasonCd		=  4;	//調整理由コード
-	static int ColAdjustReasonName	=  5;	//調整理由名
-	static int ColEntryDate			=  6;	//登録日
-	static int ColUpdateDate			=  7;	//更新日
-	static int ColEntryUser			=  8;	//登録者
-	static int ColUpdateUser			=  9;	//更新者
+	static final int ColClCd					=  0;	//荷主コード
+	static final int ColCLName01				=  1;	//荷主名
+	static final int ColWhCd					=  2;	//倉庫コード
+	static final int ColWHName					=  3;	//倉庫名
+	static final int ColAdjustReasonCd		=  4;	//調整理由コード
+	static final int ColAdjustReasonName		=  5;	//調整理由名
+	static final int ColEntryDate				=  6;	//登録日
+	static final int ColUpdateDate			=  7;	//更新日
+	static final int ColEntryUser				=  8;	//登録者
+	static final int ColUpdateUser			=  9;	//更新者
 	
 	public static Object[][] RtAdjustReasonRt() {
 		Object[][] RtAdjustReasonRt = {
@@ -95,8 +95,6 @@ public class M00110AdjustReasonRt{
 				+ ")\n"
 				+ " where 1=1";
 		
-		sql = sql +" order by WM0020AdjustReason.ClCd,WM0020AdjustReason.WhCd,WM0020AdjustReason.AdjustReasonCd";
-		
 		if(null!=SearchClCd && 0<SearchClCd.size()){							//荷主コード
 			SearchKick = true;
 			sql = sql + " and (";
@@ -133,6 +131,8 @@ public class M00110AdjustReasonRt{
 			}
 			sql = sql + ")";
 		}
+		
+		sql = sql +" order by WM0020AdjustReason.ClCd,WM0020AdjustReason.WhCd,WM0020AdjustReason.AdjustReasonCd";
 		
 		if(true==SearchKick) {
 			A00010DbConnect.DB_CONN("WANKO");
@@ -210,7 +210,7 @@ public class M00110AdjustReasonRt{
 	}
 	
 	//在庫調整理由コードを自動採番する
-	public static String[] NewSpCdGet(int NeedCount) {
+	public static String[] NewAdjustReasonCdGet(int NeedCount) {
 		//在庫調整理由マスタ取得
 		ArrayList<String> SearchClCd 				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchWhCd 				= new ArrayList<String>();	//倉庫コード

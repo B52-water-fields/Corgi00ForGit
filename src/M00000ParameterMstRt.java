@@ -85,33 +85,33 @@ public class M00000ParameterMstRt{
 	*/
 	
 	//戻り値カラム
-	static int ColParaCd		= (int) 0;	//パラメータコード
-	static int ColParaCdSeq	= (int) 1;	//ナンバリング
-	static int ColParaName		= (int) 2;	//パラメータ名
-	static int ColParaTxt01	= (int) 3;	//パラメータテキスト項目01
-	static int ColParaTxt02	= (int) 4;	//パラメータテキスト項目02
-	static int ColParaTxt03	= (int) 5;	//パラメータテキスト項目03
-	static int ColParaTxt04	= (int) 6;	//パラメータテキスト項目04
-	static int ColParaTxt05	= (int) 7;	//パラメータテキスト項目05
-	static int ColParaTxt06	= (int) 8;	//パラメータテキスト項目06
-	static int ColParaTxt07	= (int) 9;	//パラメータテキスト項目07
-	static int ColParaTxt08	= (int)10;	//パラメータテキスト項目08
-	static int ColParaTxt09	= (int)11;	//パラメータテキスト項目09
-	static int ColParaTxt10	= (int)12;	//パラメータテキスト項目10
-	static int ColParaInt01	= (int)13;	//パラメータ数値項目01
-	static int ColParaInt02	= (int)14;	//パラメータ数値項目02
-	static int ColParaInt03	= (int)15;	//パラメータ数値項目03
-	static int ColParaInt04	= (int)16;	//パラメータ数値項目04
-	static int ColParaInt05	= (int)17;	//パラメータ数値項目05
-	static int ColParaInt06	= (int)18;	//パラメータ数値項目06
-	static int ColParaInt07	= (int)19;	//パラメータ数値項目07
-	static int ColParaInt08	= (int)20;	//パラメータ数値項目08
-	static int ColParaInt09	= (int)21;	//パラメータ数値項目09
-	static int ColParaInt10	= (int)22;	//パラメータ数値項目10
-	static int ColEntryDate	= (int)23;	//登録日
-	static int ColUpdateDate	= (int)24;	//更新日
-	static int ColEntryUser	= (int)25;	//登録者
-	static int ColUpdateUser	= (int)26;	//更新者
+	static final  int ColParaCd		= (int) 0;	//パラメータコード
+	static final  int ColParaCdSeq	= (int) 1;	//ナンバリング
+	static final  int ColParaName		= (int) 2;	//パラメータ名
+	static final  int ColParaTxt01	= (int) 3;	//パラメータテキスト項目01
+	static final  int ColParaTxt02	= (int) 4;	//パラメータテキスト項目02
+	static final  int ColParaTxt03	= (int) 5;	//パラメータテキスト項目03
+	static final  int ColParaTxt04	= (int) 6;	//パラメータテキスト項目04
+	static final  int ColParaTxt05	= (int) 7;	//パラメータテキスト項目05
+	static final  int ColParaTxt06	= (int) 8;	//パラメータテキスト項目06
+	static final  int ColParaTxt07	= (int) 9;	//パラメータテキスト項目07
+	static final  int ColParaTxt08	= (int)10;	//パラメータテキスト項目08
+	static final  int ColParaTxt09	= (int)11;	//パラメータテキスト項目09
+	static final  int ColParaTxt10	= (int)12;	//パラメータテキスト項目10
+	static final  int ColParaInt01	= (int)13;	//パラメータ数値項目01
+	static final  int ColParaInt02	= (int)14;	//パラメータ数値項目02
+	static final  int ColParaInt03	= (int)15;	//パラメータ数値項目03
+	static final  int ColParaInt04	= (int)16;	//パラメータ数値項目04
+	static final  int ColParaInt05	= (int)17;	//パラメータ数値項目05
+	static final  int ColParaInt06	= (int)18;	//パラメータ数値項目06
+	static final  int ColParaInt07	= (int)19;	//パラメータ数値項目07
+	static final  int ColParaInt08	= (int)20;	//パラメータ数値項目08
+	static final  int ColParaInt09	= (int)21;	//パラメータ数値項目09
+	static final  int ColParaInt10	= (int)22;	//パラメータ数値項目10
+	static final  int ColEntryDate	= (int)23;	//登録日
+	static final  int ColUpdateDate	= (int)24;	//更新日
+	static final  int ColEntryUser	= (int)25;	//登録者
+	static final  int ColUpdateUser	= (int)26;	//更新者
 	
 	public static Object[][] RtSettingParameterMstRtNANKO(){
 		Object[][] RtSettingParameterMstRtNANKO = {

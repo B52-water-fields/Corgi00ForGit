@@ -35,17 +35,17 @@ public class B00100DefaultVariable{
 	static String[][] DeliveryType04;
 	static String[][] DeliveryType05;
 	
-	static int ErrTxtDelete 			= 45;	//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
+	static final int ErrTxtDelete 			= 45;	//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
 	
-	static int NormalTaxRate 			= 10;			//消費税率　※10%なら10
-	static int[] TaxRateList 			= {10,8,0};		//消費税率のリスト　※10%なら10　Ex）10,8,0
+	static final int NormalTaxRate 			= 10;			//消費税率　※10%なら10
+	static final int[] TaxRateList 			= {10,8,0};		//消費税率のリスト　※10%なら10　Ex）10,8,0
 	
-	static String[][] SearchTaxFgList	= {{"未指定","0:外税","1:内税","2:非課税"},{"","0","1","2"},{"","外税","内税","非課税"}};	//検索条件：外税内税区分
-	static String[][] TaxFgList 		= {{"0:外税","1:内税","2:非課税"},{"0","1","2"},{"外税","内税","非課税"}};					//外税内税区分
+	static final String[][] SearchTaxFgList	= {{"未指定","0:外税","1:内税","2:非課税"},{"","0","1","2"},{"","外税","内税","非課税"}};	//検索条件：外税内税区分
+	static final String[][] TaxFgList 			= {{"0:外税","1:内税","2:非課税"},{"0","1","2"},{"外税","内税","非課税"}};					//外税内税区分
 	
 	
-	static String[][] SearchDelList 	= {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
-	static String[][] DelList 			= {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};						//設定用削除区分
+	static final String[][] SearchDelList 	= {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
+	static final String[][] DelList 			= {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};						//設定用削除区分
 	
 	static boolean ActualDateUnControl;		//入荷日管理しない場合false※荷主毎パラメータマスタActualDateUnControl Seq = 0によって制御します
 	
@@ -53,58 +53,58 @@ public class B00100DefaultVariable{
 	 マスタ優先区分　※データ優先：荷主届け先変換時にデータ優先する。マスタ優先（名称：届先変換マスタ⇒届先マスタ　住所：届先マスタの情報をひく）
 	 当然に連携データに名称住所がなければマスタ情報をひく
 	*/
-	static String[][] SearchMstPriorityFirstFg 	= {{"0:データ優先","1:マスタ優先","未指定"},{"0","1",""},{"データ優先","マスタ優先",""}};	
-	static String[][] MstPriorityFirstFg 		= {{"0:データ優先","1:マスタ優先"},{"0","1"},{"データ優先","マスタ優先"}};							
+	static final String[][] SearchMstPriorityFirstFg 	= {{"0:データ優先","1:マスタ優先","未指定"},{"0","1",""},{"データ優先","マスタ優先",""}};	
+	static final String[][] MstPriorityFirstFg 			= {{"0:データ優先","1:マスタ優先"},{"0","1"},{"データ優先","マスタ優先"}};							
 	
 	static String[][] SerachAuthorityFG;				//検索用ユーザー権限区分
 	static String[][] AuthorityFG;						//設定用ユーザー権限区分
 	
-	static String[][] SearchLocType 	= {{"未指定","0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"","0","1","7","8","9"},{"","通常","保管","スルーロケ","入荷時","引当禁止"},{"","1","1","0","0","0"}};		//ロケタイプ検索値{表示用,CD,名称,引当可能FG※引当対象なら1}
-	static String[][] LocType 			= {{"0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"0","1","7","8","9"},{"通常","保管","スルーロケ","入荷時","引当禁止"},{"1","1","0","0","0"}};									//ロケタイプ設定値{表示用,CD,名称,引当可能FG※引当対象なら1}
+	static final String[][] SearchLocType 	= {{"未指定","0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"","0","1","7","8","9"},{"","通常","保管","スルーロケ","入荷時","引当禁止"},{"","1","1","0","0","0"}};		//ロケタイプ検索値{表示用,CD,名称,引当可能FG※引当対象なら1}
+	static final String[][] LocType 			= {{"0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"0","1","7","8","9"},{"通常","保管","スルーロケ","入荷時","引当禁止"},{"1","1","0","0","0"}};									//ロケタイプ設定値{表示用,CD,名称,引当可能FG※引当対象なら1}
 	
-	static String DefaultActualDate 	= "1941/12/08";	//入荷日管理しない場合の入荷実績日
+	static final String DefaultActualDate 	= "1941/12/08";	//入荷日管理しない場合の入荷実績日
 	
-	static String DefaultTroughLoc	= "ZZZ2222222";	//スルー型運用の場合スルー引当用ロケ
+	static final String DefaultTroughLoc		= "ZZZ2222222";	//スルー型運用の場合スルー引当用ロケ
 	
-	static String DefaultExpDate 		= "3000/01/01";	//消費期限管理しない場合の消費期限
+	static final String DefaultExpDate 		= "3000/01/01";	//消費期限管理しない場合の消費期限
 	
-	static String DefaultPtmsItemCd 	= "0001";		//基幹システム商品CD
+	static final String DefaultPtmsItemCd 	= "0001";		//基幹システム商品CD
 	
-	static String[][] SearchStatusList 			= {{"未指定","0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"","0","1","2","3","8","9"}};	//検索条件：状況
-	static String[][] StatusList 					= {{"0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"0","1","2","3","8","9"}};				//状況
+	static final String[][] SearchStatusList 			= {{"未指定","0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"","0","1","2","3","8","9"}};	//検索条件：状況
+	static final String[][] StatusList 				= {{"0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"0","1","2","3","8","9"}};				//状況
 	
-	static String[][] SearchWmsStatusList 		= {{"未指定","0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"","0","1","2","3","8","7","9"}};	//検索条件：倉庫状況
-	static String[][] WmsStatusList 				= {{"0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"0","1","2","3","8","7","9"}};				//倉庫状況
+	static final String[][] SearchWmsStatusList 		= {{"未指定","0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"","0","1","2","3","8","7","9"}};	//検索条件：倉庫状況
+	static final String[][] WmsStatusList 			= {{"0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"0","1","2","3","8","7","9"}};				//倉庫状況
 	
-	static String[][] SearchArryvalFixFgList 	= {{"未指定","0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"","0","1","2","9"},{"","未入荷","入荷済","分納待","キャンセル"}};		//入荷状況リスト
-	static String[][] ArryvalFixFgList 			= {{"0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"0","1","2","9"},{"未入荷","入荷済","分納待","キャンセル"}};						//入荷状況リスト
+	static final String[][] SearchArryvalFixFgList 	= {{"未指定","0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"","0","1","2","9"},{"","未入荷","入荷済","分納待","キャンセル"}};		//入荷状況リスト
+	static final String[][] ArryvalFixFgList 			= {{"0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"0","1","2","9"},{"未入荷","入荷済","分納待","キャンセル"}};						//入荷状況リスト
 	
-	static String[][] SearchCautionTiming		= {{"未指定","0:納品時","1:出荷時"},{"","0","1"},{"","納品時","出荷時"}};		//検索条件：注意事項タイミング
-	static String[][] CautionTiming 				= {{"0:納品時","1:出荷時"},{"0","1"},{"納品時","出荷時"}};						//注意事項タイミング
+	static final String[][] SearchCautionTiming		= {{"未指定","0:納品時","1:出荷時"},{"","0","1"},{"","納品時","出荷時"}};		//検索条件：注意事項タイミング
+	static final String[][] CautionTiming 			= {{"0:納品時","1:出荷時"},{"0","1"},{"納品時","出荷時"}};						//注意事項タイミング
 	
-	static String[][] ChildrenFGList 				= {{"0:親伝票","1:子伝票"},{"0","1"},{"親伝票","子伝票"}};				//赤黒区分
+	static final String[][] ChildrenFGList 			= {{"0:親伝票","1:子伝票"},{"0","1"},{"親伝票","子伝票"}};				//赤黒区分
 	
-	static String[][] SearchTildFG 				= {{"未指定","0:常温","1:冷蔵","2:冷凍","3:チルド"},{"","0","1","2","3"},{"","常温","冷蔵","冷凍","チルド"}};
-	static String[][] TildFG 						= {{"0:常温","1:冷蔵","2:冷凍","3:チルド"},{"0","1","2","3"},{"常温","冷蔵","冷凍","チルド"}};					//0:常温必須
+	static final String[][] SearchTildFG 				= {{"未指定","0:常温","1:冷蔵","2:冷凍","3:チルド"},{"","0","1","2","3"},{"","常温","冷蔵","冷凍","チルド"}};
+	static final String[][] TildFG 					= {{"0:常温","1:冷蔵","2:冷凍","3:チルド"},{"0","1","2","3"},{"常温","冷蔵","冷凍","チルド"}};					//0:常温必須
 	
-	static String[][] ReceiptStampFGList 		= {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};	//受領印区分
+	static final String[][] ReceiptStampFGList 		= {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};	//受領印区分
 	
-	static String[][] SearchInvoiceStatusList 	= {{"未指定","0:未請求","1:請求済","9:対象外"},{"","0","1","9"},{"","未請求","請求済","対象外"}};				//請求区分
-	static String[][] InvoiceStatusList 			= {{"0:未請求","1:請求済","9:対象外"},{"0","1","9"},{"未請求","請求済","対象外"}};
+	static final String[][] SearchInvoiceStatusList 	= {{"未指定","0:未請求","1:請求済","9:対象外"},{"","0","1","9"},{"","未請求","請求済","対象外"}};				//請求区分
+	static final String[][] InvoiceStatusList 		= {{"0:未請求","1:請求済","9:対象外"},{"0","1","9"},{"未請求","請求済","対象外"}};
 	
-	static String[][] SearchFeeFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(請求)
-	static String[][] FeeFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(請求)
+	static final String[][] SearchFeeFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(請求)
+	static final String[][] FeeFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(請求)
 	
-	static String[][] SearchPayFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(支払)
-	static String[][] PayFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(支払)
+	static final String[][] SearchPayFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(支払)
+	static final String[][] PayFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(支払)
 	
-	static String[][] SearchCODList 				= {{"未指定","0:一般","1:代引"},{"","0","1"},{"","一般","代引"}};		//検索条件：代引区分
-	static String[][] CODList 						= {{"0:一般","1:代引"},{"0","1"},{"一般","代引"}};						//代引区分
+	static final String[][] SearchCODList 			= {{"未指定","0:一般","1:代引"},{"","0","1"},{"","一般","代引"}};		//検索条件：代引区分
+	static final String[][] CODList 					= {{"0:一般","1:代引"},{"0","1"},{"一般","代引"}};						//代引区分
 	
-	static String[][] SearchUnitTypeList 		= {{"未指定","0:バラ","1:カートン","2:ケース","3：パレット"},{"","0","1","2","3"},{"","バラ","カートン","ケース","パレット"}};
-	static String[][] UnitTypeList 				= {{"0:バラ","1:カートン","2:ケース","3：パレット"},{"0","1","2","3"},{"バラ","カートン","ケース","パレット"}};
+	static final String[][] SearchUnitTypeList 		= {{"未指定","0:バラ","1:カートン","2:ケース","3：パレット"},{"","0","1","2","3"},{"","バラ","カートン","ケース","パレット"}};
+	static final String[][] UnitTypeList 				= {{"0:バラ","1:カートン","2:ケース","3：パレット"},{"0","1","2","3"},{"バラ","カートン","ケース","パレット"}};
 	
-	static String[][] PurposeList 					= {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
+	static final String[][] PurposeList 				= {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
 	
 	/*
 	====================================================================
@@ -172,6 +172,7 @@ public class B00100DefaultVariable{
 		
 		DeliveryType();				//運送タイプ
 		ClDefaultLoc();				//基本のロケーション
+		AdjustReasonDefault();		//在庫調整理由少なくとも一つ作る
 		
 		ClParameterCheck();			//荷主別パラメータマスタの値チェック
 	}
@@ -183,8 +184,11 @@ public class B00100DefaultVariable{
 	}
 
 	public static void ClParameterDefault() {
-		ClActualDateControlDefault();	//パラメータマスタに入荷日管理しない設定で初期値設定
+		ClActualDateControlDefault();		//パラメータマスタに入荷日管理しない設定で初期値設定
+		
 	}
+	
+	
 	private static void ClActualDateControl() {
 		ActualDateUnControl = false;
 		Object[][] ParameterMstWankoRtFromParaCd = M00000ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("ActualDateUnControl");
@@ -195,6 +199,27 @@ public class B00100DefaultVariable{
 				}
 			}
 		}
+	}
+	
+	private static void AdjustReasonDefault() {
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		//在庫調整理由"0000"　"一般調整"無ければ作る
+		Object[][] SetString = {
+					 {"ClCd"				,"1","0","Key"	,A00000Main.ClCd}			//荷主コード
+					,{"WhCd"				,"1","0","Key"	,A00000Main.ClWh}			//倉庫コード
+					,{"AdjustReasonCd"		,"1","0","Key"	,"0000"}					//調整理由コード
+					,{"AdjustReasonName"	,"1","0",""		,"一般調整"}				//調整理由名
+					,{"EntryDate"			,"1","0",""		,now_dtm}					//登録日
+					,{"UpdateDate"			,"1","0",""		,now_dtm}					//更新日
+					,{"EntryUser"			,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}					//登録者
+					,{"UpdateUser"			,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}					//更新者
+					};
+		
+		String tgt_table = "WM0020AdjustReason";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 	private static void ClActualDateControlDefault() {
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
@@ -839,65 +864,65 @@ public class B00100DefaultVariable{
 			SerachAuthorityFG = new String[3][5];		//検索用ユーザー権限区分
 			AuthorityFG = new String[3][4];			//設定用ユーザー権限区分
 			
-			SerachAuthorityFG[0][0] = "0:SYS利用者";
-			SerachAuthorityFG[1][0] = "0";
-			SerachAuthorityFG[2][0] = "システム利用者";		
-			AuthorityFG[0][0] = "0:システム利用者";
-			AuthorityFG[1][0] = "0";
-			AuthorityFG[2][0] = "システム利用者";
+			SerachAuthorityFG[0][0] 	= "0:SYS利用者";
+			SerachAuthorityFG[1][0] 	= "0";
+			SerachAuthorityFG[2][0] 	= "システム利用者";		
+			AuthorityFG[0][0] 			= "0:システム利用者";
+			AuthorityFG[1][0] 			= "0";
+			AuthorityFG[2][0]	 		= "システム利用者";
 			
-			SerachAuthorityFG[0][1] = "1:乗務員";
-			SerachAuthorityFG[1][1] = "1";
-			SerachAuthorityFG[2][1] = "乗務員";		
-			AuthorityFG[0][1] = "1:乗務員";
-			AuthorityFG[1][1] = "1";
-			AuthorityFG[2][1] = "乗務員";
+			SerachAuthorityFG[0][1] 	= "1:乗務員";
+			SerachAuthorityFG[1][1] 	= "1";
+			SerachAuthorityFG[2][1] 	= "乗務員";		
+			AuthorityFG[0][1] 			= "1:乗務員";
+			AuthorityFG[1][1] 			= "1";
+			AuthorityFG[2][1] 			= "乗務員";
 			
-			SerachAuthorityFG[0][2] = "2:荷主ユーザー";
-			SerachAuthorityFG[1][2] = "2";
-			SerachAuthorityFG[2][2] = "荷主ユーザー";		
-			AuthorityFG[0][2] = "2:荷主ユーザー";
-			AuthorityFG[1][2] = "2";
-			AuthorityFG[2][2] = "荷主ユーザー";
+			SerachAuthorityFG[0][2] 	= "2:荷主ユーザー";
+			SerachAuthorityFG[1][2] 	= "2";
+			SerachAuthorityFG[2][2] 	= "荷主ユーザー";		
+			AuthorityFG[0][2] 			= "2:荷主ユーザー";
+			AuthorityFG[1][2] 			= "2";
+			AuthorityFG[2][2] 			= "荷主ユーザー";
 			
-			SerachAuthorityFG[0][3] = "9:管理ユーザー";
-			SerachAuthorityFG[1][3] = "9";
-			SerachAuthorityFG[2][3] = "管理ユーザー";		
-			AuthorityFG[0][3] = "9:管理ユーザー";
-			AuthorityFG[1][3] = "9";
-			AuthorityFG[2][3] = "管理ユーザー";
+			SerachAuthorityFG[0][3] 	= "9:管理ユーザー";
+			SerachAuthorityFG[1][3] 	= "9";
+			SerachAuthorityFG[2][3] 	= "管理ユーザー";		
+			AuthorityFG[0][3] 			= "9:管理ユーザー";
+			AuthorityFG[1][3] 			= "9";
+			AuthorityFG[2][3] 			= "管理ユーザー";
 			
-			SerachAuthorityFG[0][4] = "未指定";
-			SerachAuthorityFG[1][4] = "";
-			SerachAuthorityFG[2][4] = "";	
+			SerachAuthorityFG[0][4] 	= "未指定";
+			SerachAuthorityFG[1][4] 	= "";
+			SerachAuthorityFG[2][4] 	= "";	
 		}else {
 			SerachAuthorityFG = new String[3][4];		//検索用ユーザー権限区分
 			AuthorityFG = new String[3][3];			//設定用ユーザー権限区分
 			
-			SerachAuthorityFG[0][0] = "0:SYS利用者";
-			SerachAuthorityFG[1][0] = "0";
-			SerachAuthorityFG[2][0] = "システム利用者";		
-			AuthorityFG[0][0] = "0:システム利用者";
-			AuthorityFG[1][0] = "0";
-			AuthorityFG[2][0] = "システム利用者";
+			SerachAuthorityFG[0][0] 	= "0:SYS利用者";
+			SerachAuthorityFG[1][0] 	= "0";
+			SerachAuthorityFG[2][0] 	= "システム利用者";		
+			AuthorityFG[0][0] 			= "0:システム利用者";
+			AuthorityFG[1][0] 			= "0";
+			AuthorityFG[2][0] 			= "システム利用者";
 			
-			SerachAuthorityFG[0][1] = "1:乗務員";
-			SerachAuthorityFG[1][1] = "1";
-			SerachAuthorityFG[2][1] = "乗務員";		
-			AuthorityFG[0][1] = "1:乗務員";
-			AuthorityFG[1][1] = "1";
-			AuthorityFG[2][1] = "乗務員";
+			SerachAuthorityFG[0][1] 	= "1:乗務員";
+			SerachAuthorityFG[1][1] 	= "1";
+			SerachAuthorityFG[2][1] 	= "乗務員";		
+			AuthorityFG[0][1] 			= "1:乗務員";
+			AuthorityFG[1][1] 			= "1";
+			AuthorityFG[2][1] 			= "乗務員";
 			
-			SerachAuthorityFG[0][2] = "2:荷主ユーザー";
-			SerachAuthorityFG[1][2] = "2";
-			SerachAuthorityFG[2][2] = "荷主ユーザー";		
-			AuthorityFG[0][2] = "2:荷主ユーザー";
-			AuthorityFG[1][2] = "2";
-			AuthorityFG[2][2] = "荷主ユーザー";
+			SerachAuthorityFG[0][2] 	= "2:荷主ユーザー";
+			SerachAuthorityFG[1][2] 	= "2";
+			SerachAuthorityFG[2][2] 	= "荷主ユーザー";		
+			AuthorityFG[0][2] 			= "2:荷主ユーザー";
+			AuthorityFG[1][2] 			= "2";
+			AuthorityFG[2][2] 			= "荷主ユーザー";
 			
-			SerachAuthorityFG[0][3] = "未指定";
-			SerachAuthorityFG[1][3] = "";
-			SerachAuthorityFG[2][3] = "";	
+			SerachAuthorityFG[0][3] 	= "未指定";
+			SerachAuthorityFG[1][3] 	= "";
+			SerachAuthorityFG[2][3] 	= "";	
 		}
 	}
 	

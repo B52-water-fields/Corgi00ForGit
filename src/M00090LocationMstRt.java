@@ -37,17 +37,17 @@ public class M00090LocationMstRt{
 	*/
 	
 	//戻り値カラム
-	static int ColClCd			= (int) 0;	//荷主コード
-	static int ColCLName01		= (int) 1;	//荷主名1
-	static int ColWhCd			= (int) 2;	//倉庫コード
-	static int ColWHName		= (int) 3;	//拠点倉庫名
-	static int ColLoc			= (int) 4;	//ロケーション
-	static int ColLocName		= (int) 5;	//ロケーション名
-	static int ColType			= (int) 6;	//ロケタイプ
-	static int ColEntryDate	= (int) 7;	//登録日
-	static int ColUpdateDate	= (int) 8;	//更新日
-	static int ColEntryUser	= (int) 9;	//登録者
-	static int ColUpdateUser	= (int)10;	//更新者
+	static final int ColClCd			= (int) 0;	//荷主コード
+	static final int ColCLName01		= (int) 1;	//荷主名1
+	static final int ColWhCd			= (int) 2;	//倉庫コード
+	static final int ColWHName			= (int) 3;	//拠点倉庫名
+	static final int ColLoc			= (int) 4;	//ロケーション
+	static final int ColLocName		= (int) 5;	//ロケーション名
+	static final int ColType			= (int) 6;	//ロケタイプ
+	static final int ColEntryDate		= (int) 7;	//登録日
+	static final int ColUpdateDate	= (int) 8;	//更新日
+	static final int ColEntryUser		= (int) 9;	//登録者
+	static final int ColUpdateUser	= (int)10;	//更新者
 	
 	public static Object[][] RtSettingLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {

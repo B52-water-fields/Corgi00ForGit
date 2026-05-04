@@ -4,20 +4,20 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
 public class B00130SoundCreate{
-	static double NS   = 0;		//無音
+	static final double NS   = 0;		//無音
     
-	static double C   = 32.703;	//ド		
-	static double CS  = 34.648;	//ド#		
-	static double D   = 36.708;	//レ		
-	static double DS  = 38.891;	//レ#		
-	static double E   = 41.203;	//ミ		
-	static double F   = 43.654;	//ファ		
-	static double FS  = 46.249;	//ファ#
-	static double G   = 48.999;	//ソ
-	static double GS  = 51.913;	//ソ#	
-	static double A   = 55.000;	//ラ
-	static double AS  = 58.270;	//ラ#
-	static double B   = 61.735;	//シ
+	static final double C   = 32.703;	//ド		
+	static final double CS  = 34.648;	//ド#		
+	static final double D   = 36.708;	//レ		
+	static final double DS  = 38.891;	//レ#		
+	static final double E   = 41.203;	//ミ		
+	static final double F   = 43.654;	//ファ		
+	static final double FS  = 46.249;	//ファ#
+	static final double G   = 48.999;	//ソ
+	static final double GS  = 51.913;	//ソ#	
+	static final double A   = 55.000;	//ラ
+	static final double AS  = 58.270;	//ラ#
+	static final double B   = 61.735;	//シ
 	
 	//G7を100msボリューム0.5で鳴らしたいときは
 	//Sound(C	,7	,100	,0.5)
@@ -140,6 +140,21 @@ public class B00130SoundCreate{
 			};
 		SoundCall(Sound);
 	}
+	
+	public static void TwinkleStar() {
+	    byte[][] Sound = {
+	        Sound(C,5,300,0.5), Sound(C,5,300,0.5),
+	        Sound(G,5,300,0.5), Sound(G,5,300,0.5),
+	        Sound(A,5,300,0.5), Sound(A,5,300,0.5),
+	        Sound(G,5,600,0.5),
+
+	        Sound(F,5,300,0.5), Sound(F,5,300,0.5),
+	        Sound(E,5,300,0.5), Sound(E,5,300,0.5),
+	        Sound(D,5,300,0.5), Sound(D,5,300,0.5),
+	        Sound(C,5,600,0.5)
+	    };
+	    SoundCall(Sound);
+	}
 
 	public static void SoundTest() {
 		
@@ -150,7 +165,7 @@ public class B00130SoundCreate{
 		LVUP();
 		CAT();
 		Condor();
-		
+		TwinkleStar();
 	}
 	
 	

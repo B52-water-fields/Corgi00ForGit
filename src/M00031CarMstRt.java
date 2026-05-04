@@ -43,26 +43,26 @@ public class M00031CarMstRt{
 			
 	*/
 	//戻り値カラム
-	static int ColWHCD						= (int) 0;	//担当倉庫
-	static int ColShippingCompanyCd		= (int) 1;	//運送会社CD
-	static int ColShippingCompanyName01	= (int) 2;	//運送会社名1
-	static int ColShippingCompanyName02	= (int) 3;	//運送会社名2
-	static int ColShippingCompanyName03	= (int) 4;	//運送会社名3
-	static int ColCarCd					= (int) 5;	//車輛CD
-	static int ColCarName01				= (int) 6;	//車輛名01
-	static int ColCarName02				= (int) 7;	//車輛名02
-	static int ColCarName03				= (int) 8;	//車輛名03
-	static int ColDriverCd					= (int) 9;	//乗務員CD
-	static int ColUserName01				= (int)10;	//ユーザー名1
-	static int ColUserName02				= (int)11;	//ユーザー名2
-	static int ColUserName03				= (int)12;	//ユーザー名3
-	static int ColPTMSCD					= (int)13;	//基幹システム車輛コード
-	static int ColEntryDate				= (int)14;	//データ登録日時
-	static int ColUpdateDate				= (int)15;	//データ更新日時
-	static int ColEntryUser				= (int)16;	//登録者コード
-	static int ColUpdateUser				= (int)17;	//更新者コード
-	static int ColDelFg					= (int)18;	//削除フラグ
-	static int ColWHName					= (int)19;	//倉庫名
+	static final  int ColWHCD						= (int) 0;	//担当倉庫
+	static final  int ColShippingCompanyCd		= (int) 1;	//運送会社CD
+	static final  int ColShippingCompanyName01	= (int) 2;	//運送会社名1
+	static final  int ColShippingCompanyName02	= (int) 3;	//運送会社名2
+	static final  int ColShippingCompanyName03	= (int) 4;	//運送会社名3
+	static final  int ColCarCd						= (int) 5;	//車輛CD
+	static final  int ColCarName01				= (int) 6;	//車輛名01
+	static final  int ColCarName02				= (int) 7;	//車輛名02
+	static final  int ColCarName03				= (int) 8;	//車輛名03
+	static final  int ColDriverCd					= (int) 9;	//乗務員CD
+	static final  int ColUserName01				= (int)10;	//ユーザー名1
+	static final  int ColUserName02				= (int)11;	//ユーザー名2
+	static final  int ColUserName03				= (int)12;	//ユーザー名3
+	static final  int ColPTMSCD					= (int)13;	//基幹システム車輛コード
+	static final  int ColEntryDate				= (int)14;	//データ登録日時
+	static final  int ColUpdateDate				= (int)15;	//データ更新日時
+	static final  int ColEntryUser				= (int)16;	//登録者コード
+	static final  int ColUpdateUser				= (int)17;	//更新者コード
+	static final  int ColDelFg						= (int)18;	//削除フラグ
+	static final  int ColWHName					= (int)19;	//倉庫名
 	
 	public static Object[][] RtSettingCarMstRt(){
 		Object[][] RtSettingCarMstRt = {
