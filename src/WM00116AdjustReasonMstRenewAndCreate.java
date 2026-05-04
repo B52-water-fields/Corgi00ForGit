@@ -130,7 +130,6 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 		main_fm.add(TB_UpdateDate);
 		main_fm.add(TB_EntryUser);
 		main_fm.add(TB_UpdateUser);
-		
 
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
