@@ -214,6 +214,12 @@ public class WM00105AdjustReasonMstSearch{
 						tableModel_ms01.addRow(SetOb);
 					}
 					
+					if(0<AdjustReasonRt.length) {
+						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+					}else {
+						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+					}
+					
 					RenewFg = true;
 				}
 			}

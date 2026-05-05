@@ -57,9 +57,9 @@ public class WM00100SupplierMstSearch{
 		
 		JLabel LB_SearchPTMSCDBMN		= B00110FrameParts.JLabelSet(	330, 75,130,20,"基幹SysCd（部門）:"		,10,1);
 		JLabel LB_SearchPTMSCDNINUSHI	= B00110FrameParts.JLabelSet(	330,100,130,20,"基幹SysCd（荷主）:"		,10,1);
-		JLabel LB_SearchPaySite		= B00110FrameParts.JLabelSet(		330,125,130,20,"支払サイト開始:"		,11,1);
-		JLabel LB_SearchPayDate		= B00110FrameParts.JLabelSet(		330,150,130,20,"支払日開始:"			,11,1);
-		JLabel LB_SearchShimeDate	= B00110FrameParts.JLabelSet(		330,175,130,20,"締め日開始:"			,11,1);
+		JLabel LB_SearchPaySite		= B00110FrameParts.JLabelSet(		330,125,130,20,"支払サイト:"			,11,1);
+		JLabel LB_SearchPayDate		= B00110FrameParts.JLabelSet(		330,150,130,20,"支払日:"				,11,1);
+		JLabel LB_SearchShimeDate	= B00110FrameParts.JLabelSet(		330,175,130,20,"締め日:"				,11,1);
 		JLabel LB_SearchDECD			= B00110FrameParts.JLabelSet(	330,200,130,20,"納品先コード:"			,11,1);
 		JLabel LB_SearchDepartmentCd	= B00110FrameParts.JLabelSet(	330,225,130,20,"部署CD:"				,11,1);
 		
@@ -404,6 +404,11 @@ public class WM00100SupplierMstSearch{
 							SetOb[i01+1] = SupplierRt[i][i01];
 						}
 						tableModel_ms01.addRow(SetOb);
+					}
+					if(0<SupplierRt.length) {
+						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+					}else {
+						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					
 					RenewFg = true;
