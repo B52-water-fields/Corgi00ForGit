@@ -1,4 +1,4 @@
-public class M00120ItemRecomendMstRt{
+public class M00120ItemRecomendLocMstRt{
 	//荷主ー商品ごとの推奨ロケを返却する
 	
 	static final int ColClCd			= (int) 0;	//荷主コード
@@ -6,17 +6,17 @@ public class M00120ItemRecomendMstRt{
 	static final int ColClWh			= (int) 2;	//担当倉庫コード
 	static final int ColClWhName		= (int) 3;	//担当倉庫名
 	static final int ColItemCd			= (int) 4;	//商品コード
-	static final int ColItemName01		= (int) 5;	//商品名1
+	static final int ColItemName01	= (int) 5;	//商品名1
 	static final int ColRecomendLoc	= (int) 6;	//推奨ロケ
-	static final int ColLocName			= (int) 7;	//推奨ロケ名
+	static final int ColLocName		= (int) 7;	//推奨ロケ名
 	static final int ColType			= (int) 8;	//推奨ロケタイプ
 	static final int ColEntryDate		= (int) 9;	//登録日時
-	static final int ColUpdateDate		= (int)10;	//更新日時
+	static final int ColUpdateDate	= (int)10;	//更新日時
 	static final int ColEntryUser		= (int)11;	//登録者
-	static final int ColUpdateUser		= (int)12;	//更新者
+	static final int ColUpdateUser	= (int)12;	//更新者
 	
-	public static Object[][] RtItemRecomendMstRt() {
-		Object[][] RtAdjustReasonRt = {
+	public static Object[][] RtItemRecomendLocMstRt() {
+		Object[][] RtItemRecomendLocMstRt = {
 				 	 {"ClCd"		,ColClCd			,"String"	,"荷主コード"		,"Key"}
 					,{"ClName01"	,ColCLName01		,"String"	,"荷主名"			,""}
 					,{"ClWh"		,ColClWh			,"String"	,"担当倉庫コード"	,"Key"}
@@ -31,14 +31,14 @@ public class M00120ItemRecomendMstRt{
 					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"			,""}
 					,{"UpdateUser"	,ColUpdateUser		,"String"	,"更新者"			,""}
 					};
-		return RtAdjustReasonRt;
+		return RtItemRecomendLocMstRt;
 	}
 	
-	public static Object[][] ItemRecomendMstRt(
+	public static Object[][] RtItemRecomendLocMstRt(
 			
 			
 			boolean AllSearch){
-		Object[][] rt = new Object[0][RtItemRecomendMstRt().length];
+		Object[][] rt = new Object[0][RtItemRecomendLocMstRt().length];
 		String sql = "select "
 				+ ""
 				/*
