@@ -105,7 +105,7 @@ public class M00031CarMstRt{
 		SearchCarName			= B00150ArrayListControl.ArryListStringUniqueList(SearchCarName);
 		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
-		Object[][] rt = new Object[0][19];
+		Object[][] rt = new Object[0][RtSettingCarMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -264,7 +264,7 @@ public class M00031CarMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][20];
+				rt = new Object[counter][RtSettingCarMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

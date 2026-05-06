@@ -87,7 +87,7 @@ public class T00010StrokRt{
 	static int ColPossibleQty	= (int) 9;	//出荷可能数
 	static int ColItemName		= (int)10;	//商品名
 	static int ColClItemCd		= (int)11;	//荷主商品コード
-	static int ColJanCd			= (int)12;	//ソースマーク_BCD（バラ）
+	static int ColJanCd		= (int)12;	//ソースマーク_BCD（バラ）
 	static int ColItemMdNo		= (int)13;	//商品型番
 	static int ColEntryDate	= (int)14;	//登録日時
 	static int ColUpdateDate	= (int)15;	//更新日時
@@ -98,12 +98,12 @@ public class T00010StrokRt{
 		Object[][] RtSettingLocationMstRt = {
 				 {"ClCd"			,ColClCd			,"String"	,"荷主コード"}
 				,{"WhCd"			,ColWhCd			,"String"	,"倉庫コード"}
-				,{"Loc"				,ColLoc				,"String"	,"ロケーション"}
+				,{"Loc"				,ColLoc			,"String"	,"ロケーション"}
 				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"}
-				,{"Lot"				,ColLot				,"String"	,"ロット"}
-				,{"Expdate"			,ColExpdate			,"String"	,"消費期限"}
-				,{"ActualDate"		,ColActualDate		,"String"	,"入荷実績日"}
-				,{"Qty"				,ColQty				,"int"		,"数量"}
+				,{"Lot"				,ColLot			,"String"	,"ロット"}
+				,{"Expdate"			,ColExpdate		,"String"	,"消費期限"}
+				,{"ActualDate"		,ColActualDate	,"String"	,"入荷実績日"}
+				,{"Qty"				,ColQty			,"int"		,"数量"}
 				,{"ShipPlanQty"		,ColShipPlanQty	,"int"		,"引当済数"}
 				,{"PossibleQty"		,ColPossibleQty	,"int"		,"出荷可能数"}
 				,{"ItemName"		,ColItemName		,"String"	,"商品名"}
@@ -111,9 +111,9 @@ public class T00010StrokRt{
 				,{"JanCd"			,ColJanCd			,"String"	,"ソースマーク_BCD（バラ）"}
 				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"}
 				,{"EntryDate"		,ColEntryDate		,"String"	,"登録日時"}
-				,{"UpdateDate"		,ColUpdateDate		,"String"	,"更新日時"}
+				,{"UpdateDate"		,ColUpdateDate	,"String"	,"更新日時"}
 				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"}
-				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者"}
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"}
 				};
 		
 		return RtSettingLocationMstRt;
@@ -186,7 +186,7 @@ public class T00010StrokRt{
 			}
 		}
 
-		Object[][] rt = new Object[0][18];
+		Object[][] rt = new Object[0][RtStrokRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -567,7 +567,7 @@ public class T00010StrokRt{
 				while (rset01.next()) {
 					counter=counter+1;
 				}
-				rt = new Object[counter][18];
+				rt = new Object[counter][RtStrokRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

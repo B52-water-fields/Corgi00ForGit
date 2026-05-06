@@ -164,7 +164,7 @@ public class M00040DeliveryMstRt{
 		SearchMunicipalityCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
 		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
-		Object[][] rt = new Object[0][27];
+		Object[][] rt = new Object[0][RtSettingDeliveryMstRt().length];
 		boolean SearchKick = false;
 		
 		if(AllSearch) {SearchKick=true;}
@@ -429,7 +429,7 @@ public class M00040DeliveryMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][27];
+				rt = new Object[counter][RtSettingDeliveryMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

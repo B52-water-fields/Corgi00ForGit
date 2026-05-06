@@ -168,7 +168,7 @@ public class M00060DeliveryComversionMstRt{
 		SearchDelFg					= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		SearchMstPriorityFirstFg	= B00150ArrayListControl.ArryListStringUniqueList(SearchMstPriorityFirstFg);
 		
-		Object[][] rt = new Object[0][27];
+		Object[][] rt = new Object[0][RtDeliveryComversionMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -481,7 +481,7 @@ public class M00060DeliveryComversionMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][27];
+				rt = new Object[counter][RtDeliveryComversionMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

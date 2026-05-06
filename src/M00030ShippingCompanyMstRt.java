@@ -123,7 +123,7 @@ public class M00030ShippingCompanyMstRt{
 		SearchMail				= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
 		SearchCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
 		
-		Object[][] rt = new Object[0][22];
+		Object[][] rt = new Object[0][RtSettingShippingCompanyMstRt().length];
 		
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
@@ -305,7 +305,7 @@ public class M00030ShippingCompanyMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][22];
+				rt = new Object[counter][RtSettingShippingCompanyMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

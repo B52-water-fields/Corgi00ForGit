@@ -50,7 +50,7 @@ public class M00001WhMstRt{
 	*/
 	//戻り値カラム
 	static final  int ColNoWHCD 			= (int) 0;	//倉庫コード
-	static final  int ColNoWHName 		= (int) 1;	//拠点倉庫名
+	static final  int ColNoWHName 			= (int) 1;	//拠点倉庫名
 	static final  int ColNoPost 			= (int) 2;	//拠点倉庫郵便番号
 	static final  int ColNoAdd01 			= (int) 3;	//拠点倉庫住所1
 	static final  int ColNoAdd02 			= (int) 4;	//拠点倉庫住所2
@@ -60,10 +60,10 @@ public class M00001WhMstRt{
 	static final  int ColNoCom01 			= (int) 8;	//コメント１
 	static final  int ColNoCom02 			= (int) 9;	//コメント２
 	static final  int ColNoCom03 			= (int)10;	//コメント３
-	static final  int ColNoPTMSCD 		= (int)11;	//基幹システム連携用事業所CD
-	static final  int ColNoEntryDate 	= (int)12;	//データ登録日時
+	static final  int ColNoPTMSCD 			= (int)11;	//基幹システム連携用事業所CD
+	static final  int ColNoEntryDate 		= (int)12;	//データ登録日時
 	static final  int ColNoUpdateDate 	= (int)13;	//データ更新日時
-	static final  int ColNoEntryUser 	= (int)14;	//登録者
+	static final  int ColNoEntryUser 		= (int)14;	//登録者
 	static final  int ColNoUpdateUser 	= (int)15;	//更新者
 	
 	public static Object[][] RtSettingWhMstRt(){
@@ -110,7 +110,7 @@ public class M00001WhMstRt{
 		SearchCom		= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
 		SearchPTMSCD	= B00150ArrayListControl.ArryListStringUniqueList(SearchPTMSCD);
 		
-		Object[][] rt = new Object[0][16];
+		Object[][] rt = new Object[0][RtSettingWhMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		String sql = " select "
@@ -295,7 +295,7 @@ public class M00001WhMstRt{
 				while (rset01.next()) {
 					counter=counter+1;
 				}
-				rt = new Object[counter][16];
+				rt = new Object[counter][RtSettingWhMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

@@ -178,7 +178,7 @@ public class M00020UserMstRt{
 		SearchCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
 		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
-		Object[][] rt = new Object[0][32];
+		Object[][] rt = new Object[0][RtSettingUserMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -485,7 +485,7 @@ public class M00020UserMstRt{
 				while (rset01.next()) {
 					counter=counter+1;
 				}
-				rt = new Object[counter][32];
+				rt = new Object[counter][RtSettingUserMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

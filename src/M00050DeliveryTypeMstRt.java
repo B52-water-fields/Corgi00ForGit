@@ -59,7 +59,7 @@ public class M00050DeliveryTypeMstRt{
 		SearchDeliveryTypeCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd);
 		SearchDeliveryTypeName	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeName);
 		
-		Object[][] rt = new Object[0][7];
+		Object[][] rt = new Object[0][RtSettingDeliveryTypeMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		String sql = " select "
@@ -142,7 +142,7 @@ public class M00050DeliveryTypeMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][7];
+				rt = new Object[counter][RtSettingDeliveryTypeMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

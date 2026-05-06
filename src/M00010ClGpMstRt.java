@@ -116,7 +116,7 @@ public class M00010ClGpMstRt{
 		
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
-		Object[][] rt = new Object[0][19];
+		Object[][] rt = new Object[0][RtSettingClGpMstRt().length];
 		
 		String sql = "select "
 				+"("+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD) as ClGpCD,\n"			//荷主グループCD
@@ -295,7 +295,7 @@ public class M00010ClGpMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][19];
+				rt = new Object[counter][RtSettingClGpMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

@@ -128,7 +128,7 @@ public class M10010PostMstRt{
 		SearchAdd	= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
 		
 		//郵便番号を受け取って郵便番号マスタから検索結果を返却する
-		Object[][] rt = new Object[0][5];
+		Object[][] rt = new Object[0][RtSettingPostRt().length];
 
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
@@ -216,7 +216,7 @@ public class M10010PostMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][5];
+				rt = new Object[counter][RtSettingPostRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
@@ -250,7 +250,7 @@ public class M10010PostMstRt{
 		SearchName				= B00150ArrayListControl.ArryListStringUniqueList(SearchName);
 		SearchMunicipalityCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
 		
-		Object[][] rt = new Object[0][3];
+		Object[][] rt = new Object[0][RtSettingMunicipalityRt().length];
 		boolean KickFg=false;
 		if(AllSearch) {KickFg=true;}
 		String sql = "select "
@@ -296,8 +296,6 @@ public class M10010PostMstRt{
 				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				if(null!=SearchName&&0<SearchName.size()) {
-					KickFg=true;
-					sql = sql + " and(";
 					for(int i=0;i<SearchName.size();i++) {
 						StmtCount = StmtCount+1;
 						stmt01.setString(StmtCount, "%"+SearchName.get(i)+"%");
@@ -305,8 +303,6 @@ public class M10010PostMstRt{
 				}
 				
 				if(null!=SearchMunicipalityCd&&0<SearchMunicipalityCd.size()) {
-					KickFg=true;
-					sql = sql + " and(";
 					for(int i=0;i<SearchMunicipalityCd.size();i++) {
 						StmtCount = StmtCount+1;
 						stmt01.setString(StmtCount, ""+SearchMunicipalityCd.get(i));
@@ -320,7 +316,7 @@ public class M10010PostMstRt{
 					counter=counter+1;
 				}
 	
-				rt = new Object[counter][3];
+				rt = new Object[counter][RtSettingMunicipalityRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
@@ -349,7 +345,7 @@ public class M10010PostMstRt{
 	public static Object[][] PrefecuturesRt(){
 		//県マスタ返却
 
-		Object[][] rt = new Object[0][2];
+		Object[][] rt = new Object[0][RtSettingPrefecuturesRt().length];
 		boolean KickFg=false;
 		KickFg=true;
 		String sql = "select "
@@ -381,7 +377,7 @@ public class M10010PostMstRt{
 					counter=counter+1;
 				}
 	
-				rt = new Object[counter][2];
+				rt = new Object[counter][RtSettingPrefecuturesRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

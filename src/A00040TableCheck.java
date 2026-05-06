@@ -6174,7 +6174,7 @@ public class A00040TableCheck{
 		boolean WW013402WhFeeAdjustMsUnHitFg = true;
 		boolean WW013501WhFeeOtherUnHitFg = true;
 		boolean WW014001WhFeeInvoiceUnHitFg = true;
-		boolean WW00630ItemRecomendUnHitFg = true;
+		boolean WW00630ItemRecomendLocUnHitFg = true;
 
 		for(int i=0;i<TableName.length;i++) {
 			switch(TableName[i]){
@@ -6265,8 +6265,8 @@ public class A00040TableCheck{
 				case "WW014001WhFeeInvoice":
 					WW014001WhFeeInvoiceUnHitFg = false; 
 					break;
-				case "WW00630ItemRecomend":
-					WW00630ItemRecomendUnHitFg = false;
+				case "WW00630ItemRecomendLoc":
+					WW00630ItemRecomendLocUnHitFg = false;
 					break;
 				default:
 					break;
@@ -6388,8 +6388,8 @@ public class A00040TableCheck{
 			String sql = WW014001WhFeeInvoiceTableCreateSql();
 			KickSql("WANKO",sql);
 		}
-		if(WW00630ItemRecomendUnHitFg) {
-			String sql = WW00630ItemRecomendCreateSql();
+		if(WW00630ItemRecomendLocUnHitFg) {
+			String sql = WW00630ItemRecomendLocCreateSql();
 			KickSql("WANKO",sql);
 		}
 		
@@ -7740,15 +7740,16 @@ public class A00040TableCheck{
 			KickSql("WANKO",sql);
 		}
 		
-		ColumnList = ColumnList("WANKO","WW00630ItemRecomend");
-		NeedColmn = new String[7];
+		ColumnList = ColumnList("WANKO","WW00630ItemRecomendLoc");
+		NeedColmn = new String[8];
 		NeedColmn[ 0] = "ClCd";
-		NeedColmn[ 1] = "ItemCd";
-		NeedColmn[ 2] = "RecomendLoc";
-		NeedColmn[ 3] = "EntryDate";
-		NeedColmn[ 4] = "UpdateDate";
-		NeedColmn[ 5] = "EntryUser";
-		NeedColmn[ 6] = "UpdateUser";
+		NeedColmn[ 1] = "ClWh";
+		NeedColmn[ 2] = "ItemCd";
+		NeedColmn[ 3] = "RecomendLoc";
+		NeedColmn[ 4] = "EntryDate";
+		NeedColmn[ 5] = "UpdateDate";
+		NeedColmn[ 6] = "EntryUser";
+		NeedColmn[ 7] = "UpdateUser";
 		
 		NoHitColumn = new ArrayList<String>();
 		for(int i01=0;i01<NeedColmn.length;i01++) {
@@ -7764,7 +7765,7 @@ public class A00040TableCheck{
 			}
 		}
 		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
-			String sql = WW00630ItemRecomendAltherTableSql(NoHitColumn);
+			String sql = WW00630ItemRecomendLocAltherTableSql(NoHitColumn);
 			KickSql("WANKO",sql);
 		}
 		
@@ -11295,18 +11296,19 @@ public class A00040TableCheck{
 		return sql;
 	}
 	
-	private static String WW00630ItemRecomendCreateSql(){
+	private static String WW00630ItemRecomendLocCreateSql(){
 		//荷主毎推奨ロケテーブルを作る
 		String sql = ""
-				+"CREATE TABLE `WW00630ItemRecomend` ("
+				+"CREATE TABLE `WW00630ItemRecomendLoc` ("
 				+"  `ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+				+"  `ClWh` varchar(20) NOT NULL DEFAULT '' COMMENT '担当倉庫コード',"
 				+"  `ItemCd` varchar(20) NOT NULL DEFAULT '' COMMENT '商品コード',"
 				+"  `RecomendLoc` varchar(20) NOT NULL DEFAULT '' COMMENT '推奨ロケ',"
 				+"  `EntryDate` datetime DEFAULT NULL COMMENT 'データ登録日時',"
 				+"  `UpdateDate` datetime DEFAULT NULL COMMENT 'データ更新日時',"
 				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者コード',"
 				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者コード',"
-				+"  PRIMARY KEY (`ClCd`,`ItemCd`)"
+				+"  PRIMARY KEY (`ClCd`,`ClWh`,`ItemCd`)"
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='荷主毎推奨ロケ';";
 		return sql;
 	}
@@ -11418,14 +11420,17 @@ public class A00040TableCheck{
 		return sql;
 	}
 	
-	private static String WW00630ItemRecomendAltherTableSql(ArrayList<String> NoHitColumn){
+	private static String WW00630ItemRecomendLocAltherTableSql(ArrayList<String> NoHitColumn){
 		String sql = ""
-				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW014001WhFeeInvoice";
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW00630ItemRecomendLoc";
 		for(int i=0;i<NoHitColumn.size();i++) {
 			if(0<i) {sql = sql + ",";}
 			switch(NoHitColumn.get(i)) {
 				case "ClCd":
 					sql = sql + " ADD ClCd varchar(20) NOT NULL DEFAULT ''";
+					break;
+				case "ClWh":
+					sql = sql + " ADD ClWh varchar(20) NOT NULL DEFAULT ''";
 					break;
 				case "ItemCd":
 					sql = sql + " ADD ItemCd varchar(20) NOT NULL DEFAULT ''";

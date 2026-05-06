@@ -1,35 +1,38 @@
 public class M00120ItemRecomendLocMstRt{
 	//荷主ー商品ごとの推奨ロケを返却する
-	
 	static final int ColClCd			= (int) 0;	//荷主コード
-	static final int ColCLName01		= (int) 1;	//荷主名
+	static final int ColCLName01		= (int) 1;	//荷主名1
 	static final int ColClWh			= (int) 2;	//担当倉庫コード
-	static final int ColClWhName		= (int) 3;	//担当倉庫名
-	static final int ColItemCd			= (int) 4;	//商品コード
-	static final int ColItemName01	= (int) 5;	//商品名1
-	static final int ColRecomendLoc	= (int) 6;	//推奨ロケ
-	static final int ColLocName		= (int) 7;	//推奨ロケ名
-	static final int ColType			= (int) 8;	//推奨ロケタイプ
-	static final int ColEntryDate		= (int) 9;	//登録日時
-	static final int ColUpdateDate	= (int)10;	//更新日時
-	static final int ColEntryUser		= (int)11;	//登録者
-	static final int ColUpdateUser	= (int)12;	//更新者
+	static final int ColClWHName		= (int) 3;	//担当倉庫名
+	static final int ColClGpCD			= (int) 4;	//荷主グループCD
+	static final int ColClGpName		= (int) 5;	//グループ名1
+	static final int ColItemCd			= (int) 6;	//商品コード
+	static final int ColItemName01	= (int) 7;	//商品名1
+	static final int ColRecomendLoc	= (int) 8;	//推奨ロケ
+	static final int ColLocName		= (int) 8;	//ロケーション名
+	static final int ColType			= (int)10;	//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	static final int ColEntryDate		= (int)11;	//データ登録日時
+	static final int ColUpdateDate	= (int)12;	//データ更新日時
+	static final int ColEntryUser		= (int)13;	//登録者
+	static final int ColUpdateUser	= (int)14;	//更新者
 	
 	public static Object[][] RtItemRecomendLocMstRt() {
 		Object[][] RtItemRecomendLocMstRt = {
-				 	 {"ClCd"		,ColClCd			,"String"	,"荷主コード"		,"Key"}
-					,{"ClName01"	,ColCLName01		,"String"	,"荷主名"			,""}
-					,{"ClWh"		,ColClWh			,"String"	,"担当倉庫コード"	,"Key"}
-					,{"ClWhName"	,ColClWhName		,"String"	,"担当倉庫名"		,""}
-					,{"ItemCd"		,ColItemCd			,"String"	,"商品コード"		,"Key"}
-					,{"ItemName01"	,ColItemName01		,"String"	,"商品名1"			,""}
+					 {"ClCd"		,ColClCd			,"String"	,"荷主コード"		,"key"}
+					,{"CLName01"	,ColCLName01		,"String"	,"荷主名1"			,""}
+					,{"ClWh"		,ColClWh			,"String"	,"担当倉庫コード"	,"key"}
+					,{"ClWHName"	,ColClWHName		,"String"	,"担当倉庫名"		,""}
+					,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"	,""}
+					,{"ClGpName"	,ColClGpName		,"String"	,"グループ名1"		,""}
+					,{"ItemCd"		,ColItemCd			,"String"	,"商品コード"		,"key"}
+					,{"ItemName01"	,ColItemName01	,"String"	,"商品名1"			,""}
 					,{"RecomendLoc"	,ColRecomendLoc	,"String"	,"推奨ロケ"			,""}
-					,{"LocName"		,ColLocName			,"String"	,"推奨ロケ名"		,""}
-					,{"Type"		,ColType			,"int"		,"推奨ロケタイプ"	,""}
-					,{"EntryDate"	,ColEntryDate		,"String"	,"登録日時"			,""}
-					,{"UpdateDate"	,ColUpdateDate		,"String"	,"更新日時"			,""}
+					,{"LocName"		,ColLocName		,"String"	,"ロケーション名"	,""}
+					,{"Type"		,ColType			,"int"		,"ロケタイプ"		,""}
+					,{"EntryDate"	,ColEntryDate		,"String"	,"データ登録日時"	,""}
+					,{"UpdateDate"	,ColUpdateDate	,"String"	,"データ更新日時"	,""}
 					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"			,""}
-					,{"UpdateUser"	,ColUpdateUser		,"String"	,"更新者"			,""}
+					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"			,""}
 					};
 		return RtItemRecomendLocMstRt;
 	}
@@ -40,26 +43,41 @@ public class M00120ItemRecomendLocMstRt{
 			boolean AllSearch){
 		Object[][] rt = new Object[0][RtItemRecomendLocMstRt().length];
 		String sql = "select "
-				+ ""
-				/*
-				+"(WW00630ItemRecomend.ClCd) as ClCd,\n"	//荷主コード
-				+"(WW00630ItemRecomend.ItemCd) as ItemCd,\n"	//商品コード
-				+"(WW00630ItemRecomend.RecomendLoc) as RecomendLoc,\n"	//推奨ロケ
-				+"(WW00630ItemRecomend.EntryDate) as EntryDate,\n"	//データ登録日時
-				+"(WW00630ItemRecomend.UpdateDate) as UpdateDate,\n"	//データ更新日時
-				+"(WW00630ItemRecomend.EntryUser) as EntryUser,\n"	//登録者
-				+"(WW00630ItemRecomend.UpdateUser) as UpdateUser\n"	//更新者
-
-				
-				*/
-				+ " from "+A00000Main.MySqlDefaultSchemaWANKO+".WW00630ItemRecomend"
+				+"(WW00630ItemRecomendLoc.ClCd) as ClCd,\n"					//荷主コード
+				+"(KM0030_CLIENTMST.CLName01) as CLName01,"					//荷主名1
+				+"(WW00630ItemRecomendLoc.ClWh) as ClWh,\n"					//担当倉庫コード
+				+"(KM0010_WHMST.WHName) as ClWHName,\n"						//担当倉庫名
+				+"(KM0030_CLIENTMST.ClGpCD) as ClGpCD,"						//荷主グループCD
+				+"(KM0031_CLIENT_GROUP.ClGpName01) as ClGpName,"			//グループ名1
+				+"(WW00630ItemRecomendLoc.ItemCd) as ItemCd,\n"				//商品コード
+				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"				//商品名1
+				+"(WW00630ItemRecomendLoc.RecomendLoc) as RecomendLoc,\n"	//推奨ロケ
+				+"(WM0010LOCATIONMST.LocName) as LocName,\n"				//ロケーション名
+				+"(WM0010LOCATIONMST.Type) as Type,\n"						//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				+"(WW00630ItemRecomendLoc.EntryDate) as EntryDate,\n"		//データ登録日時
+				+"(WW00630ItemRecomendLoc.UpdateDate) as UpdateDate,\n"		//データ更新日時
+				+"(WW00630ItemRecomendLoc.EntryUser) as EntryUser,\n"		//登録者
+				+"(WW00630ItemRecomendLoc.UpdateUser) as UpdateUser\n"		//更新者
+				+ " from "+A00000Main.MySqlDefaultSchemaWANKO+".WW00630ItemRecomendLoc"
 				+ " left outer join "+A00000Main.MySqlDefaultSchemaWANKO+".WM0010LOCATIONMST"
 				+ " on("
-				+ " "
+				+ " WW00630ItemRecomendLoc.ClCd = WM0010LOCATIONMST.ClCd"
+				+ " and WW00630ItemRecomendLoc.ClWh = WM0010LOCATIONMST.WhCd"
+				+ " and WW00630ItemRecomendLoc.RecomendLoc= WM0010LOCATIONMST.Loc"
 				+ ")\n"
 				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST"
 				+ " on("
-				+ " "
+				+ " WW00630ItemRecomendLoc.ClWh = KM0030_CLIENTMST.WHCD"
+				+ " and WW00630ItemRecomendLoc.ClCd = KM0030_CLIENTMST.cl_cd"
+				+ ")\n"
+				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST"
+				+ " on("
+				+ " WW00630ItemRecomendLoc.ClWh = KM0010_WHMST.WHCD"
+				+ ")\n"
+				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0060_ITEMMST"
+				+ " on("
+				+ " KM0030_CLIENTMST.ClGpCD = KM0060_ITEMMST.ClGpCd"
+				+ " and WW00630ItemRecomendLoc.ItemCd = KM0060_ITEMMST.ItemCd"
 				+ ")\n"
 				+ " where 1=1 \n";
 		

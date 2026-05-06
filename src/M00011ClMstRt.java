@@ -143,7 +143,7 @@ public class M00011ClMstRt{
 		SearchWHCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchWHCD);
 		
 		
-		Object[][] rt = new Object[0][25];
+		Object[][] rt = new Object[0][RtSettingClMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		String sql =  "select "
@@ -369,7 +369,7 @@ public class M00011ClMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][25];
+				rt = new Object[counter][RtSettingClMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {

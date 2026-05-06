@@ -45,38 +45,38 @@ public class M00080ItemComversionMstRt{
 	*/
 	//戻り値カラム
 	static final int ColClGpCd			= (int) 0;	//荷主グループコード
-	static final int ColCLGpName01		= (int) 1;	//荷主グループ名1
+	static final int ColCLGpName01	= (int) 1;	//荷主グループ名1
 	static final int ColClCd			= (int) 2;	//荷主コード
 	static final int ColCLName01		= (int) 3;	//荷主名
 	static final int ColClItemCd		= (int) 4;	//荷主商品コード
 	static final int ColItemCd			= (int) 5;	//変換先商品コード
 	static final int ColPackingType	= (int) 6;	//荷姿タイプ
-	static final int ColItemName01		= (int) 7;	//商品名1
-	static final int ColItemName02		= (int) 8;	//商品名2
-	static final int ColItemName03		= (int) 9;	//商品名3
+	static final int ColItemName01	= (int) 7;	//商品名1
+	static final int ColItemName02	= (int) 8;	//商品名2
+	static final int ColItemName03	= (int) 9;	//商品名3
 	static final int ColCtName			= (int)10;	//カートン商品名称
 	static final int ColCsName			= (int)11;	//ケース商品名称
 	static final int ColPlName			= (int)12;	//パレット商品名称
 	static final int ColCtQty			= (int)13;	//カートン入数
 	static final int ColCsQty			= (int)14;	//ケース入数
 	static final int ColPlQty			= (int)15;	//パレット入数
-	static final int ColUnitName			= (int)16;	//商品単位
-	static final int ColCtUnitName		= (int)17;	//カートン商品単位
-	static final int ColCsUnitName		= (int)18;	//ケース商品単位
-	static final int ColPlUnitName		= (int)19;	//パレット商品単位
+	static final int ColUnitName		= (int)16;	//商品単位
+	static final int ColCtUnitName	= (int)17;	//カートン商品単位
+	static final int ColCsUnitName	= (int)18;	//ケース商品単位
+	static final int ColPlUnitName	= (int)19;	//パレット商品単位
 	
 	public static Object[][] RtItemComversionMstRt(){
 		Object[][] RtItemComversionMstRt = {
 				 {"ClGpCd"			,ColClGpCd			,"String"	,"荷主グループコード"}
-				,{"CLGpName01"		,ColCLGpName01		,"String"	,"荷主グループ名1"}
+				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ名1"}
 				,{"ClCd"			,ColClCd			,"String"	,"荷主コード"}
 				,{"CLName01"		,ColCLName01		,"String"	,"荷主名"}
 				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"}
 				,{"ItemCd"			,ColItemCd			,"String"	,"変換先商品コード"}
 				,{"PackingType"		,ColPackingType	,"int"		,"荷姿タイプ"}
-				,{"ItemName01"		,ColItemName01		,"String"	,"商品名1"}
-				,{"ItemName02"		,ColItemName02		,"String"	,"商品名2"}
-				,{"ItemName03"		,ColItemName03		,"String"	,"商品名3"}
+				,{"ItemName01"		,ColItemName01	,"String"	,"商品名1"}
+				,{"ItemName02"		,ColItemName02	,"String"	,"商品名2"}
+				,{"ItemName03"		,ColItemName03	,"String"	,"商品名3"}
 				,{"CtName"			,ColCtName			,"String"	,"カートン商品名称"}
 				,{"CsName"			,ColCsName			,"String"	,"ケース商品名称"}
 				,{"PlName"			,ColPlName			,"String"	,"パレット商品名称"}
@@ -84,9 +84,9 @@ public class M00080ItemComversionMstRt{
 				,{"CsQty"			,ColCsQty			,"int"		,"ケース入数"}
 				,{"PlQty"			,ColPlQty			,"int"		,"パレット入数"}
 				,{"UnitName"		,ColUnitName		,"String"	,"商品単位"}
-				,{"CtUnitName"		,ColCtUnitName		,"String"	,"カートン商品単位"}
-				,{"CsUnitName"		,ColCsUnitName		,"String"	,"ケース商品単位"}
-				,{"PlUnitName"		,ColPlUnitName		,"String"	,"パレット商品単位"}
+				,{"CtUnitName"		,ColCtUnitName	,"String"	,"カートン商品単位"}
+				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"}
+				,{"PlUnitName"		,ColPlUnitName	,"String"	,"パレット商品単位"}
 				};
 		return RtItemComversionMstRt;
 	}

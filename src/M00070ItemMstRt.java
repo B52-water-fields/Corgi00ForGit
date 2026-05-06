@@ -181,7 +181,7 @@ public class M00070ItemMstRt{
 	static final  int ColUpdateDate			= (int)60;	//データ更新日時
 	static final  int ColEntryUser			= (int)61;	//登録者コード
 	static final  int ColUpdateUser			= (int)62;	//更新者コード
-	static final  int ColDelFg				= (int)63;	//削除フラグ
+	static final  int ColDelFg					= (int)63;	//削除フラグ
 
 	public static Object[][] RtSettingItemMstRt(){
 		Object[][] RtSettingItemMstRt = {

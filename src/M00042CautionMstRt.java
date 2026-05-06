@@ -107,7 +107,7 @@ public class M00042CautionMstRt{
 		SearchDeName		= B00150ArrayListControl.ArryListStringUniqueList(SearchDeName);
 		
 		
-		Object[][] rt = new Object[0][13];
+		Object[][] rt = new Object[0][RtSettingCautionMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -285,7 +285,7 @@ public class M00042CautionMstRt{
 					counter=counter+1;
 				}
 	
-				rt = new Object[counter][16];
+				rt = new Object[counter][RtSettingCautionMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
