@@ -30,7 +30,7 @@ public class WM00100SupplierMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00商品変換マスタ検索","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00仕入先マスタ検索","");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		

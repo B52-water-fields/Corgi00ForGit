@@ -198,7 +198,7 @@ public class M00000ParameterMstRt{
 		
 		
 		//NYANKOパラメータ返却
-		Object[][] rt=new Object[0][27];
+		Object[][] rt=new Object[0][RtSettingParameterMstRtNANKO().length];
 		boolean SearchKick = false;
 		if(AllSearch) {
 			SearchKick = true;
@@ -870,7 +870,7 @@ public class M00000ParameterMstRt{
 					counter=counter+1;
 				}
 
-				rt = new Object[counter][27];
+				rt = new Object[counter][RtSettingParameterMstRtNANKO().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
