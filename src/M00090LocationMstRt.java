@@ -51,17 +51,17 @@ public class M00090LocationMstRt{
 	
 	public static Object[][] RtSettingLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {
-				 {"ClCd"		,ColClCd			,"String"	,"荷主コード"}
-				,{"CLName01"	,ColCLName01		,"String"	,"荷主名1"}
-				,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"}
-				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名"}
-				,{"Loc"			,ColLoc			,"String"	,"ロケーション"}
-				,{"LocName"		,ColLocName		,"String"	,"ロケーション名"}
-				,{"Type"		,ColType			,"int"		,"ロケタイプ"}
-				,{"EntryDate"	,ColEntryDate		,"String"	,"登録日"}
-				,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日"}
-				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"}
-				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"}
+				 {"ClCd"		,ColClCd			,"String"	,"荷主コード","Key"}
+				,{"CLName01"	,ColCLName01		,"String"	,"荷主名1",""}
+				,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード","Key"}
+				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名",""}
+				,{"Loc"			,ColLoc			,"String"	,"ロケーション","Key"}
+				,{"LocName"		,ColLocName		,"String"	,"ロケーション名",""}
+				,{"Type"		,ColType			,"int"		,"ロケタイプ",""}
+				,{"EntryDate"	,ColEntryDate		,"String"	,"登録日",""}
+				,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日",""}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者",""}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者",""}
 				};
 		
 		return RtSettingLocationMstRt;

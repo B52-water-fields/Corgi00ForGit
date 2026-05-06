@@ -6174,6 +6174,7 @@ public class A00040TableCheck{
 		boolean WW013402WhFeeAdjustMsUnHitFg = true;
 		boolean WW013501WhFeeOtherUnHitFg = true;
 		boolean WW014001WhFeeInvoiceUnHitFg = true;
+		boolean WW00630ItemRecomendUnHitFg = true;
 
 		for(int i=0;i<TableName.length;i++) {
 			switch(TableName[i]){
@@ -6263,6 +6264,9 @@ public class A00040TableCheck{
 					break;
 				case "WW014001WhFeeInvoice":
 					WW014001WhFeeInvoiceUnHitFg = false; 
+					break;
+				case "WW00630ItemRecomend":
+					WW00630ItemRecomendUnHitFg = false;
 					break;
 				default:
 					break;
@@ -6382,6 +6386,10 @@ public class A00040TableCheck{
 		}
 		if(WW014001WhFeeInvoiceUnHitFg) {
 			String sql = WW014001WhFeeInvoiceTableCreateSql();
+			KickSql("WANKO",sql);
+		}
+		if(WW00630ItemRecomendUnHitFg) {
+			String sql = WW00630ItemRecomendCreateSql();
 			KickSql("WANKO",sql);
 		}
 		
@@ -7731,6 +7739,36 @@ public class A00040TableCheck{
 			String sql = WW014001WhFeeInvoiceAltherTableSql(NoHitColumn);
 			KickSql("WANKO",sql);
 		}
+		
+		ColumnList = ColumnList("WANKO","WW00630ItemRecomend");
+		NeedColmn = new String[7];
+		NeedColmn[ 0] = "ClCd";
+		NeedColmn[ 1] = "ItemCd";
+		NeedColmn[ 2] = "RecomendLoc";
+		NeedColmn[ 3] = "EntryDate";
+		NeedColmn[ 4] = "UpdateDate";
+		NeedColmn[ 5] = "EntryUser";
+		NeedColmn[ 6] = "UpdateUser";
+		
+		NoHitColumn = new ArrayList<String>();
+		for(int i01=0;i01<NeedColmn.length;i01++) {
+			boolean UnHitFg = true;
+			for(int i02=0;i02<ColumnList.length;i02++) {
+				if(NeedColmn[i01].equals(ColumnList[i02])) {
+					UnHitFg = false;
+					i02=ColumnList.length+1;
+				}
+			}
+			if(UnHitFg) {
+				NoHitColumn.add(NeedColmn[i01]);
+			}
+		}
+		if(null!=NoHitColumn && 0<NoHitColumn.size()) {
+			String sql = WW00630ItemRecomendAltherTableSql(NoHitColumn);
+			KickSql("WANKO",sql);
+		}
+		
+		
 	}
 	
 	private static String WM0000PARAMETERTableCreateSql() {
@@ -11256,6 +11294,22 @@ public class A00040TableCheck{
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫その他請求明細';";
 		return sql;
 	}
+	
+	private static String WW00630ItemRecomendCreateSql(){
+		//荷主毎推奨ロケテーブルを作る
+		String sql = ""
+				+"CREATE TABLE `WW00630ItemRecomend` ("
+				+"  `ClCd` varchar(20) NOT NULL DEFAULT '' COMMENT '荷主コード',"
+				+"  `ItemCd` varchar(20) NOT NULL DEFAULT '' COMMENT '商品コード',"
+				+"  `RecomendLoc` varchar(20) NOT NULL DEFAULT '' COMMENT '推奨ロケ',"
+				+"  `EntryDate` datetime DEFAULT NULL COMMENT 'データ登録日時',"
+				+"  `UpdateDate` datetime DEFAULT NULL COMMENT 'データ更新日時',"
+				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者コード',"
+				+"  `UpdateUser` varchar(50) DEFAULT NULL COMMENT '更新者コード',"
+				+"  PRIMARY KEY (`ClCd`,`ItemCd`)"
+				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='荷主毎推奨ロケ';";
+		return sql;
+	}
 
 	private static String WW014001WhFeeInvoiceAltherTableSql(ArrayList<String> NoHitColumn){
 		String sql = ""
@@ -11364,7 +11418,40 @@ public class A00040TableCheck{
 		return sql;
 	}
 	
-	
+	private static String WW00630ItemRecomendAltherTableSql(ArrayList<String> NoHitColumn){
+		String sql = ""
+				+"ALTER TABLE "+A00000Main.MySqlDefaultSchemaWANKO+".WW014001WhFeeInvoice";
+		for(int i=0;i<NoHitColumn.size();i++) {
+			if(0<i) {sql = sql + ",";}
+			switch(NoHitColumn.get(i)) {
+				case "ClCd":
+					sql = sql + " ADD ClCd varchar(20) NOT NULL DEFAULT ''";
+					break;
+				case "ItemCd":
+					sql = sql + " ADD ItemCd varchar(20) NOT NULL DEFAULT ''";
+					break;
+				case "RecomendLoc":
+					sql = sql + " ADD RecomendLoc varchar(20) NOT NULL DEFAULT ''";
+					break;
+				case "EntryDate":
+					sql = sql + " ADD EntryDate datetime DEFAULT NULL";
+					break;
+				case "UpdateDate":
+					sql = sql + " ADD UpdateDate datetime DEFAULT NULL";
+					break;
+				case "EntryUser":
+					sql = sql + " ADD EntryUser varchar(50) DEFAULT NULL";
+					break;
+				case "UpdateUser":
+					sql = sql + " ADD UpdateUser varchar(50) DEFAULT NULL";
+					break;
+				default:
+					break;
+			}
+		}
+		sql = sql + ";";
+		return sql;
+	}
 	
 	
 	//郵便番号データベースの必要なテーブルを確認する
