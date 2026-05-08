@@ -264,7 +264,7 @@ public class A00020InsertUdateSQL{
 							int ind_no = 0;
 							for(int i02=0;i02<entry_data[i01].length;i02++){
 								if("1".equals(field_name[i02][1])){
-									if("null".equals(entry_data[i01][i02])||"NULL".equals(entry_data[i01][i02])) {
+									if("null".equals(entry_data[i01][i02])||"NULL".equals(entry_data[i01][i02])||"Null".equals(entry_data[i01][i02])) {
 										stmt02.setString(ind_no+1, null);
 									}else{
 										stmt02.setString(ind_no+1, entry_data[i01][i02]);
@@ -284,7 +284,7 @@ public class A00020InsertUdateSQL{
 							int ind_no = 0;
 							for(int i02=0;i02<entry_data[i01].length;i02++){
 								if("1".equals(field_name[i02][2])){
-									if("null".equals(entry_data[i01][i02])||"NULL".equals(entry_data[i01][i02])) {
+									if("null".equals(entry_data[i01][i02])||"NULL".equals(entry_data[i01][i02])||"Null".equals(entry_data[i01][i02])) {
 										stmt03.setString(ind_no+1, null);
 									}else{
 										stmt03.setString(ind_no+1, entry_data[i01][i02]);

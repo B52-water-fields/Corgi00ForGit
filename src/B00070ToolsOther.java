@@ -15,7 +15,7 @@ public class B00070ToolsOther{
 		rt[1] = GetConsumptionTax.intValue();
 		return rt;
 	}
-	//税込み合計金額→金額・税率（パーセント10%の場合10）を受け取って外税計算し、税別金額・消費税を返却する
+	//税別合計金額→金額・税率（パーセント10%の場合10）を受け取って外税計算し、税別金額・消費税を返却する
 	public static int[] OutsideTaxCalc(int TotalCost,int TaxRate) {
 		int[] rt = new int[2];
 		BigDecimal GetTotalCost = new BigDecimal(""+TotalCost);
