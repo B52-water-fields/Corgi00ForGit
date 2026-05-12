@@ -40,7 +40,7 @@ public class M00120ItemRecomendLocMstRt{
 	String GetItemName01	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColItemName01];	//商品名1
 	String GetRecomendLoc	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
 	String GetLocName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColLocName];		//ロケーション名
-	String GetType			= (int)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColType];				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	int    GetType			= (int)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColType];				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 	String GetEntryDate		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColEntryDate];		//データ登録日時
 	String GetUpdateDate	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
 	String GetEntryUser		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColEntryUser];		//登録者
@@ -68,7 +68,7 @@ public class M00120ItemRecomendLocMstRt{
 	String GetItemName01	= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColItemName01];	//商品名1
 	String GetRecomendLoc	= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
 	String GetLocName		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColLocName];		//ロケーション名
-	String GetType			= (int)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	int    GetType			= (int)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 	String GetEntryDate		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColEntryDate];	//データ登録日時
 	String GetUpdateDate	= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
 	String GetEntryUser		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColEntryUser];	//登録者
@@ -143,11 +143,11 @@ public class M00120ItemRecomendLocMstRt{
 		Object[][] rt = new Object[0][RtItemRecomendLocMstRt().length];
 		String sql = "select "
 				+"(WW00630ItemRecomendLoc.ClCd) as ClCd,\n"					//荷主コード
-				+"(KM0030_CLIENTMST.CLName01) as CLName,"					//荷主名1
+				+"(KM0030_CLIENTMST.CLName01) as CLName,\n"					//荷主名1
 				+"(WW00630ItemRecomendLoc.ClWh) as ClWh,\n"					//担当倉庫コード
 				+"(KM0010_WHMST.WHName) as ClWHName,\n"						//担当倉庫名
-				+"(KM0030_CLIENTMST.ClGpCD) as ClGpCD,"						//荷主グループCD
-				+"(KM0031_CLIENT_GROUP.ClGpName01) as ClGpName,"			//グループ名1
+				+"(KM0030_CLIENTMST.ClGpCD) as ClGpCD,\n"					//荷主グループCD
+				+"(KM0031_CLIENT_GROUP.ClGpName01) as ClGpName,\n"			//グループ名1
 				+"(WW00630ItemRecomendLoc.ItemCd) as ItemCd,\n"				//商品コード
 				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"				//商品名1
 				+"(WW00630ItemRecomendLoc.RecomendLoc) as RecomendLoc,\n"	//推奨ロケ
@@ -169,6 +169,10 @@ public class M00120ItemRecomendLocMstRt{
 				+ " on("
 				+ " WW00630ItemRecomendLoc.ClWh = KM0030_CLIENTMST.WHCD"
 				+ " and WW00630ItemRecomendLoc.ClCd = KM0030_CLIENTMST.cl_cd"
+				+ ")\n"
+				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP"
+				+ " on("
+				+ " KM0030_CLIENTMST.ClGpCD = KM0031_CLIENT_GROUP.ClGpCD"
 				+ ")\n"
 				+ " left outer join "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST"
 				+ " on("
@@ -192,7 +196,7 @@ public class M00120ItemRecomendLocMstRt{
 				if(0<i) {sql = sql + " or ";}
 				sql = sql + " WW00630ItemRecomendLoc.ClCd = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 
 		if(null!=SearchClWh && 0<SearchClWh.size()) {
@@ -203,7 +207,7 @@ public class M00120ItemRecomendLocMstRt{
 				if(0<i) {sql = sql + " or ";}
 				sql = sql + " WW00630ItemRecomendLoc.ClWh = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 
 		if(null!=SearchItemCd && 0<SearchItemCd.size()) {
@@ -214,7 +218,7 @@ public class M00120ItemRecomendLocMstRt{
 				if(0<i) {sql = sql + " or ";}
 				sql = sql + " WW00630ItemRecomendLoc.ItemCd = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 
 		if(null!=SearchRecomendLoc && 0<SearchRecomendLoc.size()) {
@@ -229,7 +233,7 @@ public class M00120ItemRecomendLocMstRt{
 					sql = sql + " WW00630ItemRecomendLoc.RecomendLoc like ?";
 				}
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchClGpCD && 0<SearchClGpCD.size()) {
 			SearchKick = true;
@@ -239,7 +243,7 @@ public class M00120ItemRecomendLocMstRt{
 				if(0<i) {sql = sql + " or ";}
 				sql = sql + " KM0030_CLIENTMST.ClGpCD = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchItemName01 && 0<SearchItemName01.size()) {
 			SearchKick = true;
@@ -249,7 +253,7 @@ public class M00120ItemRecomendLocMstRt{
 				if(0<i) {sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.ItemName01 like ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchLocName && 0<SearchLocName.size()) {
 			SearchKick = true;
@@ -257,9 +261,9 @@ public class M00120ItemRecomendLocMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchLocName.size();i++) {
 				if(0<i) {sql = sql + " or ";}
-				sql = sql + " WM0010LOCATIONMST.LocName. like ?";
+				sql = sql + " WM0010LOCATIONMST.LocName like ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchType && 0<SearchType.size()) {
 			SearchKick = true;
@@ -269,7 +273,7 @@ public class M00120ItemRecomendLocMstRt{
 				if(0<i) {sql = sql + " or ";}
 				sql = sql + " WM0010LOCATIONMST.Type = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		
 		sql = sql + " order by WW00630ItemRecomendLoc.ClCd,WW00630ItemRecomendLoc.ClWh,WW00630ItemRecomendLoc.ItemCd";
@@ -351,11 +355,11 @@ public class M00120ItemRecomendLocMstRt{
 				rset01.beforeFirst();
 				while (rset01.next()) {
 					if(null==rset01.getString("ClCd"				)){rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//荷主コード
-					if(null==rset01.getString("CLName01"			)){rt[counter][ColCLName]			="";}else{rt[counter][ColCLName]		=rset01.getString("CLName01");}		//荷主名1
-					if(null==rset01.getString("ClWh"				)){rt[counter][ColClWh]			="";}else{rt[counter][ColClWh]			=rset01.getString("ClWh");}			//担当倉庫コード
-					if(null==rset01.getString("WHName"				)){rt[counter][ColClWHName]		="";}else{rt[counter][ColClWHName]		=rset01.getString("ClWHName");}		//担当倉庫名
+					if(null==rset01.getString("CLName"				)){rt[counter][ColCLName]			="";}else{rt[counter][ColCLName]		=rset01.getString("CLName");}		//荷主名1
+					if(null==rset01.getString("ClWHName"			)){rt[counter][ColClWh]			="";}else{rt[counter][ColClWh]			=rset01.getString("ClWh");}			//担当倉庫コード
+					if(null==rset01.getString("ClWHName"			)){rt[counter][ColClWHName]		="";}else{rt[counter][ColClWHName]		=rset01.getString("ClWHName");}		//担当倉庫名
 					if(null==rset01.getString("ClGpCD"				)){rt[counter][ColClGpCD]			="";}else{rt[counter][ColClGpCD]		=rset01.getString("ClGpCD");}		//荷主グループCD
-					if(null==rset01.getString("ClGpName01"			)){rt[counter][ColClGpName]		="";}else{rt[counter][ColClGpName]		=rset01.getString("ClGpName");}		//グループ名1
+					if(null==rset01.getString("ClGpName"			)){rt[counter][ColClGpName]		="";}else{rt[counter][ColClGpName]		=rset01.getString("ClGpName");}		//グループ名1
 					if(null==rset01.getString("ItemCd"				)){rt[counter][ColItemCd]			="";}else{rt[counter][ColItemCd]		=rset01.getString("ItemCd");}		//商品コード
 					if(null==rset01.getString("ItemName01"			)){rt[counter][ColItemName01]		="";}else{rt[counter][ColItemName01]	=rset01.getString("ItemName01");}	//商品名1
 					if(null==rset01.getString("RecomendLoc"			)){rt[counter][ColRecomendLoc]	="";}else{rt[counter][ColRecomendLoc]	=rset01.getString("RecomendLoc");}	//推奨ロケ
@@ -387,7 +391,7 @@ public class M00120ItemRecomendLocMstRt{
 		return rt;
 	}
 	
-	public static Object ItemRecomendLocFromItemCd(String ClCd,ArrayList<String> ItemCd,boolean ItemMstRecomendLocExistenceOnly) {
+	public static Object[][] ItemRecomendLocFromItemCd(String ClCd,ArrayList<String> ItemCd,boolean ItemMstRecomendLocExistenceOnly) {
 		//荷主コードと商品CDを受け取ってWW00630ItemRecomendLocの推奨ロケとKM0061_ITEMMSTSUBの推奨ロケを返す
 		int RtRowCount = 0;
 		if(null!=ItemCd) {RtRowCount=ItemCd.size();}
@@ -626,8 +630,8 @@ public class M00120ItemRecomendLocMstRt{
 				
 				SearchClCd.add(ClCd);
 				for(int i=0;i<rt.length;i++) {
-					if(!"".equals((String)rt[RetryRow.get(i)][ColItemSubRecomendLoc])) {
-						SearchLoc.add((String)rt[RetryRow.get(i)][ColItemSubRecomendLoc]);
+					if(!"".equals((String)rt[i][ColItemSubRecomendLoc])) {
+						SearchLoc.add((String)rt[i][ColItemSubRecomendLoc]);
 					}
 				}
 				

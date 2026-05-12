@@ -82,7 +82,7 @@ public class M00090LocationMstRt{
 		SearchLocName	= B00150ArrayListControl.ArryListStringUniqueList(SearchLocName);	//ロケーション名
 		SearchType		= B00150ArrayListControl.ArryListStringUniqueList(SearchType);		//ロケタイプ
 		
-		Object[][] rt = new Object[0][11];
+		Object[][] rt = new Object[0][RtSettingLocationMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 				
@@ -219,7 +219,7 @@ public class M00090LocationMstRt{
 				while (rset01.next()) {
 					counter=counter+1;
 				}
-				rt = new Object[counter][11];
+				rt = new Object[counter][RtSettingLocationMstRt().length];
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
