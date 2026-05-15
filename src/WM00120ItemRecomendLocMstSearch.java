@@ -29,7 +29,7 @@ public class WM00120ItemRecomendLocMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00仕入先マスタ検索","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00推奨ロケマスタ検索","");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		
@@ -322,6 +322,29 @@ public class WM00120ItemRecomendLocMstSearch{
 					main_fm.dispose();
 					
 					WM00121ItemRecomendLocMstRenewAndCreate.ItemRecomendLocMstRenewAndCreate(0,0,TgtClCd,TgtWhCd,TgtItemCd);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//Excel取込ボタン
+		ExcelEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00122ItemRecomendLocMstExcelEntry.ItemRecomendLocMstExcelEntry(0,0,Selected);
+					}
 					RenewFg = true;
 				}
 			}
