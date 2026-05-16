@@ -84,7 +84,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,750,800,"Corgi00推奨ロケマスタ登録（エクセル）","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,800,"Corgi00推奨ロケマスタ登録（エクセル）","");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		JButton entry_btn = B00110FrameParts.EntryBtn();
@@ -131,7 +131,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	
 			}
 		}
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,700,600,tb01);
+		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,460,600,tb01);
 		main_fm.add(scpn01);
 		
 		//ヘッダ行取得⇒フィールド名判定
@@ -202,7 +202,8 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 				}
 			}
 			String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
-			ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
+			Object[][] SetObRt = SetObRt(CheckOb,TableCol);
+			ArrayList<String> ErrMsg = ErrCheck(SetObRt);
 			
 			if(null!=ErrMsg && 0<ErrMsg.size()) {
 				ErrView(ErrMsg);
@@ -217,11 +218,40 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 				main_fm.setVisible(true);
 			}
 		}
-		main_fm.setVisible(true);
 		RenewFg = true;
-		
-		
-		
+
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+					int RowCount = tableModel_ms01.getRowCount();
+					Object[][] CheckOb = new Object[RowCount][TableCol.length];
+					for(int i=0;i<RowCount;i++) {
+						for(int i01=0;i01<TableCol.length;i01++) {
+							CheckOb[i][i01] = ""+tableModel_ms01.getValueAt(i, i01);
+						}
+					}
+					Object[][] SetObRt = SetObRt(CheckOb,TableCol);
+					ArrayList<String> ErrMsg = ErrCheck(SetObRt);
+					
+					if(null!=ErrMsg && 0<ErrMsg.size() && 0<RowCount) {
+						ErrView(ErrMsg);
+					}else {
+						MstEntry(SetObRt);
+						//ファイルバックアップ
+						B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+						
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM00120ItemRecomendLocMstSearch.ItemRecomendLocMstSearch(0, 0);
+					}
+				}
+			}
+		});
 		
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){
@@ -235,35 +265,356 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 			}
 		});
 	}
+	private static void MstEntry(Object[][] SetOb) {
+		String tgt_table = "WW00630ItemRecomendLoc";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 0;
+		
+		A00020InsertUdateSQL.InsertUpdateSomeRecord(SetOb,tgt_table,TgtDB,non_msg_fg);
+	}
 	
+	private static ArrayList<String> ErrCheck(Object[][] SetObRt){
+		ArrayList<String> ErrMsg = new ArrayList<String>();
+		ArrayList<String> SearchRecomendLoc 	= new ArrayList<String>();	//ロケーション
+		ArrayList<String> SearchItemCd 			= new ArrayList<String>();	//商品CD
+		
+		//ログイン中の荷主コード・倉庫コードでなければエラー
+		//主賓コード検索条件とロケーションコード検索条件にADD
+		for(int i=0;i<SetObRt.length;i++) {
+			if("ClCd".equals((String)SetObRt[i][0])) {
+				for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
+					if(!A00000Main.ClCd.equals(((String[])SetObRt[i][4])[i01])) {
+						int wint = i01+1;
+						ErrMsg.add(wint+"行目エラー:("+((String[])SetObRt[i][4])[i01]+")は現在ログイン中の荷主と異なります");
+					}
+				}
+			}
+			if("ClWh".equals((String)SetObRt[i][0])) {
+				for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
+					if(!A00000Main.ClWh.equals(((String[])SetObRt[i][4])[i01])) {
+						int wint = i01+1;
+						ErrMsg.add(wint+"行目エラー:("+((String[])SetObRt[i][4])[i01]+")は現在ログイン中の担当倉庫と異なります");
+					}
+				}
+			}
+			if("ItemCd".equals((String)SetObRt[i][0])) {
+				for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
+					if("".equals((String)((String[])SetObRt[i][4])[i01])) {
+						int wint = i01+1;
+						ErrMsg.add(wint+"行目エラー:商品コードは必須です");
+					}else {
+						SearchItemCd.add(((String[])SetObRt[i][4])[i01]);
+					}
+				}
+			}
+			if("RecomendLoc".equals((String)SetObRt[i][0])) {
+				for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
+					if("".equals((String)((String[])SetObRt[i][4])[i01])) {
+						
+					}else {
+						SearchRecomendLoc.add(((String[])SetObRt[i][4])[i01]);
+					}
+				}
+			}
+		}
+		Object[][] ItemMstRt	= ItemMstRt(SearchItemCd);
+		Object[][] LocMstRt		= LocMstRt(SearchRecomendLoc);
+		for(int i=0;i<SetObRt.length;i++) {
+			if("ClCd".equals((String)SetObRt[i][0])) {
+			}
+			if("ClWh".equals((String)SetObRt[i][0])) {
+			}
+			if("ItemCd".equals((String)SetObRt[i][0])) {
+				for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
+					if("".equals((String)((String[])SetObRt[i][4])[i01])) {
+						
+					}else {
+						boolean UnHitFg = true;
+						String CheckItemCd = ((String[])SetObRt[i][4])[i01];
+						
+						for(int i02=0;i02<ItemMstRt.length;i02++) {
+							String MstItemCd = (String)ItemMstRt[i02][M00070ItemMstRt.ColItemCd];				//商品コード
+							if(MstItemCd.equals(CheckItemCd)) {
+								UnHitFg = false;
+								i02=ItemMstRt.length+1;
+							}
+						}
+						
+						if(UnHitFg) {
+							int wint = i01+1;
+							ErrMsg.add(wint+"行目エラー:商品CD("+CheckItemCd+")はマスタにないよ");
+						}
+					}
+				}
+			}
+			if("RecomendLoc".equals((String)SetObRt[i][0])) {
+				for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
+					if("".equals((String)((String[])SetObRt[i][4])[i01])) {
+						
+					}else {
+						boolean UnHitFg = true;
+						String CheckRecomendLoc = ((String[])SetObRt[i][4])[i01];
+						for(int i02=0;i02<LocMstRt.length;i02++) {
+							String MstLoc	= (String)LocMstRt[i02][M00090LocationMstRt.ColLoc];			//ロケーション
+							if(MstLoc.equals(CheckRecomendLoc)) {
+								UnHitFg = false;
+								i02=LocMstRt.length+1;
+							}
+						}
+						
+						if(UnHitFg) {
+							int wint = i01+1;
+							ErrMsg.add(wint+"行目エラー:ロケーション("+CheckRecomendLoc+")はマスタにないよ");
+						}
+					}
+				}
+			}
+		}
+		return ErrMsg;
+	}
 	
-	private static ArrayList<String> ErrCheck(
+	private static Object[][] SetObRt(
+			Object[][] CheckOb,String[] TableCol) {
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		
+		int ColClCd				= (int)1;	//荷主コード
+		int ColClWh				= (int)2;	//担当倉庫コード
+		int ColItemCd			= (int)3;	//商品コード
+		int ColRecomendLoc		= (int)4;	//推奨ロケ
+		
+		for(int i=0;i<TableCol.length;i++) {
+			switch(""+TableCol[i]) {
+			 	case "荷主コード":
+			 		ColClCd= i;
+			 		break;
+				case "担当倉庫コード":
+					ColClWh= i;
+			 		break;
+				case "商品コード":
+					ColItemCd= i;
+			 		break;
+				case "推奨ロケ":
+					ColRecomendLoc= i;
+			 		break;
+			 	default:
+			 		break;
+			}
+		}
+		int EntryCount = 0;
+		for(int i=0;i<CheckOb.length;i++) {
+			String GetClCd			= ""+CheckOb[i][ColClCd];			//荷主コード
+			String GetClWh			= ""+CheckOb[i][ColClWh];			//担当倉庫コード
+			String GetItemCd		= ""+CheckOb[i][ColItemCd];			//商品コード
+			String GetRecomendLoc	= ""+CheckOb[i][ColRecomendLoc];	//推奨ロケ
+			
+			int BackClCd			= (int)0;	//荷主コード
+			int BackClWh			= (int)1;	//担当倉庫コード
+			int BackItemCd			= (int)2;	//商品コード
+			int BackRecomendLoc		= (int)3;	//推奨ロケ
+			
+			String[] TxtCheck	= TxtCheck(
+					GetClCd,
+					GetClWh,
+					GetItemCd,
+					GetRecomendLoc,
+					BackClCd,
+					BackClWh,
+					BackItemCd,
+					BackRecomendLoc
+					);
+			
+			GetClCd			= TxtCheck[BackClCd];			//荷主コード
+			GetClWh			= TxtCheck[BackClWh];			//担当倉庫コード
+			GetItemCd		= TxtCheck[BackItemCd];			//商品コード
+			GetRecomendLoc	= TxtCheck[BackRecomendLoc];	//推奨ロケ
+			//必須項目のフィールドが全て空白ならSKIP
+			boolean SkipFg = false;
+			if("".equals(GetClCd)
+				&&"".equals(GetClWh)
+				&&"".equals(GetItemCd)
+				&&"".equals(GetRecomendLoc)
+				) {
+				SkipFg = true;
+			}
+			if(!SkipFg){
+				EntryCount = EntryCount+1;
+			}
+		}
+		String[] SetClCd			= new String[EntryCount];
+		String[] SetClWh			= new String[EntryCount];
+		String[] SetItemCd			= new String[EntryCount];
+		String[] SetRecomendLoc		= new String[EntryCount];
+		
+		String[] SetEntryDate		= new String[EntryCount];
+		String[] SetUpdateDate		= new String[EntryCount];
+		String[] SetEntryUser		= new String[EntryCount];
+		String[] SetUpdateUser		= new String[EntryCount];
+		
+		EntryCount = 0;
+		for(int i=0;i<CheckOb.length;i++) {
+			String GetClCd			= ""+CheckOb[i][ColClCd];			//荷主コード
+			String GetClWh			= ""+CheckOb[i][ColClWh];			//担当倉庫コード
+			String GetItemCd		= ""+CheckOb[i][ColItemCd];			//商品コード
+			String GetRecomendLoc	= ""+CheckOb[i][ColRecomendLoc];	//推奨ロケ
+			
+			int BackClCd			= (int)0;	//荷主コード
+			int BackClWh			= (int)1;	//担当倉庫コード
+			int BackItemCd			= (int)2;	//商品コード
+			int BackRecomendLoc		= (int)3;	//推奨ロケ
+			
+			String[] TxtCheck	= TxtCheck(
+					GetClCd,
+					GetClWh,
+					GetItemCd,
+					GetRecomendLoc,
+					BackClCd,
+					BackClWh,
+					BackItemCd,
+					BackRecomendLoc
+					);
+			
+			GetClCd			= TxtCheck[BackClCd];			//荷主コード
+			GetClWh			= TxtCheck[BackClWh];			//担当倉庫コード
+			GetItemCd		= TxtCheck[BackItemCd];			//商品コード
+			GetRecomendLoc	= TxtCheck[BackRecomendLoc];	//推奨ロケ
+			//必須項目のフィールドが全て空白ならSKIP
+			boolean SkipFg = false;
+			if("".equals(GetClCd)
+				&&"".equals(GetClWh)
+				&&"".equals(GetItemCd)
+				&&"".equals(GetRecomendLoc)
+				) {
+				SkipFg = true;
+			}
+			
+			if(!SkipFg){
+				SetClCd[EntryCount]			= GetClCd;
+				SetClWh[EntryCount]			= GetClWh;
+				SetItemCd[EntryCount]		= GetItemCd;
+				SetRecomendLoc[EntryCount]	= GetRecomendLoc;
+				
+				SetEntryDate[EntryCount]	= now_dtm;
+				SetUpdateDate[EntryCount]	= now_dtm;
+				SetEntryUser[EntryCount]	= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;
+				SetUpdateUser[EntryCount]	= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;
+				
+				EntryCount = EntryCount+1;
+			}
+		}
+		Object[][] SetOb = {
+				 {"ClCd"		,"1","1","Key"	,SetClCd}
+				,{"ClWh"		,"1","1","Key"	,SetClWh}
+				,{"ItemCd"		,"1","1","Key"	,SetItemCd}
+				,{"RecomendLoc"	,"1","1",""		,SetRecomendLoc}
+				,{"EntryDate"	,"1","0",""		,SetEntryDate}
+				,{"UpdateDate"	,"1","1",""		,SetUpdateDate}
+				,{"EntryUser"	,"1","0",""		,SetEntryUser}
+				,{"UpdateUser"	,"1","1",""		,SetUpdateUser}
+				};
+		return SetOb;
+	}
+	
+	private static String[] TxtCheck(
 			String GetClCd,
 			String GetClWh,
 			String GetItemCd,
-			String GetRecomendLoc
+			String GetRecomendLoc,
+			int BackClCd,
+			int BackClWh,
+			int BackItemCd,
+			int BackRecomendLoc
 			) {
-		ArrayList<String> ErrMsg = new ArrayList<String>();
-		if("".equals(GetClCd)) {ErrMsg.add("荷主コードは必須です");}
-		if("".equals(GetClWh)) {ErrMsg.add("倉庫コードは必須です");}
-		if("".equals(GetItemCd)) {ErrMsg.add("商品コードは必須です");}
-		if("".equals(GetRecomendLoc)) {ErrMsg.add("ロケコードは必須です");}
+		String[] Rt = new String[4];
 		
-		String GetClGp = GlGpRt(GetClCd);
-		Object[][] ItemMstRt = ItemMstRt(GetClGp,GetItemCd,"");
-		if(1!=ItemMstRt.length) {
-			ErrMsg.add("("+GetItemCd+")商品コードが不正です");
-		}
-		boolean LocExactMatch = true;
-		Object[][] LocationMstRt = LocationMstRt(GetClWh,GetClCd,GetRecomendLoc,"","",LocExactMatch);
-		if(1!=LocationMstRt.length) {
-			ErrMsg.add("("+GetRecomendLoc+")ロケーションコードが不正です");
-		}
+		if(null==GetClCd			){GetClCd			= "";}
+		if(null==GetClWh			){GetClWh			= "";}
+		if(null==GetItemCd			){GetItemCd			= "";}
+		if(null==GetRecomendLoc		){GetRecomendLoc	= "";}
 		
-		return ErrMsg;
-			
+		GetClCd			= B00020ToolsTextControl.Trim(GetClCd);
+		GetClWh			= B00020ToolsTextControl.Trim(GetClWh);
+		GetItemCd		= B00020ToolsTextControl.Trim(GetItemCd);
+		GetRecomendLoc	= B00020ToolsTextControl.Trim(GetRecomendLoc);
+		
+		Rt[BackClCd] 		= GetClCd;
+		Rt[BackClWh] 		= GetClWh;
+		Rt[BackItemCd] 		= GetItemCd;
+		Rt[BackRecomendLoc]	= GetRecomendLoc;
+		
+		return Rt;
 	}
 	
+	private static Object[][] ItemMstRt(ArrayList<String> SearchItemCd){
+		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
+		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
+		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
+		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
+		ArrayList<String> SearchDeliveryTypeCd03 	= new ArrayList<String>();	//運送タイプコード03
+		ArrayList<String> SearchDeliveryTypeCd04 	= new ArrayList<String>();	//運送タイプコード04
+		ArrayList<String> SearchDeliveryTypeCd05 	= new ArrayList<String>();	//運送タイプコード05
+		ArrayList<String> SearchItemMDNo 			= new ArrayList<String>();	//商品モデル番号（型番）
+		ArrayList<String> SearchCategoryCd 			= new ArrayList<String>();	//商品カテゴリCD
+		ArrayList<String> SearchCategoryName 		= new ArrayList<String>();	//商品カテゴリ名
+		ArrayList<String> SearchItemColorCd 		= new ArrayList<String>();	//商品カラーコード
+		ArrayList<String> SearchItemColorName 		= new ArrayList<String>();	//商品カラー名
+		ArrayList<String> SearchItemSizeCd 			= new ArrayList<String>();	//商品サイズコード
+		ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイズ名
+		ArrayList<String> SearchJanCd 				= new ArrayList<String>();	//JANCD
+		ArrayList<String> SearchTildFG 				= new ArrayList<String>();	//温度区分
+		ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
+		ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
+		boolean AllSearch = false;
+		
+		SearchClGpCd.add(A00000Main.ClGp);
+		
+		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+				SearchClGpCd,			//荷主グループコード
+				SearchItemCd,			//商品コード
+				SearchCLItemCd,			//荷主商品コード
+				SearchItemName,			//商品名
+				SearchDeliveryTypeCd01,	//運送タイプコード01
+				SearchDeliveryTypeCd02,	//運送タイプコード02
+				SearchDeliveryTypeCd03,	//運送タイプコード03
+				SearchDeliveryTypeCd04,	//運送タイプコード04
+				SearchDeliveryTypeCd05,	//運送タイプコード05
+				SearchItemMDNo,			//商品モデル番号（型番）
+				SearchCategoryCd,		//商品カテゴリCD
+				SearchCategoryName,		//商品カテゴリ名
+				SearchItemColorCd,		//商品カラーコード
+				SearchItemColorName,	//商品カラー名
+				SearchItemSizeCd,		//商品サイズコード
+				SearchItemSizeName,		//商品サイズ名
+				SearchJanCd,			//JANCD
+				SearchTildFG,			//温度区分
+				SearchTildName,			//温度区分名
+				SearchDelFg,			//削除フラグ
+				AllSearch);
+		
+		return ItemMstRt;
+	}
+	private static Object[][] LocMstRt(ArrayList<String> SearchRecomendLoc ){
+		ArrayList<String> SearchClCd 	= new ArrayList<String>();	//荷主コード
+		ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
+		ArrayList<String> SearchLoc 	= SearchRecomendLoc;		//ロケーション
+		ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
+		ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+		boolean LocExactMatch = true;	//ロケーション完全一致
+		boolean AllSearch = false;
+		
+		SearchClCd.add(A00000Main.ClCd);
+		SearchWhCd.add(A00000Main.ClWh);
+		
+		Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+				SearchClCd,		//荷主コード
+				SearchWhCd,		//倉庫コード
+				SearchLoc,		//ロケーション
+				SearchLocName,	//ロケーション名
+				SearchType,		//ロケタイプ
+				LocExactMatch,	//ロケーション完全一致
+				AllSearch);
+		return LocationMstRt;
+	}
 	
 	private static void ErrView(ArrayList<String>ErrMsg) {
 		//必要フォルダを生成する
