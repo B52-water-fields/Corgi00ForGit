@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class T00016ArrivalPlanHdRt{
 	//入荷予定明細（各行にヘッダ情報展開）返却する
-	
 	static final int ColClWh			=  0;		//ヘッダ担当倉庫
 	static final int ColClCd			=  1;		//ヘッダ荷主CD
 	static final int ColCLName01		=  2;		//ヘッダ荷主名
