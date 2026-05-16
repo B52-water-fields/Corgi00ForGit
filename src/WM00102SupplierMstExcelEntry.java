@@ -311,7 +311,7 @@ public class WM00102SupplierMstExcelEntry{
 		
 		String tgt_table = "WM0010Supplier";
 		String TgtDB = "WANKO";
-		int non_msg_fg = 1;
+		int non_msg_fg = 0;
 		
 		A00020InsertUdateSQL.InsertUpdateSomeRecord(SetObRt,tgt_table,TgtDB,non_msg_fg);
 		B00100DefaultVariable.SupplierList();

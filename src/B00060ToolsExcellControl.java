@@ -406,7 +406,6 @@ public class B00060ToolsExcellControl{
 		    int firstRow = sheet.getFirstRowNum();
 		    /* シートの定義の最終行 */
 		    int lastRow = sheet.getLastRowNum();
-		    
 		    if(HdFg) {firstRow=firstRow+1;}
 		    
 		    rt = new Object[lastRow+1-firstRow][ColumnType.length];
@@ -414,20 +413,64 @@ public class B00060ToolsExcellControl{
 		    int counter = 0;
 		    for(int i=firstRow;i<lastRow+1;i++) {
 		    	Row row = sheet.getRow(i);
-		    	for(int i01=0;i01<ColumnType.length;i01++) {
-		    		Cell cell = row.getCell(i01);
-		    		if(null!=cell) {
-		    			Object value = null;
-		    			switch(cell.getCellType()) {
-							case 0:
-								switch(ColumnType[i01]) {
+		    	if(null!=row) {
+			    	for(int i01=0;i01<ColumnType.length;i01++) {
+			    		if(null!=row.getCell(i01)) {
+			    			Cell cell = row.getCell(i01);
+			    			Object value = null;
+			    			switch(cell.getCellType()) {
+								case 0:
+									switch(ColumnType[i01]) {
+					    				case 0 :
+					    					//数値として取得→数値
+					    					value = cell.getNumericCellValue();
+					    					break;
+					    				case 1 :
+					    					//数値として取得→文字列
+					    					value = (long)cell.getNumericCellValue();
+				    						break;
+					    				case 2 :
+					    					//数値ではなく日付時刻として取得→日付時刻の型合わせ
+					    					value = cell.getDateCellValue();
+											String dtm = null;
+											SimpleDateFormat sdf = new SimpleDateFormat("yyyy'/'MM'/'dd' 'HH':'mm':'ss");
+											dtm = sdf.format(value);
+											value = dtm;
+				    						break;
+					    				default:value="";
+				    						break;
+									}
+									break;
+								case 1:value = cell.getStringCellValue();
+									switch(ColumnType[i01]) {
+					    				case 0 :
+					    					//文字列として取得→数値
+					    					value = ""+cell.getStringCellValue();
+					    					String Wst = ""+cell.getStringCellValue();
+					    					Wst = B00020ToolsTextControl.num_only_String02(Wst);
+					    					if("".equals(Wst)) {Wst="0";}
+					    					value = Wst;
+					    					break;
+					    				case 1 :
+					    					//文字列として取得→文字列
+					    					value = cell.getStringCellValue();
+				    						break;
+					    				case 2 :
+					    					value = cell.getStringCellValue();
+				    						break;
+					    				default:value="";
+				    						break;
+									}
+									break;
+								case 2:	//Cell.CELL_TYPE_FORMULA
+									switch(ColumnType[i01]) {
 				    				case 0 :
 				    					//数値として取得→数値
 				    					value = cell.getNumericCellValue();
 				    					break;
 				    				case 1 :
-				    					//数値として取得→文字列
-				    					value = (long)cell.getNumericCellValue();
+				    					//文字列として取得→文字列
+				    					value = cell.getStringCellValue();
 			    						break;
 				    				case 2 :
 				    					//数値ではなく日付時刻として取得→日付時刻の型合わせ
@@ -440,75 +483,46 @@ public class B00060ToolsExcellControl{
 				    				default:value="";
 			    						break;
 								}
-								break;
-							case 1:value = cell.getStringCellValue();
-								switch(ColumnType[i01]) {
-				    				case 0 :
-				    					//文字列として取得→数値
-				    					value = ""+cell.getStringCellValue();
-				    					String Wst = ""+cell.getStringCellValue();
-				    					Wst = B00020ToolsTextControl.num_only_String02(Wst);
-				    					if("".equals(Wst)) {Wst="0";}
-				    					value = Wst;
-				    					break;
-				    				case 1 :
-				    					//文字列として取得→文字列
-				    					value = cell.getStringCellValue();
-			    						break;
-				    				case 2 :
-				    					value = cell.getStringCellValue();
-			    						break;
-				    				default:value="";
-			    						break;
-								}
-								break;
-							case 2:	//Cell.CELL_TYPE_FORMULA
-								switch(ColumnType[i01]) {
-			    				case 0 :
-			    					//数値として取得→数値
-			    					value = cell.getNumericCellValue();
+									break;
+								case 3:	//Cell.CELL_TYPE_BLANK
+									value="";
+									break;
+								case 4:	//Cell.CELL_TYPE_BOOLEAN
+									value="";
+									break;
+								case 5:	//Cell.CELL_TYPE_ERROR
+									value="";
+									break;
+								default:
+									value = cell.getStringCellValue();
+									break;
+			    			}
+			    			rt[counter][i01]=""+value ;
+			    		}else {
+			    			switch(ColumnType[i01]) {
+			    				case 0 :rt[counter][i01]=0;
 			    					break;
-			    				case 1 :
-			    					//文字列として取得→文字列
-			    					value = cell.getStringCellValue();
+			    				case 1 :rt[counter][i01]="";
 		    						break;
-			    				case 2 :
-			    					//数値ではなく日付時刻として取得→日付時刻の型合わせ
-			    					value = cell.getDateCellValue();
-									String dtm = null;
-									SimpleDateFormat sdf = new SimpleDateFormat("yyyy'/'MM'/'dd' 'HH':'mm':'ss");
-									dtm = sdf.format(value);
-									value = dtm;
+			    				case 2 :rt[counter][i01]="";
 		    						break;
-			    				default:value="";
+			    				default:rt[counter][i01]="";
 		    						break;
-							}
-								break;
-							case 3:	//Cell.CELL_TYPE_BLANK
-								value="";
-								break;
-							case 4:	//Cell.CELL_TYPE_BOOLEAN
-								value="";
-								break;
-							case 5:	//Cell.CELL_TYPE_ERROR
-								value="";
-								break;
-							default:
-								value = cell.getStringCellValue();
-								break;
-		    			}
-		    			rt[counter][i01]=""+value ;
-		    		}else {
+			    			}
+			    		}
+			    	}
+		    	}else {
+		    		for(int i01=0;i01<ColumnType.length;i01++) {
 		    			switch(ColumnType[i01]) {
-		    				case 0 :rt[counter][i01]=0;
-		    					break;
-		    				case 1 :rt[counter][i01]="";
-	    						break;
-		    				case 2 :rt[counter][i01]="";
-	    						break;
-		    				default:rt[counter][i01]="";
-	    						break;
-		    			}
+	    				case 0 :rt[counter][i01]=0;
+	    					break;
+	    				case 1 :rt[counter][i01]="";
+    						break;
+	    				case 2 :rt[counter][i01]="";
+    						break;
+	    				default:rt[counter][i01]="";
+    						break;
+	    			}
 		    		}
 		    	}
 		    	counter = counter+1;
