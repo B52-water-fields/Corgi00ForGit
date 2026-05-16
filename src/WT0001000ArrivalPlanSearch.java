@@ -46,27 +46,26 @@ public class WT0001000ArrivalPlanSearch{
 		JLabel LB_SearchArCom			= B00110FrameParts.JLabelSet(  0, 25,100,20,"コメント:"			,11,1);
 		JLabel LB_SearchFixFg			= B00110FrameParts.JLabelSet(  0, 25,100,20,"状況:"				,11,1);
 				
-		JLabel LB_SearchMsNo= B00110FrameParts.JLabelSet(	                  0,25,100,20,"明細番号:"	,11,1);
-		JLabel LB_SearchItemCd= B00110FrameParts.JLabelSet(	                  0,25,100,20,"商品コード:"	,11,1);
-		JLabel LB_SearchClItemCd= B00110FrameParts.JLabelSet(	                  0,25,100,20,"荷主商品コード:"	,11,1);
-		JLabel LB_SearchJanCd= B00110FrameParts.JLabelSet(	                  0,25,100,20,"JANCD（バラ）:"	,11,1);
-		JLabel LB_SearchItemMdNo= B00110FrameParts.JLabelSet(	                  0,25,100,20,"商品型番:"	,11,1);
-		JLabel LB_SearchItemName= B00110FrameParts.JLabelSet(	                  0,25,100,20,"商品名:"	,11,1);
-		JLabel LB_Searchlot= B00110FrameParts.JLabelSet(	                  0,25,100,20,"ロット:"	,11,1);
-		JLabel LB_SearchExpDate= B00110FrameParts.JLabelSet(	                  0,25,100,20,"消費期限:"	,11,1);
-		JLabel LB_SearchPlanQty= B00110FrameParts.JLabelSet(	                  0,25,100,20,"予定数量:"	,11,1);
-		JLabel LB_SearchActualQty= B00110FrameParts.JLabelSet(	                  0,25,100,20,"実績数:"	,11,1);
-		JLabel LB_SearchActualDate= B00110FrameParts.JLabelSet(	                  0,25,100,20,"入荷日:"	,11,1);
-		JLabel LB_SearchCom= B00110FrameParts.JLabelSet(	                  0,25,100,20,"コメント:"	,11,1);
-		JLabel LB_SearchEntryDate= B00110FrameParts.JLabelSet(	                  0,25,100,20,"登録日:"	,11,1);
-		JLabel LB_SearchUpdateDate= B00110FrameParts.JLabelSet(	                  0,25,100,20,"更新日:"	,11,1);
-		JLabel LB_SearchEntryUser= B00110FrameParts.JLabelSet(	                  0,25,100,20,"登録者:"	,11,1);
-		JLabel LB_SearchUpdateUser= B00110FrameParts.JLabelSet(	                  0,25,100,20,"更新者:"	,11,1);
+		JLabel LB_SearchMsNo			= B00110FrameParts.JLabelSet(  0,25,100,20,"明細番号:"			,11,1);
+		JLabel LB_SearchItemCd			= B00110FrameParts.JLabelSet(  0,25,100,20,"商品コード:"		,11,1);
+		JLabel LB_SearchClItemCd		= B00110FrameParts.JLabelSet(  0,25,100,20,"荷主商品コード:"	,11,1);
+		JLabel LB_SearchJanCd			= B00110FrameParts.JLabelSet(  0,25,100,20,"JANCD（バラ）:"		,11,1);
+		JLabel LB_SearchItemMdNo		= B00110FrameParts.JLabelSet(  0,25,100,20,"商品型番:"			,11,1);
+		JLabel LB_SearchItemName		= B00110FrameParts.JLabelSet(  0,25,100,20,"商品名:"			,11,1);
+		JLabel LB_Searchlot				= B00110FrameParts.JLabelSet(  0,25,100,20,"ロット:"			,11,1);
+		JLabel LB_SearchExpDate			= B00110FrameParts.JLabelSet(  0,25,100,20,"消費期限:"			,11,1);
+		JLabel LB_SearchPlanQty			= B00110FrameParts.JLabelSet(  0,25,100,20,"明細予定数量:"		,11,1);
+		JLabel LB_SearchActualQty		= B00110FrameParts.JLabelSet(  0,25,100,20,"明細実績数:"		,11,1);
+		JLabel LB_SearchActualDate		= B00110FrameParts.JLabelSet(  0,25,100,20,"入荷日:"			,11,1);
+		JLabel LB_SearchCom				= B00110FrameParts.JLabelSet(  0,25,100,20,"コメント:"			,11,1);
+		JLabel LB_SearchEntryDate		= B00110FrameParts.JLabelSet(  0,25,100,20,"登録日:"			,11,1);
+		JLabel LB_SearchUpdateDate		= B00110FrameParts.JLabelSet(  0,25,100,20,"更新日:"			,11,1);
+		JLabel LB_SearchEntryUser		= B00110FrameParts.JLabelSet(  0,25,100,20,"登録者:"			,11,1);
+		JLabel LB_SearchUpdateUser		= B00110FrameParts.JLabelSet(  0,25,100,20,"更新者:"			,11,1);
 		
-		final JComboBox TB_SearchClWh= B00110FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//ヘッダ担当倉庫
-		final JTextField TB_SearchClCd= B00110FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//ヘッダ荷主CD
-		final JTextField TB_SearchCLName01= B00110FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//ヘッダ荷主名
-		final JTextField TB_ SearchClGpCD= B00110FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//ヘッダ荷主グループCD
+		final JComboBox TB_SearchClWh= B00110FrameParts.JComboBoxSet(	440,150,180,20,B00100DefaultVariable.SearchWhList[0],11);				//ヘッダ担当倉庫
+		final JComboBox TB_SearchClCd= B00110FrameParts.JComboBoxSet(	440,150,180,20,B00100DefaultVariable.SearchClList[0],11);				//ヘッダ荷主CD
+		final JComboBox TB_ SearchClGpCD= B00110FrameParts.JComboBoxSet(	440,150,180,20,B00100DefaultVariable.SearchClGpList[0],11);				//ヘッダ荷主グループCD
 		final JTextField TB_SearchCLGpName01= B00110FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//ヘッダ荷主グループ名1
 		final JTextField TB_SearchArrNo= B00110FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//ヘッダ入荷予定NO
 		final JTextField TB_SearchClArrNo= B00110FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//ヘッダ荷主予定番号
@@ -106,6 +105,35 @@ public class WT0001000ArrivalPlanSearch{
 		ArrayList<String> SearchUpdateDateMax,		//更新日
 		ArrayList<String> SearchEntryUser,			//登録者
 		ArrayList<String> SearchUpdateUser,			//更新者
+		
+		
+		JLabel LB2_SearchArrNo			= B00110FrameParts.JLabelSet(  0, 25,100,20,"と一致"		,11,1);
+		JLabel LB2_SearchClArrNo			= B00110FrameParts.JLabelSet(  0, 25,100,20,"と一致"		,11,1);
+		JLabel LB2_SearchPlanDate		= B00110FrameParts.JLabelSet(  0, 25,100,20,"～"		,11,1);
+		JLabel LB2_SearchHdActualDate	= B00110FrameParts.JLabelSet(  0, 25,100,20,"～"	,11,1);
+		JLabel LB2_SearchSpCd			= B00110FrameParts.JLabelSet(  0, 25,100,20,"と一致"			,11,1);
+		JLabel LB2_SearchSpName			= B00110FrameParts.JLabelSet(  0, 25,100,20,"を含む"			,11,1);
+		JLabel LB2_SearchSpPost			= B00110FrameParts.JLabelSet(  0, 25,100,20,"で始まる"		,11,1);
+		JLabel LB2_SearchSpAdd			= B00110FrameParts.JLabelSet(  0, 25,100,20,"を含む"		,11,1);
+		JLabel LB2_SearchSpTel			= B00110FrameParts.JLabelSet(  0, 25,100,20,"を含む"		,11,1);
+		JLabel LB2_SearchArCom			= B00110FrameParts.JLabelSet(  0, 25,100,20,"を含む"			,11,1);
+				
+		JLabel LB2_SearchMsNo			= B00110FrameParts.JLabelSet(  0,25,100,20,"～"			,11,1);
+		JLabel LB2_SearchItemCd			= B00110FrameParts.JLabelSet(  0,25,100,20,"と一致"		,11,1);
+		JLabel LB2_SearchClItemCd		= B00110FrameParts.JLabelSet(  0,25,100,20,"と一致"	,11,1);
+		JLabel LB2_SearchJanCd			= B00110FrameParts.JLabelSet(  0,25,100,20,"と一致"		,11,1);
+		JLabel LB2_SearchItemMdNo		= B00110FrameParts.JLabelSet(  0,25,100,20,"と一致"			,11,1);
+		JLabel LB2_SearchItemName		= B00110FrameParts.JLabelSet(  0,25,100,20,"を含む"			,11,1);
+		JLabel LB2_Searchlot				= B00110FrameParts.JLabelSet(  0,25,100,20,"と一致"			,11,1);
+		JLabel LB2_SearchExpDate			= B00110FrameParts.JLabelSet(  0,25,100,20,"～"			,11,1);
+		JLabel LB2_SearchPlanQty			= B00110FrameParts.JLabelSet(  0,25,100,20,"～"			,11,1);
+		JLabel LB2_SearchActualQty		= B00110FrameParts.JLabelSet(  0,25,100,20,"実績数:"			,11,1);
+		JLabel LB2_SearchActualDate		= B00110FrameParts.JLabelSet(  0,25,100,20,"入荷日:"			,11,1);
+		JLabel LB2_SearchCom				= B00110FrameParts.JLabelSet(  0,25,100,20,"コメント:"			,11,1);
+		JLabel LB2_SearchEntryDate		= B00110FrameParts.JLabelSet(  0,25,100,20,"登録日:"			,11,1);
+		JLabel LB2_SearchUpdateDate		= B00110FrameParts.JLabelSet(  0,25,100,20,"更新日:"			,11,1);
+		JLabel LB2_SearchEntryUser		= B00110FrameParts.JLabelSet(  0,25,100,20,"登録者:"			,11,1);
+		JLabel LB2_SearchUpdateUser		= B00110FrameParts.JLabelSet(  0,25,100,20,"更新者:"			,11,1);
 		
 		*/
 		
