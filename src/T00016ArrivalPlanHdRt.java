@@ -33,6 +33,8 @@ public class T00016ArrivalPlanHdRt{
 	static final int ColEntryUser		= 23;		//ヘッダ登録者
 	static final int ColUpdateUser	= 24;		//ヘッダ更新者
 	static final int ColFixFg			= 25;		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
+	static final int ColPlanQty		= 26;		//実績数合計
+	static final int ColActualQty		= 27;		//予定数合計
 	
 	public static Object[][] RtArrivalPlanHdRt(
 			){
@@ -41,9 +43,9 @@ public class T00016ArrivalPlanHdRt{
 				,{"ClCd"			,ColClCd			,"String"	,"ヘッダ荷主CD"}
 				,{"CLName01"		,ColClGpCD			,"String"	,"ヘッダ荷主名"}
 				,{"ClGpCD"			,ColClGpCD			,"String"	,"ヘッダ荷主グループCD"}
-				,{"CLGpName01"		,ColCLGpName01		,"String"	,"ヘッダ荷主グループ名1"}
+				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ名1"}
 				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"}
-				,{"ClArrNo"			,ColClArrNo			,"String"	,"ヘッダ荷主予定番号"}
+				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"}
 				,{"PlanDate"		,ColPlanDate		,"String"	,"ヘッダ入荷予定日"}
 				,{"HdActualDate"	,ColActualDate	,"String"	,"ヘッダ入荷実績日"}
 				,{"SpCd"			,ColSpCd			,"String"	,"ヘッダ仕入先CD"}
@@ -51,18 +53,20 @@ public class T00016ArrivalPlanHdRt{
 				,{"SpName02"		,ColSpName02		,"String"	,"ヘッダ仕入先名02"}
 				,{"SpName03"		,ColSpName03		,"String"	,"ヘッダ仕入先名03"}
 				,{"SpPost"			,ColSpPost			,"String"	,"ヘッダ仕入先郵便"}
-				,{"SpAdd01"			,ColSpAdd01			,"String"	,"ヘッダ仕入先住所01"}
-				,{"SpAdd02"			,ColSpAdd02			,"String"	,"ヘッダ仕入先住所02"}
-				,{"SpAdd03"			,ColSpAdd03			,"String"	,"ヘッダ仕入先住所03"}
+				,{"SpAdd01"			,ColSpAdd01		,"String"	,"ヘッダ仕入先住所01"}
+				,{"SpAdd02"			,ColSpAdd02		,"String"	,"ヘッダ仕入先住所02"}
+				,{"SpAdd03"			,ColSpAdd03		,"String"	,"ヘッダ仕入先住所03"}
 				,{"SpTel"			,ColSpTel			,"String"	,"ヘッダ仕入先電話"}
-				,{"ArCom01"			,ColArCom01			,"String"	,"ヘッダコメント1"}
-				,{"ArCom02"			,ColArCom02			,"String"	,"ヘッダコメント2"}
-				,{"ArCom03"			,ColArCom03			,"String"	,"ヘッダコメント3"}
+				,{"ArCom01"			,ColArCom01		,"String"	,"ヘッダコメント1"}
+				,{"ArCom02"			,ColArCom02		,"String"	,"ヘッダコメント2"}
+				,{"ArCom03"			,ColArCom03		,"String"	,"ヘッダコメント3"}
 				,{"HdEntryDate"		,ColEntryDate		,"String"	,"ヘッダ登録日"}
-				,{"HdUpdateDate"	,ColUpdateDate		,"String"	,"ヘッダ更新日"}
+				,{"HdUpdateDate"	,ColUpdateDate	,"String"	,"ヘッダ更新日"}
 				,{"HdEntryUser"		,ColEntryUser		,"String"	,"ヘッダ登録者"}
-				,{"HdUpdateUser"	,ColUpdateUser		,"String"	,"ヘッダ更新者"}
+				,{"HdUpdateUser"	,ColUpdateUser	,"String"	,"ヘッダ更新者"}
 				,{"FixFg"			,ColFixFg			,"int"		,"ヘッダ状況"}
+				,{"PlanQty"			,ColPlanQty		,"int"		,"実績数合計"}
+				,{"ActualQty"		,ColActualQty		,"int"		,"予定数合計"}
 				};
 		return RtArrivalPlanHdRt;
 	}
@@ -203,7 +207,7 @@ public class T00016ArrivalPlanHdRt{
 					+"max(KM0031_CLIENT_GROUP.CLGpName01)  as CLGpName01,\n"		//ヘッダ荷主グループ名1
 					+"(WW0010ArrivalPlanHd.ArrNo)          as ArrNo,\n"				//ヘッダ入荷予定NO（WMS採番）
 					+"max(WW0010ArrivalPlanHd.ClArrNo)     as ClArrNo,\n"			//ヘッダ荷主予定番号
-					+"max(WW0010ArrivalPlanHd.PlanDate)    as PlanDate,\n"			//ヘッダ入荷予定日
+					+"(WW0010ArrivalPlanHd.PlanDate)       as PlanDate,\n"			//ヘッダ入荷予定日
 					+"max(WW0010ArrivalPlanHd.ActualDate)  as ActualDate,\n"		//ヘッダ入荷実績日
 					+"max(WW0010ArrivalPlanHd.SpCd)        as SpCd,\n"				//ヘッダ仕入先CD
 					+"max(WW0010ArrivalPlanHd.SpName01)    as SpName01,\n"			//ヘッダ仕入先名01
@@ -222,7 +226,8 @@ public class T00016ArrivalPlanHdRt{
 					+"max(WW0010ArrivalPlanHd.EntryUser)   as EntryUser,\n"			//ヘッダ登録者
 					+"max(WW0010ArrivalPlanHd.UpdateUser)  as UpdateUser,\n"		//ヘッダ更新者
 					+"max(WW0010ArrivalPlanHd.FixFg)       as FixFg,\n"				//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
-					
+					+"sum(WW0011ArrivalPlanMs.PlanQty)     as PlanQty,\n"			//実績数合計
+					+"sum(WW0011ArrivalPlanMs.ActualQty)   as ActualQty\n"			//予定数合計
 					
 					+" from "+A00000Main.MySqlDefaultSchemaWANKO+".WW0011ArrivalPlanMs \n"
 					+" left outer join "+A00000Main.MySqlDefaultSchemaWANKO+".WW0010ArrivalPlanHd \n"
@@ -618,8 +623,8 @@ public class T00016ArrivalPlanHdRt{
 			sql = sql + ")";
 		}
 		
-		sql = sql + " group by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.ArrNo";
-		sql = sql + " order by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.ArrNo";
+		sql = sql + " group by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.PlanDate,WW0010ArrivalPlanHd.ArrNo";
+		sql = sql + " order by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.PlanDate,WW0010ArrivalPlanHd.ArrNo";
 		//System.out.println(sql);
 		if(SearchKick) {
 			A00010DbConnect.DB_CONN("NYANKO");
@@ -923,6 +928,8 @@ public class T00016ArrivalPlanHdRt{
 					if(null==rset01.getString("EntryUser"		)){rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}	//ヘッダ登録者
 					if(null==rset01.getString("UpdateUser"		)){rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}	//ヘッダ更新者
 					rt[counter][ColFixFg]		=rset01.getInt("FixFg");		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
+					rt[counter][ColPlanQty]	=rset01.getInt("PlanQty");		//実績数合計
+					rt[counter][ColActualQty]	=rset01.getInt("ActualQty");	//予定数合計
 					counter=counter+1;
 				}
 				if(rset01!=null){rset01.close();}
