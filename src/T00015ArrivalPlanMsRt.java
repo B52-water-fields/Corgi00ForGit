@@ -206,7 +206,7 @@ public class T00015ArrivalPlanMsRt{
 				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
 				SetTimestamp = B00050ToolsDateTimeControl.ndate_after(SetTimestamp,1);
 				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchPlanDateMax.set(i,SetString);
+				SearchHdActualDateMax.set(i,SetString);
 			}
 		}
 		if(null!=SearchExpDateMax && 0<SearchExpDateMax.size()){				//消費期限最大
@@ -215,7 +215,7 @@ public class T00015ArrivalPlanMsRt{
 				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
 				SetTimestamp = B00050ToolsDateTimeControl.ndate_after(SetTimestamp,1);
 				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchPlanDateMax.set(i,SetString);
+				SearchExpDateMax.set(i,SetString);
 			}
 		}
 		if(null!=SearchActualDateMax && 0<SearchActualDateMax.size()){			//入荷日最大
@@ -224,7 +224,7 @@ public class T00015ArrivalPlanMsRt{
 				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
 				SetTimestamp = B00050ToolsDateTimeControl.ndate_after(SetTimestamp,1);
 				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchPlanDateMax.set(i,SetString);
+				SearchActualDateMax.set(i,SetString);
 			}
 		}
 		Object[][] rt = new Object[0][RtArrivalPlanMsRt().length];

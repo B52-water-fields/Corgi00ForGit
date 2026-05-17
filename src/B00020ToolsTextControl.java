@@ -174,6 +174,7 @@ public class B00020ToolsTextControl{
 
 	//後方の空白文字を除去
 	public static String Trim(String ws){
+		if(null==ws) {ws = "";}
 		boolean fg = true;
 		int i = 0;
 		int trim_i = ws.length();
