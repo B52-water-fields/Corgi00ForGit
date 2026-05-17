@@ -630,7 +630,7 @@ public class T00015ArrivalPlanMsRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchEntryDateMax.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " WW0011ArrivalPlanMs.EntryDate < ?";
+				sql = sql + " WW0011ArrivalPlanMs.EntryDate <= ?";
 			}
 			sql = sql + ")";
 		}
@@ -648,7 +648,7 @@ public class T00015ArrivalPlanMsRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchUpdateDateMax.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " WW0011ArrivalPlanMs.UpdateDate < ?";
+				sql = sql + " WW0011ArrivalPlanMs.UpdateDate <= ?";
 			}
 			sql = sql + ")";
 		}

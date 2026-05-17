@@ -508,19 +508,21 @@ public class B00100DefaultVariable{
 				SearchDepartmentCd,		//部署CD
 				AllSearch);
 		
-		SearchSupplierList = new String[SupplierRt.length+1][3];
-		SupplierList = new String[SupplierRt.length][3];
+		SearchSupplierList = new String[3][SupplierRt.length+1];
+		SupplierList = new String[3][SupplierRt.length];
 		
 		SearchSupplierList[0][0] = "未指定";
+		SearchSupplierList[1][0] = "";
+		SearchSupplierList[2][0] = "";
 		
 		for(int i=0;i<SupplierRt.length;i++) {
-			SearchSupplierList[i+1][0] = SupplierRt[i][M00100SupplierRt.ColSPCd]+":"+SupplierRt[i][M00100SupplierRt.ColSPName01];
-			SearchSupplierList[i+1][0] = ""+SupplierRt[i][M00100SupplierRt.ColSPCd];
-			SearchSupplierList[i+1][0] = ""+SupplierRt[i][M00100SupplierRt.ColSPName01];
+			SearchSupplierList[0][i+1] = SupplierRt[i][M00100SupplierRt.ColSPCd]+":"+SupplierRt[i][M00100SupplierRt.ColSPName01];
+			SearchSupplierList[1][i+1] = ""+SupplierRt[i][M00100SupplierRt.ColSPCd];
+			SearchSupplierList[2][i+1] = ""+SupplierRt[i][M00100SupplierRt.ColSPName01];
 			
-			SupplierList[i][0] = SupplierRt[i][M00100SupplierRt.ColSPCd]+":"+SupplierRt[i][M00100SupplierRt.ColSPName01];
-			SupplierList[i][0] = ""+SupplierRt[i][M00100SupplierRt.ColSPCd];
-			SupplierList[i][0] = ""+SupplierRt[i][M00100SupplierRt.ColSPName01];
+			SupplierList[0][i] = SupplierRt[i][M00100SupplierRt.ColSPCd]+":"+SupplierRt[i][M00100SupplierRt.ColSPName01];
+			SupplierList[1][i] = ""+SupplierRt[i][M00100SupplierRt.ColSPCd];
+			SupplierList[2][i] = ""+SupplierRt[i][M00100SupplierRt.ColSPName01];
 		}
 	}
 	
