@@ -10,16 +10,16 @@ public class WMTools000100ItemComversion{
 	ArrayList<String> ClItemCd=new ArrayList<String>();
 	Object[][] ItemComversion = WMTools000100ItemComversion.ItemComversion(ClCd,ClItemCd);
 	
-	String GetClCd						= (String)ItemComversion[i][WMTools000100ItemComversion.IColClCd];						//荷主CD
-	String GetClGpCd					= (String)ItemComversion[i][WMTools000100ItemComversion.IColClGpCd];					//荷主グループCD
-	String GetItemCd					= (String)ItemComversion[i][WMTools000100ItemComversion.IColItemCd];					//変換後商品CD
-	String GetClIemCd					= (String)ItemComversion[i][WMTools000100ItemComversion.IColClIemCd];					//荷主商品CD
-	String GetPackingType				= (int)ItemComversion[i][WMTools000100ItemComversion.IColPackingType];					//荷姿タイプ
-	String GetPackingQty				= (int)ItemComversion[i][WMTools000100ItemComversion.IColPackingQty];					//荷姿入数(バラ換算数)
-	String GetItemName01				= (String)ItemComversion[i][WMTools000100ItemComversion.IColItemName01];				//商品名
-	String GetItemPackingTypeName		= (String)ItemComversion[i][WMTools000100ItemComversion.IColItemPackingTypeName];		//荷姿商品名
-	String GetItemUnitName				= (String)ItemComversion[i][WMTools000100ItemComversion.IColItemUnitName];				//商品単位(バラ)
-	String GetItemPackingTypeUnitName	= (String)ItemComversion[i][WMTools000100ItemComversion.IColItemPackingTypeUnitName];	//商品単位(荷姿単位)
+	String GetClCd						= (String)ItemComversion[i][WMTools000100ItemComversion.ColClCd];					//荷主CD
+	String GetClGpCd					= (String)ItemComversion[i][WMTools000100ItemComversion.ColClGpCd];					//荷主グループCD
+	String GetItemCd					= (String)ItemComversion[i][WMTools000100ItemComversion.ColItemCd];					//変換後商品CD
+	String GetClIemCd					= (String)ItemComversion[i][WMTools000100ItemComversion.ColClIemCd];				//荷主商品CD
+	String GetPackingType				= (int)ItemComversion[i][WMTools000100ItemComversion.ColPackingType];				//荷姿タイプ
+	String GetPackingQty				= (int)ItemComversion[i][WMTools000100ItemComversion.ColPackingQty];				//荷姿入数(バラ換算数)
+	String GetItemName01				= (String)ItemComversion[i][WMTools000100ItemComversion.ColItemName01];				//商品名
+	String GetItemPackingTypeName		= (String)ItemComversion[i][WMTools000100ItemComversion.ColItemPackingTypeName];	//荷姿商品名
+	String GetItemUnitName				= (String)ItemComversion[i][WMTools000100ItemComversion.ColItemUnitName];			//商品単位(バラ)
+	String GetItemPackingTypeUnitName	= (String)ItemComversion[i][WMTools000100ItemComversion.ColItemPackingTypeUnitName];//商品単位(荷姿単位)
 	*/
 	
 	static final int ColClCd						=0;	//荷主CD

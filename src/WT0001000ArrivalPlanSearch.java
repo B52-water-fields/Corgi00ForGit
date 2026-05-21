@@ -93,6 +93,7 @@ public class WT0001000ArrivalPlanSearch{
 		TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchClList[1]	,A00000Main.ClCd));			//ヘッダ荷主CD
 		TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B00100DefaultVariable.SearchClGpList[1]	,A00000Main.ClGp));			//ヘッダ荷主グループCD
 		
+		
 		final JTextField TB_SearchItemCd					= B00110FrameParts.JTextFieldSet(				440, 25,100,20,"",11,0);	//商品コード
 		final JTextField TB_SearchClItemCd					= B00110FrameParts.JTextFieldSet(				440, 50,100,20,"",11,0);	//荷主商品コード
 		final JTextField TB_SearchJanCd						= B00110FrameParts.JTextFieldSet(				440, 75,100,20,"",11,0);	//JANCD（バラ）
@@ -120,6 +121,9 @@ public class WT0001000ArrivalPlanSearch{
 		final JFormattedTextField TB_SearchEntryDateMax		= B00110FrameParts.JFormattedTextFieldSet(	950,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
 		final JFormattedTextField TB_SearchUpdateDateMin	= B00110FrameParts.JFormattedTextFieldSet(	780,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
 		final JFormattedTextField TB_SearchUpdateDateMax	= B00110FrameParts.JFormattedTextFieldSet(	950,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
+		
+		//検索条件　状況　初期値を未入荷に設定
+		TB_SearchFixFg.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.SearchArryvalFixFgList[1]	,"0"));
 
 		JLabel LB2_SearchArrNo			= B00110FrameParts.JLabelSet( 200,125, 40,20,"と一致"	,10,0);
 		JLabel LB2_SearchClArrNo		= B00110FrameParts.JLabelSet( 200,150, 40,20,"と一致"	,10,0);
@@ -563,7 +567,7 @@ public class WT0001000ArrivalPlanSearch{
 		
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
-		RenewFg = true;
+		
 		
 		//CSVボタン
 		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
@@ -580,14 +584,19 @@ public class WT0001000ArrivalPlanSearch{
 		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
+		//一括新規ボタン
+		JButton SomeCreateBtn = B00110FrameParts.BtnSet(	370,660,100,20,"一括新規",11);
+		main_fm.add(SomeCreateBtn);
+		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B00110FrameParts.BtnSet(		490,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	610,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
+		RenewFg = true;
 		main_fm.setVisible(true);
 		
 		//検索ボタン押下時の挙動
@@ -884,6 +893,18 @@ public class WT0001000ArrivalPlanSearch{
 					tableModel_ms01.removeRow(0);
 				}
 				B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+			}
+		});
+		
+		//一括新規ボタン押下時の挙動
+		SomeCreateBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT0001003ArrivalPlanSomeEntry.ArrivalPlanSomeEntry(0,0);
 			}
 		});
 		

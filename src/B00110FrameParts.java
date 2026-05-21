@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -238,6 +239,15 @@ public class B00110FrameParts{
 		return rt;
 	}
 	
+	/*===========================================================================
+ 	テキストエリア
+	===========================================================================*/
+	public static JTextArea JTextAreaSet(int TextSize) {
+		final JTextArea rt = new JTextArea("");
+		rt.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, TextSize*A00000Main.Mul/A00000Main.Div));
+		return rt;
+	}
+	
 	public static JFormattedTextField JFormattedTextFieldSet(int x,int y,int Width,int Height,String DefaultText,int TextSize,int set,String Type) {
 		//テキスト入力BOX
 		//入力規制
@@ -328,6 +338,8 @@ public class B00110FrameParts{
 			centerCellRenderer.setHorizontalAlignment(JLabel.CENTER);
 			return centerCellRenderer;
 	}
+
+	
 
 	/*===========================================================================
  	スクロールパネル配置
