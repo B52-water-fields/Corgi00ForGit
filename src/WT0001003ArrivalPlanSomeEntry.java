@@ -65,37 +65,46 @@ public class WT0001003ArrivalPlanSomeEntry{
 		main_fm.add(TB_ClCd);
 		main_fm.add(TB_SpCd);
 		
-		JLabel LB_ClArrNo	= B00110FrameParts.JLabelSet(  60,100,150,20,"荷主予定番号"		,11,2);
-		JLabel LB_ClItemCd	= B00110FrameParts.JLabelSet( 220,100,150,20,"荷主商品コード"		,11,2);
-		JLabel LB_lot		= B00110FrameParts.JLabelSet( 380,100,150,20,"ロット"				,11,2);
-		JLabel LB_ExpDate	= B00110FrameParts.JLabelSet( 540,100,150,20,"消費期限"			,11,2);
-		JLabel LB_PlanQty	= B00110FrameParts.JLabelSet( 700,100,150,20,"予定数量"			,11,2);
+		JLabel LB_ClArrNo	= B00110FrameParts.JLabelSet(  30,100,100,20,"荷主予定番号"		,11,2);
+		JLabel LB_ClItemCd	= B00110FrameParts.JLabelSet( 150,100,100,20,"荷主商品コード"		,11,2);
+		JLabel LB_lot		= B00110FrameParts.JLabelSet( 270,100,100,20,"ロット"				,11,2);
+		JLabel LB_ExpDate	= B00110FrameParts.JLabelSet( 390,100,100,20,"消費期限"			,11,2);
+		JLabel LB_PlanQty	= B00110FrameParts.JLabelSet( 510,100,100,20,"予定数量"			,11,2);
+		JLabel LB_HdCom		= B00110FrameParts.JLabelSet( 630,100,100,20,"ヘッダコメント"		,11,2);
+		JLabel LB_MsCom		= B00110FrameParts.JLabelSet( 750,100,100,20,"明細コメント"		,11,2);
 		
 		final JTextArea TB_ClArrNo	= B00110FrameParts.JTextAreaSet(11);
 		final JTextArea TB_ClItemCd	= B00110FrameParts.JTextAreaSet(11);
 		final JTextArea TB_lot		= B00110FrameParts.JTextAreaSet(11);
 		final JTextArea TB_ExpDate	= B00110FrameParts.JTextAreaSet(11);
 		final JTextArea TB_PlanQty	= B00110FrameParts.JTextAreaSet(11);
+		final JTextArea TB_HdCom	= B00110FrameParts.JTextAreaSet(11);
+		final JTextArea TB_MsCom	= B00110FrameParts.JTextAreaSet(11);
 		
 		//スクロール用設定
-		JScrollPane SPClArrNo 	= B00110FrameParts.JScrollPaneSet( 60,125,150,500,TB_ClArrNo);
-		JScrollPane SPClItemCd 	= B00110FrameParts.JScrollPaneSet(220,125,150,500,TB_ClItemCd);
-		JScrollPane SPlot 		= B00110FrameParts.JScrollPaneSet(380,125,150,500,TB_lot);
-		JScrollPane SPExpDate 	= B00110FrameParts.JScrollPaneSet(540,125,150,500,TB_ExpDate);
-		JScrollPane SPPlanQty 	= B00110FrameParts.JScrollPaneSet(700,125,150,500,TB_PlanQty);
+		JScrollPane SPClArrNo 	= B00110FrameParts.JScrollPaneSet( 30,125,100,500,TB_ClArrNo);
+		JScrollPane SPClItemCd 	= B00110FrameParts.JScrollPaneSet(150,125,100,500,TB_ClItemCd);
+		JScrollPane SPlot 		= B00110FrameParts.JScrollPaneSet(270,125,100,500,TB_lot);
+		JScrollPane SPExpDate 	= B00110FrameParts.JScrollPaneSet(390,125,100,500,TB_ExpDate);
+		JScrollPane SPPlanQty 	= B00110FrameParts.JScrollPaneSet(510,125,100,500,TB_PlanQty);
+		JScrollPane SPHdCom 	= B00110FrameParts.JScrollPaneSet(630,125,100,500,TB_HdCom);
+		JScrollPane SPMsCom 	= B00110FrameParts.JScrollPaneSet(750,125,100,500,TB_MsCom);
 		
 		main_fm.add(LB_ClArrNo);
 		main_fm.add(LB_ClItemCd);
 		main_fm.add(LB_lot);
 		main_fm.add(LB_ExpDate);
 		main_fm.add(LB_PlanQty);
+		main_fm.add(LB_HdCom);
+		main_fm.add(LB_MsCom);
 		
 		main_fm.add(SPClArrNo);
 		main_fm.add(SPClItemCd);
 		main_fm.add(SPlot);
 		main_fm.add(SPExpDate);
 		main_fm.add(SPPlanQty);
-		
+		main_fm.add(SPHdCom);
+		main_fm.add(SPMsCom);
 		
 		//予定日進む戻るボタン押下事の挙動
 		PlanDateAfterBtn.addActionListener(new AbstractAction(){
@@ -146,46 +155,60 @@ public class WT0001003ArrivalPlanSomeEntry{
 				String Getlot		= TB_lot.getText();
 				String GetExpDate	= TB_ExpDate.getText();
 				String GetPlanQty	= TB_PlanQty.getText();
+				String GetHdCom		= TB_HdCom.getText();
+				String GetMsCom		= TB_MsCom.getText();
 				
 				String[] ArrayGetClArrNo 	= GetClArrNo.split("\n");
 				String[] ArrayGetClItemCd	= GetClItemCd.split("\n");
 				String[] ArrayGetlot		= Getlot.split("\n");
 				String[] ArrayGetExpDate	= GetExpDate.split("\n");
 				String[] ArrayGetPlanQty	= GetPlanQty.split("\n");
+				String[] ArrayGetHdCom		= GetHdCom.split("\n");
+				String[] ArrayGetMsCom		= GetMsCom.split("\n");
 				
 				int RowCount = ArrayGetClArrNo.length;
-				if(RowCount<ArrayGetClItemCd.length) {RowCount = ArrayGetClItemCd.length;}
-				if(RowCount<ArrayGetlot.length) {RowCount = ArrayGetlot.length;}
-				if(RowCount<ArrayGetExpDate.length) {RowCount = ArrayGetExpDate.length;}
-				if(RowCount<ArrayGetPlanQty.length) {RowCount = ArrayGetPlanQty.length;}
+				if(RowCount<ArrayGetClItemCd.length	) {RowCount = ArrayGetClItemCd.length;}
+				if(RowCount<ArrayGetlot.length		) {RowCount = ArrayGetlot.length;}
+				if(RowCount<ArrayGetExpDate.length	) {RowCount = ArrayGetExpDate.length;}
+				if(RowCount<ArrayGetPlanQty.length	) {RowCount = ArrayGetPlanQty.length;}
+				if(RowCount<ArrayGetHdCom.length	) {RowCount = ArrayGetHdCom.length;}
+				if(RowCount<ArrayGetMsCom.length	) {RowCount = ArrayGetMsCom.length;}
 				
-				String[][] SetData = new String[RowCount][WT0001004ArrivalPlanArrayEntry.RtArrivalPlanArrayEntry().length];
+				String[][] SetData = new String[RowCount][WT0001004ArrivalPlanArrayEntrySourceDataView.RtArrivalPlanArrayEntrySourceDataView().length];
 				
 				for(int i=0;i<RowCount;i++) {
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColClWh]		= GetClWh;		//担当倉庫
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColClCd]		= GetClCd;		//荷主CD
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColClArrNo]	= "";			//荷主予定番号
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColPlanDate]	= GetPlanDate;	//入荷予定日
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColClItemCd]	= "";			//荷主商品CD
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColPlanQty]	= "";			//数量
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColSPCd]		= GetSpCd;		//仕入先CD
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColLot]		= "";			//ロット
-					SetData[i][WT0001004ArrivalPlanArrayEntry.ColExpDate]	= "";			//賞味期限
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColClWh]		= GetClWh;		//担当倉庫
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColClCd]		= GetClCd;		//荷主CD
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColClArrNo]	= "";			//荷主予定番号
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColPlanDate]	= GetPlanDate;	//入荷予定日
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColClItemCd]	= "";			//荷主商品CD
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColPlanQty]	= "";			//数量
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColSPCd]		= GetSpCd;		//仕入先CD
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColLot]		= "";			//ロット
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColExpDate]	= "";			//賞味期限
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColHdCom01]	= "";			//ヘッダコメント01
+					SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColMsCom01]	= "";			//明細コメント01
 					
 					if(i<ArrayGetClArrNo.length) {
-						SetData[i][WT0001004ArrivalPlanArrayEntry.ColClArrNo]	= ArrayGetClArrNo[i];			//荷主予定番号
+						SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColClArrNo]	= ArrayGetClArrNo[i];			//荷主予定番号
 					}
 					if(i<ArrayGetClItemCd.length) {
-						SetData[i][WT0001004ArrivalPlanArrayEntry.ColClItemCd]	= ArrayGetClItemCd[i];			//荷主商品CD
+						SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColClItemCd]	= ArrayGetClItemCd[i];			//荷主商品CD
 					}
 					if(i<ArrayGetlot.length) {
-						SetData[i][WT0001004ArrivalPlanArrayEntry.ColLot]		= ArrayGetlot[i];				//ロット
+						SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColLot]		= ArrayGetlot[i];				//ロット
 					}
 					if(i<ArrayGetExpDate.length) {
-						SetData[i][WT0001004ArrivalPlanArrayEntry.ColExpDate]	= ArrayGetExpDate[i];			//賞味期限
+						SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColExpDate]	= ArrayGetExpDate[i];			//賞味期限
 					}
 					if(i<ArrayGetPlanQty.length) {
-						SetData[i][WT0001004ArrivalPlanArrayEntry.ColPlanQty]	= ArrayGetPlanQty[i];			//数量
+						SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColPlanQty]	= ArrayGetPlanQty[i];			//数量
+					}
+					if(i<ArrayGetHdCom.length) {
+						SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColHdCom01]	= ArrayGetHdCom[i];				//ヘッダコメント
+					}
+					if(i<ArrayGetMsCom.length) {
+						SetData[i][WT0001004ArrivalPlanArrayEntrySourceDataView.ColMsCom01]	= ArrayGetMsCom[i];				//明細コメント
 					}
 				}
 				if(0<RowCount) {
@@ -194,7 +217,7 @@ public class WT0001003ArrivalPlanSomeEntry{
 
 					main_fm.setVisible(false);
 					main_fm.dispose();
-					WT0001004ArrivalPlanArrayEntry.ArrivalPlanArrayEntry(0,0,SetData);
+					WT0001004ArrivalPlanArrayEntrySourceDataView.ArrivalPlanArrayEntrySourceDataView(SetX+10,SetY+10,SetData);
 				}
 			}
 		});

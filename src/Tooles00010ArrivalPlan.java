@@ -42,9 +42,9 @@ public class Tooles00010ArrivalPlan{
 				,{"ParaTxt08"	,"1","0",""		,""}				//パラメータテキスト項目08
 				,{"ParaTxt09"	,"1","0",""		,""}				//パラメータテキスト項目09
 				,{"ParaTxt10"	,"1","0",""		,""}				//パラメータテキスト項目10
-				,{"ParaInt01"	,"1","0",""		,100000000}			//パラメータ数値項目01
-				,{"ParaInt02"	,"1","0",""		,100000000}			//パラメータ数値項目02
-				,{"ParaInt03"	,"1","0",""		,499999999}			//パラメータ数値項目03
+				,{"ParaInt01"	,"1","0",""		,"100000000"}		//パラメータ数値項目01
+				,{"ParaInt02"	,"1","0",""		,"100000000"}		//パラメータ数値項目02
+				,{"ParaInt03"	,"1","0",""		,"499999999"}		//パラメータ数値項目03
 				,{"ParaInt04"	,"1","0",""		,"0"}				//パラメータ数値項目04
 				,{"ParaInt05"	,"1","0",""		,"0"}				//パラメータ数値項目05
 				,{"ParaInt06"	,"1","0",""		,"0"}				//パラメータ数値項目06
@@ -52,10 +52,10 @@ public class Tooles00010ArrivalPlan{
 				,{"ParaInt08"	,"1","0",""		,"0"}				//パラメータ数値項目08
 				,{"ParaInt09"	,"1","0",""		,"0"}				//パラメータ数値項目09
 				,{"ParaInt10"	,"1","0",""		,"0"}				//パラメータ数値項目10
-				,{"EntryDate"	,"1","0",""	,now_dtm}				//登録日
-				,{"UpdateDate"	,"1","0",""	,now_dtm}				//更新日
-				,{"EntryUser"	,"1","0",""	,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//登録者
-				,{"UpdateUser"	,"1","0",""	,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//更新者
+				,{"EntryDate"	,"1","0",""		,now_dtm}			//登録日
+				,{"UpdateDate"	,"1","0",""		,now_dtm}			//更新日
+				,{"EntryUser"	,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//登録者
+				,{"UpdateUser"	,"1","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//更新者
 				};
 		
 		String tgt_table = "WM0000PARAMETER";
@@ -85,7 +85,7 @@ String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeContro
 				,{"ParaTxt09"	,"0","0",""		,""}				//パラメータテキスト項目09
 				,{"ParaTxt10"	,"0","0",""		,""}				//パラメータテキスト項目10
 				,{"ParaInt01"	,"0","0",""		,"100000000"}		//パラメータ数値項目01
-				,{"ParaInt02"	,"0","1",""		,NowArrNo}			//パラメータ数値項目02
+				,{"ParaInt02"	,"0","1",""		,""+NowArrNo}			//パラメータ数値項目02
 				,{"ParaInt03"	,"0","0",""		,"499999999"}		//パラメータ数値項目03
 				,{"ParaInt04"	,"0","0",""		,"0"}				//パラメータ数値項目04
 				,{"ParaInt05"	,"0","0",""		,"0"}				//パラメータ数値項目05
@@ -94,10 +94,10 @@ String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeContro
 				,{"ParaInt08"	,"0","0",""		,"0"}				//パラメータ数値項目08
 				,{"ParaInt09"	,"0","0",""		,"0"}				//パラメータ数値項目09
 				,{"ParaInt10"	,"0","0",""		,"0"}				//パラメータ数値項目10
-				,{"EntryDate"	,"0","0",""	,now_dtm}				//登録日
-				,{"UpdateDate"	,"0","1",""	,now_dtm}				//更新日
-				,{"EntryUser"	,"0","0",""	,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//登録者
-				,{"UpdateUser"	,"0","1",""	,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//更新者
+				,{"EntryDate"	,"0","0",""		,now_dtm}			//登録日
+				,{"UpdateDate"	,"0","1",""		,now_dtm}			//更新日
+				,{"EntryUser"	,"0","0",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//登録者
+				,{"UpdateUser"	,"0","1",""		,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//更新者
 				};
 		
 		String tgt_table = "WM0000PARAMETER";

@@ -602,240 +602,244 @@ public class WT0001000ArrivalPlanSearch{
 		//検索ボタン押下時の挙動
 		SearchBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				int RowCount = tableModel_ms01.getRowCount();
-				for(int i=0;i<RowCount;i++) {
-					tableModel_ms01.removeRow(0);
-				}
-				/**************************************************************
-				検索条件取得
-				***************************************************************/
-				String GetSearchClWh			= B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];			//ヘッダ担当倉庫
-				String GetSearchClCd			= B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];			//ヘッダ荷主CD
-				String GetSearchClGpCD			= B00100DefaultVariable.SearchClGpList[1][TB_SearchClGpCD.getSelectedIndex()];		//ヘッダ荷主グループCD
-				String GetSearchSpCd			= B00100DefaultVariable.SearchSupplierList[1][TB_SearchSpCd.getSelectedIndex()];		//ヘッダ仕入先　
-				String GetSearchArrNo			= TB_SearchArrNo.getText();				//ヘッダ入荷予定NO
-				String GetSearchClArrNo			= TB_SearchClArrNo.getText();			//ヘッダ荷主予定番号
-				String GetSearchPlanDateMin		= TB_SearchPlanDateMin.getText();		//ヘッダ入荷予定日
-				String GetSearchPlanDateMax		= TB_SearchPlanDateMax.getText();		//ヘッダ入荷予定日
-				String GetSearchHdActualDateMin	= TB_SearchHdActualDateMin.getText();	//ヘッダ入荷実績日
-				String GetSearchHdActualDateMax	= TB_SearchHdActualDateMax.getText();	//ヘッダ入荷実績日
-				String GetSearchArCom			= TB_SearchArCom.getText();				//ヘッダコメント
-				
-				String GetSearchItemCd			= TB_SearchItemCd.getText();			//商品コード
-				String GetSearchClItemCd		= TB_SearchClItemCd.getText();			//荷主商品コード
-				String GetSearchJanCd			= TB_SearchJanCd.getText();				//JANCD（バラ）
-				String GetSearchItemMdNo		= TB_SearchItemMdNo.getText();			//商品型番
-				String GetSearchItemName		= TB_SearchItemName.getText();			//商品名
-				String GetSearchlot				= TB_Searchlot.getText();				//ロット
-				String GetSearchExpDateMin		= TB_SearchExpDateMin.getText();		//消費期限最小
-				String GetSearchExpDateMax		= TB_SearchExpDateMax.getText();		//消費期限最大
-				String GetSearchActualDateMin	= TB_SearchActualDateMin.getText();		//明細入荷日最小
-				String GetSearchActualDateMax	= TB_SearchActualDateMax.getText();		//明細入荷日最大
-				String GetSearchCom				= TB_SearchCom.getText();				//明細コメント
-				String GetSearchEntryUser		= TB_SearchEntryUser.getText();			//登録者
-				String GetSearchUpdateUser		= TB_SearchUpdateUser.getText();		//更新者
-				
-				String GetSearchPlanQtyMin		= TB_SearchPlanQtyMin.getText();		//明細予定数最小
-				String GetSearchPlanQtyMax		= TB_SearchPlanQtyMax.getText();		//明細予定数最大
-				String GetSearchActualQtyMin	= TB_SearchActualQtyMin.getText();		//明細実績数最小
-				String GetSearchActualQtyMax	= TB_SearchActualQtyMax.getText();		//明細実績数最大
-				String GetSearchSpName			= TB_SearchSpName.getText();			//仕入先名
-				String GetSearchSpPost			= TB_SearchSpPost.getText();			//仕入先郵便
-				String GetSearchSpAdd			= TB_SearchSpAdd.getText();				//仕入先住所
-				String GetSearchSpTel			= TB_SearchSpTel.getText();				//仕入先電話
-				String GetSearchFixFg			= B00100DefaultVariable.SearchArryvalFixFgList[1][TB_SearchFixFg.getSelectedIndex()];	//状況 
-				String GetSearchEntryDateMin	= TB_SearchEntryDateMin.getText();		//登録日
-				String GetSearchEntryDateMax	= TB_SearchEntryDateMax.getText();		//登録日
-				String GetSearchUpdateDateMin	= TB_SearchUpdateDateMin.getText();		//更新日
-				String GetSearchUpdateDateMax	= TB_SearchUpdateDateMax.getText();		//更新日
-				
-				GetSearchClWh				= B00020ToolsTextControl.Trim(GetSearchClWh);
-				GetSearchClCd				= B00020ToolsTextControl.Trim(GetSearchClCd);
-				GetSearchClGpCD				= B00020ToolsTextControl.Trim(GetSearchClGpCD);
-				GetSearchSpCd				= B00020ToolsTextControl.Trim(GetSearchSpCd);
-				GetSearchArrNo				= B00020ToolsTextControl.Trim(GetSearchArrNo);
-				GetSearchClArrNo			= B00020ToolsTextControl.Trim(GetSearchClArrNo);
-				GetSearchPlanDateMin		= B00020ToolsTextControl.Trim(GetSearchPlanDateMin);
-				GetSearchPlanDateMax		= B00020ToolsTextControl.Trim(GetSearchPlanDateMax);
-				GetSearchHdActualDateMin	= B00020ToolsTextControl.Trim(GetSearchHdActualDateMin);
-				GetSearchHdActualDateMax	= B00020ToolsTextControl.Trim(GetSearchHdActualDateMax);
-				GetSearchArCom				= B00020ToolsTextControl.Trim(GetSearchArCom);
-				
-				GetSearchItemCd				= B00020ToolsTextControl.Trim(GetSearchItemCd);
-				GetSearchClItemCd			= B00020ToolsTextControl.Trim(GetSearchClItemCd);
-				GetSearchJanCd				= B00020ToolsTextControl.Trim(GetSearchJanCd);
-				GetSearchItemMdNo			= B00020ToolsTextControl.Trim(GetSearchItemMdNo);
-				GetSearchItemName			= B00020ToolsTextControl.Trim(GetSearchItemName);
-				GetSearchlot				= B00020ToolsTextControl.Trim(GetSearchlot);
-				GetSearchExpDateMin			= B00020ToolsTextControl.Trim(GetSearchExpDateMin);
-				GetSearchExpDateMax			= B00020ToolsTextControl.Trim(GetSearchExpDateMax);
-				GetSearchActualDateMin		= B00020ToolsTextControl.Trim(GetSearchActualDateMin);
-				GetSearchActualDateMax		= B00020ToolsTextControl.Trim(GetSearchActualDateMax);
-				GetSearchCom				= B00020ToolsTextControl.Trim(GetSearchCom);
-				GetSearchEntryUser			= B00020ToolsTextControl.Trim(GetSearchEntryUser);
-				GetSearchUpdateUser			= B00020ToolsTextControl.Trim(GetSearchUpdateUser);
-				
-				GetSearchPlanQtyMin			= B00020ToolsTextControl.Trim(GetSearchPlanQtyMin);
-				GetSearchPlanQtyMax			= B00020ToolsTextControl.Trim(GetSearchPlanQtyMax);
-				GetSearchActualQtyMin		= B00020ToolsTextControl.Trim(GetSearchActualQtyMin);
-				GetSearchActualQtyMax		= B00020ToolsTextControl.Trim(GetSearchActualQtyMax);
-				GetSearchSpName				= B00020ToolsTextControl.Trim(GetSearchSpName);
-				GetSearchSpPost				= B00020ToolsTextControl.Trim(GetSearchSpPost);
-				GetSearchSpAdd				= B00020ToolsTextControl.Trim(GetSearchSpAdd);
-				GetSearchSpTel				= B00020ToolsTextControl.Trim(GetSearchSpTel);
-				GetSearchFixFg				= B00020ToolsTextControl.Trim(GetSearchFixFg);
-				GetSearchEntryDateMin		= B00020ToolsTextControl.Trim(GetSearchEntryDateMin);
-				GetSearchEntryDateMax		= B00020ToolsTextControl.Trim(GetSearchEntryDateMax);
-				GetSearchUpdateDateMin		= B00020ToolsTextControl.Trim(GetSearchUpdateDateMin);
-				GetSearchUpdateDateMax		= B00020ToolsTextControl.Trim(GetSearchUpdateDateMax);
-				
-				if(!"".equals(GetSearchPlanQtyMin	)){GetSearchPlanQtyMin		= B00020ToolsTextControl.num_only_String02(GetSearchPlanQtyMin);}
-				if(!"".equals(GetSearchPlanQtyMax	)){GetSearchPlanQtyMax		= B00020ToolsTextControl.num_only_String02(GetSearchPlanQtyMax);}
-				if(!"".equals(GetSearchActualQtyMin	)){GetSearchActualQtyMin	= B00020ToolsTextControl.num_only_String02(GetSearchActualQtyMin);}
-				if(!"".equals(GetSearchActualQtyMax	)){GetSearchActualQtyMax	= B00020ToolsTextControl.num_only_String02(GetSearchActualQtyMax);}
-				if(!"".equals(GetSearchFixFg		)){GetSearchFixFg			= B00020ToolsTextControl.num_only_String02(GetSearchFixFg);}
-				
-				ArrayList<String> SearchClWh 			= new ArrayList<String>();		//ヘッダ担当倉庫
-				ArrayList<String> SearchClCd 			= new ArrayList<String>();		//ヘッダ荷主CD
-				ArrayList<String> SearchCLName01 		= new ArrayList<String>();		//ヘッダ荷主名
-				ArrayList<String> SearchClGpCD 			= new ArrayList<String>();		//ヘッダ荷主グループCD
-				ArrayList<String> SearchCLGpName01 		= new ArrayList<String>();		//ヘッダ荷主グループ名1
-				ArrayList<String> SearchArrNo 			= new ArrayList<String>();		//ヘッダ入荷予定NO
-				ArrayList<String> SearchClArrNo 		= new ArrayList<String>();		//ヘッダ荷主予定番号
-				ArrayList<String> SearchPlanDateMin 	= new ArrayList<String>();		//ヘッダ入荷予定日最小
-				ArrayList<String> SearchPlanDateMax 	= new ArrayList<String>();		//ヘッダ入荷予定日最大
-				ArrayList<String> SearchHdActualDateMin	= new ArrayList<String>();		//ヘッダ入荷実績日最小
-				ArrayList<String> SearchHdActualDateMax	= new ArrayList<String>();		//ヘッダ入荷実績日最大
-				ArrayList<String> SearchSpCd 			= new ArrayList<String>();		//ヘッダ仕入先CD
-				ArrayList<String> SearchSpName 			= new ArrayList<String>();		//ヘッダ仕入先名
-				ArrayList<String> SearchSpPost 			= new ArrayList<String>();		//ヘッダ仕入先郵便
-				ArrayList<String> SearchSpAdd 			= new ArrayList<String>();		//ヘッダ仕入先住所
-				ArrayList<String> SearchSpTel 			= new ArrayList<String>();		//ヘッダ仕入先電話
-				ArrayList<String> SearchArCom 			= new ArrayList<String>();		//ヘッダコメント
-				ArrayList<Integer> SearchFixFg 			= new ArrayList<Integer>();		//ヘッダ状況
-						
-				ArrayList<Integer> SearchMsNoMin 		= new ArrayList<Integer>();		//明細番号最小
-				ArrayList<Integer> SearchMsNoMax 		= new ArrayList<Integer>();		//明細番号最大
-				ArrayList<String> SearchItemCd 			= new ArrayList<String>();		//商品コード
-				ArrayList<String> SearchClItemCd 		= new ArrayList<String>();		//荷主商品コード
-				ArrayList<String> SearchJanCd 			= new ArrayList<String>();		//JANCD（バラ）
-				ArrayList<String> SearchItemMdNo 		= new ArrayList<String>();		//商品型番
-				ArrayList<String> SearchItemName 		= new ArrayList<String>();		//商品名
-				ArrayList<String> Searchlot 			= new ArrayList<String>();		//ロット
-				ArrayList<String> SearchExpDateMin 		= new ArrayList<String>();		//消費期限最小
-				ArrayList<String> SearchExpDateMax 		= new ArrayList<String>();		//消費期限最大
-				ArrayList<Integer> SearchPlanQtyMin 	= new ArrayList<Integer>();		//予定数量最小
-				ArrayList<Integer> SearchPlanQtyMax 	= new ArrayList<Integer>();		//予定数量最大
-				ArrayList<Integer> SearchActualQtyMin 	= new ArrayList<Integer>();		//実績数最小
-				ArrayList<Integer> SearchActualQtyMax 	= new ArrayList<Integer>();		//実績数最大
-				ArrayList<String> SearchActualDateMin 	= new ArrayList<String>();		//入荷日最小
-				ArrayList<String> SearchActualDateMax 	= new ArrayList<String>();		//入荷日最大
-				ArrayList<String> SearchCom 			= new ArrayList<String>();		//コメント
-				ArrayList<String> SearchEntryDateMin 	= new ArrayList<String>();		//登録日最小
-				ArrayList<String> SearchEntryDateMax 	= new ArrayList<String>();		//登録日最大
-				ArrayList<String> SearchUpdateDateMin 	= new ArrayList<String>();		//更新日最小
-				ArrayList<String> SearchUpdateDateMax 	= new ArrayList<String>();		//更新日最大
-				ArrayList<String> SearchEntryUser 		= new ArrayList<String>();		//登録者
-				ArrayList<String> SearchUpdateUser 		= new ArrayList<String>();		//更新者
-				boolean AllSearch=false;
-				
-				if(!"".equals(GetSearchClWh				)){SearchClWh.add(GetSearchClWh);}
-				if(!"".equals(GetSearchClCd				)){SearchClCd.add(GetSearchClCd);}
-				if(!"".equals(GetSearchClGpCD			)){SearchClGpCD.add(GetSearchClGpCD);}
-				if(!"".equals(GetSearchSpCd				)){SearchSpCd.add(GetSearchSpCd);}
-				if(!"".equals(GetSearchArrNo			)){SearchArrNo.add(GetSearchArrNo);}
-				if(!"".equals(GetSearchClArrNo			)){SearchClArrNo.add(GetSearchClArrNo);}
-				if(!"".equals(GetSearchPlanDateMin		)){SearchPlanDateMin.add(GetSearchPlanDateMin);}
-				if(!"".equals(GetSearchPlanDateMax		)){SearchPlanDateMax.add(GetSearchPlanDateMax);}
-				if(!"".equals(GetSearchHdActualDateMin	)){SearchHdActualDateMin.add(GetSearchHdActualDateMin);}
-				if(!"".equals(GetSearchHdActualDateMax	)){SearchHdActualDateMax.add(GetSearchHdActualDateMax);}
-				if(!"".equals(GetSearchArCom			)){SearchArCom.add(GetSearchArCom);}
-				
-				if(!"".equals(GetSearchItemCd			)){SearchItemCd.add(GetSearchItemCd);}
-				if(!"".equals(GetSearchClItemCd			)){SearchClItemCd.add(GetSearchClItemCd);}
-				if(!"".equals(GetSearchJanCd			)){SearchJanCd.add(GetSearchJanCd);}
-				if(!"".equals(GetSearchItemMdNo			)){SearchItemMdNo.add(GetSearchItemMdNo);}
-				if(!"".equals(GetSearchItemName			)){SearchItemName.add(GetSearchItemName);}
-				if(!"".equals(GetSearchlot				)){Searchlot.add(GetSearchlot);}
-				if(!"".equals(GetSearchExpDateMin		)){SearchExpDateMin.add(GetSearchExpDateMin);}
-				if(!"".equals(GetSearchExpDateMax		)){SearchExpDateMax.add(GetSearchExpDateMax);}
-				if(!"".equals(GetSearchActualDateMin	)){SearchActualDateMin.add(GetSearchActualDateMin);}
-				if(!"".equals(GetSearchActualDateMax	)){SearchActualDateMax.add(GetSearchActualDateMax);}
-				if(!"".equals(GetSearchCom				)){SearchCom.add(GetSearchCom);}
-				if(!"".equals(GetSearchEntryUser		)){SearchEntryUser.add(GetSearchEntryUser);}
-				if(!"".equals(GetSearchUpdateUser		)){SearchUpdateUser.add(GetSearchUpdateUser);}
-				
-				if(!"".equals(GetSearchPlanQtyMin		)){SearchPlanQtyMin.add((int)Float.parseFloat(GetSearchPlanQtyMin));}
-				if(!"".equals(GetSearchPlanQtyMax		)){SearchPlanQtyMax.add((int)Float.parseFloat(GetSearchPlanQtyMax));}
-				if(!"".equals(GetSearchActualQtyMin		)){SearchActualQtyMin.add((int)Float.parseFloat(GetSearchActualQtyMin));}
-				if(!"".equals(GetSearchActualQtyMax		)){SearchActualQtyMax.add((int)Float.parseFloat(GetSearchActualQtyMax));}
-				if(!"".equals(GetSearchSpName			)){SearchSpName.add(GetSearchSpName);}
-				if(!"".equals(GetSearchSpPost			)){SearchSpPost.add(GetSearchSpPost);}
-				if(!"".equals(GetSearchSpAdd			)){SearchSpAdd.add(GetSearchSpAdd);}
-				if(!"".equals(GetSearchSpTel			)){SearchSpTel.add(GetSearchSpTel);}
-				if(!"".equals(GetSearchFixFg			)){SearchFixFg.add((int)Float.parseFloat(GetSearchFixFg));}
-				if(!"".equals(GetSearchEntryDateMin		)){SearchEntryDateMin.add(GetSearchEntryDateMin);}
-				if(!"".equals(GetSearchEntryDateMax		)){SearchEntryDateMax.add(GetSearchEntryDateMax);}
-				if(!"".equals(GetSearchUpdateDateMin	)){SearchUpdateDateMin.add(GetSearchUpdateDateMin);}
-				if(!"".equals(GetSearchUpdateDateMax	)){SearchUpdateDateMax.add(GetSearchUpdateDateMax);}
-				
-				Object[][] ArrivalPlanHdRt = T00016ArrivalPlanHdRt.ArrivalPlanHdRt(
-						SearchClWh,				//ヘッダ担当倉庫
-						SearchClCd,				//ヘッダ荷主CD
-						SearchCLName01,			//ヘッダ荷主名
-						SearchClGpCD,			//ヘッダ荷主グループCD
-						SearchCLGpName01,		//ヘッダ荷主グループ名1
-						SearchArrNo,			//ヘッダ入荷予定NO
-						SearchClArrNo,			//ヘッダ荷主予定番号
-						SearchPlanDateMin,		//ヘッダ入荷予定日最小
-						SearchPlanDateMax,		//ヘッダ入荷予定日最大
-						SearchHdActualDateMin,	//ヘッダ入荷実績日最小
-						SearchHdActualDateMax,	//ヘッダ入荷実績日最大
-						SearchSpCd,				//ヘッダ仕入先CD
-						SearchSpName,			//ヘッダ仕入先名
-						SearchSpPost,			//ヘッダ仕入先郵便
-						SearchSpAdd,			//ヘッダ仕入先住所
-						SearchSpTel,			//ヘッダ仕入先電話
-						SearchArCom,			//ヘッダコメント
-						SearchFixFg,			//ヘッダ状況
-								
-						SearchMsNoMin,			//明細番号最小
-						SearchMsNoMax,			//明細番号最大
-						SearchItemCd,			//商品コード
-						SearchClItemCd,			//荷主商品コード
-						SearchJanCd,			//JANCD（バラ）
-						SearchItemMdNo,			//商品型番
-						SearchItemName,			//商品名
-						Searchlot,				//ロット
-						SearchExpDateMin,		//消費期限最小
-						SearchExpDateMax,		//消費期限最大
-						SearchPlanQtyMin,		//予定数量最小
-						SearchPlanQtyMax,		//予定数量最大
-						SearchActualQtyMin,		//実績数最小
-						SearchActualQtyMax,		//実績数最大
-						SearchActualDateMin,	//入荷日最小
-						SearchActualDateMax,	//入荷日最大
-						SearchCom,				//コメント
-						SearchEntryDateMin,		//登録日最小
-						SearchEntryDateMax,		//登録日最大
-						SearchUpdateDateMin,	//更新日最小
-						SearchUpdateDateMax,	//更新日最大
-						SearchEntryUser,		//登録者
-						SearchUpdateUser,		//更新者
-						AllSearch);
-				
-				if(0==ArrivalPlanHdRt.length) {
-					B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
-				}else {
-					for(int i=0;i<ArrivalPlanHdRt.length;i++) {
-						Object[] SetOb = new Object[ArrivalPlanHdRt[i].length+1];
-						SetOb[0] = false;
-						for(int i01=0;i01<ArrivalPlanHdRt[i].length;i01++) {
-							SetOb[i01+1] = ""+ArrivalPlanHdRt[i][i01];
-						}
-						tableModel_ms01.addRow(SetOb);
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_ms01.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						tableModel_ms01.removeRow(0);
 					}
-					B10010TableControl.AddSortON(tb01,tableModel_ms01);
+					/**************************************************************
+					検索条件取得
+					***************************************************************/
+					String GetSearchClWh			= B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];			//ヘッダ担当倉庫
+					String GetSearchClCd			= B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];			//ヘッダ荷主CD
+					String GetSearchClGpCD			= B00100DefaultVariable.SearchClGpList[1][TB_SearchClGpCD.getSelectedIndex()];		//ヘッダ荷主グループCD
+					String GetSearchSpCd			= B00100DefaultVariable.SearchSupplierList[1][TB_SearchSpCd.getSelectedIndex()];		//ヘッダ仕入先　
+					String GetSearchArrNo			= TB_SearchArrNo.getText();				//ヘッダ入荷予定NO
+					String GetSearchClArrNo			= TB_SearchClArrNo.getText();			//ヘッダ荷主予定番号
+					String GetSearchPlanDateMin		= TB_SearchPlanDateMin.getText();		//ヘッダ入荷予定日
+					String GetSearchPlanDateMax		= TB_SearchPlanDateMax.getText();		//ヘッダ入荷予定日
+					String GetSearchHdActualDateMin	= TB_SearchHdActualDateMin.getText();	//ヘッダ入荷実績日
+					String GetSearchHdActualDateMax	= TB_SearchHdActualDateMax.getText();	//ヘッダ入荷実績日
+					String GetSearchArCom			= TB_SearchArCom.getText();				//ヘッダコメント
+					
+					String GetSearchItemCd			= TB_SearchItemCd.getText();			//商品コード
+					String GetSearchClItemCd		= TB_SearchClItemCd.getText();			//荷主商品コード
+					String GetSearchJanCd			= TB_SearchJanCd.getText();				//JANCD（バラ）
+					String GetSearchItemMdNo		= TB_SearchItemMdNo.getText();			//商品型番
+					String GetSearchItemName		= TB_SearchItemName.getText();			//商品名
+					String GetSearchlot				= TB_Searchlot.getText();				//ロット
+					String GetSearchExpDateMin		= TB_SearchExpDateMin.getText();		//消費期限最小
+					String GetSearchExpDateMax		= TB_SearchExpDateMax.getText();		//消費期限最大
+					String GetSearchActualDateMin	= TB_SearchActualDateMin.getText();		//明細入荷日最小
+					String GetSearchActualDateMax	= TB_SearchActualDateMax.getText();		//明細入荷日最大
+					String GetSearchCom				= TB_SearchCom.getText();				//明細コメント
+					String GetSearchEntryUser		= TB_SearchEntryUser.getText();			//登録者
+					String GetSearchUpdateUser		= TB_SearchUpdateUser.getText();		//更新者
+					
+					String GetSearchPlanQtyMin		= TB_SearchPlanQtyMin.getText();		//明細予定数最小
+					String GetSearchPlanQtyMax		= TB_SearchPlanQtyMax.getText();		//明細予定数最大
+					String GetSearchActualQtyMin	= TB_SearchActualQtyMin.getText();		//明細実績数最小
+					String GetSearchActualQtyMax	= TB_SearchActualQtyMax.getText();		//明細実績数最大
+					String GetSearchSpName			= TB_SearchSpName.getText();			//仕入先名
+					String GetSearchSpPost			= TB_SearchSpPost.getText();			//仕入先郵便
+					String GetSearchSpAdd			= TB_SearchSpAdd.getText();				//仕入先住所
+					String GetSearchSpTel			= TB_SearchSpTel.getText();				//仕入先電話
+					String GetSearchFixFg			= B00100DefaultVariable.SearchArryvalFixFgList[1][TB_SearchFixFg.getSelectedIndex()];	//状況 
+					String GetSearchEntryDateMin	= TB_SearchEntryDateMin.getText();		//登録日
+					String GetSearchEntryDateMax	= TB_SearchEntryDateMax.getText();		//登録日
+					String GetSearchUpdateDateMin	= TB_SearchUpdateDateMin.getText();		//更新日
+					String GetSearchUpdateDateMax	= TB_SearchUpdateDateMax.getText();		//更新日
+					
+					GetSearchClWh				= B00020ToolsTextControl.Trim(GetSearchClWh);
+					GetSearchClCd				= B00020ToolsTextControl.Trim(GetSearchClCd);
+					GetSearchClGpCD				= B00020ToolsTextControl.Trim(GetSearchClGpCD);
+					GetSearchSpCd				= B00020ToolsTextControl.Trim(GetSearchSpCd);
+					GetSearchArrNo				= B00020ToolsTextControl.Trim(GetSearchArrNo);
+					GetSearchClArrNo			= B00020ToolsTextControl.Trim(GetSearchClArrNo);
+					GetSearchPlanDateMin		= B00020ToolsTextControl.Trim(GetSearchPlanDateMin);
+					GetSearchPlanDateMax		= B00020ToolsTextControl.Trim(GetSearchPlanDateMax);
+					GetSearchHdActualDateMin	= B00020ToolsTextControl.Trim(GetSearchHdActualDateMin);
+					GetSearchHdActualDateMax	= B00020ToolsTextControl.Trim(GetSearchHdActualDateMax);
+					GetSearchArCom				= B00020ToolsTextControl.Trim(GetSearchArCom);
+					
+					GetSearchItemCd				= B00020ToolsTextControl.Trim(GetSearchItemCd);
+					GetSearchClItemCd			= B00020ToolsTextControl.Trim(GetSearchClItemCd);
+					GetSearchJanCd				= B00020ToolsTextControl.Trim(GetSearchJanCd);
+					GetSearchItemMdNo			= B00020ToolsTextControl.Trim(GetSearchItemMdNo);
+					GetSearchItemName			= B00020ToolsTextControl.Trim(GetSearchItemName);
+					GetSearchlot				= B00020ToolsTextControl.Trim(GetSearchlot);
+					GetSearchExpDateMin			= B00020ToolsTextControl.Trim(GetSearchExpDateMin);
+					GetSearchExpDateMax			= B00020ToolsTextControl.Trim(GetSearchExpDateMax);
+					GetSearchActualDateMin		= B00020ToolsTextControl.Trim(GetSearchActualDateMin);
+					GetSearchActualDateMax		= B00020ToolsTextControl.Trim(GetSearchActualDateMax);
+					GetSearchCom				= B00020ToolsTextControl.Trim(GetSearchCom);
+					GetSearchEntryUser			= B00020ToolsTextControl.Trim(GetSearchEntryUser);
+					GetSearchUpdateUser			= B00020ToolsTextControl.Trim(GetSearchUpdateUser);
+					
+					GetSearchPlanQtyMin			= B00020ToolsTextControl.Trim(GetSearchPlanQtyMin);
+					GetSearchPlanQtyMax			= B00020ToolsTextControl.Trim(GetSearchPlanQtyMax);
+					GetSearchActualQtyMin		= B00020ToolsTextControl.Trim(GetSearchActualQtyMin);
+					GetSearchActualQtyMax		= B00020ToolsTextControl.Trim(GetSearchActualQtyMax);
+					GetSearchSpName				= B00020ToolsTextControl.Trim(GetSearchSpName);
+					GetSearchSpPost				= B00020ToolsTextControl.Trim(GetSearchSpPost);
+					GetSearchSpAdd				= B00020ToolsTextControl.Trim(GetSearchSpAdd);
+					GetSearchSpTel				= B00020ToolsTextControl.Trim(GetSearchSpTel);
+					GetSearchFixFg				= B00020ToolsTextControl.Trim(GetSearchFixFg);
+					GetSearchEntryDateMin		= B00020ToolsTextControl.Trim(GetSearchEntryDateMin);
+					GetSearchEntryDateMax		= B00020ToolsTextControl.Trim(GetSearchEntryDateMax);
+					GetSearchUpdateDateMin		= B00020ToolsTextControl.Trim(GetSearchUpdateDateMin);
+					GetSearchUpdateDateMax		= B00020ToolsTextControl.Trim(GetSearchUpdateDateMax);
+					
+					if(!"".equals(GetSearchPlanQtyMin	)){GetSearchPlanQtyMin		= B00020ToolsTextControl.num_only_String02(GetSearchPlanQtyMin);}
+					if(!"".equals(GetSearchPlanQtyMax	)){GetSearchPlanQtyMax		= B00020ToolsTextControl.num_only_String02(GetSearchPlanQtyMax);}
+					if(!"".equals(GetSearchActualQtyMin	)){GetSearchActualQtyMin	= B00020ToolsTextControl.num_only_String02(GetSearchActualQtyMin);}
+					if(!"".equals(GetSearchActualQtyMax	)){GetSearchActualQtyMax	= B00020ToolsTextControl.num_only_String02(GetSearchActualQtyMax);}
+					if(!"".equals(GetSearchFixFg		)){GetSearchFixFg			= B00020ToolsTextControl.num_only_String02(GetSearchFixFg);}
+					
+					ArrayList<String> SearchClWh 			= new ArrayList<String>();		//ヘッダ担当倉庫
+					ArrayList<String> SearchClCd 			= new ArrayList<String>();		//ヘッダ荷主CD
+					ArrayList<String> SearchCLName01 		= new ArrayList<String>();		//ヘッダ荷主名
+					ArrayList<String> SearchClGpCD 			= new ArrayList<String>();		//ヘッダ荷主グループCD
+					ArrayList<String> SearchCLGpName01 		= new ArrayList<String>();		//ヘッダ荷主グループ名1
+					ArrayList<String> SearchArrNo 			= new ArrayList<String>();		//ヘッダ入荷予定NO
+					ArrayList<String> SearchClArrNo 		= new ArrayList<String>();		//ヘッダ荷主予定番号
+					ArrayList<String> SearchPlanDateMin 	= new ArrayList<String>();		//ヘッダ入荷予定日最小
+					ArrayList<String> SearchPlanDateMax 	= new ArrayList<String>();		//ヘッダ入荷予定日最大
+					ArrayList<String> SearchHdActualDateMin	= new ArrayList<String>();		//ヘッダ入荷実績日最小
+					ArrayList<String> SearchHdActualDateMax	= new ArrayList<String>();		//ヘッダ入荷実績日最大
+					ArrayList<String> SearchSpCd 			= new ArrayList<String>();		//ヘッダ仕入先CD
+					ArrayList<String> SearchSpName 			= new ArrayList<String>();		//ヘッダ仕入先名
+					ArrayList<String> SearchSpPost 			= new ArrayList<String>();		//ヘッダ仕入先郵便
+					ArrayList<String> SearchSpAdd 			= new ArrayList<String>();		//ヘッダ仕入先住所
+					ArrayList<String> SearchSpTel 			= new ArrayList<String>();		//ヘッダ仕入先電話
+					ArrayList<String> SearchArCom 			= new ArrayList<String>();		//ヘッダコメント
+					ArrayList<Integer> SearchFixFg 			= new ArrayList<Integer>();		//ヘッダ状況
+							
+					ArrayList<Integer> SearchMsNoMin 		= new ArrayList<Integer>();		//明細番号最小
+					ArrayList<Integer> SearchMsNoMax 		= new ArrayList<Integer>();		//明細番号最大
+					ArrayList<String> SearchItemCd 			= new ArrayList<String>();		//商品コード
+					ArrayList<String> SearchClItemCd 		= new ArrayList<String>();		//荷主商品コード
+					ArrayList<String> SearchJanCd 			= new ArrayList<String>();		//JANCD（バラ）
+					ArrayList<String> SearchItemMdNo 		= new ArrayList<String>();		//商品型番
+					ArrayList<String> SearchItemName 		= new ArrayList<String>();		//商品名
+					ArrayList<String> Searchlot 			= new ArrayList<String>();		//ロット
+					ArrayList<String> SearchExpDateMin 		= new ArrayList<String>();		//消費期限最小
+					ArrayList<String> SearchExpDateMax 		= new ArrayList<String>();		//消費期限最大
+					ArrayList<Integer> SearchPlanQtyMin 	= new ArrayList<Integer>();		//予定数量最小
+					ArrayList<Integer> SearchPlanQtyMax 	= new ArrayList<Integer>();		//予定数量最大
+					ArrayList<Integer> SearchActualQtyMin 	= new ArrayList<Integer>();		//実績数最小
+					ArrayList<Integer> SearchActualQtyMax 	= new ArrayList<Integer>();		//実績数最大
+					ArrayList<String> SearchActualDateMin 	= new ArrayList<String>();		//入荷日最小
+					ArrayList<String> SearchActualDateMax 	= new ArrayList<String>();		//入荷日最大
+					ArrayList<String> SearchCom 			= new ArrayList<String>();		//コメント
+					ArrayList<String> SearchEntryDateMin 	= new ArrayList<String>();		//登録日最小
+					ArrayList<String> SearchEntryDateMax 	= new ArrayList<String>();		//登録日最大
+					ArrayList<String> SearchUpdateDateMin 	= new ArrayList<String>();		//更新日最小
+					ArrayList<String> SearchUpdateDateMax 	= new ArrayList<String>();		//更新日最大
+					ArrayList<String> SearchEntryUser 		= new ArrayList<String>();		//登録者
+					ArrayList<String> SearchUpdateUser 		= new ArrayList<String>();		//更新者
+					boolean AllSearch=false;
+					
+					if(!"".equals(GetSearchClWh				)){SearchClWh.add(GetSearchClWh);}
+					if(!"".equals(GetSearchClCd				)){SearchClCd.add(GetSearchClCd);}
+					if(!"".equals(GetSearchClGpCD			)){SearchClGpCD.add(GetSearchClGpCD);}
+					if(!"".equals(GetSearchSpCd				)){SearchSpCd.add(GetSearchSpCd);}
+					if(!"".equals(GetSearchArrNo			)){SearchArrNo.add(GetSearchArrNo);}
+					if(!"".equals(GetSearchClArrNo			)){SearchClArrNo.add(GetSearchClArrNo);}
+					if(!"".equals(GetSearchPlanDateMin		)){SearchPlanDateMin.add(GetSearchPlanDateMin);}
+					if(!"".equals(GetSearchPlanDateMax		)){SearchPlanDateMax.add(GetSearchPlanDateMax);}
+					if(!"".equals(GetSearchHdActualDateMin	)){SearchHdActualDateMin.add(GetSearchHdActualDateMin);}
+					if(!"".equals(GetSearchHdActualDateMax	)){SearchHdActualDateMax.add(GetSearchHdActualDateMax);}
+					if(!"".equals(GetSearchArCom			)){SearchArCom.add(GetSearchArCom);}
+					
+					if(!"".equals(GetSearchItemCd			)){SearchItemCd.add(GetSearchItemCd);}
+					if(!"".equals(GetSearchClItemCd			)){SearchClItemCd.add(GetSearchClItemCd);}
+					if(!"".equals(GetSearchJanCd			)){SearchJanCd.add(GetSearchJanCd);}
+					if(!"".equals(GetSearchItemMdNo			)){SearchItemMdNo.add(GetSearchItemMdNo);}
+					if(!"".equals(GetSearchItemName			)){SearchItemName.add(GetSearchItemName);}
+					if(!"".equals(GetSearchlot				)){Searchlot.add(GetSearchlot);}
+					if(!"".equals(GetSearchExpDateMin		)){SearchExpDateMin.add(GetSearchExpDateMin);}
+					if(!"".equals(GetSearchExpDateMax		)){SearchExpDateMax.add(GetSearchExpDateMax);}
+					if(!"".equals(GetSearchActualDateMin	)){SearchActualDateMin.add(GetSearchActualDateMin);}
+					if(!"".equals(GetSearchActualDateMax	)){SearchActualDateMax.add(GetSearchActualDateMax);}
+					if(!"".equals(GetSearchCom				)){SearchCom.add(GetSearchCom);}
+					if(!"".equals(GetSearchEntryUser		)){SearchEntryUser.add(GetSearchEntryUser);}
+					if(!"".equals(GetSearchUpdateUser		)){SearchUpdateUser.add(GetSearchUpdateUser);}
+					
+					if(!"".equals(GetSearchPlanQtyMin		)){SearchPlanQtyMin.add((int)Float.parseFloat(GetSearchPlanQtyMin));}
+					if(!"".equals(GetSearchPlanQtyMax		)){SearchPlanQtyMax.add((int)Float.parseFloat(GetSearchPlanQtyMax));}
+					if(!"".equals(GetSearchActualQtyMin		)){SearchActualQtyMin.add((int)Float.parseFloat(GetSearchActualQtyMin));}
+					if(!"".equals(GetSearchActualQtyMax		)){SearchActualQtyMax.add((int)Float.parseFloat(GetSearchActualQtyMax));}
+					if(!"".equals(GetSearchSpName			)){SearchSpName.add(GetSearchSpName);}
+					if(!"".equals(GetSearchSpPost			)){SearchSpPost.add(GetSearchSpPost);}
+					if(!"".equals(GetSearchSpAdd			)){SearchSpAdd.add(GetSearchSpAdd);}
+					if(!"".equals(GetSearchSpTel			)){SearchSpTel.add(GetSearchSpTel);}
+					if(!"".equals(GetSearchFixFg			)){SearchFixFg.add((int)Float.parseFloat(GetSearchFixFg));}
+					if(!"".equals(GetSearchEntryDateMin		)){SearchEntryDateMin.add(GetSearchEntryDateMin);}
+					if(!"".equals(GetSearchEntryDateMax		)){SearchEntryDateMax.add(GetSearchEntryDateMax);}
+					if(!"".equals(GetSearchUpdateDateMin	)){SearchUpdateDateMin.add(GetSearchUpdateDateMin);}
+					if(!"".equals(GetSearchUpdateDateMax	)){SearchUpdateDateMax.add(GetSearchUpdateDateMax);}
+					
+					Object[][] ArrivalPlanHdRt = T00016ArrivalPlanHdRt.ArrivalPlanHdRt(
+							SearchClWh,				//ヘッダ担当倉庫
+							SearchClCd,				//ヘッダ荷主CD
+							SearchCLName01,			//ヘッダ荷主名
+							SearchClGpCD,			//ヘッダ荷主グループCD
+							SearchCLGpName01,		//ヘッダ荷主グループ名1
+							SearchArrNo,			//ヘッダ入荷予定NO
+							SearchClArrNo,			//ヘッダ荷主予定番号
+							SearchPlanDateMin,		//ヘッダ入荷予定日最小
+							SearchPlanDateMax,		//ヘッダ入荷予定日最大
+							SearchHdActualDateMin,	//ヘッダ入荷実績日最小
+							SearchHdActualDateMax,	//ヘッダ入荷実績日最大
+							SearchSpCd,				//ヘッダ仕入先CD
+							SearchSpName,			//ヘッダ仕入先名
+							SearchSpPost,			//ヘッダ仕入先郵便
+							SearchSpAdd,			//ヘッダ仕入先住所
+							SearchSpTel,			//ヘッダ仕入先電話
+							SearchArCom,			//ヘッダコメント
+							SearchFixFg,			//ヘッダ状況
+									
+							SearchMsNoMin,			//明細番号最小
+							SearchMsNoMax,			//明細番号最大
+							SearchItemCd,			//商品コード
+							SearchClItemCd,			//荷主商品コード
+							SearchJanCd,			//JANCD（バラ）
+							SearchItemMdNo,			//商品型番
+							SearchItemName,			//商品名
+							Searchlot,				//ロット
+							SearchExpDateMin,		//消費期限最小
+							SearchExpDateMax,		//消費期限最大
+							SearchPlanQtyMin,		//予定数量最小
+							SearchPlanQtyMax,		//予定数量最大
+							SearchActualQtyMin,		//実績数最小
+							SearchActualQtyMax,		//実績数最大
+							SearchActualDateMin,	//入荷日最小
+							SearchActualDateMax,	//入荷日最大
+							SearchCom,				//コメント
+							SearchEntryDateMin,		//登録日最小
+							SearchEntryDateMax,		//登録日最大
+							SearchUpdateDateMin,	//更新日最小
+							SearchUpdateDateMax,	//更新日最大
+							SearchEntryUser,		//登録者
+							SearchUpdateUser,		//更新者
+							AllSearch);
+					
+					if(0==ArrivalPlanHdRt.length) {
+						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+					}else {
+						for(int i=0;i<ArrivalPlanHdRt.length;i++) {
+							Object[] SetOb = new Object[ArrivalPlanHdRt[i].length+1];
+							SetOb[0] = false;
+							for(int i01=0;i01<ArrivalPlanHdRt[i].length;i01++) {
+								SetOb[i01+1] = ""+ArrivalPlanHdRt[i][i01];
+							}
+							tableModel_ms01.addRow(SetOb);
+						}
+						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+					}
+					RenewFg = true;
 				}
 			}
 		});
@@ -844,67 +848,75 @@ public class WT0001000ArrivalPlanSearch{
 		//条件クリアボタン押下時の挙動
 		SearchCrearBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				/**************************************************************
-				検索条件初期値に戻す
-				***************************************************************/
-				TB_SearchClWh.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchWhList[1]	,A00000Main.ClWh));			//ヘッダ担当倉庫
-				TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchClList[1]	,A00000Main.ClCd));			//ヘッダ荷主CD
-				TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B00100DefaultVariable.SearchClGpList[1]	,A00000Main.ClGp));			//ヘッダ荷主グループCD
-				TB_SearchSpCd.setSelectedIndex(0);			//ヘッダ仕入先
-				TB_SearchArrNo.setText("");					//ヘッダ入荷予定NO
-				TB_SearchClArrNo.setText("");				//ヘッダ荷主予定番号
-				TB_SearchPlanDateMin.setText("");			//ヘッダ入荷予定日
-				TB_SearchPlanDateMax.setText("");			//ヘッダ入荷予定日
-				TB_SearchHdActualDateMin.setText("");		//ヘッダ入荷実績日
-				TB_SearchHdActualDateMax.setText("");		//ヘッダ入荷実績日
-				TB_SearchArCom.setText("");					//ヘッダコメント
-				TB_SearchItemCd.setText("");				//商品コード
-				TB_SearchClItemCd.setText("");				//荷主商品コード
-				TB_SearchJanCd.setText("");					//JANCD（バラ）
-				TB_SearchItemMdNo.setText("");				//商品型番
-				TB_SearchItemName.setText("");				//商品名
-				TB_Searchlot.setText("");					//ロット
-				TB_SearchExpDateMin.setText("");			//消費期限最小
-				TB_SearchExpDateMax.setText("");			//消費期限最大
-				TB_SearchActualDateMin.setText("");			//明細入荷日最小
-				TB_SearchActualDateMax.setText("");			//明細入荷日最大
-				TB_SearchCom.setText("");					//明細コメント
-				TB_SearchEntryUser.setText("");				//登録者
-				TB_SearchUpdateUser.setText("");			//更新者
-				TB_SearchPlanQtyMin.setText("");			//明細予定数最小
-				TB_SearchPlanQtyMax.setText("");			//明細予定数最大
-				TB_SearchActualQtyMin.setText("");			//明細実績数最小
-				TB_SearchActualQtyMax.setText("");			//明細実績数最大
-				TB_SearchSpName.setText("");				//仕入先名
-				TB_SearchSpPost.setText("");				//仕入先郵便
-				TB_SearchSpAdd.setText("");					//仕入先住所
-				TB_SearchSpTel.setText("");					//仕入先電話
-				TB_SearchFixFg.setSelectedIndex(0);			//状況 
-				TB_SearchEntryDateMin.setText("");			//登録日
-				TB_SearchEntryDateMax.setText("");			//登録日
-				TB_SearchUpdateDateMin.setText("");			//更新日
-				TB_SearchUpdateDateMax.setText("");			//更新日
-				
-				/**************************************************************
-				検索結果消す
-				***************************************************************/
-				int RowCount = tableModel_ms01.getRowCount();
-				for(int i=0;i<RowCount;i++) {
-					tableModel_ms01.removeRow(0);
+				if(RenewFg) {
+					RenewFg = false;
+					/**************************************************************
+					検索条件初期値に戻す
+					***************************************************************/
+					TB_SearchClWh.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchWhList[1]	,A00000Main.ClWh));			//ヘッダ担当倉庫
+					TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchClList[1]	,A00000Main.ClCd));			//ヘッダ荷主CD
+					TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B00100DefaultVariable.SearchClGpList[1]	,A00000Main.ClGp));			//ヘッダ荷主グループCD
+					TB_SearchSpCd.setSelectedIndex(0);			//ヘッダ仕入先
+					TB_SearchArrNo.setText("");					//ヘッダ入荷予定NO
+					TB_SearchClArrNo.setText("");				//ヘッダ荷主予定番号
+					TB_SearchPlanDateMin.setText("");			//ヘッダ入荷予定日
+					TB_SearchPlanDateMax.setText("");			//ヘッダ入荷予定日
+					TB_SearchHdActualDateMin.setText("");		//ヘッダ入荷実績日
+					TB_SearchHdActualDateMax.setText("");		//ヘッダ入荷実績日
+					TB_SearchArCom.setText("");					//ヘッダコメント
+					TB_SearchItemCd.setText("");				//商品コード
+					TB_SearchClItemCd.setText("");				//荷主商品コード
+					TB_SearchJanCd.setText("");					//JANCD（バラ）
+					TB_SearchItemMdNo.setText("");				//商品型番
+					TB_SearchItemName.setText("");				//商品名
+					TB_Searchlot.setText("");					//ロット
+					TB_SearchExpDateMin.setText("");			//消費期限最小
+					TB_SearchExpDateMax.setText("");			//消費期限最大
+					TB_SearchActualDateMin.setText("");			//明細入荷日最小
+					TB_SearchActualDateMax.setText("");			//明細入荷日最大
+					TB_SearchCom.setText("");					//明細コメント
+					TB_SearchEntryUser.setText("");				//登録者
+					TB_SearchUpdateUser.setText("");			//更新者
+					TB_SearchPlanQtyMin.setText("");			//明細予定数最小
+					TB_SearchPlanQtyMax.setText("");			//明細予定数最大
+					TB_SearchActualQtyMin.setText("");			//明細実績数最小
+					TB_SearchActualQtyMax.setText("");			//明細実績数最大
+					TB_SearchSpName.setText("");				//仕入先名
+					TB_SearchSpPost.setText("");				//仕入先郵便
+					TB_SearchSpAdd.setText("");					//仕入先住所
+					TB_SearchSpTel.setText("");					//仕入先電話
+					TB_SearchFixFg.setSelectedIndex(0);			//状況 
+					TB_SearchEntryDateMin.setText("");			//登録日
+					TB_SearchEntryDateMax.setText("");			//登録日
+					TB_SearchUpdateDateMin.setText("");			//更新日
+					TB_SearchUpdateDateMax.setText("");			//更新日
+					
+					/**************************************************************
+					検索結果消す
+					***************************************************************/
+					int RowCount = tableModel_ms01.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						tableModel_ms01.removeRow(0);
+					}
+					B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+					RenewFg = true;
 				}
-				B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
 			}
 		});
 		
 		//一括新規ボタン押下時の挙動
 		SomeCreateBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				SetX=main_fm.getX();
-				SetY=main_fm.getY();
-
-				main_fm.setVisible(false);
-				main_fm.dispose();
-				WT0001003ArrivalPlanSomeEntry.ArrivalPlanSomeEntry(0,0);
+				if(RenewFg) {
+					RenewFg = false;
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+	
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WT0001003ArrivalPlanSomeEntry.ArrivalPlanSomeEntry(0,0);
+					RenewFg = true;
+				}
 			}
 		});
 		
