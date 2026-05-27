@@ -19,5 +19,8 @@
 	<classpathentry kind="lib" path="C:/ECLIPCE/poi-3.17/lib/commons-collections4-4.1.jar"/>
 	<classpathentry kind="lib" path="C:/ECLIPCE/poi-4.1.2/ooxml-lib/xmlbeans-3.1.0.jar"/>
 	<classpathentry kind="lib" path="C:/ECLIPCE/commons-net-3.13.0/commons-net-3.13.0.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/ApachePDFBox/pdfbox-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/ApachePDFBox/fontbox-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/ApachePDFBox/commons-logging-1.2/commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

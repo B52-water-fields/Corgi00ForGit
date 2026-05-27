@@ -40,6 +40,12 @@ public class W00030WorkMain{
 		main_fm.add(PN_AboutArrival);
 		main_fm.add(PN_AboutDeliveryPlan);
 		
+		//テスト用
+		JButton TestBtn = B00110FrameParts.BtnSet(20,680,120,20,"テスト",11);
+		main_fm.add(TestBtn);
+		
+		
+		
 		main_fm.setVisible(true);
 		
 		//入荷予定検索
@@ -51,6 +57,13 @@ public class W00030WorkMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WT0001000ArrivalPlanSearch.ArrivalPlanSearch(0,0);
+			}
+		});
+		
+		//テスト用
+		TestBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B00180PdfControl.PdfCreate("C:\\MIZUNO\\WMS\\TEST\\TestPdf.pdf",false);
 			}
 		});
 

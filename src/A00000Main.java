@@ -33,6 +33,7 @@ public class A00000Main{
 	MySqlDefaultSchemaOLD = "OLDscjema";
 	PasswordExpireDays = 180;
 	FileFldPth = "C:\MIZUNO\WMS";
+	FontFilePath = "C:\MIZUNO\FONT\meiryo.ttc"
 	*/
 	//
 	
@@ -90,6 +91,9 @@ public class A00000Main{
 	
 	public static int PasswordExpireDays = 180;		//パスワード有効期限推奨日数（パスワード変更履歴ではなく、ユーザーマスタの最終更新日時で判定）0なら更新永遠に気にしない
 	
+	public static String FontFilePath = "";
+	public static String FontFileName = "";	//ttcフォント呼び出し時にフォント名でつる
+	
 	/*===========================================================================================================================
 	
  	main(String[] args)		:起動
@@ -137,6 +141,9 @@ public class A00000Main{
 	public static int Div = 100;
 	public static int Mul = 100;
 	public static int WMul = 120;
+	
+	帳票用フォントファイル
+	FontFilePath
  	
 	===========================================================================================================================*/
 	
@@ -709,6 +716,16 @@ public class A00000Main{
     		if(!IniRead.get(i).equals(IniRead.get(i).replace("FileFldPth", ""))) {
     			FileFldPth = IniRead.get(i).replace("FileFldPth", "").replace(" ", "").replace("=", "").replace("\"", "").replace(";", "").replace("String", "");
     		}
+    		if(!IniRead.get(i).equals(IniRead.get(i).replace("FontFilePath", ""))) {
+    			FontFilePath = IniRead.get(i).replace("FontFilePath", "").replace(" ", "").replace("=", "").replace("\"", "").replace(";", "").replace("String", "");
+    		}
+    		if(!IniRead.get(i).equals(IniRead.get(i).replace("FontFileName", ""))) {
+    			String[] WST = IniRead.get(i).split("\"");
+    			if(2<WST.length) {
+    				FontFileName = WST[1];
+    			}
+    		}
+    		
     	}
     }
     

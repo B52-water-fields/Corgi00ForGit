@@ -52,6 +52,12 @@ public class B00110FrameParts{
 			case "White":	
 				BackGroundColor = Color.decode("#FFFFFF");
 				break;
+			case "Black":	
+				BackGroundColor = Color.decode("#000000");
+				break;
+			case "Red":	
+				BackGroundColor = Color.decode("#ff0000");
+				break;
 			default:
 				break;
 		}
