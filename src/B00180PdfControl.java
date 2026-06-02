@@ -15,9 +15,50 @@ import org.apache.pdfbox.pdmodel.font.PDType0Font;
 
 public class B00180PdfControl{
 	
+	public static PDPage PageRt(boolean PageRotateFg) {
+		//横向きフラグ=trueならA4横、それ以外ではA4のページを返却する
+    	PDPage page; 
+    	if(PageRotateFg) {
+    		/*用紙を横向きにする場合*/
+	        PDRectangle rectangle = new PDRectangle(PDRectangle.A4.getHeight(),PDRectangle.A4.getWidth());
+			page = new PDPage(rectangle);
+    	}else {
+    		page = new PDPage(PDRectangle.A4);
+    	}
+    	return page;
+	}
+	
+	public static String SetTxtRt(PDFont font,int FontSize,float SetWide,String CST) {
+		//フォント,フォントサイズ,最大幅を受け取って最大幅に収まらなければ最大幅に収まる文字数-1文字までできって"…"付与して返却
+		try {
+			float StringWidth = font.getStringWidth(CST) / 1000 * FontSize;
+			if(StringWidth>SetWide) {
+				for(int i=0;i<CST.length();i++) {
+					String WST = CST.substring(0,CST.length()-i);
+					StringWidth = font.getStringWidth(WST) / 1000 * FontSize;
+					if(StringWidth<=SetWide) {
+						CST = WST;
+						i=CST.length();
+						if(2<=CST.length()) {
+							CST = CST.substring(0,CST.length()-1)+"…";
+						}
+					}
+					
+				}
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return CST;
+	}
+	
+	
 	public static void PdfCreate(String FP,boolean PageRotateFg) {
 		//指定フルパスでPDFファイルを生成する
 		//RotateFg = trueならA4横向き
+		//※A4横で12ポイント　34行66文字　A4縦で49行44文字程度とれます
 	    try {
 	    	PDDocument document = new PDDocument();
 	    	PDPage page=PageRt(PageRotateFg);
@@ -93,7 +134,11 @@ public class B00180PdfControl{
 	        contentStream.newLineAtOffset((float)200, (float)500);
 	        contentStream.showText( "お試し作成" );
 	        contentStream.endText();
+	        
+	        contentStream = ContentStreamAdd(contentStream,font,FontSize,Color.BLUE,200,550);
 	        contentStream.close();
+	        
+	        
 	        /*
 	        page = PageRt(PageRotateFg);
 	        document.addPage( page );
@@ -142,17 +187,30 @@ public class B00180PdfControl{
 	      }
 	}
 	
-	private static PDPage PageRt(boolean PageRotateFg) {
-    	PDPage page; 
-    	if(PageRotateFg) {
-    		/*用紙を横向きにする場合*/
-	        PDRectangle rectangle = new PDRectangle(PDRectangle.A4.getHeight(),PDRectangle.A4.getWidth());
-			page = new PDPage(rectangle);
-    	}else {
-    		page = new PDPage(PDRectangle.A4);
-    	}
-    	return page;
+
+	
+	private static PDPageContentStream ContentStreamAdd(PDPageContentStream contentStream,PDFont font,int FontSize,Color FontColor,float Xstr,float Ystr) {
+		try {
+			contentStream.beginText();
+			contentStream.setFont(font, FontSize);
+	        contentStream.newLineAtOffset(Xstr,Ystr);
+	        contentStream.setNonStrokingColor(FontColor);
+	        contentStream.showText( "お試し作成2" );
+	        contentStream.endText();
+	        
+	        contentStream.moveTo(Xstr, Ystr);            	// 罫線の始点座標を指定
+	        contentStream.lineTo(Xstr+200, Ystr-20);     	// 罫線の終点座標を指定
+	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
+	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
+	        contentStream.stroke();                     	// 罫線を引く
+	        
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return contentStream;
 	}
+	
+	
 	
 	private static PDDocument TextDraw(PDDocument document,PDPage page,float MaxWide,boolean PageRotateFg,PDFont font,int FontSize,Color FontColor,float Xstr,float Ystr,String SetString) {
 		PDPageContentStream contentStream;
@@ -217,6 +275,8 @@ public class B00180PdfControl{
         return document;
 	}
 	
+	
+	
 	private static PDPageContentStream SquareDraw(PDDocument document,PDPage page,PDFont font,int FontSize,String SetString,float X,float Y,float Width,float WideMargin,float HeightMargin) {
 		//所定の横幅の箱の中に文字列を表示する
 		PDPageContentStream contentStream = null;
@@ -280,7 +340,7 @@ public class B00180PdfControl{
 	
 	
 	
-	private static ArrayList<String> ttcFontttfListCheck(String FontPath) {
+	public static ArrayList<String> ttcFontttfListCheck(String FontPath) {
 		//フォント名取得
 		ArrayList<String> ttfTgtList = new ArrayList<String>();
 		

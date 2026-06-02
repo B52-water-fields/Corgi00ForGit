@@ -22,5 +22,7 @@
 	<classpathentry kind="lib" path="C:/ECLIPCE/ApachePDFBox/pdfbox-2.0.6.jar"/>
 	<classpathentry kind="lib" path="C:/ECLIPCE/ApachePDFBox/fontbox-2.0.6.jar"/>
 	<classpathentry kind="lib" path="C:/ECLIPCE/ApachePDFBox/commons-logging-1.2/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/ZXing/javase-3.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/ECLIPCE/ZXing/core-3.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

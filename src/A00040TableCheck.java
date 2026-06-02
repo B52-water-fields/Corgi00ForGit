@@ -5757,11 +5757,11 @@ public class A00040TableCheck{
 		String sql = ""
 				+"CREATE TABLE `KT0040_PrintControl` ("
 				+"  `PrintCd` varchar(50) NOT NULL COMMENT '印刷帳票CD',"
-				+"  `OkuriNo` int(11) NOT NULL DEFAULT '0' COMMENT '送り状番号等',"
-				+"  `Key01` int(11) NOT NULL DEFAULT '0' COMMENT 'サブキー01',"
-				+"  `Key02` int(11) NOT NULL DEFAULT '0' COMMENT 'サブキー02',"
-				+"  `Key03` int(11) NOT NULL DEFAULT '0' COMMENT 'サブキー03',"
-				+"  `Key04` int(11) NOT NULL DEFAULT '0' COMMENT 'サブキー04',"
+				+"  `OkuriNo` varchar(50) NOT NULL DEFAULT '' COMMENT '送り状番号等',"
+				+"  `Key01` varchar(50) NOT NULL DEFAULT '' COMMENT 'サブキー01',"
+				+"  `Key02` varchar(50) NOT NULL DEFAULT '' COMMENT 'サブキー02',"
+				+"  `Key03` varchar(50) NOT NULL DEFAULT '' COMMENT 'サブキー03',"
+				+"  `Key04` varchar(50) NOT NULL DEFAULT '' COMMENT 'サブキー04',"
 				+"  `EntryDate` datetime DEFAULT NULL COMMENT '登録日',"
 				+"  `UpdateDate` datetime DEFAULT NULL COMMENT '更新日',"
 				+"  `EntryUser` varchar(50) DEFAULT NULL COMMENT '登録者',"
@@ -5782,19 +5782,19 @@ public class A00040TableCheck{
 					sql = sql + " ADD PrintCd varchar(50) NOT NULL";
 					break;
 				case "OkuriNo":
-					sql = sql + " ADD OkuriNo int(11) NOT NULL DEFAULT '0'";
+					sql = sql + " ADD OkuriNo varchar(50) NOT NULL DEFAULT ''";
 					break;
 				case "Key01":
-					sql = sql + " ADD Key01 int(11) NOT NULL DEFAULT '0'";
+					sql = sql + " ADD Key01 varchar(50) NOT NULL DEFAULT ''";
 					break;
 				case "Key02":
-					sql = sql + " ADD Key02 int(11) NOT NULL DEFAULT '0'";
+					sql = sql + " ADD Key02 varchar(50) NOT NULL DEFAULT ''";
 					break;
 				case "Key03":
-					sql = sql + " ADD Key03 int(11) NOT NULL DEFAULT '0'";
+					sql = sql + " ADD Key03 varchar(50) NOT NULL DEFAULT ''";
 					break;
 				case "Key04":
-					sql = sql + " ADD Key04 int(11) NOT NULL DEFAULT '0'";
+					sql = sql + " ADD Key04 varchar(50) NOT NULL DEFAULT ''";
 					break;
 				case "EntryDate":
 					sql = sql + " ADD EntryDate datetime DEFAULT NULL";

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -596,8 +597,36 @@ public class WT0001000ArrivalPlanSearch{
 		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	610,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
+		final JCheckBox PlanListTgtAll = B00110FrameParts.JCheckBoxSet(730,640,200,20,"未発行分も対象にして",11);
+		main_fm.add(PlanListTgtAll);
+		//入荷予定票発行
+		JButton PlanListBtn = B00110FrameParts.BtnSet(	730,660,100,20,"予定票発行",11);
+		main_fm.add(PlanListBtn);
+		
 		RenewFg = true;
 		main_fm.setVisible(true);
+		
+		//入荷予定票発行ボタン押下時の挙動
+		PlanListBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String TgtWhCd = B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];
+					String TgtClCd = B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];
+					ArrayList<String> ArrNoList = new ArrayList<String>();
+					boolean NewPrintOnly = true;
+					if(PlanListTgtAll.isSelected()) {NewPrintOnly=false;}
+					
+					int RowCount = tableModel_ms01.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						ArrNoList.add(""+tableModel_ms01.getValueAt(i,T00016ArrivalPlanHdRt.ColArrNo+1));
+					}
+					
+					WTList0001000ArrivalPlan.ArrivalPlanList0001(TgtWhCd,TgtClCd,ArrNoList,NewPrintOnly);
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//検索ボタン押下時の挙動
 		SearchBtn.addActionListener(new AbstractAction(){
