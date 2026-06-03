@@ -126,6 +126,8 @@ public class B00180PdfControl{
 		return contentStream;
 	}
 	
+	
+	
 	public static void PdfCreate(String FP,boolean PageRotateFg) {
 		//指定フルパスでPDFファイルを生成する
 		//RotateFg = trueならA4横向き
