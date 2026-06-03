@@ -43,17 +43,88 @@ public class B00180PdfControl{
 							CST = CST.substring(0,CST.length()-1)+"…";
 						}
 					}
-					
 				}
 			}
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		return CST;
 	}
 	
+	public static PDPageContentStream TextSetBox(PDPageContentStream contentStream,float Xstr,float Ystr,float SetWide,float leading,String SetText,PDFont font,int FontSize,Color FontColor,int SetPt,boolean FrameLineFg) {
+		//受け取ったテキストを枠内に収まる長さ分（オーバーするときは"…"）で両サイド10の余白を確保して枠内に収めて表示
+		//SetPt = 0:左詰め　SetPt = 1:右詰め　SetPt = 2:中央配置
+		//枠線無し
+		try {
+			if(SetWide<20) {SetWide = 20;}
+			SetText = SetTxtRt(font,FontSize,SetWide-20,SetText);
+			float fontHeight = font.getFontDescriptor()
+		            .getFontBoundingBox().getHeight() / 1000 * FontSize;
+			float StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
+			
+			float TextXstr = Xstr+10;
+			float TextYstr = Ystr;
+			
+			//左右配置
+			switch(SetPt) {
+				case 0:
+					break;
+				case 1:
+					TextXstr = TextXstr+(SetWide-10)-StringWidth;
+					break;
+				case 2:
+					TextXstr = TextXstr+(SetWide-20)/2-(StringWidth/2);
+					break;
+				default:
+					break;
+			}
+			
+			//上下中央に配置
+			if(leading>=fontHeight) {
+				TextYstr = Ystr+(leading-fontHeight)/2;
+			}else {
+				leading = fontHeight;
+			}
+			
+			contentStream.beginText();
+			contentStream.setFont(font, FontSize);
+			contentStream.setNonStrokingColor(FontColor);
+	        contentStream.newLineAtOffset(TextXstr,TextYstr);
+	        contentStream.showText(SetText);
+	        contentStream.endText();
+	        
+	        if(FrameLineFg) {
+	        	//左線
+	        	contentStream.moveTo(Xstr			,Ystr+leading);     // 罫線の始点座標を指定
+				contentStream.lineTo(Xstr			,Ystr);				// 罫線の終点座標を指定
+				contentStream.setStrokingColor(FontColor); 				// 罫線の色を指定
+				contentStream.setLineWidth(1f);             			// 罫線の幅を指定
+				contentStream.stroke();                     			// 罫線を引く
+				//右線
+				contentStream.moveTo(Xstr+SetWide	,Ystr+leading);	
+				contentStream.lineTo(Xstr+SetWide	,Ystr);	
+				contentStream.setStrokingColor(FontColor);	
+				contentStream.setLineWidth(1f);	
+				contentStream.stroke();	
+				//上線
+				contentStream.moveTo(Xstr			,Ystr+leading);	
+				contentStream.lineTo(Xstr+SetWide	,Ystr+leading);	
+				contentStream.setStrokingColor(FontColor);	
+				contentStream.setLineWidth(1f);	
+				contentStream.stroke();	
+				//下線
+				contentStream.moveTo(Xstr			,Ystr);	
+				contentStream.lineTo(Xstr+SetWide	,Ystr);	
+				contentStream.setStrokingColor(FontColor);	
+				contentStream.setLineWidth(1f);	
+				contentStream.stroke();	
+	        }
+	        
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return contentStream;
+	}
 	
 	public static void PdfCreate(String FP,boolean PageRotateFg) {
 		//指定フルパスでPDFファイルを生成する

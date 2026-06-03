@@ -208,199 +208,61 @@ public class WTList0001000ArrivalPlan{
 		float fontHeight = font.getFontDescriptor()
 	            .getFontBoundingBox().getHeight() / 1000 * FontSize;
 		float leading = fontHeight * (float)1.2;
-		try {
-			String SetText = "";
-			float StringWidth = 0;
-			
-			SetText = B00180PdfControl.SetTxtRt(font, FontSize,300,"入荷予定No:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArrNo]+"("+HdPage+"/"+HdPageCount+")");
-			contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(20,(float)HeightStart);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,200,"荷主管理No:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColClArrNo]);
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(200,(float)HeightStart);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,300, "発行日時："+CreateDtm+"("+PageCount+"/"+TotalPageCount+")");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(MaxWide-StringWidth,(float)HeightStart);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,800, "　　仕入先:("+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColSpCd]+")"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColSpName01]);
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(20,(float)HeightStart-leading*1);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,200, "入荷予定日:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColPlanDate]);
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(20,(float)HeightStart-leading*2);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,600, "備考01:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom01]);
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(200,(float)HeightStart-leading*2);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,600, "備考02:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom02]);
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(200,(float)HeightStart-leading*3);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,600, "備考03:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom03]);
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(200,(float)HeightStart-leading*4);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        //上下中心横線
-	        contentStream.moveTo(20, (float)HeightStart-leading*5);            		// 罫線の始点座標を指定
-	        contentStream.lineTo(20+MaxWide, (float)HeightStart-leading*5);     	// 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();                     	// 罫線を引く
-	        
-	        contentStream.moveTo(170, (float)HeightStart-leading*6);            	// 罫線の始点座標を指定
-	        contentStream.lineTo(470, (float)HeightStart-leading*6);     	// 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();                     	// 罫線を引く
-	        
-	        contentStream.moveTo(20, (float)HeightStart-leading*7);            		// 罫線の始点座標を指定
-	        contentStream.lineTo(20+MaxWide, (float)HeightStart-leading*7);     	// 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();                     	// 罫線を引く
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,130, "商品CD");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(30+65-(StringWidth/2),(float)HeightStart-leading*7+(leading/2));
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        contentStream.moveTo(20, (float)HeightStart-leading*5);         // 罫線の始点座標を指定
-	        contentStream.lineTo(20, (float)HeightStart-leading*7);     	// 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();                     	// 罫線を引く
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,80, "総バラ数");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(180+40-(StringWidth/2),(float)HeightStart-leading*6f+leading*0.1f);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,80, "バラ数");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(180+40-(StringWidth/2),(float)HeightStart-leading*7f+leading*0.1f);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        contentStream.moveTo(170, (float)HeightStart-leading*5);         // 罫線の始点座標を指定
-	        contentStream.lineTo(170, (float)HeightStart-leading*7);     	 // 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();                     	// 罫線を引く
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,80, "ケース数");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(280+40-(StringWidth/2),(float)HeightStart-leading*6f+leading*0.1f);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,80, "パレット数");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(280+40-(StringWidth/2),(float)HeightStart-leading*7f+leading*0.1f);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        contentStream.moveTo(270, (float)HeightStart-leading*5);         // 罫線の始点座標を指定
-	        contentStream.lineTo(270, (float)HeightStart-leading*7);     	 // 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();                     	// 罫線を引く
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,80, "ロット");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(370+40-(StringWidth/2),(float)HeightStart-leading*6f+leading*0.1f);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,80, "賞味期限");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(370+40-(StringWidth/2),(float)HeightStart-leading*7f+leading*0.1f);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        contentStream.moveTo(370, (float)HeightStart-leading*5);         // 罫線の始点座標を指定
-	        contentStream.lineTo(370, (float)HeightStart-leading*7);     	 // 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();                     	// 罫線を引く
-	        
-	        SetText = B00180PdfControl.SetTxtRt(font, FontSize,MaxWide-450-20, "商品名");
-	        StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
-	        
-	        contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-	        contentStream.newLineAtOffset(470+((MaxWide-450-20)/2)-(StringWidth/2),(float)HeightStart-leading*7+(leading/2));
-	        contentStream.showText(SetText);
-	        contentStream.endText();
-	        
-	        contentStream.moveTo(470, (float)HeightStart-leading*5);         // 罫線の始点座標を指定
-	        contentStream.lineTo(470, (float)HeightStart-leading*7);     	 // 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();
-	        
-	        contentStream.moveTo(20+MaxWide, (float)HeightStart-leading*5);         // 罫線の始点座標を指定
-	        contentStream.lineTo(20+MaxWide, (float)HeightStart-leading*7);     	// 罫線の終点座標を指定
-	        contentStream.setStrokingColor(Color.GRAY); 	// 罫線の色を指定
-	        contentStream.setLineWidth(1f);             	// 罫線の幅を指定
-	        contentStream.stroke();                     	// 罫線を引く
-	        
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-       
 		
+		String SetText = "";
+		float StringWidth = 0;
+		
+		SetText = "入荷予定No:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArrNo];
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*0,250,leading,SetText,font,FontSize,Color.BLACK,0,false);
+        
+        SetText = "荷主管理No:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColClArrNo];
+        contentStream = B00180PdfControl.TextSetBox(contentStream,270,(float)HeightStart-leading*0,250,leading,SetText,font,FontSize,Color.BLACK,0,false);
+        
+        SetText = "　発行日時："+CreateDtm;
+        contentStream = B00180PdfControl.TextSetBox(contentStream,520,(float)HeightStart-leading*0,250,leading,SetText,font,FontSize,Color.BLACK,1,false);
+        
+        
+        SetText = "　　仕入先:("+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColSpCd]+")"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColSpName01];
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*1,500,leading,SetText,font,FontSize,Color.BLACK,0,false);
+        SetText = "予定Noページ:"+HdPage+"/"+HdPageCount+" 発行総ページ:"+PageCount+"/"+TotalPageCount;
+        contentStream = B00180PdfControl.TextSetBox(contentStream,520,(float)HeightStart-leading*1,300,leading,SetText,font,FontSize,Color.BLACK,1,false);
+        
+        SetText =  "入荷予定日:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColPlanDate];
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*2,250,leading,SetText,font,FontSize,Color.BLACK,0,false);
+        
+        SetText =  "備考01:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom01];
+        contentStream = B00180PdfControl.TextSetBox(contentStream,270,(float)HeightStart-leading*2,530,leading,SetText,font,FontSize,Color.BLACK,0,false);
+        
+        
+        SetText =  "備考02:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom02];
+        contentStream = B00180PdfControl.TextSetBox(contentStream,270,(float)HeightStart-leading*3,530,leading,SetText,font,FontSize,Color.BLACK,0,false);
+        
+        SetText =  "備考03:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom03];
+        contentStream = B00180PdfControl.TextSetBox(contentStream,270,(float)HeightStart-leading*4,530,leading,SetText,font,FontSize,Color.BLACK,0,false);
+        
+        
+        SetText = "商品CD";
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*7,120,leading*2,SetText,font,FontSize,Color.BLACK,2,true);
+        SetText = "総バラ数";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-leading*7,100,leading*2,SetText,font,FontSize,Color.BLACK,2,true);
+        
+        SetText =  "ロット";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-leading*6,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        SetText =  "賞味期限";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-leading*7,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        
+        SetText =  "バラ数";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,340,(float)HeightStart-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        SetText =  "ケース数";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,340,(float)HeightStart-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        
+        SetText =  "カートン数";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,420,(float)HeightStart-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        SetText =  "パレット数";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,420,(float)HeightStart-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        
+        SetText =  "商品名";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,500,(float)HeightStart-leading*7,300,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true);
 		
 		return contentStream;
 	}
