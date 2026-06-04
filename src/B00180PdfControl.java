@@ -28,8 +28,8 @@ public class B00180PdfControl{
     	return page;
 	}
 	
-	public static String SetTxtRt(PDFont font,int FontSize,float SetWide,String CST) {
-		//フォント,フォントサイズ,最大幅を受け取って最大幅に収まらなければ最大幅に収まる文字数-1文字までできって"…"付与して返却
+	public static String SetTxtRt(PDFont font,int FontSize,float SetWide,String CST,boolean LastProcess) {
+		//フォント,フォントサイズ,最大幅を受け取って最大幅に収まらなければ最大幅に収まる文字数返却　LastProcess=trueの場合-1文字までできって"…"付与して返却
 		try {
 			float StringWidth = font.getStringWidth(CST) / 1000 * FontSize;
 			if(StringWidth>SetWide) {
@@ -40,7 +40,9 @@ public class B00180PdfControl{
 						CST = WST;
 						i=CST.length();
 						if(2<=CST.length()) {
-							CST = CST.substring(0,CST.length()-1)+"…";
+							if(LastProcess) {
+								CST = CST.substring(0,CST.length()-1)+"…";
+							}
 						}
 					}
 				}
@@ -57,64 +59,85 @@ public class B00180PdfControl{
 		//枠線無し
 		try {
 			if(SetWide<20) {SetWide = 20;}
-			SetText = SetTxtRt(font,FontSize,SetWide-20,SetText);
+			
 			float fontHeight = font.getFontDescriptor()
 		            .getFontBoundingBox().getHeight() / 1000 * FontSize;
 			float StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
 			
-			float TextXstr = Xstr+10;
-			float TextYstr = Ystr;
-			
-			//左右配置
-			switch(SetPt) {
-				case 0:
-					break;
-				case 1:
-					TextXstr = TextXstr+(SetWide-10)-StringWidth;
-					break;
-				case 2:
-					TextXstr = TextXstr+(SetWide-20)/2-(StringWidth/2);
-					break;
-				default:
-					break;
-			}
-			
-			//上下中央に配置
 			if(leading>=fontHeight) {
-				TextYstr = Ystr+(leading-fontHeight)/2;
 			}else {
 				leading = fontHeight;
 			}
 			
-			contentStream.beginText();
-			contentStream.setFont(font, FontSize);
-			contentStream.setNonStrokingColor(FontColor);
-	        contentStream.newLineAtOffset(TextXstr,TextYstr);
-	        contentStream.showText(SetText);
-	        contentStream.endText();
+			int RowCount = (int)(leading/fontHeight);
+			if(0>=RowCount) {RowCount=1;}
+			
+			
+			float TextXstr = Xstr+10;
+			float TextYstr = Ystr-fontHeight;
+			
+			//上下余白
+			float TopAndBottomMargin = leading-(fontHeight*RowCount);
+			//1行目開始位置
+			TextYstr = TextYstr-(TopAndBottomMargin/2);
+			
+			for(int i=0;i<RowCount;i++) {
+				String AddText = "";
+				if(RowCount==i+1) {
+					AddText = SetTxtRt(font,FontSize,SetWide-20,SetText,true);
+				}else {
+					AddText = SetTxtRt(font,FontSize,SetWide-20,SetText,false);
+				}
+				
+				float AddTextWidth = font.getStringWidth(AddText) / 1000 * FontSize;
+				//左右配置
+				float SetTextXstr = TextXstr;
+				switch(SetPt) {
+					case 0:
+						break;
+					case 1:
+						SetTextXstr = TextXstr+(SetWide-20)-AddTextWidth;
+						break;
+					case 2:
+						SetTextXstr = TextXstr+(SetWide-20)/2-(AddTextWidth/2);
+						break;
+					default:
+						break;
+				}
+				
+				contentStream.beginText();
+				contentStream.setFont(font, FontSize);
+				contentStream.setNonStrokingColor(FontColor);
+		        contentStream.newLineAtOffset(SetTextXstr,TextYstr-(fontHeight*i));
+		        contentStream.showText(AddText);
+		        contentStream.endText();
+				
+				SetText = SetText.substring(AddText.length(),SetText.length());
+			}
+			
 	        
 	        if(FrameLineFg) {
 	        	//左線
-	        	contentStream.moveTo(Xstr			,Ystr+leading);     // 罫線の始点座標を指定
-				contentStream.lineTo(Xstr			,Ystr);				// 罫線の終点座標を指定
+	        	contentStream.moveTo(Xstr			,Ystr);     		// 罫線の始点座標を指定
+				contentStream.lineTo(Xstr			,Ystr-leading);		// 罫線の終点座標を指定
 				contentStream.setStrokingColor(FontColor); 				// 罫線の色を指定
 				contentStream.setLineWidth(1f);             			// 罫線の幅を指定
 				contentStream.stroke();                     			// 罫線を引く
 				//右線
-				contentStream.moveTo(Xstr+SetWide	,Ystr+leading);	
-				contentStream.lineTo(Xstr+SetWide	,Ystr);	
+				contentStream.moveTo(Xstr+SetWide	,Ystr);	
+				contentStream.lineTo(Xstr+SetWide	,Ystr-leading);	
 				contentStream.setStrokingColor(FontColor);	
 				contentStream.setLineWidth(1f);	
 				contentStream.stroke();	
 				//上線
-				contentStream.moveTo(Xstr			,Ystr+leading);	
-				contentStream.lineTo(Xstr+SetWide	,Ystr+leading);	
+				contentStream.moveTo(Xstr			,Ystr);	
+				contentStream.lineTo(Xstr+SetWide	,Ystr);	
 				contentStream.setStrokingColor(FontColor);	
 				contentStream.setLineWidth(1f);	
 				contentStream.stroke();	
 				//下線
-				contentStream.moveTo(Xstr			,Ystr);	
-				contentStream.lineTo(Xstr+SetWide	,Ystr);	
+				contentStream.moveTo(Xstr			,Ystr-leading);	
+				contentStream.lineTo(Xstr+SetWide	,Ystr-leading);	
 				contentStream.setStrokingColor(FontColor);	
 				contentStream.setLineWidth(1f);	
 				contentStream.stroke();	
@@ -126,6 +149,19 @@ public class B00180PdfControl{
 		return contentStream;
 	}
 	
+	public static PDPageContentStream BackGroundBox(PDPageContentStream contentStream,float Xstr,float Ystr,float XSize,float YSize,Color BackGroundColor) {
+		try {
+			contentStream.addRect(Xstr, Ystr, XSize, YSize);
+			contentStream.setNonStrokingColor(BackGroundColor);
+			contentStream.fill();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
+        
+		
+		return contentStream;
+	}
 	
 	
 	public static void PdfCreate(String FP,boolean PageRotateFg) {
@@ -282,8 +318,6 @@ public class B00180PdfControl{
 		}
 		return contentStream;
 	}
-	
-	
 	
 	private static PDDocument TextDraw(PDDocument document,PDPage page,float MaxWide,boolean PageRotateFg,PDFont font,int FontSize,Color FontColor,float Xstr,float Ystr,String SetString) {
 		PDPageContentStream contentStream;

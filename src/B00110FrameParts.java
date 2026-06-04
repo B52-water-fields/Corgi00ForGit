@@ -58,6 +58,9 @@ public class B00110FrameParts{
 			case "Red":	
 				BackGroundColor = Color.decode("#ff0000");
 				break;
+			case "Lavender":	
+				BackGroundColor = Color.decode("#e6e6fa");
+				break;
 			default:
 				break;
 		}

@@ -63,7 +63,7 @@ public class W00030WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				B00180PdfControl.PdfCreate("C:\\MIZUNO\\WMS\\TEST\\TestPdf.pdf",false);
+				T00030StockRt.StockRt();
 			}
 		});
 

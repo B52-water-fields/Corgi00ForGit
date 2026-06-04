@@ -14,6 +14,7 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 
 public class WTList0001000ArrivalPlan{
+	
 	public static void ArrivalPlanList0001(String TgtWhCd,String TgtClCd,ArrayList<String> ArrNoList,boolean NewPrintOnly) {
 		//入荷予定リストを発行し、印刷済みとして登録する
 		
@@ -41,6 +42,8 @@ public class WTList0001000ArrivalPlan{
 				Object[][] ArrivalPlanHdRt 	= PlanHdDataGet(TgtWhCd,TgtClCd,TgtArrNo);	//対象データヘッダ
 				Object[][] ArrivalPlanMsRt 	= PlanMsDataGet(TgtWhCd,TgtClCd,TgtArrNo);	//対象データ明細
 				
+				Object[][] ItemMstRt	= ItemMstRt(TgtClCd,ArrivalPlanMsRt);
+				Object[][] ItemRecomendLocFromItemCd = ItemRecomendLocFromItemCd(TgtClCd,ArrivalPlanMsRt);
 				//PDF生成
 				String FP = OutPutPath();
 				 try {
@@ -101,7 +104,7 @@ public class WTList0001000ArrivalPlan{
 			        /******************************************************************
 			         * 入荷予定ヘッダ～明細で帳票生成　明細行数10行(2行×10)で設計
 			        ******************************************************************/
-			        int MaxRowCount = 10;
+			        int MaxRowCount = 12;
 			        int TotalPageCount = 0;
 			        
 			        int PageCount = 0;
@@ -161,7 +164,43 @@ public class WTList0001000ArrivalPlan{
 			     			       	HdPage = HdPage +1;
 			     			       	Hedder(contentStream,font,FontSize,Color.BLACK,ArrivalPlanHdRt[i01],(int)HdPageCount[i01][3],HdPage,TotalPageCount,PageCount,HeightStart,MaxWide,CreateDtm);
 			        			}
+			        			//明細生成
 			        			MsCount=MsCount+1;
+			        			Object[] QtyAndRecomendLocData = new Object[5];
+			        			int BaraQty = (int)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColPlanQty];
+			        			int CtQty = 0;
+			        			int CsQty = 0;
+			        			int PlQty = 0;
+			        			String RecomendLoc = "";
+			        			
+			        			for(int i03=0;i03<ItemMstRt.length;i03++){
+			        				if(((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColItemCd]).equals((String)ItemMstRt[i03][M00070ItemMstRt.ColItemCd])) {
+			        					int GetCtQty	= (int)ItemMstRt[i03][M00070ItemMstRt.ColCtQty];					//カートン入数
+			        					int GetCsQty	= (int)ItemMstRt[i03][M00070ItemMstRt.ColCsQty];					//ケース入数
+			        					int GetPlQty	= (int)ItemMstRt[i03][M00070ItemMstRt.ColPlQty];					//パレット入数
+			        					if(0<GetPlQty) {
+			        						PlQty = (int)(BaraQty/GetPlQty);
+			        						BaraQty = BaraQty%GetPlQty;
+			        					}
+			        					if(0<GetCsQty) {
+			        						CsQty = (int)(BaraQty/GetCsQty);
+			        						BaraQty = BaraQty%GetCsQty;
+			        					}
+			        					if(0<GetCtQty) {
+			        						CtQty = (int)(BaraQty/GetCtQty);
+			        						BaraQty = BaraQty%GetCtQty;
+			        					}
+			        				}
+			        			}
+			        			
+			        			for(int i03=0;i03<ItemRecomendLocFromItemCd.length;i03++) {
+			        				if(((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColItemCd]).equals((String)ItemRecomendLocFromItemCd[i03][M00120ItemRecomendLocMstRt.ColItemCd])) {
+			        					RecomendLoc = (String)ItemRecomendLocFromItemCd[i03][M00120ItemRecomendLocMstRt.ColLocName];
+			        				}
+			        			}
+			        			
+			        			contentStream = Ms(contentStream,font,FontSize,Color.BLACK,ArrivalPlanMsRt[i02],MsCount,MaxRowCount,HeightStart,MaxWide,BaraQty,CtQty,CsQty,PlQty,RecomendLoc);
+			        			
 				        	}
 			        	}
 			        	
@@ -198,6 +237,55 @@ public class WTList0001000ArrivalPlan{
 				JOptionPane.showMessageDialog(null, "対象データがねぇです");
 			}
 		}
+	}
+	private static PDPageContentStream Ms(
+			PDPageContentStream contentStream,
+			PDFont font,int FontSize,Color FontColor,
+			Object[] ArrivalPlanMsRt,int MsCount,int MaxRowCount,float HeightStart,float MaxWide,
+			int BaraQty,int CtQty,int CsQty,int PlQty,String RecomendLoc) {
+		float fontHeight = font.getFontDescriptor()
+	            .getFontBoundingBox().getHeight() / 1000 * FontSize;
+		float leading = fontHeight * (float)1.2;
+		
+		
+		//ヘッダ分Y開始位置ずらす
+		HeightStart = (float)HeightStart-leading*8;
+		
+		//偶数行には背景色設定
+		int PageRow = MsCount%MaxRowCount;
+		if(0==PageRow) {PageRow=MaxRowCount;}
+		if(0==PageRow%2) {
+			contentStream = B00180PdfControl.BackGroundBox(contentStream,20,(float)HeightStart-(leading*PageRow*2),780,leading*2,B00110FrameParts.SelectColer("Lavender"));
+		}
+		String SetText ="";
+		
+		SetText = ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColItemCd];	//商品CD
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-(leading*PageRow*2)+leading*2,120,leading,SetText,font,FontSize-2,Color.BLACK,0,true);
+        SetText = ""+(int)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColPlanQty];	//総バラ数
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-(leading*PageRow*2)+leading*1,120,leading,SetText,font,FontSize-2,Color.BLACK,1,true);
+        
+        SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.Collot];	//ロット
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-(leading*PageRow*2)+leading*2,100,leading,SetText,font,FontSize-2,Color.BLACK,0,true);
+        SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColExpDate];	//賞味期限
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-(leading*PageRow*2)+leading*1,100,leading,SetText,font,FontSize-2,Color.BLACK,0,true);
+        
+        SetText =  ""+BaraQty;	//バラ数
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-(leading*PageRow*2)+leading*2,80,leading,SetText,font,FontSize-2,Color.BLACK,1,true);
+        SetText =  ""+CsQty;	//ケース数
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-(leading*PageRow*2)+leading*1,80,leading,SetText,font,FontSize-2,Color.BLACK,1,true);
+        
+        SetText =  ""+CtQty;	//カートン数
+        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-(leading*PageRow*2)+leading*2,80,leading,SetText,font,FontSize-2,Color.BLACK,1,true);
+        SetText =  ""+PlQty;	//パレット数
+        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-(leading*PageRow*2)+leading*1,80,leading,SetText,font,FontSize-2,Color.BLACK,1,true);
+        
+        SetText = ""+RecomendLoc;	//推奨ロケ
+        contentStream = B00180PdfControl.TextSetBox(contentStream,400,(float)HeightStart-(leading*PageRow*2)+leading*2,100,leading*2,SetText,font,FontSize-2,Color.BLACK,0,true);
+        
+        SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColItemName];	//商品名
+        contentStream = B00180PdfControl.TextSetBox(contentStream,500,(float)HeightStart-(leading*PageRow*2)+leading*2,300,leading*2,SetText,font,FontSize-2,Color.BLACK,0,true);
+		
+		return contentStream;
 	}
 	
 	private static PDPageContentStream Hedder(
@@ -241,34 +329,38 @@ public class WTList0001000ArrivalPlan{
         contentStream = B00180PdfControl.TextSetBox(contentStream,270,(float)HeightStart-leading*4,530,leading,SetText,font,FontSize,Color.BLACK,0,false);
         
         
+        //背景色描画
+        contentStream = B00180PdfControl.BackGroundBox(contentStream,20,(float)HeightStart-leading*8,780,leading*2,B00110FrameParts.SelectColer("Lavender"));
+        
+        
         SetText = "商品CD";
-        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*7,120,leading*2,SetText,font,FontSize,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*6,120,leading,SetText,font,FontSize-2,Color.BLACK,0,true);
         SetText = "総バラ数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-leading*7,100,leading*2,SetText,font,FontSize,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*7,120,leading,SetText,font,FontSize-2,Color.BLACK,1,true);
         
         SetText =  "ロット";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-leading*6,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-leading*6,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
         SetText =  "賞味期限";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-leading*7,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-leading*7,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
         
         SetText =  "バラ数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,340,(float)HeightStart-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
         SetText =  "ケース数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,340,(float)HeightStart-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
         
         SetText =  "カートン数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,420,(float)HeightStart-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
         SetText =  "パレット数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,420,(float)HeightStart-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true);
+        
+        SetText = "推奨ロケ";
+        contentStream = B00180PdfControl.TextSetBox(contentStream,400,(float)HeightStart-leading*6,100,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true);
         
         SetText =  "商品名";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,500,(float)HeightStart-leading*7,300,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,500,(float)HeightStart-leading*6,300,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true);
 		
 		return contentStream;
 	}
-	
-	
-	
 	
 	private static String OutPutPath() {
 		//必要フォルダを生成する
@@ -287,6 +379,104 @@ public class WTList0001000ArrivalPlan{
 		return OutPutPath;
 	}
 	
+	private static Object[][] ItemMstRt(String TgtClCd,Object[][] ArrivalPlanMsRt){
+		Object[][] ClMstRt	= ClMstRt(TgtClCd);
+		//商品マスタ取得
+		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
+		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
+		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
+		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
+		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
+		ArrayList<String> SearchDeliveryTypeCd03 	= new ArrayList<String>();	//運送タイプコード03
+		ArrayList<String> SearchDeliveryTypeCd04 	= new ArrayList<String>();	//運送タイプコード04
+		ArrayList<String> SearchDeliveryTypeCd05 	= new ArrayList<String>();	//運送タイプコード05
+		ArrayList<String> SearchItemMDNo 			= new ArrayList<String>();	//商品モデル番号（型番）
+		ArrayList<String> SearchCategoryCd 			= new ArrayList<String>();	//商品カテゴリCD
+		ArrayList<String> SearchCategoryName 		= new ArrayList<String>();	//商品カテゴリ名
+		ArrayList<String> SearchItemColorCd 		= new ArrayList<String>();	//商品カラーコード
+		ArrayList<String> SearchItemColorName 		= new ArrayList<String>();	//商品カラー名
+		ArrayList<String> SearchItemSizeCd 			= new ArrayList<String>();	//商品サイズコード
+		ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイズ名
+		ArrayList<String> SearchJanCd 				= new ArrayList<String>();	//JANCD
+		ArrayList<String> SearchTildFG 				= new ArrayList<String>();	//温度区分
+		ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
+		ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
+		boolean AllSearch = false;
+		if(0<ClMstRt.length) {SearchClGpCd.add((String)ClMstRt[0][M00011ClMstRt.ColClGpCD]);}
+		
+		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
+			SearchItemCd.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]);
+		}
+		
+		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+				SearchClGpCd,			//荷主グループコード
+				SearchItemCd,			//商品コード
+				SearchCLItemCd,			//荷主商品コード
+				SearchItemName,			//商品名
+				SearchDeliveryTypeCd01,	//運送タイプコード01
+				SearchDeliveryTypeCd02,	//運送タイプコード02
+				SearchDeliveryTypeCd03,	//運送タイプコード03
+				SearchDeliveryTypeCd04,	//運送タイプコード04
+				SearchDeliveryTypeCd05,	//運送タイプコード05
+				SearchItemMDNo,			//商品モデル番号（型番）
+				SearchCategoryCd,		//商品カテゴリCD
+				SearchCategoryName,		//商品カテゴリ名
+				SearchItemColorCd,		//商品カラーコード
+				SearchItemColorName,	//商品カラー名
+				SearchItemSizeCd,		//商品サイズコード
+				SearchItemSizeName,		//商品サイズ名
+				SearchJanCd,			//JANCD
+				SearchTildFG,			//温度区分
+				SearchTildName,			//温度区分名
+				SearchDelFg,			//削除フラグ
+				AllSearch);
+		
+		return ItemMstRt;
+	}
+	
+	private static Object[][] ItemRecomendLocFromItemCd(String TgtClCd,Object[][] ArrivalPlanMsRt){
+		String ClCd = TgtClCd;
+		ArrayList<String> ItemCd= new ArrayList<String>();	//商品CD
+		boolean ItemMstRecomendLocExistenceOnly = true;		//商品サブマスタ推奨ロケは対象荷主のロケーションマスタに存在する場合のみ値格納
+		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
+			ItemCd.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]);
+		}
+		
+		Object[][] ItemRecomendLocFromItemCd = M00120ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
+		
+		return ItemRecomendLocFromItemCd;
+	}
+	
+	private static Object[][] ClMstRt(String TgtClCd){
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLCD = new ArrayList<String>();
+		ArrayList<String> SearchCLName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		SearchCLCD.add(TgtClCd);
+		
+		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+			SearchClGpCD,
+			SearchCLCD,
+			SearchCLName,
+			SearchPost,
+			searchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			SearchWHCD,
+			AllSearch);
+		return ClMstRt;
+	}
 	
 	
 	private static Object[][] PlanHdDataGet(String TgtWhCd,String TgtClCd,ArrayList<String> TgtArrNo){
