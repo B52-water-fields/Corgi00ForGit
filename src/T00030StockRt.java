@@ -68,7 +68,7 @@ public class T00030StockRt{
 				+ " and KM0060_ITEMMST.ItemCd = KM0061_ITEMMSTSUB.ItemCd"
 				+ ")\n";
 		
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		return rt;
 	}
