@@ -32,7 +32,7 @@ public class WT0001000ArrivalPlanSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,1200,750,"Corgi00入荷予定検索","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,1200,750,"Corgi00入荷予定検索","NK");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		
@@ -973,7 +973,7 @@ public class WT0001000ArrivalPlanSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","入荷予定検（ヘッダ）索結果",tb01);
+					B10010TableControl.TableOutPutCsv("出力先選択","入荷予定検（ヘッダ）検索結果",tb01);
 					RenewFg = true;
 				}
 			}

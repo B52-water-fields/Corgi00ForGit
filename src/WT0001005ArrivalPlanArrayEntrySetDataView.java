@@ -107,7 +107,7 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定取込（登録データ確認）","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定取込（登録データ確認）","NK");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		JButton entry_btn = B00110FrameParts.EntryBtn();

@@ -7,54 +7,54 @@ import java.util.ArrayList;
 public class T00030StockRt{
 	/*
 	コピペ用
-	ArrayList<String> SearchClCd				= ArrayList<String>();			//荷主コード
-	ArrayList<String> SearchWhCd				= ArrayList<String>();			//倉庫コード
-	ArrayList<String> SearchClGpCD				= ArrayList<String>();			//荷主グループCD
-	ArrayList<String> SearchLoc					= ArrayList<String>();			//ロケーション
-	ArrayList<String> SearchType				= ArrayList<String>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-	ArrayList<String> SearchItemCd				= ArrayList<String>();			//商品コード
-	ArrayList<String> SearchLot					= ArrayList<String>();			//ロット
-	ArrayList<String> SearchExpdateMin			= ArrayList<String>();			//消費期限最小
-	ArrayList<String> SearchExpdateMax			= ArrayList<String>();			//消費期限最大
-	ArrayList<String> SearchActualDateMin		= ArrayList<String>();			//入荷実績日最小
-	ArrayList<String> SearchActualDateMax		= ArrayList<String>();			//入荷実績日最大
-	ArrayList<Integer> SearchQtyMin				= ArrayList<Integer>();			//数量最小
-	ArrayList<Integer> SearchQtyMax				= ArrayList<Integer>();			//数量最大
-	ArrayList<Integer> SearchShipPlanQtyMin		= ArrayList<Integer>();			//引当済数最小
-	ArrayList<Integer> SearchShipPlanQtyMax		= ArrayList<Integer>();			//引当済数最大
-	ArrayList<Integer> SearchPossibleQtyMin		= ArrayList<Integer>();			//出荷可能数最小
-	ArrayList<Integer> SearchPossibleQtyMax		= ArrayList<Integer>();			//出荷可能数最大
-	ArrayList<String> SearchItemName			= ArrayList<String>();			//商品名
-	ArrayList<String> SearchClItemCd			= ArrayList<String>();			//荷主商品コード
-	ArrayList<String> SearchJanCd				= ArrayList<String>();			//ソースマーク_BCD（バラ）
-	ArrayList<String> SearchItemMdNo			= ArrayList<String>();			//商品型番
-	boolean LocExactMatch = false;												//ロケーション完全一致
-	boolean AllSearch = false;													//全件検索
-	boolean SortItemcdMode = false;												//商品CDでソート
+	ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主コード
+	ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
+	ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
+	ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
+	ArrayList<String> SearchType				= new ArrayList<String>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
+	ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
+	ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小
+	ArrayList<String> SearchExpdateMax			= new ArrayList<String>();			//消費期限最大
+	ArrayList<String> SearchActualDateMin		= new ArrayList<String>();			//入荷実績日最小
+	ArrayList<String> SearchActualDateMax		= new ArrayList<String>();			//入荷実績日最大
+	ArrayList<Integer> SearchQtyMin				= new ArrayList<Integer>();			//数量最小
+	ArrayList<Integer> SearchQtyMax				= new ArrayList<Integer>();			//数量最大
+	ArrayList<Integer> SearchShipPlanQtyMin		= new ArrayList<Integer>();			//引当済数最小
+	ArrayList<Integer> SearchShipPlanQtyMax		= new ArrayList<Integer>();			//引当済数最大
+	ArrayList<Integer> SearchPossibleQtyMin		= new ArrayList<Integer>();			//出荷可能数最小
+	ArrayList<Integer> SearchPossibleQtyMax		= new ArrayList<Integer>();			//出荷可能数最大
+	ArrayList<String> SearchItemName			= new ArrayList<String>();			//商品名
+	ArrayList<String> SearchClItemCd			= new ArrayList<String>();			//荷主商品コード
+	ArrayList<String> SearchJanCd				= new ArrayList<String>();			//ソースマーク_BCD（バラ）
+	ArrayList<String> SearchItemMdNo			= new ArrayList<String>();			//商品型番
+	boolean LocExactMatch = false;													//ロケーション完全一致
+	boolean AllSearch = false;														//全件検索
+	boolean SortItemcdMode = false;													//商品CDでソート
 	
 	Object[][] StockRt= T00030StockRt.StockRt(
-							ArrayList<String> SearchClCd,				//荷主コード
-							ArrayList<String> SearchWhCd,				//倉庫コード
-							ArrayList<String> SearchClGpCD,				//荷主グループCD
-							ArrayList<String> SearchLoc,				//ロケーション
-							ArrayList<String> SearchType,				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-							ArrayList<String> SearchItemCd,				//商品コード
-							ArrayList<String> SearchLot,				//ロット
-							ArrayList<String> SearchExpdateMin,			//消費期限最小
-							ArrayList<String> SearchExpdateMax,			//消費期限最大
-							ArrayList<String> SearchActualDateMin,		//入荷実績日最小
-							ArrayList<String> SearchActualDateMax,		//入荷実績日最大
-							ArrayList<Integer> SearchQtyMin,			//数量最小
-							ArrayList<Integer> SearchQtyMax,			//数量最大
-							ArrayList<Integer> SearchShipPlanQtyMin,	//引当済数最小
-							ArrayList<Integer> SearchShipPlanQtyMax,	//引当済数最大
-							ArrayList<Integer> SearchPossibleQtyMin,	//出荷可能数最小
-							ArrayList<Integer> SearchPossibleQtyMax,	//出荷可能数最大
-							ArrayList<String> SearchItemName,			//商品名
-							ArrayList<String> SearchClItemCd,			//荷主商品コード
-							ArrayList<String> SearchJanCd,				//ソースマーク_BCD（バラ）
+							SearchClCd,				//荷主コード
+							SearchWhCd,				//倉庫コード
+							SearchClGpCD,			//荷主グループCD
+							SearchLoc,				//ロケーション
+							SearchType,				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+							SearchItemCd,			//商品コード
+							SearchLot,				//ロット
+							SearchExpdateMin,		//消費期限最小
+							SearchExpdateMax,		//消費期限最大
+							SearchActualDateMin,	//入荷実績日最小
+							SearchActualDateMax,	//入荷実績日最大
+							SearchQtyMin,			//数量最小
+							SearchQtyMax,			//数量最大
+							SearchShipPlanQtyMin,	//引当済数最小
+							SearchShipPlanQtyMax,	//引当済数最大
+							SearchPossibleQtyMin,	//出荷可能数最小
+							SearchPossibleQtyMax,	//出荷可能数最大
+							SearchItemName,			//商品名
+							SearchClItemCd,			//荷主商品コード
+							SearchJanCd,			//ソースマーク_BCD（バラ）
 							SearchItemMdNo,			//商品型番
-							LocExactMatch,	//ロケーション完全一致
+							LocExactMatch,			//ロケーション完全一致
 							AllSearch,
 							SortItemcdMode);
 							

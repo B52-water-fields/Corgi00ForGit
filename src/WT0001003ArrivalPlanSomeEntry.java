@@ -24,7 +24,7 @@ public class WT0001003ArrivalPlanSomeEntry{
 		
 		String Nextday = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.ndate_after(B00050ToolsDateTimeControl.dtm()[1],1))[0];
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定検索","");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定検索","NK");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		JButton entry_btn = B00110FrameParts.EntryBtn();
