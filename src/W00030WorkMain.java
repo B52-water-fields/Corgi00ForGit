@@ -23,22 +23,41 @@ public class W00030WorkMain{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
-		//入荷パネル
-		JPanel PN_AboutArrival 	= B00110FrameParts.JPanelSet(		 10, 40,380,235,"NK");
-		JLabel LB_AboutArrival 	= B00110FrameParts.JLabelSet(		 10,  0,150,20,"入荷メニュー",11,0);
-		PN_AboutArrival.add(LB_AboutArrival);
+		/*************************************/
+		/*************************************/
+			//入荷パネル
+			JPanel PN_AboutArrival 	= B00110FrameParts.JPanelSet(				 10, 40,380,235,"NK");
+			JLabel LB_AboutArrival 	= B00110FrameParts.JLabelSet(				 10,  0,150,20,"入荷メニュー",11,0);
+			PN_AboutArrival.add(LB_AboutArrival);
+			
+			//入荷予定検索
+			JButton ArrivalPlanSearch = B00110FrameParts.BtnSet(				 20, 25,120,20,"入荷予定検索",11);
+			PN_AboutArrival.add(ArrivalPlanSearch);
 		
-		//出荷パネル
-		JPanel PN_AboutDeliveryPlan 	= B00110FrameParts.JPanelSet(		410, 40,380,235,"SPPlan");
-		JLabel LB_AboutDeliveryPlan 	= B00110FrameParts.JLabelSet(		 10,  0,150,20,"出荷予定メニュー",11,0);
-		PN_AboutDeliveryPlan.add(LB_AboutDeliveryPlan);
+		/*************************************/
+		/*************************************/
+			//出荷パネル
+			JPanel PN_AboutDeliveryPlan 	= B00110FrameParts.JPanelSet(		410, 40,380,235,"SPPlan");
+			JLabel LB_AboutDeliveryPlan 	= B00110FrameParts.JLabelSet(		 10,  0,150,20,"出荷予定メニュー",11,0);
+			PN_AboutDeliveryPlan.add(LB_AboutDeliveryPlan);
 		
-		//入荷予定検索
-		JButton ArrivalPlanSearch = B00110FrameParts.BtnSet(	 20, 25,120,20,"入荷予定",11);
-		PN_AboutArrival.add(ArrivalPlanSearch);
+		/*************************************/
+		/*************************************/
+			//在庫パネル
+			JPanel PN_Stock 	= B00110FrameParts.JPanelSet(					 10,280,380,235,"ZK");
+			JLabel LB_Stock 	= B00110FrameParts.JLabelSet(					 10,  0,150,20,"在庫メニュー",11,0);
+			PN_Stock.add(LB_Stock);
+			
+			//在庫検索
+			JButton StockSearch = B00110FrameParts.BtnSet(						 20, 25,120,20,"在庫検索",11);
+			PN_Stock.add(StockSearch);
+		
+		/*************************************/
+		/*************************************/
 
 		main_fm.add(PN_AboutArrival);
 		main_fm.add(PN_AboutDeliveryPlan);
+		main_fm.add(PN_Stock);
 		
 		//テスト用
 		JButton TestBtn = B00110FrameParts.BtnSet(20,680,120,20,"テスト",11);
@@ -60,10 +79,15 @@ public class W00030WorkMain{
 			}
 		});
 		
-		//テスト用
-		TestBtn.addActionListener(new AbstractAction(){
+		//在庫検索
+		StockSearch.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				T00030StockRt.StockRt();
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT0001010StockSearch.StockSearch(0,0);
 			}
 		});
 
@@ -76,6 +100,13 @@ public class W00030WorkMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				W00010MainMenu.MainMenu(0, 0);
+			}
+		});
+		
+		//テスト用
+		TestBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				
 			}
 		});
 	}

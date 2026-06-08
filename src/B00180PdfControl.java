@@ -53,10 +53,15 @@ public class B00180PdfControl{
 		return CST;
 	}
 	
-	public static PDPageContentStream TextSetBox(PDPageContentStream contentStream,float Xstr,float Ystr,float SetWide,float leading,String SetText,PDFont font,int FontSize,Color FontColor,int SetPt,boolean FrameLineFg) {
+	public static PDPageContentStream TextSetBox(PDPageContentStream contentStream,float Xstr,float Ystr,float SetWide,float leading,
+			String SetText,
+			PDFont font,int FontSize,Color FontColor,int SetPt,
+			boolean FrameLineFg,Color LineColor,
+			boolean FrameBackgroundFg,Color BackgroundColor) {
 		//受け取ったテキストを枠内に収まる長さ分（オーバーするときは"…"）で両サイド10の余白を確保して枠内に収めて表示
 		//SetPt = 0:左詰め　SetPt = 1:右詰め　SetPt = 2:中央配置
-		//枠線無し
+		//FrameLineFg=true なら　LineColorで枠線
+		//FrameBackgroundFg なら　BackgroundColorで背景塗りつぶし
 		try {
 			if(SetWide<20) {SetWide = 20;}
 			
@@ -67,6 +72,12 @@ public class B00180PdfControl{
 			if(leading>=fontHeight) {
 			}else {
 				leading = fontHeight;
+			}
+			
+			if(FrameBackgroundFg) {
+				contentStream.addRect(Xstr, Ystr-leading, SetWide, leading);
+				contentStream.setNonStrokingColor(BackgroundColor);
+				contentStream.fill();
 			}
 			
 			int RowCount = (int)(leading/fontHeight);

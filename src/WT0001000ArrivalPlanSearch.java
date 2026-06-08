@@ -1013,7 +1013,4 @@ public class WT0001000ArrivalPlanSearch{
 		}
 		return rt;
 	}
-	
-	
-	
 }
