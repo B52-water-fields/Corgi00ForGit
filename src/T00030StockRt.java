@@ -11,7 +11,7 @@ public class T00030StockRt{
 	ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
 	ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
 	ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
-	ArrayList<String> SearchType				= new ArrayList<String>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	ArrayList<int> 	　SearchType				= new ArrayList<String>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 	ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
 	ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
 	ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小
@@ -67,7 +67,7 @@ public class T00030StockRt{
 	String GetClGpName		= (String)StockRt[i][T00030StockRt.ColClGpName];		//グループ名1
 	String GetLoc			= (String)StockRt[i][T00030StockRt.ColLoc];				//ロケーション
 	String GetLocName		= (String)StockRt[i][T00030StockRt.ColLocName];			//ロケーション名
-	String GetType			= (String)StockRt[i][T00030StockRt.ColType];			//ロケタイプ
+	int GetType				= (int)StockRt[i][T00030StockRt.ColType];				//ロケタイプ
 	String GetItemCd		= (String)StockRt[i][T00030StockRt.ColItemCd];			//商品コード
 	String GetLot			= (String)StockRt[i][T00030StockRt.ColLot];				//ロット
 	String GetExpdate		= (String)StockRt[i][T00030StockRt.ColExpdate];			//消費期限
