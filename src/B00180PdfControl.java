@@ -58,7 +58,7 @@ public class B00180PdfControl{
 			PDFont font,int FontSize,Color FontColor,int SetPt,
 			boolean FrameLineFg,Color LineColor,
 			boolean FrameBackgroundFg,Color BackgroundColor) {
-		//受け取ったテキストを枠内に収まる長さ分（オーバーするときは"…"）で両サイド10の余白を確保して枠内に収めて表示
+		//受け取ったテキストを枠内に収まる長さ分（オーバーするときは"…"）で両サイド5の余白を確保して枠内に収めて表示
 		//SetPt = 0:左詰め　SetPt = 1:右詰め　SetPt = 2:中央配置
 		//FrameLineFg=true なら　LineColorで枠線
 		//FrameBackgroundFg なら　BackgroundColorで背景塗りつぶし
@@ -84,7 +84,7 @@ public class B00180PdfControl{
 			if(0>=RowCount) {RowCount=1;}
 			
 			
-			float TextXstr = Xstr+10;
+			float TextXstr = Xstr+5;
 			float TextYstr = Ystr-fontHeight;
 			
 			//上下余白
@@ -95,9 +95,9 @@ public class B00180PdfControl{
 			for(int i=0;i<RowCount;i++) {
 				String AddText = "";
 				if(RowCount==i+1) {
-					AddText = SetTxtRt(font,FontSize,SetWide-20,SetText,true);
+					AddText = SetTxtRt(font,FontSize,SetWide-10,SetText,true);
 				}else {
-					AddText = SetTxtRt(font,FontSize,SetWide-20,SetText,false);
+					AddText = SetTxtRt(font,FontSize,SetWide-10,SetText,false);
 				}
 				
 				float AddTextWidth = font.getStringWidth(AddText) / 1000 * FontSize;
@@ -107,10 +107,10 @@ public class B00180PdfControl{
 					case 0:
 						break;
 					case 1:
-						SetTextXstr = TextXstr+(SetWide-20)-AddTextWidth;
+						SetTextXstr = TextXstr+(SetWide-10)-AddTextWidth;
 						break;
 					case 2:
-						SetTextXstr = TextXstr+(SetWide-20)/2-(AddTextWidth/2);
+						SetTextXstr = TextXstr+(SetWide-10)/2-(AddTextWidth/2);
 						break;
 					default:
 						break;
@@ -159,6 +159,49 @@ public class B00180PdfControl{
 		}
 		return contentStream;
 	}
+	
+	public static PDPageContentStream TextSetBoxFontAdjust(PDPageContentStream contentStream,float Xstr,float Ystr,float SetWide,float leading,
+			String SetText,
+			PDFont font,int FontSize,Color FontColor,int SetPt,
+			boolean FrameLineFg,Color LineColor,
+			boolean FrameBackgroundFg,Color BackgroundColor) {
+		//受け取ったテキストを枠内に収まるフォントサイズで表現　3ポイント以下にはしない
+		//どうしても無理なら受け取ったテキストを3ポイントで枠内に収まる長さ分（オーバーするときは"…"）で両サイド5の余白を確保して枠内に収めて表示
+		//SetPt = 0:左詰め　SetPt = 1:右詰め　SetPt = 2:中央配置
+		//FrameLineFg=true なら　LineColorで枠線
+		//FrameBackgroundFg なら　BackgroundColorで背景塗りつぶし
+		try {
+			if(SetWide<20) {SetWide = 20;}
+			
+			float fontHeight = font.getFontDescriptor()
+		            .getFontBoundingBox().getHeight() / 1000 * FontSize;
+			float StringWidth = font.getStringWidth(SetText) / 1000 * FontSize;
+			
+			if(StringWidth>SetWide-20) {
+				int WorkFontSize = FontSize;
+				for(int i=0;i<FontSize;i++) {
+					WorkFontSize=WorkFontSize-i;
+					float WorkStringWidth = font.getStringWidth(SetText) / 1000 * WorkFontSize;
+					if(WorkStringWidth<=SetWide-10) {
+						FontSize=WorkFontSize;
+						i=FontSize+1;
+					}
+				}
+			}
+			if(FontSize<3) {FontSize=3;}
+			
+			contentStream = TextSetBox(contentStream,Xstr,Ystr,SetWide,leading,
+					SetText,
+					font,FontSize,FontColor,SetPt,
+					FrameLineFg,LineColor,
+					FrameBackgroundFg,BackgroundColor);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return contentStream;
+	}
+	
+	
 	
 	public static PDPageContentStream BackGroundBox(PDPageContentStream contentStream,float Xstr,float Ystr,float XSize,float YSize,Color BackGroundColor) {
 		try {

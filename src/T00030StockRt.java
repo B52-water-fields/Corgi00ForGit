@@ -74,7 +74,7 @@ public class T00030StockRt{
 	String GetActualDate	= (String)StockRt[i][T00030StockRt.ColActualDate];		//入荷実績日
 	int GetQty				= (int)StockRt[i][T00030StockRt.ColQty];				//総数量
 	int GetShipPlanQty		= (int)StockRt[i][T00030StockRt.ColShipPlanQty];		//引当済総数
-	int GetPossibleQty		= (int)StockRt[i][T00030StockRt.,ColPossibleQty];		//出荷可能総数
+	int GetPossibleQty		= (int)StockRt[i][T00030StockRt.ColPossibleQty];		//出荷可能総数
 	String GetItemName		= (String)StockRt[i][T00030StockRt.ColItemName];		//商品名
 	String GetItemName01	= (String)StockRt[i][T00030StockRt.ColItemName01];		//商品名1
 	String GetItemName02	= (String)StockRt[i][T00030StockRt.ColItemName02];		//商品名2
@@ -82,9 +82,9 @@ public class T00030StockRt{
 	String GetClItemCd		= (String)StockRt[i][T00030StockRt.ColClItemCd];		//荷主商品コード
 	String GetJanCd			= (String)StockRt[i][T00030StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
 	String GetItemMdNo		= (String)StockRt[i][T00030StockRt.ColItemMdNo];		//商品型番
-	String GetCtUnitQty		= (String)StockRt[i][T00030StockRt.ColCtUnitQty];		//カートン入数
-	String GetCsUnitQty		= (String)StockRt[i][T00030StockRt.ColCsUnitQty];		//ケース入数
-	String GetPlUnitQty		= (String)StockRt[i][T00030StockRt.ColPlUnitQty];		//パレット入数
+	int GetCtUnitQty		= (int)StockRt[i][T00030StockRt.ColCtUnitQty];			//カートン入数
+	int GetCsUnitQty		= (int)StockRt[i][T00030StockRt.ColCsUnitQty];			//ケース入数
+	int GetPlUnitQty		= (int)StockRt[i][T00030StockRt.ColPlUnitQty];			//パレット入数
 	String GetUnitName		= (String)StockRt[i][T00030StockRt.ColUnitName];		//商品単位
 	String GetCtUnitName	= (String)StockRt[i][T00030StockRt.ColCtUnitName];		//カートン商品単位
 	String GetCsUnitName	= (String)StockRt[i][T00030StockRt.ColCsUnitName];		//ケース商品単位
@@ -180,9 +180,9 @@ public class T00030StockRt{
 				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"				,""}
 				,{"JanCd"			,ColJanCd			,"String"	,"ソースマーク_BCD（バラ）"		,""}
 				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"						,""}
-				,{"CtUnitQty"		,ColCtUnitQty		,"String"	,"カートン入数"					,""}
-				,{"CsUnitQty"		,ColCsUnitQty		,"String"	,"ケース入数"					,""}
-				,{"PlUnitQty"		,ColPlUnitQty		,"String"	,"パレット入数"					,""}
+				,{"CtUnitQty"		,ColCtUnitQty		,"int"		,"カートン入数"					,""}
+				,{"CsUnitQty"		,ColCsUnitQty		,"int"		,"ケース入数"					,""}
+				,{"PlUnitQty"		,ColPlUnitQty		,"int"		,"パレット入数"					,""}
 				,{"UnitName"		,ColUnitName		,"String"	,"商品単位"						,""}
 				,{"CtUnitName"		,ColCtUnitName	,"String"	,"カートン商品単位"				,""}
 				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"				,""}

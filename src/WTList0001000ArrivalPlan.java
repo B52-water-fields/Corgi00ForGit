@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -106,7 +107,7 @@ public class WTList0001000ArrivalPlan{
 			        ******************************************************************/
 			        
 			        /******************************************************************
-			         * 入荷予定ヘッダ～明細で帳票生成　明細行数10行(2行×10)で設計
+			         * 入荷予定ヘッダ～明細で帳票生成　明細行数12行(2行×12)で設計
 			        ******************************************************************/
 			        int MaxRowCount = 12;
 			        int TotalPageCount = 0;
@@ -324,32 +325,32 @@ public class WTList0001000ArrivalPlan{
 		String SetText ="";
 		Color BackgroundColor = B00110FrameParts.SelectColer("Lavender");
 		
-		
+		NumberFormat ni = NumberFormat.getNumberInstance();
 		SetText = ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColItemCd];	//商品CD
-        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-(leading*PageRow*2)+leading*2,120,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
-        SetText = ""+(int)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColPlanQty];	//総バラ数
-        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-(leading*PageRow*2)+leading*1,120,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-10-(leading*PageRow*2)+leading*2,120,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        SetText = ""+ni.format((int)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColPlanQty]);	//総バラ数
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-10-(leading*PageRow*2)+leading*1,120,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         
         SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.Collot];	//ロット
-        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-(leading*PageRow*2)+leading*2,100,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-10-(leading*PageRow*2)+leading*2,100,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColExpDate];	//賞味期限
-        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-(leading*PageRow*2)+leading*1,100,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-10-(leading*PageRow*2)+leading*1,100,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         
-        SetText =  ""+BaraQty;	//バラ数
-        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-(leading*PageRow*2)+leading*2, 80,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
-        SetText =  ""+CsQty;	//ケース数
-        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-(leading*PageRow*2)+leading*1, 80,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        SetText =  ""+ni.format(BaraQty);	//バラ数
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-10-(leading*PageRow*2)+leading*2, 80,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        SetText =  ""+ni.format(CsQty);	//ケース数
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-10-(leading*PageRow*2)+leading*1, 80,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         
-        SetText =  ""+CtQty;	//カートン数
-        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-(leading*PageRow*2)+leading*2, 80,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
-        SetText =  ""+PlQty;	//パレット数
-        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-(leading*PageRow*2)+leading*1, 80,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        SetText =  ""+ni.format(CtQty);	//カートン数
+        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-10-(leading*PageRow*2)+leading*2, 80,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        SetText =  ""+ni.format(PlQty);	//パレット数
+        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-10-(leading*PageRow*2)+leading*1, 80,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         
         SetText = ""+RecomendLoc;	//推奨ロケ
-        contentStream = B00180PdfControl.TextSetBox(contentStream,400,(float)HeightStart-(leading*PageRow*2)+leading*2,100,leading*2,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,400,(float)HeightStart-10-(leading*PageRow*2)+leading*2,100,leading*2,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         
         SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColItemName];	//商品名
-        contentStream = B00180PdfControl.TextSetBox(contentStream,500,(float)HeightStart-(leading*PageRow*2)+leading*2,300,leading*2,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,500,(float)HeightStart-10-(leading*PageRow*2)+leading*2,300,leading*2,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
 		
 		return contentStream;
 	}
@@ -406,30 +407,34 @@ public class WTList0001000ArrivalPlan{
         
         
         SetText = "商品CD";
-        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*6,120,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-5-leading*6,120,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,true,BackgroundColor);
         SetText = "総バラ数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*7,120,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-5-leading*7,120,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,true,BackgroundColor);
         
         SetText =  "ロット";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-leading*6,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-5-leading*6,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         SetText =  "賞味期限";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-leading*7,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,140,(float)HeightStart-5-leading*7,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         
         SetText =  "バラ数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-5-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         SetText =  "ケース数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,240,(float)HeightStart-5-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         
         SetText =  "カートン数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-5-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         SetText =  "パレット数";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,320,(float)HeightStart-5-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         
         SetText = "推奨ロケ";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,400,(float)HeightStart-leading*6,100,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,400,(float)HeightStart-5-leading*6,100,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         
         SetText =  "商品名";
-        contentStream = B00180PdfControl.TextSetBox(contentStream,500,(float)HeightStart-leading*6,300,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        contentStream = B00180PdfControl.TextSetBox(contentStream,500,(float)HeightStart-5-leading*6,300,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        
+        
+        SetText =  "WTList0001000ArrivalPlan";//修正時に探しやすくするためにクラス名
+        contentStream = B00180PdfControl.TextSetBox(contentStream,20,0+leading,800,leading,SetText,font,9,Color.BLACK,1,false,Color.BLACK,false,Color.WHITE);
 		
 		return contentStream;
 	}

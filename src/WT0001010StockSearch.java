@@ -366,10 +366,35 @@ public class WT0001010StockSearch{
 		JButton ExcelBtn = B00110FrameParts.BtnSet(		130,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
+		//在庫表出力ボタン
+		JButton ListPrintBtn = B00110FrameParts.BtnSet(	250,660,100,20,"在庫表出力",11);
+		main_fm.add(ListPrintBtn);
+		
 		main_fm.add(PN_Search);
 		
 		RenewFg = true;
 		main_fm.setVisible(true);
+		
+		//在庫表出力ボタン押下時の挙動
+		ListPrintBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount 	= tableModel_ms01.getRowCount();
+					int ClumnCount 	= tableModel_ms01.getColumnCount();
+					
+					Object[][] PrintData = new Object[RowCount][ClumnCount-1]; 
+					
+					for(int i=0;i<RowCount;i++) {
+						for(int i01=1;i01<ClumnCount;i01++) {
+							PrintData[i][i01-1] = ""+tableModel_ms01.getValueAt(i, i01);
+						}
+					}
+					WTList0001100StockList.StockList(PrintData);
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//検索ボタン押下時の挙動
 		SearchBtn.addActionListener(new AbstractAction(){
