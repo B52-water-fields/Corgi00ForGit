@@ -101,7 +101,7 @@ public class T00015ArrivalPlanMsRt{
 			
 		String GetClWh			= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColClWh];			//ヘッダ担当倉庫
 		String GetClCd			= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColClCd];			//ヘッダ荷主CD
-		String GetCLName01		= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColClGpCD];			//ヘッダ荷主名
+		String GetCLName01		= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColCLName01];		//ヘッダ荷主名
 		String GetClGpCD		= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColClGpCD];			//ヘッダ荷主グループCD
 		String GetCLGpName01	= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColCLGpName01];		//ヘッダ荷主グループ名1
 		String GetArrNo			= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColArrNo];			//ヘッダ入荷予定NO
@@ -196,7 +196,7 @@ public class T00015ArrivalPlanMsRt{
 		Object[][] RtArrivalPlanMsRt = {
 				 {"ClWh"			,ColClWh			,"String"	,"ヘッダ担当倉庫"}
 				,{"ClCd"			,ColClCd			,"String"	,"ヘッダ荷主CD"}
-				,{"CLName01"		,ColClGpCD			,"String"	,"ヘッダ荷主名"}
+				,{"CLName01"		,ColCLName01		,"String"	,"ヘッダ荷主名"}
 				,{"ClGpCD"			,ColClGpCD			,"String"	,"ヘッダ荷主グループCD"}
 				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ名1"}
 				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"}

@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -32,7 +33,7 @@ public class WT0001000ArrivalPlanSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,1200,750,"Corgi00入荷予定検索","NK");
+		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,1200,800,"Corgi00入荷予定検索","NK");
 		JLabel userinfo = B00110FrameParts.UserInfo();
 		JButton exit_btn = B00110FrameParts.ExitBtn();
 		
@@ -153,6 +154,12 @@ public class WT0001000ArrivalPlanSearch{
 		JLabel LB2_SearchSpTel			= B00110FrameParts.JLabelSet(880,175, 40,20,"を含む"	,10,0);
 		JLabel LB2_SearchEntryDate		= B00110FrameParts.JLabelSet(930,250, 20,20,"～"		,10,2);
 		JLabel LB2_SearchUpdateDate		= B00110FrameParts.JLabelSet(930,275, 20,20,"～"		,10,2);
+		
+		JLabel LB_ArrNoAny	= B00110FrameParts.JLabelSet(  950, 25,200,20,"入荷予定No複数指定",10,2);
+		final JTextArea TB_ArrNoAny	= B00110FrameParts.JTextAreaSet(11);
+		JScrollPane SPArrNoAny 	= B00110FrameParts.JScrollPaneSet(950,50,200,175,TB_ArrNoAny);
+		PN_Search.add(LB_ArrNoAny);
+		PN_Search.add(SPArrNoAny);
 		
 		//予定日進む戻るボタン
 		JButton SearchPlanDateMinAfterBtn	= B00110FrameParts.BtnSet(170,175, 40,10,"▲",6);
@@ -597,11 +604,15 @@ public class WT0001000ArrivalPlanSearch{
 		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	610,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
-		final JCheckBox PlanListTgtAll = B00110FrameParts.JCheckBoxSet(730,640,200,20,"未発行分も対象にして",11);
+		final JCheckBox PlanListTgtAll = B00110FrameParts.JCheckBoxSet(730,640,220,20,"発行済分も対象にして",11);
 		main_fm.add(PlanListTgtAll);
 		//入荷予定票発行
-		JButton PlanListBtn = B00110FrameParts.BtnSet(	730,660,100,20,"予定票発行",11);
+		JButton PlanListBtn = B00110FrameParts.BtnSet(		730,660,100,20,"予定票発行",11);
 		main_fm.add(PlanListBtn);
+		
+		//貼札発行
+		JButton PlanPosterBtn = B00110FrameParts.BtnSet(	850,660,100,20,"貼札発行",11);
+		main_fm.add(PlanPosterBtn);
 		
 		RenewFg = true;
 		main_fm.setVisible(true);
@@ -623,6 +634,28 @@ public class WT0001000ArrivalPlanSearch{
 					}
 					
 					WTList0001000ArrivalPlan.ArrivalPlanList0001(TgtWhCd,TgtClCd,ArrNoList,NewPrintOnly);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//貼札発行ボタン押下時の挙動
+		PlanPosterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String TgtWhCd = B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];
+					String TgtClCd = B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];
+					ArrayList<String> ArrNoList = new ArrayList<String>();
+					boolean NewPrintOnly = true;
+					if(PlanListTgtAll.isSelected()) {NewPrintOnly=false;}
+					
+					int RowCount = tableModel_ms01.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						ArrNoList.add(""+tableModel_ms01.getValueAt(i,T00016ArrivalPlanHdRt.ColArrNo+1));
+					}
+					
+					WTList0001010ArrivalPoster.ArrivalPoster(TgtWhCd,TgtClCd,ArrNoList,NewPrintOnly);
 					RenewFg = true;
 				}
 			}
@@ -726,6 +759,14 @@ public class WT0001000ArrivalPlanSearch{
 					if(!"".equals(GetSearchActualQtyMax	)){GetSearchActualQtyMax	= B00020ToolsTextControl.num_only_String02(GetSearchActualQtyMax);}
 					if(!"".equals(GetSearchFixFg		)){GetSearchFixFg			= B00020ToolsTextControl.num_only_String02(GetSearchFixFg);}
 					
+					String WST = TB_ArrNoAny.getText();
+					if(null==WST) {WST="";}
+					String[] GetArrNoAny	= WST.split("\n");
+					for(int i=0;i<GetArrNoAny.length;i++) {
+						GetArrNoAny[i]	= B00020ToolsTextControl.Trim(GetArrNoAny[i]);
+						GetArrNoAny[i]	= B00020ToolsTextControl.num_only_String(GetArrNoAny[i]);
+					}
+					
 					ArrayList<String> SearchClWh 			= new ArrayList<String>();		//ヘッダ担当倉庫
 					ArrayList<String> SearchClCd 			= new ArrayList<String>();		//ヘッダ荷主CD
 					ArrayList<String> SearchCLName01 		= new ArrayList<String>();		//ヘッダ荷主名
@@ -809,6 +850,9 @@ public class WT0001000ArrivalPlanSearch{
 					if(!"".equals(GetSearchEntryDateMax		)){SearchEntryDateMax.add(GetSearchEntryDateMax);}
 					if(!"".equals(GetSearchUpdateDateMin	)){SearchUpdateDateMin.add(GetSearchUpdateDateMin);}
 					if(!"".equals(GetSearchUpdateDateMax	)){SearchUpdateDateMax.add(GetSearchUpdateDateMax);}
+					for(int i=0;i<GetArrNoAny.length;i++) {
+						if(!"".equals(GetArrNoAny[i]		)){SearchArrNo.add(GetArrNoAny[i]);}
+					}
 					
 					Object[][] ArrivalPlanHdRt = T00016ArrivalPlanHdRt.ArrivalPlanHdRt(
 							SearchClWh,				//ヘッダ担当倉庫
@@ -919,6 +963,7 @@ public class WT0001000ArrivalPlanSearch{
 					TB_SearchEntryDateMax.setText("");			//登録日
 					TB_SearchUpdateDateMin.setText("");			//更新日
 					TB_SearchUpdateDateMax.setText("");			//更新日
+					TB_ArrNoAny.setText("");
 					
 					/**************************************************************
 					検索結果消す

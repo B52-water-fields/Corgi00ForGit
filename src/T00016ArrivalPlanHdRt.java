@@ -98,8 +98,8 @@ public class T00016ArrivalPlanHdRt{
 			
 			String GetClWh			= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColClWh];		//ヘッダ担当倉庫
 			String GetClCd			= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColClCd];		//ヘッダ荷主CD
-			String GetCLName01		= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColClGpCD];		//ヘッダ荷主名
-			String GetClGpCD		= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.,ColClGpCD];		//ヘッダ荷主グループCD
+			String GetCLName01		= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColCLName01];	//ヘッダ荷主名
+			String GetClGpCD		= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColClGpCD];		//ヘッダ荷主グループCD
 			String GetCLGpName01	= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColCLGpName01];	//ヘッダ荷主グループ名1
 			String GetArrNo			= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColArrNo];		//ヘッダ入荷予定NO
 			String GetClArrNo		= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColClArrNo];		//ヘッダ荷主予定番号
@@ -117,7 +117,7 @@ public class T00016ArrivalPlanHdRt{
 			String GetArCom01		= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColArCom01];		//ヘッダコメント1
 			String GetArCom02		= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColArCom02];		//ヘッダコメント2
 			String GetArCom03		= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColArCom03];		//ヘッダコメント3
-			String Get"HdEntryDate	= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColEntryDate];	//ヘッダ登録日
+			String GetHdEntryDate	= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColEntryDate];	//ヘッダ登録日
 			String GetHdUpdateDate	= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColUpdateDate];	//ヘッダ更新日
 			String GetHdEntryUser	= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColEntryUser];	//ヘッダ登録者
 			String GetHdUpdateUser	= (String)ArrivalPlanHdRt[i][T00016ArrivalPlanHdRt.ColUpdateUser];	//ヘッダ更新者
@@ -161,7 +161,7 @@ public class T00016ArrivalPlanHdRt{
 		Object[][] RtArrivalPlanHdRt = {
 				 {"ClWh"			,ColClWh			,"String"	,"ヘッダ担当倉庫"}
 				,{"ClCd"			,ColClCd			,"String"	,"ヘッダ荷主CD"}
-				,{"CLName01"		,ColClGpCD			,"String"	,"ヘッダ荷主名"}
+				,{"CLName01"		,ColCLName01		,"String"	,"ヘッダ荷主名"}
 				,{"ClGpCD"			,ColClGpCD			,"String"	,"ヘッダ荷主グループCD"}
 				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ名1"}
 				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"}
@@ -1022,19 +1022,19 @@ public class T00016ArrivalPlanHdRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
-					if(null==rset01.getString("ClWh"			)){rt[counter][ColClWh]				="";}else{rt[counter][ColClWh]			=rset01.getString("ClWh");}			//ヘッダ担当倉庫
-					if(null==rset01.getString("ClCd"			)){rt[counter][ColClCd]				="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//ヘッダ荷主CD
-					if(null==rset01.getString("CLName01"		)){rt[counter][ColCLName01]			="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}		//ヘッダ荷主名
+					if(null==rset01.getString("ClWh"			)){rt[counter][ColClWh]			="";}else{rt[counter][ColClWh]			=rset01.getString("ClWh");}			//ヘッダ担当倉庫
+					if(null==rset01.getString("ClCd"			)){rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//ヘッダ荷主CD
+					if(null==rset01.getString("CLName01"		)){rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}		//ヘッダ荷主名
 					if(null==rset01.getString("ClGpCD"			)){rt[counter][ColClGpCD]			="";}else{rt[counter][ColClGpCD]		=rset01.getString("ClGpCD");}		//ヘッダ荷主グループCD
 					if(null==rset01.getString("CLGpName01"		)){rt[counter][ColCLGpName01]		="";}else{rt[counter][ColCLGpName01]	=rset01.getString("CLGpName01");}	//ヘッダ荷主グループ名1
 					if(null==rset01.getString("ArrNo"			)){rt[counter][ColArrNo]			="";}else{rt[counter][ColArrNo]			=rset01.getString("ArrNo");}		//ヘッダ入荷予定NO（WMS採番）
 					if(null==rset01.getString("ClArrNo"			)){rt[counter][ColClArrNo]			="";}else{rt[counter][ColClArrNo]		=rset01.getString("ClArrNo");}		//ヘッダ荷主予定番号
-					if(null==rset01.getTimestamp("PlanDate"		)){rt[counter][ColPlanDate]			="";}else{rt[counter][ColPlanDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("PlanDate"))[0];}			//ヘッダ入荷予定日
+					if(null==rset01.getTimestamp("PlanDate"		)){rt[counter][ColPlanDate]		="";}else{rt[counter][ColPlanDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("PlanDate"))[0];}			//ヘッダ入荷予定日
 					if(null==rset01.getTimestamp("ActualDate"	)){rt[counter][ColActualDate]		="";}else{rt[counter][ColActualDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("ActualDate"))[1];}		//ヘッダ入荷実績日
-					if(null==rset01.getString("SpCd"			)){rt[counter][ColSpCd]				="";}else{rt[counter][ColSpCd]			=rset01.getString("SpCd");}			//ヘッダ仕入先CD
-					if(null==rset01.getString("SpName01"		)){rt[counter][ColSpName01]			="";}else{rt[counter][ColSpName01]		=rset01.getString("SpName01");}		//ヘッダ仕入先名01
-					if(null==rset01.getString("SpName02"		)){rt[counter][ColSpName02]			="";}else{rt[counter][ColSpName02]		=rset01.getString("SpName02");}		//ヘッダ仕入先名02
-					if(null==rset01.getString("SpName03"		)){rt[counter][ColSpName03]			="";}else{rt[counter][ColSpName03]		=rset01.getString("SpName03");}		//ヘッダ仕入先名03
+					if(null==rset01.getString("SpCd"			)){rt[counter][ColSpCd]			="";}else{rt[counter][ColSpCd]			=rset01.getString("SpCd");}			//ヘッダ仕入先CD
+					if(null==rset01.getString("SpName01"		)){rt[counter][ColSpName01]		="";}else{rt[counter][ColSpName01]		=rset01.getString("SpName01");}		//ヘッダ仕入先名01
+					if(null==rset01.getString("SpName02"		)){rt[counter][ColSpName02]		="";}else{rt[counter][ColSpName02]		=rset01.getString("SpName02");}		//ヘッダ仕入先名02
+					if(null==rset01.getString("SpName03"		)){rt[counter][ColSpName03]		="";}else{rt[counter][ColSpName03]		=rset01.getString("SpName03");}		//ヘッダ仕入先名03
 					if(null==rset01.getString("SpPost"			)){rt[counter][ColSpPost]			="";}else{rt[counter][ColSpPost]		=rset01.getString("SpPost");}		//ヘッダ仕入先郵便
 					if(null==rset01.getString("SpAdd01"			)){rt[counter][ColSpAdd01]			="";}else{rt[counter][ColSpAdd01]		=rset01.getString("SpAdd01");}		//ヘッダ仕入先住所01
 					if(null==rset01.getString("SpAdd02"			)){rt[counter][ColSpAdd02]			="";}else{rt[counter][ColSpAdd02]		=rset01.getString("SpAdd02");}		//ヘッダ仕入先住所02
