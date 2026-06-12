@@ -370,10 +370,50 @@ public class WT0001010StockSearch{
 		JButton ListPrintBtn = B00110FrameParts.BtnSet(	250,660,100,20,"在庫表出力",11);
 		main_fm.add(ListPrintBtn);
 		
+		
+		JLabel LB_StockAdjust 	= B00110FrameParts.JLabelSet(370,640,100,20,"チェック行を"	,11,2);
+		main_fm.add(LB_StockAdjust);
+		//在庫調整ボタン
+		JButton StockAdjustBtn 	= B00110FrameParts.BtnSet(	370,660,100,20,"在庫調整",11);
+		main_fm.add(StockAdjustBtn);
+		
 		main_fm.add(PN_Search);
 		
 		RenewFg = true;
 		main_fm.setVisible(true);
+		
+		//在庫調整ボタン押下時の挙動
+		StockAdjustBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				String TgtWhCd 			= "";
+				String TgtClCd 			= "";
+				String TgtLoc 			= "";
+				String TgtItemCd 		= "";
+				String TgtLot 			= "";
+				String TgtExpdate 		= "";
+				String TgtActualDate 	= "";
+				
+				int RowCount 	= tableModel_ms01.getRowCount();
+				for(int i=0;i<RowCount;i++) {
+					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+						TgtWhCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColClCd+1);
+						TgtClCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColWhCd+1);
+						TgtLoc 			= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColLoc+1);
+						TgtItemCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColItemCd+1);
+						TgtLot 			= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColLot+1);
+						TgtExpdate 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColExpdate+1);
+						TgtActualDate 	= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColActualDate+1);
+					}
+				}
+				
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT0001020StockAdjust.StockAdjust(0,0,TgtWhCd,TgtClCd,TgtLoc,TgtItemCd,TgtLot,TgtExpdate,TgtActualDate);
+			}
+		});
 		
 		//在庫表出力ボタン押下時の挙動
 		ListPrintBtn.addActionListener(new AbstractAction(){

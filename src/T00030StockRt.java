@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class T00030StockRt{
+	//在庫情報をマスタ情報等とのJOINして返却する
 	/*
 	コピペ用
 	ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主コード
