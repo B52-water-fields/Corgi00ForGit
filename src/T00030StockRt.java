@@ -255,6 +255,25 @@ public class T00030StockRt{
 		SearchJanCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchJanCd);				//ソースマーク_BCD（バラ）
 		SearchItemMdNo			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemMdNo);			//商品型番
 		
+		//日付系最小は念のため00:00:00扱い
+		if(null!=SearchExpdateMin && 0<SearchExpdateMin.size()){				//消費期限最小
+			for(int i=0;i<SearchExpdateMin.size();i++){
+				String SetString = B00050ToolsDateTimeControl.DateFormat(SearchExpdateMin.get(i));
+				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
+				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchExpdateMin.set(i,SetString);
+			}
+		}
+		
+		if(null!=SearchActualDateMin && 0<SearchActualDateMin.size()){			//入荷実績日最小
+			for(int i=0;i<SearchExpdateMin.size();i++){
+				String SetString = B00050ToolsDateTimeControl.DateFormat(SearchActualDateMin.get(i));
+				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
+				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchActualDateMin.set(i,SetString);
+			}
+		}
+		
 		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのまま
 		if(null!=SearchExpdateMax && 0<SearchExpdateMax.size()){				//消費期限最大
 			for(int i=0;i<SearchExpdateMax.size();i++){

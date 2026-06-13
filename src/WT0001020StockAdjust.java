@@ -251,7 +251,17 @@ public class WT0001020StockAdjust{
 			}
 		}
 		if(MstCheckFg) {
-			//在庫検索結果対象特定されていなければ　マスタ情報を引っ張る
+			//在庫検索結果で対象特定されていなければ　マスタ情報を引っ張る
+			
+			//荷主コードを元に荷主情報取得
+			Object[][] ClMstRt = ClMstRt(GetClCd);
+			if(1==ClMstRt.length) {
+				GetClCd			=(String)ClMstRt[0][M00011ClMstRt.Colcl_cd];		//荷主CD
+				GetCLName		=(String)ClMstRt[0][M00011ClMstRt.ColCLName01];	//荷主名1
+				GetClGpCD		=(String)ClMstRt[0][M00011ClMstRt.ColClGpCD];		//荷主グループCD
+				GetClGpName		=(String)ClMstRt[0][M00011ClMstRt.ColClGpName];	//グループ名1
+			}
+			
 			//商品マスタ
 			
 			
@@ -296,6 +306,86 @@ public class WT0001020StockAdjust{
 				WT0001010StockSearch.StockSearch(0,0);
 			}
 		});
+	}
+	
+	
+	private static Object ItemMstRt() {
+		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
+		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
+		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
+		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
+		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
+		ArrayList<String> SearchDeliveryTypeCd03 	= new ArrayList<String>();	//運送タイプコード03
+		ArrayList<String> SearchDeliveryTypeCd04 	= new ArrayList<String>();	//運送タイプコード04
+		ArrayList<String> SearchDeliveryTypeCd05 	= new ArrayList<String>();	//運送タイプコード05
+		ArrayList<String> SearchItemMDNo 			= new ArrayList<String>();	//商品モデル番号（型番）
+		ArrayList<String> SearchCategoryCd 			= new ArrayList<String>();	//商品カテゴリCD
+		ArrayList<String> SearchCategoryName 		= new ArrayList<String>();	//商品カテゴリ名
+		ArrayList<String> SearchItemColorCd 		= new ArrayList<String>();	//商品カラーコード
+		ArrayList<String> SearchItemColorName 		= new ArrayList<String>();	//商品カラー名
+		ArrayList<String> SearchItemSizeCd 			= new ArrayList<String>();	//商品サイズコード
+		ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイズ名
+		ArrayList<String> SearchJanCd 				= new ArrayList<String>();	//JANCD
+		ArrayList<String> SearchTildFG 				= new ArrayList<String>();	//温度区分
+		ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
+		ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
+		boolean AllSearch = false;
+		
+		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+				SearchClGpCd,			//荷主グループコード
+				SearchItemCd,			//商品コード
+				SearchCLItemCd,			//荷主商品コード
+				SearchItemName,			//商品名
+				SearchDeliveryTypeCd01,	//運送タイプコード01
+				SearchDeliveryTypeCd02,	//運送タイプコード02
+				SearchDeliveryTypeCd03,	//運送タイプコード03
+				SearchDeliveryTypeCd04,	//運送タイプコード04
+				SearchDeliveryTypeCd05,	//運送タイプコード05
+				SearchItemMDNo,			//商品モデル番号（型番）
+				SearchCategoryCd,		//商品カテゴリCD
+				SearchCategoryName,		//商品カテゴリ名
+				SearchItemColorCd,		//商品カラーコード
+				SearchItemColorName,	//商品カラー名
+				SearchItemSizeCd,		//商品サイズコード
+				SearchItemSizeName,		//商品サイズ名
+				SearchJanCd,			//JANCD
+				SearchTildFG,			//温度区分
+				SearchTildName,			//温度区分名
+				SearchDelFg,			//削除フラグ
+				AllSearch);
+		
+		return ItemMstRt;
+	}
+	
+	private static Object[][] ClMstRt(String TgtClCd){
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLCD = new ArrayList<String>();
+		ArrayList<String> SearchCLName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		SearchCLCD.add(TgtClCd);
+		
+		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+			SearchClGpCD,
+			SearchCLCD,
+			SearchCLName,
+			SearchPost,
+			searchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			SearchWHCD,
+			AllSearch);
+		return ClMstRt;
 	}
 	
 	private static int GetSelectIndex(String[] SelectList,String TgtData ) {
