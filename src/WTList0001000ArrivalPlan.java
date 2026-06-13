@@ -509,7 +509,7 @@ public class WTList0001000ArrivalPlan{
 		ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
 		ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
 		ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
-		ArrayList<String> SearchType				= new ArrayList<String>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+		ArrayList<Integer> SearchType				= new ArrayList<Integer>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 		ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
 		ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
 		ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小

@@ -513,7 +513,7 @@ public class WT0001010StockSearch{
 					ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
 					ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
 					ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
-					ArrayList<String> SearchType				= new ArrayList<String>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+					ArrayList<Integer> SearchType				= new ArrayList<Integer>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 					ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
 					ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
 					ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小
@@ -550,7 +550,7 @@ public class WT0001010StockSearch{
 					if(!"".equals(GetSearchActualDateMax)){SearchActualDateMax.add(GetSearchActualDateMax);}	//入荷実績日終了
 					
 					if(!"".equals(GetSearchLoc)){SearchLoc.add(GetSearchLoc);}									//ロケーション
-					if(!"".equals(GetSearchType)){SearchType.add(GetSearchType);}								//ロケタイプ
+					if(!"".equals(GetSearchType)){SearchType.add(Integer.parseInt(GetSearchType));}			//ロケタイプ
 					if(!"".equals(GetSearchQtyMin)){SearchQtyMin.add(Integer.parseInt(GetSearchQtyMin));}		//数量最小
 					if(!"".equals(GetSearchQtyMax)){SearchQtyMax.add(Integer.parseInt(GetSearchQtyMax));}		//数量最大
 					if(!"".equals(GetSearchShipPlanQtyMin)){SearchShipPlanQtyMin.add(Integer.parseInt(GetSearchShipPlanQtyMin));}			//引当済数最小

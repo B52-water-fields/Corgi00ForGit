@@ -12,7 +12,7 @@ public class T00030StockRt{
 	ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
 	ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
 	ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
-	ArrayList<int> 	　SearchType				= new ArrayList<String>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	ArrayList<Integer>SearchType				= new ArrayList<Integer>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 	ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
 	ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
 	ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小
@@ -213,7 +213,7 @@ public class T00030StockRt{
 			ArrayList<String> SearchWhCd,				//倉庫コード
 			ArrayList<String> SearchClGpCD,				//荷主グループCD
 			ArrayList<String> SearchLoc,				//ロケーション
-			ArrayList<String> SearchType,				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+			ArrayList<Integer> SearchType,				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 			ArrayList<String> SearchItemCd,				//商品コード
 			ArrayList<String> SearchLot,				//ロット
 			ArrayList<String> SearchExpdateMin,			//消費期限最小
@@ -237,7 +237,7 @@ public class T00030StockRt{
 		SearchWhCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchWhCd);				//倉庫コード
 		SearchClGpCD			= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);			//荷主グループCD
 		SearchLoc				= B00150ArrayListControl.ArryListStringUniqueList(SearchLoc);				//ロケーション
-		SearchType				= B00150ArrayListControl.ArryListStringUniqueList(SearchType);				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+		SearchType				= B00150ArrayListControl.ArryListIntegerUniqueList(SearchType);				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 		SearchItemCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemCd);			//商品コード
 		SearchLot				= B00150ArrayListControl.ArryListStringUniqueList(SearchLot);				//ロット
 		SearchExpdateMin		= B00150ArrayListControl.ArryListStringUniqueList(SearchExpdateMin);		//消費期限最小

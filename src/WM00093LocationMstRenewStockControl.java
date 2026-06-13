@@ -1,5 +1,10 @@
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.swing.JOptionPane;
 
 public class WM00093LocationMstRenewStockControl{
 	//WM00093LocationMstRenewStockControl.LocationMstRenewStockControl(RenewLoc);
@@ -131,56 +136,62 @@ public class WM00093LocationMstRenewStockControl{
 	}
 	
 	private static void StockRenew(String GetSetClCd,String GetSetWhCd,String GetSetLoc,String GetSetType,int SetPickTgtLocFg) {
-		ArrayList<String>  SearchClCd			= new ArrayList<String>();	//荷主コード
-		ArrayList<String>  SearchWhCd			= new ArrayList<String>();	//倉庫コード
-		ArrayList<String>  SearchLoc			= new ArrayList<String>();	//ロケーション
-		ArrayList<String>  SearchItemCd			= new ArrayList<String>();	//商品コード
-		ArrayList<String>  SearchLot			= new ArrayList<String>();	//ロット
-		ArrayList<String>  SearchExpdateMin		= new ArrayList<String>();	//消費期限最小
-		ArrayList<String>  SearchActualDateMin	= new ArrayList<String>();	//入荷実績日最小
-		ArrayList<Integer> SearchQtyMin			= new ArrayList<Integer>();	//数量最小
-		ArrayList<Integer> SearchShipPlanQtyMin	= new ArrayList<Integer>();	//引当済数最小
-		ArrayList<Integer> SearchPossibleQtyMin	= new ArrayList<Integer>();	//出荷可能数最小
-		ArrayList<String>  SearchExpdateMax		= new ArrayList<String>();	//消費期限最大
-		ArrayList<String>  SearchActualDateMax	= new ArrayList<String>();	//入荷実績日最大
-		ArrayList<Integer> SearchQtyMax			= new ArrayList<Integer>();	//数量最大
-		ArrayList<Integer> SearchShipPlanQtyMax	= new ArrayList<Integer>();	//引当済数最大
-		ArrayList<Integer> SearchPossibleQtyMax	= new ArrayList<Integer>();	//出荷可能数最大
-		ArrayList<String>  SearchItemName		= new ArrayList<String>();	//商品名
-		ArrayList<String>  SearchClItemCd		= new ArrayList<String>();	//荷主商品コード
-		ArrayList<String>  SearchJanCd			= new ArrayList<String>();	//ソースマーク_BCD（バラ）
-		ArrayList<String>  SearchItemMdNo		= new ArrayList<String>();	//商品型番
-		boolean LocSortFg = true;					//ロケ順⇒商品CD⇒賞味期限⇒ロット⇒入荷日順で並べ替え　false なら商品CD⇒賞味期限⇒ロット⇒入荷日⇒ロケ
-		boolean LocExactMatch = false;				//ロケーション完全一致
-		boolean AllSearch = false;
+		
+		ArrayList<String> GetShipPlanQtyMSG=new ArrayList<String>();
+		ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主コード
+		ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
+		ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
+		ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
+		ArrayList<Integer>SearchType				= new ArrayList<Integer>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+		ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
+		ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
+		ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小
+		ArrayList<String> SearchExpdateMax			= new ArrayList<String>();			//消費期限最大
+		ArrayList<String> SearchActualDateMin		= new ArrayList<String>();			//入荷実績日最小
+		ArrayList<String> SearchActualDateMax		= new ArrayList<String>();			//入荷実績日最大
+		ArrayList<Integer> SearchQtyMin				= new ArrayList<Integer>();			//数量最小
+		ArrayList<Integer> SearchQtyMax				= new ArrayList<Integer>();			//数量最大
+		ArrayList<Integer> SearchShipPlanQtyMin		= new ArrayList<Integer>();			//引当済数最小
+		ArrayList<Integer> SearchShipPlanQtyMax		= new ArrayList<Integer>();			//引当済数最大
+		ArrayList<Integer> SearchPossibleQtyMin		= new ArrayList<Integer>();			//出荷可能数最小
+		ArrayList<Integer> SearchPossibleQtyMax		= new ArrayList<Integer>();			//出荷可能数最大
+		ArrayList<String> SearchItemName			= new ArrayList<String>();			//商品名
+		ArrayList<String> SearchClItemCd			= new ArrayList<String>();			//荷主商品コード
+		ArrayList<String> SearchJanCd				= new ArrayList<String>();			//ソースマーク_BCD（バラ）
+		ArrayList<String> SearchItemMdNo			= new ArrayList<String>();			//商品型番
+		boolean LocExactMatch = true;													//ロケーション完全一致
+		boolean AllSearch = false;														//全件検索
+		boolean SortItemcdMode = false;													//商品CDでソート
 		
 		SearchClCd.add(	GetSetClCd);	//荷主コード
 		SearchWhCd.add(	GetSetWhCd);	//倉庫コード
 		SearchLoc.add(	GetSetLoc);		//ロケーション
 		
-		Object[][] StrokRt = T00010StrokRt.StrokRt(
-				SearchClCd,				//荷主コード
-				SearchWhCd,				//倉庫コード
-				SearchLoc,				//ロケーション
-				SearchItemCd,			//商品コード
-				SearchLot,				//ロット
-				SearchExpdateMin,		//消費期限最小
-				SearchActualDateMin,	//入荷実績日最小
-				SearchQtyMin,			//数量最小
-				SearchShipPlanQtyMin,	//引当済数最小
-				SearchPossibleQtyMin,	//出荷可能数最小
-				SearchExpdateMax,		//消費期限最大
-				SearchActualDateMax,	//入荷実績日最大
-				SearchQtyMax,			//数量最大
-				SearchShipPlanQtyMax,	//引当済数最大
-				SearchPossibleQtyMax,	//出荷可能数最大
-				SearchItemName,			//商品名
-				SearchClItemCd,			//荷主商品コード
-				SearchJanCd,			//ソースマーク_BCD（バラ）
-				SearchItemMdNo,			//商品型番
-				LocSortFg,				//ロケ順⇒商品CD⇒賞味期限⇒ロット⇒入荷日順で並べ替え　false なら商品CD⇒賞味期限⇒ロット⇒入荷日⇒ロケ
-				LocExactMatch,			//ロケーション完全一致
-				AllSearch);
+		Object[][] StockRt= T00030StockRt.StockRt(
+								SearchClCd,				//荷主コード
+								SearchWhCd,				//倉庫コード
+								SearchClGpCD,			//荷主グループCD
+								SearchLoc,				//ロケーション
+								SearchType,				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+								SearchItemCd,			//商品コード
+								SearchLot,				//ロット
+								SearchExpdateMin,		//消費期限最小
+								SearchExpdateMax,		//消費期限最大
+								SearchActualDateMin,	//入荷実績日最小
+								SearchActualDateMax,	//入荷実績日最大
+								SearchQtyMin,			//数量最小
+								SearchQtyMax,			//数量最大
+								SearchShipPlanQtyMin,	//引当済数最小
+								SearchShipPlanQtyMax,	//引当済数最大
+								SearchPossibleQtyMin,	//出荷可能数最小
+								SearchPossibleQtyMax,	//出荷可能数最大
+								SearchItemName,			//商品名
+								SearchClItemCd,			//荷主商品コード
+								SearchJanCd,			//ソースマーク_BCD（バラ）
+								SearchItemMdNo,			//商品型番
+								LocExactMatch,			//ロケーション完全一致
+								AllSearch,
+								SortItemcdMode);
 		
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
 		
@@ -210,37 +221,38 @@ public class WM00093LocationMstRenewStockControl{
 		
 		String tgt_table = "WW0015Stock";
 		String[][] field_name = StrokSetString;
-		String[][] entry_data = new String[StrokRt.length][field_name.length];
+		String[][] entry_data = new String[StockRt.length][field_name.length];
 		String[] judg_field = StrokSetJudgeString;
-		String[][] judg_data = new String[StrokRt.length][judg_field.length];
+		String[][] judg_data = new String[StockRt.length][judg_field.length];
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 				
-		for(int i=0;i<StrokRt.length;i++) {
-			String GetClCd			= (String)StrokRt[i][T00010StrokRt.ColClCd];			//荷主コード
-			String GetWhCd			= (String)StrokRt[i][T00010StrokRt.ColWhCd];			//倉庫コード
-			String GetLoc			= (String)StrokRt[i][T00010StrokRt.ColLoc];			//ロケーション
-			String GetItemCd		= (String)StrokRt[i][T00010StrokRt.ColItemCd];			//商品コード
-			String GetLot			= (String)StrokRt[i][T00010StrokRt.ColLot];			//ロット
-			String GetExpdate		= (String)StrokRt[i][T00010StrokRt.ColExpdate];		//消費期限
-			String GetActualDate	= (String)StrokRt[i][T00010StrokRt.ColActualDate];	//入荷実績日
-			int GetQty				= (int)StrokRt[i][T00010StrokRt.ColQty];				//数量
-			int GetShipPlanQty		= (int)StrokRt[i][T00010StrokRt.ColShipPlanQty];		//引当済数
-			int GetPossibleQty		= (int)StrokRt[i][T00010StrokRt.ColPossibleQty];		//出荷可能数
-			String GetItemName		= (String)StrokRt[i][T00010StrokRt.ColItemName];		//商品名
-			String GetClItemCd		= (String)StrokRt[i][T00010StrokRt.ColClItemCd];		//荷主商品コード
-			String GetJanCd			= (String)StrokRt[i][T00010StrokRt.ColJanCd];			//ソースマーク_BCD（バラ）
-			String GetItemMdNo		= (String)StrokRt[i][T00010StrokRt.ColItemMdNo];		//商品型番
-			String GetEntryDate		= (String)StrokRt[i][T00010StrokRt.ColEntryDate];		//登録日時
-			String GetUpdateDate	= (String)StrokRt[i][T00010StrokRt.ColUpdateDate];	//更新日時
-			String GetEntryUser		= (String)StrokRt[i][T00010StrokRt.ColEntryUser];		//登録者
-			String GetUpdateUser	= (String)StrokRt[i][T00010StrokRt.ColUpdateUser];	//更新者
+		for(int i=0;i<StockRt.length;i++) {
+			String GetClCd			= (String)StockRt[i][T00030StockRt.ColClCd];			//荷主コード
+			String GetWhCd			= (String)StockRt[i][T00030StockRt.ColWhCd];			//倉庫コード
+			String GetLoc			= (String)StockRt[i][T00030StockRt.ColLoc];			//ロケーション
+			String GetItemCd		= (String)StockRt[i][T00030StockRt.ColItemCd];			//商品コード
+			String GetLot			= (String)StockRt[i][T00030StockRt.ColLot];			//ロット
+			String GetExpdate		= (String)StockRt[i][T00030StockRt.ColExpdate];		//消費期限
+			String GetActualDate	= (String)StockRt[i][T00030StockRt.ColActualDate];	//入荷実績日
+			int GetQty				= (int)StockRt[i][T00030StockRt.ColQty];				//数量
+			int GetShipPlanQty		= (int)StockRt[i][T00030StockRt.ColShipPlanQty];		//引当済数
+			int GetPossibleQty		= (int)StockRt[i][T00030StockRt.ColPossibleQty];		//出荷可能数
+			String GetItemName		= (String)StockRt[i][T00030StockRt.ColItemName];		//商品名
+			String GetClItemCd		= (String)StockRt[i][T00030StockRt.ColClItemCd];		//荷主商品コード
+			String GetJanCd			= (String)StockRt[i][T00030StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
+			String GetItemMdNo		= (String)StockRt[i][T00030StockRt.ColItemMdNo];		//商品型番
+			String GetEntryDate		= (String)StockRt[i][T00030StockRt.ColEntryDate];		//登録日時
+			String GetUpdateDate	= (String)StockRt[i][T00030StockRt.ColUpdateDate];	//更新日時
+			String GetEntryUser		= (String)StockRt[i][T00030StockRt.ColEntryUser];		//登録者
+			String GetUpdateUser	= (String)StockRt[i][T00030StockRt.ColUpdateUser];	//更新者
 			
 			if(1==SetPickTgtLocFg) {
 				//変更後ロケが引当可能なロケの場合
 				GetPossibleQty = GetQty - GetShipPlanQty;
 			}else {
 				//変更後ロケが引当不可なロケの場合
+				if(0<GetShipPlanQty) {GetShipPlanQtyMSG.add(GetLoc);}
 				GetPossibleQty = 0;
 			}
 			
@@ -268,6 +280,46 @@ public class WM00093LocationMstRenewStockControl{
 		
 		if(0<entry_data.length) {
 			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+			if(null!=GetShipPlanQtyMSG && 0<GetShipPlanQtyMSG.size()) {
+				GetShipPlanQtyMSG = B00150ArrayListControl.ArryListStringUniqueList(GetShipPlanQtyMSG);
+				for(int i=0;i<GetShipPlanQtyMSG.size();i++) {
+					GetShipPlanQtyMSG.set(i, "ロケーションCD:("+GetShipPlanQtyMSG.get(i)+")に引当済み在庫がありますが、引当不可に設定しました");
+				}
+				ErrView(GetShipPlanQtyMSG);
+				JOptionPane.showMessageDialog(null, "引当済商品が存在するロケを引当不可にしています\n注意しておくんなまし");
+			}
+		}
+	}
+	private static void ErrView(ArrayList<String>ErrMsg) {
+		//必要フォルダを生成する
+		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\Err";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\BK";
+		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		
+		//ファイルに出力
+		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		
+		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\Err";
+		
+		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
+		
+		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		
+		//古いエラーデータ削除
+		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		
+		//ファイル開く
+		File file = new File(ErrFP);
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			desktop.open(file);
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 	}
 	
