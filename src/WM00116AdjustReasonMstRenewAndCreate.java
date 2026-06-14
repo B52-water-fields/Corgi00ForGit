@@ -318,6 +318,8 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 		int non_msg_fg = 1;
 		
 		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		
+		B00100DefaultVariable.AdjustReasonDefault();
 	
 		return GetAdjustReasonCd;
 	}

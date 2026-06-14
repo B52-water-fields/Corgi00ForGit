@@ -106,6 +106,10 @@ public class B00100DefaultVariable{
 	
 	static final String[][] PurposeList 				= {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
 	
+	static String[][] SearchAdjustReasonList;
+	static String[][] AdjustReasonList;
+	
+	
 	/*
 	====================================================================
 	↑設定確認済み
@@ -172,7 +176,7 @@ public class B00100DefaultVariable{
 		
 		DeliveryType();				//運送タイプ
 		ClDefaultLoc();				//基本のロケーション
-		AdjustReasonDefault();		//在庫調整理由少なくとも一つ作る
+		AdjustReasonDefault();		//在庫調整理由少なくとも一つ作る ⇒在庫調整理由リスト生成
 		
 		ClParameterCheck();			//荷主別パラメータマスタの値チェック
 	}
@@ -201,7 +205,7 @@ public class B00100DefaultVariable{
 		}
 	}
 	
-	private static void AdjustReasonDefault() {
+	public static void AdjustReasonDefault() {
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
 		//在庫調整理由"0000"　"一般調整"無ければ作る
 		Object[][] SetString = {
@@ -220,6 +224,41 @@ public class B00100DefaultVariable{
 		int non_msg_fg = 1;
 		
 		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		
+		ArrayList<String> SearchClCd 				= new ArrayList<String>();	//荷主コード
+		ArrayList<String> SearchWhCd 				= new ArrayList<String>();	//倉庫コード
+		ArrayList<String> SearchAdjustReasonCd		= new ArrayList<String>();	//調整理由コード
+		ArrayList<String> SearchAdjustReasonName	= new ArrayList<String>();	//調整理由名
+		boolean AllSearch = false;
+		
+		SearchClCd.add(A00000Main.ClCd);
+		SearchWhCd.add(A00000Main.ClWh);
+		
+		Object[][] AdjustReasonRt	= M00110AdjustReasonRt.AdjustReasonRt(
+																	SearchClCd,				//荷主コード
+																	SearchWhCd,				//倉庫コード
+																	SearchAdjustReasonCd,	//調整理由コード
+																	SearchAdjustReasonName,	//調整理由名
+																	AllSearch);
+																	
+		SearchAdjustReasonList	= new String[3][AdjustReasonRt.length+1];
+		AdjustReasonList			= new String[3][AdjustReasonRt.length];
+		
+		SearchAdjustReasonList[0][0] = "未指定";
+		SearchAdjustReasonList[1][0] = "";
+		SearchAdjustReasonList[2][0] = "";
+		
+		for(int i=0;i<AdjustReasonRt.length;i++) {
+			SearchAdjustReasonList[0][i+1] = (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonCd]+":"+(String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonName];
+			SearchAdjustReasonList[1][i+1] = (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonCd];
+			SearchAdjustReasonList[2][i+1] = (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonName];
+			
+			AdjustReasonList[0][i] = (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonCd]+":"+(String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonName];
+			AdjustReasonList[1][i] = (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonCd];
+			AdjustReasonList[2][i] = (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonName];
+		}
+		
+		
 	}
 	private static void ClActualDateControlDefault() {
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
