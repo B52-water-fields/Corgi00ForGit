@@ -399,8 +399,8 @@ public class WT0001010StockSearch{
 				int RowCount 	= tableModel_ms01.getRowCount();
 				for(int i=0;i<RowCount;i++) {
 					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-						TgtWhCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColClCd+1);
-						TgtClCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColWhCd+1);
+						TgtWhCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColWhCd+1);
+						TgtClCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColClCd+1);
 						TgtLoc 			= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColLoc+1);
 						TgtItemCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColItemCd+1);
 						TgtLot 			= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColLot+1);
