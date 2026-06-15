@@ -472,7 +472,7 @@ public class WT0001020StockAdjust{
 					String GetClGpName		= "";					//グループ名1
 					String GetLoc			= SetLoc;				//ロケーション
 					String GetLocName		= "";					//ロケーション名
-					int GetType				= 0;					//ロケタイプ
+					
 					String GetItemCd		= SetItemCd;			//商品コード
 					String GetLot			= SetLot;				//ロット
 					String GetExpdate		= SetExpdate;			//消費期限
@@ -531,22 +531,35 @@ public class WT0001020StockAdjust{
 								);
 						if(1==StockRt.length) {
 							TB_LocName.setText((String)StockRt[0][T00030StockRt.ColLocName]);										//ロケーション名
-							GetType				= (int)StockRt[0][T00030StockRt.ColType];											//ロケタイプ
-							TB_LocType.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.LocType[1]		,GetType+"" ) );	//ロケタイプ
 							TB_ItemName.setText((String)StockRt[0][T00030StockRt.ColItemName01]);									//商品名
+							
+							int GetType			= (int)StockRt[0][T00030StockRt.ColType];											//ロケタイプ
+							TB_LocType.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.LocType[1]		,GetType+"" ) );	//ロケタイプ
 							
 							GetQty				= (int)StockRt[0][T00030StockRt.ColQty];				//総数量
 							GetShipPlanQty		= (int)StockRt[0][T00030StockRt.ColShipPlanQty];		//引当済総数
 							GetPossibleQty		= (int)StockRt[0][T00030StockRt.ColPossibleQty];		//出荷可能総数
 							
-							final JFormattedTextField TB_Qty				= B00110FrameParts.JFormattedTextFieldSet(	150,450, 70,20,""+ni.format(GetQty),11,1,"#,###");			//調整前数量
-							final JFormattedTextField TB_ShipPlanQty		= B00110FrameParts.JFormattedTextFieldSet(	150,475, 70,20,""+ni.format(GetShipPlanQty),11,1,"#,###");	//調整前引当済数
-							final JFormattedTextField TB_PossibleQty		= B00110FrameParts.JFormattedTextFieldSet(	150,500, 70,20,""+ni.format(GetPossibleQty),11,1,"#,###");	
+							TB_Qty.setText(""+ni.format(GetQty));					//調整前数量
+							TB_ShipPlanQty.setText(""+ni.format(GetShipPlanQty));	//調整前引当済数
+							TB_PossibleQty.setText(""+ni.format(GetPossibleQty));	//調整前出荷可能総数
 							
-							final JFormattedTextField TB_AfterQty			= B00110FrameParts.JFormattedTextFieldSet(	470,450, 70,20,""+ni.format(GetQty)			,11,1,"#,###");				//調整後数量
-							final JFormattedTextField TB_AfterShipPlanQty	= B00110FrameParts.JFormattedTextFieldSet(	470,475, 70,20,""+ni.format(GetShipPlanQty)	,11,1,"#,###");				//調整後引当済数
-							final JFormattedTextField TB_AfterPossibleQty	= B00110FrameParts.JFormattedTextFieldSet(	470,500, 70,20,""+ni.format(GetPossibleQty)	,11,1,"#,###");				//調整後出荷可能数
+							int AfterQty			= GetQty;						//調整後数量
+							int AfterShipPlanQty	= GetShipPlanQty;				//調整後引当済数
+							int AfterPossibleQty	= GetPossibleQty;				//調整後出荷可能数
 							
+							boolean ShipTgtLoc = true;
+							for(int i=0;i<B00100DefaultVariable.ShipPlovisionUnTgtList.length;i++) {
+								if(B00100DefaultVariable.ShipPlovisionUnTgtList[i].equals(""+GetType)) {
+									ShipTgtLoc = false;
+								}
+							}
+							if(ShipTgtLoc) {
+								AfterPossibleQty		= GetQty+SetAdjustQty;
+							}
+							TB_AfterQty.setText(""+ni.format(AfterQty));
+							TB_AfterShipPlanQty.setText(""+ni.format(AfterShipPlanQty));
+							TB_AfterPossibleQty.setText(""+ni.format(AfterPossibleQty));
 							MstCheckFg = false;
 						}
 					}
