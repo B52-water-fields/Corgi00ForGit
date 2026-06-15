@@ -47,7 +47,7 @@ public class B00100DefaultVariable{
 	static final String[][] SearchDelList 	= {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
 	static final String[][] DelList 			= {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};						//設定用削除区分
 	
-	static boolean ActualDateUnControl;		//入荷日管理しない場合false※荷主毎パラメータマスタActualDateUnControl Seq = 0によって制御します
+	static boolean ActualDateUnControl;		//入荷日管理しない場合true※荷主毎パラメータマスタActualDateUnControl Seq = 0によって制御します
 	
 	/*
 	 マスタ優先区分　※データ優先：荷主届け先変換時にデータ優先する。マスタ優先（名称：届先変換マスタ⇒届先マスタ　住所：届先マスタの情報をひく）
@@ -108,6 +108,9 @@ public class B00100DefaultVariable{
 	
 	static String[][] SearchAdjustReasonList;
 	static String[][] AdjustReasonList;
+	
+	static boolean ArrivalShipUnTgt;			//trueなら入荷時ロケも出荷対象にする
+	static String[] ShipPlovisionUnTgtList;	//引当対象にしないロケタイプ
 	
 	
 	/*
@@ -185,25 +188,91 @@ public class B00100DefaultVariable{
 		ClParameterDefault();	//基本のパラメータ設定
 		
 		ClActualDateControl();	//入荷日管理するかどうか
+		
+		ShipPlovisionUnTgtList();	//引当対象に"しない"ロケーションの一覧
 	}
 
 	public static void ClParameterDefault() {
 		ClActualDateControlDefault();		//パラメータマスタに入荷日管理しない設定で初期値設定
-		
+		ArrivalShipUnTgt();					//入荷時ロケ（ロケタイプ=8）を出荷対象にしない設定がなければ作る
 	}
 	
 	
 	private static void ClActualDateControl() {
-		ActualDateUnControl = false;
+		ActualDateUnControl = true;
 		Object[][] ParameterMstWankoRtFromParaCd = M00000ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("ActualDateUnControl");
 		if(0<ParameterMstWankoRtFromParaCd.length) {
 			for(int i=0;i<ParameterMstWankoRtFromParaCd.length;i++) {
 				if(0==(int)ParameterMstWankoRtFromParaCd[i][M00000ParameterMstWankoRt.ColParaCdSeq]&&0==(int)ParameterMstWankoRtFromParaCd[i][M00000ParameterMstWankoRt.ColParaInt01]) {		//パラメータ数値項目01 = 0なら入荷日管理する
-					ActualDateUnControl = true;
+					ActualDateUnControl = false;
 				}
 			}
 		}
 	}
+	
+	private static void ShipPlovisionUnTgtList() {
+		ArrivalShipUnTgt = true;
+		Object[][] ParameterMstWankoRtFromParaCd = M00000ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("ArrivalShipUnTgt");
+		if(0<ParameterMstWankoRtFromParaCd.length) {
+			for(int i=0;i<ParameterMstWankoRtFromParaCd.length;i++) {
+				if(0==(int)ParameterMstWankoRtFromParaCd[i][M00000ParameterMstWankoRt.ColParaCdSeq]&&0==(int)ParameterMstWankoRtFromParaCd[i][M00000ParameterMstWankoRt.ColParaInt01]) {		//パラメータ数値項目01 = 0なら入荷日管理する
+					ArrivalShipUnTgt = false;
+				}
+			}
+		}
+		if(ArrivalShipUnTgt) {
+			ShipPlovisionUnTgtList = new String[3];
+			ShipPlovisionUnTgtList[0]= "7";
+			ShipPlovisionUnTgtList[1]= "8";
+			ShipPlovisionUnTgtList[2]= "9";
+		}else {
+			ShipPlovisionUnTgtList = new String[2];
+			ShipPlovisionUnTgtList[0]= "8";
+			ShipPlovisionUnTgtList[1]= "9";
+		}
+	}
+	
+	private static void ArrivalShipUnTgt() {
+		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		//パラメータマスタ特に入荷時ロケの取扱いされていなければ入荷時ロケ対象に"しない"で設定
+		Object[][] SetString = {
+					 {"ClWh"		,"1","0","Key"	,A00000Main.ClWh}					//担当倉庫コード
+					,{"ClCd"		,"1","0","Key"	,A00000Main.ClCd}					//荷主コード
+					,{"ParaCd"		,"1","0","Key"	,"ArrivalShipUnTgt"}				//パラメータコード
+					,{"ParaCdSeq"	,"1","0","Key"	,"0"}					//ナンバリング
+					,{"ParaName"	,"1","0",""	,"入時ロケ出荷非対称設定"}			//パラメータ名
+					,{"ParaTxt01"	,"1","0",""	,"ParaInt01=1なら入荷時ロケを出荷対象にしない"}				//パラメータテキスト項目01
+					,{"ParaTxt02"	,"1","0",""	,""}				//パラメータテキスト項目02
+					,{"ParaTxt03"	,"1","0",""	,""}				//パラメータテキスト項目03
+					,{"ParaTxt04"	,"1","0",""	,""}				//パラメータテキスト項目04
+					,{"ParaTxt05"	,"1","0",""	,""}				//パラメータテキスト項目05
+					,{"ParaTxt06"	,"1","0",""	,""}				//パラメータテキスト項目06
+					,{"ParaTxt07"	,"1","0",""	,""}				//パラメータテキスト項目07
+					,{"ParaTxt08"	,"1","0",""	,""}				//パラメータテキスト項目08
+					,{"ParaTxt09"	,"1","0",""	,""}				//パラメータテキスト項目09
+					,{"ParaTxt10"	,"1","0",""	,""}				//パラメータテキスト項目10
+					,{"ParaInt01"	,"1","0",""	,"1"}				//パラメータ数値項目01
+					,{"ParaInt02"	,"1","0",""	,"0"}				//パラメータ数値項目02
+					,{"ParaInt03"	,"1","0",""	,"0"}				//パラメータ数値項目03
+					,{"ParaInt04"	,"1","0",""	,"0"}				//パラメータ数値項目04
+					,{"ParaInt05"	,"1","0",""	,"0"}				//パラメータ数値項目05
+					,{"ParaInt06"	,"1","0",""	,"0"}				//パラメータ数値項目06
+					,{"ParaInt07"	,"1","0",""	,"0"}				//パラメータ数値項目07
+					,{"ParaInt08"	,"1","0",""	,"0"}				//パラメータ数値項目08
+					,{"ParaInt09"	,"1","0",""	,"0"}				//パラメータ数値項目09
+					,{"ParaInt10"	,"1","0",""	,"0"}				//パラメータ数値項目10
+					,{"EntryDate"	,"1","0",""	,now_dtm}				//登録日
+					,{"UpdateDate"	,"1","0",""	,now_dtm}				//更新日
+					,{"EntryUser"	,"1","0",""	,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//登録者
+					,{"UpdateUser"	,"1","0",""	,"(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName}				//更新者
+					};
+		String tgt_table = "WM0000PARAMETER";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+	}
+	
 	
 	public static void AdjustReasonDefault() {
 		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];

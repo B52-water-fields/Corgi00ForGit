@@ -17,13 +17,23 @@ public class WT0001020StockAdjust{
 	static int SetX;
 	static int SetY;
 	static boolean RenewFg;
-	public static void StockAdjust(int x,int y,String TgtWhCd,String TgtClCd,String TgtLoc,String TgtItemCd,String TgtLot,String TgtExpdate,String TgtActualDate) {
-		A00000Main.LoginCheck();
+	
+	public static void StockAdjust(int x,int y,final String HandoverWhCd,final String HandoverClCd,final String HandoverLoc,final String HandoverItemCd,final String HandoverLot,final String HandoverExpdate,final String HandoverActualDate) {
+		A00000Main.LoginCheck();//
 		if(0==SetX) {SetX=100;}
 		if(0==SetY) {SetY=100;}
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
+		
+		String TgtWhCd		= HandoverWhCd;
+		String TgtClCd		= HandoverClCd;
+		String TgtLoc		= HandoverLoc;
+		String TgtItemCd	= HandoverItemCd;
+		String TgtLot		= HandoverLot;
+		String TgtExpdate	= HandoverExpdate;
+		String TgtActualDate= HandoverActualDate;
+		
 		
 		/******************************************
 			現在の在庫情報を取得する
@@ -97,68 +107,16 @@ public class WT0001020StockAdjust{
 				&&!"".equals(TgtExpdate)
 				&&!"".equals(TgtActualDate)
 				) {
-		
-			ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主コード
-			ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
-			ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
-			ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
-			ArrayList<Integer>SearchType				= new ArrayList<Integer>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-			ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
-			ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
-			ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小
-			ArrayList<String> SearchExpdateMax			= new ArrayList<String>();			//消費期限最大
-			ArrayList<String> SearchActualDateMin		= new ArrayList<String>();			//入荷実績日最小
-			ArrayList<String> SearchActualDateMax		= new ArrayList<String>();			//入荷実績日最大
-			ArrayList<Integer> SearchQtyMin				= new ArrayList<Integer>();			//数量最小
-			ArrayList<Integer> SearchQtyMax				= new ArrayList<Integer>();			//数量最大
-			ArrayList<Integer> SearchShipPlanQtyMin		= new ArrayList<Integer>();			//引当済数最小
-			ArrayList<Integer> SearchShipPlanQtyMax		= new ArrayList<Integer>();			//引当済数最大
-			ArrayList<Integer> SearchPossibleQtyMin		= new ArrayList<Integer>();			//出荷可能数最小
-			ArrayList<Integer> SearchPossibleQtyMax		= new ArrayList<Integer>();			//出荷可能数最大
-			ArrayList<String> SearchItemName			= new ArrayList<String>();			//商品名
-			ArrayList<String> SearchClItemCd			= new ArrayList<String>();			//荷主商品コード
-			ArrayList<String> SearchJanCd				= new ArrayList<String>();			//ソースマーク_BCD（バラ）
-			ArrayList<String> SearchItemMdNo			= new ArrayList<String>();			//商品型番
-			boolean LocExactMatch = true;													//ロケーション完全一致
-			boolean AllSearch = false;														//全件検索
-			boolean SortItemcdMode = false;													//商品CDでソート
 			
-			if(!"".equals(TgtWhCd		)) {SearchWhCd.add(				TgtWhCd);}
-			if(!"".equals(TgtClCd		)) {SearchClCd.add(				TgtClCd);}
-			if(!"".equals(TgtLoc		)) {SearchLoc.add(				TgtLoc);}
-			if(!"".equals(TgtItemCd		)) {SearchItemCd.add(			TgtItemCd);}
-			if(!"".equals(TgtLot		)) {SearchLot.add(				TgtLot);}
-			if(!"".equals(TgtExpdate	)) {SearchExpdateMin.add(		TgtExpdate);}
-			if(!"".equals(TgtActualDate	)) {SearchActualDateMin.add(	TgtActualDate);}
-			if(!"".equals(TgtExpdate	)) {SearchExpdateMax.add(		TgtExpdate);}
-			if(!"".equals(TgtActualDate	)) {SearchActualDateMax.add(	TgtActualDate);}
-			
-			Object[][] StockRt= T00030StockRt.StockRt(
-					SearchClCd,				//荷主コード
-					SearchWhCd,				//倉庫コード
-					SearchClGpCD,			//荷主グループCD
-					SearchLoc,				//ロケーション
-					SearchType,				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-					SearchItemCd,			//商品コード
-					SearchLot,				//ロット
-					SearchExpdateMin,		//消費期限最小
-					SearchExpdateMax,		//消費期限最大
-					SearchActualDateMin,	//入荷実績日最小
-					SearchActualDateMax,	//入荷実績日最大
-					SearchQtyMin,			//数量最小
-					SearchQtyMax,			//数量最大
-					SearchShipPlanQtyMin,	//引当済数最小
-					SearchShipPlanQtyMax,	//引当済数最大
-					SearchPossibleQtyMin,	//出荷可能数最小
-					SearchPossibleQtyMax,	//出荷可能数最大
-					SearchItemName,			//商品名
-					SearchClItemCd,			//荷主商品コード
-					SearchJanCd,			//ソースマーク_BCD（バラ）
-					SearchItemMdNo,			//商品型番
-					LocExactMatch,			//ロケーション完全一致
-					AllSearch,
-					SortItemcdMode);
-			
+			Object[][] StockRt= StockRt(
+										TgtWhCd,
+										TgtClCd,
+										TgtLoc,
+										TgtItemCd,
+										TgtLot,
+										TgtExpdate,
+										TgtActualDate
+										);
 			if(1==StockRt.length) {
 				GetClCd				= (String)StockRt[0][T00030StockRt.ColClCd];			//荷主コード
 				GetCLName			= (String)StockRt[0][T00030StockRt.ColCLName];			//荷主名1
@@ -257,6 +215,16 @@ public class WT0001020StockAdjust{
 				GetType				= (int)LocationMstRt[0][M00090LocationMstRt.ColType];			//ロケタイプ
 			}
 		}
+		
+		//入荷実績日空白で、入荷日管理しない場合デフォルト入荷実績日セット
+		if(B00100DefaultVariable.ActualDateUnControl && "".equals(GetActualDate)) {
+			GetActualDate = B00100DefaultVariable.DefaultActualDate;
+		}
+		//賞味期限空白の場合、一旦デフォルト賞味期限セット
+		if("".equals(GetExpdate)) {
+			GetExpdate = B00100DefaultVariable.DefaultExpDate;
+		}
+		
 		/******************************************
 			現在の在庫情報を取得するここまで
 		******************************************/
@@ -346,7 +314,7 @@ public class WT0001020StockAdjust{
 		
 		TB_ClCd.setSelectedIndex(	GetSelectIndex(B00100DefaultVariable.ClList[1]		,GetClCd ) );		//荷主コード
 		TB_WhCd.setSelectedIndex(	GetSelectIndex(B00100DefaultVariable.ClList[1]		,GetWhCd ) );		//倉庫コード
-		TB_LocType.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.LocType[1]	,GetType+"" ) );		//ロケータイプ
+		TB_LocType.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.LocType[1]		,GetType+"" ) );	//ロケタイプ
 		
 		TB_ClCd.setEnabled(false);		//荷主コード
 		TB_WhCd.setEnabled(false);		//倉庫コード
@@ -356,7 +324,7 @@ public class WT0001020StockAdjust{
 		
 		if(!MstCheckFg) {TB_Lot.setEditable(false);}
 		if(!MstCheckFg) {TB_Expdate.setEditable(false);}
-		if(!MstCheckFg) {TB_ActualDate.setEditable(false);}
+		if(!"".equals(GetActualDate)) {TB_ActualDate.setEditable(false);}
 		TB_Qty.setEditable(false);
 		TB_ShipPlanQty.setEditable(false);
 		TB_PossibleQty.setEditable(false);
@@ -441,6 +409,153 @@ public class WT0001020StockAdjust{
 		RenewFg = true;
 		main_fm.setVisible(true);
 		
+		
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String SetClCd		= B00020ToolsTextControl.Trim(B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
+					String SetWhCd		= B00020ToolsTextControl.Trim(B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
+					
+					String SetLoc			= B00020ToolsTextControl.Trim(TB_Loc.getText());							//ロケーション
+					String SetLocName		= B00020ToolsTextControl.Trim(TB_LocName.getText());						//ロケーション名
+					String SetLocType		= B00020ToolsTextControl.Trim(B00100DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケータイプ
+					String SetItemCd		= B00020ToolsTextControl.Trim(TB_ItemCd.getText());						//商品コード
+					String SetItemName		= B00020ToolsTextControl.Trim(TB_ItemName.getText());					//商品名
+					String SetLot			= B00020ToolsTextControl.Trim(TB_Lot.getText());						//ロット
+					String SetExpdate		= B00020ToolsTextControl.Trim(TB_Expdate.getText());					//消費期限
+					String SetActualDate	= B00020ToolsTextControl.Trim(TB_ActualDate.getText());					//入荷実績日
+					String SetAdjustReason	= B00020ToolsTextControl.Trim(B00100DefaultVariable.AdjustReasonList[1][TB_AdjustReason.getSelectedIndex()]);	//調整理由
+					
+					int SetQty				= TextToInt(TB_Qty.getText());				//調整前数量
+					int SetShipPlanQty		= TextToInt(TB_ShipPlanQty.getText());		//調整前引当済数
+					int SetPossibleQty		= TextToInt(TB_PossibleQty.getText());	
+					
+					int SetAdjustQty		= TextToInt(TB_AdjustQty.getText());			//調整数
+					int SetEntryMode		= TextToInt(TB_EntryMode.getText());
+					
+					int SetPlAdjustQty		= TextToInt(TB_PlAdjustQty.getText());
+					int SetCsAdjustQty		= TextToInt(TB_CsAdjustQty.getText());
+					int SetCtAdjustQty		= TextToInt(TB_CtAdjustQty.getText());
+					int SetBrAdjustQty		= TextToInt(TB_BrAdjustQty.getText());
+					
+					int SetAfterQty			= TextToInt(TB_AfterQty.getText());			//調整後数量
+					int SetAfterShipPlanQty	= TextToInt(TB_AfterShipPlanQty.getText());	//調整後引当済数
+					int SetAfterPossibleQty	= TextToInt(TB_AfterPossibleQty.getText());	//調整後出荷可能数
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//商品コードフォーカス消失時の挙動
+		TB_ItemCd.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String SetClCd			= B00020ToolsTextControl.Trim(B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
+					String SetWhCd			= B00020ToolsTextControl.Trim(B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
+					String SetLoc			= B00020ToolsTextControl.Trim(TB_Loc.getText());							//ロケーション
+					String SetItemCd		= B00020ToolsTextControl.Trim(TB_ItemCd.getText());		//商品コード
+					String SetLot			= B00020ToolsTextControl.Trim(TB_Lot.getText());		//ロット
+					String SetExpdate		= TextToDate(TB_Expdate.getText());					//消費期限
+					String SetActualDate	= TextToDate(TB_ActualDate.getText());					//入荷実績日
+					
+					int SetAdjustQty		= TextToInt(TB_AdjustQty.getText());			//調整数
+					
+					String GetClCd			= SetClCd;				//荷主コード
+					String GetCLName		= "";					//荷主名1
+					String GetWhCd			= SetWhCd;				//倉庫コード
+					String GetClWHName		= "";					//担当倉庫名
+					String GetClGpCD		= "";					//荷主グループCD
+					String GetClGpName		= "";					//グループ名1
+					String GetLoc			= SetLoc;				//ロケーション
+					String GetLocName		= "";					//ロケーション名
+					int GetType				= 0;					//ロケタイプ
+					String GetItemCd		= SetItemCd;			//商品コード
+					String GetLot			= SetLot;				//ロット
+					String GetExpdate		= SetExpdate;			//消費期限
+					String GetActualDate	= SetActualDate;		//入荷実績日
+					int GetQty				= 0;					//総数量
+					int GetShipPlanQty		= 0;					//引当済総数
+					int GetPossibleQty		= 0;					//出荷可能総数
+					String GetItemName		= "";					//商品名
+					String GetItemName01	= "";					//商品名1
+					String GetItemName02	= "";					//商品名2
+					String GetItemName03	= "";					//商品名3
+					String GetClItemCd		= "";					//荷主商品コード
+					String GetJanCd			= "";					//ソースマーク_BCD（バラ）
+					String GetItemMdNo		= "";					//商品型番
+					int GetCtUnitQty		= 0;					//カートン入数
+					int GetCsUnitQty		= 0;					//ケース入数
+					int GetPlUnitQty		= 0;					//パレット入数
+					String GetUnitName		= "";					//商品単位
+					String GetCtUnitName	= "";					//カートン商品単位
+					String GetCsUnitName	= "";					//ケース商品単位
+					String GetPlUnitName	= "";					//パレット商品単位
+					String GetEntryDate		= "";					//登録日時
+					String GetUpdateDate	= "";					//更新日時
+					String GetEntryUser		= "";					//登録者
+					String GetUpdateUser	= "";					//更新者
+					int GetBrQty			= 0;					//バラ数量
+					int GetBrShipPlanQty	= 0;					//引当済バラ数
+					int GetBrPossibleQty	= 0;					//出荷可能バラ数
+					int GetCtQty			= 0;					//カートン数量
+					int GetCtShipPlanQty	= 0;					//引当済カートン数
+					int GetCtPossibleQty	= 0;					//出荷可能カートン数
+					int GetCsQty			= 0;					//ケース数量
+					int GetCsShipPlanQty	= 0;					//引当済ケース数
+					int GetCsPossibleQty	= 0;					//出荷可能ケース数
+					int GetPlQty			= 0;					//パレット数量
+					int GetPlShipPlanQty	= 0;					//引当済パレット数
+					int GetPlPossibleQty	= 0;					//出荷可能パレット数
+					
+					boolean MstCheckFg = true;
+					if(!"".equals(SetClCd)
+						&& !"".equals(SetWhCd)
+						&& !"".equals(SetLoc)
+						&& !"".equals(SetItemCd)
+						&& !"".equals(SetLot)
+						&& !"".equals(SetExpdate)
+						&& !"".equals(SetActualDate)
+						) {
+						Object[][] StockRt= StockRt(
+								SetWhCd,
+								SetClCd,
+								SetLoc,
+								SetItemCd,
+								SetLot,
+								SetExpdate,
+								SetActualDate
+								);
+						if(1==StockRt.length) {
+							TB_LocName.setText((String)StockRt[0][T00030StockRt.ColLocName]);										//ロケーション名
+							GetType				= (int)StockRt[0][T00030StockRt.ColType];											//ロケタイプ
+							TB_LocType.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.LocType[1]		,GetType+"" ) );	//ロケタイプ
+							TB_ItemName.setText((String)StockRt[0][T00030StockRt.ColItemName01]);									//商品名
+							
+							GetQty				= (int)StockRt[0][T00030StockRt.ColQty];				//総数量
+							GetShipPlanQty		= (int)StockRt[0][T00030StockRt.ColShipPlanQty];		//引当済総数
+							GetPossibleQty		= (int)StockRt[0][T00030StockRt.ColPossibleQty];		//出荷可能総数
+							
+							final JFormattedTextField TB_Qty				= B00110FrameParts.JFormattedTextFieldSet(	150,450, 70,20,""+ni.format(GetQty),11,1,"#,###");			//調整前数量
+							final JFormattedTextField TB_ShipPlanQty		= B00110FrameParts.JFormattedTextFieldSet(	150,475, 70,20,""+ni.format(GetShipPlanQty),11,1,"#,###");	//調整前引当済数
+							final JFormattedTextField TB_PossibleQty		= B00110FrameParts.JFormattedTextFieldSet(	150,500, 70,20,""+ni.format(GetPossibleQty),11,1,"#,###");	
+							
+							final JFormattedTextField TB_AfterQty			= B00110FrameParts.JFormattedTextFieldSet(	470,450, 70,20,""+ni.format(GetQty)			,11,1,"#,###");				//調整後数量
+							final JFormattedTextField TB_AfterShipPlanQty	= B00110FrameParts.JFormattedTextFieldSet(	470,475, 70,20,""+ni.format(GetShipPlanQty)	,11,1,"#,###");				//調整後引当済数
+							final JFormattedTextField TB_AfterPossibleQty	= B00110FrameParts.JFormattedTextFieldSet(	470,500, 70,20,""+ni.format(GetPossibleQty)	,11,1,"#,###");				//調整後出荷可能数
+							
+							MstCheckFg = false;
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		
 		//調整数フォーカス消失時の挙動
 		TB_AdjustQty.addFocusListener(new FocusAdapter(){
 			@Override
@@ -465,11 +580,21 @@ public class WT0001020StockAdjust{
 					int AfterQty				= BeforeQty+AdjustQty;
 					int AfterShipPlanQty		= BeforeShipPlanQty;
 					
-					int AfterPossibleQty		= BeforePossibleQty+AdjustQty;
+					int AfterPossibleQty		= BeforePossibleQty;
 					
-					if(0==LocType||1==LocType||7==LocType) {	//引当可能ロケタイプB00100DefaultVariableに設定する予定
-						
+					boolean ShipTgtLoc = true;
+					for(int i=0;i<B00100DefaultVariable.ShipPlovisionUnTgtList.length;i++) {
+						if(B00100DefaultVariable.ShipPlovisionUnTgtList[i].equals(""+LocType)) {
+							ShipTgtLoc = false;
+						}
 					}
+					if(ShipTgtLoc) {
+						AfterPossibleQty		= BeforePossibleQty+AdjustQty;
+					}
+					
+					TB_AfterQty.setText(""+ni.format(AfterQty));
+					TB_AfterShipPlanQty.setText(""+ni.format(AfterShipPlanQty));
+					TB_AfterPossibleQty.setText(""+ni.format(AfterPossibleQty));
 					
 					if(0<SetPlUnitQty) {
 						PlAdjustQty = (int)(AdjustQty/SetPlUnitQty);
@@ -510,6 +635,31 @@ public class WT0001020StockAdjust{
 					
 					AdjustQty = PlAdjustQty*SetPlUnitQty+CsAdjustQty*SetCsUnitQty+CtAdjustQty*SetCtUnitQty+BrAdjustQty;
 					TB_AdjustQty.setText(""+ni.format(AdjustQty));
+					
+					int BeforeQty				= TextToInt(TB_Qty.getText());
+					int BeforeShipPlanQty		= TextToInt(TB_ShipPlanQty.getText());
+					int BeforePossibleQty		= TextToInt(TB_PossibleQty.getText());
+					
+					int LocType	= TextToInt(B00100DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケータイプ
+					
+					int AfterQty				= BeforeQty+AdjustQty;
+					int AfterShipPlanQty		= BeforeShipPlanQty;
+					
+					int AfterPossibleQty		= BeforePossibleQty;
+					
+					boolean ShipTgtLoc = true;
+					for(int i=0;i<B00100DefaultVariable.ShipPlovisionUnTgtList.length;i++) {
+						if(B00100DefaultVariable.ShipPlovisionUnTgtList[i].equals(""+LocType)) {
+							ShipTgtLoc = false;
+						}
+					}
+					if(ShipTgtLoc) {
+						AfterPossibleQty		= BeforePossibleQty+AdjustQty;
+					}
+					TB_AfterQty.setText(""+ni.format(AfterQty));
+					TB_AfterShipPlanQty.setText(""+ni.format(AfterShipPlanQty));
+					TB_AfterPossibleQty.setText(""+ni.format(AfterPossibleQty));
+					
 					RenewFg = true;
 				}
 			}
@@ -532,6 +682,30 @@ public class WT0001020StockAdjust{
 					
 					AdjustQty = PlAdjustQty*SetPlUnitQty+CsAdjustQty*SetCsUnitQty+CtAdjustQty*SetCtUnitQty+BrAdjustQty;
 					TB_AdjustQty.setText(""+ni.format(AdjustQty));
+					
+					int BeforeQty				= TextToInt(TB_Qty.getText());
+					int BeforeShipPlanQty		= TextToInt(TB_ShipPlanQty.getText());
+					int BeforePossibleQty		= TextToInt(TB_PossibleQty.getText());
+					
+					int LocType	= TextToInt(B00100DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケータイプ
+					
+					int AfterQty				= BeforeQty+AdjustQty;
+					int AfterShipPlanQty		= BeforeShipPlanQty;
+					
+					int AfterPossibleQty		= BeforePossibleQty;
+					
+					boolean ShipTgtLoc = true;
+					for(int i=0;i<B00100DefaultVariable.ShipPlovisionUnTgtList.length;i++) {
+						if(B00100DefaultVariable.ShipPlovisionUnTgtList[i].equals(""+LocType)) {
+							ShipTgtLoc = false;
+						}
+					}
+					if(ShipTgtLoc) {
+						AfterPossibleQty		= BeforePossibleQty+AdjustQty;
+					}
+					TB_AfterQty.setText(""+ni.format(AfterQty));
+					TB_AfterShipPlanQty.setText(""+ni.format(AfterShipPlanQty));
+					TB_AfterPossibleQty.setText(""+ni.format(AfterPossibleQty));
 					RenewFg = true;
 				}
 			}
@@ -554,6 +728,30 @@ public class WT0001020StockAdjust{
 					
 					AdjustQty = PlAdjustQty*SetPlUnitQty+CsAdjustQty*SetCsUnitQty+CtAdjustQty*SetCtUnitQty+BrAdjustQty;
 					TB_AdjustQty.setText(""+ni.format(AdjustQty));
+					
+					int BeforeQty				= TextToInt(TB_Qty.getText());
+					int BeforeShipPlanQty		= TextToInt(TB_ShipPlanQty.getText());
+					int BeforePossibleQty		= TextToInt(TB_PossibleQty.getText());
+					
+					int LocType	= TextToInt(B00100DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケータイプ
+					
+					int AfterQty				= BeforeQty+AdjustQty;
+					int AfterShipPlanQty		= BeforeShipPlanQty;
+					
+					int AfterPossibleQty		= BeforePossibleQty;
+					
+					boolean ShipTgtLoc = true;
+					for(int i=0;i<B00100DefaultVariable.ShipPlovisionUnTgtList.length;i++) {
+						if(B00100DefaultVariable.ShipPlovisionUnTgtList[i].equals(""+LocType)) {
+							ShipTgtLoc = false;
+						}
+					}
+					if(ShipTgtLoc) {
+						AfterPossibleQty		= BeforePossibleQty+AdjustQty;
+					}
+					TB_AfterQty.setText(""+ni.format(AfterQty));
+					TB_AfterShipPlanQty.setText(""+ni.format(AfterShipPlanQty));
+					TB_AfterPossibleQty.setText(""+ni.format(AfterPossibleQty));
 					RenewFg = true;
 				}
 			}
@@ -576,6 +774,30 @@ public class WT0001020StockAdjust{
 					
 					AdjustQty = PlAdjustQty*SetPlUnitQty+CsAdjustQty*SetCsUnitQty+CtAdjustQty*SetCtUnitQty+BrAdjustQty;
 					TB_AdjustQty.setText(""+ni.format(AdjustQty));
+					
+					int BeforeQty				= TextToInt(TB_Qty.getText());
+					int BeforeShipPlanQty		= TextToInt(TB_ShipPlanQty.getText());
+					int BeforePossibleQty		= TextToInt(TB_PossibleQty.getText());
+					
+					int LocType	= TextToInt(B00100DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケータイプ
+					
+					int AfterQty				= BeforeQty+AdjustQty;
+					int AfterShipPlanQty		= BeforeShipPlanQty;
+					
+					int AfterPossibleQty		= BeforePossibleQty;
+					
+					boolean ShipTgtLoc = true;
+					for(int i=0;i<B00100DefaultVariable.ShipPlovisionUnTgtList.length;i++) {
+						if(B00100DefaultVariable.ShipPlovisionUnTgtList[i].equals(""+LocType)) {
+							ShipTgtLoc = false;
+						}
+					}
+					if(ShipTgtLoc) {
+						AfterPossibleQty		= BeforePossibleQty+AdjustQty;
+					}
+					TB_AfterQty.setText(""+ni.format(AfterQty));
+					TB_AfterShipPlanQty.setText(""+ni.format(AfterShipPlanQty));
+					TB_AfterPossibleQty.setText(""+ni.format(AfterPossibleQty));
 					RenewFg = true;
 				}
 			}
@@ -620,6 +842,77 @@ public class WT0001020StockAdjust{
 		});
 	}
 	
+	private static Object[][] StockRt(String TgtWhCd,
+			String TgtClCd,
+			String TgtLoc,
+			String TgtItemCd,
+			String TgtLot,
+			String TgtExpdate,
+			String TgtActualDate){
+		ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主コード
+		ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
+		ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
+		ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
+		ArrayList<Integer>SearchType				= new ArrayList<Integer>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+		ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
+		ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
+		ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小
+		ArrayList<String> SearchExpdateMax			= new ArrayList<String>();			//消費期限最大
+		ArrayList<String> SearchActualDateMin		= new ArrayList<String>();			//入荷実績日最小
+		ArrayList<String> SearchActualDateMax		= new ArrayList<String>();			//入荷実績日最大
+		ArrayList<Integer> SearchQtyMin				= new ArrayList<Integer>();			//数量最小
+		ArrayList<Integer> SearchQtyMax				= new ArrayList<Integer>();			//数量最大
+		ArrayList<Integer> SearchShipPlanQtyMin		= new ArrayList<Integer>();			//引当済数最小
+		ArrayList<Integer> SearchShipPlanQtyMax		= new ArrayList<Integer>();			//引当済数最大
+		ArrayList<Integer> SearchPossibleQtyMin		= new ArrayList<Integer>();			//出荷可能数最小
+		ArrayList<Integer> SearchPossibleQtyMax		= new ArrayList<Integer>();			//出荷可能数最大
+		ArrayList<String> SearchItemName			= new ArrayList<String>();			//商品名
+		ArrayList<String> SearchClItemCd			= new ArrayList<String>();			//荷主商品コード
+		ArrayList<String> SearchJanCd				= new ArrayList<String>();			//ソースマーク_BCD（バラ）
+		ArrayList<String> SearchItemMdNo			= new ArrayList<String>();			//商品型番
+		boolean LocExactMatch = true;													//ロケーション完全一致
+		boolean AllSearch = false;														//全件検索
+		boolean SortItemcdMode = false;													//商品CDでソート
+		
+		if(!"".equals(TgtWhCd		)) {SearchWhCd.add(				TgtWhCd);}
+		if(!"".equals(TgtClCd		)) {SearchClCd.add(				TgtClCd);}
+		if(!"".equals(TgtLoc		)) {SearchLoc.add(				TgtLoc);}
+		if(!"".equals(TgtItemCd		)) {SearchItemCd.add(			TgtItemCd);}
+		if(!"".equals(TgtLot		)) {SearchLot.add(				TgtLot);}
+		if(!"".equals(TgtExpdate	)) {SearchExpdateMin.add(		TgtExpdate);}
+		if(!"".equals(TgtActualDate	)) {SearchActualDateMin.add(	TgtActualDate);}
+		if(!"".equals(TgtExpdate	)) {SearchExpdateMax.add(		TgtExpdate);}
+		if(!"".equals(TgtActualDate	)) {SearchActualDateMax.add(	TgtActualDate);}
+		
+		Object[][] StockRt= T00030StockRt.StockRt(
+				SearchClCd,				//荷主コード
+				SearchWhCd,				//倉庫コード
+				SearchClGpCD,			//荷主グループCD
+				SearchLoc,				//ロケーション
+				SearchType,				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				SearchItemCd,			//商品コード
+				SearchLot,				//ロット
+				SearchExpdateMin,		//消費期限最小
+				SearchExpdateMax,		//消費期限最大
+				SearchActualDateMin,	//入荷実績日最小
+				SearchActualDateMax,	//入荷実績日最大
+				SearchQtyMin,			//数量最小
+				SearchQtyMax,			//数量最大
+				SearchShipPlanQtyMin,	//引当済数最小
+				SearchShipPlanQtyMax,	//引当済数最大
+				SearchPossibleQtyMin,	//出荷可能数最小
+				SearchPossibleQtyMax,	//出荷可能数最大
+				SearchItemName,			//商品名
+				SearchClItemCd,			//荷主商品コード
+				SearchJanCd,			//ソースマーク_BCD（バラ）
+				SearchItemMdNo,			//商品型番
+				LocExactMatch,			//ロケーション完全一致
+				AllSearch,
+				SortItemcdMode);
+		
+		return StockRt;
+	}
+	
 	private static int TextToInt(String Tgt) {
 		if(null==Tgt) {Tgt	= "";}
 		Tgt	= B00020ToolsTextControl.Trim(Tgt);
@@ -627,6 +920,13 @@ public class WT0001020StockAdjust{
 		if("".equals(Tgt)) {Tgt	= "0";}
 		int rt	= Integer.parseInt(Tgt);
 		return rt;
+	}
+	
+	private static String TextToDate(String Tgt) {
+		if(null==Tgt) {Tgt	= "";}
+		Tgt	= B00020ToolsTextControl.Trim(Tgt);
+		Tgt	= B00050ToolsDateTimeControl.DateFormat(Tgt);
+		return Tgt;
 	}
 	
 	private static Object[][] LocationMstRt(String ClCd,String WhCd,String Loc){
