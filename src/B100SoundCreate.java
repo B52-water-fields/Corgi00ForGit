@@ -6,22 +6,39 @@ import javax.sound.sampled.SourceDataLine;
 public class B100SoundCreate{
 	static final double NS   = 0;		//無音
     
-	static final double C   = 32.703;	//ド		
-	static final double CS  = 34.648;	//ド#		
-	static final double D   = 36.708;	//レ		
-	static final double DS  = 38.891;	//レ#		
-	static final double E   = 41.203;	//ミ		
-	static final double F   = 43.654;	//ファ		
-	static final double FS  = 46.249;	//ファ#
-	static final double G   = 48.999;	//ソ
-	static final double GS  = 51.913;	//ソ#	
-	static final double A   = 55.000;	//ラ
-	static final double AS  = 58.270;	//ラ#
-	static final double B   = 61.735;	//シ
+	static final double C   	= 32.703;	//ド		
+	static final double CS  	= 34.648;	//ド#		
+	static final double D   	= 36.708;	//レ		
+	static final double DS  	= 38.891;	//レ#		
+	static final double E   	= 41.203;	//ミ		
+	static final double F   	= 43.654;	//ファ		
+	static final double FS  	= 46.249;	//ファ#
+	static final double G   	= 48.999;	//ソ
+	static final double GS  	= 51.913;	//ソ#	
+	static final double A   	= 55.000;	//ラ
+	static final double AS 	 	= 58.270;	//ラ#
+	static final double B   	= 61.735;	//シ
+	
+	static final double Do   	= C;	//ド		
+	static final double Do_S  	= CS;	//ド#		
+	static final double Re   	= D;	//レ		
+	static final double Re_S  	= DS;	//レ#		
+	static final double Mi   	= E;	//ミ		
+	static final double Fa   	= F;	//ファ		
+	static final double Fa_S  	= FS;	//ファ#
+	static final double So   	= G;	//ソ
+	static final double So_S  	= GS;	//ソ#	
+	static final double Ra   	= A;	//ラ
+	static final double Ra_S  	= AS;	//ラ#
+	static final double Si   	= B;	//シ
+	
 	
 	//G7を100msボリューム0.5で鳴らしたいときは
 	//Sound(C	,7	,100	,0.5)
 	//で指定します
+	//ドレミがお好みなら
+	//Sound(Do	,7	,100	,0.5)
+	//でも良いです
 	
 	public static void OK() {
 		byte[][] Sound = {
