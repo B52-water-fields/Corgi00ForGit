@@ -328,7 +328,7 @@ public class A00000Main{
 		Object[] SelectCl = new Object[ClList.length];
 		
 		for(int i=0;i<ClList.length;i++) {
-			SelectCl[i] = "("+ClList[i][M00011ClMstRt.Colcl_cd]+")"+ClList[i][M00011ClMstRt.ColCLName01];
+			SelectCl[i] = "("+ClList[i][M100ClMstRt.Colcl_cd]+")"+ClList[i][M100ClMstRt.ColCLName01];
 		}
 		
 		JLabel LbCLList = B100FrameParts.JLabelSet(	 20,80,100,20,"荷主選択:",11,1);
@@ -337,13 +337,13 @@ public class A00000Main{
 		if(null==ClCd||"".equals(ClCd)) {
 			TbCLList.setSelectedIndex(0);
 			for(int i=0;i<ClList.length;i++) {
-				if((""+ClList[i][M00011ClMstRt.Colcl_cd]).equals(LoginUserClient)){
+				if((""+ClList[i][M100ClMstRt.Colcl_cd]).equals(LoginUserClient)){
 					TbCLList.setSelectedIndex(i);
 				}
 			}
 		}else {
 			for(int i=0;i<ClList.length;i++) {
-				if((""+ClList[i][M00011ClMstRt.Colcl_cd]).equals(ClCd)){
+				if((""+ClList[i][M100ClMstRt.Colcl_cd]).equals(ClCd)){
 					TbCLList.setSelectedIndex(i);
 				}
 			}
@@ -381,7 +381,7 @@ public class A00000Main{
 				
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00010MainMenu.MainMenu(0,0);
+				A00001MainMenu.MainMenu(0,0);
 			}
 		});
     }
@@ -654,7 +654,7 @@ public class A00000Main{
 				break;
 				
 		}
-    	Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+    	Object[][] ClMstRt = M100ClMstRt.ClMstRt(
     				SearchClGpCD,SearchCLCD, SearchCLName, SearchPost, searchAdd,
     				SearchTel, SearchFax, SearchMail,  SearchCom, SearchWHCD, AllSearch);
     	

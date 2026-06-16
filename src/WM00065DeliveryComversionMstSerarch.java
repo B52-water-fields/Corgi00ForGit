@@ -114,7 +114,7 @@ public class WM00065DeliveryComversionMstSerarch{
 			
 			SearchClGpCD.add(A00000Main.ClGp);
 			
-			Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
+			Object[][] ClGpMstRt = M100ClGpMstRt.ClGpMstRt(
 					SearchClGpCD,
 					SearchCLGpName,
 					SearchPost,
@@ -125,7 +125,7 @@ public class WM00065DeliveryComversionMstSerarch{
 					SearchCom,
 					AllSearch);
 			if(0<ClGpMstRt.length) {
-				TB_SearchCLGpName.setText(""+ClGpMstRt[0][M00010ClGpMstRt.ColCLGpName01]);
+				TB_SearchCLGpName.setText(""+ClGpMstRt[0][M100ClGpMstRt.ColCLGpName01]);
 			}
 		}
 		TB_SearchClGpCD.setEnabled(false);
@@ -183,7 +183,7 @@ public class WM00065DeliveryComversionMstSerarch{
 		JButton SearchBtn = B100FrameParts.BtnSet(600,150,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtDeliveryComversionMstRt = M00060DeliveryComversionMstRt.RtDeliveryComversionMstRt();
+		Object[][] RtDeliveryComversionMstRt = M100DeliveryComversionMstRt.RtDeliveryComversionMstRt();
 		
 		String[] columnNames01 = new String[RtDeliveryComversionMstRt.length+1];
 		
@@ -358,7 +358,7 @@ public class WM00065DeliveryComversionMstSerarch{
 					if(!"".equals(GetSearchDelFg				)){SearchDelFg.add(					GetSearchDelFg);}
 					if(!"".equals(GetSearchMstPriorityFirstFg	)){SearchMstPriorityFirstFg.add(	GetSearchMstPriorityFirstFg);}
 					
-					Object[][] DeliveryComversionMstRt = M00060DeliveryComversionMstRt.DeliveryComversionMstRt(
+					Object[][] DeliveryComversionMstRt = M100DeliveryComversionMstRt.DeliveryComversionMstRt(
 										SearchClGpCD,
 										SearchCLGpName,
 										SearchCL_DECD,
@@ -506,7 +506,7 @@ public class WM00065DeliveryComversionMstSerarch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

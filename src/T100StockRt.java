@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class T00030StockRt{
+public class T100StockRt{
 	//在庫情報をマスタ情報等とのJOINして返却する
 	/*
 	コピペ用
@@ -33,7 +33,7 @@ public class T00030StockRt{
 	boolean AllSearch = false;														//全件検索
 	boolean SortItemcdMode = false;													//商品CDでソート
 	
-	Object[][] StockRt= T00030StockRt.StockRt(
+	Object[][] StockRt= T100StockRt.StockRt(
 							SearchClCd,				//荷主コード
 							SearchWhCd,				//倉庫コード
 							SearchClGpCD,			//荷主グループCD
@@ -60,52 +60,52 @@ public class T00030StockRt{
 							SortItemcdMode);
 							
 							
-	String GetClCd			= (String)StockRt[i][T00030StockRt.ColClCd];			//荷主コード
-	String GetCLName		= (String)StockRt[i][T00030StockRt.ColCLName];			//荷主名1
-	String GetWhCd			= (String)StockRt[i][T00030StockRt.ColWhCd];			//倉庫コード
-	String GetClWHName		= (String)StockRt[i][T00030StockRt.ColClWHName];		//担当倉庫名
-	String GetClGpCD		= (String)StockRt[i][T00030StockRt.ColClGpCD];			//荷主グループCD
-	String GetClGpName		= (String)StockRt[i][T00030StockRt.ColClGpName];		//グループ名1
-	String GetLoc			= (String)StockRt[i][T00030StockRt.ColLoc];				//ロケーション
-	String GetLocName		= (String)StockRt[i][T00030StockRt.ColLocName];			//ロケーション名
-	int GetType				= (int)StockRt[i][T00030StockRt.ColType];				//ロケタイプ
-	String GetItemCd		= (String)StockRt[i][T00030StockRt.ColItemCd];			//商品コード
-	String GetLot			= (String)StockRt[i][T00030StockRt.ColLot];				//ロット
-	String GetExpdate		= (String)StockRt[i][T00030StockRt.ColExpdate];			//消費期限
-	String GetActualDate	= (String)StockRt[i][T00030StockRt.ColActualDate];		//入荷実績日
-	int GetQty				= (int)StockRt[i][T00030StockRt.ColQty];				//総数量
-	int GetShipPlanQty		= (int)StockRt[i][T00030StockRt.ColShipPlanQty];		//引当済総数
-	int GetPossibleQty		= (int)StockRt[i][T00030StockRt.ColPossibleQty];		//出荷可能総数
-	String GetItemName		= (String)StockRt[i][T00030StockRt.ColItemName];		//商品名
-	String GetItemName01	= (String)StockRt[i][T00030StockRt.ColItemName01];		//商品名1
-	String GetItemName02	= (String)StockRt[i][T00030StockRt.ColItemName02];		//商品名2
-	String GetItemName03	= (String)StockRt[i][T00030StockRt.ColItemName03];		//商品名3
-	String GetClItemCd		= (String)StockRt[i][T00030StockRt.ColClItemCd];		//荷主商品コード
-	String GetJanCd			= (String)StockRt[i][T00030StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
-	String GetItemMdNo		= (String)StockRt[i][T00030StockRt.ColItemMdNo];		//商品型番
-	int GetCtUnitQty		= (int)StockRt[i][T00030StockRt.ColCtUnitQty];			//カートン入数
-	int GetCsUnitQty		= (int)StockRt[i][T00030StockRt.ColCsUnitQty];			//ケース入数
-	int GetPlUnitQty		= (int)StockRt[i][T00030StockRt.ColPlUnitQty];			//パレット入数
-	String GetUnitName		= (String)StockRt[i][T00030StockRt.ColUnitName];		//商品単位
-	String GetCtUnitName	= (String)StockRt[i][T00030StockRt.ColCtUnitName];		//カートン商品単位
-	String GetCsUnitName	= (String)StockRt[i][T00030StockRt.ColCsUnitName];		//ケース商品単位
-	String GetPlUnitName	= (String)StockRt[i][T00030StockRt.ColPlUnitName];		//パレット商品単位
-	String GetEntryDate		= (String)StockRt[i][T00030StockRt.ColEntryDate];		//登録日時
-	String GetUpdateDate	= (String)StockRt[i][T00030StockRt.ColUpdateDate];		//更新日時
-	String GetEntryUser		= (String)StockRt[i][T00030StockRt.ColEntryUser];		//登録者
-	String GetUpdateUser	= (String)StockRt[i][T00030StockRt.ColUpdateUser];		//更新者
-	int GetBrQty			= (int)StockRt[i][T00030StockRt.ColBrQty];				//バラ数量
-	int GetBrShipPlanQty	= (int)StockRt[i][T00030StockRt.ColBrShipPlanQty];		//引当済バラ数
-	int GetBrPossibleQty	= (int)StockRt[i][T00030StockRt.ColBrPossibleQty];		//出荷可能バラ数
-	int GetCtQty			= (int)StockRt[i][T00030StockRt.ColCtQty];				//カートン数量
-	int GetCtShipPlanQty	= (int)StockRt[i][T00030StockRt.ColCtShipPlanQty];		//引当済カートン数
-	int GetCtPossibleQty	= (int)StockRt[i][T00030StockRt.ColCtPossibleQty];		//出荷可能カートン数
-	int GetCsQty			= (int)StockRt[i][T00030StockRt.ColCsQty];				//ケース数量
-	int GetCsShipPlanQty	= (int)StockRt[i][T00030StockRt.ColCsShipPlanQty];		//引当済ケース数
-	int GetCsPossibleQty	= (int)StockRt[i][T00030StockRt.ColCsPossibleQty];		//出荷可能ケース数
-	int GetPlQty			= (int)StockRt[i][T00030StockRt.ColPlQty];				//パレット数量
-	int GetPlShipPlanQty	= (int)StockRt[i][T00030StockRt.ColPlShipPlanQty];		//引当済パレット数
-	int GetPlPossibleQty	= (int)StockRt[i][T00030StockRt.ColPlPossibleQty];		//出荷可能パレット数
+	String GetClCd			= (String)StockRt[i][T100StockRt.ColClCd];			//荷主コード
+	String GetCLName		= (String)StockRt[i][T100StockRt.ColCLName];			//荷主名1
+	String GetWhCd			= (String)StockRt[i][T100StockRt.ColWhCd];			//倉庫コード
+	String GetClWHName		= (String)StockRt[i][T100StockRt.ColClWHName];		//担当倉庫名
+	String GetClGpCD		= (String)StockRt[i][T100StockRt.ColClGpCD];			//荷主グループCD
+	String GetClGpName		= (String)StockRt[i][T100StockRt.ColClGpName];		//グループ名1
+	String GetLoc			= (String)StockRt[i][T100StockRt.ColLoc];				//ロケーション
+	String GetLocName		= (String)StockRt[i][T100StockRt.ColLocName];			//ロケーション名
+	int GetType				= (int)StockRt[i][T100StockRt.ColType];				//ロケタイプ
+	String GetItemCd		= (String)StockRt[i][T100StockRt.ColItemCd];			//商品コード
+	String GetLot			= (String)StockRt[i][T100StockRt.ColLot];				//ロット
+	String GetExpdate		= (String)StockRt[i][T100StockRt.ColExpdate];			//消費期限
+	String GetActualDate	= (String)StockRt[i][T100StockRt.ColActualDate];		//入荷実績日
+	int GetQty				= (int)StockRt[i][T100StockRt.ColQty];				//総数量
+	int GetShipPlanQty		= (int)StockRt[i][T100StockRt.ColShipPlanQty];		//引当済総数
+	int GetPossibleQty		= (int)StockRt[i][T100StockRt.ColPossibleQty];		//出荷可能総数
+	String GetItemName		= (String)StockRt[i][T100StockRt.ColItemName];		//商品名
+	String GetItemName01	= (String)StockRt[i][T100StockRt.ColItemName01];		//商品名1
+	String GetItemName02	= (String)StockRt[i][T100StockRt.ColItemName02];		//商品名2
+	String GetItemName03	= (String)StockRt[i][T100StockRt.ColItemName03];		//商品名3
+	String GetClItemCd		= (String)StockRt[i][T100StockRt.ColClItemCd];		//荷主商品コード
+	String GetJanCd			= (String)StockRt[i][T100StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
+	String GetItemMdNo		= (String)StockRt[i][T100StockRt.ColItemMdNo];		//商品型番
+	int GetCtUnitQty		= (int)StockRt[i][T100StockRt.ColCtUnitQty];			//カートン入数
+	int GetCsUnitQty		= (int)StockRt[i][T100StockRt.ColCsUnitQty];			//ケース入数
+	int GetPlUnitQty		= (int)StockRt[i][T100StockRt.ColPlUnitQty];			//パレット入数
+	String GetUnitName		= (String)StockRt[i][T100StockRt.ColUnitName];		//商品単位
+	String GetCtUnitName	= (String)StockRt[i][T100StockRt.ColCtUnitName];		//カートン商品単位
+	String GetCsUnitName	= (String)StockRt[i][T100StockRt.ColCsUnitName];		//ケース商品単位
+	String GetPlUnitName	= (String)StockRt[i][T100StockRt.ColPlUnitName];		//パレット商品単位
+	String GetEntryDate		= (String)StockRt[i][T100StockRt.ColEntryDate];		//登録日時
+	String GetUpdateDate	= (String)StockRt[i][T100StockRt.ColUpdateDate];		//更新日時
+	String GetEntryUser		= (String)StockRt[i][T100StockRt.ColEntryUser];		//登録者
+	String GetUpdateUser	= (String)StockRt[i][T100StockRt.ColUpdateUser];		//更新者
+	int GetBrQty			= (int)StockRt[i][T100StockRt.ColBrQty];				//バラ数量
+	int GetBrShipPlanQty	= (int)StockRt[i][T100StockRt.ColBrShipPlanQty];		//引当済バラ数
+	int GetBrPossibleQty	= (int)StockRt[i][T100StockRt.ColBrPossibleQty];		//出荷可能バラ数
+	int GetCtQty			= (int)StockRt[i][T100StockRt.ColCtQty];				//カートン数量
+	int GetCtShipPlanQty	= (int)StockRt[i][T100StockRt.ColCtShipPlanQty];		//引当済カートン数
+	int GetCtPossibleQty	= (int)StockRt[i][T100StockRt.ColCtPossibleQty];		//出荷可能カートン数
+	int GetCsQty			= (int)StockRt[i][T100StockRt.ColCsQty];				//ケース数量
+	int GetCsShipPlanQty	= (int)StockRt[i][T100StockRt.ColCsShipPlanQty];		//引当済ケース数
+	int GetCsPossibleQty	= (int)StockRt[i][T100StockRt.ColCsPossibleQty];		//出荷可能ケース数
+	int GetPlQty			= (int)StockRt[i][T100StockRt.ColPlQty];				//パレット数量
+	int GetPlShipPlanQty	= (int)StockRt[i][T100StockRt.ColPlShipPlanQty];		//引当済パレット数
+	int GetPlPossibleQty	= (int)StockRt[i][T100StockRt.ColPlPossibleQty];		//出荷可能パレット数
 	
 	*/
 	

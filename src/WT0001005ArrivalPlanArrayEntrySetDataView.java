@@ -241,7 +241,7 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 		int HdEntryCount = CheckClArrNoList.size();
 		int MsEntryCount = GetData.length;
 		
-		int[] ArrivalPlanNoRt = Tooles00010ArrivalPlan.ArrivalPlanNoRt(HdEntryCount);
+		int[] ArrivalPlanNoRt = Tooles100ArrivalPlan.ArrivalPlanNoRt(HdEntryCount);
 		
 		String[] SetHdClWh			= new String[HdEntryCount];			//ヘッダ担当倉庫
 		String[] SetHdClCd			= new String[HdEntryCount];			//ヘッダ荷主CD

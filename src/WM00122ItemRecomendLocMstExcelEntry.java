@@ -333,7 +333,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 						String CheckItemCd = ((String[])SetObRt[i][4])[i01];
 						
 						for(int i02=0;i02<ItemMstRt.length;i02++) {
-							String MstItemCd = (String)ItemMstRt[i02][M00070ItemMstRt.ColItemCd];				//商品コード
+							String MstItemCd = (String)ItemMstRt[i02][M100ItemMstRt.ColItemCd];				//商品コード
 							if(MstItemCd.equals(CheckItemCd)) {
 								UnHitFg = false;
 								i02=ItemMstRt.length+1;
@@ -355,7 +355,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 						boolean UnHitFg = true;
 						String CheckRecomendLoc = ((String[])SetObRt[i][4])[i01];
 						for(int i02=0;i02<LocMstRt.length;i02++) {
-							String MstLoc	= (String)LocMstRt[i02][M00090LocationMstRt.ColLoc];			//ロケーション
+							String MstLoc	= (String)LocMstRt[i02][M100LocationMstRt.ColLoc];			//ロケーション
 							if(MstLoc.equals(CheckRecomendLoc)) {
 								UnHitFg = false;
 								i02=LocMstRt.length+1;
@@ -568,7 +568,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		
 		SearchClGpCd.add(A00000Main.ClGp);
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード
@@ -605,7 +605,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		SearchClCd.add(A00000Main.ClCd);
 		SearchWhCd.add(A00000Main.ClWh);
 		
-		Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+		Object[][] LocationMstRt = M100LocationMstRt.LocationMstRt(
 				SearchClCd,		//荷主コード
 				SearchWhCd,		//倉庫コード
 				SearchLoc,		//ロケーション

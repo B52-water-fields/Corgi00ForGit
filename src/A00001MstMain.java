@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class W00020MstMain{
+public class A00001MstMain{
 	static int SetX;
 	static int SetY;
 	public static void MstMain(int x,int y) {
@@ -356,7 +356,7 @@ public class W00020MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00010MainMenu.MainMenu(0, 0);
+				A00001MainMenu.MainMenu(0, 0);
 			}
 		});
 	}

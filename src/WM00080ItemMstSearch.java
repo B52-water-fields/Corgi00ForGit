@@ -171,7 +171,7 @@ public class WM00080ItemMstSearch{
 		
 		main_fm.add(PN_Search);
 		
-		Object[][] RtSettingItemMstRt = M00070ItemMstRt.RtSettingItemMstRt();
+		Object[][] RtSettingItemMstRt = M100ItemMstRt.RtSettingItemMstRt();
 		
 		String[] columnNames01 = new String[RtSettingItemMstRt.length+1];
 		
@@ -355,7 +355,7 @@ public class WM00080ItemMstSearch{
 					if(!"".equals(GetSearchItemSizeCd		)){SearchItemSizeCd.add(GetSearchItemSizeCd);}				//商品サイズコード
 					if(!"".equals(GetSearchItemSizeName		)){SearchItemSizeName.add(GetSearchItemSizeName);}			//商品サイズ名
 					
-					Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+					Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 							SearchClGpCd,			//荷主グループコード
 							SearchItemCd,			//商品コード
 							SearchCLItemCd,			//荷主商品コード
@@ -513,7 +513,7 @@ public class WM00080ItemMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

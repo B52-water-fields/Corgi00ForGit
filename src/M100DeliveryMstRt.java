@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00040DeliveryMstRt{
+public class M100DeliveryMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchDECD 			= new ArrayList<String>();
@@ -22,7 +22,7 @@ public class M00040DeliveryMstRt{
 	boolean SearchTelExactMatch = false;
 	boolean AllSearch = false;
 	
-	Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+	Object[][] DeliveryMstRt = M100DeliveryMstRt.DeliveryMstRt(
 		SearchDECD,
 		SearchDepartmentCd,
 		SearchDEName,
@@ -40,33 +40,33 @@ public class M00040DeliveryMstRt{
 		AllSearch
 		);
 		
-	String GetDECD				= DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD];			//届先コード
-	String GetDepartmentCd		= DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd];	//部署CD
-	String GetDEName01			= DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName01];		//届先名1
-	String GetDEName02			= DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName02];		//届先名2
-	String GetDEName03			= DeliveryMstRt[i][M00040DeliveryMstRt.ColDEName03];		//届先名3
-	String GetPost				= DeliveryMstRt[i][M00040DeliveryMstRt.ColPost];			//届先郵便
-	String GetAdd01				= DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd01];			//届先住所1
-	String GetAdd02				= DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd02];			//届先住所2
-	String GetAdd03				= DeliveryMstRt[i][M00040DeliveryMstRt.ColAdd03];			//届先住所3
-	String GetTel				= DeliveryMstRt[i][M00040DeliveryMstRt.ColTel];				//届先電話
-	String GetFax				= DeliveryMstRt[i][M00040DeliveryMstRt.ColFax];				//届先FAX
-	String GetMail				= DeliveryMstRt[i][M00040DeliveryMstRt.ColMail];			//届先MAIL
-	String GetCom01				= DeliveryMstRt[i][M00040DeliveryMstRt.ColCom01];			//コメント1
-	String GetCom02				= DeliveryMstRt[i][M00040DeliveryMstRt.ColCom02];			//コメント2
-	String GetCom03				= DeliveryMstRt[i][M00040DeliveryMstRt.ColCom03];			//コメント3
-	String GetPrefecturesCd		= DeliveryMstRt[i][M00040DeliveryMstRt.ColPrefecturesCd];	//JIS県CD2桁
-	String GetMunicipalityCd	= DeliveryMstRt[i][M00040DeliveryMstRt.ColMunicipalityCd];	//JIS市区町村CD5桁
-	String GetPTMSCD			= DeliveryMstRt[i][M00040DeliveryMstRt.ColPTMSCD];			//基幹システム発着地コード
-	String GetEntryDate			= DeliveryMstRt[i][M00040DeliveryMstRt.ColEntryDate];		//データ登録日時
-	String GetUpdateDate		= DeliveryMstRt[i][M00040DeliveryMstRt.ColUpdateDate];		//データ更新日時
-	String GetEntryUser			= DeliveryMstRt[i][M00040DeliveryMstRt.ColEntryUser];		//登録者コード
-	String GetUpdateUser		= DeliveryMstRt[i][M00040DeliveryMstRt.ColUpdateUser];		//更新者コード
-	String GetFirstClient		= DeliveryMstRt[i][M00040DeliveryMstRt.ColFirstClient];		//登録した荷主CD
-	String GetLastClient		= DeliveryMstRt[i][M00040DeliveryMstRt.ColLastClient];		//更新した荷主CD
-	String GetDelFg				= DeliveryMstRt[i][M00040DeliveryMstRt.ColDelFg];			//削除区分
-	String GetFirstClientName	= DeliveryMstRt[i][M00040DeliveryMstRt.ColFirstClientName];	//登録した荷主名
-	String GetLastClientName	= DeliveryMstRt[i][M00040DeliveryMstRt.ColLastClientName];	//登録した荷主名
+	String GetDECD				= DeliveryMstRt[i][M100DeliveryMstRt.ColDECD];			//届先コード
+	String GetDepartmentCd		= DeliveryMstRt[i][M100DeliveryMstRt.ColDepartmentCd];	//部署CD
+	String GetDEName01			= DeliveryMstRt[i][M100DeliveryMstRt.ColDEName01];		//届先名1
+	String GetDEName02			= DeliveryMstRt[i][M100DeliveryMstRt.ColDEName02];		//届先名2
+	String GetDEName03			= DeliveryMstRt[i][M100DeliveryMstRt.ColDEName03];		//届先名3
+	String GetPost				= DeliveryMstRt[i][M100DeliveryMstRt.ColPost];			//届先郵便
+	String GetAdd01				= DeliveryMstRt[i][M100DeliveryMstRt.ColAdd01];			//届先住所1
+	String GetAdd02				= DeliveryMstRt[i][M100DeliveryMstRt.ColAdd02];			//届先住所2
+	String GetAdd03				= DeliveryMstRt[i][M100DeliveryMstRt.ColAdd03];			//届先住所3
+	String GetTel				= DeliveryMstRt[i][M100DeliveryMstRt.ColTel];				//届先電話
+	String GetFax				= DeliveryMstRt[i][M100DeliveryMstRt.ColFax];				//届先FAX
+	String GetMail				= DeliveryMstRt[i][M100DeliveryMstRt.ColMail];			//届先MAIL
+	String GetCom01				= DeliveryMstRt[i][M100DeliveryMstRt.ColCom01];			//コメント1
+	String GetCom02				= DeliveryMstRt[i][M100DeliveryMstRt.ColCom02];			//コメント2
+	String GetCom03				= DeliveryMstRt[i][M100DeliveryMstRt.ColCom03];			//コメント3
+	String GetPrefecturesCd		= DeliveryMstRt[i][M100DeliveryMstRt.ColPrefecturesCd];	//JIS県CD2桁
+	String GetMunicipalityCd	= DeliveryMstRt[i][M100DeliveryMstRt.ColMunicipalityCd];	//JIS市区町村CD5桁
+	String GetPTMSCD			= DeliveryMstRt[i][M100DeliveryMstRt.ColPTMSCD];			//基幹システム発着地コード
+	String GetEntryDate			= DeliveryMstRt[i][M100DeliveryMstRt.ColEntryDate];		//データ登録日時
+	String GetUpdateDate		= DeliveryMstRt[i][M100DeliveryMstRt.ColUpdateDate];		//データ更新日時
+	String GetEntryUser			= DeliveryMstRt[i][M100DeliveryMstRt.ColEntryUser];		//登録者コード
+	String GetUpdateUser		= DeliveryMstRt[i][M100DeliveryMstRt.ColUpdateUser];		//更新者コード
+	String GetFirstClient		= DeliveryMstRt[i][M100DeliveryMstRt.ColFirstClient];		//登録した荷主CD
+	String GetLastClient		= DeliveryMstRt[i][M100DeliveryMstRt.ColLastClient];		//更新した荷主CD
+	String GetDelFg				= DeliveryMstRt[i][M100DeliveryMstRt.ColDelFg];			//削除区分
+	String GetFirstClientName	= DeliveryMstRt[i][M100DeliveryMstRt.ColFirstClientName];	//登録した荷主名
+	String GetLastClientName	= DeliveryMstRt[i][M100DeliveryMstRt.ColLastClientName];	//登録した荷主名
 		
 	*/
 	
@@ -518,8 +518,8 @@ public class M00040DeliveryMstRt{
     	int DENo = 0;
     	
     	for(int i=0;i<DeliveryMstRt.length;i++) {
-    		if(2<(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).length()&&"AT".equals((""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).substring(0,2))) {
-    			String WST = B100TextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]);
+    		if(2<(""+DeliveryMstRt[i][M100DeliveryMstRt.ColDECD]).length()&&"AT".equals((""+DeliveryMstRt[i][M100DeliveryMstRt.ColDECD]).substring(0,2))) {
+    			String WST = B100TextControl.num_only_String(""+DeliveryMstRt[i][M100DeliveryMstRt.ColDECD]);
     			if("".equals(WST)){WST = "0";}
     			int wint = Integer.parseInt(WST);
 				if(DENo<wint) {
@@ -563,7 +563,7 @@ public class M00040DeliveryMstRt{
 		boolean AllSearch = false;
 		
 		SearchDECD.add(GetDECD);
-		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+		Object[][] DeliveryMstRt = M100DeliveryMstRt.DeliveryMstRt(
 				SearchDECD,	
 				SearchDepartmentCd,
 				SearchDEName,
@@ -582,7 +582,7 @@ public class M00040DeliveryMstRt{
 				);
 		int DeptNo = 0;
 		for(int i=0;i<DeliveryMstRt.length;i++) {
-			String WST = B100TextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd]);
+			String WST = B100TextControl.num_only_String(""+DeliveryMstRt[i][M100DeliveryMstRt.ColDepartmentCd]);
 			if("".equals(WST)) {WST = "0";}
 			int WINT = Integer.parseInt(WST);
 			if(WINT>DeptNo) {

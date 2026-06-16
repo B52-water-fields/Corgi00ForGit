@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00050DeliveryTypeMstRt{
+public class M100DeliveryTypeMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchDeliveryTypeNo 		= ArrayList<String>();
@@ -11,19 +11,19 @@ public class M00050DeliveryTypeMstRt{
 	ArrayList<String> SearchDeliveryTypeName	= ArrayList<String>();
 	boolean AllSearch = false;
 			
-	Object[][] DeliveryTypeMstRt = M00050DeliveryTypeMstRt.DeliveryTypeMstRt(
+	Object[][] DeliveryTypeMstRt = M100DeliveryTypeMstRt.DeliveryTypeMstRt(
 			SearchDeliveryTypeNo,
 			SearchDeliveryTypeCd,
 			SearchDeliveryTypeName,
 			AllSearch);
 			
-	int GetDeliveryTypeNo		= (int)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColDeliveryTypeNo];			//タイプ番号
-	String GetDeliveryTypeCd	= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColDeliveryTypeCd];		//運送タイプコード
-	String GetDeliveryTypeName	= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColDeliveryTypeName];	//運送タイプ名
-	String GetEntryDate			= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColEntryDate];			//データ登録日時
-	String GetUpdateDate		= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColUpdateDate];			//データ更新日時
-	String GetEntryUser			= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColEntryUser];			//登録者コード
-	String GetUpdateUser		= (String)DeliveryTypeMstRt[i][M00050DeliveryTypeMstRt.ColUpdateUser];			//更新者コード
+	int GetDeliveryTypeNo		= (int)DeliveryTypeMstRt[i][M100DeliveryTypeMstRt.ColDeliveryTypeNo];			//タイプ番号
+	String GetDeliveryTypeCd	= (String)DeliveryTypeMstRt[i][M100DeliveryTypeMstRt.ColDeliveryTypeCd];		//運送タイプコード
+	String GetDeliveryTypeName	= (String)DeliveryTypeMstRt[i][M100DeliveryTypeMstRt.ColDeliveryTypeName];	//運送タイプ名
+	String GetEntryDate			= (String)DeliveryTypeMstRt[i][M100DeliveryTypeMstRt.ColEntryDate];			//データ登録日時
+	String GetUpdateDate		= (String)DeliveryTypeMstRt[i][M100DeliveryTypeMstRt.ColUpdateDate];			//データ更新日時
+	String GetEntryUser			= (String)DeliveryTypeMstRt[i][M100DeliveryTypeMstRt.ColEntryUser];			//登録者コード
+	String GetUpdateUser		= (String)DeliveryTypeMstRt[i][M100DeliveryTypeMstRt.ColUpdateUser];			//更新者コード
 	*/
 	
 	

@@ -36,7 +36,7 @@ public class B100DefaultVariableWarehouse{
 		if(null==GetPTMSCD){GetPTMSCD="";}	//基幹SysCD
 		
 		if(null==GetWHCD||"".equals(GetWHCD)) {
-			GetWHCD = M00001WhMstRt.NewWhCdGet(1)[0];
+			GetWHCD = M100WhMstRt.NewWhCdGet(1)[0];
 		}
 		String tgt_table = "KM0010_WHMST";
 		String[][] field_name = new String[16][3];
@@ -145,7 +145,7 @@ public class B100DefaultVariableWarehouse{
 		
 		SearchWHCD.add(WhCd);
 		
-		Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+		Object[][] WhMstRt = M100WhMstRt.WhMstRt(
 					SearchWHCD, SearchWHName, SearchPost,
 					SearchAdd, SearchTel, SearchFax, SearchMail,
 					SearchCom, SearchPTMSCD,
@@ -168,7 +168,7 @@ public class B100DefaultVariableWarehouse{
 			
 			SearchWHCD.add(WhCd);
 			
-			Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+			Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 						SearchClGpCD,SearchCLCD,SearchCLName,SearchPost,searchAdd,
 						SearchTel,SearchFax,SearchMail, SearchCom,SearchWHCD,AllSearch);
 			
@@ -176,7 +176,7 @@ public class B100DefaultVariableWarehouse{
 			
 			if(0>=ClMstRt.length) {
 		    	//新規荷主コードを採番
-				String GetClCd = M00011ClMstRt.NewClCdGet(1)[0];
+				String GetClCd = M100ClMstRt.NewClCdGet(1)[0];
 				
 				String tgt_table = "KM0030_CLIENTMST";
 				String[][] field_name = new String[23][3];
@@ -265,9 +265,9 @@ public class B100DefaultVariableWarehouse{
 				
 				entry_data[0][0] = GetClCd;					//荷主CD
 				entry_data[0][1] = "ClGp000";					//荷主グループCD
-				entry_data[0][2] = ""+WhMstRt[0][M00001WhMstRt.ColNoWHCD];			//担当倉庫
-				entry_data[0][3] = "TMGHD"+WhMstRt[0][M00001WhMstRt.ColNoWHName]+"荷主";//荷主名1
-				entry_data[0][4] = "TMGHD"+WhMstRt[0][M00001WhMstRt.ColNoWHName];		//荷主名2
+				entry_data[0][2] = ""+WhMstRt[0][M100WhMstRt.ColNoWHCD];			//担当倉庫
+				entry_data[0][3] = "TMGHD"+WhMstRt[0][M100WhMstRt.ColNoWHName]+"荷主";//荷主名1
+				entry_data[0][4] = "TMGHD"+WhMstRt[0][M100WhMstRt.ColNoWHName];		//荷主名2
 				entry_data[0][5] = "";							//荷主名3
 				entry_data[0][6] = "5160023";					//郵便番号
 				entry_data[0][7] = "三重県伊勢市";				//住所1

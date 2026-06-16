@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00070ItemMstRt{
+public class M100ItemMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
@@ -28,7 +28,7 @@ public class M00070ItemMstRt{
 	ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
 	boolean AllSearch = false;
 	
-	Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+	Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 			SearchClGpCd,			//荷主グループコード
 			SearchItemCd,			//商品コード
 			SearchCLItemCd,			//荷主商品コード
@@ -51,70 +51,70 @@ public class M00070ItemMstRt{
 			SearchDelFg,			//削除フラグ
 			AllSearch);
 			
-	String GetClGpCd				= (String)ItemMstRt[i][M00070ItemMstRt.ColClGpCd];				//荷主グループコード
-	String GetCLGpName01			= (String)ItemMstRt[i][M00070ItemMstRt.ColCLGpName01];			//荷主グループ名1
-	String GetItemCd				= (String)ItemMstRt[i][M00070ItemMstRt.ColItemCd];				//商品コード
-	String GetCLItemCd				= (String)ItemMstRt[i][M00070ItemMstRt.ColCLItemCd];			//荷主商品コード
-	String GetItemName01			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemName01];			//商品名1
-	String GetItemName02			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemName02];			//商品名2
-	String GetItemName03			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemName03];			//商品名3
-	String GetDeliveryTypeCd01		= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeCd01];	//運送タイプコード01
-	String GetDeliveryTypeName01	= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeName01];	//運送タイプ名01
-	String GetDeliveryTypeCd02		= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeCd02];	//運送タイプコード02
-	String GetDeliveryTypeName02	= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeName02];	//運送タイプ名02
-	String GetDeliveryTypeCd03		= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeCd03];	//運送タイプコード03
-	String GetDeliveryTypeName03	= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeName03];	//運送タイプ名03
-	String GetDeliveryTypeCd04		= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeCd04];	//運送タイプコード04
-	String GetDeliveryTypeName04	= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeName04];	//運送タイプ名04
-	String GetDeliveryTypeCd05		= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeCd05];	//運送タイプコード05
-	String GetDeliveryTypeName05	= (String)ItemMstRt[i][M00070ItemMstRt.ColDeliveryTypeName05];	//運送タイプ名05
-	String GetPTMSCD				= (String)ItemMstRt[i][M00070ItemMstRt.ColPTMSCD];				//基幹システム商品コード
-	int GetCtQty					= (int)ItemMstRt[i][M00070ItemMstRt.ColCtQty];					//カートン入数
-	int GetCsQty					= (int)ItemMstRt[i][M00070ItemMstRt.ColCsQty];					//ケース入数
-	int GetPlQty					= (int)ItemMstRt[i][M00070ItemMstRt.ColPlQty];					//パレット入数
-	String GetJanCd					= (String)ItemMstRt[i][M00070ItemMstRt.ColJanCd];				//JANCD
-	String GetCtJan					= (String)ItemMstRt[i][M00070ItemMstRt.ColCtJan];				//カートンバーコード
-	String GetCsJan					= (String)ItemMstRt[i][M00070ItemMstRt.ColCsJan];				//ケースバーコード
-	String GetPlJan					= (String)ItemMstRt[i][M00070ItemMstRt.ColPlJan];				//パレットバーコード
-	String GetCtName				= (String)ItemMstRt[i][M00070ItemMstRt.ColCtName];				//カートン商品名称
-	String GetCsName				= (String)ItemMstRt[i][M00070ItemMstRt.ColCsName];				//ケース商品名称
-	String GetPlName				= (String)ItemMstRt[i][M00070ItemMstRt.ColPlName];				//パレット商品名称
-	String GetUnitName				= (String)ItemMstRt[i][M00070ItemMstRt.ColUnitName];			//商品単位
-	String GetCtUnitName			= (String)ItemMstRt[i][M00070ItemMstRt.ColCtUnitName];			//カートン商品単位
-	String GetCsUnitName			= (String)ItemMstRt[i][M00070ItemMstRt.ColCsUnitName];			//ケース商品単位
-	String GetPlUnitName			= (String)ItemMstRt[i][M00070ItemMstRt.ColPlUnitName];			//パレット商品単位
-	float GetItemWeight				= (float)ItemMstRt[i][M00070ItemMstRt.ColItemWeight];			//商品重量
-	float GetCtWeight				= (float)ItemMstRt[i][M00070ItemMstRt.ColCtWeight];				//カートン重量
-	float GetCsWeight				= (float)ItemMstRt[i][M00070ItemMstRt.ColCsWeight];				//ケース重量
-	float GetPlWeight				= (float)ItemMstRt[i][M00070ItemMstRt.ColPlWeight];				//パレット重量
-	float GetItemSize				= (float)ItemMstRt[i][M00070ItemMstRt.ColItemSize];				//商品サイズ
-	float GetCtSize					= (float)ItemMstRt[i][M00070ItemMstRt.ColCtSize];				//カートンサイズ
-	float GetCsSize					= (float)ItemMstRt[i][M00070ItemMstRt.ColCsSize];				//ケースサイズ
-	float GetPlSize					= (float)ItemMstRt[i][M00070ItemMstRt.ColPlSize];				//パレットサイズ
-	String GetRecomendLoc			= (String)ItemMstRt[i][M00070ItemMstRt.ColRecomendLoc];			//推奨ロケ
-	String GetItemMDNo				= (String)ItemMstRt[i][M00070ItemMstRt.ColItemMDNo];			//商品モデル番号（型番）
-	String GetCategoryCd			= (String)ItemMstRt[i][M00070ItemMstRt.ColCategoryCd];			//商品カテゴリCD
-	String GetCategoryName			= (String)ItemMstRt[i][M00070ItemMstRt.ColCategoryName];		//商品カテゴリ名
-	String GetItemColorCd			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemColorCd];			//商品カラーコード
-	String GetItemColorName			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemColorName];		//商品カラー名
-	String GetItemSizeCd			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemSizeCd];			//商品サイズコード
-	String GetItemSizeName			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemSizeName];		//商品サイズ名
-	String GetCom01					= (String)ItemMstRt[i][M00070ItemMstRt.ColCom01];				//コメント1
-	String GetCom02					= (String)ItemMstRt[i][M00070ItemMstRt.ColCom02];				//コメント2
-	String GetCom03					= (String)ItemMstRt[i][M00070ItemMstRt.ColCom03];				//コメント3
-	String GetTildFG				= (String)ItemMstRt[i][M00070ItemMstRt.ColTildFG];				//温度区分
-	String GetTildName				= (String)ItemMstRt[i][M00070ItemMstRt.ColTildName];			//温度区分名
-	String GetPictPass01			= (String)ItemMstRt[i][M00070ItemMstRt.ColPictPass01];			//画像パス01
-	String GetPictPass02			= (String)ItemMstRt[i][M00070ItemMstRt.ColPictPass02];			//画像パス02
-	String GetPictPass03			= (String)ItemMstRt[i][M00070ItemMstRt.ColPictPass03];			//画像パス03
-	String GetPictPass04			= (String)ItemMstRt[i][M00070ItemMstRt.ColPictPass04];			//画像パス04
-	String GetPictPass05			= (String)ItemMstRt[i][M00070ItemMstRt.ColPictPass05];			//画像パス05
-	int GetExpDateHowLong			= (int)ItemMstRt[i][M00070ItemMstRt.ColExpDateHowLong];			//賞味期限日数
-	String GetEntryDate				= (String)ItemMstRt[i][M00070ItemMstRt.ColEntryDate];			//データ登録日時
-	String GetUpdateDate			= (String)ItemMstRt[i][M00070ItemMstRt.ColUpdateDate];			//データ更新日時
-	String GetEntryUser				= (String)ItemMstRt[i][M00070ItemMstRt.ColEntryUser];			//登録者コード
-	String GetUpdateUser			= (String)ItemMstRt[i][M00070ItemMstRt.ColUpdateUser];			//更新者コード
-	int GetDelFg					= (int)ItemMstRt[i][M00070ItemMstRt.ColDelFg];					//削除フラグ
+	String GetClGpCd				= (String)ItemMstRt[i][M100ItemMstRt.ColClGpCd];				//荷主グループコード
+	String GetCLGpName01			= (String)ItemMstRt[i][M100ItemMstRt.ColCLGpName01];			//荷主グループ名1
+	String GetItemCd				= (String)ItemMstRt[i][M100ItemMstRt.ColItemCd];				//商品コード
+	String GetCLItemCd				= (String)ItemMstRt[i][M100ItemMstRt.ColCLItemCd];			//荷主商品コード
+	String GetItemName01			= (String)ItemMstRt[i][M100ItemMstRt.ColItemName01];			//商品名1
+	String GetItemName02			= (String)ItemMstRt[i][M100ItemMstRt.ColItemName02];			//商品名2
+	String GetItemName03			= (String)ItemMstRt[i][M100ItemMstRt.ColItemName03];			//商品名3
+	String GetDeliveryTypeCd01		= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeCd01];	//運送タイプコード01
+	String GetDeliveryTypeName01	= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeName01];	//運送タイプ名01
+	String GetDeliveryTypeCd02		= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeCd02];	//運送タイプコード02
+	String GetDeliveryTypeName02	= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeName02];	//運送タイプ名02
+	String GetDeliveryTypeCd03		= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeCd03];	//運送タイプコード03
+	String GetDeliveryTypeName03	= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeName03];	//運送タイプ名03
+	String GetDeliveryTypeCd04		= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeCd04];	//運送タイプコード04
+	String GetDeliveryTypeName04	= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeName04];	//運送タイプ名04
+	String GetDeliveryTypeCd05		= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeCd05];	//運送タイプコード05
+	String GetDeliveryTypeName05	= (String)ItemMstRt[i][M100ItemMstRt.ColDeliveryTypeName05];	//運送タイプ名05
+	String GetPTMSCD				= (String)ItemMstRt[i][M100ItemMstRt.ColPTMSCD];				//基幹システム商品コード
+	int GetCtQty					= (int)ItemMstRt[i][M100ItemMstRt.ColCtQty];					//カートン入数
+	int GetCsQty					= (int)ItemMstRt[i][M100ItemMstRt.ColCsQty];					//ケース入数
+	int GetPlQty					= (int)ItemMstRt[i][M100ItemMstRt.ColPlQty];					//パレット入数
+	String GetJanCd					= (String)ItemMstRt[i][M100ItemMstRt.ColJanCd];				//JANCD
+	String GetCtJan					= (String)ItemMstRt[i][M100ItemMstRt.ColCtJan];				//カートンバーコード
+	String GetCsJan					= (String)ItemMstRt[i][M100ItemMstRt.ColCsJan];				//ケースバーコード
+	String GetPlJan					= (String)ItemMstRt[i][M100ItemMstRt.ColPlJan];				//パレットバーコード
+	String GetCtName				= (String)ItemMstRt[i][M100ItemMstRt.ColCtName];				//カートン商品名称
+	String GetCsName				= (String)ItemMstRt[i][M100ItemMstRt.ColCsName];				//ケース商品名称
+	String GetPlName				= (String)ItemMstRt[i][M100ItemMstRt.ColPlName];				//パレット商品名称
+	String GetUnitName				= (String)ItemMstRt[i][M100ItemMstRt.ColUnitName];			//商品単位
+	String GetCtUnitName			= (String)ItemMstRt[i][M100ItemMstRt.ColCtUnitName];			//カートン商品単位
+	String GetCsUnitName			= (String)ItemMstRt[i][M100ItemMstRt.ColCsUnitName];			//ケース商品単位
+	String GetPlUnitName			= (String)ItemMstRt[i][M100ItemMstRt.ColPlUnitName];			//パレット商品単位
+	float GetItemWeight				= (float)ItemMstRt[i][M100ItemMstRt.ColItemWeight];			//商品重量
+	float GetCtWeight				= (float)ItemMstRt[i][M100ItemMstRt.ColCtWeight];				//カートン重量
+	float GetCsWeight				= (float)ItemMstRt[i][M100ItemMstRt.ColCsWeight];				//ケース重量
+	float GetPlWeight				= (float)ItemMstRt[i][M100ItemMstRt.ColPlWeight];				//パレット重量
+	float GetItemSize				= (float)ItemMstRt[i][M100ItemMstRt.ColItemSize];				//商品サイズ
+	float GetCtSize					= (float)ItemMstRt[i][M100ItemMstRt.ColCtSize];				//カートンサイズ
+	float GetCsSize					= (float)ItemMstRt[i][M100ItemMstRt.ColCsSize];				//ケースサイズ
+	float GetPlSize					= (float)ItemMstRt[i][M100ItemMstRt.ColPlSize];				//パレットサイズ
+	String GetRecomendLoc			= (String)ItemMstRt[i][M100ItemMstRt.ColRecomendLoc];			//推奨ロケ
+	String GetItemMDNo				= (String)ItemMstRt[i][M100ItemMstRt.ColItemMDNo];			//商品モデル番号（型番）
+	String GetCategoryCd			= (String)ItemMstRt[i][M100ItemMstRt.ColCategoryCd];			//商品カテゴリCD
+	String GetCategoryName			= (String)ItemMstRt[i][M100ItemMstRt.ColCategoryName];		//商品カテゴリ名
+	String GetItemColorCd			= (String)ItemMstRt[i][M100ItemMstRt.ColItemColorCd];			//商品カラーコード
+	String GetItemColorName			= (String)ItemMstRt[i][M100ItemMstRt.ColItemColorName];		//商品カラー名
+	String GetItemSizeCd			= (String)ItemMstRt[i][M100ItemMstRt.ColItemSizeCd];			//商品サイズコード
+	String GetItemSizeName			= (String)ItemMstRt[i][M100ItemMstRt.ColItemSizeName];		//商品サイズ名
+	String GetCom01					= (String)ItemMstRt[i][M100ItemMstRt.ColCom01];				//コメント1
+	String GetCom02					= (String)ItemMstRt[i][M100ItemMstRt.ColCom02];				//コメント2
+	String GetCom03					= (String)ItemMstRt[i][M100ItemMstRt.ColCom03];				//コメント3
+	String GetTildFG				= (String)ItemMstRt[i][M100ItemMstRt.ColTildFG];				//温度区分
+	String GetTildName				= (String)ItemMstRt[i][M100ItemMstRt.ColTildName];			//温度区分名
+	String GetPictPass01			= (String)ItemMstRt[i][M100ItemMstRt.ColPictPass01];			//画像パス01
+	String GetPictPass02			= (String)ItemMstRt[i][M100ItemMstRt.ColPictPass02];			//画像パス02
+	String GetPictPass03			= (String)ItemMstRt[i][M100ItemMstRt.ColPictPass03];			//画像パス03
+	String GetPictPass04			= (String)ItemMstRt[i][M100ItemMstRt.ColPictPass04];			//画像パス04
+	String GetPictPass05			= (String)ItemMstRt[i][M100ItemMstRt.ColPictPass05];			//画像パス05
+	int GetExpDateHowLong			= (int)ItemMstRt[i][M100ItemMstRt.ColExpDateHowLong];			//賞味期限日数
+	String GetEntryDate				= (String)ItemMstRt[i][M100ItemMstRt.ColEntryDate];			//データ登録日時
+	String GetUpdateDate			= (String)ItemMstRt[i][M100ItemMstRt.ColUpdateDate];			//データ更新日時
+	String GetEntryUser				= (String)ItemMstRt[i][M100ItemMstRt.ColEntryUser];			//登録者コード
+	String GetUpdateUser			= (String)ItemMstRt[i][M100ItemMstRt.ColUpdateUser];			//更新者コード
+	int GetDelFg					= (int)ItemMstRt[i][M100ItemMstRt.ColDelFg];					//削除フラグ
 	
 	*/
 	//戻り値カラム

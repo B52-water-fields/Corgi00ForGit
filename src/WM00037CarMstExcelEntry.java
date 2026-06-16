@@ -318,8 +318,8 @@ public class WM00037CarMstExcelEntry{
 						if(!"".equals(""+SetOb[ 1])) {
 							UnHitFg = true;
 							for(int i01=0;i01<WhMstRt.length;i01++) {
-								if((""+SetOb[ 1]).equals(""+WhMstRt[i01][M00001WhMstRt.ColNoWHCD])) {
-									SetOb[ 2] = ""+WhMstRt[i01][M00001WhMstRt.ColNoWHName];	//倉庫名
+								if((""+SetOb[ 1]).equals(""+WhMstRt[i01][M100WhMstRt.ColNoWHCD])) {
+									SetOb[ 2] = ""+WhMstRt[i01][M100WhMstRt.ColNoWHName];	//倉庫名
 									UnHitFg = false;
 								}
 							}
@@ -333,10 +333,10 @@ public class WM00037CarMstExcelEntry{
 						if(!"".equals(""+SetOb[ 3])) {
 							UnHitFg = true;
 							for(int i01=0;i01<ShippingCompanyMstRt.length;i01++) {
-								if((""+SetOb[ 3]).equals(""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyCd])) {
-									SetOb[ 4] = ""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名1
-									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社名2
-									SetOb[ 6] = ""+ShippingCompanyMstRt[i01][M00030ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社名3
+								if((""+SetOb[ 3]).equals(""+ShippingCompanyMstRt[i01][M100ShippingCompanyMstRt.ColShippingCompanyCd])) {
+									SetOb[ 4] = ""+ShippingCompanyMstRt[i01][M100ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名1
+									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][M100ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社名2
+									SetOb[ 6] = ""+ShippingCompanyMstRt[i01][M100ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社名3
 									UnHitFg = false;
 								}
 							}
@@ -350,13 +350,13 @@ public class WM00037CarMstExcelEntry{
 						if(!"".equals(""+SetOb[11])) {
 							UnHitFg = true;
 							for(int i01=0;i01<UserMstRt.length;i01++) {
-								if((""+SetOb[ 1]).equals(""+UserMstRt[i01][M00020UserMstRt.ColWHCD])
-									&& (""+SetOb[ 3]).equals(""+UserMstRt[i01][M00020UserMstRt.ColShippingCompanyCd])
-									&& (""+SetOb[11]).equals(""+UserMstRt[i01][M00020UserMstRt.ColUserCd])
+								if((""+SetOb[ 1]).equals(""+UserMstRt[i01][M100UserMstRt.ColWHCD])
+									&& (""+SetOb[ 3]).equals(""+UserMstRt[i01][M100UserMstRt.ColShippingCompanyCd])
+									&& (""+SetOb[11]).equals(""+UserMstRt[i01][M100UserMstRt.ColUserCd])
 									) {
-									SetOb[12] = ""+UserMstRt[i01][M00020UserMstRt.ColUserName01];	//ユーザー名1
-									SetOb[13] = ""+UserMstRt[i01][M00020UserMstRt.ColUserName02];	//ユーザー名2
-									SetOb[14] = ""+UserMstRt[i01][M00020UserMstRt.ColUserName03];	//ユーザー名3
+									SetOb[12] = ""+UserMstRt[i01][M100UserMstRt.ColUserName01];	//ユーザー名1
+									SetOb[13] = ""+UserMstRt[i01][M100UserMstRt.ColUserName02];	//ユーザー名2
+									SetOb[14] = ""+UserMstRt[i01][M100UserMstRt.ColUserName03];	//ユーザー名3
 									UnHitFg = false;
 								}
 							}
@@ -511,7 +511,7 @@ public class WM00037CarMstExcelEntry{
 		ArrayList<String> SearchPTMSCD = new ArrayList<String>();
 		boolean AllSearch = false;
 		
-		Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+		Object[][] WhMstRt = M100WhMstRt.WhMstRt(
 				SearchWHCD,
 				SearchWHName,
 				SearchPost,
@@ -536,7 +536,7 @@ public class WM00037CarMstExcelEntry{
 		ArrayList<String> SearchCom = new ArrayList<String>();
 		boolean AllSearch = false;
 		
-		Object[][] ShippingCompanyMstRt = M00030ShippingCompanyMstRt.ShippingCompanyMstRt(
+		Object[][] ShippingCompanyMstRt = M100ShippingCompanyMstRt.ShippingCompanyMstRt(
 				SearchShippingCompanyCd,
 				SearchCompanyName,
 				SearchPost,
@@ -566,7 +566,7 @@ public class WM00037CarMstExcelEntry{
 		ArrayList<String> SearchDelFg = new ArrayList<String>();
 		boolean AllSearch = false;
 		
-		Object[][] UserMstRt = M00020UserMstRt.UserMstRt(
+		Object[][] UserMstRt = M100UserMstRt.UserMstRt(
 				SearchWHCD,
 				SearchShippingCompanyCd,
 				SearchAuthorityFG,

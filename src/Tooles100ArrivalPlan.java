@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
-public class Tooles00010ArrivalPlan{
+public class Tooles100ArrivalPlan{
 	public static int[] ArrivalPlanNoRt(int NeedCount) {
 		ParameterMstWankoCheck();
 		Object[][] ParameterMstRt = ParameterMstRt();
 		int[] rt = new int[NeedCount];
 		
-		int MinArrNo		=(int)ParameterMstRt[0][M00000ParameterMstWankoRt.ColParaInt01];		//パラメータ数値項目01
-		int NowArrNo		=(int)ParameterMstRt[0][M00000ParameterMstWankoRt.ColParaInt02];		//パラメータ数値項目02
-		int MaxArrNo		=(int)ParameterMstRt[0][M00000ParameterMstWankoRt.ColParaInt03];		//パラメータ数値項目03
+		int MinArrNo		=(int)ParameterMstRt[0][M100ParameterMstWankoRt.ColParaInt01];		//パラメータ数値項目01
+		int NowArrNo		=(int)ParameterMstRt[0][M100ParameterMstWankoRt.ColParaInt02];		//パラメータ数値項目02
+		int MaxArrNo		=(int)ParameterMstRt[0][M100ParameterMstWankoRt.ColParaInt03];		//パラメータ数値項目03
 		
 		for(int i=0;i<NeedCount;i++) {
 			NowArrNo=NowArrNo+1;
@@ -152,7 +152,7 @@ String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1]
 		SearchParaCdSeqStr.add(0);
 		SearchParaCdSeqEnd.add(0);
 		
-		Object[][] ParameterMstWankoRt = M00000ParameterMstWankoRt.ParameterMstWankoRt(
+		Object[][] ParameterMstWankoRt = M100ParameterMstWankoRt.ParameterMstWankoRt(
 				SearchClWh,SearchClCd,
 				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
 				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,

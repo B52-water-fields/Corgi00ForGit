@@ -122,7 +122,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 			SearchDECD.add(DECD);
 			SearchDepartmentCd.add(DepartmentCd);
 			
-			Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+			Object[][] DeliveryMstRt = M100DeliveryMstRt.DeliveryMstRt(
 					SearchDECD,	
 					SearchDepartmentCd,
 					SearchDEName,
@@ -140,38 +140,38 @@ public class WM00061DeliveryMstRenewAndCreate{
 					AllSearch
 					);
 			if(0<DeliveryMstRt.length) {
-				TB_DECD.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDECD]);
-				TB_DepartmentCd.setText(	""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDepartmentCd]);
-				TB_DEName01.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName01]);
-				TB_DEName02.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName02]);
-				TB_DEName03.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDEName03]);
-				TB_Post.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColPost]);
-				TB_Add01.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd01]);
-				TB_Add02.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd02]);
-				TB_Add03.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColAdd03]);
-				TB_Tel.setText(				""+DeliveryMstRt[0][M00040DeliveryMstRt.ColTel]);
-				TB_Fax.setText(				""+DeliveryMstRt[0][M00040DeliveryMstRt.ColFax]);
-				TB_Mail.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColMail]);
-				TB_Com01.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColCom01]);
-				TB_Com02.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColCom02]);
-				TB_Com03.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColCom03]);
-				TB_PrefecturesCd.setText(	""+DeliveryMstRt[0][M00040DeliveryMstRt.ColPrefecturesCd]);
-				TB_MunicipalityCd.setText(	""+DeliveryMstRt[0][M00040DeliveryMstRt.ColMunicipalityCd]);
-				TB_PTMSCD.setText(			""+DeliveryMstRt[0][M00040DeliveryMstRt.ColPTMSCD]);
-				TB_EntryDate.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColEntryDate]);
-				TB_UpdateDate.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColUpdateDate]);
-				TB_EntryUser.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColEntryUser]);
-				TB_UpdateUser.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColUpdateUser]);
-				TB_FirstClient.setText(		"("+DeliveryMstRt[0][22]+")"+DeliveryMstRt[0][M00040DeliveryMstRt.ColFirstClientName]);
-				TB_LastClient.setText(		"("+DeliveryMstRt[0][23]+")"+DeliveryMstRt[0][M00040DeliveryMstRt.ColLastClientName]);
+				TB_DECD.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColDECD]);
+				TB_DepartmentCd.setText(	""+DeliveryMstRt[0][M100DeliveryMstRt.ColDepartmentCd]);
+				TB_DEName01.setText(		""+DeliveryMstRt[0][M100DeliveryMstRt.ColDEName01]);
+				TB_DEName02.setText(		""+DeliveryMstRt[0][M100DeliveryMstRt.ColDEName02]);
+				TB_DEName03.setText(		""+DeliveryMstRt[0][M100DeliveryMstRt.ColDEName03]);
+				TB_Post.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColPost]);
+				TB_Add01.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColAdd01]);
+				TB_Add02.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColAdd02]);
+				TB_Add03.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColAdd03]);
+				TB_Tel.setText(				""+DeliveryMstRt[0][M100DeliveryMstRt.ColTel]);
+				TB_Fax.setText(				""+DeliveryMstRt[0][M100DeliveryMstRt.ColFax]);
+				TB_Mail.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColMail]);
+				TB_Com01.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColCom01]);
+				TB_Com02.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColCom02]);
+				TB_Com03.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColCom03]);
+				TB_PrefecturesCd.setText(	""+DeliveryMstRt[0][M100DeliveryMstRt.ColPrefecturesCd]);
+				TB_MunicipalityCd.setText(	""+DeliveryMstRt[0][M100DeliveryMstRt.ColMunicipalityCd]);
+				TB_PTMSCD.setText(			""+DeliveryMstRt[0][M100DeliveryMstRt.ColPTMSCD]);
+				TB_EntryDate.setText(		""+DeliveryMstRt[0][M100DeliveryMstRt.ColEntryDate]);
+				TB_UpdateDate.setText(		""+DeliveryMstRt[0][M100DeliveryMstRt.ColUpdateDate]);
+				TB_EntryUser.setText(		""+DeliveryMstRt[0][M100DeliveryMstRt.ColEntryUser]);
+				TB_UpdateUser.setText(		""+DeliveryMstRt[0][M100DeliveryMstRt.ColUpdateUser]);
+				TB_FirstClient.setText(		"("+DeliveryMstRt[0][22]+")"+DeliveryMstRt[0][M100DeliveryMstRt.ColFirstClientName]);
+				TB_LastClient.setText(		"("+DeliveryMstRt[0][23]+")"+DeliveryMstRt[0][M100DeliveryMstRt.ColLastClientName]);
 				for(int i=0;i<B100DefaultVariable.DelList[1].length;i++) {
-					if(B100DefaultVariable.DelList[1][i].equals(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDelFg])) {
+					if(B100DefaultVariable.DelList[1][i].equals(""+DeliveryMstRt[0][M100DeliveryMstRt.ColDelFg])) {
 						TB_DelFg.setSelectedIndex(i);
 					}
 				}
 				
 				//JISコード届け先はメンテナンス禁止
-				if("JIS".equals(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDepartmentCd])) {
+				if("JIS".equals(""+DeliveryMstRt[0][M100DeliveryMstRt.ColDepartmentCd])) {
 					TB_DECD.setEnabled(false);
 					TB_DepartmentCd.setEnabled(false);
 					TB_DEName01.setEnabled(false);
@@ -360,7 +360,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 					int RowCount = tableModel_ms01.getRowCount();
 					boolean KickFg = false;
 					
-					String GetDECD = M00040DeliveryMstRt.DeliveryCdGet(1)[0];
+					String GetDECD = M100DeliveryMstRt.DeliveryCdGet(1)[0];
 					String GetDepartmentCd = "0000";
 					
 					KickFg = true;
@@ -546,7 +546,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
 							GetDECD = ""+tableModel_ms01.getValueAt(i, 1);
-							GetDepartmentCd = M00040DeliveryMstRt.NewDepartmentCd(GetDECD);
+							GetDepartmentCd = M100DeliveryMstRt.NewDepartmentCd(GetDECD);
 							KickFg = true;
 						}
 					}
@@ -715,7 +715,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 							Object[][] SameDelivery = SameDelivery(GetPost,GetTel);
 							
 							if(0==SameDelivery.length) {
-								String[] DeliveryCdGet = M00040DeliveryMstRt.DeliveryCdGet(1);
+								String[] DeliveryCdGet = M100DeliveryMstRt.DeliveryCdGet(1);
 								GetDECD = DeliveryCdGet[0];
 								GetDepartmentCd = "0000";
 								KickFg=true;
@@ -728,10 +728,10 @@ public class WM00061DeliveryMstRenewAndCreate{
 									Object[] SetOb = new Object[5];
 									
 									SetOb[0] = false;
-									SetOb[ 1] = ""+SameDelivery[i][M00040DeliveryMstRt.ColDECD];			//届先CD
-									SetOb[ 2] = ""+SameDelivery[i][M00040DeliveryMstRt.ColDepartmentCd];	//部署CD
-									SetOb[ 3] = ""+SameDelivery[i][M00040DeliveryMstRt.ColDEName01];		//届先名１
-									SetOb[ 4] = ""+SameDelivery[i][M00040DeliveryMstRt.ColAdd01]+SameDelivery[i][M00040DeliveryMstRt.ColAdd02]+SameDelivery[i][M00040DeliveryMstRt.ColAdd03];	//届先住所
+									SetOb[ 1] = ""+SameDelivery[i][M100DeliveryMstRt.ColDECD];			//届先CD
+									SetOb[ 2] = ""+SameDelivery[i][M100DeliveryMstRt.ColDepartmentCd];	//部署CD
+									SetOb[ 3] = ""+SameDelivery[i][M100DeliveryMstRt.ColDEName01];		//届先名１
+									SetOb[ 4] = ""+SameDelivery[i][M100DeliveryMstRt.ColAdd01]+SameDelivery[i][M100DeliveryMstRt.ColAdd02]+SameDelivery[i][M100DeliveryMstRt.ColAdd03];	//届先住所
 									
 									tableModel_ms01.addRow(SetOb);
 								}
@@ -793,7 +793,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 				if(RenewFg) {
 					RenewFg = false;
 					String GetDECD = TB_DECD.getText();
-					String NewDepartmentCd = M00040DeliveryMstRt.NewDepartmentCd(GetDECD);
+					String NewDepartmentCd = M100DeliveryMstRt.NewDepartmentCd(GetDECD);
 					TB_DepartmentCd.setText(NewDepartmentCd);
 					RenewFg = true;
 				}
@@ -819,7 +819,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 					SearchPOST.add(GetPost);
 				}
 				
-				Object[][] PostRt = M10010PostMstRt.PostRt(
+				Object[][] PostRt = M100PostMstRt.PostRt(
 							SearchPOST,
 							SearchAdd,
 							AllSearch,
@@ -905,7 +905,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 			SearchTel.add(GetTel);
 		}
 		
-		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+		Object[][] DeliveryMstRt = M100DeliveryMstRt.DeliveryMstRt(
 				SearchDECD,	
 				SearchDepartmentCd,
 				SearchDEName,
@@ -1007,7 +1007,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 			boolean PostPerfectMatch = true;
 			SearchPOST.add(GetPost);
 			
-			Object[][] PostRt = M10010PostMstRt.PostRt(SearchPOST, SearchAddT, AllSearch, PostPerfectMatch);
+			Object[][] PostRt = M100PostMstRt.PostRt(SearchPOST, SearchAddT, AllSearch, PostPerfectMatch);
 			if(0<PostRt.length) {
 				GetMunicipalityCd = ""+PostRt[0][4];
 				KickFg = false;
@@ -1018,7 +1018,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 		if(KickFg) {
 			String[] AddList = {GetAdd01+GetAdd02+GetAdd03};
 			
-			String[][] AddToMunicipality = M10010PostMstRt.AddToMunicipality(AddList);
+			String[][] AddToMunicipality = M100PostMstRt.AddToMunicipality(AddList);
 			
 			GetMunicipalityCd = AddToMunicipality[0][1];
 			if("".equals(GetMunicipalityCd)) {GetMunicipalityCd = "00000";}

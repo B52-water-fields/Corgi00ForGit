@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class T00020PrintControlRt{
+public class T100PrintControlRt{
 	//印刷済み管理
 	/*
 	コピペ用
@@ -21,7 +21,7 @@ public class T00020PrintControlRt{
 	ArrayList<String> SearchUpdateUser		= new ArrayList<String>();	//更新者
 	boolean AllSearch = false;
 	
-	Object[][] PrintControlRt	= T00020PrintControlRt.PrintControlRt(
+	Object[][] PrintControlRt	= T100PrintControlRt.PrintControlRt(
 												SearchPrintCd,			//印刷帳票CD
 												SearchOkuriNo,			//送り状番号等
 												SearchKey01,			//サブキー01
@@ -36,16 +36,16 @@ public class T00020PrintControlRt{
 												SearchUpdateUser,		//更新者
 												AllSearch);
 												
-	String GetPrintCd		= (String)PrintControlRt[i][T00020PrintControlRt.ColPrintCd];		//印刷帳票CD
-	String GetOkuriNo		= (String)PrintControlRt[i][T00020PrintControlRt.ColOkuriNo];		//送り状番号等
-	String GetKey01			= (String)PrintControlRt[i][T00020PrintControlRt.ColKey01];			//サブキー01
-	String GetKey02			= (String)PrintControlRt[i][T00020PrintControlRt.ColKey02];			//サブキー02
-	String GetKey03			= (String)PrintControlRt[i][T00020PrintControlRt.ColKey03];			//サブキー03
-	String GetKey04			= (String)PrintControlRt[i][T00020PrintControlRt.ColKey04];			//サブキー04
-	String GetEntryDate		= (String)PrintControlRt[i][T00020PrintControlRt.ColEntryDate];		//登録日
-	String GetUpdateDate	= (String)PrintControlRt[i][T00020PrintControlRt.ColUpdateDate];	//更新日
-	String GetEntryUser		= (String)PrintControlRt[i][T00020PrintControlRt.ColEntryUser];		//登録者
-	String GetUpdateUser	= (String)PrintControlRt[i][T00020PrintControlRt.ColUpdateUser];	//更新者
+	String GetPrintCd		= (String)PrintControlRt[i][T100PrintControlRt.ColPrintCd];		//印刷帳票CD
+	String GetOkuriNo		= (String)PrintControlRt[i][T100PrintControlRt.ColOkuriNo];		//送り状番号等
+	String GetKey01			= (String)PrintControlRt[i][T100PrintControlRt.ColKey01];			//サブキー01
+	String GetKey02			= (String)PrintControlRt[i][T100PrintControlRt.ColKey02];			//サブキー02
+	String GetKey03			= (String)PrintControlRt[i][T100PrintControlRt.ColKey03];			//サブキー03
+	String GetKey04			= (String)PrintControlRt[i][T100PrintControlRt.ColKey04];			//サブキー04
+	String GetEntryDate		= (String)PrintControlRt[i][T100PrintControlRt.ColEntryDate];		//登録日
+	String GetUpdateDate	= (String)PrintControlRt[i][T100PrintControlRt.ColUpdateDate];	//更新日
+	String GetEntryUser		= (String)PrintControlRt[i][T100PrintControlRt.ColEntryUser];		//登録者
+	String GetUpdateUser	= (String)PrintControlRt[i][T100PrintControlRt.ColUpdateUser];	//更新者
 	
 	*/
 	

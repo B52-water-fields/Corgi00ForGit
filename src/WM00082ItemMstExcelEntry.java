@@ -740,7 +740,7 @@ public class WM00082ItemMstExcelEntry{
 			SearchItemCd.add(""+GetItemCd[i]);
 		}
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード
@@ -844,21 +844,21 @@ public class WM00082ItemMstExcelEntry{
 			//画像パスが空白だった場合既存のマスタ情報をセットする
 			if("".equals(GetItemImagePath01[i01])||"".equals(GetItemImagePath02[i01])||"".equals(GetItemImagePath03[i01])||"".equals(GetItemImagePath04[i01])||"".equals(GetItemImagePath05[i01])) {
 				for(int i02=0;i02<ItemMstRt.length;i02++) {
-					if(GetClGpCd[i01].equals(""+ItemMstRt[i02][M00070ItemMstRt.ColClGpCd])&&GetItemCd[i01].equals(""+ItemMstRt[i02][M00070ItemMstRt.ColItemCd])) {
+					if(GetClGpCd[i01].equals(""+ItemMstRt[i02][M100ItemMstRt.ColClGpCd])&&GetItemCd[i01].equals(""+ItemMstRt[i02][M100ItemMstRt.ColItemCd])) {
 						if("".equals(GetItemImagePath01[i01])) {
-							GetItemImagePath01[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass01];
+							GetItemImagePath01[i01] = ""+ItemMstRt[i02][M100ItemMstRt.ColPictPass01];
 						}
 						if("".equals(GetItemImagePath02[i01])) {
-							GetItemImagePath02[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass02];
+							GetItemImagePath02[i01] = ""+ItemMstRt[i02][M100ItemMstRt.ColPictPass02];
 						}
 						if("".equals(GetItemImagePath03[i01])) {
-							GetItemImagePath03[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass03];
+							GetItemImagePath03[i01] = ""+ItemMstRt[i02][M100ItemMstRt.ColPictPass03];
 						}
 						if("".equals(GetItemImagePath04[i01])) {
-							GetItemImagePath04[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass04];
+							GetItemImagePath04[i01] = ""+ItemMstRt[i02][M100ItemMstRt.ColPictPass04];
 						}
 						if("".equals(GetItemImagePath05[i01])) {
-							GetItemImagePath05[i01] = ""+ItemMstRt[i02][M00070ItemMstRt.ColPictPass05];
+							GetItemImagePath05[i01] = ""+ItemMstRt[i02][M100ItemMstRt.ColPictPass05];
 						}
 						i02=ItemMstRt.length+1;
 					}
@@ -1276,7 +1276,7 @@ public class WM00082ItemMstExcelEntry{
 		for(int i=0;i<CheckOb.length;i++) {
 			SearchClGpCD.add(""+CheckOb[i][ColClGpCd]);
 		}
-		Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
+		Object[][] ClGpMstRt = M100ClGpMstRt.ClGpMstRt(
 				SearchClGpCD,
 				SearchCLGpName,
 				SearchPost,
@@ -1298,7 +1298,7 @@ public class WM00082ItemMstExcelEntry{
 			}else {
 				boolean UnHitFg = true;
 				for(int i01=0;i01<ClGpMstRt.length;i01++) {
-					if((""+CheckOb[i][ColClGpCd]).equals(""+ClGpMstRt[i01][M00010ClGpMstRt.ColClGpCD])) {
+					if((""+CheckOb[i][ColClGpCd]).equals(""+ClGpMstRt[i01][M100ClGpMstRt.ColClGpCD])) {
 						UnHitFg = false;
 						i01=ClGpMstRt.length+1;
 					}

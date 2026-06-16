@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00011ClMstRt{
+public class M100ClMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchClGpCD = new ArrayList<String>();
@@ -18,7 +18,7 @@ public class M00011ClMstRt{
 	ArrayList<String> SearchWHCD = new ArrayList<String>();
 	boolean AllSearch = false;
 	
-	Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+	Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 		SearchClGpCD,
 		SearchCLCD,
 		SearchCLName,
@@ -31,31 +31,31 @@ public class M00011ClMstRt{
 		SearchWHCD,
 		AllSearch);
 		
-	String Getcl_cd			=(String)ClMstRt[i][M00011ClMstRt.Colcl_cd];		//荷主CD
-	String GetClGpCD		=(String)ClMstRt[i][M00011ClMstRt.ColClGpCD];		//荷主グループCD
-	String GetClGpName		=(String)ClMstRt[i][M00011ClMstRt.ColClGpName];		//グループ名1
-	String GetWHCD			=(String)ClMstRt[i][M00011ClMstRt.ColWHCD];			//担当倉庫
-	String GetWHName		=(String)ClMstRt[i][M00011ClMstRt.ColWHName];		//担当倉庫名
-	String GetCLName01		=(String)ClMstRt[i][M00011ClMstRt.ColCLName01];		//荷主名1
-	String GetCLName02		=(String)ClMstRt[i][M00011ClMstRt.ColCLName02];		//荷主名2
-	String GetCLName03		=(String)ClMstRt[i][M00011ClMstRt.ColCLName03];		//荷主名3
-	String GetPost			=(String)ClMstRt[i][M00011ClMstRt.ColPost];			//郵便番号
-	String GetAdd01			=(String)ClMstRt[i][M00011ClMstRt.ColAdd01];		//住所1
-	String GetAdd02			=(String)ClMstRt[i][M00011ClMstRt.ColAdd02];		//住所2
-	String GetAdd03			=(String)ClMstRt[i][M00011ClMstRt.ColAdd03];		//住所3
-	String GetTel			=(String)ClMstRt[i][M00011ClMstRt.ColTel];			//電話番号
-	String GetFax			=(String)ClMstRt[i][M00011ClMstRt.ColFax];			//FAX
-	String GetMail			=(String)ClMstRt[i][M00011ClMstRt.ColMail];			//メールアドレス
-	String GetCom01			=(String)ClMstRt[i][M00011ClMstRt.ColCom01];		//コメント1
-	String GetCom02			=(String)ClMstRt[i][M00011ClMstRt.ColCom02];		//コメント2
-	String GetCom03			=(String)ClMstRt[i][M00011ClMstRt.ColCom03];		//コメント3
-	int GetShimeDate		=(int)ClMstRt[i][M00011ClMstRt.ColShimeDate];		//締日
-	int GetShimeBasis		=(int)ClMstRt[i][M00011ClMstRt.ColShimeBasis];		//請求基準
-	String GetEntryDate		=(String)ClMstRt[i][M00011ClMstRt.ColEntryDate];	//データ登録日時
-	String GetUpdateDate	=(String)ClMstRt[i][M00011ClMstRt.ColUpdateDate];	//データ更新日時
-	String GetEntryUser		=(String)ClMstRt[i][M00011ClMstRt.ColEntryUser];	//登録者コード
-	String GetUpdateUser	=(String)ClMstRt[i][M00011ClMstRt.ColUpdateUser];	//更新者コード
-	String GetPTMSCD		=(String)ClMstRt[i][M00011ClMstRt.ColPTMSCD];		//基幹システム荷主コード
+	String Getcl_cd			=(String)ClMstRt[i][M100ClMstRt.Colcl_cd];		//荷主CD
+	String GetClGpCD		=(String)ClMstRt[i][M100ClMstRt.ColClGpCD];		//荷主グループCD
+	String GetClGpName		=(String)ClMstRt[i][M100ClMstRt.ColClGpName];		//グループ名1
+	String GetWHCD			=(String)ClMstRt[i][M100ClMstRt.ColWHCD];			//担当倉庫
+	String GetWHName		=(String)ClMstRt[i][M100ClMstRt.ColWHName];		//担当倉庫名
+	String GetCLName01		=(String)ClMstRt[i][M100ClMstRt.ColCLName01];		//荷主名1
+	String GetCLName02		=(String)ClMstRt[i][M100ClMstRt.ColCLName02];		//荷主名2
+	String GetCLName03		=(String)ClMstRt[i][M100ClMstRt.ColCLName03];		//荷主名3
+	String GetPost			=(String)ClMstRt[i][M100ClMstRt.ColPost];			//郵便番号
+	String GetAdd01			=(String)ClMstRt[i][M100ClMstRt.ColAdd01];		//住所1
+	String GetAdd02			=(String)ClMstRt[i][M100ClMstRt.ColAdd02];		//住所2
+	String GetAdd03			=(String)ClMstRt[i][M100ClMstRt.ColAdd03];		//住所3
+	String GetTel			=(String)ClMstRt[i][M100ClMstRt.ColTel];			//電話番号
+	String GetFax			=(String)ClMstRt[i][M100ClMstRt.ColFax];			//FAX
+	String GetMail			=(String)ClMstRt[i][M100ClMstRt.ColMail];			//メールアドレス
+	String GetCom01			=(String)ClMstRt[i][M100ClMstRt.ColCom01];		//コメント1
+	String GetCom02			=(String)ClMstRt[i][M100ClMstRt.ColCom02];		//コメント2
+	String GetCom03			=(String)ClMstRt[i][M100ClMstRt.ColCom03];		//コメント3
+	int GetShimeDate		=(int)ClMstRt[i][M100ClMstRt.ColShimeDate];		//締日
+	int GetShimeBasis		=(int)ClMstRt[i][M100ClMstRt.ColShimeBasis];		//請求基準
+	String GetEntryDate		=(String)ClMstRt[i][M100ClMstRt.ColEntryDate];	//データ登録日時
+	String GetUpdateDate	=(String)ClMstRt[i][M100ClMstRt.ColUpdateDate];	//データ更新日時
+	String GetEntryUser		=(String)ClMstRt[i][M100ClMstRt.ColEntryUser];	//登録者コード
+	String GetUpdateUser	=(String)ClMstRt[i][M100ClMstRt.ColUpdateUser];	//更新者コード
+	String GetPTMSCD		=(String)ClMstRt[i][M100ClMstRt.ColPTMSCD];		//基幹システム荷主コード
 	*/
 	
 	//戻り値カラム
@@ -438,8 +438,8 @@ public class M00011ClMstRt{
     	int ClientNo = 0;
     	
     	for(int i=0;i<ClMstRt.length;i++) {
-    		if(4<(""+ClMstRt[i][M00011ClMstRt.Colcl_cd]).length()&&"ATCL".equals((""+ClMstRt[i][M00011ClMstRt.Colcl_cd]).substring(0,4))) {
-    			String WST = B100TextControl.num_only_String(""+ClMstRt[i][M00011ClMstRt.Colcl_cd]);
+    		if(4<(""+ClMstRt[i][M100ClMstRt.Colcl_cd]).length()&&"ATCL".equals((""+ClMstRt[i][M100ClMstRt.Colcl_cd]).substring(0,4))) {
+    			String WST = B100TextControl.num_only_String(""+ClMstRt[i][M100ClMstRt.Colcl_cd]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(ClientNo<wint) {

@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00042CautionMstRt{
+public class M100CautionMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchCautionCd 		= new ArrayList<String>();
@@ -16,7 +16,7 @@ public class M00042CautionMstRt{
 	ArrayList<String> SearchDeName 			= new ArrayList<String>();
 	boolean AllSearch = false;
 	
-	Object[][] CautionMstRt = M00042CautionMstRt.CautionMstRt(
+	Object[][] CautionMstRt = M100CautionMstRt.CautionMstRt(
 			SearchCautionCd,
 			SearchClGpCD,
 			SearchDECD,
@@ -336,7 +336,7 @@ public class M00042CautionMstRt{
 		ArrayList<String> SearchDeName = new ArrayList<String>();
 		boolean AllSearch = true;
 		
-		Object[][] CautionMstRt = M00042CautionMstRt.CautionMstRt(
+		Object[][] CautionMstRt = M100CautionMstRt.CautionMstRt(
 				SearchCautionCd,
 				SearchClGpCD,
 				SearchDECD,
@@ -350,8 +350,8 @@ public class M00042CautionMstRt{
     	int CautionNo = 0;
     	
     	for(int i=0;i<CautionMstRt.length;i++) {
-    		if(4<(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).length()&&"ATCT".equals((""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).substring(0,4))) {
-    			String WST = B100TextControl.num_only_String(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]);
+    		if(4<(""+CautionMstRt[i][M100CautionMstRt.ColCautionCd]).length()&&"ATCT".equals((""+CautionMstRt[i][M100CautionMstRt.ColCautionCd]).substring(0,4))) {
+    			String WST = B100TextControl.num_only_String(""+CautionMstRt[i][M100CautionMstRt.ColCautionCd]);
     			if(9==WST.length()) {
     				int wint = Integer.parseInt(WST);
     				if(CautionNo<wint) {

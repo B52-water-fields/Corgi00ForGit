@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00010ClGpMstRt{
+public class M100ClGpMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchClGpCD 		= new ArrayList<String>();
@@ -16,7 +16,7 @@ public class M00010ClGpMstRt{
 	ArrayList<String> SearchCom 		= new ArrayList<String>();
 	boolean AllSearch = false;
 	
-	Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
+	Object[][] ClGpMstRt = M100ClGpMstRt.ClGpMstRt(
 			SearchClGpCD,
 			SearchCLGpName,
 			SearchPost,
@@ -27,25 +27,25 @@ public class M00010ClGpMstRt{
 			SearchCom,
 			AllSearch);
 			
-	String GetClGpCD		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]		//荷主グループCD
-	String GetCLGpName01	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName01]	//荷主グループ名1
-	String GetCLGpName02	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName02]	//荷主グループ名2
-	String GetCLGpName03	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCLGpName03]	//荷主グループ名3
-	String GetPost			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColPost]			//郵便番号
-	String GetAdd01			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColAdd01]		//住所1
-	String GetAdd02			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColAdd02]		//住所2
-	String GetAdd03			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColAdd03]		//住所3
-	String GetTel			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColTel]			//電話番号
-	String GetFax			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColFax]			//FAX
-	String GetMail			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColMail]			//メールアドレス
-	String GetCom01			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCom01]		//コメント1
-	String GetCom02			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCom02]		//コメント2
-	String GetCom03			= (String)ClGpMstRt[i][M00010ClGpMstRt.ColCom03]		//コメント3
-	String GetEntryDate		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColEntryDate]	//データ登録日時
-	String GetUpdateDate	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColUpdateDate]	//データ更新日時
-	String GetEntryUser		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColEntryUser]	//登録者コード
-	String GetUpdateUser	= (String)ClGpMstRt[i][M00010ClGpMstRt.ColUpdateUser]	//更新者コード
-	String GetPassWord		= (String)ClGpMstRt[i][M00010ClGpMstRt.ColPassWord]		//パスワード
+	String GetClGpCD		= (String)ClGpMstRt[i][M100ClGpMstRt.ColClGpCD]		//荷主グループCD
+	String GetCLGpName01	= (String)ClGpMstRt[i][M100ClGpMstRt.ColCLGpName01]	//荷主グループ名1
+	String GetCLGpName02	= (String)ClGpMstRt[i][M100ClGpMstRt.ColCLGpName02]	//荷主グループ名2
+	String GetCLGpName03	= (String)ClGpMstRt[i][M100ClGpMstRt.ColCLGpName03]	//荷主グループ名3
+	String GetPost			= (String)ClGpMstRt[i][M100ClGpMstRt.ColPost]			//郵便番号
+	String GetAdd01			= (String)ClGpMstRt[i][M100ClGpMstRt.ColAdd01]		//住所1
+	String GetAdd02			= (String)ClGpMstRt[i][M100ClGpMstRt.ColAdd02]		//住所2
+	String GetAdd03			= (String)ClGpMstRt[i][M100ClGpMstRt.ColAdd03]		//住所3
+	String GetTel			= (String)ClGpMstRt[i][M100ClGpMstRt.ColTel]			//電話番号
+	String GetFax			= (String)ClGpMstRt[i][M100ClGpMstRt.ColFax]			//FAX
+	String GetMail			= (String)ClGpMstRt[i][M100ClGpMstRt.ColMail]			//メールアドレス
+	String GetCom01			= (String)ClGpMstRt[i][M100ClGpMstRt.ColCom01]		//コメント1
+	String GetCom02			= (String)ClGpMstRt[i][M100ClGpMstRt.ColCom02]		//コメント2
+	String GetCom03			= (String)ClGpMstRt[i][M100ClGpMstRt.ColCom03]		//コメント3
+	String GetEntryDate		= (String)ClGpMstRt[i][M100ClGpMstRt.ColEntryDate]	//データ登録日時
+	String GetUpdateDate	= (String)ClGpMstRt[i][M100ClGpMstRt.ColUpdateDate]	//データ更新日時
+	String GetEntryUser		= (String)ClGpMstRt[i][M100ClGpMstRt.ColEntryUser]	//登録者コード
+	String GetUpdateUser	= (String)ClGpMstRt[i][M100ClGpMstRt.ColUpdateUser]	//更新者コード
+	String GetPassWord		= (String)ClGpMstRt[i][M100ClGpMstRt.ColPassWord]		//パスワード
 	*/
 	//戻り値カラム
 	static final  int ColClGpCD		= (int) 0;	//荷主グループCD
@@ -351,15 +351,15 @@ public class M00010ClGpMstRt{
 		ArrayList<String> SearchCom = new ArrayList<String>();
 		boolean AllSearch = true;
 		
-		Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
+		Object[][] ClGpMstRt = M100ClGpMstRt.ClGpMstRt(
 						SearchClGpCD,SearchCLGpName,SearchPost,
 						SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,AllSearch);
 		
 		int ClGpNo = 0;
     	
     	for(int i=0;i<ClGpMstRt.length;i++) {
-    		if(4<(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).length()&&"ATGR".equals((""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).substring(0,4))) {
-    			String WST = B100TextControl.num_only_String(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]);
+    		if(4<(""+ClGpMstRt[i][M100ClGpMstRt.ColClGpCD]).length()&&"ATGR".equals((""+ClGpMstRt[i][M100ClGpMstRt.ColClGpCD]).substring(0,4))) {
+    			String WST = B100TextControl.num_only_String(""+ClGpMstRt[i][M100ClGpMstRt.ColClGpCD]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(ClGpNo<wint) {

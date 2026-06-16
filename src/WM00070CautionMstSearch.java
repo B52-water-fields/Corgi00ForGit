@@ -105,7 +105,7 @@ public class WM00070CautionMstSearch{
 		JButton SearchBtn = B100FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingCautionMstRt = M00042CautionMstRt.RtSettingCautionMstRt();
+		Object[][] RtSettingCautionMstRt = M100CautionMstRt.RtSettingCautionMstRt();
 		
 		String[] columnNames01 = new String[RtSettingCautionMstRt.length+1];
 		
@@ -236,7 +236,7 @@ public class WM00070CautionMstSearch{
 					if(!"".equals(GetSearchDepartmentCd		)){SearchDepartmentCd.add(	GetSearchDepartmentCd);}
 					if(!"".equals(GetSearchDeName			)){SearchDeName.add(		GetSearchDeName);}
 					
-					Object[][] CautionMstRt = M00042CautionMstRt.CautionMstRt(
+					Object[][] CautionMstRt = M100CautionMstRt.CautionMstRt(
 							SearchCautionCd,
 							SearchClGpCD,
 							SearchDECD,
@@ -404,7 +404,7 @@ public class WM00070CautionMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

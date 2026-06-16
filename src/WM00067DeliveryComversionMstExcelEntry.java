@@ -563,7 +563,7 @@ public class WM00067DeliveryComversionMstExcelEntry{
 			}
 		}
 		
-		Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+		Object[][] DeliveryMstRt = M100DeliveryMstRt.DeliveryMstRt(
 				SearchDECD,
 				SearchDepartmentCd,
 				SearchDEName,
@@ -623,8 +623,8 @@ public class WM00067DeliveryComversionMstExcelEntry{
 				}
 				boolean UnHitFg = true;
 				for(int i01=0;i01<DeliveryMstRt.length;i01++) {
-					if(GetDECD.equals(""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDECD]) 
-							&& GetDepartmentCd.equals(""+DeliveryMstRt[i01][M00040DeliveryMstRt.ColDepartmentCd]) 
+					if(GetDECD.equals(""+DeliveryMstRt[i01][M100DeliveryMstRt.ColDECD]) 
+							&& GetDepartmentCd.equals(""+DeliveryMstRt[i01][M100DeliveryMstRt.ColDepartmentCd]) 
 							) {
 						UnHitFg = false;
 					}

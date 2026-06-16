@@ -2,7 +2,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-public class M00030ShippingCompanyMstRt{
+public class M100ShippingCompanyMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchShippingCompanyCd = new ArrayList<String>();
@@ -15,7 +15,7 @@ public class M00030ShippingCompanyMstRt{
 	ArrayList<String> SearchCom = new ArrayList<String>();
 	boolean AllSearch = false;
 	
-	Object[][] ShippingCompanyMstRt = M00030ShippingCompanyMstRt.ShippingCompanyMstRt(
+	Object[][] ShippingCompanyMstRt = M100ShippingCompanyMstRt.ShippingCompanyMstRt(
 			SearchShippingCompanyCd,
 			SearchCompanyName,
 			SearchPost,
@@ -26,28 +26,28 @@ public class M00030ShippingCompanyMstRt{
 			SearchCom,
 			AllSearch);
 			
-	String GetShippingCompanyCd		=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd];		//運送会社CD
-	String GetShippingCompanyName01	=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名1
-	String GetShippingCompanyName02	=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社名2
-	String GetShippingCompanyName03	=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社名3
-	String GetPost					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColPost];					//運送会社郵便
-	String GetAdd01					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColAdd01];					//運送会社住所1
-	String GetAdd02					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColAdd02];					//運送会社住所2
-	String GetAdd03					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColAdd03];					//運送会社住所3
-	String GetTel					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColTel];					//運送会社電話
-	String GetFax					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColFax];					//運送会社FAX
-	String GetMail					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColMail];					//運送会社MAIL
-	String GetCom01					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColCom01];					//コメント1
-	String GetCom02					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColCom02];					//コメント2
-	String GetCom03					=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColCom03];					//コメント3
-	int GetShimeDate				=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShimeDate];				//締日
-	int GetShimeBasis				=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShimeBasis];				//請求基準
-	String GetEntryDate				=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColEntryDate];				//データ登録日時
-	String GetUpdateDate			=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColUpdateDate];				//データ更新日時
-	String GetEntryUser				=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColEntryUser];				//登録者コード
-	String GetUpdateUser			=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColUpdateUser];				//更新者コード
-	String GetPTMSCD				=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColPTMSCD];					//基幹システム傭車コード
-	String GetExportDataType		=(String)ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColExportDataType];			//データ抽出タイプ
+	String GetShippingCompanyCd		=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShippingCompanyCd];		//運送会社CD
+	String GetShippingCompanyName01	=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名1
+	String GetShippingCompanyName02	=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社名2
+	String GetShippingCompanyName03	=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社名3
+	String GetPost					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColPost];					//運送会社郵便
+	String GetAdd01					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColAdd01];					//運送会社住所1
+	String GetAdd02					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColAdd02];					//運送会社住所2
+	String GetAdd03					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColAdd03];					//運送会社住所3
+	String GetTel					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColTel];					//運送会社電話
+	String GetFax					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColFax];					//運送会社FAX
+	String GetMail					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColMail];					//運送会社MAIL
+	String GetCom01					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColCom01];					//コメント1
+	String GetCom02					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColCom02];					//コメント2
+	String GetCom03					=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColCom03];					//コメント3
+	int GetShimeDate				=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShimeDate];				//締日
+	int GetShimeBasis				=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShimeBasis];				//請求基準
+	String GetEntryDate				=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColEntryDate];				//データ登録日時
+	String GetUpdateDate			=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColUpdateDate];				//データ更新日時
+	String GetEntryUser				=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColEntryUser];				//登録者コード
+	String GetUpdateUser			=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColUpdateUser];				//更新者コード
+	String GetPTMSCD				=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColPTMSCD];					//基幹システム傭車コード
+	String GetExportDataType		=(String)ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColExportDataType];			//データ抽出タイプ
 	
 	*/
 	//戻り値カラム
@@ -376,8 +376,8 @@ public class M00030ShippingCompanyMstRt{
     	int SCNo = 0;
     	
     	for(int i=0;i<ShippingCompanyMstRt.length;i++) {
-    		if(4<(""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]).length()&&"ATSC".equals((""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]).substring(0,4))) {
-    			String WST = B100TextControl.num_only_String(""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]);
+    		if(4<(""+ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShippingCompanyCd]).length()&&"ATSC".equals((""+ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShippingCompanyCd]).substring(0,4))) {
+    			String WST = B100TextControl.num_only_String(""+ShippingCompanyMstRt[i][M100ShippingCompanyMstRt.ColShippingCompanyCd]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(SCNo<wint) {

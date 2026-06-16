@@ -184,7 +184,7 @@ public class WM00100SupplierMstSearch{
 		
 		main_fm.add(PN_Search);
 		
-		Object[][] RtSupplierRt = M00100SupplierRt.RtSupplierRt();
+		Object[][] RtSupplierRt = M100SupplierRt.RtSupplierRt();
 		
 		String[] columnNames01 = new String[RtSupplierRt.length+1];
 		
@@ -374,7 +374,7 @@ public class WM00100SupplierMstSearch{
 					if(!"".equals(GetSearchDECD				)){SearchDECD.add(GetSearchDECD);}			//納品先コード
 					if(!"".equals(GetSearchDepartmentCd		)){SearchDepartmentCd.add(GetSearchDepartmentCd);}			//部署CD
 					
-					Object[][] SupplierRt = M00100SupplierRt.SupplierRt(
+					Object[][] SupplierRt = M100SupplierRt.SupplierRt(
 							SearchClWh,				//担当倉庫
 							SearchClCd,				//荷主CD
 							SearchSPCd,				//仕入先コード
@@ -428,9 +428,9 @@ public class WM00100SupplierMstSearch{
 					boolean KickFg = false;
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtClCd = ""+tableModel_ms01.getValueAt(i, M00100SupplierRt.ColClCd+1);
-							TgtWhCd = ""+tableModel_ms01.getValueAt(i, M00100SupplierRt.ColClWh+1);
-							TgtSupplierCd 	= ""+tableModel_ms01.getValueAt(i, M00100SupplierRt.ColSPCd+1);
+							TgtClCd = ""+tableModel_ms01.getValueAt(i, M100SupplierRt.ColClCd+1);
+							TgtWhCd = ""+tableModel_ms01.getValueAt(i, M100SupplierRt.ColClWh+1);
+							TgtSupplierCd 	= ""+tableModel_ms01.getValueAt(i, M100SupplierRt.ColSPCd+1);
 							KickFg = true;
 						}
 					}
@@ -539,7 +539,7 @@ public class WM00100SupplierMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

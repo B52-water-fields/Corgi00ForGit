@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class M10010PostMstRt{
+public class M100PostMstRt{
 	
 	static final int ColPOST					= (int) 0;	//郵便番号
 	static final int ColPREFECTURES			= (int) 1;	//県
@@ -21,17 +21,17 @@ public class M10010PostMstRt{
 		boolean AllSearch = false;
 		boolean PostPerfectMatch = false;
 		
-		Object[][] PostRt = M10010PostMstRt.PostRt(
+		Object[][] PostRt = M100PostMstRt.PostRt(
 												SearchPOST,
 												SearchAdd,
 												AllSearch,
 												PostPerfectMatch);
 												
-		String GetPOST				= (String)PostRt[i][M10010PostMstRt.ColPOST];				//郵便番号
-		String GetPREFECTURES		= (String)PostRt[i][M10010PostMstRt.ColPREFECTURES];		//県
-		String GetMUNICI01			= (String)PostRt[i][M10010PostMstRt.ColMUNICI01];			//市区町村
-		String GetMUNICI02			= (String)PostRt[i][M10010PostMstRt.ColMUNICI02];			//町丁目
-		String GetMUNICIPALITY_CD 	= (String)PostRt[i][M10010PostMstRt.ColMUNICIPALITY_CD];	//市区町村CD
+		String GetPOST				= (String)PostRt[i][M100PostMstRt.ColPOST];				//郵便番号
+		String GetPREFECTURES		= (String)PostRt[i][M100PostMstRt.ColPREFECTURES];		//県
+		String GetMUNICI01			= (String)PostRt[i][M100PostMstRt.ColMUNICI01];			//市区町村
+		String GetMUNICI02			= (String)PostRt[i][M100PostMstRt.ColMUNICI02];			//町丁目
+		String GetMUNICIPALITY_CD 	= (String)PostRt[i][M100PostMstRt.ColMUNICIPALITY_CD];	//市区町村CD
 		
 		*/
 		
@@ -58,14 +58,14 @@ public class M10010PostMstRt{
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		boolean AllSearch = false;
 		
-		Object[][] MunicipalityRt = M10010PostMstRt.MunicipalityRt(
+		Object[][] MunicipalityRt = M100PostMstRt.MunicipalityRt(
 																SearchName,
 																SearchMunicipalityCd,
 																AllSearch);
 																
-		String GetPREFECTURES		= (String)MunicipalityRt[i][M10010PostMstRt.ColMunicipalityRtPREFECTURES];			//県
-		String GetMUNICI01			= (String)MunicipalityRt[i][M10010PostMstRt.ColMunicipalityRtMUNICI01];				//市区町村
-		String GetMUNICIPALITY_CD	= (String)MunicipalityRt[i][M10010PostMstRt.ColMunicipalityRtMUNICIPALITY_CD];		//市区町村CD
+		String GetPREFECTURES		= (String)MunicipalityRt[i][M100PostMstRt.ColMunicipalityRtPREFECTURES];			//県
+		String GetMUNICI01			= (String)MunicipalityRt[i][M100PostMstRt.ColMunicipalityRtMUNICI01];				//市区町村
+		String GetMUNICIPALITY_CD	= (String)MunicipalityRt[i][M100PostMstRt.ColMunicipalityRtMUNICIPALITY_CD];		//市区町村CD
 		*/
 		Object[][] RtSettingMunicipalityRt = {
 				{"PREFECTURES"		,ColMunicipalityRtPREFECTURES		,"String"	,"県"}
@@ -83,10 +83,10 @@ public class M10010PostMstRt{
 		//県マスタ戻り値
 		/*
 		コピペ用
-		Object[][] PrefecuturesRt = M10010PostMstRt.PrefecuturesRt();
+		Object[][] PrefecuturesRt = M100PostMstRt.PrefecuturesRt();
 		
-		String GetPREFECTURES_CD	=(String)PrefecuturesRt[i][M10010PostMstRt.ColPrefecuturesRtPREFECTURES_CD];	//県CD
-		String GetPREFECTURES		=(String)PrefecuturesRt[i][M10010PostMstRt.ColPrefecuturesRtPREFECTURES;		//県名
+		String GetPREFECTURES_CD	=(String)PrefecuturesRt[i][M100PostMstRt.ColPrefecuturesRtPREFECTURES_CD];	//県CD
+		String GetPREFECTURES		=(String)PrefecuturesRt[i][M100PostMstRt.ColPrefecuturesRtPREFECTURES;		//県名
 		*/
 		Object[][] RtSettingPrefecuturesRt = {
 				{"PREFECTURES_CD"	,ColPrefecuturesRtPREFECTURES_CD	,"String"	,"県CD"}
@@ -105,10 +105,10 @@ public class M10010PostMstRt{
 		コピペ用
 		String[] AddList = new String[0];
 		
-		Object[][] AddToMunicipality = M10010PostMstRt.AddToMunicipality(AddList);
+		Object[][] AddToMunicipality = M100PostMstRt.AddToMunicipality(AddList);
 		
-		String GetTgtAdd			= (String)AddToMunicipality[i][M10010PostMstRt.ColAddToMunicipalityTgtAdd];				//対象住所
-		String GetMUNICIPALITY_CD	= (String)AddToMunicipality[i][M10010PostMstRt.ColAddToMunicipalityMUNICIPALITY_CD];	//判定JISCD
+		String GetTgtAdd			= (String)AddToMunicipality[i][M100PostMstRt.ColAddToMunicipalityTgtAdd];				//対象住所
+		String GetMUNICIPALITY_CD	= (String)AddToMunicipality[i][M100PostMstRt.ColAddToMunicipalityMUNICIPALITY_CD];	//判定JISCD
 		*/
 		Object[][] RtAddToMunicipality = {
 				{"TgtAdd"				,ColAddToMunicipalityTgtAdd				,"String"	,"対象住所"}

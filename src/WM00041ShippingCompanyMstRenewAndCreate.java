@@ -102,7 +102,7 @@ public class WM00041ShippingCompanyMstRenewAndCreate{
 			
 			SearchShippingCompanyCd.add(ShippingCompanyCd);
 			
-			Object[][] ShippingCompanyMstRt = M00030ShippingCompanyMstRt.ShippingCompanyMstRt(
+			Object[][] ShippingCompanyMstRt = M100ShippingCompanyMstRt.ShippingCompanyMstRt(
 					SearchShippingCompanyCd,
 					SearchCompanyName,
 					SearchPost,
@@ -114,38 +114,38 @@ public class WM00041ShippingCompanyMstRenewAndCreate{
 					AllSearch);
 			
 			if(0<ShippingCompanyMstRt.length) {
-				TB_ShippingCompanyCd.setText(		""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShippingCompanyCd]);		//運送会社CD
-				TB_ShippingCompanyName01.setText(	""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShippingCompanyName01]);	//運送会社名1
-				TB_ShippingCompanyName02.setText(	""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShippingCompanyName02]);	//運送会社名2
-				TB_ShippingCompanyName03.setText(	""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShippingCompanyName03]);	//運送会社名3
-				TB_Post.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColPost]);						//運送会社郵便
-				TB_Add01.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColAdd01]);						//運送会社住所1
-				TB_Add02.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColAdd02]);						//運送会社住所2
-				TB_Add03.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColAdd03]);						//運送会社住所3
-				TB_Tel.setText(						""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColTel]);						//運送会社電話
-				TB_Fax.setText(						""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColFax]);						//運送会社FAX
-				TB_Mail.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColMail]);						//運送会社MAIL
-				TB_Com01.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColCom01]);						//コメント1
-				TB_Com02.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColCom02]);						//コメント2
-				TB_Com03.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColCom03]);						//コメント3
-				TB_EntryDate.setText(				""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColEntryDate]);					//データ登録日時
-				TB_UpdateDate.setText(				""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColUpdateDate]);				//データ更新日時
-				TB_EntryUser.setText(				""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColEntryUser]);					//登録者コード
-				TB_UpdateUser.setText(				""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColUpdateUser]);				//更新者コード
-				TB_PTMSCD.setText(					""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColPTMSCD]);						//基幹SYS傭車CD
+				TB_ShippingCompanyCd.setText(		""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColShippingCompanyCd]);		//運送会社CD
+				TB_ShippingCompanyName01.setText(	""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColShippingCompanyName01]);	//運送会社名1
+				TB_ShippingCompanyName02.setText(	""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColShippingCompanyName02]);	//運送会社名2
+				TB_ShippingCompanyName03.setText(	""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColShippingCompanyName03]);	//運送会社名3
+				TB_Post.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColPost]);						//運送会社郵便
+				TB_Add01.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColAdd01]);						//運送会社住所1
+				TB_Add02.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColAdd02]);						//運送会社住所2
+				TB_Add03.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColAdd03]);						//運送会社住所3
+				TB_Tel.setText(						""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColTel]);						//運送会社電話
+				TB_Fax.setText(						""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColFax]);						//運送会社FAX
+				TB_Mail.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColMail]);						//運送会社MAIL
+				TB_Com01.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColCom01]);						//コメント1
+				TB_Com02.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColCom02]);						//コメント2
+				TB_Com03.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColCom03]);						//コメント3
+				TB_EntryDate.setText(				""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColEntryDate]);					//データ登録日時
+				TB_UpdateDate.setText(				""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColUpdateDate]);				//データ更新日時
+				TB_EntryUser.setText(				""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColEntryUser]);					//登録者コード
+				TB_UpdateUser.setText(				""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColUpdateUser]);				//更新者コード
+				TB_PTMSCD.setText(					""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColPTMSCD]);						//基幹SYS傭車CD
 				
 				for(int i=0;i<B100DefaultVariable.ShimeDateList[1].length;i++) {
-					if((""+B100DefaultVariable.ShimeDateList[1][i]).equals(""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShimeDate])){
+					if((""+B100DefaultVariable.ShimeDateList[1][i]).equals(""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColShimeDate])){
 						TB_ShimeDate.setSelectedIndex(i);
 					}
 				}
 				for(int i=0;i<B100DefaultVariable.DeliFeeNorm[1].length;i++) {
-					if((""+B100DefaultVariable.DeliFeeNorm[1][i]).equals(""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColShimeBasis])){
+					if((""+B100DefaultVariable.DeliFeeNorm[1][i]).equals(""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColShimeBasis])){
 						TB_ShimeBasis.setSelectedIndex(i);
 					}
 				}
 				for(int i=0;i<B100DefaultVariable.HaisyaDataLayoutPt[1].length;i++) {
-					if((""+B100DefaultVariable.HaisyaDataLayoutPt[1][i]).equals(""+ShippingCompanyMstRt[0][M00030ShippingCompanyMstRt.ColExportDataType])){
+					if((""+B100DefaultVariable.HaisyaDataLayoutPt[1][i]).equals(""+ShippingCompanyMstRt[0][M100ShippingCompanyMstRt.ColExportDataType])){
 						TB_ExportDataType.setSelectedIndex(i);
 					}
 				}
@@ -274,7 +274,7 @@ public class WM00041ShippingCompanyMstRenewAndCreate{
 					
 					if(!"".equals(GetShippingCompanyName01)) {
 						if("".equals(GetShippingCompanyCd)) {
-							GetShippingCompanyCd = M00030ShippingCompanyMstRt.NewShipingCompanyCdGet(1)[0];
+							GetShippingCompanyCd = M100ShippingCompanyMstRt.NewShipingCompanyCdGet(1)[0];
 						}
 						String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 						
@@ -356,7 +356,7 @@ public class WM00041ShippingCompanyMstRenewAndCreate{
 					SearchPOST.add(GetPost);
 				}
 				
-				Object[][] PostRt = M10010PostMstRt.PostRt(
+				Object[][] PostRt = M100PostMstRt.PostRt(
 							SearchPOST,
 							SearchAdd,
 							AllSearch,

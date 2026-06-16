@@ -167,7 +167,7 @@ public class WM00093LocationMstRenewStockControl{
 		SearchWhCd.add(	GetSetWhCd);	//倉庫コード
 		SearchLoc.add(	GetSetLoc);		//ロケーション
 		
-		Object[][] StockRt= T00030StockRt.StockRt(
+		Object[][] StockRt= T100StockRt.StockRt(
 								SearchClCd,				//荷主コード
 								SearchWhCd,				//倉庫コード
 								SearchClGpCD,			//荷主グループCD
@@ -228,24 +228,24 @@ public class WM00093LocationMstRenewStockControl{
 		int non_msg_fg = 1;
 				
 		for(int i=0;i<StockRt.length;i++) {
-			String GetClCd			= (String)StockRt[i][T00030StockRt.ColClCd];			//荷主コード
-			String GetWhCd			= (String)StockRt[i][T00030StockRt.ColWhCd];			//倉庫コード
-			String GetLoc			= (String)StockRt[i][T00030StockRt.ColLoc];			//ロケーション
-			String GetItemCd		= (String)StockRt[i][T00030StockRt.ColItemCd];			//商品コード
-			String GetLot			= (String)StockRt[i][T00030StockRt.ColLot];			//ロット
-			String GetExpdate		= (String)StockRt[i][T00030StockRt.ColExpdate];		//消費期限
-			String GetActualDate	= (String)StockRt[i][T00030StockRt.ColActualDate];	//入荷実績日
-			int GetQty				= (int)StockRt[i][T00030StockRt.ColQty];				//数量
-			int GetShipPlanQty		= (int)StockRt[i][T00030StockRt.ColShipPlanQty];		//引当済数
-			int GetPossibleQty		= (int)StockRt[i][T00030StockRt.ColPossibleQty];		//出荷可能数
-			String GetItemName		= (String)StockRt[i][T00030StockRt.ColItemName];		//商品名
-			String GetClItemCd		= (String)StockRt[i][T00030StockRt.ColClItemCd];		//荷主商品コード
-			String GetJanCd			= (String)StockRt[i][T00030StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
-			String GetItemMdNo		= (String)StockRt[i][T00030StockRt.ColItemMdNo];		//商品型番
-			String GetEntryDate		= (String)StockRt[i][T00030StockRt.ColEntryDate];		//登録日時
-			String GetUpdateDate	= (String)StockRt[i][T00030StockRt.ColUpdateDate];	//更新日時
-			String GetEntryUser		= (String)StockRt[i][T00030StockRt.ColEntryUser];		//登録者
-			String GetUpdateUser	= (String)StockRt[i][T00030StockRt.ColUpdateUser];	//更新者
+			String GetClCd			= (String)StockRt[i][T100StockRt.ColClCd];			//荷主コード
+			String GetWhCd			= (String)StockRt[i][T100StockRt.ColWhCd];			//倉庫コード
+			String GetLoc			= (String)StockRt[i][T100StockRt.ColLoc];			//ロケーション
+			String GetItemCd		= (String)StockRt[i][T100StockRt.ColItemCd];			//商品コード
+			String GetLot			= (String)StockRt[i][T100StockRt.ColLot];			//ロット
+			String GetExpdate		= (String)StockRt[i][T100StockRt.ColExpdate];		//消費期限
+			String GetActualDate	= (String)StockRt[i][T100StockRt.ColActualDate];	//入荷実績日
+			int GetQty				= (int)StockRt[i][T100StockRt.ColQty];				//数量
+			int GetShipPlanQty		= (int)StockRt[i][T100StockRt.ColShipPlanQty];		//引当済数
+			int GetPossibleQty		= (int)StockRt[i][T100StockRt.ColPossibleQty];		//出荷可能数
+			String GetItemName		= (String)StockRt[i][T100StockRt.ColItemName];		//商品名
+			String GetClItemCd		= (String)StockRt[i][T100StockRt.ColClItemCd];		//荷主商品コード
+			String GetJanCd			= (String)StockRt[i][T100StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
+			String GetItemMdNo		= (String)StockRt[i][T100StockRt.ColItemMdNo];		//商品型番
+			String GetEntryDate		= (String)StockRt[i][T100StockRt.ColEntryDate];		//登録日時
+			String GetUpdateDate	= (String)StockRt[i][T100StockRt.ColUpdateDate];	//更新日時
+			String GetEntryUser		= (String)StockRt[i][T100StockRt.ColEntryUser];		//登録者
+			String GetUpdateUser	= (String)StockRt[i][T100StockRt.ColUpdateUser];	//更新者
 			
 			if(1==SetPickTgtLocFg) {
 				//変更後ロケが引当可能なロケの場合
@@ -369,7 +369,7 @@ public class WM00093LocationMstRenewStockControl{
 				}
 			}
 			
-			Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+			Object[][] LocationMstRt = M100LocationMstRt.LocationMstRt(
 					SearchClCd,		//荷主コード
 					SearchWhCd,		//倉庫コード
 					SearchLoc,		//ロケーション
@@ -379,17 +379,17 @@ public class WM00093LocationMstRenewStockControl{
 					AllSearch);
 			
 			for(int i=0;i<LocationMstRt.length;i++) {
-				String GetClCd			= (String)LocationMstRt[i][M00090LocationMstRt.ColClCd];			//荷主コード
-				String GetCLName01		= (String)LocationMstRt[i][M00090LocationMstRt.ColCLName01];		//荷主名1
-				String GetWhCd			= (String)LocationMstRt[i][M00090LocationMstRt.ColWhCd];			//倉庫コード
-				String GetWHName		= (String)LocationMstRt[i][M00090LocationMstRt.ColWHName];			//拠点倉庫名
-				String GetLoc			= (String)LocationMstRt[i][M00090LocationMstRt.ColLoc];			//ロケーション
-				String GetLocName		= (String)LocationMstRt[i][M00090LocationMstRt.ColLocName];		//ロケーション名
-				int GetType				= (int)LocationMstRt[i][M00090LocationMstRt.ColType];				//ロケタイプ
-				String GetEntryDate		= (String)LocationMstRt[i][M00090LocationMstRt.ColEntryDate];		//登録日
-				String GetUpdateDate	= (String)LocationMstRt[i][M00090LocationMstRt.ColUpdateDate];	//更新日
-				String GetEntryUser		= (String)LocationMstRt[i][M00090LocationMstRt.ColEntryUser];		//登録者
-				String GetUpdateUser	= (String)LocationMstRt[i][M00090LocationMstRt.ColUpdateUser];	//更新者
+				String GetClCd			= (String)LocationMstRt[i][M100LocationMstRt.ColClCd];			//荷主コード
+				String GetCLName01		= (String)LocationMstRt[i][M100LocationMstRt.ColCLName01];		//荷主名1
+				String GetWhCd			= (String)LocationMstRt[i][M100LocationMstRt.ColWhCd];			//倉庫コード
+				String GetWHName		= (String)LocationMstRt[i][M100LocationMstRt.ColWHName];			//拠点倉庫名
+				String GetLoc			= (String)LocationMstRt[i][M100LocationMstRt.ColLoc];			//ロケーション
+				String GetLocName		= (String)LocationMstRt[i][M100LocationMstRt.ColLocName];		//ロケーション名
+				int GetType				= (int)LocationMstRt[i][M100LocationMstRt.ColType];				//ロケタイプ
+				String GetEntryDate		= (String)LocationMstRt[i][M100LocationMstRt.ColEntryDate];		//登録日
+				String GetUpdateDate	= (String)LocationMstRt[i][M100LocationMstRt.ColUpdateDate];	//更新日
+				String GetEntryUser		= (String)LocationMstRt[i][M100LocationMstRt.ColEntryUser];		//登録者
+				String GetUpdateUser	= (String)LocationMstRt[i][M100LocationMstRt.ColUpdateUser];	//更新者
 				
 				String Key = GetClCd+"_"+GetWhCd+"_"+GetLoc;
 				String[] SetOb = {GetClCd,GetWhCd,GetLoc,""+GetType,GetLocName};

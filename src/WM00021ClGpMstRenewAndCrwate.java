@@ -129,7 +129,7 @@ public class WM00021ClGpMstRenewAndCrwate{
 			
 			SearchClGpCD.add(TgtClGpCd);
 			
-			Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
+			Object[][] ClGpMstRt = M100ClGpMstRt.ClGpMstRt(
 						SearchClGpCD,SearchCLGpName, SearchPost,
 						SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,AllSearch);
 			
@@ -175,7 +175,7 @@ public class WM00021ClGpMstRenewAndCrwate{
 					SearchPOST.add(GetPost);
 				}
 				
-				Object[][] PostRt = M10010PostMstRt.PostRt(
+				Object[][] PostRt = M100PostMstRt.PostRt(
 							SearchPOST,
 							SearchAdd,
 							AllSearch,
@@ -253,7 +253,7 @@ public class WM00021ClGpMstRenewAndCrwate{
 				
 				if(!"".equals(GetCLGpName01)) {
 					if("".equals(GetClGpCD)) {
-						GetClGpCD = M00010ClGpMstRt.NewWhCdGet(1)[0];
+						GetClGpCD = M100ClGpMstRt.NewWhCdGet(1)[0];
 					}
 					
 					String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];

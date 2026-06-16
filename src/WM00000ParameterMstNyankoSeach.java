@@ -227,7 +227,7 @@ public class WM00000ParameterMstNyankoSeach{
 		main_fm.add(PN_Search);
 		
 		//検索結果
-		Object[][] RtSettingParameterMstRtNANKO = M00000ParameterMstRt.RtSettingParameterMstRtNANKO();
+		Object[][] RtSettingParameterMstRtNANKO = M100ParameterMstRt.RtSettingParameterMstRtNANKO();
 		
 		String[] columnNames01 = new String[RtSettingParameterMstRtNANKO.length+1];
 		
@@ -510,7 +510,7 @@ public class WM00000ParameterMstNyankoSeach{
 					if(!"".equals(GetSearchParaInt10End	)){SearchParaInt10End.add(Integer.parseInt(GetSearchParaInt10End));}
 					if(!"".equals(GetSearchParaTxtAll	)){SearchParaTxtAll.add(GetSearchParaTxtAll);}
 					
-					Object[][] ParameterMstRtNANKO = M00000ParameterMstRt.ParameterMstRtNANKO(
+					Object[][] ParameterMstRtNANKO = M100ParameterMstRt.ParameterMstRtNANKO(
 							SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
 							SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
 							SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
@@ -550,8 +550,8 @@ public class WM00000ParameterMstNyankoSeach{
 					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtParaCd 		= ""+tableModel_ms01.getValueAt(i, M00000ParameterMstRt.ColParaCd+1);
-							TgtParaCdSeq	= ""+tableModel_ms01.getValueAt(i, M00000ParameterMstRt.ColParaCdSeq+1);
+							TgtParaCd 		= ""+tableModel_ms01.getValueAt(i, M100ParameterMstRt.ColParaCd+1);
+							TgtParaCdSeq	= ""+tableModel_ms01.getValueAt(i, M100ParameterMstRt.ColParaCdSeq+1);
 						}
 					}
 					if(!"".equals(TgtParaCd) && !"".equals(TgtParaCdSeq)) {
@@ -699,7 +699,7 @@ public class WM00000ParameterMstNyankoSeach{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00001WhMstRt{
+public class M100WhMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchWHCD 	= new ArrayList<String>();
@@ -17,7 +17,7 @@ public class M00001WhMstRt{
 	ArrayList<String> SearchPTMSCD 	= new ArrayList<String>();
 	boolean AllSearch = false;
 	
-	Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+	Object[][] WhMstRt = M100WhMstRt.WhMstRt(
 			SearchWHCD,
 			SearchWHName,
 			SearchPost,
@@ -29,22 +29,22 @@ public class M00001WhMstRt{
 			SearchPTMSCD,
 			AllSearch);
 			
-	String GetNoWHCD		= (String)WhMstRt[i][M00001WhMstRt.ColNoWHCD];			//倉庫コード
-	String GetNoWHName		= (String)WhMstRt[i][M00001WhMstRt.ColNoWHName];		//拠点倉庫名
-	String GetNoPost		= (String)WhMstRt[i][M00001WhMstRt.ColNoPost];			//拠点倉庫郵便番号
-	String GetNoAdd01		= (String)WhMstRt[i][M00001WhMstRt.ColNoAdd01];			//拠点倉庫住所1
-	String GetNoAdd02		= (String)WhMstRt[i][M00001WhMstRt.ColNoAdd02];			//拠点倉庫住所2
-	String GetNoTel			= (String)WhMstRt[i][M00001WhMstRt.ColNoTel];			//拠点倉庫電話
-	String GetNoFax			= (String)WhMstRt[i][M00001WhMstRt.ColNoFax];			//拠点倉庫FAX
-	String GetNoMail		= (String)WhMstRt[i][M00001WhMstRt.ColNoMail];			//拠点倉庫MAIL
-	String GetNoCom01		= (String)WhMstRt[i][M00001WhMstRt.ColNoCom01];			//コメント１
-	String GetNoCom02		= (String)WhMstRt[i][M00001WhMstRt.ColNoCom02];			//コメント２
-	String GetNoCom03		= (String)WhMstRt[i][M00001WhMstRt.ColNoCom03];			//コメント３
-	String GetNoPTMSCD		= (String)WhMstRt[i][M00001WhMstRt.ColNoPTMSCD];		//基幹システム連携用事業所CD
-	String GetNoEntryDate	= (String)WhMstRt[i][M00001WhMstRt.ColNoEntryDate];		//データ登録日時
-	String GetNoUpdateDate	= (String)WhMstRt[i][M00001WhMstRt.ColNoUpdateDate];	//データ更新日時
-	String GetNoEntryUser	= (String)WhMstRt[i][M00001WhMstRt.ColNoEntryUser];		//登録者
-	String GetNoUpdateUser	= (String)WhMstRt[i][M00001WhMstRt.ColNoUpdateUser];	//更新者
+	String GetNoWHCD		= (String)WhMstRt[i][M100WhMstRt.ColNoWHCD];			//倉庫コード
+	String GetNoWHName		= (String)WhMstRt[i][M100WhMstRt.ColNoWHName];		//拠点倉庫名
+	String GetNoPost		= (String)WhMstRt[i][M100WhMstRt.ColNoPost];			//拠点倉庫郵便番号
+	String GetNoAdd01		= (String)WhMstRt[i][M100WhMstRt.ColNoAdd01];			//拠点倉庫住所1
+	String GetNoAdd02		= (String)WhMstRt[i][M100WhMstRt.ColNoAdd02];			//拠点倉庫住所2
+	String GetNoTel			= (String)WhMstRt[i][M100WhMstRt.ColNoTel];			//拠点倉庫電話
+	String GetNoFax			= (String)WhMstRt[i][M100WhMstRt.ColNoFax];			//拠点倉庫FAX
+	String GetNoMail		= (String)WhMstRt[i][M100WhMstRt.ColNoMail];			//拠点倉庫MAIL
+	String GetNoCom01		= (String)WhMstRt[i][M100WhMstRt.ColNoCom01];			//コメント１
+	String GetNoCom02		= (String)WhMstRt[i][M100WhMstRt.ColNoCom02];			//コメント２
+	String GetNoCom03		= (String)WhMstRt[i][M100WhMstRt.ColNoCom03];			//コメント３
+	String GetNoPTMSCD		= (String)WhMstRt[i][M100WhMstRt.ColNoPTMSCD];		//基幹システム連携用事業所CD
+	String GetNoEntryDate	= (String)WhMstRt[i][M100WhMstRt.ColNoEntryDate];		//データ登録日時
+	String GetNoUpdateDate	= (String)WhMstRt[i][M100WhMstRt.ColNoUpdateDate];	//データ更新日時
+	String GetNoEntryUser	= (String)WhMstRt[i][M100WhMstRt.ColNoEntryUser];		//登録者
+	String GetNoUpdateUser	= (String)WhMstRt[i][M100WhMstRt.ColNoUpdateUser];	//更新者
 			
 	
 	*/
@@ -348,7 +348,7 @@ public class M00001WhMstRt{
 		ArrayList SearchPTMSCD = new ArrayList();
 		boolean AllSearch = true;
 		
-		Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+		Object[][] WhMstRt = M100WhMstRt.WhMstRt(
 					SearchWHCD, SearchWHName, SearchPost,
 					SearchAdd, SearchTel, SearchFax, SearchMail,
 					SearchCom, SearchPTMSCD,AllSearch);
@@ -356,8 +356,8 @@ public class M00001WhMstRt{
 		int WhNo = 0;
     	
     	for(int i=0;i<WhMstRt.length;i++) {
-    		if(4<(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).length()&&"ATWH".equals((""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).substring(0,4))) {
-    			String WST = B100TextControl.num_only_String(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]);
+    		if(4<(""+WhMstRt[i][M100WhMstRt.ColNoWHCD]).length()&&"ATWH".equals((""+WhMstRt[i][M100WhMstRt.ColNoWHCD]).substring(0,4))) {
+    			String WST = B100TextControl.num_only_String(""+WhMstRt[i][M100WhMstRt.ColNoWHCD]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(WhNo<wint) {

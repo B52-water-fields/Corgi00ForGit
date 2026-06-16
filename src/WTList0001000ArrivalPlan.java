@@ -28,7 +28,7 @@ public class WTList0001000ArrivalPlan{
 				for(int i=0;i<ArrNoList.size();i++) {
 					boolean UnHitFg = true;
 					for(int i01=0;i01<PrintControlRt.length;i01++) {
-						if(((String)PrintControlRt[i01][T00020PrintControlRt.ColOkuriNo]).equals(ArrNoList.get(i))) {
+						if(((String)PrintControlRt[i01][T100PrintControlRt.ColOkuriNo]).equals(ArrNoList.get(i))) {
 							UnHitFg = false;
 							i01=PrintControlRt.length+1;
 						}
@@ -121,9 +121,9 @@ public class WTList0001000ArrivalPlan{
 			        Object[][] HdPageCount = new Object[ArrivalPlanHdRt.length][6];
 			        
 			        for(int i01=0;i01<ArrivalPlanHdRt.length;i01++) {
-			        	HdPageCount[i01][0] = (String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColClWh];
-			        	HdPageCount[i01][1] = (String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColClCd];
-			        	HdPageCount[i01][2] = (String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColArrNo];
+			        	HdPageCount[i01][0] = (String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColClWh];
+			        	HdPageCount[i01][1] = (String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColClCd];
+			        	HdPageCount[i01][2] = (String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColArrNo];
 			        	HdPageCount[i01][3] = (int)0;
 			        	HdPageCount[i01][4] = (boolean)false;
 			        	HdPageCount[i01][5] = "";
@@ -131,9 +131,9 @@ public class WTList0001000ArrivalPlan{
 			        	MsCount = 0;
 			        	for(int i02=0;i02<ArrivalPlanMsRt.length;i02++) {
 			        		if(
-		        				((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColClWh]).equals((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColClWh])
-		        				&&((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColClCd]).equals((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColClCd])
-		        				&&((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColArrNo]).equals((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColArrNo])
+		        				((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColClWh]).equals((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColClWh])
+		        				&&((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColClCd]).equals((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColClCd])
+		        				&&((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColArrNo]).equals((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColArrNo])
 		        				) {
 			        			if(0==MsCount%MaxRowCount) {
 			        				TotalPageCount = TotalPageCount+1;
@@ -146,12 +146,12 @@ public class WTList0001000ArrivalPlan{
 			        	//再発行の場合HdPageCount[i01][4] = (boolean)true;
 			        	if(!NewPrintOnly) {
 			        		for(int i02=0;i02<PrintControlRt.length;i02++) {
-								if(((String)PrintControlRt[i02][T00020PrintControlRt.ColOkuriNo]).equals((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColArrNo])
-										&&((String)PrintControlRt[i02][T00020PrintControlRt.ColKey01]).equals((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColClWh])			//サブキー01
-										&&((String)PrintControlRt[i02][T00020PrintControlRt.ColKey02]).equals((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColClCd])			//サブキー02
+								if(((String)PrintControlRt[i02][T100PrintControlRt.ColOkuriNo]).equals((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColArrNo])
+										&&((String)PrintControlRt[i02][T100PrintControlRt.ColKey01]).equals((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColClWh])			//サブキー01
+										&&((String)PrintControlRt[i02][T100PrintControlRt.ColKey02]).equals((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColClCd])			//サブキー02
 										) {
 									HdPageCount[i01][4] = (boolean)true;
-									HdPageCount[i01][5] = (String)PrintControlRt[i02][T00020PrintControlRt.ColUpdateDate];
+									HdPageCount[i01][5] = (String)PrintControlRt[i02][T100PrintControlRt.ColUpdateDate];
 								}
 							}
 			        	}
@@ -171,9 +171,9 @@ public class WTList0001000ArrivalPlan{
 		        		}
 			        	for(int i02=0;i02<ArrivalPlanMsRt.length;i02++) {
 			        		if(
-		        				((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColClWh]).equals((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColClWh])
-		        				&&((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColClCd]).equals((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColClCd])
-		        				&&((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColArrNo]).equals((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColArrNo])
+		        				((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColClWh]).equals((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColClWh])
+		        				&&((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColClCd]).equals((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColClCd])
+		        				&&((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColArrNo]).equals((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColArrNo])
 		        				) {
 			        			if(0==MsCount%MaxRowCount) {
 			        				//ヘッダー生成
@@ -191,7 +191,7 @@ public class WTList0001000ArrivalPlan{
 			        			}
 			        			//明細生成
 			        			MsCount=MsCount+1;
-			        			int BaraQty = (int)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColPlanQty];
+			        			int BaraQty = (int)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColPlanQty];
 			        			int CtQty = 0;
 			        			int CsQty = 0;
 			        			int PlQty = 0;
@@ -207,14 +207,14 @@ public class WTList0001000ArrivalPlan{
 	        					String GetPlUnitName	= "";
 			        			
 			        			for(int i03=0;i03<ItemMstRt.length;i03++){
-			        				if(((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColItemCd]).equals((String)ItemMstRt[i03][M00070ItemMstRt.ColItemCd])) {
-			        					GetCtQty	= (int)ItemMstRt[i03][M00070ItemMstRt.ColCtQty];					//カートン入数
-			        					GetCsQty	= (int)ItemMstRt[i03][M00070ItemMstRt.ColCsQty];					//ケース入数
-			        					GetPlQty	= (int)ItemMstRt[i03][M00070ItemMstRt.ColPlQty];					//パレット入数
-			        					GetBrUnitName	= (String)ItemMstRt[i03][M00070ItemMstRt.ColUnitName];
-			        					GetCtUnitName	= (String)ItemMstRt[i03][M00070ItemMstRt.ColCtUnitName];
-			        					GetCsUnitName	= (String)ItemMstRt[i03][M00070ItemMstRt.ColCsUnitName];
-			        					GetPlUnitName	= (String)ItemMstRt[i03][M00070ItemMstRt.ColPlUnitName];
+			        				if(((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColItemCd]).equals((String)ItemMstRt[i03][M100ItemMstRt.ColItemCd])) {
+			        					GetCtQty	= (int)ItemMstRt[i03][M100ItemMstRt.ColCtQty];					//カートン入数
+			        					GetCsQty	= (int)ItemMstRt[i03][M100ItemMstRt.ColCsQty];					//ケース入数
+			        					GetPlQty	= (int)ItemMstRt[i03][M100ItemMstRt.ColPlQty];					//パレット入数
+			        					GetBrUnitName	= (String)ItemMstRt[i03][M100ItemMstRt.ColUnitName];
+			        					GetCtUnitName	= (String)ItemMstRt[i03][M100ItemMstRt.ColCtUnitName];
+			        					GetCsUnitName	= (String)ItemMstRt[i03][M100ItemMstRt.ColCsUnitName];
+			        					GetPlUnitName	= (String)ItemMstRt[i03][M100ItemMstRt.ColPlUnitName];
 			        					
 			        					if(0<GetPlQty) {
 			        						PlQty = (int)(BaraQty/GetPlQty);
@@ -232,8 +232,8 @@ public class WTList0001000ArrivalPlan{
 			        			}
 			        			//マスタから推奨ロケ格納
 			        			for(int i03=0;i03<ItemRecomendLocFromItemCd.length;i03++) {
-			        				if(((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColItemCd]).equals((String)ItemRecomendLocFromItemCd[i03][M00120ItemRecomendLocMstRt.ColItemCd])) {
-			        					RecomendLoc = (String)ItemRecomendLocFromItemCd[i03][M00120ItemRecomendLocMstRt.ColLocName];
+			        				if(((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColItemCd]).equals((String)ItemRecomendLocFromItemCd[i03][M100ItemRecomendLocMstRt.ColItemCd])) {
+			        					RecomendLoc = (String)ItemRecomendLocFromItemCd[i03][M100ItemRecomendLocMstRt.ColLocName];
 			        					i03=ItemRecomendLocFromItemCd.length+1;
 			        				}
 			        			}
@@ -243,42 +243,42 @@ public class WTList0001000ArrivalPlan{
 			        			//スルー出荷ロケと引当禁止ロケにお友達がいても推奨せずにマスタの推奨ロケを採用して上書きしない
 			        			for(int i03=0;i03<StockRt.length;i03++) {
 			        				//出荷ロケにお友達がいる
-			        				if(0==(int)StockRt[i03][T00030StockRt.ColType]) {
-			        					if(((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T00030StockRt.ColItemCd])) {
-				        					RecomendLoc =  (String)StockRt[i03][T00030StockRt.ColLocName];
+			        				if(0==(int)StockRt[i03][T100StockRt.ColType]) {
+			        					if(((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T100StockRt.ColItemCd])) {
+				        					RecomendLoc =  (String)StockRt[i03][T100StockRt.ColLocName];
 				        					i03=StockRt.length+1;
 				        				}
 			        				}
 			        			}
 			        			for(int i03=0;i03<StockRt.length;i03++) {
 			        				//保管ロケにお友達がいる
-			        				if(1==(int)StockRt[i03][T00030StockRt.ColType]) {
-			        					if(((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T00030StockRt.ColItemCd])) {
-				        					RecomendLoc =  (String)StockRt[i03][T00030StockRt.ColLocName];
+			        				if(1==(int)StockRt[i03][T100StockRt.ColType]) {
+			        					if(((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T100StockRt.ColItemCd])) {
+				        					RecomendLoc =  (String)StockRt[i03][T100StockRt.ColLocName];
 				        					i03=StockRt.length+1;
 				        				}
 			        				}
 			        			}
 			        			for(int i03=0;i03<StockRt.length;i03++) {
 			        				//出荷ロケにドッペルゲンガーがいる
-			        				if(0==(int)StockRt[i03][T00030StockRt.ColType]) {
-			        					if(((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T00030StockRt.ColItemCd])
-			        							&& ((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.Collot]).equals((String)StockRt[i03][T00030StockRt.ColLot])
-			        							&& ((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColExpDate]).equals((String)StockRt[i03][T00030StockRt.ColExpdate])
+			        				if(0==(int)StockRt[i03][T100StockRt.ColType]) {
+			        					if(((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T100StockRt.ColItemCd])
+			        							&& ((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.Collot]).equals((String)StockRt[i03][T100StockRt.ColLot])
+			        							&& ((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColExpDate]).equals((String)StockRt[i03][T100StockRt.ColExpdate])
 			        							) {
-				        					RecomendLoc =  (String)StockRt[i03][T00030StockRt.ColLocName];
+				        					RecomendLoc =  (String)StockRt[i03][T100StockRt.ColLocName];
 				        					i03=StockRt.length+1;
 				        				}
 			        				}
 			        			}
 			        			for(int i03=0;i03<StockRt.length;i03++) {
 			        				//保管ロケにドッペルゲンガーがいる
-			        				if(1==(int)StockRt[i03][T00030StockRt.ColType]) {
-			        					if(((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T00030StockRt.ColItemCd])
-			        							&& ((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.Collot]).equals((String)StockRt[i03][T00030StockRt.ColLot])
-			        							&& ((String)ArrivalPlanMsRt[i02][T00015ArrivalPlanMsRt.ColExpDate]).equals((String)StockRt[i03][T00030StockRt.ColExpdate])
+			        				if(1==(int)StockRt[i03][T100StockRt.ColType]) {
+			        					if(((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T100StockRt.ColItemCd])
+			        							&& ((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.Collot]).equals((String)StockRt[i03][T100StockRt.ColLot])
+			        							&& ((String)ArrivalPlanMsRt[i02][T100ArrivalPlanMsRt.ColExpDate]).equals((String)StockRt[i03][T100StockRt.ColExpdate])
 			        							) {
-				        					RecomendLoc =  (String)StockRt[i03][T00030StockRt.ColLocName];
+				        					RecomendLoc =  (String)StockRt[i03][T100StockRt.ColLocName];
 				        					i03=StockRt.length+1;
 				        				}
 			        				}
@@ -352,14 +352,14 @@ public class WTList0001000ArrivalPlan{
 		
 		NumberFormat ni = NumberFormat.getNumberInstance();
 		
-		SetText = ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColItemCd];	//商品CD
+		SetText = ""+(String)ArrivalPlanMsRt[T100ArrivalPlanMsRt.ColItemCd];	//商品CD
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream, 20,(float)HeightStart-10-(leading*PageRow*2)+leading*2,120,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
-        SetText = ""+ni.format((int)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColPlanQty])+""+GetBrUnitName;	//総バラ数
+        SetText = ""+ni.format((int)ArrivalPlanMsRt[T100ArrivalPlanMsRt.ColPlanQty])+""+GetBrUnitName;	//総バラ数
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream, 20,(float)HeightStart-10-(leading*PageRow*2)+leading*1,120,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         
-        SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.Collot];	//ロット
+        SetText =  ""+(String)ArrivalPlanMsRt[T100ArrivalPlanMsRt.Collot];	//ロット
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream,140,(float)HeightStart-10-(leading*PageRow*2)+leading*2,100,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
-        SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColExpDate];	//賞味期限
+        SetText =  ""+(String)ArrivalPlanMsRt[T100ArrivalPlanMsRt.ColExpDate];	//賞味期限
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream,140,(float)HeightStart-10-(leading*PageRow*2)+leading*1,100,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         
         SetText =  ""+ni.format(BaraQty)+""+GetBrUnitName;	//バラ数
@@ -384,7 +384,7 @@ public class WTList0001000ArrivalPlan{
         SetText = ""+RecomendLoc;	//推奨ロケ
         contentStream = B100PdfControl.TextSetBox(contentStream,400,(float)HeightStart-10-(leading*PageRow*2)+leading*2,100,leading*2,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
         
-        SetText =  ""+(String)ArrivalPlanMsRt[T00015ArrivalPlanMsRt.ColItemName];	//商品名
+        SetText =  ""+(String)ArrivalPlanMsRt[T100ArrivalPlanMsRt.ColItemName];	//商品名
         contentStream = B100PdfControl.TextSetBox(contentStream,500,(float)HeightStart-10-(leading*PageRow*2)+leading*2,300,leading*2,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,SetBackgrpundFg,BackgroundColor);
 		
 		return contentStream;
@@ -411,34 +411,34 @@ public class WTList0001000ArrivalPlan{
 		}
 		contentStream = B100PdfControl.TextSetBox(contentStream, 0,(float)HeightStart-leading*0,20,leading,SetText,font,FontSize,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
 		
-		SetText =  "　　　荷主:("+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColClCd]+")"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColCLName01];
+		SetText =  "　　　荷主:("+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColClCd]+")"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColCLName01];
         contentStream = B100PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*0,500,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         SetText = "　発行日時："+CreateDtm;
         contentStream = B100PdfControl.TextSetBox(contentStream,520,(float)HeightStart-leading*0,300,leading,SetText,font,FontSize-2,Color.BLACK,1,false,Color.BLACK,false,Color.WHITE);
         
-        SetText = "　　仕入先:("+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColSpCd]+")"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColSpName01];
+        SetText = "　　仕入先:("+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColSpCd]+")"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColSpName01];
         contentStream = B100PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*1,500,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         SetText = "予定Noページ:"+HdPage+"/"+HdPageCount+" 発行総ページ:"+PageCount+"/"+TotalPageCount;
         contentStream = B100PdfControl.TextSetBox(contentStream,520,(float)HeightStart-leading*1,300,leading,SetText,font,FontSize-2,Color.BLACK,1,false,Color.BLACK,false,Color.WHITE);
 		
-		SetText = "入荷予定No:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArrNo];
+		SetText = "入荷予定No:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColArrNo];
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream, 20,(float)HeightStart-leading*2,150,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         
-        SetText = "荷主管理No:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColClArrNo];
+        SetText = "荷主管理No:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColClArrNo];
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream, 20,(float)HeightStart-leading*3,150,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         
-        SetText =  "入荷予定日:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColPlanDate];
+        SetText =  "入荷予定日:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColPlanDate];
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream, 20,(float)HeightStart-leading*4,150,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         
         
         
-        SetText =  "備考01:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom01];
+        SetText =  "備考01:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColArCom01];
         contentStream = B100PdfControl.TextSetBox(contentStream,370,(float)HeightStart-leading*2,450,leading,SetText,font,FontSize-3,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         
-        SetText =  "備考02:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom02];
+        SetText =  "備考02:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColArCom02];
         contentStream = B100PdfControl.TextSetBox(contentStream,370,(float)HeightStart-leading*3,450,leading,SetText,font,FontSize-3,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         
-        SetText =  "備考03:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArCom03];
+        SetText =  "備考03:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColArCom03];
         contentStream = B100PdfControl.TextSetBox(contentStream,370,(float)HeightStart-leading*4,450,leading,SetText,font,FontSize-3,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         
         
@@ -530,13 +530,13 @@ public class WTList0001000ArrivalPlan{
 		boolean AllSearch = false;														//全件検索
 		boolean SortItemcdMode = true;													//商品CDでソート
 		Object[][] ClMstRt	= ClMstRt(TgtClCd);
-		if(0<ClMstRt.length) {SearchClGpCD.add((String)ClMstRt[0][M00011ClMstRt.ColClGpCD]);}
+		if(0<ClMstRt.length) {SearchClGpCD.add((String)ClMstRt[0][M100ClMstRt.ColClGpCD]);}
 		
 		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			SearchItemCd.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]);
+			SearchItemCd.add((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd]);
 		}
 		
-		Object[][] StockRt= T00030StockRt.StockRt(
+		Object[][] StockRt= T100StockRt.StockRt(
 								SearchClCd,				//荷主コード
 								SearchWhCd,				//倉庫コード
 								SearchClGpCD,			//荷主グループCD
@@ -588,13 +588,13 @@ public class WTList0001000ArrivalPlan{
 		ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
 		ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
 		boolean AllSearch = false;
-		if(0<ClMstRt.length) {SearchClGpCd.add((String)ClMstRt[0][M00011ClMstRt.ColClGpCD]);}
+		if(0<ClMstRt.length) {SearchClGpCd.add((String)ClMstRt[0][M100ClMstRt.ColClGpCD]);}
 		
 		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			SearchItemCd.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]);
+			SearchItemCd.add((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd]);
 		}
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード
@@ -626,10 +626,10 @@ public class WTList0001000ArrivalPlan{
 		ArrayList<String> ItemCd= new ArrayList<String>();	//商品CD
 		boolean ItemMstRecomendLocExistenceOnly = true;		//商品サブマスタ推奨ロケは対象荷主のロケーションマスタに存在する場合のみ値格納
 		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			ItemCd.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]);
+			ItemCd.add((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd]);
 		}
 		
-		Object[][] ItemRecomendLocFromItemCd = M00120ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
+		Object[][] ItemRecomendLocFromItemCd = M100ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
 		
 		return ItemRecomendLocFromItemCd;
 	}
@@ -649,7 +649,7 @@ public class WTList0001000ArrivalPlan{
 		
 		SearchCLCD.add(TgtClCd);
 		
-		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 			SearchClGpCD,
 			SearchCLCD,
 			SearchCLName,
@@ -717,7 +717,7 @@ public class WTList0001000ArrivalPlan{
 			SearchArrNo.add(TgtArrNo.get(i));
 		}
 		
-		Object[][] ArrivalPlanHdRt = T00016ArrivalPlanHdRt.ArrivalPlanHdRt(
+		Object[][] ArrivalPlanHdRt = T100ArrivalPlanHdRt.ArrivalPlanHdRt(
 				SearchClWh,				//ヘッダ担当倉庫
 				SearchClCd,				//ヘッダ荷主CD
 				SearchCLName01,			//ヘッダ荷主名
@@ -817,7 +817,7 @@ public class WTList0001000ArrivalPlan{
 			SearchArrNo.add(TgtArrNo.get(i));
 		}
 		
-		Object[][] ArrivalPlanMsRt	= T00015ArrivalPlanMsRt.ArrivalPlanMsRt(
+		Object[][] ArrivalPlanMsRt	= T100ArrivalPlanMsRt.ArrivalPlanMsRt(
 				SearchClWh,					//ヘッダ担当倉庫
 				SearchClCd,					//ヘッダ荷主CD
 				SearchCLName01,				//ヘッダ荷主名
@@ -889,7 +889,7 @@ public class WTList0001000ArrivalPlan{
 		SearchKey01.add(TgtWhCd);
 		SearchKey02.add(TgtClCd);
 		
-		Object[][] PrintControlRt	= T00020PrintControlRt.PrintControlRt(
+		Object[][] PrintControlRt	= T100PrintControlRt.PrintControlRt(
 													SearchPrintCd,			//印刷帳票CD
 													SearchOkuriNo,			//送り状番号等
 													SearchKey01,			//サブキー01

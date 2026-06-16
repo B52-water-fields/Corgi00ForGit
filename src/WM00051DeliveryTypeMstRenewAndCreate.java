@@ -65,20 +65,20 @@ public class WM00051DeliveryTypeMstRenewAndCreate{
 			SearchDeliveryTypeNo.add(DeliveryTypeNo);
 			SearchDeliveryTypeCd.add(DeliveryTypeCd);
 			
-			Object[][] DeliveryTypeMstRt = M00050DeliveryTypeMstRt.DeliveryTypeMstRt(
+			Object[][] DeliveryTypeMstRt = M100DeliveryTypeMstRt.DeliveryTypeMstRt(
 					SearchDeliveryTypeNo,
 					SearchDeliveryTypeCd,
 					SearchDeliveryTypeName,
 					AllSearch);
 			
 			if(0<DeliveryTypeMstRt.length) {
-				TB_SearchDeliveryTypeNo.setSelectedIndex((int)DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColDeliveryTypeNo]-1);
-				TB_DeliveryTypeCd.setText(		""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColDeliveryTypeCd]);
-				TB_DeliveryTypeName.setText(	""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColDeliveryTypeName]);
-				TB_EntryDate.setText(			""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColEntryDate]);
-				TB_UpdateDate.setText(			""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColUpdateDate]);
-				TB_EntryUser.setText(			""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColEntryUser]);
-				TB_UpdateUser.setText(			""+DeliveryTypeMstRt[0][M00050DeliveryTypeMstRt.ColUpdateUser]);
+				TB_SearchDeliveryTypeNo.setSelectedIndex((int)DeliveryTypeMstRt[0][M100DeliveryTypeMstRt.ColDeliveryTypeNo]-1);
+				TB_DeliveryTypeCd.setText(		""+DeliveryTypeMstRt[0][M100DeliveryTypeMstRt.ColDeliveryTypeCd]);
+				TB_DeliveryTypeName.setText(	""+DeliveryTypeMstRt[0][M100DeliveryTypeMstRt.ColDeliveryTypeName]);
+				TB_EntryDate.setText(			""+DeliveryTypeMstRt[0][M100DeliveryTypeMstRt.ColEntryDate]);
+				TB_UpdateDate.setText(			""+DeliveryTypeMstRt[0][M100DeliveryTypeMstRt.ColUpdateDate]);
+				TB_EntryUser.setText(			""+DeliveryTypeMstRt[0][M100DeliveryTypeMstRt.ColEntryUser]);
+				TB_UpdateUser.setText(			""+DeliveryTypeMstRt[0][M100DeliveryTypeMstRt.ColUpdateUser]);
 			}
 		}
 		

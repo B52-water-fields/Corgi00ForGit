@@ -118,52 +118,52 @@ public class WT0001020StockAdjust{
 										TgtActualDate
 										);
 			if(1==StockRt.length) {
-				GetClCd				= (String)StockRt[0][T00030StockRt.ColClCd];			//荷主コード
-				GetCLName			= (String)StockRt[0][T00030StockRt.ColCLName];			//荷主名1
-				GetWhCd				= (String)StockRt[0][T00030StockRt.ColWhCd];			//倉庫コード
-				GetClWHName			= (String)StockRt[0][T00030StockRt.ColClWHName];		//担当倉庫名
-				GetClGpCD			= (String)StockRt[0][T00030StockRt.ColClGpCD];			//荷主グループCD
-				GetClGpName			= (String)StockRt[0][T00030StockRt.ColClGpName];		//グループ名1
-				GetLoc				= (String)StockRt[0][T00030StockRt.ColLoc];			//ロケーション
-				GetLocName			= (String)StockRt[0][T00030StockRt.ColLocName];		//ロケーション名
-				GetType				= (int)StockRt[0][T00030StockRt.ColType];				//ロケタイプ
-				GetItemCd			= (String)StockRt[0][T00030StockRt.ColItemCd];			//商品コード
-				GetLot				= (String)StockRt[0][T00030StockRt.ColLot];			//ロット
-				GetExpdate			= (String)StockRt[0][T00030StockRt.ColExpdate];		//消費期限
-				GetActualDate		= (String)StockRt[0][T00030StockRt.ColActualDate];	//入荷実績日
-				GetQty				= (int)StockRt[0][T00030StockRt.ColQty];				//総数量
-				GetShipPlanQty		= (int)StockRt[0][T00030StockRt.ColShipPlanQty];		//引当済総数
-				GetPossibleQty		= (int)StockRt[0][T00030StockRt.ColPossibleQty];		//出荷可能総数
-				GetItemName			= (String)StockRt[0][T00030StockRt.ColItemName];		//商品名
-				GetItemName01		= (String)StockRt[0][T00030StockRt.ColItemName01];	//商品名1
-				GetItemName02		= (String)StockRt[0][T00030StockRt.ColItemName02];	//商品名2
-				GetItemName03		= (String)StockRt[0][T00030StockRt.ColItemName03];	//商品名3
-				GetClItemCd			= (String)StockRt[0][T00030StockRt.ColClItemCd];		//荷主商品コード
-				GetJanCd			= (String)StockRt[0][T00030StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
-				GetItemMdNo			= (String)StockRt[0][T00030StockRt.ColItemMdNo];		//商品型番
-				GetCtUnitQty		= (int)StockRt[0][T00030StockRt.ColCtUnitQty];		//カートン入数
-				GetCsUnitQty		= (int)StockRt[0][T00030StockRt.ColCsUnitQty];		//ケース入数
-				GetPlUnitQty		= (int)StockRt[0][T00030StockRt.ColPlUnitQty];		//パレット入数
-				GetUnitName			= (String)StockRt[0][T00030StockRt.ColUnitName];		//商品単位
-				GetCtUnitName		= (String)StockRt[0][T00030StockRt.ColCtUnitName];	//カートン商品単位
-				GetCsUnitName		= (String)StockRt[0][T00030StockRt.ColCsUnitName];	//ケース商品単位
-				GetPlUnitName		= (String)StockRt[0][T00030StockRt.ColPlUnitName];	//パレット商品単位
-				GetEntryDate		= (String)StockRt[0][T00030StockRt.ColEntryDate];		//登録日時
-				GetUpdateDate		= (String)StockRt[0][T00030StockRt.ColUpdateDate];	//更新日時
-				GetEntryUser		= (String)StockRt[0][T00030StockRt.ColEntryUser];		//登録者
-				GetUpdateUser		= (String)StockRt[0][T00030StockRt.ColUpdateUser];	//更新者
-				GetBrQty			= (int)StockRt[0][T00030StockRt.ColBrQty];				//バラ数量
-				GetBrShipPlanQty	= (int)StockRt[0][T00030StockRt.ColBrShipPlanQty];	//引当済バラ数
-				GetBrPossibleQty	= (int)StockRt[0][T00030StockRt.ColBrPossibleQty];	//出荷可能バラ数
-				GetCtQty			= (int)StockRt[0][T00030StockRt.ColCtQty];				//カートン数量
-				GetCtShipPlanQty	= (int)StockRt[0][T00030StockRt.ColCtShipPlanQty];	//引当済カートン数
-				GetCtPossibleQty	= (int)StockRt[0][T00030StockRt.ColCtPossibleQty];	//出荷可能カートン数
-				GetCsQty			= (int)StockRt[0][T00030StockRt.ColCsQty];				//ケース数量
-				GetCsShipPlanQty	= (int)StockRt[0][T00030StockRt.ColCsShipPlanQty];	//引当済ケース数
-				GetCsPossibleQty	= (int)StockRt[0][T00030StockRt.ColCsPossibleQty];	//出荷可能ケース数
-				GetPlQty			= (int)StockRt[0][T00030StockRt.ColPlQty];				//パレット数量
-				GetPlShipPlanQty	= (int)StockRt[0][T00030StockRt.ColPlShipPlanQty];	//引当済パレット数
-				GetPlPossibleQty	= (int)StockRt[0][T00030StockRt.ColPlPossibleQty];	//出荷可能パレット数
+				GetClCd				= (String)StockRt[0][T100StockRt.ColClCd];			//荷主コード
+				GetCLName			= (String)StockRt[0][T100StockRt.ColCLName];			//荷主名1
+				GetWhCd				= (String)StockRt[0][T100StockRt.ColWhCd];			//倉庫コード
+				GetClWHName			= (String)StockRt[0][T100StockRt.ColClWHName];		//担当倉庫名
+				GetClGpCD			= (String)StockRt[0][T100StockRt.ColClGpCD];			//荷主グループCD
+				GetClGpName			= (String)StockRt[0][T100StockRt.ColClGpName];		//グループ名1
+				GetLoc				= (String)StockRt[0][T100StockRt.ColLoc];			//ロケーション
+				GetLocName			= (String)StockRt[0][T100StockRt.ColLocName];		//ロケーション名
+				GetType				= (int)StockRt[0][T100StockRt.ColType];				//ロケタイプ
+				GetItemCd			= (String)StockRt[0][T100StockRt.ColItemCd];			//商品コード
+				GetLot				= (String)StockRt[0][T100StockRt.ColLot];			//ロット
+				GetExpdate			= (String)StockRt[0][T100StockRt.ColExpdate];		//消費期限
+				GetActualDate		= (String)StockRt[0][T100StockRt.ColActualDate];	//入荷実績日
+				GetQty				= (int)StockRt[0][T100StockRt.ColQty];				//総数量
+				GetShipPlanQty		= (int)StockRt[0][T100StockRt.ColShipPlanQty];		//引当済総数
+				GetPossibleQty		= (int)StockRt[0][T100StockRt.ColPossibleQty];		//出荷可能総数
+				GetItemName			= (String)StockRt[0][T100StockRt.ColItemName];		//商品名
+				GetItemName01		= (String)StockRt[0][T100StockRt.ColItemName01];	//商品名1
+				GetItemName02		= (String)StockRt[0][T100StockRt.ColItemName02];	//商品名2
+				GetItemName03		= (String)StockRt[0][T100StockRt.ColItemName03];	//商品名3
+				GetClItemCd			= (String)StockRt[0][T100StockRt.ColClItemCd];		//荷主商品コード
+				GetJanCd			= (String)StockRt[0][T100StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
+				GetItemMdNo			= (String)StockRt[0][T100StockRt.ColItemMdNo];		//商品型番
+				GetCtUnitQty		= (int)StockRt[0][T100StockRt.ColCtUnitQty];		//カートン入数
+				GetCsUnitQty		= (int)StockRt[0][T100StockRt.ColCsUnitQty];		//ケース入数
+				GetPlUnitQty		= (int)StockRt[0][T100StockRt.ColPlUnitQty];		//パレット入数
+				GetUnitName			= (String)StockRt[0][T100StockRt.ColUnitName];		//商品単位
+				GetCtUnitName		= (String)StockRt[0][T100StockRt.ColCtUnitName];	//カートン商品単位
+				GetCsUnitName		= (String)StockRt[0][T100StockRt.ColCsUnitName];	//ケース商品単位
+				GetPlUnitName		= (String)StockRt[0][T100StockRt.ColPlUnitName];	//パレット商品単位
+				GetEntryDate		= (String)StockRt[0][T100StockRt.ColEntryDate];		//登録日時
+				GetUpdateDate		= (String)StockRt[0][T100StockRt.ColUpdateDate];	//更新日時
+				GetEntryUser		= (String)StockRt[0][T100StockRt.ColEntryUser];		//登録者
+				GetUpdateUser		= (String)StockRt[0][T100StockRt.ColUpdateUser];	//更新者
+				GetBrQty			= (int)StockRt[0][T100StockRt.ColBrQty];				//バラ数量
+				GetBrShipPlanQty	= (int)StockRt[0][T100StockRt.ColBrShipPlanQty];	//引当済バラ数
+				GetBrPossibleQty	= (int)StockRt[0][T100StockRt.ColBrPossibleQty];	//出荷可能バラ数
+				GetCtQty			= (int)StockRt[0][T100StockRt.ColCtQty];				//カートン数量
+				GetCtShipPlanQty	= (int)StockRt[0][T100StockRt.ColCtShipPlanQty];	//引当済カートン数
+				GetCtPossibleQty	= (int)StockRt[0][T100StockRt.ColCtPossibleQty];	//出荷可能カートン数
+				GetCsQty			= (int)StockRt[0][T100StockRt.ColCsQty];				//ケース数量
+				GetCsShipPlanQty	= (int)StockRt[0][T100StockRt.ColCsShipPlanQty];	//引当済ケース数
+				GetCsPossibleQty	= (int)StockRt[0][T100StockRt.ColCsPossibleQty];	//出荷可能ケース数
+				GetPlQty			= (int)StockRt[0][T100StockRt.ColPlQty];				//パレット数量
+				GetPlShipPlanQty	= (int)StockRt[0][T100StockRt.ColPlShipPlanQty];	//引当済パレット数
+				GetPlPossibleQty	= (int)StockRt[0][T100StockRt.ColPlPossibleQty];	//出荷可能パレット数
 				
 				MstCheckFg = false;
 			}
@@ -174,45 +174,45 @@ public class WT0001020StockAdjust{
 			//荷主コードを元に荷主情報取得
 			Object[][] ClMstRt = ClMstRt(GetClCd);
 			if(1==ClMstRt.length) {
-				GetClCd			=(String)ClMstRt[0][M00011ClMstRt.Colcl_cd];		//荷主CD
-				GetCLName		=(String)ClMstRt[0][M00011ClMstRt.ColCLName01];	//荷主名1
-				GetClGpCD		=(String)ClMstRt[0][M00011ClMstRt.ColClGpCD];		//荷主グループCD
-				GetClGpName		=(String)ClMstRt[0][M00011ClMstRt.ColClGpName];	//グループ名1
+				GetClCd			=(String)ClMstRt[0][M100ClMstRt.Colcl_cd];		//荷主CD
+				GetCLName		=(String)ClMstRt[0][M100ClMstRt.ColCLName01];	//荷主名1
+				GetClGpCD		=(String)ClMstRt[0][M100ClMstRt.ColClGpCD];		//荷主グループCD
+				GetClGpName		=(String)ClMstRt[0][M100ClMstRt.ColClGpName];	//グループ名1
 			}
 			
 			//倉庫マスタ
 			Object[][] WhMstRt = WhMstRt(GetWhCd);
 			if(1==WhMstRt.length){
-				GetWhCd				= (String)WhMstRt[0][M00001WhMstRt.ColNoWHCD];			//倉庫コード
-				GetClWHName			= (String)WhMstRt[0][M00001WhMstRt.ColNoWHName];		//担当倉庫名
+				GetWhCd				= (String)WhMstRt[0][M100WhMstRt.ColNoWHCD];			//倉庫コード
+				GetClWHName			= (String)WhMstRt[0][M100WhMstRt.ColNoWHName];		//担当倉庫名
 			}
 			
 			//商品マスタ
 			Object[][] ItemMstRt = ItemMstRt(GetClGpCD,GetItemCd);
 			if(1==ItemMstRt.length) {
-				GetItemCd			= (String)ItemMstRt[0][M00070ItemMstRt.ColItemCd];			//商品コード
-				GetItemName			= (String)ItemMstRt[0][M00070ItemMstRt.ColItemName01];	//商品名
-				GetItemName01		= (String)ItemMstRt[0][M00070ItemMstRt.ColItemName01];	//商品名1
-				GetItemName02		= (String)ItemMstRt[0][M00070ItemMstRt.ColItemName02];	//商品名2
-				GetItemName03		= (String)ItemMstRt[0][M00070ItemMstRt.ColItemName03];	//商品名3
-				GetClItemCd			= (String)ItemMstRt[0][M00070ItemMstRt.ColCLItemCd];		//荷主商品コード
-				GetJanCd			= (String)ItemMstRt[0][M00070ItemMstRt.ColJanCd];			//ソースマーク_BCD（バラ）
-				GetItemMdNo			= (String)ItemMstRt[0][M00070ItemMstRt.ColItemMDNo];		//商品型番
-				GetCtUnitQty		= (int)ItemMstRt[0][M00070ItemMstRt.ColCtQty];				//カートン入数
-				GetCsUnitQty		= (int)ItemMstRt[0][M00070ItemMstRt.ColCsQty];				//ケース入数
-				GetPlUnitQty		= (int)ItemMstRt[0][M00070ItemMstRt.ColPlQty];				//パレット入数
-				GetUnitName			= (String)ItemMstRt[0][M00070ItemMstRt.ColUnitName];		//商品単位
-				GetCtUnitName		= (String)ItemMstRt[0][M00070ItemMstRt.ColCtUnitName];	//カートン商品単位
-				GetCsUnitName		= (String)ItemMstRt[0][M00070ItemMstRt.ColCsUnitName];	//ケース商品単位
-				GetPlUnitName		= (String)ItemMstRt[0][M00070ItemMstRt.ColPlUnitName];	//パレット商品単位
+				GetItemCd			= (String)ItemMstRt[0][M100ItemMstRt.ColItemCd];			//商品コード
+				GetItemName			= (String)ItemMstRt[0][M100ItemMstRt.ColItemName01];	//商品名
+				GetItemName01		= (String)ItemMstRt[0][M100ItemMstRt.ColItemName01];	//商品名1
+				GetItemName02		= (String)ItemMstRt[0][M100ItemMstRt.ColItemName02];	//商品名2
+				GetItemName03		= (String)ItemMstRt[0][M100ItemMstRt.ColItemName03];	//商品名3
+				GetClItemCd			= (String)ItemMstRt[0][M100ItemMstRt.ColCLItemCd];		//荷主商品コード
+				GetJanCd			= (String)ItemMstRt[0][M100ItemMstRt.ColJanCd];			//ソースマーク_BCD（バラ）
+				GetItemMdNo			= (String)ItemMstRt[0][M100ItemMstRt.ColItemMDNo];		//商品型番
+				GetCtUnitQty		= (int)ItemMstRt[0][M100ItemMstRt.ColCtQty];				//カートン入数
+				GetCsUnitQty		= (int)ItemMstRt[0][M100ItemMstRt.ColCsQty];				//ケース入数
+				GetPlUnitQty		= (int)ItemMstRt[0][M100ItemMstRt.ColPlQty];				//パレット入数
+				GetUnitName			= (String)ItemMstRt[0][M100ItemMstRt.ColUnitName];		//商品単位
+				GetCtUnitName		= (String)ItemMstRt[0][M100ItemMstRt.ColCtUnitName];	//カートン商品単位
+				GetCsUnitName		= (String)ItemMstRt[0][M100ItemMstRt.ColCsUnitName];	//ケース商品単位
+				GetPlUnitName		= (String)ItemMstRt[0][M100ItemMstRt.ColPlUnitName];	//パレット商品単位
 			}
 			
 			//ロケーションマスタ
 			Object[][] LocationMstRt = LocationMstRt(GetClCd,GetWhCd,GetLoc);
 			if(1==LocationMstRt.length) {
-				GetLoc				= (String)LocationMstRt[0][M00090LocationMstRt.ColLoc];			//ロケーション
-				GetLocName			= (String)LocationMstRt[0][M00090LocationMstRt.ColLocName];		//ロケーション名
-				GetType				= (int)LocationMstRt[0][M00090LocationMstRt.ColType];			//ロケタイプ
+				GetLoc				= (String)LocationMstRt[0][M100LocationMstRt.ColLoc];			//ロケーション
+				GetLocName			= (String)LocationMstRt[0][M100LocationMstRt.ColLocName];		//ロケーション名
+				GetType				= (int)LocationMstRt[0][M100LocationMstRt.ColType];			//ロケタイプ
 			}
 		}
 		
@@ -547,15 +547,15 @@ public class WT0001020StockAdjust{
 								SetActualDate
 								);
 						if(1==StockRt.length) {
-							TB_LocName.setText((String)StockRt[0][T00030StockRt.ColLocName]);										//ロケーション名
-							TB_ItemName.setText((String)StockRt[0][T00030StockRt.ColItemName01]);									//商品名
+							TB_LocName.setText((String)StockRt[0][T100StockRt.ColLocName]);										//ロケーション名
+							TB_ItemName.setText((String)StockRt[0][T100StockRt.ColItemName01]);									//商品名
 							
-							int GetType			= (int)StockRt[0][T00030StockRt.ColType];											//ロケタイプ
+							int GetType			= (int)StockRt[0][T100StockRt.ColType];											//ロケタイプ
 							TB_LocType.setSelectedIndex(GetSelectIndex(B100DefaultVariable.LocType[1]		,GetType+"" ) );	//ロケタイプ
 							
-							GetQty				= (int)StockRt[0][T00030StockRt.ColQty];				//総数量
-							GetShipPlanQty		= (int)StockRt[0][T00030StockRt.ColShipPlanQty];		//引当済総数
-							GetPossibleQty		= (int)StockRt[0][T00030StockRt.ColPossibleQty];		//出荷可能総数
+							GetQty				= (int)StockRt[0][T100StockRt.ColQty];				//総数量
+							GetShipPlanQty		= (int)StockRt[0][T100StockRt.ColShipPlanQty];		//引当済総数
+							GetPossibleQty		= (int)StockRt[0][T100StockRt.ColPossibleQty];		//出荷可能総数
 							
 							TB_Qty.setText(""+ni.format(GetQty));					//調整前数量
 							TB_ShipPlanQty.setText(""+ni.format(GetShipPlanQty));	//調整前引当済数
@@ -914,7 +914,7 @@ public class WT0001020StockAdjust{
 		if(!"".equals(TgtExpdate	)) {SearchExpdateMax.add(		TgtExpdate);}
 		if(!"".equals(TgtActualDate	)) {SearchActualDateMax.add(	TgtActualDate);}
 		
-		Object[][] StockRt= T00030StockRt.StockRt(
+		Object[][] StockRt= T100StockRt.StockRt(
 				SearchClCd,				//荷主コード
 				SearchWhCd,				//倉庫コード
 				SearchClGpCD,			//荷主グループCD
@@ -972,7 +972,7 @@ public class WT0001020StockAdjust{
 		SearchWhCd.add(WhCd);
 		SearchLoc.add(Loc);
 		
-		Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+		Object[][] LocationMstRt = M100LocationMstRt.LocationMstRt(
 				SearchClCd,		//荷主コード
 				SearchWhCd,		//倉庫コード
 				SearchLoc,		//ロケーション
@@ -997,7 +997,7 @@ public class WT0001020StockAdjust{
 		
 		SearchWHCD.add(WHCD);
 		
-		Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+		Object[][] WhMstRt = M100WhMstRt.WhMstRt(
 				SearchWHCD,
 				SearchWHName,
 				SearchPost,
@@ -1026,7 +1026,7 @@ public class WT0001020StockAdjust{
 		
 		SearchCLCD.add(TgtClCd);
 		
-		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 			SearchClGpCD,
 			SearchCLCD,
 			SearchCLName,
@@ -1067,7 +1067,7 @@ public class WT0001020StockAdjust{
 		SearchClGpCd.add(ClGpCd);
 		SearchItemCd.add(ItemCd);
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード

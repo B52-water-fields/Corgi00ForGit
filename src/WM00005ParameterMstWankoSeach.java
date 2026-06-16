@@ -250,7 +250,7 @@ public class WM00005ParameterMstWankoSeach{
 		
 		
 		//検索結果
-		Object[][] RtParameterMstWankoRt = M00000ParameterMstWankoRt.RtParameterMstWankoRt();
+		Object[][] RtParameterMstWankoRt = M100ParameterMstWankoRt.RtParameterMstWankoRt();
 		
 		String[] columnNames01 = new String[RtParameterMstWankoRt.length+1];
 		
@@ -542,7 +542,7 @@ public class WM00005ParameterMstWankoSeach{
 					if(!"".equals(GetSearchParaInt10End	)){SearchParaInt10End.add(Integer.parseInt(GetSearchParaInt10End));}
 					if(!"".equals(GetSearchParaTxtAll	)){SearchParaTxtAll.add(GetSearchParaTxtAll);}
 					
-					Object[][] ParameterMstWankoRt = M00000ParameterMstWankoRt.ParameterMstWankoRt(
+					Object[][] ParameterMstWankoRt = M100ParameterMstWankoRt.ParameterMstWankoRt(
 							SearchClWh,SearchClCd,
 							SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
 							SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
@@ -586,10 +586,10 @@ public class WM00005ParameterMstWankoSeach{
 					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtWhCd 		= ""+tableModel_ms01.getValueAt(i, M00000ParameterMstWankoRt.ColClWh+1);
-							TgtClCd			= ""+tableModel_ms01.getValueAt(i, M00000ParameterMstWankoRt.ColClCd+1);
-							TgtParaCd 		= ""+tableModel_ms01.getValueAt(i, M00000ParameterMstWankoRt.ColParaCd+1);
-							TgtParaCdSeq	= ""+tableModel_ms01.getValueAt(i, M00000ParameterMstWankoRt.ColParaCdSeq+1);
+							TgtWhCd 		= ""+tableModel_ms01.getValueAt(i, M100ParameterMstWankoRt.ColClWh+1);
+							TgtClCd			= ""+tableModel_ms01.getValueAt(i, M100ParameterMstWankoRt.ColClCd+1);
+							TgtParaCd 		= ""+tableModel_ms01.getValueAt(i, M100ParameterMstWankoRt.ColParaCd+1);
+							TgtParaCdSeq	= ""+tableModel_ms01.getValueAt(i, M100ParameterMstWankoRt.ColParaCdSeq+1);
 						}
 					}
 					if(!"".equals(TgtParaCd) && !"".equals(TgtParaCdSeq)) {
@@ -754,7 +754,7 @@ public class WM00005ParameterMstWankoSeach{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

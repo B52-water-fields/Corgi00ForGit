@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class W00010MainMenu{
+public class A00001MainMenu{
 	static int SetX;
 	static int SetY;
 	public static void MainMenu(int x,int y) {
@@ -41,7 +41,7 @@ public class W00010MainMenu{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00030WorkMain.WorkMain(0,0);
+				A00001WorkMain.WorkMain(0,0);
 			}
 		});
 		
@@ -53,7 +53,7 @@ public class W00010MainMenu{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0,0);
+				A00001MstMain.MstMain(0,0);
 			}
 		});
 		

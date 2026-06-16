@@ -91,18 +91,18 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 			SearchWhCd.add(TgtWhCd);
 			SearchAdjustReasonCd.add(TgtAdjustReasonCd);
 			
-			Object[][] AdjustReasonRt	= M00110AdjustReasonRt.AdjustReasonRt(
+			Object[][] AdjustReasonRt	= M100AdjustReasonRt.AdjustReasonRt(
 																		SearchClCd,				//荷主コード
 																		SearchWhCd,				//倉庫コード
 																		SearchAdjustReasonCd,	//調整理由コード
 																		SearchAdjustReasonName,	//調整理由名
 																		AllSearch);
 			if(1==AdjustReasonRt.length) {
-				TB_AdjustReasonName.setText(	(String)AdjustReasonRt[0][M00110AdjustReasonRt.ColAdjustReasonName]);	//調整理由名
-				TB_EntryDate.setText(			(String)AdjustReasonRt[0][M00110AdjustReasonRt.ColEntryDate]);			//登録日
-				TB_UpdateDate.setText(			(String)AdjustReasonRt[0][M00110AdjustReasonRt.ColUpdateDate]);			//更新日
-				TB_EntryUser.setText(			(String)AdjustReasonRt[0][M00110AdjustReasonRt.ColEntryUser]);			//登録者
-				TB_UpdateUser.setText(			(String)AdjustReasonRt[0][M00110AdjustReasonRt.ColUpdateUser]);			//更新者
+				TB_AdjustReasonName.setText(	(String)AdjustReasonRt[0][M100AdjustReasonRt.ColAdjustReasonName]);	//調整理由名
+				TB_EntryDate.setText(			(String)AdjustReasonRt[0][M100AdjustReasonRt.ColEntryDate]);			//登録日
+				TB_UpdateDate.setText(			(String)AdjustReasonRt[0][M100AdjustReasonRt.ColUpdateDate]);			//更新日
+				TB_EntryUser.setText(			(String)AdjustReasonRt[0][M100AdjustReasonRt.ColEntryUser]);			//登録者
+				TB_UpdateUser.setText(			(String)AdjustReasonRt[0][M100AdjustReasonRt.ColUpdateUser]);			//更新者
 			}
 		}
 		
@@ -300,7 +300,7 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 		GetAdjustReasonCd	= TxtTrim[2];
 		GetAdjustReasonName	= TxtTrim[3];
 		
-		if("".equals(GetAdjustReasonCd)) {GetAdjustReasonCd=M00110AdjustReasonRt.NewAdjustReasonCdGet(1)[0];}
+		if("".equals(GetAdjustReasonCd)) {GetAdjustReasonCd=M100AdjustReasonRt.NewAdjustReasonCdGet(1)[0];}
 		
 		Object[][] SetString = {
 				 {"ClCd"				,"1","1","Key"	,GetClCd}					//荷主コード

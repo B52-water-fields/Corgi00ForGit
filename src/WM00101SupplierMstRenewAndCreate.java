@@ -126,40 +126,40 @@ public class WM00101SupplierMstRenewAndCreate{
 			TB_SPCd.setEnabled(false);
 			Object[][] SupplierRt = SupplierRt(TgtClCd,TgtWhCd,TgSPCd);
 			if(1==SupplierRt.length) {
-				TB_SPName01.setText(		(String)SupplierRt[0][M00100SupplierRt.ColSPName01]);			//仕入先名1
-				TB_SPName02.setText(		(String)SupplierRt[0][M00100SupplierRt.ColSPName02]);			//仕入先名2
-				TB_SPName03.setText(		(String)SupplierRt[0][M00100SupplierRt.ColSPName03]);			//仕入先名3
-				TB_SPPost.setText(			(String)SupplierRt[0][M00100SupplierRt.ColSPPost]);			//仕入先郵便
-				TB_SPAdd01.setText(			(String)SupplierRt[0][M00100SupplierRt.ColSPAdd01]);			//仕入先住所1
-				TB_SPAdd02.setText(			(String)SupplierRt[0][M00100SupplierRt.ColSPAdd02]);			//仕入先住所2
-				TB_SPAdd03.setText(			(String)SupplierRt[0][M00100SupplierRt.ColSPAdd03]);			//仕入先住所3
-				TB_SPTel.setText(			(String)SupplierRt[0][M00100SupplierRt.ColSPTel]);				//仕入先電話
-				TB_SPFax.setText(			(String)SupplierRt[0][M00100SupplierRt.ColSPFax]);				//仕入先FAX
-				TB_SPMail.setText(			(String)SupplierRt[0][M00100SupplierRt.ColSPMail]);			//仕入先MAIL
-				TB_Com01.setText(			(String)SupplierRt[0][M00100SupplierRt.ColCom01]);				//コメント1
-				TB_Com02.setText(			(String)SupplierRt[0][M00100SupplierRt.ColCom02]);				//コメント2
-				TB_Com03.setText(			(String)SupplierRt[0][M00100SupplierRt.ColCom03]);				//コメント3
-				TB_PTMSCDBMN.setText(		(String)SupplierRt[0][M00100SupplierRt.ColPTMSCDBMN]);		//基幹Sysコード（部門）
-				TB_PTMSCDNINUSHI.setText(	(String)SupplierRt[0][M00100SupplierRt.ColPTMSCDNINUSHI]);	//基幹Sysコード（荷主）
-				TB_PaySite.setText(			""+(int)SupplierRt[0][M00100SupplierRt.ColPaySite]);			//支払いサイト（月数）
+				TB_SPName01.setText(		(String)SupplierRt[0][M100SupplierRt.ColSPName01]);			//仕入先名1
+				TB_SPName02.setText(		(String)SupplierRt[0][M100SupplierRt.ColSPName02]);			//仕入先名2
+				TB_SPName03.setText(		(String)SupplierRt[0][M100SupplierRt.ColSPName03]);			//仕入先名3
+				TB_SPPost.setText(			(String)SupplierRt[0][M100SupplierRt.ColSPPost]);			//仕入先郵便
+				TB_SPAdd01.setText(			(String)SupplierRt[0][M100SupplierRt.ColSPAdd01]);			//仕入先住所1
+				TB_SPAdd02.setText(			(String)SupplierRt[0][M100SupplierRt.ColSPAdd02]);			//仕入先住所2
+				TB_SPAdd03.setText(			(String)SupplierRt[0][M100SupplierRt.ColSPAdd03]);			//仕入先住所3
+				TB_SPTel.setText(			(String)SupplierRt[0][M100SupplierRt.ColSPTel]);				//仕入先電話
+				TB_SPFax.setText(			(String)SupplierRt[0][M100SupplierRt.ColSPFax]);				//仕入先FAX
+				TB_SPMail.setText(			(String)SupplierRt[0][M100SupplierRt.ColSPMail]);			//仕入先MAIL
+				TB_Com01.setText(			(String)SupplierRt[0][M100SupplierRt.ColCom01]);				//コメント1
+				TB_Com02.setText(			(String)SupplierRt[0][M100SupplierRt.ColCom02]);				//コメント2
+				TB_Com03.setText(			(String)SupplierRt[0][M100SupplierRt.ColCom03]);				//コメント3
+				TB_PTMSCDBMN.setText(		(String)SupplierRt[0][M100SupplierRt.ColPTMSCDBMN]);		//基幹Sysコード（部門）
+				TB_PTMSCDNINUSHI.setText(	(String)SupplierRt[0][M100SupplierRt.ColPTMSCDNINUSHI]);	//基幹Sysコード（荷主）
+				TB_PaySite.setText(			""+(int)SupplierRt[0][M100SupplierRt.ColPaySite]);			//支払いサイト（月数）
 				
 				for(int i=0;i<B100DefaultVariable.ShimeDateList[1].length;i++) {
-					if((""+(int)SupplierRt[0][M00100SupplierRt.ColPayDate]).equals(""+B100DefaultVariable.ShimeDateList[1][i])) {
+					if((""+(int)SupplierRt[0][M100SupplierRt.ColPayDate]).equals(""+B100DefaultVariable.ShimeDateList[1][i])) {
 						TB_PayDate.setSelectedIndex(i);
 					}
 				}
 				for(int i=0;i<B100DefaultVariable.ShimeDateList[1].length;i++) {
-					if((""+(int)SupplierRt[0][M00100SupplierRt.ColShimeDate]).equals(""+B100DefaultVariable.ShimeDateList[1][i])) {
+					if((""+(int)SupplierRt[0][M100SupplierRt.ColShimeDate]).equals(""+B100DefaultVariable.ShimeDateList[1][i])) {
 						TB_ShimeDate.setSelectedIndex(i);
 					}
 				}
-				TB_EntryDate.setText(		(String)SupplierRt[0][M00100SupplierRt.ColEntryDate]);	//登録日
-				TB_UpdateDate.setText(		(String)SupplierRt[0][M00100SupplierRt.ColUpdateDate]);	//更新日
-				TB_EntryUser.setText(		(String)SupplierRt[0][M00100SupplierRt.ColEntryUser]);	//登録者
-				TB_UpdateUser.setText(		(String)SupplierRt[0][M00100SupplierRt.ColUpdateUser]);	//更新者
-				TB_DECD.setText(			(String)SupplierRt[0][M00100SupplierRt.ColDECD]);			//納品先コード
-				TB_DepartmentCd.setText(	(String)SupplierRt[0][M00100SupplierRt.ColDepartmentCd]);	//部署CD
-				TB_DEName01.setText(		(String)SupplierRt[0][M00100SupplierRt.ColDEName01]);		//納品先名1
+				TB_EntryDate.setText(		(String)SupplierRt[0][M100SupplierRt.ColEntryDate]);	//登録日
+				TB_UpdateDate.setText(		(String)SupplierRt[0][M100SupplierRt.ColUpdateDate]);	//更新日
+				TB_EntryUser.setText(		(String)SupplierRt[0][M100SupplierRt.ColEntryUser]);	//登録者
+				TB_UpdateUser.setText(		(String)SupplierRt[0][M100SupplierRt.ColUpdateUser]);	//更新者
+				TB_DECD.setText(			(String)SupplierRt[0][M100SupplierRt.ColDECD]);			//納品先コード
+				TB_DepartmentCd.setText(	(String)SupplierRt[0][M100SupplierRt.ColDepartmentCd]);	//部署CD
+				TB_DEName01.setText(		(String)SupplierRt[0][M100SupplierRt.ColDEName01]);		//納品先名1
 			}
 		}
 		for(int i=0;i<B100DefaultVariable.ClList[1].length;i++) {
@@ -322,7 +322,7 @@ public class WM00101SupplierMstRenewAndCreate{
 		JButton SearchBtn = B100FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingDeliveryMstRt = M00040DeliveryMstRt.RtSettingDeliveryMstRt();
+		Object[][] RtSettingDeliveryMstRt = M100DeliveryMstRt.RtSettingDeliveryMstRt();
 		
 		String[] columnNames01 = new String[RtSettingDeliveryMstRt.length+1];
 		
@@ -445,7 +445,7 @@ public class WM00101SupplierMstRenewAndCreate{
 					if(!"".equals(GetSearchMail)){SearchMail.add(GetSearchMail);}
 					if(!"".equals(GetSearchCom)){SearchCom.add(GetSearchCom);}
 					
-					Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+					Object[][] DeliveryMstRt = M100DeliveryMstRt.DeliveryMstRt(
 							SearchDECD,				//検索条件届先CD
 							SearchDepartmentCd,		//検索条件届先部署CD
 							SearchDEName,			//検索条件届先名
@@ -494,9 +494,9 @@ public class WM00101SupplierMstRenewAndCreate{
 					int RowCount = tableModel_ms01.getRowCount();
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TB_DECD.setText(""+tableModel_ms01.getValueAt(i, M00040DeliveryMstRt.ColDECD+1));
-							TB_DepartmentCd.setText(""+tableModel_ms01.getValueAt(i, M00040DeliveryMstRt.ColDepartmentCd+1));
-							TB_DEName01.setText(""+tableModel_ms01.getValueAt(i, M00040DeliveryMstRt.ColDEName01+1));
+							TB_DECD.setText(""+tableModel_ms01.getValueAt(i, M100DeliveryMstRt.ColDECD+1));
+							TB_DepartmentCd.setText(""+tableModel_ms01.getValueAt(i, M100DeliveryMstRt.ColDepartmentCd+1));
+							TB_DEName01.setText(""+tableModel_ms01.getValueAt(i, M100DeliveryMstRt.ColDEName01+1));
 						}
 					}
 					
@@ -776,7 +776,7 @@ public class WM00101SupplierMstRenewAndCreate{
 						SearchPOST.add(GetPost);
 					}
 					
-					Object[][] PostRt = M10010PostMstRt.PostRt(
+					Object[][] PostRt = M100PostMstRt.PostRt(
 								SearchPOST,
 								SearchAdd,
 								AllSearch,
@@ -807,8 +807,8 @@ public class WM00101SupplierMstRenewAndCreate{
 							TB_SPAdd02.setText("");
 							TB_SPAdd03.setText("");
 							
-							TB_SPAdd01.setText(""+PostRt[0][M10010PostMstRt.ColPREFECTURES]+PostRt[0][M10010PostMstRt.ColMUNICI01]);
-							TB_SPAdd02.setText(""+PostRt[0][M10010PostMstRt.ColMUNICI02]);
+							TB_SPAdd01.setText(""+PostRt[0][M100PostMstRt.ColPREFECTURES]+PostRt[0][M100PostMstRt.ColMUNICI01]);
+							TB_SPAdd02.setText(""+PostRt[0][M100PostMstRt.ColMUNICI02]);
 						}
 					}
 					RenewFg = true;
@@ -1109,7 +1109,7 @@ public class WM00101SupplierMstRenewAndCreate{
 		GetDECD				= TxtTrim[21];
 		GetDepartmentCd		= TxtTrim[22];
 		
-		if("".equals(GetSPCd)) {GetSPCd = M00100SupplierRt.NewSpCdGet(1)[0];}
+		if("".equals(GetSPCd)) {GetSPCd = M100SupplierRt.NewSpCdGet(1)[0];}
 		
 		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
@@ -1211,7 +1211,7 @@ public class WM00101SupplierMstRenewAndCreate{
 		if(!"".equals(TgtWhCd	)) {SearchClWh.add(TgtWhCd);}
 		if(!"".equals(TgSPCd	)) {SearchSPCd.add(TgSPCd);}
 		
-		Object[][] SupplierRt = M00100SupplierRt.SupplierRt(
+		Object[][] SupplierRt = M100SupplierRt.SupplierRt(
 				SearchClWh,				//担当倉庫
 				SearchClCd,				//荷主CD
 				SearchSPCd,				//仕入先コード

@@ -99,7 +99,7 @@ public class WM00040ShippingCompanyMstSearch{
 		PN_Search.add(SearchBtn);
 		
 		
-		Object[][] RtSettingShippingCompanyMstRt = M00030ShippingCompanyMstRt.RtSettingShippingCompanyMstRt();
+		Object[][] RtSettingShippingCompanyMstRt = M100ShippingCompanyMstRt.RtSettingShippingCompanyMstRt();
 		
 		String[] columnNames01 = new String[RtSettingShippingCompanyMstRt.length+1];
 		
@@ -226,7 +226,7 @@ public class WM00040ShippingCompanyMstSearch{
 					if(!"".equals(GetSearchMail					)){SearchMail.add(GetSearchMail);}
 					if(!"".equals(GetSearchCom					)){SearchCom.add(GetSearchCom);}
 					
-					Object[][] ShippingCompanyMstRt = M00030ShippingCompanyMstRt.ShippingCompanyMstRt(
+					Object[][] ShippingCompanyMstRt = M100ShippingCompanyMstRt.ShippingCompanyMstRt(
 							SearchShippingCompanyCd,
 							SearchCompanyName,
 							SearchPost,
@@ -342,7 +342,7 @@ public class WM00040ShippingCompanyMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

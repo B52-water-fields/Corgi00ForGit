@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00000ParameterMstWankoRt{
+public class M100ParameterMstWankoRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchClWh 			= new ArrayList<String>();
@@ -45,7 +45,7 @@ public class M00000ParameterMstWankoRt{
 	ArrayList<String> SearchParaTxtAll = new ArrayList<String>();
 	Boolean AllSearch = false;
 	
-	Object[][] ParameterMstWankoRt = M00000ParameterMstWankoRt.ParameterMstWankoRt(
+	Object[][] ParameterMstWankoRt = M100ParameterMstWankoRt.ParameterMstWankoRt(
 			SearchClWh,SearchClCd,
 			SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
 			SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
@@ -57,37 +57,37 @@ public class M00000ParameterMstWankoRt{
 			SearchParaTxtAll,
 			AllSearch);
 			
-	String GetClWh			=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColClWh];			//担当倉庫コード
-	String GetWHName		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColWHName];		//担当倉庫名
-	String GetClCd			=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColClCd];			//荷主コード
-	String GetCLName01		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColCLName01];		//荷主名
-	String GetParaCd		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaCd];		//パラメータコード
-	int GetParaCdSeq		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaCdSeq];		//ナンバリング
-	String GetParaName		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaName];		//パラメータ名
-	String GetParaTxt01		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt01];	//パラメータテキスト項目01
-	String GetParaTxt02		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt02];	//パラメータテキスト項目02
-	String GetParaTxt03		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt03];	//パラメータテキスト項目03
-	String GetParaTxt04		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt04];	//パラメータテキスト項目04
-	String GetParaTxt05		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt05];	//パラメータテキスト項目05
-	String GetParaTxt06		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt06];	//パラメータテキスト項目06
-	String GetParaTxt07		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt07];	//パラメータテキスト項目07
-	String GetParaTxt08		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt08];	//パラメータテキスト項目08
-	String GetParaTxt09		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt09];	//パラメータテキスト項目09
-	String GetParaTxt10		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaTxt10];	//パラメータテキスト項目10
-	int GetParaInt01		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt01];		//パラメータ数値項目01
-	int GetParaInt02		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt02];		//パラメータ数値項目02
-	int GetParaInt03		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt03];		//パラメータ数値項目03
-	int GetParaInt04		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt04];		//パラメータ数値項目04
-	int GetParaInt05		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt05];		//パラメータ数値項目05
-	int GetParaInt06		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt06];		//パラメータ数値項目06
-	int GetParaInt07		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt07];		//パラメータ数値項目07
-	int GetParaInt08		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt08];		//パラメータ数値項目08
-	int GetParaInt09		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt09];		//パラメータ数値項目09
-	int GetParaInt10		=(int)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColParaInt10];		//パラメータ数値項目10
-	String GetEntryDate		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColEntryDate];	//登録日
-	String GetUpdateDate	=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColUpdateDate];	//更新日
-	String GetEntryUser		=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColEntryUser];	//登録者
-	String GetUpdateUser	=(String)ParameterMstWankoRt[i][M00000ParameterMstWankoRt.ColUpdateUser];	//更新者
+	String GetClWh			=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColClWh];			//担当倉庫コード
+	String GetWHName		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColWHName];		//担当倉庫名
+	String GetClCd			=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColClCd];			//荷主コード
+	String GetCLName01		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColCLName01];		//荷主名
+	String GetParaCd		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaCd];		//パラメータコード
+	int GetParaCdSeq		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaCdSeq];		//ナンバリング
+	String GetParaName		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaName];		//パラメータ名
+	String GetParaTxt01		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt01];	//パラメータテキスト項目01
+	String GetParaTxt02		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt02];	//パラメータテキスト項目02
+	String GetParaTxt03		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt03];	//パラメータテキスト項目03
+	String GetParaTxt04		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt04];	//パラメータテキスト項目04
+	String GetParaTxt05		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt05];	//パラメータテキスト項目05
+	String GetParaTxt06		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt06];	//パラメータテキスト項目06
+	String GetParaTxt07		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt07];	//パラメータテキスト項目07
+	String GetParaTxt08		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt08];	//パラメータテキスト項目08
+	String GetParaTxt09		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt09];	//パラメータテキスト項目09
+	String GetParaTxt10		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaTxt10];	//パラメータテキスト項目10
+	int GetParaInt01		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt01];		//パラメータ数値項目01
+	int GetParaInt02		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt02];		//パラメータ数値項目02
+	int GetParaInt03		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt03];		//パラメータ数値項目03
+	int GetParaInt04		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt04];		//パラメータ数値項目04
+	int GetParaInt05		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt05];		//パラメータ数値項目05
+	int GetParaInt06		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt06];		//パラメータ数値項目06
+	int GetParaInt07		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt07];		//パラメータ数値項目07
+	int GetParaInt08		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt08];		//パラメータ数値項目08
+	int GetParaInt09		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt09];		//パラメータ数値項目09
+	int GetParaInt10		=(int)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColParaInt10];		//パラメータ数値項目10
+	String GetEntryDate		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColEntryDate];	//登録日
+	String GetUpdateDate	=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColUpdateDate];	//更新日
+	String GetEntryUser		=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColEntryUser];	//登録者
+	String GetUpdateUser	=(String)ParameterMstWankoRt[i][M100ParameterMstWankoRt.ColUpdateUser];	//更新者
 	
 	*/
 	
@@ -207,7 +207,7 @@ public class M00000ParameterMstWankoRt{
 		SearchClCd.add(A00000Main.ClCd);
 		SearchParaCd.add(ParaCd);
 		
-		Object[][] ParameterMstWankoRt = M00000ParameterMstWankoRt.ParameterMstWankoRt(
+		Object[][] ParameterMstWankoRt = M100ParameterMstWankoRt.ParameterMstWankoRt(
 				SearchClWh,SearchClCd,
 				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
 				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,

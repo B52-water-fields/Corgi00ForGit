@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00100SupplierRt{
+public class M100SupplierRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchClWh = new ArrayList<String>(); 			//担当倉庫
@@ -28,7 +28,7 @@ public class M00100SupplierRt{
 	ArrayList<String> SearchDepartmentCd = new ArrayList<String>();		//部署CD
 	boolean AllSearch = false;
 	
-	Object[][] SupplierRt = M00100SupplierRt.SupplierRt(
+	Object[][] SupplierRt = M100SupplierRt.SupplierRt(
 			SearchClWh,				//担当倉庫
 			SearchClCd,				//荷主CD
 			SearchSPCd,				//仕入先コード
@@ -51,36 +51,36 @@ public class M00100SupplierRt{
 			SearchDepartmentCd,		//部署CD
 			AllSearch);
 			
-			String GetClWh			=	(String)SupplierRt[i][M00100SupplierRt.ColClWh];			//担当倉庫
-			String GetWHName		=	(String)SupplierRt[i][M00100SupplierRt.ColWHName];			//担当倉庫名
-			String GetClCd			=	(String)SupplierRt[i][M00100SupplierRt.ColClCd];			//荷主CD
-			String GetCLName01		=	(String)SupplierRt[i][M00100SupplierRt.ColCLName01];		//荷主名1
-			String GetSPCd			=	(String)SupplierRt[i][M00100SupplierRt.ColSPCd];			//仕入先コード
-			String GetSPName01		=	(String)SupplierRt[i][M00100SupplierRt.ColSPName01];		//仕入先名1
-			String GetSPName02		=	(String)SupplierRt[i][M00100SupplierRt.ColSPName02];		//仕入先名2
-			String GetSPName03		=	(String)SupplierRt[i][M00100SupplierRt.ColSPName03];		//仕入先名3
-			String GetSPPost		=	(String)SupplierRt[i][M00100SupplierRt.ColSPPost];			//仕入先郵便
-			String GetSPAdd01		=	(String)SupplierRt[i][M00100SupplierRt.ColSPAdd01];			//仕入先住所1
-			String GetSPAdd02		=	(String)SupplierRt[i][M00100SupplierRt.ColSPAdd02];			//仕入先住所2
-			String GetSPAdd03		=	(String)SupplierRt[i][M00100SupplierRt.ColSPAdd03];			//仕入先住所3
-			String GetSPTel			=	(String)SupplierRt[i][M00100SupplierRt.ColSPTel];			//仕入先電話
-			String GetSPFax			=	(String)SupplierRt[i][M00100SupplierRt.ColSPFax];			//仕入先FAX
-			String GetSPMail		=	(String)SupplierRt[i][M00100SupplierRt.ColSPMail];			//仕入先MAIL
-			String GetCom01			=	(String)SupplierRt[i][M00100SupplierRt.ColCom01];			//コメント1
-			String GetCom02			=	(String)SupplierRt[i][M00100SupplierRt.ColCom02];			//コメント2
-			String GetCom03			=	(String)SupplierRt[i][M00100SupplierRt.ColCom03];			//コメント3
-			String GetPTMSCDBMN		=	(String)SupplierRt[i][M00100SupplierRt.ColPTMSCDBMN];		//基幹Sysコード（部門）
-			String GetPTMSCDNINUSHI	=	(String)SupplierRt[i][M00100SupplierRt.ColPTMSCDNINUSHI];	//基幹Sysコード（荷主）
-			int GetPaySite			=	(int)SupplierRt[i][M00100SupplierRt.ColPaySite];			//支払いサイト（月数）
-			int GetPayDate			=	(int)SupplierRt[i][M00100SupplierRt.ColPayDate];			//支払日（末日＝99）
-			int GetShimeDate		=	(int)SupplierRt[i][M00100SupplierRt.ColShimeDate];			//締め日（末日＝99）
-			String GetEntryDate		=	(String)SupplierRt[i][M00100SupplierRt.ColEntryDate];		//登録日
-			String GetUpdateDate	=	(String)SupplierRt[i][M00100SupplierRt.ColUpdateDate];		//更新日
-			String GetEntryUser		=	(String)SupplierRt[i][M00100SupplierRt.ColEntryUser];		//登録者
-			String GetUpdateUser	=	(String)SupplierRt[i][M00100SupplierRt.ColUpdateUser];		//更新者
-			String GetDECD			=	(String)SupplierRt[i][M00100SupplierRt.ColDECD];			//納品先コード
-			String GetDepartmentCd	=	(String)SupplierRt[i][M00100SupplierRt.ColDepartmentCd];	//部署CD
-			String GetDEName01		=	(String)SupplierRt[i][M00100SupplierRt.ColDEName01];		//納品先名1
+			String GetClWh			=	(String)SupplierRt[i][M100SupplierRt.ColClWh];			//担当倉庫
+			String GetWHName		=	(String)SupplierRt[i][M100SupplierRt.ColWHName];			//担当倉庫名
+			String GetClCd			=	(String)SupplierRt[i][M100SupplierRt.ColClCd];			//荷主CD
+			String GetCLName01		=	(String)SupplierRt[i][M100SupplierRt.ColCLName01];		//荷主名1
+			String GetSPCd			=	(String)SupplierRt[i][M100SupplierRt.ColSPCd];			//仕入先コード
+			String GetSPName01		=	(String)SupplierRt[i][M100SupplierRt.ColSPName01];		//仕入先名1
+			String GetSPName02		=	(String)SupplierRt[i][M100SupplierRt.ColSPName02];		//仕入先名2
+			String GetSPName03		=	(String)SupplierRt[i][M100SupplierRt.ColSPName03];		//仕入先名3
+			String GetSPPost		=	(String)SupplierRt[i][M100SupplierRt.ColSPPost];			//仕入先郵便
+			String GetSPAdd01		=	(String)SupplierRt[i][M100SupplierRt.ColSPAdd01];			//仕入先住所1
+			String GetSPAdd02		=	(String)SupplierRt[i][M100SupplierRt.ColSPAdd02];			//仕入先住所2
+			String GetSPAdd03		=	(String)SupplierRt[i][M100SupplierRt.ColSPAdd03];			//仕入先住所3
+			String GetSPTel			=	(String)SupplierRt[i][M100SupplierRt.ColSPTel];			//仕入先電話
+			String GetSPFax			=	(String)SupplierRt[i][M100SupplierRt.ColSPFax];			//仕入先FAX
+			String GetSPMail		=	(String)SupplierRt[i][M100SupplierRt.ColSPMail];			//仕入先MAIL
+			String GetCom01			=	(String)SupplierRt[i][M100SupplierRt.ColCom01];			//コメント1
+			String GetCom02			=	(String)SupplierRt[i][M100SupplierRt.ColCom02];			//コメント2
+			String GetCom03			=	(String)SupplierRt[i][M100SupplierRt.ColCom03];			//コメント3
+			String GetPTMSCDBMN		=	(String)SupplierRt[i][M100SupplierRt.ColPTMSCDBMN];		//基幹Sysコード（部門）
+			String GetPTMSCDNINUSHI	=	(String)SupplierRt[i][M100SupplierRt.ColPTMSCDNINUSHI];	//基幹Sysコード（荷主）
+			int GetPaySite			=	(int)SupplierRt[i][M100SupplierRt.ColPaySite];			//支払いサイト（月数）
+			int GetPayDate			=	(int)SupplierRt[i][M100SupplierRt.ColPayDate];			//支払日（末日＝99）
+			int GetShimeDate		=	(int)SupplierRt[i][M100SupplierRt.ColShimeDate];			//締め日（末日＝99）
+			String GetEntryDate		=	(String)SupplierRt[i][M100SupplierRt.ColEntryDate];		//登録日
+			String GetUpdateDate	=	(String)SupplierRt[i][M100SupplierRt.ColUpdateDate];		//更新日
+			String GetEntryUser		=	(String)SupplierRt[i][M100SupplierRt.ColEntryUser];		//登録者
+			String GetUpdateUser	=	(String)SupplierRt[i][M100SupplierRt.ColUpdateUser];		//更新者
+			String GetDECD			=	(String)SupplierRt[i][M100SupplierRt.ColDECD];			//納品先コード
+			String GetDepartmentCd	=	(String)SupplierRt[i][M100SupplierRt.ColDepartmentCd];	//部署CD
+			String GetDEName01		=	(String)SupplierRt[i][M100SupplierRt.ColDEName01];		//納品先名1
 	
 	*/
 	static final int ColClWh				= (int)0;	//担当倉庫
@@ -662,7 +662,7 @@ public class M00100SupplierRt{
 		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();		//部署CD
 		boolean AllSearch = true;
 		
-		Object[][] SupplierRt = M00100SupplierRt.SupplierRt(
+		Object[][] SupplierRt = M100SupplierRt.SupplierRt(
 				SearchClWh,				//担当倉庫
 				SearchClCd,				//荷主CD
 				SearchSPCd,				//仕入先コード
@@ -688,8 +688,8 @@ public class M00100SupplierRt{
 		int SpNo = 0;
     	
     	for(int i=0;i<SupplierRt.length;i++) {
-    		if(4<(""+SupplierRt[i][M00100SupplierRt.ColSPCd]).length()&&"ATSP".equals((""+SupplierRt[i][M00100SupplierRt.ColSPCd]).substring(0,4))) {
-    			String WST = B100TextControl.num_only_String(""+SupplierRt[i][M00100SupplierRt.ColSPCd]);
+    		if(4<(""+SupplierRt[i][M100SupplierRt.ColSPCd]).length()&&"ATSP".equals((""+SupplierRt[i][M100SupplierRt.ColSPCd]).substring(0,4))) {
+    			String WST = B100TextControl.num_only_String(""+SupplierRt[i][M100SupplierRt.ColSPCd]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(SpNo<wint) {

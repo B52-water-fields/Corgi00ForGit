@@ -89,7 +89,7 @@ public class WM00105AdjustReasonMstSearch{
 		
 		main_fm.add(PN_Search);
 		
-		Object[][] RtAdjustReasonRt = M00110AdjustReasonRt.RtAdjustReasonRt();
+		Object[][] RtAdjustReasonRt = M100AdjustReasonRt.RtAdjustReasonRt();
 		
 		String[] columnNames01 = new String[RtAdjustReasonRt.length+1];
 		
@@ -198,7 +198,7 @@ public class WM00105AdjustReasonMstSearch{
 						SearchAdjustReasonName.add(GetSearchAdjustReasonName);
 					}
 					
-					Object[][] AdjustReasonRt = M00110AdjustReasonRt.AdjustReasonRt(
+					Object[][] AdjustReasonRt = M100AdjustReasonRt.AdjustReasonRt(
 							SearchClCd,					//荷主CD
 							SearchWhCd,					//倉庫CD
 							SearchAdjustReasonCd,		//調整理由コード
@@ -236,9 +236,9 @@ public class WM00105AdjustReasonMstSearch{
 					boolean KickFg = false;
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtClCd 			= ""+tableModel_ms01.getValueAt(i, M00110AdjustReasonRt.ColClCd+1);
-							TgtWhCd 			= ""+tableModel_ms01.getValueAt(i, M00110AdjustReasonRt.ColWhCd+1);
-							TgtAdjustReasonCd 	= ""+tableModel_ms01.getValueAt(i, M00110AdjustReasonRt.ColAdjustReasonCd+1);
+							TgtClCd 			= ""+tableModel_ms01.getValueAt(i, M100AdjustReasonRt.ColClCd+1);
+							TgtWhCd 			= ""+tableModel_ms01.getValueAt(i, M100AdjustReasonRt.ColWhCd+1);
+							TgtAdjustReasonCd 	= ""+tableModel_ms01.getValueAt(i, M100AdjustReasonRt.ColAdjustReasonCd+1);
 							KickFg = true;
 						}
 					}
@@ -327,7 +327,7 @@ public class WM00105AdjustReasonMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

@@ -24,7 +24,7 @@ public class WTList0001010ArrivalPoster{
 				for(int i=0;i<ArrNoList.size();i++) {
 					boolean UnHitFg = true;
 					for(int i01=0;i01<PrintControlRt.length;i01++) {
-						if(((String)PrintControlRt[i01][T00020PrintControlRt.ColOkuriNo]).equals(ArrNoList.get(i))) {
+						if(((String)PrintControlRt[i01][T100PrintControlRt.ColOkuriNo]).equals(ArrNoList.get(i))) {
 							UnHitFg = false;
 							i01=PrintControlRt.length+1;
 						}
@@ -116,10 +116,10 @@ public class WTList0001010ArrivalPoster{
 					//入荷予定番号-商品CD-ロット-賞味期限を結合して主キー化
 					ArrayList<String> KeyArray = new ArrayList<String>();
 			        for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			        	KeyArray.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColArrNo]
-			        					+"-"+(String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]
-			        					+"-"+(String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.Collot]
-			        					+"-"+(String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColExpDate]
+			        	KeyArray.add((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColArrNo]
+			        					+"-"+(String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd]
+			        					+"-"+(String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.Collot]
+			        					+"-"+(String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColExpDate]
 			        					);
 			        }
 			        
@@ -162,25 +162,25 @@ public class WTList0001010ArrivalPoster{
 			        for(int i=0;i<ArrivalPlanMsRt.length;i++) {
 			        	boolean UnHitFg = true;
 			        	for(int i01=0;i01<MsData.length;i01++) {
-				        	if((		(String)MsData[i01][MsColArrNo]		).equals((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColArrNo])
-						        	&& ((String)MsData[i01][MsColItemCd]	).equals((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd])
-						        	&& ((String)MsData[i01][MsColLot]		).equals((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.Collot])
-						        	&& ((String)MsData[i01][MsColExpDate]	).equals((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColExpDate])
+				        	if((		(String)MsData[i01][MsColArrNo]		).equals((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColArrNo])
+						        	&& ((String)MsData[i01][MsColItemCd]	).equals((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd])
+						        	&& ((String)MsData[i01][MsColLot]		).equals((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.Collot])
+						        	&& ((String)MsData[i01][MsColExpDate]	).equals((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColExpDate])
 				        			) {
-				        		MsData[i01][MsColQty] 		= (int)MsData[i01][MsColQty]	+(int)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColPlanQty];
-				        		MsData[i01][MsColBaraQty] 	= (int)MsData[i01][MsColBaraQty]+(int)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColPlanQty];
+				        		MsData[i01][MsColQty] 		= (int)MsData[i01][MsColQty]	+(int)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColPlanQty];
+				        		MsData[i01][MsColBaraQty] 	= (int)MsData[i01][MsColBaraQty]+(int)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColPlanQty];
 				        		UnHitFg = false;
 				        		i01=MsData.length+1;
 				        	}
 				        }
 			        	if(UnHitFg) {
-			        		MsData[Counter][MsColArrNo] 		= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColArrNo];
-		        			MsData[Counter][MsColItemCd] 		= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd];
-		        			MsData[Counter][MsColLot] 			= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.Collot];
-		        			MsData[Counter][MsColExpDate] 		= (String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColExpDate];
-		        			MsData[Counter][MsColQty] 			= (int)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColPlanQty];
+			        		MsData[Counter][MsColArrNo] 		= (String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColArrNo];
+		        			MsData[Counter][MsColItemCd] 		= (String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd];
+		        			MsData[Counter][MsColLot] 			= (String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.Collot];
+		        			MsData[Counter][MsColExpDate] 		= (String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColExpDate];
+		        			MsData[Counter][MsColQty] 			= (int)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColPlanQty];
 		        			MsData[Counter][MsColRecomendLoc]	= "";
-		        			MsData[Counter][MsColBaraQty] 		= (int)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColPlanQty];
+		        			MsData[Counter][MsColBaraQty] 		= (int)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColPlanQty];
 		        			MsData[Counter][MsColCtQty] 		= 0;
 		        			MsData[Counter][MsColCsQty] 		= 0;
 		        			MsData[Counter][MsColPlQty] 		= 0;
@@ -195,12 +195,12 @@ public class WTList0001010ArrivalPoster{
 			        for(int i01=0;i01<MsData.length;i01++) {
 			        	for(int i02=0;i02<ItemMstRt.length;i02++) {
 			        		//商品マスタを元にパレット換算数・ケース換算数・カートン換算数を導出
-				        	if(((String)MsData[i01][MsColItemCd]).equals((String)ItemMstRt[i02][M00070ItemMstRt.ColItemCd])) {
-				        		MsData[i01][MsColItemName]		= (String)ItemMstRt[i02][M00070ItemMstRt.ColItemName01];
+				        	if(((String)MsData[i01][MsColItemCd]).equals((String)ItemMstRt[i02][M100ItemMstRt.ColItemCd])) {
+				        		MsData[i01][MsColItemName]		= (String)ItemMstRt[i02][M100ItemMstRt.ColItemName01];
 				        		
-				        		int GetCtQty	= (int)ItemMstRt[i02][M00070ItemMstRt.ColCtQty];					//カートン入数
-	        					int GetCsQty	= (int)ItemMstRt[i02][M00070ItemMstRt.ColCsQty];					//ケース入数
-	        					int GetPlQty	= (int)ItemMstRt[i02][M00070ItemMstRt.ColPlQty];					//パレット入数
+				        		int GetCtQty	= (int)ItemMstRt[i02][M100ItemMstRt.ColCtQty];					//カートン入数
+	        					int GetCsQty	= (int)ItemMstRt[i02][M100ItemMstRt.ColCsQty];					//ケース入数
+	        					int GetPlQty	= (int)ItemMstRt[i02][M100ItemMstRt.ColPlQty];					//パレット入数
 	        					int GetBaraQty 	= (int)MsData[i01][MsColBaraQty];
 	        					
 	        					MsData[i01][MsColCtUnitQty] 	= GetCtQty;
@@ -229,8 +229,8 @@ public class WTList0001010ArrivalPoster{
 			        	
 			        	//マスタから推奨ロケ格納
 	        			for(int i02=0;i02<ItemRecomendLocFromItemCd.length;i02++) {
-	        				if(((String)MsData[i01][MsColItemCd]).equals((String)ItemRecomendLocFromItemCd[i02][M00120ItemRecomendLocMstRt.ColItemCd])) {
-	        					MsData[i01][MsColRecomendLoc] = (String)ItemRecomendLocFromItemCd[i02][M00120ItemRecomendLocMstRt.ColLocName];
+	        				if(((String)MsData[i01][MsColItemCd]).equals((String)ItemRecomendLocFromItemCd[i02][M100ItemRecomendLocMstRt.ColItemCd])) {
+	        					MsData[i01][MsColRecomendLoc] = (String)ItemRecomendLocFromItemCd[i02][M100ItemRecomendLocMstRt.ColLocName];
 	        					i02=ItemRecomendLocFromItemCd.length+1;
 	        				}
 	        			}
@@ -239,42 +239,42 @@ public class WTList0001010ArrivalPoster{
 	        			//スルー出荷ロケと引当禁止ロケにお友達がいても推奨せずにマスタの推奨ロケを採用して上書きしない
 	        			for(int i02=0;i02<StockRt.length;i02++) {
 	        				//出荷ロケにお友達がいる
-	        				if(0==(int)StockRt[i02][T00030StockRt.ColType]) {
-	        					if(((String)MsData[i01][MsColItemCd]).equals((String)StockRt[i02][T00030StockRt.ColItemCd])) {
-	        						MsData[i01][MsColRecomendLoc] =  (String)StockRt[i02][T00030StockRt.ColLocName];
+	        				if(0==(int)StockRt[i02][T100StockRt.ColType]) {
+	        					if(((String)MsData[i01][MsColItemCd]).equals((String)StockRt[i02][T100StockRt.ColItemCd])) {
+	        						MsData[i01][MsColRecomendLoc] =  (String)StockRt[i02][T100StockRt.ColLocName];
 		        					i02=StockRt.length+1;
 		        				}
 	        				}
 	        			}
 	        			for(int i02=0;i02<StockRt.length;i02++) {
 	        				//保管ロケにお友達がいる
-	        				if(1==(int)StockRt[i02][T00030StockRt.ColType]) {
-	        					if(((String)MsData[i01][MsColItemCd]).equals((String)StockRt[i02][T00030StockRt.ColItemCd])) {
-	        						MsData[i01][MsColRecomendLoc] =  (String)StockRt[i02][T00030StockRt.ColLocName];
+	        				if(1==(int)StockRt[i02][T100StockRt.ColType]) {
+	        					if(((String)MsData[i01][MsColItemCd]).equals((String)StockRt[i02][T100StockRt.ColItemCd])) {
+	        						MsData[i01][MsColRecomendLoc] =  (String)StockRt[i02][T100StockRt.ColLocName];
 		        					i02=StockRt.length+1;
 		        				}
 	        				}
 	        			}
 	        			for(int i02=0;i02<StockRt.length;i02++) {
 	        				//出荷ロケにドッペルゲンガーがいる
-	        				if(0==(int)StockRt[i02][T00030StockRt.ColType]) {
-	        					if(((String)MsData[i01][MsColItemCd]).equals((String)StockRt[i02][T00030StockRt.ColItemCd])
-	        							&& ((String)MsData[i01][MsColLot]).equals((String)StockRt[i02][T00030StockRt.ColLot])
-	        							&& ((String)MsData[i01][MsColExpDate]).equals((String)StockRt[i02][T00030StockRt.ColExpdate])
+	        				if(0==(int)StockRt[i02][T100StockRt.ColType]) {
+	        					if(((String)MsData[i01][MsColItemCd]).equals((String)StockRt[i02][T100StockRt.ColItemCd])
+	        							&& ((String)MsData[i01][MsColLot]).equals((String)StockRt[i02][T100StockRt.ColLot])
+	        							&& ((String)MsData[i01][MsColExpDate]).equals((String)StockRt[i02][T100StockRt.ColExpdate])
 	        							) {
-	        						MsData[i01][MsColRecomendLoc] =  (String)StockRt[i02][T00030StockRt.ColLocName];
+	        						MsData[i01][MsColRecomendLoc] =  (String)StockRt[i02][T100StockRt.ColLocName];
 		        					i02=StockRt.length+1;
 		        				}
 	        				}
 	        			}
 	        			for(int i02=0;i02<StockRt.length;i02++) {
 	        				//保管ロケにドッペルゲンガーがいる
-	        				if(1==(int)StockRt[i02][T00030StockRt.ColType]) {
-	        					if(((String)MsData[i01][MsColItemCd]).equals((String)StockRt[i02][T00030StockRt.ColItemCd])
-	        							&& ((String)MsData[i01][MsColLot]).equals((String)StockRt[i02][T00030StockRt.ColLot])
-	        							&& ((String)MsData[i01][MsColExpDate]).equals((String)StockRt[i02][T00030StockRt.ColExpdate])
+	        				if(1==(int)StockRt[i02][T100StockRt.ColType]) {
+	        					if(((String)MsData[i01][MsColItemCd]).equals((String)StockRt[i02][T100StockRt.ColItemCd])
+	        							&& ((String)MsData[i01][MsColLot]).equals((String)StockRt[i02][T100StockRt.ColLot])
+	        							&& ((String)MsData[i01][MsColExpDate]).equals((String)StockRt[i02][T100StockRt.ColExpdate])
 	        							) {
-	        						MsData[i01][MsColRecomendLoc] =  (String)StockRt[i02][T00030StockRt.ColLocName];
+	        						MsData[i01][MsColRecomendLoc] =  (String)StockRt[i02][T100StockRt.ColLocName];
 		        					i02=StockRt.length+1;
 		        				}
 	        				}
@@ -297,7 +297,7 @@ public class WTList0001010ArrivalPoster{
 		        		}
 			        	//入荷予定番号単位のページ数を把握
 			        	for(int i02=0;i02<MsData.length;i02++) {
-			        		if(((String)MsData[i02][MsColArrNo]).equals((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColArrNo])) {
+			        		if(((String)MsData[i02][MsColArrNo]).equals((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColArrNo])) {
 			        			ArrNoTotalPage = ArrNoTotalPage + (int)MsData[i01][MsColPlQty];
 			        			if(0<(int)MsData[i02][MsColBaraQty]||0<(int)MsData[i02][MsColCtQty]||0<(int)MsData[i02][MsColCsQty]) {ArrNoTotalPage	=	ArrNoTotalPage + 1;}
 			        		}
@@ -309,9 +309,9 @@ public class WTList0001010ArrivalPoster{
 			        	boolean UnHitFg = true;
 			        	String BeforePrintDtm = "";
 						for(int i02=0;i02<PrintControlRt.length;i02++) {
-							if(((String)PrintControlRt[i02][T00020PrintControlRt.ColOkuriNo]).equals((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColArrNo])) {
+							if(((String)PrintControlRt[i02][T100PrintControlRt.ColOkuriNo]).equals((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColArrNo])) {
 								UnHitFg = false;
-								BeforePrintDtm = (String)PrintControlRt[i02][T00020PrintControlRt.ColUpdateDate];
+								BeforePrintDtm = (String)PrintControlRt[i02][T100PrintControlRt.ColUpdateDate];
 								i02=PrintControlRt.length+1;
 								ReprintFg = true;
 							}
@@ -321,7 +321,7 @@ public class WTList0001010ArrivalPoster{
 						}
 			        	
 			        	for(int i02=0;i02<MsData.length;i02++) {
-			        		if(((String)MsData[i02][MsColArrNo]).equals((String)ArrivalPlanHdRt[i01][T00016ArrivalPlanHdRt.ColArrNo])) {
+			        		if(((String)MsData[i02][MsColArrNo]).equals((String)ArrivalPlanHdRt[i01][T100ArrivalPlanHdRt.ColArrNo])) {
 			        			int NeedPage = (int)MsData[i02][MsColPlQty];
 					        	if(0<(int)MsData[i02][MsColBaraQty]||0<(int)MsData[i02][MsColCtQty]||0<(int)MsData[i02][MsColCsQty]) {NeedPage	=	NeedPage + 1;}
 					        	
@@ -434,12 +434,12 @@ public class WTList0001010ArrivalPoster{
 		}
 		contentStream = B100PdfControl.TextSetBox(contentStream, 0,(float)HeightStart-leading*0,20,leading,SetText,font,FontSize,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
 		
-		SetText =  "　　　荷主:("+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColClCd]+")"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColCLName01];
+		SetText =  "　　　荷主:("+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColClCd]+")"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColCLName01];
         contentStream = B100PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*0,500,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         SetText = "　発行日時："+CreateDtm;
         contentStream = B100PdfControl.TextSetBox(contentStream,520,(float)HeightStart-leading*0,300,leading,SetText,font,FontSize-2,Color.BLACK,1,false,Color.BLACK,false,Color.WHITE);
         
-        SetText = "　　仕入先:("+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColSpCd]+")"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColSpName01];
+        SetText = "　　仕入先:("+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColSpCd]+")"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColSpName01];
         contentStream = B100PdfControl.TextSetBox(contentStream, 20,(float)HeightStart-leading*1,500,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         SetText = "";
         if(ReprintFg) {
@@ -447,18 +447,18 @@ public class WTList0001010ArrivalPoster{
         }
         contentStream = B100PdfControl.TextSetBox(contentStream,520,(float)HeightStart-leading*1,300,leading,SetText,font,FontSize-2,Color.BLACK,1,false,Color.BLACK,false,Color.WHITE);
         
-        SetText = "入荷予定No:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColArrNo];
+        SetText = "入荷予定No:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColArrNo];
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream, 20,(float)HeightStart-leading*2,150,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         SetText = "予定Noページ:"+ArrNoNowPage+"/"+ArrNoTotalPage+" 発行総ページ:"+NowTotalPage+"/"+TotalPageCount;
         contentStream = B100PdfControl.TextSetBox(contentStream,520,(float)HeightStart-leading*2,300,leading,SetText,font,FontSize-2,Color.BLACK,1,false,Color.BLACK,false,Color.WHITE);
         
         
-        SetText = "荷主管理No:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColClArrNo];
+        SetText = "荷主管理No:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColClArrNo];
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream, 20,(float)HeightStart-leading*3,150,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         SetText = "商品毎ページ:"+ItemPageCount+"/"+ItemTotalPage;
         contentStream = B100PdfControl.TextSetBox(contentStream,520,(float)HeightStart-leading*3,300,leading,SetText,font,FontSize-2,Color.BLACK,1,false,Color.BLACK,false,Color.WHITE);
         
-        SetText =  "入荷予定日:"+(String)ArrivalPlanHdRt[T00016ArrivalPlanHdRt.ColPlanDate];
+        SetText =  "入荷予定日:"+(String)ArrivalPlanHdRt[T100ArrivalPlanHdRt.ColPlanDate];
         contentStream = B100PdfControl.TextSetBoxFontAdjust(contentStream, 20,(float)HeightStart-leading*4,150,leading,SetText,font,FontSize-2,Color.BLACK,0,false,Color.BLACK,false,Color.WHITE);
         
         SetText =  "商品CD";
@@ -546,13 +546,13 @@ public class WTList0001010ArrivalPoster{
 		boolean AllSearch = false;														//全件検索
 		boolean SortItemcdMode = true;													//商品CDでソート
 		Object[][] ClMstRt	= ClMstRt(TgtClCd);
-		if(0<ClMstRt.length) {SearchClGpCD.add((String)ClMstRt[0][M00011ClMstRt.ColClGpCD]);}
+		if(0<ClMstRt.length) {SearchClGpCD.add((String)ClMstRt[0][M100ClMstRt.ColClGpCD]);}
 		
 		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			SearchItemCd.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]);
+			SearchItemCd.add((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd]);
 		}
 		
-		Object[][] StockRt= T00030StockRt.StockRt(
+		Object[][] StockRt= T100StockRt.StockRt(
 								SearchClCd,				//荷主コード
 								SearchWhCd,				//倉庫コード
 								SearchClGpCD,			//荷主グループCD
@@ -604,13 +604,13 @@ public class WTList0001010ArrivalPoster{
 		ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
 		ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
 		boolean AllSearch = false;
-		if(0<ClMstRt.length) {SearchClGpCd.add((String)ClMstRt[0][M00011ClMstRt.ColClGpCD]);}
+		if(0<ClMstRt.length) {SearchClGpCd.add((String)ClMstRt[0][M100ClMstRt.ColClGpCD]);}
 		
 		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			SearchItemCd.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]);
+			SearchItemCd.add((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd]);
 		}
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード
@@ -642,10 +642,10 @@ public class WTList0001010ArrivalPoster{
 		ArrayList<String> ItemCd= new ArrayList<String>();	//商品CD
 		boolean ItemMstRecomendLocExistenceOnly = true;		//商品サブマスタ推奨ロケは対象荷主のロケーションマスタに存在する場合のみ値格納
 		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			ItemCd.add((String)ArrivalPlanMsRt[i][T00015ArrivalPlanMsRt.ColItemCd]);
+			ItemCd.add((String)ArrivalPlanMsRt[i][T100ArrivalPlanMsRt.ColItemCd]);
 		}
 		
-		Object[][] ItemRecomendLocFromItemCd = M00120ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
+		Object[][] ItemRecomendLocFromItemCd = M100ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
 		
 		return ItemRecomendLocFromItemCd;
 	}
@@ -664,7 +664,7 @@ public class WTList0001010ArrivalPoster{
 		
 		SearchCLCD.add(TgtClCd);
 		
-		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 			SearchClGpCD,
 			SearchCLCD,
 			SearchCLName,
@@ -731,7 +731,7 @@ public class WTList0001010ArrivalPoster{
 			SearchArrNo.add(TgtArrNo.get(i));
 		}
 		
-		Object[][] ArrivalPlanHdRt = T00016ArrivalPlanHdRt.ArrivalPlanHdRt(
+		Object[][] ArrivalPlanHdRt = T100ArrivalPlanHdRt.ArrivalPlanHdRt(
 				SearchClWh,				//ヘッダ担当倉庫
 				SearchClCd,				//ヘッダ荷主CD
 				SearchCLName01,			//ヘッダ荷主名
@@ -831,7 +831,7 @@ public class WTList0001010ArrivalPoster{
 			SearchArrNo.add(TgtArrNo.get(i));
 		}
 		
-		Object[][] ArrivalPlanMsRt	= T00015ArrivalPlanMsRt.ArrivalPlanMsRt(
+		Object[][] ArrivalPlanMsRt	= T100ArrivalPlanMsRt.ArrivalPlanMsRt(
 				SearchClWh,					//ヘッダ担当倉庫
 				SearchClCd,					//ヘッダ荷主CD
 				SearchCLName01,				//ヘッダ荷主名
@@ -902,7 +902,7 @@ public class WTList0001010ArrivalPoster{
 		SearchKey01.add(TgtWhCd);
 		SearchKey02.add(TgtClCd);
 		
-		Object[][] PrintControlRt	= T00020PrintControlRt.PrintControlRt(
+		Object[][] PrintControlRt	= T100PrintControlRt.PrintControlRt(
 													SearchPrintCd,			//印刷帳票CD
 													SearchOkuriNo,			//送り状番号等
 													SearchKey01,			//サブキー01

@@ -295,7 +295,7 @@ public class WM00102SupplierMstExcelEntry{
 							NeedCount = NeedCount+1;
 						}
 					}
-					String[] SetSpCd	= M00100SupplierRt.NewSpCdGet(NeedCount);
+					String[] SetSpCd	= M100SupplierRt.NewSpCdGet(NeedCount);
 					NeedCount = 0;
 					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++) {
 						if("".equals(((String[])SetObRt[i][4])[i01])) {

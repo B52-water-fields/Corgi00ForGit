@@ -259,7 +259,7 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 				
 				boolean UnHitFg = true;
 				for(int i01=0;i01<SupplierRt.length;i01++) {
-					if(((String)CheckOb[i][ColSPCd]).equals((String)SupplierRt[i01][M00100SupplierRt.ColSPCd])) {
+					if(((String)CheckOb[i][ColSPCd]).equals((String)SupplierRt[i01][M100SupplierRt.ColSPCd])) {
 						UnHitFg = false;
 						i01=SupplierRt.length+1;
 					}
@@ -354,15 +354,15 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 				
 				
 				for(int i01=0;i01<SupplierRt.length;i01++) {
-					if(((String)CheckOb[i][ColSPCd]).equals((String)SupplierRt[i01][M00100SupplierRt.ColSPCd])) {
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpName01]		= (String)SupplierRt[i01][M00100SupplierRt.ColSPName01];	//ヘッダ仕入先名01
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpName02]		= (String)SupplierRt[i01][M00100SupplierRt.ColSPName02];	//ヘッダ仕入先名02
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpName03]		= (String)SupplierRt[i01][M00100SupplierRt.ColSPName03];	//ヘッダ仕入先名03
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpPost]		= (String)SupplierRt[i01][M00100SupplierRt.ColSPPost];		//ヘッダ仕入先郵便
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpAdd01]		= (String)SupplierRt[i01][M00100SupplierRt.ColSPAdd01];	//ヘッダ仕入先住所01
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpAdd02]		= (String)SupplierRt[i01][M00100SupplierRt.ColSPAdd02];	//ヘッダ仕入先住所02
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpAdd03]		= (String)SupplierRt[i01][M00100SupplierRt.ColSPAdd03];	//ヘッダ仕入先住所03
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpTel]		= (String)SupplierRt[i01][M00100SupplierRt.ColSPTel];		//ヘッダ仕入先電話
+					if(((String)CheckOb[i][ColSPCd]).equals((String)SupplierRt[i01][M100SupplierRt.ColSPCd])) {
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpName01]		= (String)SupplierRt[i01][M100SupplierRt.ColSPName01];	//ヘッダ仕入先名01
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpName02]		= (String)SupplierRt[i01][M100SupplierRt.ColSPName02];	//ヘッダ仕入先名02
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpName03]		= (String)SupplierRt[i01][M100SupplierRt.ColSPName03];	//ヘッダ仕入先名03
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpPost]		= (String)SupplierRt[i01][M100SupplierRt.ColSPPost];		//ヘッダ仕入先郵便
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpAdd01]		= (String)SupplierRt[i01][M100SupplierRt.ColSPAdd01];	//ヘッダ仕入先住所01
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpAdd02]		= (String)SupplierRt[i01][M100SupplierRt.ColSPAdd02];	//ヘッダ仕入先住所02
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpAdd03]		= (String)SupplierRt[i01][M100SupplierRt.ColSPAdd03];	//ヘッダ仕入先住所03
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetHdSpTel]		= (String)SupplierRt[i01][M100SupplierRt.ColSPTel];		//ヘッダ仕入先電話
 						
 						i01=SupplierRt.length+1;
 					}
@@ -391,14 +391,14 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 				if(0>=(int)SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetPlanQty]) {SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetPlanQty] = 0;}	//予定数量
 				
 				for(int i01=0;i01<ItemMstRt.length;i01++) {
-					if(((String)SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetItemCd]).equals((String)ItemMstRt[i01][M00070ItemMstRt.ColItemCd])) {
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetJanCd]				= (String)ItemMstRt[i01][M00070ItemMstRt.ColJanCd];		//ソースマーク_BCD
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetItemMdNo]			= (String)ItemMstRt[i01][M00070ItemMstRt.ColItemMDNo];		//商品型番
-						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetItemName]			= (String)ItemMstRt[i01][M00070ItemMstRt.ColItemName01];	//商品名
+					if(((String)SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetItemCd]).equals((String)ItemMstRt[i01][M100ItemMstRt.ColItemCd])) {
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetJanCd]				= (String)ItemMstRt[i01][M100ItemMstRt.ColJanCd];		//ソースマーク_BCD
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetItemMdNo]			= (String)ItemMstRt[i01][M100ItemMstRt.ColItemMDNo];		//商品型番
+						SetOb[EntryCount][WT0001005ArrivalPlanArrayEntrySetDataView.ColSetItemName]			= (String)ItemMstRt[i01][M100ItemMstRt.ColItemName01];	//商品名
 						
-						int GetCtQty					= (int)ItemMstRt[i01][M00070ItemMstRt.ColCtQty];					//カートン入数
-						int GetCsQty					= (int)ItemMstRt[i01][M00070ItemMstRt.ColCsQty];					//ケース入数
-						int GetPlQty					= (int)ItemMstRt[i01][M00070ItemMstRt.ColPlQty];					//パレット入数
+						int GetCtQty					= (int)ItemMstRt[i01][M100ItemMstRt.ColCtQty];					//カートン入数
+						int GetCsQty					= (int)ItemMstRt[i01][M100ItemMstRt.ColCsQty];					//ケース入数
+						int GetPlQty					= (int)ItemMstRt[i01][M100ItemMstRt.ColPlQty];					//パレット入数
 						
 						if(0>=GetCtQty){GetCtQty=1;}	//カートン入数
 						if(0>=GetCsQty){GetCsQty=1;}	//ケース入数
@@ -487,7 +487,7 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 		
 		SearchClGpCd.add(TgtClGpCd);
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード
@@ -542,7 +542,7 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 		SearchClCd.add(ClCd);
 		
 		//仕入先存在チェック用に仕入れ先マスタ取得
-		Object[][] SupplierRt = M00100SupplierRt.SupplierRt(
+		Object[][] SupplierRt = M100SupplierRt.SupplierRt(
 				SearchClWh,				//担当倉庫
 				SearchClCd,				//荷主CD
 				SearchSPCd,				//仕入先コード

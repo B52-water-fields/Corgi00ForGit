@@ -121,7 +121,7 @@ public class WM00086ItemComversionMstRenewAndCreate{
 			SearchClCd.add(TgtClCd);
 			SearchCLItemCd.add(ClItemCd);
 			
-			Object[][] ItemComversionMstRt = M00080ItemComversionMstRt.ItemComversionMstRt(
+			Object[][] ItemComversionMstRt = M100ItemComversionMstRt.ItemComversionMstRt(
 					SearchClGpCd,			//荷主グループコード
 					SearchClCd,				//荷主コード
 					SearchItemCd,			//商品コード
@@ -134,18 +134,18 @@ public class WM00086ItemComversionMstRenewAndCreate{
 			if(0<ItemComversionMstRt.length) {
 				TB_UnitType.setSelectedIndex(0);
 				for(int i=0;i<B100DefaultVariable.UnitTypeList[1].length;i++) {
-					if((""+B100DefaultVariable.UnitTypeList[1][i]).equals(""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColPackingType])) {
+					if((""+B100DefaultVariable.UnitTypeList[1][i]).equals(""+ItemComversionMstRt[0][M100ItemComversionMstRt.ColPackingType])) {
 						TB_UnitType.setSelectedIndex(i);
 					}
 				}
 				
-				TB_ItemCd.setText(		""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColItemCd]);
-				TB_ItemName01.setText(	""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColItemName01]);
-				TB_ItemName02.setText(	""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColItemName02]);
-				TB_ItemName03.setText(	""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColItemName03]);
-				TB_CtQty.setText(		""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColCtQty]);
-				TB_CsQty.setText(		""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColCsQty]);
-				TB_PlQty.setText(		""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColPlQty]);
+				TB_ItemCd.setText(		""+ItemComversionMstRt[0][M100ItemComversionMstRt.ColItemCd]);
+				TB_ItemName01.setText(	""+ItemComversionMstRt[0][M100ItemComversionMstRt.ColItemName01]);
+				TB_ItemName02.setText(	""+ItemComversionMstRt[0][M100ItemComversionMstRt.ColItemName02]);
+				TB_ItemName03.setText(	""+ItemComversionMstRt[0][M100ItemComversionMstRt.ColItemName03]);
+				TB_CtQty.setText(		""+ItemComversionMstRt[0][M100ItemComversionMstRt.ColCtQty]);
+				TB_CsQty.setText(		""+ItemComversionMstRt[0][M100ItemComversionMstRt.ColCsQty]);
+				TB_PlQty.setText(		""+ItemComversionMstRt[0][M100ItemComversionMstRt.ColPlQty]);
 			}
 		}
 		
@@ -221,7 +221,7 @@ public class WM00086ItemComversionMstRenewAndCreate{
 		ItemSearch_fm.add(PN_Search);
 		
 		//検索結果
-		Object[][] RtSettingItemMstRt = M00070ItemMstRt.RtSettingItemMstRt();
+		Object[][] RtSettingItemMstRt = M100ItemMstRt.RtSettingItemMstRt();
 		
 		String[] columnNames01 = new String[RtSettingItemMstRt.length+1];
 		
@@ -531,17 +531,17 @@ public class WM00086ItemComversionMstRenewAndCreate{
 				case 0:
 					break;
 				case 1:
-					if(0==(int)ItemMstRt[0][M00070ItemMstRt.ColCtQty]) {
+					if(0==(int)ItemMstRt[0][M100ItemMstRt.ColCtQty]) {
 						ErrMsg.add("変換先の商品マスタにはカートンの概念がありません。やり直し。");
 					}
 					break;
 				case 2:
-					if(0==(int)ItemMstRt[0][M00070ItemMstRt.ColCsQty]) {
+					if(0==(int)ItemMstRt[0][M100ItemMstRt.ColCsQty]) {
 						ErrMsg.add("変換先の商品マスタにはケースの概念がありません。やり直し。");
 					}
 					break;
 				case 3:
-					if(0==(int)ItemMstRt[0][M00070ItemMstRt.ColPlQty]) {
+					if(0==(int)ItemMstRt[0][M100ItemMstRt.ColPlQty]) {
 						ErrMsg.add("変換先の商品マスタにはパレットの概念がありません。やり直し。");
 					}
 					break;
@@ -595,7 +595,7 @@ public class WM00086ItemComversionMstRenewAndCreate{
 			SearchItemName.add(GetItemName);
 		}
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード

@@ -93,7 +93,7 @@ public class WM00090LocationMstSearch{
 		JButton SearchBtn = B100FrameParts.BtnSet(100,150,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingLocationMstRt = M00090LocationMstRt.RtSettingLocationMstRt();
+		Object[][] RtSettingLocationMstRt = M100LocationMstRt.RtSettingLocationMstRt();
 		
 		String[] columnNames01 = new String[RtSettingLocationMstRt.length+1];
 		
@@ -202,7 +202,7 @@ public class WM00090LocationMstSearch{
 					if(!"".equals(GetSearchLocName	)){SearchLocName.add(	GetSearchLocName);}	//ロケーション名
 					if(!"".equals(GetSearchType		)){SearchType.add(		GetSearchType);}	//ロケタイプ
 					
-					Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+					Object[][] LocationMstRt = M100LocationMstRt.LocationMstRt(
 							SearchClCd,		//荷主コード
 							SearchWhCd,		//倉庫コード
 							SearchLoc,		//ロケーション
@@ -242,9 +242,9 @@ public class WM00090LocationMstSearch{
 					boolean KickFg = false;
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtClCd = ""+tableModel_ms01.getValueAt(i, M00090LocationMstRt.ColClCd+1);
-							TgtWhCd = ""+tableModel_ms01.getValueAt(i, M00090LocationMstRt.ColWhCd+1);
-							TgtLoc 	= ""+tableModel_ms01.getValueAt(i, M00090LocationMstRt.ColLoc+1);
+							TgtClCd = ""+tableModel_ms01.getValueAt(i, M100LocationMstRt.ColClCd+1);
+							TgtWhCd = ""+tableModel_ms01.getValueAt(i, M100LocationMstRt.ColWhCd+1);
+							TgtLoc 	= ""+tableModel_ms01.getValueAt(i, M100LocationMstRt.ColLoc+1);
 							KickFg = true;
 						}
 					}
@@ -353,7 +353,7 @@ public class WM00090LocationMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

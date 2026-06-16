@@ -83,29 +83,29 @@ public class WM00011WhMstRenewAndCreate{
 			
 			SearchWHCD.add(TgtWhCd);
 			
-			Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+			Object[][] WhMstRt = M100WhMstRt.WhMstRt(
 					SearchWHCD,SearchWHName,SearchPost,
 					SearchAdd,SearchTel,SearchFax,SearchMail,
 					SearchCom,SearchPTMSCD,
 					AllSearch);
 			
 			if(0<WhMstRt.length) {
-				TB_WHCD.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoWHCD]);			//倉庫コード
-				TB_WHName .setText(		""+WhMstRt[0][M00001WhMstRt.ColNoWHName]);			//拠点倉庫名
-				TB_Post.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoPost]);			//拠点倉庫郵便番号
-				TB_Add01.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoAdd01]);			//拠点倉庫住所1
-				TB_Add02.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoAdd02]);			//拠点倉庫住所2
-				TB_Tel.setText(			""+WhMstRt[0][M00001WhMstRt.ColNoTel]);			//拠点倉庫電話
-				TB_Fax.setText(			""+WhMstRt[0][M00001WhMstRt.ColNoFax]);			//拠点倉庫FAX
-				TB_Mail.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoMail]);			//拠点倉庫MAIL
-				TB_Com01.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoCom01]);			//コメント１
-				TB_Com02.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoCom02]);			//コメント２
-				TB_Com03.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoCom03]);			//コメント３
-				TB_PTMSCD.setText(		""+WhMstRt[0][M00001WhMstRt.ColNoPTMSCD]);			//基幹SysCD
-				TB_EntryDate.setText(	""+WhMstRt[0][M00001WhMstRt.ColNoEntryDate]);		//データ登録日時
-				TB_UpdateDate.setText(	""+WhMstRt[0][M00001WhMstRt.ColNoUpdateDate]);	//データ更新日時
-				TB_EntryUser.setText(	""+WhMstRt[0][M00001WhMstRt.ColNoEntryUser]);		//登録者
-				TB_UpdateUser.setText(	""+WhMstRt[0][M00001WhMstRt.ColNoUpdateUser]);	//更新者
+				TB_WHCD.setText(		""+WhMstRt[0][M100WhMstRt.ColNoWHCD]);			//倉庫コード
+				TB_WHName .setText(		""+WhMstRt[0][M100WhMstRt.ColNoWHName]);			//拠点倉庫名
+				TB_Post.setText(		""+WhMstRt[0][M100WhMstRt.ColNoPost]);			//拠点倉庫郵便番号
+				TB_Add01.setText(		""+WhMstRt[0][M100WhMstRt.ColNoAdd01]);			//拠点倉庫住所1
+				TB_Add02.setText(		""+WhMstRt[0][M100WhMstRt.ColNoAdd02]);			//拠点倉庫住所2
+				TB_Tel.setText(			""+WhMstRt[0][M100WhMstRt.ColNoTel]);			//拠点倉庫電話
+				TB_Fax.setText(			""+WhMstRt[0][M100WhMstRt.ColNoFax]);			//拠点倉庫FAX
+				TB_Mail.setText(		""+WhMstRt[0][M100WhMstRt.ColNoMail]);			//拠点倉庫MAIL
+				TB_Com01.setText(		""+WhMstRt[0][M100WhMstRt.ColNoCom01]);			//コメント１
+				TB_Com02.setText(		""+WhMstRt[0][M100WhMstRt.ColNoCom02]);			//コメント２
+				TB_Com03.setText(		""+WhMstRt[0][M100WhMstRt.ColNoCom03]);			//コメント３
+				TB_PTMSCD.setText(		""+WhMstRt[0][M100WhMstRt.ColNoPTMSCD]);			//基幹SysCD
+				TB_EntryDate.setText(	""+WhMstRt[0][M100WhMstRt.ColNoEntryDate]);		//データ登録日時
+				TB_UpdateDate.setText(	""+WhMstRt[0][M100WhMstRt.ColNoUpdateDate]);	//データ更新日時
+				TB_EntryUser.setText(	""+WhMstRt[0][M100WhMstRt.ColNoEntryUser]);		//登録者
+				TB_UpdateUser.setText(	""+WhMstRt[0][M100WhMstRt.ColNoUpdateUser]);	//更新者
 			}
 		}
 		main_fm.add(LB_WHCD);
@@ -163,7 +163,7 @@ public class WM00011WhMstRenewAndCreate{
 					SearchPOST.add(GetPost);
 				}
 				
-				Object[][] PostRt = M10010PostMstRt.PostRt(
+				Object[][] PostRt = M100PostMstRt.PostRt(
 							SearchPOST,
 							SearchAdd,
 							AllSearch,
@@ -223,7 +223,7 @@ public class WM00011WhMstRenewAndCreate{
 				GetTel  = B100TextControl.num_only_String(GetTel);
 				GetFax  = B100TextControl.num_only_String(GetFax);
 				
-				if("".equals(GetWHCD)) {GetWHCD = M00001WhMstRt.NewWhCdGet(1)[0];}
+				if("".equals(GetWHCD)) {GetWHCD = M100WhMstRt.NewWhCdGet(1)[0];}
 				
 				if("".equals(GetWHName)) {
 					JOptionPane.showMessageDialog(null, "倉庫名は必須です");
@@ -242,7 +242,7 @@ public class WM00011WhMstRenewAndCreate{
 					
 					SearchWHCD.add(GetWHCD);
 					
-					Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+					Object[][] WhMstRt = M100WhMstRt.WhMstRt(
 							SearchWHCD,
 							SearchWHName,
 							SearchPost,

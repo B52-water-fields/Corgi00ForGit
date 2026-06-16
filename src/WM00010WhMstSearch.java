@@ -248,7 +248,7 @@ public class WM00010WhMstSearch{
 					TB_SearchMail.setText(GetSearchMail);
 					TB_SearchPTMSCD.setText(GetSearchPTMSCD);
 
-					Object[][] WhMstRt = M00001WhMstRt.WhMstRt(
+					Object[][] WhMstRt = M100WhMstRt.WhMstRt(
 								SearchWHCD,SearchWHName,SearchPost,
 								SearchAdd,SearchTel,SearchFax,SearchMail,
 								SearchCom,SearchPTMSCD,
@@ -257,22 +257,22 @@ public class WM00010WhMstSearch{
 					for(int i=0;i<WhMstRt.length;i++) {
 						Object[] SetOb = new Object[17];
 						SetOb[ 0] = false;
-						SetOb[ 1] = ""+WhMstRt[i][M00001WhMstRt.ColNoWHCD];
-						SetOb[ 2] = ""+WhMstRt[i][M00001WhMstRt.ColNoWHName];
-						SetOb[ 3] = ""+WhMstRt[i][M00001WhMstRt.ColNoPost];
-						SetOb[ 4] = ""+WhMstRt[i][M00001WhMstRt.ColNoAdd01];
-						SetOb[ 5] = ""+WhMstRt[i][M00001WhMstRt.ColNoAdd02];
-						SetOb[ 6] = ""+WhMstRt[i][M00001WhMstRt.ColNoTel];
-						SetOb[ 7] = ""+WhMstRt[i][M00001WhMstRt.ColNoFax];
-						SetOb[ 8] = ""+WhMstRt[i][M00001WhMstRt.ColNoMail];
-						SetOb[ 9] = ""+WhMstRt[i][M00001WhMstRt.ColNoCom01];
-						SetOb[10] = ""+WhMstRt[i][M00001WhMstRt.ColNoCom02];
-						SetOb[11] = ""+WhMstRt[i][M00001WhMstRt.ColNoCom03];
-						SetOb[12] = ""+WhMstRt[i][M00001WhMstRt.ColNoPTMSCD];
-						SetOb[13] = ""+WhMstRt[i][M00001WhMstRt.ColNoEntryDate];
-						SetOb[14] = ""+WhMstRt[i][M00001WhMstRt.ColNoUpdateDate];
-						SetOb[15] = ""+WhMstRt[i][M00001WhMstRt.ColNoEntryUser];
-						SetOb[16] = ""+WhMstRt[i][M00001WhMstRt.ColNoUpdateUser];
+						SetOb[ 1] = ""+WhMstRt[i][M100WhMstRt.ColNoWHCD];
+						SetOb[ 2] = ""+WhMstRt[i][M100WhMstRt.ColNoWHName];
+						SetOb[ 3] = ""+WhMstRt[i][M100WhMstRt.ColNoPost];
+						SetOb[ 4] = ""+WhMstRt[i][M100WhMstRt.ColNoAdd01];
+						SetOb[ 5] = ""+WhMstRt[i][M100WhMstRt.ColNoAdd02];
+						SetOb[ 6] = ""+WhMstRt[i][M100WhMstRt.ColNoTel];
+						SetOb[ 7] = ""+WhMstRt[i][M100WhMstRt.ColNoFax];
+						SetOb[ 8] = ""+WhMstRt[i][M100WhMstRt.ColNoMail];
+						SetOb[ 9] = ""+WhMstRt[i][M100WhMstRt.ColNoCom01];
+						SetOb[10] = ""+WhMstRt[i][M100WhMstRt.ColNoCom02];
+						SetOb[11] = ""+WhMstRt[i][M100WhMstRt.ColNoCom03];
+						SetOb[12] = ""+WhMstRt[i][M100WhMstRt.ColNoPTMSCD];
+						SetOb[13] = ""+WhMstRt[i][M100WhMstRt.ColNoEntryDate];
+						SetOb[14] = ""+WhMstRt[i][M100WhMstRt.ColNoUpdateDate];
+						SetOb[15] = ""+WhMstRt[i][M100WhMstRt.ColNoEntryUser];
+						SetOb[16] = ""+WhMstRt[i][M100WhMstRt.ColNoUpdateUser];
 						
 						tableModel_ms01.addRow(SetOb);
 					}
@@ -293,7 +293,7 @@ public class WM00010WhMstSearch{
 				int RowCount = tableModel_ms01.getRowCount();
 				for(int i=0;i<RowCount;i++) {
 					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-						TgtWhCd = ""+tableModel_ms01.getValueAt(i, M00001WhMstRt.ColNoWHCD+1);
+						TgtWhCd = ""+tableModel_ms01.getValueAt(i, M100WhMstRt.ColNoWHCD+1);
 					}
 				}
 				if(null!=TgtWhCd&&!"".equals(TgtWhCd)) {
@@ -373,7 +373,7 @@ public class WM00010WhMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

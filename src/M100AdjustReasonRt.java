@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00110AdjustReasonRt{
+public class M100AdjustReasonRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchClCd 				= new ArrayList<String>();	//荷主コード
@@ -12,23 +12,23 @@ public class M00110AdjustReasonRt{
 	ArrayList<String> SearchAdjustReasonName	= new ArrayList<String>();	//調整理由名
 	boolean AllSearch = false;
 	
-	Object[][] AdjustReasonRt	= M00110AdjustReasonRt.AdjustReasonRt(
+	Object[][] AdjustReasonRt	= M100AdjustReasonRt.AdjustReasonRt(
 																SearchClCd,				//荷主コード
 																SearchWhCd,				//倉庫コード
 																SearchAdjustReasonCd,	//調整理由コード
 																SearchAdjustReasonName,	//調整理由名
 																AllSearch);
 																
-	String GetClCd				= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColClCd];				//荷主コード
-	String GetCLName01			= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColCLName01];			//荷主名
-	String GetWhCd				= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColWhCd];				//倉庫コード
-	String GetWHName			= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColWHName];			//倉庫名
-	String GetAdjustReasonCd	= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonCd];	//調整理由コード
-	String GetAdjustReasonName	= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColAdjustReasonName];	//調整理由名
-	String GetEntryDate			= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColEntryDate];			//登録日
-	String GetUpdateDate		= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColUpdateDate];		//更新日
-	String GetEntryUser			= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColEntryUser];			//登録者
-	String GetUpdateUser		= (String)AdjustReasonRt[i][M00110AdjustReasonRt.ColUpdateUser];		//更新者
+	String GetClCd				= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColClCd];				//荷主コード
+	String GetCLName01			= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColCLName01];			//荷主名
+	String GetWhCd				= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColWhCd];				//倉庫コード
+	String GetWHName			= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColWHName];			//倉庫名
+	String GetAdjustReasonCd	= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColAdjustReasonCd];	//調整理由コード
+	String GetAdjustReasonName	= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColAdjustReasonName];	//調整理由名
+	String GetEntryDate			= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColEntryDate];			//登録日
+	String GetUpdateDate		= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColUpdateDate];		//更新日
+	String GetEntryUser			= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColEntryUser];			//登録者
+	String GetUpdateUser		= (String)AdjustReasonRt[i][M100AdjustReasonRt.ColUpdateUser];		//更新者
 	
 	*/
 	static final int ColClCd					=  0;	//荷主コード
@@ -221,7 +221,7 @@ public class M00110AdjustReasonRt{
 		SearchClCd.add(A00000Main.ClCd);
 		SearchWhCd.add(A00000Main.ClWh);
 		
-		Object[][] AdjustReasonRt	= M00110AdjustReasonRt.AdjustReasonRt(
+		Object[][] AdjustReasonRt	= M100AdjustReasonRt.AdjustReasonRt(
 																	SearchClCd,				//荷主コード
 																	SearchWhCd,				//倉庫コード
 																	SearchAdjustReasonCd,	//調整理由コード

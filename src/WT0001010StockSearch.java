@@ -308,7 +308,7 @@ public class WT0001010StockSearch{
 		PN_Search.add(LB2_SearchJanCd);
 		PN_Search.add(LB2_SearchItemMdNo);
 		
-		Object[][] RtStockRt = T00030StockRt.RtStockRt();
+		Object[][] RtStockRt = T100StockRt.RtStockRt();
 		
 		String[] columnNames01 = new String[RtStockRt.length+1];
 		
@@ -399,13 +399,13 @@ public class WT0001010StockSearch{
 				int RowCount 	= tableModel_ms01.getRowCount();
 				for(int i=0;i<RowCount;i++) {
 					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-						TgtWhCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColWhCd+1);
-						TgtClCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColClCd+1);
-						TgtLoc 			= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColLoc+1);
-						TgtItemCd 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColItemCd+1);
-						TgtLot 			= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColLot+1);
-						TgtExpdate 		= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColExpdate+1);
-						TgtActualDate 	= ""+tableModel_ms01.getValueAt(i,T00030StockRt.ColActualDate+1);
+						TgtWhCd 		= ""+tableModel_ms01.getValueAt(i,T100StockRt.ColWhCd+1);
+						TgtClCd 		= ""+tableModel_ms01.getValueAt(i,T100StockRt.ColClCd+1);
+						TgtLoc 			= ""+tableModel_ms01.getValueAt(i,T100StockRt.ColLoc+1);
+						TgtItemCd 		= ""+tableModel_ms01.getValueAt(i,T100StockRt.ColItemCd+1);
+						TgtLot 			= ""+tableModel_ms01.getValueAt(i,T100StockRt.ColLot+1);
+						TgtExpdate 		= ""+tableModel_ms01.getValueAt(i,T100StockRt.ColExpdate+1);
+						TgtActualDate 	= ""+tableModel_ms01.getValueAt(i,T100StockRt.ColActualDate+1);
 					}
 				}
 				
@@ -570,7 +570,7 @@ public class WT0001010StockSearch{
 						SortItemcdMode = true;
 					}
 					
-					Object[][] StockRt= T00030StockRt.StockRt(
+					Object[][] StockRt= T100StockRt.StockRt(
 											SearchClCd,				//荷主コード
 											SearchWhCd,				//倉庫コード
 											SearchClGpCD,			//荷主グループCD
@@ -712,7 +712,7 @@ public class WT0001010StockSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00030WorkMain.WorkMain(0,0);
+				A00001WorkMain.WorkMain(0,0);
 			}
 		});
 	}

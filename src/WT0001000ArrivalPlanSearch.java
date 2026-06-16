@@ -534,7 +534,7 @@ public class WT0001000ArrivalPlanSearch{
 		JButton SearchCrearBtn 	= B100FrameParts.BtnSet(100,0,100,20,"条件クリア",10);
 		PN_Search.add(SearchCrearBtn);
 		
-		Object[][] RtArrivalPlanHdRt = T00016ArrivalPlanHdRt.RtArrivalPlanHdRt();
+		Object[][] RtArrivalPlanHdRt = T100ArrivalPlanHdRt.RtArrivalPlanHdRt();
 		
 		String[] columnNames01 = new String[RtArrivalPlanHdRt.length+1];
 		
@@ -630,7 +630,7 @@ public class WT0001000ArrivalPlanSearch{
 					
 					int RowCount = tableModel_ms01.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						ArrNoList.add(""+tableModel_ms01.getValueAt(i,T00016ArrivalPlanHdRt.ColArrNo+1));
+						ArrNoList.add(""+tableModel_ms01.getValueAt(i,T100ArrivalPlanHdRt.ColArrNo+1));
 					}
 					
 					WTList0001000ArrivalPlan.ArrivalPlanList0001(TgtWhCd,TgtClCd,ArrNoList,NewPrintOnly);
@@ -652,7 +652,7 @@ public class WT0001000ArrivalPlanSearch{
 					
 					int RowCount = tableModel_ms01.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						ArrNoList.add(""+tableModel_ms01.getValueAt(i,T00016ArrivalPlanHdRt.ColArrNo+1));
+						ArrNoList.add(""+tableModel_ms01.getValueAt(i,T100ArrivalPlanHdRt.ColArrNo+1));
 					}
 					
 					WTList0001010ArrivalPoster.ArrivalPoster(TgtWhCd,TgtClCd,ArrNoList,NewPrintOnly);
@@ -854,7 +854,7 @@ public class WT0001000ArrivalPlanSearch{
 						if(!"".equals(GetArrNoAny[i]		)){SearchArrNo.add(GetArrNoAny[i]);}
 					}
 					
-					Object[][] ArrivalPlanHdRt = T00016ArrivalPlanHdRt.ArrivalPlanHdRt(
+					Object[][] ArrivalPlanHdRt = T100ArrivalPlanHdRt.ArrivalPlanHdRt(
 							SearchClWh,				//ヘッダ担当倉庫
 							SearchClCd,				//ヘッダ荷主CD
 							SearchCLName01,			//ヘッダ荷主名
@@ -1043,7 +1043,7 @@ public class WT0001000ArrivalPlanSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00030WorkMain.WorkMain(0,0);
+				A00001WorkMain.WorkMain(0,0);
 			}
 		});
 	}

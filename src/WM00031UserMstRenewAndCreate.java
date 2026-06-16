@@ -137,7 +137,7 @@ public class WM00031UserMstRenewAndCreate{
 		
 		SearchWHCD.add(GetWHCD);
 		
-		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 				SearchClGpCD,
 				SearchCLCD,
 				SearchCLName,
@@ -158,9 +158,9 @@ public class WM00031UserMstRenewAndCreate{
 			SearchClList[2][0] = "";
 			TB_MainClient.addItem(SearchClList[0][0]);
 			for(int i=0;i<ClMstRt.length;i++) {
-				SearchClList[0][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M00011ClMstRt.ColCLName01];
-				SearchClList[1][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd];
-				SearchClList[2][i+1] = "" + ClMstRt[i][M00011ClMstRt.ColCLName01];
+				SearchClList[0][i+1] = "" + ClMstRt[i][M100ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M100ClMstRt.ColCLName01];
+				SearchClList[1][i+1] = "" + ClMstRt[i][M100ClMstRt.Colcl_cd];
+				SearchClList[2][i+1] = "" + ClMstRt[i][M100ClMstRt.ColCLName01];
 				TB_MainClient.addItem(SearchClList[0][i+1]);
 			}
 		}
@@ -186,7 +186,7 @@ public class WM00031UserMstRenewAndCreate{
 			SearchShippingCompanyCd.add(TgtShippingCompanyCd);
 			SearchUserCd.add(TgtUserCd);
 			
-			Object[][] UserMstRt = M00020UserMstRt.UserMstRt(
+			Object[][] UserMstRt = M100UserMstRt.UserMstRt(
 						SearchWHCD,
 						SearchShippingCompanyCd,
 						SearchAuthorityFG,
@@ -206,7 +206,7 @@ public class WM00031UserMstRenewAndCreate{
 			if(0<UserMstRt.length) {
 				//権限が9：管理者だった場合、管理者権限でなければ更新させない
 				boolean KickFg = true;
-				if("9".equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])) {
+				if("9".equals(""+UserMstRt[0][M100UserMstRt.ColAuthorityFG])) {
 					KickFg = false;
 				}
 				if("9".equals(A00000Main.LoginUserAuthorityFG)) {
@@ -215,13 +215,13 @@ public class WM00031UserMstRenewAndCreate{
 				
 				if(KickFg) {
 					for(int i=0;i<B100DefaultVariable.WhList[1].length;i++){
-						if((""+B100DefaultVariable.WhList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColWHCD])){
+						if((""+B100DefaultVariable.WhList[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColWHCD])){
 							TB_WHCD.setSelectedIndex(i);
 						}
 					}
 					
 					for(int i=0;i<B100DefaultVariable.ShippingCompanyList[1].length;i++){
-						if((""+B100DefaultVariable.ShippingCompanyList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColShippingCompanyCd])){
+						if((""+B100DefaultVariable.ShippingCompanyList[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColShippingCompanyCd])){
 							TB_ShippingCompanyCd.setSelectedIndex(i);
 						}
 					}
@@ -242,7 +242,7 @@ public class WM00031UserMstRenewAndCreate{
 					
 					SearchWHCD.add(GetWHCD);
 					
-					ClMstRt = M00011ClMstRt.ClMstRt(
+					ClMstRt = M100ClMstRt.ClMstRt(
 							SearchClGpCD,
 							SearchCLCD,
 							SearchCLName,
@@ -263,51 +263,51 @@ public class WM00031UserMstRenewAndCreate{
 						SearchClList[2][0] = "";
 						TB_MainClient.addItem(SearchClList[0][0]);
 						for(int i=0;i<ClMstRt.length;i++) {
-							SearchClList[0][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M00011ClMstRt.ColCLName01];
-							SearchClList[1][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd];
-							SearchClList[2][i+1] = "" + ClMstRt[i][M00011ClMstRt.ColCLName01];
+							SearchClList[0][i+1] = "" + ClMstRt[i][M100ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M100ClMstRt.ColCLName01];
+							SearchClList[1][i+1] = "" + ClMstRt[i][M100ClMstRt.Colcl_cd];
+							SearchClList[2][i+1] = "" + ClMstRt[i][M100ClMstRt.ColCLName01];
 							TB_MainClient.addItem(SearchClList[0][i+1]);
 						}
 					}
 					
 					for(int i=0;i<SearchClList[1].length;i++){
-						if((""+SearchClList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColMainClient])){
+						if((""+SearchClList[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColMainClient])){
 							TB_MainClient.setSelectedIndex(i);
 						}
 					}
 					
 					for(int i=0;i<B100DefaultVariable.AuthorityFG[1].length;i++){
-						if((""+B100DefaultVariable.AuthorityFG[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])){
+						if((""+B100DefaultVariable.AuthorityFG[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColAuthorityFG])){
 							TB_AuthorityFG.setSelectedIndex(i);
 						}
 					}
 					
 					for(int i=0;i<B100DefaultVariable.DelList[1].length;i++){
-						if((""+B100DefaultVariable.DelList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColDelFg])){
+						if((""+B100DefaultVariable.DelList[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColDelFg])){
 							TB_DelFg.setSelectedIndex(i);
 						}
 					}
-					TB_UserCd.setText(		""+UserMstRt[0][M00020UserMstRt.ColUserCd]);
-					TB_PassWord.setText(	""+UserMstRt[0][M00020UserMstRt.ColPassWord]);
-					TB_UserName01.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName01]);
-					TB_UserName02.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName02]);
-					TB_UserName03.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName03]);
-					TB_CarCd.setText(		""+UserMstRt[0][M00020UserMstRt.ColCarCd]);
-					TB_Post.setText(		""+UserMstRt[0][M00020UserMstRt.ColPost]);
-					TB_Add01.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd01]);
-					TB_Add02.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd02]);
-					TB_Add03.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd03]);
-					TB_Tel.setText(			""+UserMstRt[0][M00020UserMstRt.ColTel]);
-					TB_Fax.setText(			""+UserMstRt[0][M00020UserMstRt.ColFax]);
-					TB_Mail.setText(		""+UserMstRt[0][M00020UserMstRt.ColMail]);
-					TB_Com01.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom01]);
-					TB_Com02.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom02]);
-					TB_Com03.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom03]);
-					TB_EntryDate.setText(	""+UserMstRt[0][M00020UserMstRt.ColEntryDate]);
-					TB_UpdateDate.setText(	""+UserMstRt[0][M00020UserMstRt.ColUpdateDate]);
-					TB_EntryUser.setText(	""+UserMstRt[0][M00020UserMstRt.ColEntryUser]);
-					TB_UpdateUser.setText(	""+UserMstRt[0][M00020UserMstRt.ColUpdateUser]);
-					TB_PTMSCD.setText(		""+UserMstRt[0][M00020UserMstRt.ColPTMSCD]);
+					TB_UserCd.setText(		""+UserMstRt[0][M100UserMstRt.ColUserCd]);
+					TB_PassWord.setText(	""+UserMstRt[0][M100UserMstRt.ColPassWord]);
+					TB_UserName01.setText(	""+UserMstRt[0][M100UserMstRt.ColUserName01]);
+					TB_UserName02.setText(	""+UserMstRt[0][M100UserMstRt.ColUserName02]);
+					TB_UserName03.setText(	""+UserMstRt[0][M100UserMstRt.ColUserName03]);
+					TB_CarCd.setText(		""+UserMstRt[0][M100UserMstRt.ColCarCd]);
+					TB_Post.setText(		""+UserMstRt[0][M100UserMstRt.ColPost]);
+					TB_Add01.setText(		""+UserMstRt[0][M100UserMstRt.ColAdd01]);
+					TB_Add02.setText(		""+UserMstRt[0][M100UserMstRt.ColAdd02]);
+					TB_Add03.setText(		""+UserMstRt[0][M100UserMstRt.ColAdd03]);
+					TB_Tel.setText(			""+UserMstRt[0][M100UserMstRt.ColTel]);
+					TB_Fax.setText(			""+UserMstRt[0][M100UserMstRt.ColFax]);
+					TB_Mail.setText(		""+UserMstRt[0][M100UserMstRt.ColMail]);
+					TB_Com01.setText(		""+UserMstRt[0][M100UserMstRt.ColCom01]);
+					TB_Com02.setText(		""+UserMstRt[0][M100UserMstRt.ColCom02]);
+					TB_Com03.setText(		""+UserMstRt[0][M100UserMstRt.ColCom03]);
+					TB_EntryDate.setText(	""+UserMstRt[0][M100UserMstRt.ColEntryDate]);
+					TB_UpdateDate.setText(	""+UserMstRt[0][M100UserMstRt.ColUpdateDate]);
+					TB_EntryUser.setText(	""+UserMstRt[0][M100UserMstRt.ColEntryUser]);
+					TB_UpdateUser.setText(	""+UserMstRt[0][M100UserMstRt.ColUpdateUser]);
+					TB_PTMSCD.setText(		""+UserMstRt[0][M100UserMstRt.ColPTMSCD]);
 					
 					TB_WHCD.setEnabled(false);
 					TB_ShippingCompanyCd.setEnabled(false);
@@ -399,7 +399,7 @@ public class WM00031UserMstRenewAndCreate{
 					
 					SearchWHCD.add(GetWHCD);
 					
-					Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+					Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 							SearchClGpCD,
 							SearchCLCD,
 							SearchCLName,
@@ -420,9 +420,9 @@ public class WM00031UserMstRenewAndCreate{
 						SearchClList[2][0] = "";
 						TB_MainClient.addItem(SearchClList[0][0]);
 						for(int i=0;i<ClMstRt.length;i++) {
-							SearchClList[0][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M00011ClMstRt.ColCLName01];
-							SearchClList[1][i+1] = "" + ClMstRt[i][M00011ClMstRt.Colcl_cd];
-							SearchClList[2][i+1] = "" + ClMstRt[i][M00011ClMstRt.ColCLName01];
+							SearchClList[0][i+1] = "" + ClMstRt[i][M100ClMstRt.Colcl_cd] + ":" + ClMstRt[i][M100ClMstRt.ColCLName01];
+							SearchClList[1][i+1] = "" + ClMstRt[i][M100ClMstRt.Colcl_cd];
+							SearchClList[2][i+1] = "" + ClMstRt[i][M100ClMstRt.ColCLName01];
 							TB_MainClient.addItem(SearchClList[0][i+1]);
 						}
 					}
@@ -491,7 +491,7 @@ public class WM00031UserMstRenewAndCreate{
 						SearchShippingCompanyCd.add(GetShippingCompanyCd);
 						SearchUserCd.add(GetUserCd);
 						
-						Object[][] UserMstRt = M00020UserMstRt.UserMstRt(
+						Object[][] UserMstRt = M100UserMstRt.UserMstRt(
 									SearchWHCD,
 									SearchShippingCompanyCd,
 									SearchAuthorityFG,
@@ -510,7 +510,7 @@ public class WM00031UserMstRenewAndCreate{
 						
 						if(0<UserMstRt.length) {
 							boolean KickFg = false;
-							if("9".equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])) {
+							if("9".equals(""+UserMstRt[0][M100UserMstRt.ColAuthorityFG])) {
 								if("9".equals(A00000Main.LoginUserAuthorityFG)) {
 									KickFg = true;
 								}else {
@@ -531,55 +531,55 @@ public class WM00031UserMstRenewAndCreate{
 								
 								if(KickFg) {
 									for(int i=0;i<B100DefaultVariable.WhList[1].length;i++){
-										if((""+B100DefaultVariable.WhList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColWHCD])){
+										if((""+B100DefaultVariable.WhList[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColWHCD])){
 											TB_WHCD.setSelectedIndex(i);
 										}
 									}
 									
 									for(int i=0;i<B100DefaultVariable.ShippingCompanyList[1].length;i++){
-										if((""+B100DefaultVariable.ShippingCompanyList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColShippingCompanyCd])){
+										if((""+B100DefaultVariable.ShippingCompanyList[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColShippingCompanyCd])){
 											TB_ShippingCompanyCd.setSelectedIndex(i);
 										}
 									}
 									
 									for(int i=0;i<SearchClList[1].length;i++){
-										if((""+SearchClList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColMainClient])){
+										if((""+SearchClList[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColMainClient])){
 											TB_MainClient.setSelectedIndex(i);
 										}
 									}
 									
 									for(int i=0;i<B100DefaultVariable.AuthorityFG[1].length;i++){
-										if((""+B100DefaultVariable.AuthorityFG[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])){
+										if((""+B100DefaultVariable.AuthorityFG[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColAuthorityFG])){
 											TB_AuthorityFG.setSelectedIndex(i);
 										}
 									}
 									
 									for(int i=0;i<B100DefaultVariable.DelList[1].length;i++){
-										if((""+B100DefaultVariable.DelList[1][i]).equals(""+UserMstRt[0][M00020UserMstRt.ColDelFg])){
+										if((""+B100DefaultVariable.DelList[1][i]).equals(""+UserMstRt[0][M100UserMstRt.ColDelFg])){
 											TB_DelFg.setSelectedIndex(i);
 										}
 									}
-									TB_UserCd.setText(		""+UserMstRt[0][M00020UserMstRt.ColUserCd]);
-									TB_PassWord.setText(	""+UserMstRt[0][M00020UserMstRt.ColPassWord	]);
-									TB_UserName01.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName01]);
-									TB_UserName02.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName02]);
-									TB_UserName03.setText(	""+UserMstRt[0][M00020UserMstRt.ColUserName03]);
-									TB_CarCd.setText(		""+UserMstRt[0][M00020UserMstRt.ColCarCd]);
-									TB_Post.setText(		""+UserMstRt[0][M00020UserMstRt.ColPost]);
-									TB_Add01.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd01]);
-									TB_Add02.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd02]);
-									TB_Add03.setText(		""+UserMstRt[0][M00020UserMstRt.ColAdd03]);
-									TB_Tel.setText(			""+UserMstRt[0][M00020UserMstRt.ColTel]);
-									TB_Fax.setText(			""+UserMstRt[0][M00020UserMstRt.ColFax]);
-									TB_Mail.setText(		""+UserMstRt[0][M00020UserMstRt.ColMail]);
-									TB_Com01.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom01]);
-									TB_Com02.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom02]);
-									TB_Com03.setText(		""+UserMstRt[0][M00020UserMstRt.ColCom03]);
-									TB_EntryDate.setText(	""+UserMstRt[0][M00020UserMstRt.ColEntryDate]);
-									TB_UpdateDate.setText(	""+UserMstRt[0][M00020UserMstRt.ColUpdateDate]);
-									TB_EntryUser.setText(	""+UserMstRt[0][M00020UserMstRt.ColEntryUser]);
-									TB_UpdateUser.setText(	""+UserMstRt[0][M00020UserMstRt.ColUpdateUser]);
-									TB_PTMSCD.setText(		""+UserMstRt[0][M00020UserMstRt.ColPTMSCD]);
+									TB_UserCd.setText(		""+UserMstRt[0][M100UserMstRt.ColUserCd]);
+									TB_PassWord.setText(	""+UserMstRt[0][M100UserMstRt.ColPassWord	]);
+									TB_UserName01.setText(	""+UserMstRt[0][M100UserMstRt.ColUserName01]);
+									TB_UserName02.setText(	""+UserMstRt[0][M100UserMstRt.ColUserName02]);
+									TB_UserName03.setText(	""+UserMstRt[0][M100UserMstRt.ColUserName03]);
+									TB_CarCd.setText(		""+UserMstRt[0][M100UserMstRt.ColCarCd]);
+									TB_Post.setText(		""+UserMstRt[0][M100UserMstRt.ColPost]);
+									TB_Add01.setText(		""+UserMstRt[0][M100UserMstRt.ColAdd01]);
+									TB_Add02.setText(		""+UserMstRt[0][M100UserMstRt.ColAdd02]);
+									TB_Add03.setText(		""+UserMstRt[0][M100UserMstRt.ColAdd03]);
+									TB_Tel.setText(			""+UserMstRt[0][M100UserMstRt.ColTel]);
+									TB_Fax.setText(			""+UserMstRt[0][M100UserMstRt.ColFax]);
+									TB_Mail.setText(		""+UserMstRt[0][M100UserMstRt.ColMail]);
+									TB_Com01.setText(		""+UserMstRt[0][M100UserMstRt.ColCom01]);
+									TB_Com02.setText(		""+UserMstRt[0][M100UserMstRt.ColCom02]);
+									TB_Com03.setText(		""+UserMstRt[0][M100UserMstRt.ColCom03]);
+									TB_EntryDate.setText(	""+UserMstRt[0][M100UserMstRt.ColEntryDate]);
+									TB_UpdateDate.setText(	""+UserMstRt[0][M100UserMstRt.ColUpdateDate]);
+									TB_EntryUser.setText(	""+UserMstRt[0][M100UserMstRt.ColEntryUser]);
+									TB_UpdateUser.setText(	""+UserMstRt[0][M100UserMstRt.ColUpdateUser]);
+									TB_PTMSCD.setText(		""+UserMstRt[0][M100UserMstRt.ColPTMSCD]);
 									
 									TB_WHCD.setEnabled(false);
 									TB_ShippingCompanyCd.setEnabled(false);
@@ -747,7 +747,7 @@ public class WM00031UserMstRenewAndCreate{
 						SearchShippingCompanyCd.add(GetShippingCompanyCd);
 						SearchUserCd.add(GetUserCd);
 						
-						Object[][] UserMstRt = M00020UserMstRt.UserMstRt(
+						Object[][] UserMstRt = M100UserMstRt.UserMstRt(
 									SearchWHCD,
 									SearchShippingCompanyCd,
 									SearchAuthorityFG,
@@ -764,7 +764,7 @@ public class WM00031UserMstRenewAndCreate{
 									SearchDelFg,
 									AllSearch);
 						if(0<UserMstRt.length) {
-							if("9".equals(""+UserMstRt[0][M00020UserMstRt.ColAuthorityFG])) {
+							if("9".equals(""+UserMstRt[0][M100UserMstRt.ColAuthorityFG])) {
 								if("9".equals(A00000Main.LoginUserAuthorityFG)) {
 									KickFg = true;
 								}else {
@@ -873,7 +873,7 @@ public class WM00031UserMstRenewAndCreate{
 					SearchPOST.add(GetPost);
 				}
 				
-				Object[][] PostRt = M10010PostMstRt.PostRt(
+				Object[][] PostRt = M100PostMstRt.PostRt(
 							SearchPOST,
 							SearchAdd,
 							AllSearch,

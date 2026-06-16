@@ -96,7 +96,7 @@ public class WM00091LocationMstRenewAndCreate{
 			SearchWhCd.add(	TgtWhCd);
 			SearchLoc.add(	TgtLoc);
 			
-			Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+			Object[][] LocationMstRt = M100LocationMstRt.LocationMstRt(
 					SearchClCd,		//荷主コード
 					SearchWhCd,		//倉庫コード
 					SearchLoc,		//ロケーション
@@ -106,17 +106,17 @@ public class WM00091LocationMstRenewAndCreate{
 					AllSearch);
 			
 			if(1==LocationMstRt.length) {
-				String GetClCd			= (String)LocationMstRt[0][M00090LocationMstRt.ColClCd];			//荷主コード
-				String GetCLName01		= (String)LocationMstRt[0][M00090LocationMstRt.ColCLName01];		//荷主名1
-				String GetWhCd			= (String)LocationMstRt[0][M00090LocationMstRt.ColWhCd];			//倉庫コード
-				String GetWHName		= (String)LocationMstRt[0][M00090LocationMstRt.ColWHName];			//拠点倉庫名
-				String GetLoc			= (String)LocationMstRt[0][M00090LocationMstRt.ColLoc];			//ロケーション
-				String GetLocName		= (String)LocationMstRt[0][M00090LocationMstRt.ColLocName];		//ロケーション名
-				int GetType				= (int)LocationMstRt[0][M00090LocationMstRt.ColType];				//ロケタイプ
-				String GetEntryDate		= (String)LocationMstRt[0][M00090LocationMstRt.ColEntryDate];		//登録日
-				String GetUpdateDate	= (String)LocationMstRt[0][M00090LocationMstRt.ColUpdateDate];	//更新日
-				String GetEntryUser		= (String)LocationMstRt[0][M00090LocationMstRt.ColEntryUser];		//登録者
-				String GetUpdateUser	= (String)LocationMstRt[0][M00090LocationMstRt.ColUpdateUser];	//更新者
+				String GetClCd			= (String)LocationMstRt[0][M100LocationMstRt.ColClCd];			//荷主コード
+				String GetCLName01		= (String)LocationMstRt[0][M100LocationMstRt.ColCLName01];		//荷主名1
+				String GetWhCd			= (String)LocationMstRt[0][M100LocationMstRt.ColWhCd];			//倉庫コード
+				String GetWHName		= (String)LocationMstRt[0][M100LocationMstRt.ColWHName];			//拠点倉庫名
+				String GetLoc			= (String)LocationMstRt[0][M100LocationMstRt.ColLoc];			//ロケーション
+				String GetLocName		= (String)LocationMstRt[0][M100LocationMstRt.ColLocName];		//ロケーション名
+				int GetType				= (int)LocationMstRt[0][M100LocationMstRt.ColType];				//ロケタイプ
+				String GetEntryDate		= (String)LocationMstRt[0][M100LocationMstRt.ColEntryDate];		//登録日
+				String GetUpdateDate	= (String)LocationMstRt[0][M100LocationMstRt.ColUpdateDate];	//更新日
+				String GetEntryUser		= (String)LocationMstRt[0][M100LocationMstRt.ColEntryUser];		//登録者
+				String GetUpdateUser	= (String)LocationMstRt[0][M100LocationMstRt.ColUpdateUser];	//更新者
 				
 				TB_Loc.setText(GetLoc);
 				TB_LocName.setText(GetLocName);

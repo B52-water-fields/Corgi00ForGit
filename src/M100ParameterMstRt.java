@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00000ParameterMstRt{
+public class M100ParameterMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchParaCd			= new ArrayList<String>();
@@ -43,7 +43,7 @@ public class M00000ParameterMstRt{
 	ArrayList<String> SearchParaTxtAll		= new ArrayList<String>();
 	Boolean AllSearch = false;
 	
-	Object[][] ParameterMstRtNANKO = M00000ParameterMstRt.ParameterMstRtNANKO(
+	Object[][] ParameterMstRtNANKO = M100ParameterMstRt.ParameterMstRtNANKO(
 			SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
 			SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
 			SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
@@ -54,33 +54,33 @@ public class M00000ParameterMstRt{
 			SearchParaTxtAll,
 			AllSearch);
 			
-	String GetParaCd		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaCd];		//パラメータコード
-	String GetParaCdSeq		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaCdSeq];	//ナンバリング
-	String GetParaName		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaName];		//パラメータ名
-	String GetParaTxt01		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt01];	//パラメータテキスト項目01
-	String GetParaTxt02		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt02];	//パラメータテキスト項目02
-	String GetParaTxt03		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt03];	//パラメータテキスト項目03
-	String GetParaTxt04		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt04];	//パラメータテキスト項目04
-	String GetParaTxt05		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt05];	//パラメータテキスト項目05
-	String GetParaTxt06		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt06];	//パラメータテキスト項目06
-	String GetParaTxt07		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt07];	//パラメータテキスト項目07
-	String GetParaTxt08		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt08];	//パラメータテキスト項目08
-	String GetParaTxt09		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt09];	//パラメータテキスト項目09
-	String GetParaTxt10		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaTxt10];	//パラメータテキスト項目10
-	int GetParaInt01		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt01];		//パラメータ数値項目01
-	int GetParaInt02		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt02];		//パラメータ数値項目02
-	int GetParaInt03		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt03];		//パラメータ数値項目03
-	int GetParaInt04		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt04];		//パラメータ数値項目04
-	int GetParaInt05		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt05];		//パラメータ数値項目05
-	int GetParaInt06		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt06];		//パラメータ数値項目06
-	int GetParaInt07		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt07];		//パラメータ数値項目07
-	int GetParaInt08		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt08];		//パラメータ数値項目08
-	int GetParaInt09		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt09];		//パラメータ数値項目09
-	int GetParaInt10		= (int)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColParaInt10];		//パラメータ数値項目10
-	String GetEntryDate		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColEntryDate];	//登録日
-	String GetUpdateDate	= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColUpdateDate];	//更新日
-	String GetEntryUser		= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColEntryUser];	//登録者
-	String GetUpdateUser	= (String)ParameterMstRtNANKO[i][M00000ParameterMstRt.ColUpdateUser];	//更新者
+	String GetParaCd		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaCd];		//パラメータコード
+	String GetParaCdSeq		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaCdSeq];	//ナンバリング
+	String GetParaName		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaName];		//パラメータ名
+	String GetParaTxt01		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt01];	//パラメータテキスト項目01
+	String GetParaTxt02		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt02];	//パラメータテキスト項目02
+	String GetParaTxt03		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt03];	//パラメータテキスト項目03
+	String GetParaTxt04		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt04];	//パラメータテキスト項目04
+	String GetParaTxt05		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt05];	//パラメータテキスト項目05
+	String GetParaTxt06		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt06];	//パラメータテキスト項目06
+	String GetParaTxt07		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt07];	//パラメータテキスト項目07
+	String GetParaTxt08		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt08];	//パラメータテキスト項目08
+	String GetParaTxt09		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt09];	//パラメータテキスト項目09
+	String GetParaTxt10		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaTxt10];	//パラメータテキスト項目10
+	int GetParaInt01		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt01];		//パラメータ数値項目01
+	int GetParaInt02		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt02];		//パラメータ数値項目02
+	int GetParaInt03		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt03];		//パラメータ数値項目03
+	int GetParaInt04		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt04];		//パラメータ数値項目04
+	int GetParaInt05		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt05];		//パラメータ数値項目05
+	int GetParaInt06		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt06];		//パラメータ数値項目06
+	int GetParaInt07		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt07];		//パラメータ数値項目07
+	int GetParaInt08		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt08];		//パラメータ数値項目08
+	int GetParaInt09		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt09];		//パラメータ数値項目09
+	int GetParaInt10		= (int)ParameterMstRtNANKO[i][M100ParameterMstRt.ColParaInt10];		//パラメータ数値項目10
+	String GetEntryDate		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColEntryDate];	//登録日
+	String GetUpdateDate	= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColUpdateDate];	//更新日
+	String GetEntryUser		= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColEntryUser];	//登録者
+	String GetUpdateUser	= (String)ParameterMstRtNANKO[i][M100ParameterMstRt.ColUpdateUser];	//更新者
 	
 	*/
 	

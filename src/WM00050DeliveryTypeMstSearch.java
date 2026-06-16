@@ -72,7 +72,7 @@ public class WM00050DeliveryTypeMstSearch{
 		JButton SearchBtn = B100FrameParts.BtnSet(100,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingDeliveryTypeMstRt = M00050DeliveryTypeMstRt.RtSettingDeliveryTypeMstRt();
+		Object[][] RtSettingDeliveryTypeMstRt = M100DeliveryTypeMstRt.RtSettingDeliveryTypeMstRt();
 		
 		String[] columnNames01 = new String[RtSettingDeliveryTypeMstRt.length+1];
 		
@@ -173,7 +173,7 @@ public class WM00050DeliveryTypeMstSearch{
 					if(!"".equals(GetSearchDeliveryTypeCd	)){SearchDeliveryTypeCd.add(GetSearchDeliveryTypeCd);}
 					if(!"".equals(GetSearchDeliveryTypeName	)){SearchDeliveryTypeName.add(GetSearchDeliveryTypeName);}
 					
-					Object[][] DeliveryTypeMstRt = M00050DeliveryTypeMstRt.DeliveryTypeMstRt(
+					Object[][] DeliveryTypeMstRt = M100DeliveryTypeMstRt.DeliveryTypeMstRt(
 							SearchDeliveryTypeNo,
 							SearchDeliveryTypeCd,
 							SearchDeliveryTypeName,
@@ -287,7 +287,7 @@ public class WM00050DeliveryTypeMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

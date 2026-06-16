@@ -110,7 +110,7 @@ public class WMTools000100ItemComversion{
 				SearchCLItemCd.add(CheckClItemCd);
 			}
 		}
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード
@@ -136,10 +136,10 @@ public class WMTools000100ItemComversion{
 			String CheckClItemCd = (String)rt[i][ColClIemCd];
 			if(null==rt[i][ColItemCd]||"".equals(rt[i][ColItemCd])) {
 				for(int i01=0;i01<ItemMstRt.length;i01++) {
-					String GetCLItemCd 		= (String)ItemMstRt[i01][M00070ItemMstRt.ColCLItemCd];
-					String GetItemCd		= (String)ItemMstRt[i01][M00070ItemMstRt.ColItemCd];			//商品コード
-					String GetUnitName		= (String)ItemMstRt[i01][M00070ItemMstRt.ColUnitName];			//商品単位
-					String GetItemName01	= (String)ItemMstRt[i01][M00070ItemMstRt.ColItemName01];		//商品名1
+					String GetCLItemCd 		= (String)ItemMstRt[i01][M100ItemMstRt.ColCLItemCd];
+					String GetItemCd		= (String)ItemMstRt[i01][M100ItemMstRt.ColItemCd];			//商品コード
+					String GetUnitName		= (String)ItemMstRt[i01][M100ItemMstRt.ColUnitName];			//商品単位
+					String GetItemName01	= (String)ItemMstRt[i01][M100ItemMstRt.ColItemName01];		//商品名1
 					if(CheckClItemCd.equals(GetCLItemCd)){
 						rt[i][ColItemCd]						= GetItemCd;		//変換後商品CD
 						rt[i][ColPackingType]					= 0;				//荷姿タイプ
@@ -169,7 +169,7 @@ public class WMTools000100ItemComversion{
 				SearchCLItemCd.add(CheckClItemCd);
 			}
 		}
-		Object[][] ItemComversionMstRt = M00080ItemComversionMstRt.ItemComversionMstRt(
+		Object[][] ItemComversionMstRt = M100ItemComversionMstRt.ItemComversionMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchClCd,				//荷主コード
 				SearchItemCd,			//商品コード
@@ -180,21 +180,21 @@ public class WMTools000100ItemComversion{
 			String CheckClItemCd = (String)rt[i][ColClIemCd];
 			if(null==rt[i][ColItemCd]||"".equals(rt[i][ColItemCd])) {				
 				for(int i01=0;i01<ItemComversionMstRt.length;i01++) {
-					String GetClItemCd		= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColClItemCd];	//荷主商品コード
+					String GetClItemCd		= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColClItemCd];	//荷主商品コード
 					if(CheckClItemCd.equals(GetClItemCd)){
-						String GetItemCd		= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColItemCd];		//変換先商品コード
-						int GetPackingType		= (int)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColPackingType];	//荷姿タイプ
-						String GetItemName01	= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColItemName01];	//商品名1
-						String GetCtName		= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColCtName];		//カートン商品名称
-						String GetCsName		= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColCsName];		//ケース商品名称
-						String GetPlName		= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColPlName];		//パレット商品名称
-						int GetCtQty			= (int)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColCtQty];			//カートン入数
-						int GetCsQty			= (int)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColCsQty];			//ケース入数
-						int GetPlQty			= (int)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColPlQty];			//パレット入数
-						String GetUnitName		= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColUnitName];		//商品単位
-						String GetCtUnitName	= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColCtUnitName];	//カートン商品単位
-						String GetCsUnitName	= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColCsUnitName];	//ケース商品単位
-						String GetPlUnitName	= (String)ItemComversionMstRt[i01][M00080ItemComversionMstRt.ColPlUnitName];	//パレット商品単位
+						String GetItemCd		= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColItemCd];		//変換先商品コード
+						int GetPackingType		= (int)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColPackingType];	//荷姿タイプ
+						String GetItemName01	= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColItemName01];	//商品名1
+						String GetCtName		= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColCtName];		//カートン商品名称
+						String GetCsName		= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColCsName];		//ケース商品名称
+						String GetPlName		= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColPlName];		//パレット商品名称
+						int GetCtQty			= (int)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColCtQty];			//カートン入数
+						int GetCsQty			= (int)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColCsQty];			//ケース入数
+						int GetPlQty			= (int)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColPlQty];			//パレット入数
+						String GetUnitName		= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColUnitName];		//商品単位
+						String GetCtUnitName	= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColCtUnitName];	//カートン商品単位
+						String GetCsUnitName	= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColCsUnitName];	//ケース商品単位
+						String GetPlUnitName	= (String)ItemComversionMstRt[i01][M100ItemComversionMstRt.ColPlUnitName];	//パレット商品単位
 						
 						int SetPackingType					= 0;				//荷姿タイプ
 						int SetPackingQty					= 1;				//荷姿入数(バラ換算数)
@@ -261,7 +261,7 @@ public class WMTools000100ItemComversion{
 		
 		SearchCLCD.add(ClCd);
 		
-		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 			SearchClGpCD,
 			SearchCLCD,
 			SearchCLName,
@@ -274,7 +274,7 @@ public class WMTools000100ItemComversion{
 			SearchWHCD,
 			AllSearch);
 		if(1==ClMstRt.length) {
-			ClGp = (String)ClMstRt[0][M00011ClMstRt.ColClGpCD];		//荷主グループCD
+			ClGp = (String)ClMstRt[0][M100ClMstRt.ColClGpCD];		//荷主グループCD
 		}
 		return ClGp;
 	}

@@ -422,7 +422,7 @@ public class WM00087ItemComversionMstExcelEntry{
 			}
 		}
 		
-		Object[][] ClGpMstRt = M00010ClGpMstRt.ClGpMstRt(
+		Object[][] ClGpMstRt = M100ClGpMstRt.ClGpMstRt(
 				SearchClGpCD,
 				SearchCLGpName,
 				SearchPost,
@@ -451,7 +451,7 @@ public class WM00087ItemComversionMstExcelEntry{
 			}
 		}
 		
-		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 			SearchClGpCD,
 			SearchCLCD,
 			SearchCLName,
@@ -495,7 +495,7 @@ public class WM00087ItemComversionMstExcelEntry{
 			}
 		}
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード
@@ -544,7 +544,7 @@ public class WM00087ItemComversionMstExcelEntry{
 				
 				UnHitFg = true;
 				for(int i01=0;i01<ClGpMstRt.length;i01++) {
-					if((""+CheckOb[i][1]).equals(""+ClGpMstRt[i01][M00010ClGpMstRt.ColClGpCD])) {
+					if((""+CheckOb[i][1]).equals(""+ClGpMstRt[i01][M100ClGpMstRt.ColClGpCD])) {
 						UnHitFg = false;
 						i01=ClGpMstRt.length+1;
 					}
@@ -557,7 +557,7 @@ public class WM00087ItemComversionMstExcelEntry{
 				
 				UnHitFg = true;
 				for(int i01=0;i01<ClMstRt.length;i01++) {
-					if((""+CheckOb[i][ColClGpCd]).equals(""+ClMstRt[i01][M00011ClMstRt.ColClGpCD])&&(""+CheckOb[i][ColClCd]).equals(""+ClMstRt[i01][M00011ClMstRt.Colcl_cd])) {
+					if((""+CheckOb[i][ColClGpCd]).equals(""+ClMstRt[i01][M100ClMstRt.ColClGpCD])&&(""+CheckOb[i][ColClCd]).equals(""+ClMstRt[i01][M100ClMstRt.Colcl_cd])) {
 						UnHitFg = false;
 						i01=ClMstRt.length+1;
 					}
@@ -569,27 +569,27 @@ public class WM00087ItemComversionMstExcelEntry{
 				
 				UnHitFg = true;
 				for(int i01=0;i01<ItemMstRt.length;i01++) {
-					if((""+CheckOb[i][ColClGpCd]).equals(""+ItemMstRt[i01][M00070ItemMstRt.ColClGpCd])&&(""+CheckOb[i][ColItemCd]).equals(""+ItemMstRt[i01][M00070ItemMstRt.ColItemCd])) {
+					if((""+CheckOb[i][ColClGpCd]).equals(""+ItemMstRt[i01][M100ItemMstRt.ColClGpCd])&&(""+CheckOb[i][ColItemCd]).equals(""+ItemMstRt[i01][M100ItemMstRt.ColItemCd])) {
 						UnHitFg = false;
 						switch(""+CheckOb[i][ColType]) {
 							case "0":
 								break;
 							case "1":
-								if(0>=(int)ItemMstRt[i01][M00070ItemMstRt.ColCtQty]) {
+								if(0>=(int)ItemMstRt[i01][M100ItemMstRt.ColCtQty]) {
 									int wint = i+1;
-									ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M00070ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M00070ItemMstRt.ColItemName01]+"にはカートン設定されていません");
+									ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M100ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M100ItemMstRt.ColItemName01]+"にはカートン設定されていません");
 								}
 								break;
 							case "2":
-								if(0>=(int)ItemMstRt[i01][M00070ItemMstRt.ColCsQty]) {
+								if(0>=(int)ItemMstRt[i01][M100ItemMstRt.ColCsQty]) {
 									int wint = i+1;
-									ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M00070ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M00070ItemMstRt.ColItemName01]+"にはケース設定されていません");
+									ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M100ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M100ItemMstRt.ColItemName01]+"にはケース設定されていません");
 								}
 								break;
 							case "3":
-								if(0>=(int)ItemMstRt[i01][M00070ItemMstRt.ColPlQty]) {
+								if(0>=(int)ItemMstRt[i01][M100ItemMstRt.ColPlQty]) {
 									int wint = i+1;
-									ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M00070ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M00070ItemMstRt.ColItemName01]+"にはパレット設定されていません");
+									ErrMsg.add(wint+"行目エラー("+ItemMstRt[i01][M100ItemMstRt.ColItemCd]+")"+ItemMstRt[i01][M100ItemMstRt.ColItemName01]+"にはパレット設定されていません");
 								}
 								break;
 							default:

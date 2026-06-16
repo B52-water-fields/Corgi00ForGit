@@ -52,7 +52,7 @@ public class WM10011PostMstRenewAndCreate{
 			
 			SearchPOST.add(TgtPost);
 			
-			Object[][] PostRt = M10010PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch,PostPerfectMatch);
+			Object[][] PostRt = M100PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch,PostPerfectMatch);
 			
 			if(0<PostRt.length) {
 				TB_Post.setText(          ""+PostRt[0][0]);

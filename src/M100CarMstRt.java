@@ -2,7 +2,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-public class M00031CarMstRt{
+public class M100CarMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchWHCD = new ArrayList<String>();
@@ -12,7 +12,7 @@ public class M00031CarMstRt{
 	ArrayList<String> SearchDelFg = new ArrayList<String>();
 	boolean AllSearch = false;
 	
-	Object[][] CarMstRt = M00031CarMstRt.CarMstRt(
+	Object[][] CarMstRt = M100CarMstRt.CarMstRt(
 			SearchWHCD,
 			SearchShippingCompanyCd,
 			SearchCarCd,

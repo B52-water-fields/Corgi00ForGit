@@ -103,22 +103,22 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 			TB_ItemCd.setEnabled(false);
 			Object[][] ItemRecomendLocMstRt = ItemRecomendLocMstRt(TgtClCd,TgtWhCd,TgtItemCd);
 			if(1==ItemRecomendLocMstRt.length) {
-				String GetClCd			= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColClCd];			//荷主コード
-				String GetCLName		= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColCLName];		//荷主名1
-				String GetClWh			= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
-				String GetClWHName		= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
-				String GetClGpCD		= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
-				String GetClGpName		= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColClGpName];		//グループ名1
-				String GetItemCd		= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColItemCd];		//商品コード
-				String GetItemName01	= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColItemName01];	//商品名1
-				String GetRecomendLoc	= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
-				String GetLocName		= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColLocName];		//ロケーション名
-				int    GetType			= (int)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-				String GetEntryDate		= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColEntryDate];	//データ登録日時
-				String GetUpdateDate	= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
-				String GetEntryUser		= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColEntryUser];	//登録者
-				String GetUpdateUser	= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColUpdateUser];	//更新者
-				String GetItemSubRecomendLoc	= (String)ItemRecomendLocMstRt[0][M00120ItemRecomendLocMstRt.ColItemSubRecomendLoc];	//商品サブマスタ推奨ロケ
+				String GetClCd			= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColClCd];			//荷主コード
+				String GetCLName		= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColCLName];		//荷主名1
+				String GetClWh			= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
+				String GetClWHName		= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
+				String GetClGpCD		= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
+				String GetClGpName		= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColClGpName];		//グループ名1
+				String GetItemCd		= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColItemCd];		//商品コード
+				String GetItemName01	= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColItemName01];	//商品名1
+				String GetRecomendLoc	= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
+				String GetLocName		= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColLocName];		//ロケーション名
+				int    GetType			= (int)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				String GetEntryDate		= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColEntryDate];	//データ登録日時
+				String GetUpdateDate	= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
+				String GetEntryUser		= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColEntryUser];	//登録者
+				String GetUpdateUser	= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColUpdateUser];	//更新者
+				String GetItemSubRecomendLoc	= (String)ItemRecomendLocMstRt[0][M100ItemRecomendLocMstRt.ColItemSubRecomendLoc];	//商品サブマスタ推奨ロケ
 				
 				TB_ItemName01.setText(GetItemName01);
 				TB_RecomendLoc.setText(GetRecomendLoc);
@@ -138,9 +138,9 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 				
 				Object[][] ItemMstRt= ItemMstRt(ClGp,TgtItemCd,"");
 				if(1==ItemMstRt.length) {
-					String GetItemCd				= (String)ItemMstRt[0][M00070ItemMstRt.ColItemCd];			//商品コード
-					String GetItemName01			= (String)ItemMstRt[0][M00070ItemMstRt.ColItemName01];	//商品名1
-					String GetItemSubRecomendLoc	= (String)ItemMstRt[0][M00070ItemMstRt.ColRecomendLoc];	//商品サブマスタ推奨ロケ
+					String GetItemCd				= (String)ItemMstRt[0][M100ItemMstRt.ColItemCd];			//商品コード
+					String GetItemName01			= (String)ItemMstRt[0][M100ItemMstRt.ColItemName01];	//商品名1
+					String GetItemSubRecomendLoc	= (String)ItemMstRt[0][M100ItemMstRt.ColRecomendLoc];	//商品サブマスタ推奨ロケ
 					
 					TB_ItemCd.setText(GetItemCd);							//商品コード
 					TB_ItemName01.setText(GetItemName01);					//商品名1
@@ -217,7 +217,7 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 		JButton ItemSearchSearchBtn = B100FrameParts.BtnSet(130,100,100,20,"検索",11);
 		ItemSearch_fm.add(ItemSearchSearchBtn);
 		
-		Object[][] RtSettingItemMstRt = M00070ItemMstRt.RtSettingItemMstRt();
+		Object[][] RtSettingItemMstRt = M100ItemMstRt.RtSettingItemMstRt();
 		
 		String[] ItemSearchcolumnNames01 = new String[RtSettingItemMstRt.length+1];
 		
@@ -292,7 +292,7 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 		JButton LocSearchSearchBtn = B100FrameParts.BtnSet(100,125,100,20,"検索",11);
 		LocSearch_fm.add(LocSearchSearchBtn);
 		
-		Object[][] RtSettingLocationMstRt = M00090LocationMstRt.RtSettingLocationMstRt();
+		Object[][] RtSettingLocationMstRt = M100LocationMstRt.RtSettingLocationMstRt();
 		
 		String[] LocSearchcolumnNames01 = new String[RtSettingLocationMstRt.length+1];
 		
@@ -412,9 +412,9 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 					int RowCount = ItemSearchtableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)ItemSearchtableModel.getValueAt(i, 0)) {
-							String GetItemCd				= (String)ItemSearchtableModel.getValueAt(i, M00070ItemMstRt.ColItemCd+1);			//商品コード
-							String GetItemName01			= (String)ItemSearchtableModel.getValueAt(i, M00070ItemMstRt.ColItemName01+1);	//商品名1
-							String GetItemSubRecomendLoc	= (String)ItemSearchtableModel.getValueAt(i, M00070ItemMstRt.ColRecomendLoc+1);	//商品サブマスタ推奨ロケ
+							String GetItemCd				= (String)ItemSearchtableModel.getValueAt(i, M100ItemMstRt.ColItemCd+1);			//商品コード
+							String GetItemName01			= (String)ItemSearchtableModel.getValueAt(i, M100ItemMstRt.ColItemName01+1);	//商品名1
+							String GetItemSubRecomendLoc	= (String)ItemSearchtableModel.getValueAt(i, M100ItemMstRt.ColRecomendLoc+1);	//商品サブマスタ推奨ロケ
 							
 							TB_ItemCd.setText(GetItemCd);							//商品コード
 							TB_ItemName01.setText(GetItemName01);					//商品名1
@@ -438,9 +438,9 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 					int RowCount = LocSearchtableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)LocSearchtableModel.getValueAt(i, 0)) {
-							String GetLoc			= ""+LocSearchtableModel.getValueAt(i, M00090LocationMstRt.ColLoc+1);			//ロケーション
-							String GetLocName		= ""+LocSearchtableModel.getValueAt(i, M00090LocationMstRt.ColLocName+1);		//ロケーション名
-							String GetType			= ""+LocSearchtableModel.getValueAt(i, M00090LocationMstRt.ColType+1);		//ロケタイプ
+							String GetLoc			= ""+LocSearchtableModel.getValueAt(i, M100LocationMstRt.ColLoc+1);			//ロケーション
+							String GetLocName		= ""+LocSearchtableModel.getValueAt(i, M100LocationMstRt.ColLocName+1);		//ロケーション名
+							String GetType			= ""+LocSearchtableModel.getValueAt(i, M100LocationMstRt.ColType+1);		//ロケタイプ
 							
 							TB_RecomendLoc.setText(GetLoc);	//推奨ロケ
 							TB_LocName.setText(GetLocName);	//ロケーション名
@@ -735,7 +735,7 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 		
 		SearchCLCD.add(ClCd);
 		
-		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 			SearchClGpCD,
 			SearchCLCD,
 			SearchCLName,
@@ -749,7 +749,7 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 			AllSearch);
 		
 		if(1==ClMstRt.length) {
-			ClGp = (String)ClMstRt[0][M00011ClMstRt.ColClGpCD];		//荷主グループCD
+			ClGp = (String)ClMstRt[0][M100ClMstRt.ColClGpCD];		//荷主グループCD
 		}
 		
 		return ClGp;
@@ -786,7 +786,7 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 		if(!"".equals(GetSearchItemCd	)) {SearchItemCd.add(GetSearchItemCd);}
 		if(!"".equals(GetSearchItemName	)) {SearchItemName.add(GetSearchItemName);}
 		
-		Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+		Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchCLItemCd,			//荷主商品コード
@@ -839,7 +839,7 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 		if(!"".equals(GetSearchLocName	)) {SearchLocName.add(GetSearchLocName);}
 		if(!"".equals(GetSearchType		)) {SearchType.add(GetSearchType);}
 		
-		Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+		Object[][] LocationMstRt = M100LocationMstRt.LocationMstRt(
 				SearchClCd,		//荷主コード
 				SearchWhCd,		//倉庫コード
 				SearchLoc,		//ロケーション
@@ -867,7 +867,7 @@ public class WM00121ItemRecomendLocMstRenewAndCreate{
 		SearchClWh.add(TgtWhCd);		//担当倉庫コード
 		SearchItemCd.add(TgtItemCd);	//商品コード
 		
-		Object[][] ItemRecomendLocMstRt	= M00120ItemRecomendLocMstRt.ItemRecomendLocMstRt(
+		Object[][] ItemRecomendLocMstRt	= M100ItemRecomendLocMstRt.ItemRecomendLocMstRt(
 				SearchClCd,			//荷主コード
 				SearchClWh,			//担当倉庫コード
 				SearchClGpCD,		//荷主グループCD

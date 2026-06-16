@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00120ItemRecomendLocMstRt{
+public class M100ItemRecomendLocMstRt{
 	//荷主ー商品ごとの推奨ロケを返却する
 	/*
 	コピペ用
@@ -18,7 +18,7 @@ public class M00120ItemRecomendLocMstRt{
 	boolean LocExactMatch = false;									//ロケーション完全一致
 	boolean AllSearch = false;
 	
-	Object[][] ItemRecomendLocMstRt	= M00120ItemRecomendLocMstRt.ItemRecomendLocMstRt(
+	Object[][] ItemRecomendLocMstRt	= M100ItemRecomendLocMstRt.ItemRecomendLocMstRt(
 			SearchClCd,			//荷主コード
 			SearchClWh,			//担当倉庫コード
 			SearchClGpCD,		//荷主グループCD
@@ -30,22 +30,22 @@ public class M00120ItemRecomendLocMstRt{
 			LocExactMatch,		//ロケーション完全一致
 			AllSearch);
 			
-	String GetClCd			= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClCd];			//荷主コード
-	String GetCLName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColCLName];		//荷主名1
-	String GetClWh			= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
-	String GetClWHName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
-	String GetClGpCD		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
-	String GetClGpName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClGpName];		//グループ名1
-	String GetItemCd		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColItemCd];		//商品コード
-	String GetItemName01	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColItemName01];	//商品名1
-	String GetRecomendLoc	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
-	String GetLocName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColLocName];		//ロケーション名
-	int    GetType			= (int)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColType];				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-	String GetEntryDate		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColEntryDate];		//データ登録日時
-	String GetUpdateDate	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
-	String GetEntryUser		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColEntryUser];		//登録者
-	String GetUpdateUser	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColUpdateUser];	//更新者
-	String GetItemSubRecomendLoc	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColItemSubRecomendLoc];	//商品サブマスタ推奨ロケ
+	String GetClCd			= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClCd];			//荷主コード
+	String GetCLName		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColCLName];		//荷主名1
+	String GetClWh			= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
+	String GetClWHName		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
+	String GetClGpCD		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
+	String GetClGpName		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClGpName];		//グループ名1
+	String GetItemCd		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColItemCd];		//商品コード
+	String GetItemName01	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColItemName01];	//商品名1
+	String GetRecomendLoc	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
+	String GetLocName		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColLocName];		//ロケーション名
+	int    GetType			= (int)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColType];				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	String GetEntryDate		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColEntryDate];		//データ登録日時
+	String GetUpdateDate	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
+	String GetEntryUser		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColEntryUser];		//登録者
+	String GetUpdateUser	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColUpdateUser];	//更新者
+	String GetItemSubRecomendLoc	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColItemSubRecomendLoc];	//商品サブマスタ推奨ロケ
 	*/
 	
 	/*
@@ -56,24 +56,24 @@ public class M00120ItemRecomendLocMstRt{
 	ArrayList<String> ItemCd= new ArrayList<String>();	//商品CD
 	boolean ItemMstRecomendLocExistenceOnly = true;	//商品サブマスタ推奨ロケは対象荷主のロケーションマスタに存在する場合のみ値格納
 	
-	Object[][] ItemRecomendLocFromItemCd = M00120ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
+	Object[][] ItemRecomendLocFromItemCd = M100ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
 	
-	String GetClCd			= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColClCd];			//荷主コード
-	String GetCLName		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColCLName];		//荷主名1
-	String GetClWh			= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
-	String GetClWHName		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
-	String GetClGpCD		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
-	String GetClGpName		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColClGpName];		//グループ名1
-	String GetItemCd		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColItemCd];		//商品コード
-	String GetItemName01	= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColItemName01];	//商品名1
-	String GetRecomendLoc	= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
-	String GetLocName		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColLocName];		//ロケーション名
-	int    GetType			= (int)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-	String GetEntryDate		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColEntryDate];	//データ登録日時
-	String GetUpdateDate	= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
-	String GetEntryUser		= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColEntryUser];	//登録者
-	String GetUpdateUser	= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColUpdateUser];	//更新者
-	String GetItemSubRecomendLoc	= (String)ItemRecomendLocFromItemCd[i][M00120ItemRecomendLocMstRt.ColItemSubRecomendLoc];	//商品サブマスタ推奨ロケ
+	String GetClCd			= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColClCd];			//荷主コード
+	String GetCLName		= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColCLName];		//荷主名1
+	String GetClWh			= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
+	String GetClWHName		= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
+	String GetClGpCD		= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
+	String GetClGpName		= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColClGpName];		//グループ名1
+	String GetItemCd		= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColItemCd];		//商品コード
+	String GetItemName01	= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColItemName01];	//商品名1
+	String GetRecomendLoc	= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
+	String GetLocName		= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColLocName];		//ロケーション名
+	int    GetType			= (int)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	String GetEntryDate		= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColEntryDate];	//データ登録日時
+	String GetUpdateDate	= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
+	String GetEntryUser		= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColEntryUser];	//登録者
+	String GetUpdateUser	= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColUpdateUser];	//更新者
+	String GetItemSubRecomendLoc	= (String)ItemRecomendLocFromItemCd[i][M100ItemRecomendLocMstRt.ColItemSubRecomendLoc];	//商品サブマスタ推奨ロケ
 	
 	*/
 	
@@ -419,7 +419,7 @@ public class M00120ItemRecomendLocMstRt{
 		boolean AllSearch = false;
 		
 		SearchCLCD.add(ClCd);
-		Object[][] ClMstRt = M00011ClMstRt.ClMstRt(
+		Object[][] ClMstRt = M100ClMstRt.ClMstRt(
 			SearchClGpCD,
 			SearchCLCD,
 			SearchCLName,
@@ -432,11 +432,11 @@ public class M00120ItemRecomendLocMstRt{
 			SearchWHCD,
 			AllSearch);
 		if(0<ClMstRt.length) {
-			SetCLName	=(String)ClMstRt[0][M00011ClMstRt.ColCLName01];		//荷主名1
-			SetClWh		=(String)ClMstRt[0][M00011ClMstRt.ColWHCD];			//担当倉庫コード
-			SetClWHName	=(String)ClMstRt[0][M00011ClMstRt.ColWHName];			//担当倉庫名
-			SetClGpCD	=(String)ClMstRt[0][M00011ClMstRt.ColClGpCD];			//荷主グループCD
-			SetClGpName	=(String)ClMstRt[0][M00011ClMstRt.ColClGpName];		//グループ名1
+			SetCLName	=(String)ClMstRt[0][M100ClMstRt.ColCLName01];		//荷主名1
+			SetClWh		=(String)ClMstRt[0][M100ClMstRt.ColWHCD];			//担当倉庫コード
+			SetClWHName	=(String)ClMstRt[0][M100ClMstRt.ColWHName];			//担当倉庫名
+			SetClGpCD	=(String)ClMstRt[0][M100ClMstRt.ColClGpCD];			//荷主グループCD
+			SetClGpName	=(String)ClMstRt[0][M100ClMstRt.ColClGpName];		//グループ名1
 		}
 		
 		ArrayList<String> SearchClCd		= new ArrayList<String>();	//荷主コード
@@ -456,7 +456,7 @@ public class M00120ItemRecomendLocMstRt{
 			SearchItemCd.add(ItemCd.get(i));
 		}
 		
-		Object[][] ItemRecomendLocMstRt	= M00120ItemRecomendLocMstRt.ItemRecomendLocMstRt(
+		Object[][] ItemRecomendLocMstRt	= M100ItemRecomendLocMstRt.ItemRecomendLocMstRt(
 				SearchClCd,			//荷主コード
 				SearchClWh,			//担当倉庫コード
 				SearchClGpCD,		//荷主グループCD
@@ -491,22 +491,22 @@ public class M00120ItemRecomendLocMstRt{
 			boolean UnHitFg = true;
 			
 			for(int i=0;i<ItemRecomendLocMstRt.length;i++) {
-				String GetClCd			= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClCd];			//荷主コード
-				String GetCLName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColCLName];		//荷主名1
-				String GetClWh			= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
-				String GetClWHName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
-				String GetClGpCD		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
-				String GetClGpName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColClGpName];		//グループ名1
-				String GetItemCd		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColItemCd];		//商品コード
-				String GetItemName01	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColItemName01];	//商品名1
-				String GetRecomendLoc	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
-				String GetLocName		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColLocName];		//ロケーション名
-				int  GetType			= (int)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-				String GetEntryDate		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColEntryDate];	//データ登録日時
-				String GetUpdateDate	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
-				String GetEntryUser		= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColEntryUser];	//登録者
-				String GetUpdateUser	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColUpdateUser];	//更新者
-				String GetItemSubRecomendLoc	= (String)ItemRecomendLocMstRt[i][M00120ItemRecomendLocMstRt.ColItemSubRecomendLoc];	//商品サブマスタ推奨ロケ
+				String GetClCd			= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClCd];			//荷主コード
+				String GetCLName		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColCLName];		//荷主名1
+				String GetClWh			= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
+				String GetClWHName		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
+				String GetClGpCD		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
+				String GetClGpName		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColClGpName];		//グループ名1
+				String GetItemCd		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColItemCd];		//商品コード
+				String GetItemName01	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColItemName01];	//商品名1
+				String GetRecomendLoc	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
+				String GetLocName		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColLocName];		//ロケーション名
+				int  GetType			= (int)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				String GetEntryDate		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColEntryDate];	//データ登録日時
+				String GetUpdateDate	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
+				String GetEntryUser		= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColEntryUser];	//登録者
+				String GetUpdateUser	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColUpdateUser];	//更新者
+				String GetItemSubRecomendLoc	= (String)ItemRecomendLocMstRt[i][M100ItemRecomendLocMstRt.ColItemSubRecomendLoc];	//商品サブマスタ推奨ロケ
 				
 				
 				if(GetClCd.equals(ClCd)&&GetItemCd.equals(ItemCd.get(i01))) {
@@ -563,7 +563,7 @@ public class M00120ItemRecomendLocMstRt{
 			
 			SearchClGpCd.add(SetClGpCD);
 			
-			Object[][] ItemMstRt = M00070ItemMstRt.ItemMstRt(
+			Object[][] ItemMstRt = M100ItemMstRt.ItemMstRt(
 					SearchClGpCd,			//荷主グループコード
 					SearchItemCd,			//商品コード
 					SearchCLItemCd,			//荷主商品コード
@@ -588,15 +588,15 @@ public class M00120ItemRecomendLocMstRt{
 			
 			for(int i01=0;i01<RetryRow.size();i01++) {
 				for(int i=0;i<ItemMstRt.length;i++) {
-					String GetItemCd				= (String)ItemMstRt[i][M00070ItemMstRt.ColItemCd];				//商品コード
-					String GetClGpCd				= (String)ItemMstRt[i][M00070ItemMstRt.ColClGpCd];				//荷主グループコード
-					String GetCLGpName01			= (String)ItemMstRt[i][M00070ItemMstRt.ColCLGpName01];		//荷主グループ名1
-					String GetItemName01			= (String)ItemMstRt[i][M00070ItemMstRt.ColItemName01];		//商品名1
-					String GetRecomendLoc			= (String)ItemMstRt[i][M00070ItemMstRt.ColRecomendLoc];		//推奨ロケ
-					String GetEntryDate				= (String)ItemMstRt[i][M00070ItemMstRt.ColEntryDate];			//データ登録日時
-					String GetUpdateDate			= (String)ItemMstRt[i][M00070ItemMstRt.ColUpdateDate];		//データ更新日時
-					String GetEntryUser				= (String)ItemMstRt[i][M00070ItemMstRt.ColEntryUser];			//登録者コード
-					String GetUpdateUser			= (String)ItemMstRt[i][M00070ItemMstRt.ColUpdateUser];		//更新者コード
+					String GetItemCd				= (String)ItemMstRt[i][M100ItemMstRt.ColItemCd];				//商品コード
+					String GetClGpCd				= (String)ItemMstRt[i][M100ItemMstRt.ColClGpCd];				//荷主グループコード
+					String GetCLGpName01			= (String)ItemMstRt[i][M100ItemMstRt.ColCLGpName01];		//荷主グループ名1
+					String GetItemName01			= (String)ItemMstRt[i][M100ItemMstRt.ColItemName01];		//商品名1
+					String GetRecomendLoc			= (String)ItemMstRt[i][M100ItemMstRt.ColRecomendLoc];		//推奨ロケ
+					String GetEntryDate				= (String)ItemMstRt[i][M100ItemMstRt.ColEntryDate];			//データ登録日時
+					String GetUpdateDate			= (String)ItemMstRt[i][M100ItemMstRt.ColUpdateDate];		//データ更新日時
+					String GetEntryUser				= (String)ItemMstRt[i][M100ItemMstRt.ColEntryUser];			//登録者コード
+					String GetUpdateUser			= (String)ItemMstRt[i][M100ItemMstRt.ColUpdateUser];		//更新者コード
 					
 					if(GetItemCd.equals((String)rt[RetryRow.get(i01)][ColItemCd])) {
 						rt[RetryRow.get(i01)][ColClCd]			=ClCd;					//荷主コード
@@ -635,7 +635,7 @@ public class M00120ItemRecomendLocMstRt{
 					}
 				}
 				
-				Object[][] LocationMstRt = M00090LocationMstRt.LocationMstRt(
+				Object[][] LocationMstRt = M100LocationMstRt.LocationMstRt(
 						SearchClCd,		//荷主コード
 						SearchWhCd,		//倉庫コード
 						SearchLoc,		//ロケーション
@@ -648,7 +648,7 @@ public class M00120ItemRecomendLocMstRt{
 					boolean UnHitFg = true;
 					if(!"".equals(CheckLoc)) {
 						for(int i=0;i<LocationMstRt.length;i++) {
-							String GetLoc			= (String)LocationMstRt[i][M00090LocationMstRt.ColLoc];			//ロケーション
+							String GetLoc			= (String)LocationMstRt[i][M100LocationMstRt.ColLoc];			//ロケーション
 							if(CheckLoc.equals(GetLoc)) {
 								UnHitFg = false;
 								i=LocationMstRt.length+1;

@@ -169,7 +169,7 @@ public class WM10010PostMstSearch{
 						SearchAdd.add(GetSearchAdd);
 					}
 					
-					Object[][] PostRt = M10010PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch,PostPerfectMatch);
+					Object[][] PostRt = M100PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch,PostPerfectMatch);
 					
 					for(int i=0;i<PostRt.length;i++) {
 						Object[] SetOb = new Object[6];
@@ -324,7 +324,7 @@ public class WM10010PostMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 		
@@ -338,7 +338,7 @@ public class WM10010PostMstSearch{
 					ArrayList<String> SearchName = new ArrayList<String>();
 					ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 					boolean AllSearch = true;
-					Object[][] MunicipalityRt = M10010PostMstRt.MunicipalityRt(SearchName,SearchMunicipalityCd,AllSearch);
+					Object[][] MunicipalityRt = M100PostMstRt.MunicipalityRt(SearchName,SearchMunicipalityCd,AllSearch);
 					
 					String[][] SetString = {
 									 {"DECD"			,"1","1"}	//納品先コード

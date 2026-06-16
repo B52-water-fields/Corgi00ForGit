@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class M00020UserMstRt{
+public class M100UserMstRt{
 	/*
 	コピペ用
 	ArrayList<String> SearchWHCD = new ArrayList<String>();
@@ -22,7 +22,7 @@ public class M00020UserMstRt{
 	ArrayList<String> SearchDelFg = new ArrayList<String>();
 	boolean AllSearch = false;
 	
-	Object[][] UserMstRt = M00020UserMstRt.UserMstRt(
+	Object[][] UserMstRt = M100UserMstRt.UserMstRt(
 			SearchWHCD,
 			SearchShippingCompanyCd,
 			SearchAuthorityFG,
@@ -39,38 +39,38 @@ public class M00020UserMstRt{
 			SearchDelFg,
 			AllSearch);
 	
-	String GetWHCD					= (String)UserMstRt[i][M00020UserMstRt.ColWHCD];					//倉庫コード
-	String GetShippingCompanyCd		= (String)UserMstRt[i][M00020UserMstRt.ColShippingCompanyCd];		//運送会社CD
-	String GetShippingCompanyName01	= (String)UserMstRt[i][M00020UserMstRt.ColShippingCompanyName01];	//運送会社名
-	String GetUserCd				= (String)UserMstRt[i][M00020UserMstRt.ColUserCd];					//ユーザーCD
-	String GetPassWord				= (String)UserMstRt[i][M00020UserMstRt.ColPassWord];				//パスワード
-	int AuthorityFG					= (int)UserMstRt[i][M00020UserMstRt.ColAuthorityFG];				//権限区分
-	String GetCarCd					= (String)UserMstRt[i][M00020UserMstRt.ColCarCd];					//標準車輛CD
-	String GetCarName01				= (String)UserMstRt[i][M00020UserMstRt.ColCarName01];				//車両名称01
-	String GetCarName02				= (String)UserMstRt[i][M00020UserMstRt.ColCarName02];				//車両名称02
-	String GetCarName03				= (String)UserMstRt[i][M00020UserMstRt.ColCarName03];				//車両名称03
-	String GetUserName01			= (String)UserMstRt[i][M00020UserMstRt.ColUserName01];				//ユーザー名1
-	String GetUserName02			= (String)UserMstRt[i][M00020UserMstRt.ColUserName02];				//ユーザー名2
-	String GetUserName03			= (String)UserMstRt[i][M00020UserMstRt.ColUserName03];				//ユーザー名3
-	String GetPost					= (String)UserMstRt[i][M00020UserMstRt.ColPost];					//郵便番号
-	String GetAdd01					= (String)UserMstRt[i][M00020UserMstRt.ColAdd01];					//住所1
-	String GetAdd02					= (String)UserMstRt[i][M00020UserMstRt.ColAdd02];					//住所2
-	String GetAdd03					= (String)UserMstRt[i][M00020UserMstRt.ColAdd03];					//住所3
-	String GetTel					= (String)UserMstRt[i][M00020UserMstRt.ColTel];						//電話番号
-	String GetFax					= (String)UserMstRt[i][M00020UserMstRt.ColFax];						//FAX
-	String GetMail					= (String)UserMstRt[i][M00020UserMstRt.ColMail];					//メールアドレス
-	String GetCom01					= (String)UserMstRt[i][M00020UserMstRt.ColCom01];					//コメント1
-	String GetCom02					= (String)UserMstRt[i][M00020UserMstRt.ColCom02];					//コメント2
-	String GetCom03					= (String)UserMstRt[i][M00020UserMstRt.ColCom03];					//コメント3
-	String GetEntryDate				= (String)UserMstRt[i][M00020UserMstRt.ColEntryDate];				//データ登録日時
-	String GetUpdateDate			= (String)UserMstRt[i][M00020UserMstRt.ColUpdateDate];				//データ更新日時
-	String GetEntryUser				= (String)UserMstRt[i][M00020UserMstRt.ColEntryUser];				//登録者コード
-	String GetUpdateUser			= (String)UserMstRt[i][M00020UserMstRt.ColUpdateUser];				//更新者コード
-	String GetPTMSCD				= (String)UserMstRt[i][M00020UserMstRt.ColPTMSCD];					//基幹システムユーザーコード
-	int GetDelFg					= (int)UserMstRt[i][M00020UserMstRt.ColDelFg];						//削除区分
-	String GetWHName				= (String)UserMstRt[i][M00020UserMstRt.ColWHName];					//倉庫名
-	String GetMainClient			= (String)UserMstRt[i][M00020UserMstRt.ColMainClient];				//主要担当荷主CD
-	String GetCLName01				= (String)UserMstRt[i][M00020UserMstRt.ColCLName01];				//主要担当荷主名
+	String GetWHCD					= (String)UserMstRt[i][M100UserMstRt.ColWHCD];					//倉庫コード
+	String GetShippingCompanyCd		= (String)UserMstRt[i][M100UserMstRt.ColShippingCompanyCd];		//運送会社CD
+	String GetShippingCompanyName01	= (String)UserMstRt[i][M100UserMstRt.ColShippingCompanyName01];	//運送会社名
+	String GetUserCd				= (String)UserMstRt[i][M100UserMstRt.ColUserCd];					//ユーザーCD
+	String GetPassWord				= (String)UserMstRt[i][M100UserMstRt.ColPassWord];				//パスワード
+	int AuthorityFG					= (int)UserMstRt[i][M100UserMstRt.ColAuthorityFG];				//権限区分
+	String GetCarCd					= (String)UserMstRt[i][M100UserMstRt.ColCarCd];					//標準車輛CD
+	String GetCarName01				= (String)UserMstRt[i][M100UserMstRt.ColCarName01];				//車両名称01
+	String GetCarName02				= (String)UserMstRt[i][M100UserMstRt.ColCarName02];				//車両名称02
+	String GetCarName03				= (String)UserMstRt[i][M100UserMstRt.ColCarName03];				//車両名称03
+	String GetUserName01			= (String)UserMstRt[i][M100UserMstRt.ColUserName01];				//ユーザー名1
+	String GetUserName02			= (String)UserMstRt[i][M100UserMstRt.ColUserName02];				//ユーザー名2
+	String GetUserName03			= (String)UserMstRt[i][M100UserMstRt.ColUserName03];				//ユーザー名3
+	String GetPost					= (String)UserMstRt[i][M100UserMstRt.ColPost];					//郵便番号
+	String GetAdd01					= (String)UserMstRt[i][M100UserMstRt.ColAdd01];					//住所1
+	String GetAdd02					= (String)UserMstRt[i][M100UserMstRt.ColAdd02];					//住所2
+	String GetAdd03					= (String)UserMstRt[i][M100UserMstRt.ColAdd03];					//住所3
+	String GetTel					= (String)UserMstRt[i][M100UserMstRt.ColTel];						//電話番号
+	String GetFax					= (String)UserMstRt[i][M100UserMstRt.ColFax];						//FAX
+	String GetMail					= (String)UserMstRt[i][M100UserMstRt.ColMail];					//メールアドレス
+	String GetCom01					= (String)UserMstRt[i][M100UserMstRt.ColCom01];					//コメント1
+	String GetCom02					= (String)UserMstRt[i][M100UserMstRt.ColCom02];					//コメント2
+	String GetCom03					= (String)UserMstRt[i][M100UserMstRt.ColCom03];					//コメント3
+	String GetEntryDate				= (String)UserMstRt[i][M100UserMstRt.ColEntryDate];				//データ登録日時
+	String GetUpdateDate			= (String)UserMstRt[i][M100UserMstRt.ColUpdateDate];				//データ更新日時
+	String GetEntryUser				= (String)UserMstRt[i][M100UserMstRt.ColEntryUser];				//登録者コード
+	String GetUpdateUser			= (String)UserMstRt[i][M100UserMstRt.ColUpdateUser];				//更新者コード
+	String GetPTMSCD				= (String)UserMstRt[i][M100UserMstRt.ColPTMSCD];					//基幹システムユーザーコード
+	int GetDelFg					= (int)UserMstRt[i][M100UserMstRt.ColDelFg];						//削除区分
+	String GetWHName				= (String)UserMstRt[i][M100UserMstRt.ColWHName];					//倉庫名
+	String GetMainClient			= (String)UserMstRt[i][M100UserMstRt.ColMainClient];				//主要担当荷主CD
+	String GetCLName01				= (String)UserMstRt[i][M100UserMstRt.ColCLName01];				//主要担当荷主名
 	
 	*/
 	
@@ -565,8 +565,8 @@ public class M00020UserMstRt{
     	int UserNo = 0;
     	
     	for(int i=0;i<UserMstRt.length;i++) {
-    		if(4<(""+UserMstRt[i][M00020UserMstRt.ColUserCd]).length() && "ATUS".equals((""+UserMstRt[i][M00020UserMstRt.ColUserCd]).substring(0,4))) {
-    			String WST = B100TextControl.num_only_String(""+UserMstRt[i][M00020UserMstRt.ColUserCd]);
+    		if(4<(""+UserMstRt[i][M100UserMstRt.ColUserCd]).length() && "ATUS".equals((""+UserMstRt[i][M100UserMstRt.ColUserCd]).substring(0,4))) {
+    			String WST = B100TextControl.num_only_String(""+UserMstRt[i][M100UserMstRt.ColUserCd]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(UserNo<wint) {

@@ -118,7 +118,7 @@ public class WM00120ItemRecomendLocMstSearch{
 		main_fm.add(PN_Search);
 		
 		
-		Object[][] RtItemRecomendLocMstRt = M00120ItemRecomendLocMstRt.RtItemRecomendLocMstRt();
+		Object[][] RtItemRecomendLocMstRt = M100ItemRecomendLocMstRt.RtItemRecomendLocMstRt();
 		
 		String[] columnNames01 = new String[RtItemRecomendLocMstRt.length+1];
 		
@@ -245,7 +245,7 @@ public class WM00120ItemRecomendLocMstSearch{
 					if(!"".equals(GetSearchLocName		)){SearchLocName.add(GetSearchLocName);}				//ロケーション名
 					if(!"".equals(GetSearchType			)){SearchType.add(Integer.parseInt(GetSearchType));}	//ロケタイプ
 					
-					Object[][] ItemRecomendLocMstRt	= M00120ItemRecomendLocMstRt.ItemRecomendLocMstRt(
+					Object[][] ItemRecomendLocMstRt	= M100ItemRecomendLocMstRt.ItemRecomendLocMstRt(
 							SearchClCd,			//荷主コード
 							SearchClWh,			//担当倉庫コード
 							SearchClGpCD,		//荷主グループCD
@@ -288,9 +288,9 @@ public class WM00120ItemRecomendLocMstSearch{
 					int RowCount = tableModel_ms01.getRowCount();
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtClCd		= ""+tableModel_ms01.getValueAt(i, M00120ItemRecomendLocMstRt.ColClCd+1);
-							TgtWhCd		= ""+tableModel_ms01.getValueAt(i, M00120ItemRecomendLocMstRt.ColClWh+1);
-							TgtItemCd	= ""+tableModel_ms01.getValueAt(i, M00120ItemRecomendLocMstRt.ColItemCd+1);
+							TgtClCd		= ""+tableModel_ms01.getValueAt(i, M100ItemRecomendLocMstRt.ColClCd+1);
+							TgtWhCd		= ""+tableModel_ms01.getValueAt(i, M100ItemRecomendLocMstRt.ColClWh+1);
+							TgtItemCd	= ""+tableModel_ms01.getValueAt(i, M100ItemRecomendLocMstRt.ColItemCd+1);
 							
 							KickFg = true;
 						}
@@ -403,7 +403,7 @@ public class WM00120ItemRecomendLocMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}

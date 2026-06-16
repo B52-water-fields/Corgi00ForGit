@@ -36,8 +36,8 @@ public class WM00060DeliveryMstSearch{
 		ArrayList<String> SearchName = new ArrayList<String>();
 		ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
 		boolean AllSearch = true;
-		Object[][] PrefecuturesRt = M10010PostMstRt.PrefecuturesRt();
-		Object[][] MunicipalityRt = M10010PostMstRt.MunicipalityRt(SearchName,SearchMunicipalityCd,AllSearch);
+		Object[][] PrefecuturesRt = M100PostMstRt.PrefecuturesRt();
+		Object[][] MunicipalityRt = M100PostMstRt.MunicipalityRt(SearchName,SearchMunicipalityCd,AllSearch);
 		
 		PrefecturesCdList = new String[3][PrefecuturesRt.length+1];
 		MunicipalityCd = new String[3][MunicipalityRt.length+1];
@@ -164,7 +164,7 @@ public class WM00060DeliveryMstSearch{
 		JButton SearchBtn = B100FrameParts.BtnSet(600,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingDeliveryMstRt = M00040DeliveryMstRt.RtSettingDeliveryMstRt();
+		Object[][] RtSettingDeliveryMstRt = M100DeliveryMstRt.RtSettingDeliveryMstRt();
 		
 		String[] columnNames01 = new String[RtSettingDeliveryMstRt.length+1];
 		
@@ -325,7 +325,7 @@ public class WM00060DeliveryMstSearch{
 					if(!"".equals(GetSearchMunicipalityCd)){SearchMunicipalityCd.add(GetSearchMunicipalityCd);}
 					if(!"".equals(GetSearchDelFg)){SearchDelFg.add(GetSearchDelFg);}
 					
-					Object[][] DeliveryMstRt = M00040DeliveryMstRt.DeliveryMstRt(
+					Object[][] DeliveryMstRt = M100DeliveryMstRt.DeliveryMstRt(
 							SearchDECD,				//検索条件届先CD
 							SearchDepartmentCd,		//検索条件届先部署CD
 							SearchDEName,			//検索条件届先名
@@ -475,7 +475,7 @@ public class WM00060DeliveryMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 		

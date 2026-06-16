@@ -83,7 +83,7 @@ public class WM00035CarMstSearch{
 		PN_Search.add(SearchBtn);
 		
 		
-		Object[][] RtSettingCarMstRt = M00031CarMstRt.RtSettingCarMstRt();
+		Object[][] RtSettingCarMstRt = M100CarMstRt.RtSettingCarMstRt();
 		
 		String[] columnNames01 = new String[RtSettingCarMstRt.length+1];
 		
@@ -195,7 +195,7 @@ public class WM00035CarMstSearch{
 					if(!"".equals(GetSearchCarName)){SearchCarName.add(GetSearchCarName);}
 					if(!"".equals(GetSearchDelFg)){SearchDelFg.add(GetSearchDelFg);}
 					
-					Object[][] CarMstRt = M00031CarMstRt.CarMstRt(
+					Object[][] CarMstRt = M100CarMstRt.CarMstRt(
 									SearchWHCD,
 									SearchShippingCompanyCd,
 									SearchCarCd,
@@ -340,7 +340,7 @@ public class WM00035CarMstSearch{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				W00020MstMain.MstMain(0, 0);
+				A00001MstMain.MstMain(0, 0);
 			}
 		});
 	}
