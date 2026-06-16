@@ -24,184 +24,184 @@ public class WM00081ItemMstRenewAndCreate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,1400,800,"Corgi00商品マスタ登録・修正","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,1400,800,"Corgi00商品マスタ登録・修正","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
 		//更新モードから切替えて商品コード入力可能にするためのボタン
-		JButton NewEntryBtn = B00110FrameParts.BtnSet(220, 55, 80,20,"モード切替",9);	//新規登録
+		JButton NewEntryBtn = B100FrameParts.BtnSet(220, 55, 80,20,"モード切替",9);	//新規登録
 		
-		JLabel LB_ClGpCd				= B00110FrameParts.JLabelSet(  10, 30,100,20,"荷主グループコード:"		,10,1);
-		JLabel LB_ItemCd				= B00110FrameParts.JLabelSet(  10, 55,100,20,"商品コード:"				,10,1);
-		JLabel LB_CLItemCd				= B00110FrameParts.JLabelSet(  10, 80,100,20,"荷主商品コード:"			,10,1);
-		JLabel LB_ItemName01			= B00110FrameParts.JLabelSet(  10,105,100,20,"商品名1:"				,10,1);
-		JLabel LB_ItemName02			= B00110FrameParts.JLabelSet(  10,130,100,20,"商品名2:"				,10,1);
-		JLabel LB_ItemName03			= B00110FrameParts.JLabelSet(  10,155,100,20,"商品名3:"				,10,1);
-		final JComboBox   TB_ClGpCd		= B00110FrameParts.JComboBoxSet(  110, 30,200,20,B00100DefaultVariable.ClGpList[0],11);	//荷主グループコード
-		final JTextField  TB_ItemCd		= B00110FrameParts.JTextFieldSet( 110, 55,100,20,"",11,0);			//商品コード
-		final JTextField  TB_CLItemCd	= B00110FrameParts.JTextFieldSet( 110, 80,100,20,"",11,0);			//荷主商品コード
-		final JTextField  TB_ItemName01	= B00110FrameParts.JTextFieldSet( 110,105,200,20,"",11,0);			//商品名1
-		final JTextField  TB_ItemName02	= B00110FrameParts.JTextFieldSet( 110,130,200,20,"",11,0);			//商品名2
-		final JTextField  TB_ItemName03	= B00110FrameParts.JTextFieldSet( 110,155,200,20,"",11,0);			//商品名3
-		
-		
-		JLabel LB_DeliveryTypeCd01		= B00110FrameParts.JLabelSet( 310, 30,100,20,"運送タイプコード01:"		,10,1);
-		JLabel LB_DeliveryTypeCd02		= B00110FrameParts.JLabelSet( 310, 55,100,20,"運送タイプコード02:"		,10,1);
-		JLabel LB_DeliveryTypeCd03		= B00110FrameParts.JLabelSet( 310, 80,100,20,"運送タイプコード03:"		,10,1);
-		JLabel LB_DeliveryTypeCd04		= B00110FrameParts.JLabelSet( 310,105,100,20,"運送タイプコード04:"		,10,1);
-		JLabel LB_DeliveryTypeCd05		= B00110FrameParts.JLabelSet( 310,130,100,20,"運送タイプコード05:"		,10,1);
-		JLabel LB_PTMSCD				= B00110FrameParts.JLabelSet( 310,155,100,20,"基幹SYS商品コード:"		,10,1);
-		final JComboBox   TB_DeliveryTypeCd01	= B00110FrameParts.JComboBoxSet(  410, 30,200,20,B00100DefaultVariable.DeliveryType01[0],11);	//運送タイプコード01
-		final JComboBox   TB_DeliveryTypeCd02	= B00110FrameParts.JComboBoxSet(  410, 55,200,20,B00100DefaultVariable.DeliveryType02[0],11);	//運送タイプコード02
-		final JComboBox   TB_DeliveryTypeCd03	= B00110FrameParts.JComboBoxSet(  410, 80,200,20,B00100DefaultVariable.DeliveryType03[0],11);	//運送タイプコード03
-		final JComboBox   TB_DeliveryTypeCd04	= B00110FrameParts.JComboBoxSet(  410,105,200,20,B00100DefaultVariable.DeliveryType04[0],11);	//運送タイプコード04
-		final JComboBox   TB_DeliveryTypeCd05	= B00110FrameParts.JComboBoxSet(  410,130,200,20,B00100DefaultVariable.DeliveryType05[0],11);	//運送タイプコード05
-		final JTextField  TB_PTMSCD				= B00110FrameParts.JTextFieldSet( 410,155,100,20,"",11,0);										//基幹SYS商品コード
+		JLabel LB_ClGpCd				= B100FrameParts.JLabelSet(  10, 30,100,20,"荷主グループコード:"		,10,1);
+		JLabel LB_ItemCd				= B100FrameParts.JLabelSet(  10, 55,100,20,"商品コード:"				,10,1);
+		JLabel LB_CLItemCd				= B100FrameParts.JLabelSet(  10, 80,100,20,"荷主商品コード:"			,10,1);
+		JLabel LB_ItemName01			= B100FrameParts.JLabelSet(  10,105,100,20,"商品名1:"				,10,1);
+		JLabel LB_ItemName02			= B100FrameParts.JLabelSet(  10,130,100,20,"商品名2:"				,10,1);
+		JLabel LB_ItemName03			= B100FrameParts.JLabelSet(  10,155,100,20,"商品名3:"				,10,1);
+		final JComboBox   TB_ClGpCd		= B100FrameParts.JComboBoxSet(  110, 30,200,20,B100DefaultVariable.ClGpList[0],11);	//荷主グループコード
+		final JTextField  TB_ItemCd		= B100FrameParts.JTextFieldSet( 110, 55,100,20,"",11,0);			//商品コード
+		final JTextField  TB_CLItemCd	= B100FrameParts.JTextFieldSet( 110, 80,100,20,"",11,0);			//荷主商品コード
+		final JTextField  TB_ItemName01	= B100FrameParts.JTextFieldSet( 110,105,200,20,"",11,0);			//商品名1
+		final JTextField  TB_ItemName02	= B100FrameParts.JTextFieldSet( 110,130,200,20,"",11,0);			//商品名2
+		final JTextField  TB_ItemName03	= B100FrameParts.JTextFieldSet( 110,155,200,20,"",11,0);			//商品名3
 		
 		
-		JLabel LB_RecomendLoc			= B00110FrameParts.JLabelSet( 610, 25,100,20,"推奨ロケ:"				,10,1);
-		JLabel LB_ItemMDNo				= B00110FrameParts.JLabelSet( 610, 50,100,20,"商品型番:"				,10,1);
-		JLabel LB_CategoryCd			= B00110FrameParts.JLabelSet( 610, 75,100,20,"商品カテゴリCD:"			,10,1);
-		JLabel LB_CategoryName			= B00110FrameParts.JLabelSet( 610,100,100,20,"商品カテゴリ名:"			,10,1);
-		JLabel LB_DelFg					= B00110FrameParts.JLabelSet( 610,150,100,20,"削除フラグ:"				,10,1);
-		final JTextField  TB_RecomendLoc		= B00110FrameParts.JTextFieldSet( 710, 25,100,20,"",11,0);			//推奨ロケ
-		final JTextField  TB_ItemMDNo			= B00110FrameParts.JTextFieldSet( 710, 50,100,20,"",11,0);			//商品型番
-		final JTextField  TB_CategoryCd			= B00110FrameParts.JTextFieldSet( 710, 75,100,20,"",11,0);			//商品カテゴリCD
-		final JTextField  TB_CategoryName		= B00110FrameParts.JTextFieldSet( 710,100,100,20,"",11,0);			//商品カテゴリ名
-		final JComboBox  TB_DelFg		= B00110FrameParts.JComboBoxSet(  		710,150,100,20,B00100DefaultVariable.DelList[0],11);	//削除フラグ
+		JLabel LB_DeliveryTypeCd01		= B100FrameParts.JLabelSet( 310, 30,100,20,"運送タイプコード01:"		,10,1);
+		JLabel LB_DeliveryTypeCd02		= B100FrameParts.JLabelSet( 310, 55,100,20,"運送タイプコード02:"		,10,1);
+		JLabel LB_DeliveryTypeCd03		= B100FrameParts.JLabelSet( 310, 80,100,20,"運送タイプコード03:"		,10,1);
+		JLabel LB_DeliveryTypeCd04		= B100FrameParts.JLabelSet( 310,105,100,20,"運送タイプコード04:"		,10,1);
+		JLabel LB_DeliveryTypeCd05		= B100FrameParts.JLabelSet( 310,130,100,20,"運送タイプコード05:"		,10,1);
+		JLabel LB_PTMSCD				= B100FrameParts.JLabelSet( 310,155,100,20,"基幹SYS商品コード:"		,10,1);
+		final JComboBox   TB_DeliveryTypeCd01	= B100FrameParts.JComboBoxSet(  410, 30,200,20,B100DefaultVariable.DeliveryType01[0],11);	//運送タイプコード01
+		final JComboBox   TB_DeliveryTypeCd02	= B100FrameParts.JComboBoxSet(  410, 55,200,20,B100DefaultVariable.DeliveryType02[0],11);	//運送タイプコード02
+		final JComboBox   TB_DeliveryTypeCd03	= B100FrameParts.JComboBoxSet(  410, 80,200,20,B100DefaultVariable.DeliveryType03[0],11);	//運送タイプコード03
+		final JComboBox   TB_DeliveryTypeCd04	= B100FrameParts.JComboBoxSet(  410,105,200,20,B100DefaultVariable.DeliveryType04[0],11);	//運送タイプコード04
+		final JComboBox   TB_DeliveryTypeCd05	= B100FrameParts.JComboBoxSet(  410,130,200,20,B100DefaultVariable.DeliveryType05[0],11);	//運送タイプコード05
+		final JTextField  TB_PTMSCD				= B100FrameParts.JTextFieldSet( 410,155,100,20,"",11,0);										//基幹SYS商品コード
 		
-		JLabel LB_ItemColorCd			= B00110FrameParts.JLabelSet( 910, 25,100,20,"商品カラーコード:"		,10,1);
-		JLabel LB_ItemColorName			= B00110FrameParts.JLabelSet( 910, 50,100,20,"商品カラー名:"			,10,1);
-		JLabel LB_ItemSizeCd			= B00110FrameParts.JLabelSet( 910, 75,100,20,"商品サイズコード:"		,10,1);
-		JLabel LB_ItemSizeName			= B00110FrameParts.JLabelSet( 910,100,100,20,"商品サイズ名:"			,10,1);
-		JLabel LB_TildFG				= B00110FrameParts.JLabelSet( 910,125,100,20,"温度区分:"				,10,1);
-		JLabel LB_ExpDateHowLong		= B00110FrameParts.JLabelSet( 910,150,100,20,"賞味期限日数:"			,10,1);
-		final JTextField  TB_ItemColorCd			= B00110FrameParts.JTextFieldSet(1010, 25,100,20,"",11,0);			//商品カラーコード
-		final JTextField  TB_ItemColorName			= B00110FrameParts.JTextFieldSet(1010, 50,100,20,"",11,0);			//商品カラー名
-		final JTextField  TB_ItemSizeCd				= B00110FrameParts.JTextFieldSet(1010, 75,100,20,"",11,0);			//商品サイズコード
-		final JTextField  TB_ItemSizeName			= B00110FrameParts.JTextFieldSet(1010,100,100,20,"",11,0);			//商品サイズ名
-		final JComboBox   TB_TildFG					= B00110FrameParts.JComboBoxSet( 1010,125,100,20,B00100DefaultVariable.TildFG[0],11);	//温度区分
-		final JFormattedTextField TB_ExpDateHowLong	= B00110FrameParts.JFormattedTextFieldSet(	1010,150,100,20,"0",11,1,"#,###");			//賞味期限日数
+		
+		JLabel LB_RecomendLoc			= B100FrameParts.JLabelSet( 610, 25,100,20,"推奨ロケ:"				,10,1);
+		JLabel LB_ItemMDNo				= B100FrameParts.JLabelSet( 610, 50,100,20,"商品型番:"				,10,1);
+		JLabel LB_CategoryCd			= B100FrameParts.JLabelSet( 610, 75,100,20,"商品カテゴリCD:"			,10,1);
+		JLabel LB_CategoryName			= B100FrameParts.JLabelSet( 610,100,100,20,"商品カテゴリ名:"			,10,1);
+		JLabel LB_DelFg					= B100FrameParts.JLabelSet( 610,150,100,20,"削除フラグ:"				,10,1);
+		final JTextField  TB_RecomendLoc		= B100FrameParts.JTextFieldSet( 710, 25,100,20,"",11,0);			//推奨ロケ
+		final JTextField  TB_ItemMDNo			= B100FrameParts.JTextFieldSet( 710, 50,100,20,"",11,0);			//商品型番
+		final JTextField  TB_CategoryCd			= B100FrameParts.JTextFieldSet( 710, 75,100,20,"",11,0);			//商品カテゴリCD
+		final JTextField  TB_CategoryName		= B100FrameParts.JTextFieldSet( 710,100,100,20,"",11,0);			//商品カテゴリ名
+		final JComboBox  TB_DelFg		= B100FrameParts.JComboBoxSet(  		710,150,100,20,B100DefaultVariable.DelList[0],11);	//削除フラグ
+		
+		JLabel LB_ItemColorCd			= B100FrameParts.JLabelSet( 910, 25,100,20,"商品カラーコード:"		,10,1);
+		JLabel LB_ItemColorName			= B100FrameParts.JLabelSet( 910, 50,100,20,"商品カラー名:"			,10,1);
+		JLabel LB_ItemSizeCd			= B100FrameParts.JLabelSet( 910, 75,100,20,"商品サイズコード:"		,10,1);
+		JLabel LB_ItemSizeName			= B100FrameParts.JLabelSet( 910,100,100,20,"商品サイズ名:"			,10,1);
+		JLabel LB_TildFG				= B100FrameParts.JLabelSet( 910,125,100,20,"温度区分:"				,10,1);
+		JLabel LB_ExpDateHowLong		= B100FrameParts.JLabelSet( 910,150,100,20,"賞味期限日数:"			,10,1);
+		final JTextField  TB_ItemColorCd			= B100FrameParts.JTextFieldSet(1010, 25,100,20,"",11,0);			//商品カラーコード
+		final JTextField  TB_ItemColorName			= B100FrameParts.JTextFieldSet(1010, 50,100,20,"",11,0);			//商品カラー名
+		final JTextField  TB_ItemSizeCd				= B100FrameParts.JTextFieldSet(1010, 75,100,20,"",11,0);			//商品サイズコード
+		final JTextField  TB_ItemSizeName			= B100FrameParts.JTextFieldSet(1010,100,100,20,"",11,0);			//商品サイズ名
+		final JComboBox   TB_TildFG					= B100FrameParts.JComboBoxSet( 1010,125,100,20,B100DefaultVariable.TildFG[0],11);	//温度区分
+		final JFormattedTextField TB_ExpDateHowLong	= B100FrameParts.JFormattedTextFieldSet(	1010,150,100,20,"0",11,1,"#,###");			//賞味期限日数
 		
 
-		JLabel LB_CtQty					= B00110FrameParts.JLabelSet(  10,230,100,20,"カートン入数:"			,10,1);
-		JLabel LB_CsQty					= B00110FrameParts.JLabelSet(  10,255,100,20,"ケース入数:"				,10,1);
-		JLabel LB_PlQty					= B00110FrameParts.JLabelSet(  10,280,100,20,"パレット入数:"			,10,1);
-		final JFormattedTextField TB_CtQty	= B00110FrameParts.JFormattedTextFieldSet(110,230,100,20,"0",11,1,"#,###");	//カートン入数
-		final JFormattedTextField TB_CsQty	= B00110FrameParts.JFormattedTextFieldSet(110,255,100,20,"0",11,1,"#,###");	//ケース入数
-		final JFormattedTextField TB_PlQty	= B00110FrameParts.JFormattedTextFieldSet(110,280,100,20,"0",11,1,"#,###");	//パレット入数
+		JLabel LB_CtQty					= B100FrameParts.JLabelSet(  10,230,100,20,"カートン入数:"			,10,1);
+		JLabel LB_CsQty					= B100FrameParts.JLabelSet(  10,255,100,20,"ケース入数:"				,10,1);
+		JLabel LB_PlQty					= B100FrameParts.JLabelSet(  10,280,100,20,"パレット入数:"			,10,1);
+		final JFormattedTextField TB_CtQty	= B100FrameParts.JFormattedTextFieldSet(110,230,100,20,"0",11,1,"#,###");	//カートン入数
+		final JFormattedTextField TB_CsQty	= B100FrameParts.JFormattedTextFieldSet(110,255,100,20,"0",11,1,"#,###");	//ケース入数
+		final JFormattedTextField TB_PlQty	= B100FrameParts.JFormattedTextFieldSet(110,280,100,20,"0",11,1,"#,###");	//パレット入数
 		
-		JLabel LB_ItemWeight			= B00110FrameParts.JLabelSet( 210,205,100,20,"商品重量:"				,10,1);
-		JLabel LB_CtWeight				= B00110FrameParts.JLabelSet( 210,230,100,20,"カートン重量:"			,10,1);
-		JLabel LB_CsWeight				= B00110FrameParts.JLabelSet( 210,255,100,20,"ケース重量:"				,10,1);
-		JLabel LB_PlWeight				= B00110FrameParts.JLabelSet( 210,280,100,20,"パレット重量:"			,10,1);
-		final JFormattedTextField TB_ItemWeight	= B00110FrameParts.JFormattedTextFieldSet(310,205,100,20,"0",11,1,"#,###.##");	//商品重量
-		final JFormattedTextField TB_CtWeight	= B00110FrameParts.JFormattedTextFieldSet(310,230,100,20,"0",11,1,"#,###.##");	//カートン重量
-		final JFormattedTextField TB_CsWeight	= B00110FrameParts.JFormattedTextFieldSet(310,255,100,20,"0",11,1,"#,###.##");	//ケース重量
-		final JFormattedTextField TB_PlWeight	= B00110FrameParts.JFormattedTextFieldSet(310,280,100,20,"0",11,1,"#,###.##");	//パレット重量
+		JLabel LB_ItemWeight			= B100FrameParts.JLabelSet( 210,205,100,20,"商品重量:"				,10,1);
+		JLabel LB_CtWeight				= B100FrameParts.JLabelSet( 210,230,100,20,"カートン重量:"			,10,1);
+		JLabel LB_CsWeight				= B100FrameParts.JLabelSet( 210,255,100,20,"ケース重量:"				,10,1);
+		JLabel LB_PlWeight				= B100FrameParts.JLabelSet( 210,280,100,20,"パレット重量:"			,10,1);
+		final JFormattedTextField TB_ItemWeight	= B100FrameParts.JFormattedTextFieldSet(310,205,100,20,"0",11,1,"#,###.##");	//商品重量
+		final JFormattedTextField TB_CtWeight	= B100FrameParts.JFormattedTextFieldSet(310,230,100,20,"0",11,1,"#,###.##");	//カートン重量
+		final JFormattedTextField TB_CsWeight	= B100FrameParts.JFormattedTextFieldSet(310,255,100,20,"0",11,1,"#,###.##");	//ケース重量
+		final JFormattedTextField TB_PlWeight	= B100FrameParts.JFormattedTextFieldSet(310,280,100,20,"0",11,1,"#,###.##");	//パレット重量
 
-		JLabel LB_ItemSize				= B00110FrameParts.JLabelSet( 410,205,100,20,"商品サイズ:"				,10,1);
-		JLabel LB_CtSize				= B00110FrameParts.JLabelSet( 410,230,100,20,"カートンサイズ:"			,10,1);
-		JLabel LB_CsSize				= B00110FrameParts.JLabelSet( 410,255,100,20,"ケースサイズ:"			,10,1);
-		JLabel LB_PlSize				= B00110FrameParts.JLabelSet( 410,280,100,20,"パレットサイズ:"			,10,1);
-		final JFormattedTextField TB_ItemSize	= B00110FrameParts.JFormattedTextFieldSet(510,205,100,20,"0",11,1,"#,###.##");	//商品サイズ
-		final JFormattedTextField TB_CtSize		= B00110FrameParts.JFormattedTextFieldSet(510,230,100,20,"0",11,1,"#,###.##");	//カートンサイズ
-		final JFormattedTextField TB_CsSize		= B00110FrameParts.JFormattedTextFieldSet(510,255,100,20,"0",11,1,"#,###.##");	//ケースサイズ
-		final JFormattedTextField TB_PlSize		= B00110FrameParts.JFormattedTextFieldSet(510,280,100,20,"0",11,1,"#,###.##");	//パレットサイズ
+		JLabel LB_ItemSize				= B100FrameParts.JLabelSet( 410,205,100,20,"商品サイズ:"				,10,1);
+		JLabel LB_CtSize				= B100FrameParts.JLabelSet( 410,230,100,20,"カートンサイズ:"			,10,1);
+		JLabel LB_CsSize				= B100FrameParts.JLabelSet( 410,255,100,20,"ケースサイズ:"			,10,1);
+		JLabel LB_PlSize				= B100FrameParts.JLabelSet( 410,280,100,20,"パレットサイズ:"			,10,1);
+		final JFormattedTextField TB_ItemSize	= B100FrameParts.JFormattedTextFieldSet(510,205,100,20,"0",11,1,"#,###.##");	//商品サイズ
+		final JFormattedTextField TB_CtSize		= B100FrameParts.JFormattedTextFieldSet(510,230,100,20,"0",11,1,"#,###.##");	//カートンサイズ
+		final JFormattedTextField TB_CsSize		= B100FrameParts.JFormattedTextFieldSet(510,255,100,20,"0",11,1,"#,###.##");	//ケースサイズ
+		final JFormattedTextField TB_PlSize		= B100FrameParts.JFormattedTextFieldSet(510,280,100,20,"0",11,1,"#,###.##");	//パレットサイズ
 		
-		JLabel LB_CtName				= B00110FrameParts.JLabelSet( 610,230,100,20,"カートン商品名称:"		,10,1);
-		JLabel LB_CsName				= B00110FrameParts.JLabelSet( 610,255,100,20,"ケース商品名称:"			,10,1);
-		JLabel LB_PlName				= B00110FrameParts.JLabelSet( 610,280,100,20,"パレット商品名称:"		,10,1);
-		final JTextField  TB_CtName		= B00110FrameParts.JTextFieldSet( 710,230,200,20,"",11,0);	//カートン商品名称
-		final JTextField  TB_CsName		= B00110FrameParts.JTextFieldSet( 710,255,200,20,"",11,0);	//ケース商品名称
-		final JTextField  TB_PlName		= B00110FrameParts.JTextFieldSet( 710,280,200,20,"",11,0);	//パレット商品名称
+		JLabel LB_CtName				= B100FrameParts.JLabelSet( 610,230,100,20,"カートン商品名称:"		,10,1);
+		JLabel LB_CsName				= B100FrameParts.JLabelSet( 610,255,100,20,"ケース商品名称:"			,10,1);
+		JLabel LB_PlName				= B100FrameParts.JLabelSet( 610,280,100,20,"パレット商品名称:"		,10,1);
+		final JTextField  TB_CtName		= B100FrameParts.JTextFieldSet( 710,230,200,20,"",11,0);	//カートン商品名称
+		final JTextField  TB_CsName		= B100FrameParts.JTextFieldSet( 710,255,200,20,"",11,0);	//ケース商品名称
+		final JTextField  TB_PlName		= B100FrameParts.JTextFieldSet( 710,280,200,20,"",11,0);	//パレット商品名称
 		
-		JLabel LB_UnitName				= B00110FrameParts.JLabelSet( 910,205,100,20,"商品単位:"				,10,1);
-		JLabel LB_CtUnitName			= B00110FrameParts.JLabelSet( 910,230,100,20,"カートン商品単位:"		,10,1);
-		JLabel LB_CsUnitName			= B00110FrameParts.JLabelSet( 910,255,100,20,"ケース商品単位:"			,10,1);
-		JLabel LB_PlUnitName			= B00110FrameParts.JLabelSet( 910,280,100,20,"パレット商品単位:"		,10,1);
-		final JTextField  TB_UnitName	= B00110FrameParts.JTextFieldSet(1010,205,100,20,"",11,0);	//商品単位
-		final JTextField  TB_CtUnitName	= B00110FrameParts.JTextFieldSet(1010,230,100,20,"",11,0);	//カートン商品単位
-		final JTextField  TB_CsUnitName	= B00110FrameParts.JTextFieldSet(1010,255,100,20,"",11,0);	//ケース商品単位
-		final JTextField  TB_PlUnitName	= B00110FrameParts.JTextFieldSet(1010,280,100,20,"",11,0);	//パレット商品単位
+		JLabel LB_UnitName				= B100FrameParts.JLabelSet( 910,205,100,20,"商品単位:"				,10,1);
+		JLabel LB_CtUnitName			= B100FrameParts.JLabelSet( 910,230,100,20,"カートン商品単位:"		,10,1);
+		JLabel LB_CsUnitName			= B100FrameParts.JLabelSet( 910,255,100,20,"ケース商品単位:"			,10,1);
+		JLabel LB_PlUnitName			= B100FrameParts.JLabelSet( 910,280,100,20,"パレット商品単位:"		,10,1);
+		final JTextField  TB_UnitName	= B100FrameParts.JTextFieldSet(1010,205,100,20,"",11,0);	//商品単位
+		final JTextField  TB_CtUnitName	= B100FrameParts.JTextFieldSet(1010,230,100,20,"",11,0);	//カートン商品単位
+		final JTextField  TB_CsUnitName	= B100FrameParts.JTextFieldSet(1010,255,100,20,"",11,0);	//ケース商品単位
+		final JTextField  TB_PlUnitName	= B100FrameParts.JTextFieldSet(1010,280,100,20,"",11,0);	//パレット商品単位
 		
-		JLabel LB_JanCd					= B00110FrameParts.JLabelSet(1110,205,100,20,"JANCD:"					,10,1);
-		JLabel LB_CtJan					= B00110FrameParts.JLabelSet(1110,230,100,20,"カートンバーコード:"		,10,1);
-		JLabel LB_CsJan					= B00110FrameParts.JLabelSet(1110,255,100,20,"ケースバーコード:"		,10,1);
-		JLabel LB_PlJan					= B00110FrameParts.JLabelSet(1110,280,100,20,"パレットバーコード:"		,10,1);
-		final JTextField  TB_JanCd		= B00110FrameParts.JTextFieldSet(1210,205,150,20,"",11,0);	//JANCD
-		final JTextField  TB_CtJan		= B00110FrameParts.JTextFieldSet(1210,230,150,20,"",11,0);	//カートンバーコード
-		final JTextField  TB_CsJan		= B00110FrameParts.JTextFieldSet(1210,255,150,20,"",11,0);	//ケースバーコード
-		final JTextField  TB_PlJan		= B00110FrameParts.JTextFieldSet(1210,280,150,20,"",11,0);	//パレットバーコード
+		JLabel LB_JanCd					= B100FrameParts.JLabelSet(1110,205,100,20,"JANCD:"					,10,1);
+		JLabel LB_CtJan					= B100FrameParts.JLabelSet(1110,230,100,20,"カートンバーコード:"		,10,1);
+		JLabel LB_CsJan					= B100FrameParts.JLabelSet(1110,255,100,20,"ケースバーコード:"		,10,1);
+		JLabel LB_PlJan					= B100FrameParts.JLabelSet(1110,280,100,20,"パレットバーコード:"		,10,1);
+		final JTextField  TB_JanCd		= B100FrameParts.JTextFieldSet(1210,205,150,20,"",11,0);	//JANCD
+		final JTextField  TB_CtJan		= B100FrameParts.JTextFieldSet(1210,230,150,20,"",11,0);	//カートンバーコード
+		final JTextField  TB_CsJan		= B100FrameParts.JTextFieldSet(1210,255,150,20,"",11,0);	//ケースバーコード
+		final JTextField  TB_PlJan		= B100FrameParts.JTextFieldSet(1210,280,150,20,"",11,0);	//パレットバーコード
 		
 		
-		JLabel LB_Com01					= B00110FrameParts.JLabelSet(  10,650,100,20,"コメント1:"				,10,1);
-		JLabel LB_Com02					= B00110FrameParts.JLabelSet(  10,675,100,20,"コメント2:"				,10,1);
-		JLabel LB_Com03					= B00110FrameParts.JLabelSet(  10,700,100,20,"コメント3:"				,10,1);
-		final JTextField  TB_Com01		= B00110FrameParts.JTextFieldSet( 110,650,200,20,"",11,0);	//コメント1
-		final JTextField  TB_Com02		= B00110FrameParts.JTextFieldSet( 110,675,200,20,"",11,0);	//コメント2
-		final JTextField  TB_Com03		= B00110FrameParts.JTextFieldSet( 110,700,200,20,"",11,0);	//コメント3
+		JLabel LB_Com01					= B100FrameParts.JLabelSet(  10,650,100,20,"コメント1:"				,10,1);
+		JLabel LB_Com02					= B100FrameParts.JLabelSet(  10,675,100,20,"コメント2:"				,10,1);
+		JLabel LB_Com03					= B100FrameParts.JLabelSet(  10,700,100,20,"コメント3:"				,10,1);
+		final JTextField  TB_Com01		= B100FrameParts.JTextFieldSet( 110,650,200,20,"",11,0);	//コメント1
+		final JTextField  TB_Com02		= B100FrameParts.JTextFieldSet( 110,675,200,20,"",11,0);	//コメント2
+		final JTextField  TB_Com03		= B100FrameParts.JTextFieldSet( 110,700,200,20,"",11,0);	//コメント3
 		
-		JLabel LB_EntryDate				= B00110FrameParts.JLabelSet( 310,650,100,20,"データ登録日時:"			,10,1);
-		JLabel LB_UpdateDate			= B00110FrameParts.JLabelSet( 310,675,100,20,"データ更新日時:"			,10,1);
-		JLabel LB_EntryUser				= B00110FrameParts.JLabelSet( 310,700,100,20,"登録者コード:"			,10,1);
-		JLabel LB_UpdateUser			= B00110FrameParts.JLabelSet( 310,725,100,20,"更新者コード:"			,10,1);
-		final JTextField  TB_EntryDate	= B00110FrameParts.JTextFieldSet( 410,650,200,20,"",11,0);	//データ登録日時
-		final JTextField  TB_UpdateDate	= B00110FrameParts.JTextFieldSet( 410,675,200,20,"",11,0);	//データ更新日時
-		final JTextField  TB_EntryUser	= B00110FrameParts.JTextFieldSet( 410,700,200,20,"",11,0);	//登録者コード
-		final JTextField  TB_UpdateUser	= B00110FrameParts.JTextFieldSet( 410,725,200,20,"",11,0);	//更新者コード
+		JLabel LB_EntryDate				= B100FrameParts.JLabelSet( 310,650,100,20,"データ登録日時:"			,10,1);
+		JLabel LB_UpdateDate			= B100FrameParts.JLabelSet( 310,675,100,20,"データ更新日時:"			,10,1);
+		JLabel LB_EntryUser				= B100FrameParts.JLabelSet( 310,700,100,20,"登録者コード:"			,10,1);
+		JLabel LB_UpdateUser			= B100FrameParts.JLabelSet( 310,725,100,20,"更新者コード:"			,10,1);
+		final JTextField  TB_EntryDate	= B100FrameParts.JTextFieldSet( 410,650,200,20,"",11,0);	//データ登録日時
+		final JTextField  TB_UpdateDate	= B100FrameParts.JTextFieldSet( 410,675,200,20,"",11,0);	//データ更新日時
+		final JTextField  TB_EntryUser	= B100FrameParts.JTextFieldSet( 410,700,200,20,"",11,0);	//登録者コード
+		final JTextField  TB_UpdateUser	= B100FrameParts.JTextFieldSet( 410,725,200,20,"",11,0);	//更新者コード
 		
 		//DB登録用画像パス※表示しません。内部的に使います
-		final JTextField  TB_ItemImageEntryPath01 = B00110FrameParts.JTextFieldSet(	 170,350,250,20,"",11,0);			//画像パス01 
-		final JTextField  TB_ItemImageEntryPath02 = B00110FrameParts.JTextFieldSet(	 430,350,250,20,"",11,0);			//画像パス02 
-		final JTextField  TB_ItemImageEntryPath03 = B00110FrameParts.JTextFieldSet(	 600,350,250,20,"",11,0);			//画像パス03 
-		final JTextField  TB_ItemImageEntryPath04 = B00110FrameParts.JTextFieldSet(	 860,350,250,20,"",11,0);			//画像パス04 
-		final JTextField  TB_ItemImageEntryPath05 = B00110FrameParts.JTextFieldSet(	1120,350,250,20,"",11,0);			//画像パス04 
+		final JTextField  TB_ItemImageEntryPath01 = B100FrameParts.JTextFieldSet(	 170,350,250,20,"",11,0);			//画像パス01 
+		final JTextField  TB_ItemImageEntryPath02 = B100FrameParts.JTextFieldSet(	 430,350,250,20,"",11,0);			//画像パス02 
+		final JTextField  TB_ItemImageEntryPath03 = B100FrameParts.JTextFieldSet(	 600,350,250,20,"",11,0);			//画像パス03 
+		final JTextField  TB_ItemImageEntryPath04 = B100FrameParts.JTextFieldSet(	 860,350,250,20,"",11,0);			//画像パス04 
+		final JTextField  TB_ItemImageEntryPath05 = B100FrameParts.JTextFieldSet(	1120,350,250,20,"",11,0);			//画像パス04 
 		
 		
-		JButton ItemImage01Btn = B00110FrameParts.BtnSet(			 				  80,325, 80,20,"画像01選択",9);	//画像選択ボタン01
-		final JTextField  TB_ItemImagePath01	= B00110FrameParts.JTextFieldSet(	 170,325,160,20,"",11,0);			//画像パス01
+		JButton ItemImage01Btn = B100FrameParts.BtnSet(			 				  80,325, 80,20,"画像01選択",9);	//画像選択ボタン01
+		final JTextField  TB_ItemImagePath01	= B100FrameParts.JTextFieldSet(	 170,325,160,20,"",11,0);			//画像パス01
 		ImageIcon ItemImage01 = new ImageIcon();
-		final JLabel TB_ItemImage01 = B00110FrameParts.JLabelPictSet( 		 80,350,250,250,ItemImage01,0);
-		JButton ItemImage01RotateBtn = B00110FrameParts.BtnSet(			 	 80,600, 80,20,"回転",11);	//画像回転ボタン
-		final JTextField  ItemImage01Rotate	= B00110FrameParts.JTextFieldSet( 170,600, 80,20,"0",11,0);	//回転角度
+		final JLabel TB_ItemImage01 = B100FrameParts.JLabelPictSet( 		 80,350,250,250,ItemImage01,0);
+		JButton ItemImage01RotateBtn = B100FrameParts.BtnSet(			 	 80,600, 80,20,"回転",11);	//画像回転ボタン
+		final JTextField  ItemImage01Rotate	= B100FrameParts.JTextFieldSet( 170,600, 80,20,"0",11,0);	//回転角度
 		
-		JButton ItemImage02Btn = B00110FrameParts.BtnSet(			 				 340,325, 80,20,"画像02選択",9);	//画像選択ボタン02
-		final JTextField  TB_ItemImagePath02	= B00110FrameParts.JTextFieldSet(	 430,325,160,20,"",11,0);			//画像パス02
+		JButton ItemImage02Btn = B100FrameParts.BtnSet(			 				 340,325, 80,20,"画像02選択",9);	//画像選択ボタン02
+		final JTextField  TB_ItemImagePath02	= B100FrameParts.JTextFieldSet(	 430,325,160,20,"",11,0);			//画像パス02
 		ImageIcon ItemImage02 = new ImageIcon();
-		final JLabel TB_ItemImage02 = B00110FrameParts.JLabelPictSet( 		340,350,250,250,ItemImage02,0);
-		JButton ItemImage02RotateBtn = B00110FrameParts.BtnSet(			 	340,600, 80,20,"回転",11);	//画像回転ボタン
-		final JTextField  ItemImage02Rotate	= B00110FrameParts.JTextFieldSet( 430,600, 80,20,"0",11,0);	//回転角度
+		final JLabel TB_ItemImage02 = B100FrameParts.JLabelPictSet( 		340,350,250,250,ItemImage02,0);
+		JButton ItemImage02RotateBtn = B100FrameParts.BtnSet(			 	340,600, 80,20,"回転",11);	//画像回転ボタン
+		final JTextField  ItemImage02Rotate	= B100FrameParts.JTextFieldSet( 430,600, 80,20,"0",11,0);	//回転角度
 		
-		JButton ItemImage03Btn = B00110FrameParts.BtnSet(			 				 600,325, 80,20,"画像03選択",9);	//画像選択ボタン03
-		final JTextField  TB_ItemImagePath03	= B00110FrameParts.JTextFieldSet(	 690,325,160,20,"",11,0);			//画像パス03
+		JButton ItemImage03Btn = B100FrameParts.BtnSet(			 				 600,325, 80,20,"画像03選択",9);	//画像選択ボタン03
+		final JTextField  TB_ItemImagePath03	= B100FrameParts.JTextFieldSet(	 690,325,160,20,"",11,0);			//画像パス03
 		ImageIcon ItemImage03 = new ImageIcon();
-		final JLabel TB_ItemImage03 = B00110FrameParts.JLabelPictSet( 		600,350,250,250,ItemImage03,0);
-		JButton ItemImage03RotateBtn = B00110FrameParts.BtnSet(			 	600,600, 80,20,"回転",11);	//画像回転ボタン
-		final JTextField  ItemImage03Rotate	= B00110FrameParts.JTextFieldSet( 690,600, 80,20,"0",11,0);	//回転角度
+		final JLabel TB_ItemImage03 = B100FrameParts.JLabelPictSet( 		600,350,250,250,ItemImage03,0);
+		JButton ItemImage03RotateBtn = B100FrameParts.BtnSet(			 	600,600, 80,20,"回転",11);	//画像回転ボタン
+		final JTextField  ItemImage03Rotate	= B100FrameParts.JTextFieldSet( 690,600, 80,20,"0",11,0);	//回転角度
 		
-		JButton ItemImage04Btn = B00110FrameParts.BtnSet(			 				 860,325, 80,20,"画像04選択",9);	//画像選択ボタン04
-		final JTextField  TB_ItemImagePath04	= B00110FrameParts.JTextFieldSet(	 950,325,160,20,"",11,0);			//画像パス04
+		JButton ItemImage04Btn = B100FrameParts.BtnSet(			 				 860,325, 80,20,"画像04選択",9);	//画像選択ボタン04
+		final JTextField  TB_ItemImagePath04	= B100FrameParts.JTextFieldSet(	 950,325,160,20,"",11,0);			//画像パス04
 		ImageIcon ItemImage04 = new ImageIcon();
-		final JLabel TB_ItemImage04 = B00110FrameParts.JLabelPictSet(			 860,350,250,250,ItemImage04,0);
-		JButton ItemImage04RotateBtn = B00110FrameParts.BtnSet(			 	 860,600, 80,20,"回転",11);	//画像回転ボタン
-		final JTextField  ItemImage04Rotate	= B00110FrameParts.JTextFieldSet(  950,600, 80,20,"0",11,0);	//回転角度
+		final JLabel TB_ItemImage04 = B100FrameParts.JLabelPictSet(			 860,350,250,250,ItemImage04,0);
+		JButton ItemImage04RotateBtn = B100FrameParts.BtnSet(			 	 860,600, 80,20,"回転",11);	//画像回転ボタン
+		final JTextField  ItemImage04Rotate	= B100FrameParts.JTextFieldSet(  950,600, 80,20,"0",11,0);	//回転角度
 		
-		JButton ItemImage05Btn = B00110FrameParts.BtnSet(			 				1120,325, 80,20,"画像05選択",9);	//画像選択ボタン05
-		final JTextField  TB_ItemImagePath05	= B00110FrameParts.JTextFieldSet(	1210,325,160,20,"",11,0);			//画像パス05
+		JButton ItemImage05Btn = B100FrameParts.BtnSet(			 				1120,325, 80,20,"画像05選択",9);	//画像選択ボタン05
+		final JTextField  TB_ItemImagePath05	= B100FrameParts.JTextFieldSet(	1210,325,160,20,"",11,0);			//画像パス05
 		ImageIcon ItemImage05 = new ImageIcon();
-		final JLabel TB_ItemImage05 = B00110FrameParts.JLabelPictSet(			1120,350,250,250,ItemImage05,0);
-		JButton ItemImage05RotateBtn = B00110FrameParts.BtnSet(			 	1120,600, 80,20,"回転",11);	//画像回転ボタン
-		final JTextField  ItemImage05Rotate	= B00110FrameParts.JTextFieldSet( 1210,600, 80,20,"0",11,0);	//回転角度
+		final JLabel TB_ItemImage05 = B100FrameParts.JLabelPictSet(			1120,350,250,250,ItemImage05,0);
+		JButton ItemImage05RotateBtn = B100FrameParts.BtnSet(			 	1120,600, 80,20,"回転",11);	//画像回転ボタン
+		final JTextField  ItemImage05Rotate	= B100FrameParts.JTextFieldSet( 1210,600, 80,20,"0",11,0);	//回転角度
 		
 		if(null==TgtClgpCd||"".equals(TgtClgpCd)) {TgtClgpCd = A00000Main.ClGp;}
-		for(int i=0;i<B00100DefaultVariable.ClGpList[1].length;i++) {
-			if(TgtClgpCd.equals(""+B00100DefaultVariable.ClGpList[1][i])) {
+		for(int i=0;i<B100DefaultVariable.ClGpList[1].length;i++) {
+			if(TgtClgpCd.equals(""+B100DefaultVariable.ClGpList[1][i])) {
 				TB_ClGpCd.setSelectedIndex(i);
 			}
 		}
@@ -262,28 +262,28 @@ public class WM00081ItemMstRenewAndCreate{
 				TB_ItemName01.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemName01]);		//商品名1
 				TB_ItemName02.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemName02]);		//商品名2
 				TB_ItemName03.setText(""+ItemMstRt[0][M00070ItemMstRt.ColItemName03]);		//商品名3
-				for(int i=0;i<B00100DefaultVariable.DeliveryType01[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType01[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd01])) {
+				for(int i=0;i<B100DefaultVariable.DeliveryType01[1].length;i++) {
+					if(B100DefaultVariable.DeliveryType01[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd01])) {
 						TB_DeliveryTypeCd01.setSelectedIndex(i);;				//運送タイプコード01
 					}
 				}
-				for(int i=0;i<B00100DefaultVariable.DeliveryType02[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType02[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd02])) {
+				for(int i=0;i<B100DefaultVariable.DeliveryType02[1].length;i++) {
+					if(B100DefaultVariable.DeliveryType02[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd02])) {
 						TB_DeliveryTypeCd02.setSelectedIndex(i);;				//運送タイプコード02
 					}
 				}
-				for(int i=0;i<B00100DefaultVariable.DeliveryType03[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType03[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd03])) {
+				for(int i=0;i<B100DefaultVariable.DeliveryType03[1].length;i++) {
+					if(B100DefaultVariable.DeliveryType03[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd03])) {
 						TB_DeliveryTypeCd03.setSelectedIndex(i);;				//運送タイプコード03
 					}
 				}
-				for(int i=0;i<B00100DefaultVariable.DeliveryType04[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType04[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd04])) {
+				for(int i=0;i<B100DefaultVariable.DeliveryType04[1].length;i++) {
+					if(B100DefaultVariable.DeliveryType04[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd04])) {
 						TB_DeliveryTypeCd04.setSelectedIndex(i);;				//運送タイプコード04
 					}
 				}
-				for(int i=0;i<B00100DefaultVariable.DeliveryType05[1].length;i++) {
-					if(B00100DefaultVariable.DeliveryType05[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd05])) {
+				for(int i=0;i<B100DefaultVariable.DeliveryType05[1].length;i++) {
+					if(B100DefaultVariable.DeliveryType05[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDeliveryTypeCd05])) {
 						TB_DeliveryTypeCd05.setSelectedIndex(i);;				//運送タイプコード05
 					}
 				}
@@ -321,8 +321,8 @@ public class WM00081ItemMstRenewAndCreate{
 				TB_Com01.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom01]);					//コメント1
 				TB_Com02.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom02]);					//コメント2
 				TB_Com03.setText(""+ItemMstRt[0][M00070ItemMstRt.ColCom03]);					//コメント3
-				for(int i=0;i<B00100DefaultVariable.TildFG[1].length;i++) {
-					if(B00100DefaultVariable.TildFG[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColTildFG])) {
+				for(int i=0;i<B100DefaultVariable.TildFG[1].length;i++) {
+					if(B100DefaultVariable.TildFG[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColTildFG])) {
 						TB_TildFG.setSelectedIndex(i);;				//温度区分
 					}
 				}
@@ -332,8 +332,8 @@ public class WM00081ItemMstRenewAndCreate{
 				TB_EntryUser.setText(""+ItemMstRt[0][M00070ItemMstRt.ColEntryUser]);				//登録者コード
 				TB_UpdateUser.setText(""+ItemMstRt[0][M00070ItemMstRt.ColUpdateUser]);			//更新者コード
 				
-				for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-					if(B00100DefaultVariable.DelList[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDelFg])) {
+				for(int i=0;i<B100DefaultVariable.DelList[1].length;i++) {
+					if(B100DefaultVariable.DelList[1][i].equals(""+ItemMstRt[0][M00070ItemMstRt.ColDelFg])) {
 						TB_DelFg.setSelectedIndex(i);;				//削除フラグ
 					}
 				}
@@ -342,36 +342,36 @@ public class WM00081ItemMstRenewAndCreate{
 				TB_ItemImageEntryPath03.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass03]);			//画像パス03 
 				TB_ItemImageEntryPath04.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass04]);			//画像パス04
 				TB_ItemImageEntryPath05.setText(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass05]);			//画像パス05
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass01])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass01]);
+				if (B100PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass01])) {
+					Image image = B100PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass01]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage01.setIcon(Setimage);
 					}
 				}
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass02])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass02]);
+				if (B100PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass02])) {
+					Image image = B100PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass02]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage02.setIcon(Setimage);
 					}
 				}
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass03])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass03]);
+				if (B100PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass03])) {
+					Image image = B100PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass03]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage03.setIcon(Setimage);
 					}
 				}
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass04])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass04]);
+				if (B100PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass04])) {
+					Image image = B100PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass04]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage04.setIcon(Setimage);
 					}
 				}
-				if (B00140PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass05])) {
-					Image image = B00140PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass05]);
+				if (B100PictControl.PictCheck(""+ItemMstRt[0][M00070ItemMstRt.ColPictPass05])) {
+					Image image = B100PictControl.PictReSize(250,250,""+ItemMstRt[0][M00070ItemMstRt.ColPictPass05]);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 						TB_ItemImage05.setIcon(Setimage);
@@ -597,10 +597,10 @@ public class WM00081ItemMstRenewAndCreate{
 				String MSG = "画像ファイル選択";
 				String[] file_type = {".jpg",".png"};
 				String file_type_name = "画像ファイル";
-				String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+				String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 				
-				if(null!=Selected && B00140PictControl.PictCheck(Selected)) {
-					Image image = B00140PictControl.PictReSize(250,250,Selected);
+				if(null!=Selected && B100PictControl.PictCheck(Selected)) {
+					Image image = B100PictControl.PictReSize(250,250,Selected);
 					if(null!=image) {
 						TB_ItemImagePath01.setText(Selected);
 						ImageIcon Setimage = new ImageIcon(image);
@@ -617,8 +617,8 @@ public class WM00081ItemMstRenewAndCreate{
 					main_fm.remove(ItemImage01RotateBtn);
 					main_fm.remove(ItemImage01Rotate);
 					
-					if(null!=GetMstImage && B00140PictControl.PictCheck(GetMstImage)) {
-						Image image = B00140PictControl.PictReSize(250,250,GetMstImage);
+					if(null!=GetMstImage && B100PictControl.PictCheck(GetMstImage)) {
+						Image image = B100PictControl.PictReSize(250,250,GetMstImage);
 						if(null!=image) {
 							ImageIcon Setimage = new ImageIcon(image);
 						    TB_ItemImage01.setIcon(Setimage);
@@ -635,10 +635,10 @@ public class WM00081ItemMstRenewAndCreate{
 				String MSG = "画像ファイル選択";
 				String[] file_type = {".jpg",".png"};
 				String file_type_name = "画像ファイル";
-				String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+				String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 				
-				if(null!=Selected && B00140PictControl.PictCheck(Selected)) {
-					Image image = B00140PictControl.PictReSize(250,250,Selected);
+				if(null!=Selected && B100PictControl.PictCheck(Selected)) {
+					Image image = B100PictControl.PictReSize(250,250,Selected);
 					if(null!=image) {
 						TB_ItemImagePath02.setText(Selected);
 						ImageIcon Setimage = new ImageIcon(image);
@@ -655,8 +655,8 @@ public class WM00081ItemMstRenewAndCreate{
 					main_fm.remove(ItemImage02RotateBtn);
 					main_fm.remove(ItemImage02Rotate);
 					
-					if(null!=GetMstImage && B00140PictControl.PictCheck(GetMstImage)) {
-						Image image = B00140PictControl.PictReSize(250,250,GetMstImage);
+					if(null!=GetMstImage && B100PictControl.PictCheck(GetMstImage)) {
+						Image image = B100PictControl.PictReSize(250,250,GetMstImage);
 						if(null!=image) {
 							ImageIcon Setimage = new ImageIcon(image);
 						    TB_ItemImage02.setIcon(Setimage);
@@ -673,10 +673,10 @@ public class WM00081ItemMstRenewAndCreate{
 				String MSG = "画像ファイル選択";
 				String[] file_type = {".jpg",".png"};
 				String file_type_name = "画像ファイル";
-				String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+				String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 				
-				if(null!=Selected && B00140PictControl.PictCheck(Selected)) {
-					Image image = B00140PictControl.PictReSize(250,250,Selected);
+				if(null!=Selected && B100PictControl.PictCheck(Selected)) {
+					Image image = B100PictControl.PictReSize(250,250,Selected);
 					if(null!=image) {
 						TB_ItemImagePath03.setText(Selected);
 						ImageIcon Setimage = new ImageIcon(image);
@@ -693,8 +693,8 @@ public class WM00081ItemMstRenewAndCreate{
 					main_fm.remove(ItemImage03RotateBtn);
 					main_fm.remove(ItemImage03Rotate);
 					
-					if(null!=GetMstImage && B00140PictControl.PictCheck(GetMstImage)) {
-						Image image = B00140PictControl.PictReSize(250,250,GetMstImage);
+					if(null!=GetMstImage && B100PictControl.PictCheck(GetMstImage)) {
+						Image image = B100PictControl.PictReSize(250,250,GetMstImage);
 						if(null!=image) {
 							ImageIcon Setimage = new ImageIcon(image);
 						    TB_ItemImage03.setIcon(Setimage);
@@ -711,10 +711,10 @@ public class WM00081ItemMstRenewAndCreate{
 				String MSG = "画像ファイル選択";
 				String[] file_type = {".jpg",".png"};
 				String file_type_name = "画像ファイル";
-				String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+				String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 				
-				if(null!=Selected  && B00140PictControl.PictCheck(Selected)) {
-					Image image = B00140PictControl.PictReSize(250,250,Selected);
+				if(null!=Selected  && B100PictControl.PictCheck(Selected)) {
+					Image image = B100PictControl.PictReSize(250,250,Selected);
 					if(null!=image) {
 						TB_ItemImagePath04.setText(Selected);
 						ImageIcon Setimage = new ImageIcon(image);
@@ -731,8 +731,8 @@ public class WM00081ItemMstRenewAndCreate{
 					main_fm.remove(ItemImage04RotateBtn);
 					main_fm.remove(ItemImage04Rotate);
 					
-					if(null!=GetMstImage && B00140PictControl.PictCheck(GetMstImage)) {
-						Image image = B00140PictControl.PictReSize(250,250,GetMstImage);
+					if(null!=GetMstImage && B100PictControl.PictCheck(GetMstImage)) {
+						Image image = B100PictControl.PictReSize(250,250,GetMstImage);
 						if(null!=image) {
 							ImageIcon Setimage = new ImageIcon(image);
 						    TB_ItemImage04.setIcon(Setimage);
@@ -749,10 +749,10 @@ public class WM00081ItemMstRenewAndCreate{
 				String MSG = "画像ファイル選択";
 				String[] file_type = {".jpg",".png"};
 				String file_type_name = "画像ファイル";
-				String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+				String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 				
-				if(null!=Selected  && B00140PictControl.PictCheck(Selected)) {
-					Image image = B00140PictControl.PictReSize(250,250,Selected);
+				if(null!=Selected  && B100PictControl.PictCheck(Selected)) {
+					Image image = B100PictControl.PictReSize(250,250,Selected);
 					if(null!=image) {
 						TB_ItemImagePath05.setText(Selected);
 						ImageIcon Setimage = new ImageIcon(image);
@@ -769,8 +769,8 @@ public class WM00081ItemMstRenewAndCreate{
 					main_fm.remove(ItemImage05RotateBtn);
 					main_fm.remove(ItemImage05Rotate);
 					
-					if(null!=GetMstImage && B00140PictControl.PictCheck(GetMstImage)) {
-						Image image = B00140PictControl.PictReSize(250,250,GetMstImage);
+					if(null!=GetMstImage && B100PictControl.PictCheck(GetMstImage)) {
+						Image image = B100PictControl.PictReSize(250,250,GetMstImage);
 						if(null!=image) {
 							ImageIcon Setimage = new ImageIcon(image);
 						    TB_ItemImage05.setIcon(Setimage);
@@ -785,13 +785,13 @@ public class WM00081ItemMstRenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				String Selected = TB_ItemImagePath01.getText();
 				
-				if(null!=Selected && B00140PictControl.PictCheck(Selected)) {
+				if(null!=Selected && B100PictControl.PictCheck(Selected)) {
 					String Rotate = ItemImage01Rotate.getText();	if(null==Rotate) {Rotate = "0";}
-					Rotate = B00020ToolsTextControl.num_only_String02(Rotate);
+					Rotate = B100TextControl.num_only_String02(Rotate);
 					if("".equals(Rotate)) {Rotate = "0";}
 					int RotateSet = Integer.parseInt(Rotate)+90;
 					RotateSet = RotateSet%360;
-					Image image = B00140PictControl.PictRotate(250,250,RotateSet,Selected);
+					Image image = B100PictControl.PictRotate(250,250,RotateSet,Selected);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 					    TB_ItemImage01.setIcon(Setimage);
@@ -805,13 +805,13 @@ public class WM00081ItemMstRenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				String Selected = TB_ItemImagePath02.getText();
 				
-				if(null!=Selected && B00140PictControl.PictCheck(Selected)) {
+				if(null!=Selected && B100PictControl.PictCheck(Selected)) {
 					String Rotate = ItemImage02Rotate.getText();	if(null==Rotate) {Rotate = "0";}
-					Rotate = B00020ToolsTextControl.num_only_String02(Rotate);
+					Rotate = B100TextControl.num_only_String02(Rotate);
 					if("".equals(Rotate)) {Rotate = "0";}
 					int RotateSet = Integer.parseInt(Rotate)+90;
 					RotateSet = RotateSet%360;
-					Image image = B00140PictControl.PictRotate(250,250,RotateSet,Selected);
+					Image image = B100PictControl.PictRotate(250,250,RotateSet,Selected);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 					    TB_ItemImage02.setIcon(Setimage);
@@ -825,13 +825,13 @@ public class WM00081ItemMstRenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				String Selected = TB_ItemImagePath03.getText();
 				
-				if(null!=Selected && B00140PictControl.PictCheck(Selected)) {
+				if(null!=Selected && B100PictControl.PictCheck(Selected)) {
 					String Rotate = ItemImage03Rotate.getText();	if(null==Rotate) {Rotate = "0";}
-					Rotate = B00020ToolsTextControl.num_only_String02(Rotate);
+					Rotate = B100TextControl.num_only_String02(Rotate);
 					if("".equals(Rotate)) {Rotate = "0";}
 					int RotateSet = Integer.parseInt(Rotate)+90;
 					RotateSet = RotateSet%360;
-					Image image = B00140PictControl.PictRotate(250,250,RotateSet,Selected);
+					Image image = B100PictControl.PictRotate(250,250,RotateSet,Selected);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 					    TB_ItemImage03.setIcon(Setimage);
@@ -845,13 +845,13 @@ public class WM00081ItemMstRenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				String Selected = TB_ItemImagePath04.getText();
 				
-				if(null!=Selected && B00140PictControl.PictCheck(Selected)) {
+				if(null!=Selected && B100PictControl.PictCheck(Selected)) {
 					String Rotate = ItemImage04Rotate.getText();	if(null==Rotate) {Rotate = "0";}
-					Rotate = B00020ToolsTextControl.num_only_String02(Rotate);
+					Rotate = B100TextControl.num_only_String02(Rotate);
 					if("".equals(Rotate)) {Rotate = "0";}
 					int RotateSet = Integer.parseInt(Rotate)+90;
 					RotateSet = RotateSet%360;
-					Image image = B00140PictControl.PictRotate(250,250,RotateSet,Selected);
+					Image image = B100PictControl.PictRotate(250,250,RotateSet,Selected);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 					    TB_ItemImage04.setIcon(Setimage);
@@ -865,13 +865,13 @@ public class WM00081ItemMstRenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				String Selected = TB_ItemImagePath05.getText();
 				
-				if(null!=Selected && B00140PictControl.PictCheck(Selected)) {
+				if(null!=Selected && B100PictControl.PictCheck(Selected)) {
 					String Rotate = ItemImage05Rotate.getText();	if(null==Rotate) {Rotate = "0";}
-					Rotate = B00020ToolsTextControl.num_only_String02(Rotate);
+					Rotate = B100TextControl.num_only_String02(Rotate);
 					if("".equals(Rotate)) {Rotate = "0";}
 					int RotateSet = Integer.parseInt(Rotate)+90;
 					RotateSet = RotateSet%360;
-					Image image = B00140PictControl.PictRotate(250,250,RotateSet,Selected);
+					Image image = B100PictControl.PictRotate(250,250,RotateSet,Selected);
 					if(null!=image) {
 						ImageIcon Setimage = new ImageIcon(image);
 					    TB_ItemImage05.setIcon(Setimage);
@@ -884,17 +884,17 @@ public class WM00081ItemMstRenewAndCreate{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String GetClGpCd 			= B00100DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];		//荷主グループコード
+				String GetClGpCd 			= B100DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];		//荷主グループコード
 				String GetItemCd 			= TB_ItemCd.getText();				//商品コード
 				String GetCLItemCd 			= TB_CLItemCd.getText();			//荷主商品コード
 				String GetItemName01 		= TB_ItemName01.getText();			//商品名1
 				String GetItemName02 		= TB_ItemName02.getText();			//商品名2
 				String GetItemName03 		= TB_ItemName03.getText();			//商品名3
-				String GetDeliveryTypeCd01 	= B00100DefaultVariable.DeliveryType01[1][TB_DeliveryTypeCd01.getSelectedIndex()];	//運送タイプコード01
-				String GetDeliveryTypeCd02 	= B00100DefaultVariable.DeliveryType02[1][TB_DeliveryTypeCd02.getSelectedIndex()];	//運送タイプコード02
-				String GetDeliveryTypeCd03 	= B00100DefaultVariable.DeliveryType03[1][TB_DeliveryTypeCd03.getSelectedIndex()];	//運送タイプコード03
-				String GetDeliveryTypeCd04 	= B00100DefaultVariable.DeliveryType04[1][TB_DeliveryTypeCd04.getSelectedIndex()];	//運送タイプコード04
-				String GetDeliveryTypeCd05 	= B00100DefaultVariable.DeliveryType05[1][TB_DeliveryTypeCd05.getSelectedIndex()];	//運送タイプコード05
+				String GetDeliveryTypeCd01 	= B100DefaultVariable.DeliveryType01[1][TB_DeliveryTypeCd01.getSelectedIndex()];	//運送タイプコード01
+				String GetDeliveryTypeCd02 	= B100DefaultVariable.DeliveryType02[1][TB_DeliveryTypeCd02.getSelectedIndex()];	//運送タイプコード02
+				String GetDeliveryTypeCd03 	= B100DefaultVariable.DeliveryType03[1][TB_DeliveryTypeCd03.getSelectedIndex()];	//運送タイプコード03
+				String GetDeliveryTypeCd04 	= B100DefaultVariable.DeliveryType04[1][TB_DeliveryTypeCd04.getSelectedIndex()];	//運送タイプコード04
+				String GetDeliveryTypeCd05 	= B100DefaultVariable.DeliveryType05[1][TB_DeliveryTypeCd05.getSelectedIndex()];	//運送タイプコード05
 				String GetPTMSCD 			= TB_PTMSCD.getText();				//基幹SYS商品コード
 				String GetRecomendLoc 		= TB_RecomendLoc.getText();			//推奨ロケ
 				String GetItemMDNo 			= TB_ItemMDNo.getText();			//商品型番
@@ -904,8 +904,8 @@ public class WM00081ItemMstRenewAndCreate{
 				String GetItemColorName 	= TB_ItemColorName.getText();		//商品カラー名
 				String GetItemSizeCd 		= TB_ItemSizeCd.getText();			//商品サイズコード
 				String GetItemSizeName 		= TB_ItemSizeName.getText();		//商品サイズ名
-				String GetTildFG 			= B00100DefaultVariable.TildFG[1][TB_TildFG.getSelectedIndex()];	//温度区分
-				String GetTildFGName 		= B00100DefaultVariable.TildFG[2][TB_TildFG.getSelectedIndex()];	//温度区分
+				String GetTildFG 			= B100DefaultVariable.TildFG[1][TB_TildFG.getSelectedIndex()];	//温度区分
+				String GetTildFGName 		= B100DefaultVariable.TildFG[2][TB_TildFG.getSelectedIndex()];	//温度区分
 				String GetExpDateHowLong 	= TB_ExpDateHowLong.getText();		//賞味期限日数
 				String GetCtQty 			= TB_CtQty.getText();				//カートン入数
 				String GetCsQty 			= TB_CsQty.getText();				//ケース入数
@@ -932,7 +932,7 @@ public class WM00081ItemMstRenewAndCreate{
 				String GetCom01 			= TB_Com01.getText();				//コメント1
 				String GetCom02 			= TB_Com02.getText();				//コメント2
 				String GetCom03 			= TB_Com03.getText();				//コメント3
-				String GetDelFg 			= B00100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];	//削除フラグ
+				String GetDelFg 			= B100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];	//削除フラグ
 				
 				String GetItemImagePath01 = TB_ItemImagePath01.getText();		//画像パス01 
 				String GetItemImagePath02 = TB_ItemImagePath02.getText();		//画像パス02
@@ -952,80 +952,80 @@ public class WM00081ItemMstRenewAndCreate{
 				String GetItemImageSetPath04 = A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_04.jpg";			//現在マスタ画像パス04 
 				String GetItemImageSetPath05 = A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_05.jpg";			//現在マスタ画像パス05 
 				
-				GetClGpCd 				= B00020ToolsTextControl.Trim(GetClGpCd);				//荷主グループコード
-				GetItemCd 				= B00020ToolsTextControl.Trim(GetItemCd);				//商品コード
-				GetCLItemCd 			= B00020ToolsTextControl.Trim(GetCLItemCd);				//荷主商品コード
-				GetItemName01 			= B00020ToolsTextControl.Trim(GetItemName01);			//商品名1
-				GetItemName02 			= B00020ToolsTextControl.Trim(GetItemName02);			//商品名2
-				GetItemName03 			= B00020ToolsTextControl.Trim(GetItemName03);			//商品名3
-				GetDeliveryTypeCd01 	= B00020ToolsTextControl.Trim(GetDeliveryTypeCd01);		//運送タイプコード01
-				GetDeliveryTypeCd02 	= B00020ToolsTextControl.Trim(GetDeliveryTypeCd02);		//運送タイプコード02
-				GetDeliveryTypeCd03 	= B00020ToolsTextControl.Trim(GetDeliveryTypeCd03);		//運送タイプコード03
-				GetDeliveryTypeCd04 	= B00020ToolsTextControl.Trim(GetDeliveryTypeCd04);		//運送タイプコード04
-				GetDeliveryTypeCd05 	= B00020ToolsTextControl.Trim(GetDeliveryTypeCd05);		//運送タイプコード05
-				GetPTMSCD 				= B00020ToolsTextControl.Trim(GetPTMSCD);				//基幹SYS商品コード
-				GetRecomendLoc 			= B00020ToolsTextControl.Trim(GetRecomendLoc);			//推奨ロケ
-				GetItemMDNo 			= B00020ToolsTextControl.Trim(GetItemMDNo);				//商品型番
-				GetCategoryCd 			= B00020ToolsTextControl.Trim(GetCategoryCd);			//商品カテゴリCD
-				GetCategoryName 		= B00020ToolsTextControl.Trim(GetCategoryName);			//商品カテゴリ名
-				GetItemColorCd 			= B00020ToolsTextControl.Trim(GetItemColorCd);			//商品カラーコード
-				GetItemColorName 		= B00020ToolsTextControl.Trim(GetItemColorName);		//商品カラー名
-				GetItemSizeCd 			= B00020ToolsTextControl.Trim(GetItemSizeCd);			//商品サイズコード
-				GetItemSizeName 		= B00020ToolsTextControl.Trim(GetItemSizeName);			//商品サイズ名
-				GetTildFG 				= B00020ToolsTextControl.Trim(GetTildFG);				//温度区分
-				GetTildFGName 			= B00020ToolsTextControl.Trim(GetTildFGName);			//温度区分名
-				GetExpDateHowLong 		= B00020ToolsTextControl.Trim(GetExpDateHowLong);		//賞味期限日数
-				GetCtQty 				= B00020ToolsTextControl.Trim(GetCtQty);				//カートン入数
-				GetCsQty 				= B00020ToolsTextControl.Trim(GetCsQty);				//ケース入数
-				GetPlQty 				= B00020ToolsTextControl.Trim(GetPlQty);				//パレット入数
-				GetItemWeight 			= B00020ToolsTextControl.Trim(GetItemWeight);			//商品重量
-				GetCtWeight 			= B00020ToolsTextControl.Trim(GetCtWeight);				//カートン重量
-				GetCsWeight 			= B00020ToolsTextControl.Trim(GetCsWeight);				//ケース重量
-				GetPlWeight 			= B00020ToolsTextControl.Trim(GetPlWeight);				//パレット重量
-				GetItemSize 			= B00020ToolsTextControl.Trim(GetItemSize);				//商品サイズ
-				GetCtSize 				= B00020ToolsTextControl.Trim(GetCtSize);				//カートンサイズ
-				GetCsSize 				= B00020ToolsTextControl.Trim(GetCsSize);				//ケースサイズ
-				GetPlSize 				= B00020ToolsTextControl.Trim(GetPlSize);				//パレットサイズ
-				GetCtName 				= B00020ToolsTextControl.Trim(GetCtName);				//カートン商品名称
-				GetCsName 				= B00020ToolsTextControl.Trim(GetCsName);				//ケース商品名称
-				GetPlName 				= B00020ToolsTextControl.Trim(GetPlName);				//パレット商品名称
-				GetUnitName 			= B00020ToolsTextControl.Trim(GetUnitName);				//商品単位
-				GetCtUnitName 			= B00020ToolsTextControl.Trim(GetCtUnitName);			//カートン商品単位
-				GetCsUnitName 			= B00020ToolsTextControl.Trim(GetCsUnitName);			//ケース商品単位
-				GetPlUnitName 			= B00020ToolsTextControl.Trim(GetPlUnitName);			//パレット商品単位
-				GetJanCd 				= B00020ToolsTextControl.Trim(GetJanCd);				//JANCD
-				GetCtJan 				= B00020ToolsTextControl.Trim(GetCtJan);				//カートンバーコード
-				GetCsJan 				= B00020ToolsTextControl.Trim(GetCsJan);				//ケースバーコード
-				GetPlJan 				= B00020ToolsTextControl.Trim(GetPlJan);				//パレットバーコード
-				GetCom01 				= B00020ToolsTextControl.Trim(GetCom01);				//コメント1
-				GetCom02 				= B00020ToolsTextControl.Trim(GetCom02);				//コメント2
-				GetCom03 				= B00020ToolsTextControl.Trim(GetCom03);				//コメント3
-				GetDelFg 				= B00020ToolsTextControl.Trim(GetDelFg);				//削除フラグ
+				GetClGpCd 				= B100TextControl.Trim(GetClGpCd);				//荷主グループコード
+				GetItemCd 				= B100TextControl.Trim(GetItemCd);				//商品コード
+				GetCLItemCd 			= B100TextControl.Trim(GetCLItemCd);				//荷主商品コード
+				GetItemName01 			= B100TextControl.Trim(GetItemName01);			//商品名1
+				GetItemName02 			= B100TextControl.Trim(GetItemName02);			//商品名2
+				GetItemName03 			= B100TextControl.Trim(GetItemName03);			//商品名3
+				GetDeliveryTypeCd01 	= B100TextControl.Trim(GetDeliveryTypeCd01);		//運送タイプコード01
+				GetDeliveryTypeCd02 	= B100TextControl.Trim(GetDeliveryTypeCd02);		//運送タイプコード02
+				GetDeliveryTypeCd03 	= B100TextControl.Trim(GetDeliveryTypeCd03);		//運送タイプコード03
+				GetDeliveryTypeCd04 	= B100TextControl.Trim(GetDeliveryTypeCd04);		//運送タイプコード04
+				GetDeliveryTypeCd05 	= B100TextControl.Trim(GetDeliveryTypeCd05);		//運送タイプコード05
+				GetPTMSCD 				= B100TextControl.Trim(GetPTMSCD);				//基幹SYS商品コード
+				GetRecomendLoc 			= B100TextControl.Trim(GetRecomendLoc);			//推奨ロケ
+				GetItemMDNo 			= B100TextControl.Trim(GetItemMDNo);				//商品型番
+				GetCategoryCd 			= B100TextControl.Trim(GetCategoryCd);			//商品カテゴリCD
+				GetCategoryName 		= B100TextControl.Trim(GetCategoryName);			//商品カテゴリ名
+				GetItemColorCd 			= B100TextControl.Trim(GetItemColorCd);			//商品カラーコード
+				GetItemColorName 		= B100TextControl.Trim(GetItemColorName);		//商品カラー名
+				GetItemSizeCd 			= B100TextControl.Trim(GetItemSizeCd);			//商品サイズコード
+				GetItemSizeName 		= B100TextControl.Trim(GetItemSizeName);			//商品サイズ名
+				GetTildFG 				= B100TextControl.Trim(GetTildFG);				//温度区分
+				GetTildFGName 			= B100TextControl.Trim(GetTildFGName);			//温度区分名
+				GetExpDateHowLong 		= B100TextControl.Trim(GetExpDateHowLong);		//賞味期限日数
+				GetCtQty 				= B100TextControl.Trim(GetCtQty);				//カートン入数
+				GetCsQty 				= B100TextControl.Trim(GetCsQty);				//ケース入数
+				GetPlQty 				= B100TextControl.Trim(GetPlQty);				//パレット入数
+				GetItemWeight 			= B100TextControl.Trim(GetItemWeight);			//商品重量
+				GetCtWeight 			= B100TextControl.Trim(GetCtWeight);				//カートン重量
+				GetCsWeight 			= B100TextControl.Trim(GetCsWeight);				//ケース重量
+				GetPlWeight 			= B100TextControl.Trim(GetPlWeight);				//パレット重量
+				GetItemSize 			= B100TextControl.Trim(GetItemSize);				//商品サイズ
+				GetCtSize 				= B100TextControl.Trim(GetCtSize);				//カートンサイズ
+				GetCsSize 				= B100TextControl.Trim(GetCsSize);				//ケースサイズ
+				GetPlSize 				= B100TextControl.Trim(GetPlSize);				//パレットサイズ
+				GetCtName 				= B100TextControl.Trim(GetCtName);				//カートン商品名称
+				GetCsName 				= B100TextControl.Trim(GetCsName);				//ケース商品名称
+				GetPlName 				= B100TextControl.Trim(GetPlName);				//パレット商品名称
+				GetUnitName 			= B100TextControl.Trim(GetUnitName);				//商品単位
+				GetCtUnitName 			= B100TextControl.Trim(GetCtUnitName);			//カートン商品単位
+				GetCsUnitName 			= B100TextControl.Trim(GetCsUnitName);			//ケース商品単位
+				GetPlUnitName 			= B100TextControl.Trim(GetPlUnitName);			//パレット商品単位
+				GetJanCd 				= B100TextControl.Trim(GetJanCd);				//JANCD
+				GetCtJan 				= B100TextControl.Trim(GetCtJan);				//カートンバーコード
+				GetCsJan 				= B100TextControl.Trim(GetCsJan);				//ケースバーコード
+				GetPlJan 				= B100TextControl.Trim(GetPlJan);				//パレットバーコード
+				GetCom01 				= B100TextControl.Trim(GetCom01);				//コメント1
+				GetCom02 				= B100TextControl.Trim(GetCom02);				//コメント2
+				GetCom03 				= B100TextControl.Trim(GetCom03);				//コメント3
+				GetDelFg 				= B100TextControl.Trim(GetDelFg);				//削除フラグ
 				
-				GetItemImagePath01 		= B00020ToolsTextControl.Trim(GetItemImagePath01);		//画像パス01 
-				GetItemImagePath02 		= B00020ToolsTextControl.Trim(GetItemImagePath02);		//画像パス02
-				GetItemImagePath03 		= B00020ToolsTextControl.Trim(GetItemImagePath03);		//画像パス03
-				GetItemImagePath04 		= B00020ToolsTextControl.Trim(GetItemImagePath04);		//画像パス04
-				GetItemImagePath05 		= B00020ToolsTextControl.Trim(GetItemImagePath05);		//画像パス05
+				GetItemImagePath01 		= B100TextControl.Trim(GetItemImagePath01);		//画像パス01 
+				GetItemImagePath02 		= B100TextControl.Trim(GetItemImagePath02);		//画像パス02
+				GetItemImagePath03 		= B100TextControl.Trim(GetItemImagePath03);		//画像パス03
+				GetItemImagePath04 		= B100TextControl.Trim(GetItemImagePath04);		//画像パス04
+				GetItemImagePath05 		= B100TextControl.Trim(GetItemImagePath05);		//画像パス05
 				
-				GetItemImageEntryPath01 = B00020ToolsTextControl.Trim(GetItemImageEntryPath01);	//現在マスタ画像パス01 
-				GetItemImageEntryPath02 = B00020ToolsTextControl.Trim(GetItemImageEntryPath02);	//現在マスタ画像パス02 
-				GetItemImageEntryPath03 = B00020ToolsTextControl.Trim(GetItemImageEntryPath03);	//現在マスタ画像パス03 
-				GetItemImageEntryPath04 = B00020ToolsTextControl.Trim(GetItemImageEntryPath04);	//現在マスタ画像パス04 
-				GetItemImageEntryPath05 = B00020ToolsTextControl.Trim(GetItemImageEntryPath05);	//現在マスタ画像パス05
+				GetItemImageEntryPath01 = B100TextControl.Trim(GetItemImageEntryPath01);	//現在マスタ画像パス01 
+				GetItemImageEntryPath02 = B100TextControl.Trim(GetItemImageEntryPath02);	//現在マスタ画像パス02 
+				GetItemImageEntryPath03 = B100TextControl.Trim(GetItemImageEntryPath03);	//現在マスタ画像パス03 
+				GetItemImageEntryPath04 = B100TextControl.Trim(GetItemImageEntryPath04);	//現在マスタ画像パス04 
+				GetItemImageEntryPath05 = B100TextControl.Trim(GetItemImageEntryPath05);	//現在マスタ画像パス05
 				
-				GetExpDateHowLong 		= B00020ToolsTextControl.num_only_String02(GetExpDateHowLong);	//賞味期限日数
-				GetCtQty 				= B00020ToolsTextControl.num_only_String02(GetCtQty);				//カートン入数
-				GetCsQty 				= B00020ToolsTextControl.num_only_String02(GetCsQty);				//ケース入数
-				GetPlQty 				= B00020ToolsTextControl.num_only_String02(GetPlQty);				//パレット入数
-				GetItemWeight 			= B00020ToolsTextControl.num_only_String02(GetItemWeight);		//商品重量
-				GetCtWeight 			= B00020ToolsTextControl.num_only_String02(GetCtWeight);			//カートン重量
-				GetCsWeight 			= B00020ToolsTextControl.num_only_String02(GetCsWeight);			//ケース重量
-				GetPlWeight 			= B00020ToolsTextControl.num_only_String02(GetPlWeight);			//パレット重量
-				GetItemSize 			= B00020ToolsTextControl.num_only_String02(GetItemSize);			//商品サイズ
-				GetCtSize 				= B00020ToolsTextControl.num_only_String02(GetCtSize);			//カートンサイズ
-				GetCsSize 				= B00020ToolsTextControl.num_only_String02(GetCsSize);			//ケースサイズ
-				GetPlSize 				= B00020ToolsTextControl.num_only_String02(GetPlSize);			//パレットサイズ
+				GetExpDateHowLong 		= B100TextControl.num_only_String02(GetExpDateHowLong);	//賞味期限日数
+				GetCtQty 				= B100TextControl.num_only_String02(GetCtQty);				//カートン入数
+				GetCsQty 				= B100TextControl.num_only_String02(GetCsQty);				//ケース入数
+				GetPlQty 				= B100TextControl.num_only_String02(GetPlQty);				//パレット入数
+				GetItemWeight 			= B100TextControl.num_only_String02(GetItemWeight);		//商品重量
+				GetCtWeight 			= B100TextControl.num_only_String02(GetCtWeight);			//カートン重量
+				GetCsWeight 			= B100TextControl.num_only_String02(GetCsWeight);			//ケース重量
+				GetPlWeight 			= B100TextControl.num_only_String02(GetPlWeight);			//パレット重量
+				GetItemSize 			= B100TextControl.num_only_String02(GetItemSize);			//商品サイズ
+				GetCtSize 				= B100TextControl.num_only_String02(GetCtSize);			//カートンサイズ
+				GetCsSize 				= B100TextControl.num_only_String02(GetCsSize);			//ケースサイズ
+				GetPlSize 				= B100TextControl.num_only_String02(GetPlSize);			//パレットサイズ
 				
 				if("".equals(GetExpDateHowLong)) {GetExpDateHowLong="0";}	//賞味期限日数
 				if("".equals(GetCtQty)) {GetCtQty="0";}						//カートン入数
@@ -1040,22 +1040,22 @@ public class WM00081ItemMstRenewAndCreate{
 				if("".equals(GetCsSize)) {GetCsSize="0";}					//ケースサイズ
 				if("".equals(GetPlSize)) {GetPlSize="0";}					//パレットサイズ
 				
-				B00040ToolsFolderCheck.FLD_CHECK(A00000Main.FileFldPth);
-				B00040ToolsFolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage");
-				B00040ToolsFolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd);
+				B100FolderCheck.FLD_CHECK(A00000Main.FileFldPth);
+				B100FolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage");
+				B100FolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd);
 				
 				if(!"".equals(GetClGpCd)&&!"".equals(GetItemCd)&&!"".equals(GetItemName01)) {
 					//新規に画像選択されていたら画像を保存 選択されていなければ現状のマスタのまま
 					if("".equals(GetItemImagePath01)){		//画像パス01
 						GetItemImageSetPath01 = GetItemImageEntryPath01;
 					}else {
-						if(B00140PictControl.PictCheck(GetItemImagePath01)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
-							String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath01);
+						if(B100PictControl.PictCheck(GetItemImagePath01)&&B100FolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
+							String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath01);
 							String Rotate = ItemImage01Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
-							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath01);
+							Image image = B100PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath01);
 							GetItemImageSetPath01 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_01."+FileType;
-							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath01);
+							B100PictControl.PictSave(image,FileType,GetItemImageSetPath01);
 						}else {
 							GetItemImageSetPath01 = GetItemImageEntryPath01;
 						}
@@ -1063,13 +1063,13 @@ public class WM00081ItemMstRenewAndCreate{
 					if("".equals(GetItemImagePath02)){		//画像パス02
 						GetItemImageSetPath02 = GetItemImageEntryPath02;
 					}else {
-						if(B00140PictControl.PictCheck(GetItemImagePath02)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
-							String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath02);
+						if(B100PictControl.PictCheck(GetItemImagePath02)&&B100FolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
+							String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath02);
 							String Rotate = ItemImage02Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
-							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath02);
+							Image image = B100PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath02);
 							GetItemImageSetPath02 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_02."+FileType;
-							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath02);
+							B100PictControl.PictSave(image,FileType,GetItemImageSetPath02);
 						}else {
 							GetItemImageSetPath02 = GetItemImageEntryPath02;
 						}
@@ -1077,13 +1077,13 @@ public class WM00081ItemMstRenewAndCreate{
 					if("".equals(GetItemImagePath03)){		//画像パス03
 						GetItemImageSetPath03 = GetItemImageEntryPath03;
 					}else {
-						if(B00140PictControl.PictCheck(GetItemImagePath03)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
-							String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath03);
+						if(B100PictControl.PictCheck(GetItemImagePath03)&&B100FolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
+							String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath03);
 							String Rotate = ItemImage03Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
-							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath03);
+							Image image = B100PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath03);
 							GetItemImageSetPath03 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_03."+FileType;
-							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath03);
+							B100PictControl.PictSave(image,FileType,GetItemImageSetPath03);
 						}else {
 							GetItemImageSetPath03 = GetItemImageEntryPath03;
 						}
@@ -1091,13 +1091,13 @@ public class WM00081ItemMstRenewAndCreate{
 					if("".equals(GetItemImagePath04)){		//画像パス04
 						GetItemImageSetPath04 = GetItemImageEntryPath04;
 					}else {
-						if(B00140PictControl.PictCheck(GetItemImagePath04)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
-							String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath04);
+						if(B100PictControl.PictCheck(GetItemImagePath04)&&B100FolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
+							String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath04);
 							String Rotate = ItemImage04Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
-							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath04);
+							Image image = B100PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath04);
 							GetItemImageSetPath04 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_04."+FileType;
-							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath04);
+							B100PictControl.PictSave(image,FileType,GetItemImageSetPath04);
 						}else {
 							GetItemImageSetPath04 = GetItemImageEntryPath04;
 						}
@@ -1105,19 +1105,19 @@ public class WM00081ItemMstRenewAndCreate{
 					if("".equals(GetItemImagePath05)){		//画像パス05
 						GetItemImageSetPath05 = GetItemImageEntryPath05;
 					}else {
-						if(B00140PictControl.PictCheck(GetItemImagePath05)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
-							String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath05);
+						if(B100PictControl.PictCheck(GetItemImagePath05)&&B100FolderCheck.FLD_CHECK_ONRY(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd)) {
+							String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath05);
 							String Rotate = ItemImage05Rotate.getText();	if(null==Rotate) {Rotate = "0";}
 							int RotateSet = Integer.parseInt(Rotate);
-							Image image = B00140PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath05);
+							Image image = B100PictControl.PictRotate(1024,1024,RotateSet,GetItemImagePath05);
 							GetItemImageSetPath05 =  A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd+"\\"+GetItemCd+"_05."+FileType;
-							B00140PictControl.PictSave(image,FileType,GetItemImageSetPath05);
+							B100PictControl.PictSave(image,FileType,GetItemImageSetPath05);
 						}else {
 							GetItemImageSetPath05 = GetItemImageEntryPath05;
 						}
 					}
 					
-					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 					
 					String[][] ItemMstSetString = {
 							  {"ClGpCd"				,"1","1",GetClGpCd}				//荷主グループコード
@@ -1162,7 +1162,7 @@ public class WM00081ItemMstRenewAndCreate{
 						field_name[i][2] = ItemMstSetString[i][2];
 						entry_data[0][i] = ItemMstSetString[i][3];
 					}
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					String[][] ItemMstSubSetString = {
 							 {"ClGpCd"			,"1","1",GetClGpCd}				//荷主グループコード
@@ -1230,7 +1230,7 @@ public class WM00081ItemMstRenewAndCreate{
 						entry_data[0][i] = ItemMstSubSetString[i][3];
 					}
 					
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();
 	
@@ -1247,7 +1247,7 @@ public class WM00081ItemMstRenewAndCreate{
 		TB_ItemCd.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
-				String GetClGpCd = B00100DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];
+				String GetClGpCd = B100DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];
 				String GetItemCd = TB_ItemCd.getText();	if(null==GetItemCd) {GetItemCd="";}
 				if(!"".equals(GetItemCd)) {
 					SetX=main_fm.getX();

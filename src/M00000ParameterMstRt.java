@@ -158,43 +158,43 @@ public class M00000ParameterMstRt{
 			ArrayList<String> SearchParaTxtAll,
 			Boolean AllSearch){
 		
-		SearchParaCd 	= B00150ArrayListControl.ArryListStringUniqueList(SearchParaCd);
-		SearchParaCdSeqStr = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqStr);
-		SearchParaCdSeqEnd = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqEnd);
-		SearchParaName 	= B00150ArrayListControl.ArryListStringUniqueList(SearchParaName);
-		SearchParaTxt01 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt01);
-		SearchParaTxt02 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt02);
-		SearchParaTxt03 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt03);
-		SearchParaTxt04 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt04);
-		SearchParaTxt05 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt05);
-		SearchParaTxt06 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt06);
-		SearchParaTxt07 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt07);
-		SearchParaTxt08 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt08);
-		SearchParaTxt09 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt09);
-		SearchParaTxt10 = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxt10);
+		SearchParaCd 	= B100ArrayListControl.ArryListStringUniqueList(SearchParaCd);
+		SearchParaCdSeqStr = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqStr);
+		SearchParaCdSeqEnd = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqEnd);
+		SearchParaName 	= B100ArrayListControl.ArryListStringUniqueList(SearchParaName);
+		SearchParaTxt01 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt01);
+		SearchParaTxt02 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt02);
+		SearchParaTxt03 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt03);
+		SearchParaTxt04 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt04);
+		SearchParaTxt05 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt05);
+		SearchParaTxt06 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt06);
+		SearchParaTxt07 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt07);
+		SearchParaTxt08 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt08);
+		SearchParaTxt09 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt09);
+		SearchParaTxt10 = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxt10);
 		
-		SearchParaInt01Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01Str);
-		SearchParaInt02Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02Str);
-		SearchParaInt03Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt03Str);
-		SearchParaInt04Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt04Str);
-		SearchParaInt05Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt05Str);
-		SearchParaInt06Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt06Str);
-		SearchParaInt07Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt07Str);
-		SearchParaInt08Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt08Str);
-		SearchParaInt09Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt09Str);
-		SearchParaInt10Str = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt10Str);
-		SearchParaInt01End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01End);
-		SearchParaInt02End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02End);
-		SearchParaInt03End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt03End);
-		SearchParaInt04End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt04End);
-		SearchParaInt05End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt05End);
-		SearchParaInt06End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt06End);
-		SearchParaInt07End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt07End);
-		SearchParaInt08End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt08End);
-		SearchParaInt09End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt09End);
-		SearchParaInt10End = B00150ArrayListControl.ArryListIntegerUniqueList(SearchParaInt10End);
+		SearchParaInt01Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01Str);
+		SearchParaInt02Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02Str);
+		SearchParaInt03Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt03Str);
+		SearchParaInt04Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt04Str);
+		SearchParaInt05Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt05Str);
+		SearchParaInt06Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt06Str);
+		SearchParaInt07Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt07Str);
+		SearchParaInt08Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt08Str);
+		SearchParaInt09Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt09Str);
+		SearchParaInt10Str = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt10Str);
+		SearchParaInt01End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01End);
+		SearchParaInt02End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02End);
+		SearchParaInt03End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt03End);
+		SearchParaInt04End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt04End);
+		SearchParaInt05End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt05End);
+		SearchParaInt06End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt06End);
+		SearchParaInt07End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt07End);
+		SearchParaInt08End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt08End);
+		SearchParaInt09End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt09End);
+		SearchParaInt10End = B100ArrayListControl.ArryListIntegerUniqueList(SearchParaInt10End);
 		
-		SearchParaTxtAll = B00150ArrayListControl.ArryListStringUniqueList(SearchParaTxtAll);
+		SearchParaTxtAll = B100ArrayListControl.ArryListStringUniqueList(SearchParaTxtAll);
 		
 		
 		//NYANKOパラメータ返却
@@ -595,11 +595,11 @@ public class M00000ParameterMstRt{
 		sql =sql + " order by KM0000_PARAMETER.ParaCd,KM0000_PARAMETER.ParaCdSeq";
 		//System.out.println(sql);
 		if(true==SearchKick) {
-			A00010DbConnect.DB_CONN("NANKO");
+			A100DbConnect.DB_CONN("NANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				if(null!=SearchParaCd && 0<SearchParaCd.size()){
 					for(int i=0;i<SearchParaCd.size();i++){
@@ -897,8 +897,8 @@ public class M00000ParameterMstRt{
 					rt[counter][ColParaInt08]=rset01.getInt("ParaInt08");	//パラメータ数値項目08
 					rt[counter][ColParaInt09]=rset01.getInt("ParaInt09");	//パラメータ数値項目09
 					rt[counter][ColParaInt10]=rset01.getInt("ParaInt10");	//パラメータ数値項目10
-					if(null==rset01.getTimestamp("EntryDate")){rt[counter][ColEntryDate]="";}else{rt[counter][ColEntryDate]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]="";}else{rt[counter][ColUpdateDate]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
+					if(null==rset01.getTimestamp("EntryDate")){rt[counter][ColEntryDate]="";}else{rt[counter][ColEntryDate]=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]="";}else{rt[counter][ColUpdateDate]=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
 					if(null==rset01.getString("EntryUser")){rt[counter][ColEntryUser]="";}else{rt[counter][ColEntryUser]=rset01.getString("EntryUser");}		//登録者
 					if(null==rset01.getString("UpdateUser")){rt[counter][ColUpdateUser]="";}else{rt[counter][ColUpdateUser]=rset01.getString("UpdateUser");}	//更新者
 					
@@ -917,7 +917,7 @@ public class M00000ParameterMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}

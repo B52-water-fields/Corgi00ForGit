@@ -7,11 +7,11 @@ import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 
-public class A00020InsertUdateSQL{
+public class A100InsertUdateSQL{
 	//
 	//データの登録更新をまとめて行います
 	// ==========================================================================
-    //  A00020InsertUdateSQL（ウリエル／判断と裁定の天使　データベースの園の門番）
+    //  A100InsertUdateSQL（ウリエル／判断と裁定の天使　データベースの園の門番）
     // ==========================================================================
     //
     //このクラスは、以下のデータを引き渡された際に、データの登録・更新を判断し、データベースに書き込みます。
@@ -70,7 +70,7 @@ public class A00020InsertUdateSQL{
 			}
 		}
 		if(0<entry_data.length) {
-			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+			A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 		}
 	}
 	public static  void InsertUpdateSomeRecord(Object[][] SetString,String tgt_table,String TgtDB,int non_msg_fg){
@@ -114,7 +114,7 @@ public class A00020InsertUdateSQL{
 				}
 			}
 			if(0<entry_data.length) {
-				A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+				A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 			}
 		}
 	}
@@ -125,7 +125,7 @@ public class A00020InsertUdateSQL{
 		PreparedStatement stmt01=null;
 		PreparedStatement stmt02=null;
 		PreparedStatement stmt03=null;
-		A00010DbConnect.DB_CONN(TgtDB);
+		A100DbConnect.DB_CONN(TgtDB);
 
 		if(null==tgt_table){tgt_table="";}
 		if(0!=non_msg_fg){non_msg_fg=1;}
@@ -140,23 +140,23 @@ public class A00020InsertUdateSQL{
 			for(int i01=0;i01<field_name.length;i01++){
 				for(int i02=0;i02<field_name[i01].length;i02++){
 					if(null==field_name[i01][i02]){field_name[i01][i02]="";}
-					field_name[i01][i02] = B00020ToolsTextControl.Trim(field_name[i01][i02]);
+					field_name[i01][i02] = B100TextControl.Trim(field_name[i01][i02]);
 				}
 			}
 			for(int i01=0;i01<entry_data.length;i01++){
 				for(int i02=0;i02<entry_data[i01].length;i02++){
 					if(null==entry_data[i01][i02]){entry_data[i01][i02]="";}
-					entry_data[i01][i02] = B00020ToolsTextControl.Trim(entry_data[i01][i02]);
+					entry_data[i01][i02] = B100TextControl.Trim(entry_data[i01][i02]);
 				}
 			}
 			for(int i01=0;i01<judg_field.length;i01++){
 					if(null==judg_field[i01]){judg_field[i01]="";}
-					judg_field[i01] = B00020ToolsTextControl.Trim(judg_field[i01]);
+					judg_field[i01] = B100TextControl.Trim(judg_field[i01]);
 			}
 			for(int i01=0;i01<judg_data.length;i01++){
 				for(int i02=0;i02<judg_data[i01].length;i02++){
 					if(null==judg_data[i01][i02]){judg_data[i01][i02]="";}
-					judg_data[i01][i02] = B00020ToolsTextControl.Trim(judg_data[i01][i02]);
+					judg_data[i01][i02] = B100TextControl.Trim(judg_data[i01][i02]);
 				}
 			}
 			//現在の日付時刻の取得
@@ -188,7 +188,7 @@ public class A00020InsertUdateSQL{
 					sql = sql + judg_field[i] + "=?";
 				}
 				//System.out.println(sql);
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 
 				//データ登録用INSERT文
 				ci=0;
@@ -218,7 +218,7 @@ public class A00020InsertUdateSQL{
 				}
 				sql = sql +")";
 				//System.out.println(sql);
-				stmt02 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt02 = A100DbConnect.conn.prepareStatement(sql);
 
 				//データ更新用UPDATE文
 				ci=0;
@@ -243,7 +243,7 @@ public class A00020InsertUdateSQL{
 					sql=sql + judg_field[i]+"=?";
 				}
 				//System.out.println(sql);
-				stmt03 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt03 = A100DbConnect.conn.prepareStatement(sql);
 
 				for(int i01=0;i01<entry_data.length;i01++){
 					int hit_fg = 0;
@@ -274,8 +274,8 @@ public class A00020InsertUdateSQL{
 							}
 							ent_count = ent_count + 1;
 							stmt02.executeUpdate();
-							if(null==A00010DbConnect.session) {
-								A00010DbConnect.conn.commit();
+							if(null==A100DbConnect.session) {
+								A100DbConnect.conn.commit();
 							}
 						}
 					}else{
@@ -298,8 +298,8 @@ public class A00020InsertUdateSQL{
 							}
 							ud_count=ud_count + 1;
 							stmt03.executeUpdate();
-							if(null==A00010DbConnect.session) {
-								A00010DbConnect.conn.commit();
+							if(null==A100DbConnect.session) {
+								A100DbConnect.conn.commit();
 							}
 						}
 					}
@@ -329,7 +329,7 @@ public class A00020InsertUdateSQL{
 					e2.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 			//現在の日付時刻の取得
 			Calendar cal2 = Calendar.getInstance();
 			final Timestamp ps2 = new Timestamp(cal2.getTimeInMillis());
@@ -338,6 +338,6 @@ public class A00020InsertUdateSQL{
 				JOptionPane.showMessageDialog(null, ent_count + "件の登録と "+ud_count+"件の更新を行いました " + str_time + "→" + end_time);
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 	}
 }

@@ -29,57 +29,57 @@ public class WM00120ItemRecomendLocMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00推奨ロケマスタ検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,900,750,"Corgi00推奨ロケマスタ検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,880,250,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,880,250,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		
 		PN_Search.add(PN_SearchLabel);
 		
 		//検索条件
-		JLabel LB_SearchClWh		= B00110FrameParts.JLabelSet(	  0, 25,130,20,"担当倉庫コード:"		,11,1);
-		JLabel LB_SearchClCd		= B00110FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"			,11,1);
-		JLabel LB_SearchClGpCD		= B00110FrameParts.JLabelSet(	  0, 75,130,20,"荷主グループCD:"		,11,1);
-		JLabel LB_SearchItemCd		= B00110FrameParts.JLabelSet(	  0,100,130,20,"商品コード:"			,11,1);
-		JLabel LB_SearchItemName01	= B00110FrameParts.JLabelSet(	  0,125,130,20,"商品名1:"				,11,1);
-		JLabel LB_SearchRecomendLoc	= B00110FrameParts.JLabelSet(	  0,150,130,20,"推奨ロケ:"				,11,1);
-		JLabel LB_SearchLocName		= B00110FrameParts.JLabelSet(	  0,175,130,20,"ロケーション名:"		,11,1);
-		JLabel LB_SearchType		= B00110FrameParts.JLabelSet(	  0,200,130,20,"ロケタイプ:"			,11,1);
+		JLabel LB_SearchClWh		= B100FrameParts.JLabelSet(	  0, 25,130,20,"担当倉庫コード:"		,11,1);
+		JLabel LB_SearchClCd		= B100FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"			,11,1);
+		JLabel LB_SearchClGpCD		= B100FrameParts.JLabelSet(	  0, 75,130,20,"荷主グループCD:"		,11,1);
+		JLabel LB_SearchItemCd		= B100FrameParts.JLabelSet(	  0,100,130,20,"商品コード:"			,11,1);
+		JLabel LB_SearchItemName01	= B100FrameParts.JLabelSet(	  0,125,130,20,"商品名1:"				,11,1);
+		JLabel LB_SearchRecomendLoc	= B100FrameParts.JLabelSet(	  0,150,130,20,"推奨ロケ:"				,11,1);
+		JLabel LB_SearchLocName		= B100FrameParts.JLabelSet(	  0,175,130,20,"ロケーション名:"		,11,1);
+		JLabel LB_SearchType		= B100FrameParts.JLabelSet(	  0,200,130,20,"ロケタイプ:"			,11,1);
 		
-		final JComboBox   TB_SearchClWh			= B00110FrameParts.JComboBoxSet(	130, 25,250,20,B00100DefaultVariable.SearchWhList[0],11);		//担当倉庫コード
-		final JComboBox   TB_SearchClCd			= B00110FrameParts.JComboBoxSet(	130, 50,250,20,B00100DefaultVariable.SearchClList[0],11);		//荷主CD
-		final JComboBox   TB_SearchClGpCD		= B00110FrameParts.JComboBoxSet(	130, 75,250,20,B00100DefaultVariable.SearchClGpList[0],11);	//荷主グループCD
-		final JTextField  TB_SearchItemCd		= B00110FrameParts.JTextFieldSet( 130,100,100,20,"",11,0);	//商品コード
-		final JTextField  TB_SearchItemName01	= B00110FrameParts.JTextFieldSet( 130,125,100,20,"",11,0);	//商品名1
-		final JTextField  TB_SearchRecomendLoc	= B00110FrameParts.JTextFieldSet( 130,150,100,20,"",11,0);	//推奨ロケ
-		final JTextField  TB_SearchLocName		= B00110FrameParts.JTextFieldSet( 130,175,100,20,"",11,0);	//ロケーション名
-		final JComboBox   TB_SearchType			= B00110FrameParts.JComboBoxSet(	130,200,100,20,B00100DefaultVariable.SearchLocType[0],11);	//ロケタイプ
+		final JComboBox   TB_SearchClWh			= B100FrameParts.JComboBoxSet(	130, 25,250,20,B100DefaultVariable.SearchWhList[0],11);		//担当倉庫コード
+		final JComboBox   TB_SearchClCd			= B100FrameParts.JComboBoxSet(	130, 50,250,20,B100DefaultVariable.SearchClList[0],11);		//荷主CD
+		final JComboBox   TB_SearchClGpCD		= B100FrameParts.JComboBoxSet(	130, 75,250,20,B100DefaultVariable.SearchClGpList[0],11);	//荷主グループCD
+		final JTextField  TB_SearchItemCd		= B100FrameParts.JTextFieldSet( 130,100,100,20,"",11,0);	//商品コード
+		final JTextField  TB_SearchItemName01	= B100FrameParts.JTextFieldSet( 130,125,100,20,"",11,0);	//商品名1
+		final JTextField  TB_SearchRecomendLoc	= B100FrameParts.JTextFieldSet( 130,150,100,20,"",11,0);	//推奨ロケ
+		final JTextField  TB_SearchLocName		= B100FrameParts.JTextFieldSet( 130,175,100,20,"",11,0);	//ロケーション名
+		final JComboBox   TB_SearchType			= B100FrameParts.JComboBoxSet(	130,200,100,20,B100DefaultVariable.SearchLocType[0],11);	//ロケタイプ
 		
-		JLabel LB2_SearchItemCd			= B00110FrameParts.JLabelSet(	230,100,130,20,"と一致"		,11,0);
-		JLabel LB2_SearchItemName01		= B00110FrameParts.JLabelSet(	230,125,130,20,"を含む"		,11,0);
-		JLabel LB2_SearchRecomendLoc	= B00110FrameParts.JLabelSet(	230,150,130,20,"と一致"		,11,0);
-		JLabel LB2_SearchLocName		= B00110FrameParts.JLabelSet(	230,175,130,20,"を含む"		,11,0);
+		JLabel LB2_SearchItemCd			= B100FrameParts.JLabelSet(	230,100,130,20,"と一致"		,11,0);
+		JLabel LB2_SearchItemName01		= B100FrameParts.JLabelSet(	230,125,130,20,"を含む"		,11,0);
+		JLabel LB2_SearchRecomendLoc	= B100FrameParts.JLabelSet(	230,150,130,20,"と一致"		,11,0);
+		JLabel LB2_SearchLocName		= B100FrameParts.JLabelSet(	230,175,130,20,"を含む"		,11,0);
 		
-		for(int i=0;i<B00100DefaultVariable.SearchWhList[1].length;i++) {
-			if(B00100DefaultVariable.SearchWhList[1][i].equals(A00000Main.ClWh)) {
+		for(int i=0;i<B100DefaultVariable.SearchWhList[1].length;i++) {
+			if(B100DefaultVariable.SearchWhList[1][i].equals(A00000Main.ClWh)) {
 				TB_SearchClWh.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.SearchClList[1].length;i++) {
-			if(B00100DefaultVariable.SearchClList[1][i].equals(A00000Main.ClCd)) {
+		for(int i=0;i<B100DefaultVariable.SearchClList[1].length;i++) {
+			if(B100DefaultVariable.SearchClList[1][i].equals(A00000Main.ClCd)) {
 				TB_SearchClCd.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.SearchClGpList[1].length;i++) {
-			if(B00100DefaultVariable.SearchClGpList[1][i].equals(A00000Main.ClGp)) {
+		for(int i=0;i<B100DefaultVariable.SearchClGpList[1].length;i++) {
+			if(B100DefaultVariable.SearchClGpList[1][i].equals(A00000Main.ClGp)) {
 				TB_SearchClGpCD.setSelectedIndex(i);
 			}
 		}
@@ -89,7 +89,7 @@ public class WM00120ItemRecomendLocMstSearch{
 		TB_SearchClGpCD.setEnabled(false);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(130,225,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(130,225,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		PN_Search.add(LB_SearchClWh);
@@ -128,10 +128,10 @@ public class WM00120ItemRecomendLocMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -148,36 +148,36 @@ public class WM00120ItemRecomendLocMstSearch{
 		
 		for(int i=0;i<RtItemRecomendLocMstRt.length;i++) {
 			if("int".equals((String)RtItemRecomendLocMstRt[i][2])||"float".equals((String)RtItemRecomendLocMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,300,870,325,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,300,870,325,tb01);
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);	
 		
 		
@@ -195,14 +195,14 @@ public class WM00120ItemRecomendLocMstSearch{
 						tableModel_ms01.removeRow(0);
 					}
 					
-					String GetSearchClWh		= B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];		//担当倉庫コード
-					String GetSearchClCd		= B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];		//荷主CD
-					String GetSearchClGpCD		= B00100DefaultVariable.SearchClGpList[1][TB_SearchClGpCD.getSelectedIndex()];	//荷主グループCD
+					String GetSearchClWh		= B100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];		//担当倉庫コード
+					String GetSearchClCd		= B100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];		//荷主CD
+					String GetSearchClGpCD		= B100DefaultVariable.SearchClGpList[1][TB_SearchClGpCD.getSelectedIndex()];	//荷主グループCD
 					String GetSearchItemCd		= TB_SearchItemCd.getText();			//商品CD
 					String GetSearchItemName01	= TB_SearchItemName01.getText();		//商品名1
 					String GetSearchRecomendLoc	= TB_SearchRecomendLoc.getText();		//推奨ロケ
 					String GetSearchLocName		= TB_SearchLocName.getText();			//ロケーション名
-					String GetSearchType		= B00100DefaultVariable.SearchLocType[1][TB_SearchType.getSelectedIndex()];		//ロケタイプ
+					String GetSearchType		= B100DefaultVariable.SearchLocType[1][TB_SearchType.getSelectedIndex()];		//ロケタイプ
 					
 					if(null==GetSearchClWh			){GetSearchClWh			= "";}		//担当倉庫コード
 					if(null==GetSearchClCd			){GetSearchClCd			= "";}		//荷主CD
@@ -213,16 +213,16 @@ public class WM00120ItemRecomendLocMstSearch{
 					if(null==GetSearchLocName		){GetSearchLocName		= "";}		//ロケーション名
 					if(null==GetSearchType			){GetSearchType			= "";}		//ロケタイプ
 					
-					GetSearchClWh			= B00020ToolsTextControl.Trim(GetSearchClWh);			//担当倉庫コード
-					GetSearchClCd			= B00020ToolsTextControl.Trim(GetSearchClCd);			//荷主CD
-					GetSearchClGpCD			= B00020ToolsTextControl.Trim(GetSearchClGpCD);			//荷主グループCD
-					GetSearchItemCd			= B00020ToolsTextControl.Trim(GetSearchItemCd);			//商品CD
-					GetSearchItemName01		= B00020ToolsTextControl.Trim(GetSearchItemName01);		//商品名1
-					GetSearchRecomendLoc	= B00020ToolsTextControl.Trim(GetSearchRecomendLoc);	//推奨ロケ
-					GetSearchLocName		= B00020ToolsTextControl.Trim(GetSearchLocName);		//ロケーション名
-					GetSearchType			= B00020ToolsTextControl.Trim(GetSearchType);			//ロケタイプ
+					GetSearchClWh			= B100TextControl.Trim(GetSearchClWh);			//担当倉庫コード
+					GetSearchClCd			= B100TextControl.Trim(GetSearchClCd);			//荷主CD
+					GetSearchClGpCD			= B100TextControl.Trim(GetSearchClGpCD);			//荷主グループCD
+					GetSearchItemCd			= B100TextControl.Trim(GetSearchItemCd);			//商品CD
+					GetSearchItemName01		= B100TextControl.Trim(GetSearchItemName01);		//商品名1
+					GetSearchRecomendLoc	= B100TextControl.Trim(GetSearchRecomendLoc);	//推奨ロケ
+					GetSearchLocName		= B100TextControl.Trim(GetSearchLocName);		//ロケーション名
+					GetSearchType			= B100TextControl.Trim(GetSearchType);			//ロケタイプ
 					
-					GetSearchType			= B00020ToolsTextControl.num_only_String(GetSearchType);			//ロケタイプ
+					GetSearchType			= B100TextControl.num_only_String(GetSearchType);			//ロケタイプ
 					
 					
 					ArrayList<String> SearchClCd		= new ArrayList<String>();	//荷主コード
@@ -266,9 +266,9 @@ public class WM00120ItemRecomendLocMstSearch{
 						tableModel_ms01.addRow(SetOb);;
 					}
 					if(0==ItemRecomendLocMstRt.length) {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}
@@ -339,7 +339,7 @@ public class WM00120ItemRecomendLocMstSearch{
 					String MSG = "エクセルファイル選択";
 					String[] file_type = {".xlsx"};
 					String file_type_name = "エクセルファイル";
-					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						SetX=main_fm.getX();
@@ -378,7 +378,7 @@ public class WM00120ItemRecomendLocMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","推奨ロケマスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","推奨ロケマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -389,7 +389,7 @@ public class WM00120ItemRecomendLocMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","推奨ロケマスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","推奨ロケマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

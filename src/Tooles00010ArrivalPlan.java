@@ -24,7 +24,7 @@ public class Tooles00010ArrivalPlan{
 	
 	public static void ParameterMstWankoCheck() {
 		//パラメータマスタに入荷予定番号採番情報がなければ作る
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		Object[][] SetString = {
 				 {"ClWh"		,"1","0","Key"	,A00000Main.ClWh}				//担当倉庫コード
@@ -62,11 +62,11 @@ public class Tooles00010ArrivalPlan{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 	
 	private static void ParameterMstWankoSet(int NowArrNo) {
-String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		Object[][] SetString = {
 				 {"ClWh"		,"0","1","Key"	,A00000Main.ClWh}				//担当倉庫コード
@@ -104,7 +104,7 @@ String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeContro
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 	
 	private static Object[][] ParameterMstRt(){

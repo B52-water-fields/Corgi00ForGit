@@ -109,7 +109,7 @@ public class A00000Main{
  	
  	LoginStr(String WhCd,String UserId,String UserPass) 
  							:ログインユーザーがzeusだった場合
- 							 A00040TableCheck.TableCheck()と A00050OldDataTableCheck.OldDataTableCheck()起動して
+ 							 A100TableCheck.TableCheck()と A100OldDataTableCheck.OldDataTableCheck()起動して
  							 天地創造・世界の修復（各スキーマに必要テーブル自動生成＆各テーブルのフィールドチェック）
  							 
  							 ⇒ログインユーザーの権限に応じて先に進む（権限なければ強制終了）
@@ -156,28 +156,28 @@ public class A00000Main{
     private static void LogIn() {
     	//データベースに接続しユーザーマスターを読み込んでログイン画面表示
   		//ログイン画面起動
-		final JFrame login_fm = B00110FrameParts.FrameCreate(20,20,400,300,"Corgi00ログイン","");
+		final JFrame login_fm = B100FrameParts.FrameCreate(20,20,400,300,"Corgi00ログイン","");
 	
 		//ユーザーID入力BOX
-		final JTextField 		WH_ID 	= B00110FrameParts.JTextFieldSet(		100,20,150,20,"",11,0);				//ユーザー所属倉庫ID入力BOX
-		final JTextField 		U_ID 	= B00110FrameParts.JTextFieldSet(		100,50,150,20,"",11,0);				//ユーザーID入力BOX
-		final JPasswordField 	U_Pass 	= B00110FrameParts.JPasswordFieldSet(	100,80,150,20,"",11,0);				//ユーザーパスワード入力BOX
+		final JTextField 		WH_ID 	= B100FrameParts.JTextFieldSet(		100,20,150,20,"",11,0);				//ユーザー所属倉庫ID入力BOX
+		final JTextField 		U_ID 	= B100FrameParts.JTextFieldSet(		100,50,150,20,"",11,0);				//ユーザーID入力BOX
+		final JPasswordField 	U_Pass 	= B100FrameParts.JPasswordFieldSet(	100,80,150,20,"",11,0);				//ユーザーパスワード入力BOX
 	
 		//入力BOX説明
-		JLabel WH_ID_LB  = B00110FrameParts.JLabelSet(	20,20,150,20,"倉庫コード:",11,1);
-		JLabel U_ID_LB   = B00110FrameParts.JLabelSet(	20,50,150,20,"ユーザーID:",11,1);
-		JLabel U_Pass_LB = B00110FrameParts.JLabelSet(	20,80,150,20,"パスワード:",11,1);
+		JLabel WH_ID_LB  = B100FrameParts.JLabelSet(	20,20,150,20,"倉庫コード:",11,1);
+		JLabel U_ID_LB   = B100FrameParts.JLabelSet(	20,50,150,20,"ユーザーID:",11,1);
+		JLabel U_Pass_LB = B100FrameParts.JLabelSet(	20,80,150,20,"パスワード:",11,1);
 	
 	
 		//EXITボタン
-		JButton login_exit_btn=B00110FrameParts.BtnSet(50,120,100,20,"EXIT",11);
+		JButton login_exit_btn=B100FrameParts.BtnSet(50,120,100,20,"EXIT",11);
 	
 		//ENTRYボタン
-		JButton login_entry_btn=B00110FrameParts.BtnSet(180,120,100,20,"ENTRY",11);
+		JButton login_entry_btn=B100FrameParts.BtnSet(180,120,100,20,"ENTRY",11);
 		
 		//表示倍率
-		JLabel LB_Magn = B00110FrameParts.JLabelSet(	10,200,150,20,"表示倍率(%);",11,1);
-		final JFormattedTextField TB_Magn=B00110FrameParts.JFormattedTextFieldSet(	160,200,100,20,""+Mul,11,1,"####");	
+		JLabel LB_Magn = B100FrameParts.JLabelSet(	10,200,150,20,"表示倍率(%);",11,1);
+		final JFormattedTextField TB_Magn=B100FrameParts.JFormattedTextFieldSet(	160,200,100,20,""+Mul,11,1,"####");	
 
 		login_fm.add(login_exit_btn);
 		login_fm.add(login_entry_btn);
@@ -201,14 +201,14 @@ public class A00000Main{
 				
 				String WST = TB_Magn.getText();
 				if(null==WST) {WST = "100";}
-				WST = B00020ToolsTextControl.num_only_String(WST);
+				WST = B100TextControl.num_only_String(WST);
 				if("".equals(WST)) {WST = "100";}
 				
 				WMul = Integer.parseInt(WST);
 								
 				if(0==LoginCheckCount) {
 					//ユーザーマスタテーブル無ければ作成
-					A00040TableCheck.UserMstCreate();
+					A100TableCheck.UserMstCreate();
 					//ユーザーzeusだった場合、zeusユーザー無ければ作る
 					if("zeus".equals(UserId)) {
 						ZeusCreate();
@@ -259,14 +259,14 @@ public class A00000Main{
 				
 				String WST = TB_Magn.getText();
 				if(null==WST) {WST = "100";}
-				WST = B00020ToolsTextControl.num_only_String(WST);
+				WST = B100TextControl.num_only_String(WST);
 				if("".equals(WST)) {WST = "100";}
 				
 				WMul = Integer.parseInt(WST);
 				
 				if(0==LoginCheckCount) {
 					//ユーザーマスタテーブル無ければ作成
-					A00040TableCheck.UserMstCreate();
+					A100TableCheck.UserMstCreate();
 					//ユーザーzeusだった場合、zeusユーザー無ければ作る
 					if("zeus".equals(UserId)) {
 						ZeusCreate();
@@ -311,15 +311,15 @@ public class A00000Main{
     
     public static void ClSelect() {
     	//荷主選択
-    	final JFrame main_fm = B00110FrameParts.FrameCreate(20,20,500,250,"Corgi荷主選択","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+    	final JFrame main_fm = B100FrameParts.FrameCreate(20,20,500,250,"Corgi荷主選択","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		Object[][] WorkClList = ClList();
 		//荷主マスタ戻り値空だった場合、荷主グループClGp000配下に荷主を１件作る
 		if(null==WorkClList||0==WorkClList.length) {
-			B00101DefaultVariableWarehouse.DefaultClCreate(LoginUserWH);
+			B100DefaultVariableWarehouse.DefaultClCreate(LoginUserWH);
 			WorkClList = ClList();
 		}
 		
@@ -331,8 +331,8 @@ public class A00000Main{
 			SelectCl[i] = "("+ClList[i][M00011ClMstRt.Colcl_cd]+")"+ClList[i][M00011ClMstRt.ColCLName01];
 		}
 		
-		JLabel LbCLList = B00110FrameParts.JLabelSet(	 20,80,100,20,"荷主選択:",11,1);
-		final JComboBox TbCLList = B00110FrameParts.JComboBoxSet(120,80,300,20,SelectCl,11);
+		JLabel LbCLList = B100FrameParts.JLabelSet(	 20,80,100,20,"荷主選択:",11,1);
+		final JComboBox TbCLList = B100FrameParts.JComboBoxSet(120,80,300,20,SelectCl,11);
 		
 		if(null==ClCd||"".equals(ClCd)) {
 			TbCLList.setSelectedIndex(0);
@@ -377,7 +377,7 @@ public class A00000Main{
 				ClGp = ""+ClList[TbCLList.getSelectedIndex()][1];
 				
 				//荷主毎に決定する変数取得
-				B00100DefaultVariable.DefaultVariable();
+				B100DefaultVariable.DefaultVariable();
 				
 				main_fm.setVisible(false);
 				main_fm.dispose();
@@ -395,7 +395,7 @@ public class A00000Main{
 		String[][] judg_data = new String[1][3];
 		String TgtDB = "NYANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		judg_field[0] = "WHCD";						//倉庫コード
 		judg_field[1] = "ShippingCompanyCd";		//運送会社CD
@@ -509,14 +509,14 @@ public class A00000Main{
 		entry_data[0][23] = "";			//基幹システムユーザーコード
 		entry_data[0][24] = "0";		//削除区分
 
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
     }
     
     private static boolean LoginCheck(String WhCd,String UserId,String UserPass){
     	boolean LoginCheck=false;
     	
     	//ログイン入力内容でログインチェック
-    	A00010DbConnect.DB_CONN("NYANKO");
+    	A100DbConnect.DB_CONN("NYANKO");
 		ResultSet rset01 = null;
 		PreparedStatement stmt01 = null;
     	
@@ -556,7 +556,7 @@ public class A00000Main{
     	
 		//System.out.println(sql);
 		try {
-			stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+			stmt01 = A100DbConnect.conn.prepareStatement(sql);
 			stmt01.setString(1, WhCd);
 			stmt01.setString(2, UserId);
 			stmt01.setString(3, UserPass);
@@ -571,7 +571,7 @@ public class A00000Main{
 				if(null==rset01.getString("USER_NAME")){LoginUserName="";}else{LoginUserName=rset01.getString("USER_NAME");}	
 				if(null==rset01.getString("ShippingCompanyCd")){LoginUserCompany="";}else{LoginUserCompany=rset01.getString("ShippingCompanyCd");}	
 				if(null==rset01.getString("MainClient")){LoginUserClient="";}else{LoginUserClient=rset01.getString("MainClient");}	
-				if(null==rset01.getTimestamp("UpdateDate")) {LoginUserLastUpDate = "";}else{LoginUserLastUpDate=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	
+				if(null==rset01.getTimestamp("UpdateDate")) {LoginUserLastUpDate = "";}else{LoginUserLastUpDate=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	
 				
 				if(null==rset01.getString("AuthorityFG")||"".equals(rset01.getString("AuthorityFG"))){LoginUserAuthorityFG = "0";}else{
 					LoginUserAuthorityFG = rset01.getString("AuthorityFG");
@@ -589,31 +589,31 @@ public class A00000Main{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.Fullclose();
+		A100DbConnect.Fullclose();
     	return LoginCheck;
     }
     
     private static void LoginStr(String WhCd,String UserId,String UserPass) {
     	if(100>WMul) {WMul=100;}
     	Mul = WMul;
-    	//B00130SoundCreate.SoundTest();
+    	//B100SoundCreate.SoundTest();
     	
     	//ログインユーザーがzeusだった場合天地創造（データベースの存在チェック・フィールドのカラムの不足チェック走らせる）
     	if(LoginUserWH.equals("0000") && LoginUserId.equals("zeus")) {
-    		A00040TableCheck.TableCheck();
-    		A00050OldDataTableCheck.OldDataTableCheck();
+    		A100TableCheck.TableCheck();
+    		A100OldDataTableCheck.OldDataTableCheck();
     		
-    		B00100DefaultVariable.DefaultClGp();
-    		B00100DefaultVariable.DefaultShippingCompany();
-    		B00100DefaultVariable.DefaultWarehouse();
-    		B00100DefaultVariable.Post0000000();
-    		B00100DefaultVariable.ForcedShipmentCD();
+    		B100DefaultVariable.DefaultClGp();
+    		B100DefaultVariable.DefaultShippingCompany();
+    		B100DefaultVariable.DefaultWarehouse();
+    		B100DefaultVariable.Post0000000();
+    		B100DefaultVariable.ForcedShipmentCD();
     		LoginCheck(WhCd,UserId,UserPass);
-    		B00120TableSelectSql.TableSelectSql();
+    		B100TableSelectSql.TableSelectSql();
     	}
     	//ユーザー情報の更新がパスワード有効期限推奨日数よりも前だったら警告
     	if(0<PasswordExpireDays) {
-    		if("".equals(PasswordExpireDays)||0>B00050ToolsDateTimeControl.ddif(B00050ToolsDateTimeControl.ndate_before(B00050ToolsDateTimeControl.dtm()[0],PasswordExpireDays),B00050ToolsDateTimeControl.dtmTimestamp2(LoginUserLastUpDate)[0])) {
+    		if("".equals(PasswordExpireDays)||0>B100DateTimeControl.ddif(B100DateTimeControl.ndate_before(B100DateTimeControl.dtm()[0],PasswordExpireDays),B100DateTimeControl.dtmTimestamp2(LoginUserLastUpDate)[0])) {
     			JOptionPane.showMessageDialog(null, "ユーザー情報の最終更新が"+PasswordExpireDays+"より前です\nパスワード更新しやがれください");
     		}
     	}
@@ -663,7 +663,7 @@ public class A00000Main{
     
     private static void SqlSetting() {
     	 //MYSQLへの接続設定読込外部ファイルにMYSQLデータベースへの接続設定を読込        
-    	ArrayList<String> IniRead = B00010ToolsTextRead.TxtReadRtArray(IniPth,"UTF-8");
+    	ArrayList<String> IniRead = B100TextRead.TxtReadRtArray(IniPth,"UTF-8");
     	
     	for(int i=0;i<IniRead.size();i++) {
     		if(!IniRead.get(i).equals(IniRead.get(i).replace("DefaultSshHostName", ""))) {
@@ -709,7 +709,7 @@ public class A00000Main{
     			MySqlDefaultSchemaOLD = IniRead.get(i).replace("MySqlDefaultSchemaOLD", "").replace(" ", "").replace("=", "").replace("\"", "").replace(";", "").replace("String", "");
     		}
     		if(!IniRead.get(i).equals(IniRead.get(i).replace("PasswordExpireDays", ""))) {
-    			String WST = B00020ToolsTextControl.num_only_String(IniRead.get(i));
+    			String WST = B100TextControl.num_only_String(IniRead.get(i));
     			if("".equals(WST)) {WST = "180";}
     			PasswordExpireDays = Integer.parseInt(WST);
     		}
@@ -731,7 +731,7 @@ public class A00000Main{
     
     public static void EndPg(){
     	//データベース接続・SSH接続切断→終了
-    	A00010DbConnect.Fullclose();
+    	A100DbConnect.Fullclose();
 		System.exit(0);
 	}
 }

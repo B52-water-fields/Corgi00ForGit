@@ -69,16 +69,16 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定取込（データ内容確認）","NK");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定取込（データ内容確認）","NK");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_Msg 	= B00110FrameParts.JLabelSet(  0, 50,300,20,"以下のデータを取込もうとしています"	,11,1);
+		JLabel LB_Msg 	= B100FrameParts.JLabelSet(  0, 50,300,20,"以下のデータを取込もうとしています"	,11,1);
 		main_fm.add(LB_Msg);
 		
 		Object[][] RtArrivalPlanArrayEntry = WT0001004ArrivalPlanArrayEntrySourceDataView.RtArrivalPlanArrayEntrySourceDataView();
@@ -91,10 +91,10 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -111,35 +111,35 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 		
 		for(int i=0;i<RtArrivalPlanArrayEntry.length;i++) {
 			if("int".equals((String)RtArrivalPlanArrayEntry[i][2])||"float".equals((String)RtArrivalPlanArrayEntry[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,75,860,500,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,75,860,500,tb01);
 		main_fm.add(scpn01);
 		
 		for(int i=0;i<EntryData.length;i++) {
 			Object[] SetOb = new Object[WT0001004ArrivalPlanArrayEntrySourceDataView.RtArrivalPlanArrayEntrySourceDataView().length+1];
 			SetOb[0] = false;
-			SetOb[ColClWh+1]		= B00020ToolsTextControl.Trim(EntryData[i][ColClWh]);		//担当倉庫
-			SetOb[ColClCd+1]		= B00020ToolsTextControl.Trim(EntryData[i][ColClCd]);		//荷主CD
-			SetOb[ColSPCd+1]		= B00020ToolsTextControl.Trim(EntryData[i][ColSPCd]);		//仕入先CD
-			SetOb[ColPlanDate+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColPlanDate]);	//入荷予定日
-			SetOb[ColClArrNo+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColClArrNo]);	//荷主予定番号
-			SetOb[ColClItemCd+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColClItemCd]);	//荷主商品CD
-			SetOb[ColLot+1]		= B00020ToolsTextControl.Trim(EntryData[i][ColLot]);		//ロット
-			SetOb[ColExpDate+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColExpDate]);	//賞味期限
-			SetOb[ColPlanQty+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColPlanQty]);	//数量
-			SetOb[ColHdCom01+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColHdCom01]);	//ヘッダコメント01
-			SetOb[ColHdCom02+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColHdCom02]);	//ヘッダコメント02
-			SetOb[ColHdCom03+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColHdCom03]);	//ヘッダコメント03
-			SetOb[ColMsCom01+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColMsCom01]);	//明細コメント01
-			SetOb[ColMsCom02+1]	= B00020ToolsTextControl.Trim(EntryData[i][ColMsCom02]);	//明細コメント02
+			SetOb[ColClWh+1]		= B100TextControl.Trim(EntryData[i][ColClWh]);		//担当倉庫
+			SetOb[ColClCd+1]		= B100TextControl.Trim(EntryData[i][ColClCd]);		//荷主CD
+			SetOb[ColSPCd+1]		= B100TextControl.Trim(EntryData[i][ColSPCd]);		//仕入先CD
+			SetOb[ColPlanDate+1]	= B100TextControl.Trim(EntryData[i][ColPlanDate]);	//入荷予定日
+			SetOb[ColClArrNo+1]	= B100TextControl.Trim(EntryData[i][ColClArrNo]);	//荷主予定番号
+			SetOb[ColClItemCd+1]	= B100TextControl.Trim(EntryData[i][ColClItemCd]);	//荷主商品CD
+			SetOb[ColLot+1]		= B100TextControl.Trim(EntryData[i][ColLot]);		//ロット
+			SetOb[ColExpDate+1]	= B100TextControl.Trim(EntryData[i][ColExpDate]);	//賞味期限
+			SetOb[ColPlanQty+1]	= B100TextControl.Trim(EntryData[i][ColPlanQty]);	//数量
+			SetOb[ColHdCom01+1]	= B100TextControl.Trim(EntryData[i][ColHdCom01]);	//ヘッダコメント01
+			SetOb[ColHdCom02+1]	= B100TextControl.Trim(EntryData[i][ColHdCom02]);	//ヘッダコメント02
+			SetOb[ColHdCom03+1]	= B100TextControl.Trim(EntryData[i][ColHdCom03]);	//ヘッダコメント03
+			SetOb[ColMsCom01+1]	= B100TextControl.Trim(EntryData[i][ColMsCom01]);	//明細コメント01
+			SetOb[ColMsCom02+1]	= B100TextControl.Trim(EntryData[i][ColMsCom02]);	//明細コメント02
 			
-			SetOb[ColExpDate+1]	= B00050ToolsDateTimeControl.DateFormat((String)SetOb[ColExpDate+1]);		//賞味期限
-			SetOb[ColPlanQty+1]	= B00020ToolsTextControl.num_only_String02((String)SetOb[ColPlanQty+1]);	//数量
+			SetOb[ColExpDate+1]	= B100DateTimeControl.DateFormat((String)SetOb[ColExpDate+1]);		//賞味期限
+			SetOb[ColPlanQty+1]	= B100TextControl.num_only_String02((String)SetOb[ColPlanQty+1]);	//数量
 			
 			if("".equals((String)SetOb[ColPlanQty+1])) {SetOb[ColPlanQty+1]="0";}
 			
@@ -161,7 +161,7 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+				String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 				int RowCount = tableModel_ms01.getRowCount();
 				Object[][] CheckOb = new Object[RowCount][TableCol.length-1];
 				for(int i=0;i<RowCount;i++) {
@@ -431,24 +431,24 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 	
 	private static Object[][] CheckObTrim(Object[][] CheckOb){
 		for(int i=0;i<CheckOb.length;i++) {
-			CheckOb[i][ColClWh] 		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColClWh]);		//担当倉庫
-			CheckOb[i][ColClCd] 		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColClCd]);		//荷主CD
-			CheckOb[i][ColSPCd] 		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColSPCd]);		//仕入先CD
-			CheckOb[i][ColPlanDate] 	= B00020ToolsTextControl.Trim((String)CheckOb[i][ColPlanDate]);	//入荷予定日
-			CheckOb[i][ColClArrNo] 	= B00020ToolsTextControl.Trim((String)CheckOb[i][ColClArrNo]);	//荷主予定番号
-			CheckOb[i][ColClItemCd]	= B00020ToolsTextControl.Trim((String)CheckOb[i][ColClItemCd]);	//荷主商品CD
-			CheckOb[i][ColLot] 		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColLot]);			//ロット
-			CheckOb[i][ColExpDate] 	= B00020ToolsTextControl.Trim((String)CheckOb[i][ColExpDate]);	//賞味期限
-			CheckOb[i][ColPlanQty] 	= B00020ToolsTextControl.Trim((String)CheckOb[i][ColPlanQty]);	//数量
-			CheckOb[i][ColHdCom01]		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColHdCom01]);	//ヘッダコメント01
-			CheckOb[i][ColHdCom02]		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColHdCom02]);	//ヘッダコメント02
-			CheckOb[i][ColHdCom03]		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColHdCom03]);	//ヘッダコメント03
-			CheckOb[i][ColMsCom01]		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColMsCom01]);	//明細コメント01
-			CheckOb[i][ColMsCom02]		= B00020ToolsTextControl.Trim((String)CheckOb[i][ColMsCom02]);	//明細コメント01
+			CheckOb[i][ColClWh] 		= B100TextControl.Trim((String)CheckOb[i][ColClWh]);		//担当倉庫
+			CheckOb[i][ColClCd] 		= B100TextControl.Trim((String)CheckOb[i][ColClCd]);		//荷主CD
+			CheckOb[i][ColSPCd] 		= B100TextControl.Trim((String)CheckOb[i][ColSPCd]);		//仕入先CD
+			CheckOb[i][ColPlanDate] 	= B100TextControl.Trim((String)CheckOb[i][ColPlanDate]);	//入荷予定日
+			CheckOb[i][ColClArrNo] 	= B100TextControl.Trim((String)CheckOb[i][ColClArrNo]);	//荷主予定番号
+			CheckOb[i][ColClItemCd]	= B100TextControl.Trim((String)CheckOb[i][ColClItemCd]);	//荷主商品CD
+			CheckOb[i][ColLot] 		= B100TextControl.Trim((String)CheckOb[i][ColLot]);			//ロット
+			CheckOb[i][ColExpDate] 	= B100TextControl.Trim((String)CheckOb[i][ColExpDate]);	//賞味期限
+			CheckOb[i][ColPlanQty] 	= B100TextControl.Trim((String)CheckOb[i][ColPlanQty]);	//数量
+			CheckOb[i][ColHdCom01]		= B100TextControl.Trim((String)CheckOb[i][ColHdCom01]);	//ヘッダコメント01
+			CheckOb[i][ColHdCom02]		= B100TextControl.Trim((String)CheckOb[i][ColHdCom02]);	//ヘッダコメント02
+			CheckOb[i][ColHdCom03]		= B100TextControl.Trim((String)CheckOb[i][ColHdCom03]);	//ヘッダコメント03
+			CheckOb[i][ColMsCom01]		= B100TextControl.Trim((String)CheckOb[i][ColMsCom01]);	//明細コメント01
+			CheckOb[i][ColMsCom02]		= B100TextControl.Trim((String)CheckOb[i][ColMsCom02]);	//明細コメント01
 			
-			CheckOb[i][ColExpDate] 	= B00050ToolsDateTimeControl.DateFormat((String)CheckOb[i][ColExpDate]);
+			CheckOb[i][ColExpDate] 	= B100DateTimeControl.DateFormat((String)CheckOb[i][ColExpDate]);
 			
-			CheckOb[i][ColPlanQty] = B00020ToolsTextControl.num_only_String02((String)CheckOb[i][ColPlanQty]);
+			CheckOb[i][ColPlanQty] = B100TextControl.num_only_String02((String)CheckOb[i][ColPlanQty]);
 			if("".equals((String)CheckOb[i][ColPlanQty])) {CheckOb[i][ColPlanQty]="0";}
 			float WFT = Float.parseFloat((String)CheckOb[i][ColPlanQty]);
 			int Qty = (int)WFT;
@@ -571,25 +571,25 @@ public class WT0001004ArrivalPlanArrayEntrySourceDataView{
 	private static void ErrView(ArrayList<String>ErrMsg) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000Main.MainFLD+"\\ArrivalControl";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\ArrivalControl\\ArrivalPlanEntry";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\ArrivalControl\\ArrivalPlanEntry\\Err";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\ArrivalControl\\ArrivalPlanEntry\\BK";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
-		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		String NowDTM=B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
 		FLD_PATH = A00000Main.MainFLD+"\\ArrivalControl\\ArrivalPlanEntry\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		
-		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		B100TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		
 		//古いエラーデータ削除
-		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		B100FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100DefaultVariable.ErrTxtDelete);
 		
 		//ファイル開く
 		File file = new File(ErrFP);

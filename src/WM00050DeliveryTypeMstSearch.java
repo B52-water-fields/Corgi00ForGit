@@ -29,32 +29,32 @@ public class WM00050DeliveryTypeMstSearch{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,650,750,"Corgi00運送タイプマスタ検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,650,750,"Corgi00運送タイプマスタ検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,620,160,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,620,160,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 
-		JLabel LB_SearchDeliveryTypeNo		= B00110FrameParts.JLabelSet(  0, 25,100,20,"タイプNo:"	,11,1);
-		JLabel LB_SearchDeliveryTypeCd		= B00110FrameParts.JLabelSet(  0, 50,100,20,"運送タイプCD:"	,11,1);
-		JLabel LB_SearchDeliveryTypeName	= B00110FrameParts.JLabelSet(  0, 75,100,20,"運送タイプ名:"	,11,1);
+		JLabel LB_SearchDeliveryTypeNo		= B100FrameParts.JLabelSet(  0, 25,100,20,"タイプNo:"	,11,1);
+		JLabel LB_SearchDeliveryTypeCd		= B100FrameParts.JLabelSet(  0, 50,100,20,"運送タイプCD:"	,11,1);
+		JLabel LB_SearchDeliveryTypeName	= B100FrameParts.JLabelSet(  0, 75,100,20,"運送タイプ名:"	,11,1);
 		
 		String[] TypeNoList = {"未指定","01","02","03","04","05"};
 		
-		final JComboBox  TB_SearchDeliveryTypeNo	= B00110FrameParts.JComboBoxSet( 100, 25,100,20,TypeNoList,11);	//タイプNo
-		final JTextField TB_SearchDeliveryTypeCd	= B00110FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//運送タイプCD
-		final JTextField TB_SearchDeliveryTypeName	= B00110FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//運送タイプ名
+		final JComboBox  TB_SearchDeliveryTypeNo	= B100FrameParts.JComboBoxSet( 100, 25,100,20,TypeNoList,11);	//タイプNo
+		final JTextField TB_SearchDeliveryTypeCd	= B100FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//運送タイプCD
+		final JTextField TB_SearchDeliveryTypeName	= B100FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//運送タイプ名
 		
-		JLabel LB2_SearchDeliveryTypeNo		= B00110FrameParts.JLabelSet(200, 25, 50,20,""			,11,0);
-		JLabel LB2_SearchDeliveryTypeCd		= B00110FrameParts.JLabelSet(200, 50, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDeliveryTypeName	= B00110FrameParts.JLabelSet(200, 75, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchDeliveryTypeNo		= B100FrameParts.JLabelSet(200, 25, 50,20,""			,11,0);
+		JLabel LB2_SearchDeliveryTypeCd		= B100FrameParts.JLabelSet(200, 50, 50,20,"と一致"	,11,0);
+		JLabel LB2_SearchDeliveryTypeName	= B100FrameParts.JLabelSet(200, 75, 50,20,"を含む"	,11,0);
 
 		PN_Search.add(LB_SearchDeliveryTypeNo);
 		PN_Search.add(LB_SearchDeliveryTypeCd);
@@ -69,7 +69,7 @@ public class WM00050DeliveryTypeMstSearch{
 		PN_Search.add(LB2_SearchDeliveryTypeName);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(100,125,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(100,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		Object[][] RtSettingDeliveryTypeMstRt = M00050DeliveryTypeMstRt.RtSettingDeliveryTypeMstRt();
@@ -82,9 +82,9 @@ public class WM00050DeliveryTypeMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -101,14 +101,14 @@ public class WM00050DeliveryTypeMstSearch{
 		
 		for(int i=0;i<RtSettingDeliveryTypeMstRt.length;i++) {
 			if("int".equals((String)RtSettingDeliveryTypeMstRt[i][2])||"float".equals((String)RtSettingDeliveryTypeMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,210,620,395,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,210,620,395,tb01);
 		main_fm.add(scpn01);
 		
 		
@@ -116,22 +116,22 @@ public class WM00050DeliveryTypeMstSearch{
 		RenewFg = true;
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//CSVボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//検索ボタン押下時の挙動
@@ -155,11 +155,11 @@ public class WM00050DeliveryTypeMstSearch{
 					if(null==GetSearchDeliveryTypeCd	){GetSearchDeliveryTypeCd = "";}
 					if(null==GetSearchDeliveryTypeName	){GetSearchDeliveryTypeName = "";}
 					
-					GetSearchDeliveryTypeNo		= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeNo);
-					GetSearchDeliveryTypeCd		= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeCd);
-					GetSearchDeliveryTypeName	= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeName);
+					GetSearchDeliveryTypeNo		= B100TextControl.Trim(GetSearchDeliveryTypeNo);
+					GetSearchDeliveryTypeCd		= B100TextControl.Trim(GetSearchDeliveryTypeCd);
+					GetSearchDeliveryTypeName	= B100TextControl.Trim(GetSearchDeliveryTypeName);
 					
-					GetSearchDeliveryTypeNo		= B00020ToolsTextControl.num_only_String(GetSearchDeliveryTypeNo);
+					GetSearchDeliveryTypeNo		= B100TextControl.num_only_String(GetSearchDeliveryTypeNo);
 					
 					TB_SearchDeliveryTypeCd.setText(GetSearchDeliveryTypeCd);
 					TB_SearchDeliveryTypeName.setText(GetSearchDeliveryTypeName);
@@ -189,9 +189,9 @@ public class WM00050DeliveryTypeMstSearch{
 						tableModel_ms01.addRow(SetOb);;
 					}
 					if(0<DeliveryTypeMstRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}					
 					RenewFg = true;
 				}
@@ -262,7 +262,7 @@ public class WM00050DeliveryTypeMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","運送タイプマスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","運送タイプマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -273,7 +273,7 @@ public class WM00050DeliveryTypeMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","運送タイプマスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","運送タイプマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

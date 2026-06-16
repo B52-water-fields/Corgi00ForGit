@@ -2,7 +2,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class A00030DeleteSQL{
+public class A100DeleteSQL{
 	public static void DeleteSql(String tgt_table,String[] judg_field,String[][] judg_data,String TgtDB){
 		//データ削除をまとめて行う
 		//tgt_table		：対象テーブル名
@@ -11,7 +11,7 @@ public class A00030DeleteSQL{
 
 		ResultSet rset01=null;
 		PreparedStatement stmt01=null;
-		A00010DbConnect.DB_CONN(TgtDB);
+		A100DbConnect.DB_CONN(TgtDB);
 
 		if(null==tgt_table){tgt_table="";}
 		
@@ -27,15 +27,15 @@ public class A00030DeleteSQL{
 			}
 			//System.out.println(sql);
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				for(int i01=0;i01<judg_data.length;i01++) {
 					for(int i02=0;i02<judg_data[i01].length;i02++) {
 						stmt01.setString(i02+1, judg_data[i01][i02]);
 						//System.out.println(judg_data[i01][i02]);
 					}
 					stmt01.executeUpdate();
-					if(null==A00010DbConnect.session) {
-						A00010DbConnect.conn.commit();
+					if(null==A100DbConnect.session) {
+						A100DbConnect.conn.commit();
 					}
 				}
 			} catch (SQLException e) {
@@ -55,7 +55,7 @@ public class A00030DeleteSQL{
 					e2.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 	}
 }

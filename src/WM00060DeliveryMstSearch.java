@@ -62,61 +62,61 @@ public class WM00060DeliveryMstSearch{
 			MunicipalityCd[2][i+1] = ""+MunicipalityRt[i][0]+MunicipalityRt[i][1];
 		}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00届先マスタ検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,900,750,"Corgi00届先マスタ検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,870,160,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,870,160,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchDECD			= B00110FrameParts.JLabelSet(  0, 25,100,20,"届先CD:"			,11,1);
-		JLabel LB_SearchDepartmentCd	= B00110FrameParts.JLabelSet(  0, 50,100,20,"届先部署CD:"		,11,1);
-		JLabel LB_SearchDEName			= B00110FrameParts.JLabelSet(  0, 75,100,20,"届先名:"			,11,1);
-		JLabel LB_SearchPost			= B00110FrameParts.JLabelSet(  0,100,100,20,"届先郵便:"		,11,1);
-		JLabel LB_SearchAdd				= B00110FrameParts.JLabelSet(  0,125,100,20,"届先住所:"		,11,1);
-		JLabel LB_SearchTel				= B00110FrameParts.JLabelSet(250, 25,100,20,"届先TEL:"			,11,1);
-		JLabel LB_SearchFax				= B00110FrameParts.JLabelSet(250, 50,100,20,"届先FAX:"			,11,1);
-		JLabel LB_SearchMail			= B00110FrameParts.JLabelSet(250, 75,100,20,"届先MAIL:"		,11,1);
-		JLabel LB_SearchCom				= B00110FrameParts.JLabelSet(250,100,100,20,"届先コメント:"	,11,1);
-		JLabel LB_SearchPrefecturesCd	= B00110FrameParts.JLabelSet(500, 25,100,20,"届先県CD:"		,11,1);
-		JLabel LB_SearchMunicipalityCd	= B00110FrameParts.JLabelSet(500, 50,100,20,"届先市区町村CD:"	,11,1);
-		JLabel LB_SearchDelFg			= B00110FrameParts.JLabelSet(500, 75,100,20,"削除区分:"		,11,1);
-		JLabel LB_SearcNotJis			= B00110FrameParts.JLabelSet(500,100,100,20,"JIS由来届先:"		,11,1);
+		JLabel LB_SearchDECD			= B100FrameParts.JLabelSet(  0, 25,100,20,"届先CD:"			,11,1);
+		JLabel LB_SearchDepartmentCd	= B100FrameParts.JLabelSet(  0, 50,100,20,"届先部署CD:"		,11,1);
+		JLabel LB_SearchDEName			= B100FrameParts.JLabelSet(  0, 75,100,20,"届先名:"			,11,1);
+		JLabel LB_SearchPost			= B100FrameParts.JLabelSet(  0,100,100,20,"届先郵便:"		,11,1);
+		JLabel LB_SearchAdd				= B100FrameParts.JLabelSet(  0,125,100,20,"届先住所:"		,11,1);
+		JLabel LB_SearchTel				= B100FrameParts.JLabelSet(250, 25,100,20,"届先TEL:"			,11,1);
+		JLabel LB_SearchFax				= B100FrameParts.JLabelSet(250, 50,100,20,"届先FAX:"			,11,1);
+		JLabel LB_SearchMail			= B100FrameParts.JLabelSet(250, 75,100,20,"届先MAIL:"		,11,1);
+		JLabel LB_SearchCom				= B100FrameParts.JLabelSet(250,100,100,20,"届先コメント:"	,11,1);
+		JLabel LB_SearchPrefecturesCd	= B100FrameParts.JLabelSet(500, 25,100,20,"届先県CD:"		,11,1);
+		JLabel LB_SearchMunicipalityCd	= B100FrameParts.JLabelSet(500, 50,100,20,"届先市区町村CD:"	,11,1);
+		JLabel LB_SearchDelFg			= B100FrameParts.JLabelSet(500, 75,100,20,"削除区分:"		,11,1);
+		JLabel LB_SearcNotJis			= B100FrameParts.JLabelSet(500,100,100,20,"JIS由来届先:"		,11,1);
 		
-		final JTextField  TB_SearchDECD				= B00110FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//届先CD
-		final JTextField  TB_SearchDepartmentCd		= B00110FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//届先部署CD
-		final JTextField  TB_SearchDEName			= B00110FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//届先名
-		final JTextField  TB_SearchPost				= B00110FrameParts.JTextFieldSet(100,100,100,20,"",11,0);			//届先郵便
-		final JTextField  TB_SearchAdd				= B00110FrameParts.JTextFieldSet(100,125,100,20,"",11,0);			//届先住所
-		final JTextField  TB_SearchTel				= B00110FrameParts.JTextFieldSet(350, 25,100,20,"",11,0);			//届先TEL
-		final JTextField  TB_SearchFax				= B00110FrameParts.JTextFieldSet(350, 50,100,20,"",11,0);			//届先FAX
-		final JTextField  TB_SearchMail				= B00110FrameParts.JTextFieldSet(350, 75,100,20,"",11,0);			//届先MAIL
-		final JTextField  TB_SearchCom				= B00110FrameParts.JTextFieldSet(350,100,100,20,"",11,0);			//届先コメント
-		final JComboBox   TB_SearchPrefecturesCd	= B00110FrameParts.JComboBoxSet( 600, 25,100,20,PrefecturesCdList[0],11);					//届先県CD
-		final JComboBox   TB_SearchMunicipalityCd	= B00110FrameParts.JComboBoxSet( 600, 50,200,20,MunicipalityCd[0],11);						//届先市区町村CD
-		final JComboBox   TB_SearchDelFg			= B00110FrameParts.JComboBoxSet( 600, 75,100,20,B00100DefaultVariable.SearchDelList[0],11);	//削除区分
+		final JTextField  TB_SearchDECD				= B100FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//届先CD
+		final JTextField  TB_SearchDepartmentCd		= B100FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//届先部署CD
+		final JTextField  TB_SearchDEName			= B100FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//届先名
+		final JTextField  TB_SearchPost				= B100FrameParts.JTextFieldSet(100,100,100,20,"",11,0);			//届先郵便
+		final JTextField  TB_SearchAdd				= B100FrameParts.JTextFieldSet(100,125,100,20,"",11,0);			//届先住所
+		final JTextField  TB_SearchTel				= B100FrameParts.JTextFieldSet(350, 25,100,20,"",11,0);			//届先TEL
+		final JTextField  TB_SearchFax				= B100FrameParts.JTextFieldSet(350, 50,100,20,"",11,0);			//届先FAX
+		final JTextField  TB_SearchMail				= B100FrameParts.JTextFieldSet(350, 75,100,20,"",11,0);			//届先MAIL
+		final JTextField  TB_SearchCom				= B100FrameParts.JTextFieldSet(350,100,100,20,"",11,0);			//届先コメント
+		final JComboBox   TB_SearchPrefecturesCd	= B100FrameParts.JComboBoxSet( 600, 25,100,20,PrefecturesCdList[0],11);					//届先県CD
+		final JComboBox   TB_SearchMunicipalityCd	= B100FrameParts.JComboBoxSet( 600, 50,200,20,MunicipalityCd[0],11);						//届先市区町村CD
+		final JComboBox   TB_SearchDelFg			= B100FrameParts.JComboBoxSet( 600, 75,100,20,B100DefaultVariable.SearchDelList[0],11);	//削除区分
 		String[] JisSelect = {"含まない","含む"};
-		final JComboBox   TB_SearcNotJis			= B00110FrameParts.JComboBoxSet( 600,100,100,20,JisSelect,11);	//削除区分
+		final JComboBox   TB_SearcNotJis			= B100FrameParts.JComboBoxSet( 600,100,100,20,JisSelect,11);	//削除区分
 		
-		JLabel LB2_SearchDECD			= B00110FrameParts.JLabelSet(200, 25, 50,20,"と一致"		,11,0);
-		JLabel LB2_SearchDepartmentCd	= B00110FrameParts.JLabelSet(200, 50, 50,20,"と一致"		,11,0);
-		JLabel LB2_SearchDEName			= B00110FrameParts.JLabelSet(200, 75, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchPost			= B00110FrameParts.JLabelSet(200,100, 50,20,"で始まる"		,11,0);
-		JLabel LB2_SearchAdd			= B00110FrameParts.JLabelSet(200,125, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchTel			= B00110FrameParts.JLabelSet(450, 25, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchFax			= B00110FrameParts.JLabelSet(450, 50, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchMail			= B00110FrameParts.JLabelSet(450, 75, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchCom			= B00110FrameParts.JLabelSet(450,100, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchPrefecturesCd	= B00110FrameParts.JLabelSet(700, 25, 50,20,""				,11,0);
-		JLabel LB2_SearchMunicipalityCd	= B00110FrameParts.JLabelSet(800, 50, 50,20,""				,11,0);
-		JLabel LB2_SearchDelFg			= B00110FrameParts.JLabelSet(700, 75, 50,20,""				,11,0);
-		JLabel LB2_SearcNotJis			= B00110FrameParts.JLabelSet(700,100, 50,20,""				,11,0);
+		JLabel LB2_SearchDECD			= B100FrameParts.JLabelSet(200, 25, 50,20,"と一致"		,11,0);
+		JLabel LB2_SearchDepartmentCd	= B100FrameParts.JLabelSet(200, 50, 50,20,"と一致"		,11,0);
+		JLabel LB2_SearchDEName			= B100FrameParts.JLabelSet(200, 75, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchPost			= B100FrameParts.JLabelSet(200,100, 50,20,"で始まる"		,11,0);
+		JLabel LB2_SearchAdd			= B100FrameParts.JLabelSet(200,125, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchTel			= B100FrameParts.JLabelSet(450, 25, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchFax			= B100FrameParts.JLabelSet(450, 50, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchMail			= B100FrameParts.JLabelSet(450, 75, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchCom			= B100FrameParts.JLabelSet(450,100, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchPrefecturesCd	= B100FrameParts.JLabelSet(700, 25, 50,20,""				,11,0);
+		JLabel LB2_SearchMunicipalityCd	= B100FrameParts.JLabelSet(800, 50, 50,20,""				,11,0);
+		JLabel LB2_SearchDelFg			= B100FrameParts.JLabelSet(700, 75, 50,20,""				,11,0);
+		JLabel LB2_SearcNotJis			= B100FrameParts.JLabelSet(700,100, 50,20,""				,11,0);
 
 		PN_Search.add(LB_SearchDECD);
 		PN_Search.add(LB_SearchDepartmentCd);
@@ -161,7 +161,7 @@ public class WM00060DeliveryMstSearch{
 		PN_Search.add(LB2_SearcNotJis);
 
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(600,125,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(600,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		Object[][] RtSettingDeliveryMstRt = M00040DeliveryMstRt.RtSettingDeliveryMstRt();
@@ -174,10 +174,10 @@ public class WM00060DeliveryMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -194,38 +194,38 @@ public class WM00060DeliveryMstSearch{
 		
 		for(int i=0;i<RtSettingDeliveryMstRt.length;i++) {
 			if("int".equals((String)RtSettingDeliveryMstRt[i][2])||"float".equals((String)RtSettingDeliveryMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,210,870,395,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,210,870,395,tb01);
 		main_fm.add(scpn01);
 
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
 		main_fm.setVisible(true);
@@ -253,7 +253,7 @@ public class WM00060DeliveryMstSearch{
 					String GetSearchCom 			= TB_SearchCom.getText();			//届先コメント
 					String GetSearchPrefecturesCd 	= PrefecturesCdList[1][TB_SearchPrefecturesCd.getSelectedIndex()];			//届先県CD
 					String GetSearchMunicipalityCd 	= MunicipalityCd[1][TB_SearchMunicipalityCd.getSelectedIndex()];				//届先市区町村CD
-					String GetSearchDelFg 			= B00100DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];	//削除区分
+					String GetSearchDelFg 			= B100DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];	//削除区分
 					boolean SearcNotJis = false;
 					if(0==TB_SearcNotJis.getSelectedIndex()) {SearcNotJis = true;}else {SearcNotJis = false;}
 
@@ -270,22 +270,22 @@ public class WM00060DeliveryMstSearch{
 					if(null==GetSearchMunicipalityCd){GetSearchMunicipalityCd 	= "";}
 					if(null==GetSearchDelFg			){GetSearchDelFg 			= "";}
 					
-					GetSearchDECD			= B00020ToolsTextControl.Trim(GetSearchDECD);
-					GetSearchDepartmentCd	= B00020ToolsTextControl.Trim(GetSearchDepartmentCd);
-					GetSearchDEName			= B00020ToolsTextControl.Trim(GetSearchDEName);
-					GetSearchPost			= B00020ToolsTextControl.Trim(GetSearchPost);
-					GetSearchAdd			= B00020ToolsTextControl.Trim(GetSearchAdd);
-					GetSearchTel			= B00020ToolsTextControl.Trim(GetSearchTel);
-					GetSearchFax			= B00020ToolsTextControl.Trim(GetSearchFax);
-					GetSearchMail			= B00020ToolsTextControl.Trim(GetSearchMail);
-					GetSearchCom			= B00020ToolsTextControl.Trim(GetSearchCom);
-					GetSearchPrefecturesCd	= B00020ToolsTextControl.Trim(GetSearchPrefecturesCd);
-					GetSearchMunicipalityCd	= B00020ToolsTextControl.Trim(GetSearchMunicipalityCd);
-					GetSearchDelFg			= B00020ToolsTextControl.Trim(GetSearchDelFg);
+					GetSearchDECD			= B100TextControl.Trim(GetSearchDECD);
+					GetSearchDepartmentCd	= B100TextControl.Trim(GetSearchDepartmentCd);
+					GetSearchDEName			= B100TextControl.Trim(GetSearchDEName);
+					GetSearchPost			= B100TextControl.Trim(GetSearchPost);
+					GetSearchAdd			= B100TextControl.Trim(GetSearchAdd);
+					GetSearchTel			= B100TextControl.Trim(GetSearchTel);
+					GetSearchFax			= B100TextControl.Trim(GetSearchFax);
+					GetSearchMail			= B100TextControl.Trim(GetSearchMail);
+					GetSearchCom			= B100TextControl.Trim(GetSearchCom);
+					GetSearchPrefecturesCd	= B100TextControl.Trim(GetSearchPrefecturesCd);
+					GetSearchMunicipalityCd	= B100TextControl.Trim(GetSearchMunicipalityCd);
+					GetSearchDelFg			= B100TextControl.Trim(GetSearchDelFg);
 					
-					GetSearchPost			= B00020ToolsTextControl.num_only_String(GetSearchPost);
-					GetSearchTel			= B00020ToolsTextControl.num_only_String(GetSearchTel);
-					GetSearchFax			= B00020ToolsTextControl.num_only_String(GetSearchFax);
+					GetSearchPost			= B100TextControl.num_only_String(GetSearchPost);
+					GetSearchTel			= B100TextControl.num_only_String(GetSearchTel);
+					GetSearchFax			= B100TextControl.num_only_String(GetSearchFax);
 					
 					TB_SearchDECD.setText(GetSearchDECD);
 					TB_SearchDepartmentCd.setText(GetSearchDepartmentCd);
@@ -353,9 +353,9 @@ public class WM00060DeliveryMstSearch{
 						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<DeliveryMstRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					
 					RenewFg = true;
@@ -427,7 +427,7 @@ public class WM00060DeliveryMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","届先マスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","届先マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -438,7 +438,7 @@ public class WM00060DeliveryMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","届先マスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","届先マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -452,7 +452,7 @@ public class WM00060DeliveryMstSearch{
 					String MSG = "エクセルファイル選択";
 					String[] file_type = {".xlsx"};
 					String file_type_name = "エクセルファイル";
-					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						SetX=main_fm.getX();

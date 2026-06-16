@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class B00150ArrayListControl{
+public class B100ArrayListControl{
 	public static ArrayList<String> ArryListStringUniqueList(ArrayList<String> TgtArrayList){
 		/*
 		 ArrayList<String>を受け取って重複を除外したArrayList<String>にして返却する

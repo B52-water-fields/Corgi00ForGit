@@ -105,14 +105,14 @@ public class M00010ClGpMstRt{
 			ArrayList<String> SearchCom,
 			boolean AllSearch){
 		
-		SearchClGpCD	= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchCLGpName	= B00150ArrayListControl.ArryListStringUniqueList(SearchCLGpName);
-		SearchPost		= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd		= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel		= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax		= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail		= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom		= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchClGpCD	= B100ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchCLGpName	= B100ArrayListControl.ArryListStringUniqueList(SearchCLGpName);
+		SearchPost		= B100ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd		= B100ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel		= B100ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax		= B100ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail		= B100ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom		= B100ArrayListControl.ArryListStringUniqueList(SearchCom);
 		
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
@@ -224,12 +224,12 @@ public class M00010ClGpMstRt{
 
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				if(null!=SearchClGpCD && 0<SearchClGpCD.size()) {
 					for(int i=0;i<SearchClGpCD.size();i++) {
@@ -313,8 +313,8 @@ public class M00010ClGpMstRt{
 					if(null==rset01.getString("Com01")){		rt[counter][ColCom01] 			= "";}else{rt[counter][ColCom01]		= rset01.getString("Com01");}		//コメント1
 					if(null==rset01.getString("Com02")){		rt[counter][ColCom02] 			= "";}else{rt[counter][ColCom02]		= rset01.getString("Com02");}		//コメント2
 					if(null==rset01.getString("Com03")){		rt[counter][ColCom03] 			= "";}else{rt[counter][ColCom03]		= rset01.getString("Com03");}		//コメント3
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate] 	= "";}else{rt[counter][ColEntryDate]	= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate] 	= "";}else{rt[counter][ColUpdateDate]	= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate] 	= "";}else{rt[counter][ColEntryDate]	= B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate] 	= "";}else{rt[counter][ColUpdateDate]	= B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
 					if(null==rset01.getString("EntryUser")){	rt[counter][ColEntryUser] 	= "";}else{rt[counter][ColEntryUser]	= rset01.getString("EntryUser");}	//登録者コード
 					if(null==rset01.getString("UpdateUser")){	rt[counter][ColUpdateUser] 	= "";}else{rt[counter][ColUpdateUser]	= rset01.getString("UpdateUser");}	//更新者コード
 					if(null==rset01.getString("PassWord")){		rt[counter][ColPassWord] 		= "";}else{rt[counter][ColPassWord]	= rset01.getString("PassWord");}		//パスワード
@@ -333,7 +333,7 @@ public class M00010ClGpMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -359,7 +359,7 @@ public class M00010ClGpMstRt{
     	
     	for(int i=0;i<ClGpMstRt.length;i++) {
     		if(4<(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).length()&&"ATGR".equals((""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]).substring(0,4))) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]);
+    			String WST = B100TextControl.num_only_String(""+ClGpMstRt[i][M00010ClGpMstRt.ColClGpCD]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(ClGpNo<wint) {

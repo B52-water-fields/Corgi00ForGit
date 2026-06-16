@@ -29,45 +29,45 @@ public class WM00105AdjustReasonMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00在庫調整理由マスタ検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,900,750,"Corgi00在庫調整理由マスタ検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search 		= B00110FrameParts.JPanelSet(10,40,880,150,"White");
-		JLabel PN_SearchLabel 	= B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search 		= B100FrameParts.JPanelSet(10,40,880,150,"White");
+		JLabel PN_SearchLabel 	= B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		
 		PN_Search.add(PN_SearchLabel);
 		
 		//検索条件
-		JLabel LB_SearchClCd				= B00110FrameParts.JLabelSet(	  0, 25,130,20,"荷主コード:"		,11,1);
-		JLabel LB_SearchWhCd				= B00110FrameParts.JLabelSet(	  0, 50,130,20,"倉庫コード:"		,11,1);
-		JLabel LB_SearchAdjustReasonCd		= B00110FrameParts.JLabelSet(	  0, 75,130,20,"調整理由コード:"	,11,1);
-		JLabel LB_SearchAdjustReasonName	= B00110FrameParts.JLabelSet(	  0,100,130,20,"調整理由名:"		,11,1);
+		JLabel LB_SearchClCd				= B100FrameParts.JLabelSet(	  0, 25,130,20,"荷主コード:"		,11,1);
+		JLabel LB_SearchWhCd				= B100FrameParts.JLabelSet(	  0, 50,130,20,"倉庫コード:"		,11,1);
+		JLabel LB_SearchAdjustReasonCd		= B100FrameParts.JLabelSet(	  0, 75,130,20,"調整理由コード:"	,11,1);
+		JLabel LB_SearchAdjustReasonName	= B100FrameParts.JLabelSet(	  0,100,130,20,"調整理由名:"		,11,1);
 		
-		final JComboBox   TB_SearchClWh				= B00110FrameParts.JComboBoxSet(	130, 25,250,20,B00100DefaultVariable.SearchWhList[0],11);		//倉庫コード
-		final JComboBox   TB_SearchClCd				= B00110FrameParts.JComboBoxSet(	130, 50,250,20,B00100DefaultVariable.SearchClList[0],11);		//荷主コード
-		final JTextField  TB_SearchAdjustReasonCd	= B00110FrameParts.JTextFieldSet( 130, 75,100,20,"",11,0);	//調整理由コード:"	,11,1);
-		final JTextField  TB_SearchAdjustReasonName	= B00110FrameParts.JTextFieldSet( 130,100,100,20,"",11,0);	//調整理由名:"		,11,1);
+		final JComboBox   TB_SearchClWh				= B100FrameParts.JComboBoxSet(	130, 25,250,20,B100DefaultVariable.SearchWhList[0],11);		//倉庫コード
+		final JComboBox   TB_SearchClCd				= B100FrameParts.JComboBoxSet(	130, 50,250,20,B100DefaultVariable.SearchClList[0],11);		//荷主コード
+		final JTextField  TB_SearchAdjustReasonCd	= B100FrameParts.JTextFieldSet( 130, 75,100,20,"",11,0);	//調整理由コード:"	,11,1);
+		final JTextField  TB_SearchAdjustReasonName	= B100FrameParts.JTextFieldSet( 130,100,100,20,"",11,0);	//調整理由名:"		,11,1);
 		
-		JLabel LB2_SearchAdjustReasonCd		= B00110FrameParts.JLabelSet(	230, 75,130,20,"と一致"	,11,0);
-		JLabel LB2_SearchAdjustReasonName	= B00110FrameParts.JLabelSet(	230,100,130,20,"を含む"	,11,0);
+		JLabel LB2_SearchAdjustReasonCd		= B100FrameParts.JLabelSet(	230, 75,130,20,"と一致"	,11,0);
+		JLabel LB2_SearchAdjustReasonName	= B100FrameParts.JLabelSet(	230,100,130,20,"を含む"	,11,0);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(130,125,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(130,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		for(int i=0;i<B00100DefaultVariable.SearchWhList[1].length;i++) {
-			if(B00100DefaultVariable.SearchWhList[1][i].equals(A00000Main.ClWh)) {
+		for(int i=0;i<B100DefaultVariable.SearchWhList[1].length;i++) {
+			if(B100DefaultVariable.SearchWhList[1][i].equals(A00000Main.ClWh)) {
 				TB_SearchClWh.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.SearchClList[1].length;i++) {
-			if(B00100DefaultVariable.SearchClList[1][i].equals(A00000Main.ClCd)) {
+		for(int i=0;i<B100DefaultVariable.SearchClList[1].length;i++) {
+			if(B100DefaultVariable.SearchClList[1][i].equals(A00000Main.ClCd)) {
 				TB_SearchClCd.setSelectedIndex(i);
 			}
 		}
@@ -99,10 +99,10 @@ public class WM00105AdjustReasonMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -119,36 +119,36 @@ public class WM00105AdjustReasonMstSearch{
 		
 		for(int i=0;i<RtAdjustReasonRt.length;i++) {
 			if("int".equals((String)RtAdjustReasonRt[i][2])||"float".equals((String)RtAdjustReasonRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,200,870,425,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,200,870,425,tb01);
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);	
 		
 		main_fm.setVisible(true);
@@ -164,8 +164,8 @@ public class WM00105AdjustReasonMstSearch{
 						tableModel_ms01.removeRow(0);
 					}
 					
-					String GetSearchClCd				= B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];	//荷主CD
-					String GetSearchWhCd				= B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];	//倉庫CD
+					String GetSearchClCd				= B100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];	//荷主CD
+					String GetSearchWhCd				= B100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];	//倉庫CD
 					String GetSearchAdjustReasonCd		= TB_SearchAdjustReasonCd.getText();	//調整理由コード
 					String GetSearchAdjustReasonName	= TB_SearchAdjustReasonName.getText();	//調整理由名
 					
@@ -174,10 +174,10 @@ public class WM00105AdjustReasonMstSearch{
 					if(null==GetSearchAdjustReasonCd	){GetSearchAdjustReasonCd	= "";}	//調整理由コード
 					if(null==GetSearchAdjustReasonName	){GetSearchAdjustReasonName	= "";}	//調整理由名
 					
-					GetSearchClCd				= B00020ToolsTextControl.Trim(GetSearchClCd);				//荷主CD
-					GetSearchWhCd				= B00020ToolsTextControl.Trim(GetSearchWhCd);				//倉庫CD
-					GetSearchAdjustReasonCd		= B00020ToolsTextControl.Trim(GetSearchAdjustReasonCd);		//調整理由コード
-					GetSearchAdjustReasonName	= B00020ToolsTextControl.Trim(GetSearchAdjustReasonName);	//調整理由名
+					GetSearchClCd				= B100TextControl.Trim(GetSearchClCd);				//荷主CD
+					GetSearchWhCd				= B100TextControl.Trim(GetSearchWhCd);				//倉庫CD
+					GetSearchAdjustReasonCd		= B100TextControl.Trim(GetSearchAdjustReasonCd);		//調整理由コード
+					GetSearchAdjustReasonName	= B100TextControl.Trim(GetSearchAdjustReasonName);	//調整理由名
 					
 					ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主CD
 					ArrayList<String> SearchWhCd				= new ArrayList<String>();	//倉庫CD
@@ -215,9 +215,9 @@ public class WM00105AdjustReasonMstSearch{
 					}
 					
 					if(0<AdjustReasonRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					
 					RenewFg = true;
@@ -302,7 +302,7 @@ public class WM00105AdjustReasonMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","在庫調整理由マスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","在庫調整理由マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -313,7 +313,7 @@ public class WM00105AdjustReasonMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","在庫調整理由マスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","在庫調整理由マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

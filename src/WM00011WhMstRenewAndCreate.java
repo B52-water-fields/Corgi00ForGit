@@ -21,48 +21,48 @@ public class WM00011WhMstRenewAndCreate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,600,"Corgi00倉庫（事業所）登録・修正","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,600,"Corgi00倉庫（事業所）登録・修正","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 
-		JLabel LB_WHCD  		= B00110FrameParts.JLabelSet(  0, 40,100,20,"倉庫コード:"			,11,1);
-		JLabel LB_WHName  		= B00110FrameParts.JLabelSet(  0, 65,100,20,"拠点倉庫名:"			,11,1);
-		JLabel LB_Post  		= B00110FrameParts.JLabelSet(  0, 90,100,20,"拠点倉庫郵便番号:"	,11,1);
-		JLabel LB_Add01  		= B00110FrameParts.JLabelSet(  0,115,100,20,"拠点倉庫住所1:"		,11,1);
-		JLabel LB_Add02  		= B00110FrameParts.JLabelSet(  0,140,100,20,"拠点倉庫住所2:"		,11,1);
-		JLabel LB_Tel 			= B00110FrameParts.JLabelSet(  0,165,100,20,"拠点倉庫電話:"		,11,1);
-		JLabel LB_Fax  			= B00110FrameParts.JLabelSet(  0,190,100,20,"拠点倉庫FAX:"			,11,1);
-		JLabel LB_Mail  		= B00110FrameParts.JLabelSet(  0,215,100,20,"拠点倉庫MAIL:"		,11,1);
-		JLabel LB_Com01  		= B00110FrameParts.JLabelSet(  0,240,100,20,"コメント１:"			,11,1);
-		JLabel LB_Com02  		= B00110FrameParts.JLabelSet(  0,265,100,20,"コメント２:"			,11,1);
-		JLabel LB_Com03  		= B00110FrameParts.JLabelSet(  0,290,100,20,"コメント３:"			,11,1);
-		JLabel LB_PTMSCD  		= B00110FrameParts.JLabelSet(  0,315,100,20,"基幹SysCD:"			,11,1);
-		JLabel LB_EntryDate  	= B00110FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:"		,11,1);
-		JLabel LB_UpdateDate  	= B00110FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:"		,11,1);
-		JLabel LB_EntryUser  	= B00110FrameParts.JLabelSet(  0,390,100,20,"登録者:"				,11,1);
-		JLabel LB_UpdateUser  	= B00110FrameParts.JLabelSet(  0,415,100,20,"更新者:"				,11,1);
+		JLabel LB_WHCD  		= B100FrameParts.JLabelSet(  0, 40,100,20,"倉庫コード:"			,11,1);
+		JLabel LB_WHName  		= B100FrameParts.JLabelSet(  0, 65,100,20,"拠点倉庫名:"			,11,1);
+		JLabel LB_Post  		= B100FrameParts.JLabelSet(  0, 90,100,20,"拠点倉庫郵便番号:"	,11,1);
+		JLabel LB_Add01  		= B100FrameParts.JLabelSet(  0,115,100,20,"拠点倉庫住所1:"		,11,1);
+		JLabel LB_Add02  		= B100FrameParts.JLabelSet(  0,140,100,20,"拠点倉庫住所2:"		,11,1);
+		JLabel LB_Tel 			= B100FrameParts.JLabelSet(  0,165,100,20,"拠点倉庫電話:"		,11,1);
+		JLabel LB_Fax  			= B100FrameParts.JLabelSet(  0,190,100,20,"拠点倉庫FAX:"			,11,1);
+		JLabel LB_Mail  		= B100FrameParts.JLabelSet(  0,215,100,20,"拠点倉庫MAIL:"		,11,1);
+		JLabel LB_Com01  		= B100FrameParts.JLabelSet(  0,240,100,20,"コメント１:"			,11,1);
+		JLabel LB_Com02  		= B100FrameParts.JLabelSet(  0,265,100,20,"コメント２:"			,11,1);
+		JLabel LB_Com03  		= B100FrameParts.JLabelSet(  0,290,100,20,"コメント３:"			,11,1);
+		JLabel LB_PTMSCD  		= B100FrameParts.JLabelSet(  0,315,100,20,"基幹SysCD:"			,11,1);
+		JLabel LB_EntryDate  	= B100FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:"		,11,1);
+		JLabel LB_UpdateDate  	= B100FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:"		,11,1);
+		JLabel LB_EntryUser  	= B100FrameParts.JLabelSet(  0,390,100,20,"登録者:"				,11,1);
+		JLabel LB_UpdateUser  	= B100FrameParts.JLabelSet(  0,415,100,20,"更新者:"				,11,1);
 		
-		final JTextField TB_WHCD  		= B00110FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//倉庫コード
-		final JTextField TB_WHName  	= B00110FrameParts.JTextFieldSet(100, 65,200,20,"",11,0);	//拠点倉庫名
-		final JTextField TB_Post  		= B00110FrameParts.JTextFieldSet(100, 90,100,20,"",11,0);	//拠点倉庫郵便番号
-		final JTextField TB_Add01  		= B00110FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//拠点倉庫住所1
-		final JTextField TB_Add02  		= B00110FrameParts.JTextFieldSet(100,140,250,20,"",11,0);	//拠点倉庫住所2
-		final JTextField TB_Tel 		= B00110FrameParts.JTextFieldSet(100,165,100,20,"",11,0);	//拠点倉庫電話
-		final JTextField TB_Fax  		= B00110FrameParts.JTextFieldSet(100,190,100,20,"",11,0);	//拠点倉庫FAX
-		final JTextField TB_Mail 		= B00110FrameParts.JTextFieldSet(100,215,100,20,"",11,0);	//拠点倉庫MAIL
-		final JTextField TB_Com01  		= B00110FrameParts.JTextFieldSet(100,240,250,20,"",11,0);	//コメント１
-		final JTextField TB_Com02  		= B00110FrameParts.JTextFieldSet(100,265,250,20,"",11,0);	//コメント２
-		final JTextField TB_Com03  		= B00110FrameParts.JTextFieldSet(100,290,250,20,"",11,0);	//コメント３
-		final JTextField TB_PTMSCD 		= B00110FrameParts.JTextFieldSet(100,315,100,20,"",11,0);	//基幹SysCD
-		final JTextField TB_EntryDate  	= B00110FrameParts.JTextFieldSet(100,340,200,20,"",11,0);	//データ登録日時
-		final JTextField TB_UpdateDate  = B00110FrameParts.JTextFieldSet(100,365,200,20,"",11,0);	//データ更新日時
-		final JTextField TB_EntryUser  	= B00110FrameParts.JTextFieldSet(100,390,200,20,"",11,0);	//登録者
-		final JTextField TB_UpdateUser  = B00110FrameParts.JTextFieldSet(100,415,200,20,"",11,0);	//更新者
+		final JTextField TB_WHCD  		= B100FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//倉庫コード
+		final JTextField TB_WHName  	= B100FrameParts.JTextFieldSet(100, 65,200,20,"",11,0);	//拠点倉庫名
+		final JTextField TB_Post  		= B100FrameParts.JTextFieldSet(100, 90,100,20,"",11,0);	//拠点倉庫郵便番号
+		final JTextField TB_Add01  		= B100FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//拠点倉庫住所1
+		final JTextField TB_Add02  		= B100FrameParts.JTextFieldSet(100,140,250,20,"",11,0);	//拠点倉庫住所2
+		final JTextField TB_Tel 		= B100FrameParts.JTextFieldSet(100,165,100,20,"",11,0);	//拠点倉庫電話
+		final JTextField TB_Fax  		= B100FrameParts.JTextFieldSet(100,190,100,20,"",11,0);	//拠点倉庫FAX
+		final JTextField TB_Mail 		= B100FrameParts.JTextFieldSet(100,215,100,20,"",11,0);	//拠点倉庫MAIL
+		final JTextField TB_Com01  		= B100FrameParts.JTextFieldSet(100,240,250,20,"",11,0);	//コメント１
+		final JTextField TB_Com02  		= B100FrameParts.JTextFieldSet(100,265,250,20,"",11,0);	//コメント２
+		final JTextField TB_Com03  		= B100FrameParts.JTextFieldSet(100,290,250,20,"",11,0);	//コメント３
+		final JTextField TB_PTMSCD 		= B100FrameParts.JTextFieldSet(100,315,100,20,"",11,0);	//基幹SysCD
+		final JTextField TB_EntryDate  	= B100FrameParts.JTextFieldSet(100,340,200,20,"",11,0);	//データ登録日時
+		final JTextField TB_UpdateDate  = B100FrameParts.JTextFieldSet(100,365,200,20,"",11,0);	//データ更新日時
+		final JTextField TB_EntryUser  	= B100FrameParts.JTextFieldSet(100,390,200,20,"",11,0);	//登録者
+		final JTextField TB_UpdateUser  = B100FrameParts.JTextFieldSet(100,415,200,20,"",11,0);	//更新者
 		
 		TB_EntryDate.setEditable(false);	//データ登録日時
 		TB_UpdateDate.setEditable(false);	//データ更新日時
@@ -151,7 +151,7 @@ public class WM00011WhMstRenewAndCreate{
 			@Override
 			public void focusLost(FocusEvent e){
 				String GetPost = TB_Post.getText();	if(null==GetPost) {GetPost="";}
-				GetPost = B00020ToolsTextControl.Trim(B00020ToolsTextControl.num_only_String(GetPost));
+				GetPost = B100TextControl.Trim(B100TextControl.num_only_String(GetPost));
 				TB_Post.setText(GetPost);
 				
 				ArrayList<String> SearchPOST = new ArrayList<String>();
@@ -217,11 +217,11 @@ public class WM00011WhMstRenewAndCreate{
 				String GetCom03 = TB_Com03.getText();	if(null==GetCom03){GetCom03 = "";}		//コメント３
 				String GetPTMSCD = TB_PTMSCD.getText();	if(null==GetPTMSCD){GetPTMSCD = "";}	//基幹SysCD
 				
-				GetWHCD	= B00020ToolsTextControl.only1byte_String(GetWHCD);
+				GetWHCD	= B100TextControl.only1byte_String(GetWHCD);
 				
-				GetPost = B00020ToolsTextControl.num_only_String(GetPost);
-				GetTel  = B00020ToolsTextControl.num_only_String(GetTel);
-				GetFax  = B00020ToolsTextControl.num_only_String(GetFax);
+				GetPost = B100TextControl.num_only_String(GetPost);
+				GetTel  = B100TextControl.num_only_String(GetTel);
+				GetFax  = B100TextControl.num_only_String(GetFax);
 				
 				if("".equals(GetWHCD)) {GetWHCD = M00001WhMstRt.NewWhCdGet(1)[0];}
 				
@@ -266,7 +266,7 @@ public class WM00011WhMstRenewAndCreate{
 					}
 				}
 				if(KickFg) {	
-					String SetWh = B00101DefaultVariableWarehouse.RenewAndCreateWh(
+					String SetWh = B100DefaultVariableWarehouse.RenewAndCreateWh(
 							GetWHCD,	//倉庫コード
 							GetWHName,	//拠点倉庫名
 							GetPost,	//拠点倉庫郵便番号

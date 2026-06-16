@@ -19,7 +19,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class B00060ToolsExcellControl{
+public class B100ExcellControl{
 	//エクセルとの連携用のクラス
 	
 	public static void EXCELL_EXISTENCE(String FP){
@@ -200,10 +200,10 @@ public class B00060ToolsExcellControl{
 						    }else{
 						    	//数字のみの文字列"."一個までは数字とみなす
 							    //数字のみの文字列に変換後、文字列長に変化なければ数値とみなして値セット
-							    String WS = B00020ToolsTextControl.num_only_String02(SET[i01][i02]);
+							    String WS = B100TextControl.num_only_String02(SET[i01][i02]);
 							    if(SET[i01][i02].length()>1){
 								    if("-".equals(SET[i01][i02].substring(0,1))){
-						    			WS = "-"+B00020ToolsTextControl.num_only_String02(SET[i01][i02]);
+						    			WS = "-"+B100TextControl.num_only_String02(SET[i01][i02]);
 						    		}
 							    }
 							    if(SET[i01][i02].length()==WS.length()&&!("".equals(SET[i01][i02]))){
@@ -285,8 +285,8 @@ public class B00060ToolsExcellControl{
 				SET_COL = SET_COL-1;
 			}
 			int SET_ROW = 0;
-			if(!("".equals(B00020ToolsTextControl.num_only_String(get_st)))){
-				SET_ROW = Integer.parseInt(B00020ToolsTextControl.num_only_String(get_st));
+			if(!("".equals(B100TextControl.num_only_String(get_st)))){
+				SET_ROW = Integer.parseInt(B100TextControl.num_only_String(get_st));
 			}
 			if(SET_ROW>0){
 				SET_ROW = SET_ROW-1;
@@ -324,7 +324,7 @@ public class B00060ToolsExcellControl{
 							//数字だけの文字列の場合は0+対象データの数式として格納　※値を格納すると書式無視するため
 							//数字のみの文字列"."一個までは数字とみなす
 						    //数字のみの文字列に変換後、文字列長に変化なければ数値とみなして値セット
-						    String WS = B00020ToolsTextControl.num_only_String02((String)SET_DATA[i][2]);
+						    String WS = B100TextControl.num_only_String02((String)SET_DATA[i][2]);
 						    if(((String)SET_DATA[i][2]).length()==WS.length()){
 						    	set_cell.setCellFormula("" + WS);
 						    }else{
@@ -447,7 +447,7 @@ public class B00060ToolsExcellControl{
 					    					//文字列として取得→数値
 					    					value = ""+cell.getStringCellValue();
 					    					String Wst = ""+cell.getStringCellValue();
-					    					Wst = B00020ToolsTextControl.num_only_String02(Wst);
+					    					Wst = B100TextControl.num_only_String02(Wst);
 					    					if("".equals(Wst)) {Wst="0";}
 					    					value = Wst;
 					    					break;
@@ -615,7 +615,7 @@ public class B00060ToolsExcellControl{
 						}
 						//
 						if("null".equals(value)) {value="";}
-						rt[i01][i02] = B00020ToolsTextControl.Trim(""+value);
+						rt[i01][i02] = B100TextControl.Trim(""+value);
 					} catch (IllegalStateException e) {
 						rt[i01][i02] = "";
 					}

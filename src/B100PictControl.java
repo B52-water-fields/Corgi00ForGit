@@ -7,11 +7,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class B00140PictControl{
+public class B100PictControl{
 	public static boolean PictCheck(String Selected) {
 		//指定ファイルが存在し、画像ファイルだった場合にTrue返却する
 		boolean rt = true;
-		rt = B00040ToolsFolderCheck.FLD_CHECK_ONRY(Selected);
+		rt = B100FolderCheck.FLD_CHECK_ONRY(Selected);
 		if(rt) {
 			File GetFile = new File(Selected);
 			try {

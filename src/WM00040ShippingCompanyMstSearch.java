@@ -27,45 +27,45 @@ public class WM00040ShippingCompanyMstSearch{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,850,750,"Corgi00運送会社検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,850,750,"Corgi00運送会社検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,820,160,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,820,160,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 
-		JLabel LB_SearchShippingCompanyCd	= B00110FrameParts.JLabelSet(  0, 25,100,20,"運送会社CD:"	,11,1);
-		JLabel LB_SearchCompanyName			= B00110FrameParts.JLabelSet(  0, 50,100,20,"運送会社名:"	,11,1);
-		JLabel LB_SearchPost				= B00110FrameParts.JLabelSet(  0, 75,100,20,"郵便番号:"	,11,1);
-		JLabel LB_SearchAdd					= B00110FrameParts.JLabelSet(  0,100,100,20,"住所:"		,11,1);
-		JLabel LB_SearchTel					= B00110FrameParts.JLabelSet(250, 25,100,20,"Tel:"			,11,1);
-		JLabel LB_SearchFax					= B00110FrameParts.JLabelSet(250, 50,100,20,"Fax:"			,11,1);
-		JLabel LB_SearchMail				= B00110FrameParts.JLabelSet(250, 75,100,20,"Mail:"		,11,1);
-		JLabel LB_SearchCom					= B00110FrameParts.JLabelSet(250,100,100,20,"コメント:"	,11,1);
+		JLabel LB_SearchShippingCompanyCd	= B100FrameParts.JLabelSet(  0, 25,100,20,"運送会社CD:"	,11,1);
+		JLabel LB_SearchCompanyName			= B100FrameParts.JLabelSet(  0, 50,100,20,"運送会社名:"	,11,1);
+		JLabel LB_SearchPost				= B100FrameParts.JLabelSet(  0, 75,100,20,"郵便番号:"	,11,1);
+		JLabel LB_SearchAdd					= B100FrameParts.JLabelSet(  0,100,100,20,"住所:"		,11,1);
+		JLabel LB_SearchTel					= B100FrameParts.JLabelSet(250, 25,100,20,"Tel:"			,11,1);
+		JLabel LB_SearchFax					= B100FrameParts.JLabelSet(250, 50,100,20,"Fax:"			,11,1);
+		JLabel LB_SearchMail				= B100FrameParts.JLabelSet(250, 75,100,20,"Mail:"		,11,1);
+		JLabel LB_SearchCom					= B100FrameParts.JLabelSet(250,100,100,20,"コメント:"	,11,1);
 		
-		final JTextField TB_SearchShippingCompanyCd	= B00110FrameParts.JTextFieldSet(	100, 25,100,20,"",11,0);	//運送会社CD
-		final JTextField TB_SearchCompanyName		= B00110FrameParts.JTextFieldSet(	100, 50,100,20,"",11,0);	//運送会社名
-		final JTextField TB_SearchPost				= B00110FrameParts.JTextFieldSet(	100, 75,100,20,"",11,0);	//郵便番号
-		final JTextField TB_SearchAdd				= B00110FrameParts.JTextFieldSet(	100,100,100,20,"",11,0);	//住所
-		final JTextField TB_SearchTel				= B00110FrameParts.JTextFieldSet(	350, 25,100,20,"",11,0);	//Tel
-		final JTextField TB_SearchFax				= B00110FrameParts.JTextFieldSet(	350, 50,100,20,"",11,0);	//Fax
-		final JTextField TB_SearchMail				= B00110FrameParts.JTextFieldSet(	350, 75,100,20,"",11,0);	//Mail
-		final JTextField TB_SearchCom				= B00110FrameParts.JTextFieldSet(	350,100,100,20,"",11,0);	//コメント
+		final JTextField TB_SearchShippingCompanyCd	= B100FrameParts.JTextFieldSet(	100, 25,100,20,"",11,0);	//運送会社CD
+		final JTextField TB_SearchCompanyName		= B100FrameParts.JTextFieldSet(	100, 50,100,20,"",11,0);	//運送会社名
+		final JTextField TB_SearchPost				= B100FrameParts.JTextFieldSet(	100, 75,100,20,"",11,0);	//郵便番号
+		final JTextField TB_SearchAdd				= B100FrameParts.JTextFieldSet(	100,100,100,20,"",11,0);	//住所
+		final JTextField TB_SearchTel				= B100FrameParts.JTextFieldSet(	350, 25,100,20,"",11,0);	//Tel
+		final JTextField TB_SearchFax				= B100FrameParts.JTextFieldSet(	350, 50,100,20,"",11,0);	//Fax
+		final JTextField TB_SearchMail				= B100FrameParts.JTextFieldSet(	350, 75,100,20,"",11,0);	//Mail
+		final JTextField TB_SearchCom				= B100FrameParts.JTextFieldSet(	350,100,100,20,"",11,0);	//コメント
 		
-		JLabel LB2_SearchShippingCompanyCd	= B00110FrameParts.JLabelSet(200, 25, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchCompanyName		= B00110FrameParts.JLabelSet(200, 50, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchPost				= B00110FrameParts.JLabelSet(200, 75, 50,20,"で始まる"	,11,0);
-		JLabel LB2_SearchAdd				= B00110FrameParts.JLabelSet(200,100, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchTel				= B00110FrameParts.JLabelSet(450, 25, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchFax				= B00110FrameParts.JLabelSet(450, 50, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchMail				= B00110FrameParts.JLabelSet(450, 75, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchCom				= B00110FrameParts.JLabelSet(450,100, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchShippingCompanyCd	= B100FrameParts.JLabelSet(200, 25, 50,20,"と一致"	,11,0);
+		JLabel LB2_SearchCompanyName		= B100FrameParts.JLabelSet(200, 50, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchPost				= B100FrameParts.JLabelSet(200, 75, 50,20,"で始まる"	,11,0);
+		JLabel LB2_SearchAdd				= B100FrameParts.JLabelSet(200,100, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchTel				= B100FrameParts.JLabelSet(450, 25, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchFax				= B100FrameParts.JLabelSet(450, 50, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchMail				= B100FrameParts.JLabelSet(450, 75, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchCom				= B100FrameParts.JLabelSet(450,100, 50,20,"を含む"	,11,0);
 		
 		PN_Search.add(LB_SearchShippingCompanyCd);
 		PN_Search.add(LB_SearchCompanyName);
@@ -95,7 +95,7 @@ public class WM00040ShippingCompanyMstSearch{
 		PN_Search.add(LB2_SearchCom);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(350,125,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		
@@ -109,9 +109,9 @@ public class WM00040ShippingCompanyMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -128,36 +128,36 @@ public class WM00040ShippingCompanyMstSearch{
 		
 		for(int i=0;i<RtSettingShippingCompanyMstRt.length;i++) {
 			if("int".equals((String)RtSettingShippingCompanyMstRt[i][2])||"float".equals((String)RtSettingShippingCompanyMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,210,820,425,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,210,820,425,tb01);
 		main_fm.add(scpn01);
 		
 		main_fm.setVisible(true);
 		RenewFg = true;
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excelボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//検索ボタン押下時の挙動
@@ -189,14 +189,14 @@ public class WM00040ShippingCompanyMstSearch{
 					if(null==GetSearchMail				){GetSearchMail = "";}
 					if(null==GetSearchCom				){GetSearchCom = "";}
 					
-					GetSearchShippingCompanyCd	= B00020ToolsTextControl.Trim(GetSearchShippingCompanyCd);
-					GetSearchCompanyName		= B00020ToolsTextControl.Trim(GetSearchCompanyName);
-					GetSearchPost				= B00020ToolsTextControl.Trim(GetSearchPost);
-					GetSearchAdd				= B00020ToolsTextControl.Trim(GetSearchAdd);
-					GetSearchTel				= B00020ToolsTextControl.Trim(GetSearchTel);
-					GetSearchFax				= B00020ToolsTextControl.Trim(GetSearchFax);
-					GetSearchMail				= B00020ToolsTextControl.Trim(GetSearchMail);
-					GetSearchCom				= B00020ToolsTextControl.Trim(GetSearchCom);
+					GetSearchShippingCompanyCd	= B100TextControl.Trim(GetSearchShippingCompanyCd);
+					GetSearchCompanyName		= B100TextControl.Trim(GetSearchCompanyName);
+					GetSearchPost				= B100TextControl.Trim(GetSearchPost);
+					GetSearchAdd				= B100TextControl.Trim(GetSearchAdd);
+					GetSearchTel				= B100TextControl.Trim(GetSearchTel);
+					GetSearchFax				= B100TextControl.Trim(GetSearchFax);
+					GetSearchMail				= B100TextControl.Trim(GetSearchMail);
+					GetSearchCom				= B100TextControl.Trim(GetSearchCom);
 					
 					TB_SearchShippingCompanyCd.setText(GetSearchShippingCompanyCd);
 					TB_SearchCompanyName.setText(GetSearchCompanyName);
@@ -246,9 +246,9 @@ public class WM00040ShippingCompanyMstSearch{
 						tableModel_ms01.addRow(SetOb);;
 					}
 					if(0<ShippingCompanyMstRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}
@@ -317,7 +317,7 @@ public class WM00040ShippingCompanyMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","運送会社マスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","運送会社マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -328,7 +328,7 @@ public class WM00040ShippingCompanyMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","運送会社マスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","運送会社マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

@@ -19,29 +19,29 @@ public class WM10011PostMstRenewAndCreate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,250,"Corgi00郵便番号登録・修正","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,250,"Corgi00郵便番号登録・修正","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_Post  = B00110FrameParts.JLabelSet(	           	  0, 40,100,20,"郵便番号:"  ,11,1);
-		JLabel LB_Prefecturs   = B00110FrameParts.JLabelSet(	  	  0, 65,100,20,"県:"        ,11,1);
-		JLabel LB_Munic01   = B00110FrameParts.JLabelSet(	     	  0, 90,100,20,"市区町村:"  ,11,1);
-		JLabel LB_Munic02   = B00110FrameParts.JLabelSet(			  0,115,100,20,"町丁目:"    ,11,1);
-		JLabel LB_MuniciparytyCd   = B00110FrameParts.JLabelSet(	  0,140,100,20,"市区町村CD:",11,1);
+		JLabel LB_Post  = B100FrameParts.JLabelSet(	           	  0, 40,100,20,"郵便番号:"  ,11,1);
+		JLabel LB_Prefecturs   = B100FrameParts.JLabelSet(	  	  0, 65,100,20,"県:"        ,11,1);
+		JLabel LB_Munic01   = B100FrameParts.JLabelSet(	     	  0, 90,100,20,"市区町村:"  ,11,1);
+		JLabel LB_Munic02   = B100FrameParts.JLabelSet(			  0,115,100,20,"町丁目:"    ,11,1);
+		JLabel LB_MuniciparytyCd   = B100FrameParts.JLabelSet(	  0,140,100,20,"市区町村CD:",11,1);
 		
-		final JTextField TB_Post  = B00110FrameParts.JTextFieldSet(	     	  	100, 40,100,20,"",11,0);
-		final JTextField TB_Prefecturs   = B00110FrameParts.JTextFieldSet( 	 	100, 65,100,20,"",11,0);
-		final JTextField TB_Munic01   = B00110FrameParts.JTextFieldSet(		   	100, 90,200,20,"",11,0);
-		final JTextField TB_Munic02   = B00110FrameParts.JTextFieldSet(			100,115,200,20,"",11,0);
-		final JTextField TB_MuniciparytyCd   = B00110FrameParts.JTextFieldSet(	100,140,100,20,"",11,0);
+		final JTextField TB_Post  = B100FrameParts.JTextFieldSet(	     	  	100, 40,100,20,"",11,0);
+		final JTextField TB_Prefecturs   = B100FrameParts.JTextFieldSet( 	 	100, 65,100,20,"",11,0);
+		final JTextField TB_Munic01   = B100FrameParts.JTextFieldSet(		   	100, 90,200,20,"",11,0);
+		final JTextField TB_Munic02   = B100FrameParts.JTextFieldSet(			100,115,200,20,"",11,0);
+		final JTextField TB_MuniciparytyCd   = B100FrameParts.JTextFieldSet(	100,140,100,20,"",11,0);
 		
 		if(null==TgtPost) {TgtPost="";}
-		TgtPost = B00020ToolsTextControl.num_only_String(TgtPost);
+		TgtPost = B100TextControl.num_only_String(TgtPost);
 		TB_Post.setText(TgtPost);
 		
 		if(!"".equals(TgtPost)) {
@@ -104,8 +104,8 @@ public class WM10011PostMstRenewAndCreate{
 				String GetMunic02 = TB_Munic02.getText();				if(null==GetMunic02) {GetMunic02="";}
 				String GetMuniciparytyCd = TB_MuniciparytyCd.getText();	if(null==GetMuniciparytyCd) {GetMuniciparytyCd="";}
 				
-				GetPost = B00020ToolsTextControl.num_only_String(GetPost);
-				GetMuniciparytyCd = B00020ToolsTextControl.num_only_String(GetMuniciparytyCd);
+				GetPost = B100TextControl.num_only_String(GetPost);
+				GetMuniciparytyCd = B100TextControl.num_only_String(GetMuniciparytyCd);
 				boolean KickFg = false;
 				
 				if(!"".equals(GetPost)) {KickFg = true;}
@@ -139,15 +139,15 @@ public class WM10011PostMstRenewAndCreate{
 					field_name[3][2] = "1";	//町丁目
 					field_name[4][2] = "1";	//市区町村CD
 					
-					judg_data[0][0] = B00020ToolsTextControl.Trim(GetPost);	//郵便番号
+					judg_data[0][0] = B100TextControl.Trim(GetPost);	//郵便番号
 					
-					entry_data[0][0] = B00020ToolsTextControl.Trim(GetPost);			//郵便番号
-					entry_data[0][1] = B00020ToolsTextControl.Trim(GetPrefecturs);		//県
-					entry_data[0][2] = B00020ToolsTextControl.Trim(GetMunic01);			//市区町村
-					entry_data[0][3] = B00020ToolsTextControl.Trim(GetMunic02);			//町丁目
-					entry_data[0][4] = B00020ToolsTextControl.Trim(GetMuniciparytyCd);	//市区町村CD
+					entry_data[0][0] = B100TextControl.Trim(GetPost);			//郵便番号
+					entry_data[0][1] = B100TextControl.Trim(GetPrefecturs);		//県
+					entry_data[0][2] = B100TextControl.Trim(GetMunic01);			//市区町村
+					entry_data[0][3] = B100TextControl.Trim(GetMunic02);			//町丁目
+					entry_data[0][4] = B100TextControl.Trim(GetMuniciparytyCd);	//市区町村CD
 					
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();

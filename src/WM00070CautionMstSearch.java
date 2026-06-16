@@ -28,48 +28,48 @@ public class WM00070CautionMstSearch{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00届先注意事項マスタ検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,900,750,"Corgi00届先注意事項マスタ検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(			 10, 40,870,160,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(	 10,  0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(			 10, 40,870,160,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(	 10,  0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchCautionCd		= B00110FrameParts.JLabelSet(  0, 25,100,20,"注意事項CD:"		,11,1);
-		JLabel LB_SearchCautionName		= B00110FrameParts.JLabelSet(  0, 50,100,20,"注意事項名:"		,11,1);
-		JLabel LB_SearchCaution			= B00110FrameParts.JLabelSet(  0, 75,100,20,"注意事項内容:"	,11,1);
-		JLabel LB_SearchCautionTiming	= B00110FrameParts.JLabelSet(  0,100,100,20,"注意タイミング:"	,11,1);
+		JLabel LB_SearchCautionCd		= B100FrameParts.JLabelSet(  0, 25,100,20,"注意事項CD:"		,11,1);
+		JLabel LB_SearchCautionName		= B100FrameParts.JLabelSet(  0, 50,100,20,"注意事項名:"		,11,1);
+		JLabel LB_SearchCaution			= B100FrameParts.JLabelSet(  0, 75,100,20,"注意事項内容:"	,11,1);
+		JLabel LB_SearchCautionTiming	= B100FrameParts.JLabelSet(  0,100,100,20,"注意タイミング:"	,11,1);
 		
-		JLabel LB_SearchClGpCD			= B00110FrameParts.JLabelSet(250, 25,100,20,"荷主グループCD:"	,11,1);
-		JLabel LB_SearchDECD			= B00110FrameParts.JLabelSet(250, 50,100,20,"届先CD:"			,11,1);
-		JLabel LB_SearchDepartmentCd	= B00110FrameParts.JLabelSet(250, 75,100,20,"届先部署CD:"		,11,1);
-		JLabel LB_SearchDeName			= B00110FrameParts.JLabelSet(250,100,100,20,"届先名:"			,11,1);
+		JLabel LB_SearchClGpCD			= B100FrameParts.JLabelSet(250, 25,100,20,"荷主グループCD:"	,11,1);
+		JLabel LB_SearchDECD			= B100FrameParts.JLabelSet(250, 50,100,20,"届先CD:"			,11,1);
+		JLabel LB_SearchDepartmentCd	= B100FrameParts.JLabelSet(250, 75,100,20,"届先部署CD:"		,11,1);
+		JLabel LB_SearchDeName			= B100FrameParts.JLabelSet(250,100,100,20,"届先名:"			,11,1);
 		
-		final JTextField  TB_SearchCautionCd		= B00110FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//注意事項CD
-		final JTextField  TB_SearchCautionName		= B00110FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//注意事項名
-		final JTextField  TB_SearchCaution			= B00110FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//注意事項内容
-		final JComboBox   TB_SearchCautionTiming	= B00110FrameParts.JComboBoxSet( 100,100,100,20,B00100DefaultVariable.SearchCautionTiming[0],11);	//注意タイミング
+		final JTextField  TB_SearchCautionCd		= B100FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//注意事項CD
+		final JTextField  TB_SearchCautionName		= B100FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//注意事項名
+		final JTextField  TB_SearchCaution			= B100FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//注意事項内容
+		final JComboBox   TB_SearchCautionTiming	= B100FrameParts.JComboBoxSet( 100,100,100,20,B100DefaultVariable.SearchCautionTiming[0],11);	//注意タイミング
 		
-		final JTextField  TB_SearchClGpCD			= B00110FrameParts.JTextFieldSet(350, 25,100,20,"",11,0);			//荷主グループCD
-		final JTextField  TB_SearchDECD				= B00110FrameParts.JTextFieldSet(350, 50,100,20,"",11,0);			//届先CD
-		final JTextField  TB_SearchDepartmentCd		= B00110FrameParts.JTextFieldSet(350, 75,100,20,"",11,0);			//届先部署CD
-		final JTextField  TB_SearchDeName			= B00110FrameParts.JTextFieldSet(350,100,100,20,"",11,0);			//届先名
+		final JTextField  TB_SearchClGpCD			= B100FrameParts.JTextFieldSet(350, 25,100,20,"",11,0);			//荷主グループCD
+		final JTextField  TB_SearchDECD				= B100FrameParts.JTextFieldSet(350, 50,100,20,"",11,0);			//届先CD
+		final JTextField  TB_SearchDepartmentCd		= B100FrameParts.JTextFieldSet(350, 75,100,20,"",11,0);			//届先部署CD
+		final JTextField  TB_SearchDeName			= B100FrameParts.JTextFieldSet(350,100,100,20,"",11,0);			//届先名
 		
-		JLabel LB2_SearchCautionCd		= B00110FrameParts.JLabelSet(200, 25, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchCautionName	= B00110FrameParts.JLabelSet(200, 50, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchCaution		= B00110FrameParts.JLabelSet(200, 75, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchCautionTiming	= B00110FrameParts.JLabelSet(200,100, 50,20,""			,11,0);
+		JLabel LB2_SearchCautionCd		= B100FrameParts.JLabelSet(200, 25, 50,20,"と一致"	,11,0);
+		JLabel LB2_SearchCautionName	= B100FrameParts.JLabelSet(200, 50, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchCaution		= B100FrameParts.JLabelSet(200, 75, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchCautionTiming	= B100FrameParts.JLabelSet(200,100, 50,20,""			,11,0);
 		
-		JLabel LB2_SearchClGpCD			= B00110FrameParts.JLabelSet(450, 25, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDECD			= B00110FrameParts.JLabelSet(450, 50, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDepartmentCd	= B00110FrameParts.JLabelSet(450, 75, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDeName			= B00110FrameParts.JLabelSet(450,100, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchClGpCD			= B100FrameParts.JLabelSet(450, 25, 50,20,"と一致"	,11,0);
+		JLabel LB2_SearchDECD			= B100FrameParts.JLabelSet(450, 50, 50,20,"と一致"	,11,0);
+		JLabel LB2_SearchDepartmentCd	= B100FrameParts.JLabelSet(450, 75, 50,20,"と一致"	,11,0);
+		JLabel LB2_SearchDeName			= B100FrameParts.JLabelSet(450,100, 50,20,"を含む"	,11,0);
 
 		PN_Search.add(LB_SearchCautionCd);
 		PN_Search.add(LB_SearchCautionName);
@@ -102,7 +102,7 @@ public class WM00070CautionMstSearch{
 		PN_Search.add(LB2_SearchDeName);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(350,125,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		Object[][] RtSettingCautionMstRt = M00042CautionMstRt.RtSettingCautionMstRt();
@@ -115,10 +115,10 @@ public class WM00070CautionMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -135,44 +135,44 @@ public class WM00070CautionMstSearch{
 		
 		for(int i=0;i<RtSettingCautionMstRt.length;i++) {
 			if("int".equals((String)RtSettingCautionMstRt[i][2])||"float".equals((String)RtSettingCautionMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,210,870,395,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,210,870,395,tb01);
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
-		JLabel LB_DeleteBtn  = B00110FrameParts.JLabelSet(	610,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_DeleteBtn  = B100FrameParts.JLabelSet(	610,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_DeleteBtn);
 		
 		//削除ボタン
-		JButton DeleteBtn = B00110FrameParts.BtnSet(	610,660,100,20,"削除",11);
+		JButton DeleteBtn = B100FrameParts.BtnSet(	610,660,100,20,"削除",11);
 		main_fm.add(DeleteBtn);
 		
 		main_fm.setVisible(true);
@@ -193,7 +193,7 @@ public class WM00070CautionMstSearch{
 					String GetSearchCautionCd = TB_SearchCautionCd.getText();		//注意事項CD
 					String GetSearchCautionName = TB_SearchCautionName.getText();	//注意事項名
 					String GetSearchCaution = TB_SearchCaution.getText();			//注意事項内容
-					String GetSearchCautionTiming = B00100DefaultVariable.SearchCautionTiming[1][TB_SearchCautionTiming.getSelectedIndex()];	//注意タイミング
+					String GetSearchCautionTiming = B100DefaultVariable.SearchCautionTiming[1][TB_SearchCautionTiming.getSelectedIndex()];	//注意タイミング
 					String GetSearchClGpCD = TB_SearchClGpCD.getText();				//荷主グループCD
 					String GetSearchDECD = TB_SearchDECD.getText();					//届先CD
 					String GetSearchDepartmentCd = TB_SearchDepartmentCd.getText();	//届先部署CD
@@ -208,14 +208,14 @@ public class WM00070CautionMstSearch{
 					if(null==GetSearchDepartmentCd	){GetSearchDepartmentCd	= "";}
 					if(null==GetSearchDeName		){GetSearchDeName		= "";}
 					
-					GetSearchCautionCd		= B00020ToolsTextControl.Trim(GetSearchCautionCd);
-					GetSearchCautionName	= B00020ToolsTextControl.Trim(GetSearchCautionName);
-					GetSearchCaution		= B00020ToolsTextControl.Trim(GetSearchCaution);
-					GetSearchCautionTiming	= B00020ToolsTextControl.Trim(GetSearchCautionTiming);
-					GetSearchClGpCD			= B00020ToolsTextControl.Trim(GetSearchClGpCD);
-					GetSearchDECD			= B00020ToolsTextControl.Trim(GetSearchDECD);
-					GetSearchDepartmentCd	= B00020ToolsTextControl.Trim(GetSearchDepartmentCd);
-					GetSearchDeName			= B00020ToolsTextControl.Trim(GetSearchDeName);
+					GetSearchCautionCd		= B100TextControl.Trim(GetSearchCautionCd);
+					GetSearchCautionName	= B100TextControl.Trim(GetSearchCautionName);
+					GetSearchCaution		= B100TextControl.Trim(GetSearchCaution);
+					GetSearchCautionTiming	= B100TextControl.Trim(GetSearchCautionTiming);
+					GetSearchClGpCD			= B100TextControl.Trim(GetSearchClGpCD);
+					GetSearchDECD			= B100TextControl.Trim(GetSearchDECD);
+					GetSearchDepartmentCd	= B100TextControl.Trim(GetSearchDepartmentCd);
+					GetSearchDeName			= B100TextControl.Trim(GetSearchDeName);
 					
 					ArrayList<String> SearchCautionCd = new ArrayList<String>();
 					ArrayList<String> SearchClGpCD = new ArrayList<String>();
@@ -256,9 +256,9 @@ public class WM00070CautionMstSearch{
 						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<CautionMstRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}
@@ -348,7 +348,7 @@ public class WM00070CautionMstSearch{
 						judg_data[0][1] = TgtDECD;			//届先コード
 						judg_data[0][2] = TgtDepartmentCd;	//部署CD
 						
-						A00030DeleteSQL.DeleteSql(tgt_table,judg_field,judg_data,TgtDB);
+						A100DeleteSQL.DeleteSql(tgt_table,judg_field,judg_data,TgtDB);
 					}
 					RenewFg = true;
 				}
@@ -379,7 +379,7 @@ public class WM00070CautionMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","届先注意事項マスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","届先注意事項マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -390,7 +390,7 @@ public class WM00070CautionMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","届先注意事項マスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","届先注意事項マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

@@ -97,14 +97,14 @@ public class M00042CautionMstRt{
 			ArrayList<String> SearchDeName,
 			boolean AllSearch){
 		
-		SearchCautionCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchCautionCd);
-		SearchClGpCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchDECD			= B00150ArrayListControl.ArryListStringUniqueList(SearchDECD);
-		SearchDepartmentCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
-		SearchCautionTiming	= B00150ArrayListControl.ArryListStringUniqueList(SearchCautionTiming);
-		SearchCautionName	= B00150ArrayListControl.ArryListStringUniqueList(SearchCautionName);
-		SearchCaution		= B00150ArrayListControl.ArryListStringUniqueList(SearchCaution);
-		SearchDeName		= B00150ArrayListControl.ArryListStringUniqueList(SearchDeName);
+		SearchCautionCd		= B100ArrayListControl.ArryListStringUniqueList(SearchCautionCd);
+		SearchClGpCD		= B100ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchDECD			= B100ArrayListControl.ArryListStringUniqueList(SearchDECD);
+		SearchDepartmentCd	= B100ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
+		SearchCautionTiming	= B100ArrayListControl.ArryListStringUniqueList(SearchCautionTiming);
+		SearchCautionName	= B100ArrayListControl.ArryListStringUniqueList(SearchCautionName);
+		SearchCaution		= B100ArrayListControl.ArryListStringUniqueList(SearchCaution);
+		SearchDeName		= B100ArrayListControl.ArryListStringUniqueList(SearchDeName);
 		
 		
 		Object[][] rt = new Object[0][RtSettingCautionMstRt().length];
@@ -218,11 +218,11 @@ public class M00042CautionMstRt{
 		
 		if(SearchKick) {
 			//System.out.println(sql);
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchCautionCd && 0<SearchCautionCd.size()){
@@ -298,8 +298,8 @@ public class M00042CautionMstRt{
 					rt[counter][ColCautionTiming]=rset01.getInt("CautionTiming");																												//注意事項タイミング
 					if(null==rset01.getString("CautionName")){	rt[counter][ColCautionName]	="";}else{rt[counter][ColCautionName]		=rset01.getString("CautionName");}					//注意事項名
 					if(null==rset01.getString("Caution")){		rt[counter][ColCaution]		="";}else{rt[counter][ColCaution]			=rset01.getString("Caution");}						//注意事項内容
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]		=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]		=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
 					if(null==rset01.getString("EntryUser")){	rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]		=rset01.getString("EntryUser");}					//登録者コード
 					if(null==rset01.getString("UpdateUser")){	rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]		=rset01.getString("UpdateUser");}					//更新者コード
 					if(null==rset01.getString("Add01")){		rt[counter][ColAdd01]			="";}else{rt[counter][ColAdd01]			=rset01.getString("Add01");}						//届先住所1
@@ -320,7 +320,7 @@ public class M00042CautionMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -351,7 +351,7 @@ public class M00042CautionMstRt{
     	
     	for(int i=0;i<CautionMstRt.length;i++) {
     		if(4<(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).length()&&"ATCT".equals((""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]).substring(0,4))) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]);
+    			String WST = B100TextControl.num_only_String(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]);
     			if(9==WST.length()) {
     				int wint = Integer.parseInt(WST);
     				if(CautionNo<wint) {

@@ -11,7 +11,7 @@ import org.apache.commons.io.ByteOrderMark;
 import org.apache.commons.io.input.BOMInputStream;
 import org.mozilla.universalchardet.UniversalDetector;
 
-public class B00010ToolsTextRead{
+public class B100TextRead{
 	//.csvファイル　.txtファイルなどテキストファイルを読み込むためのクラス
 	
 	//行ごとの配列を受け取って、指定されたファイルパスにテキストデータ出力する

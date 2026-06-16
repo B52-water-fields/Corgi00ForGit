@@ -151,18 +151,18 @@ public class M00040DeliveryMstRt{
 			boolean AllSearch
 			){
 		
-		SearchDECD				= B00150ArrayListControl.ArryListStringUniqueList(SearchDECD);
-		SearchDepartmentCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
-		SearchDEName			= B00150ArrayListControl.ArryListStringUniqueList(SearchDEName);
-		SearchPost				= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd				= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel				= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax				= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail				= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
-		SearchPrefecturesCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchPrefecturesCd);
-		SearchMunicipalityCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
-		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		SearchDECD				= B100ArrayListControl.ArryListStringUniqueList(SearchDECD);
+		SearchDepartmentCd		= B100ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
+		SearchDEName			= B100ArrayListControl.ArryListStringUniqueList(SearchDEName);
+		SearchPost				= B100ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd				= B100ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel				= B100ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax				= B100ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail				= B100ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom				= B100ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchPrefecturesCd		= B100ArrayListControl.ArryListStringUniqueList(SearchPrefecturesCd);
+		SearchMunicipalityCd	= B100ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
+		SearchDelFg				= B100ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
 		Object[][] rt = new Object[0][RtSettingDeliveryMstRt().length];
 		boolean SearchKick = false;
@@ -330,11 +330,11 @@ public class M00040DeliveryMstRt{
 		
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchDECD && 0<SearchDECD.size()){
@@ -451,8 +451,8 @@ public class M00040DeliveryMstRt{
 					if(null==rset01.getString("PrefecturesCd")){	rt[counter][ColPrefecturesCd] 	= "";}else{rt[counter][ColPrefecturesCd] 		= rset01.getString("PrefecturesCd");}	//JIS県CD2桁
 					if(null==rset01.getString("MunicipalityCd")){	rt[counter][ColMunicipalityCd] 	= "";}else{rt[counter][ColMunicipalityCd] 	= rset01.getString("MunicipalityCd");}	//JIS市区町村CD5桁
 					if(null==rset01.getString("PTMSCD")){			rt[counter][ColPTMSCD] 			= "";}else{rt[counter][ColPTMSCD] 				= rset01.getString("PTMSCD");}			//基幹システム発着地コード
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate] 		= "";}else{rt[counter][ColEntryDate] 			= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate] 		= "";}else{rt[counter][ColUpdateDate] 		= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate] 		= "";}else{rt[counter][ColEntryDate] 			= B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate] 		= "";}else{rt[counter][ColUpdateDate] 		= B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
 					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser] 		= "";}else{rt[counter][ColEntryUser] 			= rset01.getString("EntryUser");}		//登録者コード
 					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser] 		= "";}else{rt[counter][ColUpdateUser] 		= rset01.getString("UpdateUser");}		//更新者コード
 					if(null==rset01.getString("FirstClient")){		rt[counter][ColFirstClient] 		= "";}else{rt[counter][ColFirstClient] 		= rset01.getString("FirstClient");}		//登録した荷主CD
@@ -475,7 +475,7 @@ public class M00040DeliveryMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -519,7 +519,7 @@ public class M00040DeliveryMstRt{
     	
     	for(int i=0;i<DeliveryMstRt.length;i++) {
     		if(2<(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).length()&&"AT".equals((""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]).substring(0,2))) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]);
+    			String WST = B100TextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDECD]);
     			if("".equals(WST)){WST = "0";}
     			int wint = Integer.parseInt(WST);
 				if(DENo<wint) {
@@ -582,7 +582,7 @@ public class M00040DeliveryMstRt{
 				);
 		int DeptNo = 0;
 		for(int i=0;i<DeliveryMstRt.length;i++) {
-			String WST = B00020ToolsTextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd]);
+			String WST = B100TextControl.num_only_String(""+DeliveryMstRt[i][M00040DeliveryMstRt.ColDepartmentCd]);
 			if("".equals(WST)) {WST = "0";}
 			int WINT = Integer.parseInt(WST);
 			if(WINT>DeptNo) {

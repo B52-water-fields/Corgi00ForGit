@@ -31,49 +31,49 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 		if("".equals(TgtWhCd)		) {TgtWhCd				= A00000Main.ClWh;}
 		if(null==TgtAdjustReasonCd	) {TgtAdjustReasonCd	= "";}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,400,"Corgi00在庫調整理由マスタ登録・修正","");
-		JLabel userinfo 	= B00110FrameParts.UserInfo();
-		JButton exit_btn 	= B00110FrameParts.ExitBtn();
-		JButton entry_btn 	= B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,600,400,"Corgi00在庫調整理由マスタ登録・修正","");
+		JLabel userinfo 	= B100FrameParts.UserInfo();
+		JButton exit_btn 	= B100FrameParts.ExitBtn();
+		JButton entry_btn 	= B100FrameParts.EntryBtn();
 		
-		JLabel LB_ClCd				= B00110FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"		,11,1);
-		JLabel LB_WhCd				= B00110FrameParts.JLabelSet(	  0, 75,130,20,"倉庫コード:"		,11,1);
-		JLabel LB_AdjustReasonCd	= B00110FrameParts.JLabelSet(	  0,100,130,20,"調整理由コード:"	,11,1);
-		JLabel LB_AdjustReasonName	= B00110FrameParts.JLabelSet(	  0,125,130,20,"調整理由名:"		,11,1);
-		JLabel LB_EntryDate			= B00110FrameParts.JLabelSet(	  0,150,130,20,"登録日:"			,11,1);
-		JLabel LB_UpdateDate		= B00110FrameParts.JLabelSet(	  0,175,130,20,"更新日:"			,11,1);
-		JLabel LB_EntryUser			= B00110FrameParts.JLabelSet(	  0,200,130,20,"登録者:"			,11,1);
-		JLabel LB_UpdateUser		= B00110FrameParts.JLabelSet(	  0,225,130,20,"更新者:"			,11,1);
+		JLabel LB_ClCd				= B100FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"		,11,1);
+		JLabel LB_WhCd				= B100FrameParts.JLabelSet(	  0, 75,130,20,"倉庫コード:"		,11,1);
+		JLabel LB_AdjustReasonCd	= B100FrameParts.JLabelSet(	  0,100,130,20,"調整理由コード:"	,11,1);
+		JLabel LB_AdjustReasonName	= B100FrameParts.JLabelSet(	  0,125,130,20,"調整理由名:"		,11,1);
+		JLabel LB_EntryDate			= B100FrameParts.JLabelSet(	  0,150,130,20,"登録日:"			,11,1);
+		JLabel LB_UpdateDate		= B100FrameParts.JLabelSet(	  0,175,130,20,"更新日:"			,11,1);
+		JLabel LB_EntryUser			= B100FrameParts.JLabelSet(	  0,200,130,20,"登録者:"			,11,1);
+		JLabel LB_UpdateUser		= B100FrameParts.JLabelSet(	  0,225,130,20,"更新者:"			,11,1);
 		
-		final JComboBox   TB_ClWh				= B00110FrameParts.JComboBoxSet(	130, 50,250,20,B00100DefaultVariable.WhList[0],11);		//倉庫コード
-		final JComboBox   TB_ClCd				= B00110FrameParts.JComboBoxSet(	130, 75,250,20,B00100DefaultVariable.ClList[0],11);		//荷主コード
-		final JTextField  TB_AdjustReasonCd		= B00110FrameParts.JTextFieldSet( 130,100,100,20,TgtAdjustReasonCd,11,0);						//調整理由コード
-		final JTextField  TB_AdjustReasonName	= B00110FrameParts.JTextFieldSet( 130,125,100,20,"",11,0);	//調整理由名
-		final JTextField  TB_EntryDate			= B00110FrameParts.JTextFieldSet( 130,150,300,20,"",11,0);	//登録日
-		final JTextField  TB_UpdateDate			= B00110FrameParts.JTextFieldSet( 130,175,300,20,"",11,0);	//更新日
-		final JTextField  TB_EntryUser			= B00110FrameParts.JTextFieldSet( 130,200,300,20,"",11,0);	//登録者
-		final JTextField  TB_UpdateUser			= B00110FrameParts.JTextFieldSet( 130,225,300,20,"",11,0);	//更新者
+		final JComboBox   TB_ClWh				= B100FrameParts.JComboBoxSet(	130, 50,250,20,B100DefaultVariable.WhList[0],11);		//倉庫コード
+		final JComboBox   TB_ClCd				= B100FrameParts.JComboBoxSet(	130, 75,250,20,B100DefaultVariable.ClList[0],11);		//荷主コード
+		final JTextField  TB_AdjustReasonCd		= B100FrameParts.JTextFieldSet( 130,100,100,20,TgtAdjustReasonCd,11,0);						//調整理由コード
+		final JTextField  TB_AdjustReasonName	= B100FrameParts.JTextFieldSet( 130,125,100,20,"",11,0);	//調整理由名
+		final JTextField  TB_EntryDate			= B100FrameParts.JTextFieldSet( 130,150,300,20,"",11,0);	//登録日
+		final JTextField  TB_UpdateDate			= B100FrameParts.JTextFieldSet( 130,175,300,20,"",11,0);	//更新日
+		final JTextField  TB_EntryUser			= B100FrameParts.JTextFieldSet( 130,200,300,20,"",11,0);	//登録者
+		final JTextField  TB_UpdateUser			= B100FrameParts.JTextFieldSet( 130,225,300,20,"",11,0);	//更新者
 		
-		for(int i=0;i<B00100DefaultVariable.ClList[1].length;i++) {
-			if(B00100DefaultVariable.ClList[1][i].equals(A00000Main.ClCd)) {
+		for(int i=0;i<B100DefaultVariable.ClList[1].length;i++) {
+			if(B100DefaultVariable.ClList[1][i].equals(A00000Main.ClCd)) {
 				TB_ClCd.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-			if(B00100DefaultVariable.WhList[1][i].equals(A00000Main.ClWh)) {
+		for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+			if(B100DefaultVariable.WhList[1][i].equals(A00000Main.ClWh)) {
 				TB_ClWh.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.ClList[1].length;i++) {
-			if(B00100DefaultVariable.ClList[1][i].equals(TgtClCd)) {
+		for(int i=0;i<B100DefaultVariable.ClList[1].length;i++) {
+			if(B100DefaultVariable.ClList[1][i].equals(TgtClCd)) {
 				TB_ClCd.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-			if(B00100DefaultVariable.WhList[1][i].equals(TgtWhCd)) {
+		for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+			if(B100DefaultVariable.WhList[1][i].equals(TgtWhCd)) {
 				TB_ClWh.setSelectedIndex(i);
 			}
 		}
@@ -144,8 +144,8 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 				if(RenewFg) {
 					RenewFg = false;
 					
-					String GetClWh				= B00100DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];
-					String GetClCd				= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];
+					String GetClWh				= B100DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];
+					String GetClCd				= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];
 					String GetAdjustReasonCd	= TB_AdjustReasonCd.getText();
 					String GetAdjustReasonName	= TB_AdjustReasonName.getText();
 					
@@ -183,8 +183,8 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 			public void focusLost(FocusEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					String GetClWh				= B00100DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];
-					String GetClCd				= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];
+					String GetClWh				= B100DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];
+					String GetClCd				= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];
 					String GetAdjustReasonCd	= TB_AdjustReasonCd.getText();
 					String GetAdjustReasonName	= TB_AdjustReasonName.getText();
 					
@@ -239,10 +239,10 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 		if(null==GetAdjustReasonCd){	GetAdjustReasonCd	= "";}
 		if(null==GetAdjustReasonName){	GetAdjustReasonName	= "";}
 		
-		GetClWh				= B00020ToolsTextControl.Trim(GetClWh);
-		GetClCd				= B00020ToolsTextControl.Trim(GetClCd);
-		GetAdjustReasonCd	= B00020ToolsTextControl.Trim(GetAdjustReasonCd);
-		GetAdjustReasonName	= B00020ToolsTextControl.Trim(GetAdjustReasonName);
+		GetClWh				= B100TextControl.Trim(GetClWh);
+		GetClCd				= B100TextControl.Trim(GetClCd);
+		GetAdjustReasonCd	= B100TextControl.Trim(GetAdjustReasonCd);
+		GetAdjustReasonName	= B100TextControl.Trim(GetAdjustReasonName);
 		
 		rt[ 0]= GetClWh;
 		rt[ 1]= GetClCd;
@@ -286,7 +286,7 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 			String GetAdjustReasonCd,
 			String GetAdjustReasonName
 			) {
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		String[] TxtTrim = TxtTrim(
 				GetClWh,
@@ -317,9 +317,9 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 		
-		B00100DefaultVariable.AdjustReasonDefault();
+		B100DefaultVariable.AdjustReasonDefault();
 	
 		return GetAdjustReasonCd;
 	}
@@ -327,25 +327,25 @@ public class WM00116AdjustReasonMstRenewAndCreate{
 	private static void ErrView(ArrayList<String>ErrMsg) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\AdjustReasonMst";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\AdjustReasonMst\\Err";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\AdjustReasonMst\\BK";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
-		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		String NowDTM=B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\AdjustReasonMst\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		
-		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		B100TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		
 		//古いエラーデータ削除
-		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		B100FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100DefaultVariable.ErrTxtDelete);
 		
 		//ファイル開く
 		File file = new File(ErrFP);

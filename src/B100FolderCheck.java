@@ -17,11 +17,11 @@ import java.util.zip.ZipException;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
 
-public class B00040ToolsFolderCheck{
+public class B100FolderCheck{
 	//フォルダ存在チェック・ファイル一覧取得など
 	//ファイル操作系のツール群
 	// ==========================================================================
-    //  B00040ToolsFolderCheck（ヘルメスの開かれた書庫を建立）
+    //  B100FolderCheck（ヘルメスの開かれた書庫を建立）
     // ==========================================================================
 	
 	//フォルダ存在チェック→なければ作る　作成失敗したらfalse返す
@@ -248,7 +248,7 @@ public class B00040ToolsFolderCheck{
 		
 		String FilePath=FP+"\\"+FileType+"FileDelBat.bat";
 		
-		B00030ToolsTextExport.txt_exp3(OutPutTxt,FilePath);
+		B100TextExport.txt_exp3(OutPutTxt,FilePath);
 		
 		String bat_path = "cmd.exe /c start "+FilePath;
 		
@@ -272,7 +272,7 @@ public class B00040ToolsFolderCheck{
 		
 		String FilePath=FP+"\\"+FileName+"FileDelBat.bat";
 		
-		B00030ToolsTextExport.txt_exp3(OutPutTxt,FilePath);
+		B100TextExport.txt_exp3(OutPutTxt,FilePath);
 		
 		String bat_path = "cmd.exe /c start "+FilePath;
 		
@@ -290,9 +290,9 @@ public class B00040ToolsFolderCheck{
 		//アウトプットフォルダはOUTPUT_FP\ZIPファイル名とする
 		//フルパスからファイル名取得
 		if(INPUT_FP !=null && OUTPUT_FP!=null && !("".equals(OUTPUT_FP)) && !("".equals(OUTPUT_FP))){
-			String ENTRY_OUTPUT_FP = OUTPUT_FP +"/"+ B00040ToolsFolderCheck.FILENAME(INPUT_FP).replace(".zip","");
+			String ENTRY_OUTPUT_FP = OUTPUT_FP +"/"+ B100FolderCheck.FILENAME(INPUT_FP).replace(".zip","");
 			//アウトプットフォルダ存在チェック　なければ作る
-			B00040ToolsFolderCheck.FLD_CHECK(ENTRY_OUTPUT_FP);
+			B100FolderCheck.FLD_CHECK(ENTRY_OUTPUT_FP);
 
 	        File file = new File(INPUT_FP);
 	        File outDir = new File(OUTPUT_FP);
@@ -309,7 +309,7 @@ public class B00040ToolsFolderCheck{
 	                    // ディレクトリだった場合は、
 	                    // 出力先ディレクトリを作成する
 	                    //------------------------------
-		            	B00040ToolsFolderCheck.FLD_CHECK(OUTPUT_FP+"/"+entry.getName());
+		            	B100FolderCheck.FLD_CHECK(OUTPUT_FP+"/"+entry.getName());
 	                }
 		        }
 		        entries = zipFile.getEntries();

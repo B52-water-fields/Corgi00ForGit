@@ -16,40 +16,40 @@ public class W00030WorkMain{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,820,750,"Corgi00業務メニュー","");
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,820,750,"Corgi00業務メニュー","");
 		
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		/*************************************/
 		/*************************************/
 			//入荷パネル
-			JPanel PN_AboutArrival 	= B00110FrameParts.JPanelSet(				 10, 40,380,235,"NK");
-			JLabel LB_AboutArrival 	= B00110FrameParts.JLabelSet(				 10,  0,150,20,"入荷メニュー",11,0);
+			JPanel PN_AboutArrival 	= B100FrameParts.JPanelSet(				 10, 40,380,235,"NK");
+			JLabel LB_AboutArrival 	= B100FrameParts.JLabelSet(				 10,  0,150,20,"入荷メニュー",11,0);
 			PN_AboutArrival.add(LB_AboutArrival);
 			
 			//入荷予定検索
-			JButton ArrivalPlanSearch = B00110FrameParts.BtnSet(				 20, 25,120,20,"入荷予定検索",11);
+			JButton ArrivalPlanSearch = B100FrameParts.BtnSet(				 20, 25,120,20,"入荷予定検索",11);
 			PN_AboutArrival.add(ArrivalPlanSearch);
 		
 		/*************************************/
 		/*************************************/
 			//出荷パネル
-			JPanel PN_AboutDeliveryPlan 	= B00110FrameParts.JPanelSet(		410, 40,380,235,"SPPlan");
-			JLabel LB_AboutDeliveryPlan 	= B00110FrameParts.JLabelSet(		 10,  0,150,20,"出荷予定メニュー",11,0);
+			JPanel PN_AboutDeliveryPlan 	= B100FrameParts.JPanelSet(		410, 40,380,235,"SPPlan");
+			JLabel LB_AboutDeliveryPlan 	= B100FrameParts.JLabelSet(		 10,  0,150,20,"出荷予定メニュー",11,0);
 			PN_AboutDeliveryPlan.add(LB_AboutDeliveryPlan);
 		
 		/*************************************/
 		/*************************************/
 			//在庫パネル
-			JPanel PN_Stock 	= B00110FrameParts.JPanelSet(					 10,280,380,235,"ZK");
-			JLabel LB_Stock 	= B00110FrameParts.JLabelSet(					 10,  0,150,20,"在庫メニュー",11,0);
+			JPanel PN_Stock 	= B100FrameParts.JPanelSet(					 10,280,380,235,"ZK");
+			JLabel LB_Stock 	= B100FrameParts.JLabelSet(					 10,  0,150,20,"在庫メニュー",11,0);
 			PN_Stock.add(LB_Stock);
 			
 			//在庫検索
-			JButton StockSearch = B00110FrameParts.BtnSet(						 20, 25,120,20,"在庫検索",11);
+			JButton StockSearch = B100FrameParts.BtnSet(						 20, 25,120,20,"在庫検索",11);
 			PN_Stock.add(StockSearch);
 		
 		/*************************************/
@@ -60,7 +60,7 @@ public class W00030WorkMain{
 		main_fm.add(PN_Stock);
 		
 		//テスト用
-		JButton TestBtn = B00110FrameParts.BtnSet(20,680,120,20,"テスト",11);
+		JButton TestBtn = B100FrameParts.BtnSet(20,680,120,20,"テスト",11);
 		main_fm.add(TestBtn);
 		
 		

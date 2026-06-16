@@ -30,19 +30,19 @@ public class WM00082ItemMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,200,"Corgi00商品マスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,600,200,"Corgi00商品マスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		final String[] SheetList = B00060ToolsExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100ExcellControl.ExcellSheetList(TgtFilePath);
 		
-		JLabel LB_SheetList				= B00110FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
-		final JComboBox   TB_SheetList	= B00110FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
+		JLabel LB_SheetList				= B100FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
+		final JComboBox   TB_SheetList	= B100FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
 		
 		main_fm.add(LB_SheetList);
 		main_fm.add(TB_SheetList);	//シート一覧
@@ -84,10 +84,10 @@ public class WM00082ItemMstExcelEntry{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,850,800,"Corgi00商品マスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,850,800,"Corgi00商品マスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
@@ -148,7 +148,7 @@ public class WM00082ItemMstExcelEntry{
 					,{"賞味期限日数"			,1,51}
 					,{"削除フラグ"				,1,52}
 					};//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
-		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています※データ内の重複はチェックしません",11,0);
+		JLabel LB_SheetList	= B100FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています※データ内の重複はチェックしません",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = new String[NeedCol.length+1];
@@ -156,10 +156,10 @@ public class WM00082ItemMstExcelEntry{
 		for(int i=0;i<NeedCol.length;i++) {columnNames01[i+1] = (String)NeedCol[i][0];}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -175,18 +175,18 @@ public class WM00082ItemMstExcelEntry{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);
 		for(int i=1;i<NeedCol.length;i++) {
 			if(0==(int)NeedCol[i][1]) {
-				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());	
 			}else {
-				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	
 			}
 		}
 		
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,800,600,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,65,800,600,tb01);
 		main_fm.add(scpn01);
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B00060ToolsExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 		
 		if(null==HeaderRead||0==HeaderRead.length) {
@@ -230,7 +230,7 @@ public class WM00082ItemMstExcelEntry{
 				ClmnType[(int)NeedCol[i01][2]]=(int)NeedCol[i01][1];
 			}
 			
-			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcellRead = B100ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
 			Object[][] CheckOb = new Object[ExcellRead.length][NeedCol.length+1];
 			
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
@@ -246,7 +246,7 @@ public class WM00082ItemMstExcelEntry{
 					tableModel_ms01.addRow(SetOb);
 				}
 			}
-			String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+			String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 			ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
 			if(null!=ErrMsg && 0<ErrMsg.size()) {
 				ErrView(ErrMsg);
@@ -277,14 +277,14 @@ public class WM00082ItemMstExcelEntry{
 							CheckOb[i01][i02] = tableModel_ms01.getValueAt(i01, i02);
 						}
 					}
-					String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+					String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 					ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
 					if(null!=ErrMsg && 0<ErrMsg.size()) {
 						ErrView(ErrMsg);
 					}else {
 						DataEntry(CheckOb,TableCol);
 						//ファイルバックアップ
-						B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+						B100FolderCheck.FileBackUpNormal(TgtFilePath) ;
 						
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
@@ -600,7 +600,7 @@ public class WM00082ItemMstExcelEntry{
 		EntryCount = 0;
 		for(int i01=0;i01<CheckOb.length;i01++) {
 			for(int i02=0;i02<CheckOb[i01].length;i02++) {
-				CheckOb[i01][i02] = B00020ToolsTextControl.Trim(""+CheckOb[i01][i02]);
+				CheckOb[i01][i02] = B100TextControl.Trim(""+CheckOb[i01][i02]);
 			}
 			//商品CD・商品名が空白ならSKIP
 			if("".equals(""+CheckOb[i01][ColItemCd])
@@ -662,18 +662,18 @@ public class WM00082ItemMstExcelEntry{
 				GetDelFg[EntryCount] 				= ""+CheckOb[i01][ColDelFg];			//削除フラグ
 				
 				
-				GetExpDateHowLong[EntryCount] 		= B00020ToolsTextControl.num_only_String02(GetExpDateHowLong[EntryCount]);	//賞味期限日数
-				GetCtQty[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetCtQty[EntryCount]);				//カートン入数
-				GetCsQty[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetCsQty[EntryCount]);				//ケース入数
-				GetPlQty[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetPlQty[EntryCount]);				//パレット入数
-				GetItemWeight[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetItemWeight[EntryCount]);		//商品重量
-				GetCtWeight[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetCtWeight[EntryCount]);			//カートン重量
-				GetCsWeight[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetCsWeight[EntryCount]);			//ケース重量
-				GetPlWeight[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetPlWeight[EntryCount]);			//パレット重量
-				GetItemSize[EntryCount] 			= B00020ToolsTextControl.num_only_String02(GetItemSize[EntryCount]);			//商品サイズ
-				GetCtSize[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetCtSize[EntryCount]);			//カートンサイズ
-				GetCsSize[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetCsSize[EntryCount]);			//ケースサイズ
-				GetPlSize[EntryCount] 				= B00020ToolsTextControl.num_only_String02(GetPlSize[EntryCount]);			//パレットサイズ
+				GetExpDateHowLong[EntryCount] 		= B100TextControl.num_only_String02(GetExpDateHowLong[EntryCount]);	//賞味期限日数
+				GetCtQty[EntryCount] 				= B100TextControl.num_only_String02(GetCtQty[EntryCount]);				//カートン入数
+				GetCsQty[EntryCount] 				= B100TextControl.num_only_String02(GetCsQty[EntryCount]);				//ケース入数
+				GetPlQty[EntryCount] 				= B100TextControl.num_only_String02(GetPlQty[EntryCount]);				//パレット入数
+				GetItemWeight[EntryCount] 			= B100TextControl.num_only_String02(GetItemWeight[EntryCount]);		//商品重量
+				GetCtWeight[EntryCount] 			= B100TextControl.num_only_String02(GetCtWeight[EntryCount]);			//カートン重量
+				GetCsWeight[EntryCount] 			= B100TextControl.num_only_String02(GetCsWeight[EntryCount]);			//ケース重量
+				GetPlWeight[EntryCount] 			= B100TextControl.num_only_String02(GetPlWeight[EntryCount]);			//パレット重量
+				GetItemSize[EntryCount] 			= B100TextControl.num_only_String02(GetItemSize[EntryCount]);			//商品サイズ
+				GetCtSize[EntryCount] 				= B100TextControl.num_only_String02(GetCtSize[EntryCount]);			//カートンサイズ
+				GetCsSize[EntryCount] 				= B100TextControl.num_only_String02(GetCsSize[EntryCount]);			//ケースサイズ
+				GetPlSize[EntryCount] 				= B100TextControl.num_only_String02(GetPlSize[EntryCount]);			//パレットサイズ
 				
 				if("".equals(GetExpDateHowLong[EntryCount]	)){GetExpDateHowLong[EntryCount]	="0";}		//賞味期限日数
 				if("".equals(GetCtQty[EntryCount]			)){GetCtQty[EntryCount]				="0";}		//カートン入数
@@ -704,9 +704,9 @@ public class WM00082ItemMstExcelEntry{
 				
 				
 				GetTildName[EntryCount]	= "";
-				for(int i02 =0;i02<B00100DefaultVariable.TildFG[1].length;i02++) {
-					if(GetTildFG[EntryCount].equals(B00100DefaultVariable.TildFG[1][i02])) {
-						GetTildName[EntryCount] = B00100DefaultVariable.TildFG[2][i02];
+				for(int i02 =0;i02<B100DefaultVariable.TildFG[1].length;i02++) {
+					if(GetTildFG[EntryCount].equals(B100DefaultVariable.TildFG[1][i02])) {
+						GetTildName[EntryCount] = B100DefaultVariable.TildFG[2][i02];
 					}
 				}
 				EntryCount = EntryCount+1;
@@ -765,9 +765,9 @@ public class WM00082ItemMstExcelEntry{
 		
 		//画像パスが指定されていれば画像を1024×1024にリサイズして保存
 		//画像保存用のフォルダ存在チェック
-		B00040ToolsFolderCheck.FLD_CHECK(A00000Main.FileFldPth);
-		B00040ToolsFolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage");
-		B00040ToolsFolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd);
+		B100FolderCheck.FLD_CHECK(A00000Main.FileFldPth);
+		B100FolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage");
+		B100FolderCheck.FLD_CHECK(A00000Main.FileFldPth+"\\ItemImage\\"+GetClGpCd);
 		
 		for(int i01=0;i01<EntryCount;i01++) {
 			if(!"".equals(GetItemImagePath01[i01])){		//画像パス01 
@@ -775,11 +775,11 @@ public class WM00082ItemMstExcelEntry{
 				String FullSavePath = SavePath+"\\"+GetItemCd[i01]+"_01.";
 				String GetItemImagePath = GetItemImagePath01[i01];
 				
-				if(B00140PictControl.PictCheck(GetItemImagePath)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(SavePath)) {
-					String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath);
-					Image image = B00140PictControl.PictReSize(1024,1024,GetItemImagePath);
+				if(B100PictControl.PictCheck(GetItemImagePath)&&B100FolderCheck.FLD_CHECK_ONRY(SavePath)) {
+					String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath);
+					Image image = B100PictControl.PictReSize(1024,1024,GetItemImagePath);
 					FullSavePath = FullSavePath+FileType;
-					B00140PictControl.PictSave(image,FileType,FullSavePath);
+					B100PictControl.PictSave(image,FileType,FullSavePath);
 					GetItemImagePath01[i01] = FullSavePath;
 				}else {
 				}
@@ -789,11 +789,11 @@ public class WM00082ItemMstExcelEntry{
 				String FullSavePath = SavePath+"\\"+GetItemCd[i01]+"_02.";
 				String GetItemImagePath = GetItemImagePath02[i01];
 				
-				if(B00140PictControl.PictCheck(GetItemImagePath)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(SavePath)) {
-					String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath);
-					Image image = B00140PictControl.PictReSize(1024,1024,GetItemImagePath);
+				if(B100PictControl.PictCheck(GetItemImagePath)&&B100FolderCheck.FLD_CHECK_ONRY(SavePath)) {
+					String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath);
+					Image image = B100PictControl.PictReSize(1024,1024,GetItemImagePath);
 					FullSavePath = FullSavePath+FileType;
-					B00140PictControl.PictSave(image,FileType,FullSavePath);
+					B100PictControl.PictSave(image,FileType,FullSavePath);
 					GetItemImagePath02[i01] = FullSavePath;
 				}else {
 				}
@@ -803,11 +803,11 @@ public class WM00082ItemMstExcelEntry{
 				String FullSavePath = SavePath+"\\"+GetItemCd[i01]+"_03.";
 				String GetItemImagePath = GetItemImagePath03[i01];
 				
-				if(B00140PictControl.PictCheck(GetItemImagePath)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(SavePath)) {
-					String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath);
-					Image image = B00140PictControl.PictReSize(1024,1024,GetItemImagePath);
+				if(B100PictControl.PictCheck(GetItemImagePath)&&B100FolderCheck.FLD_CHECK_ONRY(SavePath)) {
+					String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath);
+					Image image = B100PictControl.PictReSize(1024,1024,GetItemImagePath);
 					FullSavePath = FullSavePath+FileType;
-					B00140PictControl.PictSave(image,FileType,FullSavePath);
+					B100PictControl.PictSave(image,FileType,FullSavePath);
 					GetItemImagePath03[i01] = FullSavePath;
 				}else {
 				}
@@ -817,11 +817,11 @@ public class WM00082ItemMstExcelEntry{
 				String FullSavePath = SavePath+"\\"+GetItemCd[i01]+"_04.";
 				String GetItemImagePath = GetItemImagePath04[i01];
 				
-				if(B00140PictControl.PictCheck(GetItemImagePath)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(SavePath)) {
-					String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath);
-					Image image = B00140PictControl.PictReSize(1024,1024,GetItemImagePath);
+				if(B100PictControl.PictCheck(GetItemImagePath)&&B100FolderCheck.FLD_CHECK_ONRY(SavePath)) {
+					String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath);
+					Image image = B100PictControl.PictReSize(1024,1024,GetItemImagePath);
 					FullSavePath = FullSavePath+FileType;
-					B00140PictControl.PictSave(image,FileType,FullSavePath);
+					B100PictControl.PictSave(image,FileType,FullSavePath);
 					GetItemImagePath04[i01] = FullSavePath;
 				}else {
 				}
@@ -831,11 +831,11 @@ public class WM00082ItemMstExcelEntry{
 				String FullSavePath = SavePath+"\\"+GetItemCd[i01]+"_05.";
 				String GetItemImagePath = GetItemImagePath05[i01];
 				
-				if(B00140PictControl.PictCheck(GetItemImagePath)&&B00040ToolsFolderCheck.FLD_CHECK_ONRY(SavePath)) {
-					String FileType=B00040ToolsFolderCheck.FILE_TYPE(GetItemImagePath);
-					Image image = B00140PictControl.PictReSize(1024,1024,GetItemImagePath);
+				if(B100PictControl.PictCheck(GetItemImagePath)&&B100FolderCheck.FLD_CHECK_ONRY(SavePath)) {
+					String FileType=B100FolderCheck.FILE_TYPE(GetItemImagePath);
+					Image image = B100PictControl.PictReSize(1024,1024,GetItemImagePath);
 					FullSavePath = FullSavePath+FileType;
-					B00140PictControl.PictSave(image,FileType,FullSavePath);
+					B100PictControl.PictSave(image,FileType,FullSavePath);
 					GetItemImagePath05[i01] = FullSavePath;
 				}else {
 				}
@@ -866,7 +866,7 @@ public class WM00082ItemMstExcelEntry{
 			}
 		}
 		
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		String[][] ItemMstSetString = {
 				  {"ClGpCd"				,"1","1"}	//荷主グループコード
@@ -929,7 +929,7 @@ public class WM00082ItemMstExcelEntry{
 			entry_data[i01][20] = GetUnitName[i01];	//商品単位
 		}
 		if(0<EntryCount) {
-			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+			A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 		}
 		
 		String[][] ItemMstSubSetString = {
@@ -1037,7 +1037,7 @@ public class WM00082ItemMstExcelEntry{
 			entry_data[i01][42] = GetExpDateHowLong[i01];	//賞味期限日数
 		}
 		if(0<EntryCount) {
-			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+			A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 		}
 	}
 	
@@ -1290,7 +1290,7 @@ public class WM00082ItemMstExcelEntry{
 		for(int i=0;i<CheckOb.length;i++) {
 			//商品CD・商品名が空白ならSKIP
 			for(int i01=0;i01<CheckOb[i].length;i01++) {
-				CheckOb[i][i01] = B00020ToolsTextControl.Trim(""+CheckOb[i][i01]);
+				CheckOb[i][i01] = B100TextControl.Trim(""+CheckOb[i][i01]);
 			}
 			if("".equals(""+CheckOb[i][ColItemCd])
 					&& "".equals(""+CheckOb[i][ColItemName01])
@@ -1309,10 +1309,10 @@ public class WM00082ItemMstExcelEntry{
 				}
 				
 				UnHitFg = true;
-				for(int i01=0;i01<B00100DefaultVariable.DeliveryType01[1].length;i01++) {
-					if((""+CheckOb[i][ColDeliveryTypeCd01]).equals(B00100DefaultVariable.DeliveryType01[1][i01])) {
+				for(int i01=0;i01<B100DefaultVariable.DeliveryType01[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd01]).equals(B100DefaultVariable.DeliveryType01[1][i01])) {
 						UnHitFg = false;
-						i01=B00100DefaultVariable.DeliveryType01[1].length+1;
+						i01=B100DefaultVariable.DeliveryType01[1].length+1;
 					}
 				}
 				if(UnHitFg) {
@@ -1321,10 +1321,10 @@ public class WM00082ItemMstExcelEntry{
 				}
 	
 				UnHitFg = true;
-				for(int i01=0;i01<B00100DefaultVariable.DeliveryType02[1].length;i01++) {
-					if((""+CheckOb[i][ColDeliveryTypeCd02]).equals(B00100DefaultVariable.DeliveryType02[1][i01])) {
+				for(int i01=0;i01<B100DefaultVariable.DeliveryType02[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd02]).equals(B100DefaultVariable.DeliveryType02[1][i01])) {
 						UnHitFg = false;
-						i01=B00100DefaultVariable.DeliveryType02[1].length+1;
+						i01=B100DefaultVariable.DeliveryType02[1].length+1;
 					}
 				}
 				if(UnHitFg) {
@@ -1333,10 +1333,10 @@ public class WM00082ItemMstExcelEntry{
 				}
 	
 				UnHitFg = true;
-				for(int i01=0;i01<B00100DefaultVariable.DeliveryType03[1].length;i01++) {
-					if((""+CheckOb[i][ColDeliveryTypeCd03]).equals(B00100DefaultVariable.DeliveryType03[1][i01])) {
+				for(int i01=0;i01<B100DefaultVariable.DeliveryType03[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd03]).equals(B100DefaultVariable.DeliveryType03[1][i01])) {
 						UnHitFg = false;
-						i01=B00100DefaultVariable.DeliveryType03[1].length+1;
+						i01=B100DefaultVariable.DeliveryType03[1].length+1;
 					}
 				}
 				if(UnHitFg) {
@@ -1345,10 +1345,10 @@ public class WM00082ItemMstExcelEntry{
 				}
 	
 				UnHitFg = true;
-				for(int i01=0;i01<B00100DefaultVariable.DeliveryType04[1].length;i01++) {
-					if((""+CheckOb[i][ColDeliveryTypeCd04]).equals(B00100DefaultVariable.DeliveryType04[1][i01])) {
+				for(int i01=0;i01<B100DefaultVariable.DeliveryType04[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd04]).equals(B100DefaultVariable.DeliveryType04[1][i01])) {
 						UnHitFg = false;
-						i01=B00100DefaultVariable.DeliveryType04[1].length+1;
+						i01=B100DefaultVariable.DeliveryType04[1].length+1;
 					}
 				}
 				if(UnHitFg) {
@@ -1357,10 +1357,10 @@ public class WM00082ItemMstExcelEntry{
 				}
 	
 				UnHitFg = true;
-				for(int i01=0;i01<B00100DefaultVariable.DeliveryType05[1].length;i01++) {
-					if((""+CheckOb[i][ColDeliveryTypeCd05]).equals(B00100DefaultVariable.DeliveryType05[1][i01])) {
+				for(int i01=0;i01<B100DefaultVariable.DeliveryType05[1].length;i01++) {
+					if((""+CheckOb[i][ColDeliveryTypeCd05]).equals(B100DefaultVariable.DeliveryType05[1][i01])) {
 						UnHitFg = false;
-						i01=B00100DefaultVariable.DeliveryType05[1].length+1;
+						i01=B100DefaultVariable.DeliveryType05[1].length+1;
 					}
 				}
 				if(UnHitFg) {
@@ -1369,10 +1369,10 @@ public class WM00082ItemMstExcelEntry{
 				}
 	
 				UnHitFg = true;
-				for(int i01=0;i01<B00100DefaultVariable.TildFG[1].length;i01++) {
-					if((""+CheckOb[i][ColTildFG]).equals(B00100DefaultVariable.TildFG[1][i01])) {
+				for(int i01=0;i01<B100DefaultVariable.TildFG[1].length;i01++) {
+					if((""+CheckOb[i][ColTildFG]).equals(B100DefaultVariable.TildFG[1][i01])) {
 						UnHitFg = false;
-						i01=B00100DefaultVariable.TildFG[1].length+1;
+						i01=B100DefaultVariable.TildFG[1].length+1;
 					}
 				}
 				if(UnHitFg) {
@@ -1381,10 +1381,10 @@ public class WM00082ItemMstExcelEntry{
 				}
 	
 				UnHitFg = true;
-				for(int i01=0;i01<B00100DefaultVariable.DelList[1].length;i01++) {
-					if((""+CheckOb[i][ColDelFg]).equals(B00100DefaultVariable.DelList[1][i01])) {
+				for(int i01=0;i01<B100DefaultVariable.DelList[1].length;i01++) {
+					if((""+CheckOb[i][ColDelFg]).equals(B100DefaultVariable.DelList[1][i01])) {
 						UnHitFg = false;
-						i01=B00100DefaultVariable.DelList[1].length+1;
+						i01=B100DefaultVariable.DelList[1].length+1;
 					}
 				}
 				if(UnHitFg) {
@@ -1409,25 +1409,25 @@ public class WM00082ItemMstExcelEntry{
 	private static void ErrView(ArrayList<String>ErrMsg) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ItemMst";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ItemMst\\Err";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ItemMst\\BK";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
-		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		String NowDTM=B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ItemMst\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		
-		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		B100TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		
 		//古いエラーデータ削除
-		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		B100FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100DefaultVariable.ErrTxtDelete);
 		
 		//ファイル開く
 		File file = new File(ErrFP);

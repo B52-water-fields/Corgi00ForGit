@@ -29,19 +29,19 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,200,"Corgi00推奨ロケマスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,600,200,"Corgi00推奨ロケマスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		final String[] SheetList = B00060ToolsExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100ExcellControl.ExcellSheetList(TgtFilePath);
 		
-		JLabel LB_SheetList				= B00110FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
-		final JComboBox   TB_SheetList	= B00110FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
+		JLabel LB_SheetList				= B100FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
+		final JComboBox   TB_SheetList	= B100FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
 		
 		main_fm.add(LB_SheetList);
 		main_fm.add(TB_SheetList);	//シート一覧
@@ -84,10 +84,10 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,800,"Corgi00推奨ロケマスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,800,"Corgi00推奨ロケマスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
@@ -100,7 +100,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 				,{"推奨ロケ"		, 1	, 3}
 				};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		
-		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
+		JLabel LB_SheetList	= B100FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = new String[NeedCol.length+1];
@@ -108,10 +108,10 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		for(int i=0;i<NeedCol.length;i++) {columnNames01[i+1] = (String)NeedCol[i][0];}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -126,17 +126,17 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);
 		for(int i=1;i<NeedCol.length;i++) {
 			if(0==(int)NeedCol[i][1]) {
-				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());	
 			}else {
-				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	
 			}
 		}
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,460,600,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,65,460,600,tb01);
 		main_fm.add(scpn01);
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B00060ToolsExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 		
 		if(null==HeaderRead||0==HeaderRead.length) {
@@ -185,7 +185,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 			for(int i01=0;i01<NeedCol.length;i01++) {
 				ClmnType[(int)NeedCol[i01][2]]=(int)NeedCol[i01][1];
 			}
-			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcellRead = B100ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
 			Object[][] CheckOb = new Object[ExcellRead.length][NeedCol.length+1];
 			
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
@@ -201,7 +201,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 					tableModel_ms01.addRow(SetOb);
 				}
 			}
-			String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+			String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 			Object[][] SetObRt = SetObRt(CheckOb,TableCol);
 			ArrayList<String> ErrMsg = ErrCheck(SetObRt);
 			
@@ -224,7 +224,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
-					String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+					String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 					int RowCount = tableModel_ms01.getRowCount();
 					Object[][] CheckOb = new Object[RowCount][TableCol.length];
 					for(int i=0;i<RowCount;i++) {
@@ -240,7 +240,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 					}else {
 						MstEntry(SetObRt);
 						//ファイルバックアップ
-						B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+						B100FolderCheck.FileBackUpNormal(TgtFilePath) ;
 						
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
@@ -270,7 +270,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 0;
 		
-		A00020InsertUdateSQL.InsertUpdateSomeRecord(SetOb,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateSomeRecord(SetOb,tgt_table,TgtDB,non_msg_fg);
 	}
 	
 	private static ArrayList<String> ErrCheck(Object[][] SetObRt){
@@ -375,7 +375,7 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 	
 	private static Object[][] SetObRt(
 			Object[][] CheckOb,String[] TableCol) {
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		int ColClCd				= (int)1;	//荷主コード
 		int ColClWh				= (int)2;	//担当倉庫コード
@@ -531,10 +531,10 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 		if(null==GetItemCd			){GetItemCd			= "";}
 		if(null==GetRecomendLoc		){GetRecomendLoc	= "";}
 		
-		GetClCd			= B00020ToolsTextControl.Trim(GetClCd);
-		GetClWh			= B00020ToolsTextControl.Trim(GetClWh);
-		GetItemCd		= B00020ToolsTextControl.Trim(GetItemCd);
-		GetRecomendLoc	= B00020ToolsTextControl.Trim(GetRecomendLoc);
+		GetClCd			= B100TextControl.Trim(GetClCd);
+		GetClWh			= B100TextControl.Trim(GetClWh);
+		GetItemCd		= B100TextControl.Trim(GetItemCd);
+		GetRecomendLoc	= B100TextControl.Trim(GetRecomendLoc);
 		
 		Rt[BackClCd] 		= GetClCd;
 		Rt[BackClWh] 		= GetClWh;
@@ -619,25 +619,25 @@ public class WM00122ItemRecomendLocMstExcelEntry{
 	private static void ErrView(ArrayList<String>ErrMsg) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ItemRecomendLocMst";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ItemRecomendLocMst\\Err";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ItemRecomendLocMst\\BK";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
-		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		String NowDTM=B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\ItemRecomendLocMst\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		
-		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		B100TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		
 		//古いエラーデータ削除
-		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		B100FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100DefaultVariable.ErrTxtDelete);
 		
 		//ファイル開く
 		File file = new File(ErrFP);

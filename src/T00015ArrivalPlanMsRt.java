@@ -286,83 +286,83 @@ public class T00015ArrivalPlanMsRt{
 			ArrayList<String> SearchEntryUser,			//登録者
 			ArrayList<String> SearchUpdateUser,			//更新者
 			boolean AllSearch){
-		SearchClWh				= B00150ArrayListControl.ArryListStringUniqueList(SearchClWh);			//ヘッダ担当倉庫
-		SearchClCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchClCd);			//ヘッダ荷主CD
-		SearchCLName01			= B00150ArrayListControl.ArryListStringUniqueList(SearchCLName01);		//ヘッダ荷主名
-		SearchClGpCD			= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);			//ヘッダ荷主グループCD
-		SearchCLGpName01		= B00150ArrayListControl.ArryListStringUniqueList(SearchCLGpName01);		//ヘッダ荷主グループ名1
-		SearchArrNo				= B00150ArrayListControl.ArryListStringUniqueList(SearchArrNo);			//ヘッダ入荷予定NO
-		SearchClArrNo			= B00150ArrayListControl.ArryListStringUniqueList(SearchClArrNo);			//ヘッダ荷主予定番号
-		SearchPlanDateMin		= B00150ArrayListControl.ArryListStringUniqueList(SearchPlanDateMin);		//ヘッダ入荷予定日最小
-		SearchPlanDateMax		= B00150ArrayListControl.ArryListStringUniqueList(SearchPlanDateMax);		//ヘッダ入荷予定日最大
-		SearchHdActualDateMin	= B00150ArrayListControl.ArryListStringUniqueList(SearchHdActualDateMin);	//ヘッダ入荷実績日最小
-		SearchHdActualDateMax	= B00150ArrayListControl.ArryListStringUniqueList(SearchHdActualDateMax);	//ヘッダ入荷実績日最大
-		SearchSpCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchSpCd);			//ヘッダ仕入先CD
-		SearchSpName			= B00150ArrayListControl.ArryListStringUniqueList(SearchSpName);			//ヘッダ仕入先名
-		SearchSpPost			= B00150ArrayListControl.ArryListStringUniqueList(SearchSpPost);			//ヘッダ仕入先郵便
-		SearchSpAdd				= B00150ArrayListControl.ArryListStringUniqueList(SearchSpAdd);			//ヘッダ仕入先住所
-		SearchSpTel				= B00150ArrayListControl.ArryListStringUniqueList(SearchSpTel);			//ヘッダ仕入先電話
-		SearchArCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchArCom);			//ヘッダコメント
-		SearchFixFg				= B00150ArrayListControl.ArryListIntegerUniqueList(SearchFixFg);			//ヘッダ状況
+		SearchClWh				= B100ArrayListControl.ArryListStringUniqueList(SearchClWh);			//ヘッダ担当倉庫
+		SearchClCd				= B100ArrayListControl.ArryListStringUniqueList(SearchClCd);			//ヘッダ荷主CD
+		SearchCLName01			= B100ArrayListControl.ArryListStringUniqueList(SearchCLName01);		//ヘッダ荷主名
+		SearchClGpCD			= B100ArrayListControl.ArryListStringUniqueList(SearchClGpCD);			//ヘッダ荷主グループCD
+		SearchCLGpName01		= B100ArrayListControl.ArryListStringUniqueList(SearchCLGpName01);		//ヘッダ荷主グループ名1
+		SearchArrNo				= B100ArrayListControl.ArryListStringUniqueList(SearchArrNo);			//ヘッダ入荷予定NO
+		SearchClArrNo			= B100ArrayListControl.ArryListStringUniqueList(SearchClArrNo);			//ヘッダ荷主予定番号
+		SearchPlanDateMin		= B100ArrayListControl.ArryListStringUniqueList(SearchPlanDateMin);		//ヘッダ入荷予定日最小
+		SearchPlanDateMax		= B100ArrayListControl.ArryListStringUniqueList(SearchPlanDateMax);		//ヘッダ入荷予定日最大
+		SearchHdActualDateMin	= B100ArrayListControl.ArryListStringUniqueList(SearchHdActualDateMin);	//ヘッダ入荷実績日最小
+		SearchHdActualDateMax	= B100ArrayListControl.ArryListStringUniqueList(SearchHdActualDateMax);	//ヘッダ入荷実績日最大
+		SearchSpCd				= B100ArrayListControl.ArryListStringUniqueList(SearchSpCd);			//ヘッダ仕入先CD
+		SearchSpName			= B100ArrayListControl.ArryListStringUniqueList(SearchSpName);			//ヘッダ仕入先名
+		SearchSpPost			= B100ArrayListControl.ArryListStringUniqueList(SearchSpPost);			//ヘッダ仕入先郵便
+		SearchSpAdd				= B100ArrayListControl.ArryListStringUniqueList(SearchSpAdd);			//ヘッダ仕入先住所
+		SearchSpTel				= B100ArrayListControl.ArryListStringUniqueList(SearchSpTel);			//ヘッダ仕入先電話
+		SearchArCom				= B100ArrayListControl.ArryListStringUniqueList(SearchArCom);			//ヘッダコメント
+		SearchFixFg				= B100ArrayListControl.ArryListIntegerUniqueList(SearchFixFg);			//ヘッダ状況
 				
-		SearchMsNoMin			= B00150ArrayListControl.ArryListIntegerUniqueList(SearchMsNoMin);		//明細番号最小
-		SearchMsNoMax			= B00150ArrayListControl.ArryListIntegerUniqueList(SearchMsNoMax);		//明細番号最大
-		SearchItemCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemCd);			//商品コード
-		SearchClItemCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchClItemCd);		//荷主商品コード
-		SearchJanCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchJanCd);			//JANCD（バラ）
-		SearchItemMdNo			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemMdNo);		//商品型番
-		SearchItemName			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemName);		//商品名
-		Searchlot				= B00150ArrayListControl.ArryListStringUniqueList(Searchlot);				//ロット
-		SearchExpDateMin		= B00150ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);		//消費期限最小
-		SearchExpDateMax		= B00150ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);		//消費期限最大
-		SearchPlanQtyMin		= B00150ArrayListControl.ArryListIntegerUniqueList(SearchPlanQtyMin);		//予定数量最小
-		SearchPlanQtyMax		= B00150ArrayListControl.ArryListIntegerUniqueList(SearchPlanQtyMax);		//予定数量最大
-		SearchActualQtyMin		= B00150ArrayListControl.ArryListIntegerUniqueList(SearchActualQtyMin);	//実績数
-		SearchActualQtyMax		= B00150ArrayListControl.ArryListIntegerUniqueList(SearchActualQtyMax);	//実績数
-		SearchActualDateMin		= B00150ArrayListControl.ArryListStringUniqueList(SearchActualDateMin);	//入荷日最小
-		SearchActualDateMax		= B00150ArrayListControl.ArryListStringUniqueList(SearchActualDateMax);	//入荷日最大
-		SearchCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);				//コメント
-		SearchEntryDateMin		= B00150ArrayListControl.ArryListStringUniqueList(SearchEntryDateMin);	//登録日最小
-		SearchEntryDateMax		= B00150ArrayListControl.ArryListStringUniqueList(SearchEntryDateMax);	//登録日最大
-		SearchUpdateDateMin		= B00150ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMin);	//更新日最小
-		SearchUpdateDateMax		= B00150ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMax);	//更新日最大
-		SearchEntryUser			= B00150ArrayListControl.ArryListStringUniqueList(SearchEntryUser);		//登録者
-		SearchUpdateUser		= B00150ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);		//更新者
+		SearchMsNoMin			= B100ArrayListControl.ArryListIntegerUniqueList(SearchMsNoMin);		//明細番号最小
+		SearchMsNoMax			= B100ArrayListControl.ArryListIntegerUniqueList(SearchMsNoMax);		//明細番号最大
+		SearchItemCd			= B100ArrayListControl.ArryListStringUniqueList(SearchItemCd);			//商品コード
+		SearchClItemCd			= B100ArrayListControl.ArryListStringUniqueList(SearchClItemCd);		//荷主商品コード
+		SearchJanCd				= B100ArrayListControl.ArryListStringUniqueList(SearchJanCd);			//JANCD（バラ）
+		SearchItemMdNo			= B100ArrayListControl.ArryListStringUniqueList(SearchItemMdNo);		//商品型番
+		SearchItemName			= B100ArrayListControl.ArryListStringUniqueList(SearchItemName);		//商品名
+		Searchlot				= B100ArrayListControl.ArryListStringUniqueList(Searchlot);				//ロット
+		SearchExpDateMin		= B100ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);		//消費期限最小
+		SearchExpDateMax		= B100ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);		//消費期限最大
+		SearchPlanQtyMin		= B100ArrayListControl.ArryListIntegerUniqueList(SearchPlanQtyMin);		//予定数量最小
+		SearchPlanQtyMax		= B100ArrayListControl.ArryListIntegerUniqueList(SearchPlanQtyMax);		//予定数量最大
+		SearchActualQtyMin		= B100ArrayListControl.ArryListIntegerUniqueList(SearchActualQtyMin);	//実績数
+		SearchActualQtyMax		= B100ArrayListControl.ArryListIntegerUniqueList(SearchActualQtyMax);	//実績数
+		SearchActualDateMin		= B100ArrayListControl.ArryListStringUniqueList(SearchActualDateMin);	//入荷日最小
+		SearchActualDateMax		= B100ArrayListControl.ArryListStringUniqueList(SearchActualDateMax);	//入荷日最大
+		SearchCom				= B100ArrayListControl.ArryListStringUniqueList(SearchCom);				//コメント
+		SearchEntryDateMin		= B100ArrayListControl.ArryListStringUniqueList(SearchEntryDateMin);	//登録日最小
+		SearchEntryDateMax		= B100ArrayListControl.ArryListStringUniqueList(SearchEntryDateMax);	//登録日最大
+		SearchUpdateDateMin		= B100ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMin);	//更新日最小
+		SearchUpdateDateMax		= B100ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMax);	//更新日最大
+		SearchEntryUser			= B100ArrayListControl.ArryListStringUniqueList(SearchEntryUser);		//登録者
+		SearchUpdateUser		= B100ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);		//更新者
 		
 		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのまま
 		if(null!=SearchPlanDateMax && 0<SearchPlanDateMax.size()){				//ヘッダ入荷予定日最大
 			for(int i=0;i<SearchPlanDateMax.size();i++){
-				String SetString = B00050ToolsDateTimeControl.DateFormat(SearchPlanDateMax.get(i));
-				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B00050ToolsDateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
+				String SetString = B100DateTimeControl.DateFormat(SearchPlanDateMax.get(i));
+				Timestamp SetTimestamp = B100DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetTimestamp = B100DateTimeControl.ndate_after(SetTimestamp,1);
+				SetString = B100DateTimeControl.dtmString2(SetTimestamp)[0];
 				SearchPlanDateMax.set(i,SetString);
 			}
 		}
 		if(null!=SearchHdActualDateMax && 0<SearchHdActualDateMax.size()){		//ヘッダ入荷実績日最大
 			for(int i=0;i<SearchHdActualDateMax.size();i++){
-				String SetString = B00050ToolsDateTimeControl.DateFormat(SearchHdActualDateMax.get(i));
-				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B00050ToolsDateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
+				String SetString = B100DateTimeControl.DateFormat(SearchHdActualDateMax.get(i));
+				Timestamp SetTimestamp = B100DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetTimestamp = B100DateTimeControl.ndate_after(SetTimestamp,1);
+				SetString = B100DateTimeControl.dtmString2(SetTimestamp)[0];
 				SearchHdActualDateMax.set(i,SetString);
 			}
 		}
 		if(null!=SearchExpDateMax && 0<SearchExpDateMax.size()){				//消費期限最大
 			for(int i=0;i<SearchExpDateMax.size();i++){
-				String SetString = B00050ToolsDateTimeControl.DateFormat(SearchExpDateMax.get(i));
-				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B00050ToolsDateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
+				String SetString = B100DateTimeControl.DateFormat(SearchExpDateMax.get(i));
+				Timestamp SetTimestamp = B100DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetTimestamp = B100DateTimeControl.ndate_after(SetTimestamp,1);
+				SetString = B100DateTimeControl.dtmString2(SetTimestamp)[0];
 				SearchExpDateMax.set(i,SetString);
 			}
 		}
 		if(null!=SearchActualDateMax && 0<SearchActualDateMax.size()){			//入荷日最大
 			for(int i=0;i<SearchActualDateMax.size();i++){
-				String SetString = B00050ToolsDateTimeControl.DateFormat(SearchActualDateMax.get(i));
-				Timestamp SetTimestamp = B00050ToolsDateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B00050ToolsDateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B00050ToolsDateTimeControl.dtmString2(SetTimestamp)[0];
+				String SetString = B100DateTimeControl.DateFormat(SearchActualDateMax.get(i));
+				Timestamp SetTimestamp = B100DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetTimestamp = B100DateTimeControl.ndate_after(SetTimestamp,1);
+				SetString = B100DateTimeControl.dtmString2(SetTimestamp)[0];
 				SearchActualDateMax.set(i,SetString);
 			}
 		}
@@ -813,11 +813,11 @@ public class T00015ArrivalPlanMsRt{
 		sql = sql + " order by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.ArrNo,WW0011ArrivalPlanMs.MsNo";
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchClWh && 0<SearchClWh.size()){						//ヘッダ担当倉庫
@@ -1095,8 +1095,8 @@ public class T00015ArrivalPlanMsRt{
 					if(null==rset01.getString("CLGpName01"		)){rt[counter][ColCLGpName01]		="";}else{rt[counter][ColCLGpName01]		=rset01.getString("CLGpName01");}	//ヘッダ荷主グループ名1
 					if(null==rset01.getString("ArrNo"			)){rt[counter][ColArrNo]			="";}else{rt[counter][ColArrNo]			=rset01.getString("ArrNo");}		//ヘッダ入荷予定NO（WMS採番）
 					if(null==rset01.getString("ClArrNo"			)){rt[counter][ColClArrNo]			="";}else{rt[counter][ColClArrNo]			=rset01.getString("ClArrNo");}		//ヘッダ荷主予定番号
-					if(null==rset01.getTimestamp("PlanDate"		)){rt[counter][ColPlanDate]		="";}else{rt[counter][ColPlanDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("PlanDate"))[0];}			//ヘッダ入荷予定日
-					if(null==rset01.getTimestamp("HdActualDate"	)){rt[counter][ColHdActualDate]	="";}else{rt[counter][ColHdActualDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("HdActualDate"))[1];}		//ヘッダ入荷実績日
+					if(null==rset01.getTimestamp("PlanDate"		)){rt[counter][ColPlanDate]		="";}else{rt[counter][ColPlanDate]			=B100DateTimeControl.dtmString2(rset01.getTimestamp("PlanDate"))[0];}			//ヘッダ入荷予定日
+					if(null==rset01.getTimestamp("HdActualDate"	)){rt[counter][ColHdActualDate]	="";}else{rt[counter][ColHdActualDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("HdActualDate"))[1];}		//ヘッダ入荷実績日
 					if(null==rset01.getString("SpCd"			)){rt[counter][ColSpCd]			="";}else{rt[counter][ColSpCd]				=rset01.getString("SpCd");}			//ヘッダ仕入先CD
 					if(null==rset01.getString("SpName01"		)){rt[counter][ColSpName01]		="";}else{rt[counter][ColSpName01]			=rset01.getString("SpName01");}		//ヘッダ仕入先名01
 					if(null==rset01.getString("SpName02"		)){rt[counter][ColSpName02]		="";}else{rt[counter][ColSpName02]			=rset01.getString("SpName02");}		//ヘッダ仕入先名02
@@ -1109,8 +1109,8 @@ public class T00015ArrivalPlanMsRt{
 					if(null==rset01.getString("ArCom01"			)){rt[counter][ColArCom01]			="";}else{rt[counter][ColArCom01]			=rset01.getString("ArCom01");}		//ヘッダコメント1
 					if(null==rset01.getString("ArCom02"			)){rt[counter][ColArCom02]			="";}else{rt[counter][ColArCom02]			=rset01.getString("ArCom02");}		//ヘッダコメント2
 					if(null==rset01.getString("ArCom03"			)){rt[counter][ColArCom03]			="";}else{rt[counter][ColArCom03]			=rset01.getString("ArCom03");}		//ヘッダコメント3
-					if(null==rset01.getTimestamp("HdEntryDate"	)){rt[counter][ColHdEntryDate]	="";}else{rt[counter][ColHdEntryDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("HdEntryDate"))[1];}			//ヘッダ登録日
-					if(null==rset01.getTimestamp("HdUpdateDate"	)){rt[counter][ColHdUpdateDate]	="";}else{rt[counter][ColHdUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("HdUpdateDate"))[1];}		//ヘッダ更新日
+					if(null==rset01.getTimestamp("HdEntryDate"	)){rt[counter][ColHdEntryDate]	="";}else{rt[counter][ColHdEntryDate]		=B100DateTimeControl.dtmString2(rset01.getTimestamp("HdEntryDate"))[1];}			//ヘッダ登録日
+					if(null==rset01.getTimestamp("HdUpdateDate"	)){rt[counter][ColHdUpdateDate]	="";}else{rt[counter][ColHdUpdateDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("HdUpdateDate"))[1];}		//ヘッダ更新日
 					if(null==rset01.getString("HdEntryUser"		)){rt[counter][ColHdEntryUser]	="";}else{rt[counter][ColHdEntryUser]		=rset01.getString("HdEntryUser");}	//ヘッダ登録者
 					if(null==rset01.getString("HdUpdateUser"	)){rt[counter][ColHdUpdateUser]	="";}else{rt[counter][ColHdUpdateUser]	=rset01.getString("HdUpdateUser");}	//ヘッダ更新者
 					rt[counter][ColFixFg]		=rset01.getInt("FixFg");		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
@@ -1122,14 +1122,14 @@ public class T00015ArrivalPlanMsRt{
 					if(null==rset01.getString("ItemMdNo"		)){rt[counter][ColItemMdNo]		="";}else{rt[counter][ColItemMdNo]		=rset01.getString("ItemMdNo");}		//商品型番
 					if(null==rset01.getString("ItemName"		)){rt[counter][ColItemName]		="";}else{rt[counter][ColItemName]		=rset01.getString("ItemName");}		//商品名
 					if(null==rset01.getString("lot"				)){rt[counter][Collot]				="";}else{rt[counter][Collot]			=rset01.getString("lot");}			//ロット
-					if(null==rset01.getTimestamp("ExpDate"		)){rt[counter][ColExpDate]			="";}else{rt[counter][ColExpDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("ExpDate"))[0];}			//消費期限
+					if(null==rset01.getTimestamp("ExpDate"		)){rt[counter][ColExpDate]			="";}else{rt[counter][ColExpDate]		=B100DateTimeControl.dtmString2(rset01.getTimestamp("ExpDate"))[0];}			//消費期限
 					rt[counter][ColPlanQty]		=rset01.getInt("PlanQty");		//予定数量
 					rt[counter][ColActualQty]	=rset01.getInt("ActualQty");	//実績数
-					if(null==rset01.getTimestamp("ActualDate"	)){rt[counter][ColActualDate]		="";}else{rt[counter][ColActualDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("ActualDate"))[1];}		//入荷日
+					if(null==rset01.getTimestamp("ActualDate"	)){rt[counter][ColActualDate]		="";}else{rt[counter][ColActualDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("ActualDate"))[1];}		//入荷日
 					if(null==rset01.getString("Com01"			)){rt[counter][ColCom01]			="";}else{rt[counter][ColCom01]		=rset01.getString("Com01");}		//コメント1
 					if(null==rset01.getString("Com02"			)){rt[counter][ColCom02]			="";}else{rt[counter][ColCom02]		=rset01.getString("Com02");}		//コメント2
-					if(null==rset01.getTimestamp("EntryDate"	)){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日
-					if(null==rset01.getTimestamp("UpdateDate"	)){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//更新日
+					if(null==rset01.getTimestamp("EntryDate"	)){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日
+					if(null==rset01.getTimestamp("UpdateDate"	)){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//更新日
 					if(null==rset01.getString("EntryUser"		)){rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}	//登録者
 					if(null==rset01.getString("UpdateUser"		)){rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}	//更新者
 					
@@ -1147,7 +1147,7 @@ public class T00015ArrivalPlanMsRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}

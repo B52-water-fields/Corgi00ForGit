@@ -276,26 +276,26 @@ public class M00070ItemMstRt{
 			ArrayList<String> SearchDelFg,				//削除フラグ
 			boolean AllSearch){
 		
-		SearchClGpCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
-		SearchItemCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemCd);
-		SearchCLItemCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchCLItemCd);
-		SearchItemName			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemName);
-		SearchDeliveryTypeCd01	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd01);
-		SearchDeliveryTypeCd02	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd02);
-		SearchDeliveryTypeCd03	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd03);
-		SearchDeliveryTypeCd04	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd04);
-		SearchDeliveryTypeCd05	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd05);
-		SearchItemMDNo			= B00150ArrayListControl.ArryListStringUniqueList(SearchItemMDNo);
-		SearchCategoryCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchCategoryCd);
-		SearchCategoryName		= B00150ArrayListControl.ArryListStringUniqueList(SearchCategoryName);
-		SearchItemColorCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemColorCd);
-		SearchItemColorName		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemColorName);
-		SearchItemSizeCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemSizeCd);
-		SearchItemSizeName		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemSizeName);
-		SearchJanCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchJanCd);
-		SearchTildFG			= B00150ArrayListControl.ArryListStringUniqueList(SearchTildFG);
-		SearchTildName			= B00150ArrayListControl.ArryListStringUniqueList(SearchTildName);
-		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		SearchClGpCd			= B100ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
+		SearchItemCd			= B100ArrayListControl.ArryListStringUniqueList(SearchItemCd);
+		SearchCLItemCd			= B100ArrayListControl.ArryListStringUniqueList(SearchCLItemCd);
+		SearchItemName			= B100ArrayListControl.ArryListStringUniqueList(SearchItemName);
+		SearchDeliveryTypeCd01	= B100ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd01);
+		SearchDeliveryTypeCd02	= B100ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd02);
+		SearchDeliveryTypeCd03	= B100ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd03);
+		SearchDeliveryTypeCd04	= B100ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd04);
+		SearchDeliveryTypeCd05	= B100ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd05);
+		SearchItemMDNo			= B100ArrayListControl.ArryListStringUniqueList(SearchItemMDNo);
+		SearchCategoryCd		= B100ArrayListControl.ArryListStringUniqueList(SearchCategoryCd);
+		SearchCategoryName		= B100ArrayListControl.ArryListStringUniqueList(SearchCategoryName);
+		SearchItemColorCd		= B100ArrayListControl.ArryListStringUniqueList(SearchItemColorCd);
+		SearchItemColorName		= B100ArrayListControl.ArryListStringUniqueList(SearchItemColorName);
+		SearchItemSizeCd		= B100ArrayListControl.ArryListStringUniqueList(SearchItemSizeCd);
+		SearchItemSizeName		= B100ArrayListControl.ArryListStringUniqueList(SearchItemSizeName);
+		SearchJanCd				= B100ArrayListControl.ArryListStringUniqueList(SearchJanCd);
+		SearchTildFG			= B100ArrayListControl.ArryListStringUniqueList(SearchTildFG);
+		SearchTildName			= B100ArrayListControl.ArryListStringUniqueList(SearchTildName);
+		SearchDelFg				= B100ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
 		Object[][] rt = new Object[0][RtSettingItemMstRt().length];
 		boolean SearchKick = false;
@@ -588,11 +588,11 @@ public class M00070ItemMstRt{
 		
 		sql = sql+" order by KM0060_ITEMMST.ClGpCd,KM0060_ITEMMST.ItemCd\n";
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				if(null!=SearchClGpCd&&0<SearchClGpCd.size()){
 					for(int i=0;i<SearchClGpCd.size();i++){
@@ -794,8 +794,8 @@ public class M00070ItemMstRt{
 					if(null==rset01.getString("PictPass04")){			rt[counter][ColPictPass04]			="";}else{rt[counter][ColPictPass04]			=rset01.getString("PictPass04");}			//画像パス04
 					if(null==rset01.getString("PictPass05")){			rt[counter][ColPictPass05]			="";}else{rt[counter][ColPictPass05]			=rset01.getString("PictPass05");}			//画像パス05
 					rt[counter][ColExpDateHowLong]	=rset01.getInt("ExpDateHowLong");//賞味期限日数
-					if(null==rset01.getTimestamp("EntryDate")){			rt[counter][ColEntryDate]				="";}else{rt[counter][ColEntryDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){		rt[counter][ColUpdateDate]			="";}else{rt[counter][ColUpdateDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){			rt[counter][ColEntryDate]				="";}else{rt[counter][ColEntryDate]			=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){		rt[counter][ColUpdateDate]			="";}else{rt[counter][ColUpdateDate]			=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//データ更新日時
 					if(null==rset01.getString("EntryUser")){			rt[counter][ColEntryUser]				="";}else{rt[counter][ColEntryUser]			=rset01.getString("EntryUser");}			//登録者コード
 					if(null==rset01.getString("UpdateUser")){			rt[counter][ColUpdateUser]			="";}else{rt[counter][ColUpdateUser]			=rset01.getString("UpdateUser");}			//更新者コード
 					rt[counter][ColDelFg]			=rset01.getInt("DelFg");		//削除フラグ
@@ -814,7 +814,7 @@ public class M00070ItemMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}

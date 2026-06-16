@@ -3,7 +3,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-public class B00130SoundCreate{
+public class B100SoundCreate{
 	static final double NS   = 0;		//無音
     
 	static final double C   = 32.703;	//ド		

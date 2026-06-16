@@ -1,4 +1,4 @@
-public class B00120TableSelectSql{
+public class B100TableSelectSql{
 	//指定されたテーブルに対してJoinを考慮しないSelect文を生成する
 	//Select文を動的に作るクラスを作るための補助ツール
 	
@@ -16,7 +16,7 @@ public class B00120TableSelectSql{
 	
 	public static void TableSelectSqlCore(String TgtDB,String TgtTable) {
 		//対象テーブルのカラム情報取得　開発コピペ用
-		String[][] ColumnList = A00050OldDataTableCheck.ColumnList(TgtDB,TgtTable);
+		String[][] ColumnList = A100OldDataTableCheck.ColumnList(TgtDB,TgtTable);
 		if(0<ColumnList.length) {
 			String sql = "\"select \"\n+\"";
 			
@@ -157,7 +157,7 @@ public class B00120TableSelectSql{
 						System.out.println("rt[counter]["+i+"] = rset01.getInt(\""+ColumnList[i][ 3]+"\");");
 						break;
 					case "datetime":
-						System.out.println("if(null==rset01.getTimestamp(\""+ColumnList[i][ 3]+"\")){rt[counter]["+i+"]=\"\";}else{rt[counter]["+i+"]=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp(\""+ColumnList[i][ 3]+"\"))[1];}");
+						System.out.println("if(null==rset01.getTimestamp(\""+ColumnList[i][ 3]+"\")){rt[counter]["+i+"]=\"\";}else{rt[counter]["+i+"]=B100DateTimeControl.dtmString2(rset01.getTimestamp(\""+ColumnList[i][ 3]+"\"))[1];}");
 						break;
 					case "float":
 						System.out.println("rt[counter]["+i+"] = rset01.getFloat(\""+ColumnList[i][ 3]+"\");");

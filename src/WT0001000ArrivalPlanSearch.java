@@ -33,139 +33,139 @@ public class WT0001000ArrivalPlanSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,1200,800,"Corgi00入荷予定検索","NK");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,1200,800,"Corgi00入荷予定検索","NK");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,1160,300,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,1160,300,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
 		
 		//検索条件
-		JLabel LB_SearchClWh			= B00110FrameParts.JLabelSet(  0, 25,100,20,"担当倉庫:"				,11,1);
-		JLabel LB_SearchClCd			= B00110FrameParts.JLabelSet(  0, 50,100,20,"荷主:"					,11,1);
-		JLabel LB_SearchClGpCD			= B00110FrameParts.JLabelSet(  0, 75,100,20,"荷主グループ:"			,11,1);
-		JLabel LB_SearchSpCd			= B00110FrameParts.JLabelSet(  0,100,100,20,"仕入先:"					,11,1);
-		JLabel LB_SearchArrNo			= B00110FrameParts.JLabelSet(  0,125,100,20,"入荷予定NO:"				,11,1);
-		JLabel LB_SearchClArrNo			= B00110FrameParts.JLabelSet(  0,150,100,20,"荷主予定番号:"			,11,1);
-		JLabel LB_SearchPlanDate		= B00110FrameParts.JLabelSet(  0,175,100,20,"入荷予定日:"				,11,1);
-		JLabel LB_SearchHdActualDate	= B00110FrameParts.JLabelSet(  0,200,100,20,"入荷実績日:"				,11,1);
-		JLabel LB_SearchArCom			= B00110FrameParts.JLabelSet(  0,225,100,20,"ヘッダコメント:"			,10,1);
+		JLabel LB_SearchClWh			= B100FrameParts.JLabelSet(  0, 25,100,20,"担当倉庫:"				,11,1);
+		JLabel LB_SearchClCd			= B100FrameParts.JLabelSet(  0, 50,100,20,"荷主:"					,11,1);
+		JLabel LB_SearchClGpCD			= B100FrameParts.JLabelSet(  0, 75,100,20,"荷主グループ:"			,11,1);
+		JLabel LB_SearchSpCd			= B100FrameParts.JLabelSet(  0,100,100,20,"仕入先:"					,11,1);
+		JLabel LB_SearchArrNo			= B100FrameParts.JLabelSet(  0,125,100,20,"入荷予定NO:"				,11,1);
+		JLabel LB_SearchClArrNo			= B100FrameParts.JLabelSet(  0,150,100,20,"荷主予定番号:"			,11,1);
+		JLabel LB_SearchPlanDate		= B100FrameParts.JLabelSet(  0,175,100,20,"入荷予定日:"				,11,1);
+		JLabel LB_SearchHdActualDate	= B100FrameParts.JLabelSet(  0,200,100,20,"入荷実績日:"				,11,1);
+		JLabel LB_SearchArCom			= B100FrameParts.JLabelSet(  0,225,100,20,"ヘッダコメント:"			,10,1);
 		
-		JLabel LB_SearchItemCd			= B00110FrameParts.JLabelSet(340, 25,100,20,"商品コード:"				,11,1);
-		JLabel LB_SearchClItemCd		= B00110FrameParts.JLabelSet(340, 50,100,20,"荷主商品コード:"			,10,1);
-		JLabel LB_SearchJanCd			= B00110FrameParts.JLabelSet(340, 75,100,20,"JANCD（バラ）:"			,10,1);
-		JLabel LB_SearchItemMdNo		= B00110FrameParts.JLabelSet(340,100,100,20,"商品型番:"				,11,1);
-		JLabel LB_SearchItemName		= B00110FrameParts.JLabelSet(340,125,100,20,"商品名:"					,11,1);
-		JLabel LB_Searchlot				= B00110FrameParts.JLabelSet(340,150,100,20,"ロット:"					,11,1);
-		JLabel LB_SearchExpDate			= B00110FrameParts.JLabelSet(340,175,100,20,"消費期限:"				,11,1);
-		JLabel LB_SearchActualDate		= B00110FrameParts.JLabelSet(340,200,100,20,"明細入荷日:"				,10,1);
-		JLabel LB_SearchCom				= B00110FrameParts.JLabelSet(340,225,100,20,"明細コメント:"			,10,1);
-		JLabel LB_SearchEntryUser		= B00110FrameParts.JLabelSet(340,250,100,20,"登録者:"					,11,1);
-		JLabel LB_SearchUpdateUser		= B00110FrameParts.JLabelSet(340,275,100,20,"更新者:"					,11,1);
+		JLabel LB_SearchItemCd			= B100FrameParts.JLabelSet(340, 25,100,20,"商品コード:"				,11,1);
+		JLabel LB_SearchClItemCd		= B100FrameParts.JLabelSet(340, 50,100,20,"荷主商品コード:"			,10,1);
+		JLabel LB_SearchJanCd			= B100FrameParts.JLabelSet(340, 75,100,20,"JANCD（バラ）:"			,10,1);
+		JLabel LB_SearchItemMdNo		= B100FrameParts.JLabelSet(340,100,100,20,"商品型番:"				,11,1);
+		JLabel LB_SearchItemName		= B100FrameParts.JLabelSet(340,125,100,20,"商品名:"					,11,1);
+		JLabel LB_Searchlot				= B100FrameParts.JLabelSet(340,150,100,20,"ロット:"					,11,1);
+		JLabel LB_SearchExpDate			= B100FrameParts.JLabelSet(340,175,100,20,"消費期限:"				,11,1);
+		JLabel LB_SearchActualDate		= B100FrameParts.JLabelSet(340,200,100,20,"明細入荷日:"				,10,1);
+		JLabel LB_SearchCom				= B100FrameParts.JLabelSet(340,225,100,20,"明細コメント:"			,10,1);
+		JLabel LB_SearchEntryUser		= B100FrameParts.JLabelSet(340,250,100,20,"登録者:"					,11,1);
+		JLabel LB_SearchUpdateUser		= B100FrameParts.JLabelSet(340,275,100,20,"更新者:"					,11,1);
 		
-		JLabel LB_SearchPlanQty			= B00110FrameParts.JLabelSet(680, 25,100,20,"明細予定数:"				,11,1);
-		JLabel LB_SearchActualQty		= B00110FrameParts.JLabelSet(680, 50,100,20,"明細実績数:"				,11,1);
-		JLabel LB_SearchSpName			= B00110FrameParts.JLabelSet(680,100,100,20,"仕入先名:"				,11,1);
-		JLabel LB_SearchSpPost			= B00110FrameParts.JLabelSet(680,125,100,20,"仕入先郵便:"				,11,1);
-		JLabel LB_SearchSpAdd			= B00110FrameParts.JLabelSet(680,150,100,20,"仕入先住所:"				,11,1);
-		JLabel LB_SearchSpTel			= B00110FrameParts.JLabelSet(680,175,100,20,"仕入先電話:"				,11,1);
-		JLabel LB_SearchFixFg			= B00110FrameParts.JLabelSet(680,200,100,20,"状況:"					,11,1);
-		JLabel LB_DateCom				= B00110FrameParts.JLabelSet(680,225,200,20,"↓YYYY/MM/DD HH:MM:SS"	,11,1);
-		JLabel LB_SearchEntryDate		= B00110FrameParts.JLabelSet(680,250,100,20,"登録日:"					,11,1);
-		JLabel LB_SearchUpdateDate		= B00110FrameParts.JLabelSet(680,275,100,20,"更新日:"					,11,1);
+		JLabel LB_SearchPlanQty			= B100FrameParts.JLabelSet(680, 25,100,20,"明細予定数:"				,11,1);
+		JLabel LB_SearchActualQty		= B100FrameParts.JLabelSet(680, 50,100,20,"明細実績数:"				,11,1);
+		JLabel LB_SearchSpName			= B100FrameParts.JLabelSet(680,100,100,20,"仕入先名:"				,11,1);
+		JLabel LB_SearchSpPost			= B100FrameParts.JLabelSet(680,125,100,20,"仕入先郵便:"				,11,1);
+		JLabel LB_SearchSpAdd			= B100FrameParts.JLabelSet(680,150,100,20,"仕入先住所:"				,11,1);
+		JLabel LB_SearchSpTel			= B100FrameParts.JLabelSet(680,175,100,20,"仕入先電話:"				,11,1);
+		JLabel LB_SearchFixFg			= B100FrameParts.JLabelSet(680,200,100,20,"状況:"					,11,1);
+		JLabel LB_DateCom				= B100FrameParts.JLabelSet(680,225,200,20,"↓YYYY/MM/DD HH:MM:SS"	,11,1);
+		JLabel LB_SearchEntryDate		= B100FrameParts.JLabelSet(680,250,100,20,"登録日:"					,11,1);
+		JLabel LB_SearchUpdateDate		= B100FrameParts.JLabelSet(680,275,100,20,"更新日:"					,11,1);
 		
-		final JComboBox TB_SearchClWh						= B00110FrameParts.JComboBoxSet(				100, 25,240,20,B00100DefaultVariable.SearchWhList[0],11);				//ヘッダ担当倉庫
-		final JComboBox TB_SearchClCd						= B00110FrameParts.JComboBoxSet(				100, 50,240,20,B00100DefaultVariable.SearchClList[0],11);				//ヘッダ荷主CD
-		final JComboBox TB_SearchClGpCD						= B00110FrameParts.JComboBoxSet(				100, 75,240,20,B00100DefaultVariable.SearchClGpList[0],11);			//ヘッダ荷主グループCD
-		final JComboBox TB_SearchSpCd						= B00110FrameParts.JComboBoxSet(				100,100,240,20,B00100DefaultVariable.SearchSupplierList[0],11);		//ヘッダ仕入先　
-		final JTextField TB_SearchArrNo						= B00110FrameParts.JTextFieldSet(				100,125,100,20,""	,11,0);						//ヘッダ入荷予定NO
-		final JTextField TB_SearchClArrNo					= B00110FrameParts.JTextFieldSet(				100,150,100,20,""	,11,0);						//ヘッダ荷主予定番号
-		final JFormattedTextField TB_SearchPlanDateMin		= B00110FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");		//ヘッダ入荷予定日
-		final JFormattedTextField TB_SearchPlanDateMax		= B00110FrameParts.JFormattedTextFieldSet(	230,175, 70,20,""	,11,0,"YYYY/MM/DD");		//ヘッダ入荷予定日
-		final JFormattedTextField TB_SearchHdActualDateMin	= B00110FrameParts.JFormattedTextFieldSet(	100,200, 70,20,""	,11,0,"YYYY/MM/DD");		//ヘッダ入荷実績日
-		final JFormattedTextField TB_SearchHdActualDateMax	= B00110FrameParts.JFormattedTextFieldSet(	230,200, 70,20,""	,11,0,"YYYY/MM/DD");		//ヘッダ入荷実績日
-		final JTextField TB_SearchArCom						= B00110FrameParts.JTextFieldSet(				100,225,100,20,""	,11,0);						//ヘッダコメント
+		final JComboBox TB_SearchClWh						= B100FrameParts.JComboBoxSet(				100, 25,240,20,B100DefaultVariable.SearchWhList[0],11);				//ヘッダ担当倉庫
+		final JComboBox TB_SearchClCd						= B100FrameParts.JComboBoxSet(				100, 50,240,20,B100DefaultVariable.SearchClList[0],11);				//ヘッダ荷主CD
+		final JComboBox TB_SearchClGpCD						= B100FrameParts.JComboBoxSet(				100, 75,240,20,B100DefaultVariable.SearchClGpList[0],11);			//ヘッダ荷主グループCD
+		final JComboBox TB_SearchSpCd						= B100FrameParts.JComboBoxSet(				100,100,240,20,B100DefaultVariable.SearchSupplierList[0],11);		//ヘッダ仕入先　
+		final JTextField TB_SearchArrNo						= B100FrameParts.JTextFieldSet(				100,125,100,20,""	,11,0);						//ヘッダ入荷予定NO
+		final JTextField TB_SearchClArrNo					= B100FrameParts.JTextFieldSet(				100,150,100,20,""	,11,0);						//ヘッダ荷主予定番号
+		final JFormattedTextField TB_SearchPlanDateMin		= B100FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");		//ヘッダ入荷予定日
+		final JFormattedTextField TB_SearchPlanDateMax		= B100FrameParts.JFormattedTextFieldSet(	230,175, 70,20,""	,11,0,"YYYY/MM/DD");		//ヘッダ入荷予定日
+		final JFormattedTextField TB_SearchHdActualDateMin	= B100FrameParts.JFormattedTextFieldSet(	100,200, 70,20,""	,11,0,"YYYY/MM/DD");		//ヘッダ入荷実績日
+		final JFormattedTextField TB_SearchHdActualDateMax	= B100FrameParts.JFormattedTextFieldSet(	230,200, 70,20,""	,11,0,"YYYY/MM/DD");		//ヘッダ入荷実績日
+		final JTextField TB_SearchArCom						= B100FrameParts.JTextFieldSet(				100,225,100,20,""	,11,0);						//ヘッダコメント
 		
 		//現在ログイン中の荷主情報選択済みにする
-		TB_SearchClWh.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchWhList[1]	,A00000Main.ClWh));			//ヘッダ担当倉庫
-		TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchClList[1]	,A00000Main.ClCd));			//ヘッダ荷主CD
-		TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B00100DefaultVariable.SearchClGpList[1]	,A00000Main.ClGp));			//ヘッダ荷主グループCD
+		TB_SearchClWh.setSelectedIndex(		GetSelectIndex(B100DefaultVariable.SearchWhList[1]	,A00000Main.ClWh));			//ヘッダ担当倉庫
+		TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B100DefaultVariable.SearchClList[1]	,A00000Main.ClCd));			//ヘッダ荷主CD
+		TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B100DefaultVariable.SearchClGpList[1]	,A00000Main.ClGp));			//ヘッダ荷主グループCD
 		
 		
-		final JTextField TB_SearchItemCd					= B00110FrameParts.JTextFieldSet(				440, 25,100,20,"",11,0);	//商品コード
-		final JTextField TB_SearchClItemCd					= B00110FrameParts.JTextFieldSet(				440, 50,100,20,"",11,0);	//荷主商品コード
-		final JTextField TB_SearchJanCd						= B00110FrameParts.JTextFieldSet(				440, 75,100,20,"",11,0);	//JANCD（バラ）
-		final JTextField TB_SearchItemMdNo					= B00110FrameParts.JTextFieldSet(				440,100,100,20,"",11,0);	//商品型番
-		final JTextField TB_SearchItemName					= B00110FrameParts.JTextFieldSet(				440,125,100,20,"",11,0);	//商品名
-		final JTextField TB_Searchlot						= B00110FrameParts.JTextFieldSet(				440,150,100,20,"",11,0);	//ロット
-		final JFormattedTextField TB_SearchExpDateMin		= B00110FrameParts.JFormattedTextFieldSet(	440,175, 70,20,"",11,0,"YYYY/MM/DD");		//消費期限最小
-		final JFormattedTextField TB_SearchExpDateMax		= B00110FrameParts.JFormattedTextFieldSet(	570,175, 70,20,"",11,0,"YYYY/MM/DD");		//消費期限最大
-		final JFormattedTextField TB_SearchActualDateMin	= B00110FrameParts.JFormattedTextFieldSet(	440,200, 70,20,"",11,0,"YYYY/MM/DD");		//明細入荷日最小
-		final JFormattedTextField TB_SearchActualDateMax	= B00110FrameParts.JFormattedTextFieldSet(	570,200, 70,20,"",11,0,"YYYY/MM/DD");		//明細入荷日最大
-		final JTextField TB_SearchCom						= B00110FrameParts.JTextFieldSet(				440,225,100,20,"",11,0);	//明細コメント
-		final JTextField TB_SearchEntryUser					= B00110FrameParts.JTextFieldSet(				440,250,100,20,"",11,0);	//登録者
-		final JTextField TB_SearchUpdateUser				= B00110FrameParts.JTextFieldSet(				440,275,100,20,"",11,0);	//更新者
+		final JTextField TB_SearchItemCd					= B100FrameParts.JTextFieldSet(				440, 25,100,20,"",11,0);	//商品コード
+		final JTextField TB_SearchClItemCd					= B100FrameParts.JTextFieldSet(				440, 50,100,20,"",11,0);	//荷主商品コード
+		final JTextField TB_SearchJanCd						= B100FrameParts.JTextFieldSet(				440, 75,100,20,"",11,0);	//JANCD（バラ）
+		final JTextField TB_SearchItemMdNo					= B100FrameParts.JTextFieldSet(				440,100,100,20,"",11,0);	//商品型番
+		final JTextField TB_SearchItemName					= B100FrameParts.JTextFieldSet(				440,125,100,20,"",11,0);	//商品名
+		final JTextField TB_Searchlot						= B100FrameParts.JTextFieldSet(				440,150,100,20,"",11,0);	//ロット
+		final JFormattedTextField TB_SearchExpDateMin		= B100FrameParts.JFormattedTextFieldSet(	440,175, 70,20,"",11,0,"YYYY/MM/DD");		//消費期限最小
+		final JFormattedTextField TB_SearchExpDateMax		= B100FrameParts.JFormattedTextFieldSet(	570,175, 70,20,"",11,0,"YYYY/MM/DD");		//消費期限最大
+		final JFormattedTextField TB_SearchActualDateMin	= B100FrameParts.JFormattedTextFieldSet(	440,200, 70,20,"",11,0,"YYYY/MM/DD");		//明細入荷日最小
+		final JFormattedTextField TB_SearchActualDateMax	= B100FrameParts.JFormattedTextFieldSet(	570,200, 70,20,"",11,0,"YYYY/MM/DD");		//明細入荷日最大
+		final JTextField TB_SearchCom						= B100FrameParts.JTextFieldSet(				440,225,100,20,"",11,0);	//明細コメント
+		final JTextField TB_SearchEntryUser					= B100FrameParts.JTextFieldSet(				440,250,100,20,"",11,0);	//登録者
+		final JTextField TB_SearchUpdateUser				= B100FrameParts.JTextFieldSet(				440,275,100,20,"",11,0);	//更新者
 		
-		final JFormattedTextField TB_SearchPlanQtyMin		= B00110FrameParts.JFormattedTextFieldSet(	780, 25, 70,20,"",11,1,"####");		//明細予定数最小
-		final JFormattedTextField TB_SearchPlanQtyMax		= B00110FrameParts.JFormattedTextFieldSet(	870, 26, 70,20,"",11,1,"####");		//明細予定数最大
-		final JFormattedTextField TB_SearchActualQtyMin		= B00110FrameParts.JFormattedTextFieldSet(	780, 50, 70,20,"",11,1,"####");		//明細実績数最小
-		final JFormattedTextField TB_SearchActualQtyMax		= B00110FrameParts.JFormattedTextFieldSet(	870, 50, 70,20,"",11,1,"####");		//明細実績数最大
-		final JTextField TB_SearchSpName					= B00110FrameParts.JTextFieldSet(				780,100,100,20,"",11,0);			//仕入先名
-		final JTextField TB_SearchSpPost					= B00110FrameParts.JTextFieldSet(				780,125,100,20,"",11,0);			//仕入先郵便
-		final JTextField TB_SearchSpAdd						= B00110FrameParts.JTextFieldSet(				780,150,100,20,"",11,0);			//仕入先住所
-		final JTextField TB_SearchSpTel						= B00110FrameParts.JTextFieldSet(				780,175,100,20,"",11,0);			//仕入先電話
-		final JComboBox TB_SearchFixFg						= B00110FrameParts.JComboBoxSet(				780,200,150,20,B00100DefaultVariable.SearchArryvalFixFgList[0],11);		//状況 
-		final JFormattedTextField TB_SearchEntryDateMin		= B00110FrameParts.JFormattedTextFieldSet(	780,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
-		final JFormattedTextField TB_SearchEntryDateMax		= B00110FrameParts.JFormattedTextFieldSet(	950,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
-		final JFormattedTextField TB_SearchUpdateDateMin	= B00110FrameParts.JFormattedTextFieldSet(	780,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
-		final JFormattedTextField TB_SearchUpdateDateMax	= B00110FrameParts.JFormattedTextFieldSet(	950,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
+		final JFormattedTextField TB_SearchPlanQtyMin		= B100FrameParts.JFormattedTextFieldSet(	780, 25, 70,20,"",11,1,"####");		//明細予定数最小
+		final JFormattedTextField TB_SearchPlanQtyMax		= B100FrameParts.JFormattedTextFieldSet(	870, 26, 70,20,"",11,1,"####");		//明細予定数最大
+		final JFormattedTextField TB_SearchActualQtyMin		= B100FrameParts.JFormattedTextFieldSet(	780, 50, 70,20,"",11,1,"####");		//明細実績数最小
+		final JFormattedTextField TB_SearchActualQtyMax		= B100FrameParts.JFormattedTextFieldSet(	870, 50, 70,20,"",11,1,"####");		//明細実績数最大
+		final JTextField TB_SearchSpName					= B100FrameParts.JTextFieldSet(				780,100,100,20,"",11,0);			//仕入先名
+		final JTextField TB_SearchSpPost					= B100FrameParts.JTextFieldSet(				780,125,100,20,"",11,0);			//仕入先郵便
+		final JTextField TB_SearchSpAdd						= B100FrameParts.JTextFieldSet(				780,150,100,20,"",11,0);			//仕入先住所
+		final JTextField TB_SearchSpTel						= B100FrameParts.JTextFieldSet(				780,175,100,20,"",11,0);			//仕入先電話
+		final JComboBox TB_SearchFixFg						= B100FrameParts.JComboBoxSet(				780,200,150,20,B100DefaultVariable.SearchArryvalFixFgList[0],11);		//状況 
+		final JFormattedTextField TB_SearchEntryDateMin		= B100FrameParts.JFormattedTextFieldSet(	780,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
+		final JFormattedTextField TB_SearchEntryDateMax		= B100FrameParts.JFormattedTextFieldSet(	950,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
+		final JFormattedTextField TB_SearchUpdateDateMin	= B100FrameParts.JFormattedTextFieldSet(	780,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
+		final JFormattedTextField TB_SearchUpdateDateMax	= B100FrameParts.JFormattedTextFieldSet(	950,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
 		
 		//検索条件　状況　初期値を未入荷に設定
-		TB_SearchFixFg.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.SearchArryvalFixFgList[1]	,"0"));
+		TB_SearchFixFg.setSelectedIndex(GetSelectIndex(B100DefaultVariable.SearchArryvalFixFgList[1]	,"0"));
 
-		JLabel LB2_SearchArrNo			= B00110FrameParts.JLabelSet( 200,125, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchClArrNo		= B00110FrameParts.JLabelSet( 200,150, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchPlanDate		= B00110FrameParts.JLabelSet( 210,175, 20,20,"～"		,10,2);
-		JLabel LB2_SearchHdActualDate	= B00110FrameParts.JLabelSet( 210,200, 20,20,"～"		,10,2);
-		JLabel LB2_SearchArCom			= B00110FrameParts.JLabelSet( 200,225, 40,20,"を含む"	,10,0);
+		JLabel LB2_SearchArrNo			= B100FrameParts.JLabelSet( 200,125, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchClArrNo		= B100FrameParts.JLabelSet( 200,150, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchPlanDate		= B100FrameParts.JLabelSet( 210,175, 20,20,"～"		,10,2);
+		JLabel LB2_SearchHdActualDate	= B100FrameParts.JLabelSet( 210,200, 20,20,"～"		,10,2);
+		JLabel LB2_SearchArCom			= B100FrameParts.JLabelSet( 200,225, 40,20,"を含む"	,10,0);
 		
-		JLabel LB2_SearchItemCd			= B00110FrameParts.JLabelSet(540, 25, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchClItemCd		= B00110FrameParts.JLabelSet(540, 50, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchJanCd			= B00110FrameParts.JLabelSet(540, 75, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchItemMdNo		= B00110FrameParts.JLabelSet(540,100, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchItemName		= B00110FrameParts.JLabelSet(540,125, 40,20,"を含む"	,10,0);
-		JLabel LB2_Searchlot			= B00110FrameParts.JLabelSet(540,150, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchExpDate		= B00110FrameParts.JLabelSet(550,175, 20,20,"～"		,10,2);
-		JLabel LB2_SearchActualDate		= B00110FrameParts.JLabelSet(550,200, 20,20,"～"		,10,2);
-		JLabel LB2_SearchCom			= B00110FrameParts.JLabelSet(540,225, 40,20,"を含む"	,10,0);	
-		JLabel LB2_SearchEntryUser		= B00110FrameParts.JLabelSet(540,250, 40,20,"を含む"	,10,0);	
-		JLabel LB2_SearchUpdateUser		= B00110FrameParts.JLabelSet(540,275, 40,20,"を含む"	,10,0);	
+		JLabel LB2_SearchItemCd			= B100FrameParts.JLabelSet(540, 25, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchClItemCd		= B100FrameParts.JLabelSet(540, 50, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchJanCd			= B100FrameParts.JLabelSet(540, 75, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchItemMdNo		= B100FrameParts.JLabelSet(540,100, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchItemName		= B100FrameParts.JLabelSet(540,125, 40,20,"を含む"	,10,0);
+		JLabel LB2_Searchlot			= B100FrameParts.JLabelSet(540,150, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchExpDate		= B100FrameParts.JLabelSet(550,175, 20,20,"～"		,10,2);
+		JLabel LB2_SearchActualDate		= B100FrameParts.JLabelSet(550,200, 20,20,"～"		,10,2);
+		JLabel LB2_SearchCom			= B100FrameParts.JLabelSet(540,225, 40,20,"を含む"	,10,0);	
+		JLabel LB2_SearchEntryUser		= B100FrameParts.JLabelSet(540,250, 40,20,"を含む"	,10,0);	
+		JLabel LB2_SearchUpdateUser		= B100FrameParts.JLabelSet(540,275, 40,20,"を含む"	,10,0);	
 		
 		
-		JLabel LB2_SearchPlanQty		= B00110FrameParts.JLabelSet(850, 25, 20,20,"～"		,10,2);
-		JLabel LB2_SearchActualQty		= B00110FrameParts.JLabelSet(850, 50, 20,20,"～"		,10,2);
-		JLabel LB2_SearchSpName			= B00110FrameParts.JLabelSet(880,100, 40,20,"を含む"	,10,0);
-		JLabel LB2_SearchSpPost			= B00110FrameParts.JLabelSet(880,125, 40,20,"で始る"	,10,0);
-		JLabel LB2_SearchSpAdd			= B00110FrameParts.JLabelSet(880,150, 40,20,"を含む"	,10,0);
-		JLabel LB2_SearchSpTel			= B00110FrameParts.JLabelSet(880,175, 40,20,"を含む"	,10,0);
-		JLabel LB2_SearchEntryDate		= B00110FrameParts.JLabelSet(930,250, 20,20,"～"		,10,2);
-		JLabel LB2_SearchUpdateDate		= B00110FrameParts.JLabelSet(930,275, 20,20,"～"		,10,2);
+		JLabel LB2_SearchPlanQty		= B100FrameParts.JLabelSet(850, 25, 20,20,"～"		,10,2);
+		JLabel LB2_SearchActualQty		= B100FrameParts.JLabelSet(850, 50, 20,20,"～"		,10,2);
+		JLabel LB2_SearchSpName			= B100FrameParts.JLabelSet(880,100, 40,20,"を含む"	,10,0);
+		JLabel LB2_SearchSpPost			= B100FrameParts.JLabelSet(880,125, 40,20,"で始る"	,10,0);
+		JLabel LB2_SearchSpAdd			= B100FrameParts.JLabelSet(880,150, 40,20,"を含む"	,10,0);
+		JLabel LB2_SearchSpTel			= B100FrameParts.JLabelSet(880,175, 40,20,"を含む"	,10,0);
+		JLabel LB2_SearchEntryDate		= B100FrameParts.JLabelSet(930,250, 20,20,"～"		,10,2);
+		JLabel LB2_SearchUpdateDate		= B100FrameParts.JLabelSet(930,275, 20,20,"～"		,10,2);
 		
-		JLabel LB_ArrNoAny	= B00110FrameParts.JLabelSet(  950, 25,200,20,"入荷予定No複数指定",10,2);
-		final JTextArea TB_ArrNoAny	= B00110FrameParts.JTextAreaSet(11);
-		JScrollPane SPArrNoAny 	= B00110FrameParts.JScrollPaneSet(950,50,200,175,TB_ArrNoAny);
+		JLabel LB_ArrNoAny	= B100FrameParts.JLabelSet(  950, 25,200,20,"入荷予定No複数指定",10,2);
+		final JTextArea TB_ArrNoAny	= B100FrameParts.JTextAreaSet(11);
+		JScrollPane SPArrNoAny 	= B100FrameParts.JScrollPaneSet(950,50,200,175,TB_ArrNoAny);
 		PN_Search.add(LB_ArrNoAny);
 		PN_Search.add(SPArrNoAny);
 		
 		//予定日進む戻るボタン
-		JButton SearchPlanDateMinAfterBtn	= B00110FrameParts.BtnSet(170,175, 40,10,"▲",6);
-		JButton SearchPlanDateMinBeforeBtn	= B00110FrameParts.BtnSet(170,185, 40,10,"▼",6);
-		JButton SearchPlanDateMaxAfterBtn	= B00110FrameParts.BtnSet(300,175, 40,10,"▲",6);
-		JButton SearchPlanDateMaxBeforeBtn	= B00110FrameParts.BtnSet(300,185, 40,10,"▼",6);
+		JButton SearchPlanDateMinAfterBtn	= B100FrameParts.BtnSet(170,175, 40,10,"▲",6);
+		JButton SearchPlanDateMinBeforeBtn	= B100FrameParts.BtnSet(170,185, 40,10,"▼",6);
+		JButton SearchPlanDateMaxAfterBtn	= B100FrameParts.BtnSet(300,175, 40,10,"▲",6);
+		JButton SearchPlanDateMaxBeforeBtn	= B100FrameParts.BtnSet(300,185, 40,10,"▼",6);
 		PN_Search.add(SearchPlanDateMinAfterBtn);
 		PN_Search.add(SearchPlanDateMinBeforeBtn);
 		PN_Search.add(SearchPlanDateMaxAfterBtn);
@@ -173,65 +173,65 @@ public class WT0001000ArrivalPlanSearch{
 		//予定日進む戻るボタン押下事の挙動
 		SearchPlanDateMinAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchPlanDateMin.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchPlanDateMin.setText(SetDate);
 			}
 		});
 		SearchPlanDateMinBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchPlanDateMin.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchPlanDateMin.setText(SetDate);
 			}
 		});
 		SearchPlanDateMaxAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchPlanDateMax.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchPlanDateMax.setText(SetDate);
 			}
 		});
 		SearchPlanDateMaxBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchPlanDateMax.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchPlanDateMax.setText(SetDate);
 			}
 		});
 		//実績日進む戻るボタン
-		JButton SearchHdActualDateMinAfterBtn		= B00110FrameParts.BtnSet(170,200, 40,10,"▲",6);
-		JButton SearchHdActualDateMinBeforeBtn	= B00110FrameParts.BtnSet(170,210, 40,10,"▼",6);
-		JButton SearchHdActualDateMaxAfterBtn		= B00110FrameParts.BtnSet(300,200, 40,10,"▲",6);
-		JButton SearchHdActualDateMaxBeforeBtn	= B00110FrameParts.BtnSet(300,210, 40,10,"▼",6);
+		JButton SearchHdActualDateMinAfterBtn		= B100FrameParts.BtnSet(170,200, 40,10,"▲",6);
+		JButton SearchHdActualDateMinBeforeBtn	= B100FrameParts.BtnSet(170,210, 40,10,"▼",6);
+		JButton SearchHdActualDateMaxAfterBtn		= B100FrameParts.BtnSet(300,200, 40,10,"▲",6);
+		JButton SearchHdActualDateMaxBeforeBtn	= B100FrameParts.BtnSet(300,210, 40,10,"▼",6);
 		PN_Search.add(SearchHdActualDateMinAfterBtn);
 		PN_Search.add(SearchHdActualDateMinBeforeBtn);
 		PN_Search.add(SearchHdActualDateMaxAfterBtn);
@@ -239,66 +239,66 @@ public class WT0001000ArrivalPlanSearch{
 		//実績日進む戻るボタン押下事の挙動
 		SearchHdActualDateMinAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchHdActualDateMin.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchHdActualDateMin.setText(SetDate);
 			}
 		});
 		SearchHdActualDateMinBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchHdActualDateMin.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchHdActualDateMin.setText(SetDate);
 			}
 		});
 		SearchHdActualDateMaxAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchHdActualDateMax.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchHdActualDateMax.setText(SetDate);
 			}
 		});
 		SearchHdActualDateMaxBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchHdActualDateMax.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchHdActualDateMax.setText(SetDate);
 			}
 		});
 		
 		//賞味期限日進む戻るボタン
-		JButton SearchExpDateMinAfterBtn	= B00110FrameParts.BtnSet(510,175, 40,10,"▲",6);
-		JButton SearchExpDateMinBeforeBtn	= B00110FrameParts.BtnSet(510,185, 40,10,"▼",6);
-		JButton SearchExpDateMaxAfterBtn	= B00110FrameParts.BtnSet(640,175, 40,10,"▲",6);
-		JButton SearchExpDateMaxBeforeBtn	= B00110FrameParts.BtnSet(640,185, 40,10,"▼",6);
+		JButton SearchExpDateMinAfterBtn	= B100FrameParts.BtnSet(510,175, 40,10,"▲",6);
+		JButton SearchExpDateMinBeforeBtn	= B100FrameParts.BtnSet(510,185, 40,10,"▼",6);
+		JButton SearchExpDateMaxAfterBtn	= B100FrameParts.BtnSet(640,175, 40,10,"▲",6);
+		JButton SearchExpDateMaxBeforeBtn	= B100FrameParts.BtnSet(640,185, 40,10,"▼",6);
 		PN_Search.add(SearchExpDateMinAfterBtn);
 		PN_Search.add(SearchExpDateMinBeforeBtn);
 		PN_Search.add(SearchExpDateMaxAfterBtn);
@@ -306,66 +306,66 @@ public class WT0001000ArrivalPlanSearch{
 		//賞味期限日進む戻るボタン押下事の挙動
 		SearchExpDateMinAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchExpDateMin.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchExpDateMin.setText(SetDate);
 			}
 		});
 		SearchExpDateMinBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchExpDateMin.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchExpDateMin.setText(SetDate);
 			}
 		});
 		SearchExpDateMaxAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchExpDateMax.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchExpDateMax.setText(SetDate);
 			}
 		});
 		SearchExpDateMaxBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchExpDateMax.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchExpDateMax.setText(SetDate);
 			}
 		});
 		
 		//明細実績日進む戻るボタン
-		JButton SearchActualDateMinAfterBtn		= B00110FrameParts.BtnSet(510,200, 40,10,"▲",6);
-		JButton SearchActualDateMinBeforeBtn	= B00110FrameParts.BtnSet(510,210, 40,10,"▼",6);
-		JButton SearchActualDateMaxAfterBtn		= B00110FrameParts.BtnSet(640,200, 40,10,"▲",6);
-		JButton SearchActualDateMaxBeforeBtn	= B00110FrameParts.BtnSet(640,210, 40,10,"▼",6);
+		JButton SearchActualDateMinAfterBtn		= B100FrameParts.BtnSet(510,200, 40,10,"▲",6);
+		JButton SearchActualDateMinBeforeBtn	= B100FrameParts.BtnSet(510,210, 40,10,"▼",6);
+		JButton SearchActualDateMaxAfterBtn		= B100FrameParts.BtnSet(640,200, 40,10,"▲",6);
+		JButton SearchActualDateMaxBeforeBtn	= B100FrameParts.BtnSet(640,210, 40,10,"▼",6);
 		PN_Search.add(SearchActualDateMinAfterBtn);
 		PN_Search.add(SearchActualDateMinBeforeBtn);
 		PN_Search.add(SearchActualDateMaxAfterBtn);
@@ -373,56 +373,56 @@ public class WT0001000ArrivalPlanSearch{
 		//明細実績日進む戻るボタン押下事の挙動
 		SearchActualDateMinAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchActualDateMin.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchActualDateMin.setText(SetDate);
 			}
 		});
 		SearchActualDateMinBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchActualDateMin.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchActualDateMin.setText(SetDate);
 			}
 		});
 		SearchActualDateMaxAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchActualDateMax.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchActualDateMax.setText(SetDate);
 			}
 		});
 		SearchActualDateMaxBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_SearchActualDateMax.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_SearchActualDateMax.setText(SetDate);
 			}
@@ -527,11 +527,11 @@ public class WT0001000ArrivalPlanSearch{
 		TB_SearchClGpCD.setEnabled(false);		//ヘッダ荷主グループCD
 		
 		//検索ボタン
-		JButton SearchBtn 		= B00110FrameParts.BtnSet(100,275,100,20,"検索",11);
+		JButton SearchBtn 		= B100FrameParts.BtnSet(100,275,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		//条件クリアボタン
-		JButton SearchCrearBtn 	= B00110FrameParts.BtnSet(100,0,100,20,"条件クリア",10);
+		JButton SearchCrearBtn 	= B100FrameParts.BtnSet(100,0,100,20,"条件クリア",10);
 		PN_Search.add(SearchCrearBtn);
 		
 		Object[][] RtArrivalPlanHdRt = T00016ArrivalPlanHdRt.RtArrivalPlanHdRt();
@@ -544,10 +544,10 @@ public class WT0001000ArrivalPlanSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -564,13 +564,13 @@ public class WT0001000ArrivalPlanSearch{
 		
 		for(int i=0;i<RtArrivalPlanHdRt.length;i++) {
 			if("int".equals((String)RtArrivalPlanHdRt[i][2])||"float".equals((String)RtArrivalPlanHdRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,350,1160,275,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,350,1160,275,tb01);
 		main_fm.add(scpn01);
 		
 		PN_Search.add(PN_SearchLabel);
@@ -578,40 +578,40 @@ public class WT0001000ArrivalPlanSearch{
 		
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//一括新規ボタン
-		JButton SomeCreateBtn = B00110FrameParts.BtnSet(	370,660,100,20,"一括新規",11);
+		JButton SomeCreateBtn = B100FrameParts.BtnSet(	370,660,100,20,"一括新規",11);
 		main_fm.add(SomeCreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		490,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		490,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	610,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	610,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
-		final JCheckBox PlanListTgtAll = B00110FrameParts.JCheckBoxSet(730,640,220,20,"発行済分も対象にして",11);
+		final JCheckBox PlanListTgtAll = B100FrameParts.JCheckBoxSet(730,640,220,20,"発行済分も対象にして",11);
 		main_fm.add(PlanListTgtAll);
 		//入荷予定票発行
-		JButton PlanListBtn = B00110FrameParts.BtnSet(		730,660,100,20,"予定票発行",11);
+		JButton PlanListBtn = B100FrameParts.BtnSet(		730,660,100,20,"予定票発行",11);
 		main_fm.add(PlanListBtn);
 		
 		//貼札発行
-		JButton PlanPosterBtn = B00110FrameParts.BtnSet(	850,660,100,20,"貼札発行",11);
+		JButton PlanPosterBtn = B100FrameParts.BtnSet(	850,660,100,20,"貼札発行",11);
 		main_fm.add(PlanPosterBtn);
 		
 		RenewFg = true;
@@ -622,8 +622,8 @@ public class WT0001000ArrivalPlanSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					String TgtWhCd = B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];
-					String TgtClCd = B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];
+					String TgtWhCd = B100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];
+					String TgtClCd = B100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];
 					ArrayList<String> ArrNoList = new ArrayList<String>();
 					boolean NewPrintOnly = true;
 					if(PlanListTgtAll.isSelected()) {NewPrintOnly=false;}
@@ -644,8 +644,8 @@ public class WT0001000ArrivalPlanSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					String TgtWhCd = B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];
-					String TgtClCd = B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];
+					String TgtWhCd = B100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];
+					String TgtClCd = B100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];
 					ArrayList<String> ArrNoList = new ArrayList<String>();
 					boolean NewPrintOnly = true;
 					if(PlanListTgtAll.isSelected()) {NewPrintOnly=false;}
@@ -673,10 +673,10 @@ public class WT0001000ArrivalPlanSearch{
 					/**************************************************************
 					検索条件取得
 					***************************************************************/
-					String GetSearchClWh			= B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];			//ヘッダ担当倉庫
-					String GetSearchClCd			= B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];			//ヘッダ荷主CD
-					String GetSearchClGpCD			= B00100DefaultVariable.SearchClGpList[1][TB_SearchClGpCD.getSelectedIndex()];		//ヘッダ荷主グループCD
-					String GetSearchSpCd			= B00100DefaultVariable.SearchSupplierList[1][TB_SearchSpCd.getSelectedIndex()];		//ヘッダ仕入先　
+					String GetSearchClWh			= B100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];			//ヘッダ担当倉庫
+					String GetSearchClCd			= B100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];			//ヘッダ荷主CD
+					String GetSearchClGpCD			= B100DefaultVariable.SearchClGpList[1][TB_SearchClGpCD.getSelectedIndex()];		//ヘッダ荷主グループCD
+					String GetSearchSpCd			= B100DefaultVariable.SearchSupplierList[1][TB_SearchSpCd.getSelectedIndex()];		//ヘッダ仕入先　
 					String GetSearchArrNo			= TB_SearchArrNo.getText();				//ヘッダ入荷予定NO
 					String GetSearchClArrNo			= TB_SearchClArrNo.getText();			//ヘッダ荷主予定番号
 					String GetSearchPlanDateMin		= TB_SearchPlanDateMin.getText();		//ヘッダ入荷予定日
@@ -707,64 +707,64 @@ public class WT0001000ArrivalPlanSearch{
 					String GetSearchSpPost			= TB_SearchSpPost.getText();			//仕入先郵便
 					String GetSearchSpAdd			= TB_SearchSpAdd.getText();				//仕入先住所
 					String GetSearchSpTel			= TB_SearchSpTel.getText();				//仕入先電話
-					String GetSearchFixFg			= B00100DefaultVariable.SearchArryvalFixFgList[1][TB_SearchFixFg.getSelectedIndex()];	//状況 
+					String GetSearchFixFg			= B100DefaultVariable.SearchArryvalFixFgList[1][TB_SearchFixFg.getSelectedIndex()];	//状況 
 					String GetSearchEntryDateMin	= TB_SearchEntryDateMin.getText();		//登録日
 					String GetSearchEntryDateMax	= TB_SearchEntryDateMax.getText();		//登録日
 					String GetSearchUpdateDateMin	= TB_SearchUpdateDateMin.getText();		//更新日
 					String GetSearchUpdateDateMax	= TB_SearchUpdateDateMax.getText();		//更新日
 					
-					GetSearchClWh				= B00020ToolsTextControl.Trim(GetSearchClWh);
-					GetSearchClCd				= B00020ToolsTextControl.Trim(GetSearchClCd);
-					GetSearchClGpCD				= B00020ToolsTextControl.Trim(GetSearchClGpCD);
-					GetSearchSpCd				= B00020ToolsTextControl.Trim(GetSearchSpCd);
-					GetSearchArrNo				= B00020ToolsTextControl.Trim(GetSearchArrNo);
-					GetSearchClArrNo			= B00020ToolsTextControl.Trim(GetSearchClArrNo);
-					GetSearchPlanDateMin		= B00020ToolsTextControl.Trim(GetSearchPlanDateMin);
-					GetSearchPlanDateMax		= B00020ToolsTextControl.Trim(GetSearchPlanDateMax);
-					GetSearchHdActualDateMin	= B00020ToolsTextControl.Trim(GetSearchHdActualDateMin);
-					GetSearchHdActualDateMax	= B00020ToolsTextControl.Trim(GetSearchHdActualDateMax);
-					GetSearchArCom				= B00020ToolsTextControl.Trim(GetSearchArCom);
+					GetSearchClWh				= B100TextControl.Trim(GetSearchClWh);
+					GetSearchClCd				= B100TextControl.Trim(GetSearchClCd);
+					GetSearchClGpCD				= B100TextControl.Trim(GetSearchClGpCD);
+					GetSearchSpCd				= B100TextControl.Trim(GetSearchSpCd);
+					GetSearchArrNo				= B100TextControl.Trim(GetSearchArrNo);
+					GetSearchClArrNo			= B100TextControl.Trim(GetSearchClArrNo);
+					GetSearchPlanDateMin		= B100TextControl.Trim(GetSearchPlanDateMin);
+					GetSearchPlanDateMax		= B100TextControl.Trim(GetSearchPlanDateMax);
+					GetSearchHdActualDateMin	= B100TextControl.Trim(GetSearchHdActualDateMin);
+					GetSearchHdActualDateMax	= B100TextControl.Trim(GetSearchHdActualDateMax);
+					GetSearchArCom				= B100TextControl.Trim(GetSearchArCom);
 					
-					GetSearchItemCd				= B00020ToolsTextControl.Trim(GetSearchItemCd);
-					GetSearchClItemCd			= B00020ToolsTextControl.Trim(GetSearchClItemCd);
-					GetSearchJanCd				= B00020ToolsTextControl.Trim(GetSearchJanCd);
-					GetSearchItemMdNo			= B00020ToolsTextControl.Trim(GetSearchItemMdNo);
-					GetSearchItemName			= B00020ToolsTextControl.Trim(GetSearchItemName);
-					GetSearchlot				= B00020ToolsTextControl.Trim(GetSearchlot);
-					GetSearchExpDateMin			= B00020ToolsTextControl.Trim(GetSearchExpDateMin);
-					GetSearchExpDateMax			= B00020ToolsTextControl.Trim(GetSearchExpDateMax);
-					GetSearchActualDateMin		= B00020ToolsTextControl.Trim(GetSearchActualDateMin);
-					GetSearchActualDateMax		= B00020ToolsTextControl.Trim(GetSearchActualDateMax);
-					GetSearchCom				= B00020ToolsTextControl.Trim(GetSearchCom);
-					GetSearchEntryUser			= B00020ToolsTextControl.Trim(GetSearchEntryUser);
-					GetSearchUpdateUser			= B00020ToolsTextControl.Trim(GetSearchUpdateUser);
+					GetSearchItemCd				= B100TextControl.Trim(GetSearchItemCd);
+					GetSearchClItemCd			= B100TextControl.Trim(GetSearchClItemCd);
+					GetSearchJanCd				= B100TextControl.Trim(GetSearchJanCd);
+					GetSearchItemMdNo			= B100TextControl.Trim(GetSearchItemMdNo);
+					GetSearchItemName			= B100TextControl.Trim(GetSearchItemName);
+					GetSearchlot				= B100TextControl.Trim(GetSearchlot);
+					GetSearchExpDateMin			= B100TextControl.Trim(GetSearchExpDateMin);
+					GetSearchExpDateMax			= B100TextControl.Trim(GetSearchExpDateMax);
+					GetSearchActualDateMin		= B100TextControl.Trim(GetSearchActualDateMin);
+					GetSearchActualDateMax		= B100TextControl.Trim(GetSearchActualDateMax);
+					GetSearchCom				= B100TextControl.Trim(GetSearchCom);
+					GetSearchEntryUser			= B100TextControl.Trim(GetSearchEntryUser);
+					GetSearchUpdateUser			= B100TextControl.Trim(GetSearchUpdateUser);
 					
-					GetSearchPlanQtyMin			= B00020ToolsTextControl.Trim(GetSearchPlanQtyMin);
-					GetSearchPlanQtyMax			= B00020ToolsTextControl.Trim(GetSearchPlanQtyMax);
-					GetSearchActualQtyMin		= B00020ToolsTextControl.Trim(GetSearchActualQtyMin);
-					GetSearchActualQtyMax		= B00020ToolsTextControl.Trim(GetSearchActualQtyMax);
-					GetSearchSpName				= B00020ToolsTextControl.Trim(GetSearchSpName);
-					GetSearchSpPost				= B00020ToolsTextControl.Trim(GetSearchSpPost);
-					GetSearchSpAdd				= B00020ToolsTextControl.Trim(GetSearchSpAdd);
-					GetSearchSpTel				= B00020ToolsTextControl.Trim(GetSearchSpTel);
-					GetSearchFixFg				= B00020ToolsTextControl.Trim(GetSearchFixFg);
-					GetSearchEntryDateMin		= B00020ToolsTextControl.Trim(GetSearchEntryDateMin);
-					GetSearchEntryDateMax		= B00020ToolsTextControl.Trim(GetSearchEntryDateMax);
-					GetSearchUpdateDateMin		= B00020ToolsTextControl.Trim(GetSearchUpdateDateMin);
-					GetSearchUpdateDateMax		= B00020ToolsTextControl.Trim(GetSearchUpdateDateMax);
+					GetSearchPlanQtyMin			= B100TextControl.Trim(GetSearchPlanQtyMin);
+					GetSearchPlanQtyMax			= B100TextControl.Trim(GetSearchPlanQtyMax);
+					GetSearchActualQtyMin		= B100TextControl.Trim(GetSearchActualQtyMin);
+					GetSearchActualQtyMax		= B100TextControl.Trim(GetSearchActualQtyMax);
+					GetSearchSpName				= B100TextControl.Trim(GetSearchSpName);
+					GetSearchSpPost				= B100TextControl.Trim(GetSearchSpPost);
+					GetSearchSpAdd				= B100TextControl.Trim(GetSearchSpAdd);
+					GetSearchSpTel				= B100TextControl.Trim(GetSearchSpTel);
+					GetSearchFixFg				= B100TextControl.Trim(GetSearchFixFg);
+					GetSearchEntryDateMin		= B100TextControl.Trim(GetSearchEntryDateMin);
+					GetSearchEntryDateMax		= B100TextControl.Trim(GetSearchEntryDateMax);
+					GetSearchUpdateDateMin		= B100TextControl.Trim(GetSearchUpdateDateMin);
+					GetSearchUpdateDateMax		= B100TextControl.Trim(GetSearchUpdateDateMax);
 					
-					if(!"".equals(GetSearchPlanQtyMin	)){GetSearchPlanQtyMin		= B00020ToolsTextControl.num_only_String02(GetSearchPlanQtyMin);}
-					if(!"".equals(GetSearchPlanQtyMax	)){GetSearchPlanQtyMax		= B00020ToolsTextControl.num_only_String02(GetSearchPlanQtyMax);}
-					if(!"".equals(GetSearchActualQtyMin	)){GetSearchActualQtyMin	= B00020ToolsTextControl.num_only_String02(GetSearchActualQtyMin);}
-					if(!"".equals(GetSearchActualQtyMax	)){GetSearchActualQtyMax	= B00020ToolsTextControl.num_only_String02(GetSearchActualQtyMax);}
-					if(!"".equals(GetSearchFixFg		)){GetSearchFixFg			= B00020ToolsTextControl.num_only_String02(GetSearchFixFg);}
+					if(!"".equals(GetSearchPlanQtyMin	)){GetSearchPlanQtyMin		= B100TextControl.num_only_String02(GetSearchPlanQtyMin);}
+					if(!"".equals(GetSearchPlanQtyMax	)){GetSearchPlanQtyMax		= B100TextControl.num_only_String02(GetSearchPlanQtyMax);}
+					if(!"".equals(GetSearchActualQtyMin	)){GetSearchActualQtyMin	= B100TextControl.num_only_String02(GetSearchActualQtyMin);}
+					if(!"".equals(GetSearchActualQtyMax	)){GetSearchActualQtyMax	= B100TextControl.num_only_String02(GetSearchActualQtyMax);}
+					if(!"".equals(GetSearchFixFg		)){GetSearchFixFg			= B100TextControl.num_only_String02(GetSearchFixFg);}
 					
 					String WST = TB_ArrNoAny.getText();
 					if(null==WST) {WST="";}
 					String[] GetArrNoAny	= WST.split("\n");
 					for(int i=0;i<GetArrNoAny.length;i++) {
-						GetArrNoAny[i]	= B00020ToolsTextControl.Trim(GetArrNoAny[i]);
-						GetArrNoAny[i]	= B00020ToolsTextControl.num_only_String(GetArrNoAny[i]);
+						GetArrNoAny[i]	= B100TextControl.Trim(GetArrNoAny[i]);
+						GetArrNoAny[i]	= B100TextControl.num_only_String(GetArrNoAny[i]);
 					}
 					
 					ArrayList<String> SearchClWh 			= new ArrayList<String>();		//ヘッダ担当倉庫
@@ -900,7 +900,7 @@ public class WT0001000ArrivalPlanSearch{
 							AllSearch);
 					
 					if(0==ArrivalPlanHdRt.length) {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}else {
 						for(int i=0;i<ArrivalPlanHdRt.length;i++) {
 							Object[] SetOb = new Object[ArrivalPlanHdRt[i].length+1];
@@ -910,7 +910,7 @@ public class WT0001000ArrivalPlanSearch{
 							}
 							tableModel_ms01.addRow(SetOb);
 						}
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}
@@ -926,9 +926,9 @@ public class WT0001000ArrivalPlanSearch{
 					/**************************************************************
 					検索条件初期値に戻す
 					***************************************************************/
-					TB_SearchClWh.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchWhList[1]	,A00000Main.ClWh));			//ヘッダ担当倉庫
-					TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B00100DefaultVariable.SearchClList[1]	,A00000Main.ClCd));			//ヘッダ荷主CD
-					TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B00100DefaultVariable.SearchClGpList[1]	,A00000Main.ClGp));			//ヘッダ荷主グループCD
+					TB_SearchClWh.setSelectedIndex(		GetSelectIndex(B100DefaultVariable.SearchWhList[1]	,A00000Main.ClWh));			//ヘッダ担当倉庫
+					TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B100DefaultVariable.SearchClList[1]	,A00000Main.ClCd));			//ヘッダ荷主CD
+					TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B100DefaultVariable.SearchClGpList[1]	,A00000Main.ClGp));			//ヘッダ荷主グループCD
 					TB_SearchSpCd.setSelectedIndex(0);			//ヘッダ仕入先
 					TB_SearchArrNo.setText("");					//ヘッダ入荷予定NO
 					TB_SearchClArrNo.setText("");				//ヘッダ荷主予定番号
@@ -972,7 +972,7 @@ public class WT0001000ArrivalPlanSearch{
 					for(int i=0;i<RowCount;i++) {
 						tableModel_ms01.removeRow(0);
 					}
-					B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+					B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					RenewFg = true;
 				}
 			}
@@ -1018,7 +1018,7 @@ public class WT0001000ArrivalPlanSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","入荷予定検（ヘッダ）検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","入荷予定検（ヘッダ）検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -1029,7 +1029,7 @@ public class WT0001000ArrivalPlanSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","入荷予定（ヘッダ）検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","入荷予定（ヘッダ）検索結果",tb01);
 					RenewFg = true;
 				}
 			}

@@ -32,75 +32,75 @@ public class WM00080ItemMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,1300,750,"Corgi00商品マスタ検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,1300,750,"Corgi00商品マスタ検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,1280,220,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,1280,220,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		
 		//検索条件
-		JLabel LB_SearchClGpCd  						= B00110FrameParts.JLabelSet(		  0, 25,130,20,"荷主グループコード:"	,11,1);
-		final JComboBox   TB_SearchClGpCd				= B00110FrameParts.JComboBoxSet(	130, 25,180,20,B00100DefaultVariable.SearchClGpList[0],11);	//荷主グループコード
-		JLabel LB_SearchItemCd  						= B00110FrameParts.JLabelSet(		  0, 50,130,20,"商品コード:"			,11,1);
-		final JTextField TB_SearchItemCd  				= B00110FrameParts.JTextFieldSet(	130, 50,100,20,""						,11,0);	//商品コード
-		JLabel LB2_SearchItemCd  						= B00110FrameParts.JLabelSet(		230, 50, 80,20,"と一致"					,11,0);	//商品コード
-		JLabel LB_SearchCLItemCd  						= B00110FrameParts.JLabelSet(		  0, 75,130,20,"荷主商品コード:"		,11,1);
-		final JTextField TB_SearchCLItemCd  			= B00110FrameParts.JTextFieldSet(	130, 75,100,20,""						,11,0);	//荷主商品コード
-		JLabel LB2_SearchCLItemCd  						= B00110FrameParts.JLabelSet(		230, 75, 80,20,"と一致"					,11,0);	//荷主商品コード
-		JLabel LB_SearchItemName  						= B00110FrameParts.JLabelSet(		  0,100,130,20,"商品名:"				,11,1);
-		final JTextField TB_SearchItemName  			= B00110FrameParts.JTextFieldSet(	130,100,100,20,""						,11,0);	//商品名
-		JLabel LB2_SearchItemName  						= B00110FrameParts.JLabelSet(		230,100, 80,20,"を含む"					,11,0);	//商品名
-		JLabel LB_SearchJanCd  							= B00110FrameParts.JLabelSet(		  0,125,130,20,"JANCD:"					,11,1);
-		final JTextField TB_SearchJanCd  				= B00110FrameParts.JTextFieldSet(	130,125,100,20,""						,11,0);	//JANCD
-		JLabel LB2_SearchJanCd  						= B00110FrameParts.JLabelSet(		230,125, 80,20,"と一致"					,11,0);	//JANCD
-		JLabel LB_SearchDelFg  							= B00110FrameParts.JLabelSet(		  0,150,130,20,"削除区分:"				,11,1);
-		final JComboBox   TB_SearchDelFg				= B00110FrameParts.JComboBoxSet(	130,150,180,20,B00100DefaultVariable.SearchDelList[0],11);	//削除区分
+		JLabel LB_SearchClGpCd  						= B100FrameParts.JLabelSet(		  0, 25,130,20,"荷主グループコード:"	,11,1);
+		final JComboBox   TB_SearchClGpCd				= B100FrameParts.JComboBoxSet(	130, 25,180,20,B100DefaultVariable.SearchClGpList[0],11);	//荷主グループコード
+		JLabel LB_SearchItemCd  						= B100FrameParts.JLabelSet(		  0, 50,130,20,"商品コード:"			,11,1);
+		final JTextField TB_SearchItemCd  				= B100FrameParts.JTextFieldSet(	130, 50,100,20,""						,11,0);	//商品コード
+		JLabel LB2_SearchItemCd  						= B100FrameParts.JLabelSet(		230, 50, 80,20,"と一致"					,11,0);	//商品コード
+		JLabel LB_SearchCLItemCd  						= B100FrameParts.JLabelSet(		  0, 75,130,20,"荷主商品コード:"		,11,1);
+		final JTextField TB_SearchCLItemCd  			= B100FrameParts.JTextFieldSet(	130, 75,100,20,""						,11,0);	//荷主商品コード
+		JLabel LB2_SearchCLItemCd  						= B100FrameParts.JLabelSet(		230, 75, 80,20,"と一致"					,11,0);	//荷主商品コード
+		JLabel LB_SearchItemName  						= B100FrameParts.JLabelSet(		  0,100,130,20,"商品名:"				,11,1);
+		final JTextField TB_SearchItemName  			= B100FrameParts.JTextFieldSet(	130,100,100,20,""						,11,0);	//商品名
+		JLabel LB2_SearchItemName  						= B100FrameParts.JLabelSet(		230,100, 80,20,"を含む"					,11,0);	//商品名
+		JLabel LB_SearchJanCd  							= B100FrameParts.JLabelSet(		  0,125,130,20,"JANCD:"					,11,1);
+		final JTextField TB_SearchJanCd  				= B100FrameParts.JTextFieldSet(	130,125,100,20,""						,11,0);	//JANCD
+		JLabel LB2_SearchJanCd  						= B100FrameParts.JLabelSet(		230,125, 80,20,"と一致"					,11,0);	//JANCD
+		JLabel LB_SearchDelFg  							= B100FrameParts.JLabelSet(		  0,150,130,20,"削除区分:"				,11,1);
+		final JComboBox   TB_SearchDelFg				= B100FrameParts.JComboBoxSet(	130,150,180,20,B100DefaultVariable.SearchDelList[0],11);	//削除区分
 		
-		JLabel LB_SearchDeliveryTypeCd01  				= B00110FrameParts.JLabelSet(		310, 25,130,20,"運送タイプコード01:"	,11,1);
-		final JComboBox   TB_SearchDeliveryTypeCd01  	= B00110FrameParts.JComboBoxSet(	440, 25,180,20,B00100DefaultVariable.SearchDeliveryType01[0],11);	//運送タイプコード01
-		JLabel LB_SearchDeliveryTypeCd02  				= B00110FrameParts.JLabelSet(		310, 50,130,20,"運送タイプコード02:"	,11,1);
-		final JComboBox   TB_SearchDeliveryTypeCd02  	= B00110FrameParts.JComboBoxSet(	440, 50,180,20,B00100DefaultVariable.SearchDeliveryType02[0],11);	//運送タイプコード02
-		JLabel LB_SearchDeliveryTypeCd03  				= B00110FrameParts.JLabelSet(		310, 75,130,20,"運送タイプコード03:"	,11,1);
-		final JComboBox   TB_SearchDeliveryTypeCd03  	= B00110FrameParts.JComboBoxSet(	440, 75,180,20,B00100DefaultVariable.SearchDeliveryType03[0],11);	//運送タイプコード03
-		JLabel LB_SearchDeliveryTypeCd04  				= B00110FrameParts.JLabelSet(		310,100,130,20,"運送タイプコード04:"	,11,1);
-		final JComboBox   TB_SearchDeliveryTypeCd04  	= B00110FrameParts.JComboBoxSet(	440,100,180,20,B00100DefaultVariable.SearchDeliveryType04[0],11);	//運送タイプコード04
-		JLabel LB_SearchDeliveryTypeCd05  				= B00110FrameParts.JLabelSet(		310,125,130,20,"運送タイプコード05:"	,11,1);
-		final JComboBox   TB_SearchDeliveryTypeCd05  	= B00110FrameParts.JComboBoxSet(	440,125,180,20,B00100DefaultVariable.SearchDeliveryType05[0],11);	//運送タイプコード05
-		JLabel LB_SearchTildFG  						= B00110FrameParts.JLabelSet(		310,150,130,20,"温度区分:"				,11,1);
-		final JComboBox   TB_SearchTildFG				= B00110FrameParts.JComboBoxSet(	440,150,180,20,B00100DefaultVariable.SearchTildFG[0],11);				//温度区分
-		JLabel LB_SearchTildName  						= B00110FrameParts.JLabelSet(		310,175,130,20,"温度区分名:"			,11,1);
-		final JTextField TB_SearchTildName  			= B00110FrameParts.JTextFieldSet(	440,175,100,20,""						,11,0);	//温度区分名
-		JLabel LB2_SearchTildName  						= B00110FrameParts.JLabelSet(		540,175, 80,20,"を含む"					,11,0);	//温度区分名
+		JLabel LB_SearchDeliveryTypeCd01  				= B100FrameParts.JLabelSet(		310, 25,130,20,"運送タイプコード01:"	,11,1);
+		final JComboBox   TB_SearchDeliveryTypeCd01  	= B100FrameParts.JComboBoxSet(	440, 25,180,20,B100DefaultVariable.SearchDeliveryType01[0],11);	//運送タイプコード01
+		JLabel LB_SearchDeliveryTypeCd02  				= B100FrameParts.JLabelSet(		310, 50,130,20,"運送タイプコード02:"	,11,1);
+		final JComboBox   TB_SearchDeliveryTypeCd02  	= B100FrameParts.JComboBoxSet(	440, 50,180,20,B100DefaultVariable.SearchDeliveryType02[0],11);	//運送タイプコード02
+		JLabel LB_SearchDeliveryTypeCd03  				= B100FrameParts.JLabelSet(		310, 75,130,20,"運送タイプコード03:"	,11,1);
+		final JComboBox   TB_SearchDeliveryTypeCd03  	= B100FrameParts.JComboBoxSet(	440, 75,180,20,B100DefaultVariable.SearchDeliveryType03[0],11);	//運送タイプコード03
+		JLabel LB_SearchDeliveryTypeCd04  				= B100FrameParts.JLabelSet(		310,100,130,20,"運送タイプコード04:"	,11,1);
+		final JComboBox   TB_SearchDeliveryTypeCd04  	= B100FrameParts.JComboBoxSet(	440,100,180,20,B100DefaultVariable.SearchDeliveryType04[0],11);	//運送タイプコード04
+		JLabel LB_SearchDeliveryTypeCd05  				= B100FrameParts.JLabelSet(		310,125,130,20,"運送タイプコード05:"	,11,1);
+		final JComboBox   TB_SearchDeliveryTypeCd05  	= B100FrameParts.JComboBoxSet(	440,125,180,20,B100DefaultVariable.SearchDeliveryType05[0],11);	//運送タイプコード05
+		JLabel LB_SearchTildFG  						= B100FrameParts.JLabelSet(		310,150,130,20,"温度区分:"				,11,1);
+		final JComboBox   TB_SearchTildFG				= B100FrameParts.JComboBoxSet(	440,150,180,20,B100DefaultVariable.SearchTildFG[0],11);				//温度区分
+		JLabel LB_SearchTildName  						= B100FrameParts.JLabelSet(		310,175,130,20,"温度区分名:"			,11,1);
+		final JTextField TB_SearchTildName  			= B100FrameParts.JTextFieldSet(	440,175,100,20,""						,11,0);	//温度区分名
+		JLabel LB2_SearchTildName  						= B100FrameParts.JLabelSet(		540,175, 80,20,"を含む"					,11,0);	//温度区分名
 		
-		JLabel LB_SearchItemMDNo  						= B00110FrameParts.JLabelSet(		620, 25,130,20,"商品モデル番号（型番）:",11,1);
-		final JTextField TB_SearchItemMDNo  			= B00110FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//商品モデル番号（型番）
-		JLabel LB2_SearchItemMDNo  						= B00110FrameParts.JLabelSet(		850, 25, 80,20,"と一致"					,11,0);	//商品モデル番号（型番）
-		JLabel LB_SearchCategoryCd  					= B00110FrameParts.JLabelSet(		620, 50,130,20,"商品カテゴリCD:"		,11,1);
-		final JTextField TB_SearchCategoryCd  			= B00110FrameParts.JTextFieldSet(	750, 50,100,20,""						,11,0);	//商品カテゴリCD
-		JLabel LB2_SearchCategoryCd  					= B00110FrameParts.JLabelSet(		850, 50, 80,20,"と一致"					,11,0);	//商品カテゴリCD
-		JLabel LB_SearchCategoryName 	 				= B00110FrameParts.JLabelSet(		620, 75,130,20,"商品カテゴリ名:"		,11,1);
-		final JTextField TB_SearchCategoryName 	 		= B00110FrameParts.JTextFieldSet(	750, 75,100,20,""						,11,0);	//商品カテゴリ名
-		JLabel LB2_SearchCategoryName 	 				= B00110FrameParts.JLabelSet(		850, 75, 80,20,"を含む"					,11,0);	//商品カテゴリ名
-		JLabel LB_SearchItemColorCd  					= B00110FrameParts.JLabelSet(		620,100,130,20,"商品カラーコード:"		,11,1);
-		final JTextField TB_SearchItemColorCd  			= B00110FrameParts.JTextFieldSet(	750,100,100,20,""						,11,0);	//商品カラーコード
-		JLabel LB2_SearchItemColorCd  					= B00110FrameParts.JLabelSet(		850,100, 80,20,"と一致"					,11,0);	//商品カラーコード
-		JLabel LB_SearchItemColorName  					= B00110FrameParts.JLabelSet(		620,125,130,20,"商品カラー名:"			,11,1);
-		final JTextField TB_SearchItemColorName  		= B00110FrameParts.JTextFieldSet(	750,125,100,20,""						,11,0);	//商品カラー名
-		JLabel LB2_SearchItemColorName  				= B00110FrameParts.JLabelSet(		850,125, 80,20,"を含む"					,11,0);	//商品カラー名
-		JLabel LB_SearchItemSizeCd  					= B00110FrameParts.JLabelSet(		620,150,130,20,"商品サイズコード:"		,11,1);
-		final JTextField TB_SearchItemSizeCd  			= B00110FrameParts.JTextFieldSet(	750,150,100,20,""						,11,0);	//商品サイズコード
-		JLabel LB2_SearchItemSizeCd  					= B00110FrameParts.JLabelSet(		850,150, 80,20,"と一致"					,11,0);	//商品サイズコード
-		JLabel LB_SearchItemSizeName  					= B00110FrameParts.JLabelSet(		620,175,130,20,"商品サイズ名:"			,11,1);
-		final JTextField TB_SearchItemSizeName  		= B00110FrameParts.JTextFieldSet( 750,175,100,20,""						,11,0);	//商品サイズ名
-		JLabel LB2_SearchItemSizeName  					= B00110FrameParts.JLabelSet(	    850,175, 80,20,"を含む"					,11,0);	//商品サイズ名
+		JLabel LB_SearchItemMDNo  						= B100FrameParts.JLabelSet(		620, 25,130,20,"商品モデル番号（型番）:",11,1);
+		final JTextField TB_SearchItemMDNo  			= B100FrameParts.JTextFieldSet(	750, 25,100,20,""						,11,0);	//商品モデル番号（型番）
+		JLabel LB2_SearchItemMDNo  						= B100FrameParts.JLabelSet(		850, 25, 80,20,"と一致"					,11,0);	//商品モデル番号（型番）
+		JLabel LB_SearchCategoryCd  					= B100FrameParts.JLabelSet(		620, 50,130,20,"商品カテゴリCD:"		,11,1);
+		final JTextField TB_SearchCategoryCd  			= B100FrameParts.JTextFieldSet(	750, 50,100,20,""						,11,0);	//商品カテゴリCD
+		JLabel LB2_SearchCategoryCd  					= B100FrameParts.JLabelSet(		850, 50, 80,20,"と一致"					,11,0);	//商品カテゴリCD
+		JLabel LB_SearchCategoryName 	 				= B100FrameParts.JLabelSet(		620, 75,130,20,"商品カテゴリ名:"		,11,1);
+		final JTextField TB_SearchCategoryName 	 		= B100FrameParts.JTextFieldSet(	750, 75,100,20,""						,11,0);	//商品カテゴリ名
+		JLabel LB2_SearchCategoryName 	 				= B100FrameParts.JLabelSet(		850, 75, 80,20,"を含む"					,11,0);	//商品カテゴリ名
+		JLabel LB_SearchItemColorCd  					= B100FrameParts.JLabelSet(		620,100,130,20,"商品カラーコード:"		,11,1);
+		final JTextField TB_SearchItemColorCd  			= B100FrameParts.JTextFieldSet(	750,100,100,20,""						,11,0);	//商品カラーコード
+		JLabel LB2_SearchItemColorCd  					= B100FrameParts.JLabelSet(		850,100, 80,20,"と一致"					,11,0);	//商品カラーコード
+		JLabel LB_SearchItemColorName  					= B100FrameParts.JLabelSet(		620,125,130,20,"商品カラー名:"			,11,1);
+		final JTextField TB_SearchItemColorName  		= B100FrameParts.JTextFieldSet(	750,125,100,20,""						,11,0);	//商品カラー名
+		JLabel LB2_SearchItemColorName  				= B100FrameParts.JLabelSet(		850,125, 80,20,"を含む"					,11,0);	//商品カラー名
+		JLabel LB_SearchItemSizeCd  					= B100FrameParts.JLabelSet(		620,150,130,20,"商品サイズコード:"		,11,1);
+		final JTextField TB_SearchItemSizeCd  			= B100FrameParts.JTextFieldSet(	750,150,100,20,""						,11,0);	//商品サイズコード
+		JLabel LB2_SearchItemSizeCd  					= B100FrameParts.JLabelSet(		850,150, 80,20,"と一致"					,11,0);	//商品サイズコード
+		JLabel LB_SearchItemSizeName  					= B100FrameParts.JLabelSet(		620,175,130,20,"商品サイズ名:"			,11,1);
+		final JTextField TB_SearchItemSizeName  		= B100FrameParts.JTextFieldSet( 750,175,100,20,""						,11,0);	//商品サイズ名
+		JLabel LB2_SearchItemSizeName  					= B100FrameParts.JLabelSet(	    850,175, 80,20,"を含む"					,11,0);	//商品サイズ名
 		
-		for(int i=0;i<B00100DefaultVariable.SearchClGpList[1].length;i++) {
-			if(A00000Main.ClGp.equals(B00100DefaultVariable.SearchClGpList[1][i])) {
+		for(int i=0;i<B100DefaultVariable.SearchClGpList[1].length;i++) {
+			if(A00000Main.ClGp.equals(B100DefaultVariable.SearchClGpList[1][i])) {
 				TB_SearchClGpCd.setSelectedIndex(i);
 			}
 		}
@@ -166,7 +166,7 @@ public class WM00080ItemMstSearch{
 		PN_Search.add(TB_SearchDelFg);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(1050,175,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(1050,175,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		main_fm.add(PN_Search);
@@ -181,10 +181,10 @@ public class WM00080ItemMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -201,37 +201,37 @@ public class WM00080ItemMstSearch{
 		
 		for(int i=0;i<RtSettingItemMstRt.length;i++) {
 			if("int".equals((String)RtSettingItemMstRt[i][2])||"float".equals((String)RtSettingItemMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,270,1280,350,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,270,1280,350,tb01);
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
 		main_fm.setVisible(true);
@@ -249,18 +249,18 @@ public class WM00080ItemMstSearch{
 						tableModel_ms01.removeRow(0);
 					}
 					
-					String GetSearchClGpCd = B00100DefaultVariable.SearchClGpList[1][TB_SearchClGpCd.getSelectedIndex()];	//荷主グループコード
+					String GetSearchClGpCd = B100DefaultVariable.SearchClGpList[1][TB_SearchClGpCd.getSelectedIndex()];	//荷主グループコード
 					String GetSearchItemCd = TB_SearchItemCd.getText();		//商品コード
 					String GetSearchCLItemCd = TB_SearchCLItemCd.getText();	//荷主商品コード
 					String GetSearchItemName = TB_SearchItemName.getText();	//商品名
 					String GetSearchJanCd = TB_SearchJanCd.getText();		//JANCD
-					String GetSearchDelFg = B00100DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];		//削除区分
-					String GetSearchDeliveryTypeCd01 = B00100DefaultVariable.SearchDeliveryType01[1][TB_SearchDeliveryTypeCd01.getSelectedIndex()];	//運送タイプコード01
-					String GetSearchDeliveryTypeCd02 = B00100DefaultVariable.SearchDeliveryType02[1][TB_SearchDeliveryTypeCd02.getSelectedIndex()];	//運送タイプコード02
-					String GetSearchDeliveryTypeCd03 = B00100DefaultVariable.SearchDeliveryType03[1][TB_SearchDeliveryTypeCd03.getSelectedIndex()];	//運送タイプコード03
-					String GetSearchDeliveryTypeCd04 = B00100DefaultVariable.SearchDeliveryType04[1][TB_SearchDeliveryTypeCd04.getSelectedIndex()];	//運送タイプコード04
-					String GetSearchDeliveryTypeCd05 = B00100DefaultVariable.SearchDeliveryType05[1][TB_SearchDeliveryTypeCd05.getSelectedIndex()];	//運送タイプコード05
-					String GetSearchTildFG = B00100DefaultVariable.SearchTildFG[1][TB_SearchTildFG.getSelectedIndex()];		//温度区分
+					String GetSearchDelFg = B100DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];		//削除区分
+					String GetSearchDeliveryTypeCd01 = B100DefaultVariable.SearchDeliveryType01[1][TB_SearchDeliveryTypeCd01.getSelectedIndex()];	//運送タイプコード01
+					String GetSearchDeliveryTypeCd02 = B100DefaultVariable.SearchDeliveryType02[1][TB_SearchDeliveryTypeCd02.getSelectedIndex()];	//運送タイプコード02
+					String GetSearchDeliveryTypeCd03 = B100DefaultVariable.SearchDeliveryType03[1][TB_SearchDeliveryTypeCd03.getSelectedIndex()];	//運送タイプコード03
+					String GetSearchDeliveryTypeCd04 = B100DefaultVariable.SearchDeliveryType04[1][TB_SearchDeliveryTypeCd04.getSelectedIndex()];	//運送タイプコード04
+					String GetSearchDeliveryTypeCd05 = B100DefaultVariable.SearchDeliveryType05[1][TB_SearchDeliveryTypeCd05.getSelectedIndex()];	//運送タイプコード05
+					String GetSearchTildFG = B100DefaultVariable.SearchTildFG[1][TB_SearchTildFG.getSelectedIndex()];		//温度区分
 					String GetSearchTildName = TB_SearchTildName.getText();				//温度区分名
 					String GetSearchItemMDNo = TB_SearchItemMDNo.getText();				//商品モデル番号（型番）
 					String GetSearchCategoryCd = TB_SearchCategoryCd.getText();			//商品カテゴリCD
@@ -291,26 +291,26 @@ public class WM00080ItemMstSearch{
 					if(null==GetSearchItemSizeCd		) {GetSearchItemSizeCd= "";}		//商品サイズコード
 					if(null==GetSearchItemSizeName		) {GetSearchItemSizeName= "";}		//商品サイズ名
 					
-					GetSearchClGpCd				= B00020ToolsTextControl.Trim(GetSearchClGpCd);		//荷主グループコード
-					GetSearchItemCd				= B00020ToolsTextControl.Trim(GetSearchItemCd);				//商品コード
-					GetSearchCLItemCd			= B00020ToolsTextControl.Trim(GetSearchCLItemCd);			//荷主商品コード
-					GetSearchItemName			= B00020ToolsTextControl.Trim(GetSearchItemName);			//商品名
-					GetSearchJanCd				= B00020ToolsTextControl.Trim(GetSearchJanCd);				//JANCD
-					GetSearchDelFg				= B00020ToolsTextControl.Trim(GetSearchDelFg);				//削除区分
-					GetSearchDeliveryTypeCd01	= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeCd01);	//運送タイプコード01
-					GetSearchDeliveryTypeCd02	= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeCd02);	//運送タイプコード02
-					GetSearchDeliveryTypeCd03	= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeCd03);	//運送タイプコード03
-					GetSearchDeliveryTypeCd04	= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeCd04);	//運送タイプコード04
-					GetSearchDeliveryTypeCd05	= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeCd05);	//運送タイプコード05
-					GetSearchTildFG				= B00020ToolsTextControl.Trim(GetSearchTildFG);				//温度区分
-					GetSearchTildName			= B00020ToolsTextControl.Trim(GetSearchTildName);			//温度区分名
-					GetSearchItemMDNo			= B00020ToolsTextControl.Trim(GetSearchItemMDNo);			//商品モデル番号（型番）
-					GetSearchCategoryCd			= B00020ToolsTextControl.Trim(GetSearchCategoryCd);			//商品カテゴリCD
-					GetSearchCategoryName		= B00020ToolsTextControl.Trim(GetSearchCategoryName);		//商品カテゴリ名
-					GetSearchItemColorCd		= B00020ToolsTextControl.Trim(GetSearchItemColorCd);		//商品カラーコード
-					GetSearchItemColorName		= B00020ToolsTextControl.Trim(GetSearchItemColorName);		//商品カラー名
-					GetSearchItemSizeCd			= B00020ToolsTextControl.Trim(GetSearchItemSizeCd);			//商品サイズコード
-					GetSearchItemSizeName		= B00020ToolsTextControl.Trim(GetSearchItemSizeName);		//商品サイズ名
+					GetSearchClGpCd				= B100TextControl.Trim(GetSearchClGpCd);		//荷主グループコード
+					GetSearchItemCd				= B100TextControl.Trim(GetSearchItemCd);				//商品コード
+					GetSearchCLItemCd			= B100TextControl.Trim(GetSearchCLItemCd);			//荷主商品コード
+					GetSearchItemName			= B100TextControl.Trim(GetSearchItemName);			//商品名
+					GetSearchJanCd				= B100TextControl.Trim(GetSearchJanCd);				//JANCD
+					GetSearchDelFg				= B100TextControl.Trim(GetSearchDelFg);				//削除区分
+					GetSearchDeliveryTypeCd01	= B100TextControl.Trim(GetSearchDeliveryTypeCd01);	//運送タイプコード01
+					GetSearchDeliveryTypeCd02	= B100TextControl.Trim(GetSearchDeliveryTypeCd02);	//運送タイプコード02
+					GetSearchDeliveryTypeCd03	= B100TextControl.Trim(GetSearchDeliveryTypeCd03);	//運送タイプコード03
+					GetSearchDeliveryTypeCd04	= B100TextControl.Trim(GetSearchDeliveryTypeCd04);	//運送タイプコード04
+					GetSearchDeliveryTypeCd05	= B100TextControl.Trim(GetSearchDeliveryTypeCd05);	//運送タイプコード05
+					GetSearchTildFG				= B100TextControl.Trim(GetSearchTildFG);				//温度区分
+					GetSearchTildName			= B100TextControl.Trim(GetSearchTildName);			//温度区分名
+					GetSearchItemMDNo			= B100TextControl.Trim(GetSearchItemMDNo);			//商品モデル番号（型番）
+					GetSearchCategoryCd			= B100TextControl.Trim(GetSearchCategoryCd);			//商品カテゴリCD
+					GetSearchCategoryName		= B100TextControl.Trim(GetSearchCategoryName);		//商品カテゴリ名
+					GetSearchItemColorCd		= B100TextControl.Trim(GetSearchItemColorCd);		//商品カラーコード
+					GetSearchItemColorName		= B100TextControl.Trim(GetSearchItemColorName);		//商品カラー名
+					GetSearchItemSizeCd			= B100TextControl.Trim(GetSearchItemSizeCd);			//商品サイズコード
+					GetSearchItemSizeName		= B100TextControl.Trim(GetSearchItemSizeName);		//商品サイズ名
 					
 					ArrayList<String> SearchClGpCd = new ArrayList<String>();			//荷主グループコード
 					ArrayList<String> SearchItemCd = new ArrayList<String>();			//商品コード
@@ -387,9 +387,9 @@ public class WM00080ItemMstSearch{
 						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<ItemMstRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}
@@ -403,7 +403,7 @@ public class WM00080ItemMstSearch{
 					String MSG = "エクセルファイル選択";
 					String[] file_type = {".xlsx"};
 					String file_type_name = "エクセルファイル";
-					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						SetX=main_fm.getX();
@@ -488,7 +488,7 @@ public class WM00080ItemMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","商品マスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","商品マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -499,7 +499,7 @@ public class WM00080ItemMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","商品マスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","商品マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

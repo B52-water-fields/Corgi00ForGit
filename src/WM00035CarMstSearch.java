@@ -29,36 +29,36 @@ public class WM00035CarMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,860,750,"Corgi00車輛検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,860,750,"Corgi00車輛検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,820,160,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,820,160,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchWHCD				= B00110FrameParts.JLabelSet(  0, 25,100,20,"所属倉庫:",	11,1);
-		JLabel LB_SearchShippingCompanyCd	= B00110FrameParts.JLabelSet(  0, 50,100,20,"所属会社:",	11,1);
-		JLabel LB_SearchCarCd				= B00110FrameParts.JLabelSet(  0, 75,100,20,"車輛CD:",		11,1);
-		JLabel LB_SearchCarName				= B00110FrameParts.JLabelSet(  0,100,100,20,"車輛名:",		11,1);
-		JLabel LB_SearchDelFg				= B00110FrameParts.JLabelSet(  0,125,100,20,"削除区分:",	11,1);
+		JLabel LB_SearchWHCD				= B100FrameParts.JLabelSet(  0, 25,100,20,"所属倉庫:",	11,1);
+		JLabel LB_SearchShippingCompanyCd	= B100FrameParts.JLabelSet(  0, 50,100,20,"所属会社:",	11,1);
+		JLabel LB_SearchCarCd				= B100FrameParts.JLabelSet(  0, 75,100,20,"車輛CD:",		11,1);
+		JLabel LB_SearchCarName				= B100FrameParts.JLabelSet(  0,100,100,20,"車輛名:",		11,1);
+		JLabel LB_SearchDelFg				= B100FrameParts.JLabelSet(  0,125,100,20,"削除区分:",	11,1);
 		
-		final JComboBox  TB_SearchWHCD				= B00110FrameParts.JComboBoxSet( 100, 25,200,20,B00100DefaultVariable.SearchWhList[0],11);					//所属倉庫
-		final JComboBox  TB_SearchShippingCompanyCd	= B00110FrameParts.JComboBoxSet( 100, 50,200,20,B00100DefaultVariable.SearchShippingCompanyList[0],11);	//所属会社
-		final JTextField TB_SearchCarCd				= B00110FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);	//車輛CD
-		final JTextField TB_SearchCarName			= B00110FrameParts.JTextFieldSet(100,100,200,20,"",11,0);	//車輛名
-		final JComboBox  TB_SearchDelFg				= B00110FrameParts.JComboBoxSet( 100,125,100,20,B00100DefaultVariable.SearchDelList[0],11);	//削除区分
+		final JComboBox  TB_SearchWHCD				= B100FrameParts.JComboBoxSet( 100, 25,200,20,B100DefaultVariable.SearchWhList[0],11);					//所属倉庫
+		final JComboBox  TB_SearchShippingCompanyCd	= B100FrameParts.JComboBoxSet( 100, 50,200,20,B100DefaultVariable.SearchShippingCompanyList[0],11);	//所属会社
+		final JTextField TB_SearchCarCd				= B100FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);	//車輛CD
+		final JTextField TB_SearchCarName			= B100FrameParts.JTextFieldSet(100,100,200,20,"",11,0);	//車輛名
+		final JComboBox  TB_SearchDelFg				= B100FrameParts.JComboBoxSet( 100,125,100,20,B100DefaultVariable.SearchDelList[0],11);	//削除区分
 		
-		JLabel LB2_SearchWHCD				= B00110FrameParts.JLabelSet(  0, 25, 50,20,"",		11,0);
-		JLabel LB2_SearchShippingCompanyCd	= B00110FrameParts.JLabelSet(  0, 50, 50,20,"",		11,0);
-		JLabel LB2_SearchCarCd				= B00110FrameParts.JLabelSet(200, 75, 50,20,"と一致",	11,0);
-		JLabel LB2_SearchCarName			= B00110FrameParts.JLabelSet(300,100, 50,20,"を含む",	11,0);
-		JLabel LB2_SearchDelFg				= B00110FrameParts.JLabelSet(200,125, 50,20,"",		11,0);
+		JLabel LB2_SearchWHCD				= B100FrameParts.JLabelSet(  0, 25, 50,20,"",		11,0);
+		JLabel LB2_SearchShippingCompanyCd	= B100FrameParts.JLabelSet(  0, 50, 50,20,"",		11,0);
+		JLabel LB2_SearchCarCd				= B100FrameParts.JLabelSet(200, 75, 50,20,"と一致",	11,0);
+		JLabel LB2_SearchCarName			= B100FrameParts.JLabelSet(300,100, 50,20,"を含む",	11,0);
+		JLabel LB2_SearchDelFg				= B100FrameParts.JLabelSet(200,125, 50,20,"",		11,0);
 		
 		PN_Search.add(LB_SearchWHCD);
 		PN_Search.add(LB_SearchShippingCompanyCd);
@@ -79,7 +79,7 @@ public class WM00035CarMstSearch{
 		PN_Search.add(LB2_SearchDelFg);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(350,125,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		
@@ -93,9 +93,9 @@ public class WM00035CarMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -112,37 +112,37 @@ public class WM00035CarMstSearch{
 		
 		for(int i=0;i<RtSettingCarMstRt.length;i++) {
 			if("int".equals((String)RtSettingCarMstRt[i][2])||"float".equals((String)RtSettingCarMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,210,820,395,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,210,820,395,tb01);
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 
 		//Excelボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
 		main_fm.setVisible(true);
@@ -161,11 +161,11 @@ public class WM00035CarMstSearch{
 						tableModel_ms01.removeRow(0);
 					}
 					
-					String GetSearchWHCD				= ""+B00100DefaultVariable.SearchWhList[1][TB_SearchWHCD.getSelectedIndex()];								//所属倉庫
-					String GetSearchShippingCompanyCd	= ""+B00100DefaultVariable.SearchShippingCompanyList[1][TB_SearchShippingCompanyCd.getSelectedIndex()];	//所属会社
+					String GetSearchWHCD				= ""+B100DefaultVariable.SearchWhList[1][TB_SearchWHCD.getSelectedIndex()];								//所属倉庫
+					String GetSearchShippingCompanyCd	= ""+B100DefaultVariable.SearchShippingCompanyList[1][TB_SearchShippingCompanyCd.getSelectedIndex()];	//所属会社
 					String GetSearchCarCd= TB_SearchCarCd.getText();
 					String GetSearchCarName= TB_SearchCarName.getText();
-					String GetSearchDelFg				= ""+B00100DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];			//削除区分
+					String GetSearchDelFg				= ""+B100DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];			//削除区分
 					
 					if(null==GetSearchWHCD				){GetSearchWHCD = "";}
 					if(null==GetSearchShippingCompanyCd	){GetSearchShippingCompanyCd = "";}
@@ -173,11 +173,11 @@ public class WM00035CarMstSearch{
 					if(null==GetSearchCarName			){GetSearchCarName = "";}
 					if(null==GetSearchDelFg				){GetSearchDelFg = "";}
 					
-					GetSearchWHCD	 			= B00020ToolsTextControl.Trim(GetSearchWHCD);
-					GetSearchShippingCompanyCd	= B00020ToolsTextControl.Trim(GetSearchShippingCompanyCd);
-					GetSearchCarCd	 			= B00020ToolsTextControl.Trim(GetSearchCarCd);
-					GetSearchCarName	 		= B00020ToolsTextControl.Trim(GetSearchCarName);
-					GetSearchDelFg	 			= B00020ToolsTextControl.Trim(GetSearchDelFg);
+					GetSearchWHCD	 			= B100TextControl.Trim(GetSearchWHCD);
+					GetSearchShippingCompanyCd	= B100TextControl.Trim(GetSearchShippingCompanyCd);
+					GetSearchCarCd	 			= B100TextControl.Trim(GetSearchCarCd);
+					GetSearchCarName	 		= B100TextControl.Trim(GetSearchCarName);
+					GetSearchDelFg	 			= B100TextControl.Trim(GetSearchDelFg);
 					
 					TB_SearchCarCd.setText(GetSearchCarCd);
 					TB_SearchCarName.setText(GetSearchCarName);
@@ -212,9 +212,9 @@ public class WM00035CarMstSearch{
 						tableModel_ms01.addRow(SetOb);;
 					}
 					if(0<CarMstRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}
@@ -292,7 +292,7 @@ public class WM00035CarMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","車輛マスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","車輛マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -303,7 +303,7 @@ public class WM00035CarMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","車輛マスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","車輛マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -317,7 +317,7 @@ public class WM00035CarMstSearch{
 					String MSG = "エクセルファイル選択";
 					String[] file_type = {".xlsx"};
 					String file_type_name = "エクセルファイル";
-					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						SetX=main_fm.getX();

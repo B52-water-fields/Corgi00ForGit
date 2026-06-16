@@ -13,7 +13,7 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 
-public class B00180PdfControl{
+public class B100PdfControl{
 	
 	public static PDPage PageRt(boolean PageRotateFg) {
 		//横向きフラグ=trueならA4横、それ以外ではA4のページを返却する
@@ -243,12 +243,12 @@ public class B00180PdfControl{
 	        String FontPath = "C:/Windows/Fonts/msgothic.ttc";
 	        String FontName = "MS-Gothic";
 	        
-	        if(B00040ToolsFolderCheck.FLD_CHECK_ONRY(A00000Main.FontFilePath)) {
+	        if(B100FolderCheck.FLD_CHECK_ONRY(A00000Main.FontFilePath)) {
 	        	FontPath = A00000Main.FontFilePath;
 	        	FontName = A00000Main.FontFileName;
 	        }
 	        
-	        String FileName = B00040ToolsFolderCheck.FILENAME(FontPath);
+	        String FileName = B100FolderCheck.FILENAME(FontPath);
 	        
 	        File FontFile = new File(FontPath);
 	        PDFont font = null;

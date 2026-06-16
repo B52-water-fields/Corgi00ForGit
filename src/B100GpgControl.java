@@ -1,4 +1,4 @@
-public class B00170GpgControl{
+public class B100GpgControl{
 	private static String DataDecrypt(String TgtFldPath,String PassWord) {
 		//対象フォルダにある.gpgファイルを自分の秘密鍵で復号化するコマンド出力
 		//複合化後元ファイルは同一フォルダ内のBKフォルダに移動させる

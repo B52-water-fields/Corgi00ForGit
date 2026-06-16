@@ -107,16 +107,16 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定取込（登録データ確認）","NK");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定取込（登録データ確認）","NK");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_Msg 	= B00110FrameParts.JLabelSet(  0,50,300,20,"以下のデータを取込もうとしています"	,11,0);
+		JLabel LB_Msg 	= B100FrameParts.JLabelSet(  0,50,300,20,"以下のデータを取込もうとしています"	,11,0);
 		main_fm.add(LB_Msg);
 		
 		Object[][] RtSetDataDefinition = RtSetDataDefinition();
@@ -129,10 +129,10 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -149,13 +149,13 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 		
 		for(int i=0;i<RtSetDataDefinition.length;i++) {
 			if("int".equals((String)RtSetDataDefinition[i][2])||"float".equals((String)RtSetDataDefinition[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,75,860,500,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,75,860,500,tb01);
 		main_fm.add(scpn01);
 		
 		for(int i=0;i<EntryData.length;i++) {
@@ -236,7 +236,7 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 		for(int i=0;i<GetData.length;i++) {
 			CheckClArrNoList.add(GetData[i][ColSetHdSpCd]+"_"+GetData[i][ColSetHdPlanDate]+"_"+GetData[i][ColSetHdClArrNo]);
 		}
-		CheckClArrNoList = B00150ArrayListControl.ArryListStringUniqueList(CheckClArrNoList);
+		CheckClArrNoList = B100ArrayListControl.ArryListStringUniqueList(CheckClArrNoList);
 		
 		int HdEntryCount = CheckClArrNoList.size();
 		int MsEntryCount = GetData.length;
@@ -288,7 +288,7 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 		String[] SetEntryUser		= new String[MsEntryCount];			//登録者
 		String[] SetUpdateUser		= new String[MsEntryCount];			//更新者
 		
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		MsEntryCount = 0;
 		
 		for(int i01=0;i01<CheckClArrNoList.size();i01++) {
@@ -320,9 +320,9 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 					SetHdEntryUser[i01]		= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;			//ヘッダ登録者
 					SetHdUpdateUser[i01]	= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;			//ヘッダ更新者
 					
-					SetHdPlanDate[i01]		= B00050ToolsDateTimeControl.DateFormat(SetHdPlanDate[i01]);
-					SetHdSpPost[i01]		= B00020ToolsTextControl.num_only_String(SetHdSpPost[i01]);
-					SetHdSpTel[i01]			= B00020ToolsTextControl.num_only_String(SetHdSpTel[i01]);
+					SetHdPlanDate[i01]		= B100DateTimeControl.DateFormat(SetHdPlanDate[i01]);
+					SetHdSpPost[i01]		= B100TextControl.num_only_String(SetHdSpPost[i01]);
+					SetHdSpTel[i01]			= B100TextControl.num_only_String(SetHdSpTel[i01]);
 					
 					MsNo = MsNo+1;
 					
@@ -347,7 +347,7 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 					SetEntryUser[MsEntryCount]		= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者
 					SetUpdateUser[MsEntryCount]		= "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者
 					
-					SetExpDate[MsEntryCount] =  B00050ToolsDateTimeControl.DateFormat(SetExpDate[MsEntryCount]);
+					SetExpDate[MsEntryCount] =  B100DateTimeControl.DateFormat(SetExpDate[MsEntryCount]);
 					if("".equals(SetExpDate[MsEntryCount])) {SetExpDate[MsEntryCount]	= "null";}
 					
 					MsEntryCount = MsEntryCount+1;
@@ -407,13 +407,13 @@ public class WT0001005ArrivalPlanArrayEntrySetDataView{
 		String Hd_TgtDB = "WANKO";
 		int Hd_non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateSomeRecord(HdSetOb,Hd_tgt_table,Hd_TgtDB,Hd_non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateSomeRecord(HdSetOb,Hd_tgt_table,Hd_TgtDB,Hd_non_msg_fg);
 		
 		String Ms_tgt_table = "WW0011ArrivalPlanMs";
 		String Ms_TgtDB = "WANKO";
 		int Ms_non_msg_fg = 0;
 		
-		A00020InsertUdateSQL.InsertUpdateSomeRecord(MsSetOb,Ms_tgt_table,Ms_TgtDB,Ms_non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateSomeRecord(MsSetOb,Ms_tgt_table,Ms_TgtDB,Ms_non_msg_fg);
 		
 	}
 }

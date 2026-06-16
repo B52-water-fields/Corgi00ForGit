@@ -34,10 +34,10 @@ public class WM00061DeliveryMstRenewAndCreate{
 		if(null==DECD) {DECD = "";}
 		if(null==DepartmentCd) {DepartmentCd = "";}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,750,"Corgi00届先マスタ登録・更新","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,750,"Corgi00届先マスタ登録・更新","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
@@ -45,61 +45,61 @@ public class WM00061DeliveryMstRenewAndCreate{
 			main_fm.add(entry_btn);
 		}
 		
-		JLabel LB_DECD				= B00110FrameParts.JLabelSet(  0, 40,100,20,"届先コード:",		11,1);
-		JLabel LB_DepartmentCd		= B00110FrameParts.JLabelSet(  0, 65,100,20,"部署CD:",			11,1);
-		JLabel LB_DEName01			= B00110FrameParts.JLabelSet(  0, 90,100,20,"届先名1:",		11,1);
-		JLabel LB_DEName02			= B00110FrameParts.JLabelSet(  0,115,100,20,"届先名2:",		11,1);
-		JLabel LB_DEName03			= B00110FrameParts.JLabelSet(  0,140,100,20,"届先名3:",		11,1);
-		JLabel LB_Post				= B00110FrameParts.JLabelSet(  0,165,100,20,"届先郵便:",		11,1);
-		JLabel LB_Add01				= B00110FrameParts.JLabelSet(  0,190,100,20,"届先住所1:",		11,1);
-		JLabel LB_Add02				= B00110FrameParts.JLabelSet(  0,215,100,20,"届先住所2:",		11,1);
-		JLabel LB_Add03				= B00110FrameParts.JLabelSet(  0,240,100,20,"届先住所3:",		11,1);
-		JLabel LB_Tel				= B00110FrameParts.JLabelSet(  0,265,100,20,"届先電話:",		11,1);
-		JLabel LB_Fax				= B00110FrameParts.JLabelSet(  0,290,100,20,"届先FAX:",		11,1);
-		JLabel LB_Mail				= B00110FrameParts.JLabelSet(  0,315,100,20,"届先MAIL:",		11,1);
-		JLabel LB_Com01				= B00110FrameParts.JLabelSet(  0,340,100,20,"コメント1:",		11,1);
-		JLabel LB_Com02				= B00110FrameParts.JLabelSet(  0,365,100,20,"コメント2:",		11,1);
-		JLabel LB_Com03				= B00110FrameParts.JLabelSet(  0,390,100,20,"コメント3:",		11,1);
-		JLabel LB_PrefecturesCd		= B00110FrameParts.JLabelSet(  0,415,100,20,"JIS県CD2桁:",		11,1);
-		JLabel LB_MunicipalityCd	= B00110FrameParts.JLabelSet(  0,440,100,20,"JISCD5桁:",		11,1);
-		JLabel LB_PTMSCD			= B00110FrameParts.JLabelSet(  0,465,100,20,"基幹SYS発着CD:",	11,1);
-		JLabel LB_EntryDate			= B00110FrameParts.JLabelSet(  0,490,100,20,"データ登録日時:",	11,1);
-		JLabel LB_UpdateDate		= B00110FrameParts.JLabelSet(  0,515,100,20,"データ更新日時:",	11,1);
-		JLabel LB_EntryUser			= B00110FrameParts.JLabelSet(  0,540,100,20,"登録者コード:",	11,1);
-		JLabel LB_UpdateUser		= B00110FrameParts.JLabelSet(  0,565,100,20,"更新者コード:",	11,1);
-		JLabel LB_FirstClient		= B00110FrameParts.JLabelSet(  0,590,100,20,"登録した荷主:",	11,1);
-		JLabel LB_LastClient		= B00110FrameParts.JLabelSet(  0,615,100,20,"更新した荷主:",	11,1);
-		JLabel LB_DelFg				= B00110FrameParts.JLabelSet(  0,640,100,20,"削除区分:",		11,1);
-		JLabel LB_MSG				= B00110FrameParts.JLabelSet(  0,665,300,20,"JIS届先は郵便番号マスタから生成してください",	11,1);
+		JLabel LB_DECD				= B100FrameParts.JLabelSet(  0, 40,100,20,"届先コード:",		11,1);
+		JLabel LB_DepartmentCd		= B100FrameParts.JLabelSet(  0, 65,100,20,"部署CD:",			11,1);
+		JLabel LB_DEName01			= B100FrameParts.JLabelSet(  0, 90,100,20,"届先名1:",		11,1);
+		JLabel LB_DEName02			= B100FrameParts.JLabelSet(  0,115,100,20,"届先名2:",		11,1);
+		JLabel LB_DEName03			= B100FrameParts.JLabelSet(  0,140,100,20,"届先名3:",		11,1);
+		JLabel LB_Post				= B100FrameParts.JLabelSet(  0,165,100,20,"届先郵便:",		11,1);
+		JLabel LB_Add01				= B100FrameParts.JLabelSet(  0,190,100,20,"届先住所1:",		11,1);
+		JLabel LB_Add02				= B100FrameParts.JLabelSet(  0,215,100,20,"届先住所2:",		11,1);
+		JLabel LB_Add03				= B100FrameParts.JLabelSet(  0,240,100,20,"届先住所3:",		11,1);
+		JLabel LB_Tel				= B100FrameParts.JLabelSet(  0,265,100,20,"届先電話:",		11,1);
+		JLabel LB_Fax				= B100FrameParts.JLabelSet(  0,290,100,20,"届先FAX:",		11,1);
+		JLabel LB_Mail				= B100FrameParts.JLabelSet(  0,315,100,20,"届先MAIL:",		11,1);
+		JLabel LB_Com01				= B100FrameParts.JLabelSet(  0,340,100,20,"コメント1:",		11,1);
+		JLabel LB_Com02				= B100FrameParts.JLabelSet(  0,365,100,20,"コメント2:",		11,1);
+		JLabel LB_Com03				= B100FrameParts.JLabelSet(  0,390,100,20,"コメント3:",		11,1);
+		JLabel LB_PrefecturesCd		= B100FrameParts.JLabelSet(  0,415,100,20,"JIS県CD2桁:",		11,1);
+		JLabel LB_MunicipalityCd	= B100FrameParts.JLabelSet(  0,440,100,20,"JISCD5桁:",		11,1);
+		JLabel LB_PTMSCD			= B100FrameParts.JLabelSet(  0,465,100,20,"基幹SYS発着CD:",	11,1);
+		JLabel LB_EntryDate			= B100FrameParts.JLabelSet(  0,490,100,20,"データ登録日時:",	11,1);
+		JLabel LB_UpdateDate		= B100FrameParts.JLabelSet(  0,515,100,20,"データ更新日時:",	11,1);
+		JLabel LB_EntryUser			= B100FrameParts.JLabelSet(  0,540,100,20,"登録者コード:",	11,1);
+		JLabel LB_UpdateUser		= B100FrameParts.JLabelSet(  0,565,100,20,"更新者コード:",	11,1);
+		JLabel LB_FirstClient		= B100FrameParts.JLabelSet(  0,590,100,20,"登録した荷主:",	11,1);
+		JLabel LB_LastClient		= B100FrameParts.JLabelSet(  0,615,100,20,"更新した荷主:",	11,1);
+		JLabel LB_DelFg				= B100FrameParts.JLabelSet(  0,640,100,20,"削除区分:",		11,1);
+		JLabel LB_MSG				= B100FrameParts.JLabelSet(  0,665,300,20,"JIS届先は郵便番号マスタから生成してください",	11,1);
 
-		final JTextField TB_DECD			= B00110FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//届先コード
-		final JTextField TB_DepartmentCd	= B00110FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//部署CD
-		final JTextField TB_DEName01		= B00110FrameParts.JTextFieldSet(100, 90,250,20,"",11,0);			//届先名1
-		final JTextField TB_DEName02		= B00110FrameParts.JTextFieldSet(100,115,250,20,"",11,0);			//届先名2
-		final JTextField TB_DEName03		= B00110FrameParts.JTextFieldSet(100,140,250,20,"",11,0);			//届先名3
-		final JTextField TB_Post			= B00110FrameParts.JTextFieldSet(100,165,100,20,"",11,0);			//届先郵便
-		final JTextField TB_Add01			= B00110FrameParts.JTextFieldSet(100,190,250,20,"",11,0);			//届先住所1
-		final JTextField TB_Add02			= B00110FrameParts.JTextFieldSet(100,215,250,20,"",11,0);			//届先住所2
-		final JTextField TB_Add03			= B00110FrameParts.JTextFieldSet(100,240,250,20,"",11,0);			//届先住所3
-		final JTextField TB_Tel				= B00110FrameParts.JTextFieldSet(100,265,100,20,"",11,0);			//届先電話
-		final JTextField TB_Fax				= B00110FrameParts.JTextFieldSet(100,290,100,20,"",11,0);			//届先FAX
-		final JTextField TB_Mail			= B00110FrameParts.JTextFieldSet(100,315,100,20,"",11,0);			//届先MAIL
-		final JTextField TB_Com01			= B00110FrameParts.JTextFieldSet(100,340,250,20,"",11,0);			//コメント1
-		final JTextField TB_Com02			= B00110FrameParts.JTextFieldSet(100,365,250,20,"",11,0);			//コメント2
-		final JTextField TB_Com03			= B00110FrameParts.JTextFieldSet(100,390,250,20,"",11,0);			//コメント3
-		final JTextField TB_PrefecturesCd	= B00110FrameParts.JTextFieldSet(100,415,100,20,"",11,0);			//JIS県CD2桁
-		final JTextField TB_MunicipalityCd	= B00110FrameParts.JTextFieldSet(100,440,100,20,"",11,0);			//JISCD5桁
-		final JTextField TB_PTMSCD			= B00110FrameParts.JTextFieldSet(100,465,100,20,"",11,0);			//基幹SYS発着CD
-		final JTextField TB_EntryDate		= B00110FrameParts.JTextFieldSet(100,490,250,20,"",11,0);			//データ登録日時
-		final JTextField TB_UpdateDate		= B00110FrameParts.JTextFieldSet(100,515,250,20,"",11,0);			//データ更新日時
-		final JTextField TB_EntryUser		= B00110FrameParts.JTextFieldSet(100,540,250,20,"",11,0);			//登録者コード
-		final JTextField TB_UpdateUser		= B00110FrameParts.JTextFieldSet(100,565,250,20,"",11,0);			//更新者コード
-		final JTextField TB_FirstClient		= B00110FrameParts.JTextFieldSet(100,590,250,20,"",11,0);			//登録した荷主
-		final JTextField TB_LastClient		= B00110FrameParts.JTextFieldSet(100,615,250,20,"",11,0);			//更新した荷主
-		final JComboBox  TB_DelFg			= B00110FrameParts.JComboBoxSet( 100,640,100,20,B00100DefaultVariable.DelList[0],11);	//削除区分
+		final JTextField TB_DECD			= B100FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//届先コード
+		final JTextField TB_DepartmentCd	= B100FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//部署CD
+		final JTextField TB_DEName01		= B100FrameParts.JTextFieldSet(100, 90,250,20,"",11,0);			//届先名1
+		final JTextField TB_DEName02		= B100FrameParts.JTextFieldSet(100,115,250,20,"",11,0);			//届先名2
+		final JTextField TB_DEName03		= B100FrameParts.JTextFieldSet(100,140,250,20,"",11,0);			//届先名3
+		final JTextField TB_Post			= B100FrameParts.JTextFieldSet(100,165,100,20,"",11,0);			//届先郵便
+		final JTextField TB_Add01			= B100FrameParts.JTextFieldSet(100,190,250,20,"",11,0);			//届先住所1
+		final JTextField TB_Add02			= B100FrameParts.JTextFieldSet(100,215,250,20,"",11,0);			//届先住所2
+		final JTextField TB_Add03			= B100FrameParts.JTextFieldSet(100,240,250,20,"",11,0);			//届先住所3
+		final JTextField TB_Tel				= B100FrameParts.JTextFieldSet(100,265,100,20,"",11,0);			//届先電話
+		final JTextField TB_Fax				= B100FrameParts.JTextFieldSet(100,290,100,20,"",11,0);			//届先FAX
+		final JTextField TB_Mail			= B100FrameParts.JTextFieldSet(100,315,100,20,"",11,0);			//届先MAIL
+		final JTextField TB_Com01			= B100FrameParts.JTextFieldSet(100,340,250,20,"",11,0);			//コメント1
+		final JTextField TB_Com02			= B100FrameParts.JTextFieldSet(100,365,250,20,"",11,0);			//コメント2
+		final JTextField TB_Com03			= B100FrameParts.JTextFieldSet(100,390,250,20,"",11,0);			//コメント3
+		final JTextField TB_PrefecturesCd	= B100FrameParts.JTextFieldSet(100,415,100,20,"",11,0);			//JIS県CD2桁
+		final JTextField TB_MunicipalityCd	= B100FrameParts.JTextFieldSet(100,440,100,20,"",11,0);			//JISCD5桁
+		final JTextField TB_PTMSCD			= B100FrameParts.JTextFieldSet(100,465,100,20,"",11,0);			//基幹SYS発着CD
+		final JTextField TB_EntryDate		= B100FrameParts.JTextFieldSet(100,490,250,20,"",11,0);			//データ登録日時
+		final JTextField TB_UpdateDate		= B100FrameParts.JTextFieldSet(100,515,250,20,"",11,0);			//データ更新日時
+		final JTextField TB_EntryUser		= B100FrameParts.JTextFieldSet(100,540,250,20,"",11,0);			//登録者コード
+		final JTextField TB_UpdateUser		= B100FrameParts.JTextFieldSet(100,565,250,20,"",11,0);			//更新者コード
+		final JTextField TB_FirstClient		= B100FrameParts.JTextFieldSet(100,590,250,20,"",11,0);			//登録した荷主
+		final JTextField TB_LastClient		= B100FrameParts.JTextFieldSet(100,615,250,20,"",11,0);			//更新した荷主
+		final JComboBox  TB_DelFg			= B100FrameParts.JComboBoxSet( 100,640,100,20,B100DefaultVariable.DelList[0],11);	//削除区分
 		
 		//部署追加ボタン
-		JButton AddDepartmentCdBtn = B00110FrameParts.BtnSet(210,65,100,20,"部署追加",11);
+		JButton AddDepartmentCdBtn = B100FrameParts.BtnSet(210,65,100,20,"部署追加",11);
 		
 		if(!"".equals(DECD) && !"".equals(DepartmentCd)) {
 			
@@ -164,8 +164,8 @@ public class WM00061DeliveryMstRenewAndCreate{
 				TB_UpdateUser.setText(		""+DeliveryMstRt[0][M00040DeliveryMstRt.ColUpdateUser]);
 				TB_FirstClient.setText(		"("+DeliveryMstRt[0][22]+")"+DeliveryMstRt[0][M00040DeliveryMstRt.ColFirstClientName]);
 				TB_LastClient.setText(		"("+DeliveryMstRt[0][23]+")"+DeliveryMstRt[0][M00040DeliveryMstRt.ColLastClientName]);
-				for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-					if(B00100DefaultVariable.DelList[1][i].equals(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDelFg])) {
+				for(int i=0;i<B100DefaultVariable.DelList[1].length;i++) {
+					if(B100DefaultVariable.DelList[1][i].equals(""+DeliveryMstRt[0][M00040DeliveryMstRt.ColDelFg])) {
 						TB_DelFg.setSelectedIndex(i);
 					}
 				}
@@ -272,13 +272,13 @@ public class WM00061DeliveryMstRenewAndCreate{
 		/*----------------------------------------------------
 		同一届け先候補をリストアップ
 		----------------------------------------------------*/
-		final JFrame SameDelivery_fm = B00110FrameParts.FrameCreate(x,y,640,500,"Corgi00届先マスタ登録・更新","");
-		JLabel SameDelivery_userinfo = B00110FrameParts.UserInfo();
-		JButton SameDelivery_exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame SameDelivery_fm = B100FrameParts.FrameCreate(x,y,640,500,"Corgi00届先マスタ登録・更新","");
+		JLabel SameDelivery_userinfo = B100FrameParts.UserInfo();
+		JButton SameDelivery_exit_btn = B100FrameParts.ExitBtn();
 		
 		SameDelivery_fm.add(SameDelivery_userinfo);
 		SameDelivery_fm.add(SameDelivery_exit_btn);
-		JLabel LB_Msg  = B00110FrameParts.JLabelSet(	10,40,300,20,"以下の届先と重複していませんか？" ,11,0);
+		JLabel LB_Msg  = B100FrameParts.JLabelSet(	10,40,300,20,"以下の届先と重複していませんか？" ,11,0);
 		SameDelivery_fm.add(LB_Msg);
 		
 		String[] columnNames01 = {
@@ -289,9 +289,9 @@ public class WM00061DeliveryMstRenewAndCreate{
 								,"届先住所"};
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -305,37 +305,37 @@ public class WM00061DeliveryMstRenewAndCreate{
 		TableColumn column = null;
 		
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先CD
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//部署CD
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(250*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先名1
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(250*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//届先住所
+		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//届先CD
+		column = columnModel01.getColumn( 2);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//部署CD
+		column = columnModel01.getColumn( 3);	column.setPreferredWidth(250*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//届先名1
+		column = columnModel01.getColumn( 4);	column.setPreferredWidth(250*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//届先住所
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,60,610,300,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,60,610,300,tb01);
 		SameDelivery_fm.add(scpn01);
 		
 		//重複無視ボタン
-		JLabel LB_Set  = B00110FrameParts.JLabelSet(	10,360,150,20,"重複を無視して" ,11,0);
+		JLabel LB_Set  = B100FrameParts.JLabelSet(	10,360,150,20,"重複を無視して" ,11,0);
 		SameDelivery_fm.add(LB_Set);
-		JButton SetBtn = B00110FrameParts.BtnSet(		10,380,100,20,"新規登録",11);
+		JButton SetBtn = B100FrameParts.BtnSet(		10,380,100,20,"新規登録",11);
 		SameDelivery_fm.add(SetBtn);
 		
 		//登録やり直しボタン
-		JLabel LB_MstEntry  = B00110FrameParts.JLabelSet(	160,360,150,20,"チェックした届先で" ,11,0);
+		JLabel LB_MstEntry  = B100FrameParts.JLabelSet(	160,360,150,20,"チェックした届先で" ,11,0);
 		SameDelivery_fm.add(LB_MstEntry);
-		JButton MstEntryBtn = B00110FrameParts.BtnSet(		160,380,100,20,"登録やり直し",11);
+		JButton MstEntryBtn = B100FrameParts.BtnSet(		160,380,100,20,"登録やり直し",11);
 		SameDelivery_fm.add(MstEntryBtn);
 		
 		//上書きボタン
-		JLabel LB_CdEntry  = B00110FrameParts.JLabelSet(	310,360,150,20,"チェックした届先を" ,11,0);
+		JLabel LB_CdEntry  = B100FrameParts.JLabelSet(	310,360,150,20,"チェックした届先を" ,11,0);
 		SameDelivery_fm.add(LB_CdEntry);
-		JButton CdEntryBtn = B00110FrameParts.BtnSet(		310,380,100,20,"上書",11);
+		JButton CdEntryBtn = B100FrameParts.BtnSet(		310,380,100,20,"上書",11);
 		SameDelivery_fm.add(CdEntryBtn);
 		
 		//新規部署扱い
-		JLabel LB_NewDept  = B00110FrameParts.JLabelSet(	460,360,150,20,"チェックした届先の" ,11,0);
+		JLabel LB_NewDept  = B100FrameParts.JLabelSet(	460,360,150,20,"チェックした届先の" ,11,0);
 		SameDelivery_fm.add(LB_NewDept);
-		JButton NewDeptBtn = B00110FrameParts.BtnSet(		460,380,100,20,"新規部署扱い",11);
+		JButton NewDeptBtn = B100FrameParts.BtnSet(		460,380,100,20,"新規部署扱い",11);
 		SameDelivery_fm.add(NewDeptBtn);
 		
 		
@@ -382,7 +382,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 						String GetPrefecturesCd	= TB_PrefecturesCd.getText();
 						String GetMunicipalityCd= TB_MunicipalityCd.getText();
 						String GetPTMSCD		= TB_PTMSCD.getText();
-						String GetDelFg 		= B00100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
+						String GetDelFg 		= B100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
 						
 						DeliveryEntry(
 								GetDECD,
@@ -494,7 +494,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 						String GetPrefecturesCd	= TB_PrefecturesCd.getText();
 						String GetMunicipalityCd= TB_MunicipalityCd.getText();
 						String GetPTMSCD		= TB_PTMSCD.getText();
-						String GetDelFg 		= B00100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
+						String GetDelFg 		= B100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
 						
 						DeliveryEntry(
 								GetDECD,
@@ -570,7 +570,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 						String GetPrefecturesCd	= TB_PrefecturesCd.getText();
 						String GetMunicipalityCd= TB_MunicipalityCd.getText();
 						String GetPTMSCD		= TB_PTMSCD.getText();
-						String GetDelFg 		= B00100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
+						String GetDelFg 		= B100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
 						
 						DeliveryEntry(
 								GetDECD,
@@ -653,7 +653,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 					String GetPrefecturesCd	= TB_PrefecturesCd.getText();
 					String GetMunicipalityCd= TB_MunicipalityCd.getText();
 					String GetPTMSCD		= TB_PTMSCD.getText();
-					String GetDelFg 		= B00100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
+					String GetDelFg 		= B100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
 					
 					if(null==GetDECD			){GetDECD = "";}
 					if(null==GetDepartmentCd	){GetDepartmentCd = "";}
@@ -675,31 +675,31 @@ public class WM00061DeliveryMstRenewAndCreate{
 					if(null==GetPTMSCD			){GetPTMSCD = "";}
 					if(null==GetDelFg			){GetDelFg = "";}
 					
-					GetDECD				= B00020ToolsTextControl.Trim(GetDECD);
-					GetDepartmentCd		= B00020ToolsTextControl.Trim(GetDepartmentCd);
-					GetDEName01			= B00020ToolsTextControl.Trim(GetDEName01);
-					GetDEName02			= B00020ToolsTextControl.Trim(GetDEName02);
-					GetDEName03			= B00020ToolsTextControl.Trim(GetDEName03);
-					GetPost				= B00020ToolsTextControl.Trim(GetPost);
-					GetAdd01			= B00020ToolsTextControl.Trim(GetAdd01);
-					GetAdd02			= B00020ToolsTextControl.Trim(GetAdd02);
-					GetAdd03			= B00020ToolsTextControl.Trim(GetAdd03);
-					GetTel				= B00020ToolsTextControl.Trim(GetTel);
-					GetFax				= B00020ToolsTextControl.Trim(GetFax);
-					GetMail				= B00020ToolsTextControl.Trim(GetMail);
-					GetCom01			= B00020ToolsTextControl.Trim(GetCom01);
-					GetCom02			= B00020ToolsTextControl.Trim(GetCom02);
-					GetCom03			= B00020ToolsTextControl.Trim(GetCom03);
-					GetPrefecturesCd	= B00020ToolsTextControl.Trim(GetPrefecturesCd);
-					GetMunicipalityCd	= B00020ToolsTextControl.Trim(GetMunicipalityCd);
-					GetPTMSCD			= B00020ToolsTextControl.Trim(GetPTMSCD);
-					GetDelFg			= B00020ToolsTextControl.Trim(GetDelFg);
+					GetDECD				= B100TextControl.Trim(GetDECD);
+					GetDepartmentCd		= B100TextControl.Trim(GetDepartmentCd);
+					GetDEName01			= B100TextControl.Trim(GetDEName01);
+					GetDEName02			= B100TextControl.Trim(GetDEName02);
+					GetDEName03			= B100TextControl.Trim(GetDEName03);
+					GetPost				= B100TextControl.Trim(GetPost);
+					GetAdd01			= B100TextControl.Trim(GetAdd01);
+					GetAdd02			= B100TextControl.Trim(GetAdd02);
+					GetAdd03			= B100TextControl.Trim(GetAdd03);
+					GetTel				= B100TextControl.Trim(GetTel);
+					GetFax				= B100TextControl.Trim(GetFax);
+					GetMail				= B100TextControl.Trim(GetMail);
+					GetCom01			= B100TextControl.Trim(GetCom01);
+					GetCom02			= B100TextControl.Trim(GetCom02);
+					GetCom03			= B100TextControl.Trim(GetCom03);
+					GetPrefecturesCd	= B100TextControl.Trim(GetPrefecturesCd);
+					GetMunicipalityCd	= B100TextControl.Trim(GetMunicipalityCd);
+					GetPTMSCD			= B100TextControl.Trim(GetPTMSCD);
+					GetDelFg			= B100TextControl.Trim(GetDelFg);
 					
-					GetPost				= B00020ToolsTextControl.num_only_String(GetPost);
-					GetTel				= B00020ToolsTextControl.num_only_String(GetTel);
-					GetFax				= B00020ToolsTextControl.num_only_String(GetFax);
-					GetPrefecturesCd	= B00020ToolsTextControl.num_only_String(GetPrefecturesCd);
-					GetMunicipalityCd	= B00020ToolsTextControl.num_only_String(GetMunicipalityCd);
+					GetPost				= B100TextControl.num_only_String(GetPost);
+					GetTel				= B100TextControl.num_only_String(GetTel);
+					GetFax				= B100TextControl.num_only_String(GetFax);
+					GetPrefecturesCd	= B100TextControl.num_only_String(GetPrefecturesCd);
+					GetMunicipalityCd	= B100TextControl.num_only_String(GetMunicipalityCd);
 					
 					boolean KickFg=false;
 					
@@ -736,9 +736,9 @@ public class WM00061DeliveryMstRenewAndCreate{
 									tableModel_ms01.addRow(SetOb);
 								}
 								if(0<SameDelivery.length) {
-									B10010TableControl.AddSortON(tb01,tableModel_ms01);
+									B100TableControl.AddSortON(tb01,tableModel_ms01);
 								}else {
-									B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+									B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 								}
 								
 								SameDelivery_fm.setVisible(true);
@@ -805,7 +805,7 @@ public class WM00061DeliveryMstRenewAndCreate{
 			@Override
 			public void focusLost(FocusEvent e){
 				String GetPost = TB_Post.getText();	if(null==GetPost) {GetPost="";}
-				GetPost = B00020ToolsTextControl.Trim(B00020ToolsTextControl.num_only_String(GetPost));
+				GetPost = B100TextControl.Trim(B100TextControl.num_only_String(GetPost));
 				TB_Post.setText(GetPost);
 				TB_PrefecturesCd.setText("");
 				TB_MunicipalityCd.setText("");
@@ -967,33 +967,33 @@ public class WM00061DeliveryMstRenewAndCreate{
 		if(null==GetPTMSCD			){GetPTMSCD 		= "";}
 		if(null==GetDelFg			){GetDelFg 			= "";}
 		
-		GetDECD				= B00020ToolsTextControl.Trim(GetDECD);
-		GetDepartmentCd		= B00020ToolsTextControl.Trim(GetDepartmentCd);
-		GetDEName01			= B00020ToolsTextControl.Trim(GetDEName01);
-		GetDEName02			= B00020ToolsTextControl.Trim(GetDEName02);
-		GetDEName03			= B00020ToolsTextControl.Trim(GetDEName03);
-		GetPost				= B00020ToolsTextControl.Trim(GetPost);
-		GetAdd01			= B00020ToolsTextControl.Trim(GetAdd01);
-		GetAdd02			= B00020ToolsTextControl.Trim(GetAdd02);
-		GetAdd03			= B00020ToolsTextControl.Trim(GetAdd03);
-		GetTel				= B00020ToolsTextControl.Trim(GetTel);
-		GetFax				= B00020ToolsTextControl.Trim(GetFax);
-		GetMail				= B00020ToolsTextControl.Trim(GetMail);
-		GetCom01			= B00020ToolsTextControl.Trim(GetCom01);
-		GetCom02			= B00020ToolsTextControl.Trim(GetCom02);
-		GetCom03			= B00020ToolsTextControl.Trim(GetCom03);
-		GetPrefecturesCd	= B00020ToolsTextControl.Trim(GetPrefecturesCd);
-		GetMunicipalityCd	= B00020ToolsTextControl.Trim(GetMunicipalityCd);
-		GetPTMSCD			= B00020ToolsTextControl.Trim(GetPTMSCD);
-		GetDelFg			= B00020ToolsTextControl.Trim(GetDelFg);
+		GetDECD				= B100TextControl.Trim(GetDECD);
+		GetDepartmentCd		= B100TextControl.Trim(GetDepartmentCd);
+		GetDEName01			= B100TextControl.Trim(GetDEName01);
+		GetDEName02			= B100TextControl.Trim(GetDEName02);
+		GetDEName03			= B100TextControl.Trim(GetDEName03);
+		GetPost				= B100TextControl.Trim(GetPost);
+		GetAdd01			= B100TextControl.Trim(GetAdd01);
+		GetAdd02			= B100TextControl.Trim(GetAdd02);
+		GetAdd03			= B100TextControl.Trim(GetAdd03);
+		GetTel				= B100TextControl.Trim(GetTel);
+		GetFax				= B100TextControl.Trim(GetFax);
+		GetMail				= B100TextControl.Trim(GetMail);
+		GetCom01			= B100TextControl.Trim(GetCom01);
+		GetCom02			= B100TextControl.Trim(GetCom02);
+		GetCom03			= B100TextControl.Trim(GetCom03);
+		GetPrefecturesCd	= B100TextControl.Trim(GetPrefecturesCd);
+		GetMunicipalityCd	= B100TextControl.Trim(GetMunicipalityCd);
+		GetPTMSCD			= B100TextControl.Trim(GetPTMSCD);
+		GetDelFg			= B100TextControl.Trim(GetDelFg);
 		
-		GetPost				= B00020ToolsTextControl.num_only_String(GetPost);
-		GetTel				= B00020ToolsTextControl.num_only_String(GetTel);
-		GetFax				= B00020ToolsTextControl.num_only_String(GetFax);
-		GetPrefecturesCd	= B00020ToolsTextControl.num_only_String(GetPrefecturesCd);
-		GetMunicipalityCd	= B00020ToolsTextControl.num_only_String(GetMunicipalityCd);
+		GetPost				= B100TextControl.num_only_String(GetPost);
+		GetTel				= B100TextControl.num_only_String(GetTel);
+		GetFax				= B100TextControl.num_only_String(GetFax);
+		GetPrefecturesCd	= B100TextControl.num_only_String(GetPrefecturesCd);
+		GetMunicipalityCd	= B100TextControl.num_only_String(GetMunicipalityCd);
 		
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		//現在の市区町村CDを仮格納
 		String WorkMunicipalityCd = GetMunicipalityCd;
@@ -1092,6 +1092,6 @@ public class WM00061DeliveryMstRenewAndCreate{
 			entry_data[0][i] = SetString[i][3];
 		}
 		
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 	}
 }

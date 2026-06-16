@@ -64,10 +64,10 @@ public class M00110AdjustReasonRt{
 									ArrayList<String> SearchAdjustReasonCd,		//調整理由コード
 									ArrayList<String> SearchAdjustReasonName,	//調整理由名
 									boolean AllSearch) {
-		SearchClCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchClCd);				//荷主コード
-		SearchWhCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchWhCd);				//倉庫コード
-		SearchAdjustReasonCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonCd);	//調整理由コード
-		SearchAdjustReasonName	= B00150ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonName);	//調整理由名
+		SearchClCd				= B100ArrayListControl.ArryListStringUniqueList(SearchClCd);				//荷主コード
+		SearchWhCd				= B100ArrayListControl.ArryListStringUniqueList(SearchWhCd);				//倉庫コード
+		SearchAdjustReasonCd	= B100ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonCd);	//調整理由コード
+		SearchAdjustReasonName	= B100ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonName);	//調整理由名
 		
 		Object [][]rt = new Object[0][RtAdjustReasonRt().length];
 		boolean SearchKick = false;
@@ -135,11 +135,11 @@ public class M00110AdjustReasonRt{
 		sql = sql +" order by WM0020AdjustReason.ClCd,WM0020AdjustReason.WhCd,WM0020AdjustReason.AdjustReasonCd";
 		
 		if(true==SearchKick) {
-			A00010DbConnect.DB_CONN("WANKO");
+			A100DbConnect.DB_CONN("WANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchClCd && 0<SearchClCd.size()){							//荷主コード
@@ -185,8 +185,8 @@ public class M00110AdjustReasonRt{
 					if(null==rset01.getString("WHName")				){rt[counter][ColWHName]				="";}else{rt[counter][ColWHName]				=rset01.getString("WHName");}					//倉庫名
 					if(null==rset01.getString("AdjustReasonCd")		){rt[counter][ColAdjustReasonCd]		="";}else{rt[counter][ColAdjustReasonCd]		=rset01.getString("AdjustReasonCd");}			//調整理由コード
 					if(null==rset01.getString("AdjustReasonName")	){rt[counter][ColAdjustReasonName]	="";}else{rt[counter][ColAdjustReasonName]	=rset01.getString("AdjustReasonName");}			//調整理由名
-					if(null==rset01.getTimestamp("EntryDate")		){rt[counter][ColEntryDate]			="";}else{rt[counter][ColEntryDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
-					if(null==rset01.getTimestamp("UpdateDate")		){rt[counter][ColUpdateDate]			="";}else{rt[counter][ColUpdateDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
+					if(null==rset01.getTimestamp("EntryDate")		){rt[counter][ColEntryDate]			="";}else{rt[counter][ColEntryDate]			=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
+					if(null==rset01.getTimestamp("UpdateDate")		){rt[counter][ColUpdateDate]			="";}else{rt[counter][ColUpdateDate]			=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
 					if(null==rset01.getString("EntryUser")			){rt[counter][ColEntryUser]			="";}else{rt[counter][ColEntryUser]			=rset01.getString("EntryUser");}				//登録者
 					if(null==rset01.getString("UpdateUser")			){rt[counter][ColUpdateUser]			="";}else{rt[counter][ColUpdateUser]			=rset01.getString("UpdateUser");}				//更新者
 					counter=counter+1;
@@ -204,7 +204,7 @@ public class M00110AdjustReasonRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -231,7 +231,7 @@ public class M00110AdjustReasonRt{
     	
     	for(int i=0;i<AdjustReasonRt.length;i++) {
     		if(4<=(""+AdjustReasonRt[i][ColAdjustReasonCd]).length() &&"ATAJ".equals((""+AdjustReasonRt[i][ColAdjustReasonCd]).substring(0,4))) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+AdjustReasonRt[i][ColAdjustReasonCd]);
+    			String WST = B100TextControl.num_only_String(""+AdjustReasonRt[i][ColAdjustReasonCd]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(SpNo<wint) {

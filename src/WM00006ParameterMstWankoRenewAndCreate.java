@@ -27,80 +27,80 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,700,650,"Corgi00荷主パラメータ登録・修正","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,700,650,"Corgi00荷主パラメータ登録・修正","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ClCd			= B00110FrameParts.JLabelSet(	  								  0, 50,130,20,"荷主:"							,11,1);
-		final JComboBox  TB_ClCd	= B00110FrameParts.JComboBoxSet(							130, 50,180,20,B00100DefaultVariable.ClList[0], 11);
-		JLabel LB_WhCd			= B00110FrameParts.JLabelSet(	  								  0, 75,130,20,"担当倉庫:"						,11,1);
-		final JComboBox  TB_WhCd	= B00110FrameParts.JComboBoxSet(							130, 75,180,20,B00100DefaultVariable.WhList[0], 11);
-		JLabel LB_ParaCd			= B00110FrameParts.JLabelSet(	  							  0,100,130,20,"パラメータコード:"			,11,1);
-		final JTextField  TB_ParaCd	= B00110FrameParts.JTextFieldSet(							130,100,100,20,""							,11,0);
-		JLabel LB_ParaCdSeq	= B00110FrameParts.JLabelSet(	  									  0,125,130,20,"シーケンシャルNo:"			,11,1);
-		final JFormattedTextField TB_ParaCdSeq= B00110FrameParts.JFormattedTextFieldSet(		130,125, 80,20,""							,11,1,"####");
-		JLabel LB_ParaName		= B00110FrameParts.JLabelSet(									  0,150,130,20,"パラメータ名:"				,11,1);
-		final JTextField  TB_ParaName= B00110FrameParts.JTextFieldSet(						130,150,100,20,""							,11,0);
+		JLabel LB_ClCd			= B100FrameParts.JLabelSet(	  								  0, 50,130,20,"荷主:"							,11,1);
+		final JComboBox  TB_ClCd	= B100FrameParts.JComboBoxSet(							130, 50,180,20,B100DefaultVariable.ClList[0], 11);
+		JLabel LB_WhCd			= B100FrameParts.JLabelSet(	  								  0, 75,130,20,"担当倉庫:"						,11,1);
+		final JComboBox  TB_WhCd	= B100FrameParts.JComboBoxSet(							130, 75,180,20,B100DefaultVariable.WhList[0], 11);
+		JLabel LB_ParaCd			= B100FrameParts.JLabelSet(	  							  0,100,130,20,"パラメータコード:"			,11,1);
+		final JTextField  TB_ParaCd	= B100FrameParts.JTextFieldSet(							130,100,100,20,""							,11,0);
+		JLabel LB_ParaCdSeq	= B100FrameParts.JLabelSet(	  									  0,125,130,20,"シーケンシャルNo:"			,11,1);
+		final JFormattedTextField TB_ParaCdSeq= B100FrameParts.JFormattedTextFieldSet(		130,125, 80,20,""							,11,1,"####");
+		JLabel LB_ParaName		= B100FrameParts.JLabelSet(									  0,150,130,20,"パラメータ名:"				,11,1);
+		final JTextField  TB_ParaName= B100FrameParts.JTextFieldSet(						130,150,100,20,""							,11,0);
 		
-		JLabel LB_ParaTxt01		= B00110FrameParts.JLabelSet(					  0,200,130,20,"文字設定項目01:"	,11,1);
-		final JTextField  TB_ParaTxt01= B00110FrameParts.JTextFieldSet(		130,200,200,20,""					,11,0);
-		JLabel LB_ParaTxt02		= B00110FrameParts.JLabelSet(					  0,225,130,20,"文字設定項目02:"	,11,1);
-		final JTextField  TB_ParaTxt02= B00110FrameParts.JTextFieldSet(		130,225,200,20,""					,11,0);
-		JLabel LB_ParaTxt03		= B00110FrameParts.JLabelSet(					  0,250,130,20,"文字設定項目03:"	,11,1);
-		final JTextField  TB_ParaTxt03= B00110FrameParts.JTextFieldSet(		130,250,200,20,""					,11,0);
-		JLabel LB_ParaTxt04		= B00110FrameParts.JLabelSet(					  0,275,130,20,"文字設定項目04:"	,11,1);
-		final JTextField  TB_ParaTxt04= B00110FrameParts.JTextFieldSet(		130,275,200,20,""					,11,0);
-		JLabel LB_ParaTxt05		= B00110FrameParts.JLabelSet(					  0,300,130,20,"文字設定項目05:"	,11,1);
-		final JTextField  TB_ParaTxt05= B00110FrameParts.JTextFieldSet(		130,300,200,20,""					,11,0);
-		JLabel LB_ParaTxt06		= B00110FrameParts.JLabelSet(					  0,325,130,20,"文字設定項目06:"	,11,1);
-		final JTextField  TB_ParaTxt06= B00110FrameParts.JTextFieldSet(		130,325,200,20,""					,11,0);
-		JLabel LB_ParaTxt07		= B00110FrameParts.JLabelSet(					  0,350,130,20,"文字設定項目07:"	,11,1);
-		final JTextField  TB_ParaTxt07= B00110FrameParts.JTextFieldSet(		130,350,200,20,""					,11,0);
-		JLabel LB_ParaTxt08		= B00110FrameParts.JLabelSet(					  0,375,130,20,"文字設定項目08:"	,11,1);
-		final JTextField  TB_ParaTxt08= B00110FrameParts.JTextFieldSet(		130,375,200,20,""					,11,0);
-		JLabel LB_ParaTxt09		= B00110FrameParts.JLabelSet(					  0,400,130,20,"文字設定項目09:"	,11,1);
-		final JTextField  TB_ParaTxt09= B00110FrameParts.JTextFieldSet(		130,400,200,20,""					,11,0);
-		JLabel LB_ParaTxt10		= B00110FrameParts.JLabelSet(					  0,425,130,20,"文字設定項目10:"	,11,1);
-		final JTextField  TB_ParaTxt10= B00110FrameParts.JTextFieldSet(		130,425,200,20,""					,11,0);
+		JLabel LB_ParaTxt01		= B100FrameParts.JLabelSet(					  0,200,130,20,"文字設定項目01:"	,11,1);
+		final JTextField  TB_ParaTxt01= B100FrameParts.JTextFieldSet(		130,200,200,20,""					,11,0);
+		JLabel LB_ParaTxt02		= B100FrameParts.JLabelSet(					  0,225,130,20,"文字設定項目02:"	,11,1);
+		final JTextField  TB_ParaTxt02= B100FrameParts.JTextFieldSet(		130,225,200,20,""					,11,0);
+		JLabel LB_ParaTxt03		= B100FrameParts.JLabelSet(					  0,250,130,20,"文字設定項目03:"	,11,1);
+		final JTextField  TB_ParaTxt03= B100FrameParts.JTextFieldSet(		130,250,200,20,""					,11,0);
+		JLabel LB_ParaTxt04		= B100FrameParts.JLabelSet(					  0,275,130,20,"文字設定項目04:"	,11,1);
+		final JTextField  TB_ParaTxt04= B100FrameParts.JTextFieldSet(		130,275,200,20,""					,11,0);
+		JLabel LB_ParaTxt05		= B100FrameParts.JLabelSet(					  0,300,130,20,"文字設定項目05:"	,11,1);
+		final JTextField  TB_ParaTxt05= B100FrameParts.JTextFieldSet(		130,300,200,20,""					,11,0);
+		JLabel LB_ParaTxt06		= B100FrameParts.JLabelSet(					  0,325,130,20,"文字設定項目06:"	,11,1);
+		final JTextField  TB_ParaTxt06= B100FrameParts.JTextFieldSet(		130,325,200,20,""					,11,0);
+		JLabel LB_ParaTxt07		= B100FrameParts.JLabelSet(					  0,350,130,20,"文字設定項目07:"	,11,1);
+		final JTextField  TB_ParaTxt07= B100FrameParts.JTextFieldSet(		130,350,200,20,""					,11,0);
+		JLabel LB_ParaTxt08		= B100FrameParts.JLabelSet(					  0,375,130,20,"文字設定項目08:"	,11,1);
+		final JTextField  TB_ParaTxt08= B100FrameParts.JTextFieldSet(		130,375,200,20,""					,11,0);
+		JLabel LB_ParaTxt09		= B100FrameParts.JLabelSet(					  0,400,130,20,"文字設定項目09:"	,11,1);
+		final JTextField  TB_ParaTxt09= B100FrameParts.JTextFieldSet(		130,400,200,20,""					,11,0);
+		JLabel LB_ParaTxt10		= B100FrameParts.JLabelSet(					  0,425,130,20,"文字設定項目10:"	,11,1);
+		final JTextField  TB_ParaTxt10= B100FrameParts.JTextFieldSet(		130,425,200,20,""					,11,0);
 		
-		JLabel LB_ParaInt01	= B00110FrameParts.JLabelSet(									350,200,130,20,"数値設定項目01:"	,11,1);
-		final JFormattedTextField TB_ParaInt01= B00110FrameParts.JFormattedTextFieldSet(	480,200,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt02	= B00110FrameParts.JLabelSet(									350,225,130,20,"数値設定項目02:"	,11,1);
-		final JFormattedTextField TB_ParaInt02= B00110FrameParts.JFormattedTextFieldSet(	480,225,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt03	= B00110FrameParts.JLabelSet(									350,250,130,20,"数値設定項目03:"	,11,1);
-		final JFormattedTextField TB_ParaInt03= B00110FrameParts.JFormattedTextFieldSet(	480,250,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt04	= B00110FrameParts.JLabelSet(									350,275,130,20,"数値設定項目04:"	,11,1);
-		final JFormattedTextField TB_ParaInt04= B00110FrameParts.JFormattedTextFieldSet(	480,275,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt05	= B00110FrameParts.JLabelSet(									350,300,130,20,"数値設定項目05:"	,11,1);
-		final JFormattedTextField TB_ParaInt05= B00110FrameParts.JFormattedTextFieldSet(	480,300,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt06	= B00110FrameParts.JLabelSet(									350,325,130,20,"数値設定項目06:"	,11,1);
-		final JFormattedTextField TB_ParaInt06= B00110FrameParts.JFormattedTextFieldSet(	480,325,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt07	= B00110FrameParts.JLabelSet(									350,350,130,20,"数値設定項目07:"	,11,1);
-		final JFormattedTextField TB_ParaInt07= B00110FrameParts.JFormattedTextFieldSet(	480,350,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt08	= B00110FrameParts.JLabelSet(									350,375,130,20,"数値設定項目08:"	,11,1);
-		final JFormattedTextField TB_ParaInt08= B00110FrameParts.JFormattedTextFieldSet(	480,375,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt09	= B00110FrameParts.JLabelSet(									350,400,130,20,"数値設定項目09:"	,11,1);
-		final JFormattedTextField TB_ParaInt09= B00110FrameParts.JFormattedTextFieldSet(	480,400,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt10	= B00110FrameParts.JLabelSet(									350,425,130,20,"数値設定項目10:"	,11,1);
-		final JFormattedTextField TB_ParaInt10= B00110FrameParts.JFormattedTextFieldSet(	480,425,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt01	= B100FrameParts.JLabelSet(									350,200,130,20,"数値設定項目01:"	,11,1);
+		final JFormattedTextField TB_ParaInt01= B100FrameParts.JFormattedTextFieldSet(	480,200,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt02	= B100FrameParts.JLabelSet(									350,225,130,20,"数値設定項目02:"	,11,1);
+		final JFormattedTextField TB_ParaInt02= B100FrameParts.JFormattedTextFieldSet(	480,225,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt03	= B100FrameParts.JLabelSet(									350,250,130,20,"数値設定項目03:"	,11,1);
+		final JFormattedTextField TB_ParaInt03= B100FrameParts.JFormattedTextFieldSet(	480,250,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt04	= B100FrameParts.JLabelSet(									350,275,130,20,"数値設定項目04:"	,11,1);
+		final JFormattedTextField TB_ParaInt04= B100FrameParts.JFormattedTextFieldSet(	480,275,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt05	= B100FrameParts.JLabelSet(									350,300,130,20,"数値設定項目05:"	,11,1);
+		final JFormattedTextField TB_ParaInt05= B100FrameParts.JFormattedTextFieldSet(	480,300,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt06	= B100FrameParts.JLabelSet(									350,325,130,20,"数値設定項目06:"	,11,1);
+		final JFormattedTextField TB_ParaInt06= B100FrameParts.JFormattedTextFieldSet(	480,325,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt07	= B100FrameParts.JLabelSet(									350,350,130,20,"数値設定項目07:"	,11,1);
+		final JFormattedTextField TB_ParaInt07= B100FrameParts.JFormattedTextFieldSet(	480,350,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt08	= B100FrameParts.JLabelSet(									350,375,130,20,"数値設定項目08:"	,11,1);
+		final JFormattedTextField TB_ParaInt08= B100FrameParts.JFormattedTextFieldSet(	480,375,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt09	= B100FrameParts.JLabelSet(									350,400,130,20,"数値設定項目09:"	,11,1);
+		final JFormattedTextField TB_ParaInt09= B100FrameParts.JFormattedTextFieldSet(	480,400,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt10	= B100FrameParts.JLabelSet(									350,425,130,20,"数値設定項目10:"	,11,1);
+		final JFormattedTextField TB_ParaInt10= B100FrameParts.JFormattedTextFieldSet(	480,425,100,20,"0"					,11,1,"####");
 		
 		
-		JLabel LB_EntryDate				= B00110FrameParts.JLabelSet(			  0,475,130,20,"登録日:"	,11,1);
-		final JTextField  TB_EntryDate	= B00110FrameParts.JTextFieldSet(		130,475,200,20,""			,11,0);
-		JLabel LB_UpdateDate			= B00110FrameParts.JLabelSet(			  0,500,130,20,"更新日:"	,11,1);
-		final JTextField  TB_UpdateDate	= B00110FrameParts.JTextFieldSet(		130,500,200,20,""			,11,0);
-		JLabel LB_EntryUser				= B00110FrameParts.JLabelSet(			  0,525,130,20,"登録者:"	,11,1);
-		final JTextField  TB_EntryUser	= B00110FrameParts.JTextFieldSet(		130,525,200,20,""			,11,0);
-		JLabel LB_UpdateUser			= B00110FrameParts.JLabelSet(			  0,550,130,20,"更新者:"	,11,1);
-		final JTextField  TB_UpdateUser	= B00110FrameParts.JTextFieldSet(		130,550,200,20,""			,11,0);
+		JLabel LB_EntryDate				= B100FrameParts.JLabelSet(			  0,475,130,20,"登録日:"	,11,1);
+		final JTextField  TB_EntryDate	= B100FrameParts.JTextFieldSet(		130,475,200,20,""			,11,0);
+		JLabel LB_UpdateDate			= B100FrameParts.JLabelSet(			  0,500,130,20,"更新日:"	,11,1);
+		final JTextField  TB_UpdateDate	= B100FrameParts.JTextFieldSet(		130,500,200,20,""			,11,0);
+		JLabel LB_EntryUser				= B100FrameParts.JLabelSet(			  0,525,130,20,"登録者:"	,11,1);
+		final JTextField  TB_EntryUser	= B100FrameParts.JTextFieldSet(		130,525,200,20,""			,11,0);
+		JLabel LB_UpdateUser			= B100FrameParts.JLabelSet(			  0,550,130,20,"更新者:"	,11,1);
+		final JTextField  TB_UpdateUser	= B100FrameParts.JTextFieldSet(		130,550,200,20,""			,11,0);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,100,100,20,"新規モード",10);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,100,100,20,"新規モード",10);
 		main_fm.add(CreateBtn);
 		
 		TB_EntryDate.setEditable(false);
@@ -172,15 +172,15 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		TB_ParaCdSeq.setText(TgtParaCdSeq);
 		
 
-		for(int i=0;i<B00100DefaultVariable.ClList[1].length;i++) {
-			if(B00100DefaultVariable.ClList[1][i].equals(A00000Main.ClCd)) {
+		for(int i=0;i<B100DefaultVariable.ClList[1].length;i++) {
+			if(B100DefaultVariable.ClList[1][i].equals(A00000Main.ClCd)) {
 				TB_ClCd.setSelectedIndex(i);
 			}
 		}
 
 
-		for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-			if(B00100DefaultVariable.WhList[1][i].equals(A00000Main.ClWh)) {
+		for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+			if(B100DefaultVariable.WhList[1][i].equals(A00000Main.ClWh)) {
 				TB_WhCd.setSelectedIndex(i);
 			}
 		}
@@ -193,13 +193,13 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 			Object[][] ParameterMstRtWANKO = ParameterMstRtWANKO(TgtWhCd,TgtClCd,TgtParaCd,TgtParaCdSeq);
 			
 			if(1==ParameterMstRtWANKO.length) {
-				for(int i=0;i<B00100DefaultVariable.ClList[1].length;i++) {
-					if(B00100DefaultVariable.ClList[1][i].equals((String)ParameterMstRtWANKO[0][M00000ParameterMstWankoRt.ColClCd])) {
+				for(int i=0;i<B100DefaultVariable.ClList[1].length;i++) {
+					if(B100DefaultVariable.ClList[1][i].equals((String)ParameterMstRtWANKO[0][M00000ParameterMstWankoRt.ColClCd])) {
 						TB_ClCd.setSelectedIndex(i);
 					}
 				}
-				for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-					if(B00100DefaultVariable.WhList[1][i].equals((String)ParameterMstRtWANKO[0][M00000ParameterMstWankoRt.ColClWh])) {
+				for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+					if(B100DefaultVariable.WhList[1][i].equals((String)ParameterMstRtWANKO[0][M00000ParameterMstWankoRt.ColClWh])) {
 						TB_WhCd.setSelectedIndex(i);
 					}
 				}
@@ -241,8 +241,8 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		if(null==GetParaCd		) {GetParaCd	= "";}
 		if(null==GetParaCdSeq	) {GetParaCdSeq	= "";}
 		
-		B00020ToolsTextControl.Trim(GetParaCd);
-		B00020ToolsTextControl.Trim(GetParaCdSeq);
+		B100TextControl.Trim(GetParaCd);
+		B100TextControl.Trim(GetParaCdSeq);
 		
 		if("".equals(GetParaCd) && "".equals(GetParaCdSeq)) {
 			TB_ParaCd.requestFocusInWindow();
@@ -260,8 +260,8 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String GetClWh		= B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//担当倉庫コード
-				String GetClCd		= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
+				String GetClWh		= B100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//担当倉庫コード
+				String GetClCd		= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
 				String GetParaCd	= TB_ParaCd.getText();		//パラメータコード
 				String GetParaCdSeq	= TB_ParaCdSeq.getText();	//ナンバリング
 				String GetParaName	= TB_ParaName.getText();	//パラメータ名
@@ -331,8 +331,8 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		TB_ParaCd.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
-				String GetClWh		= B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//担当倉庫コード
-				String GetClCd		= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
+				String GetClWh		= B100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//担当倉庫コード
+				String GetClCd		= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
 				String GetParaCd	= TB_ParaCd.getText();			//パラメータコード
 				String GetParaCdSeq	= TB_ParaCdSeq.getText();		//ナンバリング
 				
@@ -341,12 +341,12 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 				if(null==GetParaCd		) {GetParaCd	= "";}
 				if(null==GetParaCdSeq	) {GetParaCdSeq	= "";}
 				
-				GetClWh			= B00020ToolsTextControl.Trim(GetClWh);
-				GetClCd			= B00020ToolsTextControl.Trim(GetClCd);
-				GetParaCd		= B00020ToolsTextControl.Trim(GetParaCd);
-				GetParaCdSeq	= B00020ToolsTextControl.Trim(GetParaCdSeq);
+				GetClWh			= B100TextControl.Trim(GetClWh);
+				GetClCd			= B100TextControl.Trim(GetClCd);
+				GetParaCd		= B100TextControl.Trim(GetParaCd);
+				GetParaCdSeq	= B100TextControl.Trim(GetParaCdSeq);
 				
-				GetParaCdSeq = B00020ToolsTextControl.num_only_String(GetParaCdSeq);
+				GetParaCdSeq = B100TextControl.num_only_String(GetParaCdSeq);
 				
 				if(!"".equals(GetParaCd) && !"".equals(GetParaCdSeq)) {
 					SetX=main_fm.getX();
@@ -363,8 +363,8 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		TB_ParaCdSeq.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
-				String GetClWh		= B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//担当倉庫コード
-				String GetClCd		= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
+				String GetClWh		= B100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//担当倉庫コード
+				String GetClCd		= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
 				String GetParaCd	= TB_ParaCd.getText();			//パラメータコード
 				String GetParaCdSeq	= TB_ParaCdSeq.getText();		//ナンバリング
 				
@@ -373,12 +373,12 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 				if(null==GetParaCd		) {GetParaCd	= "";}
 				if(null==GetParaCdSeq	) {GetParaCdSeq	= "";}
 				
-				GetClWh			= B00020ToolsTextControl.Trim(GetClWh);
-				GetClCd			= B00020ToolsTextControl.Trim(GetClCd);
-				GetParaCd		= B00020ToolsTextControl.Trim(GetParaCd);
-				GetParaCdSeq	= B00020ToolsTextControl.Trim(GetParaCdSeq);
+				GetClWh			= B100TextControl.Trim(GetClWh);
+				GetClCd			= B100TextControl.Trim(GetClCd);
+				GetParaCd		= B100TextControl.Trim(GetParaCd);
+				GetParaCdSeq	= B100TextControl.Trim(GetParaCdSeq);
 				
-				GetParaCdSeq = B00020ToolsTextControl.num_only_String(GetParaCdSeq);
+				GetParaCdSeq = B100TextControl.num_only_String(GetParaCdSeq);
 				
 				if(!"".equals(GetParaCd) && !"".equals(GetParaCdSeq)) {
 					SetX=main_fm.getX();
@@ -394,8 +394,8 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		//新規登録モードボタン押下時の挙動
 		CreateBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String GetClWh		= B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//担当倉庫コード
-				String GetClCd		= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
+				String GetClWh		= B100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//担当倉庫コード
+				String GetClCd		= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
 				String GetParaCd	= TB_ParaCd.getText();			//パラメータコード
 				String GetParaCdSeq	= TB_ParaCdSeq.getText();		//ナンバリング
 				
@@ -404,10 +404,10 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 				if(null==GetParaCd		) {GetParaCd	= "";}
 				if(null==GetParaCdSeq	) {GetParaCdSeq	= "";}
 				
-				GetClWh			= B00020ToolsTextControl.Trim(GetClWh);
-				GetClCd			= B00020ToolsTextControl.Trim(GetClCd);
-				GetParaCd		= B00020ToolsTextControl.Trim(GetParaCd);
-				GetParaCdSeq	= B00020ToolsTextControl.Trim(GetParaCdSeq);
+				GetClWh			= B100TextControl.Trim(GetClWh);
+				GetClCd			= B100TextControl.Trim(GetClCd);
+				GetParaCd		= B100TextControl.Trim(GetParaCd);
+				GetParaCdSeq	= B100TextControl.Trim(GetParaCdSeq);
 				
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
@@ -547,43 +547,43 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		if(null==GetParaInt09	) {GetParaInt09		= "";}	//パラメータ数値項目09
 		if(null==GetParaInt10	) {GetParaInt10		= "";}	//パラメータ数値項目10
 		
-		GetClWh			= B00020ToolsTextControl.Trim(GetClWh);			//担当倉庫コード
-		GetClCd			= B00020ToolsTextControl.Trim(GetClCd);			//荷主コード
-		GetParaCd		= B00020ToolsTextControl.Trim(GetParaCd);		//パラメータコード
-		GetParaCdSeq	= B00020ToolsTextControl.Trim(GetParaCdSeq);	//ナンバリング
-		GetParaName		= B00020ToolsTextControl.Trim(GetParaName);		//パラメータ名
-		GetParaTxt01	= B00020ToolsTextControl.Trim(GetParaTxt01);	//パラメータテキスト項目01
-		GetParaTxt02	= B00020ToolsTextControl.Trim(GetParaTxt02);	//パラメータテキスト項目02
-		GetParaTxt03	= B00020ToolsTextControl.Trim(GetParaTxt03);	//パラメータテキスト項目03
-		GetParaTxt04	= B00020ToolsTextControl.Trim(GetParaTxt04);	//パラメータテキスト項目04
-		GetParaTxt05	= B00020ToolsTextControl.Trim(GetParaTxt05);	//パラメータテキスト項目05
-		GetParaTxt06	= B00020ToolsTextControl.Trim(GetParaTxt06);	//パラメータテキスト項目06
-		GetParaTxt07	= B00020ToolsTextControl.Trim(GetParaTxt07);	//パラメータテキスト項目07
-		GetParaTxt08	= B00020ToolsTextControl.Trim(GetParaTxt08);	//パラメータテキスト項目08
-		GetParaTxt09	= B00020ToolsTextControl.Trim(GetParaTxt09);	//パラメータテキスト項目09
-		GetParaTxt10	= B00020ToolsTextControl.Trim(GetParaTxt10);	//パラメータテキスト項目10
-		GetParaInt01	= B00020ToolsTextControl.Trim(GetParaInt01);	//パラメータ数値項目01
-		GetParaInt02	= B00020ToolsTextControl.Trim(GetParaInt02);	//パラメータ数値項目02
-		GetParaInt03	= B00020ToolsTextControl.Trim(GetParaInt03);	//パラメータ数値項目03
-		GetParaInt04	= B00020ToolsTextControl.Trim(GetParaInt04);	//パラメータ数値項目04
-		GetParaInt05	= B00020ToolsTextControl.Trim(GetParaInt05);	//パラメータ数値項目05
-		GetParaInt06	= B00020ToolsTextControl.Trim(GetParaInt06);	//パラメータ数値項目06
-		GetParaInt07	= B00020ToolsTextControl.Trim(GetParaInt07);	//パラメータ数値項目07
-		GetParaInt08	= B00020ToolsTextControl.Trim(GetParaInt08);	//パラメータ数値項目08
-		GetParaInt09	= B00020ToolsTextControl.Trim(GetParaInt09);	//パラメータ数値項目09
-		GetParaInt10	= B00020ToolsTextControl.Trim(GetParaInt10);	//パラメータ数値項目10
+		GetClWh			= B100TextControl.Trim(GetClWh);			//担当倉庫コード
+		GetClCd			= B100TextControl.Trim(GetClCd);			//荷主コード
+		GetParaCd		= B100TextControl.Trim(GetParaCd);		//パラメータコード
+		GetParaCdSeq	= B100TextControl.Trim(GetParaCdSeq);	//ナンバリング
+		GetParaName		= B100TextControl.Trim(GetParaName);		//パラメータ名
+		GetParaTxt01	= B100TextControl.Trim(GetParaTxt01);	//パラメータテキスト項目01
+		GetParaTxt02	= B100TextControl.Trim(GetParaTxt02);	//パラメータテキスト項目02
+		GetParaTxt03	= B100TextControl.Trim(GetParaTxt03);	//パラメータテキスト項目03
+		GetParaTxt04	= B100TextControl.Trim(GetParaTxt04);	//パラメータテキスト項目04
+		GetParaTxt05	= B100TextControl.Trim(GetParaTxt05);	//パラメータテキスト項目05
+		GetParaTxt06	= B100TextControl.Trim(GetParaTxt06);	//パラメータテキスト項目06
+		GetParaTxt07	= B100TextControl.Trim(GetParaTxt07);	//パラメータテキスト項目07
+		GetParaTxt08	= B100TextControl.Trim(GetParaTxt08);	//パラメータテキスト項目08
+		GetParaTxt09	= B100TextControl.Trim(GetParaTxt09);	//パラメータテキスト項目09
+		GetParaTxt10	= B100TextControl.Trim(GetParaTxt10);	//パラメータテキスト項目10
+		GetParaInt01	= B100TextControl.Trim(GetParaInt01);	//パラメータ数値項目01
+		GetParaInt02	= B100TextControl.Trim(GetParaInt02);	//パラメータ数値項目02
+		GetParaInt03	= B100TextControl.Trim(GetParaInt03);	//パラメータ数値項目03
+		GetParaInt04	= B100TextControl.Trim(GetParaInt04);	//パラメータ数値項目04
+		GetParaInt05	= B100TextControl.Trim(GetParaInt05);	//パラメータ数値項目05
+		GetParaInt06	= B100TextControl.Trim(GetParaInt06);	//パラメータ数値項目06
+		GetParaInt07	= B100TextControl.Trim(GetParaInt07);	//パラメータ数値項目07
+		GetParaInt08	= B100TextControl.Trim(GetParaInt08);	//パラメータ数値項目08
+		GetParaInt09	= B100TextControl.Trim(GetParaInt09);	//パラメータ数値項目09
+		GetParaInt10	= B100TextControl.Trim(GetParaInt10);	//パラメータ数値項目10
 		
-		GetParaCdSeq	= B00020ToolsTextControl.num_only_String02(GetParaCdSeq);	//ナンバリング
-		GetParaInt01	= B00020ToolsTextControl.num_only_String02(GetParaInt01);	//パラメータ数値項目01
-		GetParaInt02	= B00020ToolsTextControl.num_only_String02(GetParaInt02);	//パラメータ数値項目02
-		GetParaInt03	= B00020ToolsTextControl.num_only_String02(GetParaInt03);	//パラメータ数値項目03
-		GetParaInt04	= B00020ToolsTextControl.num_only_String02(GetParaInt04);	//パラメータ数値項目04
-		GetParaInt05	= B00020ToolsTextControl.num_only_String02(GetParaInt05);	//パラメータ数値項目05
-		GetParaInt06	= B00020ToolsTextControl.num_only_String02(GetParaInt06);	//パラメータ数値項目06
-		GetParaInt07	= B00020ToolsTextControl.num_only_String02(GetParaInt07);	//パラメータ数値項目07
-		GetParaInt08	= B00020ToolsTextControl.num_only_String02(GetParaInt08);	//パラメータ数値項目08
-		GetParaInt09	= B00020ToolsTextControl.num_only_String02(GetParaInt09);	//パラメータ数値項目09
-		GetParaInt10	= B00020ToolsTextControl.num_only_String02(GetParaInt10);	//パラメータ数値項目10
+		GetParaCdSeq	= B100TextControl.num_only_String02(GetParaCdSeq);	//ナンバリング
+		GetParaInt01	= B100TextControl.num_only_String02(GetParaInt01);	//パラメータ数値項目01
+		GetParaInt02	= B100TextControl.num_only_String02(GetParaInt02);	//パラメータ数値項目02
+		GetParaInt03	= B100TextControl.num_only_String02(GetParaInt03);	//パラメータ数値項目03
+		GetParaInt04	= B100TextControl.num_only_String02(GetParaInt04);	//パラメータ数値項目04
+		GetParaInt05	= B100TextControl.num_only_String02(GetParaInt05);	//パラメータ数値項目05
+		GetParaInt06	= B100TextControl.num_only_String02(GetParaInt06);	//パラメータ数値項目06
+		GetParaInt07	= B100TextControl.num_only_String02(GetParaInt07);	//パラメータ数値項目07
+		GetParaInt08	= B100TextControl.num_only_String02(GetParaInt08);	//パラメータ数値項目08
+		GetParaInt09	= B100TextControl.num_only_String02(GetParaInt09);	//パラメータ数値項目09
+		GetParaInt10	= B100TextControl.num_only_String02(GetParaInt10);	//パラメータ数値項目10
 		
 		float WFT = (float)0;
 		
@@ -613,7 +613,7 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		
 		
 		
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		boolean Err = ErrCheck(
 				GetClWh,		//担当倉庫コード
 				GetClCd,		//荷主コード
@@ -700,7 +700,7 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 				entry_data[0][i] = (String)SetString[i][3];
 			}
 			
-			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+			A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 		}
 		return Err;
 	}
@@ -737,8 +737,8 @@ public class WM00006ParameterMstWankoRenewAndCreate{
 		if(null==GetParaCd 		) {GetParaCd = "";}
 		if(null==GetParaName 	) {GetParaName = "";}
 		
-		GetParaCd 		= B00020ToolsTextControl.Trim(GetParaCd);
-		GetParaName 	= B00020ToolsTextControl.Trim(GetParaName);
+		GetParaCd 		= B100TextControl.Trim(GetParaCd);
+		GetParaName 	= B100TextControl.Trim(GetParaName);
 		
 		if("".equals(GetParaCd)||"".equals(GetParaName)) {
 			JOptionPane.showMessageDialog(null, "パラメータコード・パラーメータ名は必須です");

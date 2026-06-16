@@ -15,22 +15,22 @@ public class W00010MainMenu{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,700,750,"Corgiメインメニュー","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,700,750,"Corgiメインメニュー","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.setVisible(true);
 		
 		//業務メニューボタン
-		JButton Work_btn=B00110FrameParts.BtnSet(    10,40,120,20,"業務メニュー",11);
+		JButton Work_btn=B100FrameParts.BtnSet(    10,40,120,20,"業務メニュー",11);
 		main_fm.add(Work_btn);
 		//マスタボタン
-		JButton Mst_btn=B00110FrameParts.BtnSet(    150,40,120,20,"マスタメニュー",11);
+		JButton Mst_btn=B100FrameParts.BtnSet(    150,40,120,20,"マスタメニュー",11);
 		main_fm.add(Mst_btn);
 		//荷主選択ボタン
-		JButton ClSelect_btn=B00110FrameParts.BtnSet(290,40,120,20,"荷主選択",11);
+		JButton ClSelect_btn=B100FrameParts.BtnSet(290,40,120,20,"荷主選択",11);
 		main_fm.add(ClSelect_btn);
 		
 		//業務メニューボタン押下時の挙動

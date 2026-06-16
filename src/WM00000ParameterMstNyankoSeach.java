@@ -29,111 +29,111 @@ public class WM00000ParameterMstNyankoSeach{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,1200,750,"Corgi00共通パラメータマスタ（NYANKO）検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,1200,750,"Corgi00共通パラメータマスタ（NYANKO）検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,1180,300,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,1180,300,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		
-		JLabel LB_SearchParaCd			= B00110FrameParts.JLabelSet(	  								  0, 25,130,20,"パラメータコード:"			,11,1);
-		final JTextField  TB_SearchParaCd	= B00110FrameParts.JTextFieldSet(							130, 25,100,20,""							,11,0);
-		JLabel LB2_SearchParaCd			= B00110FrameParts.JLabelSet(	  								230, 25, 80,20,"と一致"						,11,0);
-		JLabel LB_SearchParaCdSeq	= B00110FrameParts.JLabelSet(	  									  0, 50,130,20,"シーケンシャルNo:"			,11,1);
-		final JFormattedTextField TB_SearchParaCdSeqStr= B00110FrameParts.JFormattedTextFieldSet(	130, 50, 80,20,""							,11,1,"####");
-		JLabel LB2_SearchParaCdSeq	= B00110FrameParts.JLabelSet(										210, 50, 20,20,"～"							,11,2);
-		final JFormattedTextField TB_SearchParaCdSeqEnd= B00110FrameParts.JFormattedTextFieldSet(	230, 50, 80,20,""							,11,1,"####");
-		JLabel LB_SearchParaName		= B00110FrameParts.JLabelSet(									  0, 75,130,20,"パラメータ名:"				,11,1);
-		final JTextField  TB_SearchParaName= B00110FrameParts.JTextFieldSet(							130, 75,100,20,""							,11,0);
-		JLabel LB2_SearchParaName		= B00110FrameParts.JLabelSet(									230, 75, 80,20,"を含む"						,11,0);
-		JLabel LB_SearchParaTxtAll		= B00110FrameParts.JLabelSet(									  0,100,130,20,"文字設定項目のどれかに:"	,10,1);
-		final JTextField  TB_SearchParaTxtAll= B00110FrameParts.JTextFieldSet(						130,100,100,20,""							,11,0);
-		JLabel LB2_SearchParaTxtAll		= B00110FrameParts.JLabelSet(									230,100, 80,20,"を含む"						,11,0);
+		JLabel LB_SearchParaCd			= B100FrameParts.JLabelSet(	  								  0, 25,130,20,"パラメータコード:"			,11,1);
+		final JTextField  TB_SearchParaCd	= B100FrameParts.JTextFieldSet(							130, 25,100,20,""							,11,0);
+		JLabel LB2_SearchParaCd			= B100FrameParts.JLabelSet(	  								230, 25, 80,20,"と一致"						,11,0);
+		JLabel LB_SearchParaCdSeq	= B100FrameParts.JLabelSet(	  									  0, 50,130,20,"シーケンシャルNo:"			,11,1);
+		final JFormattedTextField TB_SearchParaCdSeqStr= B100FrameParts.JFormattedTextFieldSet(	130, 50, 80,20,""							,11,1,"####");
+		JLabel LB2_SearchParaCdSeq	= B100FrameParts.JLabelSet(										210, 50, 20,20,"～"							,11,2);
+		final JFormattedTextField TB_SearchParaCdSeqEnd= B100FrameParts.JFormattedTextFieldSet(	230, 50, 80,20,""							,11,1,"####");
+		JLabel LB_SearchParaName		= B100FrameParts.JLabelSet(									  0, 75,130,20,"パラメータ名:"				,11,1);
+		final JTextField  TB_SearchParaName= B100FrameParts.JTextFieldSet(							130, 75,100,20,""							,11,0);
+		JLabel LB2_SearchParaName		= B100FrameParts.JLabelSet(									230, 75, 80,20,"を含む"						,11,0);
+		JLabel LB_SearchParaTxtAll		= B100FrameParts.JLabelSet(									  0,100,130,20,"文字設定項目のどれかに:"	,10,1);
+		final JTextField  TB_SearchParaTxtAll= B100FrameParts.JTextFieldSet(						130,100,100,20,""							,11,0);
+		JLabel LB2_SearchParaTxtAll		= B100FrameParts.JLabelSet(									230,100, 80,20,"を含む"						,11,0);
 		
 		
-		JLabel LB_SearchParaTxt01		= B00110FrameParts.JLabelSet(					310, 25,130,20,"文字設定項目01:"	,11,1);
-		final JTextField  TB_SearchParaTxt01= B00110FrameParts.JTextFieldSet(			440, 25,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt01		= B00110FrameParts.JLabelSet(					540, 25, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt02		= B00110FrameParts.JLabelSet(					310, 50,130,20,"文字設定項目02:"	,11,1);
-		final JTextField  TB_SearchParaTxt02= B00110FrameParts.JTextFieldSet(			440, 50,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt02		= B00110FrameParts.JLabelSet(					540, 50, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt03		= B00110FrameParts.JLabelSet(					310, 75,130,20,"文字設定項目03:"	,11,1);
-		final JTextField  TB_SearchParaTxt03= B00110FrameParts.JTextFieldSet(			440, 75,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt03		= B00110FrameParts.JLabelSet(					540, 75, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt04		= B00110FrameParts.JLabelSet(					310,100,130,20,"文字設定項目04:"	,11,1);
-		final JTextField  TB_SearchParaTxt04= B00110FrameParts.JTextFieldSet(			440,100,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt04		= B00110FrameParts.JLabelSet(					540,100, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt05		= B00110FrameParts.JLabelSet(					310,125,130,20,"文字設定項目05:"	,11,1);
-		final JTextField  TB_SearchParaTxt05= B00110FrameParts.JTextFieldSet(			440,125,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt05		= B00110FrameParts.JLabelSet(					540,125, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt06		= B00110FrameParts.JLabelSet(					310,150,130,20,"文字設定項目06:"	,11,1);
-		final JTextField  TB_SearchParaTxt06= B00110FrameParts.JTextFieldSet(			440,150,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt06		= B00110FrameParts.JLabelSet(					540,150, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt07		= B00110FrameParts.JLabelSet(					310,175,130,20,"文字設定項目07:"	,11,1);
-		final JTextField  TB_SearchParaTxt07= B00110FrameParts.JTextFieldSet(			440,175,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt07		= B00110FrameParts.JLabelSet(					540,175, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt08		= B00110FrameParts.JLabelSet(					310,200,130,20,"文字設定項目08:"	,11,1);
-		final JTextField  TB_SearchParaTxt08= B00110FrameParts.JTextFieldSet(			440,200,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt08		= B00110FrameParts.JLabelSet(					540,200, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt09		= B00110FrameParts.JLabelSet(					310,225,130,20,"文字設定項目09:"	,11,1);
-		final JTextField  TB_SearchParaTxt09= B00110FrameParts.JTextFieldSet(			440,225,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt09		= B00110FrameParts.JLabelSet(					540,225, 80,20,"を含む"				,11,0);
-		JLabel LB_SearchParaTxt10		= B00110FrameParts.JLabelSet(					310,250,130,20,"文字設定項目10:"	,11,1);
-		final JTextField  TB_SearchParaTxt10= B00110FrameParts.JTextFieldSet(			440,250,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt10		= B00110FrameParts.JLabelSet(					540,250, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt01		= B100FrameParts.JLabelSet(					310, 25,130,20,"文字設定項目01:"	,11,1);
+		final JTextField  TB_SearchParaTxt01= B100FrameParts.JTextFieldSet(			440, 25,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt01		= B100FrameParts.JLabelSet(					540, 25, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt02		= B100FrameParts.JLabelSet(					310, 50,130,20,"文字設定項目02:"	,11,1);
+		final JTextField  TB_SearchParaTxt02= B100FrameParts.JTextFieldSet(			440, 50,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt02		= B100FrameParts.JLabelSet(					540, 50, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt03		= B100FrameParts.JLabelSet(					310, 75,130,20,"文字設定項目03:"	,11,1);
+		final JTextField  TB_SearchParaTxt03= B100FrameParts.JTextFieldSet(			440, 75,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt03		= B100FrameParts.JLabelSet(					540, 75, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt04		= B100FrameParts.JLabelSet(					310,100,130,20,"文字設定項目04:"	,11,1);
+		final JTextField  TB_SearchParaTxt04= B100FrameParts.JTextFieldSet(			440,100,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt04		= B100FrameParts.JLabelSet(					540,100, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt05		= B100FrameParts.JLabelSet(					310,125,130,20,"文字設定項目05:"	,11,1);
+		final JTextField  TB_SearchParaTxt05= B100FrameParts.JTextFieldSet(			440,125,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt05		= B100FrameParts.JLabelSet(					540,125, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt06		= B100FrameParts.JLabelSet(					310,150,130,20,"文字設定項目06:"	,11,1);
+		final JTextField  TB_SearchParaTxt06= B100FrameParts.JTextFieldSet(			440,150,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt06		= B100FrameParts.JLabelSet(					540,150, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt07		= B100FrameParts.JLabelSet(					310,175,130,20,"文字設定項目07:"	,11,1);
+		final JTextField  TB_SearchParaTxt07= B100FrameParts.JTextFieldSet(			440,175,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt07		= B100FrameParts.JLabelSet(					540,175, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt08		= B100FrameParts.JLabelSet(					310,200,130,20,"文字設定項目08:"	,11,1);
+		final JTextField  TB_SearchParaTxt08= B100FrameParts.JTextFieldSet(			440,200,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt08		= B100FrameParts.JLabelSet(					540,200, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt09		= B100FrameParts.JLabelSet(					310,225,130,20,"文字設定項目09:"	,11,1);
+		final JTextField  TB_SearchParaTxt09= B100FrameParts.JTextFieldSet(			440,225,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt09		= B100FrameParts.JLabelSet(					540,225, 80,20,"を含む"				,11,0);
+		JLabel LB_SearchParaTxt10		= B100FrameParts.JLabelSet(					310,250,130,20,"文字設定項目10:"	,11,1);
+		final JTextField  TB_SearchParaTxt10= B100FrameParts.JTextFieldSet(			440,250,100,20,""					,11,0);
+		JLabel LB2_SearchParaTxt10		= B100FrameParts.JLabelSet(					540,250, 80,20,"を含む"				,11,0);
 		
-		JLabel LB_SearchParaInt01	= B00110FrameParts.JLabelSet(										620, 25,130,20,"数値設定項目01:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt01Str= B00110FrameParts.JFormattedTextFieldSet(	750, 25,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt01	= B00110FrameParts.JLabelSet(										850, 25, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt01End= B00110FrameParts.JFormattedTextFieldSet(	870, 25,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt02	= B00110FrameParts.JLabelSet(										620, 50,130,20,"数値設定項目02:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt02Str= B00110FrameParts.JFormattedTextFieldSet(	750, 50,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt02	= B00110FrameParts.JLabelSet(										850, 50, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt02End= B00110FrameParts.JFormattedTextFieldSet(	870, 50,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt03	= B00110FrameParts.JLabelSet(										620, 75,130,20,"数値設定項目03:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt03Str= B00110FrameParts.JFormattedTextFieldSet(	750, 75,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt03	= B00110FrameParts.JLabelSet(										850, 75, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt03End= B00110FrameParts.JFormattedTextFieldSet(	870, 75,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt04	= B00110FrameParts.JLabelSet(										620,100,130,20,"数値設定項目04:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt04Str= B00110FrameParts.JFormattedTextFieldSet(	750,100,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt04	= B00110FrameParts.JLabelSet(										850,100, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt04End= B00110FrameParts.JFormattedTextFieldSet(	870,100,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt05	= B00110FrameParts.JLabelSet(										620,125,130,20,"数値設定項目05:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt05Str= B00110FrameParts.JFormattedTextFieldSet(	750,125,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt05	= B00110FrameParts.JLabelSet(										850,125, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt05End= B00110FrameParts.JFormattedTextFieldSet(	870,125,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt06	= B00110FrameParts.JLabelSet(										620,150,130,20,"数値設定項目06:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt06Str= B00110FrameParts.JFormattedTextFieldSet(	750,150,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt06	= B00110FrameParts.JLabelSet(										850,150, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt06End= B00110FrameParts.JFormattedTextFieldSet(	870,150,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt07	= B00110FrameParts.JLabelSet(										620,175,130,20,"数値設定項目07:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt07Str= B00110FrameParts.JFormattedTextFieldSet(	750,175,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt07	= B00110FrameParts.JLabelSet(										850,175, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt07End= B00110FrameParts.JFormattedTextFieldSet(	870,175,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt08	= B00110FrameParts.JLabelSet(										620,200,130,20,"数値設定項目08:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt08Str= B00110FrameParts.JFormattedTextFieldSet(	750,200,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt08	= B00110FrameParts.JLabelSet(										850,200, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt08End= B00110FrameParts.JFormattedTextFieldSet(	870,200,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt09	= B00110FrameParts.JLabelSet(										620,225,130,20,"数値設定項目09:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt09Str= B00110FrameParts.JFormattedTextFieldSet(	750,225,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt09	= B00110FrameParts.JLabelSet(										850,225, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt09End= B00110FrameParts.JFormattedTextFieldSet(	870,225,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt10	= B00110FrameParts.JLabelSet(										620,250,130,20,"数値設定項目10:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt10Str= B00110FrameParts.JFormattedTextFieldSet(	750,250,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt10	= B00110FrameParts.JLabelSet(										850,250, 20,20,"～"					,11,2);
-		final JFormattedTextField TB_SearchParaInt10End= B00110FrameParts.JFormattedTextFieldSet(	870,250,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt01	= B100FrameParts.JLabelSet(										620, 25,130,20,"数値設定項目01:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt01Str= B100FrameParts.JFormattedTextFieldSet(	750, 25,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt01	= B100FrameParts.JLabelSet(										850, 25, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt01End= B100FrameParts.JFormattedTextFieldSet(	870, 25,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt02	= B100FrameParts.JLabelSet(										620, 50,130,20,"数値設定項目02:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt02Str= B100FrameParts.JFormattedTextFieldSet(	750, 50,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt02	= B100FrameParts.JLabelSet(										850, 50, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt02End= B100FrameParts.JFormattedTextFieldSet(	870, 50,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt03	= B100FrameParts.JLabelSet(										620, 75,130,20,"数値設定項目03:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt03Str= B100FrameParts.JFormattedTextFieldSet(	750, 75,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt03	= B100FrameParts.JLabelSet(										850, 75, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt03End= B100FrameParts.JFormattedTextFieldSet(	870, 75,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt04	= B100FrameParts.JLabelSet(										620,100,130,20,"数値設定項目04:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt04Str= B100FrameParts.JFormattedTextFieldSet(	750,100,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt04	= B100FrameParts.JLabelSet(										850,100, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt04End= B100FrameParts.JFormattedTextFieldSet(	870,100,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt05	= B100FrameParts.JLabelSet(										620,125,130,20,"数値設定項目05:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt05Str= B100FrameParts.JFormattedTextFieldSet(	750,125,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt05	= B100FrameParts.JLabelSet(										850,125, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt05End= B100FrameParts.JFormattedTextFieldSet(	870,125,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt06	= B100FrameParts.JLabelSet(										620,150,130,20,"数値設定項目06:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt06Str= B100FrameParts.JFormattedTextFieldSet(	750,150,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt06	= B100FrameParts.JLabelSet(										850,150, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt06End= B100FrameParts.JFormattedTextFieldSet(	870,150,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt07	= B100FrameParts.JLabelSet(										620,175,130,20,"数値設定項目07:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt07Str= B100FrameParts.JFormattedTextFieldSet(	750,175,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt07	= B100FrameParts.JLabelSet(										850,175, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt07End= B100FrameParts.JFormattedTextFieldSet(	870,175,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt08	= B100FrameParts.JLabelSet(										620,200,130,20,"数値設定項目08:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt08Str= B100FrameParts.JFormattedTextFieldSet(	750,200,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt08	= B100FrameParts.JLabelSet(										850,200, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt08End= B100FrameParts.JFormattedTextFieldSet(	870,200,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt09	= B100FrameParts.JLabelSet(										620,225,130,20,"数値設定項目09:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt09Str= B100FrameParts.JFormattedTextFieldSet(	750,225,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt09	= B100FrameParts.JLabelSet(										850,225, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt09End= B100FrameParts.JFormattedTextFieldSet(	870,225,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt10	= B100FrameParts.JLabelSet(										620,250,130,20,"数値設定項目10:"	,11,1);
+		final JFormattedTextField TB_SearchParaInt10Str= B100FrameParts.JFormattedTextFieldSet(	750,250,100,20,""					,11,1,"####");
+		JLabel LB2_SearchParaInt10	= B100FrameParts.JLabelSet(										850,250, 20,20,"～"					,11,2);
+		final JFormattedTextField TB_SearchParaInt10End= B100FrameParts.JFormattedTextFieldSet(	870,250,100,20,""					,11,1,"####");
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(130,150,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(130,150,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		//条件クリアボタン
-		JButton ClearBtn = B00110FrameParts.BtnSet( 10,150,100,20,"条件クリア",11);
+		JButton ClearBtn = B100FrameParts.BtnSet( 10,150,100,20,"条件クリア",11);
 		PN_Search.add(ClearBtn);
 		
 		
@@ -237,10 +237,10 @@ public class WM00000ParameterMstNyankoSeach{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -257,38 +257,38 @@ public class WM00000ParameterMstNyankoSeach{
 		
 		for(int i=0;i<RtSettingParameterMstRtNANKO.length;i++) {
 			if("int".equals((String)RtSettingParameterMstRtNANKO[i][2])||"float".equals((String)RtSettingParameterMstRtNANKO[i][2])){
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 			
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,350,1180,280,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,350,1180,280,tb01);
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);
 		
 		main_fm.setVisible(true);
@@ -378,64 +378,64 @@ public class WM00000ParameterMstNyankoSeach{
 					if(null== GetSearchParaInt10End	){ GetSearchParaInt10End="";}
 					if(null== GetSearchParaTxtAll	){ GetSearchParaTxtAll="";}
 					
-					GetSearchParaCd			= B00020ToolsTextControl.Trim(GetSearchParaCd);
-					GetSearchParaCdSeqStr	= B00020ToolsTextControl.Trim(GetSearchParaCdSeqStr);
-					GetSearchParaCdSeqEnd	= B00020ToolsTextControl.Trim(GetSearchParaCdSeqEnd);
-					GetSearchParaName		= B00020ToolsTextControl.Trim(GetSearchParaName);
-					GetSearchParaTxt01		= B00020ToolsTextControl.Trim(GetSearchParaTxt01);
-					GetSearchParaTxt02		= B00020ToolsTextControl.Trim(GetSearchParaTxt02);
-					GetSearchParaTxt03		= B00020ToolsTextControl.Trim(GetSearchParaTxt03);
-					GetSearchParaTxt04		= B00020ToolsTextControl.Trim(GetSearchParaTxt04);
-					GetSearchParaTxt05		= B00020ToolsTextControl.Trim(GetSearchParaTxt05);
-					GetSearchParaTxt06		= B00020ToolsTextControl.Trim(GetSearchParaTxt06);
-					GetSearchParaTxt07		= B00020ToolsTextControl.Trim(GetSearchParaTxt07);
-					GetSearchParaTxt08		= B00020ToolsTextControl.Trim(GetSearchParaTxt08);
-					GetSearchParaTxt09		= B00020ToolsTextControl.Trim(GetSearchParaTxt09);
-					GetSearchParaTxt10		= B00020ToolsTextControl.Trim(GetSearchParaTxt10);
-					GetSearchParaInt01Str	= B00020ToolsTextControl.Trim(GetSearchParaInt01Str);
-					GetSearchParaInt02Str	= B00020ToolsTextControl.Trim(GetSearchParaInt02Str);
-					GetSearchParaInt03Str	= B00020ToolsTextControl.Trim(GetSearchParaInt03Str);
-					GetSearchParaInt04Str	= B00020ToolsTextControl.Trim(GetSearchParaInt04Str);
-					GetSearchParaInt05Str	= B00020ToolsTextControl.Trim(GetSearchParaInt05Str);
-					GetSearchParaInt06Str	= B00020ToolsTextControl.Trim(GetSearchParaInt06Str);
-					GetSearchParaInt07Str	= B00020ToolsTextControl.Trim(GetSearchParaInt07Str);
-					GetSearchParaInt08Str	= B00020ToolsTextControl.Trim(GetSearchParaInt08Str);
-					GetSearchParaInt09Str	= B00020ToolsTextControl.Trim(GetSearchParaInt09Str);
-					GetSearchParaInt10Str	= B00020ToolsTextControl.Trim(GetSearchParaInt10Str);
-					GetSearchParaInt01End	= B00020ToolsTextControl.Trim(GetSearchParaInt01End);
-					GetSearchParaInt02End	= B00020ToolsTextControl.Trim(GetSearchParaInt02End);
-					GetSearchParaInt03End	= B00020ToolsTextControl.Trim(GetSearchParaInt03End);
-					GetSearchParaInt04End	= B00020ToolsTextControl.Trim(GetSearchParaInt04End);
-					GetSearchParaInt05End	= B00020ToolsTextControl.Trim(GetSearchParaInt05End);
-					GetSearchParaInt06End	= B00020ToolsTextControl.Trim(GetSearchParaInt06End);
-					GetSearchParaInt07End	= B00020ToolsTextControl.Trim(GetSearchParaInt07End);
-					GetSearchParaInt08End	= B00020ToolsTextControl.Trim(GetSearchParaInt08End);
-					GetSearchParaInt09End	= B00020ToolsTextControl.Trim(GetSearchParaInt09End);
-					GetSearchParaInt10End	= B00020ToolsTextControl.Trim(GetSearchParaInt10End);
-					GetSearchParaTxtAll		= B00020ToolsTextControl.Trim(GetSearchParaTxtAll);
+					GetSearchParaCd			= B100TextControl.Trim(GetSearchParaCd);
+					GetSearchParaCdSeqStr	= B100TextControl.Trim(GetSearchParaCdSeqStr);
+					GetSearchParaCdSeqEnd	= B100TextControl.Trim(GetSearchParaCdSeqEnd);
+					GetSearchParaName		= B100TextControl.Trim(GetSearchParaName);
+					GetSearchParaTxt01		= B100TextControl.Trim(GetSearchParaTxt01);
+					GetSearchParaTxt02		= B100TextControl.Trim(GetSearchParaTxt02);
+					GetSearchParaTxt03		= B100TextControl.Trim(GetSearchParaTxt03);
+					GetSearchParaTxt04		= B100TextControl.Trim(GetSearchParaTxt04);
+					GetSearchParaTxt05		= B100TextControl.Trim(GetSearchParaTxt05);
+					GetSearchParaTxt06		= B100TextControl.Trim(GetSearchParaTxt06);
+					GetSearchParaTxt07		= B100TextControl.Trim(GetSearchParaTxt07);
+					GetSearchParaTxt08		= B100TextControl.Trim(GetSearchParaTxt08);
+					GetSearchParaTxt09		= B100TextControl.Trim(GetSearchParaTxt09);
+					GetSearchParaTxt10		= B100TextControl.Trim(GetSearchParaTxt10);
+					GetSearchParaInt01Str	= B100TextControl.Trim(GetSearchParaInt01Str);
+					GetSearchParaInt02Str	= B100TextControl.Trim(GetSearchParaInt02Str);
+					GetSearchParaInt03Str	= B100TextControl.Trim(GetSearchParaInt03Str);
+					GetSearchParaInt04Str	= B100TextControl.Trim(GetSearchParaInt04Str);
+					GetSearchParaInt05Str	= B100TextControl.Trim(GetSearchParaInt05Str);
+					GetSearchParaInt06Str	= B100TextControl.Trim(GetSearchParaInt06Str);
+					GetSearchParaInt07Str	= B100TextControl.Trim(GetSearchParaInt07Str);
+					GetSearchParaInt08Str	= B100TextControl.Trim(GetSearchParaInt08Str);
+					GetSearchParaInt09Str	= B100TextControl.Trim(GetSearchParaInt09Str);
+					GetSearchParaInt10Str	= B100TextControl.Trim(GetSearchParaInt10Str);
+					GetSearchParaInt01End	= B100TextControl.Trim(GetSearchParaInt01End);
+					GetSearchParaInt02End	= B100TextControl.Trim(GetSearchParaInt02End);
+					GetSearchParaInt03End	= B100TextControl.Trim(GetSearchParaInt03End);
+					GetSearchParaInt04End	= B100TextControl.Trim(GetSearchParaInt04End);
+					GetSearchParaInt05End	= B100TextControl.Trim(GetSearchParaInt05End);
+					GetSearchParaInt06End	= B100TextControl.Trim(GetSearchParaInt06End);
+					GetSearchParaInt07End	= B100TextControl.Trim(GetSearchParaInt07End);
+					GetSearchParaInt08End	= B100TextControl.Trim(GetSearchParaInt08End);
+					GetSearchParaInt09End	= B100TextControl.Trim(GetSearchParaInt09End);
+					GetSearchParaInt10End	= B100TextControl.Trim(GetSearchParaInt10End);
+					GetSearchParaTxtAll		= B100TextControl.Trim(GetSearchParaTxtAll);
 					
-					GetSearchParaCdSeqStr	= B00020ToolsTextControl.num_only_String02(GetSearchParaCdSeqStr);
-					GetSearchParaCdSeqEnd	= B00020ToolsTextControl.num_only_String02(GetSearchParaCdSeqEnd);
-					GetSearchParaInt01Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt01Str);
-					GetSearchParaInt02Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt02Str);
-					GetSearchParaInt03Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt03Str);
-					GetSearchParaInt04Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt04Str);
-					GetSearchParaInt05Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt05Str);
-					GetSearchParaInt06Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt06Str);
-					GetSearchParaInt07Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt07Str);
-					GetSearchParaInt08Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt08Str);
-					GetSearchParaInt09Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt09Str);
-					GetSearchParaInt10Str	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt10Str);
-					GetSearchParaInt01End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt01End);
-					GetSearchParaInt02End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt02End);
-					GetSearchParaInt03End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt03End);
-					GetSearchParaInt04End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt04End);
-					GetSearchParaInt05End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt05End);
-					GetSearchParaInt06End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt06End);
-					GetSearchParaInt07End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt07End);
-					GetSearchParaInt08End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt08End);
-					GetSearchParaInt09End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt09End);
-					GetSearchParaInt10End	= B00020ToolsTextControl.num_only_String02(GetSearchParaInt10End);
+					GetSearchParaCdSeqStr	= B100TextControl.num_only_String02(GetSearchParaCdSeqStr);
+					GetSearchParaCdSeqEnd	= B100TextControl.num_only_String02(GetSearchParaCdSeqEnd);
+					GetSearchParaInt01Str	= B100TextControl.num_only_String02(GetSearchParaInt01Str);
+					GetSearchParaInt02Str	= B100TextControl.num_only_String02(GetSearchParaInt02Str);
+					GetSearchParaInt03Str	= B100TextControl.num_only_String02(GetSearchParaInt03Str);
+					GetSearchParaInt04Str	= B100TextControl.num_only_String02(GetSearchParaInt04Str);
+					GetSearchParaInt05Str	= B100TextControl.num_only_String02(GetSearchParaInt05Str);
+					GetSearchParaInt06Str	= B100TextControl.num_only_String02(GetSearchParaInt06Str);
+					GetSearchParaInt07Str	= B100TextControl.num_only_String02(GetSearchParaInt07Str);
+					GetSearchParaInt08Str	= B100TextControl.num_only_String02(GetSearchParaInt08Str);
+					GetSearchParaInt09Str	= B100TextControl.num_only_String02(GetSearchParaInt09Str);
+					GetSearchParaInt10Str	= B100TextControl.num_only_String02(GetSearchParaInt10Str);
+					GetSearchParaInt01End	= B100TextControl.num_only_String02(GetSearchParaInt01End);
+					GetSearchParaInt02End	= B100TextControl.num_only_String02(GetSearchParaInt02End);
+					GetSearchParaInt03End	= B100TextControl.num_only_String02(GetSearchParaInt03End);
+					GetSearchParaInt04End	= B100TextControl.num_only_String02(GetSearchParaInt04End);
+					GetSearchParaInt05End	= B100TextControl.num_only_String02(GetSearchParaInt05End);
+					GetSearchParaInt06End	= B100TextControl.num_only_String02(GetSearchParaInt06End);
+					GetSearchParaInt07End	= B100TextControl.num_only_String02(GetSearchParaInt07End);
+					GetSearchParaInt08End	= B100TextControl.num_only_String02(GetSearchParaInt08End);
+					GetSearchParaInt09End	= B100TextControl.num_only_String02(GetSearchParaInt09End);
+					GetSearchParaInt10End	= B100TextControl.num_only_String02(GetSearchParaInt10End);
 					
 					ArrayList<String> SearchParaCd			= new ArrayList<String>();
 					ArrayList<Integer> SearchParaCdSeqStr	= new ArrayList<Integer>();
@@ -530,9 +530,9 @@ public class WM00000ParameterMstNyankoSeach{
 						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<ParameterMstRtNANKO.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					
 					RenewFg = true;
@@ -592,7 +592,7 @@ public class WM00000ParameterMstNyankoSeach{
 					String MSG = "エクセルファイル選択";
 					String[] file_type = {".xlsx"};
 					String file_type_name = "エクセルファイル";
-					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						SetX=main_fm.getX();
@@ -675,7 +675,7 @@ public class WM00000ParameterMstNyankoSeach{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","共通パラメータマスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","共通パラメータマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -686,7 +686,7 @@ public class WM00000ParameterMstNyankoSeach{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","共通パラメータマスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","共通パラメータマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

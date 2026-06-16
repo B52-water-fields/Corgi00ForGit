@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-public class B00030ToolsTextExport{
+public class B100TextExport{
 	//テキスト出力を行うためのツール群
 	// ==========================================================================
-    //  B00030ToolsTextExport（プロメーテウス）||楽園から持ち出すもの
+    //  B100TextExport（プロメーテウス）||楽園から持ち出すもの
     // ==========================================================================
 	//このクラスは外部連携用にテキストデータを吐き出すクラスです
 	//
@@ -46,8 +46,8 @@ public class B00030ToolsTextExport{
 	//行ごとのArrayListを受け取って、指定されたファイルパスにテキストデータ出力する
 	public static void txt_exp(ArrayList<String> line_txt,String fp,String TxtType){
 		//フルパスからフォルダ名取得 フォルダなければ作る
-		String dirName = B00040ToolsFolderCheck.FILE_FLD(fp) ;
-		B00040ToolsFolderCheck.FLD_CHECK(dirName);
+		String dirName = B100FolderCheck.FILE_FLD(fp) ;
+		B100FolderCheck.FLD_CHECK(dirName);
 		
 		if(null==TxtType||"".equals(TxtType)) {TxtType="UTF-8";}
 		try (BufferedWriter out01 = new BufferedWriter(
@@ -69,8 +69,8 @@ public class B00030ToolsTextExport{
 	//行ごとのArrayListを受け取って、指定されたファイルパスにテキストデータ出力する
 	public static void txt_exp2(ArrayList<String> line_txt,String fp,String TxtType){
 		//フルパスからフォルダ名取得 フォルダなければ作る
-		String dirName = B00040ToolsFolderCheck.FILE_FLD(fp) ;
-		B00040ToolsFolderCheck.FLD_CHECK(dirName);
+		String dirName = B100FolderCheck.FILE_FLD(fp) ;
+		B100FolderCheck.FLD_CHECK(dirName);
 		
 		if(null==TxtType||"".equals(TxtType)) {TxtType="UTF-8";}
 		try (BufferedWriter out01 = new BufferedWriter(
@@ -97,8 +97,8 @@ public class B00030ToolsTextExport{
 	//出力メッセージなし
 	public static void txt_exp3(ArrayList<String> line_txt,String fp){
 		//フルパスからフォルダ名取得 フォルダなければ作る
-		String dirName = B00040ToolsFolderCheck.FILE_FLD(fp) ;
-		B00040ToolsFolderCheck.FLD_CHECK(dirName);
+		String dirName = B100FolderCheck.FILE_FLD(fp) ;
+		B100FolderCheck.FLD_CHECK(dirName);
 		
 		try (BufferedWriter out01 = new BufferedWriter(
 						new OutputStreamWriter(
@@ -117,8 +117,8 @@ public class B00030ToolsTextExport{
 	
 	public static void txt_exp4(ArrayList<String> line_txt,String fp,String TxtType){
 		//フルパスからフォルダ名取得 フォルダなければ作る
-		String dirName = B00040ToolsFolderCheck.FILE_FLD(fp) ;
-		B00040ToolsFolderCheck.FLD_CHECK(dirName);
+		String dirName = B100FolderCheck.FILE_FLD(fp) ;
+		B100FolderCheck.FLD_CHECK(dirName);
 		
 		if(null==TxtType||"".equals(TxtType)) {TxtType="UTF-8";}
 		try (BufferedWriter out01 = new BufferedWriter(
@@ -142,8 +142,8 @@ public class B00030ToolsTextExport{
 	//配列要素受け取ってcsv出力する
 	public static void create_csv(String[][] OUTPUT_DATA,String fp,String TxtType){
 		//フルパスからフォルダ名取得 フォルダなければ作る
-		String dirName = B00040ToolsFolderCheck.FILE_FLD(fp) ;
-		B00040ToolsFolderCheck.FLD_CHECK(dirName);
+		String dirName = B100FolderCheck.FILE_FLD(fp) ;
+		B100FolderCheck.FLD_CHECK(dirName);
 		
 		if(null==TxtType||"".equals(TxtType)) {TxtType="UTF-8";}
 		try (BufferedWriter out01 = new BufferedWriter(
@@ -178,8 +178,8 @@ public class B00030ToolsTextExport{
 	//配列要素受け取ってcsv出力する
 	public static void create_csv2(String[][] OUTPUT_DATA,String fp,String TxtType){
 		//フルパスからフォルダ名取得 フォルダなければ作る
-		String dirName = B00040ToolsFolderCheck.FILE_FLD(fp) ;
-		B00040ToolsFolderCheck.FLD_CHECK(dirName);
+		String dirName = B100FolderCheck.FILE_FLD(fp) ;
+		B100FolderCheck.FLD_CHECK(dirName);
 		
 		if(null==TxtType||"".equals(TxtType)) {TxtType="UTF-8";}
 		try (BufferedWriter out01 = new BufferedWriter(

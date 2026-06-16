@@ -100,15 +100,15 @@ public class M00001WhMstRt{
 			ArrayList<String> SearchPTMSCD,
 			boolean AllSearch){
 		
-		SearchWHCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchWHCD);
-		SearchWHName	= B00150ArrayListControl.ArryListStringUniqueList(SearchWHName);
-		SearchPost		= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd		= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel		= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax		= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail		= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom		= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
-		SearchPTMSCD	= B00150ArrayListControl.ArryListStringUniqueList(SearchPTMSCD);
+		SearchWHCD		= B100ArrayListControl.ArryListStringUniqueList(SearchWHCD);
+		SearchWHName	= B100ArrayListControl.ArryListStringUniqueList(SearchWHName);
+		SearchPost		= B100ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd		= B100ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel		= B100ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax		= B100ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail		= B100ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom		= B100ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchPTMSCD	= B100ArrayListControl.ArryListStringUniqueList(SearchPTMSCD);
 		
 		Object[][] rt = new Object[0][RtSettingWhMstRt().length];
 		boolean SearchKick = false;
@@ -222,11 +222,11 @@ public class M00001WhMstRt{
 		sql = sql + " order by "+A00000Main.MySqlDefaultSchemaNYANKO+".KM0010_WHMST.WHCD";
 		
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchWHCD&&0<SearchWHCD.size()){
@@ -311,8 +311,8 @@ public class M00001WhMstRt{
 					if(null==rset01.getString("Com02")){		rt[counter][ColNoCom02]		="";}else{rt[counter][ColNoCom02]			=rset01.getString("Com02");}		//コメント２
 					if(null==rset01.getString("Com03")){		rt[counter][ColNoCom03]		="";}else{rt[counter][ColNoCom03]			=rset01.getString("Com03");}		//コメント３
 					if(null==rset01.getString("PTMSCD")){		rt[counter][ColNoPTMSCD]		="";}else{rt[counter][ColNoPTMSCD]			=rset01.getString("PTMSCD");}		//基幹システム連携用事業所CD
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColNoEntryDate]	="";}else{rt[counter][ColNoEntryDate]		=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColNoUpdateDate]	="";}else{rt[counter][ColNoUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColNoEntryDate]	="";}else{rt[counter][ColNoEntryDate]		=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColNoUpdateDate]	="";}else{rt[counter][ColNoUpdateDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
 					if(null==rset01.getString("EntryUser")){	rt[counter][ColNoEntryUser]	="";}else{rt[counter][ColNoEntryUser]		=rset01.getString("EntryUser");}			//登録者
 					if(null==rset01.getString("UpdateUser")){	rt[counter][ColNoUpdateUser]	="";}else{rt[counter][ColNoUpdateUser]	=rset01.getString("UpdateUser");}		//更新者
 					counter=counter+1;
@@ -329,7 +329,7 @@ public class M00001WhMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -357,7 +357,7 @@ public class M00001WhMstRt{
     	
     	for(int i=0;i<WhMstRt.length;i++) {
     		if(4<(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).length()&&"ATWH".equals((""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]).substring(0,4))) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]);
+    			String WST = B100TextControl.num_only_String(""+WhMstRt[i][M00001WhMstRt.ColNoWHCD]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(WhNo<wint) {

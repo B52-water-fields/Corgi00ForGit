@@ -21,54 +21,54 @@ public class WM00021ClGpMstRenewAndCrwate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,625,"Corgi00荷主グループ登録・修正","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,625,"Corgi00荷主グループ登録・修正","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ClGpCD		 = B00110FrameParts.JLabelSet(  0, 40,100,20,"荷主グループCD:"	,11,1);
-		JLabel LB_CLGpName01	 = B00110FrameParts.JLabelSet(  0, 65,100,20,"荷主名1:"		,11,1);
-		JLabel LB_CLGpName02	 = B00110FrameParts.JLabelSet(  0, 90,100,20,"荷主名2:"		,11,1);
-		JLabel LB_CLGpName03	 = B00110FrameParts.JLabelSet(  0,115,100,20,"荷主名3:"		,11,1);
-		JLabel LB_Post			 = B00110FrameParts.JLabelSet(  0,140,100,20,"郵便番号:"		,11,1);
-		JLabel LB_Add01			 = B00110FrameParts.JLabelSet(  0,165,100,20,"住所1:"			,11,1);
-		JLabel LB_Add02			 = B00110FrameParts.JLabelSet(  0,190,100,20,"住所2:"			,11,1);
-		JLabel LB_Add03			 = B00110FrameParts.JLabelSet(  0,215,100,20,"住所3:"			,11,1);
-		JLabel LB_Tel			 = B00110FrameParts.JLabelSet(  0,240,100,20,"電話番号:"		,11,1);
-		JLabel LB_Fax			 = B00110FrameParts.JLabelSet(  0,265,100,20,"FAX:"			,11,1);
-		JLabel LB_Mail			 = B00110FrameParts.JLabelSet(  0,290,100,20,"メールアドレス:"	,11,1);
-		JLabel LB_Com01			 = B00110FrameParts.JLabelSet(  0,315,100,20,"コメント1:"		,11,1);
-		JLabel LB_Com02			 = B00110FrameParts.JLabelSet(  0,340,100,20,"コメント2:"		,11,1);
-		JLabel LB_Com03			 = B00110FrameParts.JLabelSet(  0,365,100,20,"コメント3:"		,11,1);
-		JLabel LB_EntryDate		 = B00110FrameParts.JLabelSet(  0,390,100,20,"データ登録日時:"	,11,1);
-		JLabel LB_UpdateDate	 = B00110FrameParts.JLabelSet(  0,415,100,20,"データ更新日時:"	,11,1);
-		JLabel LB_EntryUser		 = B00110FrameParts.JLabelSet(  0,440,100,20,"登録者コード:"	,11,1);
-		JLabel LB_UpdateUser	 = B00110FrameParts.JLabelSet(  0,465,100,20,"更新者コード:"	,11,1);
-		JLabel LB_PassWord		 = B00110FrameParts.JLabelSet(  0,490,100,20,"パスワード:"		,11,1);
+		JLabel LB_ClGpCD		 = B100FrameParts.JLabelSet(  0, 40,100,20,"荷主グループCD:"	,11,1);
+		JLabel LB_CLGpName01	 = B100FrameParts.JLabelSet(  0, 65,100,20,"荷主名1:"		,11,1);
+		JLabel LB_CLGpName02	 = B100FrameParts.JLabelSet(  0, 90,100,20,"荷主名2:"		,11,1);
+		JLabel LB_CLGpName03	 = B100FrameParts.JLabelSet(  0,115,100,20,"荷主名3:"		,11,1);
+		JLabel LB_Post			 = B100FrameParts.JLabelSet(  0,140,100,20,"郵便番号:"		,11,1);
+		JLabel LB_Add01			 = B100FrameParts.JLabelSet(  0,165,100,20,"住所1:"			,11,1);
+		JLabel LB_Add02			 = B100FrameParts.JLabelSet(  0,190,100,20,"住所2:"			,11,1);
+		JLabel LB_Add03			 = B100FrameParts.JLabelSet(  0,215,100,20,"住所3:"			,11,1);
+		JLabel LB_Tel			 = B100FrameParts.JLabelSet(  0,240,100,20,"電話番号:"		,11,1);
+		JLabel LB_Fax			 = B100FrameParts.JLabelSet(  0,265,100,20,"FAX:"			,11,1);
+		JLabel LB_Mail			 = B100FrameParts.JLabelSet(  0,290,100,20,"メールアドレス:"	,11,1);
+		JLabel LB_Com01			 = B100FrameParts.JLabelSet(  0,315,100,20,"コメント1:"		,11,1);
+		JLabel LB_Com02			 = B100FrameParts.JLabelSet(  0,340,100,20,"コメント2:"		,11,1);
+		JLabel LB_Com03			 = B100FrameParts.JLabelSet(  0,365,100,20,"コメント3:"		,11,1);
+		JLabel LB_EntryDate		 = B100FrameParts.JLabelSet(  0,390,100,20,"データ登録日時:"	,11,1);
+		JLabel LB_UpdateDate	 = B100FrameParts.JLabelSet(  0,415,100,20,"データ更新日時:"	,11,1);
+		JLabel LB_EntryUser		 = B100FrameParts.JLabelSet(  0,440,100,20,"登録者コード:"	,11,1);
+		JLabel LB_UpdateUser	 = B100FrameParts.JLabelSet(  0,465,100,20,"更新者コード:"	,11,1);
+		JLabel LB_PassWord		 = B100FrameParts.JLabelSet(  0,490,100,20,"パスワード:"		,11,1);
 		
-		final JTextField TB_ClGpCD		 = B00110FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//荷主グループCD
-		final JTextField TB_CLGpName01	 = B00110FrameParts.JTextFieldSet(100, 65,200,20,"",11,0);	//荷主名1
-		final JTextField TB_CLGpName02	 = B00110FrameParts.JTextFieldSet(100, 90,200,20,"",11,0);	//荷主名2
-		final JTextField TB_CLGpName03	 = B00110FrameParts.JTextFieldSet(100,115,200,20,"",11,0);	//荷主名3
-		final JTextField TB_Post		 = B00110FrameParts.JTextFieldSet(100,140,100,20,"",11,0);	//郵便番号
-		final JTextField TB_Add01		 = B00110FrameParts.JTextFieldSet(100,165,250,20,"",11,0);	//住所1
-		final JTextField TB_Add02		 = B00110FrameParts.JTextFieldSet(100,190,250,20,"",11,0);	//住所2
-		final JTextField TB_Add03		 = B00110FrameParts.JTextFieldSet(100,215,250,20,"",11,0);	//住所3
-		final JTextField TB_Tel			 = B00110FrameParts.JTextFieldSet(100,240,100,20,"",11,0);	//電話番号
-		final JTextField TB_Fax			 = B00110FrameParts.JTextFieldSet(100,265,100,20,"",11,0);	//FAX
-		final JTextField TB_Mail		 = B00110FrameParts.JTextFieldSet(100,290,200,20,"",11,0);	//メールアドレス
-		final JTextField TB_Com01		 = B00110FrameParts.JTextFieldSet(100,315,250,20,"",11,0);	//コメント1
-		final JTextField TB_Com02		 = B00110FrameParts.JTextFieldSet(100,340,250,20,"",11,0);	//コメント2
-		final JTextField TB_Com03		 = B00110FrameParts.JTextFieldSet(100,365,250,20,"",11,0);	//コメント3
-		final JTextField TB_EntryDate	 = B00110FrameParts.JTextFieldSet(100,390,250,20,"",11,0);	//データ登録日時
-		final JTextField TB_UpdateDate	 = B00110FrameParts.JTextFieldSet(100,415,250,20,"",11,0);	//データ更新日時
-		final JTextField TB_EntryUser	 = B00110FrameParts.JTextFieldSet(100,440,250,20,"",11,0);	//登録者コード
-		final JTextField TB_UpdateUser	 = B00110FrameParts.JTextFieldSet(100,465,250,20,"",11,0);	//更新者コード
-		final JTextField TB_PassWord	 = B00110FrameParts.JTextFieldSet(100,490,100,20,"",11,0);	//パスワード
+		final JTextField TB_ClGpCD		 = B100FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//荷主グループCD
+		final JTextField TB_CLGpName01	 = B100FrameParts.JTextFieldSet(100, 65,200,20,"",11,0);	//荷主名1
+		final JTextField TB_CLGpName02	 = B100FrameParts.JTextFieldSet(100, 90,200,20,"",11,0);	//荷主名2
+		final JTextField TB_CLGpName03	 = B100FrameParts.JTextFieldSet(100,115,200,20,"",11,0);	//荷主名3
+		final JTextField TB_Post		 = B100FrameParts.JTextFieldSet(100,140,100,20,"",11,0);	//郵便番号
+		final JTextField TB_Add01		 = B100FrameParts.JTextFieldSet(100,165,250,20,"",11,0);	//住所1
+		final JTextField TB_Add02		 = B100FrameParts.JTextFieldSet(100,190,250,20,"",11,0);	//住所2
+		final JTextField TB_Add03		 = B100FrameParts.JTextFieldSet(100,215,250,20,"",11,0);	//住所3
+		final JTextField TB_Tel			 = B100FrameParts.JTextFieldSet(100,240,100,20,"",11,0);	//電話番号
+		final JTextField TB_Fax			 = B100FrameParts.JTextFieldSet(100,265,100,20,"",11,0);	//FAX
+		final JTextField TB_Mail		 = B100FrameParts.JTextFieldSet(100,290,200,20,"",11,0);	//メールアドレス
+		final JTextField TB_Com01		 = B100FrameParts.JTextFieldSet(100,315,250,20,"",11,0);	//コメント1
+		final JTextField TB_Com02		 = B100FrameParts.JTextFieldSet(100,340,250,20,"",11,0);	//コメント2
+		final JTextField TB_Com03		 = B100FrameParts.JTextFieldSet(100,365,250,20,"",11,0);	//コメント3
+		final JTextField TB_EntryDate	 = B100FrameParts.JTextFieldSet(100,390,250,20,"",11,0);	//データ登録日時
+		final JTextField TB_UpdateDate	 = B100FrameParts.JTextFieldSet(100,415,250,20,"",11,0);	//データ更新日時
+		final JTextField TB_EntryUser	 = B100FrameParts.JTextFieldSet(100,440,250,20,"",11,0);	//登録者コード
+		final JTextField TB_UpdateUser	 = B100FrameParts.JTextFieldSet(100,465,250,20,"",11,0);	//更新者コード
+		final JTextField TB_PassWord	 = B100FrameParts.JTextFieldSet(100,490,100,20,"",11,0);	//パスワード
 		
 		TB_ClGpCD.setEnabled(false);
 		TB_EntryDate.setEditable(false);	//データ登録日時
@@ -163,7 +163,7 @@ public class WM00021ClGpMstRenewAndCrwate{
 			@Override
 			public void focusLost(FocusEvent e){
 				String GetPost = TB_Post.getText();	if(null==GetPost) {GetPost="";}
-				GetPost = B00020ToolsTextControl.Trim(B00020ToolsTextControl.num_only_String(GetPost));
+				GetPost = B100TextControl.Trim(B100TextControl.num_only_String(GetPost));
 				TB_Post.setText(GetPost);
 				
 				ArrayList<String> SearchPOST = new ArrayList<String>();
@@ -231,32 +231,32 @@ public class WM00021ClGpMstRenewAndCrwate{
 				String GetCom03			  = TB_Com03.getText();			if(null==GetCom03){GetCom03 = "";}					//コメント3
 				String GetPassWord		  = TB_PassWord.getText();		if(null==GetPassWord){GetPassWord = "";}			//パスワード
 				
-				GetClGpCD = B00020ToolsTextControl.Trim(GetClGpCD);
-				GetCLGpName01 = B00020ToolsTextControl.Trim(GetCLGpName01);
-				GetCLGpName02 = B00020ToolsTextControl.Trim(GetCLGpName02);
-				GetCLGpName03 = B00020ToolsTextControl.Trim(GetCLGpName03);
-				GetPost = B00020ToolsTextControl.Trim(GetPost);
-				GetAdd01 = B00020ToolsTextControl.Trim(GetAdd01);
-				GetAdd02 = B00020ToolsTextControl.Trim(GetAdd02);
-				GetAdd03 = B00020ToolsTextControl.Trim(GetAdd03);
-				GetTel = B00020ToolsTextControl.Trim(GetTel);
-				GetFax = B00020ToolsTextControl.Trim(GetFax);
-				GetMail = B00020ToolsTextControl.Trim(GetMail);
-				GetCom01 = B00020ToolsTextControl.Trim(GetCom01);
-				GetCom02 = B00020ToolsTextControl.Trim(GetCom02);
-				GetCom03 = B00020ToolsTextControl.Trim(GetCom03);
-				GetPassWord	 = B00020ToolsTextControl.Trim(GetPassWord);
+				GetClGpCD = B100TextControl.Trim(GetClGpCD);
+				GetCLGpName01 = B100TextControl.Trim(GetCLGpName01);
+				GetCLGpName02 = B100TextControl.Trim(GetCLGpName02);
+				GetCLGpName03 = B100TextControl.Trim(GetCLGpName03);
+				GetPost = B100TextControl.Trim(GetPost);
+				GetAdd01 = B100TextControl.Trim(GetAdd01);
+				GetAdd02 = B100TextControl.Trim(GetAdd02);
+				GetAdd03 = B100TextControl.Trim(GetAdd03);
+				GetTel = B100TextControl.Trim(GetTel);
+				GetFax = B100TextControl.Trim(GetFax);
+				GetMail = B100TextControl.Trim(GetMail);
+				GetCom01 = B100TextControl.Trim(GetCom01);
+				GetCom02 = B100TextControl.Trim(GetCom02);
+				GetCom03 = B100TextControl.Trim(GetCom03);
+				GetPassWord	 = B100TextControl.Trim(GetPassWord);
 	
-				GetPost = B00020ToolsTextControl.num_only_String(GetPost);
-				GetTel  = B00020ToolsTextControl.num_only_String(GetTel);
-				GetFax  = B00020ToolsTextControl.num_only_String(GetFax);
+				GetPost = B100TextControl.num_only_String(GetPost);
+				GetTel  = B100TextControl.num_only_String(GetTel);
+				GetFax  = B100TextControl.num_only_String(GetFax);
 				
 				if(!"".equals(GetCLGpName01)) {
 					if("".equals(GetClGpCD)) {
 						GetClGpCD = M00010ClGpMstRt.NewWhCdGet(1)[0];
 					}
 					
-					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 					
 					String[][] SetString = {
 							{"ClGpCD"		,"1","1",GetClGpCD}			//荷主グループCD
@@ -300,10 +300,10 @@ public class WM00021ClGpMstRenewAndCrwate{
 						entry_data[0][i] = SetString[i][3];
 					}
 
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					//荷主グループ一覧更新
-					B00100DefaultVariable.ClGpList();
+					B100DefaultVariable.ClGpList();
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();

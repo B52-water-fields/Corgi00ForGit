@@ -24,32 +24,32 @@ public class WM00051DeliveryTypeMstRenewAndCreate{
 		if(null==DeliveryTypeNo) {DeliveryTypeNo = "";}
 		if(null==DeliveryTypeCd) {DeliveryTypeCd = "";}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,350,"Corgi00運送タイプマスタ登録・更新","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,350,"Corgi00運送タイプマスタ登録・更新","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_DeliveryTypeNo	= B00110FrameParts.JLabelSet(  0, 40,100,20,"タイプ番号:",			11,1);
-		JLabel LB_DeliveryTypeCd	= B00110FrameParts.JLabelSet(  0, 65,100,20,"運送タイプコード:",	11,1);
-		JLabel LB_DeliveryTypeName	= B00110FrameParts.JLabelSet(  0, 90,100,20,"運送タイプ名:",		11,1);
-		JLabel LB_EntryDate			= B00110FrameParts.JLabelSet(  0,115,100,20,"データ登録日時:",		11,1);
-		JLabel LB_UpdateDate		= B00110FrameParts.JLabelSet(  0,140,100,20,"データ更新日時:",		11,1);
-		JLabel LB_EntryUser			= B00110FrameParts.JLabelSet(  0,165,100,20,"登録者コード:",		11,1);
-		JLabel LB_UpdateUser		= B00110FrameParts.JLabelSet(  0,190,100,20,"更新者コード:",		11,1);
+		JLabel LB_DeliveryTypeNo	= B100FrameParts.JLabelSet(  0, 40,100,20,"タイプ番号:",			11,1);
+		JLabel LB_DeliveryTypeCd	= B100FrameParts.JLabelSet(  0, 65,100,20,"運送タイプコード:",	11,1);
+		JLabel LB_DeliveryTypeName	= B100FrameParts.JLabelSet(  0, 90,100,20,"運送タイプ名:",		11,1);
+		JLabel LB_EntryDate			= B100FrameParts.JLabelSet(  0,115,100,20,"データ登録日時:",		11,1);
+		JLabel LB_UpdateDate		= B100FrameParts.JLabelSet(  0,140,100,20,"データ更新日時:",		11,1);
+		JLabel LB_EntryUser			= B100FrameParts.JLabelSet(  0,165,100,20,"登録者コード:",		11,1);
+		JLabel LB_UpdateUser		= B100FrameParts.JLabelSet(  0,190,100,20,"更新者コード:",		11,1);
 		
 		String[] TypeNoList = {"01","02","03","04","05"};
 		
-		final JComboBox  TB_SearchDeliveryTypeNo	= B00110FrameParts.JComboBoxSet( 100, 40,100,20,TypeNoList,11);	//タイプNo
-		final JTextField TB_DeliveryTypeCd			= B00110FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//運送タイプコード
-		final JTextField TB_DeliveryTypeName		= B00110FrameParts.JTextFieldSet(100, 90,150,20,"",11,0);			//運送タイプ名
-		final JTextField TB_EntryDate				= B00110FrameParts.JTextFieldSet(100,115,250,20,"",11,0);			//データ登録日時
-		final JTextField TB_UpdateDate				= B00110FrameParts.JTextFieldSet(100,140,250,20,"",11,0);			//データ更新日時
-		final JTextField TB_EntryUser				= B00110FrameParts.JTextFieldSet(100,165,250,20,"",11,0);			//登録者コード
-		final JTextField TB_UpdateUser				= B00110FrameParts.JTextFieldSet(100,190,250,20,"",11,0);			//更新者コード
+		final JComboBox  TB_SearchDeliveryTypeNo	= B100FrameParts.JComboBoxSet( 100, 40,100,20,TypeNoList,11);	//タイプNo
+		final JTextField TB_DeliveryTypeCd			= B100FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//運送タイプコード
+		final JTextField TB_DeliveryTypeName		= B100FrameParts.JTextFieldSet(100, 90,150,20,"",11,0);			//運送タイプ名
+		final JTextField TB_EntryDate				= B100FrameParts.JTextFieldSet(100,115,250,20,"",11,0);			//データ登録日時
+		final JTextField TB_UpdateDate				= B100FrameParts.JTextFieldSet(100,140,250,20,"",11,0);			//データ更新日時
+		final JTextField TB_EntryUser				= B100FrameParts.JTextFieldSet(100,165,250,20,"",11,0);			//登録者コード
+		final JTextField TB_UpdateUser				= B100FrameParts.JTextFieldSet(100,190,250,20,"",11,0);			//更新者コード
 		
 		TB_EntryDate.setEnabled(false);
 		TB_UpdateDate.setEnabled(false);
@@ -134,14 +134,14 @@ public class WM00051DeliveryTypeMstRenewAndCreate{
 					if(null==GetDeliveryTypeCd			){GetDeliveryTypeCd = "";}
 					if(null==GetDeliveryTypeName		){GetDeliveryTypeName = "";}
 					
-					GetSearchDeliveryTypeNo	= B00020ToolsTextControl.Trim(GetSearchDeliveryTypeNo);
-					GetDeliveryTypeCd		= B00020ToolsTextControl.Trim(GetDeliveryTypeCd);
-					GetDeliveryTypeName		= B00020ToolsTextControl.Trim(GetDeliveryTypeName);
+					GetSearchDeliveryTypeNo	= B100TextControl.Trim(GetSearchDeliveryTypeNo);
+					GetDeliveryTypeCd		= B100TextControl.Trim(GetDeliveryTypeCd);
+					GetDeliveryTypeName		= B100TextControl.Trim(GetDeliveryTypeName);
 					
-					GetDeliveryTypeCd		= B00020ToolsTextControl.only1byte_String(GetDeliveryTypeCd);
+					GetDeliveryTypeCd		= B100TextControl.only1byte_String(GetDeliveryTypeCd);
 					
 					if(!"".equals(GetSearchDeliveryTypeNo)&&!"".equals(GetDeliveryTypeCd)&&!"".equals(GetDeliveryTypeName)) {
-						String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+						String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 						String[][] SetString = {
 								 {"DeliveryTypeNo"		,"1","1",GetSearchDeliveryTypeNo}	//タイプ番号
 								,{"DeliveryTypeCd"		,"1","1",GetDeliveryTypeCd}			//運送タイプコード
@@ -173,8 +173,8 @@ public class WM00051DeliveryTypeMstRenewAndCreate{
 							entry_data[0][i] = SetString[i][3];
 						}
 						
-						A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
-						B00100DefaultVariable.DeliveryType();
+						A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+						B100DefaultVariable.DeliveryType();
 						
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();

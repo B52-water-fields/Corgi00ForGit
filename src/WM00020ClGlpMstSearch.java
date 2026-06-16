@@ -28,48 +28,48 @@ public class WM00020ClGlpMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,780,750,"Corgi00荷主グループ検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,780,750,"Corgi00荷主グループ検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,740,150,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,740,150,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchClGpCD  = B00110FrameParts.JLabelSet(		  0, 25,100,20,"荷主GlpCD:"	,11,1);
-		JLabel LB_SearchCLGpName  = B00110FrameParts.JLabelSet(	  0, 50,100,20,"名称:"		,11,1);
-		JLabel LB_SearchPost  = B00110FrameParts.JLabelSet(		  0, 75,100,20,"郵便番号:"	,11,1);
-		JLabel LB_SearchAdd  = B00110FrameParts.JLabelSet(			  0,100,100,20,"住所:"		,11,1);
-		JLabel LB_SearchCom  = B00110FrameParts.JLabelSet(			  0,125,100,20,"コメント:"	,11,1);
+		JLabel LB_SearchClGpCD  = B100FrameParts.JLabelSet(		  0, 25,100,20,"荷主GlpCD:"	,11,1);
+		JLabel LB_SearchCLGpName  = B100FrameParts.JLabelSet(	  0, 50,100,20,"名称:"		,11,1);
+		JLabel LB_SearchPost  = B100FrameParts.JLabelSet(		  0, 75,100,20,"郵便番号:"	,11,1);
+		JLabel LB_SearchAdd  = B100FrameParts.JLabelSet(			  0,100,100,20,"住所:"		,11,1);
+		JLabel LB_SearchCom  = B100FrameParts.JLabelSet(			  0,125,100,20,"コメント:"	,11,1);
 		
-		JLabel LB_SearchTel  = B00110FrameParts.JLabelSet(			350, 25,100,20,"Tel:"		,11,1);
-		JLabel LB_SearchFax  = B00110FrameParts.JLabelSet(			350, 50,100,20,"Fax:"		,11,1);
-		JLabel LB_SearchMail  = B00110FrameParts.JLabelSet(		350, 75,100,20,"Mail:"		,11,1);
+		JLabel LB_SearchTel  = B100FrameParts.JLabelSet(			350, 25,100,20,"Tel:"		,11,1);
+		JLabel LB_SearchFax  = B100FrameParts.JLabelSet(			350, 50,100,20,"Fax:"		,11,1);
+		JLabel LB_SearchMail  = B100FrameParts.JLabelSet(		350, 75,100,20,"Mail:"		,11,1);
 		
-		final JTextField TB_SearchClGpCD = B00110FrameParts.JTextFieldSet(	100, 25,100,20,"",11,0);
-		final JTextField TB_SearchCLGpName = B00110FrameParts.JTextFieldSet(	100, 50,150,20,"",11,0);
-		final JTextField TB_SearchPost = B00110FrameParts.JTextFieldSet(		100, 75,100,20,"",11,0);
-		final JTextField TB_SearchAdd = B00110FrameParts.JTextFieldSet(		100,100,150,20,"",11,0);
-		final JTextField TB_SearchCom  = B00110FrameParts.JTextFieldSet(		100,125,150,20,"",11,0);
+		final JTextField TB_SearchClGpCD = B100FrameParts.JTextFieldSet(	100, 25,100,20,"",11,0);
+		final JTextField TB_SearchCLGpName = B100FrameParts.JTextFieldSet(	100, 50,150,20,"",11,0);
+		final JTextField TB_SearchPost = B100FrameParts.JTextFieldSet(		100, 75,100,20,"",11,0);
+		final JTextField TB_SearchAdd = B100FrameParts.JTextFieldSet(		100,100,150,20,"",11,0);
+		final JTextField TB_SearchCom  = B100FrameParts.JTextFieldSet(		100,125,150,20,"",11,0);
 		
-		final JTextField TB_SearchTel = B00110FrameParts.JTextFieldSet(		450, 25,100,20,"",11,0);
-		final JTextField TB_SearchFax  = B00110FrameParts.JTextFieldSet(		450, 50,100,20,"",11,0);
-		final JTextField TB_SearchMail = B00110FrameParts.JTextFieldSet(		450, 75,150,20,"",11,0);
+		final JTextField TB_SearchTel = B100FrameParts.JTextFieldSet(		450, 25,100,20,"",11,0);
+		final JTextField TB_SearchFax  = B100FrameParts.JTextFieldSet(		450, 50,100,20,"",11,0);
+		final JTextField TB_SearchMail = B100FrameParts.JTextFieldSet(		450, 75,150,20,"",11,0);
 		
-		JLabel LB2_SearchClGpCD  = B00110FrameParts.JLabelSet(		 200, 25,100,20,"と一致"	,11,0);
-		JLabel LB2_SearchCLGpName  = B00110FrameParts.JLabelSet(	 250, 50,100,20,"を含む"	,11,0);
-		JLabel LB2_SearchPost  = B00110FrameParts.JLabelSet(		 200, 75,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchAdd  = B00110FrameParts.JLabelSet(		 250,100,100,20,"を含む"	,11,0);
-		JLabel LB2_SearchCom  = B00110FrameParts.JLabelSet(		 250,125,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchClGpCD  = B100FrameParts.JLabelSet(		 200, 25,100,20,"と一致"	,11,0);
+		JLabel LB2_SearchCLGpName  = B100FrameParts.JLabelSet(	 250, 50,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchPost  = B100FrameParts.JLabelSet(		 200, 75,100,20,"で始まる"	,11,0);
+		JLabel LB2_SearchAdd  = B100FrameParts.JLabelSet(		 250,100,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchCom  = B100FrameParts.JLabelSet(		 250,125,100,20,"を含む"	,11,0);
 		
-		JLabel LB2_SearchTel  = B00110FrameParts.JLabelSet(		 550, 25,100,20,"を含む"	,11,0);
-		JLabel LB2_SearchFax  = B00110FrameParts.JLabelSet(		 550, 50,100,20,"を含む"	,11,0);
-		JLabel LB2_SearchMail  = B00110FrameParts.JLabelSet(		 600, 75,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchTel  = B100FrameParts.JLabelSet(		 550, 25,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchFax  = B100FrameParts.JLabelSet(		 550, 50,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchMail  = B100FrameParts.JLabelSet(		 600, 75,100,20,"を含む"	,11,0);
 		
 		PN_Search.add(LB_SearchClGpCD);
 		PN_Search.add(LB_SearchCLGpName);
@@ -102,7 +102,7 @@ public class WM00020ClGlpMstSearch{
 		PN_Search.add(LB2_SearchMail);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(450,125,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(450,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		String[] columnNames01 = {
@@ -129,9 +129,9 @@ public class WM00020ClGlpMstSearch{
 				};
 	
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -144,47 +144,47 @@ public class WM00020ClGlpMstSearch{
 		//列幅初期設定 表示位置設定
 		TableColumn column = null;
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主グループCD"
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主名1
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主名2
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//荷主名3
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//郵便番号
-		column = columnModel01.getColumn( 6);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//住所1
-		column = columnModel01.getColumn( 7);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//住所
-		column = columnModel01.getColumn( 8);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//住所3
-		column = columnModel01.getColumn( 9);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//電話番号
-		column = columnModel01.getColumn(10);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//FAX
-		column = columnModel01.getColumn(11);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//メールアドレス
-		column = columnModel01.getColumn(12);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント1
-		column = columnModel01.getColumn(13);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント2
-		column = columnModel01.getColumn(14);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント3
-		column = columnModel01.getColumn(15);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//データ登録日時
-		column = columnModel01.getColumn(16);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//データ更新日時
-		column = columnModel01.getColumn(17);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//登録者コード
-		column = columnModel01.getColumn(18);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//更新者コード
-		column = columnModel01.getColumn(19);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//パスワード
+		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//荷主グループCD"
+		column = columnModel01.getColumn( 2);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//荷主名1
+		column = columnModel01.getColumn( 3);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//荷主名2
+		column = columnModel01.getColumn( 4);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//荷主名3
+		column = columnModel01.getColumn( 5);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//郵便番号
+		column = columnModel01.getColumn( 6);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//住所1
+		column = columnModel01.getColumn( 7);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//住所
+		column = columnModel01.getColumn( 8);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//住所3
+		column = columnModel01.getColumn( 9);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//電話番号
+		column = columnModel01.getColumn(10);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//FAX
+		column = columnModel01.getColumn(11);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//メールアドレス
+		column = columnModel01.getColumn(12);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//コメント1
+		column = columnModel01.getColumn(13);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//コメント2
+		column = columnModel01.getColumn(14);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//コメント3
+		column = columnModel01.getColumn(15);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//データ登録日時
+		column = columnModel01.getColumn(16);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//データ更新日時
+		column = columnModel01.getColumn(17);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//登録者コード
+		column = columnModel01.getColumn(18);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//更新者コード
+		column = columnModel01.getColumn(19);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//パスワード
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,200,740,420,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,200,740,420,tb01);
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excelボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		main_fm.setVisible(true);
@@ -212,9 +212,9 @@ public class WM00020ClGlpMstSearch{
 					String GetSearchFax = TB_SearchFax.getText();		if(null==GetSearchFax){GetSearchFax="";}
 					String GetSearchMail = TB_SearchMail.getText();		if(null==GetSearchMail){GetSearchMail="";}
 					
-					GetSearchPost = B00020ToolsTextControl.num_only_String(GetSearchPost);
-					GetSearchTel  = B00020ToolsTextControl.num_only_String(GetSearchTel);
-					GetSearchFax  = B00020ToolsTextControl.num_only_String(GetSearchFax);
+					GetSearchPost = B100TextControl.num_only_String(GetSearchPost);
+					GetSearchTel  = B100TextControl.num_only_String(GetSearchTel);
+					GetSearchFax  = B100TextControl.num_only_String(GetSearchFax);
 					
 					ArrayList<String> SearchClGpCD = new ArrayList<String>();
 					ArrayList<String> SearchCLGpName = new ArrayList<String>();
@@ -276,9 +276,9 @@ public class WM00020ClGlpMstSearch{
 						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<ClGpMstRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}
@@ -352,7 +352,7 @@ public class WM00020ClGlpMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","荷主グループマスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","荷主グループマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -363,7 +363,7 @@ public class WM00020ClGlpMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","荷主グループマスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","荷主グループマスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

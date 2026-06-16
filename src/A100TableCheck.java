@@ -4,10 +4,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class A00040TableCheck{
+public class A100TableCheck{
 	//必要テーブルをチェック→無ければ作る
 	// ================================================================
-    //  A00040TableCheck（創世記／テーブル自動治癒エンジン）
+    //  A100TableCheck（創世記／テーブル自動治癒エンジン）
     // ================================================================
     //
     //  このクラスは、ユーザーID「zeus」ログイン時に起動します。
@@ -64,14 +64,14 @@ public class A00040TableCheck{
 			}
 		}
 		if(KM0020_USERMSTUnHitFg) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement CreateTablestmt = null;
 			Statement stmt01 = null;
 			
 			String sql = KM0020_USERMSTCreateSql();
 			try {
-				CreateTablestmt = A00010DbConnect.conn.prepareStatement(sql);
+				CreateTablestmt = A100DbConnect.conn.prepareStatement(sql);
 				CreateTablestmt.executeUpdate();
 				if(null!=CreateTablestmt) {CreateTablestmt.close();}
 			} catch (SQLException e) {
@@ -85,7 +85,7 @@ public class A00040TableCheck{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 	}
 	//NYANKOデータベースの必要なテーブルを確認する
@@ -11558,7 +11558,7 @@ public class A00040TableCheck{
 	private static String[] ColumnList(String TgtDB,String TgtTable) {
 		//データベース・テーブルを指定してフィールド名一覧を返却する
 		String[] ColumName=new String[0];
-		A00010DbConnect.DB_CONN(TgtDB);
+		A100DbConnect.DB_CONN(TgtDB);
 		ResultSet rset01 = null;
 		PreparedStatement CreateTablestmt = null;
 		Statement stmt01 = null;
@@ -11588,7 +11588,7 @@ public class A00040TableCheck{
 				+ " AND TABLE_NAME = '"+TgtTable+"'";
 
 		try {
-			stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+			stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 				      ResultSet.CONCUR_UPDATABLE);
 			rset01 = stmt01.executeQuery(sql);
 			
@@ -11620,19 +11620,19 @@ public class A00040TableCheck{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 		
 		return ColumName;
 	}
 	
 	//sql実行
 	private static void KickSql(String TgtDB,String sql) {
-		A00010DbConnect.DB_CONN(TgtDB);
+		A100DbConnect.DB_CONN(TgtDB);
 		ResultSet rset01 = null;
 		PreparedStatement CreateTablestmt = null;
 		Statement stmt01 = null;
 		try {
-			CreateTablestmt = A00010DbConnect.conn.prepareStatement(sql);
+			CreateTablestmt = A100DbConnect.conn.prepareStatement(sql);
 			CreateTablestmt.executeUpdate();
 			if(null!=CreateTablestmt) {CreateTablestmt.close();}
 		} catch (SQLException e) {
@@ -11646,13 +11646,13 @@ public class A00040TableCheck{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 	}
 	
 	private static String[] TabeleList(String TgtDB) {
 		//データベースのテーブル一覧を返却する
 		String[] TableName=new String[0];
-		A00010DbConnect.DB_CONN(TgtDB);
+		A100DbConnect.DB_CONN(TgtDB);
 		ResultSet rset01 = null;
 		PreparedStatement CreateTablestmt = null;
 		Statement stmt01 = null;
@@ -11660,7 +11660,7 @@ public class A00040TableCheck{
 		String sql = "SELECT database()";
 		
 		try {
-			stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+			stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 				      ResultSet.CONCUR_UPDATABLE);
 			rset01 = stmt01.executeQuery(sql);
 			int counter = 0;
@@ -11699,7 +11699,7 @@ public class A00040TableCheck{
 				rset01 = null;
 				stmt01 = null;
 				sql = "show tables";
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+				stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 					      ResultSet.CONCUR_UPDATABLE);
 				rset01 = stmt01.executeQuery(sql);
 				counter = 0;
@@ -11729,7 +11729,7 @@ public class A00040TableCheck{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 		return TableName;
 	}
 }

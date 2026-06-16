@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class B00110FrameParts{
+public class B100FrameParts{
 	static int Width;
 	static int Height;
 	

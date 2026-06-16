@@ -114,14 +114,14 @@ public class M00030ShippingCompanyMstRt{
 			ArrayList<String> SearchCom,
 			boolean AllSearch){
 		
-		SearchShippingCompanyCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
-		SearchCompanyName		= B00150ArrayListControl.ArryListStringUniqueList(SearchCompanyName);
-		SearchPost				= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd				= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel				= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax				= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail				= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom				= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchShippingCompanyCd	= B100ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
+		SearchCompanyName		= B100ArrayListControl.ArryListStringUniqueList(SearchCompanyName);
+		SearchPost				= B100ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd				= B100ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel				= B100ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax				= B100ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail				= B100ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom				= B100ArrayListControl.ArryListStringUniqueList(SearchCom);
 		
 		Object[][] rt = new Object[0][RtSettingShippingCompanyMstRt().length];
 		
@@ -234,11 +234,11 @@ public class M00030ShippingCompanyMstRt{
 		}
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchShippingCompanyCd && 0<SearchShippingCompanyCd.size()){
@@ -260,7 +260,7 @@ public class M00030ShippingCompanyMstRt{
 				if(null!=SearchPost && 0<SearchPost.size()){
 					for(int i=0;i<SearchPost.size();i++){
 						StmtCount = StmtCount+1;
-						stmt01.setString(StmtCount, ""+B00020ToolsTextControl.num_only_String(""+SearchPost.get(i))+"%");
+						stmt01.setString(StmtCount, ""+B100TextControl.num_only_String(""+SearchPost.get(i))+"%");
 					}
 				}
 				if(null!=SearchAdd && 0<SearchAdd.size()){
@@ -272,13 +272,13 @@ public class M00030ShippingCompanyMstRt{
 				if(null!=SearchTel && 0<SearchTel.size()){
 					for(int i=0;i<SearchTel.size();i++){
 						StmtCount = StmtCount+1;
-						stmt01.setString(StmtCount, "%"+B00020ToolsTextControl.num_only_String(""+SearchTel.get(i))+"%");
+						stmt01.setString(StmtCount, "%"+B100TextControl.num_only_String(""+SearchTel.get(i))+"%");
 					}
 				}
 				if(null!=SearchFax && 0<SearchFax.size()){
 					for(int i=0;i<SearchFax.size();i++){
 						StmtCount = StmtCount+1;
-						stmt01.setString(StmtCount, "%"+B00020ToolsTextControl.num_only_String(""+SearchFax.get(i))+"%");
+						stmt01.setString(StmtCount, "%"+B100TextControl.num_only_String(""+SearchFax.get(i))+"%");
 					}
 				}
 				if(null!=SearchMail && 0<SearchMail.size()){
@@ -325,8 +325,8 @@ public class M00030ShippingCompanyMstRt{
 					if(null==rset01.getString("Com03")){					rt[counter][ColCom03]						="";}else{rt[counter][ColCom03]					=rset01.getString("Com03");}					//コメント3
 					rt[counter][ColShimeDate]=rset01.getInt("ShimeDate");				//締日
 					rt[counter][ColShimeBasis]=rset01.getInt("ShimeBasis");			//請求基準
-					if(null==rset01.getTimestamp("EntryDate")){				rt[counter][ColEntryDate]					="";}else{rt[counter][ColEntryDate]				=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){			rt[counter][ColUpdateDate]				="";}else{rt[counter][ColUpdateDate]				=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){				rt[counter][ColEntryDate]					="";}else{rt[counter][ColEntryDate]				=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){			rt[counter][ColUpdateDate]				="";}else{rt[counter][ColUpdateDate]				=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
 					if(null==rset01.getString("EntryUser")){				rt[counter][ColEntryUser]					="";}else{rt[counter][ColEntryUser]				=rset01.getString("EntryUser");}				//登録者コード
 					if(null==rset01.getString("UpdateUser")){				rt[counter][ColUpdateUser]				="";}else{rt[counter][ColUpdateUser]				=rset01.getString("UpdateUser");}				//更新者コード
 					if(null==rset01.getString("PTMSCD")){					rt[counter][ColPTMSCD]						="";}else{rt[counter][ColPTMSCD]					=rset01.getString("PTMSCD");}					//基幹システム傭車コード
@@ -346,7 +346,7 @@ public class M00030ShippingCompanyMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -377,7 +377,7 @@ public class M00030ShippingCompanyMstRt{
     	
     	for(int i=0;i<ShippingCompanyMstRt.length;i++) {
     		if(4<(""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]).length()&&"ATSC".equals((""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]).substring(0,4))) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]);
+    			String WST = B100TextControl.num_only_String(""+ShippingCompanyMstRt[i][M00030ShippingCompanyMstRt.ColShippingCompanyCd]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(SCNo<wint) {

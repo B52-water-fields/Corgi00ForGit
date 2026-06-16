@@ -55,9 +55,9 @@ public class M00050DeliveryTypeMstRt{
 			ArrayList<String> SearchDeliveryTypeName,
 			boolean AllSearch){
 		
-		SearchDeliveryTypeNo	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeNo);
-		SearchDeliveryTypeCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd);
-		SearchDeliveryTypeName	= B00150ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeName);
+		SearchDeliveryTypeNo	= B100ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeNo);
+		SearchDeliveryTypeCd	= B100ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd);
+		SearchDeliveryTypeName	= B100ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeName);
 		
 		Object[][] rt = new Object[0][RtSettingDeliveryTypeMstRt().length];
 		boolean SearchKick = false;
@@ -107,11 +107,11 @@ public class M00050DeliveryTypeMstRt{
 
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchDeliveryTypeNo&&0<SearchDeliveryTypeNo.size()) {
@@ -149,8 +149,8 @@ public class M00050DeliveryTypeMstRt{
 					rt[counter][ColDeliveryTypeNo]=rset01.getInt("DeliveryTypeNo");		//タイプ番号
 					if(null==rset01.getString("DeliveryTypeCd")){	rt[counter][ColDeliveryTypeCd]	="";}else{rt[counter][ColDeliveryTypeCd]		=rset01.getString("DeliveryTypeCd");}		//運送タイプコード
 					if(null==rset01.getString("DeliveryTypeName")){	rt[counter][ColDeliveryTypeName]	="";}else{rt[counter][ColDeliveryTypeName]	=rset01.getString("DeliveryTypeName");}		//運送タイプ名
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]			="";}else{rt[counter][ColEntryDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]			=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]			="";}else{rt[counter][ColEntryDate]			=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]			=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
 					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser]			="";}else{rt[counter][ColEntryUser]			=rset01.getString("EntryUser");}			//登録者コード
 					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]			=rset01.getString("UpdateUser");}			//更新者コード
 					
@@ -168,7 +168,7 @@ public class M00050DeliveryTypeMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}

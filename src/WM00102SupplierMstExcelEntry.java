@@ -29,19 +29,19 @@ public class WM00102SupplierMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,200,"Corgi00仕入先マスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,600,200,"Corgi00仕入先マスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		final String[] SheetList = B00060ToolsExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100ExcellControl.ExcellSheetList(TgtFilePath);
 		
-		JLabel LB_SheetList				= B00110FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
-		final JComboBox   TB_SheetList	= B00110FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
+		JLabel LB_SheetList				= B100FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
+		final JComboBox   TB_SheetList	= B100FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
 		
 		main_fm.add(LB_SheetList);
 		main_fm.add(TB_SheetList);	//シート一覧
@@ -82,10 +82,10 @@ public class WM00102SupplierMstExcelEntry{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,750,800,"Corgi00仕入先マスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,750,800,"Corgi00仕入先マスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
@@ -117,7 +117,7 @@ public class WM00102SupplierMstExcelEntry{
 				,{"部署CD"					, 1	,22}
 				};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		
-		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
+		JLabel LB_SheetList	= B100FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = new String[NeedCol.length+1];
@@ -125,10 +125,10 @@ public class WM00102SupplierMstExcelEntry{
 		for(int i=0;i<NeedCol.length;i++) {columnNames01[i+1] = (String)NeedCol[i][0];}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -143,17 +143,17 @@ public class WM00102SupplierMstExcelEntry{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);
 		for(int i=1;i<NeedCol.length;i++) {
 			if(0==(int)NeedCol[i][1]) {
-				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());	
 			}else {
-				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	
 			}
 		}
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,700,600,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,65,700,600,tb01);
 		main_fm.add(scpn01);
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B00060ToolsExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 		
 		if(null==HeaderRead||0==HeaderRead.length) {
@@ -202,7 +202,7 @@ public class WM00102SupplierMstExcelEntry{
 			for(int i01=0;i01<NeedCol.length;i01++) {
 				ClmnType[(int)NeedCol[i01][2]]=(int)NeedCol[i01][1];
 			}
-			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcellRead = B100ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
 			Object[][] CheckOb = new Object[ExcellRead.length][NeedCol.length+1];
 			
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
@@ -218,7 +218,7 @@ public class WM00102SupplierMstExcelEntry{
 					tableModel_ms01.addRow(SetOb);
 				}
 			}
-			String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+			String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 			ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
 			
 			if(null!=ErrMsg && 0<ErrMsg.size()) {
@@ -242,7 +242,7 @@ public class WM00102SupplierMstExcelEntry{
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
-					String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+					String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 					int RowCount = tableModel_ms01.getRowCount();
 					Object[][] CheckOb = new Object[RowCount][TableCol.length];
 					for(int i=0;i<RowCount;i++) {
@@ -257,7 +257,7 @@ public class WM00102SupplierMstExcelEntry{
 					}else {
 						MstEntry(CheckOb,TableCol);
 						//ファイルバックアップ
-						B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+						B100FolderCheck.FileBackUpNormal(TgtFilePath) ;
 						
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
@@ -313,8 +313,8 @@ public class WM00102SupplierMstExcelEntry{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 0;
 		
-		A00020InsertUdateSQL.InsertUpdateSomeRecord(SetObRt,tgt_table,TgtDB,non_msg_fg);
-		B00100DefaultVariable.SupplierList();
+		A100InsertUdateSQL.InsertUpdateSomeRecord(SetObRt,tgt_table,TgtDB,non_msg_fg);
+		B100DefaultVariable.SupplierList();
 		
 	}
 	
@@ -407,7 +407,7 @@ public class WM00102SupplierMstExcelEntry{
 				case "PayDate"		:
 					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++){
 						if(null==((String[])SetObRt[i][4])[i01]) {((String[])SetObRt[i][4])[i01]="";}
-						boolean CheckFg = B00102DefaultVariableCompare.ShimeDateListCheck(((String[])SetObRt[i][4])[i01]);
+						boolean CheckFg = B100DefaultVariableCompare.ShimeDateListCheck(((String[])SetObRt[i][4])[i01]);
 						
 						if(!CheckFg){
 							int wint = i01;
@@ -419,7 +419,7 @@ public class WM00102SupplierMstExcelEntry{
 				case "ShimeDate"	:
 					for(int i01=0;i01<((String[])SetObRt[i][4]).length;i01++){
 						if(null==((String[])SetObRt[i][4])[i01]) {((String[])SetObRt[i][4])[i01]="";}
-						boolean CheckFg = B00102DefaultVariableCompare.ShimeDateListCheck(((String[])SetObRt[i][4])[i01]); 
+						boolean CheckFg = B100DefaultVariableCompare.ShimeDateListCheck(((String[])SetObRt[i][4])[i01]); 
 						
 						if(!CheckFg){
 							int wint = i01;
@@ -448,7 +448,7 @@ public class WM00102SupplierMstExcelEntry{
 	}
 	
 	private static Object[][] SetObRt(Object[][] CheckOb,String[] TableCol) {
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		int ColClWh				= (int)0;	//担当倉庫
 		int ColClCd				= (int)1;	//荷主CD
@@ -985,37 +985,37 @@ public class WM00102SupplierMstExcelEntry{
 		if(null==GetDECD			){GetDECD			= "";}
 		if(null==GetDepartmentCd	){GetDepartmentCd	= "";}
 		
-		GetClWh				= B00020ToolsTextControl.Trim(GetClWh);
-		GetClCd				= B00020ToolsTextControl.Trim(GetClCd);
-		GetSPCd				= B00020ToolsTextControl.Trim(GetSPCd);
-		GetSPName01			= B00020ToolsTextControl.Trim(GetSPName01);
-		GetSPName02			= B00020ToolsTextControl.Trim(GetSPName02);
-		GetSPName03			= B00020ToolsTextControl.Trim(GetSPName03);
-		GetSPPost			= B00020ToolsTextControl.Trim(GetSPPost);
-		GetSPAdd01			= B00020ToolsTextControl.Trim(GetSPAdd01);
-		GetSPAdd02			= B00020ToolsTextControl.Trim(GetSPAdd02);
-		GetSPAdd03			= B00020ToolsTextControl.Trim(GetSPAdd03);
-		GetSPTel			= B00020ToolsTextControl.Trim(GetSPTel);
-		GetSPFax			= B00020ToolsTextControl.Trim(GetSPFax);
-		GetSPMail			= B00020ToolsTextControl.Trim(GetSPMail);
-		GetCom01			= B00020ToolsTextControl.Trim(GetCom01);
-		GetCom02			= B00020ToolsTextControl.Trim(GetCom02);
-		GetCom03			= B00020ToolsTextControl.Trim(GetCom03);
-		GetPTMSCDBMN		= B00020ToolsTextControl.Trim(GetPTMSCDBMN);
-		GetPTMSCDNINUSHI	= B00020ToolsTextControl.Trim(GetPTMSCDNINUSHI);
-		GetPaySite			= B00020ToolsTextControl.Trim(GetPaySite);
-		GetPayDate			= B00020ToolsTextControl.Trim(GetPayDate);
-		GetShimeDate		= B00020ToolsTextControl.Trim(GetShimeDate);
-		GetDECD				= B00020ToolsTextControl.Trim(GetDECD);
-		GetDepartmentCd		= B00020ToolsTextControl.Trim(GetDepartmentCd);
+		GetClWh				= B100TextControl.Trim(GetClWh);
+		GetClCd				= B100TextControl.Trim(GetClCd);
+		GetSPCd				= B100TextControl.Trim(GetSPCd);
+		GetSPName01			= B100TextControl.Trim(GetSPName01);
+		GetSPName02			= B100TextControl.Trim(GetSPName02);
+		GetSPName03			= B100TextControl.Trim(GetSPName03);
+		GetSPPost			= B100TextControl.Trim(GetSPPost);
+		GetSPAdd01			= B100TextControl.Trim(GetSPAdd01);
+		GetSPAdd02			= B100TextControl.Trim(GetSPAdd02);
+		GetSPAdd03			= B100TextControl.Trim(GetSPAdd03);
+		GetSPTel			= B100TextControl.Trim(GetSPTel);
+		GetSPFax			= B100TextControl.Trim(GetSPFax);
+		GetSPMail			= B100TextControl.Trim(GetSPMail);
+		GetCom01			= B100TextControl.Trim(GetCom01);
+		GetCom02			= B100TextControl.Trim(GetCom02);
+		GetCom03			= B100TextControl.Trim(GetCom03);
+		GetPTMSCDBMN		= B100TextControl.Trim(GetPTMSCDBMN);
+		GetPTMSCDNINUSHI	= B100TextControl.Trim(GetPTMSCDNINUSHI);
+		GetPaySite			= B100TextControl.Trim(GetPaySite);
+		GetPayDate			= B100TextControl.Trim(GetPayDate);
+		GetShimeDate		= B100TextControl.Trim(GetShimeDate);
+		GetDECD				= B100TextControl.Trim(GetDECD);
+		GetDepartmentCd		= B100TextControl.Trim(GetDepartmentCd);
 		
-		GetSPPost			= B00020ToolsTextControl.num_only_String(GetSPPost);
-		GetSPTel			= B00020ToolsTextControl.num_only_String(GetSPTel);
-		GetSPFax			= B00020ToolsTextControl.num_only_String(GetSPFax);
+		GetSPPost			= B100TextControl.num_only_String(GetSPPost);
+		GetSPTel			= B100TextControl.num_only_String(GetSPTel);
+		GetSPFax			= B100TextControl.num_only_String(GetSPFax);
 		
-		GetPaySite			= B00020ToolsTextControl.num_only_String02(GetPaySite);
-		GetPayDate			= B00020ToolsTextControl.num_only_String02(GetPayDate);
-		GetShimeDate		= B00020ToolsTextControl.num_only_String02(GetShimeDate);
+		GetPaySite			= B100TextControl.num_only_String02(GetPaySite);
+		GetPayDate			= B100TextControl.num_only_String02(GetPayDate);
+		GetShimeDate		= B100TextControl.num_only_String02(GetShimeDate);
 		
 		if("".equals(GetPaySite)	) {GetPaySite	="1";}
 		if("".equals(GetPayDate)	) {GetPayDate	="99";}
@@ -1056,25 +1056,25 @@ public class WM00102SupplierMstExcelEntry{
 	private static void ErrView(ArrayList<String>ErrMsg) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\SupplierMst";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\SupplierMst\\Err";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\SupplierMst\\BK";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
-		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		String NowDTM=B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\SupplierMst\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		
-		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		B100TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		
 		//古いエラーデータ削除
-		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		B100FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100DefaultVariable.ErrTxtDelete);
 		
 		//ファイル開く
 		File file = new File(ErrFP);

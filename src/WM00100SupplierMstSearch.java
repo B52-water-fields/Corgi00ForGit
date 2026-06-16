@@ -30,90 +30,90 @@ public class WM00100SupplierMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00仕入先マスタ検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,900,750,"Corgi00仕入先マスタ検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,880,300,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,880,300,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		
 		PN_Search.add(PN_SearchLabel);
 		
 		//検索条件
-		JLabel LB_SearchClWh			= B00110FrameParts.JLabelSet(	  0, 25,130,20,"担当倉庫:"				,11,1);
-		JLabel LB_SearchClCd			= B00110FrameParts.JLabelSet(	  0, 50,130,20,"荷主CD:"				,11,1);
-		JLabel LB_SearchSPCd			= B00110FrameParts.JLabelSet(	  0, 75,130,20,"仕入先コード:"			,11,1);
-		JLabel LB_SearchSPName			= B00110FrameParts.JLabelSet(	  0,100,130,20,"仕入先名:"				,11,1);
-		JLabel LB_SearchSPPost			= B00110FrameParts.JLabelSet(	  0,125,130,20,"仕入先郵便:"			,11,1);
-		JLabel LB_SearchSPAdd			= B00110FrameParts.JLabelSet(	  0,150,130,20,"仕入先住所:"			,11,1);
-		JLabel LB_SearchSPTel			= B00110FrameParts.JLabelSet(	  0,175,130,20,"仕入先電話:"			,11,1);
-		JLabel LB_SearchSPFax			= B00110FrameParts.JLabelSet(	  0,200,130,20,"仕入先FAX:"				,11,1);
-		JLabel LB_SearchSPMail			= B00110FrameParts.JLabelSet(	  0,225,130,20,"仕入先MAIL:"			,11,1);
-		JLabel LB_SearchCom				= B00110FrameParts.JLabelSet(	  0,250,130,20,"コメント:"				,11,1);
+		JLabel LB_SearchClWh			= B100FrameParts.JLabelSet(	  0, 25,130,20,"担当倉庫:"				,11,1);
+		JLabel LB_SearchClCd			= B100FrameParts.JLabelSet(	  0, 50,130,20,"荷主CD:"				,11,1);
+		JLabel LB_SearchSPCd			= B100FrameParts.JLabelSet(	  0, 75,130,20,"仕入先コード:"			,11,1);
+		JLabel LB_SearchSPName			= B100FrameParts.JLabelSet(	  0,100,130,20,"仕入先名:"				,11,1);
+		JLabel LB_SearchSPPost			= B100FrameParts.JLabelSet(	  0,125,130,20,"仕入先郵便:"			,11,1);
+		JLabel LB_SearchSPAdd			= B100FrameParts.JLabelSet(	  0,150,130,20,"仕入先住所:"			,11,1);
+		JLabel LB_SearchSPTel			= B100FrameParts.JLabelSet(	  0,175,130,20,"仕入先電話:"			,11,1);
+		JLabel LB_SearchSPFax			= B100FrameParts.JLabelSet(	  0,200,130,20,"仕入先FAX:"				,11,1);
+		JLabel LB_SearchSPMail			= B100FrameParts.JLabelSet(	  0,225,130,20,"仕入先MAIL:"			,11,1);
+		JLabel LB_SearchCom				= B100FrameParts.JLabelSet(	  0,250,130,20,"コメント:"				,11,1);
 		
-		JLabel LB_SearchPTMSCDBMN		= B00110FrameParts.JLabelSet(	330, 75,130,20,"基幹SysCd（部門）:"		,10,1);
-		JLabel LB_SearchPTMSCDNINUSHI	= B00110FrameParts.JLabelSet(	330,100,130,20,"基幹SysCd（荷主）:"		,10,1);
-		JLabel LB_SearchPaySite		= B00110FrameParts.JLabelSet(		330,125,130,20,"支払サイト:"			,11,1);
-		JLabel LB_SearchPayDate		= B00110FrameParts.JLabelSet(		330,150,130,20,"支払日:"				,11,1);
-		JLabel LB_SearchShimeDate	= B00110FrameParts.JLabelSet(		330,175,130,20,"締め日:"				,11,1);
-		JLabel LB_SearchDECD			= B00110FrameParts.JLabelSet(	330,200,130,20,"納品先コード:"			,11,1);
-		JLabel LB_SearchDepartmentCd	= B00110FrameParts.JLabelSet(	330,225,130,20,"部署CD:"				,11,1);
+		JLabel LB_SearchPTMSCDBMN		= B100FrameParts.JLabelSet(	330, 75,130,20,"基幹SysCd（部門）:"		,10,1);
+		JLabel LB_SearchPTMSCDNINUSHI	= B100FrameParts.JLabelSet(	330,100,130,20,"基幹SysCd（荷主）:"		,10,1);
+		JLabel LB_SearchPaySite		= B100FrameParts.JLabelSet(		330,125,130,20,"支払サイト:"			,11,1);
+		JLabel LB_SearchPayDate		= B100FrameParts.JLabelSet(		330,150,130,20,"支払日:"				,11,1);
+		JLabel LB_SearchShimeDate	= B100FrameParts.JLabelSet(		330,175,130,20,"締め日:"				,11,1);
+		JLabel LB_SearchDECD			= B100FrameParts.JLabelSet(	330,200,130,20,"納品先コード:"			,11,1);
+		JLabel LB_SearchDepartmentCd	= B100FrameParts.JLabelSet(	330,225,130,20,"部署CD:"				,11,1);
 		
-		final JComboBox   TB_SearchClWh						= B00110FrameParts.JComboBoxSet(				130, 25,250,20,B00100DefaultVariable.SearchWhList[0],11);		//担当倉庫
-		final JComboBox   TB_SearchClCd						= B00110FrameParts.JComboBoxSet(				130, 50,250,20,B00100DefaultVariable.SearchClList[0],11);		//荷主CD
-		final JTextField  TB_SearchSPCd						= B00110FrameParts.JTextFieldSet( 			130, 75,100,20,"",11,0);	//仕入先コード
-		final JTextField  TB_SearchSPName					= B00110FrameParts.JTextFieldSet( 			130,100,100,20,"",11,0);	//仕入先名
-		final JTextField  TB_SearchSPPost					= B00110FrameParts.JTextFieldSet( 			130,125,100,20,"",11,0);	//仕入先郵便
-		final JTextField  TB_SearchSPAdd					= B00110FrameParts.JTextFieldSet( 			130,150,100,20,"",11,0);	//仕入先住所
-		final JTextField  TB_SearchSPTel					= B00110FrameParts.JTextFieldSet( 			130,175,100,20,"",11,0);	//仕入先電話
-		final JTextField  TB_SearchSPFax					= B00110FrameParts.JTextFieldSet( 			130,200,100,20,"",11,0);	//仕入先FAX
-		final JTextField  TB_SearchSPMail					= B00110FrameParts.JTextFieldSet( 			130,225,100,20,"",11,0);	//仕入先MAIL
-		final JTextField  TB_SearchCom						= B00110FrameParts.JTextFieldSet( 			130,250,100,20,"",11,0);	//コメント
+		final JComboBox   TB_SearchClWh						= B100FrameParts.JComboBoxSet(				130, 25,250,20,B100DefaultVariable.SearchWhList[0],11);		//担当倉庫
+		final JComboBox   TB_SearchClCd						= B100FrameParts.JComboBoxSet(				130, 50,250,20,B100DefaultVariable.SearchClList[0],11);		//荷主CD
+		final JTextField  TB_SearchSPCd						= B100FrameParts.JTextFieldSet( 			130, 75,100,20,"",11,0);	//仕入先コード
+		final JTextField  TB_SearchSPName					= B100FrameParts.JTextFieldSet( 			130,100,100,20,"",11,0);	//仕入先名
+		final JTextField  TB_SearchSPPost					= B100FrameParts.JTextFieldSet( 			130,125,100,20,"",11,0);	//仕入先郵便
+		final JTextField  TB_SearchSPAdd					= B100FrameParts.JTextFieldSet( 			130,150,100,20,"",11,0);	//仕入先住所
+		final JTextField  TB_SearchSPTel					= B100FrameParts.JTextFieldSet( 			130,175,100,20,"",11,0);	//仕入先電話
+		final JTextField  TB_SearchSPFax					= B100FrameParts.JTextFieldSet( 			130,200,100,20,"",11,0);	//仕入先FAX
+		final JTextField  TB_SearchSPMail					= B100FrameParts.JTextFieldSet( 			130,225,100,20,"",11,0);	//仕入先MAIL
+		final JTextField  TB_SearchCom						= B100FrameParts.JTextFieldSet( 			130,250,100,20,"",11,0);	//コメント
 		
-		final JTextField  TB_SearchPTMSCDBMN				= B00110FrameParts.JTextFieldSet( 			460, 75,100,20,"",11,0);	//基幹Sysコード（部門）
-		final JTextField  TB_SearchPTMSCDNINUSHI			= B00110FrameParts.JTextFieldSet( 			460,100,100,20,"",11,0);	//基幹Sysコード（荷主）
-		final JFormattedTextField TB_SearchPaySiteStr		= B00110FrameParts.JFormattedTextFieldSet(	460,125, 60,20,"0",11,1,"#,###");	//支払いサイト（月数）開始
-		final JFormattedTextField TB_SearchPaySiteEnd		= B00110FrameParts.JFormattedTextFieldSet(	560,125, 60,20,"99",11,1,"#,###");	//支払いサイト（月数）終了
-		final JComboBox   TB_SearchPayDateStr				= B00110FrameParts.JComboBoxSet(				460,150, 60,20,B00100DefaultVariable.ShimeDateList[0],11);		//支払日（日＝99）開始
-		final JComboBox   TB_SearchPayDateEnd				= B00110FrameParts.JComboBoxSet(				560,150, 60,20,B00100DefaultVariable.ShimeDateList[0],11);		//支払日（日＝99）終了
-		final JComboBox   TB_SearchShimeDateStr				= B00110FrameParts.JComboBoxSet(				460,175, 60,20,B00100DefaultVariable.ShimeDateList[0],11);		//締め日（末日＝99）開始
-		final JComboBox   TB_SearchShimeDateEnd				= B00110FrameParts.JComboBoxSet(				560,175, 60,20,B00100DefaultVariable.ShimeDateList[0],11);		//締め日（末日＝99）終了
-		final JTextField  TB_SearchDECD						= B00110FrameParts.JTextFieldSet(				460,200,100,20,"",11,0);	//納品先コード
-		final JTextField  TB_SearchDepartmentCd				= B00110FrameParts.JTextFieldSet( 			460,225,100,20,"",11,0);	//部署CD
+		final JTextField  TB_SearchPTMSCDBMN				= B100FrameParts.JTextFieldSet( 			460, 75,100,20,"",11,0);	//基幹Sysコード（部門）
+		final JTextField  TB_SearchPTMSCDNINUSHI			= B100FrameParts.JTextFieldSet( 			460,100,100,20,"",11,0);	//基幹Sysコード（荷主）
+		final JFormattedTextField TB_SearchPaySiteStr		= B100FrameParts.JFormattedTextFieldSet(	460,125, 60,20,"0",11,1,"#,###");	//支払いサイト（月数）開始
+		final JFormattedTextField TB_SearchPaySiteEnd		= B100FrameParts.JFormattedTextFieldSet(	560,125, 60,20,"99",11,1,"#,###");	//支払いサイト（月数）終了
+		final JComboBox   TB_SearchPayDateStr				= B100FrameParts.JComboBoxSet(				460,150, 60,20,B100DefaultVariable.ShimeDateList[0],11);		//支払日（日＝99）開始
+		final JComboBox   TB_SearchPayDateEnd				= B100FrameParts.JComboBoxSet(				560,150, 60,20,B100DefaultVariable.ShimeDateList[0],11);		//支払日（日＝99）終了
+		final JComboBox   TB_SearchShimeDateStr				= B100FrameParts.JComboBoxSet(				460,175, 60,20,B100DefaultVariable.ShimeDateList[0],11);		//締め日（末日＝99）開始
+		final JComboBox   TB_SearchShimeDateEnd				= B100FrameParts.JComboBoxSet(				560,175, 60,20,B100DefaultVariable.ShimeDateList[0],11);		//締め日（末日＝99）終了
+		final JTextField  TB_SearchDECD						= B100FrameParts.JTextFieldSet(				460,200,100,20,"",11,0);	//納品先コード
+		final JTextField  TB_SearchDepartmentCd				= B100FrameParts.JTextFieldSet( 			460,225,100,20,"",11,0);	//部署CD
 		
-		JLabel LB2_SearchSPCd			= B00110FrameParts.JLabelSet(	230, 75,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchSPName			= B00110FrameParts.JLabelSet(	230,100,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchSPPost			= B00110FrameParts.JLabelSet(	230,125,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchSPAdd			= B00110FrameParts.JLabelSet(	230,150,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchSPTel			= B00110FrameParts.JLabelSet(	230,175,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchSPFax			= B00110FrameParts.JLabelSet(	230,200,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchSPMail			= B00110FrameParts.JLabelSet(	230,225,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchCom			= B00110FrameParts.JLabelSet(	230,250,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchSPCd			= B100FrameParts.JLabelSet(	230, 75,100,20,"と一致"		,11,0);
+		JLabel LB2_SearchSPName			= B100FrameParts.JLabelSet(	230,100,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchSPPost			= B100FrameParts.JLabelSet(	230,125,100,20,"で始まる"	,11,0);
+		JLabel LB2_SearchSPAdd			= B100FrameParts.JLabelSet(	230,150,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchSPTel			= B100FrameParts.JLabelSet(	230,175,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchSPFax			= B100FrameParts.JLabelSet(	230,200,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchSPMail			= B100FrameParts.JLabelSet(	230,225,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchCom			= B100FrameParts.JLabelSet(	230,250,100,20,"を含む"		,11,0);
 		
-		JLabel LB2_SearchPTMSCDBMN		= B00110FrameParts.JLabelSet(	560, 75,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchPTMSCDNINUSHI	= B00110FrameParts.JLabelSet(	560,100,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchPaySite		= B00110FrameParts.JLabelSet(	520,125,40,20,"～"			,11,2);
-		JLabel LB2_SearchPayDate		= B00110FrameParts.JLabelSet(	520,150,40,20,"～"			,11,2);
-		JLabel LB2_SearchShimeDate		= B00110FrameParts.JLabelSet(	520,175,40,20,"～"			,11,2);
-		JLabel LB2_SearchDECD			= B00110FrameParts.JLabelSet(	560,200,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchDepartmentCd	= B00110FrameParts.JLabelSet(	560,225,100,20,"と一致"		,11,0);
+		JLabel LB2_SearchPTMSCDBMN		= B100FrameParts.JLabelSet(	560, 75,100,20,"と一致"		,11,0);
+		JLabel LB2_SearchPTMSCDNINUSHI	= B100FrameParts.JLabelSet(	560,100,100,20,"と一致"		,11,0);
+		JLabel LB2_SearchPaySite		= B100FrameParts.JLabelSet(	520,125,40,20,"～"			,11,2);
+		JLabel LB2_SearchPayDate		= B100FrameParts.JLabelSet(	520,150,40,20,"～"			,11,2);
+		JLabel LB2_SearchShimeDate		= B100FrameParts.JLabelSet(	520,175,40,20,"～"			,11,2);
+		JLabel LB2_SearchDECD			= B100FrameParts.JLabelSet(	560,200,100,20,"と一致"		,11,0);
+		JLabel LB2_SearchDepartmentCd	= B100FrameParts.JLabelSet(	560,225,100,20,"と一致"		,11,0);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(460,250,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(460,250,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		for(int i=0;i<B00100DefaultVariable.SearchWhList[1].length;i++) {
-			if(B00100DefaultVariable.SearchWhList[1][i].equals(A00000Main.ClWh)) {
+		for(int i=0;i<B100DefaultVariable.SearchWhList[1].length;i++) {
+			if(B100DefaultVariable.SearchWhList[1][i].equals(A00000Main.ClWh)) {
 				TB_SearchClWh.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.SearchClList[1].length;i++) {
-			if(B00100DefaultVariable.SearchClList[1][i].equals(A00000Main.ClCd)) {
+		for(int i=0;i<B100DefaultVariable.SearchClList[1].length;i++) {
+			if(B100DefaultVariable.SearchClList[1][i].equals(A00000Main.ClCd)) {
 				TB_SearchClCd.setSelectedIndex(i);
 			}
 		}
@@ -123,9 +123,9 @@ public class WM00100SupplierMstSearch{
 		TB_SearchPaySiteStr.setText("0");
 		TB_SearchPaySiteEnd.setText("99");
 		TB_SearchPayDateStr.setSelectedIndex(0);
-		TB_SearchPayDateEnd.setSelectedIndex(B00100DefaultVariable.ShimeDateList[0].length-1);
+		TB_SearchPayDateEnd.setSelectedIndex(B100DefaultVariable.ShimeDateList[0].length-1);
 		TB_SearchShimeDateStr.setSelectedIndex(0);
-		TB_SearchShimeDateEnd.setSelectedIndex(B00100DefaultVariable.ShimeDateList[0].length-1);
+		TB_SearchShimeDateEnd.setSelectedIndex(B100DefaultVariable.ShimeDateList[0].length-1);
 		
 		PN_Search.add(LB_SearchClWh);
 		PN_Search.add(LB_SearchClCd);
@@ -194,10 +194,10 @@ public class WM00100SupplierMstSearch{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -214,37 +214,37 @@ public class WM00100SupplierMstSearch{
 		
 		for(int i=0;i<RtSupplierRt.length;i++) {
 			if("int".equals((String)RtSupplierRt[i][2])||"float".equals((String)RtSupplierRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 			}
 		}
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,350,870,275,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,350,870,275,tb01);
 		main_fm.add(scpn01);
 		
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
-		JButton ExcelEntryBtn = B00110FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
+		JButton ExcelEntryBtn = B100FrameParts.BtnSet(	490,660,100,20,"Excel取込",11);
 		main_fm.add(ExcelEntryBtn);	
 		
 		
@@ -261,8 +261,8 @@ public class WM00100SupplierMstSearch{
 						tableModel_ms01.removeRow(0);
 					}
 					
-					String GetSearchClWh			= B00100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];		//担当倉庫
-					String GetSearchClCd			= B00100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];		//荷主CD
+					String GetSearchClWh			= B100DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];		//担当倉庫
+					String GetSearchClCd			= B100DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];		//荷主CD
 					String GetSearchSPCd 			= TB_SearchSPCd.getText();			//仕入先コード
 					String GetSearchSPName 			= TB_SearchSPName.getText();		//仕入先名
 					String GetSearchSPPost 			= TB_SearchSPPost.getText();		//仕入先郵便
@@ -275,10 +275,10 @@ public class WM00100SupplierMstSearch{
 					String GetSearchPTMSCDNINUSHI 	= TB_SearchPTMSCDNINUSHI.getText();	//基幹Sysコード（荷主）
 					String GetSearchPaySiteStr 		= TB_SearchPaySiteStr.getText();	//支払いサイト（月数）開始
 					String GetSearchPaySiteEnd		= TB_SearchPaySiteEnd.getText();	//支払いサイト（月数）終了
-					String GetSearchPayDateStr 		= B00100DefaultVariable.ShimeDateList[1][TB_SearchPayDateStr.getSelectedIndex()];		//支払日（日＝99）開始
-					String GetSearchPayDateEnd 		= B00100DefaultVariable.ShimeDateList[1][TB_SearchPayDateEnd.getSelectedIndex()];		//支払日（日＝99）終了
-					String GetSearchShimeDateStr 	= B00100DefaultVariable.ShimeDateList[1][TB_SearchShimeDateStr.getSelectedIndex()];	//締め日（末日＝99）開始
-					String GetSearchShimeDateEnd 	= B00100DefaultVariable.ShimeDateList[1][TB_SearchShimeDateEnd.getSelectedIndex()];	//締め日（末日＝99）終了
+					String GetSearchPayDateStr 		= B100DefaultVariable.ShimeDateList[1][TB_SearchPayDateStr.getSelectedIndex()];		//支払日（日＝99）開始
+					String GetSearchPayDateEnd 		= B100DefaultVariable.ShimeDateList[1][TB_SearchPayDateEnd.getSelectedIndex()];		//支払日（日＝99）終了
+					String GetSearchShimeDateStr 	= B100DefaultVariable.ShimeDateList[1][TB_SearchShimeDateStr.getSelectedIndex()];	//締め日（末日＝99）開始
+					String GetSearchShimeDateEnd 	= B100DefaultVariable.ShimeDateList[1][TB_SearchShimeDateEnd.getSelectedIndex()];	//締め日（末日＝99）終了
 					String GetSearchDECD 			= TB_SearchDECD.getText();			//納品先コード
 					String GetSearchDepartmentCd 	= TB_SearchDepartmentCd.getText();	//部署CD
 					
@@ -303,33 +303,33 @@ public class WM00100SupplierMstSearch{
 					if(null==GetSearchDECD			){GetSearchDECD 			= "";}	//納品先コード
 					if(null==GetSearchDepartmentCd	){GetSearchDepartmentCd 	= "";}	//部署CD
 					
-					GetSearchClWh			= B00020ToolsTextControl.Trim(GetSearchClWh);			//担当倉庫
-					GetSearchClCd			= B00020ToolsTextControl.Trim(GetSearchClCd);			//荷主CD
-					GetSearchSPCd 			= B00020ToolsTextControl.Trim(GetSearchSPCd);			//仕入先コード
-					GetSearchSPName 		= B00020ToolsTextControl.Trim(GetSearchSPName);			//仕入先名
-					GetSearchSPPost 		= B00020ToolsTextControl.Trim(GetSearchSPPost);			//仕入先郵便
-					GetSearchSPAdd 			= B00020ToolsTextControl.Trim(GetSearchSPAdd);			//仕入先住所
-					GetSearchSPTel 			= B00020ToolsTextControl.Trim(GetSearchSPTel);			//仕入先電話
-					GetSearchSPFax 			= B00020ToolsTextControl.Trim(GetSearchSPFax);			//仕入先FAX
-					GetSearchSPMail 		= B00020ToolsTextControl.Trim(GetSearchSPMail);			//仕入先MAIL
-					GetSearchCom 			= B00020ToolsTextControl.Trim(GetSearchCom);			//コメント
-					GetSearchPTMSCDBMN 		= B00020ToolsTextControl.Trim(GetSearchPTMSCDBMN);		//基幹Sysコード（部門）
-					GetSearchPTMSCDNINUSHI 	= B00020ToolsTextControl.Trim(GetSearchPTMSCDNINUSHI);	//基幹Sysコード（荷主）
-					GetSearchPaySiteStr 	= B00020ToolsTextControl.Trim(GetSearchPaySiteStr);		//支払いサイト（月数）開始
-					GetSearchPaySiteEnd		= B00020ToolsTextControl.Trim(GetSearchPaySiteEnd);		//支払いサイト（月数）終了
-					GetSearchPayDateStr 	= B00020ToolsTextControl.Trim(GetSearchPayDateStr);		//支払日（日＝99）開始
-					GetSearchPayDateEnd 	= B00020ToolsTextControl.Trim(GetSearchPayDateEnd);		//支払日（日＝99）終了
-					GetSearchShimeDateStr 	= B00020ToolsTextControl.Trim(GetSearchShimeDateStr);	//締め日（末日＝99）開始
-					GetSearchShimeDateEnd 	= B00020ToolsTextControl.Trim(GetSearchShimeDateEnd);	//締め日（末日＝99）終了
-					GetSearchDECD 			= B00020ToolsTextControl.Trim(GetSearchDECD);			//納品先コード
-					GetSearchDepartmentCd 	= B00020ToolsTextControl.Trim(GetSearchDepartmentCd);	//部署CD
+					GetSearchClWh			= B100TextControl.Trim(GetSearchClWh);			//担当倉庫
+					GetSearchClCd			= B100TextControl.Trim(GetSearchClCd);			//荷主CD
+					GetSearchSPCd 			= B100TextControl.Trim(GetSearchSPCd);			//仕入先コード
+					GetSearchSPName 		= B100TextControl.Trim(GetSearchSPName);			//仕入先名
+					GetSearchSPPost 		= B100TextControl.Trim(GetSearchSPPost);			//仕入先郵便
+					GetSearchSPAdd 			= B100TextControl.Trim(GetSearchSPAdd);			//仕入先住所
+					GetSearchSPTel 			= B100TextControl.Trim(GetSearchSPTel);			//仕入先電話
+					GetSearchSPFax 			= B100TextControl.Trim(GetSearchSPFax);			//仕入先FAX
+					GetSearchSPMail 		= B100TextControl.Trim(GetSearchSPMail);			//仕入先MAIL
+					GetSearchCom 			= B100TextControl.Trim(GetSearchCom);			//コメント
+					GetSearchPTMSCDBMN 		= B100TextControl.Trim(GetSearchPTMSCDBMN);		//基幹Sysコード（部門）
+					GetSearchPTMSCDNINUSHI 	= B100TextControl.Trim(GetSearchPTMSCDNINUSHI);	//基幹Sysコード（荷主）
+					GetSearchPaySiteStr 	= B100TextControl.Trim(GetSearchPaySiteStr);		//支払いサイト（月数）開始
+					GetSearchPaySiteEnd		= B100TextControl.Trim(GetSearchPaySiteEnd);		//支払いサイト（月数）終了
+					GetSearchPayDateStr 	= B100TextControl.Trim(GetSearchPayDateStr);		//支払日（日＝99）開始
+					GetSearchPayDateEnd 	= B100TextControl.Trim(GetSearchPayDateEnd);		//支払日（日＝99）終了
+					GetSearchShimeDateStr 	= B100TextControl.Trim(GetSearchShimeDateStr);	//締め日（末日＝99）開始
+					GetSearchShimeDateEnd 	= B100TextControl.Trim(GetSearchShimeDateEnd);	//締め日（末日＝99）終了
+					GetSearchDECD 			= B100TextControl.Trim(GetSearchDECD);			//納品先コード
+					GetSearchDepartmentCd 	= B100TextControl.Trim(GetSearchDepartmentCd);	//部署CD
 
-					GetSearchPaySiteStr 	= B00020ToolsTextControl.num_only_String02(GetSearchPaySiteStr);		//支払いサイト（月数）開始
-					GetSearchPaySiteEnd		= B00020ToolsTextControl.num_only_String02(GetSearchPaySiteEnd);		//支払いサイト（月数）終了
-					GetSearchPayDateStr 	= B00020ToolsTextControl.num_only_String02(GetSearchPayDateStr);		//支払日（日＝99）開始
-					GetSearchPayDateEnd 	= B00020ToolsTextControl.num_only_String02(GetSearchPayDateEnd);		//支払日（日＝99）終了
-					GetSearchShimeDateStr 	= B00020ToolsTextControl.num_only_String02(GetSearchShimeDateStr);	//締め日（末日＝99）開始
-					GetSearchShimeDateEnd 	= B00020ToolsTextControl.num_only_String02(GetSearchShimeDateEnd);	//締め日（末日＝99）終了
+					GetSearchPaySiteStr 	= B100TextControl.num_only_String02(GetSearchPaySiteStr);		//支払いサイト（月数）開始
+					GetSearchPaySiteEnd		= B100TextControl.num_only_String02(GetSearchPaySiteEnd);		//支払いサイト（月数）終了
+					GetSearchPayDateStr 	= B100TextControl.num_only_String02(GetSearchPayDateStr);		//支払日（日＝99）開始
+					GetSearchPayDateEnd 	= B100TextControl.num_only_String02(GetSearchPayDateEnd);		//支払日（日＝99）終了
+					GetSearchShimeDateStr 	= B100TextControl.num_only_String02(GetSearchShimeDateStr);	//締め日（末日＝99）開始
+					GetSearchShimeDateEnd 	= B100TextControl.num_only_String02(GetSearchShimeDateEnd);	//締め日（末日＝99）終了
 					
 					ArrayList<String> SearchClWh 			= new ArrayList<String>(); 		//担当倉庫
 					ArrayList<String> SearchClCd 			= new ArrayList<String>();		//荷主CD
@@ -406,9 +406,9 @@ public class WM00100SupplierMstSearch{
 						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<SupplierRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					
 					RenewFg = true;
@@ -475,7 +475,7 @@ public class WM00100SupplierMstSearch{
 					String MSG = "エクセルファイル選択";
 					String[] file_type = {".xlsx"};
 					String file_type_name = "エクセルファイル";
-					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						SetX=main_fm.getX();
@@ -514,7 +514,7 @@ public class WM00100SupplierMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","仕入先マスタ検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","仕入先マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -525,7 +525,7 @@ public class WM00100SupplierMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","仕入先マスタ検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","仕入先マスタ検索結果",tb01);
 					RenewFg = true;
 				}
 			}

@@ -44,9 +44,9 @@ public class WM00093LocationMstRenewStockControl{
 			
 			int SetPickTgtLocFg = 0;		//引当対象ロケなら1　禁止なら0
 			
-			for(int i01=0;i01<B00100DefaultVariable.LocType[1].length;i01++) {
-				if(GetSetType.equals(B00100DefaultVariable.LocType[1][i01])) {
-					SetPickTgtLocFg = Integer.parseInt(B00100DefaultVariable.LocType[3][i01]);
+			for(int i01=0;i01<B100DefaultVariable.LocType[1].length;i01++) {
+				if(GetSetType.equals(B100DefaultVariable.LocType[1][i01])) {
+					SetPickTgtLocFg = Integer.parseInt(B100DefaultVariable.LocType[3][i01]);
 				}
 			}
 			
@@ -62,9 +62,9 @@ public class WM00093LocationMstRenewStockControl{
 				
 				int NowPickTgtLocFg = 0;
 				
-				for(int i01=0;i01<B00100DefaultVariable.LocType[1].length;i01++) {
-					if(GetNowType.equals(B00100DefaultVariable.LocType[1][i01])) {
-						NowPickTgtLocFg = Integer.parseInt(B00100DefaultVariable.LocType[3][i01]);
+				for(int i01=0;i01<B100DefaultVariable.LocType[1].length;i01++) {
+					if(GetNowType.equals(B100DefaultVariable.LocType[1][i01])) {
+						NowPickTgtLocFg = Integer.parseInt(B100DefaultVariable.LocType[3][i01]);
 					}
 				}
 				
@@ -78,7 +78,7 @@ public class WM00093LocationMstRenewStockControl{
 	}
 	
 	private static void LocationRenew(HashMap<String,String[]> SetLoc) {
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		String[][] LocationSetString = {
 				 {"ClCd"		,"1","1"}	//荷主コード
@@ -131,7 +131,7 @@ public class WM00093LocationMstRenewStockControl{
 		}
 		
 		if(0<entry_data.length) {
-			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+			A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 		}
 	}
 	
@@ -193,7 +193,7 @@ public class WM00093LocationMstRenewStockControl{
 								AllSearch,
 								SortItemcdMode);
 		
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		String[][] StrokSetString = {
 				 {"ClCd"		,"0","0"}	//荷主コード
@@ -279,9 +279,9 @@ public class WM00093LocationMstRenewStockControl{
 		}
 		
 		if(0<entry_data.length) {
-			A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+			A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 			if(null!=GetShipPlanQtyMSG && 0<GetShipPlanQtyMSG.size()) {
-				GetShipPlanQtyMSG = B00150ArrayListControl.ArryListStringUniqueList(GetShipPlanQtyMSG);
+				GetShipPlanQtyMSG = B100ArrayListControl.ArryListStringUniqueList(GetShipPlanQtyMSG);
 				for(int i=0;i<GetShipPlanQtyMSG.size();i++) {
 					GetShipPlanQtyMSG.set(i, "ロケーションCD:("+GetShipPlanQtyMSG.get(i)+")に引当済み在庫がありますが、引当不可に設定しました");
 				}
@@ -293,25 +293,25 @@ public class WM00093LocationMstRenewStockControl{
 	private static void ErrView(ArrayList<String>ErrMsg) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\Err";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\BK";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
-		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		String NowDTM=B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		
-		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		B100TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		
 		//古いエラーデータ削除
-		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		B100FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100DefaultVariable.ErrTxtDelete);
 		
 		//ファイル開く
 		File file = new File(ErrFP);

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class B00100DefaultVariable{
+public class B100DefaultVariable{
 	//設定用条件
 	static String[][] HaisyaDataLayoutPt;			//運送会社向け配車データ出力パターン ※個別開発ごとにHaisyaDataLayoutPt()修正
 	static String[][] LayoutPt;						//荷主データ⇒送り状データ取り込みパターン　※個別開発ごとにLayoutPt()修正
@@ -233,7 +233,7 @@ public class B00100DefaultVariable{
 	}
 	
 	private static void ArrivalShipUnTgt() {
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		//パラメータマスタ特に入荷時ロケの取扱いされていなければ入荷時ロケ対象に"しない"で設定
 		Object[][] SetString = {
 					 {"ClWh"		,"1","0","Key"	,A00000Main.ClWh}					//担当倉庫コード
@@ -270,12 +270,12 @@ public class B00100DefaultVariable{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 	
 	
 	public static void AdjustReasonDefault() {
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		//在庫調整理由"0000"　"一般調整"無ければ作る
 		Object[][] SetString = {
 					 {"ClCd"				,"1","0","Key"	,A00000Main.ClCd}			//荷主コード
@@ -292,7 +292,7 @@ public class B00100DefaultVariable{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 		
 		ArrayList<String> SearchClCd 				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchWhCd 				= new ArrayList<String>();	//倉庫コード
@@ -330,7 +330,7 @@ public class B00100DefaultVariable{
 		
 	}
 	private static void ClActualDateControlDefault() {
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		//パラメータマスタ特に入荷予定日管理設定されていなければ入荷日管理"しない"で設定
 		Object[][] SetString = {
 					 {"ClWh"		,"1","0","Key"	,A00000Main.ClWh}					//担当倉庫コード
@@ -367,11 +367,11 @@ public class B00100DefaultVariable{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 	
 	private static void ClDefaultLoc() {
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		//スルー出荷用のロケーション"ZZZ2222222"つくる
 		Object[][] SetString = {
 				 {"ClCd"		,"1","0","Key"	,A00000Main.ClCd}					//荷主コード
@@ -388,7 +388,7 @@ public class B00100DefaultVariable{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 
 	public static void WhList() {
@@ -532,7 +532,7 @@ public class B00100DefaultVariable{
 	
 	public static void SupplierList() {
 		//仕入先　0000000　強制入庫なければ作る
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		Object[][] SetString = {
 				 {"ClWh"			,"1","0","Key"	,A00000Main.ClWh}	//担当倉庫
 				,{"ClCd"			,"1","0","Key"	,A00000Main.ClCd}	//荷主CD
@@ -566,7 +566,7 @@ public class B00100DefaultVariable{
 		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
 		
-		A00020InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		A100InsertUdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 		
 		ArrayList<String> SearchClWh = new ArrayList<String>(); 			//担当倉庫
 		ArrayList<String> SearchClCd = new ArrayList<String>();				//荷主CD
@@ -643,7 +643,7 @@ public class B00100DefaultVariable{
 		String[][] judg_data = new String[5][2];
 		String TgtDB = "NYANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		field_name[0][0] = "DeliveryTypeNo";	//タイプ番号
 		field_name[1][0] = "DeliveryTypeCd";	//運送タイプコード
@@ -727,7 +727,7 @@ public class B00100DefaultVariable{
 		judg_data[4][0] = "5";
 		judg_data[4][1] = "00";
 		
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 		
 		ArrayList<String> SearchDeliveryTypeNo = new ArrayList<String>();
 		ArrayList<String> SearchDeliveryTypeCd = new ArrayList<String>();
@@ -1050,7 +1050,7 @@ public class B00100DefaultVariable{
 		String[][] judg_data = new String[1][1];
 		String TgtDB = "NANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		
 		judg_field[0] ="ClGpCD";			//荷主グループCD
 		
@@ -1136,8 +1136,8 @@ public class B00100DefaultVariable{
 		entry_data[0][17] ="(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;			//更新者コード
 		entry_data[0][18] ="";				//パスワード
 		
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
-		B00100DefaultVariable.ClGpList();
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		B100DefaultVariable.ClGpList();
 	}
 	
 	//zeusログイン時、基本の運送会社　自社SC00000を作る
@@ -1149,7 +1149,7 @@ public class B00100DefaultVariable{
 		String[][] judg_data = new String[1][1];
 		String TgtDB = "NANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 
 		judg_field[0] = "ShippingCompanyCd";		//運送会社CD
 		
@@ -1243,8 +1243,8 @@ public class B00100DefaultVariable{
 		entry_data[0][19] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;		//更新者コード
 		entry_data[0][20] = "";			//基幹システム連携用傭車コード
 
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
-		B00100DefaultVariable.ShippingCompanyList();
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		B100DefaultVariable.ShippingCompanyList();
 	}
 	
 	//zeusログイン時、自分が所属する倉庫マスタ作成
@@ -1256,7 +1256,7 @@ public class B00100DefaultVariable{
 		String[][] judg_data = new String[1][1];
 		String TgtDB = "NANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 
 		judg_field[0] = "WHCD";			//倉庫コード
 		
@@ -1330,9 +1330,9 @@ public class B00100DefaultVariable{
 		entry_data[0][14] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;		//登録者コード
 		entry_data[0][15] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;		//更新者コード
 
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
-		B00100DefaultVariable.WhList();
-		B00101DefaultVariableWarehouse.DefaultVariableWarehouse("0000");
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		B100DefaultVariable.WhList();
+		B100DefaultVariableWarehouse.DefaultVariableWarehouse("0000");
 	}
 	
 	//zeusログイン時、郵便番号0000000作る
@@ -1373,11 +1373,11 @@ public class B00100DefaultVariable{
 		entry_data[0][3] = "Walhalla";	//町丁目
 		entry_data[0][4] = "00000";	//市区町村CD
 		
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 	}
 	//zeusログイン時、強制出荷用届け先0000000作る
 	public static void ForcedShipmentCD(){
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 		String[][] SetString = {
 				 {"DECD"			,"1","0","ForcedShip"}	//納品先コード
 				,{"DepartmentCd"	,"1","0","0000"}		//部署CD
@@ -1427,6 +1427,6 @@ public class B00100DefaultVariable{
 			entry_data[0][i] = SetString[i][3];
 		}
 		
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 	}
 }

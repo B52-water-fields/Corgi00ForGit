@@ -23,20 +23,20 @@ public class WM10012PostMstCreateSum{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,780,700,"Corgi00郵便番号一括登録","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,780,700,"Corgi00郵便番号一括登録","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_EntryPost = B00110FrameParts.JLabelSet(				 10,40,100,20,"郵便番号"  ,11,2);
-		JLabel LB_EntryPref = B00110FrameParts.JLabelSet(				120,40,100,20,"県"        ,11,2);
-		JLabel LB_EntryMunic01 = B00110FrameParts.JLabelSet(			230,40,200,20,"市区町村"  ,11,2);
-		JLabel LB_EntryMunic02 = B00110FrameParts.JLabelSet(			440,40,200,20,"町丁目"    ,11,2);
-		JLabel LB_EntryMunicipalityCd = B00110FrameParts.JLabelSet(	650,40,100,20,"市区町村CD",11,2);
+		JLabel LB_EntryPost = B100FrameParts.JLabelSet(				 10,40,100,20,"郵便番号"  ,11,2);
+		JLabel LB_EntryPref = B100FrameParts.JLabelSet(				120,40,100,20,"県"        ,11,2);
+		JLabel LB_EntryMunic01 = B100FrameParts.JLabelSet(			230,40,200,20,"市区町村"  ,11,2);
+		JLabel LB_EntryMunic02 = B100FrameParts.JLabelSet(			440,40,200,20,"町丁目"    ,11,2);
+		JLabel LB_EntryMunicipalityCd = B100FrameParts.JLabelSet(	650,40,100,20,"市区町村CD",11,2);
 		
 		final JTextArea TB_EntryPost = new JTextArea();				//郵便番号
 		final JTextArea TB_EntryPref = new JTextArea();				//県
@@ -45,11 +45,11 @@ public class WM10012PostMstCreateSum{
 		final JTextArea TB_EntryMunicipalityCd = new JTextArea();	//市区町村CD
 		
 		//スクロール用設定
-		JScrollPane Scpn_EntryPost = B00110FrameParts.JScrollPaneSet(				 10,60,100,500,TB_EntryPost);			//郵便番号
-		JScrollPane Scpn_EntryPref = B00110FrameParts.JScrollPaneSet(				120,60,100,500,TB_EntryPref);			//県
-		JScrollPane Scpn_EntryMunic01 = B00110FrameParts.JScrollPaneSet(			230,60,200,500,TB_EntryMunic01);		//市区町村
-		JScrollPane Scpn_EntryMunic02 = B00110FrameParts.JScrollPaneSet(			440,60,200,500,TB_EntryMunic02);		//町丁目
-		JScrollPane Scpn_EntryMunicipalityCd = B00110FrameParts.JScrollPaneSet(	650,60,100,500,TB_EntryMunicipalityCd);	//市区町村CD
+		JScrollPane Scpn_EntryPost = B100FrameParts.JScrollPaneSet(				 10,60,100,500,TB_EntryPost);			//郵便番号
+		JScrollPane Scpn_EntryPref = B100FrameParts.JScrollPaneSet(				120,60,100,500,TB_EntryPref);			//県
+		JScrollPane Scpn_EntryMunic01 = B100FrameParts.JScrollPaneSet(			230,60,200,500,TB_EntryMunic01);		//市区町村
+		JScrollPane Scpn_EntryMunic02 = B100FrameParts.JScrollPaneSet(			440,60,200,500,TB_EntryMunic02);		//町丁目
+		JScrollPane Scpn_EntryMunicipalityCd = B100FrameParts.JScrollPaneSet(	650,60,100,500,TB_EntryMunicipalityCd);	//市区町村CD
 
 		main_fm.add(LB_EntryPost);
 		main_fm.add(LB_EntryPref);
@@ -66,7 +66,7 @@ public class WM10012PostMstCreateSum{
 		main_fm.setVisible(true);
 		
 		//郵便DLデータ取込ボタン
-		JButton DlEntryBtn = B00110FrameParts.BtnSet(10,580,100,20,"DL（Ken_All）",9);
+		JButton DlEntryBtn = B100FrameParts.BtnSet(10,580,100,20,"DL（Ken_All）",9);
 		main_fm.add(DlEntryBtn);
 		
 		main_fm.setVisible(true);
@@ -82,10 +82,10 @@ public class WM10012PostMstCreateSum{
 				
 				String[] file_type = {".csv",".CSV"};
 				String file_type_name="テキストファイル";
-				String selected = B00090FileSelect.FileSelect("ファイル選択",file_type,file_type_name);
+				String selected = B100FileSelect.FileSelect("ファイル選択",file_type,file_type_name);
 				
 				if(null!=selected && !"".equals(selected)) {
-					String[][] CSVRead = B00010ToolsTextRead.CSVRead(selected,null);
+					String[][] CSVRead = B100TextRead.CSVRead(selected,null);
 					
 					if(0<CSVRead.length && 10<=CSVRead[0].length) {
 						String[] GetEntryPost = new String[CSVRead.length];				//郵便番号
@@ -96,11 +96,11 @@ public class WM10012PostMstCreateSum{
 						
 						for(int i=0;i<CSVRead.length;i++) {
 							
-							GetEntryPost[i]				 = B00020ToolsTextControl.Trim(""+CSVRead[i][2]);
-							GetEntryPref[i]				 = B00020ToolsTextControl.Trim(""+CSVRead[i][6]);
-							GetEntryMunic01[i]			 = B00020ToolsTextControl.Trim(""+CSVRead[i][7]);
-							GetEntryMunic02[i]			 = B00020ToolsTextControl.Trim(""+CSVRead[i][8]);
-							GetEntryMunicipalityCd[i]	 = B00020ToolsTextControl.Trim(""+CSVRead[i][0]);
+							GetEntryPost[i]				 = B100TextControl.Trim(""+CSVRead[i][2]);
+							GetEntryPref[i]				 = B100TextControl.Trim(""+CSVRead[i][6]);
+							GetEntryMunic01[i]			 = B100TextControl.Trim(""+CSVRead[i][7]);
+							GetEntryMunic02[i]			 = B100TextControl.Trim(""+CSVRead[i][8]);
+							GetEntryMunicipalityCd[i]	 = B100TextControl.Trim(""+CSVRead[i][0]);
 							
 						}
 						SetX=main_fm.getX();
@@ -165,7 +165,7 @@ public class WM10012PostMstCreateSum{
 		if(TgtLength!=GetEntryMunicipalityCd.length) {NonErr=false;}		//市区町村CD
 		if(NonErr) {
 			for(int i=0;i<GetEntryPost.length;i++) {
-				GetEntryPost[i] = B00020ToolsTextControl.num_only_String(GetEntryPost[i]);
+				GetEntryPost[i] = B100TextControl.num_only_String(GetEntryPost[i]);
 				if("".equals(GetEntryPost[i])) {
 					NonErr = false;
 				}
@@ -179,16 +179,16 @@ public class WM10012PostMstCreateSum{
 		}
 		
 		if(NonErr) {
-			final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,750,750,"Corgi00郵便番号登録（エクセル）","");
-			JLabel userinfo = B00110FrameParts.UserInfo();
-			JButton exit_btn = B00110FrameParts.ExitBtn();
-			JButton entry_btn = B00110FrameParts.EntryBtn();
+			final JFrame main_fm = B100FrameParts.FrameCreate(x,y,750,750,"Corgi00郵便番号登録（エクセル）","");
+			JLabel userinfo = B100FrameParts.UserInfo();
+			JButton exit_btn = B100FrameParts.ExitBtn();
+			JButton entry_btn = B100FrameParts.EntryBtn();
 			
 			main_fm.add(userinfo);
 			main_fm.add(exit_btn);
 			main_fm.add(entry_btn);
 			
-			JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,300,20,"以下のデータを登録しようとしています",11,0);
+			JLabel LB_SheetList	= B100FrameParts.JLabelSet(	10, 40,300,20,"以下のデータを登録しようとしています",11,0);
 			main_fm.add(LB_SheetList);
 			
 			String[] columnNames01 = {
@@ -200,9 +200,9 @@ public class WM10012PostMstCreateSum{
 									};
 			
 			//編集可能カラムの指定
-			B10010TableControl.RenewTgt = new int[1];
-			B10010TableControl.RenewTgt[0] = -1;
-			final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+			B100TableControl.RenewTgt = new int[1];
+			B100TableControl.RenewTgt[0] = -1;
+			final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 			
 			final JTable tb01 = new JTable(tableModel_ms01);
 			tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -215,14 +215,14 @@ public class WM10012PostMstCreateSum{
 			//列幅初期設定 表示位置設定
 			TableColumn column = null;
 			
-			column = columnModel01.getColumn(0);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//郵便番号
-			column = columnModel01.getColumn(1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//県
-			column = columnModel01.getColumn(2);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//市区町村
-			column = columnModel01.getColumn(3);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//町丁目
-			column = columnModel01.getColumn(4);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//市区町村CD
+			column = columnModel01.getColumn(0);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//郵便番号
+			column = columnModel01.getColumn(1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//県
+			column = columnModel01.getColumn(2);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//市区町村
+			column = columnModel01.getColumn(3);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//町丁目
+			column = columnModel01.getColumn(4);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//市区町村CD
 			
 			//スクロール用設定
-			JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,700,550,tb01);
+			JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,65,700,550,tb01);
 			main_fm.add(scpn01);
 			
 			for(int i=0;i<GetEntryPost.length;i++) {
@@ -230,9 +230,9 @@ public class WM10012PostMstCreateSum{
 				tableModel_ms01.addRow(SetOb);
 			}
 			if(0<GetEntryPost.length) {
-				B10010TableControl.AddSortON(tb01,tableModel_ms01);
+				B100TableControl.AddSortON(tb01,tableModel_ms01);
 			}else {
-				B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+				B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 			}
 			
 			main_fm.setVisible(true);
@@ -269,15 +269,15 @@ public class WM10012PostMstCreateSum{
 					field_name[4][2] = "1";	//市区町村CD
 					
 					for(int i=0;i<GetEntryPost.length;i++) {
-						judg_data[i][0] = B00020ToolsTextControl.Trim(GetEntryPost[i]);	//郵便番号
+						judg_data[i][0] = B100TextControl.Trim(GetEntryPost[i]);	//郵便番号
 						
-						entry_data[i][0] = B00020ToolsTextControl.Trim(GetEntryPost[i]);			//郵便番号
-						entry_data[i][1] = B00020ToolsTextControl.Trim(GetEntryPref[i]);			//県
-						entry_data[i][2] = B00020ToolsTextControl.Trim(GetEntryMunic01[i]);			//市区町村
-						entry_data[i][3] = B00020ToolsTextControl.Trim(GetEntryMunic02[i]);			//町丁目
-						entry_data[i][4] = B00020ToolsTextControl.Trim(GetEntryMunicipalityCd[i]);	//市区町村CD
+						entry_data[i][0] = B100TextControl.Trim(GetEntryPost[i]);			//郵便番号
+						entry_data[i][1] = B100TextControl.Trim(GetEntryPref[i]);			//県
+						entry_data[i][2] = B100TextControl.Trim(GetEntryMunic01[i]);			//市区町村
+						entry_data[i][3] = B100TextControl.Trim(GetEntryMunic02[i]);			//町丁目
+						entry_data[i][4] = B100TextControl.Trim(GetEntryMunicipalityCd[i]);	//市区町村CD
 					}
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();

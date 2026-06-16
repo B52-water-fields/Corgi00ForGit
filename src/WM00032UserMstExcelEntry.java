@@ -29,10 +29,10 @@ public class WM00032UserMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,200,"Corgi00ユーザーマスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,600,200,"Corgi00ユーザーマスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
@@ -40,14 +40,14 @@ public class WM00032UserMstExcelEntry{
 		
 		String SheetName = "";
 		
-		final String[] SheetList = B00060ToolsExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100ExcellControl.ExcellSheetList(TgtFilePath);
 		
 		if(1==SheetList.length) {
 			SheetName = SheetList[0];
 		}
 		
-		JLabel LB_SheetList				= B00110FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
-		final JComboBox   TB_SheetList	= B00110FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
+		JLabel LB_SheetList				= B100FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
+		final JComboBox   TB_SheetList	= B100FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
 		
 		main_fm.add(LB_SheetList);
 		main_fm.add(TB_SheetList);	//シート一覧
@@ -90,10 +90,10 @@ public class WM00032UserMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,750,800,"Corgi00ユーザーマスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,750,800,"Corgi00ユーザーマスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
@@ -148,7 +148,7 @@ public class WM00032UserMstExcelEntry{
 				,-1	//パスワード
 				};
 		
-		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています",11,0);
+		JLabel LB_SheetList	= B100FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = {
@@ -184,10 +184,10 @@ public class WM00032UserMstExcelEntry{
 		};
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -201,42 +201,42 @@ public class WM00032UserMstExcelEntry{
 		TableColumn column = null;
 		
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//倉庫CD
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//運送会社CD
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//ユーザーCD
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//倉庫名
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//運送会社名
-		column = columnModel01.getColumn( 6);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//ユーザー名1
-		column = columnModel01.getColumn( 7);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//ユーザー名2
-		column = columnModel01.getColumn( 8);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//ユーザー名3
-		column = columnModel01.getColumn( 9);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//権限区分
-		column = columnModel01.getColumn(10);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//標準車輛CD
-		column = columnModel01.getColumn(11);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//車両名称01
-		column = columnModel01.getColumn(12);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//車両名称02
-		column = columnModel01.getColumn(13);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//車両名称03
-		column = columnModel01.getColumn(14);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//郵便番号
-		column = columnModel01.getColumn(15);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//住所1
-		column = columnModel01.getColumn(16);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//住所2
-		column = columnModel01.getColumn(17);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//住所3
-		column = columnModel01.getColumn(18);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//電話番号
-		column = columnModel01.getColumn(19);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//FAX
-		column = columnModel01.getColumn(20);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//メールアドレス
-		column = columnModel01.getColumn(21);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント1
-		column = columnModel01.getColumn(22);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント2
-		column = columnModel01.getColumn(23);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//コメント3
-		column = columnModel01.getColumn(24);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//基幹システムユーザーコード
-		column = columnModel01.getColumn(25);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//削除区分
-		column = columnModel01.getColumn(26);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//主要担当荷主CD
-		column = columnModel01.getColumn(27);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//主要担当荷主名
-		column = columnModel01.getColumn(28);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//パスワード
+		column = columnModel01.getColumn( 1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//倉庫CD
+		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//運送会社CD
+		column = columnModel01.getColumn( 3);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//ユーザーCD
+		column = columnModel01.getColumn( 4);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//倉庫名
+		column = columnModel01.getColumn( 5);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//運送会社名
+		column = columnModel01.getColumn( 6);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//ユーザー名1
+		column = columnModel01.getColumn( 7);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//ユーザー名2
+		column = columnModel01.getColumn( 8);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//ユーザー名3
+		column = columnModel01.getColumn( 9);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//権限区分
+		column = columnModel01.getColumn(10);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//標準車輛CD
+		column = columnModel01.getColumn(11);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//車両名称01
+		column = columnModel01.getColumn(12);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//車両名称02
+		column = columnModel01.getColumn(13);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//車両名称03
+		column = columnModel01.getColumn(14);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//郵便番号
+		column = columnModel01.getColumn(15);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//住所1
+		column = columnModel01.getColumn(16);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//住所2
+		column = columnModel01.getColumn(17);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//住所3
+		column = columnModel01.getColumn(18);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//電話番号
+		column = columnModel01.getColumn(19);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//FAX
+		column = columnModel01.getColumn(20);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//メールアドレス
+		column = columnModel01.getColumn(21);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//コメント1
+		column = columnModel01.getColumn(22);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//コメント2
+		column = columnModel01.getColumn(23);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//コメント3
+		column = columnModel01.getColumn(24);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//基幹システムユーザーコード
+		column = columnModel01.getColumn(25);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//削除区分
+		column = columnModel01.getColumn(26);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//主要担当荷主CD
+		column = columnModel01.getColumn(27);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//主要担当荷主名
+		column = columnModel01.getColumn(28);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//パスワード
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,700,600,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,65,700,600,tb01);
 		main_fm.add(scpn01);
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B00060ToolsExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 
 		if(null==HeaderRead||0==HeaderRead.length) {
@@ -317,7 +317,7 @@ public class WM00032UserMstExcelEntry{
 			ClmnType[TgtCol[20]]=1;	//主要担当荷主CD
 			ClmnType[TgtCol[21]]=1;	//パスワード
 			
-			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcellRead = B100ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
 			
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
 				//倉庫マスタ
@@ -334,7 +334,7 @@ public class WM00032UserMstExcelEntry{
 				for(int i=0;i<ExcellRead.length;i++) {
 					for(int i01=0;i01<ExcellRead[i].length;i01++) {
 						if(null==ExcellRead[i][i01]) {ExcellRead[i][i01]="";}
-						ExcellRead[i][i01] = B00020ToolsTextControl.Trim(""+ExcellRead[i][i01]);
+						ExcellRead[i][i01] = B100TextControl.Trim(""+ExcellRead[i][i01]);
 					}
 					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])) {TgtWHCD.add(				""+ExcellRead[i][TgtCol[ 0]]);}
 					if(!"".equals(""+ExcellRead[i][TgtCol[ 1]])) {TgtShippingCompanyCd.add(	""+ExcellRead[i][TgtCol[ 1]]);}
@@ -382,13 +382,13 @@ public class WM00032UserMstExcelEntry{
 						SetOb[28] = ""+ExcellRead[i][TgtCol[21]];	//パスワード
 						
 						for(int i01=1;i01<SetOb.length;i01++) {
-							SetOb[i01] = B00020ToolsTextControl.Trim(""+SetOb[i01]);
+							SetOb[i01] = B100TextControl.Trim(""+SetOb[i01]);
 						}
-						SetOb[ 9] = B00020ToolsTextControl.num_only_String(""+SetOb[ 9]);	//権限区分
-						SetOb[25] = B00020ToolsTextControl.num_only_String(""+SetOb[25]);	//削除区分
-						SetOb[14] = B00020ToolsTextControl.num_only_String(""+SetOb[14]);	//郵便番号
-						SetOb[18] = B00020ToolsTextControl.num_only_String(""+SetOb[18]);	//電話番号
-						SetOb[19] = B00020ToolsTextControl.num_only_String(""+SetOb[19]);	//FAX
+						SetOb[ 9] = B100TextControl.num_only_String(""+SetOb[ 9]);	//権限区分
+						SetOb[25] = B100TextControl.num_only_String(""+SetOb[25]);	//削除区分
+						SetOb[14] = B100TextControl.num_only_String(""+SetOb[14]);	//郵便番号
+						SetOb[18] = B100TextControl.num_only_String(""+SetOb[18]);	//電話番号
+						SetOb[19] = B100TextControl.num_only_String(""+SetOb[19]);	//FAX
 						
 						if("".equals(""+SetOb[ 9])) {	//権限区分
 							SetOb[ 9] = "0";
@@ -397,9 +397,9 @@ public class WM00032UserMstExcelEntry{
 							SetOb[25] = "0";
 						}
 						
-						for(int i01=0;i01<B00100DefaultVariable.AuthorityFG[1].length;i01++) {
+						for(int i01=0;i01<B100DefaultVariable.AuthorityFG[1].length;i01++) {
 							boolean UnHitFg = true;
-							if(B00100DefaultVariable.AuthorityFG[1][i01].equals(""+SetOb[9])) {
+							if(B100DefaultVariable.AuthorityFG[1][i01].equals(""+SetOb[9])) {
 								UnHitFg = false;
 							}
 							if(UnHitFg) {
@@ -407,9 +407,9 @@ public class WM00032UserMstExcelEntry{
 							}
 						}
 						
-						for(int i01=0;i01<B00100DefaultVariable.DelList[1].length;i01++) {
+						for(int i01=0;i01<B100DefaultVariable.DelList[1].length;i01++) {
 							boolean UnHitFg = true;
-							if(B00100DefaultVariable.DelList[1][i01].equals(""+SetOb[25])) {
+							if(B100DefaultVariable.DelList[1][i01].equals(""+SetOb[25])) {
 								UnHitFg = false;
 							}
 							if(UnHitFg) {
@@ -499,26 +499,26 @@ public class WM00032UserMstExcelEntry{
 				}else {
 					//必要フォルダを生成する
 					String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
-					B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+					B100FolderCheck.FLD_CHECK(FLD_PATH);
 					FLD_PATH = A00000Main.MainFLD+"\\MstControl\\UserMst";
-					B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+					B100FolderCheck.FLD_CHECK(FLD_PATH);
 					FLD_PATH = A00000Main.MainFLD+"\\MstControl\\UserMst\\Err";
-					B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+					B100FolderCheck.FLD_CHECK(FLD_PATH);
 					FLD_PATH = A00000Main.MainFLD+"\\MstControl\\UserMst\\BK";
-					B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+					B100FolderCheck.FLD_CHECK(FLD_PATH);
 					
 					//ファイルに出力
 					
-					String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+					String NowDTM=B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 					
 					FLD_PATH = A00000Main.MainFLD+"\\MstControl\\UserMst\\Err";
 					
 					String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 					
-					B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+					B100TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 					
 					//古いエラーデータ削除
-					B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+					B100FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100DefaultVariable.ErrTxtDelete);
 					
 					//ファイル開く
 					File file = new File(ErrFP);
@@ -582,7 +582,7 @@ public class WM00032UserMstExcelEntry{
 						SetString[3][2] = "0";
 					}
 					
-					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 					
 					String tgt_table = "KM0020_USERMST";
 					String[][] field_name = new String[SetString.length][3];
@@ -634,10 +634,10 @@ public class WM00032UserMstExcelEntry{
 						entry_data[i][24] = ""+tableModel_ms01.getValueAt(i, 25);	//削除区分
 						entry_data[i][25] = ""+tableModel_ms01.getValueAt(i, 26);	//主要担当荷主CD
 					}
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					//ファイルバックアップ
-					B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+					B100FolderCheck.FileBackUpNormal(TgtFilePath) ;
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();

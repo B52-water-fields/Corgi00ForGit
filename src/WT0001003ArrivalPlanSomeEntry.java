@@ -22,33 +22,33 @@ public class WT0001003ArrivalPlanSomeEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		String Nextday = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.ndate_after(B00050ToolsDateTimeControl.dtm()[1],1))[0];
+		String Nextday = B100DateTimeControl.dtmString2(B100DateTimeControl.ndate_after(B100DateTimeControl.dtm()[1],1))[0];
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定検索","NK");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定検索","NK");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_PlanDate 	= B00110FrameParts.JLabelSet(  0, 50,100,20,"入荷予定日:"	,11,1);
-		JLabel LB_SpCd 		= B00110FrameParts.JLabelSet(210, 50, 90,20,"仕入先CD:"	,11,1);
-		JLabel LB_ClWh 		= B00110FrameParts.JLabelSet(560, 50, 90,20,"担当倉庫:"	,11,1);
-		JLabel LB_ClCd 		= B00110FrameParts.JLabelSet(560, 75, 90,20,"荷主CD:"		,11,1);
+		JLabel LB_PlanDate 	= B100FrameParts.JLabelSet(  0, 50,100,20,"入荷予定日:"	,11,1);
+		JLabel LB_SpCd 		= B100FrameParts.JLabelSet(210, 50, 90,20,"仕入先CD:"	,11,1);
+		JLabel LB_ClWh 		= B100FrameParts.JLabelSet(560, 50, 90,20,"担当倉庫:"	,11,1);
+		JLabel LB_ClCd 		= B100FrameParts.JLabelSet(560, 75, 90,20,"荷主CD:"		,11,1);
 		
-		final JFormattedTextField TB_PlanDate		= B00110FrameParts.JFormattedTextFieldSet(	100,50, 70,20,Nextday	,11,0,"YYYY/MM/DD");		//入荷予定日
+		final JFormattedTextField TB_PlanDate		= B100FrameParts.JFormattedTextFieldSet(	100,50, 70,20,Nextday	,11,0,"YYYY/MM/DD");		//入荷予定日
 		//予定日進む戻るボタン
-		JButton PlanDateAfterBtn	= B00110FrameParts.BtnSet(										170,50, 40,10,"▲",6);
-		JButton PlanDateBeforeBtn	= B00110FrameParts.BtnSet(										170,60, 40,10,"▼",6);
+		JButton PlanDateAfterBtn	= B100FrameParts.BtnSet(										170,50, 40,10,"▲",6);
+		JButton PlanDateBeforeBtn	= B100FrameParts.BtnSet(										170,60, 40,10,"▼",6);
 		
-		final JComboBox TB_SpCd	= B00110FrameParts.JComboBoxSet(	300, 50,250,20,B00100DefaultVariable.SupplierList[0],11);		//仕入先
-		final JComboBox TB_ClWh	= B00110FrameParts.JComboBoxSet(	650, 50,200,20,B00100DefaultVariable.WhList[0],11);			//担当倉庫
-		final JComboBox TB_ClCd	= B00110FrameParts.JComboBoxSet(	650, 75,200,20,B00100DefaultVariable.ClList[0],11);			//荷主CD
+		final JComboBox TB_SpCd	= B100FrameParts.JComboBoxSet(	300, 50,250,20,B100DefaultVariable.SupplierList[0],11);		//仕入先
+		final JComboBox TB_ClWh	= B100FrameParts.JComboBoxSet(	650, 50,200,20,B100DefaultVariable.WhList[0],11);			//担当倉庫
+		final JComboBox TB_ClCd	= B100FrameParts.JComboBoxSet(	650, 75,200,20,B100DefaultVariable.ClList[0],11);			//荷主CD
 		
-		TB_ClWh.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.WhList[1],A00000Main.ClWh));
-		TB_ClCd.setSelectedIndex(GetSelectIndex(B00100DefaultVariable.ClList[1],A00000Main.ClCd));
+		TB_ClWh.setSelectedIndex(GetSelectIndex(B100DefaultVariable.WhList[1],A00000Main.ClWh));
+		TB_ClCd.setSelectedIndex(GetSelectIndex(B100DefaultVariable.ClList[1],A00000Main.ClCd));
 		
 		TB_ClWh.setEnabled(false);
 		TB_ClCd.setEnabled(false);
@@ -65,30 +65,30 @@ public class WT0001003ArrivalPlanSomeEntry{
 		main_fm.add(TB_ClCd);
 		main_fm.add(TB_SpCd);
 		
-		JLabel LB_ClArrNo	= B00110FrameParts.JLabelSet(  30,100,100,20,"荷主予定番号"		,11,2);
-		JLabel LB_ClItemCd	= B00110FrameParts.JLabelSet( 150,100,100,20,"荷主商品コード"		,11,2);
-		JLabel LB_lot		= B00110FrameParts.JLabelSet( 270,100,100,20,"ロット"				,11,2);
-		JLabel LB_ExpDate	= B00110FrameParts.JLabelSet( 390,100,100,20,"消費期限"			,11,2);
-		JLabel LB_PlanQty	= B00110FrameParts.JLabelSet( 510,100,100,20,"予定数量"			,11,2);
-		JLabel LB_HdCom		= B00110FrameParts.JLabelSet( 630,100,100,20,"ヘッダコメント"		,11,2);
-		JLabel LB_MsCom		= B00110FrameParts.JLabelSet( 750,100,100,20,"明細コメント"		,11,2);
+		JLabel LB_ClArrNo	= B100FrameParts.JLabelSet(  30,100,100,20,"荷主予定番号"		,11,2);
+		JLabel LB_ClItemCd	= B100FrameParts.JLabelSet( 150,100,100,20,"荷主商品コード"		,11,2);
+		JLabel LB_lot		= B100FrameParts.JLabelSet( 270,100,100,20,"ロット"				,11,2);
+		JLabel LB_ExpDate	= B100FrameParts.JLabelSet( 390,100,100,20,"消費期限"			,11,2);
+		JLabel LB_PlanQty	= B100FrameParts.JLabelSet( 510,100,100,20,"予定数量"			,11,2);
+		JLabel LB_HdCom		= B100FrameParts.JLabelSet( 630,100,100,20,"ヘッダコメント"		,11,2);
+		JLabel LB_MsCom		= B100FrameParts.JLabelSet( 750,100,100,20,"明細コメント"		,11,2);
 		
-		final JTextArea TB_ClArrNo	= B00110FrameParts.JTextAreaSet(11);
-		final JTextArea TB_ClItemCd	= B00110FrameParts.JTextAreaSet(11);
-		final JTextArea TB_lot		= B00110FrameParts.JTextAreaSet(11);
-		final JTextArea TB_ExpDate	= B00110FrameParts.JTextAreaSet(11);
-		final JTextArea TB_PlanQty	= B00110FrameParts.JTextAreaSet(11);
-		final JTextArea TB_HdCom	= B00110FrameParts.JTextAreaSet(11);
-		final JTextArea TB_MsCom	= B00110FrameParts.JTextAreaSet(11);
+		final JTextArea TB_ClArrNo	= B100FrameParts.JTextAreaSet(11);
+		final JTextArea TB_ClItemCd	= B100FrameParts.JTextAreaSet(11);
+		final JTextArea TB_lot		= B100FrameParts.JTextAreaSet(11);
+		final JTextArea TB_ExpDate	= B100FrameParts.JTextAreaSet(11);
+		final JTextArea TB_PlanQty	= B100FrameParts.JTextAreaSet(11);
+		final JTextArea TB_HdCom	= B100FrameParts.JTextAreaSet(11);
+		final JTextArea TB_MsCom	= B100FrameParts.JTextAreaSet(11);
 		
 		//スクロール用設定
-		JScrollPane SPClArrNo 	= B00110FrameParts.JScrollPaneSet( 30,125,100,500,TB_ClArrNo);
-		JScrollPane SPClItemCd 	= B00110FrameParts.JScrollPaneSet(150,125,100,500,TB_ClItemCd);
-		JScrollPane SPlot 		= B00110FrameParts.JScrollPaneSet(270,125,100,500,TB_lot);
-		JScrollPane SPExpDate 	= B00110FrameParts.JScrollPaneSet(390,125,100,500,TB_ExpDate);
-		JScrollPane SPPlanQty 	= B00110FrameParts.JScrollPaneSet(510,125,100,500,TB_PlanQty);
-		JScrollPane SPHdCom 	= B00110FrameParts.JScrollPaneSet(630,125,100,500,TB_HdCom);
-		JScrollPane SPMsCom 	= B00110FrameParts.JScrollPaneSet(750,125,100,500,TB_MsCom);
+		JScrollPane SPClArrNo 	= B100FrameParts.JScrollPaneSet( 30,125,100,500,TB_ClArrNo);
+		JScrollPane SPClItemCd 	= B100FrameParts.JScrollPaneSet(150,125,100,500,TB_ClItemCd);
+		JScrollPane SPlot 		= B100FrameParts.JScrollPaneSet(270,125,100,500,TB_lot);
+		JScrollPane SPExpDate 	= B100FrameParts.JScrollPaneSet(390,125,100,500,TB_ExpDate);
+		JScrollPane SPPlanQty 	= B100FrameParts.JScrollPaneSet(510,125,100,500,TB_PlanQty);
+		JScrollPane SPHdCom 	= B100FrameParts.JScrollPaneSet(630,125,100,500,TB_HdCom);
+		JScrollPane SPMsCom 	= B100FrameParts.JScrollPaneSet(750,125,100,500,TB_MsCom);
 		
 		main_fm.add(LB_ClArrNo);
 		main_fm.add(LB_ClItemCd);
@@ -109,34 +109,34 @@ public class WT0001003ArrivalPlanSomeEntry{
 		//予定日進む戻るボタン押下事の挙動
 		PlanDateAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_PlanDate.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_after(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_after(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_PlanDate.setText(SetDate);
 			}
 		});
 		PlanDateBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[0];
+				String NowDate = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[0];
 				String GetDate = TB_PlanDate.getText();
 				String SetDate = NowDate;
 				if(null==GetDate||"".equals(GetDate)) {
 				}else {
-					Timestamp WT	= B00050ToolsDateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B00050ToolsDateTimeControl.ndate_before(WT, 1);
-					SetDate			= B00050ToolsDateTimeControl.dtmString2(WT)[0];
+					Timestamp WT	= B100DateTimeControl.dtmTimestamp2(GetDate)[0];
+					WT				= B100DateTimeControl.ndate_before(WT, 1);
+					SetDate			= B100DateTimeControl.dtmString2(WT)[0];
 				}
 				TB_PlanDate.setText(SetDate);
 			}
 		});
 		
-		final JTextArea TB_ClPlanNo = B00110FrameParts.JTextAreaSet(11);
+		final JTextArea TB_ClPlanNo = B100FrameParts.JTextAreaSet(11);
 		
 		RenewFg = true;
 		main_fm.setVisible(true);
@@ -145,9 +145,9 @@ public class WT0001003ArrivalPlanSomeEntry{
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				String GetPlanDate	= TB_PlanDate.getText();		//入荷予定日
-				String GetSpCd		= B00100DefaultVariable.SupplierList[1][TB_SpCd.getSelectedIndex()];	//仕入先
-				String GetClWh		= B00100DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];			//担当倉庫
-				String GetClCd		= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];			//荷主CD
+				String GetSpCd		= B100DefaultVariable.SupplierList[1][TB_SpCd.getSelectedIndex()];	//仕入先
+				String GetClWh		= B100DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];			//担当倉庫
+				String GetClCd		= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];			//荷主CD
 				
 				
 				String GetClArrNo	= TB_ClArrNo.getText();

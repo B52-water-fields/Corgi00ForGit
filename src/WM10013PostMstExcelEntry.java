@@ -26,10 +26,10 @@ public class WM10013PostMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,200,"Corgi00郵便番号登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,600,200,"Corgi00郵便番号登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
@@ -37,14 +37,14 @@ public class WM10013PostMstExcelEntry{
 		
 		String SheetName = "";
 		
-		final String[] SheetList = B00060ToolsExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100ExcellControl.ExcellSheetList(TgtFilePath);
 		
 		if(1==SheetList.length) {
 			SheetName = SheetList[0];
 		}
 		
-		JLabel LB_SheetList				= B00110FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
-		final JComboBox   TB_SheetList	= B00110FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
+		JLabel LB_SheetList				= B100FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
+		final JComboBox   TB_SheetList	= B100FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
 		
 		main_fm.add(LB_SheetList);
 		main_fm.add(TB_SheetList);	//シート一覧
@@ -87,16 +87,16 @@ public class WM10013PostMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,750,750,"Corgi00郵便番号登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,750,750,"Corgi00郵便番号登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,300,20,"以下のデータを登録しようとしています",11,0);
+		JLabel LB_SheetList	= B100FrameParts.JLabelSet(	10, 40,300,20,"以下のデータを登録しようとしています",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = {
@@ -108,9 +108,9 @@ public class WM10013PostMstExcelEntry{
 								};
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = -1;
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = -1;
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -123,20 +123,20 @@ public class WM10013PostMstExcelEntry{
 		//列幅初期設定 表示位置設定
 		TableColumn column = null;
 		
-		column = columnModel01.getColumn(0);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//郵便番号
-		column = columnModel01.getColumn(1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//県
-		column = columnModel01.getColumn(2);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//市区町村
-		column = columnModel01.getColumn(3);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//町丁目
-		column = columnModel01.getColumn(4);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//市区町村CD
+		column = columnModel01.getColumn(0);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//郵便番号
+		column = columnModel01.getColumn(1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//県
+		column = columnModel01.getColumn(2);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//市区町村
+		column = columnModel01.getColumn(3);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//町丁目
+		column = columnModel01.getColumn(4);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//市区町村CD
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,700,550,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,65,700,550,tb01);
 		main_fm.add(scpn01);
 		
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B00060ToolsExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 		
 		String[] NeedCol = {
@@ -188,13 +188,13 @@ public class WM10013PostMstExcelEntry{
 			ClmnType[TgtCol[3]]=1;	//町丁目
 			ClmnType[TgtCol[4]]=1;	//市区町村CD
 			
-			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcellRead = B100ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
 			
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
 				for(int i=0;i<ExcellRead.length;i++) {
 					Object[] SetOb = new Object[6];
 					
-					SetOb[0] = B00020ToolsTextControl.num_only_String(""+ExcellRead[i][TgtCol[0]]);	//郵便番号
+					SetOb[0] = B100TextControl.num_only_String(""+ExcellRead[i][TgtCol[0]]);	//郵便番号
 					if(!"".equals(""+SetOb[0])) {
 						
 						if(null==ExcellRead[i][TgtCol[1]]){ExcellRead[i][TgtCol[1]]="";}
@@ -202,10 +202,10 @@ public class WM10013PostMstExcelEntry{
 						if(null==ExcellRead[i][TgtCol[3]]){ExcellRead[i][TgtCol[3]]="";}
 						if(null==ExcellRead[i][TgtCol[4]]){ExcellRead[i][TgtCol[4]]="";}
 						
-						ExcellRead[i][TgtCol[1]] = B00020ToolsTextControl.Trim(""+ExcellRead[i][TgtCol[1]]);
-						ExcellRead[i][TgtCol[2]] = B00020ToolsTextControl.Trim(""+ExcellRead[i][TgtCol[2]]);
-						ExcellRead[i][TgtCol[3]] = B00020ToolsTextControl.Trim(""+ExcellRead[i][TgtCol[3]]);
-						ExcellRead[i][TgtCol[4]] = B00020ToolsTextControl.Trim(""+ExcellRead[i][TgtCol[4]]);
+						ExcellRead[i][TgtCol[1]] = B100TextControl.Trim(""+ExcellRead[i][TgtCol[1]]);
+						ExcellRead[i][TgtCol[2]] = B100TextControl.Trim(""+ExcellRead[i][TgtCol[2]]);
+						ExcellRead[i][TgtCol[3]] = B100TextControl.Trim(""+ExcellRead[i][TgtCol[3]]);
+						ExcellRead[i][TgtCol[4]] = B100TextControl.Trim(""+ExcellRead[i][TgtCol[4]]);
 						
 						SetOb[1] = ExcellRead[i][TgtCol[1]];
 						SetOb[2] = ExcellRead[i][TgtCol[2]];
@@ -255,20 +255,20 @@ public class WM10013PostMstExcelEntry{
 				field_name[4][2] = "1";	//市区町村CD
 				
 				for(int i=0;i<RowCount;i++) {
-					judg_data[i][0] = B00020ToolsTextControl.Trim(""+tableModel_ms01.getValueAt(i, 0));	//郵便番号
+					judg_data[i][0] = B100TextControl.Trim(""+tableModel_ms01.getValueAt(i, 0));	//郵便番号
 					
-					entry_data[i][0] = B00020ToolsTextControl.Trim(""+tableModel_ms01.getValueAt(i, 0));	//郵便番号
-					entry_data[i][1] = B00020ToolsTextControl.Trim(""+tableModel_ms01.getValueAt(i, 1));	//県
-					entry_data[i][2] = B00020ToolsTextControl.Trim(""+tableModel_ms01.getValueAt(i, 2));	//市区町村
-					entry_data[i][3] = B00020ToolsTextControl.Trim(""+tableModel_ms01.getValueAt(i, 3));	//町丁目
-					entry_data[i][4] = B00020ToolsTextControl.Trim(""+tableModel_ms01.getValueAt(i, 4));	//市区町村CD
+					entry_data[i][0] = B100TextControl.Trim(""+tableModel_ms01.getValueAt(i, 0));	//郵便番号
+					entry_data[i][1] = B100TextControl.Trim(""+tableModel_ms01.getValueAt(i, 1));	//県
+					entry_data[i][2] = B100TextControl.Trim(""+tableModel_ms01.getValueAt(i, 2));	//市区町村
+					entry_data[i][3] = B100TextControl.Trim(""+tableModel_ms01.getValueAt(i, 3));	//町丁目
+					entry_data[i][4] = B100TextControl.Trim(""+tableModel_ms01.getValueAt(i, 4));	//市区町村CD
 				}
-				A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+				A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 				
-				String FN = B00040ToolsFolderCheck.FILENAME(TgtFilePath);
-				String FP = B00040ToolsFolderCheck.FILE_FLD(TgtFilePath);
+				String FN = B100FolderCheck.FILENAME(TgtFilePath);
+				String FP = B100FolderCheck.FILE_FLD(TgtFilePath);
 				String BFP = FP + "\\BK";
-				B00040ToolsFolderCheck.FILE_BACKUP(FP,BFP,FN);
+				B100FolderCheck.FILE_BACKUP(FP,BFP,FN);
 				
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();

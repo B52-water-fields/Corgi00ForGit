@@ -98,11 +98,11 @@ public class M00080ItemComversionMstRt{
 			ArrayList<String> SearchItemName,			//商品名
 			boolean AllSearch){
 		
-		SearchClGpCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
-		SearchClCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchClCd);
-		SearchItemCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchItemCd);
-		SearchCLItemCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchCLItemCd);
-		SearchItemName	= B00150ArrayListControl.ArryListStringUniqueList(SearchItemName);
+		SearchClGpCd	= B100ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
+		SearchClCd		= B100ArrayListControl.ArryListStringUniqueList(SearchClCd);
+		SearchItemCd	= B100ArrayListControl.ArryListStringUniqueList(SearchItemCd);
+		SearchCLItemCd	= B100ArrayListControl.ArryListStringUniqueList(SearchCLItemCd);
+		SearchItemName	= B100ArrayListControl.ArryListStringUniqueList(SearchItemName);
 		
 		Object[][] rt = new Object[0][RtItemComversionMstRt().length];
 		boolean SearchKick = false;
@@ -200,11 +200,11 @@ public class M00080ItemComversionMstRt{
 		}
 		sql = sql+" order by KM0062_ItemComversionMst.ClGpCd,KM0062_ItemComversionMst.ClCd,KM0062_ItemComversionMst.ClItemCd\n";
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchClGpCd&&0<SearchClGpCd.size()){
@@ -293,7 +293,7 @@ public class M00080ItemComversionMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}

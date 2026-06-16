@@ -1,6 +1,6 @@
 import java.math.BigDecimal;
 
-public class B00070ToolsOther{
+public class B110Other{
 	//その他のツール達似たようなツールが増えたら切り出し
 	
 	//税込み合計金額→金額・税率（パーセント10%の場合10）を受け取って内税計算し、税別金額・消費税を返却する

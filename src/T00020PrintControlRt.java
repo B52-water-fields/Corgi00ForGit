@@ -92,18 +92,18 @@ public class T00020PrintControlRt{
 			ArrayList<String> SearchUpdateUser,		//更新者
 			boolean AllSearch){
 		
-		SearchPrintCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchPrintCd);			//印刷帳票CD
-		SearchOkuriNo		= B00150ArrayListControl.ArryListStringUniqueList(SearchOkuriNo);			//送り状番号等
-		SearchKey01			= B00150ArrayListControl.ArryListStringUniqueList(SearchKey01);				//サブキー01
-		SearchKey02			= B00150ArrayListControl.ArryListStringUniqueList(SearchKey02);				//サブキー02
-		SearchKey03			= B00150ArrayListControl.ArryListStringUniqueList(SearchKey03);				//サブキー03
-		SearchKey04			= B00150ArrayListControl.ArryListStringUniqueList(SearchKey04);				//サブキー04
-		SearchEntryDateStr	= B00150ArrayListControl.ArryListStringUniqueList(SearchEntryDateStr);		//登録日開始
-		SearchUpdateDateStr	= B00150ArrayListControl.ArryListStringUniqueList(SearchUpdateDateStr);		//更新日開始
-		SearchEntryDateEnd	= B00150ArrayListControl.ArryListStringUniqueList(SearchEntryDateEnd);		//登録日終了
-		SearchUpdateDateEnd	= B00150ArrayListControl.ArryListStringUniqueList(SearchUpdateDateEnd);		//更新日終了
-		SearchEntryUser		= B00150ArrayListControl.ArryListStringUniqueList(SearchEntryUser);			//登録者
-		SearchUpdateUser	= B00150ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);		//更新者
+		SearchPrintCd		= B100ArrayListControl.ArryListStringUniqueList(SearchPrintCd);			//印刷帳票CD
+		SearchOkuriNo		= B100ArrayListControl.ArryListStringUniqueList(SearchOkuriNo);			//送り状番号等
+		SearchKey01			= B100ArrayListControl.ArryListStringUniqueList(SearchKey01);				//サブキー01
+		SearchKey02			= B100ArrayListControl.ArryListStringUniqueList(SearchKey02);				//サブキー02
+		SearchKey03			= B100ArrayListControl.ArryListStringUniqueList(SearchKey03);				//サブキー03
+		SearchKey04			= B100ArrayListControl.ArryListStringUniqueList(SearchKey04);				//サブキー04
+		SearchEntryDateStr	= B100ArrayListControl.ArryListStringUniqueList(SearchEntryDateStr);		//登録日開始
+		SearchUpdateDateStr	= B100ArrayListControl.ArryListStringUniqueList(SearchUpdateDateStr);		//更新日開始
+		SearchEntryDateEnd	= B100ArrayListControl.ArryListStringUniqueList(SearchEntryDateEnd);		//登録日終了
+		SearchUpdateDateEnd	= B100ArrayListControl.ArryListStringUniqueList(SearchUpdateDateEnd);		//更新日終了
+		SearchEntryUser		= B100ArrayListControl.ArryListStringUniqueList(SearchEntryUser);			//登録者
+		SearchUpdateUser	= B100ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);		//更新者
 		
 		Object[][] rt = new Object[0][RtPrintControlRt().length];
 		boolean SearchKick = false;
@@ -234,11 +234,11 @@ public class T00020PrintControlRt{
 		sql = sql + " order by KT0040_PrintControl.PrintCd,KT0040_PrintControl.OkuriNo,KT0040_PrintControl.Key01,KT0040_PrintControl.Key02,KT0040_PrintControl.Key03,KT0040_PrintControl.Key04";
 		
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchPrintCd && 0<SearchPrintCd.size()){					//印刷帳票CD
@@ -331,8 +331,8 @@ public class T00020PrintControlRt{
 					if(null==rset01.getString("Key02"			)){rt[counter][ColKey02]			="";}else{rt[counter][ColKey02]		=rset01.getString("Key02");}			//サブキー02
 					if(null==rset01.getString("Key03"			)){rt[counter][ColKey03]			="";}else{rt[counter][ColKey03]		=rset01.getString("Key03");}			//サブキー03
 					if(null==rset01.getString("Key04"			)){rt[counter][ColKey04]			="";}else{rt[counter][ColKey04]		=rset01.getString("Key04");}			//サブキー04
-					if(null==rset01.getTimestamp("EntryDate"	)){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
-					if(null==rset01.getTimestamp("UpdateDate"	)){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
+					if(null==rset01.getTimestamp("EntryDate"	)){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
+					if(null==rset01.getTimestamp("UpdateDate"	)){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
 					if(null==rset01.getString("EntryUser"		)){rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}		//登録者
 					if(null==rset01.getString("UpdateUser"		)){rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}		//更新者
 					
@@ -350,7 +350,7 @@ public class T00020PrintControlRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		
 		

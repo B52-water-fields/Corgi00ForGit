@@ -3,11 +3,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class A00050OldDataTableCheck{
+public class A100OldDataTableCheck{
 	//
 	//トランザクションデータバックアップ用テーブルを作成する
 	// ==========================================================================
-    //  A00050OldDataTableCheck（冥界の王／バックアップテーブル自動治癒エンジン）
+    //  A100OldDataTableCheck（冥界の王／バックアップテーブル自動治癒エンジン）
     // ==========================================================================
     //
     //  このクラスは、ユーザーID「zeus」ログイン時に起動します。
@@ -118,12 +118,12 @@ public class A00050OldDataTableCheck{
 						+ ") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=''";
 			
 		//sql実行
-		A00010DbConnect.DB_CONN(TgtDB);
+		A100DbConnect.DB_CONN(TgtDB);
 		ResultSet rset01 = null;
 		PreparedStatement CreateTablestmt = null;
 		Statement stmt01 = null;
 		try {
-			CreateTablestmt = A00010DbConnect.conn.prepareStatement(sql);
+			CreateTablestmt = A100DbConnect.conn.prepareStatement(sql);
 			CreateTablestmt.executeUpdate();
 			if(null!=CreateTablestmt) {CreateTablestmt.close();}
 		} catch (SQLException e) {
@@ -137,7 +137,7 @@ public class A00050OldDataTableCheck{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 	}
 	
 	private static void AlterTable(String TgtDB,String[][] FromTableLayout,String[][] ToTableLayout) {
@@ -180,12 +180,12 @@ public class A00050OldDataTableCheck{
 		
 		if(KickFg) {
 			//sql実行
-			A00010DbConnect.DB_CONN(TgtDB);
+			A100DbConnect.DB_CONN(TgtDB);
 			ResultSet rset01 = null;
 			PreparedStatement CreateTablestmt = null;
 			Statement stmt01 = null;
 			try {
-				CreateTablestmt = A00010DbConnect.conn.prepareStatement(sql);
+				CreateTablestmt = A100DbConnect.conn.prepareStatement(sql);
 				CreateTablestmt.executeUpdate();
 				if(null!=CreateTablestmt) {CreateTablestmt.close();}
 			} catch (SQLException e) {
@@ -199,7 +199,7 @@ public class A00050OldDataTableCheck{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 	}
 	
@@ -207,7 +207,7 @@ public class A00050OldDataTableCheck{
 	public static String[][] ColumnList(String TgtDB,String TgtTable) {
 		//データベース・テーブルを指定してフィールド名一覧を返却する
 		String[][] rt=new String[0][0];
-		A00010DbConnect.DB_CONN(TgtDB);
+		A100DbConnect.DB_CONN(TgtDB);
 		ResultSet rset01 = null;
 		PreparedStatement CreateTablestmt = null;
 		Statement stmt01 = null;
@@ -242,7 +242,7 @@ public class A00050OldDataTableCheck{
 		//System.out.println(sql);
 
 		try {
-			stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+			stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 				      ResultSet.CONCUR_UPDATABLE);
 			rset01 = stmt01.executeQuery(sql);
 			
@@ -295,7 +295,7 @@ public class A00050OldDataTableCheck{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 		
 		return rt;
 	}
@@ -303,7 +303,7 @@ public class A00050OldDataTableCheck{
 	private static String[] TableList(String TgtDB) {
 		//データベースのテーブル一覧を返却する
 		String[] TableName=new String[0];
-		A00010DbConnect.DB_CONN(TgtDB);
+		A100DbConnect.DB_CONN(TgtDB);
 		ResultSet rset01 = null;
 		PreparedStatement CreateTablestmt = null;
 		Statement stmt01 = null;
@@ -311,7 +311,7 @@ public class A00050OldDataTableCheck{
 		String sql = "SELECT database()";
 		
 		try {
-			stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+			stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 				      ResultSet.CONCUR_UPDATABLE);
 			rset01 = stmt01.executeQuery(sql);
 			int counter = 0;
@@ -333,7 +333,7 @@ public class A00050OldDataTableCheck{
 				rset01 = null;
 				stmt01 = null;
 				sql = "show tables";
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+				stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 					      ResultSet.CONCUR_UPDATABLE);
 				rset01 = stmt01.executeQuery(sql);
 				counter = 0;
@@ -363,7 +363,7 @@ public class A00050OldDataTableCheck{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 		return TableName;
 	}
 	

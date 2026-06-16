@@ -7,7 +7,7 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 
-public class B00160FtpControl{
+public class B100FtpControl{
 	//Ftp接続してファイル操作を行うクラス
 	public static FTPClient FtpCd(FTPClient client,String CdTgt) {
 		//対象フォルダに移動
@@ -22,7 +22,7 @@ public class B00160FtpControl{
 	}
 	
 	public static void FtpPut(FTPClient client,String PutDataPath) {
-		String FileName = B00040ToolsFolderCheck.FILENAME(PutDataPath);
+		String FileName = B100FolderCheck.FILENAME(PutDataPath);
 		try {
 			client.storeFile(FileName, new FileInputStream(PutDataPath));
 		} catch (IOException e) {

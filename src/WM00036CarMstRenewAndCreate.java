@@ -26,55 +26,55 @@ public class WM00036CarMstRenewAndCreate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,500,"Corgi00車輛登録・修正","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,500,"Corgi00車輛登録・修正","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_WHCD				= B00110FrameParts.JLabelSet(  0, 40,100,20,"担当倉庫:",		11,1);
-		JLabel LB_ShippingCompanyCd	= B00110FrameParts.JLabelSet(  0, 65,100,20,"運送会社CD:",		11,1);
-		JLabel LB_CarCd				= B00110FrameParts.JLabelSet(  0, 90,100,20,"車輛CD:",			11,1);
-		JLabel LB_CarName01			= B00110FrameParts.JLabelSet(  0,115,100,20,"車輛名01:",		11,1);
-		JLabel LB_CarName02			= B00110FrameParts.JLabelSet(  0,140,100,20,"車輛名02:",		11,1);
-		JLabel LB_CarName03			= B00110FrameParts.JLabelSet(  0,165,100,20,"車輛名03:",		11,1);
-		JLabel LB_DriverCd			= B00110FrameParts.JLabelSet(  0,190,100,20,"乗務員CD:",		11,1);
-		JLabel LB_PTMSCD			= B00110FrameParts.JLabelSet(  0,215,100,20,"基幹SYS車輛Cd:",	11,1);
-		JLabel LB_EntryDate			= B00110FrameParts.JLabelSet(  0,240,100,20,"データ登録日時:",	11,1);
-		JLabel LB_UpdateDate		= B00110FrameParts.JLabelSet(  0,265,100,20,"データ更新日時:",	11,1);
-		JLabel LB_EntryUser			= B00110FrameParts.JLabelSet(  0,290,100,20,"登録者コード:",	11,1);
-		JLabel LB_UpdateUser		= B00110FrameParts.JLabelSet(  0,315,100,20,"更新者コード:",	11,1);
-		JLabel LB_DelFg				= B00110FrameParts.JLabelSet(  0,340,100,20,"削除フラグ:",		11,1);
+		JLabel LB_WHCD				= B100FrameParts.JLabelSet(  0, 40,100,20,"担当倉庫:",		11,1);
+		JLabel LB_ShippingCompanyCd	= B100FrameParts.JLabelSet(  0, 65,100,20,"運送会社CD:",		11,1);
+		JLabel LB_CarCd				= B100FrameParts.JLabelSet(  0, 90,100,20,"車輛CD:",			11,1);
+		JLabel LB_CarName01			= B100FrameParts.JLabelSet(  0,115,100,20,"車輛名01:",		11,1);
+		JLabel LB_CarName02			= B100FrameParts.JLabelSet(  0,140,100,20,"車輛名02:",		11,1);
+		JLabel LB_CarName03			= B100FrameParts.JLabelSet(  0,165,100,20,"車輛名03:",		11,1);
+		JLabel LB_DriverCd			= B100FrameParts.JLabelSet(  0,190,100,20,"乗務員CD:",		11,1);
+		JLabel LB_PTMSCD			= B100FrameParts.JLabelSet(  0,215,100,20,"基幹SYS車輛Cd:",	11,1);
+		JLabel LB_EntryDate			= B100FrameParts.JLabelSet(  0,240,100,20,"データ登録日時:",	11,1);
+		JLabel LB_UpdateDate		= B100FrameParts.JLabelSet(  0,265,100,20,"データ更新日時:",	11,1);
+		JLabel LB_EntryUser			= B100FrameParts.JLabelSet(  0,290,100,20,"登録者コード:",	11,1);
+		JLabel LB_UpdateUser		= B100FrameParts.JLabelSet(  0,315,100,20,"更新者コード:",	11,1);
+		JLabel LB_DelFg				= B100FrameParts.JLabelSet(  0,340,100,20,"削除フラグ:",		11,1);
 		
-		final JComboBox  TB_WHCD				= B00110FrameParts.JComboBoxSet( 100, 40,250,20,B00100DefaultVariable.WhList[0],	11);					//倉庫コード
-		final JComboBox  TB_ShippingCompanyCd	= B00110FrameParts.JComboBoxSet( 100, 65,250,20,B00100DefaultVariable.ShippingCompanyList[0],	11);		//運送会社CD
-		final JTextField TB_CarCd				= B00110FrameParts.JTextFieldSet(100, 90,100,20,"",11,0);	//車輛CD
-		final JTextField TB_CarName01			= B00110FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//車輛名01
-		final JTextField TB_CarName02			= B00110FrameParts.JTextFieldSet(100,140,250,20,"",11,0);	//車輛名02
-		final JTextField TB_CarName03			= B00110FrameParts.JTextFieldSet(100,165,250,20,"",11,0);	//車輛名03
-		final JTextField TB_DriverCd			= B00110FrameParts.JTextFieldSet(100,190,100,20,"",11,0);	//乗務員CD
-		final JTextField TB_PTMSCD				= B00110FrameParts.JTextFieldSet(100,215,100,20,"",11,0);	//基幹SYS車輛Cd
-		final JTextField TB_EntryDate			= B00110FrameParts.JTextFieldSet(100,240,250,20,"",11,0);	//データ登録日時
-		final JTextField TB_UpdateDate			= B00110FrameParts.JTextFieldSet(100,265,250,20,"",11,0);	//データ更新日時
-		final JTextField TB_EntryUser			= B00110FrameParts.JTextFieldSet(100,290,250,20,"",11,0);	//登録者コード
-		final JTextField TB_UpdateUser			= B00110FrameParts.JTextFieldSet(100,315,250,20,"",11,0);	//更新者コード
-		final JComboBox  TB_DelFg				= B00110FrameParts.JComboBoxSet( 100,340,150,20,B00100DefaultVariable.DelList[0],	11);
+		final JComboBox  TB_WHCD				= B100FrameParts.JComboBoxSet( 100, 40,250,20,B100DefaultVariable.WhList[0],	11);					//倉庫コード
+		final JComboBox  TB_ShippingCompanyCd	= B100FrameParts.JComboBoxSet( 100, 65,250,20,B100DefaultVariable.ShippingCompanyList[0],	11);		//運送会社CD
+		final JTextField TB_CarCd				= B100FrameParts.JTextFieldSet(100, 90,100,20,"",11,0);	//車輛CD
+		final JTextField TB_CarName01			= B100FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//車輛名01
+		final JTextField TB_CarName02			= B100FrameParts.JTextFieldSet(100,140,250,20,"",11,0);	//車輛名02
+		final JTextField TB_CarName03			= B100FrameParts.JTextFieldSet(100,165,250,20,"",11,0);	//車輛名03
+		final JTextField TB_DriverCd			= B100FrameParts.JTextFieldSet(100,190,100,20,"",11,0);	//乗務員CD
+		final JTextField TB_PTMSCD				= B100FrameParts.JTextFieldSet(100,215,100,20,"",11,0);	//基幹SYS車輛Cd
+		final JTextField TB_EntryDate			= B100FrameParts.JTextFieldSet(100,240,250,20,"",11,0);	//データ登録日時
+		final JTextField TB_UpdateDate			= B100FrameParts.JTextFieldSet(100,265,250,20,"",11,0);	//データ更新日時
+		final JTextField TB_EntryUser			= B100FrameParts.JTextFieldSet(100,290,250,20,"",11,0);	//登録者コード
+		final JTextField TB_UpdateUser			= B100FrameParts.JTextFieldSet(100,315,250,20,"",11,0);	//更新者コード
+		final JComboBox  TB_DelFg				= B100FrameParts.JComboBoxSet( 100,340,150,20,B100DefaultVariable.DelList[0],	11);
 		
 		TB_WHCD.setSelectedIndex(0);
 		TB_ShippingCompanyCd.setSelectedIndex(0);
 		TB_DelFg.setSelectedIndex(0);
 		
-		for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++){
-			if((""+B00100DefaultVariable.WhList[1][i]).equals(""+A00000Main.ClWh)){
+		for(int i=0;i<B100DefaultVariable.WhList[1].length;i++){
+			if((""+B100DefaultVariable.WhList[1][i]).equals(""+A00000Main.ClWh)){
 				TB_WHCD.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.ShippingCompanyList[1].length;i++){
-			if((""+B00100DefaultVariable.ShippingCompanyList[1][i]).equals(""+A00000Main.LoginUserCompany)){
+		for(int i=0;i<B100DefaultVariable.ShippingCompanyList[1].length;i++){
+			if((""+B100DefaultVariable.ShippingCompanyList[1][i]).equals(""+A00000Main.LoginUserCompany)){
 				TB_ShippingCompanyCd.setSelectedIndex(i);
 			}
 		}
@@ -99,13 +99,13 @@ public class WM00036CarMstRenewAndCreate{
 					SearchDelFg,
 					AllSearch);
 			if(0<CarMstRt.length) {
-				for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-					if((""+CarMstRt[0][M00031CarMstRt.ColWHCD]).equals(""+B00100DefaultVariable.WhList[1][i])) {
+				for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+					if((""+CarMstRt[0][M00031CarMstRt.ColWHCD]).equals(""+B100DefaultVariable.WhList[1][i])) {
 						TB_WHCD.setSelectedIndex(i);
 					}
 				}
-				for(int i=0;i<B00100DefaultVariable.ShippingCompanyList[1].length;i++) {
-					if((""+CarMstRt[0][M00031CarMstRt.ColShippingCompanyCd]).equals(""+B00100DefaultVariable.ShippingCompanyList[1][i])) {
+				for(int i=0;i<B100DefaultVariable.ShippingCompanyList[1].length;i++) {
+					if((""+CarMstRt[0][M00031CarMstRt.ColShippingCompanyCd]).equals(""+B100DefaultVariable.ShippingCompanyList[1][i])) {
 						TB_ShippingCompanyCd.setSelectedIndex(i);
 					}
 				}
@@ -120,8 +120,8 @@ public class WM00036CarMstRenewAndCreate{
 				TB_EntryUser.setText(	""+CarMstRt[0][M00031CarMstRt.ColEntryUser]);		//登録者コード
 				TB_UpdateUser.setText(	""+CarMstRt[0][M00031CarMstRt.ColUpdateUser]);	//更新者コード
 				
-				for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-					if((""+CarMstRt[0][M00031CarMstRt.ColDelFg]).equals(""+B00100DefaultVariable.DelList[1][i])) {
+				for(int i=0;i<B100DefaultVariable.DelList[1].length;i++) {
+					if((""+CarMstRt[0][M00031CarMstRt.ColDelFg]).equals(""+B100DefaultVariable.DelList[1][i])) {
 						TB_DelFg.setSelectedIndex(i);
 					}
 				}
@@ -165,13 +165,13 @@ public class WM00036CarMstRenewAndCreate{
 		main_fm.add(TB_UpdateUser);
 		main_fm.add(TB_DelFg);
 		
-		JButton Check_btn = B00110FrameParts.BtnSet(B00110FrameParts.Width-140, 90,100,20,"CD確認",11);			//車輛CDの存在確認
+		JButton Check_btn = B100FrameParts.BtnSet(B100FrameParts.Width-140, 90,100,20,"CD確認",11);			//車輛CDの存在確認
 		main_fm.add(Check_btn);
 		
-		JButton CdRenew_btn = B00110FrameParts.BtnSet(B00110FrameParts.Width-140,115,100,20,"CD修正Mode",11);		//車輛CDの存在確認
+		JButton CdRenew_btn = B100FrameParts.BtnSet(B100FrameParts.Width-140,115,100,20,"CD修正Mode",11);		//車輛CDの存在確認
 		main_fm.add(CdRenew_btn);
 		
-		JButton NewCreate_btn = B00110FrameParts.BtnSet(B00110FrameParts.Width-140,140,100,20,"新規登録Mode",10);	//新規登録モードへ
+		JButton NewCreate_btn = B100FrameParts.BtnSet(B100FrameParts.Width-140,140,100,20,"新規登録Mode",10);	//新規登録モードへ
 		main_fm.add(NewCreate_btn);
 		
 		main_fm.setVisible(true);
@@ -201,19 +201,19 @@ public class WM00036CarMstRenewAndCreate{
 		//チェックボタン押下時の挙動
 		Check_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String GetWHCD				= ""+B00100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];
-				String GetShippingCompanyCd	= ""+B00100DefaultVariable.ShippingCompanyList[1][TB_ShippingCompanyCd.getSelectedIndex()];
+				String GetWHCD				= ""+B100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];
+				String GetShippingCompanyCd	= ""+B100DefaultVariable.ShippingCompanyList[1][TB_ShippingCompanyCd.getSelectedIndex()];
 				String GetCarCd				= TB_CarCd.getText();
 				
 				if(null==GetWHCD				){GetWHCD 				= "";}
 				if(null==GetShippingCompanyCd	){GetShippingCompanyCd 	= "";}
 				if(null==GetCarCd				){GetCarCd 				= "";}
 				
-				GetCarCd				= B00020ToolsTextControl.only1byte_String(GetCarCd);
+				GetCarCd				= B100TextControl.only1byte_String(GetCarCd);
 				
-				GetWHCD					= B00020ToolsTextControl.Trim(GetWHCD);
-				GetShippingCompanyCd	= B00020ToolsTextControl.Trim(GetShippingCompanyCd);
-				GetCarCd				= B00020ToolsTextControl.Trim(GetCarCd);
+				GetWHCD					= B100TextControl.Trim(GetWHCD);
+				GetShippingCompanyCd	= B100TextControl.Trim(GetShippingCompanyCd);
+				GetCarCd				= B100TextControl.Trim(GetCarCd);
 				
 				if(!"".equals(GetCarCd)) {
 					ArrayList<String> SearchWHCD = new ArrayList<String>();
@@ -245,13 +245,13 @@ public class WM00036CarMstRenewAndCreate{
 						}
 						
 						if(KickFg) {
-							for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-								if((""+CarMstRt[0][M00031CarMstRt.ColWHCD]).equals(""+B00100DefaultVariable.WhList[1][i])) {
+							for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+								if((""+CarMstRt[0][M00031CarMstRt.ColWHCD]).equals(""+B100DefaultVariable.WhList[1][i])) {
 									TB_WHCD.setSelectedIndex(i);
 								}
 							}
-							for(int i=0;i<B00100DefaultVariable.ShippingCompanyList[1].length;i++) {
-								if((""+CarMstRt[0][M00031CarMstRt.ColShippingCompanyCd]).equals(""+B00100DefaultVariable.ShippingCompanyList[1][i])) {
+							for(int i=0;i<B100DefaultVariable.ShippingCompanyList[1].length;i++) {
+								if((""+CarMstRt[0][M00031CarMstRt.ColShippingCompanyCd]).equals(""+B100DefaultVariable.ShippingCompanyList[1][i])) {
 									TB_ShippingCompanyCd.setSelectedIndex(i);
 								}
 							}
@@ -266,8 +266,8 @@ public class WM00036CarMstRenewAndCreate{
 							TB_EntryUser.setText(	""+CarMstRt[0][M00031CarMstRt.ColEntryUser]);		//登録者コード
 							TB_UpdateUser.setText(	""+CarMstRt[0][M00031CarMstRt.ColUpdateUser]);	//更新者コード
 							
-							for(int i=0;i<B00100DefaultVariable.DelList[1].length;i++) {
-								if((""+CarMstRt[0][M00031CarMstRt.ColDelFg]).equals(""+B00100DefaultVariable.DelList[1][i])) {
+							for(int i=0;i<B100DefaultVariable.DelList[1].length;i++) {
+								if((""+CarMstRt[0][M00031CarMstRt.ColDelFg]).equals(""+B100DefaultVariable.DelList[1][i])) {
 									TB_DelFg.setSelectedIndex(i);
 								}
 							}
@@ -290,15 +290,15 @@ public class WM00036CarMstRenewAndCreate{
 				if(RenewFg) {
 					RenewFg = false;
 				
-					String GetWHCD				= ""+B00100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];
-					String GetShippingCompanyCd	= ""+B00100DefaultVariable.ShippingCompanyList[1][TB_ShippingCompanyCd.getSelectedIndex()];
+					String GetWHCD				= ""+B100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];
+					String GetShippingCompanyCd	= ""+B100DefaultVariable.ShippingCompanyList[1][TB_ShippingCompanyCd.getSelectedIndex()];
 					String GetCarCd				= TB_CarCd.getText();
 					String GetCarName01			= TB_CarName01.getText();
 					String GetCarName02			= TB_CarName02.getText();
 					String GetCarName03			= TB_CarName03.getText();
 					String GetDriverCd			= TB_DriverCd.getText();
 					String GetPTMSCD			= TB_PTMSCD.getText();
-					String GetDelFg				= B00100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
+					String GetDelFg				= B100DefaultVariable.DelList[1][TB_DelFg.getSelectedIndex()];
 					
 					if(null==GetWHCD				){GetWHCD 				= "";}
 					if(null==GetShippingCompanyCd	){GetShippingCompanyCd 	= "";}
@@ -310,17 +310,17 @@ public class WM00036CarMstRenewAndCreate{
 					if(null==GetPTMSCD				){GetPTMSCD 			= "";}
 					if(null==GetDelFg				){GetDelFg 				= "";}
 					
-					GetCarCd				= B00020ToolsTextControl.only1byte_String(GetCarCd);
+					GetCarCd				= B100TextControl.only1byte_String(GetCarCd);
 					
-					GetWHCD					= B00020ToolsTextControl.Trim(GetWHCD);
-					GetShippingCompanyCd	= B00020ToolsTextControl.Trim(GetShippingCompanyCd);
-					GetCarCd				= B00020ToolsTextControl.Trim(GetCarCd);
-					GetCarName01			= B00020ToolsTextControl.Trim(GetCarName01);
-					GetCarName02			= B00020ToolsTextControl.Trim(GetCarName02);
-					GetCarName03			= B00020ToolsTextControl.Trim(GetCarName03);
-					GetDriverCd				= B00020ToolsTextControl.Trim(GetDriverCd);
-					GetPTMSCD				= B00020ToolsTextControl.Trim(GetPTMSCD);
-					GetDelFg				= B00020ToolsTextControl.Trim(GetDelFg);
+					GetWHCD					= B100TextControl.Trim(GetWHCD);
+					GetShippingCompanyCd	= B100TextControl.Trim(GetShippingCompanyCd);
+					GetCarCd				= B100TextControl.Trim(GetCarCd);
+					GetCarName01			= B100TextControl.Trim(GetCarName01);
+					GetCarName02			= B100TextControl.Trim(GetCarName02);
+					GetCarName03			= B100TextControl.Trim(GetCarName03);
+					GetDriverCd				= B100TextControl.Trim(GetDriverCd);
+					GetPTMSCD				= B100TextControl.Trim(GetPTMSCD);
+					GetDelFg				= B100TextControl.Trim(GetDelFg);
 					
 					boolean KickFg = false;
 					if("".equals(GetCarCd)) {
@@ -363,7 +363,7 @@ public class WM00036CarMstRenewAndCreate{
 						}
 						
 						if(KickFg) {
-							String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+							String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 							String[][] SetString = {
 									{"WHCD"					,"1","1",GetWHCD}				//担当倉庫
 									,{"ShippingCompanyCd"	,"1","1",GetShippingCompanyCd}	//運送会社CD
@@ -402,7 +402,7 @@ public class WM00036CarMstRenewAndCreate{
 								field_name[i][2] = SetString[i][2];
 								entry_data[0][i] = SetString[i][3];
 							}
-							A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+							A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 							
 							SetX=main_fm.getX();
 							SetY=main_fm.getY();

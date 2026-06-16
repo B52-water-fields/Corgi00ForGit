@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class B00101DefaultVariableWarehouse{
+public class B100DefaultVariableWarehouse{
 	//倉庫決定時に初期値として１件以上欲しい情報を作成する
 	public static void DefaultVariableWarehouse(String WhCd) {
 		DefaultClCreate(WhCd);
@@ -45,7 +45,7 @@ public class B00101DefaultVariableWarehouse{
 		String[][] judg_data = new String[1][1];
 		String TgtDB = "NANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+		String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 
 		judg_field[ 0] = "WHCD";	//倉庫コード
 		
@@ -119,8 +119,8 @@ public class B00101DefaultVariableWarehouse{
 		entry_data[ 0][14] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
 		entry_data[ 0][15] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
 		
-		A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
-		B00100DefaultVariable.WhList();
+		A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		B100DefaultVariable.WhList();
 		
 		DefaultVariableWarehouse(GetWHCD);
 		
@@ -185,7 +185,7 @@ public class B00101DefaultVariableWarehouse{
 				String[][] judg_data = new String[1][1];
 				String TgtDB = "NANKO";
 				int non_msg_fg = 1;
-				String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+				String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 				
 				judg_field[0] = "cl_cd";			//荷主CD
 				
@@ -287,8 +287,8 @@ public class B00101DefaultVariableWarehouse{
 				entry_data[0][21] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
 				entry_data[0][22] = "";	//基幹システム連携用荷主コード
 				
-				A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
-				B00100DefaultVariable.ClList();
+				A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+				B100DefaultVariable.ClList();
 			}
 		}
 	}

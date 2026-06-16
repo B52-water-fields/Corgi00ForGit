@@ -76,11 +76,11 @@ public class M00090LocationMstRt{
 			boolean LocExactMatch,	//ロケーション完全一致
 			boolean AllSearch){
 		
-		SearchClCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchClCd);		//荷主コード
-		SearchWhCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchWhCd);		//倉庫コード
-		SearchLoc		= B00150ArrayListControl.ArryListStringUniqueList(SearchLoc);		//ロケーション
-		SearchLocName	= B00150ArrayListControl.ArryListStringUniqueList(SearchLocName);	//ロケーション名
-		SearchType		= B00150ArrayListControl.ArryListStringUniqueList(SearchType);		//ロケタイプ
+		SearchClCd		= B100ArrayListControl.ArryListStringUniqueList(SearchClCd);		//荷主コード
+		SearchWhCd		= B100ArrayListControl.ArryListStringUniqueList(SearchWhCd);		//倉庫コード
+		SearchLoc		= B100ArrayListControl.ArryListStringUniqueList(SearchLoc);		//ロケーション
+		SearchLocName	= B100ArrayListControl.ArryListStringUniqueList(SearchLocName);	//ロケーション名
+		SearchType		= B100ArrayListControl.ArryListStringUniqueList(SearchType);		//ロケタイプ
 		
 		Object[][] rt = new Object[0][RtSettingLocationMstRt().length];
 		boolean SearchKick = false;
@@ -166,11 +166,11 @@ public class M00090LocationMstRt{
 		sql = sql + " order by WM0010LOCATIONMST.ClCd,WM0010LOCATIONMST.WhCd,WM0010LOCATIONMST.Loc";
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchClCd&&0<SearchClCd.size()){
@@ -230,8 +230,8 @@ public class M00090LocationMstRt{
 					if(null==rset01.getString("Loc")){				rt[counter][ColLoc]			="";}else{rt[counter][ColLoc]			=rset01.getString("Loc");}				//ロケーション
 					if(null==rset01.getString("LocName")){			rt[counter][ColLocName]		="";}else{rt[counter][ColLocName]		=rset01.getString("LocName");}			//ロケーション名
 					rt[counter][ColType]=rset01.getInt("Type");																													//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//登録日
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//更新日
+					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//登録日
+					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//更新日
 					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}		//登録者
 					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}		//更新者
 					
@@ -250,7 +250,7 @@ public class M00090LocationMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}

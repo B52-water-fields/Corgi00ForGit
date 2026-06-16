@@ -35,48 +35,48 @@ public class WM00071CautionMstRenewAndCreate{
 		if(null==DECD) {DECD = "";}
 		if(null==DepartmentCd) {DepartmentCd = "";}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,650,"Corgi00届先注意事項マスタ登録・更新","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,650,"Corgi00届先注意事項マスタ登録・更新","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_CautionCd		= B00110FrameParts.JLabelSet(  0, 40,100,20,"注意事項CD:"			,11,1);
-		JLabel LB_ClGpCD		= B00110FrameParts.JLabelSet(  0, 65,100,20,"荷主グループCD:"		,11,1);
-		JLabel LB_CLGpName01	= B00110FrameParts.JLabelSet(  0, 90,100,20,"荷主グループ名:"		,11,1);
-		JLabel LB_DECD			= B00110FrameParts.JLabelSet(  0,115,100,20,"届先コード:"			,11,1);
-		JLabel LB_DepartmentCd	= B00110FrameParts.JLabelSet(  0,140,100,20,"部署CD:"				,11,1);
-		JLabel LB_DEName01		= B00110FrameParts.JLabelSet(  0,165,100,20,"届先名:"				,11,1);
-		JLabel LB_Add01			= B00110FrameParts.JLabelSet(  0,190,100,20,"届先住所1:"			,11,1);
-		JLabel LB_Add02			= B00110FrameParts.JLabelSet(  0,215,100,20,"届先住所2:"			,11,1);
-		JLabel LB_Add03			= B00110FrameParts.JLabelSet(  0,240,100,20,"届先住所3:"			,11,1);
-		JLabel LB_CautionTiming	= B00110FrameParts.JLabelSet(  0,265,100,20,"注意タイミング:"		,11,1);
-		JLabel LB_CautionName	= B00110FrameParts.JLabelSet(  0,290,100,20,"注意事項名:"			,11,1);
-		JLabel LB_Caution		= B00110FrameParts.JLabelSet(  0,315,100,20,"注意事項内容:"		,11,1);
-		JLabel LB_EntryDate		= B00110FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:"		,11,1);
-		JLabel LB_UpdateDate	= B00110FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:"		,11,1);
-		JLabel LB_EntryUser		= B00110FrameParts.JLabelSet(  0,390,100,20,"登録者コード:"		,11,1);
-		JLabel LB_UpdateUser	= B00110FrameParts.JLabelSet(  0,415,100,20,"更新者コード:"		,11,1);
+		JLabel LB_CautionCd		= B100FrameParts.JLabelSet(  0, 40,100,20,"注意事項CD:"			,11,1);
+		JLabel LB_ClGpCD		= B100FrameParts.JLabelSet(  0, 65,100,20,"荷主グループCD:"		,11,1);
+		JLabel LB_CLGpName01	= B100FrameParts.JLabelSet(  0, 90,100,20,"荷主グループ名:"		,11,1);
+		JLabel LB_DECD			= B100FrameParts.JLabelSet(  0,115,100,20,"届先コード:"			,11,1);
+		JLabel LB_DepartmentCd	= B100FrameParts.JLabelSet(  0,140,100,20,"部署CD:"				,11,1);
+		JLabel LB_DEName01		= B100FrameParts.JLabelSet(  0,165,100,20,"届先名:"				,11,1);
+		JLabel LB_Add01			= B100FrameParts.JLabelSet(  0,190,100,20,"届先住所1:"			,11,1);
+		JLabel LB_Add02			= B100FrameParts.JLabelSet(  0,215,100,20,"届先住所2:"			,11,1);
+		JLabel LB_Add03			= B100FrameParts.JLabelSet(  0,240,100,20,"届先住所3:"			,11,1);
+		JLabel LB_CautionTiming	= B100FrameParts.JLabelSet(  0,265,100,20,"注意タイミング:"		,11,1);
+		JLabel LB_CautionName	= B100FrameParts.JLabelSet(  0,290,100,20,"注意事項名:"			,11,1);
+		JLabel LB_Caution		= B100FrameParts.JLabelSet(  0,315,100,20,"注意事項内容:"		,11,1);
+		JLabel LB_EntryDate		= B100FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:"		,11,1);
+		JLabel LB_UpdateDate	= B100FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:"		,11,1);
+		JLabel LB_EntryUser		= B100FrameParts.JLabelSet(  0,390,100,20,"登録者コード:"		,11,1);
+		JLabel LB_UpdateUser	= B100FrameParts.JLabelSet(  0,415,100,20,"更新者コード:"		,11,1);
 		
-		final JTextField TB_CautionCd		= B00110FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//注意事項コード
-		final JTextField TB_ClGpCD			= B00110FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//荷主グループコード
-		final JTextField TB_CLGpName01		= B00110FrameParts.JTextFieldSet(100, 90,200,20,"",11,0);			//荷主グループ名
-		final JTextField TB_DECD			= B00110FrameParts.JTextFieldSet(100,115,100,20,"",11,0);			//届先コード
-		final JTextField TB_DepartmentCd	= B00110FrameParts.JTextFieldSet(100,140,100,20,"",11,0);			//部署CD
-		final JTextField TB_DEName01		= B00110FrameParts.JTextFieldSet(100,165,200,20,"",11,0);			//届先名
-		final JTextField TB_Add01			= B00110FrameParts.JTextFieldSet(100,190,200,20,"",11,0);			//届先住所1
-		final JTextField TB_Add02			= B00110FrameParts.JTextFieldSet(100,215,200,20,"",11,0);			//届先住所2
-		final JTextField TB_Add03			= B00110FrameParts.JTextFieldSet(100,240,200,20,"",11,0);			//届先住所3
-		final JComboBox  TB_CautionTiming	= B00110FrameParts.JComboBoxSet( 100,265,100,20,B00100DefaultVariable.CautionTiming[0],11);	//注意事項タイミング
-		final JTextField TB_CautionName		= B00110FrameParts.JTextFieldSet(100,290,150,20,"",11,0);			//注意事項名
-		final JTextField TB_Caution			= B00110FrameParts.JTextFieldSet(100,315,300,20,"",11,0);			//注意事項内容
-		final JTextField TB_EntryDate		= B00110FrameParts.JTextFieldSet(100,340,200,20,"",11,0);			//データ登録日時
-		final JTextField TB_UpdateDate		= B00110FrameParts.JTextFieldSet(100,365,200,20,"",11,0);			//データ更新日時
-		final JTextField TB_EntryUser		= B00110FrameParts.JTextFieldSet(100,390,200,20,"",11,0);			//登録者コード
-		final JTextField TB_UpdateUser		= B00110FrameParts.JTextFieldSet(100,415,200,20,"",11,0);			//更新者コード
+		final JTextField TB_CautionCd		= B100FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//注意事項コード
+		final JTextField TB_ClGpCD			= B100FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//荷主グループコード
+		final JTextField TB_CLGpName01		= B100FrameParts.JTextFieldSet(100, 90,200,20,"",11,0);			//荷主グループ名
+		final JTextField TB_DECD			= B100FrameParts.JTextFieldSet(100,115,100,20,"",11,0);			//届先コード
+		final JTextField TB_DepartmentCd	= B100FrameParts.JTextFieldSet(100,140,100,20,"",11,0);			//部署CD
+		final JTextField TB_DEName01		= B100FrameParts.JTextFieldSet(100,165,200,20,"",11,0);			//届先名
+		final JTextField TB_Add01			= B100FrameParts.JTextFieldSet(100,190,200,20,"",11,0);			//届先住所1
+		final JTextField TB_Add02			= B100FrameParts.JTextFieldSet(100,215,200,20,"",11,0);			//届先住所2
+		final JTextField TB_Add03			= B100FrameParts.JTextFieldSet(100,240,200,20,"",11,0);			//届先住所3
+		final JComboBox  TB_CautionTiming	= B100FrameParts.JComboBoxSet( 100,265,100,20,B100DefaultVariable.CautionTiming[0],11);	//注意事項タイミング
+		final JTextField TB_CautionName		= B100FrameParts.JTextFieldSet(100,290,150,20,"",11,0);			//注意事項名
+		final JTextField TB_Caution			= B100FrameParts.JTextFieldSet(100,315,300,20,"",11,0);			//注意事項内容
+		final JTextField TB_EntryDate		= B100FrameParts.JTextFieldSet(100,340,200,20,"",11,0);			//データ登録日時
+		final JTextField TB_UpdateDate		= B100FrameParts.JTextFieldSet(100,365,200,20,"",11,0);			//データ更新日時
+		final JTextField TB_EntryUser		= B100FrameParts.JTextFieldSet(100,390,200,20,"",11,0);			//登録者コード
+		final JTextField TB_UpdateUser		= B100FrameParts.JTextFieldSet(100,415,200,20,"",11,0);			//更新者コード
 		
 		if(!"".equals(CautionCd)&&!"".equals(DECD)) {
 			ArrayList<String> SearchCautionCd 		= new ArrayList<String>();
@@ -106,7 +106,7 @@ public class WM00071CautionMstRenewAndCreate{
 			
 			for(int i=0;i<CautionMstRt.length;i++) {
 				if(CautionCd.equals(""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]) && DECD.equals(""+CautionMstRt[i][M00042CautionMstRt.ColDECD])) {
-					for(int i01=0;i01<B00100DefaultVariable.CautionTiming[1].length;i01++) {
+					for(int i01=0;i01<B100DefaultVariable.CautionTiming[1].length;i01++) {
 						TB_CautionCd.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColCautionCd]);		//注意事項コード
 						TB_ClGpCD.setText(		""+CautionMstRt[i][M00042CautionMstRt.ColClGpCD]);			//荷主グループコード
 						TB_CLGpName01.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColCLGpName01]);	//荷主グループ名
@@ -123,7 +123,7 @@ public class WM00071CautionMstRenewAndCreate{
 						TB_EntryUser.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColEntryUser]);		//登録者コード
 						TB_UpdateUser.setText(	""+CautionMstRt[i][M00042CautionMstRt.ColUpdateUser]);	//更新者コード
 						
-						if(B00100DefaultVariable.CautionTiming[1][i01].equals(""+CautionMstRt[i][M00042CautionMstRt.ColCautionTiming])) {
+						if(B100DefaultVariable.CautionTiming[1][i01].equals(""+CautionMstRt[i][M00042CautionMstRt.ColCautionTiming])) {
 							TB_CautionTiming.setSelectedIndex(i01);	//注意事項タイミング
 						}
 					}
@@ -136,10 +136,10 @@ public class WM00071CautionMstRenewAndCreate{
 		String EntryCom03 = "部署コードを指定した場合";
 		String EntryCom04 = "    特定部署の出荷にのみ注意事項適用されます";
 		
-		JLabel LB_EntryCom01 = B00110FrameParts.JLabelSet( 10,465,400,20,EntryCom01,11,0);
-		JLabel LB_EntryCom02 = B00110FrameParts.JLabelSet( 10,485,400,20,EntryCom02,11,0);
-		JLabel LB_EntryCom03 = B00110FrameParts.JLabelSet( 10,510,400,20,EntryCom03,11,0);
-		JLabel LB_EntryCom04 = B00110FrameParts.JLabelSet( 10,530,400,20,EntryCom04,11,0);
+		JLabel LB_EntryCom01 = B100FrameParts.JLabelSet( 10,465,400,20,EntryCom01,11,0);
+		JLabel LB_EntryCom02 = B100FrameParts.JLabelSet( 10,485,400,20,EntryCom02,11,0);
+		JLabel LB_EntryCom03 = B100FrameParts.JLabelSet( 10,510,400,20,EntryCom03,11,0);
+		JLabel LB_EntryCom04 = B100FrameParts.JLabelSet( 10,530,400,20,EntryCom04,11,0);
 		
 		main_fm.add(LB_EntryCom01);
 		main_fm.add(LB_EntryCom02);
@@ -192,24 +192,24 @@ public class WM00071CautionMstRenewAndCreate{
 		main_fm.add(TB_UpdateUser);
 		
 		//荷主Grp検索ボタン
-		JButton ClGrpSearchBtn = B00110FrameParts.BtnSet(210, 65,100,20,"荷主Grp検索",11);
+		JButton ClGrpSearchBtn = B100FrameParts.BtnSet(210, 65,100,20,"荷主Grp検索",11);
 		main_fm.add(ClGrpSearchBtn);
 		
 		//届先検索ボタン
-		JButton DeliverySearchBtn = B00110FrameParts.BtnSet(210,115,100,20,"届先検索",11);
+		JButton DeliverySearchBtn = B100FrameParts.BtnSet(210,115,100,20,"届先検索",11);
 		main_fm.add(DeliverySearchBtn);
 		
 		/*----------------------------------------------------------
 		荷主Grp検索
 		----------------------------------------------------------*/
-		final JFrame  ClGrpSearch_fm = B00110FrameParts.FrameCreate(x+20,y+20,500,500,"Corgi00届先注意事項マスタ登録・更新(荷主Grp検索)","");
-		JButton  ClGrpSearchexit_btn = B00110FrameParts.ExitBtn();
+		final JFrame  ClGrpSearch_fm = B100FrameParts.FrameCreate(x+20,y+20,500,500,"Corgi00届先注意事項マスタ登録・更新(荷主Grp検索)","");
+		JButton  ClGrpSearchexit_btn = B100FrameParts.ExitBtn();
 		
 		ClGrpSearch_fm.add(ClGrpSearchexit_btn);
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 		
 		String[] ClGrpSearch_columnNames01 = {
 								"Fg"
@@ -220,7 +220,7 @@ public class WM00071CautionMstRenewAndCreate{
 								,"住所3"
 								,"TEL"
 								};
-		final DefaultTableModel tableModel_ClGrp = new B10010TableControl.MyTableModel01(ClGrpSearch_columnNames01,0);
+		final DefaultTableModel tableModel_ClGrp = new B100TableControl.MyTableModel01(ClGrpSearch_columnNames01,0);
 		
 		final JTable tb_ClGrp = new JTable(tableModel_ClGrp);
 		tb_ClGrp.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -236,24 +236,24 @@ public class WM00071CautionMstRenewAndCreate{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
 		
 		for(int i=1;i<ClGrpSearch_columnNames01.length;i++) {
-			column = columnModel01.getColumn(1);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+			column = columnModel01.getColumn(1);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn_ClGrp = B00110FrameParts.JScrollPaneSet(10,125,460,250,tb_ClGrp);
+		JScrollPane scpn_ClGrp = B100FrameParts.JScrollPaneSet(10,125,460,250,tb_ClGrp);
 		ClGrpSearch_fm.add(scpn_ClGrp);
 		
-		JLabel LB_SearchGrpName	= B00110FrameParts.JLabelSet(0, 25,100,20,"グループ名:"	,11,1);
-		JLabel LB_SearchGrpAdd	= B00110FrameParts.JLabelSet(0, 50,100,20,"住所:"			,11,1);
-		JLabel LB_SearchGrpTel	= B00110FrameParts.JLabelSet(0, 75,100,20,"TEL:"			,11,1);
+		JLabel LB_SearchGrpName	= B100FrameParts.JLabelSet(0, 25,100,20,"グループ名:"	,11,1);
+		JLabel LB_SearchGrpAdd	= B100FrameParts.JLabelSet(0, 50,100,20,"住所:"			,11,1);
+		JLabel LB_SearchGrpTel	= B100FrameParts.JLabelSet(0, 75,100,20,"TEL:"			,11,1);
 		
-		final JTextField  TB_SearchGrpName	= B00110FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//荷主グループ名
-		final JTextField  TB_SearchGrpAdd	= B00110FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//住所
-		final JTextField  TB_SearchGrpTel	= B00110FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//TEL
+		final JTextField  TB_SearchGrpName	= B100FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//荷主グループ名
+		final JTextField  TB_SearchGrpAdd	= B100FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//住所
+		final JTextField  TB_SearchGrpTel	= B100FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//TEL
 		
-		JLabel LB2_SearchGrpName		= B00110FrameParts.JLabelSet(200, 25,100,20,"を含む",11,0);
-		JLabel LB2_SearchGrpAdd			= B00110FrameParts.JLabelSet(200, 50,100,20,"を含む",11,0);
-		JLabel LB2_SearchGrpTel			= B00110FrameParts.JLabelSet(200, 75,100,20,"を含む",11,0);
+		JLabel LB2_SearchGrpName		= B100FrameParts.JLabelSet(200, 25,100,20,"を含む",11,0);
+		JLabel LB2_SearchGrpAdd			= B100FrameParts.JLabelSet(200, 50,100,20,"を含む",11,0);
+		JLabel LB2_SearchGrpTel			= B100FrameParts.JLabelSet(200, 75,100,20,"を含む",11,0);
 		
 		ClGrpSearch_fm.add(LB_SearchGrpName);
 		ClGrpSearch_fm.add(LB_SearchGrpAdd);
@@ -267,10 +267,10 @@ public class WM00071CautionMstRenewAndCreate{
 		ClGrpSearch_fm.add(LB2_SearchGrpAdd);
 		ClGrpSearch_fm.add(LB2_SearchGrpTel);
 		
-		JButton ClGrpSearch_Btn = B00110FrameParts.BtnSet(100,100,100,20,"検索",11);
+		JButton ClGrpSearch_Btn = B100FrameParts.BtnSet(100,100,100,20,"検索",11);
 		ClGrpSearch_fm.add(ClGrpSearch_Btn);
 		
-		JButton ClGrpEntry_Btn = B00110FrameParts.EntryBtn();
+		JButton ClGrpEntry_Btn = B100FrameParts.EntryBtn();
 		ClGrpSearch_fm.add(ClGrpEntry_Btn);
 		
 		ClGrpSearchexit_btn.addActionListener(new AbstractAction(){
@@ -313,11 +313,11 @@ public class WM00071CautionMstRenewAndCreate{
 					if(null==GetSearchGrpAdd	){GetSearchGrpAdd	= "";}
 					if(null==GetSearchGrpTel	){GetSearchGrpTel	= "";}
 					
-					GetSearchGrpName	= B00020ToolsTextControl.Trim(GetSearchGrpName);
-					GetSearchGrpAdd		= B00020ToolsTextControl.Trim(GetSearchGrpAdd);
-					GetSearchGrpTel		= B00020ToolsTextControl.Trim(GetSearchGrpTel);
+					GetSearchGrpName	= B100TextControl.Trim(GetSearchGrpName);
+					GetSearchGrpAdd		= B100TextControl.Trim(GetSearchGrpAdd);
+					GetSearchGrpTel		= B100TextControl.Trim(GetSearchGrpTel);
 					
-					GetSearchGrpTel		= B00020ToolsTextControl.num_only_String(GetSearchGrpTel);
+					GetSearchGrpTel		= B100TextControl.num_only_String(GetSearchGrpTel);
 					
 					ArrayList<String> SearchClGpCD 		= new ArrayList<String>();
 					ArrayList<String> SearchCLGpName 	= new ArrayList<String>();
@@ -385,8 +385,8 @@ public class WM00071CautionMstRenewAndCreate{
 		届先検索
 		----------------------------------------------------------*/
 		
-		final JFrame DeliverySearch_fm = B00110FrameParts.FrameCreate(x+20,y+20,500,500,"Corgi00届先注意事項マスタ登録・更新(届先検索)","");
-		JButton  DeliverySearchexit_btn = B00110FrameParts.ExitBtn();
+		final JFrame DeliverySearch_fm = B100FrameParts.FrameCreate(x+20,y+20,500,500,"Corgi00届先注意事項マスタ登録・更新(届先検索)","");
+		JButton  DeliverySearchexit_btn = B100FrameParts.ExitBtn();
 		
 		DeliverySearch_fm.add(DeliverySearchexit_btn);
 		
@@ -397,8 +397,8 @@ public class WM00071CautionMstRenewAndCreate{
 		});
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 		
 		String[] DeliverySearch_columnNames01 = {
 								"Fg"
@@ -410,7 +410,7 @@ public class WM00071CautionMstRenewAndCreate{
 								,"住所3"
 								,"TEL"
 								};
-		final DefaultTableModel tableModel_delivery = new B10010TableControl.MyTableModel01(DeliverySearch_columnNames01,0);
+		final DefaultTableModel tableModel_delivery = new B100TableControl.MyTableModel01(DeliverySearch_columnNames01,0);
 		
 		final JTable tb_Delivery = new JTable(tableModel_delivery);
 		tb_Delivery.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -426,24 +426,24 @@ public class WM00071CautionMstRenewAndCreate{
 		column = columnModelDelivery.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
 		
 		for(int i=1;i<DeliverySearch_columnNames01.length;i++) {
-			column = columnModelDelivery.getColumn(1);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+			column = columnModelDelivery.getColumn(1);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn_Delivery = B00110FrameParts.JScrollPaneSet(10,125,460,250,tb_Delivery);
+		JScrollPane scpn_Delivery = B100FrameParts.JScrollPaneSet(10,125,460,250,tb_Delivery);
 		DeliverySearch_fm.add(scpn_Delivery);
 		
-		JLabel LB_SearchDeliveryName	= B00110FrameParts.JLabelSet(0, 25,100,20,"届先名:"	,11,1);
-		JLabel LB_SearchDeliveryAdd		= B00110FrameParts.JLabelSet(0, 50,100,20,"住所:"		,11,1);
-		JLabel LB_SearchDeliveryTel		= B00110FrameParts.JLabelSet(0, 75,100,20,"TEL:"		,11,1);
+		JLabel LB_SearchDeliveryName	= B100FrameParts.JLabelSet(0, 25,100,20,"届先名:"	,11,1);
+		JLabel LB_SearchDeliveryAdd		= B100FrameParts.JLabelSet(0, 50,100,20,"住所:"		,11,1);
+		JLabel LB_SearchDeliveryTel		= B100FrameParts.JLabelSet(0, 75,100,20,"TEL:"		,11,1);
 		
-		final JTextField  TB_SearchDeliveryName	= B00110FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//届先名
-		final JTextField  TB_SearchDeliveryAdd	= B00110FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//住所
-		final JTextField  TB_SearchDeliveryTel	= B00110FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//TEL
+		final JTextField  TB_SearchDeliveryName	= B100FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//届先名
+		final JTextField  TB_SearchDeliveryAdd	= B100FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//住所
+		final JTextField  TB_SearchDeliveryTel	= B100FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//TEL
 		
-		JLabel LB2_SearchDeliveryName	= B00110FrameParts.JLabelSet(200, 25,100,20,"を含む",11,0);
-		JLabel LB2_SearchDeliveryAdd	= B00110FrameParts.JLabelSet(200, 50,100,20,"を含む",11,0);
-		JLabel LB2_SearchDeliveryTel	= B00110FrameParts.JLabelSet(200, 75,100,20,"を含む",11,0);
+		JLabel LB2_SearchDeliveryName	= B100FrameParts.JLabelSet(200, 25,100,20,"を含む",11,0);
+		JLabel LB2_SearchDeliveryAdd	= B100FrameParts.JLabelSet(200, 50,100,20,"を含む",11,0);
+		JLabel LB2_SearchDeliveryTel	= B100FrameParts.JLabelSet(200, 75,100,20,"を含む",11,0);
 		
 		DeliverySearch_fm.add(LB_SearchDeliveryName);
 		DeliverySearch_fm.add(LB_SearchDeliveryAdd);
@@ -457,10 +457,10 @@ public class WM00071CautionMstRenewAndCreate{
 		DeliverySearch_fm.add(LB2_SearchDeliveryAdd);
 		DeliverySearch_fm.add(LB2_SearchDeliveryTel);
 		
-		JButton DeliverySearch_Btn = B00110FrameParts.BtnSet(100,100,100,20,"検索",11);
+		JButton DeliverySearch_Btn = B100FrameParts.BtnSet(100,100,100,20,"検索",11);
 		DeliverySearch_fm.add(DeliverySearch_Btn);
 		
-		JButton DeliveryEntry_Btn = B00110FrameParts.EntryBtn();
+		JButton DeliveryEntry_Btn = B100FrameParts.EntryBtn();
 		DeliverySearch_fm.add(DeliveryEntry_Btn);
 		
 		DeliveryEntry_Btn.addActionListener(new AbstractAction(){
@@ -502,11 +502,11 @@ public class WM00071CautionMstRenewAndCreate{
 					if(null==GetSearchDeliveryAdd	){GetSearchDeliveryAdd	= "";}
 					if(null==GetSearchDeliveryTel	){GetSearchDeliveryTel	= "";}
 					
-					GetSearchDeliveryName	= B00020ToolsTextControl.Trim(GetSearchDeliveryName);
-					GetSearchDeliveryAdd	= B00020ToolsTextControl.Trim(GetSearchDeliveryAdd);
-					GetSearchDeliveryTel	= B00020ToolsTextControl.Trim(GetSearchDeliveryTel);
+					GetSearchDeliveryName	= B100TextControl.Trim(GetSearchDeliveryName);
+					GetSearchDeliveryAdd	= B100TextControl.Trim(GetSearchDeliveryAdd);
+					GetSearchDeliveryTel	= B100TextControl.Trim(GetSearchDeliveryTel);
 					
-					GetSearchDeliveryTel	= B00020ToolsTextControl.num_only_String(GetSearchDeliveryTel);
+					GetSearchDeliveryTel	= B100TextControl.num_only_String(GetSearchDeliveryTel);
 					
 					ArrayList<String> SearchDECD 			= new ArrayList<String>();
 					ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
@@ -646,7 +646,7 @@ public class WM00071CautionMstRenewAndCreate{
 					TB_CLGpName01.setText("");
 					String GetClGpCD = TB_ClGpCD.getText();
 					if(null==GetClGpCD) {GetClGpCD="";}
-					GetClGpCD = B00020ToolsTextControl.Trim(GetClGpCD);
+					GetClGpCD = B100TextControl.Trim(GetClGpCD);
 					if(!"".equals(GetClGpCD)) {
 						ArrayList<String> SearchClGpCD 		= new ArrayList<String>();
 						ArrayList<String> SearchCLGpName 	= new ArrayList<String>();
@@ -697,8 +697,8 @@ public class WM00071CautionMstRenewAndCreate{
 					if(null==GetDECD		) {GetDECD= "";}
 					if(null==GetDepartmentCd) {GetDepartmentCd="";}
 					
-					GetDECD			= B00020ToolsTextControl.Trim(GetDECD);
-					GetDepartmentCd	= B00020ToolsTextControl.Trim(GetDepartmentCd);
+					GetDECD			= B100TextControl.Trim(GetDECD);
+					GetDepartmentCd	= B100TextControl.Trim(GetDepartmentCd);
 					
 					if(!"".equals(GetDECD)) {
 						ArrayList<String> SearchDECD 			= new ArrayList<String>();
@@ -794,8 +794,8 @@ public class WM00071CautionMstRenewAndCreate{
 					if(null==GetDECD		) {GetDECD= "";}
 					if(null==GetDepartmentCd) {GetDepartmentCd="";}
 					
-					GetDECD			= B00020ToolsTextControl.Trim(GetDECD);
-					GetDepartmentCd	= B00020ToolsTextControl.Trim(GetDepartmentCd);
+					GetDECD			= B100TextControl.Trim(GetDECD);
+					GetDepartmentCd	= B100TextControl.Trim(GetDepartmentCd);
 					
 					if(!"".equals(GetDECD)) {
 						ArrayList<String> SearchDECD 			= new ArrayList<String>();
@@ -879,13 +879,13 @@ public class WM00071CautionMstRenewAndCreate{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+				String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 				
 				String GetCautionCd		= TB_CautionCd.getText();		//注意事項コード
 				String GetClGpCD		= TB_ClGpCD.getText();			//荷主グループコード
 				String GetDECD			= TB_DECD.getText();			//届先コード
 				String GetDepartmentCd	= TB_DepartmentCd.getText();	//部署CD
-				String GetCautionTiming	= B00100DefaultVariable.CautionTiming[1][TB_CautionTiming.getSelectedIndex()];	//注意事項タイミング
+				String GetCautionTiming	= B100DefaultVariable.CautionTiming[1][TB_CautionTiming.getSelectedIndex()];	//注意事項タイミング
 				String GetCautionName	= TB_CautionName.getText();		//注意事項名
 				String GetCaution		= TB_Caution.getText();			//注意事項内容
 				
@@ -897,13 +897,13 @@ public class WM00071CautionMstRenewAndCreate{
 				if(null==GetCautionName		){GetCautionName	= "";}
 				if(null==GetCaution			){GetCaution		= "";}
 				
-				GetCautionCd		= B00020ToolsTextControl.Trim(GetCautionCd);
-				GetClGpCD			= B00020ToolsTextControl.Trim(GetClGpCD);
-				GetDECD				= B00020ToolsTextControl.Trim(GetDECD);
-				GetDepartmentCd		= B00020ToolsTextControl.Trim(GetDepartmentCd);
-				GetCautionTiming	= B00020ToolsTextControl.Trim(GetCautionTiming);
-				GetCautionName		= B00020ToolsTextControl.Trim(GetCautionName);
-				GetCaution			= B00020ToolsTextControl.Trim(GetCaution);
+				GetCautionCd		= B100TextControl.Trim(GetCautionCd);
+				GetClGpCD			= B100TextControl.Trim(GetClGpCD);
+				GetDECD				= B100TextControl.Trim(GetDECD);
+				GetDepartmentCd		= B100TextControl.Trim(GetDepartmentCd);
+				GetCautionTiming	= B100TextControl.Trim(GetCautionTiming);
+				GetCautionName		= B100TextControl.Trim(GetCautionName);
+				GetCaution			= B100TextControl.Trim(GetCaution);
 				
 				if(!"".equals(GetDECD)) {
 					if("".equals(GetCautionCd)) {GetCautionCd = M00042CautionMstRt.NewCautionCdGet(1)[0];}
@@ -945,7 +945,7 @@ public class WM00071CautionMstRenewAndCreate{
 						entry_data[0][i] = SetString[i][3];
 					}
 					
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();

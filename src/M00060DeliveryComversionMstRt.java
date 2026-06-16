@@ -152,21 +152,21 @@ public class M00060DeliveryComversionMstRt{
 											ArrayList<String> SearchMstPriorityFirstFg,
 											boolean AllSearch){
 		
-		SearchClGpCD				= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchCLGpName				= B00150ArrayListControl.ArryListStringUniqueList(SearchCLGpName);
-		SearchCL_DECD				= B00150ArrayListControl.ArryListStringUniqueList(SearchCL_DECD);
-		SearchDECD					= B00150ArrayListControl.ArryListStringUniqueList(SearchDECD);
-		SearchDepartmentCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
-		SearchDEName				= B00150ArrayListControl.ArryListStringUniqueList(SearchDEName);
-		SearchPost					= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd					= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel					= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax					= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail					= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchSetName				= B00150ArrayListControl.ArryListStringUniqueList(SearchSetName);
-		SearchCom					= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
-		SearchDelFg					= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
-		SearchMstPriorityFirstFg	= B00150ArrayListControl.ArryListStringUniqueList(SearchMstPriorityFirstFg);
+		SearchClGpCD				= B100ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchCLGpName				= B100ArrayListControl.ArryListStringUniqueList(SearchCLGpName);
+		SearchCL_DECD				= B100ArrayListControl.ArryListStringUniqueList(SearchCL_DECD);
+		SearchDECD					= B100ArrayListControl.ArryListStringUniqueList(SearchDECD);
+		SearchDepartmentCd			= B100ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
+		SearchDEName				= B100ArrayListControl.ArryListStringUniqueList(SearchDEName);
+		SearchPost					= B100ArrayListControl.ArryListStringUniqueList(SearchPost);
+		SearchAdd					= B100ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchTel					= B100ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax					= B100ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail					= B100ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchSetName				= B100ArrayListControl.ArryListStringUniqueList(SearchSetName);
+		SearchCom					= B100ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchDelFg					= B100ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		SearchMstPriorityFirstFg	= B100ArrayListControl.ArryListStringUniqueList(SearchMstPriorityFirstFg);
 		
 		Object[][] rt = new Object[0][RtDeliveryComversionMstRt().length];
 		boolean SearchKick = false;
@@ -363,11 +363,11 @@ public class M00060DeliveryComversionMstRt{
 		//System.out.println(sql);
 		
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchClGpCD && 0<SearchClGpCD.size()){
@@ -506,8 +506,8 @@ public class M00060DeliveryComversionMstRt{
 					if(null==rset01.getString("Com03"			)){rt[counter][ColCom03] 			= "";}else{rt[counter][ColCom03] 			= rset01.getString("Com03");}			//コメント03
 					if(null==rset01.getString("Com04"			)){rt[counter][ColCom04] 			= "";}else{rt[counter][ColCom04] 			= rset01.getString("Com04");}			//コメント04
 					if(null==rset01.getString("Com05"			)){rt[counter][ColCom05] 			= "";}else{rt[counter][ColCom05] 			= rset01.getString("Com05");}			//コメント05
-					if(null==rset01.getString("EntryDate"		)){rt[counter][ColEntryDate] 		= "";}else{rt[counter][ColEntryDate] 		= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getString("UpdateDate"		)){rt[counter][ColUpdateDate] 	= "";}else{rt[counter][ColUpdateDate] 	= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
+					if(null==rset01.getString("EntryDate"		)){rt[counter][ColEntryDate] 		= "";}else{rt[counter][ColEntryDate] 		= B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getString("UpdateDate"		)){rt[counter][ColUpdateDate] 	= "";}else{rt[counter][ColUpdateDate] 	= B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
 					if(null==rset01.getString("EntryUser"		)){rt[counter][ColEntryUser] 		= "";}else{rt[counter][ColEntryUser] 		= rset01.getString("EntryUser");}		//登録者コード
 					if(null==rset01.getString("UpdateUser"		)){rt[counter][ColUpdateUser] 	= "";}else{rt[counter][ColUpdateUser] 		= rset01.getString("UpdateUser");}	//更新者コード
 					rt[counter][ColDelFg] = rset01.getInt("DelFg");									//削除区分
@@ -528,7 +528,7 @@ public class M00060DeliveryComversionMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}

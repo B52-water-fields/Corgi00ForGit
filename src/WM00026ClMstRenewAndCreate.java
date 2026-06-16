@@ -22,62 +22,62 @@ public class WM00026ClMstRenewAndCreate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,700,"Corgi00荷主登録・修正","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,700,"Corgi00荷主登録・修正","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_cl_cd			= B00110FrameParts.JLabelSet(  0, 40,100,20,"荷主CD:",				11,1);
-		JLabel LB_ClGpCD		= B00110FrameParts.JLabelSet(  0, 65,100,20,"荷主グループCD:",		11,1);
-		JLabel LB_WHCD			= B00110FrameParts.JLabelSet(  0, 90,100,20,"担当倉庫:",			11,1);
-		JLabel LB_CLName01		= B00110FrameParts.JLabelSet(  0,115,100,20,"荷主名1:",			11,1);
-		JLabel LB_CLName02		= B00110FrameParts.JLabelSet(  0,140,100,20,"荷主名2:",			11,1);
-		JLabel LB_CLName03		= B00110FrameParts.JLabelSet(  0,165,100,20,"荷主名3:",			11,1);
-		JLabel LB_Post			= B00110FrameParts.JLabelSet(  0,190,100,20,"郵便番号:",			11,1);
-		JLabel LB_Add01			= B00110FrameParts.JLabelSet(  0,215,100,20,"住所1:",				11,1);
-		JLabel LB_Add02			= B00110FrameParts.JLabelSet(  0,240,100,20,"住所2:",				11,1);
-		JLabel LB_Add03			= B00110FrameParts.JLabelSet(  0,265,100,20,"住所3:",				11,1);
-		JLabel LB_Tel			= B00110FrameParts.JLabelSet(  0,290,100,20,"電話番号:",			11,1);
-		JLabel LB_Fax			= B00110FrameParts.JLabelSet(  0,315,100,20,"FAX:",				11,1);
-		JLabel LB_Mail			= B00110FrameParts.JLabelSet(  0,340,100,20,"メールアドレス:",		11,1);
-		JLabel LB_Com01			= B00110FrameParts.JLabelSet(  0,365,100,20,"コメント1:",			11,1);
-		JLabel LB_Com02			= B00110FrameParts.JLabelSet(  0,390,100,20,"コメント2:",			11,1);
-		JLabel LB_Com03			= B00110FrameParts.JLabelSet(  0,415,100,20,"コメント3:",			11,1);
-		JLabel LB_ShimeDate		= B00110FrameParts.JLabelSet(  0,440,100,20,"運賃締日:",			11,1);
-		JLabel LB_ShimeBasis	= B00110FrameParts.JLabelSet(  0,465,100,20,"請求基準:",			11,1);
-		JLabel LB_EntryDate		= B00110FrameParts.JLabelSet(  0,490,100,20,"データ登録日時:",		11,1);
-		JLabel LB_UpdateDate	= B00110FrameParts.JLabelSet(  0,515,100,20,"データ更新日時:",		11,1);
-		JLabel LB_EntryUser		= B00110FrameParts.JLabelSet(  0,540,100,20,"登録者コード:",		11,1);
-		JLabel LB_UpdateUser	= B00110FrameParts.JLabelSet(  0,565,100,20,"更新者コード:",		11,1);
-		JLabel LB_PTMSCD		= B00110FrameParts.JLabelSet(  0,590,100,20,"基幹SYS荷主CD:",		11,1);
+		JLabel LB_cl_cd			= B100FrameParts.JLabelSet(  0, 40,100,20,"荷主CD:",				11,1);
+		JLabel LB_ClGpCD		= B100FrameParts.JLabelSet(  0, 65,100,20,"荷主グループCD:",		11,1);
+		JLabel LB_WHCD			= B100FrameParts.JLabelSet(  0, 90,100,20,"担当倉庫:",			11,1);
+		JLabel LB_CLName01		= B100FrameParts.JLabelSet(  0,115,100,20,"荷主名1:",			11,1);
+		JLabel LB_CLName02		= B100FrameParts.JLabelSet(  0,140,100,20,"荷主名2:",			11,1);
+		JLabel LB_CLName03		= B100FrameParts.JLabelSet(  0,165,100,20,"荷主名3:",			11,1);
+		JLabel LB_Post			= B100FrameParts.JLabelSet(  0,190,100,20,"郵便番号:",			11,1);
+		JLabel LB_Add01			= B100FrameParts.JLabelSet(  0,215,100,20,"住所1:",				11,1);
+		JLabel LB_Add02			= B100FrameParts.JLabelSet(  0,240,100,20,"住所2:",				11,1);
+		JLabel LB_Add03			= B100FrameParts.JLabelSet(  0,265,100,20,"住所3:",				11,1);
+		JLabel LB_Tel			= B100FrameParts.JLabelSet(  0,290,100,20,"電話番号:",			11,1);
+		JLabel LB_Fax			= B100FrameParts.JLabelSet(  0,315,100,20,"FAX:",				11,1);
+		JLabel LB_Mail			= B100FrameParts.JLabelSet(  0,340,100,20,"メールアドレス:",		11,1);
+		JLabel LB_Com01			= B100FrameParts.JLabelSet(  0,365,100,20,"コメント1:",			11,1);
+		JLabel LB_Com02			= B100FrameParts.JLabelSet(  0,390,100,20,"コメント2:",			11,1);
+		JLabel LB_Com03			= B100FrameParts.JLabelSet(  0,415,100,20,"コメント3:",			11,1);
+		JLabel LB_ShimeDate		= B100FrameParts.JLabelSet(  0,440,100,20,"運賃締日:",			11,1);
+		JLabel LB_ShimeBasis	= B100FrameParts.JLabelSet(  0,465,100,20,"請求基準:",			11,1);
+		JLabel LB_EntryDate		= B100FrameParts.JLabelSet(  0,490,100,20,"データ登録日時:",		11,1);
+		JLabel LB_UpdateDate	= B100FrameParts.JLabelSet(  0,515,100,20,"データ更新日時:",		11,1);
+		JLabel LB_EntryUser		= B100FrameParts.JLabelSet(  0,540,100,20,"登録者コード:",		11,1);
+		JLabel LB_UpdateUser	= B100FrameParts.JLabelSet(  0,565,100,20,"更新者コード:",		11,1);
+		JLabel LB_PTMSCD		= B100FrameParts.JLabelSet(  0,590,100,20,"基幹SYS荷主CD:",		11,1);
 		
-		final JTextField TB_cl_cd		 = B00110FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//荷主CD
-		final JComboBox  TB_ClGpCD	  	 = B00110FrameParts.JComboBoxSet( 100, 65,250,20,B00100DefaultVariable.ClGpList[0],	11);		//荷主グループCD
-		final JComboBox  TB_WHCD	  	 = B00110FrameParts.JComboBoxSet( 100, 90,250,20,B00100DefaultVariable.WhList[0],	11);		//担当倉庫
-		final JTextField  TB_CLName01	 = B00110FrameParts.JTextFieldSet(100,115,200,20,"",11,0);	//荷主名1
-		final JTextField  TB_CLName02	 = B00110FrameParts.JTextFieldSet(100,140,200,20,"",11,0);	//荷主名2
-		final JTextField  TB_CLName03	 = B00110FrameParts.JTextFieldSet(100,165,200,20,"",11,0);	//荷主名3
-		final JTextField  TB_Post		 = B00110FrameParts.JTextFieldSet(100,190,100,20,"",11,0);	//郵便番号
-		final JTextField  TB_Add01		 = B00110FrameParts.JTextFieldSet(100,215,250,20,"",11,0);	//住所1
-		final JTextField  TB_Add02		 = B00110FrameParts.JTextFieldSet(100,240,250,20,"",11,0);	//住所2
-		final JTextField  TB_Add03		 = B00110FrameParts.JTextFieldSet(100,265,250,20,"",11,0);	//住所3
-		final JTextField  TB_Tel		 = B00110FrameParts.JTextFieldSet(100,290,100,20,"",11,0);	//電話番号
-		final JTextField  TB_Fax		 = B00110FrameParts.JTextFieldSet(100,315,100,20,"",11,0);	//FAX
-		final JTextField  TB_Mail		 = B00110FrameParts.JTextFieldSet(100,340,250,20,"",11,0);	//メールアドレス
-		final JTextField  TB_Com01		 = B00110FrameParts.JTextFieldSet(100,365,250,20,"",11,0);	//コメント1
-		final JTextField  TB_Com02		 = B00110FrameParts.JTextFieldSet(100,390,250,20,"",11,0);	//コメント2
-		final JTextField  TB_Com03		 = B00110FrameParts.JTextFieldSet(100,415,250,20,"",11,0);	//コメント3
-		final JComboBox  TB_ShimeDate	 = B00110FrameParts.JComboBoxSet( 100,440, 50,20,B00100DefaultVariable.ShimeDateList[0],11);	//運賃締日
-		final JComboBox  TB_ShimeBasis	 = B00110FrameParts.JComboBoxSet( 100,465,150,20,B00100DefaultVariable.DeliFeeNorm[0],	11);	//請求基準
-		final JTextField  TB_EntryDate	 = B00110FrameParts.JTextFieldSet(100,490,250,20,"",11,0);	//データ登録日時
-		final JTextField  TB_UpdateDate	 = B00110FrameParts.JTextFieldSet(100,515,250,20,"",11,0);	//データ更新日時
-		final JTextField  TB_EntryUser	 = B00110FrameParts.JTextFieldSet(100,540,250,20,"",11,0);	//登録者コード
-		final JTextField  TB_UpdateUser	 = B00110FrameParts.JTextFieldSet(100,565,250,20,"",11,0);	//更新者コード
-		final JTextField  TB_PTMSCD		 = B00110FrameParts.JTextFieldSet(100,590,100,20,"",11,0);	//基幹SYS荷主コード
+		final JTextField TB_cl_cd		 = B100FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//荷主CD
+		final JComboBox  TB_ClGpCD	  	 = B100FrameParts.JComboBoxSet( 100, 65,250,20,B100DefaultVariable.ClGpList[0],	11);		//荷主グループCD
+		final JComboBox  TB_WHCD	  	 = B100FrameParts.JComboBoxSet( 100, 90,250,20,B100DefaultVariable.WhList[0],	11);		//担当倉庫
+		final JTextField  TB_CLName01	 = B100FrameParts.JTextFieldSet(100,115,200,20,"",11,0);	//荷主名1
+		final JTextField  TB_CLName02	 = B100FrameParts.JTextFieldSet(100,140,200,20,"",11,0);	//荷主名2
+		final JTextField  TB_CLName03	 = B100FrameParts.JTextFieldSet(100,165,200,20,"",11,0);	//荷主名3
+		final JTextField  TB_Post		 = B100FrameParts.JTextFieldSet(100,190,100,20,"",11,0);	//郵便番号
+		final JTextField  TB_Add01		 = B100FrameParts.JTextFieldSet(100,215,250,20,"",11,0);	//住所1
+		final JTextField  TB_Add02		 = B100FrameParts.JTextFieldSet(100,240,250,20,"",11,0);	//住所2
+		final JTextField  TB_Add03		 = B100FrameParts.JTextFieldSet(100,265,250,20,"",11,0);	//住所3
+		final JTextField  TB_Tel		 = B100FrameParts.JTextFieldSet(100,290,100,20,"",11,0);	//電話番号
+		final JTextField  TB_Fax		 = B100FrameParts.JTextFieldSet(100,315,100,20,"",11,0);	//FAX
+		final JTextField  TB_Mail		 = B100FrameParts.JTextFieldSet(100,340,250,20,"",11,0);	//メールアドレス
+		final JTextField  TB_Com01		 = B100FrameParts.JTextFieldSet(100,365,250,20,"",11,0);	//コメント1
+		final JTextField  TB_Com02		 = B100FrameParts.JTextFieldSet(100,390,250,20,"",11,0);	//コメント2
+		final JTextField  TB_Com03		 = B100FrameParts.JTextFieldSet(100,415,250,20,"",11,0);	//コメント3
+		final JComboBox  TB_ShimeDate	 = B100FrameParts.JComboBoxSet( 100,440, 50,20,B100DefaultVariable.ShimeDateList[0],11);	//運賃締日
+		final JComboBox  TB_ShimeBasis	 = B100FrameParts.JComboBoxSet( 100,465,150,20,B100DefaultVariable.DeliFeeNorm[0],	11);	//請求基準
+		final JTextField  TB_EntryDate	 = B100FrameParts.JTextFieldSet(100,490,250,20,"",11,0);	//データ登録日時
+		final JTextField  TB_UpdateDate	 = B100FrameParts.JTextFieldSet(100,515,250,20,"",11,0);	//データ更新日時
+		final JTextField  TB_EntryUser	 = B100FrameParts.JTextFieldSet(100,540,250,20,"",11,0);	//登録者コード
+		final JTextField  TB_UpdateUser	 = B100FrameParts.JTextFieldSet(100,565,250,20,"",11,0);	//更新者コード
+		final JTextField  TB_PTMSCD		 = B100FrameParts.JTextFieldSet(100,590,100,20,"",11,0);	//基幹SYS荷主コード
 		
 		TB_cl_cd.setEnabled(false);
 		TB_EntryDate.setEditable(false);	//データ登録日時
@@ -85,14 +85,14 @@ public class WM00026ClMstRenewAndCreate{
 		TB_EntryUser.setEditable(false);	//登録者コード
 		TB_UpdateUser.setEditable(false);	//更新者コード
 		
-		for(int i=0;i<B00100DefaultVariable.ClGpList[1].length;i++) {
-			if((""+A00000Main.ClGp).equals(""+B00100DefaultVariable.ClGpList[1][i])) {
+		for(int i=0;i<B100DefaultVariable.ClGpList[1].length;i++) {
+			if((""+A00000Main.ClGp).equals(""+B100DefaultVariable.ClGpList[1][i])) {
 				TB_ClGpCD.setSelectedIndex(i);
 			}
 		}
 		
-		for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-			if((""+A00000Main.ClWh).equals(""+B00100DefaultVariable.WhList[1][i])) {
+		for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+			if((""+A00000Main.ClWh).equals(""+B100DefaultVariable.WhList[1][i])) {
 				TB_WHCD.setSelectedIndex(i);
 			}
 		}
@@ -140,26 +140,26 @@ public class WM00026ClMstRenewAndCreate{
 				TB_UpdateUser.setText(	""+ClMstRt[0][M00011ClMstRt.ColUpdateUser]);
 				TB_PTMSCD.setText(		""+ClMstRt[0][M00011ClMstRt.ColPTMSCD]);
 				
-				for(int i=0;i<B00100DefaultVariable.ClGpList[1].length;i++) {
-					if((""+ClMstRt[0][M00011ClMstRt.ColClGpCD]).equals(""+B00100DefaultVariable.ClGpList[1][i])) {
+				for(int i=0;i<B100DefaultVariable.ClGpList[1].length;i++) {
+					if((""+ClMstRt[0][M00011ClMstRt.ColClGpCD]).equals(""+B100DefaultVariable.ClGpList[1][i])) {
 						TB_ClGpCD.setSelectedIndex(i);
 					}
 				}
 				
-				for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-					if((""+ClMstRt[0][M00011ClMstRt.ColWHCD]).equals(""+B00100DefaultVariable.WhList[1][i])) {
+				for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+					if((""+ClMstRt[0][M00011ClMstRt.ColWHCD]).equals(""+B100DefaultVariable.WhList[1][i])) {
 						TB_WHCD.setSelectedIndex(i);
 					}
 				}
 				
-				for(int i=0;i<B00100DefaultVariable.ShimeDateList.length;i++) {
-					if((""+ClMstRt[0][M00011ClMstRt.ColShimeDate]).equals(""+B00100DefaultVariable.ShimeDateList[i])) {
+				for(int i=0;i<B100DefaultVariable.ShimeDateList.length;i++) {
+					if((""+ClMstRt[0][M00011ClMstRt.ColShimeDate]).equals(""+B100DefaultVariable.ShimeDateList[i])) {
 						TB_ShimeDate.setSelectedIndex(i);
 					}
 				}
 				
-				for(int i=0;i<B00100DefaultVariable.DeliFeeNorm[1].length;i++) {
-					if((""+ClMstRt[0][M00011ClMstRt.ColShimeBasis]).equals(""+B00100DefaultVariable.DeliFeeNorm[1][i])) {
+				for(int i=0;i<B100DefaultVariable.DeliFeeNorm[1].length;i++) {
+					if((""+ClMstRt[0][M00011ClMstRt.ColShimeBasis]).equals(""+B100DefaultVariable.DeliFeeNorm[1][i])) {
 						TB_ShimeBasis.setSelectedIndex(i);
 					}
 				}
@@ -220,8 +220,8 @@ public class WM00026ClMstRenewAndCreate{
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				String Getcl_cd 		= TB_cl_cd.getText();		//荷主CD
-				String GetClGpCD 		= ""+B00100DefaultVariable.ClGpList[1][TB_ClGpCD.getSelectedIndex()];	//荷主グループCD
-				String GetWHCD 			= ""+B00100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];		//担当倉庫
+				String GetClGpCD 		= ""+B100DefaultVariable.ClGpList[1][TB_ClGpCD.getSelectedIndex()];	//荷主グループCD
+				String GetWHCD 			= ""+B100DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];		//担当倉庫
 				String GetCLName01 		= TB_CLName01.getText();	//荷主名1
 				String GetCLName02 		= TB_CLName02.getText();	//荷主名2
 				String GetCLName03 		= TB_CLName03.getText();	//荷主名3
@@ -235,8 +235,8 @@ public class WM00026ClMstRenewAndCreate{
 				String GetCom01 		= TB_Com01.getText();		//コメント1
 				String GetCom02 		= TB_Com02.getText();		//コメント2
 				String GetCom03 		= TB_Com03.getText();		//コメント3
-				String GetShimeDate 	= ""+B00100DefaultVariable.ShimeDateList[1][TB_ShimeDate.getSelectedIndex()];	//運賃締日
-				String GetShimeBasis 	= ""+B00100DefaultVariable.DeliFeeNorm[1][TB_ShimeBasis.getSelectedIndex()];	//請求基準
+				String GetShimeDate 	= ""+B100DefaultVariable.ShimeDateList[1][TB_ShimeDate.getSelectedIndex()];	//運賃締日
+				String GetShimeBasis 	= ""+B100DefaultVariable.DeliFeeNorm[1][TB_ShimeBasis.getSelectedIndex()];	//請求基準
 				String GetPTMSCD 		= TB_PTMSCD.getText();		//基幹SYS荷主コード
 				
 				if(null==Getcl_cd		){Getcl_cd 		= "";}
@@ -259,38 +259,38 @@ public class WM00026ClMstRenewAndCreate{
 				if(null==GetShimeBasis	){GetShimeBasis	= "";}
 				if(null==GetPTMSCD		){GetPTMSCD 	= "";}
 				
-				Getcl_cd		= B00020ToolsTextControl.Trim(Getcl_cd);
-				GetClGpCD		= B00020ToolsTextControl.Trim(GetClGpCD);
-				GetWHCD			= B00020ToolsTextControl.Trim(GetWHCD);
-				GetCLName01		= B00020ToolsTextControl.Trim(GetCLName01);
-				GetCLName02		= B00020ToolsTextControl.Trim(GetCLName02);
-				GetCLName03		= B00020ToolsTextControl.Trim(GetCLName03);
-				GetPost			= B00020ToolsTextControl.Trim(GetPost);
-				GetAdd01		= B00020ToolsTextControl.Trim(GetAdd01);
-				GetAdd02		= B00020ToolsTextControl.Trim(GetAdd02);
-				GetAdd03		= B00020ToolsTextControl.Trim(GetAdd03);
-				GetTel			= B00020ToolsTextControl.Trim(GetTel);
-				GetFax			= B00020ToolsTextControl.Trim(GetFax);
-				GetMail			= B00020ToolsTextControl.Trim(GetMail);
-				GetCom01		= B00020ToolsTextControl.Trim(GetCom01);
-				GetCom02		= B00020ToolsTextControl.Trim(GetCom02);
-				GetCom03		= B00020ToolsTextControl.Trim(GetCom03);
-				GetShimeDate	= B00020ToolsTextControl.Trim(GetShimeDate);
-				GetShimeBasis	= B00020ToolsTextControl.Trim(GetShimeBasis);
-				GetPTMSCD		= B00020ToolsTextControl.Trim(GetPTMSCD);
+				Getcl_cd		= B100TextControl.Trim(Getcl_cd);
+				GetClGpCD		= B100TextControl.Trim(GetClGpCD);
+				GetWHCD			= B100TextControl.Trim(GetWHCD);
+				GetCLName01		= B100TextControl.Trim(GetCLName01);
+				GetCLName02		= B100TextControl.Trim(GetCLName02);
+				GetCLName03		= B100TextControl.Trim(GetCLName03);
+				GetPost			= B100TextControl.Trim(GetPost);
+				GetAdd01		= B100TextControl.Trim(GetAdd01);
+				GetAdd02		= B100TextControl.Trim(GetAdd02);
+				GetAdd03		= B100TextControl.Trim(GetAdd03);
+				GetTel			= B100TextControl.Trim(GetTel);
+				GetFax			= B100TextControl.Trim(GetFax);
+				GetMail			= B100TextControl.Trim(GetMail);
+				GetCom01		= B100TextControl.Trim(GetCom01);
+				GetCom02		= B100TextControl.Trim(GetCom02);
+				GetCom03		= B100TextControl.Trim(GetCom03);
+				GetShimeDate	= B100TextControl.Trim(GetShimeDate);
+				GetShimeBasis	= B100TextControl.Trim(GetShimeBasis);
+				GetPTMSCD		= B100TextControl.Trim(GetPTMSCD);
 				
-				GetPost			= B00020ToolsTextControl.num_only_String(GetPost);
-				GetTel			= B00020ToolsTextControl.num_only_String(GetTel);
-				GetFax			= B00020ToolsTextControl.num_only_String(GetFax);
-				GetShimeDate	= B00020ToolsTextControl.num_only_String(GetShimeDate);	if("".equals(GetShimeDate)) {GetShimeDate   = "99";}
-				GetShimeBasis	= B00020ToolsTextControl.num_only_String(GetShimeBasis);	if("".equals(GetShimeBasis)) {GetShimeBasis = "0";}
+				GetPost			= B100TextControl.num_only_String(GetPost);
+				GetTel			= B100TextControl.num_only_String(GetTel);
+				GetFax			= B100TextControl.num_only_String(GetFax);
+				GetShimeDate	= B100TextControl.num_only_String(GetShimeDate);	if("".equals(GetShimeDate)) {GetShimeDate   = "99";}
+				GetShimeBasis	= B100TextControl.num_only_String(GetShimeBasis);	if("".equals(GetShimeBasis)) {GetShimeBasis = "0";}
 				
 				if(!"".equals(GetCLName01)) {
 					if("".equals(Getcl_cd)) {
 						Getcl_cd = M00011ClMstRt.NewClCdGet(1)[0];
 					}
 					
-					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 					
 					String[][] SetString = {
 							{"cl_cd",		"1","1",Getcl_cd}		//荷主CD
@@ -336,10 +336,10 @@ public class WM00026ClMstRenewAndCreate{
 						entry_data[0][i] = SetString[i][3];
 					}
 					
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					//荷主一覧更新
-					B00100DefaultVariable.ClList();
+					B100DefaultVariable.ClList();
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();
@@ -358,7 +358,7 @@ public class WM00026ClMstRenewAndCreate{
 			@Override
 			public void focusLost(FocusEvent e){
 				String GetPost = TB_Post.getText();	if(null==GetPost) {GetPost="";}
-				GetPost = B00020ToolsTextControl.Trim(B00020ToolsTextControl.num_only_String(GetPost));
+				GetPost = B100TextControl.Trim(B100TextControl.num_only_String(GetPost));
 				TB_Post.setText(GetPost);
 				
 				ArrayList<String> SearchPOST = new ArrayList<String>();

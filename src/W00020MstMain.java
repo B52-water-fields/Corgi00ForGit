@@ -16,101 +16,101 @@ public class W00020MstMain{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,780,750,"Corgi00マスタメニュー","");
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,780,750,"Corgi00マスタメニュー","");
 		
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		//荷主設定パネル
-		JPanel PN_AboutClient 	= B00110FrameParts.JPanelSet(		 10, 40,740,235,"White");
-		JLabel LB_AboutClient 	= B00110FrameParts.JLabelSet(		 10,  0,150,20,"荷主毎設定",11,0);
+		JPanel PN_AboutClient 	= B100FrameParts.JPanelSet(		 10, 40,740,235,"White");
+		JLabel LB_AboutClient 	= B100FrameParts.JLabelSet(		 10,  0,150,20,"荷主毎設定",11,0);
 		PN_AboutClient.add(LB_AboutClient);
 		
 		//配車設定パネル
-		JPanel PN_AboutHaisya 	= B00110FrameParts.JPanelSet(		 10,280,740,175,"White");
-		JLabel LB_AboutHaisya 	= B00110FrameParts.JLabelSet(		 10,  0,150,20,"配車設定",11,0);
+		JPanel PN_AboutHaisya 	= B100FrameParts.JPanelSet(		 10,280,740,175,"White");
+		JLabel LB_AboutHaisya 	= B100FrameParts.JLabelSet(		 10,  0,150,20,"配車設定",11,0);
 		PN_AboutHaisya.add(LB_AboutHaisya);
 		
 		//全体設定パネル
-		JPanel PN_AboutALL 		= B00110FrameParts.JPanelSet(		 10,460,740,200,"White");
-		JLabel LB_AboutALL 		= B00110FrameParts.JLabelSet(		 10,  0,150,20,"全体設定",11,0);
+		JPanel PN_AboutALL 		= B100FrameParts.JPanelSet(		 10,460,740,200,"White");
+		JLabel LB_AboutALL 		= B100FrameParts.JLabelSet(		 10,  0,150,20,"全体設定",11,0);
 		PN_AboutALL.add(LB_AboutALL);
 		
 		//届先変換
-		JButton DeliveryComversionMst = B00110FrameParts.BtnSet(	 20, 25,130,20,"届先変換",11);
+		JButton DeliveryComversionMst = B100FrameParts.BtnSet(	 20, 25,130,20,"届先変換",11);
 		PN_AboutClient.add(DeliveryComversionMst);
 		
 		//商品マスタ
-		JButton ItemMst = B00110FrameParts.BtnSet(					 20, 50,130,20,"商品マスタ",11);
+		JButton ItemMst = B100FrameParts.BtnSet(					 20, 50,130,20,"商品マスタ",11);
 		PN_AboutClient.add(ItemMst);
 		
 		//商品変換マスタ
-		JButton ItemComversionMst = B00110FrameParts.BtnSet(		160, 50,130,20,"商品変換マスタ",11);
+		JButton ItemComversionMst = B100FrameParts.BtnSet(		160, 50,130,20,"商品変換マスタ",11);
 		PN_AboutClient.add(ItemComversionMst);
 		
 		//ロケーションマスタ
-		JButton LocationMst = B00110FrameParts.BtnSet(				 20, 75,130,20,"ロケーション",11);
+		JButton LocationMst = B100FrameParts.BtnSet(				 20, 75,130,20,"ロケーション",11);
 		PN_AboutClient.add(LocationMst);
 		
 		//仕入先
-		JButton SupplierMst = B00110FrameParts.BtnSet(				 20,100,130,20,"仕入先",11);
+		JButton SupplierMst = B100FrameParts.BtnSet(				 20,100,130,20,"仕入先",11);
 		PN_AboutClient.add(SupplierMst);
 		
 		//在庫調整理由
-		JButton AdjustReasonMst = B00110FrameParts.BtnSet(			 20,125,130,20,"在庫調整理由",11);
+		JButton AdjustReasonMst = B100FrameParts.BtnSet(			 20,125,130,20,"在庫調整理由",11);
 		PN_AboutClient.add(AdjustReasonMst);
 		
 		//推奨ロケ
-		JButton ItemRecomendLocMst = B00110FrameParts.BtnSet(		160,125,130,20,"推奨ロケ",11);
+		JButton ItemRecomendLocMst = B100FrameParts.BtnSet(		160,125,130,20,"推奨ロケ",11);
 		PN_AboutClient.add(ItemRecomendLocMst);
 		
 		//荷主パラメータ
-		JButton WankoParameterMst 	= B00110FrameParts.BtnSet(		580,200,130,20,"荷主パラメータ",11);
+		JButton WankoParameterMst 	= B100FrameParts.BtnSet(		580,200,130,20,"荷主パラメータ",11);
 		PN_AboutClient.add(WankoParameterMst);
 		
 
 		//倉庫・事業所
-		JButton WhMst 				= B00110FrameParts.BtnSet(		 20, 25,130,20,"倉庫・事業所",11);
+		JButton WhMst 				= B100FrameParts.BtnSet(		 20, 25,130,20,"倉庫・事業所",11);
 		PN_AboutALL.add(WhMst);
 		
 		//運送会社
-		JButton ShippingCompanyMst 	= B00110FrameParts.BtnSet(		160, 25,130,20,"運送会社",11);
+		JButton ShippingCompanyMst 	= B100FrameParts.BtnSet(		160, 25,130,20,"運送会社",11);
 		PN_AboutALL.add(ShippingCompanyMst);
 		
 		//届先
-		JButton DeliveryMst 		= B00110FrameParts.BtnSet(		440, 25,130,20,"届先",11);
+		JButton DeliveryMst 		= B100FrameParts.BtnSet(		440, 25,130,20,"届先",11);
 		PN_AboutALL.add(DeliveryMst);
 		
 		//届先注意事項
-		JButton CautionMst 			= B00110FrameParts.BtnSet(		580, 25,130,20,"届先注意事項",11);
+		JButton CautionMst 			= B100FrameParts.BtnSet(		580, 25,130,20,"届先注意事項",11);
 		PN_AboutALL.add(CautionMst);
 		
 		//ユーザー
-		JButton UserMst 			= B00110FrameParts.BtnSet(		 20, 50,130,20,"ユーザー・乗務員",11);
+		JButton UserMst 			= B100FrameParts.BtnSet(		 20, 50,130,20,"ユーザー・乗務員",11);
 		PN_AboutALL.add(UserMst);
 		
 		//車輛
-		JButton CarMst 				= B00110FrameParts.BtnSet(		160, 50,130,20,"車輛",11);
+		JButton CarMst 				= B100FrameParts.BtnSet(		160, 50,130,20,"車輛",11);
 		PN_AboutALL.add(CarMst);
 		
 		//荷主グループ
-		JButton ClGpMst 			= B00110FrameParts.BtnSet(		 20, 75,130,20,"荷主グループ",11);
+		JButton ClGpMst 			= B100FrameParts.BtnSet(		 20, 75,130,20,"荷主グループ",11);
 		PN_AboutALL.add(ClGpMst);
 		
 		//荷主
-		JButton ClMst 				= B00110FrameParts.BtnSet(		160, 75,130,20,"荷主",11);
+		JButton ClMst 				= B100FrameParts.BtnSet(		160, 75,130,20,"荷主",11);
 		PN_AboutALL.add(ClMst);
 		
 		//運送タイプ
-		JButton DeliveryTypeMst 	= B00110FrameParts.BtnSet(		 20,100,130,20,"運送タイプ",11);
+		JButton DeliveryTypeMst 	= B100FrameParts.BtnSet(		 20,100,130,20,"運送タイプ",11);
 		PN_AboutALL.add(DeliveryTypeMst);
 		
 		//共通パラメータ
-		JButton NyankoParameterMst 	= B00110FrameParts.BtnSet(		580,150,130,20,"共通パラメータ",11);
+		JButton NyankoParameterMst 	= B100FrameParts.BtnSet(		580,150,130,20,"共通パラメータ",11);
 		PN_AboutALL.add(NyankoParameterMst);
 		
 		//郵便番号
-		JButton PostMst 			= B00110FrameParts.BtnSet(		580,175,130,20,"郵便番号",11);
+		JButton PostMst 			= B100FrameParts.BtnSet(		580,175,130,20,"郵便番号",11);
 		PN_AboutALL.add(PostMst);
 
 		main_fm.add(PN_AboutClient);

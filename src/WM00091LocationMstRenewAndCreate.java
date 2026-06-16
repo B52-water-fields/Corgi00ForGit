@@ -20,39 +20,39 @@ public class WM00091LocationMstRenewAndCreate{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,500,"Corgi00ロケーションマスタ登録・修正","");
-		JLabel userinfo 	= B00110FrameParts.UserInfo();
-		JButton exit_btn 	= B00110FrameParts.ExitBtn();
-		JButton entry_btn 	= B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,500,"Corgi00ロケーションマスタ登録・修正","");
+		JLabel userinfo 	= B100FrameParts.UserInfo();
+		JButton exit_btn 	= B100FrameParts.ExitBtn();
+		JButton entry_btn 	= B100FrameParts.EntryBtn();
 
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ClCd			= B00110FrameParts.JLabelSet(  0, 50,100,20,"荷主コード:"		,11,1);
-		JLabel LB_WhCd			= B00110FrameParts.JLabelSet(  0, 75,100,20,"倉庫コード:"		,11,1);
-		JLabel LB_Loc			= B00110FrameParts.JLabelSet(  0,100,100,20,"ロケーション:"	,11,1);
-		JLabel LB_LocName		= B00110FrameParts.JLabelSet(  0,125,100,20,"ロケーション名:"	,11,1);
-		JLabel LB_Type			= B00110FrameParts.JLabelSet(  0,150,100,20,"ロケタイプ:"		,11,1);
+		JLabel LB_ClCd			= B100FrameParts.JLabelSet(  0, 50,100,20,"荷主コード:"		,11,1);
+		JLabel LB_WhCd			= B100FrameParts.JLabelSet(  0, 75,100,20,"倉庫コード:"		,11,1);
+		JLabel LB_Loc			= B100FrameParts.JLabelSet(  0,100,100,20,"ロケーション:"	,11,1);
+		JLabel LB_LocName		= B100FrameParts.JLabelSet(  0,125,100,20,"ロケーション名:"	,11,1);
+		JLabel LB_Type			= B100FrameParts.JLabelSet(  0,150,100,20,"ロケタイプ:"		,11,1);
 		
-		JLabel LB_EntryDate		= B00110FrameParts.JLabelSet(  0,200,100,20,"登録日:"	,11,1);
-		JLabel LB_UpdateDate	= B00110FrameParts.JLabelSet(  0,225,100,20,"更新日:"	,11,1);
-		JLabel LB_EntryUser		= B00110FrameParts.JLabelSet(  0,250,100,20,"登録者:"	,11,1);
-		JLabel LB_UpdateUser	= B00110FrameParts.JLabelSet(  0,275,100,20,"更新者:"	,11,1);
+		JLabel LB_EntryDate		= B100FrameParts.JLabelSet(  0,200,100,20,"登録日:"	,11,1);
+		JLabel LB_UpdateDate	= B100FrameParts.JLabelSet(  0,225,100,20,"更新日:"	,11,1);
+		JLabel LB_EntryUser		= B100FrameParts.JLabelSet(  0,250,100,20,"登録者:"	,11,1);
+		JLabel LB_UpdateUser	= B100FrameParts.JLabelSet(  0,275,100,20,"更新者:"	,11,1);
 		
-		final JComboBox   TB_ClCd		= B00110FrameParts.JComboBoxSet( 100, 50,200,20,B00100DefaultVariable.ClList[0],11);	//荷主コード
-		final JComboBox   TB_WhCd		= B00110FrameParts.JComboBoxSet( 100, 75,200,20,B00100DefaultVariable.WhList[0],11);	//倉庫コード
-		final JTextField  TB_Loc		= B00110FrameParts.JTextFieldSet(100,100,100,20,"",11,0);								//ロケーション
-		final JTextField  TB_LocName	= B00110FrameParts.JTextFieldSet(100,125,100,20,"",11,0);								//ロケーション名
-		final JComboBox   TB_Type		= B00110FrameParts.JComboBoxSet( 100,150,100,20,B00100DefaultVariable.LocType[0],11);//ロケタイプ
+		final JComboBox   TB_ClCd		= B100FrameParts.JComboBoxSet( 100, 50,200,20,B100DefaultVariable.ClList[0],11);	//荷主コード
+		final JComboBox   TB_WhCd		= B100FrameParts.JComboBoxSet( 100, 75,200,20,B100DefaultVariable.WhList[0],11);	//倉庫コード
+		final JTextField  TB_Loc		= B100FrameParts.JTextFieldSet(100,100,100,20,"",11,0);								//ロケーション
+		final JTextField  TB_LocName	= B100FrameParts.JTextFieldSet(100,125,100,20,"",11,0);								//ロケーション名
+		final JComboBox   TB_Type		= B100FrameParts.JComboBoxSet( 100,150,100,20,B100DefaultVariable.LocType[0],11);//ロケタイプ
 		
-		final JTextField  TB_EntryDate	= B00110FrameParts.JTextFieldSet(100,200,200,20,"",11,0);	//登録日
-		final JTextField  TB_UpdateDate	= B00110FrameParts.JTextFieldSet(100,225,200,20,"",11,0);	//更新日
-		final JTextField  TB_EntryUser	= B00110FrameParts.JTextFieldSet(100,250,200,20,"",11,0);	//登録者
-		final JTextField  TB_UpdateUser	= B00110FrameParts.JTextFieldSet(100,275,200,20,"",11,0);	//更新者
+		final JTextField  TB_EntryDate	= B100FrameParts.JTextFieldSet(100,200,200,20,"",11,0);	//登録日
+		final JTextField  TB_UpdateDate	= B100FrameParts.JTextFieldSet(100,225,200,20,"",11,0);	//更新日
+		final JTextField  TB_EntryUser	= B100FrameParts.JTextFieldSet(100,250,200,20,"",11,0);	//登録者
+		final JTextField  TB_UpdateUser	= B100FrameParts.JTextFieldSet(100,275,200,20,"",11,0);	//更新者
 		
 		//モード切替ボタン
-		JButton ModeChangeBtn = B00110FrameParts.BtnSet(	210,100,100,20,"モード切替",10);
+		JButton ModeChangeBtn = B100FrameParts.BtnSet(	210,100,100,20,"モード切替",10);
 		
 		TB_EntryDate.setEditable(false);
 		TB_UpdateDate.setEditable(false);
@@ -66,13 +66,13 @@ public class WM00091LocationMstRenewAndCreate{
 		if("".equals(TgtClCd)) {TgtClCd= A00000Main.ClCd;}
 		if("".equals(TgtWhCd)) {TgtWhCd= A00000Main.ClWh;}
 		
-		for(int i=0;i<B00100DefaultVariable.ClList[1].length;i++) {
-			if(TgtClCd.equals(B00100DefaultVariable.ClList[1][i])) {
+		for(int i=0;i<B100DefaultVariable.ClList[1].length;i++) {
+			if(TgtClCd.equals(B100DefaultVariable.ClList[1][i])) {
 				TB_ClCd.setSelectedIndex(i);
 			}
 		}
-		for(int i=0;i<B00100DefaultVariable.WhList[1].length;i++) {
-			if(TgtWhCd.equals(B00100DefaultVariable.WhList[1][i])) {
+		for(int i=0;i<B100DefaultVariable.WhList[1].length;i++) {
+			if(TgtWhCd.equals(B100DefaultVariable.WhList[1][i])) {
 				TB_WhCd.setSelectedIndex(i);
 			}
 		}
@@ -120,8 +120,8 @@ public class WM00091LocationMstRenewAndCreate{
 				
 				TB_Loc.setText(GetLoc);
 				TB_LocName.setText(GetLocName);
-				for(int i01=0;i01<B00100DefaultVariable.LocType[1].length;i01++) {
-					if(B00100DefaultVariable.LocType[1][i01].equals(""+GetType)) {
+				for(int i01=0;i01<B100DefaultVariable.LocType[1].length;i01++) {
+					if(B100DefaultVariable.LocType[1][i01].equals(""+GetType)) {
 						TB_Type.setSelectedIndex(i01);
 					}
 				}
@@ -175,11 +175,11 @@ public class WM00091LocationMstRenewAndCreate{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String GetClCd		= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
-				String GetWhCd		= B00100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//倉庫コード
+				String GetClCd		= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
+				String GetWhCd		= B100DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//倉庫コード
 				String GetLoc		= TB_Loc.getText();			//ロケーション
 				String GetLocName	= TB_LocName.getText();		//ロケーション名
-				String GetType		= B00100DefaultVariable.LocType[1][TB_Type.getSelectedIndex()];//ロケタイプ
+				String GetType		= B100DefaultVariable.LocType[1][TB_Type.getSelectedIndex()];//ロケタイプ
 				
 				if(null==GetClCd	){GetClCd		= "";}
 				if(null==GetWhCd	){GetWhCd		= "";}
@@ -187,13 +187,13 @@ public class WM00091LocationMstRenewAndCreate{
 				if(null==GetLocName	){GetLocName	= "";}
 				if(null==GetType	){GetType		= "";}
 				
-				GetClCd		= B00020ToolsTextControl.Trim(GetClCd);
-				GetWhCd		= B00020ToolsTextControl.Trim(GetWhCd);
-				GetLoc		= B00020ToolsTextControl.Trim(GetLoc);
-				GetLocName	= B00020ToolsTextControl.Trim(GetLocName);
-				GetType		= B00020ToolsTextControl.Trim(GetType);
+				GetClCd		= B100TextControl.Trim(GetClCd);
+				GetWhCd		= B100TextControl.Trim(GetWhCd);
+				GetLoc		= B100TextControl.Trim(GetLoc);
+				GetLocName	= B100TextControl.Trim(GetLocName);
+				GetType		= B100TextControl.Trim(GetType);
 				
-				GetType		= B00020ToolsTextControl.num_only_String(GetType);
+				GetType		= B100TextControl.num_only_String(GetType);
 				if("".equals(GetType)) {GetType	="0";}
 				
 				if("".equals(GetLocName)) {GetLocName	= GetLoc;}

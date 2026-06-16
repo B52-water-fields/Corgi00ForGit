@@ -131,16 +131,16 @@ public class M00011ClMstRt{
 			boolean AllSearch){
 		//検索条件を受け取って一致する荷主マスタの配列を返却する
 		//AllSearch false なら検索条件何も指定されていなければ検索しない
-		SearchClGpCD	= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchCLCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchCLCD);
-		SearchCLName	= B00150ArrayListControl.ArryListStringUniqueList(SearchCLName);
-		SearchPost		= B00150ArrayListControl.ArryListStringUniqueList(SearchPost);
-		searchAdd		= B00150ArrayListControl.ArryListStringUniqueList(searchAdd);
-		SearchTel		= B00150ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax		= B00150ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail		= B00150ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom		= B00150ArrayListControl.ArryListStringUniqueList(SearchCom);
-		SearchWHCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchWHCD);
+		SearchClGpCD	= B100ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchCLCD		= B100ArrayListControl.ArryListStringUniqueList(SearchCLCD);
+		SearchCLName	= B100ArrayListControl.ArryListStringUniqueList(SearchCLName);
+		SearchPost		= B100ArrayListControl.ArryListStringUniqueList(SearchPost);
+		searchAdd		= B100ArrayListControl.ArryListStringUniqueList(searchAdd);
+		SearchTel		= B100ArrayListControl.ArryListStringUniqueList(SearchTel);
+		SearchFax		= B100ArrayListControl.ArryListStringUniqueList(SearchFax);
+		SearchMail		= B100ArrayListControl.ArryListStringUniqueList(SearchMail);
+		SearchCom		= B100ArrayListControl.ArryListStringUniqueList(SearchCom);
+		SearchWHCD		= B100ArrayListControl.ArryListStringUniqueList(SearchWHCD);
 		
 		
 		Object[][] rt = new Object[0][RtSettingClMstRt().length];
@@ -281,12 +281,12 @@ public class M00011ClMstRt{
 		sql = sql + " order by KM0030_CLIENTMST.cl_cd";
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null !=SearchClGpCD && SearchClGpCD.size()>0) {
@@ -393,8 +393,8 @@ public class M00011ClMstRt{
 					if(null==rset01.getString("Com03")){		rt[counter][ColCom03]			="";}else{rt[counter][ColCom03]		=rset01.getString("Com03");}		//コメント3
 					rt[counter][ColShimeDate]="" + rset01.getInt("ShimeDate");	//締日
 					rt[counter][ColShimeBasis]="" + rset01.getInt("ShimeBasis");	//請求基準
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
 					if(null==rset01.getString("EntryUser")){	rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}	//登録者コード
 					if(null==rset01.getString("UpdateUser")){	rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}	//更新者コード
 					if(null==rset01.getString("PTMSCD")){		rt[counter][ColPTMSCD]			="";}else{rt[counter][ColPTMSCD]		=rset01.getString("PTMSCD");}		//基幹システム荷主コード
@@ -413,7 +413,7 @@ public class M00011ClMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -439,7 +439,7 @@ public class M00011ClMstRt{
     	
     	for(int i=0;i<ClMstRt.length;i++) {
     		if(4<(""+ClMstRt[i][M00011ClMstRt.Colcl_cd]).length()&&"ATCL".equals((""+ClMstRt[i][M00011ClMstRt.Colcl_cd]).substring(0,4))) {
-    			String WST = B00020ToolsTextControl.num_only_String(""+ClMstRt[i][M00011ClMstRt.Colcl_cd]);
+    			String WST = B100TextControl.num_only_String(""+ClMstRt[i][M00011ClMstRt.Colcl_cd]);
     			if("".equals(WST)){WST = "0";}
 				int wint = Integer.parseInt(WST);
 				if(ClientNo<wint) {

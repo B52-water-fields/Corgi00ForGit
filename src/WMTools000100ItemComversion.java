@@ -51,7 +51,7 @@ public class WMTools000100ItemComversion{
 	}
 	
 	public static Object[][] ItemComversion(String ClCd,ArrayList<String> ClItemCd){
-		ClItemCd	= B00150ArrayListControl.ArryListStringUniqueList(ClItemCd);
+		ClItemCd	= B100ArrayListControl.ArryListStringUniqueList(ClItemCd);
 		
 		if(null==ClCd) {ClCd="";}
 		if("".equals(ClCd)) {ClCd=A00000Main.ClCd;}

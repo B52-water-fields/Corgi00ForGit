@@ -31,43 +31,43 @@ public class WM00086ItemComversionMstRenewAndCreate{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,500,500,"Corgi00商品変換マスタ登録・修正","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,500,500,"Corgi00商品変換マスタ登録・修正","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ClGpCd	= B00110FrameParts.JLabelSet(	  0, 25,130,20,"荷主グループコード:"	,11,1);
-		JLabel LB_ClCd		= B00110FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"			,11,1);
-		JLabel LB_CLItemCd	= B00110FrameParts.JLabelSet(	  0, 75,130,20,"荷主商品コード:"		,11,1);
+		JLabel LB_ClGpCd	= B100FrameParts.JLabelSet(	  0, 25,130,20,"荷主グループコード:"	,11,1);
+		JLabel LB_ClCd		= B100FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"			,11,1);
+		JLabel LB_CLItemCd	= B100FrameParts.JLabelSet(	  0, 75,130,20,"荷主商品コード:"		,11,1);
 		
-		JLabel LB_Msg		= B00110FrameParts.JLabelSet(	130,125,130,20,"を下記に変換します"		,11,0);
+		JLabel LB_Msg		= B100FrameParts.JLabelSet(	130,125,130,20,"を下記に変換します"		,11,0);
 
-		JLabel LB_UnitType	= B00110FrameParts.JLabelSet(	  0,175,130,20,"荷姿:"					,11,1);
-		JLabel LB_ItemCd	= B00110FrameParts.JLabelSet(	  0,200,130,20,"商品コード:"			,11,1);
+		JLabel LB_UnitType	= B100FrameParts.JLabelSet(	  0,175,130,20,"荷姿:"					,11,1);
+		JLabel LB_ItemCd	= B100FrameParts.JLabelSet(	  0,200,130,20,"商品コード:"			,11,1);
 		
-		final JComboBox   TB_ClGpCd		= B00110FrameParts.JComboBoxSet(	130, 25,200,20,B00100DefaultVariable.ClGpList[0],11);		//荷主グループコード
-		final JComboBox   TB_ClCd		= B00110FrameParts.JComboBoxSet(	130, 50,200,20,B00100DefaultVariable.ClList[0],11);		//荷主コード
-		final JTextField  TB_CLItemCd	= B00110FrameParts.JTextFieldSet(	130, 75,100,20,""	,11,0);									//荷主商品コード
+		final JComboBox   TB_ClGpCd		= B100FrameParts.JComboBoxSet(	130, 25,200,20,B100DefaultVariable.ClGpList[0],11);		//荷主グループコード
+		final JComboBox   TB_ClCd		= B100FrameParts.JComboBoxSet(	130, 50,200,20,B100DefaultVariable.ClList[0],11);		//荷主コード
+		final JTextField  TB_CLItemCd	= B100FrameParts.JTextFieldSet(	130, 75,100,20,""	,11,0);									//荷主商品コード
 
-		final JComboBox   TB_UnitType	= B00110FrameParts.JComboBoxSet(	130,175,130,20,B00100DefaultVariable.UnitTypeList[0],11);	//荷姿
-		final JTextField  TB_ItemCd		= B00110FrameParts.JTextFieldSet(	130,200,100,20,""	,11,0);									//商品コード
+		final JComboBox   TB_UnitType	= B100FrameParts.JComboBoxSet(	130,175,130,20,B100DefaultVariable.UnitTypeList[0],11);	//荷姿
+		final JTextField  TB_ItemCd		= B100FrameParts.JTextFieldSet(	130,200,100,20,""	,11,0);									//商品コード
 		
-		JLabel LB_ItemName01			= B00110FrameParts.JLabelSet(  10,225,100,20,"商品名1:"				,10,1);
-		JLabel LB_ItemName02			= B00110FrameParts.JLabelSet(  10,250,100,20,"商品名2:"				,10,1);
-		JLabel LB_ItemName03			= B00110FrameParts.JLabelSet(  10,275,100,20,"商品名3:"				,10,1);
-		final JTextField  TB_ItemName01	= B00110FrameParts.JTextFieldSet( 110,225,200,20,"",11,0);			//商品名1
-		final JTextField  TB_ItemName02	= B00110FrameParts.JTextFieldSet( 110,250,200,20,"",11,0);			//商品名2
-		final JTextField  TB_ItemName03	= B00110FrameParts.JTextFieldSet( 110,275,200,20,"",11,0);			//商品名3
-		JLabel LB_CtQty					= B00110FrameParts.JLabelSet(  10,300,100,20,"カートン入数:"			,10,1);
-		JLabel LB_CsQty					= B00110FrameParts.JLabelSet(  10,325,100,20,"ケース入数:"				,10,1);
-		JLabel LB_PlQty					= B00110FrameParts.JLabelSet(  10,350,100,20,"パレット入数:"			,10,1);
-		final JFormattedTextField TB_CtQty	= B00110FrameParts.JFormattedTextFieldSet(110,300,100,20,"0",11,1,"#,###");	//カートン入数
-		final JFormattedTextField TB_CsQty	= B00110FrameParts.JFormattedTextFieldSet(110,325,100,20,"0",11,1,"#,###");	//ケース入数
-		final JFormattedTextField TB_PlQty	= B00110FrameParts.JFormattedTextFieldSet(110,350,100,20,"0",11,1,"#,###");	//パレット入数
+		JLabel LB_ItemName01			= B100FrameParts.JLabelSet(  10,225,100,20,"商品名1:"				,10,1);
+		JLabel LB_ItemName02			= B100FrameParts.JLabelSet(  10,250,100,20,"商品名2:"				,10,1);
+		JLabel LB_ItemName03			= B100FrameParts.JLabelSet(  10,275,100,20,"商品名3:"				,10,1);
+		final JTextField  TB_ItemName01	= B100FrameParts.JTextFieldSet( 110,225,200,20,"",11,0);			//商品名1
+		final JTextField  TB_ItemName02	= B100FrameParts.JTextFieldSet( 110,250,200,20,"",11,0);			//商品名2
+		final JTextField  TB_ItemName03	= B100FrameParts.JTextFieldSet( 110,275,200,20,"",11,0);			//商品名3
+		JLabel LB_CtQty					= B100FrameParts.JLabelSet(  10,300,100,20,"カートン入数:"			,10,1);
+		JLabel LB_CsQty					= B100FrameParts.JLabelSet(  10,325,100,20,"ケース入数:"				,10,1);
+		JLabel LB_PlQty					= B100FrameParts.JLabelSet(  10,350,100,20,"パレット入数:"			,10,1);
+		final JFormattedTextField TB_CtQty	= B100FrameParts.JFormattedTextFieldSet(110,300,100,20,"0",11,1,"#,###");	//カートン入数
+		final JFormattedTextField TB_CsQty	= B100FrameParts.JFormattedTextFieldSet(110,325,100,20,"0",11,1,"#,###");	//ケース入数
+		final JFormattedTextField TB_PlQty	= B100FrameParts.JFormattedTextFieldSet(110,350,100,20,"0",11,1,"#,###");	//パレット入数
 		
 		TB_ItemCd.setEditable(false);
 		TB_ItemName01.setEditable(false);
@@ -78,27 +78,27 @@ public class WM00086ItemComversionMstRenewAndCreate{
 		TB_PlQty.setEditable(false);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(240, 75,100,20,"変換先商品検索",9);
+		JButton SearchBtn = B100FrameParts.BtnSet(240, 75,100,20,"変換先商品検索",9);
 		main_fm.add(SearchBtn);
 		
 		//荷主グループ検索条件に現在荷主を設定 管理者以外は荷主選択条件固定する
 		if(null==TgtClgpCd	) {TgtClgpCd="";}
 		if(null==TgtClCd	) {TgtClCd="";}
 		if(null==ClItemCd	) {ClItemCd="";}
-		TgtClgpCd	= B00020ToolsTextControl.Trim(TgtClgpCd);
-		TgtClCd		= B00020ToolsTextControl.Trim(TgtClCd);
-		ClItemCd	= B00020ToolsTextControl.Trim(ClItemCd);
+		TgtClgpCd	= B100TextControl.Trim(TgtClgpCd);
+		TgtClCd		= B100TextControl.Trim(TgtClCd);
+		ClItemCd	= B100TextControl.Trim(ClItemCd);
 		
 		if("".equals(TgtClgpCd	)) {TgtClgpCd	=A00000Main.ClGp;}
 		if("".equals(TgtClCd	)) {TgtClCd		=A00000Main.ClCd;}
 		
-		for(int i=0;i<B00100DefaultVariable.ClGpList[1].length;i++) {
-			if(TgtClgpCd.equals(""+B00100DefaultVariable.ClGpList[1][i])) {
+		for(int i=0;i<B100DefaultVariable.ClGpList[1].length;i++) {
+			if(TgtClgpCd.equals(""+B100DefaultVariable.ClGpList[1][i])) {
 				TB_ClGpCd.setSelectedIndex(i);
 			}
 		}
-		for(int i=0;i<B00100DefaultVariable.ClList[1].length;i++) {
-			if(TgtClCd.equals(""+B00100DefaultVariable.ClList[1][i])) {
+		for(int i=0;i<B100DefaultVariable.ClList[1].length;i++) {
+			if(TgtClCd.equals(""+B100DefaultVariable.ClList[1][i])) {
 				TB_ClCd.setSelectedIndex(i);
 			}
 		}
@@ -133,8 +133,8 @@ public class WM00086ItemComversionMstRenewAndCreate{
 			
 			if(0<ItemComversionMstRt.length) {
 				TB_UnitType.setSelectedIndex(0);
-				for(int i=0;i<B00100DefaultVariable.UnitTypeList[1].length;i++) {
-					if((""+B00100DefaultVariable.UnitTypeList[1][i]).equals(""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColPackingType])) {
+				for(int i=0;i<B100DefaultVariable.UnitTypeList[1].length;i++) {
+					if((""+B100DefaultVariable.UnitTypeList[1][i]).equals(""+ItemComversionMstRt[0][M00080ItemComversionMstRt.ColPackingType])) {
 						TB_UnitType.setSelectedIndex(i);
 					}
 				}
@@ -176,31 +176,31 @@ public class WM00086ItemComversionMstRenewAndCreate{
 		main_fm.setVisible(true);
 		
 		
-		final JFrame ItemSearch_fm = B00110FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00商品変換マスタ登録・修正(商品検索)","");
-		JLabel ItemSearch_userinfo = B00110FrameParts.UserInfo();
-		JButton ItemSearch_exit_btn = B00110FrameParts.ExitBtn();
-		JButton ItemSearch_entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame ItemSearch_fm = B100FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00商品変換マスタ登録・修正(商品検索)","");
+		JLabel ItemSearch_userinfo = B100FrameParts.UserInfo();
+		JButton ItemSearch_exit_btn = B100FrameParts.ExitBtn();
+		JButton ItemSearch_entry_btn = B100FrameParts.EntryBtn();
 
 		ItemSearch_fm.add(ItemSearch_userinfo);
 		ItemSearch_fm.add(ItemSearch_exit_btn);
 		ItemSearch_fm.add(ItemSearch_entry_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,780,130,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,780,130,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		
 		//検索条件
-		JLabel LB_SearchItemCd		= B00110FrameParts.JLabelSet(	  0, 25,130,20,"商品コード:"			,11,1);
-		JLabel LB_SearchCLItemCd	= B00110FrameParts.JLabelSet(	  0, 50,130,20,"荷主商品コード:"		,11,1);
-		JLabel LB_SearchItemName	= B00110FrameParts.JLabelSet(	  0, 75,130,20,"商品名:"				,11,1);
+		JLabel LB_SearchItemCd		= B100FrameParts.JLabelSet(	  0, 25,130,20,"商品コード:"			,11,1);
+		JLabel LB_SearchCLItemCd	= B100FrameParts.JLabelSet(	  0, 50,130,20,"荷主商品コード:"		,11,1);
+		JLabel LB_SearchItemName	= B100FrameParts.JLabelSet(	  0, 75,130,20,"商品名:"				,11,1);
 		
-		final JTextField  TB_SearchItemCd	= B00110FrameParts.JTextFieldSet(	130, 25,100,20,""	,11,0);		//商品コード
-		final JTextField  TB_SearchCLItemCd	= B00110FrameParts.JTextFieldSet(	130, 50,100,20,""	,11,0);		//荷主商品コード
-		final JTextField  TB_SearchItemName	= B00110FrameParts.JTextFieldSet(	130, 75,100,20,""	,11,0);		//商品名
+		final JTextField  TB_SearchItemCd	= B100FrameParts.JTextFieldSet(	130, 25,100,20,""	,11,0);		//商品コード
+		final JTextField  TB_SearchCLItemCd	= B100FrameParts.JTextFieldSet(	130, 50,100,20,""	,11,0);		//荷主商品コード
+		final JTextField  TB_SearchItemName	= B100FrameParts.JTextFieldSet(	130, 75,100,20,""	,11,0);		//商品名
 		
-		JLabel LB2_SearchItemCd		= B00110FrameParts.JLabelSet(	230, 25, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchCLItemCd	= B00110FrameParts.JLabelSet(	230, 50, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchItemName	= B00110FrameParts.JLabelSet(	230, 75, 80,20,"を含む"	,11,0);
+		JLabel LB2_SearchItemCd		= B100FrameParts.JLabelSet(	230, 25, 80,20,"と一致"	,11,0);
+		JLabel LB2_SearchCLItemCd	= B100FrameParts.JLabelSet(	230, 50, 80,20,"と一致"	,11,0);
+		JLabel LB2_SearchItemName	= B100FrameParts.JLabelSet(	230, 75, 80,20,"を含む"	,11,0);
 		
 		PN_Search.add(LB_SearchItemCd);
 		PN_Search.add(LB_SearchCLItemCd);
@@ -215,7 +215,7 @@ public class WM00086ItemComversionMstRenewAndCreate{
 		PN_Search.add(LB2_SearchItemName);
 		
 		//検索ボタン
-		JButton SearchItemSearchBtn = B00110FrameParts.BtnSet(130,100,100,20,"検索",11);
+		JButton SearchItemSearchBtn = B100FrameParts.BtnSet(130,100,100,20,"検索",11);
 		PN_Search.add(SearchItemSearchBtn);
 		
 		ItemSearch_fm.add(PN_Search);
@@ -231,10 +231,10 @@ public class WM00086ItemComversionMstRenewAndCreate{
 		}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -250,11 +250,11 @@ public class WM00086ItemComversionMstRenewAndCreate{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
 		
 		for(int i=0;i<RtSettingItemMstRt.length;i++) {
-			column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());
+			column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());
 		}
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,170,780,500,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,170,780,500,tb01);
 		ItemSearch_fm.add(scpn01);
 		
 		
@@ -300,7 +300,7 @@ public class WM00086ItemComversionMstRenewAndCreate{
 					for(int i=0;i<RowCount;i++) {
 						tableModel_ms01.removeRow(0);
 					}
-					String GetClGpCd 		 	= B00100DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];			//荷主グループコード
+					String GetClGpCd 		 	= B100DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];			//荷主グループコード
 					String GetSearchItemCd 		= TB_SearchItemCd.getText();		//商品コード
 					String GetSearchCLItemCd 	= TB_SearchCLItemCd.getText();		//荷主商品コード
 					String GetSearchItemName 	= TB_SearchItemName.getText();		//商品名
@@ -310,10 +310,10 @@ public class WM00086ItemComversionMstRenewAndCreate{
 					if(null==GetSearchCLItemCd	){GetSearchCLItemCd	= "";}
 					if(null==GetSearchItemName	){GetSearchItemName	= "";}
 					
-					GetClGpCd			= B00020ToolsTextControl.Trim(GetClGpCd);
-					GetSearchItemCd		= B00020ToolsTextControl.Trim(GetSearchItemCd);
-					GetSearchCLItemCd	= B00020ToolsTextControl.Trim(GetSearchCLItemCd);
-					GetSearchItemName	= B00020ToolsTextControl.Trim(GetSearchItemName);
+					GetClGpCd			= B100TextControl.Trim(GetClGpCd);
+					GetSearchItemCd		= B100TextControl.Trim(GetSearchItemCd);
+					GetSearchCLItemCd	= B100TextControl.Trim(GetSearchCLItemCd);
+					GetSearchItemName	= B100TextControl.Trim(GetSearchItemName);
 					
 					//商品マスタ取得
 					Object[][] ItemMstRt = ItemMstCheck(GetClGpCd,GetSearchItemCd,GetSearchCLItemCd,GetSearchItemName);
@@ -374,9 +374,9 @@ public class WM00086ItemComversionMstRenewAndCreate{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String GetClGpCd 		= B00100DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];			//荷主グループコード
-				String GetClCd 			= B00100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];				//荷主コード
-				String GetUnitType		= B00100DefaultVariable.UnitTypeList[1][TB_UnitType.getSelectedIndex()];	//荷姿
+				String GetClGpCd 		= B100DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];			//荷主グループコード
+				String GetClCd 			= B100DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];				//荷主コード
+				String GetUnitType		= B100DefaultVariable.UnitTypeList[1][TB_UnitType.getSelectedIndex()];	//荷姿
 				String GetCLItemCd		= TB_CLItemCd.getText();	//荷主商品コード
 				String GetItemCd		= TB_ItemCd.getText();		//商品コード
 				String GetCtQty			= TB_CtQty.getText();
@@ -392,19 +392,19 @@ public class WM00086ItemComversionMstRenewAndCreate{
 				if(null==GetCsQty		){GetCsQty= "";}
 				if(null==GetPlQty		){GetPlQty= "";}
 				
-				GetClGpCd	= B00020ToolsTextControl.Trim(GetClGpCd);	//荷主グループコード
-				GetClCd		= B00020ToolsTextControl.Trim(GetClCd);		//荷主コード
-				GetUnitType	= B00020ToolsTextControl.Trim(GetUnitType);	//荷姿
-				GetCLItemCd	= B00020ToolsTextControl.Trim(GetCLItemCd);	//荷主商品コード
-				GetItemCd	= B00020ToolsTextControl.Trim(GetItemCd);	//商品コード
-				GetCtQty	= B00020ToolsTextControl.Trim(GetCtQty);
-				GetCsQty	= B00020ToolsTextControl.Trim(GetCsQty);
-				GetPlQty	= B00020ToolsTextControl.Trim(GetPlQty);
+				GetClGpCd	= B100TextControl.Trim(GetClGpCd);	//荷主グループコード
+				GetClCd		= B100TextControl.Trim(GetClCd);		//荷主コード
+				GetUnitType	= B100TextControl.Trim(GetUnitType);	//荷姿
+				GetCLItemCd	= B100TextControl.Trim(GetCLItemCd);	//荷主商品コード
+				GetItemCd	= B100TextControl.Trim(GetItemCd);	//商品コード
+				GetCtQty	= B100TextControl.Trim(GetCtQty);
+				GetCsQty	= B100TextControl.Trim(GetCsQty);
+				GetPlQty	= B100TextControl.Trim(GetPlQty);
 				
-				GetUnitType	= B00020ToolsTextControl.num_only_String(GetUnitType);	//荷姿
-				GetCtQty	= B00020ToolsTextControl.num_only_String02(GetCtQty);
-				GetCsQty	= B00020ToolsTextControl.num_only_String02(GetCsQty);
-				GetPlQty	= B00020ToolsTextControl.num_only_String02(GetPlQty);
+				GetUnitType	= B100TextControl.num_only_String(GetUnitType);	//荷姿
+				GetCtQty	= B100TextControl.num_only_String02(GetCtQty);
+				GetCsQty	= B100TextControl.num_only_String02(GetCsQty);
+				GetPlQty	= B100TextControl.num_only_String02(GetPlQty);
 				
 				if("".equals(GetUnitType)) {GetUnitType	="0";}
 				if("".equals(GetCtQty	)) {GetCtQty	="0";}
@@ -448,7 +448,7 @@ public class WM00086ItemComversionMstRenewAndCreate{
 				}
 				
 				if(KickFg) {
-					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 					
 					String[][] ItemComversionMstSetString = {
 							 {"ClGpCd"		,"1","1",GetClGpCd}		//荷主グループコード
@@ -479,7 +479,7 @@ public class WM00086ItemComversionMstRenewAndCreate{
 						field_name[i][2] = ItemComversionMstSetString[i][2];
 						entry_data[0][i] = ItemComversionMstSetString[i][3];
 					}
-					A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();

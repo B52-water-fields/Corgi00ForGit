@@ -29,19 +29,19 @@ public class WM00092LocationMstExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,600,200,"Corgi00ロケーションマスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,600,200,"Corgi00ロケーションマスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		final String[] SheetList = B00060ToolsExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100ExcellControl.ExcellSheetList(TgtFilePath);
 		
-		JLabel LB_SheetList				= B00110FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
-		final JComboBox   TB_SheetList	= B00110FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
+		JLabel LB_SheetList				= B100FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
+		final JComboBox   TB_SheetList	= B100FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
 		
 		main_fm.add(LB_SheetList);
 		main_fm.add(TB_SheetList);	//シート一覧
@@ -83,10 +83,10 @@ public class WM00092LocationMstExcelEntry{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,750,800,"Corgi00ロケーションマスタ登録（エクセル）","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
-		JButton entry_btn = B00110FrameParts.EntryBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,750,800,"Corgi00ロケーションマスタ登録（エクセル）","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		JButton entry_btn = B100FrameParts.EntryBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
@@ -102,7 +102,7 @@ public class WM00092LocationMstExcelEntry{
 				,{"ロケタイプ"			, 0	, 6}
 				};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		
-		JLabel LB_SheetList	= B00110FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
+		JLabel LB_SheetList	= B100FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = new String[NeedCol.length+1];
@@ -110,10 +110,10 @@ public class WM00092LocationMstExcelEntry{
 		for(int i=0;i<NeedCol.length;i++) {columnNames01[i+1] = (String)NeedCol[i][0];}
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -128,17 +128,17 @@ public class WM00092LocationMstExcelEntry{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);
 		for(int i=1;i<NeedCol.length;i++) {
 			if(0==(int)NeedCol[i][1]) {
-				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.rightCellRenderer());	
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.rightCellRenderer());	
 			}else {
-				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	
+				column = columnModel01.getColumn(i+1);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	
 			}
 		}
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,65,700,600,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,65,700,600,tb01);
 		main_fm.add(scpn01);
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B00060ToolsExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 		
 		if(null==HeaderRead||0==HeaderRead.length) {
@@ -187,7 +187,7 @@ public class WM00092LocationMstExcelEntry{
 			for(int i01=0;i01<NeedCol.length;i01++) {
 				ClmnType[(int)NeedCol[i01][2]]=(int)NeedCol[i01][1];
 			}
-			Object[][] ExcellRead = B00060ToolsExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcellRead = B100ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
 			Object[][] CheckOb = new Object[ExcellRead.length][NeedCol.length+1];
 			
 			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
@@ -203,7 +203,7 @@ public class WM00092LocationMstExcelEntry{
 					tableModel_ms01.addRow(SetOb);
 				}
 			}
-			String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+			String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 			ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
 			
 			if(null!=ErrMsg && 0<ErrMsg.size()) {
@@ -224,7 +224,7 @@ public class WM00092LocationMstExcelEntry{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String[] TableCol = B10010TableControl.TableFieldNameRt(tb01);
+				String[] TableCol = B100TableControl.TableFieldNameRt(tb01);
 				int RowCount = tableModel_ms01.getRowCount();
 				Object[][] CheckOb = new Object[RowCount][TableCol.length];
 				for(int i=0;i<RowCount;i++) {
@@ -239,7 +239,7 @@ public class WM00092LocationMstExcelEntry{
 				}else {
 					MstEntry(CheckOb,TableCol);
 					//ファイルバックアップ
-					B00040ToolsFolderCheck.FileBackUpNormal(TgtFilePath) ;
+					B100FolderCheck.FileBackUpNormal(TgtFilePath) ;
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();
@@ -310,13 +310,13 @@ public class WM00092LocationMstExcelEntry{
 			String GetLocName	= ""+CheckOb[i][ColLocName];	//ロケーション名
 			String GetType		= ""+CheckOb[i][ColType];		//ロケタイプ
 			
-			GetClCd		= B00020ToolsTextControl.Trim(GetClCd);		//荷主コード
-			GetClName	= B00020ToolsTextControl.Trim(GetClName);	//荷主名
-			GetWhCd		= B00020ToolsTextControl.Trim(GetWhCd);		//倉庫コード
-			GetWhName	= B00020ToolsTextControl.Trim(GetWhName);	//倉庫名
-			GetLoc		= B00020ToolsTextControl.Trim(GetLoc);		//ロケーション
-			GetLocName	= B00020ToolsTextControl.Trim(GetLocName);	//ロケーション名
-			GetType		= B00020ToolsTextControl.Trim(GetType);		//ロケタイプ
+			GetClCd		= B100TextControl.Trim(GetClCd);		//荷主コード
+			GetClName	= B100TextControl.Trim(GetClName);	//荷主名
+			GetWhCd		= B100TextControl.Trim(GetWhCd);		//倉庫コード
+			GetWhName	= B100TextControl.Trim(GetWhName);	//倉庫名
+			GetLoc		= B100TextControl.Trim(GetLoc);		//ロケーション
+			GetLocName	= B100TextControl.Trim(GetLocName);	//ロケーション名
+			GetType		= B100TextControl.Trim(GetType);		//ロケタイプ
 			
 			if("".equals(GetType)) {GetType = "0";}
 			float WFT = Float.parseFloat(GetType);
@@ -347,13 +347,13 @@ public class WM00092LocationMstExcelEntry{
 			String GetLocName	= ""+CheckOb[i][ColLocName];	//ロケーション名
 			String GetType		= ""+CheckOb[i][ColType];		//ロケタイプ
 			
-			GetClCd		= B00020ToolsTextControl.Trim(GetClCd);		//荷主コード
-			GetClName	= B00020ToolsTextControl.Trim(GetClName);	//荷主名
-			GetWhCd		= B00020ToolsTextControl.Trim(GetWhCd);		//倉庫コード
-			GetWhName	= B00020ToolsTextControl.Trim(GetWhName);	//倉庫名
-			GetLoc		= B00020ToolsTextControl.Trim(GetLoc);		//ロケーション
-			GetLocName	= B00020ToolsTextControl.Trim(GetLocName);	//ロケーション名
-			GetType		= B00020ToolsTextControl.Trim(GetType);		//ロケタイプ
+			GetClCd		= B100TextControl.Trim(GetClCd);		//荷主コード
+			GetClName	= B100TextControl.Trim(GetClName);	//荷主名
+			GetWhCd		= B100TextControl.Trim(GetWhCd);		//倉庫コード
+			GetWhName	= B100TextControl.Trim(GetWhName);	//倉庫名
+			GetLoc		= B100TextControl.Trim(GetLoc);		//ロケーション
+			GetLocName	= B100TextControl.Trim(GetLocName);	//ロケーション名
+			GetType		= B100TextControl.Trim(GetType);		//ロケタイプ
 			
 			if("".equals(GetType)) {GetType = "0";}
 			float WFT = Float.parseFloat(GetType);
@@ -429,13 +429,13 @@ public class WM00092LocationMstExcelEntry{
 			String GetLocName	= ""+CheckOb[i][ColLocName];	//ロケーション名
 			String GetType		= ""+CheckOb[i][ColType];		//ロケタイプ
 			
-			GetClCd		= B00020ToolsTextControl.Trim(GetClCd);		//荷主コード
-			GetClName	= B00020ToolsTextControl.Trim(GetClName);	//荷主名
-			GetWhCd		= B00020ToolsTextControl.Trim(GetWhCd);		//倉庫コード
-			GetWhName	= B00020ToolsTextControl.Trim(GetWhName);	//倉庫名
-			GetLoc		= B00020ToolsTextControl.Trim(GetLoc);		//ロケーション
-			GetLocName	= B00020ToolsTextControl.Trim(GetLocName);	//ロケーション名
-			GetType		= B00020ToolsTextControl.Trim(GetType);		//ロケタイプ
+			GetClCd		= B100TextControl.Trim(GetClCd);		//荷主コード
+			GetClName	= B100TextControl.Trim(GetClName);	//荷主名
+			GetWhCd		= B100TextControl.Trim(GetWhCd);		//倉庫コード
+			GetWhName	= B100TextControl.Trim(GetWhName);	//倉庫名
+			GetLoc		= B100TextControl.Trim(GetLoc);		//ロケーション
+			GetLocName	= B100TextControl.Trim(GetLocName);	//ロケーション名
+			GetType		= B100TextControl.Trim(GetType);		//ロケタイプ
 			
 			if("".equals(GetType)) {GetType = "0";}
 			float WFT = Float.parseFloat(GetType);
@@ -466,8 +466,8 @@ public class WM00092LocationMstExcelEntry{
 					ErrMsg.add(wint+"行目エラー：ロケーションコードが未定義です");
 				}
 				boolean UnHitFg = true;
-				for(int i01=0;i01<B00100DefaultVariable.SearchLocType[1].length;i01++) {
-					if((B00100DefaultVariable.SearchLocType[1][i01]).equals(GetType)) {
+				for(int i01=0;i01<B100DefaultVariable.SearchLocType[1].length;i01++) {
+					if((B100DefaultVariable.SearchLocType[1][i01]).equals(GetType)) {
 						UnHitFg = false;
 					}
 				}
@@ -484,25 +484,25 @@ public class WM00092LocationMstExcelEntry{
 	private static void ErrView(ArrayList<String>ErrMsg) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000Main.MainFLD+"\\MstControl";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\Err";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\BK";
-		B00040ToolsFolderCheck.FLD_CHECK(FLD_PATH);
+		B100FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
-		String NowDTM=B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		String NowDTM=B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
 		FLD_PATH = A00000Main.MainFLD+"\\MstControl\\LocationMst\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		
-		B00030ToolsTextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		B100TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		
 		//古いエラーデータ削除
-		B00040ToolsFolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B00100DefaultVariable.ErrTxtDelete);
+		B100FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100DefaultVariable.ErrTxtDelete);
 		
 		//ファイル開く
 		File file = new File(ErrFP);

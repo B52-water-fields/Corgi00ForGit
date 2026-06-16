@@ -124,8 +124,8 @@ public class M10010PostMstRt{
 			boolean AllSearch
 			,boolean PostPerfectMatch){
 		
-		SearchPOST	= B00150ArrayListControl.ArryListStringUniqueList(SearchPOST);
-		SearchAdd	= B00150ArrayListControl.ArryListStringUniqueList(SearchAdd);
+		SearchPOST	= B100ArrayListControl.ArryListStringUniqueList(SearchPOST);
+		SearchAdd	= B100ArrayListControl.ArryListStringUniqueList(SearchAdd);
 		
 		//郵便番号を受け取って郵便番号マスタから検索結果を返却する
 		Object[][] rt = new Object[0][RtSettingPostRt().length];
@@ -146,14 +146,14 @@ public class M10010PostMstRt{
 			if(PostPerfectMatch) {
 				for(int i=0;i<SearchPOST.size();i++) {
 					String WST = ""+SearchPOST.get(i);
-					WST = B00020ToolsTextControl.num_only_String(WST);
+					WST = B100TextControl.num_only_String(WST);
 					if(i==0) {sql = sql + " and(";}else {sql = sql + " or ";}
 					sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST = ?\n";
 				}
 			}else {
 				for(int i=0;i<SearchPOST.size();i++) {
 					String WST = ""+SearchPOST.get(i);
-					WST = B00020ToolsTextControl.num_only_String(WST);
+					WST = B100TextControl.num_only_String(WST);
 					if(i==0) {sql = sql + " and(";}else {sql = sql + " or ";}
 					sql = sql + ""+A00000Main.MySqlDefaultSchemaPOST+".M0010_PostMst.POST like ?\n";
 				}
@@ -175,18 +175,18 @@ public class M10010PostMstRt{
 		
 		//System.out.println(sql);
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("POST");
+			A100DbConnect.DB_CONN("POST");
 			
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				if(null!=SearchPOST && 0<SearchPOST.size()){
 					if(PostPerfectMatch) {
 						for(int i=0;i<SearchPOST.size();i++) {
 							String WST = ""+SearchPOST.get(i);
-							WST = B00020ToolsTextControl.num_only_String(WST);
+							WST = B100TextControl.num_only_String(WST);
 							
 							StmtCount = StmtCount+1;
 							stmt01.setString(StmtCount, WST);
@@ -194,7 +194,7 @@ public class M10010PostMstRt{
 					}else {
 						for(int i=0;i<SearchPOST.size();i++) {
 							String WST = ""+SearchPOST.get(i);
-							WST = B00020ToolsTextControl.num_only_String(WST);
+							WST = B100TextControl.num_only_String(WST);
 							StmtCount = StmtCount+1;
 							stmt01.setString(StmtCount, WST+"%");
 						}
@@ -240,15 +240,15 @@ public class M10010PostMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
 	public static Object[][] MunicipalityRt(ArrayList<String> SearchName,ArrayList<String> SearchMunicipalityCd,boolean AllSearch){
 		//市区町村マスタ返却
 		
-		SearchName				= B00150ArrayListControl.ArryListStringUniqueList(SearchName);
-		SearchMunicipalityCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
+		SearchName				= B100ArrayListControl.ArryListStringUniqueList(SearchName);
+		SearchMunicipalityCd	= B100ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
 		
 		Object[][] rt = new Object[0][RtSettingMunicipalityRt().length];
 		boolean KickFg=false;
@@ -289,11 +289,11 @@ public class M10010PostMstRt{
 		//System.out.println(sql);
 
 		if(KickFg) {
-			A00010DbConnect.DB_CONN("POST");
+			A100DbConnect.DB_CONN("POST");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				if(null!=SearchName&&0<SearchName.size()) {
 					for(int i=0;i<SearchName.size();i++) {
@@ -338,7 +338,7 @@ public class M10010PostMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -364,11 +364,11 @@ public class M10010PostMstRt{
 
 		//System.out.println(sql);
 		if(KickFg) {
-			A00010DbConnect.DB_CONN("POST");
+			A100DbConnect.DB_CONN("POST");
 			ResultSet rset01 = null;
 			Statement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+				stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 					      ResultSet.CONCUR_UPDATABLE);
 				rset01 = stmt01.executeQuery(sql);
 				int counter = 0;
@@ -398,7 +398,7 @@ public class M10010PostMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}
@@ -432,11 +432,11 @@ public class M10010PostMstRt{
 		+"where 1=1\n"
 		+"	and SD.MunisipalityCount = 1;\n";
 		//System.out.println(sql);
-		A00010DbConnect.DB_CONN("POST");
+		A100DbConnect.DB_CONN("POST");
 		ResultSet rset01 = null;
 		Statement stmt01 = null;
 		try {
-			stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+			stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 				      ResultSet.CONCUR_UPDATABLE);
 			rset01 = stmt01.executeQuery(sql);
 			int counter = 0;
@@ -465,7 +465,7 @@ public class M10010PostMstRt{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 		return rt;
 	}
 	
@@ -500,11 +500,11 @@ public class M10010PostMstRt{
 		+"where 1=1\n"
 		+"	and SD.MunisipalityCount = 1;\n";
 		//System.out.println(sql);
-		A00010DbConnect.DB_CONN("POST");
+		A100DbConnect.DB_CONN("POST");
 		ResultSet rset01 = null;
 		Statement stmt01 = null;
 		try {
-			stmt01 = A00010DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+			stmt01 = A100DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 				      ResultSet.CONCUR_UPDATABLE);
 			rset01 = stmt01.executeQuery(sql);
 			int counter = 0;
@@ -533,7 +533,7 @@ public class M10010PostMstRt{
 				e.printStackTrace();
 			}
 		}
-		A00010DbConnect.close();
+		A100DbConnect.close();
 		
 		//市区町村名が"区""町""村"で終わる市区町村をリストアップ "市区","郡町","郡村"で終わる住所は判定捨てる
 		ArrayList<String> WCAdd = new ArrayList<String>();

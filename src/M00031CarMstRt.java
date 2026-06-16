@@ -99,11 +99,11 @@ public class M00031CarMstRt{
 			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
 		
-		SearchWHCD				= B00150ArrayListControl.ArryListStringUniqueList(SearchWHCD);
-		SearchShippingCompanyCd	= B00150ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
-		SearchCarCd				= B00150ArrayListControl.ArryListStringUniqueList(SearchCarCd);
-		SearchCarName			= B00150ArrayListControl.ArryListStringUniqueList(SearchCarName);
-		SearchDelFg				= B00150ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		SearchWHCD				= B100ArrayListControl.ArryListStringUniqueList(SearchWHCD);
+		SearchShippingCompanyCd	= B100ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
+		SearchCarCd				= B100ArrayListControl.ArryListStringUniqueList(SearchCarCd);
+		SearchCarName			= B100ArrayListControl.ArryListStringUniqueList(SearchCarName);
+		SearchDelFg				= B100ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
 		Object[][] rt = new Object[0][RtSettingCarMstRt().length];
 		boolean SearchKick = false;
@@ -214,11 +214,11 @@ public class M00031CarMstRt{
 		sql = sql + " order by KM0071_CARMST.WHCD,KM0071_CARMST.ShippingCompanyCd,KM0071_CARMST.CarCd";
 		
 		if(SearchKick) {
-			A00010DbConnect.DB_CONN("NYANKO");
+			A100DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
 				if(null!=SearchWHCD && 0<SearchWHCD.size()){
@@ -282,8 +282,8 @@ public class M00031CarMstRt{
 					if(null==rset01.getString("UserName02")){			rt[counter][ColUserName02] 				= "";}else{rt[counter][ColUserName02] 				= rset01.getString("UserName02");}				//ユーザー名2
 					if(null==rset01.getString("UserName03")){			rt[counter][ColUserName03] 				= "";}else{rt[counter][ColUserName03] 				= rset01.getString("UserName03");}				//ユーザー名3
 					if(null==rset01.getString("PTMSCD")){				rt[counter][ColPTMSCD] 					= "";}else{rt[counter][ColPTMSCD] 						= rset01.getString("PTMSCD");}					//基幹システム車輛コード
-					if(null==rset01.getTimestamp("EntryDate")){			rt[counter][ColEntryDate] 				= "";}else{rt[counter][ColEntryDate] 					= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){		rt[counter][ColUpdateDate] 				= "";}else{rt[counter][ColUpdateDate] 				= B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
+					if(null==rset01.getTimestamp("EntryDate")){			rt[counter][ColEntryDate] 				= "";}else{rt[counter][ColEntryDate] 					= B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
+					if(null==rset01.getTimestamp("UpdateDate")){		rt[counter][ColUpdateDate] 				= "";}else{rt[counter][ColUpdateDate] 				= B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
 					if(null==rset01.getString("EntryUser")){			rt[counter][ColEntryUser] 				= "";}else{rt[counter][ColEntryUser] 					= rset01.getString("EntryUser");}				//登録者コード
 					if(null==rset01.getString("UpdateUser")){			rt[counter][ColUpdateUser] 				= "";}else{rt[counter][ColUpdateUser] 				= rset01.getString("UpdateUser");}				//更新者コード
 					rt[counter][ColDelFg] = rset01.getInt("DelFg");	//削除フラグ
@@ -303,7 +303,7 @@ public class M00031CarMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		
 		return rt;

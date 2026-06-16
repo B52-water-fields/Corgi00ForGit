@@ -28,26 +28,26 @@ public class WM10010PostMstSearch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B00110FrameParts.FrameCreate(x,y,780,750,"Corgi00郵便番号検索","");
-		JLabel userinfo = B00110FrameParts.UserInfo();
-		JButton exit_btn = B00110FrameParts.ExitBtn();
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,780,750,"Corgi00郵便番号検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B00110FrameParts.JPanelSet(10,40,740,100,"White");
-		JLabel PN_SearchLabel = B00110FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,740,100,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
 		//検索条件
-		JLabel LB_SearchPOST  = B00110FrameParts.JLabelSet(	                  0,25,100,20,"郵便番号:",11,1);
-		JLabel LB_SearchAdd   = B00110FrameParts.JLabelSet(	                  0,50,100,20,"住所:"    ,11,1);
-		final JTextField TB_SearchPOST  = B00110FrameParts.JTextFieldSet(		100,25,100,20,"",11,0);
-		final JTextField TB_SearchAdd   =B00110FrameParts.JTextFieldSet(		100,50,100,20,"",11,0);
-		JLabel LB2_SearchPOST  = B00110FrameParts.JLabelSet(	                200,25,100,20,"で始まる" ,11,0);
-		JLabel LB2_SearchAdd   = B00110FrameParts.JLabelSet(	                200,50,100,20,"を含む"   ,11,0);
+		JLabel LB_SearchPOST  = B100FrameParts.JLabelSet(	                  0,25,100,20,"郵便番号:",11,1);
+		JLabel LB_SearchAdd   = B100FrameParts.JLabelSet(	                  0,50,100,20,"住所:"    ,11,1);
+		final JTextField TB_SearchPOST  = B100FrameParts.JTextFieldSet(		100,25,100,20,"",11,0);
+		final JTextField TB_SearchAdd   =B100FrameParts.JTextFieldSet(		100,50,100,20,"",11,0);
+		JLabel LB2_SearchPOST  = B100FrameParts.JLabelSet(	                200,25,100,20,"で始まる" ,11,0);
+		JLabel LB2_SearchAdd   = B100FrameParts.JLabelSet(	                200,50,100,20,"を含む"   ,11,0);
 		
 		PN_Search.add(LB_SearchPOST);
 		PN_Search.add(LB_SearchAdd);
@@ -57,7 +57,7 @@ public class WM10010PostMstSearch{
 		PN_Search.add(LB2_SearchAdd);
 		
 		//検索ボタン
-		JButton SearchBtn = B00110FrameParts.BtnSet(100,75,100,20,"検索",11);
+		JButton SearchBtn = B100FrameParts.BtnSet(100,75,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		//エクセル取込時に先頭行columnNames01とヘッダ行の名称一致でレイアウト確認＆取込列判定します
@@ -72,9 +72,9 @@ public class WM10010PostMstSearch{
 				};
 		
 		//編集可能カラムの指定
-		B10010TableControl.RenewTgt = new int[1];
-		B10010TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B10010TableControl.MyTableModel01(columnNames01,0);
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(tableModel_ms01);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -87,45 +87,45 @@ public class WM10010PostMstSearch{
 		//列幅初期設定 表示位置設定
 		TableColumn column = null;
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//郵便番号
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//県
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//市区町村
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//町丁目
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(120*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B00110FrameParts.leftCellRenderer());	//市区町村CD
+		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//郵便番号
+		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//県
+		column = columnModel01.getColumn( 3);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//市区町村
+		column = columnModel01.getColumn( 4);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//町丁目
+		column = columnModel01.getColumn( 5);	column.setPreferredWidth(120*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//市区町村CD
 		
 		//スクロール用設定
-		JScrollPane scpn01 = B00110FrameParts.JScrollPaneSet(10,160,740,460,tb01);
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,160,740,460,tb01);
 		main_fm.add(scpn01);
 		
 		//CSVボタン
-		JButton CsvBtn = B00110FrameParts.BtnSet(10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100FrameParts.BtnSet(10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
-		JLabel LB_RenewBtn  = B00110FrameParts.JLabelSet( 130,640,100,20,"チェック行を" ,11,2);
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet( 130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B00110FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
-		JButton CreateBtn = B00110FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
 		main_fm.add(CreateBtn);
 		
 		//一括登録ボタン
-		JButton CreateSumBtn = B00110FrameParts.BtnSet(	370,660,100,20,"一括登録",11);
+		JButton CreateSumBtn = B100FrameParts.BtnSet(	370,660,100,20,"一括登録",11);
 		main_fm.add(CreateSumBtn);
 		
 		//JIS⇒届先ボタン
-		JButton JisToDeliveryBtn = B00110FrameParts.BtnSet(490,660,100,20,"JIS⇒届先Mst",10);
+		JButton JisToDeliveryBtn = B100FrameParts.BtnSet(490,660,100,20,"JIS⇒届先Mst",10);
 		main_fm.add(JisToDeliveryBtn);
 		
 		//エクセル出力ボタン
-		JButton ExcelBtn = B00110FrameParts.BtnSet(	610,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100FrameParts.BtnSet(	610,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//エクセル取込ボタン
-		JButton ExcelInBtn = B00110FrameParts.BtnSet(	610,635,100,20,"Excel取込",11);
+		JButton ExcelInBtn = B100FrameParts.BtnSet(	610,635,100,20,"Excel取込",11);
 		main_fm.add(ExcelInBtn);
 		
 		main_fm.setVisible(true);
@@ -148,10 +148,10 @@ public class WM10010PostMstSearch{
 					if(null==GetSearchPOST	){GetSearchPOST = "";}
 					if(null==GetSearchAdd	){GetSearchAdd 	= "";}
 					
-					GetSearchPOST	= B00020ToolsTextControl.Trim(GetSearchPOST);
-					GetSearchAdd	= B00020ToolsTextControl.Trim(GetSearchAdd);
+					GetSearchPOST	= B100TextControl.Trim(GetSearchPOST);
+					GetSearchAdd	= B100TextControl.Trim(GetSearchAdd);
 					
-					GetSearchPOST			= B00020ToolsTextControl.num_only_String(GetSearchPOST);
+					GetSearchPOST			= B100TextControl.num_only_String(GetSearchPOST);
 					
 					TB_SearchPOST.setText(GetSearchPOST);
 					TB_SearchAdd.setText(GetSearchAdd);
@@ -182,9 +182,9 @@ public class WM10010PostMstSearch{
 						tableModel_ms01.addRow(SetOb);
 					}
 					if(0<PostRt.length) {
-						B10010TableControl.AddSortON(tb01,tableModel_ms01);
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
 					}else {
-						B10010TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
 					}
 					RenewFg = true;
 				}
@@ -276,7 +276,7 @@ public class WM10010PostMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutCsv("出力先選択","郵便番号検索結果",tb01);
+					B100TableControl.TableOutPutCsv("出力先選択","郵便番号検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -286,7 +286,7 @@ public class WM10010PostMstSearch{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B10010TableControl.TableOutPutExcel("出力先選択","郵便番号検索結果",tb01);
+					B100TableControl.TableOutPutExcel("出力先選択","郵便番号検索結果",tb01);
 					RenewFg = true;
 				}
 			}
@@ -300,7 +300,7 @@ public class WM10010PostMstSearch{
 					String MSG = "エクセルファイル選択";
 					String[] file_type = {".xlsx"};
 					String file_type_name = "エクセルファイル";
-					String Selected = B00090FileSelect.FileSelect(MSG,file_type,file_type_name);
+					String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
 					
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						
@@ -377,7 +377,7 @@ public class WM10010PostMstSearch{
 					String[][] judg_data = new String[MunicipalityRt.length][2];
 					String TgtDB = "NYANKO";
 					int non_msg_fg = 0;
-					String now_dtm = B00050ToolsDateTimeControl.dtmString2(B00050ToolsDateTimeControl.dtm()[1])[1];
+					String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
 					
 					judg_field[0] = "DECD";
 					judg_field[1] = "DepartmentCd";
@@ -425,7 +425,7 @@ public class WM10010PostMstSearch{
 							
 
 						}
-						A00020InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+						A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					}
 					RenewFg = true;
 				}

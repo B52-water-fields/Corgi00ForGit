@@ -128,14 +128,14 @@ public class M00120ItemRecomendLocMstRt{
 			boolean LocExactMatch,					//ロケーション完全一致
 			boolean AllSearch){
 		
-		SearchClCd			= B00150ArrayListControl.ArryListStringUniqueList(SearchClCd);					//荷主コード
-		SearchClWh			= B00150ArrayListControl.ArryListStringUniqueList(SearchClWh);					//担当倉庫コード
-		SearchClGpCD		= B00150ArrayListControl.ArryListStringUniqueList(SearchClGpCD);				//荷主グループCD
-		SearchItemCd		= B00150ArrayListControl.ArryListStringUniqueList(SearchItemCd);				//商品コード
-		SearchItemName01	= B00150ArrayListControl.ArryListStringUniqueList(SearchItemName01);			//商品名1
-		SearchRecomendLoc	= B00150ArrayListControl.ArryListStringUniqueList(SearchRecomendLoc);			//推奨ロケ
-		SearchLocName		= B00150ArrayListControl.ArryListStringUniqueList(SearchLocName);				//ロケーション名
-		SearchType			= B00150ArrayListControl.ArryListIntegerUniqueList(SearchType);					//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+		SearchClCd			= B100ArrayListControl.ArryListStringUniqueList(SearchClCd);					//荷主コード
+		SearchClWh			= B100ArrayListControl.ArryListStringUniqueList(SearchClWh);					//担当倉庫コード
+		SearchClGpCD		= B100ArrayListControl.ArryListStringUniqueList(SearchClGpCD);				//荷主グループCD
+		SearchItemCd		= B100ArrayListControl.ArryListStringUniqueList(SearchItemCd);				//商品コード
+		SearchItemName01	= B100ArrayListControl.ArryListStringUniqueList(SearchItemName01);			//商品名1
+		SearchRecomendLoc	= B100ArrayListControl.ArryListStringUniqueList(SearchRecomendLoc);			//推奨ロケ
+		SearchLocName		= B100ArrayListControl.ArryListStringUniqueList(SearchLocName);				//ロケーション名
+		SearchType			= B100ArrayListControl.ArryListIntegerUniqueList(SearchType);					//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 		
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
@@ -280,11 +280,11 @@ public class M00120ItemRecomendLocMstRt{
 		//System.out.println(sql);
 
 		if(true==SearchKick) {
-			A00010DbConnect.DB_CONN("WANKO");
+			A100DbConnect.DB_CONN("WANKO");
 			ResultSet rset01 = null;
 			PreparedStatement stmt01 = null;
 			try {
-				stmt01 = A00010DbConnect.conn.prepareStatement(sql);
+				stmt01 = A100DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				if(null!=SearchClCd && 0<SearchClCd.size()) {
 					for(int i=0;i<SearchClCd.size();i++) {
@@ -365,8 +365,8 @@ public class M00120ItemRecomendLocMstRt{
 					if(null==rset01.getString("RecomendLoc"			)){rt[counter][ColRecomendLoc]	="";}else{rt[counter][ColRecomendLoc]	=rset01.getString("RecomendLoc");}	//推奨ロケ
 					if(null==rset01.getString("LocName"				)){rt[counter][ColLocName]			="";}else{rt[counter][ColLocName]		=rset01.getString("LocName");}		//ロケーション名
 					rt[counter][ColType]= rset01.getInt("Type");						//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-					if(null==rset01.getTimestamp("EntryDate")		){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
-					if(null==rset01.getTimestamp("UpdateDate")		){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B00050ToolsDateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
+					if(null==rset01.getTimestamp("EntryDate")		){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
+					if(null==rset01.getTimestamp("UpdateDate")		){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B100DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
 					if(null==rset01.getString("EntryUser")			){rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}						//登録者
 					if(null==rset01.getString("UpdateUser")			){rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}						//更新者
 					if(null==rset01.getString("ItemSubRecomendLoc")	){rt[counter][ColItemSubRecomendLoc]="";}else{rt[counter][ColItemSubRecomendLoc]	=rset01.getString("ItemSubRecomendLoc");}	//商品サブマスタ推奨ロケ",""}
@@ -386,7 +386,7 @@ public class M00120ItemRecomendLocMstRt{
 					e.printStackTrace();
 				}
 			}
-			A00010DbConnect.close();
+			A100DbConnect.close();
 		}
 		return rt;
 	}

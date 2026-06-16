@@ -1,7 +1,7 @@
 import java.io.UnsupportedEncodingException;
 import java.text.Normalizer;
 
-public class B00020ToolsTextControl{
+public class B100TextControl{
 	//文字列操作をするクラス
 	
 
