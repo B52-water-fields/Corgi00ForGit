@@ -1,0 +1,435 @@
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
+import javax.swing.AbstractAction;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+public class WM100PostMstSearch{
+	static int SetX;
+	static int SetY;
+	static boolean RenewFg;
+	public static void PostMstSearch(int x,int y) {
+		A00000Main.LoginCheck();
+		if(0==SetX) {SetX=100;}
+		if(0==SetY) {SetY=100;}
+		if(x==0) {x=SetX;}
+		if(y==0) {y=SetY;}
+		RenewFg = false;
+
+		final JFrame main_fm = B100FrameParts.FrameCreate(x,y,780,750,"Corgi00郵便番号検索","");
+		JLabel userinfo = B100FrameParts.UserInfo();
+		JButton exit_btn = B100FrameParts.ExitBtn();
+		
+		main_fm.add(userinfo);
+		main_fm.add(exit_btn);
+		
+		//検索条件パネル
+		JPanel PN_Search = B100FrameParts.JPanelSet(10,40,740,100,"White");
+		JLabel PN_SearchLabel = B100FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		PN_Search.add(PN_SearchLabel);
+		main_fm.add(PN_Search);
+		
+		//検索条件
+		JLabel LB_SearchPOST  = B100FrameParts.JLabelSet(	                  0,25,100,20,"郵便番号:",11,1);
+		JLabel LB_SearchAdd   = B100FrameParts.JLabelSet(	                  0,50,100,20,"住所:"    ,11,1);
+		final JTextField TB_SearchPOST  = B100FrameParts.JTextFieldSet(		100,25,100,20,"",11,0);
+		final JTextField TB_SearchAdd   =B100FrameParts.JTextFieldSet(		100,50,100,20,"",11,0);
+		JLabel LB2_SearchPOST  = B100FrameParts.JLabelSet(	                200,25,100,20,"で始まる" ,11,0);
+		JLabel LB2_SearchAdd   = B100FrameParts.JLabelSet(	                200,50,100,20,"を含む"   ,11,0);
+		
+		PN_Search.add(LB_SearchPOST);
+		PN_Search.add(LB_SearchAdd);
+		PN_Search.add(TB_SearchPOST);
+		PN_Search.add(TB_SearchAdd);
+		PN_Search.add(LB2_SearchPOST);
+		PN_Search.add(LB2_SearchAdd);
+		
+		//検索ボタン
+		JButton SearchBtn = B100FrameParts.BtnSet(100,75,100,20,"検索",11);
+		PN_Search.add(SearchBtn);
+		
+		//エクセル取込時に先頭行columnNames01とヘッダ行の名称一致でレイアウト確認＆取込列判定します
+		//"郵便番号","県","市区町村","町丁目","市区町村CD"との名称一致をみて列判定するので名称重複＆不足しないでください
+		String[] columnNames01 = {
+				"FG"
+				,"郵便番号"
+				,"県"
+				,"市区町村"
+				,"町丁目"
+				,"市区町村CD"
+				};
+		
+		//編集可能カラムの指定
+		B100TableControl.RenewTgt = new int[1];
+		B100TableControl.RenewTgt[0] = 0;
+		final DefaultTableModel tableModel_ms01 = new B100TableControl.MyTableModel01(columnNames01,0);
+		
+		final JTable tb01 = new JTable(tableModel_ms01);
+		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		tb01.setRowHeight(20*A00000Main.Mul/A00000Main.Div);
+		tb01.setFont(new Font(A00000Main.DefaultFont, Font.PLAIN, 12*A00000Main.Mul/A00000Main.Div));
+		
+		DefaultTableColumnModel columnModel01
+		= (DefaultTableColumnModel)tb01.getColumnModel();
+
+		//列幅初期設定 表示位置設定
+		TableColumn column = null;
+		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000Main.Mul/A00000Main.Div);	//FG
+		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//郵便番号
+		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//県
+		column = columnModel01.getColumn( 3);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//市区町村
+		column = columnModel01.getColumn( 4);	column.setPreferredWidth(200*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//町丁目
+		column = columnModel01.getColumn( 5);	column.setPreferredWidth(120*A00000Main.Mul/A00000Main.Div);	column.setCellRenderer(B100FrameParts.leftCellRenderer());	//市区町村CD
+		
+		//スクロール用設定
+		JScrollPane scpn01 = B100FrameParts.JScrollPaneSet(10,160,740,460,tb01);
+		main_fm.add(scpn01);
+		
+		//CSVボタン
+		JButton CsvBtn = B100FrameParts.BtnSet(10,660,100,20,"csv出力",11);
+		main_fm.add(CsvBtn);
+		
+		JLabel LB_RenewBtn  = B100FrameParts.JLabelSet( 130,640,100,20,"チェック行を" ,11,2);
+		main_fm.add(LB_RenewBtn);
+		
+		//修正ボタン
+		JButton RenewBtn = B100FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		main_fm.add(RenewBtn);
+		
+		//新規登録ボタン
+		JButton CreateBtn = B100FrameParts.BtnSet(		250,660,100,20,"新規登録",11);
+		main_fm.add(CreateBtn);
+		
+		//一括登録ボタン
+		JButton CreateSumBtn = B100FrameParts.BtnSet(	370,660,100,20,"一括登録",11);
+		main_fm.add(CreateSumBtn);
+		
+		//JIS⇒届先ボタン
+		JButton JisToDeliveryBtn = B100FrameParts.BtnSet(490,660,100,20,"JIS⇒届先Mst",10);
+		main_fm.add(JisToDeliveryBtn);
+		
+		//エクセル出力ボタン
+		JButton ExcelBtn = B100FrameParts.BtnSet(	610,660,100,20,"Excel出力",11);
+		main_fm.add(ExcelBtn);
+		
+		//エクセル取込ボタン
+		JButton ExcelInBtn = B100FrameParts.BtnSet(	610,635,100,20,"Excel取込",11);
+		main_fm.add(ExcelInBtn);
+		
+		main_fm.setVisible(true);
+		
+		RenewFg = true;
+		
+		//検索ボタン押下時の挙動
+		SearchBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_ms01.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						tableModel_ms01.removeRow(0);
+					}
+					
+					String GetSearchPOST = TB_SearchPOST.getText();	if(null==GetSearchPOST) {GetSearchPOST="";}
+					String GetSearchAdd = TB_SearchAdd.getText();	if(null==GetSearchAdd) {GetSearchAdd="";}
+					
+					if(null==GetSearchPOST	){GetSearchPOST = "";}
+					if(null==GetSearchAdd	){GetSearchAdd 	= "";}
+					
+					GetSearchPOST	= B100TextControl.Trim(GetSearchPOST);
+					GetSearchAdd	= B100TextControl.Trim(GetSearchAdd);
+					
+					GetSearchPOST			= B100TextControl.num_only_String(GetSearchPOST);
+					
+					TB_SearchPOST.setText(GetSearchPOST);
+					TB_SearchAdd.setText(GetSearchAdd);
+					
+					ArrayList<String> SearchPOST = new ArrayList<String>();
+					ArrayList<String> SearchAdd = new ArrayList<String>();
+					boolean AllSearch = true;
+					boolean PostPerfectMatch = false;
+					
+					if(!"".equals(GetSearchPOST)) {
+						SearchPOST.add(GetSearchPOST);
+					}
+					
+					if(!"".equals(GetSearchAdd)) {
+						SearchAdd.add(GetSearchAdd);
+					}
+					
+					Object[][] PostRt = M100PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch,PostPerfectMatch);
+					
+					for(int i=0;i<PostRt.length;i++) {
+						Object[] SetOb = new Object[6];
+						SetOb[0] = false;
+						SetOb[1] = ""+PostRt[i][0];	//郵便番号
+						SetOb[2] = ""+PostRt[i][1];	//県
+						SetOb[3] = ""+PostRt[i][2];	//市区町村
+						SetOb[4] = ""+PostRt[i][3];	//町丁目
+						SetOb[5] = ""+PostRt[i][4];	//市区町村CD
+						tableModel_ms01.addRow(SetOb);
+					}
+					if(0<PostRt.length) {
+						B100TableControl.AddSortON(tb01,tableModel_ms01);
+					}else {
+						B100TableControl.AddSortOFF(tb01,tableModel_ms01);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//修正ボタン押下時の挙動
+		RenewBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_ms01.getRowCount();
+					String TgtPost = "";
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+							TgtPost = ""+tableModel_ms01.getValueAt(i, 1);	if(null==TgtPost) {TgtPost="";}
+						}
+					}
+					if(!"".equals(TgtPost)) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM10011PostMstRenewAndCreate.PostMstRenewAndCreate(0,0,TgtPost);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//新規登録ボタン押下時の挙動
+		CreateBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WM10011PostMstRenewAndCreate.PostMstRenewAndCreate(0,0,"");
+					
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//一括登録ボタン押下時の挙動
+		CreateSumBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WM10012PostMstCreateSum.PostMstCreateSum(0,0);
+					
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//チェックボックス操作時の挙動
+		tableModel_ms01.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = tb01.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							tableModel_ms01.setValueAt(setBL, i, 0);
+						}else {
+	
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//CSVボタン押下時の挙動
+		CsvBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					B100TableControl.TableOutPutCsv("出力先選択","郵便番号検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		//エクセル出力ボタン押下時の挙動
+		ExcelBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					B100TableControl.TableOutPutExcel("出力先選択","郵便番号検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//エクセル取込ボタン
+		ExcelInBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B100FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WM10013PostMstExcelEntry.PostMstExcelEntry(0,0,Selected);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//EXITボタン押下時の挙動
+		exit_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				A00001MstMain.MstMain(0, 0);
+			}
+		});
+		
+		//JIS⇒届先ボタン
+		//JISコードベースで届先マスタに登録する
+		JisToDeliveryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					ArrayList<String> SearchName = new ArrayList<String>();
+					ArrayList<String> SearchMunicipalityCd = new ArrayList<String>();
+					boolean AllSearch = true;
+					Object[][] MunicipalityRt = M100PostMstRt.MunicipalityRt(SearchName,SearchMunicipalityCd,AllSearch);
+					
+					String[][] SetString = {
+									 {"DECD"			,"1","1"}	//納品先コード
+									,{"DepartmentCd"	,"1","1"}	//部署CD
+									,{"DEName01"		,"1","1"}	//納品先名1
+									,{"DEName02"		,"1","1"}	//納品先名2
+									,{"DEName03"		,"1","1"}	//納品先名3
+									,{"Post"			,"1","1"}	//納品先郵便
+									,{"Add01"			,"1","1"}	//納品先住所1
+									,{"Add02"			,"1","1"}	//納品先住所2
+									,{"Add03"			,"1","1"}	//納品先住所3
+									,{"Tel"				,"1","1"}	//納品先電話
+									,{"Fax"				,"1","1"}	//納品先FAX
+									,{"Mail"			,"1","1"}	//納品先MAIL
+									,{"Com01"			,"1","1"}	//コメント1
+									,{"Com02"			,"1","1"}	//コメント2
+									,{"Com03"			,"1","1"}	//コメント3
+									,{"PrefecturesCd"	,"1","1"}	//JIS県CD2桁
+									,{"MunicipalityCd"	,"1","1"}	//JIS市区町村CD5桁
+									,{"PTMSCD"			,"1","1"}	//基幹システム発着地コード
+									,{"EntryDate"		,"1","0"}	//データ登録日時
+									,{"UpdateDate"		,"1","1"}	//データ更新日時
+									,{"EntryUser"		,"1","0"}	//登録者コード
+									,{"UpdateUser"		,"1","1"}	//更新者コード
+									,{"FirstClient"		,"1","0"}	//登録した荷主CD
+									,{"LastClient"		,"1","1"}	//更新した荷主CD
+									,{"DelFg"			,"1","1"}	//削除区分
+									};
+					
+					
+					
+					String tgt_table = "KM0040_DELIVERYMST";
+					String[][] field_name = new String[SetString.length][3];
+					String[][] entry_data = new String[MunicipalityRt.length][SetString.length];
+					String[] judg_field = new String[2];
+					String[][] judg_data = new String[MunicipalityRt.length][2];
+					String TgtDB = "NYANKO";
+					int non_msg_fg = 0;
+					String now_dtm = B100DateTimeControl.dtmString2(B100DateTimeControl.dtm()[1])[1];
+					
+					judg_field[0] = "DECD";
+					judg_field[1] = "DepartmentCd";
+					
+					for(int i=0;i<SetString.length;i++) {
+						field_name[i][0] = SetString[i][0];
+						field_name[i][1] = SetString[i][1];
+						field_name[i][2] = SetString[i][2];
+					}
+					
+					if(0<MunicipalityRt.length) {
+						for(int i=0;i<MunicipalityRt.length;i++) {
+							judg_data[i][0] = "JIS"+MunicipalityRt[i][2];
+							judg_data[i][1] = "JIS";
+							
+							entry_data[i][ 0] = "JIS"+MunicipalityRt[i][2];	//納品先コード
+							entry_data[i][ 1] = "JIS";	//部署CD
+							entry_data[i][ 2] = "" + MunicipalityRt[i][0] + MunicipalityRt[i][1];	//納品先名1
+							entry_data[i][ 3] = "";	//納品先名2
+							entry_data[i][ 4] = "";	//納品先名3
+							entry_data[i][ 5] = "";	//納品先郵便
+							entry_data[i][ 6] = "";	//納品先住所1
+							entry_data[i][ 7] = "";	//納品先住所2
+							entry_data[i][ 8] = "";	//納品先住所3
+							entry_data[i][ 9] = "";	//納品先電話
+							entry_data[i][10] = "";	//納品先FAX
+							entry_data[i][11] = "";	//納品先MAIL
+							entry_data[i][12] = "";	//コメント1
+							entry_data[i][13] = "";	//コメント2
+							entry_data[i][14] = "";	//コメント3
+							if(2<(""+MunicipalityRt[i][2]).length()) {
+								entry_data[i][15] = (""+MunicipalityRt[i][2]).substring(0,2);	//JIS県CD2桁
+							}else {
+								entry_data[i][15] = "";
+							}
+							entry_data[i][16] = ""+MunicipalityRt[i][2];	//JIS市区町村CD5桁
+							entry_data[i][17] = ""+MunicipalityRt[i][2];	//基幹システム発着地コード
+							entry_data[i][18] = now_dtm;	//データ登録日時
+							entry_data[i][19] = now_dtm;	//データ更新日時
+							entry_data[i][20] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//登録者コード
+							entry_data[i][21] = "(" + A00000Main.LoginUserId + ")" + A00000Main.LoginUserName;	//更新者コード
+							entry_data[i][22] = "" + A00000Main.ClCd;	//登録した荷主CD
+							entry_data[i][23] = "" + A00000Main.ClCd;	//更新した荷主CD
+							entry_data[i][24] = "0";	//削除区分
+							
+
+						}
+						A100InsertUdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+	}
+}

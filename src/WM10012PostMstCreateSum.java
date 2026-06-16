@@ -145,7 +145,7 @@ public class WM10012PostMstCreateSum{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM10010PostMstSearch.PostMstSearch(0, 0);
+				WM100PostMstSearch.PostMstSearch(0, 0);
 			}
 		});
 	}

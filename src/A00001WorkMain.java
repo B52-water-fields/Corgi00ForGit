@@ -75,7 +75,7 @@ public class A00001WorkMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WT0001000ArrivalPlanSearch.ArrivalPlanSearch(0,0);
+				WT100ArrivalPlanSearch.ArrivalPlanSearch(0,0);
 			}
 		});
 		
@@ -87,7 +87,7 @@ public class A00001WorkMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WT0001010StockSearch.StockSearch(0,0);
+				WT100StockSearch.StockSearch(0,0);
 			}
 		});
 

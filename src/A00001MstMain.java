@@ -128,7 +128,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00080ItemMstSearch.ItemMstSearch(0,0);
+				WM100ItemMstSearch.ItemMstSearch(0,0);
 			}
 		});
 		
@@ -140,7 +140,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00085ItemComversionMstSearch.ItemComversionMstSearch(0,0);
+				WM100ItemComversionMstSearch.ItemComversionMstSearch(0,0);
 			}
 		});
 		
@@ -152,7 +152,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00090LocationMstSearch.LocationMstSearch(0,0);
+				WM100LocationMstSearch.LocationMstSearch(0,0);
 			}
 		});
 		
@@ -164,7 +164,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00065DeliveryComversionMstSerarch.DeliveryComversionMstSerarch(0, 0);
+				WM100DeliveryComversionMstSerarch.DeliveryComversionMstSerarch(0, 0);
 			}
 		});
 		
@@ -176,7 +176,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00100SupplierMstSearch.SupplierMstSearch(0,0);
+				WM100SupplierMstSearch.SupplierMstSearch(0,0);
 			}
 		});
 		
@@ -188,7 +188,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00105AdjustReasonMstSearch.AdjustReasonMstSearch(0,0);
+				WM100AdjustReasonMstSearch.AdjustReasonMstSearch(0,0);
 			}
 		});
 		
@@ -200,7 +200,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00120ItemRecomendLocMstSearch.ItemRecomendLocMstSearch(0,0);
+				WM100ItemRecomendLocMstSearch.ItemRecomendLocMstSearch(0,0);
 			}
 		});
 		
@@ -213,7 +213,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00005ParameterMstWankoSeach.ParameterMstWankoSeach(0,0);
+				WM100ParameterMstWankoSeach.ParameterMstWankoSeach(0,0);
 			}
 		});
 		
@@ -225,7 +225,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00010WhMstSearch.WhMstSearch(0, 0);
+				WM100WhMstSearch.WhMstSearch(0, 0);
 			}
 		});
 		
@@ -237,7 +237,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00040ShippingCompanyMstSearch.ShippingCompanyMstSearch(0, 0);
+				WM100ShippingCompanyMstSearch.ShippingCompanyMstSearch(0, 0);
 			}
 		});
 		
@@ -249,7 +249,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00060DeliveryMstSearch.DeliveryMstSearch(0, 0);
+				WM100DeliveryMstSearch.DeliveryMstSearch(0, 0);
 			}
 		});
 		
@@ -261,7 +261,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00070CautionMstSearch.CautionMstSearch(0, 0);
+				WM100CautionMstSearch.CautionMstSearch(0, 0);
 			}
 		});
 		
@@ -273,7 +273,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00030UserMstSearch.UserMstSearch(0, 0);
+				WM100UserMstSearch.UserMstSearch(0, 0);
 			}
 		});
 		
@@ -285,7 +285,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00035CarMstSearch.CarMstSearch(0,0);
+				WM100CarMstSearch.CarMstSearch(0,0);
 			}
 		});
 		
@@ -297,7 +297,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00020ClGlpMstSearch.ClGlpMstSearch(0,0);
+				WM100ClGlpMstSearch.ClGlpMstSearch(0,0);
 			}
 		});
 		//荷主
@@ -308,7 +308,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00025ClMstSearch.ClMstSearch(0,0) ;
+				WM100ClMstSearch.ClMstSearch(0,0) ;
 			}
 		});
 		
@@ -320,7 +320,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00050DeliveryTypeMstSearch.DeliveryTypeMstSearch(0,0) ;
+				WM100DeliveryTypeMstSearch.DeliveryTypeMstSearch(0,0) ;
 			}
 		});
 		
@@ -332,7 +332,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM00000ParameterMstNyankoSeach.ParameterMstNyankoSeach(0, 0);
+				WM100ParameterMstNyankoSeach.ParameterMstNyankoSeach(0, 0);
 			}
 		});
 		
@@ -344,7 +344,7 @@ public class A00001MstMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
-				WM10010PostMstSearch.PostMstSearch(0, 0);
+				WM100PostMstSearch.PostMstSearch(0, 0);
 			}
 		});
 
