@@ -1,0 +1,152 @@
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
+public class B100_TableControl{
+	//明細業表示テーブル制御
+	//RenewTgt列のみ編集可
+	static int[] RenewTgt;
+	static class MyTableModel01 extends DefaultTableModel{
+		MyTableModel01(String[] columnNames, int rowNum){
+			super(columnNames, rowNum);
+		}
+		//項目のクラス取得する
+		public Class getColumnClass(int col){
+			Object ob = getValueAt(0,col);
+			return ob.getClass();
+		}
+		//RenewTgt以外編集不可
+		public boolean isCellEditable(int row, int column) {
+			Object flag = this.getValueAt(0, column);
+			boolean Renew = false;
+			if(null==RenewTgt) {RenewTgt = new int[0];}
+			for(int i=0;i<RenewTgt.length;i++) {
+				if(RenewTgt[i]==column) {
+					Renew = true;
+				}
+			}
+			
+			if(Renew){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
+
+	//テーブルソートON
+	public static void AddSortON(JTable TgtTable,TableModel TgtTableModel) {
+		TgtTable.setRowSorter(new TableRowSorter(TgtTableModel));
+	}
+	//テーブルソートOFF
+	public static void AddSortOFF(JTable TgtTable,TableModel TgtTableModel) {
+		TgtTable.setRowSorter(null);
+	}
+	
+	//テーブルのフィールド名を配列要素として返却する
+	public static String[] TableFieldNameRt(JTable TgtTable) {
+		int col_count = TgtTable.getColumnCount();
+		String[] rt = new String[col_count];
+		for(int i=0;i<col_count;i++) {
+			//項目名取得
+			rt[i] = TgtTable.getColumnName(i)+"";
+		}
+		return rt;
+	}
+	//テーブル情報をcsv出力する
+	public static void TableOutPutCsv(String SelectMSG,String OutPutName,JTable TgtTable) {
+		String Selected = B100_FolderSelect.FolderSelect(SelectMSG);
+		if(null!=Selected) {
+			int row_count = TgtTable.getRowCount();
+			int col_count = TgtTable.getColumnCount();
+			String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+			String FileName = OutPutName+NowDTM+".csv";
+			ArrayList<String> OutString = new ArrayList<String>();
+			
+			String SetSt = "";
+			for(int i=0;i<col_count;i++) {
+				//項目名取得
+				SetSt=SetSt+TgtTable.getColumnName(i)+",";
+			}
+			OutString.add(SetSt);
+			for(int i=0;i<row_count;i++){
+				SetSt = "";
+				for(int i01=0;i01<col_count;i01++) {
+					//項目値取得カンマ除去 改行コード除去
+					String WST = ""+TgtTable.getValueAt(i,i01);
+					SetSt=SetSt+WST.replace(",", "").replace("\n", "").replace("\"", "")+",";
+				}
+				OutString.add(SetSt);
+			}
+			String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+			now_dtm=now_dtm.replace("/", "").replace(":", "").replace(" ", "");
+			FileName = now_dtm + FileName;
+
+			//ファイルに出力
+			String FP = Selected+"\\"+FileName;
+			B100_TextExport.txt_exp2(OutString,FP,"UTF-8");
+
+			//ファイル開く
+			File file = new File(FP);
+			Desktop desktop = Desktop.getDesktop();
+			try {
+				desktop.open(file);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	//テーブル情報をExcel出力する
+	public static void TableOutPutExcel(String SelectMSG,String OutPutName,JTable TgtTable) {
+		String Selected = B100_FolderSelect.FolderSelect(SelectMSG);
+		if(null!=Selected) {
+			int row_count = TgtTable.getRowCount();
+			int col_count = TgtTable.getColumnCount();
+			
+			String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+			String FileName = NowDTM+OutPutName+".xlsx";
+			String Sheet_name = OutPutName;
+			
+			String FP = Selected+"\\"+FileName;
+			
+			String[][] OutString = new String[row_count+1][col_count];
+			
+			for(int i=0;i<col_count;i++) {
+				//項目名取得
+				OutString[0][i]=TgtTable.getColumnName(i)+"";
+			}
+			for(int i=0;i<row_count;i++){
+				
+				for(int i01=0;i01<col_count;i01++) {
+					//項目値取得カンマ除去 改行コード除去
+					String WST = ""+TgtTable.getValueAt(i,i01);
+					OutString[i+1][i01]=WST.replace(",", "").replace("\n", "")+"";
+				}
+			}
+			String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+			now_dtm=now_dtm.replace("/", "").replace(":", "").replace(" ", "");
+			FileName = now_dtm + FileName;
+
+			//ファイルに出力
+			int MFG = 0;
+			int OPFG = 1;
+			B100_ExcellControl.EXCELL_DATA_SET(FP,Sheet_name,OutString ,MFG,OPFG);
+			
+			//ファイル開く
+			File file = new File(FP);
+			Desktop desktop = Desktop.getDesktop();
+			try {
+				desktop.open(file);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+}

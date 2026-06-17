@@ -1,0 +1,363 @@
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class A00001_MstMain{
+	static int SetX;
+	static int SetY;
+	public static void MstMain(int x,int y) {
+		A00000_Main.LoginCheck();
+		if(0==SetX) {SetX=100;}
+		if(0==SetY) {SetY=100;}
+		if(x==0) {x=SetX;}
+		if(y==0) {y=SetY;}
+
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,780,750,"Corgi00マスタメニュー","");
+		
+		JLabel userinfo = B100_FrameParts.UserInfo();
+		JButton exit_btn = B100_FrameParts.ExitBtn();
+		
+		//荷主設定パネル
+		JPanel PN_AboutClient 	= B100_FrameParts.JPanelSet(		 10, 40,740,235,"White");
+		JLabel LB_AboutClient 	= B100_FrameParts.JLabelSet(		 10,  0,150,20,"荷主毎設定",11,0);
+		PN_AboutClient.add(LB_AboutClient);
+		
+		//配車設定パネル
+		JPanel PN_AboutHaisya 	= B100_FrameParts.JPanelSet(		 10,280,740,175,"White");
+		JLabel LB_AboutHaisya 	= B100_FrameParts.JLabelSet(		 10,  0,150,20,"配車設定",11,0);
+		PN_AboutHaisya.add(LB_AboutHaisya);
+		
+		//全体設定パネル
+		JPanel PN_AboutALL 		= B100_FrameParts.JPanelSet(		 10,460,740,200,"White");
+		JLabel LB_AboutALL 		= B100_FrameParts.JLabelSet(		 10,  0,150,20,"全体設定",11,0);
+		PN_AboutALL.add(LB_AboutALL);
+		
+		//届先変換
+		JButton DeliveryComversionMst = B100_FrameParts.BtnSet(	 20, 25,130,20,"届先変換",11);
+		PN_AboutClient.add(DeliveryComversionMst);
+		
+		//商品マスタ
+		JButton ItemMst = B100_FrameParts.BtnSet(					 20, 50,130,20,"商品マスタ",11);
+		PN_AboutClient.add(ItemMst);
+		
+		//商品変換マスタ
+		JButton ItemComversionMst = B100_FrameParts.BtnSet(		160, 50,130,20,"商品変換マスタ",11);
+		PN_AboutClient.add(ItemComversionMst);
+		
+		//ロケーションマスタ
+		JButton LocationMst = B100_FrameParts.BtnSet(				 20, 75,130,20,"ロケーション",11);
+		PN_AboutClient.add(LocationMst);
+		
+		//仕入先
+		JButton SupplierMst = B100_FrameParts.BtnSet(				 20,100,130,20,"仕入先",11);
+		PN_AboutClient.add(SupplierMst);
+		
+		//在庫調整理由
+		JButton AdjustReasonMst = B100_FrameParts.BtnSet(			 20,125,130,20,"在庫調整理由",11);
+		PN_AboutClient.add(AdjustReasonMst);
+		
+		//推奨ロケ
+		JButton ItemRecomendLocMst = B100_FrameParts.BtnSet(		160,125,130,20,"推奨ロケ",11);
+		PN_AboutClient.add(ItemRecomendLocMst);
+		
+		//荷主パラメータ
+		JButton WankoParameterMst 	= B100_FrameParts.BtnSet(		580,200,130,20,"荷主パラメータ",11);
+		PN_AboutClient.add(WankoParameterMst);
+		
+
+		//倉庫・事業所
+		JButton WhMst 				= B100_FrameParts.BtnSet(		 20, 25,130,20,"倉庫・事業所",11);
+		PN_AboutALL.add(WhMst);
+		
+		//運送会社
+		JButton ShippingCompanyMst 	= B100_FrameParts.BtnSet(		160, 25,130,20,"運送会社",11);
+		PN_AboutALL.add(ShippingCompanyMst);
+		
+		//届先
+		JButton DeliveryMst 		= B100_FrameParts.BtnSet(		440, 25,130,20,"届先",11);
+		PN_AboutALL.add(DeliveryMst);
+		
+		//届先注意事項
+		JButton CautionMst 			= B100_FrameParts.BtnSet(		580, 25,130,20,"届先注意事項",11);
+		PN_AboutALL.add(CautionMst);
+		
+		//ユーザー
+		JButton UserMst 			= B100_FrameParts.BtnSet(		 20, 50,130,20,"ユーザー・乗務員",11);
+		PN_AboutALL.add(UserMst);
+		
+		//車輛
+		JButton CarMst 				= B100_FrameParts.BtnSet(		160, 50,130,20,"車輛",11);
+		PN_AboutALL.add(CarMst);
+		
+		//荷主グループ
+		JButton ClGpMst 			= B100_FrameParts.BtnSet(		 20, 75,130,20,"荷主グループ",11);
+		PN_AboutALL.add(ClGpMst);
+		
+		//荷主
+		JButton ClMst 				= B100_FrameParts.BtnSet(		160, 75,130,20,"荷主",11);
+		PN_AboutALL.add(ClMst);
+		
+		//運送タイプ
+		JButton DeliveryTypeMst 	= B100_FrameParts.BtnSet(		 20,100,130,20,"運送タイプ",11);
+		PN_AboutALL.add(DeliveryTypeMst);
+		
+		//共通パラメータ
+		JButton NyankoParameterMst 	= B100_FrameParts.BtnSet(		580,150,130,20,"共通パラメータ",11);
+		PN_AboutALL.add(NyankoParameterMst);
+		
+		//郵便番号
+		JButton PostMst 			= B100_FrameParts.BtnSet(		580,175,130,20,"郵便番号",11);
+		PN_AboutALL.add(PostMst);
+
+		main_fm.add(PN_AboutClient);
+		main_fm.add(PN_AboutHaisya);
+		main_fm.add(PN_AboutALL);
+		main_fm.add(userinfo);
+		main_fm.add(exit_btn);
+		main_fm.setVisible(true);
+		
+		//商品マスタ
+		ItemMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_ItemMst_00_Search.ItemMstSearch(0,0);
+			}
+		});
+		
+		//商品変換マスタ
+		ItemComversionMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_ItemComversionMst_00_Search.ItemComversionMstSearch(0,0);
+			}
+		});
+		
+		//ロケーションマスタ
+		LocationMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_LocationMst_00_Search.LocationMstSearch(0,0);
+			}
+		});
+		
+		//届先変換
+		DeliveryComversionMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_DeliveryComversionMst_00_Serarch.DeliveryComversionMstSerarch(0, 0);
+			}
+		});
+		
+		//仕入先
+		SupplierMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_SupplierMst_00_Search.SupplierMstSearch(0,0);
+			}
+		});
+		
+		//在庫調整理由
+		AdjustReasonMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_AdjustReasonMst_00_Search.AdjustReasonMstSearch(0,0);
+			}
+		});
+		
+		//推奨ロケ
+		ItemRecomendLocMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_ItemRecomendLocMst_00_Search.ItemRecomendLocMstSearch(0,0);
+			}
+		});
+		
+		
+		//荷主パラメータ
+		WankoParameterMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_ParameterMstWanko_00_Seach.ParameterMstWankoSeach(0,0);
+			}
+		});
+		
+		//倉庫・事業所
+		WhMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_WhMst_00_Search.WhMstSearch(0, 0);
+			}
+		});
+		
+		//運送会社
+		ShippingCompanyMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_ShippingCompanyMst_00_Search.ShippingCompanyMstSearch(0, 0);
+			}
+		});
+		
+		//届先
+		DeliveryMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_DeliveryMst_00_Search.DeliveryMstSearch(0, 0);
+			}
+		});
+		
+		//届先注意事項
+		CautionMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_CautionMst_00_Search.CautionMstSearch(0, 0);
+			}
+		});
+		
+		//ユーザー
+		UserMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_UserMst_00_Search.UserMstSearch(0, 0);
+			}
+		});
+		
+		//車輛
+		CarMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_CarMst_00_Search.CarMstSearch(0,0);
+			}
+		});
+		
+		//荷主グループ
+		ClGpMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_ClGlpMst_00_Search.ClGlpMstSearch(0,0);
+			}
+		});
+		//荷主
+		ClMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_ClMst_00_Search.ClMstSearch(0,0) ;
+			}
+		});
+		
+		//運送タイプ
+		DeliveryTypeMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_DeliveryTypeMst_00_Search.DeliveryTypeMstSearch(0,0) ;
+			}
+		});
+		
+		//共通パラメータ
+		NyankoParameterMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_ParameterMstNyanko_00_Seach.ParameterMstNyankoSeach(0, 0);
+			}
+		});
+		
+		//郵便番号
+		PostMst.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WM100_PostMst_00_Search.PostMstSearch(0, 0);
+			}
+		});
+
+		//EXITボタン押下時の挙動
+		exit_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				A00001_MainMenu.MainMenu(0, 0);
+			}
+		});
+	}
+}
