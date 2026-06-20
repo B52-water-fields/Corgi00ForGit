@@ -4,6 +4,36 @@ import java.text.Normalizer;
 public class B100_TextControl{
 	//文字列操作をするクラス
 	
+	
+	public static int TextToInt(String Tgt) {
+		//受け取った文字列をintとして返却
+		if(null==Tgt) {Tgt	= "";}
+		Tgt	= B100_TextControl.Trim(Tgt);
+		Tgt	= B100_TextControl.num_only_String02(Tgt);
+		if("".equals(Tgt)) {Tgt	= "0";}
+		int rt	= Integer.parseInt(Tgt);
+		return rt;
+	}
+	
+	public static float TextToFloat(String Tgt) {
+		//受け取った文字列をfloatとして返却
+		if(null==Tgt) {Tgt	= "";}
+		Tgt	= B100_TextControl.Trim(Tgt);
+		Tgt	= B100_TextControl.num_only_String02(Tgt);
+		if("".equals(Tgt)) {Tgt	= "0";}
+		float rt	= Float.parseFloat(Tgt);
+		return rt;
+	}
+	
+	public static String TextToDate(String Tgt) {
+		//受け取った文字列を日付にして返却
+		if(null==Tgt) {Tgt	= "";}
+		Tgt	= B100_TextControl.Trim(Tgt);
+		Tgt	= B100_DateTimeControl.DateFormat(Tgt);
+		return Tgt;
+	}
+	
+	
 
 	//指定のバイト数でテキストをカットすると共にSQL禁則文字対策を施す
 	public static String byte_check(String check_st,int cut_byte){

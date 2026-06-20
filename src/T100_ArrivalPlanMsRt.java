@@ -201,8 +201,8 @@ public class T100_ArrivalPlanMsRt{
 				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ名1"}
 				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"}
 				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"}
-				,{"PlanDate"		,ColPlanDate		,"String"	,"ヘッダ入荷予定日"}
-				,{"HdActualDate"	,ColHdActualDate	,"String"	,"ヘッダ入荷実績日"}
+				,{"PlanDate"		,ColPlanDate		,"DateTime"	,"ヘッダ入荷予定日"}
+				,{"HdActualDate"	,ColHdActualDate	,"DateTime"	,"ヘッダ入荷実績日"}
 				,{"SpCd"			,ColSpCd			,"String"	,"ヘッダ仕入先CD"}
 				,{"SpName01"		,ColSpName01		,"String"	,"ヘッダ仕入先名01"}
 				,{"SpName02"		,ColSpName02		,"String"	,"ヘッダ仕入先名02"}
@@ -215,8 +215,8 @@ public class T100_ArrivalPlanMsRt{
 				,{"ArCom01"			,ColArCom01		,"String"	,"ヘッダコメント1"}
 				,{"ArCom02"			,ColArCom02		,"String"	,"ヘッダコメント2"}
 				,{"ArCom03"			,ColArCom03		,"String"	,"ヘッダコメント3"}
-				,{"HdEntryDate"		,ColHdEntryDate	,"String"	,"ヘッダ登録日"}
-				,{"HdUpdateDate"	,ColHdUpdateDate	,"String"	,"ヘッダ更新日"}
+				,{"HdEntryDate"		,ColHdEntryDate	,"DateTime"	,"ヘッダ登録日"}
+				,{"HdUpdateDate"	,ColHdUpdateDate	,"DateTime"	,"ヘッダ更新日"}
 				,{"HdEntryUser"		,ColHdEntryUser	,"String"	,"ヘッダ登録者"}
 				,{"HdUpdateUser"	,ColHdUpdateUser	,"String"	,"ヘッダ更新者"}
 				,{"FixFg"			,ColFixFg			,"int"		,"ヘッダ状況"}
@@ -228,14 +228,14 @@ public class T100_ArrivalPlanMsRt{
 				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"}
 				,{"ItemName"		,ColItemName		,"String"	,"商品名"}
 				,{"lot"				,Collot			,"String"	,"ロット"}
-				,{"ExpDate"			,ColExpDate		,"String"	,"消費期限"}
+				,{"ExpDate"			,ColExpDate		,"Date"		,"消費期限"}
 				,{"PlanQty"			,ColPlanQty		,"int"		,"予定数量"}
 				,{"ActualQty"		,ColActualQty		,"int"		,"実績数"}
 				,{"ActualDate"		,ColActualDate	,"String"	,"入荷日"}
 				,{"Com01"			,ColCom01			,"String"	,"コメント1"}
 				,{"Com02"			,ColCom02			,"String"	,"コメント2"}
-				,{"EntryDate"		,ColEntryDate		,"String"	,"登録日"}
-				,{"UpdateDate"		,ColUpdateDate	,"String"	,"更新日"}
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日"}
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日"}
 				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"}
 				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"}
 				};

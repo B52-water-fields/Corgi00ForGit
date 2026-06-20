@@ -61,6 +61,12 @@ public class B100_FrameParts{
 			case "Lavender":	
 				BackGroundColor = Color.decode("#e6e6fa");
 				break;
+			case "Entry":	
+				BackGroundColor = Color.decode("#FFE6CE");
+				break;
+			case "NoEntry":	
+				BackGroundColor = Color.decode("#D3D3D3");
+				break;
 			default:
 				break;
 		}

@@ -29,7 +29,7 @@ public class WM100_LocationMst_00_Search{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00届先注意事項マスタ検索","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00ロケーションマスタ検索","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		
@@ -99,7 +99,7 @@ public class WM100_LocationMst_00_Search{
 		
 		columnNames01[0] = "Fg";
 		for(int i=0;i<RtSettingLocationMstRt.length;i++) {
-			columnNames01[1+i] = ""+RtSettingLocationMstRt[i][3];
+			columnNames01[1+(int)RtSettingLocationMstRt[i][1]] = ""+RtSettingLocationMstRt[i][3];
 		}
 		
 		//編集可能カラムの指定
@@ -123,9 +123,9 @@ public class WM100_LocationMst_00_Search{
 		
 		for(int i=0;i<RtSettingLocationMstRt.length;i++) {
 			if("int".equals((String)RtSettingLocationMstRt[i][2])||"float".equals((String)RtSettingLocationMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtSettingLocationMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtSettingLocationMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
 			}
 		}
 		

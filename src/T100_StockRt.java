@@ -108,24 +108,23 @@ public class T100_StockRt{
 	int GetPlPossibleQty	= (int)StockRt[i][T100_StockRt.ColPlPossibleQty];		//出荷可能パレット数
 	
 	*/
-	
-	static final int ColClCd			= (int)0;		//荷主コード
-	static final int ColCLName			= (int)1;		//荷主名1
-	static final int ColWhCd			= (int)2;		//倉庫コード
-	static final int ColClWHName		= (int)3;		//担当倉庫名
-	static final int ColClGpCD			= (int)4;		//荷主グループCD
-	static final int ColClGpName		= (int)5;		//グループ名1
-	static final int ColLoc			= (int)6;		//ロケーション
-	static final int ColLocName		= (int)7;		//ロケーション名
-	static final int ColType			= (int)8;		//ロケタイプ
-	static final int ColItemCd			= (int)9;		//商品コード
-	static final int ColLot			= (int)10;		//ロット
-	static final int ColExpdate		= (int)11;		//消費期限
-	static final int ColActualDate	= (int)12;		//入荷実績日
-	static final int ColQty			= (int)13;		//数量
-	static final int ColShipPlanQty	= (int)14;		//引当済数
-	static final int ColPossibleQty	= (int)15;		//出荷可能数
-	static final int ColItemName		= (int)16;		//商品名
+	static final int ColLocName		= (int)0;		//ロケーション名
+	static final int ColItemCd			= (int)1;		//商品コード
+	static final int ColItemName		= (int)2;		//商品名
+	static final int ColLot			= (int)3;		//ロット
+	static final int ColExpdate		= (int)4;		//消費期限
+	static final int ColActualDate	= (int)5;		//入荷実績日
+	static final int ColQty			= (int)6;		//数量
+	static final int ColShipPlanQty	= (int)7;		//引当済数
+	static final int ColPossibleQty	= (int)8;		//出荷可能数
+	static final int ColClCd			= (int)9;		//荷主コード
+	static final int ColCLName			= (int)10;		//荷主名1
+	static final int ColWhCd			= (int)11;		//倉庫コード
+	static final int ColClWHName		= (int)12;		//担当倉庫名
+	static final int ColClGpCD			= (int)13;		//荷主グループCD
+	static final int ColClGpName		= (int)14;		//グループ名1
+	static final int ColLoc			= (int)15;		//ロケーション
+	static final int ColType			= (int)16;		//ロケタイプ
 	static final int ColItemName01	= (int)17;		//商品名1
 	static final int ColItemName02	= (int)18;		//商品名2
 	static final int ColItemName03	= (int)19;		//商品名3
@@ -169,8 +168,8 @@ public class T100_StockRt{
 				,{"Type"			,ColType			,"int"		,"ロケタイプ"					,""}
 				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"					,"key"}
 				,{"Lot"				,ColLot			,"String"	,"ロット"						,"key"}
-				,{"Expdate"			,ColExpdate		,"DateTime"	,"消費期限"						,"key"}
-				,{"ActualDate"		,ColActualDate	,"DateTime"	,"入荷実績日"					,"key"}
+				,{"Expdate"			,ColExpdate		,"Date"		,"消費期限"						,"key"}
+				,{"ActualDate"		,ColActualDate	,"Date"		,"入荷実績日"					,"key"}
 				,{"Qty"				,ColQty			,"int"		,"総数量"						,""}
 				,{"ShipPlanQty"		,ColShipPlanQty	,"int"		,"引当済総数"					,""}
 				,{"PossibleQty"		,ColPossibleQty	,"int"		,"出荷可能総数"					,""}

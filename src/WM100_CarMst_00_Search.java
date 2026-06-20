@@ -89,7 +89,7 @@ public class WM100_CarMst_00_Search{
 		
 		columnNames01[0] = "Fg";
 		for(int i=0;i<RtSettingCarMstRt.length;i++) {
-			columnNames01[1+i] = ""+RtSettingCarMstRt[i][3];
+			columnNames01[1+(int)RtSettingCarMstRt[i][1]] = ""+RtSettingCarMstRt[i][3];
 		}
 		
 		//編集可能カラムの指定
@@ -112,9 +112,9 @@ public class WM100_CarMst_00_Search{
 		
 		for(int i=0;i<RtSettingCarMstRt.length;i++) {
 			if("int".equals((String)RtSettingCarMstRt[i][2])||"float".equals((String)RtSettingCarMstRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtSettingCarMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtSettingCarMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
 			}
 		}
 		

@@ -166,8 +166,8 @@ public class T100_ArrivalPlanHdRt{
 				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ名1"}
 				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"}
 				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"}
-				,{"PlanDate"		,ColPlanDate		,"String"	,"ヘッダ入荷予定日"}
-				,{"HdActualDate"	,ColActualDate	,"String"	,"ヘッダ入荷実績日"}
+				,{"PlanDate"		,ColPlanDate		,"DateTime"	,"ヘッダ入荷予定日"}
+				,{"HdActualDate"	,ColActualDate	,"DateTime"	,"ヘッダ入荷実績日"}
 				,{"SpCd"			,ColSpCd			,"String"	,"ヘッダ仕入先CD"}
 				,{"SpName01"		,ColSpName01		,"String"	,"ヘッダ仕入先名01"}
 				,{"SpName02"		,ColSpName02		,"String"	,"ヘッダ仕入先名02"}
@@ -180,8 +180,8 @@ public class T100_ArrivalPlanHdRt{
 				,{"ArCom01"			,ColArCom01		,"String"	,"ヘッダコメント1"}
 				,{"ArCom02"			,ColArCom02		,"String"	,"ヘッダコメント2"}
 				,{"ArCom03"			,ColArCom03		,"String"	,"ヘッダコメント3"}
-				,{"HdEntryDate"		,ColEntryDate		,"String"	,"ヘッダ登録日"}
-				,{"HdUpdateDate"	,ColUpdateDate	,"String"	,"ヘッダ更新日"}
+				,{"HdEntryDate"		,ColEntryDate		,"DateTime"	,"ヘッダ登録日"}
+				,{"HdUpdateDate"	,ColUpdateDate	,"DateTime"	,"ヘッダ更新日"}
 				,{"HdEntryUser"		,ColEntryUser		,"String"	,"ヘッダ登録者"}
 				,{"HdUpdateUser"	,ColUpdateUser	,"String"	,"ヘッダ更新者"}
 				,{"FixFg"			,ColFixFg			,"int"		,"ヘッダ状況"}

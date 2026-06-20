@@ -49,21 +49,21 @@ public class WT100_Stock_00_Search{
 		//検索条件
 		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(  0, 25,100,20,"荷主コード:"		,11,1);
 		JLabel LB_SearchWhCd		= B100_FrameParts.JLabelSet(  0, 50,100,20,"倉庫コード:"		,11,1);
-		JLabel LB_SearchClGpCD		= B100_FrameParts.JLabelSet(  0, 75,100,20,"荷主グループ:"	,11,1);
+		JLabel LB_SearchClGpCD		= B100_FrameParts.JLabelSet(  0, 75,100,20,"荷主グループ:"		,11,1);
 		
 		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(300, 25,100,20,"商品コード:"		,11,1);
 		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(300, 50,100,20,"商品名:"			,11,1);
 		JLabel LB_SearchClItemCd	= B100_FrameParts.JLabelSet(300, 75,100,20,"荷主商品コード:"	,11,1);
 		JLabel LB_SearchJanCd		= B100_FrameParts.JLabelSet(300,100,100,20,"BCD（バラ）:"		,11,1);
-		JLabel LB_SearchItemMdNo	= B100_FrameParts.JLabelSet(300,125,100,20,"商品型番:"		,11,1);
+		JLabel LB_SearchItemMdNo	= B100_FrameParts.JLabelSet(300,125,100,20,"商品型番:"			,11,1);
 		JLabel LB_SearchLot			= B100_FrameParts.JLabelSet(300,150,100,20,"ロット:"			,11,1);
-		JLabel LB_SearchExpdate		= B100_FrameParts.JLabelSet(300,175,100,20,"消費期限:"		,11,1);
+		JLabel LB_SearchExpdate		= B100_FrameParts.JLabelSet(300,175,100,20,"消費期限:"			,11,1);
 		JLabel LB_SearchActualDate	= B100_FrameParts.JLabelSet(300,200,100,20,"入荷実績日:"		,11,1);
 		
-		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(580, 25,100,20,"ロケーション:"	,11,1);
+		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(580, 25,100,20,"ロケーション:"		,11,1);
 		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(580, 50,100,20,"ロケタイプ:"		,11,1);
-		JLabel LB_SearchQty			= B100_FrameParts.JLabelSet(580, 75,100,20,"数量:"			,11,1);
-		JLabel LB_SearchShipPlanQty	= B100_FrameParts.JLabelSet(580,100,100,20,"引当済数:"		,11,1);
+		JLabel LB_SearchQty			= B100_FrameParts.JLabelSet(580, 75,100,20,"数量:"				,11,1);
+		JLabel LB_SearchShipPlanQty	= B100_FrameParts.JLabelSet(580,100,100,20,"引当済数:"			,11,1);
 		JLabel LB_SearchPossibleQty	= B100_FrameParts.JLabelSet(580,125,100,20,"出荷可能数:"		,11,1);
 		
 		JLabel LB_SortItemcdMode	= B100_FrameParts.JLabelSet(660,175,100,20,"並び順:"			,11,1);
@@ -74,10 +74,10 @@ public class WT100_Stock_00_Search{
 		
 		final JTextField TB_SearchItemCd	= B100_FrameParts.JTextFieldSet(	400, 25,100,20,""	,11,0);						//商品コード
 		final JTextField TB_SearchItemName	= B100_FrameParts.JTextFieldSet(	400, 50,100,20,""	,11,0);						//商品名
-		final JTextField TB_SearchClItemCd	= B100_FrameParts.JTextFieldSet(	400, 75,100,20,""	,11,0);					//荷主商品コード
+		final JTextField TB_SearchClItemCd	= B100_FrameParts.JTextFieldSet(	400, 75,100,20,""	,11,0);						//荷主商品コード
 		final JTextField TB_SearchJanCd		= B100_FrameParts.JTextFieldSet(	400,100,100,20,""	,11,0);						//BCD（バラ）
 		final JTextField TB_SearchItemMdNo	= B100_FrameParts.JTextFieldSet(	400,125,100,20,""	,11,0);						//商品型番
-		final JTextField TB_SearchLot						= B100_FrameParts.JTextFieldSet(				400,150,100,20,""	,11,0);						//ロット
+		final JTextField TB_SearchLot						= B100_FrameParts.JTextFieldSet(				400,150,100,20,""	,11,0);			//ロット
 		final JFormattedTextField TB_SearchExpdateMin		= B100_FrameParts.JFormattedTextFieldSet(	400,175, 70,20,""	,11,0,"");		//消費期限開始
 		final JFormattedTextField TB_SearchExpdateMax		= B100_FrameParts.JFormattedTextFieldSet(	550,175, 70,20,""	,11,0,"");		//消費期限終了
 		final JFormattedTextField TB_SearchActualDateMin	= B100_FrameParts.JFormattedTextFieldSet(	400,200, 70,20,""	,11,0,"");		//入荷実績日開始
@@ -314,7 +314,7 @@ public class WT100_Stock_00_Search{
 		
 		columnNames01[0] = "Fg";
 		for(int i=0;i<RtStockRt.length;i++) {
-			columnNames01[1+i] = ""+RtStockRt[i][3];
+			columnNames01[1+(int)RtStockRt[i][1]] = ""+RtStockRt[i][3];
 		}
 		
 		//編集可能カラムの指定
@@ -338,9 +338,9 @@ public class WT100_Stock_00_Search{
 		
 		for(int i=0;i<RtStockRt.length;i++) {
 			if("int".equals((String)RtStockRt[i][2])||"float".equals((String)RtStockRt[i][2])) {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtStockRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtStockRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
 			}
 		}
 		//スクロール用設定
@@ -351,30 +351,30 @@ public class WT100_Stock_00_Search{
 		main_fm.add(PN_Search);
 		
 		//検索ボタン
-		JButton SearchBtn 		= B100_FrameParts.BtnSet(760,200,100,20,"検索",11);
+		JButton SearchBtn 		= B100_FrameParts.BtnSet(		760,200,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		//条件クリアボタン
-		JButton SearchCrearBtn 	= B100_FrameParts.BtnSet(100,0,100,20,"条件クリア",10);
+		JButton SearchCrearBtn 	= B100_FrameParts.BtnSet(		100,0,100,20,"条件クリア",10);
 		PN_Search.add(SearchCrearBtn);
 		
 		//CSVボタン
-		JButton CsvBtn = B100_FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100_FrameParts.BtnSet(				 10,660,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B100_FrameParts.BtnSet(		130,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100_FrameParts.BtnSet(				130,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//在庫表出力ボタン
-		JButton ListPrintBtn = B100_FrameParts.BtnSet(	250,660,100,20,"在庫表出力",11);
+		JButton ListPrintBtn = B100_FrameParts.BtnSet(			250,660,100,20,"在庫表出力",11);
 		main_fm.add(ListPrintBtn);
 		
 		
-		JLabel LB_StockAdjust 	= B100_FrameParts.JLabelSet(370,640,100,20,"チェック行を"	,11,2);
+		JLabel LB_StockAdjust 	= B100_FrameParts.JLabelSet(	370,640,100,20,"チェック行を"	,11,2);
 		main_fm.add(LB_StockAdjust);
 		//在庫調整ボタン
-		JButton StockAdjustBtn 	= B100_FrameParts.BtnSet(	370,660,100,20,"在庫調整",11);
+		JButton StockAdjustBtn 	= B100_FrameParts.BtnSet(		370,660,100,20,"在庫調整",11);
 		main_fm.add(StockAdjustBtn);
 		
 		main_fm.add(PN_Search);
@@ -397,6 +397,8 @@ public class WT100_Stock_00_Search{
 				String TgtActualDate 	= "";
 				
 				int RowCount 	= tableModel_ms01.getRowCount();
+				Object[][] RtStockRt	= T100_StockRt.RtStockRt();
+				
 				for(int i=0;i<RowCount;i++) {
 					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
 						TgtWhCd 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColWhCd+1);
@@ -473,27 +475,27 @@ public class WT100_Stock_00_Search{
 					
 					GetSearchClCd			= B100_TextControl.Trim(GetSearchClCd);				//荷主コード
 					GetSearchWhCd			= B100_TextControl.Trim(GetSearchWhCd);				//倉庫コード
-					GetSearchClGpCD			= B100_TextControl.Trim(GetSearchClGpCD);				//荷主グループ
+					GetSearchClGpCD			= B100_TextControl.Trim(GetSearchClGpCD);			//荷主グループ
 					
-					GetSearchItemCd			= B100_TextControl.Trim(GetSearchItemCd);				//商品コード
+					GetSearchItemCd			= B100_TextControl.Trim(GetSearchItemCd);			//商品コード
 					GetSearchItemName		= B100_TextControl.Trim(GetSearchItemName);			//商品名
 					GetSearchClItemCd		= B100_TextControl.Trim(GetSearchClItemCd);			//荷主商品コード
-					GetSearchJanCd			= B100_TextControl.Trim(GetSearchJanCd);				//BCD（バラ）
+					GetSearchJanCd			= B100_TextControl.Trim(GetSearchJanCd);			//BCD（バラ）
 					GetSearchItemMdNo		= B100_TextControl.Trim(GetSearchItemMdNo);			//商品型番
 					GetSearchLot			= B100_TextControl.Trim(GetSearchLot);				//ロット
-					GetSearchExpdateMin		= B100_TextControl.Trim(GetSearchExpdateMin);			//消費期限開始
-					GetSearchExpdateMax		= B100_TextControl.Trim(GetSearchExpdateMax);			//消費期限終了
-					GetSearchActualDateMin	= B100_TextControl.Trim(GetSearchActualDateMin);		//入荷実績日開始
-					GetSearchActualDateMax	= B100_TextControl.Trim(GetSearchActualDateMax);		//入荷実績日終了
+					GetSearchExpdateMin		= B100_TextControl.Trim(GetSearchExpdateMin);		//消費期限開始
+					GetSearchExpdateMax		= B100_TextControl.Trim(GetSearchExpdateMax);		//消費期限終了
+					GetSearchActualDateMin	= B100_TextControl.Trim(GetSearchActualDateMin);	//入荷実績日開始
+					GetSearchActualDateMax	= B100_TextControl.Trim(GetSearchActualDateMax);	//入荷実績日終了
 					
 					GetSearchLoc			= B100_TextControl.Trim(GetSearchLoc);				//ロケーション
 					GetSearchType			= B100_TextControl.Trim(GetSearchType);				//ロケタイプ
-					GetSearchQtyMin			= B100_TextControl.Trim(GetSearchQtyMin);				//数量最小
-					GetSearchQtyMax			= B100_TextControl.Trim(GetSearchQtyMax);				//数量最大
-					GetSearchShipPlanQtyMin	= B100_TextControl.Trim(GetSearchShipPlanQtyMin);		//引当済数最小
-					GetSearchShipPlanQtyMax	= B100_TextControl.Trim(GetSearchShipPlanQtyMax);		//引当済数最大
-					GetSearchPossibleQtyMin	= B100_TextControl.Trim(GetSearchPossibleQtyMin);		//出荷可能数最小
-					GetSearchPossibleQtyMax	= B100_TextControl.Trim(GetSearchPossibleQtyMax);		//出荷可能数最大
+					GetSearchQtyMin			= B100_TextControl.Trim(GetSearchQtyMin);			//数量最小
+					GetSearchQtyMax			= B100_TextControl.Trim(GetSearchQtyMax);			//数量最大
+					GetSearchShipPlanQtyMin	= B100_TextControl.Trim(GetSearchShipPlanQtyMin);	//引当済数最小
+					GetSearchShipPlanQtyMax	= B100_TextControl.Trim(GetSearchShipPlanQtyMax);	//引当済数最大
+					GetSearchPossibleQtyMin	= B100_TextControl.Trim(GetSearchPossibleQtyMin);	//出荷可能数最小
+					GetSearchPossibleQtyMax	= B100_TextControl.Trim(GetSearchPossibleQtyMax);	//出荷可能数最大
 					
 					
 					GetSearchType			= B100_TextControl.num_only_String(GetSearchType);					//ロケタイプ
@@ -504,8 +506,8 @@ public class WT100_Stock_00_Search{
 					GetSearchPossibleQtyMin	= B100_TextControl.num_only_String02(GetSearchPossibleQtyMin);		//出荷可能数最小
 					GetSearchPossibleQtyMax	= B100_TextControl.num_only_String02(GetSearchPossibleQtyMax);		//出荷可能数最大
 					
-					GetSearchExpdateMin		= B100_DateTimeControl.DateFormat(GetSearchExpdateMin);			//消費期限開始
-					GetSearchExpdateMax		= B100_DateTimeControl.DateFormat(GetSearchExpdateMax);			//消費期限終了
+					GetSearchExpdateMin		= B100_DateTimeControl.DateFormat(GetSearchExpdateMin);		//消費期限開始
+					GetSearchExpdateMax		= B100_DateTimeControl.DateFormat(GetSearchExpdateMax);		//消費期限終了
 					GetSearchActualDateMin	= B100_DateTimeControl.DateFormat(GetSearchActualDateMin);		//入荷実績日開始
 					GetSearchActualDateMax	= B100_DateTimeControl.DateFormat(GetSearchActualDateMax);		//入荷実績日終了
 					

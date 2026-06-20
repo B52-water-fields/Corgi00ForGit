@@ -42,23 +42,23 @@ public class WM100_ParameterMstWanko_00_Seach{
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		
-		JLabel LB_SearchClCd			= B100_FrameParts.JLabelSet(	  								  0, 25,130,20,"荷主:"						,11,1);
-		final JComboBox  TB_SearchClCd	= B100_FrameParts.JComboBoxSet(								130, 25,180,20,B100_DefaultVariable.SearchClList[0], 11);
-		JLabel LB_SearchWhCd			= B100_FrameParts.JLabelSet(	  								  0, 50,130,20,"担当倉庫:"						,11,1);
-		final JComboBox  TB_SearchWhCd	= B100_FrameParts.JComboBoxSet(								130, 50,180,20,B100_DefaultVariable.SearchWhList[0], 11);
-		JLabel LB_SearchParaCd			= B100_FrameParts.JLabelSet(	  								  0, 75,130,20,"パラメータコード:"			,11,1);
-		final JTextField  TB_SearchParaCd	= B100_FrameParts.JTextFieldSet(							130, 75,100,20,""							,11,0);
-		JLabel LB2_SearchParaCd			= B100_FrameParts.JLabelSet(	  								230, 75, 80,20,"と一致"						,11,0);
-		JLabel LB_SearchParaCdSeq	= B100_FrameParts.JLabelSet(	  									  0,100,130,20,"シーケンシャルNo:"			,11,1);
+		JLabel LB_SearchClCd			= B100_FrameParts.JLabelSet(	  							  0, 25,130,20,"荷主:"						,11,1);
+		final JComboBox  TB_SearchClCd	= B100_FrameParts.JComboBoxSet(							130, 25,180,20,B100_DefaultVariable.SearchClList[0], 11);
+		JLabel LB_SearchWhCd			= B100_FrameParts.JLabelSet(	  							  0, 50,130,20,"担当倉庫:"					,11,1);
+		final JComboBox  TB_SearchWhCd	= B100_FrameParts.JComboBoxSet(							130, 50,180,20,B100_DefaultVariable.SearchWhList[0], 11);
+		JLabel LB_SearchParaCd			= B100_FrameParts.JLabelSet(	  							  0, 75,130,20,"パラメータコード:"			,11,1);
+		final JTextField  TB_SearchParaCd	= B100_FrameParts.JTextFieldSet(						130, 75,100,20,""							,11,0);
+		JLabel LB2_SearchParaCd			= B100_FrameParts.JLabelSet(	  							230, 75, 80,20,"と一致"						,11,0);
+		JLabel LB_SearchParaCdSeq	= B100_FrameParts.JLabelSet(	  								  0,100,130,20,"シーケンシャルNo:"			,11,1);
 		final JFormattedTextField TB_SearchParaCdSeqStr= B100_FrameParts.JFormattedTextFieldSet(	130,100, 80,20,""							,11,1,"####");
-		JLabel LB2_SearchParaCdSeq	= B100_FrameParts.JLabelSet(										210,100, 20,20,"～"							,11,2);
+		JLabel LB2_SearchParaCdSeq	= B100_FrameParts.JLabelSet(									210,100, 20,20,"～"							,11,2);
 		final JFormattedTextField TB_SearchParaCdSeqEnd= B100_FrameParts.JFormattedTextFieldSet(	230,100, 80,20,""							,11,1,"####");
-		JLabel LB_SearchParaName		= B100_FrameParts.JLabelSet(									  0,125,130,20,"パラメータ名:"				,11,1);
-		final JTextField  TB_SearchParaName= B100_FrameParts.JTextFieldSet(							130,125,100,20,""							,11,0);
-		JLabel LB2_SearchParaName		= B100_FrameParts.JLabelSet(									230,125, 80,20,"を含む"						,11,0);
-		JLabel LB_SearchParaTxtAll		= B100_FrameParts.JLabelSet(									  0,150,130,20,"文字設定項目のどれかに:"	,10,1);
+		JLabel LB_SearchParaName		= B100_FrameParts.JLabelSet(								  0,125,130,20,"パラメータ名:"				,11,1);
+		final JTextField  TB_SearchParaName= B100_FrameParts.JTextFieldSet(						130,125,100,20,""							,11,0);
+		JLabel LB2_SearchParaName		= B100_FrameParts.JLabelSet(								230,125, 80,20,"を含む"						,11,0);
+		JLabel LB_SearchParaTxtAll		= B100_FrameParts.JLabelSet(								  0,150,130,20,"文字設定項目のどれかに:"	,10,1);
 		final JTextField  TB_SearchParaTxtAll= B100_FrameParts.JTextFieldSet(						130,150,100,20,""							,11,0);
-		JLabel LB2_SearchParaTxtAll		= B100_FrameParts.JLabelSet(									230,150, 80,20,"を含む"						,11,0);
+		JLabel LB2_SearchParaTxtAll		= B100_FrameParts.JLabelSet(								230,150, 80,20,"を含む"						,11,0);
 		
 		
 		JLabel LB_SearchParaTxt01		= B100_FrameParts.JLabelSet(					310, 25,130,20,"文字設定項目01:"	,11,1);
@@ -256,7 +256,7 @@ public class WM100_ParameterMstWanko_00_Seach{
 		
 		columnNames01[0] = "Fg";
 		for(int i=0;i<RtParameterMstWankoRt.length;i++) {
-			columnNames01[1+i] = ""+RtParameterMstWankoRt[i][3];
+			columnNames01[1+(int)RtParameterMstWankoRt[i][1]] = ""+RtParameterMstWankoRt[i][3];
 		}
 		
 		//編集可能カラムの指定
@@ -280,9 +280,9 @@ public class WM100_ParameterMstWanko_00_Seach{
 		
 		for(int i=0;i<RtParameterMstWankoRt.length;i++) {
 			if("int".equals((String)RtParameterMstWankoRt[i][2])||"float".equals((String)RtParameterMstWankoRt[i][2])){
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtParameterMstWankoRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+i);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtParameterMstWankoRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
 			}
 			
 		}
