@@ -44,7 +44,7 @@ public class WM100_LocationMst_00_Search{
 		
 		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(  0, 25,100,20,"荷主コード:"		,11,1);
 		JLabel LB_SearchWhCd		= B100_FrameParts.JLabelSet(  0, 50,100,20,"倉庫コード:"		,11,1);
-		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(  0, 75,100,20,"ロケーション:"	,11,1);
+		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(  0, 75,100,20,"ロケーション:"		,11,1);
 		JLabel LB_SearchLocName		= B100_FrameParts.JLabelSet(  0,100,100,20,"ロケーション名:"	,11,1);
 		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(  0,125,100,20,"ロケタイプ:"		,11,1);
 		

@@ -27,22 +27,22 @@ public class M100_CautionMstRt{
 			SearchDeName,
 			AllSearch);
 			
-	String GetCautionCd		= (String)CautionMstRt[i][ColCautionCd];	//注意事項コード
-	String GetClGpCD		= (String)CautionMstRt[i][ColClGpCD];		//荷主グループコード
-	String GetCLGpName01	= (String)CautionMstRt[i][ColCLGpName01];	//荷主グループ名
-	String GetDECD			= (String)CautionMstRt[i][ColDECD];			//届先コード
-	String GetDepartmentCd	= (String)CautionMstRt[i][ColDepartmentCd];	//部署CD
-	String GetDEName01		= (String)CautionMstRt[i][ColDEName01];		//届先名
-	int GetCautionTiming	= (int)CautionMstRt[i][ColCautionTiming];	//注意事項タイミング
-	String GetCautionName	= (String)CautionMstRt[i][ColCautionName];	//注意事項名
-	String GetCaution		= (String)CautionMstRt[i][ColCaution];		//注意事項内容
-	String GetEntryDate		= (String)CautionMstRt[i][ColEntryDate];	//データ登録日時
-	String GetUpdateDate	= (String)CautionMstRt[i][ColUpdateDate];	//データ更新日時
-	String GetEntryUser		= (String)CautionMstRt[i][ColEntryUser];	//登録者コード
-	String GetUpdateUser	= (String)CautionMstRt[i][ColUpdateUser];	//更新者コード
-	String GetAdd01			= (String)CautionMstRt[i][ColAdd01];		//届先住所1
-	String GetAdd02			= (String)CautionMstRt[i][ColAdd02];		//届先住所2
-	String GetAdd03			= (String)CautionMstRt[i][ColAdd03];		//届先住所3
+	String GetCautionCd		= (String)CautionMstRt[i][M100_CautionMstRt.ColCautionCd];		//注意事項コード
+	String GetClGpCD		= (String)CautionMstRt[i][M100_CautionMstRt.ColClGpCD];			//荷主グループコード
+	String GetCLGpName01	= (String)CautionMstRt[i][M100_CautionMstRt.ColCLGpName01];		//荷主グループ名
+	String GetDECD			= (String)CautionMstRt[i][M100_CautionMstRt.ColDECD];			//届先コード
+	String GetDepartmentCd	= (String)CautionMstRt[i][M100_CautionMstRt.ColDepartmentCd];	//部署CD
+	String GetDEName01		= (String)CautionMstRt[i][M100_CautionMstRt.ColDEName01];		//届先名
+	int GetCautionTiming	= (int)CautionMstRt[i][M100_CautionMstRt.ColCautionTiming];		//注意事項タイミング
+	String GetCautionName	= (String)CautionMstRt[i][M100_CautionMstRt.ColCautionName];	//注意事項名
+	String GetCaution		= (String)CautionMstRt[i][M100_CautionMstRt.ColCaution];		//注意事項内容
+	String GetEntryDate		= (String)CautionMstRt[i][M100_CautionMstRt.ColEntryDate];		//データ登録日時
+	String GetUpdateDate	= (String)CautionMstRt[i][M100_CautionMstRt.ColUpdateDate];		//データ更新日時
+	String GetEntryUser		= (String)CautionMstRt[i][M100_CautionMstRt.ColEntryUser];		//登録者コード
+	String GetUpdateUser	= (String)CautionMstRt[i][M100_CautionMstRt.ColUpdateUser];		//更新者コード
+	String GetAdd01			= (String)CautionMstRt[i][M100_CautionMstRt.ColAdd01];			//届先住所1
+	String GetAdd02			= (String)CautionMstRt[i][M100_CautionMstRt.ColAdd02];			//届先住所2
+	String GetAdd03			= (String)CautionMstRt[i][M100_CautionMstRt.ColAdd03];			//届先住所3
 	
 	*/
 	//戻り値カラム

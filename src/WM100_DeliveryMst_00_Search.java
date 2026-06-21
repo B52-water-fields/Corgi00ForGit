@@ -374,8 +374,8 @@ public class WM100_DeliveryMst_00_Search{
 					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtDECD 		= ""+tableModel_ms01.getValueAt(i, 1);	if(null==TgtDECD	) {TgtDECD="";}
-							TgtDepartmentCd = ""+tableModel_ms01.getValueAt(i, 2);	if(null==TgtDepartmentCd	) {TgtDepartmentCd="";}
+							TgtDECD 		= ""+tableModel_ms01.getValueAt(i,M100_DeliveryMstRt.ColDECD+1);			if(null==TgtDECD			) {TgtDECD="";}
+							TgtDepartmentCd = ""+tableModel_ms01.getValueAt(i,M100_DeliveryMstRt.ColDepartmentCd+1);	if(null==TgtDepartmentCd	) {TgtDepartmentCd="";}
 						}
 					}
 					if(!"".equals(TgtDECD) && !"".equals(TgtDepartmentCd)) {

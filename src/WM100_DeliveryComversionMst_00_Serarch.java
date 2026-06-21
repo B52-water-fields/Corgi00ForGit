@@ -409,7 +409,7 @@ public class WM100_DeliveryComversionMst_00_Serarch{
 							main_fm.setVisible(false);
 							main_fm.dispose();
 							
-							WM100_DeliveryComversionMst_01_RenewAndCreate.DeliveryComversionMstRenewAndCreate(0,0,""+tableModel_ms01.getValueAt(i, 1),""+tableModel_ms01.getValueAt(i, 3));
+							WM100_DeliveryComversionMst_01_RenewAndCreate.DeliveryComversionMstRenewAndCreate(0,0,""+tableModel_ms01.getValueAt(i,M100_DeliveryComversionMstRt.ColClGpCD+1),""+tableModel_ms01.getValueAt(i,M100_DeliveryComversionMstRt.ColCL_DECD+1));
 						}
 					}
 					RenewFg = true;

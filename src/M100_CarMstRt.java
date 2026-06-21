@@ -20,26 +20,26 @@ public class M100_CarMstRt{
 			SearchDelFg,
 			AllSearch);
 			
-	String GetWHCD					= (String)CarMstRt[i][ColWHCD];						//担当倉庫
-	String GetShippingCompanyCd		= (String)CarMstRt[i][ColShippingCompanyCd];		//運送会社CD
-	String GetShippingCompanyName01	= (String)CarMstRt[i][ColShippingCompanyName01];	//運送会社名1
-	String GetShippingCompanyName02	= (String)CarMstRt[i][ColShippingCompanyName02];	//運送会社名2
-	String GetShippingCompanyName03	= (String)CarMstRt[i][ColShippingCompanyName03];	//運送会社名3
-	String GetCarCd					= (String)CarMstRt[i][ColCarCd];					//車輛CD
-	String GetCarName01				= (String)CarMstRt[i][ColCarName01];				//車輛名01
-	String GetCarName02				= (String)CarMstRt[i][ColCarName02];				//車輛名02
-	String GetCarName03				= (String)CarMstRt[i][ColCarName03];				//車輛名03
-	String GetDriverCd				= (String)CarMstRt[i][ColDriverCd];					//乗務員CD
-	String GetUserName01			= (String)CarMstRt[i][ColUserName01];				//ユーザー名1
-	String GetUserName02			= (String)CarMstRt[i][ColUserName02];				//ユーザー名2
-	String GetUserName03			= (String)CarMstRt[i][ColUserName03];				//ユーザー名3
-	String GetPTMSCD				= (String)CarMstRt[i][ColPTMSCD];					//基幹システム車輛コード
-	String GetEntryDate				= (String)CarMstRt[i][ColEntryDate];				//データ登録日時
-	String GetUpdateDate			= (String)CarMstRt[i][ColUpdateDate];				//データ更新日時
-	String GetEntryUser				= (String)CarMstRt[i][ColEntryUser];				//登録者コード
-	String GetUpdateUser			= (String)CarMstRt[i][ColUpdateUser];				//更新者コード
-	int GetDelFg					= (String)CarMstRt[i][ColDelFg];					//削除フラグ
-	String GetWHName				= (String)CarMstRt[i][ColWHName];					//倉庫名
+	String GetWHCD					= (String)CarMstRt[i][M100_CarMstRt.ColWHCD];						//担当倉庫
+	String GetShippingCompanyCd		= (String)CarMstRt[i][M100_CarMstRt.ColShippingCompanyCd];		//運送会社CD
+	String GetShippingCompanyName01	= (String)CarMstRt[i][M100_CarMstRt.ColShippingCompanyName01];	//運送会社名1
+	String GetShippingCompanyName02	= (String)CarMstRt[i][M100_CarMstRt.ColShippingCompanyName02];	//運送会社名2
+	String GetShippingCompanyName03	= (String)CarMstRt[i][M100_CarMstRt.ColShippingCompanyName03];	//運送会社名3
+	String GetCarCd					= (String)CarMstRt[i][M100_CarMstRt.ColCarCd];					//車輛CD
+	String GetCarName01				= (String)CarMstRt[i][M100_CarMstRt.ColCarName01];				//車輛名01
+	String GetCarName02				= (String)CarMstRt[i][M100_CarMstRt.ColCarName02];				//車輛名02
+	String GetCarName03				= (String)CarMstRt[i][M100_CarMstRt.ColCarName03];				//車輛名03
+	String GetDriverCd				= (String)CarMstRt[i][M100_CarMstRt.ColDriverCd];					//乗務員CD
+	String GetUserName01			= (String)CarMstRt[i][M100_CarMstRt.ColUserName01];				//ユーザー名1
+	String GetUserName02			= (String)CarMstRt[i][M100_CarMstRt.ColUserName02];				//ユーザー名2
+	String GetUserName03			= (String)CarMstRt[i][M100_CarMstRt.ColUserName03];				//ユーザー名3
+	String GetPTMSCD				= (String)CarMstRt[i][M100_CarMstRt.ColPTMSCD];					//基幹システム車輛コード
+	String GetEntryDate				= (String)CarMstRt[i][M100_CarMstRt.ColEntryDate];				//データ登録日時
+	String GetUpdateDate			= (String)CarMstRt[i][M100_CarMstRt.ColUpdateDate];				//データ更新日時
+	String GetEntryUser				= (String)CarMstRt[i][M100_CarMstRt.ColEntryUser];				//登録者コード
+	String GetUpdateUser			= (String)CarMstRt[i][M100_CarMstRt.ColUpdateUser];				//更新者コード
+	int GetDelFg					= (String)CarMstRt[i][M100_CarMstRt.ColDelFg];					//削除フラグ
+	String GetWHName				= (String)CarMstRt[i][M100_CarMstRt.ColWHName];					//倉庫名
 			
 	*/
 	//戻り値カラム

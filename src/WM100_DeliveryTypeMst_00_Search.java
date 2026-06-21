@@ -209,8 +209,8 @@ public class WM100_DeliveryTypeMst_00_Search{
 					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtDeliveryTypeNo 	= ""+tableModel_ms01.getValueAt(i, 1);	if(null==TgtDeliveryTypeNo	) {TgtDeliveryTypeNo="";}
-							TgtDeliveryTypeCd 	= ""+tableModel_ms01.getValueAt(i, 2);	if(null==TgtDeliveryTypeCd	) {TgtDeliveryTypeCd="";}
+							TgtDeliveryTypeNo 	= ""+tableModel_ms01.getValueAt(i,M100_DeliveryTypeMstRt.ColDeliveryTypeNo+1);	if(null==TgtDeliveryTypeNo	) {TgtDeliveryTypeNo="";}
+							TgtDeliveryTypeCd 	= ""+tableModel_ms01.getValueAt(i,M100_DeliveryTypeMstRt.ColDeliveryTypeCd+1);	if(null==TgtDeliveryTypeCd	) {TgtDeliveryTypeCd="";}
 						}
 					}
 					if(!"".equals(TgtDeliveryTypeNo) && !"".equals(TgtDeliveryTypeCd)) {

@@ -277,9 +277,9 @@ public class WM100_CautionMst_00_Search{
 					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtCautionCd 	= ""+tableModel_ms01.getValueAt(i, 1);
-							TgtDECD 		= ""+tableModel_ms01.getValueAt(i, 4);
-							TgtDepartmentCd	= ""+tableModel_ms01.getValueAt(i, 5);
+							TgtCautionCd 	= ""+tableModel_ms01.getValueAt(i,M100_CautionMstRt.ColCautionCd+1);
+							TgtDECD 		= ""+tableModel_ms01.getValueAt(i,M100_CautionMstRt.ColDECD+1);
+							TgtDepartmentCd	= ""+tableModel_ms01.getValueAt(i,M100_CautionMstRt.ColDepartmentCd+1);
 						}
 					}
 					if(!"".equals(TgtCautionCd) && !"".equals(TgtDECD)) {

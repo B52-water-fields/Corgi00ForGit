@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -11,7 +12,14 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class WT100_Stock_10_Adjust{
 	static int SetX;
@@ -66,80 +74,80 @@ public class WT100_Stock_10_Adjust{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 
-		JLabel LB_ClCd									= B100_FrameParts.JLabelSet(	  0, 50,150,20,"荷主:"				,11,1);
-		JLabel LB_WhCd									= B100_FrameParts.JLabelSet(	  0, 75,150,20,"倉庫:"				,11,1);
+		JLabel LB_ClCd									= B100_FrameParts.JLabelSet(					  0, 50,150,20,"荷主:"				,11,1);
+		JLabel LB_WhCd									= B100_FrameParts.JLabelSet(					  0, 75,150,20,"倉庫:"				,11,1);
 		
-		JLabel LB_Loc									= B100_FrameParts.JLabelSet(	  0,100,150,20,"ロケーション:"		,11,1);
-		JLabel LB_LocName								= B100_FrameParts.JLabelSet(	  0,125,150,20,"ロケーション名:"	,11,1);
-		JLabel LB_LocType								= B100_FrameParts.JLabelSet(	  0,150,150,20,"ロケータイプ:"		,11,1);
-		JLabel LB_ItemCd								= B100_FrameParts.JLabelSet(	  0,175,150,20,"商品コード:"		,11,1);
-		JLabel LB_ItemName								= B100_FrameParts.JLabelSet(	  0,200,150,20,"商品名:"			,11,1);
-		JLabel LB_Lot									= B100_FrameParts.JLabelSet(	  0,225,150,20,"ロット:"			,11,1);
-		JLabel LB_Expdate								= B100_FrameParts.JLabelSet(	  0,250,150,20,"消費期限:"			,11,1);
-		JLabel LB_ActualDate							= B100_FrameParts.JLabelSet(	  0,275,150,20,"入荷実績日:"		,11,1);
+		JLabel LB_Loc									= B100_FrameParts.JLabelSet(					  0,100,150,20,"ロケーション:"		,11,1);
+		JLabel LB_LocName								= B100_FrameParts.JLabelSet(					  0,125,150,20,"ロケーション名:"	,11,1);
+		JLabel LB_LocType								= B100_FrameParts.JLabelSet(					  0,150,150,20,"ロケータイプ:"		,11,1);
+		JLabel LB_ItemCd								= B100_FrameParts.JLabelSet(					  0,175,150,20,"商品コード:"		,11,1);
+		JLabel LB_ItemName								= B100_FrameParts.JLabelSet(					  0,200,150,20,"商品名:"			,11,1);
+		JLabel LB_Lot									= B100_FrameParts.JLabelSet(					  0,225,150,20,"ロット:"			,11,1);
+		JLabel LB_Expdate								= B100_FrameParts.JLabelSet(					  0,250,150,20,"消費期限:"			,11,1);
+		JLabel LB_ActualDate							= B100_FrameParts.JLabelSet(					  0,275,150,20,"入荷実績日:"		,11,1);
 		
-		JLabel LB_CtUnitQty								= B100_FrameParts.JLabelSet(	250,250,150,20,"カートン入数(バラ換算):"	,11,1);
-		JLabel LB_CsUnitQty								= B100_FrameParts.JLabelSet(	250,275,150,20,"ケース入数(バラ換算):"		,11,1);
-		JLabel LB_PlUnitQty								= B100_FrameParts.JLabelSet(	250,300,150,20,"パレット入数(バラ換算):"	,11,1);
+		JLabel LB_CtUnitQty								= B100_FrameParts.JLabelSet(					250,250,150,20,"カートン入数(バラ換算):"	,11,1);
+		JLabel LB_CsUnitQty								= B100_FrameParts.JLabelSet(					250,275,150,20,"ケース入数(バラ換算):"		,11,1);
+		JLabel LB_PlUnitQty								= B100_FrameParts.JLabelSet(					250,300,150,20,"パレット入数(バラ換算):"	,11,1);
 		
-		final JFormattedTextField TB_CtUnitQty			= B100_FrameParts.JFormattedTextFieldSet(400,250,70,20,""	,11,1,"#,###");
-		final JFormattedTextField TB_CsUnitQty			= B100_FrameParts.JFormattedTextFieldSet(400,275,70,20,""	,11,1,"#,###");
-		final JFormattedTextField TB_PlUnitQty			= B100_FrameParts.JFormattedTextFieldSet(400,300,70,20,""	,11,1,"#,###");
+		final JFormattedTextField TB_CtUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,250,70,20,""	,11,1,"#,###");
+		final JFormattedTextField TB_CsUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,275,70,20,""	,11,1,"#,###");
+		final JFormattedTextField TB_PlUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,300,70,20,""	,11,1,"#,###");
 		
-		JLabel LB_Qty									= B100_FrameParts.JLabelSet(	300,450,150,20,"調整前総数量:"		,11,1);
-		JLabel LB_ShipPlanQty							= B100_FrameParts.JLabelSet(	300,475,150,20,"調整前引当済数:"	,11,1);
-		JLabel LB_PossibleQty							= B100_FrameParts.JLabelSet(	300,500,150,20,"調整前出荷可能数:"	,11,1);
+		JLabel LB_Qty									= B100_FrameParts.JLabelSet(					300,450,150,20,"調整前総数量:"		,11,1);
+		JLabel LB_ShipPlanQty							= B100_FrameParts.JLabelSet(					300,475,150,20,"調整前引当済数:"	,11,1);
+		JLabel LB_PossibleQty							= B100_FrameParts.JLabelSet(					300,500,150,20,"調整前出荷可能数:"	,11,1);
 		
-		JLabel LB_Msg									= B100_FrameParts.JLabelSet(	520,475, 70,20,"⇒⇒⇒"				,11,2);
+		JLabel LB_Msg									= B100_FrameParts.JLabelSet(					520,475, 70,20,"⇒⇒⇒"				,11,2);
 		
-		JLabel LB_AdjustQty								= B100_FrameParts.JLabelSet(	  0,325,150,20,"バラ換算調整数:"	,11,1);
-		JLabel LB_AdjustReason 							= B100_FrameParts.JLabelSet(	380,325,100,20,"調整理由:"			,11,1);
+		JLabel LB_AdjustQty								= B100_FrameParts.JLabelSet(					  0,325,150,20,"バラ換算調整数:"	,11,1);
+		JLabel LB_AdjustReason 							= B100_FrameParts.JLabelSet(					380,325,100,20,"調整理由:"			,11,1);
 		
-		JLabel LB_AdjustCom01							= B100_FrameParts.JLabelSet(	380,350,100,20,"コメント01:"		,11,1);
-		JLabel LB_AdjustCom02							= B100_FrameParts.JLabelSet(	380,375,100,20,"コメント02:"		,11,1);
-		JLabel LB_AdjustCom03							= B100_FrameParts.JLabelSet(	380,400,100,20,"コメント03:"		,11,1);
+		JLabel LB_AdjustCom01							= B100_FrameParts.JLabelSet(					380,350,100,20,"コメント01:"		,11,1);
+		JLabel LB_AdjustCom02							= B100_FrameParts.JLabelSet(					380,375,100,20,"コメント02:"		,11,1);
+		JLabel LB_AdjustCom03							= B100_FrameParts.JLabelSet(					380,400,100,20,"コメント03:"		,11,1);
 		
-		JLabel LB_PlAdjustQty							= B100_FrameParts.JLabelSet(	130,350,100,20,"パレット:"			,11,1);
-		JLabel LB_CsAdjustQty							= B100_FrameParts.JLabelSet(	130,375,100,20,"ケース:"			,11,1);
-		JLabel LB_CtAdjustQty							= B100_FrameParts.JLabelSet(	130,400,100,20,"カートン:"			,11,1);
-		JLabel LB_BrAdjustQty							= B100_FrameParts.JLabelSet(	130,425,100,20,"バラ:"				,11,1);
+		JLabel LB_PlAdjustQty							= B100_FrameParts.JLabelSet(					130,350,100,20,"パレット:"			,11,1);
+		JLabel LB_CsAdjustQty							= B100_FrameParts.JLabelSet(					130,375,100,20,"ケース:"			,11,1);
+		JLabel LB_CtAdjustQty							= B100_FrameParts.JLabelSet(					130,400,100,20,"カートン:"			,11,1);
+		JLabel LB_BrAdjustQty							= B100_FrameParts.JLabelSet(					130,425,100,20,"バラ:"				,11,1);
 		
-		final JLabel LB_PlAdjustUnitName				= B100_FrameParts.JLabelSet(	300,350,100,20,""		,11,0);
-		final JLabel LB_CsAdjustUnitName				= B100_FrameParts.JLabelSet(	300,375,100,20,""		,11,0);
-		final JLabel LB_CtAdjustUnitName				= B100_FrameParts.JLabelSet(	300,400,100,20,""		,11,0);
-		final JLabel LB_BrAdjustUnitName				= B100_FrameParts.JLabelSet(	300,425,100,20,""		,11,0);
+		final JLabel LB_PlAdjustUnitName				= B100_FrameParts.JLabelSet(					300,350,100,20,""					,11,0);
+		final JLabel LB_CsAdjustUnitName				= B100_FrameParts.JLabelSet(					300,375,100,20,""					,11,0);
+		final JLabel LB_CtAdjustUnitName				= B100_FrameParts.JLabelSet(					300,400,100,20,""					,11,0);
+		final JLabel LB_BrAdjustUnitName				= B100_FrameParts.JLabelSet(					300,425,100,20,""					,11,0);
 		
-		JLabel LB_AfterQty								= B100_FrameParts.JLabelSet(	660,450,150,20,":調整後総数量"		,11,0);
-		JLabel LB_AfterShipPlanQty						= B100_FrameParts.JLabelSet(	660,475,150,20,":調整後引当済数"	,11,0);
-		JLabel LB_AfterPossibleQty						= B100_FrameParts.JLabelSet(	660,500,150,20,":調整後出荷可能数"	,11,0);
+		JLabel LB_AfterQty								= B100_FrameParts.JLabelSet(					660,450,150,20,":調整後総数量"		,11,0);
+		JLabel LB_AfterShipPlanQty						= B100_FrameParts.JLabelSet(					660,475,150,20,":調整後引当済数"	,11,0);
+		JLabel LB_AfterPossibleQty						= B100_FrameParts.JLabelSet(					660,500,150,20,":調整後出荷可能数"	,11,0);
 		
-		final JComboBox TB_ClCd							= B100_FrameParts.JComboBoxSet(	150, 50,200,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
-		final JComboBox TB_WhCd							= B100_FrameParts.JComboBoxSet(	150, 75,200,20,B100_DefaultVariable.WhList[0],11);	//倉庫コード
+		final JComboBox TB_ClCd							= B100_FrameParts.JComboBoxSet(				150, 50,200,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
+		final JComboBox TB_WhCd							= B100_FrameParts.JComboBoxSet(				150, 75,200,20,B100_DefaultVariable.WhList[0],11);	//倉庫コード
 		
-		final JTextField TB_Loc							= B100_FrameParts.JTextFieldSet(	150,100,100,20,""	,11,0);								//ロケーション
-		final JTextField TB_LocName						= B100_FrameParts.JTextFieldSet(	150,125,200,20,""	,11,0);								//ロケーション名
-		final JComboBox TB_LocType						= B100_FrameParts.JComboBoxSet(	150,150,200,20,B100_DefaultVariable.LocType[0],11);	//ロケータイプ
-		final JTextField TB_ItemCd						= B100_FrameParts.JTextFieldSet(	150,175,100,20,""	,11,0);								//商品コード
-		final JTextField TB_ItemName					= B100_FrameParts.JTextFieldSet(	150,200,200,20,""	,11,0);								//商品名
-		final JTextField TB_Lot							= B100_FrameParts.JTextFieldSet(	150,225,200,20,""	,11,0);								//ロット
-		final JFormattedTextField TB_Expdate			= B100_FrameParts.JFormattedTextFieldSet(	150,250, 70,20,""	,11,0,"YYYY/MM/DD");	//消費期限
-		final JFormattedTextField TB_ActualDate			= B100_FrameParts.JFormattedTextFieldSet(	150,275, 70,20,""	,11,0,"YYYY/MM/DD");	//入荷実績日
+		final JTextField TB_Loc							= B100_FrameParts.JTextFieldSet(				150,100,100,20,""	,11,0);								//ロケーション
+		final JTextField TB_LocName						= B100_FrameParts.JTextFieldSet(				150,125,200,20,""	,11,0);								//ロケーション名
+		final JComboBox TB_LocType						= B100_FrameParts.JComboBoxSet(				150,150,200,20,B100_DefaultVariable.LocType[0],11);	//ロケータイプ
+		final JTextField TB_ItemCd						= B100_FrameParts.JTextFieldSet(				150,175,100,20,""	,11,0);								//商品コード
+		final JTextField TB_ItemName					= B100_FrameParts.JTextFieldSet(				150,200,200,20,""	,11,0);								//商品名
+		final JTextField TB_Lot							= B100_FrameParts.JTextFieldSet(				150,225,200,20,""	,11,0);								//ロット
+		final JFormattedTextField TB_Expdate			= B100_FrameParts.JFormattedTextFieldSet(	150,250, 70,20,""	,11,0,"YYYY/MM/DD");				//消費期限
+		final JFormattedTextField TB_ActualDate			= B100_FrameParts.JFormattedTextFieldSet(	150,275, 70,20,""	,11,0,"YYYY/MM/DD");				//入荷実績日
 		
 		final JFormattedTextField TB_Qty				= B100_FrameParts.JFormattedTextFieldSet(	450,450, 70,20,"0"	,11,1,"#,###");	//調整前数量
 		final JFormattedTextField TB_ShipPlanQty		= B100_FrameParts.JFormattedTextFieldSet(	450,475, 70,20,"0"	,11,1,"#,###");	//調整前引当済数
 		final JFormattedTextField TB_PossibleQty		= B100_FrameParts.JFormattedTextFieldSet(	450,500, 70,20,"0"	,11,1,"#,###");	
 		
-		final JFormattedTextField TB_AdjustQty			= B100_FrameParts.JFormattedTextFieldSet(	150,325, 70,20,"0",11,1,"#,###");							//調整数
+		final JFormattedTextField TB_AdjustQty			= B100_FrameParts.JFormattedTextFieldSet(	150,325, 70,20,"0"	,11,1,"#,###");	//調整数
 		final JCheckBox TB_EntryMode 					= B100_FrameParts.JCheckBoxSet(				230,325,150,20,"荷姿別で調整",11);
 		final JComboBox TB_AdjustReason 				= B100_FrameParts.JComboBoxSet(				480,325,200,20,B100_DefaultVariable.AdjustReasonList[0],11);	//調整理由
-		final JTextField TB_AdjustCom01					= B100_FrameParts.JTextFieldSet(	480,350,200,20,"",11,0);							//コメント01
-		final JTextField TB_AdjustCom02					= B100_FrameParts.JTextFieldSet(	480,375,200,20,"",11,0);							//コメント02
-		final JTextField TB_AdjustCom03					= B100_FrameParts.JTextFieldSet(	480,400,200,20,"",11,0);							//コメント03
+		final JTextField TB_AdjustCom01					= B100_FrameParts.JTextFieldSet(				480,350,200,20,""	,11,0);			//コメント01
+		final JTextField TB_AdjustCom02					= B100_FrameParts.JTextFieldSet(				480,375,200,20,""	,11,0);			//コメント02
+		final JTextField TB_AdjustCom03					= B100_FrameParts.JTextFieldSet(				480,400,200,20,""	,11,0);			//コメント03
 
-		final JFormattedTextField TB_PlAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,350, 70,20,"0",11,1,"#,###");
-		final JFormattedTextField TB_CsAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,375, 70,20,"0",11,1,"#,###");
-		final JFormattedTextField TB_CtAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,400, 70,20,"0",11,1,"#,###");
-		final JFormattedTextField TB_BrAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,425, 70,20,"0",11,1,"#,###");
+		final JFormattedTextField TB_PlAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,350, 70,20,"0"	,11,1,"#,###");
+		final JFormattedTextField TB_CsAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,375, 70,20,"0"	,11,1,"#,###");
+		final JFormattedTextField TB_CtAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,400, 70,20,"0"	,11,1,"#,###");
+		final JFormattedTextField TB_BrAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,425, 70,20,"0"	,11,1,"#,###");
 		
 		final JFormattedTextField TB_AfterQty			= B100_FrameParts.JFormattedTextFieldSet(	590,450, 70,20,"0"	,11,1,"#,###");	//調整後数量
 		final JFormattedTextField TB_AfterShipPlanQty	= B100_FrameParts.JFormattedTextFieldSet(	590,475, 70,20,"0"	,11,1,"#,###");	//調整後引当済数
@@ -157,9 +165,9 @@ public class WT100_Stock_10_Adjust{
 		TB_AdjustCom02	.setBackground(B100_FrameParts.SelectColer("Entry"));
 		TB_AdjustCom03	.setBackground(B100_FrameParts.SelectColer("Entry"));
 		
-		JLabel LB_BeforeTotalQty	= B100_FrameParts.JLabelSet(	450,525, 70,20,"調整前総数"			,11,2);
-		JLabel LB_AfterTotalQty		= B100_FrameParts.JLabelSet(	590,525, 70,20,"調整後総数"			,11,2);
-		JLabel LB_Msg2				= B100_FrameParts.JLabelSet(	520,525, 70,20,"⇒⇒⇒"				,11,2);
+		JLabel LB_BeforeTotalQty						= B100_FrameParts.JLabelSet(					450,525, 70,20,"調整前総数"			,11,2);
+		JLabel LB_AfterTotalQty							= B100_FrameParts.JLabelSet(					590,525, 70,20,"調整後総数"			,11,2);
+		JLabel LB_Msg2									= B100_FrameParts.JLabelSet(					520,525, 70,20,"⇒⇒⇒"				,11,2);
 		
 		final JFormattedTextField TB_BeforePlQty		= B100_FrameParts.JFormattedTextFieldSet(	450,550, 70,20,"0"	,11,1,"#,###");
 		final JFormattedTextField TB_BeforeCsQty		= B100_FrameParts.JFormattedTextFieldSet(	450,575, 70,20,"0"	,11,1,"#,###");
@@ -387,23 +395,533 @@ public class WT100_Stock_10_Adjust{
 		main_fm.add(TB_AfterCtUnitName);
 		main_fm.add(TB_AfterBrUnitName);
 		
-		JButton LocSearchBtn	= B100_FrameParts.BtnSet(	260,100, 90,20,"ロケ検索",11);
+		JButton LocSearchBtn	= B100_FrameParts.BtnSet(	260,100, 90,20,"ロケ検索",11);		
+		final JFrame Loc_fm 	= B100_FrameParts.FrameCreate(x+10,y+10,800,750,"Corgi00在庫調整(ロケ検索)","ZK");
+		JLabel 	LocUserinfo 	= B100_FrameParts.UserInfo();
+		JButton LocExit_btn 	= B100_FrameParts.ExitBtn();
+		JButton LocEntry_btn 	= B100_FrameParts.EntryBtn();
 		
+		Loc_fm.add(LocUserinfo);
+		Loc_fm.add(LocExit_btn);
+		Loc_fm.add(LocEntry_btn);
+		JLabel LB_SearchLoc					= B100_FrameParts.JLabelSet(		  0, 50,130,20,"ロケーション:"		,11,1);
+		JLabel LB_SearchLocName				= B100_FrameParts.JLabelSet(		  0, 75,130,20,"ロケーション名:"	,11,1);
+		JLabel LB_SearchType				= B100_FrameParts.JLabelSet(		  0,100,130,20,"ロケタイプ:"		,11,1);
 		
+		final JTextField  TB_SearchLoc		= B100_FrameParts.JTextFieldSet(	130, 50,100,20,"",11,0);									//ロケーション
+		final JTextField  TB_SearchLocName	= B100_FrameParts.JTextFieldSet(	130, 75,100,20,"",11,0);									//ロケーション名
+		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 	130,100,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
 		
+		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(	  	230, 50,100,20,"で始まる"	,11,0);
+		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  		230, 75,100,20,"を含む"		,11,0);
 		
+		JButton LocSearchKickBtn			= B100_FrameParts.BtnSet(			130,150, 90,20,"検索",11);
+		
+		Loc_fm.add(LB_SearchLoc);
+		Loc_fm.add(LB_SearchLocName);
+		Loc_fm.add(LB_SearchType);
+		Loc_fm.add(TB_SearchLoc);
+		Loc_fm.add(TB_SearchLocName);
+		Loc_fm.add(TB_SearchType);
+		Loc_fm.add(LB2_SearchLoc);
+		Loc_fm.add(LB2_SearchLocName);
+		Loc_fm.add(LocSearchKickBtn);
+		
+		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtSettingLocationMstRt();
+		
+		String[] columnNamesLoc = new String[RtSettingLocationMstRt.length+1];
+		
+		columnNamesLoc[0] = "Fg";
+		for(int i=0;i<RtSettingLocationMstRt.length;i++) {
+			columnNamesLoc[1+(int)RtSettingLocationMstRt[i][1]] = ""+RtSettingLocationMstRt[i][3];
+		}
+		
+		//編集可能カラムの指定
+		B100_TableControl.RenewTgt = new int[1];
+		B100_TableControl.RenewTgt[0] = 0;
+
+		final DefaultTableModel tableModel_msLoc = new B100_TableControl.MyTableModel01(columnNamesLoc,0);
+		
+		final JTable tbLoc = new JTable(tableModel_msLoc);
+		tbLoc.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		tbLoc.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
+		tbLoc.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
+		
+		DefaultTableColumnModel columnModelLoc
+		= (DefaultTableColumnModel)tbLoc.getColumnModel();
+		
+		//列幅初期設定 表示位置設定
+		TableColumn column = null;
+		
+		column = columnModelLoc.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
+		
+		for(int i=0;i<RtSettingLocationMstRt.length;i++) {
+			if("int".equals((String)RtSettingLocationMstRt[i][2])||"float".equals((String)RtSettingLocationMstRt[i][2])) {
+				column = columnModelLoc.getColumn(1+(int)RtSettingLocationMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				column = columnModelLoc.getColumn(1+(int)RtSettingLocationMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
+		}
+		
+		//スクロール用設定
+		JScrollPane scpnLoc = B100_FrameParts.JScrollPaneSet(10,230,870,395,tbLoc);
+		Loc_fm.add(scpnLoc);
 		
 		JButton ItemSearchBtn	= B100_FrameParts.BtnSet(	260,175, 90,20,"商品検索",11);
+		final JFrame Item_fm 	= B100_FrameParts.FrameCreate(x+10,y+10,800,750,"Corgi00在庫調整(商品検索)","ZK");
+		JLabel 	ItemUserinfo 	= B100_FrameParts.UserInfo();
+		JButton ItemExit_btn 	= B100_FrameParts.ExitBtn();
+		JButton ItemEntry_btn 	= B100_FrameParts.EntryBtn();
 		
+		Item_fm.add(ItemUserinfo);
+		Item_fm.add(ItemExit_btn);
+		Item_fm.add(ItemEntry_btn);
+		JLabel LB_SearchItemCd  						= B100_FrameParts.JLabelSet(		  0, 50,130,20,"商品コード:"			,11,1);
+		JLabel LB_SearchItemName  						= B100_FrameParts.JLabelSet(		  0, 75,130,20,"商品名:"				,11,1);
 		
+		final JTextField TB_SearchItemCd  				= B100_FrameParts.JTextFieldSet(	130, 50,100,20,""						,11,0);	//商品コード
+		final JTextField TB_SearchItemName  			= B100_FrameParts.JTextFieldSet(	130, 75,100,20,""						,11,0);	//商品名
 		
+		JLabel LB2_SearchItemCd  						= B100_FrameParts.JLabelSet(		230, 50, 80,20,"と一致"					,11,0);	//商品コード
+		JLabel LB2_SearchItemName  						= B100_FrameParts.JLabelSet(		230, 75, 80,20,"を含む"					,11,0);	//商品名
 		
+		JButton ItemSearchKickBtn						= B100_FrameParts.BtnSet(			130,125, 90,20,"検索",11);
+		
+		Item_fm.add(LB_SearchItemCd);
+		Item_fm.add(LB_SearchItemName);
+		Item_fm.add(TB_SearchItemCd);
+		Item_fm.add(TB_SearchItemName);
+		Item_fm.add(LB2_SearchItemCd);
+		Item_fm.add(LB2_SearchItemName);
+		Item_fm.add(ItemSearchKickBtn);
+		
+		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtSettingItemMstRt();
+		
+		String[] columnNamesItem = new String[RtSettingItemMstRt.length+1];
+		
+		columnNamesItem[0] = "Fg";
+		for(int i=0;i<RtSettingItemMstRt.length;i++) {
+			columnNamesItem[1+(int)RtSettingItemMstRt[i][1]] = ""+RtSettingItemMstRt[i][3];
+		}
+		
+		//編集可能カラムの指定
+		B100_TableControl.RenewTgt = new int[1];
+		B100_TableControl.RenewTgt[0] = 0;
+
+		final DefaultTableModel tableModel_msItem = new B100_TableControl.MyTableModel01(columnNamesItem,0);
+		
+		final JTable tbItem = new JTable(tableModel_msItem);
+		tbItem.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		tbItem.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
+		tbItem.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
+		
+		DefaultTableColumnModel columnModelItem
+		= (DefaultTableColumnModel)tbItem.getColumnModel();
+		
+		//列幅初期設定 表示位置設定
+		column = null;
+		
+		column = columnModelItem.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
+		
+		for(int i=0;i<RtSettingItemMstRt.length;i++) {
+			if("int".equals((String)RtSettingItemMstRt[i][2])||"float".equals((String)RtSettingItemMstRt[i][2])) {
+				column = columnModelItem.getColumn(1+(int)RtSettingItemMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				column = columnModelItem.getColumn(1+(int)RtSettingItemMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
+		}
+		
+		//スクロール用設定
+		JScrollPane scpnItem = B100_FrameParts.JScrollPaneSet(10,270,1280,350,tbItem);
+		Item_fm.add(scpnItem);
 		
 		main_fm.add(LocSearchBtn);
 		main_fm.add(ItemSearchBtn);
 		
 		RenewFg = true;
 		main_fm.setVisible(true);
+		
+		
+		//ロケーションマスタ検索画面表示
+		LocSearchBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_msLoc.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						tableModel_msLoc.removeRow(0);
+					}
+					TB_SearchLoc.setText("");
+					TB_SearchLocName.setText("");
+					TB_SearchType.setSelectedIndex(0);
+					
+					Loc_fm.setVisible(true);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//商品マスタ検索画面表示
+		ItemSearchBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_msItem.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						tableModel_msItem.removeRow(0);
+					}
+					TB_SearchItemCd.setText("");
+					TB_SearchItemName.setText("");
+					Item_fm.setVisible(true);
+					RenewFg = true;
+				}
+			}
+		});
+		//ロケーションマスタ選択ボタン押下時の挙動
+		LocEntry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_msLoc.getRowCount();
+					String GetLoc = "";
+					
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)tableModel_msLoc.getValueAt(i, 0)) {
+							GetLoc = ""+tableModel_msLoc.getValueAt(i, M100_LocationMstRt.ColLoc+1);
+						}
+					}
+					TB_Loc.setText(GetLoc);
+					Loc_fm.setVisible(false);
+					
+					String TgtClCd			= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
+					String TgtWhCd			= B100_TextControl.Trim(B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
+					String TgtLoc			= B100_TextControl.Trim(TB_Loc.getText());							//ロケーション
+					String TgtItemCd		= B100_TextControl.Trim(TB_ItemCd.getText());						//商品コード
+					String TgtLot			= B100_TextControl.Trim(TB_Lot.getText());							//ロット
+					String TgtExpdate		= B100_TextControl.TextToDate(TB_Expdate.getText());				//消費期限
+					String TgtActualDate	= B100_TextControl.TextToDate(TB_ActualDate.getText());			//入荷実績日
+					
+					Object[] StockData	= StockDataRt(
+							TgtWhCd,
+							TgtClCd,
+							TgtLoc,
+							TgtItemCd,
+							TgtLot,
+							TgtExpdate,
+							TgtActualDate
+							);
+					
+					FramePartsVolSet(
+							StockData,
+							TB_CtUnitQty,
+							TB_CsUnitQty,
+							TB_PlUnitQty,
+							LB_PlAdjustUnitName,
+							LB_CsAdjustUnitName,
+							LB_CtAdjustUnitName,
+							LB_BrAdjustUnitName,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_LocName,
+							TB_LocType,
+							TB_ItemCd,
+							TB_ItemName,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_EntryMode,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_BeforePlUnitName,
+							TB_BeforeCsUnitName,
+							TB_BeforeCtUnitName,
+							TB_BeforeBrUnitName,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AfterPlUnitName,
+							TB_AfterCsUnitName,
+							TB_AfterCtUnitName,
+							TB_AfterBrUnitName
+							);
+					
+					AdjustFromQty(
+							TB_CtUnitQty,
+							TB_CsUnitQty,
+							TB_PlUnitQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_LocType,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty
+							);
+					
+					AdjustModeControl(
+							TB_EntryMode,
+							TB_CtUnitQty,
+							TB_CsUnitQty,
+							TB_PlUnitQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
+					RenewFg = true;
+				}
+			}
+		});
+		//商品マスタ選択ボタン押下時の挙動
+		ItemEntry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_msItem.getRowCount();
+					String GetItemCd = "";
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)tableModel_msItem.getValueAt(i, 0)) {
+							GetItemCd = ""+tableModel_msItem.getValueAt(i, M100_ItemMstRt.ColItemCd+1);
+						}
+					}
+					TB_ItemCd.setText(GetItemCd);
+					Item_fm.setVisible(false);
+					
+					String TgtClCd			= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
+					String TgtWhCd			= B100_TextControl.Trim(B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
+					String TgtLoc			= B100_TextControl.Trim(TB_Loc.getText());							//ロケーション
+					String TgtItemCd		= B100_TextControl.Trim(TB_ItemCd.getText());						//商品コード
+					String TgtLot			= B100_TextControl.Trim(TB_Lot.getText());							//ロット
+					String TgtExpdate		= B100_TextControl.TextToDate(TB_Expdate.getText());				//消費期限
+					String TgtActualDate	= B100_TextControl.TextToDate(TB_ActualDate.getText());			//入荷実績日
+					
+					Object[] StockData	= StockDataRt(
+							TgtWhCd,
+							TgtClCd,
+							TgtLoc,
+							TgtItemCd,
+							TgtLot,
+							TgtExpdate,
+							TgtActualDate
+							);
+					
+					FramePartsVolSet(
+							StockData,
+							TB_CtUnitQty,
+							TB_CsUnitQty,
+							TB_PlUnitQty,
+							LB_PlAdjustUnitName,
+							LB_CsAdjustUnitName,
+							LB_CtAdjustUnitName,
+							LB_BrAdjustUnitName,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_LocName,
+							TB_LocType,
+							TB_ItemCd,
+							TB_ItemName,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_EntryMode,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_BeforePlUnitName,
+							TB_BeforeCsUnitName,
+							TB_BeforeCtUnitName,
+							TB_BeforeBrUnitName,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AfterPlUnitName,
+							TB_AfterCsUnitName,
+							TB_AfterCtUnitName,
+							TB_AfterBrUnitName
+							);
+					
+					AdjustFromQty(
+							TB_CtUnitQty,
+							TB_CsUnitQty,
+							TB_PlUnitQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_LocType,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty
+							);
+					
+					AdjustModeControl(
+							TB_EntryMode,
+							TB_CtUnitQty,
+							TB_CsUnitQty,
+							TB_PlUnitQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//ロケーションマスタ検索ボタン押下時の挙動
+		LocSearchKickBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_msLoc.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						tableModel_msLoc.removeRow(0);
+					}
+					String SearchTgtClCd			= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
+					String SearchTgtWhCd			= B100_TextControl.Trim(B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
+					String SearchTgtLoc		= B100_TextControl.Trim(TB_SearchLoc.getText());
+					String SearchTgtLocName	= B100_TextControl.Trim(TB_SearchLocName.getText());
+					String SearchTgtType 	= B100_TextControl.Trim(B100_DefaultVariable.SearchLocType[1][TB_SearchType.getSelectedIndex()]);
+					
+					Object[][] LocSearch = LocSearch(
+												SearchTgtClCd,
+												SearchTgtWhCd,
+												SearchTgtLoc,
+												SearchTgtLocName,
+												SearchTgtType
+												);
+					for(int i=0;i<LocSearch.length;i++) {
+						Object[] SetOb = new Object[LocSearch[i].length+1];
+						SetOb[0] = false;
+						for(int i01=0;i01<LocSearch[i].length;i01++) {
+							SetOb[i01+1] = ""+LocSearch[i][i01];
+						}
+						tableModel_msLoc.addRow(SetOb);
+					}
+					Loc_fm.setVisible(true);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//商品マスタ検索ボタン押下時の挙動
+		ItemSearchKickBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_msItem.getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						tableModel_msItem.removeRow(0);
+					}
+					String SearchTgtClCd		= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
+					String SearchTgtWhCd		= B100_TextControl.Trim(B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
+					String SearchTgtClGp		="";
+					Object[][] ClMstRt = ClMstRt(SearchTgtClCd);
+					if(1==ClMstRt.length) {
+						SearchTgtClGp		=(String)ClMstRt[0][M100_ClMstRt.ColClGpCD];		//荷主グループCD
+					}
+					String SearchTgtItemCd		= B100_TextControl.Trim(TB_SearchItemCd.getText());
+					String SearchTgtItemName	= B100_TextControl.Trim(TB_SearchItemName.getText());
+					
+					Object[][] ItemSearch= ItemSearch(
+												SearchTgtClGp,
+												SearchTgtItemCd,
+												SearchTgtItemName
+												);
+					for(int i=0;i<ItemSearch.length;i++) {
+						Object[] SetOb = new Object[ItemSearch[i].length+1];
+						SetOb[0] = false;
+						for(int i01=0;i01<ItemSearch[i].length;i01++) {
+							SetOb[i01+1] = ""+ItemSearch[i][i01];
+						}
+						tableModel_msItem.addRow(SetOb);
+					}
+					Item_fm.setVisible(true);
+					RenewFg = true;
+				}
+			}
+		});
+		//ロケーションマスタ検索チェックボックス操作時の挙動
+		tableModel_msLoc.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = tbLoc.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							tableModel_msLoc.setValueAt(setBL, i, 0);
+						}else {
+	
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		//商品マスタ検索チェックボックス操作時の挙動
+		tableModel_msItem.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = tbItem.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							tableModel_msItem.setValueAt(setBL, i, 0);
+						}else {
+	
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		//ロケーションマスタ検索EXITボタン押下時の挙動
+		LocExit_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				Loc_fm.setVisible(false);
+				Loc_fm.dispose();
+			}
+		});
+		//商品マスタ検索EXITボタン押下時の挙動
+		ItemExit_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				Item_fm.setVisible(false);
+				Item_fm.dispose();
+			}
+		});
 		
 		
 		//登録ボタン押下時の挙動
@@ -1155,6 +1673,12 @@ public class WT100_Stock_10_Adjust{
 			public void actionPerformed(ActionEvent e){
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
+				
+				Loc_fm.setVisible(false);
+				Loc_fm.dispose();
+				
+				Item_fm.setVisible(false);
+				Item_fm.dispose();
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
@@ -1751,7 +2275,38 @@ public class WT100_Stock_10_Adjust{
 		
 		return StockRt;
 	}
-	
+	private static Object[][] LocSearch(
+								String SearchTgtClCd,
+								String SearchTgtWhCd,
+								String SearchTgtLoc,
+								String SearchTgtLocName,
+								String SearchTgtType
+								){
+		ArrayList<String> SearchClCd 	= new ArrayList<String>();	//荷主コード
+		ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
+		ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
+		ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
+		ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+		boolean LocExactMatch = false;	//ロケーション完全一致
+		boolean AllSearch = true;
+		
+		if(!"".equals(SearchTgtClCd		)) {SearchClCd.add(		SearchTgtClCd);}
+		if(!"".equals(SearchTgtWhCd		)) {SearchWhCd.add(		SearchTgtWhCd);}
+		if(!"".equals(SearchTgtLoc		)) {SearchLoc.add(		SearchTgtLoc);}
+		if(!"".equals(SearchTgtLocName	)) {SearchLocName.add(	SearchTgtLocName);}
+		if(!"".equals(SearchTgtType		)) {SearchType.add(		SearchTgtType);}
+		
+		Object[][] LocationMstRt = M100_LocationMstRt.LocationMstRt(
+				SearchClCd,		//荷主コード
+				SearchWhCd,		//倉庫コード
+				SearchLoc,		//ロケーション
+				SearchLocName,	//ロケーション名
+				SearchType,		//ロケタイプ
+				LocExactMatch,	//ロケーション完全一致
+				AllSearch);
+		return LocationMstRt;
+		
+	}
 	
 	
 	private static Object[][] LocationMstRt(String ClCd,String WhCd,String Loc){
@@ -1834,6 +2389,63 @@ public class WT100_Stock_10_Adjust{
 			SearchWHCD,
 			AllSearch);
 		return ClMstRt;
+	}
+	
+	private static Object[][] ItemSearch(
+									String SearchTgtClGp,
+									String SearchTgtItemCd,
+									String SearchTgtItemName
+									){
+		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
+		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
+		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
+		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
+		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
+		ArrayList<String> SearchDeliveryTypeCd03 	= new ArrayList<String>();	//運送タイプコード03
+		ArrayList<String> SearchDeliveryTypeCd04 	= new ArrayList<String>();	//運送タイプコード04
+		ArrayList<String> SearchDeliveryTypeCd05 	= new ArrayList<String>();	//運送タイプコード05
+		ArrayList<String> SearchItemMDNo 			= new ArrayList<String>();	//商品モデル番号（型番）
+		ArrayList<String> SearchCategoryCd 			= new ArrayList<String>();	//商品カテゴリCD
+		ArrayList<String> SearchCategoryName 		= new ArrayList<String>();	//商品カテゴリ名
+		ArrayList<String> SearchItemColorCd 		= new ArrayList<String>();	//商品カラーコード
+		ArrayList<String> SearchItemColorName 		= new ArrayList<String>();	//商品カラー名
+		ArrayList<String> SearchItemSizeCd 			= new ArrayList<String>();	//商品サイズコード
+		ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイズ名
+		ArrayList<String> SearchJanCd 				= new ArrayList<String>();	//JANCD
+		ArrayList<String> SearchTildFG 				= new ArrayList<String>();	//温度区分
+		ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
+		ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
+		boolean AllSearch = true;
+		
+		if(!"".equals(SearchTgtClGp		)) {SearchClGpCd.add(	SearchTgtClGp);}
+		if(!"".equals(SearchTgtItemCd	)) {SearchItemCd.add(	SearchTgtItemCd);}
+		if(!"".equals(SearchTgtItemName	)) {SearchItemName.add(	SearchTgtItemName);}
+		
+		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClGpCd,			//荷主グループコード
+				SearchItemCd,			//商品コード
+				SearchCLItemCd,			//荷主商品コード
+				SearchItemName,			//商品名
+				SearchDeliveryTypeCd01,	//運送タイプコード01
+				SearchDeliveryTypeCd02,	//運送タイプコード02
+				SearchDeliveryTypeCd03,	//運送タイプコード03
+				SearchDeliveryTypeCd04,	//運送タイプコード04
+				SearchDeliveryTypeCd05,	//運送タイプコード05
+				SearchItemMDNo,			//商品モデル番号（型番）
+				SearchCategoryCd,		//商品カテゴリCD
+				SearchCategoryName,		//商品カテゴリ名
+				SearchItemColorCd,		//商品カラーコード
+				SearchItemColorName,	//商品カラー名
+				SearchItemSizeCd,		//商品サイズコード
+				SearchItemSizeName,		//商品サイズ名
+				SearchJanCd,			//JANCD
+				SearchTildFG,			//温度区分
+				SearchTildName,			//温度区分名
+				SearchDelFg,			//削除フラグ
+				AllSearch);
+		
+		return ItemMstRt;
 	}
 	
 	private static Object[][] ItemMstRt(String ClGpCd,String ItemCd){

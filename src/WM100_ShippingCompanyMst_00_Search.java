@@ -265,7 +265,7 @@ public class WM100_ShippingCompanyMst_00_Search{
 					String TgtShippingCompanyCd = "";
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtShippingCompanyCd 	= ""+tableModel_ms01.getValueAt(i, 1);	if(null==TgtShippingCompanyCd	) {TgtShippingCompanyCd="";}
+							TgtShippingCompanyCd 	= ""+tableModel_ms01.getValueAt(i,M100_ShippingCompanyMstRt.ColShippingCompanyCd+1);	if(null==TgtShippingCompanyCd	) {TgtShippingCompanyCd="";}
 						}
 					}
 					if(!"".equals(TgtShippingCompanyCd)) {

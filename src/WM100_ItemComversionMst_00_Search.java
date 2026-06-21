@@ -244,9 +244,9 @@ public class WM100_ItemComversionMst_00_Search{
 					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtClgpCd 	= ""+tableModel_ms01.getValueAt(i, 1);
-							TgtClCd		= ""+tableModel_ms01.getValueAt(i, 3);
-							TgtClItemCd 	= ""+tableModel_ms01.getValueAt(i, 5);
+							TgtClgpCd 	= ""+tableModel_ms01.getValueAt(i,M100_ItemComversionMstRt.ColClGpCd+1);
+							TgtClCd		= ""+tableModel_ms01.getValueAt(i,M100_ItemComversionMstRt.ColClCd+1);
+							TgtClItemCd 	= ""+tableModel_ms01.getValueAt(i,M100_ItemComversionMstRt.ColClItemCd+1);
 						}
 					}
 					if(!"".equals(TgtClgpCd) && !"".equals(TgtClCd) && !"".equals(TgtClItemCd)) {
