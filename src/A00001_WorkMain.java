@@ -51,6 +51,10 @@ public class A00001_WorkMain{
 			//在庫検索
 			JButton StockSearch = B100_FrameParts.BtnSet(						 20, 25,120,20,"在庫検索",11);
 			PN_Stock.add(StockSearch);
+			
+			//在庫調整履歴
+			JButton StockAdjust = B100_FrameParts.BtnSet(						 20, 50,120,20,"在庫調整履歴",11);
+			PN_Stock.add(StockAdjust);
 		
 		/*************************************/
 		/*************************************/
@@ -88,6 +92,18 @@ public class A00001_WorkMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WT100_Stock_00_Search.StockSearch(0,0);
+			}
+		});
+		
+		//在庫調整履歴
+		StockAdjust.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT100_StockAdjust_00_Search.StockAdjustSearch(0,0);
 			}
 		});
 

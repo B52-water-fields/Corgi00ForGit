@@ -66,11 +66,11 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		main_fm.add(TB_SpCd);
 		
 		JLabel LB_ClArrNo	= B100_FrameParts.JLabelSet(  30,100,100,20,"荷主予定番号"		,11,2);
-		JLabel LB_ClItemCd	= B100_FrameParts.JLabelSet( 150,100,100,20,"荷主商品コード"		,11,2);
-		JLabel LB_lot		= B100_FrameParts.JLabelSet( 270,100,100,20,"ロット"				,11,2);
+		JLabel LB_ClItemCd	= B100_FrameParts.JLabelSet( 150,100,100,20,"荷主商品コード"	,11,2);
+		JLabel LB_lot		= B100_FrameParts.JLabelSet( 270,100,100,20,"ロット"			,11,2);
 		JLabel LB_ExpDate	= B100_FrameParts.JLabelSet( 390,100,100,20,"消費期限"			,11,2);
 		JLabel LB_PlanQty	= B100_FrameParts.JLabelSet( 510,100,100,20,"予定数量"			,11,2);
-		JLabel LB_HdCom		= B100_FrameParts.JLabelSet( 630,100,100,20,"ヘッダコメント"		,11,2);
+		JLabel LB_HdCom		= B100_FrameParts.JLabelSet( 630,100,100,20,"ヘッダコメント"	,11,2);
 		JLabel LB_MsCom		= B100_FrameParts.JLabelSet( 750,100,100,20,"明細コメント"		,11,2);
 		
 		final JTextArea TB_ClArrNo	= B100_FrameParts.JTextAreaSet(11);

@@ -57,7 +57,7 @@ public class M100_LocationMstRt{
 				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名"		,""}
 				,{"Loc"			,ColLoc			,"String"	,"ロケーション"		,"Key"}
 				,{"LocName"		,ColLocName		,"String"	,"ロケーション名"	,""}
-				,{"Type"		,ColType			,"int"		,"ロケタイプ"		,""}
+				,{"LocType"		,ColType			,"int"		,"ロケタイプ"		,""}
 				,{"EntryDate"	,ColEntryDate		,"String"	,"登録日"			,""}
 				,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日"			,""}
 				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"			,""}
@@ -97,7 +97,7 @@ public class M100_LocationMstRt{
 				+"(WM0010LOCATIONMST.UpdateDate) as UpdateDate,\n"	//更新日
 				+"(WM0010LOCATIONMST.EntryUser) as EntryUser,\n"	//登録者
 				+"(WM0010LOCATIONMST.UpdateUser) as UpdateUser,\n"	//更新者
-				+"(WM0010LOCATIONMST.Type) as Type\n"				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				+"(WM0010LOCATIONMST.LocType) as Type\n"				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 				+" from "+A00000_Main.MySqlDefaultSchemaWANKO+".WM0010LOCATIONMST \n"
 				+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST"
 				+ " on("
@@ -158,7 +158,7 @@ public class M100_LocationMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchType.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " WM0010LOCATIONMST.Type = ?";
+				sql = sql + " WM0010LOCATIONMST.LocType = ?";
 			}
 			sql = sql + ")";
 		}

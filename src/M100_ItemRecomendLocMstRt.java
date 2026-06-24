@@ -152,7 +152,7 @@ public class M100_ItemRecomendLocMstRt{
 				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"				//商品名1
 				+"(WW00630ItemRecomendLoc.RecomendLoc) as RecomendLoc,\n"	//推奨ロケ
 				+"(WM0010LOCATIONMST.LocName) as LocName,\n"				//ロケーション名
-				+"(WM0010LOCATIONMST.Type) as Type,\n"						//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				+"(WM0010LOCATIONMST.LocType) as Type,\n"						//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 				+"(WW00630ItemRecomendLoc.EntryDate) as EntryDate,\n"		//データ登録日時
 				+"(WW00630ItemRecomendLoc.UpdateDate) as UpdateDate,\n"		//データ更新日時
 				+"(WW00630ItemRecomendLoc.EntryUser) as EntryUser,\n"		//登録者
@@ -271,7 +271,7 @@ public class M100_ItemRecomendLocMstRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchType.size();i++) {
 				if(0<i) {sql = sql + " or ";}
-				sql = sql + " WM0010LOCATIONMST.Type = ?";
+				sql = sql + " WM0010LOCATIONMST.LocType = ?";
 			}
 			sql = sql + ")\n";
 		}

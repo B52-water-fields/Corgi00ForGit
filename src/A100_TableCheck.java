@@ -6458,7 +6458,7 @@ public class A100_TableCheck{
 		NeedColmn[ 5] = "UpdateDate";
 		NeedColmn[ 6] = "EntryUser";
 		NeedColmn[ 7] = "UpdateUser";
-		NeedColmn[ 8] = "Type";
+		NeedColmn[ 8] = "LocType";
 				
 		NoHitColumn = new ArrayList<String>();
 		for(int i01=0;i01<NeedColmn.length;i01++) {
@@ -7924,7 +7924,7 @@ public class A100_TableCheck{
 				+"  `UpdateDate` datetime DEFAULT NULL,"
 				+"  `EntryUser` varchar(50) NOT NULL,"
 				+"  `UpdateUser` varchar(50) NOT NULL,"
-				+"  `Type` float DEFAULT '0',"
+				+"  `LocType` float DEFAULT '0',"
 				+"  PRIMARY KEY (`ClCd`,`WhCd`,`Loc`)"
 				+") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ロケーションマスタ';";
 		return sql;
@@ -7960,8 +7960,8 @@ public class A100_TableCheck{
 				case "UpdateUser":
 					sql = sql + " ADD UpdateUser varchar(50) NOT NULL";
 					break;
-				case "Type":
-					sql = sql + " ADD Type float DEFAULT '0'";
+				case "LocType":
+					sql = sql + " ADD LocType float DEFAULT '0'";
 					break;
 				default:
 					break;

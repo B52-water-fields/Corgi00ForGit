@@ -165,7 +165,7 @@ public class T100_StockRt{
 				,{"ClGpName"		,ColClGpName		,"String"	,"グループ名1"					,""}
 				,{"Loc"				,ColLoc			,"String"	,"ロケーション"					,"key"}
 				,{"LocName"			,ColLocName		,"String"	,"ロケーション名"				,""}
-				,{"Type"			,ColType			,"int"		,"ロケタイプ"					,""}
+				,{"LocType"			,ColType			,"int"		,"ロケタイプ"					,""}
 				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"					,"key"}
 				,{"Lot"				,ColLot			,"String"	,"ロット"						,"key"}
 				,{"Expdate"			,ColExpdate		,"Date"		,"消費期限"						,"key"}
@@ -370,7 +370,7 @@ public class T100_StockRt{
 				+"(KM0031_CLIENT_GROUP.ClGpName01) as ClGpName,\n"		//グループ名1
 				+"(WW0015Stock.Loc) as Loc,\n"							//ロケーション
 				+"(WM0010LOCATIONMST.LocName) as LocName,\n"			//ロケーション名
-				+"(WM0010LOCATIONMST.Type) as Type,\n"					//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				+"(WM0010LOCATIONMST.LocType) as LocType,\n"			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 				+"(WW0015Stock.ItemCd) as ItemCd,\n"					//商品コード
 				+"(WW0015Stock.Lot) as Lot,\n"							//ロット
 				+"(WW0015Stock.Expdate) as Expdate,\n"					//消費期限
@@ -482,7 +482,7 @@ public class T100_StockRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchType.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " WM0010LOCATIONMST.Type = ?";
+				sql = sql + " WM0010LOCATIONMST.LocType = ?";
 			}
 			sql = sql + ")\n";
 		}
@@ -803,7 +803,7 @@ public class T100_StockRt{
 					if(null==rset01.getString("ClGpName"		)){rt[counter][ColClGpName]		="";}else{rt[counter][ColClGpName]		=rset01.getString("ClGpName");}	//グループ名1
 					if(null==rset01.getString("Loc"				)){rt[counter][ColLoc]				="";}else{rt[counter][ColLoc]			=rset01.getString("Loc");}		//ロケーション
 					if(null==rset01.getString("LocName"			)){rt[counter][ColLocName]			="";}else{rt[counter][ColLocName]		=rset01.getString("LocName");}	//ロケーション名
-					rt[counter][ColType]						=rset01.getInt("Type");				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+					rt[counter][ColType]						=rset01.getInt("LocType");				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 					if(null==rset01.getString("ItemCd"			)){rt[counter][ColItemCd]			="";}else{rt[counter][ColItemCd]		=rset01.getString("ItemCd");}	//商品コード
 					if(null==rset01.getString("Lot"				)){rt[counter][ColLot]				="";}else{rt[counter][ColLot]			=rset01.getString("Lot");}		//ロット
 					if(null==rset01.getTimestamp("Expdate"		)){rt[counter][ColExpdate]			="";}else{rt[counter][ColExpdate]		=B100_DateTimeControl.dtmString2(rset01.getTimestamp("Expdate"))[0];}		//消費期限

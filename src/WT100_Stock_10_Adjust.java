@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -90,9 +91,9 @@ public class WT100_Stock_10_Adjust{
 		JLabel LB_CsUnitQty								= B100_FrameParts.JLabelSet(					250,275,150,20,"ケース入数(バラ換算):"		,11,1);
 		JLabel LB_PlUnitQty								= B100_FrameParts.JLabelSet(					250,300,150,20,"パレット入数(バラ換算):"	,11,1);
 		
-		final JFormattedTextField TB_CtUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,250,70,20,""	,11,1,"#,###");
-		final JFormattedTextField TB_CsUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,275,70,20,""	,11,1,"#,###");
-		final JFormattedTextField TB_PlUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,300,70,20,""	,11,1,"#,###");
+		final JFormattedTextField TB_CtUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,250,70,20,""	,12,1,"#,###");
+		final JFormattedTextField TB_CsUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,275,70,20,""	,12,1,"#,###");
+		final JFormattedTextField TB_PlUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,300,70,20,""	,12,1,"#,###");
 		
 		JLabel LB_Qty									= B100_FrameParts.JLabelSet(					300,450,150,20,"調整前総数量:"		,11,1);
 		JLabel LB_ShipPlanQty							= B100_FrameParts.JLabelSet(					300,475,150,20,"調整前引当済数:"	,11,1);
@@ -124,34 +125,34 @@ public class WT100_Stock_10_Adjust{
 		final JComboBox TB_ClCd							= B100_FrameParts.JComboBoxSet(				150, 50,200,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
 		final JComboBox TB_WhCd							= B100_FrameParts.JComboBoxSet(				150, 75,200,20,B100_DefaultVariable.WhList[0],11);	//倉庫コード
 		
-		final JTextField TB_Loc							= B100_FrameParts.JTextFieldSet(				150,100,100,20,""	,11,0);								//ロケーション
-		final JTextField TB_LocName						= B100_FrameParts.JTextFieldSet(				150,125,200,20,""	,11,0);								//ロケーション名
-		final JComboBox TB_LocType						= B100_FrameParts.JComboBoxSet(				150,150,200,20,B100_DefaultVariable.LocType[0],11);	//ロケータイプ
-		final JTextField TB_ItemCd						= B100_FrameParts.JTextFieldSet(				150,175,100,20,""	,11,0);								//商品コード
-		final JTextField TB_ItemName					= B100_FrameParts.JTextFieldSet(				150,200,200,20,""	,11,0);								//商品名
-		final JTextField TB_Lot							= B100_FrameParts.JTextFieldSet(				150,225,200,20,""	,11,0);								//ロット
-		final JFormattedTextField TB_Expdate			= B100_FrameParts.JFormattedTextFieldSet(	150,250, 70,20,""	,11,0,"YYYY/MM/DD");				//消費期限
-		final JFormattedTextField TB_ActualDate			= B100_FrameParts.JFormattedTextFieldSet(	150,275, 70,20,""	,11,0,"YYYY/MM/DD");				//入荷実績日
+		final JTextField TB_Loc							= B100_FrameParts.JTextFieldSet(				150,100,100,20,""	,12,0);								//ロケーション
+		final JTextField TB_LocName						= B100_FrameParts.JTextFieldSet(				150,125,200,20,""	,12,0);								//ロケーション名
+		final JComboBox TB_LocType						= B100_FrameParts.JComboBoxSet(				150,150,200,20,B100_DefaultVariable.LocType[0],12);	//ロケータイプ
+		final JTextField TB_ItemCd						= B100_FrameParts.JTextFieldSet(				150,175,100,20,""	,12,0);								//商品コード
+		final JTextField TB_ItemName					= B100_FrameParts.JTextFieldSet(				150,200,200,20,""	,12,0);								//商品名
+		final JTextField TB_Lot							= B100_FrameParts.JTextFieldSet(				150,225,200,20,""	,12,0);								//ロット
+		final JFormattedTextField TB_Expdate			= B100_FrameParts.JFormattedTextFieldSet(	150,250, 70,20,""	,12,0,"YYYY/MM/DD");				//消費期限
+		final JFormattedTextField TB_ActualDate			= B100_FrameParts.JFormattedTextFieldSet(	150,275, 70,20,""	,12,0,"YYYY/MM/DD");				//入荷実績日
 		
-		final JFormattedTextField TB_Qty				= B100_FrameParts.JFormattedTextFieldSet(	450,450, 70,20,"0"	,11,1,"#,###");	//調整前数量
-		final JFormattedTextField TB_ShipPlanQty		= B100_FrameParts.JFormattedTextFieldSet(	450,475, 70,20,"0"	,11,1,"#,###");	//調整前引当済数
-		final JFormattedTextField TB_PossibleQty		= B100_FrameParts.JFormattedTextFieldSet(	450,500, 70,20,"0"	,11,1,"#,###");	
+		final JFormattedTextField TB_Qty				= B100_FrameParts.JFormattedTextFieldSet(	450,450, 70,20,"0"	,12,1,"#,###");	//調整前数量
+		final JFormattedTextField TB_ShipPlanQty		= B100_FrameParts.JFormattedTextFieldSet(	450,475, 70,20,"0"	,12,1,"#,###");	//調整前引当済数
+		final JFormattedTextField TB_PossibleQty		= B100_FrameParts.JFormattedTextFieldSet(	450,500, 70,20,"0"	,12,1,"#,###");	
 		
-		final JFormattedTextField TB_AdjustQty			= B100_FrameParts.JFormattedTextFieldSet(	150,325, 70,20,"0"	,11,1,"#,###");	//調整数
+		final JFormattedTextField TB_AdjustQty			= B100_FrameParts.JFormattedTextFieldSet(	150,325, 70,20,"0"	,12,1,"#,###");	//調整数
 		final JCheckBox TB_EntryMode 					= B100_FrameParts.JCheckBoxSet(				230,325,150,20,"荷姿別で調整",11);
-		final JComboBox TB_AdjustReason 				= B100_FrameParts.JComboBoxSet(				480,325,200,20,B100_DefaultVariable.AdjustReasonList[0],11);	//調整理由
-		final JTextField TB_AdjustCom01					= B100_FrameParts.JTextFieldSet(				480,350,200,20,""	,11,0);			//コメント01
-		final JTextField TB_AdjustCom02					= B100_FrameParts.JTextFieldSet(				480,375,200,20,""	,11,0);			//コメント02
-		final JTextField TB_AdjustCom03					= B100_FrameParts.JTextFieldSet(				480,400,200,20,""	,11,0);			//コメント03
+		final JComboBox TB_AdjustReason 				= B100_FrameParts.JComboBoxSet(				480,325,200,20,B100_DefaultVariable.AdjustReasonList[0],12);	//調整理由
+		final JTextField TB_AdjustCom01					= B100_FrameParts.JTextFieldSet(				480,350,200,20,""	,12,0);			//コメント01
+		final JTextField TB_AdjustCom02					= B100_FrameParts.JTextFieldSet(				480,375,200,20,""	,12,0);			//コメント02
+		final JTextField TB_AdjustCom03					= B100_FrameParts.JTextFieldSet(				480,400,200,20,""	,12,0);			//コメント03
 
-		final JFormattedTextField TB_PlAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,350, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_CsAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,375, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_CtAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,400, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_BrAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,425, 70,20,"0"	,11,1,"#,###");
+		final JFormattedTextField TB_PlAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,350, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_CsAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,375, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_CtAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,400, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_BrAdjustQty		= B100_FrameParts.JFormattedTextFieldSet(	230,425, 70,20,"0"	,12,1,"#,###");
 		
-		final JFormattedTextField TB_AfterQty			= B100_FrameParts.JFormattedTextFieldSet(	590,450, 70,20,"0"	,11,1,"#,###");	//調整後数量
-		final JFormattedTextField TB_AfterShipPlanQty	= B100_FrameParts.JFormattedTextFieldSet(	590,475, 70,20,"0"	,11,1,"#,###");	//調整後引当済数
-		final JFormattedTextField TB_AfterPossibleQty	= B100_FrameParts.JFormattedTextFieldSet(	590,500, 70,20,"0"	,11,1,"#,###");	//調整後出荷可能数
+		final JFormattedTextField TB_AfterQty			= B100_FrameParts.JFormattedTextFieldSet(	590,450, 70,20,"0"	,12,1,"#,###");	//調整後数量
+		final JFormattedTextField TB_AfterShipPlanQty	= B100_FrameParts.JFormattedTextFieldSet(	590,475, 70,20,"0"	,12,1,"#,###");	//調整後引当済数
+		final JFormattedTextField TB_AfterPossibleQty	= B100_FrameParts.JFormattedTextFieldSet(	590,500, 70,20,"0"	,12,1,"#,###");	//調整後出荷可能数
 		
 		TB_ClCd.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.ClList[1]		,(String)StockData[T100_StockRt.ColClCd] ) );		//荷主コード
 		TB_WhCd.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.ClList[1]		,(String)StockData[T100_StockRt.ColWhCd] ) );		//倉庫コード
@@ -169,23 +170,23 @@ public class WT100_Stock_10_Adjust{
 		JLabel LB_AfterTotalQty							= B100_FrameParts.JLabelSet(					590,525, 70,20,"調整後総数"			,11,2);
 		JLabel LB_Msg2									= B100_FrameParts.JLabelSet(					520,525, 70,20,"⇒⇒⇒"				,11,2);
 		
-		final JFormattedTextField TB_BeforePlQty		= B100_FrameParts.JFormattedTextFieldSet(	450,550, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_BeforeCsQty		= B100_FrameParts.JFormattedTextFieldSet(	450,575, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_BeforeCtQty		= B100_FrameParts.JFormattedTextFieldSet(	450,600, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_BeforeBrQty		= B100_FrameParts.JFormattedTextFieldSet(	450,625, 70,20,"0"	,11,1,"#,###");
-		final JLabel TB_BeforePlUnitName				= B100_FrameParts.JLabelSet(					520,550, 70,20,""	,11,0);
-		final JLabel TB_BeforeCsUnitName				= B100_FrameParts.JLabelSet(					520,575, 70,20,""	,11,0);
-		final JLabel TB_BeforeCtUnitName				= B100_FrameParts.JLabelSet(					520,600, 70,20,""	,11,0);
-		final JLabel TB_BeforeBrUnitName				= B100_FrameParts.JLabelSet(					520,625, 70,20,""	,11,0);
+		final JFormattedTextField TB_BeforePlQty		= B100_FrameParts.JFormattedTextFieldSet(	450,550, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_BeforeCsQty		= B100_FrameParts.JFormattedTextFieldSet(	450,575, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_BeforeCtQty		= B100_FrameParts.JFormattedTextFieldSet(	450,600, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_BeforeBrQty		= B100_FrameParts.JFormattedTextFieldSet(	450,625, 70,20,"0"	,12,1,"#,###");
+		final JLabel TB_BeforePlUnitName				= B100_FrameParts.JLabelSet(					520,550, 70,20,""	,12,0);
+		final JLabel TB_BeforeCsUnitName				= B100_FrameParts.JLabelSet(					520,575, 70,20,""	,12,0);
+		final JLabel TB_BeforeCtUnitName				= B100_FrameParts.JLabelSet(					520,600, 70,20,""	,12,0);
+		final JLabel TB_BeforeBrUnitName				= B100_FrameParts.JLabelSet(					520,625, 70,20,""	,12,0);
 		
-		final JFormattedTextField TB_AfterPlQty			= B100_FrameParts.JFormattedTextFieldSet(	590,550, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_AfterCsQty			= B100_FrameParts.JFormattedTextFieldSet(	590,575, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_AfterCtQty			= B100_FrameParts.JFormattedTextFieldSet(	590,600, 70,20,"0"	,11,1,"#,###");
-		final JFormattedTextField TB_AfterBrQty			= B100_FrameParts.JFormattedTextFieldSet(	590,625, 70,20,"0"	,11,1,"#,###");
-		final JLabel TB_AfterPlUnitName					= B100_FrameParts.JLabelSet(					660,550, 70,20,""	,11,0);
-		final JLabel TB_AfterCsUnitName					= B100_FrameParts.JLabelSet(					660,575, 70,20,""	,11,0);
-		final JLabel TB_AfterCtUnitName					= B100_FrameParts.JLabelSet(					660,600, 70,20,""	,11,0);
-		final JLabel TB_AfterBrUnitName					= B100_FrameParts.JLabelSet(					660,625, 70,20,""	,11,0);
+		final JFormattedTextField TB_AfterPlQty			= B100_FrameParts.JFormattedTextFieldSet(	590,550, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_AfterCsQty			= B100_FrameParts.JFormattedTextFieldSet(	590,575, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_AfterCtQty			= B100_FrameParts.JFormattedTextFieldSet(	590,600, 70,20,"0"	,12,1,"#,###");
+		final JFormattedTextField TB_AfterBrQty			= B100_FrameParts.JFormattedTextFieldSet(	590,625, 70,20,"0"	,12,1,"#,###");
+		final JLabel TB_AfterPlUnitName					= B100_FrameParts.JLabelSet(					660,550, 70,20,""	,12,0);
+		final JLabel TB_AfterCsUnitName					= B100_FrameParts.JLabelSet(					660,575, 70,20,""	,12,0);
+		final JLabel TB_AfterCtUnitName					= B100_FrameParts.JLabelSet(					660,600, 70,20,""	,12,0);
+		final JLabel TB_AfterBrUnitName					= B100_FrameParts.JLabelSet(					660,625, 70,20,""	,12,0);
 		
 		TB_CtUnitQty.setBackground(B100_FrameParts.SelectColer("NoEntry"));
 		TB_CsUnitQty.setBackground(B100_FrameParts.SelectColer("NoEntry"));
@@ -291,7 +292,15 @@ public class WT100_Stock_10_Adjust{
 				TB_LocType,
 				TB_AfterQty,
 				TB_AfterShipPlanQty,
-				TB_AfterPossibleQty
+				TB_AfterPossibleQty,
+				TB_BeforePlQty,
+				TB_BeforeCsQty,
+				TB_BeforeCtQty,
+				TB_BeforeBrQty,
+				TB_AfterPlQty,
+				TB_AfterCsQty,
+				TB_AfterCtQty,
+				TB_AfterBrQty
 				);
 		
 		AdjustModeControl(
@@ -408,9 +417,9 @@ public class WT100_Stock_10_Adjust{
 		JLabel LB_SearchLocName				= B100_FrameParts.JLabelSet(		  0, 75,130,20,"ロケーション名:"	,11,1);
 		JLabel LB_SearchType				= B100_FrameParts.JLabelSet(		  0,100,130,20,"ロケタイプ:"		,11,1);
 		
-		final JTextField  TB_SearchLoc		= B100_FrameParts.JTextFieldSet(	130, 50,100,20,"",11,0);									//ロケーション
-		final JTextField  TB_SearchLocName	= B100_FrameParts.JTextFieldSet(	130, 75,100,20,"",11,0);									//ロケーション名
-		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 	130,100,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
+		final JTextField  TB_SearchLoc		= B100_FrameParts.JTextFieldSet(	130, 50,100,20,"",12,0);									//ロケーション
+		final JTextField  TB_SearchLocName	= B100_FrameParts.JTextFieldSet(	130, 75,100,20,"",12,0);									//ロケーション名
+		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 	130,100,100,20,B100_DefaultVariable.SearchLocType[0],12);	//ロケタイプ
 		
 		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(	  	230, 50,100,20,"で始まる"	,11,0);
 		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  		230, 75,100,20,"を含む"		,11,0);
@@ -590,7 +599,9 @@ public class WT100_Stock_10_Adjust{
 							GetLoc = ""+tableModel_msLoc.getValueAt(i, M100_LocationMstRt.ColLoc+1);
 						}
 					}
+					
 					TB_Loc.setText(GetLoc);
+					TB_Loc.repaint();
 					Loc_fm.setVisible(false);
 					
 					String TgtClCd			= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
@@ -670,7 +681,15 @@ public class WT100_Stock_10_Adjust{
 							TB_LocType,
 							TB_AfterQty,
 							TB_AfterShipPlanQty,
-							TB_AfterPossibleQty
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty
 							);
 					
 					AdjustModeControl(
@@ -678,6 +697,42 @@ public class WT100_Stock_10_Adjust{
 							TB_CtUnitQty,
 							TB_CsUnitQty,
 							TB_PlUnitQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
+					
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
 							TB_AdjustQty,
 							TB_PlAdjustQty,
 							TB_CsAdjustQty,
@@ -695,6 +750,7 @@ public class WT100_Stock_10_Adjust{
 					RenewFg = false;
 					int RowCount = tableModel_msItem.getRowCount();
 					String GetItemCd = "";
+					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)tableModel_msItem.getValueAt(i, 0)) {
 							GetItemCd = ""+tableModel_msItem.getValueAt(i, M100_ItemMstRt.ColItemCd+1);
@@ -780,7 +836,15 @@ public class WT100_Stock_10_Adjust{
 							TB_LocType,
 							TB_AfterQty,
 							TB_AfterShipPlanQty,
-							TB_AfterPossibleQty
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty
 							);
 					
 					AdjustModeControl(
@@ -788,6 +852,41 @@ public class WT100_Stock_10_Adjust{
 							TB_CtUnitQty,
 							TB_CsUnitQty,
 							TB_PlUnitQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
 							TB_AdjustQty,
 							TB_PlAdjustQty,
 							TB_CsAdjustQty,
@@ -932,18 +1031,19 @@ public class WT100_Stock_10_Adjust{
 					String SetClCd		= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
 					String SetWhCd		= B100_TextControl.Trim(B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
 					
-					String SetLoc			= B100_TextControl.Trim(TB_Loc.getText());							//ロケーション
-					String SetLocName		= B100_TextControl.Trim(TB_LocName.getText());						//ロケーション名
-					String SetLocType		= B100_TextControl.Trim(B100_DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケータイプ
-					String SetItemCd		= B100_TextControl.Trim(TB_ItemCd.getText());						//商品コード
-					String SetItemName		= B100_TextControl.Trim(TB_ItemName.getText());					//商品名
-					String SetLot			= B100_TextControl.Trim(TB_Lot.getText());						//ロット
-					String SetExpdate		= B100_TextControl.Trim(TB_Expdate.getText());					//消費期限
-					String SetActualDate	= B100_TextControl.Trim(TB_ActualDate.getText());					//入荷実績日
-					String SetAdjustReason	= B100_TextControl.Trim(B100_DefaultVariable.AdjustReasonList[1][TB_AdjustReason.getSelectedIndex()]);	//調整理由
-					String SetAdjustCom01	= B100_TextControl.Trim(TB_AdjustCom01.getText());				//コメント01
-					String SetAdjustCom02	= B100_TextControl.Trim(TB_AdjustCom02.getText());				//コメント02
-					String SetAdjustCom03	= B100_TextControl.Trim(TB_AdjustCom03.getText());				//コメント03
+					String SetLoc				= B100_TextControl.Trim(TB_Loc.getText());						//ロケーション
+					String SetLocName			= B100_TextControl.Trim(TB_LocName.getText());					//ロケーション名
+					String SetLocType			= B100_TextControl.Trim(B100_DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケータイプ
+					String SetItemCd			= B100_TextControl.Trim(TB_ItemCd.getText());					//商品コード
+					String SetItemName			= B100_TextControl.Trim(TB_ItemName.getText());					//商品名
+					String SetLot				= B100_TextControl.Trim(TB_Lot.getText());						//ロット
+					String SetExpdate			= B100_TextControl.Trim(TB_Expdate.getText());					//消費期限
+					String SetActualDate		= B100_TextControl.Trim(TB_ActualDate.getText());				//入荷実績日
+					String SetAdjustReason		= B100_TextControl.Trim(B100_DefaultVariable.AdjustReasonList[1][TB_AdjustReason.getSelectedIndex()]);	//調整理由
+					String SetAdjustReasonName	= B100_TextControl.Trim(B100_DefaultVariable.AdjustReasonList[2][TB_AdjustReason.getSelectedIndex()]);	//調整理由名
+					String SetAdjustCom01		= B100_TextControl.Trim(TB_AdjustCom01.getText());				//コメント01
+					String SetAdjustCom02		= B100_TextControl.Trim(TB_AdjustCom02.getText());				//コメント02
+					String SetAdjustCom03		= B100_TextControl.Trim(TB_AdjustCom03.getText());				//コメント03
 					
 					int SetQty				= B100_TextControl.TextToInt(TB_Qty.getText());				//調整前数量
 					int SetShipPlanQty		= B100_TextControl.TextToInt(TB_ShipPlanQty.getText());		//調整前引当済数
@@ -960,6 +1060,108 @@ public class WT100_Stock_10_Adjust{
 					int SetAfterQty			= B100_TextControl.TextToInt(TB_AfterQty.getText());			//調整後数量
 					int SetAfterShipPlanQty	= B100_TextControl.TextToInt(TB_AfterShipPlanQty.getText());	//調整後引当済数
 					int SetAfterPossibleQty	= B100_TextControl.TextToInt(TB_AfterPossibleQty.getText());	//調整後出荷可能数
+					
+					if(0>SetAfterQty||0>SetAfterPossibleQty) {
+						JOptionPane.showMessageDialog(null, "調整数が調整可能数を超えておる");
+					}else {
+						//在庫更新
+						Object[][] SetData = new Object[1][Tools100_StockQtyControl.StockQtyControlDataLayout().length];
+						
+						SetData[0][Tools100_StockQtyControl.ColClCd] 			= SetClCd;
+						SetData[0][Tools100_StockQtyControl.ColWhCd] 			= SetWhCd;
+						SetData[0][Tools100_StockQtyControl.ColLoc]			= SetLoc;
+						SetData[0][Tools100_StockQtyControl.ColItemCd]			= SetItemCd;
+						SetData[0][Tools100_StockQtyControl.ColLot] 			= SetLot;
+						SetData[0][Tools100_StockQtyControl.ColExpdate] 		= SetExpdate;
+						SetData[0][Tools100_StockQtyControl.ColActualDate] 	= SetActualDate;
+						SetData[0][Tools100_StockQtyControl.ColControlQty] 	= SetAdjustQty;
+						
+						Object[][] StockQtyControlErr = Tools100_StockQtyControl.StockQtyControl(SetData) ;
+						if(0<StockQtyControlErr.length) {
+							String ErrMsg = "";
+							boolean EntryFg = false;
+							int EntryRow			= 0;
+							int BeforeQty			= 0;
+							int BeforeShipPlanQty	= 0;
+							int BeforePossibleQty	= 0;
+							int AdjustQty			= 0;
+							int AfterQty			= 0;
+							
+							
+							for(int i01=0;i01<StockQtyControlErr.length;i01++) {
+								if("EntryData".equals((String)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColErrType])){
+									EntryRow			= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColErrRow];
+									BeforeQty			= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColBeforeQty];
+									BeforeShipPlanQty	= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColBeforeShipPlanQty];
+									BeforePossibleQty	= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColBeforePossibleQty];
+									AdjustQty			= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColAdjustQty];
+									AfterQty			= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColAfterQty];
+									EntryFg = true;
+								}else{
+									String 	ErrType = (String)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColErrType];
+									String 	ErrVol 	= (String)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColErrVol];
+									int 	ErrRow	= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColErrRow]+1;
+									if(!"".equals(ErrMsg)) {
+										ErrMsg=ErrMsg+"\n";
+									}
+									ErrMsg = ErrMsg+ErrRow+"行目エラー  "+ErrType+":"+ErrVol;
+								}
+							}
+							if(EntryFg) {
+								//在庫調整結果を登録する
+								int[] AdjustNoRt = Tools100_Adjust.AdjustNoRt(1);
+								String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+								
+								Object[][] SetString = {
+										 	 {"ClCd"				,"1"	,"0"	,"Key"	,""+SetClCd}				//荷主コード
+											,{"WhCd"				,"1"	,"0"	,"Key"	,""+SetWhCd}				//倉庫コード
+											,{"AdjustNo"			,"1"	,"0"	,"Key"	,""+AdjustNoRt[0]}			//調整番号
+											,{"AdjustReasonCd"		,"1"	,"0"	,""		,""+SetAdjustReason}		//調整理由コード
+											,{"AdjustReasonName"	,"1"	,"0"	,""		,""+SetAdjustReasonName}	//調整理由名
+											,{"Adjustdate"			,"1"	,"0"	,""		,now_dtm}					//調整日
+											,{"Loc"					,"1"	,"0"	,""		,""+SetLoc}					//調整元ロケ
+											,{"ItemCd"				,"1"	,"0"	,""		,""+SetItemCd}				//調整元商品CD
+											,{"ItemName"			,"1"	,"0"	,""		,""+SetItemName}			//調整元商品名
+											,{"Lot"					,"1"	,"0"	,""		,""+SetLot}					//調整元ロット
+											,{"ExpDate"				,"1"	,"0"	,""		,""+SetExpdate}				//調整元賞味期限
+											,{"ActualDate"			,"1"	,"0"	,""		,""+SetActualDate}			//調整元入荷日
+											,{"BeforeQty"			,"1"	,"0"	,""		,""+BeforeQty}				//調整元在庫数
+											,{"ShipPlanQty"			,"1"	,"0"	,""		,""+BeforeShipPlanQty}		//調整元引当済数
+											,{"PossibleQty"			,"1"	,"0"	,""		,""+BeforePossibleQty}		//調整元出荷可能数
+											,{"AdjustQty"			,"1"	,"0"	,""		,""+AdjustQty}				//調整数
+											,{"AdjustCom01"			,"1"	,"0"	,""		,""+SetAdjustCom01}			//調整理由コメント01
+											,{"AdjustCom02"			,"1"	,"0"	,""		,""+SetAdjustCom02}			//調整理由コメント02
+											,{"AdjustCom03"			,"1"	,"0"	,""		,""+SetAdjustCom03}			//調整理由コメント03
+											,{"AfterQty"			,"1"	,"0"	,""		,""+AfterQty}				//調整後在庫数
+											,{"EntryDate"			,"1"	,"0"	,""		,now_dtm}					//登録日
+											,{"UpdateDate"			,"1"	,"0"	,""		,now_dtm}					//更新日
+											,{"EntryUser"			,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//登録者
+											,{"UpdateUser"			,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//更新者
+											};
+								
+								String tgt_table = "WW0016StockAdjust";
+								String TgtDB = "WANKO";
+								int non_msg_fg = 1;
+								
+								A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+								
+								SetX=main_fm.getX();
+								SetY=main_fm.getY();
+								
+								Loc_fm.setVisible(false);
+								Loc_fm.dispose();
+								
+								Item_fm.setVisible(false);
+								Item_fm.dispose();
+
+								main_fm.setVisible(false);
+								main_fm.dispose();
+								WT100_Stock_00_Search.StockSearch(0,0);
+							}else {
+								JOptionPane.showMessageDialog(null, ErrMsg);
+							}
+						}
+					}
 					RenewFg = true;
 				}
 			}
@@ -979,6 +1181,7 @@ public class WT100_Stock_10_Adjust{
 					String TgtExpdate		= B100_TextControl.TextToDate(TB_Expdate.getText());				//消費期限
 					String TgtActualDate	= B100_TextControl.TextToDate(TB_ActualDate.getText());			//入荷実績日
 					
+					
 					Object[] StockData	= StockDataRt(
 							TgtWhCd,
 							TgtClCd,
@@ -1048,7 +1251,15 @@ public class WT100_Stock_10_Adjust{
 							TB_LocType,
 							TB_AfterQty,
 							TB_AfterShipPlanQty,
-							TB_AfterPossibleQty
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty
 							);
 					
 					AdjustModeControl(
@@ -1062,7 +1273,41 @@ public class WT100_Stock_10_Adjust{
 							TB_CtAdjustQty,
 							TB_BrAdjustQty
 							);
-					
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
 					RenewFg = true;
 				}
 			}
@@ -1082,6 +1327,7 @@ public class WT100_Stock_10_Adjust{
 					String TgtExpdate		= B100_TextControl.TextToDate(TB_Expdate.getText());				//消費期限
 					String TgtActualDate	= B100_TextControl.TextToDate(TB_ActualDate.getText());			//入荷実績日
 					
+					
 					Object[] StockData	= StockDataRt(
 							TgtWhCd,
 							TgtClCd,
@@ -1151,7 +1397,15 @@ public class WT100_Stock_10_Adjust{
 							TB_LocType,
 							TB_AfterQty,
 							TB_AfterShipPlanQty,
-							TB_AfterPossibleQty
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty
 							);
 					
 					AdjustModeControl(
@@ -1165,7 +1419,41 @@ public class WT100_Stock_10_Adjust{
 							TB_CtAdjustQty,
 							TB_BrAdjustQty
 							);
-					
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
 					RenewFg = true;
 				}
 			}
@@ -1185,6 +1473,7 @@ public class WT100_Stock_10_Adjust{
 					String TgtExpdate		= B100_TextControl.TextToDate(TB_Expdate.getText());				//消費期限
 					String TgtActualDate	= B100_TextControl.TextToDate(TB_ActualDate.getText());			//入荷実績日
 					
+					
 					Object[] StockData	= StockDataRt(
 							TgtWhCd,
 							TgtClCd,
@@ -1254,7 +1543,15 @@ public class WT100_Stock_10_Adjust{
 							TB_LocType,
 							TB_AfterQty,
 							TB_AfterShipPlanQty,
-							TB_AfterPossibleQty
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty
 							);
 					
 					AdjustModeControl(
@@ -1268,7 +1565,41 @@ public class WT100_Stock_10_Adjust{
 							TB_CtAdjustQty,
 							TB_BrAdjustQty
 							);
-					
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
 					RenewFg = true;
 				}
 			}
@@ -1288,6 +1619,7 @@ public class WT100_Stock_10_Adjust{
 					String TgtExpdate		= B100_TextControl.TextToDate(TB_Expdate.getText());				//消費期限
 					String TgtActualDate	= B100_TextControl.TextToDate(TB_ActualDate.getText());			//入荷実績日
 					
+					
 					Object[] StockData	= StockDataRt(
 							TgtWhCd,
 							TgtClCd,
@@ -1357,7 +1689,15 @@ public class WT100_Stock_10_Adjust{
 							TB_LocType,
 							TB_AfterQty,
 							TB_AfterShipPlanQty,
-							TB_AfterPossibleQty
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty
 							);
 					
 					AdjustModeControl(
@@ -1371,7 +1711,41 @@ public class WT100_Stock_10_Adjust{
 							TB_CtAdjustQty,
 							TB_BrAdjustQty
 							);
-					
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
 					RenewFg = true;
 				}
 			}
@@ -1391,6 +1765,7 @@ public class WT100_Stock_10_Adjust{
 					String TgtExpdate		= B100_TextControl.TextToDate(TB_Expdate.getText());				//消費期限
 					String TgtActualDate	= B100_TextControl.TextToDate(TB_ActualDate.getText());			//入荷実績日
 					
+					
 					Object[] StockData	= StockDataRt(
 							TgtWhCd,
 							TgtClCd,
@@ -1460,7 +1835,15 @@ public class WT100_Stock_10_Adjust{
 							TB_LocType,
 							TB_AfterQty,
 							TB_AfterShipPlanQty,
-							TB_AfterPossibleQty
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty
 							);
 					
 					AdjustModeControl(
@@ -1474,7 +1857,41 @@ public class WT100_Stock_10_Adjust{
 							TB_CtAdjustQty,
 							TB_BrAdjustQty
 							);
-					
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
 					RenewFg = true;
 				}
 			}
@@ -1501,7 +1918,50 @@ public class WT100_Stock_10_Adjust{
 							TB_LocType,
 							TB_AfterQty,
 							TB_AfterShipPlanQty,
-							TB_AfterPossibleQty
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty
+							);
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
 							);
 					RenewFg = true;
 				}
@@ -1538,6 +1998,41 @@ public class WT100_Stock_10_Adjust{
 							TB_AfterCtQty,
 							TB_AfterBrQty
 							);
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
 					RenewFg = true;
 				}
 			}
@@ -1572,6 +2067,41 @@ public class WT100_Stock_10_Adjust{
 							TB_AfterCsQty,
 							TB_AfterCtQty,
 							TB_AfterBrQty
+							);
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
 							);
 					RenewFg = true;
 				}
@@ -1608,6 +2138,41 @@ public class WT100_Stock_10_Adjust{
 							TB_AfterCtQty,
 							TB_AfterBrQty
 							);
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
+							);
 					RenewFg = true;
 				}
 			}
@@ -1642,6 +2207,41 @@ public class WT100_Stock_10_Adjust{
 							TB_AfterCsQty,
 							TB_AfterCtQty,
 							TB_AfterBrQty
+							);
+					EntryCheckTB_ColorControl(
+							HandoverWhCd,
+							HandoverClCd,
+							HandoverLoc,
+							HandoverItemCd,
+							HandoverLot,
+							HandoverExpdate,
+							HandoverActualDate,
+							TB_ClCd,
+							TB_WhCd,
+							TB_Loc,
+							TB_ItemCd,
+							TB_Lot,
+							TB_Expdate,
+							TB_ActualDate,
+							TB_Qty,
+							TB_ShipPlanQty,
+							TB_PossibleQty,
+							TB_AfterQty,
+							TB_AfterShipPlanQty,
+							TB_AfterPossibleQty,
+							TB_BeforePlQty,
+							TB_BeforeCsQty,
+							TB_BeforeCtQty,
+							TB_BeforeBrQty,
+							TB_AfterPlQty,
+							TB_AfterCsQty,
+							TB_AfterCtQty,
+							TB_AfterBrQty,
+							TB_AdjustQty,
+							TB_PlAdjustQty,
+							TB_CsAdjustQty,
+							TB_CtAdjustQty,
+							TB_BrAdjustQty
 							);
 					RenewFg = true;
 				}
@@ -1686,6 +2286,155 @@ public class WT100_Stock_10_Adjust{
 			}
 		});
 	}
+	
+	private static void EntryCheckTB_ColorControl(
+			String HandoverWhCd,
+			String HandoverClCd,
+			String HandoverLoc,
+			String HandoverItemCd,
+			String HandoverLot,
+			String HandoverExpdate,
+			String HandoverActualDate,
+			JComboBox TB_ClCd,
+			JComboBox TB_WhCd,
+			JTextField TB_Loc,
+			JTextField TB_ItemCd,
+			JTextField TB_Lot,
+			JFormattedTextField TB_Expdate,
+			JFormattedTextField TB_ActualDate,
+			JFormattedTextField TB_Qty,
+			JFormattedTextField TB_ShipPlanQty,
+			JFormattedTextField TB_PossibleQty,
+			JFormattedTextField TB_AfterQty,
+			JFormattedTextField TB_AfterShipPlanQty,
+			JFormattedTextField TB_AfterPossibleQty,
+			JFormattedTextField TB_BeforePlQty,
+			JFormattedTextField TB_BeforeCsQty,
+			JFormattedTextField TB_BeforeCtQty,
+			JFormattedTextField TB_BeforeBrQty,
+			JFormattedTextField TB_AfterPlQty,
+			JFormattedTextField TB_AfterCsQty,
+			JFormattedTextField TB_AfterCtQty,
+			JFormattedTextField TB_AfterBrQty,
+			JFormattedTextField TB_AdjustQty,
+			JFormattedTextField TB_PlAdjustQty,
+			JFormattedTextField TB_CsAdjustQty,
+			JFormattedTextField TB_CtAdjustQty,
+			JFormattedTextField TB_BrAdjustQty
+			) {
+		String TgtWhCd			= B100_TextControl.Trim(B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
+		String TgtClCd			= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
+		String TgtLoc			= B100_TextControl.Trim(TB_Loc.getText());
+		String TgtItemCd		= B100_TextControl.Trim(TB_ItemCd.getText());
+		String TgtLot			= B100_TextControl.Trim(TB_Lot.getText());
+		String TgtExpdate		= B100_TextControl.TextToDate(TB_Expdate.getText());
+		String TgtActualDate	= B100_TextControl.TextToDate(TB_ActualDate.getText());
+		int TgtQty				= B100_TextControl.TextToInt(TB_Qty.getText());
+		int TgtShipPlanQty		= B100_TextControl.TextToInt(TB_ShipPlanQty.getText());
+		int TgtPossibleQty		= B100_TextControl.TextToInt(TB_PossibleQty.getText());
+		int TgtAfterQty			= B100_TextControl.TextToInt(TB_AfterQty.getText());
+		int TgtAfterShipPlanQty	= B100_TextControl.TextToInt(TB_AfterShipPlanQty.getText());
+		int TgtAfterPossibleQty	= B100_TextControl.TextToInt(TB_AfterPossibleQty.getText());
+		int TgtBeforePlQty		= B100_TextControl.TextToInt(TB_BeforePlQty.getText());
+		int TgtBeforeCsQty		= B100_TextControl.TextToInt(TB_BeforeCsQty.getText());
+		int TgtBeforeCtQty		= B100_TextControl.TextToInt(TB_BeforeCtQty.getText());
+		int TgtBeforeBrQty		= B100_TextControl.TextToInt(TB_BeforeBrQty.getText());
+		int TgtAfterPlQty		= B100_TextControl.TextToInt(TB_AfterPlQty.getText());
+		int TgtAfterCsQty		= B100_TextControl.TextToInt(TB_AfterCsQty.getText());
+		int TgtAfterCtQty		= B100_TextControl.TextToInt(TB_AfterCtQty.getText());
+		int TgtAfterBrQty		= B100_TextControl.TextToInt(TB_AfterBrQty.getText());
+		int TgtAdjustQty		= B100_TextControl.TextToInt(TB_AdjustQty.getText());
+		int TgtPlAdjustQty		= B100_TextControl.TextToInt(TB_PlAdjustQty.getText());
+		int TgtCsAdjustQty		= B100_TextControl.TextToInt(TB_CsAdjustQty.getText());
+		int TgtCtAdjustQty		= B100_TextControl.TextToInt(TB_CtAdjustQty.getText());
+		int TgtBrAdjustQty		= B100_TextControl.TextToInt(TB_BrAdjustQty.getText());
+		
+		TB_WhCd.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_ClCd.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_Loc.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_ItemCd.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_Lot.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_Expdate.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_ActualDate.setForeground(B100_FrameParts.SelectColer("Black"));
+		
+		
+		TB_AfterQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_AfterShipPlanQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_AfterPossibleQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_AfterPlQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_AfterCsQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_AfterCtQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_AfterBrQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		
+		TB_AdjustQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_PlAdjustQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_CsAdjustQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_CtAdjustQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		TB_BrAdjustQty.setForeground(B100_FrameParts.SelectColer("Black"));
+		
+		
+		if(null!=HandoverWhCd && !HandoverWhCd.equals(TgtWhCd)){
+			TB_WhCd.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(null!=HandoverClCd && !HandoverClCd.equals(TgtClCd)){
+			TB_ClCd.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(null!=HandoverLoc && !HandoverLoc.equals(TgtLoc)){
+			TB_Loc.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(null!=HandoverItemCd && !HandoverItemCd.equals(TgtItemCd)){
+			TB_ItemCd.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(null!=HandoverLot && !HandoverLot.equals(TgtLot)){
+			TB_Lot.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(null!=HandoverExpdate && !HandoverExpdate.equals(TgtExpdate)){
+			TB_Expdate.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(null!=HandoverActualDate && !HandoverActualDate.equals(TgtActualDate)){
+			TB_ActualDate.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		
+		if(TgtQty!=TgtAfterQty){
+			TB_AfterQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(TgtShipPlanQty!=TgtAfterShipPlanQty){
+			TB_AfterShipPlanQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(TgtPossibleQty!=TgtAfterPossibleQty){
+			TB_AfterPossibleQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(TgtBeforePlQty!=TgtAfterPlQty){
+			TB_AfterPlQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(TgtBeforeCsQty!=TgtAfterCsQty){
+			TB_AfterCsQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(TgtBeforeCtQty!=TgtAfterCtQty){
+			TB_AfterCtQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(TgtBeforeBrQty!=TgtAfterBrQty){
+			TB_AfterBrQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		
+		if(0!=TgtAdjustQty){
+			TB_AdjustQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(0!=TgtPlAdjustQty){
+			TB_PlAdjustQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(0!=TgtCsAdjustQty){
+			TB_CsAdjustQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(0!=TgtCtAdjustQty){
+			TB_CtAdjustQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+		if(0!=TgtBrAdjustQty){
+			TB_BrAdjustQty.setForeground(B100_FrameParts.SelectColer("Red"));
+		}
+	}
+	
+	
 	
 	private static void FramePartsVolSet(
 			Object[] StockData,
@@ -1898,7 +2647,15 @@ public class WT100_Stock_10_Adjust{
 			JComboBox TB_LocType,
 			JFormattedTextField TB_AfterQty,
 			JFormattedTextField TB_AfterShipPlanQty,
-			JFormattedTextField TB_AfterPossibleQty
+			JFormattedTextField TB_AfterPossibleQty,
+			JFormattedTextField TB_BeforePlQty,
+			JFormattedTextField TB_BeforeCsQty,
+			JFormattedTextField TB_BeforeCtQty,
+			JFormattedTextField TB_BeforeBrQty,
+			JFormattedTextField TB_AfterPlQty,
+			JFormattedTextField TB_AfterCsQty,
+			JFormattedTextField TB_AfterCtQty,
+			JFormattedTextField TB_AfterBrQty
 			) {
 		NumberFormat ni = NumberFormat.getNumberInstance();
 		int  SetPlUnitQty	= B100_TextControl.TextToInt(TB_PlUnitQty.getText());
@@ -1951,6 +2708,51 @@ public class WT100_Stock_10_Adjust{
 			TB_CtAdjustQty.setText(""+ni.format(CtAdjustQty));
 		}
 		TB_BrAdjustQty.setText(""+ni.format(AdjustQty));
+		
+		int BeforePlQty=0;
+		int BeforeCsQty=0;
+		int BeforeCtQty=0;
+		int BeforeBrQty=BeforeQty;
+		
+		if(0<SetPlUnitQty) {
+			BeforePlQty = (int)(BeforeBrQty/SetPlUnitQty);
+			BeforeBrQty = (int)(BeforeBrQty%SetPlUnitQty);
+		}
+		if(0<SetCsUnitQty) {
+			BeforeCsQty = (int)(BeforeBrQty/SetCsUnitQty);
+			BeforeBrQty = (int)(BeforeBrQty%SetCsUnitQty);
+		}
+		if(0<SetCtUnitQty) {
+			BeforeCtQty = (int)(BeforeBrQty/SetCtUnitQty);
+			BeforeBrQty = (int)(BeforeBrQty%SetCtUnitQty);
+		}
+		
+		TB_BeforePlQty.setText(""+ni.format(BeforePlQty));
+		TB_BeforeCsQty.setText(""+ni.format(BeforeCsQty));
+		TB_BeforeCtQty.setText(""+ni.format(BeforeCtQty));
+		TB_BeforeBrQty.setText(""+ni.format(BeforeBrQty));
+		
+		int AfterPlQty=0;
+		int AfterCsQty=0;
+		int AfterCtQty=0;
+		int AfterBrQty=AfterQty;
+		if(0<SetPlUnitQty) {
+			AfterPlQty = (int)(AfterBrQty/SetPlUnitQty);
+			AfterBrQty = (int)(AfterBrQty%SetPlUnitQty);
+		}
+		if(0<SetCsUnitQty) {
+			AfterCsQty = (int)(AfterBrQty/SetCsUnitQty);
+			AfterBrQty = (int)(AfterBrQty%SetCsUnitQty);
+		}
+		if(0<SetCtUnitQty) {
+			AfterCtQty = (int)(AfterBrQty/SetCtUnitQty);
+			AfterBrQty = (int)(AfterBrQty%SetCtUnitQty);
+		}
+		
+		TB_AfterPlQty.setText(""+ni.format(AfterPlQty));
+		TB_AfterCsQty.setText(""+ni.format(AfterCsQty));
+		TB_AfterCtQty.setText(""+ni.format(AfterCtQty));
+		TB_AfterBrQty.setText(""+ni.format(AfterBrQty));
 	}
 	
 	private static void AdjustFromUnitQty(
@@ -1996,7 +2798,7 @@ public class WT100_Stock_10_Adjust{
 		int BeforeShipPlanQty		= B100_TextControl.TextToInt(TB_ShipPlanQty.getText());
 		int BeforePossibleQty		= B100_TextControl.TextToInt(TB_PossibleQty.getText());
 		
-		int LocType	= B100_TextControl.TextToInt(B100_DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケータイプ
+		int LocType	= B100_TextControl.TextToInt(B100_DefaultVariable.LocType[1][TB_LocType.getSelectedIndex()]);	//ロケタイプ
 		
 		int AfterQty				= BeforeQty+AdjustQty;
 		int AfterShipPlanQty		= BeforeShipPlanQty;
@@ -2127,7 +2929,6 @@ public class WT100_Stock_10_Adjust{
 				&&!"".equals(TgtClCd)
 				&&!"".equals(TgtLoc)
 				&&!"".equals(TgtItemCd)
-				&&!"".equals(TgtLot)
 				&&!"".equals(TgtExpdate)
 				&&!"".equals(TgtActualDate)
 				) {
@@ -2237,11 +3038,11 @@ public class WT100_Stock_10_Adjust{
 		boolean AllSearch = false;														//全件検索
 		boolean SortItemcdMode = false;													//商品CDでソート
 		
-		if(!"".equals(TgtWhCd		)) {SearchWhCd.add(				TgtWhCd);}
-		if(!"".equals(TgtClCd		)) {SearchClCd.add(				TgtClCd);}
-		if(!"".equals(TgtLoc		)) {SearchLoc.add(				TgtLoc);}
-		if(!"".equals(TgtItemCd		)) {SearchItemCd.add(			TgtItemCd);}
-		if(!"".equals(TgtLot		)) {SearchLot.add(				TgtLot);}
+		SearchWhCd.add(				TgtWhCd);
+		SearchClCd.add(				TgtClCd);
+		SearchLoc.add(				TgtLoc);
+		SearchItemCd.add(			TgtItemCd);
+		SearchLot.add(				TgtLot);
 		if(!"".equals(TgtExpdate	)) {SearchExpdateMin.add(		TgtExpdate);}
 		if(!"".equals(TgtActualDate	)) {SearchActualDateMin.add(	TgtActualDate);}
 		if(!"".equals(TgtExpdate	)) {SearchExpdateMax.add(		TgtExpdate);}

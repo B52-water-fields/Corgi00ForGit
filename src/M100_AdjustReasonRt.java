@@ -31,12 +31,13 @@ public class M100_AdjustReasonRt{
 	String GetUpdateUser		= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColUpdateUser];		//更新者
 	
 	*/
-	static final int ColClCd					=  0;	//荷主コード
-	static final int ColCLName01				=  1;	//荷主名
-	static final int ColWhCd					=  2;	//倉庫コード
-	static final int ColWHName					=  3;	//倉庫名
-	static final int ColAdjustReasonCd		=  4;	//調整理由コード
-	static final int ColAdjustReasonName		=  5;	//調整理由名
+	
+	static final int ColCLName01				=  0;	//荷主名
+	static final int ColWHName					=  1;	//倉庫名
+	static final int ColAdjustReasonCd		=  2;	//調整理由コード
+	static final int ColAdjustReasonName		=  3;	//調整理由名
+	static final int ColWhCd					=  4;	//倉庫コード
+	static final int ColClCd					=  5;	//荷主コード
 	static final int ColEntryDate				=  6;	//登録日
 	static final int ColUpdateDate			=  7;	//更新日
 	static final int ColEntryUser				=  8;	//登録者
