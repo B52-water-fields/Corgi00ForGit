@@ -178,7 +178,7 @@ public class T100_StockRt{
 				,{"ItemName02"		,ColItemName02	,"String"	,"商品名2"						,""}
 				,{"ItemName03"		,ColItemName03	,"String"	,"商品名3"						,""}
 				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"				,""}
-				,{"JanCd"			,ColJanCd			,"String"	,"ソースマーク_BCD（バラ）"		,""}
+				,{"JanCd"			,ColJanCd			,"String"	,"バラBCD"						,""}
 				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"						,""}
 				,{"CtUnitQty"		,ColCtUnitQty		,"int"		,"カートン入数"					,""}
 				,{"CsUnitQty"		,ColCsUnitQty		,"int"		,"ケース入数"					,""}

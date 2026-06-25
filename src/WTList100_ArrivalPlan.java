@@ -464,15 +464,15 @@ public class WTList100_ArrivalPlan{
         SetText =  "賞味期限";
         contentStream = B100_PdfControl.TextSetBox(contentStream,140,(float)HeightStart-5-leading*7,100,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         
-        SetText =  "バラ数";
-        contentStream = B100_PdfControl.TextSetBox(contentStream,240,(float)HeightStart-5-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
-        SetText =  "ケース数";
-        contentStream = B100_PdfControl.TextSetBox(contentStream,240,(float)HeightStart-5-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        SetText =  "バラ";
+        contentStream = B100_PdfControl.TextSetBox(contentStream,240,(float)HeightStart-5-leading*6,80,leading,SetText,font,FontSize-5,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        SetText =  "ケース(バラ換算)";
+        contentStream = B100_PdfControl.TextSetBox(contentStream,240,(float)HeightStart-5-leading*7,80,leading,SetText,font,FontSize-5,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         
-        SetText =  "カートン数";
-        contentStream = B100_PdfControl.TextSetBox(contentStream,320,(float)HeightStart-5-leading*6,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
-        SetText =  "パレット数";
-        contentStream = B100_PdfControl.TextSetBox(contentStream,320,(float)HeightStart-5-leading*7,80,leading,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        SetText =  "カートン(バラ換算)";
+        contentStream = B100_PdfControl.TextSetBox(contentStream,320,(float)HeightStart-5-leading*6,80,leading,SetText,font,FontSize-5,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
+        SetText =  "パレット(バラ換算)";
+        contentStream = B100_PdfControl.TextSetBox(contentStream,320,(float)HeightStart-5-leading*7,80,leading,SetText,font,FontSize-5,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);
         
         SetText = "推奨ロケ";
         contentStream = B100_PdfControl.TextSetBox(contentStream,400,(float)HeightStart-5-leading*6,100,leading*2,SetText,font,FontSize-2,Color.BLACK,2,true,Color.BLACK,true,BackgroundColor);

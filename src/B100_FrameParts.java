@@ -136,6 +136,16 @@ public class B100_FrameParts{
 		return Entry_btn;
 	}
 	
+	public static JButton AnyBtn(int y,String TextSet,int TextSize) {
+		//任意ボタンを画面右(EXITボタンと縦に並ぶ位置)に配置
+		JButton Entry_btn=new JButton();
+		Entry_btn.setText(TextSet);
+		Entry_btn.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, TextSize*A00000_Main.Mul/A00000_Main.Div));
+		Entry_btn.setBounds((Width-140)*A00000_Main.Mul/A00000_Main.Div, y*A00000_Main.Mul/A00000_Main.Div, 100*A00000_Main.Mul/A00000_Main.Div, 20*A00000_Main.Mul/A00000_Main.Div);
+		
+		return Entry_btn;
+	}
+	
 	public static JButton BtnSet(int x,int y,int Width,int Height,String TextSet,int TextSize) {
 		//任意ボタンを指定位置に指定サイズで配置
 		if(0>=TextSize) {TextSize=11;}
