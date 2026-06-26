@@ -25,6 +25,48 @@ public class WT100_ArrivalPlan_00_Search{
 	static int SetX;
 	static int SetY;
 	static boolean RenewFg;
+	
+	static String DefaultSearchClWh;
+	static String DefaultSearchClCd;
+	static String DefaultSearchClGpCD;
+	static String DefaultSearchSpCd;
+	static String DefaultSearchArrNo;
+	static String DefaultSearchClArrNo;
+	static String DefaultSearchPlanDateMin;
+	static String DefaultSearchPlanDateMax;
+	static String DefaultSearchHdActualDateMin;
+	static String DefaultSearchHdActualDateMax;
+	static String DefaultSearchArCom;
+	
+	static String DefaultSearchItemCd;
+	static String DefaultSearchClItemCd;
+	static String DefaultSearchJanCd;
+	static String DefaultSearchItemMdNo;
+	static String DefaultSearchItemName;
+	static String DefaultSearchlot;
+	static String DefaultSearchExpDateMin;
+	static String DefaultSearchExpDateMax;
+	static String DefaultSearchActualDateMin;
+	static String DefaultSearchActualDateMax;
+	static String DefaultSearchCom;
+	static String DefaultSearchEntryUser;
+	static String DefaultSearchUpdateUser;
+	
+	static String DefaultSearchPlanQtyMin;
+	static String DefaultSearchPlanQtyMax;
+	static String DefaultSearchActualQtyMin;
+	static String DefaultSearchActualQtyMax;
+	static String DefaultSearchSpName;
+	static String DefaultSearchSpPost;
+	static String DefaultSearchSpAdd;
+	static String DefaultSearchSpTel;
+	static String DefaultSearchFixFg;
+	static String DefaultSearchEntryDateMin;
+	static String DefaultSearchEntryDateMax;
+	static String DefaultSearchUpdateDateMin;
+	static String DefaultSearchUpdateDateMax;
+	static String DefaultSearchArrNoList;
+	
 	public static void ArrivalPlanSearch(int x,int y) {
 		A00000_Main.LoginCheck();
 		if(0==SetX) {SetX=100;}
@@ -75,8 +117,8 @@ public class WT100_ArrivalPlan_00_Search{
 		JLabel LB_SearchSpTel			= B100_FrameParts.JLabelSet(680,175,100,20,"仕入先電話:"			,11,1);
 		JLabel LB_SearchFixFg			= B100_FrameParts.JLabelSet(680,200,100,20,"状況:"					,11,1);
 		JLabel LB_DateCom				= B100_FrameParts.JLabelSet(680,225,200,20,"↓YYYY/MM/DD HH:MM:SS"	,11,1);
-		JLabel LB_SearchEntryDate		= B100_FrameParts.JLabelSet(680,250,100,20,"登録日:"				,11,1);
-		JLabel LB_SearchUpdateDate		= B100_FrameParts.JLabelSet(680,275,100,20,"更新日:"				,11,1);
+		JLabel LB_SearchEntryDate		= B100_FrameParts.JLabelSet(580,250,100,20,"登録日:"				,11,1);
+		JLabel LB_SearchUpdateDate		= B100_FrameParts.JLabelSet(580,275,100,20,"更新日:"				,11,1);
 		
 		final JComboBox TB_SearchClWh						= B100_FrameParts.JComboBoxSet(				100, 25,240,20,B100_DefaultVariable.SearchWhList[0],11);				//ヘッダ担当倉庫
 		final JComboBox TB_SearchClCd						= B100_FrameParts.JComboBoxSet(				100, 50,240,20,B100_DefaultVariable.SearchClList[0],11);				//ヘッダ荷主CD
@@ -119,10 +161,10 @@ public class WT100_ArrivalPlan_00_Search{
 		final JTextField TB_SearchSpAdd						= B100_FrameParts.JTextFieldSet(				780,150,100,20,"",11,0);			//仕入先住所
 		final JTextField TB_SearchSpTel						= B100_FrameParts.JTextFieldSet(				780,175,100,20,"",11,0);			//仕入先電話
 		final JComboBox TB_SearchFixFg						= B100_FrameParts.JComboBoxSet(				780,200,150,20,B100_DefaultVariable.SearchArryvalFixFgList[0],11);		//状況 
-		final JFormattedTextField TB_SearchEntryDateMin		= B100_FrameParts.JFormattedTextFieldSet(	780,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
-		final JFormattedTextField TB_SearchEntryDateMax		= B100_FrameParts.JFormattedTextFieldSet(	950,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
-		final JFormattedTextField TB_SearchUpdateDateMin	= B100_FrameParts.JFormattedTextFieldSet(	780,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
-		final JFormattedTextField TB_SearchUpdateDateMax	= B100_FrameParts.JFormattedTextFieldSet(	950,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
+		final JFormattedTextField TB_SearchEntryDateMin		= B100_FrameParts.JFormattedTextFieldSet(	680,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
+		final JFormattedTextField TB_SearchEntryDateMax		= B100_FrameParts.JFormattedTextFieldSet(	850,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
+		final JFormattedTextField TB_SearchUpdateDateMin	= B100_FrameParts.JFormattedTextFieldSet(	680,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
+		final JFormattedTextField TB_SearchUpdateDateMax	= B100_FrameParts.JFormattedTextFieldSet(	850,275,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
 		
 		//検索条件　状況　初期値を未入荷に設定
 		TB_SearchFixFg.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchArryvalFixFgList[1]	,"0"));
@@ -152,14 +194,74 @@ public class WT100_ArrivalPlan_00_Search{
 		JLabel LB2_SearchSpPost			= B100_FrameParts.JLabelSet(880,125, 40,20,"で始る"	,10,0);
 		JLabel LB2_SearchSpAdd			= B100_FrameParts.JLabelSet(880,150, 40,20,"を含む"	,10,0);
 		JLabel LB2_SearchSpTel			= B100_FrameParts.JLabelSet(880,175, 40,20,"を含む"	,10,0);
-		JLabel LB2_SearchEntryDate		= B100_FrameParts.JLabelSet(930,250, 20,20,"～"		,10,2);
-		JLabel LB2_SearchUpdateDate		= B100_FrameParts.JLabelSet(930,275, 20,20,"～"		,10,2);
+		JLabel LB2_SearchEntryDate		= B100_FrameParts.JLabelSet(830,250, 20,20,"～"		,10,2);
+		JLabel LB2_SearchUpdateDate		= B100_FrameParts.JLabelSet(830,275, 20,20,"～"		,10,2);
 		
-		JLabel LB_ArrNoAny	= B100_FrameParts.JLabelSet(  950, 25,200,20,"入荷予定No複数指定",10,2);
+		//荷主切り替わっていたらデフォルト検索条件セットしない
+		boolean DefaultSetFg = true;
+		if(null==DefaultSearchClWh) {
+			DefaultSetFg=false;
+		}else if(!A00000_Main.ClWh.equals(DefaultSearchClWh)){
+			DefaultSetFg=false;
+		}
+		if(null==DefaultSearchClCd) {
+			DefaultSetFg=false;
+		}else if(!A00000_Main.ClCd.equals(DefaultSearchClCd)){
+			DefaultSetFg=false;
+		}
+		if(null==DefaultSearchClGpCD) {
+			DefaultSetFg=false;
+		}else if(!A00000_Main.ClGp.equals(DefaultSearchClGpCD)){
+			DefaultSetFg=false;
+		}
+		
+		//覚えた検索条件をセット
+		if(DefaultSetFg) {
+			if(null!=DefaultSearchSpCd				){TB_SearchSpCd.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.SearchSupplierList[1]	,DefaultSearchSpCd));}
+			if(null!=DefaultSearchArrNo				){TB_SearchArrNo.setText(DefaultSearchArrNo);}
+			if(null!=DefaultSearchClArrNo			){TB_SearchClArrNo.setText(DefaultSearchClArrNo);}
+			if(null!=DefaultSearchPlanDateMin		){TB_SearchPlanDateMin.setText(DefaultSearchPlanDateMin);}
+			if(null!=DefaultSearchPlanDateMax		){TB_SearchPlanDateMax.setText(DefaultSearchPlanDateMax);}
+			if(null!=DefaultSearchHdActualDateMin	){TB_SearchHdActualDateMin.setText(DefaultSearchHdActualDateMin);}
+			if(null!=DefaultSearchHdActualDateMax	){TB_SearchHdActualDateMax.setText(DefaultSearchHdActualDateMax);}
+			if(null!=DefaultSearchArCom				){TB_SearchArCom.setText(DefaultSearchArCom);}
+			
+			if(null!=DefaultSearchItemCd				){TB_SearchItemCd.setText(DefaultSearchItemCd);}
+			if(null!=DefaultSearchClItemCd			){TB_SearchClItemCd.setText(DefaultSearchClItemCd);}
+			if(null!=DefaultSearchJanCd				){TB_SearchJanCd.setText(DefaultSearchJanCd);}
+			if(null!=DefaultSearchItemMdNo			){TB_SearchItemMdNo.setText(DefaultSearchItemMdNo);}
+			if(null!=DefaultSearchItemName			){TB_SearchItemName.setText(DefaultSearchItemName);}
+			if(null!=DefaultSearchlot					){TB_Searchlot.setText(DefaultSearchlot);}
+			if(null!=DefaultSearchExpDateMin			){TB_SearchExpDateMin.setText(DefaultSearchExpDateMin);}
+			if(null!=DefaultSearchExpDateMax			){TB_SearchExpDateMax.setText(DefaultSearchExpDateMax);}
+			if(null!=DefaultSearchActualDateMin		){TB_SearchActualDateMin.setText(DefaultSearchActualDateMin);}
+			if(null!=DefaultSearchActualDateMax		){TB_SearchActualDateMax.setText(DefaultSearchActualDateMax);}
+			if(null!=DefaultSearchCom					){TB_SearchCom.setText(DefaultSearchCom);}
+			if(null!=DefaultSearchEntryUser			){TB_SearchEntryUser.setText(DefaultSearchEntryUser);}
+			if(null!=DefaultSearchUpdateUser			){TB_SearchUpdateUser.setText(DefaultSearchUpdateUser);}
+			
+			if(null!=DefaultSearchPlanQtyMin			){TB_SearchPlanQtyMin.setText(DefaultSearchPlanQtyMin);}
+			if(null!=DefaultSearchPlanQtyMax			){TB_SearchPlanQtyMax.setText(DefaultSearchPlanQtyMax);}
+			if(null!=DefaultSearchActualQtyMin		){TB_SearchActualQtyMin.setText(DefaultSearchActualQtyMin);}
+			if(null!=DefaultSearchActualQtyMax		){TB_SearchActualQtyMax.setText(DefaultSearchActualQtyMax);}
+			if(null!=DefaultSearchSpName				){TB_SearchSpName.setText(DefaultSearchSpName);}
+			if(null!=DefaultSearchSpPost				){TB_SearchSpPost.setText(DefaultSearchSpPost);}
+			if(null!=DefaultSearchSpAdd				){TB_SearchSpAdd.setText(DefaultSearchSpAdd);}
+			if(null!=DefaultSearchSpTel				){TB_SearchSpTel.setText(DefaultSearchSpTel);}
+			if(null!=DefaultSearchFixFg				){TB_SearchFixFg.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.SearchArryvalFixFgList[1]	,DefaultSearchFixFg));}
+			if(null!=DefaultSearchEntryDateMin		){TB_SearchEntryDateMin.setText(DefaultSearchEntryDateMin);}
+			if(null!=DefaultSearchEntryDateMax		){TB_SearchEntryDateMax.setText(DefaultSearchEntryDateMax);}
+			if(null!=DefaultSearchUpdateDateMin		){TB_SearchUpdateDateMin.setText(DefaultSearchUpdateDateMin);}
+			if(null!=DefaultSearchUpdateDateMax		){TB_SearchUpdateDateMax.setText(DefaultSearchUpdateDateMax);}
+		}
+		
+		JLabel LB_ArrNoAny	= B100_FrameParts.JLabelSet(  950, 50,200,20,"↓入荷予定No複数指定",10,2);
 		final JTextArea TB_ArrNoAny	= B100_FrameParts.JTextAreaSet(11);
-		JScrollPane SPArrNoAny 	= B100_FrameParts.JScrollPaneSet(950,50,200,175,TB_ArrNoAny);
+		JScrollPane SPArrNoAny 	= B100_FrameParts.JScrollPaneSet(950,75,200,150,TB_ArrNoAny);
 		PN_Search.add(LB_ArrNoAny);
 		PN_Search.add(SPArrNoAny);
+		
+		if(null!=DefaultSearchArrNoList) {TB_ArrNoAny.setText(DefaultSearchArrNoList);}
 		
 		//予定日進む戻るボタン
 		JButton SearchPlanDateMinAfterBtn	= B100_FrameParts.BtnSet(170,175, 40,10,"▲",6);
@@ -527,11 +629,11 @@ public class WT100_ArrivalPlan_00_Search{
 		TB_SearchClGpCD.setEnabled(false);		//ヘッダ荷主グループCD
 		
 		//検索ボタン
-		JButton SearchBtn 		= B100_FrameParts.BtnSet(100,275,100,20,"検索",11);
+		JButton SearchBtn 		= B100_FrameParts.BtnSet(1050,275,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		//条件クリアボタン
-		JButton SearchCrearBtn 	= B100_FrameParts.BtnSet(100,0,100,20,"条件クリア",10);
+		JButton SearchCrearBtn 	= B100_FrameParts.BtnSet(1050,25,100,20,"条件クリア",10);
 		PN_Search.add(SearchCrearBtn);
 		
 		Object[][] RtArrivalPlanHdRt = T100_ArrivalPlanHdRt.RtArrivalPlanHdRt();
@@ -578,14 +680,18 @@ public class WT100_ArrivalPlan_00_Search{
 		
 		
 		//CSVボタン
-		JButton CsvBtn = B100_FrameParts.BtnSet(			 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100_FrameParts.BtnSet(			 10,660,100,20,"ヘッダcsv出力",10);
 		main_fm.add(CsvBtn);
+		
+		//明細付CSVボタン
+		JButton MsCsvBtn = B100_FrameParts.BtnSet(			 10,685,100,20,"明細付csv出力",10);
+		main_fm.add(MsCsvBtn);
 		
 		JLabel LB_RenewBtn  = B100_FrameParts.JLabelSet(	130,640,100,20,"チェック行を" ,11,2);
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B100_FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100_FrameParts.BtnSet(			130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
@@ -597,7 +703,7 @@ public class WT100_ArrivalPlan_00_Search{
 		main_fm.add(SomeCreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B100_FrameParts.BtnSet(		490,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100_FrameParts.BtnSet(			490,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン
@@ -672,6 +778,7 @@ public class WT100_ArrivalPlan_00_Search{
 					}
 					/**************************************************************
 					検索条件取得
+					
 					***************************************************************/
 					String GetSearchClWh			= B100_DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];			//ヘッダ担当倉庫
 					String GetSearchClCd			= B100_DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];			//ヘッダ荷主CD
@@ -759,8 +866,54 @@ public class WT100_ArrivalPlan_00_Search{
 					if(!"".equals(GetSearchActualQtyMax	)){GetSearchActualQtyMax	= B100_TextControl.num_only_String02(GetSearchActualQtyMax);}
 					if(!"".equals(GetSearchFixFg		)){GetSearchFixFg			= B100_TextControl.num_only_String02(GetSearchFixFg);}
 					
+					//次に訪れた時の為に検索条件覚える
+					DefaultSearchClWh					= GetSearchClWh;
+					DefaultSearchClCd					= GetSearchClCd;
+					DefaultSearchClGpCD				= GetSearchClGpCD;
+					DefaultSearchSpCd					= GetSearchSpCd;
+					DefaultSearchArrNo				= GetSearchArrNo;
+					DefaultSearchClArrNo				= GetSearchClArrNo;
+					DefaultSearchPlanDateMin		= GetSearchPlanDateMin;
+					DefaultSearchPlanDateMax		= GetSearchPlanDateMax;
+					DefaultSearchHdActualDateMin	= GetSearchHdActualDateMin;
+					DefaultSearchHdActualDateMax	= GetSearchHdActualDateMax;
+					DefaultSearchArCom				= GetSearchArCom;
+					
+					DefaultSearchItemCd				= GetSearchItemCd;
+					DefaultSearchClItemCd			= GetSearchClItemCd;
+					DefaultSearchJanCd				= GetSearchJanCd;
+					DefaultSearchItemMdNo			= GetSearchItemMdNo;
+					DefaultSearchItemName			= GetSearchItemName;
+					DefaultSearchlot					= GetSearchlot;
+					DefaultSearchExpDateMin			= GetSearchExpDateMin;
+					DefaultSearchExpDateMax			= GetSearchExpDateMax;
+					DefaultSearchActualDateMin		= GetSearchActualDateMin;
+					DefaultSearchActualDateMax		= GetSearchActualDateMax;
+					DefaultSearchCom					= GetSearchCom;
+					DefaultSearchEntryUser			= GetSearchEntryUser;
+					DefaultSearchUpdateUser			= GetSearchUpdateUser;
+					
+					DefaultSearchPlanQtyMin			= GetSearchPlanQtyMin;
+					DefaultSearchPlanQtyMax			= GetSearchPlanQtyMax;
+					DefaultSearchActualQtyMin		= GetSearchActualQtyMin;
+					DefaultSearchActualQtyMax		= GetSearchActualQtyMax;
+					DefaultSearchSpName				= GetSearchSpName;
+					DefaultSearchSpPost				= GetSearchSpPost;
+					DefaultSearchSpAdd				= GetSearchSpAdd;
+					DefaultSearchSpTel				= GetSearchSpTel;
+					DefaultSearchFixFg				= GetSearchFixFg;
+					DefaultSearchEntryDateMin		= GetSearchEntryDateMin;
+					DefaultSearchEntryDateMax		= GetSearchEntryDateMax;
+					DefaultSearchUpdateDateMin		= GetSearchUpdateDateMin;
+					DefaultSearchUpdateDateMax		= GetSearchUpdateDateMax;
+					
+					
 					String WST = TB_ArrNoAny.getText();
-					if(null==WST) {WST="";}
+					if(null==WST) {
+						WST="";
+					}else {
+						DefaultSearchArrNoList = WST;
+					}
 					String[] GetArrNoAny	= WST.split("\n");
 					for(int i=0;i<GetArrNoAny.length;i++) {
 						GetArrNoAny[i]	= B100_TextControl.Trim(GetArrNoAny[i]);
@@ -1019,6 +1172,27 @@ public class WT100_ArrivalPlan_00_Search{
 				if(RenewFg) {
 					RenewFg = false;
 					B100_TableControl.TableOutPutCsv("出力先選択","入荷予定検（ヘッダ）検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//明細付CSVボタン押下時の挙動
+		MsCsvBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = tableModel_ms01.getRowCount();
+					
+					ArrayList<String> SearchClWh			= new ArrayList<String>();		//ヘッダ担当倉庫
+					ArrayList<String> SearchClCd			= new ArrayList<String>();		//ヘッダ荷主CD
+					ArrayList<String> SearchClGpCD			= new ArrayList<String>();		//ヘッダ荷主グループCD
+					ArrayList<String> SearchArrNo			= new ArrayList<String>();		//ヘッダ入荷予定NO
+					
+					
+					
+					
+					
 					RenewFg = true;
 				}
 			}

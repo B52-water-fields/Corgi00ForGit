@@ -26,6 +26,10 @@ public class WT100_Stock_00_Search{
 	static int SetY;
 	static boolean RenewFg;
 	
+	
+	static String DefaultSearchClCd;
+	static String DefaultSearchWhCd;
+	static String DefaultSearchClGpCD;
 	static String DefaultSearchItemCd;
 	static String DefaultSearchItemName;
 	static String DefaultSearchClItemCd;
@@ -146,29 +150,49 @@ public class WT100_Stock_00_Search{
 		TB_SearchWhCd.setEnabled(false);	//倉庫コード
 		TB_SearchClGpCD.setEnabled(false);	//荷主グループ
 		
-		if(null!=DefaultSearchItemCd				) {TB_SearchItemCd.setText(DefaultSearchItemCd);}
-		if(null!=DefaultSearchItemName			) {TB_SearchItemName.setText(DefaultSearchItemName);}
-		if(null!=DefaultSearchClItemCd			) {TB_SearchClItemCd.setText(DefaultSearchClItemCd);}
-		if(null!=DefaultSearchJanCd				) {TB_SearchJanCd.setText(DefaultSearchJanCd);}
-		if(null!=DefaultSearchItemMdNo			) {TB_SearchItemMdNo.setText(DefaultSearchItemMdNo);}
-		if(null!=DefaultSearchLot					) {TB_SearchLot.setText(DefaultSearchLot);}
-		if(null!=DefaultSearchExpdateMin			) {TB_SearchExpdateMin.setText(DefaultSearchExpdateMin);}
-		if(null!=DefaultSearchExpdateMax			) {TB_SearchExpdateMax.setText(DefaultSearchExpdateMax);}
-		if(null!=DefaultSearchActualDateMin		) {TB_SearchActualDateMin.setText(DefaultSearchActualDateMin);}
-		if(null!=DefaultSearchActualDateMax		) {TB_SearchActualDateMax.setText(DefaultSearchActualDateMax);}
-		
-		if(null!=DefaultSearchLoc					) {TB_SearchLoc.setText(DefaultSearchLoc);}
-		if(null!=DefaultSearchType				) {TB_SearchType.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchLocType[1],DefaultSearchType));}
-		if(null!=DefaultSearchQtyMin				) {TB_SearchQtyMin.setText(DefaultSearchQtyMin);}
-		if(null!=DefaultSearchQtyMax				) {TB_SearchQtyMax.setText(DefaultSearchQtyMax);}
-		if(null!=DefaultSearchShipPlanQtyMin	) {TB_SearchShipPlanQtyMin.setText(DefaultSearchShipPlanQtyMin);}
-		if(null!=DefaultSearchShipPlanQtyMax	) {TB_SearchShipPlanQtyMax.setText(DefaultSearchShipPlanQtyMax);}
-		if(null!=DefaultSearchPossibleQtyMin	) {TB_SearchPossibleQtyMin.setText(DefaultSearchPossibleQtyMin);}
-		if(null!=GDefaultSearchPossibleQtyMax	) {TB_SearchPossibleQtyMax.setText(GDefaultSearchPossibleQtyMax);}
-		
-		if(DefaultSearchLotWhitespace			){TB_SearchLotWhitespace.setSelected(true);}else {TB_SearchLotWhitespace.setSelected(false);}
-		if(DefaultLocExactMatch					){TB_LocExactMatch.setSelectedIndex(1);}else {TB_LocExactMatch.setSelectedIndex(0);}
-		if(DefaultSortItemcdMode					){TB_SortItemcdMode.setSelectedIndex(1);}else{TB_SortItemcdMode.setSelectedIndex(0);}
+		//荷主切り替わっていたらデフォルト検索条件セットしない
+		boolean DefaultSetFg = true;
+		if(null==DefaultSearchWhCd) {
+			DefaultSetFg=false;
+		}else if(!A00000_Main.ClWh.equals(DefaultSearchWhCd)){
+			DefaultSetFg=false;
+		}
+		if(null==DefaultSearchClCd) {
+			DefaultSetFg=false;
+		}else if(!A00000_Main.ClCd.equals(DefaultSearchClCd)){
+			DefaultSetFg=false;
+		}
+		if(null==DefaultSearchClGpCD) {
+			DefaultSetFg=false;
+		}else if(!A00000_Main.ClGp.equals(DefaultSearchClGpCD)){
+			DefaultSetFg=false;
+		}
+		//覚えた検索条件をセット
+		if(DefaultSetFg) {
+			if(null!=DefaultSearchItemCd				) {TB_SearchItemCd.setText(DefaultSearchItemCd);}
+			if(null!=DefaultSearchItemName			) {TB_SearchItemName.setText(DefaultSearchItemName);}
+			if(null!=DefaultSearchClItemCd			) {TB_SearchClItemCd.setText(DefaultSearchClItemCd);}
+			if(null!=DefaultSearchJanCd				) {TB_SearchJanCd.setText(DefaultSearchJanCd);}
+			if(null!=DefaultSearchItemMdNo			) {TB_SearchItemMdNo.setText(DefaultSearchItemMdNo);}
+			if(null!=DefaultSearchLot					) {TB_SearchLot.setText(DefaultSearchLot);}
+			if(null!=DefaultSearchExpdateMin			) {TB_SearchExpdateMin.setText(DefaultSearchExpdateMin);}
+			if(null!=DefaultSearchExpdateMax			) {TB_SearchExpdateMax.setText(DefaultSearchExpdateMax);}
+			if(null!=DefaultSearchActualDateMin		) {TB_SearchActualDateMin.setText(DefaultSearchActualDateMin);}
+			if(null!=DefaultSearchActualDateMax		) {TB_SearchActualDateMax.setText(DefaultSearchActualDateMax);}
+			
+			if(null!=DefaultSearchLoc					) {TB_SearchLoc.setText(DefaultSearchLoc);}
+			if(null!=DefaultSearchType				) {TB_SearchType.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchLocType[1],DefaultSearchType));}
+			if(null!=DefaultSearchQtyMin				) {TB_SearchQtyMin.setText(DefaultSearchQtyMin);}
+			if(null!=DefaultSearchQtyMax				) {TB_SearchQtyMax.setText(DefaultSearchQtyMax);}
+			if(null!=DefaultSearchShipPlanQtyMin	) {TB_SearchShipPlanQtyMin.setText(DefaultSearchShipPlanQtyMin);}
+			if(null!=DefaultSearchShipPlanQtyMax	) {TB_SearchShipPlanQtyMax.setText(DefaultSearchShipPlanQtyMax);}
+			if(null!=DefaultSearchPossibleQtyMin	) {TB_SearchPossibleQtyMin.setText(DefaultSearchPossibleQtyMin);}
+			if(null!=GDefaultSearchPossibleQtyMax	) {TB_SearchPossibleQtyMax.setText(GDefaultSearchPossibleQtyMax);}
+			
+			if(DefaultSearchLotWhitespace			){TB_SearchLotWhitespace.setSelected(true);}else {TB_SearchLotWhitespace.setSelected(false);}
+			if(DefaultLocExactMatch					){TB_LocExactMatch.setSelectedIndex(1);}else {TB_LocExactMatch.setSelectedIndex(0);}
+			if(DefaultSortItemcdMode					){TB_SortItemcdMode.setSelectedIndex(1);}else{TB_SortItemcdMode.setSelectedIndex(0);}
+		}
 		
 		//消費期限進む戻るボタン
 		JButton SearchExpdateMinAfterBtn	= B100_FrameParts.BtnSet(470,175, 40,10,"▲",6);
@@ -405,7 +429,7 @@ public class WT100_Stock_00_Search{
 		main_fm.add(PN_Search);
 		
 		//検索ボタン
-		JButton SearchBtn 		= B100_FrameParts.BtnSet(		760,200,100,20,"検索",11);
+		JButton SearchBtn 		= B100_FrameParts.BtnSet(		1050,200,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		//条件クリアボタン
@@ -1015,29 +1039,32 @@ public class WT100_Stock_00_Search{
 					
 					
 					//次に訪れた時の為に検索条件覚える
-					DefaultSearchItemCd= GetSearchItemCd;
-					DefaultSearchItemName= GetSearchItemName;
-					DefaultSearchClItemCd= GetSearchClItemCd;
-					DefaultSearchJanCd= GetSearchJanCd;
-					DefaultSearchItemMdNo= GetSearchItemMdNo;
-					DefaultSearchLot= GetSearchLot;
-					DefaultSearchExpdateMin= GetSearchExpdateMin;
-					DefaultSearchExpdateMax= GetSearchExpdateMax;
-					DefaultSearchActualDateMin= GetSearchActualDateMin;
-					DefaultSearchActualDateMax= GetSearchActualDateMax;
+					DefaultSearchClCd					= GetSearchClCd;
+					DefaultSearchWhCd					= GetSearchWhCd;
+					DefaultSearchClGpCD				= GetSearchClGpCD;
+					DefaultSearchItemCd				= GetSearchItemCd;
+					DefaultSearchItemName			= GetSearchItemName;
+					DefaultSearchClItemCd			= GetSearchClItemCd;
+					DefaultSearchJanCd				= GetSearchJanCd;
+					DefaultSearchItemMdNo			= GetSearchItemMdNo;
+					DefaultSearchLot					= GetSearchLot;
+					DefaultSearchExpdateMin			= GetSearchExpdateMin;
+					DefaultSearchExpdateMax			= GetSearchExpdateMax;
+					DefaultSearchActualDateMin		= GetSearchActualDateMin;
+					DefaultSearchActualDateMax		= GetSearchActualDateMax;
 					
-					DefaultSearchLoc= GetSearchLoc;
-					DefaultSearchType= GetSearchType;
-					DefaultSearchQtyMin= GetSearchQtyMin;
-					DefaultSearchQtyMax= GetSearchShipPlanQtyMax;
-					DefaultSearchShipPlanQtyMin= GetSearchShipPlanQtyMin;
-					DefaultSearchShipPlanQtyMax= GetSearchShipPlanQtyMax;
-					DefaultSearchPossibleQtyMin= GetSearchPossibleQtyMin;
-					GDefaultSearchPossibleQtyMax= GetSearchPossibleQtyMax;
+					DefaultSearchLoc					= GetSearchLoc;
+					DefaultSearchType					= GetSearchType;
+					DefaultSearchQtyMin				= GetSearchQtyMin;
+					DefaultSearchQtyMax				= GetSearchShipPlanQtyMax;
+					DefaultSearchShipPlanQtyMin		= GetSearchShipPlanQtyMin;
+					DefaultSearchShipPlanQtyMax		= GetSearchShipPlanQtyMax;
+					DefaultSearchPossibleQtyMin		= GetSearchPossibleQtyMin;
+					GDefaultSearchPossibleQtyMax	= GetSearchPossibleQtyMax;
 					
-					DefaultSearchLotWhitespace = GetSearchLotWhitespace;
-					DefaultLocExactMatch=false;
-					DefaultSortItemcdMode=false;
+					DefaultSearchLotWhitespace 		= GetSearchLotWhitespace;
+					DefaultLocExactMatch				=false;
+					DefaultSortItemcdMode			=false;
 					
 					ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主コード
 					ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード

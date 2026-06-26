@@ -31,7 +31,7 @@ public class WT100_StockAdjust_00_Search{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,800,820,"Corgi00在庫調整検索","ZK");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,850,820,"Corgi00在庫調整検索","ZK");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		
@@ -39,7 +39,7 @@ public class WT100_StockAdjust_00_Search{
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,760,300,"White");
+		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,810,300,"White");
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
 		String[] LocExactMatchList = {"で始まる","と一致"};
 		
@@ -361,11 +361,11 @@ public class WT100_StockAdjust_00_Search{
 		
 		
 		//検索ボタン
-		JButton SearchBtn 		= B100_FrameParts.BtnSet(		580,250,100,20,"検索",11);
+		JButton SearchBtn 		= B100_FrameParts.BtnSet(		700,250,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
 		//条件クリアボタン
-		JButton SearchCrearBtn 	= B100_FrameParts.BtnSet(		130,0,100,20,"条件クリア",10);
+		JButton SearchCrearBtn 	= B100_FrameParts.BtnSet(		700, 25,100,20,"条件クリア",10);
 		PN_Search.add(SearchCrearBtn);
 		
 		Object[][] RtAdjustRt = T100_AdjustRt.RtAdjustRt();
@@ -404,7 +404,7 @@ public class WT100_StockAdjust_00_Search{
 			}
 		}
 		//スクロール用設定
-		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,350,760,365,tb01);
+		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,350,810,365,tb01);
 		main_fm.add(scpn01);
 		
 		PN_Search.add(PN_SearchLabel);
