@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.swing.JFormattedTextField;
+
 public class B100_DateTimeControl{
 	//日付や時刻に対して定型的な処理を行うクラス
 	// ==========================================================================
@@ -690,8 +692,32 @@ public class B100_DateTimeControl{
 				rt = "";
 			}
 		}
-		
 		return rt;
 	}
-
+	public static void BeforeDateSet(JFormattedTextField TgtJFormattedTextField) {
+		//対象TgtJFormattedTextFieldの日付を一日前にセットする　※空白であれば当日をセット
+		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
+		String GetDate = TgtJFormattedTextField.getText();
+		String SetDate = NowDate;
+		if(null==GetDate||"".equals(GetDate)) {
+		}else {
+			Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
+			WT				= B100_DateTimeControl.ndate_before(WT, 1);
+			SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
+		}
+		TgtJFormattedTextField.setText(SetDate);
+	}
+	public static void AfterDateSet(JFormattedTextField TgtJFormattedTextField) {
+		//対象TgtJFormattedTextFieldの日付を一日後にセットする　※空白であれば当日をセット
+		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
+		String GetDate = TgtJFormattedTextField.getText();
+		String SetDate = NowDate;
+		if(null==GetDate||"".equals(GetDate)) {
+		}else {
+			Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
+			WT				= B100_DateTimeControl.ndate_after(WT, 1);
+			SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
+		}
+		TgtJFormattedTextField.setText(SetDate);
+	}
 }

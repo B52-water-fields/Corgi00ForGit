@@ -1,6 +1,5 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -110,58 +109,22 @@ public class WT100_StockAdjust_00_Search{
 		//調整日進む戻るボタン押下事の挙動
 		SearchAdjustdateMinAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchAdjustdateMin.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_after(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchAdjustdateMin.setText(SetDate);
+				B100_DateTimeControl.AfterDateSet(TB_SearchAdjustdateMin);
 			}
 		});
 		SearchAdjustdateMinBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchAdjustdateMin.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_before(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchAdjustdateMin.setText(SetDate);
+				B100_DateTimeControl.BeforeDateSet(TB_SearchAdjustdateMin);
 			}
 		});
 		SearchAdjustdateMaxAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchAdjustdateMax.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_after(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchAdjustdateMax.setText(SetDate);
+				B100_DateTimeControl.AfterDateSet(TB_SearchAdjustdateMax);
 			}
 		});
 		SearchAdjustdateMaxBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchAdjustdateMax.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_before(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchAdjustdateMax.setText(SetDate);
+				B100_DateTimeControl.BeforeDateSet(TB_SearchAdjustdateMax);
 			}
 		});
 		
@@ -174,61 +137,26 @@ public class WT100_StockAdjust_00_Search{
 		PN_Search.add(SearchExpDateMinBeforeBtn);
 		PN_Search.add(SearchExpDateMaxAfterBtn);
 		PN_Search.add(SearchExpDateMaxBeforeBtn);
+		
 		//賞味期限日進む戻るボタン押下事の挙動
 		SearchExpDateMinAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchExpDateMin.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_after(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchExpDateMin.setText(SetDate);
+				B100_DateTimeControl.AfterDateSet(TB_SearchExpDateMin);
 			}
 		});
 		SearchExpDateMinBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchExpDateMin.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_before(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchExpDateMin.setText(SetDate);
+				B100_DateTimeControl.BeforeDateSet(TB_SearchExpDateMin);
 			}
 		});
 		SearchExpDateMaxAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchExpDateMax.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_after(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchExpDateMax.setText(SetDate);
+				B100_DateTimeControl.AfterDateSet(TB_SearchExpDateMax);
 			}
 		});
 		SearchExpDateMaxBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchExpDateMax.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_before(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchExpDateMax.setText(SetDate);
+				B100_DateTimeControl.BeforeDateSet(TB_SearchExpDateMax);
 			}
 		});
 		//入荷実績日進む戻るボタン
@@ -243,58 +171,22 @@ public class WT100_StockAdjust_00_Search{
 		//実績日進む戻るボタン押下事の挙動
 		SearchActualDateMinAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchActualDateMin.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_after(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchActualDateMin.setText(SetDate);
+				B100_DateTimeControl.AfterDateSet(TB_SearchActualDateMin);
 			}
 		});
 		SearchActualDateMinBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchActualDateMin.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_before(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchActualDateMin.setText(SetDate);
+				B100_DateTimeControl.BeforeDateSet(TB_SearchActualDateMin);
 			}
 		});
 		SearchActualDateMaxAfterBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchActualDateMax.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_after(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchActualDateMax.setText(SetDate);
+				B100_DateTimeControl.AfterDateSet(TB_SearchActualDateMax);
 			}
 		});
 		SearchActualDateMaxBeforeBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
-				String GetDate = TB_SearchActualDateMax.getText();
-				String SetDate = NowDate;
-				if(null==GetDate||"".equals(GetDate)) {
-				}else {
-					Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
-					WT				= B100_DateTimeControl.ndate_before(WT, 1);
-					SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
-				}
-				TB_SearchActualDateMax.setText(SetDate);
+				B100_DateTimeControl.BeforeDateSet(TB_SearchActualDateMax);
 			}
 		});
 		

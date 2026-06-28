@@ -795,6 +795,8 @@ public class T100_StockRt{
 				counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
+					//在庫の戻り値はいろいろ計算するのでB100_RtObjectCreateではなく個別に作成
+					
 					if(null==rset01.getString("ClCd"			)){rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}		//荷主コード
 					if(null==rset01.getString("CLName"			)){rt[counter][ColCLName]			="";}else{rt[counter][ColCLName]		=rset01.getString("CLName");}	//荷主名1
 					if(null==rset01.getString("WhCd"			)){rt[counter][ColWhCd]			="";}else{rt[counter][ColWhCd]			=rset01.getString("WhCd");}		//倉庫コード

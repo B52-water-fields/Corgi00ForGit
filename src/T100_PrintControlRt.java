@@ -316,28 +316,8 @@ public class T100_PrintControlRt{
 		
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-				rt = new Object[counter][RtPrintControlRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("PrintCd"			)){rt[counter][ColPrintCd]			="";}else{rt[counter][ColPrintCd]		=rset01.getString("PrintCd");}			//印刷帳票CD
-					if(null==rset01.getString("OkuriNo"			)){rt[counter][ColOkuriNo]			="";}else{rt[counter][ColOkuriNo]		=rset01.getString("OkuriNo");}			//送り状番号等
-					if(null==rset01.getString("Key01"			)){rt[counter][ColKey01]			="";}else{rt[counter][ColKey01]		=rset01.getString("Key01");}			//サブキー01
-					if(null==rset01.getString("Key02"			)){rt[counter][ColKey02]			="";}else{rt[counter][ColKey02]		=rset01.getString("Key02");}			//サブキー02
-					if(null==rset01.getString("Key03"			)){rt[counter][ColKey03]			="";}else{rt[counter][ColKey03]		=rset01.getString("Key03");}			//サブキー03
-					if(null==rset01.getString("Key04"			)){rt[counter][ColKey04]			="";}else{rt[counter][ColKey04]		=rset01.getString("Key04");}			//サブキー04
-					if(null==rset01.getTimestamp("EntryDate"	)){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
-					if(null==rset01.getTimestamp("UpdateDate"	)){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
-					if(null==rset01.getString("EntryUser"		)){rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}		//登録者
-					if(null==rset01.getString("UpdateUser"		)){rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}		//更新者
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtPrintControlRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

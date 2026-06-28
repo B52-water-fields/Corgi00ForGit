@@ -701,40 +701,8 @@ public class T100_AdjustRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-				rt = new Object[counter][RtAdjustRt.length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					for(int i01=0;i01<RtAdjustRt.length;i01++) {
-						switch((String)RtAdjustRt[i01][2]) {
-							case "String":
-								if(null==rset01.getString((String)RtAdjustRt[i01][0])) {rt[counter][(int)RtAdjustRt[i01][1]]="";}else {rt[counter][(int)RtAdjustRt[i01][1]]=rset01.getString((String)RtAdjustRt[i01][0]);}
-								break;
-							case "int":
-								rt[counter][(int)RtAdjustRt[i01][1]]=rset01.getInt((String)RtAdjustRt[i01][0]);
-								break;
-							case "float":
-								rt[counter][(int)RtAdjustRt[i01][1]]=rset01.getFloat((String)RtAdjustRt[i01][0]);
-								break;
-							case "Date":
-								if(null==rset01.getTimestamp((String)RtAdjustRt[i01][0])){rt[counter][(int)RtAdjustRt[i01][1]]="";}else{rt[counter][(int)RtAdjustRt[i01][1]]=B100_DateTimeControl.dtmString2(rset01.getTimestamp((String)RtAdjustRt[i01][0]))[0];}
-								break;
-							case "DateTime":
-								if(null==rset01.getTimestamp((String)RtAdjustRt[i01][0])){rt[counter][(int)RtAdjustRt[i01][1]]="";}else{rt[counter][(int)RtAdjustRt[i01][1]]=B100_DateTimeControl.dtmString2(rset01.getTimestamp((String)RtAdjustRt[i01][0]))[1];}
-								break;
-							default:
-								if(null==rset01.getString((String)RtAdjustRt[i01][0])) {rt[counter][(int)RtAdjustRt[i01][1]]="";}else {rt[counter][(int)RtAdjustRt[i01][1]]=rset01.getString((String)RtAdjustRt[i01][0]);}
-								break;
-						}
-					}
-					counter=counter+1;
-				}
-
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtAdjustRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

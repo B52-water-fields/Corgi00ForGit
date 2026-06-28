@@ -155,6 +155,7 @@ public class T100_ArrivalPlanHdRt{
 	static final int ColFixFg			= 25;		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
 	static final int ColPlanQty		= 26;		//実績数合計
 	static final int ColActualQty		= 27;		//予定数合計
+	static final int ColMsCount		= 28;		//明細行数
 	
 	public static Object[][] RtArrivalPlanHdRt(
 			){
@@ -166,8 +167,8 @@ public class T100_ArrivalPlanHdRt{
 				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ名1"}
 				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"}
 				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"}
-				,{"PlanDate"		,ColPlanDate		,"DateTime"	,"ヘッダ入荷予定日"}
-				,{"HdActualDate"	,ColActualDate	,"DateTime"	,"ヘッダ入荷実績日"}
+				,{"PlanDate"		,ColPlanDate		,"Date"		,"ヘッダ入荷予定日"}
+				,{"ActualDate"		,ColActualDate	,"DateTime"	,"ヘッダ入荷実績日"}
 				,{"SpCd"			,ColSpCd			,"String"	,"ヘッダ仕入先CD"}
 				,{"SpName01"		,ColSpName01		,"String"	,"ヘッダ仕入先名01"}
 				,{"SpName02"		,ColSpName02		,"String"	,"ヘッダ仕入先名02"}
@@ -180,13 +181,14 @@ public class T100_ArrivalPlanHdRt{
 				,{"ArCom01"			,ColArCom01		,"String"	,"ヘッダコメント1"}
 				,{"ArCom02"			,ColArCom02		,"String"	,"ヘッダコメント2"}
 				,{"ArCom03"			,ColArCom03		,"String"	,"ヘッダコメント3"}
-				,{"HdEntryDate"		,ColEntryDate		,"DateTime"	,"ヘッダ登録日"}
-				,{"HdUpdateDate"	,ColUpdateDate	,"DateTime"	,"ヘッダ更新日"}
-				,{"HdEntryUser"		,ColEntryUser		,"String"	,"ヘッダ登録者"}
-				,{"HdUpdateUser"	,ColUpdateUser	,"String"	,"ヘッダ更新者"}
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"ヘッダ登録日"}
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"ヘッダ更新日"}
+				,{"EntryUser"		,ColEntryUser		,"String"	,"ヘッダ登録者"}
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"ヘッダ更新者"}
 				,{"FixFg"			,ColFixFg			,"int"		,"ヘッダ状況"}
 				,{"PlanQty"			,ColPlanQty		,"int"		,"予定数合計"}
 				,{"ActualQty"		,ColActualQty		,"int"		,"実績数合計"}
+				,{"MsCount"			,ColMsCount		,"int"		,"明細行数"}
 				};
 		return RtArrivalPlanHdRt;
 	}
@@ -347,8 +349,8 @@ public class T100_ArrivalPlanHdRt{
 					+"max(WW0010ArrivalPlanHd.UpdateUser)  as UpdateUser,\n"		//ヘッダ更新者
 					+"max(WW0010ArrivalPlanHd.FixFg)       as FixFg,\n"				//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
 					+"sum(WW0011ArrivalPlanMs.PlanQty)     as PlanQty,\n"			//予定数合計
-					+"sum(WW0011ArrivalPlanMs.ActualQty)   as ActualQty\n"			//実績数合計
-					
+					+"sum(WW0011ArrivalPlanMs.ActualQty)   as ActualQty,\n"			//実績数合計
+					+"count(WW0011ArrivalPlanMs.ArrNo)     as MsCount"				//明細行数
 					+" from "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0011ArrivalPlanMs \n"
 					+" left outer join "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0010ArrivalPlanHd \n"
 					+" on(WW0011ArrivalPlanMs.ClWh = WW0010ArrivalPlanHd.ClWh"
@@ -1013,45 +1015,8 @@ public class T100_ArrivalPlanHdRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-				rt = new Object[counter][RtArrivalPlanHdRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("ClWh"			)){rt[counter][ColClWh]			="";}else{rt[counter][ColClWh]			=rset01.getString("ClWh");}			//ヘッダ担当倉庫
-					if(null==rset01.getString("ClCd"			)){rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//ヘッダ荷主CD
-					if(null==rset01.getString("CLName01"		)){rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}		//ヘッダ荷主名
-					if(null==rset01.getString("ClGpCD"			)){rt[counter][ColClGpCD]			="";}else{rt[counter][ColClGpCD]		=rset01.getString("ClGpCD");}		//ヘッダ荷主グループCD
-					if(null==rset01.getString("CLGpName01"		)){rt[counter][ColCLGpName01]		="";}else{rt[counter][ColCLGpName01]	=rset01.getString("CLGpName01");}	//ヘッダ荷主グループ名1
-					if(null==rset01.getString("ArrNo"			)){rt[counter][ColArrNo]			="";}else{rt[counter][ColArrNo]			=rset01.getString("ArrNo");}		//ヘッダ入荷予定NO（WMS採番）
-					if(null==rset01.getString("ClArrNo"			)){rt[counter][ColClArrNo]			="";}else{rt[counter][ColClArrNo]		=rset01.getString("ClArrNo");}		//ヘッダ荷主予定番号
-					if(null==rset01.getTimestamp("PlanDate"		)){rt[counter][ColPlanDate]		="";}else{rt[counter][ColPlanDate]		=B100_DateTimeControl.dtmString2(rset01.getTimestamp("PlanDate"))[0];}			//ヘッダ入荷予定日
-					if(null==rset01.getTimestamp("ActualDate"	)){rt[counter][ColActualDate]		="";}else{rt[counter][ColActualDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("ActualDate"))[1];}		//ヘッダ入荷実績日
-					if(null==rset01.getString("SpCd"			)){rt[counter][ColSpCd]			="";}else{rt[counter][ColSpCd]			=rset01.getString("SpCd");}			//ヘッダ仕入先CD
-					if(null==rset01.getString("SpName01"		)){rt[counter][ColSpName01]		="";}else{rt[counter][ColSpName01]		=rset01.getString("SpName01");}		//ヘッダ仕入先名01
-					if(null==rset01.getString("SpName02"		)){rt[counter][ColSpName02]		="";}else{rt[counter][ColSpName02]		=rset01.getString("SpName02");}		//ヘッダ仕入先名02
-					if(null==rset01.getString("SpName03"		)){rt[counter][ColSpName03]		="";}else{rt[counter][ColSpName03]		=rset01.getString("SpName03");}		//ヘッダ仕入先名03
-					if(null==rset01.getString("SpPost"			)){rt[counter][ColSpPost]			="";}else{rt[counter][ColSpPost]		=rset01.getString("SpPost");}		//ヘッダ仕入先郵便
-					if(null==rset01.getString("SpAdd01"			)){rt[counter][ColSpAdd01]			="";}else{rt[counter][ColSpAdd01]		=rset01.getString("SpAdd01");}		//ヘッダ仕入先住所01
-					if(null==rset01.getString("SpAdd02"			)){rt[counter][ColSpAdd02]			="";}else{rt[counter][ColSpAdd02]		=rset01.getString("SpAdd02");}		//ヘッダ仕入先住所02
-					if(null==rset01.getString("SpAdd03"			)){rt[counter][ColSpAdd03]			="";}else{rt[counter][ColSpAdd03]		=rset01.getString("SpAdd03");}		//ヘッダ仕入先住所03
-					if(null==rset01.getString("SpTel"			)){rt[counter][ColSpTel]			="";}else{rt[counter][ColSpTel]			=rset01.getString("SpTel");}		//ヘッダ仕入先電話
-					if(null==rset01.getString("ArCom01"			)){rt[counter][ColArCom01]			="";}else{rt[counter][ColArCom01]		=rset01.getString("ArCom01");}		//ヘッダコメント1
-					if(null==rset01.getString("ArCom02"			)){rt[counter][ColArCom02]			="";}else{rt[counter][ColArCom02]		=rset01.getString("ArCom02");}		//ヘッダコメント2
-					if(null==rset01.getString("ArCom03"			)){rt[counter][ColArCom03]			="";}else{rt[counter][ColArCom03]		=rset01.getString("ArCom03");}		//ヘッダコメント3
-					if(null==rset01.getTimestamp("EntryDate"	)){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//ヘッダ登録日
-					if(null==rset01.getTimestamp("UpdateDate"	)){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//ヘッダ更新日
-					if(null==rset01.getString("EntryUser"		)){rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}	//ヘッダ登録者
-					if(null==rset01.getString("UpdateUser"		)){rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}	//ヘッダ更新者
-					rt[counter][ColFixFg]		=rset01.getInt("FixFg");		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
-					rt[counter][ColPlanQty]	=rset01.getInt("PlanQty");		//予定数合計
-					rt[counter][ColActualQty]	=rset01.getInt("ActualQty");	//実績数合計
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtArrivalPlanHdRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {
