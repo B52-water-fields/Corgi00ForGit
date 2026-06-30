@@ -98,47 +98,46 @@ public class T100_AdjustRt{
 	String GetUpdateUser		= (String)AdjustRt[i][T100_AdjustRt.ColUpdateUser];
 	*/
 	
-	
 	static final int ColAdjustNo				= 0;		//調整番号
-	static final int ColAdjustReasonCd		= 1;		//調整理由コード
-	static final int ColAdjustReasonName		= 2;		//調整理由名
-	static final int ColAdjustdate			= 3;		//調整日
-	static final int ColLoc					= 4;		//調整元ロケ
-	static final int ColLocName				= 5;		//ロケーション名
-	static final int ColType					= 6;		//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-	static final int ColItemCd					= 7;		//調整元商品CD
-	static final int ColItemName				= 8;		//調整元商品名
-	static final int ColLot					= 9;	 	//調整元ロット
-	static final int ColExpDate				=10;		//調整元賞味期限
-	static final int ColAdjustQty				=11;		//調整数
-	static final int ColAfterQty				=12;		//調整後在庫数
-	static final int ColItemName01			=13;		//商品名1
-	static final int ColItemName02			=14;		//商品名2
-	static final int ColItemName03			=15;		//商品名3
-	static final int ColCtUnitQty				=16;		//カートン入数
-	static final int ColCsUnitQty				=17;		//ケース入数
-	static final int ColPlUnitQty				=18;		//パレット入数
-	static final int ColUnitName				=19;		//商品単位
-	static final int ColCtUnitName			=20;		//カートン商品単位
-	static final int ColCsUnitName			=21;		//ケース商品単位
-	static final int ColPlUnitName			=22;		//パレット商品単位
-	static final int ColActualDate			=23;		//調整元入荷日
-	static final int ColBeforeQty				=24;		//調整元在庫数
-	static final int ColShipPlanQty			=25;		//調整元引当済数
-	static final int ColPossibleQty			=26;		//調整元出荷可能数
-	static final int ColAdjustCom01			=27;		//調整理由コメント01
-	static final int ColAdjustCom02			=28;		//調整理由コメント02
-	static final int ColAdjustCom03			=29;		//調整理由コメント03
-	static final int ColClCd					=30;		//荷主コード
-	static final int ColCLName					=31;		//荷主名1
-	static final int ColWhCd					=32;		//倉庫コード
-	static final int ColClWHName				=33;		//担当倉庫名
-	static final int ColClGpCD					=34;		//荷主グループCD
-	static final int ColClGpName				=35;		//グループ名1
-	static final int ColEntryDate				=36;		//登録日
-	static final int ColUpdateDate			=37;		//更新日
-	static final int ColEntryUser				=38;		//登録者
-	static final int ColUpdateUser			=39;		//更新者
+	static final int ColAdjustReasonName		= 1;		//調整理由名
+	static final int ColAdjustdate			= 2;		//調整日
+	static final int ColLoc					= 3;		//調整元ロケ
+	static final int ColLocName				= 4;		//ロケーション名
+	static final int ColItemCd					= 5;		//調整元商品CD
+	static final int ColItemName				= 6;		//調整元商品名
+	static final int ColLot					= 7;	 	//調整元ロット
+	static final int ColExpDate				= 8;		//調整元賞味期限
+	static final int ColAdjustQty				= 9;		//調整数
+	static final int ColAfterQty				=10;		//調整後在庫数
+	static final int ColCtUnitQty				=11;		//カートン入数
+	static final int ColCsUnitQty				=12;		//ケース入数
+	static final int ColPlUnitQty				=13;		//パレット入数
+	static final int ColUnitName				=14;		//商品単位
+	static final int ColCtUnitName			=15;		//カートン商品単位
+	static final int ColCsUnitName			=16;		//ケース商品単位
+	static final int ColPlUnitName			=17;		//パレット商品単位
+	static final int ColActualDate			=18;		//調整元入荷日
+	static final int ColBeforeQty				=19;		//調整元在庫数
+	static final int ColShipPlanQty			=20;		//調整元引当済数
+	static final int ColPossibleQty			=21;		//調整元出荷可能数
+	static final int ColAdjustCom01			=22;		//調整理由コメント01
+	static final int ColAdjustCom02			=23;		//調整理由コメント02
+	static final int ColAdjustCom03			=24;		//調整理由コメント03
+	static final int ColClCd					=25;		//荷主コード
+	static final int ColCLName					=26;		//荷主名1
+	static final int ColWhCd					=27;		//倉庫コード
+	static final int ColClWHName				=28;		//担当倉庫名
+	static final int ColClGpCD					=29;		//荷主グループCD
+	static final int ColClGpName				=30;		//グループ名1
+	static final int ColEntryDate				=31;		//登録日
+	static final int ColUpdateDate			=32;		//更新日
+	static final int ColEntryUser				=33;		//登録者
+	static final int ColUpdateUser			=34;		//更新者
+	static final int ColType					=35;		//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	static final int ColItemName01			=36;		//商品名1
+	static final int ColItemName02			=37;		//商品名2
+	static final int ColItemName03			=38;		//商品名3
+	static final int ColAdjustReasonCd		=39;		//調整理由コードstatic final int ColAdjustReasonCd		=36;		//調整理由コード
 	public static Object[][] RtAdjustRt(){
 		Object[][] RtAdjustRt = {
 				 {"ClCd"			,ColClCd				,"String"	,"荷主コード"				,"key"}
@@ -154,8 +153,8 @@ public class T100_AdjustRt{
 				,{"Loc"				,ColLoc				,"String"	,"調整元ロケ"				,""}
 				,{"LocName"			,ColLocName			,"String"	,"ロケーション名"			,""}
 				,{"Type"			,ColType				,"int"		,"ロケタイプ"				,""}
-				,{"ItemCd"			,ColItemCd				,"String"	,"調整商品CD"				,""}
-				,{"ItemName"		,ColItemName			,"String"	,"調整元商品名"				,""}
+				,{"ItemCd"			,ColItemCd				,"String"	,"商品CD"					,""}
+				,{"ItemName"		,ColItemName			,"String"	,"商品名"					,""}
 				,{"ItemName01"		,ColItemName01		,"String"	,"商品名1"					,""}
 				,{"ItemName02"		,ColItemName02		,"String"	,"商品名2"					,""}
 				,{"ItemName03"		,ColItemName03		,"String"	,"商品名3"					,""}

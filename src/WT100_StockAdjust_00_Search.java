@@ -191,9 +191,9 @@ public class WT100_StockAdjust_00_Search{
 		});
 		
 		//現在ログイン中の荷主情報選択済みにする
-		TB_SearchClWh.setSelectedIndex(		GetSelectIndex(B100_DefaultVariable.SearchWhList[1]		,A00000_Main.ClWh));			//ヘッダ担当倉庫
-		TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B100_DefaultVariable.SearchClList[1]		,A00000_Main.ClCd));			//ヘッダ荷主CD
-		TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.SearchClGpList[1]	,A00000_Main.ClGp));			//ヘッダ荷主グループCD
+		TB_SearchClWh.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1]		,A00000_Main.ClWh,true));			//ヘッダ担当倉庫
+		TB_SearchClCd.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1]		,A00000_Main.ClCd,true));			//ヘッダ荷主CD
+		TB_SearchClGpCD.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1]		,A00000_Main.ClGp,true));			//ヘッダ荷主グループCD
 		
 		TB_SearchClWh.setEnabled(false);
 		TB_SearchClCd.setEnabled(false);
@@ -444,9 +444,9 @@ public class WT100_StockAdjust_00_Search{
 					for(int i=0;i<RowCount;i++) {
 						tableModel_ms01.removeRow(0);
 					}
-					TB_SearchClWh.setSelectedIndex(		GetSelectIndex(B100_DefaultVariable.SearchWhList[1]		,A00000_Main.ClWh));			//ヘッダ担当倉庫
-					TB_SearchClCd.setSelectedIndex(		GetSelectIndex(B100_DefaultVariable.SearchClList[1]		,A00000_Main.ClCd));			//ヘッダ荷主CD
-					TB_SearchClGpCD.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.SearchClGpList[1]	,A00000_Main.ClGp));			//ヘッダ荷主グループCD
+					TB_SearchClWh.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1]		,A00000_Main.ClWh,true));			//ヘッダ担当倉庫
+					TB_SearchClCd.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1]		,A00000_Main.ClCd,true));			//ヘッダ荷主CD
+					TB_SearchClGpCD.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1]		,A00000_Main.ClGp,true));			//ヘッダ荷主グループCD
 					TB_SearchType.setSelectedIndex(0);		//ロケタイプ
 					TB_LocExactMatch.setSelectedIndex(0);	//ロケーション完全一致
 					
@@ -523,16 +523,5 @@ public class WT100_StockAdjust_00_Search{
 				A00001_WorkMain.WorkMain(0,0);
 			}
 		});
-	}
-	
-	private static int GetSelectIndex(String[] SelectList,String TgtData ) {
-		int rt = 0;
-		for(int i=0;i<SelectList.length;i++) {
-			if(TgtData.equals(SelectList[i])) {
-				rt	= i;
-				i	= SelectList.length+1;
-			}
-		}
-		return rt;
 	}
 }

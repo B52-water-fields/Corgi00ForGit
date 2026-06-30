@@ -306,6 +306,11 @@ public class A00000_Main{
 		if(null==LoginUserId||null==LoginUserWH
 				||"".equals(LoginUserId)||"".equals(LoginUserWH)) {
 			EndPg();
+		}else {
+			//なにかと邪魔になるので在庫数ゼロの在庫データを削除する
+			if(null!=ClWh && null!=ClCd && !"".equals(ClWh) && !"".equals(ClCd)) {
+				Tools100_StockZeroDelete.StockZeroDelete(ClCd,ClWh);
+			}
 		}
 	}
     

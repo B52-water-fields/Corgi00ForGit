@@ -47,8 +47,8 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		final JComboBox TB_ClWh	= B100_FrameParts.JComboBoxSet(	650, 50,200,20,B100_DefaultVariable.WhList[0],11);			//担当倉庫
 		final JComboBox TB_ClCd	= B100_FrameParts.JComboBoxSet(	650, 75,200,20,B100_DefaultVariable.ClList[0],11);			//荷主CD
 		
-		TB_ClWh.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.WhList[1],A00000_Main.ClWh));
-		TB_ClCd.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.ClList[1],A00000_Main.ClCd));
+		TB_ClWh.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1],A00000_Main.ClWh,true));
+		TB_ClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1],A00000_Main.ClCd,true));
 		
 		TB_ClWh.setEnabled(false);
 		TB_ClCd.setEnabled(false);
@@ -234,17 +234,4 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 			}
 		});
 	}
-	
-	private static int GetSelectIndex(String[] SelectList,String TgtData ) {
-		int rt = 0;
-		for(int i=0;i<SelectList.length;i++) {
-			if(TgtData.equals(SelectList[i])) {
-				rt	= i;
-				i	= SelectList.length+1;
-			}
-		}
-		return rt;
-	}
-	
-	
 }

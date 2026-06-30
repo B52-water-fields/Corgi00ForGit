@@ -43,29 +43,21 @@ public class Tools100_StockQtyControl{
 	"EntryData"		：登録成功
 	----------------------------------------------------------------------------------------------------------------------------*/
 	
-	public static void Test() {
-		//サンプル用のテスト
-		Object[][] SetData = {
-							 {"AT0000001","0000","10101012","123","B","3000/01/01","1941/12/08",1000}
-							,{"AT0000001","0000","LOC01","127","H","3000/01/01","1941/12/08",-1000000}
-							,{"AT0000001","0000","LOC01","123","H","3000/01/01","1941/12/08",1000}
-							,{"AT0000001","0000","LOC03","127","H","3000/01/01","1941/12/08",-1000000}
-							,{"AT0000001","0000","LOC03","123","C","3000/01/01","1941/12/08",1000}
-							,{"AT0000001","0000","LOC02","123","H","3000/01/01","1941/12/08",1000}
-							,{"AT0000001","0000","LOC03","123","C","3000/01/01","1941/12/08",1000}
-							,{"AT0000001","0000","AAA01","123","H","3000/01/01","1941/12/08",1000}
-							,{"AT0000001","0000","LOC01","ABBBC","H","3000/01/01","1941/12/08",1000}
+	public static Object[][] StockQtyControlDataLayout() {
+		Object[][] Layout = {
+							 {"ClCd"		,ColClCd			,"String"	,"荷主コード"}
+							,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"}
+							,{"Loc"			,ColLoc			,"String"	,"ロケーション"}
+							,{"ItemCd"		,ColItemCd			,"String"	,"商品コード"}
+							,{"Lot"			,ColLot			,"String"	,"ロット"}
+							,{"Expdate"		,ColExpdate		,"Date"		,"消費期限"}
+							,{"ActualDate"	,ColActualDate	,"Date"		,"入荷実績日"}
+							,{"ControlQty"	,ColControlQty	,"int"		,"調整数"}
 							};
-		Object[][] StockQtyControlErr = StockQtyControl(SetData) ;
-		
-		for(int i01=0;i01<StockQtyControlErr.length;i01++) {
-			String WST = "";
-			for(int i02=0;i02<StockQtyControlErr[i01].length;i02++) {
-				WST = WST+StockQtyControlErr[i01][i02]+":";
-			}
-			System.out.println(WST);
-		}
+		return Layout;
 	}
+	
+	
 	
 	static final int ColClCd			= 0;
 	static final int ColWhCd			= 1;
@@ -132,19 +124,7 @@ public class Tools100_StockQtyControl{
 	static final int RtColAfterQty			= 7;
 
 	
-	public static Object[][] StockQtyControlDataLayout() {
-		Object[][] Layout = {
-							 {"ClCd"		,ColClCd			,"String"	,"荷主コード"}
-							,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"}
-							,{"Loc"			,ColLoc			,"String"	,"ロケーション"}
-							,{"ItemCd"		,ColItemCd			,"String"	,"商品コード"}
-							,{"Lot"			,ColLot			,"String"	,"ロット"}
-							,{"Expdate"		,ColExpdate		,"Date"		,"消費期限"}
-							,{"ActualDate"	,ColActualDate	,"Date"		,"入荷実績日"}
-							,{"ControlQty"	,ColControlQty	,"int"		,"調整数"}
-							};
-		return Layout;
-	}
+	
 	
 	public static Object[][] StockQtyControl(Object[][] TgtData) {
 		Object[][] rt = new Object[0][8];

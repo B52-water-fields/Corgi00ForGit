@@ -27,4 +27,70 @@ public class B100_ArrayListControl{
 		}
 		return rt;
 	}
+	
+	/*************************************************
+	B100_ArrayListControl.ArryListGetRow(TgtArrayList,TgtData,UnHitZeroMode)
+	
+	　String 又はIntegerの配列要素に対して
+	　比較値と最初に一致した行番号を返却する
+		UnHitZeroMode=trueなら一致行なければ0を返却（0行目で一致しても0が返るので注意）
+		UnHitZeroMode=falseなら一致行なければ-1を返却
+	
+	*************************************************/
+	
+	public static int ArryListGetRow(ArrayList<String> TgtArrayList,String TgtData,boolean UnHitZeroMode) {
+		int rt = -1;
+		if(UnHitZeroMode) {rt = 0;}
+		if(null!=TgtArrayList&&null!=TgtData) {
+			for(int i=0;i<TgtArrayList.size();i++) {
+				if(TgtData.equals(TgtArrayList.get(i))) {
+					rt = i;
+					i=TgtArrayList.size()+1;
+				}
+			}
+		}
+		return rt;
+	}
+	
+	public static int ArryListGetRow(String[] TgtArrayList,String TgtData,boolean UnHitZeroMode) {
+		int rt = -1;
+		if(UnHitZeroMode) {rt = 0;}
+		if(null!=TgtArrayList&&null!=TgtData) {
+			for(int i=0;i<TgtArrayList.length;i++) {
+				if(TgtData.equals(TgtArrayList[i])) {
+					rt = i;
+					i=TgtArrayList.length+1;
+				}
+			}
+		}
+		return rt;
+	}
+	
+	public static int ArryListGetRow(ArrayList<Integer> TgtArrayList,int TgtData,boolean UnHitZeroMode) {
+		int rt = -1;
+		if(UnHitZeroMode) {rt = 0;}
+		if(null!=TgtArrayList) {
+			for(int i=0;i<TgtArrayList.size();i++) {
+				if(TgtData==TgtArrayList.get(i)) {
+					rt = i;
+					i=TgtArrayList.size()+1;
+				}
+			}
+		}
+		return rt;
+	}
+	
+	public static int ArryListGetRow(int[] TgtArrayList,int TgtData,boolean UnHitZeroMode) {
+		int rt = -1;
+		if(UnHitZeroMode) {rt = 0;}
+		if(null!=TgtArrayList) {
+			for(int i=0;i<TgtArrayList.length;i++) {
+				if(TgtData==TgtArrayList[i]) {
+					rt = i;
+					i=TgtArrayList.length+1;
+				}
+			}
+		}
+		return rt;
+	}
 }

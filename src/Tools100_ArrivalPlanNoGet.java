@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Tools100_ArrivalPlan{
+public class Tools100_ArrivalPlanNoGet{
 	public static int[] ArrivalPlanNoRt(int NeedCount) {
 		ParameterMstWankoCheck();
 		Object[][] ParameterMstRt = ParameterMstRt();

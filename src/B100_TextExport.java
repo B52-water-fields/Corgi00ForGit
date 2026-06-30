@@ -13,29 +13,29 @@ public class B100_TextExport{
     // ==========================================================================
 	//このクラスは外部連携用にテキストデータを吐き出すクラスです
 	//
-	//txt_exp(ArrayList<String> line_txt,String fp,String TxtType)
+	//B100_TextExport.txt_exp(ArrayList<String> line_txt,String fp,String TxtType)
 	//			:行ごとのArrayListを受け取って、指定されたパスにテキストデータ出力する
 	//			 ※UTF-8はBOM無で生成されます
 	//			 出力後完了メッセージが出ます
-	//txt_exp2(ArrayList<String> line_txt,String fp,String TxtType)
+	//B100_TextExport.txt_exp2(ArrayList<String> line_txt,String fp,String TxtType)
 	//			:行ごとのArrayListを受け取って、指定されたパスにテキストデータ出力する
 	//			 ※UTF-8はBOM有で生成されます
 	//			 出力後完了メッセージが出ます
 	//
-	//txt_exp3(ArrayList<String> line_txt,String fp)
+	//B100_TextExport.txt_exp3(ArrayList<String> line_txt,String fp)
 	//			:行ごとのArrayListを受け取って、指定されたパスにテキストデータ出力する
 	//			 ※UTF-8はBOM無で生成されます
 	//			 出力後完了メッセージは出ません。ひっそり終了します
-	//txt_exp4(ArrayList<String> line_txt,String fp,String TxtType)
+	//B100_TextExport.txt_exp4(ArrayList<String> line_txt,String fp,String TxtType)
 	//			:行ごとのArrayListを受け取って、指定されたパスにテキストデータ出力する
 	//			 ※UTF-8はBOM有で生成されます
 	//			 出力後完了メッセージは出ません。ひっそり終了します
 	//
-	//create_csv(String[][] OUTPUT_DATA,String fp,String TxtType)
+	//B100_TextExport.create_csv(String[][] OUTPUT_DATA,String fp,String TxtType)
 	//			:二次元配列を受け取って、指定されたパスにcsvデータ出力する
 	//			 ※UTF-8はBOM有で生成されます
 	//			 出力後完了メッセージが出ます
-	//create_csv2(String[][] OUTPUT_DATA,String fp,String TxtType)
+	//B100_TextExport.create_csv2(String[][] OUTPUT_DATA,String fp,String TxtType)
 	//			:二次元配列を受け取って、指定されたパスにcsvデータ出力する
 	//			 ※UTF-8はBOM有で生成されます
 	//			 出力後完了メッセージは出ません。ひっそり終了します

@@ -154,9 +154,9 @@ public class WT100_Stock_10_Adjust{
 		final JFormattedTextField TB_AfterShipPlanQty	= B100_FrameParts.JFormattedTextFieldSet(	590,475, 70,20,"0"	,12,1,"#,###");	//調整後引当済数
 		final JFormattedTextField TB_AfterPossibleQty	= B100_FrameParts.JFormattedTextFieldSet(	590,500, 70,20,"0"	,12,1,"#,###");	//調整後出荷可能数
 		
-		TB_ClCd.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.ClList[1]		,(String)StockData[T100_StockRt.ColClCd] ) );		//荷主コード
-		TB_WhCd.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.ClList[1]		,(String)StockData[T100_StockRt.ColWhCd] ) );		//倉庫コード
-		TB_LocType.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.LocType[1]		,(int)StockData[T100_StockRt.ColType]+"" ) );		//ロケタイプ
+		TB_ClCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,(String)StockData[T100_StockRt.ColClCd] ,true) );		//荷主コード
+		TB_WhCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,(String)StockData[T100_StockRt.ColWhCd] ,true) );		//倉庫コード
+		TB_LocType.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1]		,(int)StockData[T100_StockRt.ColType]+"" ,true) );		//ロケタイプ
 		
 		TB_ClCd			.setBackground(B100_FrameParts.SelectColer("NoEntry"));
 		TB_WhCd			.setBackground(B100_FrameParts.SelectColer("NoEntry"));
@@ -2501,9 +2501,9 @@ public class WT100_Stock_10_Adjust{
 		TB_AfterShipPlanQty	.setText(""+ni.format((int)StockData[T100_StockRt.ColShipPlanQty]));
 		TB_AfterPossibleQty	.setText(""+ni.format((int)StockData[T100_StockRt.ColPossibleQty]));
 		
-		TB_ClCd				.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.ClList[1]	,(String)StockData[T100_StockRt.ColClCd] ) );		//荷主コード
-		TB_WhCd				.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.ClList[1]	,(String)StockData[T100_StockRt.ColWhCd] ) );		//倉庫コード
-		TB_LocType			.setSelectedIndex(	GetSelectIndex(B100_DefaultVariable.LocType[1]	,(int)StockData[T100_StockRt.ColType]+"" ) );		//ロケタイプ
+		TB_ClCd				.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]	,(String)StockData[T100_StockRt.ColClCd] ,true) );		//荷主コード
+		TB_WhCd				.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]	,(String)StockData[T100_StockRt.ColWhCd] ,true) );		//倉庫コード
+		TB_LocType			.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1]	,(int)StockData[T100_StockRt.ColType]+"" ,true) );		//ロケタイプ
 		
 		//入力可能なテキストBOX背景色指定
 		TB_Loc		.setBackground(B100_FrameParts.SelectColer("Entry"));
@@ -3299,16 +3299,5 @@ public class WT100_Stock_10_Adjust{
 				AllSearch);
 		
 		return ItemMstRt;
-	}
-	
-	private static int GetSelectIndex(String[] SelectList,String TgtData ) {
-		int rt = 0;
-		for(int i=0;i<SelectList.length;i++) {
-			if(TgtData.equals(SelectList[i])) {
-				rt	= i;
-				i	= SelectList.length+1;
-			}
-		}
-		return rt;
 	}
 }

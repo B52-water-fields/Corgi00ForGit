@@ -128,34 +128,35 @@ public class T100_ArrivalPlanHdRt{
 	
 	//入荷予定明細（各行にヘッダ情報展開）返却する
 	static final int ColClWh			=  0;		//ヘッダ担当倉庫
-	static final int ColClCd			=  1;		//ヘッダ荷主CD
-	static final int ColCLName01		=  2;		//ヘッダ荷主名
-	static final int ColClGpCD			=  3;		//ヘッダ荷主グループCD
-	static final int ColCLGpName01	=  4;		//ヘッダ荷主グループ名1
-	static final int ColArrNo			=  5;		//ヘッダ入荷予定NO（WMS採番）
-	static final int ColClArrNo		=  6;		//ヘッダ荷主予定番号
-	static final int ColPlanDate		=  7;		//ヘッダ入荷予定日
-	static final int ColActualDate	=  8;		//ヘッダ入荷実績日
-	static final int ColSpCd			=  9;		//ヘッダ仕入先CD
-	static final int ColSpName01		= 10;		//ヘッダ仕入先名01
-	static final int ColSpName02		= 11;		//ヘッダ仕入先名02
-	static final int ColSpName03		= 12;		//ヘッダ仕入先名03
-	static final int ColSpPost			= 13;		//ヘッダ仕入先郵便
-	static final int ColSpAdd01		= 14;		//ヘッダ仕入先住所01
-	static final int ColSpAdd02		= 15;		//ヘッダ仕入先住所02
-	static final int ColSpAdd03		= 16;		//ヘッダ仕入先住所03
-	static final int ColSpTel			= 17;		//ヘッダ仕入先電話
-	static final int ColArCom01		= 18;		//ヘッダコメント1
-	static final int ColArCom02		= 19;		//ヘッダコメント2
-	static final int ColArCom03		= 20;		//ヘッダコメント3
-	static final int ColEntryDate		= 21;		//ヘッダ登録日
-	static final int ColUpdateDate	= 22;		//ヘッダ更新日
-	static final int ColEntryUser		= 23;		//ヘッダ登録者
-	static final int ColUpdateUser	= 24;		//ヘッダ更新者
-	static final int ColFixFg			= 25;		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
-	static final int ColPlanQty		= 26;		//実績数合計
-	static final int ColActualQty		= 27;		//予定数合計
-	static final int ColMsCount		= 28;		//明細行数
+	static final int ColCLName01		=  1;		//ヘッダ荷主名
+	static final int ColCLGpName01	=  2;		//ヘッダ荷主グループ名1
+	static final int ColArrNo			=  3;		//ヘッダ入荷予定NO（WMS採番）
+	static final int ColClArrNo		=  4;		//ヘッダ荷主予定番号
+	static final int ColPlanDate		=  5;		//ヘッダ入荷予定日
+	static final int ColActualDate	=  6;		//ヘッダ入荷実績日
+	static final int ColPlanQty		=  7;		//実績数合計
+	static final int ColActualQty		=  8;		//予定数合計
+	static final int ColMsCount		=  9;		//明細行数
+	static final int ColSpCd			= 10;		//ヘッダ仕入先CD
+	static final int ColSpName01		= 11;		//ヘッダ仕入先名01
+	static final int ColSpName02		= 12;		//ヘッダ仕入先名02
+	static final int ColSpName03		= 13;		//ヘッダ仕入先名03
+	static final int ColSpPost			= 14;		//ヘッダ仕入先郵便
+	static final int ColSpAdd01		= 15;		//ヘッダ仕入先住所01
+	static final int ColSpAdd02		= 16;		//ヘッダ仕入先住所02
+	static final int ColSpAdd03		= 17;		//ヘッダ仕入先住所03
+	static final int ColSpTel			= 18;		//ヘッダ仕入先電話
+	static final int ColArCom01		= 19;		//ヘッダコメント1
+	static final int ColArCom02		= 20;		//ヘッダコメント2
+	static final int ColArCom03		= 21;		//ヘッダコメント3
+	static final int ColClCd			= 22;		//ヘッダ荷主CD
+	static final int ColClGpCD			= 23;		//ヘッダ荷主グループCD
+	static final int ColEntryDate		= 24;		//ヘッダ登録日
+	static final int ColUpdateDate	= 25;		//ヘッダ更新日
+	static final int ColEntryUser		= 26;		//ヘッダ登録者
+	static final int ColUpdateUser	= 27;		//ヘッダ更新者
+	static final int ColFixFg			= 28;		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
+	
 	
 	public static Object[][] RtArrivalPlanHdRt(
 			){

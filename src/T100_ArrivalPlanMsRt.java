@@ -167,25 +167,26 @@ public class T100_ArrivalPlanMsRt{
 	static final int ColArCom01		= 18;		//ヘッダコメント1
 	static final int ColArCom02		= 19;		//ヘッダコメント2
 	static final int ColArCom03		= 20;		//ヘッダコメント3
-	static final int ColHdEntryDate	= 21;		//ヘッダ登録日
-	static final int ColHdUpdateDate	= 22;		//ヘッダ更新日
-	static final int ColHdEntryUser	= 23;		//ヘッダ登録者
-	static final int ColHdUpdateUser	= 24;		//ヘッダ更新者
-	static final int ColFixFg			= 25;		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
 	
-	static final int ColMsNo			= 26;		//明細番号
-	static final int ColItemCd			= 27;		//商品コード
-	static final int ColClItemCd		= 28;		//荷主商品コード
-	static final int ColJanCd			= 29;		//ソースマーク_BCD（バラ）
-	static final int ColItemMdNo		= 30;		//商品型番
-	static final int ColItemName		= 31;		//商品名
-	static final int Collot			= 32;		//ロット
-	static final int ColExpDate		= 33;		//消費期限
-	static final int ColPlanQty		= 34;		//予定数量
-	static final int ColActualQty		= 35;		//実績数
-	static final int ColActualDate	= 36;		//入荷日
-	static final int ColCom01			= 37;		//コメント1
-	static final int ColCom02			= 38;		//コメント2
+	
+	static final int ColMsNo			= 21;		//明細番号
+	static final int ColItemCd			= 22;		//商品コード
+	static final int ColClItemCd		= 23;		//荷主商品コード
+	static final int ColItemName		= 24;		//商品名
+	static final int Collot			= 25;		//ロット
+	static final int ColExpDate		= 26;		//消費期限
+	static final int ColPlanQty		= 27;		//予定数量
+	static final int ColActualQty		= 28;		//実績数
+	static final int ColActualDate	= 29;		//入荷日
+	static final int ColCom01			= 30;		//コメント1
+	static final int ColCom02			= 31;		//コメント2
+	static final int ColJanCd			= 32;		//ソースマーク_BCD（バラ）
+	static final int ColItemMdNo		= 33;		//商品型番
+	static final int ColHdEntryDate	= 34;		//ヘッダ登録日
+	static final int ColHdUpdateDate	= 35;		//ヘッダ更新日
+	static final int ColHdEntryUser	= 36;		//ヘッダ登録者
+	static final int ColHdUpdateUser	= 37;		//ヘッダ更新者
+	static final int ColFixFg			= 38;		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
 	static final int ColEntryDate		= 39;		//登録日
 	static final int ColUpdateDate	= 40;		//更新日
 	static final int ColEntryUser		= 41;		//登録者
@@ -811,7 +812,7 @@ public class T100_ArrivalPlanMsRt{
 			sql = sql + ")";
 		}
 		
-		sql = sql + " order by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.ArrNo,WW0011ArrivalPlanMs.MsNo";
+		sql = sql + " order by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.PlanDate,WW0010ArrivalPlanHd.SpCd,WW0010ArrivalPlanHd.ArrNo,WW0011ArrivalPlanMs.MsNo";
 		//System.out.println(sql);
 		if(SearchKick) {
 			A100_DbConnect.DB_CONN("NYANKO");

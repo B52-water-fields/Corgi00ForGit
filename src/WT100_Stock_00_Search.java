@@ -141,9 +141,9 @@ public class WT100_Stock_00_Search{
 		JLabel LB2_SearchShipPlanQty	= B100_FrameParts.JLabelSet(750,100, 40,20,"～"		,11,2);
 		JLabel LB2_SearchPossibleQty	= B100_FrameParts.JLabelSet(750,125, 40,20,"～"		,11,2);
 		
-		TB_SearchClCd.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd));	//荷主コード
-		TB_SearchWhCd.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh));	//倉庫コード
-		TB_SearchClGpCD.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchClGpList[1],A00000_Main.ClGp));	//荷主グループ
+		TB_SearchClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd,true));		//荷主コード
+		TB_SearchWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));		//倉庫コード
+		TB_SearchClGpCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1],A00000_Main.ClGp,true));	//荷主グループ
 		
 		TB_SearchClCd.setEnabled(false);	//荷主コード
 		TB_SearchWhCd.setEnabled(false);	//倉庫コード
@@ -180,7 +180,7 @@ public class WT100_Stock_00_Search{
 			if(null!=DefaultSearchActualDateMax		) {TB_SearchActualDateMax.setText(DefaultSearchActualDateMax);}
 			
 			if(null!=DefaultSearchLoc					) {TB_SearchLoc.setText(DefaultSearchLoc);}
-			if(null!=DefaultSearchType				) {TB_SearchType.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchLocType[1],DefaultSearchType));}
+			if(null!=DefaultSearchType				) {TB_SearchType.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchLocType[1],DefaultSearchType,true));}
 			if(null!=DefaultSearchQtyMin				) {TB_SearchQtyMin.setText(DefaultSearchQtyMin);}
 			if(null!=DefaultSearchQtyMax				) {TB_SearchQtyMax.setText(DefaultSearchQtyMax);}
 			if(null!=DefaultSearchShipPlanQtyMin	) {TB_SearchShipPlanQtyMin.setText(DefaultSearchShipPlanQtyMin);}
@@ -661,7 +661,7 @@ public class WT100_Stock_00_Search{
 						String SetGp 			= "("+GetClGpCD+")"+GetClGpName;
 						String SetCl 			= "("+GetClCd+")"+GetCLName;
 						String SetLoc 			= "("+GetLoc+")"+GetLocName;
-						String SetLocType 		= B100_DefaultVariable.LocType[2][GetSelectIndex(B100_DefaultVariable.LocType[1],""+GetLocType)];
+						String SetLocType 		= B100_DefaultVariable.LocType[2][B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1],""+GetLocType,true)];
 						String SetItem 			= "("+GetItemCd+")"+GetItemName;
 						String SetLot 			= GetLot;
 						String SetExpdate 		= GetExpdate;
@@ -965,6 +965,8 @@ public class WT100_Stock_00_Search{
 					GetSearchActualDateMin	= B100_DateTimeControl.DateFormat(GetSearchActualDateMin);		//入荷実績日開始
 					GetSearchActualDateMax	= B100_DateTimeControl.DateFormat(GetSearchActualDateMax);		//入荷実績日終了
 					
+					//検索前に在庫数ゼロの在庫データを削除する
+					Tools100_StockZeroDelete.StockZeroDelete(GetSearchClCd,GetSearchWhCd);
 					
 					//次に訪れた時の為に検索条件覚える
 					DefaultSearchClCd					= GetSearchClCd;
@@ -1113,9 +1115,9 @@ public class WT100_Stock_00_Search{
 					/**************************************************************
 					検索条件初期値に戻す
 					***************************************************************/
-					TB_SearchClCd.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd));	//荷主コード
-					TB_SearchWhCd.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh));	//倉庫コード
-					TB_SearchClGpCD.setSelectedIndex(GetSelectIndex(B100_DefaultVariable.SearchClGpList[1],A00000_Main.ClGp));	//荷主グループ
+					TB_SearchClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd,true));		//荷主コード
+					TB_SearchWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));		//倉庫コード
+					TB_SearchClGpCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1],A00000_Main.ClGp,true));	//荷主グループ
 					
 					TB_SearchItemCd.setText("");			//商品コード
 					TB_SearchItemName.setText("");			//商品名
@@ -1210,16 +1212,5 @@ public class WT100_Stock_00_Search{
 				A00001_WorkMain.WorkMain(0,0);
 			}
 		});
-	}
-	
-	private static int GetSelectIndex(String[] SelectList,String TgtData ) {
-		int rt = 0;
-		for(int i=0;i<SelectList.length;i++) {
-			if(TgtData.equals(SelectList[i])) {
-				rt	= i;
-				i	= SelectList.length+1;
-			}
-		}
-		return rt;
 	}
 }
