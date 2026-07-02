@@ -53,6 +53,7 @@ public class WT100_Stock_00_Search{
 	static boolean DefaultLocExactMatch;
 	static boolean DefaultSortItemcdMode;
 	
+	static boolean MsViewMode;
 	
 	public static void StockSearch(int x,int y) {
 		A00000_Main.LoginCheck();
@@ -61,6 +62,8 @@ public class WT100_Stock_00_Search{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
+		
+		MsViewMode	= false;
 		
 		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,750,"Corgi00在庫検索","ZK");
 		JLabel userinfo = B100_FrameParts.UserInfo();
@@ -591,167 +594,59 @@ public class WT100_Stock_00_Search{
 				if(RenewFg) {
 					RenewFg = false;
 					LookUp_fm.setVisible(false);
-					
-					Object[][] RtStockRt	= T100_StockRt.RtStockRt();
-					String[] SetVol = new String[RtStockRt.length];
-					for(int i=0;i<SetVol.length;i++) {
-						SetVol[i]="";
-					}
-					boolean KickFg = false;
-					int RowCount 	= tableModel_ms01.getRowCount();
-					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							for(int i01=0;i01<SetVol.length;i01++) {
-								SetVol[i01]=""+tableModel_ms01.getValueAt(i, i01+1);
-							}
-							KickFg = true;
-						}
-					}
-					if(KickFg) {
-						NumberFormat ni = NumberFormat.getNumberInstance();
-						
-						String GetClCd			= B100_TextControl.Trim(SetVol[T100_StockRt.ColClCd]);
-						String GetCLName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColCLName]);
-						String GetWhCd			= B100_TextControl.Trim(SetVol[T100_StockRt.ColWhCd]);
-						String GetClWHName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColClWHName]);
-						String GetClGpCD		= B100_TextControl.Trim(SetVol[T100_StockRt.ColClGpCD]);
-						String GetClGpName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColClGpName]);
-						String GetLoc			= B100_TextControl.Trim(SetVol[T100_StockRt.ColLoc]);
-						String GetLocName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColLocName]);
-						int GetLocType			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColType]);
-						String GetItemCd		= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemCd]);
-						String GetLot			= B100_TextControl.Trim(SetVol[T100_StockRt.ColLot]);
-						String GetExpdate		= B100_TextControl.TextToDate(SetVol[T100_StockRt.ColExpdate]);
-						String GetActualDate	= B100_TextControl.TextToDate(SetVol[T100_StockRt.ColActualDate]);
-						int GetQty				= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColQty]);
-						int GetShipPlanQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColShipPlanQty]);
-						int GetPossibleQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPossibleQty]);
-						String GetItemName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemName]);
-						String GetItemName01	= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemName01]);
-						String GetItemName02	= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemName02]);
-						String GetItemName03	= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemName03]);
-						String GetClItemCd		= B100_TextControl.Trim(SetVol[T100_StockRt.ColClItemCd]);
-						String GetJanCd			= B100_TextControl.Trim(SetVol[T100_StockRt.ColJanCd]);
-						String GetItemMdNo		= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemMdNo]);
-						int GetCtUnitQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCtUnitQty]);
-						int GetCsUnitQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCsUnitQty]);
-						int GetPlUnitQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPlUnitQty]);
-						String GetUnitName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColUnitName]);
-						String GetCtUnitName	= B100_TextControl.Trim(SetVol[T100_StockRt.ColCtUnitName]);
-						String GetCsUnitName	= B100_TextControl.Trim(SetVol[T100_StockRt.ColCsUnitName]);
-						String GetPlUnitName	= B100_TextControl.Trim(SetVol[T100_StockRt.ColPlUnitName]);
-						String GetEntryDate		= B100_TextControl.Trim(SetVol[T100_StockRt.ColEntryDate]);
-						String GetUpdateDate	= B100_TextControl.Trim(SetVol[T100_StockRt.ColUpdateDate]);
-						String GetEntryUser		= B100_TextControl.Trim(SetVol[T100_StockRt.ColEntryUser]);
-						String GetUpdateUser	= B100_TextControl.Trim(SetVol[T100_StockRt.ColUpdateUser]);
-						int GetBrQty			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColBrQty]);
-						int GetBrShipPlanQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColBrShipPlanQty]);
-						int GetBrPossibleQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColBrPossibleQty]);
-						int GetCtQty			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCtQty]);
-						int GetCtShipPlanQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCtShipPlanQty]);
-						int GetCtPossibleQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCtPossibleQty]);
-						int GetCsQty			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCsQty]);
-						int GetCsShipPlanQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCsShipPlanQty]);
-						int GetCsPossibleQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCsPossibleQty]);
-						int GetPlQty			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPlQty]);
-						int GetPlShipPlanQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPlShipPlanQty]);
-						int GetPlPossibleQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPlPossibleQty]);
-						
-						String SetWh 			= "("+GetWhCd+")"+GetClWHName;
-						String SetGp 			= "("+GetClGpCD+")"+GetClGpName;
-						String SetCl 			= "("+GetClCd+")"+GetCLName;
-						String SetLoc 			= "("+GetLoc+")"+GetLocName;
-						String SetLocType 		= B100_DefaultVariable.LocType[2][B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1],""+GetLocType,true)];
-						String SetItem 			= "("+GetItemCd+")"+GetItemName;
-						String SetLot 			= GetLot;
-						String SetExpdate 		= GetExpdate;
-						String SetActualDate 	= GetActualDate;
-						String SetUnitName		= GetUnitName;
-						String SetCtUnitName	= GetCtUnitName;
-						String SetCsUnitName	= GetCsUnitName;
-						String SetPlUnitName	= GetPlUnitName;
-						String SetCtUnitQty		= ""+ni.format(GetCtUnitQty);
-						String SetCsUnitQty		= ""+ni.format(GetCsUnitQty);
-						String SetPlUnitQty		= ""+ni.format(GetPlUnitQty);
-						
-						String SetQty 			= ""+ni.format(GetQty);
-						String SetShipPlanQty 	= ""+ni.format(GetShipPlanQty);
-						String SetPossibleQty 	= ""+ni.format(GetPossibleQty);
-						
-						String SetBrQty 		= ""+ni.format(GetBrQty);
-						String SetBrShipPlanQty= ""+ni.format(GetBrShipPlanQty);
-						String SetBrPossibleQty = ""+ni.format(GetBrPossibleQty);
-						String SetCtQty 		= ""+ni.format(GetCtQty);
-						String SetCtShipPlanQty = ""+ni.format(GetCtShipPlanQty);
-						String SetCtPossibleQty = ""+ni.format(GetCtPossibleQty);
-						String SetCsQty 		= ""+ni.format(GetCsQty);
-						String SetCsShipPlanQty = ""+ni.format(GetCsShipPlanQty);
-						String SetCsPossibleQty	= ""+ni.format(GetCsPossibleQty);
-						String SetPlQty 		= ""+ni.format(GetPlQty);
-						String SetPlShipPlanQty = ""+ni.format(GetPlShipPlanQty);
-						String SetPlPossibleQty = ""+ni.format(GetPlPossibleQty);
-						
-						String SetEntryDate 	= GetEntryDate;
-						String SetUpdateDate 	= GetUpdateDate;
-						String SetEntryUser 	= GetEntryUser;
-						String SetUpdateUser 	= GetUpdateUser;
-						
-						TB_LookUpWh.setText(SetWh);
-						TB_LookUpGp.setText(SetGp);
-						TB_LookUpCl.setText(SetCl);
-						TB_LookUpLoc.setText(SetLoc);
-						TB_LookUpLocType.setText(SetLocType);
-						TB_LookUpItem.setText(SetItem);
-						TB_LookUpLot.setText(SetLot);
-						TB_LookUpExpdate.setText(SetExpdate);
-						TB_LookUpActualDate.setText(SetActualDate);
-						
-						TB_LookUpPlUnitQty.setText(SetPlUnitQty);
-						TB_LookUpCsUnitQty.setText(SetCsUnitQty);
-						TB_LookUpCtUnitQty.setText(SetCtUnitQty);
-						
-						TB_LookUpQty.setText(SetQty);
-						TB_LookUpPlQty.setText(SetPlQty);
-						TB_LookUpCsQty.setText(SetCsQty);
-						TB_LookUpCtQty.setText(SetCtQty);
-						TB_LookUpBrQty.setText(SetBrQty);
-						TB_LookUpQtyUN.setText(SetUnitName);
-						TB_LookUpPlQtyUN.setText(SetPlUnitName);
-						TB_LookUpCsQtyUN.setText(SetCsUnitName);
-						TB_LookUpCtQtyUN.setText(SetCtUnitName);
-						TB_LookUpBrQtyUN.setText(SetUnitName);
-						
-						TB_LookUpShipPlanQty.setText(SetShipPlanQty);
-						TB_LookUpPlShipPlanQty.setText(SetPlShipPlanQty);
-						TB_LookUpCsShipPlanQty.setText(SetCsShipPlanQty);
-						TB_LookUpCtShipPlanQty.setText(SetCtShipPlanQty);
-						TB_LookUpBrQShipPlanQty.setText(SetBrShipPlanQty);
-						TB_LookUpShipPlanQtyUN.setText(SetUnitName);
-						TB_LookUpPlShipPlanQtyUN.setText(SetPlUnitName);
-						TB_LookUpCsShipPlanQtyUN.setText(SetCsUnitName);
-						TB_LookUpCtShipPlanQtyUN.setText(SetCtUnitName);
-						TB_LookUpBrQShipPlanQtyUN.setText(SetUnitName);
-						
-						TB_LookUpPossibleQty.setText(SetPossibleQty);
-						TB_LookUpPlPossibleQty.setText(SetPlPossibleQty);
-						TB_LookUptCsPossibleQty.setText(SetCsPossibleQty);
-						TB_LookUpCtPossibleQty.setText(SetCtPossibleQty);
-						TB_LookUpBrPossibleQty.setText(SetBrPossibleQty);
-						TB_LookUpPossibleQtyUN.setText(SetUnitName);
-						TB_LookUpPlPossibleQtyUN.setText(SetPlUnitName);
-						TB_LookUptCsPossibleQtyUN.setText(SetCsUnitName);
-						TB_LookUpCtPossibleQtyUN.setText(SetCtUnitName);
-						TB_LookUpBrPossibleQtyUN.setText(SetUnitName);
-						
-						TB_LookUpEntryDate.setText(SetEntryDate);
-						TB_LookUpUpdateDate.setText(SetUpdateDate);
-						TB_LookUpEntryUser.setText(SetEntryUser);
-						TB_LookUpUpdateUser.setText(SetUpdateUser);
-						
-						
-						
-						LookUp_fm.setVisible(true);
-					}
+					MsViewMode	= true;
+					LookUpView(
+							LookUp_fm,
+							tableModel_ms01,
+							TB_LookUpWh,
+							TB_LookUpGp,
+							TB_LookUpCl,
+							TB_LookUpLoc,
+							TB_LookUpLocType,
+							TB_LookUpItem,
+							TB_LookUpLot,
+							TB_LookUpExpdate,
+							TB_LookUpActualDate,
+							TB_LookUpPlUnitQty,
+							TB_LookUpCsUnitQty,
+							TB_LookUpCtUnitQty,
+							TB_LookUpQty,
+							TB_LookUpPlQty,
+							TB_LookUpCsQty,
+							TB_LookUpCtQty,
+							TB_LookUpBrQty,
+							TB_LookUpQtyUN,
+							TB_LookUpPlQtyUN,
+							TB_LookUpCsQtyUN,
+							TB_LookUpCtQtyUN,
+							TB_LookUpBrQtyUN,
+							TB_LookUpShipPlanQty,
+							TB_LookUpPlShipPlanQty,
+							TB_LookUpCsShipPlanQty,
+							TB_LookUpCtShipPlanQty,
+							TB_LookUpBrQShipPlanQty,
+							TB_LookUpShipPlanQtyUN,
+							TB_LookUpPlShipPlanQtyUN,
+							TB_LookUpCsShipPlanQtyUN,
+							TB_LookUpCtShipPlanQtyUN,
+							TB_LookUpBrQShipPlanQtyUN,
+							TB_LookUpPossibleQty,
+							TB_LookUpPlPossibleQty,
+							TB_LookUptCsPossibleQty,
+							TB_LookUpCtPossibleQty,
+							TB_LookUpBrPossibleQty,
+							TB_LookUpPossibleQtyUN,
+							TB_LookUpPlPossibleQtyUN,
+							TB_LookUptCsPossibleQtyUN,
+							TB_LookUpCtPossibleQtyUN,
+							TB_LookUpBrPossibleQtyUN,
+							TB_LookUpEntryDate,
+							TB_LookUpUpdateDate,
+							TB_LookUpEntryUser,
+							TB_LookUpUpdateUser,
+							LookUpAdjust_btn
+							);
+					LookUp_fm.setVisible(true);
 					RenewFg = true;
 				}
 			}
@@ -801,6 +696,7 @@ public class WT100_Stock_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
+					MsViewMode	= false;
 					LookUp_fm.setVisible(false);
 					RenewFg = true;
 				}
@@ -1112,6 +1008,7 @@ public class WT100_Stock_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
+					LookUp_fm.setVisible(false);
 					/**************************************************************
 					検索条件初期値に戻す
 					***************************************************************/
@@ -1171,6 +1068,61 @@ public class WT100_Stock_00_Search{
 	
 						}
 					}
+					if(MsViewMode) {
+						LookUpView(
+								LookUp_fm,
+								tableModel_ms01,
+								TB_LookUpWh,
+								TB_LookUpGp,
+								TB_LookUpCl,
+								TB_LookUpLoc,
+								TB_LookUpLocType,
+								TB_LookUpItem,
+								TB_LookUpLot,
+								TB_LookUpExpdate,
+								TB_LookUpActualDate,
+								TB_LookUpPlUnitQty,
+								TB_LookUpCsUnitQty,
+								TB_LookUpCtUnitQty,
+								TB_LookUpQty,
+								TB_LookUpPlQty,
+								TB_LookUpCsQty,
+								TB_LookUpCtQty,
+								TB_LookUpBrQty,
+								TB_LookUpQtyUN,
+								TB_LookUpPlQtyUN,
+								TB_LookUpCsQtyUN,
+								TB_LookUpCtQtyUN,
+								TB_LookUpBrQtyUN,
+								TB_LookUpShipPlanQty,
+								TB_LookUpPlShipPlanQty,
+								TB_LookUpCsShipPlanQty,
+								TB_LookUpCtShipPlanQty,
+								TB_LookUpBrQShipPlanQty,
+								TB_LookUpShipPlanQtyUN,
+								TB_LookUpPlShipPlanQtyUN,
+								TB_LookUpCsShipPlanQtyUN,
+								TB_LookUpCtShipPlanQtyUN,
+								TB_LookUpBrQShipPlanQtyUN,
+								TB_LookUpPossibleQty,
+								TB_LookUpPlPossibleQty,
+								TB_LookUptCsPossibleQty,
+								TB_LookUpCtPossibleQty,
+								TB_LookUpBrPossibleQty,
+								TB_LookUpPossibleQtyUN,
+								TB_LookUpPlPossibleQtyUN,
+								TB_LookUptCsPossibleQtyUN,
+								TB_LookUpCtPossibleQtyUN,
+								TB_LookUpBrPossibleQtyUN,
+								TB_LookUpEntryDate,
+								TB_LookUpUpdateDate,
+								TB_LookUpEntryUser,
+								TB_LookUpUpdateUser,
+								LookUpAdjust_btn
+								);
+						LookUp_fm.setVisible(true);
+					}
+					
 					RenewFg = true;
 				}
 			}
@@ -1212,5 +1164,272 @@ public class WT100_Stock_00_Search{
 				A00001_WorkMain.WorkMain(0,0);
 			}
 		});
+	}
+	
+	private static void LookUpView(
+			JFrame LookUp_fm,
+			DefaultTableModel tableModel_ms01,
+			JLabel  TB_LookUpWh,
+			JLabel  TB_LookUpGp,
+			JLabel  TB_LookUpCl,
+			JTextField  TB_LookUpLoc,
+			JLabel  TB_LookUpLocType,
+			JTextField  TB_LookUpItem,
+			JTextField  TB_LookUpLot,
+			JTextField  TB_LookUpExpdate,
+			JTextField  TB_LookUpActualDate,
+			JLabel  TB_LookUpPlUnitQty,
+			JLabel  TB_LookUpCsUnitQty,
+			JLabel  TB_LookUpCtUnitQty,
+			JTextField  TB_LookUpQty,
+			JTextField  TB_LookUpPlQty,
+			JTextField  TB_LookUpCsQty,
+			JTextField  TB_LookUpCtQty,
+			JTextField  TB_LookUpBrQty,
+			JLabel  TB_LookUpQtyUN,
+			JLabel  TB_LookUpPlQtyUN,
+			JLabel  TB_LookUpCsQtyUN,
+			JLabel  TB_LookUpCtQtyUN,
+			JLabel  TB_LookUpBrQtyUN,
+			JTextField  TB_LookUpShipPlanQty,
+			JTextField  TB_LookUpPlShipPlanQty,
+			JTextField  TB_LookUpCsShipPlanQty,
+			JTextField  TB_LookUpCtShipPlanQty,
+			JTextField  TB_LookUpBrQShipPlanQty,
+			JLabel  TB_LookUpShipPlanQtyUN,
+			JLabel  TB_LookUpPlShipPlanQtyUN,
+			JLabel  TB_LookUpCsShipPlanQtyUN,
+			JLabel  TB_LookUpCtShipPlanQtyUN,
+			JLabel  TB_LookUpBrQShipPlanQtyUN,
+			JTextField  TB_LookUpPossibleQty,
+			JTextField  TB_LookUpPlPossibleQty,
+			JTextField  TB_LookUptCsPossibleQty,
+			JTextField  TB_LookUpCtPossibleQty,
+			JTextField  TB_LookUpBrPossibleQty,
+			JLabel  TB_LookUpPossibleQtyUN,
+			JLabel  TB_LookUpPlPossibleQtyUN,
+			JLabel  TB_LookUptCsPossibleQtyUN,
+			JLabel  TB_LookUpCtPossibleQtyUN,
+			JLabel  TB_LookUpBrPossibleQtyUN,
+			JLabel  TB_LookUpEntryDate,
+			JLabel  TB_LookUpUpdateDate,
+			JLabel  TB_LookUpEntryUser,
+			JLabel  TB_LookUpUpdateUser,
+			JButton LookUpAdjust_btn
+			) {
+
+		LookUp_fm.remove(LookUpAdjust_btn);
+		TB_LookUpWh.setText("");
+		TB_LookUpGp.setText("");
+		TB_LookUpCl.setText("");
+		TB_LookUpLoc.setText("");
+		TB_LookUpLocType.setText("");
+		TB_LookUpItem.setText("");
+		TB_LookUpLot.setText("");
+		TB_LookUpExpdate.setText("");
+		TB_LookUpActualDate.setText("");
+		
+		TB_LookUpPlUnitQty.setText("");
+		TB_LookUpCsUnitQty.setText("");
+		TB_LookUpCtUnitQty.setText("");
+		
+		TB_LookUpQty.setText("");
+		TB_LookUpPlQty.setText("");
+		TB_LookUpCsQty.setText("");
+		TB_LookUpCtQty.setText("");
+		TB_LookUpBrQty.setText("");
+		TB_LookUpQtyUN.setText("");
+		TB_LookUpPlQtyUN.setText("");
+		TB_LookUpCsQtyUN.setText("");
+		TB_LookUpCtQtyUN.setText("");
+		TB_LookUpBrQtyUN.setText("");
+		
+		TB_LookUpShipPlanQty.setText("");
+		TB_LookUpPlShipPlanQty.setText("");
+		TB_LookUpCsShipPlanQty.setText("");
+		TB_LookUpCtShipPlanQty.setText("");
+		TB_LookUpBrQShipPlanQty.setText("");
+		TB_LookUpShipPlanQtyUN.setText("");
+		TB_LookUpPlShipPlanQtyUN.setText("");
+		TB_LookUpCsShipPlanQtyUN.setText("");
+		TB_LookUpCtShipPlanQtyUN.setText("");
+		TB_LookUpBrQShipPlanQtyUN.setText("");
+		
+		TB_LookUpPossibleQty.setText("");
+		TB_LookUpPlPossibleQty.setText("");
+		TB_LookUptCsPossibleQty.setText("");
+		TB_LookUpCtPossibleQty.setText("");
+		TB_LookUpBrPossibleQty.setText("");
+		TB_LookUpPossibleQtyUN.setText("");
+		TB_LookUpPlPossibleQtyUN.setText("");
+		TB_LookUptCsPossibleQtyUN.setText("");
+		TB_LookUpCtPossibleQtyUN.setText("");
+		TB_LookUpBrPossibleQtyUN.setText("");
+		
+		TB_LookUpEntryDate.setText("");
+		TB_LookUpUpdateDate.setText("");
+		TB_LookUpEntryUser.setText("");
+		TB_LookUpUpdateUser.setText("");
+		
+		
+		
+		Object[][] RtStockRt	= T100_StockRt.RtStockRt();
+		String[] SetVol = new String[RtStockRt.length];
+		for(int i=0;i<SetVol.length;i++) {
+			SetVol[i]="";
+		}
+		boolean KickFg = false;
+		int RowCount 	= tableModel_ms01.getRowCount();
+		for(int i=0;i<RowCount;i++) {
+			if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+				for(int i01=0;i01<SetVol.length;i01++) {
+					SetVol[i01]=""+tableModel_ms01.getValueAt(i, i01+1);
+				}
+				KickFg = true;
+			}
+		}
+		if(KickFg) {
+			NumberFormat ni = NumberFormat.getNumberInstance();
+			
+			LookUp_fm.add(LookUpAdjust_btn);
+			
+			String GetClCd			= B100_TextControl.Trim(SetVol[T100_StockRt.ColClCd]);
+			String GetCLName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColCLName]);
+			String GetWhCd			= B100_TextControl.Trim(SetVol[T100_StockRt.ColWhCd]);
+			String GetClWHName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColClWHName]);
+			String GetClGpCD		= B100_TextControl.Trim(SetVol[T100_StockRt.ColClGpCD]);
+			String GetClGpName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColClGpName]);
+			String GetLoc			= B100_TextControl.Trim(SetVol[T100_StockRt.ColLoc]);
+			String GetLocName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColLocName]);
+			int GetLocType			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColType]);
+			String GetItemCd		= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemCd]);
+			String GetLot			= B100_TextControl.Trim(SetVol[T100_StockRt.ColLot]);
+			String GetExpdate		= B100_TextControl.TextToDate(SetVol[T100_StockRt.ColExpdate]);
+			String GetActualDate	= B100_TextControl.TextToDate(SetVol[T100_StockRt.ColActualDate]);
+			int GetQty				= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColQty]);
+			int GetShipPlanQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColShipPlanQty]);
+			int GetPossibleQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPossibleQty]);
+			String GetItemName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemName]);
+			String GetItemName01	= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemName01]);
+			String GetItemName02	= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemName02]);
+			String GetItemName03	= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemName03]);
+			String GetClItemCd		= B100_TextControl.Trim(SetVol[T100_StockRt.ColClItemCd]);
+			String GetJanCd			= B100_TextControl.Trim(SetVol[T100_StockRt.ColJanCd]);
+			String GetItemMdNo		= B100_TextControl.Trim(SetVol[T100_StockRt.ColItemMdNo]);
+			int GetCtUnitQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCtUnitQty]);
+			int GetCsUnitQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCsUnitQty]);
+			int GetPlUnitQty		= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPlUnitQty]);
+			String GetUnitName		= B100_TextControl.Trim(SetVol[T100_StockRt.ColUnitName]);
+			String GetCtUnitName	= B100_TextControl.Trim(SetVol[T100_StockRt.ColCtUnitName]);
+			String GetCsUnitName	= B100_TextControl.Trim(SetVol[T100_StockRt.ColCsUnitName]);
+			String GetPlUnitName	= B100_TextControl.Trim(SetVol[T100_StockRt.ColPlUnitName]);
+			String GetEntryDate		= B100_TextControl.Trim(SetVol[T100_StockRt.ColEntryDate]);
+			String GetUpdateDate	= B100_TextControl.Trim(SetVol[T100_StockRt.ColUpdateDate]);
+			String GetEntryUser		= B100_TextControl.Trim(SetVol[T100_StockRt.ColEntryUser]);
+			String GetUpdateUser	= B100_TextControl.Trim(SetVol[T100_StockRt.ColUpdateUser]);
+			int GetBrQty			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColBrQty]);
+			int GetBrShipPlanQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColBrShipPlanQty]);
+			int GetBrPossibleQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColBrPossibleQty]);
+			int GetCtQty			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCtQty]);
+			int GetCtShipPlanQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCtShipPlanQty]);
+			int GetCtPossibleQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCtPossibleQty]);
+			int GetCsQty			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCsQty]);
+			int GetCsShipPlanQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCsShipPlanQty]);
+			int GetCsPossibleQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColCsPossibleQty]);
+			int GetPlQty			= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPlQty]);
+			int GetPlShipPlanQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPlShipPlanQty]);
+			int GetPlPossibleQty	= B100_TextControl.TextToInt(SetVol[T100_StockRt.ColPlPossibleQty]);
+			
+			String SetWh 			= "("+GetWhCd+")"+GetClWHName;
+			String SetGp 			= "("+GetClGpCD+")"+GetClGpName;
+			String SetCl 			= "("+GetClCd+")"+GetCLName;
+			String SetLoc 			= "("+GetLoc+")"+GetLocName;
+			String SetLocType 		= B100_DefaultVariable.LocType[2][B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1],""+GetLocType,true)];
+			String SetItem 			= "("+GetItemCd+")"+GetItemName;
+			String SetLot 			= GetLot;
+			String SetExpdate 		= GetExpdate;
+			String SetActualDate 	= GetActualDate;
+			String SetUnitName		= GetUnitName;
+			String SetCtUnitName	= GetCtUnitName;
+			String SetCsUnitName	= GetCsUnitName;
+			String SetPlUnitName	= GetPlUnitName;
+			String SetCtUnitQty		= ""+ni.format(GetCtUnitQty);
+			String SetCsUnitQty		= ""+ni.format(GetCsUnitQty);
+			String SetPlUnitQty		= ""+ni.format(GetPlUnitQty);
+			
+			String SetQty 			= ""+ni.format(GetQty);
+			String SetShipPlanQty 	= ""+ni.format(GetShipPlanQty);
+			String SetPossibleQty 	= ""+ni.format(GetPossibleQty);
+			
+			String SetBrQty 		= ""+ni.format(GetBrQty);
+			String SetBrShipPlanQty= ""+ni.format(GetBrShipPlanQty);
+			String SetBrPossibleQty = ""+ni.format(GetBrPossibleQty);
+			String SetCtQty 		= ""+ni.format(GetCtQty);
+			String SetCtShipPlanQty = ""+ni.format(GetCtShipPlanQty);
+			String SetCtPossibleQty = ""+ni.format(GetCtPossibleQty);
+			String SetCsQty 		= ""+ni.format(GetCsQty);
+			String SetCsShipPlanQty = ""+ni.format(GetCsShipPlanQty);
+			String SetCsPossibleQty	= ""+ni.format(GetCsPossibleQty);
+			String SetPlQty 		= ""+ni.format(GetPlQty);
+			String SetPlShipPlanQty = ""+ni.format(GetPlShipPlanQty);
+			String SetPlPossibleQty = ""+ni.format(GetPlPossibleQty);
+			
+			String SetEntryDate 	= GetEntryDate;
+			String SetUpdateDate 	= GetUpdateDate;
+			String SetEntryUser 	= GetEntryUser;
+			String SetUpdateUser 	= GetUpdateUser;
+			
+			TB_LookUpWh.setText(SetWh);
+			TB_LookUpGp.setText(SetGp);
+			TB_LookUpCl.setText(SetCl);
+			TB_LookUpLoc.setText(SetLoc);
+			TB_LookUpLocType.setText(SetLocType);
+			TB_LookUpItem.setText(SetItem);
+			TB_LookUpLot.setText(SetLot);
+			TB_LookUpExpdate.setText(SetExpdate);
+			TB_LookUpActualDate.setText(SetActualDate);
+			
+			TB_LookUpPlUnitQty.setText(SetPlUnitQty);
+			TB_LookUpCsUnitQty.setText(SetCsUnitQty);
+			TB_LookUpCtUnitQty.setText(SetCtUnitQty);
+			
+			TB_LookUpQty.setText(SetQty);
+			TB_LookUpPlQty.setText(SetPlQty);
+			TB_LookUpCsQty.setText(SetCsQty);
+			TB_LookUpCtQty.setText(SetCtQty);
+			TB_LookUpBrQty.setText(SetBrQty);
+			TB_LookUpQtyUN.setText(SetUnitName);
+			TB_LookUpPlQtyUN.setText(SetPlUnitName);
+			TB_LookUpCsQtyUN.setText(SetCsUnitName);
+			TB_LookUpCtQtyUN.setText(SetCtUnitName);
+			TB_LookUpBrQtyUN.setText(SetUnitName);
+			
+			TB_LookUpShipPlanQty.setText(SetShipPlanQty);
+			TB_LookUpPlShipPlanQty.setText(SetPlShipPlanQty);
+			TB_LookUpCsShipPlanQty.setText(SetCsShipPlanQty);
+			TB_LookUpCtShipPlanQty.setText(SetCtShipPlanQty);
+			TB_LookUpBrQShipPlanQty.setText(SetBrShipPlanQty);
+			TB_LookUpShipPlanQtyUN.setText(SetUnitName);
+			TB_LookUpPlShipPlanQtyUN.setText(SetPlUnitName);
+			TB_LookUpCsShipPlanQtyUN.setText(SetCsUnitName);
+			TB_LookUpCtShipPlanQtyUN.setText(SetCtUnitName);
+			TB_LookUpBrQShipPlanQtyUN.setText(SetUnitName);
+			
+			TB_LookUpPossibleQty.setText(SetPossibleQty);
+			TB_LookUpPlPossibleQty.setText(SetPlPossibleQty);
+			TB_LookUptCsPossibleQty.setText(SetCsPossibleQty);
+			TB_LookUpCtPossibleQty.setText(SetCtPossibleQty);
+			TB_LookUpBrPossibleQty.setText(SetBrPossibleQty);
+			TB_LookUpPossibleQtyUN.setText(SetUnitName);
+			TB_LookUpPlPossibleQtyUN.setText(SetPlUnitName);
+			TB_LookUptCsPossibleQtyUN.setText(SetCsUnitName);
+			TB_LookUpCtPossibleQtyUN.setText(SetCtUnitName);
+			TB_LookUpBrPossibleQtyUN.setText(SetUnitName);
+			
+			TB_LookUpEntryDate.setText(SetEntryDate);
+			TB_LookUpUpdateDate.setText(SetUpdateDate);
+			TB_LookUpEntryUser.setText(SetEntryUser);
+			TB_LookUpUpdateUser.setText(SetUpdateUser);
+		}
 	}
 }
