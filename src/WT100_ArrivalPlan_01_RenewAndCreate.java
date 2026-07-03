@@ -326,6 +326,10 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		main_fm.add(TBMs_ExpDateBeforeBtn);
 		
 		
+		
+		
+		
+		
 		if(!"".equals(TgtArrNo)) {
 			Object[][] ArrivalPlanMsRt	= ArrivalPlanMsRt(TgtWhCd,TgtClCd,TgtArrNo);
 			
@@ -470,6 +474,144 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		
 		RenewFg = true;
 		main_fm.setVisible(true);
+		
+		//修正仮反映ボタン押下時の挙動
+		MsRenewBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					int SetRow 	= -1;
+					int GetMsNo	= -1;
+					if("".equals(B100_TextControl.Trim(TBMs_MsNo.getText()))) {
+						GetMsNo				= B100_TextControl.TextToInt(TBMs_MsNo.getText());
+					}
+					
+					String GetItemCd		= B100_TextControl.Trim(TBMs_ItemCd.getText());
+					String GetItemName		= B100_TextControl.Trim(TBMs_ItemName.getText());
+					String Getlot			= B100_TextControl.Trim(TBMs_lot.getText());
+					String GetExpDate		= B100_TextControl.TextToDate(TBMs_ExpDate.getText());
+					int GetPlanQty			= B100_TextControl.TextToInt(TBMs_PlanQty.getText());
+					int GetActualQty		= B100_TextControl.TextToInt(TBMs_ActualQty.getText());
+					String GetCom01			= B100_TextControl.Trim(TBMs_Com01.getText());
+					String GetCom02			= B100_TextControl.Trim(TBMs_Com02.getText());
+					
+					String GetClItemCd		= B100_TextControl.Trim(TBMs_ClItemCd.getText());
+					String GetActualDate	= B100_TextControl.TextToDate(TBMs_ActualDate.getText());
+					String GetJanCd			= B100_TextControl.Trim(TBMs_JanCd.getText());
+					String GetItemMdNo		= B100_TextControl.Trim(TBMs_ItemMdNo.getText());
+					String GetEntryDate		= B100_TextControl.Trim(TBMs_EntryDate.getText());
+					String GetUpdateDate	= B100_TextControl.Trim(TBMs_UpdateDate.getText());
+					String GetEntryUser		= B100_TextControl.Trim(TBMs_EntryUser.getText());
+					String GetUpdateUser	= B100_TextControl.Trim(TBMs_UpdateUser.getText());
+					
+					boolean MsErrCheck = MsErrCheck(
+											GetMsNo,
+											GetItemCd,
+											GetItemName,
+											Getlot,
+											GetExpDate,
+											GetPlanQty,
+											GetActualQty,
+											GetCom01,
+											GetCom02,
+											
+											GetClItemCd,
+											GetActualDate,
+											GetJanCd,
+											GetItemMdNo,
+											GetEntryDate,
+											GetUpdateDate,
+											GetEntryUser,
+											GetUpdateUser
+											);
+					
+					
+					if(!MsErrCheck) {
+						int MaxMsNo	= 0;
+						int RowCount = MainFmTableModel.getRowCount();
+						for(int i=0;i<RowCount;i++) {
+							int MsNo = B100_TextControl.TextToInt(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColMsNo));
+							if(MaxMsNo<MsNo) {
+								MaxMsNo	= MsNo;
+							}
+							if(GetMsNo==MsNo) {
+								SetRow = i;
+							}
+						}
+						
+						if(0<=SetRow) {
+							MainFmTableModel.setValueAt(false			, SetRow, 0);
+							MainFmTableModel.setValueAt(GetMsNo			, SetRow, 1+T100_ArrivalPlanMsRt.ColMsNo);
+							MainFmTableModel.setValueAt(GetItemCd		, SetRow, 1+T100_ArrivalPlanMsRt.ColItemCd);
+							MainFmTableModel.setValueAt(GetClItemCd		, SetRow, 1+T100_ArrivalPlanMsRt.ColClItemCd);
+							MainFmTableModel.setValueAt(GetJanCd		, SetRow, 1+T100_ArrivalPlanMsRt.ColJanCd);
+							MainFmTableModel.setValueAt(GetItemMdNo		, SetRow, 1+T100_ArrivalPlanMsRt.ColItemMdNo);
+							MainFmTableModel.setValueAt(GetItemName		, SetRow, 1+T100_ArrivalPlanMsRt.ColItemName);
+							MainFmTableModel.setValueAt(Getlot			, SetRow, 1+T100_ArrivalPlanMsRt.Collot);
+							MainFmTableModel.setValueAt(GetExpDate		, SetRow, 1+T100_ArrivalPlanMsRt.ColExpDate);
+							MainFmTableModel.setValueAt(""+GetPlanQty	, SetRow, 1+T100_ArrivalPlanMsRt.ColPlanQty);
+							MainFmTableModel.setValueAt(""+GetActualQty	, SetRow, 1+T100_ArrivalPlanMsRt.ColActualQty);
+							MainFmTableModel.setValueAt(GetActualDate	, SetRow, 1+T100_ArrivalPlanMsRt.ColActualDate);
+							MainFmTableModel.setValueAt(GetCom01		, SetRow, 1+T100_ArrivalPlanMsRt.ColCom01);
+							MainFmTableModel.setValueAt(GetCom02		, SetRow, 1+T100_ArrivalPlanMsRt.ColCom02);
+							MainFmTableModel.setValueAt(GetEntryDate	, SetRow, 1+T100_ArrivalPlanMsRt.ColEntryDate);
+							MainFmTableModel.setValueAt(GetUpdateDate	, SetRow, 1+T100_ArrivalPlanMsRt.ColUpdateDate);
+							MainFmTableModel.setValueAt(GetEntryUser	, SetRow, 1+T100_ArrivalPlanMsRt.ColEntryUser);
+							MainFmTableModel.setValueAt(GetUpdateUser	, SetRow, 1+T100_ArrivalPlanMsRt.ColUpdateUser);
+						}else {
+							Object[][] RtArrivalPlanMsRt = T100_ArrivalPlanMsRt.RtArrivalPlanMsRt();
+							Object[] SetOb	= new Object[RtArrivalPlanMsRt.length+1];
+							for(int i=1;i<SetOb.length;i++) {
+								SetOb[i]="";
+							}
+							MaxMsNo = MaxMsNo+1;
+							SetOb[0]=false;
+							SetOb[1+T100_ArrivalPlanMsRt.ColMsNo]			= MaxMsNo;
+							SetOb[1+T100_ArrivalPlanMsRt.ColItemCd]		= GetItemCd;
+							SetOb[1+T100_ArrivalPlanMsRt.ColClItemCd]		= GetClItemCd;
+							SetOb[1+T100_ArrivalPlanMsRt.ColJanCd]			= GetJanCd;
+							SetOb[1+T100_ArrivalPlanMsRt.ColItemMdNo]		= GetItemMdNo;
+							SetOb[1+T100_ArrivalPlanMsRt.ColItemName]		= GetItemName;
+							SetOb[1+T100_ArrivalPlanMsRt.Collot]			= Getlot;
+							SetOb[1+T100_ArrivalPlanMsRt.ColExpDate]		= GetExpDate;
+							SetOb[1+T100_ArrivalPlanMsRt.ColPlanQty]		= ""+GetPlanQty;
+							SetOb[1+T100_ArrivalPlanMsRt.ColActualQty]	= ""+GetActualQty;
+							SetOb[1+T100_ArrivalPlanMsRt.ColActualDate]	= GetActualDate;
+							SetOb[1+T100_ArrivalPlanMsRt.ColCom01]			= GetCom01;
+							SetOb[1+T100_ArrivalPlanMsRt.ColCom02]			= GetCom02;
+							SetOb[1+T100_ArrivalPlanMsRt.ColEntryDate]	= GetEntryDate;
+							SetOb[1+T100_ArrivalPlanMsRt.ColUpdateDate]	= GetUpdateDate;
+							SetOb[1+T100_ArrivalPlanMsRt.ColEntryUser]	= GetEntryUser;
+							SetOb[1+T100_ArrivalPlanMsRt.ColUpdateUser]	= GetUpdateUser;
+							
+							MainFmTableModel.addRow(SetOb);
+						}
+						
+						TBMs_MsNo.setText("");
+						TBMs_ItemCd.setText("");
+						TBMs_ItemName.setText("");
+						TBMs_lot.setText("");
+						TBMs_ExpDate.setText("");
+						TBMs_PlanQty.setText("");
+						TBMs_ActualQty.setText("");
+						TBMs_Com01.setText("");
+						TBMs_Com02.setText("");
+						
+						TBMs_ClItemCd.setText("");
+						TBMs_ActualDate.setText("");
+						TBMs_JanCd.setText("");
+						TBMs_ItemMdNo.setText("");
+						TBMs_EntryDate.setText("");
+						TBMs_UpdateDate.setText("");
+						TBMs_EntryUser.setText("");
+						TBMs_UpdateUser.setText("");
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
 		
 		//伝票複写ボタン押下時の挙動
 		OrderCopy_btn.addActionListener(new AbstractAction(){
@@ -642,6 +784,33 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 			}
 		});
 	}
+	
+	private static boolean MsErrCheck(
+								int GetMsNo,
+								String GetItemCd,
+								String GetItemName,
+								String Getlot,
+								String GetExpDate,
+								int GetPlanQty,
+								int GetActualQty,
+								String GetCom01,
+								String GetCom02,
+								
+								String GetClItemCd,
+								String GetActualDate,
+								String GetJanCd,
+								String GetItemMdNo,
+								String GetEntryDate,
+								String GetUpdateDate,
+								String GetEntryUser,
+								String GetUpdateUser
+								) {
+		boolean ErrFg = false;
+		
+		
+		return ErrFg;
+	}
+	
 	
 	private static Object[][] ArrivalPlanMsRt(String TgtWhCd,String TgtClCd,String TgtArrNo){
 		ArrayList<String> SearchClWh			= new ArrayList<String>();		//ヘッダ担当倉庫
