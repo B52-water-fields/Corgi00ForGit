@@ -148,6 +148,9 @@ public class A00000_Main{
 	===========================================================================================================================*/
 	
     public static void main(String[] args) {
+    	B100_SoundCreate.SoundTest();
+    	
+    	
     	SqlSetting();//MYSQLへの接続設定読込外部ファイルにMYSQLデータベースへの接続設定を読込
     	LoginCheckCount=0;
     	LogIn();

@@ -1061,14 +1061,17 @@ public class WT100_Stock_00_Search{
 					LookUp_fm.setVisible(false);
 					int row_count = tb01.getRowCount();
 					Boolean setBL=Boolean.valueOf(false);
+					boolean CheckOn = false;
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
 							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
-	
+							if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+								CheckOn = true;
+							}
 						}
 					}
-					if(MsViewMode) {
+					if(MsViewMode && CheckOn) {
 						LookUpView(
 								LookUp_fm,
 								MainFmTableModel,
