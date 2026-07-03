@@ -131,9 +131,9 @@ public class WM100_ClGlpMst_00_Search{
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -197,9 +197,9 @@ public class WM100_ClGlpMst_00_Search{
 				if(RenewFg) {
 					RenewFg = false;
 					
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 
 					String GetSearchClGpCD = TB_SearchClGpCD.getText();		if(null==GetSearchClGpCD){GetSearchClGpCD="";}
@@ -273,12 +273,12 @@ public class WM100_ClGlpMst_00_Search{
 						SetOb[18] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColUpdateUser];
 						SetOb[19] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColPassWord];
 						
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 					if(0<ClGpMstRt.length) {
-						B100_TableControl.AddSortON(tb01,tableModel_ms01);
+						B100_TableControl.AddSortON(tb01,MainFmTableModel);
 					}else {
-						B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 					}
 					RenewFg = true;
 				}
@@ -290,11 +290,11 @@ public class WM100_ClGlpMst_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					String TgtClGp = "";
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtClGp = ""+tableModel_ms01.getValueAt(i, 1);	if(null==TgtClGp) {TgtClGp="";}
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TgtClGp = ""+MainFmTableModel.getValueAt(i, 1);	if(null==TgtClGp) {TgtClGp="";}
 						}
 					}
 					if(!"".equals(TgtClGp)) {
@@ -329,7 +329,7 @@ public class WM100_ClGlpMst_00_Search{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -337,7 +337,7 @@ public class WM100_ClGlpMst_00_Search{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 	
 						}

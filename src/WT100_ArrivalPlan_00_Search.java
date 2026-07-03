@@ -530,9 +530,9 @@ public class WT100_ArrivalPlan_00_Search{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -1106,9 +1106,9 @@ public class WT100_ArrivalPlan_00_Search{
 								MstableModel
 								);
 						//再検索
-						int RowCount = tableModel_ms01.getRowCount();
+						int RowCount = MainFmTableModel.getRowCount();
 						for(int i=0;i<RowCount;i++) {
-							tableModel_ms01.removeRow(0);
+							MainFmTableModel.removeRow(0);
 						}
 						String GetSearchClWh			= B100_DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];			//ヘッダ担当倉庫
 						String GetSearchClCd			= B100_DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];			//ヘッダ荷主CD
@@ -1195,7 +1195,7 @@ public class WT100_ArrivalPlan_00_Search{
 								);
 						
 						if(0==ArrivalPlanHdRt.length) {
-							B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+							B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 						}else {
 							for(int i=0;i<ArrivalPlanHdRt.length;i++) {
 								Object[] SetOb = new Object[ArrivalPlanHdRt[i].length+1];
@@ -1203,9 +1203,9 @@ public class WT100_ArrivalPlan_00_Search{
 								for(int i01=0;i01<ArrivalPlanHdRt[i].length;i01++) {
 									SetOb[i01+1] = ""+ArrivalPlanHdRt[i][i01];
 								}
-								tableModel_ms01.addRow(SetOb);
+								MainFmTableModel.addRow(SetOb);
 							}
-							B100_TableControl.AddSortON(tb01,tableModel_ms01);
+							B100_TableControl.AddSortON(tb01,MainFmTableModel);
 						}
 						
 						Ms_fm.setVisible(false);
@@ -1236,9 +1236,9 @@ public class WT100_ArrivalPlan_00_Search{
 								); 
 				    
 						//再検索
-						int RowCount = tableModel_ms01.getRowCount();
+						int RowCount = MainFmTableModel.getRowCount();
 						for(int i=0;i<RowCount;i++) {
-							tableModel_ms01.removeRow(0);
+							MainFmTableModel.removeRow(0);
 						}
 						String GetSearchClWh			= B100_DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];			//ヘッダ担当倉庫
 						String GetSearchClCd			= B100_DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];			//ヘッダ荷主CD
@@ -1325,7 +1325,7 @@ public class WT100_ArrivalPlan_00_Search{
 								);
 						
 						if(0==ArrivalPlanHdRt.length) {
-							B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+							B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 						}else {
 							for(int i=0;i<ArrivalPlanHdRt.length;i++) {
 								Object[] SetOb = new Object[ArrivalPlanHdRt[i].length+1];
@@ -1333,9 +1333,9 @@ public class WT100_ArrivalPlan_00_Search{
 								for(int i01=0;i01<ArrivalPlanHdRt[i].length;i01++) {
 									SetOb[i01+1] = ""+ArrivalPlanHdRt[i][i01];
 								}
-								tableModel_ms01.addRow(SetOb);
+								MainFmTableModel.addRow(SetOb);
 							}
-							B100_TableControl.AddSortON(tb01,tableModel_ms01);
+							B100_TableControl.AddSortON(tb01,MainFmTableModel);
 						}
 						
 						Ms_fm.setVisible(false);
@@ -1405,18 +1405,18 @@ public class WT100_ArrivalPlan_00_Search{
 					MsViewMode = true;
 					Ms_fm.setVisible(false);
 					
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					boolean KickFg = false;
 					
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
 							KickFg = true;
 						}
 					}
 					if(KickFg) {
 						MsFrameControl(
 								Ms_fm,
-								tableModel_ms01,
+								MainFmTableModel,
 								MstableModel,
 								TBMs_ClWh,
 								TBMs_ClCd,
@@ -1485,9 +1485,9 @@ public class WT100_ArrivalPlan_00_Search{
 					boolean NewPrintOnly = true;
 					if(PlanListTgtAll.isSelected()) {NewPrintOnly=false;}
 					
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						ArrNoList.add(""+tableModel_ms01.getValueAt(i,T100_ArrivalPlanHdRt.ColArrNo+1));
+						ArrNoList.add(""+MainFmTableModel.getValueAt(i,T100_ArrivalPlanHdRt.ColArrNo+1));
 					}
 					
 					WTList100_ArrivalPlan.ArrivalPlanList0001(TgtWhCd,TgtClCd,ArrNoList,NewPrintOnly);
@@ -1507,9 +1507,9 @@ public class WT100_ArrivalPlan_00_Search{
 					boolean NewPrintOnly = true;
 					if(PlanListTgtAll.isSelected()) {NewPrintOnly=false;}
 					
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						ArrNoList.add(""+tableModel_ms01.getValueAt(i,T100_ArrivalPlanHdRt.ColArrNo+1));
+						ArrNoList.add(""+MainFmTableModel.getValueAt(i,T100_ArrivalPlanHdRt.ColArrNo+1));
 					}
 					
 					WTList100_ArrivalPoster.ArrivalPoster(TgtWhCd,TgtClCd,ArrNoList,NewPrintOnly);
@@ -1523,9 +1523,9 @@ public class WT100_ArrivalPlan_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					String GetSearchClWh			= B100_DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()];			//ヘッダ担当倉庫
 					String GetSearchClCd			= B100_DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];			//ヘッダ荷主CD
@@ -1612,7 +1612,7 @@ public class WT100_ArrivalPlan_00_Search{
 							);
 					
 					if(0==ArrivalPlanHdRt.length) {
-						B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 					}else {
 						for(int i=0;i<ArrivalPlanHdRt.length;i++) {
 							Object[] SetOb = new Object[ArrivalPlanHdRt[i].length+1];
@@ -1620,9 +1620,9 @@ public class WT100_ArrivalPlan_00_Search{
 							for(int i01=0;i01<ArrivalPlanHdRt[i].length;i01++) {
 								SetOb[i01+1] = ""+ArrivalPlanHdRt[i][i01];
 							}
-							tableModel_ms01.addRow(SetOb);
+							MainFmTableModel.addRow(SetOb);
 						}
-						B100_TableControl.AddSortON(tb01,tableModel_ms01);
+						B100_TableControl.AddSortON(tb01,MainFmTableModel);
 					}
 					
 					Ms_fm.setVisible(false);
@@ -1682,11 +1682,11 @@ public class WT100_ArrivalPlan_00_Search{
 					/**************************************************************
 					検索結果消す
 					***************************************************************/
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
-					B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+					B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 					Ms_fm.setVisible(false);
 					RenewFg = true;
 				}
@@ -1713,7 +1713,7 @@ public class WT100_ArrivalPlan_00_Search{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -1721,14 +1721,14 @@ public class WT100_ArrivalPlan_00_Search{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 	
 						}
 					}
 					MsFrameControl(
 							Ms_fm,
-							tableModel_ms01,
+							MainFmTableModel,
 							MstableModel,
 							TBMs_ClWh,
 							TBMs_ClCd,
@@ -1793,13 +1793,13 @@ public class WT100_ArrivalPlan_00_Search{
 					String TgtClCd	= "";
 					String TgtArrNo	= "";
 					
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					boolean KickFg = false;
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtWhCd		= ""+tableModel_ms01.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClWh);
-							TgtClCd		= ""+tableModel_ms01.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClCd);
-							TgtArrNo	= ""+tableModel_ms01.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClArrNo);
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TgtWhCd		= ""+MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClWh);
+							TgtClCd		= ""+MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClCd);
+							TgtArrNo	= ""+MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColArrNo);
 							
 							KickFg = true;
 						}
@@ -1861,7 +1861,7 @@ public class WT100_ArrivalPlan_00_Search{
 					RenewFg = false;
 					String Selected = B100_FolderSelect.FolderSelect("出力先選択");
 					if(null!=Selected) {
-						String[][] OutData = MsOutPutDetaGet(tableModel_ms01);
+						String[][] OutData = MsOutPutDetaGet(MainFmTableModel);
 						
 						String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 						String fp = Selected+"\\"+"入荷予定（明細）検索結果"+NowDTM+".csv";;
@@ -1899,7 +1899,7 @@ public class WT100_ArrivalPlan_00_Search{
 					RenewFg = false;
 					String Selected = B100_FolderSelect.FolderSelect("出力先選択");
 					if(null!=Selected) {
-						String[][] OutData = MsOutPutDetaGet(tableModel_ms01);
+						String[][] OutData = MsOutPutDetaGet(MainFmTableModel);
 						
 						String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 						String fp = Selected+"\\"+"入荷予定（明細）検索結果"+NowDTM+".xlsx";
@@ -2081,7 +2081,7 @@ public class WT100_ArrivalPlan_00_Search{
 	}
 	
 	private static String[][] MsOutPutDetaGet(
-			DefaultTableModel tableModel_ms01
+			DefaultTableModel MainFmTableModel
 			){
 		Object[][] RtArrivalPlanMsRt= T100_ArrivalPlanMsRt.RtArrivalPlanMsRt();
 		String[][] OutData = new String[1][RtArrivalPlanMsRt.length];
@@ -2090,11 +2090,11 @@ public class WT100_ArrivalPlan_00_Search{
 		}
 		ArrayList<String> TgtClWh			= new ArrayList<String>();		//ヘッダ担当倉庫
 		ArrayList<String> TgtClCd			= new ArrayList<String>();		//ヘッダ荷主CD
-		int RowCount = tableModel_ms01.getRowCount();
+		int RowCount = MainFmTableModel.getRowCount();
 		if(0<RowCount) {
 			for(int i=0;i<RowCount;i++) {
-				TgtClWh.add(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColClWh+1)));
-				TgtClCd.add(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColClCd+1)));
+				TgtClWh.add(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColClWh+1)));
+				TgtClCd.add(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColClCd+1)));
 			}
 			TgtClWh				= B100_ArrayListControl.ArryListStringUniqueList(TgtClWh);				//ヘッダ担当倉庫
 			TgtClCd				= B100_ArrayListControl.ArryListStringUniqueList(TgtClCd);				//ヘッダ荷主CD
@@ -2112,11 +2112,11 @@ public class WT100_ArrivalPlan_00_Search{
 					SearchClCd.add(TgtClCd.get(i02));
 					
 					for(int i=0;i<RowCount;i++) {
-						if(TgtClWh.get(i01).equals(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColClWh+1)))
-							&& 	TgtClCd.get(i02).equals(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColClCd+1)))
+						if(TgtClWh.get(i01).equals(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColClWh+1)))
+							&& 	TgtClCd.get(i02).equals(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColClCd+1)))
 							) {
-							SearchClGpCD.add(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColClGpCD+1)));
-							SearchArrNo.add(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColArrNo+1)));
+							SearchClGpCD.add(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColClGpCD+1)));
+							SearchArrNo.add(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColArrNo+1)));
 						}
 					}
 					Object[][] ArrivalPlanMsRt	= ArrivalPlanMsRt(
@@ -2147,11 +2147,11 @@ public class WT100_ArrivalPlan_00_Search{
 					SearchClCd.add(TgtClCd.get(i02));
 					
 					for(int i=0;i<RowCount;i++) {
-						if(TgtClWh.get(i01).equals(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColClWh+1)))
-							&& 	TgtClCd.get(i02).equals(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColClCd+1)))
+						if(TgtClWh.get(i01).equals(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColClWh+1)))
+							&& 	TgtClCd.get(i02).equals(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColClCd+1)))
 							) {
-							SearchClGpCD.add(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColClGpCD+1)));
-							SearchArrNo.add(B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, T100_ArrivalPlanHdRt.ColArrNo+1)));
+							SearchClGpCD.add(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColClGpCD+1)));
+							SearchArrNo.add(B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, T100_ArrivalPlanHdRt.ColArrNo+1)));
 						}
 					}
 					Object[][] ArrivalPlanMsRt	= ArrivalPlanMsRt(
@@ -2177,7 +2177,7 @@ public class WT100_ArrivalPlan_00_Search{
 	//詳細子画面初期表示
 	private static void MsFrameControl(
 			JFrame Ms_fm,
-			DefaultTableModel tableModel_ms01,
+			DefaultTableModel MainFmTableModel,
 			DefaultTableModel MstableModel,
 			
 			JComboBox TBMs_ClWh,
@@ -2281,13 +2281,13 @@ public class WT100_ArrivalPlan_00_Search{
 		String GetSearchClGpCD	= A00000_Main.ClGp;
 		String GetSearchArrNo	= "";
 		
-		RowCount = tableModel_ms01.getRowCount();
+		RowCount = MainFmTableModel.getRowCount();
 		for(int i=0;i<RowCount;i++) {
-			if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-				GetSearchClWh		= (String)tableModel_ms01.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClWh);
-				GetSearchClCd		= (String)tableModel_ms01.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClCd);
-				GetSearchClGpCD		= (String)tableModel_ms01.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClGpCD);
-				GetSearchArrNo		= (String)tableModel_ms01.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColArrNo);
+			if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+				GetSearchClWh		= (String)MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClWh);
+				GetSearchClCd		= (String)MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClCd);
+				GetSearchClGpCD		= (String)MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClGpCD);
+				GetSearchArrNo		= (String)MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColArrNo);
 				
 				KickFg = true;
 			}

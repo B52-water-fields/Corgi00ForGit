@@ -330,9 +330,9 @@ public class WT100_Stock_00_Search{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -597,7 +597,7 @@ public class WT100_Stock_00_Search{
 					MsViewMode	= true;
 					LookUpView(
 							LookUp_fm,
-							tableModel_ms01,
+							MainFmTableModel,
 							TB_LookUpWh,
 							TB_LookUpGp,
 							TB_LookUpCl,
@@ -665,19 +665,19 @@ public class WT100_Stock_00_Search{
 				String TgtExpdate 		= "";
 				String TgtActualDate 	= "";
 				
-				int RowCount 	= tableModel_ms01.getRowCount();
+				int RowCount 	= MainFmTableModel.getRowCount();
 				Object[][] RtStockRt	= T100_StockRt.RtStockRt();
 				boolean KickFg = false;
 				
 				for(int i=0;i<RowCount;i++) {
-					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-						TgtWhCd 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColWhCd+1);
-						TgtClCd 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColClCd+1);
-						TgtLoc 			= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColLoc+1);
-						TgtItemCd 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColItemCd+1);
-						TgtLot 			= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColLot+1);
-						TgtExpdate 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColExpdate+1);
-						TgtActualDate 	= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColActualDate+1);
+					if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+						TgtWhCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColWhCd+1);
+						TgtClCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColClCd+1);
+						TgtLoc 			= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColLoc+1);
+						TgtItemCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColItemCd+1);
+						TgtLot 			= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColLot+1);
+						TgtExpdate 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColExpdate+1);
+						TgtActualDate 	= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColActualDate+1);
 						KickFg = true;
 					}
 				}
@@ -718,19 +718,19 @@ public class WT100_Stock_00_Search{
 				String TgtExpdate 		= "";
 				String TgtActualDate 	= "";
 				
-				int RowCount 	= tableModel_ms01.getRowCount();
+				int RowCount 	= MainFmTableModel.getRowCount();
 				Object[][] RtStockRt	= T100_StockRt.RtStockRt();
 				boolean KickFg = false;
 				
 				for(int i=0;i<RowCount;i++) {
-					if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-						TgtWhCd 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColWhCd+1);
-						TgtClCd 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColClCd+1);
-						TgtLoc 			= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColLoc+1);
-						TgtItemCd 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColItemCd+1);
-						TgtLot 			= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColLot+1);
-						TgtExpdate 		= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColExpdate+1);
-						TgtActualDate 	= ""+tableModel_ms01.getValueAt(i,T100_StockRt.ColActualDate+1);
+					if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+						TgtWhCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColWhCd+1);
+						TgtClCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColClCd+1);
+						TgtLoc 			= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColLoc+1);
+						TgtItemCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColItemCd+1);
+						TgtLot 			= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColLot+1);
+						TgtExpdate 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColExpdate+1);
+						TgtActualDate 	= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColActualDate+1);
 						KickFg = true;
 					}
 				}
@@ -770,14 +770,14 @@ public class WT100_Stock_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount 	= tableModel_ms01.getRowCount();
-					int ClumnCount 	= tableModel_ms01.getColumnCount();
+					int RowCount 	= MainFmTableModel.getRowCount();
+					int ClumnCount 	= MainFmTableModel.getColumnCount();
 					
 					Object[][] PrintData = new Object[RowCount][ClumnCount-1]; 
 					
 					for(int i=0;i<RowCount;i++) {
 						for(int i01=1;i01<ClumnCount;i01++) {
-							PrintData[i][i01-1] = ""+tableModel_ms01.getValueAt(i, i01);
+							PrintData[i][i01-1] = ""+MainFmTableModel.getValueAt(i, i01);
 						}
 					}
 					WTList100_StockList.StockList(PrintData);
@@ -792,9 +792,9 @@ public class WT100_Stock_00_Search{
 				if(RenewFg) {
 					RenewFg = false;
 					LookUp_fm.setVisible(false);
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					
 					String GetSearchClCd			= B100_DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];		//荷主コード
@@ -990,12 +990,12 @@ public class WT100_Stock_00_Search{
 						for(int i01=0;i01<StockRt[i].length;i01++) {
 							SetOb[i01+1] = ""+StockRt[i][i01];
 						}
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 					if(0<StockRt.length) {
-						B100_TableControl.AddSortON(tb01,tableModel_ms01);
+						B100_TableControl.AddSortON(tb01,MainFmTableModel);
 					}else {
-						B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 					}
 					RenewFg = true;
 				}
@@ -1043,18 +1043,18 @@ public class WT100_Stock_00_Search{
 					/**************************************************************
 					検索結果消す
 					***************************************************************/
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
-					B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+					B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 					RenewFg = true;
 				}
 			}
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -1063,7 +1063,7 @@ public class WT100_Stock_00_Search{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 	
 						}
@@ -1071,7 +1071,7 @@ public class WT100_Stock_00_Search{
 					if(MsViewMode) {
 						LookUpView(
 								LookUp_fm,
-								tableModel_ms01,
+								MainFmTableModel,
 								TB_LookUpWh,
 								TB_LookUpGp,
 								TB_LookUpCl,
@@ -1168,7 +1168,7 @@ public class WT100_Stock_00_Search{
 	
 	private static void LookUpView(
 			JFrame LookUp_fm,
-			DefaultTableModel tableModel_ms01,
+			DefaultTableModel MainFmTableModel,
 			JLabel  TB_LookUpWh,
 			JLabel  TB_LookUpGp,
 			JLabel  TB_LookUpCl,
@@ -1279,11 +1279,11 @@ public class WT100_Stock_00_Search{
 			SetVol[i]="";
 		}
 		boolean KickFg = false;
-		int RowCount 	= tableModel_ms01.getRowCount();
+		int RowCount 	= MainFmTableModel.getRowCount();
 		for(int i=0;i<RowCount;i++) {
-			if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+			if((boolean)MainFmTableModel.getValueAt(i, 0)) {
 				for(int i01=0;i01<SetVol.length;i01++) {
-					SetVol[i01]=""+tableModel_ms01.getValueAt(i, i01+1);
+					SetVol[i01]=""+MainFmTableModel.getValueAt(i, i01+1);
 				}
 				KickFg = true;
 			}

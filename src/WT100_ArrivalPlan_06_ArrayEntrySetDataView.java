@@ -135,9 +135,9 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -168,7 +168,7 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 			for(int i01=0;i01<EntryData[i].length;i01++) {
 				SetOb[(int)RtSetDataDefinition[i01][1]+1]=EntryData[i][(int)RtSetDataDefinition[i01][1]];
 			}
-			tableModel_ms01.addRow(SetOb);
+			MainFmTableModel.addRow(SetOb);
 		}
 		
 		RenewFg = true;
@@ -177,13 +177,13 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				int RowCount = tableModel_ms01.getRowCount();
+				int RowCount = MainFmTableModel.getRowCount();
 				String[][] GetData = new String[RowCount][RtSetDataDefinition().length];
 				
 				if(0<RowCount) {
 					for(int i=0;i<RowCount;i++) {
 						for(int i01=0;i01<RtSetDataDefinition().length;i01++) {
-							GetData[i][i01] = ""+tableModel_ms01.getValueAt(i, i01+1);
+							GetData[i][i01] = ""+MainFmTableModel.getValueAt(i, i01+1);
 						}
 					}
 					
@@ -200,7 +200,7 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -208,7 +208,7 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 	
 						}

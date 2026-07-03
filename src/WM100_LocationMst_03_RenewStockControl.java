@@ -84,7 +84,7 @@ public class WM100_LocationMst_03_RenewStockControl{
 				 {"ClCd"		,"1","1"}	//荷主コード
 				,{"WhCd"		,"1","1"}	//倉庫コード
 				,{"Loc"			,"1","1"}	//ロケーション
-				,{"Type"		,"1","1"}	//ロケタイプ
+				,{"LocType"		,"1","1"}	//ロケタイプ
 				,{"LocName"		,"1","1"}	//ロケーション名
 				,{"EntryDate"	,"1","0"}	//登録日
 				,{"UpdateDate"	,"1","1"}	//更新日

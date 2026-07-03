@@ -202,9 +202,9 @@ public class WM100_PostMst_03_CreateSum{
 			//編集可能カラムの指定
 			B100_TableControl.RenewTgt = new int[1];
 			B100_TableControl.RenewTgt[0] = -1;
-			final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+			final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 			
-			final JTable tb01 = new JTable(tableModel_ms01);
+			final JTable tb01 = new JTable(MainFmTableModel);
 			tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 			tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 			tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -227,12 +227,12 @@ public class WM100_PostMst_03_CreateSum{
 			
 			for(int i=0;i<GetEntryPost.length;i++) {
 				Object[] SetOb = {GetEntryPost[i],GetEntryPref[i],GetEntryMunic01[i],GetEntryMunic02[i],GetEntryMunicipalityCd[i]};
-				tableModel_ms01.addRow(SetOb);
+				MainFmTableModel.addRow(SetOb);
 			}
 			if(0<GetEntryPost.length) {
-				B100_TableControl.AddSortON(tb01,tableModel_ms01);
+				B100_TableControl.AddSortON(tb01,MainFmTableModel);
 			}else {
-				B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+				B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 			}
 			
 			main_fm.setVisible(true);

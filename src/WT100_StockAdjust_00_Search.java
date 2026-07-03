@@ -273,9 +273,9 @@ public class WT100_StockAdjust_00_Search{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -317,9 +317,9 @@ public class WT100_StockAdjust_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					String GetSearchClWh 				= B100_TextControl.Trim(B100_DefaultVariable.SearchWhList[1][TB_SearchClWh.getSelectedIndex()]);		//ヘッダ担当倉庫
 					String GetSearchClCd 				= B100_TextControl.Trim(B100_DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()]);		//ヘッダ荷主CD
@@ -422,12 +422,12 @@ public class WT100_StockAdjust_00_Search{
 						for(int i01=0;i01<AdjustRt[i].length;i01++) {
 							SetOb[i01+1] = ""+AdjustRt[i][i01];
 						}
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 					if(0<AdjustRt.length) {
-						B100_TableControl.AddSortON(tb01,tableModel_ms01);
+						B100_TableControl.AddSortON(tb01,MainFmTableModel);
 					}else {
-						B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 					}
 					
 					RenewFg = true;
@@ -440,9 +440,9 @@ public class WT100_StockAdjust_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					TB_SearchClWh.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1]		,A00000_Main.ClWh,true));			//ヘッダ担当倉庫
 					TB_SearchClCd.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1]		,A00000_Main.ClCd,true));			//ヘッダ荷主CD
@@ -472,7 +472,7 @@ public class WT100_StockAdjust_00_Search{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -480,7 +480,7 @@ public class WT100_StockAdjust_00_Search{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 	
 						}

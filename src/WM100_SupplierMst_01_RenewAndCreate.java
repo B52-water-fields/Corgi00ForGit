@@ -335,9 +335,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -379,9 +379,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 				if(RenewFg) {
 					RenewFg = false;
 					
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					
 					String GetSearchDECD			= TB_SearchDECD.getText();
@@ -470,12 +470,12 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 						for(int i01=0;i01<DeliveryMstRt[i].length;i01++) {
 							SetOb[i01+1] = DeliveryMstRt[i][i01];
 						}
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 					if(0<DeliveryMstRt.length) {
-						B100_TableControl.AddSortON(tb01,tableModel_ms01);
+						B100_TableControl.AddSortON(tb01,MainFmTableModel);
 					}else {
-						B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 					}
 					RenewFg = true;
 				}
@@ -491,12 +491,12 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 					TB_DepartmentCd.setText("");
 					TB_DEName01.setText("");
 					
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TB_DECD.setText(""+tableModel_ms01.getValueAt(i, M100_DeliveryMstRt.ColDECD+1));
-							TB_DepartmentCd.setText(""+tableModel_ms01.getValueAt(i, M100_DeliveryMstRt.ColDepartmentCd+1));
-							TB_DEName01.setText(""+tableModel_ms01.getValueAt(i, M100_DeliveryMstRt.ColDEName01+1));
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TB_DECD.setText(""+MainFmTableModel.getValueAt(i, M100_DeliveryMstRt.ColDECD+1));
+							TB_DepartmentCd.setText(""+MainFmTableModel.getValueAt(i, M100_DeliveryMstRt.ColDepartmentCd+1));
+							TB_DEName01.setText(""+MainFmTableModel.getValueAt(i, M100_DeliveryMstRt.ColDEName01+1));
 						}
 					}
 					
@@ -508,7 +508,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -516,7 +516,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 	
 						}
@@ -736,9 +736,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					TB_SearchDECD.setText("");
 					TB_SearchDepartmentCd.setText("");

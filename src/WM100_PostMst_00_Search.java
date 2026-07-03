@@ -74,9 +74,9 @@ public class WM100_PostMst_00_Search{
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -137,9 +137,9 @@ public class WM100_PostMst_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					
 					String GetSearchPOST = TB_SearchPOST.getText();	if(null==GetSearchPOST) {GetSearchPOST="";}
@@ -179,12 +179,12 @@ public class WM100_PostMst_00_Search{
 						SetOb[3] = ""+PostRt[i][2];	//市区町村
 						SetOb[4] = ""+PostRt[i][3];	//町丁目
 						SetOb[5] = ""+PostRt[i][4];	//市区町村CD
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 					if(0<PostRt.length) {
-						B100_TableControl.AddSortON(tb01,tableModel_ms01);
+						B100_TableControl.AddSortON(tb01,MainFmTableModel);
 					}else {
-						B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+						B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 					}
 					RenewFg = true;
 				}
@@ -196,11 +196,11 @@ public class WM100_PostMst_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					String TgtPost = "";
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TgtPost = ""+tableModel_ms01.getValueAt(i, 1);	if(null==TgtPost) {TgtPost="";}
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TgtPost = ""+MainFmTableModel.getValueAt(i, 1);	if(null==TgtPost) {TgtPost="";}
 						}
 					}
 					if(!"".equals(TgtPost)) {
@@ -253,7 +253,7 @@ public class WM100_PostMst_00_Search{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -261,7 +261,7 @@ public class WM100_PostMst_00_Search{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 	
 						}

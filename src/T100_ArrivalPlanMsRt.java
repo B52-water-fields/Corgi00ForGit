@@ -146,51 +146,51 @@ public class T100_ArrivalPlanMsRt{
 	
 	*/
 	
-	static final int ColClWh			=  0;		//ヘッダ担当倉庫
-	static final int ColClCd			=  1;		//ヘッダ荷主CD
-	static final int ColCLName01		=  2;		//ヘッダ荷主名
-	static final int ColClGpCD			=  3;		//ヘッダ荷主グループCD
-	static final int ColCLGpName01	=  4;		//ヘッダ荷主グループ名1
-	static final int ColArrNo			=  5;		//ヘッダ入荷予定NO（WMS採番）
-	static final int ColClArrNo		=  6;		//ヘッダ荷主予定番号
-	static final int ColPlanDate		=  7;		//ヘッダ入荷予定日
-	static final int ColHdActualDate	=  8;		//ヘッダ入荷実績日
-	static final int ColSpCd			=  9;		//ヘッダ仕入先CD
-	static final int ColSpName01		= 10;		//ヘッダ仕入先名01
-	static final int ColSpName02		= 11;		//ヘッダ仕入先名02
-	static final int ColSpName03		= 12;		//ヘッダ仕入先名03
-	static final int ColSpPost			= 13;		//ヘッダ仕入先郵便
-	static final int ColSpAdd01		= 14;		//ヘッダ仕入先住所01
-	static final int ColSpAdd02		= 15;		//ヘッダ仕入先住所02
-	static final int ColSpAdd03		= 16;		//ヘッダ仕入先住所03
-	static final int ColSpTel			= 17;		//ヘッダ仕入先電話
-	static final int ColArCom01		= 18;		//ヘッダコメント1
-	static final int ColArCom02		= 19;		//ヘッダコメント2
-	static final int ColArCom03		= 20;		//ヘッダコメント3
+	static final int ColMsNo			=  0;		//明細番号
+	static final int ColItemCd			=  1;		//商品コード
+	static final int ColClItemCd		=  2;		//荷主商品コード
+	static final int ColItemName		=  3;		//商品名
+	static final int Collot			=  4;		//ロット
+	static final int ColExpDate		=  5;		//消費期限
+	static final int ColPlanQty		=  6;		//予定数量
+	static final int ColActualQty		=  7;		//実績数
+	static final int ColActualDate	=  8;		//入荷日
+	static final int ColCom01			=  9;		//コメント1
+	static final int ColCom02			= 10;		//コメント2
+	static final int ColJanCd			= 11;		//ソースマーク_BCD（バラ）
+	static final int ColItemMdNo		= 12;		//商品型番
 	
+	static final int ColCLName01		= 13;		//ヘッダ荷主名
+	static final int ColCLGpName01	= 14;		//ヘッダ荷主グループ名1
+	static final int ColArrNo			= 15;		//ヘッダ入荷予定NO（WMS採番）
+	static final int ColClArrNo		= 16;		//ヘッダ荷主予定番号
+	static final int ColPlanDate		= 17;		//ヘッダ入荷予定日
+	static final int ColHdActualDate	= 18;		//ヘッダ入荷実績日
+	static final int ColSpName01		= 19;		//ヘッダ仕入先名01
 	
-	static final int ColMsNo			= 21;		//明細番号
-	static final int ColItemCd			= 22;		//商品コード
-	static final int ColClItemCd		= 23;		//荷主商品コード
-	static final int ColItemName		= 24;		//商品名
-	static final int Collot			= 25;		//ロット
-	static final int ColExpDate		= 26;		//消費期限
-	static final int ColPlanQty		= 27;		//予定数量
-	static final int ColActualQty		= 28;		//実績数
-	static final int ColActualDate	= 29;		//入荷日
-	static final int ColCom01			= 30;		//コメント1
-	static final int ColCom02			= 31;		//コメント2
-	static final int ColJanCd			= 32;		//ソースマーク_BCD（バラ）
-	static final int ColItemMdNo		= 33;		//商品型番
-	static final int ColHdEntryDate	= 34;		//ヘッダ登録日
-	static final int ColHdUpdateDate	= 35;		//ヘッダ更新日
-	static final int ColHdEntryUser	= 36;		//ヘッダ登録者
-	static final int ColHdUpdateUser	= 37;		//ヘッダ更新者
-	static final int ColFixFg			= 38;		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
-	static final int ColEntryDate		= 39;		//登録日
-	static final int ColUpdateDate	= 40;		//更新日
-	static final int ColEntryUser		= 41;		//登録者
-	static final int ColUpdateUser	= 42;		//更新者
+	static final int ColHdEntryDate	= 20;		//ヘッダ登録日
+	static final int ColHdUpdateDate	= 21;		//ヘッダ更新日
+	static final int ColHdEntryUser	= 22;		//ヘッダ登録者
+	static final int ColHdUpdateUser	= 23;		//ヘッダ更新者
+	static final int ColFixFg			= 24;		//ヘッダ状況　完了:1 未完了:0　分納待ち:2  キャンセル:9
+	static final int ColEntryDate		= 25;		//登録日
+	static final int ColUpdateDate	= 26;		//更新日
+	static final int ColEntryUser		= 27;		//登録者
+	static final int ColUpdateUser	= 28;		//更新者
+	static final int ColClWh			= 29;		//ヘッダ担当倉庫
+	static final int ColClCd			= 30;		//ヘッダ荷主CD
+	static final int ColClGpCD			= 31;		//ヘッダ荷主グループCD
+	static final int ColSpCd			= 32;		//ヘッダ仕入先CD
+	static final int ColSpName02		= 33;		//ヘッダ仕入先名02
+	static final int ColSpName03		= 34;		//ヘッダ仕入先名03
+	static final int ColSpPost			= 35;		//ヘッダ仕入先郵便
+	static final int ColSpAdd01		= 36;		//ヘッダ仕入先住所01
+	static final int ColSpAdd02		= 37;		//ヘッダ仕入先住所02
+	static final int ColSpAdd03		= 38;		//ヘッダ仕入先住所03
+	static final int ColSpTel			= 39;		//ヘッダ仕入先電話
+	static final int ColArCom01		= 40;		//ヘッダコメント1
+	static final int ColArCom02		= 41;		//ヘッダコメント2
+	static final int ColArCom03		= 42;		//ヘッダコメント3
 	
 	public static Object[][] RtArrivalPlanMsRt(
 			){

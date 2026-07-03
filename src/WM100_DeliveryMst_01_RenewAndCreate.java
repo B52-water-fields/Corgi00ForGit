@@ -291,9 +291,9 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -357,7 +357,7 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					boolean KickFg = false;
 					
 					String GetDECD = M100_DeliveryMstRt.DeliveryCdGet(1)[0];
@@ -426,16 +426,16 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					boolean KickFg = false;
 					
 					String GetDECD = "";
 					String GetDepartmentCd = "";
 					
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {;
-							GetDECD = ""+tableModel_ms01.getValueAt(i, 1);
-							GetDepartmentCd = ""+tableModel_ms01.getValueAt(i, 2);
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {;
+							GetDECD = ""+MainFmTableModel.getValueAt(i, 1);
+							GetDepartmentCd = ""+MainFmTableModel.getValueAt(i, 2);
 							KickFg = true;
 						}
 					}
@@ -461,16 +461,16 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					boolean KickFg = false;
 					
 					String GetDECD = "";
 					String GetDepartmentCd = "";
 					
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							GetDECD = ""+tableModel_ms01.getValueAt(i, 1);
-							GetDepartmentCd = ""+tableModel_ms01.getValueAt(i, 2);
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							GetDECD = ""+MainFmTableModel.getValueAt(i, 1);
+							GetDepartmentCd = ""+MainFmTableModel.getValueAt(i, 2);
 							KickFg = true;
 						}
 					}
@@ -537,15 +537,15 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					boolean KickFg = false;
 					
 					String GetDECD = "";
 					String GetDepartmentCd = "";
 					
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							GetDECD = ""+tableModel_ms01.getValueAt(i, 1);
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							GetDECD = ""+MainFmTableModel.getValueAt(i, 1);
 							GetDepartmentCd = M100_DeliveryMstRt.NewDepartmentCd(GetDECD);
 							KickFg = true;
 						}
@@ -609,7 +609,7 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -618,7 +618,7 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
 							if((Boolean)tb01.getValueAt(i,0)){
-								tableModel_ms01.setValueAt(setBL, i, 0);
+								MainFmTableModel.setValueAt(setBL, i, 0);
 							}
 						}else {
 	
@@ -720,9 +720,9 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 								GetDepartmentCd = "0000";
 								KickFg=true;
 							}else {
-								int RowCount = tableModel_ms01.getRowCount();
+								int RowCount = MainFmTableModel.getRowCount();
 								for(int i=0;i<RowCount;i++) {
-									tableModel_ms01.removeRow(0);
+									MainFmTableModel.removeRow(0);
 								}
 								for(int i=0;i<SameDelivery.length;i++) {
 									Object[] SetOb = new Object[5];
@@ -733,12 +733,12 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 									SetOb[ 3] = ""+SameDelivery[i][M100_DeliveryMstRt.ColDEName01];		//届先名１
 									SetOb[ 4] = ""+SameDelivery[i][M100_DeliveryMstRt.ColAdd01]+SameDelivery[i][M100_DeliveryMstRt.ColAdd02]+SameDelivery[i][M100_DeliveryMstRt.ColAdd03];	//届先住所
 									
-									tableModel_ms01.addRow(SetOb);
+									MainFmTableModel.addRow(SetOb);
 								}
 								if(0<SameDelivery.length) {
-									B100_TableControl.AddSortON(tb01,tableModel_ms01);
+									B100_TableControl.AddSortON(tb01,MainFmTableModel);
 								}else {
-									B100_TableControl.AddSortOFF(tb01,tableModel_ms01);
+									B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
 								}
 								
 								SameDelivery_fm.setVisible(true);

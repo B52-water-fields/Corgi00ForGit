@@ -2999,6 +2999,15 @@ public class WT100_Stock_10_Adjust{
 		if(B100_DefaultVariable.ActualDateUnControl && "".equals((String)StockData[T100_StockRt.ColActualDate])) {
 			StockData[T100_StockRt.ColActualDate] = B100_DefaultVariable.DefaultActualDate;
 		}
+		//入荷実績日空白で、入荷日管理する場合今日の日付セット
+		if(!B100_DefaultVariable.ActualDateUnControl && "".equals((String)StockData[T100_StockRt.ColActualDate])) {
+			String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
+			
+			StockData[T100_StockRt.ColActualDate] = NowDate;
+		}
+		
+		
+		
 		//賞味期限空白の場合、一旦デフォルト賞味期限セット
 		if("".equals((String)StockData[T100_StockRt.ColExpdate])) {
 			StockData[T100_StockRt.ColExpdate] = B100_DefaultVariable.DefaultExpDate;

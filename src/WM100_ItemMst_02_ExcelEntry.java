@@ -159,9 +159,9 @@ public class WM100_ItemMst_02_ExcelEntry{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -243,7 +243,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 						SetOb[i01+1] = ExcellRead[i][(int)NeedCol[i01][2]];
 						CheckOb[i][i01+1]=ExcellRead[i][(int)NeedCol[i01][2]];
 					}
-					tableModel_ms01.addRow(SetOb);
+					MainFmTableModel.addRow(SetOb);
 				}
 			}
 			String[] TableCol = B100_TableControl.TableFieldNameRt(tb01);
@@ -267,14 +267,14 @@ public class WM100_ItemMst_02_ExcelEntry{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				int RowCount = tableModel_ms01.getRowCount();
-				int ColCount = tableModel_ms01.getColumnCount();
+				int RowCount = MainFmTableModel.getRowCount();
+				int ColCount = MainFmTableModel.getColumnCount();
 				
 				if(0<RowCount) {
 					Object[][] CheckOb = new Object[RowCount][ColCount];
 					for(int i01=0;i01<RowCount;i01++) {
 						for(int i02=0;i02<ColCount;i02++) {
-							CheckOb[i01][i02] = tableModel_ms01.getValueAt(i01, i02);
+							CheckOb[i01][i02] = MainFmTableModel.getValueAt(i01, i02);
 						}
 					}
 					String[] TableCol = B100_TableControl.TableFieldNameRt(tb01);

@@ -149,9 +149,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -270,7 +270,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						SetOb[16] = ""+ExcellRead[i][TgtCol[15]];	//基幹システム発着地コード
 						SetOb[17] = ""+ExcellRead[i][TgtCol[16]];	//削除区分
 						
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 				}
 			}
@@ -399,9 +399,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
-		final DefaultTableModel SDtableModel_ms01 = new B100_TableControl.MyTableModel01(SDcolumnNames01,0);
+		final DefaultTableModel SDMainFmTableModel = new B100_TableControl.MyTableModel01(SDcolumnNames01,0);
 		
-		final JTable SDtb01 = new JTable(SDtableModel_ms01);
+		final JTable SDtb01 = new JTable(SDMainFmTableModel);
 		SDtb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		SDtb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		SDtb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -438,16 +438,16 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = SDtableModel_ms01.getRowCount();
+					int RowCount = SDMainFmTableModel.getRowCount();
 					boolean KickFg = false;
 					
 					String GetDECD = "";
 					String GetDepartmentCd = "";
 					
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)SDtableModel_ms01.getValueAt(i, 0)) {
-							GetDECD = ""+SDtableModel_ms01.getValueAt(i, 1);
-							GetDepartmentCd = ""+SDtableModel_ms01.getValueAt(i, 2);
+						if((boolean)SDMainFmTableModel.getValueAt(i, 0)) {
+							GetDECD = ""+SDMainFmTableModel.getValueAt(i, 1);
+							GetDepartmentCd = ""+SDMainFmTableModel.getValueAt(i, 2);
 							KickFg = true;
 						}
 					}
@@ -467,26 +467,26 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = SDtableModel_ms01.getRowCount();
+					int RowCount = SDMainFmTableModel.getRowCount();
 					boolean KickFg = false;
 					
 					String GetDECD = "";
 					String GetDepartmentCd = "";
 					
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)SDtableModel_ms01.getValueAt(i, 0)) {
-							GetDECD = ""+SDtableModel_ms01.getValueAt(i, 1);
-							GetDepartmentCd = ""+SDtableModel_ms01.getValueAt(i, 2);
+						if((boolean)SDMainFmTableModel.getValueAt(i, 0)) {
+							GetDECD = ""+SDMainFmTableModel.getValueAt(i, 1);
+							GetDepartmentCd = ""+SDMainFmTableModel.getValueAt(i, 2);
 							KickFg = true;
 						}
 					}
 					if(KickFg) {
 						String NewDepartmentCd = M100_DeliveryMstRt.NewDepartmentCd(GetDECD);
 						//既に別部署扱いで部署コード採番されていた場合部署コード＋1
-						RowCount = tableModel_ms01.getRowCount();
+						RowCount = MainFmTableModel.getRowCount();
 						for(int i=0;i<RowCount;i++) {
-							if(!(boolean)tableModel_ms01.getValueAt(i, 0) && GetDECD.equals(""+tableModel_ms01.getValueAt(i, 1)))
-							if(Integer.parseInt(NewDepartmentCd)<=Integer.parseInt(""+tableModel_ms01.getValueAt(i, 2))) {
+							if(!(boolean)MainFmTableModel.getValueAt(i, 0) && GetDECD.equals(""+MainFmTableModel.getValueAt(i, 1)))
+							if(Integer.parseInt(NewDepartmentCd)<=Integer.parseInt(""+MainFmTableModel.getValueAt(i, 2))) {
 								int wint = Integer.parseInt(NewDepartmentCd)+1;
 								if(9999<wint) {
 									NewDepartmentCd = ""+wint;
@@ -506,15 +506,15 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		});
 		
 		//チェックボックス操作時の挙動
-		SDtableModel_ms01.addTableModelListener(new TableModelListener(){
+		SDMainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int row_count = SDtableModel_ms01.getRowCount();
+					int row_count = SDMainFmTableModel.getRowCount();
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							SDtableModel_ms01.setValueAt(setBL, i, 0);
+							SDMainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 							
 						}
@@ -531,8 +531,8 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 				if(RenewFg) {
 					RenewFg = false;
 					
-					int RowCount = SDtableModel_ms01.getRowCount();
-					for(int i=0;i<RowCount;i++) {SDtableModel_ms01.removeRow(0);}
+					int RowCount = SDMainFmTableModel.getRowCount();
+					for(int i=0;i<RowCount;i++) {SDMainFmTableModel.removeRow(0);}
 					
 					String GetDECD			= TB_DECD.getText();
 					String GetDepartmentCd	= TB_DepartmentCd.getText();
@@ -568,7 +568,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 								SetOb[ 3] = ""+TelDuplicationCheck[i][2];	//届先名
 								SetOb[ 4] = ""+TelDuplicationCheck[i][6]+TelDuplicationCheck[i][7]+TelDuplicationCheck[i][8];	//届先住所
 								
-								SDtableModel_ms01.addRow(SetOb);
+								SDMainFmTableModel.addRow(SetOb);
 								KickFg = true;
 							}
 						}
@@ -593,7 +593,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 					boolean DuplicationUnSet = NewDuplicationUnSet.isSelected();
 					
 					Object[][] TelDuplicationCheckAny = new Object[0][27];
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					String[] GetDECDList			= new String[RowCount];
 					String[] GetDepartmentCdList	= new String[RowCount];
 					String[] GetPostList			= new String[RowCount];
@@ -601,10 +601,10 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 					
 					if(DuplicationUnSet) {
 						for(int i=0;i<RowCount;i++) {
-							GetDECDList[i]			= ""+tableModel_ms01.getValueAt(i, 1);
-							GetDepartmentCdList[i]	= ""+tableModel_ms01.getValueAt(i, 2);
-							GetPostList[i]			= ""+tableModel_ms01.getValueAt(i, 6);
-							GetTelList[i]			= ""+tableModel_ms01.getValueAt(i, 10);
+							GetDECDList[i]			= ""+MainFmTableModel.getValueAt(i, 1);
+							GetDepartmentCdList[i]	= ""+MainFmTableModel.getValueAt(i, 2);
+							GetPostList[i]			= ""+MainFmTableModel.getValueAt(i, 6);
+							GetTelList[i]			= ""+MainFmTableModel.getValueAt(i, 10);
 							
 							if(null==GetDECDList[i]			){GetDECDList[i] 			= "";}
 							if(null==GetDepartmentCdList[i]	){GetDepartmentCdList[i] 	= "";}
@@ -718,23 +718,23 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						int NeedDeCdCount = 0;
 						
 						for(int i=0;i<RowCount;i++) {
-							GetDECD				= ""+tableModel_ms01.getValueAt(i, 1);	//届先コード
-							GetDepartmentCd		= ""+tableModel_ms01.getValueAt(i, 2);	//部署CD
-							GetDEName01			= ""+tableModel_ms01.getValueAt(i, 3);	//届先名1
-							GetDEName02			= ""+tableModel_ms01.getValueAt(i, 4);	//届先名2
-							GetDEName03			= ""+tableModel_ms01.getValueAt(i, 5);	//届先名3
-							GetPost				= ""+tableModel_ms01.getValueAt(i, 6);	//届先郵便
-							GetAdd01			= ""+tableModel_ms01.getValueAt(i, 7);	//届先住所1
-							GetAdd02			= ""+tableModel_ms01.getValueAt(i, 8);	//届先住所2
-							GetAdd03			= ""+tableModel_ms01.getValueAt(i, 9);	//届先住所3
-							GetTel				= ""+tableModel_ms01.getValueAt(i,10);	//届先電話
-							GetFax				= ""+tableModel_ms01.getValueAt(i,11);	//届先FAX
-							GetMail				= ""+tableModel_ms01.getValueAt(i,12);	//届先MAIL
-							GetCom01			= ""+tableModel_ms01.getValueAt(i,13);	//コメント1
-							GetCom02			= ""+tableModel_ms01.getValueAt(i,14);	//コメント2
-							GetCom03			= ""+tableModel_ms01.getValueAt(i,15);	//コメント3
-							GetPTMSCD			= ""+tableModel_ms01.getValueAt(i,16);	//基幹システム発着地コード
-							GetDelFg			= ""+tableModel_ms01.getValueAt(i,17);	//削除区分
+							GetDECD				= ""+MainFmTableModel.getValueAt(i, 1);	//届先コード
+							GetDepartmentCd		= ""+MainFmTableModel.getValueAt(i, 2);	//部署CD
+							GetDEName01			= ""+MainFmTableModel.getValueAt(i, 3);	//届先名1
+							GetDEName02			= ""+MainFmTableModel.getValueAt(i, 4);	//届先名2
+							GetDEName03			= ""+MainFmTableModel.getValueAt(i, 5);	//届先名3
+							GetPost				= ""+MainFmTableModel.getValueAt(i, 6);	//届先郵便
+							GetAdd01			= ""+MainFmTableModel.getValueAt(i, 7);	//届先住所1
+							GetAdd02			= ""+MainFmTableModel.getValueAt(i, 8);	//届先住所2
+							GetAdd03			= ""+MainFmTableModel.getValueAt(i, 9);	//届先住所3
+							GetTel				= ""+MainFmTableModel.getValueAt(i,10);	//届先電話
+							GetFax				= ""+MainFmTableModel.getValueAt(i,11);	//届先FAX
+							GetMail				= ""+MainFmTableModel.getValueAt(i,12);	//届先MAIL
+							GetCom01			= ""+MainFmTableModel.getValueAt(i,13);	//コメント1
+							GetCom02			= ""+MainFmTableModel.getValueAt(i,14);	//コメント2
+							GetCom03			= ""+MainFmTableModel.getValueAt(i,15);	//コメント3
+							GetPTMSCD			= ""+MainFmTableModel.getValueAt(i,16);	//基幹システム発着地コード
+							GetDelFg			= ""+MainFmTableModel.getValueAt(i,17);	//削除区分
 							
 							if(null==GetDECD			){GetDECD 			= "";}
 							if(null==GetDepartmentCd	){GetDepartmentCd 	= "";}
@@ -926,12 +926,12 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						//登録済み除外
 						if(null!=RemoveRow && 0<RemoveRow.size()) {
 							for(int i=0;i<RemoveRow.size();i++) {
-								tableModel_ms01.removeRow(RemoveRow.get(RemoveRow.size()-i-1));
+								MainFmTableModel.removeRow(RemoveRow.get(RemoveRow.size()-i-1));
 							}
 						}
 						
 						//除外した結果0行になったら検索画面に戻る
-						RowCount = tableModel_ms01.getRowCount();
+						RowCount = MainFmTableModel.getRowCount();
 						if(0>=RowCount) {
 							//ファイルバックアップ
 							B100_FolderCheck.FileBackUpNormal(TgtFilePath) ;
@@ -1026,25 +1026,25 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 					
 					if(!"".equals(GetRow)) {
 						int TgtRow = Integer.parseInt(GetRow);
-						tableModel_ms01.setValueAt(GetDECD			, TgtRow, 1);
-						tableModel_ms01.setValueAt(GetDepartmentCd	, TgtRow, 2);
-						tableModel_ms01.setValueAt(GetDEName01		, TgtRow, 3);
-						tableModel_ms01.setValueAt(GetDEName02		, TgtRow, 4);
-						tableModel_ms01.setValueAt(GetDEName03		, TgtRow, 5);
-						tableModel_ms01.setValueAt(GetPost			, TgtRow, 6);
-						tableModel_ms01.setValueAt(GetAdd01			, TgtRow, 7);
-						tableModel_ms01.setValueAt(GetAdd02			, TgtRow, 8);
-						tableModel_ms01.setValueAt(GetAdd03			, TgtRow, 9);
-						tableModel_ms01.setValueAt(GetTel			, TgtRow,10);
-						tableModel_ms01.setValueAt(GetFax			, TgtRow,11);
-						tableModel_ms01.setValueAt(GetMail			, TgtRow,12);
-						tableModel_ms01.setValueAt(GetCom01			, TgtRow,13);
-						tableModel_ms01.setValueAt(GetCom02			, TgtRow,14);
-						tableModel_ms01.setValueAt(GetCom03			, TgtRow,15);
-						tableModel_ms01.setValueAt(GetPTMSCD		, TgtRow,16);
-						tableModel_ms01.setValueAt(GetDelFg			, TgtRow,17);
+						MainFmTableModel.setValueAt(GetDECD			, TgtRow, 1);
+						MainFmTableModel.setValueAt(GetDepartmentCd	, TgtRow, 2);
+						MainFmTableModel.setValueAt(GetDEName01		, TgtRow, 3);
+						MainFmTableModel.setValueAt(GetDEName02		, TgtRow, 4);
+						MainFmTableModel.setValueAt(GetDEName03		, TgtRow, 5);
+						MainFmTableModel.setValueAt(GetPost			, TgtRow, 6);
+						MainFmTableModel.setValueAt(GetAdd01			, TgtRow, 7);
+						MainFmTableModel.setValueAt(GetAdd02			, TgtRow, 8);
+						MainFmTableModel.setValueAt(GetAdd03			, TgtRow, 9);
+						MainFmTableModel.setValueAt(GetTel			, TgtRow,10);
+						MainFmTableModel.setValueAt(GetFax			, TgtRow,11);
+						MainFmTableModel.setValueAt(GetMail			, TgtRow,12);
+						MainFmTableModel.setValueAt(GetCom01			, TgtRow,13);
+						MainFmTableModel.setValueAt(GetCom02			, TgtRow,14);
+						MainFmTableModel.setValueAt(GetCom03			, TgtRow,15);
+						MainFmTableModel.setValueAt(GetPTMSCD		, TgtRow,16);
+						MainFmTableModel.setValueAt(GetDelFg			, TgtRow,17);
 						
-						tableModel_ms01.setValueAt(false			, TgtRow, 0);
+						MainFmTableModel.setValueAt(false			, TgtRow, 0);
 						
 						TB_DECD.setText("");
 						TB_DepartmentCd.setText("");
@@ -1071,7 +1071,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -1100,26 +1100,26 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
-							if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-								String GetDECD			= ""+tableModel_ms01.getValueAt(i, 1);
-								String GetDepartmentCd	= ""+tableModel_ms01.getValueAt(i, 2);
-								String GetDEName01		= ""+tableModel_ms01.getValueAt(i, 3);
-								String GetDEName02		= ""+tableModel_ms01.getValueAt(i, 4);
-								String GetDEName03		= ""+tableModel_ms01.getValueAt(i, 5);
-								String GetPost			= ""+tableModel_ms01.getValueAt(i, 6);
-								String GetAdd01			= ""+tableModel_ms01.getValueAt(i, 7);
-								String GetAdd02			= ""+tableModel_ms01.getValueAt(i, 8);
-								String GetAdd03			= ""+tableModel_ms01.getValueAt(i, 9);
-								String GetTel			= ""+tableModel_ms01.getValueAt(i,10);
-								String GetFax			= ""+tableModel_ms01.getValueAt(i,11);
-								String GetMail			= ""+tableModel_ms01.getValueAt(i,12);
-								String GetCom01			= ""+tableModel_ms01.getValueAt(i,13);
-								String GetCom02			= ""+tableModel_ms01.getValueAt(i,14);
-								String GetCom03			= ""+tableModel_ms01.getValueAt(i,15);
-								String GetPTMSCD		= ""+tableModel_ms01.getValueAt(i,16);
-								String GetDelFg 		= ""+tableModel_ms01.getValueAt(i,17);
+							if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+								String GetDECD			= ""+MainFmTableModel.getValueAt(i, 1);
+								String GetDepartmentCd	= ""+MainFmTableModel.getValueAt(i, 2);
+								String GetDEName01		= ""+MainFmTableModel.getValueAt(i, 3);
+								String GetDEName02		= ""+MainFmTableModel.getValueAt(i, 4);
+								String GetDEName03		= ""+MainFmTableModel.getValueAt(i, 5);
+								String GetPost			= ""+MainFmTableModel.getValueAt(i, 6);
+								String GetAdd01			= ""+MainFmTableModel.getValueAt(i, 7);
+								String GetAdd02			= ""+MainFmTableModel.getValueAt(i, 8);
+								String GetAdd03			= ""+MainFmTableModel.getValueAt(i, 9);
+								String GetTel			= ""+MainFmTableModel.getValueAt(i,10);
+								String GetFax			= ""+MainFmTableModel.getValueAt(i,11);
+								String GetMail			= ""+MainFmTableModel.getValueAt(i,12);
+								String GetCom01			= ""+MainFmTableModel.getValueAt(i,13);
+								String GetCom02			= ""+MainFmTableModel.getValueAt(i,14);
+								String GetCom03			= ""+MainFmTableModel.getValueAt(i,15);
+								String GetPTMSCD		= ""+MainFmTableModel.getValueAt(i,16);
+								String GetDelFg 		= ""+MainFmTableModel.getValueAt(i,17);
 								
 								if(null==GetDECD			){GetDECD = "";}
 								if(null==GetDepartmentCd	){GetDepartmentCd = "";}
@@ -1195,7 +1195,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					
 					String[] CeckDECD			= new String[RowCount];
 					String[] CeckDepartmentCd	= new String[RowCount];
@@ -1220,23 +1220,23 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 					
 					for(int i=0;i<RowCount;i++) {
 						//同一電話番号の届先一覧を取得したいのでGetDECDに空文字格納
-						String GetDECD			= ""+tableModel_ms01.getValueAt(i, 1);
-						String GetDepartmentCd	= ""+tableModel_ms01.getValueAt(i, 2);
-						String GetDEName01		= ""+tableModel_ms01.getValueAt(i, 3);
-						String GetDEName02		= ""+tableModel_ms01.getValueAt(i, 4);
-						String GetDEName03		= ""+tableModel_ms01.getValueAt(i, 5);
-						String GetPost			= ""+tableModel_ms01.getValueAt(i, 6);
-						String GetAdd01			= ""+tableModel_ms01.getValueAt(i, 7);
-						String GetAdd02			= ""+tableModel_ms01.getValueAt(i, 8);
-						String GetAdd03			= ""+tableModel_ms01.getValueAt(i, 9);
-						String GetTel			= ""+tableModel_ms01.getValueAt(i,10);
-						String GetFax			= ""+tableModel_ms01.getValueAt(i,11);
-						String GetMail			= ""+tableModel_ms01.getValueAt(i,12);
-						String GetCom01			= ""+tableModel_ms01.getValueAt(i,13);
-						String GetCom02			= ""+tableModel_ms01.getValueAt(i,14);
-						String GetCom03			= ""+tableModel_ms01.getValueAt(i,15);
-						String GetPTMSCD		= ""+tableModel_ms01.getValueAt(i,16);
-						String GetDelFg 		= ""+tableModel_ms01.getValueAt(i,17);
+						String GetDECD			= ""+MainFmTableModel.getValueAt(i, 1);
+						String GetDepartmentCd	= ""+MainFmTableModel.getValueAt(i, 2);
+						String GetDEName01		= ""+MainFmTableModel.getValueAt(i, 3);
+						String GetDEName02		= ""+MainFmTableModel.getValueAt(i, 4);
+						String GetDEName03		= ""+MainFmTableModel.getValueAt(i, 5);
+						String GetPost			= ""+MainFmTableModel.getValueAt(i, 6);
+						String GetAdd01			= ""+MainFmTableModel.getValueAt(i, 7);
+						String GetAdd02			= ""+MainFmTableModel.getValueAt(i, 8);
+						String GetAdd03			= ""+MainFmTableModel.getValueAt(i, 9);
+						String GetTel			= ""+MainFmTableModel.getValueAt(i,10);
+						String GetFax			= ""+MainFmTableModel.getValueAt(i,11);
+						String GetMail			= ""+MainFmTableModel.getValueAt(i,12);
+						String GetCom01			= ""+MainFmTableModel.getValueAt(i,13);
+						String GetCom02			= ""+MainFmTableModel.getValueAt(i,14);
+						String GetCom03			= ""+MainFmTableModel.getValueAt(i,15);
+						String GetPTMSCD		= ""+MainFmTableModel.getValueAt(i,16);
+						String GetDelFg 		= ""+MainFmTableModel.getValueAt(i,17);
 						
 						if(null==GetDECD			){GetDECD = "";}
 						if(null==GetDepartmentCd	){GetDepartmentCd = "";}

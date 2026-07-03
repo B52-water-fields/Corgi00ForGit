@@ -111,9 +111,9 @@ public class WM100_ItemRecomendLocMst_02_ExcelEntry{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -198,7 +198,7 @@ public class WM100_ItemRecomendLocMst_02_ExcelEntry{
 						SetOb[i01+1] = ExcellRead[i][(int)NeedCol[i01][2]];
 						CheckOb[i][i01+1]=ExcellRead[i][(int)NeedCol[i01][2]];
 					}
-					tableModel_ms01.addRow(SetOb);
+					MainFmTableModel.addRow(SetOb);
 				}
 			}
 			String[] TableCol = B100_TableControl.TableFieldNameRt(tb01);
@@ -225,11 +225,11 @@ public class WM100_ItemRecomendLocMst_02_ExcelEntry{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					String[] TableCol = B100_TableControl.TableFieldNameRt(tb01);
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					Object[][] CheckOb = new Object[RowCount][TableCol.length];
 					for(int i=0;i<RowCount;i++) {
 						for(int i01=0;i01<TableCol.length;i01++) {
-							CheckOb[i][i01] = ""+tableModel_ms01.getValueAt(i, i01);
+							CheckOb[i][i01] = ""+MainFmTableModel.getValueAt(i, i01);
 						}
 					}
 					Object[][] SetObRt = SetObRt(CheckOb,TableCol);

@@ -340,38 +340,38 @@ public class WTList100_StockList{
         SetText = ""+GetActualDate;		//入荷日
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,200,(float)HeightStart-5-leading*5-leading*PageRow*3,80,leading,SetText,font,FontSize-2,Color.BLACK,0,true,Color.BLACK,BackGroundFg,BackgroundColor);
         
-        SetText = ""+ni.format(GetQty);			//総数
+        SetText = ""+ni.format(GetQty)+GetUnitName;			//総数
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,280,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading*2,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetShipPlanQty);	//引当済
+        SetText = ""+ni.format(GetShipPlanQty)+GetUnitName;	//引当済
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,340,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading*2,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetPossibleQty);	//出荷可能
+        SetText = ""+ni.format(GetPossibleQty)+GetUnitName;	//出荷可能
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,400,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading*2,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
         
-        SetText = ""+ni.format(GetBrQty);			//バラ
+        SetText = ""+ni.format(GetBrQty)+GetUnitName;			//バラ
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,460,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetCsQty);			//ケース
+        SetText = ""+ni.format(GetCsQty)+GetCsUnitName;			//ケース
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,460,(float)HeightStart-5-leading*4-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetCtQty);			//カートン
+        SetText = ""+ni.format(GetCtQty)+GetCtUnitName;			//カートン
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,520,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetPlQty);			//パレット
+        SetText = ""+ni.format(GetPlQty)+GetPlUnitName;			//パレット
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,520,(float)HeightStart-5-leading*4-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
         
-        SetText = ""+ni.format(GetBrShipPlanQty);	//バラ
+        SetText = ""+ni.format(GetBrShipPlanQty)+GetUnitName;	//バラ
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,580,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetCsShipPlanQty);	//ケース
+        SetText = ""+ni.format(GetCsShipPlanQty)+GetCsUnitName;	//ケース
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,580,(float)HeightStart-5-leading*4-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetCtShipPlanQty);	//カートン
+        SetText = ""+ni.format(GetCtShipPlanQty)+GetCtUnitName;	//カートン
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,640,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetPlShipPlanQty);	//パレット
+        SetText = ""+ni.format(GetPlShipPlanQty)+GetPlUnitName;	//パレット
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,640,(float)HeightStart-5-leading*4-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
         
-        SetText = ""+ni.format(GetBrPossibleQty);	//バラ
+        SetText = ""+ni.format(GetBrPossibleQty)+GetUnitName;	//バラ
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,700,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetCsPossibleQty);	//ケース
+        SetText = ""+ni.format(GetCsPossibleQty)+GetCsUnitName;	//ケース
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,700,(float)HeightStart-5-leading*4-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetCtPossibleQty);	//カートン
+        SetText = ""+ni.format(GetCtPossibleQty)+GetCtUnitName;	//カートン
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,760,(float)HeightStart-5-leading*3-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
-        SetText = ""+ni.format(GetPlPossibleQty);	//パレット
+        SetText = ""+ni.format(GetPlPossibleQty)+GetPlUnitName;	//パレット
         contentStream = B100_PdfControl.TextSetBoxFontAdjust(contentStream,760,(float)HeightStart-5-leading*4-leading*PageRow*3, 60,leading,SetText,font,FontSize-2,Color.BLACK,1,true,Color.BLACK,BackGroundFg,BackgroundColor);
         
         SetText = " Ct:"+ni.format(GetCtUnitQty)+" Cs:"+ni.format(GetCsUnitQty)+" Pl:"+ni.format(GetPlUnitQty);//入数

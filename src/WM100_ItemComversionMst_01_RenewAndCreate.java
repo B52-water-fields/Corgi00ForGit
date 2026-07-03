@@ -234,9 +234,9 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -272,16 +272,16 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
-							TB_ItemCd.setText(		""+tableModel_ms01.getValueAt(i, 3));
-							TB_ItemName01.setText(	""+tableModel_ms01.getValueAt(i, 5));
-							TB_ItemName02.setText(	""+tableModel_ms01.getValueAt(i, 6));
-							TB_ItemName03.setText(	""+tableModel_ms01.getValueAt(i, 7));
-							TB_CtQty.setText(		""+tableModel_ms01.getValueAt(i,19));
-							TB_CsQty.setText(		""+tableModel_ms01.getValueAt(i,20));
-							TB_PlQty.setText(		""+tableModel_ms01.getValueAt(i,21));
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TB_ItemCd.setText(		""+MainFmTableModel.getValueAt(i, 3));
+							TB_ItemName01.setText(	""+MainFmTableModel.getValueAt(i, 5));
+							TB_ItemName02.setText(	""+MainFmTableModel.getValueAt(i, 6));
+							TB_ItemName03.setText(	""+MainFmTableModel.getValueAt(i, 7));
+							TB_CtQty.setText(		""+MainFmTableModel.getValueAt(i,19));
+							TB_CsQty.setText(		""+MainFmTableModel.getValueAt(i,20));
+							TB_PlQty.setText(		""+MainFmTableModel.getValueAt(i,21));
 						}
 					}
 					ItemSearch_fm.setVisible(false);
@@ -296,9 +296,9 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					String GetClGpCd 		 	= B100_DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];			//荷主グループコード
 					String GetSearchItemCd 		= TB_SearchItemCd.getText();		//商品コード
@@ -324,7 +324,7 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 						for(int i01=0;i01<ItemMstRt[i].length;i01++) {
 							SetOb[i01+1]=""+ItemMstRt[i][i01];
 						}
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 					RenewFg = true;
 				}
@@ -332,7 +332,7 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		});
 		
 		//チェックボックス操作時の挙動
-		tableModel_ms01.addTableModelListener(new TableModelListener(){
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -340,7 +340,7 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
-							tableModel_ms01.setValueAt(setBL, i, 0);
+							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
 	
 						}
@@ -360,9 +360,9 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 					TB_SearchCLItemCd.setText("");
 					TB_SearchItemName.setText("");
 					
-					int RowCount = tableModel_ms01.getRowCount();
+					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						tableModel_ms01.removeRow(0);
+						MainFmTableModel.removeRow(0);
 					}
 					ItemSearch_fm.setVisible(true);
 					RenewFg = true;

@@ -187,9 +187,9 @@ public class WM100_UserMst_02_ExcelEntry{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -491,7 +491,7 @@ public class WM100_UserMst_02_ExcelEntry{
 								ErrMsg.add(wint+"行目エラー:("+ExcellRead[i][TgtCol[20]]+")は未登録の荷主コードです");
 							}
 						}
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 				}
 				if(null==ErrMsg||0==ErrMsg.size()) {
@@ -535,7 +535,7 @@ public class WM100_UserMst_02_ExcelEntry{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				int RowCount = tableModel_ms01.getRowCount();
+				int RowCount = MainFmTableModel.getRowCount();
 				if(RenewFg&&0<RowCount) {
 					RenewFg = false;
 					String[][] SetString = {
@@ -570,7 +570,7 @@ public class WM100_UserMst_02_ExcelEntry{
 					boolean PassWordRenewFg = true;
 					//一件でもパスワード********※検索のままがあればパスワード更新しない
 					for(int i=0;i<RowCount;i++) {
-						if("********".equals(""+tableModel_ms01.getValueAt(i, 28))) {
+						if("********".equals(""+MainFmTableModel.getValueAt(i, 28))) {
 							PassWordRenewFg = false;
 						}
 					}
@@ -603,36 +603,36 @@ public class WM100_UserMst_02_ExcelEntry{
 						field_name[i][2] = SetString[i][2];
 					}
 					for(int i=0;i<RowCount;i++) {
-						judg_data[i][0] = ""+tableModel_ms01.getValueAt(i,  1);	//倉庫コード
-						judg_data[i][1] = ""+tableModel_ms01.getValueAt(i,  2);	//運送会社CD
-						judg_data[i][2] = ""+tableModel_ms01.getValueAt(i,  3);	//ユーザーCD
+						judg_data[i][0] = ""+MainFmTableModel.getValueAt(i,  1);	//倉庫コード
+						judg_data[i][1] = ""+MainFmTableModel.getValueAt(i,  2);	//運送会社CD
+						judg_data[i][2] = ""+MainFmTableModel.getValueAt(i,  3);	//ユーザーCD
 						
-						entry_data[i][ 0] = ""+tableModel_ms01.getValueAt(i,  1);	//倉庫コード
-						entry_data[i][ 1] = ""+tableModel_ms01.getValueAt(i,  2);	//運送会社CD
-						entry_data[i][ 2] = ""+tableModel_ms01.getValueAt(i,  3);	//ユーザーCD
-						entry_data[i][ 3] = ""+tableModel_ms01.getValueAt(i, 28);	//パスワード
-						entry_data[i][ 4] = ""+tableModel_ms01.getValueAt(i,  9);	//権限区分
-						entry_data[i][ 5] = ""+tableModel_ms01.getValueAt(i, 10);	//標準車輛CD
-						entry_data[i][ 6] = ""+tableModel_ms01.getValueAt(i,  6);	//ユーザー名1
-						entry_data[i][ 7] = ""+tableModel_ms01.getValueAt(i,  7);	//ユーザー名2
-						entry_data[i][ 8] = ""+tableModel_ms01.getValueAt(i,  8);	//ユーザー名3
-						entry_data[i][ 9] = ""+tableModel_ms01.getValueAt(i, 14);	//郵便番号
-						entry_data[i][10] = ""+tableModel_ms01.getValueAt(i, 15);	//住所1
-						entry_data[i][11] = ""+tableModel_ms01.getValueAt(i, 16);	//住所2
-						entry_data[i][12] = ""+tableModel_ms01.getValueAt(i, 17);	//住所3
-						entry_data[i][13] = ""+tableModel_ms01.getValueAt(i, 18);	//電話番号
-						entry_data[i][14] = ""+tableModel_ms01.getValueAt(i, 19);	//FAX
-						entry_data[i][15] = ""+tableModel_ms01.getValueAt(i, 20);	//メールアドレス
-						entry_data[i][16] = ""+tableModel_ms01.getValueAt(i, 21);	//コメント1
-						entry_data[i][17] = ""+tableModel_ms01.getValueAt(i, 22);	//コメント2
-						entry_data[i][18] = ""+tableModel_ms01.getValueAt(i, 23);	//コメント3
+						entry_data[i][ 0] = ""+MainFmTableModel.getValueAt(i,  1);	//倉庫コード
+						entry_data[i][ 1] = ""+MainFmTableModel.getValueAt(i,  2);	//運送会社CD
+						entry_data[i][ 2] = ""+MainFmTableModel.getValueAt(i,  3);	//ユーザーCD
+						entry_data[i][ 3] = ""+MainFmTableModel.getValueAt(i, 28);	//パスワード
+						entry_data[i][ 4] = ""+MainFmTableModel.getValueAt(i,  9);	//権限区分
+						entry_data[i][ 5] = ""+MainFmTableModel.getValueAt(i, 10);	//標準車輛CD
+						entry_data[i][ 6] = ""+MainFmTableModel.getValueAt(i,  6);	//ユーザー名1
+						entry_data[i][ 7] = ""+MainFmTableModel.getValueAt(i,  7);	//ユーザー名2
+						entry_data[i][ 8] = ""+MainFmTableModel.getValueAt(i,  8);	//ユーザー名3
+						entry_data[i][ 9] = ""+MainFmTableModel.getValueAt(i, 14);	//郵便番号
+						entry_data[i][10] = ""+MainFmTableModel.getValueAt(i, 15);	//住所1
+						entry_data[i][11] = ""+MainFmTableModel.getValueAt(i, 16);	//住所2
+						entry_data[i][12] = ""+MainFmTableModel.getValueAt(i, 17);	//住所3
+						entry_data[i][13] = ""+MainFmTableModel.getValueAt(i, 18);	//電話番号
+						entry_data[i][14] = ""+MainFmTableModel.getValueAt(i, 19);	//FAX
+						entry_data[i][15] = ""+MainFmTableModel.getValueAt(i, 20);	//メールアドレス
+						entry_data[i][16] = ""+MainFmTableModel.getValueAt(i, 21);	//コメント1
+						entry_data[i][17] = ""+MainFmTableModel.getValueAt(i, 22);	//コメント2
+						entry_data[i][18] = ""+MainFmTableModel.getValueAt(i, 23);	//コメント3
 						entry_data[i][19] = now_dtm;	//データ登録日時
 						entry_data[i][20] = now_dtm;	//データ更新日時
 						entry_data[i][21] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//登録者コード
 						entry_data[i][22] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//更新者コード
-						entry_data[i][23] = ""+tableModel_ms01.getValueAt(i, 24);	//基幹システムユーザーコード
-						entry_data[i][24] = ""+tableModel_ms01.getValueAt(i, 25);	//削除区分
-						entry_data[i][25] = ""+tableModel_ms01.getValueAt(i, 26);	//主要担当荷主CD
+						entry_data[i][23] = ""+MainFmTableModel.getValueAt(i, 24);	//基幹システムユーザーコード
+						entry_data[i][24] = ""+MainFmTableModel.getValueAt(i, 25);	//削除区分
+						entry_data[i][25] = ""+MainFmTableModel.getValueAt(i, 26);	//主要担当荷主CD
 					}
 					A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					

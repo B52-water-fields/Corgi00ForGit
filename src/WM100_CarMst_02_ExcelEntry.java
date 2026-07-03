@@ -149,9 +149,9 @@ public class WM100_CarMst_02_ExcelEntry{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -364,7 +364,7 @@ public class WM100_CarMst_02_ExcelEntry{
 								ErrMsg.add(wint+"行目エラー:("+SetOb[11]+")は未登録のユーザーコードです");
 							}
 						}
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 				}
 				if(null==ErrMsg||0==ErrMsg.size()) {
@@ -409,7 +409,7 @@ public class WM100_CarMst_02_ExcelEntry{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				int RowCount = tableModel_ms01.getRowCount();
+				int RowCount = MainFmTableModel.getRowCount();
 				if(RenewFg&&0<RowCount) {
 					RenewFg = false;
 					String[][] SetString = {
@@ -449,23 +449,23 @@ public class WM100_CarMst_02_ExcelEntry{
 						field_name[i][2] = SetString[i][2];
 					}
 					for(int i=0;i<RowCount;i++) {
-						judg_data[i][ 0] = ""+tableModel_ms01.getValueAt(i, 1);	//担当倉庫
-						judg_data[i][ 1] = ""+tableModel_ms01.getValueAt(i, 3);	//運送会社CD
-						judg_data[i][ 2] = ""+tableModel_ms01.getValueAt(i, 7);	//車輛CD
+						judg_data[i][ 0] = ""+MainFmTableModel.getValueAt(i, 1);	//担当倉庫
+						judg_data[i][ 1] = ""+MainFmTableModel.getValueAt(i, 3);	//運送会社CD
+						judg_data[i][ 2] = ""+MainFmTableModel.getValueAt(i, 7);	//車輛CD
 						
-						entry_data[i][ 0] =	""+tableModel_ms01.getValueAt(i, 1);	//担当倉庫
-						entry_data[i][ 1] = ""+tableModel_ms01.getValueAt(i, 3);	//運送会社CD
-						entry_data[i][ 2] =	""+tableModel_ms01.getValueAt(i, 7);	//車輛CD
-						entry_data[i][ 3] =	""+tableModel_ms01.getValueAt(i, 8);	//車輛名01
-						entry_data[i][ 4] =	""+tableModel_ms01.getValueAt(i, 9);	//車輛名02
-						entry_data[i][ 5] =	""+tableModel_ms01.getValueAt(i,10);	//車輛名03
-						entry_data[i][ 6] =	""+tableModel_ms01.getValueAt(i,11);	//乗務員CD
-						entry_data[i][ 7] =	""+tableModel_ms01.getValueAt(i,15);	//基幹システム車輛コード
+						entry_data[i][ 0] =	""+MainFmTableModel.getValueAt(i, 1);	//担当倉庫
+						entry_data[i][ 1] = ""+MainFmTableModel.getValueAt(i, 3);	//運送会社CD
+						entry_data[i][ 2] =	""+MainFmTableModel.getValueAt(i, 7);	//車輛CD
+						entry_data[i][ 3] =	""+MainFmTableModel.getValueAt(i, 8);	//車輛名01
+						entry_data[i][ 4] =	""+MainFmTableModel.getValueAt(i, 9);	//車輛名02
+						entry_data[i][ 5] =	""+MainFmTableModel.getValueAt(i,10);	//車輛名03
+						entry_data[i][ 6] =	""+MainFmTableModel.getValueAt(i,11);	//乗務員CD
+						entry_data[i][ 7] =	""+MainFmTableModel.getValueAt(i,15);	//基幹システム車輛コード
 						entry_data[i][ 8] =	now_dtm;	//データ登録日時
 						entry_data[i][ 9] =	now_dtm;	//データ更新日時
 						entry_data[i][10] =	"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//登録者コード
 						entry_data[i][11] =	"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//更新者コード
-						entry_data[i][12] =	""+tableModel_ms01.getValueAt(i,16);	//削除フラグ
+						entry_data[i][12] =	""+MainFmTableModel.getValueAt(i,16);	//削除フラグ
 					}
 					
 					A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);

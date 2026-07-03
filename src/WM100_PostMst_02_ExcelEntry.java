@@ -110,9 +110,9 @@ public class WM100_PostMst_02_ExcelEntry{
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = -1;
-		final DefaultTableModel tableModel_ms01 = new B100_TableControl.MyTableModel01(columnNames01,0);
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
-		final JTable tb01 = new JTable(tableModel_ms01);
+		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
 		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
@@ -212,7 +212,7 @@ public class WM100_PostMst_02_ExcelEntry{
 						SetOb[3] = ExcellRead[i][TgtCol[3]];
 						SetOb[4] = ExcellRead[i][TgtCol[4]];
 						
-						tableModel_ms01.addRow(SetOb);
+						MainFmTableModel.addRow(SetOb);
 					}
 				}
 			}
@@ -224,7 +224,7 @@ public class WM100_PostMst_02_ExcelEntry{
 		//Entryボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				int RowCount = tableModel_ms01.getRowCount();
+				int RowCount = MainFmTableModel.getRowCount();
 				
 				String tgt_table = "M0010_PostMst";
 				String[][] field_name = new String[5][3];
@@ -255,13 +255,13 @@ public class WM100_PostMst_02_ExcelEntry{
 				field_name[4][2] = "1";	//市区町村CD
 				
 				for(int i=0;i<RowCount;i++) {
-					judg_data[i][0] = B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, 0));	//郵便番号
+					judg_data[i][0] = B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, 0));	//郵便番号
 					
-					entry_data[i][0] = B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, 0));	//郵便番号
-					entry_data[i][1] = B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, 1));	//県
-					entry_data[i][2] = B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, 2));	//市区町村
-					entry_data[i][3] = B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, 3));	//町丁目
-					entry_data[i][4] = B100_TextControl.Trim(""+tableModel_ms01.getValueAt(i, 4));	//市区町村CD
+					entry_data[i][0] = B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, 0));	//郵便番号
+					entry_data[i][1] = B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, 1));	//県
+					entry_data[i][2] = B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, 2));	//市区町村
+					entry_data[i][3] = B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, 3));	//町丁目
+					entry_data[i][4] = B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, 4));	//市区町村CD
 				}
 				A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 				

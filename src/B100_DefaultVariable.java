@@ -378,7 +378,7 @@ public class B100_DefaultVariable{
 				,{"WhCd"		,"1","0","Key"	,A00000_Main.ClWh}					//倉庫コード
 				,{"Loc"			,"1","0","Key"	,DefaultTroughLoc}				//ロケーション
 				,{"LocName"		,"1","0",""		,"(スルー出荷)"+DefaultTroughLoc}	//ロケーション名
-				,{"Type"		,"1","0",""		,"7"}								//ロケタイプ
+				,{"LocType"		,"1","0",""		,"7"}								//ロケタイプ
 				,{"EntryDate"	,"1","0",""		,now_dtm}							//登録日
 				,{"UpdateDate"	,"1","0",""		,now_dtm}							//更新日
 				,{"EntryUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//登録者
