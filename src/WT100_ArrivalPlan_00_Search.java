@@ -1404,62 +1404,70 @@ public class WT100_ArrivalPlan_00_Search{
 					RenewFg = false;
 					MsViewMode = true;
 					Ms_fm.setVisible(false);
-					MsFrameControl(
-							Ms_fm,
-							tableModel_ms01,
-							MstableModel,
-							TBMs_ClWh,
-							TBMs_ClCd,
-							TBMs_ClGpCD,
-							TBMs_SpCd,
-							TBMs_ArrNo,
-							TBMs_ClArrNo,
-							TBMs_PlanDate,
-							TBMs_HdActualDate,
-
-							TBMs_HdEntryDate,
-							TBMs_HdUpdateDate,
-							TBMs_HdEntryUser,
-							TBMs_HdUpdateUser,
-							TBMs_FixFg,
-							TBMs_ArCom01,
-							TBMs_ArCom02,
-							TBMs_ArCom03,
-							TBMs_MsNo,
-							TBMs_ItemCd,
-							TBMs_ItemName,
-							TBMs_lot,
-							TBMs_ExpDate,
-							TBMs_PlanQty,
-							TBMs_ActualQty,
-							TBMs_Com01,
-							TBMs_Com02,
-							
-							TBMs_ClItemCd,
-							TBMs_ActualDate,
-							TBMs_JanCd,
-							TBMs_ItemMdNo,
-							TBMs_EntryDate,
-							TBMs_UpdateDate,
-							TBMs_EntryUser,
-							TBMs_UpdateUser,
-							
-							MsRenewBtn,
-							MsRenewEntryBtn,
-							CancelBtn,
-							
-							TBMs_PlanDateAfterBtn,
-							TBMs_PlanDateBeforeBtn,
-							
-							TBMs_ExpDateAfterBtn,
-							TBMs_ExpDateBeforeBtn,
-							
-							MsPlanListBtn,
-							MsPlanPosterBtn
-							) ;
-				
-					Ms_fm.setVisible(true);
 					
+					int RowCount = tableModel_ms01.getRowCount();
+					boolean KickFg = false;
+					
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)tableModel_ms01.getValueAt(i, 0)) {
+							KickFg = true;
+						}
+					}
+					if(KickFg) {
+						MsFrameControl(
+								Ms_fm,
+								tableModel_ms01,
+								MstableModel,
+								TBMs_ClWh,
+								TBMs_ClCd,
+								TBMs_ClGpCD,
+								TBMs_SpCd,
+								TBMs_ArrNo,
+								TBMs_ClArrNo,
+								TBMs_PlanDate,
+								TBMs_HdActualDate,
+	
+								TBMs_HdEntryDate,
+								TBMs_HdUpdateDate,
+								TBMs_HdEntryUser,
+								TBMs_HdUpdateUser,
+								TBMs_FixFg,
+								TBMs_ArCom01,
+								TBMs_ArCom02,
+								TBMs_ArCom03,
+								TBMs_MsNo,
+								TBMs_ItemCd,
+								TBMs_ItemName,
+								TBMs_lot,
+								TBMs_ExpDate,
+								TBMs_PlanQty,
+								TBMs_ActualQty,
+								TBMs_Com01,
+								TBMs_Com02,
+								
+								TBMs_ClItemCd,
+								TBMs_ActualDate,
+								TBMs_JanCd,
+								TBMs_ItemMdNo,
+								TBMs_EntryDate,
+								TBMs_UpdateDate,
+								TBMs_EntryUser,
+								TBMs_UpdateUser,
+								
+								MsRenewBtn,
+								MsRenewEntryBtn,
+								CancelBtn,
+								
+								TBMs_PlanDateAfterBtn,
+								TBMs_PlanDateBeforeBtn,
+								
+								TBMs_ExpDateAfterBtn,
+								TBMs_ExpDateBeforeBtn,
+								
+								MsPlanListBtn,
+								MsPlanPosterBtn
+								) ;
+					}
 					RenewFg = true;
 				}
 			}
@@ -2465,7 +2473,7 @@ public class WT100_ArrivalPlan_00_Search{
 			}
 		}
 		Ms_fm.setVisible(false);
-		if(MsViewMode) {
+		if(MsViewMode && KickFg) {
 			Ms_fm.setVisible(true);
 		}
 	}
