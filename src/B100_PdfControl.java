@@ -250,6 +250,7 @@ public class B100_PdfControl{
 	        
 	        String FileName = B100_FolderCheck.FILENAME(FontPath);
 	        
+	        
 	        File FontFile = new File(FontPath);
 	        PDFont font = null;
 	        TrueTypeCollection collection = null;
@@ -502,6 +503,7 @@ public class B100_PdfControl{
 	
 	
 	public static ArrayList<String> ttcFontttfListCheck(String FontPath) {
+		//System.out.println(FontPath);
 		//フォント名取得
 		ArrayList<String> ttfTgtList = new ArrayList<String>();
 		

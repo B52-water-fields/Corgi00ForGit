@@ -61,7 +61,7 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 	public static Object[][] RtSetDataDefinition(){
 		//登録用データ定義
 		Object[][] SetDataDefinition= {
-				 {"ColSetHdClWh"	,ColSetHdClWh			,"String"	,"ヘッダ担当倉庫"}
+				 {"SetHdClWh"		,ColSetHdClWh			,"String"	,"ヘッダ担当倉庫"}
 				,{"SetHdClCd"		,ColSetHdClCd			,"String"	,"ヘッダ荷主CD"}
 				,{"SetHdArrNo"		,ColSetHdArrNo		,"String"	,"ヘッダ入荷予定NO"}
 				,{"SetHdClArrNo"	,ColSetHdClArrNo		,"String"	,"ヘッダ荷主予定番号"}
@@ -315,7 +315,7 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 				}
 			}else {
 				boolean UnHitFg = true;
-				for(int i01=0;i01<FromArrNoArrivalPlanHdRt.length;i++) {
+				for(int i01=0;i01<FromArrNoArrivalPlanHdRt.length;i01++) {
 					if(GetData[i][ColSetHdArrNo].equals(FromArrNoArrivalPlanHdRt[i01][T100_ArrivalPlanHdRt.ColArrNo])) {
 						if(0==(int)FromArrNoArrivalPlanHdRt[i01][T100_ArrivalPlanHdRt.ColFixFg]) {
 							
@@ -326,8 +326,9 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 						i01=FromArrNoArrivalPlanHdRt.length+1;
 					}
 				}
+				
 				if(UnHitFg) {
-					CheckArrNoList.add(GetData[i][ColSetHdArrNo]);
+					CheckArrNoList.add(""+GetData[i][ColSetHdArrNo]);
 					MsEntryCount	= MsEntryCount+1;
 				}
 			}
@@ -384,6 +385,8 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 		String[] SetUpdateDate		= new String[MsEntryCount];			//更新日
 		String[] SetEntryUser		= new String[MsEntryCount];			//登録者
 		String[] SetUpdateUser		= new String[MsEntryCount];			//更新者
+		
+		System.out.println(MsEntryCount);
 		
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 		MsEntryCount = 0;
@@ -484,7 +487,6 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 						SetHdPlanDate[CheckClArrNoList.size()+i01]		= B100_DateTimeControl.DateFormat(SetHdPlanDate[i01]);
 						SetHdSpPost[CheckClArrNoList.size()+i01]		= B100_TextControl.num_only_String(SetHdSpPost[i01]);
 						SetHdSpTel[CheckClArrNoList.size()+i01]			= B100_TextControl.num_only_String(SetHdSpTel[i01]);
-						
 						MsNo=MsNo+1;
 						SetClWh[MsEntryCount]			= GetData[i][ColSetHdClWh];		//ヘッダ担当倉庫
 						SetClCd[MsEntryCount]			= GetData[i][ColSetHdClCd];		//ヘッダ荷主CD

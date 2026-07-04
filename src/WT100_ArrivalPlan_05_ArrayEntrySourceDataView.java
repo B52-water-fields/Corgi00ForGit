@@ -317,16 +317,16 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 		for(int i=0;i<CheckOb.length;i++) {
 			if(!"".equals((String)CheckOb[i][ColClItemCd])&&0<(int)CheckOb[i][ColPlanQty]) {
 				
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdClWh]			= (String)CheckOb[i][ColClWh];		//ヘッダ担当倉庫
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdClCd]			= (String)CheckOb[i][ColClCd];		//ヘッダ荷主CD
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdClWh]		= (String)CheckOb[i][ColClWh];		//ヘッダ担当倉庫
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdClCd]		= (String)CheckOb[i][ColClCd];		//ヘッダ荷主CD
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdArrNo]		= "";	//ヘッダ入荷予定NO
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdClArrNo]		= (String)CheckOb[i][ColClArrNo];	//ヘッダ荷主予定番号
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdPlanDate]		= (String)CheckOb[i][ColPlanDate];	//ヘッダ入荷予定日
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdPlanDate]	= (String)CheckOb[i][ColPlanDate];	//ヘッダ入荷予定日
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdActualDate]	= "";	//ヘッダ入荷実績日
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpCd]			= (String)CheckOb[i][ColSPCd];		//ヘッダ仕入先CD"}
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName01]		= "";	//ヘッダ仕入先名01
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName02]		= "";	//ヘッダ仕入先名02
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName03]		= "";	//ヘッダ仕入先名03
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpCd]		= (String)CheckOb[i][ColSPCd];		//ヘッダ仕入先CD"}
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName01]	= "";	//ヘッダ仕入先名01
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName02]	= "";	//ヘッダ仕入先名02
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName03]	= "";	//ヘッダ仕入先名03
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpPost]		= "";	//ヘッダ仕入先郵便
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd01]		= "";	//ヘッダ仕入先住所01
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd02]		= "";	//ヘッダ仕入先住所02
@@ -343,11 +343,11 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetJanCd]			= "";		//ソースマーク_BCD
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetItemMdNo]		= "";		//商品型番
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetItemName]		= "";		//商品名
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetlot]				= (String)CheckOb[i][ColLot];	//ロット
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetlot]			= (String)CheckOb[i][ColLot];	//ロット
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetExpDate]		= (String)CheckOb[i][ColExpDate];	//消費期限
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetPlanQty]		= (int)CheckOb[i][ColPlanQty];	//予定数量
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetActualQty]		= (int)0;	//実績数
-				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetActualDate]		= "";		//入荷日
+				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetActualDate]	= "";		//入荷日
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetCom01]			= (String)CheckOb[i][ColMsCom01];		//コメント1
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetCom02]			= (String)CheckOb[i][ColMsCom02];		//コメント2
 				SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColUnitType]			= 0;		//荷姿タイプ
@@ -355,13 +355,13 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 				
 				for(int i01=0;i01<SupplierRt.length;i01++) {
 					if(((String)CheckOb[i][ColSPCd]).equals((String)SupplierRt[i01][M100_SupplierRt.ColSPCd])) {
-						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName01]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPName01];	//ヘッダ仕入先名01
-						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName02]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPName02];	//ヘッダ仕入先名02
-						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName03]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPName03];	//ヘッダ仕入先名03
+						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName01]	= (String)SupplierRt[i01][M100_SupplierRt.ColSPName01];	//ヘッダ仕入先名01
+						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName02]	= (String)SupplierRt[i01][M100_SupplierRt.ColSPName02];	//ヘッダ仕入先名02
+						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName03]	= (String)SupplierRt[i01][M100_SupplierRt.ColSPName03];	//ヘッダ仕入先名03
 						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpPost]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPPost];		//ヘッダ仕入先郵便
-						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd01]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPAdd01];	//ヘッダ仕入先住所01
-						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd02]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPAdd02];	//ヘッダ仕入先住所02
-						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd03]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPAdd03];	//ヘッダ仕入先住所03
+						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd01]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPAdd01];		//ヘッダ仕入先住所01
+						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd02]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPAdd02];		//ヘッダ仕入先住所02
+						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd03]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPAdd03];		//ヘッダ仕入先住所03
 						SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpTel]		= (String)SupplierRt[i01][M100_SupplierRt.ColSPTel];		//ヘッダ仕入先電話
 						
 						i01=SupplierRt.length+1;

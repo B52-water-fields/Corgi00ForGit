@@ -1,5 +1,7 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -8,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -325,11 +328,6 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		main_fm.add(TBMs_ExpDateAfterBtn);
 		main_fm.add(TBMs_ExpDateBeforeBtn);
 		
-		
-		
-		
-		
-		
 		if(!"".equals(TgtArrNo)) {
 			Object[][] ArrivalPlanMsRt	= ArrivalPlanMsRt(TgtWhCd,TgtClCd,TgtArrNo);
 			
@@ -470,10 +468,380 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 			}
 		}
 
+		final JFrame ItemSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,700,600,"Corgi00入荷予定登録・修正　商品検索","NK");
+		JLabel ItemSearchuserinfo = B100_FrameParts.UserInfo();
+		JButton ItemSearchexit_btn = B100_FrameParts.ExitBtn();
+		JButton ItemSearchentry_btn = B100_FrameParts.EntryBtn();
 		
+		ItemSearch_fm.add(ItemSearchuserinfo);
+		ItemSearch_fm.add(ItemSearchexit_btn);
+		ItemSearch_fm.add(ItemSearchentry_btn);
+		
+		JLabel LB_ItemSearchItemCd		= B100_FrameParts.JLabelSet(  0, 50,130,20,"商品CD:",		11,1);
+		JLabel LB_ItemSearchClItemCd	= B100_FrameParts.JLabelSet(  0, 75,130,20,"荷主商品CD:",	11,1);
+		JLabel LB_ItemSearchItemName	= B100_FrameParts.JLabelSet(  0,100,130,20,"商品名:",		11,1);
+
+		final JTextField TB_ItemSearchItemCd	= B100_FrameParts.JTextFieldSet(	130, 50,100,20,""	,11,0);			//商品CD
+		final JTextField TB_ItemSearchClItemCd	= B100_FrameParts.JTextFieldSet(	130, 75,100,20,""	,11,0);			//荷主商品CD
+		final JTextField TB_ItemSearchItemName	= B100_FrameParts.JTextFieldSet(	130,100,100,20,""	,11,0);			//商品名
+		
+		JLabel LB2_ItemSearchItemCd		= B100_FrameParts.JLabelSet(230, 50,130,20,"と一致",		11,0);
+		JLabel LB2_ItemSearchClItemCd	= B100_FrameParts.JLabelSet(230, 75,130,20,"と一致",		11,0);
+		JLabel LB2_ItemSearchItemName	= B100_FrameParts.JLabelSet(230,100,130,20,"を含む",		11,0);
+		
+		//商品検索ボタン
+		JButton ItemSearchSearchBtn 	= B100_FrameParts.BtnSet(	130,125,100,20,"商品検索",11);
+		ItemSearch_fm.add(ItemSearchSearchBtn);
+		
+		ItemSearch_fm.add(LB_ItemSearchItemCd);
+		ItemSearch_fm.add(LB_ItemSearchClItemCd);
+		ItemSearch_fm.add(LB_ItemSearchItemName);
+
+		ItemSearch_fm.add(TB_ItemSearchItemCd);
+		ItemSearch_fm.add(TB_ItemSearchClItemCd);
+		ItemSearch_fm.add(TB_ItemSearchItemName);
+		
+		ItemSearch_fm.add(LB2_ItemSearchItemCd);
+		ItemSearch_fm.add(LB2_ItemSearchClItemCd);
+		ItemSearch_fm.add(LB2_ItemSearchItemName);
+		
+		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtSettingItemMstRt();
+		
+		String[] ItemSearchcolumnNames = new String[RtSettingItemMstRt.length+1];
+		
+		ItemSearchcolumnNames[0] = "Fg";
+		for(int i=0;i<RtSettingItemMstRt.length;i++) {
+			ItemSearchcolumnNames[1+(int)RtSettingItemMstRt[i][1]] = ""+RtSettingItemMstRt[i][3];
+		}
+		
+		//編集可能カラムの指定
+		B100_TableControl.RenewTgt = new int[1];
+		B100_TableControl.RenewTgt[0] = 0;
+
+		final DefaultTableModel ItemSearchFmTableModel = new B100_TableControl.MyTableModel01(ItemSearchcolumnNames,0);
+		
+		final JTable ItemSearchtb01 = new JTable(ItemSearchFmTableModel);
+		ItemSearchtb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		ItemSearchtb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
+		ItemSearchtb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
+		
+		DefaultTableColumnModel ItemSearchcolumnModel01
+		= (DefaultTableColumnModel)ItemSearchtb01.getColumnModel();
+		
+		//列幅初期設定 表示位置設定
+		TableColumn ItemSearchcolumn = null;
+		
+		ItemSearchcolumn = ItemSearchcolumnModel01.getColumn( 0);	ItemSearchcolumn.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
+		
+		for(int i=0;i<RtSettingItemMstRt.length;i++) {
+			if("int".equals((String)RtSettingItemMstRt[i][2])||"float".equals((String)RtSettingItemMstRt[i][2])) {
+				ItemSearchcolumn = ItemSearchcolumnModel01.getColumn(1+(int)RtSettingItemMstRt[i][1]);	ItemSearchcolumn.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	ItemSearchcolumn.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				ItemSearchcolumn = ItemSearchcolumnModel01.getColumn(1+(int)RtSettingItemMstRt[i][1]);	ItemSearchcolumn.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	ItemSearchcolumn.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
+		}
+		//スクロール用設定
+		JScrollPane ItemSearchscpn01 = B100_FrameParts.JScrollPaneSet(10,150,660,300,ItemSearchtb01);
+		ItemSearch_fm.add(ItemSearchscpn01);
 		
 		RenewFg = true;
 		main_fm.setVisible(true);
+		
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = MainFmTableModel.getRowCount();
+					String[][] GetData = new String[RowCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.RtSetDataDefinition().length];
+					
+					String GetClWh			= B100_TextControl.Trim(B100_DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()]);
+					String GetClCd			= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);
+					String GetSpCd			= B100_TextControl.Trim(B100_DefaultVariable.SupplierList[1][TB_SpCd.getSelectedIndex()]);
+					String GetArrNo			= B100_TextControl.Trim(TB_ArrNo.getText());
+					String GetClArrNo		= B100_TextControl.Trim(TB_ClArrNo.getText());
+					String GetPlanDate		= B100_TextControl.TextToDate(TB_PlanDate.getText());
+					String GetHdActualDate	= B100_TextControl.TextToDate(TB_HdActualDate.getText());
+
+					int GetFixFg			= B100_TextControl.TextToInt(B100_DefaultVariable.ArryvalFixFgList[1][TB_FixFg.getSelectedIndex()]);
+					String GetArCom01		= B100_TextControl.Trim(TB_ArCom01.getText());
+					String GetArCom02		= B100_TextControl.Trim(TB_ArCom02.getText());
+					String GetArCom03		= B100_TextControl.Trim(TB_ArCom03.getText());
+					
+					String GetMsNo			= B100_TextControl.Trim(TBMs_MsNo.getText());
+					String GetItemCd		= B100_TextControl.Trim(TBMs_ItemCd.getText());
+					
+					
+					Object[][] SupplierRt	= SupplierRt(
+							GetClWh,
+							GetClCd,
+							GetSpCd
+							);
+					
+					boolean KickFg = true;
+					String ErrMsg = "";
+					if(!"".equals(GetMsNo)||!"".equals(GetItemCd)) {
+						if(!"".equals(ErrMsg)) {ErrMsg=ErrMsg+"\n";}
+						ErrMsg= ErrMsg+"修正内容仮反映できていない、入力中の情報がないかい？";
+						KickFg = false;
+					}
+					
+					if(0!=GetFixFg) {
+						if(!"".equals(ErrMsg)) {ErrMsg=ErrMsg+"\n";}
+						ErrMsg= ErrMsg+"未入荷以外認めません";
+						KickFg = false;
+					}
+					if(0==RowCount) {
+						if(!"".equals(ErrMsg)) {ErrMsg=ErrMsg+"\n";}
+						ErrMsg= ErrMsg+"明細行無しはダメだ";
+						KickFg = false;
+					}
+					if("".equals(GetPlanDate)) {
+						if(!"".equals(ErrMsg)) {ErrMsg=ErrMsg+"\n";}
+						ErrMsg= ErrMsg+"予定日がなっとらん";
+						KickFg = false;
+					}
+					if(!"".equals(GetHdActualDate)) {
+						if(!"".equals(ErrMsg)) {ErrMsg=ErrMsg+"\n";}
+						ErrMsg= ErrMsg+"なぜ実績日が？";
+						KickFg = false;
+					}
+					if(0==SupplierRt.length) {
+						if(!"".equals(ErrMsg)) {ErrMsg=ErrMsg+"\n";}
+						ErrMsg= ErrMsg+"なぜか仕入れ先候補が無いのだが？";
+						KickFg = false;
+					}
+					
+					if(KickFg) {
+						Object[][] EntryData	= EntryDataCreate(
+								GetClWh,
+								GetClCd,
+								GetSpCd,
+								GetArrNo,
+								GetClArrNo,
+								GetPlanDate,
+								GetHdActualDate,
+
+								GetFixFg	,
+								GetArCom01,
+								GetArCom02,
+								GetArCom03,
+								MainFmTableModel
+								);
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+						
+						ItemSearch_fm.setVisible(false);
+						ItemSearch_fm.dispose();
+						
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WT100_ArrivalPlan_06_ArrayEntrySetDataView.ArrivalPlanArrayEntrySetDataView(0,0,EntryData);
+					}else {
+						JOptionPane.showMessageDialog(null,ErrMsg);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		
+		//商品検索商品Entryボタン押下時の挙動
+		ItemSearchentry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = ItemSearchFmTableModel.getRowCount();
+					boolean KickFg = false;
+					for(int i=0;i<row_count;i++){
+						if((boolean)ItemSearchFmTableModel.getValueAt(i, 0)) {
+							KickFg = true;
+							
+							String SetItemCd	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemCd);
+							String SetItemName	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemName01);
+							String SetClItemCd	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColCLItemCd);
+							String SetJanCd		= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColJanCd);
+							String SetItemMdNo	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemMDNo);
+							
+							TBMs_ItemCd.setText(SetItemCd);
+							TBMs_ItemName.setText(SetItemName);
+							TBMs_ClItemCd.setText(SetClItemCd);
+							TBMs_JanCd.setText(SetJanCd);
+							TBMs_ItemMdNo.setText(SetItemMdNo);
+						}
+					}
+					if(KickFg) {
+						ItemSearch_fm.setVisible(false);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		
+		//商品検索商品検索ボタン押下時の挙動
+		ItemSearchSearchBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String GetClCd			= B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];
+					String GetClGp			= A00000_Main.ClGp;
+					Object[][] ClMstRt		= ClMstRt(GetClCd);
+					if(0<ClMstRt.length) {GetClGp	= (String)ClMstRt[0][M100_ClMstRt.ColClGpCD];}
+					String GetItemCd		= B100_TextControl.Trim(TB_ItemSearchItemCd.getText());
+					String GetClItemCd		= B100_TextControl.Trim(TB_ItemSearchClItemCd.getText());
+					String GetItemName		= B100_TextControl.Trim(TB_ItemSearchItemName.getText());
+					
+					
+					int row_count = ItemSearchFmTableModel.getRowCount();
+					for(int i=0;i<row_count;i++){
+						ItemSearchFmTableModel.removeRow(0);
+					}
+					
+					Object[][] ItemMstRt = ItemMstRt(GetClGp,GetItemCd,GetClItemCd,GetItemName);
+					
+					for(int i=0;i<ItemMstRt.length;i++) {
+						Object[] SetOb = new Object[ItemMstRt[i].length+1];
+						SetOb[0] = false;
+						for(int i01=0;i01<ItemMstRt[i].length;i01++) {
+							SetOb[i01+1]	= ""+ItemMstRt[i][i01];
+						}
+						ItemSearchFmTableModel.addRow(SetOb);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//商品検索EXITボタン押下時の挙動
+		ItemSearchexit_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					ItemSearch_fm.setVisible(false);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		///商品検索チェックボックス操作時の挙動
+		ItemSearchFmTableModel.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = ItemSearchFmTableModel.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							ItemSearchFmTableModel.setValueAt(setBL, i, 0);
+						}else {
+							
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//商品検索ボタン押下時の挙動
+		MsItemSearchBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					TB_ItemSearchItemCd.setText("");
+					TB_ItemSearchClItemCd.setText("");
+					TB_ItemSearchItemName.setText("");
+					
+					int RoWCount = ItemSearchFmTableModel.getRowCount();
+					for(int i=0;i<RoWCount;i++) {
+						ItemSearchFmTableModel.removeRow(0);
+					}
+					
+					ItemSearch_fm.setVisible(true);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//商品コードフォーカス消失時の挙動
+		TBMs_ItemCd.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String GetItemCd		= B100_TextControl.Trim(TBMs_ItemCd.getText());
+					
+					String GetClCd			= B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];
+					String GetClGp			= A00000_Main.ClGp;
+					Object[][] ClMstRt		= ClMstRt(GetClCd);
+					if(0<ClMstRt.length) {GetClGp	= (String)ClMstRt[0][M100_ClMstRt.ColClGpCD];}
+					
+					TBMs_ItemName.setText("");
+					TBMs_ClItemCd.setText("");
+					TBMs_JanCd.setText("");
+					TBMs_ItemMdNo.setText("");
+					
+					Object[][] ItemMstRt	= ItemMstRt(GetClGp,GetItemCd,"","");
+					if(0<ItemMstRt.length) {
+						TBMs_ItemCd.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColItemCd]);
+						TBMs_ItemName.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColItemName01]);
+						TBMs_ClItemCd.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColCLItemCd]);
+						TBMs_JanCd.setText(		(String)ItemMstRt[0][M100_ItemMstRt.ColJanCd]);
+						TBMs_ItemMdNo.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColItemMDNo]);
+					}else {
+						JOptionPane.showMessageDialog(null, "マスタにない商品はダメだ");
+						TBMs_ItemCd.setText("");
+					}
+					
+					RenewFg = true;
+				}
+			}
+		});
+		//明細行削除ボタン押下時の挙動
+		MsDeleteBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int GetMsNo	= -1;
+					if(!"".equals(B100_TextControl.Trim(TBMs_MsNo.getText()))) {
+						GetMsNo				= B100_TextControl.TextToInt(TBMs_MsNo.getText());
+					}
+					
+					if(0<GetMsNo) {
+						int RowCount = MainFmTableModel.getRowCount();
+						for(int i=0;i<RowCount;i++) {
+							int MsNo = B100_TextControl.TextToInt(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColMsNo));
+							
+							if(MsNo==GetMsNo) {
+								MainFmTableModel.removeRow(i);
+								i=RowCount+1;
+							}
+						}
+						
+						TBMs_MsNo.setText("");
+						TBMs_ItemCd.setText("");
+						TBMs_ItemName.setText("");
+						TBMs_lot.setText("");
+						TBMs_ExpDate.setText("");
+						TBMs_PlanQty.setText("");
+						TBMs_ActualQty.setText("");
+						TBMs_Com01.setText("");
+						TBMs_Com02.setText("");
+						
+						TBMs_ClItemCd.setText("");
+						TBMs_ActualDate.setText("");
+						TBMs_JanCd.setText("");
+						TBMs_ItemMdNo.setText("");
+						TBMs_EntryDate.setText("");
+						TBMs_UpdateDate.setText("");
+						TBMs_EntryUser.setText("");
+						TBMs_UpdateUser.setText("");
+					}
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//修正仮反映ボタン押下時の挙動
 		MsRenewBtn.addActionListener(new AbstractAction(){
@@ -483,9 +851,16 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 					
 					int SetRow 	= -1;
 					int GetMsNo	= -1;
-					if("".equals(B100_TextControl.Trim(TBMs_MsNo.getText()))) {
+					if(!"".equals(B100_TextControl.Trim(TBMs_MsNo.getText()))) {
 						GetMsNo				= B100_TextControl.TextToInt(TBMs_MsNo.getText());
 					}
+					String GetClWh			= B100_DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];
+					String GetClCd			= B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];
+					String GetSpCd			= B100_DefaultVariable.SupplierList[1][TB_SpCd.getSelectedIndex()];
+					
+					String GetClGp			= A00000_Main.ClGp;
+					Object[][] ClMstRt		= ClMstRt(GetClCd);
+					if(0<ClMstRt.length) {GetClGp	= (String)ClMstRt[0][M100_ClMstRt.ColClGpCD];}
 					
 					String GetItemCd		= B100_TextControl.Trim(TBMs_ItemCd.getText());
 					String GetItemName		= B100_TextControl.Trim(TBMs_ItemName.getText());
@@ -506,6 +881,11 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 					String GetUpdateUser	= B100_TextControl.Trim(TBMs_UpdateUser.getText());
 					
 					boolean MsErrCheck = MsErrCheck(
+											GetClWh,
+											GetClCd,
+											GetSpCd,
+											GetClGp,
+							
 											GetMsNo,
 											GetItemCd,
 											GetItemName,
@@ -778,14 +1158,129 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
 				
+				ItemSearch_fm.setVisible(false);
+				ItemSearch_fm.dispose();
+				
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WT100_ArrivalPlan_00_Search.ArrivalPlanSearch(0,0);
 			}
 		});
 	}
+	private static Object[][] EntryDataCreate(
+			String GetClWh,
+			String GetClCd,
+			String GetSpCd,
+			String GetArrNo,
+			String GetClArrNo,
+			String GetPlanDate,
+			String GetHdActualDate,
+
+			int GetFixFg	,
+			String GetArCom01,
+			String GetArCom02,
+			String GetArCom03,
+			DefaultTableModel MainFmTableModel
+			) {
+		int RowCount = MainFmTableModel.getRowCount();
+		Object[][] SupplierRt	= SupplierRt(
+											GetClWh,
+											GetClCd,
+											GetSpCd
+											);
+		String SetHdClCd		= GetClCd;
+		String SetHdArrNo		= GetArrNo;
+		String SetHdClArrNo		= GetClArrNo;
+		String SetHdPlanDate	= GetPlanDate;
+		String SetHdActualDate	= GetHdActualDate;
+		String SetHdSpCd		= GetSpCd;
+		String SetHdSpName01	= "";
+		String SetHdSpName02	= "";
+		String SetHdSpName03	= "";
+		String SetHdSpPost		= "";
+		String SetHdSpAdd01		= "";
+		String SetHdSpAdd02		= "";
+		String SetHdSpAdd03		= "";
+		String SetHdSpTel		= "";
+		String SetHdArCom01		= GetArCom01;
+		String SetHdArCom02		= GetArCom02;
+		String SetHdArCom03		= GetArCom03;
+		int SetHdFixFg			= GetFixFg;
+		
+		if(0<SupplierRt.length) {
+			SetHdSpCd		= (String)SupplierRt[0][M100_SupplierRt.ColSPCd];
+			SetHdSpName01	= (String)SupplierRt[0][M100_SupplierRt.ColSPName01];
+			SetHdSpName02	= (String)SupplierRt[0][M100_SupplierRt.ColSPName02];
+			SetHdSpName03	= (String)SupplierRt[0][M100_SupplierRt.ColSPName03];
+			SetHdSpPost		= (String)SupplierRt[0][M100_SupplierRt.ColSPPost];
+			SetHdSpAdd01	= (String)SupplierRt[0][M100_SupplierRt.ColSPAdd01];
+			SetHdSpAdd02	= (String)SupplierRt[0][M100_SupplierRt.ColSPAdd02];
+			SetHdSpAdd03	= (String)SupplierRt[0][M100_SupplierRt.ColSPAdd03];
+			SetHdSpTel		= (String)SupplierRt[0][M100_SupplierRt.ColSPTel];
+		}
+		
+		Object[][] EntryData = new Object[RowCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.RtSetDataDefinition().length];
+		
+		for(int i=0;i<RowCount;i++) {
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdClWh]			=GetClWh;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdClCd]			=SetHdClCd;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdArrNo]		=SetHdArrNo;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdClArrNo]		=SetHdClArrNo;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdPlanDate]		=SetHdPlanDate;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdActualDate]	=SetHdActualDate;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpCd]			=SetHdSpCd;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName01]		=SetHdSpName01;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName02]		=SetHdSpName02;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpName03]		=SetHdSpName03;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpPost]		=SetHdSpPost;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd01]		=SetHdSpAdd01;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd02]		=SetHdSpAdd02;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpAdd03]		=SetHdSpAdd03;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdSpTel]		=SetHdSpTel;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdArCom01]		=SetHdArCom01;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdArCom02]		=SetHdArCom02;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdArCom03]		=SetHdArCom03;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetHdFixFg]		=SetHdFixFg;
+			
+			int GetMsNo				= B100_TextControl.TextToInt(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColMsNo));
+			String GetItemCd		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColItemCd));
+			String GetClItemCd		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColClItemCd));
+			String GetJanCd			= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColJanCd));
+			String GetItemMdNo		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColItemMdNo));
+			String GetItemName		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColItemName));
+			String Getlot			= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.Collot));
+			String GetExpDate		= B100_TextControl.TextToDate(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColExpDate));
+			int GetPlanQty			= B100_TextControl.TextToInt(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColPlanQty));
+			int GetActualQty		= B100_TextControl.TextToInt(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColActualQty));
+			String GetActualDate	= B100_TextControl.TextToDate(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColActualDate));	
+			String GetCom01			= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColCom01));
+			String GetCom02			= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanMsRt.ColCom02));
+			
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetMsNo]			=GetMsNo;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetItemCd]			=GetItemCd;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetClItemCd]		=GetClItemCd;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetJanCd]			=GetJanCd;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetItemMdNo]		=GetItemMdNo;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetItemName]		=GetItemName;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetlot]				=Getlot;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetExpDate]		=GetExpDate;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetPlanQty]		=GetPlanQty;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetActualQty]		=GetActualQty;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetActualDate]		=GetActualDate;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetCom01]			=GetCom01;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetCom02]			=GetCom02;
+			EntryData[i][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColUnitType]			=0;
+		}
+		return EntryData;
+	}
+	
 	
 	private static boolean MsErrCheck(
+								String GetClWh,
+								String GetClCd,
+								String GetSpCd,
+								String GetClGp,
+								
 								int GetMsNo,
 								String GetItemCd,
 								String GetItemName,
@@ -806,11 +1301,175 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 								String GetUpdateUser
 								) {
 		boolean ErrFg = false;
+		String ErrMsg = "";
+		if(0>GetPlanQty) {
+			if(!"".equals(ErrMsg)) {ErrMsg	= ErrMsg+"\n";}
+			ErrMsg	= ErrMsg+"予定数マイナスとは何事ですか？";
+			ErrFg = true;
+		}
 		
+		if(0>GetActualQty) {
+			if(!"".equals(ErrMsg)) {ErrMsg	= ErrMsg+"\n";}
+			ErrMsg	= ErrMsg+"実績数マイナスとは何事ですか？";
+			ErrFg = true;
+		}
+		
+		Object[][] ItemMstRt	= ItemMstRt(GetClGp,GetItemCd,null,null);
+		
+		if(0==ItemMstRt.length) {
+			if(!"".equals(ErrMsg)) {ErrMsg	= ErrMsg+"\n";}
+			ErrMsg	= ErrMsg+"商品マスタにない商品を登録しようとしてるよ";
+			ErrFg = true;
+		}
+		if(!"".equals(ErrMsg)) {
+			JOptionPane.showMessageDialog(null, ErrMsg);
+		}
 		
 		return ErrFg;
 	}
 	
+	private static Object[][] SupplierRt(
+			String TgtClWh,
+			String TgtClCd,
+			String TgtSPCd
+			){
+		ArrayList<String> SearchClWh = new ArrayList<String>(); 			//担当倉庫
+		ArrayList<String> SearchClCd = new ArrayList<String>();				//荷主CD
+		ArrayList<String> SearchSPCd = new ArrayList<String>();				//仕入先コード
+		ArrayList<String> SearchSPName = new ArrayList<String>();			//仕入先名
+		ArrayList<String> SearchSPPost = new ArrayList<String>();			//仕入先郵便
+		ArrayList<String> SearchSPAdd = new ArrayList<String>();			//仕入先住所
+		ArrayList<String> SearchSPTel = new ArrayList<String>();			//仕入先電話
+		ArrayList<String> SearchSPFax = new ArrayList<String>();			//仕入先FAX
+		ArrayList<String> SearchSPMail = new ArrayList<String>();			//仕入先MAIL
+		ArrayList<String> SearchCom = new ArrayList<String>();				//コメント
+		ArrayList<String> SearchPTMSCDBMN = new ArrayList<String>();		//基幹Sysコード（部門）
+		ArrayList<String> SearchPTMSCDNINUSHI = new ArrayList<String>();	//基幹Sysコード（荷主）
+		ArrayList<Integer> SearchPaySiteStr = new ArrayList<Integer>();		//支払いサイト（月数）開始
+		ArrayList<Integer> SearchPayDateStr = new ArrayList<Integer>();		//支払日（日＝99）開始
+		ArrayList<Integer> SearchShimeDateStr = new ArrayList<Integer>();	//締め日（末日＝99）開始
+		ArrayList<Integer> SearchPaySiteEnd = new ArrayList<Integer>();		//支払いサイト（月数）終了
+		ArrayList<Integer> SearchPayDateEnd = new ArrayList<Integer>();		//支払日（日＝99）終了
+		ArrayList<Integer> SearchShimeDateEnd = new ArrayList<Integer>();	//締め日（末日＝99）終了
+		ArrayList<String> SearchDECD = new ArrayList<String>();				//納品先コード
+		ArrayList<String> SearchDepartmentCd = new ArrayList<String>();		//部署CD
+		boolean AllSearch = false;
+		
+		SearchClWh.add(TgtClWh);
+		SearchClCd.add(TgtClCd);
+		SearchSPCd.add(TgtSPCd);
+		
+		Object[][] SupplierRt = M100_SupplierRt.SupplierRt(
+				SearchClWh,				//担当倉庫
+				SearchClCd,				//荷主CD
+				SearchSPCd,				//仕入先コード
+				SearchSPName,			//仕入先名
+				SearchSPPost,			//仕入先郵便
+				SearchSPAdd,			//仕入先住所
+				SearchSPTel,			//仕入先電話
+				SearchSPFax,			//仕入先FAX
+				SearchSPMail,			//仕入先MAIL
+				SearchCom,				//コメント
+				SearchPTMSCDBMN,		//基幹Sysコード（部門）
+				SearchPTMSCDNINUSHI,	//基幹Sysコード（荷主）
+				SearchPaySiteStr,		//支払いサイト（月数）開始
+				SearchPayDateStr,		//支払日（日＝99）開始
+				SearchShimeDateStr,		//締め日（末日＝99）開始
+				SearchPaySiteEnd,		//支払いサイト（月数）終了
+				SearchPayDateEnd,		//支払日（日＝99）終了
+				SearchShimeDateEnd,		//締め日（末日＝99）終了
+				SearchDECD,				//納品先コード
+				SearchDepartmentCd,		//部署CD
+				AllSearch);
+		return SupplierRt;
+	}
+	
+	
+	
+	
+	private static Object[][] ItemMstRt(String GetClGp,String GetItemCd,String GetClItemCd,String GetItemName){
+		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
+		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
+		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
+		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
+		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
+		ArrayList<String> SearchDeliveryTypeCd03 	= new ArrayList<String>();	//運送タイプコード03
+		ArrayList<String> SearchDeliveryTypeCd04 	= new ArrayList<String>();	//運送タイプコード04
+		ArrayList<String> SearchDeliveryTypeCd05 	= new ArrayList<String>();	//運送タイプコード05
+		ArrayList<String> SearchItemMDNo 			= new ArrayList<String>();	//商品モデル番号（型番）
+		ArrayList<String> SearchCategoryCd 			= new ArrayList<String>();	//商品カテゴリCD
+		ArrayList<String> SearchCategoryName 		= new ArrayList<String>();	//商品カテゴリ名
+		ArrayList<String> SearchItemColorCd 		= new ArrayList<String>();	//商品カラーコード
+		ArrayList<String> SearchItemColorName 		= new ArrayList<String>();	//商品カラー名
+		ArrayList<String> SearchItemSizeCd 			= new ArrayList<String>();	//商品サイズコード
+		ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイズ名
+		ArrayList<String> SearchJanCd 				= new ArrayList<String>();	//JANCD
+		ArrayList<String> SearchTildFG 				= new ArrayList<String>();	//温度区分
+		ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
+		ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
+		boolean AllSearch = false;
+		
+		if(null!=GetClGp		&&	!"".equals(GetClGp)) {		SearchClGpCd.add(GetClGp);}
+		if(null!=GetItemCd		&&	!"".equals(GetItemCd)) {	SearchItemCd.add(GetItemCd);}
+		if(null!=GetClItemCd	&&	!"".equals(GetClItemCd)) {	SearchCLItemCd.add(GetClItemCd);}
+		if(null!=GetItemName	&&	!"".equals(GetItemName)) {	SearchItemName.add(GetItemName);}
+		
+		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClGpCd,			//荷主グループコード
+				SearchItemCd,			//商品コード
+				SearchCLItemCd,			//荷主商品コード
+				SearchItemName,			//商品名
+				SearchDeliveryTypeCd01,	//運送タイプコード01
+				SearchDeliveryTypeCd02,	//運送タイプコード02
+				SearchDeliveryTypeCd03,	//運送タイプコード03
+				SearchDeliveryTypeCd04,	//運送タイプコード04
+				SearchDeliveryTypeCd05,	//運送タイプコード05
+				SearchItemMDNo,			//商品モデル番号（型番）
+				SearchCategoryCd,		//商品カテゴリCD
+				SearchCategoryName,		//商品カテゴリ名
+				SearchItemColorCd,		//商品カラーコード
+				SearchItemColorName,	//商品カラー名
+				SearchItemSizeCd,		//商品サイズコード
+				SearchItemSizeName,		//商品サイズ名
+				SearchJanCd,			//JANCD
+				SearchTildFG,			//温度区分
+				SearchTildName,			//温度区分名
+				SearchDelFg,			//削除フラグ
+				AllSearch);
+		return ItemMstRt;
+	}
+	
+	
+	private static Object[][] ClMstRt(String TgtClCd){
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLCD = new ArrayList<String>();
+		ArrayList<String> SearchCLName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		SearchCLCD.add(TgtClCd);
+		
+		Object[][] ClMstRt = M100_ClMstRt.ClMstRt(
+			SearchClGpCD,
+			SearchCLCD,
+			SearchCLName,
+			SearchPost,
+			searchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			SearchWHCD,
+			AllSearch);
+		return ClMstRt;
+	}
 	
 	private static Object[][] ArrivalPlanMsRt(String TgtWhCd,String TgtClCd,String TgtArrNo){
 		ArrayList<String> SearchClWh			= new ArrayList<String>();		//ヘッダ担当倉庫
