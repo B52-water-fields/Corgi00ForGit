@@ -372,7 +372,7 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 					if(((String)CheckOb[i][ColClItemCd]).equals((String)ItemComversion[i01][WMTools100_ItemComversion.ColClIemCd])) {
 						if(!"".equals((String)ItemComversion[i01][WMTools100_ItemComversion.ColItemCd])) {
 							SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetItemCd]	= (String)ItemComversion[i01][WMTools100_ItemComversion.ColItemCd];		//商品コード
-							SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColUnitType]	= (int)ItemComversion[i01][WMTools100_ItemComversion.ColPackingType];	//荷姿タイプ
+							SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColUnitType]	= (int)ItemComversion[i01][WMTools100_ItemComversion.ColPackingType];			//荷姿タイプ
 							
 							TgtItemCd.add((String)SetOb[EntryCount][WT100_ArrivalPlan_06_ArrayEntrySetDataView.ColSetItemCd]);
 						}
