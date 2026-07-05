@@ -56,9 +56,9 @@ public class M100_SupplierRt{
 			String GetClCd			=	(String)SupplierRt[i][M100_SupplierRt.ColClCd];			//荷主CD
 			String GetCLName01		=	(String)SupplierRt[i][M100_SupplierRt.ColCLName01];		//荷主表記名
 			String GetSPCd			=	(String)SupplierRt[i][M100_SupplierRt.ColSPCd];			//仕入先コード
-			String GetSPName01		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName01];		//仕入先名1
-			String GetSPName02		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName02];		//仕入先名2
-			String GetSPName03		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName03];		//仕入先名3
+			String GetSPName01		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName01];		//仕入先表記名
+			String GetSPName02		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName02];		//仕入先正式名
+			String GetSPName03		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName03];		//仕入先略名
 			String GetSPPost		=	(String)SupplierRt[i][M100_SupplierRt.ColSPPost];			//仕入先郵便
 			String GetSPAdd01		=	(String)SupplierRt[i][M100_SupplierRt.ColSPAdd01];			//仕入先住所1
 			String GetSPAdd02		=	(String)SupplierRt[i][M100_SupplierRt.ColSPAdd02];			//仕入先住所2
@@ -88,9 +88,9 @@ public class M100_SupplierRt{
 	static final int ColClCd				= (int)2;	//荷主CD
 	static final int ColCLName01			= (int)3;	//荷主表記名
 	static final int ColSPCd				= (int)4;	//仕入先コード
-	static final int ColSPName01			= (int)5;	//仕入先名1
-	static final int ColSPName02			= (int)6;	//仕入先名2
-	static final int ColSPName03			= (int)7;	//仕入先名3
+	static final int ColSPName01			= (int)5;	//仕入先表記名
+	static final int ColSPName02			= (int)6;	//仕入先正式名
+	static final int ColSPName03			= (int)7;	//仕入先略名
 	static final int ColSPPost				= (int)8;	//仕入先郵便
 	static final int ColSPAdd01			= (int)9;	//仕入先住所1
 	static final int ColSPAdd02			= (int)10;	//仕入先住所2
@@ -121,9 +121,9 @@ public class M100_SupplierRt{
 				,{"ClCd"			,ColClCd			,"String"	,"荷主CD"					,"Key"}
 				,{"CLName01"		,ColCLName01		,"String"	,"荷主表記名"					,""}
 				,{"SPCd"			,ColSPCd			,"String"	,"仕入先コード"				,"Key"}
-				,{"SPName01"		,ColSPName01		,"String"	,"仕入先名1"				,""}
-				,{"SPName02"		,ColSPName02		,"String"	,"仕入先名2"				,""}
-				,{"SPName03"		,ColSPName03		,"String"	,"仕入先名3"				,""}
+				,{"SPName01"		,ColSPName01		,"String"	,"仕入先表記名"				,""}
+				,{"SPName02"		,ColSPName02		,"String"	,"仕入先正式名"				,""}
+				,{"SPName03"		,ColSPName03		,"String"	,"仕入先略名"				,""}
 				,{"SPPost"			,ColSPPost			,"String"	,"仕入先郵便"				,""}
 				,{"SPAdd01"			,ColSPAdd01		,"String"	,"仕入先住所1"				,""}
 				,{"SPAdd02"			,ColSPAdd02		,"String"	,"仕入先住所2"				,""}
@@ -205,9 +205,9 @@ public class M100_SupplierRt{
 				+"(WM0010Supplier.ClCd) as ClCd,\n"						//荷主CD
 				+"(KM0030_CLIENTMST.CLName01) as CLName01,\n"			//荷主表記名
 				+"(WM0010Supplier.SPCd) as SPCd,\n"						//仕入先コード
-				+"(WM0010Supplier.SPName01) as SPName01,\n"				//仕入先名1
-				+"(WM0010Supplier.SPName02) as SPName02,\n"				//仕入先名2
-				+"(WM0010Supplier.SPName03) as SPName03,\n"				//仕入先名3
+				+"(WM0010Supplier.SPName01) as SPName01,\n"				//仕入先表記名
+				+"(WM0010Supplier.SPName02) as SPName02,\n"				//仕入先正式名
+				+"(WM0010Supplier.SPName03) as SPName03,\n"				//仕入先略名
 				+"(WM0010Supplier.SPPost) as SPPost,\n"					//仕入先郵便
 				+"(WM0010Supplier.SPAdd01) as SPAdd01,\n"				//仕入先住所1
 				+"(WM0010Supplier.SPAdd02) as SPAdd02,\n"				//仕入先住所2
@@ -591,9 +591,9 @@ public class M100_SupplierRt{
 					if(null==rset01.getString("ClCd")			){rt[counter][ColClCd]				="";}else{rt[counter][ColClCd]				=rset01.getString("ClCd");}							//荷主CD
 					if(null==rset01.getString("CLName01")		){rt[counter][ColCLName01]			="";}else{rt[counter][ColCLName01]			=rset01.getString("CLName01");}						//荷主表記名
 					if(null==rset01.getString("SPCd")			){rt[counter][ColSPCd]				="";}else{rt[counter][ColSPCd]				=rset01.getString("SPCd");}							//仕入先コード
-					if(null==rset01.getString("SPName01")		){rt[counter][ColSPName01]			="";}else{rt[counter][ColSPName01]			=rset01.getString("SPName01");}						//仕入先名1
-					if(null==rset01.getString("SPName02")		){rt[counter][ColSPName02]			="";}else{rt[counter][ColSPName02]			=rset01.getString("SPName02");}						//仕入先名2
-					if(null==rset01.getString("SPName03")		){rt[counter][ColSPName03]			="";}else{rt[counter][ColSPName03]			=rset01.getString("SPName03");}						//仕入先名3
+					if(null==rset01.getString("SPName01")		){rt[counter][ColSPName01]			="";}else{rt[counter][ColSPName01]			=rset01.getString("SPName01");}						//仕入先表記名
+					if(null==rset01.getString("SPName02")		){rt[counter][ColSPName02]			="";}else{rt[counter][ColSPName02]			=rset01.getString("SPName02");}						//仕入先正式名
+					if(null==rset01.getString("SPName03")		){rt[counter][ColSPName03]			="";}else{rt[counter][ColSPName03]			=rset01.getString("SPName03");}						//仕入先略名
 					if(null==rset01.getString("SPPost")			){rt[counter][ColSPPost]			="";}else{rt[counter][ColSPPost]			=rset01.getString("SPPost");}						//仕入先郵便
 					if(null==rset01.getString("SPAdd01")		){rt[counter][ColSPAdd01]			="";}else{rt[counter][ColSPAdd01]			=rset01.getString("SPAdd01");}						//仕入先住所1
 					if(null==rset01.getString("SPAdd02")		){rt[counter][ColSPAdd02]			="";}else{rt[counter][ColSPAdd02]			=rset01.getString("SPAdd02");}						//仕入先住所2

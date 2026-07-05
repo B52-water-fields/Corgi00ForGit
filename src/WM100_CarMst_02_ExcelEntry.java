@@ -103,9 +103,9 @@ public class WM100_CarMst_02_ExcelEntry{
 				 "担当倉庫"
 				,"運送会社CD"
 				,"車輛CD"
-				,"車輛名01"
-				,"車輛名02"
-				,"車輛名03"
+				,"車輛表記名"
+				,"車輛正式名"
+				,"車輛略名"
 				,"乗務員CD"
 				,"基幹システム車輛コード"
 				,"削除フラグ"
@@ -114,9 +114,9 @@ public class WM100_CarMst_02_ExcelEntry{
 				 -1	//担当倉庫
 				,-1	//運送会社CD
 				,-1	//車輛CD
-				,-1	//車輛名01
-				,-1	//車輛名02
-				,-1	//車輛名03
+				,-1	//車輛表記名
+				,-1	//車輛正式名
+				,-1	//車輛略名
 				,-1	//乗務員CD
 				,-1	//基幹システム車輛コード
 				,-1	//削除フラグ
@@ -130,13 +130,13 @@ public class WM100_CarMst_02_ExcelEntry{
 				,"担当倉庫"
 				,"倉庫名"
 				,"運送会社CD"
-				,"運送会社名1"
-				,"運送会社名2"
-				,"運送会社名3"
+				,"運送会社表記名"
+				,"運送会社正式名"
+				,"運送会社略名"
 				,"車輛CD"
-				,"車輛名01"
-				,"車輛名02"
-				,"車輛名03"
+				,"車輛表記名"
+				,"車輛正式名"
+				,"車輛略名"
 				,"乗務員CD"
 				,"ユーザー名1"
 				,"ユーザー名2"
@@ -166,13 +166,13 @@ public class WM100_CarMst_02_ExcelEntry{
 		column = columnModel01.getColumn( 1);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//担当倉庫
 		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//倉庫名
 		column = columnModel01.getColumn( 3);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社CD
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社名1
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社名2
-		column = columnModel01.getColumn( 6);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社名3
+		column = columnModel01.getColumn( 4);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社表記名
+		column = columnModel01.getColumn( 5);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社正式名
+		column = columnModel01.getColumn( 6);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社略名
 		column = columnModel01.getColumn( 7);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車輛CD
-		column = columnModel01.getColumn( 8);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車輛名01
-		column = columnModel01.getColumn( 9);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車輛名02
-		column = columnModel01.getColumn(10);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車輛名03
+		column = columnModel01.getColumn( 8);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車輛表記名
+		column = columnModel01.getColumn( 9);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車輛正式名
+		column = columnModel01.getColumn(10);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車輛略名
 		column = columnModel01.getColumn(11);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//乗務員CD
 		column = columnModel01.getColumn(12);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//ユーザー名1
 		column = columnModel01.getColumn(13);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//ユーザー名2
@@ -219,9 +219,9 @@ public class WM100_CarMst_02_ExcelEntry{
 													+"担当倉庫"
 													+",運送会社CD"
 													+",車輛CD"
-													+",車輛名01"
-													+",車輛名02"
-													+",車輛名03"
+													+",車輛表記名"
+													+",車輛正式名"
+													+",車輛略名"
 													+",乗務員CD"
 													+",基幹システム車輛コード"
 													+",削除フラグ\n"
@@ -234,9 +234,9 @@ public class WM100_CarMst_02_ExcelEntry{
 			ClmnType[TgtCol[ 0]]=1;	//担当倉庫
 			ClmnType[TgtCol[ 1]]=1;	//運送会社CD
 			ClmnType[TgtCol[ 2]]=1;	//車輛CD
-			ClmnType[TgtCol[ 3]]=1;	//車輛名01
-			ClmnType[TgtCol[ 4]]=1;	//車輛名02
-			ClmnType[TgtCol[ 5]]=1;	//車輛名03
+			ClmnType[TgtCol[ 3]]=1;	//車輛表記名
+			ClmnType[TgtCol[ 4]]=1;	//車輛正式名
+			ClmnType[TgtCol[ 5]]=1;	//車輛略名
 			ClmnType[TgtCol[ 6]]=1;	//乗務員CD
 			ClmnType[TgtCol[ 7]]=1;	//基幹システム車輛コード
 			ClmnType[TgtCol[ 8]]=1;	//削除フラグ
@@ -278,13 +278,13 @@ public class WM100_CarMst_02_ExcelEntry{
 						SetOb[ 1] = ""+ExcellRead[i][TgtCol[ 0]];	//担当倉庫
 						SetOb[ 2] = "";	//倉庫名
 						SetOb[ 3] = ""+ExcellRead[i][TgtCol[ 1]];	//運送会社CD
-						SetOb[ 4] = "";	//運送会社名1
-						SetOb[ 5] = "";	//運送会社名2
-						SetOb[ 6] = "";	//運送会社名3
+						SetOb[ 4] = "";	//運送会社表記名
+						SetOb[ 5] = "";	//運送会社正式名
+						SetOb[ 6] = "";	//運送会社略名
 						SetOb[ 7] = ""+ExcellRead[i][TgtCol[ 2]];	//車輛CD
-						SetOb[ 8] = ""+ExcellRead[i][TgtCol[ 3]];	//車輛名01
-						SetOb[ 9] = ""+ExcellRead[i][TgtCol[ 4]];	//車輛名02
-						SetOb[10] = ""+ExcellRead[i][TgtCol[ 5]];	//車輛名03
+						SetOb[ 8] = ""+ExcellRead[i][TgtCol[ 3]];	//車輛表記名
+						SetOb[ 9] = ""+ExcellRead[i][TgtCol[ 4]];	//車輛正式名
+						SetOb[10] = ""+ExcellRead[i][TgtCol[ 5]];	//車輛略名
 						SetOb[11] = ""+ExcellRead[i][TgtCol[ 6]];	//乗務員CD
 						SetOb[12] = "";	//ユーザー名1
 						SetOb[13] = "";	//ユーザー名2
@@ -334,9 +334,9 @@ public class WM100_CarMst_02_ExcelEntry{
 							UnHitFg = true;
 							for(int i01=0;i01<ShippingCompanyMstRt.length;i01++) {
 								if((""+SetOb[ 3]).equals(""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyCd])) {
-									SetOb[ 4] = ""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名1
-									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社名2
-									SetOb[ 6] = ""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社名3
+									SetOb[ 4] = ""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社表記名
+									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社正式名
+									SetOb[ 6] = ""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社略名
 									UnHitFg = false;
 								}
 							}
@@ -416,9 +416,9 @@ public class WM100_CarMst_02_ExcelEntry{
 							{"WHCD"					,"1","1"}	//担当倉庫
 							,{"ShippingCompanyCd"	,"1","1"}	//運送会社CD
 							,{"CarCd"				,"1","1"}	//車輛CD
-							,{"CarName01"			,"1","1"}	//車輛名01
-							,{"CarName02"			,"1","1"}	//車輛名02
-							,{"CarName03"			,"1","1"}	//車輛名03
+							,{"CarName01"			,"1","1"}	//車輛表記名
+							,{"CarName02"			,"1","1"}	//車輛正式名
+							,{"CarName03"			,"1","1"}	//車輛略名
 							,{"DriverCd"			,"1","1"}	//乗務員CD
 							,{"PTMSCD"				,"1","1"}	//基幹システム車輛コード
 							,{"EntryDate"			,"1","1"}	//データ登録日時
@@ -456,9 +456,9 @@ public class WM100_CarMst_02_ExcelEntry{
 						entry_data[i][ 0] =	""+MainFmTableModel.getValueAt(i, 1);	//担当倉庫
 						entry_data[i][ 1] = ""+MainFmTableModel.getValueAt(i, 3);	//運送会社CD
 						entry_data[i][ 2] =	""+MainFmTableModel.getValueAt(i, 7);	//車輛CD
-						entry_data[i][ 3] =	""+MainFmTableModel.getValueAt(i, 8);	//車輛名01
-						entry_data[i][ 4] =	""+MainFmTableModel.getValueAt(i, 9);	//車輛名02
-						entry_data[i][ 5] =	""+MainFmTableModel.getValueAt(i,10);	//車輛名03
+						entry_data[i][ 3] =	""+MainFmTableModel.getValueAt(i, 8);	//車輛表記名
+						entry_data[i][ 4] =	""+MainFmTableModel.getValueAt(i, 9);	//車輛正式名
+						entry_data[i][ 5] =	""+MainFmTableModel.getValueAt(i,10);	//車輛略名
 						entry_data[i][ 6] =	""+MainFmTableModel.getValueAt(i,11);	//乗務員CD
 						entry_data[i][ 7] =	""+MainFmTableModel.getValueAt(i,15);	//基幹システム車輛コード
 						entry_data[i][ 8] =	now_dtm;	//データ登録日時

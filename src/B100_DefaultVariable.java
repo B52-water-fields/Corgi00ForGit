@@ -537,9 +537,9 @@ public class B100_DefaultVariable{
 				 {"ClWh"			,"1","0","Key"	,A00000_Main.ClWh}	//担当倉庫
 				,{"ClCd"			,"1","0","Key"	,A00000_Main.ClCd}	//荷主CD
 				,{"SPCd"			,"1","0","Key"	,"0000000"}			//仕入先コード
-				,{"SPName01"		,"1","0",""		,"強制入庫"}		//仕入先名1
-				,{"SPName02"		,"1","0",""		,""}				//仕入先名2
-				,{"SPName03"		,"1","0",""		,""}				//仕入先名3
+				,{"SPName01"		,"1","0",""		,"強制入庫"}		//仕入先表記名
+				,{"SPName02"		,"1","0",""		,""}				//仕入先正式名
+				,{"SPName03"		,"1","0",""		,""}				//仕入先略名
 				,{"SPPost"			,"1","0",""		,""}				//仕入先郵便
 				,{"SPAdd01"			,"1","0",""		,""}				//仕入先住所1
 				,{"SPAdd02"			,"1","0",""		,""}				//仕入先住所2
@@ -1154,9 +1154,9 @@ public class B100_DefaultVariable{
 		judg_field[0] = "ShippingCompanyCd";		//運送会社CD
 		
 		field_name[0][0] = "ShippingCompanyCd";		//運送会社CD
-		field_name[1][0] = "ShippingCompanyName01";	//運送会社名1
-		field_name[2][0] = "ShippingCompanyName02";	//運送会社名2
-		field_name[3][0] = "ShippingCompanyName03";	//運送会社名3
+		field_name[1][0] = "ShippingCompanyName01";	//運送会社表記名
+		field_name[2][0] = "ShippingCompanyName02";	//運送会社正式名
+		field_name[3][0] = "ShippingCompanyName03";	//運送会社略名
 		field_name[4][0] = "Post";					//運送会社郵便
 		field_name[5][0] = "Add01";					//運送会社住所1
 		field_name[6][0] = "Add02";					//運送会社住所2
@@ -1176,9 +1176,9 @@ public class B100_DefaultVariable{
 		field_name[20][0] = "PTMSCD";				//基幹システム連携用傭車コード
 		
 		field_name[0][1] = "1";		//運送会社CD
-		field_name[1][1] = "1";		//運送会社名1
-		field_name[2][1] = "1";		//運送会社名2
-		field_name[3][1] = "1";		//運送会社名3
+		field_name[1][1] = "1";		//運送会社表記名
+		field_name[2][1] = "1";		//運送会社正式名
+		field_name[3][1] = "1";		//運送会社略名
 		field_name[4][1] = "1";		//運送会社郵便
 		field_name[5][1] = "1";		//運送会社住所1
 		field_name[6][1] = "1";		//運送会社住所2
@@ -1198,9 +1198,9 @@ public class B100_DefaultVariable{
 		field_name[20][1] = "1";	//基幹システム連携用傭車コード
 
 		field_name[0][2] = "0";		//運送会社CD
-		field_name[1][2] = "0";		//運送会社名1
-		field_name[2][2] = "0";		//運送会社名2
-		field_name[3][2] = "0";		//運送会社名3
+		field_name[1][2] = "0";		//運送会社表記名
+		field_name[2][2] = "0";		//運送会社正式名
+		field_name[3][2] = "0";		//運送会社略名
 		field_name[4][2] = "0";		//運送会社郵便
 		field_name[5][2] = "0";		//運送会社住所1
 		field_name[6][2] = "0";		//運送会社住所2
@@ -1222,9 +1222,9 @@ public class B100_DefaultVariable{
 		judg_data[0][0] = "SC00000";		//運送会社CD
 		
 		entry_data[0][0] = "SC00000";					//運送会社CD
-		entry_data[0][1] = "自社設定初期値";		//運送会社名1
-		entry_data[0][2] = "";						//運送会社名2
-		entry_data[0][3] = "";						//運送会社名3
+		entry_data[0][1] = "自社設定初期値";		//運送会社表記名
+		entry_data[0][2] = "";						//運送会社正式名
+		entry_data[0][3] = "";						//運送会社略名
 		entry_data[0][4] = "6990701";				//運送会社郵便
 		entry_data[0][5] = "島根県出雲市大社町杵築東１９５";		//運送会社住所1
 		entry_data[0][6] = "";			//運送会社住所2

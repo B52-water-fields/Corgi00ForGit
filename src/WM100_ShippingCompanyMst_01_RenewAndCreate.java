@@ -35,9 +35,9 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 		main_fm.add(entry_btn);
 		
 		JLabel LB_ShippingCompanyCd		= B100_FrameParts.JLabelSet(  0, 40,100,20,"運送会社CD:"		,11,1);
-		JLabel LB_ShippingCompanyName01	= B100_FrameParts.JLabelSet(  0, 65,100,20,"運送会社名1:"		,11,1);
-		JLabel LB_ShippingCompanyName02	= B100_FrameParts.JLabelSet(  0, 90,100,20,"運送会社名2:"		,11,1);
-		JLabel LB_ShippingCompanyName03	= B100_FrameParts.JLabelSet(  0,115,100,20,"運送会社名3:"		,11,1);
+		JLabel LB_ShippingCompanyName01	= B100_FrameParts.JLabelSet(  0, 65,100,20,"運送会社表記名:"		,11,1);
+		JLabel LB_ShippingCompanyName02	= B100_FrameParts.JLabelSet(  0, 90,100,20,"運送会社正式名:"		,11,1);
+		JLabel LB_ShippingCompanyName03	= B100_FrameParts.JLabelSet(  0,115,100,20,"運送会社略名:"		,11,1);
 		JLabel LB_Post					= B100_FrameParts.JLabelSet(  0,140,100,20,"運送会社郵便:"	,11,1);
 		JLabel LB_Add01					= B100_FrameParts.JLabelSet(  0,165,100,20,"運送会社住所1:"	,11,1);
 		JLabel LB_Add02					= B100_FrameParts.JLabelSet(  0,190,100,20,"運送会社住所2:"	,11,1);
@@ -58,9 +58,9 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 		JLabel LB_ExportDataType		= B100_FrameParts.JLabelSet(  0,565,100,20,"データ抽出Type:"	,11,1);
 		
 		final JTextField TB_ShippingCompanyCd		= B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//運送会社CD
-		final JTextField TB_ShippingCompanyName01	= B100_FrameParts.JTextFieldSet(100, 65,250,20,"",11,0);	//運送会社名1
-		final JTextField TB_ShippingCompanyName02	= B100_FrameParts.JTextFieldSet(100, 90,250,20,"",11,0);	//運送会社名2
-		final JTextField TB_ShippingCompanyName03	= B100_FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//運送会社名3
+		final JTextField TB_ShippingCompanyName01	= B100_FrameParts.JTextFieldSet(100, 65,250,20,"",11,0);	//運送会社表記名
+		final JTextField TB_ShippingCompanyName02	= B100_FrameParts.JTextFieldSet(100, 90,250,20,"",11,0);	//運送会社正式名
+		final JTextField TB_ShippingCompanyName03	= B100_FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//運送会社略名
 		final JTextField TB_Post					= B100_FrameParts.JTextFieldSet(100,140,100,20,"",11,0);	//運送会社郵便
 		final JTextField TB_Add01					= B100_FrameParts.JTextFieldSet(100,165,250,20,"",11,0);	//運送会社住所1
 		final JTextField TB_Add02					= B100_FrameParts.JTextFieldSet(100,190,250,20,"",11,0);	//運送会社住所2
@@ -115,9 +115,9 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 			
 			if(0<ShippingCompanyMstRt.length) {
 				TB_ShippingCompanyCd.setText(		""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyCd]);		//運送会社CD
-				TB_ShippingCompanyName01.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName01]);	//運送会社名1
-				TB_ShippingCompanyName02.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName02]);	//運送会社名2
-				TB_ShippingCompanyName03.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName03]);	//運送会社名3
+				TB_ShippingCompanyName01.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName01]);	//運送会社表記名
+				TB_ShippingCompanyName02.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName02]);	//運送会社正式名
+				TB_ShippingCompanyName03.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName03]);	//運送会社略名
 				TB_Post.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColPost]);						//運送会社郵便
 				TB_Add01.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColAdd01]);						//運送会社住所1
 				TB_Add02.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColAdd02]);						//運送会社住所2
@@ -207,9 +207,9 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 					RenewFg = false;
 					
 					String GetShippingCompanyCd		= TB_ShippingCompanyCd.getText();		//運送会社CD
-					String GetShippingCompanyName01	= TB_ShippingCompanyName01.getText();	//運送会社名1
-					String GetShippingCompanyName02	= TB_ShippingCompanyName02.getText();	//運送会社名2
-					String GetShippingCompanyName03	= TB_ShippingCompanyName03.getText();	//運送会社名3
+					String GetShippingCompanyName01	= TB_ShippingCompanyName01.getText();	//運送会社表記名
+					String GetShippingCompanyName02	= TB_ShippingCompanyName02.getText();	//運送会社正式名
+					String GetShippingCompanyName03	= TB_ShippingCompanyName03.getText();	//運送会社略名
 					String GetPost					= TB_Post.getText();	//運送会社郵便
 					String GetAdd01					= TB_Add01.getText();	//運送会社住所1
 					String GetAdd02					= TB_Add02.getText();	//運送会社住所2
@@ -280,9 +280,9 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 						
 						String[][] SetString = {
 								{"ShippingCompanyCd"		,"1","1",GetShippingCompanyCd}		//運送会社CD
-								,{"ShippingCompanyName01"	,"1","1",GetShippingCompanyName01}	//運送会社名1
-								,{"ShippingCompanyName02"	,"1","1",GetShippingCompanyName02}	//運送会社名2
-								,{"ShippingCompanyName03"	,"1","1",GetShippingCompanyName03}	//運送会社名3
+								,{"ShippingCompanyName01"	,"1","1",GetShippingCompanyName01}	//運送会社表記名
+								,{"ShippingCompanyName02"	,"1","1",GetShippingCompanyName02}	//運送会社正式名
+								,{"ShippingCompanyName03"	,"1","1",GetShippingCompanyName03}	//運送会社略名
 								,{"Post"					,"1","1",GetPost}					//運送会社郵便
 								,{"Add01"					,"1","1",GetAdd01}					//運送会社住所1
 								,{"Add02"					,"1","1",GetAdd02}					//運送会社住所2

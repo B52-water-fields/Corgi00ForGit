@@ -52,9 +52,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(   0, 50,130,20,"荷主コード:"			,10,1);
 		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(   0, 75,130,20,"倉庫コード:"			,10,1);
 		JLabel LB_SPCd				= B100_FrameParts.JLabelSet(   0,100,130,20,"仕入先コード:"		,10,1);
-		JLabel LB_SPName01			= B100_FrameParts.JLabelSet(   0,125,130,20,"仕入先名1:"			,10,1);
-		JLabel LB_SPName02			= B100_FrameParts.JLabelSet(   0,150,130,20,"仕入先名2:"			,10,1);
-		JLabel LB_SPName03			= B100_FrameParts.JLabelSet(   0,175,130,20,"仕入先名3:"			,10,1);
+		JLabel LB_SPName01			= B100_FrameParts.JLabelSet(   0,125,130,20,"仕入先表記名:"			,10,1);
+		JLabel LB_SPName02			= B100_FrameParts.JLabelSet(   0,150,130,20,"仕入先正式名:"			,10,1);
+		JLabel LB_SPName03			= B100_FrameParts.JLabelSet(   0,175,130,20,"仕入先略名:"			,10,1);
 		JLabel LB_SPPost			= B100_FrameParts.JLabelSet(   0,200,130,20,"仕入先郵便:"			,10,1);
 		JLabel LB_SPAdd01			= B100_FrameParts.JLabelSet(   0,225,130,20,"仕入先住所1:"		,10,1);
 		JLabel LB_SPAdd02			= B100_FrameParts.JLabelSet(   0,250,130,20,"仕入先住所2:"		,10,1);
@@ -81,9 +81,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		final JComboBox   TB_ClCd				= B100_FrameParts.JComboBoxSet( 				130, 50,200,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
 		final JComboBox   TB_WhCd				= B100_FrameParts.JComboBoxSet( 				130, 75,200,20,B100_DefaultVariable.WhList[0],11);	//倉庫コード
 		final JTextField  TB_SPCd				= B100_FrameParts.JTextFieldSet( 			130,100,200,20,TgSPCd,11,0);//仕入先コード
-		final JTextField  TB_SPName01			= B100_FrameParts.JTextFieldSet( 			130,125,200,20,"",11,0);	//仕入先名1
-		final JTextField  TB_SPName02			= B100_FrameParts.JTextFieldSet( 			130,150,200,20,"",11,0);	//仕入先名2
-		final JTextField  TB_SPName03			= B100_FrameParts.JTextFieldSet( 			130,175,200,20,"",11,0);	//仕入先名3
+		final JTextField  TB_SPName01			= B100_FrameParts.JTextFieldSet( 			130,125,200,20,"",11,0);	//仕入先表記名
+		final JTextField  TB_SPName02			= B100_FrameParts.JTextFieldSet( 			130,150,200,20,"",11,0);	//仕入先正式名
+		final JTextField  TB_SPName03			= B100_FrameParts.JTextFieldSet( 			130,175,200,20,"",11,0);	//仕入先略名
 		final JTextField  TB_SPPost				= B100_FrameParts.JTextFieldSet( 			130,200,100,20,"",11,0);	//仕入先郵便
 		final JTextField  TB_SPAdd01			= B100_FrameParts.JTextFieldSet( 			130,225,200,20,"",11,0);	//仕入先住所1
 		final JTextField  TB_SPAdd02			= B100_FrameParts.JTextFieldSet( 			130,250,200,20,"",11,0);	//仕入先住所2
@@ -126,9 +126,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 			TB_SPCd.setEnabled(false);
 			Object[][] SupplierRt = SupplierRt(TgtClCd,TgtWhCd,TgSPCd);
 			if(1==SupplierRt.length) {
-				TB_SPName01.setText(		(String)SupplierRt[0][M100_SupplierRt.ColSPName01]);			//仕入先名1
-				TB_SPName02.setText(		(String)SupplierRt[0][M100_SupplierRt.ColSPName02]);			//仕入先名2
-				TB_SPName03.setText(		(String)SupplierRt[0][M100_SupplierRt.ColSPName03]);			//仕入先名3
+				TB_SPName01.setText(		(String)SupplierRt[0][M100_SupplierRt.ColSPName01]);			//仕入先表記名
+				TB_SPName02.setText(		(String)SupplierRt[0][M100_SupplierRt.ColSPName02]);			//仕入先正式名
+				TB_SPName03.setText(		(String)SupplierRt[0][M100_SupplierRt.ColSPName03]);			//仕入先略名
 				TB_SPPost.setText(			(String)SupplierRt[0][M100_SupplierRt.ColSPPost]);			//仕入先郵便
 				TB_SPAdd01.setText(			(String)SupplierRt[0][M100_SupplierRt.ColSPAdd01]);			//仕入先住所1
 				TB_SPAdd02.setText(			(String)SupplierRt[0][M100_SupplierRt.ColSPAdd02]);			//仕入先住所2
@@ -543,9 +543,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 					String GetClCd			= B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
 					String GetWhCd			= B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//倉庫コード
 					String GetSPCd			= TB_SPCd.getText();			//仕入先コード
-					String GetSPName01		= TB_SPName01.getText();		//仕入先名1
-					String GetSPName02		= TB_SPName02.getText();		//仕入先名2
-					String GetSPName03		= TB_SPName03.getText();		//仕入先名3
+					String GetSPName01		= TB_SPName01.getText();		//仕入先表記名
+					String GetSPName02		= TB_SPName02.getText();		//仕入先正式名
+					String GetSPName03		= TB_SPName03.getText();		//仕入先略名
 					String GetSPPost		= TB_SPPost.getText();			//仕入先郵便
 					String GetSPAdd01		= TB_SPAdd01.getText();			//仕入先住所1
 					String GetSPAdd02		= TB_SPAdd02.getText();			//仕入先住所2
@@ -644,9 +644,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 					String GetClCd			= B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];	//荷主コード
 					String GetWhCd			= B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()];	//倉庫コード
 					String GetSPCd			= TB_SPCd.getText();			//仕入先コード
-					String GetSPName01		= TB_SPName01.getText();		//仕入先名1
-					String GetSPName02		= TB_SPName02.getText();		//仕入先名2
-					String GetSPName03		= TB_SPName03.getText();		//仕入先名3
+					String GetSPName01		= TB_SPName01.getText();		//仕入先表記名
+					String GetSPName02		= TB_SPName02.getText();		//仕入先正式名
+					String GetSPName03		= TB_SPName03.getText();		//仕入先略名
 					String GetSPPost		= TB_SPPost.getText();			//仕入先郵便
 					String GetSPAdd01		= TB_SPAdd01.getText();			//仕入先住所1
 					String GetSPAdd02		= TB_SPAdd02.getText();			//仕入先住所2
@@ -1117,9 +1117,9 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 				 {"ClWh"			,"1","1","Key"	,GetWhCd}			//担当倉庫
 				,{"ClCd"			,"1","1","Key"	,GetClCd}			//荷主CD
 				,{"SPCd"			,"1","1","Key"	,GetSPCd}			//仕入先コード
-				,{"SPName01"		,"1","1",""		,GetSPName01}		//仕入先名1
-				,{"SPName02"		,"1","1",""		,GetSPName02}		//仕入先名2
-				,{"SPName03"		,"1","1",""		,GetSPName03}		//仕入先名3
+				,{"SPName01"		,"1","1",""		,GetSPName01}		//仕入先表記名
+				,{"SPName02"		,"1","1",""		,GetSPName02}		//仕入先正式名
+				,{"SPName03"		,"1","1",""		,GetSPName03}		//仕入先略名
 				,{"SPPost"			,"1","1",""		,GetSPPost}			//仕入先郵便
 				,{"SPAdd01"			,"1","1",""		,GetSPAdd01}		//仕入先住所1
 				,{"SPAdd02"			,"1","1",""		,GetSPAdd02}		//仕入先住所2

@@ -95,9 +95,9 @@ public class WM100_SupplierMst_02_ExcelEntry{
 				 {"担当倉庫"				, 1	, 0}
 				,{"荷主CD"					, 1	, 1}
 				,{"仕入先コード"			, 1	, 2}
-				,{"仕入先名1"				, 1	, 3}
-				,{"仕入先名2"				, 1	, 4}
-				,{"仕入先名3"				, 1	, 5}
+				,{"仕入先表記名"				, 1	, 3}
+				,{"仕入先正式名"				, 1	, 4}
+				,{"仕入先略名"				, 1	, 5}
 				,{"仕入先郵便"				, 1	, 6}
 				,{"仕入先住所1"				, 1	, 7}
 				,{"仕入先住所2"				, 1	, 8}
@@ -453,9 +453,9 @@ public class WM100_SupplierMst_02_ExcelEntry{
 		int ColClWh				= (int)0;	//担当倉庫
 		int ColClCd				= (int)1;	//荷主CD
 		int ColSPCd				= (int)2;	//仕入先コード
-		int ColSPName01			= (int)3;	//仕入先名1
-		int ColSPName02			= (int)4;	//仕入先名2
-		int ColSPName03			= (int)5;	//仕入先名3
+		int ColSPName01			= (int)3;	//仕入先表記名
+		int ColSPName02			= (int)4;	//仕入先正式名
+		int ColSPName03			= (int)5;	//仕入先略名
 		int ColSPPost			= (int)6;	//仕入先郵便
 		int ColSPAdd01			= (int)7;	//仕入先住所1
 		int ColSPAdd02			= (int)8;	//仕入先住所2
@@ -485,13 +485,13 @@ public class WM100_SupplierMst_02_ExcelEntry{
 				case "仕入先コード":
 			 		ColSPCd= i;
 			 		break;
-				case "仕入先名1":
+				case "仕入先表記名":
 			 		ColSPName01= i;
 			 		break;
-				case "仕入先名2":
+				case "仕入先正式名":
 			 		ColSPName02= i;
 			 		break;
-				case "仕入先名3":
+				case "仕入先略名":
 			 		ColSPName03= i;
 			 		break;
 				case "仕入先郵便":
@@ -554,9 +554,9 @@ public class WM100_SupplierMst_02_ExcelEntry{
 			String GetClWh			= ""+CheckOb[i][ColClWh];			//担当倉庫
 			String GetClCd			= ""+CheckOb[i][ColClCd];			//荷主CD
 			String GetSPCd			= ""+CheckOb[i][ColSPCd];			//仕入先コード
-			String GetSPName01		= ""+CheckOb[i][ColSPName01];		//仕入先名1
-			String GetSPName02		= ""+CheckOb[i][ColSPName02];		//仕入先名2
-			String GetSPName03		= ""+CheckOb[i][ColSPName03];		//仕入先名3
+			String GetSPName01		= ""+CheckOb[i][ColSPName01];		//仕入先表記名
+			String GetSPName02		= ""+CheckOb[i][ColSPName02];		//仕入先正式名
+			String GetSPName03		= ""+CheckOb[i][ColSPName03];		//仕入先略名
 			String GetSPPost		= ""+CheckOb[i][ColSPPost];			//仕入先郵便
 			String GetSPAdd01		= ""+CheckOb[i][ColSPAdd01];		//仕入先住所1
 			String GetSPAdd02		= ""+CheckOb[i][ColSPAdd02];		//仕入先住所2
@@ -718,9 +718,9 @@ public class WM100_SupplierMst_02_ExcelEntry{
 			String GetClWh			= ""+CheckOb[i][ColClWh];			//担当倉庫
 			String GetClCd			= ""+CheckOb[i][ColClCd];			//荷主CD
 			String GetSPCd			= ""+CheckOb[i][ColSPCd];			//仕入先コード
-			String GetSPName01		= ""+CheckOb[i][ColSPName01];		//仕入先名1
-			String GetSPName02		= ""+CheckOb[i][ColSPName02];		//仕入先名2
-			String GetSPName03		= ""+CheckOb[i][ColSPName03];		//仕入先名3
+			String GetSPName01		= ""+CheckOb[i][ColSPName01];		//仕入先表記名
+			String GetSPName02		= ""+CheckOb[i][ColSPName02];		//仕入先正式名
+			String GetSPName03		= ""+CheckOb[i][ColSPName03];		//仕入先略名
 			String GetSPPost		= ""+CheckOb[i][ColSPPost];			//仕入先郵便
 			String GetSPAdd01		= ""+CheckOb[i][ColSPAdd01];		//仕入先住所1
 			String GetSPAdd02		= ""+CheckOb[i][ColSPAdd02];		//仕入先住所2

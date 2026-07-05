@@ -367,6 +367,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 				TB_ClWh.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]	,GetClWh,true));
 				TB_ClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]	,GetClCd,true));
 				TB_FixFg.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ArryvalFixFgList[1]	,""+GetFixFg,true));
+				TB_SpCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SupplierList[1],GetSpCd,true));
 				
 				TB_ArrNo.setText(GetArrNo);
 				TB_ClArrNo.setText(GetClArrNo);

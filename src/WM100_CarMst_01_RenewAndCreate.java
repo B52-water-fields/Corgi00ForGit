@@ -38,9 +38,9 @@ public class WM100_CarMst_01_RenewAndCreate{
 		JLabel LB_WHCD				= B100_FrameParts.JLabelSet(  0, 40,100,20,"担当倉庫:",		11,1);
 		JLabel LB_ShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 65,100,20,"運送会社CD:",		11,1);
 		JLabel LB_CarCd				= B100_FrameParts.JLabelSet(  0, 90,100,20,"車輛CD:",			11,1);
-		JLabel LB_CarName01			= B100_FrameParts.JLabelSet(  0,115,100,20,"車輛名01:",		11,1);
-		JLabel LB_CarName02			= B100_FrameParts.JLabelSet(  0,140,100,20,"車輛名02:",		11,1);
-		JLabel LB_CarName03			= B100_FrameParts.JLabelSet(  0,165,100,20,"車輛名03:",		11,1);
+		JLabel LB_CarName01			= B100_FrameParts.JLabelSet(  0,115,100,20,"車輛表記名:",		11,1);
+		JLabel LB_CarName02			= B100_FrameParts.JLabelSet(  0,140,100,20,"車輛正式名:",		11,1);
+		JLabel LB_CarName03			= B100_FrameParts.JLabelSet(  0,165,100,20,"車輛略名:",		11,1);
 		JLabel LB_DriverCd			= B100_FrameParts.JLabelSet(  0,190,100,20,"乗務員CD:",		11,1);
 		JLabel LB_PTMSCD			= B100_FrameParts.JLabelSet(  0,215,100,20,"基幹SYS車輛Cd:",	11,1);
 		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(  0,240,100,20,"データ登録日時:",	11,1);
@@ -52,9 +52,9 @@ public class WM100_CarMst_01_RenewAndCreate{
 		final JComboBox  TB_WHCD				= B100_FrameParts.JComboBoxSet( 100, 40,250,20,B100_DefaultVariable.WhList[0],	11);					//倉庫コード
 		final JComboBox  TB_ShippingCompanyCd	= B100_FrameParts.JComboBoxSet( 100, 65,250,20,B100_DefaultVariable.ShippingCompanyList[0],	11);		//運送会社CD
 		final JTextField TB_CarCd				= B100_FrameParts.JTextFieldSet(100, 90,100,20,"",11,0);	//車輛CD
-		final JTextField TB_CarName01			= B100_FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//車輛名01
-		final JTextField TB_CarName02			= B100_FrameParts.JTextFieldSet(100,140,250,20,"",11,0);	//車輛名02
-		final JTextField TB_CarName03			= B100_FrameParts.JTextFieldSet(100,165,250,20,"",11,0);	//車輛名03
+		final JTextField TB_CarName01			= B100_FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//車輛表記名
+		final JTextField TB_CarName02			= B100_FrameParts.JTextFieldSet(100,140,250,20,"",11,0);	//車輛正式名
+		final JTextField TB_CarName03			= B100_FrameParts.JTextFieldSet(100,165,250,20,"",11,0);	//車輛略名
 		final JTextField TB_DriverCd			= B100_FrameParts.JTextFieldSet(100,190,100,20,"",11,0);	//乗務員CD
 		final JTextField TB_PTMSCD				= B100_FrameParts.JTextFieldSet(100,215,100,20,"",11,0);	//基幹SYS車輛Cd
 		final JTextField TB_EntryDate			= B100_FrameParts.JTextFieldSet(100,240,250,20,"",11,0);	//データ登録日時
@@ -110,9 +110,9 @@ public class WM100_CarMst_01_RenewAndCreate{
 					}
 				}
 				TB_CarCd.setText(		""+CarMstRt[0][M100_CarMstRt.ColCarCd]);			//車輛CD
-				TB_CarName01.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName01]);		//車輛名01
-				TB_CarName02.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName02]);		//車輛名02
-				TB_CarName03.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName03]);		//車輛名03
+				TB_CarName01.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName01]);		//車輛表記名
+				TB_CarName02.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName02]);		//車輛正式名
+				TB_CarName03.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName03]);		//車輛略名
 				TB_DriverCd.setText(	""+CarMstRt[0][M100_CarMstRt.ColDriverCd]);		//乗務員CD
 				TB_PTMSCD.setText(		""+CarMstRt[0][M100_CarMstRt.ColPTMSCD]);			//基幹SYS車輛Cd
 				TB_EntryDate.setText(	""+CarMstRt[0][M100_CarMstRt.ColEntryDate]);		//データ登録日時
@@ -256,9 +256,9 @@ public class WM100_CarMst_01_RenewAndCreate{
 								}
 							}
 							TB_CarCd.setText(		""+CarMstRt[0][M100_CarMstRt.ColCarCd]);			//車輛CD
-							TB_CarName01.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName01]);		//車輛名01
-							TB_CarName02.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName02]);		//車輛名02
-							TB_CarName03.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName03]);		//車輛名03
+							TB_CarName01.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName01]);		//車輛表記名
+							TB_CarName02.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName02]);		//車輛正式名
+							TB_CarName03.setText(	""+CarMstRt[0][M100_CarMstRt.ColCarName03]);		//車輛略名
 							TB_DriverCd.setText(	""+CarMstRt[0][M100_CarMstRt.ColDriverCd]);		//乗務員CD
 							TB_PTMSCD.setText(		""+CarMstRt[0][M100_CarMstRt.ColPTMSCD]);			//基幹SYS車輛Cd
 							TB_EntryDate.setText(	""+CarMstRt[0][M100_CarMstRt.ColEntryDate]);		//データ登録日時
@@ -368,9 +368,9 @@ public class WM100_CarMst_01_RenewAndCreate{
 									{"WHCD"					,"1","1",GetWHCD}				//担当倉庫
 									,{"ShippingCompanyCd"	,"1","1",GetShippingCompanyCd}	//運送会社CD
 									,{"CarCd"				,"1","1",GetCarCd}				//車輛CD
-									,{"CarName01"			,"1","1",GetCarName01}			//車輛名01
-									,{"CarName02"			,"1","1",GetCarName02}			//車輛名02
-									,{"CarName03"			,"1","1",GetCarName03}			//車輛名03
+									,{"CarName01"			,"1","1",GetCarName01}			//車輛表記名
+									,{"CarName02"			,"1","1",GetCarName02}			//車輛正式名
+									,{"CarName03"			,"1","1",GetCarName03}			//車輛略名
 									,{"DriverCd"			,"1","1",GetDriverCd}			//乗務員CD
 									,{"PTMSCD"				,"1","1",GetPTMSCD}				//みらいシステム車輛コード
 									,{"EntryDate"			,"1","0",now_dtm}				//データ登録日時

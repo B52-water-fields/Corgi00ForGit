@@ -96,19 +96,19 @@ public class T100_ArrivalPlanHdRt{
 			SearchUpdateUser,		//更新者
 			AllSearch);
 			
-			String GetClWh			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClWh];		//ヘッダ担当倉庫
-			String GetClCd			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClCd];		//ヘッダ荷主CD
-			String GetCLName01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColCLName01];	//ヘッダ荷主名
+			String GetClWh			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClWh];			//ヘッダ担当倉庫
+			String GetClCd			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClCd];			//ヘッダ荷主CD
+			String GetCLName01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColCLName01];		//ヘッダ荷主名
 			String GetClGpCD		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClGpCD];		//ヘッダ荷主グループCD
 			String GetCLGpName01	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColCLGpName01];	//ヘッダ荷主グループ名1
 			String GetArrNo			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArrNo];		//ヘッダ入荷予定NO
 			String GetClArrNo		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClArrNo];		//ヘッダ荷主予定番号
-			String GetPlanDate		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColPlanDate];	//ヘッダ入荷予定日
+			String GetPlanDate		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColPlanDate];		//ヘッダ入荷予定日
 			String GetHdActualDate	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColActualDate];	//ヘッダ入荷実績日
-			String GetSpCd			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpCd];		//ヘッダ仕入先CD
-			String GetSpName01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName01];	//ヘッダ仕入先名01
-			String GetSpName02		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName02];	//ヘッダ仕入先名02
-			String GetSpName03		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName03];	//ヘッダ仕入先名03
+			String GetSpCd			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpCd];			//ヘッダ仕入先CD
+			String GetSpName01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName01];		//ヘッダ仕入先名01
+			String GetSpName02		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName02];		//ヘッダ仕入先名02
+			String GetSpName03		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName03];		//ヘッダ仕入先名03
 			String GetSpPost		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpPost];		//ヘッダ仕入先郵便
 			String GetSpAdd01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpAdd01];		//ヘッダ仕入先住所01
 			String GetSpAdd02		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpAdd02];		//ヘッダ仕入先住所02
@@ -122,7 +122,7 @@ public class T100_ArrivalPlanHdRt{
 			String GetHdEntryUser	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColEntryUser];	//ヘッダ登録者
 			String GetHdUpdateUser	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColUpdateUser];	//ヘッダ更新者
 			int GetFixFg			= (int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColFixFg];			//ヘッダ状況
-			int GetPlanQty			= (int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColPlanQty];		//予定数合計
+			int GetPlanQty			= (int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColPlanQty];			//予定数合計
 			int GetActualQty		= (int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColActualQty];		//実績数合計
 	*/
 	
@@ -130,15 +130,15 @@ public class T100_ArrivalPlanHdRt{
 	static final int ColClWh			=  0;		//ヘッダ担当倉庫
 	static final int ColCLName01		=  1;		//ヘッダ荷主名
 	static final int ColCLGpName01	=  2;		//ヘッダ荷主グループ名1
-	static final int ColArrNo			=  3;		//ヘッダ入荷予定NO（WMS採番）
-	static final int ColClArrNo		=  4;		//ヘッダ荷主予定番号
-	static final int ColPlanDate		=  5;		//ヘッダ入荷予定日
-	static final int ColActualDate	=  6;		//ヘッダ入荷実績日
-	static final int ColPlanQty		=  7;		//実績数合計
-	static final int ColActualQty		=  8;		//予定数合計
-	static final int ColMsCount		=  9;		//明細行数
-	static final int ColSpCd			= 10;		//ヘッダ仕入先CD
-	static final int ColSpName01		= 11;		//ヘッダ仕入先名01
+	static final int ColSpName01		=  3;		//ヘッダ仕入先名01
+	static final int ColArrNo			=  4;		//ヘッダ入荷予定NO（WMS採番）
+	static final int ColClArrNo		=  5;		//ヘッダ荷主予定番号
+	static final int ColPlanDate		=  6;		//ヘッダ入荷予定日
+	static final int ColActualDate	=  7;		//ヘッダ入荷実績日
+	static final int ColPlanQty		=  8;		//実績数合計
+	static final int ColActualQty		=  9;		//予定数合計
+	static final int ColMsCount		= 10;		//明細行数
+	static final int ColSpCd			= 11;		//ヘッダ仕入先CD
 	static final int ColSpName02		= 12;		//ヘッダ仕入先名02
 	static final int ColSpName03		= 13;		//ヘッダ仕入先名03
 	static final int ColSpPost			= 14;		//ヘッダ仕入先郵便

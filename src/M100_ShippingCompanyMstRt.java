@@ -27,9 +27,9 @@ public class M100_ShippingCompanyMstRt{
 			AllSearch);
 			
 	String GetShippingCompanyCd		=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColShippingCompanyCd];		//運送会社CD
-	String GetShippingCompanyName01	=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名1
-	String GetShippingCompanyName02	=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社名2
-	String GetShippingCompanyName03	=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社名3
+	String GetShippingCompanyName01	=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社表記名
+	String GetShippingCompanyName02	=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColShippingCompanyName02];	//運送会社正式名
+	String GetShippingCompanyName03	=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColShippingCompanyName03];	//運送会社略名
 	String GetPost					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColPost];					//運送会社郵便
 	String GetAdd01					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColAdd01];					//運送会社住所1
 	String GetAdd02					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColAdd02];					//運送会社住所2
@@ -52,9 +52,9 @@ public class M100_ShippingCompanyMstRt{
 	*/
 	//戻り値カラム
 	static final  int ColShippingCompanyCd		= (int) 0;	//運送会社CD
-	static final  int ColShippingCompanyName01	= (int) 1;	//運送会社名1
-	static final  int ColShippingCompanyName02	= (int) 2;	//運送会社名2
-	static final  int ColShippingCompanyName03	= (int) 3;	//運送会社名3
+	static final  int ColShippingCompanyName01	= (int) 1;	//運送会社表記名
+	static final  int ColShippingCompanyName02	= (int) 2;	//運送会社正式名
+	static final  int ColShippingCompanyName03	= (int) 3;	//運送会社略名
 	static final  int ColPost						= (int) 4;	//運送会社郵便
 	static final  int ColAdd01						= (int) 5;	//運送会社住所1
 	static final  int ColAdd02						= (int) 6;	//運送会社住所2
@@ -77,9 +77,9 @@ public class M100_ShippingCompanyMstRt{
 	public static Object[][] RtSettingShippingCompanyMstRt(){
 		Object[][] RtSettingShippingCompanyMstRt = {
 				 {"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"}
-				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社名1"}
-				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社名2"}
-				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社名3"}
+				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"}
+				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"}
+				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"}
 				,{"Post"					,ColPost						,"String"	,"運送会社郵便"}
 				,{"Add01"					,ColAdd01						,"String"	,"運送会社住所1"}
 				,{"Add02"					,ColAdd02						,"String"	,"運送会社住所2"}
@@ -130,9 +130,9 @@ public class M100_ShippingCompanyMstRt{
 		
 		String sql = "select"
 				+"(KM0070_SHIPPINGCOMPANYMST.ShippingCompanyCd) as ShippingCompanyCd,\n"				//運送会社CD
-				+"(KM0070_SHIPPINGCOMPANYMST.ShippingCompanyName01) as ShippingCompanyName01,\n"		//運送会社名1
-				+"(KM0070_SHIPPINGCOMPANYMST.ShippingCompanyName02) as ShippingCompanyName02,\n"		//運送会社名2
-				+"(KM0070_SHIPPINGCOMPANYMST.ShippingCompanyName03) as ShippingCompanyName03,\n"		//運送会社名3
+				+"(KM0070_SHIPPINGCOMPANYMST.ShippingCompanyName01) as ShippingCompanyName01,\n"		//運送会社表記名
+				+"(KM0070_SHIPPINGCOMPANYMST.ShippingCompanyName02) as ShippingCompanyName02,\n"		//運送会社正式名
+				+"(KM0070_SHIPPINGCOMPANYMST.ShippingCompanyName03) as ShippingCompanyName03,\n"		//運送会社略名
 				+"(KM0070_SHIPPINGCOMPANYMST.Post) as Post,\n"					//運送会社郵便
 				+"(KM0070_SHIPPINGCOMPANYMST.Add01) as Add01,\n"				//運送会社住所1
 				+"(KM0070_SHIPPINGCOMPANYMST.Add02) as Add02,\n"				//運送会社住所2
@@ -310,9 +310,9 @@ public class M100_ShippingCompanyMstRt{
 				rset01.beforeFirst();
 				while (rset01.next()) {
 					if(null==rset01.getString("ShippingCompanyCd")){		rt[counter][ColShippingCompanyCd]		="";}else{rt[counter][ColShippingCompanyCd]		=rset01.getString("ShippingCompanyCd");}		//運送会社CD
-					if(null==rset01.getString("ShippingCompanyName01")){	rt[counter][ColShippingCompanyName01]	="";}else{rt[counter][ColShippingCompanyName01]	=rset01.getString("ShippingCompanyName01");}	//運送会社名1
-					if(null==rset01.getString("ShippingCompanyName02")){	rt[counter][ColShippingCompanyName02]	="";}else{rt[counter][ColShippingCompanyName02]	=rset01.getString("ShippingCompanyName02");}	//運送会社名2
-					if(null==rset01.getString("ShippingCompanyName03")){	rt[counter][ColShippingCompanyName03]	="";}else{rt[counter][ColShippingCompanyName03]	=rset01.getString("ShippingCompanyName03");}	//運送会社名3
+					if(null==rset01.getString("ShippingCompanyName01")){	rt[counter][ColShippingCompanyName01]	="";}else{rt[counter][ColShippingCompanyName01]	=rset01.getString("ShippingCompanyName01");}	//運送会社表記名
+					if(null==rset01.getString("ShippingCompanyName02")){	rt[counter][ColShippingCompanyName02]	="";}else{rt[counter][ColShippingCompanyName02]	=rset01.getString("ShippingCompanyName02");}	//運送会社正式名
+					if(null==rset01.getString("ShippingCompanyName03")){	rt[counter][ColShippingCompanyName03]	="";}else{rt[counter][ColShippingCompanyName03]	=rset01.getString("ShippingCompanyName03");}	//運送会社略名
 					if(null==rset01.getString("Post")){						rt[counter][ColPost]						="";}else{rt[counter][ColPost]						=rset01.getString("Post");}						//運送会社郵便
 					if(null==rset01.getString("Add01")){					rt[counter][ColAdd01]						="";}else{rt[counter][ColAdd01]					=rset01.getString("Add01");}					//運送会社住所1
 					if(null==rset01.getString("Add02")){					rt[counter][ColAdd02]						="";}else{rt[counter][ColAdd02]					=rset01.getString("Add02");}					//運送会社住所2
