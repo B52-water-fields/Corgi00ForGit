@@ -139,7 +139,7 @@ public class WMTools100_ItemComversion{
 					String GetCLItemCd 		= (String)ItemMstRt[i01][M100_ItemMstRt.ColCLItemCd];
 					String GetItemCd		= (String)ItemMstRt[i01][M100_ItemMstRt.ColItemCd];			//商品コード
 					String GetUnitName		= (String)ItemMstRt[i01][M100_ItemMstRt.ColUnitName];			//商品単位
-					String GetItemName01	= (String)ItemMstRt[i01][M100_ItemMstRt.ColItemName01];		//商品名1
+					String GetItemName01	= (String)ItemMstRt[i01][M100_ItemMstRt.ColItemName01];		//商品表記名
 					if(CheckClItemCd.equals(GetCLItemCd)){
 						rt[i][ColItemCd]						= GetItemCd;		//変換後商品CD
 						rt[i][ColPackingType]					= 0;				//荷姿タイプ
@@ -184,7 +184,7 @@ public class WMTools100_ItemComversion{
 					if(CheckClItemCd.equals(GetClItemCd)){
 						String GetItemCd		= (String)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColItemCd];		//変換先商品コード
 						int GetPackingType		= (int)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColPackingType];	//荷姿タイプ
-						String GetItemName01	= (String)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColItemName01];	//商品名1
+						String GetItemName01	= (String)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColItemName01];	//商品表記名
 						String GetCtName		= (String)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColCtName];		//カートン商品名称
 						String GetCsName		= (String)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColCsName];		//ケース商品名称
 						String GetPlName		= (String)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColPlName];		//パレット商品名称

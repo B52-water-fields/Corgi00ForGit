@@ -291,9 +291,9 @@ public class WTList100_StockList{
 		int GetShipPlanQty		= (int)TgtData[T100_StockRt.ColShipPlanQty];			//引当済総数
 		int GetPossibleQty		= (int)TgtData[T100_StockRt.ColPossibleQty];			//出荷可能総数
 		String GetItemName		= (String)TgtData[T100_StockRt.ColItemName];			//商品名
-		String GetItemName01	= (String)TgtData[T100_StockRt.ColItemName01];		//商品名1
-		String GetItemName02	= (String)TgtData[T100_StockRt.ColItemName02];		//商品名2
-		String GetItemName03	= (String)TgtData[T100_StockRt.ColItemName03];		//商品名3
+		String GetItemName01	= (String)TgtData[T100_StockRt.ColItemName01];		//商品表記名
+		String GetItemName02	= (String)TgtData[T100_StockRt.ColItemName02];		//商品正式名
+		String GetItemName03	= (String)TgtData[T100_StockRt.ColItemName03];		//商品略名
 		String GetClItemCd		= (String)TgtData[T100_StockRt.ColClItemCd];			//荷主商品コード
 		String GetJanCd			= (String)TgtData[T100_StockRt.ColJanCd];				//ソースマーク_BCD（バラ）
 		String GetItemMdNo		= (String)TgtData[T100_StockRt.ColItemMdNo];			//商品型番

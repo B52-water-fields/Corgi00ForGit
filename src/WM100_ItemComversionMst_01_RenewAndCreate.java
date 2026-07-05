@@ -56,12 +56,12 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		final JComboBox   TB_UnitType	= B100_FrameParts.JComboBoxSet(	130,175,130,20,B100_DefaultVariable.UnitTypeList[0],11);	//荷姿
 		final JTextField  TB_ItemCd		= B100_FrameParts.JTextFieldSet(	130,200,100,20,""	,11,0);									//商品コード
 		
-		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,225,100,20,"商品名1:"				,10,1);
-		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,250,100,20,"商品名2:"				,10,1);
-		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,275,100,20,"商品名3:"				,10,1);
-		final JTextField  TB_ItemName01	= B100_FrameParts.JTextFieldSet( 110,225,200,20,"",11,0);			//商品名1
-		final JTextField  TB_ItemName02	= B100_FrameParts.JTextFieldSet( 110,250,200,20,"",11,0);			//商品名2
-		final JTextField  TB_ItemName03	= B100_FrameParts.JTextFieldSet( 110,275,200,20,"",11,0);			//商品名3
+		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,225,100,20,"商品表記名:"				,10,1);
+		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,250,100,20,"商品正式名:"				,10,1);
+		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,275,100,20,"商品略名:"				,10,1);
+		final JTextField  TB_ItemName01	= B100_FrameParts.JTextFieldSet( 110,225,200,20,"",11,0);			//商品表記名
+		final JTextField  TB_ItemName02	= B100_FrameParts.JTextFieldSet( 110,250,200,20,"",11,0);			//商品正式名
+		final JTextField  TB_ItemName03	= B100_FrameParts.JTextFieldSet( 110,275,200,20,"",11,0);			//商品略名
 		JLabel LB_CtQty					= B100_FrameParts.JLabelSet(  10,300,100,20,"カートン入数:"			,10,1);
 		JLabel LB_CsQty					= B100_FrameParts.JLabelSet(  10,325,100,20,"ケース入数:"				,10,1);
 		JLabel LB_PlQty					= B100_FrameParts.JLabelSet(  10,350,100,20,"パレット入数:"			,10,1);

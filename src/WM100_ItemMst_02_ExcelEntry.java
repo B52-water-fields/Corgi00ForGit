@@ -97,9 +97,9 @@ public class WM100_ItemMst_02_ExcelEntry{
 					 {"荷主グループコード"		,1, 0}
 					,{"商品コード"				,1, 1}
 					,{"荷主商品コード"			,1, 2}
-					,{"商品名1"					,1, 3}
-					,{"商品名2"					,1, 4}
-					,{"商品名3"					,1, 5}
+					,{"商品表記名"					,1, 3}
+					,{"商品正式名"					,1, 4}
+					,{"商品略名"					,1, 5}
 					,{"運送タイプコード01"		,1, 6}
 					,{"運送タイプコード02"		,1, 7}
 					,{"運送タイプコード03"		,1, 8}
@@ -314,9 +314,9 @@ public class WM100_ItemMst_02_ExcelEntry{
 		int ColClGpCd			=  1;		//荷主グループコード
 		int ColItemCd			=  2;		//商品コード
 		int ColCLItemCd			=  3;		//荷主商品コード
-		int ColItemName01		=  4;		//商品名1
-		int ColItemName02		=  5;		//商品名2
-		int ColItemName03		=  6;		//商品名3
+		int ColItemName01		=  4;		//商品表記名
+		int ColItemName02		=  5;		//商品正式名
+		int ColItemName03		=  6;		//商品略名
 		int ColDeliveryTypeCd01	=  7;		//運送タイプコード01
 		int ColDeliveryTypeCd02	=  8;		//運送タイプコード02
 		int ColDeliveryTypeCd03	=  9;		//運送タイプコード03
@@ -376,13 +376,13 @@ public class WM100_ItemMst_02_ExcelEntry{
 				case "荷主商品コード":
 					ColCLItemCd = i;
 					break;
-				case "商品名1":
+				case "商品表記名":
 					ColItemName01 = i;
 					break;
-				case "商品名2":
+				case "商品正式名":
 					ColItemName02 = i;
 					break;
-				case "商品名3":
+				case "商品略名":
 					ColItemName03 = i;
 					break;
 				case "運送タイプコード01":
@@ -544,9 +544,9 @@ public class WM100_ItemMst_02_ExcelEntry{
 		String[] GetClGpCd 				= new String[EntryCount];		//荷主グループコード
 		String[] GetItemCd 				= new String[EntryCount];		//商品コード
 		String[] GetCLItemCd 			= new String[EntryCount];		//荷主商品コード
-		String[] GetItemName01 			= new String[EntryCount];		//商品名1
-		String[] GetItemName02 			= new String[EntryCount];		//商品名2
-		String[] GetItemName03 			= new String[EntryCount];		//商品名3
+		String[] GetItemName01 			= new String[EntryCount];		//商品表記名
+		String[] GetItemName02 			= new String[EntryCount];		//商品正式名
+		String[] GetItemName03 			= new String[EntryCount];		//商品略名
 		String[] GetDeliveryTypeCd01 	= new String[EntryCount];		//運送タイプコード01
 		String[] GetDeliveryTypeCd02 	= new String[EntryCount];		//運送タイプコード02
 		String[] GetDeliveryTypeCd03 	= new String[EntryCount];		//運送タイプコード03
@@ -610,9 +610,9 @@ public class WM100_ItemMst_02_ExcelEntry{
 				GetClGpCd[EntryCount] 				= ""+CheckOb[i01][ColClGpCd];			//荷主グループコード
 				GetItemCd[EntryCount] 				= ""+CheckOb[i01][ColItemCd];			//商品コード
 				GetCLItemCd[EntryCount] 			= ""+CheckOb[i01][ColCLItemCd];			//荷主商品コード
-				GetItemName01[EntryCount] 			= ""+CheckOb[i01][ColItemName01];		//商品名1
-				GetItemName02[EntryCount] 			= ""+CheckOb[i01][ColItemName02];		//商品名2
-				GetItemName03[EntryCount] 			= ""+CheckOb[i01][ColItemName03];		//商品名3
+				GetItemName01[EntryCount] 			= ""+CheckOb[i01][ColItemName01];		//商品表記名
+				GetItemName02[EntryCount] 			= ""+CheckOb[i01][ColItemName02];		//商品正式名
+				GetItemName03[EntryCount] 			= ""+CheckOb[i01][ColItemName03];		//商品略名
 				GetDeliveryTypeCd01[EntryCount] 	= ""+CheckOb[i01][ColDeliveryTypeCd01];	//運送タイプコード01
 				GetDeliveryTypeCd02[EntryCount] 	= ""+CheckOb[i01][ColDeliveryTypeCd02];	//運送タイプコード02
 				GetDeliveryTypeCd03[EntryCount] 	= ""+CheckOb[i01][ColDeliveryTypeCd03];	//運送タイプコード03
@@ -872,9 +872,9 @@ public class WM100_ItemMst_02_ExcelEntry{
 				  {"ClGpCd"				,"1","1"}	//荷主グループコード
 				 ,{"ItemCd"				,"1","1"}	//商品コード
 				 ,{"CLItemCd"			,"1","1"}	//荷主商品コード
-				 ,{"ItemName01"			,"1","1"}	//商品名1
-				 ,{"ItemName02"			,"1","1"}	//商品名2
-				 ,{"ItemName03"			,"1","1"}	//商品名3
+				 ,{"ItemName01"			,"1","1"}	//商品表記名
+				 ,{"ItemName02"			,"1","1"}	//商品正式名
+				 ,{"ItemName03"			,"1","1"}	//商品略名
 				 ,{"ItemWeight"			,"1","1"}	//商品重量
 				 ,{"ItemSize"			,"1","1"}	//商品サイズ
 				 ,{"DeliveryTypeCd"		,"1","1"}	//運送タイプコード01
@@ -909,9 +909,9 @@ public class WM100_ItemMst_02_ExcelEntry{
 			entry_data[i01][ 0] = GetClGpCd[i01] ;			//荷主グループコード
 			entry_data[i01][ 1] = GetItemCd[i01];			//商品コード
 			entry_data[i01][ 2] = GetCLItemCd[i01];			//荷主商品コード
-			entry_data[i01][ 3] = GetItemName01[i01];		//商品名1
-			entry_data[i01][ 4] = GetItemName02[i01];		//商品名2
-			entry_data[i01][ 5] = GetItemName03[i01];		//商品名3
+			entry_data[i01][ 3] = GetItemName01[i01];		//商品表記名
+			entry_data[i01][ 4] = GetItemName02[i01];		//商品正式名
+			entry_data[i01][ 5] = GetItemName03[i01];		//商品略名
 			entry_data[i01][ 6] = GetItemWeight[i01];		//商品重量
 			entry_data[i01][ 7] = GetItemSize[i01];			//商品サイズ
 			entry_data[i01][ 8] = GetDeliveryTypeCd01[i01];	//運送タイプコード01
@@ -1047,9 +1047,9 @@ public class WM100_ItemMst_02_ExcelEntry{
 		int ColClGpCd			=  1;		//荷主グループコード
 		int ColItemCd			=  2;		//商品コード
 		int ColCLItemCd			=  3;		//荷主商品コード
-		int ColItemName01		=  4;		//商品名1
-		int ColItemName02		=  5;		//商品名2
-		int ColItemName03		=  6;		//商品名3
+		int ColItemName01		=  4;		//商品表記名
+		int ColItemName02		=  5;		//商品正式名
+		int ColItemName03		=  6;		//商品略名
 		int ColDeliveryTypeCd01	=  7;		//運送タイプコード01
 		int ColDeliveryTypeCd02	=  8;		//運送タイプコード02
 		int ColDeliveryTypeCd03	=  9;		//運送タイプコード03
@@ -1109,13 +1109,13 @@ public class WM100_ItemMst_02_ExcelEntry{
 				case "荷主商品コード":
 					ColCLItemCd = i;
 					break;
-				case "商品名1":
+				case "商品表記名":
 					ColItemName01 = i;
 					break;
-				case "商品名2":
+				case "商品正式名":
 					ColItemName02 = i;
 					break;
-				case "商品名3":
+				case "商品略名":
 					ColItemName03 = i;
 					break;
 				case "運送タイプコード01":

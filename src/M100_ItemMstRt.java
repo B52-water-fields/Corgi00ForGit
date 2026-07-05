@@ -55,9 +55,9 @@ public class M100_ItemMstRt{
 	String GetCLGpName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColCLGpName01];			//荷主グループ名1
 	String GetItemCd				= (String)ItemMstRt[i][M100_ItemMstRt.ColItemCd];				//商品コード
 	String GetCLItemCd				= (String)ItemMstRt[i][M100_ItemMstRt.ColCLItemCd];				//荷主商品コード
-	String GetItemName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColItemName01];			//商品名1
-	String GetItemName02			= (String)ItemMstRt[i][M100_ItemMstRt.ColItemName02];			//商品名2
-	String GetItemName03			= (String)ItemMstRt[i][M100_ItemMstRt.ColItemName03];			//商品名3
+	String GetItemName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColItemName01];			//商品表記名
+	String GetItemName02			= (String)ItemMstRt[i][M100_ItemMstRt.ColItemName02];			//商品正式名
+	String GetItemName03			= (String)ItemMstRt[i][M100_ItemMstRt.ColItemName03];			//商品略名
 	String GetDeliveryTypeCd01		= (String)ItemMstRt[i][M100_ItemMstRt.ColDeliveryTypeCd01];		//運送タイプコード01
 	String GetDeliveryTypeName01	= (String)ItemMstRt[i][M100_ItemMstRt.ColDeliveryTypeName01];	//運送タイプ名01
 	String GetDeliveryTypeCd02		= (String)ItemMstRt[i][M100_ItemMstRt.ColDeliveryTypeCd02];		//運送タイプコード02
@@ -120,9 +120,9 @@ public class M100_ItemMstRt{
 	//戻り値カラム
 	static final  int ColItemCd				= (int) 0;	//商品コード
 	static final  int ColCLItemCd				= (int) 1;	//荷主商品コード
-	static final  int ColItemName01			= (int) 2;	//商品名1
-	static final  int ColItemName02			= (int) 3;	//商品名2
-	static final  int ColItemName03			= (int) 4;	//商品名3
+	static final  int ColItemName01			= (int) 2;	//商品表記名
+	static final  int ColItemName02			= (int) 3;	//商品正式名
+	static final  int ColItemName03			= (int) 4;	//商品略名
 	static final  int ColCtQty					= (int) 5;	//カートン入数
 	static final  int ColCsQty					= (int) 6;	//ケース入数
 	static final  int ColPlQty					= (int) 7;	//パレット入数
@@ -189,9 +189,9 @@ public class M100_ItemMstRt{
 				,{"CLGpName01"				,ColCLGpName01			,"String"	,"荷主グループ名1"}
 				,{"ItemCd"					,ColItemCd					,"String"	,"商品コード"}
 				,{"CLItemCd"				,ColCLItemCd				,"String"	,"荷主商品コード"}
-				,{"ItemName01"				,ColItemName01			,"String"	,"商品名1"}
-				,{"ItemName02"				,ColItemName02			,"String"	,"商品名2"}
-				,{"ItemName03"				,ColItemName03			,"String"	,"商品名3"}
+				,{"ItemName01"				,ColItemName01			,"String"	,"商品表記名"}
+				,{"ItemName02"				,ColItemName02			,"String"	,"商品正式名"}
+				,{"ItemName03"				,ColItemName03			,"String"	,"商品略名"}
 				,{"DeliveryTypeCd01"		,ColDeliveryTypeCd01		,"String"	,"運送タイプコード01"}
 				,{"DeliveryTypeName01"		,ColDeliveryTypeName01	,"String"	,"運送タイプ名01"}
 				,{"DeliveryTypeCd02"		,ColDeliveryTypeCd02		,"String"	,"運送タイプコード02"}
@@ -309,9 +309,9 @@ public class M100_ItemMstRt{
 				+"(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"		//荷主グループ名1
 				+"(KM0060_ITEMMST.ItemCd) as ItemCd,\n"						//商品コード
 				+"(KM0060_ITEMMST.CLItemCd) as CLItemCd,\n"					//荷主商品コード
-				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"				//商品名1
-				+"(KM0060_ITEMMST.ItemName02) as ItemName02,\n"				//商品名2
-				+"(KM0060_ITEMMST.ItemName03) as ItemName03,\n"				//商品名3
+				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"				//商品表記名
+				+"(KM0060_ITEMMST.ItemName02) as ItemName02,\n"				//商品正式名
+				+"(KM0060_ITEMMST.ItemName03) as ItemName03,\n"				//商品略名
 				+"(KM0060_ITEMMST.DeliveryTypeCd) as DeliveryTypeCd01,\n"	//運送タイプコード01
 				+"(DT01.DeliveryTypeName) as DeliveryTypeName01,\n"			//運送タイプ名01
 				+"(KM0060_ITEMMST.DeliveryTypeCd02) as DeliveryTypeCd02,\n"	//運送タイプコード02
@@ -758,9 +758,9 @@ public class M100_ItemMstRt{
 					if(null==rset01.getString("CLGpName01")){			rt[counter][ColCLGpName01]			="";}else{rt[counter][ColCLGpName01]			=rset01.getString("CLGpName01");}			//荷主グループ名1
 					if(null==rset01.getString("ItemCd")){				rt[counter][ColItemCd]					="";}else{rt[counter][ColItemCd]				=rset01.getString("ItemCd");}				//商品コード
 					if(null==rset01.getString("CLItemCd")){				rt[counter][ColCLItemCd]				="";}else{rt[counter][ColCLItemCd]				=rset01.getString("CLItemCd");}				//荷主商品コード
-					if(null==rset01.getString("ItemName01")){			rt[counter][ColItemName01]			="";}else{rt[counter][ColItemName01]			=rset01.getString("ItemName01");}			//商品名1
-					if(null==rset01.getString("ItemName02")){			rt[counter][ColItemName02]			="";}else{rt[counter][ColItemName02]			=rset01.getString("ItemName02");}			//商品名2
-					if(null==rset01.getString("ItemName03")){			rt[counter][ColItemName03]			="";}else{rt[counter][ColItemName03]			=rset01.getString("ItemName03");}			//商品名3
+					if(null==rset01.getString("ItemName01")){			rt[counter][ColItemName01]			="";}else{rt[counter][ColItemName01]			=rset01.getString("ItemName01");}			//商品表記名
+					if(null==rset01.getString("ItemName02")){			rt[counter][ColItemName02]			="";}else{rt[counter][ColItemName02]			=rset01.getString("ItemName02");}			//商品正式名
+					if(null==rset01.getString("ItemName03")){			rt[counter][ColItemName03]			="";}else{rt[counter][ColItemName03]			=rset01.getString("ItemName03");}			//商品略名
 					if(null==rset01.getString("DeliveryTypeCd01")){		rt[counter][ColDeliveryTypeCd01]		="";}else{rt[counter][ColDeliveryTypeCd01]	=rset01.getString("DeliveryTypeCd01");}		//運送タイプコード01
 					if(null==rset01.getString("DeliveryTypeName01")){	rt[counter][ColDeliveryTypeName01]	="";}else{rt[counter][ColDeliveryTypeName01]	=rset01.getString("DeliveryTypeName01");}	//運送タイプ名01
 					if(null==rset01.getString("DeliveryTypeCd02")){		rt[counter][ColDeliveryTypeCd02]		="";}else{rt[counter][ColDeliveryTypeCd02]	=rset01.getString("DeliveryTypeCd02");}		//運送タイプコード02

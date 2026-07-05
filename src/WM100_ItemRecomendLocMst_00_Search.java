@@ -47,7 +47,7 @@ public class WM100_ItemRecomendLocMst_00_Search{
 		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"			,11,1);
 		JLabel LB_SearchClGpCD		= B100_FrameParts.JLabelSet(	  0, 75,130,20,"荷主グループCD:"		,11,1);
 		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	  0,100,130,20,"商品コード:"			,11,1);
-		JLabel LB_SearchItemName01	= B100_FrameParts.JLabelSet(	  0,125,130,20,"商品名1:"				,11,1);
+		JLabel LB_SearchItemName01	= B100_FrameParts.JLabelSet(	  0,125,130,20,"商品表記名:"				,11,1);
 		JLabel LB_SearchRecomendLoc	= B100_FrameParts.JLabelSet(	  0,150,130,20,"推奨ロケ:"				,11,1);
 		JLabel LB_SearchLocName		= B100_FrameParts.JLabelSet(	  0,175,130,20,"ロケーション名:"		,11,1);
 		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(	  0,200,130,20,"ロケタイプ:"			,11,1);
@@ -56,7 +56,7 @@ public class WM100_ItemRecomendLocMst_00_Search{
 		final JComboBox   TB_SearchClCd			= B100_FrameParts.JComboBoxSet(	130, 50,250,20,B100_DefaultVariable.SearchClList[0],11);		//荷主CD
 		final JComboBox   TB_SearchClGpCD		= B100_FrameParts.JComboBoxSet(	130, 75,250,20,B100_DefaultVariable.SearchClGpList[0],11);	//荷主グループCD
 		final JTextField  TB_SearchItemCd		= B100_FrameParts.JTextFieldSet( 130,100,100,20,"",11,0);	//商品コード
-		final JTextField  TB_SearchItemName01	= B100_FrameParts.JTextFieldSet( 130,125,100,20,"",11,0);	//商品名1
+		final JTextField  TB_SearchItemName01	= B100_FrameParts.JTextFieldSet( 130,125,100,20,"",11,0);	//商品表記名
 		final JTextField  TB_SearchRecomendLoc	= B100_FrameParts.JTextFieldSet( 130,150,100,20,"",11,0);	//推奨ロケ
 		final JTextField  TB_SearchLocName		= B100_FrameParts.JTextFieldSet( 130,175,100,20,"",11,0);	//ロケーション名
 		final JComboBox   TB_SearchType			= B100_FrameParts.JComboBoxSet(	130,200,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
@@ -199,7 +199,7 @@ public class WM100_ItemRecomendLocMst_00_Search{
 					String GetSearchClCd		= B100_DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];		//荷主CD
 					String GetSearchClGpCD		= B100_DefaultVariable.SearchClGpList[1][TB_SearchClGpCD.getSelectedIndex()];	//荷主グループCD
 					String GetSearchItemCd		= TB_SearchItemCd.getText();			//商品CD
-					String GetSearchItemName01	= TB_SearchItemName01.getText();		//商品名1
+					String GetSearchItemName01	= TB_SearchItemName01.getText();		//商品表記名
 					String GetSearchRecomendLoc	= TB_SearchRecomendLoc.getText();		//推奨ロケ
 					String GetSearchLocName		= TB_SearchLocName.getText();			//ロケーション名
 					String GetSearchType		= B100_DefaultVariable.SearchLocType[1][TB_SearchType.getSelectedIndex()];		//ロケタイプ
@@ -208,7 +208,7 @@ public class WM100_ItemRecomendLocMst_00_Search{
 					if(null==GetSearchClCd			){GetSearchClCd			= "";}		//荷主CD
 					if(null==GetSearchClGpCD		){GetSearchClGpCD		= "";}		//荷主グループCD
 					if(null==GetSearchItemCd		){GetSearchItemCd		= "";}		//商品CD
-					if(null==GetSearchItemName01	){GetSearchItemName01	= "";}		//商品名1
+					if(null==GetSearchItemName01	){GetSearchItemName01	= "";}		//商品表記名
 					if(null==GetSearchRecomendLoc	){GetSearchRecomendLoc	= "";}		//推奨ロケ
 					if(null==GetSearchLocName		){GetSearchLocName		= "";}		//ロケーション名
 					if(null==GetSearchType			){GetSearchType			= "";}		//ロケタイプ
@@ -217,7 +217,7 @@ public class WM100_ItemRecomendLocMst_00_Search{
 					GetSearchClCd			= B100_TextControl.Trim(GetSearchClCd);			//荷主CD
 					GetSearchClGpCD			= B100_TextControl.Trim(GetSearchClGpCD);			//荷主グループCD
 					GetSearchItemCd			= B100_TextControl.Trim(GetSearchItemCd);			//商品CD
-					GetSearchItemName01		= B100_TextControl.Trim(GetSearchItemName01);		//商品名1
+					GetSearchItemName01		= B100_TextControl.Trim(GetSearchItemName01);		//商品表記名
 					GetSearchRecomendLoc	= B100_TextControl.Trim(GetSearchRecomendLoc);	//推奨ロケ
 					GetSearchLocName		= B100_TextControl.Trim(GetSearchLocName);		//ロケーション名
 					GetSearchType			= B100_TextControl.Trim(GetSearchType);			//ロケタイプ
@@ -229,7 +229,7 @@ public class WM100_ItemRecomendLocMst_00_Search{
 					ArrayList<String> SearchClWh		= new ArrayList<String>();	//担当倉庫コード
 					ArrayList<String> SearchClGpCD		= new ArrayList<String>();	//荷主グループCD
 					ArrayList<String> SearchItemCd		= new ArrayList<String>();	//商品コード
-					ArrayList<String> SearchItemName01	= new ArrayList<String>();	//商品名1
+					ArrayList<String> SearchItemName01	= new ArrayList<String>();	//商品表記名
 					ArrayList<String> SearchRecomendLoc	= new ArrayList<String>();	//推奨ロケ
 					ArrayList<String> SearchLocName		= new ArrayList<String>();	//ロケーション名
 					ArrayList<Integer> SearchType		= new ArrayList<Integer>();	//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
@@ -240,7 +240,7 @@ public class WM100_ItemRecomendLocMst_00_Search{
 					if(!"".equals(GetSearchClCd			)){SearchClCd.add(GetSearchClCd);}						//荷主CD
 					if(!"".equals(GetSearchClGpCD		)){SearchClGpCD.add(GetSearchClGpCD);}					//荷主グループCD
 					if(!"".equals(GetSearchItemCd		)){SearchItemCd.add(GetSearchItemCd);}					//商品CD
-					if(!"".equals(GetSearchItemName01	)){SearchItemName01.add(GetSearchItemName01);}			//商品名1
+					if(!"".equals(GetSearchItemName01	)){SearchItemName01.add(GetSearchItemName01);}			//商品表記名
 					if(!"".equals(GetSearchRecomendLoc	)){SearchRecomendLoc.add(GetSearchRecomendLoc);}		//推奨ロケ
 					if(!"".equals(GetSearchLocName		)){SearchLocName.add(GetSearchLocName);}				//ロケーション名
 					if(!"".equals(GetSearchType			)){SearchType.add(Integer.parseInt(GetSearchType));}	//ロケタイプ
@@ -250,7 +250,7 @@ public class WM100_ItemRecomendLocMst_00_Search{
 							SearchClWh,			//担当倉庫コード
 							SearchClGpCD,		//荷主グループCD
 							SearchItemCd,		//商品コード
-							SearchItemName01,	//商品名1
+							SearchItemName01,	//商品表記名
 							SearchRecomendLoc,	//推奨ロケ
 							SearchLocName,		//ロケーション名
 							SearchType,			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止

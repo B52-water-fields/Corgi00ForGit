@@ -2894,9 +2894,9 @@ public class WT100_Stock_10_Adjust{
 		StockData[T100_StockRt.ColShipPlanQty]	= 0;					//引当済総数
 		StockData[T100_StockRt.ColPossibleQty]	= 0;					//出荷可能総数
 		StockData[T100_StockRt.ColItemName]		= "";					//商品名
-		StockData[T100_StockRt.ColItemName01]		= "";					//商品名1
-		StockData[T100_StockRt.ColItemName02]		= "";					//商品名2
-		StockData[T100_StockRt.ColItemName03]		= "";					//商品名3
+		StockData[T100_StockRt.ColItemName01]		= "";					//商品表記名
+		StockData[T100_StockRt.ColItemName02]		= "";					//商品正式名
+		StockData[T100_StockRt.ColItemName03]		= "";					//商品略名
 		StockData[T100_StockRt.ColClItemCd]		= "";					//荷主商品コード
 		StockData[T100_StockRt.ColJanCd]			= "";					//ソースマーク_BCD（バラ）
 		StockData[T100_StockRt.ColItemMdNo]		= "";					//商品型番
@@ -2972,9 +2972,9 @@ public class WT100_Stock_10_Adjust{
 			if(1==ItemMstRt.length) {
 				StockData[T100_StockRt.ColItemCd]			= (String)ItemMstRt[0][M100_ItemMstRt.ColItemCd];			//商品コード
 				StockData[T100_StockRt.ColItemName]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName01];		//商品名
-				StockData[T100_StockRt.ColItemName01]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName01];		//商品名1
-				StockData[T100_StockRt.ColItemName02]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName02];		//商品名2
-				StockData[T100_StockRt.ColItemName03]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName03];		//商品名3
+				StockData[T100_StockRt.ColItemName01]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName01];		//商品表記名
+				StockData[T100_StockRt.ColItemName02]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName02];		//商品正式名
+				StockData[T100_StockRt.ColItemName03]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName03];		//商品略名
 				StockData[T100_StockRt.ColClItemCd]		= (String)ItemMstRt[0][M100_ItemMstRt.ColCLItemCd];		//荷主商品コード
 				StockData[T100_StockRt.ColJanCd]			= (String)ItemMstRt[0][M100_ItemMstRt.ColJanCd];			//ソースマーク_BCD（バラ）
 				StockData[T100_StockRt.ColItemMdNo]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemMDNo];		//商品型番

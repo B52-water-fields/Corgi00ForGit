@@ -39,15 +39,15 @@ public class WM100_ItemMst_01_RenewAndCreate{
 		JLabel LB_ClGpCd				= B100_FrameParts.JLabelSet(  10, 30,100,20,"荷主グループコード:"		,10,1);
 		JLabel LB_ItemCd				= B100_FrameParts.JLabelSet(  10, 55,100,20,"商品コード:"				,10,1);
 		JLabel LB_CLItemCd				= B100_FrameParts.JLabelSet(  10, 80,100,20,"荷主商品コード:"			,10,1);
-		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,105,100,20,"商品名1:"				,10,1);
-		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,130,100,20,"商品名2:"				,10,1);
-		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,155,100,20,"商品名3:"				,10,1);
+		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,105,100,20,"商品表記名:"				,10,1);
+		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,130,100,20,"商品正式名:"				,10,1);
+		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,155,100,20,"商品略名:"				,10,1);
 		final JComboBox   TB_ClGpCd		= B100_FrameParts.JComboBoxSet(  110, 30,200,20,B100_DefaultVariable.ClGpList[0],11);	//荷主グループコード
 		final JTextField  TB_ItemCd		= B100_FrameParts.JTextFieldSet( 110, 55,100,20,"",11,0);			//商品コード
 		final JTextField  TB_CLItemCd	= B100_FrameParts.JTextFieldSet( 110, 80,100,20,"",11,0);			//荷主商品コード
-		final JTextField  TB_ItemName01	= B100_FrameParts.JTextFieldSet( 110,105,200,20,"",11,0);			//商品名1
-		final JTextField  TB_ItemName02	= B100_FrameParts.JTextFieldSet( 110,130,200,20,"",11,0);			//商品名2
-		final JTextField  TB_ItemName03	= B100_FrameParts.JTextFieldSet( 110,155,200,20,"",11,0);			//商品名3
+		final JTextField  TB_ItemName01	= B100_FrameParts.JTextFieldSet( 110,105,200,20,"",11,0);			//商品表記名
+		final JTextField  TB_ItemName02	= B100_FrameParts.JTextFieldSet( 110,130,200,20,"",11,0);			//商品正式名
+		final JTextField  TB_ItemName03	= B100_FrameParts.JTextFieldSet( 110,155,200,20,"",11,0);			//商品略名
 		
 		
 		JLabel LB_DeliveryTypeCd01		= B100_FrameParts.JLabelSet( 310, 30,100,20,"運送タイプコード01:"		,10,1);
@@ -259,9 +259,9 @@ public class WM100_ItemMst_01_RenewAndCreate{
 			
 			if(0<ItemMstRt.length) {
 				TB_CLItemCd.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCLItemCd]);				//荷主商品コード
-				TB_ItemName01.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName01]);		//商品名1
-				TB_ItemName02.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName02]);		//商品名2
-				TB_ItemName03.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName03]);		//商品名3
+				TB_ItemName01.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName01]);		//商品表記名
+				TB_ItemName02.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName02]);		//商品正式名
+				TB_ItemName03.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName03]);		//商品略名
 				for(int i=0;i<B100_DefaultVariable.DeliveryType01[1].length;i++) {
 					if(B100_DefaultVariable.DeliveryType01[1][i].equals(""+ItemMstRt[0][M100_ItemMstRt.ColDeliveryTypeCd01])) {
 						TB_DeliveryTypeCd01.setSelectedIndex(i);;				//運送タイプコード01
@@ -887,9 +887,9 @@ public class WM100_ItemMst_01_RenewAndCreate{
 				String GetClGpCd 			= B100_DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];		//荷主グループコード
 				String GetItemCd 			= TB_ItemCd.getText();				//商品コード
 				String GetCLItemCd 			= TB_CLItemCd.getText();			//荷主商品コード
-				String GetItemName01 		= TB_ItemName01.getText();			//商品名1
-				String GetItemName02 		= TB_ItemName02.getText();			//商品名2
-				String GetItemName03 		= TB_ItemName03.getText();			//商品名3
+				String GetItemName01 		= TB_ItemName01.getText();			//商品表記名
+				String GetItemName02 		= TB_ItemName02.getText();			//商品正式名
+				String GetItemName03 		= TB_ItemName03.getText();			//商品略名
 				String GetDeliveryTypeCd01 	= B100_DefaultVariable.DeliveryType01[1][TB_DeliveryTypeCd01.getSelectedIndex()];	//運送タイプコード01
 				String GetDeliveryTypeCd02 	= B100_DefaultVariable.DeliveryType02[1][TB_DeliveryTypeCd02.getSelectedIndex()];	//運送タイプコード02
 				String GetDeliveryTypeCd03 	= B100_DefaultVariable.DeliveryType03[1][TB_DeliveryTypeCd03.getSelectedIndex()];	//運送タイプコード03
@@ -955,9 +955,9 @@ public class WM100_ItemMst_01_RenewAndCreate{
 				GetClGpCd 				= B100_TextControl.Trim(GetClGpCd);				//荷主グループコード
 				GetItemCd 				= B100_TextControl.Trim(GetItemCd);				//商品コード
 				GetCLItemCd 			= B100_TextControl.Trim(GetCLItemCd);				//荷主商品コード
-				GetItemName01 			= B100_TextControl.Trim(GetItemName01);			//商品名1
-				GetItemName02 			= B100_TextControl.Trim(GetItemName02);			//商品名2
-				GetItemName03 			= B100_TextControl.Trim(GetItemName03);			//商品名3
+				GetItemName01 			= B100_TextControl.Trim(GetItemName01);			//商品表記名
+				GetItemName02 			= B100_TextControl.Trim(GetItemName02);			//商品正式名
+				GetItemName03 			= B100_TextControl.Trim(GetItemName03);			//商品略名
 				GetDeliveryTypeCd01 	= B100_TextControl.Trim(GetDeliveryTypeCd01);		//運送タイプコード01
 				GetDeliveryTypeCd02 	= B100_TextControl.Trim(GetDeliveryTypeCd02);		//運送タイプコード02
 				GetDeliveryTypeCd03 	= B100_TextControl.Trim(GetDeliveryTypeCd03);		//運送タイプコード03
@@ -1123,9 +1123,9 @@ public class WM100_ItemMst_01_RenewAndCreate{
 							  {"ClGpCd"				,"1","1",GetClGpCd}				//荷主グループコード
 							 ,{"ItemCd"				,"1","1",GetItemCd}				//商品コード
 							 ,{"CLItemCd"			,"1","1",GetCLItemCd}			//荷主商品コード
-							 ,{"ItemName01"			,"1","1",GetItemName01}			//商品名1
-							 ,{"ItemName02"			,"1","1",GetItemName02}			//商品名2
-							 ,{"ItemName03"			,"1","1",GetItemName03}			//商品名3
+							 ,{"ItemName01"			,"1","1",GetItemName01}			//商品表記名
+							 ,{"ItemName02"			,"1","1",GetItemName02}			//商品正式名
+							 ,{"ItemName03"			,"1","1",GetItemName03}			//商品略名
 							 ,{"ItemWeight"			,"1","1",GetItemWeight}			//商品重量
 							 ,{"ItemSize"			,"1","1",GetItemSize}			//商品サイズ
 							 ,{"DeliveryTypeCd"		,"1","1",GetDeliveryTypeCd01}	//運送タイプコード01

@@ -134,9 +134,9 @@ public class T100_AdjustRt{
 	static final int ColEntryUser				=33;		//登録者
 	static final int ColUpdateUser			=34;		//更新者
 	static final int ColType					=35;		//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-	static final int ColItemName01			=36;		//商品名1
-	static final int ColItemName02			=37;		//商品名2
-	static final int ColItemName03			=38;		//商品名3
+	static final int ColItemName01			=36;		//商品表記名
+	static final int ColItemName02			=37;		//商品正式名
+	static final int ColItemName03			=38;		//商品略名
 	static final int ColAdjustReasonCd		=39;		//調整理由コードstatic final int ColAdjustReasonCd		=36;		//調整理由コード
 	public static Object[][] RtAdjustRt(){
 		Object[][] RtAdjustRt = {
@@ -155,9 +155,9 @@ public class T100_AdjustRt{
 				,{"Type"			,ColType				,"int"		,"ロケタイプ"				,""}
 				,{"ItemCd"			,ColItemCd				,"String"	,"商品CD"					,""}
 				,{"ItemName"		,ColItemName			,"String"	,"商品名"					,""}
-				,{"ItemName01"		,ColItemName01		,"String"	,"商品名1"					,""}
-				,{"ItemName02"		,ColItemName02		,"String"	,"商品名2"					,""}
-				,{"ItemName03"		,ColItemName03		,"String"	,"商品名3"					,""}
+				,{"ItemName01"		,ColItemName01		,"String"	,"商品表記名"					,""}
+				,{"ItemName02"		,ColItemName02		,"String"	,"商品正式名"					,""}
+				,{"ItemName03"		,ColItemName03		,"String"	,"商品略名"					,""}
 				,{"CtUnitQty"		,ColCtUnitQty			,"int"		,"カートン入数"				,""}
 				,{"CsUnitQty"		,ColCsUnitQty			,"int"		,"ケース入数"				,""}
 				,{"PlUnitQty"		,ColPlUnitQty			,"int"		,"パレット入数"				,""}
@@ -304,9 +304,9 @@ public class T100_AdjustRt{
 				+"(WM0010LOCATIONMST.LocType)          as Type             ,\n"		//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 				+"(WW0016StockAdjust.ItemCd)           as ItemCd           ,\n"		//調整元商品CD
 				+"(WW0016StockAdjust.ItemName)         as ItemName         ,\n"		//調整元商品名
-				+"(KM0060_ITEMMST.ItemName01)          as ItemName01       ,\n"		//商品名1
-				+"(KM0060_ITEMMST.ItemName02)          as ItemName02       ,\n"		//商品名2
-				+"(KM0060_ITEMMST.ItemName03)          as ItemName03       ,\n"		//商品名3
+				+"(KM0060_ITEMMST.ItemName01)          as ItemName01       ,\n"		//商品表記名
+				+"(KM0060_ITEMMST.ItemName02)          as ItemName02       ,\n"		//商品正式名
+				+"(KM0060_ITEMMST.ItemName03)          as ItemName03       ,\n"		//商品略名
 				+"(KM0061_ITEMMSTSUB.CtQty)            as CtUnitQty        ,\n"		//カートン入数
 				+"(KM0061_ITEMMSTSUB.CsQty)            as CsUnitQty        ,\n"		//ケース入数
 				+"(KM0061_ITEMMSTSUB.PlQty)            as PlUnitQty        ,\n"		//パレット入数

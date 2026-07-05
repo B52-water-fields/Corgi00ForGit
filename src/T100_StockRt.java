@@ -77,9 +77,9 @@ public class T100_StockRt{
 	int GetShipPlanQty		= (int)StockRt[i][T100_StockRt.ColShipPlanQty];		//引当済総数
 	int GetPossibleQty		= (int)StockRt[i][T100_StockRt.ColPossibleQty];		//出荷可能総数
 	String GetItemName		= (String)StockRt[i][T100_StockRt.ColItemName];		//商品名
-	String GetItemName01	= (String)StockRt[i][T100_StockRt.ColItemName01];		//商品名1
-	String GetItemName02	= (String)StockRt[i][T100_StockRt.ColItemName02];		//商品名2
-	String GetItemName03	= (String)StockRt[i][T100_StockRt.ColItemName03];		//商品名3
+	String GetItemName01	= (String)StockRt[i][T100_StockRt.ColItemName01];		//商品表記名
+	String GetItemName02	= (String)StockRt[i][T100_StockRt.ColItemName02];		//商品正式名
+	String GetItemName03	= (String)StockRt[i][T100_StockRt.ColItemName03];		//商品略名
 	String GetClItemCd		= (String)StockRt[i][T100_StockRt.ColClItemCd];		//荷主商品コード
 	String GetJanCd			= (String)StockRt[i][T100_StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
 	String GetItemMdNo		= (String)StockRt[i][T100_StockRt.ColItemMdNo];		//商品型番
@@ -125,9 +125,9 @@ public class T100_StockRt{
 	static final int ColClGpName		= (int)14;		//グループ名1
 	static final int ColLoc			= (int)15;		//ロケーション
 	static final int ColType			= (int)16;		//ロケタイプ
-	static final int ColItemName01	= (int)17;		//商品名1
-	static final int ColItemName02	= (int)18;		//商品名2
-	static final int ColItemName03	= (int)19;		//商品名3
+	static final int ColItemName01	= (int)17;		//商品表記名
+	static final int ColItemName02	= (int)18;		//商品正式名
+	static final int ColItemName03	= (int)19;		//商品略名
 	static final int ColClItemCd		= (int)20;		//荷主商品コード
 	static final int ColJanCd			= (int)21;		//ソースマーク_BCD（バラ）
 	static final int ColItemMdNo		= (int)22;		//商品型番
@@ -174,9 +174,9 @@ public class T100_StockRt{
 				,{"ShipPlanQty"		,ColShipPlanQty	,"int"		,"引当済総数"					,""}
 				,{"PossibleQty"		,ColPossibleQty	,"int"		,"出荷可能総数"					,""}
 				,{"ItemName"		,ColItemName		,"String"	,"商品名"						,""}
-				,{"ItemName01"		,ColItemName01	,"String"	,"商品名1"						,""}
-				,{"ItemName02"		,ColItemName02	,"String"	,"商品名2"						,""}
-				,{"ItemName03"		,ColItemName03	,"String"	,"商品名3"						,""}
+				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"						,""}
+				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"						,""}
+				,{"ItemName03"		,ColItemName03	,"String"	,"商品略名"						,""}
 				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"				,""}
 				,{"JanCd"			,ColJanCd			,"String"	,"バラBCD"						,""}
 				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"						,""}
@@ -379,9 +379,9 @@ public class T100_StockRt{
 				+"(WW0015Stock.ShipPlanQty) as ShipPlanQty,\n"			//引当済数
 				+"(WW0015Stock.PossibleQty) as PossibleQty,\n"			//出荷可能数
 				+"(WW0015Stock.ItemName) as ItemName,\n"				//商品名
-				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"			//商品名1
-				+"(KM0060_ITEMMST.ItemName02) as ItemName02,\n"			//商品名2
-				+"(KM0060_ITEMMST.ItemName03) as ItemName03,\n"			//商品名3
+				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"			//商品表記名
+				+"(KM0060_ITEMMST.ItemName02) as ItemName02,\n"			//商品正式名
+				+"(KM0060_ITEMMST.ItemName03) as ItemName03,\n"			//商品略名
 				+"(WW0015Stock.ClItemCd) as ClItemCd,\n"				//荷主商品コード
 				+"(WW0015Stock.JanCd) as JanCd,\n"						//ソースマーク_BCD（バラ）
 				+"(WW0015Stock.ItemMdNo) as ItemMdNo,\n"				//商品型番
@@ -814,9 +814,9 @@ public class T100_StockRt{
 					rt[counter][ColShipPlanQty]				=rset01.getInt("ShipPlanQty");		//引当済総数
 					rt[counter][ColPossibleQty]				=rset01.getInt("PossibleQty");		//出荷可能総数
 					if(null==rset01.getString("ItemName"		)){rt[counter][ColItemName]		="";}else{rt[counter][ColItemName]		=rset01.getString("ItemName");}		//商品名
-					if(null==rset01.getString("ItemName01"		)){rt[counter][ColItemName01]		="";}else{rt[counter][ColItemName01]	=rset01.getString("ItemName01");}	//商品名1
-					if(null==rset01.getString("ItemName02"		)){rt[counter][ColItemName02]		="";}else{rt[counter][ColItemName02]	=rset01.getString("ItemName02");}	//商品名2
-					if(null==rset01.getString("ItemName03"		)){rt[counter][ColItemName03]		="";}else{rt[counter][ColItemName03]	=rset01.getString("ItemName03");}	//商品名3
+					if(null==rset01.getString("ItemName01"		)){rt[counter][ColItemName01]		="";}else{rt[counter][ColItemName01]	=rset01.getString("ItemName01");}	//商品表記名
+					if(null==rset01.getString("ItemName02"		)){rt[counter][ColItemName02]		="";}else{rt[counter][ColItemName02]	=rset01.getString("ItemName02");}	//商品正式名
+					if(null==rset01.getString("ItemName03"		)){rt[counter][ColItemName03]		="";}else{rt[counter][ColItemName03]	=rset01.getString("ItemName03");}	//商品略名
 					if(null==rset01.getString("ClItemCd"		)){rt[counter][ColClItemCd]		="";}else{rt[counter][ColClItemCd]		=rset01.getString("ClItemCd");}		//荷主商品コード
 					if(null==rset01.getString("JanCd"			)){rt[counter][ColJanCd]			="";}else{rt[counter][ColJanCd]		=rset01.getString("JanCd");}		//ソースマーク_BCD（バラ）
 					if(null==rset01.getString("ItemMdNo"		)){rt[counter][ColItemMdNo]		="";}else{rt[counter][ColItemMdNo]		=rset01.getString("ItemMdNo");}		//商品型番
