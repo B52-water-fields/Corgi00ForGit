@@ -51,14 +51,14 @@ public class M100_SupplierRt{
 			SearchDepartmentCd,		//部署CD
 			AllSearch);
 			
-			String GetClWh			=	(String)SupplierRt[i][M100_SupplierRt.ColClWh];			//担当倉庫
+			String GetClWh			=	(String)SupplierRt[i][M100_SupplierRt.ColClWh];				//担当倉庫
 			String GetWHName		=	(String)SupplierRt[i][M100_SupplierRt.ColWHName];			//担当倉庫名
-			String GetClCd			=	(String)SupplierRt[i][M100_SupplierRt.ColClCd];			//荷主CD
-			String GetCLName01		=	(String)SupplierRt[i][M100_SupplierRt.ColCLName01];		//荷主表記名
-			String GetSPCd			=	(String)SupplierRt[i][M100_SupplierRt.ColSPCd];			//仕入先コード
-			String GetSPName01		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName01];		//仕入先表記名
-			String GetSPName02		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName02];		//仕入先正式名
-			String GetSPName03		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName03];		//仕入先略名
+			String GetClCd			=	(String)SupplierRt[i][M100_SupplierRt.ColClCd];				//荷主CD
+			String GetCLName01		=	(String)SupplierRt[i][M100_SupplierRt.ColCLName01];			//荷主表記名
+			String GetSPCd			=	(String)SupplierRt[i][M100_SupplierRt.ColSPCd];				//仕入先コード
+			String GetSPName01		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName01];			//仕入先表記名
+			String GetSPName02		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName02];			//仕入先正式名
+			String GetSPName03		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName03];			//仕入先略名
 			String GetSPPost		=	(String)SupplierRt[i][M100_SupplierRt.ColSPPost];			//仕入先郵便
 			String GetSPAdd01		=	(String)SupplierRt[i][M100_SupplierRt.ColSPAdd01];			//仕入先住所1
 			String GetSPAdd02		=	(String)SupplierRt[i][M100_SupplierRt.ColSPAdd02];			//仕入先住所2
@@ -71,16 +71,16 @@ public class M100_SupplierRt{
 			String GetCom03			=	(String)SupplierRt[i][M100_SupplierRt.ColCom03];			//コメント3
 			String GetPTMSCDBMN		=	(String)SupplierRt[i][M100_SupplierRt.ColPTMSCDBMN];		//基幹Sysコード（部門）
 			String GetPTMSCDNINUSHI	=	(String)SupplierRt[i][M100_SupplierRt.ColPTMSCDNINUSHI];	//基幹Sysコード（荷主）
-			int GetPaySite			=	(int)SupplierRt[i][M100_SupplierRt.ColPaySite];			//支払いサイト（月数）
-			int GetPayDate			=	(int)SupplierRt[i][M100_SupplierRt.ColPayDate];			//支払日（末日＝99）
+			int GetPaySite			=	(int)SupplierRt[i][M100_SupplierRt.ColPaySite];				//支払いサイト（月数）
+			int GetPayDate			=	(int)SupplierRt[i][M100_SupplierRt.ColPayDate];				//支払日（末日＝99）
 			int GetShimeDate		=	(int)SupplierRt[i][M100_SupplierRt.ColShimeDate];			//締め日（末日＝99）
 			String GetEntryDate		=	(String)SupplierRt[i][M100_SupplierRt.ColEntryDate];		//登録日
 			String GetUpdateDate	=	(String)SupplierRt[i][M100_SupplierRt.ColUpdateDate];		//更新日
 			String GetEntryUser		=	(String)SupplierRt[i][M100_SupplierRt.ColEntryUser];		//登録者
 			String GetUpdateUser	=	(String)SupplierRt[i][M100_SupplierRt.ColUpdateUser];		//更新者
-			String GetDECD			=	(String)SupplierRt[i][M100_SupplierRt.ColDECD];			//納品先コード
-			String GetDepartmentCd	=	(String)SupplierRt[i][M100_SupplierRt.ColDepartmentCd];	//部署CD
-			String GetDEName01		=	(String)SupplierRt[i][M100_SupplierRt.ColDEName01];		//納品先名1
+			String GetDECD			=	(String)SupplierRt[i][M100_SupplierRt.ColDECD];				//納品先コード
+			String GetDepartmentCd	=	(String)SupplierRt[i][M100_SupplierRt.ColDepartmentCd];		//部署CD
+			String GetDEName01		=	(String)SupplierRt[i][M100_SupplierRt.ColDEName01];			//納品先名1
 	
 	*/
 	static final int ColClWh				= (int)0;	//担当倉庫
@@ -119,7 +119,7 @@ public class M100_SupplierRt{
 				 {"ClWh"			,ColClWh			,"String"	,"担当倉庫"					,"Key"}
 				,{"WHName"			,ColWHName			,"String"	,"担当倉庫名"				,""}
 				,{"ClCd"			,ColClCd			,"String"	,"荷主CD"					,"Key"}
-				,{"CLName01"		,ColCLName01		,"String"	,"荷主表記名"					,""}
+				,{"CLName01"		,ColCLName01		,"String"	,"荷主表記名"				,""}
 				,{"SPCd"			,ColSPCd			,"String"	,"仕入先コード"				,"Key"}
 				,{"SPName01"		,ColSPName01		,"String"	,"仕入先表記名"				,""}
 				,{"SPName02"		,ColSPName02		,"String"	,"仕入先正式名"				,""}
