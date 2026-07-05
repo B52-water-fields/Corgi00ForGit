@@ -31,7 +31,7 @@ public class M100_ItemRecomendLocMstRt{
 			AllSearch);
 			
 	String GetClCd			= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColClCd];			//荷主コード
-	String GetCLName		= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColCLName];		//荷主名1
+	String GetCLName		= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColCLName];		//荷主表記名
 	String GetClWh			= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
 	String GetClWHName		= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
 	String GetClGpCD		= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
@@ -59,7 +59,7 @@ public class M100_ItemRecomendLocMstRt{
 	Object[][] ItemRecomendLocFromItemCd = M100_ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
 	
 	String GetClCd			= (String)ItemRecomendLocFromItemCd[i][M100_ItemRecomendLocMstRt.ColClCd];			//荷主コード
-	String GetCLName		= (String)ItemRecomendLocFromItemCd[i][M100_ItemRecomendLocMstRt.ColCLName];		//荷主名1
+	String GetCLName		= (String)ItemRecomendLocFromItemCd[i][M100_ItemRecomendLocMstRt.ColCLName];		//荷主表記名
 	String GetClWh			= (String)ItemRecomendLocFromItemCd[i][M100_ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
 	String GetClWHName		= (String)ItemRecomendLocFromItemCd[i][M100_ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
 	String GetClGpCD		= (String)ItemRecomendLocFromItemCd[i][M100_ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
@@ -78,7 +78,7 @@ public class M100_ItemRecomendLocMstRt{
 	*/
 	
 	static final int ColClCd			= (int) 0;	//荷主コード
-	static final int ColCLName			= (int) 1;	//荷主名1
+	static final int ColCLName			= (int) 1;	//荷主表記名
 	static final int ColClWh			= (int) 2;	//担当倉庫コード
 	static final int ColClWHName		= (int) 3;	//担当倉庫名
 	static final int ColClGpCD			= (int) 4;	//荷主グループCD
@@ -143,7 +143,7 @@ public class M100_ItemRecomendLocMstRt{
 		Object[][] rt = new Object[0][RtItemRecomendLocMstRt().length];
 		String sql = "select "
 				+"(WW00630ItemRecomendLoc.ClCd) as ClCd,\n"					//荷主コード
-				+"(KM0030_CLIENTMST.CLName01) as CLName,\n"					//荷主名1
+				+"(KM0030_CLIENTMST.CLName01) as CLName,\n"					//荷主表記名
 				+"(WW00630ItemRecomendLoc.ClWh) as ClWh,\n"					//担当倉庫コード
 				+"(KM0010_WHMST.WHName) as ClWHName,\n"						//担当倉庫名
 				+"(KM0030_CLIENTMST.ClGpCD) as ClGpCD,\n"					//荷主グループCD
@@ -355,7 +355,7 @@ public class M100_ItemRecomendLocMstRt{
 				rset01.beforeFirst();
 				while (rset01.next()) {
 					if(null==rset01.getString("ClCd"				)){rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//荷主コード
-					if(null==rset01.getString("CLName"				)){rt[counter][ColCLName]			="";}else{rt[counter][ColCLName]		=rset01.getString("CLName");}		//荷主名1
+					if(null==rset01.getString("CLName"				)){rt[counter][ColCLName]			="";}else{rt[counter][ColCLName]		=rset01.getString("CLName");}		//荷主表記名
 					if(null==rset01.getString("ClWHName"			)){rt[counter][ColClWh]			="";}else{rt[counter][ColClWh]			=rset01.getString("ClWh");}			//担当倉庫コード
 					if(null==rset01.getString("ClWHName"			)){rt[counter][ColClWHName]		="";}else{rt[counter][ColClWHName]		=rset01.getString("ClWHName");}		//担当倉庫名
 					if(null==rset01.getString("ClGpCD"				)){rt[counter][ColClGpCD]			="";}else{rt[counter][ColClGpCD]		=rset01.getString("ClGpCD");}		//荷主グループCD
@@ -398,7 +398,7 @@ public class M100_ItemRecomendLocMstRt{
 		Object[][] rt = new Object[RtRowCount][RtItemRecomendLocMstRt().length];
 		
 		//荷主マスタ取得
-		String SetCLName	="";		//荷主名1
+		String SetCLName	="";		//荷主表記名
 		String SetClWh		="";		//担当倉庫コード
 		String SetClWHName	="";		//担当倉庫名
 		String SetClGpCD	="";		//荷主グループCD
@@ -432,7 +432,7 @@ public class M100_ItemRecomendLocMstRt{
 			SearchWHCD,
 			AllSearch);
 		if(0<ClMstRt.length) {
-			SetCLName	=(String)ClMstRt[0][M100_ClMstRt.ColCLName01];		//荷主名1
+			SetCLName	=(String)ClMstRt[0][M100_ClMstRt.ColCLName01];		//荷主表記名
 			SetClWh		=(String)ClMstRt[0][M100_ClMstRt.ColWHCD];			//担当倉庫コード
 			SetClWHName	=(String)ClMstRt[0][M100_ClMstRt.ColWHName];			//担当倉庫名
 			SetClGpCD	=(String)ClMstRt[0][M100_ClMstRt.ColClGpCD];			//荷主グループCD
@@ -473,7 +473,7 @@ public class M100_ItemRecomendLocMstRt{
 			
 		for(int i01=0;i01<ItemCd.size();i01++) {
 			rt[i01][ColClCd]			=ClCd;				//荷主コード
-			rt[i01][ColCLName]			=SetCLName;			//荷主名1
+			rt[i01][ColCLName]			=SetCLName;			//荷主表記名
 			rt[i01][ColClWh]			=SetClWh;			//担当倉庫コード
 			rt[i01][ColClWHName]		=SetClWHName;		//担当倉庫名
 			rt[i01][ColClGpCD]			=SetClGpCD;			//荷主グループCD
@@ -492,7 +492,7 @@ public class M100_ItemRecomendLocMstRt{
 			
 			for(int i=0;i<ItemRecomendLocMstRt.length;i++) {
 				String GetClCd			= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColClCd];			//荷主コード
-				String GetCLName		= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColCLName];		//荷主名1
+				String GetCLName		= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColCLName];		//荷主表記名
 				String GetClWh			= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
 				String GetClWHName		= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
 				String GetClGpCD		= (String)ItemRecomendLocMstRt[i][M100_ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD
@@ -511,7 +511,7 @@ public class M100_ItemRecomendLocMstRt{
 				
 				if(GetClCd.equals(ClCd)&&GetItemCd.equals(ItemCd.get(i01))) {
 					rt[i01][ColClCd]			=ClCd;					//荷主コード
-					rt[i01][ColCLName]			=GetCLName;				//荷主名1
+					rt[i01][ColCLName]			=GetCLName;				//荷主表記名
 					rt[i01][ColClWh]			=GetClWh;				//担当倉庫コード
 					rt[i01][ColClWHName]		=GetClWHName;			//担当倉庫名
 					rt[i01][ColClGpCD]			=GetClGpCD;				//荷主グループCD
@@ -600,7 +600,7 @@ public class M100_ItemRecomendLocMstRt{
 					
 					if(GetItemCd.equals((String)rt[RetryRow.get(i01)][ColItemCd])) {
 						rt[RetryRow.get(i01)][ColClCd]			=ClCd;					//荷主コード
-						rt[RetryRow.get(i01)][ColCLName]		=SetCLName;				//荷主名1
+						rt[RetryRow.get(i01)][ColCLName]		=SetCLName;				//荷主表記名
 						rt[RetryRow.get(i01)][ColClWh]			=SetClWh;				//担当倉庫コード
 						rt[RetryRow.get(i01)][ColClWHName]		=SetClWHName;			//担当倉庫名
 						rt[RetryRow.get(i01)][ColClGpCD]		=GetClGpCd;				//荷主グループCD
@@ -644,7 +644,7 @@ public class M100_ItemRecomendLocMstRt{
 						LocExactMatch,	//ロケーション完全一致
 						AllSearch);
 				for(int i01=0;i01<rt.length;i01++) {
-					String CheckLoc = (String)rt[RetryRow.get(i01)][ColItemSubRecomendLoc];
+					String CheckLoc = (String)rt[i01][ColItemSubRecomendLoc];
 					boolean UnHitFg = true;
 					if(!"".equals(CheckLoc)) {
 						for(int i=0;i<LocationMstRt.length;i++) {
@@ -656,7 +656,7 @@ public class M100_ItemRecomendLocMstRt{
 						}
 					}
 					if(UnHitFg) {
-						rt[RetryRow.get(i01)][ColItemSubRecomendLoc]="";	
+						rt[i01][ColItemSubRecomendLoc]="";	
 					}
 				}
 			}

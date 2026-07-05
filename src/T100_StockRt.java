@@ -61,7 +61,7 @@ public class T100_StockRt{
 							
 							
 	String GetClCd			= (String)StockRt[i][T100_StockRt.ColClCd];			//荷主コード
-	String GetCLName		= (String)StockRt[i][T100_StockRt.ColCLName];			//荷主名1
+	String GetCLName		= (String)StockRt[i][T100_StockRt.ColCLName];			//荷主表記名
 	String GetWhCd			= (String)StockRt[i][T100_StockRt.ColWhCd];			//倉庫コード
 	String GetClWHName		= (String)StockRt[i][T100_StockRt.ColClWHName];		//担当倉庫名
 	String GetClGpCD		= (String)StockRt[i][T100_StockRt.ColClGpCD];			//荷主グループCD
@@ -118,7 +118,7 @@ public class T100_StockRt{
 	static final int ColShipPlanQty	= (int)7;		//引当済数
 	static final int ColPossibleQty	= (int)8;		//出荷可能数
 	static final int ColClCd			= (int)9;		//荷主コード
-	static final int ColCLName			= (int)10;		//荷主名1
+	static final int ColCLName			= (int)10;		//荷主表記名
 	static final int ColWhCd			= (int)11;		//倉庫コード
 	static final int ColClWHName		= (int)12;		//担当倉庫名
 	static final int ColClGpCD			= (int)13;		//荷主グループCD
@@ -158,7 +158,7 @@ public class T100_StockRt{
 	public static Object[][] RtStockRt(){
 		Object[][] RtStockRt = {
 				 {"ClCd"			,ColClCd			,"String"	,"荷主コード"					,"key"}
-				,{"CLName"			,ColCLName			,"String"	,"荷主名1"						,""}
+				,{"CLName"			,ColCLName			,"String"	,"荷主表記名"						,""}
 				,{"WhCd"			,ColWhCd			,"String"	,"倉庫コード"					,"key"}
 				,{"ClWHName"		,ColClWHName		,"String"	,"担当倉庫名"					,""}
 				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループCD"				,""}
@@ -363,7 +363,7 @@ public class T100_StockRt{
 		
 		String sql = "select \n"
 				+"(WW0015Stock.ClCd) as ClCd,\n"						//荷主コード
-				+"(KM0030_CLIENTMST.CLName01) as CLName,\n"				//荷主名1
+				+"(KM0030_CLIENTMST.CLName01) as CLName,\n"				//荷主表記名
 				+"(WW0015Stock.WhCd) as WhCd,\n"						//倉庫コード
 				+"(KM0010_WHMST.WHName) as ClWHName,\n"					//担当倉庫名
 				+"(KM0030_CLIENTMST.ClGpCD) as ClGpCD,\n"				//荷主グループCD
@@ -798,7 +798,7 @@ public class T100_StockRt{
 					//在庫の戻り値はいろいろ計算するのでB100_RtObjectCreateではなく個別に作成
 					
 					if(null==rset01.getString("ClCd"			)){rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}		//荷主コード
-					if(null==rset01.getString("CLName"			)){rt[counter][ColCLName]			="";}else{rt[counter][ColCLName]		=rset01.getString("CLName");}	//荷主名1
+					if(null==rset01.getString("CLName"			)){rt[counter][ColCLName]			="";}else{rt[counter][ColCLName]		=rset01.getString("CLName");}	//荷主表記名
 					if(null==rset01.getString("WhCd"			)){rt[counter][ColWhCd]			="";}else{rt[counter][ColWhCd]			=rset01.getString("WhCd");}		//倉庫コード
 					if(null==rset01.getString("ClWHName"		)){rt[counter][ColClWHName]		="";}else{rt[counter][ColClWHName]		=rset01.getString("ClWHName");}	//担当倉庫名
 					if(null==rset01.getString("ClGpCD"			)){rt[counter][ColClGpCD]			="";}else{rt[counter][ColClGpCD]		=rset01.getString("ClGpCD");}	//荷主グループCD

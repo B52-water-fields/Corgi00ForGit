@@ -70,25 +70,25 @@ public class M100_ClGpMstRt{
 	
 	public static Object[][] RtSettingClGpMstRt(){
 		Object[][] RtSettingClGpMstRt = {
-				 {"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"	,"Key"}
-				,{"CLGpName01"	,ColCLGpName01	,"String"	,"荷主グループ名1"	,""}
-				,{"CLGpName02"	,ColCLGpName02	,"String"	,"荷主グループ名2"	,""}
-				,{"CLGpName03"	,ColCLGpName03	,"String"	,"荷主グループ名3"	,""}
-				,{"Post"		,ColPost			,"String"	,"郵便番号"			,""}
-				,{"Add01"		,ColAdd01			,"String"	,"住所1"			,""}
-				,{"Add02"		,ColAdd02			,"String"	,"住所2"			,""}
-				,{"Add03"		,ColAdd03			,"String"	,"住所3"			,""}
-				,{"Tel"			,ColTel			,"String"	,"電話番号"			,""}
-				,{"Fax"			,ColFax			,"String"	,"FAX"				,""}
-				,{"Mail"		,ColMail			,"String"	,"メールアドレス"	,""}
-				,{"Com01"		,ColCom01			,"String"	,"コメント1"		,""}
-				,{"Com02"		,ColCom02			,"String"	,"コメント2"		,""}
-				,{"Com03"		,ColCom03			,"String"	,"コメント3"		,""}
-				,{"EntryDate"	,ColEntryDate		,"String"	,"データ登録日時"	,""}
-				,{"UpdateDate"	,ColUpdateDate	,"String"	,"データ更新日時"	,""}
-				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"		,""}
-				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"		,""}
-				,{"PassWord"	,ColPassWord		,"String"	,"パスワード"		,""}
+				 {"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"		,"Key"}
+				,{"CLGpName01"	,ColCLGpName01	,"String"	,"荷主グループ表記名"	,""}
+				,{"CLGpName02"	,ColCLGpName02	,"String"	,"荷主グループ正式名"	,""}
+				,{"CLGpName03"	,ColCLGpName03	,"String"	,"荷主グループ略名"		,""}
+				,{"Post"		,ColPost			,"String"	,"郵便番号"				,""}
+				,{"Add01"		,ColAdd01			,"String"	,"住所1"				,""}
+				,{"Add02"		,ColAdd02			,"String"	,"住所2"				,""}
+				,{"Add03"		,ColAdd03			,"String"	,"住所3"				,""}
+				,{"Tel"			,ColTel			,"String"	,"電話番号"				,""}
+				,{"Fax"			,ColFax			,"String"	,"FAX"					,""}
+				,{"Mail"		,ColMail			,"String"	,"メールアドレス"		,""}
+				,{"Com01"		,ColCom01			,"String"	,"コメント1"			,""}
+				,{"Com02"		,ColCom02			,"String"	,"コメント2"			,""}
+				,{"Com03"		,ColCom03			,"String"	,"コメント3"			,""}
+				,{"EntryDate"	,ColEntryDate		,"String"	,"データ登録日時"		,""}
+				,{"UpdateDate"	,ColUpdateDate	,"String"	,"データ更新日時"		,""}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"			,""}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"			,""}
+				,{"PassWord"	,ColPassWord		,"String"	,"パスワード"			,""}
 				};
 		
 		return RtSettingClGpMstRt;
@@ -120,9 +120,9 @@ public class M100_ClGpMstRt{
 		
 		String sql = "select "
 				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD) as ClGpCD,\n"			//荷主グループCD
-				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"	//荷主名1
-				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName02) as CLGpName02,\n"	//荷主名2
-				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName03) as CLGpName03,\n"	//荷主名3
+				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"	//荷主表記名
+				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName02) as CLGpName02,\n"	//荷主正式名
+				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.CLGpName03) as CLGpName03,\n"	//荷主略名
 				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Post) as Post,\n"				//郵便番号
 				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Add01) as Add01,\n"				//住所1
 				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.Add02) as Add02,\n"				//住所2

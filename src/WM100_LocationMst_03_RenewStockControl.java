@@ -380,7 +380,7 @@ public class WM100_LocationMst_03_RenewStockControl{
 			
 			for(int i=0;i<LocationMstRt.length;i++) {
 				String GetClCd			= (String)LocationMstRt[i][M100_LocationMstRt.ColClCd];			//荷主コード
-				String GetCLName01		= (String)LocationMstRt[i][M100_LocationMstRt.ColCLName01];		//荷主名1
+				String GetCLName01		= (String)LocationMstRt[i][M100_LocationMstRt.ColCLName01];		//荷主表記名
 				String GetWhCd			= (String)LocationMstRt[i][M100_LocationMstRt.ColWhCd];			//倉庫コード
 				String GetWHName		= (String)LocationMstRt[i][M100_LocationMstRt.ColWHName];			//拠点倉庫名
 				String GetLoc			= (String)LocationMstRt[i][M100_LocationMstRt.ColLoc];			//ロケーション

@@ -275,7 +275,7 @@ public class WTList100_StockList{
 		}
 		
 		String GetClCd			= (String)TgtData[T100_StockRt.ColClCd];				//荷主コード
-		String GetCLName		= (String)TgtData[T100_StockRt.ColCLName];			//荷主名1
+		String GetCLName		= (String)TgtData[T100_StockRt.ColCLName];			//荷主表記名
 		String GetWhCd			= (String)TgtData[T100_StockRt.ColWhCd];				//倉庫コード
 		String GetClWHName		= (String)TgtData[T100_StockRt.ColClWHName];			//担当倉庫名
 		String GetClGpCD		= (String)TgtData[T100_StockRt.ColClGpCD];			//荷主グループCD

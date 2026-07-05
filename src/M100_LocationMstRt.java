@@ -24,7 +24,7 @@ public class M100_LocationMstRt{
 			AllSearch);
 			
 	String GetClCd			= (String)LocationMstRt[i][M100_LocationMstRt.ColClCd];		//荷主コード
-	String GetCLName01		= (String)LocationMstRt[i][M100_LocationMstRt.ColCLName01];	//荷主名1
+	String GetCLName01		= (String)LocationMstRt[i][M100_LocationMstRt.ColCLName01];	//荷主表記名
 	String GetWhCd			= (String)LocationMstRt[i][M100_LocationMstRt.ColWhCd];		//倉庫コード
 	String GetWHName		= (String)LocationMstRt[i][M100_LocationMstRt.ColWHName];		//拠点倉庫名
 	String GetLoc			= (String)LocationMstRt[i][M100_LocationMstRt.ColLoc];			//ロケーション
@@ -38,7 +38,7 @@ public class M100_LocationMstRt{
 	
 	//戻り値カラム
 	static final int ColClCd			= (int) 0;	//荷主コード
-	static final int ColCLName01		= (int) 1;	//荷主名1
+	static final int ColCLName01		= (int) 1;	//荷主表記名
 	static final int ColWhCd			= (int) 2;	//倉庫コード
 	static final int ColWHName			= (int) 3;	//拠点倉庫名
 	static final int ColLoc			= (int) 4;	//ロケーション
@@ -52,7 +52,7 @@ public class M100_LocationMstRt{
 	public static Object[][] RtSettingLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {
 				 {"ClCd"		,ColClCd			,"String"	,"荷主コード"		,"Key"}
-				,{"CLName01"	,ColCLName01		,"String"	,"荷主名1"			,""}
+				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"			,""}
 				,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"		,"Key"}
 				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名"		,""}
 				,{"Loc"			,ColLoc			,"String"	,"ロケーション"		,"Key"}
@@ -88,7 +88,7 @@ public class M100_LocationMstRt{
 				
 		String sql = " select \n"
 				+"(WM0010LOCATIONMST.ClCd) as ClCd,\n"				//荷主コード
-				+"(KM0030_CLIENTMST.CLName01) as CLName01,\n"		//荷主名1
+				+"(KM0030_CLIENTMST.CLName01) as CLName01,\n"		//荷主表記名
 				+"(WM0010LOCATIONMST.WhCd) as WhCd,\n"				//倉庫コード
 				+"(KM0010_WHMST.WHName) as WHName,\n"				//拠点倉庫名
 				+"(WM0010LOCATIONMST.Loc) as Loc,\n"				//ロケーション
@@ -224,7 +224,7 @@ public class M100_LocationMstRt{
 				rset01.beforeFirst();
 				while (rset01.next()) {
 					if(null==rset01.getString("ClCd")){				rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}				//荷主コード
-					if(null==rset01.getString("CLName01")){			rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}			//荷主名1
+					if(null==rset01.getString("CLName01")){			rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}			//荷主表記名
 					if(null==rset01.getString("WhCd")){				rt[counter][ColWhCd]			="";}else{rt[counter][ColWhCd]			=rset01.getString("WhCd");}				//倉庫コード
 					if(null==rset01.getString("WHName")){			rt[counter][ColWHName]			="";}else{rt[counter][ColWHName]		=rset01.getString("WHName");}			//拠点倉庫名
 					if(null==rset01.getString("Loc")){				rt[counter][ColLoc]			="";}else{rt[counter][ColLoc]			=rset01.getString("Loc");}				//ロケーション

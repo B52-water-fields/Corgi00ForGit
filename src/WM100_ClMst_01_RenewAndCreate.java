@@ -34,9 +34,9 @@ public class WM100_ClMst_01_RenewAndCreate{
 		JLabel LB_cl_cd			= B100_FrameParts.JLabelSet(  0, 40,100,20,"荷主CD:",				11,1);
 		JLabel LB_ClGpCD		= B100_FrameParts.JLabelSet(  0, 65,100,20,"荷主グループCD:",		11,1);
 		JLabel LB_WHCD			= B100_FrameParts.JLabelSet(  0, 90,100,20,"担当倉庫:",			11,1);
-		JLabel LB_CLName01		= B100_FrameParts.JLabelSet(  0,115,100,20,"荷主名1:",			11,1);
-		JLabel LB_CLName02		= B100_FrameParts.JLabelSet(  0,140,100,20,"荷主名2:",			11,1);
-		JLabel LB_CLName03		= B100_FrameParts.JLabelSet(  0,165,100,20,"荷主名3:",			11,1);
+		JLabel LB_CLName01		= B100_FrameParts.JLabelSet(  0,115,100,20,"荷主表記名:",			11,1);
+		JLabel LB_CLName02		= B100_FrameParts.JLabelSet(  0,140,100,20,"荷主正式名:",			11,1);
+		JLabel LB_CLName03		= B100_FrameParts.JLabelSet(  0,165,100,20,"荷主略名:",			11,1);
 		JLabel LB_Post			= B100_FrameParts.JLabelSet(  0,190,100,20,"郵便番号:",			11,1);
 		JLabel LB_Add01			= B100_FrameParts.JLabelSet(  0,215,100,20,"住所1:",				11,1);
 		JLabel LB_Add02			= B100_FrameParts.JLabelSet(  0,240,100,20,"住所2:",				11,1);
@@ -58,9 +58,9 @@ public class WM100_ClMst_01_RenewAndCreate{
 		final JTextField TB_cl_cd		 = B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//荷主CD
 		final JComboBox  TB_ClGpCD	  	 = B100_FrameParts.JComboBoxSet( 100, 65,250,20,B100_DefaultVariable.ClGpList[0],	11);		//荷主グループCD
 		final JComboBox  TB_WHCD	  	 = B100_FrameParts.JComboBoxSet( 100, 90,250,20,B100_DefaultVariable.WhList[0],	11);		//担当倉庫
-		final JTextField  TB_CLName01	 = B100_FrameParts.JTextFieldSet(100,115,200,20,"",11,0);	//荷主名1
-		final JTextField  TB_CLName02	 = B100_FrameParts.JTextFieldSet(100,140,200,20,"",11,0);	//荷主名2
-		final JTextField  TB_CLName03	 = B100_FrameParts.JTextFieldSet(100,165,200,20,"",11,0);	//荷主名3
+		final JTextField  TB_CLName01	 = B100_FrameParts.JTextFieldSet(100,115,200,20,"",11,0);	//荷主表記名
+		final JTextField  TB_CLName02	 = B100_FrameParts.JTextFieldSet(100,140,200,20,"",11,0);	//荷主正式名
+		final JTextField  TB_CLName03	 = B100_FrameParts.JTextFieldSet(100,165,200,20,"",11,0);	//荷主略名
 		final JTextField  TB_Post		 = B100_FrameParts.JTextFieldSet(100,190,100,20,"",11,0);	//郵便番号
 		final JTextField  TB_Add01		 = B100_FrameParts.JTextFieldSet(100,215,250,20,"",11,0);	//住所1
 		final JTextField  TB_Add02		 = B100_FrameParts.JTextFieldSet(100,240,250,20,"",11,0);	//住所2
@@ -222,9 +222,9 @@ public class WM100_ClMst_01_RenewAndCreate{
 				String Getcl_cd 		= TB_cl_cd.getText();		//荷主CD
 				String GetClGpCD 		= ""+B100_DefaultVariable.ClGpList[1][TB_ClGpCD.getSelectedIndex()];	//荷主グループCD
 				String GetWHCD 			= ""+B100_DefaultVariable.WhList[1][TB_WHCD.getSelectedIndex()];		//担当倉庫
-				String GetCLName01 		= TB_CLName01.getText();	//荷主名1
-				String GetCLName02 		= TB_CLName02.getText();	//荷主名2
-				String GetCLName03 		= TB_CLName03.getText();	//荷主名3
+				String GetCLName01 		= TB_CLName01.getText();	//荷主表記名
+				String GetCLName02 		= TB_CLName02.getText();	//荷主正式名
+				String GetCLName03 		= TB_CLName03.getText();	//荷主略名
 				String GetPost 			= TB_Post.getText();		//郵便番号
 				String GetAdd01 		= TB_Add01.getText();		//住所1
 				String GetAdd02 		= TB_Add02.getText();		//住所2
@@ -296,9 +296,9 @@ public class WM100_ClMst_01_RenewAndCreate{
 							{"cl_cd",		"1","1",Getcl_cd}		//荷主CD
 							,{"ClGpCD",		"1","1",GetClGpCD}		//荷主グループCD
 							,{"WHCD",		"1","1",GetWHCD}		//担当倉庫
-							,{"CLName01",	"1","1",GetCLName01}	//荷主名1
-							,{"CLName02",	"1","1",GetCLName02}	//荷主名2
-							,{"CLName03",	"1","1",GetCLName03}	//荷主名3
+							,{"CLName01",	"1","1",GetCLName01}	//荷主表記名
+							,{"CLName02",	"1","1",GetCLName02}	//荷主正式名
+							,{"CLName03",	"1","1",GetCLName03}	//荷主略名
 							,{"Post",		"1","1",GetPost}		//郵便番号
 							,{"Add01",		"1","1",GetAdd01}		//住所1
 							,{"Add02",		"1","1",GetAdd02}		//住所2

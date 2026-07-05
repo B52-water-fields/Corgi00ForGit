@@ -107,7 +107,7 @@ public class WM100_LocationMst_01_RenewAndCreate{
 			
 			if(1==LocationMstRt.length) {
 				String GetClCd			= (String)LocationMstRt[0][M100_LocationMstRt.ColClCd];			//荷主コード
-				String GetCLName01		= (String)LocationMstRt[0][M100_LocationMstRt.ColCLName01];		//荷主名1
+				String GetCLName01		= (String)LocationMstRt[0][M100_LocationMstRt.ColCLName01];		//荷主表記名
 				String GetWhCd			= (String)LocationMstRt[0][M100_LocationMstRt.ColWhCd];			//倉庫コード
 				String GetWHName		= (String)LocationMstRt[0][M100_LocationMstRt.ColWHName];			//拠点倉庫名
 				String GetLoc			= (String)LocationMstRt[0][M100_LocationMstRt.ColLoc];			//ロケーション

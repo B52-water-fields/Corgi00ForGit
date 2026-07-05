@@ -124,7 +124,7 @@ public class T100_AdjustRt{
 	static final int ColAdjustCom02			=23;		//調整理由コメント02
 	static final int ColAdjustCom03			=24;		//調整理由コメント03
 	static final int ColClCd					=25;		//荷主コード
-	static final int ColCLName					=26;		//荷主名1
+	static final int ColCLName					=26;		//荷主表記名
 	static final int ColWhCd					=27;		//倉庫コード
 	static final int ColClWHName				=28;		//担当倉庫名
 	static final int ColClGpCD					=29;		//荷主グループCD

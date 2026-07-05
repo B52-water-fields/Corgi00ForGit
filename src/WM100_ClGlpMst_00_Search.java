@@ -36,22 +36,22 @@ public class WM100_ClGlpMst_00_Search{
 		main_fm.add(exit_btn);
 		
 		//検索条件パネル
-		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,740,150,"White");
-		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
+		JPanel PN_Search 		= B100_FrameParts.JPanelSet(10,40,740,150,"White");
+		JLabel PN_SearchLabel 	= B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchClGpCD  = B100_FrameParts.JLabelSet(		  0, 25,100,20,"荷主GlpCD:"	,11,1);
-		JLabel LB_SearchCLGpName  = B100_FrameParts.JLabelSet(	  0, 50,100,20,"名称:"		,11,1);
-		JLabel LB_SearchPost  = B100_FrameParts.JLabelSet(		  0, 75,100,20,"郵便番号:"	,11,1);
-		JLabel LB_SearchAdd  = B100_FrameParts.JLabelSet(			  0,100,100,20,"住所:"		,11,1);
-		JLabel LB_SearchCom  = B100_FrameParts.JLabelSet(			  0,125,100,20,"コメント:"	,11,1);
+		JLabel LB_SearchClGpCD  	= B100_FrameParts.JLabelSet(				  0, 25,100,20,"荷主GlpCD:"	,11,1);
+		JLabel LB_SearchCLGpName  	= B100_FrameParts.JLabelSet(				  0, 50,100,20,"名称:"		,11,1);
+		JLabel LB_SearchPost  		= B100_FrameParts.JLabelSet(				  0, 75,100,20,"郵便番号:"	,11,1);
+		JLabel LB_SearchAdd 		= B100_FrameParts.JLabelSet(				  0,100,100,20,"住所:"		,11,1);
+		JLabel LB_SearchCom  		= B100_FrameParts.JLabelSet(				  0,125,100,20,"コメント:"	,11,1);
 		
-		JLabel LB_SearchTel  = B100_FrameParts.JLabelSet(			350, 25,100,20,"Tel:"		,11,1);
-		JLabel LB_SearchFax  = B100_FrameParts.JLabelSet(			350, 50,100,20,"Fax:"		,11,1);
-		JLabel LB_SearchMail  = B100_FrameParts.JLabelSet(		350, 75,100,20,"Mail:"		,11,1);
+		JLabel LB_SearchTel  		= B100_FrameParts.JLabelSet(				350, 25,100,20,"Tel:"		,11,1);
+		JLabel LB_SearchFax  		= B100_FrameParts.JLabelSet(				350, 50,100,20,"Fax:"		,11,1);
+		JLabel LB_SearchMail  		= B100_FrameParts.JLabelSet(				350, 75,100,20,"Mail:"		,11,1);
 		
-		final JTextField TB_SearchClGpCD = B100_FrameParts.JTextFieldSet(	100, 25,100,20,"",11,0);
+		final JTextField TB_SearchClGpCD = B100_FrameParts.JTextFieldSet(		100, 25,100,20,"",11,0);
 		final JTextField TB_SearchCLGpName = B100_FrameParts.JTextFieldSet(	100, 50,150,20,"",11,0);
 		final JTextField TB_SearchPost = B100_FrameParts.JTextFieldSet(		100, 75,100,20,"",11,0);
 		final JTextField TB_SearchAdd = B100_FrameParts.JTextFieldSet(		100,100,150,20,"",11,0);
@@ -61,15 +61,15 @@ public class WM100_ClGlpMst_00_Search{
 		final JTextField TB_SearchFax  = B100_FrameParts.JTextFieldSet(		450, 50,100,20,"",11,0);
 		final JTextField TB_SearchMail = B100_FrameParts.JTextFieldSet(		450, 75,150,20,"",11,0);
 		
-		JLabel LB2_SearchClGpCD  = B100_FrameParts.JLabelSet(		 200, 25,100,20,"と一致"	,11,0);
-		JLabel LB2_SearchCLGpName  = B100_FrameParts.JLabelSet(	 250, 50,100,20,"を含む"	,11,0);
-		JLabel LB2_SearchPost  = B100_FrameParts.JLabelSet(		 200, 75,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchAdd  = B100_FrameParts.JLabelSet(		 250,100,100,20,"を含む"	,11,0);
-		JLabel LB2_SearchCom  = B100_FrameParts.JLabelSet(		 250,125,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchClGpCD  = B100_FrameParts.JLabelSet(					200, 25,100,20,"と一致"	,11,0);
+		JLabel LB2_SearchCLGpName  = B100_FrameParts.JLabelSet(	 			250, 50,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchPost  = B100_FrameParts.JLabelSet(		 			200, 75,100,20,"で始まる"	,11,0);
+		JLabel LB2_SearchAdd  = B100_FrameParts.JLabelSet(		 				250,100,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchCom  = B100_FrameParts.JLabelSet(		 				250,125,100,20,"を含む"	,11,0);
 		
-		JLabel LB2_SearchTel  = B100_FrameParts.JLabelSet(		 550, 25,100,20,"を含む"	,11,0);
-		JLabel LB2_SearchFax  = B100_FrameParts.JLabelSet(		 550, 50,100,20,"を含む"	,11,0);
-		JLabel LB2_SearchMail  = B100_FrameParts.JLabelSet(		 600, 75,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchTel  = B100_FrameParts.JLabelSet(		 				550, 25,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchFax  = B100_FrameParts.JLabelSet(		 				550, 50,100,20,"を含む"	,11,0);
+		JLabel LB2_SearchMail  = B100_FrameParts.JLabelSet(		 			600, 75,100,20,"を含む"	,11,0);
 		
 		PN_Search.add(LB_SearchClGpCD);
 		PN_Search.add(LB_SearchCLGpName);
@@ -105,32 +105,19 @@ public class WM100_ClGlpMst_00_Search{
 		JButton SearchBtn = B100_FrameParts.BtnSet(450,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		String[] columnNames01 = {
-				"FG"
-				,"荷主グループCD"
-				,"荷主名1"
-				,"荷主名2"
-				,"荷主名3"
-				,"郵便番号"
-				,"住所1"
-				,"住所2"
-				,"住所3"
-				,"電話番号"
-				,"FAX"
-				,"メールアドレス"
-				,"コメント1"
-				,"コメント2"
-				,"コメント3"
-				,"データ登録日時"
-				,"データ更新日時"
-				,"登録者コード"
-				,"更新者コード"
-				,"パスワード"
-				};
-	
+		Object[][] RtSettingClGpMstRt= M100_ClGpMstRt.RtSettingClGpMstRt();
+		
+		String[] columnNames01 = new String[RtSettingClGpMstRt.length+1];
+		
+		columnNames01[0] = "Fg";
+		for(int i=0;i<RtSettingClGpMstRt.length;i++) {
+			columnNames01[1+(int)RtSettingClGpMstRt[i][1]] = ""+RtSettingClGpMstRt[i][3];
+		}
+		
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
+
 		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
 		
 		final JTable tb01 = new JTable(MainFmTableModel);
@@ -143,27 +130,16 @@ public class WM100_ClGlpMst_00_Search{
 		
 		//列幅初期設定 表示位置設定
 		TableColumn column = null;
-		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//荷主グループCD"
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//荷主名1
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//荷主名2
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//荷主名3
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//郵便番号
-		column = columnModel01.getColumn( 6);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//住所1
-		column = columnModel01.getColumn( 7);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//住所
-		column = columnModel01.getColumn( 8);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//住所3
-		column = columnModel01.getColumn( 9);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//電話番号
-		column = columnModel01.getColumn(10);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//FAX
-		column = columnModel01.getColumn(11);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//メールアドレス
-		column = columnModel01.getColumn(12);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント1
-		column = columnModel01.getColumn(13);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント2
-		column = columnModel01.getColumn(14);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント3
-		column = columnModel01.getColumn(15);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//データ登録日時
-		column = columnModel01.getColumn(16);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//データ更新日時
-		column = columnModel01.getColumn(17);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//登録者コード
-		column = columnModel01.getColumn(18);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//更新者コード
-		column = columnModel01.getColumn(19);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//パスワード
 		
+		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
+		
+		for(int i=0;i<RtSettingClGpMstRt.length;i++) {
+			if("int".equals((String)RtSettingClGpMstRt[i][2])||"float".equals((String)RtSettingClGpMstRt[i][2])) {
+				column = columnModel01.getColumn(1+(int)RtSettingClGpMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				column = columnModel01.getColumn(1+(int)RtSettingClGpMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
+		}
 		//スクロール用設定
 		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,200,740,420,tb01);
 		main_fm.add(scpn01);
@@ -176,7 +152,7 @@ public class WM100_ClGlpMst_00_Search{
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B100_FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100_FrameParts.BtnSet(			130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
@@ -184,7 +160,7 @@ public class WM100_ClGlpMst_00_Search{
 		main_fm.add(CreateBtn);
 		
 		//Excelボタン
-		JButton ExcelBtn = B100_FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100_FrameParts.BtnSet(			370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		main_fm.setVisible(true);
@@ -250,28 +226,15 @@ public class WM100_ClGlpMst_00_Search{
 								SearchClGpCD,SearchCLGpName,SearchPost,
 								SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,AllSearch);
 					
+					Object[][] RtSettingClGpMstRt= M100_ClGpMstRt.RtSettingClGpMstRt();
+					
 					for(int i=0;i<ClGpMstRt.length;i++) {
-						Object[] SetOb = new Object[20];
+						
+						Object[] SetOb = new Object[RtSettingClGpMstRt.length+1];
 						SetOb[ 0] = false;
-						SetOb[ 1] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColClGpCD];
-						SetOb[ 2] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName01];
-						SetOb[ 3] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName02];
-						SetOb[ 4] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName03];
-						SetOb[ 5] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColPost];
-						SetOb[ 6] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColAdd01];
-						SetOb[ 7] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColAdd02];
-						SetOb[ 8] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColAdd03];
-						SetOb[ 9] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColTel];
-						SetOb[10] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColFax];
-						SetOb[11] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColMail];
-						SetOb[12] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColCom01];
-						SetOb[13] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColCom02];
-						SetOb[14] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColCom03];
-						SetOb[15] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColEntryDate];
-						SetOb[16] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColUpdateDate];
-						SetOb[17] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColEntryUser];
-						SetOb[18] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColUpdateUser];
-						SetOb[19] = ""+ClGpMstRt[i][M100_ClGpMstRt.ColPassWord];
+						for(int i01=0;i01<RtSettingClGpMstRt.length;i01++) {
+							SetOb[1+(int)RtSettingClGpMstRt[i01][1]] = ""+ClGpMstRt[i][(int)RtSettingClGpMstRt[i01][1]];
+						}
 						
 						MainFmTableModel.addRow(SetOb);
 					}
@@ -294,7 +257,7 @@ public class WM100_ClGlpMst_00_Search{
 					String TgtClGp = "";
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
-							TgtClGp = ""+MainFmTableModel.getValueAt(i, 1);	if(null==TgtClGp) {TgtClGp="";}
+							TgtClGp = ""+MainFmTableModel.getValueAt(i, 1+M100_ClGpMstRt.ColClGpCD);	if(null==TgtClGp) {TgtClGp="";}
 						}
 					}
 					if(!"".equals(TgtClGp)) {

@@ -94,7 +94,7 @@ public class WM100_LocationMst_02_ExcelEntry{
 		
 		Object[][] NeedCol = {
 				 {"荷主コード"			, 1	, 0}
-				,{"荷主名1"				, 1	, 1}
+				,{"荷主表記名"				, 1	, 1}
 				,{"倉庫コード"			, 1	, 2}
 				,{"拠点倉庫名"			, 1	, 3}
 				,{"ロケーション"		, 1	, 4}
@@ -278,7 +278,7 @@ public class WM100_LocationMst_02_ExcelEntry{
 				case "荷主コード":
 					ColClCd = i;
 					break;
-				case "荷主名1":
+				case "荷主表記名":
 					ColClName 	= i;
 					break;
 				case "倉庫コード":
@@ -398,7 +398,7 @@ public class WM100_LocationMst_02_ExcelEntry{
 				case "荷主コード":
 					ColClCd = i;
 					break;
-				case "荷主名1":
+				case "荷主表記名":
 					ColClName 	= i;
 					break;
 				case "倉庫コード":

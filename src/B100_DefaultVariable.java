@@ -1055,9 +1055,9 @@ public class B100_DefaultVariable{
 		judg_field[0] ="ClGpCD";			//荷主グループCD
 		
 		field_name[0][0] ="ClGpCD";			//荷主グループCD
-		field_name[1][0] ="CLGpName01";		//荷主名1
-		field_name[2][0] ="CLGpName02";		//荷主名2
-		field_name[3][0] ="CLGpName03";		//荷主名3
+		field_name[1][0] ="CLGpName01";		//荷主表記名
+		field_name[2][0] ="CLGpName02";		//荷主正式名
+		field_name[3][0] ="CLGpName03";		//荷主略名
 		field_name[4][0] ="Post";			//郵便番号
 		field_name[5][0] ="Add01";			//住所1
 		field_name[6][0] ="Add02";			//住所2
@@ -1075,9 +1075,9 @@ public class B100_DefaultVariable{
 		field_name[18][0] ="PassWord";		//パスワード
 
 		field_name[0][1] ="1";		//荷主グループCD
-		field_name[1][1] ="1";		//荷主名1
-		field_name[2][1] ="1";		//荷主名2
-		field_name[3][1] ="1";		//荷主名3
+		field_name[1][1] ="1";		//荷主表記名
+		field_name[2][1] ="1";		//荷主正式名
+		field_name[3][1] ="1";		//荷主略名
 		field_name[4][1] ="1";		//郵便番号
 		field_name[5][1] ="1";		//住所1
 		field_name[6][1] ="1";		//住所2
@@ -1095,9 +1095,9 @@ public class B100_DefaultVariable{
 		field_name[18][1] ="1";		//パスワード
 		
 		field_name[0][2] ="0";		//荷主グループCD
-		field_name[1][2] ="0";		//荷主名1
-		field_name[2][2] ="0";		//荷主名2
-		field_name[3][2] ="0";		//荷主名3
+		field_name[1][2] ="0";		//荷主表記名
+		field_name[2][2] ="0";		//荷主正式名
+		field_name[3][2] ="0";		//荷主略名
 		field_name[4][2] ="0";		//郵便番号
 		field_name[5][2] ="0";		//住所1
 		field_name[6][2] ="0";		//住所2
@@ -1117,9 +1117,9 @@ public class B100_DefaultVariable{
 		judg_data[0][0] ="ClGp000";		//荷主グループCD
 		
 		entry_data[0][0] ="ClGp000";							//荷主グループCD
-		entry_data[0][1] ="高天原ホールディングス";				//荷主名1
-		entry_data[0][2] ="高天原ホールディングス株式会社";		//荷主名2
-		entry_data[0][3] ="";				//荷主名3
+		entry_data[0][1] ="高天原ホールディングス";				//荷主表記名
+		entry_data[0][2] ="高天原ホールディングス株式会社";		//荷主正式名
+		entry_data[0][3] ="";				//荷主略名
 		entry_data[0][4] ="5160023";		//郵便番号
 		entry_data[0][5] ="三重県伊勢市";	//住所1
 		entry_data[0][6] ="宇治館町１";		//住所2

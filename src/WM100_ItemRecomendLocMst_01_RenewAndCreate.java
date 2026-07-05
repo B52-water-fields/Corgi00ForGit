@@ -104,7 +104,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 			Object[][] ItemRecomendLocMstRt = ItemRecomendLocMstRt(TgtClCd,TgtWhCd,TgtItemCd);
 			if(1==ItemRecomendLocMstRt.length) {
 				String GetClCd			= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColClCd];			//荷主コード
-				String GetCLName		= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColCLName];		//荷主名1
+				String GetCLName		= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColCLName];		//荷主表記名
 				String GetClWh			= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColClWh];			//担当倉庫コード
 				String GetClWHName		= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColClWHName];		//担当倉庫名
 				String GetClGpCD		= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColClGpCD];		//荷主グループCD

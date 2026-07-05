@@ -31,42 +31,43 @@ public class M100_ClMstRt{
 		SearchWHCD,
 		AllSearch);
 		
-	String Getcl_cd			=(String)ClMstRt[i][M100_ClMstRt.Colcl_cd];		//荷主CD
+	String Getcl_cd			=(String)ClMstRt[i][M100_ClMstRt.Colcl_cd];			//荷主CD
 	String GetClGpCD		=(String)ClMstRt[i][M100_ClMstRt.ColClGpCD];		//荷主グループCD
-	String GetClGpName		=(String)ClMstRt[i][M100_ClMstRt.ColClGpName];		//グループ名1
+	String GetClGpName		=(String)ClMstRt[i][M100_ClMstRt.ColClGpName];		//グループ表記名
 	String GetWHCD			=(String)ClMstRt[i][M100_ClMstRt.ColWHCD];			//担当倉庫
 	String GetWHName		=(String)ClMstRt[i][M100_ClMstRt.ColWHName];		//担当倉庫名
-	String GetCLName01		=(String)ClMstRt[i][M100_ClMstRt.ColCLName01];		//荷主名1
-	String GetCLName02		=(String)ClMstRt[i][M100_ClMstRt.ColCLName02];		//荷主名2
-	String GetCLName03		=(String)ClMstRt[i][M100_ClMstRt.ColCLName03];		//荷主名3
+	String GetCLName01		=(String)ClMstRt[i][M100_ClMstRt.ColCLName01];		//荷主表記名
+	String GetCLName02		=(String)ClMstRt[i][M100_ClMstRt.ColCLName02];		//荷主正式名
+	String GetCLName03		=(String)ClMstRt[i][M100_ClMstRt.ColCLName03];		//荷主略名
 	String GetPost			=(String)ClMstRt[i][M100_ClMstRt.ColPost];			//郵便番号
-	String GetAdd01			=(String)ClMstRt[i][M100_ClMstRt.ColAdd01];		//住所1
-	String GetAdd02			=(String)ClMstRt[i][M100_ClMstRt.ColAdd02];		//住所2
-	String GetAdd03			=(String)ClMstRt[i][M100_ClMstRt.ColAdd03];		//住所3
+	String GetAdd01			=(String)ClMstRt[i][M100_ClMstRt.ColAdd01];			//住所1
+	String GetAdd02			=(String)ClMstRt[i][M100_ClMstRt.ColAdd02];			//住所2
+	String GetAdd03			=(String)ClMstRt[i][M100_ClMstRt.ColAdd03];			//住所3
 	String GetTel			=(String)ClMstRt[i][M100_ClMstRt.ColTel];			//電話番号
 	String GetFax			=(String)ClMstRt[i][M100_ClMstRt.ColFax];			//FAX
 	String GetMail			=(String)ClMstRt[i][M100_ClMstRt.ColMail];			//メールアドレス
-	String GetCom01			=(String)ClMstRt[i][M100_ClMstRt.ColCom01];		//コメント1
-	String GetCom02			=(String)ClMstRt[i][M100_ClMstRt.ColCom02];		//コメント2
-	String GetCom03			=(String)ClMstRt[i][M100_ClMstRt.ColCom03];		//コメント3
+	String GetCom01			=(String)ClMstRt[i][M100_ClMstRt.ColCom01];			//コメント1
+	String GetCom02			=(String)ClMstRt[i][M100_ClMstRt.ColCom02];			//コメント2
+	String GetCom03			=(String)ClMstRt[i][M100_ClMstRt.ColCom03];			//コメント3
 	int GetShimeDate		=(int)ClMstRt[i][M100_ClMstRt.ColShimeDate];		//締日
 	int GetShimeBasis		=(int)ClMstRt[i][M100_ClMstRt.ColShimeBasis];		//請求基準
-	String GetEntryDate		=(String)ClMstRt[i][M100_ClMstRt.ColEntryDate];	//データ登録日時
+	String GetEntryDate		=(String)ClMstRt[i][M100_ClMstRt.ColEntryDate];		//データ登録日時
 	String GetUpdateDate	=(String)ClMstRt[i][M100_ClMstRt.ColUpdateDate];	//データ更新日時
-	String GetEntryUser		=(String)ClMstRt[i][M100_ClMstRt.ColEntryUser];	//登録者コード
+	String GetEntryUser		=(String)ClMstRt[i][M100_ClMstRt.ColEntryUser];		//登録者コード
 	String GetUpdateUser	=(String)ClMstRt[i][M100_ClMstRt.ColUpdateUser];	//更新者コード
 	String GetPTMSCD		=(String)ClMstRt[i][M100_ClMstRt.ColPTMSCD];		//基幹システム荷主コード
 	*/
 	
 	//戻り値カラム
-	static final  int Colcl_cd			= (int)  0;	//荷主CD
-	static final  int ColClGpCD		= (int)  1;	//荷主グループCD
-	static final  int ColClGpName		= (int)  2;	//グループ名1
-	static final  int ColWHCD			= (int)  3;	//担当倉庫
-	static final  int ColWHName		= (int)  4;	//担当倉庫名
-	static final  int ColCLName01		= (int)  5;	//荷主名1
-	static final  int ColCLName02		= (int)  6;	//荷主名2
-	static final  int ColCLName03		= (int)  7;	//荷主名3
+	
+	static final  int ColWHName		= (int)  0;	//担当倉庫名
+	static final  int ColClGpName		= (int)  1;	//グループ名1
+	static final  int ColCLName01		= (int)  2;	//荷主表記名
+	static final  int ColCLName02		= (int)  3;	//荷主正式名
+	static final  int ColCLName03		= (int)  4;	//荷主略名
+	static final  int Colcl_cd			= (int)  5;	//荷主CD
+	static final  int ColClGpCD		= (int)  6;	//荷主グループCD
+	static final  int ColWHCD			= (int)  7;	//担当倉庫
 	static final  int ColPost			= (int)  8;	//郵便番号
 	static final  int ColAdd01			= (int)  9;	//住所1
 	static final  int ColAdd02			= (int) 10;	//住所2
@@ -89,12 +90,12 @@ public class M100_ClMstRt{
 		Object[][] RtSettingClMstRt = {
 				 {"cl_cd"		,Colcl_cd			,"String"	,"荷主CD"}
 				,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"}
-				,{"ClGpName"	,ColClGpName		,"String"	,"グループ名1"}
+				,{"ClGpName"	,ColClGpName		,"String"	,"グループ表記名"}
 				,{"WHCD"		,ColWHCD			,"String"	,"担当倉庫"}
 				,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"}
-				,{"CLName01"	,ColCLName01		,"String"	,"荷主名1"}
-				,{"CLName02"	,ColCLName02		,"String"	,"荷主名2"}
-				,{"CLName03"	,ColCLName03		,"String"	,"荷主名3"}
+				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"}
+				,{"CLName02"	,ColCLName02		,"String"	,"荷主正式名"}
+				,{"CLName03"	,ColCLName03		,"String"	,"荷主略名"}
 				,{"Post"		,ColPost			,"String"	,"郵便番号"}
 				,{"Add01"		,ColAdd01			,"String"	,"住所1"}
 				,{"Add02"		,ColAdd02			,"String"	,"住所2"}
@@ -107,8 +108,8 @@ public class M100_ClMstRt{
 				,{"Com03"		,ColCom03			,"String"	,"コメント3"}
 				,{"ShimeDate"	,ColShimeDate		,"int"		,"締日"}
 				,{"ShimeBasis"	,ColShimeBasis	,"int"		,"請求基準"}
-				,{"EntryDate"	,ColEntryDate		,"String"	,"データ登録日時"}
-				,{"UpdateDate"	,ColUpdateDate	,"String"	,"データ更新日時"}
+				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"データ登録日時"}
+				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"データ更新日時"}
 				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"}
 				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"}
 				,{"PTMSCD"		,ColPTMSCD			,"String"	,"基幹システム荷主コード"}
@@ -152,9 +153,9 @@ public class M100_ClMstRt{
 		+"(KM0031_CLIENT_GROUP.ClGpName01) as ClGpName,"	//グループ名1
 		+"(KM0030_CLIENTMST.WHCD) as WHCD,"					//担当倉庫
 		+"(KM0010_WHMST.WHName) as WHName,"					//担当倉庫名
-		+"(KM0030_CLIENTMST.CLName01) as CLName01,"			//荷主名1
-		+"(KM0030_CLIENTMST.CLName02) as CLName02,"			//荷主名2
-		+"(KM0030_CLIENTMST.CLName03) as CLName03,"			//荷主名3
+		+"(KM0030_CLIENTMST.CLName01) as CLName01,"			//荷主表記名
+		+"(KM0030_CLIENTMST.CLName02) as CLName02,"			//荷主正式名
+		+"(KM0030_CLIENTMST.CLName03) as CLName03,"			//荷主略名
 		+"(KM0030_CLIENTMST.Post) as Post,"					//郵便番号
 		+"(KM0030_CLIENTMST.Add01) as Add01,"				//住所1
 		+"(KM0030_CLIENTMST.Add02) as Add02,"				//住所2
@@ -378,9 +379,9 @@ public class M100_ClMstRt{
 					if(null==rset01.getString("ClGpName")){		rt[counter][ColClGpName]		="";}else{rt[counter][ColClGpName]		=rset01.getString("ClGpName");}		//グループ名1
 					if(null==rset01.getString("WHCD")){			rt[counter][ColWHCD]			="";}else{rt[counter][ColWHCD]			=rset01.getString("WHCD");}			//担当倉庫
 					if(null==rset01.getString("WHName")){		rt[counter][ColWHName]			="";}else{rt[counter][ColWHName]		=rset01.getString("WHName");}		//担当倉庫名
-					if(null==rset01.getString("CLName01")){		rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}		//荷主名1
-					if(null==rset01.getString("CLName02")){		rt[counter][ColCLName02]		="";}else{rt[counter][ColCLName02]		=rset01.getString("CLName02");}		//荷主名2
-					if(null==rset01.getString("CLName03")){		rt[counter][ColCLName03]		="";}else{rt[counter][ColCLName03]		=rset01.getString("CLName03");}		//荷主名3
+					if(null==rset01.getString("CLName01")){		rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}		//荷主表記名
+					if(null==rset01.getString("CLName02")){		rt[counter][ColCLName02]		="";}else{rt[counter][ColCLName02]		=rset01.getString("CLName02");}		//荷主正式名
+					if(null==rset01.getString("CLName03")){		rt[counter][ColCLName03]		="";}else{rt[counter][ColCLName03]		=rset01.getString("CLName03");}		//荷主略名
 					if(null==rset01.getString("Post")){			rt[counter][ColPost]			="";}else{rt[counter][ColPost]			=rset01.getString("Post");}			//郵便番号
 					if(null==rset01.getString("Add01")){		rt[counter][ColAdd01]			="";}else{rt[counter][ColAdd01]		=rset01.getString("Add01");}		//住所1
 					if(null==rset01.getString("Add02")){		rt[counter][ColAdd02]			="";}else{rt[counter][ColAdd02]		=rset01.getString("Add02");}		//住所2

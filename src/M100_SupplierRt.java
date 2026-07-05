@@ -54,7 +54,7 @@ public class M100_SupplierRt{
 			String GetClWh			=	(String)SupplierRt[i][M100_SupplierRt.ColClWh];			//担当倉庫
 			String GetWHName		=	(String)SupplierRt[i][M100_SupplierRt.ColWHName];			//担当倉庫名
 			String GetClCd			=	(String)SupplierRt[i][M100_SupplierRt.ColClCd];			//荷主CD
-			String GetCLName01		=	(String)SupplierRt[i][M100_SupplierRt.ColCLName01];		//荷主名1
+			String GetCLName01		=	(String)SupplierRt[i][M100_SupplierRt.ColCLName01];		//荷主表記名
 			String GetSPCd			=	(String)SupplierRt[i][M100_SupplierRt.ColSPCd];			//仕入先コード
 			String GetSPName01		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName01];		//仕入先名1
 			String GetSPName02		=	(String)SupplierRt[i][M100_SupplierRt.ColSPName02];		//仕入先名2
@@ -86,7 +86,7 @@ public class M100_SupplierRt{
 	static final int ColClWh				= (int)0;	//担当倉庫
 	static final int ColWHName				= (int)1;	//担当倉庫名
 	static final int ColClCd				= (int)2;	//荷主CD
-	static final int ColCLName01			= (int)3;	//荷主名1
+	static final int ColCLName01			= (int)3;	//荷主表記名
 	static final int ColSPCd				= (int)4;	//仕入先コード
 	static final int ColSPName01			= (int)5;	//仕入先名1
 	static final int ColSPName02			= (int)6;	//仕入先名2
@@ -119,7 +119,7 @@ public class M100_SupplierRt{
 				 {"ClWh"			,ColClWh			,"String"	,"担当倉庫"					,"Key"}
 				,{"WHName"			,ColWHName			,"String"	,"担当倉庫名"				,""}
 				,{"ClCd"			,ColClCd			,"String"	,"荷主CD"					,"Key"}
-				,{"CLName01"		,ColCLName01		,"String"	,"荷主名1"					,""}
+				,{"CLName01"		,ColCLName01		,"String"	,"荷主表記名"					,""}
 				,{"SPCd"			,ColSPCd			,"String"	,"仕入先コード"				,"Key"}
 				,{"SPName01"		,ColSPName01		,"String"	,"仕入先名1"				,""}
 				,{"SPName02"		,ColSPName02		,"String"	,"仕入先名2"				,""}
@@ -203,7 +203,7 @@ public class M100_SupplierRt{
 				+"(WM0010Supplier.ClWh) as ClWh,\n"						//担当倉庫
 				+"(KM0010_WHMST.WHName) as WHName,\n"					//担当倉庫名
 				+"(WM0010Supplier.ClCd) as ClCd,\n"						//荷主CD
-				+"(KM0030_CLIENTMST.CLName01) as CLName01,\n"			//荷主名1
+				+"(KM0030_CLIENTMST.CLName01) as CLName01,\n"			//荷主表記名
 				+"(WM0010Supplier.SPCd) as SPCd,\n"						//仕入先コード
 				+"(WM0010Supplier.SPName01) as SPName01,\n"				//仕入先名1
 				+"(WM0010Supplier.SPName02) as SPName02,\n"				//仕入先名2
@@ -589,7 +589,7 @@ public class M100_SupplierRt{
 					if(null==rset01.getString("ClWh")			){rt[counter][ColClWh]				="";}else{rt[counter][ColClWh]				=rset01.getString("ClWh");}							//担当倉庫
 					if(null==rset01.getString("WHName")			){rt[counter][ColWHName]			="";}else{rt[counter][ColWHName]			=rset01.getString("WHName");}						//担当倉庫名
 					if(null==rset01.getString("ClCd")			){rt[counter][ColClCd]				="";}else{rt[counter][ColClCd]				=rset01.getString("ClCd");}							//荷主CD
-					if(null==rset01.getString("CLName01")		){rt[counter][ColCLName01]			="";}else{rt[counter][ColCLName01]			=rset01.getString("CLName01");}						//荷主名1
+					if(null==rset01.getString("CLName01")		){rt[counter][ColCLName01]			="";}else{rt[counter][ColCLName01]			=rset01.getString("CLName01");}						//荷主表記名
 					if(null==rset01.getString("SPCd")			){rt[counter][ColSPCd]				="";}else{rt[counter][ColSPCd]				=rset01.getString("SPCd");}							//仕入先コード
 					if(null==rset01.getString("SPName01")		){rt[counter][ColSPName01]			="";}else{rt[counter][ColSPName01]			=rset01.getString("SPName01");}						//仕入先名1
 					if(null==rset01.getString("SPName02")		){rt[counter][ColSPName02]			="";}else{rt[counter][ColSPName02]			=rset01.getString("SPName02");}						//仕入先名2

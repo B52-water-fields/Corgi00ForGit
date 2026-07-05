@@ -31,9 +31,9 @@ public class WM100_ClGpMst_01_RenewAndCrwate{
 		main_fm.add(entry_btn);
 		
 		JLabel LB_ClGpCD		 = B100_FrameParts.JLabelSet(  0, 40,100,20,"荷主グループCD:"	,11,1);
-		JLabel LB_CLGpName01	 = B100_FrameParts.JLabelSet(  0, 65,100,20,"荷主名1:"		,11,1);
-		JLabel LB_CLGpName02	 = B100_FrameParts.JLabelSet(  0, 90,100,20,"荷主名2:"		,11,1);
-		JLabel LB_CLGpName03	 = B100_FrameParts.JLabelSet(  0,115,100,20,"荷主名3:"		,11,1);
+		JLabel LB_CLGpName01	 = B100_FrameParts.JLabelSet(  0, 65,100,20,"グループ表記名:"	,11,1);
+		JLabel LB_CLGpName02	 = B100_FrameParts.JLabelSet(  0, 90,100,20,"グループ正式名:"	,11,1);
+		JLabel LB_CLGpName03	 = B100_FrameParts.JLabelSet(  0,115,100,20,"グループ略名:"	,11,1);
 		JLabel LB_Post			 = B100_FrameParts.JLabelSet(  0,140,100,20,"郵便番号:"		,11,1);
 		JLabel LB_Add01			 = B100_FrameParts.JLabelSet(  0,165,100,20,"住所1:"			,11,1);
 		JLabel LB_Add02			 = B100_FrameParts.JLabelSet(  0,190,100,20,"住所2:"			,11,1);
@@ -51,9 +51,9 @@ public class WM100_ClGpMst_01_RenewAndCrwate{
 		JLabel LB_PassWord		 = B100_FrameParts.JLabelSet(  0,490,100,20,"パスワード:"		,11,1);
 		
 		final JTextField TB_ClGpCD		 = B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//荷主グループCD
-		final JTextField TB_CLGpName01	 = B100_FrameParts.JTextFieldSet(100, 65,200,20,"",11,0);	//荷主名1
-		final JTextField TB_CLGpName02	 = B100_FrameParts.JTextFieldSet(100, 90,200,20,"",11,0);	//荷主名2
-		final JTextField TB_CLGpName03	 = B100_FrameParts.JTextFieldSet(100,115,200,20,"",11,0);	//荷主名3
+		final JTextField TB_CLGpName01	 = B100_FrameParts.JTextFieldSet(100, 65,200,20,"",11,0);	//荷主表記名
+		final JTextField TB_CLGpName02	 = B100_FrameParts.JTextFieldSet(100, 90,200,20,"",11,0);	//荷主正式名
+		final JTextField TB_CLGpName03	 = B100_FrameParts.JTextFieldSet(100,115,200,20,"",11,0);	//荷主略名
 		final JTextField TB_Post		 = B100_FrameParts.JTextFieldSet(100,140,100,20,"",11,0);	//郵便番号
 		final JTextField TB_Add01		 = B100_FrameParts.JTextFieldSet(100,165,250,20,"",11,0);	//住所1
 		final JTextField TB_Add02		 = B100_FrameParts.JTextFieldSet(100,190,250,20,"",11,0);	//住所2
@@ -135,9 +135,9 @@ public class WM100_ClGpMst_01_RenewAndCrwate{
 			
 			if(0<ClGpMstRt.length) {
 				TB_ClGpCD.setText(		""+ClGpMstRt[0][ 0]);	//荷主グループCD
-				TB_CLGpName01.setText(	""+ClGpMstRt[0][ 1]);	//荷主名1
-				TB_CLGpName02.setText(	""+ClGpMstRt[0][ 2]);	//荷主名2
-				TB_CLGpName03.setText(	""+ClGpMstRt[0][ 3]);	//荷主名3
+				TB_CLGpName01.setText(	""+ClGpMstRt[0][ 1]);	//荷主表記名
+				TB_CLGpName02.setText(	""+ClGpMstRt[0][ 2]);	//荷主正式名
+				TB_CLGpName03.setText(	""+ClGpMstRt[0][ 3]);	//荷主略名
 				TB_Post.setText(		""+ClGpMstRt[0][ 4]);	//郵便番号
 				TB_Add01.setText(		""+ClGpMstRt[0][ 5]);	//住所1
 				TB_Add02.setText(		""+ClGpMstRt[0][ 6]);	//住所2
@@ -216,9 +216,9 @@ public class WM100_ClGpMst_01_RenewAndCrwate{
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				String GetClGpCD		  = TB_ClGpCD.getText();		if(null==GetClGpCD){GetClGpCD = "";}				//荷主グループCD
-				String GetCLGpName01	  = TB_CLGpName01.getText();	if(null==GetCLGpName01){GetCLGpName01 = "";}		//荷主名1
-				String GetCLGpName02	  = TB_CLGpName02.getText();	if(null==GetCLGpName02){GetCLGpName02 = "";}		//荷主名2
-				String GetCLGpName03	  = TB_CLGpName03.getText();	if(null==GetCLGpName03){GetCLGpName03 = "";}		//荷主名3
+				String GetCLGpName01	  = TB_CLGpName01.getText();	if(null==GetCLGpName01){GetCLGpName01 = "";}		//荷主表記名
+				String GetCLGpName02	  = TB_CLGpName02.getText();	if(null==GetCLGpName02){GetCLGpName02 = "";}		//荷主正式名
+				String GetCLGpName03	  = TB_CLGpName03.getText();	if(null==GetCLGpName03){GetCLGpName03 = "";}		//荷主略名
 				String GetPost			  = TB_Post.getText();			if(null==GetPost){GetPost = "";}					//郵便番号
 				String GetAdd01			  = TB_Add01.getText();			if(null==GetAdd01){GetAdd01 = "";}					//住所1
 				String GetAdd02			  = TB_Add02.getText();			if(null==GetAdd02){GetAdd02 = "";}					//住所2
@@ -260,9 +260,9 @@ public class WM100_ClGpMst_01_RenewAndCrwate{
 					
 					String[][] SetString = {
 							{"ClGpCD"		,"1","1",GetClGpCD}			//荷主グループCD
-							,{"CLGpName01"	,"1","1",GetCLGpName01}		//荷主名1
-							,{"CLGpName02"	,"1","1",GetCLGpName02}		//荷主名2
-							,{"CLGpName03"	,"1","1",GetCLGpName03}		//荷主名3"
+							,{"CLGpName01"	,"1","1",GetCLGpName01}		//荷主表記名
+							,{"CLGpName02"	,"1","1",GetCLGpName02}		//荷主正式名
+							,{"CLGpName03"	,"1","1",GetCLGpName03}		//荷主略名"
 							,{"Post"		,"1","1",GetPost}			//郵便番号
 							,{"Add01"		,"1","1",GetAdd01}			//住所1
 							,{"Add02"		,"1","1",GetAdd02}			//住所2

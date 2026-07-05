@@ -2878,7 +2878,7 @@ public class WT100_Stock_10_Adjust{
 		Object[] StockData= new Object[T100_StockRt.RtStockRt().length];
 		
 		StockData[T100_StockRt.ColClCd]			= TgtClCd;				//荷主コード
-		StockData[T100_StockRt.ColCLName]			= "";					//荷主名1
+		StockData[T100_StockRt.ColCLName]			= "";					//荷主表記名
 		StockData[T100_StockRt.ColWhCd]			= TgtWhCd;				//倉庫コード
 		StockData[T100_StockRt.ColClWHName]		= "";					//担当倉庫名
 		StockData[T100_StockRt.ColClGpCD]			= "";					//荷主グループCD
@@ -2955,7 +2955,7 @@ public class WT100_Stock_10_Adjust{
 			Object[][] ClMstRt = ClMstRt((String)StockData[T100_StockRt.ColClCd]);
 			if(1==ClMstRt.length) {
 				StockData[T100_StockRt.ColClCd]		=(String)ClMstRt[0][M100_ClMstRt.Colcl_cd];		//荷主CD
-				StockData[T100_StockRt.ColCLName]		=(String)ClMstRt[0][M100_ClMstRt.ColCLName01];		//荷主名1
+				StockData[T100_StockRt.ColCLName]		=(String)ClMstRt[0][M100_ClMstRt.ColCLName01];		//荷主表記名
 				StockData[T100_StockRt.ColClGpCD]		=(String)ClMstRt[0][M100_ClMstRt.ColClGpCD];		//荷主グループCD
 				StockData[T100_StockRt.ColClGpName]	=(String)ClMstRt[0][M100_ClMstRt.ColClGpName];		//グループ名1
 			}
