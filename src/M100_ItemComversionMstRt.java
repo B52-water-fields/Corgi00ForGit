@@ -23,11 +23,11 @@ public class M100_ItemComversionMstRt{
 			
 	String GetClGpCd		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColClGpCd];		//荷主グループコード
 	String GetCLGpName01	= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColCLGpName01];	//荷主グループ名1
-	String GetClCd			= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColClCd];		//荷主コード
-	String GetCLName01		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColCLName01];	//荷主名
-	String GetClItemCd		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColClItemCd];	//荷主商品コード
+	String GetClCd			= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColClCd];			//荷主コード
+	String GetCLName01		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColCLName01];		//荷主名
+	String GetClItemCd		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColClItemCd];		//荷主商品コード
 	String GetItemCd		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColItemCd];		//変換先商品コード
-	String GetPackingType	= (int)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColPackingType];	//荷姿タイプ
+	String GetPackingType	= (int)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColPackingType];		//荷姿タイプ
 	String GetItemName01	= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColItemName01];	//商品名1
 	String GetItemName02	= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColItemName02];	//商品名2
 	String GetItemName03	= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColItemName03];	//商品名3

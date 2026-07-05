@@ -88,11 +88,12 @@ public class A00000_Main{
 	public static String ClCd = "";
 	public static String ClName = "";
 	public static String ClGp = "";
+	public static String ClGpName = "";
 	
 	public static int PasswordExpireDays = 180;		//パスワード有効期限推奨日数（パスワード変更履歴ではなく、ユーザーマスタの最終更新日時で判定）0なら更新永遠に気にしない
 	
 	public static String FontFilePath = "";
-	public static String FontFileName = "";	//ttcフォント呼び出し時にフォント名でつる
+	public static String FontFileName = "";	//ttcフォント呼び出し時にフォント名でつる為に必要
 	
 	/*===========================================================================================================================
 	
@@ -375,11 +376,12 @@ public class A00000_Main{
 		//Entryボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				ClWh = ""+ClList[TbCLList.getSelectedIndex()][3];
-				ClWhName = ""+ClList[TbCLList.getSelectedIndex()][4];
-				ClCd = ""+ClList[TbCLList.getSelectedIndex()][0];
-				ClName = ""+ClList[TbCLList.getSelectedIndex()][5];
-				ClGp = ""+ClList[TbCLList.getSelectedIndex()][1];
+				ClWh 		= ""+ClList[TbCLList.getSelectedIndex()][M100_ClMstRt.ColWHCD];
+				ClWhName 	= ""+ClList[TbCLList.getSelectedIndex()][M100_ClMstRt.ColWHName];
+				ClCd 		= ""+ClList[TbCLList.getSelectedIndex()][M100_ClMstRt.Colcl_cd];
+				ClName 	= ""+ClList[TbCLList.getSelectedIndex()][M100_ClMstRt.ColCLName01];
+				ClGp 		= ""+ClList[TbCLList.getSelectedIndex()][M100_ClMstRt.ColClGpCD];
+				ClGpName 	= ""+ClList[TbCLList.getSelectedIndex()][M100_ClMstRt.ColClGpName];
 				
 				//荷主毎に決定する変数取得
 				B100_DefaultVariable.DefaultVariable();
