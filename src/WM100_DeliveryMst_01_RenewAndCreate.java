@@ -47,9 +47,9 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		
 		JLabel LB_DECD				= B100_FrameParts.JLabelSet(  0, 40,100,20,"届先コード:",		11,1);
 		JLabel LB_DepartmentCd		= B100_FrameParts.JLabelSet(  0, 65,100,20,"部署CD:",			11,1);
-		JLabel LB_DEName01			= B100_FrameParts.JLabelSet(  0, 90,100,20,"届先名1:",		11,1);
-		JLabel LB_DEName02			= B100_FrameParts.JLabelSet(  0,115,100,20,"届先名2:",		11,1);
-		JLabel LB_DEName03			= B100_FrameParts.JLabelSet(  0,140,100,20,"届先名3:",		11,1);
+		JLabel LB_DEName01			= B100_FrameParts.JLabelSet(  0, 90,100,20,"届先表記名:",		11,1);
+		JLabel LB_DEName02			= B100_FrameParts.JLabelSet(  0,115,100,20,"届先正式名:",		11,1);
+		JLabel LB_DEName03			= B100_FrameParts.JLabelSet(  0,140,100,20,"届先略名:",		11,1);
 		JLabel LB_Post				= B100_FrameParts.JLabelSet(  0,165,100,20,"届先郵便:",		11,1);
 		JLabel LB_Add01				= B100_FrameParts.JLabelSet(  0,190,100,20,"届先住所1:",		11,1);
 		JLabel LB_Add02				= B100_FrameParts.JLabelSet(  0,215,100,20,"届先住所2:",		11,1);
@@ -74,9 +74,9 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 
 		final JTextField TB_DECD			= B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//届先コード
 		final JTextField TB_DepartmentCd	= B100_FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//部署CD
-		final JTextField TB_DEName01		= B100_FrameParts.JTextFieldSet(100, 90,250,20,"",11,0);			//届先名1
-		final JTextField TB_DEName02		= B100_FrameParts.JTextFieldSet(100,115,250,20,"",11,0);			//届先名2
-		final JTextField TB_DEName03		= B100_FrameParts.JTextFieldSet(100,140,250,20,"",11,0);			//届先名3
+		final JTextField TB_DEName01		= B100_FrameParts.JTextFieldSet(100, 90,250,20,"",11,0);			//届先表記名
+		final JTextField TB_DEName02		= B100_FrameParts.JTextFieldSet(100,115,250,20,"",11,0);			//届先正式名
+		final JTextField TB_DEName03		= B100_FrameParts.JTextFieldSet(100,140,250,20,"",11,0);			//届先略名
 		final JTextField TB_Post			= B100_FrameParts.JTextFieldSet(100,165,100,20,"",11,0);			//届先郵便
 		final JTextField TB_Add01			= B100_FrameParts.JTextFieldSet(100,190,250,20,"",11,0);			//届先住所1
 		final JTextField TB_Add02			= B100_FrameParts.JTextFieldSet(100,215,250,20,"",11,0);			//届先住所2
@@ -285,7 +285,7 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 								"Fg"
 								,"届先CD"
 								,"部署CD"
-								,"届先名1"
+								,"届先表記名"
 								,"届先住所"};
 		
 		//編集可能カラムの指定
@@ -307,7 +307,7 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
 		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先CD
 		column = columnModel01.getColumn( 2);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//部署CD
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(250*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先名1
+		column = columnModel01.getColumn( 3);	column.setPreferredWidth(250*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先表記名
 		column = columnModel01.getColumn( 4);	column.setPreferredWidth(250*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先住所
 		
 		//スクロール用設定
@@ -1046,9 +1046,9 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		String[][] SetString = {
 				{"DECD"				,"1","1",GetDECD}			//届先コード
 				,{"DepartmentCd"	,"1","1",GetDepartmentCd}	//部署CD
-				,{"DEName01"		,"1","1",GetDEName01}		//届先名1
-				,{"DEName02"		,"1","1",GetDEName02}		//届先名2
-				,{"DEName03"		,"1","1",GetDEName03}		//届先名3
+				,{"DEName01"		,"1","1",GetDEName01}		//届先表記名
+				,{"DEName02"		,"1","1",GetDEName02}		//届先正式名
+				,{"DEName03"		,"1","1",GetDEName03}		//届先略名
 				,{"Post"			,"1","1",GetPost}			//届先郵便
 				,{"Add01"			,"1","1",GetAdd01}			//届先住所1
 				,{"Add02"			,"1","1",GetAdd02}			//届先住所2

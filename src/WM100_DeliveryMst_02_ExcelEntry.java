@@ -100,9 +100,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		String[] NeedCol = {
 				 "届先コード"
 				,"部署CD"
-				,"届先名1"
-				,"届先名2"
-				,"届先名3"
+				,"届先表記名"
+				,"届先正式名"
+				,"届先略名"
 				,"届先郵便"
 				,"届先住所1"
 				,"届先住所2"
@@ -120,9 +120,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		int[] TgtCol = {
 					 -1	//届先コード
 					,-1	//部署CD
-					,-1	//届先名1
-					,-1	//届先名2
-					,-1	//届先名3
+					,-1	//届先表記名
+					,-1	//届先正式名
+					,-1	//届先略名
 					,-1	//届先郵便
 					,-1	//届先住所1
 					,-1	//届先住所2
@@ -165,9 +165,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);
 		column = columnModel01.getColumn( 1);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先コード
 		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//部署CD
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先名1
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先名2
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先名3
+		column = columnModel01.getColumn( 3);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先表記名
+		column = columnModel01.getColumn( 4);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先正式名
+		column = columnModel01.getColumn( 5);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先略名
 		column = columnModel01.getColumn( 6);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先郵便
 		column = columnModel01.getColumn( 7);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先住所1
 		column = columnModel01.getColumn( 8);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先住所2
@@ -217,7 +217,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 			main_fm.setVisible(false);
 			main_fm.dispose();
 			JOptionPane.showMessageDialog(null, "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n"
-													+"届先コード,部署CD,届先名1,届先名2,届先名3,\n"
+													+"届先コード,部署CD,届先表記名,届先正式名,届先略名,\n"
 													+"届先郵便,届先住所1,届先住所2,届先住所3\n"
 													+",届先電話,届先FAX,届先MAIL,\n"
 													+"コメント1,コメント2,コメント3,基幹システム発着地コード,削除区分\n"
@@ -229,9 +229,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 			
 			ClmnType[TgtCol[ 0]]=1;	//届先コード
 			ClmnType[TgtCol[ 1]]=1;	//部署CD
-			ClmnType[TgtCol[ 2]]=1;	//届先名1
-			ClmnType[TgtCol[ 3]]=1;	//届先名2
-			ClmnType[TgtCol[ 4]]=1;	//届先名3
+			ClmnType[TgtCol[ 2]]=1;	//届先表記名
+			ClmnType[TgtCol[ 3]]=1;	//届先正式名
+			ClmnType[TgtCol[ 4]]=1;	//届先略名
 			ClmnType[TgtCol[ 5]]=1;	//届先郵便
 			ClmnType[TgtCol[ 6]]=1;	//届先住所1
 			ClmnType[TgtCol[ 7]]=1;	//届先住所2
@@ -254,9 +254,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						SetOb[ 0] = false;
 						SetOb[ 1] = ""+ExcellRead[i][TgtCol[ 0]];	//届先コード
 						SetOb[ 2] = ""+ExcellRead[i][TgtCol[ 1]];	//部署CD
-						SetOb[ 3] = ""+ExcellRead[i][TgtCol[ 2]];	//届先名1
-						SetOb[ 4] = ""+ExcellRead[i][TgtCol[ 3]];	//届先名2
-						SetOb[ 5] = ""+ExcellRead[i][TgtCol[ 4]];	//届先名3
+						SetOb[ 3] = ""+ExcellRead[i][TgtCol[ 2]];	//届先表記名
+						SetOb[ 4] = ""+ExcellRead[i][TgtCol[ 3]];	//届先正式名
+						SetOb[ 5] = ""+ExcellRead[i][TgtCol[ 4]];	//届先略名
 						SetOb[ 6] = B100_TextControl.num_only_String(""+ExcellRead[i][TgtCol[ 5]]);	//届先郵便
 						SetOb[ 7] = ""+ExcellRead[i][TgtCol[ 6]];	//届先住所1
 						SetOb[ 8] = ""+ExcellRead[i][TgtCol[ 7]];	//届先住所2
@@ -281,9 +281,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		
 		JLabel LB_DECD				= B100_FrameParts.JLabelSet(  0,425,100,20,"届先CD:",		11,1);
 		JLabel LB_DepartmentCd		= B100_FrameParts.JLabelSet(  0,450,100,20,"部署CD:",			11,1);
-		JLabel LB_DEName01			= B100_FrameParts.JLabelSet(  0,475,100,20,"届先名1:",		11,1);
-		JLabel LB_DEName02			= B100_FrameParts.JLabelSet(  0,500,100,20,"届先名2:",		11,1);
-		JLabel LB_DEName03			= B100_FrameParts.JLabelSet(  0,525,100,20,"届先名3:",		11,1);		
+		JLabel LB_DEName01			= B100_FrameParts.JLabelSet(  0,475,100,20,"届先表記名:",		11,1);
+		JLabel LB_DEName02			= B100_FrameParts.JLabelSet(  0,500,100,20,"届先正式名:",		11,1);
+		JLabel LB_DEName03			= B100_FrameParts.JLabelSet(  0,525,100,20,"届先略名:",		11,1);		
 		JLabel LB_Post				= B100_FrameParts.JLabelSet(  0,550,100,20,"届先郵便:",		11,1);
 		JLabel LB_Add01				= B100_FrameParts.JLabelSet(  0,575,100,20,"届先住所1:",	11,1);
 		JLabel LB_Add02				= B100_FrameParts.JLabelSet(  0,600,100,20,"届先住所2:",	11,1);
@@ -301,9 +301,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		
 		final JTextField TB_DECD			= B100_FrameParts.JTextFieldSet(100,425,100,20,"",11,0);			//届先コード
 		final JTextField TB_DepartmentCd	= B100_FrameParts.JTextFieldSet(100,450,100,20,"",11,0);			//部署CD
-		final JTextField TB_DEName01		= B100_FrameParts.JTextFieldSet(100,475,250,20,"",11,0);			//届先名1
-		final JTextField TB_DEName02		= B100_FrameParts.JTextFieldSet(100,500,250,20,"",11,0);			//届先名2
-		final JTextField TB_DEName03		= B100_FrameParts.JTextFieldSet(100,525,250,20,"",11,0);			//届先名3		
+		final JTextField TB_DEName01		= B100_FrameParts.JTextFieldSet(100,475,250,20,"",11,0);			//届先表記名
+		final JTextField TB_DEName02		= B100_FrameParts.JTextFieldSet(100,500,250,20,"",11,0);			//届先正式名
+		final JTextField TB_DEName03		= B100_FrameParts.JTextFieldSet(100,525,250,20,"",11,0);			//届先略名		
 		final JTextField TB_Post			= B100_FrameParts.JTextFieldSet(100,550,100,20,"",11,0);			//届先郵便
 		final JTextField TB_Add01			= B100_FrameParts.JTextFieldSet(100,575,250,20,"",11,0);			//届先住所1
 		final JTextField TB_Add02			= B100_FrameParts.JTextFieldSet(100,600,250,20,"",11,0);			//届先住所2
@@ -393,7 +393,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 								"Fg"
 								,"届先CD"
 								,"部署CD"
-								,"届先名1"
+								,"届先表記名"
 								,"届先住所"};
 		
 		//編集可能カラムの指定
@@ -412,7 +412,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		column = SDcolumnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
 		column = SDcolumnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先CD
 		column = SDcolumnModel01.getColumn( 2);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//部署CD
-		column = SDcolumnModel01.getColumn( 3);	column.setPreferredWidth(250*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先名1
+		column = SDcolumnModel01.getColumn( 3);	column.setPreferredWidth(250*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先表記名
 		column = SDcolumnModel01.getColumn( 4);	column.setPreferredWidth(250*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//届先住所
 		
 		//スクロール用設定
@@ -651,9 +651,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						String[][] SetString = {
 								{"DECD"				,"1","1"}	//届先コード
 								,{"DepartmentCd"	,"1","1"}	//部署CD
-								,{"DEName01"		,"1","1"}	//届先名1
-								,{"DEName02"		,"1","1"}	//届先名2
-								,{"DEName03"		,"1","1"}	//届先名3
+								,{"DEName01"		,"1","1"}	//届先表記名
+								,{"DEName02"		,"1","1"}	//届先正式名
+								,{"DEName03"		,"1","1"}	//届先略名
 								,{"Post"			,"1","1"}	//届先郵便
 								,{"Add01"			,"1","1"}	//届先住所1
 								,{"Add02"			,"1","1"}	//届先住所2
@@ -697,9 +697,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						
 						String GetDECD			= "";	//届先コード
 						String GetDepartmentCd	= "";	//部署CD
-						String GetDEName01		= "";	//届先名1
-						String GetDEName02		= "";	//届先名2
-						String GetDEName03		= "";	//届先名3
+						String GetDEName01		= "";	//届先表記名
+						String GetDEName02		= "";	//届先正式名
+						String GetDEName03		= "";	//届先略名
 						String GetPost			= "";	//届先郵便
 						String GetAdd01			= "";	//届先住所1
 						String GetAdd02			= "";	//届先住所2
@@ -720,9 +720,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						for(int i=0;i<RowCount;i++) {
 							GetDECD				= ""+MainFmTableModel.getValueAt(i, 1);	//届先コード
 							GetDepartmentCd		= ""+MainFmTableModel.getValueAt(i, 2);	//部署CD
-							GetDEName01			= ""+MainFmTableModel.getValueAt(i, 3);	//届先名1
-							GetDEName02			= ""+MainFmTableModel.getValueAt(i, 4);	//届先名2
-							GetDEName03			= ""+MainFmTableModel.getValueAt(i, 5);	//届先名3
+							GetDEName01			= ""+MainFmTableModel.getValueAt(i, 3);	//届先表記名
+							GetDEName02			= ""+MainFmTableModel.getValueAt(i, 4);	//届先正式名
+							GetDEName03			= ""+MainFmTableModel.getValueAt(i, 5);	//届先略名
 							GetPost				= ""+MainFmTableModel.getValueAt(i, 6);	//届先郵便
 							GetAdd01			= ""+MainFmTableModel.getValueAt(i, 7);	//届先住所1
 							GetAdd02			= ""+MainFmTableModel.getValueAt(i, 8);	//届先住所2
@@ -801,9 +801,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 								
 								entry_data[TgtCount][ 0] = GetDECD;			//届先コード
 								entry_data[TgtCount][ 1] = GetDepartmentCd; //部署CD
-								entry_data[TgtCount][ 2] = GetDEName01; 	//届先名1
-								entry_data[TgtCount][ 3] = GetDEName02; 	//届先名2
-								entry_data[TgtCount][ 4] = GetDEName03; 	//届先名3
+								entry_data[TgtCount][ 2] = GetDEName01; 	//届先表記名
+								entry_data[TgtCount][ 3] = GetDEName02; 	//届先正式名
+								entry_data[TgtCount][ 4] = GetDEName03; 	//届先略名
 								entry_data[TgtCount][ 5] = GetPost;			//届先郵便
 								entry_data[TgtCount][ 6] = GetAdd01; 		//届先住所1
 								entry_data[TgtCount][ 7] = GetAdd02; 		//届先住所2
@@ -1399,9 +1399,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 					String[] HeadString = {
 									 "届先コード"
 									,"部署CD"
-									,"届先名1"
-									,"届先名2"
-									,"届先名3"
+									,"届先表記名"
+									,"届先正式名"
+									,"届先略名"
 									,"届先郵便"
 									,"届先住所1"
 									,"届先住所2"
@@ -1419,9 +1419,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 									,"候補内Seq"
 									,"重複候補_届先コード"
 									,"重複候補_部署CD"
-									,"重複候補_届先名1"
-									,"重複候補_届先名2"
-									,"重複候補_届先名3"
+									,"重複候補_届先表記名"
+									,"重複候補_届先正式名"
+									,"重複候補_届先略名"
 									,"重複候補_届先郵便"
 									,"重複候補_届先住所1"
 									,"重複候補_届先住所2"
@@ -1467,9 +1467,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 										
 										OutString[OutPutRowCount][ 0] = ""+CeckDECD[i]; 			//届先コード
 										OutString[OutPutRowCount][ 1] = ""+CeckDepartmentCd[i]; 	//部署CD
-										OutString[OutPutRowCount][ 2] = ""+CeckDEName01[i]; 		//届先名1
-										OutString[OutPutRowCount][ 3] = ""+CeckDEName02[i];			//届先名2
-										OutString[OutPutRowCount][ 4] = ""+CeckDEName03[i]; 		//届先名3
+										OutString[OutPutRowCount][ 2] = ""+CeckDEName01[i]; 		//届先表記名
+										OutString[OutPutRowCount][ 3] = ""+CeckDEName02[i];			//届先正式名
+										OutString[OutPutRowCount][ 4] = ""+CeckDEName03[i]; 		//届先略名
 										OutString[OutPutRowCount][ 5] = ""+CeckPost[i]; 			//届先郵便
 										OutString[OutPutRowCount][ 6] = ""+CeckAdd01[i]; 			//届先住所1
 										OutString[OutPutRowCount][ 7] = ""+CeckAdd02[i]; 			//届先住所2
@@ -1487,9 +1487,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 										OutString[OutPutRowCount][19] = ""+MsCount; 				//候補内Seq
 										OutString[OutPutRowCount][20] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColDECD]; 			//重複候補_届先コード
 										OutString[OutPutRowCount][21] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColDepartmentCd]; 	//重複候補_部署CD
-										OutString[OutPutRowCount][22] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColDEName01]; 		//重複候補_届先名1
-										OutString[OutPutRowCount][23] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColDEName02]; 		//重複候補_届先名2
-										OutString[OutPutRowCount][24] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColDEName03]; 		//重複候補_届先名3
+										OutString[OutPutRowCount][22] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColDEName01]; 		//重複候補_届先表記名
+										OutString[OutPutRowCount][23] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColDEName02]; 		//重複候補_届先正式名
+										OutString[OutPutRowCount][24] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColDEName03]; 		//重複候補_届先略名
 										OutString[OutPutRowCount][25] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColPost]; 			//重複候補_届先郵便
 										OutString[OutPutRowCount][26] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColAdd01]; 			//重複候補_届先住所1
 										OutString[OutPutRowCount][27] = ""+DeliveryMstRt[i01][M100_DeliveryMstRt.ColAdd02]; 			//重複候補_届先住所2
@@ -1516,9 +1516,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 								
 								OutString[OutPutRowCount][ 0] = ""+CeckDECD[i]; 		//届先コード
 								OutString[OutPutRowCount][ 1] = ""+CeckDepartmentCd[i]; //部署CD
-								OutString[OutPutRowCount][ 2] = ""+CeckDEName01[i]; 	//届先名1
-								OutString[OutPutRowCount][ 3] = ""+CeckDEName02[i];		//届先名2
-								OutString[OutPutRowCount][ 4] = ""+CeckDEName03[i]; 	//届先名3
+								OutString[OutPutRowCount][ 2] = ""+CeckDEName01[i]; 	//届先表記名
+								OutString[OutPutRowCount][ 3] = ""+CeckDEName02[i];		//届先正式名
+								OutString[OutPutRowCount][ 4] = ""+CeckDEName03[i]; 	//届先略名
 								OutString[OutPutRowCount][ 5] = ""+CeckPost[i]; 		//届先郵便
 								OutString[OutPutRowCount][ 6] = ""+CeckAdd01[i]; 		//届先住所1
 								OutString[OutPutRowCount][ 7] = ""+CeckAdd02[i]; 		//届先住所2
@@ -1536,9 +1536,9 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 								OutString[OutPutRowCount][19] = ""+MsCount; 			//候補内Seq
 								OutString[OutPutRowCount][20] = ""; //重複候補_届先コード
 								OutString[OutPutRowCount][21] = ""; //重複候補_部署CD
-								OutString[OutPutRowCount][22] = ""; //重複候補_届先名1
-								OutString[OutPutRowCount][23] = ""; //重複候補_届先名2
-								OutString[OutPutRowCount][24] = ""; //重複候補_届先名3
+								OutString[OutPutRowCount][22] = ""; //重複候補_届先表記名
+								OutString[OutPutRowCount][23] = ""; //重複候補_届先正式名
+								OutString[OutPutRowCount][24] = ""; //重複候補_届先略名
 								OutString[OutPutRowCount][25] = ""; //重複候補_届先郵便
 								OutString[OutPutRowCount][26] = ""; //重複候補_届先住所1
 								OutString[OutPutRowCount][27] = ""; //重複候補_届先住所2

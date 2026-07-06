@@ -46,9 +46,9 @@ public class M100_DeliveryComversionMstRt{
 	String GetCL_DECD			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColCL_DECD];			//荷主届先CD
 	String GetDECD				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDECD];			//届先CD
 	String GetDepartmentCd		= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDepartmentCd];	//届先部署CD
-	String GetDEName01			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName01];		//届先名1
-	String GetDEName02			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName02];		//届先名2
-	String GetDEName03			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName03];		//届先名3
+	String GetDEName01			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName01];		//届先表記名
+	String GetDEName02			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName02];		//届先正式名
+	String GetDEName03			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName03];		//届先略名
 	String GetPost				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColPost];			//届先郵便
 	String GetAdd01				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColAdd01];			//届先住所1
 	String GetAdd02				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColAdd02];			//届先住所2
@@ -77,9 +77,9 @@ public class M100_DeliveryComversionMstRt{
 	static final int ColCL_DECD					= (int) 2;	//荷主届先CD
 	static final int ColDECD						= (int) 3;	//届先CD
 	static final int ColDepartmentCd				= (int) 4;	//届先部署CD
-	static final int ColDEName01					= (int) 5;	//届先名1
-	static final int ColDEName02					= (int) 6;	//届先名2
-	static final int ColDEName03					= (int) 7;	//届先名3
+	static final int ColDEName01					= (int) 5;	//届先表記名
+	static final int ColDEName02					= (int) 6;	//届先正式名
+	static final int ColDEName03					= (int) 7;	//届先略名
 	static final int ColPost						= (int) 8;	//届先郵便
 	static final int ColAdd01						= (int) 9;	//届先住所1
 	static final int ColAdd02						= (int)10;	//届先住所2
@@ -107,9 +107,9 @@ public class M100_DeliveryComversionMstRt{
 				,{"CL_DECD"				,ColCL_DECD				,"String"	,"荷主届先CD"}
 				,{"DECD"				,ColDECD					,"String"	,"届先CD"}
 				,{"DepartmentCd"		,ColDepartmentCd			,"String"	,"届先部署CD"}
-				,{"DEName01"			,ColDEName01				,"String"	,"届先名1"}
-				,{"DEName02"			,ColDEName02				,"String"	,"届先名2"}
-				,{"DEName03"			,ColDEName03				,"String"	,"届先名3"}
+				,{"DEName01"			,ColDEName01				,"String"	,"届先表記名"}
+				,{"DEName02"			,ColDEName02				,"String"	,"届先正式名"}
+				,{"DEName03"			,ColDEName03				,"String"	,"届先略名"}
 				,{"Post"				,ColPost					,"String"	,"届先郵便"}
 				,{"Add01"				,ColAdd01					,"String"	,"届先住所1"}
 				,{"Add02"				,ColAdd02					,"String"	,"届先住所2"}
@@ -179,9 +179,9 @@ public class M100_DeliveryComversionMstRt{
 				+",(KM0041_DELIVERY_COMVERSIONMST.CL_DECD) as CL_DECD \n"			//荷主届先コード
 				+",(KM0041_DELIVERY_COMVERSIONMST.DECD)    as DECD \n"				//届先コード
 				+",(KM0041_DELIVERY_COMVERSIONMST.DepartmentCd) as DepartmentCd \n"	//届先部署CD
-					+",(KM0040_DELIVERYMST.DEName01) as DEName01 \n"				//届先名1
-					+",(KM0040_DELIVERYMST.DEName02) as DEName02 \n"				//届先名2
-					+",(KM0040_DELIVERYMST.DEName03) as DEName03 \n"				//届先名3
+					+",(KM0040_DELIVERYMST.DEName01) as DEName01 \n"				//届先表記名
+					+",(KM0040_DELIVERYMST.DEName02) as DEName02 \n"				//届先正式名
+					+",(KM0040_DELIVERYMST.DEName03) as DEName03 \n"				//届先略名
 					+",(KM0040_DELIVERYMST.Post)  as Post  \n"						//届先郵便
 					+",(KM0040_DELIVERYMST.Add01) as Add01 \n"						//届先住所1
 					+",(KM0040_DELIVERYMST.Add02) as Add02 \n"						//届先住所2
@@ -490,9 +490,9 @@ public class M100_DeliveryComversionMstRt{
 					if(null==rset01.getString("CL_DECD"			)){rt[counter][ColCL_DECD] 		= "";}else{rt[counter][ColCL_DECD] 		= rset01.getString("CL_DECD");}			//荷主届先CD
 					if(null==rset01.getString("DECD"			)){rt[counter][ColDECD] 			= "";}else{rt[counter][ColDECD] 			= rset01.getString("DECD");}			//届先CD
 					if(null==rset01.getString("DepartmentCd"	)){rt[counter][ColDepartmentCd] 	= "";}else{rt[counter][ColDepartmentCd] 	= rset01.getString("DepartmentCd");}	//届先部署CD
-					if(null==rset01.getString("DEName01"		)){rt[counter][ColDEName01] 		= "";}else{rt[counter][ColDEName01] 		= rset01.getString("DEName01");}		//届先名1
-					if(null==rset01.getString("DEName02"		)){rt[counter][ColDEName02] 		= "";}else{rt[counter][ColDEName02] 		= rset01.getString("DEName02");}		//届先名2
-					if(null==rset01.getString("DEName03"		)){rt[counter][ColDEName03] 		= "";}else{rt[counter][ColDEName03] 		= rset01.getString("DEName03");}		//届先名3
+					if(null==rset01.getString("DEName01"		)){rt[counter][ColDEName01] 		= "";}else{rt[counter][ColDEName01] 		= rset01.getString("DEName01");}		//届先表記名
+					if(null==rset01.getString("DEName02"		)){rt[counter][ColDEName02] 		= "";}else{rt[counter][ColDEName02] 		= rset01.getString("DEName02");}		//届先正式名
+					if(null==rset01.getString("DEName03"		)){rt[counter][ColDEName03] 		= "";}else{rt[counter][ColDEName03] 		= rset01.getString("DEName03");}		//届先略名
 					if(null==rset01.getString("Post"			)){rt[counter][ColPost] 			= "";}else{rt[counter][ColPost] 			= rset01.getString("Post");}			//届先郵便
 					if(null==rset01.getString("Add01"			)){rt[counter][ColAdd01] 			= "";}else{rt[counter][ColAdd01] 			= rset01.getString("Add01");}			//届先住所1
 					if(null==rset01.getString("Add02"			)){rt[counter][ColAdd02] 			= "";}else{rt[counter][ColAdd02] 			= rset01.getString("Add02");}			//届先住所2
