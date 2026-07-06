@@ -80,8 +80,8 @@ public class M100_CarMstRt{
 				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"}
 				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"}
 				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム車輛コード"}
-				,{"EntryDate"				,ColEntryDate					,"String"	,"データ登録日時"}
-				,{"UpdateDate"				,ColUpdateDate				,"String"	,"データ更新日時"}
+				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"}
+				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"}
 				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"}
 				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"}
 				,{"DelFg"					,ColDelFg						,"int"		,"削除フラグ"}

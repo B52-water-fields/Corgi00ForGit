@@ -119,8 +119,8 @@ public class M100_DeliveryMstRt{
 				,{"PrefecturesCd"	,ColPrefecturesCd		,"String"	,"JIS県CD2桁"}
 				,{"MunicipalityCd"	,ColMunicipalityCd	,"String"	,"JIS市区町村CD5桁"}
 				,{"PTMSCD"			,ColPTMSCD				,"String"	,"基幹システム発着地コード"}
-				,{"EntryDate"		,ColEntryDate			,"String"	,"データ登録日時"}
-				,{"UpdateDate"		,ColUpdateDate		,"String"	,"データ更新日時"}
+				,{"EntryDate"		,ColEntryDate			,"DateTime"	,"データ登録日時"}
+				,{"UpdateDate"		,ColUpdateDate		,"DateTime"	,"データ更新日時"}
 				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者コード"}
 				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者コード"}
 				,{"FirstClient"		,ColFirstClient		,"String"	,"登録した荷主CD"}

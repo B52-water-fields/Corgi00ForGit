@@ -44,6 +44,7 @@ public class A00000_Main{
 	//画像等共有フォルダパス
 	public static String FileFldPth = "C:\\MIZUNO\\WMS";						//共有フォルダ等指定してください
 	
+	public static boolean UseSSH= true;
 	
 	public static String DefaultSshHostName = "your.ssh.server.com";    		//SSH接続サーバアドレス
 	public static String DefaultSshUserName = "ssh_user";			    	//SSH接続ユーザー名
@@ -210,6 +211,8 @@ public class A00000_Main{
 				if(0==LoginCheckCount) {
 					//ユーザーマスタテーブル無ければ作成
 					A100_TableCheck.UserMstCreate();
+					//倉庫マスタテーブル無ければ作成
+					A100_TableCheck.WhMstCreate();
 					//ユーザーzeusだった場合、zeusユーザー無ければ作る
 					if("zeus".equals(UserId)) {
 						ZeusCreate();
@@ -714,6 +717,10 @@ public class A00000_Main{
     		}
     		if(!IniRead.get(i).equals(IniRead.get(i).replace("MySqlDefaultSchemaOLD", ""))) {
     			MySqlDefaultSchemaOLD = IniRead.get(i).replace("MySqlDefaultSchemaOLD", "").replace(" ", "").replace("=", "").replace("\"", "").replace(";", "").replace("String", "");
+    		}
+    		if(!IniRead.get(i).equals(IniRead.get(i).replace("UseSSH", ""))) {
+    			String WST = IniRead.get(i).replace("UseSSH", "").replace(" ", "").replace("=", "").replace("\"", "").replace(";", "").replace("String", "");
+    			if("false".equals(WST)) {UseSSH	= false;}else {UseSSH	= true;}
     		}
     		if(!IniRead.get(i).equals(IniRead.get(i).replace("PasswordExpireDays", ""))) {
     			String WST = B100_TextControl.num_only_String(IniRead.get(i));

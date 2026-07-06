@@ -136,7 +136,7 @@ public class WM100_AdjustReasonMst_00_Search{
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B100_FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100_FrameParts.BtnSet(			130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
@@ -144,7 +144,7 @@ public class WM100_AdjustReasonMst_00_Search{
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B100_FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100_FrameParts.BtnSet(			370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン

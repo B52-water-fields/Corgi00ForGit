@@ -52,10 +52,11 @@ public class A100_TableCheck{
 		
 	}
 	public static void UserMstCreate() {
-		//ユーザーマスタテーブル作る
+		//ユーザーマスタテーブル無ければ作る
 		String[] TableName = TabeleList("NYANKO");
 		boolean KM0020_USERMSTUnHitFg = true;
 		for(int i=0;i<TableName.length;i++) {
+			TableName[i]=TableName[i].toUpperCase();
 			switch(TableName[i]){
 				case "KM0020_USERMST":
 					KM0020_USERMSTUnHitFg = false; 
@@ -88,6 +89,46 @@ public class A100_TableCheck{
 			A100_DbConnect.close();
 		}
 	}
+	public static void WhMstCreate() {
+		//倉庫マスタテーブル無ければ作る
+		String[] TableName = TabeleList("NYANKO");
+		boolean KM0010_WHMSTUnHitFg = true;
+		for(int i=0;i<TableName.length;i++) {
+			TableName[i]=TableName[i].toUpperCase();
+			switch(TableName[i]){
+				case "KM0010_WHMST":
+					KM0010_WHMSTUnHitFg = false; 
+					break;
+				default :break;
+			}
+		}
+		if(KM0010_WHMSTUnHitFg) {
+			A100_DbConnect.DB_CONN("NYANKO");
+			ResultSet rset01 = null;
+			PreparedStatement CreateTablestmt = null;
+			Statement stmt01 = null;
+			
+			String sql = KM0010_WHMSTCreateSql();
+			try {
+				CreateTablestmt = A100_DbConnect.conn.prepareStatement(sql);
+				CreateTablestmt.executeUpdate();
+				if(null!=CreateTablestmt) {CreateTablestmt.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				try {
+					if(null!=rset01){rset01.close();}
+					if(null!=CreateTablestmt) {CreateTablestmt.close();}
+					if(null!=stmt01){stmt01.close();}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			A100_DbConnect.close();
+		}
+	}
+	
+	
 	//NYANKOデータベースの必要なテーブルを確認する
 	private static void NyankoDBCheck() {
 		String[] TableName=TabeleList("NANKO");

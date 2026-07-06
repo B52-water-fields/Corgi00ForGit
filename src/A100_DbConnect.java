@@ -62,30 +62,50 @@ public class A100_DbConnect {
 		}else {
 			
 		}
+		
 		if(!"".equals(MySqlDefaultSchema)) {
-			boolean SSHCick = false;
-			
-			if(null==session) {
-				SSHCick = true;
+			if(A00000_Main.UseSSH) {
+				//SSH接続使う場合
+				boolean SSHCick = false;
+				
+				if(null==session) {
+					SSHCick = true;
+				}else {
+					SSHCick=MySqlConnect(
+							SshHostName,
+							SshHostPort,
+							SshUserName,
+							SshKeyFld,
+							SshKeyFileName,
+							SshKeyFile,
+							SshPass,
+							MySqlHostName,
+							MySqlSverPort,
+							MySqlUser,
+							MySqlPass,
+							MySqlDefaultSchema
+								);
+				}
+				
+				if(SSHCick) {
+					MySqlSSH(
+							SshHostName,
+							SshHostPort,
+							SshUserName,
+							SshKeyFld,
+							SshKeyFileName,
+							SshKeyFile,
+							SshPass,
+							MySqlHostName,
+							MySqlSverPort,
+							MySqlUser,
+							MySqlPass,
+							MySqlDefaultSchema
+								);
+				}
 			}else {
-				SSHCick=MySqlConnect(
-						SshHostName,
-						SshHostPort,
-						SshUserName,
-						SshKeyFld,
-						SshKeyFileName,
-						SshKeyFile,
-						SshPass,
-						MySqlHostName,
-						MySqlSverPort,
-						MySqlUser,
-						MySqlPass,
-						MySqlDefaultSchema
-							);
-			}
-			
-			if(SSHCick) {
-				MySqlSSH(
+				//SSH接続使わない場合
+				MySqlConnectNoSSH(
 						SshHostName,
 						SshHostPort,
 						SshUserName,
@@ -144,7 +164,43 @@ public class A100_DbConnect {
 		} 
 		return SSHKick;
 	}
-	
+	private static void MySqlConnectNoSSH(
+			String SshHostName,
+			int SshHostPort,
+			String SshUserName,
+			String SshKeyFld,
+			String SshKeyFileName,
+			String SshKeyFile,
+			String SshPass,
+			String MySqlHostName,
+			int MySqlSverPort,
+			String MySqlUser,
+			String MySqlPass,
+			String MySqlDefaultSchema
+				) {
+		String DATABASE_NAME = MySqlDefaultSchema;
+		String PROPATIES = "?characterEncoding=UTF-8&useSSL=false";
+		String URL = "jdbc:mySQL://"+MySqlHostName+"/" + DATABASE_NAME + PROPATIES;
+		
+		// JBBCドライバクラスのロード
+	    try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+		} catch (ClassNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "JDBCドライバの取得に失敗しました");
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+
+	    // Connectionの作成
+	    try {
+	    	/**/            
+			conn = DriverManager.getConnection(URL, MySqlUser, MySqlPass);
+	    } catch (SQLException e1) {
+		} 
+	}
 	
 	
 	private static void MySqlSSH(
