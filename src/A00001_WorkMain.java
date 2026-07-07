@@ -122,7 +122,7 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				
+				A100_TableCheck2.TableCheck();
 			}
 		});
 	}
