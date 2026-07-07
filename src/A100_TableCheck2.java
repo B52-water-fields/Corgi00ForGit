@@ -234,7 +234,7 @@ public class A100_TableCheck2{
 						,{"WW0025BerthReservation"			,"WANKO"	,"出荷バース予約"				,WW0025BerthReservation_Definition()}
 						,{"WW013101WhFeeInHd"				,"WANKO"	,"倉庫入荷料ヘッダ"				,WW013101WhFeeInHd_Definition()}
 						,{"WW013102WhFeeInMs"				,"WANKO"	,"倉庫入荷料明細"				,WW013102WhFeeInMs_Definition()}
-						,{"WW013201WhFeeOutHd"				,"WANKO"	,""	,}
+						,{"WW013201WhFeeOutHd"				,"WANKO"	,"倉庫出荷料"					,WW013201WhFeeOutHd_Definition()}
 						,{"WW013202WhFeeOutMs"				,"WANKO"	,""	,}
 						,{"WW013301WhFeeStockHd"			,"WANKO"	,""	,}
 						,{"WW013302WhFeeStockMs"			,"WANKO"	,""	,}
@@ -1856,16 +1856,128 @@ public class A100_TableCheck2{
 						};
 		return Rt;
 	}
-	/*
+	
 	private static Object[][] WW013201WhFeeOutHd_Definition(){
 		Object[][] Rt	={
-						
+						 {"ClCd"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"荷主コード"}
+						,{"WhCd"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"倉庫コード"}
+						,{"ShipFeeCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"出荷料金コード"}
+						,{"ShimeDate"			,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""		,"締め日"}
+						,{"ShipFeeName"			,"varchar"	,(int)100	,""		,(boolean)false	,""		,"出荷料金名"}
+						,{"DeliveryTypeCd01"	,"varchar"	,(int)20	,""		,(boolean)false	,""		,"運送タイプコード01"}
+						,{"DeliveryTypeCd02"	,"varchar"	,(int)20	,""		,(boolean)false	,""		,"運送タイプコード02"}
+						,{"DeliveryTypeCd03"	,"varchar"	,(int)20	,""		,(boolean)false	,""		,"運送タイプコード03"}
+						,{"DeliveryTypeCd04"	,"varchar"	,(int)20	,""		,(boolean)false	,""		,"運送タイプコード04"}
+						,{"DeliveryTypeCd05"	,"varchar"	,(int)20	,""		,(boolean)false	,""		,"運送タイプコード05"}
+						,{"TildFG"				,"varchar"	,(int)20	,""		,(boolean)false	,""		,"温度区分"}
+						,{"CategoryCd"			,"varchar"	,(int)20	,""		,(boolean)false	,""		,"商品カテゴリCD"}
+						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"集計区分"}
+						,{"ShipBaseFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷基本料金"}
+						,{"ShipSlipFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷伝票基本料金"}
+						,{"ShipSlipFeeTotal"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷伝票基本料金合計"}
+						,{"ShipUnitFee"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"出荷料単価"}
+						,{"ShipQtyTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷数合計"}
+						,{"ShipVolTotal"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"出荷量合計"}
+						,{"ShipFeeTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷料"}
+						,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税区分"}
+						,{"TaxRate"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税率"}
+						,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"消費税"}
+						,{"WithOutTaxTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税別合計金額"}
+						,{"TotalFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税込請求額合計"}
+						,{"FeeFixFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"確定区分"}
+						,{"FeeNo"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求番号"}
+						,{"SlipCount"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"伝票枚数"}
+						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
+						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
+						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
+						,{"UpdateUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者"}
 						};
 		return Rt;
 	}
+	/*
 	private static Object[][] WW013202WhFeeOutMs_Definition(){
 		Object[][] Rt	={
-						
+						CREATE TABLE `WW013202WhFeeOutMs` (
+  `ClCd` varchar(20) NOT NULL COMMENT '荷主コード',
+  `WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',
+  `ShipFeeCd` varchar(20) NOT NULL COMMENT '出荷料金コード',
+  `ShimeDate` datetime NOT NULL COMMENT '締め日',
+  `OkuriNo` int(11) NOT NULL COMMENT '送り状番号',
+  `MsNo` int(11) NOT NULL COMMENT '明細番号',
+  `Seq` int(11) NOT NULL COMMENT '引当枝番',
+  `ClGpCD` varchar(20) DEFAULT NULL,
+  `OrderItemCd` varchar(20) DEFAULT NULL,
+  `ClItemCd` varchar(20) DEFAULT NULL,
+  `OrderItemName01` varchar(100) DEFAULT NULL,
+  `OrderLot` varchar(20) DEFAULT NULL,
+  `OrderExpDate` datetime DEFAULT NULL,
+  `OrderQty` float NOT NULL DEFAULT '0',
+  `ShipWhCd` varchar(20) DEFAULT NULL,
+  `ShipLoc` varchar(15) DEFAULT NULL,
+  `ShipItemCd` varchar(20) DEFAULT NULL,
+  `ShipLot` varchar(20) DEFAULT NULL,
+  `ShipExpdate` datetime DEFAULT NULL,
+  `ShipActualDate` datetime DEFAULT NULL,
+  `WmsShipDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `FixFg` int(11) NOT NULL DEFAULT '0',
+  `PackingType` int(11) NOT NULL DEFAULT '0',
+  `PackingQty` int(11) NOT NULL DEFAULT '0',
+  `UnitName` varchar(20) DEFAULT NULL,
+  `PackingUnitQty` int(11) NOT NULL DEFAULT '0',
+  `BRShipQty` int(11) NOT NULL DEFAULT '0',
+  `CTShipQty` int(11) NOT NULL DEFAULT '0',
+  `CSShipQty` int(11) NOT NULL DEFAULT '0',
+  `PLShipQty` int(11) NOT NULL DEFAULT '0',
+  `BRUnitName` varchar(20) DEFAULT NULL,
+  `CTUnitName` varchar(20) DEFAULT NULL,
+  `CSUnitName` varchar(20) DEFAULT NULL,
+  `PLUnitName` varchar(20) DEFAULT NULL,
+  `ShipSlipFee` int(11) NOT NULL DEFAULT '0',
+  `ShipUnitFee` float NOT NULL DEFAULT '0',
+  `ItemWeight` float NOT NULL DEFAULT '0',
+  `ItemSize` float NOT NULL DEFAULT '0',
+  `FeeUnit` int(11) NOT NULL DEFAULT '0',
+  `ShipQty` int(11) NOT NULL DEFAULT '0',
+  `ShipVol` float NOT NULL DEFAULT '0',
+  `ShipFee` int(11) NOT NULL DEFAULT '0',
+  `EntryDate` datetime DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL,
+  `EntryUser` varchar(50) DEFAULT NULL,
+  `UpdateUser` varchar(50) DEFAULT NULL,
+  `ClDeliNo` varchar(50) DEFAULT NULL,
+  `ClOrderNo` varchar(50) DEFAULT NULL,
+  `NiokuriCd` varchar(20) DEFAULT NULL,
+  `NiokuriDepartmentCd` varchar(20) DEFAULT NULL,
+  `NiokuriName01` varchar(50) DEFAULT NULL,
+  `NiokuriName02` varchar(50) DEFAULT NULL,
+  `NiokuriName03` varchar(50) DEFAULT NULL,
+  `NiokuriPost` varchar(20) DEFAULT NULL,
+  `NiokuriAdd01` varchar(100) DEFAULT NULL,
+  `NiokuriAdd02` varchar(100) DEFAULT NULL,
+  `NiokuriAdd03` varchar(100) DEFAULT NULL,
+  `NioKuriTel` varchar(20) DEFAULT NULL,
+  `NioKuriFax` varchar(20) DEFAULT NULL,
+  `NioKuriMail` varchar(200) DEFAULT NULL,
+  `NiokuriMunicCd` varchar(20) DEFAULT NULL,
+  `DeliCd` varchar(20) DEFAULT NULL,
+  `ClDeliCd` varchar(20) DEFAULT NULL,
+  `DeliDepartmentCd` varchar(20) DEFAULT NULL,
+  `DeliName01` varchar(50) DEFAULT NULL,
+  `DeliName02` varchar(50) DEFAULT NULL,
+  `DeliName03` varchar(50) DEFAULT NULL,
+  `DeliPost` varchar(20) DEFAULT NULL,
+  `DeliAdd01` varchar(100) DEFAULT NULL,
+  `DeliAdd02` varchar(100) DEFAULT NULL,
+  `DeliAdd03` varchar(100) DEFAULT NULL,
+  `DeliTel` varchar(20) DEFAULT NULL,
+  `DeliFax` varchar(20) DEFAULT NULL,
+  `DeliMail` varchar(200) DEFAULT NULL,
+  `DeliMunicCd` varchar(20) DEFAULT NULL,
+  `FeeNo` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ClCd`,`WhCd`,`ShipFeeCd`,`ShimeDate`,`OkuriNo`,`MsNo`,`Seq`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫出荷料明細';
+
 						};
 		return Rt;
 	}
