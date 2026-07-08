@@ -235,15 +235,15 @@ public class A100_TableCheck2{
 						,{"WW013101WhFeeInHd"				,"WANKO"	,"倉庫入荷料ヘッダ"				,WW013101WhFeeInHd_Definition()}
 						,{"WW013102WhFeeInMs"				,"WANKO"	,"倉庫入荷料明細"				,WW013102WhFeeInMs_Definition()}
 						,{"WW013201WhFeeOutHd"				,"WANKO"	,"倉庫出荷料"					,WW013201WhFeeOutHd_Definition()}
-						,{"WW013202WhFeeOutMs"				,"WANKO"	,"倉庫出荷料明細"				,}
-						,{"WW013301WhFeeStockHd"			,"WANKO"	,""	,}
-						,{"WW013302WhFeeStockMs"			,"WANKO"	,""	,}
+						,{"WW013202WhFeeOutMs"				,"WANKO"	,"倉庫出荷料明細"				,WW013202WhFeeOutMs_Definition()}
+						,{"WW013301WhFeeStockHd"			,"WANKO"	,"倉庫保管料 ヘッダ"			,WW013301WhFeeStockHd_Definition()}
+						,{"WW013302WhFeeStockMs"			,"WANKO"	,"倉庫保管料明細"				,WW013302WhFeeStockMs_Definition()}
 						,{"WW013401WhFeeAdjustHd"			,"WANKO"	,""	,}
 						,{"WW013402WhFeeAdjustMs"			,"WANKO"	,""	,}
 						,{"WW013501WhFeeOther"				,"WANKO"	,""	,}
 						,{"WW014001WhFeeInvoice"			,"WANKO"	,""	,}
 						,{"WW00630ItemRecomendLoc"			,"WANKO"	,"荷主毎推奨ロケ"				,WW00630ItemRecomendLoc_Definition()}
-						
+						,{"M0010_PostMst"					,"POST"		,"郵便番号マスタ"				,M0010_PostMst_Definition()}
 						
 						};
 		return NeedTabele;
@@ -285,8 +285,8 @@ public class A100_TableCheck2{
 	private static Object[][] KM0005_MUNIC_Definition(){
 		Object[][] Rt	={
 						 {"MunicCd"		,"varchar"	,(int) 20	,"KEY"	,(boolean)false	,""		,"市区町村CD"}
-						,{"Prefectures"	,"varchar"	,(int) 50	,""		,(boolean)true	,""		,"県名"}
-						,{"Munici01"	,"varchar"	,(int) 50	,""		,(boolean)true	,""		,"市区町村名"}
+						,{"Prefectures"	,"varchar"	,(int) 50	,""		,(boolean)false	,""		,"県名"}
+						,{"Munici01"	,"varchar"	,(int) 50	,""		,(boolean)false	,""		,"市区町村名"}
 						};
 		return Rt;
 	}
@@ -309,7 +309,7 @@ public class A100_TableCheck2{
 						 ,{"UpdateDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"データ更新日時"}
 						 ,{"EntryUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者コード"}
 						 ,{"UpdateUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者コード"}
-						 ,{"DelFg"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"削除区分"}
+						 ,{"DelFg"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"削除区分"}
 						};
 		return Rt;
 	}
@@ -349,8 +349,8 @@ public class A100_TableCheck2{
 	private static Object[][] KM0030_CLIENTMST_Definition(){
 		Object[][] Rt	={
 						  {"cl_cd"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"荷主CD"}
-						 ,{"ClGpCD"		,"varchar"	,(int)50	,""		,(boolean)true	,""			,"荷主グループCD"}
-						 ,{"WHCD"		,"varchar"	,(int)20	,""		,(boolean)true	,""			,"担当倉庫"}
+						 ,{"ClGpCD"		,"varchar"	,(int)50	,""		,(boolean)false	,""			,"荷主グループCD"}
+						 ,{"WHCD"		,"varchar"	,(int)20	,""		,(boolean)false	,""			,"担当倉庫"}
 						 ,{"CLName01"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"荷主表記名"}
 						 ,{"CLName02"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"荷主正式名"}
 						 ,{"CLName03"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"荷主略名"}
@@ -365,8 +365,8 @@ public class A100_TableCheck2{
 						 ,{"Com01"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"コメント1"}
 						 ,{"Com02"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"コメント2"}
 						 ,{"Com03"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"コメント3"}
-						 ,{"ShimeDate"	,"int"		,(int)11	,""		,(boolean)true	,"99"		,"運賃締日"}
-						 ,{"ShimeBasis"	,"int"		,(int)11	,""		,(boolean)true	,"0"		,"請求基準"}
+						 ,{"ShimeDate"	,"int"		,(int)11	,""		,(boolean)false	,"99"		,"運賃締日"}
+						 ,{"ShimeBasis"	,"int"		,(int)11	,""		,(boolean)false	,"0"		,"請求基準"}
 						 ,{"EntryDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ登録日時"}
 						 ,{"UpdateDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
 						 ,{"EntryUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
@@ -397,7 +397,7 @@ public class A100_TableCheck2{
 						 ,{"UpdateDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
 						 ,{"EntryUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
 						 ,{"UpdateUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者コード"}
-						 ,{"DelFg"		,"tinyint"	,(int)1		,""		,(boolean)true	,"0"		,"削除区分"}
+						 ,{"DelFg"		,"tinyint"	,(int)1		,""		,(boolean)false	,"0"		,"削除区分"}
 						 ,{"PassWord"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"パスワード"}
 						};
 		return Rt;
@@ -450,8 +450,8 @@ public class A100_TableCheck2{
 						 ,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"データ更新日時"}
 						 ,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者コード"}
 						 ,{"UpdateUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者コード"}
-						 ,{"DelFg"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"削除区分"}
-						 ,{"MstPriorityFirstFg"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"届先マスタ優先フラグ"}
+						 ,{"DelFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"削除区分"}
+						 ,{"MstPriorityFirstFg"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"届先マスタ優先フラグ"}
 						};
 		return Rt;
 	}
@@ -477,8 +477,8 @@ public class A100_TableCheck2{
 						 ,{"ItemName01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品表記名"}
 						 ,{"ItemName02"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品正式名"}
 						 ,{"ItemName03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品略名"}
-						 ,{"ItemWeight"			,"float"	,(int)0		,""		,(boolean)true	,"0"	,"商品重量"}
-						 ,{"ItemSize"			,"float"	,(int)0		,""		,(boolean)true	,"0"	,"商品サイズ"}
+						 ,{"ItemWeight"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"商品重量"}
+						 ,{"ItemSize"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"商品サイズ"}
 						 ,{"DeliveryTypeCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード01"}
 						 ,{"DeliveryTypeCd02"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード02"}
 						 ,{"DeliveryTypeCd03"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード03"}
@@ -488,7 +488,7 @@ public class A100_TableCheck2{
 						 ,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"データ更新日時"}
 						 ,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者コード"}
  						 ,{"UpdateUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者コード"}
-						 ,{"DelFg"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"削除区分"}
+						 ,{"DelFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"削除区分"}
 						 ,{"PTMSCD"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"基幹システム商品コード"}
 						 ,{"JanCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"JANCD"}
 						 ,{"UnitName"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"商品単位"}
@@ -500,9 +500,9 @@ public class A100_TableCheck2{
 		Object[][] Rt	={
 						  {"ClGpCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"荷主グループコード"}
 						 ,{"ItemCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"商品コード"}
-						 ,{"CtQty"			,"int"		,(int)11	,""		,(boolean)true	,"1"		,"カートン入数"}
-						 ,{"CsQty"			,"int"		,(int)11	,""		,(boolean)true	,"1"		,"ケース入数"}
-						 ,{"PlQty"			,"int"		,(int)11	,""		,(boolean)true	,"1"		,"パレット入数"}
+						 ,{"CtQty"			,"int"		,(int)11	,""		,(boolean)false	,"1"		,"カートン入数"}
+						 ,{"CsQty"			,"int"		,(int)11	,""		,(boolean)false	,"1"		,"ケース入数"}
+						 ,{"PlQty"			,"int"		,(int)11	,""		,(boolean)false	,"1"		,"パレット入数"}
 						 ,{"CtJan"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"カートンバーコード"}
 						 ,{"CsJan"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"ケースバーコード"}
 						 ,{"PlJan"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"パレットバーコード"}
@@ -512,12 +512,12 @@ public class A100_TableCheck2{
 						 ,{"CtUnitName"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"カートン商品単位"}
 						 ,{"CsUnitName"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"ケース商品単位"}
 						 ,{"PlUnitName"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"パレット商品単位"}
-						 ,{"CtWeight"		,"float"	,(int)0		,""		,(boolean)true	,"0"		,"カートン重量"}
-						 ,{"CsWeight"		,"float"	,(int)0		,""		,(boolean)true	,"0"		,"ケース重量"}
-						 ,{"PlWeight"		,"float"	,(int)0		,""		,(boolean)true	,"0"		,"パレット重量"}
-						 ,{"CtSize"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"カートンサイズ"}
-						 ,{"CsSize"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"ケースサイズ"}
-						 ,{"PlSize"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"パレットサイズ"}
+						 ,{"CtWeight"		,"float"	,(int)0		,""		,(boolean)false	,"0"		,"カートン重量"}
+						 ,{"CsWeight"		,"float"	,(int)0		,""		,(boolean)false	,"0"		,"ケース重量"}
+						 ,{"PlWeight"		,"float"	,(int)0		,""		,(boolean)false	,"0"		,"パレット重量"}
+						 ,{"CtSize"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"カートンサイズ"}
+						 ,{"CsSize"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"ケースサイズ"}
+						 ,{"PlSize"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"パレットサイズ"}
 						 ,{"RecomendLoc"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"推奨ロケ"}
 						 ,{"ItemMDNo"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"商品モデル番号（型番）"}
 						 ,{"CategoryCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"商品カテゴリCD"}
@@ -540,7 +540,7 @@ public class A100_TableCheck2{
 						 ,{"PictPass03"		,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"		,"画像パス03"}
 						 ,{"PictPass04"		,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"		,"画像パス04"}
 						 ,{"PictPass05"		,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"		,"画像パス05"}
-						 ,{"ExpDateHowLong"	,"int"		,(int)11	,""		,(boolean)true	,"0"		,"賞味期限日数"}
+						 ,{"ExpDateHowLong"	,"int"		,(int)11	,""		,(boolean)false	,"0"		,"賞味期限日数"}
 						};
 		return Rt;
 	}
@@ -550,7 +550,7 @@ public class A100_TableCheck2{
 						 ,{"ClCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"荷主コード"}
 						 ,{"ClItemCd"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"荷主商品コード"}
 						 ,{"ItemCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"変換先商品コード"}
-						 ,{"PackingType"	,"int"		,(int)11	,""		,(boolean)true	,"0"		,"荷姿タイプ"}
+						 ,{"PackingType"	,"int"		,(int)11	,""		,(boolean)false	,"0"		,"荷姿タイプ"}
 						};
 		return Rt;
 	}
@@ -571,14 +571,14 @@ public class A100_TableCheck2{
 						 ,{"Com01"					,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"コメント1"}
 						 ,{"Com02"					,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"コメント2"}
 						 ,{"Com03"					,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"コメント3"}
-						 ,{"ShimeDate"				,"int"		,(int)11	,""		,(boolean)true	,"0"		,"締日"}
-						 ,{"ShimeBasis"				,"int"		,(int)11	,""		,(boolean)true	,"0"		,"請求基準"}
+						 ,{"ShimeDate"				,"int"		,(int)11	,""		,(boolean)false	,"0"		,"締日"}
+						 ,{"ShimeBasis"				,"int"		,(int)11	,""		,(boolean)false	,"0"		,"請求基準"}
 						 ,{"EntryDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ登録日時"}
 						 ,{"UpdateDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
 						 ,{"EntryUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
 						 ,{"UpdateUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者コード"}
 						 ,{"PTMSCD"					,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"基幹システム傭車コード"}
-						 ,{"DelFg"					,"tinyint"	,(int)1		,""		,(boolean)true	,"0"		,"削除区分"}
+						 ,{"DelFg"					,"tinyint"	,(int)1		,""		,(boolean)false	,"0"		,"削除区分"}
 						 ,{"ExportDataType"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"配車データ抽出タイプ"}
 						};
 		return Rt;
@@ -597,7 +597,7 @@ public class A100_TableCheck2{
 						 ,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
 						 ,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
 						 ,{"UpdateUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者コード"}
-						 ,{"DelFg"				,"tinyint"	,(int)1		,""		,(boolean)true	,"0"		,"削除フラグ"}
+						 ,{"DelFg"				,"tinyint"	,(int)1		,""		,(boolean)false	,"0"		,"削除フラグ"}
 						};
 		return Rt;
 	}
@@ -611,8 +611,8 @@ public class A100_TableCheck2{
 						 ,{"DeliveryTypeCd04"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,"0"		,"運送タイプコード04"}
 						 ,{"DeliveryTypeCd05"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,"0"		,"運送タイプコード05"}
 						 ,{"PatternCD"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"パターンコード"}
-						 ,{"PatternName"			,"varchar"	,(int)100	,""		,(boolean)false	,"NULL"		,"パターン名"}
-						 ,{"LogicType"				,"varchar"	,(int)20	,""		,(boolean)false	,"NULL"		,"運賃計算ロジックタイプ"}
+						 ,{"PatternName"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"パターン名"}
+						 ,{"LogicType"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"運賃計算ロジックタイプ"}
 						 ,{"SizeFG"					,"int"		,(int)11	,""		,(boolean)false	,"0"		,"重量サイズ基準"}
 						 ,{"BaseFee"				,"int"		,(int)11	,""		,(boolean)false	,"0"		,"基本運賃"}
 						 ,{"MinFee"					,"int"		,(int)11	,""		,(boolean)false	,"0"		,"最低運賃"}
@@ -681,10 +681,10 @@ public class A100_TableCheck2{
 						 ,{"AddDeliFee03"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"付帯費用3"}
 						 ,{"HaighWayFee01"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"高速代等実費精算分1（内税）"}
 						 ,{"HaighWayFee02"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"高速代等実費精算分2（内税）"}
-						 ,{"EntryDate"				,"datetime"	,(int)0		,""		,(boolean)false	,"NULL"		,"データ登録日時"}
-						 ,{"UpdateDate"				,"datetime"	,(int)0		,""		,(boolean)false	,"NULL"		,"データ更新日時"}
-						 ,{"EntryUser"				,"varchar"	,(int)50	,""		,(boolean)false	,"NULL"		,"登録者コード"}
-						 ,{"UpdateUser"				,"varchar"	,(int)50	,""		,(boolean)false	,"NULL"		,"更新者コード"}
+						 ,{"EntryDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ登録日時"}
+						 ,{"UpdateDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
+						 ,{"EntryUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
+						 ,{"UpdateUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者コード"}
 						 ,{"DelFg"					,"int"		,(int)11	,""		,(boolean)false	,"0"		,"削除フラグ"}
 						 ,{"DelijudgeJisFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"届先JIS判定区分"}
 						 ,{"AddDeliFee03UnitFee"	,"float"	,(int)0		,""		,(boolean)false	,"0"		,"付帯費用3単価"}
@@ -718,12 +718,12 @@ public class A100_TableCheck2{
 						 ,{"LogicTypeName"	,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"運賃計算ロジックタイプ名"}
 						 ,{"PGCd"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"プログラムCD"}
 						 ,{"PGName"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"プログラム名"}
-						 ,{"CallScene"		,"int"		,(int)11	,""		,(boolean)true	,"0"		,"呼び出し場面　※0:請求計算 1:支払計算"}
+						 ,{"CallScene"		,"int"		,(int)11	,""		,(boolean)false	,"0"		,"呼び出し場面　※0:請求計算 1:支払計算"}
 						 ,{"EntryDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ登録日時"}
 						 ,{"UpdateDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
 						 ,{"EntryUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
 						 ,{"UpdateUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者コード"}
-						 ,{"DelFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"削除区分"}
+						 ,{"DelFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"削除区分"}
 						};
 		return Rt;
 	}
@@ -734,14 +734,14 @@ public class A100_TableCheck2{
 						 ,{"ClGpCD"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"荷主コード"}
 						 ,{"DECD"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"納品先コード"}
 						 ,{"DepartmentCd"	,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"部署CD"}
-						 ,{"CautionTiming"	,"int"		,(int)11	,""		,(boolean)true	,"0"		,"注意事項タイミング"}
+						 ,{"CautionTiming"	,"int"		,(int)11	,""		,(boolean)false	,"0"		,"注意事項タイミング"}
 						 ,{"CautionName"	,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"注意事項名"}
 						 ,{"Caution"		,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"		,"注意事項内容"}
 						 ,{"EntryDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ登録日時"}
 						 ,{"UpdateDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
 						 ,{"EntryUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
 						 ,{"UpdateUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者コード"}
-						 ,{"DelFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"削除区分"}
+						 ,{"DelFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"削除区分"}
 						};
 		return Rt;
 	}
@@ -757,81 +757,81 @@ public class A100_TableCheck2{
 						 ,{"PatternCD"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""			,"パターンコード"}
 						 ,{"PatternName"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"		,"パターン名"}
 						 ,{"LogicType"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"運賃計算ロジックタイプ"}
-						 ,{"SizeFG"					,"int"		,(int)11	,""		,(boolean)true	,"0"		,"重量サイズ基準"}
-						 ,{"BaseFee"				,"int"		,(int)11	,""		,(boolean)true	,"0"		,"基本運賃"}
-						 ,{"MinFee"					,"int"		,(int)11	,""		,(boolean)true	,"0"		,"最低運賃"}
-						 ,{"Range01"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲01"}
-						 ,{"RangeBaseFee01"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格01"}
-						 ,{"RangeUnitFee01"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価01"}
-						 ,{"Range02"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲02"}
-						 ,{"RangeBaseFee02"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格02"}
-						 ,{"RangeUnitFee02"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価02"}
-						 ,{"Range03"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲03"}
-						 ,{"RangeBaseFee03"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格03"}
-						 ,{"RangeUnitFee03"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価03"}
-						 ,{"Range04"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲04"}
-						 ,{"RangeBaseFee04"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格04"}
-						 ,{"RangeUnitFee04"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価04"}
-						 ,{"Range05"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲05"}
-						 ,{"RangeBaseFee05"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格05"}
-						 ,{"RangeUnitFee05"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価05"}
-						 ,{"Range06"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲06"}
-						 ,{"RangeBaseFee06"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格06"}
-						 ,{"RangeUnitFee06"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価06"}
-						 ,{"Range07"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲07"}
-						 ,{"RangeBaseFee07"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格07"}
-						 ,{"RangeUnitFee07"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価07"}
-						 ,{"Range08"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲08"}
-						 ,{"RangeBaseFee08"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格08"}
-						 ,{"RangeUnitFee08"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価08"}
-						 ,{"Range09"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲09"}
-						 ,{"RangeBaseFee09"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格09"}
-						 ,{"RangeUnitFee09"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価09"}
-						 ,{"Range10"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲10"}
-						 ,{"RangeBaseFee10"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格10"}
-						 ,{"RangeUnitFee10"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価10"}
-						 ,{"Range11"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲11"}
-						 ,{"RangeBaseFee11"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格11"}
-						 ,{"RangeUnitFee11"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価11"}
-						 ,{"Range12"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲12"}
-						 ,{"RangeBaseFee12"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格12"}
-						 ,{"RangeUnitFee12"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価12"}
-						 ,{"Range13"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲13"}
-						 ,{"RangeBaseFee13"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格13"}
-						 ,{"RangeUnitFee13"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価13"}
-						 ,{"Range14"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲14"}
-						 ,{"RangeBaseFee14"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格14"}
-						 ,{"RangeUnitFee14"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価14"}
-						 ,{"Range15"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲15"}
-						 ,{"RangeBaseFee15"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格15"}
-						 ,{"RangeUnitFee15"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価15"}
-						 ,{"Range16"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲16"}
-						 ,{"RangeBaseFee16"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格16"}
-						 ,{"RangeUnitFee16"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価16"}
-						 ,{"Range17"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲17"}
-						 ,{"RangeBaseFee17"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格17"}
-						 ,{"RangeUnitFee17"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価17"}
-						 ,{"Range18"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲18"}
-						 ,{"RangeBaseFee18"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格18"}
-						 ,{"RangeUnitFee18"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価18"}
-						 ,{"Range19"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲19"}
-						 ,{"RangeBaseFee19"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格19"}
-						 ,{"RangeUnitFee19"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価19"}
-						 ,{"Range20"				,"float"	,(int)0		,""		,(boolean)true	,"0"		,"重量範囲20"}
-						 ,{"RangeBaseFee20"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"運賃価格20"}
-						 ,{"RangeUnitFee20"			,"float"	,(int)0		,""		,(boolean)true	,"0"		,"運賃単価20"}
-						 ,{"AddDeliFee01"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"付帯費用1"}
-						 ,{"AddDeliFee02"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"付帯費用2"}
-						 ,{"AddDeliFee03"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"付帯費用3"}
-						 ,{"HaighWayFee01"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"高速代等実費精算分1(内税)"}
-						 ,{"HaighWayFee02"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"高速代等実費精算分2(内税)"}
+						 ,{"SizeFG"					,"int"		,(int)11	,""		,(boolean)false	,"0"		,"重量サイズ基準"}
+						 ,{"BaseFee"				,"int"		,(int)11	,""		,(boolean)false	,"0"		,"基本運賃"}
+						 ,{"MinFee"					,"int"		,(int)11	,""		,(boolean)false	,"0"		,"最低運賃"}
+						 ,{"Range01"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲01"}
+						 ,{"RangeBaseFee01"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格01"}
+						 ,{"RangeUnitFee01"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価01"}
+						 ,{"Range02"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲02"}
+						 ,{"RangeBaseFee02"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格02"}
+						 ,{"RangeUnitFee02"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価02"}
+						 ,{"Range03"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲03"}
+						 ,{"RangeBaseFee03"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格03"}
+						 ,{"RangeUnitFee03"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価03"}
+						 ,{"Range04"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲04"}
+						 ,{"RangeBaseFee04"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格04"}
+						 ,{"RangeUnitFee04"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価04"}
+						 ,{"Range05"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲05"}
+						 ,{"RangeBaseFee05"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格05"}
+						 ,{"RangeUnitFee05"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価05"}
+						 ,{"Range06"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲06"}
+						 ,{"RangeBaseFee06"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格06"}
+						 ,{"RangeUnitFee06"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価06"}
+						 ,{"Range07"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲07"}
+						 ,{"RangeBaseFee07"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格07"}
+						 ,{"RangeUnitFee07"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価07"}
+						 ,{"Range08"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲08"}
+						 ,{"RangeBaseFee08"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格08"}
+						 ,{"RangeUnitFee08"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価08"}
+						 ,{"Range09"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲09"}
+						 ,{"RangeBaseFee09"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格09"}
+						 ,{"RangeUnitFee09"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価09"}
+						 ,{"Range10"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲10"}
+						 ,{"RangeBaseFee10"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格10"}
+						 ,{"RangeUnitFee10"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価10"}
+						 ,{"Range11"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲11"}
+						 ,{"RangeBaseFee11"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格11"}
+						 ,{"RangeUnitFee11"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価11"}
+						 ,{"Range12"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲12"}
+						 ,{"RangeBaseFee12"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格12"}
+						 ,{"RangeUnitFee12"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価12"}
+						 ,{"Range13"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲13"}
+						 ,{"RangeBaseFee13"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格13"}
+						 ,{"RangeUnitFee13"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価13"}
+						 ,{"Range14"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲14"}
+						 ,{"RangeBaseFee14"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格14"}
+						 ,{"RangeUnitFee14"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価14"}
+						 ,{"Range15"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲15"}
+						 ,{"RangeBaseFee15"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格15"}
+						 ,{"RangeUnitFee15"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価15"}
+						 ,{"Range16"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲16"}
+						 ,{"RangeBaseFee16"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格16"}
+						 ,{"RangeUnitFee16"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価16"}
+						 ,{"Range17"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲17"}
+						 ,{"RangeBaseFee17"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格17"}
+						 ,{"RangeUnitFee17"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価17"}
+						 ,{"Range18"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲18"}
+						 ,{"RangeBaseFee18"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格18"}
+						 ,{"RangeUnitFee18"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価18"}
+						 ,{"Range19"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲19"}
+						 ,{"RangeBaseFee19"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格19"}
+						 ,{"RangeUnitFee19"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価19"}
+						 ,{"Range20"				,"float"	,(int)0		,""		,(boolean)false	,"0"		,"重量範囲20"}
+						 ,{"RangeBaseFee20"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"運賃価格20"}
+						 ,{"RangeUnitFee20"			,"float"	,(int)0		,""		,(boolean)false	,"0"		,"運賃単価20"}
+						 ,{"AddDeliFee01"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"付帯費用1"}
+						 ,{"AddDeliFee02"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"付帯費用2"}
+						 ,{"AddDeliFee03"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"付帯費用3"}
+						 ,{"HaighWayFee01"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"高速代等実費精算分1(内税)"}
+						 ,{"HaighWayFee02"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"高速代等実費精算分2(内税)"}
 						 ,{"EntryDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ登録日時"}
 						 ,{"UpdateDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
 						 ,{"EntryUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
 						 ,{"UpdateUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者コード"}
-						 ,{"DelFg"					,"int"		,(int)11	,""		,(boolean)true	,"0"		,"削除フラグ"}
-						 ,{"AddDeliFee03UnitFee"	,"float"	,(int)0		,""		,(boolean)true	,"0"		,"付帯費用3単価"}
-						 ,{"SummaryType"			,"int"		,(int)11	,""		,(boolean)true	,"0"		,"集計基準"}
+						 ,{"DelFg"					,"int"		,(int)11	,""		,(boolean)false	,"0"		,"削除フラグ"}
+						 ,{"AddDeliFee03UnitFee"	,"float"	,(int)0		,""		,(boolean)false	,"0"		,"付帯費用3単価"}
+						 ,{"SummaryType"			,"int"		,(int)11	,""		,(boolean)false	,"0"		,"集計基準"}
 						};
 		return Rt;
 	}
@@ -851,7 +851,7 @@ public class A100_TableCheck2{
 						 ,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"データ更新日時"}
 						 ,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者コード"}
 						 ,{"UpdateUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者コード"}
-						 ,{"DelFg"				,"int"		,(int)11	,""		,(boolean)true	,"0"		,"削除区分"}
+						 ,{"DelFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"		,"削除区分"}
 						};
 		return Rt;
 	}
@@ -859,12 +859,12 @@ public class A100_TableCheck2{
 	private static Object[][] KM0100_OKURIPROGRESSMST_Definition(){
 		Object[][] Rt	={
 						  {"ProgressCd"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"進捗CD"}
-						 ,{"ProgressName"	,"varchar"	,(int)100	,""		,(boolean)true	,""		,"進捗名"}
+						 ,{"ProgressName"	,"varchar"	,(int)100	,""		,(boolean)false	,""		,"進捗名"}
 						 ,{"EntryDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"データ登録日時"}
 						 ,{"UpdateDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"データ更新日時"}
 						 ,{"EntryUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者コード"}
 						 ,{"UpdateUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者コード"}
-						 ,{"DelFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"削除区分"}
+						 ,{"DelFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"削除区分"}
 						};
 		return Rt;
 	}
@@ -872,13 +872,13 @@ public class A100_TableCheck2{
 	private static Object[][] KM0110_CALLPGMST_Definition(){
 		Object[][] Rt	={
 						  {"PGCd"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"プログラムCD"}
-						 ,{"PGName"		,"varchar"	,(int)100	,""		,(boolean)true	,""		,"プログラム名"}
-						 ,{"CallScene"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"呼び出し場面"}
+						 ,{"PGName"		,"varchar"	,(int)100	,""		,(boolean)false	,""		,"プログラム名"}
+						 ,{"CallScene"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"呼び出し場面"}
 						 ,{"EntryDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"データ登録日時"}
 						 ,{"UpdateDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"データ更新日時"}
 						 ,{"EntryUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者コード"}
 						 ,{"UpdateUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者コード"}
-						 ,{"DelFg"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"削除区分"}
+						 ,{"DelFg"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"削除区分"}
 						};
 		return Rt;
 	}
@@ -887,7 +887,7 @@ public class A100_TableCheck2{
 		Object[][] Rt	={
 						  {"WhCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"出発倉庫コード"}
 						 ,{"CourseGpCd"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"コースグループコード"}
-						 ,{"CourseGpName"	,"varchar"	,(int)100	,""		,(boolean)true	,""		,"コースグループ名"}
+						 ,{"CourseGpName"	,"varchar"	,(int)100	,""		,(boolean)false	,""		,"コースグループ名"}
 						 ,{"EntryDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						 ,{"UpdateDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						 ,{"EntryUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -905,12 +905,12 @@ public class A100_TableCheck2{
 						 ,{"DriverWhCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"倉庫コード"}
 						 ,{"DriverCompanyCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"運送会社CD"}
 						 ,{"DriverCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"		,"乗務員CD"}
-						 ,{"SetBinNo"				,"int"		,(int)11	,""		,(boolean)true	,"1'"		,"二次配車時にセットする便NO"}
+						 ,{"SetBinNo"				,"int"		,(int)11	,""		,(boolean)false	,"1'"		,"二次配車時にセットする便NO"}
 						 ,{"EntryDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"登録日"}
 						 ,{"UpdateDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"更新日"}
 						 ,{"EntryUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者"}
 						 ,{"UpdateUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者"}
-						 ,{"OnePitOneDeliveryFg"	,"int"		,(int)11	,""		,(boolean)true	,"0"		,"ピット割付フラグ"}
+						 ,{"OnePitOneDeliveryFg"	,"int"		,(int)11	,""		,(boolean)false	,"0"		,"ピット割付フラグ"}
 						};
 		return Rt;
 	}
@@ -925,7 +925,7 @@ public class A100_TableCheck2{
 						 ,{"UpdateDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"		,"更新日"}
 						 ,{"EntryUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"登録者"}
 						 ,{"UpdateUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"		,"更新者"}
-						 ,{"CourseOrder"	,"int"		,(int)11	,""		,(boolean)true	,"0"		,"コース配送順序"}
+						 ,{"CourseOrder"	,"int"		,(int)11	,""		,(boolean)false	,"0"		,"コース配送順序"}
 						};
 		return Rt;
 	}
@@ -933,7 +933,7 @@ public class A100_TableCheck2{
 	private static Object[][] KM0125_MyDriverMST_Definition(){
 		Object[][] Rt	={
 						  {"MyDriverListCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"乗務員リストコード"}
-						 ,{"MyDriverListName"		,"varchar"	,(int)100	,""		,(boolean)true	,""		,"乗務員リスト名"}
+						 ,{"MyDriverListName"		,"varchar"	,(int)100	,""		,(boolean)false	,""		,"乗務員リスト名"}
 						 ,{"UseWHCD"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"利用ユーザー所属倉庫コード"}
 						 ,{"UseShippingCompanyCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"利用ユーザー所属運送会社CD"}
 						 ,{"UseUserCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"利用ユーザーCD"}
@@ -953,7 +953,7 @@ public class A100_TableCheck2{
 						 ,{"DriverShippingCompanyCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"乗務員所属運送会社CD"}
 						 ,{"DriverUserCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"乗務員ユーザーCD"}
 						 ,{"DriverCallName"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"乗務員ユーザー呼称"}
-						 ,{"SetBinNo"					,"int"		,(int)11	,""		,(boolean)true	,"1"	,"二次配車時にセットする便NO"}
+						 ,{"SetBinNo"					,"int"		,(int)11	,""		,(boolean)false	,"1"	,"二次配車時にセットする便NO"}
 						 ,{"EntryDate"					,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						 ,{"UpdateDate"					,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						 ,{"EntryUser"					,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -969,7 +969,7 @@ public class A100_TableCheck2{
 						 ,{"OkuriNo"				,"int"		,(int)11	,"KEY"	,(boolean)false	,"0"	,"送り状番号"}
 						 ,{"ClDeliNo"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷主管理番号"}
 						 ,{"PickupWHCD"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"集荷倉庫CD"}
-						 ,{"PurposeFG"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"目的フラグ"}
+						 ,{"PurposeFG"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"目的フラグ"}
 						 ,{"PlanDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"出荷予定日"}
 						 ,{"ShipDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"出荷実績日"}
 						 ,{"SPPlanDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"着日指定"}
@@ -977,9 +977,9 @@ public class A100_TableCheck2{
 						 ,{"SPTimeFG"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"時間指定区分"}
 						 ,{"SPTimeStr"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"時間指定開始"}
 						 ,{"SPTimeEnd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"時間指定終了"}
-						 ,{"TotalWeight"			,"float"	,(int)0		,""		,(boolean)true	,"0"	,"荷物重量(kg)"}
-						 ,{"TotalSize"				,"float"	,(int)0		,""		,(boolean)true	,"0"	,"荷物サイズ"}
-						 ,{"TotalQty"				,"float"	,(int)0		,""		,(boolean)true	,"0"	,"個口数"}
+						 ,{"TotalWeight"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"荷物重量(kg)"}
+						 ,{"TotalSize"				,"float"	,(int)0		,""		,(boolean)false	,"0"	,"荷物サイズ"}
+						 ,{"TotalQty"				,"float"	,(int)0		,""		,(boolean)false	,"0"	,"個口数"}
 						 ,{"DeliveryTypeCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプ01"}
 						 ,{"DeliTypeName"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"運送タイプ名01"}
 						 ,{"DeliveryTypeCd02"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプ02"}
@@ -990,12 +990,12 @@ public class A100_TableCheck2{
 						 ,{"DeliTypeName04"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"運送タイプ名04"}
 						 ,{"DeliveryTypeCd05"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプ05"}
 						 ,{"DeliTypeName05"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"運送タイプ名05"}
-						 ,{"CodFG"					,"int"		,(int)11	,""		,(boolean)true	,"0"	,"代引きフラグ"}
-						 ,{"CodPayTotal"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"代引き収受金額合計"}
-						 ,{"CodPay"					,"int"		,(int)11	,""		,(boolean)true	,"0"	,"代引き金額"}
-						 ,{"CodConsumptionTax"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"代引き消費税"}
-						 ,{"ChildrenFG"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"赤黒区分"}
-						 ,{"ParentOkuriNo"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"親伝票番号"}
+						 ,{"CodFG"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引きフラグ"}
+						 ,{"CodPayTotal"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引き収受金額合計"}
+						 ,{"CodPay"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引き金額"}
+						 ,{"CodConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引き消費税"}
+						 ,{"ChildrenFG"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"赤黒区分"}
+						 ,{"ParentOkuriNo"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"親伝票番号"}
 						 ,{"NiokuriCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人コード"}
 						 ,{"NiokuriDepartmentCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"部署CD"}
  						 ,{"NiokuriName01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人名01"}
@@ -1028,23 +1028,23 @@ public class A100_TableCheck2{
 						 ,{"Com03"					,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,"コメント03"}
 						 ,{"Com04"					,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,"コメント04"}
 						 ,{"Com05"					,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,"コメント05"}
-						 ,{"Status"					,"int"		,(int)11	,""		,(boolean)true	,"0"	,"状況"}
-						 ,{"TaxFg"					,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税区分"}
-						 ,{"TaxRate"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税率"}
-						 ,{"DeliFee"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"運賃"}
-						 ,{"AddDeliFee01"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用1"}
-						 ,{"AddDeliFee02"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用2"}
-						 ,{"AddDeliFee03"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用3"}
-						 ,{"HaighWayFee01"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"高速代等実費精算分1（内税）"}
-						 ,{"HaighWayFee02"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"高速代等実費精算分2（内税）"}
-						 ,{"ConsumptionTax"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"消費税"}
-						 ,{"WithOutTaxTotal"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税別合計金額"}
-						 ,{"TotalFee"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税込請求額合計"}
-						 ,{"FeeFixFG"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"金額確定フラグ"}
+						 ,{"Status"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"状況"}
+						 ,{"TaxFg"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税区分"}
+						 ,{"TaxRate"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税率"}
+						 ,{"DeliFee"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"運賃"}
+						 ,{"AddDeliFee01"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用1"}
+						 ,{"AddDeliFee02"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用2"}
+						 ,{"AddDeliFee03"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用3"}
+						 ,{"HaighWayFee01"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"高速代等実費精算分1（内税）"}
+						 ,{"HaighWayFee02"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"高速代等実費精算分2（内税）"}
+						 ,{"ConsumptionTax"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"消費税"}
+						 ,{"WithOutTaxTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税別合計金額"}
+						 ,{"TotalFee"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税込請求額合計"}
+						 ,{"FeeFixFG"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"金額確定フラグ"}
 						 ,{"FeeFixDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"金額確定日時"}
-						 ,{"ReceiptStampFG"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"受領印チェック"}
+						 ,{"ReceiptStampFG"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"受領印チェック"}
 						 ,{"ReceiptStampDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"受領印日時"}
-						 ,{"InvoiceStatus"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"請求ステータス"}
+						 ,{"InvoiceStatus"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求ステータス"}
 						 ,{"EntryDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						 ,{"UpdateDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						 ,{"EntryUser"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1052,11 +1052,11 @@ public class A100_TableCheck2{
 						 ,{"EntryPG"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録プログラム"}
 						 ,{"UpdatePG"				,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新プログラム"}
 						 ,{"UseFeeBasePtCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"適用運賃タリフCD"}
-						 ,{"WmsStatus"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"在庫管理ステータス"}
+						 ,{"WmsStatus"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"在庫管理ステータス"}
 						 ,{"WmsShipDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"倉庫出荷日"}
 						 ,{"CourseGpCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"コースグループコード"}
 						 ,{"CourseCD"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"一次配車コースコード"}
-						 ,{"CourseCDEda"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"一次配車コースコード枝番"}
+						 ,{"CourseCDEda"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"一次配車コースコード枝番"}
 						 ,{"PitGrp"					,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"一次配車払出ピットグループ"}
 						 ,{"Pit01"					,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"一次配車払出ピット01"}
 						 ,{"Pit02"					,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"一次配車払出ピット02"}
@@ -1073,8 +1073,8 @@ public class A100_TableCheck2{
 						 ,{"InvoiceWHCD"	,"varchar"	,(int)20	,""		,(boolean)false	,""		,"倉庫コード"}
 						 ,{"kuriNo"			,"int"		,(int)11	,"KEY"	,(boolean)false	,"0"	,"送り状番号"}
 						 ,{"MsNo"			,"int"		,(int)11	,"KEY"	,(boolean)false	,"0"	,"明細番号"}
-						 ,{"DeliNo"			,"varchar"	,(int)20	,""		,(boolean)true	,"0"	,"出荷番号"}
-						 ,{"DelliMsNo"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"出荷番号明細番号"}
+						 ,{"DeliNo"			,"varchar"	,(int)20	,""		,(boolean)false	,"0"	,"出荷番号"}
+						 ,{"DelliMsNo"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷番号明細番号"}
 						 ,{"ClOrderNo"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷主管理番号"}
 						 ,{"ClGpCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷主グループコード"}
 						 ,{"ItemCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品コード"}
@@ -1085,7 +1085,7 @@ public class A100_TableCheck2{
 						 ,{"UnitSize"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"単位サイズ"}
 						 ,{"Qty"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"個数"}
 						 ,{"PackingQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"荷姿数量"}
-						 ,{"UnitName"		,"varchar"	,(int)20	,""		,(boolean)true	,""		,"明細単位"}
+						 ,{"UnitName"		,"varchar"	,(int)20	,""		,(boolean)false	,""		,"明細単位"}
 						 ,{"SubTotalWeight"	,"float"	,(int)0		,""		,(boolean)false	,"0"	,"明細重量"}
 						 ,{"SubTotalSize"	,"float"	,(int)0		,""		,(boolean)false	,"0"	,"明細サイズ"}
 						 ,{"UnitPrice"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"単価"}
@@ -1142,17 +1142,17 @@ public class A100_TableCheck2{
 						 ,{"OkuriNo"			,"int"		,(int)11	,"KEY"	,(boolean)false	,"0"	,"送り状番号"}
 						 ,{"SeikyuDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"請求日"}
 						 ,{"ShimeDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"締日"}
-						 ,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税区分"}
-						 ,{"TaxRate"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税率"}
-						 ,{"DeliFee"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"運賃"}
-						 ,{"AddDeliFee01"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用1"}
-						 ,{"AddDeliFee02"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用2"}
-						 ,{"AddDeliFee03"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用3"}
-						 ,{"HaighWayFee01"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"高速代等実費精算分1（内税）"}
-						 ,{"HaighWayFee02"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"高速代等実費精算分2（内税）"}
-						 ,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"消費税"}
-						 ,{"WithOutTaxTotal"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税別合計金額"}
-						 ,{"TotalFee"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税込請求額合計"}
+						 ,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税区分"}
+						 ,{"TaxRate"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税率"}
+						 ,{"DeliFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"運賃"}
+						 ,{"AddDeliFee01"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用1"}
+						 ,{"AddDeliFee02"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用2"}
+						 ,{"AddDeliFee03"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用3"}
+						 ,{"HaighWayFee01"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"高速代等実費精算分1（内税）"}
+						 ,{"HaighWayFee02"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"高速代等実費精算分2（内税）"}
+						 ,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"消費税"}
+						 ,{"WithOutTaxTotal"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税別合計金額"}
+						 ,{"TotalFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税込請求額合計"}
 						 ,{"Com01"				,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,"コメント01"}
 						 ,{"Com02"				,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,"コメント02"}
 						 ,{"Com03"				,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,"コメント03"}
@@ -1162,8 +1162,8 @@ public class A100_TableCheck2{
 						 ,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						 ,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
 						 ,{"UpdateUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者"}
-						 ,{"PrtFg"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"請求書印刷区分"}
-						 ,{"DataOutFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"請求データ抽出区分"}
+						 ,{"PrtFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求書印刷区分"}
+						 ,{"DataOutFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求データ抽出区分"}
 						};
 		return Rt;
 	}
@@ -1176,17 +1176,17 @@ public class A100_TableCheck2{
 						 ,{"HaishaNo"			,"int"		,(int)11	,"KEY"	,(boolean)false	,"0"	,"配車番号"}
 						 ,{"ShiharaiDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"支払日"}
 						 ,{"ShimeDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"締日"}
-						 ,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税区分"}
-						 ,{"TaxRate"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税率"}
-						 ,{"DeliPay"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"運賃"}
-						 ,{"AddDeliPay01"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用1"}
-						 ,{"AddDeliPay02"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用2"}
-						 ,{"AddDeliPay03"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用3"}
-						 ,{"HaighWayPay01"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"高速代等実費精算分1（内税）"}
-						 ,{"HaighWayPay02"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"高速代等実費精算分2（内税）"}
-						 ,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"消費税"}
-						 ,{"WithOutTaxTotal"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税別合計金額"}
-						 ,{"TotalPay"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税込請求額合計"}
+						 ,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税区分"}
+						 ,{"TaxRate"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税率"}
+						 ,{"DeliPay"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"運賃"}
+						 ,{"AddDeliPay01"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用1"}
+						 ,{"AddDeliPay02"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用2"}
+						 ,{"AddDeliPay03"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用3"}
+						 ,{"HaighWayPay01"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"高速代等実費精算分1（内税）"}
+						 ,{"HaighWayPay02"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"高速代等実費精算分2（内税）"}
+						 ,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"消費税"}
+						 ,{"WithOutTaxTotal"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税別合計金額"}
+						 ,{"TotalPay"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税込請求額合計"}
 						 ,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						 ,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						 ,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1219,9 +1219,9 @@ public class A100_TableCheck2{
 						 ,{"ShipDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"出荷実績日"}
 						 ,{"SPPlanDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"着日指定"}
 						 ,{"SPDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"着日実績"}
-						 ,{"TotalWeight"		,"float"	,(int)0		,""		,(boolean)true	,"0"	,"荷物重量"}
-						 ,{"TotalSize"			,"float"	,(int)0		,""		,(boolean)true	,"0"	,"荷物サイズ"}
-						 ,{"TotalQty"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"個口数"}
+						 ,{"TotalWeight"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"荷物重量"}
+						 ,{"TotalSize"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"荷物サイズ"}
+						 ,{"TotalQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"個口数"}
 						 ,{"DeliveryTypeCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプ01"}
 						 ,{"DeliTypeName"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"運送タイプ名01"}
 						 ,{"DeliveryTypeCd02"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプ02"}
@@ -1238,23 +1238,23 @@ public class A100_TableCheck2{
  						 ,{"CarName"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"車輛名"}
 						 ,{"DriverCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"乗務員CD"}
 						 ,{"DriverName"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"乗務員名"}
-						 ,{"Status"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"状況"}
-						 ,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税区分"}
-						 ,{"TaxRate"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税率"}
-						 ,{"DeliPay"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"運賃"}
-						 ,{"AddDeliPay01"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用1"}
-						 ,{"AddDeliPay02"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用2"}
-						 ,{"AddDeliPay03"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"付帯費用3"}
-						 ,{"HaighWayPay01"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"高速代等実費精算分1（内税）"}
-						 ,{"HaighWayPay02"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"高速代等実費精算分2（内税）"}
-						 ,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"消費税"}
-						 ,{"WithOutTaxTotal"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税別合計金額"}
-						 ,{"TotalPay"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税込請求額合計"}
-						 ,{"PayFixFG"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"金額確定フラグ"}
+						 ,{"Status"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"状況"}
+						 ,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税区分"}
+						 ,{"TaxRate"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税率"}
+						 ,{"DeliPay"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"運賃"}
+						 ,{"AddDeliPay01"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用1"}
+						 ,{"AddDeliPay02"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用2"}
+						 ,{"AddDeliPay03"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"付帯費用3"}
+						 ,{"HaighWayPay01"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"高速代等実費精算分1（内税）"}
+						 ,{"HaighWayPay02"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"高速代等実費精算分2（内税）"}
+						 ,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"消費税"}
+						 ,{"WithOutTaxTotal"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税別合計金額"}
+						 ,{"TotalPay"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税込請求額合計"}
+						 ,{"PayFixFG"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"金額確定フラグ"}
 						 ,{"PayFixDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"金額確定日時"}
-						 ,{"InvoiceStatus"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"支払通知ステータス"}
-						 ,{"ChildrenFG"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"赤黒区分"}
-						 ,{"ParentHaishaNo"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"親伝票番号"}
+						 ,{"InvoiceStatus"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"支払通知ステータス"}
+						 ,{"ChildrenFG"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"赤黒区分"}
+						 ,{"ParentHaishaNo"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"親伝票番号"}
 						 ,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						 ,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						 ,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1272,13 +1272,13 @@ public class A100_TableCheck2{
 						 ,{"MsNo"			,"int"		,(int)11	,"KEY"	,(boolean)false	,"0"	,""}
 						 ,{"InvoiceWHCD"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,""}
 						 ,{"cl_cd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,""}
-						 ,{"OkuriNo"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,""}
-						 ,{"Status"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,""}
-						 ,{"FG01"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,""}
-						 ,{"FG02"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,""}
-						 ,{"FG03"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,""}
-						 ,{"FG04"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,""}
-						 ,{"FG05"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,""}
+						 ,{"OkuriNo"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,""}
+						 ,{"Status"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,""}
+						 ,{"FG01"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,""}
+						 ,{"FG02"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,""}
+						 ,{"FG03"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,""}
+						 ,{"FG04"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,""}
+						 ,{"FG05"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,""}
 						 ,{"Com01"			,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,""}
 						 ,{"Com02"			,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,""}
 						 ,{"Com03"			,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,""}
@@ -1298,27 +1298,27 @@ public class A100_TableCheck2{
 						,{"ClCd"		,"varchar"	,(int) 20	,"KEY"	,(boolean)false	,""		,"荷主コード"}
 						,{"ParaCd"		,"varchar"	,(int) 20	,"KEY"	,(boolean)false	,""		,"パラメータコード"}
 						,{"ParaCdSeq"	,"int"		,(int) 11	,"KEY"	,(boolean)false	,""		,"ナンバリング"}
-						,{"ParaName"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータ名"}
-						,{"ParaTxt01"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目01"}
-						,{"ParaTxt02"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目02"}
-						,{"ParaTxt03"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目03"}
-						,{"ParaTxt04"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目04"}
-						,{"ParaTxt05"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目05"}
-						,{"ParaTxt06"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目06"}
-						,{"ParaTxt07"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目07"}
-						,{"ParaTxt08"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目08"}
-						,{"ParaTxt09"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目09"}
-						,{"ParaTxt10"	,"varchar"	,(int)200	,""		,(boolean)true	,""		,"パラメータテキスト項目10"}
-						,{"ParaInt01"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目01"}
-						,{"ParaInt02"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目02"}
-						,{"ParaInt03"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目03"}
-						,{"ParaInt04"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目04"}
-						,{"ParaInt05"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目05"}
-						,{"ParaInt06"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目06"}
-						,{"ParaInt07"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目07"}
-						,{"ParaInt08"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目08"}
-						,{"ParaInt09"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目09"}
-						,{"ParaInt10"	,"int"		,(int) 11	,""		,(boolean)true	,"0"	,"パラメータ数値項目10"}
+						,{"ParaName"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータ名"}
+						,{"ParaTxt01"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目01"}
+						,{"ParaTxt02"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目02"}
+						,{"ParaTxt03"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目03"}
+						,{"ParaTxt04"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目04"}
+						,{"ParaTxt05"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目05"}
+						,{"ParaTxt06"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目06"}
+						,{"ParaTxt07"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目07"}
+						,{"ParaTxt08"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目08"}
+						,{"ParaTxt09"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目09"}
+						,{"ParaTxt10"	,"varchar"	,(int)200	,""		,(boolean)false	,""		,"パラメータテキスト項目10"}
+						,{"ParaInt01"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目01"}
+						,{"ParaInt02"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目02"}
+						,{"ParaInt03"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目03"}
+						,{"ParaInt04"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目04"}
+						,{"ParaInt05"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目05"}
+						,{"ParaInt06"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目06"}
+						,{"ParaInt07"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目07"}
+						,{"ParaInt08"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目08"}
+						,{"ParaInt09"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目09"}
+						,{"ParaInt10"	,"int"		,(int) 11	,""		,(boolean)false	,"0"	,"パラメータ数値項目10"}
 						,{"EntryDate"	,"datetime"	,(int)  0	,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"	,"datetime"	,(int)  0	,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"	,"varchar"	,(int) 50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1333,7 +1333,7 @@ public class A100_TableCheck2{
 						,{"WhCd"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"倉庫コード"}
 						,{"Loc"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"ロケーション"}
 						,{"LocName"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"ロケーション名称"}
-						,{"LocType"		,"float"	,(int)0		,""		,(boolean)true	,"0"	,"ロケタイプ"}
+						,{"LocType"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"ロケタイプ"}
 						,{"EntryDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1362,9 +1362,9 @@ public class A100_TableCheck2{
 						,{"Com03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"コメント3"}
 						,{"PTMSCDBMN"		,"varchar"	,(int)12	,""		,(boolean)true	,"NULL"	,"基幹システム部門"}
 						,{"PTMSCDNINUSHI"	,"varchar"	,(int)12	,""		,(boolean)true	,"NULL"	,"基幹システム荷主"}
-						,{"PaySite"			,"int"		,(int)11	,""		,(boolean)true	,"1"	,"支払いサイト（月数）"}
-						,{"PayDate"			,"int"		,(int)11	,""		,(boolean)true	,"99"	,"支払日"}
-						,{"ShimeDate"		,"int"		,(int)11	,""		,(boolean)true	,"99"	,"締め日"}
+						,{"PaySite"			,"int"		,(int)11	,""		,(boolean)false	,"1"	,"支払いサイト（月数）"}
+						,{"PayDate"			,"int"		,(int)11	,""		,(boolean)false	,"99"	,"支払日"}
+						,{"ShimeDate"		,"int"		,(int)11	,""		,(boolean)false	,"99"	,"締め日"}
 						,{"EntryDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1407,23 +1407,23 @@ public class A100_TableCheck2{
 						,{"PitGlpCd"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"ピットグループコード"}
 						,{"PitCd"					,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"ピットコード"}
 						,{"PitName"					,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"ピット名"}
-						,{"Status"					,"int"		,(int)11	,""		,(boolean)true	,"0"	,"ピット占有状態"}
+						,{"Status"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"ピット占有状態"}
 						,{"TakeCoursePlanDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"占有中コース出荷予定日"}
 						,{"TakeCourseGpCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"占有中コースグループコード"}
 						,{"TakeCourseCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"占有中コースCd"}
-						,{"TakeCourseEda"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"占有中コース枝番"}
+						,{"TakeCourseEda"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"占有中コース枝番"}
 						,{"TakeCourseDeliveryCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"占有中コース指定届先CD"}
 						,{"TakeCourseDptCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"占有中コース指定届先部署CD"}
 						,{"TakeCourse01PlanDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"待機コース01出荷予定日"}
 						,{"TakeCourse01GpCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"待機コース01グループコード"}
 						,{"TakeCourse01Cd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"待機コース01Cd"}
-						,{"TakeCourse01Eda"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"待機コース01枝番"}
+						,{"TakeCourse01Eda"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"待機コース01枝番"}
 						,{"TakeCourse01DeliveryCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"待機コース01指定届先CD"}
 						,{"TakeCourse01DptCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"待機コース01指定届先部署CD"}
 						,{"TakeCourse02PlanDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"待機コース02出荷予定日"}
 						,{"TakeCourse02GpCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"待機コース02グループコード"}
 						,{"TakeCourse02Cd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"待機コース02Cd"}
-						,{"TakeCourse02Eda"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"待機コース02枝番"}
+						,{"TakeCourse02Eda"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"待機コース02枝番"}
 						,{"TakeCourse02DeliveryCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"待機コース02指定届先CD"}
 						,{"TakeCourse02DptCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"待機コース02指定届先部署CD"}
 						,{"EntryDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
@@ -1461,12 +1461,12 @@ public class A100_TableCheck2{
 						,{"DeliveryTypeCd05"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード05"}
 						,{"TildFG"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"温度区分"}
 						,{"CategoryCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品カテゴリCD"}
-						,{"ShimeDate"			,"int"		,(int)11	,""		,(boolean)true	,"99"	,"締め日"}
-						,{"ArrivalBaseFee"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"入荷基本料金"}
-						,{"ArrivalSlipFee"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"入荷伝票基本料金"}
-						,{"ArrivalUnitFee"		,"float"	,(int)0		,""		,(boolean)true	,"0"	,"入荷料単価"}
-						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"課金単位"}
-						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"集計区分"}
+						,{"ShimeDate"			,"int"		,(int)11	,""		,(boolean)false	,"99"	,"締め日"}
+						,{"ArrivalBaseFee"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"入荷基本料金"}
+						,{"ArrivalSlipFee"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"入荷伝票基本料金"}
+						,{"ArrivalUnitFee"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"入荷料単価"}
+						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"集計区分"}
 						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1488,12 +1488,12 @@ public class A100_TableCheck2{
 						,{"DeliveryTypeCd05"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード05"}
 						,{"TildFG"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"温度区分"}
 						,{"CategoryCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品カテゴリCD"}
-						,{"ShimeDate"			,"int"		,(int)11	,""		,(boolean)true	,"99"	,"締め日"}
-						,{"ShipBaseFee"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"出荷基本料金"}
-						,{"ShipSlipFee"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"出荷伝票基本料金"}
-						,{"ShipUnitFee"			,"float"	,(int)0		,""		,(boolean)true	,"0"	,"出荷料単価"}
-						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"課金単位"}
-						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"集計区分"}
+						,{"ShimeDate"			,"int"		,(int)11	,""		,(boolean)false	,"99"	,"締め日"}
+						,{"ShipBaseFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷基本料金"}
+						,{"ShipSlipFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷伝票基本料金"}
+						,{"ShipUnitFee"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"出荷料単価"}
+						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"集計区分"}
 						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1516,11 +1516,11 @@ public class A100_TableCheck2{
 						,{"TildFG"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"温度区分"}
 						,{"CategoryCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品カテゴリCD"}
 						,{"CuttingDate"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"期締め設定"}
-						,{"ShimeDate"			,"int"		,(int)11	,""		,(boolean)true	,"99"	,"締め日"}
-						,{"StockBaseFee"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"保管基本料金"}
-						,{"StockUnitFee"		,"float"	,(int)0		,""		,(boolean)true	,"0"	,"保管料単価"}
-						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"課金単位"}
-						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"集計区分"}
+						,{"ShimeDate"			,"int"		,(int)11	,""		,(boolean)false	,"99"	,"締め日"}
+						,{"StockBaseFee"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"保管基本料金"}
+						,{"StockUnitFee"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"保管料単価"}
+						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"集計区分"}
 						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1543,11 +1543,11 @@ public class A100_TableCheck2{
 						,{"TildFG"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"温度区分"}
 						,{"CategoryCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品カテゴリCD"}
 						,{"AdjustReasonCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"調整理由CD"}
-						,{"ShimeDate"			,"int"		,(int)11	,""		,(boolean)true	,"99"	,"締め日"}
-						,{"AdjustBaseFee"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"調整基本料金"}
-						,{"AdjustUnitFee"		,"float"	,(int)0		,""		,(boolean)true	,"0"	,"調整料単価"}
-						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"課金単位"}
-						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"集計区分"}
+						,{"ShimeDate"			,"int"		,(int)11	,""		,(boolean)false	,"99"	,"締め日"}
+						,{"AdjustBaseFee"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"調整基本料金"}
+						,{"AdjustUnitFee"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"調整料単価"}
+						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"集計区分"}
 						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1580,7 +1580,7 @@ public class A100_TableCheck2{
 						,{"UpdateDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
 						,{"UpdateUser"	,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者"}
-						,{"FixFg"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"ステータス"}
+						,{"FixFg"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"ステータス"}
 						};
 		return Rt;
 	}
@@ -1598,8 +1598,8 @@ public class A100_TableCheck2{
 						,{"ItemName"	,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品名"}
 						,{"lot"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"ロット"}
 						,{"ExpDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"消費期限"}
-						,{"PlanQty"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"予定数量"}
- 						,{"ActualQty"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"実績数"}
+						,{"PlanQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"予定数量"}
+ 						,{"ActualQty"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"実績数"}
 						,{"ActualDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"入荷日"}
 						,{"Com01"		,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"コメント1"}
 						,{"Com02"		,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"コメント2"}
@@ -1655,8 +1655,8 @@ public class A100_TableCheck2{
 						,{"ItemName"	,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品名"}
 						,{"Lot"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"ロット"}
 						,{"ExpDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"消費期限"}
-						,{"PlanQty"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"予定数量"}
-						,{"ActualQty"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"実績数"}
+						,{"PlanQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"予定数量"}
+						,{"ActualQty"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"実績数"}
 						,{"ActualDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"入荷日"}
 						,{"Com01"		,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"コメント1"}
 						,{"Com02"		,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"コメント2"}
@@ -1677,9 +1677,9 @@ public class A100_TableCheck2{
 						,{"Lot"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""					,"ロット"}
 						,{"Expdate"		,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""					,"消費期限"}
 						,{"ActualDate"	,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""					,"入荷実績日"}
-						,{"Qty"			,"int"		,(int)11	,""		,(boolean)true	,"0"				,"数量"}
-						,{"ShipPlanQty"	,"int"		,(int)11	,""		,(boolean)true	,"0"				,"引当済数"}
-						,{"PossibleQty"	,"int"		,(int)11	,""		,(boolean)true	,"0"				,"出荷可能数"}
+						,{"Qty"			,"int"		,(int)11	,""		,(boolean)false	,"0"				,"数量"}
+						,{"ShipPlanQty"	,"int"		,(int)11	,""		,(boolean)false	,"0"				,"引当済数"}
+						,{"PossibleQty"	,"int"		,(int)11	,""		,(boolean)false	,"0"				,"出荷可能数"}
 						,{"ItemName"	,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"				,"商品名"}
 						,{"ClItemCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"				,"荷主商品コード"}
 						,{"JanCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"				,"JanCd(バラ)"}
@@ -1706,14 +1706,14 @@ public class A100_TableCheck2{
 						,{"Lot"					,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"調整元ロット"}
 						,{"ExpDate"				,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"調整元賞味期限"}
 						,{"ActualDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"調整元入荷日"}
-						,{"BeforeQty"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"調整元在庫数"}
-						,{"ShipPlanQty"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"調整元引当済数"}
-						,{"PossibleQty"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"調整元出荷可能数"}
-						,{"AdjustQty"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"調整数"}
+						,{"BeforeQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"調整元在庫数"}
+						,{"ShipPlanQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"調整元引当済数"}
+						,{"PossibleQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"調整元出荷可能数"}
+						,{"AdjustQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"調整数"}
 						,{"AdjustCom01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"調整理由コメント01"}
 						,{"AdjustCom02"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"調整理由コメント02"}
 						,{"AdjustCom03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"調整理由コメント03"}
-						,{"AfterQty"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"調整後在庫数"}
+						,{"AfterQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"調整後在庫数"}
 						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1733,23 +1733,23 @@ public class A100_TableCheck2{
 						,{"OrderItemName01"	,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品表記名"}
 						,{"OrderLot"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"受注ロット指定"}
 						,{"OrderExpDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"受注賞味期限指定"}
-						,{"OrderQty"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"受注個数"}
+						,{"OrderQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"受注個数"}
 						,{"ShipWhCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"倉庫コード"}
  						,{"ShipLoc"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"ロケーション"}
 						,{"ShipItemCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品コード"}
 						,{"ShipLot"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"ロット"}
 						,{"ShipExpdate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"消費期限"}
 						,{"ShipActualDate"	,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"入荷実績日"}
-						,{"ShipQty"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"引当数量"}
-						,{"FixFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"引落済フラグ"}
-						,{"PackingType"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"荷姿タイプ"}
-						,{"PackingQty"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"荷姿数量"}
+						,{"ShipQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"引当数量"}
+						,{"FixFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"引落済フラグ"}
+						,{"PackingType"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"荷姿タイプ"}
+						,{"PackingQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"荷姿数量"}
 						,{"UnitName"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷姿単位"}
-						,{"PackingUnitQty"	,"int"		,(int)11	,""		,(boolean)true	,"1"	,"荷姿単位のバラ入数"}
-						,{"BRShipQty"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"バラ数量"}
-						,{"CTShipQty"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"カートン数量"}
-						,{"CSShipQty"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"ケース数量"}
-						,{"PLShipQty"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"パレット数量"}
+						,{"PackingUnitQty"	,"int"		,(int)11	,""		,(boolean)false	,"1"	,"荷姿単位のバラ入数"}
+						,{"BRShipQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"バラ数量"}
+						,{"CTShipQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"カートン数量"}
+						,{"CSShipQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"ケース数量"}
+						,{"PLShipQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"パレット数量"}
 						,{"BRUnitName"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"バラ単位名"}
 						,{"CTUnitName"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"カートン単位名"}
 						,{"CSUnitName"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"ケース単位名"}
@@ -1768,8 +1768,8 @@ public class A100_TableCheck2{
 						,{"WhCd"			,"varchar"	,(int)20	,""		,(boolean)true	,""		,"倉庫コード"}
 						,{"BerthCd"			,"varchar"	,(int)20	,""		,(boolean)true	,""		,"バースCD"}
 						,{"ReserveDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"バース予約日"}
-						,{"ReserveTimeStr"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"バース予約開始時刻"}
-						,{"ReserveTimeEnd"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"バース予約終了時刻"}
+						,{"ReserveTimeStr"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"バース予約開始時刻"}
+						,{"ReserveTimeEnd"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"バース予約終了時刻"}
 						,{"EntryDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1792,23 +1792,23 @@ public class A100_TableCheck2{
 						,{"DeliveryTypeCd05"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード05"}
 						,{"TildFG"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"温度区分"}
 						,{"CategoryCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品カテゴリCD"}
-						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"課金単位"}
-						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"集計区分"}
-						,{"ArrivalBaseFee"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"入荷基本料金"}
-						,{"ArrivalSlipFee"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"入荷伝票基本料金"}
-						,{"ArrivalSlipFeeTotal"	,"int"		,(int)11	,""		,(boolean)true	,"0"	,"入荷伝票基本料金合計"}
-						,{"ArrivalUnitFee"		,"float"	,(int)0		,""		,(boolean)true	,"0"	,"入荷料単価"}
-						,{"ArrivalQtyTotal"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"入荷数合計"}
-						,{"ArrivalVolTotal"		,"float"	,(int)0		,""		,(boolean)true	,"0"	,"入荷量合計"}
-						,{"ArrivalFeeTotal"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"入荷料合計"}
-						,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税区分"}
-						,{"TaxRate"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"消費税率"}
-						,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"消費税"}
-						,{"WithOutTaxTotal"		,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税別合計金額"}
-						,{"TotalFee"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"税込請求額合計"}
-						,{"FeeFixFg"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"確定区分"}
-						,{"FeeNo"				,"int"		,(int)11	,""		,(boolean)true	,"0"	,"請求番号"}
-						,{"SlipCount"			,"int"		,(int)11	,""		,(boolean)true	,"0"	,"伝票枚数"}
+						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"集計区分"}
+						,{"ArrivalBaseFee"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"入荷基本料金"}
+						,{"ArrivalSlipFee"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"入荷伝票基本料金"}
+						,{"ArrivalSlipFeeTotal"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"入荷伝票基本料金合計"}
+						,{"ArrivalUnitFee"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"入荷料単価"}
+						,{"ArrivalQtyTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"入荷数合計"}
+						,{"ArrivalVolTotal"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"入荷量合計"}
+						,{"ArrivalFeeTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"入荷料合計"}
+						,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税区分"}
+						,{"TaxRate"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"消費税率"}
+						,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"消費税"}
+						,{"WithOutTaxTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税別合計金額"}
+						,{"TotalFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税込請求額合計"}
+						,{"FeeFixFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"確定区分"}
+						,{"FeeNo"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求番号"}
+						,{"SlipCount"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"伝票枚数"}
 						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
 						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
 						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
@@ -1895,103 +1895,167 @@ public class A100_TableCheck2{
 						};
 		return Rt;
 	}
-	/*
+	
 	private static Object[][] WW013202WhFeeOutMs_Definition(){
 		Object[][] Rt	={
-						,{"ClCd` varchar(20) NOT NULL COMMENT '荷主コード',
-						,{"WhCd` varchar(20) NOT NULL COMMENT '倉庫コード',
-						,{"ShipFeeCd` varchar(20) NOT NULL COMMENT '出荷料金コード',
-						,{"ShimeDate` datetime NOT NULL COMMENT '締め日',
-						,{"OkuriNo` int(11) NOT NULL COMMENT '送り状番号',
-						,{"MsNo` int(11) NOT NULL COMMENT '明細番号',
-						,{"Seq` int(11) NOT NULL COMMENT '引当枝番',
-						,{"ClGpCD` varchar(20) DEFAULT NULL,
-						,{"OrderItemCd` varchar(20) DEFAULT NULL,
-						,{"ClItemCd` varchar(20) DEFAULT NULL,
-						,{"OrderItemName01` varchar(100) DEFAULT NULL,
-						,{"OrderLot` varchar(20) DEFAULT NULL,
-						,{"OrderExpDate` datetime DEFAULT NULL,
-						,{"OrderQty` float NOT NULL DEFAULT '0',
-						,{"ShipWhCd` varchar(20) DEFAULT NULL,
-						,{"ShipLoc` varchar(15) DEFAULT NULL,
-						,{"ShipItemCd` varchar(20) DEFAULT NULL,
-						,{"ShipLot` varchar(20) DEFAULT NULL,
-						,{"ShipExpdate` datetime DEFAULT NULL,
-						,{"ShipActualDate` datetime DEFAULT NULL,
-						,{"WmsShipDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-						,{"FixFg` int(11) NOT NULL DEFAULT '0',
-						,{"PackingType` int(11) NOT NULL DEFAULT '0',
-						,{"PackingQty` int(11) NOT NULL DEFAULT '0',
-						,{"UnitName` varchar(20) DEFAULT NULL,
-						,{"PackingUnitQty` int(11) NOT NULL DEFAULT '0',
-						,{"BRShipQty` int(11) NOT NULL DEFAULT '0',
-						,{"CTShipQty` int(11) NOT NULL DEFAULT '0',
-						,{"CSShipQty` int(11) NOT NULL DEFAULT '0',
-						,{"PLShipQty` int(11) NOT NULL DEFAULT '0',
-						,{"BRUnitName` varchar(20) DEFAULT NULL,
-						,{"CTUnitName` varchar(20) DEFAULT NULL,
-						,{"CSUnitName` varchar(20) DEFAULT NULL,
-						,{"PLUnitName` varchar(20) DEFAULT NULL,
-						,{"ShipSlipFee` int(11) NOT NULL DEFAULT '0',
-						,{"ShipUnitFee` float NOT NULL DEFAULT '0',
-						,{"ItemWeight` float NOT NULL DEFAULT '0',
-						,{"ItemSize` float NOT NULL DEFAULT '0',
-						,{"FeeUnit` int(11) NOT NULL DEFAULT '0',
-						,{"ShipQty` int(11) NOT NULL DEFAULT '0',
-						,{"ShipVol` float NOT NULL DEFAULT '0',
-						,{"ShipFee` int(11) NOT NULL DEFAULT '0',
-						,{"EntryDate` datetime DEFAULT NULL,
-						,{"UpdateDate` datetime DEFAULT NULL,
-						,{"EntryUser` varchar(50) DEFAULT NULL,
-						,{"UpdateUser` varchar(50) DEFAULT NULL,
-						,{"ClDeliNo` varchar(50) DEFAULT NULL,
-						,{"ClOrderNo` varchar(50) DEFAULT NULL,
-						,{"NiokuriCd` varchar(20) DEFAULT NULL,
-						,{"NiokuriDepartmentCd` varchar(20) DEFAULT NULL,
-						,{"NiokuriName01` varchar(50) DEFAULT NULL,
-						,{"NiokuriName02` varchar(50) DEFAULT NULL,
-						,{"NiokuriName03` varchar(50) DEFAULT NULL,
-						,{"NiokuriPost` varchar(20) DEFAULT NULL,
-						,{"NiokuriAdd01` varchar(100) DEFAULT NULL,
-						,{"NiokuriAdd02` varchar(100) DEFAULT NULL,
-						,{"NiokuriAdd03` varchar(100) DEFAULT NULL,
-						,{"NioKuriTel` varchar(20) DEFAULT NULL,
-						,{"NioKuriFax` varchar(20) DEFAULT NULL,
-						,{"NioKuriMail` varchar(200) DEFAULT NULL,
-						,{"NiokuriMunicCd` varchar(20) DEFAULT NULL,
-						,{"DeliCd` varchar(20) DEFAULT NULL,
-						,{"ClDeliCd` varchar(20) DEFAULT NULL,
-						,{"DeliDepartmentCd` varchar(20) DEFAULT NULL,
-						,{"DeliName01` varchar(50) DEFAULT NULL,
-						,{"DeliName02` varchar(50) DEFAULT NULL,
-						,{"DeliName03` varchar(50) DEFAULT NULL,
-						,{"DeliPost` varchar(20) DEFAULT NULL,
-						,{"DeliAdd01` varchar(100) DEFAULT NULL,
-						,{"DeliAdd02` varchar(100) DEFAULT NULL,
-						,{"DeliAdd03` varchar(100) DEFAULT NULL,
-						,{"DeliTel` varchar(20) DEFAULT NULL,
-						,{"DeliFax` varchar(20) DEFAULT NULL,
-						,{"DeliMail` varchar(200) DEFAULT NULL,
-						,{"DeliMunicCd` varchar(20) DEFAULT NULL,
-						,{"FeeNo` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ClCd`,`WhCd`,`ShipFeeCd`,`ShimeDate`,`OkuriNo`,`MsNo`,`Seq`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='';
-
+						 {"ClCd"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"荷主コード"}
+						,{"WhCd"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"倉庫コード"}
+						,{"ShipFeeCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"出荷料金コード"}
+						,{"ShimeDate"			,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""		,"締め日"}
+						,{"OkuriNo"				,"int"		,(int)11	,"KEY"	,(boolean)false	,""		,"送り状番号"}
+						,{"MsNo"				,"int"		,(int)11	,"KEY"	,(boolean)false	,""		,"明細番号"}
+						,{"Seq"					,"int"		,(int)11	,"KEY"	,(boolean)false	,""		,"引当枝番"}
+						,{"ClGpCD"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷主グループ"}
+						,{"OrderItemCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品コード"}
+						,{"ClItemCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷主商品コード"}
+						,{"OrderItemName01"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品表記名"}
+						,{"OrderLot"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"受注ロット指定"}
+						,{"OrderExpDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"受注賞味期限指定"}
+						,{"OrderQty"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"受注個数"}
+						,{"ShipWhCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"倉庫コード"}
+						,{"ShipLoc"				,"varchar"	,(int)15	,""		,(boolean)true	,"NULL"	,"ロケーション"}
+						,{"ShipItemCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品コード"}
+						,{"ShipLot"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"ロット"}
+						,{"ShipExpdate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"消費期限"}
+						,{"ShipActualDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"入荷実績日"}
+						,{"WmsShipDate"			,"datetime"	,(int)0		,""		,(boolean)false	,""		,"倉庫出荷日"}
+						,{"FixFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"引落済フラグ"}
+						,{"PackingType"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"荷姿タイプ"}
+						,{"PackingQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"荷姿数量"}
+						,{"UnitName"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷姿単位"}
+						,{"PackingUnitQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"荷姿単位のバラ入数"}
+						,{"BRShipQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"バラ数量"}
+						,{"CTShipQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"カートン数量"}
+						,{"CSShipQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"ケース数量"}
+						,{"PLShipQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"パレット数量"}
+						,{"BRUnitName"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"バラ単位名"}
+						,{"CTUnitName"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"カートン単位名"}
+						,{"CSUnitName"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"ケース単位名"}
+						,{"PLUnitName"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"パレット単位名"}
+						,{"ShipSlipFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷伝票基本料金"}
+						,{"ShipUnitFee"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"出荷料単価"}
+						,{"ItemWeight"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"商品重量"}
+						,{"ItemSize"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"商品サイズ"}
+						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"ShipQty"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"引当数量"}
+						,{"ShipVol"				,"float"	,(int)0		,""		,(boolean)false	,"0"	,"出荷量"}
+						,{"ShipFee"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"出荷料"}
+						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
+						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
+						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
+						,{"UpdateUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者"}
+						,{"ClDeliNo"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷主管理番号"}
+						,{"ClOrderNo"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷主注文番号"}
+						,{"NiokuriCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人コード"}
+						,{"NiokuriDepartmentCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"部署CD"}
+						,{"NiokuriName01"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷送り人名01"}
+						,{"NiokuriName02"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷送り人名02"}
+						,{"NiokuriName03"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷送り人名03"}
+						,{"NiokuriPost"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人郵便番号"}
+						,{"NiokuriAdd01"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人住所01"}
+						,{"NiokuriAdd02"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人住所02"}
+						,{"NiokuriAdd03"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人住所03"}
+						,{"NioKuriTel"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人TEL"}
+						,{"NioKuriFax"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人FAX"}
+						,{"NioKuriMail"			,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"荷送り人MAIL"}
+						,{"NiokuriMunicCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送人市区町村CD"}
+						,{"DeliCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届け先コード"}
+						,{"ClDeliCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷主荷届け先コード"}
+						,{"DeliDepartmentCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"部署CD"}
+						,{"DeliName01"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷届け先名01"}
+						,{"DeliName02"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷届け先名02"}
+						,{"DeliName03"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"荷届け先名03"}
+						,{"DeliPost"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届け先郵便番号"}
+						,{"DeliAdd01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先住所01"}
+						,{"DeliAdd02"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先住所02"}
+						,{"DeliAdd03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先住所03"}
+						,{"DeliTel"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届け先TEL"}
+						,{"DeliFax"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届け先FAX"}
+						,{"DeliMail"			,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"荷届け先MAIL"}
+						,{"DeliMunicCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届先市区町村CD"}
+						,{"FeeNo"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求番号"}
 						};
 		return Rt;
 	}
+	
 	private static Object[][] WW013301WhFeeStockHd_Definition(){
 		Object[][] Rt	={
-						
+						 {"ClCd"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"荷主コード"}
+						,{"WhCd"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"倉庫コード"}
+						,{"StockFeeCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"保管料金コード"}
+						,{"ShimeDate"			,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""		,"締め日"}
+						,{"CuttingDate"			,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""		,"期締め日"}
+						,{"StockFeeName"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"保管料金名"}
+						,{"DeliveryTypeCd01"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード01"}
+						,{"DeliveryTypeCd02"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード02"}
+						,{"DeliveryTypeCd03"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード03"}
+						,{"DeliveryTypeCd04"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード04"}
+						,{"DeliveryTypeCd05"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプコード05"}
+						,{"TildFG"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"温度区分"}
+						,{"CategoryCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"商品カテゴリCD"}
+						,{"StockBaseFee"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"保管基本料金"}
+						,{"StockUnitFee"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"保管料単価"}
+						,{"FeeUnit"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"SummaryFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"集計区分"}
+						,{"StrStockQtyTotal"	,"int"		,(int)11	,""		,(boolean)false	,"0"	,"期初在庫数(バラ)"}
+						,{"ArrivalQtyTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"期中入荷数(バラ)"}
+						,{"FeeQtyTotal"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求対象数(バラ）"}
+						,{"StrStockVolTotal"	,"float"	,(int)0		,""		,(boolean)false	,"0"	,"期初在庫量"}
+						,{"ArrivalVolTotal"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"期中入荷量"}
+						,{"FeeVolTotal"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"請求対象量"}
+						,{"StockFeeTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"保管料"}
+						,{"TaxFg"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税区分"}
+						,{"TaxRate"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税率"}
+						,{"ConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"消費税"}
+						,{"WithOutTaxTotal"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税別合計金額"}
+						,{"TotalFee"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"税込請求額合計"}
+						,{"FeeFixFg"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"確定区分"}
+						,{"EntryDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
+						,{"UpdateDate"			,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
+						,{"EntryUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
+						,{"UpdateUser"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者"}
+						,{"FeeNo"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求番号"}
 						};
 		return Rt;
 	}
+	
 	private static Object[][] WW013302WhFeeStockMs_Definition(){
 		Object[][] Rt	={
-						
+						 {"ClCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"荷主コード"}
+						,{"WhCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"倉庫コード"}
+						,{"StockFeeCd"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"保管料金コード"}
+						,{"ShimeDate"		,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""		,"締め日"}
+						,{"CuttingDate"		,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""		,"期締め日"}
+						,{"ClGpCD"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"荷主グループ"}
+						,{"ItemCd"			,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"商品コード"}
+						,{"Lot"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"ロット"}
+						,{"Expdate"			,"datetime"	,(int)0		,"KEY"	,(boolean)false	,""		,"消費期限"}
+						,{"ClItemCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷主商品コード"}
+						,{"ItemName"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品名"}
+						,{"StockUnitFee"	,"float"	,(int)0		,""		,(boolean)false	,"0"	,"保管料単価"}
+						,{"FeeUnit"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"課金単位"}
+						,{"SummaryFg"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"集計区分"}
+						,{"ItemWeight"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"商品重量"}
+						,{"ItemSize"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"商品サイズ"}
+						,{"StrStockQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"期初在庫数(バラ)"}
+						,{"ArrivalQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"期中入荷数(バラ)"}
+						,{"FeeQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求対象数(バラ)"}
+						,{"StrStockVol"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"期初在庫量"}
+						,{"ArrivalVol"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"期中入荷量"}
+						,{"FeeVol"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"請求対象量"}
+						,{"StockFee"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"保管料"}
+						,{"EntryDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
+						,{"UpdateDate"		,"datetime"	,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
+						,{"EntryUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
+						,{"UpdateUser"		,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"更新者"}
+						,{"FeeNo"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"請求番号"}
+						,{"ShipQty"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"期中出荷数"}
+						,{"AdjustQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"期中調整数"}
+						,{"EndStockQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"期末在庫数"}
 						};
 		return Rt;
 	}
+	/*
 	private static Object[][] WW013401WhFeeAdjustHd_Definition(){
 		Object[][] Rt	={
 						
@@ -2031,8 +2095,17 @@ public class A100_TableCheck2{
 		return Rt;
 	}
 	
-	
-	
+	private static Object[][] M0010_PostMst_Definition(){
+		Object[][] Rt	={
+						 {"POST"			,"varchar"	,(int)10	,"KEY"	,(boolean)false	,""		,"郵便番号"}
+						,{"PREFECTURES"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"県名"}
+						,{"MUNICI01"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"市区町村名1"}
+						,{"MUNICI02"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"市区町村名2"}
+						,{"MUNICIPALITY_CD"	,"varchar"	,(int)10	,""		,(boolean)true	,"NULL"	,"市区町村CD"}
+						};
+		return Rt;
+	}
+
 	
 	
 	
