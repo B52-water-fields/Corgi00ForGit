@@ -119,57 +119,126 @@ public class WT100_Stock_20_Move{
 			int GetFromPlPossibleQty	= (int)FromStockData[0][T100_StockRt.ColPlPossibleQty];		//出荷可能パレット数
 			
 			
+			int MovePossibleBrTotalQty	= GetFromQty-GetFromShipPlanQty;
+			int MovePossiblePlQty		= 0;
+			int MovePossibleCsQty		= 0;
+			int MovePossibleCtQty		= 0;
+			int MovePossibleBrQty		= GetFromQty-GetFromShipPlanQty;
+			
+			if(0<GetFromPlUnitQty) {
+				MovePossiblePlQty = (int)(MovePossibleBrQty/GetFromPlUnitQty);
+				MovePossibleBrQty = (int)(MovePossibleBrQty%GetFromPlUnitQty);
+			}
+			if(0<GetFromCsUnitQty) {
+				MovePossibleCsQty = (int)(MovePossibleBrQty/GetFromCsUnitQty);
+				MovePossibleBrQty = (int)(MovePossibleBrQty%GetFromCsUnitQty);
+			}
+			if(0<GetFromCtUnitQty) {
+				MovePossibleCtQty = (int)(MovePossibleBrQty/GetFromCtUnitQty);
+				MovePossibleBrQty = (int)(MovePossibleBrQty%GetFromCtUnitQty);
+			}
+			
+			/*移動商品情報*/
+			JLabel LB_ClCd						= B100_FrameParts.JLabelSet(		  0, 50,100,20,"荷主:"				,11,1);
+			JLabel LB_WhCd						= B100_FrameParts.JLabelSet(		  0, 75,100,20,"倉庫:"				,11,1);
+			
+			JLabel LB_ItemCd					= B100_FrameParts.JLabelSet(		  0,100,100,20,"商品CD:"			,10,1);
+			JLabel LB_Lot						= B100_FrameParts.JLabelSet(		  0,125,100,20,"ロット:"			,10,1);
+			JLabel LB_Expdate					= B100_FrameParts.JLabelSet(		  0,150,100,20,"消費期限:"			,10,1);
+			JLabel LB_ActualDate				= B100_FrameParts.JLabelSet(		  0,175,100,20,"入荷実績日:"		,10,1);
+			
+			JLabel LB_PlUnitQty					= B100_FrameParts.JLabelSet(		300,125,100,20,"パレット入数:"		,10,1);
+			JLabel LB_CsUnitQty					= B100_FrameParts.JLabelSet(		300,150,100,20,"ケース入数:"		,10,1);
+			JLabel LB_CtUnitQty					= B100_FrameParts.JLabelSet(		300,175,100,20,"カートン入数:"		,10,1);
 			
 			
+			JLabel LB_FromMsg					= B100_FrameParts.JLabelSet(		100,225,100,20,"移動元"				,10,2);
+			JLabel LB_ToMsg						= B100_FrameParts.JLabelSet(		300,225,100,20,"移動先"				,10,2);
+			JLabel LB_MovePossibleMsg			= B100_FrameParts.JLabelSet(		100,400,100,20,"移動可能数"			,10,2);
+			JLabel LB_MoveMsg					= B100_FrameParts.JLabelSet(		500,400,100,20,"移動数"				,10,2);
+			JLabel LB_MoveAfterMsg				= B100_FrameParts.JLabelSet(		300,400,100,20,"移動後総数"			,10,2);
 			
-			JLabel LB_ClCd						= B100_FrameParts.JLabelSet(		  0, 50, 80,20,"荷主:"				,11,1);
-			JLabel LB_WhCd						= B100_FrameParts.JLabelSet(		  0, 75, 80,20,"倉庫:"				,11,1);
+			JLabel LB_Loc						= B100_FrameParts.JLabelSet(		  0,250,100,20,"ロケーション:"		,10,1);
+			JLabel LB_LocName					= B100_FrameParts.JLabelSet(		  0,275,100,20,"ロケ名称:"			,10,1);
+			JLabel LB_Type						= B100_FrameParts.JLabelSet(		  0,300,100,20,"ロケタイプ:"		,10,1);
+			JLabel LB_Qty						= B100_FrameParts.JLabelSet(		  0,325,100,20,"総数量:"			,10,1);
+			JLabel LB_ShipPlanQty				= B100_FrameParts.JLabelSet(		  0,350,100,20,"引当済数:"			,10,1);
+			JLabel LB_PossibleQty				= B100_FrameParts.JLabelSet(		  0,375,100,20,"出荷可能数:"		,10,1);
 			
-			JLabel LB_ItemCd					= B100_FrameParts.JLabelSet(		  0,125, 80,20,"商品CD:"			,10,1);
-			JLabel LB_Lot						= B100_FrameParts.JLabelSet(		  0,150, 80,20,"ロット:"			,10,1);
-			JLabel LB_Expdate					= B100_FrameParts.JLabelSet(		  0,175, 80,20,"消費期限:"			,10,1);
-			JLabel LB_ActualDate				= B100_FrameParts.JLabelSet(		  0,200, 80,20,"入荷実績日:"		,10,1);
-			
-			JLabel LB_PlUnitQty					= B100_FrameParts.JLabelSet(		280,150,100,20,"パレット入数:"		,10,1);
-			JLabel LB_CsUnitQty					= B100_FrameParts.JLabelSet(		280,175,100,20,"ケース入数:"		,10,1);
-			JLabel LB_CtUnitQty					= B100_FrameParts.JLabelSet(		280,200,100,20,"カートン入数:"		,10,1);
-			
-			
-			JLabel LB_Loc						= B100_FrameParts.JLabelSet(		 80,225,100,20,"ロケーション"		,10,2);
-			JLabel LB_Type						= B100_FrameParts.JLabelSet(		 80,225,100,20,"ロケタイプ"			,10,2);
-			JLabel LB_Qty						= B100_FrameParts.JLabelSet(		 80,225,100,20,"総数量"				,10,2);
-			JLabel LB_ShipPlanQty				= B100_FrameParts.JLabelSet(		180,225,100,20,"引当済数"			,10,2);
-			JLabel LB_PossibleQty				= B100_FrameParts.JLabelSet(		280,225,100,20,"出荷可能数"			,10,2);
-			
+			JLabel LB_BrTotalQty				= B100_FrameParts.JLabelSet(		  0,425,100,20,"バラ総数:"			,10,1);
+			JLabel LB_PlQty						= B100_FrameParts.JLabelSet(		  0,450,100,20,"パレット数:"		,10,1);
+			JLabel LB_CsQty						= B100_FrameParts.JLabelSet(		  0,475,100,20,"ケース数:"			,10,1);
+			JLabel LB_CtQty						= B100_FrameParts.JLabelSet(		  0,500,100,20,"カートン数:"		,10,1);
+			JLabel LB_BrQty						= B100_FrameParts.JLabelSet(		  0,525,100,20,"バラ数:"			,10,1);
 			
 			
-			final JTextField LB_TotalQty		= B100_FrameParts.JTextFieldSet(	480,200, 80,20,"在庫総数"			,12,0);	
-			JLabel LB_PlQty						= B100_FrameParts.JLabelSet(		480,225, 80,20,"パレット数"			,10,2);
-			JLabel LB_CsQty						= B100_FrameParts.JLabelSet(		660,225, 80,20,"ケース数"			,10,2);
-			JLabel LB_CtQty						= B100_FrameParts.JLabelSet(		840,225, 80,20,"カートン数"			,10,2);
-			JLabel LB_BrQty						= B100_FrameParts.JLabelSet(	   1020,225, 80,20,"バラ数"				,10,2);
+			/*移動商品情報*/
+			final JComboBox TB_ClCd						= B100_FrameParts.JComboBoxSet(				100, 50,250,20,B100_DefaultVariable.ClList[0],11);
+			final JComboBox TB_WhCd						= B100_FrameParts.JComboBoxSet(				100, 75,250,20,B100_DefaultVariable.WhList[0],11);
 			
-			JLabel LB_FromMsg					= B100_FrameParts.JLabelSet(		  0,250, 80,20,"移動元:"			,10,1);
+			final JTextField TB_ItemCd					= B100_FrameParts.JTextFieldSet(				100,100,100,20,GetFromItemCd			,12,0);
+			final JTextField TB_ItemName				= B100_FrameParts.JTextFieldSet(				200,100,300,20,GetFromItemName01		,12,0);
+			final JTextField TB_Lot						= B100_FrameParts.JTextFieldSet(				100,125,100,20,GetFromLot				,12,0);
+			final JFormattedTextField TB_Expdate		= B100_FrameParts.JFormattedTextFieldSet(	100,150,100,20,GetFromExpdate			,12,0,"YYYY/MM/DD");
+			final JFormattedTextField TB_ActualDate		= B100_FrameParts.JFormattedTextFieldSet(	100,175,100,20,GetFromActualDate		,12,0,"YYYY/MM/DD");
 			
-			JLabel LB_ToMsg						= B100_FrameParts.JLabelSet(		  0,300, 80,20,"移動先:"			,10,1);
+			final JFormattedTextField TB_PlUnitQty		= B100_FrameParts.JFormattedTextFieldSet(	400,125,100,20,""+ni.format(GetFromPlUnitQty)		,12,1,"#,###");
+			final JFormattedTextField TB_CsUnitQty		= B100_FrameParts.JFormattedTextFieldSet(	400,150,100,20,""+ni.format(GetFromCsUnitQty)		,12,1,"#,###");
+			final JFormattedTextField TB_CtUnitQty		= B100_FrameParts.JFormattedTextFieldSet(	400,175,100,20,""+ni.format(GetFromCtUnitQty)		,12,1,"#,###");
 			
 			
-			final JComboBox TB_ClCd						= B100_FrameParts.JComboBoxSet(				 80, 50,250,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
-			final JComboBox TB_WhCd						= B100_FrameParts.JComboBoxSet(				 80, 75,250,20,B100_DefaultVariable.WhList[0],11);	//倉庫コード
+			/*移動元情報*/
+			final JTextField TB_FromLoc					= B100_FrameParts.JTextFieldSet(				100,250,100,20,GetFromLoc				,12,0);
+			final JTextField TB_FromLocName				= B100_FrameParts.JTextFieldSet(				100,275,100,20,GetFromLocName			,12,0);
+			final JComboBox TB_FromType					= B100_FrameParts.JComboBoxSet(				100,300,100,20,B100_DefaultVariable.LocType[0],11);
+			final JFormattedTextField TB_FromQty		= B100_FrameParts.JFormattedTextFieldSet(	100,325,100,20,""+ni.format(GetFromQty)				,12,1,"#,###");
+			final JFormattedTextField TB_FromShipPlanQty= B100_FrameParts.JFormattedTextFieldSet(	100,350,100,20,""+ni.format(GetFromShipPlanQty)		,12,1,"#,###");
+			final JFormattedTextField TB_FromPossibleQty= B100_FrameParts.JFormattedTextFieldSet(	100,375,100,20,""+ni.format(GetFromPossibleQty)		,12,1,"#,###");
+			JLabel TB_FromQtyUnitName					= B100_FrameParts.JLabelSet(		  			200,325, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_FromShipPlanQtyUnitName			= B100_FrameParts.JLabelSet(					200,350, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_FromPossibleQtyUnitName			= B100_FrameParts.JLabelSet(					200,375, 60,20,GetFromUnitName			,10,0);
 			
-			final JTextField TB_ItemCd					= B100_FrameParts.JTextFieldSet(				 80,125,100,20,GetFromItemCd			,12,0);								//商品コード
-			final JTextField TB_ItemName				= B100_FrameParts.JTextFieldSet(				180,125,300,20,GetFromItemName01		,12,0);								//商品名
-			final JTextField TB_Lot						= B100_FrameParts.JTextFieldSet(				 80,150,100,20,GetFromLot				,12,0);								//ロット
-			final JFormattedTextField TB_Expdate		= B100_FrameParts.JFormattedTextFieldSet(	 80,175,100,20,GetFromExpdate			,12,0,"YYYY/MM/DD");				//消費期限
-			final JFormattedTextField TB_ActualDate		= B100_FrameParts.JFormattedTextFieldSet(	 80,200,100,20,GetFromActualDate		,12,0,"YYYY/MM/DD");				//入荷実績日
+			final JFormattedTextField TB_FromBrTotalQty	= B100_FrameParts.JFormattedTextFieldSet(	100,425,100,20,""+ni.format(MovePossibleBrTotalQty)	,12,1,"#,###");
+			final JFormattedTextField TB_FromPlQty		= B100_FrameParts.JFormattedTextFieldSet(	100,450,100,20,""+ni.format(MovePossiblePlQty)		,12,1,"#,###");
+			final JFormattedTextField TB_FromCsQty		= B100_FrameParts.JFormattedTextFieldSet(	100,475,100,20,""+ni.format(MovePossibleCsQty)		,12,1,"#,###");
+			final JFormattedTextField TB_FromCtQty		= B100_FrameParts.JFormattedTextFieldSet(	100,500,100,20,""+ni.format(MovePossibleCtQty)		,12,1,"#,###");
+			final JFormattedTextField TB_FromBrQty		= B100_FrameParts.JFormattedTextFieldSet(	100,525,100,20,""+ni.format(MovePossibleBrQty)		,12,1,"#,###");
 			
-			final JFormattedTextField TB_PlUnitQty		= B100_FrameParts.JFormattedTextFieldSet(	380,150,100,20,""+ni.format(GetFromPlUnitQty)		,12,1,"#,###");
-			final JFormattedTextField TB_CsUnitQty		= B100_FrameParts.JFormattedTextFieldSet(	380,175,100,20,""+ni.format(GetFromCsUnitQty)		,12,1,"#,###");
-			final JFormattedTextField TB_CtUnitQty		= B100_FrameParts.JFormattedTextFieldSet(	380,200,100,20,""+ni.format(GetFromCtUnitQty)		,12,1,"#,###");
+			JLabel TB_FromBrTotalQtyUnitName			= B100_FrameParts.JLabelSet(					200,425, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_FromPlQtyUnitName					= B100_FrameParts.JLabelSet(					200,450, 60,20,GetFromPlUnitName		,10,0);
+			JLabel TB_FromCsQtyUnitName					= B100_FrameParts.JLabelSet(					200,475, 60,20,GetFromCsUnitName		,10,0);
+			JLabel TB_FromCtQtyUnitName					= B100_FrameParts.JLabelSet(					200,500, 60,20,GetFromCtUnitName		,10,0);
+			JLabel TB_FromBrQtyUnitName					= B100_FrameParts.JLabelSet(					200,525, 60,20,GetFromUnitName			,10,0);
 			
-			TB_ClCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,GetFromClCd ,true) );		//荷主コード
-			TB_WhCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,GetFromWhCd ,true) );		//倉庫コード
-			//TB_LocType.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1]		,GetFromType+"" ,true) );	//ロケタイプ
+			/*移動先情報*/
+			final JTextField TB_ToLoc					= B100_FrameParts.JTextFieldSet(				300,250,100,20,""						,12,0);
+			final JTextField TBToLocName				= B100_FrameParts.JTextFieldSet(				300,275,100,20,""						,12,0);
+			final JComboBox TB_ToType					= B100_FrameParts.JComboBoxSet(				300,300,100,20,B100_DefaultVariable.LocType[0],11);
+			final JFormattedTextField TB_ToQty			= B100_FrameParts.JFormattedTextFieldSet(	300,325,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_ToShipPlanQty	= B100_FrameParts.JFormattedTextFieldSet(	300,350,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_ToPossibleQty	= B100_FrameParts.JFormattedTextFieldSet(	300,375,100,20,""+ni.format(0)			,12,1,"#,###");
+			JLabel TB_ToQtyUnitName						= B100_FrameParts.JLabelSet(		  			400,325, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_ToShipPlanQtyUnitName				= B100_FrameParts.JLabelSet(					400,350, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_ToPossibleQtyUnitName				= B100_FrameParts.JLabelSet(					400,375, 60,20,GetFromUnitName			,10,0);
+			
+			final JFormattedTextField TB_ToBrTotalQty	= B100_FrameParts.JFormattedTextFieldSet(	300,425,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_ToPlQty		= B100_FrameParts.JFormattedTextFieldSet(	300,450,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_ToCsQty		= B100_FrameParts.JFormattedTextFieldSet(	300,475,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_ToCtQty		= B100_FrameParts.JFormattedTextFieldSet(	300,500,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_ToBrQty		= B100_FrameParts.JFormattedTextFieldSet(	300,525,100,20,""+ni.format(0)			,12,1,"#,###");
+			
+			JLabel TB_ToBrTotalQtyUnitName				= B100_FrameParts.JLabelSet(					400,425, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_ToPlQtyUnitName					= B100_FrameParts.JLabelSet(					400,450, 60,20,GetFromPlUnitName		,10,0);
+			JLabel TB_ToCsQtyUnitName					= B100_FrameParts.JLabelSet(					400,475, 60,20,GetFromCsUnitName		,10,0);
+			JLabel TB_ToCtQtyUnitName					= B100_FrameParts.JLabelSet(					400,500, 60,20,GetFromCtUnitName		,10,0);
+			JLabel TB_ToBrQtyUnitName					= B100_FrameParts.JLabelSet(					400,525, 60,20,GetFromUnitName			,10,0);
+			
+			
+			TB_ClCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,GetFromClCd ,true) );
+			TB_WhCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,GetFromWhCd ,true) );
+			TB_FromType.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1]	,GetFromType+"" ,true) );
+			
+			
 			
 			
 			TB_ClCd.setEnabled(false);
@@ -185,8 +254,37 @@ public class WT100_Stock_20_Move{
 			TB_CsUnitQty.setEditable(false);
 			TB_CtUnitQty.setEditable(false);
 			
-			LB_TotalQty.setEditable(false);
+			/*移動元情報*/
+			TB_FromLoc.setEditable(false);
+			TB_FromLocName.setEditable(false);
+			TB_FromType.setEnabled(false);
+			TB_FromQty.setEditable(false);
+			TB_FromShipPlanQty.setEditable(false);
+			TB_FromPossibleQty.setEditable(false);
 			
+			TB_FromBrTotalQty.setEditable(false);
+			TB_FromPlQty.setEditable(false);
+			TB_FromCsQty.setEditable(false);
+			TB_FromCtQty.setEditable(false);
+			TB_FromBrQty.setEditable(false);
+			
+			
+			/*移動先情報*/
+			TB_ToLoc.setEditable(true);
+			TBToLocName.setEditable(false);
+			TB_ToType.setEnabled(false);
+			TB_ToQty.setEditable(false);
+			TB_ToShipPlanQty.setEditable(false);
+			TB_ToPossibleQty.setEditable(false);
+			
+			TB_ToBrTotalQty.setEditable(false);
+			TB_ToPlQty.setEditable(false);
+			TB_ToCsQty.setEditable(false);
+			TB_ToCtQty.setEditable(false);
+			TB_ToBrQty.setEditable(false);
+			
+			/*入力ボックス背景色変える*/
+			TB_ToLoc.setBackground(B100_FrameParts.SelectColer("Entry"));
 			
 			main_fm.add(LB_ClCd);
 			main_fm.add(LB_WhCd);
@@ -201,7 +299,24 @@ public class WT100_Stock_20_Move{
 			main_fm.add(LB_CsUnitQty);
 			main_fm.add(LB_CtUnitQty);
 			
+			main_fm.add(LB_Loc);
+			main_fm.add(LB_LocName);
+			main_fm.add(LB_Type);
+			main_fm.add(LB_Qty);
+			main_fm.add(LB_ShipPlanQty);
+			main_fm.add(LB_PossibleQty);
 			
+			main_fm.add(LB_FromMsg);
+			main_fm.add(LB_ToMsg);
+			main_fm.add(LB_MovePossibleMsg);
+			main_fm.add(LB_MoveMsg);
+			main_fm.add(LB_MoveAfterMsg);
+			
+			main_fm.add(LB_BrTotalQty);
+			main_fm.add(LB_PlQty);
+			main_fm.add(LB_CsQty);
+			main_fm.add(LB_CtQty);
+			main_fm.add(LB_BrQty);
 			
 			main_fm.add(TB_ClCd);
 			main_fm.add(TB_WhCd);
@@ -215,8 +330,47 @@ public class WT100_Stock_20_Move{
 			main_fm.add(TB_CsUnitQty);
 			main_fm.add(TB_CtUnitQty);
 			
+			main_fm.add(TB_FromLoc);
+			main_fm.add(TB_FromType);
+			main_fm.add(TB_FromLocName);
+			main_fm.add(TB_FromQty);
+			main_fm.add(TB_FromShipPlanQty);
+			main_fm.add(TB_FromPossibleQty);
+			main_fm.add(TB_FromQtyUnitName);
+			main_fm.add(TB_FromShipPlanQtyUnitName);
+			main_fm.add(TB_FromPossibleQtyUnitName);
 			
+			main_fm.add(TB_FromBrTotalQty);
+			main_fm.add(TB_FromPlQty);
+			main_fm.add(TB_FromCsQty);
+			main_fm.add(TB_FromCtQty);
+			main_fm.add(TB_FromBrQty);
+			main_fm.add(TB_FromBrTotalQtyUnitName);
+			main_fm.add(TB_FromPlQtyUnitName);
+			main_fm.add(TB_FromCsQtyUnitName);
+			main_fm.add(TB_FromCtQtyUnitName);
+			main_fm.add(TB_FromBrQtyUnitName);
 			
+			main_fm.add(TB_ToLoc);
+			main_fm.add(TBToLocName);
+			main_fm.add(TB_ToType);
+			main_fm.add(TB_ToQty);
+			main_fm.add(TB_ToShipPlanQty);
+			main_fm.add(TB_ToPossibleQty);
+			main_fm.add(TB_ToQtyUnitName);
+			main_fm.add(TB_ToShipPlanQtyUnitName);
+			main_fm.add(TB_ToPossibleQtyUnitName);
+			
+			main_fm.add(TB_ToBrTotalQty);
+			main_fm.add(TB_ToPlQty);
+			main_fm.add(TB_ToCsQty);
+			main_fm.add(TB_ToCtQty);
+			main_fm.add(TB_ToBrQty);
+			main_fm.add(TB_ToBrTotalQtyUnitName);
+			main_fm.add(TB_ToPlQtyUnitName);
+			main_fm.add(TB_ToCsQtyUnitName);
+			main_fm.add(TB_ToCtQtyUnitName);
+			main_fm.add(TB_ToBrQtyUnitName);
 			
 		}
 		
