@@ -84,7 +84,7 @@ public class A100_OldDataTableCheck{
 		for(int i01=0;i01<TGtTable.length;i01++) {
 			boolean UnHitFg = true;
 			for(int i02=0;i02<TableList.length;i02++) {
-				if(TGtTable[i01][1].equals(TableList[i02])) {
+				if(TGtTable[i01][1].toUpperCase().equals(TableList[i02].toUpperCase())) {
 					UnHitFg = false;
 					i02=TableList.length+1;
 				}

@@ -274,9 +274,6 @@ public class A100_InsertUpdateSQL{
 							}
 							ent_count = ent_count + 1;
 							stmt02.executeUpdate();
-							if(null==A100_DbConnect.session) {
-								A100_DbConnect.conn.commit();
-							}
 						}
 					}else{
 						if(update_check == 1){
@@ -298,9 +295,6 @@ public class A100_InsertUpdateSQL{
 							}
 							ud_count=ud_count + 1;
 							stmt03.executeUpdate();
-							if(null==A100_DbConnect.session) {
-								A100_DbConnect.conn.commit();
-							}
 						}
 					}
 				}

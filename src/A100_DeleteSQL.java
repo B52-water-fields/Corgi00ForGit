@@ -34,9 +34,6 @@ public class A100_DeleteSQL{
 						//System.out.println(judg_data[i01][i02]);
 					}
 					stmt01.executeUpdate();
-					if(null==A100_DbConnect.session) {
-						A100_DbConnect.conn.commit();
-					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

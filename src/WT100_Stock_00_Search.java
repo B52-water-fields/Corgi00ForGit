@@ -353,7 +353,7 @@ public class WT100_Stock_00_Search{
 			}
 		}
 		//スクロール用設定
-		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,300,1160,325,tb01);
+		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,300,1160,300,tb01);
 		main_fm.add(scpn01);
 		
 		PN_Search.add(PN_SearchLabel);
@@ -368,33 +368,36 @@ public class WT100_Stock_00_Search{
 		PN_Search.add(SearchCrearBtn);
 		
 		//CSVボタン
-		JButton CsvBtn = B100_FrameParts.BtnSet(				 10,660,100,20,"csv出力",11);
+		JButton CsvBtn = B100_FrameParts.BtnSet(				 10,635,100,20,"csv出力",11);
 		main_fm.add(CsvBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B100_FrameParts.BtnSet(				130,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100_FrameParts.BtnSet(				130,635,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//在庫表出力ボタン
-		JButton ListPrintBtn = B100_FrameParts.BtnSet(			250,660,100,20,"在庫表出力",11);
+		JButton ListPrintBtn = B100_FrameParts.BtnSet(			250,635,100,20,"在庫表出力",11);
 		main_fm.add(ListPrintBtn);
 		
-		JLabel LB_StockLookUp 	= B100_FrameParts.JLabelSet(	370,640,100,20,"チェック行の"	,11,2);
+		JLabel LB_StockLookUp 	= B100_FrameParts.JLabelSet(	370,615,100,20,"チェック行の"	,11,2);
 		main_fm.add(LB_StockLookUp);
 		//在庫1画面表示ボタン
-		JButton StockLookUpBtn 	= B100_FrameParts.BtnSet(		370,660,100,20,"詳細表示",11);
+		JButton StockLookUpBtn 	= B100_FrameParts.BtnSet(		370,635,100,20,"詳細表示",11);
 		main_fm.add(StockLookUpBtn);
 		
-		JLabel LB_StockAdjust 	= B100_FrameParts.JLabelSet(	490,640,100,20,"チェック行を"	,11,2);
+		JLabel LB_StockAdjust 	= B100_FrameParts.JLabelSet(	490,615,100,20,"チェック行を"	,11,2);
 		main_fm.add(LB_StockAdjust);
 		//在庫調整ボタン
-		JButton StockAdjustBtn 	= B100_FrameParts.BtnSet(		490,660,100,20,"在庫調整",11);
+		JButton StockAdjustBtn 	= B100_FrameParts.BtnSet(		490,635,100,20,"在庫調整",11);
 		main_fm.add(StockAdjustBtn);
+		//在庫移動ボタン
+		JButton StockMoveBtn 	= B100_FrameParts.BtnSet(		490,660,100,20,"在庫移動",11);
+		main_fm.add(StockMoveBtn);
 		
-		JLabel LB_StockAdjustFromNoStock 	= B100_FrameParts.JLabelSet(	610,640,100,20,"在庫が無い商品を"	,10,2);
+		JLabel LB_StockAdjustFromNoStock 	= B100_FrameParts.JLabelSet(	610,615,100,20,"在庫が無い商品を"	,10,2);
 		main_fm.add(LB_StockAdjustFromNoStock);
 		//在庫調整ボタン
-		JButton StockAdjustBtnFromNoStock 	= B100_FrameParts.BtnSet(		610,660,100,20,"在庫調整",11);
+		JButton StockAdjustBtnFromNoStock 	= B100_FrameParts.BtnSet(		610,635,100,20,"在庫調整",11);
 		main_fm.add(StockAdjustBtnFromNoStock);
 		
 		main_fm.add(PN_Search);
@@ -740,6 +743,45 @@ public class WT100_Stock_00_Search{
 					main_fm.setVisible(false);
 					main_fm.dispose();
 					WT100_Stock_10_Adjust.StockAdjust(0,0,TgtWhCd,TgtClCd,TgtLoc,TgtItemCd,TgtLot,TgtExpdate,TgtActualDate);
+				}
+			}
+		});
+		//在庫移動ボタン押下時の挙動
+		StockMoveBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+				
+				String TgtWhCd 			= "";
+				String TgtClCd 			= "";
+				String TgtLoc 			= "";
+				String TgtItemCd 		= "";
+				String TgtLot 			= "";
+				String TgtExpdate 		= "";
+				String TgtActualDate 	= "";
+				
+				int RowCount 	= MainFmTableModel.getRowCount();
+				Object[][] RtStockRt	= T100_StockRt.RtStockRt();
+				boolean KickFg = false;
+				
+				for(int i=0;i<RowCount;i++) {
+					if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+						TgtWhCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColWhCd+1);
+						TgtClCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColClCd+1);
+						TgtLoc 			= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColLoc+1);
+						TgtItemCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColItemCd+1);
+						TgtLot 			= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColLot+1);
+						TgtExpdate 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColExpdate+1);
+						TgtActualDate 	= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColActualDate+1);
+						KickFg = true;
+					}
+				}
+				if(KickFg) {
+					LookUp_fm.setVisible(false);
+					LookUp_fm.dispose();
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					WT100_Stock_20_Move.StockMove(0,0,TgtWhCd,TgtClCd,TgtLoc,TgtItemCd,TgtLot,TgtExpdate,TgtActualDate);
 				}
 			}
 		});

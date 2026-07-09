@@ -209,10 +209,8 @@ public class A00000_Main{
 				WMul = Integer.parseInt(WST);
 								
 				if(0==LoginCheckCount) {
-					//ユーザーマスタテーブル無ければ作成
-					A100_TableCheck.UserMstCreate();
-					//倉庫マスタテーブル無ければ作成
-					A100_TableCheck.WhMstCreate();
+					//ログインに必要なマスタだけは無ければ作る
+					A100_TableCheck.FirstTableCreate();
 					//ユーザーzeusだった場合、zeusユーザー無ければ作る
 					if("zeus".equals(UserId)) {
 						ZeusCreate();
@@ -269,8 +267,8 @@ public class A00000_Main{
 				WMul = Integer.parseInt(WST);
 				
 				if(0==LoginCheckCount) {
-					//ユーザーマスタテーブル無ければ作成
-					A100_TableCheck.UserMstCreate();
+					//ログインに必要なマスタだけは無ければ作る
+					A100_TableCheck.FirstTableCreate();
 					//ユーザーzeusだった場合、zeusユーザー無ければ作る
 					if("zeus".equals(UserId)) {
 						ZeusCreate();
