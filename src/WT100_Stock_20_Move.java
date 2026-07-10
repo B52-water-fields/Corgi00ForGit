@@ -152,11 +152,14 @@ public class WT100_Stock_20_Move{
 			JLabel LB_CtUnitQty					= B100_FrameParts.JLabelSet(		300,175,100,20,"カートン入数:"		,10,1);
 			
 			
-			JLabel LB_FromMsg					= B100_FrameParts.JLabelSet(		100,225,100,20,"移動元"				,10,2);
-			JLabel LB_ToMsg						= B100_FrameParts.JLabelSet(		300,225,100,20,"移動先"				,10,2);
+			JLabel LB_FromMsg					= B100_FrameParts.JLabelSet(		100,225,100,20,"移動元現在庫"		,10,2);
+			JLabel LB_ToMsg						= B100_FrameParts.JLabelSet(		300,225,100,20,"移動先現在庫"		,10,2);
 			JLabel LB_MovePossibleMsg			= B100_FrameParts.JLabelSet(		100,400,100,20,"移動可能数"			,10,2);
 			JLabel LB_MoveMsg					= B100_FrameParts.JLabelSet(		500,400,100,20,"移動数"				,10,2);
 			JLabel LB_MoveAfterMsg				= B100_FrameParts.JLabelSet(		300,400,100,20,"移動後総数"			,10,2);
+			JLabel LB_FromAfterMsg				= B100_FrameParts.JLabelSet(		100,550,100,20,"移動後在庫"			,10,2);
+			JLabel LB_ToAfterMsg				= B100_FrameParts.JLabelSet(		300,550,100,20,"移動後在庫"			,10,2);
+			
 			
 			JLabel LB_Loc						= B100_FrameParts.JLabelSet(		  0,250,100,20,"ロケーション:"		,10,1);
 			JLabel LB_LocName					= B100_FrameParts.JLabelSet(		  0,275,100,20,"ロケ名称:"			,10,1);
@@ -170,6 +173,10 @@ public class WT100_Stock_20_Move{
 			JLabel LB_CsQty						= B100_FrameParts.JLabelSet(		  0,475,100,20,"ケース数:"			,10,1);
 			JLabel LB_CtQty						= B100_FrameParts.JLabelSet(		  0,500,100,20,"カートン数:"		,10,1);
 			JLabel LB_BrQty						= B100_FrameParts.JLabelSet(		  0,525,100,20,"バラ数:"			,10,1);
+			
+			JLabel LB_AfterQty					= B100_FrameParts.JLabelSet(		  0,575,100,20,"総数量:"			,10,1);
+			JLabel LB_AfterShipPlanQty			= B100_FrameParts.JLabelSet(		  0,600,100,20,"引当済数:"			,10,1);
+			JLabel LB_AfterPossibleQty			= B100_FrameParts.JLabelSet(		  0,625,100,20,"出荷可能数:"		,10,1);
 			
 			
 			/*移動商品情報*/
@@ -210,6 +217,15 @@ public class WT100_Stock_20_Move{
 			JLabel TB_FromCtQtyUnitName					= B100_FrameParts.JLabelSet(					200,500, 60,20,GetFromCtUnitName		,10,0);
 			JLabel TB_FromBrQtyUnitName					= B100_FrameParts.JLabelSet(					200,525, 60,20,GetFromUnitName			,10,0);
 			
+			final JFormattedTextField TB_FromAfterQty			= B100_FrameParts.JFormattedTextFieldSet(	100,575,100,20,""+ni.format(GetFromQty)				,12,1,"#,###");
+			final JFormattedTextField TB_FromAfterShipPlanQty	= B100_FrameParts.JFormattedTextFieldSet(	100,600,100,20,""+ni.format(GetFromShipPlanQty)		,12,1,"#,###");
+			final JFormattedTextField TB_FromAfterPossibleQty	= B100_FrameParts.JFormattedTextFieldSet(	100,625,100,20,""+ni.format(GetFromPossibleQty)		,12,1,"#,###");
+			JLabel TB_FromAfterQtyUnitName						= B100_FrameParts.JLabelSet(		  			200,575, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_FromAfterShipPlanQtyUnitName				= B100_FrameParts.JLabelSet(					200,600, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_FromAfterPossibleQtyUnitName				= B100_FrameParts.JLabelSet(					200,625, 60,20,GetFromUnitName			,10,0);
+			
+			JLabel LB_Msg	= B100_FrameParts.JLabelSet(200,250,100,20,"⇒⇒⇒",10,2);
+			
 			/*移動先情報*/
 			final JTextField TB_ToLoc					= B100_FrameParts.JTextFieldSet(				300,250,100,20,""						,12,0);
 			final JTextField TBToLocName				= B100_FrameParts.JTextFieldSet(				300,275,100,20,""						,12,0);
@@ -233,12 +249,35 @@ public class WT100_Stock_20_Move{
 			JLabel TB_ToCtQtyUnitName					= B100_FrameParts.JLabelSet(					400,500, 60,20,GetFromCtUnitName		,10,0);
 			JLabel TB_ToBrQtyUnitName					= B100_FrameParts.JLabelSet(					400,525, 60,20,GetFromUnitName			,10,0);
 			
+			final JFormattedTextField TB_ToAfterQty			= B100_FrameParts.JFormattedTextFieldSet(	300,575,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_ToAfterShipPlanQty	= B100_FrameParts.JFormattedTextFieldSet(	300,600,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_ToAfterPossibleQty	= B100_FrameParts.JFormattedTextFieldSet(	300,625,100,20,""+ni.format(0)			,12,1,"#,###");
+			JLabel TB_ToAfterQtyUnitName					= B100_FrameParts.JLabelSet(		  			400,575, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_ToAfterShipPlanQtyUnitName			= B100_FrameParts.JLabelSet(					400,600, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_ToAfterPossibleQtyUnitName			= B100_FrameParts.JLabelSet(					400,625, 60,20,GetFromUnitName			,10,0);
+			
+			/*移動数情報*/
+			final JFormattedTextField TB_MoveBrTotalQty	= B100_FrameParts.JFormattedTextFieldSet(	500,425,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_MovePlQty		= B100_FrameParts.JFormattedTextFieldSet(	500,450,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_MoveCsQty		= B100_FrameParts.JFormattedTextFieldSet(	500,475,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_MoveCtQty		= B100_FrameParts.JFormattedTextFieldSet(	500,500,100,20,""+ni.format(0)			,12,1,"#,###");
+			final JFormattedTextField TB_MoveBrQty		= B100_FrameParts.JFormattedTextFieldSet(	500,525,100,20,""+ni.format(0)			,12,1,"#,###");
+			
+			JLabel TB_MoveBrTotalQtyUnitName			= B100_FrameParts.JLabelSet(					600,425, 60,20,GetFromUnitName			,10,0);
+			JLabel TB_MovePlQtyUnitName					= B100_FrameParts.JLabelSet(					600,450, 60,20,GetFromPlUnitName		,10,0);
+			JLabel TB_MoveCsQtyUnitName					= B100_FrameParts.JLabelSet(					600,475, 60,20,GetFromCsUnitName		,10,0);
+			JLabel TB_MoveCtQtyUnitName					= B100_FrameParts.JLabelSet(					600,500, 60,20,GetFromCtUnitName		,10,0);
+			JLabel TB_MoveBrQtyUnitName					= B100_FrameParts.JLabelSet(					600,525, 60,20,GetFromUnitName			,10,0);
+			
+			
 			
 			TB_ClCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,GetFromClCd ,true) );
 			TB_WhCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,GetFromWhCd ,true) );
 			TB_FromType.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1]	,GetFromType+"" ,true) );
 			
-			
+			//ロケ検索ボタン
+			JButton LocSearchBtn = B100_FrameParts.BtnSet(420,250,80,20,"ロケ検索",11);
+			main_fm.add(LocSearchBtn);
 			
 			
 			TB_ClCd.setEnabled(false);
@@ -268,6 +307,9 @@ public class WT100_Stock_20_Move{
 			TB_FromCtQty.setEditable(false);
 			TB_FromBrQty.setEditable(false);
 			
+			TB_FromAfterQty.setEditable(false);
+			TB_FromAfterShipPlanQty.setEditable(false);
+			TB_FromAfterPossibleQty.setEditable(false);
 			
 			/*移動先情報*/
 			TB_ToLoc.setEditable(true);
@@ -283,8 +325,20 @@ public class WT100_Stock_20_Move{
 			TB_ToCtQty.setEditable(false);
 			TB_ToBrQty.setEditable(false);
 			
+			TB_ToAfterQty.setEditable(false);
+			TB_ToAfterShipPlanQty.setEditable(false);
+			TB_ToAfterPossibleQty.setEditable(false);
+			
+			/*移動数情報*/
+			TB_MoveBrTotalQty.setEditable(true);
+			TB_MovePlQty.setEditable(false);
+			TB_MoveCsQty.setEditable(false);
+			TB_MoveCtQty.setEditable(false);
+			TB_MoveBrQty.setEditable(false);
+			
 			/*入力ボックス背景色変える*/
 			TB_ToLoc.setBackground(B100_FrameParts.SelectColer("Entry"));
+			TB_MoveBrTotalQty.setBackground(B100_FrameParts.SelectColer("Entry"));
 			
 			main_fm.add(LB_ClCd);
 			main_fm.add(LB_WhCd);
@@ -311,12 +365,18 @@ public class WT100_Stock_20_Move{
 			main_fm.add(LB_MovePossibleMsg);
 			main_fm.add(LB_MoveMsg);
 			main_fm.add(LB_MoveAfterMsg);
+			main_fm.add(LB_FromAfterMsg);
+			main_fm.add(LB_ToAfterMsg);
 			
 			main_fm.add(LB_BrTotalQty);
 			main_fm.add(LB_PlQty);
 			main_fm.add(LB_CsQty);
 			main_fm.add(LB_CtQty);
 			main_fm.add(LB_BrQty);
+			
+			main_fm.add(LB_AfterQty);
+			main_fm.add(LB_AfterShipPlanQty);
+			main_fm.add(LB_AfterPossibleQty);
 			
 			main_fm.add(TB_ClCd);
 			main_fm.add(TB_WhCd);
@@ -351,6 +411,15 @@ public class WT100_Stock_20_Move{
 			main_fm.add(TB_FromCtQtyUnitName);
 			main_fm.add(TB_FromBrQtyUnitName);
 			
+			main_fm.add(TB_FromAfterQty);
+			main_fm.add(TB_FromAfterShipPlanQty);
+			main_fm.add(TB_FromAfterPossibleQty);
+			main_fm.add(TB_FromAfterQtyUnitName);
+			main_fm.add(TB_FromAfterShipPlanQtyUnitName);
+			main_fm.add(TB_FromAfterPossibleQtyUnitName);
+			
+			main_fm.add(LB_Msg);
+			
 			main_fm.add(TB_ToLoc);
 			main_fm.add(TBToLocName);
 			main_fm.add(TB_ToType);
@@ -371,6 +440,25 @@ public class WT100_Stock_20_Move{
 			main_fm.add(TB_ToCsQtyUnitName);
 			main_fm.add(TB_ToCtQtyUnitName);
 			main_fm.add(TB_ToBrQtyUnitName);
+			
+			main_fm.add(TB_MoveBrTotalQty);
+			main_fm.add(TB_MovePlQty);
+			main_fm.add(TB_MoveCsQty);
+			main_fm.add(TB_MoveCtQty);
+			main_fm.add(TB_MoveBrQty);
+			
+			main_fm.add(TB_ToAfterQty);
+			main_fm.add(TB_ToAfterShipPlanQty);
+			main_fm.add(TB_ToAfterPossibleQty);
+			main_fm.add(TB_ToAfterQtyUnitName);
+			main_fm.add(TB_ToAfterShipPlanQtyUnitName);
+			main_fm.add(TB_ToAfterPossibleQtyUnitName);
+			
+			main_fm.add(TB_MoveBrTotalQtyUnitName);
+			main_fm.add(TB_MovePlQtyUnitName);
+			main_fm.add(TB_MoveCsQtyUnitName);
+			main_fm.add(TB_MoveCtQtyUnitName);
+			main_fm.add(TB_MoveBrQtyUnitName);
 			
 		}
 		
