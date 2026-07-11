@@ -55,6 +55,10 @@ public class A00001_WorkMain{
 			//在庫調整履歴
 			JButton StockAdjust = B100_FrameParts.BtnSet(						 20, 50,120,20,"在庫調整履歴",11);
 			PN_Stock.add(StockAdjust);
+			
+			//在庫移動履歴
+			JButton StockMove = B100_FrameParts.BtnSet(						 20, 75,120,20,"在庫移動履歴",11);
+			PN_Stock.add(StockMove);
 		
 		/*************************************/
 		/*************************************/
@@ -106,6 +110,18 @@ public class A00001_WorkMain{
 				WT100_StockAdjust_00_Search.StockAdjustSearch(0,0);
 			}
 		});
+		
+		//在庫移動履歴
+		StockMove.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT100_StockMove_00_Search.StockMoveSearch(0, 0);
+			}
+		});
 
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){
@@ -115,6 +131,7 @@ public class A00001_WorkMain{
 
 				main_fm.setVisible(false);
 				main_fm.dispose();
+				
 				A00001_MainMenu.MainMenu(0, 0);
 			}
 		});
@@ -122,7 +139,7 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				A100_TableCheck.TableCheck();
+				
 			}
 		});
 	}

@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class T100_AdjustRt{
+public class T100_StockAdjustRt{
 	//在庫調整実績を返却する
 	/*
 	コピペ用
@@ -32,7 +32,7 @@ public class T100_AdjustRt{
 	boolean AllSearch 		= false;
 	
 	
-	Object[][] AdjustRt = T100_AdjustRt.AdjustRt(
+	Object[][] AdjustRt = T100_StockAdjustRt.AdjustRt(
 			SearchClCd,					//荷主コード
 			SearchWhCd,					//倉庫コード
 			SearchClGpCD,				//荷主グループCD
@@ -56,46 +56,46 @@ public class T100_AdjustRt{
 			LocExactMatch,				//ロケーション完全一致
 			AllSearch);
 			
-	String GetClCd				= (String)AdjustRt[i][T100_AdjustRt.ColClCd];
-	String GetCLName			= (String)AdjustRt[i][T100_AdjustRt.ColCLName];
-	String GetWhCd				= (String)AdjustRt[i][T100_AdjustRt.ColWhCd];
-	String GetClWHName			= (String)AdjustRt[i][T100_AdjustRt.ColClWHName];
-	String GetClGpCD			= (String)AdjustRt[i][T100_AdjustRt.ColClGpCD];
-	String GetClGpName			= (String)AdjustRt[i][T100_AdjustRt.ColClGpName];
-	String GetAdjustNo			= (String)AdjustRt[i][T100_AdjustRt.ColAdjustNo];
-	String GetAdjustReasonCd	= (String)AdjustRt[i][T100_AdjustRt.ColAdjustReasonCd];
-	String GetAdjustReasonName	= (String)AdjustRt[i][T100_AdjustRt.ColAdjustReasonName];
-	String GetAdjustdate		= (String)AdjustRt[i][T100_AdjustRt.ColAdjustdate];
-	String GetLoc				= (String)AdjustRt[i][T100_AdjustRt.ColLoc];
-	String GetLocName			= (String)AdjustRt[i][T100_AdjustRt.ColLocName];
-	int GetType					= (int)AdjustRt[i][T100_AdjustRt.ColType];
-	String GetItemCd			= (String)AdjustRt[i][T100_AdjustRt.ColItemCd];
-	String GetItemName			= (String)AdjustRt[i][T100_AdjustRt.ColItemName];
-	String GetItemName01		= (String)AdjustRt[i][T100_AdjustRt.ColItemName01];
-	String GetItemName02		= (String)AdjustRt[i][T100_AdjustRt.ColItemName02];
-	String GetItemName03		= (String)AdjustRt[i][T100_AdjustRt.ColItemName03];
-	int GetCtUnitQty			= (int)AdjustRt[i][T100_AdjustRt.ColCtUnitQty];
-	int GetCsUnitQty			= (int)AdjustRt[i][T100_AdjustRt.ColCsUnitQty];
-	int GetPlUnitQty			= (int)AdjustRt[i][T100_AdjustRt.ColPlUnitQty];
-	String GetUnitName			= (String)AdjustRt[i][T100_AdjustRt.ColUnitName];
-	String GetCtUnitName		= (String)AdjustRt[i][T100_AdjustRt.ColCtUnitName];
-	String GetCsUnitName		= (String)AdjustRt[i][T100_AdjustRt.ColCsUnitName];
-	String GetPlUnitName		= (String)AdjustRt[i][T100_AdjustRt.ColPlUnitName];
-	String GetLot				= (String)AdjustRt[i][T100_AdjustRt.ColLot];
-	String GetExpDate			= (String)AdjustRt[i][T100_AdjustRt.ColExpDate];
-	String GetActualDate		= (String)AdjustRt[i][T100_AdjustRt.ColActualDate];
-	int GetBeforeQty			= (int)AdjustRt[i][T100_AdjustRt.ColBeforeQty];
-	int GetShipPlanQty			= (int)AdjustRt[i][T100_AdjustRt.ColShipPlanQty];
-	int GetPossibleQty			= (int)AdjustRt[i][T100_AdjustRt.ColPossibleQty];
-	int GetAdjustQty			= (int)AdjustRt[i][T100_AdjustRt.ColAdjustQty];
-	String GetAdjustCom01		= (String)AdjustRt[i][T100_AdjustRt.ColAdjustCom01];
-	String GetAdjustCom02		= (String)AdjustRt[i][T100_AdjustRt.ColAdjustCom02];
-	String GetAdjustCom03		= (String)AdjustRt[i][T100_AdjustRt.ColAdjustCom03];
-	int GetAfterQty				= (int)AdjustRt[i][T100_AdjustRt.ColAfterQty];
-	String GetEntryDate			= (String)AdjustRt[i][T100_AdjustRt.ColEntryDate];
-	String GetUpdateDate		= (String)AdjustRt[i][T100_AdjustRt.ColUpdateDate];
-	String GetEntryUser			= (String)AdjustRt[i][T100_AdjustRt.ColEntryUser];
-	String GetUpdateUser		= (String)AdjustRt[i][T100_AdjustRt.ColUpdateUser];
+	String GetClCd				= (String)AdjustRt[i][T100_StockAdjustRt.ColClCd];
+	String GetCLName			= (String)AdjustRt[i][T100_StockAdjustRt.ColCLName];
+	String GetWhCd				= (String)AdjustRt[i][T100_StockAdjustRt.ColWhCd];
+	String GetClWHName			= (String)AdjustRt[i][T100_StockAdjustRt.ColClWHName];
+	String GetClGpCD			= (String)AdjustRt[i][T100_StockAdjustRt.ColClGpCD];
+	String GetClGpName			= (String)AdjustRt[i][T100_StockAdjustRt.ColClGpName];
+	String GetAdjustNo			= (String)AdjustRt[i][T100_StockAdjustRt.ColAdjustNo];
+	String GetAdjustReasonCd	= (String)AdjustRt[i][T100_StockAdjustRt.ColAdjustReasonCd];
+	String GetAdjustReasonName	= (String)AdjustRt[i][T100_StockAdjustRt.ColAdjustReasonName];
+	String GetAdjustdate		= (String)AdjustRt[i][T100_StockAdjustRt.ColAdjustdate];
+	String GetLoc				= (String)AdjustRt[i][T100_StockAdjustRt.ColLoc];
+	String GetLocName			= (String)AdjustRt[i][T100_StockAdjustRt.ColLocName];
+	int GetType					= (int)AdjustRt[i][T100_StockAdjustRt.ColType];
+	String GetItemCd			= (String)AdjustRt[i][T100_StockAdjustRt.ColItemCd];
+	String GetItemName			= (String)AdjustRt[i][T100_StockAdjustRt.ColItemName];
+	String GetItemName01		= (String)AdjustRt[i][T100_StockAdjustRt.ColItemName01];
+	String GetItemName02		= (String)AdjustRt[i][T100_StockAdjustRt.ColItemName02];
+	String GetItemName03		= (String)AdjustRt[i][T100_StockAdjustRt.ColItemName03];
+	int GetCtUnitQty			= (int)AdjustRt[i][T100_StockAdjustRt.ColCtUnitQty];
+	int GetCsUnitQty			= (int)AdjustRt[i][T100_StockAdjustRt.ColCsUnitQty];
+	int GetPlUnitQty			= (int)AdjustRt[i][T100_StockAdjustRt.ColPlUnitQty];
+	String GetUnitName			= (String)AdjustRt[i][T100_StockAdjustRt.ColUnitName];
+	String GetCtUnitName		= (String)AdjustRt[i][T100_StockAdjustRt.ColCtUnitName];
+	String GetCsUnitName		= (String)AdjustRt[i][T100_StockAdjustRt.ColCsUnitName];
+	String GetPlUnitName		= (String)AdjustRt[i][T100_StockAdjustRt.ColPlUnitName];
+	String GetLot				= (String)AdjustRt[i][T100_StockAdjustRt.ColLot];
+	String GetExpDate			= (String)AdjustRt[i][T100_StockAdjustRt.ColExpDate];
+	String GetActualDate		= (String)AdjustRt[i][T100_StockAdjustRt.ColActualDate];
+	int GetBeforeQty			= (int)AdjustRt[i][T100_StockAdjustRt.ColBeforeQty];
+	int GetShipPlanQty			= (int)AdjustRt[i][T100_StockAdjustRt.ColShipPlanQty];
+	int GetPossibleQty			= (int)AdjustRt[i][T100_StockAdjustRt.ColPossibleQty];
+	int GetAdjustQty			= (int)AdjustRt[i][T100_StockAdjustRt.ColAdjustQty];
+	String GetAdjustCom01		= (String)AdjustRt[i][T100_StockAdjustRt.ColAdjustCom01];
+	String GetAdjustCom02		= (String)AdjustRt[i][T100_StockAdjustRt.ColAdjustCom02];
+	String GetAdjustCom03		= (String)AdjustRt[i][T100_StockAdjustRt.ColAdjustCom03];
+	int GetAfterQty				= (int)AdjustRt[i][T100_StockAdjustRt.ColAfterQty];
+	String GetEntryDate			= (String)AdjustRt[i][T100_StockAdjustRt.ColEntryDate];
+	String GetUpdateDate		= (String)AdjustRt[i][T100_StockAdjustRt.ColUpdateDate];
+	String GetEntryUser			= (String)AdjustRt[i][T100_StockAdjustRt.ColEntryUser];
+	String GetUpdateUser		= (String)AdjustRt[i][T100_StockAdjustRt.ColUpdateUser];
 	*/
 	
 	static final int ColAdjustNo				= 0;		//調整番号
@@ -155,8 +155,8 @@ public class T100_AdjustRt{
 				,{"Type"			,ColType				,"int"		,"ロケタイプ"				,""}
 				,{"ItemCd"			,ColItemCd				,"String"	,"商品CD"					,""}
 				,{"ItemName"		,ColItemName			,"String"	,"商品名"					,""}
-				,{"ItemName01"		,ColItemName01		,"String"	,"商品表記名"					,""}
-				,{"ItemName02"		,ColItemName02		,"String"	,"商品正式名"					,""}
+				,{"ItemName01"		,ColItemName01		,"String"	,"商品表記名"				,""}
+				,{"ItemName02"		,ColItemName02		,"String"	,"商品正式名"				,""}
 				,{"ItemName03"		,ColItemName03		,"String"	,"商品略名"					,""}
 				,{"CtUnitQty"		,ColCtUnitQty			,"int"		,"カートン入数"				,""}
 				,{"CsUnitQty"		,ColCsUnitQty			,"int"		,"ケース入数"				,""}
@@ -206,28 +206,6 @@ public class T100_AdjustRt{
 			ArrayList<String>  SearchAdjustCom,			//調整理由コメント
 			boolean LocExactMatch,	//ロケーション完全一致
 			boolean AllSearch){
-		
-		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
-		SearchWhCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchWhCd);
-		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchAdjustNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustNo);
-		SearchAdjustReasonCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonCd);
-		SearchAdjustReasonName	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonName);
-		SearchAdjustdateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustdateMin);
-		SearchAdjustdateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustdateMax);
-		SearchLoc				= B100_ArrayListControl.ArryListStringUniqueList(SearchLoc);
-		SearchType				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchType);
-		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);
-		SearchItemName			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);
-		SearchLot				= B100_ArrayListControl.ArryListStringUniqueList(SearchLot);
-		SearchExpDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);
-		SearchExpDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);
-		SearchActualDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMin);
-		SearchActualDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMax);
-		SearchAdjustQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAdjustQtyMin);
-		SearchAdjustQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAdjustQtyMax);
-		SearchAdjustCom			= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustCom);
-
 		//日付系最小は念のため00:00:00扱い
 		if(null!=SearchAdjustdateMin && 0<SearchAdjustdateMin.size()){
 			for(int i=0;i<SearchAdjustdateMin.size();i++){
@@ -282,6 +260,28 @@ public class T100_AdjustRt{
 				SearchActualDateMax.set(i,SetString);
 			}
 		}
+		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
+		SearchWhCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchWhCd);
+		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
+		SearchAdjustNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustNo);
+		SearchAdjustReasonCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonCd);
+		SearchAdjustReasonName	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonName);
+		SearchAdjustdateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustdateMin);
+		SearchAdjustdateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustdateMax);
+		SearchLoc				= B100_ArrayListControl.ArryListStringUniqueList(SearchLoc);
+		SearchType				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchType);
+		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);
+		SearchItemName			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);
+		SearchLot				= B100_ArrayListControl.ArryListStringUniqueList(SearchLot);
+		SearchExpDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);
+		SearchExpDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);
+		SearchActualDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMin);
+		SearchActualDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMax);
+		SearchAdjustQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAdjustQtyMin);
+		SearchAdjustQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAdjustQtyMax);
+		SearchAdjustCom			= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustCom);
+
+		
 		Object[][] RtAdjustRt=RtAdjustRt();
 		Object[][] rt = new Object[0][RtAdjustRt.length];
 		
@@ -289,46 +289,46 @@ public class T100_AdjustRt{
 		if(AllSearch) {SearchKick = true;}
 		
 		String sql = "select \n"
-				+"(WW0016StockAdjust.ClCd)             as ClCd             ,\n"		//荷主コード
-				+"(KM0030_CLIENTMST.CLName01)          as CLName           ,\n"		//荷主名
-				+"(WW0016StockAdjust.WhCd)             as WhCd             ,\n"		//倉庫コード
-				+"(KM0010_WHMST.WHName)                as ClWHName         ,\n"		//担当倉庫名
-				+"(KM0030_CLIENTMST.ClGpCD)            as ClGpCD           ,\n"		//荷主グループCD
-				+"(KM0031_CLIENT_GROUP.ClGpName01)     as ClGpName         ,\n"		//グループ名
-				+"(WW0016StockAdjust.AdjustNo) 	       as AdjustNo         ,\n"		//調整番号
-				+"(WW0016StockAdjust.AdjustReasonCd)   as AdjustReasonCd   ,\n"		//調整理由コード
-				+"(WW0016StockAdjust.AdjustReasonName) as AdjustReasonName ,\n"		//調整理由名
-				+"(WW0016StockAdjust.Adjustdate)       as Adjustdate       ,\n"		//調整日
-				+"(WW0016StockAdjust.Loc)              as Loc              ,\n"		//調整元ロケ
-				+"(WM0010LOCATIONMST.LocName)          as LocName          ,\n"		//ロケーション名
-				+"(WM0010LOCATIONMST.LocType)          as Type             ,\n"		//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-				+"(WW0016StockAdjust.ItemCd)           as ItemCd           ,\n"		//調整元商品CD
-				+"(WW0016StockAdjust.ItemName)         as ItemName         ,\n"		//調整元商品名
-				+"(KM0060_ITEMMST.ItemName01)          as ItemName01       ,\n"		//商品表記名
-				+"(KM0060_ITEMMST.ItemName02)          as ItemName02       ,\n"		//商品正式名
-				+"(KM0060_ITEMMST.ItemName03)          as ItemName03       ,\n"		//商品略名
-				+"(KM0061_ITEMMSTSUB.CtQty)            as CtUnitQty        ,\n"		//カートン入数
-				+"(KM0061_ITEMMSTSUB.CsQty)            as CsUnitQty        ,\n"		//ケース入数
-				+"(KM0061_ITEMMSTSUB.PlQty)            as PlUnitQty        ,\n"		//パレット入数
-				+"(KM0060_ITEMMST.UnitName)            as UnitName         ,\n"		//商品単位
-				+"(KM0061_ITEMMSTSUB.CtUnitName)       as CtUnitName       ,\n"		//カートン商品単位
-				+"(KM0061_ITEMMSTSUB.CsUnitName)       as CsUnitName       ,\n"		//ケース商品単位
-				+"(KM0061_ITEMMSTSUB.PlUnitName)       as PlUnitName       ,\n"		//パレット商品単位
-				+"(WW0016StockAdjust.Lot)              as Lot              ,\n"	 	//調整元ロット
-				+"(WW0016StockAdjust.ExpDate)          as ExpDate          ,\n"		//調整元賞味期限
-				+"(WW0016StockAdjust.ActualDate)       as ActualDate       ,\n"		//調整元入荷日
-				+"(WW0016StockAdjust.BeforeQty)        as BeforeQty        ,\n"		//調整元在庫数
-				+"(WW0016StockAdjust.ShipPlanQty)      as ShipPlanQty      ,\n"		//調整元引当済数
-				+"(WW0016StockAdjust.PossibleQty)      as PossibleQty      ,\n"		//調整元出荷可能数
-				+"(WW0016StockAdjust.AdjustQty)        as AdjustQty        ,\n"		//調整数
-				+"(WW0016StockAdjust.AdjustCom01)      as AdjustCom01      ,\n"		//調整理由コメント01
-				+"(WW0016StockAdjust.AdjustCom02)      as AdjustCom02      ,\n"		//調整理由コメント02
-				+"(WW0016StockAdjust.AdjustCom03)      as AdjustCom03      ,\n"		//調整理由コメント03
-				+"(WW0016StockAdjust.AfterQty)         as AfterQty         ,\n"		//調整後在庫数
-				+"(WW0016StockAdjust.EntryDate)        as EntryDate        ,\n"		//登録日
-				+"(WW0016StockAdjust.UpdateDate)       as UpdateDate       ,\n"		//更新日
-				+"(WW0016StockAdjust.EntryUser)        as EntryUser        ,\n"		//登録者
-				+"(WW0016StockAdjust.UpdateUser)       as UpdateUser        \n"		//更新者
+				+"(WW0016StockAdjust.ClCd)				as ClCd				,\n"		//荷主コード
+				+"(KM0030_CLIENTMST.CLName01)			as CLName			,\n"		//荷主名
+				+"(WW0016StockAdjust.WhCd)				as WhCd             ,\n"		//倉庫コード
+				+"(KM0010_WHMST.WHName)					as ClWHName         ,\n"		//担当倉庫名
+				+"(KM0030_CLIENTMST.ClGpCD)				as ClGpCD           ,\n"		//荷主グループCD
+				+"(KM0031_CLIENT_GROUP.ClGpName01)		as ClGpName         ,\n"		//グループ名
+				+"(WW0016StockAdjust.AdjustNo)			as AdjustNo         ,\n"		//調整番号
+				+"(WW0016StockAdjust.AdjustReasonCd)	as AdjustReasonCd   ,\n"		//調整理由コード
+				+"(WW0016StockAdjust.AdjustReasonName)	as AdjustReasonName ,\n"		//調整理由名
+				+"(WW0016StockAdjust.Adjustdate)		as Adjustdate       ,\n"		//調整日
+				+"(WW0016StockAdjust.Loc)				as Loc              ,\n"		//調整元ロケ
+				+"(WM0010LOCATIONMST.LocName)			as LocName          ,\n"		//ロケーション名
+				+"(WM0010LOCATIONMST.LocType)			as Type             ,\n"		//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				+"(WW0016StockAdjust.ItemCd)			as ItemCd           ,\n"		//調整元商品CD
+				+"(WW0016StockAdjust.ItemName)			as ItemName         ,\n"		//調整元商品名
+				+"(KM0060_ITEMMST.ItemName01)			as ItemName01       ,\n"		//商品表記名
+				+"(KM0060_ITEMMST.ItemName02)			as ItemName02       ,\n"		//商品正式名
+				+"(KM0060_ITEMMST.ItemName03)			as ItemName03       ,\n"		//商品略名
+				+"(KM0061_ITEMMSTSUB.CtQty)				as CtUnitQty        ,\n"		//カートン入数
+				+"(KM0061_ITEMMSTSUB.CsQty)				as CsUnitQty        ,\n"		//ケース入数
+				+"(KM0061_ITEMMSTSUB.PlQty)				as PlUnitQty        ,\n"		//パレット入数
+				+"(KM0060_ITEMMST.UnitName)				as UnitName         ,\n"		//商品単位
+				+"(KM0061_ITEMMSTSUB.CtUnitName)		as CtUnitName       ,\n"		//カートン商品単位
+				+"(KM0061_ITEMMSTSUB.CsUnitName)		as CsUnitName       ,\n"		//ケース商品単位
+				+"(KM0061_ITEMMSTSUB.PlUnitName)		as PlUnitName       ,\n"		//パレット商品単位
+				+"(WW0016StockAdjust.Lot)				as Lot              ,\n"	 	//調整元ロット
+				+"(WW0016StockAdjust.ExpDate)			as ExpDate          ,\n"		//調整元賞味期限
+				+"(WW0016StockAdjust.ActualDate)		as ActualDate       ,\n"		//調整元入荷日
+				+"(WW0016StockAdjust.BeforeQty)			as BeforeQty        ,\n"		//調整元在庫数
+				+"(WW0016StockAdjust.ShipPlanQty)		as ShipPlanQty      ,\n"		//調整元引当済数
+				+"(WW0016StockAdjust.PossibleQty)		as PossibleQty      ,\n"		//調整元出荷可能数
+				+"(WW0016StockAdjust.AdjustQty)			as AdjustQty        ,\n"		//調整数
+				+"(WW0016StockAdjust.AdjustCom01)		as AdjustCom01      ,\n"		//調整理由コメント01
+				+"(WW0016StockAdjust.AdjustCom02)		as AdjustCom02      ,\n"		//調整理由コメント02
+				+"(WW0016StockAdjust.AdjustCom03)		as AdjustCom03      ,\n"		//調整理由コメント03
+				+"(WW0016StockAdjust.AfterQty)			as AfterQty         ,\n"		//調整後在庫数
+				+"(WW0016StockAdjust.EntryDate)			as EntryDate        ,\n"		//登録日
+				+"(WW0016StockAdjust.UpdateDate)		as UpdateDate       ,\n"		//更新日
+				+"(WW0016StockAdjust.EntryUser)			as EntryUser        ,\n"		//登録者
+				+"(WW0016StockAdjust.UpdateUser)		as UpdateUser        \n"		//更新者
 				+ " from "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0016StockAdjust \n"
 				+ " left outer join "+A00000_Main.MySqlDefaultSchemaWANKO+".WM0010LOCATIONMST"
 				+ " on("

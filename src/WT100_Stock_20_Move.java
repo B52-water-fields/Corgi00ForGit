@@ -1798,6 +1798,9 @@ public class WT100_Stock_20_Move{
 				ErrMsg.add("移動先ロケ定義が不正です");
 			}
 		}
+		if(GetFromLoc.equals(GetToLoc	)) {
+			ErrMsg.add("同じロケに移動するのは無意味じゃよ");
+		}
 		
 		Object[][] FromStockRt	= StockRt(
 									GetWhCd,

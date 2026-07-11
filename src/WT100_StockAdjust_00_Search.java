@@ -80,8 +80,8 @@ public class WT100_StockAdjust_00_Search{
 		final JFormattedTextField TB_SearchExpDateMax		= B100_FrameParts.JFormattedTextFieldSet(	640,100, 70,20,""	,11,0,"YYYY/MM/DD");						//調整元賞味期限最大
 		final JFormattedTextField TB_SearchActualDateMin	= B100_FrameParts.JFormattedTextFieldSet(	500,125, 70,20,""	,11,0,"YYYY/MM/DD");						//調整元入荷日最小
 		final JFormattedTextField TB_SearchActualDateMax	= B100_FrameParts.JFormattedTextFieldSet(	640,125, 70,20,""	,11,0,"YYYY/MM/DD");						//調整元入荷日最大
-		final JFormattedTextField TB_SearchAdjustQtyMin		= B100_FrameParts.JFormattedTextFieldSet(	500,150, 70,20,""	,11,1,"####");								//調整数最小
-		final JFormattedTextField TB_SearchAdjustQtyMax		= B100_FrameParts.JFormattedTextFieldSet(	600,150, 70,20,""	,11,1,"####");								//調整数最大
+		final JFormattedTextField TB_SearchAdjustQtyMin		= B100_FrameParts.JFormattedTextFieldSet(	500,150, 70,20,""	,11,1,"#,###");								//調整数最小
+		final JFormattedTextField TB_SearchAdjustQtyMax		= B100_FrameParts.JFormattedTextFieldSet(	600,150, 70,20,""	,11,1,"#,###");								//調整数最大
 		
 		JLabel LB2_SearchAdjustNo			= B100_FrameParts.JLabelSet(230,100, 80,20,"と一致"		,11,0);
 		JLabel LB2_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(230,125, 80,20,"と一致"		,11,0);
@@ -260,7 +260,7 @@ public class WT100_StockAdjust_00_Search{
 		JButton SearchCrearBtn 	= B100_FrameParts.BtnSet(		700, 25,100,20,"条件クリア",10);
 		PN_Search.add(SearchCrearBtn);
 		
-		Object[][] RtAdjustRt = T100_AdjustRt.RtAdjustRt();
+		Object[][] RtAdjustRt = T100_StockAdjustRt.RtAdjustRt();
 		
 		String[] columnNames01 = new String[RtAdjustRt.length+1];
 		
@@ -392,7 +392,7 @@ public class WT100_StockAdjust_00_Search{
 						LocExactMatch = true;
 					}
 					
-					Object[][] AdjustRt = T100_AdjustRt.AdjustRt(
+					Object[][] AdjustRt = T100_StockAdjustRt.AdjustRt(
 							SearchClCd,					//荷主コード
 							SearchWhCd,					//倉庫コード
 							SearchClGpCD,				//荷主グループCD
