@@ -38,88 +38,38 @@ public class B100_DefaultVariableWarehouse{
 		if(null==GetWHCD||"".equals(GetWHCD)) {
 			GetWHCD = M100_WhMstRt.NewWhCdGet(1)[0];
 		}
-		String tgt_table = "KM0010_WHMST";
+		
 		String[][] field_name = new String[16][3];
 		String[][] entry_data = new String[1][16];
 		String[] judg_field = new String[1];
 		String[][] judg_data = new String[1][1];
+		
+		
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		
+		Object[][] SetString = {
+				 {"WHCD"		,"1","0","Key"	,GetWHCD}		//倉庫コード
+				,{"WHName"		,"1","0",""		,GetWHName}		//拠点倉庫名
+				,{"Post"		,"1","0",""		,GetPost}		//拠点倉庫郵便番号
+				,{"Add01"		,"1","0",""		,GetAdd01}		//拠点倉庫住所1
+				,{"Add02"		,"1","0",""		,GetAdd02}		//拠点倉庫住所2
+				,{"Tel"			,"1","0",""		,GetTel}		//拠点倉庫電話
+				,{"Fax"			,"1","0",""		,GetFax}		//拠点倉庫FAX
+				,{"Mail"		,"1","0",""		,GetMail}		//拠点倉庫MAIL
+				,{"Com01"		,"1","0",""		,GetCom01}		//コメント１
+				,{"Com02"		,"1","0",""		,GetCom02}		//コメント２
+				,{"Com03"		,"1","0",""		,GetCom03}		//コメント３
+				,{"PTMSCD"		,"1","0",""		,GetPTMSCD}		//基幹システム連携用事業所CD
+				,{"EntryDate"	,"1","0",""		,now_dtm}		//データ登録日時
+				,{"UpdateDate"	,"1","0",""		,now_dtm}		//データ更新日時
+				,{"EntryUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//登録者コード
+				,{"UpdateUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//更新者コード
+				};
+		String tgt_table = "KM0010_WHMST";
 		String TgtDB = "NANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
-
-		judg_field[ 0] = "WHCD";	//倉庫コード
 		
-		field_name[ 0][0] = "WHCD";			//倉庫コード
-		field_name[ 1][0] = "WHName";		//拠点倉庫名
-		field_name[ 2][0] = "Post";			//拠点倉庫郵便番号
-		field_name[ 3][0] = "Add01";		//拠点倉庫住所1
-		field_name[ 4][0] = "Add02";		//拠点倉庫住所2
-		field_name[ 5][0] = "Tel";			//拠点倉庫電話
-		field_name[ 6][0] = "Fax";			//拠点倉庫FAX
-		field_name[ 7][0] = "Mail";			//拠点倉庫MAIL
-		field_name[ 8][0] = "Com01";		//コメント１
-		field_name[ 9][0] = "Com02";		//コメント２
-		field_name[10][0] = "Com03";		//コメント３
-		field_name[11][0] = "PTMSCD";		//基幹システム連携用事業所CD
-		field_name[12][0] = "EntryDate";	//データ登録日時
-		field_name[13][0] = "UpdateDate";	//データ更新日時
-		field_name[14][0] = "EntryUser";	//登録者コード
-		field_name[15][0] = "UpdateUser";	//更新者コード
-		
-		field_name[ 0][1] = "1";	//倉庫コード
-		field_name[ 1][1] = "1";	//拠点倉庫名
-		field_name[ 2][1] = "1";	//拠点倉庫郵便番号
-		field_name[ 3][1] = "1";	//拠点倉庫住所1
-		field_name[ 4][1] = "1";	//拠点倉庫住所2
-		field_name[ 5][1] = "1";	//拠点倉庫電話
-		field_name[ 6][1] = "1";	//拠点倉庫FAX
-		field_name[ 7][1] = "1";	//拠点倉庫MAIL
-		field_name[ 8][1] = "1";	//コメント１
-		field_name[ 9][1] = "1";	//コメント２
-		field_name[10][1] = "1";	//コメント３
-		field_name[11][1] = "1";	//基幹システム連携用事業所CD
-		field_name[12][1] = "1";	//データ登録日時
-		field_name[13][1] = "1";	//データ更新日時
-		field_name[14][1] = "1";	//登録者コード
-		field_name[15][1] = "1";	//更新者コード
-		
-		field_name[ 0][2] = "1";	//倉庫コード
-		field_name[ 1][2] = "1";	//拠点倉庫名
-		field_name[ 2][2] = "1";	//拠点倉庫郵便番号
-		field_name[ 3][2] = "1";	//拠点倉庫住所1
-		field_name[ 4][2] = "1";	//拠点倉庫住所2
-		field_name[ 5][2] = "1";	//拠点倉庫電話
-		field_name[ 6][2] = "1";	//拠点倉庫FAX
-		field_name[ 7][2] = "1";	//拠点倉庫MAIL
-		field_name[ 8][2] = "1";	//コメント１
-		field_name[ 9][2] = "1";	//コメント２
-		field_name[10][2] = "1";	//コメント３
-		field_name[11][2] = "1";	//基幹システム連携用事業所CD
-		field_name[12][2] = "0";	//データ登録日時
-		field_name[13][2] = "1";	//データ更新日時
-		field_name[14][2] = "0";	//登録者コード
-		field_name[15][2] = "1";	//更新者コード
-		
-		judg_data[ 0][ 0] = GetWHCD;	//倉庫コード
-
-		entry_data[ 0][ 0] = GetWHCD;	//倉庫コード
-		entry_data[ 0][ 1] = GetWHName;	//拠点倉庫名
-		entry_data[ 0][ 2] = GetPost;	//拠点倉庫郵便番号
-		entry_data[ 0][ 3] = GetAdd01;	//拠点倉庫住所1
-		entry_data[ 0][ 4] = GetAdd02;	//拠点倉庫住所2
-		entry_data[ 0][ 5] = GetTel;	//拠点倉庫電話
-		entry_data[ 0][ 6] = GetFax;	//拠点倉庫FAX
-		entry_data[ 0][ 7] = GetMail;	//拠点倉庫MAIL
-		entry_data[ 0][ 8] = GetCom01;	//コメント１
-		entry_data[ 0][ 9] = GetCom02;	//コメント２
-		entry_data[ 0][10] = GetCom03;	//コメント３
-		entry_data[ 0][11] = GetPTMSCD;	//基幹システム連携用事業所CD
-		entry_data[ 0][12] = now_dtm;	//データ登録日時
-		entry_data[ 0][13] = now_dtm;	//データ更新日時
-		entry_data[ 0][14] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//登録者コード
-		entry_data[ 0][15] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//更新者コード
-		
-		A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 		B100_DefaultVariable.WhList();
 		
 		DefaultVariableWarehouse(GetWHCD);
@@ -172,126 +122,44 @@ public class B100_DefaultVariableWarehouse{
 						SearchClGpCD,SearchCLCD,SearchCLName,SearchPost,searchAdd,
 						SearchTel,SearchFax,SearchMail, SearchCom,SearchWHCD,AllSearch);
 			
-			
-			
 			if(0>=ClMstRt.length) {
 		    	//新規荷主コードを採番
 				String GetClCd = M100_ClMstRt.NewClCdGet(1)[0];
 				
-				String tgt_table = "KM0030_CLIENTMST";
-				String[][] field_name = new String[23][3];
-				String[][] entry_data = new String[1][23];
-				String[] judg_field = new String[1];
-				String[][] judg_data = new String[1][1];
-				String TgtDB = "NANKO";
-				int non_msg_fg = 1;
 				String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 				
-				judg_field[0] = "cl_cd";			//荷主CD
+				Object[][] SetString = {
+						 {"cl_cd"		,"1","0","Key"	,GetClCd}																//荷主CD
+						,{"ClGpCD"		,"1","0",""		,"ClGp000"}																//荷主グループCD
+						,{"WHCD"		,"1","0",""		,""+WhMstRt[0][M100_WhMstRt.ColNoWHCD]}								//担当倉庫
+						,{"CLName01"	,"1","0",""		,"高天原ホールディングス"+WhMstRt[0][M100_WhMstRt.ColNoWHName]+"支店"}	//荷主表記名
+						,{"CLName02"	,"1","0",""		,WhMstRt[0][M100_WhMstRt.ColNoWHName]+"初期設定荷主"}					//荷主正式名
+						,{"CLName03"	,"1","0",""		,"TMGHD"+WhMstRt[0][M100_WhMstRt.ColNoWHName]+"初期設定荷主"}			//荷主略名
+						,{"Post"		,"1","0",""		,"5160023"}																//郵便番号
+						,{"Add01"		,"1","0",""		,"三重県伊勢市"}														//住所1
+						,{"Add02"		,"1","0",""		,"宇治館町１"}															//住所2
+						,{"Add03"		,"1","0",""		,""}																	//住所3
+						,{"Tel"			,"1","0",""		,"0596241111"}															//電話番号
+						,{"Fax"			,"1","0",""		,""}																	//FAX
+						,{"Mail"		,"1","0",""		,""}																	//メールアドレス
+						,{"Com01"		,"1","0",""		,""}																	//コメント1
+						,{"Com02"		,"1","0",""		,""}																	//コメント2
+						,{"Com03"		,"1","0",""		,""}																	//コメント3
+						,{"ShimeDate"	,"1","0",""		,"99"}																	//運賃締日
+						,{"ShimeBasis"	,"1","0",""		,"0"}																	//請求基準
+						,{"EntryDate"	,"1","0",""		,now_dtm}																//データ登録日時
+						,{"UpdateDate"	,"1","0",""		,now_dtm}																//データ更新日時
+						,{"EntryUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//登録者コード
+						,{"UpdateUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//更新者コード
+						,{"PTMSCD"		,"1","0",""		,""}																	//基幹システム連携用荷主コード
+						};
+				String tgt_table = "KM0030_CLIENTMST";
+				String TgtDB = "NANKO";
+				int non_msg_fg = 1;
 				
-				field_name[0][0] = "cl_cd";			//荷主CD
-				field_name[1][0] = "ClGpCD";		//荷主グループCD
-				field_name[2][0] = "WHCD";			//担当倉庫
-				field_name[3][0] = "CLName01";		//荷主表記名
-				field_name[4][0] = "CLName02";		//荷主正式名
-				field_name[5][0] = "CLName03";		//荷主略名
-				field_name[6][0] = "Post";			//郵便番号
-				field_name[7][0] = "Add01";			//住所1
-				field_name[8][0] = "Add02";			//住所2
-				field_name[9][0] = "Add03";			//住所3
-				field_name[10][0] = "Tel";			//電話番号
-				field_name[11][0] = "Fax";			//FAX
-				field_name[12][0] = "Mail";			//メールアドレス
-				field_name[13][0] = "Com01";		//コメント1
-				field_name[14][0] = "Com02";		//コメント2
-				field_name[15][0] = "Com03";		//コメント3
-				field_name[16][0] = "ShimeDate";	//運賃締日
-				field_name[17][0] = "ShimeBasis";	//請求基準
-				field_name[18][0] = "EntryDate";	//データ登録日時
-				field_name[19][0] = "UpdateDate";	//データ更新日時
-				field_name[20][0] = "EntryUser";	//登録者コード
-				field_name[21][0] = "UpdateUser";	//更新者コード
-				field_name[22][0] = "PTMSCD";		//基幹システム連携用荷主コード
-		
-				field_name[0][1] = "1";		//荷主CD
-				field_name[1][1] = "1";		//荷主グループCD
-				field_name[2][1] = "1";		//担当倉庫
-				field_name[3][1] = "1";		//荷主表記名
-				field_name[4][1] = "1";		//荷主正式名
-				field_name[5][1] = "1";		//荷主略名
-				field_name[6][1] = "1";		//郵便番号
-				field_name[7][1] = "1";		//住所1
-				field_name[8][1] = "1";		//住所2
-				field_name[9][1] = "1";		//住所3
-				field_name[10][1] = "1";	//電話番号
-				field_name[11][1] = "1";	//FAX
-				field_name[12][1] = "1";	//メールアドレス
-				field_name[13][1] = "1";	//コメント1
-				field_name[14][1] = "1";	//コメント2
-				field_name[15][1] = "1";	//コメント3
-				field_name[16][1] = "1";	//運賃締日
-				field_name[17][1] = "1";	//請求基準
-				field_name[18][1] = "1";	//データ登録日時
-				field_name[19][1] = "1";	//データ更新日時
-				field_name[20][1] = "1";	//登録者コード
-				field_name[21][1] = "1";	//更新者コード
-				field_name[22][1] = "1";	//基幹システム連携用荷主コード
-				
-				field_name[0][2] = "0";		//荷主CD
-				field_name[1][2] = "0";		//荷主グループCD
-				field_name[2][2] = "0";		//担当倉庫
-				field_name[3][2] = "0";		//荷主表記名
-				field_name[4][2] = "0";		//荷主正式名
-				field_name[5][2] = "0";		//荷主略名
-				field_name[6][2] = "0";		//郵便番号
-				field_name[7][2] = "0";		//住所1
-				field_name[8][2] = "0";		//住所2
-				field_name[9][2] = "0";		//住所3
-				field_name[10][2] = "0";	//電話番号
-				field_name[11][2] = "0";	//FAX
-				field_name[12][2] = "0";	//メールアドレス
-				field_name[13][2] = "0";	//コメント1
-				field_name[14][2] = "0";	//コメント2
-				field_name[15][2] = "0";	//コメント3
-				field_name[16][2] = "0";	//運賃締日
-				field_name[17][2] = "0";	//請求基準
-				field_name[18][2] = "0";	//データ登録日時
-				field_name[19][2] = "0";	//データ更新日時
-				field_name[20][2] = "0";	//登録者コード
-				field_name[21][2] = "0";	//更新者コード
-				field_name[22][2] = "0";	//基幹システム連携用荷主コード
-				
-				judg_data[0][0] = GetClCd;			//荷主CD
-				
-				entry_data[0][0] = GetClCd;					//荷主CD
-				entry_data[0][1] = "ClGp000";					//荷主グループCD
-				entry_data[0][2] = ""+WhMstRt[0][M100_WhMstRt.ColNoWHCD];			//担当倉庫
-				entry_data[0][3] = "TMGHD"+WhMstRt[0][M100_WhMstRt.ColNoWHName]+"荷主";//荷主表記名
-				entry_data[0][4] = "TMGHD"+WhMstRt[0][M100_WhMstRt.ColNoWHName];		//荷主正式名
-				entry_data[0][5] = "";							//荷主略名
-				entry_data[0][6] = "5160023";					//郵便番号
-				entry_data[0][7] = "三重県伊勢市";				//住所1
-				entry_data[0][8] = "宇治館町１";				//住所2
-				entry_data[0][9] = "";							//住所3
-				entry_data[0][10] = "0596241111";				//電話番号
-				entry_data[0][11] = "";	//FAX
-				entry_data[0][12] = "";	//メールアドレス
-				entry_data[0][13] = "";	//コメント1
-				entry_data[0][14] = "";	//コメント2
-				entry_data[0][15] = "";	//コメント3
-				entry_data[0][16] = "99";	//運賃締日
-				entry_data[0][17] = "0";	//請求基準
-				entry_data[0][18] = now_dtm;	//データ登録日時
-				entry_data[0][19] = now_dtm;	//データ更新日時
-				entry_data[0][20] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//登録者コード
-				entry_data[0][21] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//更新者コード
-				entry_data[0][22] = "";	//基幹システム連携用荷主コード
-				
-				A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+				A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 				B100_DefaultVariable.ClList();
 			}
 		}
 	}
-	
-	
 }

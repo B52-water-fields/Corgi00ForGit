@@ -87,13 +87,13 @@ public class WT100_Stock_10_Adjust{
 		JLabel LB_Expdate								= B100_FrameParts.JLabelSet(					  0,250,150,20,"消費期限:"			,11,1);
 		JLabel LB_ActualDate							= B100_FrameParts.JLabelSet(					  0,275,150,20,"入荷実績日:"		,11,1);
 		
-		JLabel LB_CtUnitQty								= B100_FrameParts.JLabelSet(					250,250,150,20,"カートン入数(バラ換算):"	,11,1);
+		JLabel LB_PlUnitQty								= B100_FrameParts.JLabelSet(					250,250,150,20,"パレット入数(バラ換算):"	,11,1);
 		JLabel LB_CsUnitQty								= B100_FrameParts.JLabelSet(					250,275,150,20,"ケース入数(バラ換算):"		,11,1);
-		JLabel LB_PlUnitQty								= B100_FrameParts.JLabelSet(					250,300,150,20,"パレット入数(バラ換算):"	,11,1);
+		JLabel LB_CtUnitQty								= B100_FrameParts.JLabelSet(					250,300,150,20,"カートン入数(バラ換算):"	,11,1);
 		
-		final JFormattedTextField TB_CtUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,250,70,20,""	,12,1,"#,###");
+		final JFormattedTextField TB_PlUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,250,70,20,""	,12,1,"#,###");
 		final JFormattedTextField TB_CsUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,275,70,20,""	,12,1,"#,###");
-		final JFormattedTextField TB_PlUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,300,70,20,""	,12,1,"#,###");
+		final JFormattedTextField TB_CtUnitQty			= B100_FrameParts.JFormattedTextFieldSet(	400,300,70,20,""	,12,1,"#,###");
 		
 		JLabel LB_Qty									= B100_FrameParts.JLabelSet(					300,450,150,20,"調整前総数量:"		,11,1);
 		JLabel LB_ShipPlanQty							= B100_FrameParts.JLabelSet(					300,475,150,20,"調整前引当済数:"	,11,1);
@@ -1109,7 +1109,7 @@ public class WT100_Stock_10_Adjust{
 							}
 							if(EntryFg) {
 								//在庫調整結果を登録する
-								int[] AdjustNoRt = Tools100_Adjust.AdjustNoRt(1);
+								int[] AdjustNoRt = Tools100_StockAdjust.AdjustNoRt(1);
 								String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 								
 								Object[][] SetString = {

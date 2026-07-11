@@ -62,14 +62,14 @@ public class WM100_PostMst_00_Search{
 		
 		//エクセル取込時に先頭行columnNames01とヘッダ行の名称一致でレイアウト確認＆取込列判定します
 		//"郵便番号","県","市区町村","町丁目","市区町村CD"との名称一致をみて列判定するので名称重複＆不足しないでください
-		String[] columnNames01 = {
-				"FG"
-				,"郵便番号"
-				,"県"
-				,"市区町村"
-				,"町丁目"
-				,"市区町村CD"
-				};
+		Object[][] RtSettingPostRt = M100_PostMstRt.RtSettingPostRt();
+		
+		String[] columnNames01 = new String[RtSettingPostRt.length+1];
+		
+		columnNames01[0] = "Fg";
+		for(int i=0;i<RtSettingPostRt.length;i++) {
+			columnNames01[1+(int)RtSettingPostRt[i][1]] = ""+RtSettingPostRt[i][3];
+		}
 		
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
@@ -86,12 +86,13 @@ public class WM100_PostMst_00_Search{
 
 		//列幅初期設定 表示位置設定
 		TableColumn column = null;
-		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//郵便番号
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//県
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//市区町村
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(200*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//町丁目
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(120*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//市区町村CD
+		for(int i=0;i<RtSettingPostRt.length;i++) {
+			if("int".equals((String)RtSettingPostRt[i][2])||"float".equals((String)RtSettingPostRt[i][2])) {
+				column = columnModel01.getColumn(1+(int)RtSettingPostRt[i][1]);	column.setPreferredWidth(150*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				column = columnModel01.getColumn(1+(int)RtSettingPostRt[i][1]);	column.setPreferredWidth(150*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
+		}
 		
 		//スクロール用設定
 		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,160,740,460,tb01);
@@ -170,15 +171,13 @@ public class WM100_PostMst_00_Search{
 					}
 					
 					Object[][] PostRt = M100_PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch,PostPerfectMatch);
-					
+					Object[][] RtSettingPostRt = M100_PostMstRt.RtSettingPostRt();
 					for(int i=0;i<PostRt.length;i++) {
-						Object[] SetOb = new Object[6];
+						Object[] SetOb = new Object[RtSettingPostRt.length+1];
 						SetOb[0] = false;
-						SetOb[1] = ""+PostRt[i][0];	//郵便番号
-						SetOb[2] = ""+PostRt[i][1];	//県
-						SetOb[3] = ""+PostRt[i][2];	//市区町村
-						SetOb[4] = ""+PostRt[i][3];	//町丁目
-						SetOb[5] = ""+PostRt[i][4];	//市区町村CD
+						for(int i01=0;i01<RtSettingPostRt.length;i01++) {
+							SetOb[1+(int)RtSettingPostRt[i01][1]]	= PostRt[i][(int)RtSettingPostRt[i01][1]];
+						}
 						MainFmTableModel.addRow(SetOb);
 					}
 					if(0<PostRt.length) {
@@ -200,7 +199,7 @@ public class WM100_PostMst_00_Search{
 					String TgtPost = "";
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
-							TgtPost = ""+MainFmTableModel.getValueAt(i, 1);	if(null==TgtPost) {TgtPost="";}
+							TgtPost = ""+MainFmTableModel.getValueAt(i, 1+M100_PostMstRt.ColPOST);	if(null==TgtPost) {TgtPost="";}
 						}
 					}
 					if(!"".equals(TgtPost)) {
@@ -340,93 +339,99 @@ public class WM100_PostMst_00_Search{
 					boolean AllSearch = true;
 					Object[][] MunicipalityRt = M100_PostMstRt.MunicipalityRt(SearchName,SearchMunicipalityCd,AllSearch);
 					
-					String[][] SetString = {
-									 {"DECD"			,"1","1"}	//納品先コード
-									,{"DepartmentCd"	,"1","1"}	//部署CD
-									,{"DEName01"		,"1","1"}	//納品先名1
-									,{"DEName02"		,"1","1"}	//納品先名2
-									,{"DEName03"		,"1","1"}	//納品先名3
-									,{"Post"			,"1","1"}	//納品先郵便
-									,{"Add01"			,"1","1"}	//納品先住所1
-									,{"Add02"			,"1","1"}	//納品先住所2
-									,{"Add03"			,"1","1"}	//納品先住所3
-									,{"Tel"				,"1","1"}	//納品先電話
-									,{"Fax"				,"1","1"}	//納品先FAX
-									,{"Mail"			,"1","1"}	//納品先MAIL
-									,{"Com01"			,"1","1"}	//コメント1
-									,{"Com02"			,"1","1"}	//コメント2
-									,{"Com03"			,"1","1"}	//コメント3
-									,{"PrefecturesCd"	,"1","1"}	//JIS県CD2桁
-									,{"MunicipalityCd"	,"1","1"}	//JIS市区町村CD5桁
-									,{"PTMSCD"			,"1","1"}	//基幹システム発着地コード
-									,{"EntryDate"		,"1","0"}	//データ登録日時
-									,{"UpdateDate"		,"1","1"}	//データ更新日時
-									,{"EntryUser"		,"1","0"}	//登録者コード
-									,{"UpdateUser"		,"1","1"}	//更新者コード
-									,{"FirstClient"		,"1","0"}	//登録した荷主CD
-									,{"LastClient"		,"1","1"}	//更新した荷主CD
-									,{"DelFg"			,"1","1"}	//削除区分
-									};
-					
-					
-					
-					String tgt_table = "KM0040_DELIVERYMST";
-					String[][] field_name = new String[SetString.length][3];
-					String[][] entry_data = new String[MunicipalityRt.length][SetString.length];
-					String[] judg_field = new String[2];
-					String[][] judg_data = new String[MunicipalityRt.length][2];
-					String TgtDB = "NYANKO";
-					int non_msg_fg = 0;
 					String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 					
-					judg_field[0] = "DECD";
-					judg_field[1] = "DepartmentCd";
+					String[] SetDECD			= new String[MunicipalityRt.length];	//納品先コード
+					String[] SetDepartmentCd	= new String[MunicipalityRt.length];	//部署CD
+					String[] SetDEName01		= new String[MunicipalityRt.length];	//納品先名1
+					String[] SetDEName02		= new String[MunicipalityRt.length];	//納品先名2
+					String[] SetDEName03		= new String[MunicipalityRt.length];	//納品先名3
+					String[] SetPost			= new String[MunicipalityRt.length];	//納品先郵便
+					String[] SetAdd01			= new String[MunicipalityRt.length];	//納品先住所1
+					String[] SetAdd02			= new String[MunicipalityRt.length];	//納品先住所2
+					String[] SetAdd03			= new String[MunicipalityRt.length];	//納品先住所3
+					String[] SetTel				= new String[MunicipalityRt.length];	//納品先電話
+					String[] SetFax				= new String[MunicipalityRt.length];	//納品先FAX
+					String[] SetMail			= new String[MunicipalityRt.length];	//納品先MAIL
+					String[] SetCom01			= new String[MunicipalityRt.length];	//コメント1
+					String[] SetCom02			= new String[MunicipalityRt.length];	//コメント2
+					String[] SetCom03			= new String[MunicipalityRt.length];	//コメント3
+					String[] SetPrefecturesCd	= new String[MunicipalityRt.length];	//JIS県CD2桁
+					String[] SetMunicipalityCd	= new String[MunicipalityRt.length];	//JIS市区町村CD5桁
+					String[] SetPTMSCD			= new String[MunicipalityRt.length];	//基幹システム発着地コード
+					String[] SetEntryDate		= new String[MunicipalityRt.length];	//データ登録日時
+					String[] SetUpdateDate		= new String[MunicipalityRt.length];	//データ更新日時
+					String[] SetEntryUser		= new String[MunicipalityRt.length];	//登録者コード
+					String[] SetUpdateUser		= new String[MunicipalityRt.length];	//更新者コード
+					String[] SetFirstClient		= new String[MunicipalityRt.length];	//登録した荷主CD
+					String[] SetLastClient		= new String[MunicipalityRt.length];	//更新した荷主CD
+					String[] SetDelFg			= new String[MunicipalityRt.length];	//削除区分
 					
-					for(int i=0;i<SetString.length;i++) {
-						field_name[i][0] = SetString[i][0];
-						field_name[i][1] = SetString[i][1];
-						field_name[i][2] = SetString[i][2];
-					}
-					
-					if(0<MunicipalityRt.length) {
-						for(int i=0;i<MunicipalityRt.length;i++) {
-							judg_data[i][0] = "JIS"+MunicipalityRt[i][2];
-							judg_data[i][1] = "JIS";
-							
-							entry_data[i][ 0] = "JIS"+MunicipalityRt[i][2];	//納品先コード
-							entry_data[i][ 1] = "JIS";	//部署CD
-							entry_data[i][ 2] = "" + MunicipalityRt[i][0] + MunicipalityRt[i][1];	//納品先名1
-							entry_data[i][ 3] = "";	//納品先名2
-							entry_data[i][ 4] = "";	//納品先名3
-							entry_data[i][ 5] = "";	//納品先郵便
-							entry_data[i][ 6] = "";	//納品先住所1
-							entry_data[i][ 7] = "";	//納品先住所2
-							entry_data[i][ 8] = "";	//納品先住所3
-							entry_data[i][ 9] = "";	//納品先電話
-							entry_data[i][10] = "";	//納品先FAX
-							entry_data[i][11] = "";	//納品先MAIL
-							entry_data[i][12] = "";	//コメント1
-							entry_data[i][13] = "";	//コメント2
-							entry_data[i][14] = "";	//コメント3
-							if(2<(""+MunicipalityRt[i][2]).length()) {
-								entry_data[i][15] = (""+MunicipalityRt[i][2]).substring(0,2);	//JIS県CD2桁
-							}else {
-								entry_data[i][15] = "";
-							}
-							entry_data[i][16] = ""+MunicipalityRt[i][2];	//JIS市区町村CD5桁
-							entry_data[i][17] = ""+MunicipalityRt[i][2];	//基幹システム発着地コード
-							entry_data[i][18] = now_dtm;	//データ登録日時
-							entry_data[i][19] = now_dtm;	//データ更新日時
-							entry_data[i][20] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//登録者コード
-							entry_data[i][21] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//更新者コード
-							entry_data[i][22] = "" + A00000_Main.ClCd;	//登録した荷主CD
-							entry_data[i][23] = "" + A00000_Main.ClCd;	//更新した荷主CD
-							entry_data[i][24] = "0";	//削除区分
-							
-
+					for(int i=0;i<MunicipalityRt.length;i++){SetDECD[i]				= "JIS"+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICIPALITY_CD];}
+					for(int i=0;i<MunicipalityRt.length;i++){SetDepartmentCd[i]		= "JIS";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetDEName01[i]			= "" + MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtPREFECTURES] + MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICI01];}
+					for(int i=0;i<MunicipalityRt.length;i++){SetDEName02[i]			= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetDEName03[i]			= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetPost[i]				= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetAdd01[i]			= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetAdd02[i]			= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetAdd03[i]			= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetTel[i]				= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetFax[i]				= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetMail[i]				= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetCom01[i]			= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetCom02[i]			= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){SetCom03[i]			= "";}
+					for(int i=0;i<MunicipalityRt.length;i++){
+						SetPrefecturesCd[i]	= "";
+						if(2<=(""+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICIPALITY_CD]).length()){
+							SetPrefecturesCd[i]	= (""+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICIPALITY_CD]).substring(0,2);
 						}
-						A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 					}
+					for(int i=0;i<MunicipalityRt.length;i++){SetMunicipalityCd[i]	= ""+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICIPALITY_CD];}
+					for(int i=0;i<MunicipalityRt.length;i++){SetPTMSCD[i]			= ""+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICIPALITY_CD];}
+					for(int i=0;i<MunicipalityRt.length;i++){SetEntryDate[i]		= now_dtm;}
+					for(int i=0;i<MunicipalityRt.length;i++){SetUpdateDate[i]		= now_dtm;}
+					for(int i=0;i<MunicipalityRt.length;i++){SetEntryUser[i]		= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;}
+					for(int i=0;i<MunicipalityRt.length;i++){SetUpdateUser[i]		= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;}
+					for(int i=0;i<MunicipalityRt.length;i++){SetFirstClient[i]		= "" + A00000_Main.ClCd;}
+					for(int i=0;i<MunicipalityRt.length;i++){SetLastClient[i]		= "" + A00000_Main.ClCd;}
+					for(int i=0;i<MunicipalityRt.length;i++){SetDelFg[i]			= "0";}
+					
+					Object[][] SetString= {
+							 		 {"DECD"			,"1","1","Key"	,SetDECD}			//納品先コード
+									,{"DepartmentCd"	,"1","1","Key"	,SetDepartmentCd}	//部署CD
+									,{"DEName01"		,"1","1",""		,SetDEName01}		//納品先名1
+									,{"DEName02"		,"1","1",""		,SetDEName02}		//納品先名2
+									,{"DEName03"		,"1","1",""		,SetDEName03}		//納品先名3
+									,{"Post"			,"1","1",""		,SetPost}			//納品先郵便
+									,{"Add01"			,"1","1",""		,SetAdd01}			//納品先住所1
+									,{"Add02"			,"1","1",""		,SetAdd02}			//納品先住所2
+									,{"Add03"			,"1","1",""		,SetAdd03}			//納品先住所3
+									,{"Tel"				,"1","1",""		,SetTel}			//納品先電話
+									,{"Fax"				,"1","1",""		,SetFax}			//納品先FAX
+									,{"Mail"			,"1","1",""		,SetMail}			//納品先MAIL
+									,{"Com01"			,"1","1",""		,SetCom01}			//コメント1
+									,{"Com02"			,"1","1",""		,SetCom02}			//コメント2
+									,{"Com03"			,"1","1",""		,SetCom03}			//コメント3
+									,{"PrefecturesCd"	,"1","1",""		,SetPrefecturesCd}	//JIS県CD2桁
+									,{"MunicipalityCd"	,"1","1",""		,SetMunicipalityCd}	//JIS市区町村CD5桁
+									,{"PTMSCD"			,"1","1",""		,SetPTMSCD}			//基幹システム発着地コード
+									,{"EntryDate"		,"1","0",""		,SetEntryDate}		//データ登録日時
+									,{"UpdateDate"		,"1","1",""		,SetUpdateDate}		//データ更新日時
+									,{"EntryUser"		,"1","0",""		,SetEntryUser}		//登録者コード
+									,{"UpdateUser"		,"1","1",""		,SetUpdateUser}		//更新者コード
+									,{"FirstClient"		,"1","0",""		,SetFirstClient}	//登録した荷主CD
+									,{"LastClient"		,"1","1",""		,SetLastClient}		//更新した荷主CD
+									,{"DelFg"			,"1","1",""		,SetDelFg}			//削除区分
+									};
+					
+					String tgt_table = "KM0040_DELIVERYMST";
+					String TgtDB = "NYANKO";
+					int non_msg_fg = 0;
+					
+					A100_InsertUpdateSQL.InsertUpdateSomeRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+					
 					RenewFg = true;
 				}
 			}

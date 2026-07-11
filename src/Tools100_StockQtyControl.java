@@ -27,6 +27,8 @@ public class Tools100_StockQtyControl{
 		int BeforePossibleQty	= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColBeforePossibleQty];
 		int AdjustQty			= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColAdjustQty];
 		int AfterQty			= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColAfterQty];
+		int AfterShipPlanQtyQty	= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColAfterShipPlanQty];
+		int AfterPossibleQtyQty	= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColAfterPossibleQty];
 	}else{
 		String 	ErrType = (String)StockQtyControlErr[i][Tools100_StockQtyControl.RtColErrType];
 		String 	ErrVol 	= (String)StockQtyControlErr[i][Tools100_StockQtyControl.RtColErrVol];
@@ -122,7 +124,8 @@ public class Tools100_StockQtyControl{
 	static final int RtColBeforePossibleQty	= 5;
 	static final int RtColAdjustQty			= 6;
 	static final int RtColAfterQty			= 7;
-
+	static final int RtColAfterShipPlanQty	= 8;
+	static final int RtColAfterPossibleQty	= 9;
 	
 	
 	
@@ -158,21 +161,24 @@ public class Tools100_StockQtyControl{
 			ArrayList<Integer> EntryBeforePossibleQty	= new ArrayList<Integer>();
 			ArrayList<Integer> EntryAdjustQty			= new ArrayList<Integer>();
 			ArrayList<Integer> EntryAfterQty			= new ArrayList<Integer>();
+			ArrayList<Integer> EntryAfterShipPlanQty	= new ArrayList<Integer>();
+			ArrayList<Integer> EntryAfterPossibleQty	= new ArrayList<Integer>();
 			
 			//必須チェック⇒在庫更新
-			for(int i=0;i<TgtData.length;i++) {
-				TgtData[i][ColClCd] 		= B100_TextControl.Trim((String)TgtData[i][ColClCd]);
-				TgtData[i][ColWhCd] 		= B100_TextControl.Trim((String)TgtData[i][ColWhCd]);
-				TgtData[i][ColLoc] 		= B100_TextControl.Trim((String)TgtData[i][ColLoc]);
-				TgtData[i][ColItemCd] 		= B100_TextControl.Trim((String)TgtData[i][ColItemCd]);
-				TgtData[i][ColLot] 		= B100_TextControl.Trim((String)TgtData[i][ColLot]);
-				TgtData[i][ColExpdate] 	= B100_TextControl.TextToDate((String)TgtData[i][ColExpdate]);
-				TgtData[i][ColActualDate] = B100_TextControl.TextToDate((String)TgtData[i][ColActualDate]);
+			try {
+				for(int i=0;i<TgtData.length;i++) {
+					TgtData[i][ColClCd] 		= B100_TextControl.Trim((String)TgtData[i][ColClCd]);
+					TgtData[i][ColWhCd] 		= B100_TextControl.Trim((String)TgtData[i][ColWhCd]);
+					TgtData[i][ColLoc] 		= B100_TextControl.Trim((String)TgtData[i][ColLoc]);
+					TgtData[i][ColItemCd] 		= B100_TextControl.Trim((String)TgtData[i][ColItemCd]);
+					TgtData[i][ColLot] 		= B100_TextControl.Trim((String)TgtData[i][ColLot]);
+					TgtData[i][ColExpdate] 	= B100_TextControl.TextToDate((String)TgtData[i][ColExpdate]);
+					TgtData[i][ColActualDate] = B100_TextControl.TextToDate((String)TgtData[i][ColActualDate]);
 				
-				int LocType = 0;
-				boolean ShipPlovisionUnTgt = false;
-				boolean StockHit = false;
-				try {
+					int LocType = 0;
+					boolean ShipPlovisionUnTgt = false;
+					boolean StockHit = false;
+				
 					//ロケーションマスタ検索
 					LocMstSearch.setString(LocSearchClCd	,(String)TgtData[i][ColClCd]);
 					LocMstSearch.setString(LocSearchWhCd	,(String)TgtData[i][ColWhCd]);
@@ -185,7 +191,6 @@ public class Tools100_StockQtyControl{
 						LocType = LocMst.getInt("Type");
 						LocErr = false;
 					}
-					LocMst.close();
 					
 					if(LocErr) {
 						NoLocErr.add((String)TgtData[i][ColLoc]);
@@ -223,7 +228,6 @@ public class Tools100_StockQtyControl{
 						ItemMdNo 	= ItemMst.getString("ItemMdNo");
 						ItemErr = false;
 					}
-					ItemMst.close();
 					
 					if(ItemErr) {
 						NoItemErr.add((String)TgtData[i][ColItemCd]);
@@ -249,7 +253,6 @@ public class Tools100_StockQtyControl{
 						BeforePossibleQtyQty 	= Stock.getInt("PossibleQty");
 						StockHit	= true;
 					}
-					Stock.close();
 					
 					boolean StockErr = false;
 					
@@ -313,25 +316,30 @@ public class Tools100_StockQtyControl{
 						EntryBeforePossibleQty.add(BeforePossibleQtyQty);
 						EntryAdjustQty.add(AddQty);
 						EntryAfterQty.add(AfterQty);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}finally{
-					try {
-						if(null!=LocMst			){LocMst.close();}
-						if(null!=ItemMst		){ItemMst.close();}
-						if(null!=Stock			){Stock.close();}
-						if(null!=LocMstSearch	){LocMstSearch.close();}
-						if(null!=StockSearch	){StockSearch.close();}
-						if(null!=ItemMstSearch	){ItemMstSearch.close();}
-						if(null!=StockUpdate	){StockUpdate.close();}
-						if(null!=StockInsert	){StockInsert.close();}
-					} catch (SQLException e2) {
-						e2.printStackTrace();
+						EntryAfterShipPlanQty.add(BeforeShipPlanQty);
+						EntryAfterPossibleQty.add(BeforePossibleQtyQty+AddPossibleQty);
 					}
 				}
-				A100_DbConnect.close();
+				LocMst.close();
+				ItemMst.close();
+				Stock.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				try {
+					if(null!=LocMst			){LocMst.close();}
+					if(null!=ItemMst		){ItemMst.close();}
+					if(null!=Stock			){Stock.close();}
+					if(null!=LocMstSearch	){LocMstSearch.close();}
+					if(null!=StockSearch	){StockSearch.close();}
+					if(null!=ItemMstSearch	){ItemMstSearch.close();}
+					if(null!=StockUpdate	){StockUpdate.close();}
+					if(null!=StockInsert	){StockInsert.close();}
+				} catch (SQLException e2) {
+					e2.printStackTrace();
+				}
 			}
+		A100_DbConnect.close();
 			
 			int rtCount = 0;
 			if(null!=NoLocErr&&0<NoLocErr.size()) {
@@ -347,7 +355,7 @@ public class Tools100_StockQtyControl{
 				rtCount = rtCount + EntryRow.size();
 			}
 			
-			rt = new Object[rtCount][8];
+			rt = new Object[rtCount][10];
 			rtCount = 0;
 			if(null!=NoLocErr&&0<NoLocErr.size()) {
 				for(int i01=0;i01<NoLocErr.size();i01++) {
@@ -360,6 +368,8 @@ public class Tools100_StockQtyControl{
 					rt[rtCount][RtColBeforePossibleQty] 	= 0;
 					rt[rtCount][RtColAdjustQty] 			= 0;
 					rt[rtCount][RtColAfterQty] 			= 0;
+					rt[rtCount][RtColAfterShipPlanQty]	= 0;
+					rt[rtCount][RtColAfterPossibleQty]	= 0;
 					rtCount = rtCount + 1;
 				}
 			}
@@ -374,6 +384,8 @@ public class Tools100_StockQtyControl{
 					rt[rtCount][RtColBeforePossibleQty] 	= 0;
 					rt[rtCount][RtColAdjustQty] 			= 0;
 					rt[rtCount][RtColAfterQty] 			= 0;
+					rt[rtCount][RtColAfterShipPlanQty]	= 0;
+					rt[rtCount][RtColAfterPossibleQty]	= 0;
 					rtCount = rtCount + 1;
 				}
 			}
@@ -388,6 +400,8 @@ public class Tools100_StockQtyControl{
 					rt[rtCount][RtColBeforePossibleQty] 	= 0;
 					rt[rtCount][RtColAdjustQty] 			= 0;
 					rt[rtCount][RtColAfterQty] 			= 0;
+					rt[rtCount][RtColAfterShipPlanQty]	= 0;
+					rt[rtCount][RtColAfterPossibleQty]	= 0;
 					rtCount = rtCount + 1;
 				}
 			}
@@ -402,6 +416,8 @@ public class Tools100_StockQtyControl{
 					rt[rtCount][RtColBeforePossibleQty] 	= EntryBeforePossibleQty.get(i01);
 					rt[rtCount][RtColAdjustQty] 			= EntryAdjustQty.get(i01);
 					rt[rtCount][RtColAfterQty] 			= EntryAfterQty.get(i01);
+					rt[rtCount][RtColAfterShipPlanQty]	= EntryAfterShipPlanQty.get(i01);
+					rt[rtCount][RtColAfterPossibleQty]	= EntryAfterPossibleQty.get(i01);
 					rtCount = rtCount + 1;
 				}
 			}

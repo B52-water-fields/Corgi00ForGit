@@ -28,10 +28,10 @@ public class M100_PostMstRt{
 												PostPerfectMatch);
 												
 		String GetPOST				= (String)PostRt[i][M100_PostMstRt.ColPOST];				//郵便番号
-		String GetPREFECTURES		= (String)PostRt[i][M100_PostMstRt.ColPREFECTURES];		//県
+		String GetPREFECTURES		= (String)PostRt[i][M100_PostMstRt.ColPREFECTURES];			//県
 		String GetMUNICI01			= (String)PostRt[i][M100_PostMstRt.ColMUNICI01];			//市区町村
 		String GetMUNICI02			= (String)PostRt[i][M100_PostMstRt.ColMUNICI02];			//町丁目
-		String GetMUNICIPALITY_CD 	= (String)PostRt[i][M100_PostMstRt.ColMUNICIPALITY_CD];	//市区町村CD
+		String GetMUNICIPALITY_CD 	= (String)PostRt[i][M100_PostMstRt.ColMUNICIPALITY_CD];		//市区町村CD
 		
 		*/
 		

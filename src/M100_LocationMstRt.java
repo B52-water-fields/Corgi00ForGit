@@ -37,13 +37,13 @@ public class M100_LocationMstRt{
 	*/
 	
 	//戻り値カラム
-	static final int ColClCd			= (int) 0;	//荷主コード
-	static final int ColCLName01		= (int) 1;	//荷主表記名
-	static final int ColWhCd			= (int) 2;	//倉庫コード
-	static final int ColWHName			= (int) 3;	//拠点倉庫名
-	static final int ColLoc			= (int) 4;	//ロケーション
-	static final int ColLocName		= (int) 5;	//ロケーション名
-	static final int ColType			= (int) 6;	//ロケタイプ
+	static final int ColLoc			= (int) 0;	//ロケーション
+	static final int ColLocName		= (int) 1;	//ロケーション名
+	static final int ColType			= (int) 2;	//ロケタイプ
+	static final int ColClCd			= (int) 3;	//荷主コード
+	static final int ColCLName01		= (int) 4;	//荷主表記名
+	static final int ColWhCd			= (int) 5;	//倉庫コード
+	static final int ColWHName			= (int) 6;	//拠点倉庫名
 	static final int ColEntryDate		= (int) 7;	//登録日
 	static final int ColUpdateDate	= (int) 8;	//更新日
 	static final int ColEntryUser		= (int) 9;	//登録者

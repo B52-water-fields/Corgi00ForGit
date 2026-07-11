@@ -44,7 +44,7 @@ public class A100_InsertUpdateSQL{
 		*/
 		int KeyCount = 0;
 		for(int i=0;i<SetString.length;i++) {
-			if("Key".equals((String)SetString[i][3])) {
+			if("Key".toUpperCase().equals(((String)SetString[i][3]).toUpperCase())) {
 				KeyCount	= KeyCount+1;
 			}
 		}
@@ -61,7 +61,7 @@ public class A100_InsertUpdateSQL{
 			
 			entry_data[0][i] = (String)SetString[i][4];
 			
-			if("Key".equals((String)SetString[i][3])) {
+			if("Key".toUpperCase().equals(((String)SetString[i][3]).toUpperCase())) {
 				judg_field[KeyCount] = (String)SetString[i][0];
 				
 				judg_data[0][KeyCount] = (String)SetString[i][4];
@@ -85,7 +85,7 @@ public class A100_InsertUpdateSQL{
 			int EntryCount = ((String[])SetString[0][4]).length;
 			
 			for(int i=0;i<SetString.length;i++) {
-				if("Key".equals((String)SetString[i][3])) {
+				if("Key".toUpperCase().equals(((String)SetString[i][3]).toUpperCase())) {
 					KeyCount	= KeyCount+1;
 				}
 			}
@@ -104,7 +104,7 @@ public class A100_InsertUpdateSQL{
 					entry_data[i01][i] =((String[])SetString[i][4])[i01];
 				}
 				
-				if("Key".equals((String)SetString[i][3])) {
+				if("Key".toUpperCase().equals(((String)SetString[i][3]).toUpperCase())) {
 					judg_field[KeyCount] = (String)SetString[i][0];
 					
 					for(int i01=0;i01<((String[])SetString[i][4]).length;i01++) {
@@ -264,7 +264,7 @@ public class A100_InsertUpdateSQL{
 							int ind_no = 0;
 							for(int i02=0;i02<entry_data[i01].length;i02++){
 								if("1".equals(field_name[i02][1])){
-									if("null".equals(entry_data[i01][i02])||"NULL".equals(entry_data[i01][i02])||"Null".equals(entry_data[i01][i02])) {
+									if("null".toUpperCase().equals(entry_data[i01][i02].toUpperCase())||"NULL".equals(entry_data[i01][i02])||"Null".equals(entry_data[i01][i02])) {
 										stmt02.setString(ind_no+1, null);
 									}else{
 										stmt02.setString(ind_no+1, entry_data[i01][i02]);
@@ -281,7 +281,7 @@ public class A100_InsertUpdateSQL{
 							int ind_no = 0;
 							for(int i02=0;i02<entry_data[i01].length;i02++){
 								if("1".equals(field_name[i02][2])){
-									if("null".equals(entry_data[i01][i02])||"NULL".equals(entry_data[i01][i02])||"Null".equals(entry_data[i01][i02])) {
+									if("null".toUpperCase().equals(entry_data[i01][i02].toUpperCase())||"NULL".equals(entry_data[i01][i02])||"Null".equals(entry_data[i01][i02])) {
 										stmt03.setString(ind_no+1, null);
 									}else{
 										stmt03.setString(ind_no+1, entry_data[i01][i02]);

@@ -275,13 +275,13 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 					int RowCount = MainFmTableModel.getRowCount();
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
-							TB_ItemCd.setText(		""+MainFmTableModel.getValueAt(i, 3));
-							TB_ItemName01.setText(	""+MainFmTableModel.getValueAt(i, 5));
-							TB_ItemName02.setText(	""+MainFmTableModel.getValueAt(i, 6));
-							TB_ItemName03.setText(	""+MainFmTableModel.getValueAt(i, 7));
-							TB_CtQty.setText(		""+MainFmTableModel.getValueAt(i,19));
-							TB_CsQty.setText(		""+MainFmTableModel.getValueAt(i,20));
-							TB_PlQty.setText(		""+MainFmTableModel.getValueAt(i,21));
+							TB_ItemCd.setText(		""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemCd));
+							TB_ItemName01.setText(	""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemName01));
+							TB_ItemName02.setText(	""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemName02));
+							TB_ItemName03.setText(	""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemName03));
+							TB_CtQty.setText(		""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColCtQty));
+							TB_CsQty.setText(		""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColCsQty));
+							TB_PlQty.setText(		""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColPlQty));
 						}
 					}
 					ItemSearch_fm.setVisible(false);

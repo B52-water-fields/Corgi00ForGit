@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Tools100_Adjust{
+public class Tools100_StockAdjust{
 	public static int[] AdjustNoRt(int NeedCount) {
 		ParameterMstWankoCheck();
 		Object[][] ParameterMstRt = ParameterMstRt();
@@ -44,7 +44,7 @@ public class Tools100_Adjust{
 				,{"ParaTxt10"	,"1","0",""		,""}				//パラメータテキスト項目10
 				,{"ParaInt01"	,"1","0",""		,"100000000"}		//パラメータ数値項目01
 				,{"ParaInt02"	,"1","0",""		,"100000000"}		//パラメータ数値項目02
-				,{"ParaInt03"	,"1","0",""		,"499999999"}		//パラメータ数値項目03
+				,{"ParaInt03"	,"1","0",""		,"1999999999"}		//パラメータ数値項目03
 				,{"ParaInt04"	,"1","0",""		,"0"}				//パラメータ数値項目04
 				,{"ParaInt05"	,"1","0",""		,"0"}				//パラメータ数値項目05
 				,{"ParaInt06"	,"1","0",""		,"0"}				//パラメータ数値項目06
@@ -86,7 +86,7 @@ public class Tools100_Adjust{
 				,{"ParaTxt10"	,"0","0",""		,""}				//パラメータテキスト項目10
 				,{"ParaInt01"	,"0","0",""		,"100000000"}		//パラメータ数値項目01
 				,{"ParaInt02"	,"0","1",""		,""+NowNowAdjustNo}	//パラメータ数値項目02
-				,{"ParaInt03"	,"0","0",""		,"499999999"}		//パラメータ数値項目03
+				,{"ParaInt03"	,"0","0",""		,"1999999999"}		//パラメータ数値項目03
 				,{"ParaInt04"	,"0","0",""		,"0"}				//パラメータ数値項目04
 				,{"ParaInt05"	,"0","0",""		,"0"}				//パラメータ数値項目05
 				,{"ParaInt06"	,"0","0",""		,"0"}				//パラメータ数値項目06

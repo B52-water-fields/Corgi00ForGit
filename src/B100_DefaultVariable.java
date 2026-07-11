@@ -1043,390 +1043,161 @@ public class B100_DefaultVariable{
 	//zeusログイン時、基本の取引先荷主グループClGp000を作る
 	public static void DefaultClGp() {
 		//荷主グループ特に設定されていない場合用にClGp000を作る
-		String tgt_table = "KM0031_CLIENT_GROUP";
+		
 		String[][] field_name = new String[19][3];
 		String[][] entry_data = new String[1][19];
 		String[] judg_field = new String[1];
 		String[][] judg_data = new String[1][1];
-		String TgtDB = "NANKO";
-		int non_msg_fg = 1;
+		
+		
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 		
-		judg_field[0] ="ClGpCD";			//荷主グループCD
+		Object[][] SetString = {
+				 {"ClGpCD"			,"1","0","Key"	,"ClGp000"}					//荷主グループCD
+				,{"CLGpName01"		,"1","0",""		,"高天原ホールディングス"}	//荷主表記名
+				,{"CLGpName02"		,"1","0",""		,"高天原ホールディングス株式会社（初期設定荷主グループ）"}	//荷主正式名
+				,{"CLGpName03"		,"1","0",""		,"高天原ホールディングス"}	//荷主略名
+				,{"Post"			,"1","0",""		,"5160023"}					//郵便番号
+				,{"Add01"			,"1","0",""		,"三重県伊勢市"}			//住所1
+				,{"Add02"			,"1","0",""		,"宇治館町１"}				//住所2
+				,{"Add03"			,"1","0",""		,""}						//住所3
+				,{"Tel"				,"1","0",""		,"0596241111"}				//電話番号
+				,{"Fax"				,"1","0",""		,""}						//FAX
+				,{"Mail"			,"1","0",""		,""}						//メールアドレス
+				,{"Com01"			,"1","0",""		,""}						//コメント1
+				,{"Com02"			,"1","0",""		,""}						//コメント2
+				,{"Com03"			,"1","0",""		,""}						//コメント3
+				,{"EntryDate"		,"1","0",""		,now_dtm}					//データ登録日時
+				,{"UpdateDate"		,"1","0",""		,now_dtm}					//データ更新日時
+				,{"EntryUser"		,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//登録者コード
+				,{"UpdateUser"		,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//更新者コード
+				,{"PassWord"		,"1","0",""		,""}						//パスワード
+				};
+		String tgt_table = "KM0031_CLIENT_GROUP";
+		String TgtDB = "NANKO";
+		int non_msg_fg = 1;
 		
-		field_name[0][0] ="ClGpCD";			//荷主グループCD
-		field_name[1][0] ="CLGpName01";		//荷主表記名
-		field_name[2][0] ="CLGpName02";		//荷主正式名
-		field_name[3][0] ="CLGpName03";		//荷主略名
-		field_name[4][0] ="Post";			//郵便番号
-		field_name[5][0] ="Add01";			//住所1
-		field_name[6][0] ="Add02";			//住所2
-		field_name[7][0] ="Add03";			//住所3
-		field_name[8][0] ="Tel";			//電話番号
-		field_name[9][0] ="Fax";			//FAX
-		field_name[10][0] ="Mail";			//メールアドレス
-		field_name[11][0] ="Com01";			//コメント1
-		field_name[12][0] ="Com02";			//コメント2
-		field_name[13][0] ="Com03";			//コメント3
-		field_name[14][0] ="EntryDate";		//データ登録日時
-		field_name[15][0] ="UpdateDate";	//データ更新日時
-		field_name[16][0] ="EntryUser";		//登録者コード
-		field_name[17][0] ="UpdateUser";	//更新者コード
-		field_name[18][0] ="PassWord";		//パスワード
-
-		field_name[0][1] ="1";		//荷主グループCD
-		field_name[1][1] ="1";		//荷主表記名
-		field_name[2][1] ="1";		//荷主正式名
-		field_name[3][1] ="1";		//荷主略名
-		field_name[4][1] ="1";		//郵便番号
-		field_name[5][1] ="1";		//住所1
-		field_name[6][1] ="1";		//住所2
-		field_name[7][1] ="1";		//住所3
-		field_name[8][1] ="1";		//電話番号
-		field_name[9][1] ="1";		//FAX
-		field_name[10][1] ="1";		//メールアドレス
-		field_name[11][1] ="1";		//コメント1
-		field_name[12][1] ="1";		//コメント2
-		field_name[13][1] ="1";		//コメント3
-		field_name[14][1] ="1";		//データ登録日時
-		field_name[15][1] ="1";		//データ更新日時
-		field_name[16][1] ="1";		//登録者コード
-		field_name[17][1] ="1";		//更新者コード
-		field_name[18][1] ="1";		//パスワード
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 		
-		field_name[0][2] ="0";		//荷主グループCD
-		field_name[1][2] ="0";		//荷主表記名
-		field_name[2][2] ="0";		//荷主正式名
-		field_name[3][2] ="0";		//荷主略名
-		field_name[4][2] ="0";		//郵便番号
-		field_name[5][2] ="0";		//住所1
-		field_name[6][2] ="0";		//住所2
-		field_name[7][2] ="0";		//住所3
-		field_name[8][2] ="0";		//電話番号
-		field_name[9][2] ="0";		//FAX
-		field_name[10][2] ="0";		//メールアドレス
-		field_name[11][2] ="0";		//コメント1
-		field_name[12][2] ="0";		//コメント2
-		field_name[13][2] ="0";		//コメント3
-		field_name[14][2] ="0";		//データ登録日時
-		field_name[15][2] ="0";		//データ更新日時
-		field_name[16][2] ="0";		//登録者コード
-		field_name[17][2] ="0";		//更新者コード
-		field_name[18][2] ="0";		//パスワード
-		
-		judg_data[0][0] ="ClGp000";		//荷主グループCD
-		
-		entry_data[0][0] ="ClGp000";							//荷主グループCD
-		entry_data[0][1] ="高天原ホールディングス";				//荷主表記名
-		entry_data[0][2] ="高天原ホールディングス株式会社";		//荷主正式名
-		entry_data[0][3] ="";				//荷主略名
-		entry_data[0][4] ="5160023";		//郵便番号
-		entry_data[0][5] ="三重県伊勢市";	//住所1
-		entry_data[0][6] ="宇治館町１";		//住所2
-		entry_data[0][7] ="";				//住所3
-		entry_data[0][8] ="";				//電話番号
-		entry_data[0][9] ="0596241111";		//FAX
-		entry_data[0][10] ="";				//メールアドレス
-		entry_data[0][11] ="";				//コメント1
-		entry_data[0][12] ="";				//コメント2
-		entry_data[0][13] ="";				//コメント3
-		entry_data[0][14] =now_dtm;			//データ登録日時
-		entry_data[0][15] =now_dtm;			//データ更新日時
-		entry_data[0][16] ="(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;			//登録者コード
-		entry_data[0][17] ="(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;			//更新者コード
-		entry_data[0][18] ="";				//パスワード
-		
-		A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
 		B100_DefaultVariable.ClGpList();
 	}
 	
 	//zeusログイン時、基本の運送会社　自社SC00000を作る
 	public static void DefaultShippingCompany() {
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		
+		Object[][] SetString = {
+				 {"ShippingCompanyCd"		,"1","0","Key"	,"SC00000"}										//運送会社CD
+				,{"ShippingCompanyName01"	,"1","0",""		,"ヘルメス急送"}								//運送会社表記名
+				,{"ShippingCompanyName02"	,"1","0",""		,"有限会社ヘルメス急送（初期設定運送会社）"}	//運送会社正式名
+				,{"ShippingCompanyName03"	,"1","0",""		,"ヘルメス急送"}								//運送会社略名
+				,{"Post"					,"1","0",""		,"0000000"}										//運送会社郵便
+				,{"Add01"					,"1","0",""		,"#1202 WalhallaBLD 7-58"}						//運送会社住所1
+				,{"Add02"					,"1","0",""		,"Glitnir,Yggdrasill"}							//運送会社住所2
+				,{"Add03"					,"1","0",""		,""}											//運送会社住所3
+				,{"Tel"						,"1","0",""		,"99999999999"}									//運送会社電話
+				,{"Fax"						,"1","0",""		,""}											//運送会社FAX
+				,{"Mail"					,"1","0",""		,""}											//運送会社MAIL
+				,{"Com01"					,"1","0",""		,""}											//コメント1
+				,{"Com02"					,"1","0",""		,""}											//コメント2
+				,{"Com03"					,"1","0",""		,""}											//コメント3
+				,{"ShimeDate"				,"1","0",""		,"99"}											//締日
+				,{"ShimeBasis"				,"1","0",""		,"0"}											//請求基準
+				,{"EntryDate"				,"1","0",""		,now_dtm}										//データ登録日時
+				,{"UpdateDate"				,"1","0",""		,now_dtm}										//データ更新日時
+				,{"EntryUser"				,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//登録者コード
+				,{"UpdateUser"				,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//更新者コード
+				,{"PTMSCD"					,"1","0",""		,""}																		//基幹システム連携用傭車コード
+				};
+		
 		String tgt_table = "KM0070_SHIPPINGCOMPANYMST";
-		String[][] field_name = new String[21][3];
-		String[][] entry_data = new String[1][21];
-		String[] judg_field = new String[1];
-		String[][] judg_data = new String[1][1];
 		String TgtDB = "NANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
-
-		judg_field[0] = "ShippingCompanyCd";		//運送会社CD
 		
-		field_name[0][0] = "ShippingCompanyCd";		//運送会社CD
-		field_name[1][0] = "ShippingCompanyName01";	//運送会社表記名
-		field_name[2][0] = "ShippingCompanyName02";	//運送会社正式名
-		field_name[3][0] = "ShippingCompanyName03";	//運送会社略名
-		field_name[4][0] = "Post";					//運送会社郵便
-		field_name[5][0] = "Add01";					//運送会社住所1
-		field_name[6][0] = "Add02";					//運送会社住所2
-		field_name[7][0] = "Add03";					//運送会社住所3
-		field_name[8][0] = "Tel";					//運送会社電話
-		field_name[9][0] = "Fax";					//運送会社FAX
-		field_name[10][0] = "Mail";					//運送会社MAIL
-		field_name[11][0] = "Com01";				//コメント1
-		field_name[12][0] = "Com02";				//コメント2
-		field_name[13][0] = "Com03";				//コメント3
-		field_name[14][0] = "ShimeDate";			//締日
-		field_name[15][0] = "ShimeBasis";			//請求基準
-		field_name[16][0] = "EntryDate";			//データ登録日時
-		field_name[17][0] = "UpdateDate";			//データ更新日時
-		field_name[18][0] = "EntryUser";			//登録者コード
-		field_name[19][0] = "UpdateUser";			//更新者コード
-		field_name[20][0] = "PTMSCD";				//基幹システム連携用傭車コード
-		
-		field_name[0][1] = "1";		//運送会社CD
-		field_name[1][1] = "1";		//運送会社表記名
-		field_name[2][1] = "1";		//運送会社正式名
-		field_name[3][1] = "1";		//運送会社略名
-		field_name[4][1] = "1";		//運送会社郵便
-		field_name[5][1] = "1";		//運送会社住所1
-		field_name[6][1] = "1";		//運送会社住所2
-		field_name[7][1] = "1";		//運送会社住所3
-		field_name[8][1] = "1";		//運送会社電話
-		field_name[9][1] = "1";		//運送会社FAX
-		field_name[10][1] = "1";	//運送会社MAIL
-		field_name[11][1] = "1";	//コメント1
-		field_name[12][1] = "1";	//コメント2
-		field_name[13][1] = "1";	//コメント3
-		field_name[14][1] = "1";	//締日
-		field_name[15][1] = "1";	//請求基準
-		field_name[16][1] = "1";	//データ登録日時
-		field_name[17][1] = "1";	//データ更新日時
-		field_name[18][1] = "1";	//登録者コード
-		field_name[19][1] = "1";	//更新者コード
-		field_name[20][1] = "1";	//基幹システム連携用傭車コード
-
-		field_name[0][2] = "0";		//運送会社CD
-		field_name[1][2] = "0";		//運送会社表記名
-		field_name[2][2] = "0";		//運送会社正式名
-		field_name[3][2] = "0";		//運送会社略名
-		field_name[4][2] = "0";		//運送会社郵便
-		field_name[5][2] = "0";		//運送会社住所1
-		field_name[6][2] = "0";		//運送会社住所2
-		field_name[7][2] = "0";		//運送会社住所3
-		field_name[8][2] = "0";		//運送会社電話
-		field_name[9][2] = "0";		//運送会社FAX
-		field_name[10][2] = "0";	//運送会社MAIL
-		field_name[11][2] = "0";	//コメント1
-		field_name[12][2] = "0";	//コメント2
-		field_name[13][2] = "0";	//コメント3
-		field_name[14][2] = "0";	//締日
-		field_name[15][2] = "0";	//請求基準
-		field_name[16][2] = "0";	//データ登録日時
-		field_name[17][2] = "0";	//データ更新日時
-		field_name[18][2] = "0";	//登録者コード
-		field_name[19][2] = "0";	//更新者コード
-		field_name[20][2] = "0";	//基幹システム連携用傭車コード
-		
-		judg_data[0][0] = "SC00000";		//運送会社CD
-		
-		entry_data[0][0] = "SC00000";					//運送会社CD
-		entry_data[0][1] = "自社設定初期値";		//運送会社表記名
-		entry_data[0][2] = "";						//運送会社正式名
-		entry_data[0][3] = "";						//運送会社略名
-		entry_data[0][4] = "6990701";				//運送会社郵便
-		entry_data[0][5] = "島根県出雲市大社町杵築東１９５";		//運送会社住所1
-		entry_data[0][6] = "";			//運送会社住所2
-		entry_data[0][7] = "";			//運送会社住所3
-		entry_data[0][8] = "";			//運送会社電話
-		entry_data[0][9] = "";			//運送会社FAX
-		entry_data[0][10] = "";			//運送会社MAIL
-		entry_data[0][11] = "";			//コメント1
-		entry_data[0][12] = "";			//コメント2
-		entry_data[0][13] = "";			//コメント3
-		entry_data[0][14] = "99";		//締日
-		entry_data[0][15] = "0";		//請求基準
-		entry_data[0][16] = now_dtm;	//データ登録日時
-		entry_data[0][17] = now_dtm;	//データ更新日時
-		entry_data[0][18] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;		//登録者コード
-		entry_data[0][19] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;		//更新者コード
-		entry_data[0][20] = "";			//基幹システム連携用傭車コード
-
-		A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 		B100_DefaultVariable.ShippingCompanyList();
 	}
 	
 	//zeusログイン時、自分が所属する倉庫マスタ作成
 	public static void DefaultWarehouse(){
+		
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		Object[][] SetString = {
+				 {"WHCD"		,"1","0","Key"	,"0000"}										//倉庫コード
+				,{"WHName"		,"1","0",""		,"オリュンポス倉庫（初期設定）"}				//拠点倉庫名
+				,{"Post"		,"1","0",""		,"0000000"}										//拠点倉庫郵便番号
+				,{"Add01"		,"1","0",""		,"#3202 WalhallaBLD 7-58"}						//拠点倉庫住所1
+				,{"Add02"		,"1","0",""		,"Glitnir,Yggdrasill"}							//拠点倉庫住所2
+				,{"Tel"			,"1","0",""		,"99999999999"}									//拠点倉庫電話
+				,{"Fax"			,"1","0",""		,""}											//拠点倉庫FAX
+				,{"Mail"		,"1","0",""		,""}											//拠点倉庫MAIL
+				,{"Com01"		,"1","0",""		,""}											//コメント１
+				,{"Com02"		,"1","0",""		,""}											//コメント２
+				,{"Com03"		,"1","0",""		,""}											//コメント３
+				,{"PTMSCD"		,"1","0",""		,""}											//基幹システム連携用CD
+				,{"EntryDate"	,"1","0",""		,now_dtm}										//データ登録日時
+				,{"UpdateDate"	,"1","0",""		,now_dtm}										//データ更新日時
+				,{"EntryUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//登録者コード
+				,{"UpdateUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//更新者コード
+				};
 		String tgt_table = "KM0010_WHMST";
-		String[][] field_name = new String[16][3];
-		String[][] entry_data = new String[1][16];
-		String[] judg_field = new String[1];
-		String[][] judg_data = new String[1][1];
 		String TgtDB = "NANKO";
 		int non_msg_fg = 1;
-		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
-
-		judg_field[0] = "WHCD";			//倉庫コード
 		
-		field_name[0][0] = "WHCD";			//倉庫コード
-		field_name[1][0] = "WHName";		//拠点倉庫名
-		field_name[2][0] = "Post";			//拠点倉庫郵便番号
-		field_name[3][0] = "Add01";			//拠点倉庫住所1
-		field_name[4][0] = "Add02";			//拠点倉庫住所2
-		field_name[5][0] = "Tel";			//拠点倉庫電話
-		field_name[6][0] = "Fax";			//拠点倉庫FAX
-		field_name[7][0] = "Mail";			//拠点倉庫MAIL
-		field_name[8][0] = "Com01";			//コメント１
-		field_name[9][0] = "Com02";			//コメント２
-		field_name[10][0] = "Com03";		//コメント３
-		field_name[11][0] = "PTMSCD";		//基幹システム連携用ユーザーCD
-		field_name[12][0] = "EntryDate";	//データ登録日時
-		field_name[13][0] = "UpdateDate";	//データ更新日時
-		field_name[14][0] = "EntryUser";	//登録者コード
-		field_name[15][0] = "UpdateUser";	//更新者コード
-
-		field_name[0][1] = "1";		//倉庫コード
-		field_name[1][1] = "1";		//拠点倉庫名
-		field_name[2][1] = "1";		//拠点倉庫郵便番号
-		field_name[3][1] = "1";		//拠点倉庫住所1
-		field_name[4][1] = "1";		//拠点倉庫住所2
-		field_name[5][1] = "1";		//拠点倉庫電話
-		field_name[6][1] = "1";		//拠点倉庫FAX
-		field_name[7][1] = "1";		//拠点倉庫MAIL
-		field_name[8][1] = "1";		//コメント１
-		field_name[9][1] = "1";		//コメント２
-		field_name[10][1] = "1";	//コメント３
-		field_name[11][1] = "1";	//基幹システム連携用ユーザーCD
-		field_name[12][1] = "1";	//データ登録日時
-		field_name[13][1] = "1";	//データ更新日時
-		field_name[14][1] = "1";	//登録者コード
-		field_name[15][1] = "1";	//更新者コード
-		
-		field_name[0][2] = "0";		//倉庫コード
-		field_name[1][2] = "0";		//拠点倉庫名
-		field_name[2][2] = "0";		//拠点倉庫郵便番号
-		field_name[3][2] = "0";		//拠点倉庫住所1
-		field_name[4][2] = "0";		//拠点倉庫住所2
-		field_name[5][2] = "0";		//拠点倉庫電話
-		field_name[6][2] = "0";		//拠点倉庫FAX
-		field_name[7][2] = "0";		//拠点倉庫MAIL
-		field_name[8][2] = "0";		//コメント１
-		field_name[9][2] = "0";		//コメント２
-		field_name[10][2] = "0";	//コメント３
-		field_name[11][2] = "0";	//基幹システム連携用ユーザーCD
-		field_name[12][2] = "0";	//データ登録日時
-		field_name[13][2] = "0";	//データ更新日時
-		field_name[14][2] = "0";	//登録者コード
-		field_name[15][2] = "0";	//更新者コード
-		
-		judg_data[0][0] = "0000";			//倉庫コード
-		
-		entry_data[0][0] = "0000";			//倉庫コード
-		entry_data[0][1] = "初期設定倉庫";		//拠点倉庫名
-		entry_data[0][2] = "4568585";			//拠点倉庫郵便番号
-		entry_data[0][3] = "愛知県名古屋市熱田区神宮１丁目１−１";		//拠点倉庫住所1
-		entry_data[0][4] = "";		//拠点倉庫住所2
-		entry_data[0][5] = "0526714151";		//拠点倉庫電話
-		entry_data[0][6] = "";			//拠点倉庫FAX
-		entry_data[0][7] = "";			//拠点倉庫MAIL
-		entry_data[0][8] = "";			//コメント１
-		entry_data[0][9] = "";			//コメント２
-		entry_data[0][10] = "";			//コメント３
-		entry_data[0][11] = "";			//基幹システム連携用ユーザーCD
-		entry_data[0][12] = now_dtm;	//データ登録日時
-		entry_data[0][13] = now_dtm;	//データ更新日時
-		entry_data[0][14] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;		//登録者コード
-		entry_data[0][15] = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;		//更新者コード
-
-		A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 		B100_DefaultVariable.WhList();
 		B100_DefaultVariableWarehouse.DefaultVariableWarehouse("0000");
 	}
 	
 	//zeusログイン時、郵便番号0000000作る
 	public static void Post0000000(){
+		Object[][] SetString = {
+				 {"POST"			,"1","0","Key"	,"0000000"}		//倉庫コード
+				,{"PREFECTURES"		,"1","0",""		,"Glitnir "}	//拠点倉庫名
+				,{"MUNICI01"		,"1","0",""		,"0000000"}		//拠点倉庫郵便番号
+				,{"MUNICI02"		,"1","0",""		,"Yggdrasill"}	//拠点倉庫住所1
+				,{"MUNICIPALITY_CD"	,"1","0",""		,"00000"}		//拠点倉庫住所2
+				};
 		String tgt_table = "M0010_PostMst";
-		String[][] field_name = new String[5][3];
-		String[][] entry_data = new String[1][5];
-		String[] judg_field = new String[1];
-		String[][] judg_data = new String[1][1];
 		String TgtDB = "POST";
 		int non_msg_fg = 1;
 		
-		judg_field[0] = "POST";					//郵便番号
-		
-		field_name[0][0] = "POST";				//郵便番号
-		field_name[1][0] = "PREFECTURES";		//県
-		field_name[2][0] = "MUNICI01";			//市区町村
-		field_name[3][0] = "MUNICI02";			//町丁目
-		field_name[4][0] = "MUNICIPALITY_CD";	//市区町村CD
-
-		field_name[0][1] = "1";	//郵便番号
-		field_name[1][1] = "1";	//県
-		field_name[2][1] = "1";	//市区町村
-		field_name[3][1] = "1";	//町丁目
-		field_name[4][1] = "1";	//市区町村CD
-
-		field_name[0][2] = "0";	//郵便番号
-		field_name[1][2] = "0";	//県
-		field_name[2][2] = "0";	//市区町村
-		field_name[3][2] = "0";	//町丁目
-		field_name[4][2] = "0";	//市区町村CD
-		
-		judg_data[0][0] = "0000000";	//郵便番号
-		
-		entry_data[0][0] = "0000000";	//郵便番号
-		entry_data[0][1] = "Yggdrasill";//県
-		entry_data[0][2] = "Glitnir";	//市区町村
-		entry_data[0][3] = "Walhalla";	//町丁目
-		entry_data[0][4] = "00000";	//市区町村CD
-		
-		A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 	//zeusログイン時、強制出荷用届け先0000000作る
 	public static void ForcedShipmentCD(){
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 		String[][] SetString = {
-				 {"DECD"			,"1","0","ForcedShip"}	//納品先コード
-				,{"DepartmentCd"	,"1","0","0000"}		//部署CD
-				,{"DEName01"		,"1","0","強制出荷"}	//納品先名1
-				,{"DEName02"		,"1","0",""}			//納品先名2
-				,{"DEName03"		,"1","0",""}			//納品先名3
-				,{"Post"			,"1","0","0000000"}		//納品先郵便
-				,{"Add01"			,"1","0","Walhalla　Glitnir　Yggdrasill"}	//納品先住所1
-				,{"Add02"			,"1","0",""}		//納品先住所2
-				,{"Add03"			,"1","0",""}		//納品先住所3
-				,{"Tel"				,"1","0",""}		//納品先電話
-				,{"Fax"				,"1","0",""}		//納品先FAX
-				,{"Mail"			,"1","0",""}		//納品先MAIL
-				,{"Com01"			,"1","0",""}		//コメント1
-				,{"Com02"			,"1","0",""}		//コメント2
-				,{"Com03"			,"1","0",""}		//コメント3
-				,{"PrefecturesCd"	,"1","0","00"}		//JIS県CD2桁
-				,{"MunicipalityCd"	,"1","0","00000"}	//JIS市区町村CD5桁
-				,{"PTMSCD"			,"1","0",""}		//基幹システム発着地コード
-				,{"EntryDate"		,"1","0",now_dtm}	//データ登録日時
-				,{"UpdateDate"		,"1","0",now_dtm}	//データ更新日時
-				,{"EntryUser"		,"1","0","(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//登録者コード
-				,{"UpdateUser"		,"1","0","(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//更新者コード
-				,{"FirstClient"		,"1","0",A00000_Main.ClCd}	//登録した荷主CD
-				,{"LastClient"		,"1","0",A00000_Main.ClCd}	//更新した荷主CD
-				,{"DelFg"			,"1","0","0"}	//削除区分
+				 {"DECD"			,"1","0","Key"	,"0000000"}		//納品先コード
+				,{"DepartmentCd"	,"1","0","Key"	,"0000"}		//部署CD
+				,{"DEName01"		,"1","0",""		,"強制出荷"}	//納品先名1
+				,{"DEName02"		,"1","0",""		,"強制出荷"}	//納品先名2
+				,{"DEName03"		,"1","0",""		,"強制出荷"}	//納品先名3
+				,{"Post"			,"1","0",""		,"0000000"}		//納品先郵便
+				,{"Add01"			,"1","0",""		,"Walhalla　Glitnir　Yggdrasill"}	//納品先住所1
+				,{"Add02"			,"1","0",""		,"",""}		//納品先住所2
+				,{"Add03"			,"1","0",""		,""}		//納品先住所3
+				,{"Tel"				,"1","0",""		,""}		//納品先電話
+				,{"Fax"				,"1","0",""		,""}		//納品先FAX
+				,{"Mail"			,"1","0",""		,""}		//納品先MAIL
+				,{"Com01"			,"1","0",""		,""}		//コメント1
+				,{"Com02"			,"1","0",""		,""}		//コメント2
+				,{"Com03"			,"1","0",""		,""}		//コメント3
+				,{"PrefecturesCd"	,"1","0",""		,"00"}		//JIS県CD2桁
+				,{"MunicipalityCd"	,"1","0",""		,"00000"}	//JIS市区町村CD5桁
+				,{"PTMSCD"			,"1","0",""		,""}		//基幹システム発着地コード
+				,{"EntryDate"		,"1","0",""		,now_dtm}	//データ登録日時
+				,{"UpdateDate"		,"1","0",""		,now_dtm}	//データ更新日時
+				,{"EntryUser"		,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//登録者コード
+				,{"UpdateUser"		,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//更新者コード
+				,{"FirstClient"		,"1","0",""		,A00000_Main.ClCd}	//登録した荷主CD
+				,{"LastClient"		,"1","0",""		,A00000_Main.ClCd}	//更新した荷主CD
+				,{"DelFg"			,"1","0",""		,"0"}	//削除区分
 		};
 		
 		String tgt_table = "KM0040_DELIVERYMST";
-		String[][] field_name = new String[SetString.length][3];
-		String[][] entry_data = new String[1][SetString.length];
-		String[] judg_field = new String[2];
-		String[][] judg_data = new String[1][2];
 		String TgtDB = "NYANKO";
 		int non_msg_fg = 1;
-		
-		judg_field[0] = "DECD";	//納品先コード
-		judg_field[1] = "DepartmentCd";	//部署CD
-		
-		judg_data[0][0] = "ForcedShip";	//納品先コード
-		judg_data[0][1] = "0000";		//部署CD
-
-		for(int i=0;i<SetString.length;i++) {
-			field_name[i][0] = SetString[i][0];
-			field_name[i][1] = SetString[i][1];
-			field_name[i][2] = SetString[i][2];
-			entry_data[0][i] = SetString[i][3];
-		}
-		
-		A100_InsertUpdateSQL.RUN_SQLS_EU(tgt_table, field_name, entry_data, judg_field, judg_data, non_msg_fg,TgtDB);
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 }

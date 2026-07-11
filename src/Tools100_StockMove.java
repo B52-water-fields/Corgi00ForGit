@@ -1,38 +1,37 @@
 import java.util.ArrayList;
 
-public class Tools100_ArrivalPlanNoGet{
-	public static int[] ArrivalPlanNoRt(int NeedCount) {
+public class Tools100_StockMove{
+	public static int[] MoveNoRt(int NeedCount) {
 		ParameterMstWankoCheck();
 		Object[][] ParameterMstRt = ParameterMstRt();
 		int[] rt = new int[NeedCount];
 		
-		int MinArrNo		=(int)ParameterMstRt[0][M100_ParameterMstWankoRt.ColParaInt01];		//パラメータ数値項目01
-		int NowArrNo		=(int)ParameterMstRt[0][M100_ParameterMstWankoRt.ColParaInt02];		//パラメータ数値項目02
-		int MaxArrNo		=(int)ParameterMstRt[0][M100_ParameterMstWankoRt.ColParaInt03];		//パラメータ数値項目03
+		int MinAdjustNo		=(int)ParameterMstRt[0][M100_ParameterMstWankoRt.ColParaInt01];		//パラメータ数値項目01
+		int NowAdjustNo		=(int)ParameterMstRt[0][M100_ParameterMstWankoRt.ColParaInt02];		//パラメータ数値項目02
+		int MaxAdjustNo		=(int)ParameterMstRt[0][M100_ParameterMstWankoRt.ColParaInt03];		//パラメータ数値項目03
 		
 		for(int i=0;i<NeedCount;i++) {
-			NowArrNo=NowArrNo+1;
-			if(NowArrNo>MaxArrNo) {
-				NowArrNo = MinArrNo;
+			NowAdjustNo=NowAdjustNo+1;
+			if(NowAdjustNo>MaxAdjustNo) {
+				NowAdjustNo = MinAdjustNo;
 			}
-			rt[i] = NowArrNo;
+			rt[i] = NowAdjustNo;
 		}
-		ParameterMstWankoSet(NowArrNo);
+		ParameterMstWankoSet(NowAdjustNo);
 		
 		return rt;
 	}
-	
 	public static void ParameterMstWankoCheck() {
-		//パラメータマスタに入荷予定番号採番情報がなければ作る
+		//パラメータマスタに在庫調整番号採番情報がなければ作る
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 		
 		Object[][] SetString = {
 				 {"ClWh"		,"1","0","Key"	,A00000_Main.ClWh}				//担当倉庫コード
 				,{"ClCd"		,"1","0","Key"	,A00000_Main.ClCd}				//荷主コード
-				,{"ParaCd"		,"1","0","Key"	,"NowArrivalNo"}				//パラメータコード
+				,{"ParaCd"		,"1","0","Key"	,"NowMoveNo"}					//パラメータコード
 				,{"ParaCdSeq"	,"1","0","Key"	,"0"}							//ナンバリング
-				,{"ParaName"	,"1","0",""		,"入荷予定番号"}				//パラメータ名
-				,{"ParaTxt01"	,"1","0",""		,"入荷予定番号採番状況"}								//パラメータテキスト項目01
+				,{"ParaName"	,"1","0",""		,"在庫移動番号"}				//パラメータ名
+				,{"ParaTxt01"	,"1","0",""		,"在庫移動番号採番状況"}								//パラメータテキスト項目01
 				,{"ParaTxt02"	,"1","0",""		,"ParaInt01:最小 ParaInt02:現在値 ParaInt03:最大"}		//パラメータテキスト項目02
 				,{"ParaTxt03"	,"1","0",""		,""}				//パラメータテキスト項目03
 				,{"ParaTxt04"	,"1","0",""		,""}				//パラメータテキスト項目04
@@ -65,16 +64,16 @@ public class Tools100_ArrivalPlanNoGet{
 		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
 	}
 	
-	private static void ParameterMstWankoSet(int NowArrNo) {
+	private static void ParameterMstWankoSet(int NowNowAdjustNo) {
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 		
 		Object[][] SetString = {
 				 {"ClWh"		,"0","1","Key"	,A00000_Main.ClWh}				//担当倉庫コード
 				,{"ClCd"		,"0","1","Key"	,A00000_Main.ClCd}				//荷主コード
-				,{"ParaCd"		,"0","1","Key"	,"NowArrivalNo"}				//パラメータコード
+				,{"ParaCd"		,"0","1","Key"	,"NowMoveNo"}					//パラメータコード
 				,{"ParaCdSeq"	,"0","1","Key"	,"0"}							//ナンバリング
-				,{"ParaName"	,"0","0",""		,"入荷予定番号"}				//パラメータ名
-				,{"ParaTxt01"	,"0","0",""		,"入荷予定番号採番状況"}								//パラメータテキスト項目01
+				,{"ParaName"	,"0","0",""		,"在庫移動番号"}				//パラメータ名
+				,{"ParaTxt01"	,"0","0",""		,"在庫移動採番状況"}									//パラメータテキスト項目01
 				,{"ParaTxt02"	,"0","0",""		,"ParaInt01:最小 ParaInt02:現在値 ParaInt03:最大"}		//パラメータテキスト項目02
 				,{"ParaTxt03"	,"0","0",""		,""}				//パラメータテキスト項目03
 				,{"ParaTxt04"	,"0","0",""		,""}				//パラメータテキスト項目04
@@ -85,7 +84,7 @@ public class Tools100_ArrivalPlanNoGet{
 				,{"ParaTxt09"	,"0","0",""		,""}				//パラメータテキスト項目09
 				,{"ParaTxt10"	,"0","0",""		,""}				//パラメータテキスト項目10
 				,{"ParaInt01"	,"0","0",""		,"100000000"}		//パラメータ数値項目01
-				,{"ParaInt02"	,"0","1",""		,""+NowArrNo}			//パラメータ数値項目02
+				,{"ParaInt02"	,"0","1",""		,""+NowNowAdjustNo}	//パラメータ数値項目02
 				,{"ParaInt03"	,"0","0",""		,"1999999999"}		//パラメータ数値項目03
 				,{"ParaInt04"	,"0","0",""		,"0"}				//パラメータ数値項目04
 				,{"ParaInt05"	,"0","0",""		,"0"}				//パラメータ数値項目05
@@ -148,7 +147,7 @@ public class Tools100_ArrivalPlanNoGet{
 		Boolean AllSearch = false;
 		SearchClWh.add(A00000_Main.ClWh);
 		SearchClCd.add(A00000_Main.ClCd);
-		SearchParaCd.add("NowArrivalNo");
+		SearchParaCd.add("NowMoveNo");
 		SearchParaCdSeqStr.add(0);
 		SearchParaCdSeqEnd.add(0);
 		
@@ -166,5 +165,4 @@ public class Tools100_ArrivalPlanNoGet{
 		
 		return ParameterMstWankoRt;
 	}
-	
 }

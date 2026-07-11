@@ -60,12 +60,12 @@ public class T100_StockRt{
 							SortItemcdMode);
 							
 							
-	String GetClCd			= (String)StockRt[i][T100_StockRt.ColClCd];			//荷主コード
+	String GetClCd			= (String)StockRt[i][T100_StockRt.ColClCd];				//荷主コード
 	String GetCLName		= (String)StockRt[i][T100_StockRt.ColCLName];			//荷主表記名
-	String GetWhCd			= (String)StockRt[i][T100_StockRt.ColWhCd];			//倉庫コード
-	String GetClWHName		= (String)StockRt[i][T100_StockRt.ColClWHName];		//担当倉庫名
+	String GetWhCd			= (String)StockRt[i][T100_StockRt.ColWhCd];				//倉庫コード
+	String GetClWHName		= (String)StockRt[i][T100_StockRt.ColClWHName];			//担当倉庫名
 	String GetClGpCD		= (String)StockRt[i][T100_StockRt.ColClGpCD];			//荷主グループCD
-	String GetClGpName		= (String)StockRt[i][T100_StockRt.ColClGpName];		//グループ名1
+	String GetClGpName		= (String)StockRt[i][T100_StockRt.ColClGpName];			//グループ名1
 	String GetLoc			= (String)StockRt[i][T100_StockRt.ColLoc];				//ロケーション
 	String GetLocName		= (String)StockRt[i][T100_StockRt.ColLocName];			//ロケーション名
 	int GetType				= (int)StockRt[i][T100_StockRt.ColType];				//ロケタイプ
@@ -73,20 +73,20 @@ public class T100_StockRt{
 	String GetLot			= (String)StockRt[i][T100_StockRt.ColLot];				//ロット
 	String GetExpdate		= (String)StockRt[i][T100_StockRt.ColExpdate];			//消費期限
 	String GetActualDate	= (String)StockRt[i][T100_StockRt.ColActualDate];		//入荷実績日
-	int GetQty				= (int)StockRt[i][T100_StockRt.ColQty];				//総数量
-	int GetShipPlanQty		= (int)StockRt[i][T100_StockRt.ColShipPlanQty];		//引当済総数
-	int GetPossibleQty		= (int)StockRt[i][T100_StockRt.ColPossibleQty];		//出荷可能総数
-	String GetItemName		= (String)StockRt[i][T100_StockRt.ColItemName];		//商品名
+	int GetQty				= (int)StockRt[i][T100_StockRt.ColQty];					//総数量
+	int GetShipPlanQty		= (int)StockRt[i][T100_StockRt.ColShipPlanQty];			//引当済総数
+	int GetPossibleQty		= (int)StockRt[i][T100_StockRt.ColPossibleQty];			//出荷可能総数
+	String GetItemName		= (String)StockRt[i][T100_StockRt.ColItemName];			//商品名
 	String GetItemName01	= (String)StockRt[i][T100_StockRt.ColItemName01];		//商品表記名
 	String GetItemName02	= (String)StockRt[i][T100_StockRt.ColItemName02];		//商品正式名
 	String GetItemName03	= (String)StockRt[i][T100_StockRt.ColItemName03];		//商品略名
-	String GetClItemCd		= (String)StockRt[i][T100_StockRt.ColClItemCd];		//荷主商品コード
+	String GetClItemCd		= (String)StockRt[i][T100_StockRt.ColClItemCd];			//荷主商品コード
 	String GetJanCd			= (String)StockRt[i][T100_StockRt.ColJanCd];			//ソースマーク_BCD（バラ）
-	String GetItemMdNo		= (String)StockRt[i][T100_StockRt.ColItemMdNo];		//商品型番
+	String GetItemMdNo		= (String)StockRt[i][T100_StockRt.ColItemMdNo];			//商品型番
 	int GetCtUnitQty		= (int)StockRt[i][T100_StockRt.ColCtUnitQty];			//カートン入数
 	int GetCsUnitQty		= (int)StockRt[i][T100_StockRt.ColCsUnitQty];			//ケース入数
 	int GetPlUnitQty		= (int)StockRt[i][T100_StockRt.ColPlUnitQty];			//パレット入数
-	String GetUnitName		= (String)StockRt[i][T100_StockRt.ColUnitName];		//商品単位
+	String GetUnitName		= (String)StockRt[i][T100_StockRt.ColUnitName];			//商品単位
 	String GetCtUnitName	= (String)StockRt[i][T100_StockRt.ColCtUnitName];		//カートン商品単位
 	String GetCsUnitName	= (String)StockRt[i][T100_StockRt.ColCsUnitName];		//ケース商品単位
 	String GetPlUnitName	= (String)StockRt[i][T100_StockRt.ColPlUnitName];		//パレット商品単位
