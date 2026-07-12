@@ -81,13 +81,13 @@ public class M100_UserMstRt{
 	static final  int ColUserCd					= (int) 3;	//ユーザーCD
 	static final  int ColPassWord					= (int) 4;	//パスワード
 	static final  int ColAuthorityFG				= (int) 5;	//権限区分
-	static final  int ColCarCd						= (int) 6;	//標準車輛CD
-	static final  int ColCarName01				= (int) 7;	//車両名称01
-	static final  int ColCarName02				= (int) 8;	//車両名称02
-	static final  int ColCarName03				= (int) 9;	//車両名称03
-	static final  int ColUserName01				= (int)10;	//ユーザー名1
-	static final  int ColUserName02				= (int)11;	//ユーザー名2
-	static final  int ColUserName03				= (int)12;	//ユーザー名3
+	static final  int ColUserName01				= (int) 6;	//ユーザー名1
+	static final  int ColUserName02				= (int) 7;	//ユーザー名2
+	static final  int ColUserName03				= (int) 8;	//ユーザー名3
+	static final  int ColCarCd						= (int) 9;	//標準車輛CD
+	static final  int ColCarName01				= (int)10;	//車両名称01
+	static final  int ColCarName02				= (int)11;	//車両名称02
+	static final  int ColCarName03				= (int)12;	//車両名称03
 	static final  int ColPost						= (int)13;	//郵便番号
 	static final  int ColAdd01						= (int)14;	//住所1
 	static final  int ColAdd02						= (int)15;	//住所2
@@ -480,50 +480,8 @@ public class M100_UserMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-				rt = new Object[counter][RtSettingUserMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("WHCD")){					rt[counter][ColWHCD]						="";}else{rt[counter][ColWHCD]						=rset01.getString("WHCD");}										//倉庫コード
-					if(null==rset01.getString("ShippingCompanyCd")){	rt[counter][ColShippingCompanyCd]		="";}else{rt[counter][ColShippingCompanyCd]		=rset01.getString("ShippingCompanyCd");}						//運送会社CD
-					if(null==rset01.getString("ShippingCompanyName01")){rt[counter][ColShippingCompanyName01]	="";}else{rt[counter][ColShippingCompanyName01]	=rset01.getString("ShippingCompanyName01");}					//運送会社名
-					if(null==rset01.getString("UserCd")){				rt[counter][ColUserCd]						="";}else{rt[counter][ColUserCd]					=rset01.getString("UserCd");}									//ユーザーCD
-					if(null==rset01.getString("PassWord")){				rt[counter][ColPassWord]					="";}else{rt[counter][ColPassWord]					=rset01.getString("PassWord");}									//パスワード
-					rt[counter][ColAuthorityFG]=rset01.getInt("AuthorityFG");	//権限区分
-					if(null==rset01.getString("CarCd")){				rt[counter][ColCarCd]						="";}else{rt[counter][ColCarCd]					=rset01.getString("CarCd");}									//標準車輛CD
-					if(null==rset01.getString("CarName01")){			rt[counter][ColCarName01]					="";}else{rt[counter][ColCarName01]				=rset01.getString("CarName01");}								//車両名称01
-					if(null==rset01.getString("CarName02")){			rt[counter][ColCarName02]					="";}else{rt[counter][ColCarName02]				=rset01.getString("CarName02");}								//車両名称02
-					if(null==rset01.getString("CarName03")){			rt[counter][ColCarName03]					="";}else{rt[counter][ColCarName03]				=rset01.getString("CarName03");}								//車両名称03
-					if(null==rset01.getString("UserName01")){			rt[counter][ColUserName01]				="";}else{rt[counter][ColUserName01]				=rset01.getString("UserName01");}								//ユーザー名1
-					if(null==rset01.getString("UserName02")){			rt[counter][ColUserName02]				="";}else{rt[counter][ColUserName02]				=rset01.getString("UserName02");}								//ユーザー名2
-					if(null==rset01.getString("UserName03")){			rt[counter][ColUserName03]				="";}else{rt[counter][ColUserName03]				=rset01.getString("UserName03");}								//ユーザー名3
-					if(null==rset01.getString("Post")){					rt[counter][ColPost]						="";}else{rt[counter][ColPost]						=rset01.getString("Post");}										//郵便番号
-					if(null==rset01.getString("Add01")){				rt[counter][ColAdd01]						="";}else{rt[counter][ColAdd01]					=rset01.getString("Add01");}									//住所1
-					if(null==rset01.getString("Add02")){				rt[counter][ColAdd02]						="";}else{rt[counter][ColAdd02]					=rset01.getString("Add02");}									//住所2
-					if(null==rset01.getString("Add03")){				rt[counter][ColAdd03]						="";}else{rt[counter][ColAdd03]					=rset01.getString("Add03");}									//住所3
-					if(null==rset01.getString("Tel")){					rt[counter][ColTel]						="";}else{rt[counter][ColTel]						=rset01.getString("Tel");}										//電話番号
-					if(null==rset01.getString("Fax")){					rt[counter][ColFax]						="";}else{rt[counter][ColFax]						=rset01.getString("Fax");}										//FAX
-					if(null==rset01.getString("Mail")){					rt[counter][ColMail]						="";}else{rt[counter][ColMail]						=rset01.getString("Mail");}										//メールアドレス
-					if(null==rset01.getString("Com01")){				rt[counter][ColCom01]						="";}else{rt[counter][ColCom01]					=rset01.getString("Com01");}									//コメント1
-					if(null==rset01.getString("Com02")){				rt[counter][ColCom02]						="";}else{rt[counter][ColCom02]					=rset01.getString("Com02");}									//コメント2
-					if(null==rset01.getString("Com03")){				rt[counter][ColCom03]						="";}else{rt[counter][ColCom03]					=rset01.getString("Com03");}									//コメント3
-					if(null==rset01.getTimestamp("EntryDate")){			rt[counter][ColEntryDate]					="";}else{rt[counter][ColEntryDate]				=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){		rt[counter][ColUpdateDate]				="";}else{rt[counter][ColUpdateDate]				=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
-					if(null==rset01.getString("EntryUser")){			rt[counter][ColEntryUser]					="";}else{rt[counter][ColEntryUser]				=rset01.getString("EntryUser");}								//登録者コード
-					if(null==rset01.getString("UpdateUser")){			rt[counter][ColUpdateUser]				="";}else{rt[counter][ColUpdateUser]				=rset01.getString("UpdateUser");}								//更新者コード
-					if(null==rset01.getString("PTMSCD")){				rt[counter][ColPTMSCD]						="";}else{rt[counter][ColPTMSCD]					=rset01.getString("PTMSCD");}									//基幹システムユーザーコード
-					rt[counter][ColDelFg] = rset01.getInt("DelFg");	//削除区分
-					if(null==rset01.getString("WHName")){				rt[counter][ColWHName]						="";}else{rt[counter][ColWHName]					=rset01.getString("WHName");}									//倉庫名
-					if(null==rset01.getString("MainClient")){			rt[counter][ColMainClient]				="";}else{rt[counter][ColMainClient]				=rset01.getString("MainClient");}								//主要担当荷主CD
-					if(null==rset01.getString("CLName01")){				rt[counter][ColCLName01]					="";}else{rt[counter][ColCLName01]					=rset01.getString("CLName01");}									//主要担当荷主名
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingUserMstRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

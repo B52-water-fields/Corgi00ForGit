@@ -80,8 +80,8 @@ public class M100_WhMstRt{
 				,{"Com02"		,ColNoCom02		,"String"	,"コメント２"					,""}
 				,{"Com03"		,ColNoCom03		,"String"	,"コメント３"					,""}
 				,{"PTMSCD"		,ColNoPTMSCD		,"String"	,"基幹システム連携用事業所CD"	,""}
-				,{"EntryDate"	,ColNoEntryDate	,"String"	,"データ登録日時"				,""}
-				,{"UpdateDate"	,ColNoUpdateDate	,"String"	,"データ更新日時"				,""}
+				,{"EntryDate"	,ColNoEntryDate	,"DateTime"	,"データ登録日時"				,""}
+				,{"UpdateDate"	,ColNoUpdateDate	,"DateTime"	,"データ更新日時"				,""}
 				,{"EntryUser"	,ColNoEntryUser	,"String"	,"登録者"						,""}
 				,{"UpdateUser"	,ColNoUpdateUser	,"String"	,"更新者"						,""}
 				};
@@ -290,6 +290,9 @@ public class M100_WhMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingWhMstRt());
+				
+				/*
 				int counter = 0;
 				rset01.beforeFirst();
 				while (rset01.next()) {
@@ -317,6 +320,7 @@ public class M100_WhMstRt{
 					if(null==rset01.getString("UpdateUser")){	rt[counter][ColNoUpdateUser]	="";}else{rt[counter][ColNoUpdateUser]	=rset01.getString("UpdateUser");}		//更新者
 					counter=counter+1;
 				}
+				*/
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

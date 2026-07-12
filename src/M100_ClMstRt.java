@@ -88,31 +88,31 @@ public class M100_ClMstRt{
 	
 	public static Object[][] RtSettingClMstRt(){
 		Object[][] RtSettingClMstRt = {
-				 {"cl_cd"		,Colcl_cd			,"String"	,"荷主CD"}
-				,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"}
-				,{"ClGpName"	,ColClGpName		,"String"	,"グループ表記名"}
-				,{"WHCD"		,ColWHCD			,"String"	,"担当倉庫"}
-				,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"}
-				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"}
-				,{"CLName02"	,ColCLName02		,"String"	,"荷主正式名"}
-				,{"CLName03"	,ColCLName03		,"String"	,"荷主略名"}
-				,{"Post"		,ColPost			,"String"	,"郵便番号"}
-				,{"Add01"		,ColAdd01			,"String"	,"住所1"}
-				,{"Add02"		,ColAdd02			,"String"	,"住所2"}
-				,{"Add03"		,ColAdd03			,"String"	,"住所3"}
-				,{"Tel"			,ColTel			,"String"	,"電話番号"}
-				,{"Fax"			,ColFax			,"String"	,"FAX"}
-				,{"Mail"		,ColMail			,"String"	,"メールアドレス"}
-				,{"Com01"		,ColCom01			,"String"	,"コメント1"}
-				,{"Com02"		,ColCom02			,"String"	,"コメント2"}
-				,{"Com03"		,ColCom03			,"String"	,"コメント3"}
-				,{"ShimeDate"	,ColShimeDate		,"int"		,"締日"}
-				,{"ShimeBasis"	,ColShimeBasis	,"int"		,"請求基準"}
-				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"データ登録日時"}
-				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"データ更新日時"}
-				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"}
-				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"}
-				,{"PTMSCD"		,ColPTMSCD			,"String"	,"基幹システム荷主コード"}
+				 {"cl_cd"		,Colcl_cd			,"String"	,"荷主CD"			,"Key"}
+				,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"	,""}
+				,{"ClGpName"	,ColClGpName		,"String"	,"グループ表記名"	,""}
+				,{"WHCD"		,ColWHCD			,"String"	,"担当倉庫"			,""}
+				,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"		,""}
+				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"		,""}
+				,{"CLName02"	,ColCLName02		,"String"	,"荷主正式名"		,""}
+				,{"CLName03"	,ColCLName03		,"String"	,"荷主略名"			,""}
+				,{"Post"		,ColPost			,"String"	,"郵便番号"			,""}
+				,{"Add01"		,ColAdd01			,"String"	,"住所1"			,""}
+				,{"Add02"		,ColAdd02			,"String"	,"住所2"			,""}
+				,{"Add03"		,ColAdd03			,"String"	,"住所3"			,""}
+				,{"Tel"			,ColTel			,"String"	,"電話番号"			,""}
+				,{"Fax"			,ColFax			,"String"	,"FAX"				,""}
+				,{"Mail"		,ColMail			,"String"	,"メールアドレス"	,""}
+				,{"Com01"		,ColCom01			,"String"	,"コメント1"		,""}
+				,{"Com02"		,ColCom02			,"String"	,"コメント2"		,""}
+				,{"Com03"		,ColCom03			,"String"	,"コメント3"		,""}
+				,{"ShimeDate"	,ColShimeDate		,"int"		,"締日"				,""}
+				,{"ShimeBasis"	,ColShimeBasis	,"int"		,"請求基準"			,""}
+				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"データ登録日時"	,""}
+				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"データ更新日時"	,""}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"		,""}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"		,""}
+				,{"PTMSCD"		,ColPTMSCD			,"String"	,"基幹Sys荷主CD"	,""}
 				};
 		
 		return RtSettingClMstRt;
@@ -364,44 +364,8 @@ public class M100_ClMstRt{
 				
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-
-				rt = new Object[counter][RtSettingClMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("cl_cd")){		rt[counter][Colcl_cd]			="";}else{rt[counter][Colcl_cd]		=rset01.getString("cl_cd");}		//荷主CD
-					if(null==rset01.getString("ClGpCD")){		rt[counter][ColClGpCD]			="";}else{rt[counter][ColClGpCD]		=rset01.getString("ClGpCD");}		//荷主グループCD
-					if(null==rset01.getString("ClGpName")){		rt[counter][ColClGpName]		="";}else{rt[counter][ColClGpName]		=rset01.getString("ClGpName");}		//グループ名1
-					if(null==rset01.getString("WHCD")){			rt[counter][ColWHCD]			="";}else{rt[counter][ColWHCD]			=rset01.getString("WHCD");}			//担当倉庫
-					if(null==rset01.getString("WHName")){		rt[counter][ColWHName]			="";}else{rt[counter][ColWHName]		=rset01.getString("WHName");}		//担当倉庫名
-					if(null==rset01.getString("CLName01")){		rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}		//荷主表記名
-					if(null==rset01.getString("CLName02")){		rt[counter][ColCLName02]		="";}else{rt[counter][ColCLName02]		=rset01.getString("CLName02");}		//荷主正式名
-					if(null==rset01.getString("CLName03")){		rt[counter][ColCLName03]		="";}else{rt[counter][ColCLName03]		=rset01.getString("CLName03");}		//荷主略名
-					if(null==rset01.getString("Post")){			rt[counter][ColPost]			="";}else{rt[counter][ColPost]			=rset01.getString("Post");}			//郵便番号
-					if(null==rset01.getString("Add01")){		rt[counter][ColAdd01]			="";}else{rt[counter][ColAdd01]		=rset01.getString("Add01");}		//住所1
-					if(null==rset01.getString("Add02")){		rt[counter][ColAdd02]			="";}else{rt[counter][ColAdd02]		=rset01.getString("Add02");}		//住所2
-					if(null==rset01.getString("Add03")){		rt[counter][ColAdd03]			="";}else{rt[counter][ColAdd03]		=rset01.getString("Add03");}		//住所3
-					if(null==rset01.getString("Tel")){			rt[counter][ColTel]			="";}else{rt[counter][ColTel]			=rset01.getString("Tel");}			//電話番号
-					if(null==rset01.getString("Fax")){			rt[counter][ColFax]			="";}else{rt[counter][ColFax]			=rset01.getString("Fax");}			//FAX
-					if(null==rset01.getString("Mail")){			rt[counter][ColMail]			="";}else{rt[counter][ColMail]			=rset01.getString("Mail");}			//メールアドレス
-					if(null==rset01.getString("Com01")){		rt[counter][ColCom01]			="";}else{rt[counter][ColCom01]		=rset01.getString("Com01");}		//コメント1
-					if(null==rset01.getString("Com02")){		rt[counter][ColCom02]			="";}else{rt[counter][ColCom02]		=rset01.getString("Com02");}		//コメント2
-					if(null==rset01.getString("Com03")){		rt[counter][ColCom03]			="";}else{rt[counter][ColCom03]		=rset01.getString("Com03");}		//コメント3
-					rt[counter][ColShimeDate]="" + rset01.getInt("ShimeDate");	//締日
-					rt[counter][ColShimeBasis]="" + rset01.getInt("ShimeBasis");	//請求基準
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
-					if(null==rset01.getString("EntryUser")){	rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}	//登録者コード
-					if(null==rset01.getString("UpdateUser")){	rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}	//更新者コード
-					if(null==rset01.getString("PTMSCD")){		rt[counter][ColPTMSCD]			="";}else{rt[counter][ColPTMSCD]		=rset01.getString("PTMSCD");}		//基幹システム荷主コード
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingClMstRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

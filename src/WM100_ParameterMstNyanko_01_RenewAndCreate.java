@@ -33,12 +33,12 @@ public class WM100_ParameterMstNyanko_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ParaCd			= B100_FrameParts.JLabelSet(	  							  0, 50,130,20,"パラメータコード:"			,11,1);
-		final JTextField  TB_ParaCd	= B100_FrameParts.JTextFieldSet(							130, 50,100,20,""							,11,0);
-		JLabel LB_ParaCdSeq	= B100_FrameParts.JLabelSet(	  									  0, 75,130,20,"シーケンシャルNo:"			,11,1);
-		final JFormattedTextField TB_ParaCdSeq= B100_FrameParts.JFormattedTextFieldSet(		130, 75, 80,20,""							,11,1,"####");
-		JLabel LB_ParaName		= B100_FrameParts.JLabelSet(									  0,100,130,20,"パラメータ名:"				,11,1);
-		final JTextField  TB_ParaName= B100_FrameParts.JTextFieldSet(						130,100,100,20,""							,11,0);
+		JLabel LB_ParaCd			= B100_FrameParts.JLabelSet(	  							  0, 50,130,20,"パラメータコード:"		,11,1);
+		final JTextField  TB_ParaCd	= B100_FrameParts.JTextFieldSet(							130, 50,100,20,""						,11,0);
+		JLabel LB_ParaCdSeq	= B100_FrameParts.JLabelSet(	  									  0, 75,130,20,"シーケンシャルNo:"		,11,1);
+		final JFormattedTextField TB_ParaCdSeq= B100_FrameParts.JFormattedTextFieldSet(		130, 75, 80,20,""						,11,1,"####");
+		JLabel LB_ParaName		= B100_FrameParts.JLabelSet(									  0,100,130,20,"パラメータ名:"			,11,1);
+		final JTextField  TB_ParaName= B100_FrameParts.JTextFieldSet(							130,100,100,20,""						,11,0);
 		
 		JLabel LB_ParaTxt01		= B100_FrameParts.JLabelSet(					  0,150,130,20,"文字設定項目01:"	,11,1);
 		final JTextField  TB_ParaTxt01= B100_FrameParts.JTextFieldSet(		130,150,200,20,""					,11,0);
@@ -164,33 +164,33 @@ public class WM100_ParameterMstNyanko_01_RenewAndCreate{
 			Object[][] ParameterMstRtNANKO = ParameterMstRtNANKO(TgtParaCd,TgtParaCdSeq);
 			
 			if(1==ParameterMstRtNANKO.length) {
-				TB_ParaCd.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaCd]);			//パラメータコード
-				TB_ParaCdSeq.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaCdSeq]);	//ナンバリング
-				TB_ParaName.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaName]);		//パラメータ名
-				TB_ParaTxt01.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt01]);	//パラメータテキスト項目01
-				TB_ParaTxt02.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt02]);	//パラメータテキスト項目02
-				TB_ParaTxt03.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt03]);	//パラメータテキスト項目03
-				TB_ParaTxt04.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt04]);	//パラメータテキスト項目04
-				TB_ParaTxt05.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt05]);	//パラメータテキスト項目05
-				TB_ParaTxt06.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt06]);	//パラメータテキスト項目06
-				TB_ParaTxt07.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt07]);	//パラメータテキスト項目07
-				TB_ParaTxt08.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt08]);	//パラメータテキスト項目08
-				TB_ParaTxt09.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt09]);	//パラメータテキスト項目09
-				TB_ParaTxt10.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaTxt10]);	//パラメータテキスト項目10
-				TB_ParaInt01.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt01]);		//パラメータ数値項目01
-				TB_ParaInt02.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt02]);		//パラメータ数値項目02
-				TB_ParaInt03.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt03]);		//パラメータ数値項目03
-				TB_ParaInt04.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt04]);		//パラメータ数値項目04
-				TB_ParaInt05.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt05]);		//パラメータ数値項目05
-				TB_ParaInt06.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt06]);		//パラメータ数値項目06
-				TB_ParaInt07.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt07]);		//パラメータ数値項目07
-				TB_ParaInt08.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt08]);		//パラメータ数値項目08
-				TB_ParaInt09.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt09]);		//パラメータ数値項目09
-				TB_ParaInt10.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColParaInt10]);		//パラメータ数値項目10
-				TB_EntryDate.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColEntryDate]);	//登録日
-				TB_UpdateDate.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColUpdateDate]);	//更新日
-				TB_EntryUser.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColEntryUser]);	//登録者
-				TB_UpdateUser.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRt.ColUpdateUser]);	//更新者
+				TB_ParaCd.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaCd]);			//パラメータコード
+				TB_ParaCdSeq.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaCdSeq]);		//ナンバリング
+				TB_ParaName.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaName]);		//パラメータ名
+				TB_ParaTxt01.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt01]);	//パラメータテキスト項目01
+				TB_ParaTxt02.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt02]);	//パラメータテキスト項目02
+				TB_ParaTxt03.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt03]);	//パラメータテキスト項目03
+				TB_ParaTxt04.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt04]);	//パラメータテキスト項目04
+				TB_ParaTxt05.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt05]);	//パラメータテキスト項目05
+				TB_ParaTxt06.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt06]);	//パラメータテキスト項目06
+				TB_ParaTxt07.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt07]);	//パラメータテキスト項目07
+				TB_ParaTxt08.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt08]);	//パラメータテキスト項目08
+				TB_ParaTxt09.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt09]);	//パラメータテキスト項目09
+				TB_ParaTxt10.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaTxt10]);	//パラメータテキスト項目10
+				TB_ParaInt01.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt01]);		//パラメータ数値項目01
+				TB_ParaInt02.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt02]);		//パラメータ数値項目02
+				TB_ParaInt03.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt03]);		//パラメータ数値項目03
+				TB_ParaInt04.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt04]);		//パラメータ数値項目04
+				TB_ParaInt05.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt05]);		//パラメータ数値項目05
+				TB_ParaInt06.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt06]);		//パラメータ数値項目06
+				TB_ParaInt07.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt07]);		//パラメータ数値項目07
+				TB_ParaInt08.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt08]);		//パラメータ数値項目08
+				TB_ParaInt09.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt09]);		//パラメータ数値項目09
+				TB_ParaInt10.setText(""+(int)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColParaInt10]);		//パラメータ数値項目10
+				TB_EntryDate.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColEntryDate]);	//登録日
+				TB_UpdateDate.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColUpdateDate]);	//更新日
+				TB_EntryUser.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColEntryUser]);	//登録者
+				TB_UpdateUser.setText(""+(String)ParameterMstRtNANKO[0][M100_ParameterMstRtNyanko.ColUpdateUser]);	//更新者
 			}
 		}
 		
@@ -401,8 +401,9 @@ public class WM100_ParameterMstNyanko_01_RenewAndCreate{
 		
 		SearchParaCd.add(TgtParaCd);
 		SearchParaCdSeqStr.add(Integer.parseInt(TgtParaCdSeq));
+		SearchParaCdSeqEnd.add(Integer.parseInt(TgtParaCdSeq));
 		
-		Object[][] ParameterMstRtNANKO = M100_ParameterMstRt.ParameterMstRtNANKO(
+		Object[][] ParameterMstRtNANKO = M100_ParameterMstRtNyanko.ParameterMstRtNANKO(
 				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
 				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
 				SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,

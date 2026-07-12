@@ -52,14 +52,14 @@ public class M100_LocationMstRt{
 	public static Object[][] RtSettingLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {
 				 {"ClCd"		,ColClCd			,"String"	,"荷主コード"		,"Key"}
-				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"			,""}
+				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"		,""}
 				,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"		,"Key"}
 				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名"		,""}
 				,{"Loc"			,ColLoc			,"String"	,"ロケーション"		,"Key"}
 				,{"LocName"		,ColLocName		,"String"	,"ロケーション名"	,""}
 				,{"LocType"		,ColType			,"int"		,"ロケタイプ"		,""}
-				,{"EntryDate"	,ColEntryDate		,"String"	,"登録日"			,""}
-				,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日"			,""}
+				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"			,""}
+				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"			,""}
 				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"			,""}
 				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"			,""}
 				};
@@ -97,7 +97,7 @@ public class M100_LocationMstRt{
 				+"(WM0010LOCATIONMST.UpdateDate) as UpdateDate,\n"	//更新日
 				+"(WM0010LOCATIONMST.EntryUser) as EntryUser,\n"	//登録者
 				+"(WM0010LOCATIONMST.UpdateUser) as UpdateUser,\n"	//更新者
-				+"(WM0010LOCATIONMST.LocType) as Type\n"				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				+"(WM0010LOCATIONMST.LocType) as LocType\n"				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 				+" from "+A00000_Main.MySqlDefaultSchemaWANKO+".WM0010LOCATIONMST \n"
 				+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0030_CLIENTMST"
 				+ " on("
@@ -214,29 +214,7 @@ public class M100_LocationMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-				rt = new Object[counter][RtSettingLocationMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("ClCd")){				rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}				//荷主コード
-					if(null==rset01.getString("CLName01")){			rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}			//荷主表記名
-					if(null==rset01.getString("WhCd")){				rt[counter][ColWhCd]			="";}else{rt[counter][ColWhCd]			=rset01.getString("WhCd");}				//倉庫コード
-					if(null==rset01.getString("WHName")){			rt[counter][ColWHName]			="";}else{rt[counter][ColWHName]		=rset01.getString("WHName");}			//拠点倉庫名
-					if(null==rset01.getString("Loc")){				rt[counter][ColLoc]			="";}else{rt[counter][ColLoc]			=rset01.getString("Loc");}				//ロケーション
-					if(null==rset01.getString("LocName")){			rt[counter][ColLocName]		="";}else{rt[counter][ColLocName]		=rset01.getString("LocName");}			//ロケーション名
-					rt[counter][ColType]=rset01.getInt("Type");																													//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}			//登録日
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]	="";}else{rt[counter][ColUpdateDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}			//更新日
-					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}		//登録者
-					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}		//更新者
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingLocationMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

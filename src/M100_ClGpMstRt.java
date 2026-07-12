@@ -84,8 +84,8 @@ public class M100_ClGpMstRt{
 				,{"Com01"		,ColCom01			,"String"	,"コメント1"			,""}
 				,{"Com02"		,ColCom02			,"String"	,"コメント2"			,""}
 				,{"Com03"		,ColCom03			,"String"	,"コメント3"			,""}
-				,{"EntryDate"	,ColEntryDate		,"String"	,"データ登録日時"		,""}
-				,{"UpdateDate"	,ColUpdateDate	,"String"	,"データ更新日時"		,""}
+				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"データ登録日時"		,""}
+				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"データ更新日時"		,""}
 				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"			,""}
 				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"			,""}
 				,{"PassWord"	,ColPassWord		,"String"	,"パスワード"			,""}

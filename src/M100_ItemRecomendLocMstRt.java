@@ -77,19 +77,20 @@ public class M100_ItemRecomendLocMstRt{
 	
 	*/
 	
-	static final int ColClCd			= (int) 0;	//荷主コード
-	static final int ColCLName			= (int) 1;	//荷主表記名
-	static final int ColClWh			= (int) 2;	//担当倉庫コード
-	static final int ColClWHName		= (int) 3;	//担当倉庫名
-	static final int ColClGpCD			= (int) 4;	//荷主グループCD
-	static final int ColClGpName		= (int) 5;	//グループ名1
-	static final int ColItemCd			= (int) 6;	//商品コード
-	static final int ColItemName01	= (int) 7;	//商品表記名
-	static final int ColRecomendLoc	= (int) 8;	//推奨ロケ
-	static final int ColLocName		= (int) 9;	//ロケーション名
-	static final int ColType			= (int)10;	//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-	static final int ColEntryDate		= (int)11;	//データ登録日時
-	static final int ColUpdateDate	= (int)12;	//データ更新日時
+	
+	static final int ColCLName			= (int) 0;	//荷主表記名
+	static final int ColClWHName		= (int) 1;	//担当倉庫名
+	static final int ColClGpName		= (int) 2;	//グループ名1
+	static final int ColItemCd			= (int) 3;	//商品コード
+	static final int ColItemName01	= (int) 4;	//商品表記名
+	static final int ColRecomendLoc	= (int) 5;	//推奨ロケ
+	static final int ColLocName		= (int) 6;	//ロケーション名
+	static final int ColType			= (int) 7;	//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+	static final int ColEntryDate		= (int) 8;	//データ登録日時
+	static final int ColUpdateDate	= (int) 9;	//データ更新日時
+	static final int ColClCd			= (int)10;	//荷主コード
+	static final int ColClWh			= (int)11;	//担当倉庫コード
+	static final int ColClGpCD			= (int)12;	//荷主グループCD
 	static final int ColEntryUser		= (int)13;	//登録者
 	static final int ColUpdateUser	= (int)14;	//更新者
 	static final int ColItemSubRecomendLoc = (int)15;	//商品サブマスタ推奨ロケ　※ItemRecomendLocMstRtではWW00630ItemRecomendLocに登録がない情報は返却されません
@@ -103,12 +104,12 @@ public class M100_ItemRecomendLocMstRt{
 					,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"	,""}
 					,{"ClGpName"	,ColClGpName		,"String"	,"グループ名"		,""}
 					,{"ItemCd"		,ColItemCd			,"String"	,"商品コード"		,"key"}
-					,{"ItemName01"	,ColItemName01	,"String"	,"商品表記名"			,""}
+					,{"ItemName01"	,ColItemName01	,"String"	,"商品表記名"		,""}
 					,{"RecomendLoc"	,ColRecomendLoc	,"String"	,"推奨ロケ"			,""}
 					,{"LocName"		,ColLocName		,"String"	,"ロケーション名"	,""}
 					,{"Type"		,ColType			,"int"		,"ロケタイプ"		,""}
-					,{"EntryDate"	,ColEntryDate		,"String"	,"データ登録日時"	,""}
-					,{"UpdateDate"	,ColUpdateDate	,"String"	,"データ更新日時"	,""}
+					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"データ登録日時"	,""}
+					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"データ更新日時"	,""}
 					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"			,""}
 					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"			,""}
 					,{"ItemSubRecomendLoc"	,ColItemSubRecomendLoc,"String"	,"商品サブマスタ推奨ロケ",""}
@@ -344,35 +345,7 @@ public class M100_ItemRecomendLocMstRt{
 				
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-				
-				rt = new Object[counter][RtItemRecomendLocMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("ClCd"				)){rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//荷主コード
-					if(null==rset01.getString("CLName"				)){rt[counter][ColCLName]			="";}else{rt[counter][ColCLName]		=rset01.getString("CLName");}		//荷主表記名
-					if(null==rset01.getString("ClWHName"			)){rt[counter][ColClWh]			="";}else{rt[counter][ColClWh]			=rset01.getString("ClWh");}			//担当倉庫コード
-					if(null==rset01.getString("ClWHName"			)){rt[counter][ColClWHName]		="";}else{rt[counter][ColClWHName]		=rset01.getString("ClWHName");}		//担当倉庫名
-					if(null==rset01.getString("ClGpCD"				)){rt[counter][ColClGpCD]			="";}else{rt[counter][ColClGpCD]		=rset01.getString("ClGpCD");}		//荷主グループCD
-					if(null==rset01.getString("ClGpName"			)){rt[counter][ColClGpName]		="";}else{rt[counter][ColClGpName]		=rset01.getString("ClGpName");}		//グループ名1
-					if(null==rset01.getString("ItemCd"				)){rt[counter][ColItemCd]			="";}else{rt[counter][ColItemCd]		=rset01.getString("ItemCd");}		//商品コード
-					if(null==rset01.getString("ItemName01"			)){rt[counter][ColItemName01]		="";}else{rt[counter][ColItemName01]	=rset01.getString("ItemName01");}	//商品表記名
-					if(null==rset01.getString("RecomendLoc"			)){rt[counter][ColRecomendLoc]	="";}else{rt[counter][ColRecomendLoc]	=rset01.getString("RecomendLoc");}	//推奨ロケ
-					if(null==rset01.getString("LocName"				)){rt[counter][ColLocName]			="";}else{rt[counter][ColLocName]		=rset01.getString("LocName");}		//ロケーション名
-					rt[counter][ColType]= rset01.getInt("Type");						//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-					if(null==rset01.getTimestamp("EntryDate")		){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
-					if(null==rset01.getTimestamp("UpdateDate")		){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
-					if(null==rset01.getString("EntryUser")			){rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}						//登録者
-					if(null==rset01.getString("UpdateUser")			){rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}						//更新者
-					if(null==rset01.getString("ItemSubRecomendLoc")	){rt[counter][ColItemSubRecomendLoc]="";}else{rt[counter][ColItemSubRecomendLoc]	=rset01.getString("ItemSubRecomendLoc");}	//商品サブマスタ推奨ロケ",""}
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtItemRecomendLocMstRt());
 
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

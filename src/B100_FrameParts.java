@@ -108,8 +108,8 @@ public class B100_FrameParts{
 	===========================================================================*/
 	public static JLabel UserInfo() {
 		JLabel userinfo = new JLabel("(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName+"　所属：(" + A00000_Main.LoginUserWH + ")" + A00000_Main.LoginUserWhName);
-		userinfo.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 11*A00000_Main.Mul/A00000_Main.Div));
-		userinfo.setBounds(10*A00000_Main.Mul/A00000_Main.Div, 10*A00000_Main.Mul/A00000_Main.Div, 500*A00000_Main.Mul/A00000_Main.Div, 20*A00000_Main.Mul/A00000_Main.Div);
+		userinfo.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 10*A00000_Main.Mul/A00000_Main.Div));
+		userinfo.setBounds(10*A00000_Main.Mul/A00000_Main.Div, 0*A00000_Main.Mul/A00000_Main.Div, 500*A00000_Main.Mul/A00000_Main.Div, 15*A00000_Main.Mul/A00000_Main.Div);
 		return userinfo;
 	}
 	
@@ -121,7 +121,7 @@ public class B100_FrameParts{
 		JButton exit_btn=new JButton();
 		exit_btn.setText("EXIT");
 		exit_btn.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 11*A00000_Main.Mul/A00000_Main.Div));
-		exit_btn.setBounds((Width-140)*A00000_Main.Mul/A00000_Main.Div, 10*A00000_Main.Mul/A00000_Main.Div, 100*A00000_Main.Mul/A00000_Main.Div, 20*A00000_Main.Mul/A00000_Main.Div);
+		exit_btn.setBounds((Width-140)*A00000_Main.Mul/A00000_Main.Div, 15*A00000_Main.Mul/A00000_Main.Div, 100*A00000_Main.Mul/A00000_Main.Div, 20*A00000_Main.Mul/A00000_Main.Div);
 		
 		return exit_btn;
 	}

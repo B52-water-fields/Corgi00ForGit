@@ -260,6 +260,7 @@ public class M100_CarMstRt{
 				rset01 = stmt01.executeQuery();
 				
 				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingCarMstRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

@@ -19,7 +19,7 @@ public class M100_DeliveryTypeMstRt{
 			
 	int GetDeliveryTypeNo		= (int)DeliveryTypeMstRt[i][M100_DeliveryTypeMstRt.ColDeliveryTypeNo];			//タイプ番号
 	String GetDeliveryTypeCd	= (String)DeliveryTypeMstRt[i][M100_DeliveryTypeMstRt.ColDeliveryTypeCd];		//運送タイプコード
-	String GetDeliveryTypeName	= (String)DeliveryTypeMstRt[i][M100_DeliveryTypeMstRt.ColDeliveryTypeName];	//運送タイプ名
+	String GetDeliveryTypeName	= (String)DeliveryTypeMstRt[i][M100_DeliveryTypeMstRt.ColDeliveryTypeName];		//運送タイプ名
 	String GetEntryDate			= (String)DeliveryTypeMstRt[i][M100_DeliveryTypeMstRt.ColEntryDate];			//データ登録日時
 	String GetUpdateDate		= (String)DeliveryTypeMstRt[i][M100_DeliveryTypeMstRt.ColUpdateDate];			//データ更新日時
 	String GetEntryUser			= (String)DeliveryTypeMstRt[i][M100_DeliveryTypeMstRt.ColEntryUser];			//登録者コード
@@ -38,13 +38,13 @@ public class M100_DeliveryTypeMstRt{
 	
 	public static Object[][] RtSettingDeliveryTypeMstRt(){
 		Object[][] RtSettingDeliveryTypeMstRt = {
-				 {"DeliveryTypeNo"		,ColDeliveryTypeNo		,"int"		,"タイプ番号"}
-				,{"DeliveryTypeCd"		,ColDeliveryTypeCd		,"String"	,"運送タイプコード"}
-				,{"DeliveryTypeName"	,ColDeliveryTypeName		,"String"	,"運送タイプ名"}
-				,{"EntryDate"			,ColEntryDate				,"String"	,"データ登録日時"}
-				,{"UpdateDate"			,ColUpdateDate			,"String"	,"データ更新日時"}
-				,{"EntryUser"			,ColEntryUser				,"String"	,"登録者コード"}
-				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"}
+				 {"DeliveryTypeNo"		,ColDeliveryTypeNo		,"int"		,"タイプ番号"		,"Key"}
+				,{"DeliveryTypeCd"		,ColDeliveryTypeCd		,"String"	,"運送タイプコード"	,"Key"}
+				,{"DeliveryTypeName"	,ColDeliveryTypeName		,"String"	,"運送タイプ名"		,""}
+				,{"EntryDate"			,ColEntryDate				,"DateTime"	,"データ登録日時"	,""}
+				,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"データ更新日時"	,""}
+				,{"EntryUser"			,ColEntryUser				,"String"	,"登録者コード"		,""}
+				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"		,""}
 				};
 		
 		return RtSettingDeliveryTypeMstRt;
@@ -136,26 +136,8 @@ public class M100_DeliveryTypeMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-
-				rt = new Object[counter][RtSettingDeliveryTypeMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					rt[counter][ColDeliveryTypeNo]=rset01.getInt("DeliveryTypeNo");		//タイプ番号
-					if(null==rset01.getString("DeliveryTypeCd")){	rt[counter][ColDeliveryTypeCd]	="";}else{rt[counter][ColDeliveryTypeCd]		=rset01.getString("DeliveryTypeCd");}		//運送タイプコード
-					if(null==rset01.getString("DeliveryTypeName")){	rt[counter][ColDeliveryTypeName]	="";}else{rt[counter][ColDeliveryTypeName]	=rset01.getString("DeliveryTypeName");}		//運送タイプ名
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate]			="";}else{rt[counter][ColEntryDate]			=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]			=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
-					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser]			="";}else{rt[counter][ColEntryUser]			=rset01.getString("EntryUser");}			//登録者コード
-					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]			=rset01.getString("UpdateUser");}			//更新者コード
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingDeliveryTypeMstRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

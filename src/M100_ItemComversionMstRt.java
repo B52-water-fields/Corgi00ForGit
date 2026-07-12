@@ -249,37 +249,7 @@ public class M100_ItemComversionMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-				rt = new Object[counter][RtItemComversionMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("ClGpCd")){		rt[counter][ColClGpCd]			="";}else{rt[counter][ColClGpCd]		=rset01.getString("ClGpCd");}		//荷主グループコード
-					if(null==rset01.getString("CLGpName01")){	rt[counter][ColCLGpName01]		="";}else{rt[counter][ColCLGpName01]	=rset01.getString("CLGpName01");}	//荷主グループ名1
-					if(null==rset01.getString("ClCd")){			rt[counter][ColClCd]			="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//荷主コード
-					if(null==rset01.getString("CLName01")){		rt[counter][ColCLName01]		="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}		//荷主名
-					if(null==rset01.getString("ClItemCd")){		rt[counter][ColClItemCd]		="";}else{rt[counter][ColClItemCd]		=rset01.getString("ClItemCd");}		//荷主商品コード
-					if(null==rset01.getString("ItemCd")){		rt[counter][ColItemCd]			="";}else{rt[counter][ColItemCd]		=rset01.getString("ItemCd");}		//変換先商品コード
-					rt[counter][ColPackingType]	=rset01.getInt("PackingType");	//荷姿タイプ
-					if(null==rset01.getString("ItemName01")){	rt[counter][ColItemName01]		="";}else{rt[counter][ColItemName01]	=rset01.getString("ItemName01");}	//商品表記名
-					if(null==rset01.getString("ItemName02")){	rt[counter][ColItemName02]		="";}else{rt[counter][ColItemName02]	=rset01.getString("ItemName02");}	//商品正式名
-					if(null==rset01.getString("ItemName03")){	rt[counter][ColItemName03]		="";}else{rt[counter][ColItemName03]	=rset01.getString("ItemName03");}	//商品略名
-					if(null==rset01.getString("CtName")){		rt[counter][ColCtName]			="";}else{rt[counter][ColCtName]		=rset01.getString("CtName");}		//カートン商品名称
-					if(null==rset01.getString("CsName")){		rt[counter][ColCsName]			="";}else{rt[counter][ColCsName]		=rset01.getString("CsName");}		//ケース商品名称
-					if(null==rset01.getString("PlName")){		rt[counter][ColPlName]			="";}else{rt[counter][ColPlName]		=rset01.getString("PlName");}		//パレット商品名称
-					rt[counter][ColCtQty]			=rset01.getInt("CtQty");		//カートン入数
-					rt[counter][ColCsQty]			=rset01.getInt("CsQty");		//ケース入数
-					rt[counter][ColPlQty]			=rset01.getInt("PlQty");		//パレット入数
-					if(null==rset01.getString("UnitName")){		rt[counter][ColUnitName]		="";}else{rt[counter][ColUnitName]		=rset01.getString("UnitName");}		//商品単位
-					if(null==rset01.getString("CtUnitName")){	rt[counter][ColCtUnitName]		="";}else{rt[counter][ColCtUnitName]	=rset01.getString("CtUnitName");}	//カートン商品単位
-					if(null==rset01.getString("CsUnitName")){	rt[counter][ColCsUnitName]		="";}else{rt[counter][ColCsUnitName]	=rset01.getString("CsUnitName");}	//ケース商品単位
-					if(null==rset01.getString("PlUnitName")){	rt[counter][ColPlUnitName]		="";}else{rt[counter][ColPlUnitName]	=rset01.getString("PlUnitName");}	//パレット商品単位
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtItemComversionMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

@@ -126,12 +126,12 @@ public class M100_ParameterMstWankoRt{
 	
 	public static Object[][] RtParameterMstWankoRt(){
 		Object[][] RtParameterMstWankoRt= {
-					 {"ColClWh"		,ColClWh			,"String"	,"担当倉庫コード"			,"Key"}
+					 {"ClWh"		,ColClWh			,"String"	,"担当倉庫コード"			,"Key"}
 					,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"				,"Key"}
 					,{"ClCd"		,ColClCd			,"String"	,"荷主コード"				,"Key"}
 					,{"CLName01"	,ColCLName01		,"String"	,"荷主名"					,""}
 					,{"ParaCd"		,ColParaCd			,"String"	,"パラメータコード"			,""}
-					,{"ParaCdSeq"	,ColParaCdSeq		,"String"	,"ナンバリング"				,""}
+					,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"ナンバリング"				,""}
 					,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"				,""}
 					,{"ParaTxt01"	,ColParaTxt01		,"String"	,"パラメータテキスト項目01"	,""}
 					,{"ParaTxt02"	,ColParaTxt02		,"String"	,"パラメータテキスト項目02"	,""}
@@ -153,16 +153,16 @@ public class M100_ParameterMstWankoRt{
 					,{"ParaInt08"	,ColParaInt08		,"int"		,"パラメータ数値項目08"		,""}
 					,{"ParaInt09"	,ColParaInt09		,"int"		,"パラメータ数値項目09"		,""}
 					,{"ParaInt10"	,ColParaInt10		,"int"		,"パラメータ数値項目10"		,""}
-					,{"EntryDate"	,ColEntryDate		,"String"	,"登録日"					,""}
-					,{"UpdateDate"	,ColUpdateDate	,"String"	,"更新日"					,""}
+					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"					,""}
+					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"					,""}
 					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"					,""}
 					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"					,""}
 					};
 		return RtParameterMstWankoRt;
 	}
 	
-	public static Object[][] ParameterMstWankoRtFromParaCd(String ParaCd){
-		//現在ログイン中の荷主のパラメータ情報をパラメータコード指定で取得する
+	public static Object[][] ParameterMstWankoRtFromParaCd(String ParaCd,int Seq){
+		//現在ログイン中の荷主のパラメータ情報をパラメータコード・シーケンシャル番号指定で取得する
 		
 		ArrayList<String> SearchClWh 			= new ArrayList<String>();
 		ArrayList<String> SearchClCd 			= new ArrayList<String>();
@@ -206,6 +206,8 @@ public class M100_ParameterMstWankoRt{
 		SearchClWh.add(A00000_Main.ClWh);
 		SearchClCd.add(A00000_Main.ClCd);
 		SearchParaCd.add(ParaCd);
+		SearchParaCdSeqStr.add(Seq);
+		SearchParaCdSeqEnd.add(Seq);
 		
 		Object[][] ParameterMstWankoRt = M100_ParameterMstWankoRt.ParameterMstWankoRt(
 				SearchClWh,SearchClCd,
@@ -234,22 +236,22 @@ public class M100_ParameterMstWankoRt{
 			ArrayList<String> SearchParaTxtAll,
 			Boolean AllSearch){
 		
-		SearchClWh		= B100_ArrayListControl.ArryListStringUniqueList(SearchClWh);
-		SearchClCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
-		SearchParaCd 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaCd);
-		SearchParaCdSeqStr = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqStr);
-		SearchParaCdSeqEnd = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqEnd);
-		SearchParaName 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaName);
-		SearchParaTxt01 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt01);
-		SearchParaTxt02 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt02);
-		SearchParaTxt03 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt03);
-		SearchParaTxt04 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt04);
-		SearchParaTxt05 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt05);
-		SearchParaTxt06 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt06);
-		SearchParaTxt07 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt07);
-		SearchParaTxt08 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt08);
-		SearchParaTxt09 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt09);
-		SearchParaTxt10 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt10);
+		SearchClWh			= B100_ArrayListControl.ArryListStringUniqueList(SearchClWh);
+		SearchClCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
+		SearchParaCd 		= B100_ArrayListControl.ArryListStringUniqueList(SearchParaCd);
+		SearchParaCdSeqStr 	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqStr);
+		SearchParaCdSeqEnd 	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqEnd);
+		SearchParaName 		= B100_ArrayListControl.ArryListStringUniqueList(SearchParaName);
+		SearchParaTxt01 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt01);
+		SearchParaTxt02 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt02);
+		SearchParaTxt03 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt03);
+		SearchParaTxt04 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt04);
+		SearchParaTxt05 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt05);
+		SearchParaTxt06 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt06);
+		SearchParaTxt07 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt07);
+		SearchParaTxt08 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt08);
+		SearchParaTxt09 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt09);
+		SearchParaTxt10 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt10);
 		
 		SearchParaInt01Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01Str);
 		SearchParaInt02Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02Str);
@@ -921,49 +923,7 @@ public class M100_ParameterMstWankoRt{
 				
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-
-				rt = new Object[counter][RtParameterMstWankoRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("ClWh"			)){rt[counter][ColClWh]		="";}else{rt[counter][ColClWh]			=rset01.getString("ClWh");}			//担当倉庫コード
-					if(null==rset01.getString("WHName"			)){rt[counter][ColWHName]		="";}else{rt[counter][ColWHName]		=rset01.getString("WHName");}		//担当倉庫名
-					if(null==rset01.getString("ClCd"			)){rt[counter][ColClCd]		="";}else{rt[counter][ColClCd]			=rset01.getString("ClCd");}			//荷主コード
-					if(null==rset01.getString("CLName01"		)){rt[counter][ColCLName01]	="";}else{rt[counter][ColCLName01]		=rset01.getString("CLName01");}		//荷主名
-					if(null==rset01.getString("ParaCd"			)){rt[counter][ColParaCd]		="";}else{rt[counter][ColParaCd]		=rset01.getString("ParaCd");}		//パラメータコード
-					rt[counter][ColParaCdSeq]	=rset01.getInt("ParaCdSeq");		//ナンバリング
-					if(null==rset01.getString("ParaName"		)){rt[counter][ColParaName]	="";}else{rt[counter][ColParaName]		=rset01.getString("ParaName");}		//パラメータ名
-					if(null==rset01.getString("ParaTxt01"		)){rt[counter][ColParaTxt01]	="";}else{rt[counter][ColParaTxt01]	=rset01.getString("ParaTxt01");}	//パラメータテキスト項目01
-					if(null==rset01.getString("ParaTxt02"		)){rt[counter][ColParaTxt02]	="";}else{rt[counter][ColParaTxt02]	=rset01.getString("ParaTxt02");}	//パラメータテキスト項目02
-					if(null==rset01.getString("ParaTxt03"		)){rt[counter][ColParaTxt03]	="";}else{rt[counter][ColParaTxt03]	=rset01.getString("ParaTxt03");}	//パラメータテキスト項目03
-					if(null==rset01.getString("ParaTxt04"		)){rt[counter][ColParaTxt04]	="";}else{rt[counter][ColParaTxt04]	=rset01.getString("ParaTxt04");}	//パラメータテキスト項目04
-					if(null==rset01.getString("ParaTxt05"		)){rt[counter][ColParaTxt05]	="";}else{rt[counter][ColParaTxt05]	=rset01.getString("ParaTxt05");}	//パラメータテキスト項目05
-					if(null==rset01.getString("ParaTxt06"		)){rt[counter][ColParaTxt06]	="";}else{rt[counter][ColParaTxt06]	=rset01.getString("ParaTxt06");}	//パラメータテキスト項目06
-					if(null==rset01.getString("ParaTxt07"		)){rt[counter][ColParaTxt07]	="";}else{rt[counter][ColParaTxt07]	=rset01.getString("ParaTxt07");}	//パラメータテキスト項目07
-					if(null==rset01.getString("ParaTxt08"		)){rt[counter][ColParaTxt08]	="";}else{rt[counter][ColParaTxt08]	=rset01.getString("ParaTxt08");}	//パラメータテキスト項目08
-					if(null==rset01.getString("ParaTxt09"		)){rt[counter][ColParaTxt09]	="";}else{rt[counter][ColParaTxt09]	=rset01.getString("ParaTxt09");}	//パラメータテキスト項目09
-					if(null==rset01.getString("ParaTxt10"		)){rt[counter][ColParaTxt10]	="";}else{rt[counter][ColParaTxt10]	=rset01.getString("ParaTxt10");}	//パラメータテキスト項目10
-					rt[counter][ColParaInt01]	=rset01.getInt("ParaInt01");	//パラメータ数値項目01
-					rt[counter][ColParaInt02]	=rset01.getInt("ParaInt02");	//パラメータ数値項目02
-					rt[counter][ColParaInt03]	=rset01.getInt("ParaInt03");	//パラメータ数値項目03
-					rt[counter][ColParaInt04]	=rset01.getInt("ParaInt04");	//パラメータ数値項目04
-					rt[counter][ColParaInt05]	=rset01.getInt("ParaInt05");	//パラメータ数値項目05
-					rt[counter][ColParaInt06]	=rset01.getInt("ParaInt06");	//パラメータ数値項目06
-					rt[counter][ColParaInt07]	=rset01.getInt("ParaInt07");	//パラメータ数値項目07
-					rt[counter][ColParaInt08]	=rset01.getInt("ParaInt08");	//パラメータ数値項目08
-					rt[counter][ColParaInt09]	=rset01.getInt("ParaInt09");	//パラメータ数値項目09
-					rt[counter][ColParaInt10]	=rset01.getInt("ParaInt10");	//パラメータ数値項目10
-					if(null==rset01.getTimestamp("EntryDate"	)){rt[counter][ColEntryDate]	="";}else{rt[counter][ColEntryDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//登録日
-					if(null==rset01.getTimestamp("UpdateDate"	)){rt[counter][ColEntryDate]	="";}else{rt[counter][ColUpdateDate]	=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//更新日
-					if(null==rset01.getString("EntryUser"		)){rt[counter][ColEntryUser]	="";}else{rt[counter][ColEntryUser]	=rset01.getString("EntryUser");}	//登録者
-					if(null==rset01.getString("UpdateUser"		)){rt[counter][ColUpdateUser]	="";}else{rt[counter][ColUpdateUser]	=rset01.getString("UpdateUser");}	//更新者
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtParameterMstWankoRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

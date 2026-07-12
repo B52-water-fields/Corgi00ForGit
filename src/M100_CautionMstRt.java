@@ -74,8 +74,8 @@ public class M100_CautionMstRt{
 				,{"CautionTiming"	,ColCautionTiming	,"int"		,"注意事項タイミング"	,""}
 				,{"CautionName"		,ColCautionName	,"String"	,"注意事項名"			,""}
 				,{"Caution"			,ColCaution		,"String"	,"注意事項内容"			,""}
-				,{"EntryDate"		,ColEntryDate		,"String"	,"データ登録日時"		,""}
-				,{"UpdateDate"		,ColUpdateDate	,"String"	,"データ更新日時"		,""}
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"データ登録日時"		,""}
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"データ更新日時"		,""}
 				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者コード"			,""}
 				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者コード"			,""}
 				,{"Add01"			,ColAdd01			,"String"	,"届先住所1"			,""}

@@ -60,9 +60,9 @@ public class B100_DefaultVariableWarehouse{
 				,{"Com02"		,"1","1",""		,GetCom02}		//コメント２
 				,{"Com03"		,"1","1",""		,GetCom03}		//コメント３
 				,{"PTMSCD"		,"1","1",""		,GetPTMSCD}		//基幹システム連携用事業所CD
-				,{"EntryDate"	,"1","1",""		,now_dtm}		//データ登録日時
+				,{"EntryDate"	,"1","0",""		,now_dtm}		//データ登録日時
 				,{"UpdateDate"	,"1","1",""		,now_dtm}		//データ更新日時
-				,{"EntryUser"	,"1","1",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//登録者コード
+				,{"EntryUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//登録者コード
 				,{"UpdateUser"	,"1","1",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//更新者コード
 				};
 		String tgt_table = "KM0010_WHMST";

@@ -76,28 +76,28 @@ public class M100_ShippingCompanyMstRt{
 	
 	public static Object[][] RtSettingShippingCompanyMstRt(){
 		Object[][] RtSettingShippingCompanyMstRt = {
-				 {"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"}
-				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"}
-				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"}
-				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"}
-				,{"Post"					,ColPost						,"String"	,"運送会社郵便"}
-				,{"Add01"					,ColAdd01						,"String"	,"運送会社住所1"}
-				,{"Add02"					,ColAdd02						,"String"	,"運送会社住所2"}
-				,{"Add03"					,ColAdd03						,"String"	,"運送会社住所3"}
-				,{"Tel"						,ColTel						,"String"	,"運送会社電話"}
-				,{"Fax"						,ColFax						,"String"	,"運送会社FAX"}
-				,{"Mail"					,ColMail						,"String"	,"運送会社MAIL"}
-				,{"Com01"					,ColCom01						,"String"	,"コメント1"}
-				,{"Com02"					,ColCom02						,"String"	,"コメント2"}
-				,{"Com03"					,ColCom03						,"String"	,"コメント3"}
-				,{"ShimeDate"				,ColShimeDate					,"int"		,"締日"}
-				,{"ShimeBasis"				,ColShimeBasis				,"int"		,"請求基準"}
-				,{"EntryDate"				,ColEntryDate					,"String"	,"データ登録日時"}
-				,{"UpdateDate"				,ColUpdateDate				,"String"	,"データ更新日時"}
-				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"}
-				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"}
-				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム傭車コード"}
-				,{"ExportDataType"			,ColExportDataType			,"String"	,"データ抽出タイプ"}
+				 {"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"}
+				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"			,""}
+				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"			,""}
+				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"				,""}
+				,{"Post"					,ColPost						,"String"	,"運送会社郵便"				,""}
+				,{"Add01"					,ColAdd01						,"String"	,"運送会社住所1"			,""}
+				,{"Add02"					,ColAdd02						,"String"	,"運送会社住所2"			,""}
+				,{"Add03"					,ColAdd03						,"String"	,"運送会社住所3"			,""}
+				,{"Tel"						,ColTel						,"String"	,"運送会社電話"				,""}
+				,{"Fax"						,ColFax						,"String"	,"運送会社FAX"				,""}
+				,{"Mail"					,ColMail						,"String"	,"運送会社MAIL"				,""}
+				,{"Com01"					,ColCom01						,"String"	,"コメント1"				,""}
+				,{"Com02"					,ColCom02						,"String"	,"コメント2"				,""}
+				,{"Com03"					,ColCom03						,"String"	,"コメント3"				,""}
+				,{"ShimeDate"				,ColShimeDate					,"int"		,"締日"						,""}
+				,{"ShimeBasis"				,ColShimeBasis				,"int"		,"請求基準"					,""}
+				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"			,""}
+				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"			,""}
+				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"				,""}
+				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"				,""}
+				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム傭車コード"	,""}
+				,{"ExportDataType"			,ColExportDataType			,"String"	,"データ抽出タイプ"			,""}
 				};
 		
 		return RtSettingShippingCompanyMstRt;
@@ -299,41 +299,8 @@ public class M100_ShippingCompanyMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-
-				rt = new Object[counter][RtSettingShippingCompanyMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("ShippingCompanyCd")){		rt[counter][ColShippingCompanyCd]		="";}else{rt[counter][ColShippingCompanyCd]		=rset01.getString("ShippingCompanyCd");}		//運送会社CD
-					if(null==rset01.getString("ShippingCompanyName01")){	rt[counter][ColShippingCompanyName01]	="";}else{rt[counter][ColShippingCompanyName01]	=rset01.getString("ShippingCompanyName01");}	//運送会社表記名
-					if(null==rset01.getString("ShippingCompanyName02")){	rt[counter][ColShippingCompanyName02]	="";}else{rt[counter][ColShippingCompanyName02]	=rset01.getString("ShippingCompanyName02");}	//運送会社正式名
-					if(null==rset01.getString("ShippingCompanyName03")){	rt[counter][ColShippingCompanyName03]	="";}else{rt[counter][ColShippingCompanyName03]	=rset01.getString("ShippingCompanyName03");}	//運送会社略名
-					if(null==rset01.getString("Post")){						rt[counter][ColPost]						="";}else{rt[counter][ColPost]						=rset01.getString("Post");}						//運送会社郵便
-					if(null==rset01.getString("Add01")){					rt[counter][ColAdd01]						="";}else{rt[counter][ColAdd01]					=rset01.getString("Add01");}					//運送会社住所1
-					if(null==rset01.getString("Add02")){					rt[counter][ColAdd02]						="";}else{rt[counter][ColAdd02]					=rset01.getString("Add02");}					//運送会社住所2
-					if(null==rset01.getString("Add03")){					rt[counter][ColAdd03]						="";}else{rt[counter][ColAdd03]					=rset01.getString("Add03");}					//運送会社住所3
-					if(null==rset01.getString("Tel")){						rt[counter][ColTel]						="";}else{rt[counter][ColTel]						=rset01.getString("Tel");}						//運送会社電話
-					if(null==rset01.getString("Fax")){						rt[counter][ColFax]						="";}else{rt[counter][ColFax]						=rset01.getString("Fax");}						//運送会社FAX
-					if(null==rset01.getString("Mail")){						rt[counter][ColMail]						="";}else{rt[counter][ColMail]						=rset01.getString("Mail");}						//運送会社MAIL
-					if(null==rset01.getString("Com01")){					rt[counter][ColCom01]						="";}else{rt[counter][ColCom01]					=rset01.getString("Com01");}					//コメント1
-					if(null==rset01.getString("Com02")){					rt[counter][ColCom02]						="";}else{rt[counter][ColCom02]					=rset01.getString("Com02");}					//コメント2
-					if(null==rset01.getString("Com03")){					rt[counter][ColCom03]						="";}else{rt[counter][ColCom03]					=rset01.getString("Com03");}					//コメント3
-					rt[counter][ColShimeDate]=rset01.getInt("ShimeDate");				//締日
-					rt[counter][ColShimeBasis]=rset01.getInt("ShimeBasis");			//請求基準
-					if(null==rset01.getTimestamp("EntryDate")){				rt[counter][ColEntryDate]					="";}else{rt[counter][ColEntryDate]				=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){			rt[counter][ColUpdateDate]				="";}else{rt[counter][ColUpdateDate]				=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
-					if(null==rset01.getString("EntryUser")){				rt[counter][ColEntryUser]					="";}else{rt[counter][ColEntryUser]				=rset01.getString("EntryUser");}				//登録者コード
-					if(null==rset01.getString("UpdateUser")){				rt[counter][ColUpdateUser]				="";}else{rt[counter][ColUpdateUser]				=rset01.getString("UpdateUser");}				//更新者コード
-					if(null==rset01.getString("PTMSCD")){					rt[counter][ColPTMSCD]						="";}else{rt[counter][ColPTMSCD]					=rset01.getString("PTMSCD");}					//基幹システム傭車コード
-					if(null==rset01.getString("ExportDataType")){			rt[counter][ColExportDataType]			="";}else{rt[counter][ColExportDataType]			=rset01.getString("ExportDataType");}			//データ抽出タイプ
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingShippingCompanyMstRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

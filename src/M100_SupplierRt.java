@@ -585,40 +585,7 @@ public class M100_SupplierRt{
 				counter = 0;
 				rset01.beforeFirst();
 				
-				while (rset01.next()) {
-					if(null==rset01.getString("ClWh")			){rt[counter][ColClWh]				="";}else{rt[counter][ColClWh]				=rset01.getString("ClWh");}							//担当倉庫
-					if(null==rset01.getString("WHName")			){rt[counter][ColWHName]			="";}else{rt[counter][ColWHName]			=rset01.getString("WHName");}						//担当倉庫名
-					if(null==rset01.getString("ClCd")			){rt[counter][ColClCd]				="";}else{rt[counter][ColClCd]				=rset01.getString("ClCd");}							//荷主CD
-					if(null==rset01.getString("CLName01")		){rt[counter][ColCLName01]			="";}else{rt[counter][ColCLName01]			=rset01.getString("CLName01");}						//荷主表記名
-					if(null==rset01.getString("SPCd")			){rt[counter][ColSPCd]				="";}else{rt[counter][ColSPCd]				=rset01.getString("SPCd");}							//仕入先コード
-					if(null==rset01.getString("SPName01")		){rt[counter][ColSPName01]			="";}else{rt[counter][ColSPName01]			=rset01.getString("SPName01");}						//仕入先表記名
-					if(null==rset01.getString("SPName02")		){rt[counter][ColSPName02]			="";}else{rt[counter][ColSPName02]			=rset01.getString("SPName02");}						//仕入先正式名
-					if(null==rset01.getString("SPName03")		){rt[counter][ColSPName03]			="";}else{rt[counter][ColSPName03]			=rset01.getString("SPName03");}						//仕入先略名
-					if(null==rset01.getString("SPPost")			){rt[counter][ColSPPost]			="";}else{rt[counter][ColSPPost]			=rset01.getString("SPPost");}						//仕入先郵便
-					if(null==rset01.getString("SPAdd01")		){rt[counter][ColSPAdd01]			="";}else{rt[counter][ColSPAdd01]			=rset01.getString("SPAdd01");}						//仕入先住所1
-					if(null==rset01.getString("SPAdd02")		){rt[counter][ColSPAdd02]			="";}else{rt[counter][ColSPAdd02]			=rset01.getString("SPAdd02");}						//仕入先住所2
-					if(null==rset01.getString("SPAdd03")		){rt[counter][ColSPAdd03]			="";}else{rt[counter][ColSPAdd03]			=rset01.getString("SPAdd03");}						//仕入先住所3
-					if(null==rset01.getString("SPTel")			){rt[counter][ColSPTel]			="";}else{rt[counter][ColSPTel]			=rset01.getString("SPTel");}						//仕入先電話
-					if(null==rset01.getString("SPFax")			){rt[counter][ColSPFax]			="";}else{rt[counter][ColSPFax]			=rset01.getString("SPFax");}						//仕入先FAX
-					if(null==rset01.getString("SPMail")			){rt[counter][ColSPMail]			="";}else{rt[counter][ColSPMail]			=rset01.getString("SPMail");}						//仕入先MAIL
-					if(null==rset01.getString("Com01")			){rt[counter][ColCom01]			="";}else{rt[counter][ColCom01]			=rset01.getString("Com01");}						//コメント1
-					if(null==rset01.getString("Com02")			){rt[counter][ColCom02]			="";}else{rt[counter][ColCom02]			=rset01.getString("Com02");}						//コメント2
-					if(null==rset01.getString("Com03")			){rt[counter][ColCom03]			="";}else{rt[counter][ColCom03]			=rset01.getString("Com03");}						//コメント3
-					if(null==rset01.getString("PTMSCDBMN")		){rt[counter][ColPTMSCDBMN]		="";}else{rt[counter][ColPTMSCDBMN]		=rset01.getString("PTMSCDBMN");}					//基幹Sysコード（部門）
-					if(null==rset01.getString("PTMSCDNINUSHI")	){rt[counter][ColPTMSCDNINUSHI]	="";}else{rt[counter][ColPTMSCDNINUSHI]	=rset01.getString("PTMSCDNINUSHI");}				//基幹Sysコード（荷主）
-					rt[counter][ColPaySite]=rset01.getInt("PaySite");		//支払いサイト（月数）
-					rt[counter][ColPayDate]=rset01.getInt("PayDate");		//支払日（末日＝99）
-					rt[counter][ColShimeDate]=rset01.getInt("ShimeDate");	//締め日（末日＝99）
-					if(null==rset01.getTimestamp("EntryDate"	)){rt[counter][ColEntryDate]		="";}else{rt[counter][ColEntryDate]		=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
-					if(null==rset01.getTimestamp("UpdateDate"	)){rt[counter][ColUpdateDate]		="";}else{rt[counter][ColUpdateDate]		=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
-					if(null==rset01.getString("EntryUser")		){rt[counter][ColEntryUser]		="";}else{rt[counter][ColEntryUser]		=rset01.getString("EntryUser");}				//登録者
-					if(null==rset01.getString("UpdateUser")		){rt[counter][ColUpdateUser]		="";}else{rt[counter][ColUpdateUser]		=rset01.getString("UpdateUser");}				//更新者
-					if(null==rset01.getString("DECD")			){rt[counter][ColDECD]				="";}else{rt[counter][ColDECD]				=rset01.getString("DECD");}						//納品先コード
-					if(null==rset01.getString("DepartmentCd")	){rt[counter][ColDepartmentCd]	="";}else{rt[counter][ColDepartmentCd]	=rset01.getString("DepartmentCd");}				//部署CD
-					if(null==rset01.getString("DEName01")		){rt[counter][ColDEName01]			="";}else{rt[counter][ColDEName01]			=rset01.getString("DEName01");}					//納品先名1
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSupplierRt());
 
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

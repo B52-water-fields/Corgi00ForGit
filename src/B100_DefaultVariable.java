@@ -200,7 +200,7 @@ public class B100_DefaultVariable{
 	
 	private static void ClActualDateControl() {
 		ActualDateUnControl = true;
-		Object[][] ParameterMstWankoRtFromParaCd = M100_ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("ActualDateUnControl");
+		Object[][] ParameterMstWankoRtFromParaCd = M100_ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("ActualDateUnControl",0);
 		if(0<ParameterMstWankoRtFromParaCd.length) {
 			for(int i=0;i<ParameterMstWankoRtFromParaCd.length;i++) {
 				if(0==(int)ParameterMstWankoRtFromParaCd[i][M100_ParameterMstWankoRt.ColParaCdSeq]&&0==(int)ParameterMstWankoRtFromParaCd[i][M100_ParameterMstWankoRt.ColParaInt01]) {		//パラメータ数値項目01 = 0なら入荷日管理する
@@ -212,7 +212,7 @@ public class B100_DefaultVariable{
 	
 	private static void ShipPlovisionUnTgtList() {
 		ArrivalShipUnTgt = true;
-		Object[][] ParameterMstWankoRtFromParaCd = M100_ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("ArrivalShipUnTgt");
+		Object[][] ParameterMstWankoRtFromParaCd = M100_ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("ArrivalShipUnTgt",0);
 		if(0<ParameterMstWankoRtFromParaCd.length) {
 			for(int i=0;i<ParameterMstWankoRtFromParaCd.length;i++) {
 				if(0==(int)ParameterMstWankoRtFromParaCd[i][M100_ParameterMstWankoRt.ColParaCdSeq]&&0==(int)ParameterMstWankoRtFromParaCd[i][M100_ParameterMstWankoRt.ColParaInt01]) {		//パラメータ数値項目01 = 0なら入荷日管理する
@@ -239,8 +239,8 @@ public class B100_DefaultVariable{
 					 {"ClWh"		,"1","0","Key"	,A00000_Main.ClWh}					//担当倉庫コード
 					,{"ClCd"		,"1","0","Key"	,A00000_Main.ClCd}					//荷主コード
 					,{"ParaCd"		,"1","0","Key"	,"ArrivalShipUnTgt"}				//パラメータコード
-					,{"ParaCdSeq"	,"1","0","Key"	,"0"}					//ナンバリング
-					,{"ParaName"	,"1","0",""	,"入時ロケ出荷非対称設定"}			//パラメータ名
+					,{"ParaCdSeq"	,"1","0","Key"	,"0"}								//ナンバリング
+					,{"ParaName"	,"1","0",""	,"入時ロケ出荷非対称設定"}				//パラメータ名
 					,{"ParaTxt01"	,"1","0",""	,"ParaInt01=1なら入荷時ロケを出荷対象にしない"}				//パラメータテキスト項目01
 					,{"ParaTxt02"	,"1","0",""	,""}				//パラメータテキスト項目02
 					,{"ParaTxt03"	,"1","0",""	,""}				//パラメータテキスト項目03
