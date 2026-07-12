@@ -277,9 +277,9 @@ public class WM100_CautionMst_00_Search{
 					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
-							TgtCautionCd 	= ""+MainFmTableModel.getValueAt(i,M100_CautionMstRt.ColCautionCd+1);
-							TgtDECD 		= ""+MainFmTableModel.getValueAt(i,M100_CautionMstRt.ColDECD+1);
-							TgtDepartmentCd	= ""+MainFmTableModel.getValueAt(i,M100_CautionMstRt.ColDepartmentCd+1);
+							TgtCautionCd 	= ""+MainFmTableModel.getValueAt(i,1+M100_CautionMstRt.ColCautionCd);
+							TgtDECD 		= ""+MainFmTableModel.getValueAt(i,1+M100_CautionMstRt.ColDECD);
+							TgtDepartmentCd	= ""+MainFmTableModel.getValueAt(i,1+M100_CautionMstRt.ColDepartmentCd);
 						}
 					}
 					if(!"".equals(TgtCautionCd) && !"".equals(TgtDECD)) {
@@ -330,9 +330,9 @@ public class WM100_CautionMst_00_Search{
 						}
 					}
 					if(0<=RemoveTgt) {
-						TgtCautionCd 	= ""+MainFmTableModel.getValueAt(RemoveTgt, 1);
-						TgtDECD 		= ""+MainFmTableModel.getValueAt(RemoveTgt, 4);
-						TgtDepartmentCd	= ""+MainFmTableModel.getValueAt(RemoveTgt, 5);
+						TgtCautionCd 	= ""+MainFmTableModel.getValueAt(RemoveTgt, 1+M100_CautionMstRt.ColCautionCd);
+						TgtDECD 		= ""+MainFmTableModel.getValueAt(RemoveTgt, 1+M100_CautionMstRt.ColDECD);
+						TgtDepartmentCd	= ""+MainFmTableModel.getValueAt(RemoveTgt, 1+M100_CautionMstRt.ColDepartmentCd);
 						MainFmTableModel.removeRow(RemoveTgt);
 						
 						String tgt_table = "KM0090_CAUTION";

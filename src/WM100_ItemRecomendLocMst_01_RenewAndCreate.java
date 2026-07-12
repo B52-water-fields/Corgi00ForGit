@@ -48,7 +48,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		JLabel LB_ClCd					= B100_FrameParts.JLabelSet(	   0, 50,130,20,"荷主コード:"		,10,1);
 		JLabel LB_ClWh					= B100_FrameParts.JLabelSet(	   0, 75,130,20,"担当倉庫コード:"	,10,1);
 		JLabel LB_ItemCd				= B100_FrameParts.JLabelSet(	   0,100,130,20,"商品コード:"		,10,1);
-		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(	   0,125,130,20,"商品表記名:"			,10,1);
+		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(	   0,125,130,20,"商品表記名:"		,10,1);
 		JLabel LB_RecomendLoc			= B100_FrameParts.JLabelSet(	   0,150,130,20,"推奨ロケ:"			,10,1);
 		JLabel LB_LocName				= B100_FrameParts.JLabelSet(	   0,175,130,20,"ロケーション名:"	,10,1);
 		JLabel LB_Type					= B100_FrameParts.JLabelSet(	   0,200,130,20,"ロケタイプ:"		,10,1);

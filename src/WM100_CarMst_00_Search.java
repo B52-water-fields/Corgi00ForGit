@@ -232,9 +232,9 @@ public class WM100_CarMst_00_Search{
 					String TgtCar = "";
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
-							TgtWhCd 				= ""+MainFmTableModel.getValueAt(i, M100_CarMstRt.ColWHCD+1);	if(null==TgtWhCd				) {TgtWhCd="";}
+							TgtWhCd 				= ""+MainFmTableModel.getValueAt(i, M100_CarMstRt.ColWHCD+1);					if(null==TgtWhCd				) {TgtWhCd="";}
 							TgtShippingCompanyCd 	= ""+MainFmTableModel.getValueAt(i, M100_CarMstRt.ColShippingCompanyCd+1);	if(null==TgtShippingCompanyCd	) {TgtShippingCompanyCd="";}
-							TgtCar 					= ""+MainFmTableModel.getValueAt(i, M100_CarMstRt.ColCarCd+1);	if(null==TgtCar					) {TgtCar="";}
+							TgtCar 					= ""+MainFmTableModel.getValueAt(i, M100_CarMstRt.ColCarCd+1);					if(null==TgtCar					) {TgtCar="";}
 						}
 					}
 					if(!"".equals(TgtCar)) {

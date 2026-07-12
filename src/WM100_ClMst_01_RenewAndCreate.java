@@ -42,7 +42,7 @@ public class WM100_ClMst_01_RenewAndCreate{
 		JLabel LB_Add02			= B100_FrameParts.JLabelSet(  0,240,100,20,"住所2:",				11,1);
 		JLabel LB_Add03			= B100_FrameParts.JLabelSet(  0,265,100,20,"住所3:",				11,1);
 		JLabel LB_Tel			= B100_FrameParts.JLabelSet(  0,290,100,20,"電話番号:",			11,1);
-		JLabel LB_Fax			= B100_FrameParts.JLabelSet(  0,315,100,20,"FAX:",				11,1);
+		JLabel LB_Fax			= B100_FrameParts.JLabelSet(  0,315,100,20,"FAX:",					11,1);
 		JLabel LB_Mail			= B100_FrameParts.JLabelSet(  0,340,100,20,"メールアドレス:",		11,1);
 		JLabel LB_Com01			= B100_FrameParts.JLabelSet(  0,365,100,20,"コメント1:",			11,1);
 		JLabel LB_Com02			= B100_FrameParts.JLabelSet(  0,390,100,20,"コメント2:",			11,1);
@@ -400,8 +400,8 @@ public class WM100_ClMst_01_RenewAndCreate{
 						TB_Add02.setText("");
 						TB_Add03.setText("");
 						
-						TB_Add01.setText(""+PostRt[0][1]+PostRt[0][2]);
-						TB_Add02.setText(""+PostRt[0][3]);
+						TB_Add01.setText(""+PostRt[0][M100_PostMstRt.ColPREFECTURES]+PostRt[0][M100_PostMstRt.ColMUNICI01]);
+						TB_Add02.setText(""+PostRt[0][M100_PostMstRt.ColMUNICI02]);
 					}
 				}
 			}

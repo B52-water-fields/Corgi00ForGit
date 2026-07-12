@@ -22,13 +22,13 @@ public class M100_AdjustReasonRt{
 	String GetClCd				= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColClCd];				//荷主コード
 	String GetCLName01			= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColCLName01];			//荷主名
 	String GetWhCd				= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColWhCd];				//倉庫コード
-	String GetWHName			= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColWHName];			//倉庫名
-	String GetAdjustReasonCd	= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColAdjustReasonCd];	//調整理由コード
+	String GetWHName			= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColWHName];				//倉庫名
+	String GetAdjustReasonCd	= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColAdjustReasonCd];		//調整理由コード
 	String GetAdjustReasonName	= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColAdjustReasonName];	//調整理由名
 	String GetEntryDate			= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColEntryDate];			//登録日
-	String GetUpdateDate		= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColUpdateDate];		//更新日
+	String GetUpdateDate		= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColUpdateDate];			//更新日
 	String GetEntryUser			= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColEntryUser];			//登録者
-	String GetUpdateUser		= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColUpdateUser];		//更新者
+	String GetUpdateUser		= (String)AdjustReasonRt[i][M100_AdjustReasonRt.ColUpdateUser];			//更新者
 	
 	*/
 	
@@ -51,8 +51,8 @@ public class M100_AdjustReasonRt{
 					,{"WHName"				,ColWHName				,"String"	,"倉庫名"			,""}
 					,{"AdjustReasonCd"		,ColAdjustReasonCd	,"String"	,"調整理由コード"	,"Key"}
 					,{"AdjustReasonName"	,ColAdjustReasonName	,"String"	,"調整理由名"		,""}
-					,{"EntryDate"			,ColEntryDate			,"String"	,"登録日"			,""}
-					,{"UpdateDate"			,ColUpdateDate		,"String"	,"更新日"			,""}
+					,{"EntryDate"			,ColEntryDate			,"DateTime"	,"登録日"			,""}
+					,{"UpdateDate"			,ColUpdateDate		,"DateTime"	,"更新日"			,""}
 					,{"EntryUser"			,ColEntryUser			,"String"	,"登録者"			,""}
 					,{"UpdateUser"			,ColUpdateUser		,"String"	,"更新者"			,""}
 					};
@@ -170,28 +170,7 @@ public class M100_AdjustReasonRt{
 				
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-				
-				rt = new Object[counter][RtAdjustReasonRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("ClCd")				){rt[counter][ColClCd]					="";}else{rt[counter][ColClCd]					=rset01.getString("ClCd");}						//荷主コード
-					if(null==rset01.getString("CLName01")			){rt[counter][ColCLName01]				="";}else{rt[counter][ColCLName01]				=rset01.getString("CLName01");}					//荷主名
-					if(null==rset01.getString("WhCd")				){rt[counter][ColWhCd]					="";}else{rt[counter][ColWhCd]					=rset01.getString("WhCd");}						//倉庫コード
-					if(null==rset01.getString("WHName")				){rt[counter][ColWHName]				="";}else{rt[counter][ColWHName]				=rset01.getString("WHName");}					//倉庫名
-					if(null==rset01.getString("AdjustReasonCd")		){rt[counter][ColAdjustReasonCd]		="";}else{rt[counter][ColAdjustReasonCd]		=rset01.getString("AdjustReasonCd");}			//調整理由コード
-					if(null==rset01.getString("AdjustReasonName")	){rt[counter][ColAdjustReasonName]	="";}else{rt[counter][ColAdjustReasonName]	=rset01.getString("AdjustReasonName");}			//調整理由名
-					if(null==rset01.getTimestamp("EntryDate")		){rt[counter][ColEntryDate]			="";}else{rt[counter][ColEntryDate]			=B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}	//登録日
-					if(null==rset01.getTimestamp("UpdateDate")		){rt[counter][ColUpdateDate]			="";}else{rt[counter][ColUpdateDate]			=B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//更新日
-					if(null==rset01.getString("EntryUser")			){rt[counter][ColEntryUser]			="";}else{rt[counter][ColEntryUser]			=rset01.getString("EntryUser");}				//登録者
-					if(null==rset01.getString("UpdateUser")			){rt[counter][ColUpdateUser]			="";}else{rt[counter][ColUpdateUser]			=rset01.getString("UpdateUser");}				//更新者
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtAdjustReasonRt());
 
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

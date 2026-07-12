@@ -849,15 +849,15 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 						TB_Add02.setText("");
 						TB_Add03.setText("");
 						
-						TB_Add01.setText(""+PostRt[0][1]+PostRt[0][2]);
-						TB_Add02.setText(""+PostRt[0][3]);
+						TB_Add01.setText(""+PostRt[0][M100_PostMstRt.ColPREFECTURES]+PostRt[0][M100_PostMstRt.ColMUNICI01]);
+						TB_Add02.setText(""+PostRt[0][M100_PostMstRt.ColMUNICI02]);
 					}
 					if(2<(""+PostRt[0][4]).length()) {
-						TB_PrefecturesCd.setText((""+PostRt[0][4]).substring(0,2));
+						TB_PrefecturesCd.setText((""+PostRt[0][M100_PostMstRt.ColMUNICIPALITY_CD]).substring(0,2));
 					}else {
 						TB_PrefecturesCd.setText("");
 					}
-					TB_MunicipalityCd.setText(""+PostRt[0][4]);
+					TB_MunicipalityCd.setText(""+PostRt[0][M100_PostMstRt.ColMUNICIPALITY_CD]);
 				}
 			}
 		});

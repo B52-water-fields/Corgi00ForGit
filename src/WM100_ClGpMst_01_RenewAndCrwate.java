@@ -134,25 +134,25 @@ public class WM100_ClGpMst_01_RenewAndCrwate{
 						SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,AllSearch);
 			
 			if(0<ClGpMstRt.length) {
-				TB_ClGpCD.setText(		""+ClGpMstRt[0][ 0]);	//荷主グループCD
-				TB_CLGpName01.setText(	""+ClGpMstRt[0][ 1]);	//荷主表記名
-				TB_CLGpName02.setText(	""+ClGpMstRt[0][ 2]);	//荷主正式名
-				TB_CLGpName03.setText(	""+ClGpMstRt[0][ 3]);	//荷主略名
-				TB_Post.setText(		""+ClGpMstRt[0][ 4]);	//郵便番号
-				TB_Add01.setText(		""+ClGpMstRt[0][ 5]);	//住所1
-				TB_Add02.setText(		""+ClGpMstRt[0][ 6]);	//住所2
-				TB_Add03.setText(		""+ClGpMstRt[0][ 7]);	//住所3
-				TB_Tel.setText(			""+ClGpMstRt[0][ 8]);	//電話番号
-				TB_Fax.setText(			""+ClGpMstRt[0][ 9]);	//FAX
-				TB_Mail.setText(		""+ClGpMstRt[0][10]);	//メールアドレス
-				TB_Com01.setText(		""+ClGpMstRt[0][11]);	//コメント1
-				TB_Com02.setText(		""+ClGpMstRt[0][12]);	//コメント2
-				TB_Com03.setText(		""+ClGpMstRt[0][13]);	//コメント3
-				TB_EntryDate.setText(	""+ClGpMstRt[0][14]);	//データ登録日時
-				TB_UpdateDate.setText(	""+ClGpMstRt[0][15]);	//データ更新日時
-				TB_EntryUser.setText(	""+ClGpMstRt[0][16]);	//登録者コード
-				TB_UpdateUser.setText(	""+ClGpMstRt[0][17]);	//更新者コード
-				TB_PassWord.setText(	""+ClGpMstRt[0][18]);	//パスワード
+				TB_ClGpCD.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColClGpCD]);		//荷主グループCD
+				TB_CLGpName01.setText(	""+ClGpMstRt[0][M100_ClGpMstRt.ColCLGpName01]);	//荷主表記名
+				TB_CLGpName02.setText(	""+ClGpMstRt[0][M100_ClGpMstRt.ColCLGpName02]);	//荷主正式名
+				TB_CLGpName03.setText(	""+ClGpMstRt[0][M100_ClGpMstRt.ColCLGpName03]);	//荷主略名
+				TB_Post.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColPost]);			//郵便番号
+				TB_Add01.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColAdd01]);			//住所1
+				TB_Add02.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColAdd02]);			//住所2
+				TB_Add03.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColAdd03]);			//住所3
+				TB_Tel.setText(			""+ClGpMstRt[0][M100_ClGpMstRt.ColTel]);			//電話番号
+				TB_Fax.setText(			""+ClGpMstRt[0][M100_ClGpMstRt.ColFax]);			//FAX
+				TB_Mail.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColMail]);			//メールアドレス
+				TB_Com01.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColCom01]);			//コメント1
+				TB_Com02.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColCom02]);			//コメント2
+				TB_Com03.setText(		""+ClGpMstRt[0][M100_ClGpMstRt.ColCom03]);			//コメント3
+				TB_EntryDate.setText(	""+ClGpMstRt[0][M100_ClGpMstRt.ColEntryDate]);	//データ登録日時
+				TB_UpdateDate.setText(	""+ClGpMstRt[0][M100_ClGpMstRt.ColUpdateDate]);	//データ更新日時
+				TB_EntryUser.setText(	""+ClGpMstRt[0][M100_ClGpMstRt.ColEntryUser]);	//登録者コード
+				TB_UpdateUser.setText(	""+ClGpMstRt[0][M100_ClGpMstRt.ColUpdateUser]);	//更新者コード
+				TB_PassWord.setText(	""+ClGpMstRt[0][M100_ClGpMstRt.ColPassWord]);		//パスワード
 			}
 		}
 		

@@ -28,30 +28,30 @@ public class M100_ClGpMstRt{
 			AllSearch);
 			
 	String GetClGpCD		= (String)ClGpMstRt[i][M100_ClGpMstRt.ColClGpCD]		//荷主グループCD
-	String GetCLGpName01	= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName01]	//荷主グループ名1
-	String GetCLGpName02	= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName02]	//荷主グループ名2
-	String GetCLGpName03	= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName03]	//荷主グループ名3
+	String GetCLGpName01	= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName01]	//荷主グループ表記名
+	String GetCLGpName02	= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName02]	//荷主グループ正式名
+	String GetCLGpName03	= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCLGpName03]	//荷主グループ略名
 	String GetPost			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColPost]			//郵便番号
-	String GetAdd01			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColAdd01]		//住所1
-	String GetAdd02			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColAdd02]		//住所2
-	String GetAdd03			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColAdd03]		//住所3
+	String GetAdd01			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColAdd01]			//住所1
+	String GetAdd02			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColAdd02]			//住所2
+	String GetAdd03			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColAdd03]			//住所3
 	String GetTel			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColTel]			//電話番号
 	String GetFax			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColFax]			//FAX
 	String GetMail			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColMail]			//メールアドレス
-	String GetCom01			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCom01]		//コメント1
-	String GetCom02			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCom02]		//コメント2
-	String GetCom03			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCom03]		//コメント3
-	String GetEntryDate		= (String)ClGpMstRt[i][M100_ClGpMstRt.ColEntryDate]	//データ登録日時
+	String GetCom01			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCom01]			//コメント1
+	String GetCom02			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCom02]			//コメント2
+	String GetCom03			= (String)ClGpMstRt[i][M100_ClGpMstRt.ColCom03]			//コメント3
+	String GetEntryDate		= (String)ClGpMstRt[i][M100_ClGpMstRt.ColEntryDate]		//データ登録日時
 	String GetUpdateDate	= (String)ClGpMstRt[i][M100_ClGpMstRt.ColUpdateDate]	//データ更新日時
-	String GetEntryUser		= (String)ClGpMstRt[i][M100_ClGpMstRt.ColEntryUser]	//登録者コード
+	String GetEntryUser		= (String)ClGpMstRt[i][M100_ClGpMstRt.ColEntryUser]		//登録者コード
 	String GetUpdateUser	= (String)ClGpMstRt[i][M100_ClGpMstRt.ColUpdateUser]	//更新者コード
 	String GetPassWord		= (String)ClGpMstRt[i][M100_ClGpMstRt.ColPassWord]		//パスワード
 	*/
 	//戻り値カラム
 	static final  int ColClGpCD		= (int) 0;	//荷主グループCD
-	static final  int ColCLGpName01	= (int) 1;	//荷主グループ名1
-	static final  int ColCLGpName02	= (int) 2;	///荷主グループ名2
-	static final  int ColCLGpName03	= (int) 3;	//荷主グループ名3
+	static final  int ColCLGpName01	= (int) 1;	//荷主グループ表記名
+	static final  int ColCLGpName02	= (int) 2;	//荷主グループ正式名
+	static final  int ColCLGpName03	= (int) 3;	//荷主グループ略名
 	static final  int ColPost			= (int) 4;	//郵便番号
 	static final  int ColAdd01			= (int) 5;	//住所1
 	static final  int ColAdd02			= (int) 6;	//住所2
@@ -289,38 +289,8 @@ public class M100_ClGpMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-
-				rt = new Object[counter][RtSettingClGpMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("ClGpCD")){		rt[counter][ColClGpCD] 		= "";}else{rt[counter][ColClGpCD] 		= rset01.getString("ClGpCD");}		//荷主グループCD
-					if(null==rset01.getString("CLGpName01")){	rt[counter][ColCLGpName01] 	= "";}else{rt[counter][ColCLGpName01]	= rset01.getString("CLGpName01");}	//荷主グループ名1
-					if(null==rset01.getString("CLGpName02")){	rt[counter][ColCLGpName02] 	= "";}else{rt[counter][ColCLGpName02]	= rset01.getString("CLGpName02");}	//荷主グループ名2
-					if(null==rset01.getString("CLGpName03")){	rt[counter][ColCLGpName03] 	= "";}else{rt[counter][ColCLGpName03]	= rset01.getString("CLGpName03");}	//荷主グループ名3
-					if(null==rset01.getString("Post")){			rt[counter][ColPost] 			= "";}else{rt[counter][ColPost] 		= rset01.getString("Post");}		//郵便番号
-					if(null==rset01.getString("Add01")){		rt[counter][ColAdd01] 			= "";}else{rt[counter][ColAdd01] 		= rset01.getString("Add01");}		//住所1
-					if(null==rset01.getString("Add02")){		rt[counter][ColAdd02] 			= "";}else{rt[counter][ColAdd02]		= rset01.getString("Add02");}		//住所2
-					if(null==rset01.getString("Add03")){		rt[counter][ColAdd03] 			= "";}else{rt[counter][ColAdd03]		= rset01.getString("Add03");}		//住所3
-					if(null==rset01.getString("Tel")){			rt[counter][ColTel] 			= "";}else{rt[counter][ColTel]			= rset01.getString("Tel");}			//電話番号
-					if(null==rset01.getString("Fax")){			rt[counter][ColFax] 			= "";}else{rt[counter][ColFax]			= rset01.getString("Fax");}			//FAX
-					if(null==rset01.getString("Mail")){			rt[counter][ColMail] 			= "";}else{rt[counter][ColMail]		= rset01.getString("Mail");}		//メールアドレス
-					if(null==rset01.getString("Com01")){		rt[counter][ColCom01] 			= "";}else{rt[counter][ColCom01]		= rset01.getString("Com01");}		//コメント1
-					if(null==rset01.getString("Com02")){		rt[counter][ColCom02] 			= "";}else{rt[counter][ColCom02]		= rset01.getString("Com02");}		//コメント2
-					if(null==rset01.getString("Com03")){		rt[counter][ColCom03] 			= "";}else{rt[counter][ColCom03]		= rset01.getString("Com03");}		//コメント3
-					if(null==rset01.getTimestamp("EntryDate")){	rt[counter][ColEntryDate] 	= "";}else{rt[counter][ColEntryDate]	= B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){rt[counter][ColUpdateDate] 	= "";}else{rt[counter][ColUpdateDate]	= B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}		//データ更新日時
-					if(null==rset01.getString("EntryUser")){	rt[counter][ColEntryUser] 	= "";}else{rt[counter][ColEntryUser]	= rset01.getString("EntryUser");}	//登録者コード
-					if(null==rset01.getString("UpdateUser")){	rt[counter][ColUpdateUser] 	= "";}else{rt[counter][ColUpdateUser]	= rset01.getString("UpdateUser");}	//更新者コード
-					if(null==rset01.getString("PassWord")){		rt[counter][ColPassWord] 		= "";}else{rt[counter][ColPassWord]	= rset01.getString("PassWord");}		//パスワード
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingClGpMstRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

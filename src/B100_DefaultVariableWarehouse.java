@@ -48,22 +48,22 @@ public class B100_DefaultVariableWarehouse{
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 		
 		Object[][] SetString = {
-				 {"WHCD"		,"1","0","Key"	,GetWHCD}		//倉庫コード
-				,{"WHName"		,"1","0",""		,GetWHName}		//拠点倉庫名
-				,{"Post"		,"1","0",""		,GetPost}		//拠点倉庫郵便番号
-				,{"Add01"		,"1","0",""		,GetAdd01}		//拠点倉庫住所1
-				,{"Add02"		,"1","0",""		,GetAdd02}		//拠点倉庫住所2
-				,{"Tel"			,"1","0",""		,GetTel}		//拠点倉庫電話
-				,{"Fax"			,"1","0",""		,GetFax}		//拠点倉庫FAX
-				,{"Mail"		,"1","0",""		,GetMail}		//拠点倉庫MAIL
-				,{"Com01"		,"1","0",""		,GetCom01}		//コメント１
-				,{"Com02"		,"1","0",""		,GetCom02}		//コメント２
-				,{"Com03"		,"1","0",""		,GetCom03}		//コメント３
-				,{"PTMSCD"		,"1","0",""		,GetPTMSCD}		//基幹システム連携用事業所CD
-				,{"EntryDate"	,"1","0",""		,now_dtm}		//データ登録日時
-				,{"UpdateDate"	,"1","0",""		,now_dtm}		//データ更新日時
-				,{"EntryUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//登録者コード
-				,{"UpdateUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//更新者コード
+				 {"WHCD"		,"1","1","Key"	,GetWHCD}		//倉庫コード
+				,{"WHName"		,"1","1",""		,GetWHName}		//拠点倉庫名
+				,{"Post"		,"1","1",""		,GetPost}		//拠点倉庫郵便番号
+				,{"Add01"		,"1","1",""		,GetAdd01}		//拠点倉庫住所1
+				,{"Add02"		,"1","1",""		,GetAdd02}		//拠点倉庫住所2
+				,{"Tel"			,"1","1",""		,GetTel}		//拠点倉庫電話
+				,{"Fax"			,"1","1",""		,GetFax}		//拠点倉庫FAX
+				,{"Mail"		,"1","1",""		,GetMail}		//拠点倉庫MAIL
+				,{"Com01"		,"1","1",""		,GetCom01}		//コメント１
+				,{"Com02"		,"1","1",""		,GetCom02}		//コメント２
+				,{"Com03"		,"1","1",""		,GetCom03}		//コメント３
+				,{"PTMSCD"		,"1","1",""		,GetPTMSCD}		//基幹システム連携用事業所CD
+				,{"EntryDate"	,"1","1",""		,now_dtm}		//データ登録日時
+				,{"UpdateDate"	,"1","1",""		,now_dtm}		//データ更新日時
+				,{"EntryUser"	,"1","1",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//登録者コード
+				,{"UpdateUser"	,"1","1",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}		//更新者コード
 				};
 		String tgt_table = "KM0010_WHMST";
 		String TgtDB = "NANKO";

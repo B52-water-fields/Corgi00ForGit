@@ -1860,7 +1860,7 @@ public class WT100_Stock_20_Move{
 			SetData[1][Tools100_StockQtyControl.ColControlQty] 	= GetMoveBrTotalQty;
 			
 			Object[][] StockQtyControlErr = Tools100_StockQtyControl.StockQtyControl(SetData) ;
-			String ErrString = "謎エラータイミングが超悪かったようです。在庫ぶっ壊れたかも";
+			String ErrString = "謎エラー：タイミングが超悪かったようです。在庫ぶっ壊れたかも";
 			boolean ErrView = false;
 			
 			int BeforeFromQty			= 0;	//（移動前）移動元在庫数

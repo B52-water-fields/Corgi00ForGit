@@ -42,8 +42,8 @@ public class WM100_PostMst_00_Search{
 		main_fm.add(PN_Search);
 		
 		//検索条件
-		JLabel LB_SearchPOST  = B100_FrameParts.JLabelSet(	                  0,25,100,20,"郵便番号:",11,1);
-		JLabel LB_SearchAdd   = B100_FrameParts.JLabelSet(	                  0,50,100,20,"住所:"    ,11,1);
+		JLabel LB_SearchPOST  = B100_FrameParts.JLabelSet(	      	              0,25,100,20,"郵便番号:",11,1);
+		JLabel LB_SearchAdd   = B100_FrameParts.JLabelSet(	          	          0,50,100,20,"住所:"    ,11,1);
 		final JTextField TB_SearchPOST  = B100_FrameParts.JTextFieldSet(		100,25,100,20,"",11,0);
 		final JTextField TB_SearchAdd   =B100_FrameParts.JTextFieldSet(		100,50,100,20,"",11,0);
 		JLabel LB2_SearchPOST  = B100_FrameParts.JLabelSet(	                200,25,100,20,"で始まる" ,11,0);

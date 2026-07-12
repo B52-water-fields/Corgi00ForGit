@@ -28,17 +28,17 @@ public class WM100_PostMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_Post  = B100_FrameParts.JLabelSet(	           	  0, 40,100,20,"郵便番号:"  ,11,1);
-		JLabel LB_Prefecturs   = B100_FrameParts.JLabelSet(	  	  0, 65,100,20,"県:"        ,11,1);
-		JLabel LB_Munic01   = B100_FrameParts.JLabelSet(	     	  0, 90,100,20,"市区町村:"  ,11,1);
-		JLabel LB_Munic02   = B100_FrameParts.JLabelSet(			  0,115,100,20,"町丁目:"    ,11,1);
-		JLabel LB_MuniciparytyCd   = B100_FrameParts.JLabelSet(	  0,140,100,20,"市区町村CD:",11,1);
+		JLabel LB_Post  			= B100_FrameParts.JLabelSet(	  0, 40,100,20,"郵便番号:"  ,11,1);
+		JLabel LB_Prefecturs   		= B100_FrameParts.JLabelSet( 	  0, 65,100,20,"県:"        ,11,1);
+		JLabel LB_Munic01   		= B100_FrameParts.JLabelSet(  	  0, 90,100,20,"市区町村:"  ,11,1);
+		JLabel LB_Munic02   		= B100_FrameParts.JLabelSet(	  0,115,100,20,"町丁目:"    ,11,1);
+		JLabel LB_MuniciparytyCd   	= B100_FrameParts.JLabelSet(	  0,140,100,20,"市区町村CD:",11,1);
 		
-		final JTextField TB_Post  = B100_FrameParts.JTextFieldSet(	     	  	100, 40,100,20,"",11,0);
-		final JTextField TB_Prefecturs   = B100_FrameParts.JTextFieldSet( 	 	100, 65,100,20,"",11,0);
-		final JTextField TB_Munic01   = B100_FrameParts.JTextFieldSet(		   	100, 90,200,20,"",11,0);
-		final JTextField TB_Munic02   = B100_FrameParts.JTextFieldSet(			100,115,200,20,"",11,0);
-		final JTextField TB_MuniciparytyCd   = B100_FrameParts.JTextFieldSet(	100,140,100,20,"",11,0);
+		final JTextField TB_Post  			= B100_FrameParts.JTextFieldSet( 	100, 40,100,20,"",11,0);
+		final JTextField TB_Prefecturs   	= B100_FrameParts.JTextFieldSet( 	100, 65,100,20,"",11,0);
+		final JTextField TB_Munic01   		= B100_FrameParts.JTextFieldSet( 	100, 90,200,20,"",11,0);
+		final JTextField TB_Munic02   		= B100_FrameParts.JTextFieldSet(	100,115,200,20,"",11,0);
+		final JTextField TB_MuniciparytyCd	= B100_FrameParts.JTextFieldSet(	100,140,100,20,"",11,0);
 		
 		if(null==TgtPost) {TgtPost="";}
 		TgtPost = B100_TextControl.num_only_String(TgtPost);
@@ -55,11 +55,11 @@ public class WM100_PostMst_01_RenewAndCreate{
 			Object[][] PostRt = M100_PostMstRt.PostRt(SearchPOST,SearchAdd,AllSearch,PostPerfectMatch);
 			
 			if(0<PostRt.length) {
-				TB_Post.setText(          ""+PostRt[0][0]);
-				TB_Prefecturs.setText(    ""+PostRt[0][1]);
-				TB_Munic01.setText(       ""+PostRt[0][2]);
-				TB_Munic02.setText(       ""+PostRt[0][3]);
-				TB_MuniciparytyCd.setText(""+PostRt[0][4]);
+				TB_Post.setText(          ""+PostRt[0][M100_PostMstRt.ColPOST]);
+				TB_Prefecturs.setText(    ""+PostRt[0][M100_PostMstRt.ColPREFECTURES]);
+				TB_Munic01.setText(       ""+PostRt[0][M100_PostMstRt.ColMUNICI01]);
+				TB_Munic02.setText(       ""+PostRt[0][M100_PostMstRt.ColMUNICI02]);
+				TB_MuniciparytyCd.setText(""+PostRt[0][M100_PostMstRt.ColMUNICIPALITY_CD]);
 			}
 		}
 		

@@ -32,12 +32,12 @@ public class WM100_WhMst_01_RenewAndCreate{
 
 		JLabel LB_WHCD  		= B100_FrameParts.JLabelSet(  0, 40,100,20,"倉庫コード:"			,11,1);
 		JLabel LB_WHName  		= B100_FrameParts.JLabelSet(  0, 65,100,20,"拠点倉庫名:"			,11,1);
-		JLabel LB_Post  		= B100_FrameParts.JLabelSet(  0, 90,100,20,"拠点倉庫郵便番号:"	,11,1);
+		JLabel LB_Post  		= B100_FrameParts.JLabelSet(  0, 90,100,20,"拠点倉庫郵便番号:"		,11,1);
 		JLabel LB_Add01  		= B100_FrameParts.JLabelSet(  0,115,100,20,"拠点倉庫住所1:"		,11,1);
 		JLabel LB_Add02  		= B100_FrameParts.JLabelSet(  0,140,100,20,"拠点倉庫住所2:"		,11,1);
-		JLabel LB_Tel 			= B100_FrameParts.JLabelSet(  0,165,100,20,"拠点倉庫電話:"		,11,1);
+		JLabel LB_Tel 			= B100_FrameParts.JLabelSet(  0,165,100,20,"拠点倉庫電話:"			,11,1);
 		JLabel LB_Fax  			= B100_FrameParts.JLabelSet(  0,190,100,20,"拠点倉庫FAX:"			,11,1);
-		JLabel LB_Mail  		= B100_FrameParts.JLabelSet(  0,215,100,20,"拠点倉庫MAIL:"		,11,1);
+		JLabel LB_Mail  		= B100_FrameParts.JLabelSet(  0,215,100,20,"拠点倉庫MAIL:"			,11,1);
 		JLabel LB_Com01  		= B100_FrameParts.JLabelSet(  0,240,100,20,"コメント１:"			,11,1);
 		JLabel LB_Com02  		= B100_FrameParts.JLabelSet(  0,265,100,20,"コメント２:"			,11,1);
 		JLabel LB_Com03  		= B100_FrameParts.JLabelSet(  0,290,100,20,"コメント３:"			,11,1);
@@ -192,8 +192,8 @@ public class WM100_WhMst_01_RenewAndCreate{
 						TB_Add01.setText("");
 						TB_Add02.setText("");
 						
-						TB_Add01.setText(""+PostRt[0][1]+PostRt[0][2]);
-						TB_Add02.setText(""+PostRt[0][3]);
+						TB_Add01.setText(""+PostRt[0][M100_PostMstRt.ColPREFECTURES]+PostRt[0][M100_PostMstRt.ColMUNICI01]);
+						TB_Add02.setText(""+PostRt[0][M100_PostMstRt.ColMUNICI02]);
 					}
 				}
 			}
@@ -204,18 +204,18 @@ public class WM100_WhMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				boolean KickFg = false;
 				
-				String GetWHCD  = TB_WHCD.getText();	if(null==GetWHCD){GetWHCD = "";}		//倉庫コード
-				String GetWHName = TB_WHName.getText();	if(null==GetWHName){GetWHName = "";}	//拠点倉庫名
-				String GetPost = TB_Post.getText();		if(null==GetPost){GetPost = "";}		//拠点倉庫郵便番号
-				String GetAdd01 = TB_Add01.getText();	if(null==GetAdd01){GetAdd01 = "";}		//拠点倉庫住所1
-				String GetAdd02 = TB_Add02.getText();	if(null==GetAdd02){GetAdd02 = "";}		//拠点倉庫住所2
-				String GetTel = TB_Tel.getText();		if(null==GetTel){GetTel = "";}			//拠点倉庫電話
-				String GetFax = TB_Fax.getText();		if(null==GetFax){GetFax = "";}			//拠点倉庫FAX
-				String GetMail = TB_Mail.getText();		if(null==GetMail){GetMail = "";}		//拠点倉庫MAIL
-				String GetCom01 = TB_Com01.getText();	if(null==GetCom01){GetCom01 = "";}		//コメント１
-				String GetCom02 = TB_Com02.getText();	if(null==GetCom02){GetCom02 = "";}		//コメント２
-				String GetCom03 = TB_Com03.getText();	if(null==GetCom03){GetCom03 = "";}		//コメント３
-				String GetPTMSCD = TB_PTMSCD.getText();	if(null==GetPTMSCD){GetPTMSCD = "";}	//基幹SysCD
+				String GetWHCD  	= TB_WHCD.getText();	if(null==GetWHCD	){GetWHCD 	= "";}	//倉庫コード
+				String GetWHName	= TB_WHName.getText();	if(null==GetWHName	){GetWHName = "";}	//拠点倉庫名
+				String GetPost 		= TB_Post.getText();	if(null==GetPost	){GetPost 	= "";}	//拠点倉庫郵便番号
+				String GetAdd01 	= TB_Add01.getText();	if(null==GetAdd01	){GetAdd01 	= "";}	//拠点倉庫住所1
+				String GetAdd02 	= TB_Add02.getText();	if(null==GetAdd02	){GetAdd02 	= "";}	//拠点倉庫住所2
+				String GetTel 		= TB_Tel.getText();		if(null==GetTel		){GetTel 	= "";}	//拠点倉庫電話
+				String GetFax 		= TB_Fax.getText();		if(null==GetFax		){GetFax 	= "";}	//拠点倉庫FAX
+				String GetMail 		= TB_Mail.getText();	if(null==GetMail	){GetMail 	= "";}	//拠点倉庫MAIL
+				String GetCom01 	= TB_Com01.getText();	if(null==GetCom01	){GetCom01 	= "";}	//コメント１
+				String GetCom02 	= TB_Com02.getText();	if(null==GetCom02	){GetCom02 	= "";}	//コメント２
+				String GetCom03 	= TB_Com03.getText();	if(null==GetCom03	){GetCom03 	= "";}	//コメント３
+				String GetPTMSCD 	= TB_PTMSCD.getText();	if(null==GetPTMSCD	){GetPTMSCD = "";}	//基幹SysCD
 				
 				GetWHCD	= B100_TextControl.only1byte_String(GetWHCD);
 				

@@ -429,8 +429,8 @@ public class WM100_ItemMst_00_Search{
 					
 					for(int i=0;i<RowCount;i++) {
 						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
-							TgtClgpCd 	= ""+MainFmTableModel.getValueAt(i, M100_ItemMstRt.ColClGpCd+1);
-							TgtItemCd 	= ""+MainFmTableModel.getValueAt(i, M100_ItemMstRt.ColItemCd+1);
+							TgtClgpCd 	= ""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColClGpCd);
+							TgtItemCd 	= ""+MainFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemCd);
 						}
 					}
 					if(!"".equals(TgtClgpCd) && !"".equals(TgtItemCd)) {

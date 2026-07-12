@@ -117,7 +117,7 @@ public class WM100_ClMst_00_Search{
 		
 		Object[][] RtSettingClMstRt=M100_ClMstRt.RtSettingClMstRt();
 		
-String[] columnNames01 = new String[RtSettingClMstRt.length+1];
+		String[] columnNames01 = new String[RtSettingClMstRt.length+1];
 		
 		columnNames01[0] = "Fg";
 		for(int i=0;i<RtSettingClMstRt.length;i++) {

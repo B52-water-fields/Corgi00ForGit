@@ -39,12 +39,12 @@ public class M100_UserMstRt{
 			SearchDelFg,
 			AllSearch);
 	
-	String GetWHCD					= (String)UserMstRt[i][M100_UserMstRt.ColWHCD];					//倉庫コード
+	String GetWHCD					= (String)UserMstRt[i][M100_UserMstRt.ColWHCD];						//倉庫コード
 	String GetShippingCompanyCd		= (String)UserMstRt[i][M100_UserMstRt.ColShippingCompanyCd];		//運送会社CD
 	String GetShippingCompanyName01	= (String)UserMstRt[i][M100_UserMstRt.ColShippingCompanyName01];	//運送会社名
 	String GetUserCd				= (String)UserMstRt[i][M100_UserMstRt.ColUserCd];					//ユーザーCD
-	String GetPassWord				= (String)UserMstRt[i][M100_UserMstRt.ColPassWord];				//パスワード
-	int AuthorityFG					= (int)UserMstRt[i][M100_UserMstRt.ColAuthorityFG];				//権限区分
+	String GetPassWord				= (String)UserMstRt[i][M100_UserMstRt.ColPassWord];					//パスワード
+	int AuthorityFG					= (int)UserMstRt[i][M100_UserMstRt.ColAuthorityFG];					//権限区分
 	String GetCarCd					= (String)UserMstRt[i][M100_UserMstRt.ColCarCd];					//標準車輛CD
 	String GetCarName01				= (String)UserMstRt[i][M100_UserMstRt.ColCarName01];				//車両名称01
 	String GetCarName02				= (String)UserMstRt[i][M100_UserMstRt.ColCarName02];				//車両名称02
@@ -52,13 +52,13 @@ public class M100_UserMstRt{
 	String GetUserName01			= (String)UserMstRt[i][M100_UserMstRt.ColUserName01];				//ユーザー名1
 	String GetUserName02			= (String)UserMstRt[i][M100_UserMstRt.ColUserName02];				//ユーザー名2
 	String GetUserName03			= (String)UserMstRt[i][M100_UserMstRt.ColUserName03];				//ユーザー名3
-	String GetPost					= (String)UserMstRt[i][M100_UserMstRt.ColPost];					//郵便番号
+	String GetPost					= (String)UserMstRt[i][M100_UserMstRt.ColPost];						//郵便番号
 	String GetAdd01					= (String)UserMstRt[i][M100_UserMstRt.ColAdd01];					//住所1
 	String GetAdd02					= (String)UserMstRt[i][M100_UserMstRt.ColAdd02];					//住所2
 	String GetAdd03					= (String)UserMstRt[i][M100_UserMstRt.ColAdd03];					//住所3
 	String GetTel					= (String)UserMstRt[i][M100_UserMstRt.ColTel];						//電話番号
 	String GetFax					= (String)UserMstRt[i][M100_UserMstRt.ColFax];						//FAX
-	String GetMail					= (String)UserMstRt[i][M100_UserMstRt.ColMail];					//メールアドレス
+	String GetMail					= (String)UserMstRt[i][M100_UserMstRt.ColMail];						//メールアドレス
 	String GetCom01					= (String)UserMstRt[i][M100_UserMstRt.ColCom01];					//コメント1
 	String GetCom02					= (String)UserMstRt[i][M100_UserMstRt.ColCom02];					//コメント2
 	String GetCom03					= (String)UserMstRt[i][M100_UserMstRt.ColCom03];					//コメント3
@@ -110,38 +110,38 @@ public class M100_UserMstRt{
 	
 	public static Object[][] RtSettingUserMstRt(){
 		Object[][] RtSettingUserMstRt = {
-				 {"WHCD"					,ColWHCD						,"String"	,"倉庫コード"}
-				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"}
-				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社名"}
-				,{"UserCd"					,ColUserCd						,"String"	,"ユーザーCD"}
-				,{"PassWord"				,ColPassWord					,"String"	,"パスワード"}
-				,{"AuthorityFG"				,ColAuthorityFG				,"int"		,"権限区分"}
-				,{"CarCd"					,ColCarCd						,"String"	,"標準車輛CD"}
-				,{"CarName01"				,ColCarName01					,"String"	,"車両名称01"}
-				,{"CarName02"				,ColCarName02					,"String"	,"車両名称02"}
-				,{"CarName03"				,ColCarName03					,"String"	,"車両名称03"}
-				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"}
-				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"}
-				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"}
-				,{"Post"					,ColPost						,"String"	,"郵便番号"}
-				,{"Add01"					,ColAdd01						,"String"	,"住所1"}
-				,{"Add02"					,ColAdd02						,"String"	,"住所2"}
-				,{"Add03"					,ColAdd03						,"String"	,"住所3"}
-				,{"Tel"						,ColTel						,"String"	,"電話番号"}
-				,{"Fax"						,ColFax						,"String"	,"FAX"}
-				,{"Mail"					,ColMail						,"String"	,"メールアドレス"}
-				,{"Com01"					,ColCom01						,"String"	,"コメント1"}
-				,{"Com02"					,ColCom02						,"String"	,"コメント2"}
-				,{"Com03"					,ColCom03						,"String"	,"コメント3"}
-				,{"EntryDate"				,ColEntryDate					,"String"	,"データ登録日時"}
-				,{"UpdateDate"				,ColUpdateDate				,"String"	,"データ更新日時"}
-				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"}
-				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"}
-				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システムユーザーコード"}
-				,{"DelFg"					,ColDelFg						,"int"		,"削除区分"}
-				,{"WHName"					,ColWHName						,"String"	,"倉庫名"}
-				,{"MainClient"				,ColMainClient				,"String"	,"主要担当荷主CD"}
-				,{"CLName01"				,ColCLName01					,"String"	,"主要担当荷主名"}
+				 {"WHCD"					,ColWHCD						,"String"	,"倉庫コード"			,"Key"}
+				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"			,"Key"}
+				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社名"			,""}
+				,{"UserCd"					,ColUserCd						,"String"	,"ユーザーCD"			,"Key"}
+				,{"PassWord"				,ColPassWord					,"String"	,"パスワード"			,""}
+				,{"AuthorityFG"				,ColAuthorityFG				,"int"		,"権限区分"				,""}
+				,{"CarCd"					,ColCarCd						,"String"	,"標準車輛CD"			,""}
+				,{"CarName01"				,ColCarName01					,"String"	,"車両表記名"			,""}
+				,{"CarName02"				,ColCarName02					,"String"	,"車両正式名"			,""}
+				,{"CarName03"				,ColCarName03					,"String"	,"車両略名"				,""}
+				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"			,""}
+				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"			,""}
+				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"			,""}
+				,{"Post"					,ColPost						,"String"	,"郵便番号"				,""}
+				,{"Add01"					,ColAdd01						,"String"	,"住所1"				,""}
+				,{"Add02"					,ColAdd02						,"String"	,"住所2"				,""}
+				,{"Add03"					,ColAdd03						,"String"	,"住所3"				,""}
+				,{"Tel"						,ColTel						,"String"	,"電話番号"				,""}
+				,{"Fax"						,ColFax						,"String"	,"FAX"					,""}
+				,{"Mail"					,ColMail						,"String"	,"メールアドレス"		,""}
+				,{"Com01"					,ColCom01						,"String"	,"コメント1"			,""}
+				,{"Com02"					,ColCom02						,"String"	,"コメント2"			,""}
+				,{"Com03"					,ColCom03						,"String"	,"コメント3"			,""}
+				,{"EntryDate"				,ColEntryDate					,"String"	,"データ登録日時"		,""}
+				,{"UpdateDate"				,ColUpdateDate				,"String"	,"データ更新日時"		,""}
+				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"			,""}
+				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"			,""}
+				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹SYSユーザーCD"	,""}
+				,{"DelFg"					,ColDelFg						,"int"		,"削除区分"				,""}
+				,{"WHName"					,ColWHName						,"String"	,"倉庫名"				,""}
+				,{"MainClient"				,ColMainClient				,"String"	,"主要担当荷主CD"		,""}
+				,{"CLName01"				,ColCLName01					,"String"	,"主要担当荷主名"		,""}
 				};
 		
 		return RtSettingUserMstRt;

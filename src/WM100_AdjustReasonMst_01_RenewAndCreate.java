@@ -100,9 +100,9 @@ public class WM100_AdjustReasonMst_01_RenewAndCreate{
 			if(1==AdjustReasonRt.length) {
 				TB_AdjustReasonName.setText(	(String)AdjustReasonRt[0][M100_AdjustReasonRt.ColAdjustReasonName]);	//調整理由名
 				TB_EntryDate.setText(			(String)AdjustReasonRt[0][M100_AdjustReasonRt.ColEntryDate]);			//登録日
-				TB_UpdateDate.setText(			(String)AdjustReasonRt[0][M100_AdjustReasonRt.ColUpdateDate]);			//更新日
+				TB_UpdateDate.setText(			(String)AdjustReasonRt[0][M100_AdjustReasonRt.ColUpdateDate]);		//更新日
 				TB_EntryUser.setText(			(String)AdjustReasonRt[0][M100_AdjustReasonRt.ColEntryUser]);			//登録者
-				TB_UpdateUser.setText(			(String)AdjustReasonRt[0][M100_AdjustReasonRt.ColUpdateUser]);			//更新者
+				TB_UpdateUser.setText(			(String)AdjustReasonRt[0][M100_AdjustReasonRt.ColUpdateUser]);		//更新者
 			}
 		}
 		

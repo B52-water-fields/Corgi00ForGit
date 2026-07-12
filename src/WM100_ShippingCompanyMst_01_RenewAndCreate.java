@@ -386,8 +386,8 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 						TB_Add02.setText("");
 						TB_Add03.setText("");
 						
-						TB_Add01.setText(""+PostRt[0][1]+PostRt[0][2]);
-						TB_Add02.setText(""+PostRt[0][3]);
+						TB_Add01.setText(""+PostRt[0][M100_PostMstRt.ColPREFECTURES]+PostRt[0][M100_PostMstRt.ColMUNICI01]);
+						TB_Add02.setText(""+PostRt[0][M100_PostMstRt.ColMUNICI02]);
 					}
 				}
 			}

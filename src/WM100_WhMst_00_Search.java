@@ -112,27 +112,14 @@ public class WM100_WhMst_00_Search{
 		//検索ボタン
 		JButton SearchBtn = B100_FrameParts.BtnSet(450,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
+		Object[][] RtSettingWhMstRt = M100_WhMstRt.RtSettingWhMstRt();
 		
-		String[] columnNames01 = {
-				"FG"
-				,"倉庫コード"
-				,"拠点倉庫名"
-				,"拠点倉庫郵便番号"
-				,"拠点倉庫住所1"
-				,"拠点倉庫住所2"
-				,"拠点倉庫電話"
-				,"拠点倉庫FAX"
-				,"拠点倉庫MAIL"
-				,"コメント１"
-				,"コメント２"
-				,"コメント３"
-				,"基幹SYSCD"
-				,"データ登録日時"
-				,"データ更新日時"
-				,"登録者"
-				,"更新者"
-				};
+		String[] columnNames01 = new String[RtSettingWhMstRt.length+1];
 		
+		columnNames01[0] = "Fg";
+		for(int i=0;i<RtSettingWhMstRt.length;i++) {
+			columnNames01[1+(int)RtSettingWhMstRt[i][1]] = ""+RtSettingWhMstRt[i][3];
+		}
 		
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
@@ -150,22 +137,14 @@ public class WM100_WhMst_00_Search{
 		//列幅初期設定 表示位置設定
 		TableColumn column = null;
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth( 80*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//倉庫コード
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//拠点倉庫名
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//拠点倉庫郵便番号
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//拠点倉庫住所1
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//拠点倉庫住所2
-		column = columnModel01.getColumn( 6);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//拠点倉庫電話
-		column = columnModel01.getColumn( 7);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//拠点倉庫FAX
-		column = columnModel01.getColumn( 8);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//拠点倉庫MAIL
-		column = columnModel01.getColumn( 9);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント１
-		column = columnModel01.getColumn(10);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント２
-		column = columnModel01.getColumn(11);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント３
-		column = columnModel01.getColumn(12);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//基幹SYSCD
-		column = columnModel01.getColumn(13);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//データ登録日時
-		column = columnModel01.getColumn(14);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//データ更新日時
-		column = columnModel01.getColumn(15);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//登録者
-		column = columnModel01.getColumn(16);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//更新者
+		
+		for(int i=0;i<RtSettingWhMstRt.length;i++) {
+			if("int".equals((String)RtSettingWhMstRt[i][2])||"float".equals((String)RtSettingWhMstRt[i][2])) {
+				column = columnModel01.getColumn(1+(int)RtSettingWhMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				column = columnModel01.getColumn(1+(int)RtSettingWhMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
+		}
 		
 		//スクロール用設定
 		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,200,740,420,tb01);
@@ -255,25 +234,11 @@ public class WM100_WhMst_00_Search{
 								AllSearch);
 					
 					for(int i=0;i<WhMstRt.length;i++) {
-						Object[] SetOb = new Object[17];
-						SetOb[ 0] = false;
-						SetOb[ 1] = ""+WhMstRt[i][M100_WhMstRt.ColNoWHCD];
-						SetOb[ 2] = ""+WhMstRt[i][M100_WhMstRt.ColNoWHName];
-						SetOb[ 3] = ""+WhMstRt[i][M100_WhMstRt.ColNoPost];
-						SetOb[ 4] = ""+WhMstRt[i][M100_WhMstRt.ColNoAdd01];
-						SetOb[ 5] = ""+WhMstRt[i][M100_WhMstRt.ColNoAdd02];
-						SetOb[ 6] = ""+WhMstRt[i][M100_WhMstRt.ColNoTel];
-						SetOb[ 7] = ""+WhMstRt[i][M100_WhMstRt.ColNoFax];
-						SetOb[ 8] = ""+WhMstRt[i][M100_WhMstRt.ColNoMail];
-						SetOb[ 9] = ""+WhMstRt[i][M100_WhMstRt.ColNoCom01];
-						SetOb[10] = ""+WhMstRt[i][M100_WhMstRt.ColNoCom02];
-						SetOb[11] = ""+WhMstRt[i][M100_WhMstRt.ColNoCom03];
-						SetOb[12] = ""+WhMstRt[i][M100_WhMstRt.ColNoPTMSCD];
-						SetOb[13] = ""+WhMstRt[i][M100_WhMstRt.ColNoEntryDate];
-						SetOb[14] = ""+WhMstRt[i][M100_WhMstRt.ColNoUpdateDate];
-						SetOb[15] = ""+WhMstRt[i][M100_WhMstRt.ColNoEntryUser];
-						SetOb[16] = ""+WhMstRt[i][M100_WhMstRt.ColNoUpdateUser];
-						
+						Object[] SetOb = new Object[WhMstRt[i].length+1];
+						SetOb[0] = false;
+						for(int i01=0;i01<WhMstRt[i].length;i01++) {
+							SetOb[i01+1] = WhMstRt[i][i01];
+						}
 						MainFmTableModel.addRow(SetOb);
 					}
 					if(0<WhMstRt.length) {

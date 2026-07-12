@@ -30,7 +30,7 @@ public class M100_WhMstRt{
 			AllSearch);
 			
 	String GetNoWHCD		= (String)WhMstRt[i][M100_WhMstRt.ColNoWHCD];			//倉庫コード
-	String GetNoWHName		= (String)WhMstRt[i][M100_WhMstRt.ColNoWHName];		//拠点倉庫名
+	String GetNoWHName		= (String)WhMstRt[i][M100_WhMstRt.ColNoWHName];			//拠点倉庫名
 	String GetNoPost		= (String)WhMstRt[i][M100_WhMstRt.ColNoPost];			//拠点倉庫郵便番号
 	String GetNoAdd01		= (String)WhMstRt[i][M100_WhMstRt.ColNoAdd01];			//拠点倉庫住所1
 	String GetNoAdd02		= (String)WhMstRt[i][M100_WhMstRt.ColNoAdd02];			//拠点倉庫住所2
@@ -40,11 +40,11 @@ public class M100_WhMstRt{
 	String GetNoCom01		= (String)WhMstRt[i][M100_WhMstRt.ColNoCom01];			//コメント１
 	String GetNoCom02		= (String)WhMstRt[i][M100_WhMstRt.ColNoCom02];			//コメント２
 	String GetNoCom03		= (String)WhMstRt[i][M100_WhMstRt.ColNoCom03];			//コメント３
-	String GetNoPTMSCD		= (String)WhMstRt[i][M100_WhMstRt.ColNoPTMSCD];		//基幹システム連携用事業所CD
+	String GetNoPTMSCD		= (String)WhMstRt[i][M100_WhMstRt.ColNoPTMSCD];			//基幹システム連携用事業所CD
 	String GetNoEntryDate	= (String)WhMstRt[i][M100_WhMstRt.ColNoEntryDate];		//データ登録日時
-	String GetNoUpdateDate	= (String)WhMstRt[i][M100_WhMstRt.ColNoUpdateDate];	//データ更新日時
+	String GetNoUpdateDate	= (String)WhMstRt[i][M100_WhMstRt.ColNoUpdateDate];		//データ更新日時
 	String GetNoEntryUser	= (String)WhMstRt[i][M100_WhMstRt.ColNoEntryUser];		//登録者
-	String GetNoUpdateUser	= (String)WhMstRt[i][M100_WhMstRt.ColNoUpdateUser];	//更新者
+	String GetNoUpdateUser	= (String)WhMstRt[i][M100_WhMstRt.ColNoUpdateUser];		//更新者
 			
 	
 	*/

@@ -55,11 +55,11 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		JLabel LB_Add03			= B100_FrameParts.JLabelSet(  0,240,100,20,"届先住所3:"			,11,1);
 		JLabel LB_CautionTiming	= B100_FrameParts.JLabelSet(  0,265,100,20,"注意タイミング:"		,11,1);
 		JLabel LB_CautionName	= B100_FrameParts.JLabelSet(  0,290,100,20,"注意事項名:"			,11,1);
-		JLabel LB_Caution		= B100_FrameParts.JLabelSet(  0,315,100,20,"注意事項内容:"		,11,1);
+		JLabel LB_Caution		= B100_FrameParts.JLabelSet(  0,315,100,20,"注意事項内容:"			,11,1);
 		JLabel LB_EntryDate		= B100_FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:"		,11,1);
 		JLabel LB_UpdateDate	= B100_FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:"		,11,1);
-		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(  0,390,100,20,"登録者コード:"		,11,1);
-		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(  0,415,100,20,"更新者コード:"		,11,1);
+		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(  0,390,100,20,"登録者コード:"			,11,1);
+		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(  0,415,100,20,"更新者コード:"			,11,1);
 		
 		final JTextField TB_CautionCd		= B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//注意事項コード
 		final JTextField TB_ClGpCD			= B100_FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//荷主グループコード
@@ -109,7 +109,7 @@ public class WM100_CautionMst_01_RenewAndCreate{
 					for(int i01=0;i01<B100_DefaultVariable.CautionTiming[1].length;i01++) {
 						TB_CautionCd.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColCautionCd]);		//注意事項コード
 						TB_ClGpCD.setText(		""+CautionMstRt[i][M100_CautionMstRt.ColClGpCD]);			//荷主グループコード
-						TB_CLGpName01.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColCLGpName01]);	//荷主グループ名
+						TB_CLGpName01.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColCLGpName01]);		//荷主グループ名
 						TB_DECD.setText(		""+CautionMstRt[i][M100_CautionMstRt.ColDECD]);			//届先コード
 						TB_DepartmentCd.setText(""+CautionMstRt[i][M100_CautionMstRt.ColDepartmentCd]);	//部署CD
 						TB_DEName01.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColDEName01]);		//届先名
@@ -117,11 +117,11 @@ public class WM100_CautionMst_01_RenewAndCreate{
 						TB_Add02.setText(		""+CautionMstRt[i][M100_CautionMstRt.ColAdd02]);			//届先住所2
 						TB_Add03.setText(		""+CautionMstRt[i][M100_CautionMstRt.ColAdd03]);			//届先住所3
 						TB_CautionName.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColCautionName]);	//注意事項名
-						TB_Caution.setText(		""+CautionMstRt[i][M100_CautionMstRt.ColCaution]);		//注意事項内容
+						TB_Caution.setText(		""+CautionMstRt[i][M100_CautionMstRt.ColCaution]);			//注意事項内容
 						TB_EntryDate.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColEntryDate]);		//データ登録日時
-						TB_UpdateDate.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColUpdateDate]);	//データ更新日時
+						TB_UpdateDate.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColUpdateDate]);		//データ更新日時
 						TB_EntryUser.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColEntryUser]);		//登録者コード
-						TB_UpdateUser.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColUpdateUser]);	//更新者コード
+						TB_UpdateUser.setText(	""+CautionMstRt[i][M100_CautionMstRt.ColUpdateUser]);		//更新者コード
 						
 						if(B100_DefaultVariable.CautionTiming[1][i01].equals(""+CautionMstRt[i][M100_CautionMstRt.ColCautionTiming])) {
 							TB_CautionTiming.setSelectedIndex(i01);	//注意事項タイミング
@@ -211,15 +211,14 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 		
-		String[] ClGrpSearch_columnNames01 = {
-								"Fg"
-								,"荷主GrpCD"
-								,"荷主Grp名"
-								,"住所1"
-								,"住所2"
-								,"住所3"
-								,"TEL"
-								};
+		Object[][] RtSettingClGpMstRt = M100_ClGpMstRt.RtSettingClGpMstRt();
+		
+		String[] ClGrpSearch_columnNames01 = new String[RtSettingClGpMstRt.length+1];;
+		ClGrpSearch_columnNames01[0] = "Fg";
+		for(int i=0;i<RtSettingClGpMstRt.length;i++) {
+			ClGrpSearch_columnNames01[1+(int)RtSettingClGpMstRt[i][1]] = ""+RtSettingClGpMstRt[i][3];
+		}
+		
 		final DefaultTableModel tableModel_ClGrp = new B100_TableControl.MyTableModel01(ClGrpSearch_columnNames01,0);
 		
 		final JTable tb_ClGrp = new JTable(tableModel_ClGrp);
@@ -235,15 +234,19 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
 		
-		for(int i=1;i<ClGrpSearch_columnNames01.length;i++) {
-			column = columnModel01.getColumn(1);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+		for(int i=0;i<RtSettingClGpMstRt.length;i++) {
+			if("int".equals((String)RtSettingClGpMstRt[i][2])||"float".equals((String)RtSettingClGpMstRt[i][2])) {
+				column = columnModel01.getColumn(1+(int)RtSettingClGpMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				column = columnModel01.getColumn(1+(int)RtSettingClGpMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
 		}
 		
 		//スクロール用設定
 		JScrollPane scpn_ClGrp = B100_FrameParts.JScrollPaneSet(10,125,460,250,tb_ClGrp);
 		ClGrpSearch_fm.add(scpn_ClGrp);
 		
-		JLabel LB_SearchGrpName	= B100_FrameParts.JLabelSet(0, 25,100,20,"グループ名:"	,11,1);
+		JLabel LB_SearchGrpName	= B100_FrameParts.JLabelSet(0, 25,100,20,"グループ名:"		,11,1);
 		JLabel LB_SearchGrpAdd	= B100_FrameParts.JLabelSet(0, 50,100,20,"住所:"			,11,1);
 		JLabel LB_SearchGrpTel	= B100_FrameParts.JLabelSet(0, 75,100,20,"TEL:"			,11,1);
 		
@@ -286,8 +289,8 @@ public class WM100_CautionMst_01_RenewAndCreate{
 					int row_count = tableModel_ClGrp.getRowCount();
 					for(int i=0;i<row_count;i++){
 						if((boolean)tableModel_ClGrp.getValueAt(i, 0)) {
-							TB_ClGpCD.setText(		""+tableModel_ClGrp.getValueAt(i, 1));
-							TB_CLGpName01.setText(	""+tableModel_ClGrp.getValueAt(i, 2));
+							TB_ClGpCD.setText(		""+tableModel_ClGrp.getValueAt(i, 1+M100_ClGpMstRt.ColClGpCD));
+							TB_CLGpName01.setText(	""+tableModel_ClGrp.getValueAt(i, 1+M100_ClGpMstRt.ColCLGpName01));
 							ClGrpSearch_fm.setVisible(false);
 						}
 					}
@@ -345,15 +348,11 @@ public class WM100_CautionMst_01_RenewAndCreate{
 							AllSearch);
 					
 					for(int i=0;i<ClGpMstRt.length;i++) {
-						Object[] SetOb = new Object[7];
-						SetOb[ 0] = false;
-						SetOb[ 1] = ""+ClGpMstRt[i][ 0];	//荷主GrpCD
-						SetOb[ 2] = ""+ClGpMstRt[i][ 1];	//荷主Grp名
-						SetOb[ 3] = ""+ClGpMstRt[i][ 5];	//住所1
-						SetOb[ 4] = ""+ClGpMstRt[i][ 6];	//住所2
-						SetOb[ 5] = ""+ClGpMstRt[i][ 7];	//住所3
-						SetOb[ 6] = ""+ClGpMstRt[i][ 8];	//TEL
-						
+						Object[] SetOb = new Object[ClGpMstRt[i].length+1];
+						SetOb[0] = false;
+						for(int i01=0;i01<ClGpMstRt[i].length;i01++) {
+							SetOb[i01+1] = ClGpMstRt[i][i01];
+						}
 						tableModel_ClGrp.addRow(SetOb);
 					}
 					
@@ -400,16 +399,15 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 		
-		String[] DeliverySearch_columnNames01 = {
-								"Fg"
-								,"届先CD"
-								,"届先部署CD"
-								,"届先名"
-								,"住所1"
-								,"住所2"
-								,"住所3"
-								,"TEL"
-								};
+		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtSettingDeliveryMstRt();
+		
+		String[] DeliverySearch_columnNames01 = new String[RtSettingDeliveryMstRt.length+1];
+		
+		DeliverySearch_columnNames01[0] = "Fg";
+		for(int i=0;i<RtSettingDeliveryMstRt.length;i++) {
+			DeliverySearch_columnNames01[1+(int)RtSettingDeliveryMstRt[i][1]] = ""+RtSettingDeliveryMstRt[i][3];
+		}
+		
 		final DefaultTableModel tableModel_delivery = new B100_TableControl.MyTableModel01(DeliverySearch_columnNames01,0);
 		
 		final JTable tb_Delivery = new JTable(tableModel_delivery);
@@ -425,15 +423,19 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		
 		column = columnModelDelivery.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
 		
-		for(int i=1;i<DeliverySearch_columnNames01.length;i++) {
-			column = columnModelDelivery.getColumn(1);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+		for(int i=0;i<RtSettingDeliveryMstRt.length;i++) {
+			if("int".equals((String)RtSettingDeliveryMstRt[i][2])||"float".equals((String)RtSettingDeliveryMstRt[i][2])) {
+				column = columnModelDelivery.getColumn(1+(int)RtSettingDeliveryMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				column = columnModelDelivery.getColumn(1+(int)RtSettingDeliveryMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
 		}
 		
 		//スクロール用設定
 		JScrollPane scpn_Delivery = B100_FrameParts.JScrollPaneSet(10,125,460,250,tb_Delivery);
 		DeliverySearch_fm.add(scpn_Delivery);
 		
-		JLabel LB_SearchDeliveryName	= B100_FrameParts.JLabelSet(0, 25,100,20,"届先名:"	,11,1);
+		JLabel LB_SearchDeliveryName	= B100_FrameParts.JLabelSet(0, 25,100,20,"届先名:"		,11,1);
 		JLabel LB_SearchDeliveryAdd		= B100_FrameParts.JLabelSet(0, 50,100,20,"住所:"		,11,1);
 		JLabel LB_SearchDeliveryTel		= B100_FrameParts.JLabelSet(0, 75,100,20,"TEL:"		,11,1);
 		
@@ -470,12 +472,12 @@ public class WM100_CautionMst_01_RenewAndCreate{
 					int row_count = tableModel_delivery.getRowCount();
 					for(int i=0;i<row_count;i++){
 						if((boolean)tableModel_delivery.getValueAt(i, 0)) {
-							TB_DECD.setText(		""+tableModel_delivery.getValueAt(i, 1));
-							TB_DepartmentCd.setText(""+tableModel_delivery.getValueAt(i, 2));
-							TB_DEName01.setText(	""+tableModel_delivery.getValueAt(i, 3));
-							TB_Add01.setText(		""+tableModel_delivery.getValueAt(i, 4));
-							TB_Add02.setText(		""+tableModel_delivery.getValueAt(i, 5));
-							TB_Add03.setText(		""+tableModel_delivery.getValueAt(i, 6));
+							TB_DECD.setText(		""+tableModel_delivery.getValueAt(i, 1+M100_DeliveryMstRt.ColDECD));
+							TB_DepartmentCd.setText(""+tableModel_delivery.getValueAt(i, 1+M100_DeliveryMstRt.ColDepartmentCd));
+							TB_DEName01.setText(	""+tableModel_delivery.getValueAt(i, 1+M100_DeliveryMstRt.ColDEName01));
+							TB_Add01.setText(		""+tableModel_delivery.getValueAt(i, 1+M100_DeliveryMstRt.ColAdd01));
+							TB_Add02.setText(		""+tableModel_delivery.getValueAt(i, 1+M100_DeliveryMstRt.ColAdd02));
+							TB_Add03.setText(		""+tableModel_delivery.getValueAt(i, 1+M100_DeliveryMstRt.ColAdd03));
 							
 							DeliverySearch_fm.setVisible(false);
 						}
@@ -551,16 +553,11 @@ public class WM100_CautionMst_01_RenewAndCreate{
 						部署コードJISは注意事項対象外
 						*/
 						if(!"JIS".equals(""+DeliveryMstRt[i][M100_DeliveryMstRt.ColDepartmentCd])) {
-							Object[] SetOb = new Object[8];
-							SetOb[ 0] = false;
-							SetOb[ 1] = ""+DeliveryMstRt[i][M100_DeliveryMstRt.ColDECD];	//届先CD
-							SetOb[ 2] = ""+DeliveryMstRt[i][M100_DeliveryMstRt.ColDepartmentCd];	//届先部署CD
-							SetOb[ 3] = ""+DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName01];	//届先名
-							SetOb[ 4] = ""+DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd01];	//住所1
-							SetOb[ 5] = ""+DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd02];	//住所2
-							SetOb[ 6] = ""+DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd03];	//住所3
-							SetOb[ 7] = ""+DeliveryMstRt[i][M100_DeliveryMstRt.ColTel];	//TEL
-							
+							Object[] SetOb = new Object[DeliveryMstRt[i].length+1];
+							SetOb[0] = false;
+							for(int i01=0;i01<DeliveryMstRt[i].length;i01++) {
+								SetOb[i01+1] = DeliveryMstRt[i][i01];
+							}
 							tableModel_delivery.addRow(SetOb);
 						}
 					}

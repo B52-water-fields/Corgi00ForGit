@@ -101,33 +101,33 @@ public class M100_DeliveryMstRt{
 	
 	public static Object[][] RtSettingDeliveryMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {
-				 {"DECD"			,ColDECD				,"String"	,"届先コード"}
-				,{"DepartmentCd"	,ColDepartmentCd		,"String"	,"部署CD"}
-				,{"DEName01"		,ColDEName01			,"String"	,"届先表記名"}
-				,{"DEName02"		,ColDEName02			,"String"	,"届先正式名"}
-				,{"DEName03"		,ColDEName03			,"String"	,"届先略名"}
-				,{"Post"			,ColPost				,"String"	,"届先郵便"}
-				,{"Add01"			,ColAdd01				,"String"	,"届先住所1"}
-				,{"Add02"			,ColAdd02				,"String"	,"届先住所2"}
-				,{"Add03"			,ColAdd03				,"String"	,"届先住所3"}
-				,{"Tel"				,ColTel				,"String"	,"届先電話"}
-				,{"Fax"				,ColFax				,"String"	,"届先FAX"}
-				,{"Mail"			,ColMail				,"String"	,"届先MAIL"}
-				,{"Com01"			,ColCom01				,"String"	,"コメント1"}
-				,{"Com02"			,ColCom02				,"String"	,"コメント2"}
-				,{"Com03"			,ColCom03				,"String"	,"コメント3"}
-				,{"PrefecturesCd"	,ColPrefecturesCd		,"String"	,"JIS県CD2桁"}
-				,{"MunicipalityCd"	,ColMunicipalityCd	,"String"	,"JIS市区町村CD5桁"}
-				,{"PTMSCD"			,ColPTMSCD				,"String"	,"基幹システム発着地コード"}
-				,{"EntryDate"		,ColEntryDate			,"DateTime"	,"データ登録日時"}
-				,{"UpdateDate"		,ColUpdateDate		,"DateTime"	,"データ更新日時"}
-				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者コード"}
-				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者コード"}
-				,{"FirstClient"		,ColFirstClient		,"String"	,"登録した荷主CD"}
-				,{"LastClient"		,ColLastClient		,"String"	,"更新した荷主CD"}
-				,{"DelFg"			,ColDelFg				,"int"		,"削除区分"}
-				,{"FirstClientName"	,ColFirstClientName	,"String"	,"登録した荷主名"}
-				,{"LastClientName"	,ColLastClientName	,"String"	,"登録した荷主名"}
+				 {"DECD"			,ColDECD				,"String"	,"届先コード"				,"Key"}
+				,{"DepartmentCd"	,ColDepartmentCd		,"String"	,"部署CD"					,"Key"}
+				,{"DEName01"		,ColDEName01			,"String"	,"届先表記名"				,""}
+				,{"DEName02"		,ColDEName02			,"String"	,"届先正式名"				,""}
+				,{"DEName03"		,ColDEName03			,"String"	,"届先略名"					,""}
+				,{"Post"			,ColPost				,"String"	,"届先郵便"					,""}
+				,{"Add01"			,ColAdd01				,"String"	,"届先住所1"				,""}
+				,{"Add02"			,ColAdd02				,"String"	,"届先住所2"				,""}
+				,{"Add03"			,ColAdd03				,"String"	,"届先住所3"				,""}
+				,{"Tel"				,ColTel				,"String"	,"届先電話"					,""}
+				,{"Fax"				,ColFax				,"String"	,"届先FAX"					,""}
+				,{"Mail"			,ColMail				,"String"	,"届先MAIL"					,""}
+				,{"Com01"			,ColCom01				,"String"	,"コメント1"				,""}
+				,{"Com02"			,ColCom02				,"String"	,"コメント2"				,""}
+				,{"Com03"			,ColCom03				,"String"	,"コメント3"				,""}
+				,{"PrefecturesCd"	,ColPrefecturesCd		,"String"	,"JIS県CD2桁"				,""}
+				,{"MunicipalityCd"	,ColMunicipalityCd	,"String"	,"JIS市区町村CD5桁"			,""}
+				,{"PTMSCD"			,ColPTMSCD				,"String"	,"基幹システム発着地コード"	,""}
+				,{"EntryDate"		,ColEntryDate			,"DateTime"	,"データ登録日時"			,""}
+				,{"UpdateDate"		,ColUpdateDate		,"DateTime"	,"データ更新日時"			,""}
+				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者コード"				,""}
+				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者コード"				,""}
+				,{"FirstClient"		,ColFirstClient		,"String"	,"登録した荷主CD"			,""}
+				,{"LastClient"		,ColLastClient		,"String"	,"更新した荷主CD"			,""}
+				,{"DelFg"			,ColDelFg				,"int"		,"削除区分"					,""}
+				,{"FirstClientName"	,ColFirstClientName	,"String"	,"登録した荷主名"			,""}
+				,{"LastClientName"	,ColLastClientName	,"String"	,"登録した荷主名"			,""}
 				};
 		
 		return RtSettingDeliveryMstRt;
@@ -423,46 +423,8 @@ public class M100_DeliveryMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-
-				rt = new Object[counter][RtSettingDeliveryMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("DECD")){				rt[counter][ColDECD] 				= "";}else{rt[counter][ColDECD] 				= rset01.getString("DECD");}			//届先コード
-					if(null==rset01.getString("DepartmentCd")){		rt[counter][ColDepartmentCd] 		= "";}else{rt[counter][ColDepartmentCd] 		= rset01.getString("DepartmentCd");}	//部署CD
-					if(null==rset01.getString("DEName01")){			rt[counter][ColDEName01] 			= "";}else{rt[counter][ColDEName01] 			= rset01.getString("DEName01");}		//届先表記名
-					if(null==rset01.getString("DEName02")){			rt[counter][ColDEName02] 			= "";}else{rt[counter][ColDEName02] 			= rset01.getString("DEName02");}		//届先正式名
-					if(null==rset01.getString("DEName03")){			rt[counter][ColDEName03] 			= "";}else{rt[counter][ColDEName03] 			= rset01.getString("DEName03");}		//届先略名
-					if(null==rset01.getString("Post")){				rt[counter][ColPost] 				= "";}else{rt[counter][ColPost] 				= rset01.getString("Post");	}			//届先郵便
-					if(null==rset01.getString("Add01")){			rt[counter][ColAdd01] 				= "";}else{rt[counter][ColAdd01] 				= rset01.getString("Add01");}			//届先住所1
-					if(null==rset01.getString("Add02")){			rt[counter][ColAdd02] 				= "";}else{rt[counter][ColAdd02] 				= rset01.getString("Add02");}			//届先住所2
-					if(null==rset01.getString("Add03")){			rt[counter][ColAdd03] 				= "";}else{rt[counter][ColAdd03] 				= rset01.getString("Add03");}			//届先住所3
-					if(null==rset01.getString("Tel")){				rt[counter][ColTel] 				= "";}else{rt[counter][ColTel] 				= rset01.getString("Tel");}				//届先電話
-					if(null==rset01.getString("Fax")){				rt[counter][ColFax] 				= "";}else{rt[counter][ColFax] 				= rset01.getString("Fax");}				//届先FAX
-					if(null==rset01.getString("Mail")){				rt[counter][ColMail] 				= "";}else{rt[counter][ColMail] 				= rset01.getString("Mail");}			//届先MAIL
-					if(null==rset01.getString("Com01")){			rt[counter][ColCom01] 				= "";}else{rt[counter][ColCom01] 				= rset01.getString("Com01");}			//コメント1
-					if(null==rset01.getString("Com02")){			rt[counter][ColCom02] 				= "";}else{rt[counter][ColCom02] 				= rset01.getString("Com02");}			//コメント2
-					if(null==rset01.getString("Com03")){			rt[counter][ColCom03] 				= "";}else{rt[counter][ColCom03] 				= rset01.getString("Com03");}			//コメント3
-					if(null==rset01.getString("PrefecturesCd")){	rt[counter][ColPrefecturesCd] 	= "";}else{rt[counter][ColPrefecturesCd] 		= rset01.getString("PrefecturesCd");}	//JIS県CD2桁
-					if(null==rset01.getString("MunicipalityCd")){	rt[counter][ColMunicipalityCd] 	= "";}else{rt[counter][ColMunicipalityCd] 	= rset01.getString("MunicipalityCd");}	//JIS市区町村CD5桁
-					if(null==rset01.getString("PTMSCD")){			rt[counter][ColPTMSCD] 			= "";}else{rt[counter][ColPTMSCD] 				= rset01.getString("PTMSCD");}			//基幹システム発着地コード
-					if(null==rset01.getTimestamp("EntryDate")){		rt[counter][ColEntryDate] 		= "";}else{rt[counter][ColEntryDate] 			= B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){	rt[counter][ColUpdateDate] 		= "";}else{rt[counter][ColUpdateDate] 		= B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
-					if(null==rset01.getString("EntryUser")){		rt[counter][ColEntryUser] 		= "";}else{rt[counter][ColEntryUser] 			= rset01.getString("EntryUser");}		//登録者コード
-					if(null==rset01.getString("UpdateUser")){		rt[counter][ColUpdateUser] 		= "";}else{rt[counter][ColUpdateUser] 		= rset01.getString("UpdateUser");}		//更新者コード
-					if(null==rset01.getString("FirstClient")){		rt[counter][ColFirstClient] 		= "";}else{rt[counter][ColFirstClient] 		= rset01.getString("FirstClient");}		//登録した荷主CD
-					if(null==rset01.getString("LastClient")){		rt[counter][ColLastClient] 		= "";}else{rt[counter][ColLastClient] 		= rset01.getString("LastClient");}		//更新した荷主CD
-					rt[counter][ColDelFg] = rset01.getInt("DelFg");				//削除区分
-					if(null==rset01.getString("FirstClientName")){	rt[counter][ColFirstClientName] 	= "";}else{rt[counter][ColFirstClientName] 	= rset01.getString("FirstClientName");}	//登録した荷主名
-					if(null==rset01.getString("LastClientName")){	rt[counter][ColLastClientName] 	= "";}else{rt[counter][ColLastClientName] 	= rset01.getString("LastClientName");}	//登録した荷主名
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingDeliveryMstRt());
+				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {

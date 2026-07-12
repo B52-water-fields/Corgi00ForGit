@@ -20,7 +20,7 @@ public class M100_CarMstRt{
 			SearchDelFg,
 			AllSearch);
 			
-	String GetWHCD					= (String)CarMstRt[i][M100_CarMstRt.ColWHCD];						//担当倉庫
+	String GetWHCD					= (String)CarMstRt[i][M100_CarMstRt.ColWHCD];					//担当倉庫
 	String GetShippingCompanyCd		= (String)CarMstRt[i][M100_CarMstRt.ColShippingCompanyCd];		//運送会社CD
 	String GetShippingCompanyName01	= (String)CarMstRt[i][M100_CarMstRt.ColShippingCompanyName01];	//運送会社表記名
 	String GetShippingCompanyName02	= (String)CarMstRt[i][M100_CarMstRt.ColShippingCompanyName02];	//運送会社正式名
@@ -29,7 +29,7 @@ public class M100_CarMstRt{
 	String GetCarName01				= (String)CarMstRt[i][M100_CarMstRt.ColCarName01];				//車輛表記名
 	String GetCarName02				= (String)CarMstRt[i][M100_CarMstRt.ColCarName02];				//車輛正式名
 	String GetCarName03				= (String)CarMstRt[i][M100_CarMstRt.ColCarName03];				//車輛略名
-	String GetDriverCd				= (String)CarMstRt[i][M100_CarMstRt.ColDriverCd];					//乗務員CD
+	String GetDriverCd				= (String)CarMstRt[i][M100_CarMstRt.ColDriverCd];				//乗務員CD
 	String GetUserName01			= (String)CarMstRt[i][M100_CarMstRt.ColUserName01];				//ユーザー名1
 	String GetUserName02			= (String)CarMstRt[i][M100_CarMstRt.ColUserName02];				//ユーザー名2
 	String GetUserName03			= (String)CarMstRt[i][M100_CarMstRt.ColUserName03];				//ユーザー名3
@@ -43,49 +43,50 @@ public class M100_CarMstRt{
 			
 	*/
 	//戻り値カラム
-	static final  int ColWHCD						= (int) 0;	//担当倉庫
-	static final  int ColShippingCompanyCd		= (int) 1;	//運送会社CD
-	static final  int ColShippingCompanyName01	= (int) 2;	//運送会社表記名
-	static final  int ColShippingCompanyName02	= (int) 3;	//運送会社正式名
-	static final  int ColShippingCompanyName03	= (int) 4;	//運送会社略名
-	static final  int ColCarCd						= (int) 5;	//車輛CD
-	static final  int ColCarName01				= (int) 6;	//車輛表記名
-	static final  int ColCarName02				= (int) 7;	//車輛正式名
-	static final  int ColCarName03				= (int) 8;	//車輛略名
-	static final  int ColDriverCd					= (int) 9;	//乗務員CD
-	static final  int ColUserName01				= (int)10;	//ユーザー名1
-	static final  int ColUserName02				= (int)11;	//ユーザー名2
-	static final  int ColUserName03				= (int)12;	//ユーザー名3
-	static final  int ColPTMSCD					= (int)13;	//基幹システム車輛コード
-	static final  int ColEntryDate				= (int)14;	//データ登録日時
-	static final  int ColUpdateDate				= (int)15;	//データ更新日時
-	static final  int ColEntryUser				= (int)16;	//登録者コード
-	static final  int ColUpdateUser				= (int)17;	//更新者コード
-	static final  int ColDelFg						= (int)18;	//削除フラグ
-	static final  int ColWHName					= (int)19;	//倉庫名
+	static final  int ColWHName					= (int) 0;	//倉庫名
+	static final  int ColShippingCompanyName01	= (int) 1;	//運送会社表記名
+	static final  int ColCarCd						= (int) 2;	//車輛CD
+	static final  int ColCarName01				= (int) 3;	//車輛表記名
+	static final  int ColCarName02				= (int) 4;	//車輛正式名
+	static final  int ColCarName03				= (int) 5;	//車輛略名
+	static final  int ColDriverCd					= (int) 6;	//乗務員CD
+	static final  int ColUserName01				= (int) 7;	//ユーザー名1
+	static final  int ColUserName02				= (int) 8;	//ユーザー名2
+	static final  int ColUserName03				= (int) 9;	//ユーザー名3
+	static final  int ColPTMSCD					= (int)10;	//基幹システム車輛コード
+	static final  int ColWHCD						= (int)11;	//担当倉庫
+	static final  int ColShippingCompanyCd		= (int)12;	//運送会社CD
+	static final  int ColShippingCompanyName02	= (int)13;	//運送会社正式名
+	static final  int ColShippingCompanyName03	= (int)14;	//運送会社略名
+	static final  int ColEntryDate				= (int)15;	//データ登録日時
+	static final  int ColUpdateDate				= (int)16;	//データ更新日時
+	static final  int ColEntryUser				= (int)17;	//登録者コード
+	static final  int ColUpdateUser				= (int)18;	//更新者コード
+	static final  int ColDelFg						= (int)19;	//削除フラグ
+	
 	
 	public static Object[][] RtSettingCarMstRt(){
 		Object[][] RtSettingCarMstRt = {
-				 {"WHCD"					,ColWHCD						,"String"	,"担当倉庫"}
-				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"}
-				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"}
-				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"}
-				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"}
-				,{"CarCd"					,ColCarCd						,"String"	,"車輛CD"}
-				,{"CarName01"				,ColCarName01					,"String"	,"車輛表記名"}
-				,{"CarName02"				,ColCarName02					,"String"	,"車輛正式名"}
-				,{"CarName03"				,ColCarName03					,"String"	,"車輛略名"}
-				,{"DriverCd"				,ColDriverCd					,"String"	,"乗務員CD"}
-				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"}
-				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"}
-				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"}
-				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム車輛コード"}
-				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"}
-				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"}
-				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"}
-				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"}
-				,{"DelFg"					,ColDelFg						,"int"		,"削除フラグ"}
-				,{"WHName"					,ColWHName						,"String"	,"倉庫名"}
+				 {"WHCD"					,ColWHCD						,"String"	,"担当倉庫"					,"Key"}
+				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"}
+				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"			,""}
+				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"			,""}
+				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"				,""}
+				,{"CarCd"					,ColCarCd						,"String"	,"車輛CD"					,"Key"}
+				,{"CarName01"				,ColCarName01					,"String"	,"車輛表記名"				,""}
+				,{"CarName02"				,ColCarName02					,"String"	,"車輛正式名"				,""}
+				,{"CarName03"				,ColCarName03					,"String"	,"車輛略名"					,""}
+				,{"DriverCd"				,ColDriverCd					,"String"	,"乗務員CD"					,""}
+				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"				,""}
+				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"				,""}
+				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"				,""}
+				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム車輛コード"	,""}
+				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"			,""}
+				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"			,""}
+				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"				,""}
+				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"				,""}
+				,{"DelFg"					,ColDelFg						,"int"		,"削除フラグ"				,""}
+				,{"WHName"					,ColWHName						,"String"	,"倉庫名"					,""}
 				};
 		
 		return RtSettingCarMstRt;
@@ -258,39 +259,7 @@ public class M100_CarMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				int counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					counter=counter+1;
-				}
-
-				rt = new Object[counter][RtSettingCarMstRt().length];
-				counter = 0;
-				rset01.beforeFirst();
-				while (rset01.next()) {
-					if(null==rset01.getString("WHCD")){					rt[counter][ColWHCD] 						= "";}else{rt[counter][ColWHCD] 						= rset01.getString("WHCD");}					//担当倉庫
-					if(null==rset01.getString("ShippingCompanyCd")){	rt[counter][ColShippingCompanyCd] 		= "";}else{rt[counter][ColShippingCompanyCd] 		= rset01.getString("ShippingCompanyCd");}		//運送会社CD
-					if(null==rset01.getString("ShippingCompanyName01")){rt[counter][ColShippingCompanyName01] 	= "";}else{rt[counter][ColShippingCompanyName01] 	= rset01.getString("ShippingCompanyName01");}	//運送会社表記名
-					if(null==rset01.getString("ShippingCompanyName02")){rt[counter][ColShippingCompanyName02] 	= "";}else{rt[counter][ColShippingCompanyName02] 	= rset01.getString("ShippingCompanyName02");}	//運送会社正式名
-					if(null==rset01.getString("ShippingCompanyName03")){rt[counter][ColShippingCompanyName03] 	= "";}else{rt[counter][ColShippingCompanyName03] 	= rset01.getString("ShippingCompanyName03");}	//運送会社略名
-					if(null==rset01.getString("CarCd")){				rt[counter][ColCarCd] 						= "";}else{rt[counter][ColCarCd] 						= rset01.getString("CarCd");}					//車輛CD
-					if(null==rset01.getString("CarName01")){			rt[counter][ColCarName01] 				= "";}else{rt[counter][ColCarName01] 					= rset01.getString("CarName01");}				//車輛表記名
-					if(null==rset01.getString("CarName02")){			rt[counter][ColCarName02] 				= "";}else{rt[counter][ColCarName02] 					= rset01.getString("CarName02");}				//車輛正式名
-					if(null==rset01.getString("CarName03")){			rt[counter][ColCarName03] 				= "";}else{rt[counter][ColCarName03] 					= rset01.getString("CarName03");}				//車輛略名
-					if(null==rset01.getString("DriverCd")){				rt[counter][ColDriverCd] 					= "";}else{rt[counter][ColDriverCd] 					= rset01.getString("DriverCd");}				//乗務員CD
-					if(null==rset01.getString("UserName01")){			rt[counter][ColUserName01] 				= "";}else{rt[counter][ColUserName01] 				= rset01.getString("UserName01");}				//ユーザー名1
-					if(null==rset01.getString("UserName02")){			rt[counter][ColUserName02] 				= "";}else{rt[counter][ColUserName02] 				= rset01.getString("UserName02");}				//ユーザー名2
-					if(null==rset01.getString("UserName03")){			rt[counter][ColUserName03] 				= "";}else{rt[counter][ColUserName03] 				= rset01.getString("UserName03");}				//ユーザー名3
-					if(null==rset01.getString("PTMSCD")){				rt[counter][ColPTMSCD] 					= "";}else{rt[counter][ColPTMSCD] 						= rset01.getString("PTMSCD");}					//基幹システム車輛コード
-					if(null==rset01.getTimestamp("EntryDate")){			rt[counter][ColEntryDate] 				= "";}else{rt[counter][ColEntryDate] 					= B100_DateTimeControl.dtmString2(rset01.getTimestamp("EntryDate"))[1];}		//データ登録日時
-					if(null==rset01.getTimestamp("UpdateDate")){		rt[counter][ColUpdateDate] 				= "";}else{rt[counter][ColUpdateDate] 				= B100_DateTimeControl.dtmString2(rset01.getTimestamp("UpdateDate"))[1];}	//データ更新日時
-					if(null==rset01.getString("EntryUser")){			rt[counter][ColEntryUser] 				= "";}else{rt[counter][ColEntryUser] 					= rset01.getString("EntryUser");}				//登録者コード
-					if(null==rset01.getString("UpdateUser")){			rt[counter][ColUpdateUser] 				= "";}else{rt[counter][ColUpdateUser] 				= rset01.getString("UpdateUser");}				//更新者コード
-					rt[counter][ColDelFg] = rset01.getInt("DelFg");	//削除フラグ
-					if(null==rset01.getString("WHName")){				rt[counter][ColWHName]						= "";}else{rt[counter][ColWHName]						=rset01.getString("WHName");}					//倉庫名
-					
-					counter=counter+1;
-				}
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingCarMstRt());
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}
 			}catch (SQLException e) {
