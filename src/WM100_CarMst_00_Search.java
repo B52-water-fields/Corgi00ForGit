@@ -83,7 +83,7 @@ public class WM100_CarMst_00_Search{
 		PN_Search.add(SearchBtn);
 		
 		
-		Object[][] RtSettingCarMstRt = M100_CarMstRt.RtSettingCarMstRt();
+		Object[][] RtSettingCarMstRt = M100_CarMstRt.RtCarMstRt();
 		
 		String[] columnNames01 = new String[RtSettingCarMstRt.length+1];
 		

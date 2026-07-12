@@ -227,7 +227,7 @@ public class WM100_ParameterMstNyanko_00_Seach{
 		main_fm.add(PN_Search);
 		
 		//検索結果
-		Object[][] RtSettingParameterMstRtNANKO = M100_ParameterMstRtNyanko.RtSettingParameterMstRtNANKO();
+		Object[][] RtSettingParameterMstRtNANKO = M100_ParameterMstRtNyanko.RtParameterMstRtNANKO();
 		
 		String[] columnNames01 = new String[RtSettingParameterMstRtNANKO.length+1];
 		

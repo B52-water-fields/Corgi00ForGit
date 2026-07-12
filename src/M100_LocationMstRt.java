@@ -49,7 +49,7 @@ public class M100_LocationMstRt{
 	static final int ColEntryUser		= (int) 9;	//登録者
 	static final int ColUpdateUser	= (int)10;	//更新者
 	
-	public static Object[][] RtSettingLocationMstRt(){
+	public static Object[][] RtLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {
 				 {"ClCd"		,ColClCd			,"String"	,"荷主コード"		,"Key"}
 				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"		,""}
@@ -82,7 +82,7 @@ public class M100_LocationMstRt{
 		SearchLocName	= B100_ArrayListControl.ArryListStringUniqueList(SearchLocName);	//ロケーション名
 		SearchType		= B100_ArrayListControl.ArryListStringUniqueList(SearchType);		//ロケタイプ
 		
-		Object[][] rt = new Object[0][RtSettingLocationMstRt().length];
+		Object[][] rt = new Object[0][RtLocationMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 				
@@ -214,7 +214,7 @@ public class M100_LocationMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingLocationMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtLocationMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

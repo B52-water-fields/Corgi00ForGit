@@ -183,7 +183,7 @@ public class M100_ItemMstRt{
 	static final  int ColUpdateUser			= (int)62;	//更新者コード
 	static final  int ColDelFg					= (int)63;	//削除フラグ
 
-	public static Object[][] RtSettingItemMstRt(){
+	public static Object[][] RtItemMstRt(){
 		Object[][] RtSettingItemMstRt = {
 				 {"ClGpCd"					,ColClGpCd					,"String"	,"荷主グループコード"}
 				,{"CLGpName01"				,ColCLGpName01			,"String"	,"荷主グループ標記名"}
@@ -253,6 +253,7 @@ public class M100_ItemMstRt{
 		
 		return RtSettingItemMstRt;
 	}
+	
 	public static Object[][] ItemMstRt(
 			ArrayList<String> SearchClGpCd,				//荷主グループコード
 			ArrayList<String> SearchItemCd,				//商品コード
@@ -300,7 +301,7 @@ public class M100_ItemMstRt{
 		//商品変換マスタを元に荷主商品コードを商品コードに変換する
 		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClGpCd,SearchCLItemCd);
 		
-		Object[][] rt = new Object[0][RtSettingItemMstRt().length];
+		Object[][] rt = new Object[0][RtItemMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -745,7 +746,7 @@ public class M100_ItemMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingItemMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtItemMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

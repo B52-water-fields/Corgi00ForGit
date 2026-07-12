@@ -90,6 +90,7 @@ public class M100_ItemComversionMstRt{
 				};
 		return RtItemComversionMstRt;
 	}
+	
 	public static Object[][] ItemComversionMstRt(
 			ArrayList<String> SearchClGpCd,				//荷主グループコード
 			ArrayList<String> SearchClCd,				//荷主コード

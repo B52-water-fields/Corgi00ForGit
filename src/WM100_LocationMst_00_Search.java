@@ -93,7 +93,7 @@ public class WM100_LocationMst_00_Search{
 		JButton SearchBtn = B100_FrameParts.BtnSet(100,150,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtSettingLocationMstRt();
+		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtLocationMstRt();
 		
 		String[] columnNames01 = new String[RtSettingLocationMstRt.length+1];
 		

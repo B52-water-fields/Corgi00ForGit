@@ -72,7 +72,7 @@ public class WM100_DeliveryTypeMst_00_Search{
 		JButton SearchBtn = B100_FrameParts.BtnSet(100,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingDeliveryTypeMstRt = M100_DeliveryTypeMstRt.RtSettingDeliveryTypeMstRt();
+		Object[][] RtSettingDeliveryTypeMstRt = M100_DeliveryTypeMstRt.RtDeliveryTypeMstRt();
 		
 		String[] columnNames01 = new String[RtSettingDeliveryTypeMstRt.length+1];
 		

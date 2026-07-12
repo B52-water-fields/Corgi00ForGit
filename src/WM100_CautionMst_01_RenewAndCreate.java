@@ -211,7 +211,7 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 		
-		Object[][] RtSettingClGpMstRt = M100_ClGpMstRt.RtSettingClGpMstRt();
+		Object[][] RtSettingClGpMstRt = M100_ClGpMstRt.RtClGpMstRt();
 		
 		String[] ClGrpSearch_columnNames01 = new String[RtSettingClGpMstRt.length+1];;
 		ClGrpSearch_columnNames01[0] = "Fg";
@@ -399,7 +399,7 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		B100_TableControl.RenewTgt = new int[1];
 		B100_TableControl.RenewTgt[0] = 0;
 		
-		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtSettingDeliveryMstRt();
+		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtDeliveryMstRt();
 		
 		String[] DeliverySearch_columnNames01 = new String[RtSettingDeliveryMstRt.length+1];
 		

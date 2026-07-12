@@ -217,7 +217,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		JButton ItemSearchSearchBtn = B100_FrameParts.BtnSet(130,100,100,20,"検索",11);
 		ItemSearch_fm.add(ItemSearchSearchBtn);
 		
-		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtSettingItemMstRt();
+		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtItemMstRt();
 		
 		String[] ItemSearchcolumnNames01 = new String[RtSettingItemMstRt.length+1];
 		
@@ -292,7 +292,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		JButton LocSearchSearchBtn = B100_FrameParts.BtnSet(100,125,100,20,"検索",11);
 		LocSearch_fm.add(LocSearchSearchBtn);
 		
-		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtSettingLocationMstRt();
+		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtLocationMstRt();
 		
 		String[] LocSearchcolumnNames01 = new String[RtSettingLocationMstRt.length+1];
 		

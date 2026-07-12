@@ -74,7 +74,7 @@ public class M100_ShippingCompanyMstRt{
 	static final  int ColPTMSCD					= (int)20;	//基幹システム傭車コード
 	static final  int ColExportDataType			= (int)21;	//データ抽出タイプ
 	
-	public static Object[][] RtSettingShippingCompanyMstRt(){
+	public static Object[][] RtShippingCompanyMstRt(){
 		Object[][] RtSettingShippingCompanyMstRt = {
 				 {"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"}
 				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"			,""}
@@ -123,7 +123,7 @@ public class M100_ShippingCompanyMstRt{
 		SearchMail				= B100_ArrayListControl.ArryListStringUniqueList(SearchMail);
 		SearchCom				= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);
 		
-		Object[][] rt = new Object[0][RtSettingShippingCompanyMstRt().length];
+		Object[][] rt = new Object[0][RtShippingCompanyMstRt().length];
 		
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
@@ -299,7 +299,7 @@ public class M100_ShippingCompanyMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingShippingCompanyMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtShippingCompanyMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

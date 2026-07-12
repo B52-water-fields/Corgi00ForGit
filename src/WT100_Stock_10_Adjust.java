@@ -436,7 +436,7 @@ public class WT100_Stock_10_Adjust{
 		Loc_fm.add(LB2_SearchLocName);
 		Loc_fm.add(LocSearchKickBtn);
 		
-		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtSettingLocationMstRt();
+		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtLocationMstRt();
 		
 		String[] columnNamesLoc = new String[RtSettingLocationMstRt.length+1];
 		
@@ -504,7 +504,7 @@ public class WT100_Stock_10_Adjust{
 		Item_fm.add(LB2_SearchItemName);
 		Item_fm.add(ItemSearchKickBtn);
 		
-		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtSettingItemMstRt();
+		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtItemMstRt();
 		
 		String[] columnNamesItem = new String[RtSettingItemMstRt.length+1];
 		

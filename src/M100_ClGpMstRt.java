@@ -68,7 +68,7 @@ public class M100_ClGpMstRt{
 	static final  int ColUpdateUser	= (int)17;	//更新者コード
 	static final  int ColPassWord		= (int)18;	//パスワード
 	
-	public static Object[][] RtSettingClGpMstRt(){
+	public static Object[][] RtClGpMstRt(){
 		Object[][] RtSettingClGpMstRt = {
 				 {"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"		,"Key"}
 				,{"CLGpName01"	,ColCLGpName01	,"String"	,"荷主グループ表記名"	,""}
@@ -116,7 +116,7 @@ public class M100_ClGpMstRt{
 		
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
-		Object[][] rt = new Object[0][RtSettingClGpMstRt().length];
+		Object[][] rt = new Object[0][RtClGpMstRt().length];
 		
 		String sql = "select "
 				+"("+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP.ClGpCD) as ClGpCD,\n"			//荷主グループCD
@@ -289,7 +289,7 @@ public class M100_ClGpMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingClGpMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtClGpMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

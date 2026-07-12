@@ -99,7 +99,7 @@ public class WM100_ShippingCompanyMst_00_Search{
 		PN_Search.add(SearchBtn);
 		
 		
-		Object[][] RtSettingShippingCompanyMstRt = M100_ShippingCompanyMstRt.RtSettingShippingCompanyMstRt();
+		Object[][] RtSettingShippingCompanyMstRt = M100_ShippingCompanyMstRt.RtShippingCompanyMstRt();
 		
 		String[] columnNames01 = new String[RtSettingShippingCompanyMstRt.length+1];
 		

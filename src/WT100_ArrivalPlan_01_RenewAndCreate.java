@@ -506,7 +506,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		ItemSearch_fm.add(LB2_ItemSearchClItemCd);
 		ItemSearch_fm.add(LB2_ItemSearchItemName);
 		
-		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtSettingItemMstRt();
+		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtItemMstRt();
 		
 		String[] ItemSearchcolumnNames = new String[RtSettingItemMstRt.length+1];
 		

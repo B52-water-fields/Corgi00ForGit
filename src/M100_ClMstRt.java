@@ -86,7 +86,7 @@ public class M100_ClMstRt{
 	static final  int ColUpdateUser	= (int) 23;	//更新者コード
 	static final  int ColPTMSCD		= (int) 24;	//基幹システム荷主コード
 	
-	public static Object[][] RtSettingClMstRt(){
+	public static Object[][] RtClMstRt(){
 		Object[][] RtSettingClMstRt = {
 				 {"cl_cd"		,Colcl_cd			,"String"	,"荷主CD"			,"Key"}
 				,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"	,""}
@@ -144,7 +144,7 @@ public class M100_ClMstRt{
 		SearchWHCD		= B100_ArrayListControl.ArryListStringUniqueList(SearchWHCD);
 		
 		
-		Object[][] rt = new Object[0][RtSettingClMstRt().length];
+		Object[][] rt = new Object[0][RtClMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		String sql =  "select "
@@ -364,7 +364,7 @@ public class M100_ClMstRt{
 				
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingClMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtClMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

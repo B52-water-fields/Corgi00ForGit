@@ -553,7 +553,7 @@ public class WT100_Stock_20_Move{
 		Loc_fm.add(LB2_SearchLocName);
 		Loc_fm.add(LocSearchKickBtn);
 		
-		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtSettingLocationMstRt();
+		Object[][] RtSettingLocationMstRt = M100_LocationMstRt.RtLocationMstRt();
 		
 		String[] columnNamesLoc = new String[RtSettingLocationMstRt.length+1];
 		

@@ -49,4 +49,14 @@ public class B100_RtObjectCreate{
 		}
 		return rt;
 	}
+	
+
+	//RtXXXXRtを元に戻りのフィールド名をRtTitleName[Colxxx]で取得できるように並べ替え
+	public static String[] RtTitleName(Object[][] RtXXXRt) {
+		String[] Rt = new String[RtXXXRt.length];
+		for(int i=0;i<RtXXXRt.length;i++) {
+			Rt[(int)RtXXXRt[i][1]] = (String)RtXXXRt[i][3];
+		}
+		return Rt;
+	}
 }

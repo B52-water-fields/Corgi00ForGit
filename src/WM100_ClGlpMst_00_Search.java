@@ -105,7 +105,7 @@ public class WM100_ClGlpMst_00_Search{
 		JButton SearchBtn = B100_FrameParts.BtnSet(450,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingClGpMstRt= M100_ClGpMstRt.RtSettingClGpMstRt();
+		Object[][] RtSettingClGpMstRt= M100_ClGpMstRt.RtClGpMstRt();
 		
 		String[] columnNames01 = new String[RtSettingClGpMstRt.length+1];
 		
@@ -226,7 +226,7 @@ public class WM100_ClGlpMst_00_Search{
 								SearchClGpCD,SearchCLGpName,SearchPost,
 								SearchAdd,SearchTel,SearchFax,SearchMail,SearchCom,AllSearch);
 					
-					Object[][] RtSettingClGpMstRt= M100_ClGpMstRt.RtSettingClGpMstRt();
+					Object[][] RtSettingClGpMstRt= M100_ClGpMstRt.RtClGpMstRt();
 					
 					for(int i=0;i<ClGpMstRt.length;i++) {
 						

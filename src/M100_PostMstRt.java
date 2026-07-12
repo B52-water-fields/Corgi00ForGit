@@ -86,7 +86,7 @@ public class M100_PostMstRt{
 		Object[][] PrefecuturesRt = M100_PostMstRt.PrefecuturesRt();
 		
 		String GetPREFECTURES_CD	=(String)PrefecuturesRt[i][M100_PostMstRt.ColPrefecuturesRtPREFECTURES_CD];	//県CD
-		String GetPREFECTURES		=(String)PrefecuturesRt[i][M100_PostMstRt.ColPrefecuturesRtPREFECTURES;		//県名
+		String GetPREFECTURES		=(String)PrefecuturesRt[i][M100_PostMstRt.ColPrefecuturesRtPREFECTURES];	//県名
 		*/
 		Object[][] RtSettingPrefecuturesRt = {
 				{"PREFECTURES_CD"	,ColPrefecuturesRtPREFECTURES_CD	,"String"	,"県CD"}

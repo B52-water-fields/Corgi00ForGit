@@ -113,7 +113,7 @@ public class M100_ParameterMstRtNyanko{
 	static final  int ColEntryUser	= (int)25;	//登録者
 	static final  int ColUpdateUser	= (int)26;	//更新者
 	
-	public static Object[][] RtSettingParameterMstRtNANKO(){
+	public static Object[][] RtParameterMstRtNANKO(){
 		Object[][] RtSettingParameterMstRtNANKO = {
 				 {"ParaCd"		,ColParaCd			,"String"	,"パラメータコード"			,"Key"}
 				,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"ナンバリング"				,"Key"}
@@ -198,7 +198,7 @@ public class M100_ParameterMstRtNyanko{
 		
 		
 		//NYANKOパラメータ返却
-		Object[][] rt=new Object[0][RtSettingParameterMstRtNANKO().length];
+		Object[][] rt=new Object[0][RtParameterMstRtNANKO().length];
 		boolean SearchKick = false;
 		if(AllSearch) {
 			SearchKick = true;
@@ -864,7 +864,7 @@ public class M100_ParameterMstRtNyanko{
 				
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingParameterMstRtNANKO());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtParameterMstRtNANKO());
 
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

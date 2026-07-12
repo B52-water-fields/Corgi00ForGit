@@ -322,7 +322,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		JButton SearchBtn = B100_FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtSettingDeliveryMstRt();
+		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtDeliveryMstRt();
 		
 		String[] columnNames01 = new String[RtSettingDeliveryMstRt.length+1];
 		

@@ -99,7 +99,7 @@ public class M100_DeliveryMstRt{
 	static final  int ColFirstClientName	= (int)25;	//登録した荷主名
 	static final  int ColLastClientName	= (int)26;	//登録した荷主名
 	
-	public static Object[][] RtSettingDeliveryMstRt(){
+	public static Object[][] RtDeliveryMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {
 				 {"DECD"			,ColDECD				,"String"	,"届先コード"				,"Key"}
 				,{"DepartmentCd"	,ColDepartmentCd		,"String"	,"部署CD"					,"Key"}
@@ -164,7 +164,7 @@ public class M100_DeliveryMstRt{
 		SearchMunicipalityCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
 		SearchDelFg				= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
-		Object[][] rt = new Object[0][RtSettingDeliveryMstRt().length];
+		Object[][] rt = new Object[0][RtDeliveryMstRt().length];
 		boolean SearchKick = false;
 		
 		if(AllSearch) {SearchKick=true;}
@@ -423,7 +423,7 @@ public class M100_DeliveryMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingDeliveryMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtDeliveryMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

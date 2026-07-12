@@ -65,7 +65,7 @@ public class M100_CarMstRt{
 	static final  int ColDelFg						= (int)19;	//削除フラグ
 	
 	
-	public static Object[][] RtSettingCarMstRt(){
+	public static Object[][] RtCarMstRt(){
 		Object[][] RtSettingCarMstRt = {
 				 {"WHCD"					,ColWHCD						,"String"	,"担当倉庫"					,"Key"}
 				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"}
@@ -106,7 +106,7 @@ public class M100_CarMstRt{
 		SearchCarName			= B100_ArrayListControl.ArryListStringUniqueList(SearchCarName);
 		SearchDelFg				= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
-		Object[][] rt = new Object[0][RtSettingCarMstRt().length];
+		Object[][] rt = new Object[0][RtCarMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -259,7 +259,7 @@ public class M100_CarMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingCarMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtCarMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

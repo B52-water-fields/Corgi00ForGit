@@ -148,7 +148,7 @@ public class WM100_UserMst_00_Search{
 		JButton SearchBtn = B100_FrameParts.BtnSet(		400,150,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingUserMstRt = M100_UserMstRt.RtSettingUserMstRt();
+		Object[][] RtSettingUserMstRt = M100_UserMstRt.RtUserMstRt();
 		
 		String[] columnNames01 = new String[RtSettingUserMstRt.length+1];
 		

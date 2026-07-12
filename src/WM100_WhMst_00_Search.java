@@ -42,15 +42,15 @@ public class WM100_WhMst_00_Search{
 		main_fm.add(PN_Search);
 		
 		//検索条件
-		JLabel LB_SearchWHCD  = B100_FrameParts.JLabelSet(	  0, 25,100,20,"倉庫CD:",11,1);
+		JLabel LB_SearchWHCD  = B100_FrameParts.JLabelSet(		  0, 25,100,20,"倉庫CD:",11,1);
 		JLabel LB_SearchWHName  = B100_FrameParts.JLabelSet(	  0, 50,100,20,"倉庫名:",11,1);
-		JLabel LB_SearchPost  = B100_FrameParts.JLabelSet(	  0, 75,100,20,"郵便番号:",11,1);
+		JLabel LB_SearchPost  = B100_FrameParts.JLabelSet(		  0, 75,100,20,"郵便番号:",11,1);
 		JLabel LB_SearchAdd  = B100_FrameParts.JLabelSet(		  0,100,100,20,"住所:",11,1);
 		JLabel LB_SearchCom  = B100_FrameParts.JLabelSet(		  0,125,100,20,"コメント:",11,1);
 		
 		JLabel LB_SearchTel  = B100_FrameParts.JLabelSet(		350, 25,100,20,"Tel:",11,1);
 		JLabel LB_SearchFax  = B100_FrameParts.JLabelSet(		350, 50,100,20,"Fax:",11,1);
-		JLabel LB_SearchMail  = B100_FrameParts.JLabelSet(	350, 75,100,20,"Mail:",11,1);		
+		JLabel LB_SearchMail  = B100_FrameParts.JLabelSet(		350, 75,100,20,"Mail:",11,1);		
 		JLabel LB_SearchPTMSCD  = B100_FrameParts.JLabelSet(	350,100,100,20,"基幹SysCD:",11,1);
 		
 		final JTextField TB_SearchWHCD  = B100_FrameParts.JTextFieldSet(		100, 25,100,20,"",11,0);
@@ -67,11 +67,11 @@ public class WM100_WhMst_00_Search{
 		JLabel LB2_SearchWHCD  = B100_FrameParts.JLabelSet(	200, 25,100,20,"と一致"   ,11,0);
 		JLabel LB2_SearchWHName  = B100_FrameParts.JLabelSet(	250, 50,100,20,"を含む"   ,11,0);
 		JLabel LB2_SearchPost  = B100_FrameParts.JLabelSet(	200, 75,100,20,"で始まる" ,11,0);
-		JLabel LB2_SearchAdd  = B100_FrameParts.JLabelSet(	250,100,100,20,"を含む"   ,11,0);
-		JLabel LB2_SearchCom  = B100_FrameParts.JLabelSet(	250,125,100,20,"を含む"   ,11,0);
+		JLabel LB2_SearchAdd  = B100_FrameParts.JLabelSet(		250,100,100,20,"を含む"   ,11,0);
+		JLabel LB2_SearchCom  = B100_FrameParts.JLabelSet(		250,125,100,20,"を含む"   ,11,0);
 				
-		JLabel LB2_SearchTel  = B100_FrameParts.JLabelSet(	550, 25,100,20,"を含む"   ,11,0);
-		JLabel LB2_SearchFax  = B100_FrameParts.JLabelSet(	550, 50,100,20,"を含む"   ,11,0);
+		JLabel LB2_SearchTel  = B100_FrameParts.JLabelSet(		550, 25,100,20,"を含む"   ,11,0);
+		JLabel LB2_SearchFax  = B100_FrameParts.JLabelSet(		550, 50,100,20,"を含む"   ,11,0);
 		JLabel LB2_SearchMail  = B100_FrameParts.JLabelSet(	550, 75,100,20,"を含む"   ,11,0);
 		JLabel LB2_SearchPTMSCD  = B100_FrameParts.JLabelSet(	550,100,100,20,"と一致"   ,11,0);
 		
@@ -112,7 +112,7 @@ public class WM100_WhMst_00_Search{
 		//検索ボタン
 		JButton SearchBtn = B100_FrameParts.BtnSet(450,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
-		Object[][] RtSettingWhMstRt = M100_WhMstRt.RtSettingWhMstRt();
+		Object[][] RtSettingWhMstRt = M100_WhMstRt.RtWhMstRt();
 		
 		String[] columnNames01 = new String[RtSettingWhMstRt.length+1];
 		

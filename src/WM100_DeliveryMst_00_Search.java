@@ -52,14 +52,14 @@ public class WM100_DeliveryMst_00_Search{
 		MunicipalityCd[2][0] = "";
 		
 		for(int i=0;i<PrefecuturesRt.length;i++) {
-			PrefecturesCdList[0][i+1] = PrefecuturesRt[i][0]+":"+PrefecuturesRt[i][1];
-			PrefecturesCdList[1][i+1] = PrefecuturesRt[i][0]+"";	
-			PrefecturesCdList[2][i+1] = ""+PrefecuturesRt[i][1];
+			PrefecturesCdList[0][i+1] = PrefecuturesRt[i][M100_PostMstRt.ColPrefecuturesRtPREFECTURES_CD]+":"+PrefecuturesRt[i][M100_PostMstRt.ColPrefecuturesRtPREFECTURES];
+			PrefecturesCdList[1][i+1] = PrefecuturesRt[i][M100_PostMstRt.ColPrefecuturesRtPREFECTURES_CD]+"";	
+			PrefecturesCdList[2][i+1] = ""+PrefecuturesRt[i][M100_PostMstRt.ColPrefecuturesRtPREFECTURES];
 		}
 		for(int i=0;i<MunicipalityRt.length;i++) {
-			MunicipalityCd[0][i+1] = MunicipalityRt[i][2]+":"+MunicipalityRt[i][0]+MunicipalityRt[i][1];
-			MunicipalityCd[1][i+1] = MunicipalityRt[i][2]+"";
-			MunicipalityCd[2][i+1] = ""+MunicipalityRt[i][0]+MunicipalityRt[i][1];
+			MunicipalityCd[0][i+1] = MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICIPALITY_CD]+":"+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtPREFECTURES]+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICI01];
+			MunicipalityCd[1][i+1] = MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICIPALITY_CD]+"";
+			MunicipalityCd[2][i+1] = ""+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtPREFECTURES]+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICI01];
 		}
 		
 		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00届先マスタ検索","");
@@ -164,7 +164,7 @@ public class WM100_DeliveryMst_00_Search{
 		JButton SearchBtn = B100_FrameParts.BtnSet(600,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtSettingDeliveryMstRt();
+		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtDeliveryMstRt();
 		
 		String[] columnNames01 = new String[RtSettingDeliveryMstRt.length+1];
 		

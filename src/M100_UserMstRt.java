@@ -108,7 +108,7 @@ public class M100_UserMstRt{
 	static final  int ColMainClient				= (int)30;	//主要担当荷主CD
 	static final  int ColCLName01					= (int)31;	//主要担当荷主名
 	
-	public static Object[][] RtSettingUserMstRt(){
+	public static Object[][] RtUserMstRt(){
 		Object[][] RtSettingUserMstRt = {
 				 {"WHCD"					,ColWHCD						,"String"	,"倉庫コード"			,"Key"}
 				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"			,"Key"}
@@ -178,7 +178,7 @@ public class M100_UserMstRt{
 		SearchCom				= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);
 		SearchDelFg				= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
-		Object[][] rt = new Object[0][RtSettingUserMstRt().length];
+		Object[][] rt = new Object[0][RtUserMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -480,7 +480,7 @@ public class M100_UserMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingUserMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtUserMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

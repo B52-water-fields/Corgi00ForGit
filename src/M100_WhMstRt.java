@@ -66,7 +66,7 @@ public class M100_WhMstRt{
 	static final  int ColNoEntryUser 		= (int)14;	//登録者
 	static final  int ColNoUpdateUser 	= (int)15;	//更新者
 	
-	public static Object[][] RtSettingWhMstRt(){
+	public static Object[][] RtWhMstRt(){
 		Object[][] RtSettingWhMstRt = {
 				 {"WHCD"		,ColNoWHCD			,"String"	,"倉庫コード"					,"Key"}
 				,{"WHName"		,ColNoWHName		,"String"	,"拠点倉庫名"					,""}
@@ -110,7 +110,7 @@ public class M100_WhMstRt{
 		SearchCom		= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);
 		SearchPTMSCD	= B100_ArrayListControl.ArryListStringUniqueList(SearchPTMSCD);
 		
-		Object[][] rt = new Object[0][RtSettingWhMstRt().length];
+		Object[][] rt = new Object[0][RtWhMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		String sql = " select "
@@ -290,7 +290,7 @@ public class M100_WhMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingWhMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtWhMstRt());
 				
 				/*
 				int counter = 0;

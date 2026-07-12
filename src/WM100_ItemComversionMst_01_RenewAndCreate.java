@@ -221,7 +221,7 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		ItemSearch_fm.add(PN_Search);
 		
 		//検索結果
-		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtSettingItemMstRt();
+		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtItemMstRt();
 		
 		String[] columnNames01 = new String[RtSettingItemMstRt.length+1];
 		

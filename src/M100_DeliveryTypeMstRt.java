@@ -36,7 +36,7 @@ public class M100_DeliveryTypeMstRt{
 	static final  int ColEntryUser			= (int) 5;	//登録者コード
 	static final  int ColUpdateUser			= (int) 6;	//更新者コード
 	
-	public static Object[][] RtSettingDeliveryTypeMstRt(){
+	public static Object[][] RtDeliveryTypeMstRt(){
 		Object[][] RtSettingDeliveryTypeMstRt = {
 				 {"DeliveryTypeNo"		,ColDeliveryTypeNo		,"int"		,"タイプ番号"		,"Key"}
 				,{"DeliveryTypeCd"		,ColDeliveryTypeCd		,"String"	,"運送タイプコード"	,"Key"}
@@ -49,6 +49,7 @@ public class M100_DeliveryTypeMstRt{
 		
 		return RtSettingDeliveryTypeMstRt;
 	}
+	
 	public static Object[][] DeliveryTypeMstRt(
 			ArrayList<String> SearchDeliveryTypeNo,
 			ArrayList<String> SearchDeliveryTypeCd,
@@ -59,7 +60,7 @@ public class M100_DeliveryTypeMstRt{
 		SearchDeliveryTypeCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd);
 		SearchDeliveryTypeName	= B100_ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeName);
 		
-		Object[][] rt = new Object[0][RtSettingDeliveryTypeMstRt().length];
+		Object[][] rt = new Object[0][RtDeliveryTypeMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		String sql = " select "
@@ -136,7 +137,7 @@ public class M100_DeliveryTypeMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingDeliveryTypeMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtDeliveryTypeMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

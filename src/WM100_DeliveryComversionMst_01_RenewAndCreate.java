@@ -404,7 +404,7 @@ public class WM100_DeliveryComversionMst_01_RenewAndCreate{
 		DeliSearch_fm.add(LB2_SearchFax);
 		DeliSearch_fm.add(LB2_SearchMail);
 		
-		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtSettingDeliveryMstRt();
+		Object[][] RtSettingDeliveryMstRt = M100_DeliveryMstRt.RtDeliveryMstRt();
 		
 		String[] columnNames01 = new String[RtSettingDeliveryMstRt.length+1];
 		

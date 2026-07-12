@@ -105,7 +105,7 @@ public class WM100_CautionMst_00_Search{
 		JButton SearchBtn = B100_FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingCautionMstRt = M100_CautionMstRt.RtSettingCautionMstRt();
+		Object[][] RtSettingCautionMstRt = M100_CautionMstRt.RtCautionMstRt();
 		
 		String[] columnNames01 = new String[RtSettingCautionMstRt.length+1];
 		

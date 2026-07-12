@@ -171,7 +171,7 @@ public class WM100_ItemMst_00_Search{
 		
 		main_fm.add(PN_Search);
 		
-		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtSettingItemMstRt();
+		Object[][] RtSettingItemMstRt = M100_ItemMstRt.RtItemMstRt();
 		
 		String[] columnNames01 = new String[RtSettingItemMstRt.length+1];
 		

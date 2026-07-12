@@ -63,7 +63,7 @@ public class M100_CautionMstRt{
 	static final  int ColAdd02				= (int)14;	//届先住所2
 	static final  int ColAdd03				= (int)15;	//届先住所3
 	
-	public static Object[][] RtSettingCautionMstRt(){
+	public static Object[][] RtCautionMstRt(){
 		Object[][] RtSettingCautionMstRt = {
 				 {"CautionCd"		,ColCautionCd		,"String"	,"注意事項コード"		,"Key"}
 				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループコード"	,""}
@@ -107,7 +107,7 @@ public class M100_CautionMstRt{
 		SearchDeName		= B100_ArrayListControl.ArryListStringUniqueList(SearchDeName);
 		
 		
-		Object[][] rt = new Object[0][RtSettingCautionMstRt().length];
+		Object[][] rt = new Object[0][RtCautionMstRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
@@ -279,7 +279,7 @@ public class M100_CautionMstRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtSettingCautionMstRt());
+				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtCautionMstRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

@@ -97,22 +97,22 @@ public class M100_ItemRecomendLocMstRt{
 	
 	public static Object[][] RtItemRecomendLocMstRt() {
 		Object[][] RtItemRecomendLocMstRt = {
-					 {"ClCd"		,ColClCd			,"String"	,"荷主コード"		,"key"}
-					,{"CLName"		,ColCLName			,"String"	,"荷主名"			,""}
-					,{"ClWh"		,ColClWh			,"String"	,"担当倉庫コード"	,"key"}
-					,{"ClWHName"	,ColClWHName		,"String"	,"担当倉庫名"		,""}
-					,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"	,""}
-					,{"ClGpName"	,ColClGpName		,"String"	,"グループ名"		,""}
-					,{"ItemCd"		,ColItemCd			,"String"	,"商品コード"		,"key"}
-					,{"ItemName01"	,ColItemName01	,"String"	,"商品表記名"		,""}
-					,{"RecomendLoc"	,ColRecomendLoc	,"String"	,"推奨ロケ"			,""}
-					,{"LocName"		,ColLocName		,"String"	,"ロケーション名"	,""}
-					,{"Type"		,ColType			,"int"		,"ロケタイプ"		,""}
-					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"データ登録日時"	,""}
-					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"データ更新日時"	,""}
-					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"			,""}
-					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"			,""}
-					,{"ItemSubRecomendLoc"	,ColItemSubRecomendLoc,"String"	,"商品サブマスタ推奨ロケ",""}
+					 {"ClCd"				,ColClCd					,"String"	,"荷主コード"				,"key"}
+					,{"CLName"				,ColCLName					,"String"	,"荷主名"					,""}
+					,{"ClWh"				,ColClWh					,"String"	,"担当倉庫コード"			,"key"}
+					,{"ClWHName"			,ColClWHName				,"String"	,"担当倉庫名"				,""}
+					,{"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"			,""}
+					,{"ClGpName"			,ColClGpName				,"String"	,"グループ名"				,""}
+					,{"ItemCd"				,ColItemCd					,"String"	,"商品コード"				,"key"}
+					,{"ItemName01"			,ColItemName01			,"String"	,"商品表記名"				,""}
+					,{"RecomendLoc"			,ColRecomendLoc			,"String"	,"推奨ロケ"					,""}
+					,{"LocName"				,ColLocName				,"String"	,"ロケーション名"			,""}
+					,{"Type"				,ColType					,"int"		,"ロケタイプ"				,""}
+					,{"EntryDate"			,ColEntryDate				,"DateTime"	,"データ登録日時"			,""}
+					,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"データ更新日時"			,""}
+					,{"EntryUser"			,ColEntryUser				,"String"	,"登録者"					,""}
+					,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者"					,""}
+					,{"ItemSubRecomendLoc"	,ColItemSubRecomendLoc	,"String"	,"商品サブマスタ推奨ロケ"	,""}
 					};
 		return RtItemRecomendLocMstRt;
 	}
