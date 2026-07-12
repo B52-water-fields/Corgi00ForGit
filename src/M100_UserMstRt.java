@@ -70,7 +70,7 @@ public class M100_UserMstRt{
 	int GetDelFg					= (int)UserMstRt[i][M100_UserMstRt.ColDelFg];						//削除区分
 	String GetWHName				= (String)UserMstRt[i][M100_UserMstRt.ColWHName];					//倉庫名
 	String GetMainClient			= (String)UserMstRt[i][M100_UserMstRt.ColMainClient];				//主要担当荷主CD
-	String GetCLName01				= (String)UserMstRt[i][M100_UserMstRt.ColCLName01];				//主要担当荷主名
+	String GetCLName01				= (String)UserMstRt[i][M100_UserMstRt.ColCLName01];					//主要担当荷主名
 	
 	*/
 	
@@ -110,7 +110,7 @@ public class M100_UserMstRt{
 	
 	public static Object[][] RtUserMstRt(){
 		Object[][] RtSettingUserMstRt = {
-				 {"WHCD"					,ColWHCD						,"String"	,"倉庫コード"			,"Key"}
+				 {"WHCD"					,ColWHCD						,"String"	,"倉庫CD"				,"Key"}
 				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"			,"Key"}
 				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社名"			,""}
 				,{"UserCd"					,ColUserCd						,"String"	,"ユーザーCD"			,"Key"}
@@ -129,14 +129,14 @@ public class M100_UserMstRt{
 				,{"Add03"					,ColAdd03						,"String"	,"住所3"				,""}
 				,{"Tel"						,ColTel						,"String"	,"電話番号"				,""}
 				,{"Fax"						,ColFax						,"String"	,"FAX"					,""}
-				,{"Mail"					,ColMail						,"String"	,"メールアドレス"		,""}
+				,{"Mail"					,ColMail						,"String"	,"Mail"					,""}
 				,{"Com01"					,ColCom01						,"String"	,"コメント1"			,""}
 				,{"Com02"					,ColCom02						,"String"	,"コメント2"			,""}
 				,{"Com03"					,ColCom03						,"String"	,"コメント3"			,""}
-				,{"EntryDate"				,ColEntryDate					,"String"	,"データ登録日時"		,""}
-				,{"UpdateDate"				,ColUpdateDate				,"String"	,"データ更新日時"		,""}
-				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"			,""}
-				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"			,""}
+				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"		,""}
+				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"		,""}
+				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者CD"				,""}
+				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者CD"				,""}
 				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹SYSユーザーCD"	,""}
 				,{"DelFg"					,ColDelFg						,"int"		,"削除区分"				,""}
 				,{"WHName"					,ColWHName						,"String"	,"倉庫名"				,""}

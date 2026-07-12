@@ -76,16 +76,16 @@ public class WM100_UserMst_00_Search{
 		final JTextField TB_SearchMail				= B100_FrameParts.JTextFieldSet(650, 75,100,20,"",11,0);	//Mail
 		final JTextField TB_SearchCom				= B100_FrameParts.JTextFieldSet(650,100,100,20,"",11,0);	//コメント
 		
-		JLabel LB2_SearchWHCD				= B100_FrameParts.JLabelSet(300, 25,100,20,"",			11,0);
-		JLabel LB2_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(300, 50,100,20,"",			11,0);
+		JLabel LB2_SearchWHCD				= B100_FrameParts.JLabelSet(300, 25,100,20,"",				11,0);
+		JLabel LB2_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(300, 50,100,20,"",				11,0);
 		JLabel LB2_SearchUserCd				= B100_FrameParts.JLabelSet(200, 75,100,20,"と一致",		11,0);
 		JLabel LB2_SearchUserName			= B100_FrameParts.JLabelSet(200,100,100,20,"を含む",		11,0);
-		JLabel LB2_SearchAuthorityFG		= B100_FrameParts.JLabelSet(250,125,100,20,"",			11,0);
-		JLabel LB2_SearchDelFg				= B100_FrameParts.JLabelSet(200,150,100,20,"",			11,0);
+		JLabel LB2_SearchAuthorityFG		= B100_FrameParts.JLabelSet(250,125,100,20,"",				11,0);
+		JLabel LB2_SearchDelFg				= B100_FrameParts.JLabelSet(200,150,100,20,"",				11,0);
 		
 		JLabel LB2_SearchCarCd				= B100_FrameParts.JLabelSet(500, 25,100,20,"と一致",		11,0);
 		JLabel LB2_SearchCarName			= B100_FrameParts.JLabelSet(500, 50,100,20,"を含む",		11,0);
-		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(500, 75,100,20,"で始まる",	11,0);
+		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(500, 75,100,20,"で始まる",		11,0);
 		JLabel LB2_SearchAdd				= B100_FrameParts.JLabelSet(500,100,100,20,"を含む",		11,0);
 		
 		JLabel LB2_SearchTel				= B100_FrameParts.JLabelSet(750, 25,100,20,"を含む",		11,0);

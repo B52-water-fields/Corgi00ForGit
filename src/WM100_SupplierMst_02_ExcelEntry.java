@@ -91,30 +91,32 @@ public class WM100_SupplierMst_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_SupplierRt.RtSupplierRt());
+		
 		Object[][] NeedCol = {
-				 {"担当倉庫"				, 1	, 0}
-				,{"荷主CD"					, 1	, 1}
-				,{"仕入先コード"			, 1	, 2}
-				,{"仕入先表記名"				, 1	, 3}
-				,{"仕入先正式名"				, 1	, 4}
-				,{"仕入先略名"				, 1	, 5}
-				,{"仕入先郵便"				, 1	, 6}
-				,{"仕入先住所1"				, 1	, 7}
-				,{"仕入先住所2"				, 1	, 8}
-				,{"仕入先住所3"				, 1	, 9}
-				,{"仕入先電話"				, 1	,10}
-				,{"仕入先FAX"				, 1	,11}
-				,{"仕入先MAIL"				, 1	,12}
-				,{"コメント1"				, 1	,13}
-				,{"コメント2"				, 1	,14}
-				,{"コメント3"				, 1	,15}
-				,{"基幹Sysコード（部門）"	, 1	,16}
-				,{"基幹Sysコード（荷主）"	, 1	,17}
-				,{"支払いサイト（月数）"	, 0	,18}
-				,{"支払日（末日＝99）"		, 0	,19}
-				,{"締め日（末日＝99）"		, 0	,20}
-				,{"納品先コード"			, 1	,21}
-				,{"部署CD"					, 1	,22}
+				 {Title[M100_SupplierRt.ColClWh]				, 1	, 0}
+				,{Title[M100_SupplierRt.ColClCd]				, 1	, 1}
+				,{Title[M100_SupplierRt.ColSPCd]				, 1	, 2}
+				,{Title[M100_SupplierRt.ColSPName01]			, 1	, 3}
+				,{Title[M100_SupplierRt.ColSPName02]			, 1	, 4}
+				,{Title[M100_SupplierRt.ColSPName03]			, 1	, 5}
+				,{Title[M100_SupplierRt.ColSPPost]				, 1	, 6}
+				,{Title[M100_SupplierRt.ColSPAdd01]			, 1	, 7}
+				,{Title[M100_SupplierRt.ColSPAdd02]			, 1	, 8}
+				,{Title[M100_SupplierRt.ColSPAdd03]			, 1	, 9}
+				,{Title[M100_SupplierRt.ColSPTel]				, 1	,10}
+				,{Title[M100_SupplierRt.ColSPFax]				, 1	,11}
+				,{Title[M100_SupplierRt.ColSPMail]				, 1	,12}
+				,{Title[M100_SupplierRt.ColCom01]				, 1	,13}
+				,{Title[M100_SupplierRt.ColCom02]				, 1	,14}
+				,{Title[M100_SupplierRt.ColCom03]				, 1	,15}
+				,{Title[M100_SupplierRt.ColPTMSCDBMN]			, 1	,16}
+				,{Title[M100_SupplierRt.ColPTMSCDNINUSHI]		, 1	,17}
+				,{Title[M100_SupplierRt.ColPaySite]			, 0	,18}
+				,{Title[M100_SupplierRt.ColPayDate]			, 0	,19}
+				,{Title[M100_SupplierRt.ColShimeDate]			, 0	,20}
+				,{Title[M100_SupplierRt.ColDECD]				, 1	,21}
+				,{Title[M100_SupplierRt.ColDepartmentCd]		, 1	,22}
 				};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
@@ -474,80 +476,32 @@ public class WM100_SupplierMst_02_ExcelEntry{
 		int ColDECD				= (int)21;	//納品先コード
 		int ColDepartmentCd		= (int)22;	//納品先部署コード
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_SupplierRt.RtSupplierRt());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(""+TableCol[i]) {
-			 	case "担当倉庫":
-			 		ColClWh= i;
-			 		break;
-				case "荷主CD":
-			 		ColClCd= i;
-			 		break;
-				case "仕入先コード":
-			 		ColSPCd= i;
-			 		break;
-				case "仕入先表記名":
-			 		ColSPName01= i;
-			 		break;
-				case "仕入先正式名":
-			 		ColSPName02= i;
-			 		break;
-				case "仕入先略名":
-			 		ColSPName03= i;
-			 		break;
-				case "仕入先郵便":
-			 		ColSPPost= i;
-			 		break;
-				case "仕入先住所1":
-			 		ColSPAdd01= i;
-			 		break;
-				case "仕入先住所2":
-			 		ColSPAdd02= i;
-			 		break;
-				case "仕入先住所3":
-			 		ColSPAdd03= i;
-			 		break;
-				case "仕入先電話":
-			 		ColSPTel= i;
-			 		break;
-				case "仕入先FAX":
-			 		ColSPFax= i;
-			 		break;
-				case "仕入先MAIL":
-			 		ColSPMail= i;
-			 		break;
-				case "コメント1":
-			 		ColCom01= i;
-			 		break;
-				case "コメント2":
-			 		ColCom02= i;
-			 		break;
-				case "コメント3":
-			 		ColCom03= i;
-			 		break;
-				case "基幹Sysコード（部門）":
-			 		ColPTMSCDBMN= i;
-			 		break;
-				case "基幹Sysコード（荷主）":
-			 		ColPTMSCDNINUSHI= i;
-			 		break;
-				case "支払いサイト（月数）":
-			 		ColPaySite= i;
-			 		break;
-				case "支払日（末日＝99）":
-			 		ColPayDate= i;
-			 		break;
-				case "締め日（末日＝99）":
-			 		ColShimeDate= i;
-			 		break;
-				case "納品先コード":
-			 		ColDECD= i;
-			 		break;
-				case "部署CD":
-			 		ColDepartmentCd= i;
-			 		break;
-				default:
-			 		break;
-			}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColClWh]				)){ColClWh			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColClCd]				)){ColClCd			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPCd]				)){ColSPCd			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPName01]			)){ColSPName01		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPName02]			)){ColSPName02		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPName03]			)){ColSPName03		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPPost]				)){ColSPPost		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPAdd01]			)){ColSPAdd01		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPAdd02]			)){ColSPAdd02		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPAdd03]			)){ColSPAdd03		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPTel]				)){ColSPTel			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPFax]				)){ColSPFax			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColSPMail]				)){ColSPMail		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColCom01]				)){ColCom01			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColCom02]				)){ColCom02			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColCom03]				)){ColCom03			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColPTMSCDBMN]			)){ColPTMSCDBMN		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColPTMSCDNINUSHI]		)){ColPTMSCDNINUSHI	= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColPaySite]			)){ColPaySite		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColPayDate]			)){ColPayDate		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColShimeDate]			)){ColShimeDate		= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColDECD]				)){ColDECD			= i;}
+			if(TableCol[i].equals(Title[M100_SupplierRt.ColDepartmentCd]		)){ColDepartmentCd	= i;}
 		}
 		int EntryCount = 0;
 		for(int i=0;i<CheckOb.length;i++) {

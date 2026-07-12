@@ -134,13 +134,13 @@ public class M100_SupplierRt{
 				,{"Com01"			,ColCom01			,"String"	,"コメント1"				,""}
 				,{"Com02"			,ColCom02			,"String"	,"コメント2"				,""}
 				,{"Com03"			,ColCom03			,"String"	,"コメント3"				,""}
-				,{"PTMSCDBMN"		,ColPTMSCDBMN		,"String"	,"基幹Sysコード（部門）"	,""}
-				,{"PTMSCDNINUSHI"	,ColPTMSCDNINUSHI	,"String"	,"基幹Sysコード（荷主）"	,""}
+				,{"PTMSCDBMN"		,ColPTMSCDBMN		,"String"	,"基幹SysCD（部門）"		,""}
+				,{"PTMSCDNINUSHI"	,ColPTMSCDNINUSHI	,"String"	,"基幹SysCD（荷主）"		,""}
 				,{"PaySite"			,ColPaySite		,"int"		,"支払いサイト（月数）"		,""}
 				,{"PayDate"			,ColPayDate		,"int"		,"支払日（末日＝99）"		,""}
 				,{"ShimeDate"		,ColShimeDate		,"int"		,"締め日（末日＝99）"		,""}
-				,{"EntryDate"		,ColEntryDate		,"String"	,"登録日"					,""}
-				,{"UpdateDate"		,ColUpdateDate	,"String"	,"更新日"					,""}
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日"					,""}
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日"					,""}
 				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"					,""}
 				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"					,""}
 				,{"DECD"			,ColDECD			,"String"	,"納品先コード"				,""}

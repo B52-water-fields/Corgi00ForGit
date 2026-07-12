@@ -99,12 +99,14 @@ public class WM100_PostMst_02_ExcelEntry{
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,300,20,"以下のデータを登録しようとしています",11,0);
 		main_fm.add(LB_SheetList);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_PostMstRt.RtSettingPostRt());
+				
 		String[] columnNames01 = {
-								 "郵便番号"
-								,"県"
-								,"市区町村"
-								,"町丁目"
-								,"市区町村CD"
+								 Title[M100_PostMstRt.ColPOST]
+								,Title[M100_PostMstRt.ColPREFECTURES]
+								,Title[M100_PostMstRt.ColMUNICI01]
+								,Title[M100_PostMstRt.ColMUNICI02]
+								,Title[M100_PostMstRt.ColMUNICIPALITY_CD]
 								};
 		
 		//編集可能カラムの指定
@@ -140,11 +142,11 @@ public class WM100_PostMst_02_ExcelEntry{
 		boolean ErrFg = false;
 		
 		String[] NeedCol = {
-						 "郵便番号"
-						,"県"
-						,"市区町村"
-						,"町丁目"
-						,"市区町村CD"
+						 Title[M100_PostMstRt.ColPOST]
+						,Title[M100_PostMstRt.ColPREFECTURES]
+						,Title[M100_PostMstRt.ColMUNICI01]
+						,Title[M100_PostMstRt.ColMUNICI02]
+						,Title[M100_PostMstRt.ColMUNICIPALITY_CD]
 						};
 		
 		int[] TgtCol = {
@@ -175,8 +177,17 @@ public class WM100_PostMst_02_ExcelEntry{
 		}
 		
 		if(ErrFg) {
-			JOptionPane.showMessageDialog(null, "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n"
-													+ "郵便番号,県,市区町村,町丁目,市区町村CD が必要です");
+			String Msg = "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n";
+			for(int i=0;i<NeedCol.length;i++) {
+				if(0<i&&0==i%5) {
+					Msg = Msg + (String)NeedCol[i] + ",\n";
+				}else {
+					Msg = Msg + (String)NeedCol[i] + ",";
+				}
+			}
+			Msg = Msg+"\nがヘッダに必要です";
+			
+			JOptionPane.showMessageDialog(null, Msg);
 			PostMstExcelEntry(0,0,TgtFilePath);
 		}else {
 			int[] ClmnType = new int[HeaderRead[0].length];

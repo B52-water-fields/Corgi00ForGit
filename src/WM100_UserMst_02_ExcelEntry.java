@@ -98,31 +98,33 @@ public class WM100_UserMst_02_ExcelEntry{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_UserMstRt.RtUserMstRt());
 		
 		String[] NeedCol = {
-				 "倉庫CD"
-				,"運送会社CD"
-				,"ユーザーCD"
-				,"ユーザー名1"
-				,"ユーザー名2"
-				,"ユーザー名3"
-				,"権限区分"
-				,"標準車輛CD"
-				,"郵便番号"
-				,"住所1"
-				,"住所2"
-				,"住所3"
-				,"電話番号"
-				,"FAX"
-				,"メールアドレス"
-				,"コメント1"
-				,"コメント2"
-				,"コメント3"
-				,"基幹システムユーザーコード"
-				,"削除区分"
-				,"主要担当荷主CD"
-				,"パスワード"
+				 Title[M100_UserMstRt.ColWHCD]
+				,Title[M100_UserMstRt.ColShippingCompanyCd]
+				,Title[M100_UserMstRt.ColUserCd]
+				,Title[M100_UserMstRt.ColUserName01]
+				,Title[M100_UserMstRt.ColUserName02]
+				,Title[M100_UserMstRt.ColUserName03]
+				,Title[M100_UserMstRt.ColAuthorityFG]
+				,Title[M100_UserMstRt.ColCarCd]
+				,Title[M100_UserMstRt.ColPost]
+				,Title[M100_UserMstRt.ColAdd01]
+				,Title[M100_UserMstRt.ColAdd02]
+				,Title[M100_UserMstRt.ColAdd03]
+				,Title[M100_UserMstRt.ColTel]
+				,Title[M100_UserMstRt.ColFax]
+				,Title[M100_UserMstRt.ColMail]
+				,Title[M100_UserMstRt.ColCom01]
+				,Title[M100_UserMstRt.ColCom02]
+				,Title[M100_UserMstRt.ColCom03]
+				,Title[M100_UserMstRt.ColPTMSCD]
+				,Title[M100_UserMstRt.ColDelFg]
+				,Title[M100_UserMstRt.ColMainClient]
+				,Title[M100_UserMstRt.ColPassWord]
 		};
+		
 		int[] TgtCol = {
 				 -1	//倉庫CD
 				,-1	//運送会社CD
@@ -151,37 +153,36 @@ public class WM100_UserMst_02_ExcelEntry{
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています",11,0);
 		main_fm.add(LB_SheetList);
 		
-		String[] columnNames01 = {
-				 "FG"
-				,"倉庫CD"
-				,"運送会社CD"
-				,"ユーザーCD"
-				,"倉庫名"
-				,"運送会社名"
-				,"ユーザー名1"
-				,"ユーザー名2"
-				,"ユーザー名3"
-				,"権限区分"
-				,"標準車輛CD"
-				,"車両名称01"
-				,"車両名称02"
-				,"車両名称03"
-				,"郵便番号"
-				,"住所1"
-				,"住所2"
-				,"住所3"
-				,"電話番号"
-				,"FAX"
-				,"メールアドレス"
-				,"コメント1"
-				,"コメント2"
-				,"コメント3"
-				,"基幹システムユーザーコード"
-				,"削除区分"
-				,"主要担当荷主CD"
-				,"主要担当荷主名"
-				,"パスワード"
-		};
+		String[] columnNames01 = new String[29];
+		columnNames01[ 0] = "Fg";					
+		columnNames01[ 1] = NeedCol[ 0];		//倉庫CD
+		columnNames01[ 2] = NeedCol[ 1];		//運送会社CD
+		columnNames01[ 3] = NeedCol[ 2];		//ユーザーCD
+		columnNames01[ 4] = "倉庫名";			//倉庫名
+		columnNames01[ 5] = "運送会社名";		//運送会社名
+		columnNames01[ 6] = NeedCol[ 3];		//ユーザー名1
+		columnNames01[ 7] = NeedCol[ 4];		//ユーザー名2
+		columnNames01[ 8] = NeedCol[ 5];		//ユーザー名3
+		columnNames01[ 9] = NeedCol[ 6];		//権限区分
+		columnNames01[10] = NeedCol[ 7];		//標準車輛CD
+		columnNames01[11] = "車両名称01";		//車両名称01
+		columnNames01[12] = "車両名称02";		//車両名称02
+		columnNames01[13] = "車両名称03";		//車両名称03
+		columnNames01[14] = NeedCol[ 8];		//郵便番号
+		columnNames01[15] = NeedCol[ 9];		//住所1
+		columnNames01[16] = NeedCol[10];		//住所2
+		columnNames01[17] = NeedCol[11];		//住所3
+		columnNames01[18] = NeedCol[12];		//電話番号
+		columnNames01[19] = NeedCol[13];		//FAX
+		columnNames01[20] = NeedCol[14];		//メールアドレス
+		columnNames01[21] = NeedCol[15];		//コメント1
+		columnNames01[22] = NeedCol[16];		//コメント2
+		columnNames01[23] = NeedCol[17];		//コメント3
+		columnNames01[24] = NeedCol[18];		///基幹システムユーザーコード
+		columnNames01[25] = NeedCol[19];		//削除区分
+		columnNames01[26] = NeedCol[20];		//主要担当荷主CD
+		columnNames01[27] = "主要担当荷主名";	//主要担当荷主名
+		columnNames01[28] = NeedCol[21];		//パスワード
 		
 		//編集可能カラムの指定
 		B100_TableControl.RenewTgt = new int[1];
@@ -199,36 +200,10 @@ public class WM100_UserMst_02_ExcelEntry{
 		
 		//列幅初期設定 表示位置設定
 		TableColumn column = null;
-		
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);
-		column = columnModel01.getColumn( 1);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//倉庫CD
-		column = columnModel01.getColumn( 2);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社CD
-		column = columnModel01.getColumn( 3);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//ユーザーCD
-		column = columnModel01.getColumn( 4);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//倉庫名
-		column = columnModel01.getColumn( 5);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//運送会社名
-		column = columnModel01.getColumn( 6);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//ユーザー名1
-		column = columnModel01.getColumn( 7);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//ユーザー名2
-		column = columnModel01.getColumn( 8);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//ユーザー名3
-		column = columnModel01.getColumn( 9);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//権限区分
-		column = columnModel01.getColumn(10);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//標準車輛CD
-		column = columnModel01.getColumn(11);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車両名称01
-		column = columnModel01.getColumn(12);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車両名称02
-		column = columnModel01.getColumn(13);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//車両名称03
-		column = columnModel01.getColumn(14);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//郵便番号
-		column = columnModel01.getColumn(15);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//住所1
-		column = columnModel01.getColumn(16);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//住所2
-		column = columnModel01.getColumn(17);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//住所3
-		column = columnModel01.getColumn(18);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//電話番号
-		column = columnModel01.getColumn(19);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//FAX
-		column = columnModel01.getColumn(20);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//メールアドレス
-		column = columnModel01.getColumn(21);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント1
-		column = columnModel01.getColumn(22);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント2
-		column = columnModel01.getColumn(23);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//コメント3
-		column = columnModel01.getColumn(24);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//基幹システムユーザーコード
-		column = columnModel01.getColumn(25);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//削除区分
-		column = columnModel01.getColumn(26);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//主要担当荷主CD
-		column = columnModel01.getColumn(27);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//主要担当荷主名
-		column = columnModel01.getColumn(28);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	//パスワード
+		for(int i=1;i<columnNames01.length;i++) {
+			column = columnModel01.getColumn(i);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+		}
 		
 		//スクロール用設定
 		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,65,700,600,tb01);
@@ -265,30 +240,18 @@ public class WM100_UserMst_02_ExcelEntry{
 
 			main_fm.setVisible(false);
 			main_fm.dispose();
-			JOptionPane.showMessageDialog(null, "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n"
-												 	+"倉庫CD"
-													+",運送会社CD"
-													+",ユーザーCD"
-													+",ユーザー名1"
-													+",ユーザー名2"
-													+",ユーザー名3"
-													+",権限区分"
-													+",標準車輛CD"
-													+",郵便番号"
-													+",住所1"
-													+",住所2"
-													+",住所3"
-													+",電話番号"
-													+",FAX"
-													+",メールアドレス"
-													+",コメント1"
-													+",コメント2"
-													+",コメント3"
-													+",基幹システムユーザーコード"
-													+",削除区分"
-													+",主要担当荷主CD"
-													+",パスワード\n"
-													+"がヘッダに必要です");
+			
+			String Msg = "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n";
+			for(int i=0;i<NeedCol.length;i++) {
+				if(0<i&&0==i%5) {
+					Msg = Msg + (String)NeedCol[i] + ",\n";
+				}else {
+					Msg = Msg + (String)NeedCol[i] + ",";
+				}
+			}
+			Msg = Msg+"\nがヘッダに必要です";
+			
+			JOptionPane.showMessageDialog(null, Msg);
 			UserMstExcelEntry(0,0,TgtFilePath);
 		}else {
 			int[] ClmnType = new int[HeaderRead[0].length];
@@ -538,6 +501,7 @@ public class WM100_UserMst_02_ExcelEntry{
 				int RowCount = MainFmTableModel.getRowCount();
 				if(RenewFg&&0<RowCount) {
 					RenewFg = false;
+					
 					String[][] SetString = {
 							{"WHCD"					,"1","1"}	//倉庫コード
 							,{"ShippingCompanyCd"	,"1","1"}	//運送会社CD
@@ -638,6 +602,13 @@ public class WM100_UserMst_02_ExcelEntry{
 					
 					//ファイルバックアップ
 					B100_FolderCheck.FileBackUpNormal(TgtFilePath) ;
+					
+					if(PassWordRenewFg) {
+						
+					}else {
+						JOptionPane.showMessageDialog(null, "パスワード\"********\"があったのでパスワードは触ってません\n必要なら個別に直してください");
+					}
+					
 					
 					SetX=main_fm.getX();
 					SetY=main_fm.getY();
