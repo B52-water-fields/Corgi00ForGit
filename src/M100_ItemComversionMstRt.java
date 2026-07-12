@@ -67,12 +67,12 @@ public class M100_ItemComversionMstRt{
 	
 	public static Object[][] RtItemComversionMstRt(){
 		Object[][] RtItemComversionMstRt = {
-				 {"ClGpCd"			,ColClGpCd			,"String"	,"荷主グループコード"	,"Key"}
+				 {"ClGpCd"			,ColClGpCd			,"String"	,"荷主グループCD"		,"Key"}
 				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ標記名"	,""}
-				,{"ClCd"			,ColClCd			,"String"	,"荷主コード"			,"Key"}
+				,{"ClCd"			,ColClCd			,"String"	,"荷主CD"				,"Key"}
 				,{"CLName01"		,ColCLName01		,"String"	,"荷主名"				,""}
-				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"		,"Key"}
-				,{"ItemCd"			,ColItemCd			,"String"	,"変換先商品コード"		,""}
+				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品CD"			,"Key"}
+				,{"ItemCd"			,ColItemCd			,"String"	,"変換先商品CD"			,""}
 				,{"PackingType"		,ColPackingType	,"int"		,"荷姿タイプ"			,""}
 				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"			,""}
 				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"			,""}

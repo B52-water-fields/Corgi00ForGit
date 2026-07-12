@@ -93,60 +93,62 @@ public class WM100_ItemMst_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ItemMstRt.RtItemMstRt());
+		
 		Object[][] NeedCol = {
-					 {"荷主グループコード"		,1, 0}
-					,{"商品コード"				,1, 1}
-					,{"荷主商品コード"			,1, 2}
-					,{"商品表記名"					,1, 3}
-					,{"商品正式名"					,1, 4}
-					,{"商品略名"					,1, 5}
-					,{"運送タイプコード01"		,1, 6}
-					,{"運送タイプコード02"		,1, 7}
-					,{"運送タイプコード03"		,1, 8}
-					,{"運送タイプコード04"		,1, 9}
-					,{"運送タイプコード05"		,1,10}
-					,{"基幹システム商品コード"	,1,11}
-					,{"カートン入数"			,0,12}
-					,{"ケース入数"				,0,13}
-					,{"パレット入数"			,0,14}
-					,{"JANCD"					,1,15}
-					,{"カートンバーコード"		,1,16}
-					,{"ケースバーコード"		,1,17}
-					,{"パレットバーコード"		,1,18}
-					,{"カートン商品名称"		,1,19}
-					,{"ケース商品名称"			,1,20}
-					,{"パレット商品名称"		,1,21}
-					,{"商品単位"				,1,22}
-					,{"カートン商品単位"		,1,23}
-					,{"ケース商品単位"			,1,24}
-					,{"パレット商品単位"		,1,25}
-					,{"商品重量"				,0,26}
-					,{"カートン重量"			,0,27}
-					,{"ケース重量"				,0,28}
-					,{"パレット重量"			,0,29}
-					,{"商品サイズ"				,0,30}
-					,{"カートンサイズ"			,0,31}
-					,{"ケースサイズ"			,0,32}
-					,{"パレットサイズ"			,0,33}
-					,{"推奨ロケ"				,1,34}
-					,{"商品モデル番号（型番）"	,1,35}
-					,{"商品カテゴリCD"			,1,36}
-					,{"商品カテゴリ名"			,1,37}
-					,{"商品カラーコード"		,1,38}
-					,{"商品カラー名"			,1,39}
-					,{"商品サイズコード"		,1,40}
-					,{"商品サイズ名"			,1,41}
-					,{"コメント1"				,1,42}
-					,{"コメント2"				,1,43}
-					,{"コメント3"				,1,44}
-					,{"温度区分"				,1,45}
-					,{"画像パス01"				,1,46}
-					,{"画像パス02"				,1,47}
-					,{"画像パス03"				,1,48}
-					,{"画像パス04"				,1,49}
-					,{"画像パス05"				,1,50}
-					,{"賞味期限日数"			,1,51}
-					,{"削除フラグ"				,1,52}
+					 {Title[M100_ItemMstRt.ColClGpCd]				,1, 0}
+					,{Title[M100_ItemMstRt.ColItemCd]				,1, 1}
+					,{Title[M100_ItemMstRt.ColCLItemCd]			,1, 2}
+					,{Title[M100_ItemMstRt.ColItemName01]			,1, 3}
+					,{Title[M100_ItemMstRt.ColItemName02]			,1, 4}
+					,{Title[M100_ItemMstRt.ColItemName03]			,1, 5}
+					,{Title[M100_ItemMstRt.ColDeliveryTypeCd01]	,1, 6}
+					,{Title[M100_ItemMstRt.ColDeliveryTypeCd02]	,1, 7}
+					,{Title[M100_ItemMstRt.ColDeliveryTypeCd03]	,1, 8}
+					,{Title[M100_ItemMstRt.ColDeliveryTypeCd04]	,1, 9}
+					,{Title[M100_ItemMstRt.ColDeliveryTypeCd05]	,1,10}
+					,{Title[M100_ItemMstRt.ColPTMSCD]				,1,11}
+					,{Title[M100_ItemMstRt.ColCtQty]				,0,12}
+					,{Title[M100_ItemMstRt.ColCsQty]				,0,13}
+					,{Title[M100_ItemMstRt.ColPlQty]				,0,14}
+					,{Title[M100_ItemMstRt.ColJanCd]				,1,15}
+					,{Title[M100_ItemMstRt.ColCtJan]				,1,16}
+					,{Title[M100_ItemMstRt.ColCsJan]				,1,17}
+					,{Title[M100_ItemMstRt.ColPlJan]				,1,18}
+					,{Title[M100_ItemMstRt.ColCtName]				,1,19}
+					,{Title[M100_ItemMstRt.ColCsName]				,1,20}
+					,{Title[M100_ItemMstRt.ColPlName]				,1,21}
+					,{Title[M100_ItemMstRt.ColUnitName]			,1,22}
+					,{Title[M100_ItemMstRt.ColCtUnitName]			,1,23}
+					,{Title[M100_ItemMstRt.ColCsUnitName]			,1,24}
+					,{Title[M100_ItemMstRt.ColPlUnitName]			,1,25}
+					,{Title[M100_ItemMstRt.ColItemWeight]			,0,26}
+					,{Title[M100_ItemMstRt.ColCtWeight]			,0,27}
+					,{Title[M100_ItemMstRt.ColCsWeight]			,0,28}
+					,{Title[M100_ItemMstRt.ColPlWeight]			,0,29}
+					,{Title[M100_ItemMstRt.ColItemSize]			,0,30}
+					,{Title[M100_ItemMstRt.ColCtSize]				,0,31}
+					,{Title[M100_ItemMstRt.ColCsSize]				,0,32}
+					,{Title[M100_ItemMstRt.ColPlSize]				,0,33}
+					,{Title[M100_ItemMstRt.ColRecomendLoc]		,1,34}
+					,{Title[M100_ItemMstRt.ColItemMDNo]			,1,35}
+					,{Title[M100_ItemMstRt.ColCategoryCd]			,1,36}
+					,{Title[M100_ItemMstRt.ColCategoryName]		,1,37}
+					,{Title[M100_ItemMstRt.ColItemColorCd]		,1,38}
+					,{Title[M100_ItemMstRt.ColItemColorName]		,1,39}
+					,{Title[M100_ItemMstRt.ColItemSizeCd]			,1,40}
+					,{Title[M100_ItemMstRt.ColItemSizeName]		,1,41}
+					,{Title[M100_ItemMstRt.ColCom01]				,1,42}
+					,{Title[M100_ItemMstRt.ColCom02]				,1,43}
+					,{Title[M100_ItemMstRt.ColCom03]				,1,44}
+					,{Title[M100_ItemMstRt.ColTildFG]				,1,45}
+					,{Title[M100_ItemMstRt.ColPictPass01]			,1,46}
+					,{Title[M100_ItemMstRt.ColPictPass02]			,1,47}
+					,{Title[M100_ItemMstRt.ColPictPass03]			,1,48}
+					,{Title[M100_ItemMstRt.ColPictPass04]			,1,49}
+					,{Title[M100_ItemMstRt.ColPictPass05]			,1,50}
+					,{Title[M100_ItemMstRt.ColExpDateHowLong]		,1,51}
+					,{Title[M100_ItemMstRt.ColDelFg]				,1,52}
 					};//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています※データ内の重複はチェックしません",11,0);
 		main_fm.add(LB_SheetList);
@@ -365,170 +367,62 @@ public class WM100_ItemMst_02_ExcelEntry{
 		int ColExpDateHowLong	= 52;		//賞味期限日数
 		int ColDelFg			= 53;		//削除フラグ
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ItemMstRt.RtItemMstRt());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(TableCol[i]) {
-				case "荷主グループコード":
-					ColClGpCd = i;
-					break;
-				case "商品コード":
-					ColItemCd = i;
-					break;
-				case "荷主商品コード":
-					ColCLItemCd = i;
-					break;
-				case "商品表記名":
-					ColItemName01 = i;
-					break;
-				case "商品正式名":
-					ColItemName02 = i;
-					break;
-				case "商品略名":
-					ColItemName03 = i;
-					break;
-				case "運送タイプコード01":
-					ColDeliveryTypeCd01 = i;
-					break;
-				case "運送タイプコード02":
-					ColDeliveryTypeCd02 = i;
-					break;
-				case "運送タイプコード03":
-					ColDeliveryTypeCd03 = i;
-					break;
-				case "運送タイプコード04":
-					ColDeliveryTypeCd04 = i;
-					break;
-				case "運送タイプコード05":
-					ColDeliveryTypeCd05 = i;
-					break;
-				case "基幹システム商品コード":
-					ColPTMSCD = i;
-					break;
-				case "カートン入数":
-					ColCtQty = i;
-					break;
-				case "ケース入数":
-					ColCsQty = i;
-					break;
-				case "パレット入数":
-					ColPlQty = i;
-					break;
-				case "JANCD":
-					ColJanCd = i;
-					break;
-				case "カートンバーコード":
-					ColCtJan = i;
-					break;
-				case "ケースバーコード":
-					ColCsJan = i;
-					break;
-				case "パレットバーコード":
-					ColPlJan = i;
-					break;
-				case "カートン商品名称":
-					ColCtName = i;
-					break;
-				case "ケース商品名称":
-					ColCsName = i;
-					break;
-				case "パレット商品名称":
-					ColPlName = i;
-					break;
-				case "商品単位":
-					ColUnitName = i;
-					break;
-				case "カートン商品単位":
-					ColCtUnitName = i;
-					break;
-				case "ケース商品単位":
-					ColCsUnitName = i;
-					break;
-				case "パレット商品単位":
-					ColPlUnitName = i;
-					break;
-				case "商品重量":
-					ColItemWeight = i;
-					break;
-				case "カートン重量":
-					ColCtWeight = i;
-					break;
-				case "ケース重量":
-					ColCsWeight = i;
-					break;
-				case "パレット重量":
-					ColPlWeight = i;
-					break;
-				case "商品サイズ":
-					ColItemSize = i;
-					break;
-				case "カートンサイズ":
-					ColCtSize = i;
-					break;
-				case "ケースサイズ":
-					ColCsSize = i;
-					break;
-				case "パレットサイズ":
-					ColPlSize = i;
-					break;
-				case "推奨ロケ":
-					ColRecomendLoc = i;
-					break;
-				case "商品モデル番号（型番）":
-					ColItemMDNo = i;
-					break;
-				case "商品カテゴリCD":
-					ColCategoryCd = i;
-					break;
-				case "商品カテゴリ名":
-					ColCategoryName = i;
-					break;
-				case "商品カラーコード":
-					ColItemColorCd = i;
-					break;
-				case "商品カラー名":
-					ColItemColorName = i;
-					break;
-				case "商品サイズコード":
-					ColItemSizeCd = i;
-					break;
-				case "商品サイズ名":
-					ColItemSizeName = i;
-					break;
-				case "コメント1":
-					ColCom01 = i;
-					break;
-				case "コメント2":
-					ColCom02 = i;
-					break;
-				case "コメント3":
-					ColCom03 = i;
-					break;
-				case "温度区分":
-					ColTildFG = i;
-					break;
-				case "画像パス01":
-					ColItemImagePath01 = i;
-					break;
-				case "画像パス02":
-					ColItemImagePath02 = i;
-					break;
-				case "画像パス03":
-					ColItemImagePath03 = i;
-					break;
-				case "画像パス04":
-					ColItemImagePath04 = i;
-					break;
-				case "画像パス05":
-					ColItemImagePath05 = i;
-					break;
-				case "賞味期限日数":
-					ColExpDateHowLong = i;
-					break;
-				case "削除フラグ":
-					ColDelFg = i;
-					break;
-				default:
-					break;
-			}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColClGpCd]				)){ColClGpCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemCd]				)){ColItemCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCLItemCd]			)){ColCLItemCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName01]			)){ColItemName01		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName02]			)){ColItemName02		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName03]			)){ColItemName03		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd01]	)){ColDeliveryTypeCd01	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd02]	)){ColDeliveryTypeCd02	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd03]	)){ColDeliveryTypeCd03	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd04]	)){ColDeliveryTypeCd04	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd05]	)){ColDeliveryTypeCd05	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPTMSCD]				)){ColPTMSCD			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtQty]				)){ColCtQty				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsQty]				)){ColCsQty				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlQty]				)){ColPlQty				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColJanCd]				)){ColJanCd				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtJan]				)){ColCtJan				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsJan]				)){ColCsJan				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlJan]				)){ColPlJan				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtName]				)){ColCtName			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsName]				)){ColCsName			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlName]				)){ColPlName			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColUnitName]			)){ColUnitName			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtUnitName]			)){ColCtUnitName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsUnitName]			)){ColCsUnitName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlUnitName]			)){ColPlUnitName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemWeight]			)){ColItemWeight		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtWeight]			)){ColCtWeight			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsWeight]			)){ColCsWeight			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlWeight]			)){ColPlWeight			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemSize]			)){ColItemSize			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtSize]				)){ColCtSize			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsSize]				)){ColCsSize			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlSize]				)){ColPlSize			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColRecomendLoc]		)){ColRecomendLoc		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemMDNo]			)){ColItemMDNo			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCategoryCd]			)){ColCategoryCd		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCategoryName]		)){ColCategoryName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemColorCd]		)){ColItemColorCd		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemColorName]		)){ColItemColorName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemSizeCd]			)){ColItemSizeCd		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemSizeName]		)){ColItemSizeName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCom01]				)){ColCom01				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCom02]				)){ColCom02				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCom03]				)){ColCom03				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColTildFG]				)){ColTildFG			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass01]			)){ColItemImagePath01	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass02]			)){ColItemImagePath02	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass03]			)){ColItemImagePath03	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass04]			)){ColItemImagePath04	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass05]			)){ColItemImagePath05	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColExpDateHowLong]		)){ColExpDateHowLong	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDelFg]				)){ColDelFg				= i;}
 		}
 		int EntryCount = 0;
 		for(int i=0;i<CheckOb.length;i++) {
@@ -1098,170 +992,62 @@ public class WM100_ItemMst_02_ExcelEntry{
 		int ColExpDateHowLong	= 52;		//賞味期限日数
 		int ColDelFg			= 53;		//削除フラグ
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ItemMstRt.RtItemMstRt());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(TableCol[i]) {
-				case "荷主グループコード":
-					ColClGpCd = i;
-					break;
-				case "商品コード":
-					ColItemCd = i;
-					break;
-				case "荷主商品コード":
-					ColCLItemCd = i;
-					break;
-				case "商品表記名":
-					ColItemName01 = i;
-					break;
-				case "商品正式名":
-					ColItemName02 = i;
-					break;
-				case "商品略名":
-					ColItemName03 = i;
-					break;
-				case "運送タイプコード01":
-					ColDeliveryTypeCd01 = i;
-					break;
-				case "運送タイプコード02":
-					ColDeliveryTypeCd02 = i;
-					break;
-				case "運送タイプコード03":
-					ColDeliveryTypeCd03 = i;
-					break;
-				case "運送タイプコード04":
-					ColDeliveryTypeCd04 = i;
-					break;
-				case "運送タイプコード05":
-					ColDeliveryTypeCd05 = i;
-					break;
-				case "基幹システム商品コード":
-					ColPTMSCD = i;
-					break;
-				case "カートン入数":
-					ColCtQty = i;
-					break;
-				case "ケース入数":
-					ColCsQty = i;
-					break;
-				case "パレット入数":
-					ColPlQty = i;
-					break;
-				case "JANCD":
-					ColJanCd = i;
-					break;
-				case "カートンバーコード":
-					ColCtJan = i;
-					break;
-				case "ケースバーコード":
-					ColCsJan = i;
-					break;
-				case "パレットバーコード":
-					ColPlJan = i;
-					break;
-				case "カートン商品名称":
-					ColCtName = i;
-					break;
-				case "ケース商品名称":
-					ColCsName = i;
-					break;
-				case "パレット商品名称":
-					ColPlName = i;
-					break;
-				case "商品単位":
-					ColUnitName = i;
-					break;
-				case "カートン商品単位":
-					ColCtUnitName = i;
-					break;
-				case "ケース商品単位":
-					ColCsUnitName = i;
-					break;
-				case "パレット商品単位":
-					ColPlUnitName = i;
-					break;
-				case "商品重量":
-					ColItemWeight = i;
-					break;
-				case "カートン重量":
-					ColCtWeight = i;
-					break;
-				case "ケース重量":
-					ColCsWeight = i;
-					break;
-				case "パレット重量":
-					ColPlWeight = i;
-					break;
-				case "商品サイズ":
-					ColItemSize = i;
-					break;
-				case "カートンサイズ":
-					ColCtSize = i;
-					break;
-				case "ケースサイズ":
-					ColCsSize = i;
-					break;
-				case "パレットサイズ":
-					ColPlSize = i;
-					break;
-				case "推奨ロケ":
-					ColRecomendLoc = i;
-					break;
-				case "商品モデル番号（型番）":
-					ColItemMDNo = i;
-					break;
-				case "商品カテゴリCD":
-					ColCategoryCd = i;
-					break;
-				case "商品カテゴリ名":
-					ColCategoryName = i;
-					break;
-				case "商品カラーコード":
-					ColItemColorCd = i;
-					break;
-				case "商品カラー名":
-					ColItemColorName = i;
-					break;
-				case "商品サイズコード":
-					ColItemSizeCd = i;
-					break;
-				case "商品サイズ名":
-					ColItemSizeName = i;
-					break;
-				case "コメント1":
-					ColCom01 = i;
-					break;
-				case "コメント2":
-					ColCom02 = i;
-					break;
-				case "コメント3":
-					ColCom03 = i;
-					break;
-				case "温度区分":
-					ColTildFG = i;
-					break;
-				case "画像パス01":
-					ColItemImagePath01 = i;
-					break;
-				case "画像パス02":
-					ColItemImagePath02 = i;
-					break;
-				case "画像パス03":
-					ColItemImagePath03 = i;
-					break;
-				case "画像パス04":
-					ColItemImagePath04 = i;
-					break;
-				case "画像パス05":
-					ColItemImagePath05 = i;
-					break;
-				case "賞味期限日数":
-					ColExpDateHowLong = i;
-					break;
-				case "削除フラグ":
-					ColDelFg = i;
-					break;
-				default:
-					break;
-			}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColClGpCd]				)){ColClGpCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemCd]				)){ColItemCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCLItemCd]			)){ColCLItemCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName01]			)){ColItemName01		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName02]			)){ColItemName02		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName03]			)){ColItemName03		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd01]	)){ColDeliveryTypeCd01	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd02]	)){ColDeliveryTypeCd02	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd03]	)){ColDeliveryTypeCd03	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd04]	)){ColDeliveryTypeCd04	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDeliveryTypeCd05]	)){ColDeliveryTypeCd05	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPTMSCD]				)){ColPTMSCD			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtQty]				)){ColCtQty				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsQty]				)){ColCsQty				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlQty]				)){ColPlQty				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColJanCd]				)){ColJanCd				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtJan]				)){ColCtJan				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsJan]				)){ColCsJan				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlJan]				)){ColPlJan				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtName]				)){ColCtName			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsName]				)){ColCsName			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlName]				)){ColPlName			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColUnitName]			)){ColUnitName			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtUnitName]			)){ColCtUnitName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsUnitName]			)){ColCsUnitName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlUnitName]			)){ColPlUnitName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemWeight]			)){ColItemWeight		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtWeight]			)){ColCtWeight			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsWeight]			)){ColCsWeight			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlWeight]			)){ColPlWeight			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemSize]			)){ColItemSize			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCtSize]				)){ColCtSize			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCsSize]				)){ColCsSize			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPlSize]				)){ColPlSize			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColRecomendLoc]		)){ColRecomendLoc		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemMDNo]			)){ColItemMDNo			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCategoryCd]			)){ColCategoryCd		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCategoryName]		)){ColCategoryName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemColorCd]		)){ColItemColorCd		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemColorName]		)){ColItemColorName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemSizeCd]			)){ColItemSizeCd		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemSizeName]		)){ColItemSizeName		= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCom01]				)){ColCom01				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCom02]				)){ColCom02				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCom03]				)){ColCom03				= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColTildFG]				)){ColTildFG			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass01]			)){ColItemImagePath01	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass02]			)){ColItemImagePath02	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass03]			)){ColItemImagePath03	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass04]			)){ColItemImagePath04	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColPictPass05]			)){ColItemImagePath05	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColExpDateHowLong]		)){ColExpDateHowLong	= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColDelFg]				)){ColDelFg				= i;}
 		}
 		ArrayList<String> SearchClGpCD 		= new ArrayList<String>();
 		ArrayList<String> SearchCLGpName 	= new ArrayList<String>();

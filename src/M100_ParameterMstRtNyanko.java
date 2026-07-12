@@ -115,8 +115,8 @@ public class M100_ParameterMstRtNyanko{
 	
 	public static Object[][] RtParameterMstRtNANKO(){
 		Object[][] RtSettingParameterMstRtNANKO = {
-				 {"ParaCd"		,ColParaCd			,"String"	,"パラメータコード"			,"Key"}
-				,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"ナンバリング"				,"Key"}
+				 {"ParaCd"		,ColParaCd			,"String"	,"パラメータCD"				,"Key"}
+				,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"Seq"						,"Key"}
 				,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"				,""}
 				,{"ParaTxt01"	,ColParaTxt01		,"String"	,"パラメータテキスト項目01"	,""}
 				,{"ParaTxt02"	,ColParaTxt02		,"String"	,"パラメータテキスト項目02"	,""}

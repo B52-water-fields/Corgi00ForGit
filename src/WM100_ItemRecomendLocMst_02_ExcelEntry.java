@@ -93,11 +93,13 @@ public class WM100_ItemRecomendLocMst_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ItemRecomendLocMstRt.RtItemRecomendLocMstRt());
+		
 		Object[][] NeedCol = {
-				 {"荷主コード"		, 1	, 0}
-				,{"担当倉庫コード"	, 1	, 1}
-				,{"商品コード"		, 1	, 2}
-				,{"推奨ロケ"		, 1	, 3}
+				 {Title[M100_ItemRecomendLocMstRt.ColClCd]				, 1	, 0}
+				,{Title[M100_ItemRecomendLocMstRt.ColClWh]				, 1	, 1}
+				,{Title[M100_ItemRecomendLocMstRt.ColItemCd]			, 1	, 2}
+				,{Title[M100_ItemRecomendLocMstRt.ColRecomendLoc]		, 1	, 3}
 				};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
@@ -382,23 +384,13 @@ public class WM100_ItemRecomendLocMst_02_ExcelEntry{
 		int ColItemCd			= (int)3;	//商品コード
 		int ColRecomendLoc		= (int)4;	//推奨ロケ
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ItemRecomendLocMstRt.RtItemRecomendLocMstRt());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(""+TableCol[i]) {
-			 	case "荷主コード":
-			 		ColClCd= i;
-			 		break;
-				case "担当倉庫コード":
-					ColClWh= i;
-			 		break;
-				case "商品コード":
-					ColItemCd= i;
-			 		break;
-				case "推奨ロケ":
-					ColRecomendLoc= i;
-			 		break;
-			 	default:
-			 		break;
-			}
+			if(TableCol[i].equals(Title[M100_ItemRecomendLocMstRt.ColClCd]			)) {ColClCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemRecomendLocMstRt.ColClWh]			)) {ColClWh			= i;}
+			if(TableCol[i].equals(Title[M100_ItemRecomendLocMstRt.ColItemCd]		)) {ColItemCd		= i;}
+			if(TableCol[i].equals(Title[M100_ItemRecomendLocMstRt.ColRecomendLoc]	)) {ColRecomendLoc	= i;}
 		}
 		int EntryCount = 0;
 		for(int i=0;i<CheckOb.length;i++) {

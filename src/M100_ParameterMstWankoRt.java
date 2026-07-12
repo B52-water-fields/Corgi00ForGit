@@ -64,16 +64,16 @@ public class M100_ParameterMstWankoRt{
 	String GetParaCd		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaCd];		//パラメータコード
 	int GetParaCdSeq		=(int)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaCdSeq];		//ナンバリング
 	String GetParaName		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaName];		//パラメータ名
-	String GetParaTxt01		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt01];	//パラメータテキスト項目01
-	String GetParaTxt02		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt02];	//パラメータテキスト項目02
-	String GetParaTxt03		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt03];	//パラメータテキスト項目03
-	String GetParaTxt04		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt04];	//パラメータテキスト項目04
-	String GetParaTxt05		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt05];	//パラメータテキスト項目05
-	String GetParaTxt06		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt06];	//パラメータテキスト項目06
-	String GetParaTxt07		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt07];	//パラメータテキスト項目07
-	String GetParaTxt08		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt08];	//パラメータテキスト項目08
-	String GetParaTxt09		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt09];	//パラメータテキスト項目09
-	String GetParaTxt10		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt10];	//パラメータテキスト項目10
+	String GetParaTxt01		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt01];		//パラメータテキスト項目01
+	String GetParaTxt02		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt02];		//パラメータテキスト項目02
+	String GetParaTxt03		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt03];		//パラメータテキスト項目03
+	String GetParaTxt04		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt04];		//パラメータテキスト項目04
+	String GetParaTxt05		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt05];		//パラメータテキスト項目05
+	String GetParaTxt06		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt06];		//パラメータテキスト項目06
+	String GetParaTxt07		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt07];		//パラメータテキスト項目07
+	String GetParaTxt08		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt08];		//パラメータテキスト項目08
+	String GetParaTxt09		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt09];		//パラメータテキスト項目09
+	String GetParaTxt10		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaTxt10];		//パラメータテキスト項目10
 	int GetParaInt01		=(int)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaInt01];		//パラメータ数値項目01
 	int GetParaInt02		=(int)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaInt02];		//パラメータ数値項目02
 	int GetParaInt03		=(int)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaInt03];		//パラメータ数値項目03
@@ -84,9 +84,9 @@ public class M100_ParameterMstWankoRt{
 	int GetParaInt08		=(int)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaInt08];		//パラメータ数値項目08
 	int GetParaInt09		=(int)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaInt09];		//パラメータ数値項目09
 	int GetParaInt10		=(int)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColParaInt10];		//パラメータ数値項目10
-	String GetEntryDate		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColEntryDate];	//登録日
+	String GetEntryDate		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColEntryDate];		//登録日
 	String GetUpdateDate	=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColUpdateDate];	//更新日
-	String GetEntryUser		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColEntryUser];	//登録者
+	String GetEntryUser		=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColEntryUser];		//登録者
 	String GetUpdateUser	=(String)ParameterMstWankoRt[i][M100_ParameterMstWankoRt.ColUpdateUser];	//更新者
 	
 	*/
@@ -126,12 +126,12 @@ public class M100_ParameterMstWankoRt{
 	
 	public static Object[][] RtParameterMstWankoRt(){
 		Object[][] RtParameterMstWankoRt= {
-					 {"ClWh"		,ColClWh			,"String"	,"担当倉庫コード"			,"Key"}
+					 {"ClWh"		,ColClWh			,"String"	,"担当倉庫CD"				,"Key"}
 					,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"				,"Key"}
 					,{"ClCd"		,ColClCd			,"String"	,"荷主コード"				,"Key"}
 					,{"CLName01"	,ColCLName01		,"String"	,"荷主名"					,""}
-					,{"ParaCd"		,ColParaCd			,"String"	,"パラメータコード"			,""}
-					,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"ナンバリング"				,""}
+					,{"ParaCd"		,ColParaCd			,"String"	,"パラメータCD"				,""}
+					,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"Seq"						,""}
 					,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"				,""}
 					,{"ParaTxt01"	,ColParaTxt01		,"String"	,"パラメータテキスト項目01"	,""}
 					,{"ParaTxt02"	,ColParaTxt02		,"String"	,"パラメータテキスト項目02"	,""}

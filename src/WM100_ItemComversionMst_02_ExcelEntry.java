@@ -90,12 +90,14 @@ public class WM100_ItemComversionMst_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ItemComversionMstRt.RtItemComversionMstRt());
+		
 		Object[][] NeedCol = {
-					 {"荷主グループコード"	,1,0}
-					,{"荷主コード"			,1,1}
-					,{"荷主商品コード"		,1,2}
-					,{"変換先商品コード"	,1,3}
-					,{"荷姿タイプ"			,0,4}
+					 {Title[M100_ItemComversionMstRt.ColClGpCd]		,1,0}
+					,{Title[M100_ItemComversionMstRt.ColClCd]			,1,1}
+					,{Title[M100_ItemComversionMstRt.ColClItemCd]		,1,2}
+					,{Title[M100_ItemComversionMstRt.ColItemCd]		,1,3}
+					,{Title[M100_ItemComversionMstRt.ColPackingType]	,0,4}
 					};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています※データ内の重複はチェックしません",11,0);
@@ -275,26 +277,14 @@ public class WM100_ItemComversionMst_02_ExcelEntry{
 		int ColItemCd 	= 4;	//変換先商品コード
 		int ColType 	= 5;	//荷姿タイプ
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ItemComversionMstRt.RtItemComversionMstRt());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(TableCol[i]) {
-				case "荷主グループコード":
-					ColClGpCd = i;
-					break;
-				case "荷主コード":
-					ColClCd = i;
-					break;
-				case "荷主商品コード":
-					ColClItemCd = i;
-					break;
-				case "変換先商品コード":
-					ColItemCd = i;
-					break;
-				case "荷姿タイプ":
-					ColType = i;
-					break;
-				default:
-					break;
-			}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColClGpCd]		)) {ColClGpCd 	= i;}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColClCd]			)) {ColClCd 	= i;}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColClItemCd]		)) {ColClItemCd	= i;}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColItemCd]		)) {ColItemCd	= i;}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColPackingType]	)) {ColType		= i;}
 		}
 		int EntryCount = 0;
 		for(int i=0;i<CheckOb.length;i++) {
@@ -376,6 +366,9 @@ public class WM100_ItemComversionMst_02_ExcelEntry{
 	
 	private static ArrayList<String> ErrCheck(Object[][] CheckOb,String[] TableCol){
 		ArrayList<String> ErrMsg = new ArrayList<String>();
+		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ItemComversionMstRt.RtItemComversionMstRt());
+		
 		boolean UnHitFg = true;
 		
 		int ColClGpCd 	= 1;	//荷主グループコード
@@ -385,25 +378,11 @@ public class WM100_ItemComversionMst_02_ExcelEntry{
 		int ColType 	= 5;	//荷姿タイプ
 		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(TableCol[i]) {
-				case "荷主グループコード":
-					ColClGpCd = i;
-					break;
-				case "荷主コード":
-					ColClCd = i;
-					break;
-				case "荷主商品コード":
-					ColClItemCd = i;
-					break;
-				case "変換先商品コード":
-					ColItemCd = i;
-					break;
-				case "荷姿タイプ":
-					ColType = i;
-					break;
-				default:
-					break;
-			}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColClGpCd]		)) {ColClGpCd 	= i;}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColClCd]			)) {ColClCd 	= i;}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColClItemCd]		)) {ColClItemCd	= i;}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColItemCd]		)) {ColItemCd	= i;}
+			if(TableCol[i].equals(Title[M100_ItemComversionMstRt.ColPackingType]	)) {ColType		= i;}
 		}
 		
 		ArrayList<String> SearchClGpCD 		= new ArrayList<String>();

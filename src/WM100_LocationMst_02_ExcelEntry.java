@@ -92,14 +92,16 @@ public class WM100_LocationMst_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_LocationMstRt.RtLocationMstRt());
+		
 		Object[][] NeedCol = {
-				 {"荷主コード"			, 1	, 0}
-				,{"荷主表記名"				, 1	, 1}
-				,{"倉庫コード"			, 1	, 2}
-				,{"拠点倉庫名"			, 1	, 3}
-				,{"ロケーション"		, 1	, 4}
-				,{"ロケーション名"		, 1	, 5}
-				,{"ロケタイプ"			, 0	, 6}
+				 {Title[M100_LocationMstRt.ColClCd]			, 1	, 0}
+				,{Title[M100_LocationMstRt.ColCLName01]		, 1	, 1}
+				,{Title[M100_LocationMstRt.ColWhCd]			, 1	, 2}
+				,{Title[M100_LocationMstRt.ColWHName]			, 1	, 3}
+				,{Title[M100_LocationMstRt.ColLoc]				, 1	, 4}
+				,{Title[M100_LocationMstRt.ColLocName]			, 1	, 5}
+				,{Title[M100_LocationMstRt.ColType]			, 0	, 6}
 				};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
@@ -273,32 +275,16 @@ public class WM100_LocationMst_02_ExcelEntry{
 		int ColLocName	= 6;		//ロケーション名
 		int ColType		= 7;		//ロケタイプ
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_LocationMstRt.RtLocationMstRt());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(""+TableCol[i]) {
-				case "荷主コード":
-					ColClCd = i;
-					break;
-				case "荷主表記名":
-					ColClName 	= i;
-					break;
-				case "倉庫コード":
-					ColWhCd 	= i;
-					break;
-				case "拠点倉庫名":
-					ColWhName 	= i;
-					break;
-				case "ロケーション":
-					ColLoc 		= i;
-					break;
-				case "ロケーション名":
-					ColLocName 	= i;
-					break;
-				case "ロケタイプ":
-					ColType 	= i;
-					break;
-				default:
-					break;
-			}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColClCd]		)){ColClCd		= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColCLName01]	)){ColClName	= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColWhCd]		)){ColWhCd		= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColWHName]		)){ColWhName	= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColLoc]			)){ColLoc		= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColLocName]		)){ColLocName	= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColType]		)){ColType		= i;}
 		}
 		int EntryCount = 0;
 		for(int i=0;i<CheckOb.length;i++) {
@@ -393,30 +379,16 @@ public class WM100_LocationMst_02_ExcelEntry{
 		int ColLocName	= 6;		//ロケーション名
 		int ColType		= 7;		//ロケタイプ
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_LocationMstRt.RtLocationMstRt());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(""+TableCol[i]) {
-				case "荷主コード":
-					ColClCd = i;
-					break;
-				case "荷主表記名":
-					ColClName 	= i;
-					break;
-				case "倉庫コード":
-					ColClName 	= i;
-					break;
-				case "拠点倉庫名":
-					ColWhName 	= i;
-					break;
-				case "ロケーション":
-					ColLoc 		= i;
-					break;
-				case "ロケーション名":
-					ColLocName 	= i;
-					break;
-				case "ロケタイプ":
-					ColType 	= i;
-					break;
-			}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColClCd]		)){ColClCd		= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColCLName01]	)){ColClName	= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColWhCd]		)){ColWhCd		= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColWHName]		)){ColWhName	= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColLoc]			)){ColLoc		= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColLocName]		)){ColLocName	= i;}
+			if(TableCol[i].equals(Title[M100_LocationMstRt.ColType]		)){ColType		= i;}
 		}
 		          
 		//現在選択されている荷主・倉庫以外への設定不可

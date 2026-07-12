@@ -477,6 +477,7 @@ public class WM100_ParameterMstWanko_01_RenewAndCreate{
 		SearchClCd.add(TgtClCd);
 		SearchParaCd.add(TgtParaCd);
 		SearchParaCdSeqStr.add(Integer.parseInt(TgtParaCdSeq));
+		SearchParaCdSeqEnd.add(Integer.parseInt(TgtParaCdSeq));
 		
 		Object[][] ParameterMstWankoRt = M100_ParameterMstWankoRt.ParameterMstWankoRt(
 				SearchClWh,SearchClCd,

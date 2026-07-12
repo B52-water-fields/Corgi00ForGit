@@ -97,24 +97,26 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_DeliveryMstRt.RtDeliveryMstRt());
+		
 		String[] NeedCol = {
-				 "届先コード"
-				,"部署CD"
-				,"届先表記名"
-				,"届先正式名"
-				,"届先略名"
-				,"届先郵便"
-				,"届先住所1"
-				,"届先住所2"
-				,"届先住所3"
-				,"届先電話"
-				,"届先FAX"
-				,"届先MAIL"
-				,"コメント1"
-				,"コメント2"
-				,"コメント3"
-				,"基幹システム発着地コード"
-				,"削除区分"
+				 Title[M100_DeliveryMstRt.ColDECD]
+				,Title[M100_DeliveryMstRt.ColDepartmentCd]
+				,Title[M100_DeliveryMstRt.ColDEName01]
+				,Title[M100_DeliveryMstRt.ColDEName02]
+				,Title[M100_DeliveryMstRt.ColDEName03]
+				,Title[M100_DeliveryMstRt.ColPost]
+				,Title[M100_DeliveryMstRt.ColAdd01]
+				,Title[M100_DeliveryMstRt.ColAdd02]
+				,Title[M100_DeliveryMstRt.ColAdd03]
+				,Title[M100_DeliveryMstRt.ColTel]
+				,Title[M100_DeliveryMstRt.ColFax]
+				,Title[M100_DeliveryMstRt.ColMail]
+				,Title[M100_DeliveryMstRt.ColCom01]
+				,Title[M100_DeliveryMstRt.ColCom02]
+				,Title[M100_DeliveryMstRt.ColCom03]
+				,Title[M100_DeliveryMstRt.ColPTMSCD]
+				,Title[M100_DeliveryMstRt.ColDelFg]
 				};
 
 		int[] TgtCol = {
@@ -217,11 +219,26 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 			main_fm.setVisible(false);
 			main_fm.dispose();
 			JOptionPane.showMessageDialog(null, "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n"
-													+"届先コード,部署CD,届先表記名,届先正式名,届先略名,\n"
-													+"届先郵便,届先住所1,届先住所2,届先住所3\n"
-													+",届先電話,届先FAX,届先MAIL,\n"
-													+"コメント1,コメント2,コメント3,基幹システム発着地コード,削除区分\n"
-													+"がヘッダに必要です");
+					 								+Title[M100_DeliveryMstRt.ColDECD]
+													+","+Title[M100_DeliveryMstRt.ColDepartmentCd]
+													+","+Title[M100_DeliveryMstRt.ColDEName01]
+													+","+Title[M100_DeliveryMstRt.ColDEName02]
+													+","+Title[M100_DeliveryMstRt.ColDEName03]
+													+"\n"
+													+Title[M100_DeliveryMstRt.ColPost]
+													+","+Title[M100_DeliveryMstRt.ColAdd01]
+													+","+Title[M100_DeliveryMstRt.ColAdd02]
+													+","+Title[M100_DeliveryMstRt.ColAdd03]
+													+","+Title[M100_DeliveryMstRt.ColTel]
+													+","+Title[M100_DeliveryMstRt.ColFax]
+													+","+Title[M100_DeliveryMstRt.ColMail]
+													+"\n"
+													+","+Title[M100_DeliveryMstRt.ColCom01]
+													+","+Title[M100_DeliveryMstRt.ColCom02]
+													+","+Title[M100_DeliveryMstRt.ColCom03]
+													+","+Title[M100_DeliveryMstRt.ColPTMSCD]
+													+","+Title[M100_DeliveryMstRt.ColDelFg]
+													+"\nがヘッダに必要です");
 			DeliveryMstExcelEntry(0,0,TgtFilePath);
 		}else {
 			int[] ClmnType = new int[HeaderRead[0].length];
@@ -279,25 +296,25 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		JLabel MSG				= B100_FrameParts.JLabelSet(  10,400,300,20,"選択行をメンテナンスする",11,0);
 		main_fm.add(MSG);
 		
-		JLabel LB_DECD				= B100_FrameParts.JLabelSet(  0,425,100,20,"届先CD:",		11,1);
-		JLabel LB_DepartmentCd		= B100_FrameParts.JLabelSet(  0,450,100,20,"部署CD:",			11,1);
-		JLabel LB_DEName01			= B100_FrameParts.JLabelSet(  0,475,100,20,"届先表記名:",		11,1);
-		JLabel LB_DEName02			= B100_FrameParts.JLabelSet(  0,500,100,20,"届先正式名:",		11,1);
-		JLabel LB_DEName03			= B100_FrameParts.JLabelSet(  0,525,100,20,"届先略名:",		11,1);		
-		JLabel LB_Post				= B100_FrameParts.JLabelSet(  0,550,100,20,"届先郵便:",		11,1);
-		JLabel LB_Add01				= B100_FrameParts.JLabelSet(  0,575,100,20,"届先住所1:",	11,1);
-		JLabel LB_Add02				= B100_FrameParts.JLabelSet(  0,600,100,20,"届先住所2:",	11,1);
-		JLabel LB_Add03				= B100_FrameParts.JLabelSet(  0,625,100,20,"届先住所3:",	11,1);
+		JLabel LB_DECD				= B100_FrameParts.JLabelSet(  0,425,100,20,Title[M100_DeliveryMstRt.ColDECD]+":",				11,1);
+		JLabel LB_DepartmentCd		= B100_FrameParts.JLabelSet(  0,450,100,20,Title[M100_DeliveryMstRt.ColDepartmentCd]+":",	11,1);
+		JLabel LB_DEName01			= B100_FrameParts.JLabelSet(  0,475,100,20,Title[M100_DeliveryMstRt.ColDEName01]+":",		11,1);
+		JLabel LB_DEName02			= B100_FrameParts.JLabelSet(  0,500,100,20,Title[M100_DeliveryMstRt.ColDEName02]+":",		11,1);
+		JLabel LB_DEName03			= B100_FrameParts.JLabelSet(  0,525,100,20,Title[M100_DeliveryMstRt.ColDEName03]+":",		11,1);		
+		JLabel LB_Post				= B100_FrameParts.JLabelSet(  0,550,100,20,Title[M100_DeliveryMstRt.ColPost]+":",				11,1);
+		JLabel LB_Add01				= B100_FrameParts.JLabelSet(  0,575,100,20,Title[M100_DeliveryMstRt.ColAdd01]+":",			11,1);
+		JLabel LB_Add02				= B100_FrameParts.JLabelSet(  0,600,100,20,Title[M100_DeliveryMstRt.ColAdd02]+":",			11,1);
+		JLabel LB_Add03				= B100_FrameParts.JLabelSet(  0,625,100,20,Title[M100_DeliveryMstRt.ColAdd03]+":",			11,1);
 		
-		JLabel LB_Tel				= B100_FrameParts.JLabelSet(350,425,100,20,"届先電話:",		11,1);
-		JLabel LB_Fax				= B100_FrameParts.JLabelSet(350,450,100,20,"届先FAX:",		11,1);
-		JLabel LB_Mail				= B100_FrameParts.JLabelSet(350,475,100,20,"届先MAIL:",		11,1);
-		JLabel LB_Com01				= B100_FrameParts.JLabelSet(350,500,100,20,"コメント1:",		11,1);
-		JLabel LB_Com02				= B100_FrameParts.JLabelSet(350,525,100,20,"コメント2:",		11,1);
-		JLabel LB_Com03				= B100_FrameParts.JLabelSet(350,550,100,20,"コメント3:",		11,1);
-		JLabel LB_DelFg				= B100_FrameParts.JLabelSet(350,575,100,20,"削除区分:",		11,1);
-		JLabel LB_PTMSCD			= B100_FrameParts.JLabelSet(350,600,100,20,"基幹SYS発着CD:",	11,1);
-		JLabel LB_Row				= B100_FrameParts.JLabelSet(350,625,100,20,"対象行:",			11,1);
+		JLabel LB_Tel				= B100_FrameParts.JLabelSet(350,425,100,20,Title[M100_DeliveryMstRt.ColTel]+":",				11,1);
+		JLabel LB_Fax				= B100_FrameParts.JLabelSet(350,450,100,20,Title[M100_DeliveryMstRt.ColFax]+":",				11,1);
+		JLabel LB_Mail				= B100_FrameParts.JLabelSet(350,475,100,20,Title[M100_DeliveryMstRt.ColMail]+":",				11,1);
+		JLabel LB_Com01				= B100_FrameParts.JLabelSet(350,500,100,20,Title[M100_DeliveryMstRt.ColCom01]+":",			11,1);
+		JLabel LB_Com02				= B100_FrameParts.JLabelSet(350,525,100,20,Title[M100_DeliveryMstRt.ColCom02]+":",			11,1);
+		JLabel LB_Com03				= B100_FrameParts.JLabelSet(350,550,100,20,Title[M100_DeliveryMstRt.ColCom03]+":",			11,1);
+		JLabel LB_DelFg				= B100_FrameParts.JLabelSet(350,575,100,20,Title[M100_DeliveryMstRt.ColDelFg]+":",			11,1);
+		JLabel LB_PTMSCD			= B100_FrameParts.JLabelSet(350,600,100,20,Title[M100_DeliveryMstRt.ColPTMSCD]+":",			11,1);
+		JLabel LB_Row				= B100_FrameParts.JLabelSet(350,625,100,20,"対象行:",											11,1);
 		
 		final JTextField TB_DECD			= B100_FrameParts.JTextFieldSet(100,425,100,20,"",11,0);			//届先コード
 		final JTextField TB_DepartmentCd	= B100_FrameParts.JTextFieldSet(100,450,100,20,"",11,0);			//部署CD
@@ -950,6 +967,15 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 							JOptionPane.showMessageDialog(null, "重複と判定した届先は登録されていません内容確認してください\n"
 									+ "重複候補出力すると既存の届先と比較した結果を出力できます");
 						}
+					}else {
+						RowCount = MainFmTableModel.getRowCount();
+						if(0<RowCount) {
+							JOptionPane.showMessageDialog(null, "全件重複登録しようとしてる？\n内容確認してください\n"
+									+ "重複候補出力すると既存の届先と比較した結果を出力できます");
+						}else {
+							JOptionPane.showMessageDialog(null, "そもそもデータがないんじゃない？内容確認してください\n"
+									+ "重複候補出力すると既存の届先と比較した結果を出力できます");
+						}
 					}
 					
 					RenewFg = true;
@@ -1032,17 +1058,17 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						MainFmTableModel.setValueAt(GetDEName02		, TgtRow, 4);
 						MainFmTableModel.setValueAt(GetDEName03		, TgtRow, 5);
 						MainFmTableModel.setValueAt(GetPost			, TgtRow, 6);
-						MainFmTableModel.setValueAt(GetAdd01			, TgtRow, 7);
-						MainFmTableModel.setValueAt(GetAdd02			, TgtRow, 8);
-						MainFmTableModel.setValueAt(GetAdd03			, TgtRow, 9);
+						MainFmTableModel.setValueAt(GetAdd01		, TgtRow, 7);
+						MainFmTableModel.setValueAt(GetAdd02		, TgtRow, 8);
+						MainFmTableModel.setValueAt(GetAdd03		, TgtRow, 9);
 						MainFmTableModel.setValueAt(GetTel			, TgtRow,10);
 						MainFmTableModel.setValueAt(GetFax			, TgtRow,11);
 						MainFmTableModel.setValueAt(GetMail			, TgtRow,12);
-						MainFmTableModel.setValueAt(GetCom01			, TgtRow,13);
-						MainFmTableModel.setValueAt(GetCom02			, TgtRow,14);
-						MainFmTableModel.setValueAt(GetCom03			, TgtRow,15);
+						MainFmTableModel.setValueAt(GetCom01		, TgtRow,13);
+						MainFmTableModel.setValueAt(GetCom02		, TgtRow,14);
+						MainFmTableModel.setValueAt(GetCom03		, TgtRow,15);
 						MainFmTableModel.setValueAt(GetPTMSCD		, TgtRow,16);
-						MainFmTableModel.setValueAt(GetDelFg			, TgtRow,17);
+						MainFmTableModel.setValueAt(GetDelFg		, TgtRow,17);
 						
 						MainFmTableModel.setValueAt(false			, TgtRow, 0);
 						

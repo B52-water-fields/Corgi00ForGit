@@ -185,10 +185,10 @@ public class M100_ItemMstRt{
 
 	public static Object[][] RtItemMstRt(){
 		Object[][] RtSettingItemMstRt = {
-				 {"ClGpCd"					,ColClGpCd					,"String"	,"荷主グループコード"}
+				 {"ClGpCd"					,ColClGpCd					,"String"	,"荷主グループCD"}
 				,{"CLGpName01"				,ColCLGpName01			,"String"	,"荷主グループ標記名"}
-				,{"ItemCd"					,ColItemCd					,"String"	,"商品コード"}
-				,{"CLItemCd"				,ColCLItemCd				,"String"	,"荷主商品コード"}
+				,{"ItemCd"					,ColItemCd					,"String"	,"商品CD"}
+				,{"CLItemCd"				,ColCLItemCd				,"String"	,"荷主商品CD"}
 				,{"ItemName01"				,ColItemName01			,"String"	,"商品表記名"}
 				,{"ItemName02"				,ColItemName02			,"String"	,"商品正式名"}
 				,{"ItemName03"				,ColItemName03			,"String"	,"商品略名"}

@@ -23,9 +23,9 @@ public class M100_LocationMstRt{
 			LocExactMatch,	//ロケーション完全一致
 			AllSearch);
 			
-	String GetClCd			= (String)LocationMstRt[i][M100_LocationMstRt.ColClCd];		//荷主コード
-	String GetCLName01		= (String)LocationMstRt[i][M100_LocationMstRt.ColCLName01];	//荷主表記名
-	String GetWhCd			= (String)LocationMstRt[i][M100_LocationMstRt.ColWhCd];		//倉庫コード
+	String GetClCd			= (String)LocationMstRt[i][M100_LocationMstRt.ColClCd];			//荷主コード
+	String GetCLName01		= (String)LocationMstRt[i][M100_LocationMstRt.ColCLName01];		//荷主表記名
+	String GetWhCd			= (String)LocationMstRt[i][M100_LocationMstRt.ColWhCd];			//倉庫コード
 	String GetWHName		= (String)LocationMstRt[i][M100_LocationMstRt.ColWHName];		//拠点倉庫名
 	String GetLoc			= (String)LocationMstRt[i][M100_LocationMstRt.ColLoc];			//ロケーション
 	String GetLocName		= (String)LocationMstRt[i][M100_LocationMstRt.ColLocName];		//ロケーション名
@@ -51,9 +51,9 @@ public class M100_LocationMstRt{
 	
 	public static Object[][] RtLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {
-				 {"ClCd"		,ColClCd			,"String"	,"荷主コード"		,"Key"}
+				 {"ClCd"		,ColClCd			,"String"	,"荷主CD"			,"Key"}
 				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"		,""}
-				,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"		,"Key"}
+				,{"WhCd"		,ColWhCd			,"String"	,"倉庫CD"			,"Key"}
 				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名"		,""}
 				,{"Loc"			,ColLoc			,"String"	,"ロケーション"		,"Key"}
 				,{"LocName"		,ColLocName		,"String"	,"ロケーション名"	,""}

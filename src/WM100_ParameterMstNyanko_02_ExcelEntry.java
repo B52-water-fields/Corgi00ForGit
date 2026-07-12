@@ -92,30 +92,32 @@ public class WM100_ParameterMstNyanko_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ParameterMstRtNyanko.RtParameterMstRtNANKO());
+		
 		Object[][] NeedCol = {
-						 {"パラメータコード"			,1	, 0}
-						,{"ナンバリング"				,0	, 1}
-						,{"パラメータ名"				,1	, 2}
-						,{"パラメータテキスト項目01"	,1	, 3}
-						,{"パラメータテキスト項目02"	,1	, 4}
-						,{"パラメータテキスト項目03"	,1	, 5}
-						,{"パラメータテキスト項目04"	,1	, 6}
-						,{"パラメータテキスト項目05"	,1	, 7}
-						,{"パラメータテキスト項目06"	,1	, 8}
-						,{"パラメータテキスト項目07"	,1	, 9}
-						,{"パラメータテキスト項目08"	,1	,10}
-						,{"パラメータテキスト項目09"	,1	,11}
-						,{"パラメータテキスト項目10"	,1	,12}
-						,{"パラメータ数値項目01"		,0	,13}
-						,{"パラメータ数値項目02"		,0	,14}
-						,{"パラメータ数値項目03"		,0	,15}
-						,{"パラメータ数値項目04"		,0	,16}
-						,{"パラメータ数値項目05"		,0	,17}
-						,{"パラメータ数値項目06"		,0	,18}
-						,{"パラメータ数値項目07"		,0	,19}
-						,{"パラメータ数値項目08"		,0	,21}
-						,{"パラメータ数値項目09"		,0	,22}
-						,{"パラメータ数値項目10"		,0	,23}
+						 {Title[M100_ParameterMstRtNyanko.ColParaCd]		,1	, 0}
+						,{Title[M100_ParameterMstRtNyanko.ColParaCdSeq]	,0	, 1}
+						,{Title[M100_ParameterMstRtNyanko.ColParaName]		,1	, 2}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt01]	,1	, 3}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt02]	,1	, 4}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt03]	,1	, 5}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt04]	,1	, 6}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt05]	,1	, 7}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt06]	,1	, 8}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt07]	,1	, 9}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt08]	,1	,10}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt09]	,1	,11}
+						,{Title[M100_ParameterMstRtNyanko.ColParaTxt10]	,1	,12}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt01]	,0	,13}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt02]	,0	,14}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt03]	,0	,15}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt04]	,0	,16}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt05]	,0	,17}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt06]	,0	,18}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt07]	,0	,19}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt08]	,0	,21}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt09]	,0	,22}
+						,{Title[M100_ParameterMstRtNyanko.ColParaInt10]	,0	,23}
 						};	//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 
 		
@@ -307,78 +309,32 @@ public class WM100_ParameterMstNyanko_02_ExcelEntry{
 		int ColParaInt09	= (int)21;	//パラメータ数値項目09
 		int ColParaInt10	= (int)22;	//パラメータ数値項目10
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ParameterMstRtNyanko.RtParameterMstRtNANKO());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(""+TableCol[i]) {
-				case "パラメータコード":
-					ColParaCd = i;
-					break;
-				case "ナンバリング":
-					ColParaCdSeq = i;
-					break;
-				case "パラメータ名":
-					ColParaName = i;
-					break;
-				case "パラメータテキスト項目01":
-					ColParaTxt01 = i;
-					break;
-				case "パラメータテキスト項目02":
-					ColParaTxt02 = i;
-					break;
-				case "パラメータテキスト項目03":
-					ColParaTxt03 = i;
-					break;
-				case "パラメータテキスト項目04":
-					ColParaTxt04 = i;
-					break;
-				case "パラメータテキスト項目05":
-					ColParaTxt05 = i;
-					break;
-				case "パラメータテキスト項目06":
-					ColParaTxt06 = i;
-					break;
-				case "パラメータテキスト項目07":
-					ColParaTxt07 = i;
-					break;
-				case "パラメータテキスト項目08":
-					ColParaTxt08 = i;
-					break;
-				case "パラメータテキスト項目09":
-					ColParaTxt09 = i;
-					break;
-				case "パラメータテキスト項目10":
-					ColParaTxt10 = i;
-					break;
-				case "パラメータ数値項目01":
-					ColParaInt01 = i;
-					break;
-				case "パラメータ数値項目02":
-					ColParaInt02 = i;
-					break;
-				case "パラメータ数値項目03":
-					ColParaInt03 = i;
-					break;
-				case "パラメータ数値項目04":
-					ColParaInt04 = i;
-					break;
-				case "パラメータ数値項目05":
-					ColParaInt05 = i;
-					break;
-				case "パラメータ数値項目06":
-					ColParaInt06 = i;
-					break;
-				case "パラメータ数値項目07":
-					ColParaInt07 = i;
-					break;
-				case "パラメータ数値項目08":
-					ColParaInt08 = i;
-					break;
-				case "パラメータ数値項目09":
-					ColParaInt09 = i;
-					break;
-				case "パラメータ数値項目10":
-					ColParaInt10 = i;
-					break;
-			}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaCd]		)){ColParaCd	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaCdSeq]	)){ColParaCdSeq	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaName]		)){ColParaName	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt01]	)){ColParaTxt01	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt02]	)){ColParaTxt02	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt03]	)){ColParaTxt03	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt04]	)){ColParaTxt04	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt05]	)){ColParaTxt05	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt06]	)){ColParaTxt06	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt07]	)){ColParaTxt07	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt08]	)){ColParaTxt08	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt09]	)){ColParaTxt09	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt10]	)){ColParaTxt10	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt01]	)){ColParaInt01	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt02]	)){ColParaInt02	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt03]	)){ColParaInt03	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt04]	)){ColParaInt04	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt05]	)){ColParaInt05	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt06]	)){ColParaInt06	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt07]	)){ColParaInt07	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt08]	)){ColParaInt08	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt09]	)){ColParaInt09	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt10]	)){ColParaInt10	= i;}
 		}
 		int EntryCount = 0;
 		for(int i=0;i<CheckOb.length;i++) {
@@ -631,78 +587,32 @@ public class WM100_ParameterMstNyanko_02_ExcelEntry{
 		int ColParaInt09	= (int)21;	//パラメータ数値項目09
 		int ColParaInt10	= (int)22;	//パラメータ数値項目10
 		
+		String[] Title = B100_RtObjectCreate.RtTitleName(M100_ParameterMstRtNyanko.RtParameterMstRtNANKO());
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(""+TableCol[i]) {
-				case "パラメータコード":
-					ColParaCd = i;
-					break;
-				case "ナンバリング":
-					ColParaCdSeq = i;
-					break;
-				case "パラメータ名":
-					ColParaName = i;
-					break;
-				case "パラメータテキスト項目01":
-					ColParaTxt01 = i;
-					break;
-				case "パラメータテキスト項目02":
-					ColParaTxt02 = i;
-					break;
-				case "パラメータテキスト項目03":
-					ColParaTxt03 = i;
-					break;
-				case "パラメータテキスト項目04":
-					ColParaTxt04 = i;
-					break;
-				case "パラメータテキスト項目05":
-					ColParaTxt05 = i;
-					break;
-				case "パラメータテキスト項目06":
-					ColParaTxt06 = i;
-					break;
-				case "パラメータテキスト項目07":
-					ColParaTxt07 = i;
-					break;
-				case "パラメータテキスト項目08":
-					ColParaTxt08 = i;
-					break;
-				case "パラメータテキスト項目09":
-					ColParaTxt09 = i;
-					break;
-				case "パラメータテキスト項目10":
-					ColParaTxt10 = i;
-					break;
-				case "パラメータ数値項目01":
-					ColParaInt01 = i;
-					break;
-				case "パラメータ数値項目02":
-					ColParaInt02 = i;
-					break;
-				case "パラメータ数値項目03":
-					ColParaInt03 = i;
-					break;
-				case "パラメータ数値項目04":
-					ColParaInt04 = i;
-					break;
-				case "パラメータ数値項目05":
-					ColParaInt05 = i;
-					break;
-				case "パラメータ数値項目06":
-					ColParaInt06 = i;
-					break;
-				case "パラメータ数値項目07":
-					ColParaInt07 = i;
-					break;
-				case "パラメータ数値項目08":
-					ColParaInt08 = i;
-					break;
-				case "パラメータ数値項目09":
-					ColParaInt09 = i;
-					break;
-				case "パラメータ数値項目10":
-					ColParaInt10 = i;
-					break;
-			}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaCd]		)){ColParaCd	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaCdSeq]	)){ColParaCdSeq	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaName]		)){ColParaName	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt01]	)){ColParaTxt01	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt02]	)){ColParaTxt02	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt03]	)){ColParaTxt03	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt04]	)){ColParaTxt04	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt05]	)){ColParaTxt05	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt06]	)){ColParaTxt06	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt07]	)){ColParaTxt07	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt08]	)){ColParaTxt08	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt09]	)){ColParaTxt09	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaTxt10]	)){ColParaTxt10	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt01]	)){ColParaInt01	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt02]	)){ColParaInt02	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt03]	)){ColParaInt03	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt04]	)){ColParaInt04	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt05]	)){ColParaInt05	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt06]	)){ColParaInt06	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt07]	)){ColParaInt07	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt08]	)){ColParaInt08	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt09]	)){ColParaInt09	= i;}
+			if(TableCol[i].equals(Title[M100_ParameterMstRtNyanko.ColParaInt10]	)){ColParaInt10	= i;}
 		}
 		
 		for(int i=0;i<CheckOb.length;i++) {

@@ -40,7 +40,7 @@ public class M100_DeliveryMstRt{
 		AllSearch
 		);
 		
-	String GetDECD				= DeliveryMstRt[i][M100_DeliveryMstRt.ColDECD];				//届先コード
+	String GetDECD				= DeliveryMstRt[i][M100_DeliveryMstRt.ColDECD];				//届先CD
 	String GetDepartmentCd		= DeliveryMstRt[i][M100_DeliveryMstRt.ColDepartmentCd];		//部署CD
 	String GetDEName01			= DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName01];			//届先表記名
 	String GetDEName02			= DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName02];			//届先正式名
@@ -71,7 +71,7 @@ public class M100_DeliveryMstRt{
 	*/
 	
 	//戻り値カラム
-	static final  int ColDECD				= (int) 0;	//届先コード
+	static final  int ColDECD				= (int) 0;	//届先CD
 	static final  int ColDepartmentCd		= (int) 1;	//部署CD
 	static final  int ColDEName01			= (int) 2;	//届先表記名
 	static final  int ColDEName02			= (int) 3;	//届先正式名
@@ -101,7 +101,7 @@ public class M100_DeliveryMstRt{
 	
 	public static Object[][] RtDeliveryMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {
-				 {"DECD"			,ColDECD				,"String"	,"届先コード"				,"Key"}
+				 {"DECD"			,ColDECD				,"String"	,"届先CD"					,"Key"}
 				,{"DepartmentCd"	,ColDepartmentCd		,"String"	,"部署CD"					,"Key"}
 				,{"DEName01"		,ColDEName01			,"String"	,"届先表記名"				,""}
 				,{"DEName02"		,ColDEName02			,"String"	,"届先正式名"				,""}
@@ -118,16 +118,16 @@ public class M100_DeliveryMstRt{
 				,{"Com03"			,ColCom03				,"String"	,"コメント3"				,""}
 				,{"PrefecturesCd"	,ColPrefecturesCd		,"String"	,"JIS県CD2桁"				,""}
 				,{"MunicipalityCd"	,ColMunicipalityCd	,"String"	,"JIS市区町村CD5桁"			,""}
-				,{"PTMSCD"			,ColPTMSCD				,"String"	,"基幹システム発着地コード"	,""}
+				,{"PTMSCD"			,ColPTMSCD				,"String"	,"基幹SYSCD"				,""}
 				,{"EntryDate"		,ColEntryDate			,"DateTime"	,"データ登録日時"			,""}
 				,{"UpdateDate"		,ColUpdateDate		,"DateTime"	,"データ更新日時"			,""}
 				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者コード"				,""}
 				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者コード"				,""}
-				,{"FirstClient"		,ColFirstClient		,"String"	,"登録した荷主CD"			,""}
-				,{"LastClient"		,ColLastClient		,"String"	,"更新した荷主CD"			,""}
+				,{"FirstClient"		,ColFirstClient		,"String"	,"登録荷主CD"				,""}
+				,{"LastClient"		,ColLastClient		,"String"	,"更新荷主CD"				,""}
 				,{"DelFg"			,ColDelFg				,"int"		,"削除区分"					,""}
-				,{"FirstClientName"	,ColFirstClientName	,"String"	,"登録した荷主名"			,""}
-				,{"LastClientName"	,ColLastClientName	,"String"	,"登録した荷主名"			,""}
+				,{"FirstClientName"	,ColFirstClientName	,"String"	,"登録荷主名"				,""}
+				,{"LastClientName"	,ColLastClientName	,"String"	,"登録荷主名"				,""}
 				};
 		
 		return RtSettingDeliveryMstRt;
