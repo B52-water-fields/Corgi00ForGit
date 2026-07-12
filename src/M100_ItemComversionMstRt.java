@@ -22,7 +22,7 @@ public class M100_ItemComversionMstRt{
 			AllSearch);
 			
 	String GetClGpCd		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColClGpCd];		//荷主グループコード
-	String GetCLGpName01	= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColCLGpName01];	//荷主グループ名1
+	String GetCLGpName01	= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColCLGpName01];	//荷主グループ標記名
 	String GetClCd			= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColClCd];			//荷主コード
 	String GetCLName01		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColCLName01];		//荷主名
 	String GetClItemCd		= (String)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColClItemCd];		//荷主商品コード
@@ -45,7 +45,7 @@ public class M100_ItemComversionMstRt{
 	*/
 	//戻り値カラム
 	static final int ColClGpCd			= (int) 0;	//荷主グループコード
-	static final int ColCLGpName01	= (int) 1;	//荷主グループ名1
+	static final int ColCLGpName01	= (int) 1;	//荷主グループ標記名
 	static final int ColClCd			= (int) 2;	//荷主コード
 	static final int ColCLName01		= (int) 3;	//荷主名
 	static final int ColClItemCd		= (int) 4;	//荷主商品コード
@@ -67,26 +67,26 @@ public class M100_ItemComversionMstRt{
 	
 	public static Object[][] RtItemComversionMstRt(){
 		Object[][] RtItemComversionMstRt = {
-				 {"ClGpCd"			,ColClGpCd			,"String"	,"荷主グループコード"}
-				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ名1"}
-				,{"ClCd"			,ColClCd			,"String"	,"荷主コード"}
-				,{"CLName01"		,ColCLName01		,"String"	,"荷主名"}
-				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"}
-				,{"ItemCd"			,ColItemCd			,"String"	,"変換先商品コード"}
-				,{"PackingType"		,ColPackingType	,"int"		,"荷姿タイプ"}
-				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"}
-				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"}
-				,{"ItemName03"		,ColItemName03	,"String"	,"商品略名"}
-				,{"CtName"			,ColCtName			,"String"	,"カートン商品名称"}
-				,{"CsName"			,ColCsName			,"String"	,"ケース商品名称"}
-				,{"PlName"			,ColPlName			,"String"	,"パレット商品名称"}
-				,{"CtQty"			,ColCtQty			,"int"		,"カートン入数"}
-				,{"CsQty"			,ColCsQty			,"int"		,"ケース入数"}
-				,{"PlQty"			,ColPlQty			,"int"		,"パレット入数"}
-				,{"UnitName"		,ColUnitName		,"String"	,"商品単位"}
-				,{"CtUnitName"		,ColCtUnitName	,"String"	,"カートン商品単位"}
-				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"}
-				,{"PlUnitName"		,ColPlUnitName	,"String"	,"パレット商品単位"}
+				 {"ClGpCd"			,ColClGpCd			,"String"	,"荷主グループコード"	,"Key"}
+				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ標記名"	,""}
+				,{"ClCd"			,ColClCd			,"String"	,"荷主コード"			,"Key"}
+				,{"CLName01"		,ColCLName01		,"String"	,"荷主名"				,""}
+				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"		,"Key"}
+				,{"ItemCd"			,ColItemCd			,"String"	,"変換先商品コード"		,""}
+				,{"PackingType"		,ColPackingType	,"int"		,"荷姿タイプ"			,""}
+				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"			,""}
+				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"			,""}
+				,{"ItemName03"		,ColItemName03	,"String"	,"商品略名"				,""}
+				,{"CtName"			,ColCtName			,"String"	,"カートン商品名称"		,""}
+				,{"CsName"			,ColCsName			,"String"	,"ケース商品名称"		,""}
+				,{"PlName"			,ColPlName			,"String"	,"パレット商品名称"		,""}
+				,{"CtQty"			,ColCtQty			,"int"		,"カートン入数"			,""}
+				,{"CsQty"			,ColCsQty			,"int"		,"ケース入数"			,""}
+				,{"PlQty"			,ColPlQty			,"int"		,"パレット入数"			,""}
+				,{"UnitName"		,ColUnitName		,"String"	,"商品単位"				,""}
+				,{"CtUnitName"		,ColCtUnitName	,"String"	,"カートン商品単位"		,""}
+				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"		,""}
+				,{"PlUnitName"		,ColPlUnitName	,"String"	,"パレット商品単位"		,""}
 				};
 		return RtItemComversionMstRt;
 	}
@@ -110,7 +110,7 @@ public class M100_ItemComversionMstRt{
 		
 		String sql = " select \n"
 				+"(KM0062_ItemComversionMst.ClGpCd) as ClGpCd,\n"			//荷主グループコード
-				+"(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"		//荷主グループ名1
+				+"(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"		//荷主グループ標記名
 				+"(KM0062_ItemComversionMst.ClCd) as ClCd,\n"				//荷主コード
 				+"(KM0030_CLIENTMST.CLName01) as CLName01,\n"				//荷主名
 				+"(KM0062_ItemComversionMst.ClItemCd) as ClItemCd,\n"		//荷主商品コード

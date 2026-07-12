@@ -2322,7 +2322,7 @@ public class WT100_ArrivalPlan_00_Search{
 			String GetClCd			= (String)ArrivalPlanMsRt[0][T100_ArrivalPlanMsRt.ColClCd];			//ヘッダ荷主CD
 			String GetCLName01		= (String)ArrivalPlanMsRt[0][T100_ArrivalPlanMsRt.ColCLName01];		//ヘッダ荷主名
 			String GetClGpCD		= (String)ArrivalPlanMsRt[0][T100_ArrivalPlanMsRt.ColClGpCD];			//ヘッダ荷主グループCD
-			String GetCLGpName01	= (String)ArrivalPlanMsRt[0][T100_ArrivalPlanMsRt.ColCLGpName01];		//ヘッダ荷主グループ名1
+			String GetCLGpName01	= (String)ArrivalPlanMsRt[0][T100_ArrivalPlanMsRt.ColCLGpName01];		//ヘッダ荷主グループ標記名
 			String GetArrNo			= (String)ArrivalPlanMsRt[0][T100_ArrivalPlanMsRt.ColArrNo];			//ヘッダ入荷予定NO
 			String GetClArrNo		= (String)ArrivalPlanMsRt[0][T100_ArrivalPlanMsRt.ColClArrNo];			//ヘッダ荷主予定番号
 			String GetPlanDate		= (String)ArrivalPlanMsRt[0][T100_ArrivalPlanMsRt.ColPlanDate];		//ヘッダ入荷予定日
@@ -2627,7 +2627,7 @@ public class WT100_ArrivalPlan_00_Search{
 		ArrayList<String> SearchClCd 			= new ArrayList<String>();		//ヘッダ荷主CD
 		ArrayList<String> SearchCLName01 		= new ArrayList<String>();		//ヘッダ荷主名
 		ArrayList<String> SearchClGpCD 			= new ArrayList<String>();		//ヘッダ荷主グループCD
-		ArrayList<String> SearchCLGpName01 		= new ArrayList<String>();		//ヘッダ荷主グループ名1
+		ArrayList<String> SearchCLGpName01 		= new ArrayList<String>();		//ヘッダ荷主グループ標記名
 		ArrayList<String> SearchArrNo 			= new ArrayList<String>();		//ヘッダ入荷予定NO
 		ArrayList<String> SearchClArrNo 		= new ArrayList<String>();		//ヘッダ荷主予定番号
 		ArrayList<String> SearchPlanDateMin 	= new ArrayList<String>();		//ヘッダ入荷予定日最小
@@ -2715,7 +2715,7 @@ public class WT100_ArrivalPlan_00_Search{
 				SearchClCd,				//ヘッダ荷主CD
 				SearchCLName01,			//ヘッダ荷主名
 				SearchClGpCD,			//ヘッダ荷主グループCD
-				SearchCLGpName01,		//ヘッダ荷主グループ名1
+				SearchCLGpName01,		//ヘッダ荷主グループ標記名
 				SearchArrNo,			//ヘッダ入荷予定NO
 				SearchClArrNo,			//ヘッダ荷主予定番号
 				SearchPlanDateMin,		//ヘッダ入荷予定日最小
@@ -2766,7 +2766,7 @@ public class WT100_ArrivalPlan_00_Search{
 			ArrayList<String> SearchArrNo
 			){
 		ArrayList<String> SearchCLName01		= new ArrayList<String>();		//ヘッダ荷主名
-		ArrayList<String> SearchCLGpName01		= new ArrayList<String>();		//ヘッダ荷主グループ名1
+		ArrayList<String> SearchCLGpName01		= new ArrayList<String>();		//ヘッダ荷主グループ標記名
 		ArrayList<String> SearchClArrNo			= new ArrayList<String>();		//ヘッダ荷主予定番号
 		ArrayList<String> SearchPlanDateMin		= new ArrayList<String>();		//ヘッダ入荷予定日
 		ArrayList<String> SearchPlanDateMax		= new ArrayList<String>();		//ヘッダ入荷予定日
@@ -2811,7 +2811,7 @@ public class WT100_ArrivalPlan_00_Search{
 				SearchClCd,					//ヘッダ荷主CD
 				SearchCLName01,				//ヘッダ荷主名
 				SearchClGpCD,				//ヘッダ荷主グループCD
-				SearchCLGpName01,			//ヘッダ荷主グループ名1
+				SearchCLGpName01,			//ヘッダ荷主グループ標記名
 				SearchArrNo,				//ヘッダ入荷予定NO
 				SearchClArrNo,				//ヘッダ荷主予定番号
 				SearchPlanDateMin,			//ヘッダ入荷予定日

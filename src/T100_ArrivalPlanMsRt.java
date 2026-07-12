@@ -13,7 +13,7 @@ public class T100_ArrivalPlanMsRt{
 	ArrayList<String> SearchClCd			= new ArrayList<String>();		//ヘッダ荷主CD
 	ArrayList<String> SearchCLName01		= new ArrayList<String>();		//ヘッダ荷主名
 	ArrayList<String> SearchClGpCD			= new ArrayList<String>();		//ヘッダ荷主グループCD
-	ArrayList<String> SearchCLGpName01		= new ArrayList<String>();		//ヘッダ荷主グループ名1
+	ArrayList<String> SearchCLGpName01		= new ArrayList<String>();		//ヘッダ荷主グループ標記名
 	ArrayList<String> SearchArrNo			= new ArrayList<String>();		//ヘッダ入荷予定NO
 	ArrayList<String> SearchClArrNo			= new ArrayList<String>();		//ヘッダ荷主予定番号
 	ArrayList<String> SearchPlanDateMin		= new ArrayList<String>();		//ヘッダ入荷予定日
@@ -59,7 +59,7 @@ public class T100_ArrivalPlanMsRt{
 			SearchClCd,					//ヘッダ荷主CD
 			SearchCLName01,				//ヘッダ荷主名
 			SearchClGpCD,				//ヘッダ荷主グループCD
-			SearchCLGpName01,			//ヘッダ荷主グループ名1
+			SearchCLGpName01,			//ヘッダ荷主グループ標記名
 			SearchArrNo,				//ヘッダ入荷予定NO
 			SearchClArrNo,				//ヘッダ荷主予定番号
 			SearchPlanDateMin,			//ヘッダ入荷予定日
@@ -103,7 +103,7 @@ public class T100_ArrivalPlanMsRt{
 		String GetClCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClCd];				//ヘッダ荷主CD
 		String GetCLName01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLName01];			//ヘッダ荷主名
 		String GetClGpCD		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClGpCD];			//ヘッダ荷主グループCD
-		String GetCLGpName01	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLGpName01];		//ヘッダ荷主グループ名1
+		String GetCLGpName01	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLGpName01];		//ヘッダ荷主グループ標記名
 		String GetArrNo			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArrNo];			//ヘッダ入荷予定NO
 		String GetClArrNo		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClArrNo];			//ヘッダ荷主予定番号
 		String GetPlanDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColPlanDate];			//ヘッダ入荷予定日
@@ -161,7 +161,7 @@ public class T100_ArrivalPlanMsRt{
 	static final int ColItemMdNo		= 12;		//商品型番
 	
 	static final int ColCLName01		= 13;		//ヘッダ荷主名
-	static final int ColCLGpName01	= 14;		//ヘッダ荷主グループ名1
+	static final int ColCLGpName01	= 14;		//ヘッダ荷主グループ標記名
 	static final int ColArrNo			= 15;		//ヘッダ入荷予定NO（WMS採番）
 	static final int ColClArrNo		= 16;		//ヘッダ荷主予定番号
 	static final int ColPlanDate		= 17;		//ヘッダ入荷予定日
@@ -199,7 +199,7 @@ public class T100_ArrivalPlanMsRt{
 				,{"ClCd"			,ColClCd			,"String"	,"ヘッダ荷主CD"}
 				,{"CLName01"		,ColCLName01		,"String"	,"ヘッダ荷主名"}
 				,{"ClGpCD"			,ColClGpCD			,"String"	,"ヘッダ荷主グループCD"}
-				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ名1"}
+				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ標記名"}
 				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"}
 				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"}
 				,{"PlanDate"		,ColPlanDate		,"Date"		,"ヘッダ入荷予定日"}
@@ -249,7 +249,7 @@ public class T100_ArrivalPlanMsRt{
 			ArrayList<String> SearchClCd,				//ヘッダ荷主CD
 			ArrayList<String> SearchCLName01,			//ヘッダ荷主名
 			ArrayList<String> SearchClGpCD,				//ヘッダ荷主グループCD
-			ArrayList<String> SearchCLGpName01,			//ヘッダ荷主グループ名1
+			ArrayList<String> SearchCLGpName01,			//ヘッダ荷主グループ標記名
 			ArrayList<String> SearchArrNo,				//ヘッダ入荷予定NO
 			ArrayList<String> SearchClArrNo,			//ヘッダ荷主予定番号
 			ArrayList<String> SearchPlanDateMin,		//ヘッダ入荷予定日
@@ -292,7 +292,7 @@ public class T100_ArrivalPlanMsRt{
 		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);			//ヘッダ荷主CD
 		SearchCLName01			= B100_ArrayListControl.ArryListStringUniqueList(SearchCLName01);		//ヘッダ荷主名
 		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);			//ヘッダ荷主グループCD
-		SearchCLGpName01		= B100_ArrayListControl.ArryListStringUniqueList(SearchCLGpName01);		//ヘッダ荷主グループ名1
+		SearchCLGpName01		= B100_ArrayListControl.ArryListStringUniqueList(SearchCLGpName01);		//ヘッダ荷主グループ標記名
 		SearchArrNo				= B100_ArrayListControl.ArryListStringUniqueList(SearchArrNo);			//ヘッダ入荷予定NO
 		SearchClArrNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchClArrNo);			//ヘッダ荷主予定番号
 		SearchPlanDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchPlanDateMin);		//ヘッダ入荷予定日最小
@@ -377,7 +377,7 @@ public class T100_ArrivalPlanMsRt{
 					+"(WW0010ArrivalPlanHd.ClCd)        as ClCd,\n"				//ヘッダ荷主CD
 					+"(KM0030_CLIENTMST.CLName01)       as CLName01,\n"			//ヘッダ荷主名
 					+"(KM0030_CLIENTMST.ClGpCD)         as ClGpCD,\n"			//ヘッダ荷主グループCD
-					+"(KM0031_CLIENT_GROUP.CLGpName01)  as CLGpName01,\n"		//ヘッダ荷主グループ名1
+					+"(KM0031_CLIENT_GROUP.CLGpName01)  as CLGpName01,\n"		//ヘッダ荷主グループ標記名
 					+"(WW0010ArrivalPlanHd.ArrNo)       as ArrNo,\n"			//ヘッダ入荷予定NO（WMS採番）
 					+"(WW0010ArrivalPlanHd.ClArrNo)     as ClArrNo,\n"			//ヘッダ荷主予定番号
 					+"(WW0010ArrivalPlanHd.PlanDate)    as PlanDate,\n"			//ヘッダ入荷予定日
@@ -470,7 +470,7 @@ public class T100_ArrivalPlanMsRt{
 			}
 			sql = sql + ")";
 		}
-		if(null!=SearchCLGpName01 && 0<SearchCLGpName01.size()){			//ヘッダ荷主グループ名1
+		if(null!=SearchCLGpName01 && 0<SearchCLGpName01.size()){			//ヘッダ荷主グループ標記名
 			SearchKick = true;
 			sql = sql + " and(";
 			for(int i=0;i<SearchCLGpName01.size();i++){
@@ -846,7 +846,7 @@ public class T100_ArrivalPlanMsRt{
 						stmt01.setString(StmtCount, ""+SearchClGpCD.get(i)+"");
 					}
 				}
-				if(null!=SearchCLGpName01 && 0<SearchCLGpName01.size()){			//ヘッダ荷主グループ名1
+				if(null!=SearchCLGpName01 && 0<SearchCLGpName01.size()){			//ヘッダ荷主グループ標記名
 					for(int i=0;i<SearchCLGpName01.size();i++){
 						StmtCount = StmtCount+1;
 						stmt01.setString(StmtCount, "%"+SearchCLGpName01.get(i)+"%");

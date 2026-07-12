@@ -592,7 +592,7 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 		ArrayList<String> SearchClCd 			= new ArrayList<String>();		//ヘッダ荷主CD
 		ArrayList<String> SearchCLName01 		= new ArrayList<String>();		//ヘッダ荷主名
 		ArrayList<String> SearchClGpCD 			= new ArrayList<String>();		//ヘッダ荷主グループCD
-		ArrayList<String> SearchCLGpName01 		= new ArrayList<String>();		//ヘッダ荷主グループ名1
+		ArrayList<String> SearchCLGpName01 		= new ArrayList<String>();		//ヘッダ荷主グループ標記名
 		ArrayList<String> SearchArrNo 			= ArrNo;						//ヘッダ入荷予定NO
 		ArrayList<String> SearchClArrNo 		= ClArrNo;						//ヘッダ荷主予定番号
 		ArrayList<String> SearchPlanDateMin 	= new ArrayList<String>();		//ヘッダ入荷予定日最小
@@ -640,7 +640,7 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 				SearchClCd,				//ヘッダ荷主CD
 				SearchCLName01,			//ヘッダ荷主名
 				SearchClGpCD,			//ヘッダ荷主グループCD
-				SearchCLGpName01,		//ヘッダ荷主グループ名1
+				SearchCLGpName01,		//ヘッダ荷主グループ標記名
 				SearchArrNo,			//ヘッダ入荷予定NO
 				SearchClArrNo,			//ヘッダ荷主予定番号
 				SearchPlanDateMin,		//ヘッダ入荷予定日最小

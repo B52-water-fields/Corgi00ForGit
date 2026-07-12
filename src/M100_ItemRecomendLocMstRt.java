@@ -563,7 +563,7 @@ public class M100_ItemRecomendLocMstRt{
 				for(int i=0;i<ItemMstRt.length;i++) {
 					String GetItemCd				= (String)ItemMstRt[i][M100_ItemMstRt.ColItemCd];				//商品コード
 					String GetClGpCd				= (String)ItemMstRt[i][M100_ItemMstRt.ColClGpCd];				//荷主グループコード
-					String GetCLGpName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColCLGpName01];		//荷主グループ名1
+					String GetCLGpName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColCLGpName01];		//荷主グループ標記名
 					String GetItemName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColItemName01];		//商品表記名
 					String GetRecomendLoc			= (String)ItemMstRt[i][M100_ItemMstRt.ColRecomendLoc];		//推奨ロケ
 					String GetEntryDate				= (String)ItemMstRt[i][M100_ItemMstRt.ColEntryDate];			//データ登録日時

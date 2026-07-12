@@ -52,7 +52,7 @@ public class M100_ItemMstRt{
 			AllSearch);
 			
 	String GetClGpCd				= (String)ItemMstRt[i][M100_ItemMstRt.ColClGpCd];				//荷主グループコード
-	String GetCLGpName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColCLGpName01];			//荷主グループ名1
+	String GetCLGpName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColCLGpName01];			//荷主グループ標記名
 	String GetItemCd				= (String)ItemMstRt[i][M100_ItemMstRt.ColItemCd];				//商品コード
 	String GetCLItemCd				= (String)ItemMstRt[i][M100_ItemMstRt.ColCLItemCd];				//荷主商品コード
 	String GetItemName01			= (String)ItemMstRt[i][M100_ItemMstRt.ColItemName01];			//商品表記名
@@ -131,7 +131,7 @@ public class M100_ItemMstRt{
 	static final  int ColCsUnitName			= (int)10;	//ケース商品単位
 	static final  int ColPlUnitName			= (int)11;	//パレット商品単位
 	static final  int ColClGpCd				= (int)12;	//荷主グループコード
-	static final  int ColCLGpName01			= (int)13;	//荷主グループ名1
+	static final  int ColCLGpName01			= (int)13;	//荷主グループ標記名
 	static final  int ColDeliveryTypeCd01	= (int)14;	//運送タイプコード01
 	static final  int ColDeliveryTypeName01	= (int)15;	//運送タイプ名01
 	static final  int ColDeliveryTypeCd02	= (int)16;	//運送タイプコード02
@@ -186,7 +186,7 @@ public class M100_ItemMstRt{
 	public static Object[][] RtSettingItemMstRt(){
 		Object[][] RtSettingItemMstRt = {
 				 {"ClGpCd"					,ColClGpCd					,"String"	,"荷主グループコード"}
-				,{"CLGpName01"				,ColCLGpName01			,"String"	,"荷主グループ名1"}
+				,{"CLGpName01"				,ColCLGpName01			,"String"	,"荷主グループ標記名"}
 				,{"ItemCd"					,ColItemCd					,"String"	,"商品コード"}
 				,{"CLItemCd"				,ColCLItemCd				,"String"	,"荷主商品コード"}
 				,{"ItemName01"				,ColItemName01			,"String"	,"商品表記名"}
@@ -306,7 +306,7 @@ public class M100_ItemMstRt{
 		
 		String sql = " select \n"
 				+"(KM0060_ITEMMST.ClGpCd) as ClGpCd,\n"						//荷主グループコード
-				+"(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"		//荷主グループ名1
+				+"(KM0031_CLIENT_GROUP.CLGpName01) as CLGpName01,\n"		//荷主グループ標記名
 				+"(KM0060_ITEMMST.ItemCd) as ItemCd,\n"						//商品コード
 				+"(KM0060_ITEMMST.CLItemCd) as CLItemCd,\n"					//荷主商品コード
 				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"				//商品表記名
