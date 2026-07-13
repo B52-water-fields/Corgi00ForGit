@@ -44,11 +44,8 @@ public class WTList100_ArrivalPlan{
 				Object[][] ArrivalPlanHdRt 	= PlanHdDataGet(TgtWhCd,TgtClCd,TgtArrNo);	//対象データヘッダ
 				Object[][] ArrivalPlanMsRt 	= PlanMsDataGet(TgtWhCd,TgtClCd,TgtArrNo);	//対象データ明細
 				
-				Object[][] ItemMstRt		= ItemMstRt(TgtClCd,ArrivalPlanMsRt);
-				Object[][] ItemRecomendLocFromItemCd = ItemRecomendLocFromItemCd(TgtClCd,ArrivalPlanMsRt);
-				
-				Object[][] StockRt			= StockRt(TgtClCd,ArrivalPlanMsRt);
-				
+				Object[][] ItemMstRt					= ItemMstRt(TgtClCd,ArrivalPlanMsRt);
+				String[][] RecomendLocWithStockSerch	= RecomendLocWithStockSerch(TgtWhCd,TgtClCd,ArrivalPlanMsRt);
 				
 				//PDF生成
 				 try {
@@ -107,15 +104,15 @@ public class WTList100_ArrivalPlan{
 			        ******************************************************************/
 			        
 			        /******************************************************************
-			         * 入荷予定ヘッダ～明細で帳票生成　明細行数12行(2行×12)で設計
+			         * 入荷予定ヘッダ～明細で帳票生成　明細行数12行(2行×10)で設計
 			        ******************************************************************/
-			        int MaxRowCount = 12;
+			        int MaxRowCount = 10;
 			        int TotalPageCount = 0;
 			        
 			        int PageCount = 0;
 			        int MsCount = 0;
 			        
-			        int FontSize = 12;
+			        int FontSize = 10;
 			        String CreateDtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 			        
 			        Object[][] HdPageCount = new Object[ArrivalPlanHdRt.length][6];
@@ -230,57 +227,19 @@ public class WTList100_ArrivalPlan{
 			        					}
 			        				}
 			        			}
-			        			//マスタから推奨ロケ格納
-			        			for(int i03=0;i03<ItemRecomendLocFromItemCd.length;i03++) {
-			        				if(((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColItemCd]).equals((String)ItemRecomendLocFromItemCd[i03][M100_ItemRecomendLocMstRt.ColItemCd])) {
-			        					RecomendLoc = (String)ItemRecomendLocFromItemCd[i03][M100_ItemRecomendLocMstRt.ColLocName];
-			        					i03=ItemRecomendLocFromItemCd.length+1;
-			        				}
-			        			}
 			        			
-			        			//在庫から推奨ロケ格納　同一商品・同一ロットが保管ロケにある⇒同一商品・同一ロットが通常ロケにある⇒同一商品・別ロットが保管ロケにある⇒同一商品・別ロットが通常ロケにあるの順で推奨して上書き
-			        			//同一判断基準の複数候補がある場合は先にあたったロケーション（ロケが小さい）を推奨
-			        			//スルー出荷ロケと引当禁止ロケにお友達がいても推奨せずにマスタの推奨ロケを採用して上書きしない
-			        			for(int i03=0;i03<StockRt.length;i03++) {
-			        				//出荷ロケにお友達がいる
-			        				if(0==(int)StockRt[i03][T100_StockRt.ColType]) {
-			        					if(((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T100_StockRt.ColItemCd])) {
-				        					RecomendLoc =  (String)StockRt[i03][T100_StockRt.ColLocName];
-				        					i03=StockRt.length+1;
-				        				}
-			        				}
-			        			}
-			        			for(int i03=0;i03<StockRt.length;i03++) {
-			        				//保管ロケにお友達がいる
-			        				if(1==(int)StockRt[i03][T100_StockRt.ColType]) {
-			        					if(((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T100_StockRt.ColItemCd])) {
-				        					RecomendLoc =  (String)StockRt[i03][T100_StockRt.ColLocName];
-				        					i03=StockRt.length+1;
-				        				}
-			        				}
-			        			}
-			        			for(int i03=0;i03<StockRt.length;i03++) {
-			        				//出荷ロケにドッペルゲンガーがいる
-			        				if(0==(int)StockRt[i03][T100_StockRt.ColType]) {
-			        					if(((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T100_StockRt.ColItemCd])
-			        							&& ((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.Collot]).equals((String)StockRt[i03][T100_StockRt.ColLot])
-			        							&& ((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColExpDate]).equals((String)StockRt[i03][T100_StockRt.ColExpdate])
-			        							) {
-				        					RecomendLoc =  (String)StockRt[i03][T100_StockRt.ColLocName];
-				        					i03=StockRt.length+1;
-				        				}
-			        				}
-			        			}
-			        			for(int i03=0;i03<StockRt.length;i03++) {
-			        				//保管ロケにドッペルゲンガーがいる
-			        				if(1==(int)StockRt[i03][T100_StockRt.ColType]) {
-			        					if(((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColItemCd]).equals((String)StockRt[i03][T100_StockRt.ColItemCd])
-			        							&& ((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.Collot]).equals((String)StockRt[i03][T100_StockRt.ColLot])
-			        							&& ((String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColExpDate]).equals((String)StockRt[i03][T100_StockRt.ColExpdate])
-			        							) {
-				        					RecomendLoc =  (String)StockRt[i03][T100_StockRt.ColLocName];
-				        					i03=StockRt.length+1;
-				        				}
+			        			//推奨ロケを取得　※同一商品が在庫にあればマスタより優先して推奨
+			        			String CheckItemCd = (String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColItemCd];
+		        				String CheckLot = (String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.Collot];
+		        				String CheckExpDate = (String)ArrivalPlanMsRt[i02][T100_ArrivalPlanMsRt.ColExpDate];
+		        				
+			        			for(int i03=0;i03<RecomendLocWithStockSerch.length;i03++) {
+			        				if(CheckItemCd.equals(RecomendLocWithStockSerch[i03][Tools100_RecomendLocWithStockSerch.ColItemCd])
+			        						&& CheckLot.equals(RecomendLocWithStockSerch[i03][Tools100_RecomendLocWithStockSerch.ColLot])
+			        						&& CheckExpDate.equals(RecomendLocWithStockSerch[i03][Tools100_RecomendLocWithStockSerch.ColExpdate])
+		        							){
+			        					RecomendLoc = RecomendLocWithStockSerch[i03][Tools100_RecomendLocWithStockSerch.ColRecomendLocName];
+			        					i03=RecomendLocWithStockSerch.length;
 			        				}
 			        			}
 			        			contentStream = Ms(contentStream,font,FontSize,Color.BLACK,ArrivalPlanMsRt[i02],MsCount,MaxRowCount,HeightStart,MaxWide,BaraQty,
@@ -504,66 +463,6 @@ public class WTList100_ArrivalPlan{
 		return OutPutPath;
 	}
 	
-	private static Object[][] StockRt(String TgtClCd,Object[][] ArrivalPlanMsRt){
-		ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主コード
-		ArrayList<String> SearchWhCd				= new ArrayList<String>();			//倉庫コード
-		ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
-		ArrayList<String> SearchLoc					= new ArrayList<String>();			//ロケーション
-		ArrayList<Integer> SearchType				= new ArrayList<Integer>();			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-		ArrayList<String> SearchItemCd				= new ArrayList<String>();			//商品コード
-		ArrayList<String> SearchLot					= new ArrayList<String>();			//ロット
-		ArrayList<String> SearchExpdateMin			= new ArrayList<String>();			//消費期限最小
-		ArrayList<String> SearchExpdateMax			= new ArrayList<String>();			//消費期限最大
-		ArrayList<String> SearchActualDateMin		= new ArrayList<String>();			//入荷実績日最小
-		ArrayList<String> SearchActualDateMax		= new ArrayList<String>();			//入荷実績日最大
-		ArrayList<Integer> SearchQtyMin				= new ArrayList<Integer>();			//数量最小
-		ArrayList<Integer> SearchQtyMax				= new ArrayList<Integer>();			//数量最大
-		ArrayList<Integer> SearchShipPlanQtyMin		= new ArrayList<Integer>();			//引当済数最小
-		ArrayList<Integer> SearchShipPlanQtyMax		= new ArrayList<Integer>();			//引当済数最大
-		ArrayList<Integer> SearchPossibleQtyMin		= new ArrayList<Integer>();			//出荷可能数最小
-		ArrayList<Integer> SearchPossibleQtyMax		= new ArrayList<Integer>();			//出荷可能数最大
-		ArrayList<String> SearchItemName			= new ArrayList<String>();			//商品名
-		ArrayList<String> SearchClItemCd			= new ArrayList<String>();			//荷主商品コード
-		ArrayList<String> SearchJanCd				= new ArrayList<String>();			//ソースマーク_BCD（バラ）
-		ArrayList<String> SearchItemMdNo			= new ArrayList<String>();			//商品型番
-		boolean LocExactMatch = false;													//ロケーション完全一致
-		boolean AllSearch = false;														//全件検索
-		boolean SortItemcdMode = true;													//商品CDでソート
-		Object[][] ClMstRt	= ClMstRt(TgtClCd);
-		if(0<ClMstRt.length) {SearchClGpCD.add((String)ClMstRt[0][M100_ClMstRt.ColClGpCD]);}
-		
-		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			SearchItemCd.add((String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemCd]);
-		}
-		
-		Object[][] StockRt= T100_StockRt.StockRt(
-								SearchClCd,				//荷主コード
-								SearchWhCd,				//倉庫コード
-								SearchClGpCD,			//荷主グループCD
-								SearchLoc,				//ロケーション
-								SearchType,				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-								SearchItemCd,			//商品コード
-								SearchLot,				//ロット
-								SearchExpdateMin,		//消費期限最小
-								SearchExpdateMax,		//消費期限最大
-								SearchActualDateMin,	//入荷実績日最小
-								SearchActualDateMax,	//入荷実績日最大
-								SearchQtyMin,			//数量最小
-								SearchQtyMax,			//数量最大
-								SearchShipPlanQtyMin,	//引当済数最小
-								SearchShipPlanQtyMax,	//引当済数最大
-								SearchPossibleQtyMin,	//出荷可能数最小
-								SearchPossibleQtyMax,	//出荷可能数最大
-								SearchItemName,			//商品名
-								SearchClItemCd,			//荷主商品コード
-								SearchJanCd,			//ソースマーク_BCD（バラ）
-								SearchItemMdNo,			//商品型番
-								LocExactMatch,			//ロケーション完全一致
-								AllSearch,
-								SortItemcdMode);
-		return StockRt;
-	}
-	
 	private static Object[][] ItemMstRt(String TgtClCd,Object[][] ArrivalPlanMsRt){
 		Object[][] ClMstRt	= ClMstRt(TgtClCd);
 		//商品マスタ取得
@@ -620,18 +519,16 @@ public class WTList100_ArrivalPlan{
 		return ItemMstRt;
 	}
 	
-	private static Object[][] ItemRecomendLocFromItemCd(String TgtClCd,Object[][] ArrivalPlanMsRt){
-		//推奨ロケマスタ取得
-		String ClCd = TgtClCd;
-		ArrayList<String> ItemCd= new ArrayList<String>();	//商品CD
-		boolean ItemMstRecomendLocExistenceOnly = true;		//商品サブマスタ推奨ロケは対象荷主のロケーションマスタに存在する場合のみ値格納
+	private static String[][] RecomendLocWithStockSerch(String TgtWhCd,String TgtClCd,Object[][] ArrivalPlanMsRt){
+		String[][] CheckData = new String[ArrivalPlanMsRt.length][Tools100_RecomendLocWithStockSerch.InRecomendLocWithStockSerch().length];
 		for(int i=0;i<ArrivalPlanMsRt.length;i++) {
-			ItemCd.add((String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemCd]);
+			CheckData[i][Tools100_RecomendLocWithStockSerch.InColItemCd] 	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemCd];
+			CheckData[i][Tools100_RecomendLocWithStockSerch.InColLot] 		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.Collot];
+			CheckData[i][Tools100_RecomendLocWithStockSerch.InColExpdate] = (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColExpDate];
 		}
+		String[][] Rt = Tools100_RecomendLocWithStockSerch.RecomendLocWithStockSerch(TgtWhCd,TgtClCd,CheckData);
 		
-		Object[][] ItemRecomendLocFromItemCd = M100_ItemRecomendLocMstRt.ItemRecomendLocFromItemCd(ClCd,ItemCd,ItemMstRecomendLocExistenceOnly);
-		
-		return ItemRecomendLocFromItemCd;
+		return Rt;
 	}
 	
 	private static Object[][] ClMstRt(String TgtClCd){
