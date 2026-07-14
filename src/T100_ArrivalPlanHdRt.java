@@ -241,8 +241,8 @@ public class T100_ArrivalPlanHdRt{
 		SearchClWh				= B100_ArrayListControl.ArryListStringUniqueList(SearchClWh);				//ヘッダ担当倉庫
 		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);				//ヘッダ荷主CD
 		SearchCLName01			= B100_ArrayListControl.ArryListStringUniqueList(SearchCLName01);			//ヘッダ荷主名
-		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);			//ヘッダ荷主グループCD
-		SearchCLGpName01		= B100_ArrayListControl.ArryListStringUniqueList(SearchCLGpName01);		//ヘッダ荷主グループ標記名
+		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);				//ヘッダ荷主グループCD
+		SearchCLGpName01		= B100_ArrayListControl.ArryListStringUniqueList(SearchCLGpName01);			//ヘッダ荷主グループ標記名
 		SearchArrNo				= B100_ArrayListControl.ArryListStringUniqueList(SearchArrNo);				//ヘッダ入荷予定NO
 		SearchClArrNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchClArrNo);			//ヘッダ荷主予定番号
 		SearchPlanDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchPlanDateMin);		//ヘッダ入荷予定日最小
@@ -250,23 +250,23 @@ public class T100_ArrivalPlanHdRt{
 		SearchHdActualDateMin	= B100_ArrayListControl.ArryListStringUniqueList(SearchHdActualDateMin);	//ヘッダ入荷実績日最小
 		SearchHdActualDateMax	= B100_ArrayListControl.ArryListStringUniqueList(SearchHdActualDateMax);	//ヘッダ入荷実績日最大
 		SearchSpCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchSpCd);				//ヘッダ仕入先CD
-		SearchSpName			= B100_ArrayListControl.ArryListStringUniqueList(SearchSpName);			//ヘッダ仕入先名
-		SearchSpPost			= B100_ArrayListControl.ArryListStringUniqueList(SearchSpPost);			//ヘッダ仕入先郵便
+		SearchSpName			= B100_ArrayListControl.ArryListStringUniqueList(SearchSpName);				//ヘッダ仕入先名
+		SearchSpPost			= B100_ArrayListControl.ArryListStringUniqueList(SearchSpPost);				//ヘッダ仕入先郵便
 		SearchSpAdd				= B100_ArrayListControl.ArryListStringUniqueList(SearchSpAdd);				//ヘッダ仕入先住所
 		SearchSpTel				= B100_ArrayListControl.ArryListStringUniqueList(SearchSpTel);				//ヘッダ仕入先電話
 		SearchArCom				= B100_ArrayListControl.ArryListStringUniqueList(SearchArCom);				//ヘッダコメント
-		SearchFixFg				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchFixFg);			//ヘッダ状況
+		SearchFixFg				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchFixFg);				//ヘッダ状況
 				
 		SearchMsNoMin			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchMsNoMin);			//明細番号最小
 		SearchMsNoMax			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchMsNoMax);			//明細番号最大
-		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);			//商品コード
+		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);				//商品コード
 		SearchClItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchClItemCd);			//荷主商品コード
 		SearchJanCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchJanCd);				//JANCD（バラ）
 		SearchItemMdNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemMdNo);			//商品型番
 		SearchItemName			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);			//商品名
 		Searchlot				= B100_ArrayListControl.ArryListStringUniqueList(Searchlot);				//ロット
-		SearchExpDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);		//消費期限最小
-		SearchExpDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);		//消費期限最大
+		SearchExpDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);			//消費期限最小
+		SearchExpDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);			//消費期限最大
 		SearchPlanQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchPlanQtyMin);		//予定数量最小
 		SearchPlanQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchPlanQtyMax);		//予定数量最大
 		SearchActualQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchActualQtyMin);		//実績数
@@ -279,7 +279,7 @@ public class T100_ArrivalPlanHdRt{
 		SearchUpdateDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMin);		//更新日最小
 		SearchUpdateDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMax);		//更新日最大
 		SearchEntryUser			= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryUser);			//登録者
-		SearchUpdateUser		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);		//更新者
+		SearchUpdateUser		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);			//更新者
 		
 		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのまま
 		if(null!=SearchPlanDateMax && 0<SearchPlanDateMax.size()){				//ヘッダ入荷予定日最大

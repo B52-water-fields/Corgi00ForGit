@@ -47,7 +47,7 @@ public class WT100_Arrival_30_ExcelEntryOutPut{
 					 {"GetClWh"				,ColGetClWh				,"String"	,"担当倉庫" 				,"Key"}
 					,{"GetClCd"				,ColGetClCd				,"String"	,"荷主CD" 					,"Key"}
 					,{"GetCLName01"			,ColGetCLName01			,"String"	,"荷主名"		 			,""}
-					,{"GetPlanDate"			,ColGetPlanDate			,"Date"		,"入荷予定日" 				,""}
+					,{"GetPlanDate"			,ColGetPlanDate			,"Date"		,"入荷予定日" 				,"Key"}
 					,{"GetSpCd"				,ColGetSpCd				,"String"	,"仕入先CD" 				,""}
 					,{"GetSpName01"			,ColGetSpName01			,"String"	,"仕入先標記名"				,""}
 					,{"GetClArrNo"			,ColGetClArrNo			,"String"	,"荷主予定番号" 			,""}

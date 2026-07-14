@@ -61,40 +61,40 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 	public static Object[][] RtSetDataDefinition(){
 		//登録用データ定義
 		Object[][] SetDataDefinition= {
-				 {"SetHdClWh"		,ColSetHdClWh			,"String"	,"ヘッダ担当倉庫"}
-				,{"SetHdClCd"		,ColSetHdClCd			,"String"	,"ヘッダ荷主CD"}
-				,{"SetHdArrNo"		,ColSetHdArrNo		,"String"	,"ヘッダ入荷予定NO"}
-				,{"SetHdClArrNo"	,ColSetHdClArrNo		,"String"	,"ヘッダ荷主予定番号"}
-				,{"SetHdPlanDate"	,ColSetHdPlanDate		,"DateTime"	,"ヘッダ入荷予定日"}
-				,{"SetHdActualDate"	,ColSetHdActualDate	,"DateTime"	,"ヘッダ入荷実績日"}
-				,{"SetHdSpCd"		,ColSetHdSpCd			,"String"	,"ヘッダ仕入先CD"}
-				,{"SetHdSpName01"	,ColSetHdSpName01		,"String"	,"ヘッダ仕入先名01"}
-				,{"SetHdSpName02"	,ColSetHdSpName02		,"String"	,"ヘッダ仕入先名02"}
-				,{"SetHdSpName03"	,ColSetHdSpName03		,"String"	,"ヘッダ仕入先名03"}
-				,{"SetHdSpPost"		,ColSetHdSpPost		,"String"	,"ヘッダ仕入先郵便"}
-				,{"SetHdSpAdd01"	,ColSetHdSpAdd01		,"String"	,"ヘッダ仕入先住所01"}
-				,{"SetHdSpAdd02"	,ColSetHdSpAdd02		,"String"	,"ヘッダ仕入先住所02"}
-				,{"SetHdSpAdd03"	,ColSetHdSpAdd03		,"String"	,"ヘッダ仕入先住所03"}
-				,{"SetHdSpTel"		,ColSetHdSpTel		,"String"	,"ヘッダ仕入先電話"}
-				,{"SetHdArCom01"	,ColSetHdArCom01		,"String"	,"ヘッダコメント1"}
-				,{"SetHdArCom02"	,ColSetHdArCom02		,"String"	,"ヘッダコメント2"}
-				,{"SetHdArCom03"	,ColSetHdArCom03		,"String"	,"ヘッダコメント3"}
+				 {"SetHdClWh"		,ColSetHdClWh			,"String"	,"ヘッダ担当倉庫"		,"Key"	}
+				,{"SetHdClCd"		,ColSetHdClCd			,"String"	,"ヘッダ荷主CD"			,"Key"	}
+				,{"SetHdArrNo"		,ColSetHdArrNo		,"String"	,"ヘッダ入荷予定NO"		,"Key"	}
+				,{"SetHdClArrNo"	,ColSetHdClArrNo		,"String"	,"ヘッダ荷主予定番号"	,"Key"	}
+				,{"SetHdPlanDate"	,ColSetHdPlanDate		,"DateTime"	,"ヘッダ入荷予定日"		,"Key"	}
+				,{"SetHdActualDate"	,ColSetHdActualDate	,"DateTime"	,"ヘッダ入荷実績日"		,""		}
+				,{"SetHdSpCd"		,ColSetHdSpCd			,"String"	,"ヘッダ仕入先CD"		,"Key"	}
+				,{"SetHdSpName01"	,ColSetHdSpName01		,"String"	,"ヘッダ仕入先名01"		,""		}
+				,{"SetHdSpName02"	,ColSetHdSpName02		,"String"	,"ヘッダ仕入先名02"		,""		}
+				,{"SetHdSpName03"	,ColSetHdSpName03		,"String"	,"ヘッダ仕入先名03"		,""		}
+				,{"SetHdSpPost"		,ColSetHdSpPost		,"String"	,"ヘッダ仕入先郵便"		,""		}
+				,{"SetHdSpAdd01"	,ColSetHdSpAdd01		,"String"	,"ヘッダ仕入先住所01"	,""		}
+				,{"SetHdSpAdd02"	,ColSetHdSpAdd02		,"String"	,"ヘッダ仕入先住所02"	,""		}
+				,{"SetHdSpAdd03"	,ColSetHdSpAdd03		,"String"	,"ヘッダ仕入先住所03"	,""		}
+				,{"SetHdSpTel"		,ColSetHdSpTel		,"String"	,"ヘッダ仕入先電話"		,""		}
+				,{"SetHdArCom01"	,ColSetHdArCom01		,"String"	,"ヘッダコメント1"		,""		}
+				,{"SetHdArCom02"	,ColSetHdArCom02		,"String"	,"ヘッダコメント2"		,""		}
+				,{"SetHdArCom03"	,ColSetHdArCom03		,"String"	,"ヘッダコメント3"		,""		}
 				,{"SetHdFixFg"		,ColSetHdFixFg		,"int"		,"ヘッダ状況"}
 				
-				,{"SetMsNo"			,ColSetMsNo			,"String"	,"明細番号"}
-				,{"SetItemCd"		,ColSetItemCd			,"String"	,"商品コード"}
-				,{"SetClItemCd"		,ColSetClItemCd		,"String"	,"荷主商品コード"}
-				,{"SetJanCd"		,ColSetJanCd			,"String"	,"ソースマーク_BCD"}
-				,{"SetItemMdNo"		,ColSetItemMdNo		,"String"	,"商品型番"}
-				,{"SetItemName"		,ColSetItemName		,"String"	,"商品名"}
-				,{"Setlot"			,ColSetlot				,"String"	,"ロット"}
-				,{"SetExpDate"		,ColSetExpDate		,"DateTime"	,"消費期限"}
-				,{"SetPlanQty"		,ColSetPlanQty		,"int"		,"予定数量"}	//※バラ数量
-				,{"SetActualQty"	,ColSetActualQty		,"int"		,"実績数"}
-				,{"SetActualDate"	,ColSetActualDate		,"DateTime"	,"入荷日"}
-				,{"SetCom01"		,ColSetCom01			,"String"	,"コメント1"}
-				,{"SetCom02"		,ColSetCom02			,"String"	,"コメント2"}
-				,{"UnitType"		,ColUnitType			,"int"		,"荷姿タイプ"}
+				,{"SetMsNo"			,ColSetMsNo			,"String"	,"明細番号"				,""		}
+				,{"SetItemCd"		,ColSetItemCd			,"String"	,"商品コード"			,""		}
+				,{"SetClItemCd"		,ColSetClItemCd		,"String"	,"荷主商品コード"		,""		}
+				,{"SetJanCd"		,ColSetJanCd			,"String"	,"ソースマーク_BCD"		,""		}
+				,{"SetItemMdNo"		,ColSetItemMdNo		,"String"	,"商品型番"				,""		}
+				,{"SetItemName"		,ColSetItemName		,"String"	,"商品名"				,""		}
+				,{"Setlot"			,ColSetlot				,"String"	,"ロット"				,""		}
+				,{"SetExpDate"		,ColSetExpDate		,"DateTime"	,"消費期限"				,""		}
+				,{"SetPlanQty"		,ColSetPlanQty		,"int"		,"予定数量"				,""		}	//※バラ数量
+				,{"SetActualQty"	,ColSetActualQty		,"int"		,"実績数"				,""		}
+				,{"SetActualDate"	,ColSetActualDate		,"DateTime"	,"入荷日"				,""		}
+				,{"SetCom01"		,ColSetCom01			,"String"	,"コメント1"			,""		}
+				,{"SetCom02"		,ColSetCom02			,"String"	,"コメント2"			,""		}
+				,{"UnitType"		,ColUnitType			,"int"		,"荷姿タイプ"			,""		}
 				};
 		return SetDataDefinition;
 	}

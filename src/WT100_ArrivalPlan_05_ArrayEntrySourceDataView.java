@@ -44,20 +44,20 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 	public static Object[][] RtArrivalPlanArrayEntrySourceDataView() {
 		//投入データ定義
 		Object[][] RtArrivapPlanArrayEntry= {
-				 {"ClWh"			,ColClWh		,"String"	,"担当倉庫"}
-				,{"ClCd"			,ColClCd		,"String"	,"荷主CD"}
-				,{"SPCd"			,ColSPCd		,"String"	,"仕入先CD"}
-				,{"PlanDate"		,ColPlanDate	,"String"	,"入荷予定日"}
-				,{"ClArrNo"			,ColClArrNo	,"String"	,"荷主予定番号"}
-				,{"ClItemCd"		,ColClItemCd	,"String"	,"荷主商品CD"}
-				,{"Lot"				,ColLot		,"String"	,"ロット"}
-				,{"ExpDate"			,ColExpDate	,"DateTime"	,"賞味期限"}
-				,{"PlanQty"			,ColPlanQty	,"int"		,"数量"}
-				,{"HdCom01"			,ColHdCom01	,"DateTime"	,"ヘッダコメント01"}
-				,{"HdCom02"			,ColHdCom02	,"DateTime"	,"ヘッダコメント02"}
-				,{"HdCom03"			,ColHdCom03	,"DateTime"	,"ヘッダコメント03"}
-				,{"MsCom01"			,ColMsCom01	,"DateTime"	,"明細コメント01"}
-				,{"MsCom02"			,ColMsCom02	,"DateTime"	,"明細コメント02"}
+				 {"ClWh"			,ColClWh		,"String"	,"担当倉庫"			,"Key"	}
+				,{"ClCd"			,ColClCd		,"String"	,"荷主CD"			,"Key"	}
+				,{"SPCd"			,ColSPCd		,"String"	,"仕入先CD"			,"Key"	}
+				,{"PlanDate"		,ColPlanDate	,"String"	,"入荷予定日"		,"Key"	}
+				,{"ClArrNo"			,ColClArrNo	,"String"	,"荷主予定番号"		,"Key"	}
+				,{"ClItemCd"		,ColClItemCd	,"String"	,"荷主商品CD"		,""		}
+				,{"Lot"				,ColLot		,"String"	,"ロット"			,""		}
+				,{"ExpDate"			,ColExpDate	,"DateTime"	,"賞味期限"			,""		}
+				,{"PlanQty"			,ColPlanQty	,"int"		,"数量"				,""		}
+				,{"HdCom01"			,ColHdCom01	,"DateTime"	,"ヘッダコメント01"	,""		}
+				,{"HdCom02"			,ColHdCom02	,"DateTime"	,"ヘッダコメント02"	,""		}
+				,{"HdCom03"			,ColHdCom03	,"DateTime"	,"ヘッダコメント03"	,""		}
+				,{"MsCom01"			,ColMsCom01	,"DateTime"	,"明細コメント01"	,""		}
+				,{"MsCom02"			,ColMsCom02	,"DateTime"	,"明細コメント02"	,""		}
 				};
 		return RtArrivapPlanArrayEntry;
 	}
