@@ -24,7 +24,7 @@ public class WM100_DeliveryTypeMst_01_RenewAndCreate{
 		if(null==DeliveryTypeNo) {DeliveryTypeNo = "";}
 		if(null==DeliveryTypeCd) {DeliveryTypeCd = "";}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,350,"Corgi00運送タイプマスタ登録・更新","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,350,"Corgi00運送タイプマスタ登録・更新　WM100_DeliveryTypeMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();

@@ -66,7 +66,7 @@ public class WT100_Stock_10_Adjust{
 										TgtActualDate
 										);
 		
-		final JFrame main_fm 	= B100_FrameParts.FrameCreate(x,y,800,750,"Corgi00在庫調整","ZK");
+		final JFrame main_fm 	= B100_FrameParts.FrameCreate(x,y,800,750,"Corgi00在庫調整　WT100_Stock_10_Adjust","ZK");
 		JLabel userinfo 		= B100_FrameParts.UserInfo();
 		JButton exit_btn 		= B100_FrameParts.ExitBtn();
 		JButton entry_btn 		= B100_FrameParts.EntryBtn();
@@ -405,7 +405,7 @@ public class WT100_Stock_10_Adjust{
 		main_fm.add(TB_AfterBrUnitName);
 		
 		JButton LocSearchBtn	= B100_FrameParts.BtnSet(	260,100, 90,20,"ロケ検索",11);		
-		final JFrame Loc_fm 	= B100_FrameParts.FrameCreate(x+10,y+10,800,750,"Corgi00在庫調整(ロケ検索)","ZK");
+		final JFrame Loc_fm 	= B100_FrameParts.FrameCreate(x+10,y+10,800,750,"Corgi00在庫調整(ロケ検索)　WT100_Stock_10_Adjust","ZK");
 		JLabel 	LocUserinfo 	= B100_FrameParts.UserInfo();
 		JButton LocExit_btn 	= B100_FrameParts.ExitBtn();
 		JButton LocEntry_btn 	= B100_FrameParts.EntryBtn();
@@ -477,7 +477,7 @@ public class WT100_Stock_10_Adjust{
 		Loc_fm.add(scpnLoc);
 		
 		JButton ItemSearchBtn	= B100_FrameParts.BtnSet(	260,175, 90,20,"商品検索",11);
-		final JFrame Item_fm 	= B100_FrameParts.FrameCreate(x+10,y+10,800,750,"Corgi00在庫調整(商品検索)","ZK");
+		final JFrame Item_fm 	= B100_FrameParts.FrameCreate(x+10,y+10,800,750,"Corgi00在庫調整(商品検索)　WT100_Stock_10_Adjust","ZK");
 		JLabel 	ItemUserinfo 	= B100_FrameParts.UserInfo();
 		JButton ItemExit_btn 	= B100_FrameParts.ExitBtn();
 		JButton ItemEntry_btn 	= B100_FrameParts.EntryBtn();

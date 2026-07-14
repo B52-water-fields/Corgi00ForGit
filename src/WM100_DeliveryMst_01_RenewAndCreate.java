@@ -34,7 +34,7 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		if(null==DECD) {DECD = "";}
 		if(null==DepartmentCd) {DepartmentCd = "";}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,750,"Corgi00届先マスタ登録・更新","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,750,"Corgi00届先マスタ登録・更新　WM100_DeliveryMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();
@@ -55,7 +55,7 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		JLabel LB_Add02				= B100_FrameParts.JLabelSet(  0,215,100,20,"届先住所2:",		11,1);
 		JLabel LB_Add03				= B100_FrameParts.JLabelSet(  0,240,100,20,"届先住所3:",		11,1);
 		JLabel LB_Tel				= B100_FrameParts.JLabelSet(  0,265,100,20,"届先電話:",		11,1);
-		JLabel LB_Fax				= B100_FrameParts.JLabelSet(  0,290,100,20,"届先FAX:",		11,1);
+		JLabel LB_Fax				= B100_FrameParts.JLabelSet(  0,290,100,20,"届先FAX:",			11,1);
 		JLabel LB_Mail				= B100_FrameParts.JLabelSet(  0,315,100,20,"届先MAIL:",		11,1);
 		JLabel LB_Com01				= B100_FrameParts.JLabelSet(  0,340,100,20,"コメント1:",		11,1);
 		JLabel LB_Com02				= B100_FrameParts.JLabelSet(  0,365,100,20,"コメント2:",		11,1);
@@ -272,7 +272,7 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		/*----------------------------------------------------
 		同一届け先候補をリストアップ
 		----------------------------------------------------*/
-		final JFrame SameDelivery_fm = B100_FrameParts.FrameCreate(x,y,640,500,"Corgi00届先マスタ登録・更新","");
+		final JFrame SameDelivery_fm = B100_FrameParts.FrameCreate(x,y,640,500,"Corgi00届先マスタ登録・更新　WM100_DeliveryMst_01_RenewAndCreate","");
 		JLabel SameDelivery_userinfo = B100_FrameParts.UserInfo();
 		JButton SameDelivery_exit_btn = B100_FrameParts.ExitBtn();
 		

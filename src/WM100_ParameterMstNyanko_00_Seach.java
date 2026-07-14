@@ -29,7 +29,7 @@ public class WM100_ParameterMstNyanko_00_Seach{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,750,"Corgi00共通パラメータマスタ（NYANKO）検索","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,750,"Corgi00共通パラメータマスタ（NYANKO）検索　WM100_ParameterMstNyanko_00_Seach","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

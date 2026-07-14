@@ -28,7 +28,7 @@ public class WM100_ClGlpMst_00_Search{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,780,750,"Corgi00荷主グループ検索","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,780,750,"Corgi00荷主グループ検索　WM100_ClGlpMst_00_Search","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

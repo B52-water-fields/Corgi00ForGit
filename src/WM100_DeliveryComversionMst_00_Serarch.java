@@ -32,7 +32,7 @@ public class WM100_DeliveryComversionMst_00_Serarch{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00届先変換マスタ検索","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00届先変換マスタ検索　WM100_DeliveryComversionMst_00_Serarch","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

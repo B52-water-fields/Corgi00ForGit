@@ -24,7 +24,7 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		
 		String Nextday = B100_DateTimeControl.dtmString2(B100_DateTimeControl.ndate_after(B100_DateTimeControl.dtm()[1],1))[0];
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定検索","NK");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00入荷予定一括登録　WT100_ArrivalPlan_04_SomeEntry","NK");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();
@@ -89,6 +89,9 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		JScrollPane SPPlanQty 	= B100_FrameParts.JScrollPaneSet(510,125,100,500,TB_PlanQty);
 		JScrollPane SPHdCom 	= B100_FrameParts.JScrollPaneSet(630,125,100,500,TB_HdCom);
 		JScrollPane SPMsCom 	= B100_FrameParts.JScrollPaneSet(750,125,100,500,TB_MsCom);
+		
+		TB_ClItemCd.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TB_PlanQty.setBackground(B100_FrameParts.SelectColer("Entry"));
 		
 		main_fm.add(LB_ClArrNo);
 		main_fm.add(LB_ClItemCd);

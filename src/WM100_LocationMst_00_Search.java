@@ -29,7 +29,7 @@ public class WM100_LocationMst_00_Search{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00ロケーションマスタ検索","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00ロケーションマスタ検索　WM100_LocationMst_00_Search","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

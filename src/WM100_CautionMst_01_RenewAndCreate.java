@@ -35,7 +35,7 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		if(null==DECD) {DECD = "";}
 		if(null==DepartmentCd) {DepartmentCd = "";}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,650,"Corgi00届先注意事項マスタ登録・更新","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,650,"Corgi00届先注意事項マスタ登録・更新　WM100_CautionMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();
@@ -202,7 +202,7 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		/*----------------------------------------------------------
 		荷主Grp検索
 		----------------------------------------------------------*/
-		final JFrame  ClGrpSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,500,500,"Corgi00届先注意事項マスタ登録・更新(荷主Grp検索)","");
+		final JFrame  ClGrpSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,500,500,"Corgi00届先注意事項マスタ登録・更新(荷主Grp検索)　WM100_CautionMst_01_RenewAndCreate","");
 		JButton  ClGrpSearchexit_btn = B100_FrameParts.ExitBtn();
 		
 		ClGrpSearch_fm.add(ClGrpSearchexit_btn);
@@ -384,7 +384,7 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		届先検索
 		----------------------------------------------------------*/
 		
-		final JFrame DeliverySearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,500,500,"Corgi00届先注意事項マスタ登録・更新(届先検索)","");
+		final JFrame DeliverySearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,500,500,"Corgi00届先注意事項マスタ登録・更新(届先検索)　WM100_CautionMst_01_RenewAndCreate","");
 		JButton  DeliverySearchexit_btn = B100_FrameParts.ExitBtn();
 		
 		DeliverySearch_fm.add(DeliverySearchexit_btn);

@@ -28,7 +28,7 @@ public class WM100_ItemComversionMst_02_ExcelEntry{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,600,200,"Corgi00商品変換マスタ登録（エクセル）","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,600,200,"Corgi00商品変換マスタ登録（エクセル）　WM100_ItemComversionMst_02_ExcelEntry","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();
@@ -81,7 +81,7 @@ public class WM100_ItemComversionMst_02_ExcelEntry{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,550,800,"Corgi00商品変換マスタ登録（エクセル）","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,550,800,"Corgi00商品変換マスタ登録（エクセル）　WM100_ItemComversionMst_02_ExcelEntry","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();

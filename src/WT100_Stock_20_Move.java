@@ -69,7 +69,7 @@ public class WT100_Stock_20_Move{
 										TgtExpdate,
 										TgtActualDate
 										);
-		final JFrame main_fm 	= B100_FrameParts.FrameCreate(x,y,750,750,"Corgi00在庫移動","ZK");
+		final JFrame main_fm 	= B100_FrameParts.FrameCreate(x,y,750,750,"Corgi00在庫移動　StockMove","ZK");
 		JLabel userinfo 		= B100_FrameParts.UserInfo();
 		JButton exit_btn 		= B100_FrameParts.ExitBtn();
 		

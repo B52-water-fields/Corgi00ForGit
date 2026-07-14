@@ -31,7 +31,7 @@ public class WM100_AdjustReasonMst_01_RenewAndCreate{
 		if("".equals(TgtWhCd)		) {TgtWhCd				= A00000_Main.ClWh;}
 		if(null==TgtAdjustReasonCd	) {TgtAdjustReasonCd	= "";}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,600,400,"Corgi00在庫調整理由マスタ登録・修正","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,600,400,"Corgi00在庫調整理由マスタ登録・修正　WM100_AdjustReasonMst_01_RenewAndCreate","");
 		JLabel userinfo 	= B100_FrameParts.UserInfo();
 		JButton exit_btn 	= B100_FrameParts.ExitBtn();
 		JButton entry_btn 	= B100_FrameParts.EntryBtn();

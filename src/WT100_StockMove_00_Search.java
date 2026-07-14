@@ -29,7 +29,7 @@ public class WT100_StockMove_00_Search{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,850,820,"Corgi00在庫調整検索","ZK");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,850,820,"Corgi00在庫調整検索　WT100_StockMove_00_Search","ZK");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

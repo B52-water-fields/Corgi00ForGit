@@ -29,7 +29,7 @@ public class WM100_DeliveryTypeMst_00_Search{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		RenewFg = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,650,750,"Corgi00運送タイプマスタ検索","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,650,750,"Corgi00運送タイプマスタ検索　WM100_DeliveryTypeMst_00_Search","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

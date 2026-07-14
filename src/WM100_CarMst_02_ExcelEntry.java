@@ -29,7 +29,7 @@ public class WM100_CarMst_02_ExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,600,200,"Corgi00車輛マスタ登録（エクセル）","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,600,200,"Corgi00車輛マスタ登録（エクセル）　WM100_CarMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();
@@ -91,7 +91,7 @@ public class WM100_CarMst_02_ExcelEntry{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,750,800,"Corgi00車輛マスタ登録（エクセル）","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,750,800,"Corgi00車輛マスタ登録（エクセル）WM100_CarMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();

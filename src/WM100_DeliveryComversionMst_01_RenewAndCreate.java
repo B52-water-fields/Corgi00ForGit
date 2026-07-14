@@ -36,7 +36,7 @@ public class WM100_DeliveryComversionMst_01_RenewAndCreate{
 		
 		if("".equals(ClGpCD)) {ClGpCD = A00000_Main.ClGp;}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,550,780,"Corgi00届先変換マスタ登録・更新","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,550,780,"Corgi00届先変換マスタ登録・更新　WM100_DeliveryComversionMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();
@@ -334,7 +334,7 @@ public class WM100_DeliveryComversionMst_01_RenewAndCreate{
 		JButton DeliveryReleaseBtn = B100_FrameParts.BtnSet(340,115,100,20,"届先解放",11);
 		main_fm.add(DeliveryReleaseBtn);
 		
-		final JFrame DeliSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,650,650,"Corgi00届先変換マスタ登録・更新(届先検索)","");
+		final JFrame DeliSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,650,650,"Corgi00届先変換マスタ登録・更新(届先検索)　WM100_DeliveryComversionMst_01_RenewAndCreate","");
 		JButton DeliSearchExit_btn = B100_FrameParts.ExitBtn();
 		DeliSearch_fm.add(DeliSearchExit_btn);
 		DeliSearchExit_btn.addActionListener(new AbstractAction(){

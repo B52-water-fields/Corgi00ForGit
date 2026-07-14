@@ -62,7 +62,7 @@ public class WM100_DeliveryMst_00_Search{
 			MunicipalityCd[2][i+1] = ""+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtPREFECTURES]+MunicipalityRt[i][M100_PostMstRt.ColMunicipalityRtMUNICI01];
 		}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00届先マスタ検索","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00届先マスタ検索　WM100_DeliveryMst_00_Search","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

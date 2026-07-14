@@ -25,7 +25,7 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 		
 		if(null==ShippingCompanyCd) {ShippingCompanyCd = "";}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,700,"Corgi00運送会社登録・更新","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,700,"Corgi00運送会社登録・更新　WM100_ShippingCompanyMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();

@@ -20,7 +20,7 @@ public class WM100_LocationMst_01_RenewAndCreate{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,500,"Corgi00ロケーションマスタ登録・修正","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,500,"Corgi00ロケーションマスタ登録・修正　WM100_LocationMst_01_RenewAndCreate","");
 		JLabel userinfo 	= B100_FrameParts.UserInfo();
 		JButton exit_btn 	= B100_FrameParts.ExitBtn();
 		JButton entry_btn 	= B100_FrameParts.EntryBtn();

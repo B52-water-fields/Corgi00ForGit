@@ -29,7 +29,7 @@ public class WM100_UserMst_00_Search{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,860,750,"Corgi00ユーザー検索","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,860,750,"Corgi00ユーザー検索　WM100_UserMst_00_Search","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

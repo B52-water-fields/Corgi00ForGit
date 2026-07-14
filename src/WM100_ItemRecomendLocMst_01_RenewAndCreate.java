@@ -40,7 +40,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		if("".equals(TgtWhCd)) {TgtWhCd = A00000_Main.ClWh;}
 		if("".equals(TgtClCd)) {TgtClCd = A00000_Main.ClCd;}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,450,"Corgi00推奨ロケマスタ(荷主毎)登録・修正","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,450,"Corgi00推奨ロケマスタ(荷主毎)登録・修正　WM100_ItemRecomendLocMst_01_RenewAndCreate","");
 		JLabel userinfo 	= B100_FrameParts.UserInfo();
 		JButton exit_btn 	= B100_FrameParts.ExitBtn();
 		JButton entry_btn 	= B100_FrameParts.EntryBtn();
@@ -188,7 +188,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		main_fm.setVisible(true);
 		
 		//商品検索画面
-		final JFrame ItemSearch_fm 			= B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00推奨ロケマスタ(荷主毎)登録・修正【商品検索】","");
+		final JFrame ItemSearch_fm 			= B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00推奨ロケマスタ(荷主毎)登録・修正【商品検索】　WM100_ItemRecomendLocMst_01_RenewAndCreate","");
 		JLabel ItemSearchUserinfo 			= B100_FrameParts.UserInfo();
 		JButton ItemSearchExit_btn 			= B100_FrameParts.ExitBtn();
 		JButton ItemSearchEntry_btn 		= B100_FrameParts.EntryBtn();
@@ -259,7 +259,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		
 		
 		//ロケ検索画面
-		final JFrame LocSearch_fm			= B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00推奨ロケマスタ(荷主毎)登録・修正【ロケ検索】","");
+		final JFrame LocSearch_fm			= B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00推奨ロケマスタ(荷主毎)登録・修正【ロケ検索】　WM100_ItemRecomendLocMst_01_RenewAndCreate","");
 		JLabel LocSearchUserinfo 			= B100_FrameParts.UserInfo();
 		JButton LocSearchExit_btn 			= B100_FrameParts.ExitBtn();
 		JButton LocSearchEntry_btn 			= B100_FrameParts.EntryBtn();

@@ -31,7 +31,7 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,500,"Corgi00商品変換マスタ登録・修正","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,500,"Corgi00商品変換マスタ登録・修正　WM100_ItemComversionMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();
@@ -176,7 +176,7 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		main_fm.setVisible(true);
 		
 		
-		final JFrame ItemSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00商品変換マスタ登録・修正(商品検索)","");
+		final JFrame ItemSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00商品変換マスタ登録・修正(商品検索)　WM100_ItemComversionMst_01_RenewAndCreate","");
 		JLabel ItemSearch_userinfo = B100_FrameParts.UserInfo();
 		JButton ItemSearch_exit_btn = B100_FrameParts.ExitBtn();
 		JButton ItemSearch_entry_btn = B100_FrameParts.EntryBtn();

@@ -64,7 +64,8 @@ public class B100_DefaultVariable{
 	
 	static final String DefaultActualDate 	= "1941/12/08";	//入荷日管理しない場合の入荷実績日
 	
-	static final String DefaultTroughLoc		= "ZZZ2222222";	//スルー型運用の場合スルー引当用ロケ
+	static String DefaultTroughLoc;			//スルー型運用の場合スルー引当用ロケ	※パラメータマスタに設定された値で上書きされる
+	static String DefaultArrivalLoc;			//入荷時に格納されるロケ				※パラメータマスタに設定された値で上書きされる
 	
 	static final String DefaultExpDate 		= "3000/01/01";	//消費期限管理しない場合の消費期限
 	
@@ -111,6 +112,7 @@ public class B100_DefaultVariable{
 	
 	static boolean ArrivalShipUnTgt;			//trueなら入荷時ロケも出荷対象にする
 	static String[] ShipPlovisionUnTgtList;	//引当対象にしないロケタイプ
+	
 	
 	
 	/*
@@ -240,7 +242,7 @@ public class B100_DefaultVariable{
 					,{"ClCd"		,"1","0","Key"	,A00000_Main.ClCd}					//荷主コード
 					,{"ParaCd"		,"1","0","Key"	,"ArrivalShipUnTgt"}				//パラメータコード
 					,{"ParaCdSeq"	,"1","0","Key"	,"0"}								//ナンバリング
-					,{"ParaName"	,"1","0",""	,"入時ロケ出荷非対称設定"}				//パラメータ名
+					,{"ParaName"	,"1","0",""	,"入時ロケ出荷非対象設定"}				//パラメータ名
 					,{"ParaTxt01"	,"1","0",""	,"ParaInt01=1なら入荷時ロケを出荷対象にしない"}				//パラメータテキスト項目01
 					,{"ParaTxt02"	,"1","0",""	,""}				//パラメータテキスト項目02
 					,{"ParaTxt03"	,"1","0",""	,""}				//パラメータテキスト項目03
@@ -368,27 +370,129 @@ public class B100_DefaultVariable{
 		int non_msg_fg = 1;
 		
 		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		
+		
 	}
 	
 	private static void ClDefaultLoc() {
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		String tgt_table = "WM0010LOCATIONMST";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		DefaultTroughLoc			= "ZZZ2222222";	//スルー型運用の場合スルー引当用ロケ初期値
+		DefaultArrivalLoc			= "NK00000000";	//入荷時に格納されるロケ初期値
+		
 		//スルー出荷用のロケーション"ZZZ2222222"つくる
-		Object[][] SetString = {
+		Object[][] SetStringTrough = {
 				 {"ClCd"		,"1","0","Key"	,A00000_Main.ClCd}					//荷主コード
 				,{"WhCd"		,"1","0","Key"	,A00000_Main.ClWh}					//倉庫コード
 				,{"Loc"			,"1","0","Key"	,DefaultTroughLoc}				//ロケーション
-				,{"LocName"		,"1","0",""		,"(スルー出荷)"+DefaultTroughLoc}	//ロケーション名
+				,{"LocName"		,"1","0",""		,"スルー出荷ロケ"}					//ロケーション名
 				,{"LocType"		,"1","0",""		,"7"}								//ロケタイプ
 				,{"EntryDate"	,"1","0",""		,now_dtm}							//登録日
 				,{"UpdateDate"	,"1","0",""		,now_dtm}							//更新日
 				,{"EntryUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//登録者
 				,{"UpdateUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//更新者
 				};
-		String tgt_table = "WM0010LOCATIONMST";
-		String TgtDB = "WANKO";
-		int non_msg_fg = 1;
 		
-		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+		
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringTrough,tgt_table,TgtDB,non_msg_fg);
+		
+		//入荷時ロケ"NK0000000"つくる
+		Object[][] SetStringArrival = {
+				 {"ClCd"		,"1","0","Key"	,A00000_Main.ClCd}					//荷主コード
+				,{"WhCd"		,"1","0","Key"	,A00000_Main.ClWh}					//倉庫コード
+				,{"Loc"			,"1","0","Key"	,DefaultArrivalLoc}				//ロケーション
+				,{"LocName"		,"1","0",""		,"入荷時ロケ"}						//ロケーション名
+				,{"LocType"		,"1","0",""		,"8"}								//ロケタイプ
+				,{"EntryDate"	,"1","0",""		,now_dtm}							//登録日
+				,{"UpdateDate"	,"1","0",""		,now_dtm}							//更新日
+				,{"EntryUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//登録者
+				,{"UpdateUser"	,"1","0",""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}	//更新者
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringArrival,tgt_table,TgtDB,non_msg_fg);
+		
+		
+		tgt_table = "WM0000PARAMETER";
+		TgtDB = "WANKO";
+		non_msg_fg = 1;
+		//パラメータマスタにスルー出荷用のロケーション設定
+		Object[][] SetStringTroughPara = {
+				 {"ClWh"		,"1","0","Key"	,A00000_Main.ClWh}					//担当倉庫コード
+				,{"ClCd"		,"1","0","Key"	,A00000_Main.ClCd}					//荷主コード
+				,{"ParaCd"		,"1","0","Key"	,"DefaultTroughLoc"}				//パラメータコード
+				,{"ParaCdSeq"	,"1","0","Key"	,"0"}							//ナンバリング
+				,{"ParaName"	,"1","0",""	,"スルー出荷時ロケ"}					//パラメータ名
+				,{"ParaTxt01"	,"1","0",""	,"ParaTxt02に格納されたロケコードでスルー出荷時在庫制御"}	//パラメータテキスト項目01
+				,{"ParaTxt02"	,"1","0",""	,DefaultTroughLoc}										//パラメータテキスト項目02
+				,{"ParaTxt03"	,"1","0",""	,""}				//パラメータテキスト項目03
+				,{"ParaTxt04"	,"1","0",""	,""}				//パラメータテキスト項目04
+				,{"ParaTxt05"	,"1","0",""	,""}				//パラメータテキスト項目05
+				,{"ParaTxt06"	,"1","0",""	,""}				//パラメータテキスト項目06
+				,{"ParaTxt07"	,"1","0",""	,""}				//パラメータテキスト項目07
+				,{"ParaTxt08"	,"1","0",""	,""}				//パラメータテキスト項目08
+				,{"ParaTxt09"	,"1","0",""	,""}				//パラメータテキスト項目09
+				,{"ParaTxt10"	,"1","0",""	,""}				//パラメータテキスト項目10
+				,{"ParaInt01"	,"1","0",""	,"0"}				//パラメータ数値項目01
+				,{"ParaInt02"	,"1","0",""	,"0"}				//パラメータ数値項目02
+				,{"ParaInt03"	,"1","0",""	,"0"}				//パラメータ数値項目03
+				,{"ParaInt04"	,"1","0",""	,"0"}				//パラメータ数値項目04
+				,{"ParaInt05"	,"1","0",""	,"0"}				//パラメータ数値項目05
+				,{"ParaInt06"	,"1","0",""	,"0"}				//パラメータ数値項目06
+				,{"ParaInt07"	,"1","0",""	,"0"}				//パラメータ数値項目07
+				,{"ParaInt08"	,"1","0",""	,"0"}				//パラメータ数値項目08
+				,{"ParaInt09"	,"1","0",""	,"0"}				//パラメータ数値項目09
+				,{"ParaInt10"	,"1","0",""	,"0"}				//パラメータ数値項目10
+				,{"EntryDate"	,"1","0",""	,now_dtm}			//登録日
+				,{"UpdateDate"	,"1","0",""	,now_dtm}			//更新日
+				,{"EntryUser"	,"1","0",""	,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//登録者
+				,{"UpdateUser"	,"1","0",""	,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//更新者
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringTroughPara,tgt_table,TgtDB,non_msg_fg);
+		
+		//パラメータマスタに入荷時用のロケーション設定
+		Object[][] SetStringArrivalPara = {
+				 {"ClWh"		,"1","0","Key"	,A00000_Main.ClWh}					//担当倉庫コード
+				,{"ClCd"		,"1","0","Key"	,A00000_Main.ClCd}					//荷主コード
+				,{"ParaCd"		,"1","0","Key"	,"DefaultArrivalLoc"}				//パラメータコード
+				,{"ParaCdSeq"	,"1","0","Key"	,"0"}													//ナンバリング
+				,{"ParaName"	,"1","0",""	,"入荷時ロケ"}												//パラメータ名
+				,{"ParaTxt01"	,"1","0",""	,"入荷時ParaTxt02に格納されたロケコードに在庫増"}			//パラメータテキスト項目01
+				,{"ParaTxt02"	,"1","0",""	,DefaultArrivalLoc}										//パラメータテキスト項目02
+				,{"ParaTxt03"	,"1","0",""	,""}				//パラメータテキスト項目03
+				,{"ParaTxt04"	,"1","0",""	,""}				//パラメータテキスト項目04
+				,{"ParaTxt05"	,"1","0",""	,""}				//パラメータテキスト項目05
+				,{"ParaTxt06"	,"1","0",""	,""}				//パラメータテキスト項目06
+				,{"ParaTxt07"	,"1","0",""	,""}				//パラメータテキスト項目07
+				,{"ParaTxt08"	,"1","0",""	,""}				//パラメータテキスト項目08
+				,{"ParaTxt09"	,"1","0",""	,""}				//パラメータテキスト項目09
+				,{"ParaTxt10"	,"1","0",""	,""}				//パラメータテキスト項目10
+				,{"ParaInt01"	,"1","0",""	,"0"}				//パラメータ数値項目01
+				,{"ParaInt02"	,"1","0",""	,"0"}				//パラメータ数値項目02
+				,{"ParaInt03"	,"1","0",""	,"0"}				//パラメータ数値項目03
+				,{"ParaInt04"	,"1","0",""	,"0"}				//パラメータ数値項目04
+				,{"ParaInt05"	,"1","0",""	,"0"}				//パラメータ数値項目05
+				,{"ParaInt06"	,"1","0",""	,"0"}				//パラメータ数値項目06
+				,{"ParaInt07"	,"1","0",""	,"0"}				//パラメータ数値項目07
+				,{"ParaInt08"	,"1","0",""	,"0"}				//パラメータ数値項目08
+				,{"ParaInt09"	,"1","0",""	,"0"}				//パラメータ数値項目09
+				,{"ParaInt10"	,"1","0",""	,"0"}				//パラメータ数値項目10
+				,{"EntryDate"	,"1","0",""	,now_dtm}			//登録日
+				,{"UpdateDate"	,"1","0",""	,now_dtm}			//更新日
+				,{"EntryUser"	,"1","0",""	,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//登録者
+				,{"UpdateUser"	,"1","0",""	,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//更新者
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringArrivalPara,tgt_table,TgtDB,non_msg_fg);
+		
+		Object[][] ParameterDefaultTroughLoc = M100_ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("DefaultTroughLoc",0);
+		if(0<ParameterDefaultTroughLoc.length) {
+			DefaultTroughLoc 		= (String)ParameterDefaultTroughLoc[0][M100_ParameterMstWankoRt.ColParaTxt02];
+		}
+		Object[][] ParameterDefaultArrivalLoc = M100_ParameterMstWankoRt.ParameterMstWankoRtFromParaCd("DefaultArrivalLoc",0);
+		if(0<ParameterDefaultArrivalLoc.length) {
+			DefaultArrivalLoc		= (String)ParameterDefaultArrivalLoc[0][M100_ParameterMstWankoRt.ColParaTxt02];
+		}
 	}
 
 	public static void WhList() {

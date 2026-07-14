@@ -40,7 +40,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		if(null==TgtWhCd		) {TgtWhCd= "";}
 		if(null==TgSPCd			) {TgSPCd= "";}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,800,800,"Corgi00仕入先マスタ登録・修正","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,800,800,"Corgi00仕入先マスタ登録・修正　WM100_SupplierMst_01_RenewAndCreate","");
 		JLabel userinfo 	= B100_FrameParts.UserInfo();
 		JButton exit_btn 	= B100_FrameParts.ExitBtn();
 		JButton entry_btn 	= B100_FrameParts.EntryBtn();
@@ -242,7 +242,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		JButton DeliverySerachBtn = B100_FrameParts.BtnSet(	480,625,100,20,"届先検索",11);
 		main_fm.add(DeliverySerachBtn);
 		
-		final JFrame DeliverySerach_fm 		= B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00仕入先マスタ登録・修正(届先検索)","");
+		final JFrame DeliverySerach_fm 		= B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00仕入先マスタ登録・修正(届先検索)　WM100_SupplierMst_01_RenewAndCreate","");
 		JLabel DeliverySerach_userinfo 		= B100_FrameParts.UserInfo();
 		JButton DeliverySerach_exit_btn 	= B100_FrameParts.ExitBtn();
 		JButton DeliverySerach_entry_btn 	= B100_FrameParts.EntryBtn();

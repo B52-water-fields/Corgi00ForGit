@@ -146,6 +146,133 @@ public class M100_ParameterMstRtNyanko{
 		
 		return RtSettingParameterMstRtNANKO;
 	}
+	public static Object[][] ParameterMstRtFromParaCdAndSeq(String ParaCd,int Seq){
+		//現パラメータ情報をパラメータコード・シーケンシャル番号指定で取得する
+		
+		if(null==ParaCd) {ParaCd="";}
+		
+		ArrayList<String> SearchParaCd			= new ArrayList<String>();
+		ArrayList<Integer> SearchParaCdSeqStr	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaCdSeqEnd	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaName		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt01		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt02		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt03		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt04		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt05		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt06		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt07		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt08		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt09		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt10		= new ArrayList<String>();
+		ArrayList<Integer> SearchParaInt01Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt01End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10End	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaTxtAll		= new ArrayList<String>();
+		Boolean AllSearch = false;
+		
+		SearchParaCd.add(ParaCd);
+		
+		SearchParaCdSeqStr.add(Seq);
+		SearchParaCdSeqEnd.add(Seq);
+		
+		
+		
+		Object[][] ParameterMstRtNANKO = M100_ParameterMstRtNyanko.ParameterMstRtNANKO(
+				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
+				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
+				SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
+				SearchParaInt01Str,SearchParaInt02Str,SearchParaInt03Str,SearchParaInt04Str,SearchParaInt05Str,
+				SearchParaInt06Str,SearchParaInt07Str,SearchParaInt08Str,SearchParaInt09Str,SearchParaInt10Str,
+				SearchParaInt01End,SearchParaInt02End,SearchParaInt03End,SearchParaInt04End,SearchParaInt05End,
+				SearchParaInt06End,SearchParaInt07End,SearchParaInt08End,SearchParaInt09End,SearchParaInt10End,
+				SearchParaTxtAll,
+				AllSearch);
+		return ParameterMstRtNANKO;
+	}
+	
+	public static Object[][] ParameterMstRtFromParaCdAndSeq(String ParaCd,int SeqStr,int SeqEnd,Boolean SeqAllTgt){
+		//パラメータ情報をパラメータコード・シーケンシャル番号範囲指定で取得する　Boolean SeqAllTgt = true　シーケンシャル番号気にせず全部取得
+		if(null==ParaCd) {ParaCd="";}
+		
+		ArrayList<String> SearchParaCd			= new ArrayList<String>();
+		ArrayList<Integer> SearchParaCdSeqStr	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaCdSeqEnd	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaName		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt01		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt02		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt03		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt04		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt05		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt06		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt07		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt08		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt09		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt10		= new ArrayList<String>();
+		ArrayList<Integer> SearchParaInt01Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt01End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10End	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaTxtAll		= new ArrayList<String>();
+		Boolean AllSearch = false;
+		
+		SearchParaCd.add(ParaCd);
+		
+		if(SeqAllTgt) {
+			
+		}else {
+			SearchParaCdSeqStr.add(SeqStr);
+			SearchParaCdSeqEnd.add(SeqEnd);
+		}
+		
+		
+		Object[][] ParameterMstRtNANKO = M100_ParameterMstRtNyanko.ParameterMstRtNANKO(
+				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
+				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
+				SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
+				SearchParaInt01Str,SearchParaInt02Str,SearchParaInt03Str,SearchParaInt04Str,SearchParaInt05Str,
+				SearchParaInt06Str,SearchParaInt07Str,SearchParaInt08Str,SearchParaInt09Str,SearchParaInt10Str,
+				SearchParaInt01End,SearchParaInt02End,SearchParaInt03End,SearchParaInt04End,SearchParaInt05End,
+				SearchParaInt06End,SearchParaInt07End,SearchParaInt08End,SearchParaInt09End,SearchParaInt10End,
+				SearchParaTxtAll,
+				AllSearch);
+		return ParameterMstRtNANKO;
+	}
+			
+	
 	
 	public static Object[][] ParameterMstRtNANKO(
 			ArrayList<String> SearchParaCd,	ArrayList<Integer> SearchParaCdSeqStr,ArrayList<Integer> SearchParaCdSeqEnd,ArrayList<String> SearchParaName,

@@ -31,7 +31,7 @@ public class WM100_UserMst_01_RenewAndCreate{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,800,"Corgi00ユーザー登録・修正","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,500,800,"Corgi00ユーザー登録・修正　WM100_UserMst_01_RenewAndCreate","");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();

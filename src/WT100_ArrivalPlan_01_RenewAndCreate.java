@@ -39,7 +39,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		if("".equals(TgtWhCd)) {TgtWhCd	= A00000_Main.ClWh;}
 		if("".equals(TgtClCd)) {TgtClCd	= A00000_Main.ClCd;}
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,800,"Corgi00入荷予定登録・修正","NK");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,800,"Corgi00入荷予定登録・修正　WT100_ArrivalPlan_01_RenewAndCreate","NK");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		JButton entry_btn = B100_FrameParts.EntryBtn();
@@ -469,7 +469,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 			}
 		}
 
-		final JFrame ItemSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,700,600,"Corgi00入荷予定登録・修正　商品検索","NK");
+		final JFrame ItemSearch_fm = B100_FrameParts.FrameCreate(x+20,y+20,700,600,"Corgi00入荷予定登録・修正　商品検索　WT100_ArrivalPlan_01_RenewAndCreate","NK");
 		JLabel ItemSearchuserinfo = B100_FrameParts.UserInfo();
 		JButton ItemSearchexit_btn = B100_FrameParts.ExitBtn();
 		JButton ItemSearchentry_btn = B100_FrameParts.EntryBtn();

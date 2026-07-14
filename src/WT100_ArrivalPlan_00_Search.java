@@ -98,7 +98,7 @@ public class WT100_ArrivalPlan_00_Search{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		MsViewMode = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,800,"Corgi00入荷予定検索","NK");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,800,"Corgi00入荷予定検索　WT100_ArrivalPlan_00_Search","NK");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		
@@ -609,7 +609,7 @@ public class WT100_ArrivalPlan_00_Search{
 		//実績登録用エクセル出力ボタン
 		JButton ActualEntryExcelCreateBtn = B100_FrameParts.BtnSet(	650,660,130,20,"実績登録用Excel出力",9);
 		main_fm.add(ActualEntryExcelCreateBtn);
-		//実績登録用エクセル出力ボタン
+		//実績登録用エクセル取込ボタン
 		JButton ActualEntryExcelEntryBtn = B100_FrameParts.BtnSet(		650,685,130,20,"実績登録用Excel取込",9);
 		main_fm.add(ActualEntryExcelEntryBtn);
 		
@@ -627,7 +627,7 @@ public class WT100_ArrivalPlan_00_Search{
 		/***********************************************
 		詳細表示用
 		***********************************************/
-		final JFrame Ms_fm = B100_FrameParts.FrameCreate(x+20,y+20,800,830,"Corgi00入荷予定検索","NK");
+		final JFrame Ms_fm = B100_FrameParts.FrameCreate(x+20,y+20,800,830,"Corgi00入荷予定検索　WT100_ArrivalPlan_00_Search","NK");
 		JLabel Msuserinfo = B100_FrameParts.UserInfo();
 		JButton Msexit_btn = B100_FrameParts.ExitBtn();
 		
@@ -1020,15 +1020,15 @@ public class WT100_ArrivalPlan_00_Search{
 				if(RenewFg) {
 					RenewFg = false;
 					
-					int GetMsNo				=B100_TextControl.TextToInt(TBMs_MsNo.getText());			//明細番号
-					String GetItemCd		=B100_TextControl.Trim(TBMs_ItemCd.getText());				//商品コード
-					String GetItemName		=B100_TextControl.Trim(TBMs_ItemName.getText());			//商品名
-					String Getlot			=B100_TextControl.Trim(TBMs_lot.getText());					//ロット
-					String GetExpDate		=B100_TextControl.TextToDate(TBMs_ExpDate.getText());		//消費期限
-					int GetPlanQty			=B100_TextControl.TextToInt(TBMs_PlanQty.getText());		//予定数量
-					int GetActualQty		=B100_TextControl.TextToInt(TBMs_ActualQty.getText());		//実績数
-					String GetCom01			=B100_TextControl.Trim(TBMs_Com01.getText());				//コメント1
-					String GetCom02			=B100_TextControl.Trim(TBMs_Com02.getText());				//コメント2
+					int GetMsNo				= B100_TextControl.TextToInt(TBMs_MsNo.getText());			//明細番号
+					String GetItemCd		= B100_TextControl.Trim(TBMs_ItemCd.getText());				//商品コード
+					String GetItemName		= B100_TextControl.Trim(TBMs_ItemName.getText());			//商品名
+					String Getlot			= B100_TextControl.Trim(TBMs_lot.getText());					//ロット
+					String GetExpDate		= B100_TextControl.TextToDate(TBMs_ExpDate.getText());		//消費期限
+					int GetPlanQty			= B100_TextControl.TextToInt(TBMs_PlanQty.getText());		//予定数量
+					int GetActualQty		= B100_TextControl.TextToInt(TBMs_ActualQty.getText());		//実績数
+					String GetCom01			= B100_TextControl.Trim(TBMs_Com01.getText());				//コメント1
+					String GetCom02			= B100_TextControl.Trim(TBMs_Com02.getText());				//コメント2
 					int SetMsNo = -1;
 					
 					//不正入力怒る
@@ -1881,6 +1881,64 @@ public class WT100_ArrivalPlan_00_Search{
 				}
 			}
 		});
+		
+		//実績登録用エクセル出力ボタン押下時の挙動
+		ActualEntryExcelCreateBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					String TgtWhCd	= "";
+					String TgtClCd	= "";
+					ArrayList<String>TgtArrivalNo = new ArrayList<String>();
+					
+					int RowCount = MainFmTableModel.getRowCount();
+					boolean KickFg = true;
+					for(int i=0;i<RowCount;i++) {
+						if(!"".equals(TgtClCd) && KickFg) {
+							if(!TgtClCd.equals(""+MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClCd))) {
+								KickFg = false;
+							}
+						}
+						
+						TgtWhCd = ""+MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClWh);
+						TgtClCd = ""+MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColClCd);
+						TgtArrivalNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_ArrivalPlanHdRt.ColArrNo));
+					}
+					if(!KickFg) {
+						JOptionPane.showMessageDialog(null, "対象荷主は一荷主じゃなきゃ駄目っす");
+					}
+					
+					if(null!=TgtArrivalNo&&0<TgtArrivalNo.size() && KickFg) {
+						WT100_Arrival_30_ExcelEntryOutPut.ArrivalExcelOutPut(TgtWhCd,TgtClCd,TgtArrivalNo);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		//実績登録用エクセル取込ボタン押下時の挙動
+		ActualEntryExcelEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String MSG = "エクセルファイル選択";
+					String[] file_type = {".xlsx"};
+					String file_type_name = "エクセルファイル";
+					String Selected = B100_FileSelect.FileSelect(MSG,file_type,file_type_name);
+					
+					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WT100_Arrival_31_ExcelEntryInPut.ParameterMstNyankoExcelEntry(0,0,Selected);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
 		
 		//エクセル出力ボタン押下時の挙動
 		ExcelBtn.addActionListener(new AbstractAction(){
