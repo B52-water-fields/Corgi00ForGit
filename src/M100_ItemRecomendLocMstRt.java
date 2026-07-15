@@ -514,7 +514,7 @@ public class M100_ItemRecomendLocMstRt{
 			//推奨ロケマスタ由来で紹鴎取得できなければ商品マスタ由来で情報取得
 			ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 			SearchItemCd = RetryItemList;	//商品コード
-			ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+			ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
 			ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
 			ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
 			ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
@@ -539,7 +539,7 @@ public class M100_ItemRecomendLocMstRt{
 			Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
 					SearchClGpCd,			//荷主グループコード
 					SearchItemCd,			//商品コード
-					SearchCLItemCd,			//荷主商品コード
+					SearchClItemCd,			//荷主商品コード
 					SearchItemName,			//商品名
 					SearchDeliveryTypeCd01,	//運送タイプコード01
 					SearchDeliveryTypeCd02,	//運送タイプコード02

@@ -9,7 +9,7 @@ public class M100_ItemComversionMstRt{
 	ArrayList<String> SearchClGpCd = new ArrayList<String>();		//荷主グループコード
 	ArrayList<String> SearchClCd = new ArrayList<String>();			//荷主コード
 	ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
-	ArrayList<String> SearchCLItemCd = new ArrayList<String>();		//荷主商品コード
+	ArrayList<String> SearchClItemCd = new ArrayList<String>();		//荷主商品コード
 	ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名
 	boolean AllSearch = false;
 	
@@ -17,7 +17,7 @@ public class M100_ItemComversionMstRt{
 			SearchClGpCd,			//荷主グループコード
 			SearchClCd,				//荷主コード
 			SearchItemCd,			//商品コード
-			SearchCLItemCd,			//荷主商品コード
+			SearchClItemCd,			//荷主商品コード
 			SearchItemName,			//商品名
 			AllSearch);
 			
@@ -95,14 +95,14 @@ public class M100_ItemComversionMstRt{
 			ArrayList<String> SearchClGpCd,				//荷主グループコード
 			ArrayList<String> SearchClCd,				//荷主コード
 			ArrayList<String> SearchItemCd,				//商品コード
-			ArrayList<String> SearchCLItemCd,			//荷主商品コード
+			ArrayList<String> SearchClItemCd,			//荷主商品コード
 			ArrayList<String> SearchItemName,			//商品名
 			boolean AllSearch){
 		
 		SearchClGpCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
 		SearchClCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
 		SearchItemCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);
-		SearchCLItemCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchCLItemCd);
+		SearchClItemCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchClItemCd);
 		SearchItemName	= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);
 		
 		Object[][] rt = new Object[0][RtItemComversionMstRt().length];
@@ -176,10 +176,10 @@ public class M100_ItemComversionMstRt{
 			}
 			sql = sql + ")";
 		}
-		if(null!=SearchCLItemCd&&0<SearchCLItemCd.size()){
+		if(null!=SearchClItemCd&&0<SearchClItemCd.size()){
 			SearchKick = true;
 			sql = sql + " and(";
-			for(int i=0;i<SearchCLItemCd.size();i++){
+			for(int i=0;i<SearchClItemCd.size();i++){
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0062_ItemComversionMst.ClItemCd = ?";
 			}
@@ -226,10 +226,10 @@ public class M100_ItemComversionMstRt{
 						stmt01.setString(StmtCount, ""+SearchItemCd.get(i)+"");
 					}
 				}
-				if(null!=SearchCLItemCd&&0<SearchCLItemCd.size()){
-					for(int i=0;i<SearchCLItemCd.size();i++){
+				if(null!=SearchClItemCd&&0<SearchClItemCd.size()){
+					for(int i=0;i<SearchClItemCd.size();i++){
 						StmtCount = StmtCount+1;
-						stmt01.setString(StmtCount, ""+SearchCLItemCd.get(i)+"");
+						stmt01.setString(StmtCount, ""+SearchClItemCd.get(i)+"");
 					}
 				}
 				if(null!=SearchItemName&&0<SearchItemName.size()){

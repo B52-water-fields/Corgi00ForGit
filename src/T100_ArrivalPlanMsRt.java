@@ -288,6 +288,80 @@ public class T100_ArrivalPlanMsRt{
 			ArrayList<String> SearchEntryUser,			//登録者
 			ArrayList<String> SearchUpdateUser,			//更新者
 			boolean AllSearch){
+		
+		//日付系最小は念のため00:00:00扱い
+		if(null!=SearchPlanDateMin && 0<SearchPlanDateMin.size()){
+			for(int i=0;i<SearchPlanDateMin.size();i++){
+				String SetString = B100_DateTimeControl.DateFormat(SearchPlanDateMin.get(i));
+				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchPlanDateMin.set(i,SetString);
+			}
+		}
+		if(null!=SearchHdActualDateMin && 0<SearchHdActualDateMin.size()){
+			for(int i=0;i<SearchHdActualDateMin.size();i++){
+				String SetString = B100_DateTimeControl.DateFormat(SearchHdActualDateMin.get(i));
+				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchHdActualDateMin.set(i,SetString);
+			}
+		}
+		if(null!=SearchExpDateMin && 0<SearchExpDateMin.size()){
+			for(int i=0;i<SearchExpDateMin.size();i++){
+				String SetString = B100_DateTimeControl.DateFormat(SearchExpDateMin.get(i));
+				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchExpDateMin.set(i,SetString);
+			}
+		}
+		if(null!=SearchActualDateMin && 0<SearchActualDateMin.size()){
+			for(int i=0;i<SearchActualDateMin.size();i++){
+				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMin.get(i));
+				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchActualDateMin.set(i,SetString);
+			}
+		}
+		
+		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのまま
+		if(null!=SearchPlanDateMax && 0<SearchPlanDateMax.size()){				//ヘッダ入荷予定日最大
+			for(int i=0;i<SearchPlanDateMax.size();i++){
+				String SetString = B100_DateTimeControl.DateFormat(SearchPlanDateMax.get(i));
+				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
+				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchPlanDateMax.set(i,SetString);
+			}
+		}
+		if(null!=SearchHdActualDateMax && 0<SearchHdActualDateMax.size()){		//ヘッダ入荷実績日最大
+			for(int i=0;i<SearchHdActualDateMax.size();i++){
+				String SetString = B100_DateTimeControl.DateFormat(SearchHdActualDateMax.get(i));
+				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
+				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchHdActualDateMax.set(i,SetString);
+			}
+		}
+		if(null!=SearchExpDateMax && 0<SearchExpDateMax.size()){				//消費期限最大
+			for(int i=0;i<SearchExpDateMax.size();i++){
+				String SetString = B100_DateTimeControl.DateFormat(SearchExpDateMax.get(i));
+				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
+				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchExpDateMax.set(i,SetString);
+			}
+		}
+		if(null!=SearchActualDateMax && 0<SearchActualDateMax.size()){			//入荷日最大
+			for(int i=0;i<SearchActualDateMax.size();i++){
+				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMax.get(i));
+				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
+				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+				SearchActualDateMax.set(i,SetString);
+			}
+		}
+		
+		
 		SearchClWh				= B100_ArrayListControl.ArryListStringUniqueList(SearchClWh);			//ヘッダ担当倉庫
 		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);			//ヘッダ荷主CD
 		SearchCLName01			= B100_ArrayListControl.ArryListStringUniqueList(SearchCLName01);		//ヘッダ荷主名
@@ -331,43 +405,9 @@ public class T100_ArrivalPlanMsRt{
 		SearchEntryUser			= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryUser);		//登録者
 		SearchUpdateUser		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);		//更新者
 		
-		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのまま
-		if(null!=SearchPlanDateMax && 0<SearchPlanDateMax.size()){				//ヘッダ入荷予定日最大
-			for(int i=0;i<SearchPlanDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchPlanDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchPlanDateMax.set(i,SetString);
-			}
-		}
-		if(null!=SearchHdActualDateMax && 0<SearchHdActualDateMax.size()){		//ヘッダ入荷実績日最大
-			for(int i=0;i<SearchHdActualDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchHdActualDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchHdActualDateMax.set(i,SetString);
-			}
-		}
-		if(null!=SearchExpDateMax && 0<SearchExpDateMax.size()){				//消費期限最大
-			for(int i=0;i<SearchExpDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchExpDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchExpDateMax.set(i,SetString);
-			}
-		}
-		if(null!=SearchActualDateMax && 0<SearchActualDateMax.size()){			//入荷日最大
-			for(int i=0;i<SearchActualDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchActualDateMax.set(i,SetString);
-			}
-		}
+		//商品変換マスタを元に荷主商品コードを商品コードに変換する
+		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClGpCD,SearchClCd,SearchClItemCd);
+
 		Object[][] rt = new Object[0][RtArrivalPlanMsRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
@@ -431,6 +471,16 @@ public class T100_ArrivalPlanMsRt{
 					+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP"
 					+ " on("
 					+ " KM0030_CLIENTMST.ClGpCd = KM0031_CLIENT_GROUP.ClGpCD"
+					+ ")\n"
+					+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0060_ITEMMST"
+					+ " on("
+					+ " KM0030_CLIENTMST.ClGpCD = KM0060_ITEMMST.ClGpCd"
+					+ " and WW0011ArrivalPlanMs.ItemCd = KM0060_ITEMMST.ItemCd"
+					+ ")\n"
+					+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0061_ITEMMSTSUB \n"
+					+ " on("
+					+ " KM0060_ITEMMST.ClGpCd = KM0061_ITEMMSTSUB.ClGpCd"
+					+ " and KM0060_ITEMMST.ItemCd = KM0061_ITEMMSTSUB.ItemCd"
 					+ ")\n"
 					+" where 1=1 \n";
 		
@@ -635,7 +685,13 @@ public class T100_ArrivalPlanMsRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchClItemCd.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " WW0011ArrivalPlanMs.ClItemCd = ?";
+				sql = sql + " KM0060_ITEMMST.ClItemCd = ?";
+			}
+			if(null!=SearchItemCdFromClItem && 0< SearchItemCdFromClItem.length) {
+				for(int i=0;i<SearchItemCdFromClItem.length;i++) {
+					sql = sql + " or (WW0010ArrivalPlanHd.ClCd = ?";
+					sql = sql + "  and WW0011ArrivalPlanMs.ItemCd = ?)";
+				}
 			}
 			sql = sql + ")";
 		}
@@ -962,6 +1018,14 @@ public class T100_ArrivalPlanMsRt{
 						StmtCount = StmtCount+1;
 						stmt01.setString(StmtCount, ""+SearchClItemCd.get(i)+"");
 					}
+					if(null!=SearchItemCdFromClItem && 0< SearchItemCdFromClItem.length) {
+						for(int i=0;i<SearchItemCdFromClItem.length;i++) {
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchItemCdFromClItem[i][M100_ItemComversionMstRt.ColClCd]+"");
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchItemCdFromClItem[i][M100_ItemComversionMstRt.ColItemCd]+"");
+						}
+					}
 				}
 				if(null!=SearchJanCd && 0<SearchJanCd.size()){						//JANCD（バラ）
 					for(int i=0;i<SearchJanCd.size();i++){
@@ -1099,4 +1163,24 @@ public class T100_ArrivalPlanMsRt{
 		}
 		return rt;
 	}
+	private static Object[][] SearchItemCdFromClItem(ArrayList<String> SearchClGpCd,ArrayList<String> SearchClCd,ArrayList<String> SearchClItemCd){
+		//ArrayList<String> SearchClGpCd = new ArrayList<String>();		//荷主グループコード
+		//ArrayList<String> SearchClCd = new ArrayList<String>();			//荷主コード
+		ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
+		//ArrayList<String> SearchClItemCd = new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名
+		boolean AllSearch = false;
+		Object[][] ItemComversionMstRt = null;
+		if(null!=SearchClItemCd && 0<SearchClItemCd.size()) {
+			ItemComversionMstRt = M100_ItemComversionMstRt.ItemComversionMstRt(
+					SearchClGpCd,			//荷主グループコード
+					SearchClCd,				//荷主コード
+					SearchItemCd,			//商品コード
+					SearchClItemCd,			//荷主商品コード
+					SearchItemName,			//商品名
+					AllSearch);
+		}
+		return ItemComversionMstRt;
+	}
+	
 }

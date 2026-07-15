@@ -492,7 +492,7 @@ public class Tools100_StockQtyControl{
 		String sql = "select "
 				+"(KM0060_ITEMMST.ClGpCd)     as ClGpCd,\n"					//荷主グループコード
 				+"(KM0060_ITEMMST.ItemCd)     as ItemCd,\n"					//商品コード
-				+"(KM0060_ITEMMST.CLItemCd)   as CLItemCd,\n"				//荷主商品コード
+				+"(KM0060_ITEMMST.ClItemCd)   as ClItemCd,\n"				//荷主商品コード
 				+"(KM0060_ITEMMST.ItemName01) as ItemName01,\n"				//商品表記名
 				+"(KM0060_ITEMMST.ItemName02) as ItemName02,\n"				//商品正式名
 				+"(KM0060_ITEMMST.ItemName03) as ItemName03,\n"				//商品略名

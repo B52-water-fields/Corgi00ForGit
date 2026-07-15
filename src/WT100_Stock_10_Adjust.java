@@ -2975,7 +2975,7 @@ public class WT100_Stock_10_Adjust{
 				StockData[T100_StockRt.ColItemName01]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName01];		//商品表記名
 				StockData[T100_StockRt.ColItemName02]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName02];		//商品正式名
 				StockData[T100_StockRt.ColItemName03]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemName03];		//商品略名
-				StockData[T100_StockRt.ColClItemCd]		= (String)ItemMstRt[0][M100_ItemMstRt.ColCLItemCd];		//荷主商品コード
+				StockData[T100_StockRt.ColClItemCd]		= (String)ItemMstRt[0][M100_ItemMstRt.ColClItemCd];		//荷主商品コード
 				StockData[T100_StockRt.ColJanCd]			= (String)ItemMstRt[0][M100_ItemMstRt.ColJanCd];			//ソースマーク_BCD（バラ）
 				StockData[T100_StockRt.ColItemMdNo]		= (String)ItemMstRt[0][M100_ItemMstRt.ColItemMDNo];		//商品型番
 				StockData[T100_StockRt.ColCtUnitQty]		= (int)ItemMstRt[0][M100_ItemMstRt.ColCtQty];				//カートン入数
@@ -3208,7 +3208,7 @@ public class WT100_Stock_10_Adjust{
 									){
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
-		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
 		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
 		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
 		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
@@ -3235,7 +3235,7 @@ public class WT100_Stock_10_Adjust{
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
-				SearchCLItemCd,			//荷主商品コード
+				SearchClItemCd,			//荷主商品コード
 				SearchItemName,			//商品名
 				SearchDeliveryTypeCd01,	//運送タイプコード01
 				SearchDeliveryTypeCd02,	//運送タイプコード02
@@ -3261,7 +3261,7 @@ public class WT100_Stock_10_Adjust{
 	private static Object[][] ItemMstRt(String ClGpCd,String ItemCd){
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
-		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
 		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
 		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
 		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
@@ -3287,7 +3287,7 @@ public class WT100_Stock_10_Adjust{
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
-				SearchCLItemCd,			//荷主商品コード
+				SearchClItemCd,			//荷主商品コード
 				SearchItemName,			//商品名
 				SearchDeliveryTypeCd01,	//運送タイプコード01
 				SearchDeliveryTypeCd02,	//運送タイプコード02

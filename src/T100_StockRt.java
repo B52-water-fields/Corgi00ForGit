@@ -158,7 +158,7 @@ public class T100_StockRt{
 	public static Object[][] RtStockRt(){
 		Object[][] RtStockRt = {
 				 {"ClCd"			,ColClCd			,"String"	,"荷主コード"					,"key"}
-				,{"CLName"			,ColCLName			,"String"	,"荷主表記名"						,""}
+				,{"CLName"			,ColCLName			,"String"	,"荷主表記名"					,""}
 				,{"WhCd"			,ColWhCd			,"String"	,"倉庫コード"					,"key"}
 				,{"ClWHName"		,ColClWHName		,"String"	,"担当倉庫名"					,""}
 				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループCD"				,""}
@@ -174,8 +174,8 @@ public class T100_StockRt{
 				,{"ShipPlanQty"		,ColShipPlanQty	,"int"		,"引当済総数"					,""}
 				,{"PossibleQty"		,ColPossibleQty	,"int"		,"出荷可能総数"					,""}
 				,{"ItemName"		,ColItemName		,"String"	,"商品名"						,""}
-				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"						,""}
-				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"						,""}
+				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"					,""}
+				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"					,""}
 				,{"ItemName03"		,ColItemName03	,"String"	,"商品略名"						,""}
 				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"				,""}
 				,{"JanCd"			,ColJanCd			,"String"	,"バラBCD"						,""}
@@ -295,7 +295,9 @@ public class T100_StockRt{
 		}
 		
 		//荷主商品コードを元に商品コードを絞り込む
-		ArrayList<String> SearchItemCdFromClItemCd = new ArrayList<String>();
+		Object[][] SearchItemCdFromClItem = SearchItemCdFromClItem(SearchClGpCD,SearchClCd,SearchClItemCd);
+		/*
+		Object[][] SearchItemCdFromClItemCd
 		if(null==SearchClItemCd||0==SearchClItemCd.size()) {
 			
 		}else {
@@ -355,7 +357,7 @@ public class T100_StockRt{
 				}
 			}
 		}
-		
+		*/
 		
 		Object[][] rt = new Object[0][RtStockRt().length];
 		boolean SearchKick = false;
@@ -428,12 +430,18 @@ public class T100_StockRt{
 				+ ")\n"
 				+ " where 1=1\n";
 		
-		if(null!=SearchItemCdFromClItemCd && 0<SearchItemCdFromClItemCd.size()){//荷主商品コード
+		if(null!=SearchClItemCd && 0<SearchClItemCd.size()){
 			SearchKick = true;
 			sql = sql + " and(";
-			for(int i=0;i<SearchItemCdFromClItemCd.size();i++){
+			for(int i=0;i<SearchClItemCd.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " WW0015Stock.ItemCd = ?";
+				sql = sql + " KM0060_ITEMMST.ClItemCd = ?";
+			}
+			if(null!=SearchItemCdFromClItem && 0< SearchItemCdFromClItem.length) {
+				for(int i=0;i<SearchItemCdFromClItem.length;i++) {
+					sql = sql + " or (WW0015Stock.ClCd = ?";
+					sql = sql + "  and WW0015Stock.ItemCd = ?)";
+				}
 			}
 			sql = sql + ")\n";
 		}
@@ -641,10 +649,18 @@ public class T100_StockRt{
 				stmt01 = A100_DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
 				
-				if(null!=SearchItemCdFromClItemCd && 0<SearchItemCdFromClItemCd.size()){						//荷主商品コード
-					for(int i=0;i<SearchItemCdFromClItemCd.size();i++){
+				if(null!=SearchClItemCd && 0<SearchClItemCd.size()){
+					for(int i=0;i<SearchClItemCd.size();i++){
 						StmtCount = StmtCount+1;
-						stmt01.setString(StmtCount, ""+SearchItemCdFromClItemCd.get(i)+"");
+						stmt01.setString(StmtCount, ""+SearchClItemCd.get(i)+"");
+					}
+					if(null!=SearchItemCdFromClItem && 0< SearchItemCdFromClItem.length) {
+						for(int i=0;i<SearchItemCdFromClItem.length;i++) {
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchItemCdFromClItem[i][M100_ItemComversionMstRt.ColClCd]+"");
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchItemCdFromClItem[i][M100_ItemComversionMstRt.ColItemCd]+"");
+						}
 					}
 				}
 				if(null!=SearchClCd && 0<SearchClCd.size()){							//荷主コード
@@ -922,5 +938,24 @@ public class T100_StockRt{
 			A100_DbConnect.close();
 		}
 		return rt;
+	}
+	private static Object[][] SearchItemCdFromClItem(ArrayList<String> SearchClGpCd,ArrayList<String> SearchClCd,ArrayList<String> SearchClItemCd){
+		//ArrayList<String> SearchClGpCd = new ArrayList<String>();		//荷主グループコード
+		//ArrayList<String> SearchClCd = new ArrayList<String>();			//荷主コード
+		ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
+		//ArrayList<String> SearchClItemCd = new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名
+		boolean AllSearch = false;
+		Object[][] ItemComversionMstRt = null;
+		if(null!=SearchClItemCd && 0<SearchClItemCd.size()) {
+			ItemComversionMstRt = M100_ItemComversionMstRt.ItemComversionMstRt(
+					SearchClGpCd,			//荷主グループコード
+					SearchClCd,				//荷主コード
+					SearchItemCd,			//商品コード
+					SearchClItemCd,			//荷主商品コード
+					SearchItemName,			//商品名
+					AllSearch);
+		}
+		return ItemComversionMstRt;
 	}
 }

@@ -34,8 +34,8 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		main_fm.add(entry_btn);
 		
 		JLabel LB_PlanDate 	= B100_FrameParts.JLabelSet(  0, 50,100,20,"入荷予定日:"	,11,1);
-		JLabel LB_SpCd 		= B100_FrameParts.JLabelSet(210, 50, 90,20,"仕入先CD:"	,11,1);
-		JLabel LB_ClWh 		= B100_FrameParts.JLabelSet(560, 50, 90,20,"担当倉庫:"	,11,1);
+		JLabel LB_SpCd 		= B100_FrameParts.JLabelSet(210, 50, 90,20,"仕入先CD:"		,11,1);
+		JLabel LB_ClWh 		= B100_FrameParts.JLabelSet(560, 50, 90,20,"担当倉庫:"		,11,1);
 		JLabel LB_ClCd 		= B100_FrameParts.JLabelSet(560, 75, 90,20,"荷主CD:"		,11,1);
 		
 		final JFormattedTextField TB_PlanDate		= B100_FrameParts.JFormattedTextFieldSet(	100,50, 70,20,Nextday	,11,0,"YYYY/MM/DD");		//入荷予定日
@@ -64,6 +64,10 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		main_fm.add(TB_ClWh);
 		main_fm.add(TB_ClCd);
 		main_fm.add(TB_SpCd);
+		
+		JLabel LB_Msg		= B100_FrameParts.JLabelSet(  30,75,500,20,"バラ以外の荷主商品コードを指定した場合でも数量はバラ数量を指定してください"		,11,1);
+		LB_Msg.setForeground(B100_FrameParts.SelectColer("Red"));
+		main_fm.add(LB_Msg);
 		
 		JLabel LB_ClArrNo	= B100_FrameParts.JLabelSet(  30,100,100,20,"荷主予定番号"		,11,2);
 		JLabel LB_ClItemCd	= B100_FrameParts.JLabelSet( 150,100,100,20,"荷主商品コード"	,11,2);

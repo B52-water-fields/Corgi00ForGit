@@ -1,4 +1,5 @@
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -139,7 +140,67 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
+				ArrayList<String> SearchClWh=new ArrayList<String>();
+				ArrayList<String> SearchClCd=new ArrayList<String>();
+				ArrayList<String> SearchClGpCD=new ArrayList<String>();			//ヘッダ荷主グループCD
+				ArrayList<String> SearchArrNo=new ArrayList<String>();			//入荷予定NO
+				ArrayList<Integer> SearchArrCountMin=new ArrayList<Integer>();	//入荷予定枝番最小
+				ArrayList<Integer> SearchArrCountMax=new ArrayList<Integer>();	//入荷予定枝番最大
+				ArrayList<String> SearchClArrNo=new ArrayList<String>();		//荷主予定番号
+				ArrayList<String> SearchPlanDateMin=new ArrayList<String>();	//入荷予定日最小
+				ArrayList<String> SearchPlanDateMax=new ArrayList<String>();	//入荷予定日最大
+				ArrayList<String> SearchActualDateMin=new ArrayList<String>();	//入荷実績日最小
+				ArrayList<String> SearchActualDateMax=new ArrayList<String>();	//入荷実績日最大
+				ArrayList<String> SearchSpCd=new ArrayList<String>();			//仕入先CD
+				ArrayList<String> SearchCom=new ArrayList<String>();			//コメント
+				ArrayList<String> SearchEntryDateMin=new ArrayList<String>();	//登録日最小
+				ArrayList<String> SearchEntryDateMax=new ArrayList<String>();	//登録日最大
+				ArrayList<String> SearchUpdateDateMin=new ArrayList<String>();	//更新日最小
+				ArrayList<String> SearchUpdateDateMax=new ArrayList<String>();	//更新日最大
+				ArrayList<String> SearchEntryUser=new ArrayList<String>();		//登録者
+				ArrayList<String> SearchUpdateUser=new ArrayList<String>();		//更新者
 				
+				//明細WW0013ArrivaMs由来
+				ArrayList<String> SearchItemCd=new ArrayList<String>();			//商品コード
+				ArrayList<String> SearchClItemCd=new ArrayList<String>();		//荷主商品コード
+				ArrayList<String> SearchItemName=new ArrayList<String>();		//商品名
+				ArrayList<String> SearchLot=new ArrayList<String>();			//ロット
+				ArrayList<String> SearchExpDateMin=new ArrayList<String>();		//消費期限最小
+				ArrayList<String> SearchExpDateMax=new ArrayList<String>();		//消費期限最大
+				
+				
+				
+				SearchClItemCd.add("123");
+				SearchClCd.add("AT0000001");
+				T100_ArrivalMsRt.ArrivalMsRt(
+						SearchClWh,			//担当倉庫
+						SearchClCd,			//荷主CD
+						SearchClGpCD,			//ヘッダ荷主グループCD
+						SearchArrNo,			//入荷予定NO
+						SearchArrCountMin,	//入荷予定枝番最小
+						SearchArrCountMax,	//入荷予定枝番最大
+						SearchClArrNo,		//荷主予定番号
+						SearchPlanDateMin,	//入荷予定日最小
+						SearchPlanDateMax,	//入荷予定日最大
+						SearchActualDateMin,	//入荷実績日最小
+						SearchActualDateMax,	//入荷実績日最大
+						SearchSpCd,			//仕入先CD
+						SearchCom,			//コメント
+						SearchEntryDateMin,	//登録日最小
+						SearchEntryDateMax,	//登録日最大
+						SearchUpdateDateMin,	//更新日最小
+						SearchUpdateDateMax,	//更新日最大
+						SearchEntryUser,		//登録者
+						SearchUpdateUser,		//更新者
+						
+						//明細WW0013ArrivaMs由来
+						SearchItemCd,			//商品コード
+						SearchClItemCd,		//荷主商品コード
+						SearchItemName,		//商品名
+						SearchLot,			//ロット
+						SearchExpDateMin,		//消費期限最小
+						SearchExpDateMax,		//消費期限最大
+						true);
 			}
 		});
 	}

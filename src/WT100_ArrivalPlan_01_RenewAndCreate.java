@@ -660,7 +660,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 							
 							String SetItemCd	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemCd);
 							String SetItemName	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemName01);
-							String SetClItemCd	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColCLItemCd);
+							String SetClItemCd	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColClItemCd);
 							String SetJanCd		= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColJanCd);
 							String SetItemMdNo	= ""+ItemSearchFmTableModel.getValueAt(i, 1+M100_ItemMstRt.ColItemMDNo);
 							
@@ -787,7 +787,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 					if(0<ItemMstRt.length) {
 						TBMs_ItemCd.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColItemCd]);
 						TBMs_ItemName.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColItemName01]);
-						TBMs_ClItemCd.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColCLItemCd]);
+						TBMs_ClItemCd.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColClItemCd]);
 						TBMs_JanCd.setText(		(String)ItemMstRt[0][M100_ItemMstRt.ColJanCd]);
 						TBMs_ItemMdNo.setText(	(String)ItemMstRt[0][M100_ItemMstRt.ColItemMDNo]);
 					}else {
@@ -1391,7 +1391,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 	private static Object[][] ItemMstRt(String GetClGp,String GetItemCd,String GetClItemCd,String GetItemName){
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
-		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
 		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
 		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
 		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
@@ -1413,13 +1413,13 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		
 		if(null!=GetClGp		&&	!"".equals(GetClGp)) {		SearchClGpCd.add(GetClGp);}
 		if(null!=GetItemCd		&&	!"".equals(GetItemCd)) {	SearchItemCd.add(GetItemCd);}
-		if(null!=GetClItemCd	&&	!"".equals(GetClItemCd)) {	SearchCLItemCd.add(GetClItemCd);}
+		if(null!=GetClItemCd	&&	!"".equals(GetClItemCd)) {	SearchClItemCd.add(GetClItemCd);}
 		if(null!=GetItemName	&&	!"".equals(GetItemName)) {	SearchItemName.add(GetItemName);}
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
-				SearchCLItemCd,			//荷主商品コード
+				SearchClItemCd,			//荷主商品コード
 				SearchItemName,			//商品名
 				SearchDeliveryTypeCd01,	//運送タイプコード01
 				SearchDeliveryTypeCd02,	//運送タイプコード02

@@ -67,7 +67,7 @@ public class M100_AdjustReasonRt{
 									boolean AllSearch) {
 		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);				//荷主コード
 		SearchWhCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchWhCd);				//倉庫コード
-		SearchAdjustReasonCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonCd);	//調整理由コード
+		SearchAdjustReasonCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonCd);		//調整理由コード
 		SearchAdjustReasonName	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonName);	//調整理由名
 		
 		Object [][]rt = new Object[0][RtAdjustReasonRt().length];

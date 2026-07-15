@@ -38,13 +38,13 @@ public class WM100_ItemMst_01_RenewAndCreate{
 		
 		JLabel LB_ClGpCd				= B100_FrameParts.JLabelSet(  10, 30,100,20,"荷主グループコード:"		,10,1);
 		JLabel LB_ItemCd				= B100_FrameParts.JLabelSet(  10, 55,100,20,"商品コード:"				,10,1);
-		JLabel LB_CLItemCd				= B100_FrameParts.JLabelSet(  10, 80,100,20,"荷主商品コード:"			,10,1);
+		JLabel LB_ClItemCd				= B100_FrameParts.JLabelSet(  10, 80,100,20,"荷主商品コード:"			,10,1);
 		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,105,100,20,"商品表記名:"				,10,1);
 		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,130,100,20,"商品正式名:"				,10,1);
 		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,155,100,20,"商品略名:"				,10,1);
 		final JComboBox   TB_ClGpCd		= B100_FrameParts.JComboBoxSet(  110, 30,200,20,B100_DefaultVariable.ClGpList[0],11);	//荷主グループコード
 		final JTextField  TB_ItemCd		= B100_FrameParts.JTextFieldSet( 110, 55,100,20,"",11,0);			//商品コード
-		final JTextField  TB_CLItemCd	= B100_FrameParts.JTextFieldSet( 110, 80,100,20,"",11,0);			//荷主商品コード
+		final JTextField  TB_ClItemCd	= B100_FrameParts.JTextFieldSet( 110, 80,100,20,"",11,0);			//荷主商品コード
 		final JTextField  TB_ItemName01	= B100_FrameParts.JTextFieldSet( 110,105,200,20,"",11,0);			//商品表記名
 		final JTextField  TB_ItemName02	= B100_FrameParts.JTextFieldSet( 110,130,200,20,"",11,0);			//商品正式名
 		final JTextField  TB_ItemName03	= B100_FrameParts.JTextFieldSet( 110,155,200,20,"",11,0);			//商品略名
@@ -211,7 +211,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 		if(!"".equals(TgtItemCd)) {
 			ArrayList<String> SearchClGpCd = new ArrayList<String>();			//荷主グループコード
 			ArrayList<String> SearchItemCd = new ArrayList<String>();			//商品コード
-			ArrayList<String> SearchCLItemCd = new ArrayList<String>();			//荷主商品コード
+			ArrayList<String> SearchClItemCd = new ArrayList<String>();			//荷主商品コード
 			ArrayList<String> SearchItemName = new ArrayList<String>();			//商品名
 			ArrayList<String> SearchDeliveryTypeCd01 = new ArrayList<String>();	//運送タイプコード01
 			ArrayList<String> SearchDeliveryTypeCd02 = new ArrayList<String>();	//運送タイプコード02
@@ -237,7 +237,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 			Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
 					SearchClGpCd,			//荷主グループコード
 					SearchItemCd,			//商品コード
-					SearchCLItemCd,			//荷主商品コード
+					SearchClItemCd,			//荷主商品コード
 					SearchItemName,			//商品名
 					SearchDeliveryTypeCd01,	//運送タイプコード01
 					SearchDeliveryTypeCd02,	//運送タイプコード02
@@ -258,7 +258,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 					AllSearch);
 			
 			if(0<ItemMstRt.length) {
-				TB_CLItemCd.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCLItemCd]);				//荷主商品コード
+				TB_ClItemCd.setText(""+ItemMstRt[0][M100_ItemMstRt.ColClItemCd]);				//荷主商品コード
 				TB_ItemName01.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName01]);		//商品表記名
 				TB_ItemName02.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName02]);		//商品正式名
 				TB_ItemName03.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemName03]);		//商品略名
@@ -384,7 +384,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 			main_fm.add(NewEntryBtn);
 			TB_ItemCd.setText(TgtItemCd);
 			TB_ItemCd.setEnabled(false);
-			LB_CLItemCd.requestFocusInWindow();
+			LB_ClItemCd.requestFocusInWindow();
 		}else {
 			TB_ItemCd.setEnabled(true);
 			//商品コードが指定されていなければ荷主商品コード意外全ての入力項目入力不可
@@ -466,7 +466,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 		
 		main_fm.add(LB_ClGpCd);
 		main_fm.add(LB_ItemCd);
-		main_fm.add(LB_CLItemCd);
+		main_fm.add(LB_ClItemCd);
 		main_fm.add(LB_ItemName01);
 		main_fm.add(LB_ItemName02);
 		main_fm.add(LB_ItemName03);
@@ -519,7 +519,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 		
 		main_fm.add(TB_ClGpCd);
 		main_fm.add(TB_ItemCd);
-		main_fm.add(TB_CLItemCd);
+		main_fm.add(TB_ClItemCd);
 		main_fm.add(TB_ItemName01);
 		main_fm.add(TB_ItemName02);
 		main_fm.add(TB_ItemName03);
@@ -587,7 +587,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 		
 		main_fm.setVisible(true);
 		if(!"".equals(TgtItemCd)) {
-			TB_CLItemCd.requestFocusInWindow();
+			TB_ClItemCd.requestFocusInWindow();
 		}else {
 			TB_ItemCd.requestFocusInWindow();
 		}
@@ -886,7 +886,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 			public void actionPerformed(ActionEvent e){
 				String GetClGpCd 			= B100_DefaultVariable.ClGpList[1][TB_ClGpCd.getSelectedIndex()];		//荷主グループコード
 				String GetItemCd 			= TB_ItemCd.getText();				//商品コード
-				String GetCLItemCd 			= TB_CLItemCd.getText();			//荷主商品コード
+				String GetClItemCd 			= TB_ClItemCd.getText();			//荷主商品コード
 				String GetItemName01 		= TB_ItemName01.getText();			//商品表記名
 				String GetItemName02 		= TB_ItemName02.getText();			//商品正式名
 				String GetItemName03 		= TB_ItemName03.getText();			//商品略名
@@ -954,7 +954,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 				
 				GetClGpCd 				= B100_TextControl.Trim(GetClGpCd);				//荷主グループコード
 				GetItemCd 				= B100_TextControl.Trim(GetItemCd);				//商品コード
-				GetCLItemCd 			= B100_TextControl.Trim(GetCLItemCd);				//荷主商品コード
+				GetClItemCd 			= B100_TextControl.Trim(GetClItemCd);				//荷主商品コード
 				GetItemName01 			= B100_TextControl.Trim(GetItemName01);			//商品表記名
 				GetItemName02 			= B100_TextControl.Trim(GetItemName02);			//商品正式名
 				GetItemName03 			= B100_TextControl.Trim(GetItemName03);			//商品略名
@@ -1122,7 +1122,7 @@ public class WM100_ItemMst_01_RenewAndCreate{
 					String[][] ItemMstSetString = {
 							  {"ClGpCd"				,"1","1",GetClGpCd}				//荷主グループコード
 							 ,{"ItemCd"				,"1","1",GetItemCd}				//商品コード
-							 ,{"CLItemCd"			,"1","1",GetCLItemCd}			//荷主商品コード
+							 ,{"ClItemCd"			,"1","1",GetClItemCd}			//荷主商品コード
 							 ,{"ItemName01"			,"1","1",GetItemName01}			//商品表記名
 							 ,{"ItemName02"			,"1","1",GetItemName02}			//商品正式名
 							 ,{"ItemName03"			,"1","1",GetItemName03}			//商品略名

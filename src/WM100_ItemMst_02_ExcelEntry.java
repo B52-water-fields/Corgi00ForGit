@@ -98,7 +98,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 		Object[][] NeedCol = {
 					 {Title[M100_ItemMstRt.ColClGpCd]				,1, 0}
 					,{Title[M100_ItemMstRt.ColItemCd]				,1, 1}
-					,{Title[M100_ItemMstRt.ColCLItemCd]			,1, 2}
+					,{Title[M100_ItemMstRt.ColClItemCd]			,1, 2}
 					,{Title[M100_ItemMstRt.ColItemName01]			,1, 3}
 					,{Title[M100_ItemMstRt.ColItemName02]			,1, 4}
 					,{Title[M100_ItemMstRt.ColItemName03]			,1, 5}
@@ -315,7 +315,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 	private static void DataEntry(Object[][] CheckOb,String[]TableCol) {
 		int ColClGpCd			=  1;		//荷主グループコード
 		int ColItemCd			=  2;		//商品コード
-		int ColCLItemCd			=  3;		//荷主商品コード
+		int ColClItemCd			=  3;		//荷主商品コード
 		int ColItemName01		=  4;		//商品表記名
 		int ColItemName02		=  5;		//商品正式名
 		int ColItemName03		=  6;		//商品略名
@@ -372,7 +372,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 		for(int i=0;i<TableCol.length;i++) {
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColClGpCd]				)){ColClGpCd			= i;}
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemCd]				)){ColItemCd			= i;}
-			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCLItemCd]			)){ColCLItemCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColClItemCd]			)){ColClItemCd			= i;}
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName01]			)){ColItemName01		= i;}
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName02]			)){ColItemName02		= i;}
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName03]			)){ColItemName03		= i;}
@@ -437,7 +437,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 		
 		String[] GetClGpCd 				= new String[EntryCount];		//荷主グループコード
 		String[] GetItemCd 				= new String[EntryCount];		//商品コード
-		String[] GetCLItemCd 			= new String[EntryCount];		//荷主商品コード
+		String[] GetClItemCd 			= new String[EntryCount];		//荷主商品コード
 		String[] GetItemName01 			= new String[EntryCount];		//商品表記名
 		String[] GetItemName02 			= new String[EntryCount];		//商品正式名
 		String[] GetItemName03 			= new String[EntryCount];		//商品略名
@@ -503,7 +503,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 			}else {
 				GetClGpCd[EntryCount] 				= ""+CheckOb[i01][ColClGpCd];			//荷主グループコード
 				GetItemCd[EntryCount] 				= ""+CheckOb[i01][ColItemCd];			//商品コード
-				GetCLItemCd[EntryCount] 			= ""+CheckOb[i01][ColCLItemCd];			//荷主商品コード
+				GetClItemCd[EntryCount] 			= ""+CheckOb[i01][ColClItemCd];			//荷主商品コード
 				GetItemName01[EntryCount] 			= ""+CheckOb[i01][ColItemName01];		//商品表記名
 				GetItemName02[EntryCount] 			= ""+CheckOb[i01][ColItemName02];		//商品正式名
 				GetItemName03[EntryCount] 			= ""+CheckOb[i01][ColItemName03];		//商品略名
@@ -609,7 +609,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 		//現在登録済みの商品マスタ取得
 		ArrayList<String> SearchClGpCd = new ArrayList<String>();			//荷主グループコード
 		ArrayList<String> SearchItemCd = new ArrayList<String>();			//商品コード
-		ArrayList<String> SearchCLItemCd = new ArrayList<String>();			//荷主商品コード
+		ArrayList<String> SearchClItemCd = new ArrayList<String>();			//荷主商品コード
 		ArrayList<String> SearchItemName = new ArrayList<String>();			//商品名
 		ArrayList<String> SearchDeliveryTypeCd01 = new ArrayList<String>();	//運送タイプコード01
 		ArrayList<String> SearchDeliveryTypeCd02 = new ArrayList<String>();	//運送タイプコード02
@@ -637,7 +637,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
-				SearchCLItemCd,			//荷主商品コード
+				SearchClItemCd,			//荷主商品コード
 				SearchItemName,			//商品名
 				SearchDeliveryTypeCd01,	//運送タイプコード01
 				SearchDeliveryTypeCd02,	//運送タイプコード02
@@ -765,7 +765,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 		String[][] ItemMstSetString = {
 				  {"ClGpCd"				,"1","1"}	//荷主グループコード
 				 ,{"ItemCd"				,"1","1"}	//商品コード
-				 ,{"CLItemCd"			,"1","1"}	//荷主商品コード
+				 ,{"ClItemCd"			,"1","1"}	//荷主商品コード
 				 ,{"ItemName01"			,"1","1"}	//商品表記名
 				 ,{"ItemName02"			,"1","1"}	//商品正式名
 				 ,{"ItemName03"			,"1","1"}	//商品略名
@@ -802,7 +802,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 			
 			entry_data[i01][ 0] = GetClGpCd[i01] ;			//荷主グループコード
 			entry_data[i01][ 1] = GetItemCd[i01];			//商品コード
-			entry_data[i01][ 2] = GetCLItemCd[i01];			//荷主商品コード
+			entry_data[i01][ 2] = GetClItemCd[i01];			//荷主商品コード
 			entry_data[i01][ 3] = GetItemName01[i01];		//商品表記名
 			entry_data[i01][ 4] = GetItemName02[i01];		//商品正式名
 			entry_data[i01][ 5] = GetItemName03[i01];		//商品略名
@@ -940,7 +940,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 		
 		int ColClGpCd			=  1;		//荷主グループコード
 		int ColItemCd			=  2;		//商品コード
-		int ColCLItemCd			=  3;		//荷主商品コード
+		int ColClItemCd			=  3;		//荷主商品コード
 		int ColItemName01		=  4;		//商品表記名
 		int ColItemName02		=  5;		//商品正式名
 		int ColItemName03		=  6;		//商品略名
@@ -997,7 +997,7 @@ public class WM100_ItemMst_02_ExcelEntry{
 		for(int i=0;i<TableCol.length;i++) {
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColClGpCd]				)){ColClGpCd			= i;}
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemCd]				)){ColItemCd			= i;}
-			if(TableCol[i].equals(Title[M100_ItemMstRt.ColCLItemCd]			)){ColCLItemCd			= i;}
+			if(TableCol[i].equals(Title[M100_ItemMstRt.ColClItemCd]			)){ColClItemCd			= i;}
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName01]			)){ColItemName01		= i;}
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName02]			)){ColItemName02		= i;}
 			if(TableCol[i].equals(Title[M100_ItemMstRt.ColItemName03]			)){ColItemName03		= i;}

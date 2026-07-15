@@ -318,6 +318,10 @@ public class T100_ArrivalPlanHdRt{
 				SearchActualDateMax.set(i,SetString);
 			}
 		}
+		
+		//商品変換マスタを元に荷主商品コードを商品コードに変換する
+		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClGpCD,SearchClCd,SearchClItemCd);
+		
 		Object[][] rt = new Object[0][RtArrivalPlanHdRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
@@ -365,6 +369,16 @@ public class T100_ArrivalPlanHdRt{
 					+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0031_CLIENT_GROUP"
 					+ " on("
 					+ " KM0030_CLIENTMST.ClGpCd = KM0031_CLIENT_GROUP.ClGpCD"
+					+ ")\n"
+					+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0060_ITEMMST"
+					+ " on("
+					+ " KM0030_CLIENTMST.ClGpCD = KM0060_ITEMMST.ClGpCd"
+					+ " and WW0011ArrivalPlanMs.ItemCd = KM0060_ITEMMST.ItemCd"
+					+ ")\n"
+					+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0061_ITEMMSTSUB \n"
+					+ " on("
+					+ " KM0060_ITEMMST.ClGpCd = KM0061_ITEMMSTSUB.ClGpCd"
+					+ " and KM0060_ITEMMST.ItemCd = KM0061_ITEMMSTSUB.ItemCd"
 					+ ")\n"
 					+" where 1=1 \n";
 		
@@ -569,7 +583,13 @@ public class T100_ArrivalPlanHdRt{
 			sql = sql + " and(";
 			for(int i=0;i<SearchClItemCd.size();i++){
 				if(0<i){sql = sql + " or ";}
-				sql = sql + " WW0011ArrivalPlanMs.ClItemCd = ?";
+				sql = sql + " KM0060_ITEMMST.ClItemCd = ?";
+			}
+			if(null!=SearchItemCdFromClItem && 0< SearchItemCdFromClItem.length) {
+				for(int i=0;i<SearchItemCdFromClItem.length;i++) {
+					sql = sql + " or (WW0010ArrivalPlanHd.ClCd = ?";
+					sql = sql + "  and WW0011ArrivalPlanMs.ItemCd = ?)";
+				}
 			}
 			sql = sql + ")";
 		}
@@ -897,6 +917,14 @@ public class T100_ArrivalPlanHdRt{
 						StmtCount = StmtCount+1;
 						stmt01.setString(StmtCount, ""+SearchClItemCd.get(i)+"");
 					}
+					if(null!=SearchItemCdFromClItem && 0< SearchItemCdFromClItem.length) {
+						for(int i=0;i<SearchItemCdFromClItem.length;i++) {
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchItemCdFromClItem[i][M100_ItemComversionMstRt.ColClCd]+"");
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchItemCdFromClItem[i][M100_ItemComversionMstRt.ColItemCd]+"");
+						}
+					}
 				}
 				if(null!=SearchJanCd && 0<SearchJanCd.size()){						//JANCD（バラ）
 					for(int i=0;i<SearchJanCd.size();i++){
@@ -1033,5 +1061,24 @@ public class T100_ArrivalPlanHdRt{
 			A100_DbConnect.close();
 		}
 		return rt;
+	}
+	private static Object[][] SearchItemCdFromClItem(ArrayList<String> SearchClGpCd,ArrayList<String> SearchClCd,ArrayList<String> SearchClItemCd){
+		//ArrayList<String> SearchClGpCd = new ArrayList<String>();		//荷主グループコード
+		//ArrayList<String> SearchClCd = new ArrayList<String>();			//荷主コード
+		ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
+		//ArrayList<String> SearchClItemCd = new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名
+		boolean AllSearch = false;
+		Object[][] ItemComversionMstRt = null;
+		if(null!=SearchClItemCd && 0<SearchClItemCd.size()) {
+			ItemComversionMstRt = M100_ItemComversionMstRt.ItemComversionMstRt(
+					SearchClGpCd,			//荷主グループコード
+					SearchClCd,				//荷主コード
+					SearchItemCd,			//商品コード
+					SearchClItemCd,			//荷主商品コード
+					SearchItemName,			//商品名
+					AllSearch);
+		}
+		return ItemComversionMstRt;
 	}
 }

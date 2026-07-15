@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class T100_ArrivalMsRt{
+public class T100_ArrivalHdRt{
 	static final int ColClWh			=  0;		//担当倉庫
 	static final int ColWHName			=  1;		//担当倉庫名
 	static final int ColClCd			=  2;		//荷主CD
@@ -34,26 +34,10 @@ public class T100_ArrivalMsRt{
 	static final int ColUpdateUser	= 26;		//更新者
 	
 	//明細WW0013ArrivalMs由来
-	static final int ColMsNo			= 27;		//明細番号
-	static final int ColMsSeq			= 28;		//明細Seq番号
-	static final int ColItemCd			= 29;		//商品コード
-	static final int ColClItemCd		= 30;		//荷主商品コード
-	static final int ColJanCd			= 31;		//JanCd(バラ)
-	static final int ColItemMdNo		= 32;		//商品型番
-	static final int ColItemName		= 33;		//商品名
-	static final int ColLot			= 34;		//ロット
-	static final int ColExpDate		= 35;		//消費期限
-	static final int ColPlanQty		= 36;		//予定数量
-	static final int ColActualQty		= 37;		//実績数
-	static final int ColMsActualDate	= 38;		//入荷日
-	static final int ColCom01			= 39;		//コメント1
-	static final int ColCom02			= 40;		//コメント2
-	static final int ColMsEntryDate	= 41;		//登録日
-	static final int ColMsUpdateDate	= 42;		//更新日
-	static final int ColMsEntryUser	= 43;		//登録者
-	static final int ColMsUpdateUser	= 44;		//更新者
+	static final int ColPlanTotalQty		= 27;		//予定数量
+	static final int ColActualTotalQty	= 28;		//実績数
 	
-	public static Object[][] RtArrivalMsRt(){
+	public static Object[][] RtArrivalHdRt(){
 		Object[][] Rt = {
 					 {"ClWh"			,ColClWh			,"String"	,"担当倉庫"				,"Key"}
 					,{"WHName"			,ColWHName			,"String"	,"担当倉庫名"			,""}
@@ -84,29 +68,13 @@ public class T100_ArrivalMsRt{
 					,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"				,""}
 					
 					//明細WW0013ArrivalMs由来
-					,{"MsNo"			,ColMsNo			,"int"		,"明細番号"				,"Key"}
-					,{"MsSeq"			,ColMsSeq			,"int"		,"明細Seq番号"			,"Key"}
-					,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"			,""}
-					,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"		,""}
-					,{"JanCd"			,ColJanCd			,"String"	,"JanCd(バラ)"			,""}
-					,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"				,""}
-					,{"ItemName"		,ColItemName		,"String"	,"商品名"				,""}
-					,{"Lot"				,ColLot			,"String"	,"ロット"				,""}
-					,{"ExpDate"			,ColExpDate		,"Date"		,"消費期限"				,""}
-					,{"PlanQty"			,ColPlanQty		,"int"		,"予定数量"				,""}
-					,{"ActualQty"		,ColActualQty		,"int"		,"実績数"				,""}
-					,{"MsActualDate"	,ColMsActualDate	,"Date"		,"入荷日"				,""}
-					,{"Com01"			,ColCom01			,"String"	,"コメント1"			,""}
-					,{"Com02"			,ColCom02			,"String"	,"コメント2"			,""}
-					,{"MsEntryDate"		,ColMsEntryDate	,"Datetime"	,"登録日"				,""}
-					,{"MsUpdateDate"	,ColMsUpdateDate	,"DateTime"	,"更新日"				,""}
-					,{"MsEntryUser"		,ColMsEntryUser	,"String"	,"登録者"				,""}
-					,{"MsUpdateUser"	,ColMsUpdateUser	,"String"	,"更新者"				,""}
+					,{"PlanTotalQty"	,ColPlanTotalQty		,"int"		,"予定数量合計"		,""}
+					,{"ActualTotalQty"	,ColActualTotalQty	,"int"		,"実績数合計"		,""}
 					};
 		return Rt;
 	}
 	
-	public static Object[][] ArrivalMsRt(
+	public static Object[][] ArrivalHdRt(
 			ArrayList<String> SearchClWh,			//担当倉庫
 			ArrayList<String> SearchClCd,			//荷主CD
 			ArrayList<String> SearchClGpCD,			//ヘッダ荷主グループCD
@@ -222,59 +190,42 @@ public class T100_ArrivalMsRt{
 		//商品変換マスタを元に荷主商品コードを商品コードに変換する
 		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClGpCD,SearchClCd,SearchClItemCd);
 		
-		Object[][] Rt = new Object[0][RtArrivalMsRt().length];
+		Object[][] Rt = new Object[0][RtArrivalHdRt().length];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
 		String sql = "select \n"
 				//ヘッダWW0012ArrivalHd由来
-				+"(WW0012ArrivalHd.ClWh) 			as	ClWh,\n"			//担当倉庫
-				+"(KM0010_WHMST.WHName)				as	WHName,\n"			//担当倉庫名
-				+"(WW0012ArrivalHd.ClCd) 			as	ClCd,\n"			//荷主CD
-				+"(KM0030_CLIENTMST.CLName01)       as	CLName01,\n"		//ヘッダ荷主名
-				+"(KM0030_CLIENTMST.ClGpCD)         as	ClGpCD,\n"			//ヘッダ荷主グループCD
-				+"(KM0031_CLIENT_GROUP.CLGpName01)  as	CLGpName01,\n"		//ヘッダ荷主グループ標記名
-				+"(WW0012ArrivalHd.ArrNo)			as	ArrNo,\n"			//入荷予定NO
-				+"(WW0012ArrivalHd.ArrCount) 		as	ArrCount,\n"		//入荷予定枝番
-				+"(WW0012ArrivalHd.ClArrNo) 		as	ClArrNo,\n"			//荷主予定番号
-				+"(WW0012ArrivalHd.PlanDate) 		as	PlanDate,\n"		//入荷予定日
-				+"(WW0012ArrivalHd.ActualDate)		as	ActualDate,\n"		//入荷実績日
-				+"(WW0012ArrivalHd.SpCd)			as	SpCd,\n"			//仕入先CD
-				+"(WW0012ArrivalHd.SpName01)		as	SpName01,\n"		//仕入先名01
-				+"(WW0012ArrivalHd.SpName02)		as	SpName02,\n"		//仕入先名02
-				+"(WW0012ArrivalHd.SpName03)		as	SpName03,\n"		//仕入先名03
-				+"(WW0012ArrivalHd.SpPost)			as	SpPost,\n"			//仕入先郵便
-				+"(WW0012ArrivalHd.SpAdd01)			as	SpAdd01,\n"			//仕入先住所01
-				+"(WW0012ArrivalHd.SpAdd02)			as	SpAdd02,\n"			//仕入先住所02
-				+"(WW0012ArrivalHd.SpAdd03)			as	SpAdd03,\n"			//仕入先住所03
-				+"(WW0012ArrivalHd.SpTel)			as	SpTel,\n"			//仕入先電話"}
-				+"(WW0012ArrivalHd.ArCom01)			as	ArCom01,\n"			//コメント1
-				+"(WW0012ArrivalHd.ArCom02)			as	ArCom02,\n"			//コメント2
-				+"(WW0012ArrivalHd.ArCom03)			as	ArCom03,\n"			//コメント3
-				+"(WW0012ArrivalHd.EntryDate)		as	EntryDate,\n"		//登録日
-				+"(WW0012ArrivalHd.UpdateDate)		as	UpdateDate,\n"		//更新日
-				+"(WW0012ArrivalHd.EntryUser)		as	EntryUser,\n"		//登録者
-				+"(WW0012ArrivalHd.UpdateUser)		as	UpdateUser,\n"		//更新者
-				
+				+"(WW0012ArrivalHd.ClWh) 				as	ClWh,\n"			//担当倉庫
+				+"max(KM0010_WHMST.WHName)				as	WHName,\n"			//担当倉庫名
+				+"(WW0012ArrivalHd.ClCd) 				as	ClCd,\n"			//荷主CD
+				+"max(KM0030_CLIENTMST.CLName01)       	as	CLName01,\n"		//ヘッダ荷主名
+				+"(KM0030_CLIENTMST.ClGpCD)         	as	ClGpCD,\n"			//ヘッダ荷主グループCD
+				+"max(KM0031_CLIENT_GROUP.CLGpName01)  	as	CLGpName01,\n"		//ヘッダ荷主グループ標記名
+				+"(WW0012ArrivalHd.ArrNo)				as	ArrNo,\n"			//入荷予定NO
+				+"(WW0012ArrivalHd.ArrCount) 			as	ArrCount,\n"		//入荷予定枝番
+				+"max(WW0012ArrivalHd.ClArrNo) 			as	ClArrNo,\n"			//荷主予定番号
+				+"max(WW0012ArrivalHd.PlanDate) 		as	PlanDate,\n"		//入荷予定日
+				+"max(WW0012ArrivalHd.ActualDate)		as	ActualDate,\n"		//入荷実績日
+				+"max(WW0012ArrivalHd.SpCd)				as	SpCd,\n"			//仕入先CD
+				+"max(WW0012ArrivalHd.SpName01)			as	SpName01,\n"		//仕入先名01
+				+"max(WW0012ArrivalHd.SpName02)			as	SpName02,\n"		//仕入先名02
+				+"max(WW0012ArrivalHd.SpName03)			as	SpName03,\n"		//仕入先名03
+				+"max(WW0012ArrivalHd.SpPost)			as	SpPost,\n"			//仕入先郵便
+				+"max(WW0012ArrivalHd.SpAdd01)			as	SpAdd01,\n"			//仕入先住所01
+				+"max(WW0012ArrivalHd.SpAdd02)			as	SpAdd02,\n"			//仕入先住所02
+				+"max(WW0012ArrivalHd.SpAdd03)			as	SpAdd03,\n"			//仕入先住所03
+				+"max(WW0012ArrivalHd.SpTel)			as	SpTel,\n"			//仕入先電話"}
+				+"max(WW0012ArrivalHd.ArCom01)			as	ArCom01,\n"			//コメント1
+				+"max(WW0012ArrivalHd.ArCom02)			as	ArCom02,\n"			//コメント2
+				+"max(WW0012ArrivalHd.ArCom03)			as	ArCom03,\n"			//コメント3
+				+"max(WW0012ArrivalHd.EntryDate)		as	EntryDate,\n"		//登録日
+				+"max(WW0012ArrivalHd.UpdateDate)		as	UpdateDate,\n"		//更新日
+				+"max(WW0012ArrivalHd.EntryUser)		as	EntryUser,\n"		//登録者
+				+"max(WW0012ArrivalHd.UpdateUser)		as	UpdateUser,\n"		//更新者
 				//明細WW0013ArrivalMs由来
-				+"(WW0013ArrivalMs.MsNo)				as	MsNo,\n"			//明細番号
-				+"(WW0013ArrivalMs.MsSeq)			as	MsSeq,\n"			//明細Seq番号
-				+"(WW0013ArrivalMs.ItemCd)			as	ItemCd,\n"			//商品コード
-				+"(WW0013ArrivalMs.ClItemCd)			as	ClItemCd,\n"		//荷主商品コード
-				+"(WW0013ArrivalMs.JanCd)			as	JanCd,\n"			//JanCd(バラ)
-				+"(WW0013ArrivalMs.ItemMdNo)			as	ItemMdNo,\n"		//商品型番
-				+"(WW0013ArrivalMs.ItemName)			as	ItemName,\n"		//商品名
-				+"(WW0013ArrivalMs.Lot)				as	Lot,\n"				//ロット
-				+"(WW0013ArrivalMs.ExpDate)			as	ExpDate,\n"			//消費期限
-				+"(WW0013ArrivalMs.PlanQty)			as	PlanQty,\n"			//予定数量
-				+"(WW0013ArrivalMs.ActualQty)		as	ActualQty,\n"		//実績数
-				+"(WW0013ArrivalMs.ActualDate)		as	MsActualDate,\n"	//入荷日
-				+"(WW0013ArrivalMs.Com01)			as	Com01,\n"			//コメント1
-				+"(WW0013ArrivalMs.Com02)			as	Com02,\n"			//コメント2
-				+"(WW0013ArrivalMs.EntryDate)		as	MsEntryDate,\n"		//登録日
-				+"(WW0013ArrivalMs.UpdateDate)		as	MsUpdateDate,\n"	//更新日
-				+"(WW0013ArrivalMs.EntryUser)		as	MsEntryUser,\n"		//登録者
-				+"(WW0013ArrivalMs.UpdateUser)		as	MsUpdateUser \n"	//更新者
+				+"sum(WW0013ArrivalMs.PlanQty)		as	PlanTotalQty,\n"	//予定数量
+				+"sum(WW0013ArrivalMs.ActualQty)		as	ActualTotalQty \n"	//実績数
 				
 				+ " from "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0012ArrivalHd \n"
 				
@@ -548,8 +499,8 @@ public class T100_ArrivalMsRt{
 			}
 			sql = sql + ")\n";
 		}
-		
-		sql = sql + " order by WW0012ArrivalHd.ActualDate,WW0012ArrivalHd.ArrNo,WW0012ArrivalHd.ArrCount,WW0013ArrivalMs.MsNo,WW0013ArrivalMs.MsSeq; \n";
+		sql = sql + " group by WW0012ArrivalHd.ClWh,WW0012ArrivalHd.ClCd,KM0030_CLIENTMST.ClGpCD,WW0012ArrivalHd.ArrNo,WW0012ArrivalHd.ArrCount";
+		sql = sql + " order by WW0012ArrivalHd.ActualDate,WW0012ArrivalHd.ArrNo,WW0012ArrivalHd.ArrCount,WW0013ArrivalMs.MsNo,WW0013ArrivalMs.MsSeq ;\n";
 		
 		//System.out.println(sql);
 		
@@ -730,7 +681,7 @@ public class T100_ArrivalMsRt{
 				}
 				rset01 = stmt01.executeQuery();
 				
-				Rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtArrivalMsRt());
+				Rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtArrivalHdRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

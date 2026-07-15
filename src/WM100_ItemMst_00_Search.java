@@ -49,9 +49,9 @@ public class WM100_ItemMst_00_Search{
 		JLabel LB_SearchItemCd  						= B100_FrameParts.JLabelSet(		  0, 50,130,20,"商品コード:"			,11,1);
 		final JTextField TB_SearchItemCd  				= B100_FrameParts.JTextFieldSet(	130, 50,100,20,""						,11,0);	//商品コード
 		JLabel LB2_SearchItemCd  						= B100_FrameParts.JLabelSet(		230, 50, 80,20,"と一致"					,11,0);	//商品コード
-		JLabel LB_SearchCLItemCd  						= B100_FrameParts.JLabelSet(		  0, 75,130,20,"荷主商品コード:"		,11,1);
-		final JTextField TB_SearchCLItemCd  			= B100_FrameParts.JTextFieldSet(	130, 75,100,20,""						,11,0);	//荷主商品コード
-		JLabel LB2_SearchCLItemCd  						= B100_FrameParts.JLabelSet(		230, 75, 80,20,"と一致"					,11,0);	//荷主商品コード
+		JLabel LB_SearchClItemCd  						= B100_FrameParts.JLabelSet(		  0, 75,130,20,"荷主商品コード:"		,11,1);
+		final JTextField TB_SearchClItemCd  			= B100_FrameParts.JTextFieldSet(	130, 75,100,20,""						,11,0);	//荷主商品コード
+		JLabel LB2_SearchClItemCd  						= B100_FrameParts.JLabelSet(		230, 75, 80,20,"と一致"					,11,0);	//荷主商品コード
 		JLabel LB_SearchItemName  						= B100_FrameParts.JLabelSet(		  0,100,130,20,"商品名:"				,11,1);
 		final JTextField TB_SearchItemName  			= B100_FrameParts.JTextFieldSet(	130,100,100,20,""						,11,0);	//商品名
 		JLabel LB2_SearchItemName  						= B100_FrameParts.JLabelSet(		230,100, 80,20,"を含む"					,11,0);	//商品名
@@ -117,9 +117,9 @@ public class WM100_ItemMst_00_Search{
 		PN_Search.add(LB_SearchItemCd);
 		PN_Search.add(TB_SearchItemCd);
 		PN_Search.add(LB2_SearchItemCd);
-		PN_Search.add(LB_SearchCLItemCd);
-		PN_Search.add(TB_SearchCLItemCd);
-		PN_Search.add(LB2_SearchCLItemCd);
+		PN_Search.add(LB_SearchClItemCd);
+		PN_Search.add(TB_SearchClItemCd);
+		PN_Search.add(LB2_SearchClItemCd);
 		PN_Search.add(LB_SearchItemName);
 		PN_Search.add(TB_SearchItemName);
 		PN_Search.add(LB2_SearchItemName);
@@ -251,7 +251,7 @@ public class WM100_ItemMst_00_Search{
 					
 					String GetSearchClGpCd = B100_DefaultVariable.SearchClGpList[1][TB_SearchClGpCd.getSelectedIndex()];	//荷主グループコード
 					String GetSearchItemCd = TB_SearchItemCd.getText();		//商品コード
-					String GetSearchCLItemCd = TB_SearchCLItemCd.getText();	//荷主商品コード
+					String GetSearchClItemCd = TB_SearchClItemCd.getText();	//荷主商品コード
 					String GetSearchItemName = TB_SearchItemName.getText();	//商品名
 					String GetSearchJanCd = TB_SearchJanCd.getText();		//JANCD
 					String GetSearchDelFg = B100_DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];		//削除区分
@@ -272,7 +272,7 @@ public class WM100_ItemMst_00_Search{
 					
 					if(null==GetSearchClGpCd			) {GetSearchClGpCd= "";}			//荷主グループコード
 					if(null==GetSearchItemCd			) {GetSearchItemCd= "";}			//商品コード
-					if(null==GetSearchCLItemCd			) {GetSearchCLItemCd= "";}			//荷主商品コード
+					if(null==GetSearchClItemCd			) {GetSearchClItemCd= "";}			//荷主商品コード
 					if(null==GetSearchItemName			) {GetSearchItemName= "";}			//商品名
 					if(null==GetSearchJanCd				) {GetSearchJanCd= "";}				//JANCD
 					if(null==GetSearchDelFg				) {GetSearchDelFg= "";}				//削除区分
@@ -293,7 +293,7 @@ public class WM100_ItemMst_00_Search{
 					
 					GetSearchClGpCd				= B100_TextControl.Trim(GetSearchClGpCd);		//荷主グループコード
 					GetSearchItemCd				= B100_TextControl.Trim(GetSearchItemCd);				//商品コード
-					GetSearchCLItemCd			= B100_TextControl.Trim(GetSearchCLItemCd);			//荷主商品コード
+					GetSearchClItemCd			= B100_TextControl.Trim(GetSearchClItemCd);			//荷主商品コード
 					GetSearchItemName			= B100_TextControl.Trim(GetSearchItemName);			//商品名
 					GetSearchJanCd				= B100_TextControl.Trim(GetSearchJanCd);				//JANCD
 					GetSearchDelFg				= B100_TextControl.Trim(GetSearchDelFg);				//削除区分
@@ -314,7 +314,7 @@ public class WM100_ItemMst_00_Search{
 					
 					ArrayList<String> SearchClGpCd = new ArrayList<String>();			//荷主グループコード
 					ArrayList<String> SearchItemCd = new ArrayList<String>();			//商品コード
-					ArrayList<String> SearchCLItemCd = new ArrayList<String>();			//荷主商品コード
+					ArrayList<String> SearchClItemCd = new ArrayList<String>();			//荷主商品コード
 					ArrayList<String> SearchItemName = new ArrayList<String>();			//商品名
 					ArrayList<String> SearchDeliveryTypeCd01 = new ArrayList<String>();	//運送タイプコード01
 					ArrayList<String> SearchDeliveryTypeCd02 = new ArrayList<String>();	//運送タイプコード02
@@ -336,7 +336,7 @@ public class WM100_ItemMst_00_Search{
 					
 					if(!"".equals(GetSearchClGpCd			)){SearchClGpCd.add(GetSearchClGpCd);}			//荷主グループコード
 					if(!"".equals(GetSearchItemCd			)){SearchItemCd.add(GetSearchItemCd);}						//商品コード
-					if(!"".equals(GetSearchCLItemCd			)){SearchCLItemCd.add(GetSearchCLItemCd);}					//荷主商品コード
+					if(!"".equals(GetSearchClItemCd			)){SearchClItemCd.add(GetSearchClItemCd);}					//荷主商品コード
 					if(!"".equals(GetSearchItemName			)){SearchItemName.add(GetSearchItemName);}					//商品名
 					if(!"".equals(GetSearchJanCd			)){SearchJanCd.add(GetSearchJanCd);}						//JANCD
 					if(!"".equals(GetSearchDelFg			)){SearchDelFg.add(GetSearchDelFg);}						//削除区分
@@ -358,7 +358,7 @@ public class WM100_ItemMst_00_Search{
 					Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
 							SearchClGpCd,			//荷主グループコード
 							SearchItemCd,			//商品コード
-							SearchCLItemCd,			//荷主商品コード
+							SearchClItemCd,			//荷主商品コード
 							SearchItemName,			//商品名
 							SearchDeliveryTypeCd01,	//運送タイプコード01
 							SearchDeliveryTypeCd02,	//運送タイプコード02

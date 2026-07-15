@@ -196,7 +196,7 @@ public class A100_TableCheck{
 						,{"WW0010ArrivalPlanHd"				,"WANKO"	,"入荷予定ヘッダ"				,WW0010ArrivalPlanHd_Definition()}
 						,{"WW0011ArrivalPlanMs"				,"WANKO"	,"入荷予定明細"					,WW0011ArrivalPlanMs_Definition()}
 						,{"WW0012ArrivalHd"					,"WANKO"	,"入荷実績ヘッダ"				,WW0012ArrivalHd_Definition()}
-						,{"WW0013ArrivaMs"					,"WANKO"	,"入荷実績明細"					,WW0013ArrivaMs_Definition()}
+						,{"WW0013ArrivalMs"					,"WANKO"	,"入荷実績明細"					,WW0013ArrivalMs_Definition()}
 						,{"WW0015Stock"						,"WANKO"	,"在庫"							,WW0015Stock_Definition()}
 						,{"WW0016StockAdjust"				,"WANKO"	,"在庫調整履歴"					,WW0016StockAdjust_Definition()}
 						,{"WW0017StockMove"					,"WANKO"	,"在庫移動履歴"					,WW0017StockMove_Definition()}
@@ -632,7 +632,7 @@ public class A100_TableCheck{
 		Object[][] Rt	={
 						  {"ClGpCD"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"荷主グループコード"}
 						 ,{"ItemCd"				,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"商品コード"}
-						 ,{"CLItemCd"			,"varchar"	,(int)20	,""		,(boolean)false	,""		,"荷主商品コード"}
+						 ,{"ClItemCd"			,"varchar"	,(int)20	,""		,(boolean)false	,""		,"荷主商品コード"}
 						 ,{"ItemName01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品表記名"}
 						 ,{"ItemName02"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品正式名"}
 						 ,{"ItemName03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品略名"}
@@ -1799,7 +1799,7 @@ public class A100_TableCheck{
 		return Rt;
 	}
 	
-	private static Object[][] WW0013ArrivaMs_Definition(){
+	private static Object[][] WW0013ArrivalMs_Definition(){
 		Object[][] Rt	={
 						 {"ClWh"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"担当倉庫"}
 						,{"ClCd"		,"varchar"	,(int)20	,"KEY"	,(boolean)false	,""		,"荷主CD"}

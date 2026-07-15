@@ -83,7 +83,7 @@ public class WMTools100_ItemComversion{
 		//商品マスタの商品CDから商品CD特定
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
-		ArrayList<String> SearchCLItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
 		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
 		ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
 		ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
@@ -107,13 +107,13 @@ public class WMTools100_ItemComversion{
 		for(int i=0;i<rt.length;i++) {
 			String CheckClItemCd = (String)rt[i][ColClIemCd];
 			if(null==rt[i][ColItemCd]||"".equals(rt[i][ColItemCd])) {
-				SearchCLItemCd.add(CheckClItemCd);
+				SearchClItemCd.add(CheckClItemCd);
 			}
 		}
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
-				SearchCLItemCd,			//荷主商品コード
+				SearchClItemCd,			//荷主商品コード
 				SearchItemName,			//商品名
 				SearchDeliveryTypeCd01,	//運送タイプコード01
 				SearchDeliveryTypeCd02,	//運送タイプコード02
@@ -136,11 +136,11 @@ public class WMTools100_ItemComversion{
 			String CheckClItemCd = (String)rt[i][ColClIemCd];
 			if(null==rt[i][ColItemCd]||"".equals(rt[i][ColItemCd])) {
 				for(int i01=0;i01<ItemMstRt.length;i01++) {
-					String GetCLItemCd 		= (String)ItemMstRt[i01][M100_ItemMstRt.ColCLItemCd];
+					String GetClItemCd 		= (String)ItemMstRt[i01][M100_ItemMstRt.ColClItemCd];
 					String GetItemCd		= (String)ItemMstRt[i01][M100_ItemMstRt.ColItemCd];			//商品コード
 					String GetUnitName		= (String)ItemMstRt[i01][M100_ItemMstRt.ColUnitName];			//商品単位
 					String GetItemName01	= (String)ItemMstRt[i01][M100_ItemMstRt.ColItemName01];		//商品表記名
-					if(CheckClItemCd.equals(GetCLItemCd)){
+					if(CheckClItemCd.equals(GetClItemCd)){
 						rt[i][ColItemCd]						= GetItemCd;		//変換後商品CD
 						rt[i][ColPackingType]					= 0;				//荷姿タイプ
 						rt[i][ColPackingQty]					= 1;				//荷姿入数(バラ換算数)
@@ -158,7 +158,7 @@ public class WMTools100_ItemComversion{
 		ArrayList<String> SearchClGpCd = new ArrayList<String>();		//荷主グループコード
 		ArrayList<String> SearchClCd = new ArrayList<String>();			//荷主コード
 		ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
-		ArrayList<String> SearchCLItemCd = new ArrayList<String>();		//荷主商品コード
+		ArrayList<String> SearchClItemCd = new ArrayList<String>();		//荷主商品コード
 		ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名
 		boolean AllSearch = false;
 		SearchClGpCd.add(ClGp);
@@ -166,14 +166,14 @@ public class WMTools100_ItemComversion{
 		for(int i=0;i<rt.length;i++) {
 			String CheckClItemCd = (String)rt[i][ColClIemCd];
 			if(null==rt[i][ColItemCd]||"".equals(rt[i][ColItemCd])) {
-				SearchCLItemCd.add(CheckClItemCd);
+				SearchClItemCd.add(CheckClItemCd);
 			}
 		}
 		Object[][] ItemComversionMstRt = M100_ItemComversionMstRt.ItemComversionMstRt(
 				SearchClGpCd,			//荷主グループコード
 				SearchClCd,				//荷主コード
 				SearchItemCd,			//商品コード
-				SearchCLItemCd,			//荷主商品コード
+				SearchClItemCd,			//荷主商品コード
 				SearchItemName,			//商品名
 				AllSearch);
 		for(int i=0;i<rt.length;i++) {

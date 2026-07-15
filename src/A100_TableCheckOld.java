@@ -801,7 +801,7 @@ public class A100_TableCheckOld{
 		NeedColmn = new String[21];
 		NeedColmn[ 0] = "ClGpCD";
 		NeedColmn[ 1] = "ItemCd";
-		NeedColmn[ 2] = "CLItemCd";
+		NeedColmn[ 2] = "ClItemCd";
 		NeedColmn[ 3] = "ItemName01";
 		NeedColmn[ 4] = "ItemName02";
 		NeedColmn[ 5] = "ItemName03";
@@ -2893,7 +2893,7 @@ public class A100_TableCheckOld{
 				+"CREATE TABLE `KM0060_ITEMMST` ("
 				+"  `ClGpCD` varchar(20) NOT NULL,"
 				+"  `ItemCd` varchar(20) NOT NULL,"
-				+"  `CLItemCd` varchar(20) NOT NULL,"
+				+"  `ClItemCd` varchar(20) NOT NULL,"
 				+"  `ItemName01` varchar(100) DEFAULT NULL,"
 				+"  `ItemName02` varchar(100) DEFAULT NULL,"
 				+"  `ItemName03` varchar(100) DEFAULT NULL,"
@@ -2929,8 +2929,8 @@ public class A100_TableCheckOld{
 				case "ItemCd":
 					sql = sql + " ADD ItemCd varchar(20) NOT NULL";
 					break;
-				case "CLItemCd":
-					sql = sql + " ADD CLItemCd varchar(20) NOT NULL";
+				case "ClItemCd":
+					sql = sql + " ADD ClItemCd varchar(20) NOT NULL";
 					break;
 				case "ItemName01":
 					sql = sql + " ADD ItemName01 varchar(100) DEFAULT NULL";
