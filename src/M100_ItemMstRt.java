@@ -421,7 +421,7 @@ public class M100_ItemMstRt{
 					sql = sql + "  and KM0060_ITEMMST.ClGpCd = ?)";
 				}
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchClGpCd&&0<SearchClGpCd.size()){
 			SearchKick = true;
@@ -430,7 +430,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.ClGpCd = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchItemCd&&0<SearchItemCd.size()){
 			SearchKick = true;
@@ -439,7 +439,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.ItemCd = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		
 		if(null!=SearchItemName&&0<SearchItemName.size()){
@@ -451,7 +451,7 @@ public class M100_ItemMstRt{
 				sql = sql + " or KM0060_ITEMMST.ItemName02 like ?";
 				sql = sql + " or KM0060_ITEMMST.ItemName03 like ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchDeliveryTypeCd01&&0<SearchDeliveryTypeCd01.size()){
 			SearchKick = true;
@@ -460,7 +460,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.DeliveryTypeCd = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchDeliveryTypeCd02&&0<SearchDeliveryTypeCd02.size()){
 			SearchKick = true;
@@ -469,7 +469,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.DeliveryTypeCd02 = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchDeliveryTypeCd03&&0<SearchDeliveryTypeCd03.size()){
 			SearchKick = true;
@@ -478,7 +478,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.DeliveryTypeCd03 = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchDeliveryTypeCd04&&0<SearchDeliveryTypeCd04.size()){
 			SearchKick = true;
@@ -487,7 +487,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.DeliveryTypeCd04 = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchDeliveryTypeCd05&&0<SearchDeliveryTypeCd05.size()){
 			SearchKick = true;
@@ -496,7 +496,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.DeliveryTypeCd05 = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchJanCd&&0<SearchJanCd.size()){
 			SearchKick = true;
@@ -508,7 +508,7 @@ public class M100_ItemMstRt{
 				sql = sql + " or KM0061_ITEMMSTSUB.CsJan = ?";
 				sql = sql + " or KM0061_ITEMMSTSUB.PlJan = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchItemMDNo&&0<SearchItemMDNo.size()){
 			SearchKick = true;
@@ -517,7 +517,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0061_ITEMMSTSUB.ItemMDNo = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchCategoryCd&&0<SearchCategoryCd.size()){
 			SearchKick = true;
@@ -526,7 +526,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0061_ITEMMSTSUB.CategoryCd = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchCategoryName&&0<SearchCategoryName.size()){
 			SearchKick = true;
@@ -535,7 +535,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0061_ITEMMSTSUB.CategoryName like ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchItemColorCd&&0<SearchItemColorCd.size()){
 			SearchKick = true;
@@ -544,7 +544,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + "KM0061_ITEMMSTSUB.ItemColorCd  = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchItemColorName&&0<SearchItemColorName.size()){
 			SearchKick = true;
@@ -553,7 +553,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0061_ITEMMSTSUB.ItemColorName like ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchItemSizeCd&&0<SearchItemSizeCd.size()){
 			SearchKick = true;
@@ -562,7 +562,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0061_ITEMMSTSUB.ItemSizeCd = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchItemSizeName&&0<SearchItemSizeName.size()){
 			SearchKick = true;
@@ -571,7 +571,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0061_ITEMMSTSUB.ItemSizeName like ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchTildFG&&0<SearchTildFG.size()){
 			SearchKick = true;
@@ -580,7 +580,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0061_ITEMMSTSUB.TildFG = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchTildName&&0<SearchTildName.size()){
 			SearchKick = true;
@@ -589,7 +589,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0061_ITEMMSTSUB.TildName like ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		if(null!=SearchDelFg&&0<SearchDelFg.size()){
 			SearchKick = true;
@@ -598,7 +598,7 @@ public class M100_ItemMstRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KM0060_ITEMMST.DelFg = ?";
 			}
-			sql = sql + ")";
+			sql = sql + ")\n";
 		}
 		
 		if(null!=SearchClCd&&0<SearchClCd.size()) {
@@ -609,14 +609,17 @@ public class M100_ItemMstRt{
 					if(0<i){sql = sql + " or ";}
 					sql = sql + " KM0060_ITEMMST.ClGpCd = ?";
 				}
-				sql = sql + ")";
+				sql = sql + ")\n";
 			}else {
+				//荷主マスタから荷主グループ特定できなければ戻り件数0なので検索しない
 				SearchKick = false;
 			}
 		}
-
 		
 		sql = sql+" order by KM0060_ITEMMST.ClGpCd,KM0060_ITEMMST.ItemCd\n";
+		
+		//System.out.println(sql);
+		
 		if(SearchKick) {
 			A100_DbConnect.DB_CONN("NYANKO");
 			ResultSet rset01 = null;
