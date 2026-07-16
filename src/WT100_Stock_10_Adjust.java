@@ -155,7 +155,7 @@ public class WT100_Stock_10_Adjust{
 		final JFormattedTextField TB_AfterPossibleQty	= B100_FrameParts.JFormattedTextFieldSet(	590,500, 70,20,"0"	,12,1,"#,###");	//調整後出荷可能数
 		
 		TB_ClCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,(String)StockData[T100_StockRt.ColClCd] ,true) );		//荷主コード
-		TB_WhCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,(String)StockData[T100_StockRt.ColWhCd] ,true) );		//倉庫コード
+		TB_WhCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]		,(String)StockData[T100_StockRt.ColWhCd] ,true) );		//倉庫コード
 		TB_LocType.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.LocType[1]		,(int)StockData[T100_StockRt.ColType]+"" ,true) );		//ロケタイプ
 		
 		TB_ClCd			.setBackground(B100_FrameParts.SelectColer("NoEntry"));
@@ -3206,6 +3206,7 @@ public class WT100_Stock_10_Adjust{
 									String SearchTgtItemCd,
 									String SearchTgtItemName
 									){
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
 		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -3233,6 +3234,7 @@ public class WT100_Stock_10_Adjust{
 		if(!"".equals(SearchTgtItemName	)) {SearchItemName.add(	SearchTgtItemName);}
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード
@@ -3259,6 +3261,7 @@ public class WT100_Stock_10_Adjust{
 	}
 	
 	private static Object[][] ItemMstRt(String ClGpCd,String ItemCd){
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
 		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -3285,6 +3288,7 @@ public class WT100_Stock_10_Adjust{
 		SearchItemCd.add(ItemCd);
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード

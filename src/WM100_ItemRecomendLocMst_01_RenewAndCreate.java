@@ -760,6 +760,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		if(null==GetSearchItemCd	) {GetSearchItemCd="";}
 		if(null==GetSearchItemName	) {GetSearchItemName="";}
 		
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
 		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -787,6 +788,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		if(!"".equals(GetSearchItemName	)) {SearchItemName.add(GetSearchItemName);}
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード

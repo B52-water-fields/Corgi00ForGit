@@ -1389,6 +1389,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 	
 	
 	private static Object[][] ItemMstRt(String GetClGp,String GetItemCd,String GetClItemCd,String GetItemName){
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
 		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -1417,6 +1418,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		if(null!=GetItemName	&&	!"".equals(GetItemName)) {	SearchItemName.add(GetItemName);}
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード

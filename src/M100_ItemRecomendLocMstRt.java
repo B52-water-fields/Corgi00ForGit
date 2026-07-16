@@ -512,6 +512,7 @@ public class M100_ItemRecomendLocMstRt{
 		}
 		if(null!=RetryItemList && 0<RetryItemList.size()) {
 			//推奨ロケマスタ由来で紹鴎取得できなければ商品マスタ由来で情報取得
+			SearchClCd 									= new ArrayList<String>();	//荷主コード
 			ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 			SearchItemCd = RetryItemList;	//商品コード
 			ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -537,6 +538,7 @@ public class M100_ItemRecomendLocMstRt{
 			SearchClGpCd.add(SetClGpCD);
 			
 			Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+					SearchClCd,				//荷主コード
 					SearchClGpCd,			//荷主グループコード
 					SearchItemCd,			//商品コード
 					SearchClItemCd,			//荷主商品コード

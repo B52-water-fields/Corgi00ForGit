@@ -694,6 +694,20 @@ public class B100_DateTimeControl{
 		}
 		return rt;
 	}
+	
+	public static void TodaySet(JFormattedTextField TgtJFormattedTextField) {
+		//対象TgtJFormattedTextFieldに今日の日付をセットする
+		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
+		String SetDate = NowDate;
+		TgtJFormattedTextField.setText(SetDate);
+	}
+	public static void NowDateTimeSet(JFormattedTextField TgtJFormattedTextField) {
+		//対象TgtJFormattedTextFieldに今日の日付をセットする
+		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		String SetDate = NowDate;
+		TgtJFormattedTextField.setText(SetDate);
+	}
+	
 	public static void BeforeDateSet(JFormattedTextField TgtJFormattedTextField) {
 		//対象TgtJFormattedTextFieldの日付を一日前にセットする　※空白であれば当日をセット
 		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
@@ -720,6 +734,34 @@ public class B100_DateTimeControl{
 		}
 		TgtJFormattedTextField.setText(SetDate);
 	}
+	public static void BeforeMonthSet(JFormattedTextField TgtJFormattedTextField) {
+		//対象TgtJFormattedTextFieldの日付を一月前にセットする　※空白であれば当日をセット
+		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
+		String GetDate = TgtJFormattedTextField.getText();
+		String SetDate = NowDate;
+		if(null==GetDate||"".equals(GetDate)) {
+		}else {
+			Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
+			WT				= B100_DateTimeControl.N_MONTH_AFTER_LASTDAY_MODE(WT, -1);
+			SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
+		}
+		TgtJFormattedTextField.setText(SetDate);
+	}
+	
+	public static void AfterMonthSet(JFormattedTextField TgtJFormattedTextField) {
+		//対象TgtJFormattedTextFieldの日付を一月後にセットする　※空白であれば当日をセット
+		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
+		String GetDate = TgtJFormattedTextField.getText();
+		String SetDate = NowDate;
+		if(null==GetDate||"".equals(GetDate)) {
+		}else {
+			Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
+			WT				= B100_DateTimeControl.N_MONTH_AFTER_LASTDAY_MODE(WT, 1);
+			SetDate			= B100_DateTimeControl.dtmString2(WT)[0];
+		}
+		TgtJFormattedTextField.setText(SetDate);
+	}
+	
 	
 	public static void BeforeDateTimeSet(JFormattedTextField TgtJFormattedTextField) {
 		//対象TgtJFormattedTextFieldの日付を一日前にセットする　※空白であれば当日をセット
@@ -743,6 +785,33 @@ public class B100_DateTimeControl{
 		}else {
 			Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[1];
 			WT				= B100_DateTimeControl.ndate_after(WT, 1);
+			SetDate			= B100_DateTimeControl.dtmString2(WT)[1];
+		}
+		TgtJFormattedTextField.setText(SetDate);
+	}
+	public static void BeforeMonthDateTimeSet(JFormattedTextField TgtJFormattedTextField) {
+		//対象TgtJFormattedTextFieldの日付を一月前にセットする　※空白であれば当日をセット
+		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		String GetDate = TgtJFormattedTextField.getText();
+		String SetDate = NowDate;
+		if(null==GetDate||"".equals(GetDate)) {
+		}else {
+			Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
+			WT				= B100_DateTimeControl.N_MONTH_AFTER_LASTDAY_MODE(WT, -1);
+			SetDate			= B100_DateTimeControl.dtmString2(WT)[1];
+		}
+		TgtJFormattedTextField.setText(SetDate);
+	}
+	
+	public static void AfterMonthDateTimeSet(JFormattedTextField TgtJFormattedTextField) {
+		//対象TgtJFormattedTextFieldの日付を一月後にセットする　※空白であれば当日をセット
+		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		String GetDate = TgtJFormattedTextField.getText();
+		String SetDate = NowDate;
+		if(null==GetDate||"".equals(GetDate)) {
+		}else {
+			Timestamp WT	= B100_DateTimeControl.dtmTimestamp2(GetDate)[0];
+			WT				= B100_DateTimeControl.N_MONTH_AFTER_LASTDAY_MODE(WT, 1);
 			SetDate			= B100_DateTimeControl.dtmString2(WT)[1];
 		}
 		TgtJFormattedTextField.setText(SetDate);

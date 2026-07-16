@@ -537,6 +537,7 @@ public class WM100_ItemRecomendLocMst_02_ExcelEntry{
 	}
 	
 	private static Object[][] ItemMstRt(ArrayList<String> SearchItemCd){
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
 		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
@@ -561,6 +562,7 @@ public class WM100_ItemRecomendLocMst_02_ExcelEntry{
 		SearchClGpCd.add(A00000_Main.ClGp);
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード

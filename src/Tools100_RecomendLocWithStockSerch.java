@@ -297,6 +297,7 @@ public class Tools100_RecomendLocWithStockSerch{
 		Object[][] ItemMstRt	= new Object[0][0];
 		
 		if(!"".equals(TgtClGp)&&(null!=TgtItemCd && 0<TgtItemCd.length)) {
+			ArrayList<String> SearchClCd 				= new ArrayList<String>();	//荷主コード
 			ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 			ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
 			ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -326,6 +327,7 @@ public class Tools100_RecomendLocWithStockSerch{
 			}
 			
 			ItemMstRt = M100_ItemMstRt.ItemMstRt(
+					SearchClCd,				//荷主コード
 					SearchClGpCd,			//荷主グループコード
 					SearchItemCd,			//商品コード
 					SearchClItemCd,			//荷主商品コード

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class M100_ItemMstRt{
 	/*
 	コピペ用
+	ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 	ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 	ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
 	ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -29,6 +30,7 @@ public class M100_ItemMstRt{
 	boolean AllSearch = false;
 	
 	Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+			SearchClCd,				//荷主コード
 			SearchClGpCd,			//荷主グループコード
 			SearchItemCd,			//商品コード
 			SearchClItemCd,			//荷主商品コード
@@ -255,6 +257,7 @@ public class M100_ItemMstRt{
 	}
 	
 	public static Object[][] ItemMstRt(
+			ArrayList<String> SearchClCd,				//荷主コード
 			ArrayList<String> SearchClGpCd,				//荷主グループコード
 			ArrayList<String> SearchItemCd,				//商品コード
 			ArrayList<String> SearchClItemCd,			//荷主商品コード
@@ -277,6 +280,7 @@ public class M100_ItemMstRt{
 			ArrayList<String> SearchDelFg,				//削除フラグ
 			boolean AllSearch){
 		
+		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
 		SearchClGpCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
 		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);
 		SearchClItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchClItemCd);
@@ -299,7 +303,8 @@ public class M100_ItemMstRt{
 		SearchDelFg				= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
 		
 		//商品変換マスタを元に荷主商品コードを商品コードに変換する
-		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClGpCd,SearchClItemCd);
+		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClCd,SearchClGpCd,SearchClItemCd);
+		Object[][] SearchClGpCdFromClCd		= SearchClGpCdFromClCd(SearchClCd);
 		
 		Object[][] rt = new Object[0][RtItemMstRt().length];
 		boolean SearchKick = false;
@@ -371,7 +376,6 @@ public class M100_ItemMstRt{
 				+"(KM0060_ITEMMST.UpdateUser) as UpdateUser,\n"				//更新者コード
 				+"(KM0060_ITEMMST.DelFg) as DelFg\n"						//削除フラグ
 				
-				
 				+ " from "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0060_ITEMMST \n"
 				+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0061_ITEMMSTSUB \n"
 				+ " on("
@@ -403,6 +407,7 @@ public class M100_ItemMstRt{
 				+ ")\n"
 				+ "where 1=1\n"
 				+ "";
+		
 		if(null!=SearchClItemCd&&0<SearchClItemCd.size()){
 			SearchKick = true;
 			sql = sql + " and(";
@@ -595,6 +600,20 @@ public class M100_ItemMstRt{
 			}
 			sql = sql + ")";
 		}
+		
+		if(null!=SearchClCd&&0<SearchClCd.size()) {
+			if(null!=SearchClGpCdFromClCd&&0<SearchClGpCdFromClCd.length) {
+				SearchKick = true;
+				sql = sql + " and(";
+				for(int i=0;i<SearchClGpCdFromClCd.length;i++) {
+					if(0<i){sql = sql + " or ";}
+					sql = sql + " KM0060_ITEMMST.ClGpCd = ?";
+				}
+				sql = sql + ")";
+			}else {
+				SearchKick = false;
+			}
+		}
 
 		
 		sql = sql+" order by KM0060_ITEMMST.ClGpCd,KM0060_ITEMMST.ItemCd\n";
@@ -744,6 +763,16 @@ public class M100_ItemMstRt{
 						stmt01.setString(StmtCount, ""+SearchDelFg.get(i)+"");
 					}
 				}
+				if(null!=SearchClCd&&0<SearchClCd.size()) {
+					if(null!=SearchClGpCdFromClCd&&0<SearchClGpCdFromClCd.length) {
+						for(int i=0;i<SearchClGpCdFromClCd.length;i++) {
+							StmtCount = StmtCount+1;
+							stmt01.setString(StmtCount, ""+SearchClGpCdFromClCd[i][M100_ClMstRt.ColClGpCD]+"");
+						}
+					}else {
+						
+					}
+				}
 				rset01 = stmt01.executeQuery();
 				
 				rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtItemMstRt());
@@ -765,10 +794,38 @@ public class M100_ItemMstRt{
 		return rt;
 	}
 	
+	private static Object[][] SearchClGpCdFromClCd(ArrayList<String> SearchClCd){
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLCD = SearchClCd;
+		ArrayList<String> SearchCLName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		Object[][] ClMstRt = M100_ClMstRt.ClMstRt(
+			SearchClGpCD,
+			SearchCLCD,
+			SearchCLName,
+			SearchPost,
+			searchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			SearchWHCD,
+			AllSearch);
+		return ClMstRt;
+	}
 	
-	private static Object[][] SearchItemCdFromClItem(ArrayList<String> SearchClGpCd,ArrayList<String> SearchClItemCd){
+	
+	private static Object[][] SearchItemCdFromClItem(ArrayList<String> SearchClCd,ArrayList<String> SearchClGpCd,ArrayList<String> SearchClItemCd){
 		//ArrayList<String> SearchClGpCd = new ArrayList<String>();		//荷主グループコード
-		ArrayList<String> SearchClCd = new ArrayList<String>();			//荷主コード
+		//ArrayList<String> SearchClCd = new ArrayList<String>();		//荷主コード
 		ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
 		//ArrayList<String> SearchClItemCd = new ArrayList<String>();	//荷主商品コード
 		ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名

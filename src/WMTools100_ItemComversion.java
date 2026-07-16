@@ -81,6 +81,7 @@ public class WMTools100_ItemComversion{
 	
 	private static Object[][] FromItemMst(String ClGp,Object[][] rt){
 		//商品マスタの商品CDから商品CD特定
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
 		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -111,6 +112,7 @@ public class WMTools100_ItemComversion{
 			}
 		}
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード

@@ -21,26 +21,28 @@ public class WT100_Arrival_30_ExcelEntryOutPut{
 	static final int ColGetlot					= 12;	//予定ロット
 	static final int ColGetExpDate			= 13;	//予定消費期限
 	static final int ColGetPlanQty			= 14;	//予定数量
-	static final int ColGetRecmendLoc			= 15;	//在庫考慮推奨ロケ
-	static final int ColGetRecmendLocMst		= 16;	//推奨ロケマスタ情報
-	static final int ColEntryLot				= 17;	//入荷実績ロット
-	static final int ColEntryExpDate			= 18;	//入荷実績消費期限
-	static final int ColEntryQty				= 19;	//入荷実績数
-	static final int ColEntryStoreLoc			= 20;	//格納ロケ
-	static final int ColGetCom01				= 21;	//明細コメント1
-	static final int ColGetCom02				= 22;	//明細コメント2
-	static final int ColGetArCom01			= 23;	//ヘッダコメント1
-	static final int ColGetArCom02			= 24;	//ヘッダコメント2
-	static final int ColGetArCom03			= 25;	//ヘッダコメント3
-	static final int ColGetJanCd				= 26;	//JANCD（バラ）
-	static final int ColGetItemMdNo			= 27;	//商品型番
-	static final int ColGetClGpCD				= 28;	//荷主グループCD
-	static final int ColGetCLGpName01			= 29;	//荷主グループ標記名
-	static final int ColGetEntryDate			= 30;	//登録日
-	static final int ColGetUpdateDate			= 31;	//更新日
-	static final int ColGetEntryUser			= 32;	//登録者
-	static final int ColGetUpdateUser			= 33;	//更新者
-	static final int ColGetOutPutDTM			= 34;	//出力日時
+	static final int ColGetActualQty			= 15;	//入荷済数量
+	static final int ColGetRemainingPlanQty	= 16;	//予定残数量
+	static final int ColGetRecmendLoc			= 17;	//在庫考慮推奨ロケ
+	static final int ColGetRecmendLocMst		= 18;	//推奨ロケマスタ情報
+	static final int ColEntryLot				= 19;	//入荷実績ロット
+	static final int ColEntryExpDate			= 20;	//入荷実績消費期限
+	static final int ColEntryQty				= 21;	//入荷実績数
+	static final int ColEntryStoreLoc			= 22;	//格納ロケ
+	static final int ColGetCom01				= 23;	//明細コメント1
+	static final int ColGetCom02				= 24;	//明細コメント2
+	static final int ColGetArCom01			= 25;	//ヘッダコメント1
+	static final int ColGetArCom02			= 26;	//ヘッダコメント2
+	static final int ColGetArCom03			= 27;	//ヘッダコメント3
+	static final int ColGetJanCd				= 28;	//JANCD（バラ）
+	static final int ColGetItemMdNo			= 29;	//商品型番
+	static final int ColGetClGpCD				= 30;	//荷主グループCD
+	static final int ColGetCLGpName01			= 31;	//荷主グループ標記名
+	static final int ColGetEntryDate			= 32;	//登録日
+	static final int ColGetUpdateDate			= 33;	//更新日
+	static final int ColGetEntryUser			= 34;	//登録者
+	static final int ColGetUpdateUser			= 35;	//更新者
+	static final int ColGetOutPutDTM			= 36;	//出力日時
 	
 	public static Object[][] RtArrivalExcelOutPut() {
 		Object[][] Rt = {
@@ -59,6 +61,8 @@ public class WT100_Arrival_30_ExcelEntryOutPut{
 					,{"Getlot"				,ColGetlot					,"String"	,"予定ロット" 				,""}
 					,{"GetExpDate"			,ColGetExpDate			,"Date"		,"予定消費期限" 			,""}
 					,{"GetPlanQty"			,ColGetPlanQty			,"int"		,"予定数量" 				,""}
+					,{"GetActualQty"		,ColGetActualQty			,"int"		,"入荷済数量" 				,""}
+					,{"GetRemainingPlanQty"	,ColGetRemainingPlanQty	,"int"		,"予定残数量" 				,""}
 					,{"GetRecmendLoc"		,ColGetRecmendLoc			,"String"	,"在庫考慮推奨ロケ"			,""}
 					,{"GetRecmendLocMst"	,ColGetRecmendLocMst		,"String"	,"推奨ロケマスタ情報" 		,""}
 					,{"EntryLot"			,ColEntryLot				,"String"	,"入荷実績ロット" 			,""}
@@ -173,45 +177,49 @@ public class WT100_Arrival_30_ExcelEntryOutPut{
 			String GetEntryUser		= B100_TextControl.Trim((String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColEntryUser]);			//登録者
 			String GetUpdateUser	= B100_TextControl.Trim((String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColUpdateUser]);			//更新者
 			
+			int GetRemainingPlanQty	= GetPlanQty-GetActualQty;
+			
 			RecomendLocTgtItemCd[i][Tools100_RecomendLocWithStockSerch.InColItemCd]	= GetItemCd;
 			RecomendLocTgtItemCd[i][Tools100_RecomendLocWithStockSerch.InColLot]		= Getlot;
 			RecomendLocTgtItemCd[i][Tools100_RecomendLocWithStockSerch.InColExpdate]	= GetExpDate;
 			
-			OutString[i+1][ColGetClWh]				= 	"" + GetClWh;				//担当倉庫
-			OutString[i+1][ColGetClCd]				= 	"" + GetClCd;				//荷主CD
-			OutString[i+1][ColGetCLName01]		= 	"" + GetCLName01;			//荷主名
-			OutString[i+1][ColGetPlanDate]		= 	"" + GetPlanDate;			//入荷予定日
-			OutString[i+1][ColGetSpCd]				= 	"" + GetSpCd;				//仕入先CD
-			OutString[i+1][ColGetSpName01]		= 	"" + GetSpName01;			//仕入先標記名
-			OutString[i+1][ColGetClArrNo]			= 	"" + GetClArrNo;				//荷主予定番号
-			OutString[i+1][ColGetArrNo]			= 	"" + GetArrNo;				//入荷予定NO
-			OutString[i+1][ColGetMsNo]				= 	"" + GetMsNo;				//明細番号
-			OutString[i+1][ColGetItemCd]			= 	"" + GetItemCd;				//商品コード
-			OutString[i+1][ColGetClItemCd]		= 	"" + GetClItemCd;			//荷主商品コード
-			OutString[i+1][ColGetItemName]		= 	"" + GetItemName;			//商品名
-			OutString[i+1][ColGetlot]				= 	"" + Getlot;				//予定ロット
-			OutString[i+1][ColGetExpDate]			= 	"" + GetExpDate;			//予定消費期限
-			OutString[i+1][ColGetPlanQty]			= 	"" + GetPlanQty;			//予定数量
-			OutString[i+1][ColGetRecmendLoc]		= 	"";							//在庫考慮推奨ロケ
-			OutString[i+1][ColGetRecmendLocMst]	= 	"";							//推奨ロケマスタ情報
-			OutString[i+1][ColEntryLot]			= 	"";							//入荷実績ロット
-			OutString[i+1][ColEntryExpDate]		= 	"";							//入荷実績消費期限
-			OutString[i+1][ColEntryQty]			= 	"0";						//入荷実績数
-			OutString[i+1][ColEntryStoreLoc]		= 	"";							//格納ロケ
-			OutString[i+1][ColGetCom01]			= 	"" + GetCom01;				//明細コメント1
-			OutString[i+1][ColGetCom02]			= 	"" + GetCom02;				//明細コメント2
-			OutString[i+1][ColGetArCom01]			= 	"" + GetArCom01;			//ヘッダコメント1
-			OutString[i+1][ColGetArCom02]			= 	"" + GetArCom02;			//ヘッダコメント2
-			OutString[i+1][ColGetArCom03]			= 	"" + GetArCom03;			//ヘッダコメント3
-			OutString[i+1][ColGetJanCd]			= 	"" + GetJanCd;				//JANCD（バラ）
-			OutString[i+1][ColGetItemMdNo]		= 	"" + GetItemMdNo;			//商品型番
-			OutString[i+1][ColGetClGpCD]			= 	"" + GetClGpCD;				//ヘッダ荷主グループCD
-			OutString[i+1][ColGetCLGpName01]		= 	"" + GetCLGpName01;			//ヘッダ荷主グループ標記名
-			OutString[i+1][ColGetEntryDate]		= 	"" + GetEntryDate;			//登録日
-			OutString[i+1][ColGetUpdateDate]		= 	"" + GetUpdateDate;			//更新日
-			OutString[i+1][ColGetEntryUser]		= 	"" + GetEntryUser;			//登録者
-			OutString[i+1][ColGetUpdateUser]		= 	"" + GetUpdateUser;			//更新者
-			OutString[i+1][ColGetOutPutDTM]		= 	now_dtm;					//出力日時
+			OutString[i+1][ColGetClWh]					= 	"" + GetClWh;				//担当倉庫
+			OutString[i+1][ColGetClCd]					= 	"" + GetClCd;				//荷主CD
+			OutString[i+1][ColGetCLName01]			= 	"" + GetCLName01;			//荷主名
+			OutString[i+1][ColGetPlanDate]			= 	"" + GetPlanDate;			//入荷予定日
+			OutString[i+1][ColGetSpCd]					= 	"" + GetSpCd;				//仕入先CD
+			OutString[i+1][ColGetSpName01]			= 	"" + GetSpName01;			//仕入先標記名
+			OutString[i+1][ColGetClArrNo]				= 	"" + GetClArrNo;				//荷主予定番号
+			OutString[i+1][ColGetArrNo]				= 	"" + GetArrNo;				//入荷予定NO
+			OutString[i+1][ColGetMsNo]					= 	"" + GetMsNo;				//明細番号
+			OutString[i+1][ColGetItemCd]				= 	"" + GetItemCd;				//商品コード
+			OutString[i+1][ColGetClItemCd]			= 	"" + GetClItemCd;			//荷主商品コード
+			OutString[i+1][ColGetItemName]			= 	"" + GetItemName;			//商品名
+			OutString[i+1][ColGetlot]					= 	"" + Getlot;				//予定ロット
+			OutString[i+1][ColGetExpDate]				= 	"" + GetExpDate;			//予定消費期限
+			OutString[i+1][ColGetPlanQty]				= 	"" + GetPlanQty;			//予定数量
+			OutString[i+1][ColGetActualQty]			= 	"" + GetActualQty;			//入荷済数量
+			OutString[i+1][ColGetRemainingPlanQty]	= 	"" + GetRemainingPlanQty;	//予定残数量
+			OutString[i+1][ColGetRecmendLoc]			= 	"";							//在庫考慮推奨ロケ
+			OutString[i+1][ColGetRecmendLocMst]		= 	"";							//推奨ロケマスタ情報
+			OutString[i+1][ColEntryLot]				= 	"";							//入荷実績ロット
+			OutString[i+1][ColEntryExpDate]			= 	"";							//入荷実績消費期限
+			OutString[i+1][ColEntryQty]				= 	"0";						//入荷実績数
+			OutString[i+1][ColEntryStoreLoc]			= 	"";							//格納ロケ
+			OutString[i+1][ColGetCom01]				= 	"" + GetCom01;				//明細コメント1
+			OutString[i+1][ColGetCom02]				= 	"" + GetCom02;				//明細コメント2
+			OutString[i+1][ColGetArCom01]				= 	"" + GetArCom01;			//ヘッダコメント1
+			OutString[i+1][ColGetArCom02]				= 	"" + GetArCom02;			//ヘッダコメント2
+			OutString[i+1][ColGetArCom03]				= 	"" + GetArCom03;			//ヘッダコメント3
+			OutString[i+1][ColGetJanCd]				= 	"" + GetJanCd;				//JANCD（バラ）
+			OutString[i+1][ColGetItemMdNo]			= 	"" + GetItemMdNo;			//商品型番
+			OutString[i+1][ColGetClGpCD]				= 	"" + GetClGpCD;				//ヘッダ荷主グループCD
+			OutString[i+1][ColGetCLGpName01]			= 	"" + GetCLGpName01;			//ヘッダ荷主グループ標記名
+			OutString[i+1][ColGetEntryDate]			= 	"" + GetEntryDate;			//登録日
+			OutString[i+1][ColGetUpdateDate]			= 	"" + GetUpdateDate;			//更新日
+			OutString[i+1][ColGetEntryUser]			= 	"" + GetEntryUser;			//登録者
+			OutString[i+1][ColGetUpdateUser]			= 	"" + GetUpdateUser;			//更新者
+			OutString[i+1][ColGetOutPutDTM]			= 	now_dtm;					//出力日時
 		}
 		
 		String[][] RecomendLocWithStockSerch = Tools100_RecomendLocWithStockSerch.RecomendLocWithStockSerch(TgtWhCd,TgtClCd,RecomendLocTgtItemCd);
@@ -285,7 +293,7 @@ public class WT100_Arrival_30_ExcelEntryOutPut{
 		SearchClCd.add(TgtClCd);
 		
 		SearchFixFg.add(0);
-		
+		SearchFixFg.add(2);
 		
 		Object[][] ArrivalPlanMsRt	= T100_ArrivalPlanMsRt.ArrivalPlanMsRt(
 				SearchClWh,					//ヘッダ担当倉庫

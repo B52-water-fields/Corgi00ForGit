@@ -466,6 +466,7 @@ public class WTList100_ArrivalPlan{
 	private static Object[][] ItemMstRt(String TgtClCd,Object[][] ArrivalPlanMsRt){
 		Object[][] ClMstRt	= ClMstRt(TgtClCd);
 		//商品マスタ取得
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
 		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -494,6 +495,7 @@ public class WTList100_ArrivalPlan{
 		}
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード

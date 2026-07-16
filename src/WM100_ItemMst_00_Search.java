@@ -291,47 +291,48 @@ public class WM100_ItemMst_00_Search{
 					if(null==GetSearchItemSizeCd		) {GetSearchItemSizeCd= "";}		//商品サイズコード
 					if(null==GetSearchItemSizeName		) {GetSearchItemSizeName= "";}		//商品サイズ名
 					
-					GetSearchClGpCd				= B100_TextControl.Trim(GetSearchClGpCd);		//荷主グループコード
-					GetSearchItemCd				= B100_TextControl.Trim(GetSearchItemCd);				//商品コード
+					GetSearchClGpCd				= B100_TextControl.Trim(GetSearchClGpCd);			//荷主グループコード
+					GetSearchItemCd				= B100_TextControl.Trim(GetSearchItemCd);			//商品コード
 					GetSearchClItemCd			= B100_TextControl.Trim(GetSearchClItemCd);			//荷主商品コード
 					GetSearchItemName			= B100_TextControl.Trim(GetSearchItemName);			//商品名
-					GetSearchJanCd				= B100_TextControl.Trim(GetSearchJanCd);				//JANCD
-					GetSearchDelFg				= B100_TextControl.Trim(GetSearchDelFg);				//削除区分
+					GetSearchJanCd				= B100_TextControl.Trim(GetSearchJanCd);			//JANCD
+					GetSearchDelFg				= B100_TextControl.Trim(GetSearchDelFg);			//削除区分
 					GetSearchDeliveryTypeCd01	= B100_TextControl.Trim(GetSearchDeliveryTypeCd01);	//運送タイプコード01
 					GetSearchDeliveryTypeCd02	= B100_TextControl.Trim(GetSearchDeliveryTypeCd02);	//運送タイプコード02
 					GetSearchDeliveryTypeCd03	= B100_TextControl.Trim(GetSearchDeliveryTypeCd03);	//運送タイプコード03
 					GetSearchDeliveryTypeCd04	= B100_TextControl.Trim(GetSearchDeliveryTypeCd04);	//運送タイプコード04
 					GetSearchDeliveryTypeCd05	= B100_TextControl.Trim(GetSearchDeliveryTypeCd05);	//運送タイプコード05
-					GetSearchTildFG				= B100_TextControl.Trim(GetSearchTildFG);				//温度区分
+					GetSearchTildFG				= B100_TextControl.Trim(GetSearchTildFG);			//温度区分
 					GetSearchTildName			= B100_TextControl.Trim(GetSearchTildName);			//温度区分名
 					GetSearchItemMDNo			= B100_TextControl.Trim(GetSearchItemMDNo);			//商品モデル番号（型番）
-					GetSearchCategoryCd			= B100_TextControl.Trim(GetSearchCategoryCd);			//商品カテゴリCD
+					GetSearchCategoryCd			= B100_TextControl.Trim(GetSearchCategoryCd);		//商品カテゴリCD
 					GetSearchCategoryName		= B100_TextControl.Trim(GetSearchCategoryName);		//商品カテゴリ名
 					GetSearchItemColorCd		= B100_TextControl.Trim(GetSearchItemColorCd);		//商品カラーコード
-					GetSearchItemColorName		= B100_TextControl.Trim(GetSearchItemColorName);		//商品カラー名
-					GetSearchItemSizeCd			= B100_TextControl.Trim(GetSearchItemSizeCd);			//商品サイズコード
+					GetSearchItemColorName		= B100_TextControl.Trim(GetSearchItemColorName);	//商品カラー名
+					GetSearchItemSizeCd			= B100_TextControl.Trim(GetSearchItemSizeCd);		//商品サイズコード
 					GetSearchItemSizeName		= B100_TextControl.Trim(GetSearchItemSizeName);		//商品サイズ名
 					
-					ArrayList<String> SearchClGpCd = new ArrayList<String>();			//荷主グループコード
-					ArrayList<String> SearchItemCd = new ArrayList<String>();			//商品コード
-					ArrayList<String> SearchClItemCd = new ArrayList<String>();			//荷主商品コード
-					ArrayList<String> SearchItemName = new ArrayList<String>();			//商品名
-					ArrayList<String> SearchDeliveryTypeCd01 = new ArrayList<String>();	//運送タイプコード01
-					ArrayList<String> SearchDeliveryTypeCd02 = new ArrayList<String>();	//運送タイプコード02
-					ArrayList<String> SearchDeliveryTypeCd03 = new ArrayList<String>();	//運送タイプコード03
-					ArrayList<String> SearchDeliveryTypeCd04 = new ArrayList<String>();	//運送タイプコード04
-					ArrayList<String> SearchDeliveryTypeCd05 = new ArrayList<String>();	//運送タイプコード05
-					ArrayList<String> SearchItemMDNo = new ArrayList<String>();			//商品モデル番号（型番）
-					ArrayList<String> SearchCategoryCd = new ArrayList<String>();		//商品カテゴリCD
-					ArrayList<String> SearchCategoryName = new ArrayList<String>();		//商品カテゴリ名
-					ArrayList<String> SearchItemColorCd = new ArrayList<String>();		//商品カラーコード
-					ArrayList<String> SearchItemColorName = new ArrayList<String>();	//商品カラー名
-					ArrayList<String> SearchItemSizeCd = new ArrayList<String>();		//商品サイズコード
-					ArrayList<String> SearchItemSizeName = new ArrayList<String>();		//商品サイズ名
-					ArrayList<String> SearchJanCd = new ArrayList<String>();			//JANCD
-					ArrayList<String> SearchTildFG = new ArrayList<String>();			//温度区分
-					ArrayList<String> SearchTildName = new ArrayList<String>();			//温度区分名
-					ArrayList<String> SearchDelFg = new ArrayList<String>();			//削除フラグ
+					ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
+					ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
+					ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
+					ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
+					ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
+					ArrayList<String> SearchDeliveryTypeCd01 	= new ArrayList<String>();	//運送タイプコード01
+					ArrayList<String> SearchDeliveryTypeCd02 	= new ArrayList<String>();	//運送タイプコード02
+					ArrayList<String> SearchDeliveryTypeCd03 	= new ArrayList<String>();	//運送タイプコード03
+					ArrayList<String> SearchDeliveryTypeCd04 	= new ArrayList<String>();	//運送タイプコード04
+					ArrayList<String> SearchDeliveryTypeCd05 	= new ArrayList<String>();	//運送タイプコード05
+					ArrayList<String> SearchItemMDNo 			= new ArrayList<String>();	//商品モデル番号（型番）
+					ArrayList<String> SearchCategoryCd 			= new ArrayList<String>();	//商品カテゴリCD
+					ArrayList<String> SearchCategoryName 		= new ArrayList<String>();	//商品カテゴリ名
+					ArrayList<String> SearchItemColorCd 		= new ArrayList<String>();	//商品カラーコード
+					ArrayList<String> SearchItemColorName 		= new ArrayList<String>();	//商品カラー名
+					ArrayList<String> SearchItemSizeCd 			= new ArrayList<String>();	//商品サイズコード
+					ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイズ名
+					ArrayList<String> SearchJanCd 				= new ArrayList<String>();	//JANCD
+					ArrayList<String> SearchTildFG 				= new ArrayList<String>();	//温度区分
+					ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
+					ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
 					boolean AllSearch = true;
 					
 					if(!"".equals(GetSearchClGpCd			)){SearchClGpCd.add(GetSearchClGpCd);}			//荷主グループコード
@@ -356,6 +357,7 @@ public class WM100_ItemMst_00_Search{
 					if(!"".equals(GetSearchItemSizeName		)){SearchItemSizeName.add(GetSearchItemSizeName);}			//商品サイズ名
 					
 					Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+							SearchClCd,				//荷主コード
 							SearchClGpCd,			//荷主グループコード
 							SearchItemCd,			//商品コード
 							SearchClItemCd,			//荷主商品コード

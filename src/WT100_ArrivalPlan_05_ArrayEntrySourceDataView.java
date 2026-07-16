@@ -463,6 +463,7 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 	}
 	
 	private static Object[][] ItemMstRt(String TgtClGpCd ,ArrayList<String> TgtItemCd){
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
 		ArrayList<String> SearchItemCd 				= TgtItemCd;	//商品コード
 		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
@@ -488,6 +489,7 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 		SearchClGpCd.add(TgtClGpCd);
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード

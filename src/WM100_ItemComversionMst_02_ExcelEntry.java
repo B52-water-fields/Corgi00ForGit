@@ -443,26 +443,27 @@ public class WM100_ItemComversionMst_02_ExcelEntry{
 			SearchWHCD,
 			AllSearch);
 		
-		ArrayList<String> SearchClGpCd = new ArrayList<String>();			//荷主グループコード
-		ArrayList<String> SearchItemCd = new ArrayList<String>();			//商品コード
-		ArrayList<String> SearchClItemCd = new ArrayList<String>();			//荷主商品コード
-		ArrayList<String> SearchItemName = new ArrayList<String>();			//商品名
-		ArrayList<String> SearchDeliveryTypeCd01 = new ArrayList<String>();	//運送タイプコード01
-		ArrayList<String> SearchDeliveryTypeCd02 = new ArrayList<String>();	//運送タイプコード02
-		ArrayList<String> SearchDeliveryTypeCd03 = new ArrayList<String>();	//運送タイプコード03
-		ArrayList<String> SearchDeliveryTypeCd04 = new ArrayList<String>();	//運送タイプコード04
-		ArrayList<String> SearchDeliveryTypeCd05 = new ArrayList<String>();	//運送タイプコード05
-		ArrayList<String> SearchItemMDNo = new ArrayList<String>();			//商品モデル番号（型番）
-		ArrayList<String> SearchCategoryCd = new ArrayList<String>();		//商品カテゴリCD
-		ArrayList<String> SearchCategoryName = new ArrayList<String>();		//商品カテゴリ名
-		ArrayList<String> SearchItemColorCd = new ArrayList<String>();		//商品カラーコード
-		ArrayList<String> SearchItemColorName = new ArrayList<String>();	//商品カラー名
-		ArrayList<String> SearchItemSizeCd = new ArrayList<String>();		//商品サイズコード
-		ArrayList<String> SearchItemSizeName = new ArrayList<String>();		//商品サイス名
-		ArrayList<String> SearchJanCd = new ArrayList<String>();			//JANCD
-		ArrayList<String> SearchTildFG = new ArrayList<String>();			//温度区分
-		ArrayList<String> SearchTildName = new ArrayList<String>();			//温度区分名
-		ArrayList<String> SearchDelFg = new ArrayList<String>();			//削除フラグ
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主コード
+		ArrayList<String> SearchClGpCd 				= new ArrayList<String>();	//荷主グループコード
+		ArrayList<String> SearchItemCd 				= new ArrayList<String>();	//商品コード
+		ArrayList<String> SearchClItemCd 			= new ArrayList<String>();	//荷主商品コード
+		ArrayList<String> SearchItemName 			= new ArrayList<String>();	//商品名
+		ArrayList<String> SearchDeliveryTypeCd01	= new ArrayList<String>();	//運送タイプコード01
+		ArrayList<String> SearchDeliveryTypeCd02	= new ArrayList<String>();	//運送タイプコード02
+		ArrayList<String> SearchDeliveryTypeCd03 	= new ArrayList<String>();	//運送タイプコード03
+		ArrayList<String> SearchDeliveryTypeCd04 	= new ArrayList<String>();	//運送タイプコード04
+		ArrayList<String> SearchDeliveryTypeCd05 	= new ArrayList<String>();	//運送タイプコード05
+		ArrayList<String> SearchItemMDNo 			= new ArrayList<String>();	//商品モデル番号（型番）
+		ArrayList<String> SearchCategoryCd 			= new ArrayList<String>();	//商品カテゴリCD
+		ArrayList<String> SearchCategoryName 		= new ArrayList<String>();	//商品カテゴリ名
+		ArrayList<String> SearchItemColorCd 		= new ArrayList<String>();	//商品カラーコード
+		ArrayList<String> SearchItemColorName 		= new ArrayList<String>();	//商品カラー名
+		ArrayList<String> SearchItemSizeCd 			= new ArrayList<String>();	//商品サイズコード
+		ArrayList<String> SearchItemSizeName 		= new ArrayList<String>();	//商品サイス名
+		ArrayList<String> SearchJanCd 				= new ArrayList<String>();	//JANCD
+		ArrayList<String> SearchTildFG 				= new ArrayList<String>();	//温度区分
+		ArrayList<String> SearchTildName 			= new ArrayList<String>();	//温度区分名
+		ArrayList<String> SearchDelFg 				= new ArrayList<String>();	//削除フラグ
 		AllSearch = false;
 		
 		for(int i=0;i<CheckOb.length;i++) {
@@ -475,6 +476,7 @@ public class WM100_ItemComversionMst_02_ExcelEntry{
 		}
 		
 		Object[][] ItemMstRt = M100_ItemMstRt.ItemMstRt(
+				SearchClCd,				//荷主コード
 				SearchClGpCd,			//荷主グループコード
 				SearchItemCd,			//商品コード
 				SearchClItemCd,			//荷主商品コード
