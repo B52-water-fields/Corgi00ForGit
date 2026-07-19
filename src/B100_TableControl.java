@@ -59,6 +59,23 @@ public class B100_TableControl{
 		}
 		return rt;
 	}
+	
+	//テーブル要素を文字列配列として返却する
+	public static String[][] TableDataRt(JTable TgtTable) {
+		int row_count = TgtTable.getRowCount();
+		int col_count = TgtTable.getColumnCount();
+		
+		String[][] rt = new String[row_count][col_count];
+		
+		for(int i01=0;i01<row_count;i01++) {
+			for(int i02=0;i02<col_count;i02++) {
+				rt[i01][i02]= ""+TgtTable.getValueAt(i01,i02);
+			}
+		}
+		return rt;
+	}
+	
+	
 	//テーブル情報をcsv出力する
 	public static void TableOutPutCsv(String SelectMSG,String OutPutName,JTable TgtTable) {
 		String Selected = B100_FolderSelect.FolderSelect(SelectMSG);

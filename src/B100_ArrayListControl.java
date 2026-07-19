@@ -93,4 +93,20 @@ public class B100_ArrayListControl{
 		}
 		return rt;
 	}
+	
+	public static int ObjectGetRow(Object[][] CheckObject,String TgtData,int KeyClm,boolean UnHitZeroMode) {
+		int rt = -1;
+		if(UnHitZeroMode) {rt = 0;}
+		if(null!=CheckObject) {
+			for(int i=0;i<CheckObject.length;i++) {
+				if(TgtData.equals(""+CheckObject[i][KeyClm])) {
+					rt = i;
+					i=CheckObject.length+1;
+				}
+			}
+		}
+		return rt;
+	}
+	
+	
 }

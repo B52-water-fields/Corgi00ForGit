@@ -707,7 +707,6 @@ public class B100_DateTimeControl{
 		String SetDate = NowDate;
 		TgtJFormattedTextField.setText(SetDate);
 	}
-	
 	public static void BeforeDateSet(JFormattedTextField TgtJFormattedTextField) {
 		//対象TgtJFormattedTextFieldの日付を一日前にセットする　※空白であれば当日をセット
 		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
@@ -747,7 +746,6 @@ public class B100_DateTimeControl{
 		}
 		TgtJFormattedTextField.setText(SetDate);
 	}
-	
 	public static void AfterMonthSet(JFormattedTextField TgtJFormattedTextField) {
 		//対象TgtJFormattedTextFieldの日付を一月後にセットする　※空白であれば当日をセット
 		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[0];
@@ -761,8 +759,6 @@ public class B100_DateTimeControl{
 		}
 		TgtJFormattedTextField.setText(SetDate);
 	}
-	
-	
 	public static void BeforeDateTimeSet(JFormattedTextField TgtJFormattedTextField) {
 		//対象TgtJFormattedTextFieldの日付を一日前にセットする　※空白であれば当日をセット
 		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
@@ -802,7 +798,6 @@ public class B100_DateTimeControl{
 		}
 		TgtJFormattedTextField.setText(SetDate);
 	}
-	
 	public static void AfterMonthDateTimeSet(JFormattedTextField TgtJFormattedTextField) {
 		//対象TgtJFormattedTextFieldの日付を一月後にセットする　※空白であれば当日をセット
 		String NowDate = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];

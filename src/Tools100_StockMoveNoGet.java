@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class Tools100_StockAdjust{
-	public static int[] AdjustNoRt(int NeedCount) {
+public class Tools100_StockMoveNoGet{
+	public static int[] MoveNoRt(int NeedCount) {
 		ParameterMstWankoCheck();
 		Object[][] ParameterMstRt = ParameterMstRt();
 		int[] rt = new int[NeedCount];
@@ -21,7 +21,6 @@ public class Tools100_StockAdjust{
 		
 		return rt;
 	}
-	
 	public static void ParameterMstWankoCheck() {
 		//パラメータマスタに在庫調整番号採番情報がなければ作る
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
@@ -29,10 +28,10 @@ public class Tools100_StockAdjust{
 		Object[][] SetString = {
 				 {"ClWh"		,"1","0","Key"	,A00000_Main.ClWh}				//担当倉庫コード
 				,{"ClCd"		,"1","0","Key"	,A00000_Main.ClCd}				//荷主コード
-				,{"ParaCd"		,"1","0","Key"	,"NowAdjustNo"}					//パラメータコード
+				,{"ParaCd"		,"1","0","Key"	,"NowMoveNo"}					//パラメータコード
 				,{"ParaCdSeq"	,"1","0","Key"	,"0"}							//ナンバリング
-				,{"ParaName"	,"1","0",""		,"在庫調整番号"}				//パラメータ名
-				,{"ParaTxt01"	,"1","0",""		,"在庫調整番号採番状況"}								//パラメータテキスト項目01
+				,{"ParaName"	,"1","0",""		,"在庫移動番号"}				//パラメータ名
+				,{"ParaTxt01"	,"1","0",""		,"在庫移動番号採番状況"}								//パラメータテキスト項目01
 				,{"ParaTxt02"	,"1","0",""		,"ParaInt01:最小 ParaInt02:現在値 ParaInt03:最大"}		//パラメータテキスト項目02
 				,{"ParaTxt03"	,"1","0",""		,""}				//パラメータテキスト項目03
 				,{"ParaTxt04"	,"1","0",""		,""}				//パラメータテキスト項目04
@@ -71,10 +70,10 @@ public class Tools100_StockAdjust{
 		Object[][] SetString = {
 				 {"ClWh"		,"0","1","Key"	,A00000_Main.ClWh}				//担当倉庫コード
 				,{"ClCd"		,"0","1","Key"	,A00000_Main.ClCd}				//荷主コード
-				,{"ParaCd"		,"0","1","Key"	,"NowAdjustNo"}					//パラメータコード
+				,{"ParaCd"		,"0","1","Key"	,"NowMoveNo"}					//パラメータコード
 				,{"ParaCdSeq"	,"0","1","Key"	,"0"}							//ナンバリング
-				,{"ParaName"	,"0","0",""		,"在庫調整番号"}				//パラメータ名
-				,{"ParaTxt01"	,"0","0",""		,"在庫調整番号採番状況"}								//パラメータテキスト項目01
+				,{"ParaName"	,"0","0",""		,"在庫移動番号"}				//パラメータ名
+				,{"ParaTxt01"	,"0","0",""		,"在庫移動採番状況"}									//パラメータテキスト項目01
 				,{"ParaTxt02"	,"0","0",""		,"ParaInt01:最小 ParaInt02:現在値 ParaInt03:最大"}		//パラメータテキスト項目02
 				,{"ParaTxt03"	,"0","0",""		,""}				//パラメータテキスト項目03
 				,{"ParaTxt04"	,"0","0",""		,""}				//パラメータテキスト項目04
@@ -148,7 +147,7 @@ public class Tools100_StockAdjust{
 		Boolean AllSearch = false;
 		SearchClWh.add(A00000_Main.ClWh);
 		SearchClCd.add(A00000_Main.ClCd);
-		SearchParaCd.add("NowAdjustNo");
+		SearchParaCd.add("NowMoveNo");
 		SearchParaCdSeqStr.add(0);
 		SearchParaCdSeqEnd.add(0);
 		

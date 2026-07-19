@@ -1063,6 +1063,8 @@ public class WT100_Stock_10_Adjust{
 					
 					if(0>SetAfterQty||0>SetAfterPossibleQty) {
 						JOptionPane.showMessageDialog(null, "調整数が調整可能数を超えておる");
+					}else if(SetAdjustQty==0){
+						JOptionPane.showMessageDialog(null, "調整数0は意味がないので嫌じゃ");
 					}else {
 						//在庫更新
 						Object[][] SetData = new Object[1][Tools100_StockQtyControl.StockQtyControlDataLayout().length];
@@ -1097,6 +1099,7 @@ public class WT100_Stock_10_Adjust{
 									AdjustQty			= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColAdjustQty];
 									AfterQty			= (int)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColAfterQty];
 									EntryFg = true;
+									//System.out.println(BeforeQty+"⇒"+AfterQty+":"+AdjustQty);
 								}else{
 									String 	ErrType = (String)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColErrType];
 									String 	ErrVol 	= (String)StockQtyControlErr[i01][Tools100_StockQtyControl.RtColErrVol];
@@ -1109,7 +1112,7 @@ public class WT100_Stock_10_Adjust{
 							}
 							if(EntryFg) {
 								//在庫調整結果を登録する
-								int[] AdjustNoRt = Tools100_StockAdjust.AdjustNoRt(1);
+								int[] AdjustNoRt = Tools100_StockAdjustNoGet.AdjustNoRt(1);
 								String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 								
 								Object[][] SetString = {

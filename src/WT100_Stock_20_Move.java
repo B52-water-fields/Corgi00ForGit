@@ -1922,7 +1922,7 @@ public class WT100_Stock_20_Move{
 			}else {
 				//在庫移動データ格納用
 				String now_dtm 	= B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
-				int[] MoveNoRt	= Tools100_StockMove.MoveNoRt(1);
+				int[] MoveNoRt	= Tools100_StockMoveNoGet.MoveNoRt(1);
 				
 				Object[][] SetString = {
 							 {"ClCd"					,"1"	,"0"	,"KEY"	,GetClCd					}	//荷主コード

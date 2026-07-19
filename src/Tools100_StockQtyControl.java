@@ -47,14 +47,30 @@ public class Tools100_StockQtyControl{
 	
 	public static Object[][] StockQtyControlDataLayout() {
 		Object[][] Layout = {
-							 {"ClCd"		,ColClCd			,"String"	,"荷主コード"}
-							,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"}
-							,{"Loc"			,ColLoc			,"String"	,"ロケーション"}
-							,{"ItemCd"		,ColItemCd			,"String"	,"商品コード"}
-							,{"Lot"			,ColLot			,"String"	,"ロット"}
-							,{"Expdate"		,ColExpdate		,"Date"		,"消費期限"}
-							,{"ActualDate"	,ColActualDate	,"Date"		,"入荷実績日"}
-							,{"ControlQty"	,ColControlQty	,"int"		,"調整数"}
+							 {"ClCd"		,ColClCd			,"String"	,"荷主コード"	,""}
+							,{"WhCd"		,ColWhCd			,"String"	,"倉庫コード"	,""}
+							,{"Loc"			,ColLoc			,"String"	,"ロケーション"	,""}
+							,{"ItemCd"		,ColItemCd			,"String"	,"商品コード"	,""}
+							,{"Lot"			,ColLot			,"String"	,"ロット"		,""}
+							,{"Expdate"		,ColExpdate		,"Date"		,"消費期限"		,""}
+							,{"ActualDate"	,ColActualDate	,"Date"		,"入荷実績日"	,""}
+							,{"ControlQty"	,ColControlQty	,"int"		,"調整数"		,""}
+							};
+		return Layout;
+	}
+	
+	public static Object[][] RtStockQtyControl(){
+		Object[][] Layout = {
+							 {"ErrType"				,RtColErrType				,"String"	,"データ種別"		,""}
+							,{"ErrVol"				,RtColErrVol				,"String"	,"エラー事由値"		,""}
+							,{"ErrRow"				,RtColErrRow				,"int"		,"エラー行番号"		,""}
+							,{"BeforeQty"			,RtColBeforeQty 			,"int"		,"調整前総数"		,""}
+							,{"BeforeShipPlanQty"	,RtColBeforeShipPlanQty	,"int"		,"調整前引当済数"	,""}
+							,{"BeforePossibleQty"	,RtColBeforePossibleQty	,"int"		,"調整前出荷可能数"	,""}
+							,{"AdjustQty"			,RtColAdjustQty			,"int"		,"調整数"			,""}
+							,{"AfterQty"			,RtColAfterQty			,"int"		,"調整後総数"		,""}
+							,{"AfterShipPlanQty"	,RtColAfterShipPlanQty	,"int"		,"調整後引当済数"	,""}
+							,{"AfterPossibleQty"	,RtColAfterPossibleQty	,"int"		,"調整後出荷可能数"	,""}
 							};
 		return Layout;
 	}
@@ -127,10 +143,8 @@ public class Tools100_StockQtyControl{
 	static final int RtColAfterShipPlanQty	= 8;
 	static final int RtColAfterPossibleQty	= 9;
 	
-	
-	
 	public static Object[][] StockQtyControl(Object[][] TgtData) {
-		Object[][] rt = new Object[0][8];
+		Object[][] rt = new Object[0][RtStockQtyControl().length];
 		if(null!=TgtData && 0<TgtData.length) {
 			String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 			
@@ -163,6 +177,7 @@ public class Tools100_StockQtyControl{
 			ArrayList<Integer> EntryAfterQty			= new ArrayList<Integer>();
 			ArrayList<Integer> EntryAfterShipPlanQty	= new ArrayList<Integer>();
 			ArrayList<Integer> EntryAfterPossibleQty	= new ArrayList<Integer>();
+			ArrayList<String>  EntryControlKey			= new ArrayList<String>();
 			
 			//必須チェック⇒在庫更新
 			try {
@@ -355,7 +370,7 @@ public class Tools100_StockQtyControl{
 				rtCount = rtCount + EntryRow.size();
 			}
 			
-			rt = new Object[rtCount][10];
+			rt = new Object[rtCount][RtStockQtyControl().length];
 			rtCount = 0;
 			if(null!=NoLocErr&&0<NoLocErr.size()) {
 				for(int i01=0;i01<NoLocErr.size();i01++) {

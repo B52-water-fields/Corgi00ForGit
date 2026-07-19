@@ -34,8 +34,8 @@ public class M100_ShippingCompanyMstRt{
 	String GetAdd01					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColAdd01];					//運送会社住所1
 	String GetAdd02					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColAdd02];					//運送会社住所2
 	String GetAdd03					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColAdd03];					//運送会社住所3
-	String GetTel					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColTel];					//運送会社電話
-	String GetFax					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColFax];					//運送会社FAX
+	String GetTel					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColTel];						//運送会社電話
+	String GetFax					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColFax];						//運送会社FAX
 	String GetMail					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColMail];					//運送会社MAIL
 	String GetCom01					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColCom01];					//コメント1
 	String GetCom02					=(String)ShippingCompanyMstRt[i][M100_ShippingCompanyMstRt.ColCom02];					//コメント2
