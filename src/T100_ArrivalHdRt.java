@@ -207,7 +207,7 @@ public class T100_ArrivalHdRt{
 				+"max(WW0012ArrivalHd.ClArrNo) 			as	ClArrNo,\n"			//荷主予定番号
 				+"max(WW0012ArrivalHd.PlanDate) 		as	PlanDate,\n"		//入荷予定日
 				+"max(WW0012ArrivalHd.ActualDate)		as	ActualDate,\n"		//入荷実績日
-				+"max(WW0012ArrivalHd.SpCd)				as	SpCd,\n"			//仕入先CD
+				+"(WW0012ArrivalHd.SpCd)				as	SpCd,\n"			//仕入先CD
 				+"max(WW0012ArrivalHd.SpName01)			as	SpName01,\n"		//仕入先名01
 				+"max(WW0012ArrivalHd.SpName02)			as	SpName02,\n"		//仕入先名02
 				+"max(WW0012ArrivalHd.SpName03)			as	SpName03,\n"		//仕入先名03
@@ -499,8 +499,8 @@ public class T100_ArrivalHdRt{
 			}
 			sql = sql + ")\n";
 		}
-		sql = sql + " group by WW0012ArrivalHd.ClWh,WW0012ArrivalHd.ClCd,KM0030_CLIENTMST.ClGpCD,WW0012ArrivalHd.ArrNo,WW0012ArrivalHd.ArrCount";
-		sql = sql + " order by WW0012ArrivalHd.ActualDate,WW0012ArrivalHd.ArrNo,WW0012ArrivalHd.ArrCount,WW0013ArrivalMs.MsNo,WW0013ArrivalMs.MsSeq ;\n";
+		sql = sql + " group by WW0012ArrivalHd.ClWh,WW0012ArrivalHd.ClCd,KM0030_CLIENTMST.ClGpCD,WW0012ArrivalHd.ArrNo,WW0012ArrivalHd.ArrCount,WW0012ArrivalHd.SpCd";
+		sql = sql + " order by WW0012ArrivalHd.ActualDate,WW0012ArrivalHd.SpCd,WW0012ArrivalHd.ArrNo,WW0012ArrivalHd.ArrCount,WW0013ArrivalMs.MsNo,WW0013ArrivalMs.MsSeq ;\n";
 		
 		//System.out.println(sql);
 		

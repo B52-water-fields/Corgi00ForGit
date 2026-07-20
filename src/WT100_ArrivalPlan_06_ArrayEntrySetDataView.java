@@ -272,14 +272,13 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 			String[][] judg_data 	= new String[DelCount][3];
 			String TgtDB 			= "WANKO";
 			
-			
-			
 			DelCount = 0;
 			for(int i=0;i<FromArrNoArrivalPlanHdRt.length;i++) {
 				if(0==(int)FromArrNoArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColFixFg]) {
 					judg_data[DelCount][0]	= TgtClWh;
 					judg_data[DelCount][1]	= TgtCLCd;
 					judg_data[DelCount][2]	= (String)FromArrNoArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArrNo];
+					//System.out.println(TgtClWh+":"+TgtCLCd+":"+(String)FromArrNoArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArrNo]);
 				}
 			}
 			A100_DeleteSQL.DeleteSql(Hdtgt_table,judg_field,judg_data,TgtDB);
@@ -386,7 +385,7 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 		String[] SetEntryUser		= new String[MsEntryCount];			//登録者
 		String[] SetUpdateUser		= new String[MsEntryCount];			//更新者
 		
-		System.out.println(MsEntryCount);
+		//System.out.println(MsEntryCount);
 		
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 		MsEntryCount = 0;
@@ -632,9 +631,12 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 		ArrayList<String> SearchUpdateUser 		= new ArrayList<String>();		//更新者
 		boolean AllSearch = false;
 		
-		SearchClWh.add(TgtClWh);
-		SearchClCd.add(TgtCLCd);
-		
+		if(0==ArrNo.size()&&0==ClArrNo.size()) {
+			
+		}else {
+			SearchClWh.add(TgtClWh);
+			SearchClCd.add(TgtCLCd);
+		}
 		Object[][] ArrivalPlanHdRt = T100_ArrivalPlanHdRt.ArrivalPlanHdRt(
 				SearchClWh,				//ヘッダ担当倉庫
 				SearchClCd,				//ヘッダ荷主CD

@@ -623,7 +623,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 								GetPlanDate,
 								GetHdActualDate,
 
-								GetFixFg	,
+								GetFixFg,
 								GetArCom01,
 								GetArCom02,
 								GetArCom03,

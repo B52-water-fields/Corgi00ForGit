@@ -336,7 +336,7 @@ public class T100_ArrivalPlanHdRt{
 					+"max(WW0010ArrivalPlanHd.ClArrNo)     as ClArrNo,\n"			//ヘッダ荷主予定番号
 					+"(WW0010ArrivalPlanHd.PlanDate)       as PlanDate,\n"			//ヘッダ入荷予定日
 					+"max(WW0010ArrivalPlanHd.ActualDate)  as ActualDate,\n"		//ヘッダ入荷実績日
-					+"max(WW0010ArrivalPlanHd.SpCd)        as SpCd,\n"				//ヘッダ仕入先CD
+					+"(WW0010ArrivalPlanHd.SpCd)           as SpCd,\n"				//ヘッダ仕入先CD
 					+"max(WW0010ArrivalPlanHd.SpName01)    as SpName01,\n"			//ヘッダ仕入先名01
 					+"max(WW0010ArrivalPlanHd.SpName02)    as SpName02,\n"			//ヘッダ仕入先名02
 					+"max(WW0010ArrivalPlanHd.SpName03)    as SpName03,\n"			//ヘッダ仕入先名03
@@ -766,8 +766,8 @@ public class T100_ArrivalPlanHdRt{
 			sql = sql + ")";
 		}
 		
-		sql = sql + " group by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.PlanDate,WW0010ArrivalPlanHd.ArrNo";
-		sql = sql + " order by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.PlanDate,WW0010ArrivalPlanHd.ArrNo";
+		sql = sql + " group by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.PlanDate,WW0010ArrivalPlanHd.SpCd,WW0010ArrivalPlanHd.ArrNo";
+		sql = sql + " order by WW0010ArrivalPlanHd.ClWh,WW0010ArrivalPlanHd.ClCd,WW0010ArrivalPlanHd.PlanDate,WW0010ArrivalPlanHd.SpCd,WW0010ArrivalPlanHd.ArrNo";
 		//System.out.println(sql);
 		if(SearchKick) {
 			A100_DbConnect.DB_CONN("NYANKO");
