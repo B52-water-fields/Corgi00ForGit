@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -127,10 +128,10 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		
 		String[] Title = B100_RtObjectCreate.RtTitleName(WT100_Arrival_30_ExcelEntryOutPut.RtArrivalExcelOutPut());
 		
-		Object[][] NeedCol = {
+		final Object[][] NeedCol = {
 				 {Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetClWh]					,1	,-1,ColSetClWh}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetClCd]					,1	,-1,ColSetClCd}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetPlanDate]				,1	,-1,ColSetPlanDate}
+				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetPlanDate]				,2	,-1,ColSetPlanDate}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetSpCd]					,1	,-1,ColSetSpCd}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetSpName01]				,1	,-1,ColSetSpName01}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetClArrNo]				,1	,-1,ColSetClArrNo}
@@ -139,19 +140,19 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetItemCd]				,1	,-1,ColSetItemCd}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetItemName]				,1	,-1,ColSetItemName}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetlot]					,1	,-1,ColSetlot}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetExpDate]				,1	,-1,ColSetExpDate}
+				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetExpDate]				,2	,-1,ColSetExpDate}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetPlanQty]				,0	,-1,ColSetPlanQty}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetActualQty]			,0	,-1,ColSetActualQty}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetRemainingPlanQty]	,0	,-1,ColSetRemainingPlanQty}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetRecmendLoc]			,1	,-1,ColSetRecmendLoc}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetRecmendLocMst]		,1	,-1,ColSetRecmendLocMst}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryLot]					,1	,-1,ColSetEntryLot}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryExpDate]			,1	,-1,ColSetEntryExpDate}
+				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryExpDate]			,2	,-1,ColSetEntryExpDate}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryQty]					,0	,-1,ColSetEntryQty}
 				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryStoreLoc]			,1	,-1,ColSetEntryStoreLoc}
 		};//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
 		
-		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています",11,0);
+		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています 格納先が特に指定されていない場合入荷時ロケに在庫増えます",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = new String[NeedCol.length+1];
@@ -212,19 +213,22 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		JLabel scpnMsg				= B100_FrameParts.JLabelSet(1140,325,130,20,"↑"	,11,2);
 		main_fm.add(scpnMsg);
 		
-		JButton PlanSameBtn = B100_FrameParts.AnyBtn(350,"予定=実績",10);
+		JButton PlanSameBtn 		= B100_FrameParts.AnyBtn(350,"予定=実績",10);
 		main_fm.add(PlanSameBtn);
 		
-		JButton MstLocEntryBtn = B100_FrameParts.AnyBtn(375,"MST推奨ロケ",10);
+		JButton MstLocEntryBtn 		= B100_FrameParts.AnyBtn(400,"MST推奨ロケ",10);
 		main_fm.add(MstLocEntryBtn);
 		
-		JButton StockLocEntryBtn = B100_FrameParts.AnyBtn(400,"在庫推奨ロケ",10);
+		JButton StockLocEntryBtn 	= B100_FrameParts.AnyBtn(425,"在庫推奨ロケ",10);
 		main_fm.add(StockLocEntryBtn);
 		
-		JButton NKLocEntryBtn = B100_FrameParts.AnyBtn(425,"入荷時ロケ",10);
+		JButton NKLocEntryBtn 		= B100_FrameParts.AnyBtn(450,"入荷時ロケ",10);
 		main_fm.add(NKLocEntryBtn);
 		
-		final Object[] LocSerachSet		= WT200_LocSearchSubFm.LocSearchSubFm(main_fm.getX()+120,main_fm.getY()+30,A00000_Main.ClWh,A00000_Main.ClCd,"NK");
+		JButton LocClearBtn 		= B100_FrameParts.AnyBtn(475,"ロケクリア",10);
+		main_fm.add(LocClearBtn);
+		
+		final Object[] LocSerachSet	= WT200_LocSearchSubFm.LocSearchSubFm(main_fm.getX()+120,main_fm.getY()+30,A00000_Main.ClWh,A00000_Main.ClCd,"NK");
 		
 		JLabel LB_RowNo				= B100_FrameParts.JLabelSet(  0,325,130,20,"RowNo:"				,11,1);
 		JLabel LB_PlanDate			= B100_FrameParts.JLabelSet(230,325,130,20,"入荷予定日:"			,11,1);
@@ -270,7 +274,10 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		final JTextField TB_RecmendLoc					= B100_FrameParts.JTextFieldSet(				130,550,100,20,"",11,0);									//推奨ロケ（在庫考慮）
 		final JTextField TB_RecmendLocMst				= B100_FrameParts.JTextFieldSet(				130,575,100,20,"",11,0);									//推奨ロケ（マスタ）
 		
-		JButton MsPlanSameBtn							= B100_FrameParts.BtnSet(						130,600, 90,20,"予定通り"	,11);
+		JButton MsPlanSameBtn							= B100_FrameParts.BtnSet(						130,600,100,20,"予定通り"		,11);
+		JButton MsStockLocEntryBtn 						= B100_FrameParts.BtnSet(						130,650,100,20,"在庫推奨ロケ"	,10);
+		JButton MsMstLocEntryBtn 						= B100_FrameParts.BtnSet(						130,675,100,20,"MST推奨ロケ"	,10);
+		
 		
 		final JTextField TB_EntryLot					= B100_FrameParts.JTextFieldSet(				360,475,100,20,"",11,0);									//登録ロット
 		final JFormattedTextField TB_EntryExpDate		= B100_FrameParts.JFormattedTextFieldSet(	360,500,100,20,"",11,0,"YYYY/MM/DD");						//登録賞味期限
@@ -283,11 +290,17 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		final JFormattedTextField TB_PlanQty			= B100_FrameParts.JFormattedTextFieldSet(	820,375,100,20,"",11,1,"#,###");							//予定数量
 		final JFormattedTextField TB_ActualQty			= B100_FrameParts.JFormattedTextFieldSet(	820,400,100,20,"",11,1,"#,###");							//入荷済数量
 		
+		final JCheckBox ShortageSplit					= B100_FrameParts.JCheckBoxSet(			   1060,650,200,20,"入荷不足分は分納待ちにする"		,11);
+		final JCheckBox OverErr							= B100_FrameParts.JCheckBoxSet(			   1060,675,200,20,"過剰入荷は拒否する"				,11);
+		ShortageSplit.setSelected(true);
+		OverErr.setSelected(true);
+		main_fm.add(ShortageSplit);
+		main_fm.add(OverErr);
+		
 		TB_EntryLot.setBackground(B100_FrameParts.SelectColer("Entry"));
 		TB_EntryExpDate.setBackground(B100_FrameParts.SelectColer("Entry"));
 		TB_EntryQty.setBackground(B100_FrameParts.SelectColer("Entry"));
 		TB_EntryStoreLoc.setBackground(B100_FrameParts.SelectColer("Entry"));
-		
 		
 		TB_RowNo.setEditable(false);
 		TB_ClWh.setEnabled(false);
@@ -352,6 +365,8 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		main_fm.add(TB_ItemCd);
 		main_fm.add(TB_ItemName);
 		main_fm.add(MsPlanSameBtn);
+		main_fm.add(MsMstLocEntryBtn);
+		main_fm.add(MsStockLocEntryBtn);
 		
 		main_fm.add(TB_lot);
 		main_fm.add(TB_ExpDate);
@@ -433,12 +448,13 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 					}
 					MainFmTableModel.addRow(SetOb);
 				}
+				B100_TableControl.AddSortON(tb01,MainFmTableModel);
 			}
 			
-			ArrayList<String> ErrMsg = ErrCheck(tb01);
+			ArrayList<String> ErrMsg = ErrCheck(MainFmTableModel,tb01);
 			
 			if(null!=ErrMsg && 0<ErrMsg.size()) {
-				ErrView(ErrMsg);
+				ErrView(ErrMsg,"Data");
 				
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
@@ -451,6 +467,397 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 			}
 		}
 		RenewFg = true;
+		
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					ArrayList<String> ErrMsg	= ErrCheck(MainFmTableModel,tb01);
+					if(null!=ErrMsg&&0<ErrMsg.size()) {
+						ErrView(ErrMsg,"Data");
+					}
+					int RowNo				= B100_TextControl.TextToInt(TB_RowNo.getText());
+					boolean KickFg = true;
+					if(null==ErrMsg||0==ErrMsg.size()) {
+					}else {
+						KickFg = false;
+					}
+					if(0>RowNo) {
+					}else {
+						JOptionPane.showMessageDialog(null, "メンテナンス中の行があるようだが？");
+						KickFg = false;
+					}
+					
+					
+					if(KickFg) {
+						int RowCount = MainFmTableModel.getRowCount();
+						ArrayList<String> SearchArrNo = new ArrayList<String>();
+						
+						for(int i=0;i<RowCount;i++) {
+							SearchArrNo.add(""+MainFmTableModel.getValueAt(i, ColSetArrNo));
+						}
+						Object[][] ArrivalPlanHdRt	= ArrivalPlanHdRt(A00000_Main.ClWh,A00000_Main.ClCd,SearchArrNo);
+						Object[][] ArrivalPlanMsRt	= ArrivalPlanMsRt(A00000_Main.ClWh,A00000_Main.ClCd,SearchArrNo);
+						
+						int ColHdPlanArrNo				=  0;
+						int ColHdPlanClWh				=  1;
+						int ColHdPlanClCd				=  2;
+						int ColHdPlanSpCd				=  3;
+						int ColHdPlanPlanDate			=  4;
+						int ColHdPlanQty				=  5;
+						int ColHdPlanActualQty			=  6;
+						int ColHdPlanRemainingPlanQty	=  7;
+						int ColHdPlanEntryQty			=  8;
+						int ColHdPlanCompleteFg			=  9;
+						
+						
+						int ColMsPlanArrNo				=  0;
+						int ColMsPlanMsNo				=  1;
+						int ColMsPlanItemCd				=  2;
+						int ColMsPlanItemName			=  3;
+						int ColMsPlanlot				=  4;
+						int ColMsPlanExpDate			=  5;
+						int ColMsPlanPlanQty			=  6;
+						int ColMsPlanActualQty			=  7;
+						int ColMsPlanRemainingPlanQty	=  8;
+						int ColMsPlanEntryQty			=  9;
+						int ColMsPlanClWh				= 10;
+						int ColMsPlanClCd				= 11;
+						int ColMsPlanPlanDate			= 12;
+						int ColMsPlanSpCd				= 13;
+						int ColHdPlanEntryFg			= 14;
+						
+						Object[][] CheckPlanHdData = new Object[ArrivalPlanHdRt.length][10];
+						Object[][] CheckPlanMsData = new Object[ArrivalPlanMsRt.length][15];
+						
+						for(int i=0;i<ArrivalPlanMsRt.length;i++) {
+							String GetClWh			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClWh];			//ヘッダ担当倉庫
+							String GetClCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClCd];			//ヘッダ荷主CD
+							String GetCLName01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLName01];		//ヘッダ荷主名
+							String GetClGpCD		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClGpCD];			//ヘッダ荷主グループCD
+							String GetCLGpName01	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLGpName01];		//ヘッダ荷主グループ標記名
+							String GetArrNo			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArrNo];			//ヘッダ入荷予定NO
+							String GetClArrNo		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClArrNo];			//ヘッダ荷主予定番号
+							String GetPlanDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColPlanDate];		//ヘッダ入荷予定日
+							String GetHdActualDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdActualDate];	//ヘッダ入荷実績日
+							String GetSpCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpCd];			//ヘッダ仕入先CD
+							String GetSpName01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName01];		//ヘッダ仕入先名01
+							String GetSpName02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName02];		//ヘッダ仕入先名02
+							String GetSpName03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName03];		//ヘッダ仕入先名03
+							String GetSpPost		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpPost];			//ヘッダ仕入先郵便
+							String GetSpAdd01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd01];			//ヘッダ仕入先住所01
+							String GetSpAdd02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd02];			//ヘッダ仕入先住所02
+							String GetSpAdd03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd03];			//ヘッダ仕入先住所03
+							String GetSpTel			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpTel];			//ヘッダ仕入先電話
+							String GetArCom01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom01];			//ヘッダコメント1
+							String GetArCom02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom02];			//ヘッダコメント2
+							String GetArCom03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom03];			//ヘッダコメント3
+							String GetHdEntryDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdEntryDate];	//ヘッダ登録日
+							String GetHdUpdateDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdUpdateDate];	//ヘッダ更新日
+							String GetHdEntryUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdEntryUser];	//ヘッダ登録者
+							String GetHdUpdateUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdUpdateUser];	//ヘッダ更新者
+							int  GetFixFg			= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColFixFg];				//ヘッダ状況
+										
+							int GetMsNo				= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColMsNo];				//明細番号
+							String GetItemCd		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemCd];			//商品コード
+							String GetClItemCd		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClItemCd];			//荷主商品コード
+							String GetJanCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColJanCd];			//JANCD（バラ）
+							String GetItemMdNo		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemMdNo];			//商品型番
+							String GetItemName		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemName];			//商品名
+							String Getlot			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.Collot];				//ロット
+							String GetExpDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColExpDate];			//消費期限
+							int GetPlanQty			= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColPlanQty];				//予定数量
+							int GetActualQty		= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColActualQty];			//実績数
+							String GetActualDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColActualDate];		//入荷日
+							String GetCom01			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCom01];			//コメント1
+							String GetCom02			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCom02];			//コメント2
+							String GetEntryDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColEntryDate];		//登録日
+							String GetUpdateDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColUpdateDate];		//更新日
+							String GetEntryUser		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColEntryUser];		//登録者
+							String GetUpdateUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColUpdateUser];		//更新者
+							
+							CheckPlanMsData[i][ColMsPlanArrNo]				= GetArrNo;
+							CheckPlanMsData[i][ColMsPlanMsNo]				= GetMsNo;
+							CheckPlanMsData[i][ColMsPlanItemCd]				= GetItemCd;
+							CheckPlanMsData[i][ColMsPlanItemName]			= GetItemName;
+							CheckPlanMsData[i][ColMsPlanlot]				= Getlot;
+							CheckPlanMsData[i][ColMsPlanExpDate]			= GetExpDate;
+							CheckPlanMsData[i][ColMsPlanPlanQty]			= GetPlanQty;
+							CheckPlanMsData[i][ColMsPlanActualQty]			= GetActualQty;
+							CheckPlanMsData[i][ColMsPlanRemainingPlanQty]	= GetPlanQty-GetActualQty;
+							CheckPlanMsData[i][ColMsPlanEntryQty]			= (int)0;
+							CheckPlanMsData[i][ColMsPlanClWh]				= GetClWh;
+							CheckPlanMsData[i][ColMsPlanClCd]				= GetClCd;
+							CheckPlanMsData[i][ColMsPlanPlanDate]			= GetPlanDate;
+							CheckPlanMsData[i][ColMsPlanSpCd]				= GetSpCd;
+							CheckPlanMsData[i][ColHdPlanEntryFg]			= (boolean)false;
+							
+						}
+						
+						for(int i=0;i<ArrivalPlanHdRt.length;i++) {
+							String GetClWh			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClWh];			//ヘッダ担当倉庫
+							String GetClCd			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClCd];			//ヘッダ荷主CD
+							String GetCLName01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColCLName01];		//ヘッダ荷主名
+							String GetClGpCD		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClGpCD];			//ヘッダ荷主グループCD
+							String GetCLGpName01	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColCLGpName01];		//ヘッダ荷主グループ標記名
+							String GetArrNo			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArrNo];			//ヘッダ入荷予定NO
+							String GetClArrNo		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClArrNo];			//ヘッダ荷主予定番号
+							String GetPlanDate		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColPlanDate];		//ヘッダ入荷予定日
+							String GetHdActualDate	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColActualDate];		//ヘッダ入荷実績日
+							String GetSpCd			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpCd];			//ヘッダ仕入先CD
+							String GetSpName01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName01];		//ヘッダ仕入先名01
+							String GetSpName02		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName02];		//ヘッダ仕入先名02
+							String GetSpName03		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpName03];		//ヘッダ仕入先名03
+							String GetSpPost		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpPost];			//ヘッダ仕入先郵便
+							String GetSpAdd01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpAdd01];			//ヘッダ仕入先住所01
+							String GetSpAdd02		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpAdd02];			//ヘッダ仕入先住所02
+							String GetSpAdd03		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpAdd03];			//ヘッダ仕入先住所03
+							String GetSpTel			= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColSpTel];			//ヘッダ仕入先電話
+							String GetArCom01		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArCom01];			//ヘッダコメント1
+							String GetArCom02		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArCom02];			//ヘッダコメント2
+							String GetArCom03		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArCom03];			//ヘッダコメント3
+							String GetHdEntryDate	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColEntryDate];		//ヘッダ登録日
+							String GetHdUpdateDate	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColUpdateDate];		//ヘッダ更新日
+							String GetHdEntryUser	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColEntryUser];		//ヘッダ登録者
+							String GetHdUpdateUser	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColUpdateUser];		//ヘッダ更新者
+							int GetFixFg			= (int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColFixFg];				//ヘッダ状況
+							int GetPlanQty			= (int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColPlanQty];			//予定数合計
+							int GetActualQty		= (int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColActualQty];			//実績数合計
+							
+							CheckPlanHdData[i][ColHdPlanArrNo]				= GetArrNo;
+							CheckPlanHdData[i][ColHdPlanClWh]				= GetClWh;
+							CheckPlanHdData[i][ColHdPlanClCd]				= GetClCd;
+							CheckPlanHdData[i][ColHdPlanSpCd]				= GetSpCd;
+							CheckPlanHdData[i][ColHdPlanPlanDate]			= GetPlanDate;
+							CheckPlanHdData[i][ColHdPlanQty]				= GetPlanQty;
+							CheckPlanHdData[i][ColHdPlanActualQty]			= GetActualQty;
+							CheckPlanHdData[i][ColHdPlanRemainingPlanQty]	= GetPlanQty-GetActualQty;
+							CheckPlanHdData[i][ColHdPlanEntryQty]			= (int)0;
+							CheckPlanHdData[i][ColHdPlanCompleteFg]			= (boolean)false;
+						}
+						
+						for(int i=0;i<RowCount;i++) {
+							String GetClWh			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClWh));
+							String GetClCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClCd));
+							String GetPlanDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetPlanDate));
+							String GetSpCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetSpCd));
+							String GetSpName01		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetSpName01));
+							String GetClArrNo		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClArrNo));
+							String GetArrNo			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetArrNo));
+							int GetMsNo				= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetMsNo));
+							String GetItemCd		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetItemCd));
+							String GetItemName		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetItemName));
+							String Getlot			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetlot));
+							String GetExpDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetExpDate));
+							int GetPlanQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetPlanQty));
+							String GetRecmendLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetRecmendLoc));
+							String GetRecmendLocMst	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetRecmendLocMst));
+							String GetEntryLot		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetEntryLot));
+							String GetEntryExpDate	= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetEntryExpDate));
+							int GetEntryQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetEntryQty));
+							String GetEntryStoreLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetEntryStoreLoc));
+							int GetActualQty		= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetActualQty));
+							int GetRemainingPlanQty	= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetRemainingPlanQty));
+							if("".equals(GetEntryStoreLoc)) {GetEntryStoreLoc	= B100_DefaultVariable.DefaultArrivalLoc;}
+							
+							String[] MsTgtData = {GetClWh,GetClCd,GetArrNo,""+GetMsNo};
+							int[] MsKeyClm = {ColMsPlanClWh,ColMsPlanClCd,ColMsPlanArrNo,ColMsPlanMsNo};
+							int MsHitRow=B100_ArrayListControl.ObjectGetRowAnyKey(CheckPlanMsData,MsTgtData,MsKeyClm,false);
+							
+							String[] HdTgtData = {GetClWh,GetClCd,GetArrNo};
+							int[] HdKeyClm = {ColHdPlanClWh,ColHdPlanClCd,ColHdPlanArrNo};
+							int HdHitRow=B100_ArrayListControl.ObjectGetRowAnyKey(CheckPlanHdData,HdTgtData,HdKeyClm,false);
+							
+							CheckPlanMsData[MsHitRow][ColMsPlanEntryQty]			= (int)CheckPlanMsData[MsHitRow][ColMsPlanEntryQty]+GetEntryQty;
+							CheckPlanHdData[HdHitRow][ColHdPlanEntryQty]			= (int)CheckPlanHdData[HdHitRow][ColHdPlanEntryQty]+GetEntryQty;
+							CheckPlanMsData[MsHitRow][ColHdPlanEntryFg]				= (boolean)true;
+						}
+						ArrayList<String> UnCompleteArrNo	= new ArrayList<String>();
+						ArrayList<String> OverQtyArrNo		= new ArrayList<String>();
+						ArrayList<Integer> OverQtyMsNo		= new ArrayList<Integer>();
+						
+						for(int i=0;i<CheckPlanMsData.length;i++) {
+							if(ShortageSplit.isSelected()	) {	//入荷不足分は分納待ちにする
+								if((int)CheckPlanMsData[i][ColMsPlanRemainingPlanQty]>(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
+									UnCompleteArrNo.add((String)CheckPlanMsData[i][ColMsPlanArrNo]);
+								}
+							}
+							if(OverErr.isSelected()			) {	//過剰入荷は拒否する
+								if((int)CheckPlanMsData[i][ColMsPlanRemainingPlanQty]<(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
+									OverQtyArrNo.add((String)CheckPlanMsData[i][ColMsPlanArrNo]);
+									OverQtyMsNo.add((int)CheckPlanMsData[i][ColMsPlanMsNo]);
+								}
+							}
+						}
+						if(null!=OverQtyArrNo&&0<OverQtyArrNo.size()) {
+							ArrayList<String> OverErr	= new ArrayList<String>();
+							for(int i=0;i<OverQtyArrNo.size();i++) {
+								OverErr.add("入荷予定番号:"+OverQtyArrNo.get(i)+"明細行番号:"+OverQtyMsNo.get(i)+" の入荷数量が予定数量を超えています");
+							}
+							ErrView(OverErr,"QtyOver");
+						}else {
+							//登録済みの入荷実績データを取得し枝番採番する
+							/************************************************************************************************
+							  不足分を分納待ちにしない場合
+							  入荷予定ヘッダに対して数量ゼロはステータス変更不要※分納待ちではなく未入荷のままでもOK
+							  入荷予定明細に対して数量ゼロは入荷実績生成不要不要
+							************************************************************************************************/
+							
+							
+							
+							
+							
+							
+							
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//明細に反映ボタン押下時の挙動
+		MsEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowNo				= B100_TextControl.TextToInt(TB_RowNo.getText());
+					
+					String PlanLot		= B100_TextControl.Trim(TB_lot.getText());
+					String PlanExpDate	= B100_TextControl.Trim(TB_ExpDate.getText());
+					int RemainingPlanQty	= B100_TextControl.TextToInt(TB_RemainingPlanQty.getText());
+					
+					String EntryLot			= B100_TextControl.Trim(TB_EntryLot.getText());
+					String EntryExpDate		= B100_TextControl.Trim(TB_EntryExpDate.getText());
+					int EntryQty			= B100_TextControl.TextToInt(TB_EntryQty.getText());
+					String EntryStoreLoc	= B100_TextControl.Trim(TB_EntryStoreLoc.getText());
+					boolean kickFg	= false;
+					int ColCount	= MainFmTableModel.getColumnCount();
+					if(0<=RowNo) {
+						kickFg	= true;
+						if(!"".equals(EntryStoreLoc)) {
+							ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
+							SearchLoc.add(EntryStoreLoc);
+							Object[][] LocationMstRt	= LocationMstRt(A00000_Main.ClWh,A00000_Main.ClCd,SearchLoc);
+							if(1==LocationMstRt.length) {
+							}else {
+								JOptionPane.showMessageDialog(null, "ロケーションマスタが不正です　やり直し");
+								EntryStoreLoc	= "";
+								kickFg	= false;
+								TB_EntryStoreLoc.setText("");
+							}
+						}
+						if(0>EntryQty) {
+							JOptionPane.showMessageDialog(null, "数量マイナスは認められません　やり直し");
+							kickFg	= false;
+							TB_EntryQty.setText("0");
+						}
+						
+						if(("".equals(PlanLot))||PlanLot.equals(EntryLot)&&("".equals(PlanExpDate))||PlanExpDate.equals(EntryExpDate)) {
+							//予定にロット賞味期限が設定されていない又は予定と一致していればOK
+						}else {
+							int option = JOptionPane.showConfirmDialog(null, "登録しようとしているロット・賞味期限が予定と違います\n"
+									+ "わざとですよね？\n"
+									+ "このまま登録しますか？"
+									,"登録確認", JOptionPane.YES_NO_OPTION,
+								      JOptionPane.WARNING_MESSAGE);
+							if (option == JOptionPane.YES_OPTION){
+								kickFg	= true;
+							}else {
+								kickFg	= false;
+							}
+						}
+						if(RemainingPlanQty<EntryQty) {
+							int option = JOptionPane.showConfirmDialog(null, "登録しようとしている数量が予定数量を超えています\n"
+									+ "わざとですよね？\n"
+									+ "このまま登録しますか？"
+									,"登録確認", JOptionPane.YES_NO_OPTION,
+								      JOptionPane.WARNING_MESSAGE);
+							if (option == JOptionPane.YES_OPTION){
+								kickFg	= true;
+							}else {
+								kickFg	= false;
+							}
+						}
+						
+					}else {
+						
+					}
+					if(kickFg) {
+						//現在の値に有効な値が入っているいて異なる値を設定しようとした場合確認,
+						//必要に応じて行追加
+						String GetClWh			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetClWh));
+						String GetClCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetClCd));
+						String GetPlanDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(RowNo,ColSetPlanDate));
+						String GetSpCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetSpCd));
+						String GetSpName01		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetSpName01));
+						String GetClArrNo		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetClArrNo));
+						String GetArrNo			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetArrNo));
+						int GetMsNo				= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(RowNo,ColSetMsNo));
+						String GetItemCd		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetItemCd));
+						String GetItemName		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetItemName));
+						String Getlot			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetlot));
+						String GetExpDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(RowNo,ColSetExpDate));
+						int GetPlanQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(RowNo,ColSetPlanQty));
+						String GetRecmendLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetRecmendLoc));
+						String GetRecmendLocMst	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetRecmendLocMst));
+						String GetEntryLot		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetEntryLot));
+						String GetEntryExpDate	= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(RowNo,ColSetEntryExpDate));
+						int GetEntryQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(RowNo,ColSetEntryQty));
+						String GetEntryStoreLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(RowNo,ColSetEntryStoreLoc));
+						int GetActualQty		= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(RowNo,ColSetActualQty));
+						int GetRemainingPlanQty	= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(RowNo,ColSetRemainingPlanQty));
+						
+						
+						if(("".equals(GetEntryLot) ||EntryLot.equals(GetEntryLot)) && ("".equals(GetEntryExpDate) ||EntryExpDate.equals(GetEntryExpDate)) && ("".equals(GetEntryStoreLoc) ||EntryStoreLoc.equals(GetEntryStoreLoc))) {
+							MainFmTableModel.setValueAt(""+EntryLot		, RowNo, ColSetEntryLot);
+							MainFmTableModel.setValueAt(""+EntryExpDate	, RowNo, ColSetEntryExpDate);
+							MainFmTableModel.setValueAt(""+EntryQty		, RowNo, ColSetEntryQty);
+							MainFmTableModel.setValueAt(""+EntryStoreLoc, RowNo, ColSetEntryStoreLoc);
+						}else {
+							boolean NewowCreateFg	= false;
+							int option = JOptionPane.showConfirmDialog(null, "登録しようとしている商品からロット・賞味期限・格納先が変更されています\n"
+															+ "別の入荷行として行追加しますか？\n"
+															+ "[いいえ]を選択した場合上書きします"
+															,"登録確認", JOptionPane.YES_NO_OPTION,
+								      JOptionPane.WARNING_MESSAGE);
+							if (option == JOptionPane.YES_OPTION){
+								NewowCreateFg	= true;
+							}else {
+								NewowCreateFg	= false;
+							}
+							
+							if(NewowCreateFg) {
+								Object[] SetOb = new Object[ColCount];
+								SetOb[ 0] = false;
+								
+								for(int i01=1;i01<ColCount;i01++) {
+									SetOb[i01] = MainFmTableModel.getValueAt(RowNo,i01);
+								}
+								SetOb[ColSetEntryLot]			= EntryLot;
+								SetOb[ColSetEntryExpDate]	= EntryExpDate;
+								SetOb[ColSetEntryQty]			= EntryQty;
+								SetOb[ColSetEntryStoreLoc]	= EntryStoreLoc;
+								
+								MainFmTableModel.addRow(SetOb);
+							}else {
+								MainFmTableModel.setValueAt(""+EntryLot		, RowNo, ColSetEntryLot);
+								MainFmTableModel.setValueAt(""+EntryExpDate	, RowNo, ColSetEntryExpDate);
+								MainFmTableModel.setValueAt(""+EntryQty		, RowNo, ColSetEntryQty);
+								MainFmTableModel.setValueAt(""+EntryStoreLoc, RowNo, ColSetEntryStoreLoc);
+							}
+						}
+					}
+					RenewFg = true;
+					
+					if(kickFg) {
+						MainFmTableModel.setValueAt(false, RowNo, 0);
+					}
+				}
+			}
+		});
+		
 		
 		//予定=実績ボタン押下時の挙動
 		PlanSameBtn.addActionListener(new AbstractAction(){
@@ -550,6 +957,28 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 			}
 		});
 		
+		//ロケクリア押下時の挙動
+		LocClearBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowCount = MainFmTableModel.getRowCount();
+					int CheckOffRow = -1;
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {CheckOffRow=i;}
+						String EntryLoc			= "";							//格納ロケ
+						
+						MainFmTableModel.setValueAt(""+EntryLoc		, i, ColSetEntryStoreLoc);
+					}
+					RenewFg = true;
+					if(0>CheckOffRow) {
+						
+					}else {
+						MainFmTableModel.setValueAt(false, CheckOffRow, 0);
+					}
+				}
+			}
+		});
 		
 		//明細予定通りボタン押下時の挙動
 		MsPlanSameBtn.addActionListener(new AbstractAction(){
@@ -571,50 +1000,38 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 				}
 			}
 		});
-		
-		//明細に反映ボタン押下時の挙動
-		MsEntryBtn.addActionListener(new AbstractAction(){
+		//明細MST推奨ロケボタン押下時の挙動
+		MsMstLocEntryBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
 					int RowNo				= B100_TextControl.TextToInt(TB_RowNo.getText());
-					String EntryLot			= B100_TextControl.Trim(TB_EntryLot.getText());
-					String EntryExpDate		= B100_TextControl.Trim(TB_EntryExpDate.getText());
-					int EntryQty			= B100_TextControl.TextToInt(TB_EntryQty.getText());
-					String EntryStoreLoc	= B100_TextControl.Trim(TB_EntryStoreLoc.getText());
-					boolean kickFg	= false;
 					if(0<=RowNo) {
-						kickFg	= true;
-						if(!"".equals(EntryStoreLoc)) {
-							ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
-							SearchLoc.add(EntryStoreLoc);
-							Object[][] LocationMstRt	= LocationMstRt(A00000_Main.ClWh,A00000_Main.ClCd,SearchLoc);
-							if(1==LocationMstRt.length) {
-							}else {
-								JOptionPane.showMessageDialog(null, "ロケーションマスタが不正です　やり直し");
-								EntryStoreLoc	= "";
-								kickFg	= false;
-								TB_EntryStoreLoc.setText("");
-							}
-						}
-					}else {
+						String EntryLoc			= B100_TextControl.Trim(TB_RecmendLocMst.getText());
 						
+						TB_EntryStoreLoc.setText(EntryLoc);
 					}
-					if(kickFg) {
-						MainFmTableModel.setValueAt(""+EntryLot		, RowNo, ColSetEntryLot);
-						MainFmTableModel.setValueAt(""+EntryExpDate	, RowNo, ColSetEntryExpDate);
-						MainFmTableModel.setValueAt(""+EntryQty		, RowNo, ColSetEntryQty);
-						MainFmTableModel.setValueAt(""+EntryStoreLoc, RowNo, ColSetEntryStoreLoc);
-					}
-					RenewFg = true;
 					
-					if(kickFg) {
-						MainFmTableModel.setValueAt(false, RowNo, 0);
-					}
+					RenewFg = true;
 				}
 			}
 		});
-		
+		//明細在庫推奨ロケボタン押下時の挙動
+		MsStockLocEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int RowNo				= B100_TextControl.TextToInt(TB_RowNo.getText());
+					if(0<=RowNo) {
+						String EntryLoc			= B100_TextControl.Trim(TB_RecmendLoc.getText());
+						
+						TB_EntryStoreLoc.setText(EntryLoc);
+					}
+					
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//チェックボックス操作時の挙動
 		MainFmTableModel.addTableModelListener(new TableModelListener(){
@@ -648,35 +1065,36 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 					TB_ActualQty.setText("");
 					
 					
-					int row_count = tb01.getRowCount();
+					int row_count = MainFmTableModel.getRowCount();
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
 						if(i!=e.getFirstRow()){
 							MainFmTableModel.setValueAt(setBL, i, 0);
 						}else {
+							
 							if((boolean)MainFmTableModel.getValueAt(i, 0)) {
 								
-								String GetClWh			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClWh));
-								String GetClCd			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClCd));
-								String GetPlanDate		= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetPlanDate));
-								String GetSpCd			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetSpCd));
-								String GetSpName01		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetSpName01));
-								String GetClArrNo		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClArrNo));
-								String GetArrNo			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetArrNo));
-								int GetMsNo				= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetMsNo));
-								String GetItemCd		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetItemCd));
-								String GetItemName		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetItemName));
-								String Getlot			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetlot));
-								String GetExpDate		= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetExpDate));
-								int GetPlanQty			= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetPlanQty));
-								String GetRecmendLoc	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetRecmendLoc));
-								String GetRecmendLocMst	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetRecmendLocMst));
-								String GetEntryLot		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetEntryLot));
-								String GetEntryExpDate	= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetEntryExpDate));
-								int GetEntryQty			= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetEntryQty));
-								String GetEntryStoreLoc	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetEntryStoreLoc));
-								int GetActualQty		= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetActualQty));
-								int GetRemainingPlanQty	= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetRemainingPlanQty));
+								String GetClWh			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClWh));
+								String GetClCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClCd));
+								String GetPlanDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetPlanDate));
+								String GetSpCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetSpCd));
+								String GetSpName01		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetSpName01));
+								String GetClArrNo		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClArrNo));
+								String GetArrNo			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetArrNo));
+								int GetMsNo				= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetMsNo));
+								String GetItemCd		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetItemCd));
+								String GetItemName		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetItemName));
+								String Getlot			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetlot));
+								String GetExpDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetExpDate));
+								int GetPlanQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetPlanQty));
+								String GetRecmendLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetRecmendLoc));
+								String GetRecmendLocMst	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetRecmendLocMst));
+								String GetEntryLot		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetEntryLot));
+								String GetEntryExpDate	= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetEntryExpDate));
+								int GetEntryQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetEntryQty));
+								String GetEntryStoreLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetEntryStoreLoc));
+								int GetActualQty		= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetActualQty));
+								int GetRemainingPlanQty	= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetRemainingPlanQty));
 								
 								TB_RowNo.setText(""+i);
 								TB_PlanDate.setText(GetPlanDate);
@@ -763,10 +1181,10 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 			}
 		});
 	}
-	private static ArrayList<String> ErrCheck(JTable tb01){
+	private static ArrayList<String> ErrCheck(DefaultTableModel MainFmTableModel,JTable tb01){
 		ArrayList<String> ErrMsg = new ArrayList<String>();
 		String[] TableCol = B100_TableControl.TableFieldNameRt(tb01);
-		int RowCount = tb01.getRowCount();
+		int RowCount = MainFmTableModel.getRowCount();
 		
 		//入荷予定取得用
 		ArrayList<String> SearchArrNo	= new ArrayList<String>();
@@ -777,26 +1195,49 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		for(int i=0;i<RowCount;i++) {
 			int wint = i+1;
 			boolean GetFg				= (boolean)tb01.getValueAt(i,ColSetFg);
-			String GetClWh			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClWh));
-			String GetClCd			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClCd));
-			String GetPlanDate		= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetPlanDate));
-			String GetSpCd			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetSpCd));
-			String GetSpName01		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetSpName01));
-			String GetClArrNo		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClArrNo));
-			String GetArrNo			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetArrNo));
-			int GetMsNo				= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetMsNo));
-			String GetItemCd		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetItemCd));
-			String GetItemName		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetItemName));
-			String Getlot			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetlot));
-			String GetExpDate		= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetExpDate));
-			int GetPlanQty			= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetPlanQty));
-			String GetRecmendLoc	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetRecmendLoc));
-			String GetRecmendLocMst	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetRecmendLocMst));
-			String GetEntryLot		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetEntryLot));
-			String GetEntryExpDate	= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetEntryExpDate));
-			int GetEntryQty			= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetEntryQty));
-			String GetEntryStoreLoc	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetEntryStoreLoc));
-			int GetActualQty		= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetActualQty));
+			String GetClWh			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClWh));
+			String GetClCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClCd));
+			String GetPlanDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetPlanDate));
+			String GetSpCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetSpCd));
+			String GetSpName01		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetSpName01));
+			String GetClArrNo		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClArrNo));
+			String GetArrNo			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetArrNo));
+			int GetMsNo				= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetMsNo));
+			String GetItemCd		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetItemCd));
+			String GetItemName		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetItemName));
+			String Getlot			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetlot));
+			String GetExpDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetExpDate));
+			int GetPlanQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetPlanQty));
+			String GetRecmendLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetRecmendLoc));
+			String GetRecmendLocMst	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetRecmendLocMst));
+			String GetEntryLot		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetEntryLot));
+			String GetEntryExpDate	= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetEntryExpDate));
+			int GetEntryQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetEntryQty));
+			String GetEntryStoreLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetEntryStoreLoc));
+			int GetActualQty		= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetActualQty));
+			int GetRemainingPlanQty	= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetRemainingPlanQty));
+			
+			MainFmTableModel.setValueAt(""+GetClWh				,i,ColSetClWh);
+			MainFmTableModel.setValueAt(""+GetClCd				,i,ColSetClCd);
+			MainFmTableModel.setValueAt(""+GetPlanDate			,i,ColSetPlanDate);
+			MainFmTableModel.setValueAt(""+GetSpCd				,i,ColSetSpCd);
+			MainFmTableModel.setValueAt(""+GetSpName01			,i,ColSetSpName01);
+			MainFmTableModel.setValueAt(""+GetClArrNo			,i,ColSetClArrNo);
+			MainFmTableModel.setValueAt(""+GetArrNo				,i,ColSetArrNo);
+			MainFmTableModel.setValueAt(""+GetMsNo				,i,ColSetMsNo);
+			MainFmTableModel.setValueAt(""+GetItemCd			,i,ColSetItemCd);
+			MainFmTableModel.setValueAt(""+GetItemName			,i,ColSetItemName);
+			MainFmTableModel.setValueAt(""+Getlot				,i,ColSetlot);
+			MainFmTableModel.setValueAt(""+GetExpDate			,i,ColSetExpDate);
+			MainFmTableModel.setValueAt(""+GetPlanQty			,i,ColSetPlanQty);
+			MainFmTableModel.setValueAt(""+GetRecmendLoc		,i,ColSetRecmendLoc);
+			MainFmTableModel.setValueAt(""+GetRecmendLocMst		,i,ColSetRecmendLocMst);
+			MainFmTableModel.setValueAt(""+GetEntryLot			,i,ColSetEntryLot);
+			MainFmTableModel.setValueAt(""+GetEntryExpDate		,i,ColSetEntryExpDate);
+			MainFmTableModel.setValueAt(""+GetEntryQty			,i,ColSetEntryQty);
+			MainFmTableModel.setValueAt(""+GetEntryStoreLoc		,i,ColSetEntryStoreLoc);
+			MainFmTableModel.setValueAt(""+GetActualQty			,i,ColSetActualQty);
+			MainFmTableModel.setValueAt(""+GetRemainingPlanQty	,i,ColSetRemainingPlanQty);
 			
 			if(!A00000_Main.ClWh.equals(GetClWh)) {ErrMsg.add(wint+"行目エラー ("+GetClWh+")は現在ログイン中の倉庫ではありません");}
 			if(!A00000_Main.ClCd.equals(GetClCd)) {ErrMsg.add(wint+"行目エラー ("+GetClCd+")は現在ログイン中の荷主ではありません");}
@@ -814,29 +1255,34 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		if(null==ErrMsg||0==ErrMsg.size()) {
 			for(int i=0;i<RowCount;i++) {
 				int wint = i+1;
-				boolean GetFg			= (boolean)tb01.getValueAt(i,ColSetFg);
-				String GetClWh			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClWh));
-				String GetClCd			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClCd));
-				String GetPlanDate		= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetPlanDate));
-				String GetSpCd			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetSpCd));
-				String GetSpName01		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetSpName01));
-				String GetClArrNo		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetClArrNo));
-				String GetArrNo			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetArrNo));
-				int GetMsNo				= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetMsNo));
-				String GetItemCd		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetItemCd));
-				String GetItemName		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetItemName));
-				String Getlot			= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetlot));
-				String GetExpDate		= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetExpDate));
-				int GetPlanQty			= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetPlanQty));
-				String GetRecmendLoc	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetRecmendLoc));
-				String GetRecmendLocMst	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetRecmendLocMst));
-				String GetEntryLot		= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetEntryLot));
-				String GetEntryExpDate	= B100_TextControl.TextToDate(	""+tb01.getValueAt(i,ColSetEntryExpDate));
-				int GetEntryQty			= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetEntryQty));
-				String GetEntryStoreLoc	= B100_TextControl.Trim(		""+tb01.getValueAt(i,ColSetEntryStoreLoc));
-				int GetActualQty		= B100_TextControl.TextToInt(	""+tb01.getValueAt(i,ColSetActualQty));
+				boolean GetFg			= (boolean)MainFmTableModel.getValueAt(i,ColSetFg);
+				String GetClWh			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClWh));
+				String GetClCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClCd));
+				String GetPlanDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetPlanDate));
+				String GetSpCd			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetSpCd));
+				String GetSpName01		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetSpName01));
+				String GetClArrNo		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetClArrNo));
+				String GetArrNo			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetArrNo));
+				int GetMsNo				= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetMsNo));
+				String GetItemCd		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetItemCd));
+				String GetItemName		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetItemName));
+				String Getlot			= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetlot));
+				String GetExpDate		= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetExpDate));
+				int GetPlanQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetPlanQty));
+				String GetRecmendLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetRecmendLoc));
+				String GetRecmendLocMst	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetRecmendLocMst));
+				String GetEntryLot		= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetEntryLot));
+				String GetEntryExpDate	= B100_TextControl.TextToDate(	""+MainFmTableModel.getValueAt(i,ColSetEntryExpDate));
+				int GetEntryQty			= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetEntryQty));
+				String GetEntryStoreLoc	= B100_TextControl.Trim(		""+MainFmTableModel.getValueAt(i,ColSetEntryStoreLoc));
+				int GetActualQty		= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetActualQty));
+				int GetRemainingPlanQty	= B100_TextControl.TextToInt(	""+MainFmTableModel.getValueAt(i,ColSetRemainingPlanQty));
 				
 				boolean UnHitFg = true;
+				
+				if(0>GetEntryQty) {
+					ErrMsg.add(wint+"行目エラー(入荷予定番号:"+GetArrNo+" 入荷数量:"+GetEntryQty+")入荷数量はマイナス禁止です");
+				}
 				
 				for(int i01=0;i01<ArrivalPlanMsRt.length;i01++) {
 					
@@ -909,6 +1355,103 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		return LocationMstRt;
 	}
 	
+	private static Object[][] ArrivalPlanHdRt(String TgtClWh,String TgtClCd,ArrayList<String> SearchArrNo){
+		if(null==TgtClWh) {TgtClWh="";}
+		if(null==TgtClCd) {TgtClCd="";}
+		ArrayList<String> SearchClWh			= new ArrayList<String>();		//ヘッダ担当倉庫
+		ArrayList<String> SearchClCd			= new ArrayList<String>();		//ヘッダ荷主CD
+		ArrayList<String> SearchCLName01		= new ArrayList<String>();		//ヘッダ荷主名
+		ArrayList<String> SearchClGpCD			= new ArrayList<String>();		//ヘッダ荷主グループCD
+		ArrayList<String> SearchCLGpName01		= new ArrayList<String>();		//ヘッダ荷主グループ標記名
+		//ArrayList<String> SearchArrNo			= new ArrayList<String>();		//ヘッダ入荷予定NO
+		ArrayList<String> SearchClArrNo			= new ArrayList<String>();		//ヘッダ荷主予定番号
+		ArrayList<String> SearchPlanDateMin		= new ArrayList<String>();		//ヘッダ入荷予定日
+		ArrayList<String> SearchPlanDateMax		= new ArrayList<String>();		//ヘッダ入荷予定日
+		ArrayList<String> SearchHdActualDateMin	= new ArrayList<String>();		//ヘッダ入荷実績日
+		ArrayList<String> SearchHdActualDateMax	= new ArrayList<String>();		//ヘッダ入荷実績日
+		ArrayList<String> SearchSpCd			= new ArrayList<String>();		//ヘッダ仕入先CD
+		ArrayList<String> SearchSpName			= new ArrayList<String>();		//ヘッダ仕入先名
+		ArrayList<String> SearchSpPost			= new ArrayList<String>();		//ヘッダ仕入先郵便
+		ArrayList<String> SearchSpAdd			= new ArrayList<String>();		//ヘッダ仕入先住所
+		ArrayList<String> SearchSpTel			= new ArrayList<String>();		//ヘッダ仕入先電話
+		ArrayList<String> SearchArCom			= new ArrayList<String>();		//ヘッダコメント
+		ArrayList<Integer> SearchFixFg			= new ArrayList<Integer>();		//ヘッダ状況
+				
+		ArrayList<Integer> SearchMsNoMin		= new ArrayList<Integer>();		//明細番号最小
+		ArrayList<Integer> SearchMsNoMax		= new ArrayList<Integer>();		//明細番号最大
+		ArrayList<String> SearchItemCd			= new ArrayList<String>();		//商品コード
+		ArrayList<String> SearchClItemCd		= new ArrayList<String>();		//荷主商品コード
+		ArrayList<String> SearchJanCd			= new ArrayList<String>();		//JANCD（バラ）
+		ArrayList<String> SearchItemMdNo		= new ArrayList<String>();		//商品型番
+		ArrayList<String> SearchItemName		= new ArrayList<String>();		//商品名
+		ArrayList<String> Searchlot				= new ArrayList<String>();		//ロット
+		ArrayList<String> SearchExpDateMin		= new ArrayList<String>();		//消費期限最小
+		ArrayList<String> SearchExpDateMax		= new ArrayList<String>();		//消費期限最大
+		ArrayList<Integer> SearchPlanQtyMin		= new ArrayList<Integer>();		//予定数量最小
+		ArrayList<Integer> SearchPlanQtyMax		= new ArrayList<Integer>();		//予定数量最大
+		ArrayList<Integer> SearchActualQtyMin	= new ArrayList<Integer>();		//実績数
+		ArrayList<Integer> SearchActualQtyMax	= new ArrayList<Integer>();		//実績数
+		ArrayList<String> SearchActualDateMin	= new ArrayList<String>();		//入荷日
+		ArrayList<String> SearchActualDateMax	= new ArrayList<String>();		//入荷日
+		ArrayList<String> SearchCom				= new ArrayList<String>();		//コメント
+		ArrayList<String> SearchEntryDateMin	= new ArrayList<String>();		//登録日
+		ArrayList<String> SearchEntryDateMax	= new ArrayList<String>();		//登録日
+		ArrayList<String> SearchUpdateDateMin	= new ArrayList<String>();		//更新日
+		ArrayList<String> SearchUpdateDateMax	= new ArrayList<String>();		//更新日
+		ArrayList<String> SearchEntryUser		= new ArrayList<String>();		//登録者
+		ArrayList<String> SearchUpdateUser		= new ArrayList<String>();		//更新者
+		boolean AllSearch = false;
+		if(null!=SearchArrNo && 0<SearchArrNo.size()) {
+			SearchClWh.add(TgtClWh);
+			SearchClCd.add(TgtClCd);
+		}
+		
+		Object[][] ArrivalPlanHdRt	= T100_ArrivalPlanHdRt.ArrivalPlanHdRt(
+				SearchClWh,					//ヘッダ担当倉庫
+				SearchClCd,					//ヘッダ荷主CD
+				SearchCLName01,				//ヘッダ荷主名
+				SearchClGpCD,				//ヘッダ荷主グループCD
+				SearchCLGpName01,			//ヘッダ荷主グループ標記名
+				SearchArrNo,				//ヘッダ入荷予定NO
+				SearchClArrNo,				//ヘッダ荷主予定番号
+				SearchPlanDateMin,			//ヘッダ入荷予定日
+				SearchPlanDateMax,			//ヘッダ入荷予定日
+				SearchHdActualDateMin,		//ヘッダ入荷実績日
+				SearchHdActualDateMax,		//ヘッダ入荷実績日
+				SearchSpCd,					//ヘッダ仕入先CD
+				SearchSpName,				//ヘッダ仕入先名
+				SearchSpPost,				//ヘッダ仕入先郵便
+				SearchSpAdd,				//ヘッダ仕入先住所
+				SearchSpTel,				//ヘッダ仕入先電話
+				SearchArCom,				//ヘッダコメント
+				SearchFixFg,				//ヘッダ状況
+						
+				SearchMsNoMin,				//明細番号最小
+				SearchMsNoMax,				//明細番号最大
+				SearchItemCd,				//商品コード
+				SearchClItemCd,				//荷主商品コード
+				SearchJanCd,				//JANCD（バラ）
+				SearchItemMdNo,				//商品型番
+				SearchItemName,				//商品名
+				Searchlot,					//ロット
+				SearchExpDateMin,			//消費期限最小
+				SearchExpDateMax,			//消費期限最大
+				SearchPlanQtyMin,			//予定数量最小
+				SearchPlanQtyMax,			//予定数量最大
+				SearchActualQtyMin,			//実績数
+				SearchActualQtyMax,			//実績数
+				SearchActualDateMin,		//入荷日
+				SearchActualDateMax,		//入荷日
+				SearchCom,					//コメント
+				SearchEntryDateMin,			//登録日
+				SearchEntryDateMax,			//登録日
+				SearchUpdateDateMin,		//更新日
+				SearchUpdateDateMax,		//更新日
+				SearchEntryUser,			//登録者
+				SearchUpdateUser,			//更新者
+				AllSearch);
+		return ArrivalPlanHdRt;
+	}
 	
 	private static Object[][] ArrivalPlanMsRt(String TgtClWh,String TgtClCd,ArrayList<String> SearchArrNo){
 		if(null==TgtClWh) {TgtClWh="";}
@@ -1008,7 +1551,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		return ArrivalPlanMsRt;
 	}
 	
-	private static void ErrView(ArrayList<String>ErrMsg) {
+	private static void ErrView(ArrayList<String>ErrMsg,String ErrTitle) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
@@ -1024,7 +1567,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		
 		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcellentry\\Err";
 		
-		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
+		String ErrFP = FLD_PATH+"\\ERR"+ErrTitle+NowDTM+".txt";
 		
 		B100_TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
 		

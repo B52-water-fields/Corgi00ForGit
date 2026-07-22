@@ -101,9 +101,9 @@ public class WTList100_StockList{
 	        ******************************************************************/
 	        
 	        /******************************************************************
-	         * 在庫帳票ヘッダ～明細で帳票生成　明細行数12行(3行×9)で設計
+	         * 在庫帳票ヘッダ～明細で帳票生成　明細行数12行(3行×6)で設計
 	        ******************************************************************/
-	        int MaxRowCount 	= 9;
+	        int MaxRowCount 	= 6;
 	        int TotalPageCount	= StockRt.length/MaxRowCount;
 	        if(0<StockRt.length%MaxRowCount) {TotalPageCount=TotalPageCount+1;}
 	        

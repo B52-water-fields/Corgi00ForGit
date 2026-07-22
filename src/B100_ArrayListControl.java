@@ -93,7 +93,7 @@ public class B100_ArrayListControl{
 		}
 		return rt;
 	}
-	
+	//オブジェクトから単一キーで一致行番号返却
 	public static int ObjectGetRow(Object[][] CheckObject,String TgtData,int KeyClm,boolean UnHitZeroMode) {
 		int rt = -1;
 		if(UnHitZeroMode) {rt = 0;}
@@ -107,6 +107,25 @@ public class B100_ArrayListControl{
 		}
 		return rt;
 	}
-	
-	
+	//オブジェクトから複数キーで一致行番号返却
+	public static int ObjectGetRowAnyKey(Object[][] CheckObject,String[] TgtData,int[] KeyClm,boolean UnHitZeroMode) {
+		int rt = -1;
+		if(UnHitZeroMode) {rt = 0;}
+		if(null!=CheckObject) {
+			for(int i=0;i<CheckObject.length;i++) {
+				boolean CheckFg = true;
+				for(int i01=0;i01<KeyClm.length;i01++) {
+					if(!(""+TgtData[i01]).equals(""+CheckObject[i][KeyClm[i01]])) {
+						CheckFg = false;
+						i01=KeyClm.length+1;
+					}
+				}
+				if(CheckFg) {
+					rt = i;
+					i=CheckObject.length+1;
+				}
+			}
+		}
+		return rt;
+	}
 }

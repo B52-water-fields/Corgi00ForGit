@@ -11,7 +11,8 @@ public class B100_TextControl{
 		Tgt	= B100_TextControl.Trim(Tgt);
 		Tgt	= B100_TextControl.num_only_String02(Tgt);
 		if("".equals(Tgt)) {Tgt	= "0";}
-		int rt	= Integer.parseInt(Tgt);
+		float WFT	= Float.parseFloat(Tgt);
+		int rt	= (int)WFT;
 		return rt;
 	}
 	
@@ -30,6 +31,11 @@ public class B100_TextControl{
 		if(null==Tgt) {Tgt	= "";}
 		Tgt	= B100_TextControl.Trim(Tgt);
 		Tgt	= B100_DateTimeControl.DateFormat(Tgt);
+		if("".equals(Tgt)) {
+			
+		}else {
+			Tgt	= B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtmTimestamp2(Tgt)[0])[0];
+		}
 		return Tgt;
 	}
 	

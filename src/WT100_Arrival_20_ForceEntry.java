@@ -307,7 +307,7 @@ public class WT100_Arrival_20_ForceEntry{
 				,{Title[T100_ArrivalMsRt.ColItemCd]		, 1}
 				,{Title[T100_ArrivalMsRt.ColItemName]		, 1}
 				,{Title[T100_ArrivalMsRt.ColLot]			, 1}
-				,{Title[T100_ArrivalMsRt.ColExpDate]		, 1}
+				,{Title[T100_ArrivalMsRt.ColExpDate]		, 2}
 				,{Title[T100_ArrivalMsRt.ColActualQty]	, 0}
 				,{"格納ロケ"								, 1}
 				,{Title[T100_ArrivalMsRt.ColCom01]			, 1}

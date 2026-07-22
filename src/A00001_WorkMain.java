@@ -17,7 +17,7 @@ public class A00001_WorkMain{
 		if(x==0) {x=SetX;}
 		if(y==0) {y=SetY;}
 
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,820,750,"Corgi00業務メニュー","");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,820,850,"Corgi00業務メニュー","");
 		
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
@@ -41,7 +41,7 @@ public class A00001_WorkMain{
 		
 		/*************************************/
 		/*************************************/
-			//出荷パネル
+			//出荷予定パネル
 			JPanel PN_AboutDeliveryPlan 	= B100_FrameParts.JPanelSet(		410, 40,380,235,"SPPlan");
 			JLabel LB_AboutDeliveryPlan 	= B100_FrameParts.JLabelSet(		 10,  0,150,20,"出荷予定メニュー",11,0);
 			PN_AboutDeliveryPlan.add(LB_AboutDeliveryPlan);
@@ -67,13 +67,18 @@ public class A00001_WorkMain{
 		
 		/*************************************/
 		/*************************************/
+			//出荷パネル
+			JPanel PN_Ship 	= B100_FrameParts.JPanelSet(						 10,520,380,235,"SP");
+			JLabel LB_Ship 	= B100_FrameParts.JLabelSet(						 10,  0,150,20,"出荷メニュー",11,0);
+			PN_Ship.add(LB_Ship);
 
 		main_fm.add(PN_AboutArrival);
 		main_fm.add(PN_AboutDeliveryPlan);
 		main_fm.add(PN_Stock);
+		main_fm.add(PN_Ship);
 		
 		//テスト用
-		JButton TestBtn = B100_FrameParts.BtnSet(20,680,120,20,"テスト",11);
+		JButton TestBtn = B100_FrameParts.BtnSet(20,760,120,20,"テスト",11);
 		main_fm.add(TestBtn);
 		
 		
