@@ -1929,6 +1929,9 @@ public class WT100_ArrivalPlan_00_Search{
 					if(null!=Selected && !Selected.equals(Selected.replace(".xlsx", ""))) {
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
+						
+						Ms_fm.setVisible(false);
+						Ms_fm.dispose();
 
 						main_fm.setVisible(false);
 						main_fm.dispose();
