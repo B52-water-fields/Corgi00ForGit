@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Tools100_ArrivalPlanCancel{
+	/*
+	コピペ用
+	
+	
+	*/
 	public static void ArrivalPlanCancel(
 			String TgtClWh,
 			String TgtClCd,

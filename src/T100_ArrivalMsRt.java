@@ -5,6 +5,116 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class T100_ArrivalMsRt{
+	/*
+	コピペ用
+	ArrayList<String> SearchClWh			= new ArrayList<String>();		//担当倉庫
+	ArrayList<String> SearchClCd			= new ArrayList<String>();		//荷主CD
+	ArrayList<String> SearchClGpCD			= new ArrayList<String>();		//ヘッダ荷主グループCD
+	ArrayList<String> SearchArrNo			= new ArrayList<String>();		//入荷予定NO
+	ArrayList<Integer> SearchArrCountMin	= new ArrayList<Integer>();		//入荷予定枝番最小
+	ArrayList<Integer> SearchArrCountMax	= new ArrayList<Integer>();		//入荷予定枝番最大
+	ArrayList<String> SearchClArrNo			= new ArrayList<String>();		//荷主予定番号
+	ArrayList<String> SearchPlanDateMin		= new ArrayList<String>();		//入荷予定日最小
+	ArrayList<String> SearchPlanDateMax		= new ArrayList<String>();		//入荷予定日最大
+	ArrayList<String> SearchActualDateMin	= new ArrayList<String>();		//入荷実績日最小
+	ArrayList<String> SearchActualDateMax	= new ArrayList<String>();		//入荷実績日最大
+	ArrayList<String> SearchSpCd			= new ArrayList<String>();		//仕入先CD
+	ArrayList<String> SearchCom				= new ArrayList<String>();		//コメント
+	ArrayList<String> SearchEntryDateMin	= new ArrayList<String>();		//登録日最小
+	ArrayList<String> SearchEntryDateMax	= new ArrayList<String>();		//登録日最大
+	ArrayList<String> SearchUpdateDateMin	= new ArrayList<String>();		//更新日最小
+	ArrayList<String> SearchUpdateDateMax	= new ArrayList<String>();		//更新日最大
+	ArrayList<String> SearchEntryUser		= new ArrayList<String>();		//登録者
+	ArrayList<String> SearchUpdateUser		= new ArrayList<String>();		//更新者
+	
+	//明細WW0013ArrivalMs由来
+	ArrayList<String> SearchItemCd			= new ArrayList<String>();		//商品コード
+	ArrayList<String> SearchClItemCd		= new ArrayList<String>();		//荷主商品コード
+	ArrayList<String> SearchItemName		= new ArrayList<String>();		//商品名
+	ArrayList<String> SearchLot				= new ArrayList<String>();		//ロット
+	ArrayList<String> SearchExpDateMin		= new ArrayList<String>();		//消費期限最小
+	ArrayList<String> SearchExpDateMax		= new ArrayList<String>();		//消費期限最大
+	boolean AllSearch	= false;
+	
+	Object[][] ArrivalMsRt	= T100_ArrivalMsRt.ArrivalMsRt(
+			SearchClWh,				//担当倉庫
+			SearchClCd,				//荷主CD
+			SearchClGpCD,			//ヘッダ荷主グループCD
+			SearchArrNo,			//入荷予定NO
+			SearchArrCountMin,		//入荷予定枝番最小
+			SearchArrCountMax,		//入荷予定枝番最大
+			SearchClArrNo,			//荷主予定番号
+			SearchPlanDateMin,		//入荷予定日最小
+			SearchPlanDateMax,		//入荷予定日最大
+			SearchActualDateMin,	//入荷実績日最小
+			SearchActualDateMax,	//入荷実績日最大
+			SearchSpCd,				//仕入先CD
+			SearchCom,				//コメント
+			SearchEntryDateMin,		//登録日最小
+			SearchEntryDateMax,		//登録日最大
+			SearchUpdateDateMin,	//更新日最小
+			SearchUpdateDateMax,	//更新日最大
+			SearchEntryUser,		//登録者
+			SearchUpdateUser,		//更新者
+			
+			//明細WW0013ArrivalMs由来
+			SearchItemCd,			//商品コード
+			SearchClItemCd,			//荷主商品コード
+			SearchItemName,			//商品名
+			SearchLot,				//ロット
+			SearchExpDateMin,		//消費期限最小
+			SearchExpDateMax,		//消費期限最大
+			AllSearch);
+			
+	String GetClWh			= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColClWh];			//担当倉庫
+	String GetWHName		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColWHName];		//担当倉庫名
+	String GetClCd			= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColClCd];			//荷主CD
+	String GetCLName01		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColCLName01];		//荷主名
+	String GetClGpCD		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColClGpCD];		//荷主グループCD
+	String GetCLGpName01	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColCLGpName01];	//荷主グループ標記名
+	int GetArrNo			= (int)ArrivalMsRt[i][T100_ArrivalMsRt.ColArrNo];			//入荷予定NO
+	String GetArrCount		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColArrCount];		//入荷予定枝番
+	String GetClArrNo		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColClArrNo];		//荷主予定番号
+	String GetPlanDate		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColPlanDate];		//入荷予定日
+	String GetActualDate	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColActualDate];	//入荷実績日
+	String GetSpCd			= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpCd];			//仕入先CD
+	String GetSpName01		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpName01];		//仕入先名01
+	String GetSpName02		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpName02];		//仕入先名02
+	String GetSpName03		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpName03];		//仕入先名03
+	String GetSpPost		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpPost];		//仕入先郵便
+	String GetSpAdd01		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpAdd01];		//仕入先住所01
+	String GetSpAdd02		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpAdd02];		//仕入先住所02
+	String GetSpAdd03		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpAdd03];		//仕入先住所03
+	String GetSpTel			= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColSpTel];		//仕入先電話
+	String GetArCom01		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColArCom01];		//コメント1
+	String GetArCom02		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColArCom02];		//コメント2
+	String GetArCom03		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColArCom03];		//コメント3
+	String GetEntryDate		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColEntryDate];	//登録日
+	String GetUpdateDate	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColUpdateDate];	//更新日
+	String GetEntryUser		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColEntryUser];	//登録者
+	String GetUpdateUser	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColUpdateUser];	//更新者
+	
+	//明細WW0013ArrivalMs由来
+	int GetMsNo				= (int)ArrivalMsRt[i][T100_ArrivalMsRt.ColMsNo];			//明細番号
+	int GetMsSeq			= (int)ArrivalMsRt[i][T100_ArrivalMsRt.ColMsSeq];			//明細Seq番号
+	String GetItemCd		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColItemCd];		//商品コード
+	String GetClItemCd		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColClItemCd];		//荷主商品コード
+	String GetJanCd			= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColJanCd];		//JanCd(バラ)
+	String GetItemMdNo		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColItemMdNo];		//商品型番
+	String GetItemName		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColItemName];		//商品名
+	String GetLot			= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColLot];			//ロット
+	String GetExpDate		= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColExpDate];		//消費期限
+	int GetPlanQty			= (int)ArrivalMsRt[i][T100_ArrivalMsRt.ColPlanQty];			//予定数量
+	int GetActualQty		= (int)ArrivalMsRt[i][T100_ArrivalMsRt.ColActualQty];		//実績数
+	String GetMsActualDate	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColMsActualDate];	//入荷日
+	String GetCom01			= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColCom01];		//コメント1
+	String GetCom02			= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColCom02];		//コメント2
+	String GetMsEntryDate	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColMsEntryDate];	//登録日
+	String GetMsUpdateDate	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColMsUpdateDate];	//更新日
+	String GetMsEntryUser	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColMsEntryUser];	//登録者
+	String GetMsUpdateUser	= (String)ArrivalMsRt[i][T100_ArrivalMsRt.ColMsUpdateUser];	//更新者
+
+	*/
 	static final int ColClWh			=  0;		//担当倉庫
 	static final int ColWHName			=  1;		//担当倉庫名
 	static final int ColClCd			=  2;		//荷主CD
