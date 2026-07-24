@@ -26,25 +26,31 @@ public class B100_FolderCheck{
 	
 	//フォルダ存在チェック→なければ作る　作成失敗したらfalse返す
 	public static boolean FLD_CHECK(String FLD_PATH){
-		File file_dir = new File(FLD_PATH);
-		boolean rt = true;
-        if (file_dir.exists()) {
-        } else {
-        	if (file_dir.mkdirs()){
-        	}else{
-        	    rt = false;
-        	}
-        }
+		boolean rt = false;
+		if(null!=FLD_PATH) {
+			File file_dir = new File(FLD_PATH);
+			rt = true;
+	        if (file_dir.exists()) {
+	        } else {
+	        	if (file_dir.mkdirs()){
+	        	}else{
+	        	    rt = false;
+	        	}
+	        }
+		}
         return rt;
 	}
 	//ファイル・フォルダ存在チェックのみ→なければfalse返す
 	public static boolean FLD_CHECK_ONRY(String FLD_PATH){
-		File file_dir = new File(FLD_PATH);
-		boolean rt = true;
-        if (file_dir.exists()) {
-        } else {
-        	rt = false;
-        }
+		boolean rt = false;
+		if(null!=FLD_PATH) {
+			File file_dir = new File(FLD_PATH);
+			rt = true;
+	        if (file_dir.exists()) {
+	        } else {
+	        	rt = false;
+	        }
+		}
         return rt;
 	}
 	

@@ -1125,12 +1125,11 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 								A100_InsertUpdateSQL.InsertUpdateSomeRecord(ArrivalMs_SetString		,ArrivalMs_tgt_table		,TgtDB	,non_msg_fg);
 								
 								//元ファイルバックアップ
-								String FileName	= B100_FolderCheck.FILENAME(TgtFilePath);
-								String FLD		= B100_FolderCheck.FILE_FLD(TgtFilePath);
-								//フォルダ存在チェック→なければ作る
-								B100_FolderCheck.FLD_CHECK(FLD+"\\BK");
-
-								B100_FolderCheck.FILE_BACKUP(FLD,FLD+"\\BK",FileName);
+								if(null!=TgtFilePath) {
+									String FileName	= B100_FolderCheck.FILENAME(TgtFilePath);
+									String FLD		= B100_FolderCheck.FILE_FLD(TgtFilePath);
+									B100_FolderCheck.FILE_BACKUP(FLD,FLD+"\\BK",FileName);
+								}
 								
 								SetX=main_fm.getX();
 								SetY=main_fm.getY();

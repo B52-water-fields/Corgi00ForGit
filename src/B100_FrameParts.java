@@ -373,19 +373,19 @@ public class B100_FrameParts{
 		rightCellRenderer.setBackground(SelectColer("Entry"));
 		return rightCellRenderer;
 		
-}
-public static DefaultTableCellRenderer leftCellRendererEntry() {
-		DefaultTableCellRenderer leftCellRenderer = new DefaultTableCellRenderer();
-		leftCellRenderer.setHorizontalAlignment(JLabel.LEFT);
-		leftCellRenderer.setBackground(SelectColer("Entry"));
-		return leftCellRenderer;
-}
-public static DefaultTableCellRenderer centerCellRendererEntry() {
-		DefaultTableCellRenderer centerCellRenderer =  new DefaultTableCellRenderer();
-		centerCellRenderer.setHorizontalAlignment(JLabel.CENTER);
-		centerCellRenderer.setBackground(SelectColer("Entry"));
-		return centerCellRenderer;
-}
+	}
+	public static DefaultTableCellRenderer leftCellRendererEntry() {
+			DefaultTableCellRenderer leftCellRenderer = new DefaultTableCellRenderer();
+			leftCellRenderer.setHorizontalAlignment(JLabel.LEFT);
+			leftCellRenderer.setBackground(SelectColer("Entry"));
+			return leftCellRenderer;
+	}
+	public static DefaultTableCellRenderer centerCellRendererEntry() {
+			DefaultTableCellRenderer centerCellRenderer =  new DefaultTableCellRenderer();
+			centerCellRenderer.setHorizontalAlignment(JLabel.CENTER);
+			centerCellRenderer.setBackground(SelectColer("Entry"));
+			return centerCellRenderer;
+	}
 
 	/*===========================================================================
  	スクロールパネル配置
