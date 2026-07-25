@@ -330,7 +330,6 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		TB_ClWh.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]	,A00000_Main.ClWh,true));			//ヘッダ担当倉庫
 		TB_ClCd.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]	,A00000_Main.ClCd,true));			//ヘッダ荷主CD
 		
-		
 		main_fm.add(LB_RowNo);
 		main_fm.add(LB_ClWh);
 		main_fm.add(LB_ClCd);

@@ -33,19 +33,19 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_PlanDate 	= B100_FrameParts.JLabelSet(  0, 50,100,20,"入荷予定日:"	,11,1);
-		JLabel LB_SpCd 		= B100_FrameParts.JLabelSet(210, 50, 90,20,"仕入先CD:"		,11,1);
-		JLabel LB_ClWh 		= B100_FrameParts.JLabelSet(560, 50, 90,20,"担当倉庫:"		,11,1);
-		JLabel LB_ClCd 		= B100_FrameParts.JLabelSet(560, 75, 90,20,"荷主CD:"		,11,1);
+		JLabel LB_PlanDate 	= B100_FrameParts.JLabelSet(  0, 40,100,20,"入荷予定日:"	,11,1);
+		JLabel LB_SpCd 		= B100_FrameParts.JLabelSet(210, 40, 90,20,"仕入先CD:"		,11,1);
+		JLabel LB_ClWh 		= B100_FrameParts.JLabelSet(560, 40, 90,20,"担当倉庫:"		,11,1);
+		JLabel LB_ClCd 		= B100_FrameParts.JLabelSet(560, 65, 90,20,"荷主CD:"		,11,1);
 		
-		final JFormattedTextField TB_PlanDate		= B100_FrameParts.JFormattedTextFieldSet(	100,50, 70,20,Nextday	,11,0,"YYYY/MM/DD");		//入荷予定日
+		final JFormattedTextField TB_PlanDate		= B100_FrameParts.JFormattedTextFieldSet(	100,40, 70,20,Nextday	,11,0,"YYYY/MM/DD");		//入荷予定日
 		//予定日進む戻るボタン
-		JButton PlanDateAfterBtn	= B100_FrameParts.BtnSet(										170,50, 40,10,"▲",6);
-		JButton PlanDateBeforeBtn	= B100_FrameParts.BtnSet(										170,60, 40,10,"▼",6);
+		JButton PlanDateAfterBtn	= B100_FrameParts.BtnSet(										170,40, 40,10,"▲",6);
+		JButton PlanDateBeforeBtn	= B100_FrameParts.BtnSet(										170,50, 40,10,"▼",6);
 		
-		final JComboBox TB_SpCd	= B100_FrameParts.JComboBoxSet(	300, 50,250,20,B100_DefaultVariable.SupplierList[0],11);		//仕入先
-		final JComboBox TB_ClWh	= B100_FrameParts.JComboBoxSet(	650, 50,200,20,B100_DefaultVariable.WhList[0],11);			//担当倉庫
-		final JComboBox TB_ClCd	= B100_FrameParts.JComboBoxSet(	650, 75,200,20,B100_DefaultVariable.ClList[0],11);			//荷主CD
+		final JComboBox TB_SpCd	= B100_FrameParts.JComboBoxSet(	300, 40,250,20,B100_DefaultVariable.SupplierList[0],11);	//仕入先
+		final JComboBox TB_ClWh	= B100_FrameParts.JComboBoxSet(	650, 40,200,20,B100_DefaultVariable.WhList[0],11);			//担当倉庫
+		final JComboBox TB_ClCd	= B100_FrameParts.JComboBoxSet(	650, 65,200,20,B100_DefaultVariable.ClList[0],11);			//荷主CD
 		
 		TB_ClWh.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1],A00000_Main.ClWh,true));
 		TB_ClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1],A00000_Main.ClCd,true));
@@ -65,17 +65,20 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		main_fm.add(TB_ClCd);
 		main_fm.add(TB_SpCd);
 		
-		JLabel LB_Msg		= B100_FrameParts.JLabelSet(  30,75,500,20,"バラ以外の荷主商品コードを指定した場合でも数量はバラ数量を指定してください"		,11,1);
+		JLabel LB_Msg		= B100_FrameParts.JLabelSet(  30,65,500,20,"バラ以外の荷主商品コードを指定する場合、荷姿数量で指定してください"		,11,0);
+		JLabel LB_Msg2		= B100_FrameParts.JLabelSet(  30,85,500,20,"EX)荷主商品CD:A001-ctが、商品:CDA001　入数:6　なら予定数10は60に換算されます"		,11,0);
 		LB_Msg.setForeground(B100_FrameParts.SelectColer("Red"));
 		main_fm.add(LB_Msg);
+		LB_Msg2.setForeground(B100_FrameParts.SelectColer("Red"));
+		main_fm.add(LB_Msg2);
 		
-		JLabel LB_ClArrNo	= B100_FrameParts.JLabelSet(  30,100,100,20,"荷主予定番号"		,11,2);
-		JLabel LB_ClItemCd	= B100_FrameParts.JLabelSet( 150,100,100,20,"荷主商品コード"	,11,2);
-		JLabel LB_lot		= B100_FrameParts.JLabelSet( 270,100,100,20,"ロット"			,11,2);
-		JLabel LB_ExpDate	= B100_FrameParts.JLabelSet( 390,100,100,20,"消費期限"			,11,2);
-		JLabel LB_PlanQty	= B100_FrameParts.JLabelSet( 510,100,100,20,"予定数量"			,11,2);
-		JLabel LB_HdCom		= B100_FrameParts.JLabelSet( 630,100,100,20,"ヘッダコメント"	,11,2);
-		JLabel LB_MsCom		= B100_FrameParts.JLabelSet( 750,100,100,20,"明細コメント"		,11,2);
+		JLabel LB_ClArrNo	= B100_FrameParts.JLabelSet(  30,120,100,20,"荷主予定番号"		,11,2);
+		JLabel LB_ClItemCd	= B100_FrameParts.JLabelSet( 150,120,100,20,"荷主商品コード"	,11,2);
+		JLabel LB_lot		= B100_FrameParts.JLabelSet( 270,120,100,20,"ロット"			,11,2);
+		JLabel LB_ExpDate	= B100_FrameParts.JLabelSet( 390,120,100,20,"消費期限"			,11,2);
+		JLabel LB_PlanQty	= B100_FrameParts.JLabelSet( 510,120,100,20,"予定数量"			,11,2);
+		JLabel LB_HdCom		= B100_FrameParts.JLabelSet( 630,120,100,20,"ヘッダコメント"	,11,2);
+		JLabel LB_MsCom		= B100_FrameParts.JLabelSet( 750,120,100,20,"明細コメント"		,11,2);
 		
 		final JTextArea TB_ClArrNo	= B100_FrameParts.JTextAreaSet(11);
 		final JTextArea TB_ClItemCd	= B100_FrameParts.JTextAreaSet(11);
@@ -86,13 +89,13 @@ public class WT100_ArrivalPlan_04_SomeEntry{
 		final JTextArea TB_MsCom	= B100_FrameParts.JTextAreaSet(11);
 		
 		//スクロール用設定
-		JScrollPane SPClArrNo 	= B100_FrameParts.JScrollPaneSet( 30,125,100,500,TB_ClArrNo);
-		JScrollPane SPClItemCd 	= B100_FrameParts.JScrollPaneSet(150,125,100,500,TB_ClItemCd);
-		JScrollPane SPlot 		= B100_FrameParts.JScrollPaneSet(270,125,100,500,TB_lot);
-		JScrollPane SPExpDate 	= B100_FrameParts.JScrollPaneSet(390,125,100,500,TB_ExpDate);
-		JScrollPane SPPlanQty 	= B100_FrameParts.JScrollPaneSet(510,125,100,500,TB_PlanQty);
-		JScrollPane SPHdCom 	= B100_FrameParts.JScrollPaneSet(630,125,100,500,TB_HdCom);
-		JScrollPane SPMsCom 	= B100_FrameParts.JScrollPaneSet(750,125,100,500,TB_MsCom);
+		JScrollPane SPClArrNo 	= B100_FrameParts.JScrollPaneSet( 30,140,100,500,TB_ClArrNo);
+		JScrollPane SPClItemCd 	= B100_FrameParts.JScrollPaneSet(150,140,100,500,TB_ClItemCd);
+		JScrollPane SPlot 		= B100_FrameParts.JScrollPaneSet(270,140,100,500,TB_lot);
+		JScrollPane SPExpDate 	= B100_FrameParts.JScrollPaneSet(390,140,100,500,TB_ExpDate);
+		JScrollPane SPPlanQty 	= B100_FrameParts.JScrollPaneSet(510,140,100,500,TB_PlanQty);
+		JScrollPane SPHdCom 	= B100_FrameParts.JScrollPaneSet(630,140,100,500,TB_HdCom);
+		JScrollPane SPMsCom 	= B100_FrameParts.JScrollPaneSet(750,140,100,500,TB_MsCom);
 		
 		TB_ClItemCd.setBackground(B100_FrameParts.SelectColer("Entry"));
 		TB_PlanQty.setBackground(B100_FrameParts.SelectColer("Entry"));

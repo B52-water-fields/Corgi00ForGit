@@ -5,12 +5,15 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-public class Tools100_ArrivalPlanCancel{
-	public static void ArrivalPlanCancel(
+public class Tools100_ArrivalPlanZeroFix{
+	public static void ArrivalPlanZeroFix(
 			String TgtClWh,
 			String TgtClCd,
 			ArrayList<String> TgtArrNo
 			) {
+		//実績を作らずに未入荷状態で予定完了する
+		//分納待ちに対して”追加が来ない”時に使用する
+		
 		boolean KickFg = true;
 		if(null==TgtClWh) {KickFg = false;}
 		if(null==TgtClCd) {KickFg = false;}
@@ -18,23 +21,17 @@ public class Tools100_ArrivalPlanCancel{
 		if(null!=TgtArrNo && 0==TgtArrNo.size()) {KickFg = false;}
 		
 		ArrayList<String> ErrMsg = new ArrayList<String>();
-		
-		
 		if(KickFg) {
-			//対象の入荷予定情報⇒入荷予定ヘッダ取得
-			//入荷予定の状況未入荷についてキャンセルステータスにする
-			//ステータスが未入荷でなければエラー
 			Object[][] ArrivalPlanHdRt = ArrivalPlanHdRt(TgtClWh,TgtClCd,TgtArrNo);
 			
 			int counter = 0;
 			for(int i=0;i<ArrivalPlanHdRt.length;i++) {
-				if(0==(int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColFixFg]) {
+				if(2==(int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColFixFg]) {
 					counter = counter+1;
 				}else {
-					ErrMsg.add("入荷予定番号"+ (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArrNo]+"は未入荷ではないのでキャンセルできません");
+					ErrMsg.add("入荷予定番号"+ (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArrNo]+"は分納待ちではないので完了できません。未入荷ならキャンセルしてください");
 				}
 			}
-			
 			String[] SetClWh 		= new String[counter];
 			String[] SetClCd 		= new String[counter];
 			String[] SetArrNo 		= new String[counter];
@@ -45,14 +42,14 @@ public class Tools100_ArrivalPlanCancel{
 			String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 			counter = 0;
 			for(int i=0;i<ArrivalPlanHdRt.length;i++) {
-				if(0==(int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColFixFg]) {
+				if(2==(int)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColFixFg]) {
 					SetClWh[counter] 		= TgtClWh;
 					SetClCd[counter] 		= TgtClCd;
 					SetArrNo[counter] 		= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColArrNo];
-					SetClArrNo[counter] 	= "Cancel"+(String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClArrNo];
+					SetClArrNo[counter] 	= (String)ArrivalPlanHdRt[i][T100_ArrivalPlanHdRt.ColClArrNo];
 					SetUpdateDate[counter] 	= now_dtm;
 					SetUpdateUser[counter] 	= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;
-					SetFixFg[counter] 		= "9";
+					SetFixFg[counter] 		= "1";
 					
 					counter = counter+1;
 				}else {
@@ -79,25 +76,25 @@ public class Tools100_ArrivalPlanCancel{
 				ErrView(ErrMsg);
 			}
 		}else {
-			JOptionPane.showMessageDialog(null, "Nullデータ突っ込まれました");
+			JOptionPane.showMessageDialog(null, "Nullデータ突っ込んでんじゃねぇよ");
 		}
 	}
 	private static void ErrView(ArrayList<String> ErrMsg) {
 		//必要フォルダを生成する
 		String FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl\\ArrivalPlanCancel";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl\\ArrivalPlanZeroFix";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl\\ArrivalPlanCancel\\Err";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl\\ArrivalPlanZeroFix\\Err";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl\\ArrivalPlanCancel\\BK";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl\\ArrivalPlanZeroFix\\BK";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
 		
 		String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl\\ArrivalPlanCancel\\Err";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlanControl\\ArrivalPlanZeroFix\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		

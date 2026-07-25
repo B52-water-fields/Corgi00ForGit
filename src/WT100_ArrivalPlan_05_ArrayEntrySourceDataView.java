@@ -129,7 +129,7 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 			SetOb[ColPlanDate+1]	= B100_TextControl.Trim(EntryData[i][ColPlanDate]);	//入荷予定日
 			SetOb[ColClArrNo+1]	= B100_TextControl.Trim(EntryData[i][ColClArrNo]);	//荷主予定番号
 			SetOb[ColClItemCd+1]	= B100_TextControl.Trim(EntryData[i][ColClItemCd]);	//荷主商品CD
-			SetOb[ColLot+1]		= B100_TextControl.Trim(EntryData[i][ColLot]);		//ロット
+			SetOb[ColLot+1]		= B100_TextControl.Trim(EntryData[i][ColLot]);			//ロット
 			SetOb[ColExpDate+1]	= B100_TextControl.Trim(EntryData[i][ColExpDate]);	//賞味期限
 			SetOb[ColPlanQty+1]	= B100_TextControl.Trim(EntryData[i][ColPlanQty]);	//数量
 			SetOb[ColHdCom01+1]	= B100_TextControl.Trim(EntryData[i][ColHdCom01]);	//ヘッダコメント01
