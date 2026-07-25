@@ -239,17 +239,17 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		JButton GetSpCdBtn = B100_FrameParts.BtnSet(	350,100,100,20,"仕入先Cd採番",10);
 		
 		//届先検索ボタン
-		JButton DeliverySerachBtn = B100_FrameParts.BtnSet(	480,625,100,20,"届先検索",11);
-		main_fm.add(DeliverySerachBtn);
+		JButton DeliverySearchBtn = B100_FrameParts.BtnSet(	480,625,100,20,"届先検索",11);
+		main_fm.add(DeliverySearchBtn);
 		
-		final JFrame DeliverySerach_fm 		= B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00仕入先マスタ登録・修正(届先検索)　WM100_SupplierMst_01_RenewAndCreate","");
-		JLabel DeliverySerach_userinfo 		= B100_FrameParts.UserInfo();
-		JButton DeliverySerach_exit_btn 	= B100_FrameParts.ExitBtn();
-		JButton DeliverySerach_entry_btn 	= B100_FrameParts.EntryBtn();
+		final JFrame DeliverySearch_fm 		= B100_FrameParts.FrameCreate(x+20,y+20,800,800,"Corgi00仕入先マスタ登録・修正(届先検索)　WM100_SupplierMst_01_RenewAndCreate","");
+		JLabel DeliverySearch_userinfo 		= B100_FrameParts.UserInfo();
+		JButton DeliverySearch_exit_btn 	= B100_FrameParts.ExitBtn();
+		JButton DeliverySearch_entry_btn 	= B100_FrameParts.EntryBtn();
 		
-		DeliverySerach_fm.add(DeliverySerach_userinfo);
-		DeliverySerach_fm.add(DeliverySerach_exit_btn);
-		DeliverySerach_fm.add(DeliverySerach_entry_btn);
+		DeliverySearch_fm.add(DeliverySearch_userinfo);
+		DeliverySearch_fm.add(DeliverySearch_exit_btn);
+		DeliverySearch_fm.add(DeliverySearch_entry_btn);
 		
 		//検索条件パネル
 		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,770,160,"White");
@@ -316,7 +316,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		PN_Search.add(LB2_SearchMail);
 		PN_Search.add(LB2_SearchCom);
 		
-		DeliverySerach_fm.add(PN_Search);
+		DeliverySearch_fm.add(PN_Search);
 		
 		//検索ボタン
 		JButton SearchBtn = B100_FrameParts.BtnSet(350,125,100,20,"検索",11);
@@ -360,7 +360,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		
 		//スクロール用設定
 		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,210,770,400,tb01);
-		DeliverySerach_fm.add(scpn01);
+		DeliverySearch_fm.add(scpn01);
 		
 		String GetSpCd = TB_SPCd.getText();
 		if("".equals(GetSpCd)) {
@@ -483,7 +483,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		});
 		
 		//届先検索登録ボタン押下時の挙動
-		DeliverySerach_entry_btn.addActionListener(new AbstractAction(){
+		DeliverySearch_entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -500,8 +500,8 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 						}
 					}
 					
-					DeliverySerach_fm.setVisible(false);
-					DeliverySerach_fm.dispose();
+					DeliverySearch_fm.setVisible(false);
+					DeliverySearch_fm.dispose();
 					RenewFg = true;
 				}
 			}
@@ -527,10 +527,10 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		});
 		
 		//EXITボタン押下時の挙動
-		DeliverySerach_exit_btn.addActionListener(new AbstractAction(){
+		DeliverySearch_exit_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				DeliverySerach_fm.setVisible(false);
-				DeliverySerach_fm.dispose();
+				DeliverySearch_fm.setVisible(false);
+				DeliverySearch_fm.dispose();
 			}
 		});
 		
@@ -622,8 +622,8 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
 						
-						DeliverySerach_fm.setVisible(false);
-						DeliverySerach_fm.dispose();
+						DeliverySearch_fm.setVisible(false);
+						DeliverySearch_fm.dispose();
 
 						main_fm.setVisible(false);
 						main_fm.dispose();
@@ -718,8 +718,8 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 						SetX=main_fm.getX();
 						SetY=main_fm.getY();
 						
-						DeliverySerach_fm.setVisible(false);
-						DeliverySerach_fm.dispose();
+						DeliverySearch_fm.setVisible(false);
+						DeliverySearch_fm.dispose();
 
 						main_fm.setVisible(false);
 						main_fm.dispose();
@@ -732,7 +732,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		
 		
 		//届先検索ボタン押下時の挙動
-		DeliverySerachBtn.addActionListener(new AbstractAction(){
+		DeliverySearchBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
@@ -750,7 +750,7 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 					TB_SearchMail.setText("");
 					TB_SearchCom.setText("");
 					
-					DeliverySerach_fm.setVisible(true);
+					DeliverySearch_fm.setVisible(true);
 					RenewFg = true;
 				}
 			}
@@ -822,8 +822,8 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
 				
-				DeliverySerach_fm.setVisible(false);
-				DeliverySerach_fm.dispose();
+				DeliverySearch_fm.setVisible(false);
+				DeliverySearch_fm.dispose();
 
 				main_fm.setVisible(false);
 				main_fm.dispose();

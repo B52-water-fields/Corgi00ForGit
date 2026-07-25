@@ -118,7 +118,7 @@ public class WT100_Arrival_30_ExcelEntryOutPut{
 		Object[][] RtArrivalExcelOutPut	= RtArrivalExcelOutPut();
 		String[][] OutString	= new String[ArrivalPlanMsRt.length+1][RtArrivalExcelOutPut.length];
 		
-		String[][] RecomendLocTgtItemCd = new String[ArrivalPlanMsRt.length][ArrivalPlanMsRt.length];
+		String[][] RecomendLocTgtItemCd = new String[ArrivalPlanMsRt.length][Tools100_RecomendLocWithStockSerch.InRecomendLocWithStockSerch().length];
 		
 		for(int i=0;i<RtArrivalExcelOutPut.length;i++) {
 			OutString[0][(int)RtArrivalExcelOutPut[i][1]]	=	(String)RtArrivalExcelOutPut[i][3];

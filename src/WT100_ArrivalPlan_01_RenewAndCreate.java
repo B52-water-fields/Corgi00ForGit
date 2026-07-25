@@ -72,7 +72,7 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		final JTextField TB_ArrNo					= B100_FrameParts.JTextFieldSet(				130,125,100,20,"",11,0);												//入荷予定NO
 		final JTextField TB_ClArrNo					= B100_FrameParts.JTextFieldSet(				130,150,100,20,"",11,0);												//荷主予定番号
 		final JFormattedTextField TB_PlanDate		= B100_FrameParts.JFormattedTextFieldSet(	130,175, 70,20,"",11,0,"YYYY/MM/DD");									//入荷予定日
-		final JFormattedTextField TB_HdActualDate	= B100_FrameParts.JFormattedTextFieldSet(	130,200, 70,20,"",11,0,"YYYY/MM/DD");									//入荷実績日
+		final JFormattedTextField TB_HdActualDate	= B100_FrameParts.JFormattedTextFieldSet(	130,200,140,20,"",11,0,"YYYY/MM/DD HH:MM:SS");							//入荷実績日
 
 		final JComboBox TB_FixFg					= B100_FrameParts.JComboBoxSet(				340,125,150,20,B100_DefaultVariable.ArryvalFixFgList[0],11);	//状況
 		final JTextField TB_ArCom01					= B100_FrameParts.JTextFieldSet(				340,150,240,20,"",11,0);												//コメント1

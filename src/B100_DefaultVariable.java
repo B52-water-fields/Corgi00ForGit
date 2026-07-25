@@ -56,7 +56,7 @@ public class B100_DefaultVariable{
 	static final String[][] SearchMstPriorityFirstFg 	= {{"0:データ優先","1:マスタ優先","未指定"},{"0","1",""},{"データ優先","マスタ優先",""}};	
 	static final String[][] MstPriorityFirstFg 			= {{"0:データ優先","1:マスタ優先"},{"0","1"},{"データ優先","マスタ優先"}};							
 	
-	static String[][] SerachAuthorityFG;				//検索用ユーザー権限区分
+	static String[][] SearchAuthorityFG;				//検索用ユーザー権限区分
 	static String[][] AuthorityFG;						//設定用ユーザー権限区分
 	
 	static final String[][] SearchLocType 	= {{"未指定","0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"","0","1","7","8","9"},{"","通常","保管","スルーロケ","入荷時","引当禁止"},{"","1","1","0","0","0"}};		//ロケタイプ検索値{表示用,CD,名称,引当可能FG※引当対象なら1}
@@ -1075,68 +1075,68 @@ public class B100_DefaultVariable{
 	
 	private static void AuthorityFG(){
 		if("9".equals(A00000_Main.LoginUserAuthorityFG)) {
-			SerachAuthorityFG = new String[3][5];		//検索用ユーザー権限区分
+			SearchAuthorityFG = new String[3][5];		//検索用ユーザー権限区分
 			AuthorityFG = new String[3][4];			//設定用ユーザー権限区分
 			
-			SerachAuthorityFG[0][0] 	= "0:SYS利用者";
-			SerachAuthorityFG[1][0] 	= "0";
-			SerachAuthorityFG[2][0] 	= "システム利用者";		
+			SearchAuthorityFG[0][0] 	= "0:SYS利用者";
+			SearchAuthorityFG[1][0] 	= "0";
+			SearchAuthorityFG[2][0] 	= "システム利用者";		
 			AuthorityFG[0][0] 			= "0:システム利用者";
 			AuthorityFG[1][0] 			= "0";
 			AuthorityFG[2][0]	 		= "システム利用者";
 			
-			SerachAuthorityFG[0][1] 	= "1:乗務員";
-			SerachAuthorityFG[1][1] 	= "1";
-			SerachAuthorityFG[2][1] 	= "乗務員";		
+			SearchAuthorityFG[0][1] 	= "1:乗務員";
+			SearchAuthorityFG[1][1] 	= "1";
+			SearchAuthorityFG[2][1] 	= "乗務員";		
 			AuthorityFG[0][1] 			= "1:乗務員";
 			AuthorityFG[1][1] 			= "1";
 			AuthorityFG[2][1] 			= "乗務員";
 			
-			SerachAuthorityFG[0][2] 	= "2:荷主ユーザー";
-			SerachAuthorityFG[1][2] 	= "2";
-			SerachAuthorityFG[2][2] 	= "荷主ユーザー";		
+			SearchAuthorityFG[0][2] 	= "2:荷主ユーザー";
+			SearchAuthorityFG[1][2] 	= "2";
+			SearchAuthorityFG[2][2] 	= "荷主ユーザー";		
 			AuthorityFG[0][2] 			= "2:荷主ユーザー";
 			AuthorityFG[1][2] 			= "2";
 			AuthorityFG[2][2] 			= "荷主ユーザー";
 			
-			SerachAuthorityFG[0][3] 	= "9:管理ユーザー";
-			SerachAuthorityFG[1][3] 	= "9";
-			SerachAuthorityFG[2][3] 	= "管理ユーザー";		
+			SearchAuthorityFG[0][3] 	= "9:管理ユーザー";
+			SearchAuthorityFG[1][3] 	= "9";
+			SearchAuthorityFG[2][3] 	= "管理ユーザー";		
 			AuthorityFG[0][3] 			= "9:管理ユーザー";
 			AuthorityFG[1][3] 			= "9";
 			AuthorityFG[2][3] 			= "管理ユーザー";
 			
-			SerachAuthorityFG[0][4] 	= "未指定";
-			SerachAuthorityFG[1][4] 	= "";
-			SerachAuthorityFG[2][4] 	= "";	
+			SearchAuthorityFG[0][4] 	= "未指定";
+			SearchAuthorityFG[1][4] 	= "";
+			SearchAuthorityFG[2][4] 	= "";	
 		}else {
-			SerachAuthorityFG = new String[3][4];		//検索用ユーザー権限区分
+			SearchAuthorityFG = new String[3][4];		//検索用ユーザー権限区分
 			AuthorityFG = new String[3][3];			//設定用ユーザー権限区分
 			
-			SerachAuthorityFG[0][0] 	= "0:SYS利用者";
-			SerachAuthorityFG[1][0] 	= "0";
-			SerachAuthorityFG[2][0] 	= "システム利用者";		
+			SearchAuthorityFG[0][0] 	= "0:SYS利用者";
+			SearchAuthorityFG[1][0] 	= "0";
+			SearchAuthorityFG[2][0] 	= "システム利用者";		
 			AuthorityFG[0][0] 			= "0:システム利用者";
 			AuthorityFG[1][0] 			= "0";
 			AuthorityFG[2][0] 			= "システム利用者";
 			
-			SerachAuthorityFG[0][1] 	= "1:乗務員";
-			SerachAuthorityFG[1][1] 	= "1";
-			SerachAuthorityFG[2][1] 	= "乗務員";		
+			SearchAuthorityFG[0][1] 	= "1:乗務員";
+			SearchAuthorityFG[1][1] 	= "1";
+			SearchAuthorityFG[2][1] 	= "乗務員";		
 			AuthorityFG[0][1] 			= "1:乗務員";
 			AuthorityFG[1][1] 			= "1";
 			AuthorityFG[2][1] 			= "乗務員";
 			
-			SerachAuthorityFG[0][2] 	= "2:荷主ユーザー";
-			SerachAuthorityFG[1][2] 	= "2";
-			SerachAuthorityFG[2][2] 	= "荷主ユーザー";		
+			SearchAuthorityFG[0][2] 	= "2:荷主ユーザー";
+			SearchAuthorityFG[1][2] 	= "2";
+			SearchAuthorityFG[2][2] 	= "荷主ユーザー";		
 			AuthorityFG[0][2] 			= "2:荷主ユーザー";
 			AuthorityFG[1][2] 			= "2";
 			AuthorityFG[2][2] 			= "荷主ユーザー";
 			
-			SerachAuthorityFG[0][3] 	= "未指定";
-			SerachAuthorityFG[1][3] 	= "";
-			SerachAuthorityFG[2][3] 	= "";	
+			SearchAuthorityFG[0][3] 	= "未指定";
+			SearchAuthorityFG[1][3] 	= "";
+			SearchAuthorityFG[2][3] 	= "";	
 		}
 	}
 	

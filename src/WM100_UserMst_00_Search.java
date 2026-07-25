@@ -63,7 +63,7 @@ public class WM100_UserMst_00_Search{
 		final JComboBox  TB_SearchShippingCompanyCd	= B100_FrameParts.JComboBoxSet( 100, 50,200,20,B100_DefaultVariable.SearchShippingCompanyList[0],11);	//所属会社
 		final JTextField TB_SearchUserCd			= B100_FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);	//ユーザーCD
 		final JTextField TB_SearchUserName			= B100_FrameParts.JTextFieldSet(100,100,100,20,"",11,0);	//ユーザー名
-		final JComboBox  TB_SearchAuthorityFG		= B100_FrameParts.JComboBoxSet( 100,125,150,20,B100_DefaultVariable.SerachAuthorityFG[0],11);	//権限
+		final JComboBox  TB_SearchAuthorityFG		= B100_FrameParts.JComboBoxSet( 100,125,150,20,B100_DefaultVariable.SearchAuthorityFG[0],11);	//権限
 		final JComboBox  TB_SearchDelFg				= B100_FrameParts.JComboBoxSet( 100,150,100,20,B100_DefaultVariable.SearchDelList[0],11);	//削除区分
 		
 		final JTextField TB_SearchCarCd				= B100_FrameParts.JTextFieldSet(400, 25,100,20,"",11,0);	//乗務車輛CD
@@ -228,7 +228,7 @@ public class WM100_UserMst_00_Search{
 					String GetSearchShippingCompanyCd	= ""+B100_DefaultVariable.SearchShippingCompanyList[1][TB_SearchShippingCompanyCd.getSelectedIndex()];	//所属会社
 					String GetSearchUserCd				= TB_SearchUserCd.getText();	//ユーザーCD
 					String GetSearchUserName			= TB_SearchUserName.getText();	//ユーザー名
-					String GetSearchAuthorityFG			= ""+B100_DefaultVariable.SerachAuthorityFG[1][TB_SearchAuthorityFG.getSelectedIndex()];	//権限
+					String GetSearchAuthorityFG			= ""+B100_DefaultVariable.SearchAuthorityFG[1][TB_SearchAuthorityFG.getSelectedIndex()];	//権限
 					String GetSearchDelFg				= ""+B100_DefaultVariable.SearchDelList[1][TB_SearchDelFg.getSelectedIndex()];			//削除区分
 					String GetSearchCarCd				= TB_SearchCarCd.getText();		//乗務車輛CD
 					String GetSearchCarName				= TB_SearchCarName.getText();	//乗務車輛名

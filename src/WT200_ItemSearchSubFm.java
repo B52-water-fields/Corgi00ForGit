@@ -96,11 +96,8 @@ public class WT200_ItemSearchSubFm{
 			columnNamesItem[1+(int)RtSettingItemMstRt[i][1]] = ""+RtSettingItemMstRt[i][3];
 		}
 		
-		//編集可能カラムの指定
-		B100_TableControl.RenewTgt = new int[1];
-		B100_TableControl.RenewTgt[0] = 0;
-
-		final DefaultTableModel tableModel_msItem = new B100_TableControl.MyTableModel01(columnNamesItem,0);
+		//編集可能カラム1列目のみ
+		final DefaultTableModel tableModel_msItem = new B100_TableControl.MyTableModel00(columnNamesItem,0);
 		
 		final JTable tbItem = new JTable(tableModel_msItem);
 		tbItem.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

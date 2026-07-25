@@ -51,7 +51,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 	static final int ColSetClArrNo			= 20;
 	static final int ColSetActualQty			= 21;
 	
-	public static void ParameterMstNyankoExcelEntry(int x,int y,String TgtFilePath) {
+	public static void ArrivalExcelEntry(int x,int y,String TgtFilePath) {
 		A00000_Main.LoginCheck();
 		if(0==SetX) {SetX=100;}
 		if(0==SetY) {SetY=100;}
@@ -166,7 +166,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 							,ColSetEntryQty
 							,ColSetEntryStoreLoc
 							};
-		B100_TableControl.RenewTgt = new int[RenewTgtCol.length+1];
+		B100_TableControl.RenewTgt = new int[RenewTgtCol.length];
 		for(int i=0;i<RenewTgtCol.length;i++) {
 			B100_TableControl.RenewTgt[i] = RenewTgtCol[i];
 		}
@@ -185,25 +185,22 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		TableColumn column = null;
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);
 		for(int i=1;i<NeedCol.length;i++) {
-			boolean RenewFg = false;
 			for(int i01=0;i01<RenewTgtCol.length;i01++) {
 				if((int)NeedCol[i][3]==RenewTgtCol[i01]) {
-					RenewFg=true;
 					i01=RenewTgtCol.length+1;
 				}
 			}
-			if(RenewFg) {
-				if(0==(int)NeedCol[i][1]) {
-					column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRendererEntry());	
-				}else {
-					column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRendererEntry());	
-				}
+			
+			if(0==(int)NeedCol[i][1]) {
+				column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRendererEntry());	
 			}else {
-				if(0==(int)NeedCol[i][1]) {
-					column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());	
-				}else {
-					column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	
-				}
+				column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRendererEntry());	
+			}
+		
+			if(0==(int)NeedCol[i][1]) {
+				column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());	
+			}else {
+				column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	
 			}
 		}
 		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,65,1260,250,tb01);
@@ -228,7 +225,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 		JButton LocClearBtn 		= B100_FrameParts.AnyBtn(475,"ロケクリア",10);
 		main_fm.add(LocClearBtn);
 		
-		final Object[] LocSerachSet	= WT200_LocSearchSubFm.LocSearchSubFm(main_fm.getX()+120,main_fm.getY()+30,A00000_Main.ClWh,A00000_Main.ClCd,"NK");
+		final Object[] LocSearchSet	= WT200_LocSearchSubFm.LocSearchSubFm(main_fm.getX()+120,main_fm.getY()+30,A00000_Main.ClWh,A00000_Main.ClCd,"NK");
 		
 		JLabel LB_RowNo				= B100_FrameParts.JLabelSet(  0,325,130,20,"RowNo:"				,11,1);
 		JLabel LB_PlanDate			= B100_FrameParts.JLabelSet(230,325,130,20,"入荷予定日:"			,11,1);
@@ -431,7 +428,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 			Msg = Msg+"\nがヘッダに必要です";
 			
 			JOptionPane.showMessageDialog(null, Msg);
-			ParameterMstNyankoExcelEntry(0,0,TgtFilePath);
+			ArrivalExcelEntry(0,0,TgtFilePath);
 		}else {
 			int[] ClmnType = new int[HeaderRead[0].length];
 			for(int i=0;i<ClmnType.length;i++) {ClmnType[i]=1;}
@@ -531,7 +528,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 						int ColMsPlanClCd				= 11;
 						int ColMsPlanPlanDate			= 12;
 						int ColMsPlanSpCd				= 13;
-						int ColHdPlanEntryFg			= 14;
+						int ColMsPlanEntryFg			= 14;
 						
 						Object[][] CheckPlanHdData = new Object[ArrivalPlanHdRt.length][10];
 						Object[][] CheckPlanMsData = new Object[ArrivalPlanMsRt.length][15];
@@ -596,7 +593,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 							CheckPlanMsData[i][ColMsPlanClCd]				= GetClCd;
 							CheckPlanMsData[i][ColMsPlanPlanDate]			= GetPlanDate;
 							CheckPlanMsData[i][ColMsPlanSpCd]				= GetSpCd;
-							CheckPlanMsData[i][ColHdPlanEntryFg]			= (boolean)false;
+							CheckPlanMsData[i][ColMsPlanEntryFg]			= (boolean)false;
 							
 						}
 						
@@ -678,7 +675,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 							
 							CheckPlanMsData[MsHitRow][ColMsPlanEntryQty]			= (int)CheckPlanMsData[MsHitRow][ColMsPlanEntryQty]+GetEntryQty;
 							CheckPlanHdData[HdHitRow][ColHdPlanEntryQty]			= (int)CheckPlanHdData[HdHitRow][ColHdPlanEntryQty]+GetEntryQty;
-							CheckPlanMsData[MsHitRow][ColHdPlanEntryFg]				= (boolean)true;
+							CheckPlanMsData[MsHitRow][ColMsPlanEntryFg]				= (boolean)true;
 							
 						}
 						ArrayList<String> UnCompleteArrNo	= new ArrayList<String>();
@@ -687,12 +684,12 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 						
 						for(int i=0;i<CheckPlanMsData.length;i++) {
 							if(ShortageSplit.isSelected()	) {	//入荷不足分は分納待ちにする
-								if((int)CheckPlanMsData[i][ColMsPlanRemainingPlanQty]>(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
+								if((int)CheckPlanMsData[i][ColMsPlanPlanQty]>(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
 									UnCompleteArrNo.add((String)CheckPlanMsData[i][ColMsPlanArrNo]);
 								}
 							}
 							if(OverErr.isSelected()			) {	//過剰入荷は拒否する
-								if((int)CheckPlanMsData[i][ColMsPlanRemainingPlanQty]<(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
+								if((int)CheckPlanMsData[i][ColMsPlanPlanQty]<(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
 									OverQtyArrNo.add((String)CheckPlanMsData[i][ColMsPlanArrNo]);
 									OverQtyMsNo.add((int)CheckPlanMsData[i][ColMsPlanMsNo]);
 								}
@@ -710,7 +707,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 							/************************************************************************************************
 							  不足分を分納待ちにしない場合
 							  入荷予定ヘッダに対して数量ゼロは数量ゼロを対象にする場合のみ実績生成
-							  入荷予定明細に対して数量ゼロは入荷実績生成不要不要
+							  入荷予定明細に対して数量ゼロは入荷実績生成不要
 							************************************************************************************************/
 							
 							/*************************
@@ -857,7 +854,7 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 								if(ShortageSplit.isSelected()	) {	//入荷不足分は分納待ちにする
 									int HitRow = B100_ArrayListControl.ArryListGetRow(UnCompleteArrNo,EntryArrNoList.get(i),false);
 									if(0>HitRow) {
-										//Hitしない場合-1が返却されるので入荷済み
+										//Hitしない場合-1が返却されるので入荷済みでOK
 									}else {
 										ArrivalPlanHd_FixFg[PlanHdEntryCount]		= "2";	//ステータス
 									}
@@ -1134,8 +1131,8 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 								SetX=main_fm.getX();
 								SetY=main_fm.getY();
 
-								((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
-								((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
+								((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
+								((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
 								
 								main_fm.setVisible(false);
 								main_fm.dispose();
@@ -1567,30 +1564,30 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(true);
+					((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(true);
 					RenewFg = true;
 				}
 			}
 		});
 		
 		//ロケーション検索サブ画面登録ボタン押下時の挙動
-		((JButton)LocSerachSet[WT200_LocSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
+		((JButton)LocSearchSet[WT200_LocSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = ((DefaultTableModel)LocSerachSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getRowCount();
+					int RowCount = ((DefaultTableModel)LocSearchSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getRowCount();
 					String SetLoc = "";
 					boolean KickFg = false;
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)((DefaultTableModel)LocSerachSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getValueAt(i, 0)) {
-							SetLoc = ""+((DefaultTableModel)LocSerachSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getValueAt(i,1+M100_LocationMstRt.ColLoc);
+						if((boolean)((DefaultTableModel)LocSearchSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getValueAt(i, 0)) {
+							SetLoc = ""+((DefaultTableModel)LocSearchSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getValueAt(i,1+M100_LocationMstRt.ColLoc);
 							KickFg = true;
 							i=RowCount+1;
 						}
 					}
 					if(KickFg) {
 						TB_EntryStoreLoc.setText(SetLoc);
-						((JFrame)LocSerachSet[WT200_LocSearchSubFm.RtJFrame]).setVisible(false);
+						((JFrame)LocSearchSet[WT200_LocSearchSubFm.RtJFrame]).setVisible(false);
 					}
 					RenewFg = true;
 				}
@@ -1603,8 +1600,8 @@ public class WT100_Arrival_31_ExcelEntryInPut{
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
 
-				((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
-				((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
+				((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
+				((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
 				
 				main_fm.setVisible(false);
 				main_fm.dispose();

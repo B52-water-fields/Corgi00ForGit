@@ -1935,7 +1935,11 @@ public class WT100_ArrivalPlan_00_Search{
 
 						main_fm.setVisible(false);
 						main_fm.dispose();
-						WT100_Arrival_31_ExcelEntryInPut.ParameterMstNyankoExcelEntry(0,0,Selected);
+						/*
+						WT100_Arrival_40_ObjectEntry.ArrivalExcelEntry(0,0,Selected);
+						*/
+						WT100_Arrival_31_ExcelEntryInPut.ArrivalExcelEntry(0,0,Selected);
+						//*/
 					}
 					RenewFg = true;
 				}

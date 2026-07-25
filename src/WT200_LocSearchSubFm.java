@@ -91,11 +91,8 @@ public class WT200_LocSearchSubFm{
 			columnNamesLoc[1+(int)RtSettingLocationMstRt[i][1]] = ""+RtSettingLocationMstRt[i][3];
 		}
 		
-		//編集可能カラムの指定
-		B100_TableControl.RenewTgt = new int[1];
-		B100_TableControl.RenewTgt[0] = 0;
-
-		final DefaultTableModel tableModel_msLoc = new B100_TableControl.MyTableModel01(columnNamesLoc,0);
+		//編集可能カラム1列目のみ
+		final DefaultTableModel tableModel_msLoc = new B100_TableControl.MyTableModel00(columnNamesLoc,0);
 		
 		final JTable tbLoc = new JTable(tableModel_msLoc);
 		tbLoc.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

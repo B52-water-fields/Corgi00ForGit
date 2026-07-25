@@ -298,8 +298,8 @@ public class WT100_Arrival_20_ForceEntry{
 		
 		main_fm.add(PN_Entry);
 		
-		final Object[] ItemSerachSet	= WT200_ItemSearchSubFm.ItemSearchSubFm(main_fm.getX()+100,main_fm.getY()+10,B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()],B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()],"NK");
-		final Object[] LocSerachSet		= WT200_LocSearchSubFm.LocSearchSubFm(main_fm.getX()+120,main_fm.getY()+30,B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()],B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()],"NK");
+		final Object[] ItemSearchSet	= WT200_ItemSearchSubFm.ItemSearchSubFm(main_fm.getX()+100,main_fm.getY()+10,B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()],B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()],"NK");
+		final Object[] LocSearchSet		= WT200_LocSearchSubFm.LocSearchSubFm(main_fm.getX()+120,main_fm.getY()+30,B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()],B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()],"NK");
 		
 		String[] Title = B100_RtObjectCreate.RtTitleName(T100_ArrivalMsRt.RtArrivalMsRt());
 		final Object[][] NeedCol = {
@@ -421,11 +421,11 @@ public class WT100_Arrival_20_ForceEntry{
 							SetX=main_fm.getX();
 							SetY=main_fm.getY();
 
-							((JFrame)ItemSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
-							((JFrame)ItemSerachSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
+							((JFrame)ItemSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
+							((JFrame)ItemSearchSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
 							
-							((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
-							((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
+							((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
+							((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
 							
 							main_fm.setVisible(false);
 							main_fm.dispose();
@@ -672,7 +672,7 @@ public class WT100_Arrival_20_ForceEntry{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					((JFrame)ItemSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(true);
+					((JFrame)ItemSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(true);
 					RenewFg = true;
 				}
 			}
@@ -682,30 +682,30 @@ public class WT100_Arrival_20_ForceEntry{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(true);
+					((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(true);
 					RenewFg = true;
 				}
 			}
 		});
 		
 		//商品検索サブ画面登録ボタン押下時の挙動
-		((JButton)ItemSerachSet[WT200_ItemSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
+		((JButton)ItemSearchSet[WT200_ItemSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = ((DefaultTableModel)ItemSerachSet[WT200_ItemSearchSubFm.RtDefaultTableModel]).getRowCount();
+					int RowCount = ((DefaultTableModel)ItemSearchSet[WT200_ItemSearchSubFm.RtDefaultTableModel]).getRowCount();
 					String SetItemCd = "";
 					boolean KickFg = false;
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)((DefaultTableModel)ItemSerachSet[WT200_ItemSearchSubFm.RtDefaultTableModel]).getValueAt(i, 0)) {
-							SetItemCd = ""+((DefaultTableModel)ItemSerachSet[WT200_ItemSearchSubFm.RtDefaultTableModel]).getValueAt(i,1+M100_ItemMstRt.ColItemCd);
+						if((boolean)((DefaultTableModel)ItemSearchSet[WT200_ItemSearchSubFm.RtDefaultTableModel]).getValueAt(i, 0)) {
+							SetItemCd = ""+((DefaultTableModel)ItemSearchSet[WT200_ItemSearchSubFm.RtDefaultTableModel]).getValueAt(i,1+M100_ItemMstRt.ColItemCd);
 							KickFg = true;
 							i=RowCount+1;
 						}
 					}
 					if(KickFg) {
 						TB_ItemCd.setText(SetItemCd);
-						((JFrame)ItemSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
+						((JFrame)ItemSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
 						ItemSelectControl(ItemCdControlSet);
 					}
 					RenewFg = true;
@@ -714,23 +714,23 @@ public class WT100_Arrival_20_ForceEntry{
 		});
 		
 		//ロケーション検索サブ画面登録ボタン押下時の挙動
-		((JButton)LocSerachSet[WT200_LocSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
+		((JButton)LocSearchSet[WT200_LocSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					int RowCount = ((DefaultTableModel)LocSerachSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getRowCount();
+					int RowCount = ((DefaultTableModel)LocSearchSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getRowCount();
 					String SetLoc = "";
 					boolean KickFg = false;
 					for(int i=0;i<RowCount;i++) {
-						if((boolean)((DefaultTableModel)LocSerachSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getValueAt(i, 0)) {
-							SetLoc = ""+((DefaultTableModel)LocSerachSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getValueAt(i,1+M100_LocationMstRt.ColLoc);
+						if((boolean)((DefaultTableModel)LocSearchSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getValueAt(i, 0)) {
+							SetLoc = ""+((DefaultTableModel)LocSearchSet[WT200_LocSearchSubFm.RtDefaultTableModel]).getValueAt(i,1+M100_LocationMstRt.ColLoc);
 							KickFg = true;
 							i=RowCount+1;
 						}
 					}
 					if(KickFg) {
 						TB_Loc.setText(SetLoc);
-						((JFrame)LocSerachSet[WT200_LocSearchSubFm.RtJFrame]).setVisible(false);
+						((JFrame)LocSearchSet[WT200_LocSearchSubFm.RtJFrame]).setVisible(false);
 					}
 					RenewFg = true;
 				}
@@ -744,11 +744,11 @@ public class WT100_Arrival_20_ForceEntry{
 				SetX=main_fm.getX();
 				SetY=main_fm.getY();
 
-				((JFrame)ItemSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
-				((JFrame)ItemSerachSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
+				((JFrame)ItemSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
+				((JFrame)ItemSearchSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
 				
-				((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
-				((JFrame)LocSerachSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
+				((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).setVisible(false);
+				((JFrame)LocSearchSet[WT200_ItemSearchSubFm.RtJFrame]).dispose();
 				
 				main_fm.setVisible(false);
 				main_fm.dispose();

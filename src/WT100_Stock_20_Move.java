@@ -218,7 +218,9 @@ public class WT100_Stock_20_Move{
 		
 		final JCheckBox TB_EntryMode 				= B100_FrameParts.JCheckBoxSet(				500,550,100,20,"荷姿別で移動",10);
 		main_fm.add(TB_EntryMode);
-		JButton EntryBtn 							= B100_FrameParts.AnyBtn(							675,"移動実行",11);
+		JButton AllMoveBtn							= B100_FrameParts.AnyBtn(							400,"全数移動"	,11);
+		main_fm.add(AllMoveBtn);
+		JButton EntryBtn 							= B100_FrameParts.AnyBtn(							675,"移動実行"	,11);
 		main_fm.add(EntryBtn);
 		
 		//ロケ検索ボタン
@@ -648,6 +650,45 @@ public class WT100_Stock_20_Move{
 					main_fm.dispose();
 					WT100_Stock_00_Search.StockSearch(0,0);
 				}
+			}
+		});
+		//全数移動ボタン押下時の挙動
+		AllMoveBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				RenewFg = false;
+				int GetFromBrTotalQty = B100_TextControl.TextToInt(TB_FromBrTotalQty.getText());
+				TB_MoveBrTotalQty.setText(""+GetFromBrTotalQty);
+				
+				int GetMoveTotalQty 	= B100_TextControl.TextToInt(TB_MoveBrTotalQty.getText());
+				int GetPlUnitQty		= B100_TextControl.TextToInt(TB_PlUnitQty.getText());
+				int GetCsUnitQty		= B100_TextControl.TextToInt(TB_CsUnitQty.getText());
+				int GetCtUnitQty		= B100_TextControl.TextToInt(TB_CtUnitQty.getText());
+				
+				int SetPlQty = 0;
+				int SetCsQty = 0;
+				int SetCtQty = 0;
+				int SetBrQty = GetMoveTotalQty;
+				
+				if(0<GetPlUnitQty) {
+					SetPlQty = (int)(SetBrQty/GetPlUnitQty);
+					SetBrQty = SetBrQty%GetPlUnitQty;
+				}
+				if(0<GetCsUnitQty) {
+					SetCsQty = (int)(SetBrQty/GetCsUnitQty);
+					SetBrQty = SetBrQty%GetCsUnitQty;
+				}
+				if(0<GetCtUnitQty) {
+					SetCtQty = (int)(SetBrQty/GetCtUnitQty);
+					SetBrQty = SetBrQty%GetCtUnitQty;
+				}
+				
+				TB_MovePlQty.setText(""+ni.format(SetPlQty));
+				TB_MoveCsQty.setText(""+ni.format(SetCsQty));
+				TB_MoveCtQty.setText(""+ni.format(SetCtQty));
+				TB_MoveBrQty.setText(""+ni.format(SetBrQty));
+				
+				ArrayList<String> ErrMsg = SetAfterVolArgumentControl(ArgumentSet);
+				RenewFg = true;
 			}
 		});
 		

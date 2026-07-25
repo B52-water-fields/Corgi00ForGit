@@ -632,7 +632,81 @@ public class B100_ExcellControl{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		return rt;
+	}
+	
+	public static Object[][] ExcellToObjectFieldNameColGet(String TgtFilePath,String SheetName,String[] NeedColName){
+		//フィールド名を受け取って読み込んだエクセルの1行目を元にデータ読み込んでヘッダ部を元に
+		//当該エクセルの何列目が対応しているかを返却
+		//ExcellToObjectFieldName動かす前に使う
+		//OKならtrue返却
+		Object[][] Rt = new Object[0][2];
+		if(null!=NeedColName && 0<NeedColName.length) {
+			for(int i=0;i<NeedColName.length;i++) {NeedColName[i]	= B100_TextControl.Trim(NeedColName[i]);}
+			Rt = new Object[NeedColName.length][2];
+			
+			Object[][] HeaderRead = B100_ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+			for(int i=0;i<HeaderRead[0].length;i++) {HeaderRead[0][i]= B100_TextControl.Trim((String)HeaderRead[0][i]);	}
+			
+			for(int i01=0;i01<NeedColName.length;i01++) {
+				Rt[i01][1] = -1;
+				for(int i02=0;i02<HeaderRead[0].length;i02++) {
+					if(((String)HeaderRead[0][i02]).equals(NeedColName[i01])) {
+						Rt[i01][1] = i02;
+						i02=HeaderRead[0].length+1;
+					}
+				}
+			}
+		}
+		return Rt;
+	}
+	
+	public static boolean ExcellToObjectFieldNameCheck(String TgtFilePath,String SheetName,String[] NeedColName){
+		//対象エクセルシートヘッダ行に必要フィールド名なければ　false
+		boolean Rt = true;
+		Object[][] NeedColCheck	= B100_ExcellControl.ExcellToObjectFieldNameColGet(TgtFilePath,SheetName,NeedColName);
+		
+		for(int i=0;i<NeedColCheck.length;i++) {
+			if(0>(int)NeedColCheck[i][1]) {
+				Rt = false;
+			}
+		}
+		return Rt;
+	}
+	
+	public static Object[][] ExcellToObjectFieldName(String TgtFilePath,String SheetName,Object[][] NeedCol){
+		//フィールド名,型(0:数値 1:文字列 2:日付時刻),返却オブジェクトの列番号を受け取って読み込んだエクセルの1行目を元にデータ読み込んで指定オブジェクトを返す
+		Object[][] Rt= new Object[0][0];
+		
+		String[] NeedColName = new String[NeedCol.length];
+		for(int i=0;i<NeedCol.length;i++) {NeedColName[i] = (String)NeedCol[i][0];}
+		Object[][] ExcellToObjectFieldNameColGet	= B100_ExcellControl.ExcellToObjectFieldNameColGet(TgtFilePath,SheetName,NeedColName);
+		boolean kickFg		= B100_ExcellControl.ExcellToObjectFieldNameCheck(TgtFilePath,SheetName,NeedColName);
+		
+		if(kickFg) {
+			int MaxColNo = 0;
+			for(int i=0;i<NeedCol.length;i++) {
+				if(MaxColNo<(int)NeedCol[i][2]) {
+					MaxColNo = (int)NeedCol[i][2];
+				}
+			}
+			
+			Object[][] HeaderRead = B100_ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+			int[] ClmnType = new int[HeaderRead[0].length];
+			for(int i=0;i<ClmnType.length;i++) {ClmnType[i]=1;}
+			
+			for(int i=0;i<ExcellToObjectFieldNameColGet.length;i++) {
+				ClmnType[(int)ExcellToObjectFieldNameColGet[i][1]]	= (int)NeedCol[i][1];
+			}
+			Object[][] ExcellRead = B100_ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Rt= new Object[ExcellRead.length][MaxColNo+1];
+			
+			for(int i01=0;i01<ExcellRead.length;i01++) {
+				for(int i02=0;i02<ExcellToObjectFieldNameColGet.length;i02++) {
+					Rt[i01][(int)NeedCol[i02][2]]	= ExcellRead[i01][(int)ExcellToObjectFieldNameColGet[i02][1]];
+				}
+			}
+		}
+		return Rt;
 	}
 }

@@ -12,6 +12,34 @@ public class B100_TableControl{
 	//明細業表示テーブル制御
 	//RenewTgt列のみ編集可
 	static int[] RenewTgt;
+	
+	//一列目意外編集不可
+	static class MyTableModel00 extends DefaultTableModel{
+		MyTableModel00(String[] columnNames, int rowNum){
+			super(columnNames, rowNum);
+		}
+		//項目のクラス取得する
+		public Class getColumnClass(int col){
+			Object ob = getValueAt(0,col);
+			return ob.getClass();
+		}
+		//RenewTgt以外編集不可
+		public boolean isCellEditable(int row, int column) {
+			Object flag = this.getValueAt(0, column);
+			boolean Renew = false;
+			int[] RenewTgt = new int[1];
+			if(0==column) {
+				Renew = true;
+			}
+			
+			if(Renew){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
+	//任意列意外編集不可
 	static class MyTableModel01 extends DefaultTableModel{
 		MyTableModel01(String[] columnNames, int rowNum){
 			super(columnNames, rowNum);
