@@ -94,11 +94,11 @@ public class WT100_Arrival_30_ExcelEntryOutPut{
 			String[][] OutData = ArrivalExcelOutPutCreate(TgtWhCd,TgtClCd,TgtArrivalNo);
 			
 			String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
-			String fp = Selected+"\\"+"入荷実績登録用Excell"+NowDTM+".xlsx";
+			String fp = Selected+"\\"+"入荷実績登録用Excel"+NowDTM+".xlsx";
 			
 			int MFG = 0;
 			int OPFG = 1;
-			B100_ExcellControl.EXCELL_DATA_SET(fp,"入荷予定（明細）検索結果",OutData ,MFG,OPFG);
+			B100_ExcelControl.EXCELL_DATA_SET(fp,"入荷予定（明細）検索結果",OutData ,MFG,OPFG);
 			
 			//ファイル開く
 			File file = new File(fp);

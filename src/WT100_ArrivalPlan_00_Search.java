@@ -1971,7 +1971,7 @@ public class WT100_ArrivalPlan_00_Search{
 						
 						int MFG = 0;
 						int OPFG = 1;
-						B100_ExcellControl.EXCELL_DATA_SET(fp,"入荷予定（明細）検索結果",OutData ,MFG,OPFG);
+						B100_ExcelControl.EXCELL_DATA_SET(fp,"入荷予定（明細）検索結果",OutData ,MFG,OPFG);
 						
 						//ファイル開く
 						File file = new File(fp);

@@ -40,7 +40,7 @@ public class WM100_CarMst_02_ExcelEntry{
 		
 		String SheetName = "";
 		
-		final String[] SheetList = B100_ExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100_ExcelControl.ExcelSheetList(TgtFilePath);
 		
 		if(1==SheetList.length) {
 			SheetName = SheetList[0];
@@ -186,7 +186,7 @@ public class WM100_CarMst_02_ExcelEntry{
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B100_ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100_ExcelControl.ExcelRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 
 		if(null==HeaderRead||0==HeaderRead.length) {
@@ -241,9 +241,9 @@ public class WM100_CarMst_02_ExcelEntry{
 			ClmnType[TgtCol[ 7]]=1;	//基幹システム車輛コード
 			ClmnType[TgtCol[ 8]]=1;	//削除フラグ
 			
-			Object[][] ExcellRead = B100_ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcelRead = B100_ExcelControl.ExcelRead(TgtFilePath,SheetName,ClmnType,true);
 			
-			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
+			if(0<ExcelRead.length&&ClmnType.length<=ExcelRead[0].length) {
 				//倉庫マスタ
 				//運送会社マスタ
 				//ユーザーマスタ
@@ -252,15 +252,15 @@ public class WM100_CarMst_02_ExcelEntry{
 				ArrayList<String> TgtShippingCompanyCd = new ArrayList<String>();
 				ArrayList<String> TgtUserCd = new ArrayList<String>();
 				
-				for(int i=0;i<ExcellRead.length;i++) {
-					for(int i01=0;i01<ExcellRead[i].length;i01++) {
-						if(null==ExcellRead[i][i01]) {ExcellRead[i][i01]="";}
-						ExcellRead[i][i01] = B100_TextControl.Trim(""+ExcellRead[i][i01]);
+				for(int i=0;i<ExcelRead.length;i++) {
+					for(int i01=0;i01<ExcelRead[i].length;i01++) {
+						if(null==ExcelRead[i][i01]) {ExcelRead[i][i01]="";}
+						ExcelRead[i][i01] = B100_TextControl.Trim(""+ExcelRead[i][i01]);
 					}
 					
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])) {TgtWHCD.add(				""+ExcellRead[i][TgtCol[ 0]]);}
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 1]])) {TgtShippingCompanyCd.add(	""+ExcellRead[i][TgtCol[ 1]]);}
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 6]])) {TgtUserCd.add(			""+ExcellRead[i][TgtCol[ 6]]);}
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 0]])) {TgtWHCD.add(				""+ExcelRead[i][TgtCol[ 0]]);}
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 1]])) {TgtShippingCompanyCd.add(	""+ExcelRead[i][TgtCol[ 1]]);}
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 6]])) {TgtUserCd.add(			""+ExcelRead[i][TgtCol[ 6]]);}
 				}
 				
 				Object[][] WhMstRt = WhMstRt(TgtWHCD);
@@ -271,26 +271,26 @@ public class WM100_CarMst_02_ExcelEntry{
 				ArrayList<String> ErrMsg = new ArrayList<String>();
 				
 				
-				for(int i=0;i<ExcellRead.length;i++) {
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])||!"".equals(""+ExcellRead[i][TgtCol[ 1]])||!"".equals(""+ExcellRead[i][TgtCol[ 2]])) {
+				for(int i=0;i<ExcelRead.length;i++) {
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 0]])||!"".equals(""+ExcelRead[i][TgtCol[ 1]])||!"".equals(""+ExcelRead[i][TgtCol[ 2]])) {
 						Object[] SetOb = new Object[17];
 						SetOb[ 0] = false;
-						SetOb[ 1] = ""+ExcellRead[i][TgtCol[ 0]];	//担当倉庫
+						SetOb[ 1] = ""+ExcelRead[i][TgtCol[ 0]];	//担当倉庫
 						SetOb[ 2] = "";	//倉庫名
-						SetOb[ 3] = ""+ExcellRead[i][TgtCol[ 1]];	//運送会社CD
+						SetOb[ 3] = ""+ExcelRead[i][TgtCol[ 1]];	//運送会社CD
 						SetOb[ 4] = "";	//運送会社表記名
 						SetOb[ 5] = "";	//運送会社正式名
 						SetOb[ 6] = "";	//運送会社略名
-						SetOb[ 7] = ""+ExcellRead[i][TgtCol[ 2]];	//車輛CD
-						SetOb[ 8] = ""+ExcellRead[i][TgtCol[ 3]];	//車輛表記名
-						SetOb[ 9] = ""+ExcellRead[i][TgtCol[ 4]];	//車輛正式名
-						SetOb[10] = ""+ExcellRead[i][TgtCol[ 5]];	//車輛略名
-						SetOb[11] = ""+ExcellRead[i][TgtCol[ 6]];	//乗務員CD
+						SetOb[ 7] = ""+ExcelRead[i][TgtCol[ 2]];	//車輛CD
+						SetOb[ 8] = ""+ExcelRead[i][TgtCol[ 3]];	//車輛表記名
+						SetOb[ 9] = ""+ExcelRead[i][TgtCol[ 4]];	//車輛正式名
+						SetOb[10] = ""+ExcelRead[i][TgtCol[ 5]];	//車輛略名
+						SetOb[11] = ""+ExcelRead[i][TgtCol[ 6]];	//乗務員CD
 						SetOb[12] = "";	//ユーザー名1
 						SetOb[13] = "";	//ユーザー名2
 						SetOb[14] = "";	//ユーザー名3
-						SetOb[15] = ""+ExcellRead[i][TgtCol[ 7]];	//基幹システム車輛コード
-						SetOb[16] = ""+ExcellRead[i][TgtCol[ 8]];	//削除フラグ
+						SetOb[15] = ""+ExcelRead[i][TgtCol[ 7]];	//基幹システム車輛コード
+						SetOb[16] = ""+ExcelRead[i][TgtCol[ 8]];	//削除フラグ
 						
 						for(int i01=1;i01<SetOb.length;i01++) {
 							SetOb[i01] = B100_TextControl.Trim(""+SetOb[i01]);

@@ -19,7 +19,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class B100_ExcellControl{
+public class B100_ExcelControl{
 	//エクセルとの連携用のクラス
 	
 	public static void EXCELL_EXISTENCE(String FP){
@@ -49,7 +49,7 @@ public class B100_ExcellControl{
 		}
 	}
 	
-	public static String[] ExcellSheetList(String FP){
+	public static String[] ExcelSheetList(String FP){
 		//対象エクセルのシート名を一覧で返却する
 		String[] rt = new String[0];
 		EXCELL_EXISTENCE(FP);
@@ -390,7 +390,7 @@ public class B100_ExcellControl{
 		return get_int;
 	}
 	
-	public static Object[][] ExcellRead(String FP,String SheetName,int[] ColumnType,boolean HdFg){
+	public static Object[][] ExcelRead(String FP,String SheetName,int[] ColumnType,boolean HdFg){
 		//FPで指定されたエクセルファイルのSheetNameシートの値をオブジェクトに格納して返却する
 		//HdFg true ならヘッダ行ありとして１行目無視
 		//想定される列分のColumnTypeで各列の属性指定
@@ -538,7 +538,7 @@ public class B100_ExcellControl{
 		return rt;
 	}
 	
-	public static Object[][] ExcellRead2(String FP,String SheetName,int FMaxRow,int FMaxCal){
+	public static Object[][] ExcelRead2(String FP,String SheetName,int FMaxRow,int FMaxCal){
 		//配列要素としてエクセルのデータを返却
 		//FMaxRow指定していなければ最終行まで読み取り
 		//FMaxRow指定していれば指定行を最大として読み取る
@@ -635,17 +635,17 @@ public class B100_ExcellControl{
 		return rt;
 	}
 	
-	public static Object[][] ExcellToObjectFieldNameColGet(String TgtFilePath,String SheetName,String[] NeedColName){
+	public static Object[][] ExcelToObjectFieldNameColGet(String TgtFilePath,String SheetName,String[] NeedColName){
 		//フィールド名を受け取って読み込んだエクセルの1行目を元にデータ読み込んでヘッダ部を元に
 		//当該エクセルの何列目が対応しているかを返却
-		//ExcellToObjectFieldName動かす前に使う
+		//ExcelToObjectFieldName動かす前に使う
 		//OKならtrue返却
 		Object[][] Rt = new Object[0][2];
 		if(null!=NeedColName && 0<NeedColName.length) {
 			for(int i=0;i<NeedColName.length;i++) {NeedColName[i]	= B100_TextControl.Trim(NeedColName[i]);}
 			Rt = new Object[NeedColName.length][2];
 			
-			Object[][] HeaderRead = B100_ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+			Object[][] HeaderRead = B100_ExcelControl.ExcelRead2(TgtFilePath,SheetName,1,0);
 			for(int i=0;i<HeaderRead[0].length;i++) {HeaderRead[0][i]= B100_TextControl.Trim((String)HeaderRead[0][i]);	}
 			
 			for(int i01=0;i01<NeedColName.length;i01++) {
@@ -661,10 +661,10 @@ public class B100_ExcellControl{
 		return Rt;
 	}
 	
-	public static boolean ExcellToObjectFieldNameCheck(String TgtFilePath,String SheetName,String[] NeedColName){
+	public static boolean ExcelToObjectFieldNameCheck(String TgtFilePath,String SheetName,String[] NeedColName){
 		//対象エクセルシートヘッダ行に必要フィールド名なければ　false
 		boolean Rt = true;
-		Object[][] NeedColCheck	= B100_ExcellControl.ExcellToObjectFieldNameColGet(TgtFilePath,SheetName,NeedColName);
+		Object[][] NeedColCheck	= B100_ExcelControl.ExcelToObjectFieldNameColGet(TgtFilePath,SheetName,NeedColName);
 		
 		for(int i=0;i<NeedColCheck.length;i++) {
 			if(0>(int)NeedColCheck[i][1]) {
@@ -674,14 +674,14 @@ public class B100_ExcellControl{
 		return Rt;
 	}
 	
-	public static Object[][] ExcellToObjectFieldName(String TgtFilePath,String SheetName,Object[][] NeedCol){
+	public static Object[][] ExcelToObjectFieldName(String TgtFilePath,String SheetName,Object[][] NeedCol){
 		//フィールド名,型(0:数値 1:文字列 2:日付時刻),返却オブジェクトの列番号を受け取って読み込んだエクセルの1行目を元にデータ読み込んで指定オブジェクトを返す
 		Object[][] Rt= new Object[0][0];
 		
 		String[] NeedColName = new String[NeedCol.length];
 		for(int i=0;i<NeedCol.length;i++) {NeedColName[i] = (String)NeedCol[i][0];}
-		Object[][] ExcellToObjectFieldNameColGet	= B100_ExcellControl.ExcellToObjectFieldNameColGet(TgtFilePath,SheetName,NeedColName);
-		boolean kickFg		= B100_ExcellControl.ExcellToObjectFieldNameCheck(TgtFilePath,SheetName,NeedColName);
+		Object[][] ExcelToObjectFieldNameColGet	= B100_ExcelControl.ExcelToObjectFieldNameColGet(TgtFilePath,SheetName,NeedColName);
+		boolean kickFg		= B100_ExcelControl.ExcelToObjectFieldNameCheck(TgtFilePath,SheetName,NeedColName);
 		
 		if(kickFg) {
 			int MaxColNo = 0;
@@ -691,19 +691,19 @@ public class B100_ExcellControl{
 				}
 			}
 			
-			Object[][] HeaderRead = B100_ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+			Object[][] HeaderRead = B100_ExcelControl.ExcelRead2(TgtFilePath,SheetName,1,0);
 			int[] ClmnType = new int[HeaderRead[0].length];
 			for(int i=0;i<ClmnType.length;i++) {ClmnType[i]=1;}
 			
-			for(int i=0;i<ExcellToObjectFieldNameColGet.length;i++) {
-				ClmnType[(int)ExcellToObjectFieldNameColGet[i][1]]	= (int)NeedCol[i][1];
+			for(int i=0;i<ExcelToObjectFieldNameColGet.length;i++) {
+				ClmnType[(int)ExcelToObjectFieldNameColGet[i][1]]	= (int)NeedCol[i][1];
 			}
-			Object[][] ExcellRead = B100_ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
-			Rt= new Object[ExcellRead.length][MaxColNo+1];
+			Object[][] ExcelRead = B100_ExcelControl.ExcelRead(TgtFilePath,SheetName,ClmnType,true);
+			Rt= new Object[ExcelRead.length][MaxColNo+1];
 			
-			for(int i01=0;i01<ExcellRead.length;i01++) {
-				for(int i02=0;i02<ExcellToObjectFieldNameColGet.length;i02++) {
-					Rt[i01][(int)NeedCol[i02][2]]	= ExcellRead[i01][(int)ExcellToObjectFieldNameColGet[i02][1]];
+			for(int i01=0;i01<ExcelRead.length;i01++) {
+				for(int i02=0;i02<ExcelToObjectFieldNameColGet.length;i02++) {
+					Rt[i01][(int)NeedCol[i02][2]]	= ExcelRead[i01][(int)ExcelToObjectFieldNameColGet[i02][1]];
 				}
 			}
 		}

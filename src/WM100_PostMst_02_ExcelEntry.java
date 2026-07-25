@@ -37,7 +37,7 @@ public class WM100_PostMst_02_ExcelEntry{
 		
 		String SheetName = "";
 		
-		final String[] SheetList = B100_ExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100_ExcelControl.ExcelSheetList(TgtFilePath);
 		
 		if(1==SheetList.length) {
 			SheetName = SheetList[0];
@@ -138,7 +138,7 @@ public class WM100_PostMst_02_ExcelEntry{
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B100_ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100_ExcelControl.ExcelRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 		
 		String[] NeedCol = {
@@ -199,29 +199,29 @@ public class WM100_PostMst_02_ExcelEntry{
 			ClmnType[TgtCol[3]]=1;	//町丁目
 			ClmnType[TgtCol[4]]=1;	//市区町村CD
 			
-			Object[][] ExcellRead = B100_ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcelRead = B100_ExcelControl.ExcelRead(TgtFilePath,SheetName,ClmnType,true);
 			
-			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
-				for(int i=0;i<ExcellRead.length;i++) {
+			if(0<ExcelRead.length&&ClmnType.length<=ExcelRead[0].length) {
+				for(int i=0;i<ExcelRead.length;i++) {
 					Object[] SetOb = new Object[6];
 					
-					SetOb[0] = B100_TextControl.num_only_String(""+ExcellRead[i][TgtCol[0]]);	//郵便番号
+					SetOb[0] = B100_TextControl.num_only_String(""+ExcelRead[i][TgtCol[0]]);	//郵便番号
 					if(!"".equals(""+SetOb[0])) {
 						
-						if(null==ExcellRead[i][TgtCol[1]]){ExcellRead[i][TgtCol[1]]="";}
-						if(null==ExcellRead[i][TgtCol[2]]){ExcellRead[i][TgtCol[2]]="";}
-						if(null==ExcellRead[i][TgtCol[3]]){ExcellRead[i][TgtCol[3]]="";}
-						if(null==ExcellRead[i][TgtCol[4]]){ExcellRead[i][TgtCol[4]]="";}
+						if(null==ExcelRead[i][TgtCol[1]]){ExcelRead[i][TgtCol[1]]="";}
+						if(null==ExcelRead[i][TgtCol[2]]){ExcelRead[i][TgtCol[2]]="";}
+						if(null==ExcelRead[i][TgtCol[3]]){ExcelRead[i][TgtCol[3]]="";}
+						if(null==ExcelRead[i][TgtCol[4]]){ExcelRead[i][TgtCol[4]]="";}
 						
-						ExcellRead[i][TgtCol[1]] = B100_TextControl.Trim(""+ExcellRead[i][TgtCol[1]]);
-						ExcellRead[i][TgtCol[2]] = B100_TextControl.Trim(""+ExcellRead[i][TgtCol[2]]);
-						ExcellRead[i][TgtCol[3]] = B100_TextControl.Trim(""+ExcellRead[i][TgtCol[3]]);
-						ExcellRead[i][TgtCol[4]] = B100_TextControl.Trim(""+ExcellRead[i][TgtCol[4]]);
+						ExcelRead[i][TgtCol[1]] = B100_TextControl.Trim(""+ExcelRead[i][TgtCol[1]]);
+						ExcelRead[i][TgtCol[2]] = B100_TextControl.Trim(""+ExcelRead[i][TgtCol[2]]);
+						ExcelRead[i][TgtCol[3]] = B100_TextControl.Trim(""+ExcelRead[i][TgtCol[3]]);
+						ExcelRead[i][TgtCol[4]] = B100_TextControl.Trim(""+ExcelRead[i][TgtCol[4]]);
 						
-						SetOb[1] = ExcellRead[i][TgtCol[1]];
-						SetOb[2] = ExcellRead[i][TgtCol[2]];
-						SetOb[3] = ExcellRead[i][TgtCol[3]];
-						SetOb[4] = ExcellRead[i][TgtCol[4]];
+						SetOb[1] = ExcelRead[i][TgtCol[1]];
+						SetOb[2] = ExcelRead[i][TgtCol[2]];
+						SetOb[3] = ExcelRead[i][TgtCol[3]];
+						SetOb[4] = ExcelRead[i][TgtCol[4]];
 						
 						MainFmTableModel.addRow(SetOb);
 					}

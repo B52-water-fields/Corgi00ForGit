@@ -40,7 +40,7 @@ public class WM100_UserMst_02_ExcelEntry{
 		
 		String SheetName = "";
 		
-		final String[] SheetList = B100_ExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100_ExcelControl.ExcelSheetList(TgtFilePath);
 		
 		if(1==SheetList.length) {
 			SheetName = SheetList[0];
@@ -211,7 +211,7 @@ public class WM100_UserMst_02_ExcelEntry{
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B100_ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100_ExcelControl.ExcelRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 
 		if(null==HeaderRead||0==HeaderRead.length) {
@@ -280,9 +280,9 @@ public class WM100_UserMst_02_ExcelEntry{
 			ClmnType[TgtCol[20]]=1;	//主要担当荷主CD
 			ClmnType[TgtCol[21]]=1;	//パスワード
 			
-			Object[][] ExcellRead = B100_ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcelRead = B100_ExcelControl.ExcelRead(TgtFilePath,SheetName,ClmnType,true);
 			
-			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
+			if(0<ExcelRead.length&&ClmnType.length<=ExcelRead[0].length) {
 				//倉庫マスタ
 				//運送会社マスタ
 				//車両マスタ
@@ -294,15 +294,15 @@ public class WM100_UserMst_02_ExcelEntry{
 				ArrayList<String> TgtCarCd = new ArrayList<String>();
 				ArrayList<String> TgthCLCD = new ArrayList<String>();
 				
-				for(int i=0;i<ExcellRead.length;i++) {
-					for(int i01=0;i01<ExcellRead[i].length;i01++) {
-						if(null==ExcellRead[i][i01]) {ExcellRead[i][i01]="";}
-						ExcellRead[i][i01] = B100_TextControl.Trim(""+ExcellRead[i][i01]);
+				for(int i=0;i<ExcelRead.length;i++) {
+					for(int i01=0;i01<ExcelRead[i].length;i01++) {
+						if(null==ExcelRead[i][i01]) {ExcelRead[i][i01]="";}
+						ExcelRead[i][i01] = B100_TextControl.Trim(""+ExcelRead[i][i01]);
 					}
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])) {TgtWHCD.add(				""+ExcellRead[i][TgtCol[ 0]]);}
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 1]])) {TgtShippingCompanyCd.add(	""+ExcellRead[i][TgtCol[ 1]]);}
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 7]])) {TgtCarCd.add(				""+ExcellRead[i][TgtCol[ 7]]);}
-					if(!"".equals(""+ExcellRead[i][TgtCol[20]])) {TgthCLCD.add(				""+ExcellRead[i][TgtCol[20]]);}
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 0]])) {TgtWHCD.add(				""+ExcelRead[i][TgtCol[ 0]]);}
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 1]])) {TgtShippingCompanyCd.add(	""+ExcelRead[i][TgtCol[ 1]]);}
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 7]])) {TgtCarCd.add(				""+ExcelRead[i][TgtCol[ 7]]);}
+					if(!"".equals(""+ExcelRead[i][TgtCol[20]])) {TgthCLCD.add(				""+ExcelRead[i][TgtCol[20]]);}
 				}
 				
 				Object[][] ShippingCompanyMstRt = ShippingCompanyMstRt(TgtShippingCompanyCd);
@@ -311,38 +311,38 @@ public class WM100_UserMst_02_ExcelEntry{
 				Object[][] WhMstRt 	= WhMstRt(TgtWHCD);
 				ArrayList<String> ErrMsg = new ArrayList<String>();
 				
-				for(int i=0;i<ExcellRead.length;i++) {
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])||!"".equals(""+ExcellRead[i][TgtCol[ 1]])||!"".equals(""+ExcellRead[i][TgtCol[ 2]])||!"".equals(""+ExcellRead[i][TgtCol[ 3]])) {
+				for(int i=0;i<ExcelRead.length;i++) {
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 0]])||!"".equals(""+ExcelRead[i][TgtCol[ 1]])||!"".equals(""+ExcelRead[i][TgtCol[ 2]])||!"".equals(""+ExcelRead[i][TgtCol[ 3]])) {
 						Object[] SetOb = new Object[29];
 						SetOb[ 0] = false;						
-						SetOb[ 1] = ""+ExcellRead[i][TgtCol[ 0]];	//倉庫CD
-						SetOb[ 2] = ""+ExcellRead[i][TgtCol[ 1]];	//運送会社CD
-						SetOb[ 3] = ""+ExcellRead[i][TgtCol[ 2]];	//ユーザーCD
+						SetOb[ 1] = ""+ExcelRead[i][TgtCol[ 0]];	//倉庫CD
+						SetOb[ 2] = ""+ExcelRead[i][TgtCol[ 1]];	//運送会社CD
+						SetOb[ 3] = ""+ExcelRead[i][TgtCol[ 2]];	//ユーザーCD
 						SetOb[ 4] = "";	//倉庫名
 						SetOb[ 5] = "";	//運送会社名
-						SetOb[ 6] = ""+ExcellRead[i][TgtCol[ 3]];	//ユーザー名1
-						SetOb[ 7] = ""+ExcellRead[i][TgtCol[ 4]];	//ユーザー名2
-						SetOb[ 8] = ""+ExcellRead[i][TgtCol[ 5]];	//ユーザー名3
-						SetOb[ 9] = ""+ExcellRead[i][TgtCol[ 6]];	//権限区分
-						SetOb[10] = ""+ExcellRead[i][TgtCol[ 7]];	//標準車輛CD
+						SetOb[ 6] = ""+ExcelRead[i][TgtCol[ 3]];	//ユーザー名1
+						SetOb[ 7] = ""+ExcelRead[i][TgtCol[ 4]];	//ユーザー名2
+						SetOb[ 8] = ""+ExcelRead[i][TgtCol[ 5]];	//ユーザー名3
+						SetOb[ 9] = ""+ExcelRead[i][TgtCol[ 6]];	//権限区分
+						SetOb[10] = ""+ExcelRead[i][TgtCol[ 7]];	//標準車輛CD
 						SetOb[11] = "";	//車両名称01
 						SetOb[12] = "";	//車両名称02
 						SetOb[13] = "";	//車両名称03
-						SetOb[14] = ""+ExcellRead[i][TgtCol[ 8]];	//郵便番号
-						SetOb[15] = ""+ExcellRead[i][TgtCol[ 9]];	//住所1
-						SetOb[16] = ""+ExcellRead[i][TgtCol[10]];	//住所2
-						SetOb[17] = ""+ExcellRead[i][TgtCol[11]];	//住所3
-						SetOb[18] = ""+ExcellRead[i][TgtCol[12]];	//電話番号
-						SetOb[19] = ""+ExcellRead[i][TgtCol[13]];	//FAX
-						SetOb[20] = ""+ExcellRead[i][TgtCol[14]];	//メールアドレス
-						SetOb[21] = ""+ExcellRead[i][TgtCol[15]];	//コメント1
-						SetOb[22] = ""+ExcellRead[i][TgtCol[16]];	//コメント2
-						SetOb[23] = ""+ExcellRead[i][TgtCol[17]];	//コメント3
-						SetOb[24] = ""+ExcellRead[i][TgtCol[18]];	///基幹システムユーザーコード
-						SetOb[25] = ""+ExcellRead[i][TgtCol[19]];	//削除区分
-						SetOb[26] = ""+ExcellRead[i][TgtCol[20]];	//主要担当荷主CD
+						SetOb[14] = ""+ExcelRead[i][TgtCol[ 8]];	//郵便番号
+						SetOb[15] = ""+ExcelRead[i][TgtCol[ 9]];	//住所1
+						SetOb[16] = ""+ExcelRead[i][TgtCol[10]];	//住所2
+						SetOb[17] = ""+ExcelRead[i][TgtCol[11]];	//住所3
+						SetOb[18] = ""+ExcelRead[i][TgtCol[12]];	//電話番号
+						SetOb[19] = ""+ExcelRead[i][TgtCol[13]];	//FAX
+						SetOb[20] = ""+ExcelRead[i][TgtCol[14]];	//メールアドレス
+						SetOb[21] = ""+ExcelRead[i][TgtCol[15]];	//コメント1
+						SetOb[22] = ""+ExcelRead[i][TgtCol[16]];	//コメント2
+						SetOb[23] = ""+ExcelRead[i][TgtCol[17]];	//コメント3
+						SetOb[24] = ""+ExcelRead[i][TgtCol[18]];	///基幹システムユーザーコード
+						SetOb[25] = ""+ExcelRead[i][TgtCol[19]];	//削除区分
+						SetOb[26] = ""+ExcelRead[i][TgtCol[20]];	//主要担当荷主CD
 						SetOb[27] = "";	//主要担当荷主名
-						SetOb[28] = ""+ExcellRead[i][TgtCol[21]];	//パスワード
+						SetOb[28] = ""+ExcelRead[i][TgtCol[21]];	//パスワード
 						
 						for(int i01=1;i01<SetOb.length;i01++) {
 							SetOb[i01] = B100_TextControl.Trim(""+SetOb[i01]);
@@ -382,54 +382,54 @@ public class WM100_UserMst_02_ExcelEntry{
 						
 						boolean UnHitFg = true;
 						int wint = i+1;
-						if(!"".equals(""+ExcellRead[i][TgtCol[ 0]])) {
+						if(!"".equals(""+ExcelRead[i][TgtCol[ 0]])) {
 							UnHitFg = true;
 							for(int i01=0;i01<WhMstRt.length;i01++) {
-								if((""+ExcellRead[i][TgtCol[ 0]]).equals(""+WhMstRt[i01][M100_WhMstRt.ColNoWHCD])) {
+								if((""+ExcelRead[i][TgtCol[ 0]]).equals(""+WhMstRt[i01][M100_WhMstRt.ColNoWHCD])) {
 									SetOb[ 4] = ""+WhMstRt[i01][M100_WhMstRt.ColNoWHName];	//倉庫名
 									UnHitFg = false;
 								}
 							}
 							if(UnHitFg) {
-								ErrMsg.add(wint+"行目エラー:("+ExcellRead[i][TgtCol[ 0]]+")は未登録の倉庫コードです");
+								ErrMsg.add(wint+"行目エラー:("+ExcelRead[i][TgtCol[ 0]]+")は未登録の倉庫コードです");
 							}
 						}else {
 							ErrMsg.add(wint+"行目エラー:所属倉庫コードは必須です");
 						}
 						
-						if(!"".equals(""+ExcellRead[i][TgtCol[ 1]])) {
+						if(!"".equals(""+ExcelRead[i][TgtCol[ 1]])) {
 							UnHitFg = true;
 							for(int i01=0;i01<ShippingCompanyMstRt.length;i01++) {
-								if((""+ExcellRead[i][TgtCol[ 1]]).equals(""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyCd])) {
+								if((""+ExcelRead[i][TgtCol[ 1]]).equals(""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyCd])) {
 									SetOb[ 5] = ""+ShippingCompanyMstRt[i01][M100_ShippingCompanyMstRt.ColShippingCompanyName01];	//運送会社名
 									UnHitFg = false;
 								}
 							}
 							if(UnHitFg) {
-								ErrMsg.add(wint+"行目エラー:("+ExcellRead[i][TgtCol[ 1]]+")は未登録の運送会社コードです");
+								ErrMsg.add(wint+"行目エラー:("+ExcelRead[i][TgtCol[ 1]]+")は未登録の運送会社コードです");
 							}
 						}else {
 							ErrMsg.add(wint+"行目エラー:所属運送会社コードは必須です");
 						}
 						
-						if(!"".equals(""+ExcellRead[i][TgtCol[ 2]])) {
+						if(!"".equals(""+ExcelRead[i][TgtCol[ 2]])) {
 							
 						}else {
 							ErrMsg.add(wint+"行目エラー:ユーザーコードは必須です");
 						}
 						
-						if(!"".equals(""+ExcellRead[i][TgtCol[ 3]])) {
+						if(!"".equals(""+ExcelRead[i][TgtCol[ 3]])) {
 							
 						}else {
 							ErrMsg.add(wint+"行目エラー:ユーザー名1は必須です");
 						}
 						
-						if(!"".equals(""+ExcellRead[i][TgtCol[ 7]])) {
+						if(!"".equals(""+ExcelRead[i][TgtCol[ 7]])) {
 							UnHitFg = true;
 							for(int i01=0;i01<CarMstRt.length;i01++) {
-								if((""+ExcellRead[i][TgtCol[ 0]]).equals(""+CarMstRt[i01][M100_CarMstRt.ColWHCD])
-									&& (""+ExcellRead[i][TgtCol[ 1]]).equals(""+CarMstRt[i01][M100_CarMstRt.ColShippingCompanyCd])
-									&& (""+ExcellRead[i][TgtCol[ 7]]).equals(""+CarMstRt[i01][M100_CarMstRt.ColCarCd])
+								if((""+ExcelRead[i][TgtCol[ 0]]).equals(""+CarMstRt[i01][M100_CarMstRt.ColWHCD])
+									&& (""+ExcelRead[i][TgtCol[ 1]]).equals(""+CarMstRt[i01][M100_CarMstRt.ColShippingCompanyCd])
+									&& (""+ExcelRead[i][TgtCol[ 7]]).equals(""+CarMstRt[i01][M100_CarMstRt.ColCarCd])
 									) {
 									SetOb[11] = ""+CarMstRt[i01][M100_CarMstRt.ColCarName01];	//車両名称01
 									SetOb[12] = ""+CarMstRt[i01][M100_CarMstRt.ColCarName02];	//車両名称02
@@ -438,20 +438,20 @@ public class WM100_UserMst_02_ExcelEntry{
 								}
 							}
 							if(UnHitFg) {
-								ErrMsg.add(wint+"行目エラー:("+ExcellRead[i][TgtCol[ 7]]+")は未登録の車輛コードです");
+								ErrMsg.add(wint+"行目エラー:("+ExcelRead[i][TgtCol[ 7]]+")は未登録の車輛コードです");
 							}
 						}
 						
-						if(!"".equals(""+ExcellRead[i][TgtCol[20]])) {
+						if(!"".equals(""+ExcelRead[i][TgtCol[20]])) {
 							UnHitFg = true;
 							for(int i01=0;i01<ClMstRt.length;i01++) {
-								if((""+ExcellRead[i][TgtCol[20]]).equals(""+ClMstRt[i01][M100_ClMstRt.Colcl_cd])) {
+								if((""+ExcelRead[i][TgtCol[20]]).equals(""+ClMstRt[i01][M100_ClMstRt.Colcl_cd])) {
 									SetOb[27] = ""+ClMstRt[i01][M100_ClMstRt.ColCLName01];	//主要担当荷主名
 									UnHitFg = false;
 								}
 							}
 							if(UnHitFg) {
-								ErrMsg.add(wint+"行目エラー:("+ExcellRead[i][TgtCol[20]]+")は未登録の荷主コードです");
+								ErrMsg.add(wint+"行目エラー:("+ExcelRead[i][TgtCol[20]]+")は未登録の荷主コードです");
 							}
 						}
 						MainFmTableModel.addRow(SetOb);

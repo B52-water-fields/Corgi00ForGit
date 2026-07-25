@@ -42,7 +42,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		final String[] SheetList = B100_ExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100_ExcelControl.ExcelSheetList(TgtFilePath);
 		
 		JLabel LB_SheetList				= B100_FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
 		final JComboBox   TB_SheetList	= B100_FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
@@ -189,7 +189,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 		
 		//ヘッダ行取得⇒フィールド名判定
 		//必要フィールドなければシート選択に戻る
-		Object[][] HeaderRead = B100_ExcellControl.ExcellRead2(TgtFilePath,SheetName,1,0);
+		Object[][] HeaderRead = B100_ExcelControl.ExcelRead2(TgtFilePath,SheetName,1,0);
 		boolean ErrFg = false;
 
 		if(null==HeaderRead||0==HeaderRead.length) {
@@ -262,30 +262,30 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 			ClmnType[TgtCol[15]]=1;	//基幹システム発着地コード
 			ClmnType[TgtCol[16]]=1;	//削除区分
 			
-			Object[][] ExcellRead = B100_ExcellControl.ExcellRead(TgtFilePath,SheetName,ClmnType,true);
+			Object[][] ExcelRead = B100_ExcelControl.ExcelRead(TgtFilePath,SheetName,ClmnType,true);
 			
-			if(0<ExcellRead.length&&ClmnType.length<=ExcellRead[0].length) {
-				for(int i=0;i<ExcellRead.length;i++) {
+			if(0<ExcelRead.length&&ClmnType.length<=ExcelRead[0].length) {
+				for(int i=0;i<ExcelRead.length;i++) {
 					Object[] SetOb = new Object[NeedCol.length+1];
-					if(!"".equals(""+ExcellRead[i][TgtCol[ 2]])) {
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 2]])) {
 						SetOb[ 0] = false;
-						SetOb[ 1] = ""+ExcellRead[i][TgtCol[ 0]];	//届先コード
-						SetOb[ 2] = ""+ExcellRead[i][TgtCol[ 1]];	//部署CD
-						SetOb[ 3] = ""+ExcellRead[i][TgtCol[ 2]];	//届先表記名
-						SetOb[ 4] = ""+ExcellRead[i][TgtCol[ 3]];	//届先正式名
-						SetOb[ 5] = ""+ExcellRead[i][TgtCol[ 4]];	//届先略名
-						SetOb[ 6] = B100_TextControl.num_only_String(""+ExcellRead[i][TgtCol[ 5]]);	//届先郵便
-						SetOb[ 7] = ""+ExcellRead[i][TgtCol[ 6]];	//届先住所1
-						SetOb[ 8] = ""+ExcellRead[i][TgtCol[ 7]];	//届先住所2
-						SetOb[ 9] = ""+ExcellRead[i][TgtCol[ 8]];	//届先住所3
-						SetOb[10] = B100_TextControl.num_only_String(""+ExcellRead[i][TgtCol[ 9]]);	//届先電話
-						SetOb[11] = B100_TextControl.num_only_String(""+ExcellRead[i][TgtCol[10]]);	//届先FAX
-						SetOb[12] = ""+ExcellRead[i][TgtCol[11]];	//届先MAIL
-						SetOb[13] = ""+ExcellRead[i][TgtCol[12]];	//コメント1
-						SetOb[14] = ""+ExcellRead[i][TgtCol[13]];	//コメント2
-						SetOb[15] = ""+ExcellRead[i][TgtCol[14]];	//コメント3
-						SetOb[16] = ""+ExcellRead[i][TgtCol[15]];	//基幹システム発着地コード
-						SetOb[17] = ""+ExcellRead[i][TgtCol[16]];	//削除区分
+						SetOb[ 1] = ""+ExcelRead[i][TgtCol[ 0]];	//届先コード
+						SetOb[ 2] = ""+ExcelRead[i][TgtCol[ 1]];	//部署CD
+						SetOb[ 3] = ""+ExcelRead[i][TgtCol[ 2]];	//届先表記名
+						SetOb[ 4] = ""+ExcelRead[i][TgtCol[ 3]];	//届先正式名
+						SetOb[ 5] = ""+ExcelRead[i][TgtCol[ 4]];	//届先略名
+						SetOb[ 6] = B100_TextControl.num_only_String(""+ExcelRead[i][TgtCol[ 5]]);	//届先郵便
+						SetOb[ 7] = ""+ExcelRead[i][TgtCol[ 6]];	//届先住所1
+						SetOb[ 8] = ""+ExcelRead[i][TgtCol[ 7]];	//届先住所2
+						SetOb[ 9] = ""+ExcelRead[i][TgtCol[ 8]];	//届先住所3
+						SetOb[10] = B100_TextControl.num_only_String(""+ExcelRead[i][TgtCol[ 9]]);	//届先電話
+						SetOb[11] = B100_TextControl.num_only_String(""+ExcelRead[i][TgtCol[10]]);	//届先FAX
+						SetOb[12] = ""+ExcelRead[i][TgtCol[11]];	//届先MAIL
+						SetOb[13] = ""+ExcelRead[i][TgtCol[12]];	//コメント1
+						SetOb[14] = ""+ExcelRead[i][TgtCol[13]];	//コメント2
+						SetOb[15] = ""+ExcelRead[i][TgtCol[14]];	//コメント3
+						SetOb[16] = ""+ExcelRead[i][TgtCol[15]];	//基幹システム発着地コード
+						SetOb[17] = ""+ExcelRead[i][TgtCol[16]];	//削除区分
 						
 						MainFmTableModel.addRow(SetOb);
 					}
@@ -1584,7 +1584,7 @@ public class WM100_DeliveryMst_02_ExcelEntry{
 						//ファイルに出力
 						int MFG = 0;
 						int OPFG = 1;
-						B100_ExcellControl.EXCELL_DATA_SET(FP,Sheet_name,OutString ,MFG,OPFG);
+						B100_ExcelControl.EXCELL_DATA_SET(FP,Sheet_name,OutString ,MFG,OPFG);
 						
 						//ファイル開く
 						File file = new File(FP);

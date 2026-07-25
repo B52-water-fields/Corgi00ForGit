@@ -182,7 +182,7 @@ public class B100_TableControl{
 			//ファイルに出力
 			int MFG = 0;
 			int OPFG = 1;
-			B100_ExcellControl.EXCELL_DATA_SET(FP,Sheet_name,OutString ,MFG,OPFG);
+			B100_ExcelControl.EXCELL_DATA_SET(FP,Sheet_name,OutString ,MFG,OPFG);
 			
 			//ファイル開く
 			File file = new File(FP);

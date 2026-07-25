@@ -85,7 +85,7 @@ public class WT100_Arrival_40_ObjectEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		final String[] SheetList = B100_ExcellControl.ExcellSheetList(TgtFilePath);
+		final String[] SheetList = B100_ExcelControl.ExcelSheetList(TgtFilePath);
 		
 		JLabel LB_SheetList				= B100_FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
 		final JComboBox   TB_SheetList	= B100_FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
@@ -150,7 +150,7 @@ public class WT100_Arrival_40_ObjectEntry{
 		for(int i=0;i<NeedCol.length;i++) {NeedColName[i] = (String)NeedCol[i][0];}
 		
 		//ヘッダ行取得⇒フィールド名判定
-		boolean NeedColCheck	= B100_ExcellControl.ExcellToObjectFieldNameCheck(TgtFilePath,SheetName,NeedColName);
+		boolean NeedColCheck	= B100_ExcelControl.ExcelToObjectFieldNameCheck(TgtFilePath,SheetName,NeedColName);
 		//必要フィールドなければシート選択に戻る
 		if(!NeedColCheck) {
 			String Msg = "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n";
@@ -166,7 +166,7 @@ public class WT100_Arrival_40_ObjectEntry{
 			JOptionPane.showMessageDialog(null, Msg);
 			ArrivalExcelEntry(x,y,TgtFilePath);
 		}else {
-			Object[][] GetOb = B100_ExcellControl.ExcellToObjectFieldName(TgtFilePath,SheetName,NeedCol);
+			Object[][] GetOb = B100_ExcelControl.ExcelToObjectFieldName(TgtFilePath,SheetName,NeedCol);
 			boolean KickFg = true;
 			//入荷予定番号空白の行は対象外ついでに正規化
 			int TgtRowCount = 0;
@@ -2390,17 +2390,17 @@ public class WT100_Arrival_40_ObjectEntry{
 		//必要フォルダを生成する
 		String FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcellentry";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcelentry";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcellentry\\Err";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcelentry\\Err";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcellentry\\BK";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcelentry\\BK";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
 		String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcellentry\\Err";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcelentry\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+ErrTitle+NowDTM+".txt";
 		
