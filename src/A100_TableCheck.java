@@ -193,6 +193,10 @@ public class A100_TableCheck{
 						,{"WM0032WhFeeBaseMstOut"			,"WANKO"	,"倉庫出荷料単価マスタ"			,WM0032WhFeeBaseMstOut_Definition()}
 						,{"WM0033WhFeeBaseMstStock"			,"WANKO"	,"倉庫保管料単価マスタ"			,WM0033WhFeeBaseMstStock_Definition()}
 						,{"WM0034WhFeeBaseMstAdjust"		,"WANKO"	,"倉庫在庫調整料単価マスタ"		,WM0034WhFeeBaseMstAdjust_Definition()}
+						
+						//,{"WW0005OrderHd"				,"WANKO"	,"受注ヘッダ"				,WW0005OrderHd_Definition()}
+						//,{"WW0006OrderMs"				,"WANKO"	,"受注明細"					,WW0006OrderMs_Definition()}
+						
 						,{"WW0010ArrivalPlanHd"				,"WANKO"	,"入荷予定ヘッダ"				,WW0010ArrivalPlanHd_Definition()}
 						,{"WW0011ArrivalPlanMs"				,"WANKO"	,"入荷予定明細"					,WW0011ArrivalPlanMs_Definition()}
 						,{"WW0012ArrivalHd"					,"WANKO"	,"入荷実績ヘッダ"				,WW0012ArrivalHd_Definition()}
