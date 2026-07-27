@@ -66,7 +66,7 @@ public class WTList100_ArrivalPlan{
 			        String FontName = "MS-Gothic";
 			        
 			        if(B100_FolderCheck.FLD_CHECK_ONRY(A00000_Main.FontFilePath)) {
-			        	FontPath = A00000_Main.FontFilePath;
+			        	FontPath = A00000_Main.FontFilePath;	
 			        	FontName = A00000_Main.FontFileName;
 			        }
 			        
