@@ -175,23 +175,7 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String Selected = B100_FolderSelect.FolderSelect("TEST");
-				if(null!=Selected) {
-					String[][] FileList = B100_FolderCheck.FileNameDIR(Selected);
-					System.out.println("IN");
-					for(int i=0;i<FileList.length;i++) {
-						System.out.println(FileList[i][0]);
-					}
-				}
 				
-				/*
-				String WST="G:\\.shortcut-targets-by-id\\1ZyhXp1ziKzgwtyCxR9EYvItIe_2uYoQW\\miyata-unyu";
-				String[][] FileList = B100_FolderCheck.FileNameDIR(WST);
-				System.out.println("IN");
-				for(int i=0;i<FileList.length;i++) {
-					System.out.println(FileList[i][0]);
-				}
-				*/
 			}
 		});
 	}

@@ -192,33 +192,33 @@ public class WT100_ArrivalPlan_00_Search{
 		//検索条件　状況　初期値を未入荷に設定
 		TB_SearchFixFg.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchArryvalFixFgList[1]	,"0",true));
 
-		JLabel LB2_SearchArrNo			= B100_FrameParts.JLabelSet( 200,125, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchClArrNo		= B100_FrameParts.JLabelSet( 200,150, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchPlanDate		= B100_FrameParts.JLabelSet( 210,175, 20,20,"～"		,10,2);
-		JLabel LB2_SearchHdActualDate	= B100_FrameParts.JLabelSet( 210,200, 20,20,"～"		,10,2);
-		JLabel LB2_SearchArCom			= B100_FrameParts.JLabelSet( 200,225, 40,20,"を含む"	,10,0);
+		JLabel LB2_SearchArrNo			= B100_FrameParts.JLabelSet( 	200,125, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchClArrNo		= B100_FrameParts.JLabelSet( 	200,150, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchPlanDate		= B100_FrameParts.JLabelSet( 	210,175, 20,20,"～"		,10,2);
+		JLabel LB2_SearchHdActualDate	= B100_FrameParts.JLabelSet(	210,200, 20,20,"～"		,10,2);
+		JLabel LB2_SearchArCom			= B100_FrameParts.JLabelSet( 	200,225, 40,20,"を含む"	,10,0);
 		
-		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(540, 25, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchClItemCd		= B100_FrameParts.JLabelSet(540, 50, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchJanCd			= B100_FrameParts.JLabelSet(540, 75, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchItemMdNo		= B100_FrameParts.JLabelSet(540,100, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchItemName		= B100_FrameParts.JLabelSet(540,125, 40,20,"を含む"	,10,0);
-		JLabel LB2_Searchlot			= B100_FrameParts.JLabelSet(540,150, 40,20,"と一致"	,10,0);
-		JLabel LB2_SearchExpDate		= B100_FrameParts.JLabelSet(550,175, 20,20,"～"		,10,2);
-		JLabel LB2_SearchActualDate		= B100_FrameParts.JLabelSet(550,200, 20,20,"～"		,10,2);
-		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(540,225, 40,20,"を含む"	,10,0);	
-		JLabel LB2_SearchEntryUser		= B100_FrameParts.JLabelSet(540,250, 40,20,"を含む"	,10,0);	
-		JLabel LB2_SearchUpdateUser		= B100_FrameParts.JLabelSet(540,275, 40,20,"を含む"	,10,0);	
+		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(	540, 25, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchClItemCd		= B100_FrameParts.JLabelSet(	540, 50, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchJanCd			= B100_FrameParts.JLabelSet(	540, 75, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchItemMdNo		= B100_FrameParts.JLabelSet(	540,100, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchItemName		= B100_FrameParts.JLabelSet(	540,125, 40,20,"を含む"	,10,0);
+		JLabel LB2_Searchlot			= B100_FrameParts.JLabelSet(	540,150, 40,20,"と一致"	,10,0);
+		JLabel LB2_SearchExpDate		= B100_FrameParts.JLabelSet(	550,175, 20,20,"～"		,10,2);
+		JLabel LB2_SearchActualDate		= B100_FrameParts.JLabelSet(	550,200, 20,20,"～"		,10,2);
+		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(	540,225, 40,20,"を含む"	,10,0);	
+		JLabel LB2_SearchEntryUser		= B100_FrameParts.JLabelSet(	540,250, 40,20,"を含む"	,10,0);	
+		JLabel LB2_SearchUpdateUser		= B100_FrameParts.JLabelSet(	540,275, 40,20,"を含む"	,10,0);	
 		
 		
-		JLabel LB2_SearchPlanQty		= B100_FrameParts.JLabelSet(850, 25, 20,20,"～"		,10,2);
-		JLabel LB2_SearchActualQty		= B100_FrameParts.JLabelSet(850, 50, 20,20,"～"		,10,2);
-		JLabel LB2_SearchSpName			= B100_FrameParts.JLabelSet(880,100, 40,20,"を含む"	,10,0);
-		JLabel LB2_SearchSpPost			= B100_FrameParts.JLabelSet(880,125, 40,20,"で始る"	,10,0);
-		JLabel LB2_SearchSpAdd			= B100_FrameParts.JLabelSet(880,150, 40,20,"を含む"	,10,0);
-		JLabel LB2_SearchSpTel			= B100_FrameParts.JLabelSet(880,175, 40,20,"を含む"	,10,0);
-		JLabel LB2_SearchEntryDate		= B100_FrameParts.JLabelSet(830,250, 20,20,"～"		,10,2);
-		JLabel LB2_SearchUpdateDate		= B100_FrameParts.JLabelSet(830,275, 20,20,"～"		,10,2);
+		JLabel LB2_SearchPlanQty		= B100_FrameParts.JLabelSet(	850, 25, 20,20,"～"		,10,2);
+		JLabel LB2_SearchActualQty		= B100_FrameParts.JLabelSet(	850, 50, 20,20,"～"		,10,2);
+		JLabel LB2_SearchSpName			= B100_FrameParts.JLabelSet(	880,100, 40,20,"を含む"	,10,0);
+		JLabel LB2_SearchSpPost			= B100_FrameParts.JLabelSet(	880,125, 40,20,"で始る"	,10,0);
+		JLabel LB2_SearchSpAdd			= B100_FrameParts.JLabelSet(	880,150, 40,20,"を含む"	,10,0);
+		JLabel LB2_SearchSpTel			= B100_FrameParts.JLabelSet(	880,175, 40,20,"を含む"	,10,0);
+		JLabel LB2_SearchEntryDate		= B100_FrameParts.JLabelSet(	830,250, 20,20,"～"		,10,2);
+		JLabel LB2_SearchUpdateDate		= B100_FrameParts.JLabelSet(	830,275, 20,20,"～"		,10,2);
 		
 		//荷主切り替わっていたらデフォルト検索条件セットしない
 		boolean DefaultSetFg = true;
@@ -1770,7 +1770,7 @@ public class WT100_ArrivalPlan_00_Search{
 					***************************************************************/
 					TB_SearchClWh.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1]	,A00000_Main.ClWh,true));			//ヘッダ担当倉庫
 					TB_SearchClCd.setSelectedIndex(		B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1]	,A00000_Main.ClCd,true));			//ヘッダ荷主CD
-					TB_SearchClGpCD.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1]	,A00000_Main.ClGp,true));		//ヘッダ荷主グループCD
+					TB_SearchClGpCD.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1]	,A00000_Main.ClGp,true));			//ヘッダ荷主グループCD
 					TB_SearchSpCd.setSelectedIndex(0);			//ヘッダ仕入先
 					TB_SearchArrNo.setText("");					//ヘッダ入荷予定NO
 					TB_SearchClArrNo.setText("");				//ヘッダ荷主予定番号
@@ -1977,7 +1977,7 @@ public class WT100_ArrivalPlan_00_Search{
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
 					RenewFg = false;
-					B100_TableControl.TableOutPutCsv("出力先選択","入荷予定検（ヘッダ）検索結果",tb01);
+					B100_TableControl.TableOutPutCsv("出力先選択","入荷予定（ヘッダ）検索結果",tb01);
 					RenewFg = true;
 				}
 			}
