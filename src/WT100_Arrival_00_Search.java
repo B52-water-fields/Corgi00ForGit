@@ -66,7 +66,7 @@ public class WT100_Arrival_00_Search{
 		if(y==0) {y=SetY;}
 		RenewFg = false;
 		MsViewMode = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,800,"Corgi00入荷実績検索　WT100_ArrivalPlan_00_Search","NK");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,800,"Corgi00入荷実績検索　WT100_Arrival_00_Search","NK");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		

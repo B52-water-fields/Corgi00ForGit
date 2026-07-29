@@ -578,12 +578,15 @@ public class WT100_ArrivalPlan_00_Search{
 		
 		JLabel LB_RenewBtn  = B100_FrameParts.JLabelSet(		250,640,100,20,"チェック行を" 	,11,2);
 		main_fm.add(LB_RenewBtn);
-		//修正ボタン
-		JButton RenewBtn = B100_FrameParts.BtnSet(				250,660,100,20,"予定修正"		,11);
-		main_fm.add(RenewBtn);
 		//明細表示ボタン
-		JButton MsViewBtn = B100_FrameParts.BtnSet(			250,685,100,20,"詳細表示"		,11);
+		JButton MsViewBtn = B100_FrameParts.BtnSet(			250,660,100,20,"詳細表示"		,11);
 		main_fm.add(MsViewBtn);
+		//修正ボタン
+		JButton RenewBtn = B100_FrameParts.BtnSet(				250,685,100,20,"予定修正"		,11);
+		main_fm.add(RenewBtn);
+		//実績登録ボタン
+		JButton ArrivalBtn = B100_FrameParts.BtnSet(			250,710,100,20,"実績登録"		,11);
+		main_fm.add(ArrivalBtn);
 		
 		JLabel LB_Create  = B100_FrameParts.JLabelSet(			370,640,100,20,"新規予定作成" 	, 9,2);
 		main_fm.add(LB_Create);
@@ -855,8 +858,11 @@ public class WT100_ArrivalPlan_00_Search{
 		//キャンセルボタン
 		JButton CancelBtn 				= B100_FrameParts.BtnSet(	520,725,100,20,"予定キャンセル",9);
 		
+		//明細実績登録ボタン
+		JButton MsArrivalBtn 			= B100_FrameParts.BtnSet(	520,750,100,20,"実績登録",9);
+		
 		//追加無入荷完了
-		JButton FixBtn 				= B100_FrameParts.BtnSet(	520,725,100,20,"追加無入荷完了",9);
+		JButton FixBtn 					= B100_FrameParts.BtnSet(	520,725,100,20,"追加無入荷完了",9);
 		
 		//入荷予定票発行
 		JButton MsPlanListBtn = B100_FrameParts.BtnSet(			400,725,100,20,"予定票発行",11);
@@ -1003,6 +1009,41 @@ public class WT100_ArrivalPlan_00_Search{
 					}
 					Ms_fm.setVisible(false);
 					Ms_fm.setVisible(true);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//明細実績登録ボタン
+		MsArrivalBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					
+					int RowCount = MainFmTableModel.getRowCount();
+					String TgtWhCd = A00000_Main.ClWh;
+					String TgtClCd = A00000_Main.ClCd;
+					String TgtArrNo = "";
+					
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TgtWhCd		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColClWh));
+							TgtClCd		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColClCd));
+							TgtArrNo	= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColArrNo));
+						}
+					}
+					if(!"".equals(TgtArrNo)) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+						
+						Ms_fm.setVisible(false);
+						Ms_fm.dispose();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						
+						WT100_Arrival_10_Entry.ArrivalEntry(0,0,TgtWhCd,TgtClCd,TgtArrNo);
+					}
 					RenewFg = true;
 				}
 			}
@@ -1593,8 +1634,45 @@ public class WT100_ArrivalPlan_00_Search{
 								TBMs_ExpDateBeforeBtn,
 								
 								MsPlanListBtn,
-								MsPlanPosterBtn
+								MsPlanPosterBtn,
+								MsArrivalBtn
 								) ;
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		//実績登録ボタン押下時の挙動
+		ArrivalBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					MsViewMode = true;
+					Ms_fm.setVisible(false);
+					
+					int RowCount = MainFmTableModel.getRowCount();
+					String TgtWhCd = A00000_Main.ClWh;
+					String TgtClCd = A00000_Main.ClCd;
+					String TgtArrNo = "";
+					
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TgtWhCd		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColClWh));
+							TgtClCd		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColClCd));
+							TgtArrNo	= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColArrNo));
+						}
+					}
+					if(!"".equals(TgtArrNo)) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+						
+						Ms_fm.setVisible(false);
+						Ms_fm.dispose();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						
+						WT100_Arrival_10_Entry.ArrivalEntry(0,0,TgtWhCd,TgtClCd,TgtArrNo);
 					}
 					RenewFg = true;
 				}
@@ -1906,7 +1984,8 @@ public class WT100_ArrivalPlan_00_Search{
 							TBMs_ExpDateBeforeBtn,
 							
 							MsPlanListBtn,
-							MsPlanPosterBtn
+							MsPlanPosterBtn,
+							MsArrivalBtn
 							) ;
 					RenewFg = true;
 				}
@@ -2422,7 +2501,8 @@ public class WT100_ArrivalPlan_00_Search{
 			JButton TBMs_ExpDateBeforeBtn,
 			
 			JButton MsPlanListBtn,
-			JButton MsPlanPosterBtn
+			JButton MsPlanPosterBtn,
+			JButton MsArrivalBtn
 			) {
 		//初期化
 		int RowCount = MstableModel.getRowCount();
@@ -2588,6 +2668,7 @@ public class WT100_ArrivalPlan_00_Search{
 				Ms_fm.add(TBMs_PlanDateBeforeBtn);
 				Ms_fm.add(TBMs_ExpDateAfterBtn);
 				Ms_fm.add(TBMs_ExpDateBeforeBtn);
+				Ms_fm.add(MsArrivalBtn);
 			}else if(2==GetFixFg) {
 				TBMs_ArCom01.setEditable(false);
 				TBMs_ArCom02.setEditable(false);
@@ -2618,6 +2699,7 @@ public class WT100_ArrivalPlan_00_Search{
 				Ms_fm.remove(TBMs_PlanDateBeforeBtn);
 				Ms_fm.remove(TBMs_ExpDateAfterBtn);
 				Ms_fm.remove(TBMs_ExpDateBeforeBtn);
+				Ms_fm.add(MsArrivalBtn);
 			}else{
 				TBMs_ArCom01.setEditable(false);
 				TBMs_ArCom02.setEditable(false);
@@ -2648,6 +2730,7 @@ public class WT100_ArrivalPlan_00_Search{
 				Ms_fm.remove(TBMs_PlanDateBeforeBtn);
 				Ms_fm.remove(TBMs_ExpDateAfterBtn);
 				Ms_fm.remove(TBMs_ExpDateBeforeBtn);
+				Ms_fm.remove(MsArrivalBtn);
 			}
 			if(9==GetFixFg) {
 				Ms_fm.remove(MsPlanListBtn);

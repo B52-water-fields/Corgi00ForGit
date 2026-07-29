@@ -37,6 +37,10 @@ public class A00001_WorkMain{
 			JButton ArrivalSearch = B100_FrameParts.BtnSet(					150, 25,120,20,"入荷実績検索",11);
 			PN_AboutArrival.add(ArrivalSearch);
 			
+			//入荷実績登録
+			JButton Arrival = B100_FrameParts.BtnSet(							150, 50,120,20,"入荷実績登録",11);
+			PN_AboutArrival.add(Arrival);
+			
 			//強制入庫
 			JButton ArrivalForceEntry = B100_FrameParts.BtnSet(				 20, 75,120,20,"強制入庫",11);
 			PN_AboutArrival.add(ArrivalForceEntry);
@@ -108,6 +112,18 @@ public class A00001_WorkMain{
 				main_fm.setVisible(false);
 				main_fm.dispose();
 				WT100_Arrival_00_Search.ArrivalSearch(0,0);
+			}
+		});
+		
+		//入荷実績登録
+		Arrival.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT100_Arrival_10_Entry.ArrivalEntry(0,0,A00000_Main.ClWh,A00000_Main.ClCd,null);
 			}
 		});
 		
