@@ -96,10 +96,17 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		TB_FixFg.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ArryvalFixFgList[1]	,"0",true));
 		TB_ArrNo.setText(TgtArrNo);
 		
+		TB_ClArrNo.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TB_PlanDate.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TB_ArCom01.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TB_ArCom02.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TB_ArCom03.setBackground(B100_FrameParts.SelectColer("Entry"));
+		
 		TB_ClWh.setEnabled(false);
 		TB_ClCd.setEnabled(false);
 		TB_FixFg.setEnabled(false);
 		TB_ArrNo.setEditable(false);
+		TB_ClArrNo.setEditable(true);
 		TB_PlanDate.setEditable(true);
 		TB_HdActualDate.setEditable(false);
 		TB_ArCom01.setEditable(true);
@@ -252,6 +259,12 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		//明細行削除ボタン
 		JButton MsDeleteBtn 			= B100_FrameParts.BtnSet(	560,675,100,20,"行削除",11);
 		main_fm.add(MsDeleteBtn);
+		
+		TBMs_lot.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TBMs_ExpDate.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TBMs_PlanQty.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TBMs_Com01.setBackground(B100_FrameParts.SelectColer("Entry"));
+		TBMs_Com02.setBackground(B100_FrameParts.SelectColer("Entry"));
 		
 		TBMs_MsNo.setEditable(false);
 		TBMs_ItemCd.setEditable(true);
@@ -988,6 +1001,48 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 						TBMs_EntryUser.setText("");
 						TBMs_UpdateUser.setText("");
 					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//キャンセルボタン押下時の挙動
+		CancelBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String GetClWh		= B100_DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];			//ヘッダ担当倉庫
+					String GetClCd		= B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];			//ヘッダ荷主CD
+					String GetArrNo		= B100_TextControl.Trim(TB_ArrNo.getText());							//入荷予定NO
+					
+					if(!"".equals(GetArrNo)) {
+						int option = JOptionPane.showConfirmDialog(null, "本当にキャンセルしますか？\n後戻りできませんよ？", "実行確認", JOptionPane.YES_NO_OPTION , JOptionPane.QUESTION_MESSAGE);
+						if (option == JOptionPane.YES_OPTION){
+							ArrayList<String> TgtArrNo = new ArrayList<String>();
+							TgtArrNo.add(GetArrNo);
+							
+							Tools100_ArrivalPlanCancel.ArrivalPlanCancel(
+									GetClWh,
+									GetClCd,
+									TgtArrNo
+									);
+							
+							SetX=main_fm.getX();
+							SetY=main_fm.getY();
+							
+							ItemSearch_fm.setVisible(false);
+							ItemSearch_fm.dispose();
+							
+							main_fm.setVisible(false);
+							main_fm.dispose();
+							
+							ArrivalPlanRenewAndCreate(0,0,GetClWh,GetClCd,GetArrNo);
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "中断しました");
+						}
+					}
+					
 					RenewFg = true;
 				}
 			}
