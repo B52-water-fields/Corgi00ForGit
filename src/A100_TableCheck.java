@@ -1887,37 +1887,37 @@ public class A100_TableCheck{
 	
 	private static Object[][] WW0017StockMove_Definition(){
 		Object[][] Rt	={
-				 {"ClCd"					,"varchar"		,(int)20	,"KEY"	,(boolean)false	,""		,"荷主コード"}
-				,{"WhCd"					,"varchar"		,(int)20	,"KEY"	,(boolean)false	,""		,"倉庫コード"}
-				,{"MoveNo"					,"int"			,(int)11	,"KEY"	,(boolean)false	,"0"	,"調整番号"}
-				,{"FromLoc"					,"varchar"		,(int)50	,""		,(boolean)false	,""		,"移動元ロケ"}
-				,{"ToLoc"					,"varchar"		,(int)50	,""		,(boolean)false	,""		,"移動先ロケ"}
-				,{"ItemCd"					,"varchar"		,(int)20	,""		,(boolean)true	,"NULL"	,"商品CD"}
-				,{"ItemName"				,"varchar"		,(int)100	,""		,(boolean)true	,"NULL"	,"商品名"}
-				,{"Lot"						,"varchar"		,(int)20	,""		,(boolean)true	,"NULL"	,"ロット"}
-				,{"ExpDate"					,"datetime"		,(int)0		,""		,(boolean)true	,"NULL"	,"賞味期限"}
-				,{"ActualDate"				,"datetime"		,(int)0		,""		,(boolean)true	,"NULL"	,"入荷日"}
-				,{"BeforeFromQty"			,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動元在庫数"}
-				,{"BeforeFromPlanQty"		,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動元引当済数"}
-				,{"BeforeFromPossibleQty"	,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動元出荷可能数"}
-				,{"BeforeToQty"				,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動先在庫数"}
-				,{"BeforeToPlanQty"			,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動先引当済数"}
-				,{"BeforeToPossibleQty"		,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動先出荷可能数"}
-				,{"MoveQty"					,"int"			,(int)11	,""		,(boolean)false	,"0"	,"移動数"}
-				,{"AfterFromQty"			,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動元在庫数"}
-				,{"AfterFromPlanQty"		,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動元引当済数"}
-				,{"AfterFromPossibleQty"	,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動元出荷可能数"}
-				,{"AfterToQty"				,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動先在庫数"}
-				,{"AfterToPlanQty"			,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動先引当済数"}
-				,{"AfterToPossibleQty"		,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動先出荷可能数"}
-				,{"MoveCom01"				,"varchar"		,(int)100	,""		,(boolean)true	,"NULL"	,"移動コメント01"}
-				,{"MoveCom02"				,"varchar"		,(int)100	,""		,(boolean)true	,"NULL"	,"移動コメント02"}
-				,{"MoveCom03"				,"varchar"		,(int)100	,""		,(boolean)true	,"NULL"	,"移動コメント03"}
-				,{"EntryDate"				,"datetime"		,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
-				,{"UpdateDate"				,"datetime"		,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
-				,{"EntryUser"				,"varchar"		,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
-				,{"UpdateUser"				,"varchar"		,(int)50	,""		,(boolean)true	,"NULL"	,"更新者"}
-				};
+						 {"ClCd"					,"varchar"		,(int)20	,"KEY"	,(boolean)false	,""		,"荷主コード"}
+						,{"WhCd"					,"varchar"		,(int)20	,"KEY"	,(boolean)false	,""		,"倉庫コード"}
+						,{"MoveNo"					,"int"			,(int)11	,"KEY"	,(boolean)false	,"0"	,"調整番号"}
+						,{"FromLoc"					,"varchar"		,(int)50	,""		,(boolean)false	,""		,"移動元ロケ"}
+						,{"ToLoc"					,"varchar"		,(int)50	,""		,(boolean)false	,""		,"移動先ロケ"}
+						,{"ItemCd"					,"varchar"		,(int)20	,""		,(boolean)true	,"NULL"	,"商品CD"}
+						,{"ItemName"				,"varchar"		,(int)100	,""		,(boolean)true	,"NULL"	,"商品名"}
+						,{"Lot"						,"varchar"		,(int)20	,""		,(boolean)true	,"NULL"	,"ロット"}
+						,{"ExpDate"					,"datetime"		,(int)0		,""		,(boolean)true	,"NULL"	,"賞味期限"}
+						,{"ActualDate"				,"datetime"		,(int)0		,""		,(boolean)true	,"NULL"	,"入荷日"}
+						,{"BeforeFromQty"			,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動元在庫数"}
+						,{"BeforeFromPlanQty"		,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動元引当済数"}
+						,{"BeforeFromPossibleQty"	,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動元出荷可能数"}
+						,{"BeforeToQty"				,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動先在庫数"}
+						,{"BeforeToPlanQty"			,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動先引当済数"}
+						,{"BeforeToPossibleQty"		,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動前）移動先出荷可能数"}
+						,{"MoveQty"					,"int"			,(int)11	,""		,(boolean)false	,"0"	,"移動数"}
+						,{"AfterFromQty"			,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動元在庫数"}
+						,{"AfterFromPlanQty"		,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動元引当済数"}
+						,{"AfterFromPossibleQty"	,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動元出荷可能数"}
+						,{"AfterToQty"				,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動先在庫数"}
+						,{"AfterToPlanQty"			,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動先引当済数"}
+						,{"AfterToPossibleQty"		,"int"			,(int)11	,""		,(boolean)false	,"0"	,"（移動後）移動先出荷可能数"}
+						,{"MoveCom01"				,"varchar"		,(int)100	,""		,(boolean)true	,"NULL"	,"移動コメント01"}
+						,{"MoveCom02"				,"varchar"		,(int)100	,""		,(boolean)true	,"NULL"	,"移動コメント02"}
+						,{"MoveCom03"				,"varchar"		,(int)100	,""		,(boolean)true	,"NULL"	,"移動コメント03"}
+						,{"EntryDate"				,"datetime"		,(int)0		,""		,(boolean)true	,"NULL"	,"登録日"}
+						,{"UpdateDate"				,"datetime"		,(int)0		,""		,(boolean)true	,"NULL"	,"更新日"}
+						,{"EntryUser"				,"varchar"		,(int)50	,""		,(boolean)true	,"NULL"	,"登録者"}
+						,{"UpdateUser"				,"varchar"		,(int)50	,""		,(boolean)true	,"NULL"	,"更新者"}
+						};
 		return Rt;
 	}
 	
@@ -2421,26 +2421,6 @@ public class A100_TableCheck{
 						};
 		return Rt;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//sql実行
 	private static void KickSql(String TgtDB,String sql) {

@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 public class A00001_WorkMain{
 	static int SetX;
@@ -33,17 +34,18 @@ public class A00001_WorkMain{
 			//入荷予定検索
 			JButton ArrivalPlanSearch = B100_FrameParts.BtnSet(				 20, 25,120,20,"入荷予定検索",11);
 			PN_AboutArrival.add(ArrivalPlanSearch);
-			//入荷実績検索
-			JButton ArrivalSearch = B100_FrameParts.BtnSet(					150, 25,120,20,"入荷実績検索",11);
-			PN_AboutArrival.add(ArrivalSearch);
 			
 			//入荷検品
-			JButton Arrival = B100_FrameParts.BtnSet(							150, 50,120,20,"入荷検品",11);
+			JButton Arrival = B100_FrameParts.BtnSet(							 20, 50,120,20,"入荷検品",11);
 			PN_AboutArrival.add(Arrival);
 			
 			//強制入庫
-			JButton ArrivalForceEntry = B100_FrameParts.BtnSet(				 20, 75,120,20,"強制入庫",11);
+			JButton ArrivalForceEntry = B100_FrameParts.BtnSet(				 20,125,120,20,"強制入庫",11);
 			PN_AboutArrival.add(ArrivalForceEntry);
+			
+			//入荷実績検索
+			JButton ArrivalSearch = B100_FrameParts.BtnSet(					150, 25,120,20,"入荷実績検索",11);
+			PN_AboutArrival.add(ArrivalSearch);
 		
 		/*************************************/
 		/*************************************/
@@ -191,6 +193,18 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
+				Object[] DeliveryMstSearchSubFm = WT200_DeliveryMstSearchSubFm.DeliveryMstSearchSubFm(0, 0, A00000_Main.ClWh, A00000_Main.ClCd, "ZK");
+				
+				((JFrame)DeliveryMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtJFrame]).setVisible(true);
+				((JButton)DeliveryMstSearchSubFm[WT200_DeliveryMstSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
+					public void actionPerformed(ActionEvent e){
+						int RowCount = ((DefaultTableModel)DeliveryMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getRowCount();
+						for(int i01=0;i01<RowCount;i01++) {
+							System.out.println(((DefaultTableModel)DeliveryMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColDEName01));
+						}
+					}
+				});
+				
 				
 			}
 		});
