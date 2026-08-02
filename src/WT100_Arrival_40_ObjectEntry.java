@@ -51,8 +51,8 @@ public class WT100_Arrival_40_ObjectEntry{
 	static final int ColSetClArrNo			= 20;
 	static final int ColSetActualQty			= 21;
 	
-	static final int ColInClWh					=  1;
 	static final int ColInClCd					=  0;
+	static final int ColInClWh					=  1;
 	static final int ColInPlanDate			=  2;
 	static final int ColInSpCd					=  3;
 	static final int ColInArrNo				=  4;
@@ -67,285 +67,8 @@ public class WT100_Arrival_40_ObjectEntry{
 	static final int ColInEntryQty			= 13;
 	static final int ColInEntryStoreLoc		= 14;
 	
-	public static void ArrivalExcelEntry(int x,int y,String TgtFilePath) {
-		A00000_Main.LoginCheck();
-		if(0==SetX) {SetX=100;}
-		if(0==SetY) {SetY=100;}
-		if(x==0) {x=SetX;}
-		if(y==0) {y=SetY;}
-		
-		RenewFg = false;
-
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,600,200,"Corgi00入荷実績登録（エクセル）WT100_Arrival_31_ExcelEntryInPut","NK");
-		JLabel userinfo = B100_FrameParts.UserInfo();
-		JButton exit_btn = B100_FrameParts.ExitBtn();
-		JButton entry_btn = B100_FrameParts.EntryBtn();
-		
-		main_fm.add(userinfo);
-		main_fm.add(exit_btn);
-		main_fm.add(entry_btn);
-		
-		final String[] SheetList = B100_ExcelControl.ExcelSheetList(TgtFilePath);
-		
-		JLabel LB_SheetList				= B100_FrameParts.JLabelSet(		 20, 45,300,20,"登録するシートを選択してください"		,11,0);
-		final JComboBox   TB_SheetList	= B100_FrameParts.JComboBoxSet( 	 20, 70,250,20,SheetList,11);	//シート一覧
-		
-		main_fm.add(LB_SheetList);
-		main_fm.add(TB_SheetList);	//シート一覧
-		
-		main_fm.setVisible(true);
-		RenewFg = true;
-		
-		//登録ボタン押下時の挙動
-		entry_btn.addActionListener(new AbstractAction(){
-			public void actionPerformed(ActionEvent e){
-				String SheetName = SheetList[TB_SheetList.getSelectedIndex()];
-				
-				SetX=main_fm.getX();
-				SetY=main_fm.getY();
-
-				main_fm.setVisible(false);
-				main_fm.dispose();
-				ArrivalExcelEntryMain(0,0,TgtFilePath,SheetName);
-			}
-		});
-		
-		//EXITボタン押下時の挙動
-		exit_btn.addActionListener(new AbstractAction(){
-			public void actionPerformed(ActionEvent e){
-				SetX=main_fm.getX();
-				SetY=main_fm.getY();
-
-				main_fm.setVisible(false);
-				main_fm.dispose();
-				WT100_ArrivalPlan_00_Search.ArrivalPlanSearch(0, 0);
-			}
-		});
-	}
-	
-	public static void ArrivalExcelEntryMain(int x,int y,String TgtFilePath,String SheetName){
-		//対象エクセルとシート名を受け取ってオブジェクト生成
-
-		String[] Title = B100_RtObjectCreate.RtTitleName(WT100_Arrival_30_ExcelEntryOutPut.RtArrivalExcelOutPut());
-		
-		final Object[][] NeedCol = {
-				 {Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetClWh]					,1	,WT100_Arrival_40_ObjectEntry.ColInClWh}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetClCd]					,1	,WT100_Arrival_40_ObjectEntry.ColInClCd}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetPlanDate]				,2	,WT100_Arrival_40_ObjectEntry.ColInPlanDate}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetSpCd]					,1	,WT100_Arrival_40_ObjectEntry.ColInSpCd}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetArrNo]					,1	,WT100_Arrival_40_ObjectEntry.ColInArrNo}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetMsNo]					,0	,WT100_Arrival_40_ObjectEntry.ColInMsNo}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetItemCd]				,1	,WT100_Arrival_40_ObjectEntry.ColInItemCd}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetlot]					,1	,WT100_Arrival_40_ObjectEntry.ColInlot}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetExpDate]				,2	,WT100_Arrival_40_ObjectEntry.ColInExpDate}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetPlanQty]				,0	,WT100_Arrival_40_ObjectEntry.ColInPlanQty}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetActualQty]			,0	,WT100_Arrival_40_ObjectEntry.ColInActualQty}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryLot]					,1	,WT100_Arrival_40_ObjectEntry.ColInEntryLot}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryExpDate]			,2	,WT100_Arrival_40_ObjectEntry.ColInEntryExpDate}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryQty]					,0	,WT100_Arrival_40_ObjectEntry.ColInEntryQty}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryStoreLoc]			,1	,WT100_Arrival_40_ObjectEntry.ColInEntryStoreLoc}
-		};//フィールド名,フィールドタイプ(0:数値 1:文字列 2:日付時刻),基本のカラム(ゼロスタート),基本のカラム位置※カラム位置は後で読み込んだエクセルの1行目でフィールド名比較して更新されます
-		
-		String[] NeedColName = new String[NeedCol.length];
-		for(int i=0;i<NeedCol.length;i++) {NeedColName[i] = (String)NeedCol[i][0];}
-		
-		//ヘッダ行取得⇒フィールド名判定
-		boolean NeedColCheck	= B100_ExcelControl.ExcelToObjectFieldNameCheck(TgtFilePath,SheetName,NeedColName);
-		//必要フィールドなければシート選択に戻る
-		if(!NeedColCheck) {
-			String Msg = "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n";
-			for(int i=0;i<NeedCol.length;i++) {
-				if(0<i&&0==i%5) {
-					Msg = Msg + (String)NeedCol[i][0] + ",\n";
-				}else {
-					Msg = Msg + (String)NeedCol[i][0] + ",";
-				}
-			}
-			Msg = Msg+"\nがヘッダに必要です";
-			
-			JOptionPane.showMessageDialog(null, Msg);
-			ArrivalExcelEntry(x,y,TgtFilePath);
-		}else {
-			Object[][] GetOb = B100_ExcelControl.ExcelToObjectFieldName(TgtFilePath,SheetName,NeedCol);
-			boolean KickFg = true;
-			//入荷予定番号空白の行は対象外ついでに正規化
-			int TgtRowCount = 0;
-			for(int i=0;i<GetOb.length;i++) {
-				for(int i01=0;i01<GetOb[i].length;i01++) {if(null==GetOb[i][i01]) {GetOb[i][i01]="";}}
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInClWh]				= B100_TextControl.Trim(		""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInClWh]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInClCd]				= B100_TextControl.Trim(		""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInClCd]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInPlanDate]			= B100_TextControl.TextToDate(	""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInPlanDate]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInSpCd]				= B100_TextControl.Trim(		""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInSpCd]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo]				= B100_TextControl.Trim(		""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInMsNo]				= B100_TextControl.TextToInt(	""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInMsNo]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInItemCd]				= B100_TextControl.Trim(		""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInItemCd]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInlot]				= B100_TextControl.Trim(		""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInlot]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInExpDate]			= B100_TextControl.TextToDate(	""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInExpDate]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInPlanQty]			= B100_TextControl.TextToInt(	""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInPlanQty]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInActualQty]			= B100_TextControl.TextToInt(	""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInActualQty]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryLot]			= B100_TextControl.Trim(		""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryLot]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryExpDate]		= B100_TextControl.TextToDate(	""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryExpDate]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryQty]			= B100_TextControl.TextToInt(	""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryQty]);
-				GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryStoreLoc]	= B100_TextControl.Trim(		""+GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryStoreLoc]);
-				if(!"".equals((String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo])) {
-					TgtRowCount	= TgtRowCount+1;
-				}
-			}
-			Object[][] RtArrivalObjectEntryNeedColLayout = WT100_Arrival_40_ObjectEntry.RtArrivalObjectEntryNeedColLayout();
-			Object[][] SetOb = new Object[TgtRowCount][RtArrivalObjectEntryNeedColLayout.length];
-			TgtRowCount = 0;
-			//ログイン中の荷主倉庫と異なる倉庫・荷主だった場合シート選択に戻る
-			for(int i=0;i<GetOb.length;i++) {
-				if(!"".equals((String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo])) {
-					if(!A00000_Main.ClWh.equals(GetOb[i][WT100_Arrival_40_ObjectEntry.ColInClWh])
-							|| !A00000_Main.ClCd.equals(GetOb[i][WT100_Arrival_40_ObjectEntry.ColInClCd])
-							) {
-						KickFg	= false;
-					}
-					for(int i01=0;i01<RtArrivalObjectEntryNeedColLayout.length;i01++) {
-						SetOb[TgtRowCount][(int)RtArrivalObjectEntryNeedColLayout[i01][1]]	= "";
-					}
-					
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInClWh]				= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInClWh];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInClCd]				= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInClCd];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInPlanDate]		= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInPlanDate];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInSpCd]				= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInSpCd];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInArrNo]			= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInMsNo]				= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInMsNo];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInItemCd]			= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInItemCd];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInlot]				= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInlot];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInExpDate]			= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInExpDate];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInPlanQty]			= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInPlanQty];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInActualQty]		= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInActualQty];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInEntryLot]		= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryLot];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInEntryExpDate]	= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryExpDate];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInEntryQty]		= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryQty];
-					SetOb[TgtRowCount][WT100_Arrival_40_ObjectEntry.ColInEntryStoreLoc]	= GetOb[i][WT100_Arrival_40_ObjectEntry.ColInEntryStoreLoc];
-					
-					TgtRowCount	= TgtRowCount+1;
-				}
-			}
-			
-			if(KickFg) {
-				//現在時点の入荷予定明細取得
-				ArrayList<String> SearchArrNo = new ArrayList<String>();
-				ArrayList<String> ErrMsg = new ArrayList<String>();
-				for(int i=0;i<GetOb.length;i++) {
-					SearchArrNo.add((String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo]);
-				}
-				Object[][] ArrivalPlanMsRt = ArrivalPlanMsRt(A00000_Main.ClWh,A00000_Main.ClCd,SearchArrNo);
-				
-				for(int i=0;i<GetOb.length;i++) {
-					if(!"".equals((String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo])) {
-						String[] TgtData = {(String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo],""+(int)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInMsNo]};
-						int[] KeyClm	= {T100_ArrivalPlanMsRt.ColArrNo,T100_ArrivalPlanMsRt.ColMsNo};
-						int HitRow = B100_ArrayListControl.ObjectGetRowAnyKey(ArrivalPlanMsRt,TgtData,KeyClm,false);
-						if(0>HitRow) {
-							KickFg = false;
-							ErrMsg.add("入荷予定番号:"+(String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInArrNo]+" 明細番号"+(int)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInMsNo]+"が入荷予定にないです");
-						}else {
-							if(((String)ArrivalPlanMsRt[HitRow][T100_ArrivalPlanMsRt.ColItemCd]).equals((String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInItemCd])
-									&& ((String)ArrivalPlanMsRt[HitRow][T100_ArrivalPlanMsRt.Collot]).equals((String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInlot])
-									&& ((String)ArrivalPlanMsRt[HitRow][T100_ArrivalPlanMsRt.ColExpDate]).equals((String)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInExpDate])
-									&& (int)ArrivalPlanMsRt[HitRow][T100_ArrivalPlanMsRt.ColPlanQty]==(int)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInPlanQty]
-									&& (int)ArrivalPlanMsRt[HitRow][T100_ArrivalPlanMsRt.ColActualQty]==(int)GetOb[i][WT100_Arrival_40_ObjectEntry.ColInActualQty]
-									) {
-								/*
-								String GetClWh			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClWh];				//ヘッダ担当倉庫
-								String GetClCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClCd];				//ヘッダ荷主CD
-								String GetCLName01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLName01];			//ヘッダ荷主名
-								String GetClGpCD		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClGpCD];			//ヘッダ荷主グループCD
-								String GetCLGpName01	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLGpName01];		//ヘッダ荷主グループ標記名
-								String GetArrNo			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArrNo];			//ヘッダ入荷予定NO
-								String GetClArrNo		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClArrNo];			//ヘッダ荷主予定番号
-								String GetPlanDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColPlanDate];			//ヘッダ入荷予定日
-								String GetHdActualDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdActualDate];		//ヘッダ入荷実績日
-								String GetSpCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpCd];				//ヘッダ仕入先CD
-								String GetSpName01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName01];			//ヘッダ仕入先名01
-								String GetSpName02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName02];			//ヘッダ仕入先名02
-								String GetSpName03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName03];			//ヘッダ仕入先名03
-								String GetSpPost		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpPost];			//ヘッダ仕入先郵便
-								String GetSpAdd01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd01];			//ヘッダ仕入先住所01
-								String GetSpAdd02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd02];			//ヘッダ仕入先住所02
-								String GetSpAdd03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd03];			//ヘッダ仕入先住所03
-								String GetSpTel			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpTel];			//ヘッダ仕入先電話
-								String GetArCom01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom01];			//ヘッダコメント1
-								String GetArCom02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom02];			//ヘッダコメント2
-								String GetArCom03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom03];			//ヘッダコメント3
-								String GetHdEntryDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdEntryDate];		//ヘッダ登録日
-								String GetHdUpdateDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdUpdateDate];		//ヘッダ更新日
-								String GetHdEntryUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdEntryUser];		//ヘッダ登録者
-								String GetHdUpdateUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdUpdateUser];		//ヘッダ更新者
-								int  GetFixFg			= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColFixFg];				//ヘッダ状況
-											
-								int GetMsNo				= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColMsNo];				//明細番号
-								String GetItemCd		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemCd];			//商品コード
-								String GetClItemCd		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClItemCd];			//荷主商品コード
-								String GetJanCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColJanCd];			//JANCD（バラ）
-								String GetItemMdNo		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemMdNo];			//商品型番
-								String GetItemName		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemName];			//商品名
-								String Getlot			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.Collot];				//ロット
-								String GetExpDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColExpDate];			//消費期限
-								int GetPlanQty			= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColPlanQty];				//予定数量
-								int GetActualQty		= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColActualQty];			//実績数
-								String GetActualDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColActualDate];		//入荷日
-								String GetCom01			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCom01];			//コメント1
-								String GetCom02			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCom02];			//コメント2
-								String GetEntryDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColEntryDate];		//登録日
-								String GetUpdateDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColUpdateDate];		//更新日
-								String GetEntryUser		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColEntryUser];		//登録者
-								String GetUpdateUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColUpdateUser];		//更新者
-								
-								*/
-								
-								
-								
-								
-							}
-						}
-						
-					}
-				}
-				if(null!=ErrMsg&&0<ErrMsg.size()) {
-					ErrView(ErrMsg,"予定エクセルエラー");
-				}
-				
-				
-				
-			}else {
-				String Msg = "ログイン中の荷主と異なるエクセルを取り込もうとしています";
-				JOptionPane.showMessageDialog(null, Msg);
-				ArrivalExcelEntry(x,y,TgtFilePath);
-			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			if(KickFg) {
-				System.out.println("IN");
-				
-				//ArrivalObjectEntryMain(0,0,TgtFilePath,SetOb);
-			}
-		}
-	}
 	public static Object[][] RtArrivalObjectEntryNeedColLayout(){
+		//投入データレイアウト
 		Object[][] Rt = {
 						 {"ClWh"			,ColInClWh				,"String"	,"担当倉庫"		,""}
 						,{"ClCd"			,ColInClCd				,"String"	,"荷主CD"		,""}
@@ -368,71 +91,29 @@ public class WT100_Arrival_40_ObjectEntry{
 	public static Object[][] RtArrivalObjectEntryMainLayout(){
 		//登録情報テーブルの表示レイアウト
 		Object[][] Rt = {
-				/*
-				static final int ColSetFg					=  0;	//ゼロ固定変更すると絶対やけどします
-				static final int ColSetArrNo				=  1;
-				static final int ColSetMsNo				=  2;
-				static final int ColSetItemCd				=  3;
-				static final int ColSetItemName			=  4;
-				static final int ColSetlot					=  5;
-				static final int ColSetExpDate			=  6;
-				static final int ColSetPlanQty			=  7;
-				static final int ColSetRemainingPlanQty	=  8;
-				static final int ColSetEntryLot			=  9;
-				static final int ColSetEntryExpDate		= 10;
-				static final int ColSetEntryQty			= 11;
-				static final int ColSetEntryStoreLoc		= 12;
-				static final int ColSetRecmendLoc			= 13;
-				static final int ColSetRecmendLocMst		= 14;
-				static final int ColSetClWh				= 15;
-				static final int ColSetClCd				= 16;
-				static final int ColSetPlanDate			= 17;
-				static final int ColSetSpCd				= 18;
-				static final int ColSetSpName01			= 19;
-				static final int ColSetClArrNo			= 20;
-				static final int ColSetActualQty			= 21;
-					 
-					 
-					 {"GetFg"				,ColGetClWh				,"String"	,"Fg" 				,"Key"}
-					,{"GetClWh"				,ColGetClWh				,"String"	,"担当倉庫" 				,"Key"}
-					,{"GetClCd"				,ColGetClCd				,"String"	,"荷主CD" 					,"Key"}
-					,{"GetCLName01"			,ColGetCLName01			,"String"	,"荷主名"		 			,""}
-					,{"GetPlanDate"			,ColGetPlanDate			,"Date"		,"入荷予定日" 				,"Key"}
-					,{"GetSpCd"				,ColGetSpCd				,"String"	,"仕入先CD" 				,""}
-					,{"GetSpName01"			,ColGetSpName01			,"String"	,"仕入先標記名"				,""}
-					,{"GetClArrNo"			,ColGetClArrNo			,"String"	,"荷主予定番号" 			,""}
-					,{"GetArrNo"			,ColGetArrNo				,"String"	,"入荷予定NO" 				,"Key"}
-					,{"GetMsNo"				,ColGetMsNo				,"int"		,"明細番号" 				,"Key"}
-					,{"GetItemCd"			,ColGetItemCd				,"String"	,"商品コード" 				,""}
-					,{"GetClItemCd"			,ColGetClItemCd			,"String"	,"荷主商品コード" 			,""}
-					,{"GetItemName"			,ColGetItemName			,"String"	,"商品名" 					,""}
-					,{"Getlot"				,ColGetlot					,"String"	,"予定ロット" 				,""}
-					,{"GetExpDate"			,ColGetExpDate			,"Date"		,"予定消費期限" 			,""}
-					,{"GetPlanQty"			,ColGetPlanQty			,"int"		,"予定数量" 				,""}
-					,{"GetActualQty"		,ColGetActualQty			,"int"		,"入荷済数量" 				,""}
-					,{"GetRemainingPlanQty"	,ColGetRemainingPlanQty	,"int"		,"予定残数量" 				,""}
-					,{"GetRecmendLoc"		,ColGetRecmendLoc			,"String"	,"在庫考慮推奨ロケ"			,""}
-					,{"GetRecmendLocMst"	,ColGetRecmendLocMst		,"String"	,"推奨ロケマスタ情報" 		,""}
-					,{"EntryLot"			,ColEntryLot				,"String"	,"入荷実績ロット" 			,""}
-					,{"EntryExpDate"		,ColEntryExpDate			,"String"	,"入荷実績消費期限" 		,""}
-					,{"EntryQty"			,ColEntryQty				,"int"		,"入荷実績数" 				,""}
-					,{"EntryStoreLoc"		,ColEntryStoreLoc			,"String"	,"格納ロケ" 				,""}
-					,{"GetCom01"			,ColGetCom01				,"String"	,"明細コメント1" 			,""}
-					,{"GetCom02"			,ColGetCom02				,"String"	,"明細コメント2" 			,""}
-					,{"GetArCom01"			,ColGetArCom01			,"String"	,"ヘッダコメント1" 			,""}
-					,{"GetArCom02"			,ColGetArCom02			,"String"	,"ヘッダコメント2" 			,""}
-					,{"GetArCom03"			,ColGetArCom03			,"String"	,"ヘッダコメント3" 			,""}
-					,{"GetJanCd"			,ColGetJanCd				,"String"	,"JANCD（バラ）" 			,""}
-					,{"GetItemMdNo"			,ColGetItemMdNo			,"String"	,"商品型番" 				,""}
-					,{"GetClGpCD"			,ColGetClGpCD				,"String"	,"ヘッダ荷主グループCD" 	,""}
-					,{"GetCLGpName01"		,ColGetCLGpName01			,"String"	,"ヘッダ荷主グループ標記名" ,""}
-					,{"GetEntryDate"		,ColGetEntryDate			,"DateTime"	,"登録日" 					,""}
-					,{"GetUpdateDate"		,ColGetUpdateDate			,"DateTime"	,"更新日" 					,""}
-					,{"GetEntryUser"		,ColGetEntryUser			,"String"	,"登録者" 					,""}
-					,{"GetUpdateUser"		,ColGetUpdateUser			,"String"	,"更新者" 					,""}
-					,{"GetOutPutDTM"		,ColGetOutPutDTM			,"DateTime"	,"出力日時" 				,""}
-					*/
-					};
+						 {"SetFg"				,ColSetFg					,"boolean"	,"Fg"					,""}
+						,{"SetArrNo"			,ColSetArrNo				,"String"	,"入荷予定NO"			,"Key"}
+						,{"SetMsNo"				,ColSetMsNo				,"int"		,"明細番号"				,"Key"}
+						,{"SetItemCd"			,ColSetItemCd				,"String"	,"商品コード"			,""}
+						,{"SetItemName"			,ColSetItemName			,"String"	,"商品名"				,""}
+						,{"Setlot"				,ColSetlot					,"String"	,"予定ロット"			,""}
+						,{"SetExpDate"			,ColSetExpDate			,"Date"		,"予定消費期限"			,""}
+						,{"SetPlanQty"			,ColSetPlanQty			,"int"		,"予定数量"				,""}
+						,{"SetRemainingPlanQty"	,ColSetRemainingPlanQty	,"int"		,"予定残数量"			,""}
+						,{"SetEntryLot"			,ColSetEntryLot			,"String"	,"入荷実績ロット"		,""}
+						,{"SetEntryExpDate"		,ColSetEntryExpDate		,"Date"		,"入荷実績賞味期限"		,""}
+						,{"SetEntryQty"			,ColSetEntryQty			,"int"		,"入荷実績数"			,""}
+						,{"SetEntryStoreLoc"	,ColSetEntryStoreLoc		,"String"	,"格納ロケ"				,""}
+						,{"SetRecmendLoc"		,ColSetRecmendLoc			,"String"	,"在庫考慮推奨ロケ"		,""}
+						,{"SetRecmendLocMst"	,ColSetRecmendLocMst		,"String"	,"推奨ロケマスタ情報"	,""}
+						,{"SetClWh"				,ColSetClWh				,"String"	,"担当倉庫"				,""}
+						,{"SetClCd"				,ColSetClCd				,"String"	,"荷主CD"				,""}
+						,{"SetPlanDate"			,ColSetPlanDate			,"String"	,"入荷予定日"			,""}
+						,{"SetSpCd"				,ColSetSpCd				,"String"	,"仕入先CD"				,""}
+						,{"SetSpName01"			,ColSetSpName01			,"String"	,"仕入先標記名"			,""}
+						,{"SetClArrNo"			,ColSetClArrNo			,"String"	,"荷主予定番号"			,""}
+						,{"SetActualQty"		,ColSetActualQty			,"int"		,"入荷済数量"			,""}
+						};
 		return Rt;
 	}
 
@@ -455,39 +136,38 @@ public class WT100_Arrival_40_ObjectEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		final Object[][] NeedCol = {
-				/*
-				 {Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetClWh]					,1	,-1,ColSetClWh}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetClCd]					,1	,-1,ColSetClCd}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetPlanDate]				,2	,-1,ColSetPlanDate}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetSpCd]					,1	,-1,ColSetSpCd}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetSpName01]				,1	,-1,ColSetSpName01}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetClArrNo]				,1	,-1,ColSetClArrNo}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetArrNo]					,1	,-1,ColSetArrNo}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetMsNo]					,0	,-1,ColSetMsNo}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetItemCd]				,1	,-1,ColSetItemCd}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetItemName]				,1	,-1,ColSetItemName}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetlot]					,1	,-1,ColSetlot}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetExpDate]				,2	,-1,ColSetExpDate}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetPlanQty]				,0	,-1,ColSetPlanQty}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetActualQty]			,0	,-1,ColSetActualQty}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetRemainingPlanQty]	,0	,-1,ColSetRemainingPlanQty}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetRecmendLoc]			,1	,-1,ColSetRecmendLoc}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColGetRecmendLocMst]		,1	,-1,ColSetRecmendLocMst}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryLot]					,1	,-1,ColSetEntryLot}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryExpDate]			,2	,-1,ColSetEntryExpDate}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryQty]					,0	,-1,ColSetEntryQty}
-				,{Title[WT100_Arrival_30_ExcelEntryOutPut.ColEntryStoreLoc]			,1	,-1,ColSetEntryStoreLoc}
-				*/
-		};
+		String[] Title = B100_RtObjectCreate.RtTitleName(RtArrivalObjectEntryMainLayout());
 		
+		final Object[][] NeedCol = {
+				 {Title[WT100_Arrival_40_ObjectEntry.ColSetClWh]					,1	,ColSetClWh}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetClCd]					,1	,ColSetClCd}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetPlanDate]				,2	,ColSetPlanDate}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetSpCd]					,1	,ColSetSpCd}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetSpName01]				,1	,ColSetSpName01}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetClArrNo]				,1	,ColSetClArrNo}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetArrNo]					,1	,ColSetArrNo}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetMsNo]					,0	,ColSetMsNo}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetItemCd]				,1	,ColSetItemCd}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetItemName]				,1	,ColSetItemName}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetlot]					,1	,ColSetlot}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetExpDate]				,2	,ColSetExpDate}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetPlanQty]				,0	,ColSetPlanQty}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetActualQty]				,0	,ColSetActualQty}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetRemainingPlanQty]		,0	,ColSetRemainingPlanQty}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetRecmendLoc]			,1	,ColSetRecmendLoc}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetRecmendLocMst]		,1	,ColSetRecmendLocMst}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetEntryLot]				,1	,ColSetEntryLot}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetEntryExpDate]			,2	,ColSetEntryExpDate}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetEntryQty]				,0	,ColSetEntryQty}
+				,{Title[WT100_Arrival_40_ObjectEntry.ColSetEntryStoreLoc]		,1	,ColSetEntryStoreLoc}
+		};
 		
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,540,20,"以下のデータを登録しようとしています 格納先が特に指定されていない場合入荷時ロケに在庫増えます",11,0);
 		main_fm.add(LB_SheetList);
 		
 		String[] columnNames01 = new String[NeedCol.length+1];
 		columnNames01[0] = "Fg";
-		for(int i=0;i<NeedCol.length;i++) {columnNames01[(int)NeedCol[i][3]] = (String)NeedCol[i][0];}
+		for(int i=0;i<NeedCol.length;i++) {columnNames01[(int)NeedCol[i][2]] = (String)NeedCol[i][0];}
 		
 		//編集可能カラムの指定
 		int[] RenewTgtCol = {ColSetFg
@@ -517,27 +197,87 @@ public class WT100_Arrival_40_ObjectEntry{
 		for(int i=1;i<NeedCol.length;i++) {
 			boolean RenewFg = false;
 			for(int i01=0;i01<RenewTgtCol.length;i01++) {
-				if((int)NeedCol[i][3]==RenewTgtCol[i01]) {
+				if((int)NeedCol[i][2]==RenewTgtCol[i01]) {
 					RenewFg=true;
 					i01=RenewTgtCol.length+1;
 				}
 			}
 			if(RenewFg) {
 				if(0==(int)NeedCol[i][1]) {
-					column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRendererEntry());	
+					column = columnModel01.getColumn((int)NeedCol[i][2]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRendererEntry());	
 				}else {
-					column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRendererEntry());	
+					column = columnModel01.getColumn((int)NeedCol[i][2]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRendererEntry());	
 				}
 			}else {
 				if(0==(int)NeedCol[i][1]) {
-					column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());	
+					column = columnModel01.getColumn((int)NeedCol[i][2]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());	
 				}else {
-					column = columnModel01.getColumn((int)NeedCol[i][3]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	
+					column = columnModel01.getColumn((int)NeedCol[i][2]);	column.setPreferredWidth(100*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());	
 				}
 			}
 		}
 		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,65,1260,250,tb01);
 		main_fm.add(scpn01);
+		Object[][] RtArrivalObjectEntryMainLayout	= RtArrivalObjectEntryMainLayout();
+		ArrayList<String> SearchArrNo = new ArrayList<String>();
+		String[][] RecomendLoctgtItem = new String[TgtData.length][3];
+		for(int i=0;i<TgtData.length;i++) {
+			RecomendLoctgtItem[i][Tools100_RecomendLocWithStockSerch.InColItemCd]		= B100_TextControl.Trim((String)TgtData[i][ColInItemCd]);
+			RecomendLoctgtItem[i][Tools100_RecomendLocWithStockSerch.InColLot]			= B100_TextControl.Trim((String)TgtData[i][ColInlot]);
+			RecomendLoctgtItem[i][Tools100_RecomendLocWithStockSerch.InColExpdate]	= B100_TextControl.TextToDate(	(String)TgtData[i][ColInExpDate]);
+			SearchArrNo.add(B100_TextControl.Trim((String)TgtData[i][ColInArrNo]));
+		}
+		
+		String[][] RecomendLocWithStockSerch	= Tools100_RecomendLocWithStockSerch.RecomendLocWithStockSerch(A00000_Main.ClWh,A00000_Main.ClCd,RecomendLoctgtItem);
+		Object[][] ArrivalPlanMsRt				= ArrivalPlanMsRt(A00000_Main.ClWh,A00000_Main.ClCd,SearchArrNo);
+		
+		for(int i=0;i<TgtData.length;i++) {
+			Object[] SetOb = new Object[RtArrivalObjectEntryMainLayout.length];
+			int RemainingPlanQty = (int)TgtData[i][ColInPlanQty]-(int)TgtData[i][ColInActualQty];
+			if(0>RemainingPlanQty) {RemainingPlanQty=0;}
+			SetOb[ColSetFg] = false;
+			SetOb[ColSetClWh]					= B100_TextControl.Trim((String)TgtData[i][ColInClWh]);
+			SetOb[ColSetClCd]					= B100_TextControl.Trim((String)TgtData[i][ColInClCd]);
+			SetOb[ColSetPlanDate]				= B100_TextControl.TextToDate((String)TgtData[i][ColInPlanDate]);
+			SetOb[ColSetSpCd]					= B100_TextControl.Trim((String)TgtData[i][ColInSpCd]);
+			SetOb[ColSetSpName01]				= "";
+			SetOb[ColSetClArrNo]				= "";
+			SetOb[ColSetArrNo]					= B100_TextControl.Trim((String)TgtData[i][ColInArrNo]);
+			SetOb[ColSetMsNo]					= B100_TextControl.TextToInt(""+TgtData[i][ColInMsNo]);
+			SetOb[ColSetItemCd]				= B100_TextControl.Trim((String)TgtData[i][ColInItemCd]);
+			SetOb[ColSetItemName]				= "";
+			SetOb[ColSetlot]					= B100_TextControl.Trim((String)TgtData[i][ColInlot]);
+			SetOb[ColSetExpDate]				= B100_TextControl.TextToDate((String)TgtData[i][ColInExpDate]);
+			SetOb[ColSetPlanQty]				= B100_TextControl.TextToInt(""+TgtData[i][ColInPlanQty]);
+			SetOb[ColSetActualQty]			= B100_TextControl.TextToInt(""+TgtData[i][ColInActualQty]);
+			SetOb[ColSetRemainingPlanQty]	= B100_TextControl.TextToInt(""+RemainingPlanQty);
+			SetOb[ColSetRecmendLoc]			= RecomendLocWithStockSerch[i][Tools100_RecomendLocWithStockSerch.ColRecomendLoc];
+			SetOb[ColSetRecmendLocMst]		= RecomendLocWithStockSerch[i][Tools100_RecomendLocWithStockSerch.ColMstRecomendLoc];
+			SetOb[ColSetEntryLot]				= B100_TextControl.Trim((String)TgtData[i][ColInEntryLot]);
+			SetOb[ColSetEntryExpDate]		= B100_TextControl.TextToDate((String)TgtData[i][ColInEntryExpDate]);
+			SetOb[ColSetEntryQty]				= B100_TextControl.TextToInt(""+TgtData[i][ColInEntryQty]);
+			SetOb[ColSetEntryStoreLoc]		= B100_TextControl.Trim((String)TgtData[i][ColInEntryStoreLoc]);
+			
+			for(int i01=0;i01<ArrivalPlanMsRt.length;i01++) {
+				String GetArrNo			= (String)ArrivalPlanMsRt[i01][T100_ArrivalPlanMsRt.ColArrNo];			//ヘッダ入荷予定NO
+				String GetClArrNo		= (String)ArrivalPlanMsRt[i01][T100_ArrivalPlanMsRt.ColClArrNo];		//ヘッダ荷主予定番号
+				String GetSpName01		= (String)ArrivalPlanMsRt[i01][T100_ArrivalPlanMsRt.ColSpName01];		//ヘッダ仕入先名01
+				int GetMsNo				= (int)ArrivalPlanMsRt[i01][T100_ArrivalPlanMsRt.ColMsNo];				//明細番号
+				String GetItemCd		= (String)ArrivalPlanMsRt[i01][T100_ArrivalPlanMsRt.ColItemCd];		//商品コード
+				String GetItemName		= (String)ArrivalPlanMsRt[i01][T100_ArrivalPlanMsRt.ColItemName];		//商品名
+				
+				if((""+SetOb[ColSetArrNo]).equals(GetArrNo)
+						&& (int)SetOb[ColSetMsNo]==GetMsNo
+						&& (""+SetOb[ColSetItemCd]).equals(GetItemCd)
+						) {
+					SetOb[ColSetSpName01]		= GetSpName01;
+					SetOb[ColSetClArrNo]		= GetClArrNo;
+					SetOb[ColSetItemName]		= GetItemName;
+					i01=ArrivalPlanMsRt.length+1;
+				}
+			}
+			MainFmTableModel.addRow(SetOb);
+		}
 		
 		//入荷予定残数が全部予定通りに入荷した情報にするボタン
 		JLabel scpnMsg				= B100_FrameParts.JLabelSet(1140,325,130,20,"↑"	,11,2);
@@ -954,12 +694,12 @@ public class WT100_Arrival_40_ObjectEntry{
 						
 						for(int i=0;i<CheckPlanMsData.length;i++) {
 							if(ShortageSplit.isSelected()	) {	//入荷不足分は分納待ちにする
-								if((int)CheckPlanMsData[i][ColMsPlanRemainingPlanQty]>(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
+								if((int)CheckPlanMsData[i][ColMsPlanPlanQty]>(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
 									UnCompleteArrNo.add((String)CheckPlanMsData[i][ColMsPlanArrNo]);
 								}
 							}
 							if(OverErr.isSelected()			) {	//過剰入荷は拒否する
-								if((int)CheckPlanMsData[i][ColMsPlanRemainingPlanQty]<(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
+								if((int)CheckPlanMsData[i][ColMsPlanPlanQty]<(int)CheckPlanMsData[i][ColMsPlanEntryQty]) {
 									OverQtyArrNo.add((String)CheckPlanMsData[i][ColMsPlanArrNo]);
 									OverQtyMsNo.add((int)CheckPlanMsData[i][ColMsPlanMsNo]);
 								}
@@ -1392,12 +1132,16 @@ public class WT100_Arrival_40_ObjectEntry{
 								A100_InsertUpdateSQL.InsertUpdateSomeRecord(ArrivalMs_SetString		,ArrivalMs_tgt_table		,TgtDB	,non_msg_fg);
 								
 								//元ファイルバックアップ
-								String FileName	= B100_FolderCheck.FILENAME(TgtFilePath);
-								String FLD		= B100_FolderCheck.FILE_FLD(TgtFilePath);
-								//フォルダ存在チェック→なければ作る
-								B100_FolderCheck.FLD_CHECK(FLD+"\\BK");
-
-								B100_FolderCheck.FILE_BACKUP(FLD,FLD+"\\BK",FileName);
+								if(null!=TgtFilePath) {
+									if(B100_FolderCheck.FLD_CHECK_ONRY(TgtFilePath)) {
+										String FileName	= B100_FolderCheck.FILENAME(TgtFilePath);
+										String FLD		= B100_FolderCheck.FILE_FLD(TgtFilePath);
+										//フォルダ存在チェック→なければ作る
+										B100_FolderCheck.FLD_CHECK(FLD+"\\BK");
+		
+										B100_FolderCheck.FILE_BACKUP(FLD,FLD+"\\BK",FileName);
+									}
+								}
 								
 								SetX=main_fm.getX();
 								SetY=main_fm.getY();
@@ -2029,7 +1773,11 @@ public class WT100_Arrival_40_ObjectEntry{
 		return ErrMsg;
 	}
 	
+	
 	private static Object[][] LocationMstRt(String TgtClWh,String TgtClCd,ArrayList<String> SearchLoc){
+		if(null==TgtClWh||"".equals(TgtClWh)) {TgtClWh=A00000_Main.ClWh;}
+		if(null==TgtClCd||"".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
+		
 		ArrayList<String> SearchClCd 	= new ArrayList<String>();	//荷主コード
 		ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
 		//ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
@@ -2054,6 +1802,9 @@ public class WT100_Arrival_40_ObjectEntry{
 		return LocationMstRt;
 	}
 	private static Object[][] ArrivalHdRt(String TgtClWh,String TgtClCd,ArrayList<String> SearchArrNo){
+		if(null==TgtClWh||"".equals(TgtClWh)) {TgtClWh=A00000_Main.ClWh;}
+		if(null==TgtClCd||"".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
+		
 		ArrayList<String> SearchClWh			= new ArrayList<String>();		//担当倉庫
 		ArrayList<String> SearchClCd			= new ArrayList<String>();		//荷主CD
 		ArrayList<String> SearchClGpCD			= new ArrayList<String>();		//ヘッダ荷主グループCD
@@ -2122,6 +1873,8 @@ public class WT100_Arrival_40_ObjectEntry{
 	}
 	
 	private static Object[][] ArrivalMsRt(String TgtClWh,String TgtClCd,ArrayList<String> SearchArrNo){
+		if(null==TgtClWh||"".equals(TgtClWh)) {TgtClWh=A00000_Main.ClWh;}
+		if(null==TgtClCd||"".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
 		ArrayList<String> SearchClWh			= new ArrayList<String>();		//担当倉庫
 		ArrayList<String> SearchClCd			= new ArrayList<String>();		//荷主CD
 		ArrayList<String> SearchClGpCD			= new ArrayList<String>();		//ヘッダ荷主グループCD
@@ -2191,8 +1944,8 @@ public class WT100_Arrival_40_ObjectEntry{
 	
 	
 	private static Object[][] ArrivalPlanHdRt(String TgtClWh,String TgtClCd,ArrayList<String> SearchArrNo){
-		if(null==TgtClWh) {TgtClWh="";}
-		if(null==TgtClCd) {TgtClCd="";}
+		if(null==TgtClWh||"".equals(TgtClWh)) {TgtClWh=A00000_Main.ClWh;}
+		if(null==TgtClCd||"".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
 		ArrayList<String> SearchClWh			= new ArrayList<String>();		//ヘッダ担当倉庫
 		ArrayList<String> SearchClCd			= new ArrayList<String>();		//ヘッダ荷主CD
 		ArrayList<String> SearchCLName01		= new ArrayList<String>();		//ヘッダ荷主名
@@ -2289,8 +2042,8 @@ public class WT100_Arrival_40_ObjectEntry{
 	}
 	
 	private static Object[][] ArrivalPlanMsRt(String TgtClWh,String TgtClCd,ArrayList<String> SearchArrNo){
-		if(null==TgtClWh) {TgtClWh="";}
-		if(null==TgtClCd) {TgtClCd="";}
+		if(null==TgtClWh||"".equals(TgtClWh)) {TgtClWh=A00000_Main.ClWh;}
+		if(null==TgtClCd||"".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
 		ArrayList<String> SearchClWh			= new ArrayList<String>();		//ヘッダ担当倉庫
 		ArrayList<String> SearchClCd			= new ArrayList<String>();		//ヘッダ荷主CD
 		ArrayList<String> SearchCLName01		= new ArrayList<String>();		//ヘッダ荷主名
@@ -2390,17 +2143,17 @@ public class WT100_Arrival_40_ObjectEntry{
 		//必要フォルダを生成する
 		String FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcelentry";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanObjectEntry";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcelentry\\Err";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanObjectEntry\\Err";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcelentry\\BK";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanObjectEntry\\BK";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
 		String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
-		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanExcelentry\\Err";
+		FLD_PATH = A00000_Main.MainFLD+"\\ArrivalPlan\\ArrivalPlanObjectEntry\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+ErrTitle+NowDTM+".txt";
 		

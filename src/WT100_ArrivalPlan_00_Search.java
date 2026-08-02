@@ -318,9 +318,9 @@ public class WT100_ArrivalPlan_00_Search{
 		});
 		//実績日進む戻るボタン
 		JButton SearchHdActualDateMinAfterBtn		= B100_FrameParts.BtnSet(170,200, 40,10,"▲",6);
-		JButton SearchHdActualDateMinBeforeBtn	= B100_FrameParts.BtnSet(170,210, 40,10,"▼",6);
+		JButton SearchHdActualDateMinBeforeBtn		= B100_FrameParts.BtnSet(170,210, 40,10,"▼",6);
 		JButton SearchHdActualDateMaxAfterBtn		= B100_FrameParts.BtnSet(300,200, 40,10,"▲",6);
-		JButton SearchHdActualDateMaxBeforeBtn	= B100_FrameParts.BtnSet(300,210, 40,10,"▼",6);
+		JButton SearchHdActualDateMaxBeforeBtn		= B100_FrameParts.BtnSet(300,210, 40,10,"▼",6);
 		PN_Search.add(SearchHdActualDateMinAfterBtn);
 		PN_Search.add(SearchHdActualDateMinBeforeBtn);
 		PN_Search.add(SearchHdActualDateMaxAfterBtn);
@@ -584,9 +584,6 @@ public class WT100_ArrivalPlan_00_Search{
 		//修正ボタン
 		JButton RenewBtn = B100_FrameParts.BtnSet(				250,685,100,20,"予定修正"		,11);
 		main_fm.add(RenewBtn);
-		//実績登録ボタン
-		JButton ArrivalBtn = B100_FrameParts.BtnSet(			250,710,100,20,"実績登録"		,11);
-		main_fm.add(ArrivalBtn);
 		
 		JLabel LB_Create  = B100_FrameParts.JLabelSet(			370,640,100,20,"新規予定作成" 	, 9,2);
 		main_fm.add(LB_Create);
@@ -598,6 +595,17 @@ public class WT100_ArrivalPlan_00_Search{
 		main_fm.add(SomeCreateBtn);
 		
 		
+		JLabel LB_ArrivalBtn  = B100_FrameParts.JLabelSet(		530,640,100,20,"チェック行を" 	,11,2);
+		main_fm.add(LB_ArrivalBtn);
+		
+		//入荷検品ボタン
+		JButton ArrivalBtn = B100_FrameParts.BtnSet(			530,660,100,20,"入荷検品"		,11);
+		main_fm.add(ArrivalBtn);
+		
+		//実績登録ボタン
+		JButton ArrivalEntryBtn = B100_FrameParts.BtnSet(		530,685,100,20,"実績登録"		,11);
+		main_fm.add(ArrivalEntryBtn);
+		
 		JLabel LB_EntryExcel  = B100_FrameParts.JLabelSet(				650,640,130,20,"実績登録用" 	,11,2);
 		main_fm.add(LB_EntryExcel);
 		//実績登録用エクセル出力ボタン
@@ -607,14 +615,20 @@ public class WT100_ArrivalPlan_00_Search{
 		JButton ActualEntryExcelEntryBtn = B100_FrameParts.BtnSet(		650,685,130,20,"実績登録用Excel取込",9);
 		main_fm.add(ActualEntryExcelEntryBtn);
 		
-		final JCheckBox PlanListTgtAll = B100_FrameParts.JCheckBoxSet(850,640,220,20,"発行済分も対象にして",11);
+		JLabel LB_ForceEntryBtn  = B100_FrameParts.JLabelSet(			800,640,100,20,"予定にない物を" 	,11,2);
+		main_fm.add(LB_ForceEntryBtn);
+		//強制入庫ボタン
+		JButton ForceEntryBtn = B100_FrameParts.BtnSet(				800,660,100,20,"強制入庫"		,11);
+		main_fm.add(ForceEntryBtn);
+		
+		final JCheckBox PlanListTgtAll = B100_FrameParts.JCheckBoxSet(950,640,220,20,"発行済分も対象にして",11);
 		main_fm.add(PlanListTgtAll);
 		//入荷予定票発行
-		JButton PlanListBtn = B100_FrameParts.BtnSet(		850,660,100,20,"予定票発行",11);
+		JButton PlanListBtn = B100_FrameParts.BtnSet(		950,660,100,20,"予定票発行",11);
 		main_fm.add(PlanListBtn);
 		
 		//貼札発行
-		JButton PlanPosterBtn = B100_FrameParts.BtnSet(	970,660,100,20,"貼札発行",11);
+		JButton PlanPosterBtn = B100_FrameParts.BtnSet(   1070,660,100,20,"貼札発行",11);
 		main_fm.add(PlanPosterBtn);
 		
 		
@@ -1642,7 +1656,8 @@ public class WT100_ArrivalPlan_00_Search{
 				}
 			}
 		});
-		//実績登録ボタン押下時の挙動
+		
+		//入荷検品ボタン押下時の挙動
 		ArrivalBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				if(RenewFg) {
@@ -1673,6 +1688,125 @@ public class WT100_ArrivalPlan_00_Search{
 						main_fm.dispose();
 						
 						WT100_Arrival_10_Entry.ArrivalEntry(0,0,TgtWhCd,TgtClCd,TgtArrNo);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//実績登録ボタン
+		ArrivalEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					MsViewMode = true;
+					Ms_fm.setVisible(false);
+					
+					int RowCount = MainFmTableModel.getRowCount();
+					String TgtWhCd = A00000_Main.ClWh;
+					String TgtClCd = A00000_Main.ClCd;
+					String TgtArrNo = "";
+					
+					for(int i=0;i<RowCount;i++) {
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TgtWhCd		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColClWh));
+							TgtClCd		= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColClCd));
+							TgtArrNo	= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i,1+T100_ArrivalPlanHdRt.ColArrNo));
+						}
+					}
+					if(!"".equals(TgtArrNo)) {
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+						
+						Ms_fm.setVisible(false);
+						Ms_fm.dispose();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						
+						ArrayList<String> SearchClWh	= new ArrayList<String>();
+						ArrayList<String> SearchClCd	= new ArrayList<String>();
+						ArrayList<String> SearchClGpCD	= new ArrayList<String>();
+						ArrayList<String> SearchArrNo	= new ArrayList<String>();
+						
+						SearchClWh.add(TgtWhCd);
+						SearchClCd.add(TgtClCd);
+						SearchArrNo.add(TgtArrNo);
+						
+						Object[][] ArrivalPlanMsRt	= ArrivalPlanMsRt(
+																SearchClWh,
+																SearchClCd,
+																SearchClGpCD,
+																SearchArrNo
+																);
+						Object[][] RtArrivalObjectEntryNeedColLayout	= WT100_Arrival_40_ObjectEntry.RtArrivalObjectEntryNeedColLayout();
+						
+						Object[][] TgtData = new Object[ArrivalPlanMsRt.length][RtArrivalObjectEntryNeedColLayout.length];
+						for(int i=0;i<ArrivalPlanMsRt.length;i++) {
+							String GetClWh			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClWh];			//ヘッダ担当倉庫
+							String GetClCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClCd];			//ヘッダ荷主CD
+							String GetCLName01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLName01];		//ヘッダ荷主名
+							String GetClGpCD		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClGpCD];			//ヘッダ荷主グループCD
+							String GetCLGpName01	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCLGpName01];		//ヘッダ荷主グループ標記名
+							String GetArrNo			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArrNo];			//ヘッダ入荷予定NO
+							String GetClArrNo		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClArrNo];			//ヘッダ荷主予定番号
+							String GetPlanDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColPlanDate];		//ヘッダ入荷予定日
+							String GetHdActualDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdActualDate];	//ヘッダ入荷実績日
+							String GetSpCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpCd];			//ヘッダ仕入先CD
+							String GetSpName01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName01];		//ヘッダ仕入先名01
+							String GetSpName02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName02];		//ヘッダ仕入先名02
+							String GetSpName03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpName03];		//ヘッダ仕入先名03
+							String GetSpPost		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpPost];			//ヘッダ仕入先郵便
+							String GetSpAdd01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd01];			//ヘッダ仕入先住所01
+							String GetSpAdd02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd02];			//ヘッダ仕入先住所02
+							String GetSpAdd03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpAdd03];			//ヘッダ仕入先住所03
+							String GetSpTel			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColSpTel];			//ヘッダ仕入先電話
+							String GetArCom01		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom01];			//ヘッダコメント1
+							String GetArCom02		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom02];			//ヘッダコメント2
+							String GetArCom03		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColArCom03];			//ヘッダコメント3
+							String GetHdEntryDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdEntryDate];	//ヘッダ登録日
+							String GetHdUpdateDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdUpdateDate];	//ヘッダ更新日
+							String GetHdEntryUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdEntryUser];	//ヘッダ登録者
+							String GetHdUpdateUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColHdUpdateUser];	//ヘッダ更新者
+							int  GetFixFg			= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColFixFg];				//ヘッダ状況
+										
+							int GetMsNo				= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColMsNo];				//明細番号
+							String GetItemCd		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemCd];			//商品コード
+							String GetClItemCd		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColClItemCd];		//荷主商品コード
+							String GetJanCd			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColJanCd];			//JANCD（バラ）
+							String GetItemMdNo		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemMdNo];		//商品型番
+							String GetItemName		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColItemName];		//商品名
+							String Getlot			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.Collot];				//ロット
+							String GetExpDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColExpDate];			//消費期限
+							int GetPlanQty			= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColPlanQty];			//予定数量
+							int GetActualQty		= (int)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColActualQty];			//実績数
+							String GetActualDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColActualDate];		//入荷日
+							String GetCom01			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCom01];			//コメント1
+							String GetCom02			= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColCom02];			//コメント2
+							String GetEntryDate		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColEntryDate];		//登録日
+							String GetUpdateDate	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColUpdateDate];		//更新日
+							String GetEntryUser		= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColEntryUser];		//登録者
+							String GetUpdateUser	= (String)ArrivalPlanMsRt[i][T100_ArrivalPlanMsRt.ColUpdateUser];		//更新者
+							
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInClWh]				= GetClWh;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInClCd]				= GetClCd;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInPlanDate]		= GetPlanDate;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInSpCd]				= GetSpCd;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInArrNo]			= GetArrNo;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInMsNo]				= GetMsNo;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInItemCd]			= GetItemCd;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInlot]				= Getlot;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInExpDate]			= GetExpDate;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInPlanQty]			= GetPlanQty;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInActualQty]		= GetActualQty;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInEntryLot]		= "";
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInEntryExpDate]	= "";
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInEntryQty]		= 0;
+							TgtData[i][WT100_Arrival_40_ObjectEntry.ColInEntryStoreLoc]	= "";
+							
+						}
+						
+						WT100_Arrival_40_ObjectEntry.ArrivalObjectEntryMain(0,0,null,TgtData);
 					}
 					RenewFg = true;
 				}
@@ -2143,17 +2277,32 @@ public class WT100_ArrivalPlan_00_Search{
 
 						main_fm.setVisible(false);
 						main_fm.dispose();
-						/*
-						WT100_Arrival_40_ObjectEntry.ArrivalExcelEntry(0,0,Selected);
-						*/
+						
 						WT100_Arrival_31_ExcelEntryInPut.ArrivalExcelEntry(0,0,Selected);
-						//*/
 					}
 					RenewFg = true;
 				}
 			}
 		});
-		
+		//強制入庫ボタン押下時の挙動
+		ForceEntryBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					SetX=main_fm.getX();
+					SetY=main_fm.getY();
+					
+					Ms_fm.setVisible(false);
+					Ms_fm.dispose();
+	
+					main_fm.setVisible(false);
+					main_fm.dispose();
+					
+					WT100_Arrival_20_ForceEntry.ArrivalForceEntry(0,0);
+					RenewFg = true;
+				}
+			}
+		});
 		
 		//エクセル出力ボタン押下時の挙動
 		ExcelBtn.addActionListener(new AbstractAction(){

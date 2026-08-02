@@ -64,7 +64,7 @@ public class Tools100_RecomendLocWithStockSerch{
 		//投入情報定義
 		Object[][] Rt = {
 				 {"ItemCd"			,InColItemCd 		,"String"	,"商品CD"	,""}
-				,{"Lot"				,InColLot 			,"Date"		,"ロット"	,""}	//※YYYY/MM/DD　文字列
+				,{"Lot"				,InColLot 			,"Date"		,"ロット"	,""}	//文字列
 				,{"Expdate"			,InColExpdate 	,"Date"		,"賞味期限"	,""}	//※YYYY/MM/DD　文字列
 				};
 		return Rt;

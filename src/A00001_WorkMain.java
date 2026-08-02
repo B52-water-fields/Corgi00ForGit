@@ -37,8 +37,8 @@ public class A00001_WorkMain{
 			JButton ArrivalSearch = B100_FrameParts.BtnSet(					150, 25,120,20,"入荷実績検索",11);
 			PN_AboutArrival.add(ArrivalSearch);
 			
-			//入荷実績登録
-			JButton Arrival = B100_FrameParts.BtnSet(							150, 50,120,20,"入荷実績登録",11);
+			//入荷検品
+			JButton Arrival = B100_FrameParts.BtnSet(							150, 50,120,20,"入荷検品",11);
 			PN_AboutArrival.add(Arrival);
 			
 			//強制入庫
@@ -115,7 +115,7 @@ public class A00001_WorkMain{
 			}
 		});
 		
-		//入荷実績登録
+		//入荷検品
 		Arrival.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				SetX=main_fm.getX();
