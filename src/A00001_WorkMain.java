@@ -193,14 +193,14 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				Object[] DeliveryMstSearchSubFm = WT200_DeliveryMstSearchSubFm.DeliveryMstSearchSubFm(0, 0, A00000_Main.ClWh, A00000_Main.ClCd, "ZK");
+				Object[] SubFm = WT200_ArrivalPlanSearchSubFm.ArrivalPlanSearchSubFm(0, 0, A00000_Main.ClWh, A00000_Main.ClCd, "ZK");
 				
-				((JFrame)DeliveryMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtJFrame]).setVisible(true);
-				((JButton)DeliveryMstSearchSubFm[WT200_DeliveryMstSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
+				((JFrame)SubFm[WT200_StockSearchSubFm.RtJFrame]).setVisible(true);
+				((JButton)SubFm[WT200_StockSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
 					public void actionPerformed(ActionEvent e){
-						int RowCount = ((DefaultTableModel)DeliveryMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getRowCount();
+						int RowCount = ((DefaultTableModel)SubFm[WT200_StockSearchSubFm.RtDefaultTableModel]).getRowCount();
 						for(int i01=0;i01<RowCount;i01++) {
-							System.out.println(((DefaultTableModel)DeliveryMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColDEName01));
+							System.out.println(((DefaultTableModel)SubFm[WT200_StockSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+T100_ArrivalPlanHdRt.ColArrNo));
 						}
 					}
 				});

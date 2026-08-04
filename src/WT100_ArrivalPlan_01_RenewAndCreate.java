@@ -338,9 +338,6 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		main_fm.add(TBMs_EntryUser);
 		main_fm.add(TBMs_UpdateUser);
 		
-		main_fm.add(TBMs_ExpDateAfterBtn);
-		main_fm.add(TBMs_ExpDateBeforeBtn);
-		
 		if(!"".equals(TgtArrNo)) {
 			Object[][] ArrivalPlanMsRt	= ArrivalPlanMsRt(TgtWhCd,TgtClCd,TgtArrNo);
 			
@@ -399,7 +396,10 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 					TB_ClCd.setEnabled(false);
 					TB_FixFg.setEnabled(false);
 					TB_ArrNo.setEditable(false);
+					TB_ClArrNo.setEditable(true);
 					TB_PlanDate.setEditable(true);
+					main_fm.add(TB_PlanDateAfterBtn);
+					main_fm.add(TB_PlanDateBeforeBtn);
 					TB_HdActualDate.setEditable(false);
 					TB_ArCom01.setEditable(true);
 					TB_ArCom02.setEditable(true);
@@ -415,6 +415,8 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 					TBMs_ItemName.setEditable(false);
 					TBMs_lot.setEditable(true);
 					TBMs_ExpDate.setEditable(true);
+					main_fm.add(TBMs_ExpDateAfterBtn);
+					main_fm.add(TBMs_ExpDateBeforeBtn);
 					TBMs_PlanQty.setEditable(true);
 					TBMs_ActualQty.setEditable(false);
 					TBMs_Com01.setEditable(true);
@@ -435,7 +437,10 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 					TB_ClCd.setEnabled(false);
 					TB_FixFg.setEnabled(false);
 					TB_ArrNo.setEditable(false);
+					TB_ClArrNo.setEditable(false);
 					TB_PlanDate.setEditable(false);
+					main_fm.remove(TB_PlanDateAfterBtn);
+					main_fm.remove(TB_PlanDateBeforeBtn);
 					TB_HdActualDate.setEditable(false);
 					TB_ArCom01.setEditable(false);
 					TB_ArCom02.setEditable(false);
@@ -451,6 +456,8 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 					TBMs_ItemName.setEditable(false);
 					TBMs_lot.setEditable(false);
 					TBMs_ExpDate.setEditable(false);
+					main_fm.remove(TBMs_ExpDateAfterBtn);
+					main_fm.remove(TBMs_ExpDateBeforeBtn);
 					TBMs_PlanQty.setEditable(false);
 					TBMs_ActualQty.setEditable(false);
 					TBMs_Com01.setEditable(false);
@@ -1068,9 +1075,16 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 					main_fm.remove(CancelBtn);
 					main_fm.remove(OrderCopy_btn);
 					main_fm.add(MsItemSearchBtn);
+					main_fm.add(TB_PlanDateAfterBtn);
+					main_fm.add(TB_PlanDateBeforeBtn);
+					main_fm.add(TBMs_ExpDateAfterBtn);
+					main_fm.add(TBMs_ExpDateBeforeBtn);
 					main_fm.add(MsRenewBtn);
 					main_fm.add(MsDeleteBtn);
 					main_fm.add(entry_btn);
+					
+					TB_ClArrNo.setEditable(true);
+					TB_PlanDate.setEditable(true);
 					
 					int RowCount = MainFmTableModel.getRowCount();
 					
