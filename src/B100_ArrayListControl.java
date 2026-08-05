@@ -28,6 +28,19 @@ public class B100_ArrayListControl{
 		return rt;
 	}
 	
+	public static ArrayList<Float> ArryListFloatUniqueList(ArrayList<Float> TgtArrayList){
+		/*
+		 ArrayList<Integer>を受け取って重複を除外したArrayList<Integer>にして返却する
+		 ※並び順保証されない
+		*/
+		ArrayList<Float> rt = new ArrayList<Float>();
+		if(null!=TgtArrayList && 0<TgtArrayList.size()) {
+			HashSet<Float> WorkHashSet = new HashSet<Float>(TgtArrayList);
+			rt = new ArrayList<Float>(WorkHashSet);
+		}
+		return rt;
+	}
+	
 	/*************************************************
 	B100_ArrayListControl.ArryListGetRow(TgtArrayList,TgtData,UnHitZeroMode)
 	

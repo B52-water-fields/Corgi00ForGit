@@ -51,7 +51,6 @@ public class WT200_ArrivalPlanSearchSubFm{
 		JLabel LB_ItemCd			= B100_FrameParts.JLabelSet(	  0,150,100,20,"商品CD:"		,10,1);
 		JLabel LB_ItemName			= B100_FrameParts.JLabelSet(	  0,175,100,20,"商品名:"		,10,1);
 		
-		
 		final JComboBox TB_WhCd		= B100_FrameParts.JComboBoxSet(	100, 50,300,20,B100_DefaultVariable.WhList[0],11);
 		final JComboBox TB_ClCd		= B100_FrameParts.JComboBoxSet(	100, 75,300,20,B100_DefaultVariable.ClList[0],11);
 		final JComboBox TB_SpCd		= B100_FrameParts.JComboBoxSet(	100,100,240,20,B100_DefaultVariable.SearchSupplierList[0],11);

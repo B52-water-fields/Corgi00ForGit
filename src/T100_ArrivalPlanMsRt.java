@@ -195,50 +195,50 @@ public class T100_ArrivalPlanMsRt{
 	public static Object[][] RtArrivalPlanMsRt(
 			){
 		Object[][] RtArrivalPlanMsRt = {
-				 {"ClWh"			,ColClWh			,"String"	,"ヘッダ担当倉庫"}
-				,{"ClCd"			,ColClCd			,"String"	,"ヘッダ荷主CD"}
-				,{"CLName01"		,ColCLName01		,"String"	,"ヘッダ荷主名"}
-				,{"ClGpCD"			,ColClGpCD			,"String"	,"ヘッダ荷主グループCD"}
-				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ標記名"}
-				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"}
-				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"}
-				,{"PlanDate"		,ColPlanDate		,"Date"		,"ヘッダ入荷予定日"}
-				,{"HdActualDate"	,ColHdActualDate	,"DateTime"	,"ヘッダ入荷実績日"}
-				,{"SpCd"			,ColSpCd			,"String"	,"ヘッダ仕入先CD"}
-				,{"SpName01"		,ColSpName01		,"String"	,"ヘッダ仕入先名01"}
-				,{"SpName02"		,ColSpName02		,"String"	,"ヘッダ仕入先名02"}
-				,{"SpName03"		,ColSpName03		,"String"	,"ヘッダ仕入先名03"}
-				,{"SpPost"			,ColSpPost			,"String"	,"ヘッダ仕入先郵便"}
-				,{"SpAdd01"			,ColSpAdd01		,"String"	,"ヘッダ仕入先住所01"}
-				,{"SpAdd02"			,ColSpAdd02		,"String"	,"ヘッダ仕入先住所02"}
-				,{"SpAdd03"			,ColSpAdd03		,"String"	,"ヘッダ仕入先住所03"}
-				,{"SpTel"			,ColSpTel			,"String"	,"ヘッダ仕入先電話"}
-				,{"ArCom01"			,ColArCom01		,"String"	,"ヘッダコメント1"}
-				,{"ArCom02"			,ColArCom02		,"String"	,"ヘッダコメント2"}
-				,{"ArCom03"			,ColArCom03		,"String"	,"ヘッダコメント3"}
-				,{"HdEntryDate"		,ColHdEntryDate	,"DateTime"	,"ヘッダ登録日"}
-				,{"HdUpdateDate"	,ColHdUpdateDate	,"DateTime"	,"ヘッダ更新日"}
-				,{"HdEntryUser"		,ColHdEntryUser	,"String"	,"ヘッダ登録者"}
-				,{"HdUpdateUser"	,ColHdUpdateUser	,"String"	,"ヘッダ更新者"}
-				,{"FixFg"			,ColFixFg			,"int"		,"ヘッダ状況"}
+				 {"ClWh"			,ColClWh			,"String"	,"ヘッダ担当倉庫"			,"Key"	}
+				,{"ClCd"			,ColClCd			,"String"	,"ヘッダ荷主CD"				,"Key"	}
+				,{"CLName01"		,ColCLName01		,"String"	,"ヘッダ荷主名"				,""		}
+				,{"ClGpCD"			,ColClGpCD			,"String"	,"ヘッダ荷主グループCD"		,""		}
+				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ標記名"	,""		}
+				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"			,"Key"	}
+				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"		,""		}
+				,{"PlanDate"		,ColPlanDate		,"Date"		,"ヘッダ入荷予定日"			,""		}
+				,{"HdActualDate"	,ColHdActualDate	,"DateTime"	,"ヘッダ入荷実績日"			,""		}
+				,{"SpCd"			,ColSpCd			,"String"	,"ヘッダ仕入先CD"			,""		}
+				,{"SpName01"		,ColSpName01		,"String"	,"ヘッダ仕入先名01"			,""		}
+				,{"SpName02"		,ColSpName02		,"String"	,"ヘッダ仕入先名02"			,""		}
+				,{"SpName03"		,ColSpName03		,"String"	,"ヘッダ仕入先名03"			,""		}
+				,{"SpPost"			,ColSpPost			,"String"	,"ヘッダ仕入先郵便"			,""		}
+				,{"SpAdd01"			,ColSpAdd01		,"String"	,"ヘッダ仕入先住所01"		,""		}
+				,{"SpAdd02"			,ColSpAdd02		,"String"	,"ヘッダ仕入先住所02"		,""		}
+				,{"SpAdd03"			,ColSpAdd03		,"String"	,"ヘッダ仕入先住所03"		,""		}
+				,{"SpTel"			,ColSpTel			,"String"	,"ヘッダ仕入先電話"			,""		}
+				,{"ArCom01"			,ColArCom01		,"String"	,"ヘッダコメント1"			,""		}
+				,{"ArCom02"			,ColArCom02		,"String"	,"ヘッダコメント2"			,""		}
+				,{"ArCom03"			,ColArCom03		,"String"	,"ヘッダコメント3"			,""		}
+				,{"HdEntryDate"		,ColHdEntryDate	,"DateTime"	,"ヘッダ登録日"				,""		}
+				,{"HdUpdateDate"	,ColHdUpdateDate	,"DateTime"	,"ヘッダ更新日"				,""		}
+				,{"HdEntryUser"		,ColHdEntryUser	,"String"	,"ヘッダ登録者"				,""		}
+				,{"HdUpdateUser"	,ColHdUpdateUser	,"String"	,"ヘッダ更新者"				,""		}
+				,{"FixFg"			,ColFixFg			,"int"		,"ヘッダ状況"				,""		}
 					
-				,{"MsNo"			,ColMsNo			,"int"		,"明細番号"}
-				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"}
-				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"}
-				,{"JanCd"			,ColJanCd			,"String"	,"JANCD（バラ）"}
-				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"}
-				,{"ItemName"		,ColItemName		,"String"	,"商品名"}
-				,{"lot"				,Collot			,"String"	,"ロット"}
-				,{"ExpDate"			,ColExpDate		,"Date"		,"消費期限"}
-				,{"PlanQty"			,ColPlanQty		,"int"		,"予定数量"}
-				,{"ActualQty"		,ColActualQty		,"int"		,"実績数"}
-				,{"ActualDate"		,ColActualDate	,"String"	,"入荷日"}
-				,{"Com01"			,ColCom01			,"String"	,"コメント1"}
-				,{"Com02"			,ColCom02			,"String"	,"コメント2"}
-				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日"}
-				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日"}
-				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"}
-				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"}
+				,{"MsNo"			,ColMsNo			,"int"		,"明細番号"					,"Key"	}
+				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"				,""		}
+				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"			,""		}
+				,{"JanCd"			,ColJanCd			,"String"	,"JANCD（バラ）"			,""		}
+				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"					,""		}
+				,{"ItemName"		,ColItemName		,"String"	,"商品名"					,""		}
+				,{"lot"				,Collot			,"String"	,"ロット"					,""		}
+				,{"ExpDate"			,ColExpDate		,"Date"		,"消費期限"					,""		}
+				,{"PlanQty"			,ColPlanQty		,"int"		,"予定数量"					,""		}
+				,{"ActualQty"		,ColActualQty		,"int"		,"実績数"					,""		}
+				,{"ActualDate"		,ColActualDate	,"String"	,"入荷日"					,""		}
+				,{"Com01"			,ColCom01			,"String"	,"コメント1"				,""		}
+				,{"Com02"			,ColCom02			,"String"	,"コメント2"				,""		}
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日"					,""		}
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日"					,""		}
+				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"					,""		}
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"					,""		}
 				};
 		
 		return RtArrivalPlanMsRt;
@@ -1165,7 +1165,7 @@ public class T100_ArrivalPlanMsRt{
 	}
 	private static Object[][] SearchItemCdFromClItem(ArrayList<String> SearchClGpCd,ArrayList<String> SearchClCd,ArrayList<String> SearchClItemCd){
 		//ArrayList<String> SearchClGpCd = new ArrayList<String>();		//荷主グループコード
-		//ArrayList<String> SearchClCd = new ArrayList<String>();			//荷主コード
+		//ArrayList<String> SearchClCd = new ArrayList<String>();		//荷主コード
 		ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
 		//ArrayList<String> SearchClItemCd = new ArrayList<String>();	//荷主商品コード
 		ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名

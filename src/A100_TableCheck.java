@@ -1142,7 +1142,7 @@ public class A100_TableCheck{
 						 ,{"SPTimeEnd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"時間指定終了"}
 						 ,{"TotalWeight"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"荷物重量(kg)"}
 						 ,{"TotalSize"				,"float"	,(int)0		,""		,(boolean)false	,"0"	,"荷物サイズ"}
-						 ,{"TotalQty"				,"float"	,(int)0		,""		,(boolean)false	,"0"	,"個口数"}
+						 ,{"TotalQty"				,"int"		,(int)0		,""		,(boolean)false	,"0"	,"個口数"}
 						 ,{"DeliveryTypeCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプ01"}
 						 ,{"DeliTypeName"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"運送タイプ名01"}
 						 ,{"DeliveryTypeCd02"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプ02"}
@@ -1153,38 +1153,38 @@ public class A100_TableCheck{
 						 ,{"DeliTypeName04"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"運送タイプ名04"}
 						 ,{"DeliveryTypeCd05"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"運送タイプ05"}
 						 ,{"DeliTypeName05"			,"varchar"	,(int)50	,""		,(boolean)true	,"NULL"	,"運送タイプ名05"}
-						 ,{"CodFG"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引きフラグ"}
-						 ,{"CodPayTotal"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引き収受金額合計"}
-						 ,{"CodPay"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引き金額"}
-						 ,{"CodConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引き消費税"}
+						 ,{"CodFG"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引フラグ"}
+						 ,{"CodPayTotal"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引収受金額合計"}
+						 ,{"CodPay"					,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引金額"}
+						 ,{"CodConsumptionTax"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"代引消費税"}
 						 ,{"ChildrenFG"				,"int"		,(int)11	,""		,(boolean)false	,"0"	,"赤黒区分"}
 						 ,{"ParentOkuriNo"			,"int"		,(int)11	,""		,(boolean)false	,"0"	,"親伝票番号"}
 						 ,{"NiokuriCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人コード"}
 						 ,{"NiokuriDepartmentCd"	,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"部署CD"}
- 						 ,{"NiokuriName01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人名01"}
-						 ,{"NiokuriName02"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人名02"}
-						 ,{"NiokuriName03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人名03"}
-						 ,{"NiokuriPost"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人郵便番号"}
-						 ,{"NiokuriAdd01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人住所01"}
-						 ,{"NiokuriAdd02"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人住所02"}
-						 ,{"NiokuriAdd03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送り人住所03"}
-						 ,{"NioKuriTel"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人TEL"}
-						 ,{"NioKuriFax"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送り人FAX"}
-						 ,{"NioKuriMail"			,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"荷送り人MAIL"}
+ 						 ,{"NiokuriName01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送人名01"}
+						 ,{"NiokuriName02"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送人名02"}
+						 ,{"NiokuriName03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送人名03"}
+						 ,{"NiokuriPost"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送人郵便番号"}
+						 ,{"NiokuriAdd01"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送人住所01"}
+						 ,{"NiokuriAdd02"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送人住所02"}
+						 ,{"NiokuriAdd03"			,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷送人住所03"}
+						 ,{"NioKuriTel"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送人TEL"}
+						 ,{"NioKuriFax"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送人FAX"}
+						 ,{"NioKuriMail"			,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"荷送人MAIL"}
 						 ,{"NiokuriMunicCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷送人市区町村CD"}
 						 ,{"DeliCd"					,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届け先コード"}
 						 ,{"ClDeliCd"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷主荷届け先コード"}
 						 ,{"DeliDepartmentCd"		,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"部署CD"}
-						 ,{"DeliName01"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先名01"}
-						 ,{"DeliName02"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先名02"}
-						 ,{"DeliName03"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先名03"}
-						 ,{"DeliPost"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届け先郵便番号"}
-						 ,{"DeliAdd01"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先住所01"}
-						 ,{"DeliAdd02"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先住所02"}
-						 ,{"DeliAdd03"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届け先住所03"}
-						 ,{"DeliTel"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届け先TEL"}
-						 ,{"DeliFax"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届け先FAX"}
-						 ,{"DeliMail"				,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"荷届け先MAIL"}
+						 ,{"DeliName01"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届先名01"}
+						 ,{"DeliName02"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届先名02"}
+						 ,{"DeliName03"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届先名03"}
+						 ,{"DeliPost"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届先郵便番号"}
+						 ,{"DeliAdd01"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届先住所01"}
+						 ,{"DeliAdd02"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届先住所02"}
+						 ,{"DeliAdd03"				,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"荷届先住所03"}
+						 ,{"DeliTel"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届先TEL"}
+						 ,{"DeliFax"				,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届先FAX"}
+						 ,{"DeliMail"				,"varchar"	,(int)200	,""		,(boolean)true	,"NULL"	,"荷届先MAIL"}
 						 ,{"DeliMunicCd"			,"varchar"	,(int)20	,""		,(boolean)true	,"NULL"	,"荷届先市区町村CD"}
 						 ,{"Com01"					,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,"コメント01"}
 						 ,{"Com02"					,"varchar"	,(int)300	,""		,(boolean)true	,"NULL"	,"コメント02"}
@@ -1246,7 +1246,7 @@ public class A100_TableCheck{
 						 ,{"ItemName03"		,"varchar"	,(int)100	,""		,(boolean)true	,"NULL"	,"商品略名"}
 						 ,{"UnitWeight"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"単位重量"}
 						 ,{"UnitSize"		,"float"	,(int)0		,""		,(boolean)false	,"0"	,"単位サイズ"}
-						 ,{"Qty"			,"float"	,(int)0		,""		,(boolean)false	,"0"	,"個数"}
+						 ,{"Qty"			,"int"		,(int)0		,""		,(boolean)false	,"0"	,"個数"}
 						 ,{"PackingQty"		,"int"		,(int)11	,""		,(boolean)false	,"0"	,"荷姿数量"}
 						 ,{"UnitName"		,"varchar"	,(int)20	,""		,(boolean)false	,""		,"明細単位"}
 						 ,{"SubTotalWeight"	,"float"	,(int)0		,""		,(boolean)false	,"0"	,"明細重量"}
