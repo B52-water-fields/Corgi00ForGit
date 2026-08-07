@@ -18,6 +18,49 @@ import javax.swing.table.TableColumn;
 public class WT200_DeliveryMstSearchSubFm{
 	//検索子画面として届先マスタ検索する
 	//業務系の画面から召喚される
+	/*
+	コピペ用
+	final Object[] SubFm	= WT200_DeliveryMstSearchSubFm.DeliveryMstSearchSubFm(0,0,A00000_Main.ClWh,A00000_Main.ClCd,"ZK")
+	
+	((JFrame)SubFm[WT200_DeliveryMstSearchSubFm.RtJFrame]).setVisible(true);
+	
+	((JButton)SubFm[WT200_DeliveryMstSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
+		int RowCount = ((DefaultTableModel)SubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getRowCount();
+		for(int i01=0;i01<RowCount;i01++) {
+			String GetDECD				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColDECD);				//届先CD
+			String GetDepartmentCd		= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColDepartmentCd);		//部署CD
+			String GetDEName01			= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColDEName01);			//届先表記名
+			String GetDEName02			= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColDEName02);			//届先正式名
+			String GetDEName03			= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColDEName03);			//届先略名
+			String GetPost				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColPost);				//届先郵便
+			String GetAdd01				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColAdd01);				//届先住所1
+			String GetAdd02				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColAdd02);				//届先住所2
+			String GetAdd03				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColAdd03);				//届先住所3
+			String GetTel				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColTel);					//届先電話
+			String GetFax				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColFax);					//届先FAX
+			String GetMail				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColMail);				//届先MAIL
+			String GetCom01				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColCom01);				//コメント1
+			String GetCom02				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColCom02);				//コメント2
+			String GetCom03				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColCom03);				//コメント3
+			String GetPrefecturesCd		= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColPrefecturesCd);		//JIS県CD2桁
+			String GetMunicipalityCd	= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColMunicipalityCd);		//JIS市区町村CD5桁
+			String GetPTMSCD			= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColPTMSCD);				//基幹システム発着地コード
+			String GetEntryDate			= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColEntryDate);			//データ登録日時
+			String GetUpdateDate		= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColUpdateDate);			//データ更新日時
+			String GetEntryUser			= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColEntryUser);			//登録者コード
+			String GetUpdateUser		= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColUpdateUser);			//更新者コード
+			String GetFirstClient		= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColFirstClient);			/登録した荷主CD
+			String GetLastClient		= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColLastClient);			//更新した荷主CD
+			String GetDelFg				= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColDelFg);				//削除区分
+			String GetFirstClientName	= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColFirstClientName);		//登録した荷主名
+			String GetLastClientName	= ""+((DefaultTableModel)NiokuriMstSearchSubFm[WT200_DeliveryMstSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+M100_DeliveryMstRt.ColLastClientName);		//登録した荷主名
+		
+		}
+	}
+	
+	((JFrame)SubFm[WT200_DeliveryMstSearchSubFm.RtJFrame]).setVisible(false);
+	((JFrame)SubFm[WT200_DeliveryMstSearchSubFm.RtJFrame]).dispose();
+	*/
 	
 	static boolean RenewFg;
 	

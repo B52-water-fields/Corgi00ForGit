@@ -65,7 +65,7 @@ public class WT100_Stock_00_Search{
 		
 		MsViewMode	= false;
 		
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,750,"Corgi00在庫検索　WT100_Stock_00_Search","ZK");
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,770,"Corgi00在庫検索　WT100_Stock_00_Search","ZK");
 		JLabel userinfo = B100_FrameParts.UserInfo();
 		JButton exit_btn = B100_FrameParts.ExitBtn();
 		
@@ -393,6 +393,9 @@ public class WT100_Stock_00_Search{
 		//在庫移動ボタン
 		JButton StockMoveBtn 	= B100_FrameParts.BtnSet(		490,660,100,20,"在庫移動",11);
 		main_fm.add(StockMoveBtn);
+		//強制出荷ボタン
+		JButton ForceShipBtn 	= B100_FrameParts.BtnSet(		490,685,100,20,"強制出荷",11);
+		main_fm.add(ForceShipBtn);
 		
 		JLabel LB_StockAdjustFromNoStock 	= B100_FrameParts.JLabelSet(	610,615,100,20,"在庫が無い商品を"	,10,2);
 		main_fm.add(LB_StockAdjustFromNoStock);
@@ -761,7 +764,6 @@ public class WT100_Stock_00_Search{
 				String TgtActualDate 	= "";
 				
 				int RowCount 	= MainFmTableModel.getRowCount();
-				Object[][] RtStockRt	= T100_StockRt.RtStockRt();
 				boolean KickFg = false;
 				
 				for(int i=0;i<RowCount;i++) {
@@ -785,6 +787,41 @@ public class WT100_Stock_00_Search{
 				}
 			}
 		});
+		//強制出荷ボタン押下時の挙動
+		ForceShipBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+				
+				String TgtWhCd 			= A00000_Main.ClWh;
+				String TgtClCd 			= A00000_Main.ClCd;
+				String TgtLoc 			= "";
+				String TgtItemCd 		= "";
+				String TgtLot 			= "";
+				String TgtExpDate 		= "";
+				String TgtActualDate 	= "";
+				
+				int RowCount 	= MainFmTableModel.getRowCount();
+				
+				for(int i=0;i<RowCount;i++) {
+					if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+						TgtWhCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColWhCd+1);
+						TgtClCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColClCd+1);
+						TgtLoc 			= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColLoc+1);
+						TgtItemCd 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColItemCd+1);
+						TgtLot 			= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColLot+1);
+						TgtExpDate 		= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColExpdate+1);
+						TgtActualDate 	= ""+MainFmTableModel.getValueAt(i,T100_StockRt.ColActualDate+1);
+					}
+				}
+				LookUp_fm.setVisible(false);
+				LookUp_fm.dispose();
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT100_Ship_20_ForceEntry.ShipForceEntry(0,0,TgtWhCd,TgtClCd,TgtLoc,TgtItemCd,TgtLot,TgtExpDate,TgtActualDate);
+			}
+		});
+		
 		//在庫無し分在庫調整ボタン押下時の挙動
 		StockAdjustBtnFromNoStock.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){

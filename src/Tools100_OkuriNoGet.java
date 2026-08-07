@@ -1,0 +1,158 @@
+import java.util.ArrayList;
+
+public class Tools100_OkuriNoGet{
+	public static int[] OkuriNoRt(int NeedCount) {
+		ParameterMstNyankoCheck();
+		Object[][] ParameterMstRt = ParameterMstRt();
+		int[] rt = new int[NeedCount];
+		
+		int MinOkuriNo		=(int)ParameterMstRt[0][M100_ParameterMstRtNyanko.ColParaInt01];		//パラメータ数値項目01
+		int NowOkuriNo		=(int)ParameterMstRt[0][M100_ParameterMstRtNyanko.ColParaInt02];		//パラメータ数値項目02
+		int MaxOkuriNo		=(int)ParameterMstRt[0][M100_ParameterMstRtNyanko.ColParaInt03];		//パラメータ数値項目03
+		
+		for(int i=0;i<NeedCount;i++) {
+			NowOkuriNo=NowOkuriNo+1;
+			if(NowOkuriNo>MaxOkuriNo) {
+				NowOkuriNo = MinOkuriNo;
+			}
+			rt[i] = NowOkuriNo;
+		}
+		ParameterMstNyankoSet(NowOkuriNo);
+		
+		return rt;
+	}
+	public static void ParameterMstNyankoCheck() {
+		//パラメータマスタに送り状番号採番情報がなければ作る
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		Object[][] SetString = {
+				 {"ParaCd"			,"1","0","Key"	,"OkriNoNow"}		//パラメータCD
+				,{"ParaCdSeq"		,"1","0","Key"	,"0"}				//Seq
+				,{"ParaName"		,"1","0",""	,"送り状番号採番状況"}	//パラメータ名
+				,{"ParaTxt01"		,"1","0",""	,"ParaInt01:最小　ParaInt02:現在値　Paraint03:最大"}				//パラメータテキスト項目01
+				,{"ParaTxt02"		,"1","0",""	,""}				//パラメータテキスト項目02
+				,{"ParaTxt03"		,"1","0",""	,""}				//パラメータテキスト項目03
+				,{"ParaTxt04"		,"1","0",""	,""}				//パラメータテキスト項目04
+				,{"ParaTxt05"		,"1","0",""	,""}				//パラメータテキスト項目05
+				,{"ParaTxt06"		,"1","0",""	,""}				//パラメータテキスト項目06
+				,{"ParaTxt07"		,"1","0",""	,""}				//パラメータテキスト項目07
+				,{"ParaTxt08"		,"1","0",""	,""}				//パラメータテキスト項目08
+				,{"ParaTxt09"		,"1","0",""	,""}				//パラメータテキスト項目09
+				,{"ParaTxt10"		,"1","0",""	,""}				//パラメータテキスト項目10
+				,{"ParaInt01"		,"1","0",""	,"100000000"}		//パラメータ数値項目01
+				,{"ParaInt02"		,"1","0",""	,"100000000"}		//パラメータ数値項目02
+				,{"ParaInt03"		,"1","0",""	,"1999999999"}		//パラメータ数値項目03
+				,{"ParaInt04"		,"1","0",""	,"0"}				//パラメータ数値項目04
+				,{"ParaInt05"		,"1","0",""	,"0"}				//パラメータ数値項目05
+				,{"ParaInt06"		,"1","0",""	,"0"}				//パラメータ数値項目06
+				,{"ParaInt07"		,"1","0",""	,"0"}				//パラメータ数値項目07
+				,{"ParaInt08"		,"1","0",""	,"0"}				//パラメータ数値項目08
+				,{"ParaInt09"		,"1","0",""	,"0"}				//パラメータ数値項目09
+				,{"ParaInt10"		,"1","0",""	,"0"}				//パラメータ数値項目10
+				,{"EntryDate"		,"1","0",""	,now_dtm}			//登録日
+				,{"UpdateDate"		,"1","0",""	,now_dtm}			//更新日
+				,{"EntryUser"		,"1","0",""	,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//登録者
+				,{"UpdateUser"		,"1","0",""	,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//更新者
+				};
+		
+		String tgt_table = "KM0000_PARAMETER";
+		String TgtDB = "NYANKO";
+		int non_msg_fg = 1;
+		
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+	}
+	
+	private static void ParameterMstNyankoSet(int NowOkuriNo) {
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		
+		Object[][] SetString = {
+				 {"ParaCd"			,"0","1","Key"	,"OkriNoNow"}		//パラメータCD
+				,{"ParaCdSeq"		,"0","1","Key"	,"0"}				//Seq
+				,{"ParaName"		,"0","0",""	,"送り状番号採番状況"}	//パラメータ名
+				,{"ParaTxt01"		,"0","0",""	,"ParaInt01:最小　ParaInt02:現在値　Paraint03:最大"}				//パラメータテキスト項目01
+				,{"ParaTxt02"		,"0","0",""	,""}				//パラメータテキスト項目02
+				,{"ParaTxt03"		,"0","0",""	,""}				//パラメータテキスト項目03
+				,{"ParaTxt04"		,"0","0",""	,""}				//パラメータテキスト項目04
+				,{"ParaTxt05"		,"0","0",""	,""}				//パラメータテキスト項目05
+				,{"ParaTxt06"		,"0","0",""	,""}				//パラメータテキスト項目06
+				,{"ParaTxt07"		,"0","0",""	,""}				//パラメータテキスト項目07
+				,{"ParaTxt08"		,"0","0",""	,""}				//パラメータテキスト項目08
+				,{"ParaTxt09"		,"0","0",""	,""}				//パラメータテキスト項目09
+				,{"ParaTxt10"		,"0","0",""	,""}				//パラメータテキスト項目10
+				,{"ParaInt01"		,"0","0",""	,"100000000"}		//パラメータ数値項目01
+				,{"ParaInt02"		,"0","1",""	,""+NowOkuriNo}		//パラメータ数値項目02
+				,{"ParaInt03"		,"0","0",""	,"1999999999"}		//パラメータ数値項目03
+				,{"ParaInt04"		,"0","0",""	,"0"}				//パラメータ数値項目04
+				,{"ParaInt05"		,"0","0",""	,"0"}				//パラメータ数値項目05
+				,{"ParaInt06"		,"0","0",""	,"0"}				//パラメータ数値項目06
+				,{"ParaInt07"		,"0","0",""	,"0"}				//パラメータ数値項目07
+				,{"ParaInt08"		,"0","0",""	,"0"}				//パラメータ数値項目08
+				,{"ParaInt09"		,"0","0",""	,"0"}				//パラメータ数値項目09
+				,{"ParaInt10"		,"0","0",""	,"0"}				//パラメータ数値項目10
+				,{"EntryDate"		,"0","0",""	,now_dtm}			//登録日
+				,{"UpdateDate"		,"0","1",""	,now_dtm}			//更新日
+				,{"EntryUser"		,"0","0",""	,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//登録者
+				,{"UpdateUser"		,"0","1",""	,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName}				//更新者
+				};
+		
+		String tgt_table = "KM0000_PARAMETER";
+		String TgtDB = "NYANKO";
+		int non_msg_fg = 1;
+		
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
+	}
+	
+	private static Object[][] ParameterMstRt(){
+		ArrayList<String> SearchParaCd			= new ArrayList<String>();
+		ArrayList<Integer> SearchParaCdSeqStr	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaCdSeqEnd	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaName		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt01		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt02		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt03		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt04		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt05		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt06		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt07		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt08		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt09		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt10		= new ArrayList<String>();
+		ArrayList<Integer> SearchParaInt01Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt01End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10End	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaTxtAll		= new ArrayList<String>();
+		Boolean AllSearch = false;
+		SearchParaCd.add("OkriNoNow");
+		SearchParaCdSeqStr.add(0);
+		SearchParaCdSeqEnd.add(0);
+		
+		Object[][] ParameterMstRtNANKO = M100_ParameterMstRtNyanko.ParameterMstRtNANKO(
+				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
+				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
+				SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
+				SearchParaInt01Str,SearchParaInt02Str,SearchParaInt03Str,SearchParaInt04Str,SearchParaInt05Str,
+				SearchParaInt06Str,SearchParaInt07Str,SearchParaInt08Str,SearchParaInt09Str,SearchParaInt10Str,
+				SearchParaInt01End,SearchParaInt02End,SearchParaInt03End,SearchParaInt04End,SearchParaInt05End,
+				SearchParaInt06End,SearchParaInt07End,SearchParaInt08End,SearchParaInt09End,SearchParaInt10End,
+				SearchParaTxtAll,
+				AllSearch);
+		
+		return ParameterMstRtNANKO;
+	}
+}

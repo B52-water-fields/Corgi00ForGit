@@ -40,33 +40,33 @@ public class M100_DeliveryMstRt{
 		AllSearch
 		);
 		
-	String GetDECD				= DeliveryMstRt[i][M100_DeliveryMstRt.ColDECD];				//届先CD
-	String GetDepartmentCd		= DeliveryMstRt[i][M100_DeliveryMstRt.ColDepartmentCd];		//部署CD
-	String GetDEName01			= DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName01];			//届先表記名
-	String GetDEName02			= DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName02];			//届先正式名
-	String GetDEName03			= DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName03];			//届先略名
-	String GetPost				= DeliveryMstRt[i][M100_DeliveryMstRt.ColPost];				//届先郵便
-	String GetAdd01				= DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd01];			//届先住所1
-	String GetAdd02				= DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd02];			//届先住所2
-	String GetAdd03				= DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd03];			//届先住所3
-	String GetTel				= DeliveryMstRt[i][M100_DeliveryMstRt.ColTel];				//届先電話
-	String GetFax				= DeliveryMstRt[i][M100_DeliveryMstRt.ColFax];				//届先FAX
-	String GetMail				= DeliveryMstRt[i][M100_DeliveryMstRt.ColMail];				//届先MAIL
-	String GetCom01				= DeliveryMstRt[i][M100_DeliveryMstRt.ColCom01];			//コメント1
-	String GetCom02				= DeliveryMstRt[i][M100_DeliveryMstRt.ColCom02];			//コメント2
-	String GetCom03				= DeliveryMstRt[i][M100_DeliveryMstRt.ColCom03];			//コメント3
-	String GetPrefecturesCd		= DeliveryMstRt[i][M100_DeliveryMstRt.ColPrefecturesCd];	//JIS県CD2桁
-	String GetMunicipalityCd	= DeliveryMstRt[i][M100_DeliveryMstRt.ColMunicipalityCd];	//JIS市区町村CD5桁
-	String GetPTMSCD			= DeliveryMstRt[i][M100_DeliveryMstRt.ColPTMSCD];			//基幹システム発着地コード
-	String GetEntryDate			= DeliveryMstRt[i][M100_DeliveryMstRt.ColEntryDate];		//データ登録日時
-	String GetUpdateDate		= DeliveryMstRt[i][M100_DeliveryMstRt.ColUpdateDate];		//データ更新日時
-	String GetEntryUser			= DeliveryMstRt[i][M100_DeliveryMstRt.ColEntryUser];		//登録者コード
-	String GetUpdateUser		= DeliveryMstRt[i][M100_DeliveryMstRt.ColUpdateUser];		//更新者コード
-	String GetFirstClient		= DeliveryMstRt[i][M100_DeliveryMstRt.ColFirstClient];		//登録した荷主CD
-	String GetLastClient		= DeliveryMstRt[i][M100_DeliveryMstRt.ColLastClient];		//更新した荷主CD
-	String GetDelFg				= DeliveryMstRt[i][M100_DeliveryMstRt.ColDelFg];			//削除区分
-	String GetFirstClientName	= DeliveryMstRt[i][M100_DeliveryMstRt.ColFirstClientName];	//登録した荷主名
-	String GetLastClientName	= DeliveryMstRt[i][M100_DeliveryMstRt.ColLastClientName];	//登録した荷主名
+	String GetDECD				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColDECD];				//届先CD
+	String GetDepartmentCd		= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColDepartmentCd];		//部署CD
+	String GetDEName01			= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName01];			//届先表記名
+	String GetDEName02			= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName02];			//届先正式名
+	String GetDEName03			= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColDEName03];			//届先略名
+	String GetPost				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColPost];				//届先郵便
+	String GetAdd01				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd01];			//届先住所1
+	String GetAdd02				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd02];			//届先住所2
+	String GetAdd03				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColAdd03];			//届先住所3
+	String GetTel				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColTel];				//届先電話
+	String GetFax				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColFax];				//届先FAX
+	String GetMail				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColMail];				//届先MAIL
+	String GetCom01				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColCom01];			//コメント1
+	String GetCom02				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColCom02];			//コメント2
+	String GetCom03				= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColCom03];			//コメント3
+	String GetPrefecturesCd		= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColPrefecturesCd];	//JIS県CD2桁
+	String GetMunicipalityCd	= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColMunicipalityCd];	//JIS市区町村CD5桁
+	String GetPTMSCD			= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColPTMSCD];			//基幹システム発着地コード
+	String GetEntryDate			= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColEntryDate];		//データ登録日時
+	String GetUpdateDate		= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColUpdateDate];		//データ更新日時
+	String GetEntryUser			= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColEntryUser];		//登録者コード
+	String GetUpdateUser		= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColUpdateUser];		//更新者コード
+	String GetFirstClient		= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColFirstClient];		//登録した荷主CD
+	String GetLastClient		= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColLastClient];		//更新した荷主CD
+	int GetDelFg				= (int)DeliveryMstRt[i][M100_DeliveryMstRt.ColDelFg];				//削除区分
+	String GetFirstClientName	= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColFirstClientName];	//登録した荷主名
+	String GetLastClientName	= (String)DeliveryMstRt[i][M100_DeliveryMstRt.ColLastClientName];	//登録した荷主名
 		
 	*/
 	

@@ -24,14 +24,17 @@ public class A00001_MainMenu{
 		main_fm.setVisible(true);
 		
 		//業務メニューボタン
-		JButton Work_btn=B100_FrameParts.BtnSet(    10,40,120,20,"業務メニュー",11);
+		JButton Work_btn			=B100_FrameParts.BtnSet(	 10,40,120,20,"業務メニュー",11);
 		main_fm.add(Work_btn);
 		//マスタボタン
-		JButton Mst_btn=B100_FrameParts.BtnSet(    150,40,120,20,"マスタメニュー",11);
+		JButton Mst_btn				=B100_FrameParts.BtnSet(	150,40,120,20,"マスタメニュー",11);
 		main_fm.add(Mst_btn);
 		//荷主選択ボタン
-		JButton ClSelect_btn=B100_FrameParts.BtnSet(290,40,120,20,"荷主選択",11);
+		JButton ClSelect_btn		=B100_FrameParts.BtnSet(	290,40,120,20,"荷主選択",11);
 		main_fm.add(ClSelect_btn);
+		//倍率変更ボタン
+		JButton Magnification_btn	=B100_FrameParts.BtnSet(	430,40,120,20,"倍率変更",11);
+		main_fm.add(Magnification_btn);
 		
 		//業務メニューボタン押下時の挙動
 		Work_btn.addActionListener(new AbstractAction(){
@@ -67,6 +70,18 @@ public class A00001_MainMenu{
 				main_fm.dispose();
 				
 				A00000_Main.ClSelect();
+			}
+		});
+		//倍率変更ボタン押下時の挙動
+		Magnification_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				
+				B100_Magnification.Magnification(0,0);
 			}
 		});
 

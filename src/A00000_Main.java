@@ -523,7 +523,7 @@ public class A00000_Main{
     }
     
     private static void LoginStr(String WhCd,String UserId,String UserPass) {
-    	if(100>WMul) {WMul=100;}
+    	if(0>=WMul) {WMul=100;}
     	Mul = WMul;
     	//B100_SoundCreate.SoundTest();
     	

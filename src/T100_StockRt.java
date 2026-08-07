@@ -234,13 +234,13 @@ public class T100_StockRt{
 			boolean SortItemcdMode){
 		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);				//荷主コード
 		SearchWhCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchWhCd);				//倉庫コード
-		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);			//荷主グループCD
+		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);				//荷主グループCD
 		SearchLoc				= B100_ArrayListControl.ArryListStringUniqueList(SearchLoc);				//ロケーション
 		SearchType				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchType);				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
-		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);			//商品コード
+		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);				//商品コード
 		SearchLot				= B100_ArrayListControl.ArryListStringUniqueList(SearchLot);				//ロット
-		SearchExpdateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpdateMin);		//消費期限最小
-		SearchExpdateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpdateMax);		//消費期限最大
+		SearchExpdateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpdateMin);			//消費期限最小
+		SearchExpdateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpdateMax);			//消費期限最大
 		SearchActualDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMin);		//入荷実績日最小
 		SearchActualDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMax);		//入荷実績日最大
 		SearchQtyMin			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchQtyMin);			//数量最小
@@ -265,7 +265,7 @@ public class T100_StockRt{
 		}
 		
 		if(null!=SearchActualDateMin && 0<SearchActualDateMin.size()){			//入荷実績日最小
-			for(int i=0;i<SearchExpdateMin.size();i++){
+			for(int i=0;i<SearchActualDateMin.size();i++){
 				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMin.get(i));
 				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
 				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];

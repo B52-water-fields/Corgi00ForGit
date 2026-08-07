@@ -39,32 +39,32 @@ public class T100_OkuriHdRt{
 	static final int ColCodConsumptionTax	=  29;	//代引き消費税
 	static final int ColChildrenFG			=  30;	//赤黒区分
 	static final int ColParentOkuriNo			=  31;	//親伝票番号
-	static final int ColNiokuriCd				=  32;	//荷送り人コード
+	static final int ColNiokuriCd				=  32;	//荷送人コード
 	static final int ColNiokuriDepartmentCd	=  33;	//部署CD
-	static final int ColNiokuriName01			=  34;	//荷送り人名01
-	static final int ColNiokuriName02			=  35;	//荷送り人名02
-	static final int ColNiokuriName03			=  36;	//荷送り人名03
-	static final int ColNiokuriPost			=  37;	//荷送り人郵便番号
-	static final int ColNiokuriAdd01			=  38;	//荷送り人住所01
-	static final int ColNiokuriAdd02			=  39;	//荷送り人住所02
-	static final int ColNiokuriAdd03			=  40;	//荷送り人住所03
-	static final int ColNioKuriTel			=  41;	//荷送り人TEL
-	static final int ColNioKuriFax			=  42;	//荷送り人FAX
-	static final int ColNioKuriMail			=  43;	//荷送り人MAIL
+	static final int ColNiokuriName01			=  34;	//荷送人名01
+	static final int ColNiokuriName02			=  35;	//荷送人名02
+	static final int ColNiokuriName03			=  36;	//荷送人名03
+	static final int ColNiokuriPost			=  37;	//荷送人郵便番号
+	static final int ColNiokuriAdd01			=  38;	//荷送人住所01
+	static final int ColNiokuriAdd02			=  39;	//荷送人住所02
+	static final int ColNiokuriAdd03			=  40;	//荷送人住所03
+	static final int ColNioKuriTel			=  41;	//荷送人TEL
+	static final int ColNioKuriFax			=  42;	//荷送人FAX
+	static final int ColNioKuriMail			=  43;	//荷送人MAIL
 	static final int ColNiokuriMunicCd		=  44;	//荷送人市区町村CD
-	static final int ColDeliCd					=  45;	//荷届け先コード
-	static final int ColClDeliCd				=  46;	//荷主荷届け先コード
+	static final int ColDeliCd					=  45;	//荷届先コード
+	static final int ColClDeliCd				=  46;	//荷主荷届先コード
 	static final int ColDeliDepartmentCd		=  47;	//部署CD
-	static final int ColDeliName01			=  48;	//荷届け先名01
-	static final int ColDeliName02			=  49;	//荷届け先名02
-	static final int ColDeliName03			=  50;	//荷届け先名03
-	static final int ColDeliPost				=  51;	//荷届け先郵便番号
-	static final int ColDeliAdd01				=  52;	//荷届け先住所01
-	static final int ColDeliAdd02				=  53;	//荷届け先住所02
-	static final int ColDeliAdd03				=  54;	//荷届け先住所03
-	static final int ColDeliTel				=  55;	//荷届け先TEL
-	static final int ColDeliFax				=  56;	//荷届け先FAX
-	static final int ColDeliMail				=  57;	//荷届け先MAIL
+	static final int ColDeliName01			=  48;	//荷届先名01
+	static final int ColDeliName02			=  49;	//荷届先名02
+	static final int ColDeliName03			=  50;	//荷届先名03
+	static final int ColDeliPost				=  51;	//荷届先郵便番号
+	static final int ColDeliAdd01				=  52;	//荷届先住所01
+	static final int ColDeliAdd02				=  53;	//荷届先住所02
+	static final int ColDeliAdd03				=  54;	//荷届先住所03
+	static final int ColDeliTel				=  55;	//荷届先TEL
+	static final int ColDeliFax				=  56;	//荷届先FAX
+	static final int ColDeliMail				=  57;	//荷届先MAIL
 	static final int ColDeliMunicCd			=  58;	//荷届先市区町村CD
 	static final int ColCom01					=  59;	//コメント01
 	static final int ColCom02					=  60;	//コメント02
@@ -198,8 +198,8 @@ public class T100_OkuriHdRt{
 						,{"NioKuriFax"			,ColNioKuriFax			,"String"	,"荷送人FAX"					,""}
 						,{"NioKuriMail"			,ColNioKuriMail			,"String"	,"荷送人MAIL"					,""}
 						,{"NiokuriMunicCd"		,ColNiokuriMunicCd		,"String"	,"荷送人市区町村CD"				,""}
-						,{"DeliCd"				,ColDeliCd					,"String"	,"荷届け先コード"				,""}
-						,{"ClDeliCd"			,ColClDeliCd				,"String"	,"荷主荷届け先コード"			,""}
+						,{"DeliCd"				,ColDeliCd					,"String"	,"荷届先コード"					,""}
+						,{"ClDeliCd"			,ColClDeliCd				,"String"	,"荷主荷届先コード"				,""}
 						,{"DeliDepartmentCd"	,ColDeliDepartmentCd		,"String"	,"部署CD"						,""}
 						,{"DeliName01"			,ColDeliName01			,"String"	,"荷届先名01"					,""}
 						,{"DeliName02"			,ColDeliName02			,"String"	,"荷届先名02"					,""}
@@ -614,7 +614,7 @@ public class T100_OkuriHdRt{
 				+"(KT0010_OKURI_HD.CodConsumptionTax) 	as CodConsumptionTax,\n"	//代引き消費税
 				+"(KT0010_OKURI_HD.ChildrenFG) 			as ChildrenFG,\n"			//赤黒区分
 				+"(KT0010_OKURI_HD.ParentOkuriNo) 		as ParentOkuriNo,\n"		//親伝票番号
-				+"(KT0010_OKURI_HD.NiokuriCd) 			as NiokuriCd,\n"			//荷送り人コード
+				+"(KT0010_OKURI_HD.NiokuriCd) 			as NiokuriCd,\n"			//荷送人コード
 				+"(KT0010_OKURI_HD.NiokuriDepartmentCd)	as NiokuriDepartmentCd,\n"	//荷送人部署CD
  				+"(KT0010_OKURI_HD.NiokuriName01) 		as NiokuriName01,\n"		//荷送人名01
 				+"(KT0010_OKURI_HD.NiokuriName02) 		as NiokuriName02,\n"		//荷送人名02
@@ -627,19 +627,19 @@ public class T100_OkuriHdRt{
 				+"(KT0010_OKURI_HD.NioKuriFax) 			as NioKuriFax,\n"			//荷送人FAX
 				+"(KT0010_OKURI_HD.NioKuriMail) 		as NioKuriMail,\n"			//荷送人MAIL
 				+"(KT0010_OKURI_HD.NiokuriMunicCd) 		as NiokuriMunicCd,\n"		//荷送人市区町村CD
-				+"(KT0010_OKURI_HD.DeliCd) 				as DeliCd,\n"				//荷届け先コード
-				+"(KT0010_OKURI_HD.ClDeliCd) 			as ClDeliCd,\n"				//荷主荷届け先コード
+				+"(KT0010_OKURI_HD.DeliCd) 				as DeliCd,\n"				//荷届先コード
+				+"(KT0010_OKURI_HD.ClDeliCd) 			as ClDeliCd,\n"				//荷主荷届先コード
 				+"(KT0010_OKURI_HD.DeliDepartmentCd) 	as DeliDepartmentCd,\n"		//部署CD
-				+"(KT0010_OKURI_HD.DeliName01) 			as DeliName01,\n"			//荷届け先名01
-				+"(KT0010_OKURI_HD.DeliName02) 			as DeliName02,\n"			//荷届け先名02
-				+"(KT0010_OKURI_HD.DeliName03) 			as DeliName03,\n"			//荷届け先名03
-				+"(KT0010_OKURI_HD.DeliPost) 			as DeliPost,\n"				//荷届け先郵便番号
-				+"(KT0010_OKURI_HD.DeliAdd01) 			as DeliAdd01,\n"			//荷届け先住所01
-				+"(KT0010_OKURI_HD.DeliAdd02) 			as DeliAdd02,\n"			//荷届け先住所02
-				+"(KT0010_OKURI_HD.DeliAdd03) 			as DeliAdd03,\n"			//荷届け先住所03
-				+"(KT0010_OKURI_HD.DeliTel) 			as DeliTel,\n"				//荷届け先TEL
-				+"(KT0010_OKURI_HD.DeliFax) 			as DeliFax,\n"				//荷届け先FAX
-				+"(KT0010_OKURI_HD.DeliMail) 			as DeliMail,\n"				//荷届け先MAIL
+				+"(KT0010_OKURI_HD.DeliName01) 			as DeliName01,\n"			//荷届先名01
+				+"(KT0010_OKURI_HD.DeliName02) 			as DeliName02,\n"			//荷届先名02
+				+"(KT0010_OKURI_HD.DeliName03) 			as DeliName03,\n"			//荷届先名03
+				+"(KT0010_OKURI_HD.DeliPost) 			as DeliPost,\n"				//荷届先郵便番号
+				+"(KT0010_OKURI_HD.DeliAdd01) 			as DeliAdd01,\n"			//荷届先住所01
+				+"(KT0010_OKURI_HD.DeliAdd02) 			as DeliAdd02,\n"			//荷届先住所02
+				+"(KT0010_OKURI_HD.DeliAdd03) 			as DeliAdd03,\n"			//荷届先住所03
+				+"(KT0010_OKURI_HD.DeliTel) 			as DeliTel,\n"				//荷届先TEL
+				+"(KT0010_OKURI_HD.DeliFax) 			as DeliFax,\n"				//荷届先FAX
+				+"(KT0010_OKURI_HD.DeliMail) 			as DeliMail,\n"				//荷届先MAIL
 				+"(KT0010_OKURI_HD.DeliMunicCd) 		as DeliMunicCd,\n"			//荷届先市区町村CD
 				+"(KT0010_OKURI_HD.Com01) 				as Com01,\n"				//コメント01
 				+"(KT0010_OKURI_HD.Com02) 				as Com02,\n"				//コメント02
