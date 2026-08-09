@@ -1,3 +1,4 @@
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -140,5 +141,61 @@ public class B100_ArrayListControl{
 			}
 		}
 		return rt;
+	}
+	
+	//yyyy/mm/dd 又はyyyy/mm/dd hh:mm:ss のArrayList受け取って全部 yyyy/mm/dd の配列にして返す
+	public static ArrayList<String> DateOnlySet(ArrayList<String> TgtArray){
+		if(null!=TgtArray && 0<TgtArray.size()){
+			int RowCount = TgtArray.size();
+			for(int i=0;i<RowCount;i++){
+				String SetString = B100_DateTimeControl.DateFormat(TgtArray.get(RowCount-1-i));
+				if("".equals(SetString)) {
+					TgtArray.remove(RowCount-1-i);
+				}else {
+					Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+					SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+					TgtArray.set(RowCount-1-i,SetString);
+				}
+			}
+		}
+		return TgtArray;
+	}
+	
+	//yyyy/mm/dd 又はyyyy/mm/dd hh:mm:ss のArrayList受け取って全部 N日進めたyyyy/mm/dd の配列にして返す
+	public static ArrayList<String> DateOnlySetNdateAfter(ArrayList<String> TgtArray,int Ndate){
+		if(null!=TgtArray && 0<TgtArray.size()){
+			int RowCount = TgtArray.size();
+			for(int i=0;i<RowCount;i++){
+				String SetString = B100_DateTimeControl.DateFormat(TgtArray.get(RowCount-1-i));
+				if("".equals(SetString)) {
+					TgtArray.remove(RowCount-1-i);
+				}else {
+					Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+					SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,Ndate);
+					SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+					TgtArray.set(RowCount-1-i,SetString);
+				}
+			}
+		}
+		return TgtArray;
+	}
+	
+	//yyyy/mm/dd 又はyyyy/mm/dd hh:mm:ss のArrayList受け取って全部 N日戻した　yyyy/mm/dd の配列にして返す
+	public static ArrayList<String> DateOnlySetNdateBefore(ArrayList<String> TgtArray,int Ndate){
+		if(null!=TgtArray && 0<TgtArray.size()){
+			int RowCount = TgtArray.size();
+			for(int i=0;i<RowCount;i++){
+				String SetString = B100_DateTimeControl.DateFormat(TgtArray.get(RowCount-1-i));
+				if("".equals(SetString)) {
+					TgtArray.remove(RowCount-1-i);
+				}else {
+					Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
+					SetTimestamp = B100_DateTimeControl.ndate_before(SetTimestamp,Ndate);
+					SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
+					TgtArray.set(RowCount-1-i,SetString);
+				}
+			}
+		}
+		return TgtArray;
 	}
 }

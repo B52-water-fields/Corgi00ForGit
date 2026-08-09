@@ -1,7 +1,6 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class T100_StockMoveRt{
@@ -313,42 +312,7 @@ public class T100_StockMoveRt{
 			boolean FromLocExactMatch,							//Fromロケーション完全一致
 			boolean ToLocExactMatch,							//Toロケーション完全一致
 			boolean AllSearch){
-		//日付系最小は念のため00:00:00扱い
-		if(null!=SearchExpDateMin && 0<SearchExpDateMin.size()){
-			for(int i=0;i<SearchExpDateMin.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchExpDateMin.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchExpDateMin.set(i,SetString);
-			}
-		}
-		if(null!=SearchActualDateMin && 0<SearchActualDateMin.size()){
-			for(int i=0;i<SearchActualDateMin.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMin.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchActualDateMin.set(i,SetString);
-			}
-		}
-		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのまま
-		if(null!=SearchExpDateMax && 0<SearchExpDateMax.size()){
-			for(int i=0;i<SearchExpDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchExpDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchExpDateMax.set(i,SetString);
-			}
-		}
-		if(null!=SearchActualDateMax && 0<SearchActualDateMax.size()){
-			for(int i=0;i<SearchActualDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchActualDateMax.set(i,SetString);
-			}
-		}
+		
 		
 		SearchClCd						= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);						//荷主コード
 		SearchCLName					= B100_ArrayListControl.ArryListStringUniqueList(SearchCLName);						//荷主名
@@ -399,6 +363,15 @@ public class T100_StockMoveRt{
 		SearchUpdateDateMax				= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMax);				//更新日最大
 		SearchEntryUser					= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryUser);					//登録者
 		SearchUpdateUser				= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);					//更新者
+		
+		//日付系最小は念のため00:00:00扱い
+		SearchExpDateMin 	= B100_ArrayListControl.DateOnlySet(SearchExpDateMin);	
+		SearchActualDateMin = B100_ArrayListControl.DateOnlySet(SearchActualDateMin);	
+		
+		
+		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなので注意
+		SearchExpDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchExpDateMax,1);
+		SearchActualDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchActualDateMax,1);
 		
 		Object[][] rt = new Object[0][RtStockMoveRt().length];
 		

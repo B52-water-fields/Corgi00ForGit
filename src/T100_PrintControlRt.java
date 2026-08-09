@@ -103,7 +103,7 @@ public class T100_PrintControlRt{
 		SearchEntryDateEnd	= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryDateEnd);		//登録日終了
 		SearchUpdateDateEnd	= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateEnd);		//更新日終了
 		SearchEntryUser		= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryUser);			//登録者
-		SearchUpdateUser	= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);		//更新者
+		SearchUpdateUser	= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);			//更新者
 		
 		Object[][] rt = new Object[0][RtPrintControlRt().length];
 		boolean SearchKick = false;

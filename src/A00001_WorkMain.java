@@ -5,7 +5,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 public class A00001_WorkMain{
 	static int SetX;
@@ -220,20 +219,8 @@ public class A00001_WorkMain{
 		
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
-			public void actionPerformed(ActionEvent e){
-				Object[] SubFm = WT200_ArrivalPlanSearchSubFm.ArrivalPlanSearchSubFm(0, 0, A00000_Main.ClWh, A00000_Main.ClCd, "ZK");
-				
-				((JFrame)SubFm[WT200_StockSearchSubFm.RtJFrame]).setVisible(true);
-				((JButton)SubFm[WT200_StockSearchSubFm.EntryBtn]).addActionListener(new AbstractAction(){
-					public void actionPerformed(ActionEvent e){
-						int RowCount = ((DefaultTableModel)SubFm[WT200_StockSearchSubFm.RtDefaultTableModel]).getRowCount();
-						for(int i01=0;i01<RowCount;i01++) {
-							System.out.println(((DefaultTableModel)SubFm[WT200_StockSearchSubFm.RtDefaultTableModel]).getValueAt(i01, 1+T100_ArrivalPlanHdRt.ColArrNo));
-						}
-					}
-				});
-				
-				
+			public void actionPerformed(ActionEvent e) {
+				WT100_WTEST.StockMoveSearch(0,0);
 			}
 		});
 	}

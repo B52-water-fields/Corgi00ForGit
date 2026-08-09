@@ -332,14 +332,8 @@ public class WT100_Arrival_10_Entry{
 		main_fm.add(PN_Hd);
 		main_fm.add(PN_Entry);
 		
-		
-		
-		
-		
 		RenewFg = true;
 		main_fm.setVisible(true);
-		
-		
 		
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){

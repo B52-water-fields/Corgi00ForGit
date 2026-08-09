@@ -1,7 +1,6 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class T100_ArrivalPlanHdRt{
@@ -281,43 +280,18 @@ public class T100_ArrivalPlanHdRt{
 		SearchEntryUser			= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryUser);			//登録者
 		SearchUpdateUser		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);			//更新者
 		
-		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのまま
-		if(null!=SearchPlanDateMax && 0<SearchPlanDateMax.size()){				//ヘッダ入荷予定日最大
-			for(int i=0;i<SearchPlanDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchPlanDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchPlanDateMax.set(i,SetString);
-			}
-		}
-		if(null!=SearchHdActualDateMax && 0<SearchHdActualDateMax.size()){		//ヘッダ入荷実績日最大
-			for(int i=0;i<SearchHdActualDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchHdActualDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchHdActualDateMax.set(i,SetString);
-			}
-		}
-		if(null!=SearchExpDateMax && 0<SearchExpDateMax.size()){				//消費期限最大
-			for(int i=0;i<SearchExpDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchExpDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchExpDateMax.set(i,SetString);
-			}
-		}
-		if(null!=SearchActualDateMax && 0<SearchActualDateMax.size()){			//入荷日最大
-			for(int i=0;i<SearchActualDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchActualDateMax.set(i,SetString);
-			}
-		}
+		//日付系最小は念のため00:00:00扱い
+		SearchPlanDateMin		= B100_ArrayListControl.DateOnlySet(SearchPlanDateMin);			//ヘッダ入荷予定日最小
+		SearchHdActualDateMin	= B100_ArrayListControl.DateOnlySet(SearchHdActualDateMin);		//ヘッダ入荷実績日最小
+		SearchExpDateMin		= B100_ArrayListControl.DateOnlySet(SearchExpDateMin);				//消費期限最小
+		SearchActualDateMin		= B100_ArrayListControl.DateOnlySet(SearchActualDateMin);			//入荷日最小
+		
+		
+		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなので注意
+		SearchPlanDateMax		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchPlanDateMax,1);			//ヘッダ入荷予定日最大
+		SearchHdActualDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchHdActualDateMax,1);		//ヘッダ入荷実績日最大
+		SearchExpDateMax		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchExpDateMax,1);			//消費期限最大
+		SearchActualDateMax		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchActualDateMax,1);		//入荷日最大
 		
 		//商品変換マスタを元に荷主商品コードを商品コードに変換する
 		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClGpCD,SearchClCd,SearchClItemCd);
@@ -1064,7 +1038,7 @@ public class T100_ArrivalPlanHdRt{
 	}
 	private static Object[][] SearchItemCdFromClItem(ArrayList<String> SearchClGpCd,ArrayList<String> SearchClCd,ArrayList<String> SearchClItemCd){
 		//ArrayList<String> SearchClGpCd = new ArrayList<String>();		//荷主グループコード
-		//ArrayList<String> SearchClCd = new ArrayList<String>();			//荷主コード
+		//ArrayList<String> SearchClCd = new ArrayList<String>();		//荷主コード
 		ArrayList<String> SearchItemCd = new ArrayList<String>();		//商品コード
 		//ArrayList<String> SearchClItemCd = new ArrayList<String>();	//荷主商品コード
 		ArrayList<String> SearchItemName = new ArrayList<String>();		//商品名

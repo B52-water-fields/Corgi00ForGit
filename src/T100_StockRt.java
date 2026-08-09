@@ -1,7 +1,6 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class T100_StockRt{
@@ -255,44 +254,13 @@ public class T100_StockRt{
 		SearchItemMdNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemMdNo);			//商品型番
 		
 		//日付系最小は念のため00:00:00扱い
-		if(null!=SearchExpdateMin && 0<SearchExpdateMin.size()){				//消費期限最小
-			for(int i=0;i<SearchExpdateMin.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchExpdateMin.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchExpdateMin.set(i,SetString);
-			}
-		}
+		SearchExpdateMin 	= B100_ArrayListControl.DateOnlySet(SearchExpdateMin);		//消費期限最小
+		SearchActualDateMin = B100_ArrayListControl.DateOnlySet(SearchActualDateMin);	//入荷実績日最小
 		
-		if(null!=SearchActualDateMin && 0<SearchActualDateMin.size()){			//入荷実績日最小
-			for(int i=0;i<SearchActualDateMin.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMin.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchActualDateMin.set(i,SetString);
-			}
-		}
 		
-		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのまま
-		if(null!=SearchExpdateMax && 0<SearchExpdateMax.size()){				//消費期限最大
-			for(int i=0;i<SearchExpdateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchExpdateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchExpdateMax.set(i,SetString);
-			}
-		}
-		
-		if(null!=SearchActualDateMax && 0<SearchActualDateMax.size()){				//入荷実績日最大
-			for(int i=0;i<SearchActualDateMax.size();i++){
-				String SetString = B100_DateTimeControl.DateFormat(SearchActualDateMax.get(i));
-				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
-				SetTimestamp = B100_DateTimeControl.ndate_after(SetTimestamp,1);
-				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
-				SearchActualDateMax.set(i,SetString);
-			}
-		}
+		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなので注意
+		SearchExpdateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchExpdateMax,1);			//消費期限最大
+		SearchActualDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchActualDateMax,1);		//入荷実績日最大
 		
 		//荷主商品コードを元に商品コードを絞り込む
 		Object[][] SearchItemCdFromClItem = SearchItemCdFromClItem(SearchClGpCD,SearchClCd,SearchClItemCd);

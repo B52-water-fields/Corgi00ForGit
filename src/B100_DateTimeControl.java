@@ -241,22 +241,22 @@ public class B100_DateTimeControl{
 	//Timestampと数値N受け取ってN日前のタイムスタンプを返す
 	public static Timestamp ndate_before(Timestamp f0,int nd){
 		long dateTimeFrom = f0.getTime();
-		Timestamp nbefore = new Timestamp(0);
-		for(int i=0;i<nd;i++){
-			nbefore = new Timestamp(dateTimeFrom-((1000 * 60 * 60 * 24 )));
-			dateTimeFrom = nbefore.getTime();
-		}
+		Timestamp nbefore = new Timestamp(dateTimeFrom);
+		int ControlInt = (1000 * 60 * 60 * 24 )*nd;
+		
+		nbefore = new Timestamp(dateTimeFrom-ControlInt);
+		dateTimeFrom = nbefore.getTime();
 		return nbefore;
 	}
 
 	//Timestampと数値N受け取ってN日後のタイムスタンプを返す
 	public static Timestamp ndate_after(Timestamp f0,int nd){
 		long dateTimeFrom = f0.getTime();
-		Timestamp nafter = new Timestamp(0);
-		for(int i=0;i<nd;i++){
-			nafter = new Timestamp(dateTimeFrom+((1000 * 60 * 60 * 24 )));
-			dateTimeFrom = nafter.getTime();
-		}
+		Timestamp nafter = new Timestamp(dateTimeFrom);
+		int ControlInt = (1000 * 60 * 60 * 24 )*nd;
+		
+		nafter = new Timestamp(dateTimeFrom+ControlInt);
+		dateTimeFrom = nafter.getTime();
 		return nafter;
 	}
 
@@ -477,11 +477,15 @@ public class B100_DateTimeControl{
 		return rt;
 	}
 	
-	//日付項目yyyy/mm/ddにする　日付っぽい形式をyyyy/mm/ddに
+	//日付項目yyyy/mm/ddにする　日付っぽい形式をyyyy/mm/ddに yyyy/mm/dd hh:mm:ssも間に半角スペースを期待して対応
 	public static String DateFormat(String CSt) {
 		String rt="";
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 		if(!(CSt.equals(CSt.replace("/", "")))) {
+			String[] WST01 = CSt.split(" ");
+			if(1<WST01.length) {
+				CSt=WST01[0];
+			}
 			String[] WST = CSt.split("/");
 			if(3==WST.length) {
 				//年・月・日がスラッシュで区切られた文字列として判断
@@ -496,8 +500,10 @@ public class B100_DateTimeControl{
 						break;
 					case 2:
 						WST[0] = now_dtm.substring(0,2)+WST[0];
+						break;
 					case 3:
 						WST[0] = now_dtm.substring(0,1)+WST[0];
+						break;
 					default:
 						WST[0] = WST[0].substring(0,4);
 						break;
@@ -577,8 +583,10 @@ public class B100_DateTimeControl{
 						break;
 					case 2:
 						WST[0] = now_dtm.substring(0,2)+WST[0];
+						break;
 					case 3:
 						WST[0] = now_dtm.substring(0,1)+WST[0];
+						break;
 					default:
 						WST[0] = WST[0].substring(0,4);
 						break;

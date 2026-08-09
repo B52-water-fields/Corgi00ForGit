@@ -442,7 +442,7 @@ public class T100_OkuriHdRt{
 		}
 		
 		if(null!=SearchSPDateStr && 0<SearchSPDateStr.size()){
-			for(int i=0;i<SearchSPPlanDateStr.size();i++){
+			for(int i=0;i<SearchSPDateStr.size();i++){
 				String SetString = B100_DateTimeControl.DateFormat(SearchSPDateStr.get(i));
 				Timestamp SetTimestamp = B100_DateTimeControl.dtmTimestamp2(SetString)[0];
 				SetString = B100_DateTimeControl.dtmString2(SetTimestamp)[0];
