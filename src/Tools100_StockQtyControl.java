@@ -20,20 +20,32 @@ public class Tools100_StockQtyControl{
 	
 	Object[][] StockQtyControlErr = Tools100_StockQtyControl.StockQtyControl(SetData) ;
 	
-	if("EntryData".equals((String)StockQtyControlErr[i][Tools100_StockQtyControl.RtColErrType])){
-		int EntryRow			= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColErrRow];
-		int BeforeQty			= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColBeforeQty];
-		int BeforeShipPlanQty	= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColBeforeShipPlanQty];
-		int BeforePossibleQty	= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColBeforePossibleQty];
-		int AdjustQty			= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColAdjustQty];
-		int AfterQty			= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColAfterQty];
-		int AfterShipPlanQtyQty	= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColAfterShipPlanQty];
-		int AfterPossibleQtyQty	= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColAfterPossibleQty];
+	String GetErrType				= (String)StockQtyControlRt[i][Tools100_StockQtyControl.RtColErrType];				//データ種別
+	String GetErrVol				= (String)StockQtyControlRt[i][Tools100_StockQtyControl.RtColErrVol];				//エラー事由値
+	int GetErrRow					= (int)StockQtyControlRt[i][Tools100_StockQtyControl.RtColErrRow];					//エラー行番号
+	int GetBeforeQty				= (int)StockQtyControlRt[i][Tools100_StockQtyControl.RtColBeforeQty];				//調整前総数
+	int GetBeforeShipPlanQty		= (int)StockQtyControlRt[i][Tools100_StockQtyControl.RtColBeforeShipPlanQty];		//調整前引当済数
+	int GetBeforePossibleQty		= (int)StockQtyControlRt[i][Tools100_StockQtyControl.RtColBeforePossibleQty];		//調整前出荷可能数
+	int GetAdjustQty				= (int)StockQtyControlRt[i][Tools100_StockQtyControl.RtColAdjustQty];				//調整数
+	int GetAfterQty					= (int)StockQtyControlRt[i][Tools100_StockQtyControl.RtColAfterQty];				//調整後総数
+	int GetAfterShipPlanQty			= (int)StockQtyControlRt[i][Tools100_StockQtyControl.RtColAfterShipPlanQty];		//調整後引当済数
+	int GetAfterPossibleQty			= (int)StockQtyControlRt[i][Tools100_StockQtyControl.RtColAfterPossibleQty];		//調整後出荷可能数
+	
+	if("EntryData".GetErrType){
+		int EntryRow			= GetErrRow;
+		int BeforeQty			= GetBeforeQty;
+		int BeforeShipPlanQty	= GetBeforeShipPlanQty;
+		int BeforePossibleQty	= GetBeforePossibleQty;
+		int AdjustQty			= GetAdjustQty;
+		int AfterQty			= GetAfterQty;
+		int AfterShipPlanQtyQty	= GetAfterShipPlanQty;
+		int AfterPossibleQtyQty	= GetAfterPossibleQty;
 	}else{
-		String 	ErrType = (String)StockQtyControlErr[i][Tools100_StockQtyControl.RtColErrType];
-		String 	ErrVol 	= (String)StockQtyControlErr[i][Tools100_StockQtyControl.RtColErrVol];
-		int 	ErrRow	= (int)StockQtyControlErr[i][Tools100_StockQtyControl.RtColErrRow];
+		String 	ErrType = GetErrType;
+		String 	ErrVol 	= GetErrVol;
+		int 	ErrRow	= GetErrRow;
 	}
+	
 	*/
 	
 	/*----------------------------------------------------------------------------------------------------------------------------

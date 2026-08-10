@@ -24,6 +24,8 @@ public class WT100_WTEST{
 	static boolean RenewFg;
 
 	public static void StockMoveSearch(int x,int y) {
+		//AIによる自動生成
+		
 		A00000_Main.LoginCheck();
 		if(0==SetX) {SetX=100;}
 		if(0==SetY) {SetY=100;}

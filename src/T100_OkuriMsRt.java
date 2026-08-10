@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class T100_OkuriHdRt{
+public class T100_OkuriMsRt{
 	//出荷明細（各行にヘッダ情報展開）返却する
 	/*
 	コピペ用
@@ -118,7 +118,7 @@ public class T100_OkuriHdRt{
 	
 	boolean AllSearch	= false;
 	
-	Object[][] OkuriHdRt	= T100_OkuriHdRt.OkuriHdRt(
+	Object[][] OkuriMsRt	= T100_OkuriMsRt.OkuriMsRt(
 			ArrayList<String> SearchInvoiceWHCD,			//倉庫CD
 			ArrayList<String> SearchClGpCD,					//荷主グループCD
 			ArrayList<String> SearchClCd,					//荷主CD
@@ -229,111 +229,151 @@ public class T100_OkuriHdRt{
 			ArrayList<String> SearchMsPackingType,			//荷姿タイプ
 			
 			boolean AllSearch);
-			
-			String GetClCd					= (String)OkuriHdRt[i][ColClCd];				//荷主コード
-			String GetInvoiceWhCd			= (String)OkuriHdRt[i][ColInvoiceWhCd];			//倉庫コード
-			String GetOkuriNo				= (String)OkuriHdRt[i][ColOkuriNo];				//送り状番号
-			String GetClDeliNo				= (String)OkuriHdRt[i][ColClDeliNo];			//荷主管理番号
-			String GetPickupWhCd			= (String)OkuriHdRt[i][ColPickupWhCd];			//集荷倉庫CD
-			int GetPurposeFG				= (int)OkuriHdRt[i][ColPurposeFG];				//目的フラグ
-			String GetPlanDate				= (String)OkuriHdRt[i][ColPlanDate];			//出荷予定日
-			String GetShipDate				= (String)OkuriHdRt[i][ColShipDate];			//出荷実績日
-			String GetSPPlanDate			= (String)OkuriHdRt[i][ColSPPlanDate];			//着日指定
-			String GetSPDate				= (String)OkuriHdRt[i][ColSPDate];				//着日実績
-			String GetSPTimeFG				= (String)OkuriHdRt[i][ColSPTimeFG];			//時間指定区分
-			String GetSPTimeStr				= (String)OkuriHdRt[i][ColSPTimeStr];			//時間指定開始
-			String GetSPTimeEnd				= (String)OkuriHdRt[i][ColSPTimeEnd];			//時間指定終了
-			float GetTotalWeight			= (float)OkuriHdRt[i][ColTotalWeight];			//荷物重量(kg)
-			float GetTotalSize				= (float)OkuriHdRt[i][ColTotalSize];			//荷物サイズ
-			int GetTotalQty					= (int)OkuriHdRt[i][ColTotalQty];				//個口数
-			String GetDeliveryTypeCd		= (String)OkuriHdRt[i][ColDeliveryTypeCd];		//運送タイプ01
-			String GetDeliTypeName			= (String)OkuriHdRt[i][ColDeliTypeName];		//運送タイプ名01
-			String GetDeliveryTypeCd02		= (String)OkuriHdRt[i][ColDeliveryTypeCd02];	//運送タイプ02
-			String GetDeliTypeName02		= (String)OkuriHdRt[i][ColDeliTypeName02];		//運送タイプ名02
-			String GetDeliveryTypeCd03		= (String)OkuriHdRt[i][ColDeliveryTypeCd03];	//運送タイプ03
-			String GetDeliTypeName03		= (String)OkuriHdRt[i][ColDeliTypeName03];		//運送タイプ名03
-			String GetDeliveryTypeCd04		= (String)OkuriHdRt[i][ColDeliveryTypeCd04];	//運送タイプ04
-			String GetDeliTypeName04		= (String)OkuriHdRt[i][ColDeliTypeName04];		//運送タイプ名04
-			String GetDeliveryTypeCd05		= (String)OkuriHdRt[i][ColDeliveryTypeCd05];	//運送タイプ05
-			String GetDeliTypeName05		= (String)OkuriHdRt[i][ColDeliTypeName05];		//運送タイプ名05
-			int GetCodFG					= (int)OkuriHdRt[i][ColCodFG];					//代引フラグ
-			int GetCodPayTotal				= (int)OkuriHdRt[i][ColCodPayTotal];			//代引収受金額合計
-			int GetCodPay					= (int)OkuriHdRt[i][ColCodPay];					//代引金額
-			int GetCodConsumptionTax		= (int)OkuriHdRt[i][ColCodConsumptionTax];		//代引消費税
-			int GetChildrenFG				= (int)OkuriHdRt[i][ColChildrenFG];				//子伝票区分
-			String GetParentOkuriNo			= (String)OkuriHdRt[i][ColParentOkuriNo];		//親伝票番号
-			String GetNiokuriCd				= (String)OkuriHdRt[i][ColNiokuriCd];			//荷送人コード
-			String GetNiokuriDepartmentCd	= (String)OkuriHdRt[i][ColNiokuriDepartmentCd];	//荷送人部署CD
-			String GetNiokuriName01			= (String)OkuriHdRt[i][ColNiokuriName01];		//荷送人名01
-			String GetNiokuriName02			= (String)OkuriHdRt[i][ColNiokuriName02];		//荷送人名02
-			String GetNiokuriName03			= (String)OkuriHdRt[i][ColNiokuriName03];		//荷送人名03
-			String GetNiokuriPost			= (String)OkuriHdRt[i][ColNiokuriPost];			//荷送人郵便番号
-			String GetNiokuriAdd01			= (String)OkuriHdRt[i][ColNiokuriAdd01];		//荷送人住所01
-			String GetNiokuriAdd02			= (String)OkuriHdRt[i][ColNiokuriAdd02];		//荷送人住所02
-			String GetNiokuriAdd03			= (String)OkuriHdRt[i][ColNiokuriAdd03];		//荷送人住所03
-			String GetNioKuriTel			= (String)OkuriHdRt[i][ColNioKuriTel];			//荷送人TEL
-			String GetNioKuriFax			= (String)OkuriHdRt[i][ColNioKuriFax];			//荷送人FAX
-			String GetNioKuriMail			= (String)OkuriHdRt[i][ColNioKuriMail];			//荷送人MAIL
-			String GetNiokuriMunicCd		= (String)OkuriHdRt[i][ColNiokuriMunicCd];		//荷送人市区町村CD
-			String GetDeliCd				= (String)OkuriHdRt[i][ColDeliCd];				//荷届先コード
-			String GetClDeliCd				= (String)OkuriHdRt[i][ColClDeliCd];			//荷主荷届先コード
-			String GetDeliDepartmentCd		= (String)OkuriHdRt[i][ColDeliDepartmentCd];	//部署CD
-			String GetDeliName01			= (String)OkuriHdRt[i][ColDeliName01];			//荷届先名01
-			String GetDeliName02			= (String)OkuriHdRt[i][ColDeliName02];			//荷届先名02
-			String GetDeliName03			= (String)OkuriHdRt[i][ColDeliName03];			//荷届先名03
-			String GetDeliPost				= (String)OkuriHdRt[i][ColDeliPost];			//荷届先郵便番号
-			String GetDeliAdd01				= (String)OkuriHdRt[i][ColDeliAdd01];			//荷届先住所01
-			String GetDeliAdd02				= (String)OkuriHdRt[i][ColDeliAdd02];			//荷届先住所02
-			String GetDeliAdd03				= (String)OkuriHdRt[i][ColDeliAdd03];			//荷届先住所03
-			String GetDeliTel				= (String)OkuriHdRt[i][ColDeliTel];				//荷届先TEL
-			String GetDeliFax				= (String)OkuriHdRt[i][ColDeliFax];				//荷届先FAX
-			String GetDeliMail				= (String)OkuriHdRt[i][ColDeliMail];			//荷届先MAIL
-			String GetDeliMunicCd			= (String)OkuriHdRt[i][ColDeliMunicCd];			//荷届先市区町村CD
-			String GetCom01					= (String)OkuriHdRt[i][ColCom01];				//コメント01
-			String GetCom02					= (String)OkuriHdRt[i][ColCom02];				//コメント02
-			String GetCom03					= (String)OkuriHdRt[i][ColCom03];				//コメント03
-			String GetCom04					= (String)OkuriHdRt[i][ColCom04];				//コメント04
-			String GetCom05					= (String)OkuriHdRt[i][ColCom05];				//コメント05
-			int GetStatus					= (int)OkuriHdRt[i][ColStatus];					//状況
-			int GetTaxFg					= (int)OkuriHdRt[i][ColTaxFg];					//税区分
-			int GetTaxRate					= (int)OkuriHdRt[i][ColTaxRate];				//税率
-			int GetDeliFee					= (int)OkuriHdRt[i][ColDeliFee];				//運賃
-			int GetAddDeliFee01				= (int)OkuriHdRt[i][ColAddDeliFee01];			//付帯費用1
-			int GetAddDeliFee02				= (int)OkuriHdRt[i][ColAddDeliFee02];			//付帯費用2
-			int GetAddDeliFee03				= (int)OkuriHdRt[i][ColAddDeliFee03];			//付帯費用3
-			int GetHaighWayFee01			= (int)OkuriHdRt[i][ColHaighWayFee01];			//高速代等実費精算分1（内税）
-			int GetHaighWayFee02			= (int)OkuriHdRt[i][ColHaighWayFee02];			//高速代等実費精算分2（内税）
-			int GetConsumptionTax			= (int)OkuriHdRt[i][ColConsumptionTax];			//消費税
-			int GetWithOutTaxTotal			= (int)OkuriHdRt[i][ColWithOutTaxTotal];		//税別合計金額
-			int GetTotalFee					= (int)OkuriHdRt[i][ColTotalFee];				//税込請求額合計
-			int GetFeeFixFG					= (int)OkuriHdRt[i][ColFeeFixFG];				//金額確定フラグ
-			String GetFeeFixDate			= (String)OkuriHdRt[i][ColFeeFixDate];			//金額確定日時
-			int GetReceiptStampFG			= (int)OkuriHdRt[i][ColReceiptStampFG];			//受領印チェック
-			String GetReceiptStampDate		= (String)OkuriHdRt[i][ColReceiptStampDate];	//受領印日時
-			int GetInvoiceStatus			= (int)OkuriHdRt[i][ColInvoiceStatus];			//請求ステータス
-			String GetEntryDate				= (String)OkuriHdRt[i][ColEntryDate];			//登録日
-			String GetUpdateDate			= (String)OkuriHdRt[i][ColUpdateDate];			//更新日
-			String GetEntryUser				= (String)OkuriHdRt[i][ColEntryUser];			//登録者
-			String GetUpdateUser			= (String)OkuriHdRt[i][ColUpdateUser];			//更新者
-			String GetEntryPG				= (String)OkuriHdRt[i][ColEntryPG];				//登録プログラム
-			String GetUpdatePG				= (String)OkuriHdRt[i][ColUpdatePG];			//更新プログラム
-			String GetUseFeeBasePtCd		= (String)OkuriHdRt[i][ColUseFeeBasePtCd];		//適用運賃タリフCD
-			int GetWmsStatus				= (int)OkuriHdRt[i][ColWmsStatus];				//在庫管理ステータス
-			String GetWmsShipDate			= (String)OkuriHdRt[i][ColWmsShipDate];			//倉庫出荷日
-			String GetCourseGpCd			= (String)OkuriHdRt[i][ColCourseGpCd];			//コースグループコード
-			String GetCourseCD				= (String)OkuriHdRt[i][ColCourseCD];			//一次配車コースコード
-			int GetCourseCDEda				= (int)OkuriHdRt[i][ColCourseCDEda];			//一次配車コースコード枝番
-			String GetPitGrp				= (String)OkuriHdRt[i][ColPitGrp];				//一次配車払出ピットグループ
-			String GetPit01					= (String)OkuriHdRt[i][ColPit01];				//一次配車払出ピット01
-			String GetPit02					= (String)OkuriHdRt[i][ColPit02];				//一次配車払出ピット02
-			String GetPit03					= (String)OkuriHdRt[i][ColPit03];				//一次配車払出ピット03
-			String GetPit04					= (String)OkuriHdRt[i][ColPit04];				//一次配車払出ピット04
-			String GetPit05					= (String)OkuriHdRt[i][ColPit05];				//一次配車払出ピット05
 	
-			String GetCLName01				= (String)OkuriHdRt[i][ColCLName01];			//荷主名
-			String GetClGpCD				= (String)OkuriHdRt[i][ColClGpCD];				//荷主グループCD
-			String GetCLGpName01			= (String)OkuriHdRt[i][ColCLGpName01];			//荷主グループ標記名
-			
+		String GetClCd					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClCd];					//荷主コード
+		String GetInvoiceWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColInvoiceWhCd];			//倉庫コード
+		String GetOkuriNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColOkuriNo];				//送り状番号
+		String GetClDeliNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClDeliNo];				//荷主管理番号
+		String GetPickupWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPickupWhCd];			//集荷倉庫CD
+		int GetPurposeFG				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColPurposeFG];				//目的フラグ
+		String GetPlanDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPlanDate];				//出荷予定日
+		String GetShipDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColShipDate];				/出荷実績日
+		String GetSPPlanDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPPlanDate];			//着日指定
+		String GetSPDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPDate];				//着日実績
+		String GetSPTimeFG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeFG];				//時間指定区分
+		String GetSPTimeStr				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeStr];			//時間指定開始
+		String GetSPTimeEnd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeEnd];			//時間指定終了
+		float GetTotalWeight			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColTotalWeight];			//荷物重量(kg)
+		float GetTotalSize				= (float)OkuriMsRt[i][T100_OkuriMsRt.ColTotalSize];				//荷物サイズ
+		int GetTotalQty					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTotalQty];				//個口数
+		String GetDeliveryTypeCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd];		//運送タイプ01
+		String GetDeliTypeName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName];			//運送タイプ名01
+		String GetDeliveryTypeCd02		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd02];		//運送タイプ02
+		String GetDeliTypeName02		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName02];		//運送タイプ名02
+		String GetDeliveryTypeCd03		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd03];		//運送タイプ03
+		String GetDeliTypeName03		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName03];		//運送タイプ名03
+		String GetDeliveryTypeCd04		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd04];		//運送タイプ04
+		String GetDeliTypeName04		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName04];		//運送タイプ名04
+		String GetDeliveryTypeCd05		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd05];		//運送タイプ05
+		String GetDeliTypeName05		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName05];		//運送タイプ名05
+		int GetCodFG					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodFG];					//代引フラグ
+		int GetCodPayTotal				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodPayTotal];				//代引収受金額合計
+		int GetCodPay					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodPay];					//代引金額
+		int GetCodConsumptionTax		= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodConsumptionTax];		//代引消費税
+		int GetChildrenFG				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColChildrenFG];				//子伝票区分
+		String GetParentOkuriNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColParentOkuriNo];		//親伝票番号
+		String GetNiokuriCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriCd];			//荷送人コード
+		String GetNiokuriDepartmentCd	= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriDepartmentCd];	//荷送人部署CD
+		String GetNiokuriName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName01];		//荷送人名01
+		String GetNiokuriName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName02];		//荷送人名02
+		String GetNiokuriName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName03];		//荷送人名03
+		String GetNiokuriPost			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriPost];			//荷送人郵便番号
+		String GetNiokuriAdd01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd01];			//荷送人住所01
+		String GetNiokuriAdd02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd02];			//荷送人住所02
+		String GetNiokuriAdd03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd03];			//荷送人住所03
+		String GetNioKuriTel			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriTel];			//荷送人TEL
+		String GetNioKuriFax			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriFax];			//荷送人FAX
+		String GetNioKuriMail			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriMail];			//荷送人MAIL
+		String GetNiokuriMunicCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriMunicCd];		//荷送人市区町村CD
+		String GetDeliCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliCd];				//荷届先コード
+		String GetClDeliCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClDeliCd];				//荷主荷届先コード
+		String GetDeliDepartmentCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliDepartmentCd];		//部署CD
+		String GetDeliName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName01];			//荷届先名01
+		String GetDeliName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName02];			//荷届先名02
+		String GetDeliName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName03];			//荷届先名03
+		String GetDeliPost				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliPost];				//荷届先郵便番号
+		String GetDeliAdd01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd01];			//荷届先住所01
+		String GetDeliAdd02				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd02];			//荷届先住所02
+		String GetDeliAdd03				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd03];			//荷届先住所03
+		String GetDeliTel				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTel];				//荷届先TEL
+		String GetDeliFax				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliFax];				//荷届先FAX
+		String GetDeliMail				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliMail];				//荷届先MAIL
+		String GetDeliMunicCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliMunicCd];			//荷届先市区町村CD
+		String GetCom01					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom01];				//コメント01
+		String GetCom02					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom02];				//コメント02
+		String GetCom03					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom03];				//コメント03
+		String GetCom04					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom04];				//コメント04
+		String GetCom05					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom05];				//コメント05
+		int GetStatus					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColStatus];					//状況
+		int GetTaxFg					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTaxFg];					//税区分
+		int GetTaxRate					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTaxRate];					//税率
+		int GetDeliFee					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColDeliFee];					//運賃
+		int GetAddDeliFee01				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee01];			//付帯費用1
+		int GetAddDeliFee02				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee02];			//付帯費用2
+		int GetAddDeliFee03				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee03];			//付帯費用3
+		int GetHaighWayFee01			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColHaighWayFee01];			//高速代等実費精算分1（内税）
+		int GetHaighWayFee02			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColHaighWayFee02];			//高速代等実費精算分2（内税）
+		int GetConsumptionTax			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColConsumptionTax];			//消費税
+		int GetWithOutTaxTotal			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColWithOutTaxTotal];			//税別合計金額
+		int GetTotalFee					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTotalFee];				//税込請求額合計
+		int GetFeeFixFG					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColFeeFixFG];				//金額確定フラグ
+		String GetFeeFixDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColFeeFixDate];			//金額確定日時
+		int GetReceiptStampFG			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColReceiptStampFG];			//受領印チェック
+		String GetReceiptStampDate		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColReceiptStampDate];		//受領印日時
+		int GetInvoiceStatus			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColInvoiceStatus];			//請求ステータス
+		String GetEntryDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryDate];			//登録日
+		String GetUpdateDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdateDate];			//更新日
+		String GetEntryUser				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryUser];			//登録者
+		String GetUpdateUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdateUser];			//更新者
+		String GetEntryPG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryPG];				//登録プログラム
+		String GetUpdatePG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdatePG];				//更新プログラム
+		String GetUseFeeBasePtCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUseFeeBasePtCd];		//適用運賃タリフCD
+		int GetWmsStatus				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColWmsStatus];				//在庫管理ステータス
+		String GetWmsShipDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColWmsShipDate];			//倉庫出荷日
+		String GetCourseGpCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCourseGpCd];			//コースグループコード
+		String GetCourseCD				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCourseCD];				//一次配車コースコード
+		int GetCourseCDEda				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCourseCDEda];				//一次配車コースコード枝番
+		String GetPitGrp				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPitGrp];				//一次配車払出ピットグループ
+		String GetPit01					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit01];				//一次配車払出ピット01
+		String GetPit02					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit02];				//一次配車払出ピット02
+		String GetPit03					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit03];				//一次配車払出ピット03
+		String GetPit04					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit04];				//一次配車払出ピット04
+		String GetPit05					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit05];				//一次配車払出ピット05
+
+		String GetMsClCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClCd];				//明細荷主コード
+		String GetMsInvoiceWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsInvoiceWhCd];		//明細倉庫コード
+		String GetMsOkuriNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsOkuriNo];			//明細送り状番号
+		int GetMsNo						= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsNo];					//明細番号
+		String GetMsDeliNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsDeliNo];				//明細出荷番号
+		int GetMsDelliMsNo				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsDelliMsNo];				//明細出荷番号明細番号
+		String GetMsClOrderNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClOrderNo];			//明細荷主管理番号
+		String GetMsClGpCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClGpCd];				//明細荷主グループコード
+		String GetMsItemCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemCd];				//明細商品コード
+		String GetMsItemName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName01];			//明細商品表記名
+		String GetMsItemName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName02];			//明細商品正式名
+		String GetMsItemName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName03];			//明細商品略名
+		float GetMsUnitWeight			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitWeight];			//明細単位重量
+		float GetMsUnitSize				= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitSize];			//明細単位サイズ
+		int GetMsQty					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsQty];					//明細個数
+		int GetMsPackingQty				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsPackingQty];			//明細荷姿数量
+		String GetMsUnitName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitName];			//明細明細単位
+		float GetMsSubTotalWeight		= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalWeight];		//明細明細重量
+		float GetMsSubTotalSize			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalSize];		//明細明細サイズ
+		float GetMsUnitPrice			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitPrice];			//明細単価
+		float GetMsSubTotalPrice		= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalPrice];		//明細金額
+		String GetMsCategoryCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCategoryCd];			//明細商品分類
+		String GetMsCategoryName		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCategoryName];		//明細商品分類名
+		String GetMsTildFG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsTildFG];				//明細温度区分
+		String GetMsTildName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsTildName];			//明細温度区分名
+		String GetMsCom01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom01];				//明細コメント01
+		String GetMsCom02				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom02];				//明細コメント02
+		String GetMsCom03				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom03];				//明細コメント03
+		String GetMsCom04				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom04];				//明細コメント04
+		String GetMsCom05				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom05];				//明細コメント05
+		String GetMsEntryDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsEntryDate];			//明細登録日
+		String GetMsUpdateDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUpdateDate];			//明細更新日
+		String GetMsEntryUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsEntryUser];			//明細登録者
+		String GetMsUpdateUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUpdateUser];			//明細更新者
+		String GetMsLot					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsLot];				//明細ロット指定
+		String GetMsExpDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsExpDate];			//明細賞味期限指定
+		int GetMsPackingType			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsPackingType];			//明細荷姿タイプ
+		String GetMsClItemCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClItemCd];			//明細荷主商品CD
+		String GetMsItemMDNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemMDNo];			//明細型番
+		String GetMsJanCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsJanCd];				//明細荷姿JanCd
+
+		String GetCLName01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCLName01];				//荷主名
+		String GetClGpCD				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClGpCD];				//荷主グループCD
+		String GetCLGpName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCLGpName01];			//荷主グループ標記名
 	*/
 	
 	static final int ColClCd					=   0;	//荷主コード
@@ -436,11 +476,51 @@ public class T100_OkuriHdRt{
 	static final int ColPit04					=  97;	//一次配車払出ピット04
 	static final int ColPit05					=  98;	//一次配車払出ピット05
 	
-	static final int ColCLName01				=  99;	//荷主名
-	static final int ColClGpCD					= 100;	//荷主グループCD
-	static final int ColCLGpName01			= 101;	//荷主グループ標記名
+	static final int ColMsClCd					=  99;	//明細荷主コード
+	static final int ColMsInvoiceWhCd			= 100;	//明細倉庫コード
+	static final int ColMsOkuriNo				= 101;	//明細送り状番号
+	static final int ColMsNo					= 102;	//明細番号
+	static final int ColMsDeliNo				= 103;	//明細出荷番号
+	static final int ColMsDelliMsNo			= 104;	//明細出荷番号明細番号
+	static final int ColMsClOrderNo			= 105;	//明細荷主管理番号
+	static final int ColMsClGpCd				= 106;	//明細荷主グループコード
+	static final int ColMsItemCd				= 107;	//明細商品コード
+	static final int ColMsItemName01			= 108;	//明細商品表記名
+	static final int ColMsItemName02			= 109;	//明細商品正式名
+	static final int ColMsItemName03			= 110;	//明細商品略名
+	static final int ColMsUnitWeight			= 111;	//明細単位重量
+	static final int ColMsUnitSize			= 112;	//明細単位サイズ
+	static final int ColMsQty					= 113;	//明細個数
+	static final int ColMsPackingQty			= 114;	//明細荷姿数量
+	static final int ColMsUnitName			= 115;	//明細明細単位
+	static final int ColMsSubTotalWeight		= 116;	//明細明細重量
+	static final int ColMsSubTotalSize		= 117;	//明細明細サイズ
+	static final int ColMsUnitPrice			= 118;	//明細単価
+	static final int ColMsSubTotalPrice		= 119;	//明細金額
+	static final int ColMsCategoryCd			= 120;	//明細商品分類
+	static final int ColMsCategoryName		= 121;	//明細商品分類名
+	static final int ColMsTildFG				= 122;	//明細温度区分
+	static final int ColMsTildName			= 123;	//明細温度区分名
+	static final int ColMsCom01				= 124;	//明細コメント01
+	static final int ColMsCom02				= 125;	//明細コメント02
+	static final int ColMsCom03				= 126;	//明細コメント03
+	static final int ColMsCom04				= 127;	//明細コメント04
+	static final int ColMsCom05				= 128;	//明細コメント05
+	static final int ColMsEntryDate			= 129;	//明細登録日
+	static final int ColMsUpdateDate			= 130;	//明細更新日
+	static final int ColMsEntryUser			= 131;	//明細登録者
+	static final int ColMsUpdateUser			= 132;	//明細更新者
+	static final int ColMsLot					= 133;	//明細ロット指定
+	static final int ColMsExpDate				= 134;	//明細賞味期限指定
+	static final int ColMsPackingType			= 135;	//明細荷姿タイプ
+	static final int ColMsClItemCd			= 136;	//明細荷主商品CD
+	static final int ColMsItemMDNo			= 137;	//明細型番
+	static final int ColMsJanCd				= 138;	//明細荷姿JanCd
+	static final int ColCLName01				= 139;	//荷主名
+	static final int ColClGpCD					= 140;	//荷主グループCD
+	static final int ColCLGpName01			= 141;	//荷主グループ標記名
 	
-	public static Object[][] RtOkuriHdRt(){
+	public static Object[][] RtOkuriMsRt(){
 		Object[][] Rt = {
 						 {"ClCd"				,ColClCd					,"String"	,"荷主コード"					,"Key"}
 						,{"InvoiceWhCd"			,ColInvoiceWhCd			,"String"	,"倉庫コード"					,"Key"}
@@ -542,6 +622,46 @@ public class T100_OkuriHdRt{
 						,{"Pit04"				,ColPit04					,"String"	,"一次配車払出ピット04"			,""}
 						,{"Pit05"				,ColPit05					,"String"	,"一次配車払出ピット05"			,""}
 						
+						,{"MsClCd"				,ColMsClCd					,"String"	,"明細荷主コード"				,""}
+						,{"MsInvoiceWhCd"		,ColMsInvoiceWhCd			,"String"	,"明細倉庫コード"				,""}
+						,{"MsOkuriNo"			,ColMsOkuriNo				,"String"	,"明細送り状番号"				,""}
+						,{"MsNo"				,ColMsNo					,"int"		,"明細番号"						,"Key"}
+						,{"MsDeliNo"			,ColMsDeliNo				,"String"	,"明細出荷番号"					,""}
+						,{"MsDelliMsNo"			,ColMsDelliMsNo			,"int"		,"明細出荷番号明細番号"			,""}
+						,{"MsClOrderNo"			,ColMsClOrderNo			,"String"	,"明細荷主管理番号"				,""}
+						,{"MsClGpCd"			,ColMsClGpCd				,"String"	,"明細荷主グループコード"		,""}
+						,{"MsItemCd"			,ColMsItemCd				,"String"	,"明細商品コード"				,""}
+						,{"MsItemName01"		,ColMsItemName01			,"String"	,"明細商品表記名"				,""}
+						,{"MsItemName02"		,ColMsItemName02			,"String"	,"明細商品正式名"				,""}
+						,{"MsItemName03"		,ColMsItemName03			,"String"	,"明細商品略名"					,""}
+						,{"MsUnitWeight"		,ColMsUnitWeight			,"float"	,"明細単位重量"					,""}
+						,{"MsUnitSize"			,ColMsUnitSize			,"float"	,"明細単位サイズ"				,""}
+						,{"MsQty"				,ColMsQty					,"int"		,"明細個数"						,""}
+						,{"MsPackingQty"		,ColMsPackingQty			,"int"		,"明細荷姿数量"					,""}
+						,{"MsUnitName"			,ColMsUnitName			,"String"	,"明細明細単位"					,""}
+						,{"MsSubTotalWeight"	,ColMsSubTotalWeight		,"float"	,"明細明細重量"					,""}
+						,{"MsSubTotalSize"		,ColMsSubTotalSize		,"float"	,"明細明細サイズ"				,""}
+						,{"MsUnitPrice"			,ColMsUnitPrice			,"float"	,"明細単価"						,""}
+						,{"MsSubTotalPrice"		,ColMsSubTotalPrice		,"float"	,"明細金額"						,""}
+						,{"MsCategoryCd"		,ColMsCategoryCd			,"String"	,"明細商品分類"					,""}
+						,{"MsCategoryName"		,ColMsCategoryName		,"String"	,"明細商品分類名"				,""}
+						,{"MsTildFG"			,ColMsTildFG				,"String"	,"明細温度区分"					,""}
+						,{"MsTildName"			,ColMsTildName			,"String"	,"明細温度区分名"				,""}
+						,{"MsCom01"				,ColMsCom01				,"String"	,"明細コメント01"				,""}
+						,{"MsCom02"				,ColMsCom02				,"String"	,"明細コメント02"				,""}
+						,{"MsCom03"				,ColMsCom03				,"String"	,"明細コメント03"				,""}
+						,{"MsCom04"				,ColMsCom04				,"String"	,"明細コメント04"				,""}
+						,{"MsCom05"				,ColMsCom05				,"String"	,"明細コメント05"				,""}
+						,{"MsEntryDate"			,ColMsEntryDate			,"DateTime"	,"明細登録日"					,""}
+						,{"MsUpdateDate"		,ColMsUpdateDate			,"DateTime"	,"明細更新日"					,""}
+						,{"MsEntryUser"			,ColMsEntryUser			,"String"	,"明細登録者"					,""}
+						,{"MsUpdateUser"		,ColMsUpdateUser			,"String"	,"明細更新者"					,""}
+						,{"MsLot"				,ColMsLot					,"String"	,"明細ロット指定"				,""}
+						,{"MsExpDate"			,ColMsExpDate				,"Date"		,"明細賞味期限指定"				,""}
+						,{"MsPackingType"		,ColMsPackingType			,"int"		,"明細荷姿タイプ"				,""}
+						,{"MsClItemCd"			,ColMsClItemCd			,"String"	,"明細荷主商品CD"				,""}
+						,{"MsItemMDNo"			,ColMsItemMDNo			,"String"	,"明細型番"						,""}
+						,{"MsJanCd"				,ColMsJanCd				,"String"	,"明細荷姿JanCd"				,""}
 						,{"CLName01"			,ColCLName01				,"String"	,"荷主名"						,""}
 						,{"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"				,""}
 						,{"CLGpName01"			,ColCLGpName01			,"String"	,"荷主グループ標記名"			,""}
@@ -551,7 +671,7 @@ public class T100_OkuriHdRt{
 	
 	
 	
-	public static Object[][] OkuriHdRt(
+	public static Object[][] OkuriMsRt(
 			ArrayList<String> SearchInvoiceWHCD,			//倉庫CD
 			ArrayList<String> SearchClGpCD,					//荷主グループCD
 			ArrayList<String> SearchClCd,					//荷主CD
@@ -669,130 +789,170 @@ public class T100_OkuriHdRt{
 		SearchSPPlanDateStr			= B100_ArrayListControl.DateOnlySet(SearchSPPlanDateStr);
 		SearchSPDateStr				= B100_ArrayListControl.DateOnlySet(SearchSPDateStr);
 		SearchWmsShipDateStr		= B100_ArrayListControl.DateOnlySet(SearchWmsShipDateStr);
-		SearchFeeFixDateStr			= B100_ArrayListControl.DateOnlySet(SearchFeeFixDateStr);
 		SearchReceiptStampDateStr	= B100_ArrayListControl.DateOnlySet(SearchReceiptStampDateStr);
 		SearchMsExpDateStr			= B100_ArrayListControl.DateOnlySet(SearchMsExpDateStr);
 		
 		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなので注意
-		SearchPlanDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchPlanDateEnd			,1);
-		SearchShipDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchShipDateEnd			,1);
-		SearchSPPlanDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchSPPlanDateEnd		,1);
-		SearchSPDateEnd				= B100_ArrayListControl.DateOnlySetNdateAfter(SearchSPDateEnd			,1);
-		SearchWmsShipDateEnd		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchWmsShipDateEnd		,1);
-		SearchFeeFixDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchFeeFixDateEnd		,1);
-		SearchReceiptStampDateEnd	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchReceiptStampDateEnd	,1);
-		SearchMsExpDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchMsExpDateEnd			,1);
+		SearchPlanDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchPlanDateEnd,1);
+		SearchShipDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchShipDateEnd,1);
+		SearchSPPlanDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchSPPlanDateEnd,1);
+		SearchSPDateEnd				= B100_ArrayListControl.DateOnlySetNdateAfter(SearchSPDateEnd,1);
+		SearchWmsShipDateEnd		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchWmsShipDateEnd,1);
+		SearchFeeFixDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchFeeFixDateEnd,1);
+		SearchReceiptStampDateEnd	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchReceiptStampDateEnd,1);
+		SearchMsExpDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchMsExpDateEnd,1);
 		
 		Object[][] Rt = new Object[0][0];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
 		
-		
 		//商品変換マスタを元に荷主商品コードを商品コードに変換する
 		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClGpCD,SearchClCd,SearchClItemCd);
+		
 		String sql = "select "
-				+"(KT0010_OKURI_HD.cl_cd) 					as ClCd,\n"					//荷主コード
-				+"Max(KM0030_CLIENTMST.CLName01)       		as CLName01,\n"				//荷主名
-				+"Max(KM0030_CLIENTMST.ClGpCD)         		as ClGpCD,\n"				//荷主グループCD
-				+"Max(KM0031_CLIENT_GROUP.CLGpName01)  		as CLGpName01,\n"			//荷主グループ標記名
-				+"(KT0010_OKURI_HD.InvoiceWHCD) 			as InvoiceWhCd,\n"			//倉庫コード
-				+"(KT0010_OKURI_HD.OkuriNo) 				as OkuriNo,\n"				//送り状番号
-				+"Max(KT0010_OKURI_HD.ClDeliNo) 			as ClDeliNo,\n"				//荷主管理番号
-				+"Max(KT0010_OKURI_HD.PickupWHCD) 			as PickupWhCd,\n"			//集荷倉庫CD
-				+"Max(KT0010_OKURI_HD.PurposeFG) 			as PurposeFG,\n"			//目的フラグ
-				+"(KT0010_OKURI_HD.PlanDate) 				as PlanDate,\n"				//出荷予定日
-				+"Max(KT0010_OKURI_HD.ShipDate) 			as ShipDate,\n"				//出荷実績日
-				+"Max(KT0010_OKURI_HD.SPPlanDate) 			as SPPlanDate,\n"			//着日指定
-				+"Max(KT0010_OKURI_HD.SPDate) 				as SPDate,\n"				//着日実績
-				+"Max(KT0010_OKURI_HD.SPTimeFG) 			as SPTimeFG,\n"				//時間指定区分
-				+"Max(KT0010_OKURI_HD.SPTimeStr) 			as SPTimeStr,\n"			//時間指定開始
-				+"Max(KT0010_OKURI_HD.SPTimeEnd) 			as SPTimeEnd,\n"			//時間指定終了
-				+"Max(KT0010_OKURI_HD.TotalWeight) 			as TotalWeight,\n"			//荷物重量(kg)
-				+"Max(KT0010_OKURI_HD.TotalSize) 			as TotalSize,\n"			//荷物サイズ
-				+"Max(KT0010_OKURI_HD.TotalQty) 			as TotalQty,\n"				//個口数
-				+"Max(KT0010_OKURI_HD.DeliveryTypeCd) 		as DeliveryTypeCd,\n"		//運送タイプ01
-				+"Max(KT0010_OKURI_HD.DeliTypeName) 		as DeliTypeName,\n"			//運送タイプ名01
-				+"Max(KT0010_OKURI_HD.DeliveryTypeCd02) 	as DeliveryTypeCd02,\n"		//運送タイプ02
-				+"Max(KT0010_OKURI_HD.DeliTypeName02) 		as DeliTypeName02,\n"		//運送タイプ名02
-				+"Max(KT0010_OKURI_HD.DeliveryTypeCd03) 	as DeliveryTypeCd03,\n"		//運送タイプ03
-				+"Max(KT0010_OKURI_HD.DeliTypeName03) 		as DeliTypeName03,\n"		//運送タイプ名03
-				+"Max(KT0010_OKURI_HD.DeliveryTypeCd04) 	as DeliveryTypeCd04,\n"		//運送タイプ04
-				+"Max(KT0010_OKURI_HD.DeliTypeName04) 		as DeliTypeName04,\n"		//運送タイプ名04
-				+"Max(KT0010_OKURI_HD.DeliveryTypeCd05) 	as DeliveryTypeCd05,\n"		//運送タイプ05
-				+"Max(KT0010_OKURI_HD.DeliTypeName05) 		as DeliTypeName05,\n"		//運送タイプ名05
-				+"Max(KT0010_OKURI_HD.CodFG) 				as CodFG,\n"				//代引きフラグ
-				+"Max(KT0010_OKURI_HD.CodPayTotal) 			as CodPayTotal,\n"			//代引き収受金額合計
-				+"Max(KT0010_OKURI_HD.CodPay) 				as CodPay,\n"				//代引き金額
-				+"Max(KT0010_OKURI_HD.CodConsumptionTax) 	as CodConsumptionTax,\n"	//代引き消費税
-				+"Max(KT0010_OKURI_HD.ChildrenFG) 			as ChildrenFG,\n"			//子伝票区分
-				+"Max(KT0010_OKURI_HD.ParentOkuriNo) 		as ParentOkuriNo,\n"		//親伝票番号
-				+"Max(KT0010_OKURI_HD.NiokuriCd) 			as NiokuriCd,\n"			//荷送人コード
-				+"Max(KT0010_OKURI_HD.NiokuriDepartmentCd)	as NiokuriDepartmentCd,\n"	//荷送人部署CD
- 				+"Max(KT0010_OKURI_HD.NiokuriName01) 		as NiokuriName01,\n"		//荷送人名01
-				+"Max(KT0010_OKURI_HD.NiokuriName02) 		as NiokuriName02,\n"		//荷送人名02
-				+"Max(KT0010_OKURI_HD.NiokuriName03) 		as NiokuriName03,\n"		//荷送人名03
-				+"Max(KT0010_OKURI_HD.NiokuriPost) 			as NiokuriPost,\n"			//荷送人郵便番号
-				+"Max(KT0010_OKURI_HD.NiokuriAdd01) 		as NiokuriAdd01,\n"			//荷送人住所01
-				+"Max(KT0010_OKURI_HD.NiokuriAdd02) 		as NiokuriAdd02,\n"			//荷送人住所02
-				+"Max(KT0010_OKURI_HD.NiokuriAdd03) 		as NiokuriAdd03,\n"			//荷送人住所03
-				+"Max(KT0010_OKURI_HD.NioKuriTel) 			as NioKuriTel,\n"			//荷送人TEL
-				+"Max(KT0010_OKURI_HD.NioKuriFax) 			as NioKuriFax,\n"			//荷送人FAX
-				+"Max(KT0010_OKURI_HD.NioKuriMail) 			as NioKuriMail,\n"			//荷送人MAIL
-				+"Max(KT0010_OKURI_HD.NiokuriMunicCd) 		as NiokuriMunicCd,\n"		//荷送人市区町村CD
-				+"(KT0010_OKURI_HD.DeliCd) 					as DeliCd,\n"				//荷届先コード
-				+"Max(KT0010_OKURI_HD.ClDeliCd) 			as ClDeliCd,\n"				//荷主荷届先コード
-				+"(KT0010_OKURI_HD.DeliDepartmentCd) 		as DeliDepartmentCd,\n"		//部署CD
-				+"Max(KT0010_OKURI_HD.DeliName01) 			as DeliName01,\n"			//荷届先名01
-				+"Max(KT0010_OKURI_HD.DeliName02) 			as DeliName02,\n"			//荷届先名02
-				+"Max(KT0010_OKURI_HD.DeliName03) 			as DeliName03,\n"			//荷届先名03
-				+"Max(KT0010_OKURI_HD.DeliPost) 			as DeliPost,\n"				//荷届先郵便番号
-				+"Max(KT0010_OKURI_HD.DeliAdd01) 			as DeliAdd01,\n"			//荷届先住所01
-				+"Max(KT0010_OKURI_HD.DeliAdd02) 			as DeliAdd02,\n"			//荷届先住所02
-				+"Max(KT0010_OKURI_HD.DeliAdd03) 			as DeliAdd03,\n"			//荷届先住所03
-				+"Max(KT0010_OKURI_HD.DeliTel) 				as DeliTel,\n"				//荷届先TEL
-				+"Max(KT0010_OKURI_HD.DeliFax) 				as DeliFax,\n"				//荷届先FAX
-				+"Max(KT0010_OKURI_HD.DeliMail) 			as DeliMail,\n"				//荷届先MAIL
-				+"Max(KT0010_OKURI_HD.DeliMunicCd) 			as DeliMunicCd,\n"			//荷届先市区町村CD
-				+"Max(KT0010_OKURI_HD.Com01) 				as Com01,\n"				//コメント01
-				+"Max(KT0010_OKURI_HD.Com02) 				as Com02,\n"				//コメント02
-				+"Max(KT0010_OKURI_HD.Com03) 				as Com03,\n"				//コメント03
-				+"Max(KT0010_OKURI_HD.Com04) 				as Com04,\n"				//コメント04
-				+"Max(KT0010_OKURI_HD.Com05) 				as Com05,\n"				//コメント05
-				+"Max(KT0010_OKURI_HD.Status) 				as Status,\n"				//状況
-				+"Max(KT0010_OKURI_HD.TaxFg) 				as TaxFg,\n"				//税区分
-				+"Max(KT0010_OKURI_HD.TaxRate) 				as TaxRate,\n"				//税率
-				+"Max(KT0010_OKURI_HD.DeliFee) 				as DeliFee,\n"				//運賃
-				+"Max(KT0010_OKURI_HD.AddDeliFee01) 		as AddDeliFee01,\n"			//付帯費用1
-				+"Max(KT0010_OKURI_HD.AddDeliFee02) 		as AddDeliFee02,\n"			//付帯費用2
-				+"Max(KT0010_OKURI_HD.AddDeliFee03) 		as AddDeliFee03,\n"			//付帯費用3
-				+"Max(KT0010_OKURI_HD.HaighWayFee01) 		as HaighWayFee01,\n"		//高速代等実費精算分1（内税）
-				+"Max(KT0010_OKURI_HD.HaighWayFee02) 		as HaighWayFee02,\n"		//高速代等実費精算分2（内税）
-				+"Max(KT0010_OKURI_HD.ConsumptionTax) 		as ConsumptionTax,\n"		//消費税
-				+"Max(KT0010_OKURI_HD.WithOutTaxTotal) 		as WithOutTaxTotal,\n"		//税別合計金額
-				+"Max(KT0010_OKURI_HD.TotalFee) 			as TotalFee,\n"				//税込請求額合計
-				+"Max(KT0010_OKURI_HD.FeeFixFG) 			as FeeFixFG,\n"				//金額確定フラグ
-				+"Max(KT0010_OKURI_HD.FeeFixDate) 			as FeeFixDate,\n"			//金額確定日時
-				+"Max(KT0010_OKURI_HD.ReceiptStampFG) 		as ReceiptStampFG,\n"		//受領印チェック
-				+"Max(KT0010_OKURI_HD.ReceiptStampDate) 	as ReceiptStampDate,\n"		//受領印日時
-				+"Max(KT0010_OKURI_HD.InvoiceStatus) 		as InvoiceStatus,\n"		//請求ステータス
-				+"Max(KT0010_OKURI_HD.EntryDate) 			as EntryDate,\n"			//登録日
-				+"Max(KT0010_OKURI_HD.UpdateDate) 			as UpdateDate,\n"			//更新日
-				+"Max(KT0010_OKURI_HD.EntryUser) 			as EntryUser,\n"			//登録者
-				+"Max(KT0010_OKURI_HD.UpdateUser) 			as UpdateUser,\n"			//更新者
-				+"Max(KT0010_OKURI_HD.EntryPG) 				as EntryPG,\n"				//登録プログラム
-				+"Max(KT0010_OKURI_HD.UpdatePG) 			as UpdatePG,\n"				//更新プログラム
-				+"Max(KT0010_OKURI_HD.UseFeeBasePtCd) 		as UseFeeBasePtCd,\n"		//適用運賃タリフCD
-				+"Max(KT0010_OKURI_HD.WmsStatus) 			as WmsStatus,\n"			//在庫管理ステータス
-				+"Max(KT0010_OKURI_HD.WmsShipDate) 			as WmsShipDate,\n"			//倉庫出荷日
-				+"Max(KT0010_OKURI_HD.CourseGpCd) 			as CourseGpCd,\n"			//コースグループコード
-				+"Max(KT0010_OKURI_HD.CourseCD) 			as CourseCD,\n"				//一次配車コースコード
-				+"Max(KT0010_OKURI_HD.CourseCDEda) 			as CourseCDEda,\n"			//一次配車コースコード枝番
-				+"Max(KT0010_OKURI_HD.PitGrp) 				as PitGrp,\n"				//一次配車払出ピットグループ
-				+"Max(KT0010_OKURI_HD.Pit01) 				as Pit01,\n"				//一次配車払出ピット01
-				+"Max(KT0010_OKURI_HD.Pit02) 				as Pit02,\n"				//一次配車払出ピット02
-				+"Max(KT0010_OKURI_HD.Pit03) 				as Pit03,\n"				//一次配車払出ピット03
-				+"Max(KT0010_OKURI_HD.Pit04) 				as Pit04,\n"				//一次配車払出ピット04
-				+"Max(KT0010_OKURI_HD.Pit05) 				as Pit05\n"				//一次配車払出ピット05
+				+"(KT0010_OKURI_HD.cl_cd) 				as ClCd,\n"					//荷主コード
+				+"(KM0030_CLIENTMST.CLName01)       	as CLName01,\n"				//荷主名
+				+"(KM0030_CLIENTMST.ClGpCD)         	as ClGpCD,\n"				//荷主グループCD
+				+"(KM0031_CLIENT_GROUP.CLGpName01)  	as CLGpName01,\n"			//荷主グループ標記名
+				+"(KT0010_OKURI_HD.InvoiceWHCD) 		as InvoiceWhCd,\n"			//倉庫コード
+				+"(KT0010_OKURI_HD.OkuriNo) 			as OkuriNo,\n"				//送り状番号
+				+"(KT0010_OKURI_HD.ClDeliNo) 			as ClDeliNo,\n"				//荷主管理番号
+				+"(KT0010_OKURI_HD.PickupWHCD) 			as PickupWhCd,\n"			//集荷倉庫CD
+				+"(KT0010_OKURI_HD.PurposeFG) 			as PurposeFG,\n"			//目的フラグ
+				+"(KT0010_OKURI_HD.PlanDate) 			as PlanDate,\n"				//出荷予定日
+				+"(KT0010_OKURI_HD.ShipDate) 			as ShipDate,\n"				//出荷実績日
+				+"(KT0010_OKURI_HD.SPPlanDate) 			as SPPlanDate,\n"			//着日指定
+				+"(KT0010_OKURI_HD.SPDate) 				as SPDate,\n"				//着日実績
+				+"(KT0010_OKURI_HD.SPTimeFG) 			as SPTimeFG,\n"				//時間指定区分
+				+"(KT0010_OKURI_HD.SPTimeStr) 			as SPTimeStr,\n"			//時間指定開始
+				+"(KT0010_OKURI_HD.SPTimeEnd) 			as SPTimeEnd,\n"			//時間指定終了
+				+"(KT0010_OKURI_HD.TotalWeight) 		as TotalWeight,\n"			//荷物重量(kg)
+				+"(KT0010_OKURI_HD.TotalSize) 			as TotalSize,\n"			//荷物サイズ
+				+"(KT0010_OKURI_HD.TotalQty) 			as TotalQty,\n"				//個口数
+				+"(KT0010_OKURI_HD.DeliveryTypeCd) 		as DeliveryTypeCd,\n"		//運送タイプ01
+				+"(KT0010_OKURI_HD.DeliTypeName) 		as DeliTypeName,\n"			//運送タイプ名01
+				+"(KT0010_OKURI_HD.DeliveryTypeCd02) 	as DeliveryTypeCd02,\n"		//運送タイプ02
+				+"(KT0010_OKURI_HD.DeliTypeName02) 		as DeliTypeName02,\n"		//運送タイプ名02
+				+"(KT0010_OKURI_HD.DeliveryTypeCd03) 	as DeliveryTypeCd03,\n"		//運送タイプ03
+				+"(KT0010_OKURI_HD.DeliTypeName03) 		as DeliTypeName03,\n"		//運送タイプ名03
+				+"(KT0010_OKURI_HD.DeliveryTypeCd04) 	as DeliveryTypeCd04,\n"		//運送タイプ04
+				+"(KT0010_OKURI_HD.DeliTypeName04) 		as DeliTypeName04,\n"		//運送タイプ名04
+				+"(KT0010_OKURI_HD.DeliveryTypeCd05) 	as DeliveryTypeCd05,\n"		//運送タイプ05
+				+"(KT0010_OKURI_HD.DeliTypeName05) 		as DeliTypeName05,\n"		//運送タイプ名05
+				+"(KT0010_OKURI_HD.CodFG) 				as CodFG,\n"				//代引きフラグ
+				+"(KT0010_OKURI_HD.CodPayTotal) 		as CodPayTotal,\n"			//代引き収受金額合計
+				+"(KT0010_OKURI_HD.CodPay) 				as CodPay,\n"				//代引き金額
+				+"(KT0010_OKURI_HD.CodConsumptionTax) 	as CodConsumptionTax,\n"	//代引き消費税
+				+"(KT0010_OKURI_HD.ChildrenFG) 			as ChildrenFG,\n"			//子伝票区分
+				+"(KT0010_OKURI_HD.ParentOkuriNo) 		as ParentOkuriNo,\n"		//親伝票番号
+				+"(KT0010_OKURI_HD.NiokuriCd) 			as NiokuriCd,\n"			//荷送人コード
+				+"(KT0010_OKURI_HD.NiokuriDepartmentCd)	as NiokuriDepartmentCd,\n"	//荷送人部署CD
+ 				+"(KT0010_OKURI_HD.NiokuriName01) 		as NiokuriName01,\n"		//荷送人名01
+				+"(KT0010_OKURI_HD.NiokuriName02) 		as NiokuriName02,\n"		//荷送人名02
+				+"(KT0010_OKURI_HD.NiokuriName03) 		as NiokuriName03,\n"		//荷送人名03
+				+"(KT0010_OKURI_HD.NiokuriPost) 		as NiokuriPost,\n"			//荷送人郵便番号
+				+"(KT0010_OKURI_HD.NiokuriAdd01) 		as NiokuriAdd01,\n"			//荷送人住所01
+				+"(KT0010_OKURI_HD.NiokuriAdd02) 		as NiokuriAdd02,\n"			//荷送人住所02
+				+"(KT0010_OKURI_HD.NiokuriAdd03) 		as NiokuriAdd03,\n"			//荷送人住所03
+				+"(KT0010_OKURI_HD.NioKuriTel) 			as NioKuriTel,\n"			//荷送人TEL
+				+"(KT0010_OKURI_HD.NioKuriFax) 			as NioKuriFax,\n"			//荷送人FAX
+				+"(KT0010_OKURI_HD.NioKuriMail) 		as NioKuriMail,\n"			//荷送人MAIL
+				+"(KT0010_OKURI_HD.NiokuriMunicCd) 		as NiokuriMunicCd,\n"		//荷送人市区町村CD
+				+"(KT0010_OKURI_HD.DeliCd) 				as DeliCd,\n"				//荷届先コード
+				+"(KT0010_OKURI_HD.ClDeliCd) 			as ClDeliCd,\n"				//荷主荷届先コード
+				+"(KT0010_OKURI_HD.DeliDepartmentCd) 	as DeliDepartmentCd,\n"		//部署CD
+				+"(KT0010_OKURI_HD.DeliName01) 			as DeliName01,\n"			//荷届先名01
+				+"(KT0010_OKURI_HD.DeliName02) 			as DeliName02,\n"			//荷届先名02
+				+"(KT0010_OKURI_HD.DeliName03) 			as DeliName03,\n"			//荷届先名03
+				+"(KT0010_OKURI_HD.DeliPost) 			as DeliPost,\n"				//荷届先郵便番号
+				+"(KT0010_OKURI_HD.DeliAdd01) 			as DeliAdd01,\n"			//荷届先住所01
+				+"(KT0010_OKURI_HD.DeliAdd02) 			as DeliAdd02,\n"			//荷届先住所02
+				+"(KT0010_OKURI_HD.DeliAdd03) 			as DeliAdd03,\n"			//荷届先住所03
+				+"(KT0010_OKURI_HD.DeliTel) 			as DeliTel,\n"				//荷届先TEL
+				+"(KT0010_OKURI_HD.DeliFax) 			as DeliFax,\n"				//荷届先FAX
+				+"(KT0010_OKURI_HD.DeliMail) 			as DeliMail,\n"				//荷届先MAIL
+				+"(KT0010_OKURI_HD.DeliMunicCd) 		as DeliMunicCd,\n"			//荷届先市区町村CD
+				+"(KT0010_OKURI_HD.Com01) 				as Com01,\n"				//コメント01
+				+"(KT0010_OKURI_HD.Com02) 				as Com02,\n"				//コメント02
+				+"(KT0010_OKURI_HD.Com03) 				as Com03,\n"				//コメント03
+				+"(KT0010_OKURI_HD.Com04) 				as Com04,\n"				//コメント04
+				+"(KT0010_OKURI_HD.Com05) 				as Com05,\n"				//コメント05
+				+"(KT0010_OKURI_HD.Status) 				as Status,\n"				//状況
+				+"(KT0010_OKURI_HD.TaxFg) 				as TaxFg,\n"				//税区分
+				+"(KT0010_OKURI_HD.TaxRate) 			as TaxRate,\n"				//税率
+				+"(KT0010_OKURI_HD.DeliFee) 			as DeliFee,\n"				//運賃
+				+"(KT0010_OKURI_HD.AddDeliFee01) 		as AddDeliFee01,\n"			//付帯費用1
+				+"(KT0010_OKURI_HD.AddDeliFee02) 		as AddDeliFee02,\n"			//付帯費用2
+				+"(KT0010_OKURI_HD.AddDeliFee03) 		as AddDeliFee03,\n"			//付帯費用3
+				+"(KT0010_OKURI_HD.HaighWayFee01) 		as HaighWayFee01,\n"		//高速代等実費精算分1（内税）
+				+"(KT0010_OKURI_HD.HaighWayFee02) 		as HaighWayFee02,\n"		//高速代等実費精算分2（内税）
+				+"(KT0010_OKURI_HD.ConsumptionTax) 		as ConsumptionTax,\n"		//消費税
+				+"(KT0010_OKURI_HD.WithOutTaxTotal) 	as WithOutTaxTotal,\n"		//税別合計金額
+				+"(KT0010_OKURI_HD.TotalFee) 			as TotalFee,\n"				//税込請求額合計
+				+"(KT0010_OKURI_HD.FeeFixFG) 			as FeeFixFG,\n"				//金額確定フラグ
+				+"(KT0010_OKURI_HD.FeeFixDate) 			as FeeFixDate,\n"			//金額確定日時
+				+"(KT0010_OKURI_HD.ReceiptStampFG) 		as ReceiptStampFG,\n"		//受領印チェック
+				+"(KT0010_OKURI_HD.ReceiptStampDate) 	as ReceiptStampDate,\n"		//受領印日時
+				+"(KT0010_OKURI_HD.InvoiceStatus) 		as InvoiceStatus,\n"		//請求ステータス
+				+"(KT0010_OKURI_HD.EntryDate) 			as EntryDate,\n"			//登録日
+				+"(KT0010_OKURI_HD.UpdateDate) 			as UpdateDate,\n"			//更新日
+				+"(KT0010_OKURI_HD.EntryUser) 			as EntryUser,\n"			//登録者
+				+"(KT0010_OKURI_HD.UpdateUser) 			as UpdateUser,\n"			//更新者
+				+"(KT0010_OKURI_HD.EntryPG) 			as EntryPG,\n"				//登録プログラム
+				+"(KT0010_OKURI_HD.UpdatePG) 			as UpdatePG,\n"				//更新プログラム
+				+"(KT0010_OKURI_HD.UseFeeBasePtCd) 		as UseFeeBasePtCd,\n"		//適用運賃タリフCD
+				+"(KT0010_OKURI_HD.WmsStatus) 			as WmsStatus,\n"			//在庫管理ステータス
+				+"(KT0010_OKURI_HD.WmsShipDate) 		as WmsShipDate,\n"			//倉庫出荷日
+				+"(KT0010_OKURI_HD.CourseGpCd) 			as CourseGpCd,\n"			//コースグループコード
+				+"(KT0010_OKURI_HD.CourseCD) 			as CourseCD,\n"				//一次配車コースコード
+				+"(KT0010_OKURI_HD.CourseCDEda) 		as CourseCDEda,\n"			//一次配車コースコード枝番
+				+"(KT0010_OKURI_HD.PitGrp) 				as PitGrp,\n"				//一次配車払出ピットグループ
+				+"(KT0010_OKURI_HD.Pit01) 				as Pit01,\n"				//一次配車払出ピット01
+				+"(KT0010_OKURI_HD.Pit02) 				as Pit02,\n"				//一次配車払出ピット02
+				+"(KT0010_OKURI_HD.Pit03) 				as Pit03,\n"				//一次配車払出ピット03
+				+"(KT0010_OKURI_HD.Pit04) 				as Pit04,\n"				//一次配車払出ピット04
+				+"(KT0010_OKURI_HD.Pit05) 				as Pit05,\n"				//一次配車払出ピット05
+				
+				+"(KT0011_OKURI_MS.cl_cd) 				as MsClCd,\n"				//明細荷主コード
+				+"(KT0011_OKURI_MS.InvoiceWHCD) 		as MsInvoiceWhCd,\n"		//明細倉庫コード
+				+"(KT0011_OKURI_MS.OkuriNo) 			as MsOkuriNo,\n"			//明細送り状番号
+				+"(KT0011_OKURI_MS.MsNo) 				as MsNo,\n"					//明細番号
+				+"(KT0011_OKURI_MS.DeliNo) 				as MsDeliNo,\n"				//明細出荷番号
+				+"(KT0011_OKURI_MS.DelliMsNo) 			as MsDelliMsNo,\n"			//明細出荷番号明細番号
+				+"(KT0011_OKURI_MS.ClOrderNo) 			as MsClOrderNo,\n"			//明細荷主管理番号
+				+"(KT0011_OKURI_MS.ClGpCd) 				as MsClGpCd,\n"				//明細荷主グループコード
+				+"(KT0011_OKURI_MS.ItemCd) 				as MsItemCd,\n"				//明細商品コード
+				+"(KT0011_OKURI_MS.ItemName01) 			as MsItemName01,\n"			//明細商品表記名
+				+"(KT0011_OKURI_MS.ItemName02) 			as MsItemName02,\n"			//明細商品正式名
+				+"(KT0011_OKURI_MS.ItemName03) 			as MsItemName03,\n"			//明細商品略名
+				+"(KT0011_OKURI_MS.UnitWeight) 			as MsUnitWeight,\n"			//明細単位重量
+				+"(KT0011_OKURI_MS.UnitSize) 			as MsUnitSize,\n"			//明細単位サイズ
+				+"(KT0011_OKURI_MS.Qty) 				as MsQty,\n"				//明細個数
+				+"(KT0011_OKURI_MS.PackingQty) 			as MsPackingQty,\n"			//明細荷姿数量
+				+"(KT0011_OKURI_MS.UnitName) 			as MsUnitName,\n"			//明細明細単位
+				+"(KT0011_OKURI_MS.SubTotalWeight) 		as MsSubTotalWeight,\n"		//明細明細重量
+				+"(KT0011_OKURI_MS.SubTotalSize) 		as MsSubTotalSize,\n"		//明細明細サイズ
+				+"(KT0011_OKURI_MS.UnitPrice) 			as MsUnitPrice,\n"			//明細単価
+				+"(KT0011_OKURI_MS.SubTotalPrice) 		as MsSubTotalPrice,\n"		//明細金額
+				+"(KT0011_OKURI_MS.CategoryCd) 			as MsCategoryCd,\n"			//明細商品分類
+				+"(KT0011_OKURI_MS.CategoryName) 		as MsCategoryName,\n"		//明細商品分類名
+				+"(KT0011_OKURI_MS.TildFG) 				as MsTildFG,\n"				//明細温度区分
+				+"(KT0011_OKURI_MS.TildName) 			as MsTildName,\n"			//明細温度区分名
+				+"(KT0011_OKURI_MS.Com01) 				as MsCom01,\n"				//明細コメント01
+				+"(KT0011_OKURI_MS.Com02) 				as MsCom02,\n"				//明細コメント02
+				+"(KT0011_OKURI_MS.Com03) 				as MsCom03,\n"				//明細コメント03
+				+"(KT0011_OKURI_MS.Com04) 				as MsCom04,\n"				//明細コメント04
+				+"(KT0011_OKURI_MS.Com05) 				as MsCom05,\n"				//明細コメント05
+				+"(KT0011_OKURI_MS.EntryDate) 			as MsEntryDate,\n"			//明細登録日
+				+"(KT0011_OKURI_MS.UpdateDate) 			as MsUpdateDate,\n"			//明細更新日
+				+"(KT0011_OKURI_MS.EntryUser) 			as MsEntryUser,\n"			//明細登録者
+				+"(KT0011_OKURI_MS.UpdateUser) 			as MsUpdateUser,\n"			//明細更新者
+				+"(KT0011_OKURI_MS.Lot) 				as MsLot,\n"				//明細ロット指定
+				+"(KT0011_OKURI_MS.ExpDate) 			as MsExpDate,\n"			//明細賞味期限指定
+				+"(KT0011_OKURI_MS.PackingType) 		as MsPackingType,\n"		//明細荷姿タイプ
+				+"(KT0011_OKURI_MS.ClItemCd) 			as MsClItemCd,\n"			//明細荷主商品CD
+				+"(KT0011_OKURI_MS.ItemMDNo) 			as MsItemMDNo,\n"			//明細型番
+				+"(KT0011_OKURI_MS.JanCd) 				as MsJanCd \n"				//明細荷姿JanCd
 				
 				+" from "+A00000_Main.MySqlDefaultSchemaNYANKO+".KT0010_OKURI_HD \n"
 				+" left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KT0011_OKURI_MS \n"
@@ -811,7 +971,7 @@ public class T100_OkuriHdRt{
 				+" where 1=1 \n"
 				;
 		
-		
+
 		if(null!=SearchInvoiceWHCD && 0<SearchInvoiceWHCD.size()){
 			SearchKick = true;
 			sql = sql + " and(";
@@ -829,7 +989,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.cl_cd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchClGpCD && 0<SearchClGpCD.size()){
@@ -839,7 +999,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.ClGpCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchOkuriNo && 0<SearchOkuriNo.size()){
@@ -849,7 +1009,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.OkuriNo = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchClDeliNo && 0<SearchClDeliNo.size()){
@@ -861,7 +1021,7 @@ public class T100_OkuriHdRt{
 				sql = sql + "or KT0011_OKURI_MS.ClOrderNo = ?";
 				sql = sql + "or KT0011_OKURI_MS.DeliNo = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchPickupWhCd && 0<SearchPickupWhCd.size()){
@@ -871,7 +1031,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.PickupWHCD = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchPurposeFG && 0<SearchPurposeFG.size()){
@@ -881,7 +1041,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.PurposeFG = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchPlanDateStr && 0<SearchPlanDateStr.size()){
@@ -891,7 +1051,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.PlanDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchShipDateStr && 0<SearchShipDateStr.size()){
@@ -901,7 +1061,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.ShipDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchSPPlanDateStr && 0<SearchSPPlanDateStr.size()){
@@ -911,7 +1071,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.SPPlanDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchSPDateStr && 0<SearchSPDateStr.size()){
@@ -921,7 +1081,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.SPDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchPlanDateEnd && 0<SearchPlanDateEnd.size()){
@@ -931,7 +1091,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.PlanDate < ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchShipDateEnd && 0<SearchShipDateEnd.size()){
@@ -941,7 +1101,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.ShipDate < ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 
 		if(null!=SearchSPPlanDateEnd && 0<SearchSPPlanDateEnd.size()){
@@ -951,7 +1111,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.SPPlanDate < ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 
 		if(null!=SearchSPDateEnd && 0<SearchSPDateEnd.size()){
@@ -961,7 +1121,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.SPDate < ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchTotalWeightMin && 0<SearchTotalWeightMin.size()){
@@ -971,7 +1131,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.TotalWeight >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchTotalSizeMin && 0<SearchTotalSizeMin.size()){
@@ -981,7 +1141,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.TotalSize >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchTotalQtyMin && 0<SearchTotalQtyMin.size()){
@@ -991,7 +1151,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.TotalQty >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchTotalWeightMax && 0<SearchTotalWeightMax.size()){
@@ -1001,7 +1161,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.TotalWeight <= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchTotalSizeMax && 0<SearchTotalSizeMax.size()){
@@ -1011,7 +1171,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.TotalSize <= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchTotalQtyMax && 0<SearchTotalQtyMax.size()){
@@ -1021,7 +1181,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.TotalQty <= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliveryTypeCd && 0<SearchDeliveryTypeCd.size()){
@@ -1031,7 +1191,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliveryTypeCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliveryTypeCd02 && 0<SearchDeliveryTypeCd02.size()){
@@ -1041,7 +1201,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliveryTypeCd02 = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliveryTypeCd03 && 0<SearchDeliveryTypeCd03.size()){
@@ -1051,7 +1211,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliveryTypeCd03 = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliveryTypeCd04 && 0<SearchDeliveryTypeCd04.size()){
@@ -1061,7 +1221,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliveryTypeCd04 = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliveryTypeCd05 && 0<SearchDeliveryTypeCd05.size()){
@@ -1071,7 +1231,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliveryTypeCd05 = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchCodFG && 0<SearchCodFG.size()){
@@ -1081,7 +1241,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.CodFG = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchCodPayTotalMin && 0<SearchCodPayTotalMin.size()){
@@ -1091,7 +1251,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.CodPayTotal >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchCodPayTotalMax && 0<SearchCodPayTotalMax.size()){
@@ -1101,7 +1261,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.CodPayTotal <= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchChildrenFG && 0<SearchChildrenFG.size()){
@@ -1111,7 +1271,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.ChildrenFG = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchParentOkuriNo && 0<SearchParentOkuriNo.size()){
@@ -1121,7 +1281,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.ParentOkuriNo = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNiokuriCd && 0<SearchNiokuriCd.size()){
@@ -1131,7 +1291,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.NiokuriCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNiokuriDepartmentCd && 0<SearchNiokuriDepartmentCd.size()){
@@ -1141,7 +1301,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.NiokuriDepartmentCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNiokuriName && 0<SearchNiokuriName.size()){
@@ -1153,7 +1313,7 @@ public class T100_OkuriHdRt{
 				sql = sql + " or KT0010_OKURI_HD.NiokuriName02 Like ?";
 				sql = sql + " or KT0010_OKURI_HD.NiokuriName03 Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNiokuriPost && 0<SearchNiokuriPost.size()){
@@ -1163,7 +1323,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.NiokuriPost Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNiokuriAdd && 0<SearchNiokuriAdd.size()){
@@ -1175,7 +1335,7 @@ public class T100_OkuriHdRt{
 				sql = sql + " , KT0010_OKURI_HD.NiokuriAdd02";
 				sql = sql + " , KT0010_OKURI_HD.NiokuriAdd03) like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNioKuriTel && 0<SearchNioKuriTel.size()){
@@ -1185,7 +1345,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.NioKuriTel Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNioKuriFax && 0<SearchNioKuriFax.size()){
@@ -1195,7 +1355,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.NioKuriFax Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNioKuriMail && 0<SearchNioKuriMail.size()){
@@ -1205,7 +1365,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.NioKuriMail Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchNiokuriMunicCd && 0<SearchNiokuriMunicCd.size()){
@@ -1215,7 +1375,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.NiokuriMunicCd Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliCd && 0<SearchDeliCd.size()){
@@ -1225,7 +1385,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchClDeliCd && 0<SearchClDeliCd.size()){
@@ -1235,7 +1395,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.ClDeliCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliDepartmentCd && 0<SearchDeliDepartmentCd.size()){
@@ -1245,7 +1405,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliDepartmentCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliName && 0<SearchDeliName.size()){
@@ -1257,7 +1417,7 @@ public class T100_OkuriHdRt{
 				sql = sql + " or KT0010_OKURI_HD.DeliName02 Like ?";
 				sql = sql + " or KT0010_OKURI_HD.DeliName03 Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliPost && 0<SearchDeliPost.size()){
@@ -1267,7 +1427,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliPost Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliAdd && 0<SearchDeliAdd.size()){
@@ -1279,7 +1439,7 @@ public class T100_OkuriHdRt{
 				sql = sql + " , KT0010_OKURI_HD.DeliAdd02";
 				sql = sql + " , KT0010_OKURI_HD.DeliAdd03) Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliTel && 0<SearchDeliTel.size()){
@@ -1289,7 +1449,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliTel Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliFax && 0<SearchDeliFax.size()){
@@ -1299,7 +1459,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliFax Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliMail && 0<SearchDeliMail.size()){
@@ -1309,7 +1469,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliMail Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchDeliMunicCd && 0<SearchDeliMunicCd.size()){
@@ -1319,7 +1479,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliMunicCd Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchCom && 0<SearchCom.size()){
@@ -1338,7 +1498,7 @@ public class T100_OkuriHdRt{
 				sql = sql + " or KT0011_OKURI_MS.Com04 Like ?";
 				sql = sql + " or KT0011_OKURI_MS.Com05 Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchStatus && 0<SearchStatus.size()){
@@ -1348,7 +1508,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.Status = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchFeeFixFG && 0<SearchFeeFixFG.size()){
@@ -1358,7 +1518,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.FeeFixFG = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchReceiptStampFG && 0<SearchReceiptStampFG.size()){
@@ -1368,7 +1528,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.ReceiptStampFG = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchInvoiceStatus && 0<SearchInvoiceStatus.size()){
@@ -1378,7 +1538,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.InvoiceStatus = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchWithOutTaxTotalMin && 0<SearchWithOutTaxTotalMin.size()){
@@ -1388,7 +1548,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.WithOutTaxTotal >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchTotalFeeMin && 0<SearchTotalFeeMin.size()){
@@ -1398,7 +1558,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.TotalFee >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchFeeFixDateStr && 0<SearchFeeFixDateStr.size()){
@@ -1408,7 +1568,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.FeeFixDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchReceiptStampDateStr && 0<SearchReceiptStampDateStr.size()){
@@ -1418,7 +1578,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.ReceiptStampDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchEntryDateStr && 0<SearchEntryDateStr.size()){
@@ -1428,7 +1588,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.EntryDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchUpdateDateStr && 0<SearchUpdateDateStr.size()){
@@ -1438,7 +1598,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.UpdateDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchWithOutTaxTotalMax && 0<SearchWithOutTaxTotalMax.size()){
@@ -1448,7 +1608,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.WithOutTaxTotal <= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchTotalFeeMax && 0<SearchTotalFeeMax.size()){
@@ -1458,7 +1618,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.TotalFee <= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchFeeFixDateEnd && 0<SearchFeeFixDateEnd.size()){
@@ -1468,7 +1628,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.FeeFixDate < ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchReceiptStampDateEnd && 0<SearchReceiptStampDateEnd.size()){
@@ -1478,7 +1638,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.ReceiptStampDate < ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchEntryDateEnd && 0<SearchEntryDateEnd.size()){
@@ -1488,7 +1648,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.EntryDate <= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchUpdateDateEnd && 0<SearchUpdateDateEnd.size()){
@@ -1498,7 +1658,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.UpdateDate <= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchEntryUser && 0<SearchEntryUser.size()){
@@ -1508,7 +1668,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.EntryUser Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchUpdateUser && 0<SearchUpdateUser.size()){
@@ -1518,7 +1678,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.UpdateUser Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchEntryPG && 0<SearchEntryPG.size()){
@@ -1528,7 +1688,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.EntryPG = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchUpdatePG && 0<SearchUpdatePG.size()){
@@ -1538,7 +1698,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.UpdatePG = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchUseFeeBasePtCd && 0<SearchUseFeeBasePtCd.size()){
@@ -1548,7 +1708,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.UseFeeBasePtCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchWmsStatus && 0<SearchWmsStatus.size()){
@@ -1558,7 +1718,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.WmsStatus = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchWmsShipDateStr && 0<SearchWmsShipDateStr.size()){
@@ -1568,7 +1728,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.WmsShipDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchWmsShipDateEnd && 0<SearchWmsShipDateEnd.size()){
@@ -1578,7 +1738,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.WmsShipDate < ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchCourseGpCd && 0<SearchCourseGpCd.size()){
@@ -1588,7 +1748,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.CourseGpCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchCourseCD && 0<SearchCourseCD.size()){
@@ -1598,7 +1758,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.CourseCD = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchCourseCDEda && 0<SearchCourseCDEda.size()){
@@ -1608,7 +1768,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.CourseCDEda = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchPitGrp && 0<SearchPitGrp.size()){
@@ -1618,7 +1778,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.PitGrp = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchPit && 0<SearchPit.size()){
@@ -1632,7 +1792,7 @@ public class T100_OkuriHdRt{
 				sql = sql + " or KT0010_OKURI_HD.Pit04 = ?";
 				sql = sql + " or KT0010_OKURI_HD.Pit05 = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsItemCd && 0<SearchMsItemCd.size()){
@@ -1654,7 +1814,7 @@ public class T100_OkuriHdRt{
 				sql = sql + " or KT0011_OKURI_MS.ItemName02 = ?";
 				sql = sql + " or KT0011_OKURI_MS.ItemName03 = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchClItemCd && 0<SearchClItemCd.size()){				//荷主商品コード
@@ -1670,7 +1830,7 @@ public class T100_OkuriHdRt{
 					sql = sql + "  and KT0011_OKURI_MS.ItemCd.ItemCd = ?)";
 				}
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsCategoryCd && 0<SearchMsCategoryCd.size()){
@@ -1680,7 +1840,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.CategoryCd = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsCategoryName && 0<SearchMsCategoryName.size()){
@@ -1690,7 +1850,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.CategoryName Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsTildFG && 0<SearchMsTildFG.size()){
@@ -1700,7 +1860,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.TildFG = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsTildName && 0<SearchMsTildName.size()){
@@ -1710,7 +1870,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.TildName Like ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsLot && 0<SearchMsLot.size()){
@@ -1720,7 +1880,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.Lot = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsExpDateStr && 0<SearchMsExpDateStr.size()){
@@ -1730,7 +1890,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.ExpDate >= ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsExpDateEnd && 0<SearchMsExpDateEnd.size()){
@@ -1740,7 +1900,7 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.ExpDate < ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
 		if(null!=SearchMsPackingType && 0<SearchMsPackingType.size()){
@@ -1750,12 +1910,11 @@ public class T100_OkuriHdRt{
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0011_OKURI_MS.PackingType = ?";
 			}
-			sql = sql + ")\n";
+			sql = sql + ")";
 		}
 		
-		sql = sql + " group by KT0010_OKURI_HD.InvoiceWHCD,KT0010_OKURI_HD.cl_cd,KT0010_OKURI_HD.PlanDate,KT0010_OKURI_HD.DeliCd,KT0010_OKURI_HD.DeliDepartmentCd,KT0010_OKURI_HD.OkuriNo \n";
-		sql = sql + " order by KT0010_OKURI_HD.InvoiceWHCD,KT0010_OKURI_HD.cl_cd,KT0010_OKURI_HD.PlanDate,KT0010_OKURI_HD.DeliCd,KT0010_OKURI_HD.DeliDepartmentCd,KT0010_OKURI_HD.OkuriNo \n";
-		System.out.println(sql);
+		sql = sql + " order by KT0010_OKURI_HD.InvoiceWHCD,KT0010_OKURI_HD.cl_cd,KT0010_OKURI_HD.PlanDate,KT0010_OKURI_HD.DeliCd,KT0010_OKURI_HD.DeliDepartmentCd,KT0010_OKURI_HD.OkuriNo,KT0011_OKURI_MS.MsNo";
+		//System.out.println(sql);
 		
 		if(SearchKick) {
 			A100_DbConnect.DB_CONN("NYANKO");
@@ -1764,7 +1923,7 @@ public class T100_OkuriHdRt{
 			try {
 				stmt01 = A100_DbConnect.conn.prepareStatement(sql);
 				int StmtCount = 0;
-				
+
 				if(null!=SearchInvoiceWHCD && 0<SearchInvoiceWHCD.size()){
 					for(int i=0;i<SearchInvoiceWHCD.size();i++){
 						StmtCount = StmtCount+1;
@@ -2455,7 +2614,7 @@ public class T100_OkuriHdRt{
 
 				rset01 = stmt01.executeQuery();
 				
-				Rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtOkuriHdRt());
+				Rt = B100_RtObjectCreate.B100_RtObjectCreate(rset01,RtOkuriMsRt());
 				
 				if(rset01!=null){rset01.close();}
 				if(stmt01!=null){stmt01.close();}

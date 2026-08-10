@@ -79,6 +79,10 @@ public class A00001_WorkMain{
 		JLabel LB_Ship 	= B100_FrameParts.JLabelSet(						 10,  0,150,20,"出荷メニュー",11,0);
 		PN_Ship.add(LB_Ship);
 		
+		//出荷指示検索
+		JButton OkuriHdSearch = B100_FrameParts.BtnSet(					 20, 25,120,20,"出荷指示検索",11);
+		PN_Ship.add(OkuriHdSearch);
+		
 		//強制出荷
 		JButton ShipForceEntry = B100_FrameParts.BtnSet(					 20,125,120,20,"強制出庫",11);
 		PN_Ship.add(ShipForceEntry);
@@ -187,6 +191,20 @@ public class A00001_WorkMain{
 				WT100_StockMove_00_Search.StockMoveSearch(0, 0);
 			}
 		});
+		
+		//出荷指示検索
+		OkuriHdSearch.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT100_OkuriHd_00_Search.OkuriHdSearch(0,0);
+			}
+		});
+		
+		
 		//強制出荷
 		ShipForceEntry.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
@@ -220,7 +238,7 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e) {
-				WT100_WTEST.StockMoveSearch(0,0);
+				
 			}
 		});
 	}
