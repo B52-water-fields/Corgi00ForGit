@@ -1,4 +1,5 @@
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -238,7 +239,20 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String>SearchPlanDateEnd=new ArrayList<String>();
 				
+				SearchPlanDateEnd.add("2026/01/01");
+		        SearchPlanDateEnd.add("2026/01/01");
+		        SearchPlanDateEnd.add("2026/01/02 11:12:24");
+		        SearchPlanDateEnd.add("2026/01/03 13:25:33");
+		        SearchPlanDateEnd.add("2026/01/01 15:15:15");
+		        
+		        SearchPlanDateEnd = B100_ArrayListControl.ArryListStringUniqueList(SearchPlanDateEnd);
+		        
+		        for(int i=0;i<SearchPlanDateEnd.size();i++) {
+		        	System.out.println(SearchPlanDateEnd.get(i));
+		        }
+		        
 			}
 		});
 	}

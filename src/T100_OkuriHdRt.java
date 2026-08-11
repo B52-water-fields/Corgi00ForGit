@@ -97,7 +97,7 @@ public class T100_OkuriHdRt{
 	ArrayList<String> SearchWmsShipDateEnd= new ArrayList<String>();		//倉庫出荷日時終了
 	ArrayList<String> SearchCourseGpCd= new ArrayList<String>();			//配車コースグループコード
 	ArrayList<String> SearchCourseCD= new ArrayList<String>();				//配車コースコード
-	ArrayList<String> SearchCourseCDEda= new ArrayList<String>();			//配車コースコード枝番
+	ArrayList<Integer> SearchCourseCDEda= new ArrayList<Integer>();			//配車コースコード枝番
 	ArrayList<String> SearchPitGrp= new ArrayList<String>();				//荷物払出ピットグループ
 	ArrayList<String> SearchPit= new ArrayList<String>();					//荷物払出ピット
 	
@@ -119,116 +119,115 @@ public class T100_OkuriHdRt{
 	boolean AllSearch	= false;
 	
 	Object[][] OkuriHdRt	= T100_OkuriHdRt.OkuriHdRt(
-			ArrayList<String> SearchInvoiceWHCD,			//倉庫CD
-			ArrayList<String> SearchClGpCD,					//荷主グループCD
-			ArrayList<String> SearchClCd,					//荷主CD
-			ArrayList<String> SearchOkuriNo,				//送り状番号
-			ArrayList<String> SearchClDeliNo,				//荷主管理番号
-			ArrayList<String> SearchPickupWhCd,				//集荷倉庫CD
-			ArrayList<String> SearchPurposeFG,				//目的フラグ
-			ArrayList<String> SearchPlanDateStr,			//出荷予定日開始
-			ArrayList<String> SearchShipDateStr,			//出荷実績日開始
-			ArrayList<String> SearchSPPlanDateStr,			//着日指定開始
-			ArrayList<String> SearchSPDateStr,				//着日実績開始
-			
-			ArrayList<String> SearchPlanDateEnd,			//出荷予定日終了
-			ArrayList<String> SearchShipDateEnd,			//出荷実績日終了
-			ArrayList<String> SearchSPPlanDateEnd,			//着日指定終了
-			ArrayList<String> SearchSPDateEnd,				//着日実績終了
-			
-			ArrayList<Float> SearchTotalWeightMin,			//荷物重量(kg)最小
-			ArrayList<Float> SearchTotalSizeMin,			//荷物サイズ最小
-			ArrayList<Integer> SearchTotalQtyMin,			//個口数最小
-			
-			ArrayList<Float> SearchTotalWeightMax,			//荷物重量(kg)最大
-			ArrayList<Float> SearchTotalSizeMax,			//荷物サイズ最大
-			ArrayList<Integer> SearchTotalQtyMax,			//個口数最大
-			
-			ArrayList<String> SearchDeliveryTypeCd,			//運送タイプ01
-			ArrayList<String> SearchDeliveryTypeCd02,		//運送タイプ02
-			ArrayList<String> SearchDeliveryTypeCd03,		//運送タイプ03
-			ArrayList<String> SearchDeliveryTypeCd04,		//運送タイプ04
-			ArrayList<String> SearchDeliveryTypeCd05,		//運送タイプ05
-			
-			ArrayList<Integer> SearchCodFG,					//代引区分
-			ArrayList<Integer> SearchCodPayTotalMin,		//代引収受金額合計最小
-			ArrayList<Integer> SearchCodPayTotalMax,		//代引収受金額合計最大
-			
-			ArrayList<Integer> SearchChildrenFG,			//子伝票区分
-			ArrayList<String> SearchParentOkuriNo,			//親伝票番号
-			
-			ArrayList<String> SearchNiokuriCd,				//荷送人CD
-			ArrayList<String> SearchNiokuriDepartmentCd,	//荷送人部署CD
-			ArrayList<String> SearchNiokuriName,			//荷送人名称
-			ArrayList<String> SearchNiokuriPost,			//荷送人郵便番号
-			ArrayList<String> SearchNiokuriAdd,				//荷送人住所
-			ArrayList<String> SearchNioKuriTel,				//荷送人Tel
-			ArrayList<String> SearchNioKuriFax,				//荷送人Fax
-			ArrayList<String> SearchNioKuriMail,			//荷送人Mail
-			ArrayList<String> SearchNiokuriMunicCd,			//荷送人市区町村CD
-			
-			ArrayList<String> SearchDeliCd,					//届先CD
-			ArrayList<String> SearchClDeliCd,				//荷主届先CD
-			ArrayList<String> SearchDeliDepartmentCd,		//届先部署CD
-			ArrayList<String> SearchDeliName,				//届先名称
-			ArrayList<String> SearchDeliPost,				//届先郵便番号
-			ArrayList<String> SearchDeliAdd,				//届先住所
-			ArrayList<String> SearchDeliTel,				//届先Tel
-			ArrayList<String> SearchDeliFax,				//届先Fax
-			ArrayList<String> SearchDeliMail,				//届先Mail
-			ArrayList<String> SearchDeliMunicCd,			//届先市区町村CD
-			
-			ArrayList<String> SearchCom,					//コメント
-			ArrayList<Integer> SearchStatus,				//運送ステータス
-			
-			ArrayList<Integer> SearchFeeFixFG,				//運賃確定フラグ
-			ArrayList<Integer> SearchReceiptStampFG,		//受領印フラグ
-			ArrayList<Integer> SearchInvoiceStatus,			//請求ステータス
-			
-			ArrayList<Integer> SearchWithOutTaxTotalMin,	//税別運賃合計最小
-			ArrayList<Integer> SearchTotalFeeMin,			//税込運賃合計税込運賃合計
-			ArrayList<String> SearchFeeFixDateStr,			//運賃確定日時開始
-			ArrayList<String> SearchReceiptStampDateStr,	//受領印日時開始
-			ArrayList<String> SearchEntryDateStr,			//登録日終了
-			ArrayList<String> SearchUpdateDateStr,			//更新日終了
-			
-			ArrayList<Integer> SearchWithOutTaxTotalMax,	//税別運賃合計最大
-			ArrayList<Integer> SearchTotalFeeMax,			//税込運賃合計最大
-			ArrayList<String> SearchFeeFixDateEnd,			//運賃確定日時終了
-			ArrayList<String> SearchReceiptStampDateEnd,	//受領印日時終了
-			ArrayList<String> SearchEntryDateEnd,			//登録日終了
-			ArrayList<String> SearchUpdateDateEnd,			//更新日終了
-			
-			ArrayList<String> SearchEntryUser,				//登録者
-			ArrayList<String> SearchUpdateUser,				//更新者
-			ArrayList<String> SearchEntryPG,				//登録プログラム
-			ArrayList<String> SearchUpdatePG,				//更新プログラム
-			ArrayList<String> SearchUseFeeBasePtCd,			//運転計算タリフ
-			ArrayList<Integer> SearchWmsStatus,				//倉庫出荷ステータス
-			ArrayList<String> SearchWmsShipDateStr,			//倉庫出荷日時開始
-			ArrayList<String> SearchWmsShipDateEnd,			//倉庫出荷日時終了
-			ArrayList<String> SearchCourseGpCd,				//配車コースグループコード
-			ArrayList<String> SearchCourseCD,				//配車コースコード
-			ArrayList<String> SearchCourseCDEda,			//配車コースコード枝番
-			ArrayList<String> SearchPitGrp,					//荷物払出ピットグループ
-			ArrayList<String> SearchPit,					//荷物払出ピット
-			
-			ArrayList<String> SearchMsItemCd,				//商品CD
-			ArrayList<String> SearchMsItemName,				//商品名
-			
-			ArrayList<String> SearchClItemCd,				//荷主商品CD
-			
-			ArrayList<String> SearchMsCategoryCd,			//カテゴリCD
-			ArrayList<String> SearchMsCategoryName,			//カテゴリ名
-			ArrayList<String> SearchMsTildFG,				//温度区分
-			ArrayList<String> SearchMsTildName,				//温度区分名
-			
-			ArrayList<String> SearchMsLot,					//ロット指定
-			ArrayList<String> SearchMsExpDateStr,			//賞味期限指定開始
-			ArrayList<String> SearchMsExpDateEnd,			//賞味期限指定終了
-			ArrayList<String> SearchMsPackingType,			//荷姿タイプ
-			
-			boolean AllSearch);
+				SearchInvoiceWHCD,			//倉庫CD
+				SearchClGpCD,				//荷主グループCD
+				SearchClCd,					//荷主CD
+				SearchOkuriNo,				//送り状番号
+				SearchClDeliNo,				//荷主管理番号
+				SearchPickupWhCd,			//集荷倉庫CD
+				SearchPurposeFG,			//目的フラグ
+				SearchPlanDateStr,			//出荷予定日開始
+				SearchShipDateStr,			//出荷実績日開始
+				SearchSPPlanDateStr,		//着日指定開始
+				SearchSPDateStr,			//着日実績開始
+				
+				SearchPlanDateEnd,			//出荷予定日終了
+				SearchShipDateEnd,			//出荷実績日終了
+				SearchSPPlanDateEnd,		//着日指定終了
+				SearchSPDateEnd,			//着日実績終了
+				
+				SearchTotalWeightMin,		//荷物重量(kg)最小
+				SearchTotalSizeMin,			//荷物サイズ最小
+				SearchTotalQtyMin,			//個口数最小
+				
+				SearchTotalWeightMax,		//荷物重量(kg)最大
+				SearchTotalSizeMax,			//荷物サイズ最大
+				SearchTotalQtyMax,			//個口数最大
+				
+				SearchDeliveryTypeCd,		//運送タイプ01
+				SearchDeliveryTypeCd02,		//運送タイプ02
+				SearchDeliveryTypeCd03,		//運送タイプ03
+				SearchDeliveryTypeCd04,		//運送タイプ04
+				SearchDeliveryTypeCd05,		//運送タイプ05
+				
+				SearchCodFG,				//代引区分
+				SearchCodPayTotalMin,		//代引収受金額合計最小
+				SearchCodPayTotalMax,		//代引収受金額合計最大
+				
+				SearchChildrenFG,			//子伝票区分
+				SearchParentOkuriNo,		//親伝票番号
+				
+				SearchNiokuriCd,			//荷送人CD
+				SearchNiokuriDepartmentCd,	//荷送人部署CD
+				SearchNiokuriName,			//荷送人名称
+				SearchNiokuriPost,			//荷送人郵便番号
+				SearchNiokuriAdd,			//荷送人住所
+				SearchNioKuriTel,			//荷送人Tel
+				SearchNioKuriFax,			//荷送人Fax
+				SearchNioKuriMail,			//荷送人Mail
+				SearchNiokuriMunicCd,		//荷送人市区町村CD
+				
+				SearchDeliCd,				//届先CD
+				SearchClDeliCd,				//荷主届先CD
+				SearchDeliDepartmentCd,		//届先部署CD
+				SearchDeliName,				//届先名称
+				SearchDeliPost,				//届先郵便番号
+				SearchDeliAdd,				//届先住所
+				SearchDeliTel,				//届先Tel
+				SearchDeliFax,				//届先Fax
+				SearchDeliMail,				//届先Mail
+				SearchDeliMunicCd,			//届先市区町村CD
+				
+				SearchCom,					//コメント
+				SearchStatus,				//運送ステータス
+				
+				SearchFeeFixFG,				//運賃確定フラグ
+				SearchReceiptStampFG,		//受領印フラグ
+				SearchInvoiceStatus,		//請求ステータス
+				
+				SearchWithOutTaxTotalMin,	//税別運賃合計最小
+				SearchTotalFeeMin,			//税込運賃合計最小
+				SearchFeeFixDateStr,		//運賃確定日時開始
+				SearchReceiptStampDateStr,	//受領印日時開始
+				SearchEntryDateStr,			//登録日開始
+				SearchUpdateDateStr,		//更新日開始
+				
+				SearchWithOutTaxTotalMax,	//税別運賃合計最大
+				SearchTotalFeeMax,			//税込運賃合計最大
+				SearchFeeFixDateEnd,		//運賃確定日時終了
+				SearchReceiptStampDateEnd,	//受領印日時終了
+				SearchEntryDateEnd,			//登録日終了
+				SearchUpdateDateEnd,		//更新日終了
+				
+				SearchEntryUser,			//登録者
+				SearchUpdateUser,			//更新者
+				SearchEntryPG,				//登録プログラム
+				SearchUpdatePG,				//更新プログラム
+				SearchUseFeeBasePtCd,		//運転計算タリフ
+				SearchWmsStatus,			//倉庫出荷ステータス
+				SearchWmsShipDateStr,		//倉庫出荷日時開始
+				SearchWmsShipDateEnd,		//倉庫出荷日時終了
+				SearchCourseGpCd,			//配車コースグループコード
+				SearchCourseCD,				//配車コースコード
+				SearchCourseCDEda,			//配車コースコード枝番
+				SearchPitGrp,				//荷物払出ピットグループ
+				SearchPit,					//荷物払出ピット
+				
+				SearchMsItemCd,				//商品CD
+				SearchMsItemName,			//商品名
+				
+				SearchClItemCd,				//荷主商品CD
+				
+				SearchMsCategoryCd,			//カテゴリCD
+				SearchMsCategoryName,		//カテゴリ名
+				SearchMsTildFG,				//温度区分
+				SearchMsTildName,			//温度区分名
+				
+				SearchMsLot,				//ロット指定
+				SearchMsExpDateStr,			//賞味期限指定開始
+				SearchMsExpDateEnd,			//賞味期限指定終了
+				SearchMsPackingType,		//荷姿タイプ
+				AllSearch);
 			
 			String GetClCd					= (String)OkuriHdRt[i][ColClCd];				//荷主コード
 			String GetInvoiceWhCd			= (String)OkuriHdRt[i][ColInvoiceWhCd];			//倉庫コード
@@ -246,7 +245,7 @@ public class T100_OkuriHdRt{
 			float GetTotalWeight			= (float)OkuriHdRt[i][ColTotalWeight];			//荷物重量(kg)
 			float GetTotalSize				= (float)OkuriHdRt[i][ColTotalSize];			//荷物サイズ
 			int GetTotalQty					= (int)OkuriHdRt[i][ColTotalQty];				//個口数
-			String GetDeliveryTypeCd		= (String)OkuriHdRt[i][ColDeliveryTypeCd];		//運送タイプ01
+			String GetDeliveryTypeCd01		= (String)OkuriHdRt[i][ColDeliveryTypeCd01];	//運送タイプ01
 			String GetDeliTypeName			= (String)OkuriHdRt[i][ColDeliTypeName];		//運送タイプ名01
 			String GetDeliveryTypeCd02		= (String)OkuriHdRt[i][ColDeliveryTypeCd02];	//運送タイプ02
 			String GetDeliTypeName02		= (String)OkuriHdRt[i][ColDeliTypeName02];		//運送タイプ名02
@@ -352,7 +351,7 @@ public class T100_OkuriHdRt{
 	static final int ColTotalWeight			=  13;	//荷物重量(kg)
 	static final int ColTotalSize				=  14;	//荷物サイズ
 	static final int ColTotalQty				=  15;	//個口数
-	static final int ColDeliveryTypeCd		=  16;	//運送タイプ01
+	static final int ColDeliveryTypeCd01		=  16;	//運送タイプ01
 	static final int ColDeliTypeName			=  17;	//運送タイプ名01
 	static final int ColDeliveryTypeCd02		=  18;	//運送タイプ02
 	static final int ColDeliTypeName02		=  19;	//運送タイプ名02
@@ -440,6 +439,116 @@ public class T100_OkuriHdRt{
 	static final int ColClGpCD					= 100;	//荷主グループCD
 	static final int ColCLGpName01			= 101;	//荷主グループ標記名
 	
+	
+	static final int ColSearchInvoiceWHCD			=   0;
+	static final int ColSearchClGpCD					=   1;
+	static final int ColSearchClCd					=   2;
+	static final int ColSearchOkuriNo					=   3;
+	static final int ColSearchClDeliNo				=   4;
+	static final int ColSearchPickupWhCd				=   5;
+	static final int ColSearchPurposeFG				=   6;
+	static final int ColSearchPlanDateStr			=   7;
+	static final int ColSearchShipDateStr			=   8;
+	static final int ColSearchSPPlanDateStr			=   9;
+	static final int ColSearchSPDateStr				=  10;
+		
+	static final int ColSearchPlanDateEnd			=  11;
+	static final int ColSearchShipDateEnd			=  12;
+	static final int ColSearchSPPlanDateEnd			=  13;
+	static final int ColSearchSPDateEnd				=  14;
+		
+	static final int ColSearchTotalWeightMin			=  15;
+	static final int ColSearchTotalSizeMin			=  16;
+	static final int ColSearchTotalQtyMin			=  17;
+		
+	static final int ColSearchTotalWeightMax			=  18;
+	static final int ColSearchTotalSizeMax			=  19;
+	static final int ColSearchTotalQtyMax			=  20;
+		
+	static final int ColSearchDeliveryTypeCd01		=  21;
+	static final int ColSearchDeliveryTypeCd02		=  22;
+	static final int ColSearchDeliveryTypeCd03		=  23;
+	static final int ColSearchDeliveryTypeCd04		=  24;
+	static final int ColSearchDeliveryTypeCd05		=  25;
+	
+	static final int ColSearchCodFG					=  26;
+	static final int ColSearchCodPayTotalMin			=  27;
+	static final int ColSearchCodPayTotalMax			=  28;
+		
+	static final int ColSearchChildrenFG				=  29;
+	static final int ColSearchParentOkuriNo			=  30;
+		
+	static final int ColSearchNiokuriCd				=  31;
+	static final int ColSearchNiokuriDepartmentCd	=  32;
+	static final int ColSearchNiokuriName			=  33;
+	static final int ColSearchNiokuriPost			=  34;
+	static final int ColSearchNiokuriAdd				=  35;
+	static final int ColSearchNioKuriTel				=  36;
+	static final int ColSearchNioKuriFax				=  37;
+	static final int ColSearchNioKuriMail			=  38;
+	static final int ColSearchNiokuriMunicCd			=  39;
+		
+	static final int ColSearchDeliCd					=  40;
+	static final int ColSearchClDeliCd				=  41;
+	static final int ColSearchDeliDepartmentCd		=  42;
+	static final int ColSearchDeliName				=  43;
+	static final int ColSearchDeliPost				=  44;
+	static final int ColSearchDeliAdd					=  45;
+	static final int ColSearchDeliTel					=  46;
+	static final int ColSearchDeliFax					=  47;
+	static final int ColSearchDeliMail				=  48;
+	static final int ColSearchDeliMunicCd			=  49;
+		
+	static final int ColSearchCom						=  50;
+	static final int ColSearchStatus					=  51;
+		
+	static final int ColSearchFeeFixFG				=  52;
+	static final int ColSearchReceiptStampFG			=  53;
+	static final int ColSearchInvoiceStatus			=  54;
+		
+	static final int ColSearchWithOutTaxTotalMin	=  55;
+	static final int ColSearchTotalFeeMin			=  56;
+	static final int ColSearchFeeFixDateStr			=  57;
+	static final int ColSearchReceiptStampDateStr	=  58;
+	static final int ColSearchEntryDateStr			=  59;
+	static final int ColSearchUpdateDateStr			=  60;
+		
+	static final int ColSearchWithOutTaxTotalMax	=  61;
+	static final int ColSearchTotalFeeMax			=  62;
+	static final int ColSearchFeeFixDateEnd			=  63;
+	static final int ColSearchReceiptStampDateEnd	=  64;
+	static final int ColSearchEntryDateEnd			=  65;
+	static final int ColSearchUpdateDateEnd			=  66;
+		
+	static final int ColSearchEntryUser				=  67;
+	static final int ColSearchUpdateUser				=  68;
+	static final int ColSearchEntryPG					=  69;
+	static final int ColSearchUpdatePG				=  70;
+	static final int ColSearchUseFeeBasePtCd			=  71;
+	static final int ColSearchWmsStatus				=  72;
+	static final int ColSearchWmsShipDateStr			=  73;
+	static final int ColSearchWmsShipDateEnd			=  74;
+	static final int ColSearchCourseGpCd				=  75;
+	static final int ColSearchCourseCD				=  76;
+	static final int ColSearchCourseCDEda			=  77;
+	static final int ColSearchPitGrp					=  78;
+	static final int ColSearchPit						=  79;
+		
+	static final int ColSearchMsItemCd				=  80;
+	static final int ColSearchMsItemName				=  81;
+		
+	static final int ColSearchClItemCd				=  82;
+			
+	static final int ColSearchMsCategoryCd			=  83;
+	static final int ColSearchMsCategoryName			=  84;
+	static final int ColSearchMsTildFG				=  85;
+	static final int ColSearchMsTildName				=  86;
+		
+	static final int ColSearchMsLot					=  87;
+	static final int ColSearchMsExpDateStr			=  88;
+	static final int ColSearchMsExpDateEnd			=  89;
+	static final int ColSearchMsPackingType			=  90;
+	
 	public static Object[][] RtOkuriHdRt(){
 		Object[][] Rt = {
 						 {"ClCd"				,ColClCd					,"String"	,"荷主コード"					,"Key"}
@@ -458,7 +567,7 @@ public class T100_OkuriHdRt{
 						,{"TotalWeight"			,ColTotalWeight			,"float"	,"荷物重量(kg)"					,""}
 						,{"TotalSize"			,ColTotalSize				,"float"	,"荷物サイズ"					,""}
 						,{"TotalQty"			,ColTotalQty				,"int"		,"個口数"						,""}
-						,{"DeliveryTypeCd"		,ColDeliveryTypeCd		,"String"	,"運送タイプ01"					,""}
+						,{"DeliveryTypeCd01"	,ColDeliveryTypeCd01		,"String"	,"運送タイプ01"					,""}
 						,{"DeliTypeName"		,ColDeliTypeName			,"String"	,"運送タイプ名01"				,""}
 						,{"DeliveryTypeCd02"	,ColDeliveryTypeCd02		,"String"	,"運送タイプ02"					,""}
 						,{"DeliTypeName02"		,ColDeliTypeName02		,"String"	,"運送タイプ名02"				,""}
@@ -550,7 +659,6 @@ public class T100_OkuriHdRt{
 	}
 	
 	
-	
 	public static Object[][] OkuriHdRt(
 			ArrayList<String> SearchInvoiceWHCD,			//倉庫CD
 			ArrayList<String> SearchClGpCD,					//荷主グループCD
@@ -577,7 +685,7 @@ public class T100_OkuriHdRt{
 			ArrayList<Float> SearchTotalSizeMax,			//荷物サイズ最大
 			ArrayList<Integer> SearchTotalQtyMax,			//個口数最大
 			
-			ArrayList<String> SearchDeliveryTypeCd,			//運送タイプ01
+			ArrayList<String> SearchDeliveryTypeCd01,		//運送タイプ01
 			ArrayList<String> SearchDeliveryTypeCd02,		//運送タイプ02
 			ArrayList<String> SearchDeliveryTypeCd03,		//運送タイプ03
 			ArrayList<String> SearchDeliveryTypeCd04,		//運送タイプ04
@@ -642,7 +750,7 @@ public class T100_OkuriHdRt{
 			ArrayList<String> SearchWmsShipDateEnd,			//倉庫出荷日時終了
 			ArrayList<String> SearchCourseGpCd,				//配車コースグループコード
 			ArrayList<String> SearchCourseCD,				//配車コースコード
-			ArrayList<String> SearchCourseCDEda,			//配車コースコード枝番
+			ArrayList<Integer> SearchCourseCDEda,			//配車コースコード枝番
 			ArrayList<String> SearchPitGrp,					//荷物払出ピットグループ
 			ArrayList<String> SearchPit,					//荷物払出ピット
 			
@@ -659,30 +767,674 @@ public class T100_OkuriHdRt{
 			ArrayList<String> SearchMsLot,					//ロット指定
 			ArrayList<String> SearchMsExpDateStr,			//賞味期限指定開始
 			ArrayList<String> SearchMsExpDateEnd,			//賞味期限指定終了
-			ArrayList<String> SearchMsPackingType,			//荷姿タイプ
-			
+			ArrayList<Integer> SearchMsPackingType,			//荷姿タイプ
 			boolean AllSearch){
 		
-		//日付系最小は念のため00:00:00扱い
-		SearchPlanDateStr			= B100_ArrayListControl.DateOnlySet(SearchPlanDateStr);
-		SearchShipDateStr			= B100_ArrayListControl.DateOnlySet(SearchShipDateStr);
-		SearchSPPlanDateStr			= B100_ArrayListControl.DateOnlySet(SearchSPPlanDateStr);
-		SearchSPDateStr				= B100_ArrayListControl.DateOnlySet(SearchSPDateStr);
-		SearchWmsShipDateStr		= B100_ArrayListControl.DateOnlySet(SearchWmsShipDateStr);
-		SearchFeeFixDateStr			= B100_ArrayListControl.DateOnlySet(SearchFeeFixDateStr);
-		SearchReceiptStampDateStr	= B100_ArrayListControl.DateOnlySet(SearchReceiptStampDateStr);
-		SearchMsExpDateStr			= B100_ArrayListControl.DateOnlySet(SearchMsExpDateStr);
+		Object[][] Definition = {
+				 	 {"String"		,SearchInvoiceWHCD,			"Exact"			,ColSearchInvoiceWHCD	,B100_DefaultVariable.SearchWhList						,"倉庫CD"			,""}
+					,{"String"		,SearchClGpCD,				"Exact"			,ColSearchClGpCD			,B100_DefaultVariable.SearchClGpList						,"荷主グループCD"	,""}
+					,{"String"		,SearchClCd,				"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList						,"荷主CD"			,""	}
+					,{"String"		,SearchOkuriNo,				"Exact"			,ColSearchOkuriNo			,""															,"送り状番号"		,""	}
+					,{"String"		,SearchClDeliNo,			"Exact"			,ColSearchClDeliNo		,""															,"荷主管理番号"		,""	}
+					,{"String"		,SearchPickupWhCd,			"Exact"			,ColSearchPickupWhCd		,B100_DefaultVariable.SearchWhList						,"集荷倉庫CD"		,""	}
+					,{"String"		,SearchPurposeFG,			"Exact"			,ColSearchPurposeFG		,B100_DefaultVariable.SearchPurposeList					,"目的フラグ"		,""	}
+					,{"Date"		,SearchPlanDateStr,			"RangeStr"		,ColSearchPlanDateStr	,""															,"出荷予定日"		,"開始"	}
+					,{"Date"		,SearchShipDateStr,			"RangeStr"		,ColSearchShipDateStr	,""															,"出荷実績日"		,"開始"	}
+					,{"Date"		,SearchSPPlanDateStr,		"RangeStr"		,ColSearchSPPlanDateStr	,""															,"着日指定"			,"開始"	}
+					,{"Date"		,SearchSPDateStr,			"RangeStr"		,ColSearchSPDateStr		,""															,"着日実績"			,"開始"	}
+					
+					,{"Date"		,SearchPlanDateEnd,			"RangeEnd"		,ColSearchPlanDateEnd	,""															,"出荷予定日"		,"終了"	}
+					,{"Date"		,SearchShipDateEnd,			"RangeEnd"		,ColSearchShipDateEnd	,""															,"出荷実績日"		,"終了"	}
+					,{"Date"		,SearchSPPlanDateEnd,		"RangeEnd"		,ColSearchSPPlanDateEnd	,""															,"着日指定"			,"終了"	}
+					,{"Date"		,SearchSPDateEnd,			"RangeEnd"		,ColSearchSPDateEnd		,""															,"着日実績"			,"終了"	}
+					
+					,{"Float"		,SearchTotalWeightMin,		"RangeMin"		,ColSearchTotalWeightMin	,""															,"荷物重量(kg)"		,"最小"	}
+					,{"Float"		,SearchTotalSizeMin,		"RangeMin"		,ColSearchTotalSizeMin	,""															,"荷物サイズ"		,"最小"	}
+					,{"Integer"		,SearchTotalQtyMin,			"RangeMin"		,ColSearchTotalQtyMin	,""															,"個口数"			,"最小"	}
+					
+					,{"Float"		,SearchTotalWeightMax,		"RangeMax"		,ColSearchTotalWeightMax	,""															,"荷物重量(kg)"		,"最大"	}
+					,{"Float"		,SearchTotalSizeMax,		"RangeMax"		,ColSearchTotalSizeMax	,""															,"荷物サイズ"		,"最大"	}
+					,{"Integer"		,SearchTotalQtyMax,			"RangeMax"		,ColSearchTotalQtyMax	,""															,"個口数"			,"最大"	}
+					
+					,{"String"		,SearchDeliveryTypeCd01,	"Exact"			,ColSearchDeliveryTypeCd01	,B100_DefaultVariable.SearchDeliveryType01			,"運送タイプ01"		,""	}
+					,{"String"		,SearchDeliveryTypeCd02,	"Exact"			,ColSearchDeliveryTypeCd02	,B100_DefaultVariable.SearchDeliveryType02			,"運送タイプ02"		,""	}
+					,{"String"		,SearchDeliveryTypeCd03,	"Exact"			,ColSearchDeliveryTypeCd03	,B100_DefaultVariable.SearchDeliveryType03			,"運送タイプ03"		,""	}
+					,{"String"		,SearchDeliveryTypeCd04,	"Exact"			,ColSearchDeliveryTypeCd04	,B100_DefaultVariable.SearchDeliveryType04			,"運送タイプ04"		,""	}
+					,{"String"		,SearchDeliveryTypeCd05,	"Exact"			,ColSearchDeliveryTypeCd05	,B100_DefaultVariable.SearchDeliveryType05			,"運送タイプ05"		,""	}
+					
+					,{"Integer"		,SearchCodFG,				"Exact"			,ColSearchCodFG				,B100_DefaultVariable.SearchCODList					,"代引区分"			,""	}
+					,{"Integer"		,SearchCodPayTotalMin,		"RangeMin"		,ColSearchCodPayTotalMin		,""														,"代引収受金額合計"	,"最小"	}
+					,{"Integer"		,SearchCodPayTotalMax,		"RangeMax"		,ColSearchCodPayTotalMax		,""														,"代引収受金額合計"	,"最大"	}
+					
+					,{"Integer"		,SearchChildrenFG,			"Exact"			,ColSearchChildrenFG			,""														,"子伝票区分"		,""	}
+					,{"String"		,SearchParentOkuriNo,		"Exact"			,ColSearchParentOkuriNo		,""														,"親伝票番号"		,""	}
+					
+					,{"String"		,SearchNiokuriCd,			"Exact"			,ColSearchNiokuriCd				,""													,"荷送人CD"			,""	}
+					,{"String"		,SearchNiokuriDepartmentCd,	"Exact"			,ColSearchNiokuriDepartmentCd	,""													,"荷送人部署CD"		,""	}
+					,{"String"		,SearchNiokuriName,			"Partial"		,ColSearchNiokuriName			,""													,"荷送人名称"		,""	}
+					,{"String"		,SearchNiokuriPost,			"Prefix"		,ColSearchNiokuriPost			,""													,"荷送人郵便番号"	,""	}
+					,{"String"		,SearchNiokuriAdd,			"Partial"		,ColSearchNiokuriAdd				,""													,"荷送人住所"		,""	}
+					,{"String"		,SearchNioKuriTel,			"Partial"		,ColSearchNioKuriTel				,""													,"荷送人Tel"		,""	}
+					,{"String"		,SearchNioKuriFax,			"Partial"		,ColSearchNioKuriFax				,""													,"荷送人Fax"		,""	}
+					,{"String"		,SearchNioKuriMail,			"Partial"		,ColSearchNioKuriMail			,""													,"荷送人Mail"		,""	}
+					,{"String"		,SearchNiokuriMunicCd,		"Prefix"		,ColSearchNiokuriMunicCd			,""													,"荷送人市区町村CD"	,""	}
+					
+					,{"String"		,SearchDeliCd,				"Exact"			,ColSearchDeliCd					,""													,"届先CD"			,""	}
+					,{"String"		,SearchClDeliCd,			"Exact"			,ColSearchClDeliCd				,""													,"荷主届先CD"		,""	}
+					,{"String"		,SearchDeliDepartmentCd,	"Exact"			,ColSearchDeliDepartmentCd		,""													,"届先部署CD"		,""	}
+					,{"String"		,SearchDeliName,			"Partial"		,ColSearchDeliName				,""													,"届先名称"			,""	}
+					,{"String"		,SearchDeliPost,			"Prefix"		,ColSearchDeliPost				,""													,"届先郵便番号"		,""	}
+					,{"String"		,SearchDeliAdd,				"Partial"		,ColSearchDeliAdd					,""													,"届先住所"			,""	}
+					,{"String"		,SearchDeliTel,				"Partial"		,ColSearchDeliTel					,""													,"届先Tel"			,""	}
+					,{"String"		,SearchDeliFax,				"Partial"		,ColSearchDeliFax					,""													,"届先Fax"			,""	}
+					,{"String"		,SearchDeliMail,			"Partial"		,ColSearchDeliMail				,""													,"届先Mail"			,""	}
+					,{"String"		,SearchDeliMunicCd,			"Prefix"		,ColSearchDeliMunicCd			,""													,"届先市区町村CD"	,""	}
+					
+					,{"String"		,SearchCom,					"Partial"		,ColSearchCom						,""													,"コメント"			,""	}
+					,{"Integer"		,SearchStatus,				"Exact"			,ColSearchStatus					,B100_DefaultVariable.SearchStatusList			,"運送ステータス"	,""	}
+					
+					,{"Integer"		,SearchFeeFixFG,			"Exact"			,ColSearchFeeFixFG				,B100_DefaultVariable.SearchFeeFixFgList			,"運賃確定フラグ"	,""	}
+					,{"Integer"		,SearchReceiptStampFG,		"Exact"			,ColSearchReceiptStampFG			,B100_DefaultVariable.SearchReceiptStampFGList	,"受領印フラグ"		,""	}
+					,{"Integer"		,SearchInvoiceStatus,		"Exact"			,ColSearchInvoiceStatus			,B100_DefaultVariable.SearchInvoiceStatusList	,"請求ステータス"	,""	}
+					
+					,{"Integer"		,SearchWithOutTaxTotalMin,	"RangeMin"		,ColSearchWithOutTaxTotalMin	,""													,"税別運賃合計"			,"最小"	}
+					,{"Integer"		,SearchTotalFeeMin,			"RangeMin"		,ColSearchTotalFeeMin			,""													,"税込運賃合計"			,"最小"	}
+					,{"Date"		,SearchFeeFixDateStr,		"RangeStr"		,ColSearchFeeFixDateStr			,""													,"運賃確定日時"			,"開始"	}
+					,{"Date"		,SearchReceiptStampDateStr,	"RangeStr"		,ColSearchReceiptStampDateStr	,""													,"受領印日時"			,"開始"	}
+					,{"DateTime"	,SearchEntryDateStr,		"RangeStr"		,ColSearchEntryDateStr			,""													,"登録日"				,"開始"	}
+					,{"DateTime"	,SearchUpdateDateStr,		"RangeStr"		,ColSearchUpdateDateStr			,""													,"更新日"				,"開始"	}
+					
+					,{"Integer"		,SearchWithOutTaxTotalMax,	"RangeMax"		,ColSearchWithOutTaxTotalMax	,""													,"税別運賃合計"			,"最大"	}
+					,{"Integer"		,SearchTotalFeeMax,			"RangeMax"		,ColSearchTotalFeeMax			,""													,"税込運賃合計"			,"最大"	}
+					,{"Date"		,SearchFeeFixDateEnd,		"RangeEnd"		,ColSearchFeeFixDateEnd			,""													,"運賃確定日時"			,"終了"	}
+					,{"Date"		,SearchReceiptStampDateEnd,	"RangeEnd"		,ColSearchReceiptStampDateEnd	,""													,"受領印日時"			,"終了"	}
+					,{"DateTime"	,SearchEntryDateEnd,		"RangeEnd"		,ColSearchEntryDateEnd			,""													,"登録日"				,"終了"	}
+					,{"DateTime"	,SearchUpdateDateEnd,		"RangeEnd"		,ColSearchUpdateDateEnd			,""													,"更新日"				,"終了"	}
+					
+					,{"String"		,SearchEntryUser,			"Partial"		,ColSearchEntryUser				,""													,"登録者"					,""	}
+					,{"String"		,SearchUpdateUser,			"Partial"		,ColSearchUpdateUser				,""													,"更新者"					,""	}
+					,{"String"		,SearchEntryPG,				"Partial"		,ColSearchEntryPG					,""													,"登録プログラム"			,""	}
+					,{"String"		,SearchUpdatePG,			"Partial"		,ColSearchUpdatePG				,""													,"更新プログラム"			,""	}
+					,{"String"		,SearchUseFeeBasePtCd,		"Exact"			,ColSearchUseFeeBasePtCd			,""													,"運転計算タリフ"			,""	}
+					,{"Integer"		,SearchWmsStatus,			"Exact"			,ColSearchWmsStatus				,B100_DefaultVariable.SearchWmsStatusList		,"倉庫出荷ステータス"		,""	}
+					,{"Date"		,SearchWmsShipDateStr,		"RangeStr"		,ColSearchWmsShipDateStr			,""													,"倉庫出荷日時開始"			,""	}
+					,{"Date"		,SearchWmsShipDateEnd,		"RangeEnd"		,ColSearchWmsShipDateEnd			,""													,"倉庫出荷日時終了"			,""	}
+					,{"String"		,SearchCourseGpCd,			"Exact"			,ColSearchCourseGpCd				,""													,"配車コースグループコード"	,""	}
+					,{"String"		,SearchCourseCD,			"Exact"			,ColSearchCourseCD				,""													,"配車コースコード"			,""	}
+					,{"Integer"		,SearchCourseCDEda,			"Exact"			,ColSearchCourseCDEda			,""													,"配車コースコード枝番"		,""	}
+					,{"String"		,SearchPitGrp,				"Exact"			,ColSearchPitGrp					,""													,"荷物払出ピットグループ"	,""	}
+					,{"String"		,SearchPit,					"Exact"			,ColSearchPit						,""													,"荷物払出ピット"			,""	}
+					
+					,{"String"		,SearchMsItemCd,			"Exact"			,ColSearchMsItemCd				,""													,"商品CD"			,""	}
+					,{"String"		,SearchMsItemName,			"Partial"		,ColSearchMsItemName				,""													,"商品名"			,""	}
+					
+					,{"String"		,SearchClItemCd,			"Exact"			,ColSearchClItemCd				,""													,"荷主商品CD"		,""	}
+						
+					,{"String"		,SearchMsCategoryCd,		"Exact"			,ColSearchMsCategoryCd			,""													,"カテゴリCD"		,""	}
+					,{"String"		,SearchMsCategoryName,		"Partial"		,ColSearchMsCategoryName			,""													,"カテゴリ名"		,""	}
+					,{"String"		,SearchMsTildFG,			"Exact"			,ColSearchMsTildFG				,""													,"温度区分"			,""	}
+					,{"String"		,SearchMsTildName,			"Partial"		,ColSearchMsTildName				,""													,"温度区分名"		,""	}
+					
+					,{"String"		,SearchMsLot,				"Exact"			,ColSearchMsLot					,""													,"ロット指定"		,""	}
+					,{"Date"		,SearchMsExpDateStr,		"RangeStr"		,ColSearchMsExpDateStr			,""													,"賞味期限指定"		,"開始"	}
+					,{"Date"		,SearchMsExpDateEnd,		"RangeEnd"		,ColSearchMsExpDateEnd			,""													,"賞味期限指定"		,"終了"	}
+					,{"Integer"		,SearchMsPackingType,		"Exact	"		,ColSearchMsPackingType			,B100_DefaultVariable.SearchUnitTypeList			,"荷姿タイプ"		,""	}
+				};
 		
-		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなので注意
-		SearchPlanDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchPlanDateEnd			,1);
-		SearchShipDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchShipDateEnd			,1);
-		SearchSPPlanDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchSPPlanDateEnd		,1);
-		SearchSPDateEnd				= B100_ArrayListControl.DateOnlySetNdateAfter(SearchSPDateEnd			,1);
-		SearchWmsShipDateEnd		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchWmsShipDateEnd		,1);
-		SearchFeeFixDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchFeeFixDateEnd		,1);
-		SearchReceiptStampDateEnd	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchReceiptStampDateEnd	,1);
-		SearchMsExpDateEnd			= B100_ArrayListControl.DateOnlySetNdateAfter(SearchMsExpDateEnd			,1);
-		
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]){
+				case ColSearchInvoiceWHCD:
+					SearchInvoiceWHCD			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClGpCD:
+					SearchClGpCD				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClCd:
+					SearchClCd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchOkuriNo:
+					SearchOkuriNo				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClDeliNo:
+					SearchClDeliNo				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPickupWhCd:
+					SearchPickupWhCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPurposeFG:
+					SearchPurposeFG				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPlanDateStr:
+					SearchPlanDateStr			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchShipDateStr:
+					SearchShipDateStr			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPPlanDateStr:
+					SearchSPPlanDateStr			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPDateStr:
+					SearchSPDateStr				= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchPlanDateEnd:
+					SearchPlanDateEnd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchShipDateEnd:
+					SearchShipDateEnd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPPlanDateEnd:
+					SearchSPPlanDateEnd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPDateEnd:
+					SearchSPDateEnd				= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchTotalWeightMin:
+					SearchTotalWeightMin		= (ArrayList<Float>)Definition[i][1];
+					break;
+				case ColSearchTotalSizeMin:
+					SearchTotalSizeMin			= (ArrayList<Float>)Definition[i][1];
+					break;
+				case ColSearchTotalQtyMin:
+					SearchTotalQtyMin			= (ArrayList<Integer>)Definition[i][1];
+					break;
+					
+				case ColSearchTotalWeightMax:
+					SearchTotalWeightMax		= (ArrayList<Float>)Definition[i][1];
+					break;
+				case ColSearchTotalSizeMax:
+					SearchTotalSizeMax			= (ArrayList<Float>)Definition[i][1];
+					break;
+				case ColSearchTotalQtyMax:
+					SearchTotalQtyMax			= (ArrayList<Integer>)Definition[i][1];
+					break;
+					
+				case ColSearchDeliveryTypeCd01:
+					SearchDeliveryTypeCd01		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd02:
+					SearchDeliveryTypeCd02		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd03:
+					SearchDeliveryTypeCd03		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd04:
+					SearchDeliveryTypeCd04		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd05:
+					SearchDeliveryTypeCd05		= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchCodFG:
+					SearchCodFG					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchCodPayTotalMin:
+					SearchCodPayTotalMin		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchCodPayTotalMax:
+					SearchCodPayTotalMax		= (ArrayList<Integer>)Definition[i][1];
+					break;
+					
+				case ColSearchChildrenFG:
+					SearchChildrenFG			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParentOkuriNo:
+					SearchParentOkuriNo			= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchNiokuriCd:
+					SearchNiokuriCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchNiokuriDepartmentCd:
+					SearchNiokuriDepartmentCd	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchNiokuriName:
+					SearchNiokuriName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchNiokuriPost:
+					SearchNiokuriPost			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchNiokuriAdd:
+					SearchNiokuriAdd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchNioKuriTel:
+					SearchNioKuriTel			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchNioKuriFax:
+					SearchNioKuriFax			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchNioKuriMail:
+					SearchNioKuriMail			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchNiokuriMunicCd:
+					SearchNiokuriMunicCd		= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchDeliCd:
+					SearchDeliCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClDeliCd:
+					SearchClDeliCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliDepartmentCd:
+					SearchDeliDepartmentCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliName:
+					SearchDeliName				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliPost:
+					SearchDeliPost				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliAdd:
+					SearchDeliAdd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliTel:
+					SearchDeliTel				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliFax:
+					SearchDeliFax				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliMail:
+					SearchDeliMail				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliMunicCd:
+					SearchDeliMunicCd			= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchCom:
+					SearchCom					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchStatus:
+					SearchStatus				= (ArrayList<Integer>)Definition[i][1];
+					break;
+					
+				case ColSearchFeeFixFG:
+					SearchFeeFixFG				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchReceiptStampFG:
+					SearchReceiptStampFG		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchInvoiceStatus:
+					SearchInvoiceStatus			= (ArrayList<Integer>)Definition[i][1];
+					break;
+					
+				case ColSearchWithOutTaxTotalMin:
+					SearchWithOutTaxTotalMin	= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchTotalFeeMin:
+					SearchTotalFeeMin			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchFeeFixDateStr:
+					SearchFeeFixDateStr			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchReceiptStampDateStr:
+					SearchReceiptStampDateStr	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryDateStr:
+					SearchEntryDateStr			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateDateStr:
+					SearchUpdateDateStr			= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchWithOutTaxTotalMax:
+					SearchWithOutTaxTotalMax	= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchTotalFeeMax:
+					SearchTotalFeeMax			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchFeeFixDateEnd:
+					SearchFeeFixDateEnd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchReceiptStampDateEnd:
+					SearchReceiptStampDateEnd	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryDateEnd:
+					SearchEntryDateEnd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateDateEnd:
+					SearchUpdateDateEnd			= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchEntryUser:
+					SearchEntryUser				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateUser:
+					SearchUpdateUser			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryPG:
+					SearchEntryPG				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdatePG:
+					SearchUpdatePG				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUseFeeBasePtCd:
+					SearchUseFeeBasePtCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchWmsStatus:
+					SearchWmsStatus				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchWmsShipDateStr:
+					SearchWmsShipDateStr		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchWmsShipDateEnd:
+					SearchWmsShipDateEnd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCourseGpCd:
+					SearchCourseGpCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCourseCD:
+					SearchCourseCD				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCourseCDEda:
+					SearchCourseCDEda			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchPitGrp:
+					SearchPitGrp				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPit:
+					SearchPit					= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchMsItemCd:
+					SearchMsItemCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMsItemName:
+					SearchMsItemName			= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchClItemCd:
+					SearchClItemCd				= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchMsCategoryCd:
+					SearchMsCategoryCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMsCategoryName:
+					SearchMsCategoryName		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMsTildFG:
+					SearchMsTildFG				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMsTildName:
+					SearchMsTildName			= (ArrayList<String>)Definition[i][1];
+					break;
+					
+				case ColSearchMsLot:
+					SearchMsLot					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMsExpDateStr:
+					SearchMsExpDateStr			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMsExpDateEnd:
+					SearchMsExpDateEnd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMsPackingType:
+					SearchMsPackingType			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+			
+		}
+		Object[][]  Rt = OkuriHdRtMain(
+				SearchInvoiceWHCD,			//倉庫CD
+				SearchClGpCD,				//荷主グループCD
+				SearchClCd,					//荷主CD
+				SearchOkuriNo,				//送り状番号
+				SearchClDeliNo,				//荷主管理番号
+				SearchPickupWhCd,			//集荷倉庫CD
+				SearchPurposeFG,			//目的フラグ
+				SearchPlanDateStr,			//出荷予定日開始
+				SearchShipDateStr,			//出荷実績日開始
+				SearchSPPlanDateStr,		//着日指定開始
+				SearchSPDateStr,			//着日実績開始
+				
+				SearchPlanDateEnd,			//出荷予定日終了
+				SearchShipDateEnd,			//出荷実績日終了
+				SearchSPPlanDateEnd,		//着日指定終了
+				SearchSPDateEnd,			//着日実績終了
+				
+				SearchTotalWeightMin,		//荷物重量(kg)最小
+				SearchTotalSizeMin,			//荷物サイズ最小
+				SearchTotalQtyMin,			//個口数最小
+				
+				SearchTotalWeightMax,		//荷物重量(kg)最大
+				SearchTotalSizeMax,			//荷物サイズ最大
+				SearchTotalQtyMax,			//個口数最大
+				
+				SearchDeliveryTypeCd01,		//運送タイプ01
+				SearchDeliveryTypeCd02,		//運送タイプ02
+				SearchDeliveryTypeCd03,		//運送タイプ03
+				SearchDeliveryTypeCd04,		//運送タイプ04
+				SearchDeliveryTypeCd05,		//運送タイプ05
+				
+				SearchCodFG,				//代引区分
+				SearchCodPayTotalMin,		//代引収受金額合計最小
+				SearchCodPayTotalMax,		//代引収受金額合計最大
+				
+				SearchChildrenFG,			//子伝票区分
+				SearchParentOkuriNo,		//親伝票番号
+				
+				SearchNiokuriCd,			//荷送人CD
+				SearchNiokuriDepartmentCd,	//荷送人部署CD
+				SearchNiokuriName,			//荷送人名称
+				SearchNiokuriPost,			//荷送人郵便番号
+				SearchNiokuriAdd,			//荷送人住所
+				SearchNioKuriTel,			//荷送人Tel
+				SearchNioKuriFax,			//荷送人Fax
+				SearchNioKuriMail,			//荷送人Mail
+				SearchNiokuriMunicCd,		//荷送人市区町村CD
+				
+				SearchDeliCd,				//届先CD
+				SearchClDeliCd,				//荷主届先CD
+				SearchDeliDepartmentCd,		//届先部署CD
+				SearchDeliName,				//届先名称
+				SearchDeliPost,				//届先郵便番号
+				SearchDeliAdd,				//届先住所
+				SearchDeliTel,				//届先Tel
+				SearchDeliFax,				//届先Fax
+				SearchDeliMail,				//届先Mail
+				SearchDeliMunicCd,			//届先市区町村CD
+				
+				SearchCom,					//コメント
+				SearchStatus,				//運送ステータス
+				
+				SearchFeeFixFG,				//運賃確定フラグ
+				SearchReceiptStampFG,		//受領印フラグ
+				SearchInvoiceStatus,		//請求ステータス
+				
+				SearchWithOutTaxTotalMin,	//税別運賃合計最小
+				SearchTotalFeeMin,			//税込運賃合計最小
+				SearchFeeFixDateStr,		//運賃確定日時開始
+				SearchReceiptStampDateStr,	//受領印日時開始
+				SearchEntryDateStr,			//登録日開始
+				SearchUpdateDateStr,		//更新日開始
+				
+				SearchWithOutTaxTotalMax,	//税別運賃合計最大
+				SearchTotalFeeMax,			//税込運賃合計最大
+				SearchFeeFixDateEnd,		//運賃確定日時終了
+				SearchReceiptStampDateEnd,	//受領印日時終了
+				SearchEntryDateEnd,			//登録日終了
+				SearchUpdateDateEnd,		//更新日終了
+				
+				SearchEntryUser,			//登録者
+				SearchUpdateUser,			//更新者
+				SearchEntryPG,				//登録プログラム
+				SearchUpdatePG,				//更新プログラム
+				SearchUseFeeBasePtCd,		//運転計算タリフ
+				SearchWmsStatus,			//倉庫出荷ステータス
+				SearchWmsShipDateStr,		//倉庫出荷日時開始
+				SearchWmsShipDateEnd,		//倉庫出荷日時終了
+				SearchCourseGpCd,			//配車コースグループコード
+				SearchCourseCD,				//配車コースコード
+				SearchCourseCDEda,			//配車コースコード枝番
+				SearchPitGrp,				//荷物払出ピットグループ
+				SearchPit,					//荷物払出ピット
+				
+				SearchMsItemCd,				//商品CD
+				SearchMsItemName,			//商品名
+				
+				SearchClItemCd,				//荷主商品CD
+				
+				SearchMsCategoryCd,			//カテゴリCD
+				SearchMsCategoryName,		//カテゴリ名
+				SearchMsTildFG,				//温度区分
+				SearchMsTildName,			//温度区分名
+				
+				SearchMsLot,				//ロット指定
+				SearchMsExpDateStr,			//賞味期限指定開始
+				SearchMsExpDateEnd,			//賞味期限指定終了
+				SearchMsPackingType,		//荷姿タイプ
+				AllSearch);
+		return Rt;
+	}
+	
+	
+	
+	public static Object[][] OkuriHdRtMain(
+			ArrayList<String> SearchInvoiceWHCD,			//倉庫CD
+			ArrayList<String> SearchClGpCD,					//荷主グループCD
+			ArrayList<String> SearchClCd,					//荷主CD
+			ArrayList<String> SearchOkuriNo,				//送り状番号
+			ArrayList<String> SearchClDeliNo,				//荷主管理番号
+			ArrayList<String> SearchPickupWhCd,				//集荷倉庫CD
+			ArrayList<String> SearchPurposeFG,				//目的フラグ
+			ArrayList<String> SearchPlanDateStr,			//出荷予定日開始
+			ArrayList<String> SearchShipDateStr,			//出荷実績日開始
+			ArrayList<String> SearchSPPlanDateStr,			//着日指定開始
+			ArrayList<String> SearchSPDateStr,				//着日実績開始
+			
+			ArrayList<String> SearchPlanDateEnd,			//出荷予定日終了
+			ArrayList<String> SearchShipDateEnd,			//出荷実績日終了
+			ArrayList<String> SearchSPPlanDateEnd,			//着日指定終了
+			ArrayList<String> SearchSPDateEnd,				//着日実績終了
+			
+			ArrayList<Float> SearchTotalWeightMin,			//荷物重量(kg)最小
+			ArrayList<Float> SearchTotalSizeMin,			//荷物サイズ最小
+			ArrayList<Integer> SearchTotalQtyMin,			//個口数最小
+			
+			ArrayList<Float> SearchTotalWeightMax,			//荷物重量(kg)最大
+			ArrayList<Float> SearchTotalSizeMax,			//荷物サイズ最大
+			ArrayList<Integer> SearchTotalQtyMax,			//個口数最大
+			
+			ArrayList<String> SearchDeliveryTypeCd01,		//運送タイプ01
+			ArrayList<String> SearchDeliveryTypeCd02,		//運送タイプ02
+			ArrayList<String> SearchDeliveryTypeCd03,		//運送タイプ03
+			ArrayList<String> SearchDeliveryTypeCd04,		//運送タイプ04
+			ArrayList<String> SearchDeliveryTypeCd05,		//運送タイプ05
+			
+			ArrayList<Integer> SearchCodFG,					//代引区分
+			ArrayList<Integer> SearchCodPayTotalMin,		//代引収受金額合計最小
+			ArrayList<Integer> SearchCodPayTotalMax,		//代引収受金額合計最大
+			
+			ArrayList<Integer> SearchChildrenFG,			//子伝票区分
+			ArrayList<String> SearchParentOkuriNo,			//親伝票番号
+			
+			ArrayList<String> SearchNiokuriCd,				//荷送人CD
+			ArrayList<String> SearchNiokuriDepartmentCd,	//荷送人部署CD
+			ArrayList<String> SearchNiokuriName,			//荷送人名称
+			ArrayList<String> SearchNiokuriPost,			//荷送人郵便番号
+			ArrayList<String> SearchNiokuriAdd,				//荷送人住所
+			ArrayList<String> SearchNioKuriTel,				//荷送人Tel
+			ArrayList<String> SearchNioKuriFax,				//荷送人Fax
+			ArrayList<String> SearchNioKuriMail,			//荷送人Mail
+			ArrayList<String> SearchNiokuriMunicCd,			//荷送人市区町村CD
+			
+			ArrayList<String> SearchDeliCd,					//届先CD
+			ArrayList<String> SearchClDeliCd,				//荷主届先CD
+			ArrayList<String> SearchDeliDepartmentCd,		//届先部署CD
+			ArrayList<String> SearchDeliName,				//届先名称
+			ArrayList<String> SearchDeliPost,				//届先郵便番号
+			ArrayList<String> SearchDeliAdd,				//届先住所
+			ArrayList<String> SearchDeliTel,				//届先Tel
+			ArrayList<String> SearchDeliFax,				//届先Fax
+			ArrayList<String> SearchDeliMail,				//届先Mail
+			ArrayList<String> SearchDeliMunicCd,			//届先市区町村CD
+			
+			ArrayList<String> SearchCom,					//コメント
+			ArrayList<Integer> SearchStatus,				//運送ステータス
+			
+			ArrayList<Integer> SearchFeeFixFG,				//運賃確定フラグ
+			ArrayList<Integer> SearchReceiptStampFG,		//受領印フラグ
+			ArrayList<Integer> SearchInvoiceStatus,			//請求ステータス
+			
+			ArrayList<Integer> SearchWithOutTaxTotalMin,	//税別運賃合計最小
+			ArrayList<Integer> SearchTotalFeeMin,			//税込運賃合計最小
+			ArrayList<String> SearchFeeFixDateStr,			//運賃確定日時開始
+			ArrayList<String> SearchReceiptStampDateStr,	//受領印日時開始
+			ArrayList<String> SearchEntryDateStr,			//登録日開始
+			ArrayList<String> SearchUpdateDateStr,			//更新日開始
+			
+			ArrayList<Integer> SearchWithOutTaxTotalMax,	//税別運賃合計最大
+			ArrayList<Integer> SearchTotalFeeMax,			//税込運賃合計最大
+			ArrayList<String> SearchFeeFixDateEnd,			//運賃確定日時終了
+			ArrayList<String> SearchReceiptStampDateEnd,	//受領印日時終了
+			ArrayList<String> SearchEntryDateEnd,			//登録日終了
+			ArrayList<String> SearchUpdateDateEnd,			//更新日終了
+			
+			ArrayList<String> SearchEntryUser,				//登録者
+			ArrayList<String> SearchUpdateUser,				//更新者
+			ArrayList<String> SearchEntryPG,				//登録プログラム
+			ArrayList<String> SearchUpdatePG,				//更新プログラム
+			ArrayList<String> SearchUseFeeBasePtCd,			//運転計算タリフ
+			ArrayList<Integer> SearchWmsStatus,				//倉庫出荷ステータス
+			ArrayList<String> SearchWmsShipDateStr,			//倉庫出荷日時開始
+			ArrayList<String> SearchWmsShipDateEnd,			//倉庫出荷日時終了
+			ArrayList<String> SearchCourseGpCd,				//配車コースグループコード
+			ArrayList<String> SearchCourseCD,				//配車コースコード
+			ArrayList<Integer> SearchCourseCDEda,			//配車コースコード枝番
+			ArrayList<String> SearchPitGrp,					//荷物払出ピットグループ
+			ArrayList<String> SearchPit,					//荷物払出ピット
+			
+			ArrayList<String> SearchMsItemCd,				//商品CD
+			ArrayList<String> SearchMsItemName,				//商品名
+			
+			ArrayList<String> SearchClItemCd,				//荷主商品CD
+			
+			ArrayList<String> SearchMsCategoryCd,			//カテゴリCD
+			ArrayList<String> SearchMsCategoryName,			//カテゴリ名
+			ArrayList<String> SearchMsTildFG,				//温度区分
+			ArrayList<String> SearchMsTildName,				//温度区分名
+			
+			ArrayList<String> SearchMsLot,					//ロット指定
+			ArrayList<String> SearchMsExpDateStr,			//賞味期限指定開始
+			ArrayList<String> SearchMsExpDateEnd,			//賞味期限指定終了
+			ArrayList<Integer> SearchMsPackingType,			//荷姿タイプ
+			
+			boolean AllSearch){
 		Object[][] Rt = new Object[0][0];
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
@@ -710,7 +1462,7 @@ public class T100_OkuriHdRt{
 				+"Max(KT0010_OKURI_HD.TotalWeight) 			as TotalWeight,\n"			//荷物重量(kg)
 				+"Max(KT0010_OKURI_HD.TotalSize) 			as TotalSize,\n"			//荷物サイズ
 				+"Max(KT0010_OKURI_HD.TotalQty) 			as TotalQty,\n"				//個口数
-				+"Max(KT0010_OKURI_HD.DeliveryTypeCd) 		as DeliveryTypeCd,\n"		//運送タイプ01
+				+"Max(KT0010_OKURI_HD.DeliveryTypeCd) 		as DeliveryTypeCd01,\n"		//運送タイプ01
 				+"Max(KT0010_OKURI_HD.DeliTypeName) 		as DeliTypeName,\n"			//運送タイプ名01
 				+"Max(KT0010_OKURI_HD.DeliveryTypeCd02) 	as DeliveryTypeCd02,\n"		//運送タイプ02
 				+"Max(KT0010_OKURI_HD.DeliTypeName02) 		as DeliTypeName02,\n"		//運送タイプ名02
@@ -930,6 +1682,7 @@ public class T100_OkuriHdRt{
 			for(int i=0;i<SearchPlanDateEnd.size();i++){
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.PlanDate < ?";
+				System.out.println(SearchPlanDateEnd.get(i));
 			}
 			sql = sql + ")\n";
 		}
@@ -1024,10 +1777,10 @@ public class T100_OkuriHdRt{
 			sql = sql + ")\n";
 		}
 		
-		if(null!=SearchDeliveryTypeCd && 0<SearchDeliveryTypeCd.size()){
+		if(null!=SearchDeliveryTypeCd01 && 0<SearchDeliveryTypeCd01.size()){
 			SearchKick = true;
 			sql = sql + " and(";
-			for(int i=0;i<SearchDeliveryTypeCd.size();i++){
+			for(int i=0;i<SearchDeliveryTypeCd01.size();i++){
 				if(0<i){sql = sql + " or ";}
 				sql = sql + " KT0010_OKURI_HD.DeliveryTypeCd = ?";
 			}
@@ -1755,7 +2508,7 @@ public class T100_OkuriHdRt{
 		
 		sql = sql + " group by KT0010_OKURI_HD.InvoiceWHCD,KT0010_OKURI_HD.cl_cd,KT0010_OKURI_HD.PlanDate,KT0010_OKURI_HD.DeliCd,KT0010_OKURI_HD.DeliDepartmentCd,KT0010_OKURI_HD.OkuriNo \n";
 		sql = sql + " order by KT0010_OKURI_HD.InvoiceWHCD,KT0010_OKURI_HD.cl_cd,KT0010_OKURI_HD.PlanDate,KT0010_OKURI_HD.DeliCd,KT0010_OKURI_HD.DeliDepartmentCd,KT0010_OKURI_HD.OkuriNo \n";
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		if(SearchKick) {
 			A100_DbConnect.DB_CONN("NYANKO");
@@ -1916,10 +2669,10 @@ public class T100_OkuriHdRt{
 					}
 				}
 				
-				if(null!=SearchDeliveryTypeCd && 0<SearchDeliveryTypeCd.size()){
-					for(int i=0;i<SearchDeliveryTypeCd.size();i++){
+				if(null!=SearchDeliveryTypeCd01 && 0<SearchDeliveryTypeCd01.size()){
+					for(int i=0;i<SearchDeliveryTypeCd01.size();i++){
 						StmtCount = StmtCount+1;
-						stmt01.setString(StmtCount, ""+SearchDeliveryTypeCd.get(i)+"");
+						stmt01.setString(StmtCount, ""+SearchDeliveryTypeCd01.get(i)+"");
 					}
 				}
 				

@@ -246,7 +246,7 @@ public class T100_OkuriMsRt{
 		float GetTotalWeight			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColTotalWeight];			//荷物重量(kg)
 		float GetTotalSize				= (float)OkuriMsRt[i][T100_OkuriMsRt.ColTotalSize];				//荷物サイズ
 		int GetTotalQty					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTotalQty];				//個口数
-		String GetDeliveryTypeCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd];		//運送タイプ01
+		String GetDeliveryTypeCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd01];		//運送タイプ01
 		String GetDeliTypeName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName];			//運送タイプ名01
 		String GetDeliveryTypeCd02		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd02];		//運送タイプ02
 		String GetDeliTypeName02		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName02];		//運送タイプ名02
@@ -392,7 +392,7 @@ public class T100_OkuriMsRt{
 	static final int ColTotalWeight			=  13;	//荷物重量(kg)
 	static final int ColTotalSize				=  14;	//荷物サイズ
 	static final int ColTotalQty				=  15;	//個口数
-	static final int ColDeliveryTypeCd		=  16;	//運送タイプ01
+	static final int ColDeliveryTypeCd01		=  16;	//運送タイプ01
 	static final int ColDeliTypeName			=  17;	//運送タイプ名01
 	static final int ColDeliveryTypeCd02		=  18;	//運送タイプ02
 	static final int ColDeliTypeName02		=  19;	//運送タイプ名02
@@ -538,7 +538,7 @@ public class T100_OkuriMsRt{
 						,{"TotalWeight"			,ColTotalWeight			,"float"	,"荷物重量(kg)"					,""}
 						,{"TotalSize"			,ColTotalSize				,"float"	,"荷物サイズ"					,""}
 						,{"TotalQty"			,ColTotalQty				,"int"		,"個口数"						,""}
-						,{"DeliveryTypeCd"		,ColDeliveryTypeCd		,"String"	,"運送タイプ01"					,""}
+						,{"DeliveryTypeCd01"	,ColDeliveryTypeCd01		,"String"	,"運送タイプ01"					,""}
 						,{"DeliTypeName"		,ColDeliTypeName			,"String"	,"運送タイプ名01"				,""}
 						,{"DeliveryTypeCd02"	,ColDeliveryTypeCd02		,"String"	,"運送タイプ02"					,""}
 						,{"DeliTypeName02"		,ColDeliTypeName02		,"String"	,"運送タイプ名02"				,""}
@@ -779,7 +779,7 @@ public class T100_OkuriMsRt{
 			ArrayList<String> SearchMsLot,					//ロット指定
 			ArrayList<String> SearchMsExpDateStr,			//賞味期限指定開始
 			ArrayList<String> SearchMsExpDateEnd,			//賞味期限指定終了
-			ArrayList<String> SearchMsPackingType,			//荷姿タイプ
+			ArrayList<Integer> SearchMsPackingType,			//荷姿タイプ
 			
 			boolean AllSearch){
 		
@@ -829,7 +829,7 @@ public class T100_OkuriMsRt{
 				+"(KT0010_OKURI_HD.TotalWeight) 		as TotalWeight,\n"			//荷物重量(kg)
 				+"(KT0010_OKURI_HD.TotalSize) 			as TotalSize,\n"			//荷物サイズ
 				+"(KT0010_OKURI_HD.TotalQty) 			as TotalQty,\n"				//個口数
-				+"(KT0010_OKURI_HD.DeliveryTypeCd) 		as DeliveryTypeCd,\n"		//運送タイプ01
+				+"(KT0010_OKURI_HD.DeliveryTypeCd) 		as DeliveryTypeCd01,\n"		//運送タイプ01
 				+"(KT0010_OKURI_HD.DeliTypeName) 		as DeliTypeName,\n"			//運送タイプ名01
 				+"(KT0010_OKURI_HD.DeliveryTypeCd02) 	as DeliveryTypeCd02,\n"		//運送タイプ02
 				+"(KT0010_OKURI_HD.DeliTypeName02) 		as DeliTypeName02,\n"		//運送タイプ名02

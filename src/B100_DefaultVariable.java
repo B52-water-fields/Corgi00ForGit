@@ -83,15 +83,17 @@ public class B100_DefaultVariable{
 	static final String[][] SearchCautionTiming		= {{"未指定","0:納品時","1:出荷時"},{"","0","1"},{"","納品時","出荷時"}};		//検索条件：注意事項タイミング
 	static final String[][] CautionTiming 			= {{"0:納品時","1:出荷時"},{"0","1"},{"納品時","出荷時"}};						//注意事項タイミング
 	
-	static final String[][] ChildrenFGList 			= {{"0:親伝票","1:子伝票"},{"0","1"},{"親伝票","子伝票"}};				//赤黒区分
+	static final String[][] SearchChildrenFGList 	= {{"未指定","0:親伝票","1:子伝票"},{"","0","1"},{"","親伝票","子伝票"}};		//赤黒区分
+	static final String[][] ChildrenFGList 			= {{"0:親伝票","1:子伝票"},{"0","1"},{"親伝票","子伝票"}};						//赤黒区分
 	
 	static final String[][] SearchTildFG 				= {{"未指定","0:常温","1:冷蔵","2:冷凍","3:チルド"},{"","0","1","2","3"},{"","常温","冷蔵","冷凍","チルド"}};
 	static final String[][] TildFG 					= {{"0:常温","1:冷蔵","2:冷凍","3:チルド"},{"0","1","2","3"},{"常温","冷蔵","冷凍","チルド"}};					//0:常温必須
 	
-	static final String[][] ReceiptStampFGList 		= {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};	//受領印区分
+	static final String[][] SearchReceiptStampFGList= {{"未指定","0:未回収","1:回収済","2:返送済","9:回収不要"},{"","0","1","2","9"},{"","未回収","回収済","返送済","回収不要"}};	//受領印区分
+	static final String[][] ReceiptStampFGList 		= {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};					//受領印区分
 	
 	static final String[][] SearchInvoiceStatusList 	= {{"未指定","0:未請求","1:請求済","9:対象外"},{"","0","1","9"},{"","未請求","請求済","対象外"}};				//請求区分
-	static final String[][] InvoiceStatusList 		= {{"0:未請求","1:請求済","9:対象外"},{"0","1","9"},{"未請求","請求済","対象外"}};
+	static final String[][] InvoiceStatusList 		= {{"0:未請求","1:請求済","9:対象外"},{"0","1","9"},{"未請求","請求済","対象外"}};								//請求区分
 	
 	static final String[][] SearchFeeFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(請求)
 	static final String[][] FeeFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(請求)
@@ -105,6 +107,7 @@ public class B100_DefaultVariable{
 	static final String[][] SearchUnitTypeList 		= {{"未指定","0:バラ","1:カートン","2:ケース","3：パレット"},{"","0","1","2","3"},{"","バラ","カートン","ケース","パレット"}};
 	static final String[][] UnitTypeList 				= {{"0:バラ","1:カートン","2:ケース","3：パレット"},{"0","1","2","3"},{"バラ","カートン","ケース","パレット"}};
 	
+	static final String[][] SearchPurposeList 		= {{"未指定","0:配達","1:配達","2:集荷","3:中継"},{"","0","1","2","3"},{"","配達","配達","集荷","中継"}};	//送り状目的区分
 	static final String[][] PurposeList 				= {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
 	
 	static String[][] SearchAdjustReasonList;
