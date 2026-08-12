@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -150,6 +152,23 @@ public class A00000_Main{
 	===========================================================================================================================*/
 	
     public static void main(String[] args) {
+    	//ディスプレイサイズ取得
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int ScreenSizeWide = screenSize.width;
+		int ScreenSizeHeight = screenSize.height;
+		
+		//横幅÷1920⇒倍率
+		float MagnificationW = ((float)ScreenSizeWide/(float)1920);
+		
+		//縦÷1080⇒倍率
+		float MagnificationH = ((float)ScreenSizeHeight/(float)1080);
+		
+		Mul = (int)(MagnificationW*100);
+		if(MagnificationH<MagnificationW) {
+			Mul = (int)(MagnificationH*100);
+		}
+		
+    	
     	SqlSetting();//MYSQLへの接続設定読込外部ファイルにMYSQLデータベースへの接続設定を読込
     	LoginCheckCount=0;
     	LogIn();

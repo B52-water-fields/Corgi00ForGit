@@ -36,6 +36,10 @@ public class M100_DeliveryTypeMstRt{
 	static final  int ColEntryUser			= (int) 5;	//登録者コード
 	static final  int ColUpdateUser			= (int) 6;	//更新者コード
 	
+	static final  int ColSearchDeliveryTypeNo	= (int) 0;	//タイプ番号
+	static final  int ColSearchDeliveryTypeCd	= (int) 1;	//運送タイプコード
+	static final  int ColSearchDeliveryTypeName	= (int) 2;	//運送タイプ名
+	
 	public static Object[][] RtDeliveryTypeMstRt(){
 		Object[][] RtSettingDeliveryTypeMstRt = {
 				 {"DeliveryTypeNo"		,ColDeliveryTypeNo		,"int"		,"タイプ番号"		,"Key"}
@@ -51,6 +55,74 @@ public class M100_DeliveryTypeMstRt{
 	}
 	
 	public static Object[][] DeliveryTypeMstRt(
+			ArrayList<String> SearchDeliveryTypeNo,		//タイプ番号
+			ArrayList<String> SearchDeliveryTypeCd,		//運送タイプコード
+			ArrayList<String> SearchDeliveryTypeName,	//運送タイプ名
+			boolean AllSearch){
+		
+		Object[][] Definition = {
+				 {"String"		,SearchDeliveryTypeNo		,"Exact"			,ColSearchDeliveryTypeNo		,""		,"タイプ番号"			,""}
+				,{"String"		,SearchDeliveryTypeCd		,"Exact"			,ColSearchDeliveryTypeCd		,""		,"運送タイプコード"		,""}
+				,{"String"		,SearchDeliveryTypeName		,"Partial"			,ColSearchDeliveryTypeName	,""		,"運送タイプ名"			,""}
+				};
+		
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]) {
+				case ColSearchDeliveryTypeNo:	
+					SearchDeliveryTypeNo		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd:	
+					SearchDeliveryTypeCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeName:	
+					SearchDeliveryTypeName		= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= DeliveryTypeMstRtMain(
+				SearchDeliveryTypeNo,
+				SearchDeliveryTypeCd,
+				SearchDeliveryTypeName,
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] DeliveryTypeMstRtMain(
 			ArrayList<String> SearchDeliveryTypeNo,
 			ArrayList<String> SearchDeliveryTypeCd,
 			ArrayList<String> SearchDeliveryTypeName,

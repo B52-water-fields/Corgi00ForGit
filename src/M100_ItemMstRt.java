@@ -184,6 +184,28 @@ public class M100_ItemMstRt{
 	static final  int ColEntryUser			= (int)61;	//登録者コード
 	static final  int ColUpdateUser			= (int)62;	//更新者コード
 	static final  int ColDelFg					= (int)63;	//削除フラグ
+	
+	static final  int ColSearchClCd				= (int) 0;	//荷主コード
+	static final  int ColSearchClGpCd				= (int) 1;	//荷主グループコード
+	static final  int ColSearchItemCd				= (int) 2;	//商品コード
+	static final  int ColSearchClItemCd			= (int) 3;	//荷主商品コード
+	static final  int ColSearchItemName			= (int) 4;	//商品名
+	static final  int ColSearchDeliveryTypeCd01	= (int) 5;	//運送タイプコード01
+	static final  int ColSearchDeliveryTypeCd02	= (int) 6;	//運送タイプコード02
+	static final  int ColSearchDeliveryTypeCd03	= (int) 7;	//運送タイプコード03
+	static final  int ColSearchDeliveryTypeCd04	= (int) 8;	//運送タイプコード04
+	static final  int ColSearchDeliveryTypeCd05	= (int) 9;	//運送タイプコード05
+	static final  int ColSearchItemMDNo			= (int)10;	//商品モデル番号（型番）
+	static final  int ColSearchCategoryCd		= (int)11;	//商品カテゴリCD
+	static final  int ColSearchCategoryName		= (int)12;	//商品カテゴリ名
+	static final  int ColSearchItemColorCd		= (int)13;	//商品カラーコード
+	static final  int ColSearchItemColorName		= (int)14;	//商品カラー名
+	static final  int ColSearchItemSizeCd		= (int)15;	//商品サイズコード
+	static final  int ColSearchItemSizeName		= (int)16;	//商品サイズ名
+	static final  int ColSearchJanCd				= (int)17;	//JANCD
+	static final  int ColSearchTildFG				= (int)18;	//温度区分
+	static final  int ColSearchTildName			= (int)19;	//温度区分名
+	static final  int ColSearchDelFg				= (int)20;	//削除フラグ
 
 	public static Object[][] RtItemMstRt(){
 		Object[][] RtSettingItemMstRt = {
@@ -280,27 +302,180 @@ public class M100_ItemMstRt{
 			ArrayList<String> SearchDelFg,				//削除フラグ
 			boolean AllSearch){
 		
-		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
-		SearchClGpCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
-		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);
-		SearchClItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchClItemCd);
-		SearchItemName			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);
-		SearchDeliveryTypeCd01	= B100_ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd01);
-		SearchDeliveryTypeCd02	= B100_ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd02);
-		SearchDeliveryTypeCd03	= B100_ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd03);
-		SearchDeliveryTypeCd04	= B100_ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd04);
-		SearchDeliveryTypeCd05	= B100_ArrayListControl.ArryListStringUniqueList(SearchDeliveryTypeCd05);
-		SearchItemMDNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemMDNo);
-		SearchCategoryCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchCategoryCd);
-		SearchCategoryName		= B100_ArrayListControl.ArryListStringUniqueList(SearchCategoryName);
-		SearchItemColorCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchItemColorCd);
-		SearchItemColorName		= B100_ArrayListControl.ArryListStringUniqueList(SearchItemColorName);
-		SearchItemSizeCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchItemSizeCd);
-		SearchItemSizeName		= B100_ArrayListControl.ArryListStringUniqueList(SearchItemSizeName);
-		SearchJanCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchJanCd);
-		SearchTildFG			= B100_ArrayListControl.ArryListStringUniqueList(SearchTildFG);
-		SearchTildName			= B100_ArrayListControl.ArryListStringUniqueList(SearchTildName);
-		SearchDelFg				= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		Object[][] Definition = {
+				 {"String"		,SearchClCd					,"Exact"	,ColSearchClCd				,B100_DefaultVariable.SearchClList			,"荷主コード"				,""}
+				,{"String"		,SearchClGpCd				,"Exact"	,ColSearchClGpCd				,B100_DefaultVariable.SearchClGpList			,"荷主グループコード"		,""}
+				,{"String"		,SearchItemCd				,"Exact"	,ColSearchItemCd				,""												,"商品コード"				,""}
+				,{"String"		,SearchClItemCd				,"Exact"	,ColSearchClItemCd			,""												,"荷主商品コード"			,""}
+				,{"String"		,SearchItemName				,"Partial"	,ColSearchItemName			,""												,"商品名"					,""}
+				,{"String"		,SearchDeliveryTypeCd01		,"Exact"	,ColSearchDeliveryTypeCd01	,B100_DefaultVariable.SearchDeliveryType01	,"運送タイプコード01"		,""}
+				,{"String"		,SearchDeliveryTypeCd02		,"Exact"	,ColSearchDeliveryTypeCd02	,B100_DefaultVariable.SearchDeliveryType02	,"運送タイプコード02"		,""}
+				,{"String"		,SearchDeliveryTypeCd03		,"Exact"	,ColSearchDeliveryTypeCd03	,B100_DefaultVariable.SearchDeliveryType03	,"運送タイプコード03"		,""}
+				,{"String"		,SearchDeliveryTypeCd04		,"Exact"	,ColSearchDeliveryTypeCd04	,B100_DefaultVariable.SearchDeliveryType04	,"運送タイプコード04"		,""}
+				,{"String"		,SearchDeliveryTypeCd05		,"Exact"	,ColSearchDeliveryTypeCd05	,B100_DefaultVariable.SearchDeliveryType05	,"運送タイプコード05"		,""}
+				,{"String"		,SearchItemMDNo				,"Exact"	,ColSearchItemMDNo			,""												,"商品モデル番号（型番）"	,""}
+				,{"String"		,SearchCategoryCd			,"Exact"	,ColSearchCategoryCd			,""												,"商品カテゴリCD"			,""}
+				,{"String"		,SearchCategoryName			,"Partial"	,ColSearchCategoryName		,""												,"商品カテゴリ名"			,""}
+				,{"String"		,SearchItemColorCd			,"Exact"	,ColSearchItemColorCd		,""												,"商品カラーコード"			,""}
+				,{"String"		,SearchItemColorName		,"Partial"	,ColSearchItemColorName		,""												,"商品カラー名"				,""}
+				,{"String"		,SearchItemSizeCd			,"Exact"	,ColSearchItemSizeCd			,""												,"商品サイズコード"			,""}
+				,{"String"		,SearchItemSizeName			,"Partial"	,ColSearchItemSizeName		,""												,"商品サイズ名"				,""}
+				,{"String"		,SearchJanCd				,"Exact"	,ColSearchJanCd				,""												,"JANCD"					,""}
+				,{"String"		,SearchTildFG				,"Exact"	,ColSearchTildFG				,B100_DefaultVariable.SearchTildFG			,"温度区分"					,""}
+				,{"String"		,SearchTildName				,"Partial"	,ColSearchTildName			,""												,"温度区分名"				,""}
+				,{"String"		,SearchDelFg				,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList			,"削除フラグ"				,""}
+				};
+		
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					SearchClCd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClGpCd:	
+					SearchClGpCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemCd:	
+					SearchItemCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClItemCd:	
+					SearchClItemCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemName:	
+					SearchItemName				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd01:	
+					SearchDeliveryTypeCd01		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd02:	
+					SearchDeliveryTypeCd02		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd03:	
+					SearchDeliveryTypeCd03		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd04:	
+					SearchDeliveryTypeCd04		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeliveryTypeCd05:	
+					SearchDeliveryTypeCd05		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemMDNo:	
+					SearchItemMDNo				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCategoryCd:	
+					SearchCategoryCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCategoryName:	
+					SearchCategoryName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemColorCd:	
+					SearchItemColorCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemColorName:	
+					SearchItemColorName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemSizeCd:	
+					SearchItemSizeCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemSizeName:	
+					SearchItemSizeName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchJanCd:	
+					SearchJanCd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchTildFG:	
+					SearchTildFG				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchTildName:	
+					SearchTildName				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDelFg:	
+					SearchDelFg					= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= ItemMstRtMain(
+				SearchClCd,				//荷主コード
+				SearchClGpCd,			//荷主グループコード
+				SearchItemCd,			//商品コード
+				SearchClItemCd,			//荷主商品コード
+				SearchItemName,			//商品名
+				SearchDeliveryTypeCd01,	//運送タイプコード01
+				SearchDeliveryTypeCd02,	//運送タイプコード02
+				SearchDeliveryTypeCd03,	//運送タイプコード03
+				SearchDeliveryTypeCd04,	//運送タイプコード04
+				SearchDeliveryTypeCd05,	//運送タイプコード05
+				SearchItemMDNo,			//商品モデル番号（型番）
+				SearchCategoryCd,		//商品カテゴリCD
+				SearchCategoryName,		//商品カテゴリ名
+				SearchItemColorCd,		//商品カラーコード
+				SearchItemColorName,	//商品カラー名
+				SearchItemSizeCd,		//商品サイズコード
+				SearchItemSizeName,		//商品サイズ名
+				SearchJanCd,			//JANCD
+				SearchTildFG,			//温度区分
+				SearchTildName,			//温度区分名
+				SearchDelFg,			//削除フラグ
+				AllSearch);
+		return Rt;
+	}
+	
+	private static Object[][] ItemMstRtMain(
+			ArrayList<String> SearchClCd,				//荷主コード
+			ArrayList<String> SearchClGpCd,				//荷主グループコード
+			ArrayList<String> SearchItemCd,				//商品コード
+			ArrayList<String> SearchClItemCd,			//荷主商品コード
+			ArrayList<String> SearchItemName,			//商品名
+			ArrayList<String> SearchDeliveryTypeCd01,	//運送タイプコード01
+			ArrayList<String> SearchDeliveryTypeCd02,	//運送タイプコード02
+			ArrayList<String> SearchDeliveryTypeCd03,	//運送タイプコード03
+			ArrayList<String> SearchDeliveryTypeCd04,	//運送タイプコード04
+			ArrayList<String> SearchDeliveryTypeCd05,	//運送タイプコード05
+			ArrayList<String> SearchItemMDNo,			//商品モデル番号（型番）
+			ArrayList<String> SearchCategoryCd,			//商品カテゴリCD
+			ArrayList<String> SearchCategoryName,		//商品カテゴリ名
+			ArrayList<String> SearchItemColorCd,		//商品カラーコード
+			ArrayList<String> SearchItemColorName,		//商品カラー名
+			ArrayList<String> SearchItemSizeCd,			//商品サイズコード
+			ArrayList<String> SearchItemSizeName,		//商品サイズ名
+			ArrayList<String> SearchJanCd,				//JANCD
+			ArrayList<String> SearchTildFG,				//温度区分
+			ArrayList<String> SearchTildName,			//温度区分名
+			ArrayList<String> SearchDelFg,				//削除フラグ
+			boolean AllSearch){
 		
 		//商品変換マスタを元に荷主商品コードを商品コードに変換する
 		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClCd,SearchClGpCd,SearchClItemCd);

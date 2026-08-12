@@ -116,7 +116,8 @@ public class B100_DefaultVariable{
 	static boolean ArrivalShipUnTgt;			//trueなら入荷時ロケも出荷対象にする
 	static String[] ShipPlovisionUnTgtList;	//引当対象にしないロケタイプ
 	
-	
+	static final String[][] SearchOnOffSwitch 		= {{"未指定","0:Off","1:On"},{"","0","1"},{"","Off","On"}};		//OｎOff　2択
+	static final String[][] OnOffSwitch 				= {{"0:Off","1:On"},{"0","1"},{"Off","On"}};					//OｎOff　2択
 	
 	/*
 	====================================================================

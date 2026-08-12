@@ -43,6 +43,11 @@ public class M100_AdjustReasonRt{
 	static final int ColEntryUser				=  8;	//登録者
 	static final int ColUpdateUser			=  9;	//更新者
 	
+	static final int ColSearchClCd				=  0;	//荷主コード
+	static final int ColSearchWhCd				=  1;	//倉庫コード
+	static final int ColSearchAdjustReasonCd		=  2;	//調整理由コード
+	static final int ColSearchAdjustReasonName	=  3;	//調整理由名
+	
 	public static Object[][] RtAdjustReasonRt() {
 		Object[][] RtAdjustReasonRt = {
 					 {"ClCd"				,ColClCd				,"String"	,"荷主コード"		,"Key"}
@@ -60,15 +65,85 @@ public class M100_AdjustReasonRt{
 	}
 	
 	public static Object[][] AdjustReasonRt(
+			ArrayList<String> SearchClCd,				//荷主コード
+			ArrayList<String> SearchWhCd,				//倉庫コード
+			ArrayList<String> SearchAdjustReasonCd,		//調整理由コード
+			ArrayList<String> SearchAdjustReasonName,	//調整理由名
+			boolean AllSearch) {
+		
+		Object[][] Definition = {
+			 	 {"String"		,SearchClCd				,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList	,"荷主コード"		,""}
+				,{"String"		,SearchWhCd				,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList	,"倉庫コード"		,""}
+				,{"String"		,SearchAdjustReasonCd	,"Exact"			,ColSearchAdjustReasonCd	,""											,"調整理由コード"	,""}
+				,{"String"		,SearchAdjustReasonName	,"Partial"			,ColSearchAdjustReasonName	,""										,"調整理由名"		,""}
+				};
+				
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]){
+				case ColSearchClCd:
+					SearchClCd						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchWhCd:
+					SearchWhCd						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdjustReasonCd:
+					SearchAdjustReasonCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdjustReasonName:
+					SearchAdjustReasonName			= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt= AdjustReasonRtMain(
+				SearchClCd,				//荷主コード
+				SearchWhCd,				//倉庫コード
+				SearchAdjustReasonCd,	//調整理由コード
+				SearchAdjustReasonName,	//調整理由名
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] AdjustReasonRtMain(
 									ArrayList<String> SearchClCd,				//荷主コード
 									ArrayList<String> SearchWhCd,				//倉庫コード
 									ArrayList<String> SearchAdjustReasonCd,		//調整理由コード
 									ArrayList<String> SearchAdjustReasonName,	//調整理由名
 									boolean AllSearch) {
-		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);				//荷主コード
-		SearchWhCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchWhCd);				//倉庫コード
-		SearchAdjustReasonCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonCd);		//調整理由コード
-		SearchAdjustReasonName	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonName);	//調整理由名
 		
 		Object [][]rt = new Object[0][RtAdjustReasonRt().length];
 		boolean SearchKick = false;

@@ -771,43 +771,43 @@ public class T100_OkuriHdRt{
 			boolean AllSearch){
 		
 		Object[][] Definition = {
-				 	 {"String"		,SearchInvoiceWHCD,			"Exact"			,ColSearchInvoiceWHCD	,B100_DefaultVariable.SearchWhList						,"倉庫CD"			,""}
-					,{"String"		,SearchClGpCD,				"Exact"			,ColSearchClGpCD			,B100_DefaultVariable.SearchClGpList						,"荷主グループCD"	,""}
-					,{"String"		,SearchClCd,				"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList						,"荷主CD"			,""	}
-					,{"String"		,SearchOkuriNo,				"Exact"			,ColSearchOkuriNo			,""															,"送り状番号"		,""	}
-					,{"String"		,SearchClDeliNo,			"Exact"			,ColSearchClDeliNo		,""															,"荷主管理番号"		,""	}
-					,{"String"		,SearchPickupWhCd,			"Exact"			,ColSearchPickupWhCd		,B100_DefaultVariable.SearchWhList						,"集荷倉庫CD"		,""	}
-					,{"String"		,SearchPurposeFG,			"Exact"			,ColSearchPurposeFG		,B100_DefaultVariable.SearchPurposeList					,"目的フラグ"		,""	}
-					,{"Date"		,SearchPlanDateStr,			"RangeStr"		,ColSearchPlanDateStr	,""															,"出荷予定日"		,"開始"	}
-					,{"Date"		,SearchShipDateStr,			"RangeStr"		,ColSearchShipDateStr	,""															,"出荷実績日"		,"開始"	}
-					,{"Date"		,SearchSPPlanDateStr,		"RangeStr"		,ColSearchSPPlanDateStr	,""															,"着日指定"			,"開始"	}
-					,{"Date"		,SearchSPDateStr,			"RangeStr"		,ColSearchSPDateStr		,""															,"着日実績"			,"開始"	}
+				 	 {"String"		,SearchInvoiceWHCD,			"Exact"			,ColSearchInvoiceWHCD			,B100_DefaultVariable.SearchWhList				,"倉庫CD"			,""}
+					,{"String"		,SearchClGpCD,				"Exact"			,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""}
+					,{"String"		,SearchClCd,				"Exact"			,ColSearchClCd					,B100_DefaultVariable.SearchClList				,"荷主CD"			,""	}
+					,{"String"		,SearchOkuriNo,				"Exact"			,ColSearchOkuriNo					,""													,"送り状番号"		,""	}
+					,{"String"		,SearchClDeliNo,			"Exact"			,ColSearchClDeliNo				,""													,"荷主管理番号"		,""	}
+					,{"String"		,SearchPickupWhCd,			"Exact"			,ColSearchPickupWhCd				,B100_DefaultVariable.SearchWhList				,"集荷倉庫CD"		,""	}
+					,{"String"		,SearchPurposeFG,			"Exact"			,ColSearchPurposeFG				,B100_DefaultVariable.SearchPurposeList			,"目的フラグ"		,""	}
+					,{"Date"		,SearchPlanDateStr,			"RangeStr"		,ColSearchPlanDateStr			,""													,"出荷予定日"		,"開始"	}
+					,{"Date"		,SearchShipDateStr,			"RangeStr"		,ColSearchShipDateStr			,""													,"出荷実績日"		,"開始"	}
+					,{"Date"		,SearchSPPlanDateStr,		"RangeStr"		,ColSearchSPPlanDateStr			,""													,"着日指定"			,"開始"	}
+					,{"Date"		,SearchSPDateStr,			"RangeStr"		,ColSearchSPDateStr				,""													,"着日実績"			,"開始"	}
 					
-					,{"Date"		,SearchPlanDateEnd,			"RangeEnd"		,ColSearchPlanDateEnd	,""															,"出荷予定日"		,"終了"	}
-					,{"Date"		,SearchShipDateEnd,			"RangeEnd"		,ColSearchShipDateEnd	,""															,"出荷実績日"		,"終了"	}
-					,{"Date"		,SearchSPPlanDateEnd,		"RangeEnd"		,ColSearchSPPlanDateEnd	,""															,"着日指定"			,"終了"	}
-					,{"Date"		,SearchSPDateEnd,			"RangeEnd"		,ColSearchSPDateEnd		,""															,"着日実績"			,"終了"	}
+					,{"Date"		,SearchPlanDateEnd,			"RangeEnd"		,ColSearchPlanDateEnd			,""													,"出荷予定日"		,"終了"	}
+					,{"Date"		,SearchShipDateEnd,			"RangeEnd"		,ColSearchShipDateEnd			,""													,"出荷実績日"		,"終了"	}
+					,{"Date"		,SearchSPPlanDateEnd,		"RangeEnd"		,ColSearchSPPlanDateEnd			,""													,"着日指定"			,"終了"	}
+					,{"Date"		,SearchSPDateEnd,			"RangeEnd"		,ColSearchSPDateEnd				,""													,"着日実績"			,"終了"	}
 					
-					,{"Float"		,SearchTotalWeightMin,		"RangeMin"		,ColSearchTotalWeightMin	,""															,"荷物重量(kg)"		,"最小"	}
-					,{"Float"		,SearchTotalSizeMin,		"RangeMin"		,ColSearchTotalSizeMin	,""															,"荷物サイズ"		,"最小"	}
-					,{"Integer"		,SearchTotalQtyMin,			"RangeMin"		,ColSearchTotalQtyMin	,""															,"個口数"			,"最小"	}
+					,{"Float"		,SearchTotalWeightMin,		"RangeMin"		,ColSearchTotalWeightMin			,""													,"荷物重量(kg)"		,"最小"	}
+					,{"Float"		,SearchTotalSizeMin,		"RangeMin"		,ColSearchTotalSizeMin			,""													,"荷物サイズ"		,"最小"	}
+					,{"Integer"		,SearchTotalQtyMin,			"RangeMin"		,ColSearchTotalQtyMin			,""													,"個口数"			,"最小"	}
 					
-					,{"Float"		,SearchTotalWeightMax,		"RangeMax"		,ColSearchTotalWeightMax	,""															,"荷物重量(kg)"		,"最大"	}
-					,{"Float"		,SearchTotalSizeMax,		"RangeMax"		,ColSearchTotalSizeMax	,""															,"荷物サイズ"		,"最大"	}
-					,{"Integer"		,SearchTotalQtyMax,			"RangeMax"		,ColSearchTotalQtyMax	,""															,"個口数"			,"最大"	}
+					,{"Float"		,SearchTotalWeightMax,		"RangeMax"		,ColSearchTotalWeightMax			,""													,"荷物重量(kg)"		,"最大"	}
+					,{"Float"		,SearchTotalSizeMax,		"RangeMax"		,ColSearchTotalSizeMax			,""													,"荷物サイズ"		,"最大"	}
+					,{"Integer"		,SearchTotalQtyMax,			"RangeMax"		,ColSearchTotalQtyMax			,""													,"個口数"			,"最大"	}
 					
-					,{"String"		,SearchDeliveryTypeCd01,	"Exact"			,ColSearchDeliveryTypeCd01	,B100_DefaultVariable.SearchDeliveryType01			,"運送タイプ01"		,""	}
-					,{"String"		,SearchDeliveryTypeCd02,	"Exact"			,ColSearchDeliveryTypeCd02	,B100_DefaultVariable.SearchDeliveryType02			,"運送タイプ02"		,""	}
-					,{"String"		,SearchDeliveryTypeCd03,	"Exact"			,ColSearchDeliveryTypeCd03	,B100_DefaultVariable.SearchDeliveryType03			,"運送タイプ03"		,""	}
-					,{"String"		,SearchDeliveryTypeCd04,	"Exact"			,ColSearchDeliveryTypeCd04	,B100_DefaultVariable.SearchDeliveryType04			,"運送タイプ04"		,""	}
-					,{"String"		,SearchDeliveryTypeCd05,	"Exact"			,ColSearchDeliveryTypeCd05	,B100_DefaultVariable.SearchDeliveryType05			,"運送タイプ05"		,""	}
+					,{"String"		,SearchDeliveryTypeCd01,	"Exact"			,ColSearchDeliveryTypeCd01		,B100_DefaultVariable.SearchDeliveryType01		,"運送タイプ01"		,""	}
+					,{"String"		,SearchDeliveryTypeCd02,	"Exact"			,ColSearchDeliveryTypeCd02		,B100_DefaultVariable.SearchDeliveryType02		,"運送タイプ02"		,""	}
+					,{"String"		,SearchDeliveryTypeCd03,	"Exact"			,ColSearchDeliveryTypeCd03		,B100_DefaultVariable.SearchDeliveryType03		,"運送タイプ03"		,""	}
+					,{"String"		,SearchDeliveryTypeCd04,	"Exact"			,ColSearchDeliveryTypeCd04		,B100_DefaultVariable.SearchDeliveryType04		,"運送タイプ04"		,""	}
+					,{"String"		,SearchDeliveryTypeCd05,	"Exact"			,ColSearchDeliveryTypeCd05		,B100_DefaultVariable.SearchDeliveryType05		,"運送タイプ05"		,""	}
 					
-					,{"Integer"		,SearchCodFG,				"Exact"			,ColSearchCodFG				,B100_DefaultVariable.SearchCODList					,"代引区分"			,""	}
-					,{"Integer"		,SearchCodPayTotalMin,		"RangeMin"		,ColSearchCodPayTotalMin		,""														,"代引収受金額合計"	,"最小"	}
-					,{"Integer"		,SearchCodPayTotalMax,		"RangeMax"		,ColSearchCodPayTotalMax		,""														,"代引収受金額合計"	,"最大"	}
+					,{"Integer"		,SearchCodFG,				"Exact"			,ColSearchCodFG					,B100_DefaultVariable.SearchCODList				,"代引区分"			,""	}
+					,{"Integer"		,SearchCodPayTotalMin,		"RangeMin"		,ColSearchCodPayTotalMin			,""													,"代引収受金額合計"	,"最小"	}
+					,{"Integer"		,SearchCodPayTotalMax,		"RangeMax"		,ColSearchCodPayTotalMax			,""													,"代引収受金額合計"	,"最大"	}
 					
-					,{"Integer"		,SearchChildrenFG,			"Exact"			,ColSearchChildrenFG			,""														,"子伝票区分"		,""	}
-					,{"String"		,SearchParentOkuriNo,		"Exact"			,ColSearchParentOkuriNo		,""														,"親伝票番号"		,""	}
+					,{"Integer"		,SearchChildrenFG,			"Exact"			,ColSearchChildrenFG				,""													,"子伝票区分"		,""	}
+					,{"String"		,SearchParentOkuriNo,		"Exact"			,ColSearchParentOkuriNo			,""													,"親伝票番号"		,""	}
 					
 					,{"String"		,SearchNiokuriCd,			"Exact"			,ColSearchNiokuriCd				,""													,"荷送人CD"			,""	}
 					,{"String"		,SearchNiokuriDepartmentCd,	"Exact"			,ColSearchNiokuriDepartmentCd	,""													,"荷送人部署CD"		,""	}
@@ -1322,9 +1322,7 @@ public class T100_OkuriHdRt{
 		return Rt;
 	}
 	
-	
-	
-	public static Object[][] OkuriHdRtMain(
+	private static Object[][] OkuriHdRtMain(
 			ArrayList<String> SearchInvoiceWHCD,			//倉庫CD
 			ArrayList<String> SearchClGpCD,					//荷主グループCD
 			ArrayList<String> SearchClCd,					//荷主CD

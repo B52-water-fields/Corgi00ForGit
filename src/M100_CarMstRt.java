@@ -64,6 +64,11 @@ public class M100_CarMstRt{
 	static final  int ColUpdateUser				= (int)18;	//更新者コード
 	static final  int ColDelFg						= (int)19;	//削除フラグ
 	
+	static final  int ColSearchWHCD					= (int) 0;	//倉庫コード
+	static final  int ColSearchShippingCompanyCd	= (int) 1;	//運送会社CD
+	static final  int ColSearchCarCd					= (int) 2;	//車輛CD
+	static final  int ColSearchCarName				= (int) 3;	//車輛名
+	static final  int ColSearchDelFg					= (int) 4;	//削除フラグ
 	
 	public static Object[][] RtCarMstRt(){
 		Object[][] RtSettingCarMstRt = {
@@ -91,7 +96,7 @@ public class M100_CarMstRt{
 		
 		return RtSettingCarMstRt;
 	}
-
+	
 	public static Object[][] CarMstRt(
 			ArrayList<String> SearchWHCD,
 			ArrayList<String> SearchShippingCompanyCd,
@@ -100,11 +105,83 @@ public class M100_CarMstRt{
 			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
 		
-		SearchWHCD				= B100_ArrayListControl.ArryListStringUniqueList(SearchWHCD);
-		SearchShippingCompanyCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
-		SearchCarCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchCarCd);
-		SearchCarName			= B100_ArrayListControl.ArryListStringUniqueList(SearchCarName);
-		SearchDelFg				= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		Object[][] Definition = {
+				 {"String"		,SearchWHCD					,"Exact"			,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫コード"	,""}
+				,{"String"		,SearchShippingCompanyCd	,"Exact"			,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
+				,{"String"		,SearchCarCd				,"Exact"			,ColSearchCarCd				,""														,"車輛CD"		,""}
+				,{"String"		,SearchCarName				,"Partial"			,ColSearchCarName				,""														,"車輛名"		,""}
+				,{"String"		,SearchDelFg				,"Exact"			,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除フラグ"	,""}
+				};
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]) {
+				case ColSearchWHCD:	
+					SearchWHCD	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchShippingCompanyCd:	
+					SearchShippingCompanyCd	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCarCd:	
+					SearchCarCd	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCarName:	
+					SearchCarName	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDelFg:	
+					SearchDelFg	= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt = CarMstRtMain(
+				SearchWHCD,
+				SearchShippingCompanyCd,
+				SearchCarCd,
+				SearchCarName,
+				SearchDelFg,
+				AllSearch);
+		return Rt;
+	}
+
+	private static Object[][] CarMstRtMain(
+			ArrayList<String> SearchWHCD,
+			ArrayList<String> SearchShippingCompanyCd,
+			ArrayList<String> SearchCarCd,
+			ArrayList<String> SearchCarName,
+			ArrayList<String> SearchDelFg,
+			boolean AllSearch){
 		
 		Object[][] rt = new Object[0][RtCarMstRt().length];
 		boolean SearchKick = false;

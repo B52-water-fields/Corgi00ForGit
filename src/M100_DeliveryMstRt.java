@@ -99,6 +99,20 @@ public class M100_DeliveryMstRt{
 	static final  int ColFirstClientName	= (int)25;	//登録した荷主名
 	static final  int ColLastClientName	= (int)26;	//登録した荷主名
 	
+	static final  int ColSearchDECD				= (int) 0;	//検索条件届先CD
+	static final  int ColSearchDepartmentCd		= (int) 1;	//検索条件届先部署CD
+	static final  int ColSearchDEName				= (int) 2;	//検索条件届先名
+	static final  int ColSearchPost				= (int) 3;	//検索条件届先郵便
+	static final  int ColSearchAdd				= (int) 4;	//検索条件届先住所
+	static final  int ColSearchTel				= (int) 5;	//検索条件届先TEL
+	static final  int ColSearchFax				= (int) 6;	//検索条件届先FAX
+	static final  int ColSearchMail				= (int) 7;	//検索条件届先MAIL
+	static final  int ColSearchCom				= (int) 8;	//検索条件届先コメント
+	static final  int ColSearchPrefecturesCd		= (int) 9;	//検索条件届先県CD
+	static final  int ColSearchMunicipalityCd	= (int)10;	//検索条件届先市区町村CD
+	static final  int ColSearchDelFg				= (int)11;	//検索条件削除区分
+	
+	
 	public static Object[][] RtDeliveryMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {
 				 {"DECD"			,ColDECD				,"String"	,"届先CD"					,"Key"}
@@ -150,19 +164,133 @@ public class M100_DeliveryMstRt{
 			boolean SearchTelExactMatch,			//電話番号完全一致
 			boolean AllSearch
 			){
+
+		Object[][] Definition = {
+				 {"String"		,SearchDECD				,"Exact"			,ColSearchDECD				,""										,"検索条件届先CD"			,""}
+				,{"String"		,SearchDepartmentCd		,"Exact"			,ColSearchDepartmentCd		,""										,"検索条件届先部署CD"		,""}
+				,{"String"		,SearchDEName			,"Partial"			,ColSearchDEName				,""										,"検索条件届先名"			,""}
+				,{"String"		,SearchPost				,"Prefix"			,ColSearchPost				,""										,"検索条件届先郵便"			,""}
+				,{"String"		,SearchAdd				,"Partial"			,ColSearchAdd					,""										,"検索条件届先住所"			,""}
+				,{"String"		,SearchTel				,"Partial"			,ColSearchTel					,""										,"検索条件届先TEL"			,""}
+				,{"String"		,SearchFax				,"Partial"			,ColSearchFax					,""										,"検索条件届先FAX"			,""}
+				,{"String"		,SearchMail				,"Partial"			,ColSearchMail				,""										,"検索条件届先MAIL"			,""}
+				,{"String"		,SearchCom				,"Partial"			,ColSearchCom					,""										,"検索条件届先コメント"		,""}
+				,{"String"		,SearchPrefecturesCd	,"Exact"			,ColSearchPrefecturesCd		,""										,"検索条件届先県CD"			,""}
+				,{"String"		,SearchMunicipalityCd	,"Exact"			,ColSearchMunicipalityCd		,""										,"検索条件届先市区町村CD"	,""}
+				,{"String"		,SearchDelFg			,"Exact"			,ColSearchDelFg				,B100_DefaultVariable.SearchDelList	,"検索条件削除区分"			,""}
+				};
 		
-		SearchDECD				= B100_ArrayListControl.ArryListStringUniqueList(SearchDECD);
-		SearchDepartmentCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
-		SearchDEName			= B100_ArrayListControl.ArryListStringUniqueList(SearchDEName);
-		SearchPost				= B100_ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd				= B100_ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel				= B100_ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax				= B100_ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail				= B100_ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom				= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);
-		SearchPrefecturesCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchPrefecturesCd);
-		SearchMunicipalityCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchMunicipalityCd);
-		SearchDelFg				= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]) {
+				case ColSearchDECD:	
+					SearchDECD				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDepartmentCd:	
+					SearchDepartmentCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDEName:	
+					SearchDEName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPost:	
+					SearchPost				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdd:	
+					SearchAdd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchTel:	
+					SearchTel				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFax:	
+					SearchFax				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMail:	
+					SearchMail				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCom:	
+					SearchCom				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPrefecturesCd:	
+					SearchPrefecturesCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMunicipalityCd:	
+					SearchMunicipalityCd	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDelFg:	
+					SearchDelFg				= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= DeliveryMstRtMain(
+				SearchDECD,				//検索条件届先CD
+				SearchDepartmentCd,		//検索条件届先部署CD
+				SearchDEName,			//検索条件届先名
+				SearchPost,				//検索条件届先郵便
+				SearchAdd,				//検索条件届先住所
+				SearchTel,				//検索条件届先TEL
+				SearchFax,				//検索条件届先FAX
+				SearchMail,				//検索条件届先MAIL
+				SearchCom,				//検索条件届先コメント
+				SearchPrefecturesCd,	//検索条件届先県CD
+				SearchMunicipalityCd,	//検索条件届先市区町村CD
+				SearchDelFg,			//検索条件削除区分
+				SearcNotJis,			//検索条件JIS由来除く
+				SearchTelExactMatch,	//電話番号完全一致
+				AllSearch
+				);
+		return Rt;
+	}
+	
+	private static Object[][] DeliveryMstRtMain(
+			ArrayList<String> SearchDECD,			//検索条件届先CD
+			ArrayList<String> SearchDepartmentCd,	//検索条件届先部署CD
+			ArrayList<String> SearchDEName,			//検索条件届先名
+			ArrayList<String> SearchPost,			//検索条件届先郵便
+			ArrayList<String> SearchAdd,			//検索条件届先住所
+			ArrayList<String> SearchTel,			//検索条件届先TEL
+			ArrayList<String> SearchFax,			//検索条件届先FAX
+			ArrayList<String> SearchMail,			//検索条件届先MAIL
+			ArrayList<String> SearchCom,			//検索条件届先コメント
+			ArrayList<String> SearchPrefecturesCd,	//検索条件届先県CD
+			ArrayList<String> SearchMunicipalityCd,	//検索条件届先市区町村CD
+			ArrayList<String> SearchDelFg,			//検索条件削除区分
+			boolean SearcNotJis,					//検索条件JIS由来除く
+			boolean SearchTelExactMatch,			//電話番号完全一致
+			boolean AllSearch
+			){
 		
 		Object[][] rt = new Object[0][RtDeliveryMstRt().length];
 		boolean SearchKick = false;

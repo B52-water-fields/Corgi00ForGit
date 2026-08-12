@@ -101,6 +101,22 @@ public class M100_DeliveryComversionMstRt{
 	static final int ColDelFg						= (int)25;	//削除区分
 	static final int ColMstPriorityFirstFg		= (int)26;	//届先マスタ優先フラグ
 	
+	static final int ColSearchClGpCD					= (int) 0;	//荷主グループCD
+	static final int ColSearchCLGpName				= (int) 1;	//荷主グループ名
+	static final int ColSearchCL_DECD					= (int) 2;	//荷主届先CD
+	static final int ColSearchDECD					= (int) 3;	//届先CD
+	static final int ColSearchDepartmentCd			= (int) 4;	//届先部署CD
+	static final int ColSearchDEName					= (int) 5;	//届先名
+	static final int ColSearchPost					= (int) 6;	//届先郵便
+	static final int ColSearchAdd						= (int) 7;	//届先住所
+	static final int ColSearchTel						= (int) 8;	//Tel
+	static final int ColSearchFax						= (int) 9;	//Fax
+	static final int ColSearchMail					= (int)10;	//Mail
+	static final int ColSearchSetName					= (int)11;	//送り状登録名
+	static final int ColSearchCom						= (int)12;	//コメント
+	static final int ColSearchDelFg					= (int)13;	//削除区分
+	static final int ColSearchMstPriorityFirstFg	= (int)14;	//届先マスタ優先フラグ
+	
 	public static Object[][] RtDeliveryComversionMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {
 				 {"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"		,"Key"}
@@ -136,6 +152,147 @@ public class M100_DeliveryComversionMstRt{
 	}
 	
 	public static Object[][] DeliveryComversionMstRt(
+			ArrayList<String> SearchClGpCD,
+			ArrayList<String> SearchCLGpName,
+			ArrayList<String> SearchCL_DECD,
+			ArrayList<String> SearchDECD,
+			ArrayList<String> SearchDepartmentCd,
+			ArrayList<String> SearchDEName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchSetName,
+			ArrayList<String> SearchCom,
+			ArrayList<String> SearchDelFg,
+			ArrayList<String> SearchMstPriorityFirstFg,
+			boolean AllSearch){
+
+		Object[][] Definition = {
+				 {"String"		,SearchClGpCD				,"Exact"	,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"		,""}
+				,{"String"		,SearchCLGpName				,"Partial"	,ColSearchCLGpName				,""													,"荷主グループ名"		,""}
+				,{"String"		,SearchCL_DECD				,"Exact"	,ColSearchCL_DECD					,""													,"荷主届先CD"			,""}
+				,{"String"		,SearchDECD					,"Exact"	,ColSearchDECD					,""													,"届先CD"				,""}
+				,{"String"		,SearchDepartmentCd			,"Exact"	,ColSearchDepartmentCd			,""													,"届先部署CD"			,""}
+				,{"String"		,SearchDEName				,"Partial"	,ColSearchDEName					,""													,"届先名"				,""}
+				,{"String"		,SearchPost					,"Prefix"	,ColSearchPost					,""													,"届先郵便"				,""}
+				,{"String"		,SearchAdd					,"Partial"	,ColSearchAdd						,""													,"届先住所"				,""}
+				,{"String"		,SearchTel					,"Partial"	,ColSearchTel						,""													,"Tel"					,""}
+				,{"String"		,SearchFax					,"Partial"	,ColSearchFax						,""													,"Fax"					,""}
+				,{"String"		,SearchMail					,"Partial"	,ColSearchMail					,""													,"Mail"					,""}
+				,{"String"		,SearchSetName				,"Partial"	,ColSearchSetName					,""													,"送り状登録名"			,""}
+				,{"String"		,SearchCom					,"Partial"	,ColSearchCom						,""													,"コメント"				,""}
+				,{"String"		,SearchDelFg				,"Exact"	,ColSearchDelFg					,B100_DefaultVariable.SearchDelList				,"削除区分"				,""}
+				,{"String"		,SearchMstPriorityFirstFg	,"Exact"	,ColSearchMstPriorityFirstFg	,""													,"届先マスタ優先フラグ"	,""}
+				};
+		
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]) {
+				case ColSearchClGpCD:	
+					SearchClGpCD				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCLGpName:	
+					SearchCLGpName				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCL_DECD:	
+					SearchCL_DECD				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDECD:	
+					SearchDECD					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDepartmentCd:	
+					SearchDepartmentCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDEName:	
+					SearchDEName				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPost:	
+					SearchPost					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdd:	
+					SearchAdd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchTel:	
+					SearchTel					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFax:
+					SearchFax					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMail:	
+					SearchMail					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSetName:	
+					SearchSetName				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCom:	
+					SearchCom					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDelFg:	
+					SearchDelFg					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMstPriorityFirstFg:	
+					SearchMstPriorityFirstFg	= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		
+		Object[][] Rt	= DeliveryComversionMstRtMain(
+				SearchClGpCD,
+				SearchCLGpName,
+				SearchCL_DECD,
+				SearchDECD,
+				SearchDepartmentCd,
+				SearchDEName,
+				SearchPost,
+				SearchAdd,
+				SearchTel,
+				SearchFax,
+				SearchMail,
+				SearchSetName,
+				SearchCom,
+				SearchDelFg,
+				SearchMstPriorityFirstFg,
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] DeliveryComversionMstRtMain(
 											ArrayList<String> SearchClGpCD,
 											ArrayList<String> SearchCLGpName,
 											ArrayList<String> SearchCL_DECD,
@@ -152,22 +309,6 @@ public class M100_DeliveryComversionMstRt{
 											ArrayList<String> SearchDelFg,
 											ArrayList<String> SearchMstPriorityFirstFg,
 											boolean AllSearch){
-		
-		SearchClGpCD				= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchCLGpName				= B100_ArrayListControl.ArryListStringUniqueList(SearchCLGpName);
-		SearchCL_DECD				= B100_ArrayListControl.ArryListStringUniqueList(SearchCL_DECD);
-		SearchDECD					= B100_ArrayListControl.ArryListStringUniqueList(SearchDECD);
-		SearchDepartmentCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
-		SearchDEName				= B100_ArrayListControl.ArryListStringUniqueList(SearchDEName);
-		SearchPost					= B100_ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd					= B100_ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel					= B100_ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax					= B100_ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail					= B100_ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchSetName				= B100_ArrayListControl.ArryListStringUniqueList(SearchSetName);
-		SearchCom					= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);
-		SearchDelFg					= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
-		SearchMstPriorityFirstFg	= B100_ArrayListControl.ArryListStringUniqueList(SearchMstPriorityFirstFg);
 		
 		Object[][] rt = new Object[0][RtDeliveryComversionMstRt().length];
 		boolean SearchKick = false;

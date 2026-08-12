@@ -65,6 +65,12 @@ public class M100_ItemComversionMstRt{
 	static final int ColCsUnitName	= (int)18;	//ケース商品単位
 	static final int ColPlUnitName	= (int)19;	//パレット商品単位
 	
+	static final int ColSearchClGpCd		= (int) 0;	//荷主グループコード
+	static final int ColSearchClCd		= (int) 1;	//荷主コード
+	static final int ColSearchItemCd		= (int) 2;	//商品コード
+	static final int ColSearchClItemCd	= (int) 3;	//荷主商品コード
+	static final int ColSearchItemName	= (int) 4;	//商品名
+	
 	public static Object[][] RtItemComversionMstRt(){
 		Object[][] RtItemComversionMstRt = {
 				 {"ClGpCd"			,ColClGpCd			,"String"	,"荷主グループCD"		,"Key"}
@@ -99,11 +105,85 @@ public class M100_ItemComversionMstRt{
 			ArrayList<String> SearchItemName,			//商品名
 			boolean AllSearch){
 		
-		SearchClGpCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCd);
-		SearchClCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
-		SearchItemCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);
-		SearchClItemCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchClItemCd);
-		SearchItemName	= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);
+		Object[][] Definition = {
+				 {"String"		,SearchClGpCd		,"Exact"			,ColSearchClGpCd		,B100_DefaultVariable.SearchClGpList		,"荷主グループコード"	,""}
+				,{"String"		,SearchClCd			,"Exact"			,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"			,""}
+				,{"String"		,SearchItemCd		,"Exact"			,ColSearchItemCd		,""											,"商品コード"			,""}
+				,{"String"		,SearchClItemCd		,"Exact"			,ColSearchClItemCd	,""											,"荷主商品コード"		,""}
+				,{"String"		,SearchItemName		,"Partial"			,ColSearchItemName	,""											,"商品名"				,""}
+				};
+		
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]) {
+				case ColSearchClGpCd:	
+					SearchClGpCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClCd:	
+					SearchClCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemCd:	
+					SearchItemCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClItemCd:	
+					SearchClItemCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemName:	
+					SearchItemName		= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= ItemComversionMstRtMain(
+				SearchClGpCd,			//荷主グループコード
+				SearchClCd,				//荷主コード
+				SearchItemCd,			//商品コード
+				SearchClItemCd,			//荷主商品コード
+				SearchItemName,			//商品名
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] ItemComversionMstRtMain(
+			ArrayList<String> SearchClGpCd,				//荷主グループコード
+			ArrayList<String> SearchClCd,				//荷主コード
+			ArrayList<String> SearchItemCd,				//商品コード
+			ArrayList<String> SearchClItemCd,			//荷主商品コード
+			ArrayList<String> SearchItemName,			//商品名
+			boolean AllSearch){
 		
 		Object[][] rt = new Object[0][RtItemComversionMstRt().length];
 		boolean SearchKick = false;

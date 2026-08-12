@@ -63,6 +63,15 @@ public class M100_CautionMstRt{
 	static final  int ColAdd02				= (int)14;	//届先住所2
 	static final  int ColAdd03				= (int)15;	//届先住所3
 	
+	static final  int ColSearchCautionCd		= (int) 0;	//注意事項コード
+	static final  int ColSearchClGpCD			= (int) 1;	//荷主グループコード
+	static final  int ColSearchDECD			= (int) 2;	//届先CD
+	static final  int ColSearchDepartmentCd	= (int) 3;	//部署CD
+	static final  int ColSearchCautionTiming	= (int) 4;	//注意事項タイミング
+	static final  int ColSearchCautionName	= (int) 5;	//注意事項名
+	static final  int ColSearchCaution		= (int) 6;	//注意事項内容
+	static final  int ColSearchDeName			= (int) 7;	//届先名
+	
 	public static Object[][] RtCautionMstRt(){
 		Object[][] RtSettingCautionMstRt = {
 				 {"CautionCd"		,ColCautionCd		,"String"	,"注意事項コード"		,"Key"}
@@ -87,6 +96,104 @@ public class M100_CautionMstRt{
 	}
 	
 	public static Object[][] CautionMstRt(
+			ArrayList<String> SearchCautionCd,		//注意事項コード
+			ArrayList<String> SearchClGpCD,			//荷主グループコード
+			ArrayList<String> SearchDECD,			//届先CD
+			ArrayList<String> SearchDepartmentCd,	//部署CD
+			ArrayList<String> SearchCautionTiming,	//注意事項タイミング
+			ArrayList<String> SearchCautionName,	//注意事項名
+			ArrayList<String> SearchCaution,		//注意事項内容
+			ArrayList<String> SearchDeName,			//届先名
+			boolean AllSearch){
+		
+		Object[][] Definition = {
+				 {"String"		,SearchCautionCd		,"Exact"			,ColSearchCautionCd			,""													,"注意事項コード"		,""}
+				,{"String"		,SearchClGpCD			,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループコード"	,""}
+				,{"String"		,SearchDECD				,"Exact"			,ColSearchDECD				,""													,"届先CD"				,""}
+				,{"String"		,SearchDepartmentCd		,"Exact"			,ColSearchDepartmentCd		,""													,"部署CD"				,""}
+				,{"String"		,SearchCautionTiming	,"Exact"			,ColSearchCautionTiming		,B100_DefaultVariable.SearchCautionTiming		,"注意事項タイミング"	,""}
+				,{"String"		,SearchCautionName		,"Partial"			,ColSearchCautionName		,""													,"注意事項名"			,""}
+				,{"String"		,SearchCaution			,"Partial"			,ColSearchCaution				,""													,"注意事項内容"			,""}
+				,{"String"		,SearchDeName			,"Partial"			,ColSearchDeName				,""													,"届先名"				,""}
+				};
+		
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]) {
+				case ColSearchCautionCd:	
+					SearchCautionCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClGpCD:	
+					SearchClGpCD			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDECD:	
+					SearchDECD				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDepartmentCd:	
+					SearchDepartmentCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCautionTiming:	
+					SearchCautionTiming		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCautionName:	
+					SearchCautionName		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCaution:	
+					SearchCaution			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDeName:	
+					SearchDeName			= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= CautionMstRtMain(
+				SearchCautionCd,
+				SearchClGpCD,
+				SearchDECD,
+				SearchDepartmentCd,
+				SearchCautionTiming,
+				SearchCautionName,
+				SearchCaution,
+				SearchDeName,
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] CautionMstRtMain(
 			ArrayList<String> SearchCautionCd,
 			ArrayList<String> SearchClGpCD,
 			ArrayList<String> SearchDECD,
@@ -96,16 +203,6 @@ public class M100_CautionMstRt{
 			ArrayList<String> SearchCaution,
 			ArrayList<String> SearchDeName,
 			boolean AllSearch){
-		
-		SearchCautionCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchCautionCd);
-		SearchClGpCD		= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchDECD			= B100_ArrayListControl.ArryListStringUniqueList(SearchDECD);
-		SearchDepartmentCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);
-		SearchCautionTiming	= B100_ArrayListControl.ArryListStringUniqueList(SearchCautionTiming);
-		SearchCautionName	= B100_ArrayListControl.ArryListStringUniqueList(SearchCautionName);
-		SearchCaution		= B100_ArrayListControl.ArryListStringUniqueList(SearchCaution);
-		SearchDeName		= B100_ArrayListControl.ArryListStringUniqueList(SearchDeName);
-		
 		
 		Object[][] rt = new Object[0][RtCautionMstRt().length];
 		boolean SearchKick = false;

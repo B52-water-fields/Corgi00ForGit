@@ -68,6 +68,15 @@ public class M100_ClGpMstRt{
 	static final  int ColUpdateUser	= (int)17;	//更新者コード
 	static final  int ColPassWord		= (int)18;	//パスワード
 	
+	static final  int ColSearchClGpCD		= (int) 0;	//荷主グループCD
+	static final  int ColSearchCLGpName	= (int) 1;	//荷主グループ名
+	static final  int ColSearchPost		= (int) 2;	//郵便番号
+	static final  int ColSearchAdd		= (int) 3;	//住所
+	static final  int ColSearchTel		= (int) 4;	//Tel
+	static final  int ColSearchFax		= (int) 5;	//Fax
+	static final  int ColSearchMail		= (int) 6;	//Mail
+	static final  int ColSearchCom		= (int) 7;	//コメント
+	
 	public static Object[][] RtClGpMstRt(){
 		Object[][] RtSettingClGpMstRt = {
 				 {"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"		,"Key"}
@@ -105,14 +114,104 @@ public class M100_ClGpMstRt{
 			ArrayList<String> SearchCom,
 			boolean AllSearch){
 		
-		SearchClGpCD	= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchCLGpName	= B100_ArrayListControl.ArryListStringUniqueList(SearchCLGpName);
-		SearchPost		= B100_ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd		= B100_ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel		= B100_ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax		= B100_ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail		= B100_ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom		= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);
+		Object[][] Definition = {
+				 {"String"		,SearchClGpCD		,"Exact"			,ColSearchClGpCD		,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""}
+				,{"String"		,SearchCLGpName		,"Partial"			,ColSearchCLGpName	,""													,"荷主グループ名"	,""}
+				,{"String"		,SearchPost			,"Prefix"			,ColSearchPost		,""													,"郵便番号"			,""}
+				,{"String"		,SearchAdd			,"Partial"			,ColSearchAdd			,""													,"住所"				,""}
+				,{"String"		,SearchTel			,"Partial"			,ColSearchTel			,""													,"Tel"				,""}
+				,{"String"		,SearchFax			,"Partial"			,ColSearchFax			,""													,"Fax"				,""}
+				,{"String"		,SearchMail			,"Partial"			,ColSearchMail		,""													,"Mail"				,""}
+				,{"String"		,SearchCom			,"Partial"			,ColSearchCom			,""													,"コメント"			,""}
+				};
+		
+		for(int i=0;i<Definition.length;i++) {
+			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
+				//日付系最小は念のため00:00:00扱い
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
+				
+			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
+				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
+				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
+				
+			}
+			
+			switch((String)Definition[i][0]) {
+				case"Integer":
+					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
+					break;
+				case"Float":
+					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
+					break;
+				case"String":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"Date":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				case"DateTime":
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+				default:
+					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
+					break;
+			}
+			
+			switch((int)Definition[i][3]) {
+				case ColSearchClGpCD:	
+					SearchClGpCD			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCLGpName:	
+					SearchCLGpName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPost:	
+					SearchPost				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdd:	
+					SearchAdd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchTel:	
+					SearchTel				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFax:	
+					SearchFax				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMail:	
+					SearchMail				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCom:	
+					SearchCom				= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= ClGpMstRtMain(
+				SearchClGpCD,
+				SearchCLGpName,
+				SearchPost,
+				SearchAdd,
+				SearchTel,
+				SearchFax,
+				SearchMail,
+				SearchCom,
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	
+	private static Object[][] ClGpMstRtMain(
+			ArrayList<String> SearchClGpCD,
+			ArrayList<String> SearchCLGpName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			boolean AllSearch){
 		
 		boolean SearchKick = false;
 		if(AllSearch) {SearchKick = true;}
