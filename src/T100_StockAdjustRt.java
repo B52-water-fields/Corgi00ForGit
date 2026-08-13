@@ -97,6 +97,7 @@ public class T100_StockAdjustRt{
 	String GetUpdateUser		= (String)AdjustRt[i][T100_StockAdjustRt.ColUpdateUser];
 	*/
 	
+	//戻り値カラム
 	static final int ColAdjustNo				= 0;		//調整番号
 	static final int ColAdjustReasonName		= 1;		//調整理由名
 	static final int ColAdjustdate			= 2;		//調整日
@@ -136,7 +137,30 @@ public class T100_StockAdjustRt{
 	static final int ColItemName01			=36;		//商品表記名
 	static final int ColItemName02			=37;		//商品正式名
 	static final int ColItemName03			=38;		//商品略名
-	static final int ColAdjustReasonCd		=39;		//調整理由コードstatic final int ColAdjustReasonCd		=36;		//調整理由コード
+	static final int ColAdjustReasonCd		=39;		//調整理由コード
+	
+	//検索値カラム
+	static final int ColSearchClCd				= 0;	//荷主コード
+	static final int ColSearchWhCd				= 1;	//倉庫コード
+	static final int ColSearchClGpCD				= 2;	//荷主グループCD
+	static final int ColSearchAdjustNo			= 3;	//調整番号
+	static final int ColSearchAdjustReasonCd		= 4;	//調整理由コード
+	static final int ColSearchAdjustReasonName	= 5;	//調整理由名
+	static final int ColSearchAdjustdateMin		= 6;	//調整日最小
+	static final int ColSearchAdjustdateMax		= 7;	//調整日最大
+	static final int ColSearchLoc					= 8;	//調整元ロケ
+	static final int ColSearchType				= 9;	//ロケタイプ
+	static final int ColSearchItemCd				=10;	//調整元商品CD
+	static final int ColSearchItemName			=11;	//調整元商品名
+	static final int ColSearchLot					=12;	//調整元ロット
+	static final int ColSearchExpDateMin			=13;	//調整元賞味期限開始
+	static final int ColSearchExpDateMax			=14;	//調整元賞味期限終了
+	static final int ColSearchActualDateMin		=15;	//調整元入荷日開始
+	static final int ColSearchActualDateMax		=16;	//調整元入荷日終了
+	static final int ColSearchAdjustQtyMin		=17;	//調整数最小
+	static final int ColSearchAdjustQtyMax		=18;	//調整数最大
+	static final int ColSearchAdjustCom			=19;	//調整理由コメント
+	
 	public static Object[][] RtAdjustRt(){
 		Object[][] RtAdjustRt = {
 				 {"ClCd"			,ColClCd				,"String"	,"荷主コード"				,"key"}
@@ -182,7 +206,156 @@ public class T100_StockAdjustRt{
 				};
 		return RtAdjustRt;
 	}
+	
 	public static Object[][] AdjustRt(
+			ArrayList<String>  SearchClCd,				//荷主コード
+			ArrayList<String>  SearchWhCd,				//倉庫コード
+			ArrayList<String>  SearchClGpCD,			//荷主グループCD
+			ArrayList<String>  SearchAdjustNo,			//調整番号
+			ArrayList<String>  SearchAdjustReasonCd,	//調整理由コード
+			ArrayList<String>  SearchAdjustReasonName,	//調整理由名
+			ArrayList<String>  SearchAdjustdateMin,		//調整日最小
+			ArrayList<String>  SearchAdjustdateMax,		//調整日最大
+			ArrayList<String>  SearchLoc,				//調整元ロケ
+			ArrayList<Integer> SearchType,				//ロケタイプ
+			ArrayList<String>  SearchItemCd,			//調整元商品CD
+			ArrayList<String>  SearchItemName,			//調整元商品名
+			ArrayList<String>  SearchLot,	 			//調整元ロット
+			ArrayList<String>  SearchExpDateMin,		//調整元賞味期限開始
+			ArrayList<String>  SearchExpDateMax,		//調整元賞味期限終了
+			ArrayList<String>  SearchActualDateMin,		//調整元入荷日開始
+			ArrayList<String>  SearchActualDateMax,		//調整元入荷日終了
+			ArrayList<Integer> SearchAdjustQtyMin,		//調整数最小
+			ArrayList<Integer> SearchAdjustQtyMax,		//調整数最大
+			ArrayList<String>  SearchAdjustCom,			//調整理由コメント
+			boolean LocExactMatch,	//ロケーション完全一致
+			boolean AllSearch){
+		
+		Object[][] Definition = {
+				 {"String"		,SearchClCd				,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList				,"荷主コード"		,""}
+				,{"String"		,SearchWhCd				,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList				,"倉庫コード"		,""}
+				,{"String"		,SearchClGpCD			,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""}
+				,{"String"		,SearchAdjustNo			,"Exact"			,ColSearchAdjustNo			,""													,"調整番号"			,""}
+				,{"String"		,SearchAdjustReasonCd	,"Exact"			,ColSearchAdjustReasonCd		,B100_DefaultVariable.SearchAdjustReasonList		,"調整理由コード"	,""}
+				,{"String"		,SearchAdjustReasonName	,"Partial"			,ColSearchAdjustReasonName	,""													,"調整理由名"		,""}
+				,{"Date"		,SearchAdjustdateMin	,"RangeStr"			,ColSearchAdjustdateMin		,""													,"調整日"			,"最小"}
+				,{"Date"		,SearchAdjustdateMax	,"RangeEnd"			,ColSearchAdjustdateMax		,""													,"調整日"			,"最大"}
+				,{"String"		,SearchLoc				,"ExactOrPrefix"	,ColSearchLoc					,""													,"調整元ロケ"		,""}
+				,{"Integer"		,SearchType				,"Exact"			,ColSearchType				,B100_DefaultVariable.SearchLocType				,"ロケタイプ"		,""}
+				,{"String"		,SearchItemCd			,"Exact"			,ColSearchItemCd				,""													,"調整元商品CD"		,""}
+				,{"String"		,SearchItemName			,"Partial"			,ColSearchItemName			,""													,"調整元商品名"		,""}
+				,{"String"		,SearchLot				,"Exact"			,ColSearchLot					,""													,"調整元ロット"		,""}
+				,{"Date"		,SearchExpDateMin		,"RangeStr"			,ColSearchExpDateMin			,""													,"調整元賞味期限"	,"開始"}
+				,{"Date"		,SearchExpDateMax		,"RangeEnd"			,ColSearchExpDateMax			,""													,"調整元賞味期限"	,"終了"}
+				,{"Date"		,SearchActualDateMin	,"RangeStr"			,ColSearchActualDateMin		,""													,"調整元入荷日"		,"開始"}
+				,{"Date"		,SearchActualDateMax	,"RangeEnd"			,ColSearchActualDateMax		,""													,"調整元入荷日"		,"終了"}
+				,{"Integer"		,SearchAdjustQtyMin		,"RangeMin"			,ColSearchAdjustQtyMin		,""													,"調整数"			,"最小"}
+				,{"Integer"		,SearchAdjustQtyMax		,"RangeMax"			,ColSearchAdjustQtyMax		,""													,"調整数"			,"最大"}
+				,{"String"		,SearchAdjustCom		,"Partial"			,ColSearchAdjustCom			,""													,"調整理由コメント"	,""}
+				};
+		
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					SearchClCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchWhCd:	
+					SearchWhCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClGpCD:	
+					SearchClGpCD			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdjustNo:	
+					SearchAdjustNo			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdjustReasonCd:	
+					SearchAdjustReasonCd	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdjustReasonName:	
+					SearchAdjustReasonName	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdjustdateMin:	
+					SearchAdjustdateMin		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdjustdateMax:	
+					SearchAdjustdateMax		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchLoc:	
+					SearchLoc				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchType:	
+					SearchType				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchItemCd:	
+					SearchItemCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemName:	
+					SearchItemName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchLot:	
+					SearchLot				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchExpDateMin:	
+					SearchExpDateMin		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchExpDateMax:	
+					SearchExpDateMax		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchActualDateMin:	
+					SearchActualDateMin		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchActualDateMax:	
+					SearchActualDateMax		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdjustQtyMin:	
+					SearchAdjustQtyMin		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAdjustQtyMax:	
+					SearchAdjustQtyMax		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAdjustCom:	
+					SearchAdjustCom			= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= AdjustRtMain(
+				SearchClCd,				//荷主コード
+				SearchWhCd,				//倉庫コード
+				SearchClGpCD,			//荷主グループCD
+				SearchAdjustNo,			//調整番号
+				SearchAdjustReasonCd,	//調整理由コード
+				SearchAdjustReasonName,	//調整理由名
+				SearchAdjustdateMin,	//調整日最小
+				SearchAdjustdateMax,	//調整日最大
+				SearchLoc,				//調整元ロケ
+				SearchType,				//ロケタイプ
+				SearchItemCd,			//調整元商品CD
+				SearchItemName,			//調整元商品名
+				SearchLot,	 			//調整元ロット
+				SearchExpDateMin,		//調整元賞味期限開始
+				SearchExpDateMax,		//調整元賞味期限終了
+				SearchActualDateMin,	//調整元入荷日開始
+				SearchActualDateMax,	//調整元入荷日終了
+				SearchAdjustQtyMin,		//調整数最小
+				SearchAdjustQtyMax,		//調整数最大
+				SearchAdjustCom,		//調整理由コメント
+				LocExactMatch,			//ロケーション完全一致
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] AdjustRtMain(
 			ArrayList<String>  SearchClCd,				//荷主コード
 			ArrayList<String>  SearchWhCd,				//倉庫コード
 			ArrayList<String>  SearchClGpCD,			//荷主グループCD
@@ -205,39 +378,6 @@ public class T100_StockAdjustRt{
 			ArrayList<String>  SearchAdjustCom,			//調整理由コメント
 			boolean LocExactMatch,	//ロケーション完全一致
 			boolean AllSearch){
-		
-		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);
-		SearchWhCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchWhCd);
-		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);
-		SearchAdjustNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustNo);
-		SearchAdjustReasonCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonCd);
-		SearchAdjustReasonName	= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustReasonName);
-		SearchAdjustdateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustdateMin);
-		SearchAdjustdateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustdateMax);
-		SearchLoc				= B100_ArrayListControl.ArryListStringUniqueList(SearchLoc);
-		SearchType				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchType);
-		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);
-		SearchItemName			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);
-		SearchLot				= B100_ArrayListControl.ArryListStringUniqueList(SearchLot);
-		SearchExpDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);
-		SearchExpDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);
-		SearchActualDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMin);
-		SearchActualDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMax);
-		SearchAdjustQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAdjustQtyMin);
-		SearchAdjustQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAdjustQtyMax);
-		SearchAdjustCom			= B100_ArrayListControl.ArryListStringUniqueList(SearchAdjustCom);
-		
-		//日付系最小は念のため00:00:00扱い
-		SearchAdjustdateMin 	= B100_ArrayListControl.DateOnlySet(SearchAdjustdateMin);
-		SearchExpDateMin 		= B100_ArrayListControl.DateOnlySet(SearchExpDateMin);
-		SearchActualDateMin 	= B100_ArrayListControl.DateOnlySet(SearchActualDateMin);
-		
-		
-		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなので注意
-		SearchAdjustdateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchAdjustdateMax,1);
-		SearchExpDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchExpDateMax,1);
-		SearchActualDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchActualDateMax,1);
-
 		
 		Object[][] RtAdjustRt=RtAdjustRt();
 		Object[][] rt = new Object[0][RtAdjustRt.length];

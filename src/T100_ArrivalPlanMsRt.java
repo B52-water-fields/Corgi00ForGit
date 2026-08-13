@@ -191,6 +191,50 @@ public class T100_ArrivalPlanMsRt{
 	static final int ColArCom02		= 41;		//ヘッダコメント2
 	static final int ColArCom03		= 42;		//ヘッダコメント3
 	
+	//検索値カラム
+	static final int ColSearchClWh				=  0;	//担当倉庫
+	static final int ColSearchClCd				=  1;	//荷主CD
+	static final int ColSearchCLName01			=  2;	//荷主名
+	static final int ColSearchClGpCD				=  3;	//荷主グループCD
+	static final int ColSearchCLGpName01			=  4;	//荷主グループ標記名
+	static final int ColSearchArrNo				=  5;	//入荷予定NO
+	static final int ColSearchClArrNo				=  6;	//荷主予定番号
+	static final int ColSearchPlanDateMin		=  7;	//入荷予定日開始
+	static final int ColSearchPlanDateMax		=  8;	//入荷予定日終了
+	static final int ColSearchHdActualDateMin	=  9;	//入荷実績日開始
+	static final int ColSearchHdActualDateMax	= 10;	//入荷実績日終了
+	static final int ColSearchSpCd				= 11;	//仕入先CD
+	static final int ColSearchSpName				= 12;	//仕入先名
+	static final int ColSearchSpPost				= 13;	//仕入先郵便
+	static final int ColSearchSpAdd				= 14;	//仕入先住所
+	static final int ColSearchSpTel				= 15;	//仕入先電話
+	static final int ColSearchArCom				= 16;	//コメント
+	static final int ColSearchFixFg				= 17;	//状況
+			
+	static final int ColSearchMsNoMin				= 18;	//明細番号最小
+	static final int ColSearchMsNoMax				= 19;	//明細番号最大
+	static final int ColSearchItemCd				= 20;	//商品コード
+	static final int ColSearchClItemCd			= 21;	//荷主商品コード
+	static final int ColSearchJanCd				= 22;	//JANCD（バラ）
+	static final int ColSearchItemMdNo			= 23;	//商品型番
+	static final int ColSearchItemName			= 24;	//商品名
+	static final int ColSearchlot					= 25;	//ロット
+	static final int ColSearchExpDateMin			= 26;	//消費期限開始
+	static final int ColSearchExpDateMax			= 27;	//消費期限終了
+	static final int ColSearchPlanQtyMin			= 28;	//予定数量最小
+	static final int ColSearchPlanQtyMax			= 29;	//予定数量最大
+	static final int ColSearchActualQtyMin		= 30;	//実績数最小
+	static final int ColSearchActualQtyMax		= 31;	//実績数最大
+	static final int ColSearchActualDateMin		= 32;	//入荷日開始
+	static final int ColSearchActualDateMax		= 33;	//入荷日終了
+	static final int ColSearchCom					= 34;	//コメント
+	static final int ColSearchEntryDateMin		= 35;	//登録日開始
+	static final int ColSearchEntryDateMax		= 36;	//登録日終了
+	static final int ColSearchUpdateDateMin		= 37;	//更新日開始
+	static final int ColSearchUpdateDateMax		= 38;	//更新日終了
+	static final int ColSearchEntryUser			= 39;	//登録者
+	static final int ColSearchUpdateUser			= 40;	//更新者
+	
 	public static Object[][] RtArrivalPlanMsRt(
 			){
 		Object[][] RtArrivalPlanMsRt = {
@@ -244,24 +288,24 @@ public class T100_ArrivalPlanMsRt{
 	}
 	
 	public static Object[][] ArrivalPlanMsRt(
-			ArrayList<String> SearchClWh,				//ヘッダ担当倉庫
-			ArrayList<String> SearchClCd,				//ヘッダ荷主CD
-			ArrayList<String> SearchCLName01,			//ヘッダ荷主名
-			ArrayList<String> SearchClGpCD,				//ヘッダ荷主グループCD
-			ArrayList<String> SearchCLGpName01,			//ヘッダ荷主グループ標記名
-			ArrayList<String> SearchArrNo,				//ヘッダ入荷予定NO
-			ArrayList<String> SearchClArrNo,			//ヘッダ荷主予定番号
-			ArrayList<String> SearchPlanDateMin,		//ヘッダ入荷予定日
-			ArrayList<String> SearchPlanDateMax,		//ヘッダ入荷予定日
-			ArrayList<String> SearchHdActualDateMin,	//ヘッダ入荷実績日
-			ArrayList<String> SearchHdActualDateMax,	//ヘッダ入荷実績日
-			ArrayList<String> SearchSpCd,				//ヘッダ仕入先CD
-			ArrayList<String> SearchSpName,				//ヘッダ仕入先名
-			ArrayList<String> SearchSpPost,				//ヘッダ仕入先郵便
-			ArrayList<String> SearchSpAdd,				//ヘッダ仕入先住所
-			ArrayList<String> SearchSpTel,				//ヘッダ仕入先電話
-			ArrayList<String> SearchArCom,				//ヘッダコメント
-			ArrayList<Integer> SearchFixFg,				//ヘッダ状況
+			ArrayList<String> SearchClWh,				//担当倉庫
+			ArrayList<String> SearchClCd,				//荷主CD
+			ArrayList<String> SearchCLName01,			//荷主名
+			ArrayList<String> SearchClGpCD,				//荷主グループCD
+			ArrayList<String> SearchCLGpName01,			//荷主グループ標記名
+			ArrayList<String> SearchArrNo,				//入荷予定NO
+			ArrayList<String> SearchClArrNo,			//荷主予定番号
+			ArrayList<String> SearchPlanDateMin,		//入荷予定日開始
+			ArrayList<String> SearchPlanDateMax,		//入荷予定日終了
+			ArrayList<String> SearchHdActualDateMin,	//入荷実績日開始
+			ArrayList<String> SearchHdActualDateMax,	//入荷実績日終了
+			ArrayList<String> SearchSpCd,				//仕入先CD
+			ArrayList<String> SearchSpName,				//仕入先名
+			ArrayList<String> SearchSpPost,				//仕入先郵便
+			ArrayList<String> SearchSpAdd,				//仕入先住所
+			ArrayList<String> SearchSpTel,				//仕入先電話
+			ArrayList<String> SearchArCom,				//コメント
+			ArrayList<Integer> SearchFixFg,				//状況
 					
 			ArrayList<Integer> SearchMsNoMin,			//明細番号最小
 			ArrayList<Integer> SearchMsNoMax,			//明細番号最大
@@ -271,78 +315,296 @@ public class T100_ArrivalPlanMsRt{
 			ArrayList<String> SearchItemMdNo,			//商品型番
 			ArrayList<String> SearchItemName,			//商品名
 			ArrayList<String> Searchlot,				//ロット
-			ArrayList<String> SearchExpDateMin,			//消費期限最小
-			ArrayList<String> SearchExpDateMax,			//消費期限最大
+			ArrayList<String> SearchExpDateMin,			//消費期限開始
+			ArrayList<String> SearchExpDateMax,			//消費期限終了
 			ArrayList<Integer> SearchPlanQtyMin,		//予定数量最小
 			ArrayList<Integer> SearchPlanQtyMax,		//予定数量最大
-			ArrayList<Integer> SearchActualQtyMin,		//実績数
-			ArrayList<Integer> SearchActualQtyMax,		//実績数
-			ArrayList<String> SearchActualDateMin,		//入荷日
-			ArrayList<String> SearchActualDateMax,		//入荷日
+			ArrayList<Integer> SearchActualQtyMin,		//実績数最小
+			ArrayList<Integer> SearchActualQtyMax,		//実績数最大
+			ArrayList<String> SearchActualDateMin,		//入荷日開始
+			ArrayList<String> SearchActualDateMax,		//入荷日終了
 			ArrayList<String> SearchCom,				//コメント
-			ArrayList<String> SearchEntryDateMin,		//登録日
-			ArrayList<String> SearchEntryDateMax,		//登録日
-			ArrayList<String> SearchUpdateDateMin,		//更新日
-			ArrayList<String> SearchUpdateDateMax,		//更新日
+			ArrayList<String> SearchEntryDateMin,		//登録日開始
+			ArrayList<String> SearchEntryDateMax,		//登録日終了
+			ArrayList<String> SearchUpdateDateMin,		//更新日開始
+			ArrayList<String> SearchUpdateDateMax,		//更新日終了
 			ArrayList<String> SearchEntryUser,			//登録者
 			ArrayList<String> SearchUpdateUser,			//更新者
 			boolean AllSearch){
 		
-		SearchClWh				= B100_ArrayListControl.ArryListStringUniqueList(SearchClWh);			//ヘッダ担当倉庫
-		SearchClCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);			//ヘッダ荷主CD
-		SearchCLName01			= B100_ArrayListControl.ArryListStringUniqueList(SearchCLName01);		//ヘッダ荷主名
-		SearchClGpCD			= B100_ArrayListControl.ArryListStringUniqueList(SearchClGpCD);			//ヘッダ荷主グループCD
-		SearchCLGpName01		= B100_ArrayListControl.ArryListStringUniqueList(SearchCLGpName01);		//ヘッダ荷主グループ標記名
-		SearchArrNo				= B100_ArrayListControl.ArryListStringUniqueList(SearchArrNo);			//ヘッダ入荷予定NO
-		SearchClArrNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchClArrNo);			//ヘッダ荷主予定番号
-		SearchPlanDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchPlanDateMin);		//ヘッダ入荷予定日最小
-		SearchPlanDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchPlanDateMax);		//ヘッダ入荷予定日最大
-		SearchHdActualDateMin	= B100_ArrayListControl.ArryListStringUniqueList(SearchHdActualDateMin);	//ヘッダ入荷実績日最小
-		SearchHdActualDateMax	= B100_ArrayListControl.ArryListStringUniqueList(SearchHdActualDateMax);	//ヘッダ入荷実績日最大
-		SearchSpCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchSpCd);			//ヘッダ仕入先CD
-		SearchSpName			= B100_ArrayListControl.ArryListStringUniqueList(SearchSpName);			//ヘッダ仕入先名
-		SearchSpPost			= B100_ArrayListControl.ArryListStringUniqueList(SearchSpPost);			//ヘッダ仕入先郵便
-		SearchSpAdd				= B100_ArrayListControl.ArryListStringUniqueList(SearchSpAdd);			//ヘッダ仕入先住所
-		SearchSpTel				= B100_ArrayListControl.ArryListStringUniqueList(SearchSpTel);			//ヘッダ仕入先電話
-		SearchArCom				= B100_ArrayListControl.ArryListStringUniqueList(SearchArCom);			//ヘッダコメント
-		SearchFixFg				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchFixFg);			//ヘッダ状況
-				
-		SearchMsNoMin			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchMsNoMin);		//明細番号最小
-		SearchMsNoMax			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchMsNoMax);		//明細番号最大
-		SearchItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);			//商品コード
-		SearchClItemCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchClItemCd);		//荷主商品コード
-		SearchJanCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchJanCd);			//JANCD（バラ）
-		SearchItemMdNo			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemMdNo);		//商品型番
-		SearchItemName			= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);		//商品名
-		Searchlot				= B100_ArrayListControl.ArryListStringUniqueList(Searchlot);				//ロット
-		SearchExpDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);		//消費期限最小
-		SearchExpDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);		//消費期限最大
-		SearchPlanQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchPlanQtyMin);		//予定数量最小
-		SearchPlanQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchPlanQtyMax);		//予定数量最大
-		SearchActualQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchActualQtyMin);	//実績数
-		SearchActualQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchActualQtyMax);	//実績数
-		SearchActualDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMin);	//入荷日最小
-		SearchActualDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMax);	//入荷日最大
-		SearchCom				= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);				//コメント
-		SearchEntryDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryDateMin);	//登録日最小
-		SearchEntryDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryDateMax);	//登録日最大
-		SearchUpdateDateMin		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMin);	//更新日最小
-		SearchUpdateDateMax		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMax);	//更新日最大
-		SearchEntryUser			= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryUser);		//登録者
-		SearchUpdateUser		= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);		//更新者
-
-		//日付系最小は念のため00:00:00扱い
-		SearchPlanDateMin		= B100_ArrayListControl.DateOnlySet(SearchPlanDateMin);			//ヘッダ入荷予定日最小
-		SearchHdActualDateMin	= B100_ArrayListControl.DateOnlySet(SearchHdActualDateMin);		//ヘッダ入荷実績日最小
-		SearchExpDateMin		= B100_ArrayListControl.DateOnlySet(SearchExpDateMin);				//消費期限最小
-		SearchActualDateMin		= B100_ArrayListControl.DateOnlySet(SearchActualDateMin);			//入荷日最小
+		Object[][] Definition = {
+				 {"String"		,SearchClWh				,"Exact"			,ColSearchClWh				,B100_DefaultVariable.SearchWhList					,"担当倉庫"				,""}
+				,{"String"		,SearchClCd				,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList					,"荷主CD"				,""}
+				,{"String"		,SearchCLName01			,"Partial"			,ColSearchCLName01			,""														,"荷主名"				,""}
+				,{"String"		,SearchClGpCD			,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList					,"荷主グループCD"		,""}
+				,{"String"		,SearchCLGpName01		,"Partial"			,ColSearchCLGpName01			,""														,"荷主グループ標記名"	,""}
+				,{"String"		,SearchArrNo			,"Exact"			,ColSearchArrNo				,""														,"入荷予定NO"			,""}
+				,{"String"		,SearchClArrNo			,"Exact"			,ColSearchClArrNo				,""														,"荷主予定番号"			,""}
+				,{"Date"		,SearchPlanDateMin		,"RangeStr"			,ColSearchPlanDateMin		,""														,"入荷予定日"			,"開始"}
+				,{"Date"		,SearchPlanDateMax		,"RangeEnd"			,ColSearchPlanDateMax		,""														,"入荷予定日"			,"終了"}
+				,{"Date"		,SearchHdActualDateMin	,"RangeStr"			,ColSearchHdActualDateMin	,""														,"入荷実績日"			,"開始"}
+				,{"Date"		,SearchHdActualDateMax	,"RangeEnd"			,ColSearchHdActualDateMax	,""														,"入荷実績日"			,"終了"}
+				,{"String"		,SearchSpCd				,"Exact"			,ColSearchSpCd				,B100_DefaultVariable.SearchSupplierList				,"仕入先CD"				,""}
+				,{"String"		,SearchSpName			,"Partial"			,ColSearchSpName				,""														,"仕入先名"				,""}
+				,{"String"		,SearchSpPost			,"Prefix"			,ColSearchSpPost				,""														,"仕入先郵便"			,""}
+				,{"String"		,SearchSpAdd			,"Partial"			,ColSearchSpAdd				,""														,"仕入先住所"			,""}
+				,{"String"		,SearchSpTel			,"Partial"			,ColSearchSpTel				,""														,"仕入先電話"			,""}
+				,{"String"		,SearchArCom			,"Partial"			,ColSearchArCom				,""														,"コメント"				,""}
+				,{"Integer"		,SearchFixFg			,"Exact"			,ColSearchFixFg				,B100_DefaultVariable.SearchArryvalFixFgList			,"状況"					,""}
+						
+				,{"Integer"		,SearchMsNoMin			,"Exact"			,ColSearchMsNoMin				,""														,"明細番号"				,"最小"}
+				,{"Integer"		,SearchMsNoMax			,"Exact"			,ColSearchMsNoMax				,""														,"明細番号"				,"最大"}
+				,{"String"		,SearchItemCd			,"Exact"			,ColSearchItemCd				,""														,"商品コード"			,""}
+				,{"String"		,SearchClItemCd			,"Exact"			,ColSearchClItemCd			,""														,"荷主商品コード"		,""}
+				,{"String"		,SearchJanCd			,"Exact"			,ColSearchJanCd				,""														,"JANCD（バラ）"		,""}
+				,{"String"		,SearchItemMdNo			,"Exact"			,ColSearchItemMdNo			,""														,"商品型番"				,""}
+				,{"String"		,SearchItemName			,"Partial"			,ColSearchItemName			,""														,"商品名"				,""}
+				,{"String"		,Searchlot				,"Exact"			,ColSearchlot					,""														,"ロット"				,""}
+				,{"Date"		,SearchExpDateMin		,"RangeStr"			,ColSearchExpDateMin			,""														,"消費期限"				,"開始"}
+				,{"Date"		,SearchExpDateMax		,"RangeEnd"			,ColSearchExpDateMax			,""														,"消費期限"				,"終了"}
+				,{"Integer"		,SearchPlanQtyMin		,"RangeMin"			,ColSearchPlanQtyMin			,""														,"予定数量"				,"最小"}
+				,{"Integer"		,SearchPlanQtyMax		,"RangeMax"			,ColSearchPlanQtyMax			,""														,"予定数量"				,"最大"}
+				,{"Integer"		,SearchActualQtyMin		,"RangeMin"			,ColSearchActualQtyMin		,""														,"実績数"				,"最小"}
+				,{"Integer"		,SearchActualQtyMax		,"RangeMax"			,ColSearchActualQtyMax		,""														,"実績数"				,"最大"}
+				,{"Date"		,SearchActualDateMin	,"RangeStr"			,ColSearchActualDateMin		,""														,"入荷日"				,"開始"}
+				,{"Date"		,SearchActualDateMax	,"RangeEnd"			,ColSearchActualDateMax		,""														,"入荷日"				,"終了"}
+				,{"String"		,SearchCom				,"Partial"			,ColSearchCom					,""														,"コメント"				,""}
+				,{"DateTime"	,SearchEntryDateMin		,"RangeStr"			,ColSearchEntryDateMin		,""														,"登録日"				,"開始"}
+				,{"DateTime"	,SearchEntryDateMax		,"RangeEnd"			,ColSearchEntryDateMax		,""														,"登録日"				,"終了"}
+				,{"DateTime"	,SearchUpdateDateMin	,"RangeStr"			,ColSearchUpdateDateMin		,""														,"更新日"				,"開始"}
+				,{"DateTime"	,SearchUpdateDateMax	,"RangeEnd"			,ColSearchUpdateDateMax		,""														,"更新日"				,"終了"}
+				,{"String"		,SearchEntryUser		,"Partial"			,ColSearchEntryUser			,""														,"登録者"				,""}
+				,{"String"		,SearchUpdateUser		,"Partial"			,ColSearchUpdateUser			,""														,"更新者"				,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
 		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClWh:	
+					SearchClWh					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClCd:	
+					SearchClCd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCLName01:	
+					SearchCLName01				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClGpCD:	
+					SearchClGpCD				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCLGpName01:	
+					SearchCLGpName01			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchArrNo:	
+					SearchArrNo					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClArrNo:	
+					SearchClArrNo				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPlanDateMin:	
+					SearchPlanDateMin			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPlanDateMax:	
+					SearchPlanDateMax			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchHdActualDateMin:	
+					SearchHdActualDateMin		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchHdActualDateMax:	
+					SearchHdActualDateMax		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSpCd:	
+					SearchSpCd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSpName:	
+					SearchSpName				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSpPost:	
+					SearchSpPost				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSpAdd:	
+					SearchSpAdd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSpTel:	
+					SearchSpTel					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchArCom:	
+					SearchArCom					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFixFg:	
+					SearchFixFg					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchMsNoMin:	
+					SearchMsNoMin				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchMsNoMax:	
+					SearchMsNoMax				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchItemCd:	
+					SearchItemCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClItemCd:	
+					SearchClItemCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchJanCd:	
+					SearchJanCd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemMdNo:	
+					SearchItemMdNo				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemName:	
+					SearchItemName				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchlot:	
+					Searchlot					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchExpDateMin:	
+					SearchExpDateMin			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchExpDateMax:	
+					SearchExpDateMax			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPlanQtyMin:	
+					SearchPlanQtyMin			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchPlanQtyMax:	
+					SearchPlanQtyMax			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchActualQtyMin:	
+					SearchActualQtyMin			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchActualQtyMax:	
+					SearchActualQtyMax			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchActualDateMin:	
+					SearchActualDateMin			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchActualDateMax:	
+					SearchActualDateMax			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCom:	
+					SearchCom					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryDateMin:	
+					SearchEntryDateMin			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryDateMax:	
+					SearchEntryDateMax			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateDateMin:	
+					SearchUpdateDateMin			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateDateMax:	
+					SearchUpdateDateMax			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryUser:	
+					SearchEntryUser				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateUser:	
+					SearchUpdateUser			= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
 		
-		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなので注意
-		SearchPlanDateMax		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchPlanDateMax,1);			//ヘッダ入荷予定日最大
-		SearchHdActualDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchHdActualDateMax,1);		//ヘッダ入荷実績日最大
-		SearchExpDateMax		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchExpDateMax,1);			//消費期限最大
-		SearchActualDateMax		= B100_ArrayListControl.DateOnlySetNdateAfter(SearchActualDateMax,1);		//入荷日最大
+		Object[][] Rt	= ArrivalPlanMsRtMain(
+				SearchClWh,				//担当倉庫
+				SearchClCd,				//荷主CD
+				SearchCLName01,			//荷主名
+				SearchClGpCD,			//荷主グループCD
+				SearchCLGpName01,		//荷主グループ標記名
+				SearchArrNo,			//入荷予定NO
+				SearchClArrNo,			//荷主予定番号
+				SearchPlanDateMin,		//入荷予定日開始
+				SearchPlanDateMax,		//入荷予定日終了
+				SearchHdActualDateMin,	//入荷実績日開始
+				SearchHdActualDateMax,	//入荷実績日終了
+				SearchSpCd,				//仕入先CD
+				SearchSpName,			//仕入先名
+				SearchSpPost,			//仕入先郵便
+				SearchSpAdd,			//仕入先住所
+				SearchSpTel,			//仕入先電話
+				SearchArCom,			//コメント
+				SearchFixFg,			//状況
+						
+				SearchMsNoMin,			//明細番号最小
+				SearchMsNoMax,			//明細番号最大
+				SearchItemCd,			//商品コード
+				SearchClItemCd,			//荷主商品コード
+				SearchJanCd,			//JANCD（バラ）
+				SearchItemMdNo,			//商品型番
+				SearchItemName,			//商品名
+				Searchlot,				//ロット
+				SearchExpDateMin,		//消費期限開始
+				SearchExpDateMax,		//消費期限終了
+				SearchPlanQtyMin,		//予定数量開始
+				SearchPlanQtyMax,		//予定数量終了
+				SearchActualQtyMin,		//実績数最小
+				SearchActualQtyMax,		//実績数最大
+				SearchActualDateMin,	//入荷日最小
+				SearchActualDateMax,	//入荷日最大
+				SearchCom,				//コメント
+				SearchEntryDateMin,		//登録日開始
+				SearchEntryDateMax,		//登録日終了
+				SearchUpdateDateMin,	//更新日開始
+				SearchUpdateDateMax,	//更新日終了
+				SearchEntryUser,		//登録者
+				SearchUpdateUser,		//更新者
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] ArrivalPlanMsRtMain(
+			ArrayList<String> SearchClWh,				//担当倉庫
+			ArrayList<String> SearchClCd,				//荷主CD
+			ArrayList<String> SearchCLName01,			//荷主名
+			ArrayList<String> SearchClGpCD,				//荷主グループCD
+			ArrayList<String> SearchCLGpName01,			//荷主グループ標記名
+			ArrayList<String> SearchArrNo,				//入荷予定NO
+			ArrayList<String> SearchClArrNo,			//荷主予定番号
+			ArrayList<String> SearchPlanDateMin,		//入荷予定日開始
+			ArrayList<String> SearchPlanDateMax,		//入荷予定日終了
+			ArrayList<String> SearchHdActualDateMin,	//入荷実績日開始
+			ArrayList<String> SearchHdActualDateMax,	//入荷実績日終了
+			ArrayList<String> SearchSpCd,				//仕入先CD
+			ArrayList<String> SearchSpName,				//仕入先名
+			ArrayList<String> SearchSpPost,				//仕入先郵便
+			ArrayList<String> SearchSpAdd,				//仕入先住所
+			ArrayList<String> SearchSpTel,				//仕入先電話
+			ArrayList<String> SearchArCom,				//コメント
+			ArrayList<Integer> SearchFixFg,				//状況
+					
+			ArrayList<Integer> SearchMsNoMin,			//明細番号最小
+			ArrayList<Integer> SearchMsNoMax,			//明細番号最大
+			ArrayList<String> SearchItemCd,				//商品コード
+			ArrayList<String> SearchClItemCd,			//荷主商品コード
+			ArrayList<String> SearchJanCd,				//JANCD（バラ）
+			ArrayList<String> SearchItemMdNo,			//商品型番
+			ArrayList<String> SearchItemName,			//商品名
+			ArrayList<String> Searchlot,				//ロット
+			ArrayList<String> SearchExpDateMin,			//消費期限開始
+			ArrayList<String> SearchExpDateMax,			//消費期限終了
+			ArrayList<Integer> SearchPlanQtyMin,		//予定数量最小
+			ArrayList<Integer> SearchPlanQtyMax,		//予定数量最大
+			ArrayList<Integer> SearchActualQtyMin,		//実績数最小
+			ArrayList<Integer> SearchActualQtyMax,		//実績数最大
+			ArrayList<String> SearchActualDateMin,		//入荷日開始
+			ArrayList<String> SearchActualDateMax,		//入荷日終了
+			ArrayList<String> SearchCom,				//コメント
+			ArrayList<String> SearchEntryDateMin,		//登録日開始
+			ArrayList<String> SearchEntryDateMax,		//登録日終了
+			ArrayList<String> SearchUpdateDateMin,		//更新日開始
+			ArrayList<String> SearchUpdateDateMax,		//更新日終了
+			ArrayList<String> SearchEntryUser,			//登録者
+			ArrayList<String> SearchUpdateUser,			//更新者
+			boolean AllSearch){
 		
 		//商品変換マスタを元に荷主商品コードを商品コードに変換する
 		Object[][] SearchItemCdFromClItem	= SearchItemCdFromClItem(SearchClGpCD,SearchClCd,SearchClItemCd);

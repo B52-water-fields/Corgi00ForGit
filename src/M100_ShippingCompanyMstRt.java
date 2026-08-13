@@ -74,6 +74,16 @@ public class M100_ShippingCompanyMstRt{
 	static final  int ColPTMSCD					= (int)20;	//基幹システム傭車コード
 	static final  int ColExportDataType			= (int)21;	//データ抽出タイプ
 	
+	//検索値カラム
+	static final  int ColSearchShippingCompanyCd	= (int) 0;	//運送会社CD
+	static final  int ColSearchCompanyName			= (int) 1;	//運送会社名
+	static final  int ColSearchPost					= (int) 2;	//運送会社郵便
+	static final  int ColSearchAdd					= (int) 3;	//運送会社住所
+	static final  int ColSearchTel					= (int) 4;	//運送会社Tel
+	static final  int ColSearchFax					= (int) 5;	//運送会社Fax
+	static final  int ColSearchMail					= (int) 6;	//運送会社Mail
+	static final  int ColSearchCom					= (int) 7;	//コメント
+	
 	public static Object[][] RtShippingCompanyMstRt(){
 		Object[][] RtSettingShippingCompanyMstRt = {
 				 {"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"}
@@ -114,14 +124,77 @@ public class M100_ShippingCompanyMstRt{
 			ArrayList<String> SearchCom,
 			boolean AllSearch){
 		
-		SearchShippingCompanyCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
-		SearchCompanyName		= B100_ArrayListControl.ArryListStringUniqueList(SearchCompanyName);
-		SearchPost				= B100_ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd				= B100_ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel				= B100_ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax				= B100_ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail				= B100_ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom				= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);
+		Object[][] Definition = {
+				 {"String"		,SearchShippingCompanyCd	,"Exact"			,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
+				,{"String"		,SearchCompanyName			,"Exact"			,ColSearchCompanyName		,""														,"運送会社名"	,""}
+				,{"String"		,SearchPost					,"Prefix"			,ColSearchPost				,""														,"運送会社郵便"	,""}
+				,{"String"		,SearchAdd					,"Partial"			,ColSearchAdd					,""														,"運送会社住所"	,""}
+				,{"String"		,SearchTel					,"Partial"			,ColSearchTel					,""														,"運送会社Tel"	,""}
+				,{"String"		,SearchFax					,"Partial"			,ColSearchFax					,""														,"運送会社Fax"	,""}
+				,{"String"		,SearchMail					,"Partial"			,ColSearchMail				,""														,"運送会社Mail"	,""}
+				,{"String"		,SearchCom					,"Partial"			,ColSearchCom					,""														,"コメント"		,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchShippingCompanyCd:	
+					SearchShippingCompanyCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCompanyName:	
+					SearchCompanyName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPost:	
+					SearchPost					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdd:	
+					SearchAdd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchTel:	
+					SearchTel					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFax:	
+					SearchFax					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMail:	
+					SearchMail					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCom:	
+					SearchCom					= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= ShippingCompanyMstRtMain(
+				SearchShippingCompanyCd,
+				SearchCompanyName,
+				SearchPost,
+				SearchAdd,
+				SearchTel,
+				SearchFax,
+				SearchMail,
+				SearchCom,
+				AllSearch);
+		return Rt;
+	}
+	
+	private static Object[][] ShippingCompanyMstRtMain(
+			ArrayList<String> SearchShippingCompanyCd,
+			ArrayList<String> SearchCompanyName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			boolean AllSearch){
 		
 		Object[][] rt = new Object[0][RtShippingCompanyMstRt().length];
 		

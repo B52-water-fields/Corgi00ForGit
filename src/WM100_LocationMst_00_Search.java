@@ -192,7 +192,7 @@ public class WM100_LocationMst_00_Search{
 					ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
 					ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
 					ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
-					ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+					ArrayList<Integer> SearchType 	= new ArrayList<Integer>();	//ロケタイプ
 					boolean LocExactMatch = false;	//ロケーション完全一致
 					boolean AllSearch = true;
 					
@@ -200,7 +200,7 @@ public class WM100_LocationMst_00_Search{
 					if(!"".equals(GetSearchWhCd		)){SearchWhCd.add(		GetSearchWhCd);}	//倉庫コード
 					if(!"".equals(GetSearchLoc		)){SearchLoc.add(		GetSearchLoc);}		//ロケーション
 					if(!"".equals(GetSearchLocName	)){SearchLocName.add(	GetSearchLocName);}	//ロケーション名
-					if(!"".equals(GetSearchType		)){SearchType.add(		GetSearchType);}	//ロケタイプ
+					if(!"".equals(GetSearchType		)){SearchType.add(		B100_TextControl.TextToInt(GetSearchType));}	//ロケタイプ
 					
 					Object[][] LocationMstRt = M100_LocationMstRt.LocationMstRt(
 							SearchClCd,		//荷主コード

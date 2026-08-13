@@ -1782,7 +1782,7 @@ public class WT100_Arrival_40_ObjectEntry{
 		ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
 		//ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
 		ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
-		ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+		ArrayList<Integer> SearchType 	= new ArrayList<Integer>();	//ロケタイプ
 		boolean LocExactMatch = false;	//ロケーション完全一致
 		boolean AllSearch = false;
 		if(null!= SearchLoc && 0<SearchLoc.size()) {

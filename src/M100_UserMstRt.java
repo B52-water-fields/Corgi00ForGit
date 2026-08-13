@@ -108,6 +108,22 @@ public class M100_UserMstRt{
 	static final  int ColMainClient				= (int)30;	//主要担当荷主CD
 	static final  int ColCLName01					= (int)31;	//主要担当荷主名
 	
+	//検索値カラム
+	static final  int ColSearchWHCD					= (int) 0;	//倉庫CD
+	static final  int ColSearchShippingCompanyCd	= (int) 1;	//運送会社CD
+	static final  int ColSearchAuthorityFG			= (int) 2;	//権限区分
+	static final  int ColSearchUserCd					= (int) 3;	//ユーザーCD
+	static final  int ColSearchUserName				= (int) 4;	//ユーザー名
+	static final  int ColSearchCarCd					= (int) 5;	//標準車輛CD
+	static final  int ColSearchCarName				= (int) 6;	//標準車両名
+	static final  int ColSearchPost					= (int) 7;	//郵便番号
+	static final  int ColSearchAdd					= (int) 8;	//住所
+	static final  int ColSearchTel					= (int) 9;	//Tel
+	static final  int ColSearchFax					= (int)10;	//Fax
+	static final  int ColSearchMail					= (int)11;	//Mail
+	static final  int ColSearchCom					= (int)12;	//コメント
+	static final  int ColSearchDelFg					= (int)13;	//削除区分
+	
 	public static Object[][] RtUserMstRt(){
 		Object[][] RtSettingUserMstRt = {
 				 {"WHCD"					,ColWHCD						,"String"	,"倉庫CD"				,"Key"}
@@ -146,6 +162,7 @@ public class M100_UserMstRt{
 		
 		return RtSettingUserMstRt;
 	}
+	
 	public static Object[][] UserMstRt(
 			ArrayList<String> SearchWHCD,
 			ArrayList<String> SearchShippingCompanyCd,
@@ -163,20 +180,115 @@ public class M100_UserMstRt{
 			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
 		
-		SearchWHCD				= B100_ArrayListControl.ArryListStringUniqueList(SearchWHCD);
-		SearchShippingCompanyCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchShippingCompanyCd);
-		SearchAuthorityFG		= B100_ArrayListControl.ArryListStringUniqueList(SearchAuthorityFG);
-		SearchUserCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchUserCd);
-		SearchUserName			= B100_ArrayListControl.ArryListStringUniqueList(SearchUserName);
-		SearchCarCd				= B100_ArrayListControl.ArryListStringUniqueList(SearchCarCd);
-		SearchCarName			= B100_ArrayListControl.ArryListStringUniqueList(SearchCarName);
-		SearchPost				= B100_ArrayListControl.ArryListStringUniqueList(SearchPost);
-		SearchAdd				= B100_ArrayListControl.ArryListStringUniqueList(SearchAdd);
-		SearchTel				= B100_ArrayListControl.ArryListStringUniqueList(SearchTel);
-		SearchFax				= B100_ArrayListControl.ArryListStringUniqueList(SearchFax);
-		SearchMail				= B100_ArrayListControl.ArryListStringUniqueList(SearchMail);
-		SearchCom				= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);
-		SearchDelFg				= B100_ArrayListControl.ArryListStringUniqueList(SearchDelFg);
+		Object[][] Definition = {
+				 {"String"		,SearchWHCD					,"Exact"	,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫CD"		,""}
+				,{"String"		,SearchShippingCompanyCd	,"Exact"	,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
+				,{"String"		,SearchAuthorityFG			,"Exact"	,ColSearchAuthorityFG		,B100_DefaultVariable.SearchAuthorityFG				,"権限区分"		,""}
+				,{"String"		,SearchUserCd				,"Exact"	,ColSearchUserCd				,""														,"ユーザーCD"	,""}
+				,{"String"		,SearchUserName				,"Partial"	,ColSearchUserName			,""														,"ユーザー名"	,""}
+				,{"String"		,SearchCarCd				,"Exact"	,ColSearchCarCd				,""														,"標準車輛CD"	,""}
+				,{"String"		,SearchCarName				,"Partial"	,ColSearchCarName				,""														,"標準車両名"	,""}
+				,{"String"		,SearchPost					,"Prefix"	,ColSearchPost				,""														,"郵便番号"		,""}
+				,{"String"		,SearchAdd					,"Partial"	,ColSearchAdd					,""														,"住所"			,""}
+				,{"String"		,SearchTel					,"Partial"	,ColSearchTel					,""														,"Tel"			,""}
+				,{"String"		,SearchFax					,"Partial"	,ColSearchFax					,""														,"Fax"			,""}
+				,{"String"		,SearchMail					,"Partial"	,ColSearchMail				,""														,"Mail"			,""}
+				,{"String"		,SearchCom					,"Partial"	,ColSearchCom					,""														,"コメント"		,""}
+				,{"String"		,SearchDelFg				,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除区分"		,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchWHCD:	
+					SearchWHCD						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchShippingCompanyCd:	
+					SearchShippingCompanyCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAuthorityFG:	
+					SearchAuthorityFG				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUserCd:	
+					SearchUserCd					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUserName:	
+					SearchUserName					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCarCd:	
+					SearchCarCd						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCarName:	
+					SearchCarName					= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPost:	
+					SearchPost						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdd:	
+					SearchAdd						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchTel:	
+					SearchTel						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFax:	
+					SearchFax						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMail:	
+					SearchMail						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCom:	
+					SearchCom						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDelFg:	
+					SearchDelFg						= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= UserMstRtMain(
+				SearchWHCD,
+				SearchShippingCompanyCd,
+				SearchAuthorityFG,
+				SearchUserCd,
+				SearchUserName,
+				SearchCarCd,
+				SearchCarName,
+				SearchPost,
+				SearchAdd,
+				SearchTel,
+				SearchFax,
+				SearchMail,
+				SearchCom,
+				SearchDelFg,
+				AllSearch);
+		
+		return Rt;
+		
+	}
+	
+	private static Object[][] UserMstRtMain(
+			ArrayList<String> SearchWHCD,
+			ArrayList<String> SearchShippingCompanyCd,
+			ArrayList<String> SearchAuthorityFG,
+			ArrayList<String> SearchUserCd,
+			ArrayList<String> SearchUserName,
+			ArrayList<String> SearchCarCd,
+			ArrayList<String> SearchCarName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			ArrayList<String> SearchDelFg,
+			boolean AllSearch){
 		
 		Object[][] rt = new Object[0][RtUserMstRt().length];
 		boolean SearchKick = false;

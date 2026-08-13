@@ -832,14 +832,14 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
 		ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
 		ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
-		ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+		ArrayList<Integer> SearchType 	= new ArrayList<Integer>();	//ロケタイプ
 		boolean AllSearch = true;
 		
 		if(!"".equals(GetClWh			)) {SearchWhCd.add(GetClWh);}
 		if(!"".equals(GetClCd			)) {SearchClCd.add(GetClCd);}
 		if(!"".equals(GetSearchLoc		)) {SearchLoc.add(GetSearchLoc);}
 		if(!"".equals(GetSearchLocName	)) {SearchLocName.add(GetSearchLocName);}
-		if(!"".equals(GetSearchType		)) {SearchType.add(GetSearchType);}
+		if(!"".equals(GetSearchType		)) {SearchType.add(B100_TextControl.TextToInt(GetSearchType));}
 		
 		Object[][] LocationMstRt = M100_LocationMstRt.LocationMstRt(
 				SearchClCd,		//荷主コード

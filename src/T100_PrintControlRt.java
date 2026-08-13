@@ -49,6 +49,7 @@ public class T100_PrintControlRt{
 	
 	*/
 	
+	//戻り値カラム
 	static final int ColPrintCd		= 0;	//印刷帳票CD
 	static final int ColOkuriNo		= 1;	//送り状番号等
 	static final int ColKey01			= 2;	//サブキー01
@@ -59,6 +60,20 @@ public class T100_PrintControlRt{
 	static final int ColUpdateDate	= 7;	//更新日
 	static final int ColEntryUser		= 8;	//登録者
 	static final int ColUpdateUser	= 9;	//更新者
+	
+	//検索値カラム
+	static final int ColSearchPrintCd			= 0;	//印刷帳票CD
+	static final int ColSearchOkuriNo			= 1;	//送り状番号等
+	static final int ColSearchKey01			= 2;	//サブキー01
+	static final int ColSearchKey02			= 3;	//サブキー02
+	static final int ColSearchKey03			= 4;	//サブキー03
+	static final int ColSearchKey04			= 5;	//サブキー04
+	static final int ColSearchEntryDateStr	= 6;	//登録日開始
+	static final int ColSearchUpdateDateStr	= 7;	//更新日終了
+	static final int ColSearchEntryDateEnd	= 8;	//登録日開始
+	static final int ColSearchUpdateDateEnd	= 9;	//更新日終了
+	static final int ColSearchEntryUser		=10;	//登録者
+	static final int ColSearchUpdateUser		=11;	//更新者
 	
 	public static Object[][] RtPrintControlRt(){
 		Object[][] RtPrintControlRt = {
@@ -84,26 +99,110 @@ public class T100_PrintControlRt{
 			ArrayList<String> SearchKey02,			//サブキー02
 			ArrayList<String> SearchKey03,			//サブキー03
 			ArrayList<String> SearchKey04,			//サブキー04
-			ArrayList<String> SearchEntryDateStr,	//登録日
-			ArrayList<String> SearchUpdateDateStr,	//更新日
-			ArrayList<String> SearchEntryDateEnd,	//登録日
-			ArrayList<String> SearchUpdateDateEnd,	//更新日
+			ArrayList<String> SearchEntryDateStr,	//登録日開始
+			ArrayList<String> SearchUpdateDateStr,	//更新日終了
+			ArrayList<String> SearchEntryDateEnd,	//登録日開始
+			ArrayList<String> SearchUpdateDateEnd,	//更新日終了
 			ArrayList<String> SearchEntryUser,		//登録者
 			ArrayList<String> SearchUpdateUser,		//更新者
 			boolean AllSearch){
 		
-		SearchPrintCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchPrintCd);			//印刷帳票CD
-		SearchOkuriNo		= B100_ArrayListControl.ArryListStringUniqueList(SearchOkuriNo);			//送り状番号等
-		SearchKey01			= B100_ArrayListControl.ArryListStringUniqueList(SearchKey01);				//サブキー01
-		SearchKey02			= B100_ArrayListControl.ArryListStringUniqueList(SearchKey02);				//サブキー02
-		SearchKey03			= B100_ArrayListControl.ArryListStringUniqueList(SearchKey03);				//サブキー03
-		SearchKey04			= B100_ArrayListControl.ArryListStringUniqueList(SearchKey04);				//サブキー04
-		SearchEntryDateStr	= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryDateStr);		//登録日開始
-		SearchUpdateDateStr	= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateStr);		//更新日開始
-		SearchEntryDateEnd	= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryDateEnd);		//登録日終了
-		SearchUpdateDateEnd	= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateEnd);		//更新日終了
-		SearchEntryUser		= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryUser);			//登録者
-		SearchUpdateUser	= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);			//更新者
+		Object[][] Definition = {
+				 {"String"		,SearchPrintCd			,"Exact"			,ColSearchPrintCd			,""			,"印刷帳票CD"	,""}
+				,{"String"		,SearchOkuriNo			,"Exact"			,ColSearchOkuriNo			,""			,"送り状番号等"	,""}
+				,{"String"		,SearchKey01			,"Exact"			,ColSearchKey01			,""			,"サブキー01"	,""}
+				,{"String"		,SearchKey02			,"Exact"			,ColSearchKey02			,""			,"サブキー02"	,""}
+				,{"String"		,SearchKey03			,"Exact"			,ColSearchKey03			,""			,"サブキー03"	,""}
+				,{"String"		,SearchKey04			,"Exact"			,ColSearchKey04			,""			,"サブキー04"	,""}
+				,{"String"		,SearchEntryDateStr		,"RangeStr"			,ColSearchEntryDateStr	,""			,"登録日"		,"開始"}
+				,{"String"		,SearchUpdateDateStr	,"RangeStr"			,ColSearchUpdateDateStr	,""			,"更新日"		,"開始"}
+				,{"String"		,SearchEntryDateEnd		,"RangeEnd"			,ColSearchEntryDateEnd	,""			,"登録日"		,"終了"}
+				,{"String"		,SearchUpdateDateEnd	,"RangeEnd"			,ColSearchUpdateDateEnd	,""			,"更新日"		,"終了"}
+				,{"String"		,SearchEntryUser		,"Partial"			,ColSearchEntryUser		,""			,"登録者"		,""}
+				,{"String"		,SearchUpdateUser		,"Partial"			,ColSearchUpdateUser		,""			,"更新者"		,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchPrintCd:	
+					SearchPrintCd		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchOkuriNo:	
+					SearchOkuriNo		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchKey01:	
+					SearchKey01			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchKey02:	
+					SearchKey02			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchKey03:	
+					SearchKey03			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchKey04:	
+					SearchKey04			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryDateStr:	
+					SearchEntryDateStr	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateDateStr:	
+					SearchUpdateDateStr	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryDateEnd:	
+					SearchEntryDateEnd	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateDateEnd:	
+					SearchUpdateDateEnd	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryUser:	
+					SearchEntryUser		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateUser:	
+					SearchUpdateUser	= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= PrintControlRtMain(
+				SearchPrintCd,			//印刷帳票CD
+				SearchOkuriNo,			//送り状番号等
+				SearchKey01,			//サブキー01
+				SearchKey02,			//サブキー02
+				SearchKey03,			//サブキー03
+				SearchKey04,			//サブキー04
+				SearchEntryDateStr,		//登録日開始
+				SearchUpdateDateStr,	//更新日終了
+				SearchEntryDateEnd,		//登録日開始
+				SearchUpdateDateEnd,	//更新日終了
+				SearchEntryUser,		//登録者
+				SearchUpdateUser,		//更新者
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] PrintControlRtMain(
+			ArrayList<String> SearchPrintCd,		//印刷帳票CD
+			ArrayList<String> SearchOkuriNo,		//送り状番号等
+			ArrayList<String> SearchKey01,			//サブキー01
+			ArrayList<String> SearchKey02,			//サブキー02
+			ArrayList<String> SearchKey03,			//サブキー03
+			ArrayList<String> SearchKey04,			//サブキー04
+			ArrayList<String> SearchEntryDateStr,	//登録日開始
+			ArrayList<String> SearchUpdateDateStr,	//更新日終了
+			ArrayList<String> SearchEntryDateEnd,	//登録日開始
+			ArrayList<String> SearchUpdateDateEnd,	//更新日終了
+			ArrayList<String> SearchEntryUser,		//登録者
+			ArrayList<String> SearchUpdateUser,		//更新者
+			boolean AllSearch){
 		
 		Object[][] rt = new Object[0][RtPrintControlRt().length];
 		boolean SearchKick = false;

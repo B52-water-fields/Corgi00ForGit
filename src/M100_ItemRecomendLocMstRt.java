@@ -95,6 +95,16 @@ public class M100_ItemRecomendLocMstRt{
 	static final int ColUpdateUser	= (int)14;	//更新者
 	static final int ColItemSubRecomendLoc = (int)15;	//商品サブマスタ推奨ロケ　※ItemRecomendLocMstRtではWW00630ItemRecomendLocに登録がない情報は返却されません
 	
+	//検索値カラム
+	static final int ColSearchClCd			= (int) 0;			//荷主コード
+	static final int ColSearchClWh			= (int) 1;			//担当倉庫コード
+	static final int ColSearchClGpCD			= (int) 2;			//荷主グループCD
+	static final int ColSearchItemCd			= (int) 3;			//商品コード
+	static final int ColSearchItemName01		= (int) 4;			//商品表記名
+	static final int ColSearchRecomendLoc	= (int) 5;			//推奨ロケ
+	static final int ColSearchLocName			= (int) 6;			//ロケーション名
+	static final int ColSearchType			= (int) 7;			//ロケタイプ
+	
 	public static Object[][] RtItemRecomendLocMstRt() {
 		Object[][] RtItemRecomendLocMstRt = {
 					 {"ClCd"				,ColClCd					,"String"	,"荷主CD"					,"key"}
@@ -118,6 +128,81 @@ public class M100_ItemRecomendLocMstRt{
 	}
 	
 	public static Object[][] ItemRecomendLocMstRt(
+			ArrayList<String> SearchClCd,			//荷主コード
+			ArrayList<String> SearchClWh,			//担当倉庫コード
+			ArrayList<String> SearchClGpCD,			//荷主グループCD
+			ArrayList<String> SearchItemCd,			//商品コード
+			ArrayList<String> SearchItemName01,		//商品表記名
+			ArrayList<String> SearchRecomendLoc,	//推奨ロケ
+			ArrayList<String> SearchLocName,		//ロケーション名
+			ArrayList<Integer> SearchType,			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+			boolean LocExactMatch,					//ロケーション完全一致
+			boolean AllSearch){
+		
+		Object[][] Definition = {
+				 {"String"		,SearchClCd			,"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList		,"荷主コード"		,""}
+				,{"String"		,SearchClWh			,"Exact"			,ColSearchClWh			,B100_DefaultVariable.SearchWhList		,"担当倉庫コード"	,""}
+				,{"String"		,SearchClGpCD		,"Exact"			,ColSearchClGpCD			,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""}
+				,{"String"		,SearchItemCd		,"Exact"			,ColSearchItemCd			,""											,"商品コード"		,""}
+				,{"String"		,SearchItemName01	,"Exact"			,ColSearchItemName01		,""											,"商品表記名"		,""}
+				,{"String"		,SearchRecomendLoc	,"ExactOrPrefix"	,ColSearchRecomendLoc	,""											,"推奨ロケ"			,""}
+				,{"String"		,SearchLocName		,"Partial"			,ColSearchLocName			,""											,"ロケーション名"	,""}
+				,{"Integer"		,SearchType			,"Exact"			,ColSearchType			,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					SearchClCd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClWh:	
+					SearchClWh				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClGpCD:	
+					SearchClGpCD			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemCd:	
+					SearchItemCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemName01:	
+					SearchItemName01		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchRecomendLoc:	
+					SearchRecomendLoc		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchLocName:	
+					SearchLocName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchType:	
+					SearchType				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= ItemRecomendLocMstRtMain(
+				SearchClCd,			//荷主コード
+				SearchClWh,			//担当倉庫コード
+				SearchClGpCD,		//荷主グループCD
+				SearchItemCd,		//商品コード
+				SearchItemName01,	//商品表記名
+				SearchRecomendLoc,	//推奨ロケ
+				SearchLocName,		//ロケーション名
+				SearchType,			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				LocExactMatch,		//ロケーション完全一致
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] ItemRecomendLocMstRtMain(
 			ArrayList<String> SearchClCd,			//荷主コード
 			ArrayList<String> SearchClWh,			//担当倉庫コード
 			ArrayList<String> SearchClGpCD,			//荷主グループCD
@@ -599,7 +684,7 @@ public class M100_ItemRecomendLocMstRt{
 				ArrayList<String> SearchWhCd 	= new ArrayList<String>();		//倉庫コード
 				ArrayList<String> SearchLoc 	= new ArrayList<String>();		//ロケーション
 				SearchLocName = new ArrayList<String>();						//ロケーション名
-				ArrayList<String> SearchLocType 	= new ArrayList<String>();	//ロケタイプ
+				ArrayList<Integer> SearchLocType 	= new ArrayList<Integer>();	//ロケタイプ
 				LocExactMatch = true;											//ロケーション完全一致
 				AllSearch = false;
 				

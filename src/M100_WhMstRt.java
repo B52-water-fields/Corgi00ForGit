@@ -66,6 +66,17 @@ public class M100_WhMstRt{
 	static final  int ColNoEntryUser 		= (int)14;	//登録者
 	static final  int ColNoUpdateUser 	= (int)15;	//更新者
 	
+	//検索値カラム
+	static final  int ColSearchWHCD		= (int) 0;	//倉庫コード
+	static final  int ColSearchWHName		= (int) 1;	//倉庫名
+	static final  int ColSearchPost		= (int) 2;	//郵便番号
+	static final  int ColSearchAdd		= (int) 3;	//住所
+	static final  int ColSearchTel		= (int) 4;	//Tel
+	static final  int ColSearchFax		= (int) 5;	//Fax
+	static final  int ColSearchMail		= (int) 6;	//Mail
+	static final  int ColSearchCom		= (int) 7;	//コメント
+	static final  int ColSearchPTMSCD		= (int) 8;	//基幹SysCd
+	
 	public static Object[][] RtWhMstRt(){
 		Object[][] RtSettingWhMstRt = {
 				 {"WHCD"		,ColNoWHCD			,"String"	,"倉庫コード"					,"Key"}
@@ -88,7 +99,86 @@ public class M100_WhMstRt{
 		
 		return RtSettingWhMstRt;
 	}
+	
 	public static Object[][] WhMstRt(
+			ArrayList<String> SearchWHCD,
+			ArrayList<String> SearchWHName,
+			ArrayList<String> SearchPost,
+			ArrayList<String> SearchAdd,
+			ArrayList<String> SearchTel,
+			ArrayList<String> SearchFax,
+			ArrayList<String> SearchMail,
+			ArrayList<String> SearchCom,
+			ArrayList<String> SearchPTMSCD,
+			boolean AllSearch){
+		
+		Object[][] Definition = {
+				 {"String"		,SearchWHCD					,"Exact"	,ColSearchWHCD		,B100_DefaultVariable.SearchWhList	,"倉庫コード"	,""}
+				,{"String"		,SearchWHName				,"Exact"	,ColSearchWHName		,""										,"倉庫名"		,""}
+				,{"String"		,SearchPost					,"Prefix"	,ColSearchPost		,""										,"郵便番号"		,""}
+				,{"String"		,SearchAdd					,"Exact"	,ColSearchAdd			,""										,"住所"			,""}
+				,{"String"		,SearchTel					,"Exact"	,ColSearchTel			,""										,"Tel"			,""}
+				,{"String"		,SearchFax					,"Exact"	,ColSearchFax			,""										,"Fax"			,""}
+				,{"String"		,SearchMail					,"Exact"	,ColSearchMail		,""										,"Mail"			,""}
+				,{"String"		,SearchCom					,"Exact"	,ColSearchCom			,""										,"コメント"		,""}
+				,{"String"		,SearchPTMSCD				,"Exact"	,ColSearchPTMSCD		,""										,"基幹SysCd"	,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchWHCD:	
+					SearchWHCD				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchWHName:	
+					SearchWHName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPost:	
+					SearchPost				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchAdd:	
+					SearchAdd				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchTel:	
+					SearchTel				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFax:	
+					SearchFax				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMail:	
+					SearchMail				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCom:	
+					SearchCom				= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPTMSCD:	
+					SearchPTMSCD			= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= WhMstRtMain(
+				SearchWHCD,
+				SearchWHName,
+				SearchPost,
+				SearchAdd,
+				SearchTel,
+				SearchFax,
+				SearchMail,
+				SearchCom,
+				SearchPTMSCD,
+				AllSearch);
+		return Rt;
+	}
+	
+	private static Object[][] WhMstRtMain(
 			ArrayList<String> SearchWHCD,
 			ArrayList<String> SearchWHName,
 			ArrayList<String> SearchPost,

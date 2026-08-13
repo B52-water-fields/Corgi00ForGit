@@ -83,6 +83,7 @@ public class M100_SupplierRt{
 			String GetDEName01		=	(String)SupplierRt[i][M100_SupplierRt.ColDEName01];			//納品先名1
 	
 	*/
+	//戻り値カラム
 	static final int ColClWh				= (int)0;	//担当倉庫
 	static final int ColWHName				= (int)1;	//担当倉庫名
 	static final int ColClCd				= (int)2;	//荷主CD
@@ -113,6 +114,28 @@ public class M100_SupplierRt{
 	static final int ColDECD				= (int)27;	//納品先コード
 	static final int ColDepartmentCd		= (int)28;	//部署CD
 	static final int ColDEName01			= (int)29;	//納品先名1
+	
+	//検索値カラム
+	static final int ColSearchClWh			= (int) 0;		//担当倉庫
+	static final int ColSearchClCd			= (int) 1;		//荷主CD
+	static final int ColSearchSPCd			= (int) 2;		//仕入先コード
+	static final int ColSearchSPName			= (int) 3;		//仕入先名
+	static final int ColSearchSPPost			= (int) 4;		//仕入先郵便
+	static final int ColSearchSPAdd			= (int) 5;		//仕入先住所
+	static final int ColSearchSPTel			= (int) 6;		//仕入先電話
+	static final int ColSearchSPFax			= (int) 7;		//仕入先FAX
+	static final int ColSearchSPMail			= (int) 8;		//仕入先MAIL
+	static final int ColSearchCom				= (int) 9;		//コメント
+	static final int ColSearchPTMSCDBMN		= (int)10;		//基幹Sysコード（部門）
+	static final int ColSearchPTMSCDNINUSHI	= (int)11;		//基幹Sysコード（荷主）
+	static final int ColSearchPaySiteStr		= (int)12;		//支払いサイト（月数）開始
+	static final int ColSearchPayDateStr		= (int)13;		//支払日（日＝99）開始
+	static final int ColSearchShimeDateStr	= (int)14;		//締め日（末日＝99）開始
+	static final int ColSearchPaySiteEnd		= (int)15;		//支払いサイト（月数）終了
+	static final int ColSearchPayDateEnd		= (int)16;		//支払日（日＝99）終了
+	static final int ColSearchShimeDateEnd	= (int)17;		//締め日（末日＝99）終了
+	static final int ColSearchDECD			= (int)18;		//納品先コード
+	static final int ColSearchDepartmentCd	= (int)19;		//部署CD
 	
 	public static Object[][] RtSupplierRt(){
 		Object[][] RtSupplierRt = {
@@ -174,26 +197,150 @@ public class M100_SupplierRt{
 			ArrayList<String> SearchDepartmentCd,	//部署CD
 			boolean AllSearch){
 		
-		SearchClWh			= B100_ArrayListControl.ArryListStringUniqueList(SearchClWh);			//担当倉庫
-		SearchClCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);			//荷主CD
-		SearchSPCd			= B100_ArrayListControl.ArryListStringUniqueList(SearchSPCd);			//仕入先コード
-		SearchSPName		= B100_ArrayListControl.ArryListStringUniqueList(SearchSPName);		//仕入先名
-		SearchSPPost		= B100_ArrayListControl.ArryListStringUniqueList(SearchSPPost);		//仕入先郵便
-		SearchSPAdd			= B100_ArrayListControl.ArryListStringUniqueList(SearchSPAdd);			//仕入先住所
-		SearchSPTel			= B100_ArrayListControl.ArryListStringUniqueList(SearchSPTel);			//仕入先電話
-		SearchSPFax			= B100_ArrayListControl.ArryListStringUniqueList(SearchSPFax);			//仕入先FAX
-		SearchSPMail		= B100_ArrayListControl.ArryListStringUniqueList(SearchSPMail);		//仕入先MAIL
-		SearchCom			= B100_ArrayListControl.ArryListStringUniqueList(SearchCom);			//コメント
-		SearchPTMSCDBMN		= B100_ArrayListControl.ArryListStringUniqueList(SearchPTMSCDBMN);		//基幹Sysコード（部門）
-		SearchPTMSCDNINUSHI	= B100_ArrayListControl.ArryListStringUniqueList(SearchPTMSCDNINUSHI);	//基幹Sysコード（荷主）
-		SearchPaySiteStr	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchPaySiteStr);	//支払いサイト（月数）開始
-		SearchPayDateStr	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchPayDateStr);	//支払日（日＝99）　開始
-		SearchShimeDateStr	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchShimeDateStr);	//締め日（末日＝99　開始
-		SearchPaySiteEnd	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchPaySiteEnd);	//支払いサイト（月数）終了
-		SearchPayDateEnd	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchPayDateEnd);	//支払日（日＝99）終了
-		SearchShimeDateEnd	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchShimeDateEnd);	//締め日（末日＝99）終了
-		SearchDECD			= B100_ArrayListControl.ArryListStringUniqueList(SearchDECD);			//納品先コード
-		SearchDepartmentCd	= B100_ArrayListControl.ArryListStringUniqueList(SearchDepartmentCd);	//部署CD
+		Object[][] Definition = {
+				 {"String"		,SearchClWh				,"Exact"			,ColSearchClWh			,B100_DefaultVariable.SearchWhList			,"担当倉庫"					,""}
+				,{"String"		,SearchClCd				,"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList			,"荷主CD"					,""}
+				,{"String"		,SearchSPCd				,"Exact"			,ColSearchSPCd			,B100_DefaultVariable.SearchSupplierList		,"仕入先コード"				,""}
+				,{"String"		,SearchSPName			,"Exact"			,ColSearchSPName			,""												,"仕入先名"					,""}
+				,{"String"		,SearchSPPost			,"Prefix"			,ColSearchSPPost			,""												,"仕入先郵便"				,""}
+				,{"String"		,SearchSPAdd			,"Partial"			,ColSearchSPAdd			,""												,"仕入先住所"				,""}
+				,{"String"		,SearchSPTel			,"Partial"			,ColSearchSPTel			,""												,"仕入先電話"				,""}
+				,{"String"		,SearchSPFax			,"Partial"			,ColSearchSPFax			,""												,"仕入先FAX"				,""}
+				,{"String"		,SearchSPMail			,"Partial"			,ColSearchSPMail			,""												,"仕入先MAIL"				,""}
+				,{"String"		,SearchCom				,"Partial"			,ColSearchCom				,""												,"コメント"					,""}
+				,{"String"		,SearchPTMSCDBMN		,"Exact"			,ColSearchPTMSCDBMN		,""												,"基幹Sysコード（部門）"	,""}
+				,{"String"		,SearchPTMSCDNINUSHI	,"Exact"			,ColSearchPTMSCDNINUSHI	,""												,"基幹Sysコード（荷主）"	,""}
+				,{"Integer"		,SearchPaySiteStr		,"RangeMin"			,ColSearchPaySiteStr		,""												,"支払いサイト（月数）"		,"開始"}
+				,{"Integer"		,SearchPayDateStr		,"RangeMin"			,ColSearchPayDateStr		,""												,"支払日（日＝99）"			,"開始"}
+				,{"Integer"		,SearchShimeDateStr		,"RangeMin"			,ColSearchShimeDateStr	,""												,"締め日（末日＝99）"		,"開始"}
+				,{"Integer"		,SearchPaySiteEnd		,"RangeMax"			,ColSearchPaySiteEnd		,""												,"支払いサイト（月数）"		,"終了"}
+				,{"Integer"		,SearchPayDateEnd		,"RangeMax"			,ColSearchPayDateEnd		,""												,"支払日（日＝99）"			,"終了"}
+				,{"Integer"		,SearchShimeDateEnd		,"RangeMax"			,ColSearchShimeDateEnd	,""												,"締め日（末日＝99）"		,"終了"}
+				,{"String"		,SearchDECD				,"Exact"			,ColSearchDECD			,""												,"納品先コード"				,""}
+				,{"String"		,SearchDepartmentCd		,"Exact"			,ColSearchDepartmentCd	,""												,"部署CD"					,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClWh:	
+					SearchClWh			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClCd:	
+					SearchClCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPCd:	
+					SearchSPCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPName:	
+					SearchSPName		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPPost:	
+					SearchSPPost		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPAdd:	
+					SearchSPAdd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPTel:	
+					SearchSPTel			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPFax:	
+					SearchSPFax			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchSPMail:	
+					SearchSPMail		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCom:	
+					SearchCom			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPTMSCDBMN:	
+					SearchPTMSCDBMN		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPTMSCDNINUSHI:	
+					SearchPTMSCDNINUSHI	= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchPaySiteStr:	
+					SearchPaySiteStr	= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchPayDateStr:	
+					SearchPayDateStr	= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchShimeDateStr:	
+					SearchShimeDateStr	= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchPaySiteEnd:	
+					SearchPaySiteEnd	= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchPayDateEnd:	
+					SearchPayDateEnd	= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchShimeDateEnd:	
+					SearchShimeDateEnd	= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchDECD:	
+					SearchDECD			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchDepartmentCd:	
+					SearchDepartmentCd	= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= SupplierRtMain(
+				SearchClWh,				//担当倉庫
+				SearchClCd,				//荷主CD
+				SearchSPCd,				//仕入先コード
+				SearchSPName,			//仕入先名
+				SearchSPPost,			//仕入先郵便
+				SearchSPAdd,			//仕入先住所
+				SearchSPTel,			//仕入先電話
+				SearchSPFax,			//仕入先FAX
+				SearchSPMail,			//仕入先MAIL
+				SearchCom,				//コメント
+				SearchPTMSCDBMN,		//基幹Sysコード（部門）
+				SearchPTMSCDNINUSHI,	//基幹Sysコード（荷主）
+				SearchPaySiteStr,		//支払いサイト（月数）開始
+				SearchPayDateStr,		//支払日（日＝99）開始
+				SearchShimeDateStr,		//締め日（末日＝99）開始
+				SearchPaySiteEnd,		//支払いサイト（月数）終了
+				SearchPayDateEnd,		//支払日（日＝99）終了
+				SearchShimeDateEnd,		//締め日（末日＝99）終了
+				SearchDECD,				//納品先コード
+				SearchDepartmentCd,		//部署CD
+				AllSearch);
+		
+		return Rt;
+	}
+	
+	private static Object[][] SupplierRtMain(
+			ArrayList<String> SearchClWh,			//担当倉庫
+			ArrayList<String> SearchClCd,			//荷主CD
+			ArrayList<String> SearchSPCd,			//仕入先コード
+			ArrayList<String> SearchSPName,			//仕入先名
+			ArrayList<String> SearchSPPost,			//仕入先郵便
+			ArrayList<String> SearchSPAdd,			//仕入先住所
+			ArrayList<String> SearchSPTel,			//仕入先電話
+			ArrayList<String> SearchSPFax,			//仕入先FAX
+			ArrayList<String> SearchSPMail,			//仕入先MAIL
+			ArrayList<String> SearchCom,			//コメント
+			ArrayList<String> SearchPTMSCDBMN,		//基幹Sysコード（部門）
+			ArrayList<String> SearchPTMSCDNINUSHI,	//基幹Sysコード（荷主）
+			ArrayList<Integer> SearchPaySiteStr,	//支払いサイト（月数）開始
+			ArrayList<Integer> SearchPayDateStr,	//支払日（日＝99）開始
+			ArrayList<Integer> SearchShimeDateStr,	//締め日（末日＝99）開始
+			ArrayList<Integer> SearchPaySiteEnd,	//支払いサイト（月数）終了
+			ArrayList<Integer> SearchPayDateEnd,	//支払日（日＝99）終了
+			ArrayList<Integer> SearchShimeDateEnd,	//締め日（末日＝99）終了
+			ArrayList<String> SearchDECD,			//納品先コード
+			ArrayList<String> SearchDepartmentCd,	//部署CD
+			boolean AllSearch){
 		
 		Object [][]rt = new Object[0][RtSupplierRt().length];
 		boolean SearchKick = false;

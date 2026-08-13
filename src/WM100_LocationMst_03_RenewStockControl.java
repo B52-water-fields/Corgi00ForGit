@@ -351,7 +351,7 @@ public class WM100_LocationMst_03_RenewStockControl{
 			ArrayList<String> SearchWhCd 	= new ArrayList<String>();	//倉庫コード
 			ArrayList<String> SearchLoc 	= new ArrayList<String>();	//ロケーション
 			ArrayList<String> SearchLocName = new ArrayList<String>();	//ロケーション名
-			ArrayList<String> SearchType 	= new ArrayList<String>();	//ロケタイプ
+			ArrayList<Integer> SearchType 	= new ArrayList<Integer>();	//ロケタイプ
 			boolean LocExactMatch = true;	//ロケーション完全一致
 			boolean AllSearch = false;
 			

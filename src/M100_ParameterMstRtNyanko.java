@@ -55,7 +55,7 @@ public class M100_ParameterMstRtNyanko{
 			AllSearch);
 			
 	String GetParaCd		= (String)ParameterMstRtNANKO[i][M100_ParameterMstRtNyanko.ColParaCd];		//パラメータコード
-	String GetParaCdSeq		= (int)ParameterMstRtNANKO[i][M100_ParameterMstRtNyanko.ColParaCdSeq];		//ナンバリング
+	int GetParaCdSeq		= (int)ParameterMstRtNANKO[i][M100_ParameterMstRtNyanko.ColParaCdSeq];		//ナンバリング
 	String GetParaName		= (String)ParameterMstRtNANKO[i][M100_ParameterMstRtNyanko.ColParaName];	//パラメータ名
 	String GetParaTxt01		= (String)ParameterMstRtNANKO[i][M100_ParameterMstRtNyanko.ColParaTxt01];	//パラメータテキスト項目01
 	String GetParaTxt02		= (String)ParameterMstRtNANKO[i][M100_ParameterMstRtNyanko.ColParaTxt02];	//パラメータテキスト項目02
@@ -112,6 +112,43 @@ public class M100_ParameterMstRtNyanko{
 	static final  int ColUpdateDate	= (int)24;	//更新日
 	static final  int ColEntryUser	= (int)25;	//登録者
 	static final  int ColUpdateUser	= (int)26;	//更新者
+	
+	//検索値カラム
+	static final  int ColSearchParaCd			= (int) 0;	//パラメータコード
+	static final  int ColSearchParaCdSeqStr	= (int) 1;	//ナンバリング最小
+	static final  int ColSearchParaCdSeqEnd	= (int) 2;	//ナンバリング最大
+	static final  int ColSearchParaName		= (int) 3;	//パラメータ名
+	static final  int ColSearchParaTxt01		= (int) 4;	//パラメータテキスト項目01
+	static final  int ColSearchParaTxt02		= (int) 5;	//パラメータテキスト項目02
+	static final  int ColSearchParaTxt03		= (int) 6;	//パラメータテキスト項目03
+	static final  int ColSearchParaTxt04		= (int) 7;	//パラメータテキスト項目04
+	static final  int ColSearchParaTxt05		= (int) 8;	//パラメータテキスト項目05
+	static final  int ColSearchParaTxt06		= (int) 9;	//パラメータテキスト項目06
+	static final  int ColSearchParaTxt07		= (int)10;	//パラメータテキスト項目07
+	static final  int ColSearchParaTxt08		= (int)11;	//パラメータテキスト項目08
+	static final  int ColSearchParaTxt09		= (int)12;	//パラメータテキスト項目09
+	static final  int ColSearchParaTxt10		= (int)13;	//パラメータテキスト項目10
+	static final  int ColSearchParaInt01Str	= (int)14;	//パラメータ数値項目01最小
+	static final  int ColSearchParaInt02Str	= (int)15;	//パラメータ数値項目02最小
+	static final  int ColSearchParaInt03Str	= (int)16;	//パラメータ数値項目03最小
+	static final  int ColSearchParaInt04Str	= (int)17;	//パラメータ数値項目04最小
+	static final  int ColSearchParaInt05Str	= (int)18;	//パラメータ数値項目05最小
+	static final  int ColSearchParaInt06Str	= (int)19;	//パラメータ数値項目06最小
+	static final  int ColSearchParaInt07Str	= (int)20;	//パラメータ数値項目07最小
+	static final  int ColSearchParaInt08Str	= (int)21;	//パラメータ数値項目08最小
+	static final  int ColSearchParaInt09Str	= (int)22;	//パラメータ数値項目09最小
+	static final  int ColSearchParaInt10Str	= (int)23;	//パラメータ数値項目10最小
+	static final  int ColSearchParaInt01End	= (int)24;	//パラメータ数値項目01最大
+	static final  int ColSearchParaInt02End	= (int)25;	//パラメータ数値項目02最大
+	static final  int ColSearchParaInt03End	= (int)26;	//パラメータ数値項目03最大
+	static final  int ColSearchParaInt04End	= (int)27;	//パラメータ数値項目04最大
+	static final  int ColSearchParaInt05End	= (int)28;	//パラメータ数値項目05最大
+	static final  int ColSearchParaInt06End	= (int)29;	//パラメータ数値項目06最大
+	static final  int ColSearchParaInt07End	= (int)30;	//パラメータ数値項目07最大
+	static final  int ColSearchParaInt08End	= (int)31;	//パラメータ数値項目08最大
+	static final  int ColSearchParaInt09End	= (int)32;	//パラメータ数値項目09最大
+	static final  int ColSearchParaInt10End	= (int)33;	//パラメータ数値項目10最大
+	static final  int ColSearchParaTxtAll	= (int)34;	//パラメータテキスト項目全件
 	
 	public static Object[][] RtParameterMstRtNANKO(){
 		Object[][] RtSettingParameterMstRtNANKO = {
@@ -258,7 +295,6 @@ public class M100_ParameterMstRtNyanko{
 			SearchParaCdSeqEnd.add(SeqEnd);
 		}
 		
-		
 		Object[][] ParameterMstRtNANKO = M100_ParameterMstRtNyanko.ParameterMstRtNANKO(
 				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
 				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
@@ -272,8 +308,6 @@ public class M100_ParameterMstRtNyanko{
 		return ParameterMstRtNANKO;
 	}
 			
-	
-	
 	public static Object[][] ParameterMstRtNANKO(
 			ArrayList<String> SearchParaCd,	ArrayList<Integer> SearchParaCdSeqStr,ArrayList<Integer> SearchParaCdSeqEnd,ArrayList<String> SearchParaName,
 			ArrayList<String> SearchParaTxt01,ArrayList<String> SearchParaTxt02,ArrayList<String> SearchParaTxt03,ArrayList<String> SearchParaTxt04,ArrayList<String> SearchParaTxt05,
@@ -285,44 +319,186 @@ public class M100_ParameterMstRtNyanko{
 			ArrayList<String> SearchParaTxtAll,
 			Boolean AllSearch){
 		
-		SearchParaCd 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaCd);
-		SearchParaCdSeqStr = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqStr);
-		SearchParaCdSeqEnd = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaCdSeqEnd);
-		SearchParaName 	= B100_ArrayListControl.ArryListStringUniqueList(SearchParaName);
-		SearchParaTxt01 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt01);
-		SearchParaTxt02 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt02);
-		SearchParaTxt03 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt03);
-		SearchParaTxt04 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt04);
-		SearchParaTxt05 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt05);
-		SearchParaTxt06 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt06);
-		SearchParaTxt07 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt07);
-		SearchParaTxt08 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt08);
-		SearchParaTxt09 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt09);
-		SearchParaTxt10 = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxt10);
+		Object[][] Definition = {
+				 {"String"		,SearchParaCd			,"Exact"			,ColSearchParaCd			,""		,"パラメータコード"				,""}
+				,{"Integer"		,SearchParaCdSeqStr		,"RangeMin"			,ColSearchParaCdSeqStr	,""		,"ナンバリング最小"				,""}
+				,{"Integer"		,SearchParaCdSeqEnd		,"RangeMax"			,ColSearchParaCdSeqEnd	,""		,"ナンバリング最大"				,""}
+				,{"String"		,SearchParaName			,"Partial"			,ColSearchParaName		,""		,"パラメータ名"					,""}
+				,{"String"		,SearchParaTxt01		,"Partial"			,ColSearchParaTxt01		,""		,"パラメータテキスト項目01"		,""}
+				,{"String"		,SearchParaTxt02		,"Partial"			,ColSearchParaTxt02		,""		,"パラメータテキスト項目02"		,""}
+				,{"String"		,SearchParaTxt03		,"Partial"			,ColSearchParaTxt03		,""		,"パラメータテキスト項目03"		,""}
+				,{"String"		,SearchParaTxt04		,"Partial"			,ColSearchParaTxt04		,""		,"パラメータテキスト項目04"		,""}
+				,{"String"		,SearchParaTxt05		,"Partial"			,ColSearchParaTxt05		,""		,"パラメータテキスト項目05"		,""}
+				,{"String"		,SearchParaTxt06		,"Partial"			,ColSearchParaTxt06		,""		,"パラメータテキスト項目06"		,""}
+				,{"String"		,SearchParaTxt07		,"Partial"			,ColSearchParaTxt07		,""		,"パラメータテキスト項目07"		,""}
+				,{"String"		,SearchParaTxt08		,"Partial"			,ColSearchParaTxt08		,""		,"パラメータテキスト項目08"		,""}
+				,{"String"		,SearchParaTxt09		,"Partial"			,ColSearchParaTxt09		,""		,"パラメータテキスト項目09"		,""}
+				,{"String"		,SearchParaTxt10		,"Partial"			,ColSearchParaTxt10		,""		,"パラメータテキスト項目10"		,""}
+				,{"Integer"		,SearchParaInt01Str		,"RangeMin"			,ColSearchParaInt01Str	,""		,"パラメータ数値項目01"			,"最小"}
+				,{"Integer"		,SearchParaInt02Str		,"RangeMin"			,ColSearchParaInt02Str	,""		,"パラメータ数値項目02"			,"最小"}
+				,{"Integer"		,SearchParaInt03Str		,"RangeMin"			,ColSearchParaInt03Str	,""		,"パラメータ数値項目03"			,"最小"}
+				,{"Integer"		,SearchParaInt04Str		,"RangeMin"			,ColSearchParaInt04Str	,""		,"パラメータ数値項目04"			,"最小"}
+				,{"Integer"		,SearchParaInt05Str		,"RangeMin"			,ColSearchParaInt05Str	,""		,"パラメータ数値項目05"			,"最小"}
+				,{"Integer"		,SearchParaInt06Str		,"RangeMin"			,ColSearchParaInt06Str	,""		,"パラメータ数値項目06"			,"最小"}
+				,{"Integer"		,SearchParaInt07Str		,"RangeMin"			,ColSearchParaInt07Str	,""		,"パラメータ数値項目07"			,"最小"}
+				,{"Integer"		,SearchParaInt08Str		,"RangeMin"			,ColSearchParaInt08Str	,""		,"パラメータ数値項目08"			,"最小"}
+				,{"Integer"		,SearchParaInt09Str		,"RangeMin"			,ColSearchParaInt09Str	,""		,"パラメータ数値項目09"			,"最小"}
+				,{"Integer"		,SearchParaInt10Str		,"RangeMin"			,ColSearchParaInt10Str	,""		,"パラメータ数値項目10"			,"最小"}
+				,{"Integer"		,SearchParaInt01End		,"RangeMax"			,ColSearchParaInt01End	,""		,"パラメータ数値項目01"			,"最大"}
+				,{"Integer"		,SearchParaInt02End		,"RangeMax"			,ColSearchParaInt02End	,""		,"パラメータ数値項目02"			,"最大"}
+				,{"Integer"		,SearchParaInt03End		,"RangeMax"			,ColSearchParaInt03End	,""		,"パラメータ数値項目03"			,"最大"}
+				,{"Integer"		,SearchParaInt04End		,"RangeMax"			,ColSearchParaInt04End	,""		,"パラメータ数値項目04"			,"最大"}
+				,{"Integer"		,SearchParaInt05End		,"RangeMax"			,ColSearchParaInt05End	,""		,"パラメータ数値項目05"			,"最大"}
+				,{"Integer"		,SearchParaInt06End		,"RangeMax"			,ColSearchParaInt06End	,""		,"パラメータ数値項目06"			,"最大"}
+				,{"Integer"		,SearchParaInt07End		,"RangeMax"			,ColSearchParaInt07End	,""		,"パラメータ数値項目07"			,"最大"}
+				,{"Integer"		,SearchParaInt08End		,"RangeMax"			,ColSearchParaInt08End	,""		,"パラメータ数値項目08"			,"最大"}
+				,{"Integer"		,SearchParaInt09End		,"RangeMax"			,ColSearchParaInt09End	,""		,"パラメータ数値項目09"			,"最大"}
+				,{"Integer"		,SearchParaInt10End		,"RangeMax"			,ColSearchParaInt10End	,""		,"パラメータ数値項目10"			,"最大"}
+				,{"String"		,SearchParaTxtAll		,"Partial"			,ColSearchParaTxtAll		,""		,"パラメータテキスト項目全件"	,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
 		
-		SearchParaInt01Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01Str);
-		SearchParaInt02Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02Str);
-		SearchParaInt03Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt03Str);
-		SearchParaInt04Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt04Str);
-		SearchParaInt05Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt05Str);
-		SearchParaInt06Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt06Str);
-		SearchParaInt07Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt07Str);
-		SearchParaInt08Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt08Str);
-		SearchParaInt09Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt09Str);
-		SearchParaInt10Str = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt10Str);
-		SearchParaInt01End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt01End);
-		SearchParaInt02End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt02End);
-		SearchParaInt03End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt03End);
-		SearchParaInt04End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt04End);
-		SearchParaInt05End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt05End);
-		SearchParaInt06End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt06End);
-		SearchParaInt07End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt07End);
-		SearchParaInt08End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt08End);
-		SearchParaInt09End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt09End);
-		SearchParaInt10End = B100_ArrayListControl.ArryListIntegerUniqueList(SearchParaInt10End);
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchParaCd:	
+					SearchParaCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaCdSeqStr:	
+					SearchParaCdSeqStr		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaCdSeqEnd:	
+					SearchParaCdSeqEnd		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaName:	
+					SearchParaName			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt01:	
+					SearchParaTxt01			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt02:	
+					SearchParaTxt02			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt03:	
+					SearchParaTxt03			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt04:	
+					SearchParaTxt04			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt05:	
+					SearchParaTxt05			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt06:	
+					SearchParaTxt06			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt07:	
+					SearchParaTxt07			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt08:	
+					SearchParaTxt08			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt09:	
+					SearchParaTxt09			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaTxt10:	
+					SearchParaTxt10			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchParaInt01Str:	
+					SearchParaInt01Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt02Str:	
+					SearchParaInt02Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt03Str:	
+					SearchParaInt03Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt04Str:	
+					SearchParaInt04Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt05Str:	
+					SearchParaInt05Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt06Str:	
+					SearchParaInt06Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt07Str:	
+					SearchParaInt07Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt08Str:	
+					SearchParaInt08Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt09Str:	
+					SearchParaInt09Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt10Str:	
+					SearchParaInt10Str		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt01End:	
+					SearchParaInt01End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt02End:	
+					SearchParaInt02End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt03End:	
+					SearchParaInt03End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt04End:	
+					SearchParaInt04End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt05End:	
+					SearchParaInt05End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt06End:	
+					SearchParaInt06End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt07End:	
+					SearchParaInt07End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt08End:	
+					SearchParaInt08End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt09End:	
+					SearchParaInt09End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaInt10End:	
+					SearchParaInt10End		= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchParaTxtAll:	
+					SearchParaTxtAll		= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
 		
-		SearchParaTxtAll = B100_ArrayListControl.ArryListStringUniqueList(SearchParaTxtAll);
+		Object[][] Rt	= ParameterMstRtNANKOMain(
+				SearchParaCd,	SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
+				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
+				SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
+				SearchParaInt01Str,SearchParaInt02Str,SearchParaInt03Str,SearchParaInt04Str,SearchParaInt05Str,
+				SearchParaInt06Str,SearchParaInt07Str,SearchParaInt08Str,SearchParaInt09Str,SearchParaInt10Str,
+				SearchParaInt01End,SearchParaInt02End,SearchParaInt03End,SearchParaInt04End,SearchParaInt05End,
+				SearchParaInt06End,SearchParaInt07End,SearchParaInt08End,SearchParaInt09End,SearchParaInt10End,
+				SearchParaTxtAll,
+				AllSearch);
 		
+		return Rt;
+	}
+	
+	private static Object[][] ParameterMstRtNANKOMain(
+			ArrayList<String> SearchParaCd,	ArrayList<Integer> SearchParaCdSeqStr,ArrayList<Integer> SearchParaCdSeqEnd,ArrayList<String> SearchParaName,
+			ArrayList<String> SearchParaTxt01,ArrayList<String> SearchParaTxt02,ArrayList<String> SearchParaTxt03,ArrayList<String> SearchParaTxt04,ArrayList<String> SearchParaTxt05,
+			ArrayList<String> SearchParaTxt06,ArrayList<String> SearchParaTxt07,ArrayList<String> SearchParaTxt08,ArrayList<String> SearchParaTxt09,ArrayList<String> SearchParaTxt10,
+			ArrayList<Integer> SearchParaInt01Str,ArrayList<Integer> SearchParaInt02Str,ArrayList<Integer> SearchParaInt03Str,ArrayList<Integer> SearchParaInt04Str,ArrayList<Integer> SearchParaInt05Str,
+			ArrayList<Integer> SearchParaInt06Str,ArrayList<Integer> SearchParaInt07Str,ArrayList<Integer> SearchParaInt08Str,ArrayList<Integer> SearchParaInt09Str,ArrayList<Integer> SearchParaInt10Str,
+			ArrayList<Integer> SearchParaInt01End,ArrayList<Integer> SearchParaInt02End,ArrayList<Integer> SearchParaInt03End,ArrayList<Integer> SearchParaInt04End,ArrayList<Integer> SearchParaInt05End,
+			ArrayList<Integer> SearchParaInt06End,ArrayList<Integer> SearchParaInt07End,ArrayList<Integer> SearchParaInt08End,ArrayList<Integer> SearchParaInt09End,ArrayList<Integer> SearchParaInt10End,
+			ArrayList<String> SearchParaTxtAll,
+			Boolean AllSearch){
 		
 		//NYANKOパラメータ返却
 		Object[][] rt=new Object[0][RtParameterMstRtNANKO().length];
@@ -791,8 +967,8 @@ public class M100_ParameterMstRtNyanko{
 
 				if(null!=SearchParaTxt06 && 0<SearchParaTxt06.size()){
 					for(int i=0;i<SearchParaTxt06.size();i++){
-						if(i>0){sql = sql + " or ";}
-						sql = sql + "KM0000_PARAMETER.ParaTxt06 like '%"+SearchParaTxt06.get(i)+"%'";
+						StmtCount = StmtCount+1;
+						stmt01.setString(StmtCount, "%"+SearchParaTxt06.get(i)+"%");
 					}
 				}
 

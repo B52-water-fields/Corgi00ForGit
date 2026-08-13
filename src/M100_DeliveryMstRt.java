@@ -99,6 +99,7 @@ public class M100_DeliveryMstRt{
 	static final  int ColFirstClientName	= (int)25;	//登録した荷主名
 	static final  int ColLastClientName	= (int)26;	//登録した荷主名
 	
+	//検索値カラム
 	static final  int ColSearchDECD				= (int) 0;	//検索条件届先CD
 	static final  int ColSearchDepartmentCd		= (int) 1;	//検索条件届先部署CD
 	static final  int ColSearchDEName				= (int) 2;	//検索条件届先名
@@ -179,39 +180,14 @@ public class M100_DeliveryMstRt{
 				,{"String"		,SearchMunicipalityCd	,"Exact"			,ColSearchMunicipalityCd		,""										,"検索条件届先市区町村CD"	,""}
 				,{"String"		,SearchDelFg			,"Exact"			,ColSearchDelFg				,B100_DefaultVariable.SearchDelList	,"検索条件削除区分"			,""}
 				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
 		
 		for(int i=0;i<Definition.length;i++) {
-			if("Date".equals((String)Definition[i][0]) && "RangeStr".endsWith((String)Definition[i][2])) {
-				//日付系最小は念のため00:00:00扱い
-				Definition[i][1]	= B100_ArrayListControl.DateOnlySet((ArrayList<String>)Definition[i][1]);
-				
-			}else if("Date".equals((String)Definition[i][0]) && "RangeEnd".endsWith((String)Definition[i][2])) {
-				//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなのでDateTimeにしてここに入れない
-				Definition[i][1]	= B100_ArrayListControl.DateOnlySetNdateAfter((ArrayList<String>)Definition[i][1],1);
-				
-			}
-			
-			switch((String)Definition[i][0]) {
-				case"Integer":
-					Definition[i][1]				= B100_ArrayListControl.ArryListIntegerUniqueList((ArrayList<Integer>)Definition[i][1]);
-					break;
-				case"Float":
-					Definition[i][1]				= B100_ArrayListControl.ArryListFloatUniqueList((ArrayList<Float>)Definition[i][1]);
-					break;
-				case"String":
-					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
-					break;
-				case"Date":
-					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
-					break;
-				case"DateTime":
-					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
-					break;
-				default:
-					Definition[i][1]				= B100_ArrayListControl.ArryListStringUniqueList((ArrayList<String>)Definition[i][1]);
-					break;
-			}
-			
 			switch((int)Definition[i][3]) {
 				case ColSearchDECD:	
 					SearchDECD				= (ArrayList<String>)Definition[i][1];

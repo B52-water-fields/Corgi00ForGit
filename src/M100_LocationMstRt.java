@@ -49,6 +49,13 @@ public class M100_LocationMstRt{
 	static final int ColEntryUser		= (int) 9;	//登録者
 	static final int ColUpdateUser	= (int)10;	//更新者
 	
+	//検索値カラム
+	static final int ColSearchClCd	= (int) 0;	//荷主コード
+	static final int ColSearchWhCd	= (int) 1;	//倉庫コード
+	static final int ColSearchLoc		= (int) 2;	//ロケーション
+	static final int ColSearchLocName	= (int) 3;	//ロケーション名
+	static final int ColSearchType	= (int) 4;	//ロケタイプ
+	
 	public static Object[][] RtLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {
 				 {"ClCd"		,ColClCd			,"String"	,"荷主CD"			,"Key"}
@@ -66,21 +73,70 @@ public class M100_LocationMstRt{
 		
 		return RtSettingLocationMstRt;
 	}
-	
 	public static Object[][] LocationMstRt(
 			ArrayList<String> SearchClCd,		//荷主コード
 			ArrayList<String> SearchWhCd,		//倉庫コード
 			ArrayList<String> SearchLoc,		//ロケーション
 			ArrayList<String> SearchLocName,	//ロケーション名
-			ArrayList<String> SearchType,		//ロケタイプ
+			ArrayList<Integer> SearchType,		//ロケタイプ
 			boolean LocExactMatch,	//ロケーション完全一致
 			boolean AllSearch){
 		
-		SearchClCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);		//荷主コード
-		SearchWhCd		= B100_ArrayListControl.ArryListStringUniqueList(SearchWhCd);		//倉庫コード
-		SearchLoc		= B100_ArrayListControl.ArryListStringUniqueList(SearchLoc);		//ロケーション
-		SearchLocName	= B100_ArrayListControl.ArryListStringUniqueList(SearchLocName);	//ロケーション名
-		SearchType		= B100_ArrayListControl.ArryListStringUniqueList(SearchType);		//ロケタイプ
+		Object[][] Definition = {
+				 {"String"		,SearchClCd		,"Exact"			,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"		,""}
+				,{"String"		,SearchWhCd		,"Exact"			,ColSearchWhCd		,B100_DefaultVariable.SearchWhList		,"倉庫コード"		,""}
+				,{"String"		,SearchLoc		,"ExactOrPrefix"	,ColSearchLoc			,""											,"ロケーション"		,""}
+				,{"String"		,SearchLocName	,"Partial"			,ColSearchLocName		,""											,"ロケーション名"	,""}
+				,{"Integer"		,SearchType		,"Exact"			,ColSearchType		,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""}
+				};
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					SearchClCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchWhCd:	
+					SearchWhCd			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchLoc:	
+					SearchLoc			= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchLocName:	
+					SearchLocName		= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchType:	
+					SearchType			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		
+		Object[][] Rt	= LocationMstRtMain(
+				SearchClCd,		//荷主コード
+				SearchWhCd,		//倉庫コード
+				SearchLoc,		//ロケーション
+				SearchLocName,	//ロケーション名
+				SearchType,		//ロケタイプ
+				LocExactMatch,	//ロケーション完全一致
+				AllSearch);
+		
+		return Rt;
+	}
+	private static Object[][] LocationMstRtMain(
+			ArrayList<String> SearchClCd,		//荷主コード
+			ArrayList<String> SearchWhCd,		//倉庫コード
+			ArrayList<String> SearchLoc,		//ロケーション
+			ArrayList<String> SearchLocName,	//ロケーション名
+			ArrayList<Integer> SearchType,		//ロケタイプ
+			boolean LocExactMatch,	//ロケーション完全一致
+			boolean AllSearch){
 		
 		Object[][] rt = new Object[0][RtLocationMstRt().length];
 		boolean SearchKick = false;
