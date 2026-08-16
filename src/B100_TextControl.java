@@ -3,8 +3,54 @@ import java.text.Normalizer;
 
 public class B100_TextControl{
 	//文字列操作をするクラス
+	/*******************************************************************************************
+	B100_TextControl(Publican 徴税人は申告書に目を光らせる)
 	
+	//文字列を整数で返却　数字認識できなければ0返却　"-123.345"⇒-123を返却
+	B100_TextControl.TextToInt(String Tgt);		
 	
+	//文字列を浮動小数点数で返却　数字認識できなければ0返却　"-123.345"⇒-123.345を返却
+	B100_TextControl.TextToFloat(String Tgt);	
+	
+	//日付っぽい文字列をYYYY/MM/DDに成形して返却　日付判定できなければ空白文字列で返却
+	B100_TextControl.TextToDate(String Tgt);	
+	
+	//数字のみで構成された半角の文字列を生成する。数字以外は捨てる。数字が入って無ければ空白返却
+	B100_TextControl.num_only_String(String st);
+	
+	//数字のみで構成された半角の文字列を生成する但し小数点対応の為に"."一個だけの場合は除外対象外
+	//マイナス対応のために先頭のマイナスも除外対象外。数字が入って無ければ空白返却
+	B100_TextControl.num_only_String02(String st);
+	
+	//後方の空白文字を除去
+	B100_TextControl.Trim(String ws);
+	
+	↑非常によく使う
+	
+	↓あんまり使わないので枯れてない
+	
+	/開始位置～終了位置のバイト数指定して文字列を返す
+	B100_TextControl.byte_cut(String check_st,int str,int end)
+	
+	//半角の文字列に変換※半角に出来なかった全角文字列は除去
+	B100_TextControl.only1byte_String(String st);
+	
+	//指定のバイト数でテキストをカットすると共にSQL禁則文字対策を施す あんまり使ってないので自信ない
+	B100_TextControl.byte_check(String check_st,int cut_byte);	
+	
+	//指定のバイト数でテキストをカットする※後ろを捨てる
+	B100_TextControl.byte_checkonly(String check_st,int cut_byte);	
+	
+	//前半が指定のバイト以内に収まるようにテキストをカットして前後を返す　固定長テキストの読み込みとかで使う
+	B100_TextControl.byte_checkBA(String check_st,int cut_byte);
+	
+	//任意の文字コードで指定のバイト数文字列を切り出し、切り出した文字列と後方の文字列を返す
+	B100_TextControl.Byte_cut(String check_st,int cut_byte);
+	
+	//SHIFTJIS扱いで指定のバイト数文字列を切り出し、切り出した文字列と後方の文字列を返す
+	B100_TextControl.SJisByte_cut(String check_st,int cut_byte);
+	
+	*******************************************************************************************/
 	public static int TextToInt(String Tgt) {
 		//受け取った文字列をintとして返却
 		if(null==Tgt) {Tgt	= "";}
@@ -38,8 +84,6 @@ public class B100_TextControl{
 		}
 		return Tgt;
 	}
-	
-	
 
 	//指定のバイト数でテキストをカットすると共にSQL禁則文字対策を施す
 	public static String byte_check(String check_st,int cut_byte){

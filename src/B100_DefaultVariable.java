@@ -2,12 +2,20 @@ import java.util.ArrayList;
 
 public class B100_DefaultVariable{
 	//設定用条件
+	static final String DefaultActualDate 	= "1941/12/08";	//入荷日管理しない場合の入荷実績日
+	static final String DefaultExpDate 		= "3000/01/01";	//消費期限管理しない場合の消費期限
+	static final String DefaultPtmsItemCd 	= "0001";		//基幹システム商品CD
+	static final int ErrTxtDelete 			= 45;			//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
+	static final int NormalTaxRate 			= 10;			//消費税率　※10%なら10
+	static final int[] TaxRateList 			= {10,8,0};		//消費税率のリスト　※10%なら10　Ex）10,8,0
+	
 	static String[][] HaisyaDataLayoutPt;			//運送会社向け配車データ出力パターン ※個別開発ごとにHaisyaDataLayoutPt()修正
 	static String[][] LayoutPt;						//荷主データ⇒送り状データ取り込みパターン　※個別開発ごとにLayoutPt()修正
 	
 	static String[][] ShimeDateList;					//1日～28日　末日99のリスト
-	static String[][] DeliFeeNorm;						//運賃請求基準　発請求/着請求
 
+	static boolean ActualDateUnControl;				//入荷日管理しない場合true※荷主毎パラメータマスタActualDateUnControl Seq = 0によって制御します
+	
 	static String[][] SearchWhList;					//倉庫リスト
 	static String[][] WhList;							//倉庫リスト
 	
@@ -35,59 +43,53 @@ public class B100_DefaultVariable{
 	static String[][] DeliveryType04;
 	static String[][] DeliveryType05;
 	
-	static final int ErrTxtDelete 			= 45;	//エラーで吐いたテキストデータの保持期間※これより古いデータは破棄
-	
-	static final int NormalTaxRate 			= 10;			//消費税率　※10%なら10
-	static final int[] TaxRateList 			= {10,8,0};		//消費税率のリスト　※10%なら10　Ex）10,8,0
-	
-	static final String[][] SearchTaxFgList	= {{"未指定","0:外税","1:内税","2:非課税"},{"","0","1","2"},{"","外税","内税","非課税"}};	//検索条件：外税内税区分
-	static final String[][] TaxFgList 			= {{"0:外税","1:内税","2:非課税"},{"0","1","2"},{"外税","内税","非課税"}};					//外税内税区分
-	
-	
-	static final String[][] SearchDelList 	= {{"0:稼働中","1:削除","未指定"},{"0","1",""},{"稼働中","削除",""}};		//検索用削除区分
-	static final String[][] DelList 			= {{"0:稼働中","1:削除"},{"0","1"},{"稼働中","削除"}};						//設定用削除区分
-	
-	static boolean ActualDateUnControl;		//入荷日管理しない場合true※荷主毎パラメータマスタActualDateUnControl Seq = 0によって制御します
-	
 	/*
 	 マスタ優先区分　※データ優先：荷主届け先変換時にデータ優先する。マスタ優先（名称：届先変換マスタ⇒届先マスタ　住所：届先マスタの情報をひく）
 	 当然に連携データに名称住所がなければマスタ情報をひく
 	*/
-	static final String[][] SearchMstPriorityFirstFg 	= {{"0:データ優先","1:マスタ優先","未指定"},{"0","1",""},{"データ優先","マスタ優先",""}};	
-	static final String[][] MstPriorityFirstFg 			= {{"0:データ優先","1:マスタ優先"},{"0","1"},{"データ優先","マスタ優先"}};							
+	static String[][] SearchMstPriorityFirstFg;	
+	static String[][] MstPriorityFirstFg;
 	
-	static String[][] SearchAuthorityFG;				//検索用ユーザー権限区分
+	/**********************
+	↓多言語対応
+	**********************/
+	static final String[][] LanguageList = {{"JP:Japanese","EN:English","ZH:Chinese"},{"JP","EN","ZH"},{"Japanese","English","Chinese"}};
+	
+	static String[][] SearchTaxFgList;				//検索条件：外税内税区分
+	static String[][] TaxFgList;						//外税内税区分
+	
+	static String[][] SearchDelList;					//検索条件：削除区分
+	static String[][] DelList;							//設定用削除区分
+	
+	static String[][] SearchAuthorityFG;				//検索条件：検索用ユーザー権限区分
 	static String[][] AuthorityFG;						//設定用ユーザー権限区分
 	
-	static final String[][] SearchLocType 	= {{"未指定","0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"","0","1","7","8","9"},{"","通常","保管","スルーロケ","入荷時","引当禁止"},{"","1","1","0","0","0"}};		//ロケタイプ検索値{表示用,CD,名称,引当可能FG※引当対象なら1}
-	static final String[][] LocType 			= {{"0:通常","1:保管","7:スルーロケ","8:入荷時","9:引当禁止"},{"0","1","7","8","9"},{"通常","保管","スルーロケ","入荷時","引当禁止"},{"1","1","0","0","0"}};									//ロケタイプ設定値{表示用,CD,名称,引当可能FG※引当対象なら1}
+	static String[][] SearchLocType;					//ロケタイプ検索値{表示用,CD,名称,引当可能FG※引当対象なら1}
+	static String[][] LocType;							//ロケタイプ設定値{表示用,CD,名称,引当可能FG※引当対象なら1}
 	
-	static final String DefaultActualDate 	= "1941/12/08";	//入荷日管理しない場合の入荷実績日
+	static String DefaultTroughLoc;					//スルー型運用の場合スルー引当用ロケ	※パラメータマスタに設定された値で上書きされる
+	static String DefaultArrivalLoc;					//入荷時に格納されるロケ				※パラメータマスタに設定された値で上書きされる
 	
-	static String DefaultTroughLoc;			//スルー型運用の場合スルー引当用ロケ	※パラメータマスタに設定された値で上書きされる
-	static String DefaultArrivalLoc;			//入荷時に格納されるロケ				※パラメータマスタに設定された値で上書きされる
+	static String[][] SearchStatusList;				//検索条件：状況
+	static String[][] StatusList;						//状況
 	
-	static final String DefaultExpDate 		= "3000/01/01";	//消費期限管理しない場合の消費期限
+	static  String[][] SearchWmsStatusList;			//検索条件：倉庫状況
+	static  String[][] WmsStatusList;					//倉庫状況
 	
-	static final String DefaultPtmsItemCd 	= "0001";		//基幹システム商品CD
+	static String[][] DeliFeeNorm = {{"0:発日請求","1:着日請求"},{"0","1"},{"発日請求","着日請求"}};						//運賃請求基準　発請求/着請求
 	
-	static final String[][] SearchStatusList 			= {{"未指定","0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"","0","1","2","3","8","9"}};	//検索条件：状況
-	static final String[][] StatusList 				= {{"0:未配車","1:配車済","2:出荷完了","3:配達完了","8:保留","9:キャンセル"},{"0","1","2","3","8","9"}};				//状況
 	
-	static final String[][] SearchWmsStatusList 		= {{"未指定","0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"","0","1","2","3","8","7","9"}};	//検索条件：倉庫状況
-	static final String[][] WmsStatusList 			= {{"0:未引当","1:引当済","2:指示済","3:出荷済","8:引当保留","7:出荷対象外","9:キャンセル"},{"0","1","2","3","8","7","9"}};				//倉庫状況
+	static String[][] SearchArryvalFixFgList;		//検索条件：入荷状況リスト
+	static String[][] ArryvalFixFgList;				//入荷状況リスト
 	
-	static final String[][] SearchArryvalFixFgList 	= {{"未指定","0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"","0","1","2","9"},{"","未入荷","入荷済","分納待","キャンセル"}};		//入荷状況リスト
-	static final String[][] ArryvalFixFgList 			= {{"0:未入荷","1:入荷済","2:分納待","9:キャンセル"},{"0","1","2","9"},{"未入荷","入荷済","分納待","キャンセル"}};						//入荷状況リスト
+	static String[][] SearchCautionTiming;			//検索条件：注意事項タイミング
+	static String[][] CautionTiming;					//注意事項タイミング
 	
-	static final String[][] SearchCautionTiming		= {{"未指定","0:納品時","1:出荷時"},{"","0","1"},{"","納品時","出荷時"}};		//検索条件：注意事項タイミング
-	static final String[][] CautionTiming 			= {{"0:納品時","1:出荷時"},{"0","1"},{"納品時","出荷時"}};						//注意事項タイミング
+	static String[][] SearchChildrenFGList;			//検索条件：親子区分
+	static String[][] ChildrenFGList;					//親子区分
 	
-	static final String[][] SearchChildrenFGList 	= {{"未指定","0:親伝票","1:子伝票"},{"","0","1"},{"","親伝票","子伝票"}};		//赤黒区分
-	static final String[][] ChildrenFGList 			= {{"0:親伝票","1:子伝票"},{"0","1"},{"親伝票","子伝票"}};						//赤黒区分
-	
-	static final String[][] SearchTildFG 				= {{"未指定","0:常温","1:冷蔵","2:冷凍","3:チルド"},{"","0","1","2","3"},{"","常温","冷蔵","冷凍","チルド"}};
-	static final String[][] TildFG 					= {{"0:常温","1:冷蔵","2:冷凍","3:チルド"},{"0","1","2","3"},{"常温","冷蔵","冷凍","チルド"}};					//0:常温必須
+	static String[][] SearchTildFG;					//検索条件：温度帯 0:常温必須
+	static String[][] TildFG;							//検索条件：温度帯 0:常温必須
 	
 	static final String[][] SearchReceiptStampFGList= {{"未指定","0:未回収","1:回収済","2:返送済","9:回収不要"},{"","0","1","2","9"},{"","未回収","回収済","返送済","回収不要"}};	//受領印区分
 	static final String[][] ReceiptStampFGList 		= {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};					//受領印区分
@@ -107,7 +109,7 @@ public class B100_DefaultVariable{
 	static final String[][] SearchUnitTypeList 		= {{"未指定","0:バラ","1:カートン","2:ケース","3：パレット"},{"","0","1","2","3"},{"","バラ","カートン","ケース","パレット"}};
 	static final String[][] UnitTypeList 				= {{"0:バラ","1:カートン","2:ケース","3：パレット"},{"0","1","2","3"},{"バラ","カートン","ケース","パレット"}};
 	
-	static final String[][] SearchPurposeList 		= {{"未指定","0:配達","1:配達","2:集荷","3:中継"},{"","0","1","2","3"},{"","配達","配達","集荷","中継"}};	//送り状目的区分
+	static final String[][] SearchPurposeList 		= {{"未指定","0:配達","1:直送","2:集荷","3:中継"},{"","0","1","2","3"},{"","配達","直送","集荷","中継"}};	//送り状目的区分
 	static final String[][] PurposeList 				= {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
 	
 	static String[][] SearchAdjustReasonList;
@@ -118,6 +120,17 @@ public class B100_DefaultVariable{
 	
 	static final String[][] SearchOnOffSwitch 		= {{"未指定","0:Off","1:On"},{"","0","1"},{"","Off","On"}};		//OｎOff　2択
 	static final String[][] OnOffSwitch 				= {{"0:Off","1:On"},{"0","1"},{"Off","On"}};					//OｎOff　2択
+	
+	static final String[] SearchExactOrPrefix		= {"と一致","で始まる"};
+	static final String[] SearchPrefixOrExact		= {"で始まる","と一致"};
+	static final String   SearchExact 					= "と一致";
+	static final String   SearchPartial 				= "を含む";
+	static final String   SearchPrefix 				= "で始まる";
+	static final String   SearchBlankAdd				= "空白文字を条件に追加";
+	
+	static final String[] StockSortModeList			= {"ロケ順","商品CD順"};
+	
+	
 	
 	/*
 	====================================================================
@@ -188,6 +201,8 @@ public class B100_DefaultVariable{
 		AdjustReasonDefault();		//在庫調整理由少なくとも一つ作る ⇒在庫調整理由リスト生成
 		
 		ClParameterCheck();			//荷主別パラメータマスタの値チェック
+		
+		B100_LanguageControl.DefaultVariableControl();	//ログインユーザーの言語にあわせる
 	}
 	
 	public static void ClParameterCheck() {
@@ -1066,15 +1081,6 @@ public class B100_DefaultVariable{
 		ShimeDateList[2][26] = "27日";
 		ShimeDateList[2][27] = "28日";
 		ShimeDateList[2][28] = "月末";
-		
-		DeliFeeNorm[0][0] = "0:発日請求";
-		DeliFeeNorm[0][1] = "1:着日請求";
-		
-		DeliFeeNorm[1][0] = "0";
-		DeliFeeNorm[1][1] = "1";
-		
-		DeliFeeNorm[2][0] = "発日請求";
-		DeliFeeNorm[2][1] = "着日請求";
 	}
 	
 	private static void AuthorityFG(){

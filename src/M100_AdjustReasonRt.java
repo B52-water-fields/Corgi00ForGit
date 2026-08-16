@@ -52,17 +52,20 @@ public class M100_AdjustReasonRt{
 	
 	public static Object[][] RtAdjustReasonRt() {
 		Object[][] RtAdjustReasonRt = {
-					 {"ClCd"				,ColClCd				,"String"	,"荷主コード"		,"Key"}
-					,{"CLName01"			,ColCLName01			,"String"	,"荷主名"			,""}
-					,{"WhCd"				,ColWhCd				,"String"	,"倉庫コード"		,"Key"}
-					,{"WHName"				,ColWHName				,"String"	,"倉庫名"			,""}
-					,{"AdjustReasonCd"		,ColAdjustReasonCd	,"String"	,"調整理由コード"	,"Key"}
-					,{"AdjustReasonName"	,ColAdjustReasonName	,"String"	,"調整理由名"		,""}
-					,{"EntryDate"			,ColEntryDate			,"DateTime"	,"登録日"			,""}
-					,{"UpdateDate"			,ColUpdateDate		,"DateTime"	,"更新日"			,""}
-					,{"EntryUser"			,ColEntryUser			,"String"	,"登録者"			,""}
-					,{"UpdateUser"			,ColUpdateUser		,"String"	,"更新者"			,""}
-					};
+				 {"ClCd"				,ColClCd				,"String"	,"荷主コード"		,"Key"	,"Client Code"				,"货主代码"}
+				,{"CLName01"			,ColCLName01			,"String"	,"荷主名"			,""		,"Client Name"				,"货主名称"}
+				,{"WhCd"				,ColWhCd				,"String"	,"倉庫コード"		,"Key"	,"Warehouse Code"			,"仓库代码"}
+				,{"WHName"				,ColWHName				,"String"	,"倉庫名"			,""		,"Warehouse Name"			,"仓库名称"}
+				,{"AdjustReasonCd"		,ColAdjustReasonCd	,"String"	,"調整理由コード"	,"Key"	,"Adjustment Reason Code"	,"调整原因代码"}
+				,{"AdjustReasonName"	,ColAdjustReasonName	,"String"	,"調整理由名"		,""		,"Adjustment Reason"		,"调整原因"}
+				,{"EntryDate"			,ColEntryDate			,"DateTime"	,"登録日"			,""		,"Created Date"				,"登记日期"}
+				,{"UpdateDate"			,ColUpdateDate		,"DateTime"	,"更新日"			,""		,"Updated Date"				,"更新日期"}
+				,{"EntryUser"			,ColEntryUser			,"String"	,"登録者"			,""		,"Created By"				,"登记人"}
+				,{"UpdateUser"			,ColUpdateUser		,"String"	,"更新者"			,""		,"Updated By"				,"更新人"}
+				};
+		
+		RtAdjustReasonRt = B100_LanguageControl.RtControl(RtAdjustReasonRt);
+		
 		return RtAdjustReasonRt;
 	}
 	
@@ -74,11 +77,11 @@ public class M100_AdjustReasonRt{
 			boolean AllSearch) {
 		
 		Object[][] Definition = {
-			 	 {"String"		,SearchClCd				,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList	,"荷主コード"		,""}
-				,{"String"		,SearchWhCd				,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList	,"倉庫コード"		,""}
-				,{"String"		,SearchAdjustReasonCd	,"Exact"			,ColSearchAdjustReasonCd	,""											,"調整理由コード"	,""}
-				,{"String"		,SearchAdjustReasonName	,"Partial"			,ColSearchAdjustReasonName	,""										,"調整理由名"		,""}
-				};
+				 	 {"String"		,SearchClCd				,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList	,"荷主コード"		,""	,"Client Code"				,""	,"货主代码"			,""}
+					,{"String"		,SearchWhCd				,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList	,"倉庫コード"		,""	,"Warehouse Code"			,""	,"仓库代码"			,""}
+					,{"String"		,SearchAdjustReasonCd	,"Exact"			,ColSearchAdjustReasonCd	,""											,"調整理由コード"	,""	,"Adjustment Reason Code"	,""	,"调整原因代码"		,""}
+					,{"String"		,SearchAdjustReasonName	,"Partial"			,ColSearchAdjustReasonName	,""										,"調整理由名"		,""	,"Adjustment Reason"		,""	,"调整原因"			,""}
+					};
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

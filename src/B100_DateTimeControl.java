@@ -84,6 +84,27 @@ public class B100_DateTimeControl{
 	//戻り値:String																				頑張れなかったら空白が返ります
 	//
 	//
+	//B100_DateTimeControl.TodaySet(JFormattedTextField TgtJFormattedTextField) 			:対象TgtJFormattedTextFieldに今日の日付をセットする
+	//
+	//B100_DateTimeControl.NowDateTimeSet(JFormattedTextField TgtJFormattedTextField)		:/対象TgtJFormattedTextFieldに現在の日付時刻をセットする
+	//
+	//B100_DateTimeControl.BeforeDateSet(JFormattedTextField TgtJFormattedTextField)		:対象TgtJFormattedTextFieldの日付を一日前にセットする　※空白であれば当日をセット
+	//
+	//B100_DateTimeControl.AfterDateSet(JFormattedTextField TgtJFormattedTextField)			:対象TgtJFormattedTextFieldの日付を一日後にセットする　※空白であれば当日をセット
+	//
+	//B100_DateTimeControl.BeforeMonthSet(JFormattedTextField TgtJFormattedTextField) 		:対象TgtJFormattedTextFieldの日付を一月前にセットする　※空白であれば当日をセット
+	//
+	//B100_DateTimeControl.AfterMonthSet(JFormattedTextField TgtJFormattedTextField) 		:対象TgtJFormattedTextFieldの日付を一月後にセットする　※空白であれば当日をセット
+	//
+	//B100_DateTimeControl.BeforeDateTimeSet(JFormattedTextField TgtJFormattedTextField) 	:対象TgtJFormattedTextFieldの日付を一日前にセットする　※空白であれば当日をセット
+	//
+	//B100_DateTimeControl.AfterDateTimeSet(JFormattedTextField TgtJFormattedTextField)		:対象TgtJFormattedTextFieldの日付を一日後にセットする　※空白であれば当日をセット
+	//
+	//B100_DateTimeControl.BeforeMonthDateTimeSet(JFormattedTextField TgtJFormattedTextField) :対象TgtJFormattedTextFieldの日付を一月前にセットする　※空白であれば当日をセット
+	//
+	//B100_DateTimeControl.AfterMonthDateTimeSet(JFormattedTextField TgtJFormattedTextField) :対象TgtJFormattedTextFieldの日付を一月後にセットする　※空白であれば当日をセット
+	//
+	//
     // ==========================================================================
 	
 

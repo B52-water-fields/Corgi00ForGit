@@ -8,6 +8,18 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class B100_PictControl{
+	/***************************************************************************************************************
+	B100_PictControl(Brownie 妖精が絵画を揺らす)
+	画像ファイルをリサイズ・回転させる
+	
+	B100_PictControl.PictCheck(String Selected);										//指定ファイルが画像だった場合true
+	B100_PictControl.PictSave(Tgtimage,"jpg","C:\MIZUNO\WMS\\Pict\\TgtPict.jpg");		//イメージを指定パスに保存する
+	B100_PictControl.PictReSize(int XSize,int YSize,String Selected);					//指定画像を指定枠内に収まるサイズにリサイズする
+	B100_PictControl.PictRotate(int XSize,int YSize,int RotationAngle,String Selected);	//指定画像を90度単位で回転させて、指定枠内に収まるサイズにリサイズする
+																							RotationAngleは0・90・180・270で指定
+	
+	****************************************************************************************************************/
+	
 	public static boolean PictCheck(String Selected) {
 		//指定ファイルが存在し、画像ファイルだった場合にTrue返却する
 		boolean rt = true;

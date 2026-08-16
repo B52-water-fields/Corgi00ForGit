@@ -98,6 +98,8 @@ public class A00000_Main{
 	public static String FontFilePath = "";
 	public static String FontFileName = "";	//ttcフォント呼び出し時にフォント名でつる為に必要
 	
+	public static String LoginUserLanguage = "JP";	//多言語対応制御用
+	
 	/*===========================================================================================================================
 	
  	main(String[] args)		:起動

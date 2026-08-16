@@ -77,28 +77,31 @@ public class WT100_Stock_00_Search{
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		
-		String[] LocExactMatchList	= {"で始まる","と一致"};
-		String[] SortModeList		= {"ロケ順","商品CD順"};
+		//検索条件項目取得
+		Object[][] SearchDefinition	= T100_StockRt.DefinitionRt();
+		
+		String[] LocExactMatchList	= B100_DefaultVariable.SearchPrefixOrExact;
+		String[] SortModeList		= B100_DefaultVariable.StockSortModeList;
 		
 		//検索条件
-		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(  0, 25,100,20,"荷主コード:"		,11,1);
-		JLabel LB_SearchWhCd		= B100_FrameParts.JLabelSet(  0, 50,100,20,"倉庫コード:"		,11,1);
-		JLabel LB_SearchClGpCD		= B100_FrameParts.JLabelSet(  0, 75,100,20,"荷主グループ:"		,11,1);
+		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(  0, 25,100,20,SearchDefinition[T100_StockRt.ColSearchClCd][5]				+":"		,11,1);
+		JLabel LB_SearchWhCd		= B100_FrameParts.JLabelSet(  0, 50,100,20,SearchDefinition[T100_StockRt.ColSearchWhCd][5]				+":"		,11,1);
+		JLabel LB_SearchClGpCD		= B100_FrameParts.JLabelSet(  0, 75,100,20,SearchDefinition[T100_StockRt.ColSearchClGpCD][5]			+":"		,11,1);
 		
-		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(300, 25,100,20,"商品コード:"		,11,1);
-		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(300, 50,100,20,"商品名:"			,11,1);
-		JLabel LB_SearchClItemCd	= B100_FrameParts.JLabelSet(300, 75,100,20,"荷主商品コード:"	,11,1);
-		JLabel LB_SearchJanCd		= B100_FrameParts.JLabelSet(300,100,100,20,"BCD（バラ）:"		,11,1);
-		JLabel LB_SearchItemMdNo	= B100_FrameParts.JLabelSet(300,125,100,20,"商品型番:"			,11,1);
-		JLabel LB_SearchLot			= B100_FrameParts.JLabelSet(300,150,100,20,"ロット:"			,11,1);
-		JLabel LB_SearchExpdate		= B100_FrameParts.JLabelSet(300,175,100,20,"消費期限:"			,11,1);
-		JLabel LB_SearchActualDate	= B100_FrameParts.JLabelSet(300,200,100,20,"入荷実績日:"		,11,1);
+		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(300, 25,100,20,SearchDefinition[T100_StockRt.ColSearchItemCd][5]			+":"		,11,1);
+		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(300, 50,100,20,SearchDefinition[T100_StockRt.ColSearchItemName][5]			+":"		,11,1);
+		JLabel LB_SearchClItemCd	= B100_FrameParts.JLabelSet(300, 75,100,20,SearchDefinition[T100_StockRt.ColSearchClItemCd][5]			+":"		,11,1);
+		JLabel LB_SearchJanCd		= B100_FrameParts.JLabelSet(300,100,100,20,SearchDefinition[T100_StockRt.ColSearchJanCd][5]				+":"		,11,1);
+		JLabel LB_SearchItemMdNo	= B100_FrameParts.JLabelSet(300,125,100,20,SearchDefinition[T100_StockRt.ColSearchItemMdNo][5]			+":"		,11,1);
+		JLabel LB_SearchLot			= B100_FrameParts.JLabelSet(300,150,100,20,SearchDefinition[T100_StockRt.ColSearchLot][5]				+":"		,11,1);
+		JLabel LB_SearchExpdate		= B100_FrameParts.JLabelSet(300,175,100,20,SearchDefinition[T100_StockRt.ColSearchExpdateMin][5]		+":"		,11,1);
+		JLabel LB_SearchActualDate	= B100_FrameParts.JLabelSet(300,200,100,20,SearchDefinition[T100_StockRt.ColSearchActualDateMin][5]	+":"		,11,1);
 		
-		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(580, 25,100,20,"ロケーション:"		,11,1);
-		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(580, 50,100,20,"ロケタイプ:"		,11,1);
-		JLabel LB_SearchQty			= B100_FrameParts.JLabelSet(580, 75,100,20,"数量:"				,11,1);
-		JLabel LB_SearchShipPlanQty	= B100_FrameParts.JLabelSet(580,100,100,20,"引当済数:"			,11,1);
-		JLabel LB_SearchPossibleQty	= B100_FrameParts.JLabelSet(580,125,100,20,"出荷可能数:"		,11,1);
+		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(580, 25,100,20,SearchDefinition[T100_StockRt.ColSearchLoc][5]				+":"		,11,1);
+		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(580, 50,100,20,SearchDefinition[T100_StockRt.ColSearchType][5]				+":"		,11,1);
+		JLabel LB_SearchQty			= B100_FrameParts.JLabelSet(580, 75,100,20,SearchDefinition[T100_StockRt.ColSearchQtyMin][5]			+":"		,11,1);
+		JLabel LB_SearchShipPlanQty	= B100_FrameParts.JLabelSet(580,100,100,20,SearchDefinition[T100_StockRt.ColSearchShipPlanQtyMin][5]	+":"		,11,1);
+		JLabel LB_SearchPossibleQty	= B100_FrameParts.JLabelSet(580,125,100,20,SearchDefinition[T100_StockRt.ColSearchPossibleQtyMin][5]	+":"		,11,1);
 		
 		JLabel LB_SortItemcdMode	= B100_FrameParts.JLabelSet(660,175,100,20,"並び順:"			,11,1);
 		
@@ -414,14 +417,14 @@ public class WT100_Stock_00_Search{
 		LookUp_fm.add(LookUpExit_btn);
 		LookUp_fm.add(LookUpAdjust_btn);
 		
-		JLabel LB_LookUpWh					= B100_FrameParts.JLabelSet(  0, 50,130,20,"担当倉庫:"			,11,1);
-		JLabel LB_LookUpGp					= B100_FrameParts.JLabelSet(  0, 75,130,20,"荷主グループ:"		,11,1);
-		JLabel LB_LookUpCl					= B100_FrameParts.JLabelSet(  0,100,130,20,"荷主:"				,11,1);
-		JLabel LB_LookUpLoc					= B100_FrameParts.JLabelSet(  0,125,130,20,"ロケーション:"		,11,1);
-		JLabel LB_LookUpItem				= B100_FrameParts.JLabelSet(  0,150,130,20,"商品:"				,11,1);
-		JLabel LB_LookUpLot					= B100_FrameParts.JLabelSet(  0,175,130,20,"ロット:"			,11,1);
-		JLabel LB_LookUpExpdate				= B100_FrameParts.JLabelSet(  0,200,130,20,"消費期限:"			,11,1);
-		JLabel LB_LookUpActualDate			= B100_FrameParts.JLabelSet(  0,225,130,20,"入荷実績日:"		,11,1);
+		JLabel LB_LookUpWh					= B100_FrameParts.JLabelSet(  0, 50,130,20,RtStockRt[T100_StockRt.ColWhCd][3]			+":"	,11,1);
+		JLabel LB_LookUpGp					= B100_FrameParts.JLabelSet(  0, 75,130,20,RtStockRt[T100_StockRt.ColClGpName][3]	+":"	,11,1);
+		JLabel LB_LookUpCl					= B100_FrameParts.JLabelSet(  0,100,130,20,RtStockRt[T100_StockRt.ColClCd][3]			+":"	,11,1);
+		JLabel LB_LookUpLoc					= B100_FrameParts.JLabelSet(  0,125,130,20,RtStockRt[T100_StockRt.ColLoc][3]			+":"	,11,1);
+		JLabel LB_LookUpItem				= B100_FrameParts.JLabelSet(  0,150,130,20,RtStockRt[T100_StockRt.ColItemCd][3]		+":"	,11,1);
+		JLabel LB_LookUpLot					= B100_FrameParts.JLabelSet(  0,175,130,20,RtStockRt[T100_StockRt.ColLot][3]			+":"	,11,1);
+		JLabel LB_LookUpExpdate				= B100_FrameParts.JLabelSet(  0,200,130,20,RtStockRt[T100_StockRt.ColExpdate][3]		+":"	,11,1);
+		JLabel LB_LookUpActualDate			= B100_FrameParts.JLabelSet(  0,225,130,20,RtStockRt[T100_StockRt.ColActualDate][3]	+":"	,11,1);
 		final JLabel  TB_LookUpWh						= B100_FrameParts.JLabelSet(130, 50,300,20,""		,12,0);
 		final JLabel  TB_LookUpGp						= B100_FrameParts.JLabelSet(130, 75,300,20,""		,12,0);
 		final JLabel  TB_LookUpCl						= B100_FrameParts.JLabelSet(130,100,300,20,""		,12,0);
@@ -433,20 +436,20 @@ public class WT100_Stock_00_Search{
 		final JTextField  TB_LookUpActualDate			= B100_FrameParts.JTextFieldSet(130,225,100,20,""	,12,0);
 		
 		
-		JLabel LB_LookUpPlUnitQty			= B100_FrameParts.JLabelSet(430,175,130,20,"パレット入り数:"	,11,1);
-		JLabel LB_LookUpCsUnitQty			= B100_FrameParts.JLabelSet(430,200,130,20,"ケース入り数:"		,11,1);
-		JLabel LB_LookUpCtUnitQty			= B100_FrameParts.JLabelSet(430,225,130,20,"カートン入り数:"	,11,1);
+		JLabel LB_LookUpPlUnitQty			= B100_FrameParts.JLabelSet(430,175,130,20,RtStockRt[T100_StockRt.ColPlUnitQty][3]	+":"	,11,1);
+		JLabel LB_LookUpCsUnitQty			= B100_FrameParts.JLabelSet(430,200,130,20,RtStockRt[T100_StockRt.ColCsUnitQty][3]	+":"	,11,1);
+		JLabel LB_LookUpCtUnitQty			= B100_FrameParts.JLabelSet(430,225,130,20,RtStockRt[T100_StockRt.ColCtUnitQty][3]	+":"	,11,1);
 		final JLabel  TB_LookUpPlUnitQty			= B100_FrameParts.JLabelSet(560,175,100,20,""			,12,1);
 		final JLabel  TB_LookUpCsUnitQty			= B100_FrameParts.JLabelSet(560,200,100,20,""			,12,1);
 		final JLabel  TB_LookUpCtUnitQty			= B100_FrameParts.JLabelSet(560,225,100,20,""			,12,1);
 		
-		JLabel LB_LookUpQtyTitle			= B100_FrameParts.JLabelSet(  0,300,130,20,"バラ換算総数:"		,11,1);
-		JLabel LB_LookUpPlQtyTitle			= B100_FrameParts.JLabelSet(  0,350,130,20,"パレット数量:"		,11,1);
-		JLabel LB_LookUpCsQtyTitle			= B100_FrameParts.JLabelSet(  0,375,130,20,"カートン数量:"		,11,1);
-		JLabel LB_LookUpCtQtyTitle			= B100_FrameParts.JLabelSet(  0,400,130,20,"ケース数量:"		,11,1);
-		JLabel LB_LookUpBrQtyTitle			= B100_FrameParts.JLabelSet(  0,425,130,20,"バラ数量:"			,11,1);
+		JLabel LB_LookUpQtyTitle			= B100_FrameParts.JLabelSet(  0,300,130,20,RtStockRt[T100_StockRt.ColQty][3]		+":"		,11,1);
+		JLabel LB_LookUpPlQtyTitle			= B100_FrameParts.JLabelSet(  0,350,130,20,RtStockRt[T100_StockRt.ColPlQty][3]	+":"		,11,1);
+		JLabel LB_LookUpCsQtyTitle			= B100_FrameParts.JLabelSet(  0,375,130,20,RtStockRt[T100_StockRt.ColCsQty][3]	+":"		,11,1);
+		JLabel LB_LookUpCtQtyTitle			= B100_FrameParts.JLabelSet(  0,400,130,20,RtStockRt[T100_StockRt.ColCtQty][3]	+":"		,11,1);
+		JLabel LB_LookUpBrQtyTitle			= B100_FrameParts.JLabelSet(  0,425,130,20,RtStockRt[T100_StockRt.ColBrQty][3]	+":"		,11,1);
 		
-		JLabel LB_LookUpQtyTtalTitle		= B100_FrameParts.JLabelSet(130,275,100,20,"総数量"			,11,2);
+		JLabel LB_LookUpQtyTtalTitle		= B100_FrameParts.JLabelSet(130,275,100,20,RtStockRt[T100_StockRt.ColQty][3]		+""			,11,2);
 		final JTextField  TB_LookUpQty					= B100_FrameParts.JTextFieldSet(130,300,100,20,""	,12,1);
 		final JTextField  TB_LookUpPlQty				= B100_FrameParts.JTextFieldSet(130,350,100,20,""	,12,1);
 		final JTextField  TB_LookUpCsQty				= B100_FrameParts.JTextFieldSet(130,375,100,20,""	,12,1);
@@ -458,7 +461,7 @@ public class WT100_Stock_00_Search{
 		final JLabel  TB_LookUpCtQtyUN				= B100_FrameParts.JLabelSet(230,400, 80,20,""			,12,0);
 		final JLabel  TB_LookUpBrQtyUN				= B100_FrameParts.JLabelSet(230,425, 80,20,""			,12,0);
 		
-		JLabel LB_LookUpPossibleQtyTitle	= B100_FrameParts.JLabelSet(310,275,100,20,"出荷可能数"		,11,2);
+		JLabel LB_LookUpShipPlanQtyTitle	= B100_FrameParts.JLabelSet(310,275,100,20,RtStockRt[T100_StockRt.ColShipPlanQty][3]		+""			,11,2);
 		final JTextField  TB_LookUpShipPlanQty			= B100_FrameParts.JTextFieldSet(310,300,100,20,""	,12,1);
 		final JTextField  TB_LookUpPlShipPlanQty		= B100_FrameParts.JTextFieldSet(310,350,100,20,""	,12,1);
 		final JTextField  TB_LookUpCsShipPlanQty		= B100_FrameParts.JTextFieldSet(310,375,100,20,""	,12,1);
@@ -471,7 +474,7 @@ public class WT100_Stock_00_Search{
 		final JLabel  TB_LookUpBrQShipPlanQtyUN		= B100_FrameParts.JLabelSet(410,425, 80,20,""			,12,0);
 		
 		
-		JLabel LB_LookUpShipPlanQtyTitle	= B100_FrameParts.JLabelSet(490,275,100,20,"引当済数"			,11,2);
+		JLabel LB_LookUpPossibleQtyTitle	= B100_FrameParts.JLabelSet(490,275,100,20,RtStockRt[T100_StockRt.ColPossibleQty][3]		+""		,11,2);
 		final JTextField  TB_LookUpPossibleQty			= B100_FrameParts.JTextFieldSet(490,300,100,20,""	,12,1);
 		final JTextField  TB_LookUpPlPossibleQty		= B100_FrameParts.JTextFieldSet(490,350,100,20,""	,12,1);
 		final JTextField  TB_LookUptCsPossibleQty		= B100_FrameParts.JTextFieldSet(490,375,100,20,""	,12,1);
@@ -483,10 +486,10 @@ public class WT100_Stock_00_Search{
 		final JLabel  TB_LookUpCtPossibleQtyUN		= B100_FrameParts.JLabelSet(590,400, 80,20,""			,12,0);
 		final JLabel  TB_LookUpBrPossibleQtyUN		= B100_FrameParts.JLabelSet(590,425, 80,20,""			,12,0);
 		
-		JLabel LB_LookUpEntryDate			= B100_FrameParts.JLabelSet(  0,550,130,20,"登録日時:"			,11,1);
-		JLabel LB_LookUpUpdateDate			= B100_FrameParts.JLabelSet(  0,575,130,20,"更新日時:"			,11,1);
-		JLabel LB_LookUpEntryUser			= B100_FrameParts.JLabelSet(380,550,130,20,"登録者:"			,11,1);
-		JLabel LB_LookUpUpdateUser			= B100_FrameParts.JLabelSet(380,575,130,20,"更新者:"			,11,1);
+		JLabel LB_LookUpEntryDate			= B100_FrameParts.JLabelSet(  0,550,130,20,RtStockRt[T100_StockRt.ColEntryDate][3]		+":"	,11,1);
+		JLabel LB_LookUpUpdateDate			= B100_FrameParts.JLabelSet(  0,575,130,20,RtStockRt[T100_StockRt.ColUpdateDate][3]		+":"	,11,1);
+		JLabel LB_LookUpEntryUser			= B100_FrameParts.JLabelSet(380,550,130,20,RtStockRt[T100_StockRt.ColEntryUser][3]		+":"	,11,1);
+		JLabel LB_LookUpUpdateUser			= B100_FrameParts.JLabelSet(380,575,130,20,RtStockRt[T100_StockRt.ColUpdateUser][3]		+":"	,11,1);
 		final JLabel  TB_LookUpEntryDate			= B100_FrameParts.JLabelSet(130,550,250,20,""			,12,0);
 		final JLabel  TB_LookUpUpdateDate			= B100_FrameParts.JLabelSet(130,575,250,20,""			,12,0);
 		final JLabel  TB_LookUpEntryUser			= B100_FrameParts.JLabelSet(510,550,250,20,""			,12,0);

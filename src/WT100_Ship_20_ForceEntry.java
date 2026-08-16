@@ -2263,6 +2263,7 @@ public class WT100_Ship_20_ForceEntry{
 						&& CheckExpdate.equals(GetExpdate)
 						&& CheckActualDate.equals(GetActualDate)
 						) {
+					
 					UnHitFg = false;
 					if(CheckQty>GetPossibleQty) {
 						ErrMsg.add("ロケ:"+CheckLoc+" 商品:("+CheckItemCd+")"+CheckItemName+" ロット:"+CheckLot+" 賞味期限:"+CheckExpdate+" 入荷日:"+CheckActualDate+"の在庫が変化しているようです在庫不足で強制出荷できません");

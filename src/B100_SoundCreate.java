@@ -4,6 +4,18 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
 public class B100_SoundCreate{
+	/************************************************************************************
+	B100_SoundCreate(Pan/羊飼いは暢気に草笛を鳴らす)
+	音源の配布無しで音を鳴らす目的で作成
+	B100_SoundCreate.OK();		//OK音
+	B100_SoundCreate.NG();		//NG音
+	B100_SoundCreate.Alert();	//警告音
+	B100_SoundCreate.LVUP():	//到達音
+	
+	G,7 E,5 や　Do,7 Mi,5等で指定して短音で任意の曲作れます
+	作者に音楽の才能は無いみたいです
+	
+	************************************************************************************/
 	static final double NS   = 0;		//無音
     
 	static final double C   	= 32.703;	//ド		
@@ -283,6 +295,7 @@ public class B100_SoundCreate{
 	    }
 		return buffer;
 	}
+	
 	private static void SoundCall(byte[][] bufferList){
 		AudioFormat format = new AudioFormat(44100,16, 1, true, false);
         SourceDataLine line;

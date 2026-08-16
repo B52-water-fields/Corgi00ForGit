@@ -35,6 +35,9 @@ public class A00001_MainMenu{
 		//倍率変更ボタン
 		JButton Magnification_btn	=B100_FrameParts.BtnSet(	430,40,120,20,"倍率変更",11);
 		main_fm.add(Magnification_btn);
+		//言語選択ボタン
+		JButton LanguageSelect_btn	=B100_FrameParts.BtnSet(	430,65,120,20,"言語選択",11);
+		main_fm.add(LanguageSelect_btn);
 		
 		//業務メニューボタン押下時の挙動
 		Work_btn.addActionListener(new AbstractAction(){
@@ -82,6 +85,19 @@ public class A00001_MainMenu{
 				main_fm.dispose();
 				
 				B100_Magnification.Magnification(0,0);
+			}
+		});
+		
+		//言語選択ボタン押下時の挙動
+		LanguageSelect_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				
+				B100_LanguageControl.LanguageSelect(0,0);
 			}
 		});
 

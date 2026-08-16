@@ -161,6 +161,7 @@ public class T100_StockMoveRt{
 			String GetUpdateUser			= (String)StockMoveRt[i][T100_StockMoveRt.ColUpdateUser];			//更新者
 	*/
 	
+	//戻り値カラム
 	static final int ColMoveNo						= 0;	//調整番号
 	static final int ColFromLocName				= 1;	//移動元ロケーション名
 	static final int ColToLocName					= 2;	//移動先ロケーション名
@@ -205,8 +206,57 @@ public class T100_StockMoveRt{
 	static final int ColCLName						=41;	//荷主名
 	static final int ColWhCd						=42;	//倉庫コード
 	static final int ColClWHName					=43;	//担当倉庫名
-	
-	
+
+	//検索値カラム
+	static final int ColSearchClCd						= 0;	//荷主コード
+	static final int ColSearchCLName						= 1;	//荷主名
+	static final int ColSearchWhCd						= 2;	//倉庫コード
+	static final int ColSearchClWHName					= 3;	//担当倉庫名
+	static final int ColSearchMoveNo						= 4;	//調整番号
+	static final int ColSearchFromLoc						= 5;	//移動元ロケ
+	static final int ColSearchFromLocName				= 6;	//移動元ロケーション名
+	static final int ColSearchToLoc						= 7;	//移動先ロケ
+	static final int ColSearchToLocName					= 8;	//移動先ロケーション名
+	static final int ColSearchItemCd						= 9;	//商品CD
+	static final int ColSearchItemName					=10;	//商品名
+	static final int ColSearchLot							=11;	//ロット
+	static final int ColSearchExpDateMin					=12;	//賞味期限開始
+	static final int ColSearchExpDateMax					=13;	//賞味期限終了
+	static final int ColSearchActualDateMin				=14;	//入荷日最小
+	static final int ColSearchActualDateMax				=15;	//入荷日最大
+	static final int ColSearchBeforeFromQtyMin			=16;	//（移動前）移動元在庫数最小
+	static final int ColSearchBeforeFromPlanQtyMin		=17;	//（移動前）移動元引当済数最小
+	static final int ColSearchBeforeFromPossibleQtyMin	=18;	//（移動前）移動元出荷可能数最小
+	static final int ColSearchBeforeToQtyMin				=19;	//（移動前）移動先在庫数最小
+	static final int ColSearchBeforeToPlanQtyMin		=20;	//（移動前）移動先引当済数最小
+	static final int ColSearchBeforeToPossibleQtyMin	=21;	//（移動前）移動先出荷可能数最小
+	static final int ColSearchMoveQtyMin					=22;	//移動数最小
+	static final int ColSearchAfterFromQtyMin			=23;	//（移動後）移動元在庫数最小
+	static final int ColSearchAfterFromPlanQtyMin		=24;	//（移動後）移動元引当済数最小
+	static final int ColSearchAfterFromPossibleQtyMin	=25;	//（移動後）移動元出荷可能数最小
+	static final int ColSearchAfterToQtyMin				=26;	//（移動後）移動先在庫数最小
+	static final int ColSearchAfterToPlanQtyMin			=27;	//（移動後）移動先引当済数最小
+	static final int ColSearchAfterToPossibleQtyMin	=28;	//（移動後）移動先出荷可能数最小
+	static final int ColSearchBeforeFromQtyMax			=29;	//（移動前）移動元在庫数最大
+	static final int ColSearchBeforeFromPlanQtyMax		=30;	//（移動前）移動元引当済数最大
+	static final int ColSearchBeforeFromPossibleQtyMax	=31;	//（移動前）移動元出荷可能数最大
+	static final int ColSearchBeforeToQtyMax				=32;	//（移動前）移動先在庫数最大
+	static final int ColSearchBeforeToPlanQtyMax		=33;	//（移動前）移動先引当済数最大
+	static final int ColSearchBeforeToPossibleQtyMax	=34;	//（移動前）移動先出荷可能数最大
+	static final int ColSearchMoveQtyMax					=35;	//移動数最大
+	static final int ColSearchAfterFromQtyMax			=36;	//（移動後）移動元在庫数最大
+	static final int ColSearchAfterFromPlanQtyMax		=37;	//（移動後）移動元引当済数最大
+	static final int ColSearchAfterFromPossibleQtyMax	=38;	//（移動後）移動元出荷可能数最大
+	static final int ColSearchAfterToQtyMax				=39;	//（移動後）移動先在庫数最大
+	static final int ColSearchAfterToPlanQtyMax			=40;	//（移動後）移動先引当済数最大
+	static final int ColSearchAfterToPossibleQtyMax	=41;	//（移動後）移動先出荷可能数最大
+	static final int ColSearchMoveCom						=42;	//移動コメント
+	static final int ColSearchEntryDateMin				=43;	//登録日開始
+	static final int ColSearchUpdateDateMin				=44;	//更新日開始
+	static final int ColSearchEntryDateMax				=45;	//登録日最大
+	static final int ColSearchUpdateDateMax				=46;	//更新日最大
+	static final int ColSearchEntryUser					=47;	//登録者
+	static final int ColSearchUpdateUser					=48;	//更新者
 	
 	public static Object[][] RtStockMoveRt(){
 		Object[][] RtStockMoveRt = {
@@ -258,7 +308,6 @@ public class T100_StockMoveRt{
 		return RtStockMoveRt;
 	}
 	
-	
 	public static Object[][] StockMoveRt(
 			ArrayList<String> SearchClCd,						//荷主コード
 			ArrayList<String> SearchCLName,						//荷主名
@@ -272,8 +321,8 @@ public class T100_StockMoveRt{
 			ArrayList<String> SearchItemCd,						//商品CD
 			ArrayList<String> SearchItemName,					//商品名
 			ArrayList<String> SearchLot,						//ロット
-			ArrayList<String> SearchExpDateMin,					//賞味期限最小
-			ArrayList<String> SearchExpDateMax,					//賞味期限最大
+			ArrayList<String> SearchExpDateMin,					//賞味期限開始
+			ArrayList<String> SearchExpDateMax,					//賞味期限終了
 			ArrayList<String> SearchActualDateMin,				//入荷日最小
 			ArrayList<String> SearchActualDateMax,				//入荷日最大
 			ArrayList<Integer> SearchBeforeFromQtyMin,			//（移動前）移動元在庫数最小
@@ -303,8 +352,8 @@ public class T100_StockMoveRt{
 			ArrayList<Integer> SearchAfterToPlanQtyMax,			//（移動後）移動先引当済数最大
 			ArrayList<Integer> SearchAfterToPossibleQtyMax,		//（移動後）移動先出荷可能数最大
 			ArrayList<String> SearchMoveCom,					//移動コメント
-			ArrayList<String> SearchEntryDateMin,				//登録日最小
-			ArrayList<String> SearchUpdateDateMin,				//更新日最小
+			ArrayList<String> SearchEntryDateMin,				//登録日開始
+			ArrayList<String> SearchUpdateDateMin,				//更新日開始
 			ArrayList<String> SearchEntryDateMax,				//登録日最大
 			ArrayList<String> SearchUpdateDateMax,				//更新日最大
 			ArrayList<String> SearchEntryUser,					//登録者
@@ -313,65 +362,329 @@ public class T100_StockMoveRt{
 			boolean ToLocExactMatch,							//Toロケーション完全一致
 			boolean AllSearch){
 		
+		Object[][] Definition = {
+				 {"String"		,SearchClCd						,"Exact"			,ColSearchClCd						,B100_DefaultVariable.SearchClList	,"荷主コード"					,""}
+				,{"String"		,SearchCLName					,"Partial"			,ColSearchCLName						,""										,"荷主名"						,""}
+				,{"String"		,SearchWhCd						,"Exact"			,ColSearchWhCd						,B100_DefaultVariable.SearchWhList	,"倉庫コード"					,""}
+				,{"String"		,SearchClWHName					,"Partial"			,ColSearchClWHName					,""										,"担当倉庫名"					,""}
+				,{"String"		,SearchMoveNo					,"Exact"			,ColSearchMoveNo						,""										,"調整番号"						,""}
+				,{"String"		,SearchFromLoc					,"ExactOrPrefix"	,ColSearchFromLoc						,""										,"移動元ロケ"					,""}
+				,{"String"		,SearchFromLocName				,"Partial"			,ColSearchFromLocName				,""										,"移動元ロケーション名"			,""}
+				,{"String"		,SearchToLoc					,"ExactOrPrefix"	,ColSearchToLoc						,""										,"移動先ロケ"					,""}
+				,{"String"		,SearchToLocName				,"Partial"			,ColSearchToLocName					,""										,"移動先ロケーション名"			,""}
+				,{"String"		,SearchItemCd					,"Exact"			,ColSearchItemCd						,""										,"商品CD"						,""}
+				,{"String"		,SearchItemName					,"Partial"			,ColSearchItemName					,""										,"商品名"						,""}
+				,{"String"		,SearchLot						,"Exact"			,ColSearchLot							,""										,"ロット"						,""}
+				,{"Date"		,SearchExpDateMin				,"RangeStr"			,ColSearchExpDateMin					,""										,"賞味期限"						,"開始"}
+				,{"Date"		,SearchExpDateMax				,"RangeEnd"			,ColSearchExpDateMax					,""										,"賞味期限"						,"終了"}
+				,{"Date"		,SearchActualDateMin			,"RangeStr"			,ColSearchActualDateMin				,""										,"入荷日最小"					,""}
+				,{"Date"		,SearchActualDateMax			,"RangeEnd"			,ColSearchActualDateMax				,""										,"入荷日最大"					,""}
+				,{"Integer"		,SearchBeforeFromQtyMin			,"RangeMin"			,ColSearchBeforeFromQtyMin			,""										,"（移動前）移動元在庫数"		,"最小"}
+				,{"Integer"		,SearchBeforeFromPlanQtyMin		,"RangeMin"			,ColSearchBeforeFromPlanQtyMin		,""										,"（移動前）移動元引当済数"		,"最小"}
+				,{"Integer"		,SearchBeforeFromPossibleQtyMin	,"RangeMin"			,ColSearchBeforeFromPossibleQtyMin	,""										,"（移動前）移動元出荷可能数"	,"最小"}
+				,{"Integer"		,SearchBeforeToQtyMin			,"RangeMin"			,ColSearchBeforeToQtyMin				,""										,"（移動前）移動先在庫数"		,"最小"}
+				,{"Integer"		,SearchBeforeToPlanQtyMin		,"RangeMin"			,ColSearchBeforeToPlanQtyMin		,""										,"（移動前）移動先引当済数"		,"最小"}
+				,{"Integer"		,SearchBeforeToPossibleQtyMin	,"RangeMin"			,ColSearchBeforeToPossibleQtyMin	,""										,"（移動前）移動先出荷可能数"	,"最小"}
+				,{"Integer"		,SearchMoveQtyMin				,"RangeMin"			,ColSearchMoveQtyMin					,""										,"移動数最小"	,""}
+				,{"Integer"		,SearchAfterFromQtyMin			,"RangeMin"			,ColSearchAfterFromQtyMin			,""										,"（移動後）移動元在庫数"		,"最小"}
+				,{"Integer"		,SearchAfterFromPlanQtyMin		,"RangeMin"			,ColSearchAfterFromPlanQtyMin		,""										,"（移動後）移動元引当済数"		,"最小"}
+				,{"Integer"		,SearchAfterFromPossibleQtyMin	,"RangeMin"			,ColSearchAfterFromPossibleQtyMin	,""										,"（移動後）移動元出荷可能数"	,"最小"}
+				,{"Integer"		,SearchAfterToQtyMin			,"RangeMin"			,ColSearchAfterToQtyMin				,""										,"（移動後）移動先在庫数"		,"最小"}
+				,{"Integer"		,SearchAfterToPlanQtyMin		,"RangeMin"			,ColSearchAfterToPlanQtyMin			,""										,"（移動後）移動先引当済数"		,"最小"}
+				,{"Integer"		,SearchAfterToPossibleQtyMin	,"RangeMin"			,ColSearchAfterToPossibleQtyMin	,""										,"（移動後）移動先出荷可能数"	,"最小"}
+				,{"Integer"		,SearchBeforeFromQtyMax			,"RangeMax"			,ColSearchBeforeFromQtyMax			,""										,"（移動前）移動元在庫数"		,"最大"}
+				,{"Integer"		,SearchBeforeFromPlanQtyMax		,"RangeMax"			,ColSearchBeforeFromPlanQtyMax		,""										,"（移動前）移動元引当済数"		,"最大"}
+				,{"Integer"		,SearchBeforeFromPossibleQtyMax	,"RangeMax"			,ColSearchBeforeFromPossibleQtyMax	,""										,"（移動前）移動元出荷可能数"	,"最大"}
+				,{"Integer"		,SearchBeforeToQtyMax			,"RangeMax"			,ColSearchBeforeToQtyMax				,""										,"（移動前）移動先在庫数"		,"最大"}
+				,{"Integer"		,SearchBeforeToPlanQtyMax		,"RangeMax"			,ColSearchBeforeToPlanQtyMax		,""										,"（移動前）移動先引当済数"		,"最大"}
+				,{"Integer"		,SearchBeforeToPossibleQtyMax	,"RangeMax"			,ColSearchBeforeToPossibleQtyMax	,""										,"（移動前）移動先出荷可能数"	,"最大"}
+				,{"Integer"		,SearchMoveQtyMax				,"RangeMax"			,ColSearchMoveQtyMax					,""										,"移動数最大"	,""}
+				,{"Integer"		,SearchAfterFromQtyMax			,"RangeMax"			,ColSearchAfterFromQtyMax			,""										,"（移動後）移動元在庫数"		,"最大"}
+				,{"Integer"		,SearchAfterFromPlanQtyMax		,"RangeMax"			,ColSearchAfterFromPlanQtyMax		,""										,"（移動後）移動元引当済数"		,"最大"}
+				,{"Integer"		,SearchAfterFromPossibleQtyMax	,"RangeMax"			,ColSearchAfterFromPossibleQtyMax	,""										,"（移動後）移動元出荷可能数"	,"最大"}
+				,{"Integer"		,SearchAfterToQtyMax			,"RangeMax"			,ColSearchAfterToQtyMax				,""										,"（移動後）移動先在庫数"		,"最大"}
+				,{"Integer"		,SearchAfterToPlanQtyMax		,"RangeMax"			,ColSearchAfterToPlanQtyMax			,""										,"（移動後）移動先引当済数"		,"最大"}
+				,{"Integer"		,SearchAfterToPossibleQtyMax	,"RangeMax"			,ColSearchAfterToPossibleQtyMax	,""										,"（移動後）移動先出荷可能数"	,"最大"}
+				,{"String"		,SearchMoveCom					,"Partial"			,ColSearchMoveCom						,""										,"移動コメント"					,""}
+				,{"DateTime"	,SearchEntryDateMin				,"RangeStr"			,ColSearchEntryDateMin				,""										,"登録日開始"					,""}
+				,{"DateTime"	,SearchUpdateDateMin			,"RangeStr"			,ColSearchUpdateDateMin				,""										,"更新日開始"					,""}
+				,{"DateTime"	,SearchEntryDateMax				,"RangeEnd"			,ColSearchEntryDateMax				,""										,"登録日最大"					,""}
+				,{"DateTime"	,SearchUpdateDateMax			,"RangeEnd"			,ColSearchUpdateDateMax				,""										,"更新日最大"					,""}
+				,{"String"		,SearchEntryUser				,"Partial"			,ColSearchEntryUser					,""										,"登録者"						,""}
+				,{"String"		,SearchUpdateUser				,"Partial"			,ColSearchUpdateUser					,""										,"更新者"						,""}
+				};
 		
-		SearchClCd						= B100_ArrayListControl.ArryListStringUniqueList(SearchClCd);						//荷主コード
-		SearchCLName					= B100_ArrayListControl.ArryListStringUniqueList(SearchCLName);						//荷主名
-		SearchWhCd						= B100_ArrayListControl.ArryListStringUniqueList(SearchWhCd);						//倉庫コード
-		SearchClWHName					= B100_ArrayListControl.ArryListStringUniqueList(SearchClWHName);					//担当倉庫名
-		SearchMoveNo					= B100_ArrayListControl.ArryListStringUniqueList(SearchMoveNo);						//調整番号
-		SearchFromLoc					= B100_ArrayListControl.ArryListStringUniqueList(SearchFromLoc);					//移動元ロケ
-		SearchFromLocName				= B100_ArrayListControl.ArryListStringUniqueList(SearchFromLocName);				//移動元ロケーション名
-		SearchToLoc						= B100_ArrayListControl.ArryListStringUniqueList(SearchToLoc);						//移動先ロケ
-		SearchToLocName					= B100_ArrayListControl.ArryListStringUniqueList(SearchToLocName);					//移動先ロケーション名
-		SearchItemCd					= B100_ArrayListControl.ArryListStringUniqueList(SearchItemCd);						//商品CD
-		SearchItemName					= B100_ArrayListControl.ArryListStringUniqueList(SearchItemName);					//商品名
-		SearchLot						= B100_ArrayListControl.ArryListStringUniqueList(SearchLot);						//ロット
-		SearchExpDateMin				= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMin);					//賞味期限最小
-		SearchExpDateMax				= B100_ArrayListControl.ArryListStringUniqueList(SearchExpDateMax);					//賞味期限最大
-		SearchActualDateMin				= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMin);				//入荷日最小
-		SearchActualDateMax				= B100_ArrayListControl.ArryListStringUniqueList(SearchActualDateMax);				//入荷日最大
-		SearchBeforeFromQtyMin			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeFromQtyMin);			//（移動前）移動元在庫数最小
-		SearchBeforeFromPlanQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeFromPlanQtyMin);		//（移動前）移動元引当済数最小
-		SearchBeforeFromPossibleQtyMin	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeFromPossibleQtyMin);	//（移動前）移動元出荷可能数最小
-		SearchBeforeToQtyMin			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeToQtyMin);			//（移動前）移動先在庫数最小
-		SearchBeforeToPlanQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeToPlanQtyMin);		//（移動前）移動先引当済数最小
-		SearchBeforeToPossibleQtyMin	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeToPossibleQtyMin);	//（移動前）移動先出荷可能数最小
-		SearchMoveQtyMin				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchMoveQtyMin);				//移動数最小
-		SearchAfterFromQtyMin			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterFromQtyMin);			//（移動後）移動元在庫数最小
-		SearchAfterFromPlanQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterFromPlanQtyMin);		//（移動後）移動元引当済数最小
-		SearchAfterFromPossibleQtyMin	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterFromPossibleQtyMin);	//（移動後）移動元出荷可能数最小
-		SearchAfterToQtyMin				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterToQtyMin);				//（移動後）移動先在庫数最小
-		SearchAfterToPlanQtyMin			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterToPlanQtyMin);			//（移動後）移動先引当済数最小
-		SearchAfterToPossibleQtyMin		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterToPossibleQtyMin);		//（移動後）移動先出荷可能数最小
-		SearchBeforeFromQtyMax			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeFromQtyMax);			//（移動前）移動元在庫数最大
-		SearchBeforeFromPlanQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeFromPlanQtyMax);		//（移動前）移動元引当済数最大
-		SearchBeforeFromPossibleQtyMax	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeFromPossibleQtyMax);	//（移動前）移動元出荷可能数最大
-		SearchBeforeToQtyMax			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeToQtyMax);			//（移動前）移動先在庫数最大
-		SearchBeforeToPlanQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeToPlanQtyMax);		//（移動前）移動先引当済数最大
-		SearchBeforeToPossibleQtyMax	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchBeforeToPossibleQtyMax);	//（移動前）移動先出荷可能数最大
-		SearchMoveQtyMax				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchMoveQtyMax);				//移動数最大
-		SearchAfterFromQtyMax			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterFromQtyMax);			//（移動後）移動元在庫数最大
-		SearchAfterFromPlanQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterFromPlanQtyMax);		//（移動後）移動元引当済数最大
-		SearchAfterFromPossibleQtyMax	= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterFromPossibleQtyMax);	//（移動後）移動元出荷可能数最大
-		SearchAfterToQtyMax				= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterToQtyMax);				//（移動後）移動先在庫数最大
-		SearchAfterToPlanQtyMax			= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterToPlanQtyMax);			//（移動後）移動先引当済数最大
-		SearchAfterToPossibleQtyMax		= B100_ArrayListControl.ArryListIntegerUniqueList(SearchAfterToPossibleQtyMax);		//（移動後）移動先出荷可能数最大
-		SearchMoveCom					= B100_ArrayListControl.ArryListStringUniqueList(SearchMoveCom);					//移動コメント
-		SearchEntryDateMin				= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryDateMin);				//登録日最小
-		SearchUpdateDateMin				= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMin);				//更新日最小
-		SearchEntryDateMax				= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryDateMax);				//登録日最大
-		SearchUpdateDateMax				= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateDateMax);				//更新日最大
-		SearchEntryUser					= B100_ArrayListControl.ArryListStringUniqueList(SearchEntryUser);					//登録者
-		SearchUpdateUser				= B100_ArrayListControl.ArryListStringUniqueList(SearchUpdateUser);					//更新者
+		/*
+		日付系検索最小は念のため00:00:00扱い
+		日付系検索項目最大は一日進めて00:00:00扱い
+		検索条件の重複除去
+		*/
+		Definition	= B100_ArraySearchControl.SearchDefinitionControl(Definition);
 		
-		//日付系最小は念のため00:00:00扱い
-		SearchExpDateMin 	= B100_ArrayListControl.DateOnlySet(SearchExpDateMin);	
-		SearchActualDateMin = B100_ArrayListControl.DateOnlySet(SearchActualDateMin);	
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					SearchClCd								= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchCLName:	
+					SearchCLName							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchWhCd:	
+					SearchWhCd								= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchClWHName:	
+					SearchClWHName							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchMoveNo:	
+					SearchMoveNo							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFromLoc:	
+					SearchFromLoc							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchFromLocName:	
+					SearchFromLocName						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchToLoc:	
+					SearchToLoc								= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchToLocName:	
+					SearchToLocName							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemCd:	
+					SearchItemCd							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchItemName:	
+					SearchItemName							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchLot:	
+					SearchLot								= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchExpDateMin:	
+					SearchExpDateMin						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchExpDateMax:	
+					SearchExpDateMax						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchActualDateMin:	
+					SearchActualDateMin						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchActualDateMax:	
+					SearchActualDateMax						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchBeforeFromQtyMin:	
+					SearchBeforeFromQtyMin					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeFromPlanQtyMin:	
+					SearchBeforeFromPlanQtyMin				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeFromPossibleQtyMin:	
+					SearchBeforeFromPossibleQtyMin			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeToQtyMin:	
+					SearchBeforeToQtyMin					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeToPlanQtyMin:	
+					SearchBeforeToPlanQtyMin				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeToPossibleQtyMin:	
+					SearchBeforeToPossibleQtyMin			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchMoveQtyMin:	
+					SearchMoveQtyMin						= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterFromQtyMin:	
+					SearchAfterFromQtyMin					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterFromPlanQtyMin:	
+					SearchAfterFromPlanQtyMin				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterFromPossibleQtyMin:	
+					SearchAfterFromPossibleQtyMin			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterToQtyMin:	
+					SearchAfterToQtyMin						= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterToPlanQtyMin:	
+					SearchAfterToPlanQtyMin					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterToPossibleQtyMin:	
+					SearchAfterToPossibleQtyMin				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeFromQtyMax:	
+					SearchBeforeFromQtyMax					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeFromPlanQtyMax:	
+					SearchBeforeFromPlanQtyMax				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeFromPossibleQtyMax:	
+					SearchBeforeFromPossibleQtyMax			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeToQtyMax:	
+					SearchBeforeToQtyMax					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeToPlanQtyMax:	
+					SearchBeforeToPlanQtyMax				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchBeforeToPossibleQtyMax:	
+					SearchBeforeToPossibleQtyMax			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchMoveQtyMax:	
+					SearchMoveQtyMax						= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterFromQtyMax:	
+					SearchAfterFromQtyMax					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterFromPlanQtyMax:	
+					SearchAfterFromPlanQtyMax				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterFromPossibleQtyMax:	
+					SearchAfterFromPossibleQtyMax			= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterToQtyMax:	
+					SearchAfterToQtyMax						= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterToPlanQtyMax:	
+					SearchAfterToPlanQtyMax					= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchAfterToPossibleQtyMax:	
+					SearchAfterToPossibleQtyMax				= (ArrayList<Integer>)Definition[i][1];
+					break;
+				case ColSearchMoveCom:	
+					SearchMoveCom							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryDateMin:	
+					SearchEntryDateMin						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateDateMin:	
+					SearchUpdateDateMin						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryDateMax:	
+					SearchEntryDateMax						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateDateMax:	
+					SearchUpdateDateMax						= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchEntryUser:	
+					SearchEntryUser							= (ArrayList<String>)Definition[i][1];
+					break;
+				case ColSearchUpdateUser:	
+					SearchUpdateUser						= (ArrayList<String>)Definition[i][1];
+					break;
+				default:
+					break;
+			}
+		}
+		Object[][] Rt	= StockMoveRtMain(
+				SearchClCd,							//荷主コード
+				SearchCLName,						//荷主名
+				SearchWhCd,							//倉庫コード
+				SearchClWHName,						//担当倉庫名
+				SearchMoveNo,						//調整番号
+				SearchFromLoc,						//移動元ロケ
+				SearchFromLocName,					//移動元ロケーション名
+				SearchToLoc,						//移動先ロケ
+				SearchToLocName,					//移動先ロケーション名
+				SearchItemCd,						//商品CD
+				SearchItemName,						//商品名
+				SearchLot,							//ロット
+				SearchExpDateMin,					//賞味期限開始
+				SearchExpDateMax,					//賞味期限終了
+				SearchActualDateMin,				//入荷日最小
+				SearchActualDateMax,				//入荷日最大
+				SearchBeforeFromQtyMin,				//（移動前）移動元在庫数最小
+				SearchBeforeFromPlanQtyMin,			//（移動前）移動元引当済数最小
+				SearchBeforeFromPossibleQtyMin,		//（移動前）移動元出荷可能数最小
+				SearchBeforeToQtyMin,				//（移動前）移動先在庫数最小
+				SearchBeforeToPlanQtyMin,			//（移動前）移動先引当済数最小
+				SearchBeforeToPossibleQtyMin,		//（移動前）移動先出荷可能数最小
+				SearchMoveQtyMin,					//移動数最小
+				SearchAfterFromQtyMin,				//（移動後）移動元在庫数最小
+				SearchAfterFromPlanQtyMin,			//（移動後）移動元引当済数最小
+				SearchAfterFromPossibleQtyMin,		//（移動後）移動元出荷可能数最小
+				SearchAfterToQtyMin,				//（移動後）移動先在庫数最小
+				SearchAfterToPlanQtyMin,			//（移動後）移動先引当済数最小
+				SearchAfterToPossibleQtyMin,		//（移動後）移動先出荷可能数最小
+				SearchBeforeFromQtyMax,				//（移動前）移動元在庫数最大
+				SearchBeforeFromPlanQtyMax,			//（移動前）移動元引当済数最大
+				SearchBeforeFromPossibleQtyMax,		//（移動前）移動元出荷可能数最大
+				SearchBeforeToQtyMax,				//（移動前）移動先在庫数最大
+				SearchBeforeToPlanQtyMax,			//（移動前）移動先引当済数最大
+				SearchBeforeToPossibleQtyMax,		//（移動前）移動先出荷可能数最大
+				SearchMoveQtyMax,					//移動数最大
+				SearchAfterFromQtyMax,				//（移動後）移動元在庫数最大
+				SearchAfterFromPlanQtyMax,			//（移動後）移動元引当済数最大
+				SearchAfterFromPossibleQtyMax,		//（移動後）移動元出荷可能数最大
+				SearchAfterToQtyMax,				//（移動後）移動先在庫数最大
+				SearchAfterToPlanQtyMax,			//（移動後）移動先引当済数最大
+				SearchAfterToPossibleQtyMax,		//（移動後）移動先出荷可能数最大
+				SearchMoveCom,						//移動コメント
+				SearchEntryDateMin,					//登録日開始
+				SearchUpdateDateMin,				//更新日開始
+				SearchEntryDateMax,					//登録日最大
+				SearchUpdateDateMax,				//更新日最大
+				SearchEntryUser,					//登録者
+				SearchUpdateUser,					//更新者
+				FromLocExactMatch,					//Fromロケーション完全一致
+				ToLocExactMatch,					//Toロケーション完全一致
+				AllSearch);
 		
-		
-		//日付系項目最大は一日進めて00:00:00扱い　※時刻まで検索条件にする場合はそのままなので注意
-		SearchExpDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchExpDateMax,1);
-		SearchActualDateMax	= B100_ArrayListControl.DateOnlySetNdateAfter(SearchActualDateMax,1);
+		return Rt;
+	}
+	
+	
+	private static Object[][] StockMoveRtMain(
+			ArrayList<String> SearchClCd,						//荷主コード
+			ArrayList<String> SearchCLName,						//荷主名
+			ArrayList<String> SearchWhCd,						//倉庫コード
+			ArrayList<String> SearchClWHName,					//担当倉庫名
+			ArrayList<String> SearchMoveNo,						//調整番号
+			ArrayList<String> SearchFromLoc,					//移動元ロケ
+			ArrayList<String> SearchFromLocName,				//移動元ロケーション名
+			ArrayList<String> SearchToLoc,						//移動先ロケ
+			ArrayList<String> SearchToLocName,					//移動先ロケーション名
+			ArrayList<String> SearchItemCd,						//商品CD
+			ArrayList<String> SearchItemName,					//商品名
+			ArrayList<String> SearchLot,						//ロット
+			ArrayList<String> SearchExpDateMin,					//賞味期限開始
+			ArrayList<String> SearchExpDateMax,					//賞味期限終了
+			ArrayList<String> SearchActualDateMin,				//入荷日最小
+			ArrayList<String> SearchActualDateMax,				//入荷日最大
+			ArrayList<Integer> SearchBeforeFromQtyMin,			//（移動前）移動元在庫数最小
+			ArrayList<Integer> SearchBeforeFromPlanQtyMin,		//（移動前）移動元引当済数最小
+			ArrayList<Integer> SearchBeforeFromPossibleQtyMin,	//（移動前）移動元出荷可能数最小
+			ArrayList<Integer> SearchBeforeToQtyMin,			//（移動前）移動先在庫数最小
+			ArrayList<Integer> SearchBeforeToPlanQtyMin,		//（移動前）移動先引当済数最小
+			ArrayList<Integer> SearchBeforeToPossibleQtyMin,	//（移動前）移動先出荷可能数最小
+			ArrayList<Integer> SearchMoveQtyMin,				//移動数最小
+			ArrayList<Integer> SearchAfterFromQtyMin,			//（移動後）移動元在庫数最小
+			ArrayList<Integer> SearchAfterFromPlanQtyMin,		//（移動後）移動元引当済数最小
+			ArrayList<Integer> SearchAfterFromPossibleQtyMin,	//（移動後）移動元出荷可能数最小
+			ArrayList<Integer> SearchAfterToQtyMin,				//（移動後）移動先在庫数最小
+			ArrayList<Integer> SearchAfterToPlanQtyMin,			//（移動後）移動先引当済数最小
+			ArrayList<Integer> SearchAfterToPossibleQtyMin,		//（移動後）移動先出荷可能数最小
+			ArrayList<Integer> SearchBeforeFromQtyMax,			//（移動前）移動元在庫数最大
+			ArrayList<Integer> SearchBeforeFromPlanQtyMax,		//（移動前）移動元引当済数最大
+			ArrayList<Integer> SearchBeforeFromPossibleQtyMax,	//（移動前）移動元出荷可能数最大
+			ArrayList<Integer> SearchBeforeToQtyMax,			//（移動前）移動先在庫数最大
+			ArrayList<Integer> SearchBeforeToPlanQtyMax,		//（移動前）移動先引当済数最大
+			ArrayList<Integer> SearchBeforeToPossibleQtyMax,	//（移動前）移動先出荷可能数最大
+			ArrayList<Integer> SearchMoveQtyMax,				//移動数最大
+			ArrayList<Integer> SearchAfterFromQtyMax,			//（移動後）移動元在庫数最大
+			ArrayList<Integer> SearchAfterFromPlanQtyMax,		//（移動後）移動元引当済数最大
+			ArrayList<Integer> SearchAfterFromPossibleQtyMax,	//（移動後）移動元出荷可能数最大
+			ArrayList<Integer> SearchAfterToQtyMax,				//（移動後）移動先在庫数最大
+			ArrayList<Integer> SearchAfterToPlanQtyMax,			//（移動後）移動先引当済数最大
+			ArrayList<Integer> SearchAfterToPossibleQtyMax,		//（移動後）移動先出荷可能数最大
+			ArrayList<String> SearchMoveCom,					//移動コメント
+			ArrayList<String> SearchEntryDateMin,				//登録日開始
+			ArrayList<String> SearchUpdateDateMin,				//更新日開始
+			ArrayList<String> SearchEntryDateMax,				//登録日終了
+			ArrayList<String> SearchUpdateDateMax,				//更新日終了
+			ArrayList<String> SearchEntryUser,					//登録者
+			ArrayList<String> SearchUpdateUser,					//更新者
+			boolean FromLocExactMatch,							//Fromロケーション完全一致
+			boolean ToLocExactMatch,							//Toロケーション完全一致
+			boolean AllSearch){
 		
 		Object[][] rt = new Object[0][RtStockMoveRt().length];
 		
