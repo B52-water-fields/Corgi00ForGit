@@ -127,6 +127,7 @@ public class B100_DefaultVariable{
 	static final String   SearchPartial 				= "を含む";
 	static final String   SearchPrefix 				= "で始まる";
 	static final String   SearchBlankAdd				= "空白文字を条件に追加";
+	static final String   SearchFromTo 				= "～";
 	
 	static final String[] StockSortModeList			= {"ロケ順","商品CD順"};
 	

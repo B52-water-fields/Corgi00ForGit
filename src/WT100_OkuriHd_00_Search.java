@@ -39,23 +39,26 @@ public class WT100_OkuriHd_00_Search{
         main_fm.add(exit_btn);
 
         //検索条件パネル
-        JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,1160,300,"White");
+        JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,1160,325,"White");
         JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
+        
+        Object[][] DefinitionRt	= T100_OkuriHdRt.DefinitionRt();
 
         /**********************************************************************
          * 左列：伝票・日付基本情報
          **********************************************************************/
-        JLabel LB_SearchInvoiceWHCD  = B100_FrameParts.JLabelSet(  0, 25,100,20,"担当倉庫:",11,1);
-        JLabel LB_SearchClCd         = B100_FrameParts.JLabelSet(  0, 50,100,20,"荷主:",11,1);
-        JLabel LB_SearchClGpCD       = B100_FrameParts.JLabelSet(  0, 75,100,20,"荷主グループ:",10,1);
-        JLabel LB_SearchOkuriNo      = B100_FrameParts.JLabelSet(  0,100,100,20,"送り状番号:",11,1);
-        JLabel LB_SearchClDeliNo     = B100_FrameParts.JLabelSet(  0,125,100,20,"荷主管理番号:",10,1);
-        JLabel LB_SearchPickupWhCd   = B100_FrameParts.JLabelSet(  0,150,100,20,"集荷倉庫:",11,1);
-        JLabel LB_SearchPurposeFG    = B100_FrameParts.JLabelSet(  0,175,100,20,"目的:",11,1);
-        JLabel LB_SearchPlanDate     = B100_FrameParts.JLabelSet(  0,200,100,20,"出荷予定日:",11,1);
-        JLabel LB_SearchShipDate     = B100_FrameParts.JLabelSet(  0,225,100,20,"出荷実績日:",11,1);
-        JLabel LB_SearchSPPlanDate   = B100_FrameParts.JLabelSet(  0,250,100,20,"着日指定:",11,1);
-        JLabel LB_SearchSPDate       = B100_FrameParts.JLabelSet(  0,275,100,20,"着日実績:",11,1);
+        JLabel LB_SearchInvoiceWHCD  = B100_FrameParts.JLabelSet(  0, 25,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchInvoiceWHCD][5]		+":",11,1);
+        JLabel LB_SearchClCd         = B100_FrameParts.JLabelSet(  0, 50,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchClCd][5]				+":",11,1);
+        JLabel LB_SearchClGpCD       = B100_FrameParts.JLabelSet(  0, 75,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchClGpCD][5]				+":",10,1);
+        JLabel LB_SearchOkuriNo      = B100_FrameParts.JLabelSet(  0,100,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchOkuriNo][5]			+":",11,1);
+        JLabel LB_SearchClDeliNo     = B100_FrameParts.JLabelSet(  0,125,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchClDeliNo][5]			+":",10,1);
+        JLabel LB_SearchPickupWhCd   = B100_FrameParts.JLabelSet(  0,150,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchPickupWhCd][5]			+":",11,1);
+        JLabel LB_SearchPurposeFG    = B100_FrameParts.JLabelSet(  0,175,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchPurposeFG][5]			+":",11,1);
+        JLabel LB_SearchPlanDate     = B100_FrameParts.JLabelSet(  0,200,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchPlanDateStr][5]		+":",11,1);
+        JLabel LB_SearchShipDate     = B100_FrameParts.JLabelSet(  0,225,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchShipDateStr][5]		+":",11,1);
+        JLabel LB_SearchSPPlanDate   = B100_FrameParts.JLabelSet(  0,250,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchSPPlanDateStr][5]		+":",11,1);
+        JLabel LB_SearchSPDate       = B100_FrameParts.JLabelSet(  0,275,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchSPDateStr][5]			+":",11,1);
+        JLabel LB_SearchWmsShipDate  = B100_FrameParts.JLabelSet(  0,300,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchWmsShipDateStr][5]	+":",11,1);
 
         final JComboBox TB_SearchInvoiceWHCD = B100_FrameParts.JComboBoxSet(100, 25,240,20,B100_DefaultVariable.SearchWhList[0],11);
         final JComboBox TB_SearchClCd        = B100_FrameParts.JComboBoxSet(100, 50,240,20,B100_DefaultVariable.SearchClList[0],11);
@@ -63,7 +66,7 @@ public class WT100_OkuriHd_00_Search{
         final JTextField TB_SearchOkuriNo    = B100_FrameParts.JTextFieldSet(100,100,100,20,"",11,0);
         final JTextField TB_SearchClDeliNo   = B100_FrameParts.JTextFieldSet(100,125,100,20,"",11,0);
         final JComboBox TB_SearchPickupWhCd  = B100_FrameParts.JComboBoxSet(100,150,240,20,B100_DefaultVariable.SearchWhList[0],11);
-        final JComboBox TB_SearchPurposeFG   = B100_FrameParts.JComboBoxSet(100,175,240,20,B100_DefaultVariable.SearchPurposeList[0],11);
+        final JComboBox TB_SearchPurposeFG   = B100_FrameParts.JComboBoxSet(100,175,100,20,B100_DefaultVariable.SearchPurposeList[0],11);
         final JFormattedTextField TB_SearchPlanDateStr   = B100_FrameParts.JFormattedTextFieldSet(100,200,70,20,"",11,0,"YYYY/MM/DD");
         final JFormattedTextField TB_SearchPlanDateEnd   = B100_FrameParts.JFormattedTextFieldSet(230,200,70,20,"",11,0,"YYYY/MM/DD");
         final JFormattedTextField TB_SearchShipDateStr   = B100_FrameParts.JFormattedTextFieldSet(100,225,70,20,"",11,0,"YYYY/MM/DD");
@@ -72,28 +75,31 @@ public class WT100_OkuriHd_00_Search{
         final JFormattedTextField TB_SearchSPPlanDateEnd = B100_FrameParts.JFormattedTextFieldSet(230,250,70,20,"",11,0,"YYYY/MM/DD");
         final JFormattedTextField TB_SearchSPDateStr     = B100_FrameParts.JFormattedTextFieldSet(100,275,70,20,"",11,0,"YYYY/MM/DD");
         final JFormattedTextField TB_SearchSPDateEnd     = B100_FrameParts.JFormattedTextFieldSet(230,275,70,20,"",11,0,"YYYY/MM/DD");
+        final JFormattedTextField TB_SearchWmsShipDateStr= B100_FrameParts.JFormattedTextFieldSet(100,300,70,20,"",11,0,"YYYY/MM/DD");
+    	final JFormattedTextField TB_SearchWmsShipDateEnd= B100_FrameParts.JFormattedTextFieldSet(230,300,70,20,"",11,0,"YYYY/MM/DD");
 
-        JLabel LB2_SearchOkuriNo    = B100_FrameParts.JLabelSet(200,100,40,20,"と一致",10,0);
-        JLabel LB2_SearchClDeliNo   = B100_FrameParts.JLabelSet(200,125,40,20,"と一致",10,0);
-        JLabel LB2_SearchPlanDate   = B100_FrameParts.JLabelSet(210,200,20,20,"～",10,2);
-        JLabel LB2_SearchShipDate   = B100_FrameParts.JLabelSet(210,225,20,20,"～",10,2);
-        JLabel LB2_SearchSPPlanDate = B100_FrameParts.JLabelSet(210,250,20,20,"～",10,2);
-        JLabel LB2_SearchSPDate     = B100_FrameParts.JLabelSet(210,275,20,20,"～",10,2);
+        JLabel LB2_SearchOkuriNo    = B100_FrameParts.JLabelSet(200,100,40,20,B100_DefaultVariable.SearchExact ,10,0);
+        JLabel LB2_SearchClDeliNo   = B100_FrameParts.JLabelSet(200,125,40,20,B100_DefaultVariable.SearchExact ,10,0);
+        JLabel LB2_SearchPlanDate   = B100_FrameParts.JLabelSet(210,200,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchShipDate   = B100_FrameParts.JLabelSet(210,225,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchSPPlanDate = B100_FrameParts.JLabelSet(210,250,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchSPDate     = B100_FrameParts.JLabelSet(210,275,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchWmsShipDate= B100_FrameParts.JLabelSet(210,300,20,20,B100_DefaultVariable.SearchFromTo,10,2);
         
         /**********************************************************************
          * 中列：届先・荷送人・ステータス
          **********************************************************************/
-        JLabel LB_SearchDeliCd       = B100_FrameParts.JLabelSet(340, 25,100,20,"届先コード:",11,1);
-        JLabel LB_SearchClDeliCd     = B100_FrameParts.JLabelSet(340, 50,100,20,"荷主届先コード:",10,1);
-        JLabel LB_SearchDeliName     = B100_FrameParts.JLabelSet(340, 75,100,20,"届先名:",11,1);
-        JLabel LB_SearchDeliPost     = B100_FrameParts.JLabelSet(340,100,100,20,"届先郵便:",11,1);
-        JLabel LB_SearchDeliAdd      = B100_FrameParts.JLabelSet(340,125,100,20,"届先住所:",11,1);
-        JLabel LB_SearchDeliTel      = B100_FrameParts.JLabelSet(340,150,100,20,"届先電話:",11,1);
-        JLabel LB_SearchNiokuriCd    = B100_FrameParts.JLabelSet(340,175,100,20,"荷送人コード:",10,1);
-        JLabel LB_SearchNiokuriName  = B100_FrameParts.JLabelSet(340,200,100,20,"荷送人名:",11,1);
-        JLabel LB_SearchStatus       = B100_FrameParts.JLabelSet(340,225,100,20,"運送状況:",11,1);
-        JLabel LB_SearchWmsStatus    = B100_FrameParts.JLabelSet(340,250,100,20,"倉庫出荷状況:",10,1);
-        JLabel LB_SearchCom          = B100_FrameParts.JLabelSet(340,275,100,20,"コメント:",11,1);
+        JLabel LB_SearchDeliCd       = B100_FrameParts.JLabelSet(340, 25,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchDeliCd][5]			+":",11,1);
+        JLabel LB_SearchClDeliCd     = B100_FrameParts.JLabelSet(340, 50,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchClDeliCd][5]		+":",10,1);
+        JLabel LB_SearchDeliName     = B100_FrameParts.JLabelSet(340, 75,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchDeliName][5]		+":",11,1);
+        JLabel LB_SearchDeliPost     = B100_FrameParts.JLabelSet(340,100,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchDeliPost][5]		+":",11,1);
+        JLabel LB_SearchDeliAdd      = B100_FrameParts.JLabelSet(340,125,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchDeliAdd][5]		+":",11,1);
+        JLabel LB_SearchDeliTel      = B100_FrameParts.JLabelSet(340,150,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchDeliTel][5]		+":",11,1);
+        JLabel LB_SearchNiokuriCd    = B100_FrameParts.JLabelSet(340,175,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchNiokuriCd][5]		+":",10,1);
+        JLabel LB_SearchNiokuriName  = B100_FrameParts.JLabelSet(340,200,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchNiokuriName][5]	+":",11,1);
+        JLabel LB_SearchStatus       = B100_FrameParts.JLabelSet(340,225,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchStatus][5]			+":",11,1);
+        JLabel LB_SearchWmsStatus    = B100_FrameParts.JLabelSet(340,250,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchWmsStatus][5]		+":",10,1);
+        JLabel LB_SearchCom          = B100_FrameParts.JLabelSet(340,275,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchCom][5]				+":",11,1);
 
         final JTextField TB_SearchDeliCd      = B100_FrameParts.JTextFieldSet(440, 25,100,20,"",11,0);
         final JTextField TB_SearchClDeliCd    = B100_FrameParts.JTextFieldSet(440, 50,100,20,"",11,0);
@@ -107,30 +113,30 @@ public class WT100_OkuriHd_00_Search{
         final JComboBox TB_SearchWmsStatus    = B100_FrameParts.JComboBoxSet(	440,250,100,20,B100_DefaultVariable.SearchWmsStatusList[0],11);
         final JTextField TB_SearchCom         = B100_FrameParts.JTextFieldSet(440,275,100,20,"",11,0);
 
-        JLabel LB2_SearchDeliCd      = B100_FrameParts.JLabelSet(540, 25,40,20,"と一致",10,0);
-        JLabel LB2_SearchClDeliCd    = B100_FrameParts.JLabelSet(540, 50,40,20,"と一致",10,0);
-        JLabel LB2_SearchDeliName    = B100_FrameParts.JLabelSet(540, 75,40,20,"を含む",10,0);
-        JLabel LB2_SearchDeliPost    = B100_FrameParts.JLabelSet(540,100,40,20,"を含む",10,0);
-        JLabel LB2_SearchDeliAdd     = B100_FrameParts.JLabelSet(540,125,40,20,"を含む",10,0);
-        JLabel LB2_SearchDeliTel     = B100_FrameParts.JLabelSet(540,150,40,20,"を含む",10,0);
-        JLabel LB2_SearchNiokuriCd   = B100_FrameParts.JLabelSet(540,175,40,20,"と一致",10,0);
-        JLabel LB2_SearchNiokuriName = B100_FrameParts.JLabelSet(540,200,40,20,"を含む",10,0);
-        JLabel LB2_SearchCom         = B100_FrameParts.JLabelSet(540,275,40,20,"を含む",10,0);
+        JLabel LB2_SearchDeliCd      = B100_FrameParts.JLabelSet(540, 25,40,20,B100_DefaultVariable.SearchExact,10,0);
+        JLabel LB2_SearchClDeliCd    = B100_FrameParts.JLabelSet(540, 50,40,20,B100_DefaultVariable.SearchExact,10,0);
+        JLabel LB2_SearchDeliName    = B100_FrameParts.JLabelSet(540, 75,40,20,B100_DefaultVariable.SearchPartial,10,0);
+        JLabel LB2_SearchDeliPost    = B100_FrameParts.JLabelSet(540,100,40,20,B100_DefaultVariable.SearchPrefix,10,0);
+        JLabel LB2_SearchDeliAdd     = B100_FrameParts.JLabelSet(540,125,40,20,B100_DefaultVariable.SearchPartial,10,0);
+        JLabel LB2_SearchDeliTel     = B100_FrameParts.JLabelSet(540,150,40,20,B100_DefaultVariable.SearchPartial,10,0);
+        JLabel LB2_SearchNiokuriCd   = B100_FrameParts.JLabelSet(540,175,40,20,B100_DefaultVariable.SearchExact,10,0);
+        JLabel LB2_SearchNiokuriName = B100_FrameParts.JLabelSet(540,200,40,20,B100_DefaultVariable.SearchPartial,10,0);
+        JLabel LB2_SearchCom         = B100_FrameParts.JLabelSet(540,275,40,20,B100_DefaultVariable.SearchPartial,10,0);
 
         /**********************************************************************
          * 右列：運送条件・物量・商品明細条件
          **********************************************************************/
-        JLabel LB_SearchDeliveryType = B100_FrameParts.JLabelSet(680, 25,100,20,"運送タイプ:",11,1);
-        JLabel LB_SearchCodFG        = B100_FrameParts.JLabelSet(680, 50,100,20,"代引区分:",11,1);
-        JLabel LB_SearchCodPayTotal  = B100_FrameParts.JLabelSet(680, 75,100,20,"代引収受額:",11,1);
-        JLabel LB_SearchTotalQty     = B100_FrameParts.JLabelSet(680,100,100,20,"個口数:",11,1);
-        JLabel LB_SearchTotalWeight  = B100_FrameParts.JLabelSet(680,125,100,20,"荷物重量(kg):",10,1);
-        JLabel LB_SearchTotalSize    = B100_FrameParts.JLabelSet(680,150,100,20,"荷物サイズ:",11,1);
-        JLabel LB_SearchMsItemCd     = B100_FrameParts.JLabelSet(680,175,100,20,"商品コード:",11,1);
-        JLabel LB_SearchClItemCd     = B100_FrameParts.JLabelSet(680,200,100,20,"荷主商品コード:",10,1);
-        JLabel LB_SearchMsItemName   = B100_FrameParts.JLabelSet(680,225,100,20,"商品名:",11,1);
-        JLabel LB_SearchMsLot        = B100_FrameParts.JLabelSet(680,250,100,20,"ロット:",11,1);
-        JLabel LB_SearchMsExpDate    = B100_FrameParts.JLabelSet(680,275,100,20,"賞味期限:",11,1);
+        JLabel LB_SearchDeliveryType = B100_FrameParts.JLabelSet(680, 25,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchDeliveryTypeCd01][5]	+":",11,1);
+        JLabel LB_SearchCodFG        = B100_FrameParts.JLabelSet(680, 50,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchCodFG][5]				+":",11,1);
+        JLabel LB_SearchCodPayTotal  = B100_FrameParts.JLabelSet(680, 75,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchCodPayTotalMin][5]	+":",11,1);
+        JLabel LB_SearchTotalQty     = B100_FrameParts.JLabelSet(680,100,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchTotalQtyMin][5]		+":",11,1);
+        JLabel LB_SearchTotalWeight  = B100_FrameParts.JLabelSet(680,125,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchTotalWeightMin][5]	+":",10,1);
+        JLabel LB_SearchTotalSize    = B100_FrameParts.JLabelSet(680,150,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchTotalSizeMin][5]		+":",11,1);
+        JLabel LB_SearchMsItemCd     = B100_FrameParts.JLabelSet(680,175,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchMsItemCd][5]			+":",11,1);
+        JLabel LB_SearchClItemCd     = B100_FrameParts.JLabelSet(680,200,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchClItemCd][5]			+":",10,1);
+        JLabel LB_SearchMsItemName   = B100_FrameParts.JLabelSet(680,225,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchMsItemName][5]			+":",11,1);
+        JLabel LB_SearchMsLot        = B100_FrameParts.JLabelSet(680,250,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchMsLot][5]				+":",11,1);
+        JLabel LB_SearchMsExpDate    = B100_FrameParts.JLabelSet(680,275,100,20,(String)DefinitionRt[T100_OkuriHdRt.ColSearchMsExpDateStr][5]		+":",11,1);
 
         final JComboBox TB_SearchDeliveryTypeCd01 = B100_FrameParts.JComboBoxSet(780, 25,170,20,B100_DefaultVariable.SearchDeliveryType01[0],11);
         final JComboBox TB_SearchCodFG            = B100_FrameParts.JComboBoxSet(780, 50,170,20,B100_DefaultVariable.SearchCODList[0],11);
@@ -149,21 +155,22 @@ public class WT100_OkuriHd_00_Search{
         final JFormattedTextField TB_SearchMsExpDateStr = B100_FrameParts.JFormattedTextFieldSet(780,275,70,20,"",11,0,"YYYY/MM/DD");
         final JFormattedTextField TB_SearchMsExpDateEnd = B100_FrameParts.JFormattedTextFieldSet(910,275,70,20,"",11,0,"YYYY/MM/DD");
 
-        JLabel LB2_SearchCodPayTotal  = B100_FrameParts.JLabelSet(870, 75,20,20,"～",10,2);
-        JLabel LB2_SearchTotalQty     = B100_FrameParts.JLabelSet(870,100,20,20,"～",10,2);
-        JLabel LB2_SearchTotalWeight  = B100_FrameParts.JLabelSet(870,125,20,20,"～",10,2);
-        JLabel LB2_SearchTotalSize    = B100_FrameParts.JLabelSet(870,150,20,20,"～",10,2);
-        JLabel LB2_SearchMsItemCd     = B100_FrameParts.JLabelSet(880,175,40,20,"と一致",10,0);
-        JLabel LB2_SearchClItemCd     = B100_FrameParts.JLabelSet(880,200,40,20,"と一致",10,0);
-        JLabel LB2_SearchMsItemName   = B100_FrameParts.JLabelSet(880,225,40,20,"を含む",10,0);
-        JLabel LB2_SearchMsLot        = B100_FrameParts.JLabelSet(880,250,40,20,"と一致",10,0);
-        JLabel LB2_SearchMsExpDate    = B100_FrameParts.JLabelSet(870,275,20,20,"～",10,2);
+        JLabel LB2_SearchCodPayTotal  = B100_FrameParts.JLabelSet(870, 75,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchTotalQty     = B100_FrameParts.JLabelSet(870,100,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchTotalWeight  = B100_FrameParts.JLabelSet(870,125,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchTotalSize    = B100_FrameParts.JLabelSet(870,150,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchMsItemCd     = B100_FrameParts.JLabelSet(880,175,40,20,B100_DefaultVariable.SearchExact,10,0);
+        JLabel LB2_SearchClItemCd     = B100_FrameParts.JLabelSet(880,200,40,20,B100_DefaultVariable.SearchExact,10,0);
+        JLabel LB2_SearchMsItemName   = B100_FrameParts.JLabelSet(880,225,40,20,B100_DefaultVariable.SearchPartial,10,0);
+        JLabel LB2_SearchMsLot        = B100_FrameParts.JLabelSet(880,250,40,20,B100_DefaultVariable.SearchExact,10,0);
+        JLabel LB2_SearchMsExpDate    = B100_FrameParts.JLabelSet(870,275,20,20,B100_DefaultVariable.SearchFromTo,10,2);
 
         
         //現在ログイン中の倉庫・荷主を初期選択
         TB_SearchInvoiceWHCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));
         TB_SearchClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd,true));
         TB_SearchClGpCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1],A00000_Main.ClGp,true));
+        TB_SearchPickupWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));
 
         //検索・条件クリア
         JButton SearchBtn       = B100_FrameParts.BtnSet(1050,275,100,20,"検索",11);
@@ -182,6 +189,8 @@ public class WT100_OkuriHd_00_Search{
         PN_Search.add(LB_SearchShipDate); PN_Search.add(TB_SearchShipDateStr); PN_Search.add(LB2_SearchShipDate); PN_Search.add(TB_SearchShipDateEnd);
         PN_Search.add(LB_SearchSPPlanDate); PN_Search.add(TB_SearchSPPlanDateStr); PN_Search.add(LB2_SearchSPPlanDate); PN_Search.add(TB_SearchSPPlanDateEnd);
         PN_Search.add(LB_SearchSPDate); PN_Search.add(TB_SearchSPDateStr); PN_Search.add(LB2_SearchSPDate); PN_Search.add(TB_SearchSPDateEnd);
+        PN_Search.add(LB_SearchWmsShipDate); PN_Search.add(LB2_SearchWmsShipDate);
+        PN_Search.add(TB_SearchWmsShipDateStr);PN_Search.add(TB_SearchWmsShipDateEnd);
 
         PN_Search.add(LB_SearchDeliCd); PN_Search.add(TB_SearchDeliCd); PN_Search.add(LB2_SearchDeliCd);
         PN_Search.add(LB_SearchClDeliCd); PN_Search.add(TB_SearchClDeliCd); PN_Search.add(LB2_SearchClDeliCd);
@@ -242,7 +251,7 @@ public class WT100_OkuriHd_00_Search{
             }
         }
 
-        JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,350,1160,275,tb01);
+        JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,375,1160,250,tb01);
         main_fm.add(scpn01);
 
         main_fm.setVisible(true);
@@ -276,6 +285,8 @@ public class WT100_OkuriHd_00_Search{
                     String GetSearchSPPlanDateEnd= TB_SearchSPPlanDateEnd.getText();
                     String GetSearchSPDateStr    = TB_SearchSPDateStr.getText();
                     String GetSearchSPDateEnd    = TB_SearchSPDateEnd.getText();
+                    String GetSearchWmsShipDateStr	= TB_SearchWmsShipDateStr.getText();
+        			String GetSearchWmsShipDateEnd	= TB_SearchWmsShipDateEnd.getText();
 
                     String GetSearchDeliCd       = TB_SearchDeliCd.getText();
                     String GetSearchClDeliCd     = TB_SearchClDeliCd.getText();
@@ -307,17 +318,19 @@ public class WT100_OkuriHd_00_Search{
                     String GetSearchMsExpDateEnd   = TB_SearchMsExpDateEnd.getText();
 
                     Object[][] OkuriHdRt = OkuriHdRt(
-                            GetSearchInvoiceWHCD, GetSearchClGpCD, GetSearchClCd,
+                    		GetSearchInvoiceWHCD, GetSearchClGpCD, GetSearchClCd,
                             GetSearchOkuriNo, GetSearchClDeliNo, GetSearchPickupWhCd, GetSearchPurposeFG,
                             GetSearchPlanDateStr, GetSearchShipDateStr, GetSearchSPPlanDateStr, GetSearchSPDateStr,
                             GetSearchPlanDateEnd, GetSearchShipDateEnd, GetSearchSPPlanDateEnd, GetSearchSPDateEnd,
+                            GetSearchWmsShipDateStr,GetSearchWmsShipDateEnd,
                             GetSearchTotalWeightMin, GetSearchTotalSizeMin, GetSearchTotalQtyMin,
                             GetSearchTotalWeightMax, GetSearchTotalSizeMax, GetSearchTotalQtyMax,
                             GetSearchDeliveryTypeCd01, GetSearchCodFG, GetSearchCodPayTotalMin, GetSearchCodPayTotalMax,
                             GetSearchNiokuriCd, GetSearchNiokuriName,
                             GetSearchDeliCd, GetSearchClDeliCd, GetSearchDeliName, GetSearchDeliPost, GetSearchDeliAdd, GetSearchDeliTel,
                             GetSearchCom, GetSearchStatus, GetSearchWmsStatus,
-                            GetSearchMsItemCd, GetSearchMsItemName, GetSearchClItemCd, GetSearchMsLot, GetSearchMsExpDateStr, GetSearchMsExpDateEnd);
+                            GetSearchMsItemCd, GetSearchMsItemName, GetSearchClItemCd, GetSearchMsLot,
+                            GetSearchMsExpDateStr, GetSearchMsExpDateEnd);
 
                     if(0==OkuriHdRt.length) {
                         B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
@@ -355,6 +368,8 @@ public class WT100_OkuriHd_00_Search{
                     TB_SearchShipDateStr.setText(""); TB_SearchShipDateEnd.setText("");
                     TB_SearchSPPlanDateStr.setText(""); TB_SearchSPPlanDateEnd.setText("");
                     TB_SearchSPDateStr.setText(""); TB_SearchSPDateEnd.setText("");
+                    TB_SearchWmsShipDateStr.setText(""); TB_SearchWmsShipDateEnd.setText("");
+                    
                     TB_SearchDeliCd.setText(""); TB_SearchClDeliCd.setText(""); TB_SearchDeliName.setText("");
                     TB_SearchDeliPost.setText(""); TB_SearchDeliAdd.setText(""); TB_SearchDeliTel.setText("");
                     TB_SearchNiokuriCd.setText(""); TB_SearchNiokuriName.setText("");
@@ -392,6 +407,7 @@ public class WT100_OkuriHd_00_Search{
             String GetSearchOkuriNo, String GetSearchClDeliNo, String GetSearchPickupWhCd, String GetSearchPurposeFG,
             String GetSearchPlanDateStr, String GetSearchShipDateStr, String GetSearchSPPlanDateStr, String GetSearchSPDateStr,
             String GetSearchPlanDateEnd, String GetSearchShipDateEnd, String GetSearchSPPlanDateEnd, String GetSearchSPDateEnd,
+            String GetSearchWmsShipDateStr,String GetSearchWmsShipDateEnd,
             String GetSearchTotalWeightMin, String GetSearchTotalSizeMin, String GetSearchTotalQtyMin,
             String GetSearchTotalWeightMax, String GetSearchTotalSizeMax, String GetSearchTotalQtyMax,
             String GetSearchDeliveryTypeCd01, String GetSearchCodFG, String GetSearchCodPayTotalMin, String GetSearchCodPayTotalMax,
@@ -408,14 +424,18 @@ public class WT100_OkuriHd_00_Search{
         GetSearchClDeliNo = B100_TextControl.Trim(GetSearchClDeliNo);
         GetSearchPickupWhCd = B100_TextControl.Trim(GetSearchPickupWhCd);
         GetSearchPurposeFG = B100_TextControl.Trim(GetSearchPurposeFG);
-        GetSearchPlanDateStr = B100_TextControl.Trim(GetSearchPlanDateStr);
-        GetSearchShipDateStr = B100_TextControl.Trim(GetSearchShipDateStr);
-        GetSearchSPPlanDateStr = B100_TextControl.Trim(GetSearchSPPlanDateStr);
-        GetSearchSPDateStr = B100_TextControl.Trim(GetSearchSPDateStr);
-        GetSearchPlanDateEnd = B100_TextControl.Trim(GetSearchPlanDateEnd);
-        GetSearchShipDateEnd = B100_TextControl.Trim(GetSearchShipDateEnd);
-        GetSearchSPPlanDateEnd = B100_TextControl.Trim(GetSearchSPPlanDateEnd);
-        GetSearchSPDateEnd = B100_TextControl.Trim(GetSearchSPDateEnd);
+        
+        GetSearchPlanDateStr = B100_TextControl.TextToDate(GetSearchPlanDateStr);
+        GetSearchShipDateStr = B100_TextControl.TextToDate(GetSearchShipDateStr);
+        GetSearchSPPlanDateStr = B100_TextControl.TextToDate(GetSearchSPPlanDateStr);
+        GetSearchSPDateStr = B100_TextControl.TextToDate(GetSearchSPDateStr);
+        GetSearchPlanDateEnd = B100_TextControl.TextToDate(GetSearchPlanDateEnd);
+        GetSearchShipDateEnd = B100_TextControl.TextToDate(GetSearchShipDateEnd);
+        GetSearchSPPlanDateEnd = B100_TextControl.TextToDate(GetSearchSPPlanDateEnd);
+        GetSearchSPDateEnd = B100_TextControl.TextToDate(GetSearchSPDateEnd);
+        GetSearchWmsShipDateStr = B100_TextControl.TextToDate(GetSearchWmsShipDateStr);
+        GetSearchWmsShipDateEnd = B100_TextControl.TextToDate(GetSearchWmsShipDateEnd);
+        
         GetSearchTotalWeightMin = B100_TextControl.Trim(GetSearchTotalWeightMin);
         GetSearchTotalSizeMin = B100_TextControl.Trim(GetSearchTotalSizeMin);
         GetSearchTotalQtyMin = B100_TextControl.Trim(GetSearchTotalQtyMin);
@@ -441,8 +461,8 @@ public class WT100_OkuriHd_00_Search{
         GetSearchMsItemName = B100_TextControl.Trim(GetSearchMsItemName);
         GetSearchClItemCd = B100_TextControl.Trim(GetSearchClItemCd);
         GetSearchMsLot = B100_TextControl.Trim(GetSearchMsLot);
-        GetSearchMsExpDateStr = B100_TextControl.Trim(GetSearchMsExpDateStr);
-        GetSearchMsExpDateEnd = B100_TextControl.Trim(GetSearchMsExpDateEnd);
+        GetSearchMsExpDateStr = B100_TextControl.TextToDate(GetSearchMsExpDateStr);
+        GetSearchMsExpDateEnd = B100_TextControl.TextToDate(GetSearchMsExpDateEnd);
 
         if(!"".equals(GetSearchTotalWeightMin)){GetSearchTotalWeightMin=B100_TextControl.num_only_String02(GetSearchTotalWeightMin);}
         if(!"".equals(GetSearchTotalWeightMax)){GetSearchTotalWeightMax=B100_TextControl.num_only_String02(GetSearchTotalWeightMax);}
@@ -563,6 +583,8 @@ public class WT100_OkuriHd_00_Search{
         if(!"".equals(GetSearchShipDateEnd)){SearchShipDateEnd.add(GetSearchShipDateEnd);}
         if(!"".equals(GetSearchSPPlanDateEnd)){SearchSPPlanDateEnd.add(GetSearchSPPlanDateEnd);}
         if(!"".equals(GetSearchSPDateEnd)){SearchSPDateEnd.add(GetSearchSPDateEnd);}
+        if(!"".equals(GetSearchWmsShipDateStr)){SearchWmsShipDateStr.add(GetSearchWmsShipDateStr);}
+        if(!"".equals(GetSearchWmsShipDateEnd)){SearchWmsShipDateEnd.add(GetSearchWmsShipDateEnd);}
         if(!"".equals(GetSearchTotalWeightMin)){SearchTotalWeightMin.add(Float.parseFloat(GetSearchTotalWeightMin));}
         if(!"".equals(GetSearchTotalSizeMin)){SearchTotalSizeMin.add(Float.parseFloat(GetSearchTotalSizeMin));}
         if(!"".equals(GetSearchTotalQtyMin)){SearchTotalQtyMin.add((int)Float.parseFloat(GetSearchTotalQtyMin));}
@@ -616,168 +638,3 @@ public class WT100_OkuriHd_00_Search{
                 AllSearch);
     }
 }
-
-/*
-public class WT100_OkuriHd_00_Search{
-	static int SetX;
-	static int SetY;
-	static boolean RenewFg;
-	
-	static boolean MsViewMode;
-	public static void OkuriHdSearch(int x,int y) {
-		A00000_Main.LoginCheck();
-		if(0==SetX) {SetX=100;}
-		if(0==SetY) {SetY=100;}
-		if(x==0) {x=SetX;}
-		if(y==0) {y=SetY;}
-		RenewFg = false;
-		MsViewMode = false;
-		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,1200,800,"Corgi00出荷指示検索　WT100_OkuriHd_00_Search","SP");
-		JLabel userinfo = B100_FrameParts.UserInfo();
-		JButton exit_btn = B100_FrameParts.ExitBtn();
-		
-		main_fm.add(userinfo);
-		main_fm.add(exit_btn);
-		
-		//検索条件パネル
-		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,1160,300,"White");
-		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
-		
-		//検索条件		
-		
-		final JComboBox TB_SearchInvoiceWHCD		= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchWhList[0],11);		//倉庫CD
-		final JComboBox TB_SearchClGpCD				= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchClGpList[0],11);	//荷主グループCD
-		final JComboBox TB_SearchClCd				= B100_FrameParts.JComboBoxSet(	100, 25,200,20,B100_DefaultVariable.SearchClList[0],11);		//荷主CD
-		final JTextField TB_SearchOkuriNo			= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//送り状番号
-		final JTextField TB_SearchClDeliNo			= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷主管理番号
-		final JComboBox TB_SearchPickupWhCd			= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchWhList[0],11);		//集荷倉庫CD
-		final JComboBox TB_SearchPurposeFG						= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchPurposeList[0],11);		//目的フラグ
-		final JFormattedTextField TB_SearchPlanDateStr			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//出荷予定日開始
-		final JFormattedTextField TB_SearchShipDateStr			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//出荷実績日開始
-		final JFormattedTextField TB_SearchSPPlanDateStr		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//着日指定開始
-		final JFormattedTextField TB_SearchSPDateStr			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//着日実績開始
-		
-		final JFormattedTextField TB_SearchPlanDateEnd			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//出荷予定日終了
-		final JFormattedTextField TB_SearchShipDateEnd			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//出荷実績日終了
-		final JFormattedTextField TB_SearchSPPlanDateEnd		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//着日指定終了
-		final JFormattedTextField TB_SearchSPDateEnd			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//着日実績終了
-		
-		final JFormattedTextField TB_SearchTotalWeightMin		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###");					//荷物重量(kg)最小
-		final JFormattedTextField TB_SearchTotalSizeMin			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###.###");				//荷物サイズ最小
-		final JFormattedTextField TB_SearchTotalQtyMin			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###.###");				//個口数最小
-		
-		final JFormattedTextField TB_SearchTotalWeightMax		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###");					//荷物重量(kg)最大
-		final JFormattedTextField TB_SearchTotalSizeMax			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###.###");				//荷物サイズ最大
-		final JFormattedTextField TB_SearchTotalQtyMax			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###.###");				//個口数最大
-		
-		final JComboBox TB_SearchDeliveryTypeCd01				= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchDeliveryType01[0],11);	//運送タイプ01
-		final JComboBox TB_SearchDeliveryTypeCd02				= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchDeliveryType02[0],11);	//運送タイプ02
-		final JComboBox TB_SearchDeliveryTypeCd03				= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchDeliveryType03[0],11);	//運送タイプ03
-		final JComboBox TB_SearchDeliveryTypeCd04				= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchDeliveryType04[0],11);	//運送タイプ04
-		final JComboBox TB_SearchDeliveryTypeCd05				= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchDeliveryType05[0],11);	//運送タイプ05
-		
-		final JComboBox TB_SearchCodFG							= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchCODList[0],11);			//代引区分
-		final JFormattedTextField TB_SearchCodPayTotalMin		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###");					//代引収受金額合計最小
-		final JFormattedTextField TB_SearchCodPayTotalMax		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###");					//代引収受金額合計最大
-		
-		final JComboBox TB_earchChildrenFG						= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchChildrenFGList[0],11);	//子伝票区分
-		final JTextField TB_SearchParentOkuriNo					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//親伝票番号
-		
-		final JTextField TB_SearchNiokuriCd						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人CD
-		final JTextField TB_SearchNiokuriDepartmentCd			= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人部署CD
-		final JTextField TB_SearchNiokuriName					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人名称
-		final JTextField TB_SearchNiokuriPost					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人郵便番号
-		final JTextField TB_SearchNiokuriAdd					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人住所
-		final JTextField TB_SearchNioKuriTel					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人Tel
-		final JTextField TB_SearchNioKuriFax					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人Fax
-		final JTextField TB_SearchNioKuriMail					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人Mail
-		final JTextField TB_SearchNiokuriMunicCd				= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷送人市区町村CD
-		
-		final JTextField TB_SearchDeliCd						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先CD
-		final JTextField TB_SearchClDeliCd						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷主届先CD
-		final JTextField TB_SearchDeliDepartmentCd				= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先部署CD
-		final JTextField TB_SearchDeliName						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先名称
-		final JTextField TB_SearchDeliPost						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先郵便番号
-		final JTextField TB_SearchDeliAdd						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先住所
-		final JTextField TB_SearchDeliTel						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先Tel
-		final JTextField TB_SearchDeliFax						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先Fax
-		final JTextField TB_SearchDeliMail						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先Mail
-		final JTextField TB_SearchDeliMunicCd					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//届先市区町村CD
-		
-		final JTextField TB_SearchCom							= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//コメント
-		final JComboBox TB_SearchStatus							= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchStatusList[0],11);		//運送ステータス
-		
-		final JComboBox TB_SearchFeeFixFG						= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchFeeFixFgList[0],11);		//運賃確定フラグ
-		final JComboBox TB_SearchReceiptStampFG					= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchReceiptStampFGList[0],11);//受領印フラグ
-		final JComboBox TB_SearchInvoiceStatus					= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchInvoiceStatusList[0],11);	//請求ステータス
-		
-		final JFormattedTextField TB_SearchWithOutTaxTotalMin	= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###");					//税別運賃合計最小
-		final JFormattedTextField TB_SearchTotalFeeMin			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###");					//税込運賃合計税込運賃合計
-		final JFormattedTextField TB_SearchFeeFixDateStr		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//運賃確定日時開始
-		final JFormattedTextField TB_SearchReceiptStampDateStr	= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//受領印日時開始
-		final JFormattedTextField TB_SearchEntryDateStr			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD HH:MM:SS");		//登録日終了
-		final JFormattedTextField TB_SearchUpdateDateStr		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD HH:MM:SS");		//更新日終了
-		
-		final JFormattedTextField TB_SearchWithOutTaxTotalMax	= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###");					//税別運賃合計最大
-		final JFormattedTextField TB_SearchTotalFeeMax			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"###,###");					//税込運賃合計最大
-		final JFormattedTextField TB_SearchFeeFixDateEnd		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//運賃確定日時終了
-		final JFormattedTextField TB_SearchReceiptStampDateEnd	= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//受領印日時終了
-		final JFormattedTextField TB_SearchEntryDateEnd			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD HH:MM:SS");		//登録日終了
-		final JFormattedTextField TB_SearchUpdateDateEnd		= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD HH:MM:SS");		//更新日終了
-		
-		final JTextField TB_SearchEntryUser						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//登録者
-		final JTextField TB_SearchUpdateUser					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//更新者
-		final JTextField TB_SearchEntryPG						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//登録プログラム
-		final JTextField TB_SearchUpdatePG						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//更新プログラム
-		final JTextField TB_SearchUseFeeBasePtCd				= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//運転計算タリフ
-		final JComboBox TB_SearchWmsStatus						= B100_FrameParts.JComboBoxSet(	100, 50,200,20,B100_DefaultVariable.SearchWmsStatusList[0],11);	//倉庫出荷ステータス
-		final JTextField TB_SearchWmsShipDateStr				= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//倉庫出荷日時開始
-		final JTextField TB_SearchWmsShipDateEnd				= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//倉庫出荷日時終了
-		final JTextField TB_SearchCourseGpCd					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//配車コースグループコード
-		final JTextField TB_SearchCourseCD						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//配車コースコード
-		final JTextField TB_SearchCourseCDEda					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//配車コースコード枝番
-		final JTextField TB_SearchPitGrp						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷物払出ピットグループ
-		final JTextField TB_SearchPit							= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷物払出ピット
-		
-		final JTextField TB_SearchMsItemCd						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//商品CD
-		final JTextField TB_SearchMsItemName					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//商品名
-		
-		final JTextField TB_SearchClItemCd						= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//荷主商品CD
-		
-		final JTextField TB_SearchMsCategoryCd					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//カテゴリCD
-		final JTextField TB_SearchMsCategoryName				= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//カテゴリ名
-		final JComboBox TB_SearchMsTildFG						= B100_FrameParts.JComboBoxSet(		100, 50,200,20,B100_DefaultVariable.SearchTildFG[0],11);		//温度区分
-		final JTextField TB_SearchMsTildName					= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//温度区分名
-		
-		final JTextField TB_SearchMsLot							= B100_FrameParts.JTextFieldSet(	100,125,100,20,""	,11,0);										//ロット指定
-		final JFormattedTextField TB_SearchMsExpDateStr			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//賞味期限指定開始
-		final JFormattedTextField TB_SearchMsExpDateEnd			= B100_FrameParts.JFormattedTextFieldSet(	100,175, 70,20,""	,11,0,"YYYY/MM/DD");				//賞味期限指定終了
-		final JComboBox TB_SearchMsPackingType					= B100_FrameParts.JComboBoxSet(		100, 50,200,20,B100_DefaultVariable.SearchUnitTypeList[0],11);	//荷姿タイプ
-		
-		
-		
-		
-		
-		
-		
-		main_fm.setVisible(true);
-		RenewFg = true;
-		
-		
-		//EXITボタン押下時の挙動
-		exit_btn.addActionListener(new AbstractAction(){
-			public void actionPerformed(ActionEvent e){
-				SetX=main_fm.getX();
-				SetY=main_fm.getY();
-				
-				Ms_fm.setVisible(false);
-				Ms_fm.dispose();
-				
-				main_fm.setVisible(false);
-				main_fm.dispose();
-				A00001_WorkMain.WorkMain(0,0);
-			}
-		});
-	}
-}
-*/
