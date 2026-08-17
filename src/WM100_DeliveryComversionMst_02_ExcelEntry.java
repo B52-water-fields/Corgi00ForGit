@@ -95,19 +95,21 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		Object[][] RtDeliveryComversionMstRt = M100_DeliveryComversionMstRt.RtDeliveryComversionMstRt();
+		
 		Object[][] NeedCol = {
-				 {"荷主グループCD"		,1, 0}
-				,{"荷主届先CD"			,1, 1}
-				,{"届先CD"				,1, 2}
-				,{"届先部署CD"			,1, 3}
-				,{"送り状登録名"		,1, 4}
-				,{"コメント01"			,1, 5}
-				,{"コメント02"			,1, 6}
-				,{"コメント03"			,1, 7}
-				,{"コメント04"			,1, 8}
-				,{"コメント05"			,1, 9}
-				,{"削除区分"			,0,10}
-				,{"届先マスタ優先フラグ",0,11}
+				 {(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColClGpCD][3]					,1, 0}	//荷主グループCD
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCL_DECD][3]				,1, 1}	//荷主届先CD
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDECD][3]					,1, 2}	//届先CD
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDepartmentCd][3]			,1, 3}	//届先部署CD
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColSetName][3]				,1, 4}	//送り状登録名
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom01][3]					,1, 5}	//コメント01
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom02][3]					,1, 6}	//コメント02
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom03][3]					,1, 7}	//コメント03
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom04][3]					,1, 8}	//コメント04
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom05][3]					,1, 9}	//コメント05
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDelFg][3]					,0,10}	//削除区分
+				,{(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColMstPriorityFirstFg][3]	,0,11}	//届先マスタ優先フラグ
 				};
 		
 		JLabel LB_SheetList	= B100_FrameParts.JLabelSet(	10, 40,600,20,"以下のデータを登録しようとしています※データ内の重複はチェックしません",11,0);
@@ -214,7 +216,9 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 			}
 			
 			String[] TableCol = B100_TableControl.TableFieldNameRt(tb01);
-			ArrayList<String> ErrMsg = ErrCheck(CheckOb,TableCol);
+			
+			ArrayList<String> ErrMsg =ErrCheck(CheckOb,TableCol);
+			
 			
 			if(null!=ErrMsg && 0<ErrMsg.size()) {
 				ErrView(ErrMsg);
@@ -299,6 +303,7 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 		});
 	}
 	private static void MstEntry(Object[][] CheckOb,String[] TableCol){
+		
 		int ColClGpCD				= (int) 1;	//荷主グループCD
 		int ColCL_DECD				= (int) 2;	//荷主届先CD
 		int ColDECD					= (int) 3;	//届先CD
@@ -312,46 +317,44 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 		int ColDelFg				= (int)11;	//削除区分
 		int ColMstPriorityFirstFg	= (int)12;	//届先マスタ優先フラグ
 		
+		Object[][] RtDeliveryComversionMstRt = M100_DeliveryComversionMstRt.RtDeliveryComversionMstRt();
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(""+TableCol[i]) {
-				case "荷主グループCD":
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColClGpCD][3])) {						//荷主グループCD
 					ColClGpCD = i;
-					break;
-				case "荷主届先CD":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCL_DECD][3])) {						//荷主届先CD
 					ColCL_DECD = i;
-					break;
-				case "届先CD":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDECD][3])) {							//届先CD
 					ColDECD = i;
-					break;
-				case "届先部署CD":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDepartmentCd][3])) {				//届先部署CD
 					ColDepartmentCd = i;
-					break;
-				case "送り状登録名":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColSetName][3])) {						//送り状登録名
 					ColSetName = i;
-					break;
-				case "コメント01":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom01][3])) {						//コメント01
 					ColCom01 = i;
-					break;
-				case "コメント02":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom02][3])) {						//コメント02
 					ColCom02 = i;
-					break;
-				case "コメント03":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom03][3])) {						//コメント03
 					ColCom03 = i;
-					break;
-				case "コメント04":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom04][3])) {						//コメント04
 					ColCom04 = i;
-					break;
-				case "コメント05":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom05][3])) {						//コメント05
 					ColCom05 = i;
-					break;
-				case "削除区分":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDelFg][3])) {						//削除区分
 					ColDelFg = i;
-					break;
-				case "届先マスタ優先フラグ":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColMstPriorityFirstFg][3])) {			//届先マスタ優先フラグ
 					ColMstPriorityFirstFg = i;
-					break;
-				default:
-					break;
 			}
 		}
 		int EntryCount = 0;
@@ -497,48 +500,47 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 		int ColDelFg				= (int)11;	//削除区分
 		int ColMstPriorityFirstFg	= (int)12;	//届先マスタ優先フラグ
 		
+		Object[][] RtDeliveryComversionMstRt = M100_DeliveryComversionMstRt.RtDeliveryComversionMstRt();
+		
 		for(int i=0;i<TableCol.length;i++) {
-			switch(""+TableCol[i]) {
-				case "荷主グループCD":
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColClGpCD][3])) {						//荷主グループCD
 					ColClGpCD = i;
-					break;
-				case "荷主届先CD":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCL_DECD][3])) {						//荷主届先CD
 					ColCL_DECD = i;
-					break;
-				case "届先CD":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDECD][3])) {							//届先CD
 					ColDECD = i;
-					break;
-				case "届先部署CD":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDepartmentCd][3])) {				//届先部署CD
 					ColDepartmentCd = i;
-					break;
-				case "送り状登録名":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColSetName][3])) {						//送り状登録名
 					ColSetName = i;
-					break;
-				case "コメント01":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom01][3])) {						//コメント01
 					ColCom01 = i;
-					break;
-				case "コメント02":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom02][3])) {						//コメント02
 					ColCom02 = i;
-					break;
-				case "コメント03":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom03][3])) {						//コメント03
 					ColCom03 = i;
-					break;
-				case "コメント04":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom04][3])) {						//コメント04
 					ColCom04 = i;
-					break;
-				case "コメント05":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom05][3])) {						//コメント05
 					ColCom05 = i;
-					break;
-				case "削除区分":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDelFg][3])) {						//削除区分
 					ColDelFg = i;
-					break;
-				case "届先マスタ優先フラグ":
+			}
+			if((""+TableCol[i]) .equals((String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColMstPriorityFirstFg][3])) {			//届先マスタ優先フラグ
 					ColMstPriorityFirstFg = i;
-					break;
-				default:
-					break;
 			}
 		}
+		
 		//届先マスタ取得
 		ArrayList<String> SearchDECD 			= new ArrayList<String>();
 		ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
@@ -562,7 +564,6 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 				SearchDECD.add(WST);
 			}
 		}
-		
 		Object[][] DeliveryMstRt = M100_DeliveryMstRt.DeliveryMstRt(
 				SearchDECD,
 				SearchDepartmentCd,
@@ -598,7 +599,7 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 			String GetDelFg					= ""+CheckOb[i][ColDelFg];				//削除区分
 			String GetMstPriorityFirstFg	= ""+CheckOb[i][ColMstPriorityFirstFg];	//届先マスタ優先フラグ
 			
-			GetDelFg				= B100_TextControl.num_only_String02(GetDelFg);						//削除区分
+			GetDelFg				= B100_TextControl.num_only_String02(GetDelFg);					//削除区分
 			GetMstPriorityFirstFg	= B100_TextControl.num_only_String02(GetMstPriorityFirstFg);		//届先マスタ優先フラグ
 			
 			if("".equals(GetDelFg				)) {GetDelFg 				= "0";}
@@ -637,8 +638,10 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 					int wint = i+1;
 					ErrMsg.add(wint+"行目エラー：荷主届け先コードは必須です");
 				}
+				
+				
 				UnHitFg = true;
-				for(int i01=0;i01<B100_DefaultVariable.DelList[1].length;i++) {
+				for(int i01=0;i01<B100_DefaultVariable.DelList[1].length;i01++) {
 					if(GetDelFg.equals(B100_DefaultVariable.DelList[1][i01])) {
 						UnHitFg = false;
 					}
@@ -647,8 +650,10 @@ public class WM100_DeliveryComversionMst_02_ExcelEntry{
 					int wint = i+1;
 					ErrMsg.add(wint+"行目エラー：削除区分：("+GetDelFg+")は区分として正しくありません");
 				}
+				
+				
 				UnHitFg = true;
-				for(int i01=0;i01<B100_DefaultVariable.MstPriorityFirstFg[1].length;i++) {
+				for(int i01=0;i01<B100_DefaultVariable.MstPriorityFirstFg[1].length;i01++) {
 					if(GetMstPriorityFirstFg.equals(B100_DefaultVariable.MstPriorityFirstFg[1][i01])) {
 						UnHitFg = false;
 					}

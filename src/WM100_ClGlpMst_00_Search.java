@@ -41,15 +41,17 @@ public class WM100_ClGlpMst_00_Search{
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchClGpCD  	= B100_FrameParts.JLabelSet(				  0, 25,100,20,"荷主GlpCD:"	,11,1);
-		JLabel LB_SearchCLGpName  	= B100_FrameParts.JLabelSet(				  0, 50,100,20,"名称:"		,11,1);
-		JLabel LB_SearchPost  		= B100_FrameParts.JLabelSet(				  0, 75,100,20,"郵便番号:"	,11,1);
-		JLabel LB_SearchAdd 		= B100_FrameParts.JLabelSet(				  0,100,100,20,"住所:"		,11,1);
-		JLabel LB_SearchCom  		= B100_FrameParts.JLabelSet(				  0,125,100,20,"コメント:"	,11,1);
+		Object[][] DefinitionRt		= M100_ClGpMstRt.DefinitionRt();
 		
-		JLabel LB_SearchTel  		= B100_FrameParts.JLabelSet(				350, 25,100,20,"Tel:"		,11,1);
-		JLabel LB_SearchFax  		= B100_FrameParts.JLabelSet(				350, 50,100,20,"Fax:"		,11,1);
-		JLabel LB_SearchMail  		= B100_FrameParts.JLabelSet(				350, 75,100,20,"Mail:"		,11,1);
+		JLabel LB_SearchClGpCD  	= B100_FrameParts.JLabelSet(				  0, 25,100,20,(String)DefinitionRt[M100_ClGpMstRt.ColSearchClGpCD][5]	+":"	,11,1);
+		JLabel LB_SearchCLGpName  	= B100_FrameParts.JLabelSet(				  0, 50,100,20,(String)DefinitionRt[M100_ClGpMstRt.ColSearchCLGpName][5]	+":"	,11,1);
+		JLabel LB_SearchPost  		= B100_FrameParts.JLabelSet(				  0, 75,100,20,(String)DefinitionRt[M100_ClGpMstRt.ColSearchPost][5]		+":"	,11,1);
+		JLabel LB_SearchAdd 		= B100_FrameParts.JLabelSet(				  0,100,100,20,(String)DefinitionRt[M100_ClGpMstRt.ColSearchAdd][5]		+":"	,11,1);
+		JLabel LB_SearchCom  		= B100_FrameParts.JLabelSet(				  0,125,100,20,(String)DefinitionRt[M100_ClGpMstRt.ColSearchCom][5]		+":"	,11,1);
+		
+		JLabel LB_SearchTel  		= B100_FrameParts.JLabelSet(				350, 25,100,20,(String)DefinitionRt[M100_ClGpMstRt.ColSearchTel][5]		+":"	,11,1);
+		JLabel LB_SearchFax  		= B100_FrameParts.JLabelSet(				350, 50,100,20,(String)DefinitionRt[M100_ClGpMstRt.ColSearchFax][5]		+":"	,11,1);
+		JLabel LB_SearchMail  		= B100_FrameParts.JLabelSet(				350, 75,100,20,(String)DefinitionRt[M100_ClGpMstRt.ColSearchMail][5]		+":"	,11,1);
 		
 		final JTextField TB_SearchClGpCD = B100_FrameParts.JTextFieldSet(		100, 25,100,20,"",11,0);
 		final JTextField TB_SearchCLGpName = B100_FrameParts.JTextFieldSet(	100, 50,150,20,"",11,0);

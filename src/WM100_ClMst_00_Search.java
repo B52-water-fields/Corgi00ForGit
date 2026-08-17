@@ -42,17 +42,19 @@ public class WM100_ClMst_00_Search{
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchClGpCD	  = B100_FrameParts.JLabelSet(  0, 25,100,20,"荷主Glp:"	,11,1);
-		JLabel LB_SearchCLCD	  = B100_FrameParts.JLabelSet(  0, 50,100,20,"荷主CD:"	,11,1);
-		JLabel LB_SearchWHCD	  = B100_FrameParts.JLabelSet(  0, 75,100,20,"担当倉庫:"	,11,1);
-		JLabel LB_SearchCLName	  = B100_FrameParts.JLabelSet(  0,100,100,20,"荷主名:"	,11,1);
-		JLabel LB_searchAdd		  = B100_FrameParts.JLabelSet(  0,125,100,20,"住所:"		,11,1);
+		Object[][] DefinitionRt	= M100_ClMstRt.DefinitionRt();
 		
-		JLabel LB_SearchPost	  = B100_FrameParts.JLabelSet(350, 25,100,20,"郵便:"		,11,1);
-		JLabel LB_SearchTel		  = B100_FrameParts.JLabelSet(350, 50,100,20,"Tel:"		,11,1);
-		JLabel LB_SearchFax		  = B100_FrameParts.JLabelSet(350, 75,100,20,"Fax:"		,11,1);
-		JLabel LB_SearchMail	  = B100_FrameParts.JLabelSet(350,100,100,20,"Mail:"		,11,1);
-		JLabel LB_SearchCom		  = B100_FrameParts.JLabelSet(350,125,100,20,"コメント:"	,11,1);
+		JLabel LB_SearchClGpCD	  = B100_FrameParts.JLabelSet(  0, 25,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchClGpCD][5]	+":"	,11,1);
+		JLabel LB_SearchCLCD	  = B100_FrameParts.JLabelSet(  0, 50,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchCLCD][5]		+":"	,11,1);
+		JLabel LB_SearchWHCD	  = B100_FrameParts.JLabelSet(  0, 75,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchWHCD][5]		+":"	,11,1);
+		JLabel LB_SearchCLName	  = B100_FrameParts.JLabelSet(  0,100,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchCLName][5]	+":"	,11,1);
+		JLabel LB_searchAdd		  = B100_FrameParts.JLabelSet(  0,125,100,20,(String)DefinitionRt[M100_ClMstRt.ColsearchAdd][5]		+":"	,11,1);
+		
+		JLabel LB_SearchPost	  = B100_FrameParts.JLabelSet(350, 25,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchPost][5]		+":"	,11,1);
+		JLabel LB_SearchTel		  = B100_FrameParts.JLabelSet(350, 50,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchTel][5]		+":"	,11,1);
+		JLabel LB_SearchFax		  = B100_FrameParts.JLabelSet(350, 75,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchFax][5]		+":"	,11,1);
+		JLabel LB_SearchMail	  = B100_FrameParts.JLabelSet(350,100,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchMail][5]		+":"	,11,1);
+		JLabel LB_SearchCom		  = B100_FrameParts.JLabelSet(350,125,100,20,(String)DefinitionRt[M100_ClMstRt.ColSearchCom][5]		+":"	,11,1);
 		
 		final JComboBox  TB_SearchClGpCD	 = B100_FrameParts.JComboBoxSet( 100, 25,200,20,B100_DefaultVariable.SearchClGpList[0],11);	//荷主Glp
 		final JTextField TB_SearchCLCD		 = B100_FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);	//荷主CD

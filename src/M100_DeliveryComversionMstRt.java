@@ -44,18 +44,18 @@ public class M100_DeliveryComversionMstRt{
 	String GetClGpCD			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColClGpCD];			//荷主グループCD
 	String GetCLGpName01		= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColCLGpName01];		//荷主グループ名
 	String GetCL_DECD			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColCL_DECD];			//荷主届先CD
-	String GetDECD				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDECD];			//届先CD
-	String GetDepartmentCd		= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDepartmentCd];	//届先部署CD
-	String GetDEName01			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName01];		//届先表記名
-	String GetDEName02			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName02];		//届先正式名
-	String GetDEName03			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName03];		//届先略名
-	String GetPost				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColPost];			//届先郵便
+	String GetDECD				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDECD];				//届先CD
+	String GetDepartmentCd		= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDepartmentCd];		//届先部署CD
+	String GetDEName01			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName01];			//届先表記名
+	String GetDEName02			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName02];			//届先正式名
+	String GetDEName03			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColDEName03];			//届先略名
+	String GetPost				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColPost];				//届先郵便
 	String GetAdd01				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColAdd01];			//届先住所1
 	String GetAdd02				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColAdd02];			//届先住所2
 	String GetAdd03				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColAdd03];			//届先住所3
 	String GetTel				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColTel];				//届先電話
 	String GetFax				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColFax];				//届先FAX
-	String GetMail				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColMail];			//届先MAIL
+	String GetMail				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColMail];				//届先MAIL
 	String GetSetName			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColSetName];			//送り状登録名
 	String GetCom01				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColCom01];			//コメント01
 	String GetCom02				= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColCom02];			//コメント02
@@ -146,7 +146,7 @@ public class M100_DeliveryComversionMstRt{
 				,{"EntryUser"			,ColEntryUser				,"String"	,"登録者コード"			,""}
 				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"			,""}
 				,{"DelFg"				,ColDelFg					,"int"		,"削除区分"				,""}
-				,{"MstPriorityFirstFg"	,ColMstPriorityFirstFg	,"int"		,"届先マスタ優先フラグ"	,""}
+				,{"MstPriorityFirstFg"	,ColMstPriorityFirstFg	,"int"		,"届先MST優先区分"		,""}
 				};
 		
 		RtSettingDeliveryMstRt = B100_LanguageControl.RtControl(RtSettingDeliveryMstRt);
@@ -170,7 +170,7 @@ public class M100_DeliveryComversionMstRt{
 					,{"String"		,null	,"Partial"	,ColSearchSetName					,""													,"送り状登録名"			,""}
 					,{"String"		,null	,"Partial"	,ColSearchCom						,""													,"コメント"				,""}
 					,{"String"		,null	,"Exact"	,ColSearchDelFg					,B100_DefaultVariable.SearchDelList				,"削除区分"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchMstPriorityFirstFg	,""													,"届先マスタ優先フラグ"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchMstPriorityFirstFg	,""													,"届先MST優先区分"		,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

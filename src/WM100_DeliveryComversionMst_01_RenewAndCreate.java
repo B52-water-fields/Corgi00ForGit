@@ -45,35 +45,37 @@ public class WM100_DeliveryComversionMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		String[] PriorityFirstFg = {"データ優先","マスタ優先"};
+		Object[][] RtDeliveryComversionMstRt	= M100_DeliveryComversionMstRt.RtDeliveryComversionMstRt();
 		
-		JLabel LB_ClGpCD				= B100_FrameParts.JLabelSet(  0, 40,100,20,"荷主グループCD:"	,	11,1);
-		JLabel LB_CLGpName01			= B100_FrameParts.JLabelSet(  0, 65,100,20,"荷主グループ名:"	,	11,1);
-		JLabel LB_CL_DECD				= B100_FrameParts.JLabelSet(  0, 90,100,20,"荷主届先CD:"		,	11,1);
-		JLabel LB_DECD					= B100_FrameParts.JLabelSet(  0,115,100,20,"届先CD:"			,	11,1);
-		JLabel LB_DepartmentCd			= B100_FrameParts.JLabelSet(  0,140,100,20,"届先部署CD:"		,	11,1);
-		JLabel LB_DEName01				= B100_FrameParts.JLabelSet(  0,165,100,20,"届先表記名:"		,	11,1);
-		JLabel LB_DEName02				= B100_FrameParts.JLabelSet(  0,190,100,20,"届先正式名:"		,	11,1);
-		JLabel LB_DEName03				= B100_FrameParts.JLabelSet(  0,215,100,20,"届先略名:"			,	11,1);
-		JLabel LB_Post					= B100_FrameParts.JLabelSet(  0,240,100,20,"届先郵便:"			,	11,1);
-		JLabel LB_Add01					= B100_FrameParts.JLabelSet(  0,265,100,20,"届先住所1:"		,	11,1);
-		JLabel LB_Add02					= B100_FrameParts.JLabelSet(  0,290,100,20,"届先住所2:"		,	11,1);
-		JLabel LB_Add03					= B100_FrameParts.JLabelSet(  0,315,100,20,"届先住所3:"		,	11,1);
-		JLabel LB_Tel					= B100_FrameParts.JLabelSet(  0,340,100,20,"届先電話:"			,	11,1);
-		JLabel LB_Fax					= B100_FrameParts.JLabelSet(  0,365,100,20,"届先FAX:"			,	11,1);
-		JLabel LB_Mail					= B100_FrameParts.JLabelSet(  0,390,100,20,"届先MAIL:"			,	11,1);
-		JLabel LB_SetName				= B100_FrameParts.JLabelSet(  0,415,100,20,"送り状登録名:"		,	11,1);
-		JLabel LB_Com01					= B100_FrameParts.JLabelSet(  0,440,100,20,"コメント01:"		,	11,1);
-		JLabel LB_Com02					= B100_FrameParts.JLabelSet(  0,465,100,20,"コメント02:"		,	11,1);
-		JLabel LB_Com03					= B100_FrameParts.JLabelSet(  0,490,100,20,"コメント03:"		,	11,1);
-		JLabel LB_Com04					= B100_FrameParts.JLabelSet(  0,515,100,20,"コメント04:"		,	11,1);
-		JLabel LB_Com05					= B100_FrameParts.JLabelSet(  0,540,100,20,"コメント05:"		,	11,1);
-		JLabel LB_DelFg					= B100_FrameParts.JLabelSet(  0,565,100,20,"削除区分:"			,	11,1);
-		JLabel LB_MstPriorityFirstFg	= B100_FrameParts.JLabelSet(  0,590,100,20,"届先マスタ優先:"	,	11,1);
-		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(  0,615,100,20,"データ登録日時:"	,	11,1);
-		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(  0,640,100,20,"データ更新日時:"	,	11,1);
-		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(  0,665,100,20,"登録者コード:"		,	11,1);
-		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(  0,690,100,20,"更新者コード:"		,	11,1);
+		String[] PriorityFirstFg = B100_DefaultVariable.PriorityFirstFg;
+		
+		JLabel LB_ClGpCD				= B100_FrameParts.JLabelSet(  0, 40,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColClGpCD][3]					+":"	,	11,1);
+		JLabel LB_CLGpName01			= B100_FrameParts.JLabelSet(  0, 65,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCLGpName01][3]				+":"	,	11,1);
+		JLabel LB_CL_DECD				= B100_FrameParts.JLabelSet(  0, 90,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCL_DECD][3]					+":"	,	11,1);
+		JLabel LB_DECD					= B100_FrameParts.JLabelSet(  0,115,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDECD][3]						+":"	,	11,1);
+		JLabel LB_DepartmentCd			= B100_FrameParts.JLabelSet(  0,140,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDepartmentCd][3]			+":"	,	11,1);
+		JLabel LB_DEName01				= B100_FrameParts.JLabelSet(  0,165,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDEName01][3]				+":"	,	11,1);
+		JLabel LB_DEName02				= B100_FrameParts.JLabelSet(  0,190,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDEName02][3]				+":"	,	11,1);
+		JLabel LB_DEName03				= B100_FrameParts.JLabelSet(  0,215,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDEName03][3]				+":"	,	11,1);
+		JLabel LB_Post					= B100_FrameParts.JLabelSet(  0,240,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColPost][3]						+":"	,	11,1);
+		JLabel LB_Add01					= B100_FrameParts.JLabelSet(  0,265,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColAdd01][3]					+":"	,	11,1);
+		JLabel LB_Add02					= B100_FrameParts.JLabelSet(  0,290,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColAdd02][3]					+":"	,	11,1);
+		JLabel LB_Add03					= B100_FrameParts.JLabelSet(  0,315,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColAdd03][3]					+":"	,	11,1);
+		JLabel LB_Tel					= B100_FrameParts.JLabelSet(  0,340,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColTel][3]						+":"	,	11,1);
+		JLabel LB_Fax					= B100_FrameParts.JLabelSet(  0,365,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColFax][3]						+":"	,	11,1);
+		JLabel LB_Mail					= B100_FrameParts.JLabelSet(  0,390,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColMail][3]						+":"	,	11,1);
+		JLabel LB_SetName				= B100_FrameParts.JLabelSet(  0,415,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColSetName][3]					+":"	,	11,1);
+		JLabel LB_Com01					= B100_FrameParts.JLabelSet(  0,440,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom01][3]					+":"	,	11,1);
+		JLabel LB_Com02					= B100_FrameParts.JLabelSet(  0,465,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom02][3]					+":"	,	11,1);
+		JLabel LB_Com03					= B100_FrameParts.JLabelSet(  0,490,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom03][3]					+":"	,	11,1);
+		JLabel LB_Com04					= B100_FrameParts.JLabelSet(  0,515,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom04][3]					+":"	,	11,1);
+		JLabel LB_Com05					= B100_FrameParts.JLabelSet(  0,540,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColCom05][3]					+":"	,	11,1);
+		JLabel LB_DelFg					= B100_FrameParts.JLabelSet(  0,565,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColDelFg][3]					+":"	,	11,1);
+		JLabel LB_MstPriorityFirstFg	= B100_FrameParts.JLabelSet(  0,590,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColMstPriorityFirstFg][3]	+":"	,	11,1);
+		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(  0,615,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColEntryDate][3]				+":"	,	11,1);
+		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(  0,640,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColUpdateDate][3]				+":"	,	11,1);
+		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(  0,665,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColEntryUser][3]				+":"	,	11,1);
+		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(  0,690,100,20,(String)RtDeliveryComversionMstRt[M100_DeliveryComversionMstRt.ColUpdateUser][3]				+":"	,	11,1);
 			
 		final JTextField  TB_ClGpCD				= B100_FrameParts.JTextFieldSet(	100, 40,100,20,"",11,0);			//荷主グループCD
 		final JTextField  TB_CLGpName01			= B100_FrameParts.JTextFieldSet(	100, 65,200,20,"",11,0);			//荷主グループ名
@@ -343,15 +345,17 @@ public class WM100_DeliveryComversionMst_01_RenewAndCreate{
 			}
 		});
 		
-		JLabel LB_SearchDECD				= B100_FrameParts.JLabelSet(  0, 40,100,20,"届先CD:"			,11,1);
-		JLabel LB_SearchDepartmentCd		= B100_FrameParts.JLabelSet(  0, 65,100,20,"届先部署CD:"		,11,1);
-		JLabel LB_SearchDEName				= B100_FrameParts.JLabelSet(  0, 90,100,20,"届先名:"			,11,1);
-		JLabel LB_SearchAdd					= B100_FrameParts.JLabelSet(  0,115,100,20,"住所:"				,11,1);
-		JLabel LB_SearchTel					= B100_FrameParts.JLabelSet(  0,140,100,20,"電話:"				,11,1);
+		Object[][] DeliveryMstDefinitionRt	= M100_DeliveryMstRt.DefinitionRt();
 		
-		JLabel LB_SearchPost				= B100_FrameParts.JLabelSet(250, 40, 50,20,"郵便:"				,11,1);
-		JLabel LB_SearchFax					= B100_FrameParts.JLabelSet(250, 65, 50,20,"FAX:"				,11,1);
-		JLabel LB_SearchMail				= B100_FrameParts.JLabelSet(250, 90, 50,20,"MAIL:"				,11,1);
+		JLabel LB_SearchDECD				= B100_FrameParts.JLabelSet(  0, 40,100,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchDECD][5]				+":"	,11,1);
+		JLabel LB_SearchDepartmentCd		= B100_FrameParts.JLabelSet(  0, 65,100,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchDepartmentCd][5]	+":"	,11,1);
+		JLabel LB_SearchDEName				= B100_FrameParts.JLabelSet(  0, 90,100,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchDEName][5]			+":"	,11,1);
+		JLabel LB_SearchAdd					= B100_FrameParts.JLabelSet(  0,115,100,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchAdd][5]				+":"	,11,1);
+		JLabel LB_SearchTel					= B100_FrameParts.JLabelSet(  0,140,100,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchTel][5]				+":"	,11,1);
+		
+		JLabel LB_SearchPost				= B100_FrameParts.JLabelSet(250, 40, 50,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchPost][5]				+":"	,11,1);
+		JLabel LB_SearchFax					= B100_FrameParts.JLabelSet(250, 65, 50,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchFax][5]				+":"	,11,1);
+		JLabel LB_SearchMail				= B100_FrameParts.JLabelSet(250, 90, 50,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchMail][5]				+":"	,11,1);
 		
 		final JTextField  TB_SearchDECD				= B100_FrameParts.JTextFieldSet(	100, 40,100,20,"",11,0);			//届先CD
 		final JTextField  TB_SearchDepartmentCd		= B100_FrameParts.JTextFieldSet(	100, 65,100,20,"",11,0);			//届先部署CD
@@ -363,13 +367,13 @@ public class WM100_DeliveryComversionMst_01_RenewAndCreate{
 		final JTextField  TB_SearchFax				= B100_FrameParts.JTextFieldSet(	300, 65,100,20,"",11,0);			//FAX
 		final JTextField  TB_SearchMail				= B100_FrameParts.JTextFieldSet(	300, 90,100,20,"",11,0);			//MAIL
 		
-		JLabel LB2_SearchDECD				= B100_FrameParts.JLabelSet(200, 40, 50,20,B100_DefaultVariable.SearchExact	,11,0);
-		JLabel LB2_SearchDepartmentCd		= B100_FrameParts.JLabelSet(200, 65, 50,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchDECD				= B100_FrameParts.JLabelSet(200, 40, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDepartmentCd		= B100_FrameParts.JLabelSet(200, 65, 50,20,B100_DefaultVariable.SearchExact		,11,0);
 		JLabel LB2_SearchDEName				= B100_FrameParts.JLabelSet(200, 90, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		JLabel LB2_SearchAdd				= B100_FrameParts.JLabelSet(200,115, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		JLabel LB2_SearchTel				= B100_FrameParts.JLabelSet(200,140, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
-		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(400, 40, 50,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(400, 40, 50,20,B100_DefaultVariable.SearchPrefix		,11,0);
 		JLabel LB2_SearchFax				= B100_FrameParts.JLabelSet(400, 65, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		JLabel LB2_SearchMail				= B100_FrameParts.JLabelSet(400, 90, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		

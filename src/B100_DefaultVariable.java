@@ -131,7 +131,8 @@ public class B100_DefaultVariable{
 	
 	static final String[] StockSortModeList			= {"ロケ順","商品CD順"};
 	
-	
+	static final String[] SearchPriorityFirstFg 		= {"未指定","データ優先","マスタ優先"};
+	static final String[] PriorityFirstFg 			= {"データ優先","マスタ優先"};
 	
 	/*
 	====================================================================
@@ -991,7 +992,6 @@ public class B100_DefaultVariable{
 	
 	private static void ShimeList() {
 		ShimeDateList=new String[3][29];							//1日～28日　末日99のリスト
-		DeliFeeNorm = new String[3][2];						//運賃請求基準　発請求/着請求
 		
 		ShimeDateList[0][ 0] =  "1日";
 		ShimeDateList[0][ 1] =  "2日";

@@ -31,29 +31,31 @@ public class WM100_ClMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_cl_cd			= B100_FrameParts.JLabelSet(  0, 40,100,20,"荷主CD:",				11,1);
-		JLabel LB_ClGpCD		= B100_FrameParts.JLabelSet(  0, 65,100,20,"荷主グループCD:",		11,1);
-		JLabel LB_WHCD			= B100_FrameParts.JLabelSet(  0, 90,100,20,"担当倉庫:",			11,1);
-		JLabel LB_CLName01		= B100_FrameParts.JLabelSet(  0,115,100,20,"荷主表記名:",			11,1);
-		JLabel LB_CLName02		= B100_FrameParts.JLabelSet(  0,140,100,20,"荷主正式名:",			11,1);
-		JLabel LB_CLName03		= B100_FrameParts.JLabelSet(  0,165,100,20,"荷主略名:",			11,1);
-		JLabel LB_Post			= B100_FrameParts.JLabelSet(  0,190,100,20,"郵便番号:",			11,1);
-		JLabel LB_Add01			= B100_FrameParts.JLabelSet(  0,215,100,20,"住所1:",				11,1);
-		JLabel LB_Add02			= B100_FrameParts.JLabelSet(  0,240,100,20,"住所2:",				11,1);
-		JLabel LB_Add03			= B100_FrameParts.JLabelSet(  0,265,100,20,"住所3:",				11,1);
-		JLabel LB_Tel			= B100_FrameParts.JLabelSet(  0,290,100,20,"電話番号:",			11,1);
-		JLabel LB_Fax			= B100_FrameParts.JLabelSet(  0,315,100,20,"FAX:",					11,1);
-		JLabel LB_Mail			= B100_FrameParts.JLabelSet(  0,340,100,20,"メールアドレス:",		11,1);
-		JLabel LB_Com01			= B100_FrameParts.JLabelSet(  0,365,100,20,"コメント1:",			11,1);
-		JLabel LB_Com02			= B100_FrameParts.JLabelSet(  0,390,100,20,"コメント2:",			11,1);
-		JLabel LB_Com03			= B100_FrameParts.JLabelSet(  0,415,100,20,"コメント3:",			11,1);
-		JLabel LB_ShimeDate		= B100_FrameParts.JLabelSet(  0,440,100,20,"運賃締日:",			11,1);
-		JLabel LB_ShimeBasis	= B100_FrameParts.JLabelSet(  0,465,100,20,"請求基準:",			11,1);
-		JLabel LB_EntryDate		= B100_FrameParts.JLabelSet(  0,490,100,20,"データ登録日時:",		11,1);
-		JLabel LB_UpdateDate	= B100_FrameParts.JLabelSet(  0,515,100,20,"データ更新日時:",		11,1);
-		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(  0,540,100,20,"登録者コード:",		11,1);
-		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(  0,565,100,20,"更新者コード:",		11,1);
-		JLabel LB_PTMSCD		= B100_FrameParts.JLabelSet(  0,590,100,20,"基幹SYS荷主CD:",		11,1);
+		Object[][] RtClMstRt	= M100_ClMstRt.RtClMstRt();
+		
+		JLabel LB_cl_cd			= B100_FrameParts.JLabelSet(  0, 40,100,20,(String)RtClMstRt[M100_ClMstRt.Colcl_cd][3]		+":",	11,1);
+		JLabel LB_ClGpCD		= B100_FrameParts.JLabelSet(  0, 65,100,20,(String)RtClMstRt[M100_ClMstRt.ColClGpCD][3]		+":",	11,1);
+		JLabel LB_WHCD			= B100_FrameParts.JLabelSet(  0, 90,100,20,(String)RtClMstRt[M100_ClMstRt.ColWHCD][3]			+":",	11,1);
+		JLabel LB_CLName01		= B100_FrameParts.JLabelSet(  0,115,100,20,(String)RtClMstRt[M100_ClMstRt.ColCLName01][3]	+":",	11,1);
+		JLabel LB_CLName02		= B100_FrameParts.JLabelSet(  0,140,100,20,(String)RtClMstRt[M100_ClMstRt.ColCLName02][3]	+":",	11,1);
+		JLabel LB_CLName03		= B100_FrameParts.JLabelSet(  0,165,100,20,(String)RtClMstRt[M100_ClMstRt.ColCLName03][3]	+":",	11,1);
+		JLabel LB_Post			= B100_FrameParts.JLabelSet(  0,190,100,20,(String)RtClMstRt[M100_ClMstRt.ColPost][3]			+":",	11,1);
+		JLabel LB_Add01			= B100_FrameParts.JLabelSet(  0,215,100,20,(String)RtClMstRt[M100_ClMstRt.ColAdd01][3]		+":",	11,1);
+		JLabel LB_Add02			= B100_FrameParts.JLabelSet(  0,240,100,20,(String)RtClMstRt[M100_ClMstRt.ColAdd02][3]		+":",	11,1);
+		JLabel LB_Add03			= B100_FrameParts.JLabelSet(  0,265,100,20,(String)RtClMstRt[M100_ClMstRt.ColAdd03][3]		+":",	11,1);
+		JLabel LB_Tel			= B100_FrameParts.JLabelSet(  0,290,100,20,(String)RtClMstRt[M100_ClMstRt.ColTel][3]			+":",	11,1);
+		JLabel LB_Fax			= B100_FrameParts.JLabelSet(  0,315,100,20,(String)RtClMstRt[M100_ClMstRt.ColFax][3]			+":",	11,1);
+		JLabel LB_Mail			= B100_FrameParts.JLabelSet(  0,340,100,20,(String)RtClMstRt[M100_ClMstRt.ColMail][3]			+":",	11,1);
+		JLabel LB_Com01			= B100_FrameParts.JLabelSet(  0,365,100,20,(String)RtClMstRt[M100_ClMstRt.ColCom01][3]		+":",	11,1);
+		JLabel LB_Com02			= B100_FrameParts.JLabelSet(  0,390,100,20,(String)RtClMstRt[M100_ClMstRt.ColCom02][3]		+":",	11,1);
+		JLabel LB_Com03			= B100_FrameParts.JLabelSet(  0,415,100,20,(String)RtClMstRt[M100_ClMstRt.ColCom03][3]		+":",	11,1);
+		JLabel LB_ShimeDate		= B100_FrameParts.JLabelSet(  0,440,100,20,(String)RtClMstRt[M100_ClMstRt.ColShimeDate][3]	+":",	11,1);
+		JLabel LB_ShimeBasis	= B100_FrameParts.JLabelSet(  0,465,100,20,(String)RtClMstRt[M100_ClMstRt.ColShimeBasis][3]	+":",	11,1);
+		JLabel LB_EntryDate		= B100_FrameParts.JLabelSet(  0,490,100,20,(String)RtClMstRt[M100_ClMstRt.ColEntryDate][3]	+":",	11,1);
+		JLabel LB_UpdateDate	= B100_FrameParts.JLabelSet(  0,515,100,20,(String)RtClMstRt[M100_ClMstRt.ColUpdateDate][3]	+":",	11,1);
+		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(  0,540,100,20,(String)RtClMstRt[M100_ClMstRt.ColEntryUser][3]	+":",	11,1);
+		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(  0,565,100,20,(String)RtClMstRt[M100_ClMstRt.ColUpdateUser][3]	+":",	11,1);
+		JLabel LB_PTMSCD		= B100_FrameParts.JLabelSet(  0,590,100,20,(String)RtClMstRt[M100_ClMstRt.ColPTMSCD][3]		+":",	11,1);
 		
 		final JTextField TB_cl_cd		 = B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//荷主CD
 		final JComboBox  TB_ClGpCD	  	 = B100_FrameParts.JComboBoxSet( 100, 65,250,20,B100_DefaultVariable.ClGpList[0],	11);		//荷主グループCD
