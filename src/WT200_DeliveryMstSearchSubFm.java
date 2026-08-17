@@ -86,13 +86,15 @@ public class WT200_DeliveryMstSearchSubFm{
 		Delivery_fm.add(DeliveryExit_btn);
 		Delivery_fm.add(DeliveryEntry_btn);
 		
+		Object[][] DefinitionRt	= M100_DeliveryMstRt.DefinitionRt();
+		
 		//検索条件
-		JLabel LB_SearchDECD 			= B100_FrameParts.JLabelSet(	  0, 50,100,20,"届先CD:"	,11,1);
-		JLabel LB_SearchDepartmentCd 	= B100_FrameParts.JLabelSet(	  0, 75,100,20,"部署CD:"	,11,1);
-		JLabel LB_SearchDEName 			= B100_FrameParts.JLabelSet(	  0,100,100,20,"届先名:"	,11,1);
-		JLabel LB_SearchPost 			= B100_FrameParts.JLabelSet(	300, 50,100,20,"届先郵便:"	,11,1);
-		JLabel LB_SearchAdd 			= B100_FrameParts.JLabelSet(	300, 75,100,20,"届先住所:"	,11,1);
-		JLabel LB_SearchTel 			= B100_FrameParts.JLabelSet(	300,100,100,20,"届先電話:"	,11,1);
+		JLabel LB_SearchDECD 			= B100_FrameParts.JLabelSet(	  0, 50,100,20,(String)DefinitionRt[M100_DeliveryMstRt.ColSearchDECD][5]			+":"	,11,1);
+		JLabel LB_SearchDepartmentCd 	= B100_FrameParts.JLabelSet(	  0, 75,100,20,(String)DefinitionRt[M100_DeliveryMstRt.ColSearchDepartmentCd][5]	+":"	,11,1);
+		JLabel LB_SearchDEName 			= B100_FrameParts.JLabelSet(	  0,100,100,20,(String)DefinitionRt[M100_DeliveryMstRt.ColSearchDEName][5]		+":"	,11,1);
+		JLabel LB_SearchPost 			= B100_FrameParts.JLabelSet(	300, 50,100,20,(String)DefinitionRt[M100_DeliveryMstRt.ColSearchPost][5]			+":"	,11,1);
+		JLabel LB_SearchAdd 			= B100_FrameParts.JLabelSet(	300, 75,100,20,(String)DefinitionRt[M100_DeliveryMstRt.ColSearchAdd][5]			+":"	,11,1);
+		JLabel LB_SearchTel 			= B100_FrameParts.JLabelSet(	300,100,100,20,(String)DefinitionRt[M100_DeliveryMstRt.ColSearchTel][5]			+":"	,11,1);
 		
 		final JTextField TB_SearchDECD 			= B100_FrameParts.JTextFieldSet(	100, 50,100,20,""	,11,0);	//届先CD
 		final JTextField TB_SearchDepartmentCd 	= B100_FrameParts.JTextFieldSet(	100, 75,100,20,""	,11,0);	//部署CD
@@ -101,12 +103,12 @@ public class WT200_DeliveryMstSearchSubFm{
 		final JTextField TB_SearchAdd 			= B100_FrameParts.JTextFieldSet(	400, 75,100,20,""	,11,0);	//届先住所
 		final JTextField TB_SearchTel 			= B100_FrameParts.JTextFieldSet(	400,100,100,20,""	,11,0);	//届先電話
 		
-		JLabel LB2_SearchDECD 			= B100_FrameParts.JLabelSet(	200, 50,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchDepartmentCd 	= B100_FrameParts.JLabelSet(	200, 75,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchDEName 		= B100_FrameParts.JLabelSet(	200,100,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchPost 			= B100_FrameParts.JLabelSet(	500, 50,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchAdd 			= B100_FrameParts.JLabelSet(	500, 75,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchTel 			= B100_FrameParts.JLabelSet(	500,100,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchDECD 			= B100_FrameParts.JLabelSet(	200, 50,100,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDepartmentCd 	= B100_FrameParts.JLabelSet(	200, 75,100,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDEName 		= B100_FrameParts.JLabelSet(	200,100,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchPost 			= B100_FrameParts.JLabelSet(	500, 50,100,20,B100_DefaultVariable.SearchPrefix		,11,0);
+		JLabel LB2_SearchAdd 			= B100_FrameParts.JLabelSet(	500, 75,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchTel 			= B100_FrameParts.JLabelSet(	500,100,100,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		JButton DeliverySearchKickBtn						= B100_FrameParts.BtnSet(			400,125, 90,20,"検索",11);
 		

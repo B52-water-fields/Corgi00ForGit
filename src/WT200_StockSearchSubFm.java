@@ -58,11 +58,13 @@ public class WT200_StockSearchSubFm{
 		Stock_fm.add(StockExit_btn);
 		Stock_fm.add(StockEntry_btn);
 		
-		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	 0, 50,100,20,"倉庫:"		,11,1);
-		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	 0, 75,100,20,"荷主:"		,11,1);
-		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(	 0,100,100,20,"ロケ:"		,11,1);
-		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	 0,125,100,20,"商品CD:"		,11,1);
-		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(	 0,150,100,20,"商品名:"		,11,1);
+		Object[][] DefinitionRt	= T100_StockRt.DefinitionRt();
+		
+		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	 0, 50,100,20,(String)DefinitionRt[T100_StockRt.ColSearchWhCd][5]		+":"	,11,1);
+		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	 0, 75,100,20,(String)DefinitionRt[T100_StockRt.ColSearchClCd][5]		+":"	,11,1);
+		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(	 0,100,100,20,(String)DefinitionRt[T100_StockRt.ColSearchLoc][5]		+":"	,11,1);
+		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	 0,125,100,20,(String)DefinitionRt[T100_StockRt.ColSearchItemCd][5]	+":"	,11,1);
+		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(	 0,150,100,20,(String)DefinitionRt[T100_StockRt.ColSearchItemName][5]	+":"	,11,1);
 		
 		final JComboBox TB_WhCd		= B100_FrameParts.JComboBoxSet(			100, 50,300,20,B100_DefaultVariable.WhList[0],11);	//倉庫
 		final JComboBox TB_ClCd		= B100_FrameParts.JComboBoxSet(			100, 75,300,20,B100_DefaultVariable.ClList[0],11);	//荷主
@@ -71,9 +73,9 @@ public class WT200_StockSearchSubFm{
 		final JTextField  TB_SearchItemCd	= B100_FrameParts.JTextFieldSet(	100,125,100,20,"",12,0);							//商品CD
 		final JTextField  TB_SearchItemName	= B100_FrameParts.JTextFieldSet(	100,150,100,20,"",12,0);							//商品名
 		
-		JLabel LB2_SearchLoc		= B100_FrameParts.JLabelSet(	200,100,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchItemCd		= B100_FrameParts.JLabelSet(	200,125,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchItemName	= B100_FrameParts.JLabelSet(	200,150,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchLoc		= B100_FrameParts.JLabelSet(	200,100,100,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchItemCd		= B100_FrameParts.JLabelSet(	200,125,100,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchItemName	= B100_FrameParts.JLabelSet(	200,150,100,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		JButton StockSearchKickBtn	= B100_FrameParts.BtnSet(		100,175, 90,20,"検索",11);
 		

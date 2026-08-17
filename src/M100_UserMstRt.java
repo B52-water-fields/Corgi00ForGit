@@ -160,7 +160,32 @@ public class M100_UserMstRt{
 				,{"CLName01"				,ColCLName01					,"String"	,"主要担当荷主名"		,""}
 				};
 		
+		RtSettingUserMstRt = B100_LanguageControl.RtControl(RtSettingUserMstRt);
+		
 		return RtSettingUserMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"	,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫CD"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchAuthorityFG		,B100_DefaultVariable.SearchAuthorityFG				,"権限区分"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchUserCd				,""														,"ユーザーCD"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchUserName			,""														,"ユーザー名"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchCarCd				,""														,"標準車輛CD"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCarName				,""														,"標準車両名"	,""}
+					,{"String"		,null	,"Prefix"	,ColSearchPost				,""														,"郵便番号"		,""}
+					,{"String"		,null	,"Partial"	,ColSearchAdd					,""														,"住所"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchTel					,""														,"Tel"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchFax					,""														,"Fax"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchMail				,""														,"Mail"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchCom					,""														,"コメント"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除区分"		,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] UserMstRt(
@@ -180,22 +205,58 @@ public class M100_UserMstRt{
 			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchWHCD					,"Exact"	,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫CD"		,""}
-				,{"String"		,SearchShippingCompanyCd	,"Exact"	,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
-				,{"String"		,SearchAuthorityFG			,"Exact"	,ColSearchAuthorityFG		,B100_DefaultVariable.SearchAuthorityFG				,"権限区分"		,""}
-				,{"String"		,SearchUserCd				,"Exact"	,ColSearchUserCd				,""														,"ユーザーCD"	,""}
-				,{"String"		,SearchUserName				,"Partial"	,ColSearchUserName			,""														,"ユーザー名"	,""}
-				,{"String"		,SearchCarCd				,"Exact"	,ColSearchCarCd				,""														,"標準車輛CD"	,""}
-				,{"String"		,SearchCarName				,"Partial"	,ColSearchCarName				,""														,"標準車両名"	,""}
-				,{"String"		,SearchPost					,"Prefix"	,ColSearchPost				,""														,"郵便番号"		,""}
-				,{"String"		,SearchAdd					,"Partial"	,ColSearchAdd					,""														,"住所"			,""}
-				,{"String"		,SearchTel					,"Partial"	,ColSearchTel					,""														,"Tel"			,""}
-				,{"String"		,SearchFax					,"Partial"	,ColSearchFax					,""														,"Fax"			,""}
-				,{"String"		,SearchMail					,"Partial"	,ColSearchMail				,""														,"Mail"			,""}
-				,{"String"		,SearchCom					,"Partial"	,ColSearchCom					,""														,"コメント"		,""}
-				,{"String"		,SearchDelFg				,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除区分"		,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchWHCD:	
+					Definition[i][1]	= SearchWHCD;
+					break;
+				case ColSearchShippingCompanyCd:	
+					Definition[i][1]	= SearchShippingCompanyCd;
+					break;
+				case ColSearchAuthorityFG:	
+					Definition[i][1]	= SearchAuthorityFG;
+					break;
+				case ColSearchUserCd:	
+					Definition[i][1]	= SearchUserCd;
+					break;
+				case ColSearchUserName:	
+					Definition[i][1]	= SearchUserName;
+					break;
+				case ColSearchCarCd:	
+					Definition[i][1]	= SearchCarCd;
+					break;
+				case ColSearchCarName:	
+					Definition[i][1]	= SearchCarName;
+					break;
+				case ColSearchPost:	
+					Definition[i][1]	= SearchPost;
+					break;
+				case ColSearchAdd:	
+					Definition[i][1]	= SearchAdd;
+					break;
+				case ColSearchTel:	
+					Definition[i][1]	= SearchTel;
+					break;
+				case ColSearchFax:	
+					Definition[i][1]	= SearchFax;
+					break;
+				case ColSearchMail:	
+					Definition[i][1]	= SearchMail;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				case ColSearchDelFg:	
+					Definition[i][1]	= SearchDelFg;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

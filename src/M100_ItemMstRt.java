@@ -276,7 +276,39 @@ public class M100_ItemMstRt{
 				,{"DelFg"					,ColDelFg					,"int"		,"削除フラグ"}
 				};
 		
+		RtSettingItemMstRt = B100_LanguageControl.RtControl(RtSettingItemMstRt);
+		
 		return RtSettingItemMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"	,ColSearchClCd				,B100_DefaultVariable.SearchClList			,"荷主コード"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchClGpCd				,B100_DefaultVariable.SearchClGpList			,"荷主グループコード"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchItemCd				,""												,"商品コード"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchClItemCd			,""												,"荷主商品コード"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchItemName			,""												,"商品名"					,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd01	,B100_DefaultVariable.SearchDeliveryType01	,"運送タイプコード01"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd02	,B100_DefaultVariable.SearchDeliveryType02	,"運送タイプコード02"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd03	,B100_DefaultVariable.SearchDeliveryType03	,"運送タイプコード03"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd04	,B100_DefaultVariable.SearchDeliveryType04	,"運送タイプコード04"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd05	,B100_DefaultVariable.SearchDeliveryType05	,"運送タイプコード05"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchItemMDNo			,""												,"商品モデル番号（型番）"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchCategoryCd			,""												,"商品カテゴリCD"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchCategoryName		,""												,"商品カテゴリ名"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchItemColorCd		,""												,"商品カラーコード"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchItemColorName		,""												,"商品カラー名"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchItemSizeCd			,""												,"商品サイズコード"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchItemSizeName		,""												,"商品サイズ名"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchJanCd				,""												,"JANCD"					,""}
+					,{"String"		,null	,"Exact"	,ColSearchTildFG				,B100_DefaultVariable.SearchTildFG			,"温度区分"					,""}
+					,{"String"		,null	,"Partial"	,ColSearchTildName			,""												,"温度区分名"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList			,"削除フラグ"				,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] ItemMstRt(
@@ -303,29 +335,78 @@ public class M100_ItemMstRt{
 			ArrayList<String> SearchDelFg,				//削除フラグ
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClCd					,"Exact"	,ColSearchClCd				,B100_DefaultVariable.SearchClList			,"荷主コード"				,""}
-				,{"String"		,SearchClGpCd				,"Exact"	,ColSearchClGpCd				,B100_DefaultVariable.SearchClGpList			,"荷主グループコード"		,""}
-				,{"String"		,SearchItemCd				,"Exact"	,ColSearchItemCd				,""												,"商品コード"				,""}
-				,{"String"		,SearchClItemCd				,"Exact"	,ColSearchClItemCd			,""												,"荷主商品コード"			,""}
-				,{"String"		,SearchItemName				,"Partial"	,ColSearchItemName			,""												,"商品名"					,""}
-				,{"String"		,SearchDeliveryTypeCd01		,"Exact"	,ColSearchDeliveryTypeCd01	,B100_DefaultVariable.SearchDeliveryType01	,"運送タイプコード01"		,""}
-				,{"String"		,SearchDeliveryTypeCd02		,"Exact"	,ColSearchDeliveryTypeCd02	,B100_DefaultVariable.SearchDeliveryType02	,"運送タイプコード02"		,""}
-				,{"String"		,SearchDeliveryTypeCd03		,"Exact"	,ColSearchDeliveryTypeCd03	,B100_DefaultVariable.SearchDeliveryType03	,"運送タイプコード03"		,""}
-				,{"String"		,SearchDeliveryTypeCd04		,"Exact"	,ColSearchDeliveryTypeCd04	,B100_DefaultVariable.SearchDeliveryType04	,"運送タイプコード04"		,""}
-				,{"String"		,SearchDeliveryTypeCd05		,"Exact"	,ColSearchDeliveryTypeCd05	,B100_DefaultVariable.SearchDeliveryType05	,"運送タイプコード05"		,""}
-				,{"String"		,SearchItemMDNo				,"Exact"	,ColSearchItemMDNo			,""												,"商品モデル番号（型番）"	,""}
-				,{"String"		,SearchCategoryCd			,"Exact"	,ColSearchCategoryCd			,""												,"商品カテゴリCD"			,""}
-				,{"String"		,SearchCategoryName			,"Partial"	,ColSearchCategoryName		,""												,"商品カテゴリ名"			,""}
-				,{"String"		,SearchItemColorCd			,"Exact"	,ColSearchItemColorCd		,""												,"商品カラーコード"			,""}
-				,{"String"		,SearchItemColorName		,"Partial"	,ColSearchItemColorName		,""												,"商品カラー名"				,""}
-				,{"String"		,SearchItemSizeCd			,"Exact"	,ColSearchItemSizeCd			,""												,"商品サイズコード"			,""}
-				,{"String"		,SearchItemSizeName			,"Partial"	,ColSearchItemSizeName		,""												,"商品サイズ名"				,""}
-				,{"String"		,SearchJanCd				,"Exact"	,ColSearchJanCd				,""												,"JANCD"					,""}
-				,{"String"		,SearchTildFG				,"Exact"	,ColSearchTildFG				,B100_DefaultVariable.SearchTildFG			,"温度区分"					,""}
-				,{"String"		,SearchTildName				,"Partial"	,ColSearchTildName			,""												,"温度区分名"				,""}
-				,{"String"		,SearchDelFg				,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList			,"削除フラグ"				,""}
-				};
+		Object[][] Definition = DefinitionRt();
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchClGpCd:	
+					Definition[i][1]	= SearchClGpCd;
+					break;
+				case ColSearchItemCd:	
+					Definition[i][1]	= SearchItemCd;
+					break;
+				case ColSearchClItemCd:	
+					Definition[i][1]	= SearchClItemCd;
+					break;
+				case ColSearchItemName:	
+					Definition[i][1]	= SearchItemName;
+					break;
+				case ColSearchDeliveryTypeCd01:	
+					Definition[i][1]	= SearchDeliveryTypeCd01;
+					break;
+				case ColSearchDeliveryTypeCd02:	
+					Definition[i][1]	= SearchDeliveryTypeCd02;
+					break;
+				case ColSearchDeliveryTypeCd03:	
+					Definition[i][1]	= SearchDeliveryTypeCd03;
+					break;
+				case ColSearchDeliveryTypeCd04:	
+					Definition[i][1]	= SearchDeliveryTypeCd04;
+					break;
+				case ColSearchDeliveryTypeCd05:	
+					Definition[i][1]	= SearchDeliveryTypeCd05;
+					break;
+				case ColSearchItemMDNo:	
+					Definition[i][1]	= SearchItemMDNo;
+					break;
+				case ColSearchCategoryCd:	
+					Definition[i][1]	= SearchCategoryCd;
+					break;
+				case ColSearchCategoryName:	
+					Definition[i][1]	= SearchCategoryName;
+					break;
+				case ColSearchItemColorCd:	
+					Definition[i][1]	= SearchItemColorCd;
+					break;
+				case ColSearchItemColorName:	
+					Definition[i][1]	= SearchItemColorName;
+					break;
+				case ColSearchItemSizeCd:	
+					Definition[i][1]	= SearchItemSizeCd;
+					break;
+				case ColSearchItemSizeName:	
+					Definition[i][1]	= SearchItemSizeName;
+					break;
+				case ColSearchJanCd:	
+					Definition[i][1]	= SearchJanCd;
+					break;
+				case ColSearchTildFG:	
+					Definition[i][1]	= SearchTildFG;
+					break;
+				case ColSearchTildName:	
+					Definition[i][1]	= SearchTildName;
+					break;
+				case ColSearchDelFg:	
+					Definition[i][1]	= SearchDelFg;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

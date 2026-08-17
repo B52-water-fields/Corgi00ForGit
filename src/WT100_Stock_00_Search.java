@@ -134,18 +134,18 @@ public class WT100_Stock_00_Search{
 		
 		final JComboBox TB_SortItemcdMode	= B100_FrameParts.JComboBoxSet(760,175,100,20,SortModeList,11);	//並び順 0:ロケ順 1:商品CD順
 		
-		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(500, 25, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchItemName		= B100_FrameParts.JLabelSet(500, 50, 80,20,"を含む"	,11,0);
-		JLabel LB2_SearchClItemCd		= B100_FrameParts.JLabelSet(500, 75, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchJanCd			= B100_FrameParts.JLabelSet(500,100, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchItemMdNo		= B100_FrameParts.JLabelSet(500,125, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchLot			= B100_FrameParts.JLabelSet(500,150, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchExpdate		= B100_FrameParts.JLabelSet(510,175, 40,20,"～"		,11,2);
-		JLabel LB2_SearchActualDate		= B100_FrameParts.JLabelSet(510,200, 40,20,"～"		,11,2);
+		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(500, 25, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchItemName		= B100_FrameParts.JLabelSet(500, 50, 80,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchClItemCd		= B100_FrameParts.JLabelSet(500, 75, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchJanCd			= B100_FrameParts.JLabelSet(500,100, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchItemMdNo		= B100_FrameParts.JLabelSet(500,125, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchLot			= B100_FrameParts.JLabelSet(500,150, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchExpdate		= B100_FrameParts.JLabelSet(510,175, 40,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchActualDate		= B100_FrameParts.JLabelSet(510,200, 40,20,B100_DefaultVariable.SearchFromTo		,11,2);
 		
-		JLabel LB2_SearchQty			= B100_FrameParts.JLabelSet(750, 75, 40,20,"～"		,11,2);
-		JLabel LB2_SearchShipPlanQty	= B100_FrameParts.JLabelSet(750,100, 40,20,"～"		,11,2);
-		JLabel LB2_SearchPossibleQty	= B100_FrameParts.JLabelSet(750,125, 40,20,"～"		,11,2);
+		JLabel LB2_SearchQty			= B100_FrameParts.JLabelSet(750, 75, 40,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchShipPlanQty	= B100_FrameParts.JLabelSet(750,100, 40,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchPossibleQty	= B100_FrameParts.JLabelSet(750,125, 40,20,B100_DefaultVariable.SearchFromTo		,11,2);
 		
 		TB_SearchClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd,true));		//荷主コード
 		TB_SearchWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));		//倉庫コード

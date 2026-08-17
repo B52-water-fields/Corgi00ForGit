@@ -149,7 +149,33 @@ public class M100_DeliveryComversionMstRt{
 				,{"MstPriorityFirstFg"	,ColMstPriorityFirstFg	,"int"		,"届先マスタ優先フラグ"	,""}
 				};
 		
+		RtSettingDeliveryMstRt = B100_LanguageControl.RtControl(RtSettingDeliveryMstRt);
+		
 		return RtSettingDeliveryMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"	,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"		,""}
+					,{"String"		,null	,"Partial"	,ColSearchCLGpName				,""													,"荷主グループ名"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchCL_DECD					,""													,"荷主届先CD"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchDECD					,""													,"届先CD"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchDepartmentCd			,""													,"届先部署CD"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchDEName					,""													,"届先名"				,""}
+					,{"String"		,null	,"Prefix"	,ColSearchPost					,""													,"届先郵便"				,""}
+					,{"String"		,null	,"Partial"	,ColSearchAdd						,""													,"届先住所"				,""}
+					,{"String"		,null	,"Partial"	,ColSearchTel						,""													,"Tel"					,""}
+					,{"String"		,null	,"Partial"	,ColSearchFax						,""													,"Fax"					,""}
+					,{"String"		,null	,"Partial"	,ColSearchMail					,""													,"Mail"					,""}
+					,{"String"		,null	,"Partial"	,ColSearchSetName					,""													,"送り状登録名"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchCom						,""													,"コメント"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchDelFg					,B100_DefaultVariable.SearchDelList				,"削除区分"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchMstPriorityFirstFg	,""													,"届先マスタ優先フラグ"	,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] DeliveryComversionMstRt(
@@ -170,23 +196,60 @@ public class M100_DeliveryComversionMstRt{
 			ArrayList<String> SearchMstPriorityFirstFg,
 			boolean AllSearch){
 
-		Object[][] Definition = {
-				 {"String"		,SearchClGpCD				,"Exact"	,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"		,""}
-				,{"String"		,SearchCLGpName				,"Partial"	,ColSearchCLGpName				,""													,"荷主グループ名"		,""}
-				,{"String"		,SearchCL_DECD				,"Exact"	,ColSearchCL_DECD					,""													,"荷主届先CD"			,""}
-				,{"String"		,SearchDECD					,"Exact"	,ColSearchDECD					,""													,"届先CD"				,""}
-				,{"String"		,SearchDepartmentCd			,"Exact"	,ColSearchDepartmentCd			,""													,"届先部署CD"			,""}
-				,{"String"		,SearchDEName				,"Partial"	,ColSearchDEName					,""													,"届先名"				,""}
-				,{"String"		,SearchPost					,"Prefix"	,ColSearchPost					,""													,"届先郵便"				,""}
-				,{"String"		,SearchAdd					,"Partial"	,ColSearchAdd						,""													,"届先住所"				,""}
-				,{"String"		,SearchTel					,"Partial"	,ColSearchTel						,""													,"Tel"					,""}
-				,{"String"		,SearchFax					,"Partial"	,ColSearchFax						,""													,"Fax"					,""}
-				,{"String"		,SearchMail					,"Partial"	,ColSearchMail					,""													,"Mail"					,""}
-				,{"String"		,SearchSetName				,"Partial"	,ColSearchSetName					,""													,"送り状登録名"			,""}
-				,{"String"		,SearchCom					,"Partial"	,ColSearchCom						,""													,"コメント"				,""}
-				,{"String"		,SearchDelFg				,"Exact"	,ColSearchDelFg					,B100_DefaultVariable.SearchDelList				,"削除区分"				,""}
-				,{"String"		,SearchMstPriorityFirstFg	,"Exact"	,ColSearchMstPriorityFirstFg	,""													,"届先マスタ優先フラグ"	,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClGpCD:	
+					Definition[i][1]	= SearchClGpCD;
+					break;
+				case ColSearchCLGpName:	
+					Definition[i][1]	= SearchCLGpName;
+					break;
+				case ColSearchCL_DECD:	
+					Definition[i][1]	= SearchCL_DECD;
+					break;
+				case ColSearchDECD:	
+					Definition[i][1]	= SearchDECD;
+					break;
+				case ColSearchDepartmentCd:	
+					Definition[i][1]	= SearchDepartmentCd;
+					break;
+				case ColSearchDEName:	
+					Definition[i][1]	= SearchDEName;
+					break;
+				case ColSearchPost:	
+					Definition[i][1]	= SearchPost;
+					break;
+				case ColSearchAdd:	
+					Definition[i][1]	= SearchAdd;
+					break;
+				case ColSearchTel:	
+					Definition[i][1]	= SearchTel;
+					break;
+				case ColSearchFax:
+					Definition[i][1]	= SearchFax;
+					break;
+				case ColSearchMail:	
+					Definition[i][1]	= SearchMail;
+					break;
+				case ColSearchSetName:	
+					Definition[i][1]	= SearchSetName;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				case ColSearchDelFg:	
+					Definition[i][1]	= SearchDelFg;
+					break;
+				case ColSearchMstPriorityFirstFg:	
+					Definition[i][1]	= SearchMstPriorityFirstFg;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

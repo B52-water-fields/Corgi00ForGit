@@ -234,7 +234,61 @@ public class T100_ArrivalPlanHdRt{
 				,{"ActualQty"		,ColActualQty		,"int"		,"実績数合計"}
 				,{"MsCount"			,ColMsCount		,"int"		,"明細行数"}
 				};
+		
+		RtArrivalPlanHdRt = B100_LanguageControl.DefinitionControl(RtArrivalPlanHdRt);
+		
 		return RtArrivalPlanHdRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"		,ColSearchClWh				,B100_DefaultVariable.SearchWhList					,"担当倉庫"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchClCd				,B100_DefaultVariable.SearchClList					,"荷主CD"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchCLName01			,""														,"荷主名"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList					,"荷主グループCD"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchCLGpName01			,""														,"荷主グループ標記名"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchArrNo				,""														,"入荷予定NO"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchClArrNo				,""														,"荷主予定番号"			,""}
+					,{"Date"		,null	,"RangeStr"		,ColSearchPlanDateMin		,""														,"入荷予定日"			,"開始"}
+					,{"Date"		,null	,"RangeEnd"		,ColSearchPlanDateMax		,""														,"入荷予定日"			,"終了"}
+					,{"Date"		,null	,"RangeStr"		,ColSearchHdActualDateMin	,""														,"入荷実績日"			,"開始"}
+					,{"Date"		,null	,"RangeEnd"		,ColSearchHdActualDateMax	,""														,"入荷実績日"			,"終了"}
+					,{"String"		,null	,"Exact"		,ColSearchSpCd				,B100_DefaultVariable.SearchSupplierList				,"仕入先CD"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchSpName				,""														,"仕入先名"				,""}
+					,{"String"		,null	,"Prefix"		,ColSearchSpPost				,""														,"仕入先郵便"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchSpAdd				,""														,"仕入先住所"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchSpTel				,""														,"仕入先電話"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchArCom				,""														,"コメント"				,""}
+					,{"Integer"		,null	,"Exact"		,ColSearchFixFg				,B100_DefaultVariable.SearchArryvalFixFgList			,"状況"					,""}
+							
+					,{"Integer"		,null	,"Exact"		,ColSearchMsNoMin				,""														,"明細番号"				,"最小"}
+					,{"Integer"		,null	,"Exact"		,ColSearchMsNoMax				,""														,"明細番号"				,"最大"}
+					,{"String"		,null	,"Exact"		,ColSearchItemCd				,""														,"商品コード"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchClItemCd			,""														,"荷主商品コード"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchJanCd				,""														,"JANCD（バラ）"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchItemMdNo			,""														,"商品型番"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchItemName			,""														,"商品名"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchlot					,""														,"ロット"				,""}
+					,{"Date"		,null	,"RangeStr"		,ColSearchExpDateMin			,""														,"消費期限"				,"開始"}
+					,{"Date"		,null	,"RangeEnd"		,ColSearchExpDateMax			,""														,"消費期限"				,"終了"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchPlanQtyMin			,""														,"予定数量"				,"最小"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchPlanQtyMax			,""														,"予定数量"				,"最大"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchActualQtyMin		,""														,"実績数"				,"最小"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchActualQtyMax		,""														,"実績数"				,"最大"}
+					,{"Date"		,null	,"RangeStr"		,ColSearchActualDateMin		,""														,"入荷日"				,"開始"}
+					,{"Date"		,null	,"RangeEnd"		,ColSearchActualDateMax		,""														,"入荷日"				,"終了"}
+					,{"String"		,null	,"Partial"		,ColSearchCom					,""														,"コメント"				,""}
+					,{"DateTime"	,null	,"RangeStr"		,ColSearchEntryDateMin		,""														,"登録日"				,"開始"}
+					,{"DateTime"	,null	,"RangeEnd"		,ColSearchEntryDateMax		,""														,"登録日"				,"終了"}
+					,{"DateTime"	,null	,"RangeStr"		,ColSearchUpdateDateMin		,""														,"更新日"				,"開始"}
+					,{"DateTime"	,null	,"RangeEnd"		,ColSearchUpdateDateMax		,""														,"更新日"				,"終了"}
+					,{"String"		,null	,"Partial"		,ColSearchEntryUser			,""														,"登録者"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchUpdateUser			,""														,"更新者"				,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] ArrivalPlanHdRt(
@@ -282,50 +336,138 @@ public class T100_ArrivalPlanHdRt{
 			ArrayList<String> SearchUpdateUser,			//更新者
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClWh				,"Exact"			,ColSearchClWh				,B100_DefaultVariable.SearchWhList					,"担当倉庫"				,""}
-				,{"String"		,SearchClCd				,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList					,"荷主CD"				,""}
-				,{"String"		,SearchCLName01			,"Partial"			,ColSearchCLName01			,""														,"荷主名"				,""}
-				,{"String"		,SearchClGpCD			,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList					,"荷主グループCD"		,""}
-				,{"String"		,SearchCLGpName01		,"Partial"			,ColSearchCLGpName01			,""														,"荷主グループ標記名"	,""}
-				,{"String"		,SearchArrNo			,"Exact"			,ColSearchArrNo				,""														,"入荷予定NO"			,""}
-				,{"String"		,SearchClArrNo			,"Exact"			,ColSearchClArrNo				,""														,"荷主予定番号"			,""}
-				,{"Date"		,SearchPlanDateMin		,"RangeStr"			,ColSearchPlanDateMin		,""														,"入荷予定日"			,"開始"}
-				,{"Date"		,SearchPlanDateMax		,"RangeEnd"			,ColSearchPlanDateMax		,""														,"入荷予定日"			,"終了"}
-				,{"Date"		,SearchHdActualDateMin	,"RangeStr"			,ColSearchHdActualDateMin	,""														,"入荷実績日"			,"開始"}
-				,{"Date"		,SearchHdActualDateMax	,"RangeEnd"			,ColSearchHdActualDateMax	,""														,"入荷実績日"			,"終了"}
-				,{"String"		,SearchSpCd				,"Exact"			,ColSearchSpCd				,B100_DefaultVariable.SearchSupplierList				,"仕入先CD"				,""}
-				,{"String"		,SearchSpName			,"Partial"			,ColSearchSpName				,""														,"仕入先名"				,""}
-				,{"String"		,SearchSpPost			,"Prefix"			,ColSearchSpPost				,""														,"仕入先郵便"			,""}
-				,{"String"		,SearchSpAdd			,"Partial"			,ColSearchSpAdd				,""														,"仕入先住所"			,""}
-				,{"String"		,SearchSpTel			,"Partial"			,ColSearchSpTel				,""														,"仕入先電話"			,""}
-				,{"String"		,SearchArCom			,"Partial"			,ColSearchArCom				,""														,"コメント"				,""}
-				,{"Integer"		,SearchFixFg			,"Exact"			,ColSearchFixFg				,B100_DefaultVariable.SearchArryvalFixFgList			,"状況"					,""}
-						
-				,{"Integer"		,SearchMsNoMin			,"Exact"			,ColSearchMsNoMin				,""														,"明細番号"				,"最小"}
-				,{"Integer"		,SearchMsNoMax			,"Exact"			,ColSearchMsNoMax				,""														,"明細番号"				,"最大"}
-				,{"String"		,SearchItemCd			,"Exact"			,ColSearchItemCd				,""														,"商品コード"			,""}
-				,{"String"		,SearchClItemCd			,"Exact"			,ColSearchClItemCd			,""														,"荷主商品コード"		,""}
-				,{"String"		,SearchJanCd			,"Exact"			,ColSearchJanCd				,""														,"JANCD（バラ）"		,""}
-				,{"String"		,SearchItemMdNo			,"Exact"			,ColSearchItemMdNo			,""														,"商品型番"				,""}
-				,{"String"		,SearchItemName			,"Partial"			,ColSearchItemName			,""														,"商品名"				,""}
-				,{"String"		,Searchlot				,"Exact"			,ColSearchlot					,""														,"ロット"				,""}
-				,{"Date"		,SearchExpDateMin		,"RangeStr"			,ColSearchExpDateMin			,""														,"消費期限"				,"開始"}
-				,{"Date"		,SearchExpDateMax		,"RangeEnd"			,ColSearchExpDateMax			,""														,"消費期限"				,"終了"}
-				,{"Integer"		,SearchPlanQtyMin		,"RangeMin"			,ColSearchPlanQtyMin			,""														,"予定数量"				,"最小"}
-				,{"Integer"		,SearchPlanQtyMax		,"RangeMax"			,ColSearchPlanQtyMax			,""														,"予定数量"				,"最大"}
-				,{"Integer"		,SearchActualQtyMin		,"RangeMin"			,ColSearchActualQtyMin		,""														,"実績数"				,"最小"}
-				,{"Integer"		,SearchActualQtyMax		,"RangeMax"			,ColSearchActualQtyMax		,""														,"実績数"				,"最大"}
-				,{"Date"		,SearchActualDateMin	,"RangeStr"			,ColSearchActualDateMin		,""														,"入荷日"				,"開始"}
-				,{"Date"		,SearchActualDateMax	,"RangeEnd"			,ColSearchActualDateMax		,""														,"入荷日"				,"終了"}
-				,{"String"		,SearchCom				,"Partial"			,ColSearchCom					,""														,"コメント"				,""}
-				,{"DateTime"	,SearchEntryDateMin		,"RangeStr"			,ColSearchEntryDateMin		,""														,"登録日"				,"開始"}
-				,{"DateTime"	,SearchEntryDateMax		,"RangeEnd"			,ColSearchEntryDateMax		,""														,"登録日"				,"終了"}
-				,{"DateTime"	,SearchUpdateDateMin	,"RangeStr"			,ColSearchUpdateDateMin		,""														,"更新日"				,"開始"}
-				,{"DateTime"	,SearchUpdateDateMax	,"RangeEnd"			,ColSearchUpdateDateMax		,""														,"更新日"				,"終了"}
-				,{"String"		,SearchEntryUser		,"Partial"			,ColSearchEntryUser			,""														,"登録者"				,""}
-				,{"String"		,SearchUpdateUser		,"Partial"			,ColSearchUpdateUser			,""														,"更新者"				,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClWh:	
+					Definition[i][1]	= SearchClWh;
+					break;
+				case ColSearchClCd:	
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchCLName01:	
+					Definition[i][1]	= SearchCLName01;
+					break;
+				case ColSearchClGpCD:	
+					Definition[i][1]	= SearchClGpCD;
+					break;
+				case ColSearchCLGpName01:	
+					Definition[i][1]	= SearchCLGpName01;
+					break;
+				case ColSearchArrNo:	
+					Definition[i][1]	= SearchArrNo;
+					break;
+				case ColSearchClArrNo:	
+					Definition[i][1]	= SearchClArrNo;
+					break;
+				case ColSearchPlanDateMin:	
+					Definition[i][1]	= SearchPlanDateMin;
+					break;
+				case ColSearchPlanDateMax:	
+					Definition[i][1]	= SearchPlanDateMax;
+					break;
+				case ColSearchHdActualDateMin:	
+					Definition[i][1]	= SearchHdActualDateMin;
+					break;
+				case ColSearchHdActualDateMax:	
+					Definition[i][1]	= SearchHdActualDateMax;
+					break;
+				case ColSearchSpCd:	
+					Definition[i][1]	= SearchSpCd;
+					break;
+				case ColSearchSpName:	
+					Definition[i][1]	= SearchSpName;
+					break;
+				case ColSearchSpPost:	
+					Definition[i][1]	= SearchSpPost;
+					break;
+				case ColSearchSpAdd:	
+					Definition[i][1]	= SearchSpAdd;
+					break;
+				case ColSearchSpTel:	
+					Definition[i][1]	= SearchSpTel;
+					break;
+				case ColSearchArCom:	
+					Definition[i][1]	= SearchArCom;
+					break;
+				case ColSearchFixFg:	
+					Definition[i][1]	= SearchFixFg;
+					break;
+				case ColSearchMsNoMin:	
+					Definition[i][1]	= SearchMsNoMin;
+					break;
+				case ColSearchMsNoMax:	
+					Definition[i][1]	= SearchMsNoMax;
+					break;
+				case ColSearchItemCd:	
+					Definition[i][1]	= SearchItemCd;
+					break;
+				case ColSearchClItemCd:	
+					Definition[i][1]	= SearchClItemCd;
+					break;
+				case ColSearchJanCd:	
+					Definition[i][1]	= SearchJanCd;
+					break;
+				case ColSearchItemMdNo:	
+					Definition[i][1]	= SearchItemMdNo;
+					break;
+				case ColSearchItemName:	
+					Definition[i][1]	= SearchItemName;
+					break;
+				case ColSearchlot:	
+					Definition[i][1]	= Searchlot;
+					break;
+				case ColSearchExpDateMin:	
+					Definition[i][1]	= SearchExpDateMin;
+					break;
+				case ColSearchExpDateMax:	
+					Definition[i][1]	= SearchExpDateMax;
+					break;
+				case ColSearchPlanQtyMin:	
+					Definition[i][1]	= SearchPlanQtyMin;
+					break;
+				case ColSearchPlanQtyMax:	
+					Definition[i][1]	= SearchPlanQtyMax;
+					break;
+				case ColSearchActualQtyMin:	
+					Definition[i][1]	= SearchActualQtyMin;
+					break;
+				case ColSearchActualQtyMax:	
+					Definition[i][1]	= SearchActualQtyMax;
+					break;
+				case ColSearchActualDateMin:	
+					Definition[i][1]	= SearchActualDateMin;
+					break;
+				case ColSearchActualDateMax:	
+					Definition[i][1]	= SearchActualDateMax;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				case ColSearchEntryDateMin:	
+					Definition[i][1]	= SearchEntryDateMin;
+					break;
+				case ColSearchEntryDateMax:	
+					Definition[i][1]	= SearchEntryDateMax;
+					break;
+				case ColSearchUpdateDateMin:	
+					Definition[i][1]	= SearchUpdateDateMin;
+					break;
+				case ColSearchUpdateDateMax:	
+					Definition[i][1]	= SearchUpdateDateMax;
+					break;
+				case ColSearchEntryUser:	
+					Definition[i][1]	= SearchEntryUser;
+					break;
+				case ColSearchUpdateUser:	
+					Definition[i][1]	= SearchUpdateUser;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

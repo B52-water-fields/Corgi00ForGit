@@ -54,8 +54,8 @@ public class WM100_LocationMst_00_Search{
 		final JTextField  TB_SearchLocName	= B100_FrameParts.JTextFieldSet(100,100,100,20,"",11,0);										//ロケーション名
 		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 100,125,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
 		
-		JLabel LB2_SearchLoc		= B100_FrameParts.JLabelSet(  200, 75,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchLocName	= B100_FrameParts.JLabelSet(  200,100,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchLoc		= B100_FrameParts.JLabelSet(  200, 75,100,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchLocName	= B100_FrameParts.JLabelSet(  200,100,100,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		for(int i=0;i<B100_DefaultVariable.SearchClList[1].length;i++) {
 			if(A00000_Main.ClCd.equals(B100_DefaultVariable.SearchClList[1][i])) {

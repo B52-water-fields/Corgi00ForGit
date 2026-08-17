@@ -53,8 +53,8 @@ public class WM100_DeliveryTypeMst_00_Search{
 		final JTextField TB_SearchDeliveryTypeName	= B100_FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//運送タイプ名
 		
 		JLabel LB2_SearchDeliveryTypeNo		= B100_FrameParts.JLabelSet(200, 25, 50,20,""			,11,0);
-		JLabel LB2_SearchDeliveryTypeCd		= B100_FrameParts.JLabelSet(200, 50, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDeliveryTypeName	= B100_FrameParts.JLabelSet(200, 75, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchDeliveryTypeCd		= B100_FrameParts.JLabelSet(200, 50, 50,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchDeliveryTypeName	= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 
 		PN_Search.add(LB_SearchDeliveryTypeNo);
 		PN_Search.add(LB_SearchDeliveryTypeCd);

@@ -171,7 +171,38 @@ public class M100_SupplierRt{
 				,{"DEName01"		,ColDEName01		,"String"	,"納品先名1"				,""}
 				};
 		
+		RtSupplierRt = B100_LanguageControl.RtControl(RtSupplierRt);
+		
 		return RtSupplierRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"		,ColSearchClWh			,B100_DefaultVariable.SearchWhList			,"担当倉庫"					,""}
+					,{"String"		,null	,"Exact"		,ColSearchClCd			,B100_DefaultVariable.SearchClList			,"荷主CD"					,""}
+					,{"String"		,null	,"Exact"		,ColSearchSPCd			,B100_DefaultVariable.SearchSupplierList		,"仕入先コード"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchSPName			,""												,"仕入先名"					,""}
+					,{"String"		,null	,"Prefix"		,ColSearchSPPost			,""												,"仕入先郵便"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchSPAdd			,""												,"仕入先住所"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchSPTel			,""												,"仕入先電話"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchSPFax			,""												,"仕入先FAX"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchSPMail			,""												,"仕入先MAIL"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchCom				,""												,"コメント"					,""}
+					,{"String"		,null	,"Exact"		,ColSearchPTMSCDBMN		,""												,"基幹Sysコード（部門）"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchPTMSCDNINUSHI	,""												,"基幹Sysコード（荷主）"	,""}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchPaySiteStr		,""												,"支払いサイト（月数）"		,"開始"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchPayDateStr		,""												,"支払日（日＝99）"			,"開始"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchShimeDateStr	,""												,"締め日（末日＝99）"		,"開始"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchPaySiteEnd		,""												,"支払いサイト（月数）"		,"終了"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchPayDateEnd		,""												,"支払日（日＝99）"			,"終了"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchShimeDateEnd	,""												,"締め日（末日＝99）"		,"終了"}
+					,{"String"		,null	,"Exact"		,ColSearchDECD			,""												,"納品先コード"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchDepartmentCd	,""												,"部署CD"					,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] SupplierRt(
@@ -197,28 +228,76 @@ public class M100_SupplierRt{
 			ArrayList<String> SearchDepartmentCd,	//部署CD
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClWh				,"Exact"			,ColSearchClWh			,B100_DefaultVariable.SearchWhList			,"担当倉庫"					,""}
-				,{"String"		,SearchClCd				,"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList			,"荷主CD"					,""}
-				,{"String"		,SearchSPCd				,"Exact"			,ColSearchSPCd			,B100_DefaultVariable.SearchSupplierList		,"仕入先コード"				,""}
-				,{"String"		,SearchSPName			,"Exact"			,ColSearchSPName			,""												,"仕入先名"					,""}
-				,{"String"		,SearchSPPost			,"Prefix"			,ColSearchSPPost			,""												,"仕入先郵便"				,""}
-				,{"String"		,SearchSPAdd			,"Partial"			,ColSearchSPAdd			,""												,"仕入先住所"				,""}
-				,{"String"		,SearchSPTel			,"Partial"			,ColSearchSPTel			,""												,"仕入先電話"				,""}
-				,{"String"		,SearchSPFax			,"Partial"			,ColSearchSPFax			,""												,"仕入先FAX"				,""}
-				,{"String"		,SearchSPMail			,"Partial"			,ColSearchSPMail			,""												,"仕入先MAIL"				,""}
-				,{"String"		,SearchCom				,"Partial"			,ColSearchCom				,""												,"コメント"					,""}
-				,{"String"		,SearchPTMSCDBMN		,"Exact"			,ColSearchPTMSCDBMN		,""												,"基幹Sysコード（部門）"	,""}
-				,{"String"		,SearchPTMSCDNINUSHI	,"Exact"			,ColSearchPTMSCDNINUSHI	,""												,"基幹Sysコード（荷主）"	,""}
-				,{"Integer"		,SearchPaySiteStr		,"RangeMin"			,ColSearchPaySiteStr		,""												,"支払いサイト（月数）"		,"開始"}
-				,{"Integer"		,SearchPayDateStr		,"RangeMin"			,ColSearchPayDateStr		,""												,"支払日（日＝99）"			,"開始"}
-				,{"Integer"		,SearchShimeDateStr		,"RangeMin"			,ColSearchShimeDateStr	,""												,"締め日（末日＝99）"		,"開始"}
-				,{"Integer"		,SearchPaySiteEnd		,"RangeMax"			,ColSearchPaySiteEnd		,""												,"支払いサイト（月数）"		,"終了"}
-				,{"Integer"		,SearchPayDateEnd		,"RangeMax"			,ColSearchPayDateEnd		,""												,"支払日（日＝99）"			,"終了"}
-				,{"Integer"		,SearchShimeDateEnd		,"RangeMax"			,ColSearchShimeDateEnd	,""												,"締め日（末日＝99）"		,"終了"}
-				,{"String"		,SearchDECD				,"Exact"			,ColSearchDECD			,""												,"納品先コード"				,""}
-				,{"String"		,SearchDepartmentCd		,"Exact"			,ColSearchDepartmentCd	,""												,"部署CD"					,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClWh:	
+					Definition[i][1]	= SearchClWh;
+					break;
+				case ColSearchClCd:	
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchSPCd:	
+					Definition[i][1]	= SearchSPCd;
+					break;
+				case ColSearchSPName:	
+					Definition[i][1]	= SearchSPName;
+					break;
+				case ColSearchSPPost:	
+					Definition[i][1]	= SearchSPPost;
+					break;
+				case ColSearchSPAdd:	
+					Definition[i][1]	= SearchSPAdd;
+					break;
+				case ColSearchSPTel:	
+					Definition[i][1]	= SearchSPTel;
+					break;
+				case ColSearchSPFax:	
+					Definition[i][1]	= SearchSPFax;
+					break;
+				case ColSearchSPMail:	
+					Definition[i][1]	= SearchSPMail;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				case ColSearchPTMSCDBMN:	
+					Definition[i][1]	= SearchPTMSCDBMN;
+					break;
+				case ColSearchPTMSCDNINUSHI:	
+					Definition[i][1]	= SearchPTMSCDNINUSHI;
+					break;
+				case ColSearchPaySiteStr:	
+					Definition[i][1]	= SearchPaySiteStr;
+					break;
+				case ColSearchPayDateStr:	
+					Definition[i][1]	= SearchPayDateStr;
+					break;
+				case ColSearchShimeDateStr:	
+					Definition[i][1]	= SearchShimeDateStr;
+					break;
+				case ColSearchPaySiteEnd:	
+					Definition[i][1]	= SearchPaySiteEnd;
+					break;
+				case ColSearchPayDateEnd:	
+					Definition[i][1]	= SearchPayDateEnd;
+					break;
+				case ColSearchShimeDateEnd:	
+					Definition[i][1]	= SearchShimeDateEnd;
+					break;
+				case ColSearchDECD:	
+					Definition[i][1]	= SearchDECD;
+					break;
+				case ColSearchDepartmentCd:	
+					Definition[i][1]	= SearchDepartmentCd;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

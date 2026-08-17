@@ -44,22 +44,24 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_CautionCd		= B100_FrameParts.JLabelSet(  0, 40,100,20,"注意事項CD:"			,11,1);
-		JLabel LB_ClGpCD		= B100_FrameParts.JLabelSet(  0, 65,100,20,"荷主グループCD:"		,11,1);
-		JLabel LB_CLGpName01	= B100_FrameParts.JLabelSet(  0, 90,100,20,"荷主グループ名:"		,11,1);
-		JLabel LB_DECD			= B100_FrameParts.JLabelSet(  0,115,100,20,"届先コード:"			,11,1);
-		JLabel LB_DepartmentCd	= B100_FrameParts.JLabelSet(  0,140,100,20,"部署CD:"				,11,1);
-		JLabel LB_DEName01		= B100_FrameParts.JLabelSet(  0,165,100,20,"届先名:"				,11,1);
-		JLabel LB_Add01			= B100_FrameParts.JLabelSet(  0,190,100,20,"届先住所1:"			,11,1);
-		JLabel LB_Add02			= B100_FrameParts.JLabelSet(  0,215,100,20,"届先住所2:"			,11,1);
-		JLabel LB_Add03			= B100_FrameParts.JLabelSet(  0,240,100,20,"届先住所3:"			,11,1);
-		JLabel LB_CautionTiming	= B100_FrameParts.JLabelSet(  0,265,100,20,"注意タイミング:"		,11,1);
-		JLabel LB_CautionName	= B100_FrameParts.JLabelSet(  0,290,100,20,"注意事項名:"			,11,1);
-		JLabel LB_Caution		= B100_FrameParts.JLabelSet(  0,315,100,20,"注意事項内容:"			,11,1);
-		JLabel LB_EntryDate		= B100_FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:"		,11,1);
-		JLabel LB_UpdateDate	= B100_FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:"		,11,1);
-		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(  0,390,100,20,"登録者コード:"			,11,1);
-		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(  0,415,100,20,"更新者コード:"			,11,1);
+		Object[][] RtCautionMstRt = M100_CautionMstRt.RtCautionMstRt();
+		
+		JLabel LB_CautionCd		= B100_FrameParts.JLabelSet(  0, 40,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColCautionCd][3]			+":"	,11,1);
+		JLabel LB_ClGpCD		= B100_FrameParts.JLabelSet(  0, 65,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColClGpCD][3]			+":"	,11,1);
+		JLabel LB_CLGpName01	= B100_FrameParts.JLabelSet(  0, 90,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColCLGpName01][3]		+":"	,11,1);
+		JLabel LB_DECD			= B100_FrameParts.JLabelSet(  0,115,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColDECD][3]				+":"	,11,1);
+		JLabel LB_DepartmentCd	= B100_FrameParts.JLabelSet(  0,140,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColDepartmentCd][3]		+":"	,11,1);
+		JLabel LB_DEName01		= B100_FrameParts.JLabelSet(  0,165,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColDEName01][3]			+":"	,11,1);
+		JLabel LB_Add01			= B100_FrameParts.JLabelSet(  0,190,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColAdd01][3]				+":"	,11,1);
+		JLabel LB_Add02			= B100_FrameParts.JLabelSet(  0,215,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColAdd02][3]				+":"	,11,1);
+		JLabel LB_Add03			= B100_FrameParts.JLabelSet(  0,240,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColAdd03][3]				+":"	,11,1);
+		JLabel LB_CautionTiming	= B100_FrameParts.JLabelSet(  0,265,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColCautionTiming][3]	+":"	,11,1);
+		JLabel LB_CautionName	= B100_FrameParts.JLabelSet(  0,290,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColCautionName][3]		+":"	,11,1);
+		JLabel LB_Caution		= B100_FrameParts.JLabelSet(  0,315,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColCaution][3]			+":"	,11,1);
+		JLabel LB_EntryDate		= B100_FrameParts.JLabelSet(  0,340,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColEntryDate][3]			+":"	,11,1);
+		JLabel LB_UpdateDate	= B100_FrameParts.JLabelSet(  0,365,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColUpdateDate][3]		+":"	,11,1);
+		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(  0,390,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColEntryUser][3]			+":"	,11,1);
+		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(  0,415,100,20,(String)RtCautionMstRt[M100_CautionMstRt.ColUpdateUser][3]		+":"	,11,1);
 		
 		final JTextField TB_CautionCd		= B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//注意事項コード
 		final JTextField TB_ClGpCD			= B100_FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//荷主グループコード
@@ -246,17 +248,19 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		JScrollPane scpn_ClGrp = B100_FrameParts.JScrollPaneSet(10,125,460,250,tb_ClGrp);
 		ClGrpSearch_fm.add(scpn_ClGrp);
 		
-		JLabel LB_SearchGrpName	= B100_FrameParts.JLabelSet(0, 25,100,20,"グループ名:"		,11,1);
-		JLabel LB_SearchGrpAdd	= B100_FrameParts.JLabelSet(0, 50,100,20,"住所:"			,11,1);
-		JLabel LB_SearchGrpTel	= B100_FrameParts.JLabelSet(0, 75,100,20,"TEL:"			,11,1);
+		Object[][] ClGpMstDefinitionRt	= M100_ClGpMstRt.DefinitionRt();
+		
+		JLabel LB_SearchGrpName	= B100_FrameParts.JLabelSet(0, 25,100,20,(String)ClGpMstDefinitionRt[M100_ClGpMstRt.ColSearchCLGpName][5]	+":"	,11,1);
+		JLabel LB_SearchGrpAdd	= B100_FrameParts.JLabelSet(0, 50,100,20,(String)ClGpMstDefinitionRt[M100_ClGpMstRt.ColSearchAdd][5]			+":"	,11,1);
+		JLabel LB_SearchGrpTel	= B100_FrameParts.JLabelSet(0, 75,100,20,(String)ClGpMstDefinitionRt[M100_ClGpMstRt.ColSearchTel][5]			+":"	,11,1);
 		
 		final JTextField  TB_SearchGrpName	= B100_FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//荷主グループ名
 		final JTextField  TB_SearchGrpAdd	= B100_FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//住所
 		final JTextField  TB_SearchGrpTel	= B100_FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//TEL
 		
-		JLabel LB2_SearchGrpName		= B100_FrameParts.JLabelSet(200, 25,100,20,"を含む",11,0);
-		JLabel LB2_SearchGrpAdd			= B100_FrameParts.JLabelSet(200, 50,100,20,"を含む",11,0);
-		JLabel LB2_SearchGrpTel			= B100_FrameParts.JLabelSet(200, 75,100,20,"を含む",11,0);
+		JLabel LB2_SearchGrpName		= B100_FrameParts.JLabelSet(200, 25,100,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchGrpAdd			= B100_FrameParts.JLabelSet(200, 50,100,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchGrpTel			= B100_FrameParts.JLabelSet(200, 75,100,20,B100_DefaultVariable.SearchPartial,11,0);
 		
 		ClGrpSearch_fm.add(LB_SearchGrpName);
 		ClGrpSearch_fm.add(LB_SearchGrpAdd);
@@ -435,17 +439,19 @@ public class WM100_CautionMst_01_RenewAndCreate{
 		JScrollPane scpn_Delivery = B100_FrameParts.JScrollPaneSet(10,125,460,250,tb_Delivery);
 		DeliverySearch_fm.add(scpn_Delivery);
 		
-		JLabel LB_SearchDeliveryName	= B100_FrameParts.JLabelSet(0, 25,100,20,"届先名:"		,11,1);
-		JLabel LB_SearchDeliveryAdd		= B100_FrameParts.JLabelSet(0, 50,100,20,"住所:"		,11,1);
-		JLabel LB_SearchDeliveryTel		= B100_FrameParts.JLabelSet(0, 75,100,20,"TEL:"		,11,1);
+		Object[][] DeliveryMstDefinitionRt	= M100_DeliveryMstRt.DefinitionRt();
+		
+		JLabel LB_SearchDeliveryName	= B100_FrameParts.JLabelSet(0, 25,100,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchDEName][5]	+":"	,11,1);
+		JLabel LB_SearchDeliveryAdd		= B100_FrameParts.JLabelSet(0, 50,100,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchAdd][5]		+":"	,11,1);
+		JLabel LB_SearchDeliveryTel		= B100_FrameParts.JLabelSet(0, 75,100,20,(String)DeliveryMstDefinitionRt[M100_DeliveryMstRt.ColSearchTel][5]		+":"	,11,1);
 		
 		final JTextField  TB_SearchDeliveryName	= B100_FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//届先名
 		final JTextField  TB_SearchDeliveryAdd	= B100_FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//住所
 		final JTextField  TB_SearchDeliveryTel	= B100_FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//TEL
 		
-		JLabel LB2_SearchDeliveryName	= B100_FrameParts.JLabelSet(200, 25,100,20,"を含む",11,0);
-		JLabel LB2_SearchDeliveryAdd	= B100_FrameParts.JLabelSet(200, 50,100,20,"を含む",11,0);
-		JLabel LB2_SearchDeliveryTel	= B100_FrameParts.JLabelSet(200, 75,100,20,"を含む",11,0);
+		JLabel LB2_SearchDeliveryName	= B100_FrameParts.JLabelSet(200, 25,100,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchDeliveryAdd	= B100_FrameParts.JLabelSet(200, 50,100,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchDeliveryTel	= B100_FrameParts.JLabelSet(200, 75,100,20,B100_DefaultVariable.SearchPartial,11,0);
 		
 		DeliverySearch_fm.add(LB_SearchDeliveryName);
 		DeliverySearch_fm.add(LB_SearchDeliveryAdd);

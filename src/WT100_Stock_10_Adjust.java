@@ -421,8 +421,8 @@ public class WT100_Stock_10_Adjust{
 		final JTextField  TB_SearchLocName	= B100_FrameParts.JTextFieldSet(	130, 75,100,20,"",12,0);									//ロケーション名
 		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 	130,100,100,20,B100_DefaultVariable.SearchLocType[0],12);	//ロケタイプ
 		
-		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(	  	230, 50,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  		230, 75,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(	  	230, 50,100,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  		230, 75,100,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		JButton LocSearchKickBtn			= B100_FrameParts.BtnSet(			130,150, 90,20,"検索",11);
 		
@@ -491,8 +491,8 @@ public class WT100_Stock_10_Adjust{
 		final JTextField TB_SearchItemCd  				= B100_FrameParts.JTextFieldSet(	130, 50,100,20,""						,11,0);	//商品コード
 		final JTextField TB_SearchItemName  			= B100_FrameParts.JTextFieldSet(	130, 75,100,20,""						,11,0);	//商品名
 		
-		JLabel LB2_SearchItemCd  						= B100_FrameParts.JLabelSet(		230, 50, 80,20,"と一致"					,11,0);	//商品コード
-		JLabel LB2_SearchItemName  						= B100_FrameParts.JLabelSet(		230, 75, 80,20,"を含む"					,11,0);	//商品名
+		JLabel LB2_SearchItemCd  						= B100_FrameParts.JLabelSet(		230, 50, 80,20,B100_DefaultVariable.SearchExact					,11,0);	//商品コード
+		JLabel LB2_SearchItemName  						= B100_FrameParts.JLabelSet(		230, 75, 80,20,B100_DefaultVariable.SearchPartial					,11,0);	//商品名
 		
 		JButton ItemSearchKickBtn						= B100_FrameParts.BtnSet(			130,125, 90,20,"検索",11);
 		

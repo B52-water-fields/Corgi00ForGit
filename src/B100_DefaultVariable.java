@@ -89,25 +89,25 @@ public class B100_DefaultVariable{
 	static String[][] ChildrenFGList;					//親子区分
 	
 	static String[][] SearchTildFG;					//検索条件：温度帯 0:常温必須
-	static String[][] TildFG;							//検索条件：温度帯 0:常温必須
+	static String[][] TildFG;							//温度帯 0:常温必須
 	
-	static final String[][] SearchReceiptStampFGList= {{"未指定","0:未回収","1:回収済","2:返送済","9:回収不要"},{"","0","1","2","9"},{"","未回収","回収済","返送済","回収不要"}};	//受領印区分
-	static final String[][] ReceiptStampFGList 		= {{"0:未回収","1:回収済","2:返送済","9:回収不要"},{"0","1","2","9"},{"未回収","回収済","返送済","回収不要"}};					//受領印区分
+	static String[][] SearchReceiptStampFGList;		//検索条件：受領印区分
+	static String[][] ReceiptStampFGList;			//受領印区分
 	
-	static final String[][] SearchInvoiceStatusList 	= {{"未指定","0:未請求","1:請求済","9:対象外"},{"","0","1","9"},{"","未請求","請求済","対象外"}};				//請求区分
-	static final String[][] InvoiceStatusList 		= {{"0:未請求","1:請求済","9:対象外"},{"0","1","9"},{"未請求","請求済","対象外"}};								//請求区分
+	static String[][] SearchInvoiceStatusList;		//検索条件：請求区分
+	static String[][] InvoiceStatusList;				//請求区分
 	
-	static final String[][] SearchFeeFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(請求)
-	static final String[][] FeeFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(請求)
+	static String[][] SearchFeeFixFgList;			//検索条件：金額確定フラグ検索値(請求)
+	static String[][] FeeFixFgList;					//金額確定フラグ設定値(請求)
 	
-	static final String[][] SearchPayFixFgList 		= {{"未指定","0:未確定","1:確定済"},{"","0","1"},{"未指定","未確定","確定済"}};			//金額確定フラグ検索値(支払)
-	static final String[][] PayFixFgList 				= {{"0:未確定","1:確定済"},{"0","1"},{"未確定","確定済"}};								//金額確定フラグ設定値(支払)
+	static String[][] SearchPayFixFgList;			//検索条件：金額確定フラグ検索値(支払)
+	static String[][] PayFixFgList;					//金額確定フラグ設定値(支払)
 	
-	static final String[][] SearchCODList 			= {{"未指定","0:一般","1:代引"},{"","0","1"},{"","一般","代引"}};		//検索条件：代引区分
-	static final String[][] CODList 					= {{"0:一般","1:代引"},{"0","1"},{"一般","代引"}};						//代引区分
+	static String[][] SearchCODList;					//検索条件：代引区分
+	static String[][] CODList;							//代引区分
 	
-	static final String[][] SearchUnitTypeList 		= {{"未指定","0:バラ","1:カートン","2:ケース","3：パレット"},{"","0","1","2","3"},{"","バラ","カートン","ケース","パレット"}};
-	static final String[][] UnitTypeList 				= {{"0:バラ","1:カートン","2:ケース","3：パレット"},{"0","1","2","3"},{"バラ","カートン","ケース","パレット"}};
+	static String[][] SearchUnitTypeList;			//検索条件：荷姿タイプ
+	static String[][] UnitTypeList;					//荷姿タイプ
 	
 	static final String[][] SearchPurposeList 		= {{"未指定","0:配達","1:直送","2:集荷","3:中継"},{"","0","1","2","3"},{"","配達","直送","集荷","中継"}};	//送り状目的区分
 	static final String[][] PurposeList 				= {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
@@ -115,8 +115,8 @@ public class B100_DefaultVariable{
 	static String[][] SearchAdjustReasonList;
 	static String[][] AdjustReasonList;
 	
-	static boolean ArrivalShipUnTgt;			//trueなら入荷時ロケも出荷対象にする
-	static String[] ShipPlovisionUnTgtList;	//引当対象にしないロケタイプ
+	static boolean ArrivalShipUnTgt;					//trueなら入荷時ロケも出荷対象にする
+	static String[] ShipPlovisionUnTgtList;			//引当対象にしないロケタイプ
 	
 	static final String[][] SearchOnOffSwitch 		= {{"未指定","0:Off","1:On"},{"","0","1"},{"","Off","On"}};		//OｎOff　2択
 	static final String[][] OnOffSwitch 				= {{"0:Off","1:On"},{"0","1"},{"Off","On"}};					//OｎOff　2択

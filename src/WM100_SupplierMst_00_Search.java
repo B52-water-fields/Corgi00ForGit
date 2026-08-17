@@ -85,22 +85,22 @@ public class WM100_SupplierMst_00_Search{
 		final JTextField  TB_SearchDECD						= B100_FrameParts.JTextFieldSet(				460,200,100,20,"",11,0);	//納品先コード
 		final JTextField  TB_SearchDepartmentCd				= B100_FrameParts.JTextFieldSet( 			460,225,100,20,"",11,0);	//部署CD
 		
-		JLabel LB2_SearchSPCd			= B100_FrameParts.JLabelSet(	230, 75,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchSPName			= B100_FrameParts.JLabelSet(	230,100,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchSPPost			= B100_FrameParts.JLabelSet(	230,125,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchSPAdd			= B100_FrameParts.JLabelSet(	230,150,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchSPTel			= B100_FrameParts.JLabelSet(	230,175,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchSPFax			= B100_FrameParts.JLabelSet(	230,200,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchSPMail			= B100_FrameParts.JLabelSet(	230,225,100,20,"を含む"		,11,0);
-		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(	230,250,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchSPCd			= B100_FrameParts.JLabelSet(	230, 75,100,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchSPName			= B100_FrameParts.JLabelSet(	230,100,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchSPPost			= B100_FrameParts.JLabelSet(	230,125,100,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchSPAdd			= B100_FrameParts.JLabelSet(	230,150,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchSPTel			= B100_FrameParts.JLabelSet(	230,175,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchSPFax			= B100_FrameParts.JLabelSet(	230,200,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchSPMail			= B100_FrameParts.JLabelSet(	230,225,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(	230,250,100,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
-		JLabel LB2_SearchPTMSCDBMN		= B100_FrameParts.JLabelSet(	560, 75,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchPTMSCDNINUSHI	= B100_FrameParts.JLabelSet(	560,100,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchPaySite		= B100_FrameParts.JLabelSet(	520,125,40,20,"～"			,11,2);
-		JLabel LB2_SearchPayDate		= B100_FrameParts.JLabelSet(	520,150,40,20,"～"			,11,2);
-		JLabel LB2_SearchShimeDate		= B100_FrameParts.JLabelSet(	520,175,40,20,"～"			,11,2);
-		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(	560,200,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(	560,225,100,20,"と一致"		,11,0);
+		JLabel LB2_SearchPTMSCDBMN		= B100_FrameParts.JLabelSet(	560, 75,100,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchPTMSCDNINUSHI	= B100_FrameParts.JLabelSet(	560,100,100,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchPaySite		= B100_FrameParts.JLabelSet(	520,125,40,20,B100_DefaultVariable.SearchFromTo			,11,2);
+		JLabel LB2_SearchPayDate		= B100_FrameParts.JLabelSet(	520,150,40,20,B100_DefaultVariable.SearchFromTo			,11,2);
+		JLabel LB2_SearchShimeDate		= B100_FrameParts.JLabelSet(	520,175,40,20,B100_DefaultVariable.SearchFromTo			,11,2);
+		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(	560,200,100,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(	560,225,100,20,B100_DefaultVariable.SearchExact		,11,0);
 		
 		//検索ボタン
 		JButton SearchBtn = B100_FrameParts.BtnSet(460,250,100,20,"検索",11);

@@ -145,7 +145,30 @@ public class M100_DeliveryMstRt{
 				,{"LastClientName"	,ColLastClientName	,"String"	,"登録荷主名"				,""}
 				};
 		
+		RtSettingDeliveryMstRt = B100_LanguageControl.RtControl(RtSettingDeliveryMstRt);
+		
 		return RtSettingDeliveryMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"		,ColSearchDECD				,""										,"届先CD"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchDepartmentCd		,""										,"届先部署CD"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchDEName				,""										,"届先名"			,""}
+					,{"String"		,null	,"Prefix"		,ColSearchPost				,""										,"届先郵便"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchAdd					,""										,"届先住所"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchTel					,""										,"届先TEL"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchFax					,""										,"届先FAX"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchMail				,""										,"届先MAIL"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchCom					,""										,"届先コメント"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchPrefecturesCd		,""										,"届先県CD"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchMunicipalityCd		,""										,"届先市区町村CD"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchDelFg				,B100_DefaultVariable.SearchDelList	,"削除区分"			,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] DeliveryMstRt(
@@ -166,20 +189,51 @@ public class M100_DeliveryMstRt{
 			boolean AllSearch
 			){
 
-		Object[][] Definition = {
-				 {"String"		,SearchDECD				,"Exact"			,ColSearchDECD				,""										,"検索条件届先CD"			,""}
-				,{"String"		,SearchDepartmentCd		,"Exact"			,ColSearchDepartmentCd		,""										,"検索条件届先部署CD"		,""}
-				,{"String"		,SearchDEName			,"Partial"			,ColSearchDEName				,""										,"検索条件届先名"			,""}
-				,{"String"		,SearchPost				,"Prefix"			,ColSearchPost				,""										,"検索条件届先郵便"			,""}
-				,{"String"		,SearchAdd				,"Partial"			,ColSearchAdd					,""										,"検索条件届先住所"			,""}
-				,{"String"		,SearchTel				,"Partial"			,ColSearchTel					,""										,"検索条件届先TEL"			,""}
-				,{"String"		,SearchFax				,"Partial"			,ColSearchFax					,""										,"検索条件届先FAX"			,""}
-				,{"String"		,SearchMail				,"Partial"			,ColSearchMail				,""										,"検索条件届先MAIL"			,""}
-				,{"String"		,SearchCom				,"Partial"			,ColSearchCom					,""										,"検索条件届先コメント"		,""}
-				,{"String"		,SearchPrefecturesCd	,"Exact"			,ColSearchPrefecturesCd		,""										,"検索条件届先県CD"			,""}
-				,{"String"		,SearchMunicipalityCd	,"Exact"			,ColSearchMunicipalityCd		,""										,"検索条件届先市区町村CD"	,""}
-				,{"String"		,SearchDelFg			,"Exact"			,ColSearchDelFg				,B100_DefaultVariable.SearchDelList	,"検索条件削除区分"			,""}
-				};
+		Object[][] Definition = DefinitionRt();
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchDECD:	
+					Definition[i][1]	= SearchDECD;
+					break;
+				case ColSearchDepartmentCd:	
+					Definition[i][1]	= SearchDepartmentCd;
+					break;
+				case ColSearchDEName:	
+					Definition[i][1]	= SearchDEName;
+					break;
+				case ColSearchPost:	
+					Definition[i][1]	= SearchPost;
+					break;
+				case ColSearchAdd:	
+					Definition[i][1]	= SearchAdd;
+					break;
+				case ColSearchTel:	
+					Definition[i][1]	= SearchTel;
+					break;
+				case ColSearchFax:	
+					Definition[i][1]	= SearchFax;
+					break;
+				case ColSearchMail:	
+					Definition[i][1]	= SearchMail;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				case ColSearchPrefecturesCd:	
+					Definition[i][1]	= SearchPrefecturesCd;
+					break;
+				case ColSearchMunicipalityCd:	
+					Definition[i][1]	= SearchMunicipalityCd;
+					break;
+				case ColSearchDelFg:	
+					Definition[i][1]	= SearchDelFg;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

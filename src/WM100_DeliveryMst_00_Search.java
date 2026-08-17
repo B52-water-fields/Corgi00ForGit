@@ -104,15 +104,15 @@ public class WM100_DeliveryMst_00_Search{
 		String[] JisSelect = {"含まない","含む"};
 		final JComboBox   TB_SearcNotJis			= B100_FrameParts.JComboBoxSet( 600,100,100,20,JisSelect,11);	//削除区分
 		
-		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(200, 25, 50,20,"と一致"		,11,0);
-		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(200, 50, 50,20,"と一致"		,11,0);
-		JLabel LB2_SearchDEName			= B100_FrameParts.JLabelSet(200, 75, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchPost			= B100_FrameParts.JLabelSet(200,100, 50,20,"で始まる"		,11,0);
-		JLabel LB2_SearchAdd			= B100_FrameParts.JLabelSet(200,125, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchTel			= B100_FrameParts.JLabelSet(450, 25, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchFax			= B100_FrameParts.JLabelSet(450, 50, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchMail			= B100_FrameParts.JLabelSet(450, 75, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(450,100, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(200, 25, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(200, 50, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDEName			= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchPost			= B100_FrameParts.JLabelSet(200,100, 50,20,B100_DefaultVariable.SearchPrefix		,11,0);
+		JLabel LB2_SearchAdd			= B100_FrameParts.JLabelSet(200,125, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchTel			= B100_FrameParts.JLabelSet(450, 25, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchFax			= B100_FrameParts.JLabelSet(450, 50, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchMail			= B100_FrameParts.JLabelSet(450, 75, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(450,100, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
 		JLabel LB2_SearchPrefecturesCd	= B100_FrameParts.JLabelSet(700, 25, 50,20,""				,11,0);
 		JLabel LB2_SearchMunicipalityCd	= B100_FrameParts.JLabelSet(800, 50, 50,20,""				,11,0);
 		JLabel LB2_SearchDelFg			= B100_FrameParts.JLabelSet(700, 75, 50,20,""				,11,0);

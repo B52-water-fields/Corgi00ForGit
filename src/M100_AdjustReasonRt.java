@@ -69,6 +69,19 @@ public class M100_AdjustReasonRt{
 		return RtAdjustReasonRt;
 	}
 	
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+				 	 {"String"		,null	,"Exact"		,ColSearchClCd				,B100_DefaultVariable.SearchClList	,"荷主コード"		,""	,"Client Code"				,""	,"货主代码"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchWhCd				,B100_DefaultVariable.SearchWhList	,"倉庫コード"		,""	,"Warehouse Code"			,""	,"仓库代码"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchAdjustReasonCd		,""										,"調整理由コード"	,""	,"Adjustment Reason Code"	,""	,"调整原因代码"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchAdjustReasonName	,""										,"調整理由名"		,""	,"Adjustment Reason"		,""	,"调整原因"			,""}
+					};
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
+	}
+	
 	public static Object[][] AdjustReasonRt(
 			ArrayList<String> SearchClCd,				//荷主コード
 			ArrayList<String> SearchWhCd,				//倉庫コード
@@ -76,12 +89,27 @@ public class M100_AdjustReasonRt{
 			ArrayList<String> SearchAdjustReasonName,	//調整理由名
 			boolean AllSearch) {
 		
-		Object[][] Definition = {
-				 	 {"String"		,SearchClCd				,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList	,"荷主コード"		,""	,"Client Code"				,""	,"货主代码"			,""}
-					,{"String"		,SearchWhCd				,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList	,"倉庫コード"		,""	,"Warehouse Code"			,""	,"仓库代码"			,""}
-					,{"String"		,SearchAdjustReasonCd	,"Exact"			,ColSearchAdjustReasonCd	,""											,"調整理由コード"	,""	,"Adjustment Reason Code"	,""	,"调整原因代码"		,""}
-					,{"String"		,SearchAdjustReasonName	,"Partial"			,ColSearchAdjustReasonName	,""										,"調整理由名"		,""	,"Adjustment Reason"		,""	,"调整原因"			,""}
-					};
+		Object[][] Definition = DefinitionRt();
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]){
+				case ColSearchClCd:
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchWhCd:
+					Definition[i][1]	= SearchWhCd;
+					break;
+				case ColSearchAdjustReasonCd:
+					Definition[i][1]	= SearchAdjustReasonCd;
+					break;
+				case ColSearchAdjustReasonName:
+					Definition[i][1]	= SearchAdjustReasonName;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

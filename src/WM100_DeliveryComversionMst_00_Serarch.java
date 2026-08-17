@@ -82,21 +82,21 @@ public class WM100_DeliveryComversionMst_00_Serarch{
 		final JComboBox   TB_SearchDelFg= B100_FrameParts.JComboBoxSet( 				600, 75,100,20,B100_DefaultVariable.SearchDelList[0],11);	//削除区分
 		final JComboBox   TB_SearchMstPriorityFirstFg= B100_FrameParts.JComboBoxSet( 600,100,100,20,PriorityFirstFg,11);			//届先マスタ優先
 		
-		JLabel LB2_SearchClGpCD				= B100_FrameParts.JLabelSet(200, 25, 50,20,"と一致"	,11,0);
+		JLabel LB2_SearchClGpCD				= B100_FrameParts.JLabelSet(200, 25, 50,20,B100_DefaultVariable.SearchExact	,11,0);
 		//JLabel LB2_SearchCLGpName			= B100_FrameParts.JLabelSet(200, 50, 50,20,""			,11,0);
-		JLabel LB2_SearchCL_DECD			= B100_FrameParts.JLabelSet(200, 75, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDECD				= B100_FrameParts.JLabelSet(200,100, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDepartmentCd		= B100_FrameParts.JLabelSet(200,125, 50,20,"と一致"	,11,0);
+		JLabel LB2_SearchCL_DECD			= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchDECD				= B100_FrameParts.JLabelSet(200,100, 50,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchDepartmentCd		= B100_FrameParts.JLabelSet(200,125, 50,20,B100_DefaultVariable.SearchExact	,11,0);
 		
-		JLabel LB2_SearchDEName				= B100_FrameParts.JLabelSet(450, 25, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(450, 50, 50,20,"で始まる"	,11,0);
-		JLabel LB2_SearchAdd				= B100_FrameParts.JLabelSet(450, 75, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchTel				= B100_FrameParts.JLabelSet(450,100, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchFax				= B100_FrameParts.JLabelSet(450,125, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchMail				= B100_FrameParts.JLabelSet(450,150, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchDEName				= B100_FrameParts.JLabelSet(450, 25, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(450, 50, 50,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchAdd				= B100_FrameParts.JLabelSet(450, 75, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchTel				= B100_FrameParts.JLabelSet(450,100, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchFax				= B100_FrameParts.JLabelSet(450,125, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchMail				= B100_FrameParts.JLabelSet(450,150, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
-		JLabel LB2_SearchSetName			= B100_FrameParts.JLabelSet(700, 25, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchCom				= B100_FrameParts.JLabelSet(700, 50, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchSetName			= B100_FrameParts.JLabelSet(700, 25, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchCom				= B100_FrameParts.JLabelSet(700, 50, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		JLabel LB2_SearchDelFg				= B100_FrameParts.JLabelSet(700, 75, 50,20,""			,11,0);
 		JLabel LB2_SearchMstPriorityFirstFg	= B100_FrameParts.JLabelSet(700,100, 50,20,""			,11,0);
 		

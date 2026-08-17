@@ -198,9 +198,9 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		final JTextField  TB_SearchClItemCd	= B100_FrameParts.JTextFieldSet(	130, 50,100,20,""	,11,0);		//荷主商品コード
 		final JTextField  TB_SearchItemName	= B100_FrameParts.JTextFieldSet(	130, 75,100,20,""	,11,0);		//商品名
 		
-		JLabel LB2_SearchItemCd		= B100_FrameParts.JLabelSet(	230, 25, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchClItemCd	= B100_FrameParts.JLabelSet(	230, 50, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchItemName	= B100_FrameParts.JLabelSet(	230, 75, 80,20,"を含む"	,11,0);
+		JLabel LB2_SearchItemCd		= B100_FrameParts.JLabelSet(	230, 25, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchClItemCd	= B100_FrameParts.JLabelSet(	230, 50, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchItemName	= B100_FrameParts.JLabelSet(	230, 75, 80,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		PN_Search.add(LB_SearchItemCd);
 		PN_Search.add(LB_SearchClItemCd);

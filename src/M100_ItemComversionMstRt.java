@@ -95,7 +95,24 @@ public class M100_ItemComversionMstRt{
 				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"		,""}
 				,{"PlUnitName"		,ColPlUnitName	,"String"	,"パレット商品単位"		,""}
 				};
+		
+		RtItemComversionMstRt = B100_LanguageControl.RtControl(RtItemComversionMstRt);
+		
 		return RtItemComversionMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"		,ColSearchClGpCd		,B100_DefaultVariable.SearchClGpList		,"荷主グループコード"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchItemCd		,""											,"商品コード"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchClItemCd	,""											,"荷主商品コード"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchItemName	,""											,"商品名"				,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] ItemComversionMstRt(
@@ -106,13 +123,30 @@ public class M100_ItemComversionMstRt{
 			ArrayList<String> SearchItemName,			//商品名
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClGpCd		,"Exact"			,ColSearchClGpCd		,B100_DefaultVariable.SearchClGpList		,"荷主グループコード"	,""}
-				,{"String"		,SearchClCd			,"Exact"			,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"			,""}
-				,{"String"		,SearchItemCd		,"Exact"			,ColSearchItemCd		,""											,"商品コード"			,""}
-				,{"String"		,SearchClItemCd		,"Exact"			,ColSearchClItemCd	,""											,"荷主商品コード"		,""}
-				,{"String"		,SearchItemName		,"Partial"			,ColSearchItemName	,""											,"商品名"				,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClGpCd:	
+					Definition[i][1]	= SearchClGpCd;
+					break;
+				case ColSearchClCd:	
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchItemCd:	
+					Definition[i][1]	= SearchItemCd;
+					break;
+				case ColSearchClItemCd:	
+					Definition[i][1]	= SearchClItemCd;
+					break;
+				case ColSearchItemName:	
+					Definition[i][1]	= SearchItemName;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

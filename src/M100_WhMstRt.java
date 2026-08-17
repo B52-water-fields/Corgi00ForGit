@@ -97,9 +97,27 @@ public class M100_WhMstRt{
 				,{"UpdateUser"	,ColNoUpdateUser	,"String"	,"更新者"						,""}
 				};
 		
+		RtSettingWhMstRt = B100_LanguageControl.RtControl(RtSettingWhMstRt);
+		
 		return RtSettingWhMstRt;
 	}
-	
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"	,ColSearchWHCD		,B100_DefaultVariable.SearchWhList	,"倉庫コード"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchWHName		,""										,"倉庫名"		,""}
+					,{"String"		,null	,"Prefix"	,ColSearchPost		,""										,"郵便番号"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchAdd			,""										,"住所"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchTel			,""										,"Tel"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchFax			,""										,"Fax"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchMail		,""										,"Mail"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchCom			,""										,"コメント"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchPTMSCD		,""										,"基幹SysCd"	,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
+	}
 	public static Object[][] WhMstRt(
 			ArrayList<String> SearchWHCD,
 			ArrayList<String> SearchWHName,
@@ -112,17 +130,42 @@ public class M100_WhMstRt{
 			ArrayList<String> SearchPTMSCD,
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchWHCD					,"Exact"	,ColSearchWHCD		,B100_DefaultVariable.SearchWhList	,"倉庫コード"	,""}
-				,{"String"		,SearchWHName				,"Exact"	,ColSearchWHName		,""										,"倉庫名"		,""}
-				,{"String"		,SearchPost					,"Prefix"	,ColSearchPost		,""										,"郵便番号"		,""}
-				,{"String"		,SearchAdd					,"Exact"	,ColSearchAdd			,""										,"住所"			,""}
-				,{"String"		,SearchTel					,"Exact"	,ColSearchTel			,""										,"Tel"			,""}
-				,{"String"		,SearchFax					,"Exact"	,ColSearchFax			,""										,"Fax"			,""}
-				,{"String"		,SearchMail					,"Exact"	,ColSearchMail		,""										,"Mail"			,""}
-				,{"String"		,SearchCom					,"Exact"	,ColSearchCom			,""										,"コメント"		,""}
-				,{"String"		,SearchPTMSCD				,"Exact"	,ColSearchPTMSCD		,""										,"基幹SysCd"	,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchWHCD:	
+					Definition[i][1]	= SearchWHCD;
+					break;
+				case ColSearchWHName:	
+					Definition[i][1]	= SearchWHName;
+					break;
+				case ColSearchPost:	
+					Definition[i][1]	= SearchPost;
+					break;
+				case ColSearchAdd:	
+					Definition[i][1]	= SearchAdd;
+					break;
+				case ColSearchTel:	
+					Definition[i][1]	= SearchTel;
+					break;
+				case ColSearchFax:	
+					Definition[i][1]	= SearchFax;
+					break;
+				case ColSearchMail:	
+					Definition[i][1]	= SearchMail;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				case ColSearchPTMSCD:	
+					Definition[i][1]	= SearchPTMSCD;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

@@ -36,6 +36,8 @@ public class WM100_AdjustReasonMst_00_Search{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
+		Object[][] DefinitionRt	= M100_AdjustReasonRt.DefinitionRt();
+		
 		//検索条件パネル
 		JPanel PN_Search 		= B100_FrameParts.JPanelSet(10,40,880,150,"White");
 		JLabel PN_SearchLabel 	= B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
@@ -43,18 +45,18 @@ public class WM100_AdjustReasonMst_00_Search{
 		PN_Search.add(PN_SearchLabel);
 		
 		//検索条件
-		JLabel LB_SearchClCd				= B100_FrameParts.JLabelSet(	  0, 25,130,20,"荷主コード:"		,11,1);
-		JLabel LB_SearchWhCd				= B100_FrameParts.JLabelSet(	  0, 50,130,20,"倉庫コード:"		,11,1);
-		JLabel LB_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(	  0, 75,130,20,"調整理由コード:"	,11,1);
-		JLabel LB_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(	  0,100,130,20,"調整理由名:"		,11,1);
+		JLabel LB_SearchClCd				= B100_FrameParts.JLabelSet(	  0, 25,130,20,(String)DefinitionRt[M100_AdjustReasonRt.ColSearchClCd][5]					+":"	,11,1);
+		JLabel LB_SearchWhCd				= B100_FrameParts.JLabelSet(	  0, 50,130,20,(String)DefinitionRt[M100_AdjustReasonRt.ColSearchWhCd][5]					+":"	,11,1);
+		JLabel LB_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(	  0, 75,130,20,(String)DefinitionRt[M100_AdjustReasonRt.ColSearchAdjustReasonCd][5]		+":"	,11,1);
+		JLabel LB_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(	  0,100,130,20,(String)DefinitionRt[M100_AdjustReasonRt.ColSearchAdjustReasonName][5]	+":"	,11,1);
 		
 		final JComboBox   TB_SearchClWh				= B100_FrameParts.JComboBoxSet(	130, 25,250,20,B100_DefaultVariable.SearchWhList[0],11);		//倉庫コード
 		final JComboBox   TB_SearchClCd				= B100_FrameParts.JComboBoxSet(	130, 50,250,20,B100_DefaultVariable.SearchClList[0],11);		//荷主コード
 		final JTextField  TB_SearchAdjustReasonCd	= B100_FrameParts.JTextFieldSet( 130, 75,100,20,"",11,0);	//調整理由コード:"	,11,1);
 		final JTextField  TB_SearchAdjustReasonName	= B100_FrameParts.JTextFieldSet( 130,100,100,20,"",11,0);	//調整理由名:"		,11,1);
 		
-		JLabel LB2_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(	230, 75,130,20,"と一致"	,11,0);
-		JLabel LB2_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(	230,100,130,20,"を含む"	,11,0);
+		JLabel LB2_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(	230, 75,130,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(	230,100,130,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		//検索ボタン
 		JButton SearchBtn = B100_FrameParts.BtnSet(130,125,100,20,"検索",11);

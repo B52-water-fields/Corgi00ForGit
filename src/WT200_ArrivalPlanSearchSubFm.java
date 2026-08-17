@@ -43,13 +43,15 @@ public class WT200_ArrivalPlanSearchSubFm{
 		ArrivalPlan_fm.add(ArrivalPlanExit_btn);
 		ArrivalPlan_fm.add(ArrivalPlanEntry_btn);
 		
-		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	  0, 50,100,20,"倉庫:"		,11,1);
-		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	  0, 75,100,20,"荷主:"		,11,1);
-		JLabel LB_SpCd				= B100_FrameParts.JLabelSet(	  0,100,100,20,"仕入先:"	,11,1);
+		Object[][] DefinitionRt	= T100_ArrivalPlanHdRt.DefinitionRt();
 		
-		JLabel LB_PlanDate			= B100_FrameParts.JLabelSet(	  0,125,100,20,"入荷予定日:"	,10,1);
-		JLabel LB_ItemCd			= B100_FrameParts.JLabelSet(	  0,150,100,20,"商品CD:"		,10,1);
-		JLabel LB_ItemName			= B100_FrameParts.JLabelSet(	  0,175,100,20,"商品名:"		,10,1);
+		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	  0, 50,100,20,(String)DefinitionRt[T100_ArrivalPlanHdRt.ColSearchClWh][5]			+":"	,11,1);
+		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	  0, 75,100,20,(String)DefinitionRt[T100_ArrivalPlanHdRt.ColSearchClCd][5]			+":"	,11,1);
+		JLabel LB_SpCd				= B100_FrameParts.JLabelSet(	  0,100,100,20,(String)DefinitionRt[T100_ArrivalPlanHdRt.ColSearchSpCd][5]			+":"	,11,1);
+		
+		JLabel LB_PlanDate			= B100_FrameParts.JLabelSet(	  0,125,100,20,(String)DefinitionRt[T100_ArrivalPlanHdRt.ColSearchPlanDateMin][5]	+":"	,10,1);
+		JLabel LB_ItemCd			= B100_FrameParts.JLabelSet(	  0,150,100,20,(String)DefinitionRt[T100_ArrivalPlanHdRt.ColSearchItemCd][5]			+":"	,10,1);
+		JLabel LB_ItemName			= B100_FrameParts.JLabelSet(	  0,175,100,20,(String)DefinitionRt[T100_ArrivalPlanHdRt.ColSearchItemName][5]		+":"	,10,1);
 		
 		final JComboBox TB_WhCd		= B100_FrameParts.JComboBoxSet(	100, 50,300,20,B100_DefaultVariable.WhList[0],11);
 		final JComboBox TB_ClCd		= B100_FrameParts.JComboBoxSet(	100, 75,300,20,B100_DefaultVariable.ClList[0],11);
@@ -66,9 +68,9 @@ public class WT200_ArrivalPlanSearchSubFm{
 		JButton SearchPlanDateEndAfterBtn		= B100_FrameParts.BtnSet(	300,125, 40,10,"▲",6);
 		JButton SearchPlanDateEndBeforeBtn		= B100_FrameParts.BtnSet(	300,135, 40,10,"▼",6);
 		
-		JLabel LB2_PlanDate			= B100_FrameParts.JLabelSet(	210,100, 20,20,"～"	,10,2);
-		JLabel LB2_ItemCd			= B100_FrameParts.JLabelSet(	200,150,100,20,"と一致"		,10,0);
-		JLabel LB2_ItemName			= B100_FrameParts.JLabelSet(	200,175,100,20,"を含む"		,10,0);
+		JLabel LB2_PlanDate			= B100_FrameParts.JLabelSet(	210,100, 20,20,B100_DefaultVariable.SearchFromTo		,10,2);
+		JLabel LB2_ItemCd			= B100_FrameParts.JLabelSet(	200,150,100,20,B100_DefaultVariable.SearchExact		,10,0);
+		JLabel LB2_ItemName			= B100_FrameParts.JLabelSet(	200,175,100,20,B100_DefaultVariable.SearchPartial		,10,0);
 		
 		JButton ArrivalPlanSearchKickBtn	= B100_FrameParts.BtnSet(	300,175, 90,20,"検索",11);
 		

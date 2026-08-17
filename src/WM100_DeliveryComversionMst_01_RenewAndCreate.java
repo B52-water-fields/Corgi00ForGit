@@ -363,15 +363,15 @@ public class WM100_DeliveryComversionMst_01_RenewAndCreate{
 		final JTextField  TB_SearchFax				= B100_FrameParts.JTextFieldSet(	300, 65,100,20,"",11,0);			//FAX
 		final JTextField  TB_SearchMail				= B100_FrameParts.JTextFieldSet(	300, 90,100,20,"",11,0);			//MAIL
 		
-		JLabel LB2_SearchDECD				= B100_FrameParts.JLabelSet(200, 40, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDepartmentCd		= B100_FrameParts.JLabelSet(200, 65, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDEName				= B100_FrameParts.JLabelSet(200, 90, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchAdd				= B100_FrameParts.JLabelSet(200,115, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchTel				= B100_FrameParts.JLabelSet(200,140, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchDECD				= B100_FrameParts.JLabelSet(200, 40, 50,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchDepartmentCd		= B100_FrameParts.JLabelSet(200, 65, 50,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchDEName				= B100_FrameParts.JLabelSet(200, 90, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchAdd				= B100_FrameParts.JLabelSet(200,115, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchTel				= B100_FrameParts.JLabelSet(200,140, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
-		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(400, 40, 50,20,"で始まる"	,11,0);
-		JLabel LB2_SearchFax				= B100_FrameParts.JLabelSet(400, 65, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchMail				= B100_FrameParts.JLabelSet(400, 90, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(400, 40, 50,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchFax				= B100_FrameParts.JLabelSet(400, 65, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchMail				= B100_FrameParts.JLabelSet(400, 90, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		//届先候補検索ボタン
 		JButton DeliSearchBtn = B100_FrameParts.BtnSet(300,140,100,20,"検索",11);

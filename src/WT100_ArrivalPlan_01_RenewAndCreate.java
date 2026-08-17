@@ -506,9 +506,9 @@ public class WT100_ArrivalPlan_01_RenewAndCreate{
 		final JTextField TB_ItemSearchClItemCd	= B100_FrameParts.JTextFieldSet(	130, 75,100,20,""	,11,0);			//荷主商品CD
 		final JTextField TB_ItemSearchItemName	= B100_FrameParts.JTextFieldSet(	130,100,100,20,""	,11,0);			//商品名
 		
-		JLabel LB2_ItemSearchItemCd		= B100_FrameParts.JLabelSet(230, 50,130,20,"と一致",		11,0);
-		JLabel LB2_ItemSearchClItemCd	= B100_FrameParts.JLabelSet(230, 75,130,20,"と一致",		11,0);
-		JLabel LB2_ItemSearchItemName	= B100_FrameParts.JLabelSet(230,100,130,20,"を含む",		11,0);
+		JLabel LB2_ItemSearchItemCd		= B100_FrameParts.JLabelSet(230, 50,130,20,B100_DefaultVariable.SearchExact,		11,0);
+		JLabel LB2_ItemSearchClItemCd	= B100_FrameParts.JLabelSet(230, 75,130,20,B100_DefaultVariable.SearchExact,		11,0);
+		JLabel LB2_ItemSearchItemName	= B100_FrameParts.JLabelSet(230,100,130,20,B100_DefaultVariable.SearchPartial,		11,0);
 		
 		//商品検索ボタン
 		JButton ItemSearchSearchBtn 	= B100_FrameParts.BtnSet(	130,125,100,20,"商品検索",11);

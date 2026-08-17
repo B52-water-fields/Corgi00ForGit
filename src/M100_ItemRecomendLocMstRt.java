@@ -124,7 +124,27 @@ public class M100_ItemRecomendLocMstRt{
 					,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者"					,""}
 					,{"ItemSubRecomendLoc"	,ColItemSubRecomendLoc	,"String"	,"商品サブマスタ推奨ロケ"	,""}
 					};
+		
+		RtItemRecomendLocMstRt = B100_LanguageControl.RtControl(RtItemRecomendLocMstRt);
+		
 		return RtItemRecomendLocMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList		,"荷主コード"		,""}
+					,{"String"		,null	,"Exact"			,ColSearchClWh			,B100_DefaultVariable.SearchWhList		,"担当倉庫コード"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchClGpCD			,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchItemCd			,""											,"商品コード"		,""}
+					,{"String"		,null	,"Exact"			,ColSearchItemName01		,""											,"商品表記名"		,""}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchRecomendLoc	,""											,"推奨ロケ"			,""}
+					,{"String"		,null	,"Partial"			,ColSearchLocName			,""											,"ロケーション名"	,""}
+					,{"Integer"		,null	,"Exact"			,ColSearchType			,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] ItemRecomendLocMstRt(
@@ -139,16 +159,40 @@ public class M100_ItemRecomendLocMstRt{
 			boolean LocExactMatch,					//ロケーション完全一致
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClCd			,"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList		,"荷主コード"		,""}
-				,{"String"		,SearchClWh			,"Exact"			,ColSearchClWh			,B100_DefaultVariable.SearchWhList		,"担当倉庫コード"	,""}
-				,{"String"		,SearchClGpCD		,"Exact"			,ColSearchClGpCD			,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""}
-				,{"String"		,SearchItemCd		,"Exact"			,ColSearchItemCd			,""											,"商品コード"		,""}
-				,{"String"		,SearchItemName01	,"Exact"			,ColSearchItemName01		,""											,"商品表記名"		,""}
-				,{"String"		,SearchRecomendLoc	,"ExactOrPrefix"	,ColSearchRecomendLoc	,""											,"推奨ロケ"			,""}
-				,{"String"		,SearchLocName		,"Partial"			,ColSearchLocName			,""											,"ロケーション名"	,""}
-				,{"Integer"		,SearchType			,"Exact"			,ColSearchType			,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchClWh:	
+					Definition[i][1]	= SearchClWh;
+					break;
+				case ColSearchClGpCD:	
+					Definition[i][1]	= SearchClGpCD;
+					break;
+				case ColSearchItemCd:	
+					Definition[i][1]	= SearchItemCd;
+					break;
+				case ColSearchItemName01:	
+					Definition[i][1]	= SearchItemName01;
+					break;
+				case ColSearchRecomendLoc:	
+					Definition[i][1]	= SearchRecomendLoc;
+					break;
+				case ColSearchLocName:	
+					Definition[i][1]	= SearchLocName;
+					break;
+				case ColSearchType:	
+					Definition[i][1]	= SearchType;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

@@ -181,6 +181,8 @@ public class M100_ParameterMstRtNyanko{
 				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"					,""}
 				};
 		
+		RtSettingParameterMstRtNANKO = B100_LanguageControl.RtControl(RtSettingParameterMstRtNANKO);
+		
 		return RtSettingParameterMstRtNANKO;
 	}
 	public static Object[][] ParameterMstRtFromParaCdAndSeq(String ParaCd,int Seq){
@@ -307,7 +309,50 @@ public class M100_ParameterMstRtNyanko{
 				AllSearch);
 		return ParameterMstRtNANKO;
 	}
-			
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"		,ColSearchParaCd			,""		,"パラメータコード"				,""}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaCdSeqStr	,""		,"ナンバリング最小"				,""}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaCdSeqEnd	,""		,"ナンバリング最大"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaName		,""		,"パラメータ名"					,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt01		,""		,"パラメータテキスト項目01"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt02		,""		,"パラメータテキスト項目02"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt03		,""		,"パラメータテキスト項目03"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt04		,""		,"パラメータテキスト項目04"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt05		,""		,"パラメータテキスト項目05"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt06		,""		,"パラメータテキスト項目06"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt07		,""		,"パラメータテキスト項目07"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt08		,""		,"パラメータテキスト項目08"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt09		,""		,"パラメータテキスト項目09"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt10		,""		,"パラメータテキスト項目10"		,""}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt01Str	,""		,"パラメータ数値項目01"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt02Str	,""		,"パラメータ数値項目02"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt03Str	,""		,"パラメータ数値項目03"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt04Str	,""		,"パラメータ数値項目04"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt05Str	,""		,"パラメータ数値項目05"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt06Str	,""		,"パラメータ数値項目06"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt07Str	,""		,"パラメータ数値項目07"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt08Str	,""		,"パラメータ数値項目08"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt09Str	,""		,"パラメータ数値項目09"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt10Str	,""		,"パラメータ数値項目10"			,"最小"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt01End	,""		,"パラメータ数値項目01"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt02End	,""		,"パラメータ数値項目02"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt03End	,""		,"パラメータ数値項目03"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt04End	,""		,"パラメータ数値項目04"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt05End	,""		,"パラメータ数値項目05"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt06End	,""		,"パラメータ数値項目06"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt07End	,""		,"パラメータ数値項目07"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt08End	,""		,"パラメータ数値項目08"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt09End	,""		,"パラメータ数値項目09"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt10End	,""		,"パラメータ数値項目10"			,"最大"}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxtAll		,""		,"パラメータテキスト項目全件"	,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
+	}
 	public static Object[][] ParameterMstRtNANKO(
 			ArrayList<String> SearchParaCd,	ArrayList<Integer> SearchParaCdSeqStr,ArrayList<Integer> SearchParaCdSeqEnd,ArrayList<String> SearchParaName,
 			ArrayList<String> SearchParaTxt01,ArrayList<String> SearchParaTxt02,ArrayList<String> SearchParaTxt03,ArrayList<String> SearchParaTxt04,ArrayList<String> SearchParaTxt05,
@@ -319,43 +364,120 @@ public class M100_ParameterMstRtNyanko{
 			ArrayList<String> SearchParaTxtAll,
 			Boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchParaCd			,"Exact"			,ColSearchParaCd			,""		,"パラメータコード"				,""}
-				,{"Integer"		,SearchParaCdSeqStr		,"RangeMin"			,ColSearchParaCdSeqStr	,""		,"ナンバリング最小"				,""}
-				,{"Integer"		,SearchParaCdSeqEnd		,"RangeMax"			,ColSearchParaCdSeqEnd	,""		,"ナンバリング最大"				,""}
-				,{"String"		,SearchParaName			,"Partial"			,ColSearchParaName		,""		,"パラメータ名"					,""}
-				,{"String"		,SearchParaTxt01		,"Partial"			,ColSearchParaTxt01		,""		,"パラメータテキスト項目01"		,""}
-				,{"String"		,SearchParaTxt02		,"Partial"			,ColSearchParaTxt02		,""		,"パラメータテキスト項目02"		,""}
-				,{"String"		,SearchParaTxt03		,"Partial"			,ColSearchParaTxt03		,""		,"パラメータテキスト項目03"		,""}
-				,{"String"		,SearchParaTxt04		,"Partial"			,ColSearchParaTxt04		,""		,"パラメータテキスト項目04"		,""}
-				,{"String"		,SearchParaTxt05		,"Partial"			,ColSearchParaTxt05		,""		,"パラメータテキスト項目05"		,""}
-				,{"String"		,SearchParaTxt06		,"Partial"			,ColSearchParaTxt06		,""		,"パラメータテキスト項目06"		,""}
-				,{"String"		,SearchParaTxt07		,"Partial"			,ColSearchParaTxt07		,""		,"パラメータテキスト項目07"		,""}
-				,{"String"		,SearchParaTxt08		,"Partial"			,ColSearchParaTxt08		,""		,"パラメータテキスト項目08"		,""}
-				,{"String"		,SearchParaTxt09		,"Partial"			,ColSearchParaTxt09		,""		,"パラメータテキスト項目09"		,""}
-				,{"String"		,SearchParaTxt10		,"Partial"			,ColSearchParaTxt10		,""		,"パラメータテキスト項目10"		,""}
-				,{"Integer"		,SearchParaInt01Str		,"RangeMin"			,ColSearchParaInt01Str	,""		,"パラメータ数値項目01"			,"最小"}
-				,{"Integer"		,SearchParaInt02Str		,"RangeMin"			,ColSearchParaInt02Str	,""		,"パラメータ数値項目02"			,"最小"}
-				,{"Integer"		,SearchParaInt03Str		,"RangeMin"			,ColSearchParaInt03Str	,""		,"パラメータ数値項目03"			,"最小"}
-				,{"Integer"		,SearchParaInt04Str		,"RangeMin"			,ColSearchParaInt04Str	,""		,"パラメータ数値項目04"			,"最小"}
-				,{"Integer"		,SearchParaInt05Str		,"RangeMin"			,ColSearchParaInt05Str	,""		,"パラメータ数値項目05"			,"最小"}
-				,{"Integer"		,SearchParaInt06Str		,"RangeMin"			,ColSearchParaInt06Str	,""		,"パラメータ数値項目06"			,"最小"}
-				,{"Integer"		,SearchParaInt07Str		,"RangeMin"			,ColSearchParaInt07Str	,""		,"パラメータ数値項目07"			,"最小"}
-				,{"Integer"		,SearchParaInt08Str		,"RangeMin"			,ColSearchParaInt08Str	,""		,"パラメータ数値項目08"			,"最小"}
-				,{"Integer"		,SearchParaInt09Str		,"RangeMin"			,ColSearchParaInt09Str	,""		,"パラメータ数値項目09"			,"最小"}
-				,{"Integer"		,SearchParaInt10Str		,"RangeMin"			,ColSearchParaInt10Str	,""		,"パラメータ数値項目10"			,"最小"}
-				,{"Integer"		,SearchParaInt01End		,"RangeMax"			,ColSearchParaInt01End	,""		,"パラメータ数値項目01"			,"最大"}
-				,{"Integer"		,SearchParaInt02End		,"RangeMax"			,ColSearchParaInt02End	,""		,"パラメータ数値項目02"			,"最大"}
-				,{"Integer"		,SearchParaInt03End		,"RangeMax"			,ColSearchParaInt03End	,""		,"パラメータ数値項目03"			,"最大"}
-				,{"Integer"		,SearchParaInt04End		,"RangeMax"			,ColSearchParaInt04End	,""		,"パラメータ数値項目04"			,"最大"}
-				,{"Integer"		,SearchParaInt05End		,"RangeMax"			,ColSearchParaInt05End	,""		,"パラメータ数値項目05"			,"最大"}
-				,{"Integer"		,SearchParaInt06End		,"RangeMax"			,ColSearchParaInt06End	,""		,"パラメータ数値項目06"			,"最大"}
-				,{"Integer"		,SearchParaInt07End		,"RangeMax"			,ColSearchParaInt07End	,""		,"パラメータ数値項目07"			,"最大"}
-				,{"Integer"		,SearchParaInt08End		,"RangeMax"			,ColSearchParaInt08End	,""		,"パラメータ数値項目08"			,"最大"}
-				,{"Integer"		,SearchParaInt09End		,"RangeMax"			,ColSearchParaInt09End	,""		,"パラメータ数値項目09"			,"最大"}
-				,{"Integer"		,SearchParaInt10End		,"RangeMax"			,ColSearchParaInt10End	,""		,"パラメータ数値項目10"			,"最大"}
-				,{"String"		,SearchParaTxtAll		,"Partial"			,ColSearchParaTxtAll		,""		,"パラメータテキスト項目全件"	,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchParaCd:	
+					Definition[i][1]	= SearchParaCd;
+					break;
+				case ColSearchParaCdSeqStr:	
+					Definition[i][1]	= SearchParaCdSeqStr;
+					break;
+				case ColSearchParaCdSeqEnd:	
+					Definition[i][1]	= SearchParaCdSeqEnd;
+					break;
+				case ColSearchParaName:	
+					Definition[i][1]	= SearchParaName;
+					break;
+				case ColSearchParaTxt01:	
+					Definition[i][1]	= SearchParaTxt01;
+					break;
+				case ColSearchParaTxt02:	
+					Definition[i][1]	= SearchParaTxt02;
+					break;
+				case ColSearchParaTxt03:	
+					Definition[i][1]	= SearchParaTxt03;
+					break;
+				case ColSearchParaTxt04:	
+					Definition[i][1]	= SearchParaTxt04;
+					break;
+				case ColSearchParaTxt05:	
+					Definition[i][1]	= SearchParaTxt05;
+					break;
+				case ColSearchParaTxt06:	
+					Definition[i][1]	= SearchParaTxt06;
+					break;
+				case ColSearchParaTxt07:	
+					Definition[i][1]	= SearchParaTxt07;
+					break;
+				case ColSearchParaTxt08:	
+					Definition[i][1]	= SearchParaTxt08;
+					break;
+				case ColSearchParaTxt09:	
+					Definition[i][1]	= SearchParaTxt09;
+					break;
+				case ColSearchParaTxt10:	
+					Definition[i][1]	= SearchParaTxt10;
+					break;
+				case ColSearchParaInt01Str:	
+					Definition[i][1]	= SearchParaInt01Str;
+					break;
+				case ColSearchParaInt02Str:	
+					Definition[i][1]	= SearchParaInt02Str;
+					break;
+				case ColSearchParaInt03Str:	
+					Definition[i][1]	= SearchParaInt03Str;
+					break;
+				case ColSearchParaInt04Str:	
+					Definition[i][1]	= SearchParaInt04Str;
+					break;
+				case ColSearchParaInt05Str:	
+					Definition[i][1]	= SearchParaInt05Str;
+					break;
+				case ColSearchParaInt06Str:	
+					Definition[i][1]	= SearchParaInt06Str;
+					break;
+				case ColSearchParaInt07Str:	
+					Definition[i][1]	= SearchParaInt07Str;
+					break;
+				case ColSearchParaInt08Str:	
+					Definition[i][1]	= SearchParaInt08Str;
+					break;
+				case ColSearchParaInt09Str:	
+					Definition[i][1]	= SearchParaInt09Str;
+					break;
+				case ColSearchParaInt10Str:	
+					Definition[i][1]	= SearchParaInt10Str;
+					break;
+				case ColSearchParaInt01End:	
+					Definition[i][1]	= SearchParaInt01End;
+					break;
+				case ColSearchParaInt02End:	
+					Definition[i][1]	= SearchParaInt02End;
+					break;
+				case ColSearchParaInt03End:	
+					Definition[i][1]	= SearchParaInt03End;
+					break;
+				case ColSearchParaInt04End:	
+					Definition[i][1]	= SearchParaInt04End;
+					break;
+				case ColSearchParaInt05End:	
+					Definition[i][1]	= SearchParaInt05End;
+					break;
+				case ColSearchParaInt06End:	
+					Definition[i][1]	= SearchParaInt06End;
+					break;
+				case ColSearchParaInt07End:	
+					Definition[i][1]	= SearchParaInt07End;
+					break;
+				case ColSearchParaInt08End:	
+					Definition[i][1]	= SearchParaInt08End;
+					break;
+				case ColSearchParaInt09End:	
+					Definition[i][1]	= SearchParaInt09End;
+					break;
+				case ColSearchParaInt10End:	
+					Definition[i][1]	= SearchParaInt10End;
+					break;
+				case ColSearchParaTxtAll:	
+					Definition[i][1]	= SearchParaTxtAll;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

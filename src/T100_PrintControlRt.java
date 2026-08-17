@@ -89,7 +89,30 @@ public class T100_PrintControlRt{
 					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"}
 					};
 		
+		RtPrintControlRt = B100_LanguageControl.RtControl(RtPrintControlRt);
+		
 		return RtPrintControlRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"		,ColSearchPrintCd			,""			,"印刷帳票CD"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchOkuriNo			,""			,"送り状番号等"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchKey01			,""			,"サブキー01"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchKey02			,""			,"サブキー02"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchKey03			,""			,"サブキー03"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchKey04			,""			,"サブキー04"	,""}
+					,{"String"		,null	,"RangeStr"		,ColSearchEntryDateStr	,""			,"登録日"		,"開始"}
+					,{"String"		,null	,"RangeStr"		,ColSearchUpdateDateStr	,""			,"更新日"		,"開始"}
+					,{"String"		,null	,"RangeEnd"		,ColSearchEntryDateEnd	,""			,"登録日"		,"終了"}
+					,{"String"		,null	,"RangeEnd"		,ColSearchUpdateDateEnd	,""			,"更新日"		,"終了"}
+					,{"String"		,null	,"Partial"		,ColSearchEntryUser		,""			,"登録者"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchUpdateUser		,""			,"更新者"		,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] PrintControlRt(
@@ -107,20 +130,52 @@ public class T100_PrintControlRt{
 			ArrayList<String> SearchUpdateUser,		//更新者
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchPrintCd			,"Exact"			,ColSearchPrintCd			,""			,"印刷帳票CD"	,""}
-				,{"String"		,SearchOkuriNo			,"Exact"			,ColSearchOkuriNo			,""			,"送り状番号等"	,""}
-				,{"String"		,SearchKey01			,"Exact"			,ColSearchKey01			,""			,"サブキー01"	,""}
-				,{"String"		,SearchKey02			,"Exact"			,ColSearchKey02			,""			,"サブキー02"	,""}
-				,{"String"		,SearchKey03			,"Exact"			,ColSearchKey03			,""			,"サブキー03"	,""}
-				,{"String"		,SearchKey04			,"Exact"			,ColSearchKey04			,""			,"サブキー04"	,""}
-				,{"String"		,SearchEntryDateStr		,"RangeStr"			,ColSearchEntryDateStr	,""			,"登録日"		,"開始"}
-				,{"String"		,SearchUpdateDateStr	,"RangeStr"			,ColSearchUpdateDateStr	,""			,"更新日"		,"開始"}
-				,{"String"		,SearchEntryDateEnd		,"RangeEnd"			,ColSearchEntryDateEnd	,""			,"登録日"		,"終了"}
-				,{"String"		,SearchUpdateDateEnd	,"RangeEnd"			,ColSearchUpdateDateEnd	,""			,"更新日"		,"終了"}
-				,{"String"		,SearchEntryUser		,"Partial"			,ColSearchEntryUser		,""			,"登録者"		,""}
-				,{"String"		,SearchUpdateUser		,"Partial"			,ColSearchUpdateUser		,""			,"更新者"		,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchPrintCd:	
+					Definition[i][1]	= SearchPrintCd;
+					break;
+				case ColSearchOkuriNo:	
+					Definition[i][1]	= SearchOkuriNo;
+					break;
+				case ColSearchKey01:	
+					Definition[i][1]	= SearchKey01;
+					break;
+				case ColSearchKey02:	
+					Definition[i][1]	= SearchKey02;
+					break;
+				case ColSearchKey03:	
+					Definition[i][1]	= SearchKey03;
+					break;
+				case ColSearchKey04:	
+					Definition[i][1]	= SearchKey04;
+					break;
+				case ColSearchEntryDateStr:	
+					Definition[i][1]	= SearchEntryDateStr;
+					break;
+				case ColSearchUpdateDateStr:	
+					Definition[i][1]	= SearchUpdateDateStr;
+					break;
+				case ColSearchEntryDateEnd:	
+					Definition[i][1]	= SearchEntryDateEnd;
+					break;
+				case ColSearchUpdateDateEnd:	
+					Definition[i][1]	= SearchUpdateDateEnd;
+					break;
+				case ColSearchEntryUser:	
+					Definition[i][1]	= SearchEntryUser;
+					break;
+				case ColSearchUpdateUser:	
+					Definition[i][1]	= SearchUpdateUser;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

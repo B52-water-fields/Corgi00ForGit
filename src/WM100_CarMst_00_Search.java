@@ -36,17 +36,19 @@ public class WM100_CarMst_00_Search{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
+		Object[][] DefinitionRt	= M100_CarMstRt.DefinitionRt();
+		
 		//検索条件パネル
 		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,820,160,"White");
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchWHCD				= B100_FrameParts.JLabelSet(  0, 25,100,20,"所属倉庫:",	11,1);
-		JLabel LB_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 50,100,20,"所属会社:",	11,1);
-		JLabel LB_SearchCarCd				= B100_FrameParts.JLabelSet(  0, 75,100,20,"車輛CD:",		11,1);
-		JLabel LB_SearchCarName				= B100_FrameParts.JLabelSet(  0,100,100,20,"車輛名:",		11,1);
-		JLabel LB_SearchDelFg				= B100_FrameParts.JLabelSet(  0,125,100,20,"削除区分:",	11,1);
+		JLabel LB_SearchWHCD				= B100_FrameParts.JLabelSet(  0, 25,100,20,(String)DefinitionRt[M100_CarMstRt.ColSearchWHCD][5]					+":",	11,1);
+		JLabel LB_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 50,100,20,(String)DefinitionRt[M100_CarMstRt.ColSearchShippingCompanyCd][5]	+":",	11,1);
+		JLabel LB_SearchCarCd				= B100_FrameParts.JLabelSet(  0, 75,100,20,(String)DefinitionRt[M100_CarMstRt.ColSearchCarCd][5]					+":",	11,1);
+		JLabel LB_SearchCarName				= B100_FrameParts.JLabelSet(  0,100,100,20,(String)DefinitionRt[M100_CarMstRt.ColSearchCarName][5]				+":",	11,1);
+		JLabel LB_SearchDelFg				= B100_FrameParts.JLabelSet(  0,125,100,20,(String)DefinitionRt[M100_CarMstRt.ColSearchDelFg][5]					+":",	11,1);
 		
 		final JComboBox  TB_SearchWHCD				= B100_FrameParts.JComboBoxSet( 100, 25,200,20,B100_DefaultVariable.SearchWhList[0],11);					//所属倉庫
 		final JComboBox  TB_SearchShippingCompanyCd	= B100_FrameParts.JComboBoxSet( 100, 50,200,20,B100_DefaultVariable.SearchShippingCompanyList[0],11);	//所属会社
@@ -56,8 +58,8 @@ public class WM100_CarMst_00_Search{
 		
 		JLabel LB2_SearchWHCD				= B100_FrameParts.JLabelSet(  0, 25, 50,20,"",		11,0);
 		JLabel LB2_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 50, 50,20,"",		11,0);
-		JLabel LB2_SearchCarCd				= B100_FrameParts.JLabelSet(200, 75, 50,20,"と一致",	11,0);
-		JLabel LB2_SearchCarName			= B100_FrameParts.JLabelSet(300,100, 50,20,"を含む",	11,0);
+		JLabel LB2_SearchCarCd				= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchExact		,	11,0);
+		JLabel LB2_SearchCarName			= B100_FrameParts.JLabelSet(300,100, 50,20,B100_DefaultVariable.SearchPartial	,	11,0);
 		JLabel LB2_SearchDelFg				= B100_FrameParts.JLabelSet(200,125, 50,20,"",		11,0);
 		
 		PN_Search.add(LB_SearchWHCD);

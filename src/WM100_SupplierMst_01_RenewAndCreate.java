@@ -276,15 +276,15 @@ public class WM100_SupplierMst_01_RenewAndCreate{
 		final JTextField  TB_SearchMail				= B100_FrameParts.JTextFieldSet(350, 75,100,20,"",11,0);			//届先MAIL
 		final JTextField  TB_SearchCom				= B100_FrameParts.JTextFieldSet(350,100,100,20,"",11,0);			//届先コメント
 		
-		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(200, 25, 50,20,"と一致"		,11,0);
-		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(200, 50, 50,20,"と一致"		,11,0);
-		JLabel LB2_SearchDEName			= B100_FrameParts.JLabelSet(200, 75, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchPost			= B100_FrameParts.JLabelSet(200,100, 50,20,"で始まる"		,11,0);
-		JLabel LB2_SearchAdd			= B100_FrameParts.JLabelSet(200,125, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchTel			= B100_FrameParts.JLabelSet(450, 25, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchFax			= B100_FrameParts.JLabelSet(450, 50, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchMail			= B100_FrameParts.JLabelSet(450, 75, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(450,100, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(200, 25, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(200, 50, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDEName			= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchPost			= B100_FrameParts.JLabelSet(200,100, 50,20,B100_DefaultVariable.SearchPrefix		,11,0);
+		JLabel LB2_SearchAdd			= B100_FrameParts.JLabelSet(200,125, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchTel			= B100_FrameParts.JLabelSet(450, 25, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchFax			= B100_FrameParts.JLabelSet(450, 50, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchMail			= B100_FrameParts.JLabelSet(450, 75, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(450,100, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		PN_Search.add(LB_SearchDECD);
 		PN_Search.add(LB_SearchDepartmentCd);

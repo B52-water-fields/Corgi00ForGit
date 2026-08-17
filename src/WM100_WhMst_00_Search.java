@@ -64,16 +64,16 @@ public class WM100_WhMst_00_Search{
 		final JTextField TB_SearchMail  = B100_FrameParts.JTextFieldSet(		450, 75,100,20,"",11,0);		
 		final JTextField TB_SearchPTMSCD  = B100_FrameParts.JTextFieldSet(	450,100,100,20,"",11,0);
 		
-		JLabel LB2_SearchWHCD  = B100_FrameParts.JLabelSet(	200, 25,100,20,"と一致"   ,11,0);
-		JLabel LB2_SearchWHName  = B100_FrameParts.JLabelSet(	250, 50,100,20,"を含む"   ,11,0);
-		JLabel LB2_SearchPost  = B100_FrameParts.JLabelSet(	200, 75,100,20,"で始まる" ,11,0);
-		JLabel LB2_SearchAdd  = B100_FrameParts.JLabelSet(		250,100,100,20,"を含む"   ,11,0);
-		JLabel LB2_SearchCom  = B100_FrameParts.JLabelSet(		250,125,100,20,"を含む"   ,11,0);
+		JLabel LB2_SearchWHCD  = B100_FrameParts.JLabelSet(	200, 25,100,20,B100_DefaultVariable.SearchExact   ,11,0);
+		JLabel LB2_SearchWHName  = B100_FrameParts.JLabelSet(	250, 50,100,20,B100_DefaultVariable.SearchPartial   ,11,0);
+		JLabel LB2_SearchPost  = B100_FrameParts.JLabelSet(	200, 75,100,20,B100_DefaultVariable.SearchPrefix ,11,0);
+		JLabel LB2_SearchAdd  = B100_FrameParts.JLabelSet(		250,100,100,20,B100_DefaultVariable.SearchPartial   ,11,0);
+		JLabel LB2_SearchCom  = B100_FrameParts.JLabelSet(		250,125,100,20,B100_DefaultVariable.SearchPartial   ,11,0);
 				
-		JLabel LB2_SearchTel  = B100_FrameParts.JLabelSet(		550, 25,100,20,"を含む"   ,11,0);
-		JLabel LB2_SearchFax  = B100_FrameParts.JLabelSet(		550, 50,100,20,"を含む"   ,11,0);
-		JLabel LB2_SearchMail  = B100_FrameParts.JLabelSet(	550, 75,100,20,"を含む"   ,11,0);
-		JLabel LB2_SearchPTMSCD  = B100_FrameParts.JLabelSet(	550,100,100,20,"と一致"   ,11,0);
+		JLabel LB2_SearchTel  = B100_FrameParts.JLabelSet(		550, 25,100,20,B100_DefaultVariable.SearchPartial   ,11,0);
+		JLabel LB2_SearchFax  = B100_FrameParts.JLabelSet(		550, 50,100,20,B100_DefaultVariable.SearchPartial   ,11,0);
+		JLabel LB2_SearchMail  = B100_FrameParts.JLabelSet(	550, 75,100,20,B100_DefaultVariable.SearchPartial   ,11,0);
+		JLabel LB2_SearchPTMSCD  = B100_FrameParts.JLabelSet(	550,100,100,20,B100_DefaultVariable.SearchExact   ,11,0);
 		
 		PN_Search.add(LB_SearchWHCD);
 		PN_Search.add(LB_SearchWHName);

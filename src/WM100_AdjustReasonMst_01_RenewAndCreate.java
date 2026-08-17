@@ -31,23 +31,25 @@ public class WM100_AdjustReasonMst_01_RenewAndCreate{
 		if("".equals(TgtWhCd)		) {TgtWhCd				= A00000_Main.ClWh;}
 		if(null==TgtAdjustReasonCd	) {TgtAdjustReasonCd	= "";}
 		
+		Object[][] RtAdjustReasonRt	= M100_AdjustReasonRt.RtAdjustReasonRt();
+		
 		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,600,400,"Corgi00在庫調整理由マスタ登録・修正　WM100_AdjustReasonMst_01_RenewAndCreate","");
 		JLabel userinfo 	= B100_FrameParts.UserInfo();
 		JButton exit_btn 	= B100_FrameParts.ExitBtn();
 		JButton entry_btn 	= B100_FrameParts.EntryBtn();
 		
-		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"		,11,1);
-		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	  0, 75,130,20,"倉庫コード:"		,11,1);
-		JLabel LB_AdjustReasonCd	= B100_FrameParts.JLabelSet(	  0,100,130,20,"調整理由コード:"	,11,1);
-		JLabel LB_AdjustReasonName	= B100_FrameParts.JLabelSet(	  0,125,130,20,"調整理由名:"		,11,1);
-		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(	  0,150,130,20,"登録日:"			,11,1);
-		JLabel LB_UpdateDate		= B100_FrameParts.JLabelSet(	  0,175,130,20,"更新日:"			,11,1);
-		JLabel LB_EntryUser			= B100_FrameParts.JLabelSet(	  0,200,130,20,"登録者:"			,11,1);
-		JLabel LB_UpdateUser		= B100_FrameParts.JLabelSet(	  0,225,130,20,"更新者:"			,11,1);
+		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	  0, 50,130,20,(String)RtAdjustReasonRt[M100_AdjustReasonRt.ColWhCd][3]				+":"	,11,1);
+		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	  0, 75,130,20,(String)RtAdjustReasonRt[M100_AdjustReasonRt.ColClCd][3]				+":"	,11,1);
+		JLabel LB_AdjustReasonCd	= B100_FrameParts.JLabelSet(	  0,100,130,20,(String)RtAdjustReasonRt[M100_AdjustReasonRt.ColAdjustReasonCd][3]		+":"	,11,1);
+		JLabel LB_AdjustReasonName	= B100_FrameParts.JLabelSet(	  0,125,130,20,(String)RtAdjustReasonRt[M100_AdjustReasonRt.ColAdjustReasonName][3]	+":"	,11,1);
+		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(	  0,150,130,20,(String)RtAdjustReasonRt[M100_AdjustReasonRt.ColEntryDate][3]			+":"	,11,1);
+		JLabel LB_UpdateDate		= B100_FrameParts.JLabelSet(	  0,175,130,20,(String)RtAdjustReasonRt[M100_AdjustReasonRt.ColUpdateDate][3]			+":"	,11,1);
+		JLabel LB_EntryUser			= B100_FrameParts.JLabelSet(	  0,200,130,20,(String)RtAdjustReasonRt[M100_AdjustReasonRt.ColEntryUser][3]			+":"	,11,1);
+		JLabel LB_UpdateUser		= B100_FrameParts.JLabelSet(	  0,225,130,20,(String)RtAdjustReasonRt[M100_AdjustReasonRt.ColUpdateUser][3]			+":"	,11,1);
 		
 		final JComboBox   TB_ClWh				= B100_FrameParts.JComboBoxSet(	130, 50,250,20,B100_DefaultVariable.WhList[0],11);		//倉庫コード
 		final JComboBox   TB_ClCd				= B100_FrameParts.JComboBoxSet(	130, 75,250,20,B100_DefaultVariable.ClList[0],11);		//荷主コード
-		final JTextField  TB_AdjustReasonCd		= B100_FrameParts.JTextFieldSet( 130,100,100,20,TgtAdjustReasonCd,11,0);						//調整理由コード
+		final JTextField  TB_AdjustReasonCd		= B100_FrameParts.JTextFieldSet( 130,100,100,20,TgtAdjustReasonCd,11,0);					//調整理由コード
 		final JTextField  TB_AdjustReasonName	= B100_FrameParts.JTextFieldSet( 130,125,100,20,"",11,0);	//調整理由名
 		final JTextField  TB_EntryDate			= B100_FrameParts.JTextFieldSet( 130,150,300,20,"",11,0);	//登録日
 		final JTextField  TB_UpdateDate			= B100_FrameParts.JTextFieldSet( 130,175,300,20,"",11,0);	//更新日

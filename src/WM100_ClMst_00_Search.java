@@ -66,17 +66,17 @@ public class WM100_ClMst_00_Search{
 		final JTextField TB_SearchMail		 = B100_FrameParts.JTextFieldSet(450,100,100,20,"",11,0);	//Mail
 		final JTextField TB_SearchCom		 = B100_FrameParts.JTextFieldSet(450,125,200,20,"",11,0);	//コメント
 		
-		JLabel LB2_SearchClGpCD	  = B100_FrameParts.JLabelSet(300, 25,100,20,"と一致"		,11,0);
-		JLabel LB2_SearchCLCD	  = B100_FrameParts.JLabelSet(200, 50, 50,20,"と一致"		,11,0);
-		JLabel LB2_SearchWHCD	  = B100_FrameParts.JLabelSet(300, 75, 50,20,"と一致"		,11,0);
-		JLabel LB2_SearchCLName	  = B100_FrameParts.JLabelSet(300,100, 50,20,"を含む"		,11,0);
-		JLabel LB2_searchAdd	  = B100_FrameParts.JLabelSet(300,125, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchClGpCD	  = B100_FrameParts.JLabelSet(300, 25,100,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchCLCD	  = B100_FrameParts.JLabelSet(200, 50, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchWHCD	  = B100_FrameParts.JLabelSet(300, 75, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchCLName	  = B100_FrameParts.JLabelSet(300,100, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_searchAdd	  = B100_FrameParts.JLabelSet(300,125, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
-		JLabel LB2_SearchPost	  = B100_FrameParts.JLabelSet(550, 25, 50,20,"で始まる"	,11,0);
-		JLabel LB2_SearchTel	  = B100_FrameParts.JLabelSet(550, 50, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchFax	  = B100_FrameParts.JLabelSet(550, 75, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchMail	  = B100_FrameParts.JLabelSet(550,100, 50,20,"を含む"		,11,0);
-		JLabel LB2_SearchCom	  = B100_FrameParts.JLabelSet(650,125, 50,20,"を含む"		,11,0);
+		JLabel LB2_SearchPost	  = B100_FrameParts.JLabelSet(550, 25, 50,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchTel	  = B100_FrameParts.JLabelSet(550, 50, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchFax	  = B100_FrameParts.JLabelSet(550, 75, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchMail	  = B100_FrameParts.JLabelSet(550,100, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchCom	  = B100_FrameParts.JLabelSet(650,125, 50,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		PN_Search.add(LB_SearchClGpCD);
 		PN_Search.add(LB_SearchCLCD);

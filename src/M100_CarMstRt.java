@@ -95,10 +95,22 @@ public class M100_CarMstRt{
 				,{"DelFg"					,ColDelFg						,"int"		,"削除フラグ"				,""}
 				,{"WHName"					,ColWHName						,"String"	,"倉庫名"					,""}
 				};
-		
+		RtSettingCarMstRt = B100_LanguageControl.RtControl(RtSettingCarMstRt);
 		return RtSettingCarMstRt;
 	}
-	
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+				 	 {"String"		,null	,"Exact"		,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫コード"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchCarCd				,""														,"車輛CD"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchCarName				,""														,"車輛名"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除フラグ"	,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
+	}
 	public static Object[][] CarMstRt(
 			ArrayList<String> SearchWHCD,
 			ArrayList<String> SearchShippingCompanyCd,
@@ -107,13 +119,31 @@ public class M100_CarMstRt{
 			ArrayList<String> SearchDelFg,
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchWHCD					,"Exact"			,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫コード"	,""}
-				,{"String"		,SearchShippingCompanyCd	,"Exact"			,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
-				,{"String"		,SearchCarCd				,"Exact"			,ColSearchCarCd				,""														,"車輛CD"		,""}
-				,{"String"		,SearchCarName				,"Partial"			,ColSearchCarName				,""														,"車輛名"		,""}
-				,{"String"		,SearchDelFg				,"Exact"			,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除フラグ"	,""}
-				};
+		Object[][] Definition = DefinitionRt();
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchWHCD:	
+					Definition[i][1]	= SearchWHCD;
+					break;
+				case ColSearchShippingCompanyCd:	
+					Definition[i][1]	= SearchShippingCompanyCd;
+					break;
+				case ColSearchCarCd:	
+					Definition[i][1]	= SearchCarCd;
+					break;
+				case ColSearchCarName:	
+					Definition[i][1]	= SearchCarName;
+					break;
+				case ColSearchDelFg:	
+					Definition[i][1]	= SearchDelFg;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

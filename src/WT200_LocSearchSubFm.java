@@ -43,11 +43,13 @@ public class WT200_LocSearchSubFm{
 		Loc_fm.add(LocExit_btn);
 		Loc_fm.add(LocEntry_btn);
 		
-		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	 0, 50,100,20,"倉庫:"				,11,1);
-		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	 0, 75,100,20,"荷主:"				,11,1);
-		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(	 0,100,130,20,"ロケーション:"		,11,1);
-		JLabel LB_SearchLocName		= B100_FrameParts.JLabelSet(	 0,125,130,20,"ロケーション名:"	,11,1);
-		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(	 0,150,130,20,"ロケタイプ:"		,11,1);
+		Object[][] DefinitionRt= M100_LocationMstRt.DefinitionRt();
+		
+		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	 0, 50,100,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchWhCd][5]		+":"	,11,1);
+		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	 0, 75,100,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchClCd][5]		+":"	,11,1);
+		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(	 0,100,130,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchLoc][5]		+":"	,11,1);
+		JLabel LB_SearchLocName		= B100_FrameParts.JLabelSet(	 0,125,130,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchLocName][5]	+":"	,11,1);
+		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(	 0,150,130,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchType][5]		+":"	,11,1);
 		
 		final JComboBox TB_WhCd		= B100_FrameParts.JComboBoxSet(			100, 50,300,20,B100_DefaultVariable.WhList[0],11);	//倉庫
 		final JComboBox TB_ClCd		= B100_FrameParts.JComboBoxSet(			100, 75,300,20,B100_DefaultVariable.ClList[0],11);	//荷主
@@ -56,8 +58,8 @@ public class WT200_LocSearchSubFm{
 		final JTextField  TB_SearchLocName	= B100_FrameParts.JTextFieldSet(	130,125,100,20,"",12,0);									//ロケーション名
 		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 	130,150,100,20,B100_DefaultVariable.SearchLocType[0],12);	//ロケタイプ
 		
-		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(	  	230,100,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  		230,125,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(	  	230,100,100,20,B100_DefaultVariable.SearchPrefix		,11,0);
+		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  		230,125,100,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		JButton LocSearchKickBtn			= B100_FrameParts.BtnSet(			130,175, 90,20,"検索",11);
 		

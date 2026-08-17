@@ -61,10 +61,10 @@ public class WM100_ItemRecomendLocMst_00_Search{
 		final JTextField  TB_SearchLocName		= B100_FrameParts.JTextFieldSet( 130,175,100,20,"",11,0);	//ロケーション名
 		final JComboBox   TB_SearchType			= B100_FrameParts.JComboBoxSet(	130,200,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
 		
-		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(	230,100,130,20,"と一致"		,11,0);
-		JLabel LB2_SearchItemName01		= B100_FrameParts.JLabelSet(	230,125,130,20,"を含む"		,11,0);
-		JLabel LB2_SearchRecomendLoc	= B100_FrameParts.JLabelSet(	230,150,130,20,"と一致"		,11,0);
-		JLabel LB2_SearchLocName		= B100_FrameParts.JLabelSet(	230,175,130,20,"を含む"		,11,0);
+		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(	230,100,130,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchItemName01		= B100_FrameParts.JLabelSet(	230,125,130,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchRecomendLoc	= B100_FrameParts.JLabelSet(	230,150,130,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchLocName		= B100_FrameParts.JLabelSet(	230,175,130,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		for(int i=0;i<B100_DefaultVariable.SearchWhList[1].length;i++) {
 			if(B100_DefaultVariable.SearchWhList[1][i].equals(A00000_Main.ClWh)) {

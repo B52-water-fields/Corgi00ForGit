@@ -110,7 +110,26 @@ public class M100_ShippingCompanyMstRt{
 				,{"ExportDataType"			,ColExportDataType			,"String"	,"データ抽出タイプ"			,""}
 				};
 		
+		RtSettingShippingCompanyMstRt = B100_LanguageControl.RtControl(RtSettingShippingCompanyMstRt);
+		
 		return RtSettingShippingCompanyMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"	,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchCompanyName		,""														,"運送会社名"	,""}
+					,{"String"		,null	,"Prefix"	,ColSearchPost				,""														,"運送会社郵便"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchAdd					,""														,"運送会社住所"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchTel					,""														,"運送会社Tel"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchFax					,""														,"運送会社Fax"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchMail				,""														,"運送会社Mail"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCom					,""														,"コメント"		,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] ShippingCompanyMstRt(
@@ -124,16 +143,39 @@ public class M100_ShippingCompanyMstRt{
 			ArrayList<String> SearchCom,
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchShippingCompanyCd	,"Exact"			,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
-				,{"String"		,SearchCompanyName			,"Exact"			,ColSearchCompanyName		,""														,"運送会社名"	,""}
-				,{"String"		,SearchPost					,"Prefix"			,ColSearchPost				,""														,"運送会社郵便"	,""}
-				,{"String"		,SearchAdd					,"Partial"			,ColSearchAdd					,""														,"運送会社住所"	,""}
-				,{"String"		,SearchTel					,"Partial"			,ColSearchTel					,""														,"運送会社Tel"	,""}
-				,{"String"		,SearchFax					,"Partial"			,ColSearchFax					,""														,"運送会社Fax"	,""}
-				,{"String"		,SearchMail					,"Partial"			,ColSearchMail				,""														,"運送会社Mail"	,""}
-				,{"String"		,SearchCom					,"Partial"			,ColSearchCom					,""														,"コメント"		,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchShippingCompanyCd:	
+					Definition[i][1]	= SearchShippingCompanyCd;
+					break;
+				case ColSearchCompanyName:	
+					Definition[i][1]	= SearchCompanyName;
+					break;
+				case ColSearchPost:	
+					Definition[i][1]	= SearchPost;
+					break;
+				case ColSearchAdd:	
+					Definition[i][1]	= SearchAdd;
+					break;
+				case ColSearchTel:	
+					Definition[i][1]	= SearchTel;
+					break;
+				case ColSearchFax:	
+					Definition[i][1]	= SearchFax;
+					break;
+				case ColSearchMail:	
+					Definition[i][1]	= SearchMail;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

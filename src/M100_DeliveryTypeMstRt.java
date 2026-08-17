@@ -52,7 +52,21 @@ public class M100_DeliveryTypeMstRt{
 				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"		,""}
 				};
 		
+		RtSettingDeliveryTypeMstRt = B100_LanguageControl.RtControl(RtSettingDeliveryTypeMstRt);
+		
 		return RtSettingDeliveryTypeMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"		,ColSearchDeliveryTypeNo		,""		,"タイプ番号"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchDeliveryTypeCd		,""		,"運送タイプコード"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchDeliveryTypeName	,""		,"運送タイプ名"			,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] DeliveryTypeMstRt(
@@ -61,11 +75,24 @@ public class M100_DeliveryTypeMstRt{
 			ArrayList<String> SearchDeliveryTypeName,	//運送タイプ名
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchDeliveryTypeNo		,"Exact"			,ColSearchDeliveryTypeNo		,""		,"タイプ番号"			,""}
-				,{"String"		,SearchDeliveryTypeCd		,"Exact"			,ColSearchDeliveryTypeCd		,""		,"運送タイプコード"		,""}
-				,{"String"		,SearchDeliveryTypeName		,"Partial"			,ColSearchDeliveryTypeName	,""		,"運送タイプ名"			,""}
-				};
+		Object[][] Definition = DefinitionRt();
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchDeliveryTypeNo:	
+					Definition[i][1]	= SearchDeliveryTypeNo;
+					break;
+				case ColSearchDeliveryTypeCd:	
+					Definition[i][1]	= SearchDeliveryTypeCd;
+					break;
+				case ColSearchDeliveryTypeName:	
+					Definition[i][1]	= SearchDeliveryTypeName;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

@@ -138,25 +138,25 @@ public class WT100_Arrival_00_Search{
 		JScrollPane SPArrNoAny 	= B100_FrameParts.JScrollPaneSet(720,25,100,195,TB_ArrNoAny);
 		
 		
-		JLabel LB2_SearchArrNo			= B100_FrameParts.JLabelSet(200,125, 40,20,"と一致"	,11,0);
-		JLabel LB2_SearchArrCount		= B100_FrameParts.JLabelSet(170,150, 20,20,"～"		,11,2);
-		JLabel LB2_SearchClArrNo		= B100_FrameParts.JLabelSet(200,175, 40,20,"と一致"	,11,0);
-		JLabel LB2_SearchPlanDate		= B100_FrameParts.JLabelSet(210,200, 20,20,"～"		,11,2);
-		JLabel LB2_SearchActualDate		= B100_FrameParts.JLabelSet(210,225, 20,20,"～"		,11,2);
-		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(300,250, 40,20,"を含む"	,11,0);
+		JLabel LB2_SearchArrNo			= B100_FrameParts.JLabelSet(200,125, 40,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchArrCount		= B100_FrameParts.JLabelSet(170,150, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchClArrNo		= B100_FrameParts.JLabelSet(200,175, 40,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchPlanDate		= B100_FrameParts.JLabelSet(210,200, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchActualDate		= B100_FrameParts.JLabelSet(210,225, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchCom			= B100_FrameParts.JLabelSet(300,250, 40,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		
-		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(540, 25, 40,20,"と一致"	,11,0);
-		JLabel LB2_SearchClItemCd		= B100_FrameParts.JLabelSet(540, 50, 40,20,"と一致"	,11,0);
-		JLabel LB2_SearchItemName		= B100_FrameParts.JLabelSet(540, 75, 40,20,"を含む"	,11,0);
-		JLabel LB2_SearchLot			= B100_FrameParts.JLabelSet(540,100, 40,20,"と一致"	,11,0);
-		JLabel LB2_SearchExpDate		= B100_FrameParts.JLabelSet(550,125, 20,20,"～"		,11,2);
+		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(540, 25, 40,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchClItemCd		= B100_FrameParts.JLabelSet(540, 50, 40,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchItemName		= B100_FrameParts.JLabelSet(540, 75, 40,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchLot			= B100_FrameParts.JLabelSet(540,100, 40,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchExpDate		= B100_FrameParts.JLabelSet(550,125, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
 		
 		
-		JLabel LB2_SearchEntryDateMin	= B100_FrameParts.JLabelSet(560,175, 20,20,"～"		,11,2);
-		JLabel LB2_SearchUpdateDateMin	= B100_FrameParts.JLabelSet(560,200, 20,20,"～"		,11,2);
-		JLabel LB2_SearchEntryUser		= B100_FrameParts.JLabelSet(540,225, 40,20,"を含む"	,11,0);
-		JLabel LB2_SearchUpdateUser		= B100_FrameParts.JLabelSet(540,250, 40,20,"を含む"	,11,0);
+		JLabel LB2_SearchEntryDateMin	= B100_FrameParts.JLabelSet(560,175, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchUpdateDateMin	= B100_FrameParts.JLabelSet(560,200, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchEntryUser		= B100_FrameParts.JLabelSet(540,225, 40,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchUpdateUser		= B100_FrameParts.JLabelSet(540,250, 40,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		//予定日進む戻るボタン
 		JButton SearchPlanDateMinAfterBtn	= B100_FrameParts.BtnSet(170,200, 40,10,"▲",6);

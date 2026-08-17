@@ -40,7 +40,7 @@ public class WT100_StockAdjust_00_Search{
 		//検索条件パネル
 		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,810,300,"White");
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
-		String[] LocExactMatchList = {"で始まる","と一致"};
+		String[] LocExactMatchList = {B100_DefaultVariable.SearchPrefix,B100_DefaultVariable.SearchExact};
 		
 		JLabel LB_SearchClCd				= B100_FrameParts.JLabelSet(  0, 25,130,20,"荷主コード:"				,11,1);
 		JLabel LB_SearchWhCd				= B100_FrameParts.JLabelSet(  0, 50,130,20,"倉庫コード:"				,11,1);
@@ -83,19 +83,19 @@ public class WT100_StockAdjust_00_Search{
 		final JFormattedTextField TB_SearchAdjustQtyMin		= B100_FrameParts.JFormattedTextFieldSet(	500,150, 70,20,""	,11,1,"#,###");								//調整数最小
 		final JFormattedTextField TB_SearchAdjustQtyMax		= B100_FrameParts.JFormattedTextFieldSet(	600,150, 70,20,""	,11,1,"#,###");								//調整数最大
 		
-		JLabel LB2_SearchAdjustNo			= B100_FrameParts.JLabelSet(230,100, 80,20,"と一致"		,11,0);
-		JLabel LB2_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(230,125, 80,20,"と一致"		,11,0);
-		JLabel LB2_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(230,150, 80,20,"を含む"		,11,0);
-		JLabel LB2_SearchAdjustdate			= B100_FrameParts.JLabelSet(240,175, 30,20,"～"			,11,2);
-		JLabel LB2_SearchAdjustCom			= B100_FrameParts.JLabelSet(230,250, 80,20,"を含む"		,11,0);
+		JLabel LB2_SearchAdjustNo			= B100_FrameParts.JLabelSet(230,100, 80,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(230,125, 80,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(230,150, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchAdjustdate			= B100_FrameParts.JLabelSet(240,175, 30,20,B100_DefaultVariable.SearchFromTo			,11,2);
+		JLabel LB2_SearchAdjustCom			= B100_FrameParts.JLabelSet(230,250, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		
-		JLabel LB2_SearchItemCd				= B100_FrameParts.JLabelSet(600, 25, 80,20,"と一致"		,11,0);
-		JLabel LB2_SearchItemName			= B100_FrameParts.JLabelSet(600, 50, 80,20,"を含む"		,11,0);
-		JLabel LB2_SearchLot				= B100_FrameParts.JLabelSet(600, 75, 80,20,"と一致"		,11,0);
-		JLabel LB2_SearchExpDate			= B100_FrameParts.JLabelSet(610,100, 30,20,"～"			,11,2);
-		JLabel LB2_SearchActualDate			= B100_FrameParts.JLabelSet(610,125, 30,20,"～"			,11,2);
-		JLabel LB2_SearchAdjustQty			= B100_FrameParts.JLabelSet(570,150, 30,20,"～"			,11,2);
+		JLabel LB2_SearchItemCd				= B100_FrameParts.JLabelSet(600, 25, 80,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchItemName			= B100_FrameParts.JLabelSet(600, 50, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchLot				= B100_FrameParts.JLabelSet(600, 75, 80,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchExpDate			= B100_FrameParts.JLabelSet(610,100, 30,20,B100_DefaultVariable.SearchFromTo			,11,2);
+		JLabel LB2_SearchActualDate			= B100_FrameParts.JLabelSet(610,125, 30,20,B100_DefaultVariable.SearchFromTo			,11,2);
+		JLabel LB2_SearchAdjustQty			= B100_FrameParts.JLabelSet(570,150, 30,20,B100_DefaultVariable.SearchFromTo			,11,2);
 		
 		//調整日進む戻るボタン
 		JButton SearchAdjustdateMinAfterBtn		= B100_FrameParts.BtnSet(200,175, 40,10,"▲",6);

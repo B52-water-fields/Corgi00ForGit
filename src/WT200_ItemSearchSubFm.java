@@ -44,41 +44,36 @@ public class WT200_ItemSearchSubFm{
 		Item_fm.add(ItemExit_btn);
 		Item_fm.add(ItemEntry_btn);
 		
-		JLabel LB_WhCd				= B100_FrameParts.JLabelSet(	 0, 50,100,20,"倉庫:"				,11,1);
-		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(	 0, 75,100,20,"荷主:"				,11,1);
+		Object[][] DefinitionRt = M100_ItemMstRt.DefinitionRt();
 		
-		final JComboBox TB_WhCd		= B100_FrameParts.JComboBoxSet(				100, 50,300,20,B100_DefaultVariable.WhList[0],11);	//倉庫コード
-		final JComboBox TB_ClCd		= B100_FrameParts.JComboBoxSet(				100, 75,300,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
+		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(		  0, 50,100,20,(String)DefinitionRt[M100_ItemMstRt.ColSearchClCd][5]	+":"				,11,1);
 		
-		JLabel LB_SearchItemCd  						= B100_FrameParts.JLabelSet(		  0,100,130,20,"商品コード:"			,11,1);
-		JLabel LB_SearchClItemCd  						= B100_FrameParts.JLabelSet(		  0,125,130,20,"荷主商品コード:"		,11,1);
-		JLabel LB_SearchItemName  						= B100_FrameParts.JLabelSet(		  0,150,130,20,"商品名:"				,11,1);
+		final JComboBox TB_ClCd		= B100_FrameParts.JComboBoxSet(	100, 50,300,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
 		
-		final JTextField TB_SearchItemCd  				= B100_FrameParts.JTextFieldSet(	130,100,100,20,""						,11,0);	//商品コード
-		final JTextField TB_SearchClItemCd  			= B100_FrameParts.JTextFieldSet(	130,125,100,20,""						,11,0);	//荷主商品コード
-		final JTextField TB_SearchItemName  			= B100_FrameParts.JTextFieldSet(	130,150,100,20,""						,11,0);	//商品名
+		JLabel LB_SearchItemCd  						= B100_FrameParts.JLabelSet(		  0,100,130,20,(String)DefinitionRt[M100_ItemMstRt.ColSearchItemCd][5]	+":"	,11,1);
+		JLabel LB_SearchClItemCd  						= B100_FrameParts.JLabelSet(		  0,125,130,20,(String)DefinitionRt[M100_ItemMstRt.ColSearchClItemCd][5]	+":"	,11,1);
+		JLabel LB_SearchItemName  						= B100_FrameParts.JLabelSet(		  0,150,130,20,(String)DefinitionRt[M100_ItemMstRt.ColSearchItemName][5]	+":"	,11,1);
 		
-		JLabel LB2_SearchItemCd  						= B100_FrameParts.JLabelSet(		230,100, 80,20,"と一致"					,11,0);	//商品コード
-		JLabel LB2_SearchClItemCd  						= B100_FrameParts.JLabelSet(		230,125, 80,20,"と一致"					,11,0);	//商品コード
-		JLabel LB2_SearchItemName  						= B100_FrameParts.JLabelSet(		230,150, 80,20,"を含む"					,11,0);	//商品名
+		final JTextField TB_SearchItemCd  				= B100_FrameParts.JTextFieldSet(	130,100,100,20,""										,11,0);	//商品コード
+		final JTextField TB_SearchClItemCd  			= B100_FrameParts.JTextFieldSet(	130,125,100,20,""										,11,0);	//荷主商品コード
+		final JTextField TB_SearchItemName  			= B100_FrameParts.JTextFieldSet(	130,150,100,20,""										,11,0);	//商品名
+		
+		JLabel LB2_SearchItemCd  						= B100_FrameParts.JLabelSet(		230,100, 80,20,B100_DefaultVariable.SearchExact		,11,0);	//商品コード
+		JLabel LB2_SearchClItemCd  						= B100_FrameParts.JLabelSet(		230,125, 80,20,B100_DefaultVariable.SearchExact		,11,0);	//商品コード
+		JLabel LB2_SearchItemName  						= B100_FrameParts.JLabelSet(		230,150, 80,20,B100_DefaultVariable.SearchPartial		,11,0);	//商品名
 		
 		JButton ItemSearchKickBtn						= B100_FrameParts.BtnSet(			130,175, 90,20,"検索",11);
 		
-		TB_WhCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]		,ClWh ,true) );		//倉庫コード
 		TB_ClCd.setSelectedIndex(	B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClList[1]		,ClCd ,true) );		//荷主コード
-		
-		
-		TB_WhCd.setEnabled(false);
+
 		TB_ClCd.setEnabled(false);
 		
 		
 		Item_fm.add(LB_ClCd);
-		Item_fm.add(LB_WhCd);
 		Item_fm.add(LB_SearchItemCd);
 		Item_fm.add(LB_SearchClItemCd);
 		Item_fm.add(LB_SearchItemName);
 		Item_fm.add(TB_ClCd);
-		Item_fm.add(TB_WhCd);
 		Item_fm.add(TB_SearchItemCd);
 		Item_fm.add(TB_SearchClItemCd);
 		Item_fm.add(TB_SearchItemName);
@@ -136,7 +131,6 @@ public class WT200_ItemSearchSubFm{
 						tableModel_msItem.removeRow(0);
 					}
 					String SearchTgtClCd		= B100_TextControl.Trim(B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()]);	//荷主コード
-					String SearchTgtWhCd		= B100_TextControl.Trim(B100_DefaultVariable.WhList[1][TB_WhCd.getSelectedIndex()]);	//倉庫コード
 					String SearchTgtClGp		="";
 					Object[][] ClMstRt = ClMstRt(SearchTgtClCd);
 					if(1==ClMstRt.length) {

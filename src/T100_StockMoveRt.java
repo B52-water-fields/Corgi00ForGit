@@ -305,7 +305,68 @@ public class T100_StockMoveRt{
 							,{"EntryUser"				,ColEntryUser					,"String"	,"登録者"						,""}
 							,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者"						,""}
 							};
+		
+		RtStockMoveRt = B100_LanguageControl.RtControl(RtStockMoveRt);
+		
 		return RtStockMoveRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"			,ColSearchClCd						,B100_DefaultVariable.SearchClList	,"荷主コード"					,""}
+					,{"String"		,null	,"Partial"			,ColSearchCLName						,""										,"荷主名"						,""}
+					,{"String"		,null	,"Exact"			,ColSearchWhCd						,B100_DefaultVariable.SearchWhList	,"倉庫コード"					,""}
+					,{"String"		,null	,"Partial"			,ColSearchClWHName					,""										,"担当倉庫名"					,""}
+					,{"String"		,null	,"Exact"			,ColSearchMoveNo						,""										,"調整番号"						,""}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchFromLoc						,""										,"移動元ロケ"					,""}
+					,{"String"		,null	,"Partial"			,ColSearchFromLocName				,""										,"移動元ロケーション名"			,""}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchToLoc						,""										,"移動先ロケ"					,""}
+					,{"String"		,null	,"Partial"			,ColSearchToLocName					,""										,"移動先ロケーション名"			,""}
+					,{"String"		,null	,"Exact"			,ColSearchItemCd						,""										,"商品CD"						,""}
+					,{"String"		,null	,"Partial"			,ColSearchItemName					,""										,"商品名"						,""}
+					,{"String"		,null	,"Exact"			,ColSearchLot							,""										,"ロット"						,""}
+					,{"Date"		,null	,"RangeStr"			,ColSearchExpDateMin					,""										,"賞味期限"						,"開始"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchExpDateMax					,""										,"賞味期限"						,"終了"}
+					,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin				,""										,"入荷日最小"					,""}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax				,""										,"入荷日最大"					,""}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromQtyMin			,""										,"（移動前）移動元在庫数"		,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromPlanQtyMin		,""										,"（移動前）移動元引当済数"		,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromPossibleQtyMin	,""										,"（移動前）移動元出荷可能数"	,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToQtyMin				,""										,"（移動前）移動先在庫数"		,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToPlanQtyMin		,""										,"（移動前）移動先引当済数"		,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToPossibleQtyMin	,""										,"（移動前）移動先出荷可能数"	,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchMoveQtyMin					,""										,"移動数最小"	,""}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromQtyMin			,""										,"（移動後）移動元在庫数"		,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromPlanQtyMin		,""										,"（移動後）移動元引当済数"		,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromPossibleQtyMin	,""										,"（移動後）移動元出荷可能数"	,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToQtyMin				,""										,"（移動後）移動先在庫数"		,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToPlanQtyMin			,""										,"（移動後）移動先引当済数"		,"最小"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToPossibleQtyMin	,""										,"（移動後）移動先出荷可能数"	,"最小"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromQtyMax			,""										,"（移動前）移動元在庫数"		,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromPlanQtyMax		,""										,"（移動前）移動元引当済数"		,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromPossibleQtyMax	,""										,"（移動前）移動元出荷可能数"	,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToQtyMax				,""										,"（移動前）移動先在庫数"		,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToPlanQtyMax		,""										,"（移動前）移動先引当済数"		,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToPossibleQtyMax	,""										,"（移動前）移動先出荷可能数"	,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchMoveQtyMax					,""										,"移動数最大"	,""}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromQtyMax			,""										,"（移動後）移動元在庫数"		,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromPlanQtyMax		,""										,"（移動後）移動元引当済数"		,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromPossibleQtyMax	,""										,"（移動後）移動元出荷可能数"	,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToQtyMax				,""										,"（移動後）移動先在庫数"		,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToPlanQtyMax			,""										,"（移動後）移動先引当済数"		,"最大"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToPossibleQtyMax	,""										,"（移動後）移動先出荷可能数"	,"最大"}
+					,{"String"		,null	,"Partial"			,ColSearchMoveCom						,""										,"移動コメント"					,""}
+					,{"DateTime"	,null	,"RangeStr"			,ColSearchEntryDateMin				,""										,"登録日開始"					,""}
+					,{"DateTime"	,null	,"RangeStr"			,ColSearchUpdateDateMin				,""										,"更新日開始"					,""}
+					,{"DateTime"	,null	,"RangeEnd"			,ColSearchEntryDateMax				,""										,"登録日最大"					,""}
+					,{"DateTime"	,null	,"RangeEnd"			,ColSearchUpdateDateMax				,""										,"更新日最大"					,""}
+					,{"String"		,null	,"Partial"			,ColSearchEntryUser					,""										,"登録者"						,""}
+					,{"String"		,null	,"Partial"			,ColSearchUpdateUser					,""										,"更新者"						,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] StockMoveRt(
@@ -362,58 +423,161 @@ public class T100_StockMoveRt{
 			boolean ToLocExactMatch,							//Toロケーション完全一致
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClCd						,"Exact"			,ColSearchClCd						,B100_DefaultVariable.SearchClList	,"荷主コード"					,""}
-				,{"String"		,SearchCLName					,"Partial"			,ColSearchCLName						,""										,"荷主名"						,""}
-				,{"String"		,SearchWhCd						,"Exact"			,ColSearchWhCd						,B100_DefaultVariable.SearchWhList	,"倉庫コード"					,""}
-				,{"String"		,SearchClWHName					,"Partial"			,ColSearchClWHName					,""										,"担当倉庫名"					,""}
-				,{"String"		,SearchMoveNo					,"Exact"			,ColSearchMoveNo						,""										,"調整番号"						,""}
-				,{"String"		,SearchFromLoc					,"ExactOrPrefix"	,ColSearchFromLoc						,""										,"移動元ロケ"					,""}
-				,{"String"		,SearchFromLocName				,"Partial"			,ColSearchFromLocName				,""										,"移動元ロケーション名"			,""}
-				,{"String"		,SearchToLoc					,"ExactOrPrefix"	,ColSearchToLoc						,""										,"移動先ロケ"					,""}
-				,{"String"		,SearchToLocName				,"Partial"			,ColSearchToLocName					,""										,"移動先ロケーション名"			,""}
-				,{"String"		,SearchItemCd					,"Exact"			,ColSearchItemCd						,""										,"商品CD"						,""}
-				,{"String"		,SearchItemName					,"Partial"			,ColSearchItemName					,""										,"商品名"						,""}
-				,{"String"		,SearchLot						,"Exact"			,ColSearchLot							,""										,"ロット"						,""}
-				,{"Date"		,SearchExpDateMin				,"RangeStr"			,ColSearchExpDateMin					,""										,"賞味期限"						,"開始"}
-				,{"Date"		,SearchExpDateMax				,"RangeEnd"			,ColSearchExpDateMax					,""										,"賞味期限"						,"終了"}
-				,{"Date"		,SearchActualDateMin			,"RangeStr"			,ColSearchActualDateMin				,""										,"入荷日最小"					,""}
-				,{"Date"		,SearchActualDateMax			,"RangeEnd"			,ColSearchActualDateMax				,""										,"入荷日最大"					,""}
-				,{"Integer"		,SearchBeforeFromQtyMin			,"RangeMin"			,ColSearchBeforeFromQtyMin			,""										,"（移動前）移動元在庫数"		,"最小"}
-				,{"Integer"		,SearchBeforeFromPlanQtyMin		,"RangeMin"			,ColSearchBeforeFromPlanQtyMin		,""										,"（移動前）移動元引当済数"		,"最小"}
-				,{"Integer"		,SearchBeforeFromPossibleQtyMin	,"RangeMin"			,ColSearchBeforeFromPossibleQtyMin	,""										,"（移動前）移動元出荷可能数"	,"最小"}
-				,{"Integer"		,SearchBeforeToQtyMin			,"RangeMin"			,ColSearchBeforeToQtyMin				,""										,"（移動前）移動先在庫数"		,"最小"}
-				,{"Integer"		,SearchBeforeToPlanQtyMin		,"RangeMin"			,ColSearchBeforeToPlanQtyMin		,""										,"（移動前）移動先引当済数"		,"最小"}
-				,{"Integer"		,SearchBeforeToPossibleQtyMin	,"RangeMin"			,ColSearchBeforeToPossibleQtyMin	,""										,"（移動前）移動先出荷可能数"	,"最小"}
-				,{"Integer"		,SearchMoveQtyMin				,"RangeMin"			,ColSearchMoveQtyMin					,""										,"移動数最小"	,""}
-				,{"Integer"		,SearchAfterFromQtyMin			,"RangeMin"			,ColSearchAfterFromQtyMin			,""										,"（移動後）移動元在庫数"		,"最小"}
-				,{"Integer"		,SearchAfterFromPlanQtyMin		,"RangeMin"			,ColSearchAfterFromPlanQtyMin		,""										,"（移動後）移動元引当済数"		,"最小"}
-				,{"Integer"		,SearchAfterFromPossibleQtyMin	,"RangeMin"			,ColSearchAfterFromPossibleQtyMin	,""										,"（移動後）移動元出荷可能数"	,"最小"}
-				,{"Integer"		,SearchAfterToQtyMin			,"RangeMin"			,ColSearchAfterToQtyMin				,""										,"（移動後）移動先在庫数"		,"最小"}
-				,{"Integer"		,SearchAfterToPlanQtyMin		,"RangeMin"			,ColSearchAfterToPlanQtyMin			,""										,"（移動後）移動先引当済数"		,"最小"}
-				,{"Integer"		,SearchAfterToPossibleQtyMin	,"RangeMin"			,ColSearchAfterToPossibleQtyMin	,""										,"（移動後）移動先出荷可能数"	,"最小"}
-				,{"Integer"		,SearchBeforeFromQtyMax			,"RangeMax"			,ColSearchBeforeFromQtyMax			,""										,"（移動前）移動元在庫数"		,"最大"}
-				,{"Integer"		,SearchBeforeFromPlanQtyMax		,"RangeMax"			,ColSearchBeforeFromPlanQtyMax		,""										,"（移動前）移動元引当済数"		,"最大"}
-				,{"Integer"		,SearchBeforeFromPossibleQtyMax	,"RangeMax"			,ColSearchBeforeFromPossibleQtyMax	,""										,"（移動前）移動元出荷可能数"	,"最大"}
-				,{"Integer"		,SearchBeforeToQtyMax			,"RangeMax"			,ColSearchBeforeToQtyMax				,""										,"（移動前）移動先在庫数"		,"最大"}
-				,{"Integer"		,SearchBeforeToPlanQtyMax		,"RangeMax"			,ColSearchBeforeToPlanQtyMax		,""										,"（移動前）移動先引当済数"		,"最大"}
-				,{"Integer"		,SearchBeforeToPossibleQtyMax	,"RangeMax"			,ColSearchBeforeToPossibleQtyMax	,""										,"（移動前）移動先出荷可能数"	,"最大"}
-				,{"Integer"		,SearchMoveQtyMax				,"RangeMax"			,ColSearchMoveQtyMax					,""										,"移動数最大"	,""}
-				,{"Integer"		,SearchAfterFromQtyMax			,"RangeMax"			,ColSearchAfterFromQtyMax			,""										,"（移動後）移動元在庫数"		,"最大"}
-				,{"Integer"		,SearchAfterFromPlanQtyMax		,"RangeMax"			,ColSearchAfterFromPlanQtyMax		,""										,"（移動後）移動元引当済数"		,"最大"}
-				,{"Integer"		,SearchAfterFromPossibleQtyMax	,"RangeMax"			,ColSearchAfterFromPossibleQtyMax	,""										,"（移動後）移動元出荷可能数"	,"最大"}
-				,{"Integer"		,SearchAfterToQtyMax			,"RangeMax"			,ColSearchAfterToQtyMax				,""										,"（移動後）移動先在庫数"		,"最大"}
-				,{"Integer"		,SearchAfterToPlanQtyMax		,"RangeMax"			,ColSearchAfterToPlanQtyMax			,""										,"（移動後）移動先引当済数"		,"最大"}
-				,{"Integer"		,SearchAfterToPossibleQtyMax	,"RangeMax"			,ColSearchAfterToPossibleQtyMax	,""										,"（移動後）移動先出荷可能数"	,"最大"}
-				,{"String"		,SearchMoveCom					,"Partial"			,ColSearchMoveCom						,""										,"移動コメント"					,""}
-				,{"DateTime"	,SearchEntryDateMin				,"RangeStr"			,ColSearchEntryDateMin				,""										,"登録日開始"					,""}
-				,{"DateTime"	,SearchUpdateDateMin			,"RangeStr"			,ColSearchUpdateDateMin				,""										,"更新日開始"					,""}
-				,{"DateTime"	,SearchEntryDateMax				,"RangeEnd"			,ColSearchEntryDateMax				,""										,"登録日最大"					,""}
-				,{"DateTime"	,SearchUpdateDateMax			,"RangeEnd"			,ColSearchUpdateDateMax				,""										,"更新日最大"					,""}
-				,{"String"		,SearchEntryUser				,"Partial"			,ColSearchEntryUser					,""										,"登録者"						,""}
-				,{"String"		,SearchUpdateUser				,"Partial"			,ColSearchUpdateUser					,""										,"更新者"						,""}
-				};
-		
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchCLName:	
+					Definition[i][1]	= SearchCLName;
+					break;
+				case ColSearchWhCd:	
+					Definition[i][1]	= SearchWhCd;
+					break;
+				case ColSearchClWHName:	
+					Definition[i][1]	= SearchClWHName;
+					break;
+				case ColSearchMoveNo:	
+					Definition[i][1]	= SearchMoveNo;
+					break;
+				case ColSearchFromLoc:	
+					Definition[i][1]	= SearchFromLoc;
+					break;
+				case ColSearchFromLocName:	
+					Definition[i][1]	= SearchFromLocName;
+					break;
+				case ColSearchToLoc:	
+					Definition[i][1]	= SearchToLoc;
+					break;
+				case ColSearchToLocName:	
+					Definition[i][1]	= SearchToLocName;
+					break;
+				case ColSearchItemCd:	
+					Definition[i][1]	= SearchItemCd;
+					break;
+				case ColSearchItemName:	
+					Definition[i][1]	= SearchItemName;
+					break;
+				case ColSearchLot:	
+					Definition[i][1]	= SearchLot;
+					break;
+				case ColSearchExpDateMin:	
+					Definition[i][1]	= SearchExpDateMin;
+					break;
+				case ColSearchExpDateMax:	
+					Definition[i][1]	= SearchExpDateMax;
+					break;
+				case ColSearchActualDateMin:	
+					Definition[i][1]	= SearchActualDateMin;
+					break;
+				case ColSearchActualDateMax:	
+					Definition[i][1]	= SearchActualDateMax;
+					break;
+				case ColSearchBeforeFromQtyMin:	
+					Definition[i][1]	= SearchBeforeFromQtyMin;
+					break;
+				case ColSearchBeforeFromPlanQtyMin:	
+					Definition[i][1]	= SearchBeforeFromPlanQtyMin;
+					break;
+				case ColSearchBeforeFromPossibleQtyMin:	
+					Definition[i][1]	= SearchBeforeFromPossibleQtyMin;
+					break;
+				case ColSearchBeforeToQtyMin:	
+					Definition[i][1]	= SearchBeforeToQtyMin;
+					break;
+				case ColSearchBeforeToPlanQtyMin:	
+					Definition[i][1]	= SearchBeforeToPlanQtyMin;
+					break;
+				case ColSearchBeforeToPossibleQtyMin:	
+					Definition[i][1]	= SearchBeforeToPossibleQtyMin;
+					break;
+				case ColSearchMoveQtyMin:	
+					Definition[i][1]	= SearchMoveQtyMin;
+					break;
+				case ColSearchAfterFromQtyMin:	
+					Definition[i][1]	= SearchAfterFromQtyMin;
+					break;
+				case ColSearchAfterFromPlanQtyMin:	
+					Definition[i][1]	= SearchAfterFromPlanQtyMin;
+					break;
+				case ColSearchAfterFromPossibleQtyMin:	
+					Definition[i][1]	= SearchAfterFromPossibleQtyMin;
+					break;
+				case ColSearchAfterToQtyMin:	
+					Definition[i][1]	= SearchAfterToQtyMin;
+					break;
+				case ColSearchAfterToPlanQtyMin:	
+					Definition[i][1]	= SearchAfterToPlanQtyMin;
+					break;
+				case ColSearchAfterToPossibleQtyMin:	
+					Definition[i][1]	= SearchAfterToPossibleQtyMin;
+					break;
+				case ColSearchBeforeFromQtyMax:	
+					Definition[i][1]	= SearchBeforeFromQtyMax;
+					break;
+				case ColSearchBeforeFromPlanQtyMax:	
+					Definition[i][1]	= SearchBeforeFromPlanQtyMax;
+					break;
+				case ColSearchBeforeFromPossibleQtyMax:	
+					Definition[i][1]	= SearchBeforeFromPossibleQtyMax;
+					break;
+				case ColSearchBeforeToQtyMax:	
+					Definition[i][1]	= SearchBeforeToQtyMax;
+					break;
+				case ColSearchBeforeToPlanQtyMax:	
+					Definition[i][1]	= SearchBeforeToPlanQtyMax;
+					break;
+				case ColSearchBeforeToPossibleQtyMax:	
+					Definition[i][1]	= SearchBeforeToPossibleQtyMax;
+					break;
+				case ColSearchMoveQtyMax:	
+					Definition[i][1]	= SearchMoveQtyMax;
+					break;
+				case ColSearchAfterFromQtyMax:	
+					Definition[i][1]	= SearchAfterFromQtyMax;
+					break;
+				case ColSearchAfterFromPlanQtyMax:	
+					Definition[i][1]	= SearchAfterFromPlanQtyMax;
+					break;
+				case ColSearchAfterFromPossibleQtyMax:	
+					Definition[i][1]	= SearchAfterFromPossibleQtyMax;
+					break;
+				case ColSearchAfterToQtyMax:	
+					Definition[i][1]	= SearchAfterToQtyMax;
+					break;
+				case ColSearchAfterToPlanQtyMax:	
+					Definition[i][1]	= SearchAfterToPlanQtyMax;
+					break;
+				case ColSearchAfterToPossibleQtyMax:	
+					Definition[i][1]	= SearchAfterToPossibleQtyMax;
+					break;
+				case ColSearchMoveCom:	
+					Definition[i][1]	= SearchMoveCom;
+					break;
+				case ColSearchEntryDateMin:	
+					Definition[i][1]	= SearchEntryDateMin;
+					break;
+				case ColSearchUpdateDateMin:	
+					Definition[i][1]	= SearchUpdateDateMin;
+					break;
+				case ColSearchEntryDateMax:	
+					Definition[i][1]	= SearchEntryDateMax;
+					break;
+				case ColSearchUpdateDateMax:	
+					Definition[i][1]	= SearchUpdateDateMax;
+					break;
+				case ColSearchEntryUser:	
+					Definition[i][1]	= SearchEntryUser;
+					break;
+				case ColSearchUpdateUser:	
+					Definition[i][1]	= SearchUpdateUser;
+					break;
+				default:
+					break;
+			}
+		}
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い
@@ -574,6 +738,7 @@ public class T100_StockMoveRt{
 					break;
 			}
 		}
+		
 		Object[][] Rt	= StockMoveRtMain(
 				SearchClCd,							//荷主コード
 				SearchCLName,						//荷主名

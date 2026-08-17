@@ -126,7 +126,28 @@ public class M100_ClMstRt{
 				,{"PTMSCD"		,ColPTMSCD			,"String"	,"基幹Sys荷主CD"	,""}
 				};
 		
+		RtSettingClMstRt = B100_LanguageControl.RtControl(RtSettingClMstRt);
+		
 		return RtSettingClMstRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"			,ColSearchClGpCD	,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchCLCD	,B100_DefaultVariable.SearchClList		,"荷主CD"			,""}
+					,{"String"		,null	,"Exact"			,ColSearchCLName	,""											,"荷主名"			,""}
+					,{"String"		,null	,"Prefix"			,ColSearchPost	,""											,"郵便番号"			,""}
+					,{"String"		,null	,"Partial"			,ColsearchAdd		,""											,"住所"				,""}
+					,{"String"		,null	,"Partial"			,ColSearchTel		,""											,"Tel"				,""}
+					,{"String"		,null	,"Partial"			,ColSearchFax		,""											,"Fax"				,""}
+					,{"String"		,null	,"Partial"			,ColSearchMail	,""											,"Mail"				,""}
+					,{"String"		,null	,"Partial"			,ColSearchCom		,""											,"コメント"			,""}
+					,{"String"		,null	,"Exact"			,ColSearchWHCD	,B100_DefaultVariable.SearchWhList		,"倉庫CD"			,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] ClMstRt(
@@ -142,18 +163,45 @@ public class M100_ClMstRt{
 			ArrayList<String> SearchWHCD,
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClGpCD	,"Exact"			,ColSearchClGpCD	,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""}
-				,{"String"		,SearchCLCD		,"Exact"			,ColSearchCLCD	,B100_DefaultVariable.SearchClList		,"荷主CD"			,""}
-				,{"String"		,SearchCLName	,"Exact"			,ColSearchCLName	,""											,"荷主名"			,""}
-				,{"String"		,SearchPost		,"Prefix"			,ColSearchPost	,""											,"郵便番号"			,""}
-				,{"String"		,searchAdd		,"Partial"			,ColsearchAdd		,""											,"住所"				,""}
-				,{"String"		,SearchTel		,"Partial"			,ColSearchTel		,""											,"Tel"				,""}
-				,{"String"		,SearchFax		,"Partial"			,ColSearchFax		,""											,"Fax"				,""}
-				,{"String"		,SearchMail		,"Partial"			,ColSearchMail	,""											,"Mail"				,""}
-				,{"String"		,SearchCom		,"Partial"			,ColSearchCom		,""											,"コメント"			,""}
-				,{"String"		,SearchWHCD		,"Exact"			,ColSearchWHCD	,B100_DefaultVariable.SearchWhList		,"倉庫CD"			,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClGpCD:	
+					Definition[i][1]	= SearchClGpCD;
+					break;
+				case ColSearchCLCD:	
+					Definition[i][1]	= SearchCLCD;
+					break;
+				case ColSearchCLName:	
+					Definition[i][1]	= SearchCLName;
+					break;
+				case ColSearchPost:	
+					Definition[i][1]	= SearchPost;
+					break;
+				case ColsearchAdd:	
+					Definition[i][1]	= searchAdd;
+					break;
+				case ColSearchTel:	
+					Definition[i][1]	= SearchTel;
+					break;
+				case ColSearchFax:	
+					Definition[i][1]	= SearchFax;
+					break;
+				case ColSearchMail:	
+					Definition[i][1]	= SearchMail;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				case ColSearchWHCD:	
+					Definition[i][1]	= SearchWHCD;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

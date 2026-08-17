@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -163,7 +165,7 @@ public class WT100_OkuriHd_00_Search{
         JLabel LB2_SearchClItemCd     = B100_FrameParts.JLabelSet(880,200,40,20,B100_DefaultVariable.SearchExact,10,0);
         JLabel LB2_SearchMsItemName   = B100_FrameParts.JLabelSet(880,225,40,20,B100_DefaultVariable.SearchPartial,10,0);
         JLabel LB2_SearchMsLot        = B100_FrameParts.JLabelSet(880,250,40,20,B100_DefaultVariable.SearchExact,10,0);
-        JLabel LB2_SearchMsExpDate    = B100_FrameParts.JLabelSet(870,275,20,20,B100_DefaultVariable.SearchFromTo,10,2);
+        JLabel LB2_SearchMsExpDate    = B100_FrameParts.JLabelSet(890,275,20,20,B100_DefaultVariable.SearchFromTo,10,2);
 
         
         //現在ログイン中の倉庫・荷主を初期選択
@@ -171,6 +173,188 @@ public class WT100_OkuriHd_00_Search{
         TB_SearchClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd,true));
         TB_SearchClGpCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1],A00000_Main.ClGp,true));
         TB_SearchPickupWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));
+        
+        TB_SearchInvoiceWHCD.setEnabled(false);
+        TB_SearchClCd.setEnabled(false);
+        TB_SearchClGpCD.setEnabled(false);
+        TB_SearchPickupWhCd.setEnabled(false);
+        
+        //予定日進む戻るボタン
+        JButton SearchPlanDateStrAfterBtn   	= B100_FrameParts.BtnSet(170,200,40,10,"▲",6);
+        JButton SearchPlanDateEndAfterBtn   	= B100_FrameParts.BtnSet(300,200,40,10,"▲",6);
+        JButton SearchShipDateStrAfterBtn   	= B100_FrameParts.BtnSet(170,225,40,10,"▲",6);
+        JButton SearchShipDateEndAfterBtn   	= B100_FrameParts.BtnSet(300,225,40,10,"▲",6);
+        JButton SearchSPPlanDateStrAfterBtn 	= B100_FrameParts.BtnSet(170,250,40,10,"▲",6);
+        JButton SearchSPPlanDateEndAfterBtn 	= B100_FrameParts.BtnSet(300,250,40,10,"▲",6);
+        JButton SearchSPDateStrAfterBtn     	= B100_FrameParts.BtnSet(170,275,40,10,"▲",6);
+        JButton SearchSPDateEndAfterBtn     	= B100_FrameParts.BtnSet(300,275,40,10,"▲",6);
+        JButton SearchWmsShipDateStrAfterBtn	= B100_FrameParts.BtnSet(170,300,40,10,"▲",6);
+        JButton SearchWmsShipDateEndAfterBtn	= B100_FrameParts.BtnSet(300,300,40,10,"▲",6);
+        JButton SearchMsExpDateStrAfterBtn  	= B100_FrameParts.BtnSet(850,275,40,10,"▲",6);
+        JButton SearchMsExpDateEndAfterBtn  	= B100_FrameParts.BtnSet(980,275,40,10,"▲",6);
+    	
+        JButton SearchPlanDateStrBeforeBtn   	= B100_FrameParts.BtnSet(170,210,40,10,"▼",6);
+        JButton SearchPlanDateEndBeforeBtn   	= B100_FrameParts.BtnSet(300,210,40,10,"▼",6);
+        JButton SearchShipDateStrBeforeBtn   	= B100_FrameParts.BtnSet(170,235,40,10,"▼",6);
+        JButton SearchShipDateEndBeforeBtn   	= B100_FrameParts.BtnSet(300,235,40,10,"▼",6);
+        JButton SearchSPPlanDateStrBeforeBtn 	= B100_FrameParts.BtnSet(170,260,40,10,"▼",6);
+        JButton SearchSPPlanDateEndBeforeBtn 	= B100_FrameParts.BtnSet(300,260,40,10,"▼",6);
+        JButton SearchSPDateStrBeforeBtn     	= B100_FrameParts.BtnSet(170,285,40,10,"▼",6);
+        JButton SearchSPDateEndBeforeBtn     	= B100_FrameParts.BtnSet(300,285,40,10,"▼",6);
+        JButton SearchWmsShipDateStrBeforeBtn	= B100_FrameParts.BtnSet(170,310,40,10,"▼",6);
+        JButton SearchWmsShipDateEndBeforeBtn	= B100_FrameParts.BtnSet(300,310,40,10,"▼",6);
+        JButton SearchMsExpDateStrBeforeBtn  	= B100_FrameParts.BtnSet(850,285,40,10,"▼",6);
+        JButton SearchMsExpDateEndBeforeBtn  	= B100_FrameParts.BtnSet(980,285,40,10,"▼",6);
+        
+        PN_Search.add(SearchPlanDateStrAfterBtn);
+        PN_Search.add(SearchPlanDateEndAfterBtn);
+        PN_Search.add(SearchShipDateStrAfterBtn);
+        PN_Search.add(SearchShipDateEndAfterBtn);
+        PN_Search.add(SearchSPPlanDateStrAfterBtn);
+        PN_Search.add(SearchSPPlanDateEndAfterBtn);
+        PN_Search.add(SearchSPDateStrAfterBtn);
+        PN_Search.add(SearchSPDateEndAfterBtn);
+        PN_Search.add(SearchWmsShipDateStrAfterBtn);
+        PN_Search.add(SearchWmsShipDateEndAfterBtn);
+        PN_Search.add(SearchMsExpDateStrAfterBtn);
+        PN_Search.add(SearchMsExpDateEndAfterBtn);
+    	
+        PN_Search.add(SearchPlanDateStrBeforeBtn);
+        PN_Search.add(SearchPlanDateEndBeforeBtn);
+        PN_Search.add(SearchShipDateStrBeforeBtn);
+        PN_Search.add(SearchShipDateEndBeforeBtn);
+        PN_Search.add(SearchSPPlanDateStrBeforeBtn);
+        PN_Search.add(SearchSPPlanDateEndBeforeBtn);
+        PN_Search.add(SearchSPDateStrBeforeBtn);
+        PN_Search.add(SearchSPDateEndBeforeBtn);
+        PN_Search.add(SearchWmsShipDateStrBeforeBtn);
+        PN_Search.add(SearchWmsShipDateEndBeforeBtn);
+        PN_Search.add(SearchMsExpDateStrBeforeBtn);
+        PN_Search.add(SearchMsExpDateEndBeforeBtn);
+        
+        
+        SearchPlanDateStrAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchPlanDateStr);
+			}
+		});
+        SearchPlanDateEndAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchPlanDateEnd);
+			}
+		});
+        SearchShipDateStrAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchShipDateStr);
+			}
+		});
+        SearchShipDateEndAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchShipDateEnd);
+			}
+		});
+        SearchSPPlanDateStrAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchSPPlanDateStr);
+			}
+		});
+        SearchSPPlanDateEndAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchSPPlanDateEnd);
+			}
+		});
+        SearchSPDateStrAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchSPDateStr);
+			}
+		});
+        SearchSPDateEndAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchSPDateEnd);
+			}
+		});
+        SearchWmsShipDateStrAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchWmsShipDateStr);
+			}
+		});
+        SearchWmsShipDateEndAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchWmsShipDateEnd);
+			}
+		});
+        SearchMsExpDateStrAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchMsExpDateStr);
+			}
+		});
+        SearchMsExpDateEndAfterBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.AfterDateSet(TB_SearchMsExpDateEnd);
+			}
+		});
+        
+    	
+        SearchPlanDateStrBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchPlanDateStr);
+			}
+		});
+        SearchPlanDateEndBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchPlanDateEnd);
+			}
+		});
+        SearchShipDateStrBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchShipDateStr);
+			}
+		});
+        SearchShipDateEndBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchShipDateEnd);
+			}
+		});
+        SearchSPPlanDateStrBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchSPPlanDateStr);
+			}
+		});
+        SearchSPPlanDateEndBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchSPPlanDateEnd);
+			}
+		});
+        SearchSPDateStrBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchSPDateStr);
+			}
+		});
+        SearchSPDateEndBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchSPDateEnd);
+			}
+		});
+        SearchWmsShipDateStrBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchWmsShipDateStr);
+			}
+		});
+        SearchWmsShipDateEndBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchWmsShipDateEnd);
+			}
+		});
+        SearchMsExpDateStrBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchMsExpDateStr);
+			}
+		});
+        SearchMsExpDateEndBeforeBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				B100_DateTimeControl.BeforeDateSet(TB_SearchMsExpDateEnd);
+			}
+		});
 
         //検索・条件クリア
         JButton SearchBtn       = B100_FrameParts.BtnSet(1050,275,100,20,"検索",11);
@@ -253,6 +437,20 @@ public class WT100_OkuriHd_00_Search{
 
         JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,375,1160,250,tb01);
         main_fm.add(scpn01);
+        
+        //CSVボタン
+		JButton CsvBtn = B100_FrameParts.BtnSet(				 10,660,100,20,"ヘッダcsv出力"	,10);
+		main_fm.add(CsvBtn);
+		//明細付CSVボタン
+		JButton MsCsvBtn = B100_FrameParts.BtnSet(				 10,685,100,20,"明細付csv出力"	,10);
+		main_fm.add(MsCsvBtn);
+        
+		//Excel出力ボタン
+		JButton ExcelBtn = B100_FrameParts.BtnSet(				130,660,100,20,"Excel出力"		,11);
+		main_fm.add(ExcelBtn);
+		//明細付Excel出力ボタン
+		JButton MsExcelBtn = B100_FrameParts.BtnSet(			130,685,100,20,"明細Excel出力"	,9);
+		main_fm.add(MsExcelBtn);
 
         main_fm.setVisible(true);
         RenewFg = true;
@@ -360,7 +558,7 @@ public class WT100_OkuriHd_00_Search{
                     TB_SearchInvoiceWHCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));
                     TB_SearchClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd,true));
                     TB_SearchClGpCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1],A00000_Main.ClGp,true));
-                    TB_SearchPickupWhCd.setSelectedIndex(0);
+                    TB_SearchPickupWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));
                     TB_SearchPurposeFG.setSelectedIndex(0);
                     TB_SearchOkuriNo.setText("");
                     TB_SearchClDeliNo.setText("");
@@ -385,6 +583,47 @@ public class WT100_OkuriHd_00_Search{
                 }
             }
         });
+        
+        //チェックボックス操作時の挙動
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = tb01.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							MainFmTableModel.setValueAt(setBL, i, 0);
+						}else {
+	
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//CSVボタン押下時の挙動
+		CsvBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					B100_TableControl.TableOutPutCsv("出力先選択","出荷指示（ヘッダ）検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//エクセル出力ボタン押下時の挙動
+		ExcelBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					B100_TableControl.TableOutPutExcel("出力先選択","出荷指示（ヘッダ）検索結果",tb01);
+					RenewFg = true;
+				}
+			}
+		});
 
         //EXITボタン押下時の挙動
         exit_btn.addActionListener(new AbstractAction(){

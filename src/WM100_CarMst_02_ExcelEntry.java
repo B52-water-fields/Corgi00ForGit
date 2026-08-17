@@ -98,17 +98,18 @@ public class WM100_CarMst_02_ExcelEntry{
 		
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
+		Object[][] RtCarMstRt	= M100_CarMstRt.RtCarMstRt();
 		
 		String[] NeedCol = {
-				 "担当倉庫"
-				,"運送会社CD"
-				,"車輛CD"
-				,"車輛表記名"
-				,"車輛正式名"
-				,"車輛略名"
-				,"乗務員CD"
-				,"基幹システム車輛コード"
-				,"削除フラグ"
+				 (String)RtCarMstRt[M100_CarMstRt.ColWHCD][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColShippingCompanyCd][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColCarCd][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColCarName01][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColCarName02][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColCarName03][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColDriverCd][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColPTMSCD][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColDelFg][3]
 		};
 		int[] TgtCol = {
 				 -1	//担当倉庫
@@ -127,22 +128,22 @@ public class WM100_CarMst_02_ExcelEntry{
 		
 		String[] columnNames01 = {
 				 "FG"
-				,"担当倉庫"
-				,"倉庫名"
-				,"運送会社CD"
-				,"運送会社表記名"
-				,"運送会社正式名"
-				,"運送会社略名"
-				,"車輛CD"
-				,"車輛表記名"
-				,"車輛正式名"
-				,"車輛略名"
-				,"乗務員CD"
-				,"ユーザー名1"
-				,"ユーザー名2"
-				,"ユーザー名3"
-				,"基幹システム車輛コード"
-				,"削除フラグ"
+				,(String)RtCarMstRt[M100_CarMstRt.ColWHCD][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColWHName][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColShippingCompanyCd][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColShippingCompanyName01][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColShippingCompanyName02][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColShippingCompanyName03][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColCarCd][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColCarName01][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColCarName02][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColCarName03][3]	
+				,(String)RtCarMstRt[M100_CarMstRt.ColDriverCd][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColUserName01][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColUserName02][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColUserName03][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColPTMSCD][3]
+				,(String)RtCarMstRt[M100_CarMstRt.ColDelFg][3]	
 				};
 		
 		//編集可能カラムの指定
@@ -216,16 +217,18 @@ public class WM100_CarMst_02_ExcelEntry{
 			main_fm.setVisible(false);
 			main_fm.dispose();
 			JOptionPane.showMessageDialog(null, "ヘッダ行で取込ファイルのレイアウト判別ができませんでした。\n確認しやがれください\n"
-													+"担当倉庫"
-													+",運送会社CD"
-													+",車輛CD"
-													+",車輛表記名"
-													+",車輛正式名"
-													+",車輛略名"
-													+",乗務員CD"
-													+",基幹システム車輛コード"
-													+",削除フラグ\n"
+										 			+(String)RtCarMstRt[M100_CarMstRt.ColWHCD][3]
+													+","+(String)RtCarMstRt[M100_CarMstRt.ColShippingCompanyCd][3]
+													+","+(String)RtCarMstRt[M100_CarMstRt.ColCarCd][3]
+													+","+(String)RtCarMstRt[M100_CarMstRt.ColCarName01][3]
+													+","+(String)RtCarMstRt[M100_CarMstRt.ColCarName02][3]
+													+","+(String)RtCarMstRt[M100_CarMstRt.ColCarName03][3]
+													+",\n"+(String)RtCarMstRt[M100_CarMstRt.ColDriverCd][3]
+													+","+(String)RtCarMstRt[M100_CarMstRt.ColPTMSCD][3]
+													+","+(String)RtCarMstRt[M100_CarMstRt.ColDelFg][3]
+													+","+"\n"
 													+"がヘッダに必要です");
+			
 			CarMstExcelEntry(0,0,TgtFilePath);
 		}else {
 			int[] ClmnType = new int[HeaderRead[0].length];
@@ -260,7 +263,7 @@ public class WM100_CarMst_02_ExcelEntry{
 					
 					if(!"".equals(""+ExcelRead[i][TgtCol[ 0]])) {TgtWHCD.add(				""+ExcelRead[i][TgtCol[ 0]]);}
 					if(!"".equals(""+ExcelRead[i][TgtCol[ 1]])) {TgtShippingCompanyCd.add(	""+ExcelRead[i][TgtCol[ 1]]);}
-					if(!"".equals(""+ExcelRead[i][TgtCol[ 6]])) {TgtUserCd.add(			""+ExcelRead[i][TgtCol[ 6]]);}
+					if(!"".equals(""+ExcelRead[i][TgtCol[ 6]])) {TgtUserCd.add(				""+ExcelRead[i][TgtCol[ 6]]);}
 				}
 				
 				Object[][] WhMstRt = WhMstRt(TgtWHCD);

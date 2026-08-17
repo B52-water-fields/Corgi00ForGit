@@ -75,13 +75,13 @@ public class M100_CautionMstRt{
 	
 	public static Object[][] RtCautionMstRt(){
 		Object[][] RtSettingCautionMstRt = {
-				 {"CautionCd"		,ColCautionCd		,"String"	,"注意事項コード"		,"Key"}
-				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループコード"	,""}
+				 {"CautionCd"		,ColCautionCd		,"String"	,"注意事項CD"			,"Key"}
+				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループCD"		,""}
 				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ名"		,""}
 				,{"DECD"			,ColDECD			,"String"	,"届先コード"			,""}
 				,{"DepartmentCd"	,ColDepartmentCd	,"String"	,"部署CD"				,"Key"}
 				,{"DEName01"		,ColDEName01		,"String"	,"届先名"				,"Key"}
-				,{"CautionTiming"	,ColCautionTiming	,"int"		,"注意事項タイミング"	,""}
+				,{"CautionTiming"	,ColCautionTiming	,"int"		,"注意タイミング"		,""}
 				,{"CautionName"		,ColCautionName	,"String"	,"注意事項名"			,""}
 				,{"Caution"			,ColCaution		,"String"	,"注意事項内容"			,""}
 				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"データ登録日時"		,""}
@@ -93,7 +93,25 @@ public class M100_CautionMstRt{
 				,{"Add03"			,ColAdd03			,"String"	,"届先住所3"			,""}
 				};
 		
+		RtSettingCautionMstRt = B100_LanguageControl.RtControl(RtSettingCautionMstRt);
+		
 		return RtSettingCautionMstRt;
+	}
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"	,ColSearchCautionCd			,""													,"注意事項CD"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDECD				,""													,"届先CD"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchDepartmentCd		,""													,"部署CD"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchCautionTiming		,B100_DefaultVariable.SearchCautionTiming		,"注意タイミング"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCautionName		,""													,"注意事項名"		,""}
+					,{"String"		,null	,"Partial"	,ColSearchCaution				,""													,"注意事項内容"		,""}
+					,{"String"		,null	,"Partial"	,ColSearchDeName				,""													,"届先名"			,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] CautionMstRt(
@@ -107,16 +125,39 @@ public class M100_CautionMstRt{
 			ArrayList<String> SearchDeName,			//届先名
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchCautionCd		,"Exact"			,ColSearchCautionCd			,""													,"注意事項コード"		,""}
-				,{"String"		,SearchClGpCD			,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループコード"	,""}
-				,{"String"		,SearchDECD				,"Exact"			,ColSearchDECD				,""													,"届先CD"				,""}
-				,{"String"		,SearchDepartmentCd		,"Exact"			,ColSearchDepartmentCd		,""													,"部署CD"				,""}
-				,{"String"		,SearchCautionTiming	,"Exact"			,ColSearchCautionTiming		,B100_DefaultVariable.SearchCautionTiming		,"注意事項タイミング"	,""}
-				,{"String"		,SearchCautionName		,"Partial"			,ColSearchCautionName		,""													,"注意事項名"			,""}
-				,{"String"		,SearchCaution			,"Partial"			,ColSearchCaution				,""													,"注意事項内容"			,""}
-				,{"String"		,SearchDeName			,"Partial"			,ColSearchDeName				,""													,"届先名"				,""}
-				};
+		Object[][] Definition = DefinitionRt();
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchCautionCd:	
+					Definition[i][1]	= SearchCautionCd;
+					break;
+				case ColSearchClGpCD:	
+					Definition[i][1]	= SearchClGpCD;
+					break;
+				case ColSearchDECD:	
+					Definition[i][1]	= SearchDECD;
+					break;
+				case ColSearchDepartmentCd:	
+					Definition[i][1]	= SearchDepartmentCd;
+					break;
+				case ColSearchCautionTiming:	
+					Definition[i][1]	= SearchCautionTiming;
+					break;
+				case ColSearchCautionName:	
+					Definition[i][1]	= SearchCautionName;
+					break;
+				case ColSearchCaution:	
+					Definition[i][1]	= SearchCaution;
+					break;
+				case ColSearchDeName:	
+					Definition[i][1]	= SearchDeName;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

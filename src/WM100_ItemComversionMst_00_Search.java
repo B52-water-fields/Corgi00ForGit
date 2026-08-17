@@ -53,9 +53,9 @@ public class WM100_ItemComversionMst_00_Search{
 		final JTextField  TB_SearchClItemCd	= B100_FrameParts.JTextFieldSet(	130,100,100,20,""	,11,0);		//荷主商品コード
 		final JTextField  TB_SearchItemName	= B100_FrameParts.JTextFieldSet(	130,125,100,20,""	,11,0);		//商品名
 		
-		JLabel LB2_SearchItemCd		= B100_FrameParts.JLabelSet(	230, 75, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchClItemCd	= B100_FrameParts.JLabelSet(	230,100, 80,20,"と一致"	,11,0);
-		JLabel LB2_SearchItemName	= B100_FrameParts.JLabelSet(	230,125, 80,20,"を含む"	,11,0);
+		JLabel LB2_SearchItemCd		= B100_FrameParts.JLabelSet(	230, 75, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchClItemCd	= B100_FrameParts.JLabelSet(	230,100, 80,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchItemName	= B100_FrameParts.JLabelSet(	230,125, 80,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		//荷主グループ検索条件に現在荷主を設定 管理者以外は荷主選択条件固定する
 		for(int i=0;i<B100_DefaultVariable.SearchClGpList[1].length;i++) {

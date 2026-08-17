@@ -43,7 +43,7 @@ public class WT100_WTEST{
 		//検索条件パネル
 		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,1210,470,"White");
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
-		String[] LocExactMatchList = {"で始まる","と一致"};
+		String[] LocExactMatchList = {B100_DefaultVariable.SearchPrefix,B100_DefaultVariable.SearchExact};
 
 		//基本情報
 		JLabel LB_SearchWhCd			= B100_FrameParts.JLabelSet(  0, 25,120,20,"倉庫コード:"			,11,1);
@@ -80,16 +80,16 @@ public class WT100_WTEST{
 		final JTextField TB_SearchUpdateDateMin	= B100_FrameParts.JTextFieldSet(120,350,125,20,"",11,0);
 		final JTextField TB_SearchUpdateDateMax	= B100_FrameParts.JTextFieldSet(265,350,125,20,"",11,0);
 
-		JLabel LB2_SearchCLName			= B100_FrameParts.JLabelSet(220, 75,70,20,"を含む",11,0);
-		JLabel LB2_SearchClWHName		= B100_FrameParts.JLabelSet(220,100,70,20,"を含む",11,0);
-		JLabel LB2_SearchMoveNo			= B100_FrameParts.JLabelSet(220,125,70,20,"と一致",11,0);
-		JLabel LB2_SearchFromLocName	= B100_FrameParts.JLabelSet(220,175,70,20,"を含む",11,0);
-		JLabel LB2_SearchToLocName		= B100_FrameParts.JLabelSet(220,225,70,20,"を含む",11,0);
-		JLabel LB2_SearchMoveCom		= B100_FrameParts.JLabelSet(220,250,70,20,"を含む",11,0);
-		JLabel LB2_SearchEntryUser		= B100_FrameParts.JLabelSet(220,275,70,20,"を含む",11,0);
-		JLabel LB2_SearchUpdateUser		= B100_FrameParts.JLabelSet(220,300,70,20,"を含む",11,0);
-		JLabel LB2_SearchEntryDate		= B100_FrameParts.JLabelSet(245,325,20,20,"～",11,2);
-		JLabel LB2_SearchUpdateDate		= B100_FrameParts.JLabelSet(245,350,20,20,"～",11,2);
+		JLabel LB2_SearchCLName			= B100_FrameParts.JLabelSet(220, 75,70,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchClWHName		= B100_FrameParts.JLabelSet(220,100,70,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchMoveNo			= B100_FrameParts.JLabelSet(220,125,70,20,B100_DefaultVariable.SearchExact,11,0);
+		JLabel LB2_SearchFromLocName	= B100_FrameParts.JLabelSet(220,175,70,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchToLocName		= B100_FrameParts.JLabelSet(220,225,70,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchMoveCom		= B100_FrameParts.JLabelSet(220,250,70,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchEntryUser		= B100_FrameParts.JLabelSet(220,275,70,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchUpdateUser		= B100_FrameParts.JLabelSet(220,300,70,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchEntryDate		= B100_FrameParts.JLabelSet(245,325,20,20,B100_DefaultVariable.SearchFromTo,11,2);
+		JLabel LB2_SearchUpdateDate		= B100_FrameParts.JLabelSet(245,350,20,20,B100_DefaultVariable.SearchFromTo,11,2);
 
 		//商品・移動数
 		JLabel LB_SearchItemCd			= B100_FrameParts.JLabelSet(400, 25,135,20,"商品CD:"				,11,1);
@@ -109,12 +109,12 @@ public class WT100_WTEST{
 		final JFormattedTextField TB_SearchMoveQtyMin		= B100_FrameParts.JFormattedTextFieldSet(535,150,70,20,"",11,1,"#,###");
 		final JFormattedTextField TB_SearchMoveQtyMax		= B100_FrameParts.JFormattedTextFieldSet(635,150,70,20,"",11,1,"#,###");
 
-		JLabel LB2_SearchItemCd		= B100_FrameParts.JLabelSet(635, 25,70,20,"と一致",11,0);
-		JLabel LB2_SearchItemName	= B100_FrameParts.JLabelSet(635, 50,70,20,"を含む",11,0);
-		JLabel LB2_SearchLot			= B100_FrameParts.JLabelSet(635, 75,70,20,"と一致",11,0);
-		JLabel LB2_SearchExpDate		= B100_FrameParts.JLabelSet(645,100,30,20,"～",11,2);
-		JLabel LB2_SearchActualDate	= B100_FrameParts.JLabelSet(645,125,30,20,"～",11,2);
-		JLabel LB2_SearchMoveQty		= B100_FrameParts.JLabelSet(605,150,30,20,"～",11,2);
+		JLabel LB2_SearchItemCd		= B100_FrameParts.JLabelSet(635, 25,70,20,B100_DefaultVariable.SearchExact,11,0);
+		JLabel LB2_SearchItemName	= B100_FrameParts.JLabelSet(635, 50,70,20,B100_DefaultVariable.SearchPartial,11,0);
+		JLabel LB2_SearchLot			= B100_FrameParts.JLabelSet(635, 75,70,20,B100_DefaultVariable.SearchExact,11,0);
+		JLabel LB2_SearchExpDate		= B100_FrameParts.JLabelSet(645,100,30,20,B100_DefaultVariable.SearchFromTo,11,2);
+		JLabel LB2_SearchActualDate	= B100_FrameParts.JLabelSet(645,125,30,20,B100_DefaultVariable.SearchFromTo,11,2);
+		JLabel LB2_SearchMoveQty		= B100_FrameParts.JLabelSet(605,150,30,20,B100_DefaultVariable.SearchFromTo,11,2);
 
 		//移動前数量
 		JLabel LB_BeforeFromQty			= B100_FrameParts.JLabelSet(400,200,170,20,"移動前 元在庫数:"		,11,1);
@@ -161,11 +161,11 @@ public class WT100_WTEST{
 		//「～」
 		int[] QtyY = {200,225,250,275,300,325};
 		for(int SetQtyY : QtyY) {
-			PN_Search.add(B100_FrameParts.JLabelSet(640,SetQtyY,30,20,"～",11,2));
+			PN_Search.add(B100_FrameParts.JLabelSet(640,SetQtyY,30,20,B100_DefaultVariable.SearchFromTo,11,2));
 		}
 		int[] AfterQtyY = {25,50,75,100,125,150};
 		for(int SetQtyY : AfterQtyY) {
-			PN_Search.add(B100_FrameParts.JLabelSet(1000,SetQtyY,30,20,"～",11,2));
+			PN_Search.add(B100_FrameParts.JLabelSet(1000,SetQtyY,30,20,B100_DefaultVariable.SearchFromTo,11,2));
 		}
 
 		//日付進む戻るボタン

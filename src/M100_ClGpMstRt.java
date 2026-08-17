@@ -101,8 +101,25 @@ public class M100_ClGpMstRt{
 				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"			,""}
 				,{"PassWord"	,ColPassWord		,"String"	,"パスワード"			,""}
 				};
-		
+		RtSettingClGpMstRt = B100_LanguageControl.RtControl(RtSettingClGpMstRt);
 		return RtSettingClGpMstRt;
+	}
+	
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"			,ColSearchClGpCD		,B100_DefaultVariable.SearchClGpList	,"荷主グループCD"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchCLGpName	,""										,"荷主グループ名"	,""}
+					,{"String"		,null	,"Prefix"			,ColSearchPost		,""										,"郵便番号"			,""}
+					,{"String"		,null	,"Partial"			,ColSearchAdd			,""										,"住所"				,""}
+					,{"String"		,null	,"Partial"			,ColSearchTel			,""										,"Tel"				,""}
+					,{"String"		,null	,"Partial"			,ColSearchFax			,""										,"Fax"				,""}
+					,{"String"		,null	,"Partial"			,ColSearchMail		,""										,"Mail"				,""}
+					,{"String"		,null	,"Partial"			,ColSearchCom			,""										,"コメント"			,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] ClGpMstRt(
@@ -116,16 +133,39 @@ public class M100_ClGpMstRt{
 			ArrayList<String> SearchCom,
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClGpCD		,"Exact"			,ColSearchClGpCD		,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""}
-				,{"String"		,SearchCLGpName		,"Partial"			,ColSearchCLGpName	,""													,"荷主グループ名"	,""}
-				,{"String"		,SearchPost			,"Prefix"			,ColSearchPost		,""													,"郵便番号"			,""}
-				,{"String"		,SearchAdd			,"Partial"			,ColSearchAdd			,""													,"住所"				,""}
-				,{"String"		,SearchTel			,"Partial"			,ColSearchTel			,""													,"Tel"				,""}
-				,{"String"		,SearchFax			,"Partial"			,ColSearchFax			,""													,"Fax"				,""}
-				,{"String"		,SearchMail			,"Partial"			,ColSearchMail		,""													,"Mail"				,""}
-				,{"String"		,SearchCom			,"Partial"			,ColSearchCom			,""													,"コメント"			,""}
-				};
+		Object[][] Definition = DefinitionRt();
+		
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClGpCD:	
+					Definition[i][1]	= SearchClGpCD;
+					break;
+				case ColSearchCLGpName:	
+					Definition[i][1]	= SearchCLGpName;
+					break;
+				case ColSearchPost:	
+					Definition[i][1]	= SearchPost;
+					break;
+				case ColSearchAdd:	
+					Definition[i][1]	= SearchAdd;
+					break;
+				case ColSearchTel:	
+					Definition[i][1]	= SearchTel;
+					break;
+				case ColSearchFax:	
+					Definition[i][1]	= SearchFax;
+					break;
+				case ColSearchMail:	
+					Definition[i][1]	= SearchMail;
+					break;
+				case ColSearchCom:	
+					Definition[i][1]	= SearchCom;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い

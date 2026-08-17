@@ -41,15 +41,17 @@ public class WM100_CautionMst_00_Search{
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchCautionCd		= B100_FrameParts.JLabelSet(  0, 25,100,20,"注意事項CD:"		,11,1);
-		JLabel LB_SearchCautionName		= B100_FrameParts.JLabelSet(  0, 50,100,20,"注意事項名:"		,11,1);
-		JLabel LB_SearchCaution			= B100_FrameParts.JLabelSet(  0, 75,100,20,"注意事項内容:"	,11,1);
-		JLabel LB_SearchCautionTiming	= B100_FrameParts.JLabelSet(  0,100,100,20,"注意タイミング:"	,11,1);
+		Object[][] DefinitionRt	= M100_CautionMstRt.DefinitionRt();
 		
-		JLabel LB_SearchClGpCD			= B100_FrameParts.JLabelSet(250, 25,100,20,"荷主グループCD:"	,11,1);
-		JLabel LB_SearchDECD			= B100_FrameParts.JLabelSet(250, 50,100,20,"届先CD:"			,11,1);
-		JLabel LB_SearchDepartmentCd	= B100_FrameParts.JLabelSet(250, 75,100,20,"届先部署CD:"		,11,1);
-		JLabel LB_SearchDeName			= B100_FrameParts.JLabelSet(250,100,100,20,"届先名:"			,11,1);
+		JLabel LB_SearchCautionCd		= B100_FrameParts.JLabelSet(  0, 25,100,20,(String)DefinitionRt[M100_CautionMstRt.ColSearchCautionCd][5]		+":",11,1);
+		JLabel LB_SearchCautionName		= B100_FrameParts.JLabelSet(  0, 50,100,20,(String)DefinitionRt[M100_CautionMstRt.ColSearchCautionName][5]		+":",11,1);
+		JLabel LB_SearchCaution			= B100_FrameParts.JLabelSet(  0, 75,100,20,(String)DefinitionRt[M100_CautionMstRt.ColSearchCaution][5]			+":",11,1);
+		JLabel LB_SearchCautionTiming	= B100_FrameParts.JLabelSet(  0,100,100,20,(String)DefinitionRt[M100_CautionMstRt.ColSearchCautionTiming][5]	+":",11,1);
+		
+		JLabel LB_SearchClGpCD			= B100_FrameParts.JLabelSet(250, 25,100,20,(String)DefinitionRt[M100_CautionMstRt.ColSearchClGpCD][5]			+":",11,1);
+		JLabel LB_SearchDECD			= B100_FrameParts.JLabelSet(250, 50,100,20,(String)DefinitionRt[M100_CautionMstRt.ColSearchDECD][5]				+":",11,1);
+		JLabel LB_SearchDepartmentCd	= B100_FrameParts.JLabelSet(250, 75,100,20,(String)DefinitionRt[M100_CautionMstRt.ColSearchDepartmentCd][5]	+":",11,1);
+		JLabel LB_SearchDeName			= B100_FrameParts.JLabelSet(250,100,100,20,(String)DefinitionRt[M100_CautionMstRt.ColSearchDeName][5]			+":",11,1);
 		
 		final JTextField  TB_SearchCautionCd		= B100_FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//注意事項CD
 		final JTextField  TB_SearchCautionName		= B100_FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//注意事項名
@@ -61,15 +63,15 @@ public class WM100_CautionMst_00_Search{
 		final JTextField  TB_SearchDepartmentCd		= B100_FrameParts.JTextFieldSet(350, 75,100,20,"",11,0);			//届先部署CD
 		final JTextField  TB_SearchDeName			= B100_FrameParts.JTextFieldSet(350,100,100,20,"",11,0);			//届先名
 		
-		JLabel LB2_SearchCautionCd		= B100_FrameParts.JLabelSet(200, 25, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchCautionName	= B100_FrameParts.JLabelSet(200, 50, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchCaution		= B100_FrameParts.JLabelSet(200, 75, 50,20,"を含む"	,11,0);
-		JLabel LB2_SearchCautionTiming	= B100_FrameParts.JLabelSet(200,100, 50,20,""			,11,0);
+		JLabel LB2_SearchCautionCd		= B100_FrameParts.JLabelSet(200, 25, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchCautionName	= B100_FrameParts.JLabelSet(200, 50, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchCaution		= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchCautionTiming	= B100_FrameParts.JLabelSet(200,100, 50,20,""										,11,0);
 		
-		JLabel LB2_SearchClGpCD			= B100_FrameParts.JLabelSet(450, 25, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(450, 50, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(450, 75, 50,20,"と一致"	,11,0);
-		JLabel LB2_SearchDeName			= B100_FrameParts.JLabelSet(450,100, 50,20,"を含む"	,11,0);
+		JLabel LB2_SearchClGpCD			= B100_FrameParts.JLabelSet(450, 25, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(450, 50, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(450, 75, 50,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchDeName			= B100_FrameParts.JLabelSet(450,100, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 
 		PN_Search.add(LB_SearchCautionCd);
 		PN_Search.add(LB_SearchCautionName);
@@ -105,13 +107,13 @@ public class WM100_CautionMst_00_Search{
 		JButton SearchBtn = B100_FrameParts.BtnSet(350,125,100,20,"検索",11);
 		PN_Search.add(SearchBtn);
 		
-		Object[][] RtSettingCautionMstRt = M100_CautionMstRt.RtCautionMstRt();
+		Object[][] RtCautionMstRt = M100_CautionMstRt.RtCautionMstRt();
 		
-		String[] columnNames01 = new String[RtSettingCautionMstRt.length+1];
+		String[] columnNames01 = new String[RtCautionMstRt.length+1];
 		
 		columnNames01[0] = "Fg";
-		for(int i=0;i<RtSettingCautionMstRt.length;i++) {
-			columnNames01[1+(int)RtSettingCautionMstRt[i][1]] = ""+RtSettingCautionMstRt[i][3];
+		for(int i=0;i<RtCautionMstRt.length;i++) {
+			columnNames01[1+(int)RtCautionMstRt[i][1]] = ""+RtCautionMstRt[i][3];
 		}
 		
 		//編集可能カラムの指定
@@ -133,11 +135,11 @@ public class WM100_CautionMst_00_Search{
 		
 		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
 		
-		for(int i=0;i<RtSettingCautionMstRt.length;i++) {
-			if("int".equals((String)RtSettingCautionMstRt[i][2])||"float".equals((String)RtSettingCautionMstRt[i][2])) {
-				column = columnModel01.getColumn(1+(int)RtSettingCautionMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+		for(int i=0;i<RtCautionMstRt.length;i++) {
+			if("int".equals((String)RtCautionMstRt[i][2])||"float".equals((String)RtCautionMstRt[i][2])) {
+				column = columnModel01.getColumn(1+(int)RtCautionMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
 			}else {
-				column = columnModel01.getColumn(1+(int)RtSettingCautionMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+				column = columnModel01.getColumn(1+(int)RtCautionMstRt[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
 			}
 		}
 		

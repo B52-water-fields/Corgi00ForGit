@@ -204,7 +204,39 @@ public class T100_StockAdjustRt{
 				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者"					,""}
 				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者"					,""}
 				};
+		
+		RtAdjustRt = B100_LanguageControl.RtControl(RtAdjustRt);
+		
 		return RtAdjustRt;
+	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList				,"荷主コード"		,""}
+					,{"String"		,null	,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList				,"倉庫コード"		,""}
+					,{"String"		,null	,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchAdjustNo			,""													,"調整番号"			,""}
+					,{"String"		,null	,"Exact"			,ColSearchAdjustReasonCd		,B100_DefaultVariable.SearchAdjustReasonList		,"調整理由コード"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchAdjustReasonName	,""													,"調整理由名"		,""}
+					,{"Date"		,null	,"RangeStr"			,ColSearchAdjustdateMin		,""													,"調整日"			,"最小"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchAdjustdateMax		,""													,"調整日"			,"最大"}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchLoc					,""													,"調整元ロケ"		,""}
+					,{"Integer"		,null	,"Exact"			,ColSearchType				,B100_DefaultVariable.SearchLocType				,"ロケタイプ"		,""}
+					,{"String"		,null	,"Exact"			,ColSearchItemCd				,""													,"調整元商品CD"		,""}
+					,{"String"		,null	,"Partial"			,ColSearchItemName			,""													,"調整元商品名"		,""}
+					,{"String"		,null	,"Exact"			,ColSearchLot					,""													,"調整元ロット"		,""}
+					,{"Date"		,null	,"RangeStr"			,ColSearchExpDateMin			,""													,"調整元賞味期限"	,"開始"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchExpDateMax			,""													,"調整元賞味期限"	,"終了"}
+					,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin		,""													,"調整元入荷日"		,"開始"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax		,""													,"調整元入荷日"		,"終了"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAdjustQtyMin		,""													,"調整数"			,"最小"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAdjustQtyMax		,""													,"調整数"			,"最大"}
+					,{"String"		,null	,"Partial"			,ColSearchAdjustCom			,""													,"調整理由コメント"	,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
 	}
 	
 	public static Object[][] AdjustRt(
@@ -231,28 +263,76 @@ public class T100_StockAdjustRt{
 			boolean LocExactMatch,	//ロケーション完全一致
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClCd				,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList				,"荷主コード"		,""}
-				,{"String"		,SearchWhCd				,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList				,"倉庫コード"		,""}
-				,{"String"		,SearchClGpCD			,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""}
-				,{"String"		,SearchAdjustNo			,"Exact"			,ColSearchAdjustNo			,""													,"調整番号"			,""}
-				,{"String"		,SearchAdjustReasonCd	,"Exact"			,ColSearchAdjustReasonCd		,B100_DefaultVariable.SearchAdjustReasonList		,"調整理由コード"	,""}
-				,{"String"		,SearchAdjustReasonName	,"Partial"			,ColSearchAdjustReasonName	,""													,"調整理由名"		,""}
-				,{"Date"		,SearchAdjustdateMin	,"RangeStr"			,ColSearchAdjustdateMin		,""													,"調整日"			,"最小"}
-				,{"Date"		,SearchAdjustdateMax	,"RangeEnd"			,ColSearchAdjustdateMax		,""													,"調整日"			,"最大"}
-				,{"String"		,SearchLoc				,"ExactOrPrefix"	,ColSearchLoc					,""													,"調整元ロケ"		,""}
-				,{"Integer"		,SearchType				,"Exact"			,ColSearchType				,B100_DefaultVariable.SearchLocType				,"ロケタイプ"		,""}
-				,{"String"		,SearchItemCd			,"Exact"			,ColSearchItemCd				,""													,"調整元商品CD"		,""}
-				,{"String"		,SearchItemName			,"Partial"			,ColSearchItemName			,""													,"調整元商品名"		,""}
-				,{"String"		,SearchLot				,"Exact"			,ColSearchLot					,""													,"調整元ロット"		,""}
-				,{"Date"		,SearchExpDateMin		,"RangeStr"			,ColSearchExpDateMin			,""													,"調整元賞味期限"	,"開始"}
-				,{"Date"		,SearchExpDateMax		,"RangeEnd"			,ColSearchExpDateMax			,""													,"調整元賞味期限"	,"終了"}
-				,{"Date"		,SearchActualDateMin	,"RangeStr"			,ColSearchActualDateMin		,""													,"調整元入荷日"		,"開始"}
-				,{"Date"		,SearchActualDateMax	,"RangeEnd"			,ColSearchActualDateMax		,""													,"調整元入荷日"		,"終了"}
-				,{"Integer"		,SearchAdjustQtyMin		,"RangeMin"			,ColSearchAdjustQtyMin		,""													,"調整数"			,"最小"}
-				,{"Integer"		,SearchAdjustQtyMax		,"RangeMax"			,ColSearchAdjustQtyMax		,""													,"調整数"			,"最大"}
-				,{"String"		,SearchAdjustCom		,"Partial"			,ColSearchAdjustCom			,""													,"調整理由コメント"	,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchWhCd:	
+					Definition[i][1]	= SearchWhCd;
+					break;
+				case ColSearchClGpCD:	
+					Definition[i][1]	= SearchClGpCD;
+					break;
+				case ColSearchAdjustNo:	
+					Definition[i][1]	= SearchAdjustNo;
+					break;
+				case ColSearchAdjustReasonCd:	
+					Definition[i][1]	= SearchAdjustReasonCd;
+					break;
+				case ColSearchAdjustReasonName:	
+					Definition[i][1]	= SearchAdjustReasonName;
+					break;
+				case ColSearchAdjustdateMin:	
+					Definition[i][1]	= SearchAdjustdateMin;
+					break;
+				case ColSearchAdjustdateMax:	
+					Definition[i][1]	= SearchAdjustdateMax;
+					break;
+				case ColSearchLoc:	
+					Definition[i][1]	= SearchLoc;
+					break;
+				case ColSearchType:	
+					Definition[i][1]	= SearchType;
+					break;
+				case ColSearchItemCd:	
+					Definition[i][1]	= SearchItemCd;
+					break;
+				case ColSearchItemName:	
+					Definition[i][1]	= SearchItemName;
+					break;
+				case ColSearchLot:	
+					Definition[i][1]	= SearchLot;
+					break;
+				case ColSearchExpDateMin:	
+					Definition[i][1]	= SearchExpDateMin;
+					break;
+				case ColSearchExpDateMax:	
+					Definition[i][1]	= SearchExpDateMax;
+					break;
+				case ColSearchActualDateMin:	
+					Definition[i][1]	= SearchActualDateMin;
+					break;
+				case ColSearchActualDateMax:	
+					Definition[i][1]	= SearchActualDateMax;
+					break;
+				case ColSearchAdjustQtyMin:	
+					Definition[i][1]	= SearchAdjustQtyMin;
+					break;
+				case ColSearchAdjustQtyMax:	
+					Definition[i][1]	= SearchAdjustQtyMax;
+					break;
+				case ColSearchAdjustCom:	
+					Definition[i][1]	= SearchAdjustCom;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		
 		
 		/*
 		日付系検索最小は念のため00:00:00扱い

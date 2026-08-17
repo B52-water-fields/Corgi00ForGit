@@ -199,8 +199,8 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		final JTextField TB_SearchItemCd  	= B100_FrameParts.JTextFieldSet(	130, 50,100,20,""						,11,0);	//商品コード
 		final JTextField TB_SearchItemName  = B100_FrameParts.JTextFieldSet(	130, 75,100,20,""						,11,0);	//商品名
 		
-		JLabel LB2_SearchItemCd  			= B100_FrameParts.JLabelSet(		230, 50, 80,20,"と一致"					,11,0);	//商品コード
-		JLabel LB2_SearchItemName  			= B100_FrameParts.JLabelSet(		230, 75, 80,20,"を含む"					,11,0);	//商品名
+		JLabel LB2_SearchItemCd  			= B100_FrameParts.JLabelSet(		230, 50, 80,20,B100_DefaultVariable.SearchExact					,11,0);	//商品コード
+		JLabel LB2_SearchItemName  			= B100_FrameParts.JLabelSet(		230, 75, 80,20,B100_DefaultVariable.SearchPartial					,11,0);	//商品名
 		
 		ItemSearch_fm.add(ItemSearchUserinfo);
 		ItemSearch_fm.add(ItemSearchExit_btn);
@@ -272,8 +272,8 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		final JTextField  TB_SearchLocName	= B100_FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);										//ロケーション名
 		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 100,100,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
 		
-		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(  200, 50,100,20,"で始まる"	,11,0);
-		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  200, 75,100,20,"を含む"		,11,0);
+		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(  200, 50,100,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  200, 75,100,20,B100_DefaultVariable.SearchPartial		,11,0);
 		
 		LocSearch_fm.add(LocSearchUserinfo);
 		LocSearch_fm.add(LocSearchExit_btn);

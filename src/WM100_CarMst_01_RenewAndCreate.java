@@ -35,22 +35,24 @@ public class WM100_CarMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_WHCD				= B100_FrameParts.JLabelSet(  0, 40,100,20,"担当倉庫:",		11,1);
-		JLabel LB_ShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 65,100,20,"運送会社CD:",		11,1);
-		JLabel LB_CarCd				= B100_FrameParts.JLabelSet(  0, 90,100,20,"車輛CD:",			11,1);
-		JLabel LB_CarName01			= B100_FrameParts.JLabelSet(  0,115,100,20,"車輛表記名:",		11,1);
-		JLabel LB_CarName02			= B100_FrameParts.JLabelSet(  0,140,100,20,"車輛正式名:",		11,1);
-		JLabel LB_CarName03			= B100_FrameParts.JLabelSet(  0,165,100,20,"車輛略名:",		11,1);
-		JLabel LB_DriverCd			= B100_FrameParts.JLabelSet(  0,190,100,20,"乗務員CD:",		11,1);
-		JLabel LB_PTMSCD			= B100_FrameParts.JLabelSet(  0,215,100,20,"基幹SYS車輛Cd:",	11,1);
-		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(  0,240,100,20,"データ登録日時:",	11,1);
-		JLabel LB_UpdateDate		= B100_FrameParts.JLabelSet(  0,265,100,20,"データ更新日時:",	11,1);
-		JLabel LB_EntryUser			= B100_FrameParts.JLabelSet(  0,290,100,20,"登録者コード:",	11,1);
-		JLabel LB_UpdateUser		= B100_FrameParts.JLabelSet(  0,315,100,20,"更新者コード:",	11,1);
-		JLabel LB_DelFg				= B100_FrameParts.JLabelSet(  0,340,100,20,"削除フラグ:",		11,1);
+		Object[][] RtCarMstRt	= M100_CarMstRt.RtCarMstRt();
+		
+		JLabel LB_WHCD				= B100_FrameParts.JLabelSet(  0, 40,100,20,(String)RtCarMstRt[M100_CarMstRt.ColWHCD][3]					+":",	11,1);
+		JLabel LB_ShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 65,100,20,(String)RtCarMstRt[M100_CarMstRt.ColShippingCompanyCd][3]	+":",	11,1);
+		JLabel LB_CarCd				= B100_FrameParts.JLabelSet(  0, 90,100,20,(String)RtCarMstRt[M100_CarMstRt.ColCarCd][3]					+":",	11,1);
+		JLabel LB_CarName01			= B100_FrameParts.JLabelSet(  0,115,100,20,(String)RtCarMstRt[M100_CarMstRt.ColCarName01][3]				+":",	11,1);
+		JLabel LB_CarName02			= B100_FrameParts.JLabelSet(  0,140,100,20,(String)RtCarMstRt[M100_CarMstRt.ColCarName02][3]				+":",	11,1);
+		JLabel LB_CarName03			= B100_FrameParts.JLabelSet(  0,165,100,20,(String)RtCarMstRt[M100_CarMstRt.ColCarName03][3]				+":",	11,1);
+		JLabel LB_DriverCd			= B100_FrameParts.JLabelSet(  0,190,100,20,(String)RtCarMstRt[M100_CarMstRt.ColDriverCd][3]				+":",	11,1);
+		JLabel LB_PTMSCD			= B100_FrameParts.JLabelSet(  0,215,100,20,(String)RtCarMstRt[M100_CarMstRt.ColPTMSCD][3]				+":",	11,1);
+		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(  0,240,100,20,(String)RtCarMstRt[M100_CarMstRt.ColEntryDate][3]				+":",	11,1);
+		JLabel LB_UpdateDate		= B100_FrameParts.JLabelSet(  0,265,100,20,(String)RtCarMstRt[M100_CarMstRt.ColUpdateDate][3]			+":",	11,1);
+		JLabel LB_EntryUser			= B100_FrameParts.JLabelSet(  0,290,100,20,(String)RtCarMstRt[M100_CarMstRt.ColEntryUser][3]				+":",	11,1);
+		JLabel LB_UpdateUser		= B100_FrameParts.JLabelSet(  0,315,100,20,(String)RtCarMstRt[M100_CarMstRt.ColUpdateUser][3]			+":",	11,1);
+		JLabel LB_DelFg				= B100_FrameParts.JLabelSet(  0,340,100,20,(String)RtCarMstRt[M100_CarMstRt.ColDelFg][3]					+":",	11,1);
 		
 		final JComboBox  TB_WHCD				= B100_FrameParts.JComboBoxSet( 100, 40,250,20,B100_DefaultVariable.WhList[0],	11);					//倉庫コード
-		final JComboBox  TB_ShippingCompanyCd	= B100_FrameParts.JComboBoxSet( 100, 65,250,20,B100_DefaultVariable.ShippingCompanyList[0],	11);		//運送会社CD
+		final JComboBox  TB_ShippingCompanyCd	= B100_FrameParts.JComboBoxSet( 100, 65,250,20,B100_DefaultVariable.ShippingCompanyList[0],	11);	//運送会社CD
 		final JTextField TB_CarCd				= B100_FrameParts.JTextFieldSet(100, 90,100,20,"",11,0);	//車輛CD
 		final JTextField TB_CarName01			= B100_FrameParts.JTextFieldSet(100,115,250,20,"",11,0);	//車輛表記名
 		final JTextField TB_CarName02			= B100_FrameParts.JTextFieldSet(100,140,250,20,"",11,0);	//車輛正式名
@@ -116,9 +118,9 @@ public class WM100_CarMst_01_RenewAndCreate{
 				TB_DriverCd.setText(	""+CarMstRt[0][M100_CarMstRt.ColDriverCd]);		//乗務員CD
 				TB_PTMSCD.setText(		""+CarMstRt[0][M100_CarMstRt.ColPTMSCD]);			//基幹SYS車輛Cd
 				TB_EntryDate.setText(	""+CarMstRt[0][M100_CarMstRt.ColEntryDate]);		//データ登録日時
-				TB_UpdateDate.setText(	""+CarMstRt[0][M100_CarMstRt.ColUpdateDate]);	//データ更新日時
+				TB_UpdateDate.setText(	""+CarMstRt[0][M100_CarMstRt.ColUpdateDate]);		//データ更新日時
 				TB_EntryUser.setText(	""+CarMstRt[0][M100_CarMstRt.ColEntryUser]);		//登録者コード
-				TB_UpdateUser.setText(	""+CarMstRt[0][M100_CarMstRt.ColUpdateUser]);	//更新者コード
+				TB_UpdateUser.setText(	""+CarMstRt[0][M100_CarMstRt.ColUpdateUser]);		//更新者コード
 				
 				for(int i=0;i<B100_DefaultVariable.DelList[1].length;i++) {
 					if((""+CarMstRt[0][M100_CarMstRt.ColDelFg]).equals(""+B100_DefaultVariable.DelList[1][i])) {

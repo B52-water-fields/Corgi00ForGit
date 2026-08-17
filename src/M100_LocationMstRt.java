@@ -71,8 +71,25 @@ public class M100_LocationMstRt{
 				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"			,""}
 				};
 		
+		RtSettingLocationMstRt = B100_LanguageControl.RtControl(RtSettingLocationMstRt);
+		
 		return RtSettingLocationMstRt;
 	}
+
+	public static Object[][] DefinitionRt(){
+		Object[][] Definition = {
+					 {"String"		,null	,"Exact"			,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"		,""}
+					,{"String"		,null	,"Exact"			,ColSearchWhCd		,B100_DefaultVariable.SearchWhList		,"倉庫コード"		,""}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchLoc			,""											,"ロケーション"		,""}
+					,{"String"		,null	,"Partial"			,ColSearchLocName		,""											,"ロケーション名"	,""}
+					,{"Integer"		,null	,"Exact"			,ColSearchType		,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""}
+					};		
+		
+		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		
+		return Definition;
+	}
+	
 	public static Object[][] LocationMstRt(
 			ArrayList<String> SearchClCd,		//荷主コード
 			ArrayList<String> SearchWhCd,		//倉庫コード
@@ -82,13 +99,30 @@ public class M100_LocationMstRt{
 			boolean LocExactMatch,	//ロケーション完全一致
 			boolean AllSearch){
 		
-		Object[][] Definition = {
-				 {"String"		,SearchClCd		,"Exact"			,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"		,""}
-				,{"String"		,SearchWhCd		,"Exact"			,ColSearchWhCd		,B100_DefaultVariable.SearchWhList		,"倉庫コード"		,""}
-				,{"String"		,SearchLoc		,"ExactOrPrefix"	,ColSearchLoc			,""											,"ロケーション"		,""}
-				,{"String"		,SearchLocName	,"Partial"			,ColSearchLocName		,""											,"ロケーション名"	,""}
-				,{"Integer"		,SearchType		,"Exact"			,ColSearchType		,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""}
-				};
+		Object[][] Definition = DefinitionRt();
+
+		for(int i=0;i<Definition.length;i++) {
+			switch((int)Definition[i][3]) {
+				case ColSearchClCd:	
+					Definition[i][1]	= SearchClCd;
+					break;
+				case ColSearchWhCd:	
+					Definition[i][1]	= SearchWhCd;
+					break;
+				case ColSearchLoc:	
+					Definition[i][1]	= SearchLoc;
+					break;
+				case ColSearchLocName:	
+					Definition[i][1]	= SearchLocName;
+					break;
+				case ColSearchType:	
+					Definition[i][1]	= SearchType;
+					break;
+				default:
+					break;
+			}
+		}
+		
 		/*
 		日付系検索最小は念のため00:00:00扱い
 		日付系検索項目最大は一日進めて00:00:00扱い
