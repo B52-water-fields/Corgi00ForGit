@@ -44,32 +44,33 @@ public class WM100_DeliveryMst_01_RenewAndCreate{
 		if(!"JIS".equals(DepartmentCd)) {
 			main_fm.add(entry_btn);
 		}
+		Object[][] RtDeliveryMstRt			= M100_DeliveryMstRt.RtDeliveryMstRt();
 		
-		JLabel LB_DECD				= B100_FrameParts.JLabelSet(  0, 40,100,20,"届先コード:",		11,1);
-		JLabel LB_DepartmentCd		= B100_FrameParts.JLabelSet(  0, 65,100,20,"部署CD:",			11,1);
-		JLabel LB_DEName01			= B100_FrameParts.JLabelSet(  0, 90,100,20,"届先表記名:",		11,1);
-		JLabel LB_DEName02			= B100_FrameParts.JLabelSet(  0,115,100,20,"届先正式名:",		11,1);
-		JLabel LB_DEName03			= B100_FrameParts.JLabelSet(  0,140,100,20,"届先略名:",		11,1);
-		JLabel LB_Post				= B100_FrameParts.JLabelSet(  0,165,100,20,"届先郵便:",		11,1);
-		JLabel LB_Add01				= B100_FrameParts.JLabelSet(  0,190,100,20,"届先住所1:",		11,1);
-		JLabel LB_Add02				= B100_FrameParts.JLabelSet(  0,215,100,20,"届先住所2:",		11,1);
-		JLabel LB_Add03				= B100_FrameParts.JLabelSet(  0,240,100,20,"届先住所3:",		11,1);
-		JLabel LB_Tel				= B100_FrameParts.JLabelSet(  0,265,100,20,"届先電話:",		11,1);
-		JLabel LB_Fax				= B100_FrameParts.JLabelSet(  0,290,100,20,"届先FAX:",			11,1);
-		JLabel LB_Mail				= B100_FrameParts.JLabelSet(  0,315,100,20,"届先MAIL:",		11,1);
-		JLabel LB_Com01				= B100_FrameParts.JLabelSet(  0,340,100,20,"コメント1:",		11,1);
-		JLabel LB_Com02				= B100_FrameParts.JLabelSet(  0,365,100,20,"コメント2:",		11,1);
-		JLabel LB_Com03				= B100_FrameParts.JLabelSet(  0,390,100,20,"コメント3:",		11,1);
-		JLabel LB_PrefecturesCd		= B100_FrameParts.JLabelSet(  0,415,100,20,"JIS県CD2桁:",		11,1);
-		JLabel LB_MunicipalityCd	= B100_FrameParts.JLabelSet(  0,440,100,20,"JISCD5桁:",		11,1);
-		JLabel LB_PTMSCD			= B100_FrameParts.JLabelSet(  0,465,100,20,"基幹SYS発着CD:",	11,1);
-		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(  0,490,100,20,"データ登録日時:",	11,1);
-		JLabel LB_UpdateDate		= B100_FrameParts.JLabelSet(  0,515,100,20,"データ更新日時:",	11,1);
-		JLabel LB_EntryUser			= B100_FrameParts.JLabelSet(  0,540,100,20,"登録者コード:",	11,1);
-		JLabel LB_UpdateUser		= B100_FrameParts.JLabelSet(  0,565,100,20,"更新者コード:",	11,1);
-		JLabel LB_FirstClient		= B100_FrameParts.JLabelSet(  0,590,100,20,"登録した荷主:",	11,1);
-		JLabel LB_LastClient		= B100_FrameParts.JLabelSet(  0,615,100,20,"更新した荷主:",	11,1);
-		JLabel LB_DelFg				= B100_FrameParts.JLabelSet(  0,640,100,20,"削除区分:",		11,1);
+		JLabel LB_DECD				= B100_FrameParts.JLabelSet(  0, 40,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColDECD][5]				+":",	11,1);
+		JLabel LB_DepartmentCd		= B100_FrameParts.JLabelSet(  0, 65,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColDepartmentCd][5]	+":",	11,1);
+		JLabel LB_DEName01			= B100_FrameParts.JLabelSet(  0, 90,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColDEName01][5]		+":",	11,1);
+		JLabel LB_DEName02			= B100_FrameParts.JLabelSet(  0,115,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColDEName02][5]		+":",	11,1);
+		JLabel LB_DEName03			= B100_FrameParts.JLabelSet(  0,140,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColDEName03][5]		+":",	11,1);
+		JLabel LB_Post				= B100_FrameParts.JLabelSet(  0,165,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColPost][5]				+":",	11,1);
+		JLabel LB_Add01				= B100_FrameParts.JLabelSet(  0,190,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColAdd01][5]			+":",	11,1);
+		JLabel LB_Add02				= B100_FrameParts.JLabelSet(  0,215,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColAdd02][5]			+":",	11,1);
+		JLabel LB_Add03				= B100_FrameParts.JLabelSet(  0,240,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColAdd03][5]			+":",	11,1);
+		JLabel LB_Tel				= B100_FrameParts.JLabelSet(  0,265,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColTel][5]				+":",	11,1);
+		JLabel LB_Fax				= B100_FrameParts.JLabelSet(  0,290,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColFax][5]				+":",	11,1);
+		JLabel LB_Mail				= B100_FrameParts.JLabelSet(  0,315,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColMail][5]				+":",	11,1);
+		JLabel LB_Com01				= B100_FrameParts.JLabelSet(  0,340,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColCom01][5]			+":",	11,1);
+		JLabel LB_Com02				= B100_FrameParts.JLabelSet(  0,365,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColCom02][5]			+":",	11,1);
+		JLabel LB_Com03				= B100_FrameParts.JLabelSet(  0,390,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColCom03][5]			+":",	11,1);
+		JLabel LB_PrefecturesCd		= B100_FrameParts.JLabelSet(  0,415,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColPrefecturesCd][5]	+":",	11,1);
+		JLabel LB_MunicipalityCd	= B100_FrameParts.JLabelSet(  0,440,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColMunicipalityCd][5]	+":",	11,1);
+		JLabel LB_PTMSCD			= B100_FrameParts.JLabelSet(  0,465,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColPTMSCD][5]			+":",	11,1);
+		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(  0,490,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColEntryDate][5]		+":",	11,1);
+		JLabel LB_UpdateDate		= B100_FrameParts.JLabelSet(  0,515,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColUpdateDate][5]		+":",	11,1);
+		JLabel LB_EntryUser			= B100_FrameParts.JLabelSet(  0,540,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColEntryUser][5]		+":",	11,1);
+		JLabel LB_UpdateUser		= B100_FrameParts.JLabelSet(  0,565,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColUpdateUser][5]		+":",	11,1);
+		JLabel LB_FirstClient		= B100_FrameParts.JLabelSet(  0,590,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColFirstClient][5]		+":",	11,1);
+		JLabel LB_LastClient		= B100_FrameParts.JLabelSet(  0,615,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColLastClient][5]		+":",	11,1);
+		JLabel LB_DelFg				= B100_FrameParts.JLabelSet(  0,640,100,20,(String)RtDeliveryMstRt[M100_DeliveryMstRt.ColDelFg][5]			+":",	11,1);
 		JLabel LB_MSG				= B100_FrameParts.JLabelSet(  0,665,300,20,"JIS届先は郵便番号マスタから生成してください",	11,1);
 
 		final JTextField TB_DECD			= B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);			//届先コード

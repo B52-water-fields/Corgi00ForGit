@@ -75,18 +75,20 @@ public class WM100_DeliveryMst_00_Search{
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchDECD			= B100_FrameParts.JLabelSet(  0, 25,100,20,"届先CD:"			,11,1);
-		JLabel LB_SearchDepartmentCd	= B100_FrameParts.JLabelSet(  0, 50,100,20,"届先部署CD:"		,11,1);
-		JLabel LB_SearchDEName			= B100_FrameParts.JLabelSet(  0, 75,100,20,"届先名:"			,11,1);
-		JLabel LB_SearchPost			= B100_FrameParts.JLabelSet(  0,100,100,20,"届先郵便:"		,11,1);
-		JLabel LB_SearchAdd				= B100_FrameParts.JLabelSet(  0,125,100,20,"届先住所:"		,11,1);
-		JLabel LB_SearchTel				= B100_FrameParts.JLabelSet(250, 25,100,20,"届先TEL:"			,11,1);
-		JLabel LB_SearchFax				= B100_FrameParts.JLabelSet(250, 50,100,20,"届先FAX:"			,11,1);
-		JLabel LB_SearchMail			= B100_FrameParts.JLabelSet(250, 75,100,20,"届先MAIL:"		,11,1);
-		JLabel LB_SearchCom				= B100_FrameParts.JLabelSet(250,100,100,20,"届先コメント:"	,11,1);
-		JLabel LB_SearchPrefecturesCd	= B100_FrameParts.JLabelSet(500, 25,100,20,"届先県CD:"		,11,1);
-		JLabel LB_SearchMunicipalityCd	= B100_FrameParts.JLabelSet(500, 50,100,20,"届先市区町村CD:"	,11,1);
-		JLabel LB_SearchDelFg			= B100_FrameParts.JLabelSet(500, 75,100,20,"削除区分:"		,11,1);
+		Object[][] DefinitionRt			= M100_DeliveryMstRt.DefinitionRt();
+		
+		JLabel LB_SearchDECD			= B100_FrameParts.JLabelSet(  0, 25,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchDECD][5]				+":"	,11,1);
+		JLabel LB_SearchDepartmentCd	= B100_FrameParts.JLabelSet(  0, 50,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchDepartmentCd][5]	+":"	,11,1);
+		JLabel LB_SearchDEName			= B100_FrameParts.JLabelSet(  0, 75,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchDEName][5]			+":"	,11,1);
+		JLabel LB_SearchPost			= B100_FrameParts.JLabelSet(  0,100,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchPost][5]				+":"	,11,1);
+		JLabel LB_SearchAdd				= B100_FrameParts.JLabelSet(  0,125,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchAdd][5]				+":"	,11,1);
+		JLabel LB_SearchTel				= B100_FrameParts.JLabelSet(250, 25,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchTel][5]				+":"	,11,1);
+		JLabel LB_SearchFax				= B100_FrameParts.JLabelSet(250, 50,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchFax][5]				+":"	,11,1);
+		JLabel LB_SearchMail			= B100_FrameParts.JLabelSet(250, 75,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchMail][5]				+":"	,11,1);
+		JLabel LB_SearchCom				= B100_FrameParts.JLabelSet(250,100,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchCom][5]				+":"	,11,1);
+		JLabel LB_SearchPrefecturesCd	= B100_FrameParts.JLabelSet(500, 25,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchPrefecturesCd][5]	+":"	,11,1);
+		JLabel LB_SearchMunicipalityCd	= B100_FrameParts.JLabelSet(500, 50,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchMunicipalityCd][5]	+":"	,11,1);
+		JLabel LB_SearchDelFg			= B100_FrameParts.JLabelSet(500, 75,100,20,DefinitionRt[M100_DeliveryMstRt.ColSearchDelFg][5]			+":"	,11,1);
 		JLabel LB_SearcNotJis			= B100_FrameParts.JLabelSet(500,100,100,20,"JIS由来届先:"		,11,1);
 		
 		final JTextField  TB_SearchDECD				= B100_FrameParts.JTextFieldSet(100, 25,100,20,"",11,0);			//届先CD
@@ -101,7 +103,7 @@ public class WM100_DeliveryMst_00_Search{
 		final JComboBox   TB_SearchPrefecturesCd	= B100_FrameParts.JComboBoxSet( 600, 25,100,20,PrefecturesCdList[0],11);					//届先県CD
 		final JComboBox   TB_SearchMunicipalityCd	= B100_FrameParts.JComboBoxSet( 600, 50,200,20,MunicipalityCd[0],11);						//届先市区町村CD
 		final JComboBox   TB_SearchDelFg			= B100_FrameParts.JComboBoxSet( 600, 75,100,20,B100_DefaultVariable.SearchDelList[0],11);	//削除区分
-		String[] JisSelect = {"含まない","含む"};
+		String[] JisSelect = B100_DefaultVariable.SearchUnPartialOrPartial;
 		final JComboBox   TB_SearcNotJis			= B100_FrameParts.JComboBoxSet( 600,100,100,20,JisSelect,11);	//削除区分
 		
 		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(200, 25, 50,20,B100_DefaultVariable.SearchExact		,11,0);

@@ -33,15 +33,17 @@ public class WM100_DeliveryTypeMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_DeliveryTypeNo	= B100_FrameParts.JLabelSet(  0, 40,100,20,"タイプ番号:",			11,1);
-		JLabel LB_DeliveryTypeCd	= B100_FrameParts.JLabelSet(  0, 65,100,20,"運送タイプコード:",	11,1);
-		JLabel LB_DeliveryTypeName	= B100_FrameParts.JLabelSet(  0, 90,100,20,"運送タイプ名:",		11,1);
-		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(  0,115,100,20,"データ登録日時:",		11,1);
-		JLabel LB_UpdateDate		= B100_FrameParts.JLabelSet(  0,140,100,20,"データ更新日時:",		11,1);
-		JLabel LB_EntryUser			= B100_FrameParts.JLabelSet(  0,165,100,20,"登録者コード:",		11,1);
-		JLabel LB_UpdateUser		= B100_FrameParts.JLabelSet(  0,190,100,20,"更新者コード:",		11,1);
+		Object[][] RtDeliveryTypeMstRt			= M100_DeliveryTypeMstRt.RtDeliveryTypeMstRt();
 		
-		String[] TypeNoList = {"01","02","03","04","05"};
+		JLabel LB_DeliveryTypeNo	= B100_FrameParts.JLabelSet(  0, 40,100,20,(String)RtDeliveryTypeMstRt[M100_DeliveryTypeMstRt.ColDeliveryTypeNo][3]		+":",	11,1);
+		JLabel LB_DeliveryTypeCd	= B100_FrameParts.JLabelSet(  0, 65,100,20,(String)RtDeliveryTypeMstRt[M100_DeliveryTypeMstRt.ColDeliveryTypeCd][3]		+":",	11,1);
+		JLabel LB_DeliveryTypeName	= B100_FrameParts.JLabelSet(  0, 90,100,20,(String)RtDeliveryTypeMstRt[M100_DeliveryTypeMstRt.ColDeliveryTypeName][3]	+":",	11,1);
+		JLabel LB_EntryDate			= B100_FrameParts.JLabelSet(  0,115,100,20,(String)RtDeliveryTypeMstRt[M100_DeliveryTypeMstRt.ColEntryDate][3]			+":",	11,1);
+		JLabel LB_UpdateDate		= B100_FrameParts.JLabelSet(  0,140,100,20,(String)RtDeliveryTypeMstRt[M100_DeliveryTypeMstRt.ColUpdateDate][3]			+":",	11,1);
+		JLabel LB_EntryUser			= B100_FrameParts.JLabelSet(  0,165,100,20,(String)RtDeliveryTypeMstRt[M100_DeliveryTypeMstRt.ColEntryUser][3]			+":",	11,1);
+		JLabel LB_UpdateUser		= B100_FrameParts.JLabelSet(  0,190,100,20,(String)RtDeliveryTypeMstRt[M100_DeliveryTypeMstRt.ColUpdateUser][3]			+":",	11,1);
+		
+		String[] TypeNoList = B100_DefaultVariable.DeliveryTypeNoList[0];	//タイプNo
 		
 		final JComboBox  TB_SearchDeliveryTypeNo	= B100_FrameParts.JComboBoxSet( 100, 40,100,20,TypeNoList,11);	//タイプNo
 		final JTextField TB_DeliveryTypeCd			= B100_FrameParts.JTextFieldSet(100, 65,100,20,"",11,0);			//運送タイプコード

@@ -40,12 +40,14 @@ public class WM100_ItemComversionMst_00_Search{
 		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,1280,220,"White");
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		
+		Object[][] DefinitionRt			= M100_ItemComversionMstRt.DefinitionRt();
+		
 		//検索条件
-		JLabel LB_SearchClGpCd		= B100_FrameParts.JLabelSet(	  0, 25,130,20,"荷主グループコード:"	,11,1);
-		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"			,11,1);
-		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	  0, 75,130,20,"商品コード:"			,11,1);
-		JLabel LB_SearchClItemCd	= B100_FrameParts.JLabelSet(	  0,100,130,20,"荷主商品コード:"		,11,1);
-		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(	  0,125,130,20,"商品名:"				,11,1);
+		JLabel LB_SearchClGpCd		= B100_FrameParts.JLabelSet(	  0, 25,130,20,(String)DefinitionRt[M100_ItemComversionMstRt.ColSearchClGpCd][5]		+":"	,11,1);
+		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(	  0, 50,130,20,(String)DefinitionRt[M100_ItemComversionMstRt.ColSearchClCd][5]		+":"	,11,1);
+		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	  0, 75,130,20,(String)DefinitionRt[M100_ItemComversionMstRt.ColSearchItemCd][5]		+":"	,11,1);
+		JLabel LB_SearchClItemCd	= B100_FrameParts.JLabelSet(	  0,100,130,20,(String)DefinitionRt[M100_ItemComversionMstRt.ColSearchClItemCd][5]	+":"	,11,1);
+		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(	  0,125,130,20,(String)DefinitionRt[M100_ItemComversionMstRt.ColSearchItemName][5]	+":"	,11,1);
 		
 		final JComboBox   TB_SearchClGpCd	= B100_FrameParts.JComboBoxSet(	130, 25,250,20,B100_DefaultVariable.SearchClGpList[0],11);	//荷主グループコード
 		final JComboBox   TB_SearchClCd		= B100_FrameParts.JComboBoxSet(	130, 50,250,20,B100_DefaultVariable.SearchClList[0],11);		//荷主コード

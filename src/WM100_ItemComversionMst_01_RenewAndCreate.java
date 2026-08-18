@@ -40,31 +40,33 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ClGpCd	= B100_FrameParts.JLabelSet(	  0, 25,130,20,"荷主グループコード:"	,11,1);
-		JLabel LB_ClCd		= B100_FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"			,11,1);
-		JLabel LB_ClItemCd	= B100_FrameParts.JLabelSet(	  0, 75,130,20,"荷主商品コード:"		,11,1);
+		Object[][] RtItemComversionMstRt	= M100_ItemComversionMstRt.RtItemComversionMstRt();
+		
+		JLabel LB_ClGpCd	= B100_FrameParts.JLabelSet(	  0, 25,130,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColClGpCd][3]		+":"	,11,1);
+		JLabel LB_ClCd		= B100_FrameParts.JLabelSet(	  0, 50,130,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColClCd][3]			+":"	,11,1);
+		JLabel LB_ClItemCd	= B100_FrameParts.JLabelSet(	  0, 75,130,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColClItemCd][3]		+":"	,11,1);
 		
 		JLabel LB_Msg		= B100_FrameParts.JLabelSet(	130,125,130,20,"を下記に変換します"		,11,0);
 
-		JLabel LB_UnitType	= B100_FrameParts.JLabelSet(	  0,175,130,20,"荷姿:"					,11,1);
-		JLabel LB_ItemCd	= B100_FrameParts.JLabelSet(	  0,200,130,20,"商品コード:"			,11,1);
+		JLabel LB_UnitType	= B100_FrameParts.JLabelSet(	  0,175,130,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColPackingType][3]	+":"	,11,1);
+		JLabel LB_ItemCd	= B100_FrameParts.JLabelSet(	  0,200,130,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColItemCd][3]		+":"	,11,1);
 		
 		final JComboBox   TB_ClGpCd		= B100_FrameParts.JComboBoxSet(	130, 25,200,20,B100_DefaultVariable.ClGpList[0],11);		//荷主グループコード
-		final JComboBox   TB_ClCd		= B100_FrameParts.JComboBoxSet(	130, 50,200,20,B100_DefaultVariable.ClList[0],11);		//荷主コード
+		final JComboBox   TB_ClCd		= B100_FrameParts.JComboBoxSet(	130, 50,200,20,B100_DefaultVariable.ClList[0],11);			//荷主コード
 		final JTextField  TB_ClItemCd	= B100_FrameParts.JTextFieldSet(	130, 75,100,20,""	,11,0);									//荷主商品コード
 
 		final JComboBox   TB_UnitType	= B100_FrameParts.JComboBoxSet(	130,175,130,20,B100_DefaultVariable.UnitTypeList[0],11);	//荷姿
 		final JTextField  TB_ItemCd		= B100_FrameParts.JTextFieldSet(	130,200,100,20,""	,11,0);									//商品コード
 		
-		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,225,100,20,"商品表記名:"				,10,1);
-		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,250,100,20,"商品正式名:"				,10,1);
-		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,275,100,20,"商品略名:"				,10,1);
+		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,225,100,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColItemName01][3]	+":"	,10,1);
+		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,250,100,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColItemName02][3]	+":"	,10,1);
+		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,275,100,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColItemName03][3]	+":"	,10,1);
 		final JTextField  TB_ItemName01	= B100_FrameParts.JTextFieldSet( 110,225,200,20,"",11,0);			//商品表記名
 		final JTextField  TB_ItemName02	= B100_FrameParts.JTextFieldSet( 110,250,200,20,"",11,0);			//商品正式名
 		final JTextField  TB_ItemName03	= B100_FrameParts.JTextFieldSet( 110,275,200,20,"",11,0);			//商品略名
-		JLabel LB_CtQty					= B100_FrameParts.JLabelSet(  10,300,100,20,"カートン入数:"			,10,1);
-		JLabel LB_CsQty					= B100_FrameParts.JLabelSet(  10,325,100,20,"ケース入数:"				,10,1);
-		JLabel LB_PlQty					= B100_FrameParts.JLabelSet(  10,350,100,20,"パレット入数:"			,10,1);
+		JLabel LB_CtQty					= B100_FrameParts.JLabelSet(  10,300,100,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColCtQty][3]	+":"		,10,1);
+		JLabel LB_CsQty					= B100_FrameParts.JLabelSet(  10,325,100,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColCsQty][3]	+":"		,10,1);
+		JLabel LB_PlQty					= B100_FrameParts.JLabelSet(  10,350,100,20,(String)RtItemComversionMstRt[M100_ItemComversionMstRt.ColPlQty][3]	+":"		,10,1);
 		final JFormattedTextField TB_CtQty	= B100_FrameParts.JFormattedTextFieldSet(110,300,100,20,"0",11,1,"#,###");	//カートン入数
 		final JFormattedTextField TB_CsQty	= B100_FrameParts.JFormattedTextFieldSet(110,325,100,20,"0",11,1,"#,###");	//ケース入数
 		final JFormattedTextField TB_PlQty	= B100_FrameParts.JFormattedTextFieldSet(110,350,100,20,"0",11,1,"#,###");	//パレット入数
@@ -189,10 +191,12 @@ public class WM100_ItemComversionMst_01_RenewAndCreate{
 		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,780,130,"White");
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		
+		Object[][] ItemMstDefinitionRt	= M100_ItemMstRt.DefinitionRt();
+		
 		//検索条件
-		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	  0, 25,130,20,"商品コード:"			,11,1);
-		JLabel LB_SearchClItemCd	= B100_FrameParts.JLabelSet(	  0, 50,130,20,"荷主商品コード:"		,11,1);
-		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(	  0, 75,130,20,"商品名:"				,11,1);
+		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	  0, 25,130,20,(String)ItemMstDefinitionRt[M100_ItemMstRt.ColSearchItemCd][5]		+":"	,11,1);
+		JLabel LB_SearchClItemCd	= B100_FrameParts.JLabelSet(	  0, 50,130,20,(String)ItemMstDefinitionRt[M100_ItemMstRt.ColSearchClItemCd][5]	+":"	,11,1);
+		JLabel LB_SearchItemName	= B100_FrameParts.JLabelSet(	  0, 75,130,20,(String)ItemMstDefinitionRt[M100_ItemMstRt.ColSearchItemName][5]	+":"	,11,1);
 		
 		final JTextField  TB_SearchItemCd	= B100_FrameParts.JTextFieldSet(	130, 25,100,20,""	,11,0);		//商品コード
 		final JTextField  TB_SearchClItemCd	= B100_FrameParts.JTextFieldSet(	130, 50,100,20,""	,11,0);		//荷主商品コード

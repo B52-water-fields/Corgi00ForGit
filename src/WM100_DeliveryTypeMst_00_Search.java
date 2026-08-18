@@ -41,19 +41,21 @@ public class WM100_DeliveryTypeMst_00_Search{
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
-
-		JLabel LB_SearchDeliveryTypeNo		= B100_FrameParts.JLabelSet(  0, 25,100,20,"タイプNo:"	,11,1);
-		JLabel LB_SearchDeliveryTypeCd		= B100_FrameParts.JLabelSet(  0, 50,100,20,"運送タイプCD:"	,11,1);
-		JLabel LB_SearchDeliveryTypeName	= B100_FrameParts.JLabelSet(  0, 75,100,20,"運送タイプ名:"	,11,1);
 		
-		String[] TypeNoList = {"未指定","01","02","03","04","05"};
+		Object[][] DefinitionRt			= M100_DeliveryTypeMstRt.DefinitionRt();
+
+		JLabel LB_SearchDeliveryTypeNo		= B100_FrameParts.JLabelSet(  0, 25,100,20,DefinitionRt[M100_DeliveryTypeMstRt.ColSearchDeliveryTypeNo][5]		+":"	,11,1);
+		JLabel LB_SearchDeliveryTypeCd		= B100_FrameParts.JLabelSet(  0, 50,100,20,DefinitionRt[M100_DeliveryTypeMstRt.ColSearchDeliveryTypeCd][5]		+":"	,11,1);
+		JLabel LB_SearchDeliveryTypeName	= B100_FrameParts.JLabelSet(  0, 75,100,20,DefinitionRt[M100_DeliveryTypeMstRt.ColSearchDeliveryTypeName][5]	+":"	,11,1);
+		
+		String[] TypeNoList = B100_DefaultVariable.SearchDeliveryTypeNoList[0];	//タイプNo
 		
 		final JComboBox  TB_SearchDeliveryTypeNo	= B100_FrameParts.JComboBoxSet( 100, 25,100,20,TypeNoList,11);	//タイプNo
 		final JTextField TB_SearchDeliveryTypeCd	= B100_FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);			//運送タイプCD
 		final JTextField TB_SearchDeliveryTypeName	= B100_FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);			//運送タイプ名
 		
 		JLabel LB2_SearchDeliveryTypeNo		= B100_FrameParts.JLabelSet(200, 25, 50,20,""			,11,0);
-		JLabel LB2_SearchDeliveryTypeCd		= B100_FrameParts.JLabelSet(200, 50, 50,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchDeliveryTypeCd		= B100_FrameParts.JLabelSet(200, 50, 50,20,B100_DefaultVariable.SearchExact		,11,0);
 		JLabel LB2_SearchDeliveryTypeName	= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 
 		PN_Search.add(LB_SearchDeliveryTypeNo);

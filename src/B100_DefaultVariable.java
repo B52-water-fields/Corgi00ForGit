@@ -123,6 +123,8 @@ public class B100_DefaultVariable{
 	
 	static final String[] SearchExactOrPrefix		= {"と一致","で始まる"};
 	static final String[] SearchPrefixOrExact		= {"で始まる","と一致"};
+	static final String[] SearchPartialOrUnPartial	= {"を含む","を含まない"};
+	static final String[] SearchUnPartialOrPartial	= {"を含まない","を含む",};
 	static final String   SearchExact 					= "と一致";
 	static final String   SearchPartial 				= "を含む";
 	static final String   SearchPrefix 				= "で始まる";
@@ -133,6 +135,9 @@ public class B100_DefaultVariable{
 	
 	static final String[] SearchPriorityFirstFg 		= {"未指定","データ優先","マスタ優先"};
 	static final String[] PriorityFirstFg 			= {"データ優先","マスタ優先"};
+	
+	static final String[][] SearchDeliveryTypeNoList= {{"未指定","01","02","03","04","05"},{"","1","2","3","4","5"},{"","01","02","03","04","05"}};	//検索条件：運送タイプNo
+	static final String[][] DeliveryTypeNoList		= {{"01","02","03","04","05"},{"1","2","3","4","5"},{"01","02","03","04","05"}};				//運送タイプNo
 	
 	/*
 	====================================================================
