@@ -235,7 +235,7 @@ public class T100_ArrivalPlanHdRt{
 				,{"MsCount"			,ColMsCount		,"int"		,"明細行数"}
 				};
 		
-		RtArrivalPlanHdRt = B100_LanguageControl.DefinitionControl(RtArrivalPlanHdRt);
+		RtArrivalPlanHdRt = B100_LanguageControl.RtControl(RtArrivalPlanHdRt);
 		
 		return RtArrivalPlanHdRt;
 	}

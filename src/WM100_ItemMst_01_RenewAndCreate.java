@@ -33,135 +33,146 @@ public class WM100_ItemMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		Object[][] RtItemMstRt	= M100_ItemMstRt.RtItemMstRt();
+		
 		//更新モードから切替えて商品コード入力可能にするためのボタン
-		JButton NewEntryBtn = B100_FrameParts.BtnSet(220, 55, 80,20,"モード切替",9);	//新規登録
+		JButton NewEntryBtn = B100_FrameParts.BtnSet(220, 55, 80,20,B100_DefaultVariable.MdeChange,9);	//新規登録切替
 		
-		JLabel LB_ClGpCd				= B100_FrameParts.JLabelSet(  10, 30,100,20,"荷主グループコード:"		,10,1);
-		JLabel LB_ItemCd				= B100_FrameParts.JLabelSet(  10, 55,100,20,"商品コード:"				,10,1);
-		JLabel LB_ClItemCd				= B100_FrameParts.JLabelSet(  10, 80,100,20,"荷主商品コード:"			,10,1);
-		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,105,100,20,"商品表記名:"				,10,1);
-		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,130,100,20,"商品正式名:"				,10,1);
-		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,155,100,20,"商品略名:"				,10,1);
-		final JComboBox   TB_ClGpCd		= B100_FrameParts.JComboBoxSet(  110, 30,200,20,B100_DefaultVariable.ClGpList[0],11);	//荷主グループコード
-		final JTextField  TB_ItemCd		= B100_FrameParts.JTextFieldSet( 110, 55,100,20,"",11,0);			//商品コード
-		final JTextField  TB_ClItemCd	= B100_FrameParts.JTextFieldSet( 110, 80,100,20,"",11,0);			//荷主商品コード
-		final JTextField  TB_ItemName01	= B100_FrameParts.JTextFieldSet( 110,105,200,20,"",11,0);			//商品表記名
-		final JTextField  TB_ItemName02	= B100_FrameParts.JTextFieldSet( 110,130,200,20,"",11,0);			//商品正式名
-		final JTextField  TB_ItemName03	= B100_FrameParts.JTextFieldSet( 110,155,200,20,"",11,0);			//商品略名
+		JLabel LB_ClGpCd				= B100_FrameParts.JLabelSet(  10, 30,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColClGpCd][3]				+":"	,10,1);
+		JLabel LB_ItemCd				= B100_FrameParts.JLabelSet(  10, 55,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemCd][3]				+":"	,10,1);
+		JLabel LB_ClItemCd				= B100_FrameParts.JLabelSet(  10, 80,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColClItemCd][3]			+":"	,10,1);
+		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(  10,105,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemName01][3]			+":"	,10,1);
+		JLabel LB_ItemName02			= B100_FrameParts.JLabelSet(  10,130,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemName02][3]			+":"	,10,1);
+		JLabel LB_ItemName03			= B100_FrameParts.JLabelSet(  10,155,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemName03][3]			+":"	,10,1);
+		
+		JLabel LB_DeliveryTypeCd01		= B100_FrameParts.JLabelSet( 310, 30,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColDeliveryTypeCd01][3]	+":"	,10,1);
+		JLabel LB_DeliveryTypeCd02		= B100_FrameParts.JLabelSet( 310, 55,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColDeliveryTypeCd02][3]	+":"	,10,1);
+		JLabel LB_DeliveryTypeCd03		= B100_FrameParts.JLabelSet( 310, 80,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColDeliveryTypeCd03][3]	+":"	,10,1);
+		JLabel LB_DeliveryTypeCd04		= B100_FrameParts.JLabelSet( 310,105,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColDeliveryTypeCd04][3]	+":"	,10,1);
+		JLabel LB_DeliveryTypeCd05		= B100_FrameParts.JLabelSet( 310,130,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColDeliveryTypeCd05][3]	+":"	,10,1);
+		JLabel LB_PTMSCD				= B100_FrameParts.JLabelSet( 310,155,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColPTMSCD][3]				+":"	,10,1);
+		
+		JLabel LB_RecomendLoc			= B100_FrameParts.JLabelSet( 610, 25,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColRecomendLoc][3]		+":"	,10,1);
+		JLabel LB_ItemMDNo				= B100_FrameParts.JLabelSet( 610, 50,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemMDNo][3]			+":"	,10,1);
+		JLabel LB_CategoryCd			= B100_FrameParts.JLabelSet( 610, 75,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCategoryCd][3]			+":"	,10,1);
+		JLabel LB_CategoryName			= B100_FrameParts.JLabelSet( 610,100,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCategoryName][3]		+":"	,10,1);
+		JLabel LB_DelFg					= B100_FrameParts.JLabelSet( 610,150,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColDelFg][3]				+":"	,10,1);
+
+		JLabel LB_ItemColorCd			= B100_FrameParts.JLabelSet( 910, 25,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemColorCd][3]		+":"	,10,1);
+		JLabel LB_ItemColorName			= B100_FrameParts.JLabelSet( 910, 50,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemColorName][3]		+":"	,10,1);
+		JLabel LB_ItemSizeCd			= B100_FrameParts.JLabelSet( 910, 75,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemSizeCd][3]			+":"	,10,1);
+		JLabel LB_ItemSizeName			= B100_FrameParts.JLabelSet( 910,100,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemSizeName][3]		+":"	,10,1);
+		JLabel LB_TildFG				= B100_FrameParts.JLabelSet( 910,125,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColTildFG][3]				+":"	,10,1);
+		JLabel LB_ExpDateHowLong		= B100_FrameParts.JLabelSet( 910,150,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColExpDateHowLong][3]	+":"	,10,1);
+
+		JLabel LB_ItemWeight			= B100_FrameParts.JLabelSet( 210,205,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemWeight][3]			+":"	,10,1);
+		JLabel LB_CtWeight				= B100_FrameParts.JLabelSet( 210,230,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCtWeight][3]			+":"	,10,1);
+		JLabel LB_CsWeight				= B100_FrameParts.JLabelSet( 210,255,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCtWeight][3]			+":"	,10,1);
+		JLabel LB_PlWeight				= B100_FrameParts.JLabelSet( 210,280,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColPlWeight][3]			+":"	,10,1);
+
+		JLabel LB_CtQty					= B100_FrameParts.JLabelSet(  10,230,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCtQty][3]				+":"	,10,1);
+		JLabel LB_CsQty					= B100_FrameParts.JLabelSet(  10,255,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCsQty][3]				+":"	,10,1);
+		JLabel LB_PlQty					= B100_FrameParts.JLabelSet(  10,280,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColPlQty][3]				+":"	,10,1);
+
+		JLabel LB_ItemSize				= B100_FrameParts.JLabelSet( 410,205,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColItemSize][3]			+":"	,10,1);
+		JLabel LB_CtSize				= B100_FrameParts.JLabelSet( 410,230,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCtSize][3]				+":"	,10,1);
+		JLabel LB_CsSize				= B100_FrameParts.JLabelSet( 410,255,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCsSize][3]				+":"	,10,1);
+		JLabel LB_PlSize				= B100_FrameParts.JLabelSet( 410,280,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColPlSize][3]				+":"	,10,1);
+
+		JLabel LB_CtName				= B100_FrameParts.JLabelSet( 610,230,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCtName][3]				+":"	,10,1);
+		JLabel LB_CsName				= B100_FrameParts.JLabelSet( 610,255,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCsName][3]				+":"	,10,1);
+		JLabel LB_PlName				= B100_FrameParts.JLabelSet( 610,280,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColPlName][3]				+":"	,10,1);
+
+		JLabel LB_UnitName				= B100_FrameParts.JLabelSet( 910,205,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColUnitName][3]			+":"	,10,1);
+		JLabel LB_CtUnitName			= B100_FrameParts.JLabelSet( 910,230,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCtUnitName][3]			+":"	,10,1);
+		JLabel LB_CsUnitName			= B100_FrameParts.JLabelSet( 910,255,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCsUnitName][3]			+":"	,10,1);
+		JLabel LB_PlUnitName			= B100_FrameParts.JLabelSet( 910,280,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColPlUnitName][3]			+":"	,10,1);
+
+		JLabel LB_JanCd					= B100_FrameParts.JLabelSet(1110,205,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColJanCd][3]				+":"	,10,1);
+		JLabel LB_CtJan					= B100_FrameParts.JLabelSet(1110,230,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCtJan][3]				+":"	,10,1);
+		JLabel LB_CsJan					= B100_FrameParts.JLabelSet(1110,255,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCsJan][3]				+":"	,10,1);
+		JLabel LB_PlJan					= B100_FrameParts.JLabelSet(1110,280,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColPlJan][3]				+":"	,10,1);
+
+		JLabel LB_Com01					= B100_FrameParts.JLabelSet(  10,650,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCom01][3]				+":"	,10,1);
+		JLabel LB_Com02					= B100_FrameParts.JLabelSet(  10,675,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCom02][3]				+":"	,10,1);
+		JLabel LB_Com03					= B100_FrameParts.JLabelSet(  10,700,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColCom03][3]				+":"	,10,1);
+		
+		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet( 310,650,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColEntryDate][3]			+":"	,10,1);
+		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet( 310,675,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColUpdateDate][3]			+":"	,10,1);
+		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet( 310,700,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColEntryUser][3]			+":"	,10,1);
+		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet( 310,725,100,20,(String)RtItemMstRt[M100_ItemMstRt.ColUpdateUser][3]			+":"	,10,1);
 		
 		
-		JLabel LB_DeliveryTypeCd01		= B100_FrameParts.JLabelSet( 310, 30,100,20,"運送タイプコード01:"		,10,1);
-		JLabel LB_DeliveryTypeCd02		= B100_FrameParts.JLabelSet( 310, 55,100,20,"運送タイプコード02:"		,10,1);
-		JLabel LB_DeliveryTypeCd03		= B100_FrameParts.JLabelSet( 310, 80,100,20,"運送タイプコード03:"		,10,1);
-		JLabel LB_DeliveryTypeCd04		= B100_FrameParts.JLabelSet( 310,105,100,20,"運送タイプコード04:"		,10,1);
-		JLabel LB_DeliveryTypeCd05		= B100_FrameParts.JLabelSet( 310,130,100,20,"運送タイプコード05:"		,10,1);
-		JLabel LB_PTMSCD				= B100_FrameParts.JLabelSet( 310,155,100,20,"基幹SYS商品コード:"		,10,1);
-		final JComboBox   TB_DeliveryTypeCd01	= B100_FrameParts.JComboBoxSet(  410, 30,200,20,B100_DefaultVariable.DeliveryType01[0],11);	//運送タイプコード01
-		final JComboBox   TB_DeliveryTypeCd02	= B100_FrameParts.JComboBoxSet(  410, 55,200,20,B100_DefaultVariable.DeliveryType02[0],11);	//運送タイプコード02
-		final JComboBox   TB_DeliveryTypeCd03	= B100_FrameParts.JComboBoxSet(  410, 80,200,20,B100_DefaultVariable.DeliveryType03[0],11);	//運送タイプコード03
-		final JComboBox   TB_DeliveryTypeCd04	= B100_FrameParts.JComboBoxSet(  410,105,200,20,B100_DefaultVariable.DeliveryType04[0],11);	//運送タイプコード04
-		final JComboBox   TB_DeliveryTypeCd05	= B100_FrameParts.JComboBoxSet(  410,130,200,20,B100_DefaultVariable.DeliveryType05[0],11);	//運送タイプコード05
-		final JTextField  TB_PTMSCD				= B100_FrameParts.JTextFieldSet( 410,155,100,20,"",11,0);										//基幹SYS商品コード
+		final JComboBox   TB_ClGpCd					= B100_FrameParts.JComboBoxSet(  110, 30,200,20,B100_DefaultVariable.ClGpList[0],11);	//荷主グループコード
+		final JTextField  TB_ItemCd					= B100_FrameParts.JTextFieldSet( 110, 55,100,20,"",11,0);			//商品コード
+		final JTextField  TB_ClItemCd				= B100_FrameParts.JTextFieldSet( 110, 80,100,20,"",11,0);			//荷主商品コード
+		final JTextField  TB_ItemName01				= B100_FrameParts.JTextFieldSet( 110,105,200,20,"",11,0);			//商品表記名
+		final JTextField  TB_ItemName02				= B100_FrameParts.JTextFieldSet( 110,130,200,20,"",11,0);			//商品正式名
+		final JTextField  TB_ItemName03				= B100_FrameParts.JTextFieldSet( 110,155,200,20,"",11,0);			//商品略名
 		
+		final JComboBox   TB_DeliveryTypeCd01		= B100_FrameParts.JComboBoxSet(  410, 30,200,20,B100_DefaultVariable.DeliveryType01[0],11);	//運送タイプコード01
+		final JComboBox   TB_DeliveryTypeCd02		= B100_FrameParts.JComboBoxSet(  410, 55,200,20,B100_DefaultVariable.DeliveryType02[0],11);	//運送タイプコード02
+		final JComboBox   TB_DeliveryTypeCd03		= B100_FrameParts.JComboBoxSet(  410, 80,200,20,B100_DefaultVariable.DeliveryType03[0],11);	//運送タイプコード03
+		final JComboBox   TB_DeliveryTypeCd04		= B100_FrameParts.JComboBoxSet(  410,105,200,20,B100_DefaultVariable.DeliveryType04[0],11);	//運送タイプコード04
+		final JComboBox   TB_DeliveryTypeCd05		= B100_FrameParts.JComboBoxSet(  410,130,200,20,B100_DefaultVariable.DeliveryType05[0],11);	//運送タイプコード05
+		final JTextField  TB_PTMSCD					= B100_FrameParts.JTextFieldSet( 410,155,100,20,"",11,0);										//基幹SYS商品コード
 		
-		JLabel LB_RecomendLoc			= B100_FrameParts.JLabelSet( 610, 25,100,20,"推奨ロケ:"				,10,1);
-		JLabel LB_ItemMDNo				= B100_FrameParts.JLabelSet( 610, 50,100,20,"商品型番:"				,10,1);
-		JLabel LB_CategoryCd			= B100_FrameParts.JLabelSet( 610, 75,100,20,"商品カテゴリCD:"			,10,1);
-		JLabel LB_CategoryName			= B100_FrameParts.JLabelSet( 610,100,100,20,"商品カテゴリ名:"			,10,1);
-		JLabel LB_DelFg					= B100_FrameParts.JLabelSet( 610,150,100,20,"削除フラグ:"				,10,1);
-		final JTextField  TB_RecomendLoc		= B100_FrameParts.JTextFieldSet( 710, 25,100,20,"",11,0);			//推奨ロケ
-		final JTextField  TB_ItemMDNo			= B100_FrameParts.JTextFieldSet( 710, 50,100,20,"",11,0);			//商品型番
-		final JTextField  TB_CategoryCd			= B100_FrameParts.JTextFieldSet( 710, 75,100,20,"",11,0);			//商品カテゴリCD
-		final JTextField  TB_CategoryName		= B100_FrameParts.JTextFieldSet( 710,100,100,20,"",11,0);			//商品カテゴリ名
-		final JComboBox  TB_DelFg		= B100_FrameParts.JComboBoxSet(  		710,150,100,20,B100_DefaultVariable.DelList[0],11);	//削除フラグ
+		final JTextField  TB_RecomendLoc			= B100_FrameParts.JTextFieldSet( 710, 25,100,20,"",11,0);			//推奨ロケ
+		final JTextField  TB_ItemMDNo				= B100_FrameParts.JTextFieldSet( 710, 50,100,20,"",11,0);			//商品型番
+		final JTextField  TB_CategoryCd				= B100_FrameParts.JTextFieldSet( 710, 75,100,20,"",11,0);			//商品カテゴリCD
+		final JTextField  TB_CategoryName			= B100_FrameParts.JTextFieldSet( 710,100,100,20,"",11,0);			//商品カテゴリ名
+		final JComboBox  TB_DelFg					= B100_FrameParts.JComboBoxSet(  710,150,100,20,B100_DefaultVariable.DelList[0],11);	//削除フラグ
 		
-		JLabel LB_ItemColorCd			= B100_FrameParts.JLabelSet( 910, 25,100,20,"商品カラーコード:"		,10,1);
-		JLabel LB_ItemColorName			= B100_FrameParts.JLabelSet( 910, 50,100,20,"商品カラー名:"			,10,1);
-		JLabel LB_ItemSizeCd			= B100_FrameParts.JLabelSet( 910, 75,100,20,"商品サイズコード:"		,10,1);
-		JLabel LB_ItemSizeName			= B100_FrameParts.JLabelSet( 910,100,100,20,"商品サイズ名:"			,10,1);
-		JLabel LB_TildFG				= B100_FrameParts.JLabelSet( 910,125,100,20,"温度区分:"				,10,1);
-		JLabel LB_ExpDateHowLong		= B100_FrameParts.JLabelSet( 910,150,100,20,"賞味期限日数:"			,10,1);
 		final JTextField  TB_ItemColorCd			= B100_FrameParts.JTextFieldSet(1010, 25,100,20,"",11,0);			//商品カラーコード
 		final JTextField  TB_ItemColorName			= B100_FrameParts.JTextFieldSet(1010, 50,100,20,"",11,0);			//商品カラー名
 		final JTextField  TB_ItemSizeCd				= B100_FrameParts.JTextFieldSet(1010, 75,100,20,"",11,0);			//商品サイズコード
 		final JTextField  TB_ItemSizeName			= B100_FrameParts.JTextFieldSet(1010,100,100,20,"",11,0);			//商品サイズ名
 		final JComboBox   TB_TildFG					= B100_FrameParts.JComboBoxSet( 1010,125,100,20,B100_DefaultVariable.TildFG[0],11);	//温度区分
-		final JFormattedTextField TB_ExpDateHowLong	= B100_FrameParts.JFormattedTextFieldSet(	1010,150,100,20,"0",11,1,"#,###");			//賞味期限日数
-		
+		final JFormattedTextField TB_ExpDateHowLong	= B100_FrameParts.JFormattedTextFieldSet(	1010,150,100,20,"0",11,1,"#,###");		//賞味期限日数
 
-		JLabel LB_CtQty					= B100_FrameParts.JLabelSet(  10,230,100,20,"カートン入数:"			,10,1);
-		JLabel LB_CsQty					= B100_FrameParts.JLabelSet(  10,255,100,20,"ケース入数:"				,10,1);
-		JLabel LB_PlQty					= B100_FrameParts.JLabelSet(  10,280,100,20,"パレット入数:"			,10,1);
-		final JFormattedTextField TB_CtQty	= B100_FrameParts.JFormattedTextFieldSet(110,230,100,20,"0",11,1,"#,###");	//カートン入数
-		final JFormattedTextField TB_CsQty	= B100_FrameParts.JFormattedTextFieldSet(110,255,100,20,"0",11,1,"#,###");	//ケース入数
-		final JFormattedTextField TB_PlQty	= B100_FrameParts.JFormattedTextFieldSet(110,280,100,20,"0",11,1,"#,###");	//パレット入数
+		final JFormattedTextField TB_CtQty		= B100_FrameParts.JFormattedTextFieldSet(110,230,100,20,"0",11,1,"#,###");	//カートン入数
+		final JFormattedTextField TB_CsQty		= B100_FrameParts.JFormattedTextFieldSet(110,255,100,20,"0",11,1,"#,###");	//ケース入数
+		final JFormattedTextField TB_PlQty		= B100_FrameParts.JFormattedTextFieldSet(110,280,100,20,"0",11,1,"#,###");	//パレット入数
 		
-		JLabel LB_ItemWeight			= B100_FrameParts.JLabelSet( 210,205,100,20,"商品重量:"				,10,1);
-		JLabel LB_CtWeight				= B100_FrameParts.JLabelSet( 210,230,100,20,"カートン重量:"			,10,1);
-		JLabel LB_CsWeight				= B100_FrameParts.JLabelSet( 210,255,100,20,"ケース重量:"				,10,1);
-		JLabel LB_PlWeight				= B100_FrameParts.JLabelSet( 210,280,100,20,"パレット重量:"			,10,1);
 		final JFormattedTextField TB_ItemWeight	= B100_FrameParts.JFormattedTextFieldSet(310,205,100,20,"0",11,1,"#,###.##");	//商品重量
 		final JFormattedTextField TB_CtWeight	= B100_FrameParts.JFormattedTextFieldSet(310,230,100,20,"0",11,1,"#,###.##");	//カートン重量
 		final JFormattedTextField TB_CsWeight	= B100_FrameParts.JFormattedTextFieldSet(310,255,100,20,"0",11,1,"#,###.##");	//ケース重量
 		final JFormattedTextField TB_PlWeight	= B100_FrameParts.JFormattedTextFieldSet(310,280,100,20,"0",11,1,"#,###.##");	//パレット重量
 
-		JLabel LB_ItemSize				= B100_FrameParts.JLabelSet( 410,205,100,20,"商品サイズ:"				,10,1);
-		JLabel LB_CtSize				= B100_FrameParts.JLabelSet( 410,230,100,20,"カートンサイズ:"			,10,1);
-		JLabel LB_CsSize				= B100_FrameParts.JLabelSet( 410,255,100,20,"ケースサイズ:"			,10,1);
-		JLabel LB_PlSize				= B100_FrameParts.JLabelSet( 410,280,100,20,"パレットサイズ:"			,10,1);
 		final JFormattedTextField TB_ItemSize	= B100_FrameParts.JFormattedTextFieldSet(510,205,100,20,"0",11,1,"#,###.##");	//商品サイズ
 		final JFormattedTextField TB_CtSize		= B100_FrameParts.JFormattedTextFieldSet(510,230,100,20,"0",11,1,"#,###.##");	//カートンサイズ
 		final JFormattedTextField TB_CsSize		= B100_FrameParts.JFormattedTextFieldSet(510,255,100,20,"0",11,1,"#,###.##");	//ケースサイズ
 		final JFormattedTextField TB_PlSize		= B100_FrameParts.JFormattedTextFieldSet(510,280,100,20,"0",11,1,"#,###.##");	//パレットサイズ
 		
-		JLabel LB_CtName				= B100_FrameParts.JLabelSet( 610,230,100,20,"カートン商品名称:"		,10,1);
-		JLabel LB_CsName				= B100_FrameParts.JLabelSet( 610,255,100,20,"ケース商品名称:"			,10,1);
-		JLabel LB_PlName				= B100_FrameParts.JLabelSet( 610,280,100,20,"パレット商品名称:"		,10,1);
-		final JTextField  TB_CtName		= B100_FrameParts.JTextFieldSet( 710,230,200,20,"",11,0);	//カートン商品名称
-		final JTextField  TB_CsName		= B100_FrameParts.JTextFieldSet( 710,255,200,20,"",11,0);	//ケース商品名称
-		final JTextField  TB_PlName		= B100_FrameParts.JTextFieldSet( 710,280,200,20,"",11,0);	//パレット商品名称
+		final JTextField  TB_CtName					= B100_FrameParts.JTextFieldSet( 710,230,200,20,"",11,0);			//カートン商品名称
+		final JTextField  TB_CsName					= B100_FrameParts.JTextFieldSet( 710,255,200,20,"",11,0);			//ケース商品名称
+		final JTextField  TB_PlName					= B100_FrameParts.JTextFieldSet( 710,280,200,20,"",11,0);			//パレット商品名称
 		
-		JLabel LB_UnitName				= B100_FrameParts.JLabelSet( 910,205,100,20,"商品単位:"				,10,1);
-		JLabel LB_CtUnitName			= B100_FrameParts.JLabelSet( 910,230,100,20,"カートン商品単位:"		,10,1);
-		JLabel LB_CsUnitName			= B100_FrameParts.JLabelSet( 910,255,100,20,"ケース商品単位:"			,10,1);
-		JLabel LB_PlUnitName			= B100_FrameParts.JLabelSet( 910,280,100,20,"パレット商品単位:"		,10,1);
-		final JTextField  TB_UnitName	= B100_FrameParts.JTextFieldSet(1010,205,100,20,"",11,0);	//商品単位
-		final JTextField  TB_CtUnitName	= B100_FrameParts.JTextFieldSet(1010,230,100,20,"",11,0);	//カートン商品単位
-		final JTextField  TB_CsUnitName	= B100_FrameParts.JTextFieldSet(1010,255,100,20,"",11,0);	//ケース商品単位
-		final JTextField  TB_PlUnitName	= B100_FrameParts.JTextFieldSet(1010,280,100,20,"",11,0);	//パレット商品単位
+		final JTextField  TB_UnitName				= B100_FrameParts.JTextFieldSet(1010,205,100,20,"",11,0);			//商品単位
+		final JTextField  TB_CtUnitName				= B100_FrameParts.JTextFieldSet(1010,230,100,20,"",11,0);			//カートン商品単位
+		final JTextField  TB_CsUnitName				= B100_FrameParts.JTextFieldSet(1010,255,100,20,"",11,0);			//ケース商品単位
+		final JTextField  TB_PlUnitName				= B100_FrameParts.JTextFieldSet(1010,280,100,20,"",11,0);			//パレット商品単位
 		
-		JLabel LB_JanCd					= B100_FrameParts.JLabelSet(1110,205,100,20,"JANCD:"					,10,1);
-		JLabel LB_CtJan					= B100_FrameParts.JLabelSet(1110,230,100,20,"カートンバーコード:"		,10,1);
-		JLabel LB_CsJan					= B100_FrameParts.JLabelSet(1110,255,100,20,"ケースバーコード:"		,10,1);
-		JLabel LB_PlJan					= B100_FrameParts.JLabelSet(1110,280,100,20,"パレットバーコード:"		,10,1);
-		final JTextField  TB_JanCd		= B100_FrameParts.JTextFieldSet(1210,205,150,20,"",11,0);	//JANCD
-		final JTextField  TB_CtJan		= B100_FrameParts.JTextFieldSet(1210,230,150,20,"",11,0);	//カートンバーコード
-		final JTextField  TB_CsJan		= B100_FrameParts.JTextFieldSet(1210,255,150,20,"",11,0);	//ケースバーコード
-		final JTextField  TB_PlJan		= B100_FrameParts.JTextFieldSet(1210,280,150,20,"",11,0);	//パレットバーコード
+		final JTextField  TB_JanCd					= B100_FrameParts.JTextFieldSet(1210,205,150,20,"",11,0);			//JANCD
+		final JTextField  TB_CtJan					= B100_FrameParts.JTextFieldSet(1210,230,150,20,"",11,0);			//カートンバーコード
+		final JTextField  TB_CsJan					= B100_FrameParts.JTextFieldSet(1210,255,150,20,"",11,0);			//ケースバーコード
+		final JTextField  TB_PlJan					= B100_FrameParts.JTextFieldSet(1210,280,150,20,"",11,0);			//パレットバーコード
 		
+		final JTextField  TB_Com01					= B100_FrameParts.JTextFieldSet( 110,650,200,20,"",11,0);			//コメント1
+		final JTextField  TB_Com02					= B100_FrameParts.JTextFieldSet( 110,675,200,20,"",11,0);			//コメント2
+		final JTextField  TB_Com03					= B100_FrameParts.JTextFieldSet( 110,700,200,20,"",11,0);			//コメント3
 		
-		JLabel LB_Com01					= B100_FrameParts.JLabelSet(  10,650,100,20,"コメント1:"				,10,1);
-		JLabel LB_Com02					= B100_FrameParts.JLabelSet(  10,675,100,20,"コメント2:"				,10,1);
-		JLabel LB_Com03					= B100_FrameParts.JLabelSet(  10,700,100,20,"コメント3:"				,10,1);
-		final JTextField  TB_Com01		= B100_FrameParts.JTextFieldSet( 110,650,200,20,"",11,0);	//コメント1
-		final JTextField  TB_Com02		= B100_FrameParts.JTextFieldSet( 110,675,200,20,"",11,0);	//コメント2
-		final JTextField  TB_Com03		= B100_FrameParts.JTextFieldSet( 110,700,200,20,"",11,0);	//コメント3
-		
-		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet( 310,650,100,20,"データ登録日時:"			,10,1);
-		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet( 310,675,100,20,"データ更新日時:"			,10,1);
-		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet( 310,700,100,20,"登録者コード:"			,10,1);
-		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet( 310,725,100,20,"更新者コード:"			,10,1);
-		final JTextField  TB_EntryDate	= B100_FrameParts.JTextFieldSet( 410,650,200,20,"",11,0);	//データ登録日時
-		final JTextField  TB_UpdateDate	= B100_FrameParts.JTextFieldSet( 410,675,200,20,"",11,0);	//データ更新日時
-		final JTextField  TB_EntryUser	= B100_FrameParts.JTextFieldSet( 410,700,200,20,"",11,0);	//登録者コード
-		final JTextField  TB_UpdateUser	= B100_FrameParts.JTextFieldSet( 410,725,200,20,"",11,0);	//更新者コード
+		final JTextField  TB_EntryDate				= B100_FrameParts.JTextFieldSet( 410,650,200,20,"",11,0);			//データ登録日時
+		final JTextField  TB_UpdateDate				= B100_FrameParts.JTextFieldSet( 410,675,200,20,"",11,0);			//データ更新日時
+		final JTextField  TB_EntryUser				= B100_FrameParts.JTextFieldSet( 410,700,200,20,"",11,0);			//登録者コード
+		final JTextField  TB_UpdateUser				= B100_FrameParts.JTextFieldSet( 410,725,200,20,"",11,0);			//更新者コード
 		
 		//DB登録用画像パス※表示しません。内部的に使います
-		final JTextField  TB_ItemImageEntryPath01 = B100_FrameParts.JTextFieldSet(	 170,350,250,20,"",11,0);			//画像パス01 
-		final JTextField  TB_ItemImageEntryPath02 = B100_FrameParts.JTextFieldSet(	 430,350,250,20,"",11,0);			//画像パス02 
-		final JTextField  TB_ItemImageEntryPath03 = B100_FrameParts.JTextFieldSet(	 600,350,250,20,"",11,0);			//画像パス03 
-		final JTextField  TB_ItemImageEntryPath04 = B100_FrameParts.JTextFieldSet(	 860,350,250,20,"",11,0);			//画像パス04 
-		final JTextField  TB_ItemImageEntryPath05 = B100_FrameParts.JTextFieldSet(	1120,350,250,20,"",11,0);			//画像パス04 
+		final JTextField  TB_ItemImageEntryPath01 	= B100_FrameParts.JTextFieldSet( 170,350,250,20,"",11,0);			//画像パス01 
+		final JTextField  TB_ItemImageEntryPath02 	= B100_FrameParts.JTextFieldSet( 430,350,250,20,"",11,0);			//画像パス02 
+		final JTextField  TB_ItemImageEntryPath03 	= B100_FrameParts.JTextFieldSet( 600,350,250,20,"",11,0);			//画像パス03 
+		final JTextField  TB_ItemImageEntryPath04 	= B100_FrameParts.JTextFieldSet( 860,350,250,20,"",11,0);			//画像パス04 
+		final JTextField  TB_ItemImageEntryPath05 	= B100_FrameParts.JTextFieldSet(1120,350,250,20,"",11,0);			//画像パス04 
 		
 		
 		JButton ItemImage01Btn = B100_FrameParts.BtnSet(			 				  80,325, 80,20,"画像01選択",9);	//画像選択ボタン01
@@ -301,10 +312,10 @@ public class WM100_ItemMst_01_RenewAndCreate{
 				TB_CsName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCsName]);					//ケース商品名称
 				TB_PlName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColPlName]);					//パレット商品名称
 				TB_UnitName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColUnitName]);				//商品単位
-				TB_CtUnitName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCtUnitName]);		//カートン商品単位
-				TB_CsUnitName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCsUnitName]);		//ケース商品単位
-				TB_PlUnitName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColPlUnitName]);		//パレット商品単位
-				TB_ItemWeight.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemWeight]);		//商品重量
+				TB_CtUnitName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCtUnitName]);			//カートン商品単位
+				TB_CsUnitName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCsUnitName]);			//ケース商品単位
+				TB_PlUnitName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColPlUnitName]);			//パレット商品単位
+				TB_ItemWeight.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemWeight]);			//商品重量
 				TB_CtWeight.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCtWeight]);				//カートン重量
 				TB_CsWeight.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCsWeight]);				//ケース重量
 				TB_PlWeight.setText(""+ItemMstRt[0][M100_ItemMstRt.ColPlWeight]);				//パレット重量
@@ -314,12 +325,12 @@ public class WM100_ItemMst_01_RenewAndCreate{
 				TB_PlSize.setText(""+ItemMstRt[0][M100_ItemMstRt.ColPlSize]);					//パレットサイズ
 				TB_RecomendLoc.setText(""+ItemMstRt[0][M100_ItemMstRt.ColRecomendLoc]);		//推奨ロケ
 				TB_ItemMDNo.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemMDNo]);				//商品モデル番号（型番）
-				TB_CategoryCd.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCategoryCd]);		//商品カテゴリCD
-				TB_CategoryName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCategoryName]);	//商品カテゴリ名
+				TB_CategoryCd.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCategoryCd]);			//商品カテゴリCD
+				TB_CategoryName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCategoryName]);		//商品カテゴリ名
 				TB_ItemColorCd.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemColorCd]);		//商品カラーコード
 				TB_ItemColorName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemColorName]);	//商品カラー名
-				TB_ItemSizeCd.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemSizeCd]);		//商品サイズコード
-				TB_ItemSizeName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemSizeName]);	//商品サイズ名
+				TB_ItemSizeCd.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemSizeCd]);			//商品サイズコード
+				TB_ItemSizeName.setText(""+ItemMstRt[0][M100_ItemMstRt.ColItemSizeName]);		//商品サイズ名
 				TB_Com01.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCom01]);					//コメント1
 				TB_Com02.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCom02]);					//コメント2
 				TB_Com03.setText(""+ItemMstRt[0][M100_ItemMstRt.ColCom03]);					//コメント3
@@ -329,9 +340,9 @@ public class WM100_ItemMst_01_RenewAndCreate{
 					}
 				}
 				TB_ExpDateHowLong.setText(""+ItemMstRt[0][M100_ItemMstRt.ColExpDateHowLong]);	//賞味期限日数
-				TB_EntryDate.setText(""+ItemMstRt[0][M100_ItemMstRt.ColEntryDate]);				//データ登録日時
+				TB_EntryDate.setText(""+ItemMstRt[0][M100_ItemMstRt.ColEntryDate]);			//データ登録日時
 				TB_UpdateDate.setText(""+ItemMstRt[0][M100_ItemMstRt.ColUpdateDate]);			//データ更新日時
-				TB_EntryUser.setText(""+ItemMstRt[0][M100_ItemMstRt.ColEntryUser]);				//登録者コード
+				TB_EntryUser.setText(""+ItemMstRt[0][M100_ItemMstRt.ColEntryUser]);			//登録者コード
 				TB_UpdateUser.setText(""+ItemMstRt[0][M100_ItemMstRt.ColUpdateUser]);			//更新者コード
 				
 				for(int i=0;i<B100_DefaultVariable.DelList[1].length;i++) {

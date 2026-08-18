@@ -1,6 +1,8 @@
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.net.URISyntaxException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,10 +31,10 @@ public class A00000_Main{
 	DefaultMySqlPass = "MysqlUserPassWord";
 	DefaultSshHostPort = 22;
 	DefaultMySqlSverPort = 3306;
-	MySqlDefaultSchemaWANKO = "WANKOscjema";
-	MySqlDefaultSchemaNYANKO = "NYANKOscjema";
-	MySqlDefaultSchemaPOST = "POSTscjema";
-	MySqlDefaultSchemaOLD = "OLDscjema";
+	MySqlDefaultSchemaWANKO = "WANKOsckema";
+	MySqlDefaultSchemaNYANKO = "NYANKOsckema";
+	MySqlDefaultSchemaPOST = "POSTsckema";
+	MySqlDefaultSchemaOLD = "OLDsckema";
 	PasswordExpireDays = 180;
 	FileFldPth = "C:\MIZUNO\WMS";
 	FontFilePath = "C:\MIZUNO\FONT\meiryo.ttc"
@@ -64,10 +66,10 @@ public class A00000_Main{
 	//同じスキーマに揃えても動くと思います（未検証）
 	//但しOLDだけは古いデータ退避用なので別スキーマの方が良いと思います
 	//中身のテーブルは後ほど自動生成します
-	public static String MySqlDefaultSchemaWANKO = "WANKOscjema";		//在庫管理系データベース
-	public static String MySqlDefaultSchemaNYANKO = "NYANKOscjema";		//配送管理系データベース
-	public static String MySqlDefaultSchemaPOST = "POSTscjema";			//郵便番号データベース
-	public static String MySqlDefaultSchemaOLD = "OLDscjema";			//古いトランザクションデータバックアップ先
+	public static String MySqlDefaultSchemaWANKO = "WANKOschema";		//在庫管理系データベース
+	public static String MySqlDefaultSchemaNYANKO = "NYANKOschema";		//配送管理系データベース
+	public static String MySqlDefaultSchemaPOST = "POSTschema";			//郵便番号データベース
+	public static String MySqlDefaultSchemaOLD = "OLDschema";			//古いトランザクションデータバックアップ先
 	
 	public static int Div = 100;
 	public static int Mul = 100;
@@ -682,6 +684,37 @@ public class A00000_Main{
     		
     	}
     }
+    
+    //現在のフォルダ（実効環境を置いた場所）返却
+  	public static String NowFldGet() {
+  		String Rt = "";
+  		try {
+  	        File jarFile = new File(
+  	        		A00000_Main.class
+  	                .getProtectionDomain()
+  	                .getCodeSource()
+  	                .getLocation()
+  	                .toURI()
+  	        );
+  	        
+  	      
+  	        JOptionPane.showMessageDialog(null,"NowIn02:"+ jarFile);
+  	        // JAR実行なら getLocation() はJARファイル自身を指す
+  	        if (jarFile.isFile()) {
+  	        	Rt = jarFile.getParentFile().getAbsolutePath();
+  	            JOptionPane.showMessageDialog(null,"NowIn03:"+ jarFile);
+  	        }
+
+  	        // Eclipse等から実行した場合は classes/bin フォルダ等
+  	        Rt = jarFile.getAbsolutePath();
+
+  	    } catch (URISyntaxException e) {
+  	        e.printStackTrace();
+  	    }
+  		return Rt;
+  	}
+    
+    
     
     public static void EndPg(){
     	//データベース接続・SSH接続切断→終了

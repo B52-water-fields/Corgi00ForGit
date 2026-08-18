@@ -29,16 +29,18 @@ public class WM100_LocationMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ClCd			= B100_FrameParts.JLabelSet(  0, 50,100,20,"荷主コード:"		,11,1);
-		JLabel LB_WhCd			= B100_FrameParts.JLabelSet(  0, 75,100,20,"倉庫コード:"		,11,1);
-		JLabel LB_Loc			= B100_FrameParts.JLabelSet(  0,100,100,20,"ロケーション:"	,11,1);
-		JLabel LB_LocName		= B100_FrameParts.JLabelSet(  0,125,100,20,"ロケーション名:"	,11,1);
-		JLabel LB_Type			= B100_FrameParts.JLabelSet(  0,150,100,20,"ロケタイプ:"		,11,1);
+		Object[][] RtLocationMstRt			= M100_LocationMstRt.RtLocationMstRt();
 		
-		JLabel LB_EntryDate		= B100_FrameParts.JLabelSet(  0,200,100,20,"登録日:"	,11,1);
-		JLabel LB_UpdateDate	= B100_FrameParts.JLabelSet(  0,225,100,20,"更新日:"	,11,1);
-		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(  0,250,100,20,"登録者:"	,11,1);
-		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(  0,275,100,20,"更新者:"	,11,1);
+		JLabel LB_ClCd			= B100_FrameParts.JLabelSet(  0, 50,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColClCd][3]			+":"	,11,1);
+		JLabel LB_WhCd			= B100_FrameParts.JLabelSet(  0, 75,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColWhCd][3]			+":"	,11,1);
+		JLabel LB_Loc			= B100_FrameParts.JLabelSet(  0,100,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColLoc][3]			+":"	,11,1);
+		JLabel LB_LocName		= B100_FrameParts.JLabelSet(  0,125,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColLocName][3]		+":"	,11,1);
+		JLabel LB_Type			= B100_FrameParts.JLabelSet(  0,150,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColType][3]			+":"	,11,1);
+		
+		JLabel LB_EntryDate		= B100_FrameParts.JLabelSet(  0,200,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColEntryDate][3]	+":"	,11,1);
+		JLabel LB_UpdateDate	= B100_FrameParts.JLabelSet(  0,225,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColUpdateDate][3]	+":"	,11,1);
+		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(  0,250,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColEntryUser][3]	+":"	,11,1);
+		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(  0,275,100,20,(String)RtLocationMstRt[M100_LocationMstRt.ColUpdateUser][3]	+":"	,11,1);
 		
 		final JComboBox   TB_ClCd		= B100_FrameParts.JComboBoxSet( 100, 50,200,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
 		final JComboBox   TB_WhCd		= B100_FrameParts.JComboBoxSet( 100, 75,200,20,B100_DefaultVariable.WhList[0],11);	//倉庫コード

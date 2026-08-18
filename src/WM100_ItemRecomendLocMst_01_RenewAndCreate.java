@@ -45,25 +45,27 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		JButton exit_btn 	= B100_FrameParts.ExitBtn();
 		JButton entry_btn 	= B100_FrameParts.EntryBtn();
 		
-		JLabel LB_ClCd					= B100_FrameParts.JLabelSet(	   0, 50,130,20,"荷主コード:"		,10,1);
-		JLabel LB_ClWh					= B100_FrameParts.JLabelSet(	   0, 75,130,20,"担当倉庫コード:"	,10,1);
-		JLabel LB_ItemCd				= B100_FrameParts.JLabelSet(	   0,100,130,20,"商品コード:"		,10,1);
-		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(	   0,125,130,20,"商品表記名:"		,10,1);
-		JLabel LB_RecomendLoc			= B100_FrameParts.JLabelSet(	   0,150,130,20,"推奨ロケ:"			,10,1);
-		JLabel LB_LocName				= B100_FrameParts.JLabelSet(	   0,175,130,20,"ロケーション名:"	,10,1);
-		JLabel LB_Type					= B100_FrameParts.JLabelSet(	   0,200,130,20,"ロケタイプ:"		,10,1);
-		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(	   0,225,130,20,"データ登録日時:"	,10,1);
-		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(	   0,250,130,20,"データ更新日時:"	,10,1);
-		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(	   0,275,130,20,"登録者:"			,10,1);
-		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(	   0,300,130,20,"更新者:"			,10,1);
-		JLabel LB_ItemSubRecomendLoc	= B100_FrameParts.JLabelSet(	   0,325,130,20,"商品サブマスタ推奨ロケ:"	,10,1);
+		Object[][] RtItemRecomendLocMstRt		= M100_ItemRecomendLocMstRt.RtItemRecomendLocMstRt();
+		
+		JLabel LB_ClCd					= B100_FrameParts.JLabelSet(	   0, 50,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColClCd][3]					+":"	,10,1);
+		JLabel LB_ClWh					= B100_FrameParts.JLabelSet(	   0, 75,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColClWh][3]					+":"	,10,1);
+		JLabel LB_ItemCd				= B100_FrameParts.JLabelSet(	   0,100,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColItemCd][3]					+":"	,10,1);
+		JLabel LB_ItemName01			= B100_FrameParts.JLabelSet(	   0,125,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColItemName01][3]			+":"	,10,1);
+		JLabel LB_RecomendLoc			= B100_FrameParts.JLabelSet(	   0,150,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColRecomendLoc][3]			+":"	,10,1);
+		JLabel LB_LocName				= B100_FrameParts.JLabelSet(	   0,175,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColLocName][3]				+":"	,10,1);
+		JLabel LB_Type					= B100_FrameParts.JLabelSet(	   0,200,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColType][3]					+":"	,10,1);
+		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(	   0,225,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColEntryDate][3]				+":"	,10,1);
+		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(	   0,250,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColUpdateDate][3]			+":"	,10,1);
+		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(	   0,275,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColEntryUser][3]				+":"	,10,1);
+		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(	   0,300,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColUpdateUser][3]			+":"	,10,1);
+		JLabel LB_ItemSubRecomendLoc	= B100_FrameParts.JLabelSet(	   0,325,130,20,(String)RtItemRecomendLocMstRt[M100_ItemRecomendLocMstRt.ColItemSubRecomendLoc][3]	+":"	,10,1);
 		
 		final JComboBox   TB_ClCd				= B100_FrameParts.JComboBoxSet( 		130, 50,200,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
 		final JComboBox   TB_ClWh				= B100_FrameParts.JComboBoxSet( 		130, 75,200,20,B100_DefaultVariable.WhList[0],11);	//担当倉庫コード
-		final JTextField  TB_ItemCd				= B100_FrameParts.JTextFieldSet( 	130,100,100,20,TgtItemCd	,11,0);	//商品コード
-		final JTextField  TB_ItemName01			= B100_FrameParts.JTextFieldSet( 	130,125,200,20,""			,11,0);	//商品表記名
+		final JTextField  TB_ItemCd				= B100_FrameParts.JTextFieldSet( 		130,100,100,20,TgtItemCd	,11,0);	//商品コード
+		final JTextField  TB_ItemName01			= B100_FrameParts.JTextFieldSet( 		130,125,200,20,""			,11,0);	//商品表記名
 		final JTextField  TB_RecomendLoc		= B100_FrameParts.JTextFieldSet(		130,150,100,20,""			,11,0);	//推奨ロケ
-		final JTextField  TB_LocName			= B100_FrameParts.JTextFieldSet( 	130,175,200,20,""			,11,0);	//ロケーション名
+		final JTextField  TB_LocName			= B100_FrameParts.JTextFieldSet( 		130,175,200,20,""			,11,0);	//ロケーション名
 		final JComboBox   TB_Type				= B100_FrameParts.JComboBoxSet(		130,200,100,20,B100_DefaultVariable.LocType[0],11);	//ロケタイプ
 		final JTextField  TB_EntryDate			= B100_FrameParts.JTextFieldSet(		130,225,200,20,"",11,0);	//データ登録日時
 		final JTextField  TB_UpdateDate			= B100_FrameParts.JTextFieldSet(		130,250,200,20,"",11,0);	//データ更新日時
@@ -113,7 +115,7 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 				String GetItemName01	= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColItemName01];	//商品表記名
 				String GetRecomendLoc	= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColRecomendLoc];	//推奨ロケ
 				String GetLocName		= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColLocName];		//ロケーション名
-				int    GetType			= (int)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColType];			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				int    GetType			= (int)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColType];				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 				String GetEntryDate		= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColEntryDate];	//データ登録日時
 				String GetUpdateDate	= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColUpdateDate];	//データ更新日時
 				String GetEntryUser		= (String)ItemRecomendLocMstRt[0][M100_ItemRecomendLocMstRt.ColEntryUser];	//登録者
@@ -193,8 +195,10 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		JButton ItemSearchExit_btn 			= B100_FrameParts.ExitBtn();
 		JButton ItemSearchEntry_btn 		= B100_FrameParts.EntryBtn();
 		
-		JLabel LB_SearchItemCd  			= B100_FrameParts.JLabelSet(		  0, 50,130,20,"商品コード:"			,11,1);
-		JLabel LB_SearchItemName  			= B100_FrameParts.JLabelSet(		  0, 75,130,20,"商品名:"				,11,1);
+		Object[][] ItemMstDefinitionRt		= M100_ItemMstRt.DefinitionRt();
+		
+		JLabel LB_SearchItemCd  			= B100_FrameParts.JLabelSet(		  0, 50,130,20,(String)ItemMstDefinitionRt[M100_ItemMstRt.ColSearchItemCd][5]		+":"	,11,1);
+		JLabel LB_SearchItemName  			= B100_FrameParts.JLabelSet(		  0, 75,130,20,(String)ItemMstDefinitionRt[M100_ItemMstRt.ColSearchItemName][5]	+":"	,11,1);
 		
 		final JTextField TB_SearchItemCd  	= B100_FrameParts.JTextFieldSet(	130, 50,100,20,""						,11,0);	//商品コード
 		final JTextField TB_SearchItemName  = B100_FrameParts.JTextFieldSet(	130, 75,100,20,""						,11,0);	//商品名
@@ -264,16 +268,18 @@ public class WM100_ItemRecomendLocMst_01_RenewAndCreate{
 		JButton LocSearchExit_btn 			= B100_FrameParts.ExitBtn();
 		JButton LocSearchEntry_btn 			= B100_FrameParts.EntryBtn();
 		
-		JLabel LB_SearchLoc					= B100_FrameParts.JLabelSet(  0, 50,100,20,"ロケーション:"	,11,1);
-		JLabel LB_SearchLocName				= B100_FrameParts.JLabelSet(  0, 75,100,20,"ロケーション名:"	,11,1);
-		JLabel LB_SearchType				= B100_FrameParts.JLabelSet(  0,100,100,20,"ロケタイプ:"		,11,1);
+		Object[][] LocationMstDefinitionRt	= M100_LocationMstRt.DefinitionRt();
+		
+		JLabel LB_SearchLoc					= B100_FrameParts.JLabelSet(  0, 50,100,20,(String)LocationMstDefinitionRt[M100_LocationMstRt.ColSearchLoc][5]		+":"	,11,1);
+		JLabel LB_SearchLocName				= B100_FrameParts.JLabelSet(  0, 75,100,20,(String)LocationMstDefinitionRt[M100_LocationMstRt.ColSearchLocName][5]	+":"	,11,1);
+		JLabel LB_SearchType				= B100_FrameParts.JLabelSet(  0,100,100,20,(String)LocationMstDefinitionRt[M100_LocationMstRt.ColSearchType][5]		+":"	,11,1);
 		
 		final JTextField  TB_SearchLoc		= B100_FrameParts.JTextFieldSet(100, 50,100,20,"",11,0);										//ロケーション
 		final JTextField  TB_SearchLocName	= B100_FrameParts.JTextFieldSet(100, 75,100,20,"",11,0);										//ロケーション名
 		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 100,100,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
 		
 		JLabel LB2_SearchLoc				= B100_FrameParts.JLabelSet(  200, 50,100,20,B100_DefaultVariable.SearchPrefix	,11,0);
-		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  200, 75,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchLocName			= B100_FrameParts.JLabelSet(  200, 75,100,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		LocSearch_fm.add(LocSearchUserinfo);
 		LocSearch_fm.add(LocSearchExit_btn);

@@ -139,6 +139,8 @@ public class B100_DefaultVariable{
 	static final String[][] SearchDeliveryTypeNoList= {{"未指定","01","02","03","04","05"},{"","1","2","3","4","5"},{"","01","02","03","04","05"}};	//検索条件：運送タイプNo
 	static final String[][] DeliveryTypeNoList		= {{"01","02","03","04","05"},{"1","2","3","4","5"},{"01","02","03","04","05"}};				//運送タイプNo
 	
+	static final String   MdeChange 					= "モード切替";
+	
 	/*
 	====================================================================
 	↑設定確認済み

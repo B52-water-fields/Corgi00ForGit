@@ -440,7 +440,7 @@ public class T100_OkuriHdRt{
 	static final int ColClGpCD					= 100;	//荷主グループCD
 	static final int ColCLGpName01			= 101;	//荷主グループ標記名
 	
-	//戻り値カラム
+	//検索値カラム
 	static final int ColSearchInvoiceWHCD			=   0;
 	static final int ColSearchClGpCD					=   1;
 	static final int ColSearchClCd					=   2;

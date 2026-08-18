@@ -42,11 +42,13 @@ public class WM100_LocationMst_00_Search{
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		
-		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(  0, 25,100,20,"荷主コード:"		,11,1);
-		JLabel LB_SearchWhCd		= B100_FrameParts.JLabelSet(  0, 50,100,20,"倉庫コード:"		,11,1);
-		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(  0, 75,100,20,"ロケーション:"		,11,1);
-		JLabel LB_SearchLocName		= B100_FrameParts.JLabelSet(  0,100,100,20,"ロケーション名:"	,11,1);
-		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(  0,125,100,20,"ロケタイプ:"		,11,1);
+		Object[][] DefinitionRt			= M100_LocationMstRt.DefinitionRt();
+		
+		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(  0, 25,100,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchClCd][5]		+":"	,11,1);
+		JLabel LB_SearchWhCd		= B100_FrameParts.JLabelSet(  0, 50,100,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchWhCd][5]		+":"	,11,1);
+		JLabel LB_SearchLoc			= B100_FrameParts.JLabelSet(  0, 75,100,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchLoc][5]		+":"	,11,1);
+		JLabel LB_SearchLocName		= B100_FrameParts.JLabelSet(  0,100,100,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchLocName][5]	+":"	,11,1);
+		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(  0,125,100,20,(String)DefinitionRt[M100_LocationMstRt.ColSearchType][5]		+":"	,11,1);
 		
 		final JComboBox   TB_SearchClCd		= B100_FrameParts.JComboBoxSet( 100, 25,200,20,B100_DefaultVariable.SearchClList[0],11);	//荷主コード
 		final JComboBox   TB_SearchWhCd		= B100_FrameParts.JComboBoxSet( 100, 50,200,20,B100_DefaultVariable.SearchWhList[0],11);	//倉庫コード
@@ -55,7 +57,7 @@ public class WM100_LocationMst_00_Search{
 		final JComboBox   TB_SearchType		= B100_FrameParts.JComboBoxSet( 100,125,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
 		
 		JLabel LB2_SearchLoc		= B100_FrameParts.JLabelSet(  200, 75,100,20,B100_DefaultVariable.SearchPrefix	,11,0);
-		JLabel LB2_SearchLocName	= B100_FrameParts.JLabelSet(  200,100,100,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchLocName	= B100_FrameParts.JLabelSet(  200,100,100,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		for(int i=0;i<B100_DefaultVariable.SearchClList[1].length;i++) {
 			if(A00000_Main.ClCd.equals(B100_DefaultVariable.SearchClList[1][i])) {
@@ -141,7 +143,7 @@ public class WM100_LocationMst_00_Search{
 		main_fm.add(LB_RenewBtn);
 		
 		//修正ボタン
-		JButton RenewBtn = B100_FrameParts.BtnSet(		130,660,100,20,"修正",11);
+		JButton RenewBtn = B100_FrameParts.BtnSet(			130,660,100,20,"修正",11);
 		main_fm.add(RenewBtn);
 		
 		//新規登録ボタン
@@ -149,7 +151,7 @@ public class WM100_LocationMst_00_Search{
 		main_fm.add(CreateBtn);
 		
 		//Excel出力ボタン
-		JButton ExcelBtn = B100_FrameParts.BtnSet(		370,660,100,20,"Excel出力",11);
+		JButton ExcelBtn = B100_FrameParts.BtnSet(			370,660,100,20,"Excel出力",11);
 		main_fm.add(ExcelBtn);
 		
 		//Excel取込ボタン

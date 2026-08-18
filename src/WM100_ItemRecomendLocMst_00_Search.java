@@ -42,23 +42,25 @@ public class WM100_ItemRecomendLocMst_00_Search{
 		
 		PN_Search.add(PN_SearchLabel);
 		
+		Object[][] DefinitionRt		= M100_ItemRecomendLocMstRt.DefinitionRt();
+		
 		//検索条件
-		JLabel LB_SearchClWh		= B100_FrameParts.JLabelSet(	  0, 25,130,20,"担当倉庫コード:"		,11,1);
-		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(	  0, 50,130,20,"荷主コード:"			,11,1);
-		JLabel LB_SearchClGpCD		= B100_FrameParts.JLabelSet(	  0, 75,130,20,"荷主グループCD:"		,11,1);
-		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	  0,100,130,20,"商品コード:"			,11,1);
-		JLabel LB_SearchItemName01	= B100_FrameParts.JLabelSet(	  0,125,130,20,"商品表記名:"				,11,1);
-		JLabel LB_SearchRecomendLoc	= B100_FrameParts.JLabelSet(	  0,150,130,20,"推奨ロケ:"				,11,1);
-		JLabel LB_SearchLocName		= B100_FrameParts.JLabelSet(	  0,175,130,20,"ロケーション名:"		,11,1);
-		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(	  0,200,130,20,"ロケタイプ:"			,11,1);
+		JLabel LB_SearchClWh		= B100_FrameParts.JLabelSet(	  0, 25,130,20,(String)DefinitionRt[M100_ItemRecomendLocMstRt.ColSearchClWh][5]			+":"	,11,1);
+		JLabel LB_SearchClCd		= B100_FrameParts.JLabelSet(	  0, 50,130,20,(String)DefinitionRt[M100_ItemRecomendLocMstRt.ColSearchClCd][5]			+":"	,11,1);
+		JLabel LB_SearchClGpCD		= B100_FrameParts.JLabelSet(	  0, 75,130,20,(String)DefinitionRt[M100_ItemRecomendLocMstRt.ColSearchClGpCD][5]			+":"	,11,1);
+		JLabel LB_SearchItemCd		= B100_FrameParts.JLabelSet(	  0,100,130,20,(String)DefinitionRt[M100_ItemRecomendLocMstRt.ColSearchItemCd][5]			+":"	,11,1);
+		JLabel LB_SearchItemName01	= B100_FrameParts.JLabelSet(	  0,125,130,20,(String)DefinitionRt[M100_ItemRecomendLocMstRt.ColSearchItemName01][5]	+":"	,11,1);
+		JLabel LB_SearchRecomendLoc	= B100_FrameParts.JLabelSet(	  0,150,130,20,(String)DefinitionRt[M100_ItemRecomendLocMstRt.ColSearchRecomendLoc][5]	+":"	,11,1);
+		JLabel LB_SearchLocName		= B100_FrameParts.JLabelSet(	  0,175,130,20,(String)DefinitionRt[M100_ItemRecomendLocMstRt.ColSearchLocName][5]		+":"	,11,1);
+		JLabel LB_SearchType		= B100_FrameParts.JLabelSet(	  0,200,130,20,(String)DefinitionRt[M100_ItemRecomendLocMstRt.ColSearchType][5]			+":"	,11,1);
 		
 		final JComboBox   TB_SearchClWh			= B100_FrameParts.JComboBoxSet(	130, 25,250,20,B100_DefaultVariable.SearchWhList[0],11);		//担当倉庫コード
 		final JComboBox   TB_SearchClCd			= B100_FrameParts.JComboBoxSet(	130, 50,250,20,B100_DefaultVariable.SearchClList[0],11);		//荷主CD
 		final JComboBox   TB_SearchClGpCD		= B100_FrameParts.JComboBoxSet(	130, 75,250,20,B100_DefaultVariable.SearchClGpList[0],11);	//荷主グループCD
-		final JTextField  TB_SearchItemCd		= B100_FrameParts.JTextFieldSet( 130,100,100,20,"",11,0);	//商品コード
-		final JTextField  TB_SearchItemName01	= B100_FrameParts.JTextFieldSet( 130,125,100,20,"",11,0);	//商品表記名
-		final JTextField  TB_SearchRecomendLoc	= B100_FrameParts.JTextFieldSet( 130,150,100,20,"",11,0);	//推奨ロケ
-		final JTextField  TB_SearchLocName		= B100_FrameParts.JTextFieldSet( 130,175,100,20,"",11,0);	//ロケーション名
+		final JTextField  TB_SearchItemCd		= B100_FrameParts.JTextFieldSet( 	130,100,100,20,"",11,0);	//商品コード
+		final JTextField  TB_SearchItemName01	= B100_FrameParts.JTextFieldSet( 	130,125,100,20,"",11,0);	//商品表記名
+		final JTextField  TB_SearchRecomendLoc	= B100_FrameParts.JTextFieldSet( 	130,150,100,20,"",11,0);	//推奨ロケ
+		final JTextField  TB_SearchLocName		= B100_FrameParts.JTextFieldSet( 	130,175,100,20,"",11,0);	//ロケーション名
 		final JComboBox   TB_SearchType			= B100_FrameParts.JComboBoxSet(	130,200,100,20,B100_DefaultVariable.SearchLocType[0],11);	//ロケタイプ
 		
 		JLabel LB2_SearchItemCd			= B100_FrameParts.JLabelSet(	230,100,130,20,B100_DefaultVariable.SearchExact		,11,0);
