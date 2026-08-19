@@ -238,7 +238,7 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e) {
-			
+				Object[] RT = WT200_OkuriMsSearchSubFm.OkuriMsSearchSubFm(0,0,A00000_Main.ClWh,A00000_Main.ClCd,"","SP");
 			
 			}
 		});

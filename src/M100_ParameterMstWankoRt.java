@@ -165,37 +165,37 @@ public class M100_ParameterMstWankoRt{
 	
 	public static Object[][] RtParameterMstWankoRt(){
 		Object[][] RtParameterMstWankoRt= {
-					 {"ClWh"		,ColClWh			,"String"	,"担当倉庫CD"				,"Key"}
-					,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"				,"Key"}
-					,{"ClCd"		,ColClCd			,"String"	,"荷主コード"				,"Key"}
-					,{"CLName01"	,ColCLName01		,"String"	,"荷主名"					,""}
-					,{"ParaCd"		,ColParaCd			,"String"	,"パラメータCD"				,""}
-					,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"Seq"						,""}
-					,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"				,""}
-					,{"ParaTxt01"	,ColParaTxt01		,"String"	,"パラメータテキスト項目01"	,""}
-					,{"ParaTxt02"	,ColParaTxt02		,"String"	,"パラメータテキスト項目02"	,""}
-					,{"ParaTxt03"	,ColParaTxt03		,"String"	,"パラメータテキスト項目03"	,""}
-					,{"ParaTxt04"	,ColParaTxt04		,"String"	,"パラメータテキスト項目04"	,""}
-					,{"ParaTxt05"	,ColParaTxt05		,"String"	,"パラメータテキスト項目05"	,""}
-					,{"ParaTxt06"	,ColParaTxt06		,"String"	,"パラメータテキスト項目06"	,""}
-					,{"ParaTxt07"	,ColParaTxt07		,"String"	,"パラメータテキスト項目07"	,""}
-					,{"ParaTxt08"	,ColParaTxt08		,"String"	,"パラメータテキスト項目08"	,""}
-					,{"ParaTxt09"	,ColParaTxt09		,"String"	,"パラメータテキスト項目09"	,""}
-					,{"ParaTxt10"	,ColParaTxt10		,"String"	,"パラメータテキスト項目10"	,""}
-					,{"ParaInt01"	,ColParaInt01		,"int"		,"パラメータ数値項目01"		,""}
-					,{"ParaInt02"	,ColParaInt02		,"int"		,"パラメータ数値項目02"		,""}
-					,{"ParaInt03"	,ColParaInt03		,"int"		,"パラメータ数値項目03"		,""}
-					,{"ParaInt04"	,ColParaInt04		,"int"		,"パラメータ数値項目04"		,""}
-					,{"ParaInt05"	,ColParaInt05		,"int"		,"パラメータ数値項目05"		,""}
-					,{"ParaInt06"	,ColParaInt06		,"int"		,"パラメータ数値項目06"		,""}
-					,{"ParaInt07"	,ColParaInt07		,"int"		,"パラメータ数値項目07"		,""}
-					,{"ParaInt08"	,ColParaInt08		,"int"		,"パラメータ数値項目08"		,""}
-					,{"ParaInt09"	,ColParaInt09		,"int"		,"パラメータ数値項目09"		,""}
-					,{"ParaInt10"	,ColParaInt10		,"int"		,"パラメータ数値項目10"		,""}
-					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"					,""}
-					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"					,""}
-					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"					,""}
-					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"					,""}
+					 {"ClWh"		,ColClWh			,"String"	,"担当倉庫CD"			,"Key"}
+					,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"			,"Key"}
+					,{"ClCd"		,ColClCd			,"String"	,"荷主コード"			,"Key"}
+					,{"CLName01"	,ColCLName01		,"String"	,"荷主名"				,""}
+					,{"ParaCd"		,ColParaCd			,"String"	,"パラメータCD"			,""}
+					,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"Seq"					,""}
+					,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"			,""}
+					,{"ParaTxt01"	,ColParaTxt01		,"String"	,"テキスト項目01"		,""}
+					,{"ParaTxt02"	,ColParaTxt02		,"String"	,"テキスト項目02"		,""}
+					,{"ParaTxt03"	,ColParaTxt03		,"String"	,"テキスト項目03"		,""}
+					,{"ParaTxt04"	,ColParaTxt04		,"String"	,"テキスト項目04"		,""}
+					,{"ParaTxt05"	,ColParaTxt05		,"String"	,"テキスト項目05"		,""}
+					,{"ParaTxt06"	,ColParaTxt06		,"String"	,"テキスト項目06"		,""}
+					,{"ParaTxt07"	,ColParaTxt07		,"String"	,"テキスト項目07"		,""}
+					,{"ParaTxt08"	,ColParaTxt08		,"String"	,"テキスト項目08"		,""}
+					,{"ParaTxt09"	,ColParaTxt09		,"String"	,"テキスト項目09"		,""}
+					,{"ParaTxt10"	,ColParaTxt10		,"String"	,"テキスト項目10"		,""}
+					,{"ParaInt01"	,ColParaInt01		,"int"		,"数値項目01"			,""}
+					,{"ParaInt02"	,ColParaInt02		,"int"		,"数値項目02"			,""}
+					,{"ParaInt03"	,ColParaInt03		,"int"		,"数値項目03"			,""}
+					,{"ParaInt04"	,ColParaInt04		,"int"		,"数値項目04"			,""}
+					,{"ParaInt05"	,ColParaInt05		,"int"		,"数値項目05"			,""}
+					,{"ParaInt06"	,ColParaInt06		,"int"		,"数値項目06"			,""}
+					,{"ParaInt07"	,ColParaInt07		,"int"		,"数値項目07"			,""}
+					,{"ParaInt08"	,ColParaInt08		,"int"		,"数値項目08"			,""}
+					,{"ParaInt09"	,ColParaInt09		,"int"		,"数値項目09"			,""}
+					,{"ParaInt10"	,ColParaInt10		,"int"		,"数値項目10"			,""}
+					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"				,""}
+					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"				,""}
+					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"				,""}
+					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"				,""}
 					};
 		
 		RtParameterMstWankoRt = B100_LanguageControl.RtControl(RtParameterMstWankoRt);
@@ -337,43 +337,43 @@ public class M100_ParameterMstWankoRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"		,ColSearchParaCd			,""											,"パラメータコード"				,""}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaCdSeqStr	,""											,"ナンバリング最小"				,""}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaCdSeqEnd	,""											,"ナンバリング最大"				,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaName		,""											,"パラメータ名"					,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt01		,""											,"パラメータテキスト項目01"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt02		,""											,"パラメータテキスト項目02"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt03		,""											,"パラメータテキスト項目03"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt04		,""											,"パラメータテキスト項目04"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt05		,""											,"パラメータテキスト項目05"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt06		,""											,"パラメータテキスト項目06"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt07		,""											,"パラメータテキスト項目07"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt08		,""											,"パラメータテキスト項目08"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt09		,""											,"パラメータテキスト項目09"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxt10		,""											,"パラメータテキスト項目10"		,""}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt01Str	,""											,"パラメータ数値項目01"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt02Str	,""											,"パラメータ数値項目02"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt03Str	,""											,"パラメータ数値項目03"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt04Str	,""											,"パラメータ数値項目04"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt05Str	,""											,"パラメータ数値項目05"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt06Str	,""											,"パラメータ数値項目06"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt07Str	,""											,"パラメータ数値項目07"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt08Str	,""											,"パラメータ数値項目08"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt09Str	,""											,"パラメータ数値項目09"			,"最小"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt10Str	,""											,"パラメータ数値項目10"			,"最小"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt01End	,""											,"パラメータ数値項目01"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt02End	,""											,"パラメータ数値項目02"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt03End	,""											,"パラメータ数値項目03"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt04End	,""											,"パラメータ数値項目04"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt05End	,""											,"パラメータ数値項目05"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt06End	,""											,"パラメータ数値項目06"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt07End	,""											,"パラメータ数値項目07"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt08End	,""											,"パラメータ数値項目08"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt09End	,""											,"パラメータ数値項目09"			,"最大"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt10End	,""											,"パラメータ数値項目10"			,"最大"}
-					,{"String"		,null	,"Partial"		,ColSearchParaTxtAll		,""											,"パラメータテキスト項目全件"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchClWh			,B100_DefaultVariable.SearchWhList		,"倉庫CD"						,""}
-					,{"String"		,null	,"Exact"		,ColSearchClCd			,B100_DefaultVariable.SearchClList		,"荷主CD"						,""}
+					 {"String"		,null	,"Exact"		,ColSearchParaCd			,""											,"パラメータコード"		,""}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaCdSeqStr	,""											,"ナンバリング"			,"最小"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaCdSeqEnd	,""											,"ナンバリング"			,"最大"}
+					,{"String"		,null	,"Partial"		,ColSearchParaName		,""											,"パラメータ名"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt01		,""											,"テキスト項目01"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt02		,""											,"テキスト項目02"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt03		,""											,"テキスト項目03"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt04		,""											,"テキスト項目04"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt05		,""											,"テキスト項目05"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt06		,""											,"テキスト項目06"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt07		,""											,"テキスト項目07"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt08		,""											,"テキスト項目08"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt09		,""											,"テキスト項目09"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxt10		,""											,"テキスト項目10"		,""}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt01Str	,""											,"数値項目01"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt02Str	,""											,"数値項目02"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt03Str	,""											,"数値項目03"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt04Str	,""											,"数値項目04"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt05Str	,""											,"数値項目05"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt06Str	,""											,"数値項目06"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt07Str	,""											,"数値項目07"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt08Str	,""											,"数値項目08"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt09Str	,""											,"数値項目09"			,"最小"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchParaInt10Str	,""											,"数値項目10"			,"最小"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt01End	,""											,"数値項目01"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt02End	,""											,"数値項目02"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt03End	,""											,"数値項目03"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt04End	,""											,"数値項目04"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt05End	,""											,"数値項目05"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt06End	,""											,"数値項目06"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt07End	,""											,"数値項目07"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt08End	,""											,"数値項目08"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt09End	,""											,"数値項目09"			,"最大"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchParaInt10End	,""											,"数値項目10"			,"最大"}
+					,{"String"		,null	,"Partial"		,ColSearchParaTxtAll		,""											,"テキスト項目全件"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchClWh			,B100_DefaultVariable.SearchWhList		,"倉庫CD"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchClCd			,B100_DefaultVariable.SearchClList		,"荷主CD"				,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

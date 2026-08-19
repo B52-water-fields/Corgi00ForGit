@@ -33,64 +33,71 @@ public class WM100_ParameterMstNyanko_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ParaCd			= B100_FrameParts.JLabelSet(	  							  0, 50,130,20,"パラメータコード:"		,11,1);
-		final JTextField  TB_ParaCd	= B100_FrameParts.JTextFieldSet(							130, 50,100,20,""						,11,0);
-		JLabel LB_ParaCdSeq	= B100_FrameParts.JLabelSet(	  									  0, 75,130,20,"シーケンシャルNo:"		,11,1);
-		final JFormattedTextField TB_ParaCdSeq= B100_FrameParts.JFormattedTextFieldSet(		130, 75, 80,20,""						,11,1,"####");
-		JLabel LB_ParaName		= B100_FrameParts.JLabelSet(									  0,100,130,20,"パラメータ名:"			,11,1);
-		final JTextField  TB_ParaName= B100_FrameParts.JTextFieldSet(							130,100,100,20,""						,11,0);
+		Object[][] RtParameterMstRtNANKO	= M100_ParameterMstRtNyanko.RtParameterMstRtNANKO();
+
+		/*************************/
+		JLabel LB_ParaCd		= B100_FrameParts.JLabelSet(			  0, 50,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaCd][3]		+":"	,11,1);
+		JLabel LB_ParaCdSeq		= B100_FrameParts.JLabelSet( 			  0, 75,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaCdSeq][3]	+":"	,11,1);
+		JLabel LB_ParaName		= B100_FrameParts.JLabelSet(			  0,100,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaName][3]		+":"	,11,1);
 		
-		JLabel LB_ParaTxt01		= B100_FrameParts.JLabelSet(					  0,150,130,20,"文字設定項目01:"	,11,1);
-		final JTextField  TB_ParaTxt01= B100_FrameParts.JTextFieldSet(		130,150,200,20,""					,11,0);
-		JLabel LB_ParaTxt02		= B100_FrameParts.JLabelSet(					  0,175,130,20,"文字設定項目02:"	,11,1);
-		final JTextField  TB_ParaTxt02= B100_FrameParts.JTextFieldSet(		130,175,200,20,""					,11,0);
-		JLabel LB_ParaTxt03		= B100_FrameParts.JLabelSet(					  0,200,130,20,"文字設定項目03:"	,11,1);
-		final JTextField  TB_ParaTxt03= B100_FrameParts.JTextFieldSet(		130,200,200,20,""					,11,0);
-		JLabel LB_ParaTxt04		= B100_FrameParts.JLabelSet(					  0,225,130,20,"文字設定項目04:"	,11,1);
-		final JTextField  TB_ParaTxt04= B100_FrameParts.JTextFieldSet(		130,225,200,20,""					,11,0);
-		JLabel LB_ParaTxt05		= B100_FrameParts.JLabelSet(					  0,250,130,20,"文字設定項目05:"	,11,1);
-		final JTextField  TB_ParaTxt05= B100_FrameParts.JTextFieldSet(		130,250,200,20,""					,11,0);
-		JLabel LB_ParaTxt06		= B100_FrameParts.JLabelSet(					  0,275,130,20,"文字設定項目06:"	,11,1);
-		final JTextField  TB_ParaTxt06= B100_FrameParts.JTextFieldSet(		130,275,200,20,""					,11,0);
-		JLabel LB_ParaTxt07		= B100_FrameParts.JLabelSet(					  0,300,130,20,"文字設定項目07:"	,11,1);
-		final JTextField  TB_ParaTxt07= B100_FrameParts.JTextFieldSet(		130,300,200,20,""					,11,0);
-		JLabel LB_ParaTxt08		= B100_FrameParts.JLabelSet(					  0,325,130,20,"文字設定項目08:"	,11,1);
-		final JTextField  TB_ParaTxt08= B100_FrameParts.JTextFieldSet(		130,325,200,20,""					,11,0);
-		JLabel LB_ParaTxt09		= B100_FrameParts.JLabelSet(					  0,350,130,20,"文字設定項目09:"	,11,1);
-		final JTextField  TB_ParaTxt09= B100_FrameParts.JTextFieldSet(		130,350,200,20,""					,11,0);
-		JLabel LB_ParaTxt10		= B100_FrameParts.JLabelSet(					  0,375,130,20,"文字設定項目10:"	,11,1);
-		final JTextField  TB_ParaTxt10= B100_FrameParts.JTextFieldSet(		130,375,200,20,""					,11,0);
+		JLabel LB_ParaTxt01		= B100_FrameParts.JLabelSet(			  0,150,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt01][3]	+":"	,11,1);
+		JLabel LB_ParaTxt02		= B100_FrameParts.JLabelSet(			  0,175,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt02][3]	+":"	,11,1);
+		JLabel LB_ParaTxt03		= B100_FrameParts.JLabelSet(			  0,200,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt03][3]	+":"	,11,1);
+		JLabel LB_ParaTxt04		= B100_FrameParts.JLabelSet(			  0,225,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt04][3]	+":"	,11,1);
+		JLabel LB_ParaTxt05		= B100_FrameParts.JLabelSet(			  0,250,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt05][3]	+":"	,11,1);
+		JLabel LB_ParaTxt06		= B100_FrameParts.JLabelSet(			  0,275,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt06][3]	+":"	,11,1);
+		JLabel LB_ParaTxt07		= B100_FrameParts.JLabelSet(			  0,300,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt07][3]	+":"	,11,1);
+		JLabel LB_ParaTxt08		= B100_FrameParts.JLabelSet(			  0,325,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt08][3]	+":"	,11,1);
+		JLabel LB_ParaTxt09		= B100_FrameParts.JLabelSet(			  0,350,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt09][3]	+":"	,11,1);
+		JLabel LB_ParaTxt10		= B100_FrameParts.JLabelSet(			  0,375,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaTxt10][3]	+":"	,11,1);
 		
-		JLabel LB_ParaInt01	= B100_FrameParts.JLabelSet(									350,150,130,20,"数値設定項目01:"	,11,1);
-		final JFormattedTextField TB_ParaInt01= B100_FrameParts.JFormattedTextFieldSet(	480,150,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt02	= B100_FrameParts.JLabelSet(									350,175,130,20,"数値設定項目02:"	,11,1);
-		final JFormattedTextField TB_ParaInt02= B100_FrameParts.JFormattedTextFieldSet(	480,175,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt03	= B100_FrameParts.JLabelSet(									350,200,130,20,"数値設定項目03:"	,11,1);
-		final JFormattedTextField TB_ParaInt03= B100_FrameParts.JFormattedTextFieldSet(	480,200,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt04	= B100_FrameParts.JLabelSet(									350,225,130,20,"数値設定項目04:"	,11,1);
-		final JFormattedTextField TB_ParaInt04= B100_FrameParts.JFormattedTextFieldSet(	480,225,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt05	= B100_FrameParts.JLabelSet(									350,250,130,20,"数値設定項目05:"	,11,1);
-		final JFormattedTextField TB_ParaInt05= B100_FrameParts.JFormattedTextFieldSet(	480,250,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt06	= B100_FrameParts.JLabelSet(									350,275,130,20,"数値設定項目06:"	,11,1);
-		final JFormattedTextField TB_ParaInt06= B100_FrameParts.JFormattedTextFieldSet(	480,275,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt07	= B100_FrameParts.JLabelSet(									350,300,130,20,"数値設定項目07:"	,11,1);
-		final JFormattedTextField TB_ParaInt07= B100_FrameParts.JFormattedTextFieldSet(	480,300,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt08	= B100_FrameParts.JLabelSet(									350,325,130,20,"数値設定項目08:"	,11,1);
-		final JFormattedTextField TB_ParaInt08= B100_FrameParts.JFormattedTextFieldSet(	480,325,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt09	= B100_FrameParts.JLabelSet(									350,350,130,20,"数値設定項目09:"	,11,1);
-		final JFormattedTextField TB_ParaInt09= B100_FrameParts.JFormattedTextFieldSet(	480,350,100,20,"0"					,11,1,"####");
-		JLabel LB_ParaInt10	= B100_FrameParts.JLabelSet(									350,375,130,20,"数値設定項目10:"	,11,1);
-		final JFormattedTextField TB_ParaInt10= B100_FrameParts.JFormattedTextFieldSet(	480,375,100,20,"0"					,11,1,"####");
+		JLabel LB_ParaInt01		= B100_FrameParts.JLabelSet(			350,150,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt01][3]	+":"	,11,1);
+		JLabel LB_ParaInt02		= B100_FrameParts.JLabelSet(			350,175,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt02][3]	+":"	,11,1);
+		JLabel LB_ParaInt03		= B100_FrameParts.JLabelSet(			350,200,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt03][3]	+":"	,11,1);
+		JLabel LB_ParaInt04		= B100_FrameParts.JLabelSet(			350,225,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt04][3]	+":"	,11,1);
+		JLabel LB_ParaInt05		= B100_FrameParts.JLabelSet(			350,250,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt05][3]	+":"	,11,1);
+		JLabel LB_ParaInt06		= B100_FrameParts.JLabelSet(			350,275,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt06][3]	+":"	,11,1);
+		JLabel LB_ParaInt07		= B100_FrameParts.JLabelSet(			350,300,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt07][3]	+":"	,11,1);
+		JLabel LB_ParaInt08		= B100_FrameParts.JLabelSet(			350,325,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt08][3]	+":"	,11,1);
+		JLabel LB_ParaInt09		= B100_FrameParts.JLabelSet(			350,350,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt09][3]	+":"	,11,1);
+		JLabel LB_ParaInt10		= B100_FrameParts.JLabelSet(			350,375,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColParaInt10][3]	+":"	,11,1);
 		
+		JLabel LB_EntryDate		= B100_FrameParts.JLabelSet(			  0,425,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColEntryDate][3]	+":"	,11,1);
+		JLabel LB_UpdateDate	= B100_FrameParts.JLabelSet(			  0,450,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColUpdateDate][3]	+":"	,11,1);
+		JLabel LB_EntryUser		= B100_FrameParts.JLabelSet(			  0,475,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColEntryUser][3]	+":"	,11,1);
+		JLabel LB_UpdateUser	= B100_FrameParts.JLabelSet(			  0,500,130,20,RtParameterMstRtNANKO[M100_ParameterMstRtNyanko.ColUpdateUser][3]	+":"	,11,1);
 		
-		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(			  0,425,130,20,"登録日:"	,11,1);
-		final JTextField  TB_EntryDate	= B100_FrameParts.JTextFieldSet(		130,425,200,20,""			,11,0);
-		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(			  0,450,130,20,"更新日:"	,11,1);
-		final JTextField  TB_UpdateDate	= B100_FrameParts.JTextFieldSet(		130,450,200,20,""			,11,0);
-		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(			  0,475,130,20,"登録者:"	,11,1);
-		final JTextField  TB_EntryUser	= B100_FrameParts.JTextFieldSet(		130,475,200,20,""			,11,0);
-		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(			  0,500,130,20,"更新者:"	,11,1);
-		final JTextField  TB_UpdateUser	= B100_FrameParts.JTextFieldSet(		130,500,200,20,""			,11,0);
+		/*************************/
+		final JTextField  TB_ParaCd				= B100_FrameParts.JTextFieldSet(					130, 50,100,20,""	,11,0);
+		final JFormattedTextField TB_ParaCdSeq	= B100_FrameParts.JFormattedTextFieldSet(		130, 75, 80,20,""	,11,1,"####");
+		final JTextField  TB_ParaName			= B100_FrameParts.JTextFieldSet(					130,100,100,20,""	,11,0);
+		
+		final JTextField  TB_ParaTxt01			= B100_FrameParts.JTextFieldSet(					130,150,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt02			= B100_FrameParts.JTextFieldSet(					130,175,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt03			= B100_FrameParts.JTextFieldSet(					130,200,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt04			= B100_FrameParts.JTextFieldSet(					130,225,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt05			= B100_FrameParts.JTextFieldSet(					130,250,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt06			= B100_FrameParts.JTextFieldSet(					130,275,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt07			= B100_FrameParts.JTextFieldSet(					130,300,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt08			= B100_FrameParts.JTextFieldSet(					130,325,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt09			= B100_FrameParts.JTextFieldSet(					130,350,200,20,""	,11,0);
+		final JTextField  TB_ParaTxt10			= B100_FrameParts.JTextFieldSet(					130,375,200,20,""	,11,0);
+		
+		final JFormattedTextField TB_ParaInt01	= B100_FrameParts.JFormattedTextFieldSet(		480,150,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt02	= B100_FrameParts.JFormattedTextFieldSet(		480,175,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt03	= B100_FrameParts.JFormattedTextFieldSet(		480,200,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt04	= B100_FrameParts.JFormattedTextFieldSet(		480,225,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt05	= B100_FrameParts.JFormattedTextFieldSet(		480,250,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt06	= B100_FrameParts.JFormattedTextFieldSet(		480,275,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt07	= B100_FrameParts.JFormattedTextFieldSet(		480,300,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt08	= B100_FrameParts.JFormattedTextFieldSet(		480,325,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt09	= B100_FrameParts.JFormattedTextFieldSet(		480,350,100,20,"0"	,11,1,"####");
+		final JFormattedTextField TB_ParaInt10	= B100_FrameParts.JFormattedTextFieldSet(		480,375,100,20,"0"	,11,1,"####");
+		
+		final JTextField  TB_EntryDate			= B100_FrameParts.JTextFieldSet(					130,425,200,20,""	,11,0);
+		final JTextField  TB_UpdateDate			= B100_FrameParts.JTextFieldSet(					130,450,200,20,""	,11,0);
+		final JTextField  TB_EntryUser			= B100_FrameParts.JTextFieldSet(					130,475,200,20,""	,11,0);
+		final JTextField  TB_UpdateUser			= B100_FrameParts.JTextFieldSet(					130,500,200,20,""	,11,0);
 		
 		//新規登録ボタン
 		JButton CreateBtn = B100_FrameParts.BtnSet(		250, 50,100,20,"新規モード",10);

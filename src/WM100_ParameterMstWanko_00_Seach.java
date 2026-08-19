@@ -42,96 +42,107 @@ public class WM100_ParameterMstWanko_00_Seach{
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		
-		JLabel LB_SearchClCd			= B100_FrameParts.JLabelSet(	  							  0, 25,130,20,"荷主:"						,11,1);
-		final JComboBox  TB_SearchClCd	= B100_FrameParts.JComboBoxSet(							130, 25,180,20,B100_DefaultVariable.SearchClList[0], 11);
-		JLabel LB_SearchWhCd			= B100_FrameParts.JLabelSet(	  							  0, 50,130,20,"担当倉庫:"					,11,1);
-		final JComboBox  TB_SearchWhCd	= B100_FrameParts.JComboBoxSet(							130, 50,180,20,B100_DefaultVariable.SearchWhList[0], 11);
-		JLabel LB_SearchParaCd			= B100_FrameParts.JLabelSet(	  							  0, 75,130,20,"パラメータコード:"			,11,1);
-		final JTextField  TB_SearchParaCd	= B100_FrameParts.JTextFieldSet(						130, 75,100,20,""							,11,0);
-		JLabel LB2_SearchParaCd			= B100_FrameParts.JLabelSet(	  							230, 75, 80,20,B100_DefaultVariable.SearchExact						,11,0);
-		JLabel LB_SearchParaCdSeq	= B100_FrameParts.JLabelSet(	  								  0,100,130,20,"シーケンシャルNo:"			,11,1);
-		final JFormattedTextField TB_SearchParaCdSeqStr= B100_FrameParts.JFormattedTextFieldSet(	130,100, 80,20,""							,11,1,"####");
-		JLabel LB2_SearchParaCdSeq	= B100_FrameParts.JLabelSet(									210,100, 20,20,B100_DefaultVariable.SearchFromTo							,11,2);
-		final JFormattedTextField TB_SearchParaCdSeqEnd= B100_FrameParts.JFormattedTextFieldSet(	230,100, 80,20,""							,11,1,"####");
-		JLabel LB_SearchParaName		= B100_FrameParts.JLabelSet(								  0,125,130,20,"パラメータ名:"				,11,1);
-		final JTextField  TB_SearchParaName= B100_FrameParts.JTextFieldSet(						130,125,100,20,""							,11,0);
-		JLabel LB2_SearchParaName		= B100_FrameParts.JLabelSet(								230,125, 80,20,B100_DefaultVariable.SearchPartial						,11,0);
-		JLabel LB_SearchParaTxtAll		= B100_FrameParts.JLabelSet(								  0,150,130,20,"文字設定項目のどれかに:"	,10,1);
-		final JTextField  TB_SearchParaTxtAll= B100_FrameParts.JTextFieldSet(						130,150,100,20,""							,11,0);
-		JLabel LB2_SearchParaTxtAll		= B100_FrameParts.JLabelSet(								230,150, 80,20,B100_DefaultVariable.SearchPartial						,11,0);
+		Object[][] DefinitionRt	= M100_ParameterMstWankoRt.DefinitionRt();
 		
+		/*******************************/
+		JLabel LB_SearchClCd			= B100_FrameParts.JLabelSet(	  0, 25,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchClCd][5]			+":"	,11,1);
+		JLabel LB_SearchWhCd			= B100_FrameParts.JLabelSet(	  0, 50,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchClWh][5]			+":"	,11,1);
+		JLabel LB_SearchParaCd			= B100_FrameParts.JLabelSet(	  0, 75,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaCd][5]			+":"	,11,1);
+		JLabel LB_SearchParaCdSeq		= B100_FrameParts.JLabelSet(	  0,100,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaCdSeqStr][5]	+":"	,11,1);
+		JLabel LB_SearchParaName		= B100_FrameParts.JLabelSet(	  0,125,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaName][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxtAll		= B100_FrameParts.JLabelSet(	  0,150,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxtAll][5]		+":"	,10,1);
 		
-		JLabel LB_SearchParaTxt01		= B100_FrameParts.JLabelSet(					310, 25,130,20,"文字設定項目01:"	,11,1);
-		final JTextField  TB_SearchParaTxt01= B100_FrameParts.JTextFieldSet(			440, 25,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt01		= B100_FrameParts.JLabelSet(					540, 25, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt02		= B100_FrameParts.JLabelSet(					310, 50,130,20,"文字設定項目02:"	,11,1);
-		final JTextField  TB_SearchParaTxt02= B100_FrameParts.JTextFieldSet(			440, 50,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt02		= B100_FrameParts.JLabelSet(					540, 50, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt03		= B100_FrameParts.JLabelSet(					310, 75,130,20,"文字設定項目03:"	,11,1);
-		final JTextField  TB_SearchParaTxt03= B100_FrameParts.JTextFieldSet(			440, 75,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt03		= B100_FrameParts.JLabelSet(					540, 75, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt04		= B100_FrameParts.JLabelSet(					310,100,130,20,"文字設定項目04:"	,11,1);
-		final JTextField  TB_SearchParaTxt04= B100_FrameParts.JTextFieldSet(			440,100,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt04		= B100_FrameParts.JLabelSet(					540,100, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt05		= B100_FrameParts.JLabelSet(					310,125,130,20,"文字設定項目05:"	,11,1);
-		final JTextField  TB_SearchParaTxt05= B100_FrameParts.JTextFieldSet(			440,125,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt05		= B100_FrameParts.JLabelSet(					540,125, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt06		= B100_FrameParts.JLabelSet(					310,150,130,20,"文字設定項目06:"	,11,1);
-		final JTextField  TB_SearchParaTxt06= B100_FrameParts.JTextFieldSet(			440,150,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt06		= B100_FrameParts.JLabelSet(					540,150, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt07		= B100_FrameParts.JLabelSet(					310,175,130,20,"文字設定項目07:"	,11,1);
-		final JTextField  TB_SearchParaTxt07= B100_FrameParts.JTextFieldSet(			440,175,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt07		= B100_FrameParts.JLabelSet(					540,175, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt08		= B100_FrameParts.JLabelSet(					310,200,130,20,"文字設定項目08:"	,11,1);
-		final JTextField  TB_SearchParaTxt08= B100_FrameParts.JTextFieldSet(			440,200,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt08		= B100_FrameParts.JLabelSet(					540,200, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt09		= B100_FrameParts.JLabelSet(					310,225,130,20,"文字設定項目09:"	,11,1);
-		final JTextField  TB_SearchParaTxt09= B100_FrameParts.JTextFieldSet(			440,225,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt09		= B100_FrameParts.JLabelSet(					540,225, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
-		JLabel LB_SearchParaTxt10		= B100_FrameParts.JLabelSet(					310,250,130,20,"文字設定項目10:"	,11,1);
-		final JTextField  TB_SearchParaTxt10= B100_FrameParts.JTextFieldSet(			440,250,100,20,""					,11,0);
-		JLabel LB2_SearchParaTxt10		= B100_FrameParts.JLabelSet(					540,250, 80,20,B100_DefaultVariable.SearchPartial				,11,0);
+		JLabel LB_SearchParaTxt01		= B100_FrameParts.JLabelSet(	310, 25,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt01][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt02		= B100_FrameParts.JLabelSet(	310, 50,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt02][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt03		= B100_FrameParts.JLabelSet(	310, 75,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt03][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt04		= B100_FrameParts.JLabelSet(	310,100,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt04][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt05		= B100_FrameParts.JLabelSet(	310,125,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt05][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt06		= B100_FrameParts.JLabelSet(	310,150,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt06][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt07		= B100_FrameParts.JLabelSet(	310,175,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt07][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt08		= B100_FrameParts.JLabelSet(	310,200,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt08][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt09		= B100_FrameParts.JLabelSet(	310,225,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt09][5]		+":"	,11,1);
+		JLabel LB_SearchParaTxt10		= B100_FrameParts.JLabelSet(	310,250,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaTxt10][5]		+":"	,11,1);
 		
-		JLabel LB_SearchParaInt01	= B100_FrameParts.JLabelSet(										620, 25,130,20,"数値設定項目01:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt01Str= B100_FrameParts.JFormattedTextFieldSet(	750, 25,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt01	= B100_FrameParts.JLabelSet(										850, 25, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt01End= B100_FrameParts.JFormattedTextFieldSet(	870, 25,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt02	= B100_FrameParts.JLabelSet(										620, 50,130,20,"数値設定項目02:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt02Str= B100_FrameParts.JFormattedTextFieldSet(	750, 50,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt02	= B100_FrameParts.JLabelSet(										850, 50, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt02End= B100_FrameParts.JFormattedTextFieldSet(	870, 50,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt03	= B100_FrameParts.JLabelSet(										620, 75,130,20,"数値設定項目03:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt03Str= B100_FrameParts.JFormattedTextFieldSet(	750, 75,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt03	= B100_FrameParts.JLabelSet(										850, 75, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt03End= B100_FrameParts.JFormattedTextFieldSet(	870, 75,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt04	= B100_FrameParts.JLabelSet(										620,100,130,20,"数値設定項目04:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt04Str= B100_FrameParts.JFormattedTextFieldSet(	750,100,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt04	= B100_FrameParts.JLabelSet(										850,100, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt04End= B100_FrameParts.JFormattedTextFieldSet(	870,100,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt05	= B100_FrameParts.JLabelSet(										620,125,130,20,"数値設定項目05:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt05Str= B100_FrameParts.JFormattedTextFieldSet(	750,125,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt05	= B100_FrameParts.JLabelSet(										850,125, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt05End= B100_FrameParts.JFormattedTextFieldSet(	870,125,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt06	= B100_FrameParts.JLabelSet(										620,150,130,20,"数値設定項目06:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt06Str= B100_FrameParts.JFormattedTextFieldSet(	750,150,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt06	= B100_FrameParts.JLabelSet(										850,150, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt06End= B100_FrameParts.JFormattedTextFieldSet(	870,150,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt07	= B100_FrameParts.JLabelSet(										620,175,130,20,"数値設定項目07:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt07Str= B100_FrameParts.JFormattedTextFieldSet(	750,175,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt07	= B100_FrameParts.JLabelSet(										850,175, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt07End= B100_FrameParts.JFormattedTextFieldSet(	870,175,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt08	= B100_FrameParts.JLabelSet(										620,200,130,20,"数値設定項目08:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt08Str= B100_FrameParts.JFormattedTextFieldSet(	750,200,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt08	= B100_FrameParts.JLabelSet(										850,200, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt08End= B100_FrameParts.JFormattedTextFieldSet(	870,200,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt09	= B100_FrameParts.JLabelSet(										620,225,130,20,"数値設定項目09:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt09Str= B100_FrameParts.JFormattedTextFieldSet(	750,225,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt09	= B100_FrameParts.JLabelSet(										850,225, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt09End= B100_FrameParts.JFormattedTextFieldSet(	870,225,100,20,""					,11,1,"####");
-		JLabel LB_SearchParaInt10	= B100_FrameParts.JLabelSet(										620,250,130,20,"数値設定項目10:"	,11,1);
-		final JFormattedTextField TB_SearchParaInt10Str= B100_FrameParts.JFormattedTextFieldSet(	750,250,100,20,""					,11,1,"####");
-		JLabel LB2_SearchParaInt10	= B100_FrameParts.JLabelSet(										850,250, 20,20,B100_DefaultVariable.SearchFromTo					,11,2);
-		final JFormattedTextField TB_SearchParaInt10End= B100_FrameParts.JFormattedTextFieldSet(	870,250,100,20,""					,11,1,"####");
+		JLabel LB_SearchParaInt01		= B100_FrameParts.JLabelSet(	620, 25,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt01Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt02		= B100_FrameParts.JLabelSet(	620, 50,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt02Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt03		= B100_FrameParts.JLabelSet(	620, 75,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt03Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt04		= B100_FrameParts.JLabelSet(	620,100,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt04Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt05		= B100_FrameParts.JLabelSet(	620,125,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt05Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt06		= B100_FrameParts.JLabelSet(	620,150,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt06Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt07		= B100_FrameParts.JLabelSet(	620,175,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt07Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt08		= B100_FrameParts.JLabelSet(	620,200,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt08Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt09		= B100_FrameParts.JLabelSet(	620,225,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt09Str][5]	+":"	,11,1);
+		JLabel LB_SearchParaInt10		= B100_FrameParts.JLabelSet(	620,250,130,20,(String)DefinitionRt[M100_ParameterMstWankoRt.ColSearchParaInt10Str][5]	+":"	,11,1);
+		
+		/*******************************/
+		final JComboBox  TB_SearchClCd	= B100_FrameParts.JComboBoxSet(							130, 25,180,20,B100_DefaultVariable.SearchClList[0]	,11);
+		final JComboBox  TB_SearchWhCd	= B100_FrameParts.JComboBoxSet(							130, 50,180,20,B100_DefaultVariable.SearchWhList[0]	,11);
+		final JTextField  TB_SearchParaCd	= B100_FrameParts.JTextFieldSet(						130, 75,100,20,""										,11,0);
+		final JFormattedTextField TB_SearchParaCdSeqStr= B100_FrameParts.JFormattedTextFieldSet(	130,100, 80,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaCdSeqEnd= B100_FrameParts.JFormattedTextFieldSet(	230,100, 80,20,""										,11,1,"####");
+		final JTextField  TB_SearchParaName= B100_FrameParts.JTextFieldSet(						130,125,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxtAll= B100_FrameParts.JTextFieldSet(						130,150,100,20,""										,11,0);
+		
+		final JTextField  TB_SearchParaTxt01= B100_FrameParts.JTextFieldSet(						440, 25,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt02= B100_FrameParts.JTextFieldSet(						440, 50,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt03= B100_FrameParts.JTextFieldSet(						440, 75,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt04= B100_FrameParts.JTextFieldSet(						440,100,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt05= B100_FrameParts.JTextFieldSet(						440,125,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt06= B100_FrameParts.JTextFieldSet(						440,150,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt07= B100_FrameParts.JTextFieldSet(						440,175,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt08= B100_FrameParts.JTextFieldSet(						440,200,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt09= B100_FrameParts.JTextFieldSet(						440,225,100,20,""										,11,0);
+		final JTextField  TB_SearchParaTxt10= B100_FrameParts.JTextFieldSet(						440,250,100,20,""										,11,0);
+		
+		final JFormattedTextField TB_SearchParaInt01Str= B100_FrameParts.JFormattedTextFieldSet(	750, 25,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt01End= B100_FrameParts.JFormattedTextFieldSet(	870, 25,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt02Str= B100_FrameParts.JFormattedTextFieldSet(	750, 50,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt02End= B100_FrameParts.JFormattedTextFieldSet(	870, 50,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt03Str= B100_FrameParts.JFormattedTextFieldSet(	750, 75,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt03End= B100_FrameParts.JFormattedTextFieldSet(	870, 75,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt04Str= B100_FrameParts.JFormattedTextFieldSet(	750,100,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt04End= B100_FrameParts.JFormattedTextFieldSet(	870,100,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt05Str= B100_FrameParts.JFormattedTextFieldSet(	750,125,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt05End= B100_FrameParts.JFormattedTextFieldSet(	870,125,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt06Str= B100_FrameParts.JFormattedTextFieldSet(	750,150,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt06End= B100_FrameParts.JFormattedTextFieldSet(	870,150,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt07Str= B100_FrameParts.JFormattedTextFieldSet(	750,175,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt07End= B100_FrameParts.JFormattedTextFieldSet(	870,175,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt08Str= B100_FrameParts.JFormattedTextFieldSet(	750,200,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt08End= B100_FrameParts.JFormattedTextFieldSet(	870,200,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt09Str= B100_FrameParts.JFormattedTextFieldSet(	750,225,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt09End= B100_FrameParts.JFormattedTextFieldSet(	870,225,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt10Str= B100_FrameParts.JFormattedTextFieldSet(	750,250,100,20,""										,11,1,"####");
+		final JFormattedTextField TB_SearchParaInt10End= B100_FrameParts.JFormattedTextFieldSet(	870,250,100,20,""										,11,1,"####");
+		
+		/*******************************/
+		JLabel LB2_SearchParaCd			= B100_FrameParts.JLabelSet(	230, 75, 80,20,B100_DefaultVariable.SearchExact		,11,0);
+		JLabel LB2_SearchParaCdSeq		= B100_FrameParts.JLabelSet(	210,100, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaName		= B100_FrameParts.JLabelSet(	230,125, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxtAll		= B100_FrameParts.JLabelSet(	230,150, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		
+		JLabel LB2_SearchParaTxt01		= B100_FrameParts.JLabelSet(	540, 25, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt02		= B100_FrameParts.JLabelSet(	540, 50, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt03		= B100_FrameParts.JLabelSet(	540, 75, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt04		= B100_FrameParts.JLabelSet(	540,100, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt05		= B100_FrameParts.JLabelSet(	540,125, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt06		= B100_FrameParts.JLabelSet(	540,150, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt07		= B100_FrameParts.JLabelSet(	540,175, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt08		= B100_FrameParts.JLabelSet(	540,200, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt09		= B100_FrameParts.JLabelSet(	540,225, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchParaTxt10		= B100_FrameParts.JLabelSet(	540,250, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		
+		JLabel LB2_SearchParaInt01		= B100_FrameParts.JLabelSet(	850, 25, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt02		= B100_FrameParts.JLabelSet(	850, 50, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt03		= B100_FrameParts.JLabelSet(	850, 75, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt04		= B100_FrameParts.JLabelSet(	850,100, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt05		= B100_FrameParts.JLabelSet(	850,125, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt06		= B100_FrameParts.JLabelSet(	850,150, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt07		= B100_FrameParts.JLabelSet(	850,175, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt08		= B100_FrameParts.JLabelSet(	850,200, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt09		= B100_FrameParts.JLabelSet(	850,225, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchParaInt10		= B100_FrameParts.JLabelSet(	850,250, 20,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		
 		
 		//検索ボタン
 		JButton SearchBtn = B100_FrameParts.BtnSet(130,200,100,20,"検索",11);
@@ -743,8 +754,6 @@ public class WM100_ParameterMstWanko_00_Seach{
 				}
 			}
 		});
-		
-		
 		
 		//EXITボタン押下時の挙動
 		exit_btn.addActionListener(new AbstractAction(){

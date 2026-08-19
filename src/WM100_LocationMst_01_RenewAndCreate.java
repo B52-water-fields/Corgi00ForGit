@@ -112,13 +112,13 @@ public class WM100_LocationMst_01_RenewAndCreate{
 				String GetCLName01		= (String)LocationMstRt[0][M100_LocationMstRt.ColCLName01];		//荷主表記名
 				String GetWhCd			= (String)LocationMstRt[0][M100_LocationMstRt.ColWhCd];			//倉庫コード
 				String GetWHName		= (String)LocationMstRt[0][M100_LocationMstRt.ColWHName];			//拠点倉庫名
-				String GetLoc			= (String)LocationMstRt[0][M100_LocationMstRt.ColLoc];			//ロケーション
-				String GetLocName		= (String)LocationMstRt[0][M100_LocationMstRt.ColLocName];		//ロケーション名
+				String GetLoc			= (String)LocationMstRt[0][M100_LocationMstRt.ColLoc];				//ロケーション
+				String GetLocName		= (String)LocationMstRt[0][M100_LocationMstRt.ColLocName];			//ロケーション名
 				int GetType				= (int)LocationMstRt[0][M100_LocationMstRt.ColType];				//ロケタイプ
 				String GetEntryDate		= (String)LocationMstRt[0][M100_LocationMstRt.ColEntryDate];		//登録日
-				String GetUpdateDate	= (String)LocationMstRt[0][M100_LocationMstRt.ColUpdateDate];	//更新日
+				String GetUpdateDate	= (String)LocationMstRt[0][M100_LocationMstRt.ColUpdateDate];		//更新日
 				String GetEntryUser		= (String)LocationMstRt[0][M100_LocationMstRt.ColEntryUser];		//登録者
-				String GetUpdateUser	= (String)LocationMstRt[0][M100_LocationMstRt.ColUpdateUser];	//更新者
+				String GetUpdateUser	= (String)LocationMstRt[0][M100_LocationMstRt.ColUpdateUser];		//更新者
 				
 				TB_Loc.setText(GetLoc);
 				TB_LocName.setText(GetLocName);
