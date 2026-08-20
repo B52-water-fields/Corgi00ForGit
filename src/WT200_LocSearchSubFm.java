@@ -22,6 +22,9 @@ public class WT200_LocSearchSubFm{
 	
 	static boolean RenewFg;
 	
+	static int SetX;
+	static int SetY;
+	
 	static final int RtJFrame				= 0;
 	static final int RtDefaultTableModel	= 1;
 	static final int RtJTable				= 2;
@@ -29,12 +32,18 @@ public class WT200_LocSearchSubFm{
 	
 	public static Object[] LocSearchSubFm(int x,int y,String ClWh,String ClCd,String BackGroundColor){
 		RenewFg=false;
+		A00000_Main.LoginCheck();
+		if(0==SetX) {SetX=100;}
+		if(0==SetY) {SetY=100;}
+		if(x==0) {x=SetX;}
+		if(y==0) {y=SetY;}
+		
 		if(null==ClWh) {ClWh="";}
 		if(null==ClCd) {ClCd="";}
 		if("".equals(ClWh)) {ClWh=A00000_Main.ClWh;}
 		if("".equals(ClCd)) {ClCd=A00000_Main.ClCd;}
 		
-		final JFrame Loc_fm 	= B100_FrameParts.FrameCreate(x+10,y+10,800,750,"Corgi00ロケーション検索　WT200_LocSearchSubFm",BackGroundColor);
+		final JFrame Loc_fm 	= B100_FrameParts.FrameCreate(x,y,800,750,"Corgi00ロケーション検索　WT200_LocSearchSubFm",BackGroundColor);
 		JLabel 	LocUserinfo 	= B100_FrameParts.UserInfo();
 		JButton LocExit_btn 	= B100_FrameParts.ExitBtn();
 		JButton LocEntry_btn 	= B100_FrameParts.EntryBtn();

@@ -629,8 +629,8 @@ public class T100_OkuriHdRt{
 						,{"AddDeliFee01"		,ColAddDeliFee01			,"int"		,"付帯費用1"					,""		,"Additional Charge 1"					,"附加费用1"}
 						,{"AddDeliFee02"		,ColAddDeliFee02			,"int"		,"付帯費用2"					,""		,"Additional Charge 2"					,"附加费用2"}
 						,{"AddDeliFee03"		,ColAddDeliFee03			,"int"		,"付帯費用3"					,""		,"Additional Charge 3"					,"附加费用3"}
-						,{"HaighWayFee01"		,ColHaighWayFee01			,"int"		,"高速代等実費精算分1（内税）"	,""		,"Highway etc. Actual Cost 1 (Tax Included)"	,"高速费等实报实销1（含税）"}
-						,{"HaighWayFee02"		,ColHaighWayFee02			,"int"		,"高速代等実費精算分2（内税）"	,""		,"Highway etc. Actual Cost 2 (Tax Included)"	,"高速费等实报实销2（含税）"}
+						,{"HaighWayFee01"		,ColHaighWayFee01			,"int"		,"実費精算分1（内税）"			,""		,"Actual Cost 1 (Tax Included)"			,"实报实销1（含税）"}
+						,{"HaighWayFee02"		,ColHaighWayFee02			,"int"		,"実費精算分2（内税）"			,""		,"Actual Cost 2 (Tax Included)"			,"实报实销2（含税）"}
 						,{"ConsumptionTax"		,ColConsumptionTax		,"int"		,"消費税"						,""		,"Consumption Tax"						,"消费税"}
 						,{"WithOutTaxTotal"		,ColWithOutTaxTotal		,"int"		,"税別合計金額"					,""		,"Total Excluding Tax"					,"未税合计金额"}
 						,{"TotalFee"			,ColTotalFee				,"int"		,"税込請求額合計"				,""		,"Total Including Tax"					,"含税账单总额"}
