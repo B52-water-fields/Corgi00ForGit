@@ -579,134 +579,133 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[T100_OkuriMsRt.ColDeliTypeName04] 		= null;				//TB_DeliTypeName04;
 		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd05] 	= TB_DeliveryTypeCd05;
 		ControlTgt[T100_OkuriMsRt.ColDeliTypeName05] 		= null;				//TB_DeliTypeName05;
+
+		ControlTgt[T100_OkuriMsRt.ColCodFG] 				= TB_CodFG;
+		ControlTgt[T100_OkuriMsRt.ColCodPayTotal] 			= TB_CodPayTotal;
+		ControlTgt[T100_OkuriMsRt.ColCodPay] 				= TB_CodPay;
+		ControlTgt[T100_OkuriMsRt.ColCodConsumptionTax] 	= TB_CodConsumptionTax;
+
+		ControlTgt[T100_OkuriMsRt.ColChildrenFG] 			= TB_ChildrenFG;
+		ControlTgt[T100_OkuriMsRt.ColParentOkuriNo] 		= TB_ParentOkuriNo;
+
+		ControlTgt[T100_OkuriMsRt.ColNiokuriCd] 			= TB_NiokuriCd;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriDepartmentCd] 	= TB_NiokuriDepartmentCd;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriName01] 		= TB_NiokuriName01;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriName02] 		= TB_NiokuriName02;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriName03] 		= TB_NiokuriName03;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriPost] 			= TB_NiokuriPost;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd01] 			= TB_NiokuriAdd01;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd02] 			= TB_NiokuriAdd02;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd03] 			= TB_NiokuriAdd03;
+		ControlTgt[T100_OkuriMsRt.ColNioKuriTel] 			= TB_NioKuriTel;
+		ControlTgt[T100_OkuriMsRt.ColNioKuriFax] 			= TB_NioKuriFax;
+		ControlTgt[T100_OkuriMsRt.ColNioKuriMail] 			= TB_NioKuriMail;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriMunicCd] 		= TB_NiokuriMunicCd;
+
+		ControlTgt[T100_OkuriMsRt.ColDeliCd] 				= TB_DeliCd;
+		ControlTgt[T100_OkuriMsRt.ColClDeliCd] 				= TB_ClDeliCd;
+		ControlTgt[T100_OkuriMsRt.ColDeliDepartmentCd] 		= TB_DeliDepartmentCd;
+		ControlTgt[T100_OkuriMsRt.ColDeliName01] 			= TB_DeliName01;
+		ControlTgt[T100_OkuriMsRt.ColDeliName02]		 	= TB_DeliName02;
+		ControlTgt[T100_OkuriMsRt.ColDeliName03] 			= TB_DeliName03;
+		ControlTgt[T100_OkuriMsRt.ColDeliPost] 				= TB_DeliPost;
+		ControlTgt[T100_OkuriMsRt.ColDeliAdd01] 			= TB_DeliAdd01;
+		ControlTgt[T100_OkuriMsRt.ColDeliAdd02] 			= TB_DeliAdd02;
+		ControlTgt[T100_OkuriMsRt.ColDeliAdd03] 			= TB_DeliAdd03;
+		ControlTgt[T100_OkuriMsRt.ColDeliTel] 				= TB_DeliTel;
+		ControlTgt[T100_OkuriMsRt.ColDeliFax] 				= TB_DeliFax;
+		ControlTgt[T100_OkuriMsRt.ColDeliMail] 				= TB_DeliMail;
+		ControlTgt[T100_OkuriMsRt.ColDeliMunicCd] 			= TB_DeliMunicCd;
+
+		ControlTgt[T100_OkuriMsRt.ColCom01] 				= TB_Com01;
+		ControlTgt[T100_OkuriMsRt.ColCom02] 				= TB_Com02;
+		ControlTgt[T100_OkuriMsRt.ColCom03] 				= TB_Com03;
+		ControlTgt[T100_OkuriMsRt.ColCom04] 				= TB_Com04;
+		ControlTgt[T100_OkuriMsRt.ColCom05] 				= TB_Com05;
 /*
-		ControlTgt[T100_OkuriMsRt.ColCodFG] = TB_ColCodFG					,"int"		,"代引フラグ"					,""		,"COD Flag"								,"货到付款标志"}
-		ControlTgt[T100_OkuriMsRt.ColCodPayTotal] = TB_ColCodPayTotal			,"int"		,"代引収受金額合計"				,""		,"COD Collection Total"					,"货到付款收款总额"}
-		ControlTgt[T100_OkuriMsRt.ColCodPay] = TB_ColCodPay					,"int"		,"代引金額"						,""		,"COD Amount"							,"货到付款金额"}
-		ControlTgt[T100_OkuriMsRt.ColCodConsumptionTax] = TB_ColCodConsumptionTax	,"int"		,"代引消費税"					,""		,"COD Consumption Tax"					,"货到付款消费税"}
+		ControlTgt[T100_OkuriMsRt.ColStatus] 				= TB_Status;
+		ControlTgt[T100_OkuriMsRt.ColTaxFg] 				= TB_TaxFg;
+		ControlTgt[T100_OkuriMsRt.ColTaxRate] 				= TB_TaxRate;
+		ControlTgt[T100_OkuriMsRt.ColDeliFee] 				= TB_DeliFee;
+		ControlTgt[T100_OkuriMsRt.ColAddDeliFee01] 			= TB_AddDeliFee01;
+		ControlTgt[T100_OkuriMsRt.ColAddDeliFee02] 			= TB_AddDeliFee02;
+		ControlTgt[T100_OkuriMsRt.ColAddDeliFee03] 			= TB_AddDeliFee03;
+		ControlTgt[T100_OkuriMsRt.ColHaighWayFee01] 		= TB_HaighWayFee01;
+		ControlTgt[T100_OkuriMsRt.ColHaighWayFee02] 		= TB_HaighWayFee02;
+		ControlTgt[T100_OkuriMsRt.ColConsumptionTax] 		= TB_ConsumptionTax;
+		ControlTgt[T100_OkuriMsRt.ColWithOutTaxTotal] 		= TB_WithOutTaxTotal;
+		ControlTgt[T100_OkuriMsRt.ColTotalFee] 				= TB_TotalFee;
+		ControlTgt[T100_OkuriMsRt.ColFeeFixFG] 				= TB_FeeFixFG;
+		ControlTgt[T100_OkuriMsRt.ColFeeFixDate] 			= TB_FeeFixDate;
+		ControlTgt[T100_OkuriMsRt.ColReceiptStampFG] 		= TB_ReceiptStampFG;
+		ControlTgt[T100_OkuriMsRt.ColReceiptStampDate] 		= TB_ReceiptStampDate;
+		ControlTgt[T100_OkuriMsRt.ColInvoiceStatus] 		= TB_InvoiceStatus;
+		ControlTgt[T100_OkuriMsRt.ColEntryDate] 			= TB_EntryDate;
+		ControlTgt[T100_OkuriMsRt.ColUpdateDate] 			= TB_UpdateDate;
+		ControlTgt[T100_OkuriMsRt.ColEntryUser] 			= TB_EntryUser;
+		ControlTgt[T100_OkuriMsRt.ColUpdateUser] 			= TB_UpdateUser;
+		ControlTgt[T100_OkuriMsRt.ColEntryPG] 				= TB_EntryPG;
+		ControlTgt[T100_OkuriMsRt.ColUpdatePG] 				= TB_UpdatePG;
 
-		ControlTgt[T100_OkuriMsRt.ColChildrenFG] = TB_ColChildrenFG			,"int"		,"子伝票区分"					,""		,"Child Waybill Type"					,"子运单类型"}
-		ControlTgt[T100_OkuriMsRt.ColParentOkuriNo] = TB_ColParentOkuriNo			,"String"	,"親伝票番号"					,""		,"Parent Waybill No."					,"父运单号"}
+		ControlTgt[T100_OkuriMsRt.ColUseFeeBasePtCd] 		= TB_UseFeeBasePtCd;
+		ControlTgt[T100_OkuriMsRt.ColWmsStatus] 			= TB_WmsStatus;
+		ControlTgt[T100_OkuriMsRt.ColWmsShipDate] 			= TB_WmsShipDate;
+		ControlTgt[T100_OkuriMsRt.ColCourseGpCd] 			= TB_CourseGpCd;
+		ControlTgt[T100_OkuriMsRt.ColCourseCD] 				= TB_CourseCD;
+		ControlTgt[T100_OkuriMsRt.ColCourseCDEda] 			= TB_CourseCDEda;
+		ControlTgt[T100_OkuriMsRt.ColPitGrp] 				= TB_PitGrp;
+		ControlTgt[T100_OkuriMsRt.ColPit01] 				= TB_Pit01;
+		ControlTgt[T100_OkuriMsRt.ColPit02] 				= TB_Pit02;
+		ControlTgt[T100_OkuriMsRt.ColPit03] 				= TB_Pit03;
+		ControlTgt[T100_OkuriMsRt.ColPit04] 				= TB_Pit04;
+		ControlTgt[T100_OkuriMsRt.ColPit05] 				= TB_Pit05;
 
-		ControlTgt[T100_OkuriMsRt.ColNiokuriCd] = TB_ColNiokuriCd				,"String"	,"荷送人コード"					,""		,"Shipper Code"							,"发货人代码"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriDepartmentCd] = TB_ColNiokuriDepartmentCd	,"String"	,"荷送人部署CD"					,""		,"Shipper Department Code"				,"发货人部门代码"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriName01] = TB_ColNiokuriName01			,"String"	,"荷送人名01"					,""		,"Shipper Name 01"						,"发货人名称01"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriName02] = TB_ColNiokuriName02			,"String"	,"荷送人名02"					,""		,"Shipper Name 02"						,"发货人名称02"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriName03] = TB_ColNiokuriName03			,"String"	,"荷送人名03"					,""		,"Shipper Name 03"						,"发货人名称03"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriPost] = TB_ColNiokuriPost			,"String"	,"荷送人郵便番号"				,""		,"Shipper Postal Code"					,"发货人邮政编码"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd01] = TB_ColNiokuriAdd01			,"String"	,"荷送人住所01"					,""		,"Shipper Address 01"					,"发货人地址01"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd02] = TB_ColNiokuriAdd02			,"String"	,"荷送人住所02"					,""		,"Shipper Address 02"					,"发货人地址02"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd03] = TB_ColNiokuriAdd03			,"String"	,"荷送人住所03"					,""		,"Shipper Address 03"					,"发货人地址03"}
-		ControlTgt[T100_OkuriMsRt.ColNioKuriTel] = TB_ColNioKuriTel			,"String"	,"荷送人TEL"					,""		,"Shipper TEL"							,"发货人电话"}
-		ControlTgt[T100_OkuriMsRt.ColNioKuriFax] = TB_ColNioKuriFax			,"String"	,"荷送人FAX"					,""		,"Shipper FAX"							,"发货人传真"}
-		ControlTgt[T100_OkuriMsRt.ColNioKuriMail] = TB_ColNioKuriMail			,"String"	,"荷送人MAIL"					,""		,"Shipper Email"						,"发货人邮箱"}
-		ControlTgt[T100_OkuriMsRt.ColNiokuriMunicCd] = TB_ColNiokuriMunicCd		,"String"	,"荷送人市区町村CD"				,""		,"Shipper Municipality Code"			,"发货人市区町村代码"}
-
-		ControlTgt[T100_OkuriMsRt.ColDeliCd] = TB_ColDeliCd					,"String"	,"荷届先コード"					,""		,"Delivery Destination Code"			,"收货地代码"}
-		ControlTgt[T100_OkuriMsRt.ColClDeliCd] = TB_ColClDeliCd				,"String"	,"荷主荷届先コード"				,""		,"Client Destination Code"				,"货主收货地代码"}
-		ControlTgt[T100_OkuriMsRt.ColDeliDepartmentCd] = TB_ColDeliDepartmentCd		,"String"	,"部署CD"						,""		,"Destination Department Code"			,"收货地部门代码"}
-		ControlTgt[T100_OkuriMsRt.ColDeliName01] = TB_ColDeliName01			,"String"	,"荷届先名01"					,""		,"Destination Name 01"					,"收货地名称01"}
-		ControlTgt[T100_OkuriMsRt.ColDeliName02] = TB_ColDeliName02			,"String"	,"荷届先名02"					,""		,"Destination Name 02"					,"收货地名称02"}
-		ControlTgt[T100_OkuriMsRt.ColDeliName03] = TB_ColDeliName03			,"String"	,"荷届先名03"					,""		,"Destination Name 03"					,"收货地名称03"}
-		ControlTgt[T100_OkuriMsRt.ColDeliPost] = TB_ColDeliPost				,"String"	,"荷届先郵便番号"				,""		,"Destination Postal Code"				,"收货地邮政编码"}
-		ControlTgt[T100_OkuriMsRt.ColDeliAdd01] = TB_ColDeliAdd01				,"String"	,"荷届先住所01"					,""		,"Destination Address 01"				,"收货地地址01"}
-		ControlTgt[T100_OkuriMsRt.ColDeliAdd02] = TB_ColDeliAdd02				,"String"	,"荷届先住所02"					,""		,"Destination Address 02"				,"收货地地址02"}
-		ControlTgt[T100_OkuriMsRt.ColDeliAdd03] = TB_ColDeliAdd03				,"String"	,"荷届先住所03"					,""		,"Destination Address 03"				,"收货地地址03"}
-		ControlTgt[T100_OkuriMsRt.ColDeliTel] = TB_ColDeliTel				,"String"	,"荷届先TEL"					,""		,"Destination TEL"						,"收货地电话"}
-		ControlTgt[T100_OkuriMsRt.ColDeliFax] = TB_ColDeliFax				,"String"	,"荷届先FAX"					,""		,"Destination FAX"						,"收货地传真"}
-		ControlTgt[T100_OkuriMsRt.ColDeliMail] = TB_ColDeliMail				,"String"	,"荷届先MAIL"					,""		,"Destination Email"					,"收货地邮箱"}
-		ControlTgt[T100_OkuriMsRt.ColDeliMunicCd] = TB_ColDeliMunicCd			,"String"	,"荷届先市区町村CD"				,""		,"Destination Municipality Code"		,"收货地市区町村代码"}
-
-		ControlTgt[T100_OkuriMsRt.ColCom01"				,ColCom01					,"String"	,"コメント01"					,""		,"Comment 01"							,"备注01"}
-		ControlTgt[T100_OkuriMsRt.ColCom02"				,ColCom02					,"String"	,"コメント02"					,""		,"Comment 02"							,"备注02"}
-		ControlTgt[T100_OkuriMsRt.ColCom03"				,ColCom03					,"String"	,"コメント03"					,""		,"Comment 03"							,"备注03"}
-		ControlTgt[T100_OkuriMsRt.ColCom04"				,ColCom04					,"String"	,"コメント04"					,""		,"Comment 04"							,"备注04"}
-		ControlTgt[T100_OkuriMsRt.ColCom05"				,ColCom05					,"String"	,"コメント05"					,""		,"Comment 05"							,"备注05"}
-
-		ControlTgt[T100_OkuriMsRt.ColStatus"				,ColStatus					,"int"		,"運送状況"						,""		,"Status"								,"状态"}
-		ControlTgt[T100_OkuriMsRt.ColTaxFg"				,ColTaxFg					,"int"		,"税区分"						,""		,"Tax Type"								,"税类型"}
-		ControlTgt[T100_OkuriMsRt.ColTaxRate"				,ColTaxRate				,"int"		,"税率"							,""		,"Tax Rate"								,"税率"}
-		ControlTgt[T100_OkuriMsRt.ColDeliFee"				,ColDeliFee				,"int"		,"運賃"							,""		,"Freight Charge"						,"运费"}
-		ControlTgt[T100_OkuriMsRt.ColAddDeliFee01"		,ColAddDeliFee01			,"int"		,"付帯費用1"					,""		,"Additional Charge 1"					,"附加费用1"}
-		ControlTgt[T100_OkuriMsRt.ColAddDeliFee02"		,ColAddDeliFee02			,"int"		,"付帯費用2"					,""		,"Additional Charge 2"					,"附加费用2"}
-		ControlTgt[T100_OkuriMsRt.ColAddDeliFee03"		,ColAddDeliFee03			,"int"		,"付帯費用3"					,""		,"Additional Charge 3"					,"附加费用3"}
-		ControlTgt[T100_OkuriMsRt.ColHaighWayFee01"		,ColHaighWayFee01			,"int"		,"実費精算分1（内税）"			,""		,"Actual Cost 1 (Tax Included)"			,"实报实销1（含税）"}
-		ControlTgt[T100_OkuriMsRt.ColHaighWayFee02"		,ColHaighWayFee02			,"int"		,"実費精算分2（内税）"			,""		,"Actual Cost 2 (Tax Included)"			,"实报实销2（含税）"}
-		ControlTgt[T100_OkuriMsRt.ColConsumptionTax"		,ColConsumptionTax		,"int"		,"消費税"						,""		,"Consumption Tax"						,"消费税"}
-		ControlTgt[T100_OkuriMsRt.ColWithOutTaxTotal"		,ColWithOutTaxTotal		,"int"		,"税別合計金額"					,""		,"Total Excluding Tax"					,"未税合计金额"}
-		ControlTgt[T100_OkuriMsRt.ColTotalFee"			,ColTotalFee				,"int"		,"税込請求額合計"				,""		,"Total Including Tax"					,"含税账单总额"}
-		ControlTgt[T100_OkuriMsRt.ColFeeFixFG"			,ColFeeFixFG				,"int"		,"金額確定フラグ"				,""		,"Charge Fixed Flag"					,"金额确定标志"}
-		ControlTgt[T100_OkuriMsRt.ColFeeFixDate"			,ColFeeFixDate			,"DateTime"	,"金額確定日時"					,""		,"Charge Fixed At"						,"金额确定时间"}
-		ControlTgt[T100_OkuriMsRt.ColReceiptStampFG"		,ColReceiptStampFG		,"int"		,"受領印チェック"				,""		,"Receipt Stamp Check"					,"收货章确认"}
-		ControlTgt[T100_OkuriMsRt.ColReceiptStampDate"	,ColReceiptStampDate		,"DateTime"	,"受領印日時"					,""		,"Receipt Stamp Date"					,"收货章日期"}
-		ControlTgt[T100_OkuriMsRt.ColInvoiceStatus"		,ColInvoiceStatus			,"int"		,"請求ステータス"				,""		,"Invoice Status"						,"账单状态"}
-		ControlTgt[T100_OkuriMsRt.ColEntryDate"			,ColEntryDate				,"DateTime"	,"登録日"						,""		,"Created At"							,"登记时间"}
-		ControlTgt[T100_OkuriMsRt.ColUpdateDate"			,ColUpdateDate			,"DateTime"	,"更新日"						,""		,"Updated At"							,"更新时间"}
-		ControlTgt[T100_OkuriMsRt.ColEntryUser"			,ColEntryUser				,"String"	,"登録者"						,""		,"Created By"							,"登记人"}
-		ControlTgt[T100_OkuriMsRt.ColUpdateUser"			,ColUpdateUser			,"String"	,"更新者"						,""		,"Updated By"							,"更新人"}
-		ControlTgt[T100_OkuriMsRt.ColEntryPG"				,ColEntryPG				,"String"	,"登録プログラム"				,""		,"Created Program"						,"登记程序"}
-		ControlTgt[T100_OkuriMsRt.ColUpdatePG"			,ColUpdatePG				,"String"	,"更新プログラム"				,""		,"Updated Program"						,"更新程序"}
-
-		ControlTgt[T100_OkuriMsRt.ColUseFeeBasePtCd"		,ColUseFeeBasePtCd		,"String"	,"適用運賃タリフCD"				,""		,"Applied Freight Tariff Code"			,"适用运费费率代码"}
-		ControlTgt[T100_OkuriMsRt.ColWmsStatus"			,ColWmsStatus				,"int"		,"在庫管理ステータス"			,""		,"WMS Status"							,"库存管理状态"}
-		ControlTgt[T100_OkuriMsRt.ColWmsShipDate"			,ColWmsShipDate			,"DateTime"	,"倉庫出荷日"					,""		,"Warehouse Ship Date"					,"仓库出库日期"}
-		ControlTgt[T100_OkuriMsRt.ColCourseGpCd"			,ColCourseGpCd			,"String"	,"コースグループコード"			,""		,"Route Group Code"						,"配送路线组代码"}
-		ControlTgt[T100_OkuriMsRt.ColCourseCD"			,ColCourseCD				,"String"	,"一次配車コースコード"			,""		,"Primary Route Code"					,"一次配车路线代码"}
-		ControlTgt[T100_OkuriMsRt.ColCourseCDEda"			,ColCourseCDEda			,"int"		,"一次配車コースコード枝番"		,""		,"Primary Route Code Branch"			,"一次配车路线代码分支"}
-		ControlTgt[T100_OkuriMsRt.ColPitGrp"				,ColPitGrp					,"String"	,"一次配車払出ピットグループ"	,""		,"Primary Dispatch Pit Group"			,"一次配车出库口组"}
-		ControlTgt[T100_OkuriMsRt.ColPit01"				,ColPit01					,"String"	,"一次配車払出ピット01"			,""		,"Primary Dispatch Pit 01"				,"一次配车出库口01"}
-		ControlTgt[T100_OkuriMsRt.ColPit02"				,ColPit02					,"String"	,"一次配車払出ピット02"			,""		,"Primary Dispatch Pit 02"				,"一次配车出库口02"}
-		ControlTgt[T100_OkuriMsRt.ColPit03"				,ColPit03					,"String"	,"一次配車払出ピット03"			,""		,"Primary Dispatch Pit 03"				,"一次配车出库口03"}
-		ControlTgt[T100_OkuriMsRt.ColPit04"				,ColPit04					,"String"	,"一次配車払出ピット04"			,""		,"Primary Dispatch Pit 04"				,"一次配车出库口04"}
-		ControlTgt[T100_OkuriMsRt.ColPit05"				,ColPit05					,"String"	,"一次配車払出ピット05"			,""		,"Primary Dispatch Pit 05"				,"一次配车出库口05"}
-
-		ControlTgt[T100_OkuriMsRt.ColCLName01"			,ColCLName01				,"String"	,"荷主名"						,""		,"Client Name"							,"货主名称"}
-		ControlTgt[T100_OkuriMsRt.ColClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"				,""		,"Client Group Code"					,"货主组代码"}
-		ControlTgt[T100_OkuriMsRt.ColCLGpName01"			,ColCLGpName01			,"String"	,"荷主グループ標記名"			,""		,"Client Group Display Name"			,"货主组显示名称"}
+		ControlTgt[T100_OkuriMsRt.ColCLName01] 				= TB_CLName01;
+		ControlTgt[T100_OkuriMsRt.ColClGpCD] 				= TB_ClGpCD;
+		ControlTgt[T100_OkuriMsRt.ColCLGpName01] 			= TB_CLGpName01;
 		
 		
-		ControlTgt[T100_OkuriMsRt.ColMsClCd"				,ColMsClCd					,"String"	,"明細荷主コード"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsInvoiceWhCd"		,ColMsInvoiceWhCd			,"String"	,"明細倉庫コード"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsOkuriNo"			,ColMsOkuriNo				,"String"	,"明細送り状番号"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsNo"				,ColMsNo					,"int"		,"明細番号"						,"Key"}
-		ControlTgt[T100_OkuriMsRt.ColMsDeliNo"			,ColMsDeliNo				,"String"	,"明細出荷番号"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsDelliMsNo"			,ColMsDelliMsNo			,"int"		,"明細出荷番号明細番号"			,""}
-		ControlTgt[T100_OkuriMsRt.ColMsClOrderNo"			,ColMsClOrderNo			,"String"	,"明細荷主管理番号"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsClGpCd"			,ColMsClGpCd				,"String"	,"明細荷主グループコード"		,""}
-		ControlTgt[T100_OkuriMsRt.ColMsItemCd"			,ColMsItemCd				,"String"	,"明細商品コード"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsItemName01"		,ColMsItemName01			,"String"	,"明細商品表記名"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsItemName02"		,ColMsItemName02			,"String"	,"明細商品正式名"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsItemName03"		,ColMsItemName03			,"String"	,"明細商品略名"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsUnitWeight"		,ColMsUnitWeight			,"float"	,"明細単位重量"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsUnitSize"			,ColMsUnitSize			,"float"	,"明細単位サイズ"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsQty"				,ColMsQty					,"int"		,"明細個数"						,""}
-		ControlTgt[T100_OkuriMsRt.ColMsPackingQty"		,ColMsPackingQty			,"int"		,"明細荷姿数量"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsUnitName"			,ColMsUnitName			,"String"	,"明細明細単位"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsSubTotalWeight"	,ColMsSubTotalWeight		,"float"	,"明細明細重量"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsSubTotalSize"		,ColMsSubTotalSize		,"float"	,"明細明細サイズ"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsUnitPrice"			,ColMsUnitPrice			,"float"	,"明細単価"						,""}
-		ControlTgt[T100_OkuriMsRt.ColMsSubTotalPrice"		,ColMsSubTotalPrice		,"float"	,"明細金額"						,""}
-		ControlTgt[T100_OkuriMsRt.ColMsCategoryCd"		,ColMsCategoryCd			,"String"	,"明細商品分類"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsCategoryName"		,ColMsCategoryName		,"String"	,"明細商品分類名"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsTildFG"			,ColMsTildFG				,"String"	,"明細温度区分"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsTildName"			,ColMsTildName			,"String"	,"明細温度区分名"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsCom01"				,ColMsCom01				,"String"	,"明細コメント01"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsCom02"				,ColMsCom02				,"String"	,"明細コメント02"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsCom03"				,ColMsCom03				,"String"	,"明細コメント03"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsCom04"				,ColMsCom04				,"String"	,"明細コメント04"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsCom05"				,ColMsCom05				,"String"	,"明細コメント05"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsEntryDate"			,ColMsEntryDate			,"DateTime"	,"明細登録日"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsUpdateDate"		,ColMsUpdateDate			,"DateTime"	,"明細更新日"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsEntryUser"			,ColMsEntryUser			,"String"	,"明細登録者"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsUpdateUser"		,ColMsUpdateUser			,"String"	,"明細更新者"					,""}
-		ControlTgt[T100_OkuriMsRt.ColMsLot"				,ColMsLot					,"String"	,"明細ロット指定"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsExpDate"			,ColMsExpDate				,"Date"		,"明細賞味期限指定"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsPackingType"		,ColMsPackingType			,"int"		,"明細荷姿タイプ"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsClItemCd"			,ColMsClItemCd			,"String"	,"明細荷主商品CD"				,""}
-		ControlTgt[T100_OkuriMsRt.ColMsItemMDNo"			,ColMsItemMDNo			,"String"	,"明細型番"						,""}
-		ControlTgt[T100_OkuriMsRt.ColMsJanCd"				,ColMsJanCd				,"String"	,"明細荷姿JanCd"				,""}
+		ControlTgt[T100_OkuriMsRt.ColMsClCd] 				= TB_MsClCd;
+		ControlTgt[T100_OkuriMsRt.ColMsInvoiceWhCd] 		= TB_MsInvoiceWhCd;
+		ControlTgt[T100_OkuriMsRt.ColMsOkuriNo] 			= TB_MsOkuriNo;
+		ControlTgt[T100_OkuriMsRt.ColMsNo] 					= TB_MsNo;
+		ControlTgt[T100_OkuriMsRt.ColMsDeliNo] 				= TB_MsDeliNo;
+		ControlTgt[T100_OkuriMsRt.ColMsDelliMsNo] 			= TB_MsDelliMsNo;
+		ControlTgt[T100_OkuriMsRt.ColMsClOrderNo] 			= TB_MsClOrderNo;
+		ControlTgt[T100_OkuriMsRt.ColMsClGpCd] 				= TB_MsClGpCd;
+		ControlTgt[T100_OkuriMsRt.ColMsItemCd] 				= TB_MsItemCd;
+		ControlTgt[T100_OkuriMsRt.ColMsItemName01] 			= TB_MsItemName01;
+		ControlTgt[T100_OkuriMsRt.ColMsItemName02] 			= TB_MsItemName02;
+		ControlTgt[T100_OkuriMsRt.ColMsItemName03] 			= TB_MsItemName03;
+		ControlTgt[T100_OkuriMsRt.ColMsUnitWeight] 			= TB_MsUnitWeight;
+		ControlTgt[T100_OkuriMsRt.ColMsUnitSize] 			= TB_MsUnitSize;
+		ControlTgt[T100_OkuriMsRt.ColMsQty] 				= TB_MsQty;
+		ControlTgt[T100_OkuriMsRt.ColMsPackingQty] 			= TB_MsPackingQty;
+		ControlTgt[T100_OkuriMsRt.ColMsUnitName] 			= TB_MsUnitName;
+		ControlTgt[T100_OkuriMsRt.ColMsSubTotalWeight]		= TB_MsSubTotalWeight;
+		ControlTgt[T100_OkuriMsRt.ColMsSubTotalSize] 		= TB_MsSubTotalSize;
+		ControlTgt[T100_OkuriMsRt.ColMsUnitPrice] 			= TB_MsUnitPrice;
+		ControlTgt[T100_OkuriMsRt.ColMsSubTotalPrice] 		= TB_MsSubTotalPrice;
+		ControlTgt[T100_OkuriMsRt.ColMsCategoryCd] 			= TB_MsCategoryCd;
+		ControlTgt[T100_OkuriMsRt.ColMsCategoryName] 		= TB_MsCategoryName;
+		ControlTgt[T100_OkuriMsRt.ColMsTildFG] 				= TB_MsTildFG;
+		ControlTgt[T100_OkuriMsRt.ColMsTildName] 			= TB_MsTildName;
+		ControlTgt[T100_OkuriMsRt.ColMsCom01] 				= TB_MsCom01;
+		ControlTgt[T100_OkuriMsRt.ColMsCom02] 				= TB_MsCom02;
+		ControlTgt[T100_OkuriMsRt.ColMsCom03] 				= TB_MsCom03;
+		ControlTgt[T100_OkuriMsRt.ColMsCom04] 				= TB_MsCom04;
+		ControlTgt[T100_OkuriMsRt.ColMsCom05] 				= TB_MsCom05;
+		ControlTgt[T100_OkuriMsRt.ColMsEntryDate] 			= TB_MsEntryDate;
+		ControlTgt[T100_OkuriMsRt.ColMsUpdateDate] 			= TB_MsUpdateDate;
+		ControlTgt[T100_OkuriMsRt.ColMsEntryUser] 			= TB_MsEntryUser;
+		ControlTgt[T100_OkuriMsRt.ColMsUpdateUser] 			= TB_MsUpdateUser;
+		ControlTgt[T100_OkuriMsRt.ColMsLot] 				= TB_MsLot;
+		ControlTgt[T100_OkuriMsRt.ColMsExpDate] 			= TB_MsExpDate;
+		ControlTgt[T100_OkuriMsRt.ColMsPackingType] 		= TB_MsPackingType;
+		ControlTgt[T100_OkuriMsRt.ColMsClItemCd] 			= TB_MsClItemCd;
+		ControlTgt[T100_OkuriMsRt.ColMsItemMDNo] 			= TB_MsItemMDNo;
+		ControlTgt[T100_OkuriMsRt.ColMsJanCd] 				= TB_MsJanCd;
 		*/
-		
 		
 		
 		OkuriMsSearchKickBtn.addActionListener(new AbstractAction(){
