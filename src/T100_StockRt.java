@@ -245,8 +245,8 @@ public class T100_StockRt{
 				,{"Date"		,null	,"RangeEnd"			,ColSearchExpdateMax			,""											,"消費期限"			,"終了"	,"Expiration Date"		,"To"	,"有效期"			,"结束"}
 				,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin		,""											,"入荷実績日"		,"開始"	,"Receipt Date"			,"From"	,"入库日期"			,"开始"}
 				,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax		,""											,"入荷実績日"		,"終了"	,"Receipt Date"			,"To"	,"入库日期"			,"结束"}
-				,{"Integer"		,null	,"RangeMin"			,ColSearchQtyMin				,""											,"数量最小"			,""		,"Minimum Qty"			,""		,"最小数量"			,""}
-				,{"Integer"		,null	,"RangeMax"			,ColSearchQtyMax				,""											,"数量最大"			,""		,"Maximum Qty"			,""		,"最大数量"			,""}
+				,{"Integer"		,null	,"RangeMin"			,ColSearchQtyMin				,""											,"数量"				,"最小"	,"Qty"					,"Min"	,"数量"				,"最小"}
+				,{"Integer"		,null	,"RangeMax"			,ColSearchQtyMax				,""											,"数量"				,"最大"	,"Qty"					,"Max"	,"数量"				,"最大"}
 				,{"Integer"		,null	,"RangeMin"			,ColSearchShipPlanQtyMin		,""											,"引当済数"			,"最小"	,"Allocated Qty"		,"Min"	,"已分配数量"		,"最小"}
 				,{"Integer"		,null	,"RangeMax"			,ColSearchShipPlanQtyMax		,""											,"引当済数"			,"最大"	,"Allocated Qty"		,"Max"	,"已分配数量"		,"最大"}
 				,{"Integer"		,null	,"RangeMin"			,ColSearchPossibleQtyMin		,""											,"出荷可能数"		,"最小"	,"Available Qty"		,"Min"	,"可出库数量"		,"最小"}

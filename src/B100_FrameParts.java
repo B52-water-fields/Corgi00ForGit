@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
@@ -347,7 +348,22 @@ public class B100_FrameParts{
 		return PN;
 	}
 	
-	
+	/*===========================================================================
+ 	タブパネル配置
+	===========================================================================*/
+	public static JTabbedPane TabPaneSet(int x,int y,int GetWidth,int GetHeight,String[] TabName,JPanel[] SetPN,String TabColorType) {
+		JTabbedPane TabPane = new JTabbedPane();
+		
+		TabPane.setBounds(x*A00000_Main.Mul/A00000_Main.Div,y*A00000_Main.Mul/A00000_Main.Div,GetWidth*A00000_Main.Mul/A00000_Main.Div,GetHeight*A00000_Main.Mul/A00000_Main.Div);
+		
+		if(null!=TabName && 0<TabName.length) {
+			for(int i=0;i<TabName.length;i++) {
+				TabPane.addTab(TabName[i], SetPN[i]);
+				TabPane.setBackgroundAt(i, SelectColer(TabColorType));
+			}
+		}
+		return TabPane;
+	}
 	
 	/*===========================================================================
 	テーブルセル表示位置設定用
