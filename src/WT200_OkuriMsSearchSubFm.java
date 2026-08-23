@@ -90,9 +90,16 @@ public class WT200_OkuriMsSearchSubFm{
 		//ヘッダ表示パネル
 		JPanel PN_HD01 = B100_FrameParts.JPanelSet(10,40,860,280,"White");
 		JPanel PN_HD02 = B100_FrameParts.JPanelSet(10,40,860,280,"White");
-		String[] TabName 	= {"Main","Sub"};
-		JPanel[] SetPN		= {PN_HD01,PN_HD02};
-		JTabbedPane TabPaneSet	= B100_FrameParts.TabPaneSet(10,40,860,280,TabName,SetPN,"");
+		String[] HdTabName 	= {"Main","Sub"};
+		JPanel[] HdSetPN		= {PN_HD01,PN_HD02};
+		JTabbedPane HdTabPaneSet	= B100_FrameParts.TabPaneSet(10,40,860,280,HdTabName,HdSetPN,"");
+		
+		//ヘッダ表示パネル
+		JPanel PN_MS01 = B100_FrameParts.JPanelSet(10,40,860,145,"White");
+		JPanel PN_MS02 = B100_FrameParts.JPanelSet(10,40,860,145,"White");
+		String[] MsTabName 	= {"Main","Sub"};
+		JPanel[] MsSetPN		= {PN_MS01,PN_MS02};
+		JTabbedPane MsTabPaneSet	= B100_FrameParts.TabPaneSet(10,510,860,145,MsTabName,MsSetPN,"");
 		
 		//検索条件
 		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(		  0,  0,100,20,(String)DefinitionRt[T100_OkuriMsRt.ColSearchClCd][5]		+":"	,11,1);
@@ -288,7 +295,6 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_InvoiceStatus			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColInvoiceStatus][3]			+":"	,11,1);		//請求ステータス
 		final JTextField  TB_EntryPG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryPG][3]					+":"	,11,1);		//登録プログラム
 		final JTextField  TB_UpdatePG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdatePG][3]					+":"	,11,1);		//更新プログラム
-
 		
 
 		//明細情報標記用
@@ -333,6 +339,49 @@ public class WT200_OkuriMsSearchSubFm{
 		JLabel LB_MsClItemCd			= B100_FrameParts.JLabelSet(	   1200,725,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClItemCd][3]				+":"	,11,1);		//明細荷主商品CD
 		JLabel LB_MsItemMDNo			= B100_FrameParts.JLabelSet(	   1200,750,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsItemMDNo][3]				+":"	,11,1);		//明細型番
 		JLabel LB_MsJanCd				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsJanCd][3]					+":"	,11,1);		//明細荷姿JanCd
+		
+		final JTextField  TB_MsNo					= B100_FrameParts.JTextFieldSet(		100,525,100,20,"",11,0);		//明細番号
+		final JTextField  TB_MsDeliNo				= B100_FrameParts.JTextFieldSet(		100,550,100,20,"",11,0);		//明細出荷番号
+		final JTextField  TB_MsDelliMsNo			= B100_FrameParts.JTextFieldSet(		100,575,100,20,"",11,0);		//明細出荷番号明細番号
+		final JTextField  TB_MsClOrderNo			= B100_FrameParts.JTextFieldSet(		100,600,100,20,"",11,0);		//明細荷主管理番号
+		
+		final JTextField  TB_MsItemCd				= B100_FrameParts.JTextFieldSet(		300,525,100,20,"",11,0);		//明細商品コード
+		final JTextField  TB_MsItemName01			= B100_FrameParts.JTextFieldSet(		300,550,200,20,"",11,0);		//明細商品表記名
+		final JTextField  TB_MsItemName02			= B100_FrameParts.JTextFieldSet(		300,575,200,20,"",11,0);		//明細商品正式名
+		final JTextField  TB_MsItemName03			= B100_FrameParts.JTextFieldSet(		300,600,200,20,"",11,0);		//明細商品略名
+		final JTextField  TB_MsQty					= B100_FrameParts.JTextFieldSet(		300,625,100,20,"",11,0);		//明細個数
+		
+		final JTextField  TB_MsLot					= B100_FrameParts.JTextFieldSet(		600,525,100,20,"",11,0);		//明細ロット指定
+		final JTextField  TB_MsExpDate				= B100_FrameParts.JTextFieldSet(		600,550,100,20,"",11,0);		//明細賞味期限指定
+		final JTextField  TB_MsSubTotalWeight		= B100_FrameParts.JTextFieldSet(		600,575,100,20,"",11,0);		//明細明細重量
+		final JTextField  TB_MsSubTotalSize			= B100_FrameParts.JTextFieldSet(		600,600,100,20,"",11,0);		//明細明細サイズ
+		final JTextField  TB_MsPackingQty			= B100_FrameParts.JTextFieldSet(		600,625,100,20,"",11,0);		//明細荷姿数量
+		
+		final JTextField  TB_MsUnitPrice			= B100_FrameParts.JTextFieldSet(		800,525,100,20,"",11,0);		//明細単価
+		final JTextField  TB_MsSubTotalPrice		= B100_FrameParts.JTextFieldSet(		800,550,100,20,"",11,0);		//明細金額
+		final JTextField  TB_MsCategoryCd			= B100_FrameParts.JTextFieldSet(		800,575,100,20,"",11,0);		//明細商品分類
+		final JTextField  TB_MsCategoryName			= B100_FrameParts.JTextFieldSet(		800,600,100,20,"",11,0);		//明細商品分類名
+		final JTextField  TB_MsTildFG				= B100_FrameParts.JTextFieldSet(		800,625,100,20,"",11,0);		//明細温度区分
+		
+		final JTextField  TB_MsCom01				= B100_FrameParts.JTextFieldSet(	   1000,525,200,20,"",11,0);		//明細コメント01
+		final JTextField  TB_MsCom02				= B100_FrameParts.JTextFieldSet(	   1000,550,200,20,"",11,0);		//明細コメント02
+		final JTextField  TB_MsCom03				= B100_FrameParts.JTextFieldSet(	   1000,575,200,20,"",11,0);		//明細コメント03
+		final JTextField  TB_MsCom04				= B100_FrameParts.JTextFieldSet(	   1000,600,200,20,"",11,0);		//明細コメント04
+		final JTextField  TB_MsCom05				= B100_FrameParts.JTextFieldSet(	   1000,625,200,20,"",11,0);		//明細コメント05
+		
+		final JTextField  TB_MsEntryDate			= B100_FrameParts.JTextFieldSet(	   1300,525,100,20,"",11,0);		//明細登録日
+		final JTextField  TB_MsUpdateDate			= B100_FrameParts.JTextFieldSet(	   1300,550,100,20,"",11,0);		//明細更新日
+		final JTextField  TB_MsEntryUser			= B100_FrameParts.JTextFieldSet(	   1300,575,100,20,"",11,0);		//明細登録者
+		final JTextField  TB_MsUpdateUser			= B100_FrameParts.JTextFieldSet(	   1300,600,100,20,"",11,0);		//明細更新者
+		
+		final JTextField  TB_MsUnitName				= B100_FrameParts.JTextFieldSet(	   1300,625,100,20,"",11,0);		//明細明細単位
+		final JTextField  TB_MsUnitWeight			= B100_FrameParts.JTextFieldSet(	   1300,650,100,20,"",11,0);		//明細単位重量
+		final JTextField  TB_MsUnitSize				= B100_FrameParts.JTextFieldSet(	   1300,675,100,20,"",11,0);		//明細単位サイズ
+		final JTextField  TB_MsPackingType			= B100_FrameParts.JTextFieldSet(	   1300,700,100,20,"",11,0);		//明細荷姿タイプ
+		final JTextField  TB_MsClItemCd				= B100_FrameParts.JTextFieldSet(	   1300,725,100,20,"",11,0);		//明細荷主商品CD
+		final JTextField  TB_MsItemMDNo				= B100_FrameParts.JTextFieldSet(	   1300,750,100,20,"",11,0);		//明細型番
+		final JTextField  TB_MsJanCd				= B100_FrameParts.JTextFieldSet(	   1300,775,100,20,"",11,0);		//明細荷姿JanCd
+		
 		
 
 		PN_HD01.add(LB_ClDeliNo);
@@ -537,8 +586,8 @@ public class WT200_OkuriMsSearchSubFm{
 		PN_HD01.add(TB_UpdatePG);
 		
 		
-		OkuriMs_fm.add(TabPaneSet);
-		
+		OkuriMs_fm.add(HdTabPaneSet);
+		OkuriMs_fm.add(MsTabPaneSet);
 		
 		
 		
@@ -553,159 +602,159 @@ public class WT200_OkuriMsSearchSubFm{
 		//制御対象まとめる使わない項目はとりあえずnull
 		Object[] ControlTgt = new Object[RtOkuriMsRt.length];
 		
-		ControlTgt[T100_OkuriMsRt.ColClCd] 				= TB_ClCd;
-		ControlTgt[T100_OkuriMsRt.ColInvoiceWhCd]	 		= null;				//TB_ColInvoiceWhCd;
-		ControlTgt[T100_OkuriMsRt.ColOkuriNo] 				= TB_SearchOkuriNo;
-		ControlTgt[T100_OkuriMsRt.ColClDeliNo] 			= TB_ClDeliNo;
-		ControlTgt[T100_OkuriMsRt.ColPickupWhCd] 			= TB_PickupWhCd;
-		ControlTgt[T100_OkuriMsRt.ColPurposeFG] 			= TB_PurposeFG;
-		ControlTgt[T100_OkuriMsRt.ColPlanDate] 			= TB_PlanDate;
-		ControlTgt[T100_OkuriMsRt.ColShipDate] 			= TB_ShipDate;
-		ControlTgt[T100_OkuriMsRt.ColSPPlanDate] 			= TB_SPPlanDate;
-		ControlTgt[T100_OkuriMsRt.ColSPDate] 				= TB_SPDate;
-		ControlTgt[T100_OkuriMsRt.ColSPTimeFG] 			= TB_SPTimeFG;
-		ControlTgt[T100_OkuriMsRt.ColSPTimeStr]			= TB_SPTimeStr;
-		ControlTgt[T100_OkuriMsRt.ColSPTimeEnd] 			= TB_SPTimeEnd;
-		ControlTgt[T100_OkuriMsRt.ColTotalWeight] 		= TB_TotalWeight;
-		ControlTgt[T100_OkuriMsRt.ColTotalSize] 			= TB_TotalSize;
-		ControlTgt[T100_OkuriMsRt.ColTotalQty] 			= TB_TotalQty;
-		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd01] 	= TB_DeliveryTypeCd01;
-		ControlTgt[T100_OkuriMsRt.ColDeliTypeName] 		= null;				//TB_DeliTypeName;
-		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd02] 	= TB_DeliveryTypeCd02;
-		ControlTgt[T100_OkuriMsRt.ColDeliTypeName02] 		= null;				//TB_DeliTypeName02;
-		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd03] 	= TB_DeliveryTypeCd03;
-		ControlTgt[T100_OkuriMsRt.ColDeliTypeName03] 		= null;				//TB_DeliTypeName03;
-		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd04] 	= TB_DeliveryTypeCd04;
-		ControlTgt[T100_OkuriMsRt.ColDeliTypeName04] 		= null;				//TB_DeliTypeName04;
-		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd05] 	= TB_DeliveryTypeCd05;
-		ControlTgt[T100_OkuriMsRt.ColDeliTypeName05] 		= null;				//TB_DeliTypeName05;
+		ControlTgt[T100_OkuriMsRt.ColClCd] 					= TB_ClCd;
+		ControlTgt[T100_OkuriMsRt.ColInvoiceWhCd]	 			= null;				//TB_ColInvoiceWhCd;
+		ControlTgt[T100_OkuriMsRt.ColOkuriNo] 					= TB_SearchOkuriNo;
+		ControlTgt[T100_OkuriMsRt.ColClDeliNo] 				= TB_ClDeliNo;
+		ControlTgt[T100_OkuriMsRt.ColPickupWhCd] 				= TB_PickupWhCd;
+		ControlTgt[T100_OkuriMsRt.ColPurposeFG] 				= TB_PurposeFG;
+		ControlTgt[T100_OkuriMsRt.ColPlanDate] 				= TB_PlanDate;
+		ControlTgt[T100_OkuriMsRt.ColShipDate] 				= TB_ShipDate;
+		ControlTgt[T100_OkuriMsRt.ColSPPlanDate] 				= TB_SPPlanDate;
+		ControlTgt[T100_OkuriMsRt.ColSPDate] 					= TB_SPDate;
+		ControlTgt[T100_OkuriMsRt.ColSPTimeFG] 				= TB_SPTimeFG;
+		ControlTgt[T100_OkuriMsRt.ColSPTimeStr]				= TB_SPTimeStr;
+		ControlTgt[T100_OkuriMsRt.ColSPTimeEnd] 				= TB_SPTimeEnd;
+		ControlTgt[T100_OkuriMsRt.ColTotalWeight] 			= TB_TotalWeight;
+		ControlTgt[T100_OkuriMsRt.ColTotalSize] 				= TB_TotalSize;
+		ControlTgt[T100_OkuriMsRt.ColTotalQty] 				= TB_TotalQty;
+		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd01] 		= TB_DeliveryTypeCd01;
+		ControlTgt[T100_OkuriMsRt.ColDeliTypeName] 			= null;				//TB_DeliTypeName;
+		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd02] 		= TB_DeliveryTypeCd02;
+		ControlTgt[T100_OkuriMsRt.ColDeliTypeName02] 			= null;				//TB_DeliTypeName02;
+		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd03] 		= TB_DeliveryTypeCd03;
+		ControlTgt[T100_OkuriMsRt.ColDeliTypeName03] 			= null;				//TB_DeliTypeName03;
+		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd04] 		= TB_DeliveryTypeCd04;
+		ControlTgt[T100_OkuriMsRt.ColDeliTypeName04] 			= null;				//TB_DeliTypeName04;
+		ControlTgt[T100_OkuriMsRt.ColDeliveryTypeCd05] 		= TB_DeliveryTypeCd05;
+		ControlTgt[T100_OkuriMsRt.ColDeliTypeName05] 			= null;				//TB_DeliTypeName05;
 
-		ControlTgt[T100_OkuriMsRt.ColCodFG] 				= TB_CodFG;
+		ControlTgt[T100_OkuriMsRt.ColCodFG] 					= TB_CodFG;
 		ControlTgt[T100_OkuriMsRt.ColCodPayTotal] 			= TB_CodPayTotal;
-		ControlTgt[T100_OkuriMsRt.ColCodPay] 				= TB_CodPay;
-		ControlTgt[T100_OkuriMsRt.ColCodConsumptionTax] 	= TB_CodConsumptionTax;
+		ControlTgt[T100_OkuriMsRt.ColCodPay] 					= TB_CodPay;
+		ControlTgt[T100_OkuriMsRt.ColCodConsumptionTax] 		= TB_CodConsumptionTax;
 
-		ControlTgt[T100_OkuriMsRt.ColChildrenFG] 			= TB_ChildrenFG;
-		ControlTgt[T100_OkuriMsRt.ColParentOkuriNo] 		= TB_ParentOkuriNo;
+		ControlTgt[T100_OkuriMsRt.ColChildrenFG] 				= TB_ChildrenFG;
+		ControlTgt[T100_OkuriMsRt.ColParentOkuriNo] 			= TB_ParentOkuriNo;
 
-		ControlTgt[T100_OkuriMsRt.ColNiokuriCd] 			= TB_NiokuriCd;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriCd] 				= TB_NiokuriCd;
 		ControlTgt[T100_OkuriMsRt.ColNiokuriDepartmentCd] 	= TB_NiokuriDepartmentCd;
-		ControlTgt[T100_OkuriMsRt.ColNiokuriName01] 		= TB_NiokuriName01;
-		ControlTgt[T100_OkuriMsRt.ColNiokuriName02] 		= TB_NiokuriName02;
-		ControlTgt[T100_OkuriMsRt.ColNiokuriName03] 		= TB_NiokuriName03;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriName01] 			= TB_NiokuriName01;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriName02] 			= TB_NiokuriName02;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriName03] 			= TB_NiokuriName03;
 		ControlTgt[T100_OkuriMsRt.ColNiokuriPost] 			= TB_NiokuriPost;
 		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd01] 			= TB_NiokuriAdd01;
 		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd02] 			= TB_NiokuriAdd02;
 		ControlTgt[T100_OkuriMsRt.ColNiokuriAdd03] 			= TB_NiokuriAdd03;
-		ControlTgt[T100_OkuriMsRt.ColNioKuriTel] 			= TB_NioKuriTel;
-		ControlTgt[T100_OkuriMsRt.ColNioKuriFax] 			= TB_NioKuriFax;
+		ControlTgt[T100_OkuriMsRt.ColNioKuriTel] 				= TB_NioKuriTel;
+		ControlTgt[T100_OkuriMsRt.ColNioKuriFax] 				= TB_NioKuriFax;
 		ControlTgt[T100_OkuriMsRt.ColNioKuriMail] 			= TB_NioKuriMail;
-		ControlTgt[T100_OkuriMsRt.ColNiokuriMunicCd] 		= TB_NiokuriMunicCd;
+		ControlTgt[T100_OkuriMsRt.ColNiokuriMunicCd] 			= TB_NiokuriMunicCd;
 
-		ControlTgt[T100_OkuriMsRt.ColDeliCd] 				= TB_DeliCd;
+		ControlTgt[T100_OkuriMsRt.ColDeliCd] 					= TB_DeliCd;
 		ControlTgt[T100_OkuriMsRt.ColClDeliCd] 				= TB_ClDeliCd;
 		ControlTgt[T100_OkuriMsRt.ColDeliDepartmentCd] 		= TB_DeliDepartmentCd;
-		ControlTgt[T100_OkuriMsRt.ColDeliName01] 			= TB_DeliName01;
-		ControlTgt[T100_OkuriMsRt.ColDeliName02]		 	= TB_DeliName02;
-		ControlTgt[T100_OkuriMsRt.ColDeliName03] 			= TB_DeliName03;
+		ControlTgt[T100_OkuriMsRt.ColDeliName01] 				= TB_DeliName01;
+		ControlTgt[T100_OkuriMsRt.ColDeliName02]		 		= TB_DeliName02;
+		ControlTgt[T100_OkuriMsRt.ColDeliName03] 				= TB_DeliName03;
 		ControlTgt[T100_OkuriMsRt.ColDeliPost] 				= TB_DeliPost;
-		ControlTgt[T100_OkuriMsRt.ColDeliAdd01] 			= TB_DeliAdd01;
-		ControlTgt[T100_OkuriMsRt.ColDeliAdd02] 			= TB_DeliAdd02;
-		ControlTgt[T100_OkuriMsRt.ColDeliAdd03] 			= TB_DeliAdd03;
-		ControlTgt[T100_OkuriMsRt.ColDeliTel] 				= TB_DeliTel;
-		ControlTgt[T100_OkuriMsRt.ColDeliFax] 				= TB_DeliFax;
+		ControlTgt[T100_OkuriMsRt.ColDeliAdd01] 				= TB_DeliAdd01;
+		ControlTgt[T100_OkuriMsRt.ColDeliAdd02] 				= TB_DeliAdd02;
+		ControlTgt[T100_OkuriMsRt.ColDeliAdd03] 				= TB_DeliAdd03;
+		ControlTgt[T100_OkuriMsRt.ColDeliTel] 					= TB_DeliTel;
+		ControlTgt[T100_OkuriMsRt.ColDeliFax] 					= TB_DeliFax;
 		ControlTgt[T100_OkuriMsRt.ColDeliMail] 				= TB_DeliMail;
 		ControlTgt[T100_OkuriMsRt.ColDeliMunicCd] 			= TB_DeliMunicCd;
 
-		ControlTgt[T100_OkuriMsRt.ColCom01] 				= TB_Com01;
-		ControlTgt[T100_OkuriMsRt.ColCom02] 				= TB_Com02;
-		ControlTgt[T100_OkuriMsRt.ColCom03] 				= TB_Com03;
-		ControlTgt[T100_OkuriMsRt.ColCom04] 				= TB_Com04;
-		ControlTgt[T100_OkuriMsRt.ColCom05] 				= TB_Com05;
-/*
-		ControlTgt[T100_OkuriMsRt.ColStatus] 				= TB_Status;
-		ControlTgt[T100_OkuriMsRt.ColTaxFg] 				= TB_TaxFg;
-		ControlTgt[T100_OkuriMsRt.ColTaxRate] 				= TB_TaxRate;
-		ControlTgt[T100_OkuriMsRt.ColDeliFee] 				= TB_DeliFee;
+		ControlTgt[T100_OkuriMsRt.ColCom01] 					= TB_Com01;
+		ControlTgt[T100_OkuriMsRt.ColCom02] 					= TB_Com02;
+		ControlTgt[T100_OkuriMsRt.ColCom03] 					= TB_Com03;
+		ControlTgt[T100_OkuriMsRt.ColCom04] 					= TB_Com04;
+		ControlTgt[T100_OkuriMsRt.ColCom05] 					= TB_Com05;
+
+		ControlTgt[T100_OkuriMsRt.ColStatus] 					= TB_Status;
+		ControlTgt[T100_OkuriMsRt.ColTaxFg] 					= TB_TaxFg;
+		ControlTgt[T100_OkuriMsRt.ColTaxRate] 					= TB_TaxRate;
+		ControlTgt[T100_OkuriMsRt.ColDeliFee] 					= TB_DeliFee;
 		ControlTgt[T100_OkuriMsRt.ColAddDeliFee01] 			= TB_AddDeliFee01;
 		ControlTgt[T100_OkuriMsRt.ColAddDeliFee02] 			= TB_AddDeliFee02;
 		ControlTgt[T100_OkuriMsRt.ColAddDeliFee03] 			= TB_AddDeliFee03;
-		ControlTgt[T100_OkuriMsRt.ColHaighWayFee01] 		= TB_HaighWayFee01;
-		ControlTgt[T100_OkuriMsRt.ColHaighWayFee02] 		= TB_HaighWayFee02;
-		ControlTgt[T100_OkuriMsRt.ColConsumptionTax] 		= TB_ConsumptionTax;
+		ControlTgt[T100_OkuriMsRt.ColHaighWayFee01] 			= TB_HaighWayFee01;
+		ControlTgt[T100_OkuriMsRt.ColHaighWayFee02] 			= TB_HaighWayFee02;
+		ControlTgt[T100_OkuriMsRt.ColConsumptionTax] 			= TB_ConsumptionTax;
 		ControlTgt[T100_OkuriMsRt.ColWithOutTaxTotal] 		= TB_WithOutTaxTotal;
 		ControlTgt[T100_OkuriMsRt.ColTotalFee] 				= TB_TotalFee;
 		ControlTgt[T100_OkuriMsRt.ColFeeFixFG] 				= TB_FeeFixFG;
-		ControlTgt[T100_OkuriMsRt.ColFeeFixDate] 			= TB_FeeFixDate;
-		ControlTgt[T100_OkuriMsRt.ColReceiptStampFG] 		= TB_ReceiptStampFG;
+		ControlTgt[T100_OkuriMsRt.ColFeeFixDate] 				= TB_FeeFixDate;
+		ControlTgt[T100_OkuriMsRt.ColReceiptStampFG] 			= TB_ReceiptStampFG;
 		ControlTgt[T100_OkuriMsRt.ColReceiptStampDate] 		= TB_ReceiptStampDate;
-		ControlTgt[T100_OkuriMsRt.ColInvoiceStatus] 		= TB_InvoiceStatus;
-		ControlTgt[T100_OkuriMsRt.ColEntryDate] 			= TB_EntryDate;
-		ControlTgt[T100_OkuriMsRt.ColUpdateDate] 			= TB_UpdateDate;
-		ControlTgt[T100_OkuriMsRt.ColEntryUser] 			= TB_EntryUser;
-		ControlTgt[T100_OkuriMsRt.ColUpdateUser] 			= TB_UpdateUser;
-		ControlTgt[T100_OkuriMsRt.ColEntryPG] 				= TB_EntryPG;
+		ControlTgt[T100_OkuriMsRt.ColInvoiceStatus] 			= TB_InvoiceStatus;
+		ControlTgt[T100_OkuriMsRt.ColEntryDate] 				= null;				//TB_EntryDate;
+		ControlTgt[T100_OkuriMsRt.ColUpdateDate] 				= null;				//TB_UpdateDate;
+		ControlTgt[T100_OkuriMsRt.ColEntryUser] 				= null;				//TB_EntryUser;
+		ControlTgt[T100_OkuriMsRt.ColUpdateUser] 				= null;				//TB_UpdateUser;
+		ControlTgt[T100_OkuriMsRt.ColEntryPG] 					= TB_EntryPG;
 		ControlTgt[T100_OkuriMsRt.ColUpdatePG] 				= TB_UpdatePG;
 
-		ControlTgt[T100_OkuriMsRt.ColUseFeeBasePtCd] 		= TB_UseFeeBasePtCd;
-		ControlTgt[T100_OkuriMsRt.ColWmsStatus] 			= TB_WmsStatus;
-		ControlTgt[T100_OkuriMsRt.ColWmsShipDate] 			= TB_WmsShipDate;
-		ControlTgt[T100_OkuriMsRt.ColCourseGpCd] 			= TB_CourseGpCd;
-		ControlTgt[T100_OkuriMsRt.ColCourseCD] 				= TB_CourseCD;
-		ControlTgt[T100_OkuriMsRt.ColCourseCDEda] 			= TB_CourseCDEda;
-		ControlTgt[T100_OkuriMsRt.ColPitGrp] 				= TB_PitGrp;
-		ControlTgt[T100_OkuriMsRt.ColPit01] 				= TB_Pit01;
-		ControlTgt[T100_OkuriMsRt.ColPit02] 				= TB_Pit02;
-		ControlTgt[T100_OkuriMsRt.ColPit03] 				= TB_Pit03;
-		ControlTgt[T100_OkuriMsRt.ColPit04] 				= TB_Pit04;
-		ControlTgt[T100_OkuriMsRt.ColPit05] 				= TB_Pit05;
+		ControlTgt[T100_OkuriMsRt.ColUseFeeBasePtCd] 			= null;				//TB_UseFeeBasePtCd;
+		ControlTgt[T100_OkuriMsRt.ColWmsStatus] 				= null;				//TB_WmsStatus;
+		ControlTgt[T100_OkuriMsRt.ColWmsShipDate] 			= null;				//TB_WmsShipDate;
+		ControlTgt[T100_OkuriMsRt.ColCourseGpCd] 				= null;				//TB_CourseGpCd;
+		ControlTgt[T100_OkuriMsRt.ColCourseCD] 				= null;				//TB_CourseCD;
+		ControlTgt[T100_OkuriMsRt.ColCourseCDEda] 			= null;				//TB_CourseCDEda;
+		ControlTgt[T100_OkuriMsRt.ColPitGrp] 					= null;				//TB_PitGrp;
+		ControlTgt[T100_OkuriMsRt.ColPit01] 					= null;				//TB_Pit01;
+		ControlTgt[T100_OkuriMsRt.ColPit02] 					= null;				//TB_Pit02;
+		ControlTgt[T100_OkuriMsRt.ColPit03] 					= null;				//TB_Pit03;
+		ControlTgt[T100_OkuriMsRt.ColPit04] 					= null;				//TB_Pit04;
+		ControlTgt[T100_OkuriMsRt.ColPit05] 					= null;				//TB_Pit05;
 
-		ControlTgt[T100_OkuriMsRt.ColCLName01] 				= TB_CLName01;
-		ControlTgt[T100_OkuriMsRt.ColClGpCD] 				= TB_ClGpCD;
-		ControlTgt[T100_OkuriMsRt.ColCLGpName01] 			= TB_CLGpName01;
+		ControlTgt[T100_OkuriMsRt.ColCLName01] 				= null;				//TB_CLName01;
+		ControlTgt[T100_OkuriMsRt.ColClGpCD] 					= null;				//TB_ClGpCD;
+		ControlTgt[T100_OkuriMsRt.ColCLGpName01] 				= null;				//TB_CLGpName01;
 		
 		
-		ControlTgt[T100_OkuriMsRt.ColMsClCd] 				= TB_MsClCd;
-		ControlTgt[T100_OkuriMsRt.ColMsInvoiceWhCd] 		= TB_MsInvoiceWhCd;
-		ControlTgt[T100_OkuriMsRt.ColMsOkuriNo] 			= TB_MsOkuriNo;
+		ControlTgt[T100_OkuriMsRt.ColMsClCd] 					= null;				//TB_MsClCd;
+		ControlTgt[T100_OkuriMsRt.ColMsInvoiceWhCd] 			= null;				//TB_MsInvoiceWhCd;
+		ControlTgt[T100_OkuriMsRt.ColMsOkuriNo] 				= null;				//TB_MsOkuriNo;
 		ControlTgt[T100_OkuriMsRt.ColMsNo] 					= TB_MsNo;
 		ControlTgt[T100_OkuriMsRt.ColMsDeliNo] 				= TB_MsDeliNo;
 		ControlTgt[T100_OkuriMsRt.ColMsDelliMsNo] 			= TB_MsDelliMsNo;
 		ControlTgt[T100_OkuriMsRt.ColMsClOrderNo] 			= TB_MsClOrderNo;
-		ControlTgt[T100_OkuriMsRt.ColMsClGpCd] 				= TB_MsClGpCd;
+		ControlTgt[T100_OkuriMsRt.ColMsClGpCd] 				= null;				//TB_MsClGpCd;
 		ControlTgt[T100_OkuriMsRt.ColMsItemCd] 				= TB_MsItemCd;
 		ControlTgt[T100_OkuriMsRt.ColMsItemName01] 			= TB_MsItemName01;
 		ControlTgt[T100_OkuriMsRt.ColMsItemName02] 			= TB_MsItemName02;
 		ControlTgt[T100_OkuriMsRt.ColMsItemName03] 			= TB_MsItemName03;
 		ControlTgt[T100_OkuriMsRt.ColMsUnitWeight] 			= TB_MsUnitWeight;
-		ControlTgt[T100_OkuriMsRt.ColMsUnitSize] 			= TB_MsUnitSize;
-		ControlTgt[T100_OkuriMsRt.ColMsQty] 				= TB_MsQty;
+		ControlTgt[T100_OkuriMsRt.ColMsUnitSize] 				= TB_MsUnitSize;
+		ControlTgt[T100_OkuriMsRt.ColMsQty] 					= TB_MsQty;
 		ControlTgt[T100_OkuriMsRt.ColMsPackingQty] 			= TB_MsPackingQty;
-		ControlTgt[T100_OkuriMsRt.ColMsUnitName] 			= TB_MsUnitName;
+		ControlTgt[T100_OkuriMsRt.ColMsUnitName] 				= TB_MsUnitName;
 		ControlTgt[T100_OkuriMsRt.ColMsSubTotalWeight]		= TB_MsSubTotalWeight;
-		ControlTgt[T100_OkuriMsRt.ColMsSubTotalSize] 		= TB_MsSubTotalSize;
+		ControlTgt[T100_OkuriMsRt.ColMsSubTotalSize] 			= TB_MsSubTotalSize;
 		ControlTgt[T100_OkuriMsRt.ColMsUnitPrice] 			= TB_MsUnitPrice;
 		ControlTgt[T100_OkuriMsRt.ColMsSubTotalPrice] 		= TB_MsSubTotalPrice;
 		ControlTgt[T100_OkuriMsRt.ColMsCategoryCd] 			= TB_MsCategoryCd;
-		ControlTgt[T100_OkuriMsRt.ColMsCategoryName] 		= TB_MsCategoryName;
+		ControlTgt[T100_OkuriMsRt.ColMsCategoryName] 			= TB_MsCategoryName;
 		ControlTgt[T100_OkuriMsRt.ColMsTildFG] 				= TB_MsTildFG;
-		ControlTgt[T100_OkuriMsRt.ColMsTildName] 			= TB_MsTildName;
-		ControlTgt[T100_OkuriMsRt.ColMsCom01] 				= TB_MsCom01;
-		ControlTgt[T100_OkuriMsRt.ColMsCom02] 				= TB_MsCom02;
-		ControlTgt[T100_OkuriMsRt.ColMsCom03] 				= TB_MsCom03;
-		ControlTgt[T100_OkuriMsRt.ColMsCom04] 				= TB_MsCom04;
-		ControlTgt[T100_OkuriMsRt.ColMsCom05] 				= TB_MsCom05;
+		ControlTgt[T100_OkuriMsRt.ColMsTildName] 				= null;				//TB_MsTildName;
+		ControlTgt[T100_OkuriMsRt.ColMsCom01] 					= TB_MsCom01;
+		ControlTgt[T100_OkuriMsRt.ColMsCom02] 					= TB_MsCom02;
+		ControlTgt[T100_OkuriMsRt.ColMsCom03] 					= TB_MsCom03;
+		ControlTgt[T100_OkuriMsRt.ColMsCom04] 					= TB_MsCom04;
+		ControlTgt[T100_OkuriMsRt.ColMsCom05] 					= TB_MsCom05;
 		ControlTgt[T100_OkuriMsRt.ColMsEntryDate] 			= TB_MsEntryDate;
 		ControlTgt[T100_OkuriMsRt.ColMsUpdateDate] 			= TB_MsUpdateDate;
 		ControlTgt[T100_OkuriMsRt.ColMsEntryUser] 			= TB_MsEntryUser;
 		ControlTgt[T100_OkuriMsRt.ColMsUpdateUser] 			= TB_MsUpdateUser;
-		ControlTgt[T100_OkuriMsRt.ColMsLot] 				= TB_MsLot;
-		ControlTgt[T100_OkuriMsRt.ColMsExpDate] 			= TB_MsExpDate;
-		ControlTgt[T100_OkuriMsRt.ColMsPackingType] 		= TB_MsPackingType;
-		ControlTgt[T100_OkuriMsRt.ColMsClItemCd] 			= TB_MsClItemCd;
-		ControlTgt[T100_OkuriMsRt.ColMsItemMDNo] 			= TB_MsItemMDNo;
-		ControlTgt[T100_OkuriMsRt.ColMsJanCd] 				= TB_MsJanCd;
-		*/
+		ControlTgt[T100_OkuriMsRt.ColMsLot] 					= TB_MsLot;
+		ControlTgt[T100_OkuriMsRt.ColMsExpDate] 				= TB_MsExpDate;
+		ControlTgt[T100_OkuriMsRt.ColMsPackingType] 			= TB_MsPackingType;
+		ControlTgt[T100_OkuriMsRt.ColMsClItemCd] 				= TB_MsClItemCd;
+		ControlTgt[T100_OkuriMsRt.ColMsItemMDNo] 				= TB_MsItemMDNo;
+		ControlTgt[T100_OkuriMsRt.ColMsJanCd] 					= TB_MsJanCd;
+		
 		
 		
 		OkuriMsSearchKickBtn.addActionListener(new AbstractAction(){
