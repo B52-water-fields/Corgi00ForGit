@@ -53,7 +53,7 @@ public class B100_DefaultVariable{
 	/**********************
 	↓多言語対応
 	**********************/
-	static final String[][] LanguageList = {{"JP:Japanese","EN:English","ZH:Chinese"},{"JP","EN","ZH"},{"Japanese","English","Chinese"}};
+	static final String[][] LanguageList = {{"JP:Japanese","EN:English","ZH:Chinese","VN:Vietnamese"},{"JP","EN","ZH","VN"},{"Japanese","English","Chinese","Vietnamese"}};
 	
 	static String[][] SearchTaxFgList;				//検索条件：外税内税区分
 	static String[][] TaxFgList;						//外税内税区分

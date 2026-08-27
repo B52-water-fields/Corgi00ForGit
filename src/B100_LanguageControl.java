@@ -31,6 +31,9 @@ public class B100_LanguageControl{
 				case "ZH":
 					if(6<TgtRt[i].length) {	Rt[(int)TgtRt[i][1]][3]	= TgtRt[i][ 6];}
 					break;
+				case "VN":
+					if(7<TgtRt[i].length) {	Rt[(int)TgtRt[i][1]][3]	= TgtRt[i][ 7];}
+					break;
 				default:
 					break;
 			}
@@ -61,6 +64,10 @@ public class B100_LanguageControl{
 					if( 9<TgtDefinition[i].length) { Rt[(int)TgtDefinition[i][3]][5]	= TgtDefinition[i][ 9];}
 					if(10<TgtDefinition[i].length) { Rt[(int)TgtDefinition[i][3]][6]	= TgtDefinition[i][10];}
 					break;
+				case "VN":
+					if(11<TgtDefinition[i].length) { Rt[(int)TgtDefinition[i][3]][5]	= TgtDefinition[i][11];}
+					if(12<TgtDefinition[i].length) { Rt[(int)TgtDefinition[i][3]][6]	= TgtDefinition[i][12];}
+					break;
 				default:
 					break;
 			}
@@ -71,6 +78,7 @@ public class B100_LanguageControl{
 	static final int ColJP = 0;
 	static final int ColEN = 1;
 	static final int ColZH = 2;
+	static final int ColVN = 3;
 	
 	private static String[][] LanguageListRt(String[][][] TgtList) {
 		String[][] Rt = new String[3][0];
@@ -88,6 +96,10 @@ public class B100_LanguageControl{
 				case "ZH":
 					if(ColZH<TgtList.length)
 						Rt	= TgtList[ColZH];
+					break;
+				case "VN":
+					if(ColVN<TgtList.length)
+						Rt	= TgtList[ColVN];
 					break;
 				default:
 					break;

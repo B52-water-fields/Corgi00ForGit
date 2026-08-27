@@ -178,88 +178,88 @@ public class T100_StockRt{
 	static final int ColSearchJanCd				= (int)19;	//ソースマーク_BCD（バラ）
 	static final int ColSearchItemMdNo			= (int)20;	//商品型番
 	
-	public static Object[][] RtStockRt(){
-		Object[][] RtStockRtBase = {
-				 {"ClCd"			,ColClCd			,"String"	,"荷主コード"					,"key"	,"Client Code"				,"货主代码"}
-				,{"CLName"			,ColCLName			,"String"	,"荷主表記名"					,""		,"Client Name"				,"货主名称"}
-				,{"WhCd"			,ColWhCd			,"String"	,"倉庫コード"					,"key"	,"Warehouse Code"			,"仓库代码"}
-				,{"ClWHName"		,ColClWHName		,"String"	,"担当倉庫名"					,""		,"Warehouse Name"			,"仓库名称"}
-				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループCD"				,""		,"Client Group Code"		,"货主组代码"}
-				,{"ClGpName"		,ColClGpName		,"String"	,"グループ名1"					,""		,"Client Group Name"		,"货主组名称"}
-				,{"Loc"				,ColLoc			,"String"	,"ロケーション"					,"key"	,"Location"					,"库位"}
-				,{"LocName"			,ColLocName		,"String"	,"ロケーション名"				,""		,"Location Name"			,"库位名称"}
-				,{"LocType"			,ColType			,"int"		,"ロケタイプ"					,""		,"Location Type"			,"库位类型"}
-				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"					,"key"	,"Item Code"				,"商品代码"}
-				,{"Lot"				,ColLot			,"String"	,"ロット"						,"key"	,"Lot"						,"批次"}
-				,{"Expdate"			,ColExpdate		,"Date"		,"消費期限"						,"key"	,"Expiration Date"			,"有效期"}
-				,{"ActualDate"		,ColActualDate	,"Date"		,"入荷実績日"					,"key"	,"Receipt Date"				,"入库日期"}
-				,{"Qty"				,ColQty			,"int"		,"総数量"						,""		,"Total Qty"				,"总数量"}
-				,{"ShipPlanQty"		,ColShipPlanQty	,"int"		,"引当済総数"					,""		,"Allocated Total Qty"		,"已分配总数"}
-				,{"PossibleQty"		,ColPossibleQty	,"int"		,"出荷可能総数"					,""		,"Available Total Qty"		,"可出库总数"}
-				,{"ItemName"		,ColItemName		,"String"	,"商品名"						,""		,"Item Name"				,"商品名称"}
-				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"					,""		,"Display Item Name"		,"商品显示名称"}
-				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"					,""		,"Official Item Name"		,"商品正式名称"}
-				,{"ItemName03"		,ColItemName03	,"String"	,"商品略名"						,""		,"Short Item Name"			,"商品简称"}
-				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"				,""		,"Client Item Code"			,"货主商品代码"}
-				,{"JanCd"			,ColJanCd			,"String"	,"バラBCD"						,""		,"Each BCD"					,"单品BCD"}
-				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"						,""		,"Item Model No."			,"商品型号"}
-				,{"CtUnitQty"		,ColCtUnitQty		,"int"		,"カートン入数"					,""		,"Carton Pack Qty"			,"纸箱装量"}
-				,{"CsUnitQty"		,ColCsUnitQty		,"int"		,"ケース入数"					,""		,"Case Pack Qty"				,"箱装量"}
-				,{"PlUnitQty"		,ColPlUnitQty		,"int"		,"パレット入数"					,""		,"Pallet Pack Qty"			,"托盘装量"}
-				,{"UnitName"		,ColUnitName		,"String"	,"商品単位"						,""		,"Item Unit"				,"商品单位"}
-				,{"CtUnitName"		,ColCtUnitName	,"String"	,"カートン商品単位"				,""		,"Carton Unit"				,"纸箱单位"}
-				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"				,""		,"Case Unit"				,"箱单位"}
-				,{"PlUnitName"		,ColPlUnitName	,"String"	,"パレット商品単位"				,""		,"Pallet Unit"				,"托盘单位"}
-				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日時"						,""		,"Created At"				,"登记时间"}
-				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日時"						,""		,"Updated At"				,"更新时间"}
-				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"						,""		,"Created By"				,"登记人"}
-				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"						,""		,"Updated By"				,"更新人"}
-				,{"BrQty"			,ColBrQty			,"int"		,"バラ数量"						,""		,"Each Qty"					,"单品数量"}
-				,{"BrShipPlanQty"	,ColBrShipPlanQty	,"int"		,"引当済バラ数"					,""		,"Allocated Each Qty"		,"已分配单品数"}
-				,{"BrPossibleQty"	,ColBrPossibleQty	,"int"		,"出荷可能バラ数"				,""		,"Available Each Qty"		,"可出库单品数"}
-				,{"CtQty"			,ColCtQty			,"int"		,"カートン数量"					,""		,"Carton Qty"				,"纸箱数量"}
-				,{"CtShipPlanQty"	,ColCtShipPlanQty	,"int"		,"引当済カートン数"				,""		,"Allocated Carton Qty"		,"已分配纸箱数"}
-				,{"CtPossibleQty"	,ColCtPossibleQty	,"int"		,"出荷可能カートン数"			,""		,"Available Carton Qty"		,"可出库纸箱数"}
-				,{"CsQty"			,ColCsQty			,"int"		,"ケース数量"					,""		,"Case Qty"					,"箱数量"}
-				,{"CsShipPlanQty"	,ColCsShipPlanQty	,"int"		,"引当済ケース数"				,""		,"Allocated Case Qty"		,"已分配箱数"}
-				,{"CsPossibleQty"	,ColCsPossibleQty	,"int"		,"出荷可能ケース数"				,""		,"Available Case Qty"		,"可出库箱数"}
-				,{"PlQty"			,ColPlQty			,"int"		,"パレット数量"					,""		,"Pallet Qty"				,"托盘数量"}
-				,{"PlShipPlanQty"	,ColPlShipPlanQty	,"int"		,"引当済パレット数"				,""		,"Allocated Pallet Qty"		,"已分配托盘数"}
-				,{"PlPossibleQty"	,ColPlPossibleQty	,"int"		,"出荷可能パレット数"			,""		,"Available Pallet Qty"		,"可出库托盘数"}
-				};
+	public static Object[][] RtStockRt(){ 
+		Object[][] RtStockRtBase = { 
+				 {"ClCd"			,ColClCd			,"String"	,"荷主コード"					,"key"	,"Client Code"				,"货主代码"					,"Mã chủ hàng"} 
+				,{"CLName"			,ColCLName			,"String"	,"荷主表記名"					,""		,"Client Name"				,"货主名称"					,"Tên chủ hàng"} 
+				,{"WhCd"			,ColWhCd			,"String"	,"倉庫コード"					,"key"	,"Warehouse Code"			,"仓库代码"					,"Mã kho"} 
+				,{"ClWHName"		,ColClWHName		,"String"	,"担当倉庫名"					,""		,"Warehouse Name"			,"仓库名称"					,"Tên kho"} 
+				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループCD"				,""		,"Client Group Code"		,"货主组代码"					,"Mã nhóm chủ hàng"} 
+				,{"ClGpName"		,ColClGpName		,"String"	,"グループ名1"					,""		,"Client Group Name"		,"货主组名称"					,"Tên nhóm chủ hàng"} 
+				,{"Loc"				,ColLoc			,"String"	,"ロケーション"					,"key"	,"Location"					,"库位"						,"Vị trí"} 
+				,{"LocName"			,ColLocName		,"String"	,"ロケーション名"				,""		,"Location Name"			,"库位名称"					,"Tên vị trí"} 
+				,{"LocType"			,ColType			,"int"		,"ロケタイプ"					,""		,"Location Type"			,"库位类型"					,"Loại vị trí"} 
+				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"					,"key"	,"Item Code"				,"商品代码"					,"Mã hàng"} 
+				,{"Lot"				,ColLot			,"String"	,"ロット"						,"key"	,"Lot"						,"批次"						,"Lô"} 
+				,{"Expdate"			,ColExpdate		,"Date"		,"消費期限"						,"key"	,"Expiration Date"			,"有效期"					,"Hạn sử dụng"} 
+				,{"ActualDate"		,ColActualDate	,"Date"		,"入荷実績日"					,"key"	,"Receipt Date"				,"入库日期"					,"Ngày nhập kho"} 
+				,{"Qty"				,ColQty			,"int"		,"総数量"						,""		,"Total Qty"				,"总数量"						,"Tổng số lượng"} 
+				,{"ShipPlanQty"		,ColShipPlanQty	,"int"		,"引当済総数"					,""		,"Allocated Total Qty"		,"已分配总数"				,"Tổng SL đã phân bổ"} 
+				,{"PossibleQty"		,ColPossibleQty	,"int"		,"出荷可能総数"					,""		,"Available Total Qty"		,"可出库总数"				,"Tổng SL có thể xuất"} 
+				,{"ItemName"		,ColItemName		,"String"	,"商品名"						,""		,"Item Name"				,"商品名称"					,"Tên hàng"} 
+				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"					,""		,"Display Item Name"		,"商品显示名称"				,"Tên hiển thị"} 
+				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"					,""		,"Official Item Name"		,"商品正式名称"				,"Tên chính thức"} 
+				,{"ItemName03"		,ColItemName03	,"String"	,"商品略名"						,""		,"Short Item Name"			,"商品简称"					,"Tên viết tắt"} 
+				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"				,""		,"Client Item Code"			,"货主商品代码"				,"Mã hàng chủ hàng"} 
+				,{"JanCd"			,ColJanCd			,"String"	,"バラBCD"						,""		,"Each BCD"					,"单品BCD"					,"BCD hàng lẻ"} 
+				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"						,""		,"Item Model No."			,"商品型号"					,"Mã model"} 
+				,{"CtUnitQty"		,ColCtUnitQty		,"int"		,"カートン入数"					,""		,"Carton Pack Qty"			,"纸箱装量"					,"SL mỗi carton"} 
+				,{"CsUnitQty"		,ColCsUnitQty		,"int"		,"ケース入数"					,""		,"Case Pack Qty"			,"箱装量"					,"SL mỗi thùng"} 
+				,{"PlUnitQty"		,ColPlUnitQty		,"int"		,"パレット入数"					,""		,"Pallet Pack Qty"			,"托盘装量"					,"SL mỗi pallet"} 
+				,{"UnitName"		,ColUnitName		,"String"	,"商品単位"						,""		,"Item Unit"				,"商品单位"					,"Đơn vị hàng"} 
+				,{"CtUnitName"		,ColCtUnitName	,"String"	,"カートン商品単位"				,""		,"Carton Unit"				,"纸箱单位"					,"Đơn vị carton"} 
+				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"				,""		,"Case Unit"				,"箱单位"						,"Đơn vị thùng"} 
+				,{"PlUnitName"		,ColPlUnitName	,"String"	,"パレット商品単位"				,""		,"Pallet Unit"				,"托盘单位"					,"Đơn vị pallet"} 
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日時"						,""		,"Created At"				,"登记时间"					,"Ngày giờ tạo"} 
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日時"						,""		,"Updated At"				,"更新时间"					,"Ngày giờ cập nhật"} 
+				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"						,""		,"Created By"				,"登记人"						,"Người tạo"} 
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"						,""		,"Updated By"				,"更新人"					,"Người cập nhật"} 
+				,{"BrQty"			,ColBrQty			,"int"		,"バラ数量"						,""		,"Each Qty"					,"单品数量"					,"SL hàng lẻ"} 
+				,{"BrShipPlanQty"	,ColBrShipPlanQty	,"int"		,"引当済バラ数"					,""		,"Allocated Each Qty"		,"已分配单品数"				,"SL hàng lẻ đã phân bổ"} 
+				,{"BrPossibleQty"	,ColBrPossibleQty	,"int"		,"出荷可能バラ数"				,""		,"Available Each Qty"		,"可出库单品数"				,"SL hàng lẻ có thể xuất"} 
+				,{"CtQty"			,ColCtQty			,"int"		,"カートン数量"					,""		,"Carton Qty"				,"纸箱数量"					,"SL carton"} 
+				,{"CtShipPlanQty"	,ColCtShipPlanQty	,"int"		,"引当済カートン数"				,""		,"Allocated Carton Qty"		,"已分配纸箱数"				,"SL carton đã phân bổ"} 
+				,{"CtPossibleQty"	,ColCtPossibleQty	,"int"		,"出荷可能カートン数"			,""		,"Available Carton Qty"		,"可出库纸箱数"				,"SL carton có thể xuất"} 
+				,{"CsQty"			,ColCsQty			,"int"		,"ケース数量"					,""		,"Case Qty"					,"箱数量"					,"SL thùng"} 
+				,{"CsShipPlanQty"	,ColCsShipPlanQty	,"int"		,"引当済ケース数"				,""		,"Allocated Case Qty"		,"已分配箱数"				,"SL thùng đã phân bổ"} 
+				,{"CsPossibleQty"	,ColCsPossibleQty	,"int"		,"出荷可能ケース数"				,""		,"Available Case Qty"		,"可出库箱数"				,"SL thùng có thể xuất"} 
+				,{"PlQty"			,ColPlQty			,"int"		,"パレット数量"					,""		,"Pallet Qty"				,"托盘数量"					,"SL pallet"} 
+				,{"PlShipPlanQty"	,ColPlShipPlanQty	,"int"		,"引当済パレット数"				,""		,"Allocated Pallet Qty"		,"已分配托盘数"				,"SL pallet đã phân bổ"} 
+				,{"PlPossibleQty"	,ColPlPossibleQty	,"int"		,"出荷可能パレット数"			,""		,"Available Pallet Qty"		,"可出库托盘数"				,"SL pallet có thể xuất"} 
+				}; 
 		
-		Object[][] RtStockRt = B100_LanguageControl.RtControl(RtStockRtBase);
-		return RtStockRt;
+		Object[][] RtStockRt = B100_LanguageControl.RtControl(RtStockRtBase); 
+		return RtStockRt; 
 	}
 	
-	public static Object[][] DefinitionRt(){
-		Object[][] Definition = {
-				 {"String"		,null	,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList		,"荷主CD"			,""		,"Client Code"			,""		,"货主代码"			,""}
-				,{"String"		,null	,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList		,"倉庫CD"			,""		,"Warehouse Code"		,""		,"仓库代码"			,""}
-				,{"String"		,null	,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""		,"Client Group Code"	,""		,"货主组代码"			,""}
-				,{"String"		,null	,"ExactOrPrefix"	,ColSearchLoc					,""											,"ロケーション"		,""		,"Location"				,""		,"库位"				,""}
-				,{"Integer"		,null	,"Exact"			,ColSearchType				,""											,"ロケタイプ"		,""		,"Location Type"		,""		,"库位类型"			,""}
-				,{"String"		,null	,"Exact"			,ColSearchItemCd				,""											,"商品コード"		,""		,"Item Code"			,""		,"商品代码"			,""}
-				,{"String"		,null	,"Exact"			,ColSearchLot					,""											,"ロット"			,""		,"Lot"					,""		,"批次"				,""}
-				,{"Date"		,null	,"RangeStr"			,ColSearchExpdateMin			,""											,"消費期限"			,"開始"	,"Expiration Date"		,"From"	,"有效期"			,"开始"}
-				,{"Date"		,null	,"RangeEnd"			,ColSearchExpdateMax			,""											,"消費期限"			,"終了"	,"Expiration Date"		,"To"	,"有效期"			,"结束"}
-				,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin		,""											,"入荷実績日"		,"開始"	,"Receipt Date"			,"From"	,"入库日期"			,"开始"}
-				,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax		,""											,"入荷実績日"		,"終了"	,"Receipt Date"			,"To"	,"入库日期"			,"结束"}
-				,{"Integer"		,null	,"RangeMin"			,ColSearchQtyMin				,""											,"数量"				,"最小"	,"Qty"					,"Min"	,"数量"				,"最小"}
-				,{"Integer"		,null	,"RangeMax"			,ColSearchQtyMax				,""											,"数量"				,"最大"	,"Qty"					,"Max"	,"数量"				,"最大"}
-				,{"Integer"		,null	,"RangeMin"			,ColSearchShipPlanQtyMin		,""											,"引当済数"			,"最小"	,"Allocated Qty"		,"Min"	,"已分配数量"		,"最小"}
-				,{"Integer"		,null	,"RangeMax"			,ColSearchShipPlanQtyMax		,""											,"引当済数"			,"最大"	,"Allocated Qty"		,"Max"	,"已分配数量"		,"最大"}
-				,{"Integer"		,null	,"RangeMin"			,ColSearchPossibleQtyMin		,""											,"出荷可能数"		,"最小"	,"Available Qty"		,"Min"	,"可出库数量"		,"最小"}
-				,{"Integer"		,null	,"RangeMax"			,ColSearchPossibleQtyMax		,""											,"出荷可能数"		,"最大"	,"Available Qty"		,"Max"	,"可出库数量"		,"最大"}
-				,{"String"		,null	,"Partial"			,ColSearchItemName			,""											,"商品名"			,""		,"Item Name"			,""		,"商品名称"			,""}
-				,{"String"		,null	,"Exact"			,ColSearchClItemCd			,""											,"荷主商品CD"		,""		,"Client Item Code"		,""		,"货主商品代码"		,""}
-				,{"String"		,null	,"Exact"			,ColSearchJanCd				,""											,"BCD"				,""		,"BCD"					,""		,"BCD"				,""}
-				,{"String"		,null	,"Exact"			,ColSearchItemMdNo			,""											,"商品型番"			,""		,"Item Model No."		,""		,"商品型号"			,""}
-				};
+	public static Object[][] DefinitionRt(){ 
+		Object[][] Definition = { 
+				 {"String"		,null	,"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList	,"荷主CD"			,""		,"Client Code"			,""		,"货主代码"			,""		,"Mã chủ hàng"			,""} 
+				,{"String"		,null	,"Exact"			,ColSearchWhCd			,B100_DefaultVariable.SearchWhList	,"倉庫CD"			,""		,"Warehouse Code"		,""		,"仓库代码"			,""		,"Mã kho"				,""} 
+				,{"String"		,null	,"Exact"			,ColSearchClGpCD			,B100_DefaultVariable.SearchClGpList	,"荷主グループCD"	,""		,"Client Group Code"	,""		,"货主组代码"			,""		,"Mã nhóm chủ hàng"		,""} 
+				,{"String"		,null	,"ExactOrPrefix"	,ColSearchLoc			,""											,"ロケーション"		,""		,"Location"				,""		,"库位"				,""		,"Vị trí"				,""} 
+				,{"Integer"		,null	,"Exact"			,ColSearchType			,""										,"ロケタイプ"		,""		,"Location Type"		,""		,"库位类型"			,""		,"Loại vị trí"			,""} 
+				,{"String"		,null	,"Exact"			,ColSearchItemCd			,""										,"商品コード"		,""		,"Item Code"			,""		,"商品代码"			,""		,"Mã hàng"				,""} 
+				,{"String"		,null	,"Exact"			,ColSearchLot				,""										,"ロット"			,""		,"Lot"					,""		,"批次"				,""		,"Lô"					,""} 
+				,{"Date"		,null	,"RangeStr"			,ColSearchExpdateMin		,""										,"消費期限"			,"開始"	,"Expiration Date"		,"From"	,"有效期"			,"开始"	,"Hạn sử dụng"			,"Từ"} 
+				,{"Date"		,null	,"RangeEnd"			,ColSearchExpdateMax		,""										,"消費期限"			,"終了"	,"Expiration Date"		,"To"	,"有效期"			,"结束"	,"Hạn sử dụng"			,"Đến"} 
+				,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin	,""										,"入荷実績日"		,"開始"	,"Receipt Date"			,"From"	,"入库日期"			,"开始"	,"Ngày nhập kho"		,"Từ"} 
+				,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax	,""										,"入荷実績日"		,"終了"	,"Receipt Date"			,"To"	,"入库日期"			,"结束"	,"Ngày nhập kho"		,"Đến"} 
+				,{"Integer"		,null	,"RangeMin"			,ColSearchQtyMin			,""										,"数量最小"			,""		,"Minimum Qty"			,""		,"最小数量"			,""		,"SL tối thiểu"			,""} 
+				,{"Integer"		,null	,"RangeMax"			,ColSearchQtyMax			,""										,"数量最大"			,""		,"Maximum Qty"			,""		,"最大数量"			,""		,"SL tối đa"			,""} 
+				,{"Integer"		,null	,"RangeMin"			,ColSearchShipPlanQtyMin	,""										,"引当済数"			,"最小"	,"Allocated Qty"		,"Min"	,"已分配数量"		,"最小"	,"SL đã phân bổ"		,"Tối thiểu"} 
+				,{"Integer"		,null	,"RangeMax"			,ColSearchShipPlanQtyMax	,""										,"引当済数"			,"最大"	,"Allocated Qty"		,"Max"	,"已分配数量"		,"最大"	,"SL đã phân bổ"		,"Tối đa"} 
+				,{"Integer"		,null	,"RangeMin"			,ColSearchPossibleQtyMin	,""										,"出荷可能数"		,"最小"	,"Available Qty"		,"Min"	,"可出库数量"		,"最小"	,"SL có thể xuất"		,"Tối thiểu"} 
+				,{"Integer"		,null	,"RangeMax"			,ColSearchPossibleQtyMax	,""										,"出荷可能数"		,"最大"	,"Available Qty"		,"Max"	,"可出库数量"		,"最大"	,"SL có thể xuất"		,"Tối đa"} 
+				,{"String"		,null	,"Partial"			,ColSearchItemName		,""										,"商品名"			,""		,"Item Name"			,""		,"商品名称"			,""		,"Tên hàng"				,""} 
+				,{"String"		,null	,"Exact"			,ColSearchClItemCd		,""										,"荷主商品CD"		,""		,"Client Item Code"		,""		,"货主商品代码"		,""		,"Mã hàng chủ hàng"		,""} 
+				,{"String"		,null	,"Exact"			,ColSearchJanCd			,""										,"BCD"				,""		,"BCD"					,""		,"BCD"				,""		,"BCD"					,""} 
+				,{"String"		,null	,"Exact"			,ColSearchItemMdNo		,""										,"商品型番"			,""		,"Item Model No."		,""		,"商品型号"			,""		,"Mã model"				,""} 
+				}; 
 		
-		Definition = B100_LanguageControl.DefinitionControl(Definition);
+		Definition = B100_LanguageControl.DefinitionControl(Definition); 
 		
-		return Definition;
+		return Definition; 
 	}
 	
 	public static Object[][] StockRt(
