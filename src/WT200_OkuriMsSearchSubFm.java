@@ -214,7 +214,11 @@ public class WT200_OkuriMsSearchSubFm{
 		JLabel LB_EntryPG				= B100_FrameParts.JLabelSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryPG][3]					+":"	,11,1);		//登録プログラム
 		JLabel LB_UpdatePG				= B100_FrameParts.JLabelSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdatePG][3]					+":"	,11,1);		//更新プログラム
 		
-		
+		JLabel LB_DeliTypeName			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColDeliTypeName][3]				+":"	,11,1);		//運送タイプ名01
+		JLabel LB_DeliTypeName02		= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColDeliTypeName02][3]			+":"	,11,1);		//運送タイプ名02
+		JLabel LB_DeliTypeName03		= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColDeliTypeName03][3]			+":"	,11,1);		//運送タイプ名03
+		JLabel LB_DeliTypeName04		= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColDeliTypeName04][3]			+":"	,11,1);		//運送タイプ名04
+		JLabel LB_DeliTypeName05		= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColDeliTypeName05][3]			+":"	,11,1);		//運送タイプ名05
 		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryDate][3]				+":"	,11,1);		//登録日
 		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdateDate][3]				+":"	,11,1);		//更新日
 		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryUser][3]				+":"	,11,1);		//登録者
@@ -284,26 +288,30 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_Com04					= B100_FrameParts.JTextFieldSet(	   1200,275,100,20,"",11,0);		//コメント04
 		final JTextField  TB_Com05					= B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//コメント05
 
-		final JTextField  TB_TaxFg					= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColTaxFg][3]						+":"	,11,1);		//税区分
-		final JTextField  TB_TaxRate				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColTaxRate][3]					+":"	,11,1);		//税率
-		final JTextField  TB_DeliFee				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColDeliFee][3]					+":"	,11,1);		//運賃
-		final JTextField  TB_AddDeliFee01			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColAddDeliFee01][3]				+":"	,11,1);		//付帯費用1
-		final JTextField  TB_AddDeliFee02			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColAddDeliFee02][3]				+":"	,11,1);		//付帯費用2
-		final JTextField  TB_AddDeliFee03			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColAddDeliFee03][3]				+":"	,11,1);		//付帯費用3
-		final JTextField  TB_HaighWayFee01			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColHaighWayFee01][3]			+":"	,11,1);		//高速代等実費精算分1（内税）
-		final JTextField  TB_HaighWayFee02			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColHaighWayFee02][3]			+":"	,11,1);		//高速代等実費精算分2（内税）
-		final JTextField  TB_ConsumptionTax			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColConsumptionTax][3]			+":"	,11,1);		//消費税
-		final JTextField  TB_WithOutTaxTotal		= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColWithOutTaxTotal][3]			+":"	,11,1);		//税別合計金額
-		final JTextField  TB_TotalFee				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColTotalFee][3]					+":"	,11,1);		//税込請求額合計
-		final JTextField  TB_FeeFixFG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColFeeFixFG][3]					+":"	,11,1);		//金額確定フラグ
-		final JTextField  TB_FeeFixDate				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColFeeFixDate][3]				+":"	,11,1);		//金額確定日時
-		final JTextField  TB_ReceiptStampFG			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColReceiptStampFG][3]			+":"	,11,1);		//受領印チェック
-		final JTextField  TB_ReceiptStampDate		= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColReceiptStampDate][3]		+":"	,11,1);		//受領印日時
-		final JTextField  TB_InvoiceStatus			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColInvoiceStatus][3]			+":"	,11,1);		//請求ステータス
-		final JTextField  TB_EntryPG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryPG][3]					+":"	,11,1);		//登録プログラム
-		final JTextField  TB_UpdatePG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdatePG][3]					+":"	,11,1);		//更新プログラム
+		final JTextField  TB_TaxFg					= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//税区分
+		final JTextField  TB_TaxRate				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//税率
+		final JTextField  TB_DeliFee				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//運賃
+		final JTextField  TB_AddDeliFee01			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//付帯費用1
+		final JTextField  TB_AddDeliFee02			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//付帯費用2
+		final JTextField  TB_AddDeliFee03			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//付帯費用3
+		final JTextField  TB_HaighWayFee01			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//高速代等実費精算分1（内税）
+		final JTextField  TB_HaighWayFee02			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//高速代等実費精算分2（内税）
+		final JTextField  TB_ConsumptionTax			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//消費税
+		final JTextField  TB_WithOutTaxTotal		= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//税別合計金額
+		final JTextField  TB_TotalFee				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//税込請求額合計
+		final JTextField  TB_FeeFixFG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//金額確定フラグ
+		final JTextField  TB_FeeFixDate				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//金額確定日時
+		final JTextField  TB_ReceiptStampFG			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//受領印チェック
+		final JTextField  TB_ReceiptStampDate		= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//受領印日時
+		final JTextField  TB_InvoiceStatus			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//請求ステータス
+		final JTextField  TB_EntryPG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//登録プログラム
+		final JTextField  TB_UpdatePG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//更新プログラム
 		
-		
+		final JTextField  TB_DeliTypeName			= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//運送タイプ名01
+		final JTextField  TB_DeliTypeName02			= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//運送タイプ名02
+		final JTextField  TB_DeliTypeName03			= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//運送タイプ名03
+		final JTextField  TB_DeliTypeName04			= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//運送タイプ名04
+		final JTextField  TB_DeliTypeName05			= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//運送タイプ名05
 		final JFormattedTextField TB_EntryDate		= B100_FrameParts.JFormattedTextFieldSet(	680,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
 		final JFormattedTextField TB_UpdateDate		= B100_FrameParts.JFormattedTextFieldSet(	680,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
 		final JTextField  TB_EntryUser				=  B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//登録者
