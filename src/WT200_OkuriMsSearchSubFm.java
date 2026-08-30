@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -213,6 +214,12 @@ public class WT200_OkuriMsSearchSubFm{
 		JLabel LB_EntryPG				= B100_FrameParts.JLabelSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryPG][3]					+":"	,11,1);		//登録プログラム
 		JLabel LB_UpdatePG				= B100_FrameParts.JLabelSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdatePG][3]					+":"	,11,1);		//更新プログラム
 		
+		
+		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryDate][3]				+":"	,11,1);		//登録日
+		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdateDate][3]				+":"	,11,1);		//更新日
+		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryUser][3]				+":"	,11,1);		//登録者
+		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdateUser][3]				+":"	,11,1);		//更新者
+		
 		/***************/
 		final JComboBox  TB_PickupWhCd				= B100_FrameParts.JComboBoxSet(		100, 25,300,20,B100_DefaultVariable.WhList[0],11);		//集荷倉庫CD
 		final JTextField  TB_ClDeliNo				= B100_FrameParts.JTextFieldSet(		100, 75,100,20,"",11,0);		//荷主管理番号
@@ -295,6 +302,12 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_InvoiceStatus			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColInvoiceStatus][3]			+":"	,11,1);		//請求ステータス
 		final JTextField  TB_EntryPG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryPG][3]					+":"	,11,1);		//登録プログラム
 		final JTextField  TB_UpdatePG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdatePG][3]					+":"	,11,1);		//更新プログラム
+		
+		
+		final JFormattedTextField TB_EntryDate		= B100_FrameParts.JFormattedTextFieldSet(	680,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
+		final JFormattedTextField TB_UpdateDate		= B100_FrameParts.JFormattedTextFieldSet(	680,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
+		final JTextField  TB_EntryUser				=  B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//登録者
+		final JTextField  TB_UpdateUser				=  B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//更新者
 		
 
 		//明細情報標記用
@@ -590,7 +603,7 @@ public class WT200_OkuriMsSearchSubFm{
 		OkuriMs_fm.add(MsTabPaneSet);
 		
 		//制御対象まとめる使わない項目はとりあえずnull
-		Object[][] ControlTgt = new Object[2][RtOkuriMsRt.length];
+		final Object[][] ControlTgt = new Object[2][RtOkuriMsRt.length];
 		
 		ControlTgt[0][T100_OkuriMsRt.ColClCd] 					= TB_ClCd;
 		ControlTgt[0][T100_OkuriMsRt.ColInvoiceWhCd]	 		= null;				//TB_ColInvoiceWhCd;
@@ -679,10 +692,10 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[0][T100_OkuriMsRt.ColReceiptStampFG] 		= TB_ReceiptStampFG;
 		ControlTgt[0][T100_OkuriMsRt.ColReceiptStampDate] 	= TB_ReceiptStampDate;
 		ControlTgt[0][T100_OkuriMsRt.ColInvoiceStatus] 		= TB_InvoiceStatus;
-		ControlTgt[0][T100_OkuriMsRt.ColEntryDate] 			= null;				//TB_EntryDate;
-		ControlTgt[0][T100_OkuriMsRt.ColUpdateDate] 			= null;				//TB_UpdateDate;
-		ControlTgt[0][T100_OkuriMsRt.ColEntryUser] 			= null;				//TB_EntryUser;
-		ControlTgt[0][T100_OkuriMsRt.ColUpdateUser] 			= null;				//TB_UpdateUser;
+		ControlTgt[0][T100_OkuriMsRt.ColEntryDate] 			= TB_EntryDate;
+		ControlTgt[0][T100_OkuriMsRt.ColUpdateDate] 			= TB_UpdateDate;
+		ControlTgt[0][T100_OkuriMsRt.ColEntryUser] 			= TB_EntryUser;
+		ControlTgt[0][T100_OkuriMsRt.ColUpdateUser] 			= TB_UpdateUser;
 		ControlTgt[0][T100_OkuriMsRt.ColEntryPG] 				= TB_EntryPG;
 		ControlTgt[0][T100_OkuriMsRt.ColUpdatePG] 				= TB_UpdatePG;
 
@@ -756,6 +769,8 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd04]	= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd05]	= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColCodFG]					= "JComboBox";
+		ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JFormattedTextField";
+		ControlTgt[1][T100_OkuriMsRt.ColUpdateDate] 			= "JFormattedTextField";
 		
 		ControlTgt[2][T100_OkuriMsRt.ColPickupWhCd]			=	B100_DefaultVariable.WhList[0];
 		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd01]	=	B100_DefaultVariable.DeliveryType01[0];
