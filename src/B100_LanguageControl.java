@@ -17,6 +17,21 @@ public class B100_LanguageControl{
 		
 		for(int i=0;i<TgtRt.length;i++) {
 			for(int i01=0;i01<Rt[i].length;i01++) {
+				if(("String".toUpperCase()).equals(((String)TgtRt[i][2]).toUpperCase())){
+					TgtRt[i][2] = "String";
+				}
+				if(("int".toUpperCase()).equals(((String)TgtRt[i][2]).toUpperCase())){
+					TgtRt[i][2] = "int";
+				}
+				if(("float".toUpperCase()).equals(((String)TgtRt[i][2]).toUpperCase())){
+					TgtRt[i][2] = "float";
+				}
+				if(("Date".toUpperCase()).equals(((String)TgtRt[i][2]).toUpperCase())){
+					TgtRt[i][2] = "Date";
+				}
+				if(("DateTime".toUpperCase()).equals(((String)TgtRt[i][2]).toUpperCase())){
+					TgtRt[i][2] = "DateTime";
+				}
 				if(i01<TgtRt[i].length) {
 					Rt[(int)TgtRt[i][1]][i01]=TgtRt[i][i01];
 				}
@@ -37,6 +52,7 @@ public class B100_LanguageControl{
 				default:
 					break;
 			}
+			
 		}
 		return Rt;
 	}
@@ -46,6 +62,25 @@ public class B100_LanguageControl{
 		Object[][] Rt = new Object[TgtDefinition.length][7];
 		
 		for(int i=0;i<TgtDefinition.length;i++) {
+			if(("String".toUpperCase()).equals(((String)TgtDefinition[i][0]).toUpperCase())){
+				TgtDefinition[i][0] = "String";
+			}
+			if(("Integer".toUpperCase()).equals(((String)TgtDefinition[i][0]).toUpperCase())){
+				TgtDefinition[i][0] = "Integer";
+			}
+			if(("int".toUpperCase()).equals(((String)TgtDefinition[i][0]).toUpperCase())){
+				TgtDefinition[i][0] = "Integer";
+			}
+			if(("Float".toUpperCase()).equals(((String)TgtDefinition[i][0]).toUpperCase())){
+				TgtDefinition[i][0] = "Float";
+			}
+			if(("Date".toUpperCase()).equals(((String)TgtDefinition[i][0]).toUpperCase())){
+				TgtDefinition[i][0] = "Date";
+			}
+			if(("DateTime".toUpperCase()).equals(((String)TgtDefinition[i][0]).toUpperCase())){
+				TgtDefinition[i][0] = "DateTime";
+			}
+			
 			for(int i01=0;i01<Rt[i].length;i01++) {
 				if(i01<TgtDefinition[i].length) {
 					Rt[(int)TgtDefinition[i][3]][i01]	= TgtDefinition[i][i01];

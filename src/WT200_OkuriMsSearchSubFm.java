@@ -132,6 +132,7 @@ public class WT200_OkuriMsSearchSubFm{
 		
 		
 		//検索結果ヘッダ情報
+		JLabel LB_InvoiceWhCd			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColInvoiceWhCd][3]				+":"	,11,1);		//倉庫CD
 		JLabel LB_PickupWhCd			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPickupWhCd][3]				+":"	,11,1);		//集荷倉庫CD
 		JLabel LB_ClDeliNo				= B100_FrameParts.JLabelSet(		  0, 75,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColClDeliNo][3]					+":"	,11,1);		//荷主管理番号
 		
@@ -225,10 +226,11 @@ public class WT200_OkuriMsSearchSubFm{
 		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdateUser][3]				+":"	,11,1);		//更新者
 		
 		/***************/
-		final JComboBox  TB_PickupWhCd				= B100_FrameParts.JComboBoxSet(		100, 25,300,20,B100_DefaultVariable.WhList[0],11);		//集荷倉庫CD
+		final JComboBox   TB_InvoiceWhCd			= B100_FrameParts.JComboBoxSet(		100, 25,300,20,B100_DefaultVariable.WhList[0],11);		//倉庫CD
+		final JComboBox   TB_PickupWhCd				= B100_FrameParts.JComboBoxSet(		100, 25,300,20,B100_DefaultVariable.WhList[0],11);		//集荷倉庫CD
 		final JTextField  TB_ClDeliNo				= B100_FrameParts.JTextFieldSet(		100, 75,100,20,"",11,0);		//荷主管理番号
 		
-		final JTextField  TB_PurposeFG				= B100_FrameParts.JTextFieldSet(		100,125,100,20,"",11,0);		//目的フラグ
+		final JComboBox   TB_PurposeFG				= B100_FrameParts.JComboBoxSet(		100,125,100,20,B100_DefaultVariable.PurposeList[0],11);	//目的フラグ
 		final JTextField  TB_PlanDate				= B100_FrameParts.JTextFieldSet(		100,150,100,20,"",11,0);		//出荷予定日
 		final JTextField  TB_ShipDate				= B100_FrameParts.JTextFieldSet(		100,175,100,20,"",11,0);		//出荷実績日
 		final JTextField  TB_SPPlanDate				= B100_FrameParts.JTextFieldSet(		100,200,100,20,"",11,0);		//着日指定
@@ -317,6 +319,9 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_EntryUser				=  B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//登録者
 		final JTextField  TB_UpdateUser				=  B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//更新者
 		
+		
+		TB_InvoiceWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]	,A00000_Main.ClWh,true));		//倉庫CD
+		TB_PickupWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]	,A00000_Main.ClWh,true));		//集荷倉庫CD
 
 		//明細情報標記用
 		JLabel LB_MsNo					= B100_FrameParts.JLabelSet(		  0,525,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsNo][3]						+":"	,11,1);		//明細番号
@@ -611,10 +616,10 @@ public class WT200_OkuriMsSearchSubFm{
 		OkuriMs_fm.add(MsTabPaneSet);
 		
 		//制御対象まとめる使わない項目はとりあえずnull
-		final Object[][] ControlTgt = new Object[2][RtOkuriMsRt.length];
+		final Object[][] ControlTgt = new Object[4][RtOkuriMsRt.length];
 		
 		ControlTgt[0][T100_OkuriMsRt.ColClCd] 					= TB_ClCd;
-		ControlTgt[0][T100_OkuriMsRt.ColInvoiceWhCd]	 		= null;				//TB_ColInvoiceWhCd;
+		ControlTgt[0][T100_OkuriMsRt.ColInvoiceWhCd]	 		= TB_InvoiceWhCd;
 		ControlTgt[0][T100_OkuriMsRt.ColOkuriNo] 				= TB_SearchOkuriNo;
 		ControlTgt[0][T100_OkuriMsRt.ColClDeliNo] 				= TB_ClDeliNo;
 		ControlTgt[0][T100_OkuriMsRt.ColPickupWhCd] 			= TB_PickupWhCd;
@@ -769,17 +774,19 @@ public class WT200_OkuriMsSearchSubFm{
 			ControlTgt[1][i]	 = "JTextField";
 			ControlTgt[2][i]	 = null;
 		}
-		
+		ControlTgt[1][T100_OkuriMsRt.ColInvoiceWhCd]	 		= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColPickupWhCd]			= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd01]	= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd02]	= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd03]	= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd04]	= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd05]	= "JComboBox";
+		ControlTgt[1][T100_OkuriMsRt.ColPurposeFG]			= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColCodFG]					= "JComboBox";
 		ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JFormattedTextField";
 		ControlTgt[1][T100_OkuriMsRt.ColUpdateDate] 			= "JFormattedTextField";
 		
+		ControlTgt[2][T100_OkuriMsRt.ColInvoiceWhCd]	 		=	B100_DefaultVariable.WhList[0];
 		ControlTgt[2][T100_OkuriMsRt.ColPickupWhCd]			=	B100_DefaultVariable.WhList[0];
 		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd01]	=	B100_DefaultVariable.DeliveryType01[0];
 		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd02]	=	B100_DefaultVariable.DeliveryType02[0];
@@ -787,6 +794,23 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd04]	=	B100_DefaultVariable.DeliveryType04[0];
 		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd05]	=	B100_DefaultVariable.DeliveryType05[0];
 		ControlTgt[2][T100_OkuriMsRt.ColCodFG]					=	B100_DefaultVariable.CODList[0];
+		
+		for(int i=0;i<ControlTgt[1].length;i++) {
+			switch((String)ControlTgt[1][i]) {
+				case "JTextField":
+					ControlTgt[3][i] = (int)0;
+					break;
+				case "JFormattedTextField":
+					ControlTgt[3][i] = (int)0;
+					break;
+				case "JComboBox":
+					ControlTgt[3][i] = ((JComboBox)ControlTgt[0][i]).getSelectedIndex();
+					break;
+				default:
+					ControlTgt[3][i] = (int)0;
+					break;
+			}
+		}
 		
 		
 		Object[][] OkuriMsRt= OkuriMsRt(ClCd,TgtOkuriNo);
@@ -813,7 +837,7 @@ public class WT200_OkuriMsSearchSubFm{
 					
 					Object[][] OkuriMsRt= OkuriMsRt(TgtClCd,TgtOkuriNo);
 					
-					ViewSet(OkuriMsRt,tableModel_msOkuriMs);
+					ViewSet(OkuriMsRt,tableModel_msOkuriMs,ControlTgt);
 					
 					RenewFg	= true;
 				}
@@ -1104,6 +1128,7 @@ public class WT200_OkuriMsSearchSubFm{
 		for(int i=0;i<OkuriMsRt.length;i++) {
 			Object[] SetOb = new Object[1+OkuriMsRt[i].length];
 			SetOb[0]	= false;
+			
 			for(int i01=0;i01<OkuriMsRt[i].length;i01++) {
 				SetOb[1+i01]	= OkuriMsRt[i][i01];
 			}
@@ -1264,4 +1289,30 @@ public class WT200_OkuriMsSearchSubFm{
 			String GetMsJanCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsJanCd];					//明細荷姿JanCd
 		}
 	}
+	
+	private static void TableDataSet(DefaultTableModel tableModel_msOkuriMs,Object[][] ControlTgt) {
+		for(int i=0;i<ControlTgt.length;i++) {
+			switch((String)ControlTgt[1][i]) {
+			case "JTextField":
+				((JTextField)ControlTgt[0][i]).setText("");
+				break;
+			case "JFormattedTextField":
+				((JFormattedTextField)ControlTgt[0][i]).setText("");
+				
+				
+				
+				
+				break;
+			case "JComboBox":
+				((JComboBox)ControlTgt[0][i]).setSelectedIndex((int)ControlTgt[3][i]);
+				break;
+			default:
+				ControlTgt[3][i] = (int)0;
+				break;
+		}
+		}
+	}
+	
+	
+	
 }
