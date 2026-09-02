@@ -40,6 +40,13 @@ public class WT200_OkuriMsSearchSubFm{
 		if(null==ClCd) {ClCd="";}
 		if(null==TgtOkuriNo) {TgtOkuriNo="";}
 		if("".equals(ClCd)) {ClCd=A00000_Main.ClCd;}
+		Object[][] ClMstRt= ClMstRt(ClCd);
+		String ClGp = A00000_Main.ClGp;
+		String ClWh = A00000_Main.ClWh;
+		if(1==ClMstRt.length) {
+			ClGp = (String)ClMstRt[0][M100_ClMstRt.ColClGpCD];		//荷主グループCD
+			ClWh = (String)ClMstRt[0][M100_ClMstRt.ColWHCD];		//担当倉庫
+		}
 		
 		final JFrame OkuriMs_fm 	= B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00出荷明細検索　WT200_OkuriMsSearchSubFm",BackGroundColor);
 		JLabel 	OkuriMsUserinfo 	= B100_FrameParts.UserInfo();
@@ -225,6 +232,23 @@ public class WT200_OkuriMsSearchSubFm{
 		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColEntryUser][3]				+":"	,11,1);		//登録者
 		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUpdateUser][3]				+":"	,11,1);		//更新者
 		
+		JLabel LB_UseFeeBasePtCd		= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColUseFeeBasePtCd][3]			+":"	,11,1);		//適用運賃タリフCD
+		JLabel LB_WmsStatus				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColWmsStatus][3]				+":"	,11,1);		//在庫管理ステータス
+		JLabel LB_WmsShipDate			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColWmsShipDate][3]				+":"	,11,1);		//倉庫出荷日
+		JLabel LB_CourseGpCd			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColCourseGpCd][3]				+":"	,11,1);		//コースグループコード
+		JLabel LB_CourseCD				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColCourseCD][3]					+":"	,11,1);		//一次配車コースコード
+		JLabel LB_CourseCDEda			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColCourseCDEda][3]				+":"	,11,1);		//一次配車コースコード枝番
+		JLabel LB_PitGrp				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPitGrp][3]					+":"	,11,1);		//一次配車払出ピットグループ
+		JLabel LB_Pit01					= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPit01][3]						+":"	,11,1);		//一次配車払出ピット01
+		JLabel LB_Pit02					= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPit02][3]						+":"	,11,1);		//一次配車払出ピット02
+		JLabel LB_Pit03					= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPit03][3]						+":"	,11,1);		//一次配車払出ピット03
+		JLabel LB_Pit04					= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPit04][3]						+":"	,11,1);		//一次配車払出ピット04
+		JLabel LB_Pit05					= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPit05][3]						+":"	,11,1);		//一次配車払出ピット05
+
+		JLabel LB_CLName01				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColCLName01][3]					+":"	,11,1);		//荷主名
+		JLabel LB_ClGpCD				= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColClGpCD][3]					+":"	,11,1);		//荷主グループCD
+		JLabel LB_CLGpName01			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColCLGpName01][3]				+":"	,11,1);		//荷主グループ標記名
+		
 		/***************/
 		final JComboBox   TB_InvoiceWhCd			= B100_FrameParts.JComboBoxSet(		100, 25,300,20,B100_DefaultVariable.WhList[0],11);		//倉庫CD
 		final JComboBox   TB_PickupWhCd				= B100_FrameParts.JComboBoxSet(		100, 25,300,20,B100_DefaultVariable.WhList[0],11);		//集荷倉庫CD
@@ -283,14 +307,14 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_TotalQty				= B100_FrameParts.JTextFieldSet(	   1200,100,100,20,"",11,0);		//個口数
 		final JTextField  TB_ChildrenFG				= B100_FrameParts.JTextFieldSet(	   1200,125,100,20,"",11,0);		//子伝票区分
 		final JTextField  TB_ParentOkuriNo			= B100_FrameParts.JTextFieldSet(	   1200,150,100,20,"",11,0);		//親伝票番号
-		final JTextField  TB_Status					= B100_FrameParts.JTextFieldSet(	   1200,175,100,20,"",11,0);		//運送状況
+		final JComboBox  TB_Status					= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.StatusList[0],11);		//運送状況
 		final JTextField  TB_Com01					= B100_FrameParts.JTextFieldSet(	   1200,200,100,20,"",11,0);		//コメント01
 		final JTextField  TB_Com02					= B100_FrameParts.JTextFieldSet(	   1200,225,100,20,"",11,0);		//コメント02
 		final JTextField  TB_Com03					= B100_FrameParts.JTextFieldSet(	   1200,250,100,20,"",11,0);		//コメント03
 		final JTextField  TB_Com04					= B100_FrameParts.JTextFieldSet(	   1200,275,100,20,"",11,0);		//コメント04
 		final JTextField  TB_Com05					= B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//コメント05
 
-		final JTextField  TB_TaxFg					= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//税区分
+		final JComboBox  TB_TaxFg					= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.TaxFgList[0],11);		//税区分
 		final JTextField  TB_TaxRate				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//税率
 		final JTextField  TB_DeliFee				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//運賃
 		final JTextField  TB_AddDeliFee01			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//付帯費用1
@@ -303,9 +327,9 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_TotalFee				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//税込請求額合計
 		final JTextField  TB_FeeFixFG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//金額確定フラグ
 		final JTextField  TB_FeeFixDate				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//金額確定日時
-		final JTextField  TB_ReceiptStampFG			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//受領印チェック
+		final JComboBox  TB_ReceiptStampFG			= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.ReceiptStampFGList[0],11);		//受領印チェック
 		final JTextField  TB_ReceiptStampDate		= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//受領印日時
-		final JTextField  TB_InvoiceStatus			= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//請求ステータス
+		final JComboBox  TB_InvoiceStatus			= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.InvoiceStatusList[0],11);		//請求ステータス
 		final JTextField  TB_EntryPG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//登録プログラム
 		final JTextField  TB_UpdatePG				= B100_FrameParts.JTextFieldSet(	   1200, 25,100,20,"",11,0);		//更新プログラム
 		
@@ -316,12 +340,153 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_DeliTypeName05			= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//運送タイプ名05
 		final JFormattedTextField TB_EntryDate		= B100_FrameParts.JFormattedTextFieldSet(	680,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//登録日
 		final JFormattedTextField TB_UpdateDate		= B100_FrameParts.JFormattedTextFieldSet(	680,250,150,20,"",11,0,"YYYY/MM/DD HH:MM:SS");		//更新日
-		final JTextField  TB_EntryUser				=  B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//登録者
-		final JTextField  TB_UpdateUser				=  B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//更新者
+		final JTextField  TB_EntryUser				= B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//登録者
+		final JTextField  TB_UpdateUser				= B100_FrameParts.JTextFieldSet(	   1200,300,100,20,"",11,0);		//更新者
 		
+		final JTextField  TB_UseFeeBasePtCd			= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//適用運賃タリフCD
+		final JComboBox  TB_WmsStatus				= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.WmsStatusList[0],11);		//在庫管理ステータス
+		final JTextField  TB_WmsShipDate			= B100_FrameParts.JFormattedTextFieldSet(	680,250,150,20,"",11,0,"YYYY/MM/DD");		///倉庫出荷日
+		final JTextField  TB_CourseGpCd				= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//コースグループコード
+		final JTextField  TB_CourseCD				= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//一次配車コースコード
+		final JTextField  TB_CourseCDEda			= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//一次配車コースコード枝番
+		final JTextField  TB_PitGrp					= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//一次配車払出ピットグループ
+		final JTextField  TB_Pit01					= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//一次配車払出ピット01
+		final JTextField  TB_Pit02					= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//一次配車払出ピット02
+		final JTextField  TB_Pit03					= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//一次配車払出ピット03
+		final JTextField  TB_Pit04					= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//一次配車払出ピット04
+		final JTextField  TB_Pit05					= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//一次配車払出ピット05
+
+		final JTextField  TB_CLName01				= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//荷主名
+		final JComboBox   TB_ClGpCD					= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.ClGpList[0],11);		//荷主グループCD
+		final JTextField  TB_CLGpName01				= B100_FrameParts.JTextFieldSet(		  0, 25,100,20,"",11,0);		//荷主グループ標記名
 		
-		TB_InvoiceWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]	,A00000_Main.ClWh,true));		//倉庫CD
-		TB_PickupWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]	,A00000_Main.ClWh,true));		//集荷倉庫CD
+		//コンボBoxデフォルトポジション
+		TB_InvoiceWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]		,ClWh,true));				//倉庫CD
+		TB_PickupWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WhList[1]		,ClWh,true));				//集荷倉庫CD
+		TB_ClGpCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ClGpList[1]			,ClGp,true));				//荷主グループCD
+		TB_PurposeFG.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.PurposeList[1]	,"0",true));				//目的フラグ
+		TB_DeliveryTypeCd01.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.DeliveryType01[1]	,"",true));		//運送タイプ01
+		TB_DeliveryTypeCd02.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.DeliveryType02[1]	,"",true));		//運送タイプ02
+		TB_DeliveryTypeCd03.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.DeliveryType03[1]	,"",true));		//運送タイプ03
+		TB_DeliveryTypeCd04.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.DeliveryType04[1]	,"",true));		//運送タイプ04
+		TB_DeliveryTypeCd05.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.DeliveryType05[1]	,"",true));		//運送タイプ05
+		TB_CodFG.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.CODList[1]	,"0",true));						//代引フラグ
+		TB_Status.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.StatusList[1]	,"0",true));					//運送状況
+		TB_TaxFg.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.TaxFgList[1]	,"0",true));						//税区分
+		TB_ReceiptStampFG.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.ReceiptStampFGList[1]	,"0",true));	//受領印チェック
+		TB_InvoiceStatus.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.InvoiceStatusList[1]	,"0",true));	//請求ステータス
+		TB_WmsStatus.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.WmsStatusList[1]	,"0",true));			//在庫管理ステータス
+		
+		//検索結果修正不可
+		TB_InvoiceWhCd.setEnabled(false);
+		TB_PickupWhCd.setEnabled(false);
+		TB_ClDeliNo.setEditable(false);
+		
+		TB_PurposeFG.setEnabled(false);
+		TB_PlanDate.setEditable(false);
+		TB_ShipDate.setEditable(false);
+		TB_SPPlanDate.setEditable(false);
+		TB_SPDate.setEditable(false);
+		TB_SPTimeFG.setEditable(false);
+		TB_SPTimeStr.setEditable(false);
+		TB_SPTimeEnd.setEditable(false);
+		
+		TB_DeliveryTypeCd01.setEnabled(false);
+		TB_DeliveryTypeCd02.setEnabled(false);
+		TB_DeliveryTypeCd03.setEnabled(false);
+		TB_DeliveryTypeCd04.setEnabled(false);
+		TB_DeliveryTypeCd05.setEnabled(false);
+		TB_CodFG.setEnabled(false);
+		TB_CodPayTotal.setEditable(false);
+		TB_CodPay.setEditable(false);
+		TB_CodConsumptionTax.setEditable(false);
+		
+		TB_NiokuriCd.setEditable(false);
+		TB_NiokuriDepartmentCd.setEditable(false);
+		TB_NiokuriName01.setEditable(false);
+		TB_NiokuriName02.setEditable(false);
+		TB_NiokuriName03.setEditable(false);
+		TB_NiokuriPost.setEditable(false);
+		TB_NiokuriAdd01.setEditable(false);
+		TB_NiokuriAdd02.setEditable(false);
+		TB_NiokuriAdd03.setEditable(false);
+		TB_NioKuriTel.setEditable(false);
+		TB_NioKuriFax.setEditable(false);
+		TB_NioKuriMail.setEditable(false);
+		TB_NiokuriMunicCd.setEditable(false);
+
+		TB_ClDeliCd.setEditable(false);
+		TB_DeliCd.setEditable(false);
+		TB_DeliDepartmentCd.setEditable(false);
+		TB_DeliName01.setEditable(false);
+		TB_DeliName02.setEditable(false);
+		TB_DeliName03.setEditable(false);
+		TB_DeliPost.setEditable(false);
+		TB_DeliAdd01.setEditable(false);
+		TB_DeliAdd02.setEditable(false);
+		TB_DeliAdd03.setEditable(false);
+		TB_DeliTel.setEditable(false);
+		TB_DeliFax.setEditable(false);
+		TB_DeliMail.setEditable(false);
+		TB_DeliMunicCd.setEditable(false);
+
+		TB_TotalWeight.setEditable(false);
+		TB_TotalSize.setEditable(false);
+		TB_TotalQty.setEditable(false);
+		TB_ChildrenFG.setEditable(false);
+		TB_ParentOkuriNo.setEditable(false);
+		TB_Status.setEnabled(false);
+		TB_Com01.setEditable(false);
+		TB_Com02.setEditable(false);
+		TB_Com03.setEditable(false);
+		TB_Com04.setEditable(false);
+		TB_Com05.setEditable(false);
+
+		TB_TaxFg.setEditable(false);
+		TB_TaxRate.setEditable(false);
+		TB_DeliFee.setEditable(false);
+		TB_AddDeliFee01.setEditable(false);
+		TB_AddDeliFee02.setEditable(false);
+		TB_AddDeliFee03.setEditable(false);
+		TB_HaighWayFee01.setEditable(false);
+		TB_HaighWayFee02.setEditable(false);
+		TB_ConsumptionTax.setEditable(false);
+		TB_WithOutTaxTotal.setEditable(false);
+		TB_TotalFee.setEditable(false);
+		TB_FeeFixFG.setEditable(false);
+		TB_FeeFixDate.setEditable(false);
+		TB_ReceiptStampFG.setEnabled(false);
+		TB_ReceiptStampDate.setEditable(false);
+		TB_InvoiceStatus.setEnabled(false);
+		TB_EntryPG.setEditable(false);
+		TB_UpdatePG.setEditable(false);
+		
+		TB_DeliTypeName.setEditable(false);
+		TB_DeliTypeName02.setEditable(false);
+		TB_DeliTypeName03.setEditable(false);
+		TB_DeliTypeName04.setEditable(false);
+		TB_DeliTypeName05.setEditable(false);
+		TB_EntryDate.setEditable(false);
+		TB_UpdateDate.setEditable(false);
+		TB_EntryUser.setEditable(false);
+		TB_UpdateUser.setEditable(false);
+		
+		TB_UseFeeBasePtCd.setEditable(false);
+		TB_WmsStatus.setEnabled(false);
+		TB_WmsShipDate.setEditable(false);
+		TB_CourseGpCd.setEditable(false);
+		TB_CourseCD.setEditable(false);
+		TB_CourseCDEda.setEditable(false);
+		TB_PitGrp.setEditable(false);
+		TB_Pit01.setEditable(false);
+		TB_Pit02.setEditable(false);
+		TB_Pit03.setEditable(false);
+		TB_Pit04.setEditable(false);
+		TB_Pit05.setEditable(false);
+
+		TB_CLName01.setEditable(false);
+		TB_ClGpCD.setEnabled(false);
+		TB_CLGpName01.setEditable(false);
 
 		//明細情報標記用
 		JLabel LB_MsNo					= B100_FrameParts.JLabelSet(		  0,525,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsNo][3]						+":"	,11,1);		//明細番号
@@ -366,6 +531,12 @@ public class WT200_OkuriMsSearchSubFm{
 		JLabel LB_MsItemMDNo			= B100_FrameParts.JLabelSet(	   1200,750,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsItemMDNo][3]				+":"	,11,1);		//明細型番
 		JLabel LB_MsJanCd				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsJanCd][3]					+":"	,11,1);		//明細荷姿JanCd
 		
+		JLabel LB_MsClCd				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClCd][3]					+":"	,11,1);		//明細荷主コード
+		JLabel LB_MsInvoiceWhCd			= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsInvoiceWhCd][3]			+":"	,11,1);		//明細倉庫コード
+		JLabel LB_MsOkuriNo				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsOkuriNo][3]				+":"	,11,1);		//明細送り状番号
+		JLabel LB_MsClGpCd				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClGpCd][3]					+":"	,11,1);		//明細荷主グループコード
+		JLabel LB_MsTildName			= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsTildName][3]				+":"	,11,1);		//明細温度区分
+		
 		final JTextField  TB_MsNo					= B100_FrameParts.JTextFieldSet(		100,525,100,20,"",11,0);		//明細番号
 		final JTextField  TB_MsDeliNo				= B100_FrameParts.JTextFieldSet(		100,550,100,20,"",11,0);		//明細出荷番号
 		final JTextField  TB_MsDelliMsNo			= B100_FrameParts.JTextFieldSet(		100,575,100,20,"",11,0);		//明細出荷番号明細番号
@@ -387,7 +558,7 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_MsSubTotalPrice		= B100_FrameParts.JTextFieldSet(		800,550,100,20,"",11,0);		//明細金額
 		final JTextField  TB_MsCategoryCd			= B100_FrameParts.JTextFieldSet(		800,575,100,20,"",11,0);		//明細商品分類
 		final JTextField  TB_MsCategoryName			= B100_FrameParts.JTextFieldSet(		800,600,100,20,"",11,0);		//明細商品分類名
-		final JTextField  TB_MsTildFG				= B100_FrameParts.JTextFieldSet(		800,625,100,20,"",11,0);		//明細温度区分
+		final JComboBox   TB_MsTildFG				= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.TildFG[0],11);		//明細温度区分
 		
 		final JTextField  TB_MsCom01				= B100_FrameParts.JTextFieldSet(	   1000,525,200,20,"",11,0);		//明細コメント01
 		final JTextField  TB_MsCom02				= B100_FrameParts.JTextFieldSet(	   1000,550,200,20,"",11,0);		//明細コメント02
@@ -407,8 +578,12 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTextField  TB_MsClItemCd				= B100_FrameParts.JTextFieldSet(	   1300,725,100,20,"",11,0);		//明細荷主商品CD
 		final JTextField  TB_MsItemMDNo				= B100_FrameParts.JTextFieldSet(	   1300,750,100,20,"",11,0);		//明細型番
 		final JTextField  TB_MsJanCd				= B100_FrameParts.JTextFieldSet(	   1300,775,100,20,"",11,0);		//明細荷姿JanCd
-		
-		
+
+		final JComboBox   TB_MsClCd					= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.ClList[0],11);		//明細荷主コード
+		final JComboBox   TB_MsInvoiceWhCd			= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.WhList[0],11);		//明細倉庫コード
+		final JTextField  TB_MsOkuriNo				= B100_FrameParts.JTextFieldSet(	   1300,775,100,20,"",11,0);		//明細送り状番号
+		final JComboBox   TB_MsClGpCd				= B100_FrameParts.JComboBoxSet(		300,200,100,20,B100_DefaultVariable.ClGpList[0],11);		//明細荷主グループコード
+		final JTextField  TB_MsTildName				= B100_FrameParts.JTextFieldSet(	   1300,775,100,20,"",11,0);		//明細温度区分名
 
 		PN_HD01.add(LB_ClDeliNo);
 		PN_HD01.add(LB_PickupWhCd);
@@ -635,15 +810,15 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[0][T100_OkuriMsRt.ColTotalSize] 			= TB_TotalSize;
 		ControlTgt[0][T100_OkuriMsRt.ColTotalQty] 				= TB_TotalQty;
 		ControlTgt[0][T100_OkuriMsRt.ColDeliveryTypeCd01] 	= TB_DeliveryTypeCd01;
-		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName] 		= null;				//TB_DeliTypeName;
+		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName] 		= TB_DeliTypeName;
 		ControlTgt[0][T100_OkuriMsRt.ColDeliveryTypeCd02] 	= TB_DeliveryTypeCd02;
-		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName02] 		= null;				//TB_DeliTypeName02;
+		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName02] 		= TB_DeliTypeName02;
 		ControlTgt[0][T100_OkuriMsRt.ColDeliveryTypeCd03] 	= TB_DeliveryTypeCd03;
-		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName03] 		= null;				//TB_DeliTypeName03;
+		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName03] 		= TB_DeliTypeName03;
 		ControlTgt[0][T100_OkuriMsRt.ColDeliveryTypeCd04] 	= TB_DeliveryTypeCd04;
-		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName04] 		= null;				//TB_DeliTypeName04;
+		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName04] 		= TB_DeliTypeName04;
 		ControlTgt[0][T100_OkuriMsRt.ColDeliveryTypeCd05] 	= TB_DeliveryTypeCd05;
-		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName05] 		= null;				//TB_DeliTypeName05;
+		ControlTgt[0][T100_OkuriMsRt.ColDeliTypeName05] 		= TB_DeliTypeName05;
 
 		ControlTgt[0][T100_OkuriMsRt.ColCodFG] 				= TB_CodFG;
 		ControlTgt[0][T100_OkuriMsRt.ColCodPayTotal] 			= TB_CodPayTotal;
@@ -712,31 +887,31 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[0][T100_OkuriMsRt.ColEntryPG] 				= TB_EntryPG;
 		ControlTgt[0][T100_OkuriMsRt.ColUpdatePG] 				= TB_UpdatePG;
 
-		ControlTgt[0][T100_OkuriMsRt.ColUseFeeBasePtCd] 		= null;				//TB_UseFeeBasePtCd;
-		ControlTgt[0][T100_OkuriMsRt.ColWmsStatus] 			= null;				//TB_WmsStatus;
-		ControlTgt[0][T100_OkuriMsRt.ColWmsShipDate] 			= null;				//TB_WmsShipDate;
-		ControlTgt[0][T100_OkuriMsRt.ColCourseGpCd] 			= null;				//TB_CourseGpCd;
-		ControlTgt[0][T100_OkuriMsRt.ColCourseCD] 				= null;				//TB_CourseCD;
-		ControlTgt[0][T100_OkuriMsRt.ColCourseCDEda] 			= null;				//TB_CourseCDEda;
-		ControlTgt[0][T100_OkuriMsRt.ColPitGrp] 				= null;				//TB_PitGrp;
-		ControlTgt[0][T100_OkuriMsRt.ColPit01] 				= null;				//TB_Pit01;
-		ControlTgt[0][T100_OkuriMsRt.ColPit02] 				= null;				//TB_Pit02;
-		ControlTgt[0][T100_OkuriMsRt.ColPit03] 				= null;				//TB_Pit03;
-		ControlTgt[0][T100_OkuriMsRt.ColPit04] 				= null;				//TB_Pit04;
-		ControlTgt[0][T100_OkuriMsRt.ColPit05] 				= null;				//TB_Pit05;
+		ControlTgt[0][T100_OkuriMsRt.ColUseFeeBasePtCd] 		= TB_UseFeeBasePtCd;
+		ControlTgt[0][T100_OkuriMsRt.ColWmsStatus] 			= TB_WmsStatus;
+		ControlTgt[0][T100_OkuriMsRt.ColWmsShipDate] 			= TB_WmsShipDate;
+		ControlTgt[0][T100_OkuriMsRt.ColCourseGpCd] 			= TB_CourseGpCd;
+		ControlTgt[0][T100_OkuriMsRt.ColCourseCD] 				= TB_CourseCD;
+		ControlTgt[0][T100_OkuriMsRt.ColCourseCDEda] 			= TB_CourseCDEda;
+		ControlTgt[0][T100_OkuriMsRt.ColPitGrp] 				= TB_PitGrp;
+		ControlTgt[0][T100_OkuriMsRt.ColPit01] 				= TB_Pit01;
+		ControlTgt[0][T100_OkuriMsRt.ColPit02] 				= TB_Pit02;
+		ControlTgt[0][T100_OkuriMsRt.ColPit03] 				= TB_Pit03;
+		ControlTgt[0][T100_OkuriMsRt.ColPit04] 				= TB_Pit04;
+		ControlTgt[0][T100_OkuriMsRt.ColPit05] 				= TB_Pit05;
 
-		ControlTgt[0][T100_OkuriMsRt.ColCLName01] 				= null;				//TB_CLName01;
-		ControlTgt[0][T100_OkuriMsRt.ColClGpCD] 				= null;				//TB_ClGpCD;
-		ControlTgt[0][T100_OkuriMsRt.ColCLGpName01] 			= null;				//TB_CLGpName01;
+		ControlTgt[0][T100_OkuriMsRt.ColCLName01] 				= TB_CLName01;
+		ControlTgt[0][T100_OkuriMsRt.ColClGpCD] 				= TB_ClGpCD;
+		ControlTgt[0][T100_OkuriMsRt.ColCLGpName01] 			= TB_CLGpName01;
 		
-		ControlTgt[0][T100_OkuriMsRt.ColMsClCd] 				= null;				//TB_MsClCd;
-		ControlTgt[0][T100_OkuriMsRt.ColMsInvoiceWhCd] 		= null;				//TB_MsInvoiceWhCd;
-		ControlTgt[0][T100_OkuriMsRt.ColMsOkuriNo] 			= null;				//TB_MsOkuriNo;
+		ControlTgt[0][T100_OkuriMsRt.ColMsClCd] 				= TB_MsClCd;
+		ControlTgt[0][T100_OkuriMsRt.ColMsInvoiceWhCd] 		= TB_MsInvoiceWhCd;
+		ControlTgt[0][T100_OkuriMsRt.ColMsOkuriNo] 			= TB_MsOkuriNo;
 		ControlTgt[0][T100_OkuriMsRt.ColMsNo] 					= TB_MsNo;
 		ControlTgt[0][T100_OkuriMsRt.ColMsDeliNo] 				= TB_MsDeliNo;
 		ControlTgt[0][T100_OkuriMsRt.ColMsDelliMsNo] 			= TB_MsDelliMsNo;
 		ControlTgt[0][T100_OkuriMsRt.ColMsClOrderNo] 			= TB_MsClOrderNo;
-		ControlTgt[0][T100_OkuriMsRt.ColMsClGpCd] 				= null;				//TB_MsClGpCd;
+		ControlTgt[0][T100_OkuriMsRt.ColMsClGpCd] 				= TB_MsClGpCd;
 		ControlTgt[0][T100_OkuriMsRt.ColMsItemCd] 				= TB_MsItemCd;
 		ControlTgt[0][T100_OkuriMsRt.ColMsItemName01] 		= TB_MsItemName01;
 		ControlTgt[0][T100_OkuriMsRt.ColMsItemName02] 		= TB_MsItemName02;
@@ -753,7 +928,7 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[0][T100_OkuriMsRt.ColMsCategoryCd] 		= TB_MsCategoryCd;
 		ControlTgt[0][T100_OkuriMsRt.ColMsCategoryName] 		= TB_MsCategoryName;
 		ControlTgt[0][T100_OkuriMsRt.ColMsTildFG] 				= TB_MsTildFG;
-		ControlTgt[0][T100_OkuriMsRt.ColMsTildName] 			= null;				//TB_MsTildName;
+		ControlTgt[0][T100_OkuriMsRt.ColMsTildName] 			= TB_MsTildName;
 		ControlTgt[0][T100_OkuriMsRt.ColMsCom01] 				= TB_MsCom01;
 		ControlTgt[0][T100_OkuriMsRt.ColMsCom02] 				= TB_MsCom02;
 		ControlTgt[0][T100_OkuriMsRt.ColMsCom03] 				= TB_MsCom03;
@@ -773,42 +948,33 @@ public class WT200_OkuriMsSearchSubFm{
 		for(int i=0;i<ControlTgt[1].length;i++) {
 			ControlTgt[1][i]	 = "JTextField";
 			ControlTgt[2][i]	 = null;
+			ControlTgt[3][i]	 = -1;
+			
 		}
-		ControlTgt[1][T100_OkuriMsRt.ColInvoiceWhCd]	 		= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColPickupWhCd]			= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd01]	= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd02]	= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd03]	= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd04]	= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColDeliveryTypeCd05]	= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColPurposeFG]			= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColCodFG]					= "JComboBox";
-		ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JFormattedTextField";
-		ControlTgt[1][T100_OkuriMsRt.ColUpdateDate] 			= "JFormattedTextField";
 		
-		ControlTgt[2][T100_OkuriMsRt.ColInvoiceWhCd]	 		=	B100_DefaultVariable.WhList[0];
-		ControlTgt[2][T100_OkuriMsRt.ColPickupWhCd]			=	B100_DefaultVariable.WhList[0];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd01]	=	B100_DefaultVariable.DeliveryType01[0];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd02]	=	B100_DefaultVariable.DeliveryType02[0];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd03]	=	B100_DefaultVariable.DeliveryType03[0];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd04]	=	B100_DefaultVariable.DeliveryType04[0];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd05]	=	B100_DefaultVariable.DeliveryType05[0];
-		ControlTgt[2][T100_OkuriMsRt.ColCodFG]					=	B100_DefaultVariable.CODList[0];
+		ControlTgt[2][T100_OkuriMsRt.ColClCd]	 				=	B100_DefaultVariable.ClList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColInvoiceWhCd]	 		=	B100_DefaultVariable.WhList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColPickupWhCd]			=	B100_DefaultVariable.WhList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd01]	=	B100_DefaultVariable.DeliveryType01[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd02]	=	B100_DefaultVariable.DeliveryType02[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd03]	=	B100_DefaultVariable.DeliveryType03[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd04]	=	B100_DefaultVariable.DeliveryType04[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd05]	=	B100_DefaultVariable.DeliveryType05[1];
+		ControlTgt[2][T100_OkuriMsRt.ColCodFG]					=	B100_DefaultVariable.CODList[1];
 		
-		for(int i=0;i<ControlTgt[1].length;i++) {
-			switch((String)ControlTgt[1][i]) {
-				case "JTextField":
-					ControlTgt[3][i] = (int)0;
-					break;
-				case "JFormattedTextField":
-					ControlTgt[3][i] = (int)0;
-					break;
-				case "JComboBox":
-					ControlTgt[3][i] = ((JComboBox)ControlTgt[0][i]).getSelectedIndex();
-					break;
-				default:
-					ControlTgt[3][i] = (int)0;
-					break;
+		ControlTgt[2][T100_OkuriMsRt.ColMsClGpCd]				=	B100_DefaultVariable.ClGpList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColMsTildFG]				=	B100_DefaultVariable.TildFG[1];
+		
+		for(int i=0;i<ControlTgt[0].length;i++) {
+			if(ControlTgt[0][i] instanceof JTextField) {
+				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JTextField";
+			}
+			if(ControlTgt[0][i] instanceof JFormattedTextField) {
+				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JFormattedTextField";
+			}
+			if(ControlTgt[0][i] instanceof JComboBox) {
+				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JComboBox";
+				ControlTgt[3][i] = ((JComboBox)ControlTgt[0][i]).getSelectedIndex();
 			}
 		}
 		
@@ -1313,6 +1479,35 @@ public class WT200_OkuriMsSearchSubFm{
 		}
 	}
 	
-	
+
+	private static Object[][] ClMstRt(String TgtClCd){
+		ArrayList<String> SearchClGpCD = new ArrayList<String>();
+		ArrayList<String> SearchCLCD = new ArrayList<String>();
+		ArrayList<String> SearchCLName = new ArrayList<String>();
+		ArrayList<String> SearchPost = new ArrayList<String>();
+		ArrayList<String> searchAdd = new ArrayList<String>();
+		ArrayList<String> SearchTel = new ArrayList<String>();
+		ArrayList<String> SearchFax = new ArrayList<String>();
+		ArrayList<String> SearchMail = new ArrayList<String>();
+		ArrayList<String> SearchCom = new ArrayList<String>();
+		ArrayList<String> SearchWHCD = new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		SearchCLCD.add(TgtClCd);
+		
+		Object[][] ClMstRt = M100_ClMstRt.ClMstRt(
+			SearchClGpCD,
+			SearchCLCD,
+			SearchCLName,
+			SearchPost,
+			searchAdd,
+			SearchTel,
+			SearchFax,
+			SearchMail,
+			SearchCom,
+			SearchWHCD,
+			AllSearch);
+		return ClMstRt;
+	}
 	
 }
