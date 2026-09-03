@@ -111,12 +111,12 @@ public class WT200_OkuriMsSearchSubFm{
 		
 		//検索条件
 		JLabel LB_ClCd				= B100_FrameParts.JLabelSet(		  0,  0,100,20,(String)DefinitionRt[T100_OkuriMsRt.ColSearchClCd][5]		+":"	,11,1);
-		JLabel LB_SearchOkuriNo		= B100_FrameParts.JLabelSet(		  0, 50,100,20,(String)DefinitionRt[T100_OkuriMsRt.ColSearchOkuriNo][5]	+":"	,11,1);
+		JLabel LB_SearchOkuriNo		= B100_FrameParts.JLabelSet(		  0, 75,100,20,(String)DefinitionRt[T100_OkuriMsRt.ColSearchOkuriNo][5]	+":"	,11,1);
 		
 		final JComboBox TB_ClCd		= B100_FrameParts.JComboBoxSet(				100,  0,300,20,B100_DefaultVariable.ClList[0],11);	//荷主コード
-		final JTextField  TB_SearchOkuriNo		= B100_FrameParts.JTextFieldSet(	100, 50,100,20,"",12,0);							//送り状番号
+		final JTextField  TB_SearchOkuriNo		= B100_FrameParts.JTextFieldSet(	100, 75,100,20,"",12,0);							//送り状番号
 		
-		JLabel LB2_SearchOkuriNo		= B100_FrameParts.JLabelSet(	200, 50,100,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchOkuriNo		= B100_FrameParts.JLabelSet(	200, 75,100,20,B100_DefaultVariable.SearchExact	,11,0);
 		
 		PN_HD01.add(LB_ClCd);
 		PN_HD01.add(LB_SearchOkuriNo);
@@ -140,7 +140,8 @@ public class WT200_OkuriMsSearchSubFm{
 		
 		//検索結果ヘッダ情報
 		JLabel LB_InvoiceWhCd			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColInvoiceWhCd][3]				+":"	,11,1);		//倉庫CD
-		JLabel LB_PickupWhCd			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPickupWhCd][3]				+":"	,11,1);		//集荷倉庫CD
+		JLabel LB_PickupWhCd			= B100_FrameParts.JLabelSet(		  0, 50,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPickupWhCd][3]				+":"	,11,1);		//集荷倉庫CD
+		
 		JLabel LB_ClDeliNo				= B100_FrameParts.JLabelSet(		  0, 75,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColClDeliNo][3]					+":"	,11,1);		//荷主管理番号
 		
 		JLabel LB_PurposeFG				= B100_FrameParts.JLabelSet(		  0,125,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPurposeFG][3]				+":"	,11,1);		//目的フラグ
@@ -976,6 +977,46 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[2][T100_OkuriMsRt.ColMsTildFG]				=	B100_DefaultVariable.TildFG[1];
 		ControlTgt[2][T100_OkuriMsRt.ColMsPackingType]		=	B100_DefaultVariable.UnitTypeList[1];
 		ControlTgt[2][T100_OkuriMsRt.ColClGpCD]				=	B100_DefaultVariable.ClGpList[1];
+		
+		ControlTgt[2][T100_OkuriMsRt.ColPlanDate]				=	"YYYY/MM/DD";
+		ControlTgt[2][T100_OkuriMsRt.ColShipDate]				=	"YYYY/MM/DD";
+		ControlTgt[2][T100_OkuriMsRt.ColSPPlanDate]			=	"YYYY/MM/DD";
+		ControlTgt[2][T100_OkuriMsRt.ColSPDate]				=	"YYYY/MM/DD";
+		ControlTgt[2][T100_OkuriMsRt.ColCodPayTotal]			=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColCodPay]				=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColCodConsumptionTax]	=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColTotalWeight]			=	"#,###.##";
+		ControlTgt[2][T100_OkuriMsRt.ColTotalSize]			=	"#,###.##";
+		ControlTgt[2][T100_OkuriMsRt.ColTotalQty]				=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColDeliFee]				=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColAddDeliFee01]			=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColAddDeliFee02]			=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColAddDeliFee03]			=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColHaighWayFee01]		=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColHaighWayFee02]		=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColConsumptionTax]		=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColWithOutTaxTotal]		=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColTotalFee]				=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColFeeFixDate]			=	"YYYY/MM/DD";
+		ControlTgt[2][T100_OkuriMsRt.ColReceiptStampDate]	=	"YYYY/MM/DD";
+		ControlTgt[2][T100_OkuriMsRt.ColEntryDate]			=	"YYYY/MM/DD HH:MM:SS";
+		ControlTgt[2][T100_OkuriMsRt.ColUpdateDate]			=	"YYYY/MM/DD HH:MM:SS";
+		ControlTgt[2][T100_OkuriMsRt.ColWmsShipDate]			=	"YYYY/MM/DD";
+		
+		ControlTgt[2][T100_OkuriMsRt.ColMsNo]					=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColMsDelliMsNo]			=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColMsQty]					=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColMsExpDate]			=	"YYYY/MM/DD";
+		ControlTgt[2][T100_OkuriMsRt.ColMsSubTotalWeight]	=	"#,###.##";	
+		ControlTgt[2][T100_OkuriMsRt.ColMsSubTotalSize]		=	"#,###.##";
+		ControlTgt[2][T100_OkuriMsRt.ColMsPackingQty]			=	"#,###";
+		
+		ControlTgt[2][T100_OkuriMsRt.ColMsUnitPrice]			=	"#,###.##";
+		ControlTgt[2][T100_OkuriMsRt.ColMsSubTotalPrice]		=	"#,###.##";
+		ControlTgt[2][T100_OkuriMsRt.ColMsEntryDate]			=	"YYYY/MM/DD HH:MM:SS";
+		ControlTgt[2][T100_OkuriMsRt.ColMsUpdateDate]			=	"YYYY/MM/DD HH:MM:SS";
+		ControlTgt[2][T100_OkuriMsRt.ColMsUnitWeight]			=	"#,###.##";
+		ControlTgt[2][T100_OkuriMsRt.ColMsUnitSize]			=	"#,###.##";
 		
 		for(int i=0;i<ControlTgt[0].length;i++) {
 			if(ControlTgt[0][i] instanceof JTextField) {
