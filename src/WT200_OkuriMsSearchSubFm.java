@@ -986,7 +986,8 @@ public class WT200_OkuriMsSearchSubFm{
 			}
 			if(ControlTgt[0][i] instanceof JComboBox) {
 				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JComboBox";
-				System.out.println(i+":"+ControlTgt[2][i]);
+				//System.out.println(i+":"+ControlTgt[2][i]);
+				
 				ControlTgt[3][i] = ((JComboBox)ControlTgt[0][i]).getSelectedIndex();
 			}
 		}
