@@ -142,6 +142,7 @@ public class WT200_OkuriMsSearchSubFm{
 		JLabel LB_InvoiceWhCd			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColInvoiceWhCd][3]				+":"	,11,1);		//倉庫CD
 		JLabel LB_PickupWhCd			= B100_FrameParts.JLabelSet(		  0, 50,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPickupWhCd][3]				+":"	,11,1);		//集荷倉庫CD
 		
+		
 		JLabel LB_ClDeliNo				= B100_FrameParts.JLabelSet(		  0, 75,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColClDeliNo][3]					+":"	,11,1);		//荷主管理番号
 		
 		JLabel LB_PurposeFG				= B100_FrameParts.JLabelSet(		  0,125,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColPurposeFG][3]				+":"	,11,1);		//目的フラグ
