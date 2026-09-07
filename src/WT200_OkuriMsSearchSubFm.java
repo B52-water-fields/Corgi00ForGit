@@ -1,5 +1,6 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -860,8 +861,8 @@ public class WT200_OkuriMsSearchSubFm{
 		JLabel LB_MsItemName02			= B100_FrameParts.JLabelSet(		  0,  0,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsItemName02][3]				+":"	,11,1);		//明細商品正式名
 		JLabel LB_MsItemName03			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsItemName03][3]				+":"	,11,1);		//明細商品略名
 		
-		final JTextField  			TB_MsItemName02			= B100_FrameParts.JTextFieldSet(					100,  0,200,20,"",11,0);											//明細商品正式名
-		final JTextField  			TB_MsItemName03			= B100_FrameParts.JTextFieldSet(					100, 25,200,20,"",11,0);											//明細商品略名
+		final JTextField  			TB_MsItemName02			= B100_FrameParts.JTextFieldSet(					100,  0,300,20,"",11,0);											//明細商品正式名
+		final JTextField  			TB_MsItemName03			= B100_FrameParts.JTextFieldSet(					100, 25,300,20,"",11,0);											//明細商品略名
 		
 		PN_MS01.add(LB_MsItemName02);
 		PN_MS01.add(LB_MsItemName03);
@@ -1136,30 +1137,30 @@ public class WT200_OkuriMsSearchSubFm{
 			
 		}
 		
-		ControlTgt[2][T100_OkuriMsRt.ColClCd]	 				=	B100_DefaultVariable.ClList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColInvoiceWhCd]	 		=	B100_DefaultVariable.WhList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColPickupWhCd]			=	B100_DefaultVariable.WhList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColPurposeFG] 			=	B100_DefaultVariable.PurposeList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd01]	=	B100_DefaultVariable.DeliveryType01[1];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd02]	=	B100_DefaultVariable.DeliveryType02[1];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd03]	=	B100_DefaultVariable.DeliveryType03[1];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd04]	=	B100_DefaultVariable.DeliveryType04[1];
-		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd05]	=	B100_DefaultVariable.DeliveryType05[1];
-		ControlTgt[2][T100_OkuriMsRt.ColChildrenFG]			=	B100_DefaultVariable.ChildrenFGList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColCodFG]					=	B100_DefaultVariable.CODList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColStatus] 				=	B100_DefaultVariable.StatusList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColTaxFg] 				=	B100_DefaultVariable.TaxFgList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColFeeFixFG] 				=	B100_DefaultVariable.FeeFixFgList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColInvoiceStatus] 		=	B100_DefaultVariable.InvoiceStatusList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColWmsStatus] 			=	B100_DefaultVariable.WmsStatusList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColReceiptStampFG] 		=	B100_DefaultVariable.ReceiptStampFGList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColClCd]	 				=	(String[])B100_DefaultVariable.ClList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColInvoiceWhCd]	 		=	(String[])B100_DefaultVariable.WhList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColPickupWhCd]			=	(String[])B100_DefaultVariable.WhList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColPurposeFG] 			=	(String[])B100_DefaultVariable.PurposeList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd01]	=	(String[])B100_DefaultVariable.DeliveryType01[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd02]	=	(String[])B100_DefaultVariable.DeliveryType02[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd03]	=	(String[])B100_DefaultVariable.DeliveryType03[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd04]	=	(String[])B100_DefaultVariable.DeliveryType04[1];
+		ControlTgt[2][T100_OkuriMsRt.ColDeliveryTypeCd05]	=	(String[])B100_DefaultVariable.DeliveryType05[1];
+		ControlTgt[2][T100_OkuriMsRt.ColChildrenFG]			=	(String[])B100_DefaultVariable.ChildrenFGList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColCodFG]					=	(String[])B100_DefaultVariable.CODList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColStatus] 				=	(String[])B100_DefaultVariable.StatusList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColTaxFg] 				=	(String[])B100_DefaultVariable.TaxFgList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColFeeFixFG] 				=	(String[])B100_DefaultVariable.FeeFixFgList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColInvoiceStatus] 		=	(String[])B100_DefaultVariable.InvoiceStatusList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColWmsStatus] 			=	(String[])B100_DefaultVariable.WmsStatusList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColReceiptStampFG] 		=	(String[])B100_DefaultVariable.ReceiptStampFGList[1];
 		
-		ControlTgt[2][T100_OkuriMsRt.ColMsClCd] 				=	B100_DefaultVariable.ClList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColMsInvoiceWhCd] 		=	B100_DefaultVariable.WhList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColMsClGpCd]				=	B100_DefaultVariable.ClGpList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColMsTildFG]				=	B100_DefaultVariable.TildFG[1];
-		ControlTgt[2][T100_OkuriMsRt.ColMsPackingType]		=	B100_DefaultVariable.UnitTypeList[1];
-		ControlTgt[2][T100_OkuriMsRt.ColClGpCD]				=	B100_DefaultVariable.ClGpList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColMsClCd] 				=	(String[])B100_DefaultVariable.ClList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColMsInvoiceWhCd] 		=	(String[])B100_DefaultVariable.WhList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColMsClGpCd]				=	(String[])B100_DefaultVariable.ClGpList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColMsTildFG]				=	(String[])B100_DefaultVariable.TildFG[1];
+		ControlTgt[2][T100_OkuriMsRt.ColMsPackingType]		=	(String[])B100_DefaultVariable.UnitTypeList[1];
+		ControlTgt[2][T100_OkuriMsRt.ColClGpCD]				=	(String[])B100_DefaultVariable.ClGpList[1];
 		
 		ControlTgt[2][T100_OkuriMsRt.ColPlanDate]				=	"YYYY/MM/DD";
 		ControlTgt[2][T100_OkuriMsRt.ColShipDate]				=	"YYYY/MM/DD";
@@ -1206,14 +1207,16 @@ public class WT200_OkuriMsSearchSubFm{
 		for(int i=0;i<ControlTgt[0].length;i++) {
 			if(ControlTgt[0][i] instanceof JTextField) {
 				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JTextField";
+				ControlTgt[3][i] = ((JTextField)ControlTgt[0][i]).getText();
 			}
 			if(ControlTgt[0][i] instanceof JFormattedTextField) {
 				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JFormattedTextField";
+				ControlTgt[3][i] = ((JFormattedTextField)ControlTgt[0][i]).getText();
+				System.out.println(i+":"+ControlTgt[2][i]);
 			}
 			if(ControlTgt[0][i] instanceof JComboBox) {
 				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JComboBox";
 				//System.out.println(i+":"+ControlTgt[2][i]);
-				
 				ControlTgt[3][i] = ((JComboBox)ControlTgt[0][i]).getSelectedIndex();
 			}
 		}
@@ -1285,6 +1288,250 @@ public class WT200_OkuriMsSearchSubFm{
 		return Rt;
 	}
 	
+
+	
+	private static void ViewSet(Object[][] OkuriMsRt,DefaultTableModel tableModel_msOkuriMs,Object[][] ControlTgt) {
+		NumberFormat ni = NumberFormat.getNumberInstance();
+		
+		for(int i=0;i<ControlTgt[0].length;i++) {
+			if(ControlTgt[0][i] instanceof JTextField) {
+				((JTextField)ControlTgt[0][i]).setText((String)ControlTgt[3][i]);
+			}
+			if(ControlTgt[0][i] instanceof JFormattedTextField) {
+				((JFormattedTextField)ControlTgt[0][i]).setText((String)ControlTgt[3][i]);
+			}
+			if(ControlTgt[0][i] instanceof JComboBox) {
+				((JComboBox)ControlTgt[0][i]).setSelectedIndex((int)ControlTgt[3][i]);
+			}
+		}
+		
+		int RowCount = tableModel_msOkuriMs.getRowCount();
+		for(int i=0;i<RowCount;i++) {
+			tableModel_msOkuriMs.removeRow(0);
+		}
+		if(0<OkuriMsRt.length) {
+			for(int i=0;i<ControlTgt[0].length;i++) {
+				if(ControlTgt[0][i] instanceof JTextField) {
+					String WST = B100_TextControl.Trim(""+OkuriMsRt[0][i]);
+					((JTextField)ControlTgt[0][i]).setText(WST);
+				}
+				if(ControlTgt[0][i] instanceof JFormattedTextField) {
+					String WST = B100_TextControl.Trim(""+OkuriMsRt[0][i]);
+					if(null!=ControlTgt[2][i]) {
+						switch((String)ControlTgt[2][i]) {
+							case "YYYY/MM/DD":
+								WST = B100_TextControl.TextToDate(WST);
+								break;
+							case "#,###":
+								WST = ""+ni.format(B100_TextControl.TextToInt(WST));
+								break;
+							case "#,###.##":
+								WST = ""+ni.format(B100_TextControl.TextToFloat(WST));
+								break;
+							default:
+								break;
+						}
+					}
+					((JFormattedTextField)ControlTgt[0][i]).setText(WST);
+					
+				}
+				if(ControlTgt[0][i] instanceof JComboBox) {
+					((JComboBox)ControlTgt[0][i]).setSelectedIndex(B100_ArrayListControl.ArryListGetRow((String[])ControlTgt[2][i],""+OkuriMsRt[0][i],true));
+				}
+			}
+		}
+		for(int i=0;i<OkuriMsRt.length;i++) {
+			Object[] SetOb = new Object[1+OkuriMsRt[i].length];
+			if(0==i) {
+				SetOb[0]	= true;
+			}else {
+				SetOb[0]	= false;
+			}
+			
+			for(int i01=0;i01<OkuriMsRt[i].length;i01++) {
+				SetOb[1+i01]	= OkuriMsRt[i][i01];
+			}
+			tableModel_msOkuriMs.addRow(SetOb);
+			
+			
+			String GetClCd					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClCd];					//荷主コード
+			String GetInvoiceWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColInvoiceWhCd];			//倉庫コード
+			String GetOkuriNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColOkuriNo];					//送り状番号
+			String GetClDeliN				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClDeliNo];				//荷主管理番号
+			String GetPickupWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPickupWhCd];				//集荷倉庫CD
+			int GetPurposeFG				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColPurposeFG];					//目的フラグ
+			String GetPlanDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPlanDate];				//出荷予定日
+			String GetShipDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColShipDate];				//出荷実績日
+			String GetSPPlanDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPPlanDate];				//着日指定
+			String GetSPDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPDate];					//着日実績
+			String GetSPTimeFG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeFG];				//時間指定区分
+			String GetSPTimeStr				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeStr];				//時間指定開始
+			String GetSPTimeEnd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeEnd];				//時間指定終了
+			float GetTotalWeight			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColTotalWeight];				//荷物重量(kg)
+			float GetTotalSize				= (float)OkuriMsRt[i][T100_OkuriMsRt.ColTotalSize];				//荷物サイズ
+			int GetTotalQty					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTotalQty];					//個口数
+			String GetDeliveryTypeCd01		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd01];		//運送タイプ01
+			String GetDeliTypeName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName];			//運送タイプ名01
+			String GetDeliveryTypeCd02		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd02];		//運送タイプ02
+			String GetDeliTypeName02		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName02];			//運送タイプ名02
+			String GetDeliveryTypeCd03		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd03];		//運送タイプ03
+			String GetDeliTypeName03		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName03];			//運送タイプ名03
+			String GetDeliveryTypeCd04		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd04];		//運送タイプ04
+			String GetDeliTypeName04		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName04];			//運送タイプ名04
+			String GetDeliveryTypeCd05		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd05];		//運送タイプ05
+			String GetDeliTypeName05		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName05];			//運送タイプ名05
+	
+			int GetCodFG					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodFG];						//代引フラグ
+			int GetCodPayTotal				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodPayTotal];				//代引収受金額合計
+			int GetCodPay					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodPay];						//代引金額
+			int GetCodConsumptionTax		= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodConsumptionTax];		//代引消費税
+	
+			int GetChildrenFG				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColChildrenFG];				//子伝票区分
+			String GetParentOkuriNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColParentOkuriNo];			//親伝票番号
+			
+			String GetNiokuriCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriCd];				//荷送人コード
+			String GetNiokuriDepartmentCd	= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriDepartmentCd];		//荷送人部署CD
+			String GetNiokuriName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName01];			//荷送人名01
+			String GetNiokuriName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName02];			//荷送人名02
+			String GetNiokuriName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName03];			//荷送人名03
+			String GetNiokuriPost			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriPost];			//荷送人郵便番号
+			String GetNiokuriAdd01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd01];			//荷送人住所01
+			String GetNiokuriAdd02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd02];			//荷送人住所02
+			String GetNiokuriAdd03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd03];			//荷送人住所03
+			String GetNioKuriTel			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriTel];				//荷送人TEL
+			String GetNioKuriFax			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriFax];				//荷送人FAX
+			String GetNioKuriMail			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriMail];			//荷送人MAIL
+			String GetNiokuriMunicCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriMunicCd];			//荷送人市区町村CD
+	
+			String GetDeliCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliCd];					//荷届先コード
+			String GetClDeliCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClDeliCd];				//荷主荷届先コード
+			String GetDeliDepartmentCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliDepartmentCd];		//部署CD
+			String GetDeliName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName01];				//荷届先名01
+			String GetDeliName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName02];				//荷届先名02
+			String GetDeliName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName03];				//荷届先名03
+			String GetDeliPost				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliPost];				//荷届先郵便番号
+			String GetDeliAdd01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd01];				//荷届先住所01
+			String GetDeliAdd02				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd02];				//荷届先住所02
+			String GetDeliAdd03				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd03];				//荷届先住所03
+			String GetDeliTel				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTel];					//荷届先TEL
+			String GetDeliFax				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliFax];					//荷届先FAX
+			String GetDeliMail				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliMail];				//荷届先MAIL
+			String GetDeliMunicCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliMunicCd];			//荷届先市区町村CD
+	
+			String GetCom01					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom01];					//コメント01
+			String GetCom02					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom02];					//コメント02
+			String GetCom03					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom03];					//コメント03
+			String GetCom04					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom04];					//コメント04
+			String GetCom05					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom05];					//コメント05
+	
+			int GetStatus					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColStatus];						//運送状況
+			int GetTaxFg					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTaxFg];						//税区分
+			int GetTaxRate					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTaxRate];					//税率
+			int GetDeliFee					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColDeliFee];					//運賃
+			int GetAddDeliFee01				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee01];				//付帯費用1
+			int GetAddDeliFee02				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee02];				//付帯費用2
+			int GetAddDeliFee03				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee03];				//付帯費用3
+			int GetHaighWayFee01			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColHaighWayFee01];				//高速代等実費精算分1（内税）
+			int GetHaighWayFee02			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColHaighWayFee02];				//高速代等実費精算分2（内税）
+			int GetConsumptionTax			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColConsumptionTax];			//消費税
+			int GetWithOutTaxTotal			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColWithOutTaxTotal];			//税別合計金額
+			int GetTotalFee					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTotalFee];					//税込請求額合計
+			int GetFeeFixFG					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColFeeFixFG];					//金額確定フラグ
+			String GetFeeFixDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColFeeFixDate];				//金額確定日時
+			int GetReceiptStampFG			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColReceiptStampFG];			//受領印チェック
+			String GetReceiptStampDate		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColReceiptStampDate];		//受領印日時
+			int GetInvoiceStatus			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColInvoiceStatus];				//請求ステータス
+			String GetEntryDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryDate];				//登録日
+			String GetUpdateDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdateDate];				//更新日
+			String GetEntryUser				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryUser];				//登録者
+			String GetUpdateUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdateUser];				//更新者
+			String GetEntryPG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryPG];					//登録プログラム
+			String GetUpdatePG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdatePG];				//更新プログラム
+	
+			String GetUseFeeBasePtCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUseFeeBasePtCd];			//適用運賃タリフCD
+			int GetWmsStatus				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColWmsStatus];					//在庫管理ステータス
+			String GetWmsShipDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColWmsShipDate];			//倉庫出荷日
+			String GetCourseGpCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCourseGpCd];				//コースグループコード
+			String GetCourseCD				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCourseCD];				//一次配車コースコード
+			int GetCourseCDEda				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCourseCDEda];				//一次配車コースコード枝番
+			String GetPitGrp				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPitGrp];					//一次配車払出ピットグループ
+			String GetPit01					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit01];					//一次配車払出ピット01
+			String GetPit02					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit02];					//一次配車払出ピット02
+			String GetPit03					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit03];					//一次配車払出ピット03
+			String GetPit04					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit04];					//一次配車払出ピット04
+			String GetPit05					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit05];					//一次配車払出ピット05
+	
+			String GetCLName01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCLName01];				//荷主名
+			String GetClGpCD				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClGpCD];					//荷主グループCD
+			String GetCLGpName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCLGpName01];				//荷主グループ標記名
+			
+			
+			String GetMsClCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClCd];					//明細荷主コード
+			String GetMsInvoiceWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsInvoiceWhCd];			//明細倉庫コード
+			String GetMsOkuriNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsOkuriNo];				//明細送り状番号
+			int GetMsNo						= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsNo];						//明細番号
+			String GetMsDeliNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsDeliNo];				//明細出荷番号
+			int GetMsDelliMsNo				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsDelliMsNo];				//明細出荷番号明細番号
+			String GetMsClOrderNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClOrderNo];			//明細荷主管理番号
+			String GetMsClGpCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClGpCd];				//明細荷主グループコード
+			String GetMsItemCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemCd];				//明細商品コード
+			String GetMsItemName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName01];			//明細商品表記名
+			String GetMsItemName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName02];			//明細商品正式名
+			String GetMsItemName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName03];			//明細商品略名
+			float GetMsUnitWeight			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitWeight];			//明細単位重量
+			float GetMsUnitSize				= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitSize];				//明細単位サイズ
+			int GetMsQty					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsQty];						//明細個数
+			int GetMsPackingQty				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsPackingQty];				//明細荷姿数量
+			String GetMsUnitName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitName];				//明細明細単位
+			float GetMsSubTotalWeight		= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalWeight];		//明細明細重量
+			float GetMsSubTotalSize			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalSize];			//明細明細サイズ
+			float GetMsUnitPrice			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitPrice];				//明細単価
+			float GetMsSubTotalPrice		= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalPrice];		//明細金額
+			String GetMsCategoryCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCategoryCd];			//明細商品分類
+			String GetMsCategoryName		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCategoryName];			//明細商品分類名
+			String GetMsTildFG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsTildFG];				//明細温度区分
+			String GetMsTildName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsTildName];				//明細温度区分名
+			String GetMsCom01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom01];					//明細コメント01
+			String GetMsCom02				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom02];					//明細コメント02
+			String GetMsCom03				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom03];					//明細コメント03
+			String GetMsCom04				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom04];					//明細コメント04
+			String GetMsCom05				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom05];					//明細コメント05
+			String GetMsEntryDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsEntryDate];			//明細登録日
+			String GetMsUpdateDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUpdateDate];			//明細更新日
+			String GetMsEntryUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsEntryUser];			//明細登録者
+			String GetMsUpdateUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUpdateUser];			//明細更新者
+			String GetMsLot					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsLot];					//明細ロット指定
+			String GetMsExpDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsExpDate];				//明細賞味期限指定
+			int GetMsPackingType			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsPackingType];				//明細荷姿タイプ
+			String GetMsClItemCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClItemCd];				//明細荷主商品CD
+			String GetMsItemMDNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemMDNo];				//明細型番
+			String GetMsJanCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsJanCd];					//明細荷姿JanCd
+		}
+	}
+	/*
+	private static void TableDataSet(DefaultTableModel tableModel_msOkuriMs,Object[][] ControlTgt) {
+		for(int i=0;i<ControlTgt.length;i++) {
+			switch((String)ControlTgt[1][i]) {
+			case "JTextField":
+				((JTextField)ControlTgt[0][i]).setText("");
+				break;
+			case "JFormattedTextField":
+				((JFormattedTextField)ControlTgt[0][i]).setText("");
+				
+				
+				
+				
+				break;
+			case "JComboBox":
+				((JComboBox)ControlTgt[0][i]).setSelectedIndex((int)ControlTgt[3][i]);
+				break;
+			default:
+				ControlTgt[3][i] = (int)0;
+				break;
+		}
+		}
+	}
+	*/
 	private static Object[][] OkuriMsRt(String TgtClCd,String TgtOkuriNo){
 		if(null==TgtOkuriNo) {TgtOkuriNo="";}
 		if("".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
@@ -1524,201 +1771,6 @@ public class WT200_OkuriMsSearchSubFm{
 		
 		return OkuriMsRt;
 	}
-	
-	private static void ViewSet(Object[][] OkuriMsRt,DefaultTableModel tableModel_msOkuriMs,Object[][] ControlTgt) {
-		int RowCount = tableModel_msOkuriMs.getRowCount();
-		for(int i=0;i<RowCount;i++) {
-			tableModel_msOkuriMs.removeRow(0);
-		}
-		
-		for(int i=0;i<OkuriMsRt.length;i++) {
-			Object[] SetOb = new Object[1+OkuriMsRt[i].length];
-			SetOb[0]	= false;
-			
-			for(int i01=0;i01<OkuriMsRt[i].length;i01++) {
-				SetOb[1+i01]	= OkuriMsRt[i][i01];
-			}
-			tableModel_msOkuriMs.addRow(SetOb);
-			
-			
-			String GetClCd					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClCd];					//荷主コード
-			String GetInvoiceWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColInvoiceWhCd];			//倉庫コード
-			String GetOkuriNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColOkuriNo];					//送り状番号
-			String GetClDeliN				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClDeliNo];				//荷主管理番号
-			String GetPickupWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPickupWhCd];				//集荷倉庫CD
-			int GetPurposeFG				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColPurposeFG];					//目的フラグ
-			String GetPlanDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPlanDate];				//出荷予定日
-			String GetShipDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColShipDate];				//出荷実績日
-			String GetSPPlanDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPPlanDate];				//着日指定
-			String GetSPDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPDate];					//着日実績
-			String GetSPTimeFG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeFG];				//時間指定区分
-			String GetSPTimeStr				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeStr];				//時間指定開始
-			String GetSPTimeEnd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColSPTimeEnd];				//時間指定終了
-			float GetTotalWeight			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColTotalWeight];				//荷物重量(kg)
-			float GetTotalSize				= (float)OkuriMsRt[i][T100_OkuriMsRt.ColTotalSize];				//荷物サイズ
-			int GetTotalQty					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTotalQty];					//個口数
-			String GetDeliveryTypeCd01		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd01];		//運送タイプ01
-			String GetDeliTypeName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName];			//運送タイプ名01
-			String GetDeliveryTypeCd02		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd02];		//運送タイプ02
-			String GetDeliTypeName02		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName02];			//運送タイプ名02
-			String GetDeliveryTypeCd03		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd03];		//運送タイプ03
-			String GetDeliTypeName03		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName03];			//運送タイプ名03
-			String GetDeliveryTypeCd04		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd04];		//運送タイプ04
-			String GetDeliTypeName04		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName04];			//運送タイプ名04
-			String GetDeliveryTypeCd05		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliveryTypeCd05];		//運送タイプ05
-			String GetDeliTypeName05		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTypeName05];			//運送タイプ名05
-	
-			int GetCodFG					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodFG];						//代引フラグ
-			int GetCodPayTotal				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodPayTotal];				//代引収受金額合計
-			int GetCodPay					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodPay];						//代引金額
-			int GetCodConsumptionTax		= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCodConsumptionTax];		//代引消費税
-	
-			int GetChildrenFG				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColChildrenFG];				//子伝票区分
-			String GetParentOkuriNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColParentOkuriNo];			//親伝票番号
-			
-			String GetNiokuriCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriCd];				//荷送人コード
-			String GetNiokuriDepartmentCd	= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriDepartmentCd];		//荷送人部署CD
-			String GetNiokuriName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName01];			//荷送人名01
-			String GetNiokuriName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName02];			//荷送人名02
-			String GetNiokuriName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriName03];			//荷送人名03
-			String GetNiokuriPost			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriPost];			//荷送人郵便番号
-			String GetNiokuriAdd01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd01];			//荷送人住所01
-			String GetNiokuriAdd02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd02];			//荷送人住所02
-			String GetNiokuriAdd03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriAdd03];			//荷送人住所03
-			String GetNioKuriTel			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriTel];				//荷送人TEL
-			String GetNioKuriFax			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriFax];				//荷送人FAX
-			String GetNioKuriMail			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNioKuriMail];			//荷送人MAIL
-			String GetNiokuriMunicCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColNiokuriMunicCd];			//荷送人市区町村CD
-	
-			String GetDeliCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliCd];					//荷届先コード
-			String GetClDeliCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClDeliCd];				//荷主荷届先コード
-			String GetDeliDepartmentCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliDepartmentCd];		//部署CD
-			String GetDeliName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName01];				//荷届先名01
-			String GetDeliName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName02];				//荷届先名02
-			String GetDeliName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName03];				//荷届先名03
-			String GetDeliPost				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliPost];				//荷届先郵便番号
-			String GetDeliAdd01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd01];				//荷届先住所01
-			String GetDeliAdd02				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd02];				//荷届先住所02
-			String GetDeliAdd03				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliAdd03];				//荷届先住所03
-			String GetDeliTel				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliTel];					//荷届先TEL
-			String GetDeliFax				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliFax];					//荷届先FAX
-			String GetDeliMail				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliMail];				//荷届先MAIL
-			String GetDeliMunicCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliMunicCd];			//荷届先市区町村CD
-	
-			String GetCom01					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom01];					//コメント01
-			String GetCom02					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom02];					//コメント02
-			String GetCom03					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom03];					//コメント03
-			String GetCom04					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom04];					//コメント04
-			String GetCom05					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCom05];					//コメント05
-	
-			int GetStatus					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColStatus];						//運送状況
-			int GetTaxFg					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTaxFg];						//税区分
-			int GetTaxRate					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTaxRate];					//税率
-			int GetDeliFee					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColDeliFee];					//運賃
-			int GetAddDeliFee01				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee01];				//付帯費用1
-			int GetAddDeliFee02				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee02];				//付帯費用2
-			int GetAddDeliFee03				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColAddDeliFee03];				//付帯費用3
-			int GetHaighWayFee01			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColHaighWayFee01];				//高速代等実費精算分1（内税）
-			int GetHaighWayFee02			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColHaighWayFee02];				//高速代等実費精算分2（内税）
-			int GetConsumptionTax			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColConsumptionTax];			//消費税
-			int GetWithOutTaxTotal			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColWithOutTaxTotal];			//税別合計金額
-			int GetTotalFee					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColTotalFee];					//税込請求額合計
-			int GetFeeFixFG					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColFeeFixFG];					//金額確定フラグ
-			String GetFeeFixDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColFeeFixDate];				//金額確定日時
-			int GetReceiptStampFG			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColReceiptStampFG];			//受領印チェック
-			String GetReceiptStampDate		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColReceiptStampDate];		//受領印日時
-			int GetInvoiceStatus			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColInvoiceStatus];				//請求ステータス
-			String GetEntryDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryDate];				//登録日
-			String GetUpdateDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdateDate];				//更新日
-			String GetEntryUser				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryUser];				//登録者
-			String GetUpdateUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdateUser];				//更新者
-			String GetEntryPG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColEntryPG];					//登録プログラム
-			String GetUpdatePG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUpdatePG];				//更新プログラム
-	
-			String GetUseFeeBasePtCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColUseFeeBasePtCd];			//適用運賃タリフCD
-			int GetWmsStatus				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColWmsStatus];					//在庫管理ステータス
-			String GetWmsShipDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColWmsShipDate];			//倉庫出荷日
-			String GetCourseGpCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCourseGpCd];				//コースグループコード
-			String GetCourseCD				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCourseCD];				//一次配車コースコード
-			int GetCourseCDEda				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColCourseCDEda];				//一次配車コースコード枝番
-			String GetPitGrp				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPitGrp];					//一次配車払出ピットグループ
-			String GetPit01					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit01];					//一次配車払出ピット01
-			String GetPit02					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit02];					//一次配車払出ピット02
-			String GetPit03					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit03];					//一次配車払出ピット03
-			String GetPit04					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit04];					//一次配車払出ピット04
-			String GetPit05					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPit05];					//一次配車払出ピット05
-	
-			String GetCLName01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCLName01];				//荷主名
-			String GetClGpCD				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColClGpCD];					//荷主グループCD
-			String GetCLGpName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColCLGpName01];				//荷主グループ標記名
-			
-			
-			String GetMsClCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClCd];					//明細荷主コード
-			String GetMsInvoiceWhCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsInvoiceWhCd];			//明細倉庫コード
-			String GetMsOkuriNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsOkuriNo];				//明細送り状番号
-			int GetMsNo						= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsNo];						//明細番号
-			String GetMsDeliNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsDeliNo];				//明細出荷番号
-			int GetMsDelliMsNo				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsDelliMsNo];				//明細出荷番号明細番号
-			String GetMsClOrderNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClOrderNo];			//明細荷主管理番号
-			String GetMsClGpCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClGpCd];				//明細荷主グループコード
-			String GetMsItemCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemCd];				//明細商品コード
-			String GetMsItemName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName01];			//明細商品表記名
-			String GetMsItemName02			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName02];			//明細商品正式名
-			String GetMsItemName03			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName03];			//明細商品略名
-			float GetMsUnitWeight			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitWeight];			//明細単位重量
-			float GetMsUnitSize				= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitSize];				//明細単位サイズ
-			int GetMsQty					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsQty];						//明細個数
-			int GetMsPackingQty				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsPackingQty];				//明細荷姿数量
-			String GetMsUnitName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitName];				//明細明細単位
-			float GetMsSubTotalWeight		= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalWeight];		//明細明細重量
-			float GetMsSubTotalSize			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalSize];			//明細明細サイズ
-			float GetMsUnitPrice			= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsUnitPrice];				//明細単価
-			float GetMsSubTotalPrice		= (float)OkuriMsRt[i][T100_OkuriMsRt.ColMsSubTotalPrice];		//明細金額
-			String GetMsCategoryCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCategoryCd];			//明細商品分類
-			String GetMsCategoryName		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCategoryName];			//明細商品分類名
-			String GetMsTildFG				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsTildFG];				//明細温度区分
-			String GetMsTildName			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsTildName];				//明細温度区分名
-			String GetMsCom01				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom01];					//明細コメント01
-			String GetMsCom02				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom02];					//明細コメント02
-			String GetMsCom03				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom03];					//明細コメント03
-			String GetMsCom04				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom04];					//明細コメント04
-			String GetMsCom05				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsCom05];					//明細コメント05
-			String GetMsEntryDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsEntryDate];			//明細登録日
-			String GetMsUpdateDate			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUpdateDate];			//明細更新日
-			String GetMsEntryUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsEntryUser];			//明細登録者
-			String GetMsUpdateUser			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsUpdateUser];			//明細更新者
-			String GetMsLot					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsLot];					//明細ロット指定
-			String GetMsExpDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsExpDate];				//明細賞味期限指定
-			int GetMsPackingType			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsPackingType];				//明細荷姿タイプ
-			String GetMsClItemCd			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsClItemCd];				//明細荷主商品CD
-			String GetMsItemMDNo			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemMDNo];				//明細型番
-			String GetMsJanCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsJanCd];					//明細荷姿JanCd
-		}
-	}
-	
-	private static void TableDataSet(DefaultTableModel tableModel_msOkuriMs,Object[][] ControlTgt) {
-		for(int i=0;i<ControlTgt.length;i++) {
-			switch((String)ControlTgt[1][i]) {
-			case "JTextField":
-				((JTextField)ControlTgt[0][i]).setText("");
-				break;
-			case "JFormattedTextField":
-				((JFormattedTextField)ControlTgt[0][i]).setText("");
-				
-				
-				
-				
-				break;
-			case "JComboBox":
-				((JComboBox)ControlTgt[0][i]).setSelectedIndex((int)ControlTgt[3][i]);
-				break;
-			default:
-				ControlTgt[3][i] = (int)0;
-				break;
-		}
-		}
-	}
-	
 
 	private static Object[][] ClMstRt(String TgtClCd){
 		ArrayList<String> SearchClGpCD = new ArrayList<String>();
