@@ -112,8 +112,8 @@ public class B100_DefaultVariable{
 	static final String[][] SearchPurposeList 		= {{"未指定","0:配達","1:直送","2:集荷","3:中継"},{"","0","1","2","3"},{"","配達","直送","集荷","中継"}};	//送り状目的区分
 	static final String[][] PurposeList 				= {{"0:配達","1:配達","2:集荷","3:中継"},{"0","1","2","3"},{"配達","配達","集荷","中継"}};					//送り状目的区分
 	
-	static String[][] SearchAdjustReasonList;
-	static String[][] AdjustReasonList;
+	static String[][] SearchAdjustReasonList;		//検索条件：調整理由
+	static String[][] AdjustReasonList;				//調整理由
 	
 	static boolean ArrivalShipUnTgt;					//trueなら入荷時ロケも出荷対象にする
 	static String[] ShipPlovisionUnTgtList;			//引当対象にしないロケタイプ

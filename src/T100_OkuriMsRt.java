@@ -640,8 +640,8 @@ public class T100_OkuriMsRt{
 	
 	public static Object[][] RtOkuriMsRt(){
 		Object[][] Rt = {
-						 {"ClCd"				,ColClCd					,"String"	,"荷主コード"					,"Key"	,"Client Code"							,"货主代码"}
-						,{"InvoiceWhCd"			,ColInvoiceWhCd			,"String"	,"倉庫コード"					,"Key"	,"Warehouse Code"						,"仓库代码"}
+						 {"ClCd"				,ColClCd					,"String"	,"荷主CD"						,"Key"	,"Client Code"							,"货主代码"}
+						,{"InvoiceWhCd"			,ColInvoiceWhCd			,"String"	,"倉庫CD"						,"Key"	,"Warehouse Code"						,"仓库代码"}
 						,{"OkuriNo"				,ColOkuriNo				,"String"	,"送り状番号"					,"Key"	,"Waybill No."							,"运单号"}
 						,{"ClDeliNo"			,ColClDeliNo				,"String"	,"荷主管理番号"					,""		,"Client Reference No."					,"货主管理编号"}
 						,{"PickupWhCd"			,ColPickupWhCd			,"String"	,"集荷倉庫CD"					,""		,"Pickup Warehouse Code"				,"提货仓库代码"}
@@ -675,7 +675,7 @@ public class T100_OkuriMsRt{
 						,{"ChildrenFG"			,ColChildrenFG			,"int"		,"子伝票区分"					,""		,"Child Waybill Type"					,"子运单类型"}
 						,{"ParentOkuriNo"		,ColParentOkuriNo			,"String"	,"親伝票番号"					,""		,"Parent Waybill No."					,"父运单号"}
 	
-						,{"NiokuriCd"			,ColNiokuriCd				,"String"	,"荷送人コード"					,""		,"Shipper Code"							,"发货人代码"}
+						,{"NiokuriCd"			,ColNiokuriCd				,"String"	,"荷送人CD"						,""		,"Shipper Code"							,"发货人代码"}
 						,{"NiokuriDepartmentCd"	,ColNiokuriDepartmentCd	,"String"	,"荷送人部署CD"					,""		,"Shipper Department Code"				,"发货人部门代码"}
 						,{"NiokuriName01"		,ColNiokuriName01			,"String"	,"荷送人名01"					,""		,"Shipper Name 01"						,"发货人名称01"}
 						,{"NiokuriName02"		,ColNiokuriName02			,"String"	,"荷送人名02"					,""		,"Shipper Name 02"						,"发货人名称02"}
@@ -689,8 +689,8 @@ public class T100_OkuriMsRt{
 						,{"NioKuriMail"			,ColNioKuriMail			,"String"	,"荷送人MAIL"					,""		,"Shipper Email"						,"发货人邮箱"}
 						,{"NiokuriMunicCd"		,ColNiokuriMunicCd		,"String"	,"荷送人市区町村CD"				,""		,"Shipper Municipality Code"			,"发货人市区町村代码"}
 	
-						,{"DeliCd"				,ColDeliCd					,"String"	,"荷届先コード"					,""		,"Delivery Destination Code"			,"收货地代码"}
-						,{"ClDeliCd"			,ColClDeliCd				,"String"	,"荷主荷届先コード"				,""		,"Client Destination Code"				,"货主收货地代码"}
+						,{"DeliCd"				,ColDeliCd					,"String"	,"荷届先CD"						,""		,"Delivery Destination Code"			,"收货地代码"}
+						,{"ClDeliCd"			,ColClDeliCd				,"String"	,"荷主荷届先CD"					,""		,"Client Destination Code"				,"货主收货地代码"}
 						,{"DeliDepartmentCd"	,ColDeliDepartmentCd		,"String"	,"部署CD"						,""		,"Destination Department Code"			,"收货地部门代码"}
 						,{"DeliName01"			,ColDeliName01			,"String"	,"荷届先名01"					,""		,"Destination Name 01"					,"收货地名称01"}
 						,{"DeliName02"			,ColDeliName02			,"String"	,"荷届先名02"					,""		,"Destination Name 02"					,"收货地名称02"}
@@ -726,7 +726,7 @@ public class T100_OkuriMsRt{
 						,{"FeeFixDate"			,ColFeeFixDate			,"DateTime"	,"金額確定日時"					,""		,"Charge Fixed At"						,"金额确定时间"}
 						,{"ReceiptStampFG"		,ColReceiptStampFG		,"int"		,"受領印チェック"				,""		,"Receipt Stamp Check"					,"收货章确认"}
 						,{"ReceiptStampDate"	,ColReceiptStampDate		,"DateTime"	,"受領印日時"					,""		,"Receipt Stamp Date"					,"收货章日期"}
-						,{"InvoiceStatus"		,ColInvoiceStatus			,"int"		,"請求ステータス"				,""		,"Invoice Status"						,"账单状态"}
+						,{"InvoiceStatus"		,ColInvoiceStatus			,"int"		,"請求状況"						,""		,"Invoice Status"						,"账单状态"}
 						,{"EntryDate"			,ColEntryDate				,"DateTime"	,"登録日"						,""		,"Created At"							,"登记时间"}
 						,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"更新日"						,""		,"Updated At"							,"更新时间"}
 						,{"EntryUser"			,ColEntryUser				,"String"	,"登録者"						,""		,"Created By"							,"登记人"}
@@ -735,11 +735,11 @@ public class T100_OkuriMsRt{
 						,{"UpdatePG"			,ColUpdatePG				,"String"	,"更新プログラム"				,""		,"Updated Program"						,"更新程序"}
 	
 						,{"UseFeeBasePtCd"		,ColUseFeeBasePtCd		,"String"	,"適用運賃タリフCD"				,""		,"Applied Freight Tariff Code"			,"适用运费费率代码"}
-						,{"WmsStatus"			,ColWmsStatus				,"int"		,"在庫管理ステータス"			,""		,"WMS Status"							,"库存管理状态"}
+						,{"WmsStatus"			,ColWmsStatus				,"int"		,"在庫管理状況"					,""		,"WMS Status"							,"库存管理状态"}
 						,{"WmsShipDate"			,ColWmsShipDate			,"DateTime"	,"倉庫出荷日"					,""		,"Warehouse Ship Date"					,"仓库出库日期"}
-						,{"CourseGpCd"			,ColCourseGpCd			,"String"	,"コースグループコード"			,""		,"Route Group Code"						,"配送路线组代码"}
-						,{"CourseCD"			,ColCourseCD				,"String"	,"一次配車コースコード"			,""		,"Primary Route Code"					,"一次配车路线代码"}
-						,{"CourseCDEda"			,ColCourseCDEda			,"int"		,"一次配車コースコード枝番"		,""		,"Primary Route Code Branch"			,"一次配车路线代码分支"}
+						,{"CourseGpCd"			,ColCourseGpCd			,"String"	,"コースグループCD"				,""		,"Route Group Code"						,"配送路线组代码"}
+						,{"CourseCD"			,ColCourseCD				,"String"	,"一次配車コースCD"				,""		,"Primary Route Code"					,"一次配车路线代码"}
+						,{"CourseCDEda"			,ColCourseCDEda			,"int"		,"一次配車コースCD枝番"			,""		,"Primary Route Code Branch"			,"一次配车路线代码分支"}
 						,{"PitGrp"				,ColPitGrp					,"String"	,"一次配車払出ピットグループ"	,""		,"Primary Dispatch Pit Group"			,"一次配车出库口组"}
 						,{"Pit01"				,ColPit01					,"String"	,"一次配車払出ピット01"			,""		,"Primary Dispatch Pit 01"				,"一次配车出库口01"}
 						,{"Pit02"				,ColPit02					,"String"	,"一次配車払出ピット02"			,""		,"Primary Dispatch Pit 02"				,"一次配车出库口02"}
@@ -752,14 +752,14 @@ public class T100_OkuriMsRt{
 						,{"CLGpName01"			,ColCLGpName01			,"String"	,"荷主グループ標記名"			,""		,"Client Group Display Name"			,"货主组显示名称"}
 						
 						
-						,{"MsClCd"				,ColMsClCd					,"String"	,"明細荷主コード"				,""}
-						,{"MsInvoiceWhCd"		,ColMsInvoiceWhCd			,"String"	,"明細倉庫コード"				,""}
+						,{"MsClCd"				,ColMsClCd					,"String"	,"明細荷主CD"					,""}
+						,{"MsInvoiceWhCd"		,ColMsInvoiceWhCd			,"String"	,"明細倉庫CD"					,""}
 						,{"MsOkuriNo"			,ColMsOkuriNo				,"String"	,"明細送り状番号"				,""}
 						,{"MsNo"				,ColMsNo					,"int"		,"明細番号"						,"Key"}
 						,{"MsDeliNo"			,ColMsDeliNo				,"String"	,"明細出荷番号"					,""}
 						,{"MsDelliMsNo"			,ColMsDelliMsNo			,"int"		,"明細出荷番号明細番号"			,""}
 						,{"MsClOrderNo"			,ColMsClOrderNo			,"String"	,"明細荷主管理番号"				,""}
-						,{"MsClGpCd"			,ColMsClGpCd				,"String"	,"明細荷主グループコード"		,""}
+						,{"MsClGpCd"			,ColMsClGpCd				,"String"	,"明細荷主グループCD"			,""}
 						,{"MsItemCd"			,ColMsItemCd				,"String"	,"明細商品コード"				,""}
 						,{"MsItemName01"		,ColMsItemName01			,"String"	,"明細商品表記名"				,""}
 						,{"MsItemName02"		,ColMsItemName02			,"String"	,"明細商品正式名"				,""}

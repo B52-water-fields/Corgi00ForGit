@@ -286,6 +286,8 @@ public class B100_FrameParts{
 		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy'/'MM'/'dd' 'HH':'mm':'ss");
 		final SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy'/'MM'/'dd");
 		final SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy'/'MM");
+		final SimpleDateFormat sdf3 = new SimpleDateFormat("HH':'mm");
+		final SimpleDateFormat sdf4 = new SimpleDateFormat("HH':'mm':'ss");
 		final DecimalFormat df2 = new DecimalFormat("#,###");
 	
 		if(0>=TextSize) {TextSize=11;}
@@ -312,6 +314,14 @@ public class B100_FrameParts{
 				break;
 			case"YYYY/MM":
 				rt = new JFormattedTextField(sdf2);
+				break;
+			case"HH:MM":
+				rt = new JFormattedTextField(sdf3);
+				break;
+			case"HH:MM:SS":
+				rt = new JFormattedTextField(sdf4);
+				break;
+			default:
 				break;
 		}
 		
