@@ -976,7 +976,7 @@ public class WT200_OkuriMsSearchSubFm{
 		OkuriMs_fm.add(MsTabPaneSet);
 		
 		//制御対象まとめる使わない項目はとりあえずnull
-		final Object[][] ControlTgt = new Object[4][RtOkuriMsRt.length];
+		final Object[][] ControlTgt = new Object[5][RtOkuriMsRt.length];
 		
 		ControlTgt[0][T100_OkuriMsRt.ColClCd] 					= TB_ClCd;
 		ControlTgt[0][T100_OkuriMsRt.ColInvoiceWhCd]	 		= TB_InvoiceWhCd;
@@ -1174,6 +1174,7 @@ public class WT200_OkuriMsSearchSubFm{
 		ControlTgt[2][T100_OkuriMsRt.ColTotalWeight]			=	"#,###.##";
 		ControlTgt[2][T100_OkuriMsRt.ColTotalSize]			=	"#,###.##";
 		ControlTgt[2][T100_OkuriMsRt.ColTotalQty]				=	"#,###";
+		ControlTgt[2][T100_OkuriMsRt.ColTaxRate]				=	"#,###";
 		ControlTgt[2][T100_OkuriMsRt.ColDeliFee]				=	"#,###";
 		ControlTgt[2][T100_OkuriMsRt.ColAddDeliFee01]			=	"#,###";
 		ControlTgt[2][T100_OkuriMsRt.ColAddDeliFee02]			=	"#,###";
@@ -1212,7 +1213,7 @@ public class WT200_OkuriMsSearchSubFm{
 			if(ControlTgt[0][i] instanceof JFormattedTextField) {
 				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JFormattedTextField";
 				ControlTgt[3][i] = ((JFormattedTextField)ControlTgt[0][i]).getText();
-				System.out.println(i+":"+ControlTgt[2][i]);
+				//System.out.println(i+":"+ControlTgt[2][i]);
 			}
 			if(ControlTgt[0][i] instanceof JComboBox) {
 				ControlTgt[1][T100_OkuriMsRt.ColEntryDate] 			= "JComboBox";
@@ -1220,7 +1221,157 @@ public class WT200_OkuriMsSearchSubFm{
 				ControlTgt[3][i] = ((JComboBox)ControlTgt[0][i]).getSelectedIndex();
 			}
 		}
+		ControlTgt[4][T100_OkuriMsRt.ColClCd] 					= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColInvoiceWhCd]	 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColOkuriNo] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColClDeliNo] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPickupWhCd] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPurposeFG] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPlanDate] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColShipDate] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColSPPlanDate] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColSPDate] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColSPTimeFG] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColSPTimeStr]			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColSPTimeEnd] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColTotalWeight] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColTotalSize] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColTotalQty] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliveryTypeCd01] 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliTypeName] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliveryTypeCd02] 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliTypeName02] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliveryTypeCd03] 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliTypeName03] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliveryTypeCd04] 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliTypeName04] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliveryTypeCd05] 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliTypeName05] 		= "Hd";
+
+		ControlTgt[4][T100_OkuriMsRt.ColCodFG] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCodPayTotal] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCodPay] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCodConsumptionTax] 	= "Hd";
+
+		ControlTgt[4][T100_OkuriMsRt.ColChildrenFG] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColParentOkuriNo] 		= "Hd";
+
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriCd] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriDepartmentCd]	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriName01] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriName02] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriName03] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriPost] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriAdd01] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriAdd02] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriAdd03] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNioKuriTel] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNioKuriFax] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNioKuriMail] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColNiokuriMunicCd] 		= "Hd";
+
+		ControlTgt[4][T100_OkuriMsRt.ColDeliCd] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColClDeliCd] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliDepartmentCd] 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliName01] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliName02]		 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliName03] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliPost] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliAdd01] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliAdd02] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliAdd03] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliTel] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliFax] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliMail] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliMunicCd] 			= "Hd";
+
+		ControlTgt[4][T100_OkuriMsRt.ColCom01] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCom02] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCom03] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCom04] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCom05] 				= "Hd";
+
+		ControlTgt[4][T100_OkuriMsRt.ColStatus] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColTaxFg] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColTaxRate] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColDeliFee] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColAddDeliFee01] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColAddDeliFee02] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColAddDeliFee03] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColHaighWayFee01] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColHaighWayFee02] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColConsumptionTax] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColWithOutTaxTotal] 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColTotalFee] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColFeeFixFG] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColFeeFixDate] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColReceiptStampFG] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColReceiptStampDate] 	= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColInvoiceStatus] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColEntryDate] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColUpdateDate] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColEntryUser] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColUpdateUser] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColEntryPG] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColUpdatePG] 				= "Hd";
+
+		ControlTgt[4][T100_OkuriMsRt.ColUseFeeBasePtCd] 		= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColWmsStatus] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColWmsShipDate] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCourseGpCd] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCourseCD] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCourseCDEda] 			= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPitGrp] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPit01] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPit02] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPit03] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPit04] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColPit05] 				= "Hd";
+
+		ControlTgt[4][T100_OkuriMsRt.ColCLName01] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColClGpCD] 				= "Hd";
+		ControlTgt[4][T100_OkuriMsRt.ColCLGpName01] 			= "Hd";
 		
+		ControlTgt[4][T100_OkuriMsRt.ColMsClCd] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsInvoiceWhCd] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsOkuriNo] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsNo] 					= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsDeliNo] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsDelliMsNo] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsClOrderNo] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsClGpCd] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsItemCd] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsItemName01] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsItemName02] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsItemName03] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsUnitWeight] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsUnitSize] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsQty] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsPackingQty] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsUnitName] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsSubTotalWeight]	= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsSubTotalSize] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsUnitPrice] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsSubTotalPrice] 	= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsCategoryCd] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsCategoryName] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsTildFG] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsTildName] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsCom01] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsCom02] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsCom03] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsCom04] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsCom05] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsEntryDate] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsUpdateDate] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsEntryUser] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsUpdateUser] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsLot] 				= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsExpDate] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsPackingType] 		= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsClItemCd] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsItemMDNo] 			= "Ms";
+		ControlTgt[4][T100_OkuriMsRt.ColMsJanCd] 				= "Ms";
 		
 		Object[][] OkuriMsRt= OkuriMsRt(ClCd,TgtOkuriNo);
 		ViewSet(OkuriMsRt,tableModel_msOkuriMs,ControlTgt);
@@ -1228,9 +1379,6 @@ public class WT200_OkuriMsSearchSubFm{
 		OkuriMs_fm.setVisible(true);
 		
 		RenewFg	= true;
-		
-		
-		
 		
 		OkuriMsSearchKickBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
@@ -1287,8 +1435,6 @@ public class WT200_OkuriMsSearchSubFm{
 				};
 		return Rt;
 	}
-	
-
 	
 	private static void ViewSet(Object[][] OkuriMsRt,DefaultTableModel tableModel_msOkuriMs,Object[][] ControlTgt) {
 		NumberFormat ni = NumberFormat.getNumberInstance();
@@ -1508,7 +1654,7 @@ public class WT200_OkuriMsSearchSubFm{
 			String GetMsJanCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsJanCd];					//明細荷姿JanCd
 		}
 	}
-	/*
+	
 	private static void TableDataSet(DefaultTableModel tableModel_msOkuriMs,Object[][] ControlTgt) {
 		for(int i=0;i<ControlTgt.length;i++) {
 			switch((String)ControlTgt[1][i]) {
@@ -1517,10 +1663,6 @@ public class WT200_OkuriMsSearchSubFm{
 				break;
 			case "JFormattedTextField":
 				((JFormattedTextField)ControlTgt[0][i]).setText("");
-				
-				
-				
-				
 				break;
 			case "JComboBox":
 				((JComboBox)ControlTgt[0][i]).setSelectedIndex((int)ControlTgt[3][i]);
@@ -1531,7 +1673,7 @@ public class WT200_OkuriMsSearchSubFm{
 		}
 		}
 	}
-	*/
+	
 	private static Object[][] OkuriMsRt(String TgtClCd,String TgtOkuriNo){
 		if(null==TgtOkuriNo) {TgtOkuriNo="";}
 		if("".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
