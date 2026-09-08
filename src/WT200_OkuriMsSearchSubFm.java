@@ -246,7 +246,7 @@ public class WT200_OkuriMsSearchSubFm{
 		final JComboBox  			TB_WmsStatus			= B100_FrameParts.JComboBoxSet(				   1100,175,100,20,B100_DefaultVariable.WmsStatusList[0],11);					//在庫管理ステータス
 		final JFormattedTextField  	TB_WmsShipDate			= B100_FrameParts.JFormattedTextFieldSet(	   1100,200,100,20,"",11,0,"YYYY/MM/DD");										//倉庫出荷日
 		final JComboBox  			TB_CodFG				= B100_FrameParts.JComboBoxSet(				   1100,225,100,20,B100_DefaultVariable.CODList[0]	,11);						//代引フラグ
-		final JFormattedTextField  	TB_CodPayTotal			= B100_FrameParts.JFormattedTextFieldSet(	   1100,250,100,20,"",11,0,"#,###");											//代引収受金額合計
+		final JFormattedTextField  	TB_CodPayTotal			= B100_FrameParts.JFormattedTextFieldSet(	   1100,250,100,20,"",11,1,"#,###");											//代引収受金額合計
 		
 		
 		PN_HD00.add(LB_ClDeliNo);
@@ -1396,7 +1396,7 @@ public class WT200_OkuriMsSearchSubFm{
 		Object[][] OkuriMsRt= OkuriMsRt(ClCd,TgtOkuriNo);
 		ViewSet(OkuriMsRt,tableModel_msOkuriMs,ControlTgt);
 		
-		OkuriMs_fm.setVisible(true);
+		//OkuriMs_fm.setVisible(true);
 		
 		RenewFg	= true;
 		
@@ -1453,6 +1453,7 @@ public class WT200_OkuriMsSearchSubFm{
 				,tableModel_msOkuriMs
 				,tbOkuriMs
 				,OkuriMsEntry_btn
+				,ControlTgt
 				};
 		return Rt;
 	}
@@ -1478,12 +1479,11 @@ public class WT200_OkuriMsSearchSubFm{
 		}
 		if(0<OkuriMsRt.length) {
 			for(int i=0;i<ControlTgt[0].length;i++) {
+				String WST = B100_TextControl.Trim(""+OkuriMsRt[0][i]);
 				if(ControlTgt[0][i] instanceof JTextField) {
-					String WST = B100_TextControl.Trim(""+OkuriMsRt[0][i]);
 					((JTextField)ControlTgt[0][i]).setText(WST);
 				}
 				if(ControlTgt[0][i] instanceof JFormattedTextField) {
-					String WST = B100_TextControl.Trim(""+OkuriMsRt[0][i]);
 					if(null!=ControlTgt[2][i]) {
 						switch((String)ControlTgt[2][i]) {
 							case "YYYY/MM/DD":
@@ -1503,7 +1503,7 @@ public class WT200_OkuriMsSearchSubFm{
 					
 				}
 				if(ControlTgt[0][i] instanceof JComboBox) {
-					((JComboBox)ControlTgt[0][i]).setSelectedIndex(B100_ArrayListControl.ArryListGetRow((String[])ControlTgt[2][i],""+OkuriMsRt[0][i],true));
+					((JComboBox)ControlTgt[0][i]).setSelectedIndex(B100_ArrayListControl.ArryListGetRow((String[])ControlTgt[2][i],WST,true));
 				}
 			}
 		}
@@ -1958,15 +1958,6 @@ public class WT200_OkuriMsSearchSubFm{
 				SearchMsExpDateEnd,			//賞味期限指定終了
 				SearchMsPackingType,		//荷姿タイプ
 				AllSearch);
-		
-		for(int i=0;i<OkuriMsRt.length;i++) {
-			Object[] SetOb = new Object[1+OkuriMsRt[i].length];
-			SetOb[0]	= false;
-			for(int i01=0;i01<OkuriMsRt[i].length;i01++) {
-				SetOb[1+i01]	= OkuriMsRt[i][i01];
-			}
-		}
-		
 		return OkuriMsRt;
 	}
 
@@ -1999,5 +1990,4 @@ public class WT200_OkuriMsSearchSubFm{
 			AllSearch);
 		return ClMstRt;
 	}
-	
 }

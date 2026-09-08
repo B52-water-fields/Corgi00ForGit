@@ -59,7 +59,14 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 				,{"MsCom01"			,ColMsCom01	,"DateTime"	,"明細コメント01"	,""		}
 				,{"MsCom02"			,ColMsCom02	,"DateTime"	,"明細コメント02"	,""		}
 				};
-		return RtArrivapPlanArrayEntry;
+		Object[][] Rt = new Object[RtArrivapPlanArrayEntry.length][RtArrivapPlanArrayEntry[0].length];
+		
+		for(int i=0;i<RtArrivapPlanArrayEntry.length;i++) {
+			for(int i01=0;i01<RtArrivapPlanArrayEntry[i].length;i01++) {
+				Rt[(int)RtArrivapPlanArrayEntry[i][1]][i01]	= RtArrivapPlanArrayEntry[i][i01];
+			}
+		}
+		return Rt;
 	}
 	public static void ArrivalPlanArrayEntrySourceDataView(int x,int y,String[][] EntryData) {
 		A00000_Main.LoginCheck();

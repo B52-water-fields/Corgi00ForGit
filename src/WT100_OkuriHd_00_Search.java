@@ -1,5 +1,9 @@
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -451,9 +455,40 @@ public class WT100_OkuriHd_00_Search{
 		//明細付Excel出力ボタン
 		JButton MsExcelBtn = B100_FrameParts.BtnSet(			130,685,100,20,"明細Excel出力"	,9);
 		main_fm.add(MsExcelBtn);
+		
+		//明細表示ボタン
+		JButton MsViewBtn = B100_FrameParts.BtnSet(			250,660,100,20,"詳細表示"		,11);
+		main_fm.add(MsViewBtn);
+		
+		//新規登録ボタン
+		JButton CreateBtn = B100_FrameParts.BtnSet(			370,660,100,20,"新規登録"		,11);
+		main_fm.add(CreateBtn);
+		//一括新規ボタン
+		JButton SomeCreateBtn = B100_FrameParts.BtnSet(		370,685,100,20,"予定一括新規"	,9);
+		main_fm.add(SomeCreateBtn);
 
         main_fm.setVisible(true);
+        
+        final Object[] OkuriMsSearchSubFm	= WT200_OkuriMsSearchSubFm.OkuriMsSearchSubFm(x+10,y+10,A00000_Main.ClCd,"","SP",false);
+        
+        
         RenewFg = true;
+        /**********************************************************************
+      	 *明細表示ボタン押下時
+      	 **********************************************************************/
+      	MsViewBtn.addActionListener(new AbstractAction(){
+            public void actionPerformed(ActionEvent e){
+                if(RenewFg && WT200_OkuriMsSearchSubFm.RenewFg) {
+                	 RenewFg = false;
+                	 WT200_OkuriMsSearchSubFm.RenewFg = false;
+                	 ((JFrame)OkuriMsSearchSubFm[0]).setVisible(false);
+                	 
+                	 ((JFrame)OkuriMsSearchSubFm[0]).setVisible(true);
+                	 RenewFg = true;
+                	 WT200_OkuriMsSearchSubFm.RenewFg = true;
+                }
+            }
+      	});
 
         /**********************************************************************
          * 検索ボタン押下時
@@ -589,6 +624,7 @@ public class WT100_OkuriHd_00_Search{
 			public void tableChanged(TableModelEvent e){
 				if(RenewFg) {
 					RenewFg = false;
+					WT200_OkuriMsSearchSubFm.RenewFg = false;
 					int row_count = tb01.getRowCount();
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
@@ -598,6 +634,77 @@ public class WT100_OkuriHd_00_Search{
 	
 						}
 					}
+					String TgtClCd = A00000_Main.ClCd;
+					ArrayList<String> TgtOkuriNo = new ArrayList<String>();
+					for(int i=0;i<row_count;i++){
+						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+							TgtClCd = ""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColClCd);
+							TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+						}
+					}
+					Object[][] OkuriMsRt = OkuriMsRt(TgtClCd,TgtOkuriNo);
+					
+					int RowCount = ((DefaultTableModel)OkuriMsSearchSubFm[1]).getRowCount();
+					for(int i=0;i<RowCount;i++) {
+						((DefaultTableModel)OkuriMsSearchSubFm[1]).removeRow(0);
+					}
+					for(int i=0;i<((Object[][])OkuriMsSearchSubFm[4])[0].length;i++) {
+						if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JTextField) {
+							((JTextField)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setText((String)((Object[][])OkuriMsSearchSubFm[4])[3][i]);
+						}
+						if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JFormattedTextField) {
+							((JFormattedTextField)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setText((String)((Object[][])OkuriMsSearchSubFm[4])[3][i]);
+						}
+						if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JComboBox) {
+							((JComboBox)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setSelectedIndex((int)((Object[][])OkuriMsSearchSubFm[4])[3][i]);
+						}
+					}
+					NumberFormat ni = NumberFormat.getNumberInstance();
+					for(int i01=0;i01<OkuriMsRt.length;i01++) {
+						Object[] SetOb = new Object[OkuriMsRt[i01].length+1];
+						if(0==i01) {
+							SetOb[0] = true;
+							
+							for(int i=0;i<((Object[][])OkuriMsSearchSubFm[4])[0].length;i++) {
+								String WST = B100_TextControl.Trim(""+OkuriMsRt[0][i]);
+								
+								if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JTextField) {
+									((JTextField)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setText(WST);
+								}
+								if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JFormattedTextField) {
+									if(null!=((Object[][])OkuriMsSearchSubFm[4])[2][i]) {
+										switch((String)((Object[][])OkuriMsSearchSubFm[4])[2][i]) {
+											case "YYYY/MM/DD":
+												WST = B100_TextControl.TextToDate(WST);
+												break;
+											case "#,###":
+												WST = ""+ni.format(B100_TextControl.TextToInt(WST));
+												break;
+											case "#,###.##":
+												WST = ""+ni.format(B100_TextControl.TextToFloat(WST));
+												break;
+											default:
+												break;
+										}
+									}
+									((JFormattedTextField)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setText(WST);
+									
+								}
+								if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JComboBox) {
+									((JComboBox)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setSelectedIndex(B100_ArrayListControl.ArryListGetRow((String[])((Object[][])OkuriMsSearchSubFm[4])[2][i],WST,true));
+								}
+							}
+						}else {
+							SetOb[0] = false;
+						}
+						
+						for(int i02=0;i02<OkuriMsRt[i01].length;i02++) {
+							SetOb[1+i02] = "" + OkuriMsRt[i01][i02];
+						}
+						
+						((DefaultTableModel)OkuriMsSearchSubFm[1]).addRow(SetOb);
+					}
+					WT200_OkuriMsSearchSubFm.RenewFg = true;
 					RenewFg = true;
 				}
 			}
@@ -614,6 +721,53 @@ public class WT100_OkuriHd_00_Search{
 			}
 		});
 		
+		//明細付CSVボタン押下時の挙動
+		MsCsvBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String Selected = B100_FolderSelect.FolderSelect("出力先選択");
+					if(null!=Selected) {
+						int row_count = tb01.getRowCount();
+						String TgtClCd = A00000_Main.ClCd;
+						ArrayList<String> TgtOkuriNo = new ArrayList<String>();
+						for(int i=0;i<row_count;i++){
+							TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+						}
+						Object[][] OkuriMsRt = OkuriMsRt(TgtClCd,TgtOkuriNo);
+						Object[][] RtOkuriMsRt = T100_OkuriMsRt.RtOkuriMsRt();
+						String[][] OutData = new String[1+OkuriMsRt.length][RtOkuriHdRt.length];
+						
+						for(int i01=0;i01<RtOkuriHdRt.length;i01++) {
+							OutData[0][i01] = (String)RtOkuriMsRt[i01][3];
+						}
+						for(int i=0;i<OkuriMsRt.length;i++) {
+							for(int i01=0;i01<RtOkuriHdRt.length;i01++) {
+								OutData[1+i][i01] = ""+OkuriMsRt[i][i01];
+							}
+						}
+						
+						String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+						String fp = Selected+"\\"+"送り状（明細）検索結果"+NowDTM+".csv";
+						
+						B100_TextExport.create_csv(OutData,fp,"UTF-8");
+						
+						//ファイル開く
+						File file = new File(fp);
+						Desktop desktop = Desktop.getDesktop();
+						try {
+							desktop.open(file);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		
 		//エクセル出力ボタン押下時の挙動
 		ExcelBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
@@ -624,10 +778,73 @@ public class WT100_OkuriHd_00_Search{
 				}
 			}
 		});
+		//明細付Excel出力ボタン押下時の挙動
+		MsExcelBtn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					String Selected = B100_FolderSelect.FolderSelect("出力先選択");
+					if(null!=Selected) {
+						int row_count = tb01.getRowCount();
+						String TgtClCd = A00000_Main.ClCd;
+						ArrayList<String> TgtOkuriNo = new ArrayList<String>();
+						for(int i=0;i<row_count;i++){
+							TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+						}
+						Object[][] OkuriMsRt = OkuriMsRt(TgtClCd,TgtOkuriNo);
+						Object[][] RtOkuriMsRt = T100_OkuriMsRt.RtOkuriMsRt();
+						String[][] OutData = new String[1+OkuriMsRt.length][RtOkuriHdRt.length];
+						
+						for(int i01=0;i01<RtOkuriHdRt.length;i01++) {
+							OutData[0][i01] = (String)RtOkuriMsRt[i01][3];
+						}
+						for(int i=0;i<OkuriMsRt.length;i++) {
+							for(int i01=0;i01<RtOkuriHdRt.length;i01++) {
+								OutData[1+i][i01] = ""+OkuriMsRt[i][i01];
+							}
+						}
+						
+						String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+						String fp = Selected+"\\"+"送り状（明細）検索結果"+NowDTM+".xlsx";
+						
+						int MFG = 0;
+						int OPFG = 1;
+						B100_ExcelControl.EXCELL_DATA_SET(fp,"送り状（明細）検索結果",OutData ,MFG,OPFG);
+						
+						//ファイル開く
+						File file = new File(fp);
+						Desktop desktop = Desktop.getDesktop();
+						try {
+							desktop.open(file);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		//一括新規ボタン押下時の挙動
+		SomeCreateBtn.addActionListener(new AbstractAction(){
+            public void actionPerformed(ActionEvent e){
+            	((JFrame)OkuriMsSearchSubFm[0]).setVisible(false);
+            	((JFrame)OkuriMsSearchSubFm[0]).dispose();
+            	
+                SetX=main_fm.getX();
+                SetY=main_fm.getY();
+                main_fm.setVisible(false);
+                main_fm.dispose();
+                WT100_OkuriData_04_SomeEntry.OkuriDataSomeEntry(0,0);
+            }
+        });
 
         //EXITボタン押下時の挙動
         exit_btn.addActionListener(new AbstractAction(){
             public void actionPerformed(ActionEvent e){
+            	((JFrame)OkuriMsSearchSubFm[0]).setVisible(false);
+            	((JFrame)OkuriMsSearchSubFm[0]).dispose();
+            	
                 SetX=main_fm.getX();
                 SetY=main_fm.getY();
                 main_fm.setVisible(false);
@@ -637,6 +854,236 @@ public class WT100_OkuriHd_00_Search{
         });
     }
 
+	private static Object[][] OkuriMsRt(String TgtClCd,ArrayList<String> TgtOkuriNo){
+		if("".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
+		
+		ArrayList<String> SearchInvoiceWHCD			= new ArrayList<String>();	//倉庫CD
+		ArrayList<String> SearchClGpCD				= new ArrayList<String>();	//荷主グループCD
+		ArrayList<String> SearchClCd				= new ArrayList<String>();	//荷主CD
+		ArrayList<String> SearchOkuriNo				= TgtOkuriNo;	//送り状番号
+		ArrayList<String> SearchClDeliNo			= new ArrayList<String>();	//荷主管理番号
+		ArrayList<String> SearchPickupWhCd			= new ArrayList<String>();	//集荷倉庫CD
+		ArrayList<String> SearchPurposeFG			= new ArrayList<String>();	//目的フラグ
+		ArrayList<String> SearchPlanDateStr			= new ArrayList<String>();	//出荷予定日開始
+		ArrayList<String> SearchShipDateStr			= new ArrayList<String>();	//出荷実績日開始
+		ArrayList<String> SearchSPPlanDateStr		= new ArrayList<String>();	//着日指定開始
+		ArrayList<String> SearchSPDateStr			= new ArrayList<String>();	//着日実績開始
+		
+		ArrayList<String> SearchPlanDateEnd			= new ArrayList<String>();	//出荷予定日終了
+		ArrayList<String> SearchShipDateEnd			= new ArrayList<String>();	//出荷実績日終了
+		ArrayList<String> SearchSPPlanDateEnd		= new ArrayList<String>();	//着日指定終了
+		ArrayList<String> SearchSPDateEnd			= new ArrayList<String>();	//着日実績終了
+		
+		ArrayList<Float> SearchTotalWeightMin		= new ArrayList<Float>();	//荷物重量(kg)最小
+		ArrayList<Float> SearchTotalSizeMin			= new ArrayList<Float>();	//荷物サイズ最小
+		ArrayList<Integer> SearchTotalQtyMin		= new ArrayList<Integer>();	//個口数最小
+		
+		ArrayList<Float> SearchTotalWeightMax		= new ArrayList<Float>();	//荷物重量(kg)最大
+		ArrayList<Float> SearchTotalSizeMax			= new ArrayList<Float>();	//荷物サイズ最大
+		ArrayList<Integer> SearchTotalQtyMax		= new ArrayList<Integer>();	//個口数最大
+		
+		ArrayList<String> SearchDeliveryTypeCd01	= new ArrayList<String>();	//運送タイプ01
+		ArrayList<String> SearchDeliveryTypeCd02	= new ArrayList<String>();	//運送タイプ02
+		ArrayList<String> SearchDeliveryTypeCd03	= new ArrayList<String>();	//運送タイプ03
+		ArrayList<String> SearchDeliveryTypeCd04	= new ArrayList<String>();	//運送タイプ04
+		ArrayList<String> SearchDeliveryTypeCd05	= new ArrayList<String>();	//運送タイプ05
+		
+		ArrayList<Integer> SearchCodFG				= new ArrayList<Integer>();	//代引区分
+		ArrayList<Integer> SearchCodPayTotalMin		= new ArrayList<Integer>();	//代引収受金額合計最小
+		ArrayList<Integer> SearchCodPayTotalMax		= new ArrayList<Integer>();	//代引収受金額合計最大
+		
+		ArrayList<Integer> SearchChildrenFG			= new ArrayList<Integer>();	//子伝票区分
+		ArrayList<String> SearchParentOkuriNo		= new ArrayList<String>();	//親伝票番号
+		
+		ArrayList<String> SearchNiokuriCd			= new ArrayList<String>();	//荷送人CD
+		ArrayList<String> SearchNiokuriDepartmentCd	= new ArrayList<String>();	//荷送人部署CD
+		ArrayList<String> SearchNiokuriName			= new ArrayList<String>();	//荷送人名称
+		ArrayList<String> SearchNiokuriPost			= new ArrayList<String>();	//荷送人郵便番号
+		ArrayList<String> SearchNiokuriAdd			= new ArrayList<String>();	//荷送人住所
+		ArrayList<String> SearchNioKuriTel			= new ArrayList<String>();	//荷送人Tel
+		ArrayList<String> SearchNioKuriFax			= new ArrayList<String>();	//荷送人Fax
+		ArrayList<String> SearchNioKuriMail			= new ArrayList<String>();	//荷送人Mail
+		ArrayList<String> SearchNiokuriMunicCd		= new ArrayList<String>();	//荷送人市区町村CD
+		
+		ArrayList<String> SearchDeliCd				= new ArrayList<String>();	//届先CD
+		ArrayList<String> SearchClDeliCd			= new ArrayList<String>();	//荷主届先CD
+		ArrayList<String> SearchDeliDepartmentCd	= new ArrayList<String>();	//届先部署CD
+		ArrayList<String> SearchDeliName			= new ArrayList<String>();	//届先名称
+		ArrayList<String> SearchDeliPost			= new ArrayList<String>();	//届先郵便番号
+		ArrayList<String> SearchDeliAdd				= new ArrayList<String>();	//届先住所
+		ArrayList<String> SearchDeliTel				= new ArrayList<String>();	//届先Tel
+		ArrayList<String> SearchDeliFax				= new ArrayList<String>();	//届先Fax
+		ArrayList<String> SearchDeliMail			= new ArrayList<String>();	//届先Mail
+		ArrayList<String> SearchDeliMunicCd			= new ArrayList<String>();	//届先市区町村CD
+		
+		ArrayList<String> SearchCom					= new ArrayList<String>();	//コメント
+		ArrayList<Integer> SearchStatus				= new ArrayList<Integer>();	//運送ステータス
+		
+		ArrayList<Integer> SearchFeeFixFG			= new ArrayList<Integer>();	//運賃確定フラグ
+		ArrayList<Integer> SearchReceiptStampFG		= new ArrayList<Integer>();	//受領印フラグ
+		ArrayList<Integer> SearchInvoiceStatus		= new ArrayList<Integer>();	//請求ステータス
+		
+		ArrayList<Integer> SearchWithOutTaxTotalMin	= new ArrayList<Integer>();	//税別運賃合計最小
+		ArrayList<Integer> SearchTotalFeeMin		= new ArrayList<Integer>();	//税込運賃合計税込運賃合計
+		ArrayList<String> SearchFeeFixDateStr		= new ArrayList<String>();	//運賃確定日時開始
+		ArrayList<String> SearchReceiptStampDateStr	= new ArrayList<String>();	//受領印日時開始
+		ArrayList<String> SearchEntryDateStr		= new ArrayList<String>();	//登録日終了
+		ArrayList<String> SearchUpdateDateStr		= new ArrayList<String>();	//更新日終了
+		
+		ArrayList<Integer> SearchWithOutTaxTotalMax	= new ArrayList<Integer>();	//税別運賃合計最大
+		ArrayList<Integer> SearchTotalFeeMax		= new ArrayList<Integer>();	//税込運賃合計最大
+		ArrayList<String> SearchFeeFixDateEnd		= new ArrayList<String>();	//運賃確定日時終了
+		ArrayList<String> SearchReceiptStampDateEnd	= new ArrayList<String>();	//受領印日時終了
+		ArrayList<String> SearchEntryDateEnd		= new ArrayList<String>();	//登録日終了
+		ArrayList<String> SearchUpdateDateEnd		= new ArrayList<String>();	//更新日終了
+		
+		ArrayList<String> SearchEntryUser			= new ArrayList<String>();	//登録者
+		ArrayList<String> SearchUpdateUser			= new ArrayList<String>();	//更新者
+		ArrayList<String> SearchEntryPG				= new ArrayList<String>();	//登録プログラム
+		ArrayList<String> SearchUpdatePG			= new ArrayList<String>();	//更新プログラム
+		ArrayList<String> SearchUseFeeBasePtCd		= new ArrayList<String>();	//運転計算タリフ
+		ArrayList<Integer> SearchWmsStatus			= new ArrayList<Integer>();	//倉庫出荷ステータス
+		ArrayList<String> SearchWmsShipDateStr		= new ArrayList<String>();	//倉庫出荷日時開始
+		ArrayList<String> SearchWmsShipDateEnd		= new ArrayList<String>();	//倉庫出荷日時終了
+		ArrayList<String> SearchCourseGpCd			= new ArrayList<String>();	//配車コースグループコード
+		ArrayList<String> SearchCourseCD			= new ArrayList<String>();	//配車コースコード
+		ArrayList<Integer> SearchCourseCDEda		= new ArrayList<Integer>();	//配車コースコード枝番
+		ArrayList<String> SearchPitGrp				= new ArrayList<String>();	//荷物払出ピットグループ
+		ArrayList<String> SearchPit					= new ArrayList<String>();	//荷物払出ピット
+		
+		ArrayList<String> SearchMsItemCd			= new ArrayList<String>();	//商品CD
+		ArrayList<String> SearchMsItemName			= new ArrayList<String>();	//商品名
+		
+		ArrayList<String> SearchClItemCd			= new ArrayList<String>();	//荷主商品CD
+		
+		ArrayList<String> SearchMsCategoryCd		= new ArrayList<String>();	//カテゴリCD
+		ArrayList<String> SearchMsCategoryName		= new ArrayList<String>();	//カテゴリ名
+		ArrayList<String> SearchMsTildFG			= new ArrayList<String>();	//温度区分
+		ArrayList<String> SearchMsTildName			= new ArrayList<String>();	//温度区分名
+		
+		ArrayList<String> SearchMsLot				= new ArrayList<String>();	//ロット指定
+		ArrayList<String> SearchMsExpDateStr		= new ArrayList<String>();	//賞味期限指定開始
+		ArrayList<String> SearchMsExpDateEnd		= new ArrayList<String>();	//賞味期限指定終了
+		ArrayList<Integer> SearchMsPackingType		= new ArrayList<Integer>();	//荷姿タイプ
+		
+		boolean AllSearch = false;
+		if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
+			SearchClCd.add(TgtClCd);
+		}
+		
+		Object[][] OkuriMsRt	= T100_OkuriMsRt.OkuriMsRt(
+				SearchInvoiceWHCD,			//倉庫CD
+				SearchClGpCD,				//荷主グループCD
+				SearchClCd,					//荷主CD
+				SearchOkuriNo,				//送り状番号
+				SearchClDeliNo,				//荷主管理番号
+				SearchPickupWhCd,			//集荷倉庫CD
+				SearchPurposeFG,			//目的フラグ
+				SearchPlanDateStr,			//出荷予定日開始
+				SearchShipDateStr,			//出荷実績日開始
+				SearchSPPlanDateStr,		//着日指定開始
+				SearchSPDateStr,			//着日実績開始
+				
+				SearchPlanDateEnd,			//出荷予定日終了
+				SearchShipDateEnd,			//出荷実績日終了
+				SearchSPPlanDateEnd,		//着日指定終了
+				SearchSPDateEnd,			//着日実績終了
+				
+				SearchTotalWeightMin,		//荷物重量(kg)最小
+				SearchTotalSizeMin,			//荷物サイズ最小
+				SearchTotalQtyMin,			//個口数最小
+				
+				SearchTotalWeightMax,		//荷物重量(kg)最大
+				SearchTotalSizeMax,			//荷物サイズ最大
+				SearchTotalQtyMax,			//個口数最大
+				
+				SearchDeliveryTypeCd01,		//運送タイプ01
+				SearchDeliveryTypeCd02,		//運送タイプ02
+				SearchDeliveryTypeCd03,		//運送タイプ03
+				SearchDeliveryTypeCd04,		//運送タイプ04
+				SearchDeliveryTypeCd05,		//運送タイプ05
+				
+				SearchCodFG,				//代引区分
+				SearchCodPayTotalMin,		//代引収受金額合計最小
+				SearchCodPayTotalMax,		//代引収受金額合計最大
+				
+				SearchChildrenFG,			//子伝票区分
+				SearchParentOkuriNo,		//親伝票番号
+				
+				SearchNiokuriCd,			//荷送人CD
+				SearchNiokuriDepartmentCd,	//荷送人部署CD
+				SearchNiokuriName,			//荷送人名称
+				SearchNiokuriPost,			//荷送人郵便番号
+				SearchNiokuriAdd,			//荷送人住所
+				SearchNioKuriTel,			//荷送人Tel
+				SearchNioKuriFax,			//荷送人Fax
+				SearchNioKuriMail,			//荷送人Mail
+				SearchNiokuriMunicCd,		//荷送人市区町村CD
+				
+				SearchDeliCd,				//届先CD
+				SearchClDeliCd,				//荷主届先CD
+				SearchDeliDepartmentCd,		//届先部署CD
+				SearchDeliName,				//届先名称
+				SearchDeliPost,				//届先郵便番号
+				SearchDeliAdd,				//届先住所
+				SearchDeliTel,				//届先Tel
+				SearchDeliFax,				//届先Fax
+				SearchDeliMail,				//届先Mail
+				SearchDeliMunicCd,			//届先市区町村CD
+				
+				SearchCom,					//コメント
+				SearchStatus,				//運送ステータス
+				
+				SearchFeeFixFG,				//運賃確定フラグ
+				SearchReceiptStampFG,		//受領印フラグ
+				SearchInvoiceStatus,		//請求ステータス
+				
+				SearchWithOutTaxTotalMin,	//税別運賃合計最小
+				SearchTotalFeeMin,			//税込運賃合計最小
+				SearchFeeFixDateStr,		//運賃確定日時開始
+				SearchReceiptStampDateStr,	//受領印日時開始
+				SearchEntryDateStr,			//登録日開始
+				SearchUpdateDateStr,		//更新日開始
+				
+				SearchWithOutTaxTotalMax,	//税別運賃合計最大
+				SearchTotalFeeMax,			//税込運賃合計最大
+				SearchFeeFixDateEnd,		//運賃確定日時終了
+				SearchReceiptStampDateEnd,	//受領印日時終了
+				SearchEntryDateEnd,			//登録日終了
+				SearchUpdateDateEnd,		//更新日終了
+				
+				SearchEntryUser,			//登録者
+				SearchUpdateUser,			//更新者
+				SearchEntryPG,				//登録プログラム
+				SearchUpdatePG,				//更新プログラム
+				SearchUseFeeBasePtCd,		//運転計算タリフ
+				SearchWmsStatus,			//倉庫出荷ステータス
+				SearchWmsShipDateStr,		//倉庫出荷日時開始
+				SearchWmsShipDateEnd,		//倉庫出荷日時終了
+				SearchCourseGpCd,			//配車コースグループコード
+				SearchCourseCD,				//配車コースコード
+				SearchCourseCDEda,			//配車コースコード枝番
+				SearchPitGrp,				//荷物払出ピットグループ
+				SearchPit,					//荷物払出ピット
+				
+				SearchMsItemCd,				//商品CD
+				SearchMsItemName,			//商品名
+				
+				SearchClItemCd,				//荷主商品CD
+				
+				SearchMsCategoryCd,			//カテゴリCD
+				SearchMsCategoryName,		//カテゴリ名
+				SearchMsTildFG,				//温度区分
+				SearchMsTildName,			//温度区分名
+				
+				SearchMsLot,				//ロット指定
+				SearchMsExpDateStr,			//賞味期限指定開始
+				SearchMsExpDateEnd,			//賞味期限指定終了
+				SearchMsPackingType,		//荷姿タイプ
+				AllSearch);
+		return OkuriMsRt;
+	}
+    
     /**************************************************************************
      * 画面検索条件をT100_OkuriHdRt用ArrayListへ変換して検索
      * 画面未採用条件は空配列で渡す。
