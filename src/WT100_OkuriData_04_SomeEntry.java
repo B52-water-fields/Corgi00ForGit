@@ -151,7 +151,7 @@ public class WT100_OkuriData_04_SomeEntry{
 		//登録ボタン押下時の挙動
 		entry_btn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				String GetPlanDate	= TB_PlanDate.getText();		//出荷予定日
+				String GetPlanDate	= B100_TextControl.TextToDate(TB_PlanDate.getText());					//出荷予定日
 				String GetClWh		= B100_DefaultVariable.WhList[1][TB_ClWh.getSelectedIndex()];			//担当倉庫
 				String GetClCd		= B100_DefaultVariable.ClList[1][TB_ClCd.getSelectedIndex()];			//荷主CD
 				
@@ -183,40 +183,42 @@ public class WT100_OkuriData_04_SomeEntry{
 				if(RowCount<ArrayMsCom.length		) {RowCount = ArrayMsCom.length;}
 				
 				String[][] SetData = new String[RowCount][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.RtArrivalPlanArrayEntrySourceDataView().length];
-				/*
 				for(int i=0;i<RowCount;i++) {
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColClWh]		= GetClWh;		//担当倉庫
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColClCd]		= GetClCd;		//荷主CD
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColClArrNo]	= "";			//荷主予定番号
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColPlanDate]	= GetPlanDate;	//入荷予定日
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColClItemCd]	= "";			//荷主商品CD
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColPlanQty]	= "";			//数量
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColSPCd]		= GetSpCd;		//仕入先CD
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColLot]		= "";			//ロット
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColExpDate]	= "";			//賞味期限
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColHdCom01]	= "";			//ヘッダコメント01
-					SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColMsCom01]	= "";			//明細コメント01
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColClCd]			= GetClCd;
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColInvoiceWhCd]	= GetClWh;
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColClDeliNo]		= "";
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColPlanDate]		= GetPlanDate;
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColClDeliCd]		= "";
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColCom01]			= "";
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsClItemCd]		= "";
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsLot]			= "";
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsExpDate]		= "";
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsPackingQty]	= "";
+					SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsCom01]			= "";
 					
-					if(i<ArrayGetClArrNo.length) {
-						SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColClArrNo]	= ArrayGetClArrNo[i];			//荷主予定番号
+					if(i<ArrayClDeliNo.length	) {
+						SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColClDeliNo]		= B100_TextControl.Trim(ArrayClDeliNo[i]);
 					}
-					if(i<ArrayGetClItemCd.length) {
-						SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColClItemCd]	= ArrayGetClItemCd[i];			//荷主商品CD
+					if(i<ArrayClDeCd.length		) {
+						SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColClDeliCd]		= B100_TextControl.Trim(ArrayClDeCd[i]);
 					}
-					if(i<ArrayGetlot.length) {
-						SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColLot]		= ArrayGetlot[i];				//ロット
+					if(i<ArrayHdCom.length		) {
+						SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColCom01]			= B100_TextControl.Trim(ArrayHdCom[i]);
 					}
-					if(i<ArrayGetExpDate.length) {
-						SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColExpDate]	= ArrayGetExpDate[i];			//賞味期限
+					if(i<ArrayClItemCd.length	) {
+						SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsClItemCd]		= B100_TextControl.Trim(ArrayClItemCd[i]);
 					}
-					if(i<ArrayGetPlanQty.length) {
-						SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColPlanQty]	= ArrayGetPlanQty[i];			//数量
+					if(i<Arraylot.length		) {
+						SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsLot]			= B100_TextControl.Trim(Arraylot[i]);
 					}
-					if(i<ArrayGetHdCom.length) {
-						SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColHdCom01]	= ArrayGetHdCom[i];				//ヘッダコメント
+					if(i<ArrayExpDate.length	) {
+						SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsExpDate]		= B100_TextControl.TextToDate(ArrayExpDate[i]);
 					}
-					if(i<ArrayGetMsCom.length) {
-						SetData[i][WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ColMsCom01]	= ArrayGetMsCom[i];				//明細コメント
+					if(i<ArrayPlanQty.length	) {
+						SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsPackingQty]	= ""+B100_TextControl.TextToInt(ArrayPlanQty[i]);
+					}
+					if(i<ArrayMsCom.length		) {
+						SetData[i][WT100_OkuriData_05_ArrayEntrySourceDataView.ColMsCom01]			= B100_TextControl.Trim(ArrayMsCom[i]);
 					}
 				}
 				if(0<RowCount) {
@@ -225,9 +227,8 @@ public class WT100_OkuriData_04_SomeEntry{
 
 					main_fm.setVisible(false);
 					main_fm.dispose();
-					WT100_ArrivalPlan_05_ArrayEntrySourceDataView.ArrivalPlanArrayEntrySourceDataView(SetX+10,SetY+10,SetData);
+					WT100_OkuriData_05_ArrayEntrySourceDataView.OkuriDataArrayEntrySourceDataView(SetX+10,SetY+10,SetData);
 				}
-				*/
 			}
 		});
 		

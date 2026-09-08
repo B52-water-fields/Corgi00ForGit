@@ -85,7 +85,7 @@ public class WT100_ArrivalPlan_05_ArrayEntrySourceDataView{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_Msg 	= B100_FrameParts.JLabelSet(  0, 50,300,20,"以下のデータを取込もうとしています"	,11,1);
+		JLabel LB_Msg 	= B100_FrameParts.JLabelSet( 10, 50,300,20,"以下のデータを取込もうとしています"	,11,0);
 		main_fm.add(LB_Msg);
 		
 		Object[][] RtArrivalPlanArrayEntry = WT100_ArrivalPlan_05_ArrayEntrySourceDataView.RtArrivalPlanArrayEntrySourceDataView();
