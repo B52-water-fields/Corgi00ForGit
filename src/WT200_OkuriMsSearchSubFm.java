@@ -139,7 +139,6 @@ public class WT200_OkuriMsSearchSubFm{
 			TB_SearchOkuriNo.setEditable(false);
 		}
 		
-		
 		//検索結果ヘッダ情報
 		JLabel LB_InvoiceWhCd			= B100_FrameParts.JLabelSet(		680, 20, 70,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColInvoiceWhCd][3]				+":"	,11,1);		//倉庫CD
 		final JComboBox   			TB_InvoiceWhCd			= B100_FrameParts.JComboBoxSet(	750, 20,250,20,B100_DefaultVariable.WhList[0],11);									//倉庫CD
@@ -860,74 +859,95 @@ public class WT200_OkuriMsSearchSubFm{
 		
 		JLabel LB_MsItemName02			= B100_FrameParts.JLabelSet(		  0,  0,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsItemName02][3]				+":"	,11,1);		//明細商品正式名
 		JLabel LB_MsItemName03			= B100_FrameParts.JLabelSet(		  0, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsItemName03][3]				+":"	,11,1);		//明細商品略名
+		JLabel LB_MsCategoryCd			= B100_FrameParts.JLabelSet(		  0, 50,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsCategoryCd][3]				+":"	,11,1);		//明細商品分類
+		JLabel LB_MsCategoryName		= B100_FrameParts.JLabelSet(		  0, 75,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsCategoryName][3]			+":"	,11,1);		//明細商品分類名
+		JLabel LB_MsClItemCd			= B100_FrameParts.JLabelSet(		200, 50,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClItemCd][3]				+":"	,11,1);		//明細荷主商品CD
+		JLabel LB_MsItemMDNo			= B100_FrameParts.JLabelSet(		200, 75,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsItemMDNo][3]				+":"	,11,1);		//明細型番
+		JLabel LB_MsJanCd				= B100_FrameParts.JLabelSet(		200,100,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsJanCd][3]					+":"	,11,1);		//明細荷姿JanCd
+		
+		JLabel LB_MsEntryDate			= B100_FrameParts.JLabelSet(		400,  0,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsEntryDate][3]				+":"	,11,1);		//明細登録日
+		JLabel LB_MsUpdateDate			= B100_FrameParts.JLabelSet(		400, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUpdateDate][3]				+":"	,11,1);		//明細更新日
+		JLabel LB_MsEntryUser			= B100_FrameParts.JLabelSet(		400, 50,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsEntryUser][3]				+":"	,11,1);		//明細登録者
+		JLabel LB_MsUpdateUser			= B100_FrameParts.JLabelSet(		400, 75,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUpdateUser][3]				+":"	,11,1);		//明細更新者
+		
+		JLabel LB_MsUnitName			= B100_FrameParts.JLabelSet(		800,  0,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUnitName][3]				+":"	,11,1);		//明細明細単位
+		JLabel LB_MsUnitWeight			= B100_FrameParts.JLabelSet(		800, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUnitWeight][3]				+":"	,11,1);		//明細単位重量
+		JLabel LB_MsUnitSize			= B100_FrameParts.JLabelSet(		800, 50,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUnitSize][3]				+":"	,11,1);		//明細単位サイズ
+		JLabel LB_MsTildName			= B100_FrameParts.JLabelSet(		800, 75,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsTildName][3]				+":"	,11,1);		//明細温度区分
+		
+		JLabel LB_MsClCd				= B100_FrameParts.JLabelSet(	   1000,  0,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClCd][3]					+":"	,11,1);		//明細荷主コード
+		JLabel LB_MsInvoiceWhCd			= B100_FrameParts.JLabelSet(	   1000, 25,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsInvoiceWhCd][3]			+":"	,11,1);		//明細倉庫コード
+		JLabel LB_MsOkuriNo				= B100_FrameParts.JLabelSet(	   1000, 75,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsOkuriNo][3]				+":"	,11,1);		//明細送り状番号
+		JLabel LB_MsClGpCd				= B100_FrameParts.JLabelSet(	   1000,100,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClGpCd][3]					+":"	,11,1);		//明細荷主グループコード
 		
 		final JTextField  			TB_MsItemName02			= B100_FrameParts.JTextFieldSet(					100,  0,300,20,"",11,0);											//明細商品正式名
 		final JTextField  			TB_MsItemName03			= B100_FrameParts.JTextFieldSet(					100, 25,300,20,"",11,0);											//明細商品略名
+		final JTextField  			TB_MsCategoryCd			= B100_FrameParts.JTextFieldSet(					100, 50,100,20,"",11,0);											//明細商品分類
+		final JTextField  			TB_MsCategoryName		= B100_FrameParts.JTextFieldSet(					100, 75,100,20,"",11,0);											//明細商品分類名
+		final JTextField  			TB_MsClItemCd			= B100_FrameParts.JTextFieldSet(					300, 50,100,20,"",11,0);											//明細荷主商品CD
+		final JTextField  			TB_MsItemMDNo			= B100_FrameParts.JTextFieldSet(					300, 75,100,20,"",11,0);											//明細型番
+		final JTextField  			TB_MsJanCd				= B100_FrameParts.JTextFieldSet(					300,100,100,20,"",11,0);											//明細荷姿JanCd
+		
+		final JFormattedTextField  	TB_MsEntryDate			= B100_FrameParts.JFormattedTextFieldSet(		500,  0,300,20,"",11,0,"YYYY/MM/DD HH:MM:SS");						//明細登録日
+		final JFormattedTextField  	TB_MsUpdateDate			= B100_FrameParts.JFormattedTextFieldSet(		500, 25,300,20,"",11,0,"YYYY/MM/DD HH:MM:SS");						//明細更新日
+		final JTextField  			TB_MsEntryUser			= B100_FrameParts.JTextFieldSet(					500, 50,300,20,"",11,0);											//明細登録者
+		final JTextField  			TB_MsUpdateUser			= B100_FrameParts.JTextFieldSet(					500, 75,300,20,"",11,0);											//明細更新者
+		
+		final JTextField  			TB_MsUnitName			= B100_FrameParts.JTextFieldSet(					900,  0,100,20,"",11,0);											//明細明細単位
+		final JFormattedTextField  	TB_MsUnitWeight			= B100_FrameParts.JFormattedTextFieldSet(		900, 25,100,20,"",11,1,"#,###.##");									//明細単位重量
+		final JFormattedTextField  	TB_MsUnitSize			= B100_FrameParts.JFormattedTextFieldSet(		900, 50,100,20,"",11,1,"#,###.##");									//明細単位サイズ
+		final JTextField  			TB_MsTildName			= B100_FrameParts.JTextFieldSet(					900, 75,100,20,"",11,0);											//明細温度区分名
+		
+		final JComboBox   			TB_MsClCd				= B100_FrameParts.JComboBoxSet(				   1100,  0,150,20,B100_DefaultVariable.ClList[0],11);					//明細荷主コード
+		final JComboBox   			TB_MsInvoiceWhCd		= B100_FrameParts.JComboBoxSet(				   1100, 25,150,20,B100_DefaultVariable.WhList[0],11);					//明細倉庫コード
+		final JTextField  			TB_MsOkuriNo			= B100_FrameParts.JTextFieldSet(				   1100, 75,100,20,"",11,0);											//明細送り状番号
+		final JComboBox				TB_MsClGpCd				= B100_FrameParts.JComboBoxSet(				   1100,100,150,20,B100_DefaultVariable.ClGpList[0],11);				//明細荷主グループコード
 		
 		PN_MS01.add(LB_MsItemName02);
 		PN_MS01.add(LB_MsItemName03);
+		PN_MS01.add(LB_MsCategoryCd);
+		PN_MS01.add(LB_MsCategoryName);
+		PN_MS01.add(LB_MsClItemCd);
+		PN_MS01.add(LB_MsItemMDNo);
+		PN_MS01.add(LB_MsJanCd);
 		
+		PN_MS01.add(LB_MsEntryDate);
+		PN_MS01.add(LB_MsUpdateDate);
+		PN_MS01.add(LB_MsEntryUser);
+		PN_MS01.add(LB_MsUpdateUser);
 		
+		PN_MS01.add(LB_MsUnitName);
+		PN_MS01.add(LB_MsUnitWeight);
+		PN_MS01.add(LB_MsUnitSize);
+		PN_MS01.add(LB_MsTildName);
 		
+		PN_MS01.add(LB_MsClCd);
+		PN_MS01.add(LB_MsInvoiceWhCd);
+		PN_MS01.add(LB_MsOkuriNo);
+		PN_MS01.add(LB_MsClGpCd);
 		
+		PN_MS01.add(TB_MsItemName02);
+		PN_MS01.add(TB_MsItemName03);
+		PN_MS01.add(TB_MsCategoryCd);
+		PN_MS01.add(TB_MsCategoryName);
+		PN_MS01.add(TB_MsClItemCd);
+		PN_MS01.add(TB_MsItemMDNo);
+		PN_MS01.add(TB_MsJanCd);
 		
-		JLabel LB_MsCategoryCd			= B100_FrameParts.JLabelSet(		700,575,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsCategoryCd][3]				+":"	,11,1);		//明細商品分類
-		JLabel LB_MsCategoryName		= B100_FrameParts.JLabelSet(		700,600,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsCategoryName][3]			+":"	,11,1);		//明細商品分類名
+		PN_MS01.add(TB_MsEntryDate);
+		PN_MS01.add(TB_MsUpdateDate);
+		PN_MS01.add(TB_MsEntryUser);
+		PN_MS01.add(TB_MsUpdateUser);
 		
+		PN_MS01.add(TB_MsUnitName);
+		PN_MS01.add(TB_MsUnitWeight);
+		PN_MS01.add(TB_MsUnitSize);
+		PN_MS01.add(TB_MsTildName);
 		
-		
-		
-		JLabel LB_MsEntryDate			= B100_FrameParts.JLabelSet(	   1200,525,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsEntryDate][3]				+":"	,11,1);		//明細登録日
-		JLabel LB_MsUpdateDate			= B100_FrameParts.JLabelSet(	   1200,550,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUpdateDate][3]				+":"	,11,1);		//明細更新日
-		JLabel LB_MsEntryUser			= B100_FrameParts.JLabelSet(	   1200,575,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsEntryUser][3]				+":"	,11,1);		//明細登録者
-		JLabel LB_MsUpdateUser			= B100_FrameParts.JLabelSet(	   1200,600,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUpdateUser][3]				+":"	,11,1);		//明細更新者
-		
-		JLabel LB_MsUnitName			= B100_FrameParts.JLabelSet(	   1200,625,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUnitName][3]				+":"	,11,1);		//明細明細単位
-		JLabel LB_MsUnitWeight			= B100_FrameParts.JLabelSet(	   1200,650,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUnitWeight][3]				+":"	,11,1);		//明細単位重量
-		JLabel LB_MsUnitSize			= B100_FrameParts.JLabelSet(	   1200,675,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsUnitSize][3]				+":"	,11,1);		//明細単位サイズ
-		
-		JLabel LB_MsClItemCd			= B100_FrameParts.JLabelSet(	   1200,725,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClItemCd][3]				+":"	,11,1);		//明細荷主商品CD
-		JLabel LB_MsItemMDNo			= B100_FrameParts.JLabelSet(	   1200,750,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsItemMDNo][3]				+":"	,11,1);		//明細型番
-		JLabel LB_MsJanCd				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsJanCd][3]					+":"	,11,1);		//明細荷姿JanCd
-		
-		JLabel LB_MsClCd				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClCd][3]					+":"	,11,1);		//明細荷主コード
-		JLabel LB_MsInvoiceWhCd			= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsInvoiceWhCd][3]			+":"	,11,1);		//明細倉庫コード
-		JLabel LB_MsOkuriNo				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsOkuriNo][3]				+":"	,11,1);		//明細送り状番号
-		JLabel LB_MsClGpCd				= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsClGpCd][3]					+":"	,11,1);		//明細荷主グループコード
-		JLabel LB_MsTildName			= B100_FrameParts.JLabelSet(	   1200,775,100,20,(String)RtOkuriMsRt[T100_OkuriMsRt.ColMsTildName][3]				+":"	,11,1);		//明細温度区分
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		final JTextField  			TB_MsCategoryCd			= B100_FrameParts.JTextFieldSet(					800,575,100,20,"",11,0);											//明細商品分類
-		final JTextField  			TB_MsCategoryName		= B100_FrameParts.JTextFieldSet(					800,600,100,20,"",11,0);											//明細商品分類名
-		
-		
-		
-		
-		final JFormattedTextField  	TB_MsEntryDate			= B100_FrameParts.JFormattedTextFieldSet(	   1300,525,100,20,"",11,0,"YYYY/MM/DD HH:MM:SS");						//明細登録日
-		final JFormattedTextField  	TB_MsUpdateDate			= B100_FrameParts.JFormattedTextFieldSet(	   1300,550,100,20,"",11,0,"YYYY/MM/DD HH:MM:SS");						//明細更新日
-		final JTextField  			TB_MsEntryUser			= B100_FrameParts.JTextFieldSet(				   1300,575,100,20,"",11,0);											//明細登録者
-		final JTextField  			TB_MsUpdateUser			= B100_FrameParts.JTextFieldSet(				   1300,600,100,20,"",11,0);											//明細更新者
-		
-		final JTextField  			TB_MsUnitName			= B100_FrameParts.JTextFieldSet(				   1300,625,100,20,"",11,0);											//明細明細単位
-		final JFormattedTextField  	TB_MsUnitWeight			= B100_FrameParts.JFormattedTextFieldSet(	   1300,650,100,20,"",11,0,"#,###.##");									//明細単位重量
-		final JFormattedTextField  	TB_MsUnitSize			= B100_FrameParts.JFormattedTextFieldSet(	   1300,675,100,20,"",11,0,"#,###.##");									//明細単位サイズ
-		
-		final JTextField  			TB_MsClItemCd			= B100_FrameParts.JTextFieldSet(				   1300,725,100,20,"",11,0);											//明細荷主商品CD
-		final JTextField  			TB_MsItemMDNo			= B100_FrameParts.JTextFieldSet(				   1300,750,100,20,"",11,0);											//明細型番
-		final JTextField  			TB_MsJanCd				= B100_FrameParts.JTextFieldSet(				   1300,775,100,20,"",11,0);											//明細荷姿JanCd
-
-		final JComboBox   			TB_MsClCd				= B100_FrameParts.JComboBoxSet(					300,200,100,20,B100_DefaultVariable.ClList[0],11);					//明細荷主コード
-		final JComboBox   			TB_MsInvoiceWhCd		= B100_FrameParts.JComboBoxSet(					300,200,100,20,B100_DefaultVariable.WhList[0],11);					//明細倉庫コード
-		final JTextField  			TB_MsOkuriNo			= B100_FrameParts.JTextFieldSet(				   1300,775,100,20,"",11,0);											//明細送り状番号
-		final JComboBox				TB_MsClGpCd				= B100_FrameParts.JComboBoxSet(					300,200,100,20,B100_DefaultVariable.ClGpList[0],11);				//明細荷主グループコード
-		final JTextField  			TB_MsTildName			= B100_FrameParts.JTextFieldSet(				   1300,775,100,20,"",11,0);											//明細温度区分名
+		PN_MS01.add(TB_MsClCd);
+		PN_MS01.add(TB_MsInvoiceWhCd);
+		PN_MS01.add(TB_MsOkuriNo);
+		PN_MS01.add(TB_MsClGpCd);
 		
 		TB_MsClCd.setEnabled(false);
 		TB_MsInvoiceWhCd.setEnabled(false);
@@ -975,7 +995,7 @@ public class WT200_OkuriMsSearchSubFm{
 		OkuriMs_fm.add(HdTabPaneSet);
 		OkuriMs_fm.add(MsTabPaneSet);
 		
-		//制御対象まとめる使わない項目はとりあえずnull
+		//制御対象まとめる
 		final Object[][] ControlTgt = new Object[5][RtOkuriMsRt.length];
 		
 		ControlTgt[0][T100_OkuriMsRt.ColClCd] 					= TB_ClCd;
@@ -1412,9 +1432,10 @@ public class WT200_OkuriMsSearchSubFm{
 						if(i!=e.getFirstRow()){
 							tableModel_msOkuriMs.setValueAt(setBL, i, 0);
 						}else {
-	
+							
 						}
 					}
+					TableDataSet(tableModel_msOkuriMs,ControlTgt);
 					RenewFg = true;
 				}
 			}
@@ -1656,21 +1677,56 @@ public class WT200_OkuriMsSearchSubFm{
 	}
 	
 	private static void TableDataSet(DefaultTableModel tableModel_msOkuriMs,Object[][] ControlTgt) {
-		for(int i=0;i<ControlTgt.length;i++) {
-			switch((String)ControlTgt[1][i]) {
-			case "JTextField":
-				((JTextField)ControlTgt[0][i]).setText("");
-				break;
-			case "JFormattedTextField":
-				((JFormattedTextField)ControlTgt[0][i]).setText("");
-				break;
-			case "JComboBox":
-				((JComboBox)ControlTgt[0][i]).setSelectedIndex((int)ControlTgt[3][i]);
-				break;
-			default:
-				ControlTgt[3][i] = (int)0;
-				break;
+		NumberFormat ni = NumberFormat.getNumberInstance();
+		for(int i=0;i<ControlTgt[0].length;i++) {
+			if("Ms".equals((String)ControlTgt[4][i])) {
+				if(ControlTgt[0][i] instanceof JTextField) {
+					((JTextField)ControlTgt[0][i]).setText((String)ControlTgt[3][i]);
+				}
+				if(ControlTgt[0][i] instanceof JFormattedTextField) {
+					((JFormattedTextField)ControlTgt[0][i]).setText((String)ControlTgt[3][i]);
+				}
+				if(ControlTgt[0][i] instanceof JComboBox) {
+					((JComboBox)ControlTgt[0][i]).setSelectedIndex((int)ControlTgt[3][i]);
+				}
+			}
 		}
+		int RowCount = tableModel_msOkuriMs.getRowCount();
+		for(int i01=0;i01<RowCount;i01++) {
+			if((boolean)tableModel_msOkuriMs.getValueAt(i01, 0)) {
+				for(int i=0;i<ControlTgt[0].length;i++) {
+					if("Ms".equals((String)ControlTgt[4][i])) {
+						if(ControlTgt[0][i] instanceof JTextField) {
+							String WST = B100_TextControl.Trim(""+tableModel_msOkuriMs.getValueAt(i01, 1+i));
+							((JTextField)ControlTgt[0][i]).setText(WST);
+						}
+						if(ControlTgt[0][i] instanceof JFormattedTextField) {
+							String WST = B100_TextControl.Trim(""+tableModel_msOkuriMs.getValueAt(i01, 1+i));
+							if(null!=ControlTgt[2][i]) {
+								switch((String)ControlTgt[2][i]) {
+									case "YYYY/MM/DD":
+										WST = B100_TextControl.TextToDate(WST);
+										break;
+									case "#,###":
+										WST = ""+ni.format(B100_TextControl.TextToInt(WST));
+										break;
+									case "#,###.##":
+										WST = ""+ni.format(B100_TextControl.TextToFloat(WST));
+										break;
+									default:
+										break;
+								}
+							}
+							((JFormattedTextField)ControlTgt[0][i]).setText(WST);
+							
+						}
+						if(ControlTgt[0][i] instanceof JComboBox) {
+							String WST = B100_TextControl.Trim(""+tableModel_msOkuriMs.getValueAt(i01, 1+i));
+							((JComboBox)ControlTgt[0][i]).setSelectedIndex(B100_ArrayListControl.ArryListGetRow((String[])ControlTgt[2][i],WST,true));
+						}
+					}
+				}
+			}
 		}
 	}
 	
