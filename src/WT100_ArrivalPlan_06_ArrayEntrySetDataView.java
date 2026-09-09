@@ -96,7 +96,14 @@ public class WT100_ArrivalPlan_06_ArrayEntrySetDataView{
 				,{"SetCom02"		,ColSetCom02			,"String"	,"コメント2"			,""		}
 				,{"UnitType"		,ColUnitType			,"int"		,"荷姿タイプ"			,""		}
 				};
-		return SetDataDefinition;
+		
+		Object[][] Rt = new Object[SetDataDefinition.length][SetDataDefinition[0].length];
+		for(int i01=0;i01<SetDataDefinition.length;i01++) {
+			for(int i02=0;i02<SetDataDefinition[i01].length;i02++) {
+				Rt[(int)SetDataDefinition[i01][1]][i02]	= SetDataDefinition[i01][i02];
+			}
+		}
+		return Rt;
 	}
 	
 	static int SetX;
