@@ -168,7 +168,7 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 	
 					main_fm.setVisible(false);
 					main_fm.dispose();
-					//WT100_ArrivalPlan_06_ArrayEntrySetDataView.ArrivalPlanArrayEntrySetDataView(SetX+10,SetY+10,SetObRt);
+					WT100_OkuriData_06_ArrayEntrySetDataView.OkuriDataArrayEntrySetDataView(SetX+10,SetY+10,SetObRt);
 				}
 			}
 		});
@@ -386,9 +386,9 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNiokuriAdd01]			= (String)ClMstRt[i01][M100_ClMstRt.ColAdd01];			//住所1			⇒荷送り人住所01
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNiokuriAdd02]			= (String)ClMstRt[i01][M100_ClMstRt.ColAdd02];			//住所2			⇒荷送り人住所02
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNiokuriAdd03]			= (String)ClMstRt[i01][M100_ClMstRt.ColAdd03];			//住所3			⇒荷送り人住所03
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriTel]			= (String)ClMstRt[i][M100_ClMstRt.ColTel];				//電話番号		⇒荷送り人TEL
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriFax]			= (String)ClMstRt[i][M100_ClMstRt.ColFax];				//FAX			⇒荷送り人FAX
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriMail]			= (String)ClMstRt[i][M100_ClMstRt.ColMail];			//メールアドレス⇒荷送り人MAIL
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriTel]			= (String)ClMstRt[i01][M100_ClMstRt.ColTel];				//電話番号		⇒荷送り人TEL
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriFax]			= (String)ClMstRt[i01][M100_ClMstRt.ColFax];				//FAX			⇒荷送り人FAX
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriMail]			= (String)ClMstRt[i01][M100_ClMstRt.ColMail];			//メールアドレス⇒荷送り人MAIL
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNiokuriMunicCd]		= "";													//荷送人市区町村CD
 					
 					AddList[i]	= (String)ClMstRt[i01][M100_ClMstRt.ColAdd01]+(String)ClMstRt[i01][M100_ClMstRt.ColAdd02]+(String)ClMstRt[i01][M100_ClMstRt.ColAdd03];
@@ -443,8 +443,8 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliMail]				= (String)DeliveryComversionMstRt[i01][M100_DeliveryComversionMstRt.ColMail];				//届先MAIL		⇒荷届け先MAIL
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliMunicCd]			= "";										//荷届先市区町村CD
 					
-					if(!"".equals((String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColSetName])) {
-						SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliName01]			= (String)DeliveryComversionMstRt[i][M100_DeliveryComversionMstRt.ColSetName];			//送り状登録名	⇒荷届け先名01
+					if(!"".equals((String)DeliveryComversionMstRt[i01][M100_DeliveryComversionMstRt.ColSetName])) {
+						SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliName01]			= (String)DeliveryComversionMstRt[i01][M100_DeliveryComversionMstRt.ColSetName];			//送り状登録名	⇒荷届け先名01
 					}
 					
 					AddList[i]	= (String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliAdd01]+(String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliAdd02]+(String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliAdd03];
@@ -474,41 +474,16 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 		Object[][] ItemMstRt	= ItemMstRt(TgtClCD,TgtClItemCd);
 		//商品変換マスタ取得
 		Object[][] ItemComversionMstRt	= ItemComversionMstRt(TgtClGpCD,TgtClCD,TgtClItemCd);
+		
 		for(int i=0;i<CheckOb.length;i++) {
 			boolean UnHitFg	= true;
 			for(int i01=0;i01<ItemMstRt.length;i01++) {
 				if((""+CheckOb[i][ColMsClItemCd]).equals((String)(String)ItemMstRt[i01][M100_ItemMstRt.ColClItemCd])
 						&& ((String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsClGpCd]).equals((String)ItemMstRt[i01][M100_ItemMstRt.ColClGpCd])
 						) {
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeCd01];					//運送タイプコード01⇒運送タイプ01
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName]			= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeName01];					//運送タイプ名01	⇒運送タイプ名01
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd02]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeCd02];					//運送タイプコード02⇒運送タイプ02
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName02]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeName02];					//運送タイプ名02	⇒運送タイプ名02
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd03]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeCd03];					//運送タイプコード03⇒運送タイプ03
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName03]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeName03];					//運送タイプ名03	⇒運送タイプ名03
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd04]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeCd04];					//運送タイプコード04⇒運送タイプ04
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName04]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeName04];					//運送タイプ名04	⇒運送タイプ名04
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd05]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeCd05];					//運送タイプコード05⇒運送タイプ05
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName05]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColDeliveryTypeName05];					//運送タイプ名05	⇒運送タイプ名05
-					
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemCd]				= (String)ItemMstRt[i01][M100_ItemMstRt.ColItemCd];								//商品コード		⇒商品コード
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]			= (String)ItemMstRt[i01][M100_ItemMstRt.ColItemName01];							//商品表記名		⇒品名01
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName02]			= "";																				//品名02
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName03]			= "";																				//品名03
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i01][M100_ItemMstRt.ColItemWeight];							//商品重量			⇒単位重量
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i01][M100_ItemMstRt.ColItemSize];								//商品サイズ		⇒単位サイズ
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsQty]					= (int)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingQty];		//荷姿数量=個数
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingQty]			= B100_TextControl.TextToInt(""+CheckOb[i][ColMsPackingQty]);					//荷姿数量
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i01][M100_ItemMstRt.ColUnitName];								//商品単位			⇒明細単位
-					
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCategoryCd]			= (String)ItemMstRt[i01][M100_ItemMstRt.ColCategoryCd];							//商品カテゴリCD⇒商品分類
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCategoryName]		= (String)ItemMstRt[i01][M100_ItemMstRt.ColCategoryName];							//商品カテゴリ名⇒商品分類名
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsTildFG]				= (String)ItemMstRt[i01][M100_ItemMstRt.ColTildFG];								//温度区分⇒温度区分
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsTildName]			= (String)ItemMstRt[i01][M100_ItemMstRt.ColTildName];								//温度区分名⇒温度区分名
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)0;																			//荷姿タイプ
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemMDNo]			= (String)ItemMstRt[i01][M100_ItemMstRt.ColItemMDNo];								//商品モデル番号（型番）⇒型番
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i01][M100_ItemMstRt.ColJanCd];									//JANCD⇒JanCd
-					
 					
 					UnHitFg	= false;
 					i01=ItemMstRt.length+1;
@@ -521,97 +496,135 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 							&& (""+CheckOb[i][ColClCd]).equals((String)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColClCd])
 							) {
 						SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemCd]				= (String)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColItemCd];		//変換先商品コード		⇒商品コード
-						
-						for(int i02=0;i02<ItemMstRt.length;i02++) {
-							if(((String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemCd]).equals((String)ItemMstRt[i02][M100_ItemMstRt.ColItemCd])
-									&& ((String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsClGpCd]).equals((String)ItemMstRt[i02][M100_ItemMstRt.ColClGpCd])
-									) {
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd01];					//運送タイプコード01⇒運送タイプ01
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName01];					//運送タイプ名01	⇒運送タイプ名01
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd02]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd02];					//運送タイプコード02⇒運送タイプ02
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName02]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName02];					//運送タイプ名02	⇒運送タイプ名02
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd03]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd03];					//運送タイプコード03⇒運送タイプ03
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName03]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName03];					//運送タイプ名03	⇒運送タイプ名03
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd04]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd04];					//運送タイプコード04⇒運送タイプ04
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName04]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName04];					//運送タイプ名04	⇒運送タイプ名04
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd05]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd05];					//運送タイプコード05⇒運送タイプ05
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName05]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName05];					//運送タイプ名05	⇒運送タイプ名05
-								
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColItemCd];								//商品コード		⇒商品コード
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColItemName01];							//商品表記名		⇒品名01
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName02]			= "";																				//品名02
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName03]			= "";																				//品名03
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColItemWeight];							//商品重量			⇒単位重量
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColItemSize];								//商品サイズ		⇒単位サイズ
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsQty]					= (int)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingQty];		//荷姿数量=個数
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingQty]			= B100_TextControl.TextToInt(""+CheckOb[i][ColMsPackingQty]);					//荷姿数量
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColUnitName];								//商品単位			⇒明細単位
-								
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCategoryCd]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColCategoryCd];							//商品カテゴリCD	⇒商品分類
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCategoryName]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColCategoryName];							//商品カテゴリ名	⇒商品分類名
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsTildFG]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColTildFG];								//温度区分			⇒温度区分
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsTildName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColTildName];								//温度区分名		⇒温度区分名
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)0;																			//荷姿タイプ
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemMDNo]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColItemMDNo];								//商品モデル番号（型番）⇒型番
-								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColJanCd];									//JANCD					⇒JanCd
-							}
-							int UnitQty = 1;
-							int PackingQty = B100_TextControl.TextToInt(""+CheckOb[i][ColMsPackingQty]);
-							
-							switch((int)ItemComversionMstRt[i][M100_ItemComversionMstRt.ColPackingType]) {	//荷姿タイプに応じて値セットしなおし
-								case 0:	//バラ扱いの場合既に値セット済み
-									break;
-								case 1:	//カートン
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)1;																		//荷姿タイプ
-									if(!"".equals((String)ItemMstRt[i02][M100_ItemMstRt.ColCtName])) {
-										SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColCtName];							//カートン商品名称		⇒品名01
-									}
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColCtWeight];							//カートン重量			⇒単位重量
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColCtSize];								//カートンサイズ		⇒単位サイズ
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColCtUnitName];						//カートン商品単位		⇒明細単位
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColCtJan];								//カートンバーコード	⇒JanCd
-									UnitQty = (int)ItemMstRt[i02][M100_ItemMstRt.ColCtQty];					//カートン入数
-									break;
-								case 2:	//ケース
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)2;																		//荷姿タイプ
-									if(!"".equals((String)ItemMstRt[i02][M100_ItemMstRt.ColCsName])) {
-										SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColCsName];							//ケース商品名称		⇒品名01
-									}
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColCsWeight];							//ケース重量			⇒単位重量
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColCsSize];								//ケースサイズ			⇒単位サイズ
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColCsUnitName];						//ケース商品単位		⇒明細単位
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColCsJan];								//カートンバーコード	⇒JanCd
-									UnitQty = (int)ItemMstRt[i02][M100_ItemMstRt.ColCsQty];					//ケース入数
-									break;
-								case 3:	//パレット
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)3;																		//荷姿タイプ
-									if(!"".equals((String)ItemMstRt[i02][M100_ItemMstRt.ColPlName])) {
-										SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColPlName];							//パレット商品名称		⇒品名01
-									}
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColPlWeight];							//パレット重量			⇒単位重量
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColPlSize];								//パレットサイズ		⇒単位サイズ
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColPlUnitName];						//パレット商品単位		⇒明細単位
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColPlJan];								//パレットバーコード	⇒JanCd
-									UnitQty = (int)ItemMstRt[i02][M100_ItemMstRt.ColPlQty];					//パレット入数
-									break;
-								default:
-									break;
-							}
-							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsQty]					= UnitQty*PackingQty;		//個数
-							float UnitWeight 	= (float)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight];
-							float UnitSize 		= (float)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize];
-							
-							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsSubTotalWeight]		= (float)(UnitWeight*PackingQty);		//明細重量
-							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsSubTotalSize]		= (float)(UnitSize*PackingQty);			//明細サイズ
-						}
+						SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)ItemComversionMstRt[i01][M100_ItemComversionMstRt.ColPackingType];		//荷姿タイプ
 						
 						UnHitFg	= false;
 						i01=ItemComversionMstRt.length+1;
 					}
 				}
 			}
+			
+			for(int i02=0;i02<ItemMstRt.length;i02++) {
+				if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemCd]).equals((String)(String)ItemMstRt[i02][M100_ItemMstRt.ColItemCd])
+						&& ((String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsClGpCd]).equals((String)ItemMstRt[i02][M100_ItemMstRt.ColClGpCd])
+						) {
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd01];					//運送タイプコード01⇒運送タイプ01
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName01];					//運送タイプ名01	⇒運送タイプ名01
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd02]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd02];					//運送タイプコード02⇒運送タイプ02
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName02]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName02];					//運送タイプ名02	⇒運送タイプ名02
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd03]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd03];					//運送タイプコード03⇒運送タイプ03
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName03]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName03];					//運送タイプ名03	⇒運送タイプ名03
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd04]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd04];					//運送タイプコード04⇒運送タイプ04
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName04]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName04];					//運送タイプ名04	⇒運送タイプ名04
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliveryTypeCd05]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeCd05];					//運送タイプコード05⇒運送タイプ05
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliTypeName05]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColDeliveryTypeName05];					//運送タイプ名05	⇒運送タイプ名05
+					
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColItemCd];								//商品コード		⇒商品コード
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColItemName01];							//商品表記名		⇒品名01
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName02]			= "";																				//品名02
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName03]			= "";																				//品名03
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColItemWeight];							//商品重量			⇒単位重量
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColItemSize];								//商品サイズ		⇒単位サイズ
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingQty]			= B100_TextControl.TextToInt(""+CheckOb[i][ColMsPackingQty]);					//荷姿数量
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColUnitName];								//商品単位			⇒明細単位
+					
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCategoryCd]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColCategoryCd];							//商品カテゴリCD	⇒商品分類
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCategoryName]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColCategoryName];							//商品カテゴリ名	⇒商品分類名
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsTildFG]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColTildFG];								//温度区分			⇒温度区分
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsTildName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColTildName];								//温度区分名		⇒温度区分名
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemMDNo]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColItemMDNo];								//商品モデル番号（型番）⇒型番
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColJanCd];									//JANCD					⇒JanCd
+					
+					int UnitQty = 1;
+					int PackingQty = B100_TextControl.TextToInt(""+CheckOb[i][ColMsPackingQty]);
+					
+					switch((int)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]) {	//荷姿タイプに応じて値セットしなおし
+						case 0:	//バラ
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)0;																		//荷姿タイプ
+							if(!"".equals((String)ItemMstRt[i02][M100_ItemMstRt.ColCtName])) {
+								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColItemName01];						//商品表記名			⇒品名01
+							}
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColItemWeight];						//商品重量重量			⇒単位重量
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColItemSize];							//商品サイズ			⇒単位サイズ
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColUnitName];							//商品商品単位			⇒明細単位
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColJanCd];								//商品バーコード		⇒JanCd
+							UnitQty = 1;					//バラ入数
+							break;
+						case 1:	//カートン
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)1;																		//荷姿タイプ
+							if(!"".equals((String)ItemMstRt[i02][M100_ItemMstRt.ColCtName])) {
+								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColCtName];							//カートン商品名称		⇒品名01
+							}
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColCtWeight];							//カートン重量			⇒単位重量
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColCtSize];								//カートンサイズ		⇒単位サイズ
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColCtUnitName];						//カートン商品単位		⇒明細単位
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColCtJan];								//カートンバーコード	⇒JanCd
+							UnitQty = (int)ItemMstRt[i02][M100_ItemMstRt.ColCtQty];					//カートン入数
+							break;
+						case 2:	//ケース
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)2;																		//荷姿タイプ
+							if(!"".equals((String)ItemMstRt[i02][M100_ItemMstRt.ColCsName])) {
+								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColCsName];							//ケース商品名称		⇒品名01
+							}
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColCsWeight];							//ケース重量			⇒単位重量
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColCsSize];								//ケースサイズ			⇒単位サイズ
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColCsUnitName];						//ケース商品単位		⇒明細単位
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColCsJan];								//カートンバーコード	⇒JanCd
+							UnitQty = (int)ItemMstRt[i02][M100_ItemMstRt.ColCsQty];					//ケース入数
+							break;
+						case 3:	//パレット
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)3;																		//荷姿タイプ
+							if(!"".equals((String)ItemMstRt[i02][M100_ItemMstRt.ColPlName])) {
+								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColPlName];							//パレット商品名称		⇒品名01
+							}
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColPlWeight];							//パレット重量			⇒単位重量
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColPlSize];								//パレットサイズ		⇒単位サイズ
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColPlUnitName];						//パレット商品単位		⇒明細単位
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColPlJan];								//パレットバーコード	⇒JanCd
+							UnitQty = (int)ItemMstRt[i02][M100_ItemMstRt.ColPlQty];					//パレット入数
+							break;
+						default:
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsPackingType]			= (int)0;																		//荷姿タイプ
+							if(!"".equals((String)ItemMstRt[i02][M100_ItemMstRt.ColCtName])) {
+								SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsItemName01]		= (String)ItemMstRt[i02][M100_ItemMstRt.ColItemName01];						//商品表記名			⇒品名01
+							}
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColItemWeight];						//商品重量重量			⇒単位重量
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize]			= (float)ItemMstRt[i02][M100_ItemMstRt.ColItemSize];							//商品サイズ			⇒単位サイズ
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitName]			= (String)ItemMstRt[i02][M100_ItemMstRt.ColUnitName];							//商品商品単位			⇒明細単位
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsJanCd]				= (String)ItemMstRt[i02][M100_ItemMstRt.ColJanCd];								//商品バーコード		⇒JanCd
+							UnitQty = 1;					//バラ入数
+							break;
+					}
+					
+					if(0==(int)ItemMstRt[i02][M100_ItemMstRt.ColCsQty]) {
+						
+						SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCsCount]					= UnitQty*PackingQty;			//個口数
+						SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColBaraFg]						= 0;							//バラ端数無=0
+					}else {
+						SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCsCount]					= (UnitQty*PackingQty)/((int)ItemMstRt[i02][M100_ItemMstRt.ColCsQty]);			//個口数
+						if(0==(UnitQty*PackingQty)%((int)ItemMstRt[i02][M100_ItemMstRt.ColCsQty])) {
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColBaraFg]					= 0;							//バラ端数無=0
+						}else {
+							SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColBaraFg]					= 1;							//バラ端数無=0
+						}
+					}
+					
+					
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsQty]					= UnitQty*PackingQty;		//個数
+					float UnitWeight 	= (float)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitWeight];
+					float UnitSize 		= (float)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsUnitSize];
+					
+					float Weight 	= Math.round((float)(UnitWeight*PackingQty)*1000);	Weight	= Weight/1000;
+					float Size 		= Math.round((float)(UnitSize*PackingQty)*1000);	Size	= Size/1000;
+					
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsSubTotalWeight]		= Weight;	//明細重量
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsSubTotalSize]		= Size;		//明細サイズ
+					
+					UnHitFg	= false;
+					i02=ItemMstRt.length+1;
+				}
+			}
 		}
-		
 		return SetObRt;
 	}
 	

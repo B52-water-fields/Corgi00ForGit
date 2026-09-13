@@ -1,4 +1,21 @@
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
+import javax.swing.AbstractAction;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 public class WT100_OkuriData_06_ArrayEntrySetDataView{
+	//送り状データ登録する エラーチェックは済んでいいる前提
 	static final int Colcl_cd					=  0;
 	static final int ColInvoiceWHCD			=  1;
 	static final int ColOkuriNo				=  2;
@@ -140,7 +157,8 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 	static final int ColMsItemMDNo			=137;
 	static final int ColMsJanCd				=138;
 
-
+	static final int ColCsCount				=139;
+	static final int ColBaraFg					=140;
 	
 	public static Object[][] RtSetDataDefinition(){
 		//登録用データ定義
@@ -285,6 +303,9 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 				,{"MsClItemCd"			,ColMsClItemCd				,"String"	,"荷主商品CD"					,""}
 				,{"MsItemMDNo"			,ColMsItemMDNo				,"String"	,"型番"							,""}
 				,{"MsJanCd"				,ColMsJanCd					,"String"	,"JanCd"						,""}
+				
+				,{"CsCount"				,ColCsCount					,"int"		,"個口数"						,""}
+				,{"BaraFg"				,ColBaraFg						,"int"		,"バラ端数無=0"					,""}
 				};
 		Object[][] Rt = new Object[SetDataDefinition.length][SetDataDefinition[0].length];
 		for(int i01=0;i01<SetDataDefinition.length;i01++) {
@@ -294,4 +315,618 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 		}
 		return Rt;
 	}
+	
+	static int SetX;
+	static int SetY;
+	static boolean RenewFg;
+	
+	public static void OkuriDataArrayEntrySetDataView(int x,int y,Object[][] EntryData){
+		A00000_Main.LoginCheck();
+		if(0==SetX) {SetX=100;}
+		if(0==SetY) {SetY=100;}
+		if(x==0) {x=SetX;}
+		if(y==0) {y=SetY;}
+		RenewFg = false;
+		
+		final JFrame main_fm = B100_FrameParts.FrameCreate(x,y,900,750,"Corgi00出荷予定取込（登録データ確認）　WT100_ArrivalPlan_06_ArrayEntrySetDataView","SP");
+		JLabel userinfo = B100_FrameParts.UserInfo();
+		JButton exit_btn = B100_FrameParts.ExitBtn();
+		JButton entry_btn = B100_FrameParts.EntryBtn();
+		
+		main_fm.add(userinfo);
+		main_fm.add(exit_btn);
+		main_fm.add(entry_btn);
+		
+		JLabel LB_Msg 	= B100_FrameParts.JLabelSet(  0,50,300,20,"以下のデータを取込もうとしています"	,11,0);
+		main_fm.add(LB_Msg);
+		
+		Object[][] RtSetDataDefinition = RtSetDataDefinition();
+		
+		String[] columnNames01 = new String[RtSetDataDefinition.length+1];
+		
+		columnNames01[0] = "Fg";
+		for(int i=0;i<RtSetDataDefinition.length;i++) {
+			columnNames01[1+(int)RtSetDataDefinition[i][1]] = ""+RtSetDataDefinition[i][3];
+		}
+		
+		//編集可能カラムの指定
+		B100_TableControl.RenewTgt = new int[1];
+		B100_TableControl.RenewTgt[0] = 0;
+
+		final DefaultTableModel MainFmTableModel = new B100_TableControl.MyTableModel01(columnNames01,0);
+		
+		final JTable tb01 = new JTable(MainFmTableModel);
+		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
+		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
+		
+		DefaultTableColumnModel columnModel01
+		= (DefaultTableColumnModel)tb01.getColumnModel();
+		
+		//列幅初期設定 表示位置設定
+		TableColumn column = null;
+		
+		column = columnModel01.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
+		
+		for(int i=0;i<RtSetDataDefinition.length;i++) {
+			if("int".equals((String)RtSetDataDefinition[i][2])||"float".equals((String)RtSetDataDefinition[i][2])) {
+				column = columnModel01.getColumn(1+(int)RtSetDataDefinition[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.rightCellRenderer());
+			}else {
+				column = columnModel01.getColumn(1+(int)RtSetDataDefinition[i][1]);	column.setPreferredWidth( 90*A00000_Main.Mul/A00000_Main.Div);	column.setCellRenderer(B100_FrameParts.leftCellRenderer());
+			}
+		}
+		//スクロール用設定
+		JScrollPane scpn01 = B100_FrameParts.JScrollPaneSet(10,75,860,500,tb01);
+		main_fm.add(scpn01);
+		
+		for(int i=0;i<EntryData.length;i++) {
+			Object[] SetOb = new Object[RtSetDataDefinition.length+1];
+			
+			SetOb[0]	= false;
+			for(int i01=0;i01<RtSetDataDefinition.length;i01++) {
+				if(i01<EntryData[i].length) {
+					switch((String)RtSetDataDefinition[i01][2]) {
+						case "Date":
+							EntryData[i][(int)RtSetDataDefinition[i01][1]] = B100_TextControl.TextToDate(""+EntryData[i][(int)RtSetDataDefinition[i01][1]]);
+							break;
+						case "int":
+							int WINT	= B100_TextControl.TextToInt(""+EntryData[i][(int)RtSetDataDefinition[i01][1]]);
+							EntryData[i][(int)RtSetDataDefinition[i01][1]]	= ""+WINT;
+							break;
+						case "float":
+							float WFT	= B100_TextControl.TextToFloat(""+EntryData[i][(int)RtSetDataDefinition[i01][1]]);
+							WFT = Math.round(WFT*1000);	WFT	= WFT/1000;
+							EntryData[i][(int)RtSetDataDefinition[i01][1]]	= ""+WFT;
+							break;
+						default:
+							EntryData[i][(int)RtSetDataDefinition[i01][1]] = B100_TextControl.Trim(""+EntryData[i][(int)RtSetDataDefinition[i01][1]]);
+							break;
+					}
+					
+					
+					
+					SetOb[(int)RtSetDataDefinition[i01][1]+1]=EntryData[i][(int)RtSetDataDefinition[i01][1]];
+				}else {
+					SetOb[(int)RtSetDataDefinition[i01][1]+1]="";
+				}
+			}
+			MainFmTableModel.addRow(SetOb);
+		}
+		
+		RenewFg = true;
+		main_fm.setVisible(true);
+		
+		//登録ボタン押下時の挙動
+		entry_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = MainFmTableModel.getRowCount();
+					Object [][] RtSetDataDefinition	= RtSetDataDefinition();
+					
+					String[][] SetData = new String[row_count][RtSetDataDefinition.length];
+					for(int i=0;i<row_count;i++){
+						for(int i01=0;i01<RtSetDataDefinition.length;i01++) {
+							SetData[i][i01]	= B100_TextControl.Trim(""+MainFmTableModel.getValueAt(i, 1+i01));
+							switch((String)RtSetDataDefinition[i01][2]) {
+								case "Date":
+									SetData[i][i01] = B100_TextControl.TextToDate(""+SetData[i][i01]);
+									if("".equals(SetData[i][i01])) {
+										SetData[i][i01]	= "null";
+									}
+									break;
+								case "DateTime":
+									SetData[i][i01] = B100_TextControl.Trim(""+SetData[i][i01]);
+									if("".equals(SetData[i][i01])) {
+										SetData[i][i01]	= "null";
+									}
+									break;
+								case "int":
+									int WINT	= B100_TextControl.TextToInt(""+SetData[i][i01]);
+									SetData[i][i01]	= ""+WINT;
+									break;
+								case "float":
+									float WFT	= B100_TextControl.TextToFloat(""+SetData[i][i01]);
+									WFT = Math.round(WFT*1000);	WFT	= WFT/1000;
+									SetData[i][i01]	= ""+WFT;
+									break;
+								default:
+									SetData[i][i01] = B100_TextControl.Trim(""+SetData[i][i01]);
+									break;
+							}
+						}
+					}
+					if(0<SetData.length) {
+						DataEntry(SetData);
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//チェックボックス操作時の挙動
+		MainFmTableModel.addTableModelListener(new TableModelListener(){
+			public void tableChanged(TableModelEvent e){
+				if(RenewFg) {
+					RenewFg = false;
+					int row_count = tb01.getRowCount();
+					Boolean setBL=Boolean.valueOf(false);
+					for(int i=0;i<row_count;i++){
+						if(i!=e.getFirstRow()){
+							MainFmTableModel.setValueAt(setBL, i, 0);
+						}else {
+	
+						}
+					}
+					RenewFg = true;
+				}
+			}
+		});
+		
+		//EXITボタン押下時の挙動
+		exit_btn.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT100_OkuriHd_00_Search.OkuriHdSearch(0,0);
+			}
+		});
+	}
+	
+	private static void DataEntry(String[][] SetData) {
+		//同一ヘッダとしてみなす値
+		ArrayList<String> CheckArray_cl_cd					= new ArrayList<String>();
+		ArrayList<String> CheckArray_InvoiceWHCD			= new ArrayList<String>();
+		ArrayList<String> CheckArray_OkuriNo				= new ArrayList<String>();
+		ArrayList<String> CheckArray_ClDeliNo				= new ArrayList<String>();
+		ArrayList<String> CheckArray_PickupWHCD				= new ArrayList<String>();
+		ArrayList<String> CheckArray_PurposeFG				= new ArrayList<String>();
+		ArrayList<String> CheckArray_DeliveryTypeCd			= new ArrayList<String>();
+		ArrayList<String> CheckArray_DeliveryTypeCd02		= new ArrayList<String>();
+		ArrayList<String> CheckArray_DeliveryTypeCd03		= new ArrayList<String>();
+		ArrayList<String> CheckArray_DeliveryTypeCd04		= new ArrayList<String>();
+		ArrayList<String> CheckArray_DeliveryTypeCd05		= new ArrayList<String>();
+		ArrayList<String> CheckArray_CodFG					= new ArrayList<String>();
+		ArrayList<String> CheckArray_NiokuriCd				= new ArrayList<String>();
+		ArrayList<String> CheckArray_NiokuriDepartmentCd	= new ArrayList<String>();
+		ArrayList<String> CheckArray_DeliCd					= new ArrayList<String>();
+		ArrayList<String> CheckArray_ClDeliCd				= new ArrayList<String>();
+		ArrayList<String> CheckArray_MsTildFG				= new ArrayList<String>();
+		
+		ArrayList<Integer> 	TotalCsCount			= new ArrayList<Integer>();		//伝票個口数
+		ArrayList<Integer> 	TotalBaraFg				= new ArrayList<Integer>();		//伝票内バラ有無
+		ArrayList<Float> 	TotalWeight				= new ArrayList<Float>();		//伝票重量
+		ArrayList<Float> 	TotalSize				= new ArrayList<Float>();		//伝票サイズ
+		
+		int OkuriNeedCount = 0;
+		
+		for(int i=0;i<SetData.length;i++){
+			boolean UhHitFg=true;
+			if(null!=CheckArray_cl_cd&&0<CheckArray_cl_cd.size()) {
+				
+			}else {
+				for(int i01=0;i01<CheckArray_cl_cd.size();i01++) {
+					if(CheckArray_cl_cd.get(i01).equals(SetData[i][Colcl_cd])
+							&&CheckArray_InvoiceWHCD.get(i01).equals(""+SetData[i][ColInvoiceWHCD])
+							&&CheckArray_OkuriNo.get(i01).equals(SetData[i][ColOkuriNo])
+							&&CheckArray_ClDeliNo.get(i01).equals(SetData[i][ColClDeliNo])
+							&&CheckArray_PickupWHCD.get(i01).equals(SetData[i][ColPickupWHCD])
+							&&CheckArray_PurposeFG.get(i01).equals(SetData[i][ColPurposeFG])
+							&&CheckArray_DeliveryTypeCd.get(i01).equals(SetData[i][ColDeliveryTypeCd])
+							&&CheckArray_DeliveryTypeCd02.get(i01).equals(SetData[i][ColDeliveryTypeCd02])
+							&&CheckArray_DeliveryTypeCd03.get(i01).equals(SetData[i][ColDeliveryTypeCd03])
+							&&CheckArray_DeliveryTypeCd04.get(i01).equals(SetData[i][ColDeliveryTypeCd04])
+							&&CheckArray_DeliveryTypeCd05.get(i01).equals(SetData[i][ColDeliveryTypeCd05])
+							&&CheckArray_CodFG.get(i01).equals(SetData[i][ColCodFG])
+							&&CheckArray_NiokuriCd.get(i01).equals(SetData[i][ColNiokuriCd])
+							&&CheckArray_NiokuriDepartmentCd.get(i01).equals(SetData[i][ColNiokuriDepartmentCd])
+							&&CheckArray_DeliCd.get(i01).equals(SetData[i][ColDeliCd])
+							&&CheckArray_ClDeliCd.get(i01).equals(SetData[i][ColClDeliCd])
+							&&CheckArray_MsTildFG.get(i01).equals(SetData[i][ColMsTildFG])
+							) {
+						UhHitFg=false;
+						TotalCsCount.set(i01,TotalCsCount.get(i01)+B100_TextControl.TextToInt(SetData[i][ColCsCount]));
+						if(0==B100_TextControl.TextToInt(SetData[i][ColBaraFg])) {
+						}else {
+							TotalBaraFg.set(i01,1);
+						}
+						TotalWeight.set(i01,TotalWeight.get(i01)+B100_TextControl.TextToFloat(SetData[i][ColMsSubTotalWeight]));
+						TotalSize.set(i01,TotalSize.get(i01)+B100_TextControl.TextToFloat(SetData[i][ColMsSubTotalSize]));
+					}
+				}
+			}
+			
+			
+			if(UhHitFg) {
+				CheckArray_cl_cd.add(SetData[i][Colcl_cd]);
+				CheckArray_InvoiceWHCD.add(SetData[i][ColInvoiceWHCD]);
+				CheckArray_OkuriNo.add(SetData[i][ColOkuriNo]);
+				CheckArray_ClDeliNo.add(SetData[i][ColClDeliNo]);
+				CheckArray_PickupWHCD.add(SetData[i][ColPickupWHCD]);
+				CheckArray_PurposeFG.add(SetData[i][ColPurposeFG]);
+				CheckArray_DeliveryTypeCd.add(SetData[i][ColDeliveryTypeCd]);
+				CheckArray_DeliveryTypeCd02.add(SetData[i][ColDeliveryTypeCd02]);
+				CheckArray_DeliveryTypeCd03.add(SetData[i][ColDeliveryTypeCd03]);
+				CheckArray_DeliveryTypeCd04.add(SetData[i][ColDeliveryTypeCd04]);
+				CheckArray_DeliveryTypeCd05.add(SetData[i][ColDeliveryTypeCd05]);
+				CheckArray_CodFG.add(SetData[i][ColCodFG]);
+				CheckArray_NiokuriCd.add(SetData[i][ColNiokuriCd]);
+				CheckArray_NiokuriDepartmentCd.add(SetData[i][ColNiokuriDepartmentCd]);
+				CheckArray_DeliCd.add(SetData[i][ColDeliCd]);
+				CheckArray_ClDeliCd.add(SetData[i][ColClDeliCd]);
+				CheckArray_MsTildFG.add(SetData[i][ColMsTildFG]);
+				
+				TotalCsCount.add(B100_TextControl.TextToInt(SetData[i][ColCsCount]));
+				if(0==B100_TextControl.TextToInt(SetData[i][ColBaraFg])) {
+					TotalBaraFg.add(0);
+				}else {
+					TotalBaraFg.add(1);
+				}
+				TotalWeight.add(B100_TextControl.TextToFloat(SetData[i][ColMsSubTotalWeight]));
+				TotalSize.add(B100_TextControl.TextToFloat(SetData[i][ColMsSubTotalSize]));
+				
+				if("".equals(SetData[i][ColOkuriNo])) {
+					OkuriNeedCount	= OkuriNeedCount+1;
+				}
+			}
+		}
+		
+		int[] OkuriNo= Tools100_OkuriNoGet.OkuriNoRt(OkuriNeedCount);
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		
+		String[] HdSet_cl_cd				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_InvoiceWHCD			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_OkuriNo				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_ClDeliNo				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_PickupWHCD			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_PurposeFG			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_PlanDate				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_ShipDate				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_SPPlanDate			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_SPDate				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_SPTimeFG				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_SPTimeStr			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_SPTimeEnd			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_TotalWeight			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_TotalSize			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_TotalQty				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliveryTypeCd		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliTypeName			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliveryTypeCd02		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliTypeName02		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliveryTypeCd03		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliTypeName03		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliveryTypeCd04		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliTypeName04		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliveryTypeCd05		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliTypeName05		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_CodFG				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_CodPayTotal			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_CodPay				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_CodConsumptionTax	= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_ChildrenFG			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_ParentOkuriNo		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriCd			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriDepartmentCd	= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriName01		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriName02		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriName03		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriPost			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriAdd01			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriAdd02			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriAdd03			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NioKuriTel			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NioKuriFax			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NioKuriMail			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_NiokuriMunicCd		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliCd				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_ClDeliCd				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliDepartmentCd		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliName01			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliName02			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliName03			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliPost				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliAdd01			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliAdd02			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliAdd03			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliTel				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliFax				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliMail				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliMunicCd			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Com01				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Com02				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Com03				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Com04				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Com05				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Status				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_TaxFg				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_TaxRate				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_DeliFee				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_AddDeliFee01			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_AddDeliFee02			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_AddDeliFee03			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_HaighWayFee01		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_HaighWayFee02		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_ConsumptionTax		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_WithOutTaxTotal		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_TotalFee				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_FeeFixFG				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_FeeFixDate			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_ReceiptStampFG		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_ReceiptStampDate		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_InvoiceStatus		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_EntryDate			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_UpdateDate			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_EntryUser			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_UpdateUser			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_EntryPG				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_UpdatePG				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_UseFeeBasePtCd		= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_WmsStatus			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_WmsShipDate			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_CourseGpCd			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_CourseCD				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_CourseCDEda			= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_PitGrp				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Pit01				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Pit02				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Pit03				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Pit04				= new String[CheckArray_cl_cd.size()];
+		String[] HdSet_Pit05				= new String[CheckArray_cl_cd.size()];
+		
+		String[] MsSet_Mscl_cd				= new String[SetData.length];
+		String[] MsSet_MsInvoiceWHCD		= new String[SetData.length];
+		String[] MsSet_MsOkuriNo			= new String[SetData.length];
+		String[] MsSet_MsMsNo				= new String[SetData.length];
+		String[] MsSet_MsDeliNo				= new String[SetData.length];
+		String[] MsSet_MsDelliMsNo			= new String[SetData.length];
+		String[] MsSet_MsClOrderNo			= new String[SetData.length];
+		String[] MsSet_MsClGpCd				= new String[SetData.length];
+		String[] MsSet_MsItemCd				= new String[SetData.length];
+		String[] MsSet_MsItemName01			= new String[SetData.length];
+		String[] MsSet_MsItemName02			= new String[SetData.length];
+		String[] MsSet_MsItemName03			= new String[SetData.length];
+		String[] MsSet_MsUnitWeight			= new String[SetData.length];
+		String[] MsSet_MsUnitSize			= new String[SetData.length];
+		String[] MsSet_MsQty				= new String[SetData.length];
+		String[] MsSet_MsPackingQty			= new String[SetData.length];
+		String[] MsSet_MsUnitName			= new String[SetData.length];
+		String[] MsSet_MsSubTotalWeight		= new String[SetData.length];
+		String[] MsSet_MsSubTotalSize		= new String[SetData.length];
+		String[] MsSet_MsUnitPrice			= new String[SetData.length];
+		String[] MsSet_MsSubTotalPrice		= new String[SetData.length];
+		String[] MsSet_MsCategoryCd			= new String[SetData.length];
+		String[] MsSet_MsCategoryName		= new String[SetData.length];
+		String[] MsSet_MsTildFG				= new String[SetData.length];
+		String[] MsSet_MsTildName			= new String[SetData.length];
+		String[] MsSet_MsCom01				= new String[SetData.length];
+		String[] MsSet_MsCom02				= new String[SetData.length];
+		String[] MsSet_MsCom03				= new String[SetData.length];
+		String[] MsSet_MsCom04				= new String[SetData.length];
+		String[] MsSet_MsCom05				= new String[SetData.length];
+		String[] MsSet_MsEntryDate			= new String[SetData.length];
+		String[] MsSet_MsUpdateDate			= new String[SetData.length];
+		String[] MsSet_MsEntryUser			= new String[SetData.length];
+		String[] MsSet_MsUpdateUser			= new String[SetData.length];
+		String[] MsSet_MsLot				= new String[SetData.length];
+		String[] MsSet_MsExpDate			= new String[SetData.length];
+		String[] MsSet_MsPackingType		= new String[SetData.length];
+		String[] MsSet_MsClItemCd			= new String[SetData.length];
+		String[] MsSet_MsItemMDNo			= new String[SetData.length];
+		String[] MsSet_MsJanCd				= new String[SetData.length];
+		
+		OkuriNeedCount	= 0;
+		
+		for(int i01=0;i01<CheckArray_cl_cd.size();i01++) {
+			boolean UhHitFg=true;
+			int MsNo = 0;
+			String SetOkurino = CheckArray_OkuriNo.get(i01);
+			if("".equals(SetOkurino)) {
+				SetOkurino = ""+OkuriNo[OkuriNeedCount];
+				OkuriNeedCount = OkuriNeedCount+1;
+			}
+			
+			for(int i=0;i<SetData.length;i++){
+				if(CheckArray_cl_cd.get(i01).equals(SetData[i][Colcl_cd])
+						&&CheckArray_InvoiceWHCD.get(i01).equals(""+SetData[i][ColInvoiceWHCD])
+						&&CheckArray_OkuriNo.get(i01).equals(SetData[i][ColOkuriNo])
+						&&CheckArray_ClDeliNo.get(i01).equals(SetData[i][ColClDeliNo])
+						&&CheckArray_PickupWHCD.get(i01).equals(SetData[i][ColPickupWHCD])
+						&&CheckArray_PurposeFG.get(i01).equals(SetData[i][ColPurposeFG])
+						&&CheckArray_DeliveryTypeCd.get(i01).equals(SetData[i][ColDeliveryTypeCd])
+						&&CheckArray_DeliveryTypeCd02.get(i01).equals(SetData[i][ColDeliveryTypeCd02])
+						&&CheckArray_DeliveryTypeCd03.get(i01).equals(SetData[i][ColDeliveryTypeCd03])
+						&&CheckArray_DeliveryTypeCd04.get(i01).equals(SetData[i][ColDeliveryTypeCd04])
+						&&CheckArray_DeliveryTypeCd05.get(i01).equals(SetData[i][ColDeliveryTypeCd05])
+						&&CheckArray_CodFG.get(i01).equals(SetData[i][ColCodFG])
+						&&CheckArray_NiokuriCd.get(i01).equals(SetData[i][ColNiokuriCd])
+						&&CheckArray_NiokuriDepartmentCd.get(i01).equals(SetData[i][ColNiokuriDepartmentCd])
+						&&CheckArray_DeliCd.get(i01).equals(SetData[i][ColDeliCd])
+						&&CheckArray_ClDeliCd.get(i01).equals(SetData[i][ColClDeliCd])
+						&&CheckArray_MsTildFG.get(i01).equals(SetData[i][ColMsTildFG])
+						) {
+					
+					if(UhHitFg) {
+						HdSet_cl_cd[i01]				= SetData[i][Colcl_cd];
+						HdSet_InvoiceWHCD[i01]			= SetData[i][ColInvoiceWHCD];
+						HdSet_OkuriNo[i01]				= SetOkurino;
+						HdSet_ClDeliNo[i01]				= SetData[i][ColClDeliNo];
+						HdSet_PickupWHCD[i01]			= SetData[i][ColPickupWHCD];
+						HdSet_PurposeFG[i01]			= SetData[i][ColPurposeFG];
+						HdSet_PlanDate[i01]				= SetData[i][ColPlanDate];
+						HdSet_ShipDate[i01]				= SetData[i][ColShipDate];
+						HdSet_SPPlanDate[i01]			= SetData[i][ColSPPlanDate];
+						HdSet_SPDate[i01]				= SetData[i][ColSPDate];
+						HdSet_SPTimeFG[i01]				= SetData[i][ColSPTimeFG];
+						HdSet_SPTimeStr[i01]			= SetData[i][ColSPTimeStr];
+						HdSet_SPTimeEnd[i01]			= SetData[i][ColSPTimeEnd];
+						HdSet_TotalWeight[i01]			= SetData[i][ColTotalWeight];
+						HdSet_TotalSize[i01]			= SetData[i][ColTotalSize];
+						HdSet_TotalQty[i01]				= SetData[i][ColTotalQty];
+						HdSet_DeliveryTypeCd[i01]		= SetData[i][ColDeliveryTypeCd];
+						HdSet_DeliTypeName[i01]			= SetData[i][ColDeliTypeName];
+						HdSet_DeliveryTypeCd02[i01]		= SetData[i][ColDeliveryTypeCd02];
+						HdSet_DeliTypeName02[i01]		= SetData[i][ColDeliTypeName02];
+						HdSet_DeliveryTypeCd03[i01]		= SetData[i][ColDeliveryTypeCd03];
+						HdSet_DeliTypeName03[i01]		= SetData[i][ColDeliTypeName03];
+						HdSet_DeliveryTypeCd04[i01]		= SetData[i][ColDeliveryTypeCd04];
+						HdSet_DeliTypeName04[i01]		= SetData[i][ColDeliTypeName04];
+						HdSet_DeliveryTypeCd05[i01]		= SetData[i][ColDeliveryTypeCd05];
+						HdSet_DeliTypeName05[i01]		= SetData[i][ColDeliTypeName05];
+						HdSet_CodFG[i01]				= SetData[i][ColCodFG];
+						HdSet_CodPayTotal[i01]			= SetData[i][ColCodPayTotal];
+						HdSet_CodPay[i01]				= SetData[i][ColCodPay];
+						HdSet_CodConsumptionTax[i01]	= SetData[i][ColCodConsumptionTax];
+						HdSet_ChildrenFG[i01]			= SetData[i][ColChildrenFG];
+						HdSet_ParentOkuriNo[i01]		= SetData[i][ColParentOkuriNo];
+						HdSet_NiokuriCd[i01]			= SetData[i][ColNiokuriCd];
+						HdSet_NiokuriDepartmentCd[i01]	= SetData[i][ColNiokuriDepartmentCd];
+						HdSet_NiokuriName01[i01]		= SetData[i][ColNiokuriName01];
+						HdSet_NiokuriName02[i01]		= SetData[i][ColNiokuriName02];
+						HdSet_NiokuriName03[i01]		= SetData[i][ColNiokuriName03];
+						HdSet_NiokuriPost[i01]			= SetData[i][ColNiokuriPost];
+						HdSet_NiokuriAdd01[i01]			= SetData[i][ColNiokuriAdd01];
+						HdSet_NiokuriAdd02[i01]			= SetData[i][ColNiokuriAdd02];
+						HdSet_NiokuriAdd03[i01]			= SetData[i][ColNiokuriAdd03];
+						HdSet_NioKuriTel[i01]			= SetData[i][ColNioKuriTel];
+						HdSet_NioKuriFax[i01]			= SetData[i][ColNioKuriFax];
+						HdSet_NioKuriMail[i01]			= SetData[i][ColNioKuriMail];
+						HdSet_NiokuriMunicCd[i01]		= SetData[i][ColNiokuriMunicCd];
+						HdSet_DeliCd[i01]				= SetData[i][ColDeliCd];
+						HdSet_ClDeliCd[i01]				= SetData[i][ColClDeliCd];
+						HdSet_DeliDepartmentCd[i01]		= SetData[i][ColDeliDepartmentCd];
+						HdSet_DeliName01[i01]			= SetData[i][ColDeliName01];
+						HdSet_DeliName02[i01]			= SetData[i][ColDeliName02];
+						HdSet_DeliName03[i01]			= SetData[i][ColDeliName03];
+						HdSet_DeliPost[i01]				= SetData[i][ColDeliPost];
+						HdSet_DeliAdd01[i01]			= SetData[i][ColDeliAdd01];
+						HdSet_DeliAdd02[i01]			= SetData[i][ColDeliAdd02];
+						HdSet_DeliAdd03[i01]			= SetData[i][ColDeliAdd03];
+						HdSet_DeliTel[i01]				= SetData[i][ColDeliTel];
+						HdSet_DeliFax[i01]				= SetData[i][ColDeliFax];
+						HdSet_DeliMail[i01]				= SetData[i][ColDeliMail];
+						HdSet_DeliMunicCd[i01]			= SetData[i][ColDeliMunicCd];
+						HdSet_Com01[i01]				= SetData[i][ColCom01];
+						HdSet_Com02[i01]				= SetData[i][ColCom02];
+						HdSet_Com03[i01]				= SetData[i][ColCom03];
+						HdSet_Com04[i01]				= SetData[i][ColCom04];
+						HdSet_Com05[i01]				= SetData[i][ColCom05];
+						HdSet_Status[i01]				= SetData[i][ColStatus];
+						HdSet_TaxFg[i01]				= SetData[i][ColTaxFg];
+						HdSet_TaxRate[i01]				= SetData[i][ColTaxRate];
+						HdSet_DeliFee[i01]				= SetData[i][ColDeliFee];
+						HdSet_AddDeliFee01[i01]			= SetData[i][ColAddDeliFee01];
+						HdSet_AddDeliFee02[i01]			= SetData[i][ColAddDeliFee02];
+						HdSet_AddDeliFee03[i01]			= SetData[i][ColAddDeliFee03];
+						HdSet_HaighWayFee01[i01]		= SetData[i][ColHaighWayFee01];
+						HdSet_HaighWayFee02[i01]		= SetData[i][ColHaighWayFee02];
+						HdSet_ConsumptionTax[i01]		= SetData[i][ColConsumptionTax];
+						HdSet_WithOutTaxTotal[i01]		= SetData[i][ColWithOutTaxTotal];
+						HdSet_TotalFee[i01]				= SetData[i][ColTotalFee];
+						HdSet_FeeFixFG[i01]				= SetData[i][ColFeeFixFG];
+						HdSet_FeeFixDate[i01]			= SetData[i][ColFeeFixDate];
+						HdSet_ReceiptStampFG[i01]		= SetData[i][ColReceiptStampFG];
+						HdSet_ReceiptStampDate[i01]		= SetData[i][ColReceiptStampDate];
+						HdSet_InvoiceStatus[i01]		= SetData[i][ColInvoiceStatus];
+						HdSet_EntryDate[i01]			= SetData[i][ColEntryDate];
+						HdSet_UpdateDate[i01]			= SetData[i][ColUpdateDate];
+						HdSet_EntryUser[i01]			= SetData[i][ColEntryUser];
+						HdSet_UpdateUser[i01]			= SetData[i][ColUpdateUser];
+						HdSet_EntryPG[i01]				= SetData[i][ColEntryPG];
+						HdSet_UpdatePG[i01]				= SetData[i][ColUpdatePG];
+						HdSet_UseFeeBasePtCd[i01]		= SetData[i][ColUseFeeBasePtCd];
+						HdSet_WmsStatus[i01]			= SetData[i][ColWmsStatus];
+						HdSet_WmsShipDate[i01]			= SetData[i][ColWmsShipDate];
+						HdSet_CourseGpCd[i01]			= SetData[i][ColCourseGpCd];
+						HdSet_CourseCD[i01]				= SetData[i][ColCourseCD];
+						HdSet_CourseCDEda[i01]			= SetData[i][ColCourseCDEda];
+						HdSet_PitGrp[i01]				= SetData[i][ColPitGrp];
+						HdSet_Pit01[i01]				= SetData[i][ColPit01];
+						HdSet_Pit02[i01]				= SetData[i][ColPit02];
+						HdSet_Pit03[i01]				= SetData[i][ColPit03];
+						HdSet_Pit04[i01]				= SetData[i][ColPit04];
+						HdSet_Pit05[i01]				= SetData[i][ColPit05];
+					}
+					UhHitFg = false;
+				}
+				MsNo = MsNo+1;
+				MsSet_Mscl_cd[i]			= SetData[i][ColMscl_cd];
+				MsSet_MsInvoiceWHCD[i]		= SetData[i][ColMsInvoiceWHCD];
+				MsSet_MsOkuriNo[i]			= SetOkurino;
+				MsSet_MsMsNo[i]				= ""+MsNo;
+				MsSet_MsDeliNo[i]			= SetData[i][ColMsDeliNo];
+				MsSet_MsDelliMsNo[i]		= SetData[i][ColMsDelliMsNo];
+				MsSet_MsClOrderNo[i]		= SetData[i][ColMsClOrderNo];
+				MsSet_MsClGpCd[i]			= SetData[i][ColMsClGpCd];
+				MsSet_MsItemCd[i]			= SetData[i][ColMsItemCd];
+				MsSet_MsItemName01[i]		= SetData[i][ColMsItemName01];
+				MsSet_MsItemName02[i]		= SetData[i][ColMsItemName02];
+				MsSet_MsItemName03[i]		= SetData[i][ColMsItemName03];
+				MsSet_MsUnitWeight[i]		= SetData[i][ColMsUnitWeight];
+				MsSet_MsUnitSize[i]			= SetData[i][ColMsUnitSize];
+				MsSet_MsQty[i]				= SetData[i][ColMsQty];
+				MsSet_MsPackingQty[i]		= SetData[i][ColMsPackingQty];
+				MsSet_MsUnitName[i]			= SetData[i][ColMsUnitName];
+				MsSet_MsSubTotalWeight[i]	= SetData[i][ColMsSubTotalWeight];
+				MsSet_MsSubTotalSize[i]		= SetData[i][ColMsSubTotalSize];
+				MsSet_MsUnitPrice[i]		= SetData[i][ColMsUnitPrice];
+				MsSet_MsSubTotalPrice[i]	= SetData[i][ColMsSubTotalPrice];
+				MsSet_MsCategoryCd[i]		= SetData[i][ColMsCategoryCd];
+				MsSet_MsCategoryName[i]		= SetData[i][ColMsCategoryName];
+				MsSet_MsTildFG[i]			= SetData[i][ColMsTildFG];
+				MsSet_MsTildName[i]			= SetData[i][ColMsTildName];
+				MsSet_MsCom01[i]			= SetData[i][ColMsCom01];
+				MsSet_MsCom02[i]			= SetData[i][ColMsCom02];
+				MsSet_MsCom03[i]			= SetData[i][ColMsCom03];
+				MsSet_MsCom04[i]			= SetData[i][ColMsCom04];
+				MsSet_MsCom05[i]			= SetData[i][ColMsCom05];
+				MsSet_MsEntryDate[i]		= SetData[i][ColMsEntryDate];
+				MsSet_MsUpdateDate[i]		= SetData[i][ColMsUpdateDate];
+				MsSet_MsEntryUser[i]		= SetData[i][ColMsEntryUser];
+				MsSet_MsUpdateUser[i]		= SetData[i][ColMsUpdateUser];
+				MsSet_MsLot[i]				= SetData[i][ColMsLot];
+				MsSet_MsExpDate[i]			= SetData[i][ColMsExpDate];
+				MsSet_MsPackingType[i]		= SetData[i][ColMsPackingType];
+				MsSet_MsClItemCd[i]			= SetData[i][ColMsClItemCd];
+				MsSet_MsItemMDNo[i]			= SetData[i][ColMsItemMDNo];
+				MsSet_MsJanCd[i]			= SetData[i][ColMsJanCd];
+				
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
