@@ -336,7 +336,7 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 			SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCategoryName]		= "";										//商品分類名
 			SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsTildFG]				= "";										//温度区分
 			SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsTildName]			= "";										//温度区分名
-			SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCom01]				= ""+CheckOb[i][ColCom01];					//コメント01
+			SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCom01]				= ""+CheckOb[i][ColMsCom01];				//コメント01
 			SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCom02]				= "";										//コメント02
 			SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCom03]				= "";										//コメント03
 			SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsCom04]				= "";										//コメント04

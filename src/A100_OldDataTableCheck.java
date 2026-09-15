@@ -60,7 +60,7 @@ public class A100_OldDataTableCheck{
 		TGtTable[ 8][0] = "WANKO";	TGtTable[ 8][1] = "WW0010ArrivalPlanHd";
 		TGtTable[ 9][0] = "WANKO";	TGtTable[ 9][1] = "WW0011ArrivalPlanMs";
 		TGtTable[10][0] = "WANKO";	TGtTable[10][1] = "WW0012ArrivalHd";
-		TGtTable[11][0] = "WANKO";	TGtTable[11][1] = "WW0013ArrivaMs";
+		TGtTable[11][0] = "WANKO";	TGtTable[11][1] = "WW0013ArrivalMs";
 		TGtTable[12][0] = "WANKO";	TGtTable[12][1] = "WW0015Stock";
 		TGtTable[13][0] = "WANKO";	TGtTable[13][1] = "WW0016StockAdjust";
 		TGtTable[14][0] = "WANKO";	TGtTable[14][1] = "WW0020ShipPlovision";
@@ -239,7 +239,6 @@ public class A100_OldDataTableCheck{
 				+ " FROM INFORMATION_SCHEMA.COLUMNS\n"
 				+ " WHERE TABLE_SCHEMA = '"+MySqlDefaultSchema+"'\n"
 				+ " AND TABLE_NAME = '"+TgtTable+"'";
-		//System.out.println(sql);
 
 		try {
 			stmt01 = A100_DbConnect.conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,

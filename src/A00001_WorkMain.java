@@ -83,6 +83,10 @@ public class A00001_WorkMain{
 		JButton OkuriHdSearch = B100_FrameParts.BtnSet(					 20, 25,120,20,"出荷指示検索",11);
 		PN_Ship.add(OkuriHdSearch);
 		
+		//出荷指示一括登録
+		JButton OkuriSomeEntry = B100_FrameParts.BtnSet(					 20, 50,120,20,"出荷指示一括登録",9);
+		PN_Ship.add(OkuriSomeEntry);
+		
 		//強制出荷
 		JButton ShipForceEntry = B100_FrameParts.BtnSet(					 20,125,120,20,"強制出庫",11);
 		PN_Ship.add(ShipForceEntry);
@@ -204,6 +208,17 @@ public class A00001_WorkMain{
 			}
 		});
 		
+		//出荷指示一括登録
+		OkuriSomeEntry.addActionListener(new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				SetX=main_fm.getX();
+				SetY=main_fm.getY();
+
+				main_fm.setVisible(false);
+				main_fm.dispose();
+				WT100_OkuriData_04_SomeEntry.OkuriDataSomeEntry(0,0);
+			}
+		});
 		
 		//強制出荷
 		ShipForceEntry.addActionListener(new AbstractAction(){

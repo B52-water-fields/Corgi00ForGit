@@ -458,6 +458,13 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 					}
 					if(0<SetData.length) {
 						DataEntry(SetData);
+						
+						SetX=main_fm.getX();
+						SetY=main_fm.getY();
+
+						main_fm.setVisible(false);
+						main_fm.dispose();
+						WT100_OkuriHd_00_Search.OkuriHdSearch(0,0);
 					}
 					RenewFg = true;
 				}
@@ -523,9 +530,11 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 		
 		int OkuriNeedCount = 0;
 		
+		ArrayList<String> DeleteOkurino				= new ArrayList<String>();
+		
 		for(int i=0;i<SetData.length;i++){
 			boolean UhHitFg=true;
-			if(null!=CheckArray_cl_cd&&0<CheckArray_cl_cd.size()) {
+			if(null!=CheckArray_cl_cd&&0>=CheckArray_cl_cd.size()) {
 				
 			}else {
 				for(int i01=0;i01<CheckArray_cl_cd.size();i01++) {
@@ -547,6 +556,7 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 							&&CheckArray_ClDeliCd.get(i01).equals(SetData[i][ColClDeliCd])
 							&&CheckArray_MsTildFG.get(i01).equals(SetData[i][ColMsTildFG])
 							) {
+						
 						UhHitFg=false;
 						TotalCsCount.set(i01,TotalCsCount.get(i01)+B100_TextControl.TextToInt(SetData[i][ColCsCount]));
 						if(0==B100_TextControl.TextToInt(SetData[i][ColBaraFg])) {
@@ -579,6 +589,10 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 				CheckArray_ClDeliCd.add(SetData[i][ColClDeliCd]);
 				CheckArray_MsTildFG.add(SetData[i][ColMsTildFG]);
 				
+				if(!"".equals(SetData[i][ColOkuriNo])) {
+					DeleteOkurino.add(SetData[i][ColOkuriNo]);
+				}
+				
 				TotalCsCount.add(B100_TextControl.TextToInt(SetData[i][ColCsCount]));
 				if(0==B100_TextControl.TextToInt(SetData[i][ColBaraFg])) {
 					TotalBaraFg.add(0);
@@ -593,9 +607,30 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 				}
 			}
 		}
-		
 		int[] OkuriNo= Tools100_OkuriNoGet.OkuriNoRt(OkuriNeedCount);
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		
+		//更新の場合明細削除済みの可能性と送り状番号ループ回避のために送り状データ削除
+		
+		String[] judg_field = {"OkuriNo"};
+		String[][] judg_data = new String[OkuriNo.length+DeleteOkurino.size()][1];
+		String TgtDB = "NYANKO";
+		
+		int counter = 0;
+		for(int i=0;i<OkuriNo.length;i++) {
+			judg_data[counter][0] = ""+OkuriNo[i];
+			counter = counter+1;
+		}
+		for(int i=0;i<DeleteOkurino.size();i++) {
+			judg_data[counter][0] = DeleteOkurino.get(i);
+			counter = counter+1;
+		}
+		
+		String tgt_table = "KT0010_OKURI_HD";
+		A100_DeleteSQL.DeleteSql(tgt_table,judg_field,judg_data,TgtDB);
+		
+		tgt_table = "KT0011_OKURI_MS";
+		A100_DeleteSQL.DeleteSql(tgt_table,judg_field,judg_data,TgtDB);
 		
 		String[] HdSet_cl_cd				= new String[CheckArray_cl_cd.size()];
 		String[] HdSet_InvoiceWHCD			= new String[CheckArray_cl_cd.size()];
@@ -851,12 +886,12 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 						HdSet_ReceiptStampFG[i01]		= SetData[i][ColReceiptStampFG];
 						HdSet_ReceiptStampDate[i01]		= SetData[i][ColReceiptStampDate];
 						HdSet_InvoiceStatus[i01]		= SetData[i][ColInvoiceStatus];
-						HdSet_EntryDate[i01]			= SetData[i][ColEntryDate];
-						HdSet_UpdateDate[i01]			= SetData[i][ColUpdateDate];
-						HdSet_EntryUser[i01]			= SetData[i][ColEntryUser];
-						HdSet_UpdateUser[i01]			= SetData[i][ColUpdateUser];
-						HdSet_EntryPG[i01]				= SetData[i][ColEntryPG];
-						HdSet_UpdatePG[i01]				= SetData[i][ColUpdatePG];
+						HdSet_EntryDate[i01]			= now_dtm;
+						HdSet_UpdateDate[i01]			= now_dtm;
+						HdSet_EntryUser[i01]			= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;
+						HdSet_UpdateUser[i01]			= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;
+						HdSet_EntryPG[i01]				= "WT100_OkuriData_06_ArrayEntrySetDataView";
+						HdSet_UpdatePG[i01]				= "WT100_OkuriData_06_ArrayEntrySetDataView";
 						HdSet_UseFeeBasePtCd[i01]		= SetData[i][ColUseFeeBasePtCd];
 						HdSet_WmsStatus[i01]			= SetData[i][ColWmsStatus];
 						HdSet_WmsShipDate[i01]			= SetData[i][ColWmsShipDate];
@@ -870,63 +905,208 @@ public class WT100_OkuriData_06_ArrayEntrySetDataView{
 						HdSet_Pit04[i01]				= SetData[i][ColPit04];
 						HdSet_Pit05[i01]				= SetData[i][ColPit05];
 					}
+					MsNo = MsNo+1;
+					MsSet_Mscl_cd[i]			= SetData[i][ColMscl_cd];
+					MsSet_MsInvoiceWHCD[i]		= SetData[i][ColMsInvoiceWHCD];
+					MsSet_MsOkuriNo[i]			= SetOkurino;
+					MsSet_MsMsNo[i]				= ""+MsNo;
+					MsSet_MsDeliNo[i]			= SetData[i][ColMsDeliNo];
+					MsSet_MsDelliMsNo[i]		= SetData[i][ColMsDelliMsNo];
+					MsSet_MsClOrderNo[i]		= SetData[i][ColMsClOrderNo];
+					MsSet_MsClGpCd[i]			= SetData[i][ColMsClGpCd];
+					MsSet_MsItemCd[i]			= SetData[i][ColMsItemCd];
+					MsSet_MsItemName01[i]		= SetData[i][ColMsItemName01];
+					MsSet_MsItemName02[i]		= SetData[i][ColMsItemName02];
+					MsSet_MsItemName03[i]		= SetData[i][ColMsItemName03];
+					MsSet_MsUnitWeight[i]		= SetData[i][ColMsUnitWeight];
+					MsSet_MsUnitSize[i]			= SetData[i][ColMsUnitSize];
+					MsSet_MsQty[i]				= SetData[i][ColMsQty];
+					MsSet_MsPackingQty[i]		= SetData[i][ColMsPackingQty];
+					MsSet_MsUnitName[i]			= SetData[i][ColMsUnitName];
+					MsSet_MsSubTotalWeight[i]	= SetData[i][ColMsSubTotalWeight];
+					MsSet_MsSubTotalSize[i]		= SetData[i][ColMsSubTotalSize];
+					MsSet_MsUnitPrice[i]		= SetData[i][ColMsUnitPrice];
+					MsSet_MsSubTotalPrice[i]	= SetData[i][ColMsSubTotalPrice];
+					MsSet_MsCategoryCd[i]		= SetData[i][ColMsCategoryCd];
+					MsSet_MsCategoryName[i]		= SetData[i][ColMsCategoryName];
+					MsSet_MsTildFG[i]			= SetData[i][ColMsTildFG];
+					MsSet_MsTildName[i]			= SetData[i][ColMsTildName];
+					MsSet_MsCom01[i]			= SetData[i][ColMsCom01];
+					MsSet_MsCom02[i]			= SetData[i][ColMsCom02];
+					MsSet_MsCom03[i]			= SetData[i][ColMsCom03];
+					MsSet_MsCom04[i]			= SetData[i][ColMsCom04];
+					MsSet_MsCom05[i]			= SetData[i][ColMsCom05];
+					MsSet_MsEntryDate[i]		= now_dtm;
+					MsSet_MsUpdateDate[i]		= now_dtm;
+					MsSet_MsEntryUser[i]		= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;
+					MsSet_MsUpdateUser[i]		= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;
+					MsSet_MsLot[i]				= SetData[i][ColMsLot];
+					MsSet_MsExpDate[i]			= SetData[i][ColMsExpDate];
+					MsSet_MsPackingType[i]		= SetData[i][ColMsPackingType];
+					MsSet_MsClItemCd[i]			= SetData[i][ColMsClItemCd];
+					MsSet_MsItemMDNo[i]			= SetData[i][ColMsItemMDNo];
+					MsSet_MsJanCd[i]			= SetData[i][ColMsJanCd];
 					UhHitFg = false;
 				}
-				MsNo = MsNo+1;
-				MsSet_Mscl_cd[i]			= SetData[i][ColMscl_cd];
-				MsSet_MsInvoiceWHCD[i]		= SetData[i][ColMsInvoiceWHCD];
-				MsSet_MsOkuriNo[i]			= SetOkurino;
-				MsSet_MsMsNo[i]				= ""+MsNo;
-				MsSet_MsDeliNo[i]			= SetData[i][ColMsDeliNo];
-				MsSet_MsDelliMsNo[i]		= SetData[i][ColMsDelliMsNo];
-				MsSet_MsClOrderNo[i]		= SetData[i][ColMsClOrderNo];
-				MsSet_MsClGpCd[i]			= SetData[i][ColMsClGpCd];
-				MsSet_MsItemCd[i]			= SetData[i][ColMsItemCd];
-				MsSet_MsItemName01[i]		= SetData[i][ColMsItemName01];
-				MsSet_MsItemName02[i]		= SetData[i][ColMsItemName02];
-				MsSet_MsItemName03[i]		= SetData[i][ColMsItemName03];
-				MsSet_MsUnitWeight[i]		= SetData[i][ColMsUnitWeight];
-				MsSet_MsUnitSize[i]			= SetData[i][ColMsUnitSize];
-				MsSet_MsQty[i]				= SetData[i][ColMsQty];
-				MsSet_MsPackingQty[i]		= SetData[i][ColMsPackingQty];
-				MsSet_MsUnitName[i]			= SetData[i][ColMsUnitName];
-				MsSet_MsSubTotalWeight[i]	= SetData[i][ColMsSubTotalWeight];
-				MsSet_MsSubTotalSize[i]		= SetData[i][ColMsSubTotalSize];
-				MsSet_MsUnitPrice[i]		= SetData[i][ColMsUnitPrice];
-				MsSet_MsSubTotalPrice[i]	= SetData[i][ColMsSubTotalPrice];
-				MsSet_MsCategoryCd[i]		= SetData[i][ColMsCategoryCd];
-				MsSet_MsCategoryName[i]		= SetData[i][ColMsCategoryName];
-				MsSet_MsTildFG[i]			= SetData[i][ColMsTildFG];
-				MsSet_MsTildName[i]			= SetData[i][ColMsTildName];
-				MsSet_MsCom01[i]			= SetData[i][ColMsCom01];
-				MsSet_MsCom02[i]			= SetData[i][ColMsCom02];
-				MsSet_MsCom03[i]			= SetData[i][ColMsCom03];
-				MsSet_MsCom04[i]			= SetData[i][ColMsCom04];
-				MsSet_MsCom05[i]			= SetData[i][ColMsCom05];
-				MsSet_MsEntryDate[i]		= SetData[i][ColMsEntryDate];
-				MsSet_MsUpdateDate[i]		= SetData[i][ColMsUpdateDate];
-				MsSet_MsEntryUser[i]		= SetData[i][ColMsEntryUser];
-				MsSet_MsUpdateUser[i]		= SetData[i][ColMsUpdateUser];
-				MsSet_MsLot[i]				= SetData[i][ColMsLot];
-				MsSet_MsExpDate[i]			= SetData[i][ColMsExpDate];
-				MsSet_MsPackingType[i]		= SetData[i][ColMsPackingType];
-				MsSet_MsClItemCd[i]			= SetData[i][ColMsClItemCd];
-				MsSet_MsItemMDNo[i]			= SetData[i][ColMsItemMDNo];
-				MsSet_MsJanCd[i]			= SetData[i][ColMsJanCd];
-				
 			}
 		}
+		
+		Object[][] HdSetOb = {
+				 {"cl_cd"					,"1"	,"1"	,""		,HdSet_cl_cd				}	//荷主コード
+				 ,{"InvoiceWHCD"			,"1"	,"1"	,""		,HdSet_InvoiceWHCD			}	//倉庫コード
+				 ,{"OkuriNo"				,"1"	,"1"	,"Key"	,HdSet_OkuriNo				}	//送り状番号
+				 ,{"ClDeliNo"				,"1"	,"1"	,""		,HdSet_ClDeliNo				}	//荷主管理番号
+				 ,{"PickupWHCD"				,"1"	,"1"	,""		,HdSet_PickupWHCD			}	//集荷倉庫CD
+				 ,{"PurposeFG"				,"1"	,"1"	,""		,HdSet_PurposeFG			}	//目的フラグ
+				 ,{"PlanDate"				,"1"	,"1"	,""		,HdSet_PlanDate				}	//出荷予定日
+				 ,{"ShipDate"				,"1"	,"1"	,""		,HdSet_ShipDate				}	//出荷実績日
+				 ,{"SPPlanDate"				,"1"	,"1"	,""		,HdSet_SPPlanDate			}	//着日指定
+				 ,{"SPDate"					,"1"	,"1"	,""		,HdSet_SPDate				}	//着日実績
+				 ,{"SPTimeFG"				,"1"	,"1"	,""		,HdSet_SPTimeFG				}	//時間指定区分
+				 ,{"SPTimeStr"				,"1"	,"1"	,""		,HdSet_SPTimeStr			}	//時間指定開始
+				 ,{"SPTimeEnd"				,"1"	,"1"	,""		,HdSet_SPTimeEnd			}	//時間指定終了
+				 ,{"TotalWeight"			,"1"	,"1"	,""		,HdSet_TotalWeight			}	//荷物重量(kg)
+				 ,{"TotalSize"				,"1"	,"1"	,""		,HdSet_TotalSize			}	//荷物サイズ
+				 ,{"TotalQty"				,"1"	,"1"	,""		,HdSet_TotalQty				}	//個口数
+				 ,{"DeliveryTypeCd"			,"1"	,"1"	,""		,HdSet_DeliveryTypeCd		}	//運送タイプ01
+				 ,{"DeliTypeName"			,"1"	,"1"	,""		,HdSet_DeliTypeName			}	//運送タイプ名01
+				 ,{"DeliveryTypeCd02"		,"1"	,"1"	,""		,HdSet_DeliveryTypeCd02		}	//運送タイプ02
+				 ,{"DeliTypeName02"			,"1"	,"1"	,""		,HdSet_DeliTypeName02		}	//運送タイプ名02
+				 ,{"DeliveryTypeCd03"		,"1"	,"1"	,""		,HdSet_DeliveryTypeCd03		}	//運送タイプ03
+				 ,{"DeliTypeName03"			,"1"	,"1"	,""		,HdSet_DeliTypeName03		}	//運送タイプ名03
+				 ,{"DeliveryTypeCd04"		,"1"	,"1"	,""		,HdSet_DeliveryTypeCd04		}	//運送タイプ04
+				 ,{"DeliTypeName04"			,"1"	,"1"	,""		,HdSet_DeliTypeName04		}	//運送タイプ名04
+				 ,{"DeliveryTypeCd05"		,"1"	,"1"	,""		,HdSet_DeliveryTypeCd05		}	//運送タイプ05
+				 ,{"DeliTypeName05"			,"1"	,"1"	,""		,HdSet_DeliTypeName05		}	//運送タイプ名05
+				 ,{"CodFG"					,"1"	,"1"	,""		,HdSet_CodFG				}	//代引フラグ
+				 ,{"CodPayTotal"			,"1"	,"1"	,""		,HdSet_CodPayTotal			}	//代引収受金額合計
+				 ,{"CodPay"					,"1"	,"1"	,""		,HdSet_CodPay				}	//代引金額
+				 ,{"CodConsumptionTax"		,"1"	,"1"	,""		,HdSet_CodConsumptionTax	}	//代引消費税
+				 ,{"ChildrenFG"				,"1"	,"1"	,""		,HdSet_ChildrenFG			}	//赤黒区分
+				 ,{"ParentOkuriNo"			,"1"	,"1"	,""		,HdSet_ParentOkuriNo		}	//親伝票番号
+				 ,{"NiokuriCd"				,"1"	,"1"	,""		,HdSet_NiokuriCd			}	//荷送り人コード
+				 ,{"NiokuriDepartmentCd"	,"1"	,"1"	,""		,HdSet_NiokuriDepartmentCd	}	//部署CD
+				 ,{"NiokuriName01"			,"1"	,"1"	,""		,HdSet_NiokuriName01		}	//荷送人名01
+				 ,{"NiokuriName02"			,"1"	,"1"	,""		,HdSet_NiokuriName02		}	//荷送人名02
+				 ,{"NiokuriName03"			,"1"	,"1"	,""		,HdSet_NiokuriName03		}	//荷送人名03
+				 ,{"NiokuriPost"			,"1"	,"1"	,""		,HdSet_NiokuriPost			}	//荷送人郵便番号
+				 ,{"NiokuriAdd01"			,"1"	,"1"	,""		,HdSet_NiokuriAdd01			}	//荷送人住所01
+				 ,{"NiokuriAdd02"			,"1"	,"1"	,""		,HdSet_NiokuriAdd02			}	//荷送人住所02
+				 ,{"NiokuriAdd03"			,"1"	,"1"	,""		,HdSet_NiokuriAdd03			}	//荷送人住所03
+				 ,{"NioKuriTel"				,"1"	,"1"	,""		,HdSet_NioKuriTel			}	//荷送人TEL
+				 ,{"NioKuriFax"				,"1"	,"1"	,""		,HdSet_NioKuriFax			}	//荷送人FAX
+				 ,{"NioKuriMail"			,"1"	,"1"	,""		,HdSet_NioKuriMail			}	//荷送人MAIL
+				 ,{"NiokuriMunicCd"			,"1"	,"1"	,""		,HdSet_NiokuriMunicCd		}	//荷送人市区町村CD
+				 ,{"DeliCd"					,"1"	,"1"	,""		,HdSet_DeliCd				}	//荷届け先コード
+				 ,{"ClDeliCd"				,"1"	,"1"	,""		,HdSet_ClDeliCd				}	//荷主荷届け先コード
+				 ,{"DeliDepartmentCd"		,"1"	,"1"	,""		,HdSet_DeliDepartmentCd		}	//部署CD
+				 ,{"DeliName01"				,"1"	,"1"	,""		,HdSet_DeliName01			}	//荷届先名01
+				 ,{"DeliName02"				,"1"	,"1"	,""		,HdSet_DeliName02			}	//荷届先名02
+				 ,{"DeliName03"				,"1"	,"1"	,""		,HdSet_DeliName03			}	//荷届先名03
+				 ,{"DeliPost"				,"1"	,"1"	,""		,HdSet_DeliPost				}	//荷届先郵便番号
+				 ,{"DeliAdd01"				,"1"	,"1"	,""		,HdSet_DeliAdd01			}	//荷届先住所01
+				 ,{"DeliAdd02"				,"1"	,"1"	,""		,HdSet_DeliAdd02			}	//荷届先住所02
+				 ,{"DeliAdd03"				,"1"	,"1"	,""		,HdSet_DeliAdd03			}	//荷届先住所03
+				 ,{"DeliTel"				,"1"	,"1"	,""		,HdSet_DeliTel				}	//荷届先TEL
+				 ,{"DeliFax"				,"1"	,"1"	,""		,HdSet_DeliFax				}	//荷届先FAX
+				 ,{"DeliMail"				,"1"	,"1"	,""		,HdSet_DeliMail				}	//荷届先MAIL
+				 ,{"DeliMunicCd"			,"1"	,"1"	,""		,HdSet_DeliMunicCd			}	//荷届先市区町村CD
+				 ,{"Com01"					,"1"	,"1"	,""		,HdSet_Com01				}	//コメント01
+				 ,{"Com02"					,"1"	,"1"	,""		,HdSet_Com02				}	//コメント02
+				 ,{"Com03"					,"1"	,"1"	,""		,HdSet_Com03				}	//コメント03
+				 ,{"Com04"					,"1"	,"1"	,""		,HdSet_Com04				}	//コメント04
+				 ,{"Com05"					,"1"	,"1"	,""		,HdSet_Com05				}	//コメント05
+				 ,{"Status"					,"1"	,"1"	,""		,HdSet_Status				}	//状況
+				 ,{"TaxFg"					,"1"	,"1"	,""		,HdSet_TaxFg				}	//税区分
+				 ,{"TaxRate"				,"1"	,"1"	,""		,HdSet_TaxRate				}	//税率
+				 ,{"DeliFee"				,"1"	,"1"	,""		,HdSet_DeliFee				}	//運賃
+				 ,{"AddDeliFee01"			,"1"	,"1"	,""		,HdSet_AddDeliFee01			}	//付帯費用1
+				 ,{"AddDeliFee02"			,"1"	,"1"	,""		,HdSet_AddDeliFee02			}	//付帯費用2
+				 ,{"AddDeliFee03"			,"1"	,"1"	,""		,HdSet_AddDeliFee03			}	//付帯費用3
+				 ,{"HaighWayFee01"			,"1"	,"1"	,""		,HdSet_HaighWayFee01		}	//高速代等実費精算分1（内税）
+				 ,{"HaighWayFee02"			,"1"	,"1"	,""		,HdSet_HaighWayFee02		}	//高速代等実費精算分2（内税）
+				 ,{"ConsumptionTax"			,"1"	,"1"	,""		,HdSet_ConsumptionTax		}	//消費税
+				 ,{"WithOutTaxTotal"		,"1"	,"1"	,""		,HdSet_WithOutTaxTotal		}	//税別合計金額
+				 ,{"TotalFee"				,"1"	,"1"	,""		,HdSet_TotalFee				}	//税込請求額合計
+				 ,{"FeeFixFG"				,"1"	,"1"	,""		,HdSet_FeeFixFG				}	//金額確定フラグ
+				 ,{"FeeFixDate"				,"1"	,"1"	,""		,HdSet_FeeFixDate			}	//金額確定日時
+				 ,{"ReceiptStampFG"			,"1"	,"1"	,""		,HdSet_ReceiptStampFG		}	//受領印チェック
+				 ,{"ReceiptStampDate"		,"1"	,"1"	,""		,HdSet_ReceiptStampDate		}	//受領印日時
+				 ,{"InvoiceStatus"			,"1"	,"1"	,""		,HdSet_InvoiceStatus		}	//請求ステータス
+				 ,{"EntryDate"				,"1"	,"0"	,""		,HdSet_EntryDate			}	//登録日
+				 ,{"UpdateDate"				,"1"	,"1"	,""		,HdSet_UpdateDate			}	//更新日
+				 ,{"EntryUser"				,"1"	,"0"	,""		,HdSet_EntryUser			}	//登録者
+				 ,{"UpdateUser"				,"1"	,"1"	,""		,HdSet_UpdateUser			}	//更新者
+				 ,{"EntryPG"				,"1"	,"0"	,""		,HdSet_EntryPG				}	//登録プログラム
+				 ,{"UpdatePG"				,"1"	,"1"	,""		,HdSet_UpdatePG				}	//更新プログラム
+				 ,{"UseFeeBasePtCd"			,"1"	,"1"	,""		,HdSet_UseFeeBasePtCd		}	//適用運賃タリフCD
+				 ,{"WmsStatus"				,"1"	,"1"	,""		,HdSet_WmsStatus			}	//在庫管理ステータス
+				 ,{"WmsShipDate"			,"1"	,"1"	,""		,HdSet_WmsShipDate			}	//倉庫出荷日
+				 ,{"CourseGpCd"				,"1"	,"1"	,""		,HdSet_CourseGpCd			}	//コースグループコード
+				 ,{"CourseCD"				,"1"	,"1"	,""		,HdSet_CourseCD				}	//一次配車コースコード
+				 ,{"CourseCDEda"			,"1"	,"1"	,""		,HdSet_CourseCDEda			}	//一次配車コースコード枝番
+				 ,{"PitGrp"					,"1"	,"1"	,""		,HdSet_PitGrp				}	//一次配車払出ピットグループ
+				 ,{"Pit01"					,"1"	,"1"	,""		,HdSet_Pit01				}	//一次配車払出ピット01
+				 ,{"Pit02"					,"1"	,"1"	,""		,HdSet_Pit02				}	//一次配車払出ピット02
+				 ,{"Pit03"					,"1"	,"1"	,""		,HdSet_Pit03				}	//一次配車払出ピット03
+				 ,{"Pit04"					,"1"	,"1"	,""		,HdSet_Pit04				}	//一次配車払出ピット04
+				 ,{"Pit05"					,"1"	,"1"	,""		,HdSet_Pit05				}	//一次配車払出ピット05
+				};
+		
+		Object[][] MsSetOb = {
+				  {"cl_cd"			,"1"	,"1"	,""		,MsSet_Mscl_cd			}	//荷主コード
+				 ,{"InvoiceWHCD"	,"1"	,"1"	,""		,MsSet_MsInvoiceWHCD	}	//倉庫コード
+				 ,{"OkuriNo"		,"1"	,"1"	,"Key"	,MsSet_MsOkuriNo		}	//送り状番号
+				 ,{"MsNo"			,"1"	,"1"	,"Key"	,MsSet_MsMsNo			}	//明細番号
+				 ,{"DeliNo"			,"1"	,"1"	,""		,MsSet_MsDeliNo			}	//出荷番号
+				 ,{"DelliMsNo"		,"1"	,"1"	,""		,MsSet_MsDelliMsNo		}	//出荷番号明細番号
+				 ,{"ClOrderNo"		,"1"	,"1"	,""		,MsSet_MsClOrderNo		}	//荷主管理番号
+				 ,{"ClGpCd"			,"1"	,"1"	,""		,MsSet_MsClGpCd			}	//荷主グループコード
+				 ,{"ItemCd"			,"1"	,"1"	,""		,MsSet_MsItemCd			}	//商品コード
+				 ,{"ItemName01"		,"1"	,"1"	,""		,MsSet_MsItemName01		}	//商品表記名
+				 ,{"ItemName02"		,"1"	,"1"	,""		,MsSet_MsItemName02		}	//商品正式名
+				 ,{"ItemName03"		,"1"	,"1"	,""		,MsSet_MsItemName03		}	//商品略名
+				 ,{"UnitWeight"		,"1"	,"1"	,""		,MsSet_MsUnitWeight		}	//単位重量
+				 ,{"UnitSize"		,"1"	,"1"	,""		,MsSet_MsUnitSize		}	//単位サイズ
+				 ,{"Qty"			,"1"	,"1"	,""		,MsSet_MsQty			}	//個数
+				 ,{"PackingQty"		,"1"	,"1"	,""		,MsSet_MsPackingQty		}	//荷姿数量
+				 ,{"UnitName"		,"1"	,"1"	,""		,MsSet_MsUnitName		}	//明細単位
+				 ,{"SubTotalWeight"	,"1"	,"1"	,""		,MsSet_MsSubTotalWeight	}	//明細重量
+				 ,{"SubTotalSize"	,"1"	,"1"	,""		,MsSet_MsSubTotalSize	}	//明細サイズ
+				 ,{"UnitPrice"		,"1"	,"1"	,""		,MsSet_MsUnitPrice		}	//単価
+				 ,{"SubTotalPrice"	,"1"	,"1"	,""		,MsSet_MsSubTotalPrice	}	//金額
+				 ,{"CategoryCd"		,"1"	,"1"	,""		,MsSet_MsCategoryCd		}	//商品分類
+				 ,{"CategoryName"	,"1"	,"1"	,""		,MsSet_MsCategoryName	}	//商品分類名
+				 ,{"TildFG"			,"1"	,"1"	,""		,MsSet_MsTildFG			}	//温度区分
+				 ,{"TildName"		,"1"	,"1"	,""		,MsSet_MsTildName		}	//温度区分名
+				 ,{"Com01"			,"1"	,"1"	,""		,MsSet_MsCom01			}	//コメント01
+				 ,{"Com02"			,"1"	,"1"	,""		,MsSet_MsCom02			}	//コメント02
+				 ,{"Com03"			,"1"	,"1"	,""		,MsSet_MsCom03			}	//コメント03
+				 ,{"Com04"			,"1"	,"1"	,""		,MsSet_MsCom04			}	//コメント04
+				 ,{"Com05"			,"1"	,"1"	,""		,MsSet_MsCom05			}	//コメント05
+				 ,{"EntryDate"		,"1"	,"0"	,""		,MsSet_MsEntryDate		}	//登録日
+				 ,{"UpdateDate"		,"1"	,"1"	,""		,MsSet_MsUpdateDate		}	//更新日
+				 ,{"EntryUser"		,"1"	,"0"	,""		,MsSet_MsEntryUser		}	//登録者
+				 ,{"UpdateUser"		,"1"	,"1"	,""		,MsSet_MsUpdateUser		}	//更新者
+				 ,{"Lot"			,"1"	,"1"	,""		,MsSet_MsLot			}	//ロット指定
+				 ,{"ExpDate"		,"1"	,"1"	,""		,MsSet_MsExpDate		}	//賞味期限指定
+				 ,{"PackingType"	,"1"	,"1"	,""		,MsSet_MsPackingType	}	//荷姿タイプ
+				 ,{"ClItemCd"		,"1"	,"1"	,""		,MsSet_MsClItemCd		}	//荷主商品CD
+				 ,{"ItemMDNo"		,"1"	,"1"	,""		,MsSet_MsItemMDNo		}	//型番
+				 ,{"JanCd"			,"1"	,"1"	,""		,MsSet_MsJanCd			}	//荷姿JanCd
+				};
+		
+		String Hd_tgt_table = "KT0010_OKURI_HD";
+		String Hd_TgtDB = "NYANKO";
+		int Hd_non_msg_fg = 1;
+		
+		A100_InsertUpdateSQL.InsertUpdateSomeRecord(HdSetOb,Hd_tgt_table,Hd_TgtDB,Hd_non_msg_fg);
+		
+		String Ms_tgt_table = "KT0011_OKURI_MS";
+		String Ms_TgtDB = "NYANKO";
+		int Ms_non_msg_fg = 0;
+		
+		A100_InsertUpdateSQL.InsertUpdateSomeRecord(MsSetOb,Ms_tgt_table,Ms_TgtDB,Ms_non_msg_fg);
+		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

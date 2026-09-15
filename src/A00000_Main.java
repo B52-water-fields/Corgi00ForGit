@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 public class A00000_Main{
 	//本番環境MySQL接続設定とMySqlのスキーマ設定　"C:\\MIZUNO\\WMS\\Corgi00ini.txt"に以下をコピーして、ご自身の環境にあわせて記入して設定してください
 	/*
+	UseSSh = true;
 	DefaultSshHostName = "your.ssh.server.com";
 	DefaultSshUserName = "ssh_user";
 	DefaultSshKeyFld = "/path/to/key";
@@ -38,6 +39,7 @@ public class A00000_Main{
 	PasswordExpireDays = 180;
 	FileFldPth = "C:\MIZUNO\WMS";
 	FontFilePath = "C:\MIZUNO\FONT\meiryo.ttc"
+	FontFileName = "Meiryo";
 	*/
 	//
 	
