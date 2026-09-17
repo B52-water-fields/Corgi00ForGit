@@ -99,31 +99,31 @@ public class M100_ClMstRt{
 	
 	public static Object[][] RtClMstRt(){
 		Object[][] RtSettingClMstRt = {
-				 {"cl_cd"		,Colcl_cd			,"String"	,"荷主CD"			,"Key"}
-				,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"	,""}
-				,{"ClGpName"	,ColClGpName		,"String"	,"グループ表記名"	,""}
-				,{"WHCD"		,ColWHCD			,"String"	,"担当倉庫"			,""}
-				,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"		,""}
-				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"		,""}
-				,{"CLName02"	,ColCLName02		,"String"	,"荷主正式名"		,""}
-				,{"CLName03"	,ColCLName03		,"String"	,"荷主略名"			,""}
-				,{"Post"		,ColPost			,"String"	,"郵便番号"			,""}
-				,{"Add01"		,ColAdd01			,"String"	,"住所1"			,""}
-				,{"Add02"		,ColAdd02			,"String"	,"住所2"			,""}
-				,{"Add03"		,ColAdd03			,"String"	,"住所3"			,""}
-				,{"Tel"			,ColTel			,"String"	,"電話番号"			,""}
-				,{"Fax"			,ColFax			,"String"	,"FAX"				,""}
-				,{"Mail"		,ColMail			,"String"	,"メールアドレス"	,""}
-				,{"Com01"		,ColCom01			,"String"	,"コメント1"		,""}
-				,{"Com02"		,ColCom02			,"String"	,"コメント2"		,""}
-				,{"Com03"		,ColCom03			,"String"	,"コメント3"		,""}
-				,{"ShimeDate"	,ColShimeDate		,"int"		,"締日"				,""}
-				,{"ShimeBasis"	,ColShimeBasis	,"int"		,"請求基準"			,""}
-				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"データ登録日時"	,""}
-				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"データ更新日時"	,""}
-				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"		,""}
-				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"		,""}
-				,{"PTMSCD"		,ColPTMSCD			,"String"	,"基幹Sys荷主CD"	,""}
+				 {"cl_cd"		,Colcl_cd			,"String"	,"荷主CD"			,"Key"	,"Client Code"	,"货主代码"	,"Mã chủ hàng"}
+				,{"ClGpCD"		,ColClGpCD			,"String"	,"荷主グループCD"	,""	,"Client Group Code"	,"货主组代码"	,"Mã nhóm chủ hàng"}
+				,{"ClGpName"	,ColClGpName		,"String"	,"グループ表記名"	,""	,"Group Display Name"	,"组显示名称"	,"Tên hiển thị nhóm"}
+				,{"WHCD"		,ColWHCD			,"String"	,"担当倉庫"			,""	,"Assigned Warehouse"	,"负责仓库"	,"Kho phụ trách"}
+				,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"		,""	,"Warehouse Name"	,"仓库名称"	,"Tên kho"}
+				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"		,""	,"Client Name"	,"货主名称"	,"Tên chủ hàng"}
+				,{"CLName02"	,ColCLName02		,"String"	,"荷主正式名"		,""	,"Client Official Name"	,"货主正式名称"	,"Tên chính thức chủ hàng"}
+				,{"CLName03"	,ColCLName03		,"String"	,"荷主略名"			,""	,"Client Short Name"	,"货主简称"	,"Tên viết tắt chủ hàng"}
+				,{"Post"		,ColPost			,"String"	,"郵便番号"			,""	,"Postal Code"	,"邮政编码"	,"Mã bưu chính"}
+				,{"Add01"		,ColAdd01			,"String"	,"住所1"			,""	,"Address 1"	,"地址1"	,"Địa chỉ 1"}
+				,{"Add02"		,ColAdd02			,"String"	,"住所2"			,""	,"Address 2"	,"地址2"	,"Địa chỉ 2"}
+				,{"Add03"		,ColAdd03			,"String"	,"住所3"			,""	,"Address 3"	,"地址3"	,"Địa chỉ 3"}
+				,{"Tel"			,ColTel			,"String"	,"電話番号"			,""	,"TEL"	,"电话"	,"Điện thoại"}
+				,{"Fax"			,ColFax			,"String"	,"FAX"				,""	,"FAX"	,"传真"	,"FAX"}
+				,{"Mail"		,ColMail			,"String"	,"メールアドレス"	,""	,"Email Address"	,"邮箱地址"	,"Địa chỉ email"}
+				,{"Com01"		,ColCom01			,"String"	,"コメント1"		,""	,"Comment 1"	,"备注1"	,"Ghi chú 1"}
+				,{"Com02"		,ColCom02			,"String"	,"コメント2"		,""	,"Comment 2"	,"备注2"	,"Ghi chú 2"}
+				,{"Com03"		,ColCom03			,"String"	,"コメント3"		,""	,"Comment 3"	,"备注3"	,"Ghi chú 3"}
+				,{"ShimeDate"	,ColShimeDate		,"int"		,"締日"				,""	,"Closing Day"	,"结算日"	,"Ngày chốt"}
+				,{"ShimeBasis"	,ColShimeBasis	,"int"		,"請求基準"			,""	,"Billing Basis"	,"计费基准"	,"Cơ sở tính phí"}
+				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"データ登録日時"	,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
+				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"データ更新日時"	,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者コード"		,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者コード"		,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
+				,{"PTMSCD"		,ColPTMSCD			,"String"	,"基幹Sys荷主CD"	,""	,"Core System Client Code"	,"核心系统货主代码"	,"Mã chủ hàng hệ thống lõi"}
 				};
 		
 		RtSettingClMstRt = B100_LanguageControl.RtControl(RtSettingClMstRt);
@@ -133,16 +133,16 @@ public class M100_ClMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"			,ColSearchClGpCD	,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchCLCD	,B100_DefaultVariable.SearchClList		,"荷主CD"			,""}
-					,{"String"		,null	,"Exact"			,ColSearchCLName	,""											,"荷主名"			,""}
-					,{"String"		,null	,"Prefix"			,ColSearchPost	,""											,"郵便番号"			,""}
-					,{"String"		,null	,"Partial"			,ColsearchAdd		,""											,"住所"				,""}
-					,{"String"		,null	,"Partial"			,ColSearchTel		,""											,"Tel"				,""}
-					,{"String"		,null	,"Partial"			,ColSearchFax		,""											,"Fax"				,""}
-					,{"String"		,null	,"Partial"			,ColSearchMail	,""											,"Mail"				,""}
-					,{"String"		,null	,"Partial"			,ColSearchCom		,""											,"コメント"			,""}
-					,{"String"		,null	,"Exact"			,ColSearchWHCD	,B100_DefaultVariable.SearchWhList		,"倉庫CD"			,""}
+					 {"String"		,null	,"Exact"			,ColSearchClGpCD	,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""	,"Client Group Code"	,""	,"货主组代码"	,""	,"Mã nhóm chủ hàng"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchCLCD	,B100_DefaultVariable.SearchClList		,"荷主CD"			,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchCLName	,""											,"荷主名"			,""	,"Client Name"	,""	,"货主名称"	,""	,"Tên chủ hàng"	,""}
+					,{"String"		,null	,"Prefix"			,ColSearchPost	,""											,"郵便番号"			,""	,"Postal Code"	,""	,"邮政编码"	,""	,"Mã bưu chính"	,""}
+					,{"String"		,null	,"Partial"			,ColsearchAdd		,""											,"住所"				,""	,"Address"	,""	,"地址"	,""	,"Địa chỉ"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchTel		,""											,"Tel"				,""	,"TEL"	,""	,"电话"	,""	,"Điện thoại"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchFax		,""											,"Fax"				,""	,"FAX"	,""	,"传真"	,""	,"FAX"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchMail	,""											,"Mail"				,""	,"Email"	,""	,"邮箱"	,""	,"Email"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchCom		,""											,"コメント"			,""	,"Comment"	,""	,"备注"	,""	,"Ghi chú"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchWHCD	,B100_DefaultVariable.SearchWhList		,"倉庫CD"			,""	,"Warehouse Code"	,""	,"仓库代码"	,""	,"Mã kho"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
