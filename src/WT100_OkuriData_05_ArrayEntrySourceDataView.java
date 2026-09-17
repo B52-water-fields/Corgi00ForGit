@@ -386,8 +386,8 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNiokuriAdd01]			= (String)ClMstRt[i01][M100_ClMstRt.ColAdd01];			//住所1			⇒荷送り人住所01
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNiokuriAdd02]			= (String)ClMstRt[i01][M100_ClMstRt.ColAdd02];			//住所2			⇒荷送り人住所02
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNiokuriAdd03]			= (String)ClMstRt[i01][M100_ClMstRt.ColAdd03];			//住所3			⇒荷送り人住所03
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriTel]			= (String)ClMstRt[i01][M100_ClMstRt.ColTel];				//電話番号		⇒荷送り人TEL
-					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriFax]			= (String)ClMstRt[i01][M100_ClMstRt.ColFax];				//FAX			⇒荷送り人FAX
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriTel]			= (String)ClMstRt[i01][M100_ClMstRt.ColTel];			//電話番号		⇒荷送り人TEL
+					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriFax]			= (String)ClMstRt[i01][M100_ClMstRt.ColFax];			//FAX			⇒荷送り人FAX
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNioKuriMail]			= (String)ClMstRt[i01][M100_ClMstRt.ColMail];			//メールアドレス⇒荷送り人MAIL
 					SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColNiokuriMunicCd]		= "";													//荷送人市区町村CD
 					
@@ -422,6 +422,8 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 		
 		//届先変換マスタ取得
 		Object[][] DeliveryComversionMstRt	= DeliveryComversionMstRt(TgtClGpCD,TgtCL_DECD);
+		
+		ArrayList<String> SearchDECD = new ArrayList<String>();
 		SearchPOST = new ArrayList<String>();
 		AddList = new String[CheckOb.length];
 		for(int i=0;i<CheckOb.length;i++) {
@@ -446,6 +448,7 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 					if(!"".equals((String)DeliveryComversionMstRt[i01][M100_DeliveryComversionMstRt.ColSetName])) {
 						SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliName01]			= (String)DeliveryComversionMstRt[i01][M100_DeliveryComversionMstRt.ColSetName];			//送り状登録名	⇒荷届け先名01
 					}
+					SearchDECD.add(""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliCd]);
 					
 					AddList[i]	= (String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliAdd01]+(String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliAdd02]+(String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliAdd03];
 					SearchPOST.add((String)SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliPost]);
@@ -454,6 +457,10 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 				}
 			}
 		}
+		
+		
+		
+		
 		PostRt	= PostRt(SearchPOST);
 		for(int i=0;i<CheckOb.length;i++) {
 			for(int i01=0;i01<PostRt.length;i01++) {
@@ -470,12 +477,38 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 			}
 		}
 		
+		//届先注意事項マスタ取得
+		Object[][] CautionMstRt = CautionMstRt(SearchDECD);
 		//商品マスタ取得
 		Object[][] ItemMstRt	= ItemMstRt(TgtClCD,TgtClItemCd);
 		//商品変換マスタ取得
 		Object[][] ItemComversionMstRt	= ItemComversionMstRt(TgtClGpCD,TgtClCD,TgtClItemCd);
 		
 		for(int i=0;i<CheckOb.length;i++) {
+			for(int i01=0;i01<CautionMstRt.length;i01++) {
+				if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliCd]).equals((String)CautionMstRt[i][M100_CautionMstRt.ColDECD])) {
+					if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliDepartmentCd]).equals((String)CautionMstRt[i][M100_CautionMstRt.ColDepartmentCd])
+						||("").equals((String)CautionMstRt[i][M100_CautionMstRt.ColDepartmentCd])
+						) {
+						if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsClGpCd]).equals((String)CautionMstRt[i][M100_CautionMstRt.ColClGpCD])
+							||("").equals((String)CautionMstRt[i][M100_CautionMstRt.ColClGpCD])
+							) {
+							switch((int)CautionMstRt[i][M100_CautionMstRt.ColCautionTiming]) {
+								case 0:
+									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom05]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]+"_"+(String)CautionMstRt[i][M100_CautionMstRt.ColCaution];										//コメント04
+									break;
+								case 1:
+									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom05]+"_"+(String)CautionMstRt[i][M100_CautionMstRt.ColCaution];										//コメント05
+									break;
+								default:
+									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]+"_"+(String)CautionMstRt[i][M100_CautionMstRt.ColCaution];										//コメント04
+									break;
+							}
+						}
+						
+					}
+				}
+			}
 			boolean UnHitFg	= true;
 			for(int i01=0;i01<ItemMstRt.length;i01++) {
 				if((""+CheckOb[i][ColMsClItemCd]).equals((String)(String)ItemMstRt[i01][M100_ItemMstRt.ColClItemCd])
@@ -803,6 +836,31 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 				AllSearch);
 		
 		return ItemMstRt;
+	}
+	
+	private static Object[][] CautionMstRt(ArrayList<String> SearchDECD){
+		ArrayList<String> SearchCautionCd 		= new ArrayList<String>();
+		ArrayList<String> SearchClGpCD 			= new ArrayList<String>();
+		//ArrayList<String> SearchDECD 			= new ArrayList<String>();
+		ArrayList<String> SearchDepartmentCd 	= new ArrayList<String>();
+		ArrayList<String> SearchCautionTiming 	= new ArrayList<String>();
+		ArrayList<String> SearchCautionName 	= new ArrayList<String>();
+		ArrayList<String> SearchCaution 		= new ArrayList<String>();
+		ArrayList<String> SearchDeName 			= new ArrayList<String>();
+		boolean AllSearch = false;
+		
+		Object[][] CautionMstRt = M100_CautionMstRt.CautionMstRt(
+				SearchCautionCd,
+				SearchClGpCD,
+				SearchDECD,
+				SearchDepartmentCd,
+				SearchCautionTiming,
+				SearchCautionName,
+				SearchCaution,
+				SearchDeName,
+				AllSearch);
+		
+		return CautionMstRt;
 	}
 	
 	private static Object[][] ItemComversionMstRt(ArrayList<String> TgtClGpCd,ArrayList<String> TgtClCd,ArrayList<String> TgtClItemCd){
