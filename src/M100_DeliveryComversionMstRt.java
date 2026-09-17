@@ -120,33 +120,33 @@ public class M100_DeliveryComversionMstRt{
 	
 	public static Object[][] RtDeliveryComversionMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {
-				 {"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"		,"Key"}
-				,{"CLGpName01"			,ColCLGpName01			,"String"	,"荷主グループ名"		,""}
-				,{"CL_DECD"				,ColCL_DECD				,"String"	,"荷主届先CD"			,"Key"}
-				,{"DECD"				,ColDECD					,"String"	,"届先CD"				,""}
-				,{"DepartmentCd"		,ColDepartmentCd			,"String"	,"届先部署CD"			,""}
-				,{"DEName01"			,ColDEName01				,"String"	,"届先表記名"			,""}
-				,{"DEName02"			,ColDEName02				,"String"	,"届先正式名"			,""}
-				,{"DEName03"			,ColDEName03				,"String"	,"届先略名"				,""}
-				,{"Post"				,ColPost					,"String"	,"届先郵便"				,""}
-				,{"Add01"				,ColAdd01					,"String"	,"届先住所1"			,""}
-				,{"Add02"				,ColAdd02					,"String"	,"届先住所2"			,""}
-				,{"Add03"				,ColAdd03					,"String"	,"届先住所3"			,""}
-				,{"Tel"					,ColTel					,"String"	,"届先電話"				,""}
-				,{"Fax"					,ColFax					,"String"	,"届先FAX"				,""}
-				,{"Mail"				,ColMail					,"String"	,"届先MAIL"				,""}
-				,{"SetName"				,ColSetName				,"String"	,"送り状登録名"			,""}
-				,{"Com01"				,ColCom01					,"String"	,"コメント01"			,""}
-				,{"Com02"				,ColCom02					,"String"	,"コメント02"			,""}
-				,{"Com03"				,ColCom03					,"String"	,"コメント03"			,""}
-				,{"Com04"				,ColCom04					,"String"	,"コメント04"			,""}
-				,{"Com05"				,ColCom05					,"String"	,"コメント05"			,""}
-				,{"EntryDate"			,ColEntryDate				,"DateTime"	,"データ登録日時"		,""}
-				,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"データ更新日時"		,""}
-				,{"EntryUser"			,ColEntryUser				,"String"	,"登録者コード"			,""}
-				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"			,""}
-				,{"DelFg"				,ColDelFg					,"int"		,"削除区分"				,""}
-				,{"MstPriorityFirstFg"	,ColMstPriorityFirstFg	,"int"		,"届先MST優先区分"		,""}
+				 {"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"		,"Key"	,"Client Group Code"	,"货主组代码"	,"Mã nhóm chủ hàng"}
+				,{"CLGpName01"			,ColCLGpName01			,"String"	,"荷主グループ名"		,""	,"Client Group Name"	,"货主组名称"	,"Tên nhóm chủ hàng"}
+				,{"CL_DECD"				,ColCL_DECD				,"String"	,"荷主届先CD"			,"Key"	,"Client Destination Code"	,"货主收货地代码"	,"Mã điểm giao của chủ hàng"}
+				,{"DECD"				,ColDECD					,"String"	,"届先CD"				,""	,"Destination Code"	,"收货地代码"	,"Mã điểm giao hàng"}
+				,{"DepartmentCd"		,ColDepartmentCd			,"String"	,"届先部署CD"			,""	,"Destination Department Code"	,"收货地部门代码"	,"Mã bộ phận điểm giao"}
+				,{"DEName01"			,ColDEName01				,"String"	,"届先表記名"			,""	,"Destination Display Name"	,"收货地显示名称"	,"Tên hiển thị điểm giao"}
+				,{"DEName02"			,ColDEName02				,"String"	,"届先正式名"			,""	,"Destination Official Name"	,"收货地正式名称"	,"Tên chính thức điểm giao"}
+				,{"DEName03"			,ColDEName03				,"String"	,"届先略名"				,""	,"Destination Short Name"	,"收货地简称"	,"Tên viết tắt điểm giao"}
+				,{"Post"				,ColPost					,"String"	,"届先郵便"				,""	,"Destination Postal Code"	,"收货地邮政编码"	,"Mã bưu chính điểm giao"}
+				,{"Add01"				,ColAdd01					,"String"	,"届先住所1"			,""	,"Destination Address 1"	,"收货地地址1"	,"Địa chỉ điểm giao 1"}
+				,{"Add02"				,ColAdd02					,"String"	,"届先住所2"			,""	,"Destination Address 2"	,"收货地地址2"	,"Địa chỉ điểm giao 2"}
+				,{"Add03"				,ColAdd03					,"String"	,"届先住所3"			,""	,"Destination Address 3"	,"收货地地址3"	,"Địa chỉ điểm giao 3"}
+				,{"Tel"					,ColTel					,"String"	,"届先電話"				,""	,"Destination TEL"	,"收货地电话"	,"Điện thoại điểm giao"}
+				,{"Fax"					,ColFax					,"String"	,"届先FAX"				,""	,"Destination FAX"	,"收货地传真"	,"FAX điểm giao"}
+				,{"Mail"				,ColMail					,"String"	,"届先MAIL"				,""	,"Destination Email"	,"收货地邮箱"	,"Email điểm giao"}
+				,{"SetName"				,ColSetName				,"String"	,"送り状登録名"			,""	,"Waybill Registered Name"	,"运单登记名称"	,"Tên đăng ký vận đơn"}
+				,{"Com01"				,ColCom01					,"String"	,"コメント01"			,""	,"Comment 01"	,"备注01"	,"Ghi chú 01"}
+				,{"Com02"				,ColCom02					,"String"	,"コメント02"			,""	,"Comment 02"	,"备注02"	,"Ghi chú 02"}
+				,{"Com03"				,ColCom03					,"String"	,"コメント03"			,""	,"Comment 03"	,"备注03"	,"Ghi chú 03"}
+				,{"Com04"				,ColCom04					,"String"	,"コメント04"			,""	,"Comment 04"	,"备注04"	,"Ghi chú 04"}
+				,{"Com05"				,ColCom05					,"String"	,"コメント05"			,""	,"Comment 05"	,"备注05"	,"Ghi chú 05"}
+				,{"EntryDate"			,ColEntryDate				,"DateTime"	,"データ登録日時"		,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
+				,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"データ更新日時"		,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
+				,{"EntryUser"			,ColEntryUser				,"String"	,"登録者コード"			,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
+				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"			,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
+				,{"DelFg"				,ColDelFg					,"int"		,"削除区分"				,""	,"Delete Type"	,"删除类型"	,"Loại xóa"}
+				,{"MstPriorityFirstFg"	,ColMstPriorityFirstFg	,"int"		,"届先MST優先区分"		,""	,"Destination Master Priority Type"	,"收货地主数据优先类型"	,"Loại ưu tiên danh mục điểm giao"}
 				};
 		
 		RtSettingDeliveryMstRt = B100_LanguageControl.RtControl(RtSettingDeliveryMstRt);
@@ -156,21 +156,21 @@ public class M100_DeliveryComversionMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"	,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"		,""}
-					,{"String"		,null	,"Partial"	,ColSearchCLGpName				,""													,"荷主グループ名"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchCL_DECD					,""													,"荷主届先CD"			,""}
-					,{"String"		,null	,"Exact"	,ColSearchDECD					,""													,"届先CD"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchDepartmentCd			,""													,"届先部署CD"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchDEName					,""													,"届先名"				,""}
-					,{"String"		,null	,"Prefix"	,ColSearchPost					,""													,"届先郵便"				,""}
-					,{"String"		,null	,"Partial"	,ColSearchAdd						,""													,"届先住所"				,""}
-					,{"String"		,null	,"Partial"	,ColSearchTel						,""													,"Tel"					,""}
-					,{"String"		,null	,"Partial"	,ColSearchFax						,""													,"Fax"					,""}
-					,{"String"		,null	,"Partial"	,ColSearchMail					,""													,"Mail"					,""}
-					,{"String"		,null	,"Partial"	,ColSearchSetName					,""													,"送り状登録名"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchCom						,""													,"コメント"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchDelFg					,B100_DefaultVariable.SearchDelList				,"削除区分"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchMstPriorityFirstFg	,""													,"届先MST優先区分"		,""}
+					 {"String"		,null	,"Exact"	,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"		,""	,"Client Group Code"	,""	,"货主组代码"	,""	,"Mã nhóm chủ hàng"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCLGpName				,""													,"荷主グループ名"		,""	,"Client Group Name"	,""	,"货主组名称"	,""	,"Tên nhóm chủ hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchCL_DECD					,""													,"荷主届先CD"			,""	,"Client Destination Code"	,""	,"货主收货地代码"	,""	,"Mã điểm giao của chủ hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDECD					,""													,"届先CD"				,""	,"Destination Code"	,""	,"收货地代码"	,""	,"Mã điểm giao hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDepartmentCd			,""													,"届先部署CD"			,""	,"Destination Department Code"	,""	,"收货地部门代码"	,""	,"Mã bộ phận điểm giao"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchDEName					,""													,"届先名"				,""	,"Destination Name"	,""	,"收货地名称"	,""	,"Tên điểm giao"	,""}
+					,{"String"		,null	,"Prefix"	,ColSearchPost					,""													,"届先郵便"				,""	,"Destination Postal Code"	,""	,"收货地邮政编码"	,""	,"Mã bưu chính điểm giao"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchAdd						,""													,"届先住所"				,""	,"Destination Address"	,""	,"收货地地址"	,""	,"Địa chỉ điểm giao"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchTel						,""													,"Tel"					,""	,"TEL"	,""	,"电话"	,""	,"Điện thoại"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchFax						,""													,"Fax"					,""	,"FAX"	,""	,"传真"	,""	,"FAX"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchMail					,""													,"Mail"					,""	,"Email"	,""	,"邮箱"	,""	,"Email"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchSetName					,""													,"送り状登録名"			,""	,"Waybill Registered Name"	,""	,"运单登记名称"	,""	,"Tên đăng ký vận đơn"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCom						,""													,"コメント"				,""	,"Comment"	,""	,"备注"	,""	,"Ghi chú"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDelFg					,B100_DefaultVariable.SearchDelList				,"削除区分"				,""	,"Delete Type"	,""	,"删除类型"	,""	,"Loại xóa"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchMstPriorityFirstFg	,""													,"届先MST優先区分"		,""	,"Destination Master Priority Type"	,""	,"收货地主数据优先类型"	,""	,"Loại ưu tiên danh mục điểm giao"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
