@@ -75,22 +75,22 @@ public class M100_CautionMstRt{
 	
 	public static Object[][] RtCautionMstRt(){
 		Object[][] RtSettingCautionMstRt = {
-				 {"CautionCd"		,ColCautionCd		,"String"	,"注意事項CD"			,"Key"}
-				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループCD"		,""}
-				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ名"		,""}
-				,{"DECD"			,ColDECD			,"String"	,"届先コード"			,""}
-				,{"DepartmentCd"	,ColDepartmentCd	,"String"	,"部署CD"				,"Key"}
-				,{"DEName01"		,ColDEName01		,"String"	,"届先名"				,"Key"}
-				,{"CautionTiming"	,ColCautionTiming	,"int"		,"注意タイミング"		,""}
-				,{"CautionName"		,ColCautionName	,"String"	,"注意事項名"			,""}
-				,{"Caution"			,ColCaution		,"String"	,"注意事項内容"			,""}
-				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"データ登録日時"		,""}
-				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"データ更新日時"		,""}
-				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者コード"			,""}
-				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者コード"			,""}
-				,{"Add01"			,ColAdd01			,"String"	,"届先住所1"			,""}
-				,{"Add02"			,ColAdd02			,"String"	,"届先住所2"			,""}
-				,{"Add03"			,ColAdd03			,"String"	,"届先住所3"			,""}
+				 {"CautionCd"		,ColCautionCd		,"String"	,"注意事項CD"			,"Key"	,"Caution Code"	,"注意事项代码"	,"Mã lưu ý"}
+				,{"ClGpCD"			,ColClGpCD			,"String"	,"荷主グループCD"		,""	,"Client Group Code"	,"货主组代码"	,"Mã nhóm chủ hàng"}
+				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ名"		,""	,"Client Group Name"	,"货主组名称"	,"Tên nhóm chủ hàng"}
+				,{"DECD"			,ColDECD			,"String"	,"届先コード"			,""	,"Destination Code"	,"收货地代码"	,"Mã điểm giao"}
+				,{"DepartmentCd"	,ColDepartmentCd	,"String"	,"部署CD"				,"Key"	,"Destination Department Code"	,"收货地部门代码"	,"Mã bộ phận điểm giao"}
+				,{"DEName01"		,ColDEName01		,"String"	,"届先名"				,"Key"	,"Destination Name"	,"收货地名称"	,"Tên điểm giao"}
+				,{"CautionTiming"	,ColCautionTiming	,"int"		,"注意タイミング"		,""	,"Caution Timing"	,"注意时机"	,"Thời điểm lưu ý"}
+				,{"CautionName"		,ColCautionName	,"String"	,"注意事項名"			,""	,"Caution Name"	,"注意事项名称"	,"Tên lưu ý"}
+				,{"Caution"			,ColCaution		,"String"	,"注意事項内容"			,""	,"Caution Details"	,"注意事项内容"	,"Nội dung lưu ý"}
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"データ登録日時"		,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"データ更新日時"		,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
+				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者コード"			,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者コード"			,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
+				,{"Add01"			,ColAdd01			,"String"	,"届先住所1"			,""	,"Destination Address 1"	,"收货地地址1"	,"Địa chỉ điểm giao 1"}
+				,{"Add02"			,ColAdd02			,"String"	,"届先住所2"			,""	,"Destination Address 2"	,"收货地地址2"	,"Địa chỉ điểm giao 2"}
+				,{"Add03"			,ColAdd03			,"String"	,"届先住所3"			,""	,"Destination Address 3"	,"收货地地址3"	,"Địa chỉ điểm giao 3"}
 				};
 		
 		RtSettingCautionMstRt = B100_LanguageControl.RtControl(RtSettingCautionMstRt);
@@ -99,14 +99,14 @@ public class M100_CautionMstRt{
 	}
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"	,ColSearchCautionCd			,""													,"注意事項CD"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchDECD				,""													,"届先CD"			,""}
-					,{"String"		,null	,"Exact"	,ColSearchDepartmentCd		,""													,"部署CD"			,""}
-					,{"String"		,null	,"Exact"	,ColSearchCautionTiming		,B100_DefaultVariable.SearchCautionTiming		,"注意タイミング"	,""}
-					,{"String"		,null	,"Partial"	,ColSearchCautionName		,""													,"注意事項名"		,""}
-					,{"String"		,null	,"Partial"	,ColSearchCaution				,""													,"注意事項内容"		,""}
-					,{"String"		,null	,"Partial"	,ColSearchDeName				,""													,"届先名"			,""}
+					 {"String"		,null	,"Exact"	,ColSearchCautionCd			,""													,"注意事項CD"		,""	,"Caution Code"	,""	,"注意事项代码"	,""	,"Mã lưu ý"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""	,"Client Group Code"	,""	,"货主组代码"	,""	,"Mã nhóm chủ hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDECD				,""													,"届先CD"			,""	,"Destination Code"	,""	,"收货地代码"	,""	,"Mã điểm giao hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDepartmentCd		,""													,"部署CD"			,""	,"Destination Department Code"	,""	,"收货地部门代码"	,""	,"Mã bộ phận điểm giao"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchCautionTiming		,B100_DefaultVariable.SearchCautionTiming		,"注意タイミング"	,""	,"Caution Timing"	,""	,"注意时机"	,""	,"Thời điểm lưu ý"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCautionName		,""													,"注意事項名"		,""	,"Caution Name"	,""	,"注意事项名称"	,""	,"Tên lưu ý"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCaution				,""													,"注意事項内容"		,""	,"Caution Details"	,""	,"注意事项内容"	,""	,"Nội dung lưu ý"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchDeName				,""													,"届先名"			,""	,"Destination Name"	,""	,"收货地名称"	,""	,"Tên điểm giao"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
