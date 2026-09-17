@@ -52,16 +52,16 @@ public class M100_AdjustReasonRt{
 	
 	public static Object[][] RtAdjustReasonRt() {
 		Object[][] RtAdjustReasonRt = {
-				 {"ClCd"				,ColClCd				,"String"	,"荷主コード"		,"Key"	,"Client Code"				,"货主代码"}
-				,{"CLName01"			,ColCLName01			,"String"	,"荷主名"			,""		,"Client Name"				,"货主名称"}
-				,{"WhCd"				,ColWhCd				,"String"	,"倉庫コード"		,"Key"	,"Warehouse Code"			,"仓库代码"}
-				,{"WHName"				,ColWHName				,"String"	,"倉庫名"			,""		,"Warehouse Name"			,"仓库名称"}
-				,{"AdjustReasonCd"		,ColAdjustReasonCd	,"String"	,"調整理由コード"	,"Key"	,"Adjustment Reason Code"	,"调整原因代码"}
-				,{"AdjustReasonName"	,ColAdjustReasonName	,"String"	,"調整理由名"		,""		,"Adjustment Reason"		,"调整原因"}
-				,{"EntryDate"			,ColEntryDate			,"DateTime"	,"登録日"			,""		,"Created Date"				,"登记日期"}
-				,{"UpdateDate"			,ColUpdateDate		,"DateTime"	,"更新日"			,""		,"Updated Date"				,"更新日期"}
-				,{"EntryUser"			,ColEntryUser			,"String"	,"登録者"			,""		,"Created By"				,"登记人"}
-				,{"UpdateUser"			,ColUpdateUser		,"String"	,"更新者"			,""		,"Updated By"				,"更新人"}
+				 {"ClCd"				,ColClCd				,"String"	,"荷主コード"		,"Key"	,"Client Code"				,"货主代码"	,"Mã chủ hàng"}
+				,{"CLName01"			,ColCLName01			,"String"	,"荷主名"			,""		,"Client Name"				,"货主名称"	,"Tên chủ hàng"}
+				,{"WhCd"				,ColWhCd				,"String"	,"倉庫コード"		,"Key"	,"Warehouse Code"			,"仓库代码"	,"Mã kho"}
+				,{"WHName"				,ColWHName				,"String"	,"倉庫名"			,""		,"Warehouse Name"			,"仓库名称"	,"Tên kho"}
+				,{"AdjustReasonCd"		,ColAdjustReasonCd	,"String"	,"調整理由コード"	,"Key"	,"Adjustment Reason Code"	,"调整原因代码"	,"Mã lý do điều chỉnh"}
+				,{"AdjustReasonName"	,ColAdjustReasonName	,"String"	,"調整理由名"		,""		,"Adjustment Reason"		,"调整原因"	,"Lý do điều chỉnh"}
+				,{"EntryDate"			,ColEntryDate			,"DateTime"	,"登録日"			,""		,"Created Date"				,"登记日期"	,"Ngày tạo"}
+				,{"UpdateDate"			,ColUpdateDate		,"DateTime"	,"更新日"			,""		,"Updated Date"				,"更新日期"	,"Ngày cập nhật"}
+				,{"EntryUser"			,ColEntryUser			,"String"	,"登録者"			,""		,"Created By"				,"登记人"	,"Người tạo"}
+				,{"UpdateUser"			,ColUpdateUser		,"String"	,"更新者"			,""		,"Updated By"				,"更新人"	,"Người cập nhật"}
 				};
 		
 		RtAdjustReasonRt = B100_LanguageControl.RtControl(RtAdjustReasonRt);
@@ -71,10 +71,10 @@ public class M100_AdjustReasonRt{
 	
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-				 	 {"String"		,null	,"Exact"		,ColSearchClCd				,B100_DefaultVariable.SearchClList	,"荷主コード"		,""	,"Client Code"				,""	,"货主代码"			,""}
-					,{"String"		,null	,"Exact"		,ColSearchWhCd				,B100_DefaultVariable.SearchWhList	,"倉庫コード"		,""	,"Warehouse Code"			,""	,"仓库代码"			,""}
-					,{"String"		,null	,"Exact"		,ColSearchAdjustReasonCd		,""										,"調整理由コード"	,""	,"Adjustment Reason Code"	,""	,"调整原因代码"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchAdjustReasonName	,""										,"調整理由名"		,""	,"Adjustment Reason"		,""	,"调整原因"			,""}
+				 	 {"String"		,null	,"Exact"		,ColSearchClCd				,B100_DefaultVariable.SearchClList	,"荷主コード"		,""	,"Client Code"				,""	,"货主代码"			,""	,"Mã chủ hàng"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchWhCd				,B100_DefaultVariable.SearchWhList	,"倉庫コード"		,""	,"Warehouse Code"			,""	,"仓库代码"			,""	,"Mã kho"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchAdjustReasonCd		,""										,"調整理由コード"	,""	,"Adjustment Reason Code"	,""	,"调整原因代码"		,""	,"Mã lý do điều chỉnh"	,""}
+					,{"String"		,null	,"Partial"		,ColSearchAdjustReasonName	,""										,"調整理由名"		,""	,"Adjustment Reason"		,""	,"调整原因"			,""	,"Lý do điều chỉnh"	,""}
 					};
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
