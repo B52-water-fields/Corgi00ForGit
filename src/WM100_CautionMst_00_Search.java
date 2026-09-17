@@ -37,7 +37,7 @@ public class WM100_CautionMst_00_Search{
 		
 		//検索条件パネル
 		JPanel PN_Search = B100_FrameParts.JPanelSet(			 10, 40,870,160,"White");
-		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(	 10,  0,150,20,"検索条件",11,0);
+		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(	 	 10,  0,150, 20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
 		

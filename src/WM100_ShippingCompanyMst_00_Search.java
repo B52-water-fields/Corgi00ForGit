@@ -58,9 +58,9 @@ public class WM100_ShippingCompanyMst_00_Search{
 		final JTextField TB_SearchMail				= B100_FrameParts.JTextFieldSet(	350, 75,100,20,"",11,0);	//Mail
 		final JTextField TB_SearchCom				= B100_FrameParts.JTextFieldSet(	350,100,100,20,"",11,0);	//コメント
 		
-		JLabel LB2_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(200, 25, 50,20,B100_DefaultVariable.SearchExact	,11,0);
+		JLabel LB2_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(200, 25, 50,20,B100_DefaultVariable.SearchExact		,11,0);
 		JLabel LB2_SearchCompanyName		= B100_FrameParts.JLabelSet(200, 50, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
-		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchPost				= B100_FrameParts.JLabelSet(200, 75, 50,20,B100_DefaultVariable.SearchPrefix		,11,0);
 		JLabel LB2_SearchAdd				= B100_FrameParts.JLabelSet(200,100, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		JLabel LB2_SearchTel				= B100_FrameParts.JLabelSet(450, 25, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
 		JLabel LB2_SearchFax				= B100_FrameParts.JLabelSet(450, 50, 50,20,B100_DefaultVariable.SearchPartial	,11,0);
