@@ -260,50 +260,50 @@ public class T100_StockMoveRt{
 	
 	public static Object[][] RtStockMoveRt(){
 		Object[][] RtStockMoveRt = {
-							 {"ClCd"					,ColClCd						,"String"	,"荷主コード"					,"Key"}
-							,{"CLName"					,ColCLName						,"String"	,"荷主名"						,""}
-							,{"WhCd"					,ColWhCd						,"String"	,"倉庫コード"					,"Key"}
-							,{"ClWHName"				,ColClWHName					,"String"	,"担当倉庫名"					,""}
-							,{"MoveNo"					,ColMoveNo						,"int"		,"調整番号"						,"Key"}
-							,{"FromLoc"					,ColFromLoc					,"String"	,"移動元ロケ"					,""}
-							,{"FromLocName"				,ColFromLocName				,"String"	,"移動元ロケーション名"			,""}
-							,{"ToLoc"					,ColToLoc						,"String"	,"移動先ロケ"					,""}
-							,{"ToLocName"				,ColToLocName					,"String"	,"移動先ロケーション名"			,""}
-							,{"ItemCd"					,ColItemCd						,"String"	,"商品CD"						,""}
-							,{"ItemName"				,ColItemName					,"String"	,"商品名"						,""}
-							,{"ItemName01"				,ColItemName01				,"String"	,"商品表記名"					,""}
-							,{"ItemName02"				,ColItemName02				,"String"	,"商品正式名"					,""}
-							,{"ItemName03"				,ColItemName03				,"String"	,"商品略名"						,""}
-							,{"CtUnitQty"				,ColCtUnitQty					,"int"		,"カートン入数"					,""}
-							,{"CsUnitQty"				,ColCsUnitQty					,"int"		,"ケース入数"					,""}
-							,{"PlUnitQty"				,ColPlUnitQty					,"int"		,"パレット入数"					,""}
-							,{"UnitName"				,ColUnitName					,"String"	,"商品単位"						,""}
-							,{"CtUnitName"				,ColCtUnitName				,"String"	,"カートン商品単位"				,""}
-							,{"CsUnitName"				,ColCsUnitName				,"String"	,"ケース商品単位"				,""}
-							,{"PlUnitName"				,ColPlUnitName				,"String"	,"パレット商品単位"				,""}
-							,{"Lot"						,ColLot						,"String"	,"ロット"						,""}
-							,{"ExpDate"					,ColExpDate					,"Date"		,"賞味期限"						,""}
-							,{"ActualDate"				,ColActualDate				,"Date"		,"入荷日"						,""}
-							,{"BeforeFromQty"			,ColBeforeFromQty				,"int"		,"（移動前）移動元在庫数"		,""}
-							,{"BeforeFromPlanQty"		,ColBeforeFromPlanQty		,"int"		,"（移動前）移動元引当済数"		,""}
-							,{"BeforeFromPossibleQty"	,ColBeforeFromPossibleQty	,"int"		,"（移動前）移動元出荷可能数"	,""}
-							,{"BeforeToQty"				,ColBeforeToQty				,"int"		,"（移動前）移動先在庫数"		,""}
-							,{"BeforeToPlanQty"			,ColBeforeToPlanQty			,"int"		,"（移動前）移動先引当済数"		,""}
-							,{"BeforeToPossibleQty"		,ColBeforeToPossibleQty		,"int"		,"（移動前）移動先出荷可能数"	,""}
-							,{"MoveQty"					,ColMoveQty					,"int"		,"移動数"						,""}
-							,{"AfterFromQty"			,ColAfterFromQty				,"int"		,"（移動後）移動元在庫数"		,""}
-							,{"AfterFromPlanQty"		,ColAfterFromPlanQty			,"int"		,"（移動後）移動元引当済数"		,""}
-							,{"AfterFromPossibleQty"	,ColAfterFromPossibleQty		,"int"		,"（移動後）移動元出荷可能数"	,""}
-							,{"AfterToQty"				,ColAfterToQty				,"int"		,"（移動後）移動先在庫数"		,""}
-							,{"AfterToPlanQty"			,ColAfterToPlanQty			,"int"		,"（移動後）移動先引当済数"		,""}
-							,{"AfterToPossibleQty"		,ColAfterToPossibleQty		,"int"		,"（移動後）移動先出荷可能数"	,""}
-							,{"MoveCom01"				,ColMoveCom01					,"String"	,"移動コメント01"				,""}
-							,{"MoveCom02"				,ColMoveCom02					,"String"	,"移動コメント02"				,""}
-							,{"MoveCom03"				,ColMoveCom03					,"String"	,"移動コメント03"				,""}
-							,{"EntryDate"				,ColEntryDate					,"DateTime"	,"登録日"						,""}
-							,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"更新日"						,""}
-							,{"EntryUser"				,ColEntryUser					,"String"	,"登録者"						,""}
-							,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者"						,""}
+							 {"ClCd"					,ColClCd						,"String"	,"荷主コード"					,"Key"	,"Client Code"	,"货主代码"	,"Mã chủ hàng"}
+							,{"CLName"					,ColCLName						,"String"	,"荷主名"						,""	,"Client Name"	,"货主名称"	,"Tên chủ hàng"}
+							,{"WhCd"					,ColWhCd						,"String"	,"倉庫コード"					,"Key"	,"Warehouse Code"	,"仓库代码"	,"Mã kho"}
+							,{"ClWHName"				,ColClWHName					,"String"	,"担当倉庫名"					,""	,"Warehouse Name"	,"仓库名称"	,"Tên kho"}
+							,{"MoveNo"					,ColMoveNo						,"int"		,"調整番号"						,"Key"	,"Adjustment No."	,"调整编号"	,"Số điều chỉnh"}
+							,{"FromLoc"					,ColFromLoc					,"String"	,"移動元ロケ"					,""	,"Source Location"	,"源库位"	,"Vị trí nguồn"}
+							,{"FromLocName"				,ColFromLocName				,"String"	,"移動元ロケーション名"			,""	,"Source Location Name"	,"源库位名称"	,"Tên vị trí nguồn"}
+							,{"ToLoc"					,ColToLoc						,"String"	,"移動先ロケ"					,""	,"Destination Location"	,"目标库位"	,"Vị trí đích"}
+							,{"ToLocName"				,ColToLocName					,"String"	,"移動先ロケーション名"			,""	,"Destination Location Name"	,"目标库位名称"	,"Tên vị trí đích"}
+							,{"ItemCd"					,ColItemCd						,"String"	,"商品CD"						,""	,"Item Code"	,"商品代码"	,"Mã hàng"}
+							,{"ItemName"				,ColItemName					,"String"	,"商品名"						,""	,"Item Name"	,"商品名称"	,"Tên hàng"}
+							,{"ItemName01"				,ColItemName01				,"String"	,"商品表記名"					,""	,"Display Item Name"	,"商品显示名称"	,"Tên hiển thị"}
+							,{"ItemName02"				,ColItemName02				,"String"	,"商品正式名"					,""	,"Official Item Name"	,"商品正式名称"	,"Tên chính thức"}
+							,{"ItemName03"				,ColItemName03				,"String"	,"商品略名"						,""	,"Short Item Name"	,"商品简称"	,"Tên viết tắt"}
+							,{"CtUnitQty"				,ColCtUnitQty					,"int"		,"カートン入数"					,""	,"Carton Pack Qty"	,"纸箱装量"	,"SL mỗi carton"}
+							,{"CsUnitQty"				,ColCsUnitQty					,"int"		,"ケース入数"					,""	,"Case Pack Qty"	,"箱装量"	,"SL mỗi thùng"}
+							,{"PlUnitQty"				,ColPlUnitQty					,"int"		,"パレット入数"					,""	,"Pallet Pack Qty"	,"托盘装量"	,"SL mỗi pallet"}
+							,{"UnitName"				,ColUnitName					,"String"	,"商品単位"						,""	,"Item Unit"	,"商品单位"	,"Đơn vị hàng"}
+							,{"CtUnitName"				,ColCtUnitName				,"String"	,"カートン商品単位"				,""	,"Carton Unit"	,"纸箱单位"	,"Đơn vị carton"}
+							,{"CsUnitName"				,ColCsUnitName				,"String"	,"ケース商品単位"				,""	,"Case Unit"	,"箱单位"	,"Đơn vị thùng"}
+							,{"PlUnitName"				,ColPlUnitName				,"String"	,"パレット商品単位"				,""	,"Pallet Unit"	,"托盘单位"	,"Đơn vị pallet"}
+							,{"Lot"						,ColLot						,"String"	,"ロット"						,""	,"Lot"	,"批次"	,"Lô"}
+							,{"ExpDate"					,ColExpDate					,"Date"		,"賞味期限"						,""	,"Expiration Date"	,"有效期"	,"Hạn sử dụng"}
+							,{"ActualDate"				,ColActualDate				,"Date"		,"入荷日"						,""	,"Receipt Date"	,"入库日期"	,"Ngày nhập kho"}
+							,{"BeforeFromQty"			,ColBeforeFromQty				,"int"		,"（移動前）移動元在庫数"		,""	,"Source Stock Qty (Before Move)"	,"移动前源库位库存数量"	,"SL tồn vị trí nguồn (trước di chuyển)"}
+							,{"BeforeFromPlanQty"		,ColBeforeFromPlanQty		,"int"		,"（移動前）移動元引当済数"		,""	,"Source Allocated Qty (Before Move)"	,"移动前源库位已分配数量"	,"SL đã phân bổ vị trí nguồn (trước di chuyển)"}
+							,{"BeforeFromPossibleQty"	,ColBeforeFromPossibleQty	,"int"		,"（移動前）移動元出荷可能数"	,""	,"Source Available Qty (Before Move)"	,"移动前源库位可出库数量"	,"SL có thể xuất vị trí nguồn (trước di chuyển)"}
+							,{"BeforeToQty"				,ColBeforeToQty				,"int"		,"（移動前）移動先在庫数"		,""	,"Destination Stock Qty (Before Move)"	,"移动前目标库位库存数量"	,"SL tồn vị trí đích (trước di chuyển)"}
+							,{"BeforeToPlanQty"			,ColBeforeToPlanQty			,"int"		,"（移動前）移動先引当済数"		,""	,"Destination Allocated Qty (Before Move)"	,"移动前目标库位已分配数量"	,"SL đã phân bổ vị trí đích (trước di chuyển)"}
+							,{"BeforeToPossibleQty"		,ColBeforeToPossibleQty		,"int"		,"（移動前）移動先出荷可能数"	,""	,"Destination Available Qty (Before Move)"	,"移动前目标库位可出库数量"	,"SL có thể xuất vị trí đích (trước di chuyển)"}
+							,{"MoveQty"					,ColMoveQty					,"int"		,"移動数"						,""	,"Move Qty"	,"移动数量"	,"SL di chuyển"}
+							,{"AfterFromQty"			,ColAfterFromQty				,"int"		,"（移動後）移動元在庫数"		,""	,"Source Stock Qty (After Move)"	,"移动后源库位库存数量"	,"SL tồn vị trí nguồn (sau di chuyển)"}
+							,{"AfterFromPlanQty"		,ColAfterFromPlanQty			,"int"		,"（移動後）移動元引当済数"		,""	,"Source Allocated Qty (After Move)"	,"移动后源库位已分配数量"	,"SL đã phân bổ vị trí nguồn (sau di chuyển)"}
+							,{"AfterFromPossibleQty"	,ColAfterFromPossibleQty		,"int"		,"（移動後）移動元出荷可能数"	,""	,"Source Available Qty (After Move)"	,"移动后源库位可出库数量"	,"SL có thể xuất vị trí nguồn (sau di chuyển)"}
+							,{"AfterToQty"				,ColAfterToQty				,"int"		,"（移動後）移動先在庫数"		,""	,"Destination Stock Qty (After Move)"	,"移动后目标库位库存数量"	,"SL tồn vị trí đích (sau di chuyển)"}
+							,{"AfterToPlanQty"			,ColAfterToPlanQty			,"int"		,"（移動後）移動先引当済数"		,""	,"Destination Allocated Qty (After Move)"	,"移动后目标库位已分配数量"	,"SL đã phân bổ vị trí đích (sau di chuyển)"}
+							,{"AfterToPossibleQty"		,ColAfterToPossibleQty		,"int"		,"（移動後）移動先出荷可能数"	,""	,"Destination Available Qty (After Move)"	,"移动后目标库位可出库数量"	,"SL có thể xuất vị trí đích (sau di chuyển)"}
+							,{"MoveCom01"				,ColMoveCom01					,"String"	,"移動コメント01"				,""	,"Move Comment 01"	,"移动备注01"	,"Ghi chú di chuyển 01"}
+							,{"MoveCom02"				,ColMoveCom02					,"String"	,"移動コメント02"				,""	,"Move Comment 02"	,"移动备注02"	,"Ghi chú di chuyển 02"}
+							,{"MoveCom03"				,ColMoveCom03					,"String"	,"移動コメント03"				,""	,"Move Comment 03"	,"移动备注03"	,"Ghi chú di chuyển 03"}
+							,{"EntryDate"				,ColEntryDate					,"DateTime"	,"登録日"						,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
+							,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"更新日"						,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
+							,{"EntryUser"				,ColEntryUser					,"String"	,"登録者"						,""	,"Created By"	,"登记人"	,"Người tạo"}
+							,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者"						,""	,"Updated By"	,"更新人"	,"Người cập nhật"}
 							};
 		
 		RtStockMoveRt = B100_LanguageControl.RtControl(RtStockMoveRt);
@@ -313,55 +313,55 @@ public class T100_StockMoveRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"			,ColSearchClCd						,B100_DefaultVariable.SearchClList	,"荷主コード"					,""}
-					,{"String"		,null	,"Partial"			,ColSearchCLName						,""										,"荷主名"						,""}
-					,{"String"		,null	,"Exact"			,ColSearchWhCd						,B100_DefaultVariable.SearchWhList	,"倉庫コード"					,""}
-					,{"String"		,null	,"Partial"			,ColSearchClWHName					,""										,"担当倉庫名"					,""}
-					,{"String"		,null	,"Exact"			,ColSearchMoveNo						,""										,"調整番号"						,""}
-					,{"String"		,null	,"ExactOrPrefix"	,ColSearchFromLoc						,""										,"移動元ロケ"					,""}
-					,{"String"		,null	,"Partial"			,ColSearchFromLocName				,""										,"移動元ロケーション名"			,""}
-					,{"String"		,null	,"ExactOrPrefix"	,ColSearchToLoc						,""										,"移動先ロケ"					,""}
-					,{"String"		,null	,"Partial"			,ColSearchToLocName					,""										,"移動先ロケーション名"			,""}
-					,{"String"		,null	,"Exact"			,ColSearchItemCd						,""										,"商品CD"						,""}
-					,{"String"		,null	,"Partial"			,ColSearchItemName					,""										,"商品名"						,""}
-					,{"String"		,null	,"Exact"			,ColSearchLot							,""										,"ロット"						,""}
-					,{"Date"		,null	,"RangeStr"			,ColSearchExpDateMin					,""										,"賞味期限"						,"開始"}
-					,{"Date"		,null	,"RangeEnd"			,ColSearchExpDateMax					,""										,"賞味期限"						,"終了"}
-					,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin				,""										,"入荷日最小"					,""}
-					,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax				,""										,"入荷日最大"					,""}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromQtyMin			,""										,"（移動前）移動元在庫数"		,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromPlanQtyMin		,""										,"（移動前）移動元引当済数"		,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromPossibleQtyMin	,""										,"（移動前）移動元出荷可能数"	,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToQtyMin				,""										,"（移動前）移動先在庫数"		,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToPlanQtyMin		,""										,"（移動前）移動先引当済数"		,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToPossibleQtyMin	,""										,"（移動前）移動先出荷可能数"	,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchMoveQtyMin					,""										,"移動数最小"	,""}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromQtyMin			,""										,"（移動後）移動元在庫数"		,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromPlanQtyMin		,""										,"（移動後）移動元引当済数"		,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromPossibleQtyMin	,""										,"（移動後）移動元出荷可能数"	,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToQtyMin				,""										,"（移動後）移動先在庫数"		,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToPlanQtyMin			,""										,"（移動後）移動先引当済数"		,"最小"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToPossibleQtyMin	,""										,"（移動後）移動先出荷可能数"	,"最小"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromQtyMax			,""										,"（移動前）移動元在庫数"		,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromPlanQtyMax		,""										,"（移動前）移動元引当済数"		,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromPossibleQtyMax	,""										,"（移動前）移動元出荷可能数"	,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToQtyMax				,""										,"（移動前）移動先在庫数"		,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToPlanQtyMax		,""										,"（移動前）移動先引当済数"		,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToPossibleQtyMax	,""										,"（移動前）移動先出荷可能数"	,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchMoveQtyMax					,""										,"移動数最大"	,""}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromQtyMax			,""										,"（移動後）移動元在庫数"		,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromPlanQtyMax		,""										,"（移動後）移動元引当済数"		,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromPossibleQtyMax	,""										,"（移動後）移動元出荷可能数"	,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToQtyMax				,""										,"（移動後）移動先在庫数"		,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToPlanQtyMax			,""										,"（移動後）移動先引当済数"		,"最大"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToPossibleQtyMax	,""										,"（移動後）移動先出荷可能数"	,"最大"}
-					,{"String"		,null	,"Partial"			,ColSearchMoveCom						,""										,"移動コメント"					,""}
-					,{"DateTime"	,null	,"RangeStr"			,ColSearchEntryDateMin				,""										,"登録日開始"					,""}
-					,{"DateTime"	,null	,"RangeStr"			,ColSearchUpdateDateMin				,""										,"更新日開始"					,""}
-					,{"DateTime"	,null	,"RangeEnd"			,ColSearchEntryDateMax				,""										,"登録日最大"					,""}
-					,{"DateTime"	,null	,"RangeEnd"			,ColSearchUpdateDateMax				,""										,"更新日最大"					,""}
-					,{"String"		,null	,"Partial"			,ColSearchEntryUser					,""										,"登録者"						,""}
-					,{"String"		,null	,"Partial"			,ColSearchUpdateUser					,""										,"更新者"						,""}
+					 {"String"		,null	,"Exact"			,ColSearchClCd						,B100_DefaultVariable.SearchClList	,"荷主コード"					,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchCLName						,""										,"荷主名"						,""	,"Client Name"	,""	,"货主名称"	,""	,"Tên chủ hàng"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchWhCd						,B100_DefaultVariable.SearchWhList	,"倉庫コード"					,""	,"Warehouse Code"	,""	,"仓库代码"	,""	,"Mã kho"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchClWHName					,""										,"担当倉庫名"					,""	,"Warehouse Name"	,""	,"仓库名称"	,""	,"Tên kho"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchMoveNo						,""										,"調整番号"						,""	,"Adjustment No."	,""	,"调整编号"	,""	,"Số điều chỉnh"	,""}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchFromLoc						,""										,"移動元ロケ"					,""	,"Source Location"	,""	,"源库位"	,""	,"Vị trí nguồn"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchFromLocName				,""										,"移動元ロケーション名"			,""	,"Source Location Name"	,""	,"源库位名称"	,""	,"Tên vị trí nguồn"	,""}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchToLoc						,""										,"移動先ロケ"					,""	,"Destination Location"	,""	,"目标库位"	,""	,"Vị trí đích"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchToLocName					,""										,"移動先ロケーション名"			,""	,"Destination Location Name"	,""	,"目标库位名称"	,""	,"Tên vị trí đích"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchItemCd						,""										,"商品CD"						,""	,"Item Code"	,""	,"商品代码"	,""	,"Mã hàng"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchItemName					,""										,"商品名"						,""	,"Item Name"	,""	,"商品名称"	,""	,"Tên hàng"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchLot							,""										,"ロット"						,""	,"Lot"	,""	,"批次"	,""	,"Lô"	,""}
+					,{"Date"		,null	,"RangeStr"			,ColSearchExpDateMin					,""										,"賞味期限"						,"開始"	,"Expiration Date"	,"From"	,"有效期"	,"开始"	,"Hạn sử dụng"	,"Từ"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchExpDateMax					,""										,"賞味期限"						,"終了"	,"Expiration Date"	,"To"	,"有效期"	,"结束"	,"Hạn sử dụng"	,"Đến"}
+					,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin				,""										,"入荷日最小"					,""	,"Receipt Date"	,"From"	,"入库日期"	,"开始"	,"Ngày nhập kho"	,"Từ"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax				,""										,"入荷日最大"					,""	,"Receipt Date"	,"To"	,"入库日期"	,"结束"	,"Ngày nhập kho"	,"Đến"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromQtyMin			,""										,"（移動前）移動元在庫数"		,"最小"	,"Source Stock Qty (Before Move)"	,"Min"	,"移动前源库位库存数量"	,"最小"	,"SL tồn vị trí nguồn (trước di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromPlanQtyMin		,""										,"（移動前）移動元引当済数"		,"最小"	,"Source Allocated Qty (Before Move)"	,"Min"	,"移动前源库位已分配数量"	,"最小"	,"SL đã phân bổ vị trí nguồn (trước di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeFromPossibleQtyMin	,""										,"（移動前）移動元出荷可能数"	,"最小"	,"Source Available Qty (Before Move)"	,"Min"	,"移动前源库位可出库数量"	,"最小"	,"SL có thể xuất vị trí nguồn (trước di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToQtyMin				,""										,"（移動前）移動先在庫数"		,"最小"	,"Destination Stock Qty (Before Move)"	,"Min"	,"移动前目标库位库存数量"	,"最小"	,"SL tồn vị trí đích (trước di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToPlanQtyMin		,""										,"（移動前）移動先引当済数"		,"最小"	,"Destination Allocated Qty (Before Move)"	,"Min"	,"移动前目标库位已分配数量"	,"最小"	,"SL đã phân bổ vị trí đích (trước di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchBeforeToPossibleQtyMin	,""										,"（移動前）移動先出荷可能数"	,"最小"	,"Destination Available Qty (Before Move)"	,"Min"	,"移动前目标库位可出库数量"	,"最小"	,"SL có thể xuất vị trí đích (trước di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchMoveQtyMin					,""										,"移動数最小"	,""	,"Move Qty"	,"Min"	,"移动数量"	,"最小"	,"SL di chuyển"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromQtyMin			,""										,"（移動後）移動元在庫数"		,"最小"	,"Source Stock Qty (After Move)"	,"Min"	,"移动后源库位库存数量"	,"最小"	,"SL tồn vị trí nguồn (sau di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromPlanQtyMin		,""										,"（移動後）移動元引当済数"		,"最小"	,"Source Allocated Qty (After Move)"	,"Min"	,"移动后源库位已分配数量"	,"最小"	,"SL đã phân bổ vị trí nguồn (sau di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterFromPossibleQtyMin	,""										,"（移動後）移動元出荷可能数"	,"最小"	,"Source Available Qty (After Move)"	,"Min"	,"移动后源库位可出库数量"	,"最小"	,"SL có thể xuất vị trí nguồn (sau di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToQtyMin				,""										,"（移動後）移動先在庫数"		,"最小"	,"Destination Stock Qty (After Move)"	,"Min"	,"移动后目标库位库存数量"	,"最小"	,"SL tồn vị trí đích (sau di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToPlanQtyMin			,""										,"（移動後）移動先引当済数"		,"最小"	,"Destination Allocated Qty (After Move)"	,"Min"	,"移动后目标库位已分配数量"	,"最小"	,"SL đã phân bổ vị trí đích (sau di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAfterToPossibleQtyMin	,""										,"（移動後）移動先出荷可能数"	,"最小"	,"Destination Available Qty (After Move)"	,"Min"	,"移动后目标库位可出库数量"	,"最小"	,"SL có thể xuất vị trí đích (sau di chuyển)"	,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromQtyMax			,""										,"（移動前）移動元在庫数"		,"最大"	,"Source Stock Qty (Before Move)"	,"Max"	,"移动前源库位库存数量"	,"最大"	,"SL tồn vị trí nguồn (trước di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromPlanQtyMax		,""										,"（移動前）移動元引当済数"		,"最大"	,"Source Allocated Qty (Before Move)"	,"Max"	,"移动前源库位已分配数量"	,"最大"	,"SL đã phân bổ vị trí nguồn (trước di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeFromPossibleQtyMax	,""										,"（移動前）移動元出荷可能数"	,"最大"	,"Source Available Qty (Before Move)"	,"Max"	,"移动前源库位可出库数量"	,"最大"	,"SL có thể xuất vị trí nguồn (trước di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToQtyMax				,""										,"（移動前）移動先在庫数"		,"最大"	,"Destination Stock Qty (Before Move)"	,"Max"	,"移动前目标库位库存数量"	,"最大"	,"SL tồn vị trí đích (trước di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToPlanQtyMax		,""										,"（移動前）移動先引当済数"		,"最大"	,"Destination Allocated Qty (Before Move)"	,"Max"	,"移动前目标库位已分配数量"	,"最大"	,"SL đã phân bổ vị trí đích (trước di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchBeforeToPossibleQtyMax	,""										,"（移動前）移動先出荷可能数"	,"最大"	,"Destination Available Qty (Before Move)"	,"Max"	,"移动前目标库位可出库数量"	,"最大"	,"SL có thể xuất vị trí đích (trước di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchMoveQtyMax					,""										,"移動数最大"	,""	,"Move Qty"	,"Max"	,"移动数量"	,"最大"	,"SL di chuyển"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromQtyMax			,""										,"（移動後）移動元在庫数"		,"最大"	,"Source Stock Qty (After Move)"	,"Max"	,"移动后源库位库存数量"	,"最大"	,"SL tồn vị trí nguồn (sau di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromPlanQtyMax		,""										,"（移動後）移動元引当済数"		,"最大"	,"Source Allocated Qty (After Move)"	,"Max"	,"移动后源库位已分配数量"	,"最大"	,"SL đã phân bổ vị trí nguồn (sau di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterFromPossibleQtyMax	,""										,"（移動後）移動元出荷可能数"	,"最大"	,"Source Available Qty (After Move)"	,"Max"	,"移动后源库位可出库数量"	,"最大"	,"SL có thể xuất vị trí nguồn (sau di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToQtyMax				,""										,"（移動後）移動先在庫数"		,"最大"	,"Destination Stock Qty (After Move)"	,"Max"	,"移动后目标库位库存数量"	,"最大"	,"SL tồn vị trí đích (sau di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToPlanQtyMax			,""										,"（移動後）移動先引当済数"		,"最大"	,"Destination Allocated Qty (After Move)"	,"Max"	,"移动后目标库位已分配数量"	,"最大"	,"SL đã phân bổ vị trí đích (sau di chuyển)"	,"Tối đa"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAfterToPossibleQtyMax	,""										,"（移動後）移動先出荷可能数"	,"最大"	,"Destination Available Qty (After Move)"	,"Max"	,"移动后目标库位可出库数量"	,"最大"	,"SL có thể xuất vị trí đích (sau di chuyển)"	,"Tối đa"}
+					,{"String"		,null	,"Partial"			,ColSearchMoveCom						,""										,"移動コメント"					,""	,"Move Comment"	,""	,"移动备注"	,""	,"Ghi chú di chuyển"	,""}
+					,{"DateTime"	,null	,"RangeStr"			,ColSearchEntryDateMin				,""										,"登録日開始"					,""	,"Created At"	,"From"	,"登记时间"	,"开始"	,"Ngày giờ tạo"	,"Từ"}
+					,{"DateTime"	,null	,"RangeStr"			,ColSearchUpdateDateMin				,""										,"更新日開始"					,""	,"Updated At"	,"From"	,"更新时间"	,"开始"	,"Ngày giờ cập nhật"	,"Từ"}
+					,{"DateTime"	,null	,"RangeEnd"			,ColSearchEntryDateMax				,""										,"登録日最大"					,""	,"Created At"	,"To"	,"登记时间"	,"结束"	,"Ngày giờ tạo"	,"Đến"}
+					,{"DateTime"	,null	,"RangeEnd"			,ColSearchUpdateDateMax				,""										,"更新日最大"					,""	,"Updated At"	,"To"	,"更新时间"	,"结束"	,"Ngày giờ cập nhật"	,"Đến"}
+					,{"String"		,null	,"Partial"			,ColSearchEntryUser					,""										,"登録者"						,""	,"Created By"	,""	,"登记人"	,""	,"Người tạo"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchUpdateUser					,""										,"更新者"						,""	,"Updated By"	,""	,"更新人"	,""	,"Người cập nhật"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
