@@ -210,70 +210,70 @@ public class M100_ItemMstRt{
 
 	public static Object[][] RtItemMstRt(){
 		Object[][] RtSettingItemMstRt = {
-				 {"ClGpCd"					,ColClGpCd					,"String"	,"荷主グループCD"}
-				,{"CLGpName01"				,ColCLGpName01			,"String"	,"荷主グループ標記名"}
-				,{"ItemCd"					,ColItemCd					,"String"	,"商品CD"}
-				,{"ClItemCd"				,ColClItemCd				,"String"	,"荷主商品CD"}
-				,{"ItemName01"				,ColItemName01			,"String"	,"商品表記名"}
-				,{"ItemName02"				,ColItemName02			,"String"	,"商品正式名"}
-				,{"ItemName03"				,ColItemName03			,"String"	,"商品略名"}
-				,{"DeliveryTypeCd01"		,ColDeliveryTypeCd01		,"String"	,"運送タイプコード01"}
-				,{"DeliveryTypeName01"		,ColDeliveryTypeName01	,"String"	,"運送タイプ名01"}
-				,{"DeliveryTypeCd02"		,ColDeliveryTypeCd02		,"String"	,"運送タイプコード02"}
-				,{"DeliveryTypeName02"		,ColDeliveryTypeName02	,"String"	,"運送タイプ名02"}
-				,{"DeliveryTypeCd03"		,ColDeliveryTypeCd03		,"String"	,"運送タイプコード03"}
-				,{"DeliveryTypeName03"		,ColDeliveryTypeName03	,"String"	,"運送タイプ名03"}
-				,{"DeliveryTypeCd04"		,ColDeliveryTypeCd04		,"String"	,"運送タイプコード04"}
-				,{"DeliveryTypeName04"		,ColDeliveryTypeName04	,"String"	,"運送タイプ名04"}
-				,{"DeliveryTypeCd05"		,ColDeliveryTypeCd05		,"String"	,"運送タイプコード05"}
-				,{"DeliveryTypeName05"		,ColDeliveryTypeName05	,"String"	,"運送タイプ名05"}
-				,{"PTMSCD"					,ColPTMSCD					,"String"	,"基幹システム商品コード"}
-				,{"CtQty"					,ColCtQty					,"int"		,"カートン入数"}
-				,{"CsQty"					,ColCsQty					,"int"		,"ケース入数"}
-				,{"PlQty"					,ColPlQty					,"int"		,"パレット入数"}
-				,{"JanCd"					,ColJanCd					,"String"	,"JANCD"}
-				,{"CtJan"					,ColCtJan					,"String"	,"カートンバーコード"}
-				,{"CsJan"					,ColCsJan					,"String"	,"ケースバーコード"}
-				,{"PlJan"					,ColPlJan					,"String"	,"パレットバーコード"}
-				,{"CtName"					,ColCtName					,"String"	,"カートン商品名称"}
-				,{"CsName"					,ColCsName					,"String"	,"ケース商品名称"}
-				,{"PlName"					,ColPlName					,"String"	,"パレット商品名称"}
-				,{"UnitName"				,ColUnitName				,"String"	,"商品単位"}
-				,{"CtUnitName"				,ColCtUnitName			,"String"	,"カートン商品単位"}
-				,{"CsUnitName"				,ColCsUnitName			,"String"	,"ケース商品単位"}
-				,{"PlUnitName"				,ColPlUnitName			,"String"	,"パレット商品単位"}
-				,{"ItemWeight"				,ColItemWeight			,"float"	,"商品重量"}
-				,{"CtWeight"				,ColCtWeight				,"float"	,"カートン重量"}
-				,{"CsWeight"				,ColCsWeight				,"float"	,"ケース重量"}
-				,{"PlWeight"				,ColPlWeight				,"float"	,"パレット重量"}
-				,{"ItemSize"				,ColItemSize				,"float"	,"商品サイズ"}
-				,{"CtSize"					,ColCtSize					,"float"	,"カートンサイズ"}
-				,{"CsSize"					,ColCsSize					,"float"	,"ケースサイズ"}
-				,{"PlSize"					,ColPlSize					,"float"	,"パレットサイズ"}
-				,{"RecomendLoc"				,ColRecomendLoc			,"String"	,"推奨ロケ"}
-				,{"ItemMDNo"				,ColItemMDNo				,"String"	,"商品モデル番号（型番）"}
-				,{"CategoryCd"				,ColCategoryCd			,"String"	,"商品カテゴリCD"}
-				,{"CategoryName"			,ColCategoryName			,"String"	,"商品カテゴリ名"}
-				,{"ItemColorCd"				,ColItemColorCd			,"String"	,"商品カラーコード"}
-				,{"ItemColorName"			,ColItemColorName			,"String"	,"商品カラー名"}
-				,{"ItemSizeCd"				,ColItemSizeCd			,"String"	,"商品サイズコード"}
-				,{"ItemSizeName"			,ColItemSizeName			,"String"	,"商品サイズ名"}
-				,{"Com01"					,ColCom01					,"String"	,"コメント1"}
-				,{"Com02"					,ColCom02					,"String"	,"コメント2"}
-				,{"Com03"					,ColCom03					,"String"	,"コメント3"}
-				,{"TildFG"					,ColTildFG					,"String"	,"温度区分"}
-				,{"TildName"				,ColTildName				,"String"	,"温度区分名"}
-				,{"PictPass01"				,ColPictPass01			,"String"	,"画像パス01"}
-				,{"PictPass02"				,ColPictPass02			,"String"	,"画像パス02"}
-				,{"PictPass03"				,ColPictPass03			,"String"	,"画像パス03"}
-				,{"PictPass04"				,ColPictPass04			,"String"	,"画像パス04"}
-				,{"PictPass05"				,ColPictPass05			,"String"	,"画像パス05"}
-				,{"ExpDateHowLong"			,ColExpDateHowLong		,"int"		,"賞味期限日数"}
-				,{"EntryDate"				,ColEntryDate				,"DateTime"	,"データ登録日時"}
-				,{"UpdateDate"				,ColUpdateDate			,"DateTime"	,"データ更新日時"}
-				,{"EntryUser"				,ColEntryUser				,"String"	,"登録者コード"}
-				,{"UpdateUser"				,ColUpdateUser			,"String"	,"更新者コード"}
-				,{"DelFg"					,ColDelFg					,"int"		,"削除フラグ"}
+				 {"ClGpCd"					,ColClGpCd					,"String"	,"荷主グループCD"	,""	,"Client Group Code"	,"货主组代码"	,"Mã nhóm chủ hàng"}
+				,{"CLGpName01"				,ColCLGpName01			,"String"	,"荷主グループ標記名"	,""	,"Client Group Display Name"	,"货主组显示名称"	,"Tên hiển thị nhóm chủ hàng"}
+				,{"ItemCd"					,ColItemCd					,"String"	,"商品CD"	,""	,"Item Code"	,"商品代码"	,"Mã hàng"}
+				,{"ClItemCd"				,ColClItemCd				,"String"	,"荷主商品CD"	,""	,"Client Item Code"	,"货主商品代码"	,"Mã hàng chủ hàng"}
+				,{"ItemName01"				,ColItemName01			,"String"	,"商品表記名"	,""	,"Display Item Name"	,"商品显示名称"	,"Tên hiển thị"}
+				,{"ItemName02"				,ColItemName02			,"String"	,"商品正式名"	,""	,"Official Item Name"	,"商品正式名称"	,"Tên chính thức"}
+				,{"ItemName03"				,ColItemName03			,"String"	,"商品略名"	,""	,"Short Item Name"	,"商品简称"	,"Tên viết tắt"}
+				,{"DeliveryTypeCd01"		,ColDeliveryTypeCd01		,"String"	,"運送タイプコード01"	,""	,"Delivery Type Code 01"	,"运输类型代码01"	,"Mã loại vận chuyển 01"}
+				,{"DeliveryTypeName01"		,ColDeliveryTypeName01	,"String"	,"運送タイプ名01"	,""	,"Delivery Type Name 01"	,"运输类型名称01"	,"Tên loại vận chuyển 01"}
+				,{"DeliveryTypeCd02"		,ColDeliveryTypeCd02		,"String"	,"運送タイプコード02"	,""	,"Delivery Type Code 02"	,"运输类型代码02"	,"Mã loại vận chuyển 02"}
+				,{"DeliveryTypeName02"		,ColDeliveryTypeName02	,"String"	,"運送タイプ名02"	,""	,"Delivery Type Name 02"	,"运输类型名称02"	,"Tên loại vận chuyển 02"}
+				,{"DeliveryTypeCd03"		,ColDeliveryTypeCd03		,"String"	,"運送タイプコード03"	,""	,"Delivery Type Code 03"	,"运输类型代码03"	,"Mã loại vận chuyển 03"}
+				,{"DeliveryTypeName03"		,ColDeliveryTypeName03	,"String"	,"運送タイプ名03"	,""	,"Delivery Type Name 03"	,"运输类型名称03"	,"Tên loại vận chuyển 03"}
+				,{"DeliveryTypeCd04"		,ColDeliveryTypeCd04		,"String"	,"運送タイプコード04"	,""	,"Delivery Type Code 04"	,"运输类型代码04"	,"Mã loại vận chuyển 04"}
+				,{"DeliveryTypeName04"		,ColDeliveryTypeName04	,"String"	,"運送タイプ名04"	,""	,"Delivery Type Name 04"	,"运输类型名称04"	,"Tên loại vận chuyển 04"}
+				,{"DeliveryTypeCd05"		,ColDeliveryTypeCd05		,"String"	,"運送タイプコード05"	,""	,"Delivery Type Code 05"	,"运输类型代码05"	,"Mã loại vận chuyển 05"}
+				,{"DeliveryTypeName05"		,ColDeliveryTypeName05	,"String"	,"運送タイプ名05"	,""	,"Delivery Type Name 05"	,"运输类型名称05"	,"Tên loại vận chuyển 05"}
+				,{"PTMSCD"					,ColPTMSCD					,"String"	,"基幹システム商品コード"	,""	,"Core System Item Code"	,"核心系统商品代码"	,"Mã hàng hệ thống lõi"}
+				,{"CtQty"					,ColCtQty					,"int"		,"カートン入数"	,""	,"Carton Pack Qty"	,"纸箱装量"	,"SL mỗi carton"}
+				,{"CsQty"					,ColCsQty					,"int"		,"ケース入数"	,""	,"Case Pack Qty"	,"箱装量"	,"SL mỗi thùng"}
+				,{"PlQty"					,ColPlQty					,"int"		,"パレット入数"	,""	,"Pallet Pack Qty"	,"托盘装量"	,"SL mỗi pallet"}
+				,{"JanCd"					,ColJanCd					,"String"	,"JANCD"	,""	,"JAN Code"	,"JAN代码"	,"Mã JAN"}
+				,{"CtJan"					,ColCtJan					,"String"	,"カートンバーコード"	,""	,"Carton Barcode"	,"纸箱条码"	,"Mã vạch carton"}
+				,{"CsJan"					,ColCsJan					,"String"	,"ケースバーコード"	,""	,"Case Barcode"	,"箱条码"	,"Mã vạch thùng"}
+				,{"PlJan"					,ColPlJan					,"String"	,"パレットバーコード"	,""	,"Pallet Barcode"	,"托盘条码"	,"Mã vạch pallet"}
+				,{"CtName"					,ColCtName					,"String"	,"カートン商品名称"	,""	,"Carton Item Name"	,"纸箱商品名称"	,"Tên hàng carton"}
+				,{"CsName"					,ColCsName					,"String"	,"ケース商品名称"	,""	,"Case Item Name"	,"箱商品名称"	,"Tên hàng thùng"}
+				,{"PlName"					,ColPlName					,"String"	,"パレット商品名称"	,""	,"Pallet Item Name"	,"托盘商品名称"	,"Tên hàng pallet"}
+				,{"UnitName"				,ColUnitName				,"String"	,"商品単位"	,""	,"Item Unit"	,"商品单位"	,"Đơn vị hàng"}
+				,{"CtUnitName"				,ColCtUnitName			,"String"	,"カートン商品単位"	,""	,"Carton Unit"	,"纸箱单位"	,"Đơn vị carton"}
+				,{"CsUnitName"				,ColCsUnitName			,"String"	,"ケース商品単位"	,""	,"Case Unit"	,"箱单位"	,"Đơn vị thùng"}
+				,{"PlUnitName"				,ColPlUnitName			,"String"	,"パレット商品単位"	,""	,"Pallet Unit"	,"托盘单位"	,"Đơn vị pallet"}
+				,{"ItemWeight"				,ColItemWeight			,"float"	,"商品重量"	,""	,"Item Weight"	,"商品重量"	,"Trọng lượng hàng"}
+				,{"CtWeight"				,ColCtWeight				,"float"	,"カートン重量"	,""	,"Carton Weight"	,"纸箱重量"	,"Trọng lượng carton"}
+				,{"CsWeight"				,ColCsWeight				,"float"	,"ケース重量"	,""	,"Case Weight"	,"箱重量"	,"Trọng lượng thùng"}
+				,{"PlWeight"				,ColPlWeight				,"float"	,"パレット重量"	,""	,"Pallet Weight"	,"托盘重量"	,"Trọng lượng pallet"}
+				,{"ItemSize"				,ColItemSize				,"float"	,"商品サイズ"	,""	,"Item Size"	,"商品尺寸"	,"Kích thước hàng"}
+				,{"CtSize"					,ColCtSize					,"float"	,"カートンサイズ"	,""	,"Carton Size"	,"纸箱尺寸"	,"Kích thước carton"}
+				,{"CsSize"					,ColCsSize					,"float"	,"ケースサイズ"	,""	,"Case Size"	,"箱尺寸"	,"Kích thước thùng"}
+				,{"PlSize"					,ColPlSize					,"float"	,"パレットサイズ"	,""	,"Pallet Size"	,"托盘尺寸"	,"Kích thước pallet"}
+				,{"RecomendLoc"				,ColRecomendLoc			,"String"	,"推奨ロケ"	,""	,"Recommended Location"	,"推荐库位"	,"Vị trí đề xuất"}
+				,{"ItemMDNo"				,ColItemMDNo				,"String"	,"商品モデル番号（型番）"	,""	,"Item Model No."	,"商品型号"	,"Mã model hàng"}
+				,{"CategoryCd"				,ColCategoryCd			,"String"	,"商品カテゴリCD"	,""	,"Item Category Code"	,"商品分类代码"	,"Mã phân loại hàng"}
+				,{"CategoryName"			,ColCategoryName			,"String"	,"商品カテゴリ名"	,""	,"Item Category Name"	,"商品分类名称"	,"Tên phân loại hàng"}
+				,{"ItemColorCd"				,ColItemColorCd			,"String"	,"商品カラーコード"	,""	,"Item Color Code"	,"商品颜色代码"	,"Mã màu hàng"}
+				,{"ItemColorName"			,ColItemColorName			,"String"	,"商品カラー名"	,""	,"Item Color Name"	,"商品颜色名称"	,"Tên màu hàng"}
+				,{"ItemSizeCd"				,ColItemSizeCd			,"String"	,"商品サイズコード"	,""	,"Item Size Code"	,"商品尺寸代码"	,"Mã kích thước hàng"}
+				,{"ItemSizeName"			,ColItemSizeName			,"String"	,"商品サイズ名"	,""	,"Item Size Name"	,"商品尺寸名称"	,"Tên kích thước hàng"}
+				,{"Com01"					,ColCom01					,"String"	,"コメント1"	,""	,"Comment 1"	,"备注1"	,"Ghi chú 1"}
+				,{"Com02"					,ColCom02					,"String"	,"コメント2"	,""	,"Comment 2"	,"备注2"	,"Ghi chú 2"}
+				,{"Com03"					,ColCom03					,"String"	,"コメント3"	,""	,"Comment 3"	,"备注3"	,"Ghi chú 3"}
+				,{"TildFG"					,ColTildFG					,"String"	,"温度区分"	,""	,"Temperature Type"	,"温度类型"	,"Loại nhiệt độ"}
+				,{"TildName"				,ColTildName				,"String"	,"温度区分名"	,""	,"Temperature Type Name"	,"温度类型名称"	,"Tên loại nhiệt độ"}
+				,{"PictPass01"				,ColPictPass01			,"String"	,"画像パス01"	,""	,"Image Path 01"	,"图片路径01"	,"Đường dẫn hình ảnh 01"}
+				,{"PictPass02"				,ColPictPass02			,"String"	,"画像パス02"	,""	,"Image Path 02"	,"图片路径02"	,"Đường dẫn hình ảnh 02"}
+				,{"PictPass03"				,ColPictPass03			,"String"	,"画像パス03"	,""	,"Image Path 03"	,"图片路径03"	,"Đường dẫn hình ảnh 03"}
+				,{"PictPass04"				,ColPictPass04			,"String"	,"画像パス04"	,""	,"Image Path 04"	,"图片路径04"	,"Đường dẫn hình ảnh 04"}
+				,{"PictPass05"				,ColPictPass05			,"String"	,"画像パス05"	,""	,"Image Path 05"	,"图片路径05"	,"Đường dẫn hình ảnh 05"}
+				,{"ExpDateHowLong"			,ColExpDateHowLong		,"int"		,"賞味期限日数"	,""	,"Shelf Life Days"	,"保质期天数"	,"Số ngày hạn sử dụng"}
+				,{"EntryDate"				,ColEntryDate				,"DateTime"	,"データ登録日時"	,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
+				,{"UpdateDate"				,ColUpdateDate			,"DateTime"	,"データ更新日時"	,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
+				,{"EntryUser"				,ColEntryUser				,"String"	,"登録者コード"	,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
+				,{"UpdateUser"				,ColUpdateUser			,"String"	,"更新者コード"	,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
+				,{"DelFg"					,ColDelFg					,"int"		,"削除フラグ"	,""	,"Delete Flag"	,"删除标志"	,"Cờ xóa"}
 				};
 		
 		RtSettingItemMstRt = B100_LanguageControl.RtControl(RtSettingItemMstRt);
@@ -283,27 +283,27 @@ public class M100_ItemMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"	,ColSearchClCd				,B100_DefaultVariable.SearchClList			,"荷主コード"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchClGpCd				,B100_DefaultVariable.SearchClGpList			,"荷主グループコード"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchItemCd				,""												,"商品コード"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchClItemCd			,""												,"荷主商品コード"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchItemName			,""												,"商品名"					,""}
-					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd01	,B100_DefaultVariable.SearchDeliveryType01	,"運送タイプコード01"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd02	,B100_DefaultVariable.SearchDeliveryType02	,"運送タイプコード02"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd03	,B100_DefaultVariable.SearchDeliveryType03	,"運送タイプコード03"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd04	,B100_DefaultVariable.SearchDeliveryType04	,"運送タイプコード04"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd05	,B100_DefaultVariable.SearchDeliveryType05	,"運送タイプコード05"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchItemMDNo			,""												,"商品モデル番号（型番）"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchCategoryCd			,""												,"商品カテゴリCD"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchCategoryName		,""												,"商品カテゴリ名"			,""}
-					,{"String"		,null	,"Exact"	,ColSearchItemColorCd		,""												,"商品カラーコード"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchItemColorName		,""												,"商品カラー名"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchItemSizeCd			,""												,"商品サイズコード"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchItemSizeName		,""												,"商品サイズ名"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchJanCd				,""												,"JANCD"					,""}
-					,{"String"		,null	,"Exact"	,ColSearchTildFG				,B100_DefaultVariable.SearchTildFG			,"温度区分"					,""}
-					,{"String"		,null	,"Partial"	,ColSearchTildName			,""												,"温度区分名"				,""}
-					,{"String"		,null	,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList			,"削除フラグ"				,""}
+					 {"String"		,null	,"Exact"	,ColSearchClCd				,B100_DefaultVariable.SearchClList			,"荷主コード"				,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchClGpCd				,B100_DefaultVariable.SearchClGpList			,"荷主グループコード"		,""	,"Client Group Code"	,""	,"货主组代码"	,""	,"Mã nhóm chủ hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchItemCd				,""												,"商品コード"				,""	,"Item Code"	,""	,"商品代码"	,""	,"Mã hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchClItemCd			,""												,"荷主商品コード"			,""	,"Client Item Code"	,""	,"货主商品代码"	,""	,"Mã hàng chủ hàng"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchItemName			,""												,"商品名"					,""	,"Item Name"	,""	,"商品名称"	,""	,"Tên hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd01	,B100_DefaultVariable.SearchDeliveryType01	,"運送タイプコード01"		,""	,"Delivery Type Code 01"	,""	,"运输类型代码01"	,""	,"Mã loại vận chuyển 01"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd02	,B100_DefaultVariable.SearchDeliveryType02	,"運送タイプコード02"		,""	,"Delivery Type Code 02"	,""	,"运输类型代码02"	,""	,"Mã loại vận chuyển 02"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd03	,B100_DefaultVariable.SearchDeliveryType03	,"運送タイプコード03"		,""	,"Delivery Type Code 03"	,""	,"运输类型代码03"	,""	,"Mã loại vận chuyển 03"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd04	,B100_DefaultVariable.SearchDeliveryType04	,"運送タイプコード04"		,""	,"Delivery Type Code 04"	,""	,"运输类型代码04"	,""	,"Mã loại vận chuyển 04"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDeliveryTypeCd05	,B100_DefaultVariable.SearchDeliveryType05	,"運送タイプコード05"		,""	,"Delivery Type Code 05"	,""	,"运输类型代码05"	,""	,"Mã loại vận chuyển 05"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchItemMDNo			,""												,"商品モデル番号（型番）"	,""	,"Item Model No."	,""	,"商品型号"	,""	,"Mã model hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchCategoryCd			,""												,"商品カテゴリCD"			,""	,"Item Category Code"	,""	,"商品分类代码"	,""	,"Mã phân loại hàng"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCategoryName		,""												,"商品カテゴリ名"			,""	,"Item Category Name"	,""	,"商品分类名称"	,""	,"Tên phân loại hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchItemColorCd		,""												,"商品カラーコード"			,""	,"Item Color Code"	,""	,"商品颜色代码"	,""	,"Mã màu hàng"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchItemColorName		,""												,"商品カラー名"				,""	,"Item Color Name"	,""	,"商品颜色名称"	,""	,"Tên màu hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchItemSizeCd			,""												,"商品サイズコード"			,""	,"Item Size Code"	,""	,"商品尺寸代码"	,""	,"Mã kích thước hàng"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchItemSizeName		,""												,"商品サイズ名"				,""	,"Item Size Name"	,""	,"商品尺寸名称"	,""	,"Tên kích thước hàng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchJanCd				,""												,"JANCD"					,""	,"JAN Code"	,""	,"JAN代码"	,""	,"Mã JAN"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchTildFG				,B100_DefaultVariable.SearchTildFG			,"温度区分"					,""	,"Temperature Type"	,""	,"温度类型"	,""	,"Loại nhiệt độ"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchTildName			,""												,"温度区分名"				,""	,"Temperature Type Name"	,""	,"温度类型名称"	,""	,"Tên loại nhiệt độ"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList			,"削除フラグ"				,""	,"Delete Flag"	,""	,"删除标志"	,""	,"Cờ xóa"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
