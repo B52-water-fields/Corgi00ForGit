@@ -107,22 +107,22 @@ public class M100_ItemRecomendLocMstRt{
 	
 	public static Object[][] RtItemRecomendLocMstRt() {
 		Object[][] RtItemRecomendLocMstRt = {
-					 {"ClCd"				,ColClCd					,"String"	,"荷主CD"					,"key"	,"Client Code"	,"货主代码"	,"Mã chủ hàng"}
-					,{"CLName"				,ColCLName					,"String"	,"荷主名"					,""	,"Client Name"	,"货主名称"	,"Tên chủ hàng"}
-					,{"ClWh"				,ColClWh					,"String"	,"担当倉庫CD"				,"key"	,"Assigned Warehouse Code"	,"负责仓库代码"	,"Mã kho phụ trách"}
-					,{"ClWHName"			,ColClWHName				,"String"	,"担当倉庫名"				,""	,"Warehouse Name"	,"仓库名称"	,"Tên kho"}
-					,{"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"			,""	,"Client Group Code"	,"货主组代码"	,"Mã nhóm chủ hàng"}
-					,{"ClGpName"			,ColClGpName				,"String"	,"グループ名"				,""	,"Group Name"	,"组名称"	,"Tên nhóm"}
-					,{"ItemCd"				,ColItemCd					,"String"	,"商品CD"					,"key"	,"Item Code"	,"商品代码"	,"Mã hàng"}
-					,{"ItemName01"			,ColItemName01			,"String"	,"商品表記名"				,""	,"Display Item Name"	,"商品显示名称"	,"Tên hiển thị"}
-					,{"RecomendLoc"			,ColRecomendLoc			,"String"	,"推奨ロケ"					,""	,"Recommended Location"	,"推荐库位"	,"Vị trí đề xuất"}
-					,{"LocName"				,ColLocName				,"String"	,"ロケーション名"			,""	,"Location Name"	,"库位名称"	,"Tên vị trí"}
-					,{"Type"				,ColType					,"int"		,"ロケタイプ"				,""	,"Location Type"	,"库位类型"	,"Loại vị trí"}
-					,{"EntryDate"			,ColEntryDate				,"DateTime"	,"データ登録日時"			,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-					,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"データ更新日時"			,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-					,{"EntryUser"			,ColEntryUser				,"String"	,"登録者"					,""	,"Created By"	,"登记人"	,"Người tạo"}
-					,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者"					,""	,"Updated By"	,"更新人"	,"Người cập nhật"}
-					,{"ItemSubRecomendLoc"	,ColItemSubRecomendLoc	,"String"	,"商品サブマスタ推奨ロケ"	,""	,"Item Sub-Master Recommended Location"	,"商品子主数据推荐库位"	,"Vị trí đề xuất danh mục phụ hàng"}
+					 {"ClCd"				,ColClCd					,"String"	,"荷主CD"					,"key"	,"Client Code"							,"货主代码"				,"Mã chủ hàng"}
+					,{"CLName"				,ColCLName					,"String"	,"荷主名"					,""		,"Client Name"							,"货主名称"				,"Tên chủ hàng"}
+					,{"ClWh"				,ColClWh					,"String"	,"担当倉庫CD"				,"key"	,"Assigned Warehouse Code"				,"负责仓库代码"			,"Mã kho phụ trách"}
+					,{"ClWHName"			,ColClWHName				,"String"	,"担当倉庫名"				,""		,"Warehouse Name"						,"仓库名称"				,"Tên kho"}
+					,{"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"			,""		,"Client Group Code"					,"货主组代码"				,"Mã nhóm chủ hàng"}
+					,{"ClGpName"			,ColClGpName				,"String"	,"グループ名"				,""		,"Group Name"							,"组名称"					,"Tên nhóm"}
+					,{"ItemCd"				,ColItemCd					,"String"	,"商品CD"					,"key"	,"Item Code"							,"商品代码"				,"Mã hàng"}
+					,{"ItemName01"			,ColItemName01			,"String"	,"商品表記名"				,""		,"Display Item Name"					,"商品显示名称"			,"Tên hiển thị"}
+					,{"RecomendLoc"			,ColRecomendLoc			,"String"	,"推奨ロケ"					,""		,"Recommended Location"					,"推荐库位"				,"Vị trí đề xuất"}
+					,{"LocName"				,ColLocName				,"String"	,"ロケーション名"			,""		,"Location Name"						,"库位名称"				,"Tên vị trí"}
+					,{"Type"				,ColType					,"int"		,"ロケタイプ"				,""		,"Location Type"						,"库位类型"				,"Loại vị trí"}
+					,{"EntryDate"			,ColEntryDate				,"DateTime"	,"データ登録日時"			,""		,"Created At"							,"登记时间"				,"Ngày giờ tạo"}
+					,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"データ更新日時"			,""		,"Updated At"							,"更新时间"				,"Ngày giờ cập nhật"}
+					,{"EntryUser"			,ColEntryUser				,"String"	,"登録者"					,""		,"Created By"							,"登记人"					,"Người tạo"}
+					,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者"					,""		,"Updated By"							,"更新人"				,"Người cập nhật"}
+					,{"ItemSubRecomendLoc"	,ColItemSubRecomendLoc	,"String"	,"商品サブマスタ推奨ロケ"	,""		,"Item Sub-Master Recommended Location"	,"商品子主数据推荐库位"	,"Vị trí đề xuất danh mục phụ hàng"}
 					};
 		
 		RtItemRecomendLocMstRt = B100_LanguageControl.RtControl(RtItemRecomendLocMstRt);
@@ -132,14 +132,14 @@ public class M100_ItemRecomendLocMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList		,"荷主コード"		,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
+					 {"String"		,null	,"Exact"			,ColSearchClCd			,B100_DefaultVariable.SearchClList		,"荷主コード"		,""	,"Client Code"				,""	,"货主代码"		,""	,"Mã chủ hàng"		,""}
 					,{"String"		,null	,"Exact"			,ColSearchClWh			,B100_DefaultVariable.SearchWhList		,"担当倉庫コード"	,""	,"Assigned Warehouse Code"	,""	,"负责仓库代码"	,""	,"Mã kho phụ trách"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchClGpCD			,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""	,"Client Group Code"	,""	,"货主组代码"	,""	,"Mã nhóm chủ hàng"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchItemCd			,""											,"商品コード"		,""	,"Item Code"	,""	,"商品代码"	,""	,"Mã hàng"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchItemName01		,""											,"商品表記名"		,""	,"Display Item Name"	,""	,"商品显示名称"	,""	,"Tên hiển thị"	,""}
-					,{"String"		,null	,"ExactOrPrefix"	,ColSearchRecomendLoc	,""											,"推奨ロケ"			,""	,"Recommended Location"	,""	,"推荐库位"	,""	,"Vị trí đề xuất"	,""}
-					,{"String"		,null	,"Partial"			,ColSearchLocName			,""											,"ロケーション名"	,""	,"Location Name"	,""	,"库位名称"	,""	,"Tên vị trí"	,""}
-					,{"Integer"		,null	,"Exact"			,ColSearchType			,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""	,"Location Type"	,""	,"库位类型"	,""	,"Loại vị trí"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchClGpCD			,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"	,""	,"Client Group Code"		,""	,"货主组代码"		,""	,"Mã nhóm chủ hàng"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchItemCd			,""											,"商品コード"		,""	,"Item Code"				,""	,"商品代码"		,""	,"Mã hàng"			,""}
+					,{"String"		,null	,"Exact"			,ColSearchItemName01		,""											,"商品表記名"		,""	,"Display Item Name"		,""	,"商品显示名称"	,""	,"Tên hiển thị"		,""}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchRecomendLoc	,""											,"推奨ロケ"			,""	,"Recommended Location"		,""	,"推荐库位"		,""	,"Vị trí đề xuất"	,""}
+					,{"String"		,null	,"Partial"			,ColSearchLocName			,""											,"ロケーション名"	,""	,"Location Name"			,""	,"库位名称"		,""	,"Tên vị trí"		,""}
+					,{"Integer"		,null	,"Exact"			,ColSearchType			,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""	,"Location Type"			,""	,"库位类型"		,""	,"Loại vị trí"		,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

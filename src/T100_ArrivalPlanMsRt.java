@@ -238,50 +238,50 @@ public class T100_ArrivalPlanMsRt{
 	public static Object[][] RtArrivalPlanMsRt(
 			){
 		Object[][] RtArrivalPlanMsRt = {
-				 {"ClWh"			,ColClWh			,"String"	,"ヘッダ担当倉庫"			,"Key"		,"Header Assigned Warehouse"	,"表头负责仓库"	,"Tiêu đề Kho phụ trách"}
-				,{"ClCd"			,ColClCd			,"String"	,"ヘッダ荷主CD"				,"Key"		,"Header Client Code"	,"表头货主代码"	,"Tiêu đề Mã chủ hàng"}
-				,{"CLName01"		,ColCLName01		,"String"	,"ヘッダ荷主名"				,""			,"Header Client Name"	,"表头货主名称"	,"Tiêu đề Tên chủ hàng"}
-				,{"ClGpCD"			,ColClGpCD			,"String"	,"ヘッダ荷主グループCD"		,""			,"Header Client Group Code"	,"表头货主组代码"	,"Tiêu đề Mã nhóm chủ hàng"}
+				 {"ClWh"			,ColClWh			,"String"	,"ヘッダ担当倉庫"			,"Key"		,"Header Assigned Warehouse"		,"表头负责仓库"		,"Tiêu đề Kho phụ trách"}
+				,{"ClCd"			,ColClCd			,"String"	,"ヘッダ荷主CD"				,"Key"		,"Header Client Code"				,"表头货主代码"		,"Tiêu đề Mã chủ hàng"}
+				,{"CLName01"		,ColCLName01		,"String"	,"ヘッダ荷主名"				,""			,"Header Client Name"				,"表头货主名称"		,"Tiêu đề Tên chủ hàng"}
+				,{"ClGpCD"			,ColClGpCD			,"String"	,"ヘッダ荷主グループCD"		,""			,"Header Client Group Code"			,"表头货主组代码"		,"Tiêu đề Mã nhóm chủ hàng"}
 				,{"CLGpName01"		,ColCLGpName01	,"String"	,"ヘッダ荷主グループ標記名"	,""			,"Header Client Group Display Name"	,"表头货主组显示名称"	,"Tiêu đề Tên hiển thị nhóm chủ hàng"}
-				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"			,"Key"		,"Header Receipt Plan No."	,"表头入库计划编号"	,"Tiêu đề Số kế hoạch nhập kho"}
-				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"		,""			,"Header Client Plan No."	,"表头货主计划编号"	,"Tiêu đề Số kế hoạch chủ hàng"}
-				,{"PlanDate"		,ColPlanDate		,"Date"		,"ヘッダ入荷予定日"			,""			,"Header Planned Receipt Date"	,"表头计划入库日期"	,"Tiêu đề Ngày nhập kho dự kiến"}
-				,{"HdActualDate"	,ColHdActualDate	,"DateTime"	,"ヘッダ入荷実績日"			,""			,"Header Receipt Date"	,"表头入库日期"	,"Tiêu đề Ngày nhập kho"}
-				,{"SpCd"			,ColSpCd			,"String"	,"ヘッダ仕入先CD"			,""			,"Header Supplier Code"	,"表头供应商代码"	,"Tiêu đề Mã nhà cung cấp"}
-				,{"SpName01"		,ColSpName01		,"String"	,"ヘッダ仕入先名01"			,""			,"Header Supplier Name 01"	,"表头供应商名称01"	,"Tiêu đề Tên nhà cung cấp 01"}
-				,{"SpName02"		,ColSpName02		,"String"	,"ヘッダ仕入先名02"			,""			,"Header Supplier Name 02"	,"表头供应商名称02"	,"Tiêu đề Tên nhà cung cấp 02"}
-				,{"SpName03"		,ColSpName03		,"String"	,"ヘッダ仕入先名03"			,""			,"Header Supplier Name 03"	,"表头供应商名称03"	,"Tiêu đề Tên nhà cung cấp 03"}
-				,{"SpPost"			,ColSpPost			,"String"	,"ヘッダ仕入先郵便"			,""			,"Header Supplier Postal Code"	,"表头供应商邮政编码"	,"Tiêu đề Mã bưu chính nhà cung cấp"}
-				,{"SpAdd01"			,ColSpAdd01		,"String"	,"ヘッダ仕入先住所01"		,""			,"Header Supplier Address 01"	,"表头供应商地址01"	,"Tiêu đề Địa chỉ nhà cung cấp 01"}
-				,{"SpAdd02"			,ColSpAdd02		,"String"	,"ヘッダ仕入先住所02"		,""			,"Header Supplier Address 02"	,"表头供应商地址02"	,"Tiêu đề Địa chỉ nhà cung cấp 02"}
-				,{"SpAdd03"			,ColSpAdd03		,"String"	,"ヘッダ仕入先住所03"		,""			,"Header Supplier Address 03"	,"表头供应商地址03"	,"Tiêu đề Địa chỉ nhà cung cấp 03"}
-				,{"SpTel"			,ColSpTel			,"String"	,"ヘッダ仕入先電話"			,""			,"Header Supplier TEL"	,"表头供应商电话"	,"Tiêu đề Điện thoại nhà cung cấp"}
-				,{"ArCom01"			,ColArCom01		,"String"	,"ヘッダコメント1"			,""			,"Header Comment 1"	,"表头备注1"	,"Tiêu đề Ghi chú 1"}
-				,{"ArCom02"			,ColArCom02		,"String"	,"ヘッダコメント2"			,""			,"Header Comment 2"	,"表头备注2"	,"Tiêu đề Ghi chú 2"}
-				,{"ArCom03"			,ColArCom03		,"String"	,"ヘッダコメント3"			,""			,"Header Comment 3"	,"表头备注3"	,"Tiêu đề Ghi chú 3"}
-				,{"HdEntryDate"		,ColHdEntryDate	,"DateTime"	,"ヘッダ登録日"				,""			,"Header Created At"	,"表头登记时间"	,"Tiêu đề Ngày giờ tạo"}
-				,{"HdUpdateDate"	,ColHdUpdateDate	,"DateTime"	,"ヘッダ更新日"				,""			,"Header Updated At"	,"表头更新时间"	,"Tiêu đề Ngày giờ cập nhật"}
-				,{"HdEntryUser"		,ColHdEntryUser	,"String"	,"ヘッダ登録者"				,""			,"Header Created By"	,"表头登记人"	,"Tiêu đề Người tạo"}
-				,{"HdUpdateUser"	,ColHdUpdateUser	,"String"	,"ヘッダ更新者"				,""			,"Header Updated By"	,"表头更新人"	,"Tiêu đề Người cập nhật"}
-				,{"FixFg"			,ColFixFg			,"int"		,"ヘッダ状況"				,""			,"Header Status"	,"表头状态"	,"Tiêu đề Trạng thái"}
+				,{"ArrNo"			,ColArrNo			,"String"	,"ヘッダ入荷予定NO"			,"Key"		,"Header Receipt Plan No."			,"表头入库计划编号"		,"Tiêu đề Số kế hoạch nhập kho"}
+				,{"ClArrNo"			,ColClArrNo		,"String"	,"ヘッダ荷主予定番号"		,""			,"Header Client Plan No."			,"表头货主计划编号"		,"Tiêu đề Số kế hoạch chủ hàng"}
+				,{"PlanDate"		,ColPlanDate		,"Date"		,"ヘッダ入荷予定日"			,""			,"Header Planned Receipt Date"		,"表头计划入库日期"		,"Tiêu đề Ngày nhập kho dự kiến"}
+				,{"HdActualDate"	,ColHdActualDate	,"DateTime"	,"ヘッダ入荷実績日"			,""			,"Header Receipt Date"				,"表头入库日期"		,"Tiêu đề Ngày nhập kho"}
+				,{"SpCd"			,ColSpCd			,"String"	,"ヘッダ仕入先CD"			,""			,"Header Supplier Code"				,"表头供应商代码"		,"Tiêu đề Mã nhà cung cấp"}
+				,{"SpName01"		,ColSpName01		,"String"	,"ヘッダ仕入先名01"			,""			,"Header Supplier Name 01"			,"表头供应商名称01"		,"Tiêu đề Tên nhà cung cấp 01"}
+				,{"SpName02"		,ColSpName02		,"String"	,"ヘッダ仕入先名02"			,""			,"Header Supplier Name 02"			,"表头供应商名称02"		,"Tiêu đề Tên nhà cung cấp 02"}
+				,{"SpName03"		,ColSpName03		,"String"	,"ヘッダ仕入先名03"			,""			,"Header Supplier Name 03"			,"表头供应商名称03"		,"Tiêu đề Tên nhà cung cấp 03"}
+				,{"SpPost"			,ColSpPost			,"String"	,"ヘッダ仕入先郵便"			,""			,"Header Supplier Postal Code"		,"表头供应商邮政编码"	,"Tiêu đề Mã bưu chính nhà cung cấp"}
+				,{"SpAdd01"			,ColSpAdd01		,"String"	,"ヘッダ仕入先住所01"		,""			,"Header Supplier Address 01"		,"表头供应商地址01"		,"Tiêu đề Địa chỉ nhà cung cấp 01"}
+				,{"SpAdd02"			,ColSpAdd02		,"String"	,"ヘッダ仕入先住所02"		,""			,"Header Supplier Address 02"		,"表头供应商地址02"		,"Tiêu đề Địa chỉ nhà cung cấp 02"}
+				,{"SpAdd03"			,ColSpAdd03		,"String"	,"ヘッダ仕入先住所03"		,""			,"Header Supplier Address 03"		,"表头供应商地址03"		,"Tiêu đề Địa chỉ nhà cung cấp 03"}
+				,{"SpTel"			,ColSpTel			,"String"	,"ヘッダ仕入先電話"			,""			,"Header Supplier TEL"				,"表头供应商电话"		,"Tiêu đề Điện thoại nhà cung cấp"}
+				,{"ArCom01"			,ColArCom01		,"String"	,"ヘッダコメント1"			,""			,"Header Comment 1"					,"表头备注1"			,"Tiêu đề Ghi chú 1"}
+				,{"ArCom02"			,ColArCom02		,"String"	,"ヘッダコメント2"			,""			,"Header Comment 2"					,"表头备注2"			,"Tiêu đề Ghi chú 2"}
+				,{"ArCom03"			,ColArCom03		,"String"	,"ヘッダコメント3"			,""			,"Header Comment 3"					,"表头备注3"			,"Tiêu đề Ghi chú 3"}
+				,{"HdEntryDate"		,ColHdEntryDate	,"DateTime"	,"ヘッダ登録日"				,""			,"Header Created At"				,"表头登记时间"		,"Tiêu đề Ngày giờ tạo"}
+				,{"HdUpdateDate"	,ColHdUpdateDate	,"DateTime"	,"ヘッダ更新日"				,""			,"Header Updated At"				,"表头更新时间"		,"Tiêu đề Ngày giờ cập nhật"}
+				,{"HdEntryUser"		,ColHdEntryUser	,"String"	,"ヘッダ登録者"				,""			,"Header Created By"				,"表头登记人"			,"Tiêu đề Người tạo"}
+				,{"HdUpdateUser"	,ColHdUpdateUser	,"String"	,"ヘッダ更新者"				,""			,"Header Updated By"				,"表头更新人"			,"Tiêu đề Người cập nhật"}
+				,{"FixFg"			,ColFixFg			,"int"		,"ヘッダ状況"				,""			,"Header Status"					,"表头状态"			,"Tiêu đề Trạng thái"}
 					
-				,{"MsNo"			,ColMsNo			,"int"		,"明細番号"					,"Key"		,"Detail No."	,"明细编号"	,"Số chi tiết"}
-				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"				,""			,"Item Code"	,"商品代码"	,"Mã hàng"}
-				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"			,""			,"Client Item Code"	,"货主商品代码"	,"Mã hàng chủ hàng"}
-				,{"JanCd"			,ColJanCd			,"String"	,"JANCD（バラ）"			,""			,"Each JAN Code"	,"单品JAN代码"	,"Mã JAN hàng lẻ"}
-				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"					,""			,"Item Model No."	,"商品型号"	,"Mã model"}
-				,{"ItemName"		,ColItemName		,"String"	,"商品名"					,""			,"Item Name"	,"商品名称"	,"Tên hàng"}
-				,{"lot"				,Collot			,"String"	,"ロット"					,""			,"Lot"	,"批次"	,"Lô"}
-				,{"ExpDate"			,ColExpDate		,"Date"		,"消費期限"					,""			,"Expiration Date"	,"有效期"	,"Hạn sử dụng"}
-				,{"PlanQty"			,ColPlanQty		,"int"		,"予定数量"					,""			,"Planned Qty"	,"计划数量"	,"SL dự kiến"}
-				,{"ActualQty"		,ColActualQty		,"int"		,"実績数"					,""			,"Actual Qty"	,"实际数量"	,"SL thực tế"}
-				,{"ActualDate"		,ColActualDate	,"String"	,"入荷日"					,""			,"Receipt Date"	,"入库日期"	,"Ngày nhập kho"}
-				,{"Com01"			,ColCom01			,"String"	,"コメント1"				,""			,"Comment 1"	,"备注1"	,"Ghi chú 1"}
-				,{"Com02"			,ColCom02			,"String"	,"コメント2"				,""			,"Comment 2"	,"备注2"	,"Ghi chú 2"}
-				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日"					,""			,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日"					,""			,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"					,""			,"Created By"	,"登记人"	,"Người tạo"}
-				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"					,""			,"Updated By"	,"更新人"	,"Người cập nhật"}
+				,{"MsNo"			,ColMsNo			,"int"		,"明細番号"					,"Key"		,"Detail No."						,"明细编号"			,"Số chi tiết"}
+				,{"ItemCd"			,ColItemCd			,"String"	,"商品コード"				,""			,"Item Code"						,"商品代码"			,"Mã hàng"}
+				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品コード"			,""			,"Client Item Code"					,"货主商品代码"		,"Mã hàng chủ hàng"}
+				,{"JanCd"			,ColJanCd			,"String"	,"JANCD（バラ）"			,""			,"Each JAN Code"					,"单品JAN代码"		,"Mã JAN hàng lẻ"}
+				,{"ItemMdNo"		,ColItemMdNo		,"String"	,"商品型番"					,""			,"Item Model No."					,"商品型号"			,"Mã model"}
+				,{"ItemName"		,ColItemName		,"String"	,"商品名"					,""			,"Item Name"						,"商品名称"			,"Tên hàng"}
+				,{"lot"				,Collot			,"String"	,"ロット"					,""			,"Lot"								,"批次"				,"Lô"}
+				,{"ExpDate"			,ColExpDate		,"Date"		,"消費期限"					,""			,"Expiration Date"					,"有效期"			,"Hạn sử dụng"}
+				,{"PlanQty"			,ColPlanQty		,"int"		,"予定数量"					,""			,"Planned Qty"						,"计划数量"			,"SL dự kiến"}
+				,{"ActualQty"		,ColActualQty		,"int"		,"実績数"					,""			,"Actual Qty"						,"实际数量"			,"SL thực tế"}
+				,{"ActualDate"		,ColActualDate	,"String"	,"入荷日"					,""			,"Receipt Date"						,"入库日期"			,"Ngày nhập kho"}
+				,{"Com01"			,ColCom01			,"String"	,"コメント1"				,""			,"Comment 1"						,"备注1"				,"Ghi chú 1"}
+				,{"Com02"			,ColCom02			,"String"	,"コメント2"				,""			,"Comment 2"						,"备注2"				,"Ghi chú 2"}
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日"					,""			,"Created At"						,"登记时间"			,"Ngày giờ tạo"}
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日"					,""			,"Updated At"						,"更新时间"			,"Ngày giờ cập nhật"}
+				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"					,""			,"Created By"						,"登记人"				,"Người tạo"}
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"					,""			,"Updated By"						,"更新人"			,"Người cập nhật"}
 				};
 		
 		RtArrivalPlanMsRt = B100_LanguageControl.RtControl(RtArrivalPlanMsRt);
@@ -291,48 +291,48 @@ public class T100_ArrivalPlanMsRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"		,ColSearchClWh				,B100_DefaultVariable.SearchWhList					,"担当倉庫"				,""	,"Assigned Warehouse"	,""	,"负责仓库"	,""	,"Kho phụ trách"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchClCd				,B100_DefaultVariable.SearchClList					,"荷主CD"				,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchCLName01			,""														,"荷主名"				,""	,"Client Name"	,""	,"货主名称"	,""	,"Tên chủ hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList					,"荷主グループCD"		,""	,"Client Group Code"	,""	,"货主组代码"	,""	,"Mã nhóm chủ hàng"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchCLGpName01			,""														,"荷主グループ標記名"	,""	,"Client Group Display Name"	,""	,"货主组显示名称"	,""	,"Tên hiển thị nhóm chủ hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchArrNo				,""														,"入荷予定NO"			,""	,"Receipt Plan No."	,""	,"入库计划编号"	,""	,"Số kế hoạch nhập kho"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchClArrNo				,""														,"荷主予定番号"			,""	,"Client Plan No."	,""	,"货主计划编号"	,""	,"Số kế hoạch chủ hàng"	,""}
-					,{"Date"		,null	,"RangeStr"		,ColSearchPlanDateMin		,""														,"入荷予定日"			,"開始"	,"Planned Receipt Date"	,"From"	,"计划入库日期"	,"开始"	,"Ngày nhập kho dự kiến"	,"Từ"}
-					,{"Date"		,null	,"RangeEnd"		,ColSearchPlanDateMax		,""														,"入荷予定日"			,"終了"	,"Planned Receipt Date"	,"To"	,"计划入库日期"	,"结束"	,"Ngày nhập kho dự kiến"	,"Đến"}
-					,{"Date"		,null	,"RangeStr"		,ColSearchHdActualDateMin	,""														,"入荷実績日"			,"開始"	,"Receipt Date"	,"From"	,"入库日期"	,"开始"	,"Ngày nhập kho"	,"Từ"}
-					,{"Date"		,null	,"RangeEnd"		,ColSearchHdActualDateMax	,""														,"入荷実績日"			,"終了"	,"Receipt Date"	,"To"	,"入库日期"	,"结束"	,"Ngày nhập kho"	,"Đến"}
-					,{"String"		,null	,"Exact"		,ColSearchSpCd				,B100_DefaultVariable.SearchSupplierList				,"仕入先CD"				,""	,"Supplier Code"	,""	,"供应商代码"	,""	,"Mã nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchSpName				,""														,"仕入先名"				,""	,"Supplier Name"	,""	,"供应商名称"	,""	,"Tên nhà cung cấp"	,""}
-					,{"String"		,null	,"Prefix"		,ColSearchSpPost				,""														,"仕入先郵便"			,""	,"Supplier Postal Code"	,""	,"供应商邮政编码"	,""	,"Mã bưu chính nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchSpAdd				,""														,"仕入先住所"			,""	,"Supplier Address"	,""	,"供应商地址"	,""	,"Địa chỉ nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchSpTel				,""														,"仕入先電話"			,""	,"Supplier TEL"	,""	,"供应商电话"	,""	,"Điện thoại nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchArCom				,""														,"コメント"				,""	,"Comment"	,""	,"备注"	,""	,"Ghi chú"	,""}
-					,{"Integer"		,null	,"Exact"		,ColSearchFixFg				,B100_DefaultVariable.SearchArryvalFixFgList			,"状況"					,""	,"Status"	,""	,"状态"	,""	,"Trạng thái"	,""}
+					 {"String"		,null	,"Exact"		,ColSearchClWh				,B100_DefaultVariable.SearchWhList					,"担当倉庫"				,""		,"Assigned Warehouse"			,""		,"负责仓库"		,""		,"Kho phụ trách"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchClCd				,B100_DefaultVariable.SearchClList					,"荷主CD"				,""		,"Client Code"					,""		,"货主代码"		,""		,"Mã chủ hàng"					,""}
+					,{"String"		,null	,"Partial"		,ColSearchCLName01			,""														,"荷主名"				,""		,"Client Name"					,""		,"货主名称"		,""		,"Tên chủ hàng"					,""}
+					,{"String"		,null	,"Exact"		,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList					,"荷主グループCD"		,""		,"Client Group Code"			,""		,"货主组代码"		,""		,"Mã nhóm chủ hàng"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchCLGpName01			,""														,"荷主グループ標記名"	,""		,"Client Group Display Name"	,""		,"货主组显示名称"	,""		,"Tên hiển thị nhóm chủ hàng"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchArrNo				,""														,"入荷予定NO"			,""		,"Receipt Plan No."				,""		,"入库计划编号"	,""		,"Số kế hoạch nhập kho"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchClArrNo				,""														,"荷主予定番号"			,""		,"Client Plan No."				,""		,"货主计划编号"	,""		,"Số kế hoạch chủ hàng"			,""}
+					,{"Date"		,null	,"RangeStr"		,ColSearchPlanDateMin		,""														,"入荷予定日"			,"開始"	,"Planned Receipt Date"			,"From"	,"计划入库日期"	,"开始"	,"Ngày nhập kho dự kiến"		,"Từ"}
+					,{"Date"		,null	,"RangeEnd"		,ColSearchPlanDateMax		,""														,"入荷予定日"			,"終了"	,"Planned Receipt Date"			,"To"	,"计划入库日期"	,"结束"	,"Ngày nhập kho dự kiến"		,"Đến"}
+					,{"Date"		,null	,"RangeStr"		,ColSearchHdActualDateMin	,""														,"入荷実績日"			,"開始"	,"Receipt Date"					,"From"	,"入库日期"		,"开始"	,"Ngày nhập kho"				,"Từ"}
+					,{"Date"		,null	,"RangeEnd"		,ColSearchHdActualDateMax	,""														,"入荷実績日"			,"終了"	,"Receipt Date"					,"To"	,"入库日期"		,"结束"	,"Ngày nhập kho"				,"Đến"}
+					,{"String"		,null	,"Exact"		,ColSearchSpCd				,B100_DefaultVariable.SearchSupplierList				,"仕入先CD"				,""		,"Supplier Code"				,""		,"供应商代码"		,""		,"Mã nhà cung cấp"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchSpName				,""														,"仕入先名"				,""		,"Supplier Name"				,""		,"供应商名称"		,""		,"Tên nhà cung cấp"				,""}
+					,{"String"		,null	,"Prefix"		,ColSearchSpPost				,""														,"仕入先郵便"			,""		,"Supplier Postal Code"			,""		,"供应商邮政编码"	,""		,"Mã bưu chính nhà cung cấp"	,""}
+					,{"String"		,null	,"Partial"		,ColSearchSpAdd				,""														,"仕入先住所"			,""		,"Supplier Address"				,""		,"供应商地址"		,""		,"Địa chỉ nhà cung cấp"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchSpTel				,""														,"仕入先電話"			,""		,"Supplier TEL"					,""		,"供应商电话"		,""		,"Điện thoại nhà cung cấp"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchArCom				,""														,"コメント"				,""		,"Comment"						,""		,"备注"			,""		,"Ghi chú"						,""}
+					,{"Integer"		,null	,"Exact"		,ColSearchFixFg				,B100_DefaultVariable.SearchArryvalFixFgList			,"状況"					,""		,"Status"						,""		,"状态"			,""		,"Trạng thái"					,""}
 							
-					,{"Integer"		,null	,"Exact"		,ColSearchMsNoMin				,""														,"明細番号"				,"最小"	,"Detail No."	,"Min"	,"明细编号"	,"最小"	,"Số chi tiết"	,"Tối thiểu"}
-					,{"Integer"		,null	,"Exact"		,ColSearchMsNoMax				,""														,"明細番号"				,"最大"	,"Detail No."	,"Max"	,"明细编号"	,"最大"	,"Số chi tiết"	,"Tối đa"}
-					,{"String"		,null	,"Exact"		,ColSearchItemCd				,""														,"商品コード"			,""	,"Item Code"	,""	,"商品代码"	,""	,"Mã hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchClItemCd			,""														,"荷主商品コード"		,""	,"Client Item Code"	,""	,"货主商品代码"	,""	,"Mã hàng chủ hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchJanCd				,""														,"JANCD（バラ）"		,""	,"Each JAN Code"	,""	,"单品JAN代码"	,""	,"Mã JAN hàng lẻ"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchItemMdNo			,""														,"商品型番"				,""	,"Item Model No."	,""	,"商品型号"	,""	,"Mã model"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchItemName			,""														,"商品名"				,""	,"Item Name"	,""	,"商品名称"	,""	,"Tên hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchlot					,""														,"ロット"				,""	,"Lot"	,""	,"批次"	,""	,"Lô"	,""}
-					,{"Date"		,null	,"RangeStr"		,ColSearchExpDateMin			,""														,"消費期限"				,"開始"	,"Expiration Date"	,"From"	,"有效期"	,"开始"	,"Hạn sử dụng"	,"Từ"}
-					,{"Date"		,null	,"RangeEnd"		,ColSearchExpDateMax			,""														,"消費期限"				,"終了"	,"Expiration Date"	,"To"	,"有效期"	,"结束"	,"Hạn sử dụng"	,"Đến"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchPlanQtyMin			,""														,"予定数量"				,"最小"	,"Planned Qty"	,"Min"	,"计划数量"	,"最小"	,"SL dự kiến"	,"Tối thiểu"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchPlanQtyMax			,""														,"予定数量"				,"最大"	,"Planned Qty"	,"Max"	,"计划数量"	,"最大"	,"SL dự kiến"	,"Tối đa"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchActualQtyMin		,""														,"実績数"				,"最小"	,"Actual Qty"	,"Min"	,"实际数量"	,"最小"	,"SL thực tế"	,"Tối thiểu"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchActualQtyMax		,""														,"実績数"				,"最大"	,"Actual Qty"	,"Max"	,"实际数量"	,"最大"	,"SL thực tế"	,"Tối đa"}
-					,{"Date"		,null	,"RangeStr"		,ColSearchActualDateMin		,""														,"入荷日"				,"開始"	,"Receipt Date"	,"From"	,"入库日期"	,"开始"	,"Ngày nhập kho"	,"Từ"}
-					,{"Date"		,null	,"RangeEnd"		,ColSearchActualDateMax		,""														,"入荷日"				,"終了"	,"Receipt Date"	,"To"	,"入库日期"	,"结束"	,"Ngày nhập kho"	,"Đến"}
-					,{"String"		,null	,"Partial"		,ColSearchCom					,""														,"コメント"				,""	,"Comment"	,""	,"备注"	,""	,"Ghi chú"	,""}
-					,{"DateTime"	,null	,"RangeStr"		,ColSearchEntryDateMin		,""														,"登録日"				,"開始"	,"Created At"	,"From"	,"登记时间"	,"开始"	,"Ngày giờ tạo"	,"Từ"}
-					,{"DateTime"	,null	,"RangeEnd"		,ColSearchEntryDateMax		,""														,"登録日"				,"終了"	,"Created At"	,"To"	,"登记时间"	,"结束"	,"Ngày giờ tạo"	,"Đến"}
-					,{"DateTime"	,null	,"RangeStr"		,ColSearchUpdateDateMin		,""														,"更新日"				,"開始"	,"Updated At"	,"From"	,"更新时间"	,"开始"	,"Ngày giờ cập nhật"	,"Từ"}
-					,{"DateTime"	,null	,"RangeEnd"		,ColSearchUpdateDateMax		,""														,"更新日"				,"終了"	,"Updated At"	,"To"	,"更新时间"	,"结束"	,"Ngày giờ cập nhật"	,"Đến"}
-					,{"String"		,null	,"Partial"		,ColSearchEntryUser			,""														,"登録者"				,""	,"Created By"	,""	,"登记人"	,""	,"Người tạo"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchUpdateUser			,""														,"更新者"				,""	,"Updated By"	,""	,"更新人"	,""	,"Người cập nhật"	,""}
+					,{"Integer"		,null	,"Exact"		,ColSearchMsNoMin				,""														,"明細番号"				,"最小"	,"Detail No."					,"Min"	,"明细编号"		,"最小"	,"Số chi tiết"					,"Tối thiểu"}
+					,{"Integer"		,null	,"Exact"		,ColSearchMsNoMax				,""														,"明細番号"				,"最大"	,"Detail No."					,"Max"	,"明细编号"		,"最大"	,"Số chi tiết"					,"Tối đa"}
+					,{"String"		,null	,"Exact"		,ColSearchItemCd				,""														,"商品コード"			,""		,"Item Code"					,""		,"商品代码"		,""		,"Mã hàng"						,""}
+					,{"String"		,null	,"Exact"		,ColSearchClItemCd			,""														,"荷主商品コード"		,""		,"Client Item Code"				,""		,"货主商品代码"	,""		,"Mã hàng chủ hàng"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchJanCd				,""														,"JANCD（バラ）"		,""		,"Each JAN Code"				,""		,"单品JAN代码"	,""		,"Mã JAN hàng lẻ"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchItemMdNo			,""														,"商品型番"				,""		,"Item Model No."				,""		,"商品型号"		,""		,"Mã model"						,""}
+					,{"String"		,null	,"Partial"		,ColSearchItemName			,""														,"商品名"				,""		,"Item Name"					,""		,"商品名称"		,""		,"Tên hàng"						,""}
+					,{"String"		,null	,"Exact"		,ColSearchlot					,""														,"ロット"				,""		,"Lot"							,""		,"批次"			,""		,"Lô"							,""}
+					,{"Date"		,null	,"RangeStr"		,ColSearchExpDateMin			,""														,"消費期限"				,"開始"	,"Expiration Date"				,"From"	,"有效期"		,"开始"	,"Hạn sử dụng"					,"Từ"}
+					,{"Date"		,null	,"RangeEnd"		,ColSearchExpDateMax			,""														,"消費期限"				,"終了"	,"Expiration Date"				,"To"	,"有效期"		,"结束"	,"Hạn sử dụng"					,"Đến"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchPlanQtyMin			,""														,"予定数量"				,"最小"	,"Planned Qty"					,"Min"	,"计划数量"		,"最小"	,"SL dự kiến"					,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchPlanQtyMax			,""														,"予定数量"				,"最大"	,"Planned Qty"					,"Max"	,"计划数量"		,"最大"	,"SL dự kiến"					,"Tối đa"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchActualQtyMin		,""														,"実績数"				,"最小"	,"Actual Qty"					,"Min"	,"实际数量"		,"最小"	,"SL thực tế"					,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchActualQtyMax		,""														,"実績数"				,"最大"	,"Actual Qty"					,"Max"	,"实际数量"		,"最大"	,"SL thực tế"					,"Tối đa"}
+					,{"Date"		,null	,"RangeStr"		,ColSearchActualDateMin		,""														,"入荷日"				,"開始"	,"Receipt Date"					,"From"	,"入库日期"		,"开始"	,"Ngày nhập kho"				,"Từ"}
+					,{"Date"		,null	,"RangeEnd"		,ColSearchActualDateMax		,""														,"入荷日"				,"終了"	,"Receipt Date"					,"To"	,"入库日期"		,"结束"	,"Ngày nhập kho"				,"Đến"}
+					,{"String"		,null	,"Partial"		,ColSearchCom					,""														,"コメント"				,""		,"Comment"						,""		,"备注"			,""		,"Ghi chú"						,""}
+					,{"DateTime"	,null	,"RangeStr"		,ColSearchEntryDateMin		,""														,"登録日"				,"開始"	,"Created At"					,"From"	,"登记时间"		,"开始"	,"Ngày giờ tạo"					,"Từ"}
+					,{"DateTime"	,null	,"RangeEnd"		,ColSearchEntryDateMax		,""														,"登録日"				,"終了"	,"Created At"					,"To"	,"登记时间"		,"结束"	,"Ngày giờ tạo"					,"Đến"}
+					,{"DateTime"	,null	,"RangeStr"		,ColSearchUpdateDateMin		,""														,"更新日"				,"開始"	,"Updated At"					,"From"	,"更新时间"		,"开始"	,"Ngày giờ cập nhật"			,"Từ"}
+					,{"DateTime"	,null	,"RangeEnd"		,ColSearchUpdateDateMax		,""														,"更新日"				,"終了"	,"Updated At"					,"To"	,"更新时间"		,"结束"	,"Ngày giờ cập nhật"			,"Đến"}
+					,{"String"		,null	,"Partial"		,ColSearchEntryUser			,""														,"登録者"				,""		,"Created By"					,""		,"登记人"			,""		,"Người tạo"					,""}
+					,{"String"		,null	,"Partial"		,ColSearchUpdateUser			,""														,"更新者"				,""		,"Updated By"					,""		,"更新人"		,""		,"Người cập nhật"				,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

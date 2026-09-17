@@ -166,36 +166,36 @@ public class M100_ParameterMstWankoRt{
 	public static Object[][] RtParameterMstWankoRt(){
 		Object[][] RtParameterMstWankoRt= {
 					 {"ClWh"		,ColClWh			,"String"	,"担当倉庫CD"			,"Key"	,"Assigned Warehouse Code"	,"负责仓库代码"	,"Mã kho phụ trách"}
-					,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"			,"Key"	,"Warehouse Name"	,"仓库名称"	,"Tên kho"}
-					,{"ClCd"		,ColClCd			,"String"	,"荷主コード"			,"Key"	,"Client Code"	,"货主代码"	,"Mã chủ hàng"}
-					,{"CLName01"	,ColCLName01		,"String"	,"荷主名"				,""	,"Client Name"	,"货主名称"	,"Tên chủ hàng"}
-					,{"ParaCd"		,ColParaCd			,"String"	,"パラメータCD"			,""	,"Parameter Code"	,"参数代码"	,"Mã tham số"}
-					,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"Seq"					,""	,"Seq"	,"序号"	,"Seq"}
-					,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"			,""	,"Parameter Name"	,"参数名称"	,"Tên tham số"}
-					,{"ParaTxt01"	,ColParaTxt01		,"String"	,"テキスト項目01"		,""	,"Text Field 01"	,"文本字段01"	,"Trường văn bản 01"}
-					,{"ParaTxt02"	,ColParaTxt02		,"String"	,"テキスト項目02"		,""	,"Text Field 02"	,"文本字段02"	,"Trường văn bản 02"}
-					,{"ParaTxt03"	,ColParaTxt03		,"String"	,"テキスト項目03"		,""	,"Text Field 03"	,"文本字段03"	,"Trường văn bản 03"}
-					,{"ParaTxt04"	,ColParaTxt04		,"String"	,"テキスト項目04"		,""	,"Text Field 04"	,"文本字段04"	,"Trường văn bản 04"}
-					,{"ParaTxt05"	,ColParaTxt05		,"String"	,"テキスト項目05"		,""	,"Text Field 05"	,"文本字段05"	,"Trường văn bản 05"}
-					,{"ParaTxt06"	,ColParaTxt06		,"String"	,"テキスト項目06"		,""	,"Text Field 06"	,"文本字段06"	,"Trường văn bản 06"}
-					,{"ParaTxt07"	,ColParaTxt07		,"String"	,"テキスト項目07"		,""	,"Text Field 07"	,"文本字段07"	,"Trường văn bản 07"}
-					,{"ParaTxt08"	,ColParaTxt08		,"String"	,"テキスト項目08"		,""	,"Text Field 08"	,"文本字段08"	,"Trường văn bản 08"}
-					,{"ParaTxt09"	,ColParaTxt09		,"String"	,"テキスト項目09"		,""	,"Text Field 09"	,"文本字段09"	,"Trường văn bản 09"}
-					,{"ParaTxt10"	,ColParaTxt10		,"String"	,"テキスト項目10"		,""	,"Text Field 10"	,"文本字段10"	,"Trường văn bản 10"}
-					,{"ParaInt01"	,ColParaInt01		,"int"		,"数値項目01"			,""	,"Numeric Field 01"	,"数值字段01"	,"Trường số 01"}
-					,{"ParaInt02"	,ColParaInt02		,"int"		,"数値項目02"			,""	,"Numeric Field 02"	,"数值字段02"	,"Trường số 02"}
-					,{"ParaInt03"	,ColParaInt03		,"int"		,"数値項目03"			,""	,"Numeric Field 03"	,"数值字段03"	,"Trường số 03"}
-					,{"ParaInt04"	,ColParaInt04		,"int"		,"数値項目04"			,""	,"Numeric Field 04"	,"数值字段04"	,"Trường số 04"}
-					,{"ParaInt05"	,ColParaInt05		,"int"		,"数値項目05"			,""	,"Numeric Field 05"	,"数值字段05"	,"Trường số 05"}
-					,{"ParaInt06"	,ColParaInt06		,"int"		,"数値項目06"			,""	,"Numeric Field 06"	,"数值字段06"	,"Trường số 06"}
-					,{"ParaInt07"	,ColParaInt07		,"int"		,"数値項目07"			,""	,"Numeric Field 07"	,"数值字段07"	,"Trường số 07"}
-					,{"ParaInt08"	,ColParaInt08		,"int"		,"数値項目08"			,""	,"Numeric Field 08"	,"数值字段08"	,"Trường số 08"}
-					,{"ParaInt09"	,ColParaInt09		,"int"		,"数値項目09"			,""	,"Numeric Field 09"	,"数值字段09"	,"Trường số 09"}
-					,{"ParaInt10"	,ColParaInt10		,"int"		,"数値項目10"			,""	,"Numeric Field 10"	,"数值字段10"	,"Trường số 10"}
-					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"				,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"				,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"				,""	,"Created By"	,"登记人"	,"Người tạo"}
-					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"				,""	,"Updated By"	,"更新人"	,"Người cập nhật"}
+					,{"WHName"		,ColWHName			,"String"	,"担当倉庫名"			,"Key"	,"Warehouse Name"			,"仓库名称"		,"Tên kho"}
+					,{"ClCd"		,ColClCd			,"String"	,"荷主コード"			,"Key"	,"Client Code"				,"货主代码"		,"Mã chủ hàng"}
+					,{"CLName01"	,ColCLName01		,"String"	,"荷主名"				,""		,"Client Name"				,"货主名称"		,"Tên chủ hàng"}
+					,{"ParaCd"		,ColParaCd			,"String"	,"パラメータCD"			,""		,"Parameter Code"			,"参数代码"		,"Mã tham số"}
+					,{"ParaCdSeq"	,ColParaCdSeq		,"int"		,"Seq"					,""		,"Seq"						,"序号"			,"Seq"}
+					,{"ParaName"	,ColParaName		,"String"	,"パラメータ名"			,""		,"Parameter Name"			,"参数名称"		,"Tên tham số"}
+					,{"ParaTxt01"	,ColParaTxt01		,"String"	,"テキスト項目01"		,""		,"Text Field 01"			,"文本字段01"	,"Trường văn bản 01"}
+					,{"ParaTxt02"	,ColParaTxt02		,"String"	,"テキスト項目02"		,""		,"Text Field 02"			,"文本字段02"	,"Trường văn bản 02"}
+					,{"ParaTxt03"	,ColParaTxt03		,"String"	,"テキスト項目03"		,""		,"Text Field 03"			,"文本字段03"	,"Trường văn bản 03"}
+					,{"ParaTxt04"	,ColParaTxt04		,"String"	,"テキスト項目04"		,""		,"Text Field 04"			,"文本字段04"	,"Trường văn bản 04"}
+					,{"ParaTxt05"	,ColParaTxt05		,"String"	,"テキスト項目05"		,""		,"Text Field 05"			,"文本字段05"	,"Trường văn bản 05"}
+					,{"ParaTxt06"	,ColParaTxt06		,"String"	,"テキスト項目06"		,""		,"Text Field 06"			,"文本字段06"	,"Trường văn bản 06"}
+					,{"ParaTxt07"	,ColParaTxt07		,"String"	,"テキスト項目07"		,""		,"Text Field 07"			,"文本字段07"	,"Trường văn bản 07"}
+					,{"ParaTxt08"	,ColParaTxt08		,"String"	,"テキスト項目08"		,""		,"Text Field 08"			,"文本字段08"	,"Trường văn bản 08"}
+					,{"ParaTxt09"	,ColParaTxt09		,"String"	,"テキスト項目09"		,""		,"Text Field 09"			,"文本字段09"	,"Trường văn bản 09"}
+					,{"ParaTxt10"	,ColParaTxt10		,"String"	,"テキスト項目10"		,""		,"Text Field 10"			,"文本字段10"	,"Trường văn bản 10"}
+					,{"ParaInt01"	,ColParaInt01		,"int"		,"数値項目01"			,""		,"Numeric Field 01"			,"数值字段01"		,"Trường số 01"}
+					,{"ParaInt02"	,ColParaInt02		,"int"		,"数値項目02"			,""		,"Numeric Field 02"			,"数值字段02"		,"Trường số 02"}
+					,{"ParaInt03"	,ColParaInt03		,"int"		,"数値項目03"			,""		,"Numeric Field 03"			,"数值字段03"		,"Trường số 03"}
+					,{"ParaInt04"	,ColParaInt04		,"int"		,"数値項目04"			,""		,"Numeric Field 04"			,"数值字段04"		,"Trường số 04"}
+					,{"ParaInt05"	,ColParaInt05		,"int"		,"数値項目05"			,""		,"Numeric Field 05"			,"数值字段05"		,"Trường số 05"}
+					,{"ParaInt06"	,ColParaInt06		,"int"		,"数値項目06"			,""		,"Numeric Field 06"			,"数值字段06"		,"Trường số 06"}
+					,{"ParaInt07"	,ColParaInt07		,"int"		,"数値項目07"			,""		,"Numeric Field 07"			,"数值字段07"		,"Trường số 07"}
+					,{"ParaInt08"	,ColParaInt08		,"int"		,"数値項目08"			,""		,"Numeric Field 08"			,"数值字段08"		,"Trường số 08"}
+					,{"ParaInt09"	,ColParaInt09		,"int"		,"数値項目09"			,""		,"Numeric Field 09"			,"数值字段09"		,"Trường số 09"}
+					,{"ParaInt10"	,ColParaInt10		,"int"		,"数値項目10"			,""		,"Numeric Field 10"			,"数值字段10"		,"Trường số 10"}
+					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"				,""		,"Created At"				,"登记时间"		,"Ngày giờ tạo"}
+					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"				,""		,"Updated At"				,"更新时间"		,"Ngày giờ cập nhật"}
+					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"				,""		,"Created By"				,"登记人"			,"Người tạo"}
+					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"				,""		,"Updated By"				,"更新人"		,"Người cập nhật"}
 					};
 		
 		RtParameterMstWankoRt = B100_LanguageControl.RtControl(RtParameterMstWankoRt);

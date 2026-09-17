@@ -486,22 +486,22 @@ public class WT100_OkuriData_05_ArrayEntrySourceDataView{
 		
 		for(int i=0;i<CheckOb.length;i++) {
 			for(int i01=0;i01<CautionMstRt.length;i01++) {
-				if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliCd]).equals((String)CautionMstRt[i][M100_CautionMstRt.ColDECD])) {
-					if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliDepartmentCd]).equals((String)CautionMstRt[i][M100_CautionMstRt.ColDepartmentCd])
-						||("").equals((String)CautionMstRt[i][M100_CautionMstRt.ColDepartmentCd])
+				if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliCd]).equals((String)CautionMstRt[i01][M100_CautionMstRt.ColDECD])) {
+					if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColDeliDepartmentCd]).equals((String)CautionMstRt[i01][M100_CautionMstRt.ColDepartmentCd])
+						||("").equals((String)CautionMstRt[i01][M100_CautionMstRt.ColDepartmentCd])
 						) {
-						if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsClGpCd]).equals((String)CautionMstRt[i][M100_CautionMstRt.ColClGpCD])
-							||("").equals((String)CautionMstRt[i][M100_CautionMstRt.ColClGpCD])
+						if((""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColMsClGpCd]).equals((String)CautionMstRt[i01][M100_CautionMstRt.ColClGpCD])
+							||("").equals((String)CautionMstRt[i01][M100_CautionMstRt.ColClGpCD])
 							) {
 							switch((int)CautionMstRt[i][M100_CautionMstRt.ColCautionTiming]) {
 								case 0:
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom05]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]+"_"+(String)CautionMstRt[i][M100_CautionMstRt.ColCaution];										//コメント04
+									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom05]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]+"_"+(String)CautionMstRt[i01][M100_CautionMstRt.ColCaution];										//コメント04
 									break;
 								case 1:
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom05]+"_"+(String)CautionMstRt[i][M100_CautionMstRt.ColCaution];										//コメント05
+									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom05]+"_"+(String)CautionMstRt[i01][M100_CautionMstRt.ColCaution];										//コメント05
 									break;
 								default:
-									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]+"_"+(String)CautionMstRt[i][M100_CautionMstRt.ColCaution];										//コメント04
+									SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]					= ""+SetObRt[i][WT100_OkuriData_06_ArrayEntrySetDataView.ColCom04]+"_"+(String)CautionMstRt[i01][M100_CautionMstRt.ColCaution];										//コメント04
 									break;
 							}
 						}

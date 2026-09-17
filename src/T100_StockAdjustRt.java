@@ -163,46 +163,46 @@ public class T100_StockAdjustRt{
 	
 	public static Object[][] RtAdjustRt(){
 		Object[][] RtAdjustRt = {
-				 {"ClCd"			,ColClCd				,"String"	,"荷主コード"				,"key"	,"Client Code"	,"货主代码"	,"Mã chủ hàng"}
-				,{"CLName"			,ColCLName				,"String"	,"荷主名"					,""	,"Client Name"	,"货主名称"	,"Tên chủ hàng"}
-				,{"WhCd"			,ColWhCd				,"String"	,"倉庫コード"				,"key"	,"Warehouse Code"	,"仓库代码"	,"Mã kho"}
-				,{"ClWHName"		,ColClWHName			,"String"	,"担当倉庫名"				,""	,"Warehouse Name"	,"仓库名称"	,"Tên kho"}
-				,{"ClGpCD"			,ColClGpCD				,"String"	,"荷主グループCD"			,""	,"Client Group Code"	,"货主组代码"	,"Mã nhóm chủ hàng"}
-				,{"ClGpName"		,ColClGpName			,"String"	,"グループ名"				,""	,"Group Name"	,"组名称"	,"Tên nhóm"}
-				,{"AdjustNo"		,ColAdjustNo			,"String"	,"調整番号"					,"key"	,"Adjustment No."	,"调整编号"	,"Số điều chỉnh"}
-				,{"AdjustReasonCd"	,ColAdjustReasonCd	,"String"	,"調整理由コード"			,""	,"Adjustment Reason Code"	,"调整原因代码"	,"Mã lý do điều chỉnh"}
-				,{"AdjustReasonName",ColAdjustReasonName	,"String"	,"調整理由名"				,""	,"Adjustment Reason"	,"调整原因"	,"Lý do điều chỉnh"}
-				,{"Adjustdate"		,ColAdjustdate		,"DateTime"	,"調整日"					,""	,"Adjustment Date"	,"调整日期"	,"Ngày điều chỉnh"}
-				,{"Loc"				,ColLoc				,"String"	,"調整元ロケ"				,""	,"Source Location"	,"调整源库位"	,"Vị trí nguồn"}
-				,{"LocName"			,ColLocName			,"String"	,"ロケーション名"			,""	,"Location Name"	,"库位名称"	,"Tên vị trí"}
-				,{"Type"			,ColType				,"int"		,"ロケタイプ"				,""	,"Location Type"	,"库位类型"	,"Loại vị trí"}
-				,{"ItemCd"			,ColItemCd				,"String"	,"商品CD"					,""	,"Item Code"	,"商品代码"	,"Mã hàng"}
-				,{"ItemName"		,ColItemName			,"String"	,"商品名"					,""	,"Item Name"	,"商品名称"	,"Tên hàng"}
-				,{"ItemName01"		,ColItemName01		,"String"	,"商品表記名"				,""	,"Display Item Name"	,"商品显示名称"	,"Tên hiển thị"}
-				,{"ItemName02"		,ColItemName02		,"String"	,"商品正式名"				,""	,"Official Item Name"	,"商品正式名称"	,"Tên chính thức"}
-				,{"ItemName03"		,ColItemName03		,"String"	,"商品略名"					,""	,"Short Item Name"	,"商品简称"	,"Tên viết tắt"}
-				,{"CtUnitQty"		,ColCtUnitQty			,"int"		,"カートン入数"				,""	,"Carton Pack Qty"	,"纸箱装量"	,"SL mỗi carton"}
-				,{"CsUnitQty"		,ColCsUnitQty			,"int"		,"ケース入数"				,""	,"Case Pack Qty"	,"箱装量"	,"SL mỗi thùng"}
-				,{"PlUnitQty"		,ColPlUnitQty			,"int"		,"パレット入数"				,""	,"Pallet Pack Qty"	,"托盘装量"	,"SL mỗi pallet"}
-				,{"UnitName"		,ColUnitName			,"String"	,"商品単位"					,""	,"Item Unit"	,"商品单位"	,"Đơn vị hàng"}
-				,{"CtUnitName"		,ColCtUnitName		,"String"	,"カートン商品単位"			,""	,"Carton Unit"	,"纸箱单位"	,"Đơn vị carton"}
-				,{"CsUnitName"		,ColCsUnitName		,"String"	,"ケース商品単位"			,""	,"Case Unit"	,"箱单位"	,"Đơn vị thùng"}
-				,{"PlUnitName"		,ColPlUnitName		,"String"	,"パレット商品単位"			,""	,"Pallet Unit"	,"托盘单位"	,"Đơn vị pallet"}
-				,{"Lot"				,ColLot				,"String"	,"調整元ロット"				,""	,"Source Lot"	,"调整源批次"	,"Lô nguồn"}
-				,{"ExpDate"			,ColExpDate			,"Date"		,"調整元賞味期限"			,""	,"Source Expiration Date"	,"调整源有效期"	,"Hạn sử dụng nguồn"}
-				,{"ActualDate"		,ColActualDate		,"Date"		,"調整元入荷日"				,""	,"Source Receipt Date"	,"调整源入库日期"	,"Ngày nhập kho nguồn"}
-				,{"BeforeQty"		,ColBeforeQty			,"int"		,"調整元在庫数"				,""	,"Source Stock Qty"	,"调整源库存数量"	,"SL tồn nguồn"}
-				,{"ShipPlanQty"		,ColShipPlanQty		,"int"		,"調整元引当済数"			,""	,"Source Allocated Qty"	,"调整源已分配数量"	,"SL đã phân bổ nguồn"}
-				,{"PossibleQty"		,ColPossibleQty		,"int"		,"調整元出荷可能数"			,""	,"Source Available Qty"	,"调整源可出库数量"	,"SL có thể xuất nguồn"}
-				,{"AdjustQty"		,ColAdjustQty			,"int"		,"調整数"					,""	,"Adjustment Qty"	,"调整数量"	,"SL điều chỉnh"}
-				,{"AdjustCom01"		,ColAdjustCom01		,"String"	,"調整理由コメント01"		,""	,"Adjustment Reason Comment 01"	,"调整原因备注01"	,"Ghi chú lý do điều chỉnh 01"}
-				,{"AdjustCom02"		,ColAdjustCom02		,"String"	,"調整理由コメント02"		,""	,"Adjustment Reason Comment 02"	,"调整原因备注02"	,"Ghi chú lý do điều chỉnh 02"}
-				,{"AdjustCom03"		,ColAdjustCom03		,"String"	,"調整理由コメント03"		,""	,"Adjustment Reason Comment 03"	,"调整原因备注03"	,"Ghi chú lý do điều chỉnh 03"}
-				,{"AfterQty"		,ColAfterQty			,"int"		,"調整後在庫数"				,""	,"Stock Qty After Adjustment"	,"调整后库存数量"	,"SL tồn sau điều chỉnh"}
-				,{"EntryDate"		,ColEntryDate			,"DateTime"	,"登録日"					,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-				,{"UpdateDate"		,ColUpdateDate		,"DateTime"	,"更新日"					,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者"					,""	,"Created By"	,"登记人"	,"Người tạo"}
-				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者"					,""	,"Updated By"	,"更新人"	,"Người cập nhật"}
+				 {"ClCd"			,ColClCd				,"String"	,"荷主コード"				,"key"	,"Client Code"					,"货主代码"		,"Mã chủ hàng"}
+				,{"CLName"			,ColCLName				,"String"	,"荷主名"					,""		,"Client Name"					,"货主名称"		,"Tên chủ hàng"}
+				,{"WhCd"			,ColWhCd				,"String"	,"倉庫コード"				,"key"	,"Warehouse Code"				,"仓库代码"		,"Mã kho"}
+				,{"ClWHName"		,ColClWHName			,"String"	,"担当倉庫名"				,""		,"Warehouse Name"				,"仓库名称"		,"Tên kho"}
+				,{"ClGpCD"			,ColClGpCD				,"String"	,"荷主グループCD"			,""		,"Client Group Code"			,"货主组代码"		,"Mã nhóm chủ hàng"}
+				,{"ClGpName"		,ColClGpName			,"String"	,"グループ名"				,""		,"Group Name"					,"组名称"			,"Tên nhóm"}
+				,{"AdjustNo"		,ColAdjustNo			,"String"	,"調整番号"					,"key"	,"Adjustment No."				,"调整编号"		,"Số điều chỉnh"}
+				,{"AdjustReasonCd"	,ColAdjustReasonCd	,"String"	,"調整理由コード"			,""		,"Adjustment Reason Code"		,"调整原因代码"	,"Mã lý do điều chỉnh"}
+				,{"AdjustReasonName",ColAdjustReasonName	,"String"	,"調整理由名"				,""		,"Adjustment Reason"			,"调整原因"		,"Lý do điều chỉnh"}
+				,{"Adjustdate"		,ColAdjustdate		,"DateTime"	,"調整日"					,""		,"Adjustment Date"				,"调整日期"		,"Ngày điều chỉnh"}
+				,{"Loc"				,ColLoc				,"String"	,"調整元ロケ"				,""		,"Source Location"				,"调整源库位"		,"Vị trí nguồn"}
+				,{"LocName"			,ColLocName			,"String"	,"ロケーション名"			,""		,"Location Name"				,"库位名称"		,"Tên vị trí"}
+				,{"Type"			,ColType				,"int"		,"ロケタイプ"				,""		,"Location Type"				,"库位类型"		,"Loại vị trí"}
+				,{"ItemCd"			,ColItemCd				,"String"	,"商品CD"					,""		,"Item Code"					,"商品代码"		,"Mã hàng"}
+				,{"ItemName"		,ColItemName			,"String"	,"商品名"					,""		,"Item Name"					,"商品名称"		,"Tên hàng"}
+				,{"ItemName01"		,ColItemName01		,"String"	,"商品表記名"				,""		,"Display Item Name"			,"商品显示名称"	,"Tên hiển thị"}
+				,{"ItemName02"		,ColItemName02		,"String"	,"商品正式名"				,""		,"Official Item Name"			,"商品正式名称"	,"Tên chính thức"}
+				,{"ItemName03"		,ColItemName03		,"String"	,"商品略名"					,""		,"Short Item Name"				,"商品简称"		,"Tên viết tắt"}
+				,{"CtUnitQty"		,ColCtUnitQty			,"int"		,"カートン入数"				,""		,"Carton Pack Qty"				,"纸箱装量"		,"SL mỗi carton"}
+				,{"CsUnitQty"		,ColCsUnitQty			,"int"		,"ケース入数"				,""		,"Case Pack Qty"				,"箱装量"		,"SL mỗi thùng"}
+				,{"PlUnitQty"		,ColPlUnitQty			,"int"		,"パレット入数"				,""		,"Pallet Pack Qty"				,"托盘装量"		,"SL mỗi pallet"}
+				,{"UnitName"		,ColUnitName			,"String"	,"商品単位"					,""		,"Item Unit"					,"商品单位"		,"Đơn vị hàng"}
+				,{"CtUnitName"		,ColCtUnitName		,"String"	,"カートン商品単位"			,""		,"Carton Unit"					,"纸箱单位"		,"Đơn vị carton"}
+				,{"CsUnitName"		,ColCsUnitName		,"String"	,"ケース商品単位"			,""		,"Case Unit"					,"箱单位"			,"Đơn vị thùng"}
+				,{"PlUnitName"		,ColPlUnitName		,"String"	,"パレット商品単位"			,""		,"Pallet Unit"					,"托盘单位"		,"Đơn vị pallet"}
+				,{"Lot"				,ColLot				,"String"	,"調整元ロット"				,""		,"Source Lot"					,"调整源批次"		,"Lô nguồn"}
+				,{"ExpDate"			,ColExpDate			,"Date"		,"調整元賞味期限"			,""		,"Source Expiration Date"		,"调整源有效期"	,"Hạn sử dụng nguồn"}
+				,{"ActualDate"		,ColActualDate		,"Date"		,"調整元入荷日"				,""		,"Source Receipt Date"			,"调整源入库日期"	,"Ngày nhập kho nguồn"}
+				,{"BeforeQty"		,ColBeforeQty			,"int"		,"調整元在庫数"				,""		,"Source Stock Qty"				,"调整源库存数量"	,"SL tồn nguồn"}
+				,{"ShipPlanQty"		,ColShipPlanQty		,"int"		,"調整元引当済数"			,""		,"Source Allocated Qty"			,"调整源已分配数量"	,"SL đã phân bổ nguồn"}
+				,{"PossibleQty"		,ColPossibleQty		,"int"		,"調整元出荷可能数"			,""		,"Source Available Qty"			,"调整源可出库数量"	,"SL có thể xuất nguồn"}
+				,{"AdjustQty"		,ColAdjustQty			,"int"		,"調整数"					,""		,"Adjustment Qty"				,"调整数量"		,"SL điều chỉnh"}
+				,{"AdjustCom01"		,ColAdjustCom01		,"String"	,"調整理由コメント01"		,""		,"Adjustment Reason Comment 01"	,"调整原因备注01"	,"Ghi chú lý do điều chỉnh 01"}
+				,{"AdjustCom02"		,ColAdjustCom02		,"String"	,"調整理由コメント02"		,""		,"Adjustment Reason Comment 02"	,"调整原因备注02"	,"Ghi chú lý do điều chỉnh 02"}
+				,{"AdjustCom03"		,ColAdjustCom03		,"String"	,"調整理由コメント03"		,""		,"Adjustment Reason Comment 03"	,"调整原因备注03"	,"Ghi chú lý do điều chỉnh 03"}
+				,{"AfterQty"		,ColAfterQty			,"int"		,"調整後在庫数"				,""		,"Stock Qty After Adjustment"	,"调整后库存数量"	,"SL tồn sau điều chỉnh"}
+				,{"EntryDate"		,ColEntryDate			,"DateTime"	,"登録日"					,""		,"Created At"					,"登记时间"		,"Ngày giờ tạo"}
+				,{"UpdateDate"		,ColUpdateDate		,"DateTime"	,"更新日"					,""		,"Updated At"					,"更新时间"		,"Ngày giờ cập nhật"}
+				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者"					,""		,"Created By"					,"登记人"			,"Người tạo"}
+				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者"					,""		,"Updated By"					,"更新人"		,"Người cập nhật"}
 				};
 		
 		RtAdjustRt = B100_LanguageControl.RtControl(RtAdjustRt);
@@ -212,26 +212,26 @@ public class T100_StockAdjustRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList				,"荷主コード"		,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList				,"倉庫コード"		,""	,"Warehouse Code"	,""	,"仓库代码"	,""	,"Mã kho"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""	,"Client Group Code"	,""	,"货主组代码"	,""	,"Mã nhóm chủ hàng"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchAdjustNo			,""													,"調整番号"			,""	,"Adjustment No."	,""	,"调整编号"	,""	,"Số điều chỉnh"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchAdjustReasonCd		,B100_DefaultVariable.SearchAdjustReasonList		,"調整理由コード"	,""	,"Adjustment Reason Code"	,""	,"调整原因代码"	,""	,"Mã lý do điều chỉnh"	,""}
-					,{"String"		,null	,"Partial"			,ColSearchAdjustReasonName	,""													,"調整理由名"		,""	,"Adjustment Reason"	,""	,"调整原因"	,""	,"Lý do điều chỉnh"	,""}
-					,{"Date"		,null	,"RangeStr"			,ColSearchAdjustdateMin		,""													,"調整日"			,"最小"	,"Adjustment Date"	,"Min"	,"调整日期"	,"最小"	,"Ngày điều chỉnh"	,"Tối thiểu"}
-					,{"Date"		,null	,"RangeEnd"			,ColSearchAdjustdateMax		,""													,"調整日"			,"最大"	,"Adjustment Date"	,"Max"	,"调整日期"	,"最大"	,"Ngày điều chỉnh"	,"Tối đa"}
-					,{"String"		,null	,"ExactOrPrefix"	,ColSearchLoc					,""													,"調整元ロケ"		,""	,"Source Location"	,""	,"调整源库位"	,""	,"Vị trí nguồn"	,""}
-					,{"Integer"		,null	,"Exact"			,ColSearchType				,B100_DefaultVariable.SearchLocType				,"ロケタイプ"		,""	,"Location Type"	,""	,"库位类型"	,""	,"Loại vị trí"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchItemCd				,""													,"調整元商品CD"		,""	,"Source Item Code"	,""	,"调整源商品代码"	,""	,"Mã hàng nguồn"	,""}
-					,{"String"		,null	,"Partial"			,ColSearchItemName			,""													,"調整元商品名"		,""	,"Source Item Name"	,""	,"调整源商品名称"	,""	,"Tên hàng nguồn"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchLot					,""													,"調整元ロット"		,""	,"Source Lot"	,""	,"调整源批次"	,""	,"Lô nguồn"	,""}
-					,{"Date"		,null	,"RangeStr"			,ColSearchExpDateMin			,""													,"調整元賞味期限"	,"開始"	,"Source Expiration Date"	,"From"	,"调整源有效期"	,"开始"	,"Hạn sử dụng nguồn"	,"Từ"}
-					,{"Date"		,null	,"RangeEnd"			,ColSearchExpDateMax			,""													,"調整元賞味期限"	,"終了"	,"Source Expiration Date"	,"To"	,"调整源有效期"	,"结束"	,"Hạn sử dụng nguồn"	,"Đến"}
-					,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin		,""													,"調整元入荷日"		,"開始"	,"Source Receipt Date"	,"From"	,"调整源入库日期"	,"开始"	,"Ngày nhập kho nguồn"	,"Từ"}
-					,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax		,""													,"調整元入荷日"		,"終了"	,"Source Receipt Date"	,"To"	,"调整源入库日期"	,"结束"	,"Ngày nhập kho nguồn"	,"Đến"}
-					,{"Integer"		,null	,"RangeMin"			,ColSearchAdjustQtyMin		,""													,"調整数"			,"最小"	,"Adjustment Qty"	,"Min"	,"调整数量"	,"最小"	,"SL điều chỉnh"	,"Tối thiểu"}
-					,{"Integer"		,null	,"RangeMax"			,ColSearchAdjustQtyMax		,""													,"調整数"			,"最大"	,"Adjustment Qty"	,"Max"	,"调整数量"	,"最大"	,"SL điều chỉnh"	,"Tối đa"}
-					,{"String"		,null	,"Partial"			,ColSearchAdjustCom			,""													,"調整理由コメント"	,""	,"Adjustment Reason Comment"	,""	,"调整原因备注"	,""	,"Ghi chú lý do điều chỉnh"	,""}
+					 {"String"		,null	,"Exact"			,ColSearchClCd				,B100_DefaultVariable.SearchClList				,"荷主コード"		,""		,"Client Code"					,""		,"货主代码"		,""		,"Mã chủ hàng"				,""}
+					,{"String"		,null	,"Exact"			,ColSearchWhCd				,B100_DefaultVariable.SearchWhList				,"倉庫コード"		,""		,"Warehouse Code"				,""		,"仓库代码"		,""		,"Mã kho"					,""}
+					,{"String"		,null	,"Exact"			,ColSearchClGpCD				,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"	,""		,"Client Group Code"			,""		,"货主组代码"		,""		,"Mã nhóm chủ hàng"			,""}
+					,{"String"		,null	,"Exact"			,ColSearchAdjustNo			,""													,"調整番号"			,""		,"Adjustment No."				,""		,"调整编号"		,""		,"Số điều chỉnh"			,""}
+					,{"String"		,null	,"Exact"			,ColSearchAdjustReasonCd		,B100_DefaultVariable.SearchAdjustReasonList		,"調整理由コード"	,""		,"Adjustment Reason Code"		,""		,"调整原因代码"	,""		,"Mã lý do điều chỉnh"		,""}
+					,{"String"		,null	,"Partial"			,ColSearchAdjustReasonName	,""													,"調整理由名"		,""		,"Adjustment Reason"			,""		,"调整原因"		,""		,"Lý do điều chỉnh"			,""}
+					,{"Date"		,null	,"RangeStr"			,ColSearchAdjustdateMin		,""													,"調整日"			,"最小"	,"Adjustment Date"				,"Min"	,"调整日期"		,"最小"	,"Ngày điều chỉnh"			,"Tối thiểu"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchAdjustdateMax		,""													,"調整日"			,"最大"	,"Adjustment Date"				,"Max"	,"调整日期"		,"最大"	,"Ngày điều chỉnh"			,"Tối đa"}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchLoc					,""													,"調整元ロケ"		,""		,"Source Location"				,""		,"调整源库位"		,""		,"Vị trí nguồn"				,""}
+					,{"Integer"		,null	,"Exact"			,ColSearchType				,B100_DefaultVariable.SearchLocType				,"ロケタイプ"		,""		,"Location Type"				,""		,"库位类型"		,""		,"Loại vị trí"				,""}
+					,{"String"		,null	,"Exact"			,ColSearchItemCd				,""													,"調整元商品CD"		,""		,"Source Item Code"				,""		,"调整源商品代码"	,""		,"Mã hàng nguồn"			,""}
+					,{"String"		,null	,"Partial"			,ColSearchItemName			,""													,"調整元商品名"		,""		,"Source Item Name"				,""		,"调整源商品名称"	,""		,"Tên hàng nguồn"			,""}
+					,{"String"		,null	,"Exact"			,ColSearchLot					,""													,"調整元ロット"		,""		,"Source Lot"					,""		,"调整源批次"		,""		,"Lô nguồn"					,""}
+					,{"Date"		,null	,"RangeStr"			,ColSearchExpDateMin			,""													,"調整元賞味期限"	,"開始"	,"Source Expiration Date"		,"From"	,"调整源有效期"	,"开始"	,"Hạn sử dụng nguồn"		,"Từ"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchExpDateMax			,""													,"調整元賞味期限"	,"終了"	,"Source Expiration Date"		,"To"	,"调整源有效期"	,"结束"	,"Hạn sử dụng nguồn"		,"Đến"}
+					,{"Date"		,null	,"RangeStr"			,ColSearchActualDateMin		,""													,"調整元入荷日"		,"開始"	,"Source Receipt Date"			,"From"	,"调整源入库日期"	,"开始"	,"Ngày nhập kho nguồn"		,"Từ"}
+					,{"Date"		,null	,"RangeEnd"			,ColSearchActualDateMax		,""													,"調整元入荷日"		,"終了"	,"Source Receipt Date"			,"To"	,"调整源入库日期"	,"结束"	,"Ngày nhập kho nguồn"		,"Đến"}
+					,{"Integer"		,null	,"RangeMin"			,ColSearchAdjustQtyMin		,""													,"調整数"			,"最小"	,"Adjustment Qty"				,"Min"	,"调整数量"		,"最小"	,"SL điều chỉnh"			,"Tối thiểu"}
+					,{"Integer"		,null	,"RangeMax"			,ColSearchAdjustQtyMax		,""													,"調整数"			,"最大"	,"Adjustment Qty"				,"Max"	,"调整数量"		,"最大"	,"SL điều chỉnh"			,"Tối đa"}
+					,{"String"		,null	,"Partial"			,ColSearchAdjustCom			,""													,"調整理由コメント"	,""		,"Adjustment Reason Comment"	,""		,"调整原因备注"	,""		,"Ghi chú lý do điều chỉnh"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

@@ -116,33 +116,33 @@ public class M100_DeliveryMstRt{
 	
 	public static Object[][] RtDeliveryMstRt(){
 		Object[][] RtSettingDeliveryMstRt = {
-				 {"DECD"			,ColDECD				,"String"	,"届先CD"					,"Key"	,"Destination Code"	,"收货地代码"	,"Mã điểm giao hàng"}
-				,{"DepartmentCd"	,ColDepartmentCd		,"String"	,"部署CD"					,"Key"	,"Destination Department Code"	,"收货地部门代码"	,"Mã bộ phận điểm giao"}
-				,{"DEName01"		,ColDEName01			,"String"	,"届先表記名"				,""	,"Destination Display Name"	,"收货地显示名称"	,"Tên hiển thị điểm giao"}
-				,{"DEName02"		,ColDEName02			,"String"	,"届先正式名"				,""	,"Destination Official Name"	,"收货地正式名称"	,"Tên chính thức điểm giao"}
-				,{"DEName03"		,ColDEName03			,"String"	,"届先略名"					,""	,"Destination Short Name"	,"收货地简称"	,"Tên viết tắt điểm giao"}
-				,{"Post"			,ColPost				,"String"	,"届先郵便"					,""	,"Destination Postal Code"	,"收货地邮政编码"	,"Mã bưu chính điểm giao"}
-				,{"Add01"			,ColAdd01				,"String"	,"届先住所1"				,""	,"Destination Address 1"	,"收货地地址1"	,"Địa chỉ điểm giao 1"}
-				,{"Add02"			,ColAdd02				,"String"	,"届先住所2"				,""	,"Destination Address 2"	,"收货地地址2"	,"Địa chỉ điểm giao 2"}
-				,{"Add03"			,ColAdd03				,"String"	,"届先住所3"				,""	,"Destination Address 3"	,"收货地地址3"	,"Địa chỉ điểm giao 3"}
-				,{"Tel"				,ColTel				,"String"	,"届先電話"					,""	,"Destination TEL"	,"收货地电话"	,"Điện thoại điểm giao"}
-				,{"Fax"				,ColFax				,"String"	,"届先FAX"					,""	,"Destination FAX"	,"收货地传真"	,"FAX điểm giao"}
-				,{"Mail"			,ColMail				,"String"	,"届先MAIL"					,""	,"Destination Email"	,"收货地邮箱"	,"Email điểm giao"}
-				,{"Com01"			,ColCom01				,"String"	,"コメント1"				,""	,"Comment 1"	,"备注1"	,"Ghi chú 1"}
-				,{"Com02"			,ColCom02				,"String"	,"コメント2"				,""	,"Comment 2"	,"备注2"	,"Ghi chú 2"}
-				,{"Com03"			,ColCom03				,"String"	,"コメント3"				,""	,"Comment 3"	,"备注3"	,"Ghi chú 3"}
-				,{"PrefecturesCd"	,ColPrefecturesCd		,"String"	,"JIS県CD2桁"				,""	,"JIS Prefecture Code (2 digits)"	,"JIS都道府县代码（2位）"	,"Mã tỉnh JIS (2 chữ số)"}
-				,{"MunicipalityCd"	,ColMunicipalityCd	,"String"	,"JIS市区町村CD5桁"			,""	,"JIS Municipality Code (5 digits)"	,"JIS市区町村代码（5位）"	,"Mã địa phương JIS (5 chữ số)"}
-				,{"PTMSCD"			,ColPTMSCD				,"String"	,"基幹SYSCD"				,""	,"Core System Code"	,"核心系统代码"	,"Mã hệ thống lõi"}
-				,{"EntryDate"		,ColEntryDate			,"DateTime"	,"データ登録日時"			,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-				,{"UpdateDate"		,ColUpdateDate		,"DateTime"	,"データ更新日時"			,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者コード"				,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
-				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者コード"				,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
-				,{"FirstClient"		,ColFirstClient		,"String"	,"登録荷主CD"				,""	,"Created Client Code"	,"登记货主代码"	,"Mã chủ hàng đăng ký"}
-				,{"LastClient"		,ColLastClient		,"String"	,"更新荷主CD"				,""	,"Updated Client Code"	,"更新货主代码"	,"Mã chủ hàng cập nhật"}
-				,{"DelFg"			,ColDelFg				,"int"		,"削除区分"					,""	,"Delete Type"	,"删除类型"	,"Loại xóa"}
-				,{"FirstClientName"	,ColFirstClientName	,"String"	,"登録荷主名"				,""	,"Created Client Name"	,"登记货主名称"	,"Tên chủ hàng đăng ký"}
-				,{"LastClientName"	,ColLastClientName	,"String"	,"登録荷主名"				,""	,"Created Client Name"	,"登记货主名称"	,"Tên chủ hàng đăng ký"}
+				 {"DECD"			,ColDECD				,"String"	,"届先CD"					,"Key"	,"Destination Code"					,"收货地代码"					,"Mã điểm giao hàng"}
+				,{"DepartmentCd"	,ColDepartmentCd		,"String"	,"部署CD"					,"Key"	,"Destination Department Code"		,"收货地部门代码"				,"Mã bộ phận điểm giao"}
+				,{"DEName01"		,ColDEName01			,"String"	,"届先表記名"				,""		,"Destination Display Name"			,"收货地显示名称"				,"Tên hiển thị điểm giao"}
+				,{"DEName02"		,ColDEName02			,"String"	,"届先正式名"				,""		,"Destination Official Name"		,"收货地正式名称"				,"Tên chính thức điểm giao"}
+				,{"DEName03"		,ColDEName03			,"String"	,"届先略名"					,""		,"Destination Short Name"			,"收货地简称"					,"Tên viết tắt điểm giao"}
+				,{"Post"			,ColPost				,"String"	,"届先郵便"					,""		,"Destination Postal Code"			,"收货地邮政编码"				,"Mã bưu chính điểm giao"}
+				,{"Add01"			,ColAdd01				,"String"	,"届先住所1"				,""		,"Destination Address 1"			,"收货地地址1"					,"Địa chỉ điểm giao 1"}
+				,{"Add02"			,ColAdd02				,"String"	,"届先住所2"				,""		,"Destination Address 2"			,"收货地地址2"					,"Địa chỉ điểm giao 2"}
+				,{"Add03"			,ColAdd03				,"String"	,"届先住所3"				,""		,"Destination Address 3"			,"收货地地址3"					,"Địa chỉ điểm giao 3"}
+				,{"Tel"				,ColTel				,"String"	,"届先電話"					,""		,"Destination TEL"					,"收货地电话"					,"Điện thoại điểm giao"}
+				,{"Fax"				,ColFax				,"String"	,"届先FAX"					,""		,"Destination FAX"					,"收货地传真"					,"FAX điểm giao"}
+				,{"Mail"			,ColMail				,"String"	,"届先MAIL"					,""		,"Destination Email"				,"收货地邮箱"					,"Email điểm giao"}
+				,{"Com01"			,ColCom01				,"String"	,"コメント1"				,""		,"Comment 1"						,"备注1"						,"Ghi chú 1"}
+				,{"Com02"			,ColCom02				,"String"	,"コメント2"				,""		,"Comment 2"						,"备注2"						,"Ghi chú 2"}
+				,{"Com03"			,ColCom03				,"String"	,"コメント3"				,""		,"Comment 3"						,"备注3"						,"Ghi chú 3"}
+				,{"PrefecturesCd"	,ColPrefecturesCd		,"String"	,"JIS県CD2桁"				,""		,"JIS Prefecture Code (2 digits)"	,"JIS都道府县代码（2位）"	,"Mã tỉnh JIS (2 chữ số)"}
+				,{"MunicipalityCd"	,ColMunicipalityCd	,"String"	,"JIS市区町村CD5桁"			,""		,"JIS Municipality Code (5 digits)"	,"JIS市区町村代码（5位）"	,"Mã địa phương JIS (5 chữ số)"}
+				,{"PTMSCD"			,ColPTMSCD				,"String"	,"基幹SYSCD"				,""		,"Core System Code"					,"核心系统代码"				,"Mã hệ thống lõi"}
+				,{"EntryDate"		,ColEntryDate			,"DateTime"	,"データ登録日時"			,""		,"Created At"						,"登记时间"					,"Ngày giờ tạo"}
+				,{"UpdateDate"		,ColUpdateDate		,"DateTime"	,"データ更新日時"			,""		,"Updated At"						,"更新时间"					,"Ngày giờ cập nhật"}
+				,{"EntryUser"		,ColEntryUser			,"String"	,"登録者コード"				,""		,"Created By Code"					,"登记人代码"					,"Mã người tạo"}
+				,{"UpdateUser"		,ColUpdateUser		,"String"	,"更新者コード"				,""		,"Updated By Code"					,"更新人代码"				,"Mã người cập nhật"}
+				,{"FirstClient"		,ColFirstClient		,"String"	,"登録荷主CD"				,""		,"Created Client Code"				,"登记货主代码"				,"Mã chủ hàng đăng ký"}
+				,{"LastClient"		,ColLastClient		,"String"	,"更新荷主CD"				,""		,"Updated Client Code"				,"更新货主代码"				,"Mã chủ hàng cập nhật"}
+				,{"DelFg"			,ColDelFg				,"int"		,"削除区分"					,""		,"Delete Type"						,"删除类型"					,"Loại xóa"}
+				,{"FirstClientName"	,ColFirstClientName	,"String"	,"登録荷主名"				,""		,"Created Client Name"				,"登记货主名称"				,"Tên chủ hàng đăng ký"}
+				,{"LastClientName"	,ColLastClientName	,"String"	,"登録荷主名"				,""		,"Created Client Name"				,"登记货主名称"				,"Tên chủ hàng đăng ký"}
 				};
 		
 		RtSettingDeliveryMstRt = B100_LanguageControl.RtControl(RtSettingDeliveryMstRt);
@@ -152,18 +152,18 @@ public class M100_DeliveryMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"		,ColSearchDECD				,""										,"届先CD"			,""	,"Destination Code"	,""	,"收货地代码"	,""	,"Mã điểm giao hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchDepartmentCd		,""										,"届先部署CD"		,""	,"Destination Department Code"	,""	,"收货地部门代码"	,""	,"Mã bộ phận điểm giao"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchDEName				,""										,"届先名"			,""	,"Destination Name"	,""	,"收货地名称"	,""	,"Tên điểm giao"	,""}
-					,{"String"		,null	,"Prefix"		,ColSearchPost				,""										,"届先郵便"			,""	,"Destination Postal Code"	,""	,"收货地邮政编码"	,""	,"Mã bưu chính điểm giao"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchAdd					,""										,"届先住所"			,""	,"Destination Address"	,""	,"收货地地址"	,""	,"Địa chỉ điểm giao"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchTel					,""										,"届先TEL"			,""	,"Destination TEL"	,""	,"收货地电话"	,""	,"Điện thoại điểm giao"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchFax					,""										,"届先FAX"			,""	,"Destination FAX"	,""	,"收货地传真"	,""	,"FAX điểm giao"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchMail				,""										,"届先MAIL"			,""	,"Destination Email"	,""	,"收货地邮箱"	,""	,"Email điểm giao"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchCom					,""										,"届先コメント"		,""	,"Destination Comment"	,""	,"收货地备注"	,""	,"Ghi chú điểm giao"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchPrefecturesCd		,""										,"届先県CD"			,""	,"Destination Prefecture Code"	,""	,"收货地都道府县代码"	,""	,"Mã tỉnh điểm giao"	,""}
+					 {"String"		,null	,"Exact"		,ColSearchDECD				,""										,"届先CD"			,""	,"Destination Code"					,""	,"收货地代码"			,""	,"Mã điểm giao hàng"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchDepartmentCd		,""										,"届先部署CD"		,""	,"Destination Department Code"		,""	,"收货地部门代码"		,""	,"Mã bộ phận điểm giao"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchDEName				,""										,"届先名"			,""	,"Destination Name"					,""	,"收货地名称"			,""	,"Tên điểm giao"			,""}
+					,{"String"		,null	,"Prefix"		,ColSearchPost				,""										,"届先郵便"			,""	,"Destination Postal Code"			,""	,"收货地邮政编码"		,""	,"Mã bưu chính điểm giao"	,""}
+					,{"String"		,null	,"Partial"		,ColSearchAdd					,""										,"届先住所"			,""	,"Destination Address"				,""	,"收货地地址"			,""	,"Địa chỉ điểm giao"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchTel					,""										,"届先TEL"			,""	,"Destination TEL"					,""	,"收货地电话"			,""	,"Điện thoại điểm giao"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchFax					,""										,"届先FAX"			,""	,"Destination FAX"					,""	,"收货地传真"			,""	,"FAX điểm giao"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchMail				,""										,"届先MAIL"			,""	,"Destination Email"				,""	,"收货地邮箱"			,""	,"Email điểm giao"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchCom					,""										,"届先コメント"		,""	,"Destination Comment"				,""	,"收货地备注"			,""	,"Ghi chú điểm giao"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchPrefecturesCd		,""										,"届先県CD"			,""	,"Destination Prefecture Code"		,""	,"收货地都道府县代码"	,""	,"Mã tỉnh điểm giao"		,""}
 					,{"String"		,null	,"Exact"		,ColSearchMunicipalityCd		,""										,"届先市区町村CD"	,""	,"Destination Municipality Code"	,""	,"收货地市区町村代码"	,""	,"Mã địa phương điểm giao"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchDelFg				,B100_DefaultVariable.SearchDelList	,"削除区分"			,""	,"Delete Type"	,""	,"删除类型"	,""	,"Loại xóa"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchDelFg				,B100_DefaultVariable.SearchDelList	,"削除区分"			,""	,"Delete Type"						,""	,"删除类型"			,""	,"Loại xóa"					,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

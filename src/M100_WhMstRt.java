@@ -79,22 +79,22 @@ public class M100_WhMstRt{
 	
 	public static Object[][] RtWhMstRt(){
 		Object[][] RtSettingWhMstRt = {
-				 {"WHCD"		,ColNoWHCD			,"String"	,"倉庫コード"					,"Key"	,"Warehouse Code"	,"仓库代码"	,"Mã kho"}
-				,{"WHName"		,ColNoWHName		,"String"	,"拠点倉庫名"					,""	,"Base Warehouse Name"	,"基地仓库名称"	,"Tên kho cơ sở"}
-				,{"Post"		,ColNoPost			,"String"	,"拠点倉庫郵便番号"				,""	,"Base Warehouse Postal Code"	,"基地仓库邮政编码"	,"Mã bưu chính kho cơ sở"}
-				,{"Add01"		,ColNoAdd01		,"String"	,"拠点倉庫住所1"				,""	,"Base Warehouse Address 1"	,"基地仓库地址1"	,"Địa chỉ kho cơ sở 1"}
-				,{"Add02"		,ColNoAdd02		,"String"	,"拠点倉庫住所2"				,""	,"Base Warehouse Address 2"	,"基地仓库地址2"	,"Địa chỉ kho cơ sở 2"}
-				,{"Tel"			,ColNoTel			,"String"	,"拠点倉庫電話"					,""	,"Base Warehouse TEL"	,"基地仓库电话"	,"Điện thoại kho cơ sở"}
-				,{"Fax"			,ColNoFax			,"String"	,"拠点倉庫FAX"					,""	,"Base Warehouse FAX"	,"基地仓库传真"	,"FAX kho cơ sở"}
-				,{"Mail"		,ColNoMail			,"String"	,"拠点倉庫MAIL"					,""	,"Base Warehouse Email"	,"基地仓库邮箱"	,"Email kho cơ sở"}
-				,{"Com01"		,ColNoCom01		,"String"	,"コメント１"					,""	,"Comment 1"	,"备注1"	,"Ghi chú 1"}
-				,{"Com02"		,ColNoCom02		,"String"	,"コメント２"					,""	,"Comment 2"	,"备注2"	,"Ghi chú 2"}
-				,{"Com03"		,ColNoCom03		,"String"	,"コメント３"					,""	,"Comment 3"	,"备注3"	,"Ghi chú 3"}
-				,{"PTMSCD"		,ColNoPTMSCD		,"String"	,"基幹システム連携用事業所CD"	,""	,"Core System Office Code"	,"核心系统营业所代码"	,"Mã văn phòng hệ thống lõi"}
-				,{"EntryDate"	,ColNoEntryDate	,"DateTime"	,"データ登録日時"				,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-				,{"UpdateDate"	,ColNoUpdateDate	,"DateTime"	,"データ更新日時"				,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-				,{"EntryUser"	,ColNoEntryUser	,"String"	,"登録者"						,""	,"Created By"	,"登记人"	,"Người tạo"}
-				,{"UpdateUser"	,ColNoUpdateUser	,"String"	,"更新者"						,""	,"Updated By"	,"更新人"	,"Người cập nhật"}
+				 {"WHCD"		,ColNoWHCD			,"String"	,"倉庫コード"					,"Key"	,"Warehouse Code"				,"仓库代码"				,"Mã kho"}
+				,{"WHName"		,ColNoWHName		,"String"	,"拠点倉庫名"					,""		,"Base Warehouse Name"			,"基地仓库名称"			,"Tên kho cơ sở"}
+				,{"Post"		,ColNoPost			,"String"	,"拠点倉庫郵便番号"				,""		,"Base Warehouse Postal Code"	,"基地仓库邮政编码"		,"Mã bưu chính kho cơ sở"}
+				,{"Add01"		,ColNoAdd01		,"String"	,"拠点倉庫住所1"				,""		,"Base Warehouse Address 1"		,"基地仓库地址1"		,"Địa chỉ kho cơ sở 1"}
+				,{"Add02"		,ColNoAdd02		,"String"	,"拠点倉庫住所2"				,""		,"Base Warehouse Address 2"		,"基地仓库地址2"		,"Địa chỉ kho cơ sở 2"}
+				,{"Tel"			,ColNoTel			,"String"	,"拠点倉庫電話"					,""		,"Base Warehouse TEL"			,"基地仓库电话"			,"Điện thoại kho cơ sở"}
+				,{"Fax"			,ColNoFax			,"String"	,"拠点倉庫FAX"					,""		,"Base Warehouse FAX"			,"基地仓库传真"			,"FAX kho cơ sở"}
+				,{"Mail"		,ColNoMail			,"String"	,"拠点倉庫MAIL"					,""		,"Base Warehouse Email"			,"基地仓库邮箱"			,"Email kho cơ sở"}
+				,{"Com01"		,ColNoCom01		,"String"	,"コメント１"					,""		,"Comment 1"					,"备注1"					,"Ghi chú 1"}
+				,{"Com02"		,ColNoCom02		,"String"	,"コメント２"					,""		,"Comment 2"					,"备注2"					,"Ghi chú 2"}
+				,{"Com03"		,ColNoCom03		,"String"	,"コメント３"					,""		,"Comment 3"					,"备注3"					,"Ghi chú 3"}
+				,{"PTMSCD"		,ColNoPTMSCD		,"String"	,"基幹システム連携用事業所CD"	,""		,"Core System Office Code"		,"核心系统营业所代码"	,"Mã văn phòng hệ thống lõi"}
+				,{"EntryDate"	,ColNoEntryDate	,"DateTime"	,"データ登録日時"				,""		,"Created At"					,"登记时间"				,"Ngày giờ tạo"}
+				,{"UpdateDate"	,ColNoUpdateDate	,"DateTime"	,"データ更新日時"				,""		,"Updated At"					,"更新时间"				,"Ngày giờ cập nhật"}
+				,{"EntryUser"	,ColNoEntryUser	,"String"	,"登録者"						,""		,"Created By"					,"登记人"					,"Người tạo"}
+				,{"UpdateUser"	,ColNoUpdateUser	,"String"	,"更新者"						,""		,"Updated By"					,"更新人"				,"Người cập nhật"}
 				};
 		
 		RtSettingWhMstRt = B100_LanguageControl.RtControl(RtSettingWhMstRt);
@@ -103,14 +103,14 @@ public class M100_WhMstRt{
 	}
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"	,ColSearchWHCD		,B100_DefaultVariable.SearchWhList	,"倉庫コード"	,""	,"Warehouse Code"	,""	,"仓库代码"	,""	,"Mã kho"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchWHName		,""										,"倉庫名"		,""	,"Warehouse Name"	,""	,"仓库名称"	,""	,"Tên kho"	,""}
-					,{"String"		,null	,"Prefix"	,ColSearchPost		,""										,"郵便番号"		,""	,"Postal Code"	,""	,"邮政编码"	,""	,"Mã bưu chính"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchAdd			,""										,"住所"			,""	,"Address"	,""	,"地址"	,""	,"Địa chỉ"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchTel			,""										,"Tel"			,""	,"TEL"	,""	,"电话"	,""	,"Điện thoại"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchFax			,""										,"Fax"			,""	,"FAX"	,""	,"传真"	,""	,"FAX"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchMail		,""										,"Mail"			,""	,"Email"	,""	,"邮箱"	,""	,"Email"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchCom			,""										,"コメント"		,""	,"Comment"	,""	,"备注"	,""	,"Ghi chú"	,""}
+					 {"String"		,null	,"Exact"	,ColSearchWHCD		,B100_DefaultVariable.SearchWhList	,"倉庫コード"	,""	,"Warehouse Code"	,""	,"仓库代码"		,""	,"Mã kho"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchWHName		,""										,"倉庫名"		,""	,"Warehouse Name"	,""	,"仓库名称"		,""	,"Tên kho"			,""}
+					,{"String"		,null	,"Prefix"	,ColSearchPost		,""										,"郵便番号"		,""	,"Postal Code"		,""	,"邮政编码"		,""	,"Mã bưu chính"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchAdd			,""										,"住所"			,""	,"Address"			,""	,"地址"			,""	,"Địa chỉ"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchTel			,""										,"Tel"			,""	,"TEL"				,""	,"电话"			,""	,"Điện thoại"		,""}
+					,{"String"		,null	,"Exact"	,ColSearchFax			,""										,"Fax"			,""	,"FAX"				,""	,"传真"			,""	,"FAX"				,""}
+					,{"String"		,null	,"Exact"	,ColSearchMail		,""										,"Mail"			,""	,"Email"			,""	,"邮箱"			,""	,"Email"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchCom			,""										,"コメント"		,""	,"Comment"			,""	,"备注"			,""	,"Ghi chú"			,""}
 					,{"String"		,null	,"Exact"	,ColSearchPTMSCD		,""										,"基幹SysCd"	,""	,"Core System Code"	,""	,"核心系统代码"	,""	,"Mã hệ thống lõi"	,""}
 					};		
 		

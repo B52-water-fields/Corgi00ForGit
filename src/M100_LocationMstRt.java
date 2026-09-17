@@ -58,17 +58,17 @@ public class M100_LocationMstRt{
 	
 	public static Object[][] RtLocationMstRt(){
 		Object[][] RtSettingLocationMstRt = {
-				 {"ClCd"		,ColClCd			,"String"	,"荷主CD"			,"Key"	,"Client Code"	,"货主代码"	,"Mã chủ hàng"}
-				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"		,""	,"Client Name"	,"货主名称"	,"Tên chủ hàng"}
-				,{"WhCd"		,ColWhCd			,"String"	,"倉庫CD"			,"Key"	,"Warehouse Code"	,"仓库代码"	,"Mã kho"}
-				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名"		,""	,"Base Warehouse Name"	,"基地仓库名称"	,"Tên kho cơ sở"}
-				,{"Loc"			,ColLoc			,"String"	,"ロケーション"		,"Key"	,"Location"	,"库位"	,"Vị trí"}
-				,{"LocName"		,ColLocName		,"String"	,"ロケーション名"	,""	,"Location Name"	,"库位名称"	,"Tên vị trí"}
-				,{"LocType"		,ColType			,"int"		,"ロケタイプ"		,""	,"Location Type"	,"库位类型"	,"Loại vị trí"}
-				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"			,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"			,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"			,""	,"Created By"	,"登记人"	,"Người tạo"}
-				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"			,""	,"Updated By"	,"更新人"	,"Người cập nhật"}
+				 {"ClCd"		,ColClCd			,"String"	,"荷主CD"			,"Key"	,"Client Code"			,"货主代码"		,"Mã chủ hàng"}
+				,{"CLName01"	,ColCLName01		,"String"	,"荷主表記名"		,""		,"Client Name"			,"货主名称"		,"Tên chủ hàng"}
+				,{"WhCd"		,ColWhCd			,"String"	,"倉庫CD"			,"Key"	,"Warehouse Code"		,"仓库代码"		,"Mã kho"}
+				,{"WHName"		,ColWHName			,"String"	,"拠点倉庫名"		,""		,"Base Warehouse Name"	,"基地仓库名称"	,"Tên kho cơ sở"}
+				,{"Loc"			,ColLoc			,"String"	,"ロケーション"		,"Key"	,"Location"				,"库位"			,"Vị trí"}
+				,{"LocName"		,ColLocName		,"String"	,"ロケーション名"	,""		,"Location Name"		,"库位名称"		,"Tên vị trí"}
+				,{"LocType"		,ColType			,"int"		,"ロケタイプ"		,""		,"Location Type"		,"库位类型"		,"Loại vị trí"}
+				,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"			,""		,"Created At"			,"登记时间"		,"Ngày giờ tạo"}
+				,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"			,""		,"Updated At"			,"更新时间"		,"Ngày giờ cập nhật"}
+				,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"			,""		,"Created By"			,"登记人"			,"Người tạo"}
+				,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"			,""		,"Updated By"			,"更新人"		,"Người cập nhật"}
 				};
 		
 		RtSettingLocationMstRt = B100_LanguageControl.RtControl(RtSettingLocationMstRt);
@@ -78,9 +78,9 @@ public class M100_LocationMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"			,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"		,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
-					,{"String"		,null	,"Exact"			,ColSearchWhCd		,B100_DefaultVariable.SearchWhList		,"倉庫コード"		,""	,"Warehouse Code"	,""	,"仓库代码"	,""	,"Mã kho"	,""}
-					,{"String"		,null	,"ExactOrPrefix"	,ColSearchLoc			,""											,"ロケーション"		,""	,"Location"	,""	,"库位"	,""	,"Vị trí"	,""}
+					 {"String"		,null	,"Exact"			,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"		,""	,"Client Code"		,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
+					,{"String"		,null	,"Exact"			,ColSearchWhCd		,B100_DefaultVariable.SearchWhList		,"倉庫コード"		,""	,"Warehouse Code"	,""	,"仓库代码"	,""	,"Mã kho"		,""}
+					,{"String"		,null	,"ExactOrPrefix"	,ColSearchLoc			,""											,"ロケーション"		,""	,"Location"			,""	,"库位"		,""	,"Vị trí"		,""}
 					,{"String"		,null	,"Partial"			,ColSearchLocName		,""											,"ロケーション名"	,""	,"Location Name"	,""	,"库位名称"	,""	,"Tên vị trí"	,""}
 					,{"Integer"		,null	,"Exact"			,ColSearchType		,B100_DefaultVariable.SearchLocType		,"ロケタイプ"		,""	,"Location Type"	,""	,"库位类型"	,""	,"Loại vị trí"	,""}
 					};		

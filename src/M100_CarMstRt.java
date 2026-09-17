@@ -74,37 +74,37 @@ public class M100_CarMstRt{
 	
 	public static Object[][] RtCarMstRt(){
 		Object[][] RtSettingCarMstRt = {
-				 {"WHCD"					,ColWHCD						,"String"	,"担当倉庫"					,"Key"	,"Assigned Warehouse"	,"负责仓库"	,"Kho phụ trách"}
-				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"	,"Carrier Code"	,"运输公司代码"	,"Mã công ty vận chuyển"}
-				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"			,""	,"Carrier Display Name"	,"运输公司显示名称"	,"Tên hiển thị công ty vận chuyển"}
-				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"			,""	,"Carrier Official Name"	,"运输公司正式名称"	,"Tên chính thức công ty vận chuyển"}
-				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"				,""	,"Carrier Short Name"	,"运输公司简称"	,"Tên viết tắt công ty vận chuyển"}
-				,{"CarCd"					,ColCarCd						,"String"	,"車輛CD"					,"Key"	,"Vehicle Code"	,"车辆代码"	,"Mã xe"}
-				,{"CarName01"				,ColCarName01					,"String"	,"車輛表記名"				,""	,"Vehicle Display Name"	,"车辆显示名称"	,"Tên hiển thị xe"}
-				,{"CarName02"				,ColCarName02					,"String"	,"車輛正式名"				,""	,"Vehicle Official Name"	,"车辆正式名称"	,"Tên chính thức xe"}
-				,{"CarName03"				,ColCarName03					,"String"	,"車輛略名"					,""	,"Vehicle Short Name"	,"车辆简称"	,"Tên viết tắt xe"}
-				,{"DriverCd"				,ColDriverCd					,"String"	,"乗務員CD"					,""	,"Driver Code"	,"司机代码"	,"Mã tài xế"}
-				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"				,""	,"User Name 1"	,"用户名1"	,"Tên người dùng 1"}
-				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"				,""	,"User Name 2"	,"用户名2"	,"Tên người dùng 2"}
-				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"				,""	,"User Name 3"	,"用户名3"	,"Tên người dùng 3"}
-				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム車輛コード"	,""	,"Core System Vehicle Code"	,"核心系统车辆代码"	,"Mã xe hệ thống lõi"}
-				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"			,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"			,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"				,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
-				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"				,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
-				,{"DelFg"					,ColDelFg						,"int"		,"削除フラグ"				,""	,"Delete Flag"	,"删除标志"	,"Cờ xóa"}
-				,{"WHName"					,ColWHName						,"String"	,"倉庫名"					,""	,"Warehouse Name"	,"仓库名称"	,"Tên kho"}
+				 {"WHCD"					,ColWHCD						,"String"	,"担当倉庫"					,"Key"	,"Assigned Warehouse"		,"负责仓库"			,"Kho phụ trách"}
+				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"	,"Carrier Code"				,"运输公司代码"		,"Mã công ty vận chuyển"}
+				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"			,""		,"Carrier Display Name"		,"运输公司显示名称"		,"Tên hiển thị công ty vận chuyển"}
+				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"			,""		,"Carrier Official Name"	,"运输公司正式名称"		,"Tên chính thức công ty vận chuyển"}
+				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"				,""		,"Carrier Short Name"		,"运输公司简称"		,"Tên viết tắt công ty vận chuyển"}
+				,{"CarCd"					,ColCarCd						,"String"	,"車輛CD"					,"Key"	,"Vehicle Code"				,"车辆代码"			,"Mã xe"}
+				,{"CarName01"				,ColCarName01					,"String"	,"車輛表記名"				,""		,"Vehicle Display Name"		,"车辆显示名称"		,"Tên hiển thị xe"}
+				,{"CarName02"				,ColCarName02					,"String"	,"車輛正式名"				,""		,"Vehicle Official Name"	,"车辆正式名称"		,"Tên chính thức xe"}
+				,{"CarName03"				,ColCarName03					,"String"	,"車輛略名"					,""		,"Vehicle Short Name"		,"车辆简称"			,"Tên viết tắt xe"}
+				,{"DriverCd"				,ColDriverCd					,"String"	,"乗務員CD"					,""		,"Driver Code"				,"司机代码"			,"Mã tài xế"}
+				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"				,""		,"User Name 1"				,"用户名1"			,"Tên người dùng 1"}
+				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"				,""		,"User Name 2"				,"用户名2"			,"Tên người dùng 2"}
+				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"				,""		,"User Name 3"				,"用户名3"			,"Tên người dùng 3"}
+				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム車輛コード"	,""		,"Core System Vehicle Code"	,"核心系统车辆代码"	,"Mã xe hệ thống lõi"}
+				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"			,""		,"Created At"				,"登记时间"			,"Ngày giờ tạo"}
+				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"			,""		,"Updated At"				,"更新时间"			,"Ngày giờ cập nhật"}
+				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"				,""		,"Created By Code"			,"登记人代码"			,"Mã người tạo"}
+				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"				,""		,"Updated By Code"			,"更新人代码"		,"Mã người cập nhật"}
+				,{"DelFg"					,ColDelFg						,"int"		,"削除フラグ"				,""		,"Delete Flag"				,"删除标志"			,"Cờ xóa"}
+				,{"WHName"					,ColWHName						,"String"	,"倉庫名"					,""		,"Warehouse Name"			,"仓库名称"			,"Tên kho"}
 				};
 		RtSettingCarMstRt = B100_LanguageControl.RtControl(RtSettingCarMstRt);
 		return RtSettingCarMstRt;
 	}
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-				 	 {"String"		,null	,"Exact"		,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫コード"	,""	,"Warehouse Code"	,""	,"仓库代码"	,""	,"Mã kho"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""	,"Carrier Code"	,""	,"运输公司代码"	,""	,"Mã công ty vận chuyển"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchCarCd				,""														,"車輛CD"		,""	,"Vehicle Code"	,""	,"车辆代码"	,""	,"Mã xe"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchCarName				,""														,"車輛名"		,""	,"Vehicle Name"	,""	,"车辆名称"	,""	,"Tên xe"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除フラグ"	,""	,"Delete Flag"	,""	,"删除标志"	,""	,"Cờ xóa"	,""}
+				 	 {"String"		,null	,"Exact"		,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫コード"	,""	,"Warehouse Code"	,""	,"仓库代码"		,""	,"Mã kho"					,""}
+					,{"String"		,null	,"Exact"		,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""	,"Carrier Code"		,""	,"运输公司代码"	,""	,"Mã công ty vận chuyển"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchCarCd				,""														,"車輛CD"		,""	,"Vehicle Code"		,""	,"车辆代码"		,""	,"Mã xe"					,""}
+					,{"String"		,null	,"Partial"		,ColSearchCarName				,""														,"車輛名"		,""	,"Vehicle Name"		,""	,"车辆名称"		,""	,"Tên xe"					,""}
+					,{"String"		,null	,"Exact"		,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除フラグ"	,""	,"Delete Flag"		,""	,"删除标志"		,""	,"Cờ xóa"					,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

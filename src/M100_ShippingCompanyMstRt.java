@@ -86,28 +86,28 @@ public class M100_ShippingCompanyMstRt{
 	
 	public static Object[][] RtShippingCompanyMstRt(){
 		Object[][] RtSettingShippingCompanyMstRt = {
-				 {"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"	,"Carrier Code"	,"运输公司代码"	,"Mã công ty vận chuyển"}
-				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"			,""	,"Carrier Display Name"	,"运输公司显示名称"	,"Tên hiển thị công ty vận chuyển"}
-				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"			,""	,"Carrier Official Name"	,"运输公司正式名称"	,"Tên chính thức công ty vận chuyển"}
-				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"				,""	,"Carrier Short Name"	,"运输公司简称"	,"Tên viết tắt công ty vận chuyển"}
-				,{"Post"					,ColPost						,"String"	,"運送会社郵便"				,""	,"Carrier Postal Code"	,"运输公司邮政编码"	,"Mã bưu chính công ty vận chuyển"}
-				,{"Add01"					,ColAdd01						,"String"	,"運送会社住所1"			,""	,"Carrier Address 1"	,"运输公司地址1"	,"Địa chỉ công ty vận chuyển 1"}
-				,{"Add02"					,ColAdd02						,"String"	,"運送会社住所2"			,""	,"Carrier Address 2"	,"运输公司地址2"	,"Địa chỉ công ty vận chuyển 2"}
-				,{"Add03"					,ColAdd03						,"String"	,"運送会社住所3"			,""	,"Carrier Address 3"	,"运输公司地址3"	,"Địa chỉ công ty vận chuyển 3"}
-				,{"Tel"						,ColTel						,"String"	,"運送会社電話"				,""	,"Carrier TEL"	,"运输公司电话"	,"Điện thoại công ty vận chuyển"}
-				,{"Fax"						,ColFax						,"String"	,"運送会社FAX"				,""	,"Carrier FAX"	,"运输公司传真"	,"FAX công ty vận chuyển"}
-				,{"Mail"					,ColMail						,"String"	,"運送会社MAIL"				,""	,"Carrier Email"	,"运输公司邮箱"	,"Email công ty vận chuyển"}
-				,{"Com01"					,ColCom01						,"String"	,"コメント1"				,""	,"Comment 1"	,"备注1"	,"Ghi chú 1"}
-				,{"Com02"					,ColCom02						,"String"	,"コメント2"				,""	,"Comment 2"	,"备注2"	,"Ghi chú 2"}
-				,{"Com03"					,ColCom03						,"String"	,"コメント3"				,""	,"Comment 3"	,"备注3"	,"Ghi chú 3"}
-				,{"ShimeDate"				,ColShimeDate					,"int"		,"締日"						,""	,"Closing Day"	,"结算日"	,"Ngày chốt"}
-				,{"ShimeBasis"				,ColShimeBasis				,"int"		,"請求基準"					,""	,"Billing Basis"	,"计费基准"	,"Cơ sở tính phí"}
-				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"			,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"			,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"				,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
-				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"				,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
-				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム傭車コード"	,""	,"Core System Chartered Vehicle Code"	,"核心系统外雇车辆代码"	,"Mã xe thuê hệ thống lõi"}
-				,{"ExportDataType"			,ColExportDataType			,"String"	,"データ抽出タイプ"			,""	,"Data Extraction Type"	,"数据提取类型"	,"Loại trích xuất dữ liệu"}
+				 {"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"				,"Key"	,"Carrier Code"							,"运输公司代码"			,"Mã công ty vận chuyển"}
+				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社表記名"			,""		,"Carrier Display Name"					,"运输公司显示名称"			,"Tên hiển thị công ty vận chuyển"}
+				,{"ShippingCompanyName02"	,ColShippingCompanyName02	,"String"	,"運送会社正式名"			,""		,"Carrier Official Name"				,"运输公司正式名称"			,"Tên chính thức công ty vận chuyển"}
+				,{"ShippingCompanyName03"	,ColShippingCompanyName03	,"String"	,"運送会社略名"				,""		,"Carrier Short Name"					,"运输公司简称"			,"Tên viết tắt công ty vận chuyển"}
+				,{"Post"					,ColPost						,"String"	,"運送会社郵便"				,""		,"Carrier Postal Code"					,"运输公司邮政编码"			,"Mã bưu chính công ty vận chuyển"}
+				,{"Add01"					,ColAdd01						,"String"	,"運送会社住所1"			,""		,"Carrier Address 1"					,"运输公司地址1"			,"Địa chỉ công ty vận chuyển 1"}
+				,{"Add02"					,ColAdd02						,"String"	,"運送会社住所2"			,""		,"Carrier Address 2"					,"运输公司地址2"			,"Địa chỉ công ty vận chuyển 2"}
+				,{"Add03"					,ColAdd03						,"String"	,"運送会社住所3"			,""		,"Carrier Address 3"					,"运输公司地址3"			,"Địa chỉ công ty vận chuyển 3"}
+				,{"Tel"						,ColTel						,"String"	,"運送会社電話"				,""		,"Carrier TEL"							,"运输公司电话"			,"Điện thoại công ty vận chuyển"}
+				,{"Fax"						,ColFax						,"String"	,"運送会社FAX"				,""		,"Carrier FAX"							,"运输公司传真"			,"FAX công ty vận chuyển"}
+				,{"Mail"					,ColMail						,"String"	,"運送会社MAIL"				,""		,"Carrier Email"						,"运输公司邮箱"			,"Email công ty vận chuyển"}
+				,{"Com01"					,ColCom01						,"String"	,"コメント1"				,""		,"Comment 1"							,"备注1"					,"Ghi chú 1"}
+				,{"Com02"					,ColCom02						,"String"	,"コメント2"				,""		,"Comment 2"							,"备注2"					,"Ghi chú 2"}
+				,{"Com03"					,ColCom03						,"String"	,"コメント3"				,""		,"Comment 3"							,"备注3"					,"Ghi chú 3"}
+				,{"ShimeDate"				,ColShimeDate					,"int"		,"締日"						,""		,"Closing Day"							,"结算日"					,"Ngày chốt"}
+				,{"ShimeBasis"				,ColShimeBasis				,"int"		,"請求基準"					,""		,"Billing Basis"						,"计费基准"				,"Cơ sở tính phí"}
+				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"			,""		,"Created At"							,"登记时间"				,"Ngày giờ tạo"}
+				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"			,""		,"Updated At"							,"更新时间"				,"Ngày giờ cập nhật"}
+				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者コード"				,""		,"Created By Code"						,"登记人代码"				,"Mã người tạo"}
+				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者コード"				,""		,"Updated By Code"						,"更新人代码"			,"Mã người cập nhật"}
+				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹システム傭車コード"	,""		,"Core System Chartered Vehicle Code"	,"核心系统外雇车辆代码"	,"Mã xe thuê hệ thống lõi"}
+				,{"ExportDataType"			,ColExportDataType			,"String"	,"データ抽出タイプ"			,""		,"Data Extraction Type"					,"数据提取类型"			,"Loại trích xuất dữ liệu"}
 				};
 		
 		RtSettingShippingCompanyMstRt = B100_LanguageControl.RtControl(RtSettingShippingCompanyMstRt);
@@ -117,14 +117,14 @@ public class M100_ShippingCompanyMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"	,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""	,"Carrier Code"	,""	,"运输公司代码"	,""	,"Mã công ty vận chuyển"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchCompanyName		,""														,"運送会社名"	,""	,"Carrier Name"	,""	,"运输公司名称"	,""	,"Tên công ty vận chuyển"	,""}
+					 {"String"		,null	,"Exact"	,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""	,"Carrier Code"			,""	,"运输公司代码"	,""	,"Mã công ty vận chuyển"			,""}
+					,{"String"		,null	,"Exact"	,ColSearchCompanyName		,""														,"運送会社名"	,""	,"Carrier Name"			,""	,"运输公司名称"	,""	,"Tên công ty vận chuyển"			,""}
 					,{"String"		,null	,"Prefix"	,ColSearchPost				,""														,"運送会社郵便"	,""	,"Carrier Postal Code"	,""	,"运输公司邮政编码"	,""	,"Mã bưu chính công ty vận chuyển"	,""}
-					,{"String"		,null	,"Partial"	,ColSearchAdd					,""														,"運送会社住所"	,""	,"Carrier Address"	,""	,"运输公司地址"	,""	,"Địa chỉ công ty vận chuyển"	,""}
-					,{"String"		,null	,"Partial"	,ColSearchTel					,""														,"運送会社Tel"	,""	,"Carrier TEL"	,""	,"运输公司电话"	,""	,"Điện thoại công ty vận chuyển"	,""}
-					,{"String"		,null	,"Partial"	,ColSearchFax					,""														,"運送会社Fax"	,""	,"Carrier FAX"	,""	,"运输公司传真"	,""	,"FAX công ty vận chuyển"	,""}
-					,{"String"		,null	,"Partial"	,ColSearchMail				,""														,"運送会社Mail"	,""	,"Carrier Email"	,""	,"运输公司邮箱"	,""	,"Email công ty vận chuyển"	,""}
-					,{"String"		,null	,"Partial"	,ColSearchCom					,""														,"コメント"		,""	,"Comment"	,""	,"备注"	,""	,"Ghi chú"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchAdd					,""														,"運送会社住所"	,""	,"Carrier Address"		,""	,"运输公司地址"	,""	,"Địa chỉ công ty vận chuyển"		,""}
+					,{"String"		,null	,"Partial"	,ColSearchTel					,""														,"運送会社Tel"	,""	,"Carrier TEL"			,""	,"运输公司电话"	,""	,"Điện thoại công ty vận chuyển"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchFax					,""														,"運送会社Fax"	,""	,"Carrier FAX"			,""	,"运输公司传真"	,""	,"FAX công ty vận chuyển"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchMail				,""														,"運送会社Mail"	,""	,"Carrier Email"		,""	,"运输公司邮箱"	,""	,"Email công ty vận chuyển"			,""}
+					,{"String"		,null	,"Partial"	,ColSearchCom					,""														,"コメント"		,""	,"Comment"				,""	,"备注"			,""	,"Ghi chú"							,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

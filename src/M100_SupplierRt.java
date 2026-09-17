@@ -139,36 +139,36 @@ public class M100_SupplierRt{
 	
 	public static Object[][] RtSupplierRt(){
 		Object[][] RtSupplierRt = {
-				 {"ClWh"			,ColClWh			,"String"	,"担当倉庫"					,"Key"	,"Assigned Warehouse"	,"负责仓库"	,"Kho phụ trách"}
-				,{"WHName"			,ColWHName			,"String"	,"担当倉庫名"				,""	,"Warehouse Name"	,"仓库名称"	,"Tên kho"}
-				,{"ClCd"			,ColClCd			,"String"	,"荷主CD"					,"Key"	,"Client Code"	,"货主代码"	,"Mã chủ hàng"}
-				,{"CLName01"		,ColCLName01		,"String"	,"荷主表記名"				,""	,"Client Name"	,"货主名称"	,"Tên chủ hàng"}
-				,{"SPCd"			,ColSPCd			,"String"	,"仕入先コード"				,"Key"	,"Supplier Code"	,"供应商代码"	,"Mã nhà cung cấp"}
-				,{"SPName01"		,ColSPName01		,"String"	,"仕入先表記名"				,""	,"Supplier Display Name"	,"供应商显示名称"	,"Tên hiển thị nhà cung cấp"}
-				,{"SPName02"		,ColSPName02		,"String"	,"仕入先正式名"				,""	,"Supplier Official Name"	,"供应商正式名称"	,"Tên chính thức nhà cung cấp"}
-				,{"SPName03"		,ColSPName03		,"String"	,"仕入先略名"				,""	,"Supplier Short Name"	,"供应商简称"	,"Tên viết tắt nhà cung cấp"}
-				,{"SPPost"			,ColSPPost			,"String"	,"仕入先郵便"				,""	,"Supplier Postal Code"	,"供应商邮政编码"	,"Mã bưu chính nhà cung cấp"}
-				,{"SPAdd01"			,ColSPAdd01		,"String"	,"仕入先住所1"				,""	,"Supplier Address 1"	,"供应商地址1"	,"Địa chỉ nhà cung cấp 1"}
-				,{"SPAdd02"			,ColSPAdd02		,"String"	,"仕入先住所2"				,""	,"Supplier Address 2"	,"供应商地址2"	,"Địa chỉ nhà cung cấp 2"}
-				,{"SPAdd03"			,ColSPAdd03		,"String"	,"仕入先住所3"				,""	,"Supplier Address 3"	,"供应商地址3"	,"Địa chỉ nhà cung cấp 3"}
-				,{"SPTel"			,ColSPTel			,"String"	,"仕入先電話"				,""	,"Supplier TEL"	,"供应商电话"	,"Điện thoại nhà cung cấp"}
-				,{"SPFax"			,ColSPFax			,"String"	,"仕入先FAX"				,""	,"Supplier FAX"	,"供应商传真"	,"FAX nhà cung cấp"}
-				,{"SPMail"			,ColSPMail			,"String"	,"仕入先MAIL"				,""	,"Supplier Email"	,"供应商邮箱"	,"Email nhà cung cấp"}
-				,{"Com01"			,ColCom01			,"String"	,"コメント1"				,""	,"Comment 1"	,"备注1"	,"Ghi chú 1"}
-				,{"Com02"			,ColCom02			,"String"	,"コメント2"				,""	,"Comment 2"	,"备注2"	,"Ghi chú 2"}
-				,{"Com03"			,ColCom03			,"String"	,"コメント3"				,""	,"Comment 3"	,"备注3"	,"Ghi chú 3"}
-				,{"PTMSCDBMN"		,ColPTMSCDBMN		,"String"	,"基幹SysCD（部門）"		,""	,"Core System Department Code"	,"核心系统部门代码"	,"Mã bộ phận hệ thống lõi"}
-				,{"PTMSCDNINUSHI"	,ColPTMSCDNINUSHI	,"String"	,"基幹SysCD（荷主）"		,""	,"Core System Client Code"	,"核心系统货主代码"	,"Mã chủ hàng hệ thống lõi"}
-				,{"PaySite"			,ColPaySite		,"int"		,"支払いサイト（月数）"		,""	,"Payment Term (Months)"	,"付款周期（月数）"	,"Kỳ hạn thanh toán (tháng)"}
-				,{"PayDate"			,ColPayDate		,"int"		,"支払日（末日＝99）"		,""	,"Payment Day (Month End = 99)"	,"付款日（月末=99）"	,"Ngày thanh toán (cuối tháng = 99)"}
-				,{"ShimeDate"		,ColShimeDate		,"int"		,"締め日（末日＝99）"		,""	,"Closing Day (Month End = 99)"	,"结算日（月末=99）"	,"Ngày chốt (cuối tháng = 99)"}
-				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日"					,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
-				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日"					,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
-				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"					,""	,"Created By"	,"登记人"	,"Người tạo"}
-				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"					,""	,"Updated By"	,"更新人"	,"Người cập nhật"}
-				,{"DECD"			,ColDECD			,"String"	,"納品先コード"				,""	,"Delivery Location Code"	,"交货地点代码"	,"Mã nơi giao hàng"}
-				,{"DepartmentCd"	,ColDepartmentCd	,"String"	,"部署CD"					,""	,"Destination Department Code"	,"收货地部门代码"	,"Mã bộ phận điểm giao"}
-				,{"DEName01"		,ColDEName01		,"String"	,"納品先名1"				,""	,"Delivery Location Name 1"	,"交货地点名称1"	,"Tên nơi giao hàng 1"}
+				 {"ClWh"			,ColClWh			,"String"	,"担当倉庫"					,"Key"	,"Assigned Warehouse"			,"负责仓库"				,"Kho phụ trách"}
+				,{"WHName"			,ColWHName			,"String"	,"担当倉庫名"				,""		,"Warehouse Name"				,"仓库名称"				,"Tên kho"}
+				,{"ClCd"			,ColClCd			,"String"	,"荷主CD"					,"Key"	,"Client Code"					,"货主代码"				,"Mã chủ hàng"}
+				,{"CLName01"		,ColCLName01		,"String"	,"荷主表記名"				,""		,"Client Name"					,"货主名称"				,"Tên chủ hàng"}
+				,{"SPCd"			,ColSPCd			,"String"	,"仕入先コード"				,"Key"	,"Supplier Code"				,"供应商代码"				,"Mã nhà cung cấp"}
+				,{"SPName01"		,ColSPName01		,"String"	,"仕入先表記名"				,""		,"Supplier Display Name"		,"供应商显示名称"			,"Tên hiển thị nhà cung cấp"}
+				,{"SPName02"		,ColSPName02		,"String"	,"仕入先正式名"				,""		,"Supplier Official Name"		,"供应商正式名称"			,"Tên chính thức nhà cung cấp"}
+				,{"SPName03"		,ColSPName03		,"String"	,"仕入先略名"				,""		,"Supplier Short Name"			,"供应商简称"				,"Tên viết tắt nhà cung cấp"}
+				,{"SPPost"			,ColSPPost			,"String"	,"仕入先郵便"				,""		,"Supplier Postal Code"			,"供应商邮政编码"			,"Mã bưu chính nhà cung cấp"}
+				,{"SPAdd01"			,ColSPAdd01		,"String"	,"仕入先住所1"				,""		,"Supplier Address 1"			,"供应商地址1"				,"Địa chỉ nhà cung cấp 1"}
+				,{"SPAdd02"			,ColSPAdd02		,"String"	,"仕入先住所2"				,""		,"Supplier Address 2"			,"供应商地址2"				,"Địa chỉ nhà cung cấp 2"}
+				,{"SPAdd03"			,ColSPAdd03		,"String"	,"仕入先住所3"				,""		,"Supplier Address 3"			,"供应商地址3"				,"Địa chỉ nhà cung cấp 3"}
+				,{"SPTel"			,ColSPTel			,"String"	,"仕入先電話"				,""		,"Supplier TEL"					,"供应商电话"				,"Điện thoại nhà cung cấp"}
+				,{"SPFax"			,ColSPFax			,"String"	,"仕入先FAX"				,""		,"Supplier FAX"					,"供应商传真"				,"FAX nhà cung cấp"}
+				,{"SPMail"			,ColSPMail			,"String"	,"仕入先MAIL"				,""		,"Supplier Email"				,"供应商邮箱"				,"Email nhà cung cấp"}
+				,{"Com01"			,ColCom01			,"String"	,"コメント1"				,""		,"Comment 1"					,"备注1"					,"Ghi chú 1"}
+				,{"Com02"			,ColCom02			,"String"	,"コメント2"				,""		,"Comment 2"					,"备注2"					,"Ghi chú 2"}
+				,{"Com03"			,ColCom03			,"String"	,"コメント3"				,""		,"Comment 3"					,"备注3"					,"Ghi chú 3"}
+				,{"PTMSCDBMN"		,ColPTMSCDBMN		,"String"	,"基幹SysCD（部門）"		,""		,"Core System Department Code"	,"核心系统部门代码"		,"Mã bộ phận hệ thống lõi"}
+				,{"PTMSCDNINUSHI"	,ColPTMSCDNINUSHI	,"String"	,"基幹SysCD（荷主）"		,""		,"Core System Client Code"		,"核心系统货主代码"		,"Mã chủ hàng hệ thống lõi"}
+				,{"PaySite"			,ColPaySite		,"int"		,"支払いサイト（月数）"		,""		,"Payment Term (Months)"		,"付款周期（月数）"		,"Kỳ hạn thanh toán (tháng)"}
+				,{"PayDate"			,ColPayDate		,"int"		,"支払日（末日＝99）"		,""		,"Payment Day (Month End = 99)"	,"付款日（月末=99）"	,"Ngày thanh toán (cuối tháng = 99)"}
+				,{"ShimeDate"		,ColShimeDate		,"int"		,"締め日（末日＝99）"		,""		,"Closing Day (Month End = 99)"	,"结算日（月末=99）"		,"Ngày chốt (cuối tháng = 99)"}
+				,{"EntryDate"		,ColEntryDate		,"DateTime"	,"登録日"					,""		,"Created At"					,"登记时间"				,"Ngày giờ tạo"}
+				,{"UpdateDate"		,ColUpdateDate	,"DateTime"	,"更新日"					,""		,"Updated At"					,"更新时间"				,"Ngày giờ cập nhật"}
+				,{"EntryUser"		,ColEntryUser		,"String"	,"登録者"					,""		,"Created By"					,"登记人"					,"Người tạo"}
+				,{"UpdateUser"		,ColUpdateUser	,"String"	,"更新者"					,""		,"Updated By"					,"更新人"				,"Người cập nhật"}
+				,{"DECD"			,ColDECD			,"String"	,"納品先コード"				,""		,"Delivery Location Code"		,"交货地点代码"			,"Mã nơi giao hàng"}
+				,{"DepartmentCd"	,ColDepartmentCd	,"String"	,"部署CD"					,""		,"Destination Department Code"	,"收货地部门代码"			,"Mã bộ phận điểm giao"}
+				,{"DEName01"		,ColDEName01		,"String"	,"納品先名1"				,""		,"Delivery Location Name 1"		,"交货地点名称1"			,"Tên nơi giao hàng 1"}
 				};
 		
 		RtSupplierRt = B100_LanguageControl.RtControl(RtSupplierRt);
@@ -178,26 +178,26 @@ public class M100_SupplierRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"		,ColSearchClWh			,B100_DefaultVariable.SearchWhList			,"担当倉庫"					,""	,"Assigned Warehouse"	,""	,"负责仓库"	,""	,"Kho phụ trách"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchClCd			,B100_DefaultVariable.SearchClList			,"荷主CD"					,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchSPCd			,B100_DefaultVariable.SearchSupplierList		,"仕入先コード"				,""	,"Supplier Code"	,""	,"供应商代码"	,""	,"Mã nhà cung cấp"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchSPName			,""												,"仕入先名"					,""	,"Supplier Name"	,""	,"供应商名称"	,""	,"Tên nhà cung cấp"	,""}
-					,{"String"		,null	,"Prefix"		,ColSearchSPPost			,""												,"仕入先郵便"				,""	,"Supplier Postal Code"	,""	,"供应商邮政编码"	,""	,"Mã bưu chính nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchSPAdd			,""												,"仕入先住所"				,""	,"Supplier Address"	,""	,"供应商地址"	,""	,"Địa chỉ nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchSPTel			,""												,"仕入先電話"				,""	,"Supplier TEL"	,""	,"供应商电话"	,""	,"Điện thoại nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchSPFax			,""												,"仕入先FAX"				,""	,"Supplier FAX"	,""	,"供应商传真"	,""	,"FAX nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchSPMail			,""												,"仕入先MAIL"				,""	,"Supplier Email"	,""	,"供应商邮箱"	,""	,"Email nhà cung cấp"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchCom				,""												,"コメント"					,""	,"Comment"	,""	,"备注"	,""	,"Ghi chú"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchPTMSCDBMN		,""												,"基幹Sysコード（部門）"	,""	,"Core System Department Code"	,""	,"核心系统部门代码"	,""	,"Mã bộ phận hệ thống lõi"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchPTMSCDNINUSHI	,""												,"基幹Sysコード（荷主）"	,""	,"Core System Client Code"	,""	,"核心系统货主代码"	,""	,"Mã chủ hàng hệ thống lõi"	,""}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchPaySiteStr		,""												,"支払いサイト（月数）"		,"開始"	,"Payment Term (Months)"	,"From"	,"付款周期（月数）"	,"开始"	,"Kỳ hạn thanh toán (tháng)"	,"Từ"}
-					,{"Integer"		,null	,"RangeMin"		,ColSearchPayDateStr		,""												,"支払日（日＝99）"			,"開始"	,"Payment Day (Day = 99)"	,"From"	,"付款日（日=99）"	,"开始"	,"Ngày thanh toán (ngày = 99)"	,"Từ"}
+					 {"String"		,null	,"Exact"		,ColSearchClWh			,B100_DefaultVariable.SearchWhList			,"担当倉庫"					,""		,"Assigned Warehouse"			,""		,"负责仓库"			,""		,"Kho phụ trách"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchClCd			,B100_DefaultVariable.SearchClList			,"荷主CD"					,""		,"Client Code"					,""		,"货主代码"			,""		,"Mã chủ hàng"					,""}
+					,{"String"		,null	,"Exact"		,ColSearchSPCd			,B100_DefaultVariable.SearchSupplierList		,"仕入先コード"				,""		,"Supplier Code"				,""		,"供应商代码"			,""		,"Mã nhà cung cấp"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchSPName			,""												,"仕入先名"					,""		,"Supplier Name"				,""		,"供应商名称"			,""		,"Tên nhà cung cấp"				,""}
+					,{"String"		,null	,"Prefix"		,ColSearchSPPost			,""												,"仕入先郵便"				,""		,"Supplier Postal Code"			,""		,"供应商邮政编码"		,""		,"Mã bưu chính nhà cung cấp"	,""}
+					,{"String"		,null	,"Partial"		,ColSearchSPAdd			,""												,"仕入先住所"				,""		,"Supplier Address"				,""		,"供应商地址"			,""		,"Địa chỉ nhà cung cấp"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchSPTel			,""												,"仕入先電話"				,""		,"Supplier TEL"					,""		,"供应商电话"			,""		,"Điện thoại nhà cung cấp"		,""}
+					,{"String"		,null	,"Partial"		,ColSearchSPFax			,""												,"仕入先FAX"				,""		,"Supplier FAX"					,""		,"供应商传真"			,""		,"FAX nhà cung cấp"				,""}
+					,{"String"		,null	,"Partial"		,ColSearchSPMail			,""												,"仕入先MAIL"				,""		,"Supplier Email"				,""		,"供应商邮箱"			,""		,"Email nhà cung cấp"			,""}
+					,{"String"		,null	,"Partial"		,ColSearchCom				,""												,"コメント"					,""		,"Comment"						,""		,"备注"				,""		,"Ghi chú"						,""}
+					,{"String"		,null	,"Exact"		,ColSearchPTMSCDBMN		,""												,"基幹Sysコード（部門）"	,""		,"Core System Department Code"	,""		,"核心系统部门代码"	,""		,"Mã bộ phận hệ thống lõi"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchPTMSCDNINUSHI	,""												,"基幹Sysコード（荷主）"	,""		,"Core System Client Code"		,""		,"核心系统货主代码"	,""		,"Mã chủ hàng hệ thống lõi"		,""}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchPaySiteStr		,""												,"支払いサイト（月数）"		,"開始"	,"Payment Term (Months)"		,"From"	,"付款周期（月数）"	,"开始"	,"Kỳ hạn thanh toán (tháng)"	,"Từ"}
+					,{"Integer"		,null	,"RangeMin"		,ColSearchPayDateStr		,""												,"支払日（日＝99）"			,"開始"	,"Payment Day (Day = 99)"		,"From"	,"付款日（日=99）"	,"开始"	,"Ngày thanh toán (ngày = 99)"	,"Từ"}
 					,{"Integer"		,null	,"RangeMin"		,ColSearchShimeDateStr	,""												,"締め日（末日＝99）"		,"開始"	,"Closing Day (Month End = 99)"	,"From"	,"结算日（月末=99）"	,"开始"	,"Ngày chốt (cuối tháng = 99)"	,"Từ"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchPaySiteEnd		,""												,"支払いサイト（月数）"		,"終了"	,"Payment Term (Months)"	,"To"	,"付款周期（月数）"	,"结束"	,"Kỳ hạn thanh toán (tháng)"	,"Đến"}
-					,{"Integer"		,null	,"RangeMax"		,ColSearchPayDateEnd		,""												,"支払日（日＝99）"			,"終了"	,"Payment Day (Day = 99)"	,"To"	,"付款日（日=99）"	,"结束"	,"Ngày thanh toán (ngày = 99)"	,"Đến"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchPaySiteEnd		,""												,"支払いサイト（月数）"		,"終了"	,"Payment Term (Months)"		,"To"	,"付款周期（月数）"	,"结束"	,"Kỳ hạn thanh toán (tháng)"	,"Đến"}
+					,{"Integer"		,null	,"RangeMax"		,ColSearchPayDateEnd		,""												,"支払日（日＝99）"			,"終了"	,"Payment Day (Day = 99)"		,"To"	,"付款日（日=99）"	,"结束"	,"Ngày thanh toán (ngày = 99)"	,"Đến"}
 					,{"Integer"		,null	,"RangeMax"		,ColSearchShimeDateEnd	,""												,"締め日（末日＝99）"		,"終了"	,"Closing Day (Month End = 99)"	,"To"	,"结算日（月末=99）"	,"结束"	,"Ngày chốt (cuối tháng = 99)"	,"Đến"}
-					,{"String"		,null	,"Exact"		,ColSearchDECD			,""												,"納品先コード"				,""	,"Delivery Location Code"	,""	,"交货地点代码"	,""	,"Mã nơi giao hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchDepartmentCd	,""												,"部署CD"					,""	,"Destination Department Code"	,""	,"收货地部门代码"	,""	,"Mã bộ phận điểm giao"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchDECD			,""												,"納品先コード"				,""		,"Delivery Location Code"		,""		,"交货地点代码"		,""		,"Mã nơi giao hàng"				,""}
+					,{"String"		,null	,"Exact"		,ColSearchDepartmentCd	,""												,"部署CD"					,""		,"Destination Department Code"	,""		,"收货地部门代码"		,""		,"Mã bộ phận điểm giao"			,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);

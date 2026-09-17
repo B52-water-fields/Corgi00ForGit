@@ -74,26 +74,26 @@ public class M100_ItemComversionMstRt{
 	
 	public static Object[][] RtItemComversionMstRt(){
 		Object[][] RtItemComversionMstRt = {
-				 {"ClGpCd"			,ColClGpCd			,"String"	,"荷主グループCD"		,"Key"	,"Client Group Code"	,"货主组代码"	,"Mã nhóm chủ hàng"}
-				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ標記名"	,""	,"Client Group Display Name"	,"货主组显示名称"	,"Tên hiển thị nhóm chủ hàng"}
-				,{"ClCd"			,ColClCd			,"String"	,"荷主CD"				,"Key"	,"Client Code"	,"货主代码"	,"Mã chủ hàng"}
-				,{"CLName01"		,ColCLName01		,"String"	,"荷主名"				,""	,"Client Name"	,"货主名称"	,"Tên chủ hàng"}
-				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品CD"			,"Key"	,"Client Item Code"	,"货主商品代码"	,"Mã hàng chủ hàng"}
-				,{"ItemCd"			,ColItemCd			,"String"	,"変換先商品CD"			,""	,"Converted Item Code"	,"转换后商品代码"	,"Mã hàng sau chuyển đổi"}
-				,{"PackingType"		,ColPackingType	,"int"		,"荷姿タイプ"			,""	,"Packing Type"	,"包装类型"	,"Loại đóng gói"}
-				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"			,""	,"Display Item Name"	,"商品显示名称"	,"Tên hiển thị"}
-				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"			,""	,"Official Item Name"	,"商品正式名称"	,"Tên chính thức"}
-				,{"ItemName03"		,ColItemName03	,"String"	,"商品略名"				,""	,"Short Item Name"	,"商品简称"	,"Tên viết tắt"}
-				,{"CtName"			,ColCtName			,"String"	,"カートン商品名称"		,""	,"Carton Item Name"	,"纸箱商品名称"	,"Tên hàng carton"}
-				,{"CsName"			,ColCsName			,"String"	,"ケース商品名称"		,""	,"Case Item Name"	,"箱商品名称"	,"Tên hàng thùng"}
-				,{"PlName"			,ColPlName			,"String"	,"パレット商品名称"		,""	,"Pallet Item Name"	,"托盘商品名称"	,"Tên hàng pallet"}
-				,{"CtQty"			,ColCtQty			,"int"		,"カートン入数"			,""	,"Carton Pack Qty"	,"纸箱装量"	,"SL mỗi carton"}
-				,{"CsQty"			,ColCsQty			,"int"		,"ケース入数"			,""	,"Case Pack Qty"	,"箱装量"	,"SL mỗi thùng"}
-				,{"PlQty"			,ColPlQty			,"int"		,"パレット入数"			,""	,"Pallet Pack Qty"	,"托盘装量"	,"SL mỗi pallet"}
-				,{"UnitName"		,ColUnitName		,"String"	,"商品単位"				,""	,"Item Unit"	,"商品单位"	,"Đơn vị hàng"}
-				,{"CtUnitName"		,ColCtUnitName	,"String"	,"カートン商品単位"		,""	,"Carton Unit"	,"纸箱单位"	,"Đơn vị carton"}
-				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"		,""	,"Case Unit"	,"箱单位"	,"Đơn vị thùng"}
-				,{"PlUnitName"		,ColPlUnitName	,"String"	,"パレット商品単位"		,""	,"Pallet Unit"	,"托盘单位"	,"Đơn vị pallet"}
+				 {"ClGpCd"			,ColClGpCd			,"String"	,"荷主グループCD"		,"Key"	,"Client Group Code"			,"货主组代码"		,"Mã nhóm chủ hàng"}
+				,{"CLGpName01"		,ColCLGpName01	,"String"	,"荷主グループ標記名"	,""		,"Client Group Display Name"	,"货主组显示名称"	,"Tên hiển thị nhóm chủ hàng"}
+				,{"ClCd"			,ColClCd			,"String"	,"荷主CD"				,"Key"	,"Client Code"					,"货主代码"		,"Mã chủ hàng"}
+				,{"CLName01"		,ColCLName01		,"String"	,"荷主名"				,""		,"Client Name"					,"货主名称"		,"Tên chủ hàng"}
+				,{"ClItemCd"		,ColClItemCd		,"String"	,"荷主商品CD"			,"Key"	,"Client Item Code"				,"货主商品代码"	,"Mã hàng chủ hàng"}
+				,{"ItemCd"			,ColItemCd			,"String"	,"変換先商品CD"			,""		,"Converted Item Code"			,"转换后商品代码"	,"Mã hàng sau chuyển đổi"}
+				,{"PackingType"		,ColPackingType	,"int"		,"荷姿タイプ"			,""		,"Packing Type"					,"包装类型"		,"Loại đóng gói"}
+				,{"ItemName01"		,ColItemName01	,"String"	,"商品表記名"			,""		,"Display Item Name"			,"商品显示名称"	,"Tên hiển thị"}
+				,{"ItemName02"		,ColItemName02	,"String"	,"商品正式名"			,""		,"Official Item Name"			,"商品正式名称"	,"Tên chính thức"}
+				,{"ItemName03"		,ColItemName03	,"String"	,"商品略名"				,""		,"Short Item Name"				,"商品简称"		,"Tên viết tắt"}
+				,{"CtName"			,ColCtName			,"String"	,"カートン商品名称"		,""		,"Carton Item Name"				,"纸箱商品名称"	,"Tên hàng carton"}
+				,{"CsName"			,ColCsName			,"String"	,"ケース商品名称"		,""		,"Case Item Name"				,"箱商品名称"	,"Tên hàng thùng"}
+				,{"PlName"			,ColPlName			,"String"	,"パレット商品名称"		,""		,"Pallet Item Name"				,"托盘商品名称"	,"Tên hàng pallet"}
+				,{"CtQty"			,ColCtQty			,"int"		,"カートン入数"			,""		,"Carton Pack Qty"				,"纸箱装量"		,"SL mỗi carton"}
+				,{"CsQty"			,ColCsQty			,"int"		,"ケース入数"			,""		,"Case Pack Qty"				,"箱装量"		,"SL mỗi thùng"}
+				,{"PlQty"			,ColPlQty			,"int"		,"パレット入数"			,""		,"Pallet Pack Qty"				,"托盘装量"		,"SL mỗi pallet"}
+				,{"UnitName"		,ColUnitName		,"String"	,"商品単位"				,""		,"Item Unit"					,"商品单位"		,"Đơn vị hàng"}
+				,{"CtUnitName"		,ColCtUnitName	,"String"	,"カートン商品単位"		,""		,"Carton Unit"					,"纸箱单位"		,"Đơn vị carton"}
+				,{"CsUnitName"		,ColCsUnitName	,"String"	,"ケース商品単位"		,""		,"Case Unit"					,"箱单位"			,"Đơn vị thùng"}
+				,{"PlUnitName"		,ColPlUnitName	,"String"	,"パレット商品単位"		,""		,"Pallet Unit"					,"托盘单位"		,"Đơn vị pallet"}
 				};
 		
 		RtItemComversionMstRt = B100_LanguageControl.RtControl(RtItemComversionMstRt);
@@ -103,11 +103,11 @@ public class M100_ItemComversionMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"		,ColSearchClGpCd		,B100_DefaultVariable.SearchClGpList		,"荷主グループコード"	,""	,"Client Group Code"	,""	,"货主组代码"	,""	,"Mã nhóm chủ hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"			,""	,"Client Code"	,""	,"货主代码"	,""	,"Mã chủ hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchItemCd		,""											,"商品コード"			,""	,"Item Code"	,""	,"商品代码"	,""	,"Mã hàng"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchClItemCd	,""											,"荷主商品コード"		,""	,"Client Item Code"	,""	,"货主商品代码"	,""	,"Mã hàng chủ hàng"	,""}
-					,{"String"		,null	,"Partial"		,ColSearchItemName	,""											,"商品名"				,""	,"Item Name"	,""	,"商品名称"	,""	,"Tên hàng"	,""}
+					 {"String"		,null	,"Exact"		,ColSearchClGpCd		,B100_DefaultVariable.SearchClGpList		,"荷主グループコード"	,""	,"Client Group Code"	,""	,"货主组代码"		,""	,"Mã nhóm chủ hàng"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchClCd		,B100_DefaultVariable.SearchClList		,"荷主コード"			,""	,"Client Code"			,""	,"货主代码"		,""	,"Mã chủ hàng"		,""}
+					,{"String"		,null	,"Exact"		,ColSearchItemCd		,""											,"商品コード"			,""	,"Item Code"			,""	,"商品代码"		,""	,"Mã hàng"			,""}
+					,{"String"		,null	,"Exact"		,ColSearchClItemCd	,""											,"荷主商品コード"		,""	,"Client Item Code"		,""	,"货主商品代码"	,""	,"Mã hàng chủ hàng"	,""}
+					,{"String"		,null	,"Partial"		,ColSearchItemName	,""											,"商品名"				,""	,"Item Name"			,""	,"商品名称"		,""	,"Tên hàng"			,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
