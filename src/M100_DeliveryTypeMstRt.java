@@ -43,13 +43,13 @@ public class M100_DeliveryTypeMstRt{
 	
 	public static Object[][] RtDeliveryTypeMstRt(){
 		Object[][] RtSettingDeliveryTypeMstRt = {
-				 {"DeliveryTypeNo"		,ColDeliveryTypeNo		,"int"		,"タイプ番号"		,"Key"}
-				,{"DeliveryTypeCd"		,ColDeliveryTypeCd		,"String"	,"運送タイプコード"	,"Key"}
-				,{"DeliveryTypeName"	,ColDeliveryTypeName		,"String"	,"運送タイプ名"		,""}
-				,{"EntryDate"			,ColEntryDate				,"DateTime"	,"データ登録日時"	,""}
-				,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"データ更新日時"	,""}
-				,{"EntryUser"			,ColEntryUser				,"String"	,"登録者コード"		,""}
-				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"		,""}
+				 {"DeliveryTypeNo"		,ColDeliveryTypeNo		,"int"		,"タイプ番号"		,"Key"	,"Type No."	,"类型编号"	,"Số loại"}
+				,{"DeliveryTypeCd"		,ColDeliveryTypeCd		,"String"	,"運送タイプコード"	,"Key"	,"Delivery Type Code"	,"运输类型代码"	,"Mã loại vận chuyển"}
+				,{"DeliveryTypeName"	,ColDeliveryTypeName		,"String"	,"運送タイプ名"		,""	,"Delivery Type Name"	,"运输类型名称"	,"Tên loại vận chuyển"}
+				,{"EntryDate"			,ColEntryDate				,"DateTime"	,"データ登録日時"	,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
+				,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"データ更新日時"	,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
+				,{"EntryUser"			,ColEntryUser				,"String"	,"登録者コード"		,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
+				,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者コード"		,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
 				};
 		
 		RtSettingDeliveryTypeMstRt = B100_LanguageControl.RtControl(RtSettingDeliveryTypeMstRt);
@@ -59,9 +59,9 @@ public class M100_DeliveryTypeMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"		,ColSearchDeliveryTypeNo		,""		,"タイプ番号"			,""}
-					,{"String"		,null	,"Exact"		,ColSearchDeliveryTypeCd		,""		,"運送タイプコード"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchDeliveryTypeName	,""		,"運送タイプ名"			,""}
+					 {"String"		,null	,"Exact"		,ColSearchDeliveryTypeNo		,""		,"タイプ番号"			,""	,"Type No."	,""	,"类型编号"	,""	,"Số loại"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchDeliveryTypeCd		,""		,"運送タイプコード"		,""	,"Delivery Type Code"	,""	,"运输类型代码"	,""	,"Mã loại vận chuyển"	,""}
+					,{"String"		,null	,"Partial"		,ColSearchDeliveryTypeName	,""		,"運送タイプ名"			,""	,"Delivery Type Name"	,""	,"运输类型名称"	,""	,"Tên loại vận chuyển"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
