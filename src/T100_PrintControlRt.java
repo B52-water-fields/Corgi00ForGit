@@ -77,16 +77,16 @@ public class T100_PrintControlRt{
 	
 	public static Object[][] RtPrintControlRt(){
 		Object[][] RtPrintControlRt = {
-					 {"PrintCd"		,ColPrintCd		,"String"	,"印刷帳票CD"}
-					,{"OkuriNo"		,ColOkuriNo		,"String"	,"送り状番号等"}
-					,{"Key01"		,ColKey01			,"String"	,"サブキー01"}
-					,{"Key02"		,ColKey02			,"String"	,"サブキー02"}
-					,{"Key03"		,ColKey03			,"String"	,"サブキー03"}
-					,{"Key04"		,ColKey04			,"String"	,"サブキー04"}
-					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"}
-					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"}
-					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"}
-					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"}
+					 {"PrintCd"		,ColPrintCd		,"String"	,"印刷帳票CD"	,""	,"Print Form Code"	,"打印报表代码"	,"Mã biểu mẫu in"}
+					,{"OkuriNo"		,ColOkuriNo		,"String"	,"送り状番号等"	,""	,"Waybill No. etc."	,"运单号等"	,"Số vận đơn, v.v."}
+					,{"Key01"		,ColKey01			,"String"	,"サブキー01"	,""	,"Sub Key 01"	,"子键01"	,"Khóa phụ 01"}
+					,{"Key02"		,ColKey02			,"String"	,"サブキー02"	,""	,"Sub Key 02"	,"子键02"	,"Khóa phụ 02"}
+					,{"Key03"		,ColKey03			,"String"	,"サブキー03"	,""	,"Sub Key 03"	,"子键03"	,"Khóa phụ 03"}
+					,{"Key04"		,ColKey04			,"String"	,"サブキー04"	,""	,"Sub Key 04"	,"子键04"	,"Khóa phụ 04"}
+					,{"EntryDate"	,ColEntryDate		,"DateTime"	,"登録日"	,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
+					,{"UpdateDate"	,ColUpdateDate	,"DateTime"	,"更新日"	,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
+					,{"EntryUser"	,ColEntryUser		,"String"	,"登録者"	,""	,"Created By"	,"登记人"	,"Người tạo"}
+					,{"UpdateUser"	,ColUpdateUser	,"String"	,"更新者"	,""	,"Updated By"	,"更新人"	,"Người cập nhật"}
 					};
 		
 		RtPrintControlRt = B100_LanguageControl.RtControl(RtPrintControlRt);
@@ -96,18 +96,18 @@ public class T100_PrintControlRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"		,ColSearchPrintCd			,""			,"印刷帳票CD"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchOkuriNo			,""			,"送り状番号等"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchKey01			,""			,"サブキー01"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchKey02			,""			,"サブキー02"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchKey03			,""			,"サブキー03"	,""}
-					,{"String"		,null	,"Exact"		,ColSearchKey04			,""			,"サブキー04"	,""}
-					,{"String"		,null	,"RangeStr"		,ColSearchEntryDateStr	,""			,"登録日"		,"開始"}
-					,{"String"		,null	,"RangeStr"		,ColSearchUpdateDateStr	,""			,"更新日"		,"開始"}
-					,{"String"		,null	,"RangeEnd"		,ColSearchEntryDateEnd	,""			,"登録日"		,"終了"}
-					,{"String"		,null	,"RangeEnd"		,ColSearchUpdateDateEnd	,""			,"更新日"		,"終了"}
-					,{"String"		,null	,"Partial"		,ColSearchEntryUser		,""			,"登録者"		,""}
-					,{"String"		,null	,"Partial"		,ColSearchUpdateUser		,""			,"更新者"		,""}
+					 {"String"		,null	,"Exact"		,ColSearchPrintCd			,""			,"印刷帳票CD"	,""	,"Print Form Code"	,""	,"打印报表代码"	,""	,"Mã biểu mẫu in"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchOkuriNo			,""			,"送り状番号等"	,""	,"Waybill No. etc."	,""	,"运单号等"	,""	,"Số vận đơn, v.v."	,""}
+					,{"String"		,null	,"Exact"		,ColSearchKey01			,""			,"サブキー01"	,""	,"Sub Key 01"	,""	,"子键01"	,""	,"Khóa phụ 01"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchKey02			,""			,"サブキー02"	,""	,"Sub Key 02"	,""	,"子键02"	,""	,"Khóa phụ 02"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchKey03			,""			,"サブキー03"	,""	,"Sub Key 03"	,""	,"子键03"	,""	,"Khóa phụ 03"	,""}
+					,{"String"		,null	,"Exact"		,ColSearchKey04			,""			,"サブキー04"	,""	,"Sub Key 04"	,""	,"子键04"	,""	,"Khóa phụ 04"	,""}
+					,{"String"		,null	,"RangeStr"		,ColSearchEntryDateStr	,""			,"登録日"		,"開始"	,"Created At"	,"From"	,"登记时间"	,"开始"	,"Ngày giờ tạo"	,"Từ"}
+					,{"String"		,null	,"RangeStr"		,ColSearchUpdateDateStr	,""			,"更新日"		,"開始"	,"Updated At"	,"From"	,"更新时间"	,"开始"	,"Ngày giờ cập nhật"	,"Từ"}
+					,{"String"		,null	,"RangeEnd"		,ColSearchEntryDateEnd	,""			,"登録日"		,"終了"	,"Created At"	,"To"	,"登记时间"	,"结束"	,"Ngày giờ tạo"	,"Đến"}
+					,{"String"		,null	,"RangeEnd"		,ColSearchUpdateDateEnd	,""			,"更新日"		,"終了"	,"Updated At"	,"To"	,"更新时间"	,"结束"	,"Ngày giờ cập nhật"	,"Đến"}
+					,{"String"		,null	,"Partial"		,ColSearchEntryUser		,""			,"登録者"		,""	,"Created By"	,""	,"登记人"	,""	,"Người tạo"	,""}
+					,{"String"		,null	,"Partial"		,ColSearchUpdateUser		,""			,"更新者"		,""	,"Updated By"	,""	,"更新人"	,""	,"Người cập nhật"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
