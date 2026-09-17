@@ -552,231 +552,231 @@ public class T100_OkuriHdRt{
 	
 	public static Object[][] RtOkuriHdRt(){
 		Object[][] Rt = {
-						 {"ClCd"				,ColClCd					,"String"	,"荷主コード"					,"Key"	,"Client Code"							,"货主代码"}
-						,{"InvoiceWhCd"			,ColInvoiceWhCd			,"String"	,"倉庫コード"					,"Key"	,"Warehouse Code"						,"仓库代码"}
-						,{"OkuriNo"				,ColOkuriNo				,"String"	,"送り状番号"					,"Key"	,"Waybill No."							,"运单号"}
-						,{"ClDeliNo"			,ColClDeliNo				,"String"	,"荷主管理番号"					,""		,"Client Reference No."					,"货主管理编号"}
-						,{"PickupWhCd"			,ColPickupWhCd			,"String"	,"集荷倉庫CD"					,""		,"Pickup Warehouse Code"				,"提货仓库代码"}
-						,{"PurposeFG"			,ColPurposeFG				,"int"		,"目的フラグ"					,""		,"Purpose Flag"							,"目的标志"}
-						,{"PlanDate"			,ColPlanDate				,"Date"		,"出荷予定日"					,""		,"Planned Ship Date"					,"计划出库日期"}
-						,{"ShipDate"			,ColShipDate				,"DateTime"	,"出荷実績日"					,""		,"Actual Ship Date"						,"实际出库日期"}
-						,{"SPPlanDate"			,ColSPPlanDate			,"Date"		,"着日指定"						,""		,"Requested Delivery Date"				,"指定到货日期"}
-						,{"SPDate"				,ColSPDate					,"DateTime"	,"着日実績"						,""		,"Actual Delivery Date"					,"实际到货日期"}
-						,{"SPTimeFG"			,ColSPTimeFG				,"String"	,"時間指定区分"					,""		,"Delivery Time Type"					,"指定时间类型"}
-						,{"SPTimeStr"			,ColSPTimeStr				,"String"	,"時間指定開始"					,""		,"Delivery Time From"					,"指定时间开始"}
-						,{"SPTimeEnd"			,ColSPTimeEnd				,"String"	,"時間指定終了"					,""		,"Delivery Time To"						,"指定时间结束"}
-						,{"TotalWeight"			,ColTotalWeight			,"float"	,"荷物重量(kg)"					,""		,"Total Weight (kg)"					,"货物重量(kg)"}
-						,{"TotalSize"			,ColTotalSize				,"float"	,"荷物サイズ"					,""		,"Total Size"							,"货物尺寸"}
-						,{"TotalQty"			,ColTotalQty				,"int"		,"個口数"						,""		,"Package Qty"							,"包裹数量"}
-						,{"DeliveryTypeCd01"	,ColDeliveryTypeCd01		,"String"	,"運送タイプ01"					,""		,"Delivery Type 01"						,"运输类型01"}
-						,{"DeliTypeName"		,ColDeliTypeName			,"String"	,"運送タイプ名01"				,""		,"Delivery Type Name 01"				,"运输类型名称01"}
-						,{"DeliveryTypeCd02"	,ColDeliveryTypeCd02		,"String"	,"運送タイプ02"					,""		,"Delivery Type 02"						,"运输类型02"}
-						,{"DeliTypeName02"		,ColDeliTypeName02		,"String"	,"運送タイプ名02"				,""		,"Delivery Type Name 02"				,"运输类型名称02"}
-						,{"DeliveryTypeCd03"	,ColDeliveryTypeCd03		,"String"	,"運送タイプ03"					,""		,"Delivery Type 03"						,"运输类型03"}
-						,{"DeliTypeName03"		,ColDeliTypeName03		,"String"	,"運送タイプ名03"				,""		,"Delivery Type Name 03"				,"运输类型名称03"}
-						,{"DeliveryTypeCd04"	,ColDeliveryTypeCd04		,"String"	,"運送タイプ04"					,""		,"Delivery Type 04"						,"运输类型04"}
-						,{"DeliTypeName04"		,ColDeliTypeName04		,"String"	,"運送タイプ名04"				,""		,"Delivery Type Name 04"				,"运输类型名称04"}
-						,{"DeliveryTypeCd05"	,ColDeliveryTypeCd05		,"String"	,"運送タイプ05"					,""		,"Delivery Type 05"						,"运输类型05"}
-						,{"DeliTypeName05"		,ColDeliTypeName05		,"String"	,"運送タイプ名05"				,""		,"Delivery Type Name 05"				,"运输类型名称05"}
+						 {"ClCd"				,ColClCd					,"String"	,"荷主コード"					,"Key"	,"Client Code"							,"货主代码"	,"Mã chủ hàng"}
+						,{"InvoiceWhCd"			,ColInvoiceWhCd			,"String"	,"倉庫コード"					,"Key"	,"Warehouse Code"						,"仓库代码"	,"Mã kho"}
+						,{"OkuriNo"				,ColOkuriNo				,"String"	,"送り状番号"					,"Key"	,"Waybill No."							,"运单号"	,"Số vận đơn"}
+						,{"ClDeliNo"			,ColClDeliNo				,"String"	,"荷主管理番号"					,""		,"Client Reference No."					,"货主管理编号"	,"Số tham chiếu chủ hàng"}
+						,{"PickupWhCd"			,ColPickupWhCd			,"String"	,"集荷倉庫CD"					,""		,"Pickup Warehouse Code"				,"提货仓库代码"	,"Mã kho lấy hàng"}
+						,{"PurposeFG"			,ColPurposeFG				,"int"		,"目的フラグ"					,""		,"Purpose Flag"							,"目的标志"	,"Cờ mục đích"}
+						,{"PlanDate"			,ColPlanDate				,"Date"		,"出荷予定日"					,""		,"Planned Ship Date"					,"计划出库日期"	,"Ngày xuất dự kiến"}
+						,{"ShipDate"			,ColShipDate				,"DateTime"	,"出荷実績日"					,""		,"Actual Ship Date"						,"实际出库日期"	,"Ngày xuất thực tế"}
+						,{"SPPlanDate"			,ColSPPlanDate			,"Date"		,"着日指定"						,""		,"Requested Delivery Date"				,"指定到货日期"	,"Ngày giao yêu cầu"}
+						,{"SPDate"				,ColSPDate					,"DateTime"	,"着日実績"						,""		,"Actual Delivery Date"					,"实际到货日期"	,"Ngày giao thực tế"}
+						,{"SPTimeFG"			,ColSPTimeFG				,"String"	,"時間指定区分"					,""		,"Delivery Time Type"					,"指定时间类型"	,"Loại thời gian giao hàng"}
+						,{"SPTimeStr"			,ColSPTimeStr				,"String"	,"時間指定開始"					,""		,"Delivery Time From"					,"指定时间开始"	,"Giờ giao từ"}
+						,{"SPTimeEnd"			,ColSPTimeEnd				,"String"	,"時間指定終了"					,""		,"Delivery Time To"						,"指定时间结束"	,"Giờ giao đến"}
+						,{"TotalWeight"			,ColTotalWeight			,"float"	,"荷物重量(kg)"					,""		,"Total Weight (kg)"					,"货物重量(kg)"	,"Tổng trọng lượng (kg)"}
+						,{"TotalSize"			,ColTotalSize				,"float"	,"荷物サイズ"					,""		,"Total Size"							,"货物尺寸"	,"Tổng kích thước"}
+						,{"TotalQty"			,ColTotalQty				,"int"		,"個口数"						,""		,"Package Qty"							,"包裹数量"	,"Số kiện"}
+						,{"DeliveryTypeCd01"	,ColDeliveryTypeCd01		,"String"	,"運送タイプ01"					,""		,"Delivery Type 01"						,"运输类型01"	,"Loại vận chuyển 01"}
+						,{"DeliTypeName"		,ColDeliTypeName			,"String"	,"運送タイプ名01"				,""		,"Delivery Type Name 01"				,"运输类型名称01"	,"Tên loại vận chuyển 01"}
+						,{"DeliveryTypeCd02"	,ColDeliveryTypeCd02		,"String"	,"運送タイプ02"					,""		,"Delivery Type 02"						,"运输类型02"	,"Loại vận chuyển 02"}
+						,{"DeliTypeName02"		,ColDeliTypeName02		,"String"	,"運送タイプ名02"				,""		,"Delivery Type Name 02"				,"运输类型名称02"	,"Tên loại vận chuyển 02"}
+						,{"DeliveryTypeCd03"	,ColDeliveryTypeCd03		,"String"	,"運送タイプ03"					,""		,"Delivery Type 03"						,"运输类型03"	,"Loại vận chuyển 03"}
+						,{"DeliTypeName03"		,ColDeliTypeName03		,"String"	,"運送タイプ名03"				,""		,"Delivery Type Name 03"				,"运输类型名称03"	,"Tên loại vận chuyển 03"}
+						,{"DeliveryTypeCd04"	,ColDeliveryTypeCd04		,"String"	,"運送タイプ04"					,""		,"Delivery Type 04"						,"运输类型04"	,"Loại vận chuyển 04"}
+						,{"DeliTypeName04"		,ColDeliTypeName04		,"String"	,"運送タイプ名04"				,""		,"Delivery Type Name 04"				,"运输类型名称04"	,"Tên loại vận chuyển 04"}
+						,{"DeliveryTypeCd05"	,ColDeliveryTypeCd05		,"String"	,"運送タイプ05"					,""		,"Delivery Type 05"						,"运输类型05"	,"Loại vận chuyển 05"}
+						,{"DeliTypeName05"		,ColDeliTypeName05		,"String"	,"運送タイプ名05"				,""		,"Delivery Type Name 05"				,"运输类型名称05"	,"Tên loại vận chuyển 05"}
 
-						,{"CodFG"				,ColCodFG					,"int"		,"代引フラグ"					,""		,"COD Flag"								,"货到付款标志"}
-						,{"CodPayTotal"			,ColCodPayTotal			,"int"		,"代引収受金額合計"				,""		,"COD Collection Total"					,"货到付款收款总额"}
-						,{"CodPay"				,ColCodPay					,"int"		,"代引金額"						,""		,"COD Amount"							,"货到付款金额"}
-						,{"CodConsumptionTax"	,ColCodConsumptionTax	,"int"		,"代引消費税"					,""		,"COD Consumption Tax"					,"货到付款消费税"}
+						,{"CodFG"				,ColCodFG					,"int"		,"代引フラグ"					,""		,"COD Flag"								,"货到付款标志"	,"Cờ COD"}
+						,{"CodPayTotal"			,ColCodPayTotal			,"int"		,"代引収受金額合計"				,""		,"COD Collection Total"					,"货到付款收款总额"	,"Tổng tiền thu COD"}
+						,{"CodPay"				,ColCodPay					,"int"		,"代引金額"						,""		,"COD Amount"							,"货到付款金额"	,"Số tiền COD"}
+						,{"CodConsumptionTax"	,ColCodConsumptionTax	,"int"		,"代引消費税"					,""		,"COD Consumption Tax"					,"货到付款消费税"	,"Thuế tiêu dùng COD"}
 
-						,{"ChildrenFG"			,ColChildrenFG			,"int"		,"子伝票区分"					,""		,"Child Waybill Type"					,"子运单类型"}
-						,{"ParentOkuriNo"		,ColParentOkuriNo			,"String"	,"親伝票番号"					,""		,"Parent Waybill No."					,"父运单号"}
+						,{"ChildrenFG"			,ColChildrenFG			,"int"		,"子伝票区分"					,""		,"Child Waybill Type"					,"子运单类型"	,"Loại vận đơn con"}
+						,{"ParentOkuriNo"		,ColParentOkuriNo			,"String"	,"親伝票番号"					,""		,"Parent Waybill No."					,"父运单号"	,"Số vận đơn cha"}
 
-						,{"NiokuriCd"			,ColNiokuriCd				,"String"	,"荷送人コード"					,""		,"Shipper Code"							,"发货人代码"}
-						,{"NiokuriDepartmentCd"	,ColNiokuriDepartmentCd	,"String"	,"荷送人部署CD"					,""		,"Shipper Department Code"				,"发货人部门代码"}
-						,{"NiokuriName01"		,ColNiokuriName01			,"String"	,"荷送人名01"					,""		,"Shipper Name 01"						,"发货人名称01"}
-						,{"NiokuriName02"		,ColNiokuriName02			,"String"	,"荷送人名02"					,""		,"Shipper Name 02"						,"发货人名称02"}
-						,{"NiokuriName03"		,ColNiokuriName03			,"String"	,"荷送人名03"					,""		,"Shipper Name 03"						,"发货人名称03"}
-						,{"NiokuriPost"			,ColNiokuriPost			,"String"	,"荷送人郵便番号"				,""		,"Shipper Postal Code"					,"发货人邮政编码"}
-						,{"NiokuriAdd01"		,ColNiokuriAdd01			,"String"	,"荷送人住所01"					,""		,"Shipper Address 01"					,"发货人地址01"}
-						,{"NiokuriAdd02"		,ColNiokuriAdd02			,"String"	,"荷送人住所02"					,""		,"Shipper Address 02"					,"发货人地址02"}
-						,{"NiokuriAdd03"		,ColNiokuriAdd03			,"String"	,"荷送人住所03"					,""		,"Shipper Address 03"					,"发货人地址03"}
-						,{"NioKuriTel"			,ColNioKuriTel			,"String"	,"荷送人TEL"					,""		,"Shipper TEL"							,"发货人电话"}
-						,{"NioKuriFax"			,ColNioKuriFax			,"String"	,"荷送人FAX"					,""		,"Shipper FAX"							,"发货人传真"}
-						,{"NioKuriMail"			,ColNioKuriMail			,"String"	,"荷送人MAIL"					,""		,"Shipper Email"						,"发货人邮箱"}
-						,{"NiokuriMunicCd"		,ColNiokuriMunicCd		,"String"	,"荷送人市区町村CD"				,""		,"Shipper Municipality Code"			,"发货人市区町村代码"}
+						,{"NiokuriCd"			,ColNiokuriCd				,"String"	,"荷送人コード"					,""		,"Shipper Code"							,"发货人代码"	,"Mã người gửi"}
+						,{"NiokuriDepartmentCd"	,ColNiokuriDepartmentCd	,"String"	,"荷送人部署CD"					,""		,"Shipper Department Code"				,"发货人部门代码"	,"Mã bộ phận người gửi"}
+						,{"NiokuriName01"		,ColNiokuriName01			,"String"	,"荷送人名01"					,""		,"Shipper Name 01"						,"发货人名称01"	,"Tên người gửi 01"}
+						,{"NiokuriName02"		,ColNiokuriName02			,"String"	,"荷送人名02"					,""		,"Shipper Name 02"						,"发货人名称02"	,"Tên người gửi 02"}
+						,{"NiokuriName03"		,ColNiokuriName03			,"String"	,"荷送人名03"					,""		,"Shipper Name 03"						,"发货人名称03"	,"Tên người gửi 03"}
+						,{"NiokuriPost"			,ColNiokuriPost			,"String"	,"荷送人郵便番号"				,""		,"Shipper Postal Code"					,"发货人邮政编码"	,"Mã bưu chính người gửi"}
+						,{"NiokuriAdd01"		,ColNiokuriAdd01			,"String"	,"荷送人住所01"					,""		,"Shipper Address 01"					,"发货人地址01"	,"Địa chỉ người gửi 01"}
+						,{"NiokuriAdd02"		,ColNiokuriAdd02			,"String"	,"荷送人住所02"					,""		,"Shipper Address 02"					,"发货人地址02"	,"Địa chỉ người gửi 02"}
+						,{"NiokuriAdd03"		,ColNiokuriAdd03			,"String"	,"荷送人住所03"					,""		,"Shipper Address 03"					,"发货人地址03"	,"Địa chỉ người gửi 03"}
+						,{"NioKuriTel"			,ColNioKuriTel			,"String"	,"荷送人TEL"					,""		,"Shipper TEL"							,"发货人电话"	,"Điện thoại người gửi"}
+						,{"NioKuriFax"			,ColNioKuriFax			,"String"	,"荷送人FAX"					,""		,"Shipper FAX"							,"发货人传真"	,"FAX người gửi"}
+						,{"NioKuriMail"			,ColNioKuriMail			,"String"	,"荷送人MAIL"					,""		,"Shipper Email"						,"发货人邮箱"	,"Email người gửi"}
+						,{"NiokuriMunicCd"		,ColNiokuriMunicCd		,"String"	,"荷送人市区町村CD"				,""		,"Shipper Municipality Code"			,"发货人市区町村代码"	,"Mã địa phương người gửi"}
 
-						,{"DeliCd"				,ColDeliCd					,"String"	,"荷届先コード"					,""		,"Delivery Destination Code"			,"收货地代码"}
-						,{"ClDeliCd"			,ColClDeliCd				,"String"	,"荷主荷届先コード"				,""		,"Client Destination Code"				,"货主收货地代码"}
-						,{"DeliDepartmentCd"	,ColDeliDepartmentCd		,"String"	,"部署CD"						,""		,"Destination Department Code"			,"收货地部门代码"}
-						,{"DeliName01"			,ColDeliName01			,"String"	,"荷届先名01"					,""		,"Destination Name 01"					,"收货地名称01"}
-						,{"DeliName02"			,ColDeliName02			,"String"	,"荷届先名02"					,""		,"Destination Name 02"					,"收货地名称02"}
-						,{"DeliName03"			,ColDeliName03			,"String"	,"荷届先名03"					,""		,"Destination Name 03"					,"收货地名称03"}
-						,{"DeliPost"			,ColDeliPost				,"String"	,"荷届先郵便番号"				,""		,"Destination Postal Code"				,"收货地邮政编码"}
-						,{"DeliAdd01"			,ColDeliAdd01				,"String"	,"荷届先住所01"					,""		,"Destination Address 01"				,"收货地地址01"}
-						,{"DeliAdd02"			,ColDeliAdd02				,"String"	,"荷届先住所02"					,""		,"Destination Address 02"				,"收货地地址02"}
-						,{"DeliAdd03"			,ColDeliAdd03				,"String"	,"荷届先住所03"					,""		,"Destination Address 03"				,"收货地地址03"}
-						,{"DeliTel"				,ColDeliTel				,"String"	,"荷届先TEL"					,""		,"Destination TEL"						,"收货地电话"}
-						,{"DeliFax"				,ColDeliFax				,"String"	,"荷届先FAX"					,""		,"Destination FAX"						,"收货地传真"}
-						,{"DeliMail"			,ColDeliMail				,"String"	,"荷届先MAIL"					,""		,"Destination Email"					,"收货地邮箱"}
-						,{"DeliMunicCd"			,ColDeliMunicCd			,"String"	,"荷届先市区町村CD"				,""		,"Destination Municipality Code"		,"收货地市区町村代码"}
+						,{"DeliCd"				,ColDeliCd					,"String"	,"荷届先コード"					,""		,"Delivery Destination Code"			,"收货地代码"	,"Mã điểm giao hàng"}
+						,{"ClDeliCd"			,ColClDeliCd				,"String"	,"荷主荷届先コード"				,""		,"Client Destination Code"				,"货主收货地代码"	,"Mã điểm giao của chủ hàng"}
+						,{"DeliDepartmentCd"	,ColDeliDepartmentCd		,"String"	,"部署CD"						,""		,"Destination Department Code"			,"收货地部门代码"	,"Mã bộ phận điểm giao"}
+						,{"DeliName01"			,ColDeliName01			,"String"	,"荷届先名01"					,""		,"Destination Name 01"					,"收货地名称01"	,"Tên điểm giao 01"}
+						,{"DeliName02"			,ColDeliName02			,"String"	,"荷届先名02"					,""		,"Destination Name 02"					,"收货地名称02"	,"Tên điểm giao 02"}
+						,{"DeliName03"			,ColDeliName03			,"String"	,"荷届先名03"					,""		,"Destination Name 03"					,"收货地名称03"	,"Tên điểm giao 03"}
+						,{"DeliPost"			,ColDeliPost				,"String"	,"荷届先郵便番号"				,""		,"Destination Postal Code"				,"收货地邮政编码"	,"Mã bưu chính điểm giao"}
+						,{"DeliAdd01"			,ColDeliAdd01				,"String"	,"荷届先住所01"					,""		,"Destination Address 01"				,"收货地地址01"	,"Địa chỉ điểm giao 01"}
+						,{"DeliAdd02"			,ColDeliAdd02				,"String"	,"荷届先住所02"					,""		,"Destination Address 02"				,"收货地地址02"	,"Địa chỉ điểm giao 02"}
+						,{"DeliAdd03"			,ColDeliAdd03				,"String"	,"荷届先住所03"					,""		,"Destination Address 03"				,"收货地地址03"	,"Địa chỉ điểm giao 03"}
+						,{"DeliTel"				,ColDeliTel				,"String"	,"荷届先TEL"					,""		,"Destination TEL"						,"收货地电话"	,"Điện thoại điểm giao"}
+						,{"DeliFax"				,ColDeliFax				,"String"	,"荷届先FAX"					,""		,"Destination FAX"						,"收货地传真"	,"FAX điểm giao"}
+						,{"DeliMail"			,ColDeliMail				,"String"	,"荷届先MAIL"					,""		,"Destination Email"					,"收货地邮箱"	,"Email điểm giao"}
+						,{"DeliMunicCd"			,ColDeliMunicCd			,"String"	,"荷届先市区町村CD"				,""		,"Destination Municipality Code"		,"收货地市区町村代码"	,"Mã địa phương điểm giao"}
 
-						,{"Com01"				,ColCom01					,"String"	,"コメント01"					,""		,"Comment 01"							,"备注01"}
-						,{"Com02"				,ColCom02					,"String"	,"コメント02"					,""		,"Comment 02"							,"备注02"}
-						,{"Com03"				,ColCom03					,"String"	,"コメント03"					,""		,"Comment 03"							,"备注03"}
-						,{"Com04"				,ColCom04					,"String"	,"コメント04"					,""		,"Comment 04"							,"备注04"}
-						,{"Com05"				,ColCom05					,"String"	,"コメント05"					,""		,"Comment 05"							,"备注05"}
+						,{"Com01"				,ColCom01					,"String"	,"コメント01"					,""		,"Comment 01"							,"备注01"	,"Ghi chú 01"}
+						,{"Com02"				,ColCom02					,"String"	,"コメント02"					,""		,"Comment 02"							,"备注02"	,"Ghi chú 02"}
+						,{"Com03"				,ColCom03					,"String"	,"コメント03"					,""		,"Comment 03"							,"备注03"	,"Ghi chú 03"}
+						,{"Com04"				,ColCom04					,"String"	,"コメント04"					,""		,"Comment 04"							,"备注04"	,"Ghi chú 04"}
+						,{"Com05"				,ColCom05					,"String"	,"コメント05"					,""		,"Comment 05"							,"备注05"	,"Ghi chú 05"}
 
-						,{"Status"				,ColStatus					,"int"		,"状況"							,""		,"Status"								,"状态"}
-						,{"TaxFg"				,ColTaxFg					,"int"		,"税区分"						,""		,"Tax Type"								,"税类型"}
-						,{"TaxRate"				,ColTaxRate				,"int"		,"税率"							,""		,"Tax Rate"								,"税率"}
-						,{"DeliFee"				,ColDeliFee				,"int"		,"運賃"							,""		,"Freight Charge"						,"运费"}
-						,{"AddDeliFee01"		,ColAddDeliFee01			,"int"		,"付帯費用1"					,""		,"Additional Charge 1"					,"附加费用1"}
-						,{"AddDeliFee02"		,ColAddDeliFee02			,"int"		,"付帯費用2"					,""		,"Additional Charge 2"					,"附加费用2"}
-						,{"AddDeliFee03"		,ColAddDeliFee03			,"int"		,"付帯費用3"					,""		,"Additional Charge 3"					,"附加费用3"}
-						,{"HaighWayFee01"		,ColHaighWayFee01			,"int"		,"実費精算分1（内税）"			,""		,"Actual Cost 1 (Tax Included)"			,"实报实销1（含税）"}
-						,{"HaighWayFee02"		,ColHaighWayFee02			,"int"		,"実費精算分2（内税）"			,""		,"Actual Cost 2 (Tax Included)"			,"实报实销2（含税）"}
-						,{"ConsumptionTax"		,ColConsumptionTax		,"int"		,"消費税"						,""		,"Consumption Tax"						,"消费税"}
-						,{"WithOutTaxTotal"		,ColWithOutTaxTotal		,"int"		,"税別合計金額"					,""		,"Total Excluding Tax"					,"未税合计金额"}
-						,{"TotalFee"			,ColTotalFee				,"int"		,"税込請求額合計"				,""		,"Total Including Tax"					,"含税账单总额"}
-						,{"FeeFixFG"			,ColFeeFixFG				,"int"		,"金額確定フラグ"				,""		,"Charge Fixed Flag"					,"金额确定标志"}
-						,{"FeeFixDate"			,ColFeeFixDate			,"DateTime"	,"金額確定日時"					,""		,"Charge Fixed At"						,"金额确定时间"}
-						,{"ReceiptStampFG"		,ColReceiptStampFG		,"int"		,"受領印チェック"				,""		,"Receipt Stamp Check"					,"收货章确认"}
-						,{"ReceiptStampDate"	,ColReceiptStampDate		,"DateTime"	,"受領印日時"					,""		,"Receipt Stamp Date"					,"收货章日期"}
-						,{"InvoiceStatus"		,ColInvoiceStatus			,"int"		,"請求ステータス"				,""		,"Invoice Status"						,"账单状态"}
-						,{"EntryDate"			,ColEntryDate				,"DateTime"	,"登録日"						,""		,"Created At"							,"登记时间"}
-						,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"更新日"						,""		,"Updated At"							,"更新时间"}
-						,{"EntryUser"			,ColEntryUser				,"String"	,"登録者"						,""		,"Created By"							,"登记人"}
-						,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者"						,""		,"Updated By"							,"更新人"}
-						,{"EntryPG"				,ColEntryPG				,"String"	,"登録プログラム"				,""		,"Created Program"						,"登记程序"}
-						,{"UpdatePG"			,ColUpdatePG				,"String"	,"更新プログラム"				,""		,"Updated Program"						,"更新程序"}
+						,{"Status"				,ColStatus					,"int"		,"状況"							,""		,"Status"								,"状态"	,"Trạng thái"}
+						,{"TaxFg"				,ColTaxFg					,"int"		,"税区分"						,""		,"Tax Type"								,"税类型"	,"Loại thuế"}
+						,{"TaxRate"				,ColTaxRate				,"int"		,"税率"							,""		,"Tax Rate"								,"税率"	,"Thuế suất"}
+						,{"DeliFee"				,ColDeliFee				,"int"		,"運賃"							,""		,"Freight Charge"						,"运费"	,"Cước vận chuyển"}
+						,{"AddDeliFee01"		,ColAddDeliFee01			,"int"		,"付帯費用1"					,""		,"Additional Charge 1"					,"附加费用1"	,"Phụ phí 1"}
+						,{"AddDeliFee02"		,ColAddDeliFee02			,"int"		,"付帯費用2"					,""		,"Additional Charge 2"					,"附加费用2"	,"Phụ phí 2"}
+						,{"AddDeliFee03"		,ColAddDeliFee03			,"int"		,"付帯費用3"					,""		,"Additional Charge 3"					,"附加费用3"	,"Phụ phí 3"}
+						,{"HaighWayFee01"		,ColHaighWayFee01			,"int"		,"実費精算分1（内税）"			,""		,"Actual Cost 1 (Tax Included)"			,"实报实销1（含税）"	,"Chi phí thực tế 1 (đã gồm thuế)"}
+						,{"HaighWayFee02"		,ColHaighWayFee02			,"int"		,"実費精算分2（内税）"			,""		,"Actual Cost 2 (Tax Included)"			,"实报实销2（含税）"	,"Chi phí thực tế 2 (đã gồm thuế)"}
+						,{"ConsumptionTax"		,ColConsumptionTax		,"int"		,"消費税"						,""		,"Consumption Tax"						,"消费税"	,"Thuế tiêu dùng"}
+						,{"WithOutTaxTotal"		,ColWithOutTaxTotal		,"int"		,"税別合計金額"					,""		,"Total Excluding Tax"					,"未税合计金额"	,"Tổng chưa thuế"}
+						,{"TotalFee"			,ColTotalFee				,"int"		,"税込請求額合計"				,""		,"Total Including Tax"					,"含税账单总额"	,"Tổng đã gồm thuế"}
+						,{"FeeFixFG"			,ColFeeFixFG				,"int"		,"金額確定フラグ"				,""		,"Charge Fixed Flag"					,"金额确定标志"	,"Cờ chốt cước"}
+						,{"FeeFixDate"			,ColFeeFixDate			,"DateTime"	,"金額確定日時"					,""		,"Charge Fixed At"						,"金额确定时间"	,"Thời điểm chốt cước"}
+						,{"ReceiptStampFG"		,ColReceiptStampFG		,"int"		,"受領印チェック"				,""		,"Receipt Stamp Check"					,"收货章确认"	,"Kiểm tra dấu nhận hàng"}
+						,{"ReceiptStampDate"	,ColReceiptStampDate		,"DateTime"	,"受領印日時"					,""		,"Receipt Stamp Date"					,"收货章日期"	,"Ngày đóng dấu nhận hàng"}
+						,{"InvoiceStatus"		,ColInvoiceStatus			,"int"		,"請求ステータス"				,""		,"Invoice Status"						,"账单状态"	,"Trạng thái hóa đơn"}
+						,{"EntryDate"			,ColEntryDate				,"DateTime"	,"登録日"						,""		,"Created At"							,"登记时间"	,"Ngày giờ tạo"}
+						,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"更新日"						,""		,"Updated At"							,"更新时间"	,"Ngày giờ cập nhật"}
+						,{"EntryUser"			,ColEntryUser				,"String"	,"登録者"						,""		,"Created By"							,"登记人"	,"Người tạo"}
+						,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者"						,""		,"Updated By"							,"更新人"	,"Người cập nhật"}
+						,{"EntryPG"				,ColEntryPG				,"String"	,"登録プログラム"				,""		,"Created Program"						,"登记程序"	,"Chương trình tạo"}
+						,{"UpdatePG"			,ColUpdatePG				,"String"	,"更新プログラム"				,""		,"Updated Program"						,"更新程序"	,"Chương trình cập nhật"}
 
-						,{"UseFeeBasePtCd"		,ColUseFeeBasePtCd		,"String"	,"適用運賃タリフCD"				,""		,"Applied Freight Tariff Code"			,"适用运费费率代码"}
-						,{"WmsStatus"			,ColWmsStatus				,"int"		,"在庫管理ステータス"			,""		,"WMS Status"							,"库存管理状态"}
-						,{"WmsShipDate"			,ColWmsShipDate			,"DateTime"	,"倉庫出荷日"					,""		,"Warehouse Ship Date"					,"仓库出库日期"}
-						,{"CourseGpCd"			,ColCourseGpCd			,"String"	,"コースグループコード"			,""		,"Route Group Code"						,"配送路线组代码"}
-						,{"CourseCD"			,ColCourseCD				,"String"	,"一次配車コースコード"			,""		,"Primary Route Code"					,"一次配车路线代码"}
-						,{"CourseCDEda"			,ColCourseCDEda			,"int"		,"一次配車コースコード枝番"		,""		,"Primary Route Code Branch"			,"一次配车路线代码分支"}
-						,{"PitGrp"				,ColPitGrp					,"String"	,"一次配車払出ピットグループ"	,""		,"Primary Dispatch Pit Group"			,"一次配车出库口组"}
-						,{"Pit01"				,ColPit01					,"String"	,"一次配車払出ピット01"			,""		,"Primary Dispatch Pit 01"				,"一次配车出库口01"}
-						,{"Pit02"				,ColPit02					,"String"	,"一次配車払出ピット02"			,""		,"Primary Dispatch Pit 02"				,"一次配车出库口02"}
-						,{"Pit03"				,ColPit03					,"String"	,"一次配車払出ピット03"			,""		,"Primary Dispatch Pit 03"				,"一次配车出库口03"}
-						,{"Pit04"				,ColPit04					,"String"	,"一次配車払出ピット04"			,""		,"Primary Dispatch Pit 04"				,"一次配车出库口04"}
-						,{"Pit05"				,ColPit05					,"String"	,"一次配車払出ピット05"			,""		,"Primary Dispatch Pit 05"				,"一次配车出库口05"}
+						,{"UseFeeBasePtCd"		,ColUseFeeBasePtCd		,"String"	,"適用運賃タリフCD"				,""		,"Applied Freight Tariff Code"			,"适用运费费率代码"	,"Mã biểu cước áp dụng"}
+						,{"WmsStatus"			,ColWmsStatus				,"int"		,"在庫管理ステータス"			,""		,"WMS Status"							,"库存管理状态"	,"Trạng thái WMS"}
+						,{"WmsShipDate"			,ColWmsShipDate			,"DateTime"	,"倉庫出荷日"					,""		,"Warehouse Ship Date"					,"仓库出库日期"	,"Ngày xuất kho"}
+						,{"CourseGpCd"			,ColCourseGpCd			,"String"	,"コースグループコード"			,""		,"Route Group Code"						,"配送路线组代码"	,"Mã nhóm tuyến"}
+						,{"CourseCD"			,ColCourseCD				,"String"	,"一次配車コースコード"			,""		,"Primary Route Code"					,"一次配车路线代码"	,"Mã tuyến chính"}
+						,{"CourseCDEda"			,ColCourseCDEda			,"int"		,"一次配車コースコード枝番"		,""		,"Primary Route Code Branch"			,"一次配车路线代码分支"	,"Nhánh mã tuyến chính"}
+						,{"PitGrp"				,ColPitGrp					,"String"	,"一次配車払出ピットグループ"	,""		,"Primary Dispatch Pit Group"			,"一次配车出库口组"	,"Nhóm cửa xuất điều phối chính"}
+						,{"Pit01"				,ColPit01					,"String"	,"一次配車払出ピット01"			,""		,"Primary Dispatch Pit 01"				,"一次配车出库口01"	,"Cửa xuất điều phối chính 01"}
+						,{"Pit02"				,ColPit02					,"String"	,"一次配車払出ピット02"			,""		,"Primary Dispatch Pit 02"				,"一次配车出库口02"	,"Cửa xuất điều phối chính 02"}
+						,{"Pit03"				,ColPit03					,"String"	,"一次配車払出ピット03"			,""		,"Primary Dispatch Pit 03"				,"一次配车出库口03"	,"Cửa xuất điều phối chính 03"}
+						,{"Pit04"				,ColPit04					,"String"	,"一次配車払出ピット04"			,""		,"Primary Dispatch Pit 04"				,"一次配车出库口04"	,"Cửa xuất điều phối chính 04"}
+						,{"Pit05"				,ColPit05					,"String"	,"一次配車払出ピット05"			,""		,"Primary Dispatch Pit 05"				,"一次配车出库口05"	,"Cửa xuất điều phối chính 05"}
 
-						,{"CLName01"			,ColCLName01				,"String"	,"荷主名"						,""		,"Client Name"							,"货主名称"}
-						,{"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"				,""		,"Client Group Code"					,"货主组代码"}
-						,{"CLGpName01"			,ColCLGpName01			,"String"	,"荷主グループ標記名"			,""		,"Client Group Display Name"			,"货主组显示名称"}
+						,{"CLName01"			,ColCLName01				,"String"	,"荷主名"						,""		,"Client Name"							,"货主名称"	,"Tên chủ hàng"}
+						,{"ClGpCD"				,ColClGpCD					,"String"	,"荷主グループCD"				,""		,"Client Group Code"					,"货主组代码"	,"Mã nhóm chủ hàng"}
+						,{"CLGpName01"			,ColCLGpName01			,"String"	,"荷主グループ標記名"			,""		,"Client Group Display Name"			,"货主组显示名称"	,"Tên hiển thị nhóm chủ hàng"}
 						};
 		Rt = B100_LanguageControl.RtControl(Rt);
 		return Rt;
 	}
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-				 {"String"		,null,	"Exact"		,ColSearchInvoiceWHCD			,B100_DefaultVariable.SearchWhList				,"倉庫CD"				,""		,"Warehouse Code"				,""		,"仓库代码"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"		,""		,"Client Group Code"			,""		,"货主组代码"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchClCd					,B100_DefaultVariable.SearchClList				,"荷主CD"				,""		,"Client Code"					,""		,"货主代码"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchOkuriNo					,""													,"送り状番号"			,""		,"Waybill No."					,""		,"运单号"					,""}
-				,{"String"		,null,	"Exact"		,ColSearchClDeliNo				,""													,"荷主管理番号"			,""		,"Client Reference No."			,""		,"货主管理编号"			,""}
-				,{"String"		,null,	"Exact"		,ColSearchPickupWhCd				,B100_DefaultVariable.SearchWhList				,"集荷倉庫CD"			,""		,"Pickup Warehouse Code"		,""		,"提货仓库代码"			,""}
-				,{"String"		,null,	"Exact"		,ColSearchPurposeFG				,B100_DefaultVariable.SearchPurposeList			,"目的フラグ"			,""		,"Purpose Flag"					,""		,"目的标志"				,""}
-				,{"Date"		,null,	"RangeStr"	,ColSearchPlanDateStr			,""													,"出荷予定日"			,"開始"	,"Planned Ship Date"			,"From"	,"计划出库日期"			,"开始"}
-				,{"Date"		,null,	"RangeStr"	,ColSearchShipDateStr			,""													,"出荷実績日"			,"開始"	,"Actual Ship Date"				,"From"	,"实际出库日期"			,"开始"}
-				,{"Date"		,null,	"RangeStr"	,ColSearchSPPlanDateStr			,""													,"着日指定"				,"開始"	,"Requested Delivery Date"		,"From"	,"指定到货日期"			,"开始"}
-				,{"Date"		,null,	"RangeStr"	,ColSearchSPDateStr				,""													,"着日実績"				,"開始"	,"Actual Delivery Date"			,"From"	,"实际到货日期"			,"开始"}
+				 {"String"		,null,	"Exact"		,ColSearchInvoiceWHCD			,B100_DefaultVariable.SearchWhList				,"倉庫CD"				,""		,"Warehouse Code"				,""		,"仓库代码"				,""	,"Mã kho"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList				,"荷主グループCD"		,""		,"Client Group Code"			,""		,"货主组代码"				,""	,"Mã nhóm chủ hàng"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchClCd					,B100_DefaultVariable.SearchClList				,"荷主CD"				,""		,"Client Code"					,""		,"货主代码"				,""	,"Mã chủ hàng"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchOkuriNo					,""													,"送り状番号"			,""		,"Waybill No."					,""		,"运单号"					,""	,"Số vận đơn"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchClDeliNo				,""													,"荷主管理番号"			,""		,"Client Reference No."			,""		,"货主管理编号"			,""	,"Số tham chiếu chủ hàng"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchPickupWhCd				,B100_DefaultVariable.SearchWhList				,"集荷倉庫CD"			,""		,"Pickup Warehouse Code"		,""		,"提货仓库代码"			,""	,"Mã kho lấy hàng"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchPurposeFG				,B100_DefaultVariable.SearchPurposeList			,"目的フラグ"			,""		,"Purpose Flag"					,""		,"目的标志"				,""	,"Cờ mục đích"	,""}
+				,{"Date"		,null,	"RangeStr"	,ColSearchPlanDateStr			,""													,"出荷予定日"			,"開始"	,"Planned Ship Date"			,"From"	,"计划出库日期"			,"开始"	,"Ngày xuất dự kiến"	,"Từ"}
+				,{"Date"		,null,	"RangeStr"	,ColSearchShipDateStr			,""													,"出荷実績日"			,"開始"	,"Actual Ship Date"				,"From"	,"实际出库日期"			,"开始"	,"Ngày xuất thực tế"	,"Từ"}
+				,{"Date"		,null,	"RangeStr"	,ColSearchSPPlanDateStr			,""													,"着日指定"				,"開始"	,"Requested Delivery Date"		,"From"	,"指定到货日期"			,"开始"	,"Ngày giao yêu cầu"	,"Từ"}
+				,{"Date"		,null,	"RangeStr"	,ColSearchSPDateStr				,""													,"着日実績"				,"開始"	,"Actual Delivery Date"			,"From"	,"实际到货日期"			,"开始"	,"Ngày giao thực tế"	,"Từ"}
 
-				,{"Date"		,null,	"RangeEnd"	,ColSearchPlanDateEnd			,""													,"出荷予定日"			,"終了"	,"Planned Ship Date"			,"To"	,"计划出库日期"			,"结束"}
-				,{"Date"		,null,	"RangeEnd"	,ColSearchShipDateEnd			,""													,"出荷実績日"			,"終了"	,"Actual Ship Date"				,"To"	,"实际出库日期"			,"结束"}
-				,{"Date"		,null,	"RangeEnd"	,ColSearchSPPlanDateEnd			,""													,"着日指定"				,"終了"	,"Requested Delivery Date"		,"To"	,"指定到货日期"			,"结束"}
-				,{"Date"		,null,	"RangeEnd"	,ColSearchSPDateEnd				,""													,"着日実績"				,"終了"	,"Actual Delivery Date"			,"To"	,"实际到货日期"			,"结束"}
+				,{"Date"		,null,	"RangeEnd"	,ColSearchPlanDateEnd			,""													,"出荷予定日"			,"終了"	,"Planned Ship Date"			,"To"	,"计划出库日期"			,"结束"	,"Ngày xuất dự kiến"	,"Đến"}
+				,{"Date"		,null,	"RangeEnd"	,ColSearchShipDateEnd			,""													,"出荷実績日"			,"終了"	,"Actual Ship Date"				,"To"	,"实际出库日期"			,"结束"	,"Ngày xuất thực tế"	,"Đến"}
+				,{"Date"		,null,	"RangeEnd"	,ColSearchSPPlanDateEnd			,""													,"着日指定"				,"終了"	,"Requested Delivery Date"		,"To"	,"指定到货日期"			,"结束"	,"Ngày giao yêu cầu"	,"Đến"}
+				,{"Date"		,null,	"RangeEnd"	,ColSearchSPDateEnd				,""													,"着日実績"				,"終了"	,"Actual Delivery Date"			,"To"	,"实际到货日期"			,"结束"	,"Ngày giao thực tế"	,"Đến"}
 
-				,{"Float"		,null,	"RangeMin"	,ColSearchTotalWeightMin			,""													,"荷物重量(kg)"			,"最小"	,"Total Weight (kg)"			,"Min"	,"货物重量(kg)"			,"最小"}
-				,{"Float"		,null,	"RangeMin"	,ColSearchTotalSizeMin			,""													,"荷物サイズ"			,"最小"	,"Total Size"					,"Min"	,"货物尺寸"				,"最小"}
-				,{"Integer"		,null,	"RangeMin"	,ColSearchTotalQtyMin			,""													,"個口数"				,"最小"	,"Package Qty"					,"Min"	,"包裹数量"				,"最小"}
+				,{"Float"		,null,	"RangeMin"	,ColSearchTotalWeightMin			,""													,"荷物重量(kg)"			,"最小"	,"Total Weight (kg)"			,"Min"	,"货物重量(kg)"			,"最小"	,"Tổng trọng lượng (kg)"	,"Tối thiểu"}
+				,{"Float"		,null,	"RangeMin"	,ColSearchTotalSizeMin			,""													,"荷物サイズ"			,"最小"	,"Total Size"					,"Min"	,"货物尺寸"				,"最小"	,"Tổng kích thước"	,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeMin"	,ColSearchTotalQtyMin			,""													,"個口数"				,"最小"	,"Package Qty"					,"Min"	,"包裹数量"				,"最小"	,"Số kiện"	,"Tối thiểu"}
 
-				,{"Float"		,null,	"RangeMax"	,ColSearchTotalWeightMax			,""													,"荷物重量(kg)"			,"最大"	,"Total Weight (kg)"			,"Max"	,"货物重量(kg)"			,"最大"}
-				,{"Float"		,null,	"RangeMax"	,ColSearchTotalSizeMax			,""													,"荷物サイズ"			,"最大"	,"Total Size"					,"Max"	,"货物尺寸"				,"最大"}
-				,{"Integer"		,null,	"RangeMax"	,ColSearchTotalQtyMax			,""													,"個口数"				,"最大"	,"Package Qty"					,"Max"	,"包裹数量"				,"最大"}
+				,{"Float"		,null,	"RangeMax"	,ColSearchTotalWeightMax			,""													,"荷物重量(kg)"			,"最大"	,"Total Weight (kg)"			,"Max"	,"货物重量(kg)"			,"最大"	,"Tổng trọng lượng (kg)"	,"Tối đa"}
+				,{"Float"		,null,	"RangeMax"	,ColSearchTotalSizeMax			,""													,"荷物サイズ"			,"最大"	,"Total Size"					,"Max"	,"货物尺寸"				,"最大"	,"Tổng kích thước"	,"Tối đa"}
+				,{"Integer"		,null,	"RangeMax"	,ColSearchTotalQtyMax			,""													,"個口数"				,"最大"	,"Package Qty"					,"Max"	,"包裹数量"				,"最大"	,"Số kiện"	,"Tối đa"}
 
-				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd01		,B100_DefaultVariable.SearchDeliveryType01		,"運送タイプ01"			,""		,"Delivery Type 01"				,""		,"运输类型01"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd02		,B100_DefaultVariable.SearchDeliveryType02		,"運送タイプ02"			,""		,"Delivery Type 02"				,""		,"运输类型02"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd03		,B100_DefaultVariable.SearchDeliveryType03		,"運送タイプ03"			,""		,"Delivery Type 03"				,""		,"运输类型03"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd04		,B100_DefaultVariable.SearchDeliveryType04		,"運送タイプ04"			,""		,"Delivery Type 04"				,""		,"运输类型04"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd05		,B100_DefaultVariable.SearchDeliveryType05		,"運送タイプ05"			,""		,"Delivery Type 05"				,""		,"运输类型05"				,""}
+				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd01		,B100_DefaultVariable.SearchDeliveryType01		,"運送タイプ01"			,""		,"Delivery Type 01"				,""		,"运输类型01"				,""	,"Loại vận chuyển 01"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd02		,B100_DefaultVariable.SearchDeliveryType02		,"運送タイプ02"			,""		,"Delivery Type 02"				,""		,"运输类型02"				,""	,"Loại vận chuyển 02"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd03		,B100_DefaultVariable.SearchDeliveryType03		,"運送タイプ03"			,""		,"Delivery Type 03"				,""		,"运输类型03"				,""	,"Loại vận chuyển 03"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd04		,B100_DefaultVariable.SearchDeliveryType04		,"運送タイプ04"			,""		,"Delivery Type 04"				,""		,"运输类型04"				,""	,"Loại vận chuyển 04"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchDeliveryTypeCd05		,B100_DefaultVariable.SearchDeliveryType05		,"運送タイプ05"			,""		,"Delivery Type 05"				,""		,"运输类型05"				,""	,"Loại vận chuyển 05"	,""}
 
-				,{"Integer"		,null,	"Exact"		,ColSearchCodFG					,B100_DefaultVariable.SearchCODList				,"代引区分"				,""		,"COD Type"						,""		,"货到付款类型"				,""}
-				,{"Integer"		,null,	"RangeMin"	,ColSearchCodPayTotalMin			,""													,"代引収受金額合計"		,"最小"	,"COD Collection Total"			,"Min"	,"货到付款收款总额"			,"最小"}
-				,{"Integer"		,null,	"RangeMax"	,ColSearchCodPayTotalMax			,""													,"代引収受金額合計"		,"最大"	,"COD Collection Total"			,"Max"	,"货到付款收款总额"			,"最大"}
+				,{"Integer"		,null,	"Exact"		,ColSearchCodFG					,B100_DefaultVariable.SearchCODList				,"代引区分"				,""		,"COD Type"						,""		,"货到付款类型"				,""	,"Loại COD"	,""}
+				,{"Integer"		,null,	"RangeMin"	,ColSearchCodPayTotalMin			,""													,"代引収受金額合計"		,"最小"	,"COD Collection Total"			,"Min"	,"货到付款收款总额"			,"最小"	,"Tổng tiền thu COD"	,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeMax"	,ColSearchCodPayTotalMax			,""													,"代引収受金額合計"		,"最大"	,"COD Collection Total"			,"Max"	,"货到付款收款总额"			,"最大"	,"Tổng tiền thu COD"	,"Tối đa"}
 
-				,{"Integer"		,null,	"Exact"		,ColSearchChildrenFG				,""													,"子伝票区分"			,""		,"Child Waybill Type"			,""		,"子运单类型"			,""}
-				,{"String"		,null,	"Exact"		,ColSearchParentOkuriNo			,""													,"親伝票番号"			,""		,"Parent Waybill No."			,""		,"父运单号"				,""}
+				,{"Integer"		,null,	"Exact"		,ColSearchChildrenFG				,""													,"子伝票区分"			,""		,"Child Waybill Type"			,""		,"子运单类型"			,""	,"Loại vận đơn con"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchParentOkuriNo			,""													,"親伝票番号"			,""		,"Parent Waybill No."			,""		,"父运单号"				,""	,"Số vận đơn cha"	,""}
 			
-				,{"String"		,null,	"Exact"		,ColSearchNiokuriCd				,""													,"荷送人CD"				,""		,"Shipper Code"					,""		,"发货人代码"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchNiokuriDepartmentCd	,""													,"荷送人部署CD"			,""		,"Shipper Department Code"		,""		,"发货人部门代码"			,""}
-				,{"String"		,null,	"Partial"	,ColSearchNiokuriName			,""													,"荷送人名称"			,""		,"Shipper Name"					,""		,"发货人名称"				,""}
-				,{"String"		,null,	"Prefix"	,ColSearchNiokuriPost			,""													,"荷送人郵便番号"		,""		,"Shipper Postal Code"			,""		,"发货人邮政编码"			,""}
-				,{"String"		,null,	"Partial"	,ColSearchNiokuriAdd				,""													,"荷送人住所"			,""		,"Shipper Address"				,""		,"发货人地址"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchNioKuriTel				,""													,"荷送人Tel"			,""		,"Shipper TEL"					,""		,"发货人电话"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchNioKuriFax				,""													,"荷送人Fax"			,""		,"Shipper FAX"					,""		,"发货人传真"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchNioKuriMail			,""													,"荷送人Mail"			,""		,"Shipper Email"				,""		,"发货人邮箱"				,""}
-				,{"String"		,null,	"Prefix"	,ColSearchNiokuriMunicCd			,""													,"荷送人市区町村CD"		,""		,"Shipper Municipality Code"	,""		,"发货人市区町村代码"		,""}
+				,{"String"		,null,	"Exact"		,ColSearchNiokuriCd				,""													,"荷送人CD"				,""		,"Shipper Code"					,""		,"发货人代码"				,""	,"Mã người gửi"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchNiokuriDepartmentCd	,""													,"荷送人部署CD"			,""		,"Shipper Department Code"		,""		,"发货人部门代码"			,""	,"Mã bộ phận người gửi"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchNiokuriName			,""													,"荷送人名称"			,""		,"Shipper Name"					,""		,"发货人名称"				,""	,"Tên người gửi"	,""}
+				,{"String"		,null,	"Prefix"	,ColSearchNiokuriPost			,""													,"荷送人郵便番号"		,""		,"Shipper Postal Code"			,""		,"发货人邮政编码"			,""	,"Mã bưu chính người gửi"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchNiokuriAdd				,""													,"荷送人住所"			,""		,"Shipper Address"				,""		,"发货人地址"				,""	,"Địa chỉ người gửi"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchNioKuriTel				,""													,"荷送人Tel"			,""		,"Shipper TEL"					,""		,"发货人电话"				,""	,"Điện thoại người gửi"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchNioKuriFax				,""													,"荷送人Fax"			,""		,"Shipper FAX"					,""		,"发货人传真"				,""	,"FAX người gửi"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchNioKuriMail			,""													,"荷送人Mail"			,""		,"Shipper Email"				,""		,"发货人邮箱"				,""	,"Email người gửi"	,""}
+				,{"String"		,null,	"Prefix"	,ColSearchNiokuriMunicCd			,""													,"荷送人市区町村CD"		,""		,"Shipper Municipality Code"	,""		,"发货人市区町村代码"		,""	,"Mã địa phương người gửi"	,""}
 
-				,{"String"		,null,	"Exact"		,ColSearchDeliCd					,""													,"届先CD"				,""		,"Destination Code"				,""		,"收货地代码"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchClDeliCd				,""													,"荷主届先CD"			,""		,"Client Destination Code"		,""		,"货主收货地代码"			,""}
-				,{"String"		,null,	"Exact"		,ColSearchDeliDepartmentCd		,""													,"届先部署CD"			,""		,"Destination Department Code"	,""		,"收货地部门代码"			,""}
-				,{"String"		,null,	"Partial"	,ColSearchDeliName				,""													,"届先名称"				,""		,"Destination Name"				,""		,"收货地名称"				,""}
-				,{"String"		,null,	"Prefix"	,ColSearchDeliPost				,""													,"届先郵便番号"			,""		,"Destination Postal Code"		,""		,"收货地邮政编码"			,""}
-				,{"String"		,null,	"Partial"	,ColSearchDeliAdd					,""													,"届先住所"				,""		,"Destination Address"			,""		,"收货地地址"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchDeliTel					,""													,"届先Tel"				,""		,"Destination TEL"				,""		,"收货地电话"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchDeliFax					,""													,"届先Fax"				,""		,"Destination FAX"				,""		,"收货地传真"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchDeliMail				,""													,"届先Mail"				,""		,"Destination Email"			,""		,"收货地邮箱"				,""}
-				,{"String"		,null,	"Prefix"	,ColSearchDeliMunicCd			,""													,"届先市区町村CD"		,""		,"Destination Municipality Code",""		,"收货地市区町村代码"		,""}
+				,{"String"		,null,	"Exact"		,ColSearchDeliCd					,""													,"届先CD"				,""		,"Destination Code"				,""		,"收货地代码"				,""	,"Mã điểm giao hàng"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchClDeliCd				,""													,"荷主届先CD"			,""		,"Client Destination Code"		,""		,"货主收货地代码"			,""	,"Mã điểm giao của chủ hàng"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchDeliDepartmentCd		,""													,"届先部署CD"			,""		,"Destination Department Code"	,""		,"收货地部门代码"			,""	,"Mã bộ phận điểm giao"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchDeliName				,""													,"届先名称"				,""		,"Destination Name"				,""		,"收货地名称"				,""	,"Tên điểm giao"	,""}
+				,{"String"		,null,	"Prefix"	,ColSearchDeliPost				,""													,"届先郵便番号"			,""		,"Destination Postal Code"		,""		,"收货地邮政编码"			,""	,"Mã bưu chính điểm giao"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchDeliAdd					,""													,"届先住所"				,""		,"Destination Address"			,""		,"收货地地址"				,""	,"Địa chỉ điểm giao"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchDeliTel					,""													,"届先Tel"				,""		,"Destination TEL"				,""		,"收货地电话"				,""	,"Điện thoại điểm giao"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchDeliFax					,""													,"届先Fax"				,""		,"Destination FAX"				,""		,"收货地传真"				,""	,"FAX điểm giao"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchDeliMail				,""													,"届先Mail"				,""		,"Destination Email"			,""		,"收货地邮箱"				,""	,"Email điểm giao"	,""}
+				,{"String"		,null,	"Prefix"	,ColSearchDeliMunicCd			,""													,"届先市区町村CD"		,""		,"Destination Municipality Code",""		,"收货地市区町村代码"		,""	,"Mã địa phương điểm giao"	,""}
 
-				,{"String"		,null,	"Partial"	,ColSearchCom						,""													,"コメント"				,""		,"Comment"						,""		,"备注"					,""}
-				,{"Integer"		,null,	"Exact"		,ColSearchStatus					,B100_DefaultVariable.SearchStatusList			,"運送ステータス"		,""		,"Delivery Status"				,""		,"运输状态"				,""}
+				,{"String"		,null,	"Partial"	,ColSearchCom						,""													,"コメント"				,""		,"Comment"						,""		,"备注"					,""	,"Ghi chú"	,""}
+				,{"Integer"		,null,	"Exact"		,ColSearchStatus					,B100_DefaultVariable.SearchStatusList			,"運送ステータス"		,""		,"Delivery Status"				,""		,"运输状态"				,""	,"Trạng thái giao hàng"	,""}
 
-				,{"Integer"		,null,	"Exact"		,ColSearchFeeFixFG				,B100_DefaultVariable.SearchFeeFixFgList			,"運賃確定フラグ"		,""		,"Freight Fixed Flag"			,""		,"运费确定标志"			,""}
-				,{"Integer"		,null,	"Exact"		,ColSearchReceiptStampFG			,B100_DefaultVariable.SearchReceiptStampFGList	,"受領印フラグ"			,""		,"Receipt Stamp Flag"			,""		,"收货章标志"				,""}
-				,{"Integer"		,null,	"Exact"		,ColSearchInvoiceStatus			,B100_DefaultVariable.SearchInvoiceStatusList	,"請求ステータス"		,""		,"Invoice Status"				,""		,"账单状态"				,""}
+				,{"Integer"		,null,	"Exact"		,ColSearchFeeFixFG				,B100_DefaultVariable.SearchFeeFixFgList			,"運賃確定フラグ"		,""		,"Freight Fixed Flag"			,""		,"运费确定标志"			,""	,"Cờ chốt cước"	,""}
+				,{"Integer"		,null,	"Exact"		,ColSearchReceiptStampFG			,B100_DefaultVariable.SearchReceiptStampFGList	,"受領印フラグ"			,""		,"Receipt Stamp Flag"			,""		,"收货章标志"				,""	,"Cờ dấu nhận hàng"	,""}
+				,{"Integer"		,null,	"Exact"		,ColSearchInvoiceStatus			,B100_DefaultVariable.SearchInvoiceStatusList	,"請求ステータス"		,""		,"Invoice Status"				,""		,"账单状态"				,""	,"Trạng thái hóa đơn"	,""}
 
-				,{"Integer"		,null,	"RangeMin"	,ColSearchWithOutTaxTotalMin	,""													,"税別運賃合計"			,"最小"	,"Freight Total Excl. Tax"		,"Min"	,"未税运费合计"			,"最小"}
-				,{"Integer"		,null,	"RangeMin"	,ColSearchTotalFeeMin			,""													,"税込運賃合計"			,"最小"	,"Freight Total Incl. Tax"		,"Min"	,"含税运费合计"			,"最小"}
-				,{"Date"		,null,	"RangeStr"	,ColSearchFeeFixDateStr			,""													,"運賃確定日"			,"開始"	,"Freight Fixed At"				,"From"	,"运费确定时间"			,"开始"}
-				,{"Date"		,null,	"RangeStr"	,ColSearchReceiptStampDateStr	,""													,"受領印日"				,"開始"	,"Receipt Stamp Date"			,"From"	,"收货章日期"				,"开始"}
-				,{"DateTime"	,null,	"RangeStr"	,ColSearchEntryDateStr			,""													,"登録日"				,"開始"	,"Created At"					,"From"	,"登记时间"				,"开始"}
-				,{"DateTime"	,null,	"RangeStr"	,ColSearchUpdateDateStr			,""													,"更新日"				,"開始"	,"Updated At"					,"From"	,"更新时间"				,"开始"}
+				,{"Integer"		,null,	"RangeMin"	,ColSearchWithOutTaxTotalMin	,""													,"税別運賃合計"			,"最小"	,"Freight Total Excl. Tax"		,"Min"	,"未税运费合计"			,"最小"	,"Tổng cước chưa thuế"	,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeMin"	,ColSearchTotalFeeMin			,""													,"税込運賃合計"			,"最小"	,"Freight Total Incl. Tax"		,"Min"	,"含税运费合计"			,"最小"	,"Tổng cước đã gồm thuế"	,"Tối thiểu"}
+				,{"Date"		,null,	"RangeStr"	,ColSearchFeeFixDateStr			,""													,"運賃確定日"			,"開始"	,"Freight Fixed At"				,"From"	,"运费确定时间"			,"开始"	,"Thời điểm chốt cước"	,"Từ"}
+				,{"Date"		,null,	"RangeStr"	,ColSearchReceiptStampDateStr	,""													,"受領印日"				,"開始"	,"Receipt Stamp Date"			,"From"	,"收货章日期"				,"开始"	,"Ngày đóng dấu nhận hàng"	,"Từ"}
+				,{"DateTime"	,null,	"RangeStr"	,ColSearchEntryDateStr			,""													,"登録日"				,"開始"	,"Created At"					,"From"	,"登记时间"				,"开始"	,"Ngày giờ tạo"	,"Từ"}
+				,{"DateTime"	,null,	"RangeStr"	,ColSearchUpdateDateStr			,""													,"更新日"				,"開始"	,"Updated At"					,"From"	,"更新时间"				,"开始"	,"Ngày giờ cập nhật"	,"Từ"}
 
-				,{"Integer"		,null,	"RangeMax"	,ColSearchWithOutTaxTotalMax	,""													,"税別運賃合計"			,"最大"	,"Freight Total Excl. Tax"		,"Max"	,"未税运费合计"			,"最大"}
-				,{"Integer"		,null,	"RangeMax"	,ColSearchTotalFeeMax			,""													,"税込運賃合計"			,"最大"	,"Freight Total Incl. Tax"		,"Max"	,"含税运费合计"			,"最大"}
-				,{"Date"		,null,	"RangeEnd"	,ColSearchFeeFixDateEnd			,""													,"運賃確定日"			,"終了"	,"Freight Fixed At"				,"To"	,"运费确定时间"			,"结束"}
-				,{"Date"		,null,	"RangeEnd"	,ColSearchReceiptStampDateEnd	,""													,"受領印日"				,"終了"	,"Receipt Stamp Date"			,"To"	,"收货章日期"				,"结束"}
-				,{"DateTime"	,null,	"RangeEnd"	,ColSearchEntryDateEnd			,""													,"登録日"				,"終了"	,"Created At"					,"To"	,"登记时间"				,"结束"}
-				,{"DateTime"	,null,	"RangeEnd"	,ColSearchUpdateDateEnd			,""													,"更新日"				,"終了"	,"Updated At"					,"To"	,"更新时间"				,"结束"}
+				,{"Integer"		,null,	"RangeMax"	,ColSearchWithOutTaxTotalMax	,""													,"税別運賃合計"			,"最大"	,"Freight Total Excl. Tax"		,"Max"	,"未税运费合计"			,"最大"	,"Tổng cước chưa thuế"	,"Tối đa"}
+				,{"Integer"		,null,	"RangeMax"	,ColSearchTotalFeeMax			,""													,"税込運賃合計"			,"最大"	,"Freight Total Incl. Tax"		,"Max"	,"含税运费合计"			,"最大"	,"Tổng cước đã gồm thuế"	,"Tối đa"}
+				,{"Date"		,null,	"RangeEnd"	,ColSearchFeeFixDateEnd			,""													,"運賃確定日"			,"終了"	,"Freight Fixed At"				,"To"	,"运费确定时间"			,"结束"	,"Thời điểm chốt cước"	,"Đến"}
+				,{"Date"		,null,	"RangeEnd"	,ColSearchReceiptStampDateEnd	,""													,"受領印日"				,"終了"	,"Receipt Stamp Date"			,"To"	,"收货章日期"				,"结束"	,"Ngày đóng dấu nhận hàng"	,"Đến"}
+				,{"DateTime"	,null,	"RangeEnd"	,ColSearchEntryDateEnd			,""													,"登録日"				,"終了"	,"Created At"					,"To"	,"登记时间"				,"结束"	,"Ngày giờ tạo"	,"Đến"}
+				,{"DateTime"	,null,	"RangeEnd"	,ColSearchUpdateDateEnd			,""													,"更新日"				,"終了"	,"Updated At"					,"To"	,"更新时间"				,"结束"	,"Ngày giờ cập nhật"	,"Đến"}
 
-				,{"String"		,null,	"Partial"	,ColSearchEntryUser				,""													,"登録者"				,""		,"Created By"					,""		,"登记人"					,""}
-				,{"String"		,null,	"Partial"	,ColSearchUpdateUser				,""													,"更新者"				,""		,"Updated By"					,""		,"更新人"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchEntryPG					,""													,"登録プログラム"		,""		,"Created Program"				,""		,"登记程序"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchUpdatePG				,""													,"更新プログラム"		,""		,"Updated Program"				,""		,"更新程序"				,""}
+				,{"String"		,null,	"Partial"	,ColSearchEntryUser				,""													,"登録者"				,""		,"Created By"					,""		,"登记人"					,""	,"Người tạo"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchUpdateUser				,""													,"更新者"				,""		,"Updated By"					,""		,"更新人"				,""	,"Người cập nhật"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchEntryPG					,""													,"登録プログラム"		,""		,"Created Program"				,""		,"登记程序"				,""	,"Chương trình tạo"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchUpdatePG				,""													,"更新プログラム"		,""		,"Updated Program"				,""		,"更新程序"				,""	,"Chương trình cập nhật"	,""}
 
-				,{"String"		,null,	"Exact"		,ColSearchUseFeeBasePtCd			,""													,"運転計算タリフ"		,""		,"Freight Tariff"				,""		,"运费费率"				,""}
-				,{"Integer"		,null,	"Exact"		,ColSearchWmsStatus				,B100_DefaultVariable.SearchWmsStatusList		,"倉庫出荷ステータス"	,""		,"Warehouse Ship Status"		,""		,"仓库出库状态"			,""}
-				,{"Date"		,null,	"RangeStr"	,ColSearchWmsShipDateStr			,""													,"倉庫出荷日時"			,"開始"	,"Warehouse Ship Date"			,"From"	,"仓库出库日期"			,"开始"}
-				,{"Date"		,null,	"RangeEnd"	,ColSearchWmsShipDateEnd			,""													,"倉庫出荷日時"			,"終了"	,"Warehouse Ship Date"			,"To"	,"仓库出库日期"			,"结束"}
+				,{"String"		,null,	"Exact"		,ColSearchUseFeeBasePtCd			,""													,"運転計算タリフ"		,""		,"Freight Tariff"				,""		,"运费费率"				,""	,"Biểu cước vận chuyển"	,""}
+				,{"Integer"		,null,	"Exact"		,ColSearchWmsStatus				,B100_DefaultVariable.SearchWmsStatusList		,"倉庫出荷ステータス"	,""		,"Warehouse Ship Status"		,""		,"仓库出库状态"			,""	,"Trạng thái xuất kho"	,""}
+				,{"Date"		,null,	"RangeStr"	,ColSearchWmsShipDateStr			,""													,"倉庫出荷日時"			,"開始"	,"Warehouse Ship Date"			,"From"	,"仓库出库日期"			,"开始"	,"Ngày xuất kho"	,"Từ"}
+				,{"Date"		,null,	"RangeEnd"	,ColSearchWmsShipDateEnd			,""													,"倉庫出荷日時"			,"終了"	,"Warehouse Ship Date"			,"To"	,"仓库出库日期"			,"结束"	,"Ngày xuất kho"	,"Đến"}
 
-				,{"String"		,null,	"Exact"		,ColSearchCourseGpCd				,""													,"配車コースグループCD"	,""		,"Route Group Code"				,""		,"配送路线组代码"		,""}
-				,{"String"		,null,	"Exact"		,ColSearchCourseCD				,""													,"配車コースCD"			,""		,"Route Code"					,""		,"配送路线代码"			,""}
-				,{"Integer"		,null,	"Exact"		,ColSearchCourseCDEda			,""													,"配車コースCD枝番"		,""		,"Route Code Branch"			,""		,"配送路线代码分支"		,""}
-				,{"String"		,null,	"Exact"		,ColSearchPitGrp					,""													,"払出ピットグループ"	,""		,"Dispatch Pit Group"			,""		,"出库口组"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchPit						,""													,"払出ピット"			,""		,"Dispatch Pit"					,""		,"出库口"					,""}
+				,{"String"		,null,	"Exact"		,ColSearchCourseGpCd				,""													,"配車コースグループCD"	,""		,"Route Group Code"				,""		,"配送路线组代码"		,""	,"Mã nhóm tuyến"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchCourseCD				,""													,"配車コースCD"			,""		,"Route Code"					,""		,"配送路线代码"			,""	,"Mã tuyến"	,""}
+				,{"Integer"		,null,	"Exact"		,ColSearchCourseCDEda			,""													,"配車コースCD枝番"		,""		,"Route Code Branch"			,""		,"配送路线代码分支"		,""	,"Nhánh mã tuyến"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchPitGrp					,""													,"払出ピットグループ"	,""		,"Dispatch Pit Group"			,""		,"出库口组"				,""	,"Nhóm cửa xuất điều phối"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchPit						,""													,"払出ピット"			,""		,"Dispatch Pit"					,""		,"出库口"					,""	,"Cửa xuất điều phối"	,""}
 
-				,{"String"		,null,	"Exact"		,ColSearchMsItemCd				,""													,"商品CD"				,""		,"Item Code"					,""		,"商品代码"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchMsItemName				,""													,"商品名"				,""		,"Item Name"					,""		,"商品名称"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchClItemCd				,""													,"荷主商品CD"			,""		,"Client Item Code"				,""		,"货主商品代码"			,""}
+				,{"String"		,null,	"Exact"		,ColSearchMsItemCd				,""													,"商品CD"				,""		,"Item Code"					,""		,"商品代码"				,""	,"Mã hàng"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchMsItemName				,""													,"商品名"				,""		,"Item Name"					,""		,"商品名称"				,""	,"Tên hàng"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchClItemCd				,""													,"荷主商品CD"			,""		,"Client Item Code"				,""		,"货主商品代码"			,""	,"Mã hàng chủ hàng"	,""}
 
-				,{"String"		,null,	"Exact"		,ColSearchMsCategoryCd			,""													,"カテゴリCD"			,""		,"Category Code"				,""		,"分类代码"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchMsCategoryName			,""													,"カテゴリ名"			,""		,"Category Name"				,""		,"分类名称"				,""}
-				,{"String"		,null,	"Exact"		,ColSearchMsTildFG				,""													,"温度区分"				,""		,"Temperature Type"				,""		,"温度类型"				,""}
-				,{"String"		,null,	"Partial"	,ColSearchMsTildName				,""													,"温度区分名"			,""		,"Temperature Type Name"		,""		,"温度类型名称"			,""}
+				,{"String"		,null,	"Exact"		,ColSearchMsCategoryCd			,""													,"カテゴリCD"			,""		,"Category Code"				,""		,"分类代码"				,""	,"Mã phân loại"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchMsCategoryName			,""													,"カテゴリ名"			,""		,"Category Name"				,""		,"分类名称"				,""	,"Tên phân loại"	,""}
+				,{"String"		,null,	"Exact"		,ColSearchMsTildFG				,""													,"温度区分"				,""		,"Temperature Type"				,""		,"温度类型"				,""	,"Loại nhiệt độ"	,""}
+				,{"String"		,null,	"Partial"	,ColSearchMsTildName				,""													,"温度区分名"			,""		,"Temperature Type Name"		,""		,"温度类型名称"			,""	,"Tên loại nhiệt độ"	,""}
 
-				,{"String"		,null,	"Exact"		,ColSearchMsLot					,""													,"ロット指定"			,""		,"Lot"							,""		,"批次"					,""}
-				,{"Date"		,null,	"RangeStr"	,ColSearchMsExpDateStr			,""													,"賞味期限指定"			,"開始"	,"Expiration Date"				,"From"	,"有效期"				,"开始"}
-				,{"Date"		,null,	"RangeEnd"	,ColSearchMsExpDateEnd			,""													,"賞味期限指定"			,"終了"	,"Expiration Date"				,"To"	,"有效期"				,"结束"}
-				,{"Integer"		,null,	"Exact	"	,ColSearchMsPackingType			,B100_DefaultVariable.SearchUnitTypeList			,"荷姿タイプ"			,""		,"Packing Type"					,""		,"包装类型"				,""}
+				,{"String"		,null,	"Exact"		,ColSearchMsLot					,""													,"ロット指定"			,""		,"Lot"							,""		,"批次"					,""	,"Lô"	,""}
+				,{"Date"		,null,	"RangeStr"	,ColSearchMsExpDateStr			,""													,"賞味期限指定"			,"開始"	,"Expiration Date"				,"From"	,"有效期"				,"开始"	,"Hạn sử dụng"	,"Từ"}
+				,{"Date"		,null,	"RangeEnd"	,ColSearchMsExpDateEnd			,""													,"賞味期限指定"			,"終了"	,"Expiration Date"				,"To"	,"有效期"				,"结束"	,"Hạn sử dụng"	,"Đến"}
+				,{"Integer"		,null,	"Exact	"	,ColSearchMsPackingType			,B100_DefaultVariable.SearchUnitTypeList			,"荷姿タイプ"			,""		,"Packing Type"					,""		,"包装类型"				,""	,"Loại đóng gói"	,""}
 				
 			};
 		
