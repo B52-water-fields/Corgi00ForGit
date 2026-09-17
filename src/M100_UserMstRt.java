@@ -126,38 +126,38 @@ public class M100_UserMstRt{
 	
 	public static Object[][] RtUserMstRt(){
 		Object[][] RtSettingUserMstRt = {
-				 {"WHCD"					,ColWHCD						,"String"	,"倉庫CD"				,"Key"}
-				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"			,"Key"}
-				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社名"			,""}
-				,{"UserCd"					,ColUserCd						,"String"	,"ユーザーCD"			,"Key"}
-				,{"PassWord"				,ColPassWord					,"String"	,"パスワード"			,""}
-				,{"AuthorityFG"				,ColAuthorityFG				,"int"		,"権限区分"				,""}
-				,{"CarCd"					,ColCarCd						,"String"	,"標準車輛CD"			,""}
-				,{"CarName01"				,ColCarName01					,"String"	,"車両表記名"			,""}
-				,{"CarName02"				,ColCarName02					,"String"	,"車両正式名"			,""}
-				,{"CarName03"				,ColCarName03					,"String"	,"車両略名"				,""}
-				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"			,""}
-				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"			,""}
-				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"			,""}
-				,{"Post"					,ColPost						,"String"	,"郵便番号"				,""}
-				,{"Add01"					,ColAdd01						,"String"	,"住所1"				,""}
-				,{"Add02"					,ColAdd02						,"String"	,"住所2"				,""}
-				,{"Add03"					,ColAdd03						,"String"	,"住所3"				,""}
-				,{"Tel"						,ColTel						,"String"	,"電話番号"				,""}
-				,{"Fax"						,ColFax						,"String"	,"FAX"					,""}
-				,{"Mail"					,ColMail						,"String"	,"Mail"					,""}
-				,{"Com01"					,ColCom01						,"String"	,"コメント1"			,""}
-				,{"Com02"					,ColCom02						,"String"	,"コメント2"			,""}
-				,{"Com03"					,ColCom03						,"String"	,"コメント3"			,""}
-				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"		,""}
-				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"		,""}
-				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者CD"				,""}
-				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者CD"				,""}
-				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹SYSユーザーCD"	,""}
-				,{"DelFg"					,ColDelFg						,"int"		,"削除区分"				,""}
-				,{"WHName"					,ColWHName						,"String"	,"倉庫名"				,""}
-				,{"MainClient"				,ColMainClient				,"String"	,"主要担当荷主CD"		,""}
-				,{"CLName01"				,ColCLName01					,"String"	,"主要担当荷主名"		,""}
+				 {"WHCD"					,ColWHCD						,"String"	,"倉庫CD"				,"Key"	,"Warehouse Code"	,"仓库代码"	,"Mã kho"}
+				,{"ShippingCompanyCd"		,ColShippingCompanyCd		,"String"	,"運送会社CD"			,"Key"	,"Carrier Code"	,"运输公司代码"	,"Mã công ty vận chuyển"}
+				,{"ShippingCompanyName01"	,ColShippingCompanyName01	,"String"	,"運送会社名"			,""	,"Carrier Name"	,"运输公司名称"	,"Tên công ty vận chuyển"}
+				,{"UserCd"					,ColUserCd						,"String"	,"ユーザーCD"			,"Key"	,"User Code"	,"用户代码"	,"Mã người dùng"}
+				,{"PassWord"				,ColPassWord					,"String"	,"パスワード"			,""	,"Password"	,"密码"	,"Mật khẩu"}
+				,{"AuthorityFG"				,ColAuthorityFG				,"int"		,"権限区分"				,""	,"Permission Type"	,"权限类型"	,"Loại quyền"}
+				,{"CarCd"					,ColCarCd						,"String"	,"標準車輛CD"			,""	,"Default Vehicle Code"	,"默认车辆代码"	,"Mã xe mặc định"}
+				,{"CarName01"				,ColCarName01					,"String"	,"車両表記名"			,""	,"Vehicle Display Name"	,"车辆显示名称"	,"Tên hiển thị xe"}
+				,{"CarName02"				,ColCarName02					,"String"	,"車両正式名"			,""	,"Vehicle Official Name"	,"车辆正式名称"	,"Tên chính thức xe"}
+				,{"CarName03"				,ColCarName03					,"String"	,"車両略名"				,""	,"Vehicle Short Name"	,"车辆简称"	,"Tên viết tắt xe"}
+				,{"UserName01"				,ColUserName01				,"String"	,"ユーザー名1"			,""	,"User Name 1"	,"用户名1"	,"Tên người dùng 1"}
+				,{"UserName02"				,ColUserName02				,"String"	,"ユーザー名2"			,""	,"User Name 2"	,"用户名2"	,"Tên người dùng 2"}
+				,{"UserName03"				,ColUserName03				,"String"	,"ユーザー名3"			,""	,"User Name 3"	,"用户名3"	,"Tên người dùng 3"}
+				,{"Post"					,ColPost						,"String"	,"郵便番号"				,""	,"Postal Code"	,"邮政编码"	,"Mã bưu chính"}
+				,{"Add01"					,ColAdd01						,"String"	,"住所1"				,""	,"Address 1"	,"地址1"	,"Địa chỉ 1"}
+				,{"Add02"					,ColAdd02						,"String"	,"住所2"				,""	,"Address 2"	,"地址2"	,"Địa chỉ 2"}
+				,{"Add03"					,ColAdd03						,"String"	,"住所3"				,""	,"Address 3"	,"地址3"	,"Địa chỉ 3"}
+				,{"Tel"						,ColTel						,"String"	,"電話番号"				,""	,"TEL"	,"电话"	,"Điện thoại"}
+				,{"Fax"						,ColFax						,"String"	,"FAX"					,""	,"FAX"	,"传真"	,"FAX"}
+				,{"Mail"					,ColMail						,"String"	,"Mail"					,""	,"Email"	,"邮箱"	,"Email"}
+				,{"Com01"					,ColCom01						,"String"	,"コメント1"			,""	,"Comment 1"	,"备注1"	,"Ghi chú 1"}
+				,{"Com02"					,ColCom02						,"String"	,"コメント2"			,""	,"Comment 2"	,"备注2"	,"Ghi chú 2"}
+				,{"Com03"					,ColCom03						,"String"	,"コメント3"			,""	,"Comment 3"	,"备注3"	,"Ghi chú 3"}
+				,{"EntryDate"				,ColEntryDate					,"DateTime"	,"データ登録日時"		,""	,"Created At"	,"登记时间"	,"Ngày giờ tạo"}
+				,{"UpdateDate"				,ColUpdateDate				,"DateTime"	,"データ更新日時"		,""	,"Updated At"	,"更新时间"	,"Ngày giờ cập nhật"}
+				,{"EntryUser"				,ColEntryUser					,"String"	,"登録者CD"				,""	,"Created By Code"	,"登记人代码"	,"Mã người tạo"}
+				,{"UpdateUser"				,ColUpdateUser				,"String"	,"更新者CD"				,""	,"Updated By Code"	,"更新人代码"	,"Mã người cập nhật"}
+				,{"PTMSCD"					,ColPTMSCD						,"String"	,"基幹SYSユーザーCD"	,""	,"Core System User Code"	,"核心系统用户代码"	,"Mã người dùng hệ thống lõi"}
+				,{"DelFg"					,ColDelFg						,"int"		,"削除区分"				,""	,"Delete Type"	,"删除类型"	,"Loại xóa"}
+				,{"WHName"					,ColWHName						,"String"	,"倉庫名"				,""	,"Warehouse Name"	,"仓库名称"	,"Tên kho"}
+				,{"MainClient"				,ColMainClient				,"String"	,"主要担当荷主CD"		,""	,"Primary Client Code"	,"主要货主代码"	,"Mã chủ hàng chính"}
+				,{"CLName01"				,ColCLName01					,"String"	,"主要担当荷主名"		,""	,"Primary Client Name"	,"主要货主名称"	,"Tên chủ hàng chính"}
 				};
 		
 		RtSettingUserMstRt = B100_LanguageControl.RtControl(RtSettingUserMstRt);
@@ -167,20 +167,20 @@ public class M100_UserMstRt{
 
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-					 {"String"		,null	,"Exact"	,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫CD"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchAuthorityFG		,B100_DefaultVariable.SearchAuthorityFG				,"権限区分"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchUserCd				,""														,"ユーザーCD"	,""}
-					,{"String"		,null	,"Partial"	,ColSearchUserName			,""														,"ユーザー名"	,""}
-					,{"String"		,null	,"Exact"	,ColSearchCarCd				,""														,"標準車輛CD"	,""}
-					,{"String"		,null	,"Partial"	,ColSearchCarName				,""														,"標準車両名"	,""}
-					,{"String"		,null	,"Prefix"	,ColSearchPost				,""														,"郵便番号"		,""}
-					,{"String"		,null	,"Partial"	,ColSearchAdd					,""														,"住所"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchTel					,""														,"Tel"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchFax					,""														,"Fax"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchMail				,""														,"Mail"			,""}
-					,{"String"		,null	,"Partial"	,ColSearchCom					,""														,"コメント"		,""}
-					,{"String"		,null	,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除区分"		,""}
+					 {"String"		,null	,"Exact"	,ColSearchWHCD				,B100_DefaultVariable.SearchWhList					,"倉庫CD"		,""	,"Warehouse Code"	,""	,"仓库代码"	,""	,"Mã kho"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchShippingCompanyCd	,B100_DefaultVariable.SearchShippingCompanyList		,"運送会社CD"	,""	,"Carrier Code"	,""	,"运输公司代码"	,""	,"Mã công ty vận chuyển"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchAuthorityFG		,B100_DefaultVariable.SearchAuthorityFG				,"権限区分"		,""	,"Permission Type"	,""	,"权限类型"	,""	,"Loại quyền"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchUserCd				,""														,"ユーザーCD"	,""	,"User Code"	,""	,"用户代码"	,""	,"Mã người dùng"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchUserName			,""														,"ユーザー名"	,""	,"User Name"	,""	,"用户名"	,""	,"Tên người dùng"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchCarCd				,""														,"標準車輛CD"	,""	,"Default Vehicle Code"	,""	,"默认车辆代码"	,""	,"Mã xe mặc định"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCarName				,""														,"標準車両名"	,""	,"Default Vehicle Name"	,""	,"默认车辆名称"	,""	,"Tên xe mặc định"	,""}
+					,{"String"		,null	,"Prefix"	,ColSearchPost				,""														,"郵便番号"		,""	,"Postal Code"	,""	,"邮政编码"	,""	,"Mã bưu chính"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchAdd					,""														,"住所"			,""	,"Address"	,""	,"地址"	,""	,"Địa chỉ"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchTel					,""														,"Tel"			,""	,"TEL"	,""	,"电话"	,""	,"Điện thoại"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchFax					,""														,"Fax"			,""	,"FAX"	,""	,"传真"	,""	,"FAX"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchMail				,""														,"Mail"			,""	,"Email"	,""	,"邮箱"	,""	,"Email"	,""}
+					,{"String"		,null	,"Partial"	,ColSearchCom					,""														,"コメント"		,""	,"Comment"	,""	,"备注"	,""	,"Ghi chú"	,""}
+					,{"String"		,null	,"Exact"	,ColSearchDelFg				,B100_DefaultVariable.SearchDelList					,"削除区分"		,""	,"Delete Type"	,""	,"删除类型"	,""	,"Loại xóa"	,""}
 					};		
 		
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
