@@ -752,46 +752,46 @@ public class T100_OkuriMsRt{
 						,{"CLGpName01"			,ColCLGpName01			,"String"	,"荷主グループ標記名"			,""		,"Client Group Display Name"			,"货主组显示名称"}
 						
 						
-						,{"MsClCd"				,ColMsClCd					,"String"	,"明細荷主CD"					,""}
-						,{"MsInvoiceWhCd"		,ColMsInvoiceWhCd			,"String"	,"明細倉庫CD"					,""}
-						,{"MsOkuriNo"			,ColMsOkuriNo				,"String"	,"明細送り状番号"				,""}
-						,{"MsNo"				,ColMsNo					,"int"		,"明細番号"						,"Key"}
-						,{"MsDeliNo"			,ColMsDeliNo				,"String"	,"明細出荷番号"					,""}
-						,{"MsDelliMsNo"			,ColMsDelliMsNo			,"int"		,"明細出荷番号明細番号"			,""}
-						,{"MsClOrderNo"			,ColMsClOrderNo			,"String"	,"明細荷主管理番号"				,""}
-						,{"MsClGpCd"			,ColMsClGpCd				,"String"	,"明細荷主グループCD"			,""}
-						,{"MsItemCd"			,ColMsItemCd				,"String"	,"明細商品コード"				,""}
-						,{"MsItemName01"		,ColMsItemName01			,"String"	,"明細商品表記名"				,""}
-						,{"MsItemName02"		,ColMsItemName02			,"String"	,"明細商品正式名"				,""}
-						,{"MsItemName03"		,ColMsItemName03			,"String"	,"明細商品略名"					,""}
-						,{"MsUnitWeight"		,ColMsUnitWeight			,"float"	,"明細単位重量"					,""}
-						,{"MsUnitSize"			,ColMsUnitSize			,"float"	,"明細単位サイズ"				,""}
-						,{"MsQty"				,ColMsQty					,"int"		,"明細個数"						,""}
-						,{"MsPackingQty"		,ColMsPackingQty			,"int"		,"明細荷姿数量"					,""}
-						,{"MsUnitName"			,ColMsUnitName			,"String"	,"明細明細単位"					,""}
-						,{"MsSubTotalWeight"	,ColMsSubTotalWeight		,"float"	,"明細明細重量"					,""}
-						,{"MsSubTotalSize"		,ColMsSubTotalSize		,"float"	,"明細明細サイズ"				,""}
-						,{"MsUnitPrice"			,ColMsUnitPrice			,"float"	,"明細単価"						,""}
-						,{"MsSubTotalPrice"		,ColMsSubTotalPrice		,"float"	,"明細金額"						,""}
-						,{"MsCategoryCd"		,ColMsCategoryCd			,"String"	,"明細商品分類"					,""}
-						,{"MsCategoryName"		,ColMsCategoryName		,"String"	,"明細商品分類名"				,""}
-						,{"MsTildFG"			,ColMsTildFG				,"String"	,"明細温度区分"					,""}
-						,{"MsTildName"			,ColMsTildName			,"String"	,"明細温度区分名"				,""}
-						,{"MsCom01"				,ColMsCom01				,"String"	,"明細コメント01"				,""}
-						,{"MsCom02"				,ColMsCom02				,"String"	,"明細コメント02"				,""}
-						,{"MsCom03"				,ColMsCom03				,"String"	,"明細コメント03"				,""}
-						,{"MsCom04"				,ColMsCom04				,"String"	,"明細コメント04"				,""}
-						,{"MsCom05"				,ColMsCom05				,"String"	,"明細コメント05"				,""}
-						,{"MsEntryDate"			,ColMsEntryDate			,"DateTime"	,"明細登録日"					,""}
-						,{"MsUpdateDate"		,ColMsUpdateDate			,"DateTime"	,"明細更新日"					,""}
-						,{"MsEntryUser"			,ColMsEntryUser			,"String"	,"明細登録者"					,""}
-						,{"MsUpdateUser"		,ColMsUpdateUser			,"String"	,"明細更新者"					,""}
-						,{"MsLot"				,ColMsLot					,"String"	,"明細ロット指定"				,""}
-						,{"MsExpDate"			,ColMsExpDate				,"Date"		,"明細賞味期限指定"				,""}
-						,{"MsPackingType"		,ColMsPackingType			,"int"		,"明細荷姿タイプ"				,""}
-						,{"MsClItemCd"			,ColMsClItemCd			,"String"	,"明細荷主商品CD"				,""}
-						,{"MsItemMDNo"			,ColMsItemMDNo			,"String"	,"明細型番"						,""}
-						,{"MsJanCd"				,ColMsJanCd				,"String"	,"明細荷姿JanCd"				,""}
+						,{"MsClCd"				,ColMsClCd					,"String"	,"明細荷主CD"					,"","Detail Client Code","明细货主代码"}
+						,{"MsInvoiceWhCd"		,ColMsInvoiceWhCd			,"String"	,"明細倉庫CD"					,"","Detail Warehouse Code","明细仓库代码"}
+						,{"MsOkuriNo"			,ColMsOkuriNo				,"String"	,"明細送り状番号"				,"","Detail Waybill No.","明细运单号"}
+						,{"MsNo"				,ColMsNo					,"int"		,"明細番号"						,"Key","Detail No.","明细编号"}
+						,{"MsDeliNo"			,ColMsDeliNo				,"String"	,"明細出荷番号"					,"","Detail Shipment No.","明细出库编号"}
+						,{"MsDelliMsNo"			,ColMsDelliMsNo			,"int"		,"明細出荷番号明細番号"			,"","Detail Shipment Line No.","明细出库编号明细编号"}
+						,{"MsClOrderNo"			,ColMsClOrderNo			,"String"	,"明細荷主管理番号"				,"","Detail Client Reference No.","明细货主管理编号"}
+						,{"MsClGpCd"			,ColMsClGpCd				,"String"	,"明細荷主グループCD"			,"","Detail Client Group Code","明细货主组代码"}
+						,{"MsItemCd"			,ColMsItemCd				,"String"	,"明細商品コード"				,"","Detail Item Code","明细商品代码"}
+						,{"MsItemName01"		,ColMsItemName01			,"String"	,"明細商品表記名"				,"","Detail Item Display Name","明细商品显示名称"}
+						,{"MsItemName02"		,ColMsItemName02			,"String"	,"明細商品正式名"				,"","Detail Item Official Name","明细商品正式名称"}
+						,{"MsItemName03"		,ColMsItemName03			,"String"	,"明細商品略名"					,"","Detail Item Abbreviated Name","明细商品简称"}
+						,{"MsUnitWeight"		,ColMsUnitWeight			,"float"	,"明細単位重量"					,"","Detail Unit Weight","明细单位重量"}
+						,{"MsUnitSize"			,ColMsUnitSize			,"float"	,"明細単位サイズ"				,"","Detail Unit Size","明细单位尺寸"}
+						,{"MsQty"				,ColMsQty					,"int"		,"明細個数"						,"","Detail Quantity","明细数量"}
+						,{"MsPackingQty"		,ColMsPackingQty			,"int"		,"明細荷姿数量"					,"","Detail Packing Quantity","明细包装数量"}
+						,{"MsUnitName"			,ColMsUnitName			,"String"	,"明細明細単位"					,"","Detail Unit","明细单位"}
+						,{"MsSubTotalWeight"	,ColMsSubTotalWeight		,"float"	,"明細明細重量"					,"","Detail Weight","明细重量"}
+						,{"MsSubTotalSize"		,ColMsSubTotalSize		,"float"	,"明細明細サイズ"				,"","Detail Size","明细尺寸"}
+						,{"MsUnitPrice"			,ColMsUnitPrice			,"float"	,"明細単価"						,"","Detail Unit Price","明细单价"}
+						,{"MsSubTotalPrice"		,ColMsSubTotalPrice		,"float"	,"明細金額"						,"","Detail Amount","明细金额"}
+						,{"MsCategoryCd"		,ColMsCategoryCd			,"String"	,"明細商品分類"					,"","Detail Item Category","明细商品分类"}
+						,{"MsCategoryName"		,ColMsCategoryName		,"String"	,"明細商品分類名"				,"","Detail Item Category Name","明细商品分类名称"}
+						,{"MsTildFG"			,ColMsTildFG				,"String"	,"明細温度区分"					,"","Detail Temperature Type","明细温度类型"}
+						,{"MsTildName"			,ColMsTildName			,"String"	,"明細温度区分名"				,"","Detail Temperature Type Name","明细温度类型名称"}
+						,{"MsCom01"				,ColMsCom01				,"String"	,"明細コメント01"				,"","Detail Comment 01","明细备注01"}
+						,{"MsCom02"				,ColMsCom02				,"String"	,"明細コメント02"				,"","Detail Comment 02","明细备注02"}
+						,{"MsCom03"				,ColMsCom03				,"String"	,"明細コメント03"				,"","Detail Comment 03","明细备注03"}
+						,{"MsCom04"				,ColMsCom04				,"String"	,"明細コメント04"				,"","Detail Comment 04","明细备注04"}
+						,{"MsCom05"				,ColMsCom05				,"String"	,"明細コメント05"				,"","Detail Comment 05","明细备注05"}
+						,{"MsEntryDate"			,ColMsEntryDate			,"DateTime"	,"明細登録日"					,"","Detail Created At","明细登记时间"}
+						,{"MsUpdateDate"		,ColMsUpdateDate			,"DateTime"	,"明細更新日"					,"","Detail Updated At","明细更新时间"}
+						,{"MsEntryUser"			,ColMsEntryUser			,"String"	,"明細登録者"					,"","Detail Created By","明细登记人"}
+						,{"MsUpdateUser"		,ColMsUpdateUser			,"String"	,"明細更新者"					,"","Detail Updated By","明细更新人"}
+						,{"MsLot"				,ColMsLot					,"String"	,"明細ロット指定"				,"","Detail Specified Lot","明细指定批次"}
+						,{"MsExpDate"			,ColMsExpDate				,"Date"		,"明細賞味期限指定"				,"","Detail Specified Expiration Date","明细指定保质期"}
+						,{"MsPackingType"		,ColMsPackingType			,"int"		,"明細荷姿タイプ"				,"","Detail Packing Type","明细包装类型"}
+						,{"MsClItemCd"			,ColMsClItemCd			,"String"	,"明細荷主商品CD"				,"","Detail Client Item Code","明细货主商品代码"}
+						,{"MsItemMDNo"			,ColMsItemMDNo			,"String"	,"明細型番"						,"","Detail Model No.","明细型号"}
+						,{"MsJanCd"				,ColMsJanCd				,"String"	,"明細荷姿JanCd"				,"","Detail Packing JAN Code","明细包装JAN码"}
 						};
 		Rt = B100_LanguageControl.RtControl(Rt);
 		
