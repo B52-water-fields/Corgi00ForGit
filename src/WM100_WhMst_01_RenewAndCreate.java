@@ -29,23 +29,25 @@ public class WM100_WhMst_01_RenewAndCreate{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
+		
+		Object[][] RtWhMstRt	= M100_WhMstRt.RtWhMstRt();
 
-		JLabel LB_WHCD  		= B100_FrameParts.JLabelSet(  0, 40,100,20,"倉庫コード:"			,11,1);
-		JLabel LB_WHName  		= B100_FrameParts.JLabelSet(  0, 65,100,20,"拠点倉庫名:"			,11,1);
-		JLabel LB_Post  		= B100_FrameParts.JLabelSet(  0, 90,100,20,"拠点倉庫郵便番号:"		,11,1);
-		JLabel LB_Add01  		= B100_FrameParts.JLabelSet(  0,115,100,20,"拠点倉庫住所1:"		,11,1);
-		JLabel LB_Add02  		= B100_FrameParts.JLabelSet(  0,140,100,20,"拠点倉庫住所2:"		,11,1);
-		JLabel LB_Tel 			= B100_FrameParts.JLabelSet(  0,165,100,20,"拠点倉庫電話:"			,11,1);
-		JLabel LB_Fax  			= B100_FrameParts.JLabelSet(  0,190,100,20,"拠点倉庫FAX:"			,11,1);
-		JLabel LB_Mail  		= B100_FrameParts.JLabelSet(  0,215,100,20,"拠点倉庫MAIL:"			,11,1);
-		JLabel LB_Com01  		= B100_FrameParts.JLabelSet(  0,240,100,20,"コメント１:"			,11,1);
-		JLabel LB_Com02  		= B100_FrameParts.JLabelSet(  0,265,100,20,"コメント２:"			,11,1);
-		JLabel LB_Com03  		= B100_FrameParts.JLabelSet(  0,290,100,20,"コメント３:"			,11,1);
-		JLabel LB_PTMSCD  		= B100_FrameParts.JLabelSet(  0,315,100,20,"基幹SysCD:"			,11,1);
-		JLabel LB_EntryDate  	= B100_FrameParts.JLabelSet(  0,340,100,20,"データ登録日時:"		,11,1);
-		JLabel LB_UpdateDate  	= B100_FrameParts.JLabelSet(  0,365,100,20,"データ更新日時:"		,11,1);
-		JLabel LB_EntryUser  	= B100_FrameParts.JLabelSet(  0,390,100,20,"登録者:"				,11,1);
-		JLabel LB_UpdateUser  	= B100_FrameParts.JLabelSet(  0,415,100,20,"更新者:"				,11,1);
+		JLabel LB_WHCD  		= B100_FrameParts.JLabelSet(  0, 40,100,20,RtWhMstRt[M100_WhMstRt.ColNoWHCD][3]			+":"	,11,1);
+		JLabel LB_WHName  		= B100_FrameParts.JLabelSet(  0, 65,100,20,RtWhMstRt[M100_WhMstRt.ColNoWHName][3]		+":"	,11,1);
+		JLabel LB_Post  		= B100_FrameParts.JLabelSet(  0, 90,100,20,RtWhMstRt[M100_WhMstRt.ColNoPost][3]			+":"	,11,1);
+		JLabel LB_Add01  		= B100_FrameParts.JLabelSet(  0,115,100,20,RtWhMstRt[M100_WhMstRt.ColNoAdd01][3]			+":"	,11,1);
+		JLabel LB_Add02  		= B100_FrameParts.JLabelSet(  0,140,100,20,RtWhMstRt[M100_WhMstRt.ColNoAdd02][3]			+":"	,11,1);
+		JLabel LB_Tel 			= B100_FrameParts.JLabelSet(  0,165,100,20,RtWhMstRt[M100_WhMstRt.ColNoTel][3]			+":"	,11,1);
+		JLabel LB_Fax  			= B100_FrameParts.JLabelSet(  0,190,100,20,RtWhMstRt[M100_WhMstRt.ColNoFax][3]			+":"	,11,1);
+		JLabel LB_Mail  		= B100_FrameParts.JLabelSet(  0,215,100,20,RtWhMstRt[M100_WhMstRt.ColNoMail][3]			+":"	,11,1);
+		JLabel LB_Com01  		= B100_FrameParts.JLabelSet(  0,240,100,20,RtWhMstRt[M100_WhMstRt.ColNoCom01][3]			+":"	,11,1);
+		JLabel LB_Com02  		= B100_FrameParts.JLabelSet(  0,265,100,20,RtWhMstRt[M100_WhMstRt.ColNoCom02][3]			+":"	,11,1);
+		JLabel LB_Com03  		= B100_FrameParts.JLabelSet(  0,290,100,20,RtWhMstRt[M100_WhMstRt.ColNoCom03][3]			+":"	,11,1);
+		JLabel LB_PTMSCD  		= B100_FrameParts.JLabelSet(  0,315,100,20,RtWhMstRt[M100_WhMstRt.ColNoPTMSCD][3]		+":"	,11,1);
+		JLabel LB_EntryDate  	= B100_FrameParts.JLabelSet(  0,340,100,20,RtWhMstRt[M100_WhMstRt.ColNoEntryDate][3]		+":"	,11,1);
+		JLabel LB_UpdateDate  	= B100_FrameParts.JLabelSet(  0,365,100,20,RtWhMstRt[M100_WhMstRt.ColNoUpdateDate][3]	+":"	,11,1);
+		JLabel LB_EntryUser  	= B100_FrameParts.JLabelSet(  0,390,100,20,RtWhMstRt[M100_WhMstRt.ColNoEntryUser][3]		+":"	,11,1);
+		JLabel LB_UpdateUser  	= B100_FrameParts.JLabelSet(  0,415,100,20,RtWhMstRt[M100_WhMstRt.ColNoUpdateUser][3]	+":"	,11,1);
 		
 		final JTextField TB_WHCD  		= B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//倉庫コード
 		final JTextField TB_WHName  	= B100_FrameParts.JTextFieldSet(100, 65,200,20,"",11,0);	//拠点倉庫名

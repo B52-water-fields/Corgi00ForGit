@@ -39,15 +39,17 @@ public class WM100_ShippingCompanyMst_00_Search{
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
+		
+		Object[][] DefinitionRt	= M100_ShippingCompanyMstRt.DefinitionRt();
 
-		JLabel LB_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 25,100,20,"運送会社CD:"	,11,1);
-		JLabel LB_SearchCompanyName			= B100_FrameParts.JLabelSet(  0, 50,100,20,"運送会社名:"	,11,1);
-		JLabel LB_SearchPost				= B100_FrameParts.JLabelSet(  0, 75,100,20,"郵便番号:"		,11,1);
-		JLabel LB_SearchAdd					= B100_FrameParts.JLabelSet(  0,100,100,20,"住所:"			,11,1);
-		JLabel LB_SearchTel					= B100_FrameParts.JLabelSet(250, 25,100,20,"Tel:"			,11,1);
-		JLabel LB_SearchFax					= B100_FrameParts.JLabelSet(250, 50,100,20,"Fax:"			,11,1);
-		JLabel LB_SearchMail				= B100_FrameParts.JLabelSet(250, 75,100,20,"Mail:"			,11,1);
-		JLabel LB_SearchCom					= B100_FrameParts.JLabelSet(250,100,100,20,"コメント:"		,11,1);
+		JLabel LB_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 25,100,20,DefinitionRt[M100_ShippingCompanyMstRt.ColSearchShippingCompanyCd][5]	+":"	,11,1);
+		JLabel LB_SearchCompanyName			= B100_FrameParts.JLabelSet(  0, 50,100,20,DefinitionRt[M100_ShippingCompanyMstRt.ColSearchCompanyName][5]			+":"	,11,1);
+		JLabel LB_SearchPost				= B100_FrameParts.JLabelSet(  0, 75,100,20,DefinitionRt[M100_ShippingCompanyMstRt.ColSearchPost][5]					+":"	,11,1);
+		JLabel LB_SearchAdd					= B100_FrameParts.JLabelSet(  0,100,100,20,DefinitionRt[M100_ShippingCompanyMstRt.ColSearchAdd][5]					+":"	,11,1);
+		JLabel LB_SearchTel					= B100_FrameParts.JLabelSet(250, 25,100,20,DefinitionRt[M100_ShippingCompanyMstRt.ColSearchTel][5]					+":"	,11,1);
+		JLabel LB_SearchFax					= B100_FrameParts.JLabelSet(250, 50,100,20,DefinitionRt[M100_ShippingCompanyMstRt.ColSearchFax][5]					+":"	,11,1);
+		JLabel LB_SearchMail				= B100_FrameParts.JLabelSet(250, 75,100,20,DefinitionRt[M100_ShippingCompanyMstRt.ColSearchMail][5]					+":"	,11,1);
+		JLabel LB_SearchCom					= B100_FrameParts.JLabelSet(250,100,100,20,DefinitionRt[M100_ShippingCompanyMstRt.ColSearchCom][5]					+":"	,11,1);
 		
 		final JTextField TB_SearchShippingCompanyCd	= B100_FrameParts.JTextFieldSet(	100, 25,100,20,"",11,0);	//運送会社CD
 		final JTextField TB_SearchCompanyName		= B100_FrameParts.JTextFieldSet(	100, 50,100,20,"",11,0);	//運送会社名

@@ -34,28 +34,30 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
-		JLabel LB_ShippingCompanyCd		= B100_FrameParts.JLabelSet(  0, 40,100,20,"運送会社CD:"		,11,1);
-		JLabel LB_ShippingCompanyName01	= B100_FrameParts.JLabelSet(  0, 65,100,20,"運送会社表記名:"		,11,1);
-		JLabel LB_ShippingCompanyName02	= B100_FrameParts.JLabelSet(  0, 90,100,20,"運送会社正式名:"		,11,1);
-		JLabel LB_ShippingCompanyName03	= B100_FrameParts.JLabelSet(  0,115,100,20,"運送会社略名:"		,11,1);
-		JLabel LB_Post					= B100_FrameParts.JLabelSet(  0,140,100,20,"運送会社郵便:"	,11,1);
-		JLabel LB_Add01					= B100_FrameParts.JLabelSet(  0,165,100,20,"運送会社住所1:"	,11,1);
-		JLabel LB_Add02					= B100_FrameParts.JLabelSet(  0,190,100,20,"運送会社住所2:"	,11,1);
-		JLabel LB_Add03					= B100_FrameParts.JLabelSet(  0,215,100,20,"運送会社住所3:"	,11,1);
-		JLabel LB_Tel					= B100_FrameParts.JLabelSet(  0,240,100,20,"運送会社電話:"	,11,1);
-		JLabel LB_Fax					= B100_FrameParts.JLabelSet(  0,265,100,20,"運送会社FAX:"		,11,1);
-		JLabel LB_Mail					= B100_FrameParts.JLabelSet(  0,290,100,20,"運送会社MAIL:"	,11,1);
-		JLabel LB_Com01					= B100_FrameParts.JLabelSet(  0,315,100,20,"コメント1:"		,11,1);
-		JLabel LB_Com02					= B100_FrameParts.JLabelSet(  0,340,100,20,"コメント2:"		,11,1);
-		JLabel LB_Com03					= B100_FrameParts.JLabelSet(  0,365,100,20,"コメント3:"		,11,1);
-		JLabel LB_ShimeDate				= B100_FrameParts.JLabelSet(  0,390,100,20,"締日:"			,11,1);
-		JLabel LB_ShimeBasis			= B100_FrameParts.JLabelSet(  0,415,100,20,"請求基準:"		,11,1);
-		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(  0,440,100,20,"データ登録日時:"	,11,1);
-		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(  0,465,100,20,"データ更新日時:"	,11,1);
-		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(  0,490,100,20,"登録者コード:"	,11,1);
-		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(  0,515,100,20,"更新者コード:"	,11,1);
-		JLabel LB_PTMSCD				= B100_FrameParts.JLabelSet(  0,540,100,20,"基幹SYS傭車CD:"	,11,1);
-		JLabel LB_ExportDataType		= B100_FrameParts.JLabelSet(  0,565,100,20,"データ抽出Type:"	,11,1);
+		Object[][] RtShippingCompanyMstRt = M100_ShippingCompanyMstRt.RtShippingCompanyMstRt();
+		
+		JLabel LB_ShippingCompanyCd		= B100_FrameParts.JLabelSet(  0, 40,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColShippingCompanyCd][3]		+":"	,11,1);
+		JLabel LB_ShippingCompanyName01	= B100_FrameParts.JLabelSet(  0, 65,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColShippingCompanyName01][3]	+":"	,11,1);
+		JLabel LB_ShippingCompanyName02	= B100_FrameParts.JLabelSet(  0, 90,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColShippingCompanyName02][3]	+":"	,11,1);
+		JLabel LB_ShippingCompanyName03	= B100_FrameParts.JLabelSet(  0,115,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColShippingCompanyName03][3]	+":"	,11,1);
+		JLabel LB_Post					= B100_FrameParts.JLabelSet(  0,140,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColPost][3]						+":"	,11,1);
+		JLabel LB_Add01					= B100_FrameParts.JLabelSet(  0,165,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColAdd01][3]						+":"	,11,1);
+		JLabel LB_Add02					= B100_FrameParts.JLabelSet(  0,190,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColAdd02][3]						+":"	,11,1);
+		JLabel LB_Add03					= B100_FrameParts.JLabelSet(  0,215,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColAdd03][3]						+":"	,11,1);
+		JLabel LB_Tel					= B100_FrameParts.JLabelSet(  0,240,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColTel][3]						+":"	,11,1);
+		JLabel LB_Fax					= B100_FrameParts.JLabelSet(  0,265,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColFax][3]						+":" 	,11,1);
+		JLabel LB_Mail					= B100_FrameParts.JLabelSet(  0,290,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColMail][3]						+":" 	,11,1);
+		JLabel LB_Com01					= B100_FrameParts.JLabelSet(  0,315,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColCom01][3]						+":" 	,11,1);
+		JLabel LB_Com02					= B100_FrameParts.JLabelSet(  0,340,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColCom02][3]						+":" 	,11,1);
+		JLabel LB_Com03					= B100_FrameParts.JLabelSet(  0,365,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColCom03][3]						+":" 	,11,1);
+		JLabel LB_ShimeDate				= B100_FrameParts.JLabelSet(  0,390,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColShimeDate][3]					+":" 	,11,1);
+		JLabel LB_ShimeBasis			= B100_FrameParts.JLabelSet(  0,415,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColShimeBasis][3]				+":" 	,11,1);
+		JLabel LB_EntryDate				= B100_FrameParts.JLabelSet(  0,440,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColEntryDate][3]					+":" 	,11,1);
+		JLabel LB_UpdateDate			= B100_FrameParts.JLabelSet(  0,465,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColUpdateDate][3]				+":" 	,11,1);
+		JLabel LB_EntryUser				= B100_FrameParts.JLabelSet(  0,490,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColEntryUser][3]					+":" 	,11,1);
+		JLabel LB_UpdateUser			= B100_FrameParts.JLabelSet(  0,515,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColUpdateUser][3]				+":" 	,11,1);
+		JLabel LB_PTMSCD				= B100_FrameParts.JLabelSet(  0,540,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColPTMSCD][3]					+":" 	,11,1);
+		JLabel LB_ExportDataType		= B100_FrameParts.JLabelSet(  0,565,100,20,RtShippingCompanyMstRt[M100_ShippingCompanyMstRt.ColExportDataType][3]			+":" 	,11,1);
 		
 		final JTextField TB_ShippingCompanyCd		= B100_FrameParts.JTextFieldSet(100, 40,100,20,"",11,0);	//運送会社CD
 		final JTextField TB_ShippingCompanyName01	= B100_FrameParts.JTextFieldSet(100, 65,250,20,"",11,0);	//運送会社表記名
@@ -114,7 +116,7 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 					AllSearch);
 			
 			if(0<ShippingCompanyMstRt.length) {
-				TB_ShippingCompanyCd.setText(		""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyCd]);		//運送会社CD
+				TB_ShippingCompanyCd.setText(		""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyCd]);			//運送会社CD
 				TB_ShippingCompanyName01.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName01]);	//運送会社表記名
 				TB_ShippingCompanyName02.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName02]);	//運送会社正式名
 				TB_ShippingCompanyName03.setText(	""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColShippingCompanyName03]);	//運送会社略名
@@ -122,16 +124,16 @@ public class WM100_ShippingCompanyMst_01_RenewAndCreate{
 				TB_Add01.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColAdd01]);						//運送会社住所1
 				TB_Add02.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColAdd02]);						//運送会社住所2
 				TB_Add03.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColAdd03]);						//運送会社住所3
-				TB_Tel.setText(						""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColTel]);						//運送会社電話
-				TB_Fax.setText(						""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColFax]);						//運送会社FAX
+				TB_Tel.setText(						""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColTel]);							//運送会社電話
+				TB_Fax.setText(						""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColFax]);							//運送会社FAX
 				TB_Mail.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColMail]);						//運送会社MAIL
 				TB_Com01.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColCom01]);						//コメント1
 				TB_Com02.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColCom02]);						//コメント2
 				TB_Com03.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColCom03]);						//コメント3
 				TB_EntryDate.setText(				""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColEntryDate]);					//データ登録日時
-				TB_UpdateDate.setText(				""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColUpdateDate]);				//データ更新日時
+				TB_UpdateDate.setText(				""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColUpdateDate]);					//データ更新日時
 				TB_EntryUser.setText(				""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColEntryUser]);					//登録者コード
-				TB_UpdateUser.setText(				""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColUpdateUser]);				//更新者コード
+				TB_UpdateUser.setText(				""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColUpdateUser]);					//更新者コード
 				TB_PTMSCD.setText(					""+ShippingCompanyMstRt[0][M100_ShippingCompanyMstRt.ColPTMSCD]);						//基幹SYS傭車CD
 				
 				for(int i=0;i<B100_DefaultVariable.ShimeDateList[1].length;i++) {

@@ -43,51 +43,53 @@ public class WM100_SupplierMst_00_Search{
 		
 		PN_Search.add(PN_SearchLabel);
 		
-		//検索条件
-		JLabel LB_SearchClWh			= B100_FrameParts.JLabelSet(	  0, 25,130,20,"担当倉庫:"				,11,1);
-		JLabel LB_SearchClCd			= B100_FrameParts.JLabelSet(	  0, 50,130,20,"荷主CD:"				,11,1);
-		JLabel LB_SearchSPCd			= B100_FrameParts.JLabelSet(	  0, 75,130,20,"仕入先コード:"			,11,1);
-		JLabel LB_SearchSPName			= B100_FrameParts.JLabelSet(	  0,100,130,20,"仕入先名:"				,11,1);
-		JLabel LB_SearchSPPost			= B100_FrameParts.JLabelSet(	  0,125,130,20,"仕入先郵便:"			,11,1);
-		JLabel LB_SearchSPAdd			= B100_FrameParts.JLabelSet(	  0,150,130,20,"仕入先住所:"			,11,1);
-		JLabel LB_SearchSPTel			= B100_FrameParts.JLabelSet(	  0,175,130,20,"仕入先電話:"			,11,1);
-		JLabel LB_SearchSPFax			= B100_FrameParts.JLabelSet(	  0,200,130,20,"仕入先FAX:"				,11,1);
-		JLabel LB_SearchSPMail			= B100_FrameParts.JLabelSet(	  0,225,130,20,"仕入先MAIL:"			,11,1);
-		JLabel LB_SearchCom				= B100_FrameParts.JLabelSet(	  0,250,130,20,"コメント:"				,11,1);
+		Object[][] DefinitionRt =M100_SupplierRt.DefinitionRt();
 		
-		JLabel LB_SearchPTMSCDBMN		= B100_FrameParts.JLabelSet(	330, 75,130,20,"基幹SysCd（部門）:"		,10,1);
-		JLabel LB_SearchPTMSCDNINUSHI	= B100_FrameParts.JLabelSet(	330,100,130,20,"基幹SysCd（荷主）:"		,10,1);
-		JLabel LB_SearchPaySite		= B100_FrameParts.JLabelSet(		330,125,130,20,"支払サイト:"			,11,1);
-		JLabel LB_SearchPayDate		= B100_FrameParts.JLabelSet(		330,150,130,20,"支払日:"				,11,1);
-		JLabel LB_SearchShimeDate	= B100_FrameParts.JLabelSet(		330,175,130,20,"締め日:"				,11,1);
-		JLabel LB_SearchDECD			= B100_FrameParts.JLabelSet(	330,200,130,20,"納品先コード:"			,11,1);
-		JLabel LB_SearchDepartmentCd	= B100_FrameParts.JLabelSet(	330,225,130,20,"部署CD:"				,11,1);
+		//検索条件
+		JLabel LB_SearchClWh			= B100_FrameParts.JLabelSet(	  0, 25,130,20,DefinitionRt[M100_SupplierRt.ColSearchClWh][5]				+":"	,11,1);
+		JLabel LB_SearchClCd			= B100_FrameParts.JLabelSet(	  0, 50,130,20,DefinitionRt[M100_SupplierRt.ColSearchClCd][5]				+":"	,11,1);
+		JLabel LB_SearchSPCd			= B100_FrameParts.JLabelSet(	  0, 75,130,20,DefinitionRt[M100_SupplierRt.ColSearchSPCd][5]				+":"	,11,1);
+		JLabel LB_SearchSPName			= B100_FrameParts.JLabelSet(	  0,100,130,20,DefinitionRt[M100_SupplierRt.ColSearchSPName][5]			+":"	,11,1);
+		JLabel LB_SearchSPPost			= B100_FrameParts.JLabelSet(	  0,125,130,20,DefinitionRt[M100_SupplierRt.ColSearchSPPost][5]			+":"	,11,1);
+		JLabel LB_SearchSPAdd			= B100_FrameParts.JLabelSet(	  0,150,130,20,DefinitionRt[M100_SupplierRt.ColSearchSPAdd][5]			+":"	,11,1);
+		JLabel LB_SearchSPTel			= B100_FrameParts.JLabelSet(	  0,175,130,20,DefinitionRt[M100_SupplierRt.ColSearchSPTel][5]			+":"	,11,1);
+		JLabel LB_SearchSPFax			= B100_FrameParts.JLabelSet(	  0,200,130,20,DefinitionRt[M100_SupplierRt.ColSearchSPFax][5]			+":"	,11,1);
+		JLabel LB_SearchSPMail			= B100_FrameParts.JLabelSet(	  0,225,130,20,DefinitionRt[M100_SupplierRt.ColSearchSPMail][5]			+":"	,11,1);
+		JLabel LB_SearchCom				= B100_FrameParts.JLabelSet(	  0,250,130,20,DefinitionRt[M100_SupplierRt.ColSearchCom][5]				+":"	,11,1);
+		
+		JLabel LB_SearchPTMSCDBMN		= B100_FrameParts.JLabelSet(	330, 75,130,20,DefinitionRt[M100_SupplierRt.ColSearchPTMSCDBMN][5]		+":"	,10,1);
+		JLabel LB_SearchPTMSCDNINUSHI	= B100_FrameParts.JLabelSet(	330,100,130,20,DefinitionRt[M100_SupplierRt.ColSearchPTMSCDNINUSHI][5]	+":"	,10,1);
+		JLabel LB_SearchPaySite		= B100_FrameParts.JLabelSet(		330,125,130,20,DefinitionRt[M100_SupplierRt.ColSearchPaySiteStr][5]		+":"	,11,1);
+		JLabel LB_SearchPayDate		= B100_FrameParts.JLabelSet(		330,150,130,20,DefinitionRt[M100_SupplierRt.ColSearchPayDateStr][5]		+":"	,11,1);
+		JLabel LB_SearchShimeDate	= B100_FrameParts.JLabelSet(		330,175,130,20,DefinitionRt[M100_SupplierRt.ColSearchShimeDateStr][5]	+":"	,11,1);
+		JLabel LB_SearchDECD			= B100_FrameParts.JLabelSet(	330,200,130,20,DefinitionRt[M100_SupplierRt.ColSearchDECD][5]				+":"	,11,1);
+		JLabel LB_SearchDepartmentCd	= B100_FrameParts.JLabelSet(	330,225,130,20,DefinitionRt[M100_SupplierRt.ColSearchDepartmentCd][5]	+":"	,11,1);
 		
 		final JComboBox   TB_SearchClWh						= B100_FrameParts.JComboBoxSet(				130, 25,250,20,B100_DefaultVariable.SearchWhList[0],11);		//担当倉庫
 		final JComboBox   TB_SearchClCd						= B100_FrameParts.JComboBoxSet(				130, 50,250,20,B100_DefaultVariable.SearchClList[0],11);		//荷主CD
-		final JTextField  TB_SearchSPCd						= B100_FrameParts.JTextFieldSet( 			130, 75,100,20,"",11,0);	//仕入先コード
-		final JTextField  TB_SearchSPName					= B100_FrameParts.JTextFieldSet( 			130,100,100,20,"",11,0);	//仕入先名
-		final JTextField  TB_SearchSPPost					= B100_FrameParts.JTextFieldSet( 			130,125,100,20,"",11,0);	//仕入先郵便
-		final JTextField  TB_SearchSPAdd					= B100_FrameParts.JTextFieldSet( 			130,150,100,20,"",11,0);	//仕入先住所
-		final JTextField  TB_SearchSPTel					= B100_FrameParts.JTextFieldSet( 			130,175,100,20,"",11,0);	//仕入先電話
-		final JTextField  TB_SearchSPFax					= B100_FrameParts.JTextFieldSet( 			130,200,100,20,"",11,0);	//仕入先FAX
-		final JTextField  TB_SearchSPMail					= B100_FrameParts.JTextFieldSet( 			130,225,100,20,"",11,0);	//仕入先MAIL
-		final JTextField  TB_SearchCom						= B100_FrameParts.JTextFieldSet( 			130,250,100,20,"",11,0);	//コメント
+		final JTextField  TB_SearchSPCd						= B100_FrameParts.JTextFieldSet( 				130, 75,100,20,"",11,0);	//仕入先コード
+		final JTextField  TB_SearchSPName					= B100_FrameParts.JTextFieldSet( 				130,100,100,20,"",11,0);	//仕入先名
+		final JTextField  TB_SearchSPPost					= B100_FrameParts.JTextFieldSet( 				130,125,100,20,"",11,0);	//仕入先郵便
+		final JTextField  TB_SearchSPAdd					= B100_FrameParts.JTextFieldSet( 				130,150,100,20,"",11,0);	//仕入先住所
+		final JTextField  TB_SearchSPTel					= B100_FrameParts.JTextFieldSet( 				130,175,100,20,"",11,0);	//仕入先電話
+		final JTextField  TB_SearchSPFax					= B100_FrameParts.JTextFieldSet( 				130,200,100,20,"",11,0);	//仕入先FAX
+		final JTextField  TB_SearchSPMail					= B100_FrameParts.JTextFieldSet( 				130,225,100,20,"",11,0);	//仕入先MAIL
+		final JTextField  TB_SearchCom						= B100_FrameParts.JTextFieldSet( 				130,250,100,20,"",11,0);	//コメント
 		
-		final JTextField  TB_SearchPTMSCDBMN				= B100_FrameParts.JTextFieldSet( 			460, 75,100,20,"",11,0);	//基幹Sysコード（部門）
-		final JTextField  TB_SearchPTMSCDNINUSHI			= B100_FrameParts.JTextFieldSet( 			460,100,100,20,"",11,0);	//基幹Sysコード（荷主）
+		final JTextField  TB_SearchPTMSCDBMN				= B100_FrameParts.JTextFieldSet( 				460, 75,100,20,"",11,0);	//基幹Sysコード（部門）
+		final JTextField  TB_SearchPTMSCDNINUSHI			= B100_FrameParts.JTextFieldSet( 				460,100,100,20,"",11,0);	//基幹Sysコード（荷主）
 		final JFormattedTextField TB_SearchPaySiteStr		= B100_FrameParts.JFormattedTextFieldSet(	460,125, 60,20,"0",11,1,"#,###");	//支払いサイト（月数）開始
 		final JFormattedTextField TB_SearchPaySiteEnd		= B100_FrameParts.JFormattedTextFieldSet(	560,125, 60,20,"99",11,1,"#,###");	//支払いサイト（月数）終了
 		final JComboBox   TB_SearchPayDateStr				= B100_FrameParts.JComboBoxSet(				460,150, 60,20,B100_DefaultVariable.ShimeDateList[0],11);		//支払日（日＝99）開始
-		final JComboBox   TB_SearchPayDateEnd				= B100_FrameParts.JComboBoxSet(				560,150, 60,20,B100_DefaultVariable.ShimeDateList[0],11);		//支払日（日＝99）終了
+		final JComboBox   TB_SearchPayDateEnd				= B100_FrameParts.JComboBoxSet(				560,150, 60,20,B100_DefaultVariable.ShimeDateList[B100_DefaultVariable.ShimeDateList.length-1],11);		//支払日（日＝99）終了
 		final JComboBox   TB_SearchShimeDateStr				= B100_FrameParts.JComboBoxSet(				460,175, 60,20,B100_DefaultVariable.ShimeDateList[0],11);		//締め日（末日＝99）開始
-		final JComboBox   TB_SearchShimeDateEnd				= B100_FrameParts.JComboBoxSet(				560,175, 60,20,B100_DefaultVariable.ShimeDateList[0],11);		//締め日（末日＝99）終了
+		final JComboBox   TB_SearchShimeDateEnd				= B100_FrameParts.JComboBoxSet(				560,175, 60,20,B100_DefaultVariable.ShimeDateList[B100_DefaultVariable.ShimeDateList.length-1],11);		//締め日（末日＝99）終了
 		final JTextField  TB_SearchDECD						= B100_FrameParts.JTextFieldSet(				460,200,100,20,"",11,0);	//納品先コード
-		final JTextField  TB_SearchDepartmentCd				= B100_FrameParts.JTextFieldSet( 			460,225,100,20,"",11,0);	//部署CD
+		final JTextField  TB_SearchDepartmentCd				= B100_FrameParts.JTextFieldSet( 				460,225,100,20,"",11,0);	//部署CD
 		
 		JLabel LB2_SearchSPCd			= B100_FrameParts.JLabelSet(	230, 75,100,20,B100_DefaultVariable.SearchExact		,11,0);
 		JLabel LB2_SearchSPName			= B100_FrameParts.JLabelSet(	230,100,100,20,B100_DefaultVariable.SearchPartial		,11,0);
-		JLabel LB2_SearchSPPost			= B100_FrameParts.JLabelSet(	230,125,100,20,B100_DefaultVariable.SearchPrefix	,11,0);
+		JLabel LB2_SearchSPPost			= B100_FrameParts.JLabelSet(	230,125,100,20,B100_DefaultVariable.SearchPrefix		,11,0);
 		JLabel LB2_SearchSPAdd			= B100_FrameParts.JLabelSet(	230,150,100,20,B100_DefaultVariable.SearchPartial		,11,0);
 		JLabel LB2_SearchSPTel			= B100_FrameParts.JLabelSet(	230,175,100,20,B100_DefaultVariable.SearchPartial		,11,0);
 		JLabel LB2_SearchSPFax			= B100_FrameParts.JLabelSet(	230,200,100,20,B100_DefaultVariable.SearchPartial		,11,0);
@@ -96,9 +98,9 @@ public class WM100_SupplierMst_00_Search{
 		
 		JLabel LB2_SearchPTMSCDBMN		= B100_FrameParts.JLabelSet(	560, 75,100,20,B100_DefaultVariable.SearchExact		,11,0);
 		JLabel LB2_SearchPTMSCDNINUSHI	= B100_FrameParts.JLabelSet(	560,100,100,20,B100_DefaultVariable.SearchExact		,11,0);
-		JLabel LB2_SearchPaySite		= B100_FrameParts.JLabelSet(	520,125,40,20,B100_DefaultVariable.SearchFromTo			,11,2);
-		JLabel LB2_SearchPayDate		= B100_FrameParts.JLabelSet(	520,150,40,20,B100_DefaultVariable.SearchFromTo			,11,2);
-		JLabel LB2_SearchShimeDate		= B100_FrameParts.JLabelSet(	520,175,40,20,B100_DefaultVariable.SearchFromTo			,11,2);
+		JLabel LB2_SearchPaySite		= B100_FrameParts.JLabelSet(	520,125,40,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchPayDate		= B100_FrameParts.JLabelSet(	520,150,40,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchShimeDate		= B100_FrameParts.JLabelSet(	520,175,40,20,B100_DefaultVariable.SearchFromTo		,11,2);
 		JLabel LB2_SearchDECD			= B100_FrameParts.JLabelSet(	560,200,100,20,B100_DefaultVariable.SearchExact		,11,0);
 		JLabel LB2_SearchDepartmentCd	= B100_FrameParts.JLabelSet(	560,225,100,20,B100_DefaultVariable.SearchExact		,11,0);
 		

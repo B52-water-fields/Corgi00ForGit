@@ -41,23 +41,25 @@ public class WM100_UserMst_00_Search{
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(10,0,150,20,"検索条件",11,0);
 		PN_Search.add(PN_SearchLabel);
 		main_fm.add(PN_Search);
+		
+		Object[][] DefinitionRt	= M100_UserMstRt.DefinitionRt();
 
-		JLabel LB_SearchWHCD				= B100_FrameParts.JLabelSet(  0, 25,100,20,"所属倉庫:",	11,1);
-		JLabel LB_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 50,100,20,"所属会社:",	11,1);
-		JLabel LB_SearchUserCd				= B100_FrameParts.JLabelSet(  0, 75,100,20,"ユーザーCD:",	11,1);
-		JLabel LB_SearchUserName			= B100_FrameParts.JLabelSet(  0,100,100,20,"ユーザー名:",	11,1);
-		JLabel LB_SearchAuthorityFG			= B100_FrameParts.JLabelSet(  0,125,100,20,"権限:",		11,1);
-		JLabel LB_SearchDelFg				= B100_FrameParts.JLabelSet(  0,150,100,20,"削除区分:",	11,1);
+		JLabel LB_SearchWHCD				= B100_FrameParts.JLabelSet(  0, 25,100,20,DefinitionRt[M100_UserMstRt.ColSearchWHCD][5]					+":"	,	11,1);
+		JLabel LB_SearchShippingCompanyCd	= B100_FrameParts.JLabelSet(  0, 50,100,20,DefinitionRt[M100_UserMstRt.ColSearchShippingCompanyCd][5]	+":"	,	11,1);
+		JLabel LB_SearchUserCd				= B100_FrameParts.JLabelSet(  0, 75,100,20,DefinitionRt[M100_UserMstRt.ColSearchUserCd][5]				+":"	,	11,1);
+		JLabel LB_SearchUserName			= B100_FrameParts.JLabelSet(  0,100,100,20,DefinitionRt[M100_UserMstRt.ColSearchUserName][5]			+":"	,	11,1);
+		JLabel LB_SearchAuthorityFG			= B100_FrameParts.JLabelSet(  0,125,100,20,DefinitionRt[M100_UserMstRt.ColSearchAuthorityFG][5]			+":"	,	11,1);
+		JLabel LB_SearchDelFg				= B100_FrameParts.JLabelSet(  0,150,100,20,DefinitionRt[M100_UserMstRt.ColSearchDelFg][5]				+":"	,	11,1);
 		
-		JLabel LB_SearchCarCd				= B100_FrameParts.JLabelSet(300, 25,100,20,"乗務車輛CD:",	11,1);
-		JLabel LB_SearchCarName				= B100_FrameParts.JLabelSet(300, 50,100,20,"乗務車輛名:",	11,1);
-		JLabel LB_SearchPost				= B100_FrameParts.JLabelSet(300, 75,100,20,"郵便番号:",	11,1);
-		JLabel LB_SearchAdd					= B100_FrameParts.JLabelSet(300,100,100,20,"住所:",		11,1);
+		JLabel LB_SearchCarCd				= B100_FrameParts.JLabelSet(300, 25,100,20,DefinitionRt[M100_UserMstRt.ColSearchCarCd][5]				+":"	,	11,1);
+		JLabel LB_SearchCarName				= B100_FrameParts.JLabelSet(300, 50,100,20,DefinitionRt[M100_UserMstRt.ColSearchCarName][5]				+":"	,	11,1);
+		JLabel LB_SearchPost				= B100_FrameParts.JLabelSet(300, 75,100,20,DefinitionRt[M100_UserMstRt.ColSearchPost][5]					+":"	,	11,1);
+		JLabel LB_SearchAdd					= B100_FrameParts.JLabelSet(300,100,100,20,DefinitionRt[M100_UserMstRt.ColSearchAdd][5]					+":"	,	11,1);
 		
-		JLabel LB_SearchTel					= B100_FrameParts.JLabelSet(550, 25,100,20,"Tel:",		11,1);
-		JLabel LB_SearchFax					= B100_FrameParts.JLabelSet(550, 50,100,20,"Fax:",		11,1);
-		JLabel LB_SearchMail				= B100_FrameParts.JLabelSet(550, 75,100,20,"Mail:",		11,1);
-		JLabel LB_SearchCom					= B100_FrameParts.JLabelSet(550,100,100,20,"コメント:",	11,1);
+		JLabel LB_SearchTel					= B100_FrameParts.JLabelSet(550, 25,100,20,DefinitionRt[M100_UserMstRt.ColSearchTel][5]					+":"	,	11,1);
+		JLabel LB_SearchFax					= B100_FrameParts.JLabelSet(550, 50,100,20,DefinitionRt[M100_UserMstRt.ColSearchFax][5]					+":"	,	11,1);
+		JLabel LB_SearchMail				= B100_FrameParts.JLabelSet(550, 75,100,20,DefinitionRt[M100_UserMstRt.ColSearchMail][5]					+":"	,	11,1);
+		JLabel LB_SearchCom					= B100_FrameParts.JLabelSet(550,100,100,20,DefinitionRt[M100_UserMstRt.ColSearchCom][5]					+":"	,	11,1);
 		
 		final JComboBox  TB_SearchWHCD				= B100_FrameParts.JComboBoxSet( 100, 25,200,20,B100_DefaultVariable.SearchWhList[0],11);	//所属倉庫
 		final JComboBox  TB_SearchShippingCompanyCd	= B100_FrameParts.JComboBoxSet( 100, 50,200,20,B100_DefaultVariable.SearchShippingCompanyList[0],11);	//所属会社

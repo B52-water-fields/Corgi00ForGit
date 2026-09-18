@@ -83,29 +83,30 @@ public class WT100_Arrival_10_Entry{
 		main_fm.add(exit_btn);
 		main_fm.add(entry_btn);
 		
+		Object[][] RtArrivalPlanHdRt	= T100_ArrivalPlanHdRt.RtArrivalPlanHdRt();
 		
 		//検索条件パネル
 		JPanel PN_Hd 		= B100_FrameParts.JPanelSet(10,40,1260,125,"White");
 		JLabel PN_HdLabel 	= B100_FrameParts.JLabelSet(0,0,100,20,"予定ヘッダ",11,0);
 				
-		JLabel LB_ClWh			= B100_FrameParts.JLabelSet(  0, 25,100,20,"担当倉庫:",		11,1);
-		JLabel LB_ClCd			= B100_FrameParts.JLabelSet(  0, 50,100,20,"荷主CD:",			11,1);
-		JLabel LB_SpCd			= B100_FrameParts.JLabelSet(  0, 75,100,20,"仕入先CD:",		11,1);
-		JLabel LB_FixFg			= B100_FrameParts.JLabelSet(  0,100,100,20,"状況:",			11,1);
+		JLabel LB_ClWh			= B100_FrameParts.JLabelSet(  0, 25,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColClWh][3]			+":"	,	11,1);
+		JLabel LB_ClCd			= B100_FrameParts.JLabelSet(  0, 50,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColClCd][3]			+":"	,	11,1);
+		JLabel LB_SpCd			= B100_FrameParts.JLabelSet(  0, 75,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColSpCd][3]			+":"	,	11,1);
+		JLabel LB_FixFg			= B100_FrameParts.JLabelSet(  0,100,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColFixFg][3]		+":"	,	11,1);
 		
-		JLabel LB_ArrNo			= B100_FrameParts.JLabelSet(340, 25,100,20,"入荷予定NO:",		11,1);
-		JLabel LB_ClArrNo		= B100_FrameParts.JLabelSet(340, 50,100,20,"荷主予定番号:",	11,1);
-		JLabel LB_PlanDate		= B100_FrameParts.JLabelSet(340, 75,100,20,"入荷予定日:",		11,1);
-		JLabel LB_HdActualDate	= B100_FrameParts.JLabelSet(340,100,100,20,"入荷実績日:",		11,1);
+		JLabel LB_ArrNo			= B100_FrameParts.JLabelSet(340, 25,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColArrNo][3]		+":"	,	11,1);
+		JLabel LB_ClArrNo		= B100_FrameParts.JLabelSet(340, 50,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColClArrNo][3]		+":"	,	11,1);
+		JLabel LB_PlanDate		= B100_FrameParts.JLabelSet(340, 75,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColPlanDate][3]	+":"	,	11,1);
+		JLabel LB_HdActualDate	= B100_FrameParts.JLabelSet(340,100,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColActualDate][3]	+":"	,	11,1);
 		
-		JLabel LB_ArCom01		= B100_FrameParts.JLabelSet(580, 25,100,20,"コメント1:",		11,1);
-		JLabel LB_ArCom02		= B100_FrameParts.JLabelSet(580, 50,100,20,"コメント2:",		11,1);
-		JLabel LB_ArCom03		= B100_FrameParts.JLabelSet(580, 75,100,20,"コメント3:",		11,1);
+		JLabel LB_ArCom01		= B100_FrameParts.JLabelSet(580, 25,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColArCom01][3]		+":"	,	11,1);
+		JLabel LB_ArCom02		= B100_FrameParts.JLabelSet(580, 50,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColArCom02][3]		+":"	,	11,1);
+		JLabel LB_ArCom03		= B100_FrameParts.JLabelSet(580, 75,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColArCom03][3]		+":"	,	11,1);
 		
-		JLabel LB_HdEntryDate	= B100_FrameParts.JLabelSet(880, 25,100,20,"登録日:",			11,1);
-		JLabel LB_HdEntryUser	= B100_FrameParts.JLabelSet(880, 50,100,20,"登録者:",			11,1);
-		JLabel LB_HdUpdateDate	= B100_FrameParts.JLabelSet(880, 75,100,20,"更新日:",			11,1);
-		JLabel LB_HdUpdateUser	= B100_FrameParts.JLabelSet(880,100,100,20,"更新者:",			11,1);
+		JLabel LB_HdEntryDate	= B100_FrameParts.JLabelSet(880, 25,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColEntryDate][3]	+":"	,	11,1);
+		JLabel LB_HdEntryUser	= B100_FrameParts.JLabelSet(880, 50,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColEntryUser][3]	+":"	,	11,1);
+		JLabel LB_HdUpdateDate	= B100_FrameParts.JLabelSet(880, 75,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColUpdateDate][3]	+":"	,	11,1);
+		JLabel LB_HdUpdateUser	= B100_FrameParts.JLabelSet(880,100,100,20,RtArrivalPlanHdRt[T100_ArrivalPlanHdRt.ColUpdateUser][3]	+":"	,	11,1);
 		
 		final JComboBox TB_ClWh						= B100_FrameParts.JComboBoxSet(				100, 25,240,20,B100_DefaultVariable.WhList[0],11);						//ヘッダ担当倉庫
 		final JComboBox TB_ClCd						= B100_FrameParts.JComboBoxSet(				100, 50,240,20,B100_DefaultVariable.ClList[0],11);						//ヘッダ荷主CD
