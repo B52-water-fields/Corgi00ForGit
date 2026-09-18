@@ -37,28 +37,30 @@ public class WT100_StockAdjust_00_Search{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
+		Object[][] DefinitionRt	= T100_StockAdjustRt.DefinitionRt();
+		
 		//検索条件パネル
 		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,810,300,"White");
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
 		String[] LocExactMatchList = {B100_DefaultVariable.SearchPrefix,B100_DefaultVariable.SearchExact};
 		
-		JLabel LB_SearchClCd				= B100_FrameParts.JLabelSet(  0, 25,130,20,"荷主コード:"				,11,1);
-		JLabel LB_SearchWhCd				= B100_FrameParts.JLabelSet(  0, 50,130,20,"倉庫コード:"				,11,1);
-		JLabel LB_SearchClGpCD				= B100_FrameParts.JLabelSet(  0, 75,130,20,"荷主グループCD:"			,11,1);
-		JLabel LB_SearchAdjustNo			= B100_FrameParts.JLabelSet(  0,100,130,20,"調整番号:"					,11,1);
-		JLabel LB_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(  0,125,130,20,"調整理由コード:"			,11,1);
-		JLabel LB_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(  0,150,130,20,"調整理由名:"				,11,1);
-		JLabel LB_SearchAdjustdate			= B100_FrameParts.JLabelSet(  0,175,130,20,"調整日:"					,11,1);
-		JLabel LB_SearchLoc					= B100_FrameParts.JLabelSet(  0,200,130,20,"調整元ロケ:"				,11,1);
-		JLabel LB_SearchType				= B100_FrameParts.JLabelSet(  0,225,130,20,"ロケタイプ:"				,11,1);
-		JLabel LB_SearchAdjustCom			= B100_FrameParts.JLabelSet(  0,250,130,20,"調整理由コメント:"			,11,1);
+		JLabel LB_SearchClCd				= B100_FrameParts.JLabelSet(  0, 25,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchClCd][5]					+":"	,11,1);
+		JLabel LB_SearchWhCd				= B100_FrameParts.JLabelSet(  0, 50,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchWhCd][5]					+":"	,11,1);
+		JLabel LB_SearchClGpCD				= B100_FrameParts.JLabelSet(  0, 75,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchClGpCD][5]				+":"	,11,1);
+		JLabel LB_SearchAdjustNo			= B100_FrameParts.JLabelSet(  0,100,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchAdjustNo][5]			+":"	,11,1);
+		JLabel LB_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(  0,125,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchAdjustReasonCd][5]		+":"	,11,1);
+		JLabel LB_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(  0,150,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchAdjustReasonName][5]	+":"	,11,1);
+		JLabel LB_SearchAdjustdate			= B100_FrameParts.JLabelSet(  0,175,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchAdjustdateMin][5]		+":"	,11,1);
+		JLabel LB_SearchLoc					= B100_FrameParts.JLabelSet(  0,200,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchLoc][5]					+":"	,11,1);
+		JLabel LB_SearchType				= B100_FrameParts.JLabelSet(  0,225,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchType][5]					+":"	,11,1);
+		JLabel LB_SearchAdjustCom			= B100_FrameParts.JLabelSet(  0,250,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchAdjustCom][5]			+":"	,11,1);
 		
-		JLabel LB_SearchItemCd				= B100_FrameParts.JLabelSet(370, 25,130,20,"調整元商品CD:"				,11,1);
-		JLabel LB_SearchItemName			= B100_FrameParts.JLabelSet(370, 50,130,20,"調整元商品名:"				,11,1);
-		JLabel LB_SearchLot					= B100_FrameParts.JLabelSet(370, 75,130,20,"調整元ロット:"				,11,1);
-		JLabel LB_SearchExpDate				= B100_FrameParts.JLabelSet(370,100,130,20,"調整元賞味期限:"			,11,1);
-		JLabel LB_SearchActualDate			= B100_FrameParts.JLabelSet(370,125,130,20,"調整元入荷日:"				,11,1);
-		JLabel LB_SearchAdjustQty			= B100_FrameParts.JLabelSet(370,150,130,20,"調整数:"					,11,1);
+		JLabel LB_SearchItemCd				= B100_FrameParts.JLabelSet(370, 25,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchItemCd][5]				+":"	,11,1);
+		JLabel LB_SearchItemName			= B100_FrameParts.JLabelSet(370, 50,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchItemName][5]			+":"	,11,1);
+		JLabel LB_SearchLot					= B100_FrameParts.JLabelSet(370, 75,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchLot][5]					+":"	,11,1);
+		JLabel LB_SearchExpDate				= B100_FrameParts.JLabelSet(370,100,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchExpDateMin][5]			+":"	,11,1);
+		JLabel LB_SearchActualDate			= B100_FrameParts.JLabelSet(370,125,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchActualDateMin][5]		+":"	,11,1);
+		JLabel LB_SearchAdjustQty			= B100_FrameParts.JLabelSet(370,150,130,20,DefinitionRt[T100_StockAdjustRt.ColSearchAdjustQtyMin][5]		+":"	,11,1);
 		
 		final JComboBox TB_SearchClWh						= B100_FrameParts.JComboBoxSet(				130, 25,240,20,B100_DefaultVariable.SearchWhList[0],11);		//ヘッダ担当倉庫
 		final JComboBox TB_SearchClCd						= B100_FrameParts.JComboBoxSet(				130, 50,240,20,B100_DefaultVariable.SearchClList[0],11);		//ヘッダ荷主CD
@@ -85,17 +87,17 @@ public class WT100_StockAdjust_00_Search{
 		
 		JLabel LB2_SearchAdjustNo			= B100_FrameParts.JLabelSet(230,100, 80,20,B100_DefaultVariable.SearchExact		,11,0);
 		JLabel LB2_SearchAdjustReasonCd		= B100_FrameParts.JLabelSet(230,125, 80,20,B100_DefaultVariable.SearchExact		,11,0);
-		JLabel LB2_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(230,150, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
-		JLabel LB2_SearchAdjustdate			= B100_FrameParts.JLabelSet(240,175, 30,20,B100_DefaultVariable.SearchFromTo			,11,2);
-		JLabel LB2_SearchAdjustCom			= B100_FrameParts.JLabelSet(230,250, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchAdjustReasonName	= B100_FrameParts.JLabelSet(230,150, 80,20,B100_DefaultVariable.SearchPartial	,11,0);
+		JLabel LB2_SearchAdjustdate			= B100_FrameParts.JLabelSet(240,175, 30,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchAdjustCom			= B100_FrameParts.JLabelSet(230,250, 80,20,B100_DefaultVariable.SearchPartial	,11,0);
 		
 		
 		JLabel LB2_SearchItemCd				= B100_FrameParts.JLabelSet(600, 25, 80,20,B100_DefaultVariable.SearchExact		,11,0);
-		JLabel LB2_SearchItemName			= B100_FrameParts.JLabelSet(600, 50, 80,20,B100_DefaultVariable.SearchPartial		,11,0);
+		JLabel LB2_SearchItemName			= B100_FrameParts.JLabelSet(600, 50, 80,20,B100_DefaultVariable.SearchPartial	,11,0);
 		JLabel LB2_SearchLot				= B100_FrameParts.JLabelSet(600, 75, 80,20,B100_DefaultVariable.SearchExact		,11,0);
-		JLabel LB2_SearchExpDate			= B100_FrameParts.JLabelSet(610,100, 30,20,B100_DefaultVariable.SearchFromTo			,11,2);
-		JLabel LB2_SearchActualDate			= B100_FrameParts.JLabelSet(610,125, 30,20,B100_DefaultVariable.SearchFromTo			,11,2);
-		JLabel LB2_SearchAdjustQty			= B100_FrameParts.JLabelSet(570,150, 30,20,B100_DefaultVariable.SearchFromTo			,11,2);
+		JLabel LB2_SearchExpDate			= B100_FrameParts.JLabelSet(610,100, 30,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchActualDate			= B100_FrameParts.JLabelSet(610,125, 30,20,B100_DefaultVariable.SearchFromTo		,11,2);
+		JLabel LB2_SearchAdjustQty			= B100_FrameParts.JLabelSet(570,150, 30,20,B100_DefaultVariable.SearchFromTo		,11,2);
 		
 		//調整日進む戻るボタン
 		JButton SearchAdjustdateMinAfterBtn		= B100_FrameParts.BtnSet(200,175, 40,10,"▲",6);

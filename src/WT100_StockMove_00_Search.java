@@ -36,6 +36,8 @@ public class WT100_StockMove_00_Search{
 		main_fm.add(userinfo);
 		main_fm.add(exit_btn);
 		
+		Object[][] DefinitionRt	= T100_StockMoveRt.DefinitionRt();
+		
 		//検索条件パネル
 		JPanel PN_Search = B100_FrameParts.JPanelSet(10,40,810,300,"White");
 		JLabel PN_SearchLabel = B100_FrameParts.JLabelSet(0,0,100,20,"検索条件",11,0);
@@ -43,24 +45,24 @@ public class WT100_StockMove_00_Search{
 		String[] LocExactMatchList = {B100_DefaultVariable.SearchPrefix,B100_DefaultVariable.SearchExact};
 		
 		
-		JLabel LB_SearchWhCd					= B100_FrameParts.JLabelSet(  0, 25, 80,20,"倉庫:"					,10,1);
-		JLabel LB_SearchClCd					= B100_FrameParts.JLabelSet(  0, 50, 80,20,"荷主:"					,10,1);
-		JLabel LB_SearchEntryDate				= B100_FrameParts.JLabelSet(  0, 75, 80,20,"移動日時:"				,10,1);
-		JLabel LB_SearchMoveNo					= B100_FrameParts.JLabelSet(  0,100, 80,20,"移動番号:"				,10,1);
-		JLabel LB_SearchEntryUser				= B100_FrameParts.JLabelSet(240,100, 80,20,"登録者:"				,10,1);
-		JLabel LB_SearchFromLoc					= B100_FrameParts.JLabelSet(  0,125, 80,20,"元ロケ:"				,10,1);
-		JLabel LB_SearchFromLocName				= B100_FrameParts.JLabelSet(  0,150, 80,20,"元ロケ名:"				,10,1);
-		JLabel LB_SearchToLoc					= B100_FrameParts.JLabelSet(240,125, 80,20,"先ロケ:"				,10,1);
-		JLabel LB_SearchToLocName				= B100_FrameParts.JLabelSet(240,150, 80,20,"先ロケ名:"				,10,1);
-		JLabel LB_SearchMoveCom					= B100_FrameParts.JLabelSet(480,125, 80,20,"コメント:"				,10,1);
-		JLabel LB_SearchMoveQty					= B100_FrameParts.JLabelSet(480,150, 80,20,"移動数:"				,10,1);
+		JLabel LB_SearchWhCd					= B100_FrameParts.JLabelSet(  0, 25, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchWhCd][5]				+":"	,10,1);
+		JLabel LB_SearchClCd					= B100_FrameParts.JLabelSet(  0, 50, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchClCd][5]				+":"	,10,1);
+		JLabel LB_SearchEntryDate				= B100_FrameParts.JLabelSet(  0, 75, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchEntryDateMin][5]		+":"	,10,1);
+		JLabel LB_SearchMoveNo					= B100_FrameParts.JLabelSet(  0,100, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchMoveNo][5]			+":"	,10,1);
+		JLabel LB_SearchEntryUser				= B100_FrameParts.JLabelSet(240,100, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchEntryUser][5]			+":"	,10,1);
+		JLabel LB_SearchFromLoc					= B100_FrameParts.JLabelSet(  0,125, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchFromLoc][5]			+":"	,10,1);
+		JLabel LB_SearchFromLocName				= B100_FrameParts.JLabelSet(  0,150, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchFromLocName][5]		+":"	,10,1);
+		JLabel LB_SearchToLoc					= B100_FrameParts.JLabelSet(240,125, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchToLoc][5]				+":"	,10,1);
+		JLabel LB_SearchToLocName				= B100_FrameParts.JLabelSet(240,150, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchToLocName][5]			+":"	,10,1);
+		JLabel LB_SearchMoveCom					= B100_FrameParts.JLabelSet(480,125, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchMoveCom][5]			+":"	,10,1);
+		JLabel LB_SearchMoveQty					= B100_FrameParts.JLabelSet(480,150, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchMoveQtyMin][5]		+":"	,10,1);
 		
-		JLabel LB_SearchItemCd					= B100_FrameParts.JLabelSet(  0,200, 80,20,"商品CD:"				,10,1);
-		JLabel LB_SearchItemName				= B100_FrameParts.JLabelSet(  0,225, 80,20,"商品名:"				,10,1);
+		JLabel LB_SearchItemCd					= B100_FrameParts.JLabelSet(  0,200, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchItemCd][5]			+":"	,10,1);
+		JLabel LB_SearchItemName				= B100_FrameParts.JLabelSet(  0,225, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchItemName][5]			+":"	,10,1);
 		
-		JLabel LB_SearchLot						= B100_FrameParts.JLabelSet(240,200, 80,20,"ロット:"				,10,1);
-		JLabel LB_SearchExpDate					= B100_FrameParts.JLabelSet(240,225, 80,20,"賞味期限:"				,10,1);
-		JLabel LB_SearchActualDate				= B100_FrameParts.JLabelSet(240,250, 80,20,"入荷日:"				,10,1);
+		JLabel LB_SearchLot						= B100_FrameParts.JLabelSet(240,200, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchLot][5]				+":"	,10,1);
+		JLabel LB_SearchExpDate					= B100_FrameParts.JLabelSet(240,225, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchExpDateMin][5]		+":"	,10,1);
+		JLabel LB_SearchActualDate				= B100_FrameParts.JLabelSet(240,250, 80,20,DefinitionRt[T100_StockMoveRt.ColSearchActualDateMin][5]	+":"	,10,1);
 		
 		
 		final JComboBox TB_SearchWhCd								= B100_FrameParts.JComboBoxSet(				 80, 25,240,20,B100_DefaultVariable.SearchWhList[0],11);					//倉庫コード
@@ -90,17 +92,17 @@ public class WT100_StockMove_00_Search{
 		
 		
 		JLabel LB2_SearchEntryDate					= B100_FrameParts.JLabelSet(260, 75, 60,20,B100_DefaultVariable.SearchFromTo		,10,2);
-		JLabel LB2_SearchMoveNo						= B100_FrameParts.JLabelSet(180,100, 60,20,B100_DefaultVariable.SearchExact	,10,0);
+		JLabel LB2_SearchMoveNo						= B100_FrameParts.JLabelSet(180,100, 60,20,B100_DefaultVariable.SearchExact		,10,0);
 		JLabel LB2_SearchEntryUser					= B100_FrameParts.JLabelSet(420,100, 80,20,B100_DefaultVariable.SearchPartial	,10,0);
 		JLabel LB2_SearchFromLocName				= B100_FrameParts.JLabelSet(180,150, 60,20,B100_DefaultVariable.SearchPartial	,10,0);
 		JLabel LB2_SearchToLocName					= B100_FrameParts.JLabelSet(420,150, 60,20,B100_DefaultVariable.SearchPartial	,10,0);
 		JLabel LB2_SearchMoveCom					= B100_FrameParts.JLabelSet(700,125, 60,20,B100_DefaultVariable.SearchPartial	,10,0);
 		JLabel LB2_SearchMoveQty					= B100_FrameParts.JLabelSet(630,150, 40,20,B100_DefaultVariable.SearchFromTo		,10,2);
 		
-		JLabel LB2_SearchItemCd						= B100_FrameParts.JLabelSet(180,200, 60,20,B100_DefaultVariable.SearchExact	,10,0);
+		JLabel LB2_SearchItemCd						= B100_FrameParts.JLabelSet(180,200, 60,20,B100_DefaultVariable.SearchExact		,10,0);
 		JLabel LB2_SearchItemName					= B100_FrameParts.JLabelSet(180,225, 60,20,B100_DefaultVariable.SearchPartial	,10,0);
 		
-		JLabel LB2_SearchLot						= B100_FrameParts.JLabelSet(420,200, 60,20,B100_DefaultVariable.SearchExact	,10,0);
+		JLabel LB2_SearchLot						= B100_FrameParts.JLabelSet(420,200, 60,20,B100_DefaultVariable.SearchExact		,10,0);
 		JLabel LB2_SearchExpDate					= B100_FrameParts.JLabelSet(430,225, 40,20,B100_DefaultVariable.SearchFromTo		,10,2);
 		JLabel LB2_SearchActualDate					= B100_FrameParts.JLabelSet(430,250, 40,20,B100_DefaultVariable.SearchFromTo		,10,2);
 		
