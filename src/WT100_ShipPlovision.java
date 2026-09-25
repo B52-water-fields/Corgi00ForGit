@@ -36,8 +36,6 @@ public class WT100_ShipPlovision{
 		
 		
 		
-		
-		
 	}
 	
 	private static Object[][] OkuriItemLotExpDateSumRt(){
