@@ -7,116 +7,7 @@ public class T100_OkuriHdRt{
 	//出荷明細（各行にヘッダ情報展開）返却する
 	/*
 	コピペ用
-	ArrayList<String> SearchInvoiceWHCD= new ArrayList<String>();			//倉庫CD
-	ArrayList<String> SearchClGpCD= new ArrayList<String>();				//荷主グループCD
-	ArrayList<String> SearchClCd= new ArrayList<String>();					//荷主CD
-	ArrayList<String> SearchOkuriNo= new ArrayList<String>();				//送り状番号
-	ArrayList<String> SearchClDeliNo= new ArrayList<String>();				//荷主管理番号
-	ArrayList<String> SearchPickupWhCd= new ArrayList<String>();			//集荷倉庫CD
-	ArrayList<String> SearchPurposeFG= new ArrayList<String>();				//目的フラグ
-	ArrayList<String> SearchPlanDateStr= new ArrayList<String>();			//出荷予定日開始
-	ArrayList<String> SearchShipDateStr= new ArrayList<String>();			//出荷実績日開始
-	ArrayList<String> SearchSPPlanDateStr= new ArrayList<String>();			//着日指定開始
-	ArrayList<String> SearchSPDateStr= new ArrayList<String>();				//着日実績開始
 	
-	ArrayList<String> SearchPlanDateEnd= new ArrayList<String>();			//出荷予定日終了
-	ArrayList<String> SearchShipDateEnd= new ArrayList<String>();			//出荷実績日終了
-	ArrayList<String> SearchSPPlanDateEnd= new ArrayList<String>();			//着日指定終了
-	ArrayList<String> SearchSPDateEnd= new ArrayList<String>();				//着日実績終了
-	
-	ArrayList<Float> SearchTotalWeightMin= new ArrayList<Float>();			//荷物重量(kg)最小
-	ArrayList<Float> SearchTotalSizeMin= new ArrayList<Float>();			//荷物サイズ最小
-	ArrayList<Integer> SearchTotalQtyMin= new ArrayList<Integer>();			//個口数最小
-	
-	ArrayList<Float> SearchTotalWeightMax= new ArrayList<Float>();			//荷物重量(kg)最大
-	ArrayList<Float> SearchTotalSizeMax= new ArrayList<Float>();			//荷物サイズ最大
-	ArrayList<Integer> SearchTotalQtyMax= new ArrayList<Integer>();			//個口数最大
-	
-	ArrayList<String> SearchDeliveryTypeCd= new ArrayList<String>();		//運送タイプ01
-	ArrayList<String> SearchDeliveryTypeCd02= new ArrayList<String>();		//運送タイプ02
-	ArrayList<String> SearchDeliveryTypeCd03= new ArrayList<String>();		//運送タイプ03
-	ArrayList<String> SearchDeliveryTypeCd04= new ArrayList<String>();		//運送タイプ04
-	ArrayList<String> SearchDeliveryTypeCd05= new ArrayList<String>();		//運送タイプ05
-	
-	ArrayList<Integer> SearchCodFG= new ArrayList<Integer>();				//代引区分
-	ArrayList<Integer> SearchCodPayTotalMin= new ArrayList<Integer>();		//代引収受金額合計最小
-	ArrayList<Integer> SearchCodPayTotalMax= new ArrayList<Integer>();		//代引収受金額合計最大
-	
-	ArrayList<Integer> SearchChildrenFG= new ArrayList<Integer>();			//子伝票区分
-	ArrayList<String> SearchParentOkuriNo= new ArrayList<String>();			//親伝票番号
-	
-	ArrayList<String> SearchNiokuriCd= new ArrayList<String>();				//荷送人CD
-	ArrayList<String> SearchNiokuriDepartmentCd= new ArrayList<String>();	//荷送人部署CD
-	ArrayList<String> SearchNiokuriName= new ArrayList<String>();			//荷送人名称
-	ArrayList<String> SearchNiokuriPost= new ArrayList<String>();			//荷送人郵便番号
-	ArrayList<String> SearchNiokuriAdd= new ArrayList<String>();			//荷送人住所
-	ArrayList<String> SearchNioKuriTel= new ArrayList<String>();			//荷送人Tel
-	ArrayList<String> SearchNioKuriFax= new ArrayList<String>();			//荷送人Fax
-	ArrayList<String> SearchNioKuriMail= new ArrayList<String>();			//荷送人Mail
-	ArrayList<String> SearchNiokuriMunicCd= new ArrayList<String>();		//荷送人市区町村CD
-	
-	ArrayList<String> SearchDeliCd= new ArrayList<String>();				//届先CD
-	ArrayList<String> SearchClDeliCd= new ArrayList<String>();				//荷主届先CD
-	ArrayList<String> SearchDeliDepartmentCd= new ArrayList<String>();		//届先部署CD
-	ArrayList<String> SearchDeliName= new ArrayList<String>();				//届先名称
-	ArrayList<String> SearchDeliPost= new ArrayList<String>();				//届先郵便番号
-	ArrayList<String> SearchDeliAdd= new ArrayList<String>();				//届先住所
-	ArrayList<String> SearchDeliTel= new ArrayList<String>();				//届先Tel
-	ArrayList<String> SearchDeliFax= new ArrayList<String>();				//届先Fax
-	ArrayList<String> SearchDeliMail= new ArrayList<String>();				//届先Mail
-	ArrayList<String> SearchDeliMunicCd= new ArrayList<String>();			//届先市区町村CD
-	
-	ArrayList<String> SearchCom= new ArrayList<String>();					//コメント
-	ArrayList<Integer> SearchStatus= new ArrayList<Integer>();				//運送ステータス
-	
-	ArrayList<Integer> SearchFeeFixFG= new ArrayList<Integer>();			//運賃確定フラグ
-	ArrayList<Integer> SearchReceiptStampFG= new ArrayList<Integer>();		//受領印フラグ
-	ArrayList<Integer> SearchInvoiceStatus= new ArrayList<Integer>();		//請求ステータス
-	
-	ArrayList<Integer> SearchWithOutTaxTotalMin= new ArrayList<Integer>();	//税別運賃合計最小
-	ArrayList<Integer> SearchTotalFeeMin= new ArrayList<Integer>();			//税込運賃合計税込運賃合計
-	ArrayList<String> SearchFeeFixDateStr= new ArrayList<String>();			//運賃確定日時開始
-	ArrayList<String> SearchReceiptStampDateStr= new ArrayList<String>();	//受領印日時開始
-	ArrayList<String> SearchEntryDateStr= new ArrayList<String>();			//登録日終了
-	ArrayList<String> SearchUpdateDateStr= new ArrayList<String>();			//更新日終了
-	
-	ArrayList<Integer> SearchWithOutTaxTotalMax= new ArrayList<Integer>();	//税別運賃合計最大
-	ArrayList<Integer> SearchTotalFeeMax= new ArrayList<Integer>();			//税込運賃合計最大
-	ArrayList<String> SearchFeeFixDateEnd= new ArrayList<String>();			//運賃確定日時終了
-	ArrayList<String> SearchReceiptStampDateEnd= new ArrayList<String>();	//受領印日時終了
-	ArrayList<String> SearchEntryDateEnd= new ArrayList<String>();			//登録日終了
-	ArrayList<String> SearchUpdateDateEnd= new ArrayList<String>();			//更新日終了
-	
-	ArrayList<String> SearchEntryUser= new ArrayList<String>();				//登録者
-	ArrayList<String> SearchUpdateUser= new ArrayList<String>();			//更新者
-	ArrayList<String> SearchEntryPG= new ArrayList<String>();				//登録プログラム
-	ArrayList<String> SearchUpdatePG= new ArrayList<String>();				//更新プログラム
-	ArrayList<String> SearchUseFeeBasePtCd= new ArrayList<String>();		//運転計算タリフ
-	ArrayList<Integer> SearchWmsStatus= new ArrayList<Integer>();			//倉庫出荷ステータス
-	ArrayList<String> SearchWmsShipDateStr= new ArrayList<String>();		//倉庫出荷日時開始
-	ArrayList<String> SearchWmsShipDateEnd= new ArrayList<String>();		//倉庫出荷日時終了
-	ArrayList<String> SearchCourseGpCd= new ArrayList<String>();			//配車コースグループコード
-	ArrayList<String> SearchCourseCD= new ArrayList<String>();				//配車コースコード
-	ArrayList<Integer> SearchCourseCDEda= new ArrayList<Integer>();			//配車コースコード枝番
-	ArrayList<String> SearchPitGrp= new ArrayList<String>();				//荷物払出ピットグループ
-	ArrayList<String> SearchPit= new ArrayList<String>();					//荷物払出ピット
-	
-	ArrayList<String> SearchMsItemCd= new ArrayList<String>();				//商品CD
-	ArrayList<String> SearchMsItemName= new ArrayList<String>();			//商品名
-	
-	ArrayList<String> SearchClItemCd= new ArrayList<String>();				//荷主商品CD
-	
-	ArrayList<String> SearchMsCategoryCd= new ArrayList<String>();			//カテゴリCD
-	ArrayList<String> SearchMsCategoryName= new ArrayList<String>();		//カテゴリ名
-	ArrayList<String> SearchMsTildFG= new ArrayList<String>();				//温度区分
-	ArrayList<String> SearchMsTildName= new ArrayList<String>();			//温度区分名
-	
-	ArrayList<String> SearchMsLot= new ArrayList<String>();					//ロット指定
-	ArrayList<String> SearchMsExpDateStr= new ArrayList<String>();			//賞味期限指定開始
-	ArrayList<String> SearchMsExpDateEnd= new ArrayList<String>();			//賞味期限指定終了
-	ArrayList<String> SearchMsPackingType= new ArrayList<String>();			//荷姿タイプ
-	
-	boolean AllSearch	= false;
 	
 	Object[][] OkuriHdRt	= T100_OkuriHdRt.OkuriHdRt(
 				SearchInvoiceWHCD,			//倉庫CD
@@ -144,7 +35,7 @@ public class T100_OkuriHdRt{
 				SearchTotalSizeMax,			//荷物サイズ最大
 				SearchTotalQtyMax,			//個口数最大
 				
-				SearchDeliveryTypeCd,		//運送タイプ01
+				SearchDeliveryTypeCd01,		//運送タイプ01
 				SearchDeliveryTypeCd02,		//運送タイプ02
 				SearchDeliveryTypeCd03,		//運送タイプ03
 				SearchDeliveryTypeCd04,		//運送タイプ04
@@ -338,13 +229,13 @@ public class T100_OkuriHdRt{
 	//戻り値カラム
 	static final int ColClCd					=   0;	//荷主コード
 	static final int ColInvoiceWhCd			=   1;	//倉庫コード
-	static final int ColOkuriNo				=   2;	//送り状番号
+	static final int ColOkuriNo					=   2;	//送り状番号
 	static final int ColClDeliNo				=   3;	//荷主管理番号
-	static final int ColPickupWhCd			=   4;	//集荷倉庫CD
+	static final int ColPickupWhCd				=   4;	//集荷倉庫CD
 	static final int ColPurposeFG				=   5;	//目的フラグ
 	static final int ColPlanDate				=   6;	//出荷予定日
 	static final int ColShipDate				=   7;	//出荷実績日
-	static final int ColSPPlanDate			=   8;	//着日指定
+	static final int ColSPPlanDate				=   8;	//着日指定
 	static final int ColSPDate					=   9;	//着日実績
 	static final int ColSPTimeFG				=  10;	//時間指定区分
 	static final int ColSPTimeStr				=  11;	//時間指定開始
@@ -355,18 +246,18 @@ public class T100_OkuriHdRt{
 	static final int ColDeliveryTypeCd01		=  16;	//運送タイプ01
 	static final int ColDeliTypeName			=  17;	//運送タイプ名01
 	static final int ColDeliveryTypeCd02		=  18;	//運送タイプ02
-	static final int ColDeliTypeName02		=  19;	//運送タイプ名02
+	static final int ColDeliTypeName02			=  19;	//運送タイプ名02
 	static final int ColDeliveryTypeCd03		=  20;	//運送タイプ03
-	static final int ColDeliTypeName03		=  21;	//運送タイプ名03
+	static final int ColDeliTypeName03			=  21;	//運送タイプ名03
 	static final int ColDeliveryTypeCd04		=  22;	//運送タイプ04
-	static final int ColDeliTypeName04		=  23;	//運送タイプ名04
+	static final int ColDeliTypeName04			=  23;	//運送タイプ名04
 	static final int ColDeliveryTypeCd05		=  24;	//運送タイプ05
-	static final int ColDeliTypeName05		=  25;	//運送タイプ名05
+	static final int ColDeliTypeName05			=  25;	//運送タイプ名05
 	static final int ColCodFG					=  26;	//代引きフラグ
 	static final int ColCodPayTotal			=  27;	//代引き収受金額合計
 	static final int ColCodPay					=  28;	//代引き金額
-	static final int ColCodConsumptionTax	=  29;	//代引き消費税
-	static final int ColChildrenFG			=  30;	//赤黒区分
+	static final int ColCodConsumptionTax		=  29;	//代引き消費税
+	static final int ColChildrenFG				=  30;	//赤黒区分
 	static final int ColParentOkuriNo			=  31;	//親伝票番号
 	static final int ColNiokuriCd				=  32;	//荷送人コード
 	static final int ColNiokuriDepartmentCd	=  33;	//部署CD
@@ -377,22 +268,22 @@ public class T100_OkuriHdRt{
 	static final int ColNiokuriAdd01			=  38;	//荷送人住所01
 	static final int ColNiokuriAdd02			=  39;	//荷送人住所02
 	static final int ColNiokuriAdd03			=  40;	//荷送人住所03
-	static final int ColNioKuriTel			=  41;	//荷送人TEL
-	static final int ColNioKuriFax			=  42;	//荷送人FAX
+	static final int ColNioKuriTel				=  41;	//荷送人TEL
+	static final int ColNioKuriFax				=  42;	//荷送人FAX
 	static final int ColNioKuriMail			=  43;	//荷送人MAIL
-	static final int ColNiokuriMunicCd		=  44;	//荷送人市区町村CD
+	static final int ColNiokuriMunicCd			=  44;	//荷送人市区町村CD
 	static final int ColDeliCd					=  45;	//荷届先コード
 	static final int ColClDeliCd				=  46;	//荷主荷届先コード
 	static final int ColDeliDepartmentCd		=  47;	//部署CD
-	static final int ColDeliName01			=  48;	//荷届先名01
-	static final int ColDeliName02			=  49;	//荷届先名02
-	static final int ColDeliName03			=  50;	//荷届先名03
+	static final int ColDeliName01				=  48;	//荷届先名01
+	static final int ColDeliName02				=  49;	//荷届先名02
+	static final int ColDeliName03				=  50;	//荷届先名03
 	static final int ColDeliPost				=  51;	//荷届先郵便番号
 	static final int ColDeliAdd01				=  52;	//荷届先住所01
 	static final int ColDeliAdd02				=  53;	//荷届先住所02
 	static final int ColDeliAdd03				=  54;	//荷届先住所03
-	static final int ColDeliTel				=  55;	//荷届先TEL
-	static final int ColDeliFax				=  56;	//荷届先FAX
+	static final int ColDeliTel					=  55;	//荷届先TEL
+	static final int ColDeliFax					=  56;	//荷届先FAX
 	static final int ColDeliMail				=  57;	//荷届先MAIL
 	static final int ColDeliMunicCd			=  58;	//荷届先市区町村CD
 	static final int ColCom01					=  59;	//コメント01
@@ -402,31 +293,31 @@ public class T100_OkuriHdRt{
 	static final int ColCom05					=  63;	//コメント05
 	static final int ColStatus					=  64;	//状況
 	static final int ColTaxFg					=  65;	//税区分
-	static final int ColTaxRate				=  66;	//税率
-	static final int ColDeliFee				=  67;	//運賃
+	static final int ColTaxRate					=  66;	//税率
+	static final int ColDeliFee					=  67;	//運賃
 	static final int ColAddDeliFee01			=  68;	//付帯費用1
 	static final int ColAddDeliFee02			=  69;	//付帯費用2
 	static final int ColAddDeliFee03			=  70;	//付帯費用3
 	static final int ColHaighWayFee01			=  71;	//高速代等実費精算分1（内税）
 	static final int ColHaighWayFee02			=  72;	//高速代等実費精算分2（内税）
-	static final int ColConsumptionTax		=  73;	//消費税
+	static final int ColConsumptionTax			=  73;	//消費税
 	static final int ColWithOutTaxTotal		=  74;	//税別合計金額
 	static final int ColTotalFee				=  75;	//税込請求額合計
 	static final int ColFeeFixFG				=  76;	//金額確定フラグ
-	static final int ColFeeFixDate			=  77;	//金額確定日時
-	static final int ColReceiptStampFG		=  78;	//受領印チェック
+	static final int ColFeeFixDate				=  77;	//金額確定日時
+	static final int ColReceiptStampFG			=  78;	//受領印チェック
 	static final int ColReceiptStampDate		=  79;	//受領印日時
 	static final int ColInvoiceStatus			=  80;	//請求ステータス
 	static final int ColEntryDate				=  81;	//登録日
-	static final int ColUpdateDate			=  82;	//更新日
+	static final int ColUpdateDate				=  82;	//更新日
 	static final int ColEntryUser				=  83;	//登録者
-	static final int ColUpdateUser			=  84;	//更新者
-	static final int ColEntryPG				=  85;	//登録プログラム
+	static final int ColUpdateUser				=  84;	//更新者
+	static final int ColEntryPG					=  85;	//登録プログラム
 	static final int ColUpdatePG				=  86;	//更新プログラム
-	static final int ColUseFeeBasePtCd		=  87;	//適用運賃タリフCD
+	static final int ColUseFeeBasePtCd			=  87;	//適用運賃タリフCD
 	static final int ColWmsStatus				=  88;	//在庫管理ステータス
 	static final int ColWmsShipDate			=  89;	//倉庫出荷日
-	static final int ColCourseGpCd			=  90;	//コースグループコード
+	static final int ColCourseGpCd				=  90;	//コースグループコード
 	static final int ColCourseCD				=  91;	//一次配車コースコード
 	static final int ColCourseCDEda			=  92;	//一次配車コースコード枝番
 	static final int ColPitGrp					=  93;	//一次配車払出ピットグループ
@@ -438,33 +329,33 @@ public class T100_OkuriHdRt{
 	
 	static final int ColCLName01				=  99;	//荷主名
 	static final int ColClGpCD					= 100;	//荷主グループCD
-	static final int ColCLGpName01			= 101;	//荷主グループ標記名
+	static final int ColCLGpName01				= 101;	//荷主グループ標記名
 	
 	//検索値カラム
-	static final int ColSearchInvoiceWHCD			=   0;
+	static final int ColSearchInvoiceWHCD				=   0;
 	static final int ColSearchClGpCD					=   1;
-	static final int ColSearchClCd					=   2;
+	static final int ColSearchClCd						=   2;
 	static final int ColSearchOkuriNo					=   3;
-	static final int ColSearchClDeliNo				=   4;
+	static final int ColSearchClDeliNo					=   4;
 	static final int ColSearchPickupWhCd				=   5;
 	static final int ColSearchPurposeFG				=   6;
-	static final int ColSearchPlanDateStr			=   7;
-	static final int ColSearchShipDateStr			=   8;
+	static final int ColSearchPlanDateStr				=   7;
+	static final int ColSearchShipDateStr				=   8;
 	static final int ColSearchSPPlanDateStr			=   9;
 	static final int ColSearchSPDateStr				=  10;
 		
-	static final int ColSearchPlanDateEnd			=  11;
-	static final int ColSearchShipDateEnd			=  12;
+	static final int ColSearchPlanDateEnd				=  11;
+	static final int ColSearchShipDateEnd				=  12;
 	static final int ColSearchSPPlanDateEnd			=  13;
 	static final int ColSearchSPDateEnd				=  14;
 		
 	static final int ColSearchTotalWeightMin			=  15;
-	static final int ColSearchTotalSizeMin			=  16;
-	static final int ColSearchTotalQtyMin			=  17;
+	static final int ColSearchTotalSizeMin				=  16;
+	static final int ColSearchTotalQtyMin				=  17;
 		
 	static final int ColSearchTotalWeightMax			=  18;
-	static final int ColSearchTotalSizeMax			=  19;
-	static final int ColSearchTotalQtyMax			=  20;
+	static final int ColSearchTotalSizeMax				=  19;
+	static final int ColSearchTotalQtyMax				=  20;
 		
 	static final int ColSearchDeliveryTypeCd01		=  21;
 	static final int ColSearchDeliveryTypeCd02		=  22;
@@ -480,74 +371,74 @@ public class T100_OkuriHdRt{
 	static final int ColSearchParentOkuriNo			=  30;
 		
 	static final int ColSearchNiokuriCd				=  31;
-	static final int ColSearchNiokuriDepartmentCd	=  32;
-	static final int ColSearchNiokuriName			=  33;
-	static final int ColSearchNiokuriPost			=  34;
+	static final int ColSearchNiokuriDepartmentCd		=  32;
+	static final int ColSearchNiokuriName				=  33;
+	static final int ColSearchNiokuriPost				=  34;
 	static final int ColSearchNiokuriAdd				=  35;
 	static final int ColSearchNioKuriTel				=  36;
 	static final int ColSearchNioKuriFax				=  37;
-	static final int ColSearchNioKuriMail			=  38;
+	static final int ColSearchNioKuriMail				=  38;
 	static final int ColSearchNiokuriMunicCd			=  39;
 		
 	static final int ColSearchDeliCd					=  40;
-	static final int ColSearchClDeliCd				=  41;
+	static final int ColSearchClDeliCd					=  41;
 	static final int ColSearchDeliDepartmentCd		=  42;
-	static final int ColSearchDeliName				=  43;
-	static final int ColSearchDeliPost				=  44;
+	static final int ColSearchDeliName					=  43;
+	static final int ColSearchDeliPost					=  44;
 	static final int ColSearchDeliAdd					=  45;
 	static final int ColSearchDeliTel					=  46;
 	static final int ColSearchDeliFax					=  47;
-	static final int ColSearchDeliMail				=  48;
-	static final int ColSearchDeliMunicCd			=  49;
+	static final int ColSearchDeliMail					=  48;
+	static final int ColSearchDeliMunicCd				=  49;
 		
 	static final int ColSearchCom						=  50;
 	static final int ColSearchStatus					=  51;
 		
-	static final int ColSearchFeeFixFG				=  52;
+	static final int ColSearchFeeFixFG					=  52;
 	static final int ColSearchReceiptStampFG			=  53;
 	static final int ColSearchInvoiceStatus			=  54;
 		
-	static final int ColSearchWithOutTaxTotalMin	=  55;
-	static final int ColSearchTotalFeeMin			=  56;
+	static final int ColSearchWithOutTaxTotalMin		=  55;
+	static final int ColSearchTotalFeeMin				=  56;
 	static final int ColSearchFeeFixDateStr			=  57;
-	static final int ColSearchReceiptStampDateStr	=  58;
-	static final int ColSearchEntryDateStr			=  59;
+	static final int ColSearchReceiptStampDateStr		=  58;
+	static final int ColSearchEntryDateStr				=  59;
 	static final int ColSearchUpdateDateStr			=  60;
 		
-	static final int ColSearchWithOutTaxTotalMax	=  61;
-	static final int ColSearchTotalFeeMax			=  62;
+	static final int ColSearchWithOutTaxTotalMax		=  61;
+	static final int ColSearchTotalFeeMax				=  62;
 	static final int ColSearchFeeFixDateEnd			=  63;
-	static final int ColSearchReceiptStampDateEnd	=  64;
-	static final int ColSearchEntryDateEnd			=  65;
+	static final int ColSearchReceiptStampDateEnd		=  64;
+	static final int ColSearchEntryDateEnd				=  65;
 	static final int ColSearchUpdateDateEnd			=  66;
 		
 	static final int ColSearchEntryUser				=  67;
 	static final int ColSearchUpdateUser				=  68;
 	static final int ColSearchEntryPG					=  69;
-	static final int ColSearchUpdatePG				=  70;
+	static final int ColSearchUpdatePG					=  70;
 	static final int ColSearchUseFeeBasePtCd			=  71;
 	static final int ColSearchWmsStatus				=  72;
 	static final int ColSearchWmsShipDateStr			=  73;
 	static final int ColSearchWmsShipDateEnd			=  74;
 	static final int ColSearchCourseGpCd				=  75;
-	static final int ColSearchCourseCD				=  76;
-	static final int ColSearchCourseCDEda			=  77;
+	static final int ColSearchCourseCD					=  76;
+	static final int ColSearchCourseCDEda				=  77;
 	static final int ColSearchPitGrp					=  78;
 	static final int ColSearchPit						=  79;
 		
-	static final int ColSearchMsItemCd				=  80;
+	static final int ColSearchMsItemCd					=  80;
 	static final int ColSearchMsItemName				=  81;
 		
-	static final int ColSearchClItemCd				=  82;
+	static final int ColSearchClItemCd					=  82;
 			
-	static final int ColSearchMsCategoryCd			=  83;
+	static final int ColSearchMsCategoryCd				=  83;
 	static final int ColSearchMsCategoryName			=  84;
-	static final int ColSearchMsTildFG				=  85;
+	static final int ColSearchMsTildFG					=  85;
 	static final int ColSearchMsTildName				=  86;
 		
 	static final int ColSearchMsLot					=  87;
-	static final int ColSearchMsExpDateStr			=  88;
-	static final int ColSearchMsExpDateEnd			=  89;
+	static final int ColSearchMsExpDateStr				=  88;
+	static final int ColSearchMsExpDateEnd				=  89;
 	static final int ColSearchMsPackingType			=  90;
 	
 	public static Object[][] RtOkuriHdRt(){
