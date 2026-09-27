@@ -499,6 +499,7 @@ public class WT100_OkuriHd_00_Search{
             }
       	});
 
+      	
       	//キャンセルボタン押下事の挙動
       	CancelBtn.addActionListener(new AbstractAction(){
             public void actionPerformed(ActionEvent e){
