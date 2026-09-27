@@ -365,7 +365,7 @@ public class B100_FrameParts{
 		JTabbedPane TabPane = new JTabbedPane();
 		
 		TabPane.setBounds(x*A00000_Main.Mul/A00000_Main.Div,y*A00000_Main.Mul/A00000_Main.Div,GetWidth*A00000_Main.Mul/A00000_Main.Div,GetHeight*A00000_Main.Mul/A00000_Main.Div);
-		
+		TabPane.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 11*A00000_Main.Mul/A00000_Main.Div));
 		if(null!=TabName && 0<TabName.length) {
 			for(int i=0;i<TabName.length;i++) {
 				TabPane.addTab(TabName[i], SetPN[i]);

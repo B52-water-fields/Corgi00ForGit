@@ -74,7 +74,7 @@ public class WT200_OkuriMsSearchSubFm{
 		final JTable tbOkuriMs = new JTable(tableModel_msOkuriMs);
 		tbOkuriMs.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tbOkuriMs.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
-		tbOkuriMs.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
+		tbOkuriMs.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 11*A00000_Main.Mul/A00000_Main.Div));
 		
 		DefaultTableColumnModel columnModelOkuriMs
 		= (DefaultTableColumnModel)tbOkuriMs.getColumnModel();
@@ -82,7 +82,7 @@ public class WT200_OkuriMsSearchSubFm{
 		//列幅初期設定 表示位置設定
 		TableColumn column = null;
 		
-		column = columnModelOkuriMs.getColumn( 0);	column.setPreferredWidth( 30*A00000_Main.Mul/A00000_Main.Div);	//FG
+		column = columnModelOkuriMs.getColumn( 0);	column.setPreferredWidth( 20*A00000_Main.Mul/A00000_Main.Div);	//FG
 		
 		for(int i=0;i<RtOkuriMsRt.length;i++) {
 			if("int".equals((String)RtOkuriMsRt[i][2])||"float".equals((String)RtOkuriMsRt[i][2])) {

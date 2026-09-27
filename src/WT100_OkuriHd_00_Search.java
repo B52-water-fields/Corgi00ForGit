@@ -466,6 +466,15 @@ public class WT100_OkuriHd_00_Search{
 		//一括新規ボタン
 		JButton SomeCreateBtn = B100_FrameParts.BtnSet(		370,685,100,20,"予定一括新規"	,9);
 		main_fm.add(SomeCreateBtn);
+		
+		JLabel LB_Cancel 		= B100_FrameParts.JLabelSet(		490,635,100,20,"チェック行を"	,10,2);
+		JButton CancelBtn 		= B100_FrameParts.BtnSet(			490,660,100,20,"キャンセル"		, 9);
+		JButton OnHoldBtn 		= B100_FrameParts.BtnSet(			490,685,100,20,"保留"			,11);
+		JButton ReleaseHoldBtn 	= B100_FrameParts.BtnSet(			490,710,100,20,"保留解除"		,11);
+		main_fm.add(LB_Cancel);
+		main_fm.add(CancelBtn);
+		main_fm.add(OnHoldBtn);
+		main_fm.add(ReleaseHoldBtn);
 
         main_fm.setVisible(true);
         
@@ -490,6 +499,23 @@ public class WT100_OkuriHd_00_Search{
             }
       	});
 
+      	//キャンセルボタン押下事の挙動
+      	CancelBtn.addActionListener(new AbstractAction(){
+            public void actionPerformed(ActionEvent e){
+                if(RenewFg) {
+                    RenewFg = false;
+                    int RowCount = MainFmTableModel.getRowCount();
+                    ArrayList<String> TgtOkuriNo = new ArrayList<String>();
+                    for(int i=0;i<RowCount;i++) {
+                        if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+                        	TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+                        }
+                    }
+                    Tools100_OkuriCancel.OkuriCancel(TgtOkuriNo);
+                    RenewFg = true;
+                }
+            }
+      	});
         /**********************************************************************
          * 検索ボタン押下時
          **********************************************************************/
