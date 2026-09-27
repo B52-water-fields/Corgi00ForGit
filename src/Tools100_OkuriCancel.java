@@ -1,10 +1,75 @@
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Tools100_OkuriCancel{
 	public static ArrayList<String> OkuriCancel(ArrayList<String> TgtOkuriNo) {
 		ArrayList<String> ErrMsg = new ArrayList<String>();
+		Object[][] OkuriHdRt = null;
 		if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
+			OkuriHdRt = OkuriHdRt(TgtOkuriNo);
+			if(null==OkuriHdRt||0==OkuriHdRt.length) {
+				for(int i=0;i<TgtOkuriNo.size();i++) {
+					ErrMsg.add(TgtOkuriNo.get(i)+" はキャンセル対象ではありません");
+				}
+			}
+		}
+		ArrayList<String> SetOkuriNo = new ArrayList<String> ();
+		if(null!=OkuriHdRt||0<OkuriHdRt.length) {
+			for(int i01=0;i01<TgtOkuriNo.size();i01++) {
+				boolean UnHitFg = true;
+				for(int i02=0;i02<OkuriHdRt.length;i02++) {
+					if(TgtOkuriNo.get(i01).equals((String)OkuriHdRt[i02][T100_OkuriHdRt.ColOkuriNo])) {
+						SetOkuriNo.add(TgtOkuriNo.get(i01));
+						UnHitFg = false;
+					}
+				}
+				
+				if(UnHitFg) {
+					ErrMsg.add(TgtOkuriNo.get(i01)+" はキャンセル対象ではありません");
+				}
+			}
+		}
+		if(null!=SetOkuriNo && 0<SetOkuriNo.size()) {
+			String[] cl_cd			= new String[SetOkuriNo.size()];	//荷主コード
+			String[] InvoiceWHCD	= new String[SetOkuriNo.size()];	//倉庫コード
+			String[] OkuriNo		= new String[SetOkuriNo.size()];	//送り状番号
+			String[] Status			= new String[SetOkuriNo.size()];	//状況
+			String[] WmsStatus		= new String[SetOkuriNo.size()];	//在庫管理ステータス
+			String[] UpdateDate		= new String[SetOkuriNo.size()];	//更新日
+			String[] UpdateUser		= new String[SetOkuriNo.size()];	//更新者
+			String[] UpdatePG		= new String[SetOkuriNo.size()];	//更新プログラム
+			String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
 			
+			for(int i01=0;i01<SetOkuriNo.size();i01++) {
+				cl_cd[i01]			= A00000_Main.ClCd;		//荷主コード
+				InvoiceWHCD[i01]	= A00000_Main.ClWh;		//倉庫コード
+				OkuriNo[i01]		= SetOkuriNo.get(i01);	//送り状番号
+				Status[i01]			= "9";					//状況
+				WmsStatus[i01]		= "9";					//在庫管理ステータス
+				UpdateDate[i01]		= now_dtm;				//更新日
+				UpdateUser[i01]		= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//更新者
+				UpdatePG[i01]		= "Tools100_OkuriCancel";	//更新プログラム
+			}
+			
+			Object[][] SetOb = {
+					 {"cl_cd"			,"0"	,"1"	,"Key"	,cl_cd	}		//荷主コード
+					,{"InvoiceWHCD"		,"0"	,"1"	,"Key"	,InvoiceWHCD}	//倉庫コード
+					,{"OkuriNo"			,"0"	,"1"	,"Key"	,OkuriNo}		//送り状番号
+					,{"Status"			,"0"	,"1"	,""		,Status}		//状況
+					,{"WmsStatus"		,"0"	,"1"	,""		,WmsStatus}		//在庫管理ステータス
+					,{"UpdateDate"		,"0"	,"1"	,""		,UpdateDate}	//更新日
+					,{"UpdateUser"		,"0"	,"1"	,""		,UpdateUser}	//更新者
+					,{"UpdatePG"		,"0"	,"1"	,""		,UpdatePG}		//更新プログラム
+					 };
+			String tgt_table = "KT0010_OKURI_HD";
+			String TgtDB = "NYANKO";
+			int non_msg_fg = 1;
+			A100_InsertUpdateSQL.InsertUpdateSomeRecord(SetOb,tgt_table,TgtDB,non_msg_fg);
+		}
+		if(null!=ErrMsg&&0<ErrMsg.size()) {
+			ErrView(ErrMsg);
 		}
 		return ErrMsg;
 	}
@@ -13,7 +78,7 @@ public class Tools100_OkuriCancel{
 		ArrayList<String> SearchInvoiceWHCD			= new ArrayList<String>();			//倉庫CD
 		ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
 		ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主CD
-		ArrayList<String> SearchOkuriNo				= new ArrayList<String>();			//送り状番号
+		ArrayList<String> SearchOkuriNo				= TgtOkuriNo;						//送り状番号
 		ArrayList<String> SearchClDeliNo			= new ArrayList<String>();			//荷主管理番号
 		ArrayList<String> SearchPickupWhCd			= new ArrayList<String>();			//集荷倉庫CD
 		ArrayList<String> SearchPurposeFG			= new ArrayList<String>();			//目的フラグ
@@ -120,6 +185,13 @@ public class Tools100_OkuriCancel{
 		ArrayList<Integer> SearchMsPackingType		= new ArrayList<Integer>();			//荷姿タイプ
 		boolean AllSearch = false;
 		
+		SearchInvoiceWHCD.add(A00000_Main.ClWh);
+		SearchClGpCD.add(A00000_Main.ClGp);
+		SearchClCd.add(A00000_Main.ClCd);
+		SearchStatus.add(0);
+		SearchStatus.add(8);
+		SearchWmsStatus.add(0);
+		SearchWmsStatus.add(8);
 		
 		Object[][] OkuriHdRt	= T100_OkuriHdRt.OkuriHdRt(
 					SearchInvoiceWHCD,			//倉庫CD
@@ -235,4 +307,38 @@ public class Tools100_OkuriCancel{
 		
 		return OkuriHdRt;
 	}
+	
+	private static void ErrView(ArrayList<String> ErrMsg) {
+		//必要フォルダを生成する
+		String FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl";
+		B100_FolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriCancel";
+		B100_FolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriCancel\\Err";
+		B100_FolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriCancel\\BK";
+		B100_FolderCheck.FLD_CHECK(FLD_PATH);
+		
+		//ファイルに出力
+		String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		
+		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriCancel\\Err";
+		
+		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
+		
+		B100_TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		
+		//古いエラーデータ削除
+		B100_FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100_DefaultVariable.ErrTxtDelete);
+		
+		//ファイル開く
+		File file = new File(ErrFP);
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			desktop.open(file);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+	
 }
