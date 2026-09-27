@@ -109,7 +109,7 @@ public class WM100_AdjustReasonMst_00_Search{
 		final JTable tb01 = new JTable(MainFmTableModel);
 		tb01.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tb01.setRowHeight(20*A00000_Main.Mul/A00000_Main.Div);
-		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, 12*A00000_Main.Mul/A00000_Main.Div));
+		tb01.setFont(new Font(A00000_Main.DefaultFont, Font.PLAIN, (int)(12*A00000_Main.Mul/A00000_Main.Div)));
 		
 		DefaultTableColumnModel columnModel01
 		= (DefaultTableColumnModel)tb01.getColumnModel();
