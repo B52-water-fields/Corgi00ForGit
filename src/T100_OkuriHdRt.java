@@ -7,7 +7,115 @@ public class T100_OkuriHdRt{
 	//出荷明細（各行にヘッダ情報展開）返却する
 	/*
 	コピペ用
+	ArrayList<String> SearchInvoiceWHCD			= new ArrayList<String>();			//倉庫CD
+	ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
+	ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主CD
+	ArrayList<String> SearchOkuriNo				= new ArrayList<String>();			//送り状番号
+	ArrayList<String> SearchClDeliNo			= new ArrayList<String>();			//荷主管理番号
+	ArrayList<String> SearchPickupWhCd			= new ArrayList<String>();			//集荷倉庫CD
+	ArrayList<String> SearchPurposeFG			= new ArrayList<String>();			//目的フラグ
+	ArrayList<String> SearchPlanDateStr			= new ArrayList<String>();			//出荷予定日開始
+	ArrayList<String> SearchShipDateStr			= new ArrayList<String>();			//出荷実績日開始
+	ArrayList<String> SearchSPPlanDateStr		= new ArrayList<String>();			//着日指定開始
+	ArrayList<String> SearchSPDateStr			= new ArrayList<String>();			//着日実績開始
 	
+	ArrayList<String> SearchPlanDateEnd			= new ArrayList<String>();			//出荷予定日終了
+	ArrayList<String> SearchShipDateEnd			= new ArrayList<String>();			//出荷実績日終了
+	ArrayList<String> SearchSPPlanDateEnd		= new ArrayList<String>();			//着日指定終了
+	ArrayList<String> SearchSPDateEnd			= new ArrayList<String>();			//着日実績終了
+	
+	ArrayList<Float> SearchTotalWeightMin		= new ArrayList<Float>();			//荷物重量(kg)最小
+	ArrayList<Float> SearchTotalSizeMin			= new ArrayList<Float>();			//荷物サイズ最小
+	ArrayList<Integer> SearchTotalQtyMin		= new ArrayList<Integer>();			//個口数最小
+	
+	ArrayList<Float> SearchTotalWeightMax		= new ArrayList<Float>();			//荷物重量(kg)最大
+	ArrayList<Float> SearchTotalSizeMax			= new ArrayList<Float>();			//荷物サイズ最大
+	ArrayList<Integer> SearchTotalQtyMax		= new ArrayList<Integer>();			//個口数最大
+	
+	ArrayList<String> SearchDeliveryTypeCd01	= new ArrayList<String>();			//運送タイプ01
+	ArrayList<String> SearchDeliveryTypeCd02	= new ArrayList<String>();			//運送タイプ02
+	ArrayList<String> SearchDeliveryTypeCd03	= new ArrayList<String>();			//運送タイプ03
+	ArrayList<String> SearchDeliveryTypeCd04	= new ArrayList<String>();			//運送タイプ04
+	ArrayList<String> SearchDeliveryTypeCd05	= new ArrayList<String>();			//運送タイプ05
+	
+	ArrayList<Integer> SearchCodFG				= new ArrayList<Integer>();			//代引区分
+	ArrayList<Integer> SearchCodPayTotalMin		= new ArrayList<Integer>();			//代引収受金額合計最小
+	ArrayList<Integer> SearchCodPayTotalMax		= new ArrayList<Integer>();			//代引収受金額合計最大
+	
+	ArrayList<Integer> SearchChildrenFG			= new ArrayList<Integer>();			//子伝票区分
+	ArrayList<String> SearchParentOkuriNo		= new ArrayList<String>();			//親伝票番号
+	
+	ArrayList<String> SearchNiokuriCd			= new ArrayList<String>();			//荷送人CD
+	ArrayList<String> SearchNiokuriDepartmentCd	= new ArrayList<String>();			//荷送人部署CD
+	ArrayList<String> SearchNiokuriName			= new ArrayList<String>();			//荷送人名称
+	ArrayList<String> SearchNiokuriPost			= new ArrayList<String>();			//荷送人郵便番号
+	ArrayList<String> SearchNiokuriAdd			= new ArrayList<String>();			//荷送人住所
+	ArrayList<String> SearchNioKuriTel			= new ArrayList<String>();			//荷送人Tel
+	ArrayList<String> SearchNioKuriFax			= new ArrayList<String>();			//荷送人Fax
+	ArrayList<String> SearchNioKuriMail			= new ArrayList<String>();			//荷送人Mail
+	ArrayList<String> SearchNiokuriMunicCd		= new ArrayList<String>();			//荷送人市区町村CD
+	
+	ArrayList<String> SearchDeliCd				= new ArrayList<String>();			//届先CD
+	ArrayList<String> SearchClDeliCd			= new ArrayList<String>();			//荷主届先CD
+	ArrayList<String> SearchDeliDepartmentCd	= new ArrayList<String>();			//届先部署CD
+	ArrayList<String> SearchDeliName			= new ArrayList<String>();			//届先名称
+	ArrayList<String> SearchDeliPost			= new ArrayList<String>();			//届先郵便番号
+	ArrayList<String> SearchDeliAdd				= new ArrayList<String>();			//届先住所
+	ArrayList<String> SearchDeliTel				= new ArrayList<String>();			//届先Tel
+	ArrayList<String> SearchDeliFax				= new ArrayList<String>();			//届先Fax
+	ArrayList<String> SearchDeliMail			= new ArrayList<String>();			//届先Mail
+	ArrayList<String> SearchDeliMunicCd			= new ArrayList<String>();			//届先市区町村CD
+	
+	ArrayList<String> SearchCom					= new ArrayList<String>();			//コメント
+	ArrayList<Integer> SearchStatus				= new ArrayList<Integer>();			//運送ステータス
+	
+	ArrayList<Integer> SearchFeeFixFG			= new ArrayList<Integer>();			//運賃確定フラグ
+	ArrayList<Integer> SearchReceiptStampFG		= new ArrayList<Integer>();			//受領印フラグ
+	ArrayList<Integer> SearchInvoiceStatus		= new ArrayList<Integer>();			//請求ステータス
+	
+	ArrayList<Integer> SearchWithOutTaxTotalMin	= new ArrayList<Integer>();			//税別運賃合計最小
+	ArrayList<Integer> SearchTotalFeeMin		= new ArrayList<Integer>();			//税込運賃合計税込運賃合計
+	ArrayList<String> SearchFeeFixDateStr		= new ArrayList<String>();			//運賃確定日時開始
+	ArrayList<String> SearchReceiptStampDateStr	= new ArrayList<String>();			//受領印日時開始
+	ArrayList<String> SearchEntryDateStr		= new ArrayList<String>();			//登録日終了
+	ArrayList<String> SearchUpdateDateStr		= new ArrayList<String>();			//更新日終了
+	
+	ArrayList<Integer> SearchWithOutTaxTotalMax	= new ArrayList<Integer>();			//税別運賃合計最大
+	ArrayList<Integer> SearchTotalFeeMax		= new ArrayList<Integer>();			//税込運賃合計最大
+	ArrayList<String> SearchFeeFixDateEnd		= new ArrayList<String>();			//運賃確定日時終了
+	ArrayList<String> SearchReceiptStampDateEnd	= new ArrayList<String>();			//受領印日時終了
+	ArrayList<String> SearchEntryDateEnd		= new ArrayList<String>();			//登録日終了
+	ArrayList<String> SearchUpdateDateEnd		= new ArrayList<String>();			//更新日終了
+	
+	ArrayList<String> SearchEntryUser			= new ArrayList<String>();			//登録者
+	ArrayList<String> SearchUpdateUser			= new ArrayList<String>();			//更新者
+	ArrayList<String> SearchEntryPG				= new ArrayList<String>();			//登録プログラム
+	ArrayList<String> SearchUpdatePG			= new ArrayList<String>();			//更新プログラム
+	ArrayList<String> SearchUseFeeBasePtCd		= new ArrayList<String>();			//運転計算タリフ
+	ArrayList<Integer> SearchWmsStatus			= new ArrayList<Integer>();			//倉庫出荷ステータス
+	ArrayList<String> SearchWmsShipDateStr		= new ArrayList<String>();			//倉庫出荷日時開始
+	ArrayList<String> SearchWmsShipDateEnd		= new ArrayList<String>();			//倉庫出荷日時終了
+	ArrayList<String> SearchCourseGpCd			= new ArrayList<String>();			//配車コースグループコード
+	ArrayList<String> SearchCourseCD			= new ArrayList<String>();			//配車コースコード
+	ArrayList<Integer> SearchCourseCDEda		= new ArrayList<Integer>();			//配車コースコード枝番
+	ArrayList<String> SearchPitGrp				= new ArrayList<String>();			//荷物払出ピットグループ
+	ArrayList<String> SearchPit					= new ArrayList<String>();			//荷物払出ピット
+	
+	ArrayList<String> SearchMsItemCd			= new ArrayList<String>();			//商品CD
+	ArrayList<String> SearchMsItemName			= new ArrayList<String>();			//商品名
+	
+	ArrayList<String> SearchClItemCd			= new ArrayList<String>();			//荷主商品CD
+	
+	ArrayList<String> SearchMsCategoryCd		= new ArrayList<String>();			//カテゴリCD
+	ArrayList<String> SearchMsCategoryName		= new ArrayList<String>();			//カテゴリ名
+	ArrayList<String> SearchMsTildFG			= new ArrayList<String>();			//温度区分
+	ArrayList<String> SearchMsTildName			= new ArrayList<String>();			//温度区分名
+	
+	ArrayList<String> SearchMsLot				= new ArrayList<String>();			//ロット指定
+	ArrayList<String> SearchMsExpDateStr		= new ArrayList<String>();			//賞味期限指定開始
+	ArrayList<String> SearchMsExpDateEnd		= new ArrayList<String>();			//賞味期限指定終了
+	ArrayList<Integer> SearchMsPackingType		= new ArrayList<Integer>();			//荷姿タイプ
+	boolean AllSearch = false;
 	
 	Object[][] OkuriHdRt	= T100_OkuriHdRt.OkuriHdRt(
 				SearchInvoiceWHCD,			//倉庫CD
