@@ -735,7 +735,18 @@ public class WT100_OkuriHd_00_Search{
             public void actionPerformed(ActionEvent e){
                 if(RenewFg) {
                     RenewFg = false;
-                    SearchKick(SearchObject,MainFmTableModel,tb01);
+                    int RowCount = MainFmTableModel.getRowCount();
+                    ArrayList<String> TgtOkuriNo = new ArrayList<String>();
+                    for(int i=0;i<RowCount;i++) {
+                        if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+                        	TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+                        }
+                    }
+                    
+                    if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
+                    	Tools100_OkuriOnHold.OkuriOnHold(TgtOkuriNo);
+                    	SearchKick(SearchObject,MainFmTableModel,tb01);	//再検索
+                    }
                     RenewFg = true;
                 }
             }
