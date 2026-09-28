@@ -3,33 +3,31 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Tools100_OkuriCancel{
-	public static ArrayList<String> OkuriCancel(ArrayList<String> TgtOkuriNo) {
+public class Tools100_OkuriOnHold{
+	public static ArrayList<String> OkuriOnHold(ArrayList<String> TgtOkuriNo) {
 		ArrayList<String> ErrMsg = new ArrayList<String>();
 		Object[][] OkuriHdRt = null;
 		if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
 			OkuriHdRt = OkuriHdRt(TgtOkuriNo);
 			if(null==OkuriHdRt||0==OkuriHdRt.length) {
 				for(int i=0;i<TgtOkuriNo.size();i++) {
-					ErrMsg.add(TgtOkuriNo.get(i)+" はキャンセル対象ではありません");
+					ErrMsg.add(TgtOkuriNo.get(i)+" は保留対象ではありません");
 				}
 			}
 		}
 		ArrayList<String> SetOkuriNo = new ArrayList<String> ();
-		ArrayList<String> SetClDeliNo = new ArrayList<String> ();
 		if(null!=OkuriHdRt||0<OkuriHdRt.length) {
 			for(int i01=0;i01<TgtOkuriNo.size();i01++) {
 				boolean UnHitFg = true;
 				for(int i02=0;i02<OkuriHdRt.length;i02++) {
 					if(TgtOkuriNo.get(i01).equals((String)OkuriHdRt[i02][T100_OkuriHdRt.ColOkuriNo])) {
 						SetOkuriNo.add(TgtOkuriNo.get(i01));
-						SetClDeliNo.add((String)OkuriHdRt[i02][T100_OkuriHdRt.ColClDeliNo]);
 						UnHitFg = false;
 					}
 				}
 				
 				if(UnHitFg) {
-					ErrMsg.add(TgtOkuriNo.get(i01)+" はキャンセル対象ではありません");
+					ErrMsg.add(TgtOkuriNo.get(i01)+" は保留対象ではありません");
 				}
 			}
 		}
@@ -37,7 +35,6 @@ public class Tools100_OkuriCancel{
 			String[] cl_cd			= new String[SetOkuriNo.size()];	//荷主コード
 			String[] InvoiceWHCD	= new String[SetOkuriNo.size()];	//倉庫コード
 			String[] OkuriNo		= new String[SetOkuriNo.size()];	//送り状番号
-			String[] ClDeliNo		= new String[SetOkuriNo.size()];	//荷主管理番号
 			String[] Status			= new String[SetOkuriNo.size()];	//状況
 			String[] WmsStatus		= new String[SetOkuriNo.size()];	//在庫管理ステータス
 			String[] UpdateDate		= new String[SetOkuriNo.size()];	//更新日
@@ -49,19 +46,17 @@ public class Tools100_OkuriCancel{
 				cl_cd[i01]			= A00000_Main.ClCd;		//荷主コード
 				InvoiceWHCD[i01]	= A00000_Main.ClWh;		//倉庫コード
 				OkuriNo[i01]		= SetOkuriNo.get(i01);	//送り状番号
-				ClDeliNo[i01]		= "Cancel"+SetClDeliNo.get(i01);	//荷主管理番号
-				Status[i01]			= "9";					//状況
-				WmsStatus[i01]		= "9";					//在庫管理ステータス
+				Status[i01]			= "8";					//状況
+				WmsStatus[i01]		= "8";					//在庫管理ステータス
 				UpdateDate[i01]		= now_dtm;				//更新日
 				UpdateUser[i01]		= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//更新者
-				UpdatePG[i01]		= "Tools100_OkuriCancel";	//更新プログラム
+				UpdatePG[i01]		= "Tools100_OkuriOnHold";	//更新プログラム
 			}
 			
 			Object[][] SetOb = {
 					 {"cl_cd"			,"0"	,"1"	,"Key"	,cl_cd	}		//荷主コード
 					,{"InvoiceWHCD"		,"0"	,"1"	,"Key"	,InvoiceWHCD}	//倉庫コード
 					,{"OkuriNo"			,"0"	,"1"	,"Key"	,OkuriNo}		//送り状番号
-					,{"ClDeliNo"		,"0"	,"1"	,""		,ClDeliNo}		//荷主管理番号
 					,{"Status"			,"0"	,"1"	,""		,Status}		//状況
 					,{"WmsStatus"		,"0"	,"1"	,""		,WmsStatus}		//在庫管理ステータス
 					,{"UpdateDate"		,"0"	,"1"	,""		,UpdateDate}	//更新日
@@ -194,9 +189,7 @@ public class Tools100_OkuriCancel{
 		SearchClGpCD.add(A00000_Main.ClGp);
 		SearchClCd.add(A00000_Main.ClCd);
 		SearchStatus.add(0);
-		SearchStatus.add(8);
 		SearchWmsStatus.add(0);
-		SearchWmsStatus.add(8);
 		
 		Object[][] OkuriHdRt	= T100_OkuriHdRt.OkuriHdRt(
 					SearchInvoiceWHCD,			//倉庫CD

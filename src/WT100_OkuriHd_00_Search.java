@@ -28,6 +28,54 @@ public class WT100_OkuriHd_00_Search{
     static boolean RenewFg;
 
     static boolean MsViewMode;
+    
+    
+    static final int ColSearchInvoiceWHCD		= (int) 0;
+    static final int ColSearchClGpCD				= (int) 1;
+    static final int ColSearchClCd				= (int) 2;
+    static final int ColSearchOkuriNo				= (int) 3;
+    static final int ColSearchClDeliNo			= (int) 4;
+    static final int ColSearchPickupWhCd			= (int) 5;
+    static final int ColSearchPurposeFG			= (int) 6;
+    static final int ColSearchPlanDateStr		= (int) 7;
+    static final int ColSearchPlanDateEnd		= (int) 8;
+    static final int ColSearchShipDateStr		= (int) 9;
+    static final int ColSearchShipDateEnd		= (int)10;
+    static final int ColSearchSPPlanDateStr		= (int)11;
+    static final int ColSearchSPPlanDateEnd		= (int)12;
+    static final int ColSearchSPDateStr			= (int)13;
+    static final int ColSearchSPDateEnd			= (int)14;
+    static final int ColSearchWmsShipDateStr		= (int)15;
+    static final int ColSearchWmsShipDateEnd		= (int)16;
+
+    static final int ColSearchDeliCd				= (int)17;
+    static final int ColSearchClDeliCd			= (int)18;
+    static final int ColSearchDeliName			= (int)19;
+    static final int ColSearchDeliPost			= (int)20;
+    static final int ColSearchDeliAdd				= (int)21;
+    static final int ColSearchDeliTel				= (int)22;
+    static final int ColSearchNiokuriCd			= (int)23;
+    static final int ColSearchNiokuriName		= (int)24;
+    static final int ColSearchStatus				= (int)25;
+    static final int ColSearchWmsStatus			= (int)26;
+    static final int ColSearchCom					= (int)27;
+
+    static final int ColSearchDeliveryTypeCd01	= (int)28;
+    static final int ColSearchCodFG				= (int)29;
+    static final int ColSearchCodPayTotalMin		= (int)30;
+    static final int ColSearchCodPayTotalMax		= (int)31;
+    static final int ColSearchTotalQtyMin		= (int)32;
+    static final int ColSearchTotalQtyMax		= (int)33;
+    static final int ColSearchTotalWeightMin		= (int)34;
+    static final int ColSearchTotalWeightMax		= (int)35;
+    static final int ColSearchTotalSizeMin		= (int)36;
+    static final int ColSearchTotalSizeMax		= (int)37;
+    static final int ColSearchMsItemCd			= (int)38;
+    static final int ColSearchClItemCd			= (int)39;
+    static final int ColSearchMsItemName			= (int)40;
+    static final int ColSearchMsLot				= (int)41;
+    static final int ColSearchMsExpDateStr		= (int)42;
+    static final int ColSearchMsExpDateEnd		= (int)43;
 
     public static void OkuriHdSearch(int x,int y) {
         A00000_Main.LoginCheck();
@@ -480,6 +528,167 @@ public class WT100_OkuriHd_00_Search{
         
         final Object[] OkuriMsSearchSubFm	= WT200_OkuriMsSearchSubFm.OkuriMsSearchSubFm(x+10,y+10,A00000_Main.ClCd,"","SP",false);
         
+        final Object[][] SearchObject = new Object[44][4]; 
+        SearchObject[ColSearchInvoiceWHCD][0]		= TB_SearchInvoiceWHCD;
+        SearchObject[ColSearchClGpCD][0]				= TB_SearchClGpCD;
+        SearchObject[ColSearchClCd][0]				= TB_SearchClCd;
+        SearchObject[ColSearchOkuriNo][0]				= TB_SearchOkuriNo;
+        SearchObject[ColSearchClDeliNo][0]			= TB_SearchClDeliNo;
+        SearchObject[ColSearchPickupWhCd][0]			= TB_SearchPickupWhCd;
+        SearchObject[ColSearchPurposeFG][0]			= TB_SearchPurposeFG;
+        
+        SearchObject[ColSearchPlanDateStr][0]		= TB_SearchPlanDateStr;
+        SearchObject[ColSearchPlanDateEnd][0]		= TB_SearchPlanDateEnd;
+        SearchObject[ColSearchShipDateStr][0]		= TB_SearchShipDateStr;
+        SearchObject[ColSearchShipDateEnd][0]		= TB_SearchShipDateEnd;
+        SearchObject[ColSearchSPPlanDateStr][0]		= TB_SearchSPPlanDateStr;
+        SearchObject[ColSearchSPPlanDateEnd][0]		= TB_SearchSPPlanDateEnd;
+        SearchObject[ColSearchSPDateStr][0]			= TB_SearchSPDateStr;
+        SearchObject[ColSearchSPDateEnd][0]			= TB_SearchSPDateEnd;
+        SearchObject[ColSearchWmsShipDateStr][0]		= TB_SearchWmsShipDateStr;
+        SearchObject[ColSearchWmsShipDateEnd][0]		= TB_SearchWmsShipDateEnd;
+
+        SearchObject[ColSearchDeliCd][0]				= TB_SearchDeliCd;
+        SearchObject[ColSearchClDeliCd][0]			= TB_SearchClDeliCd;
+        SearchObject[ColSearchDeliName][0]			= TB_SearchDeliName;
+        SearchObject[ColSearchDeliPost][0]			= TB_SearchDeliPost;
+        SearchObject[ColSearchDeliAdd][0]				= TB_SearchDeliAdd;
+        SearchObject[ColSearchDeliTel][0]				= TB_SearchDeliTel;
+        SearchObject[ColSearchNiokuriCd][0]			= TB_SearchNiokuriCd;
+        SearchObject[ColSearchNiokuriName][0]		= TB_SearchNiokuriName;
+        SearchObject[ColSearchStatus][0]				= TB_SearchStatus;
+        SearchObject[ColSearchWmsStatus][0]			= TB_SearchWmsStatus;
+        SearchObject[ColSearchCom][0]					= TB_SearchCom;
+
+        SearchObject[ColSearchDeliveryTypeCd01][0]	= TB_SearchDeliveryTypeCd01;
+        SearchObject[ColSearchCodFG][0]				= TB_SearchCodFG;
+        SearchObject[ColSearchCodPayTotalMin][0]		= TB_SearchCodPayTotalMin;
+        SearchObject[ColSearchCodPayTotalMax][0]		= TB_SearchCodPayTotalMax;
+        SearchObject[ColSearchTotalQtyMin][0]		= TB_SearchTotalQtyMin;
+        SearchObject[ColSearchTotalQtyMax][0]		= TB_SearchTotalQtyMax;
+        SearchObject[ColSearchTotalWeightMin][0]		= TB_SearchTotalWeightMin;
+        SearchObject[ColSearchTotalWeightMax][0]		= TB_SearchTotalWeightMax;
+        SearchObject[ColSearchTotalSizeMin][0]		= TB_SearchTotalSizeMin;
+        SearchObject[ColSearchTotalSizeMax][0]		= TB_SearchTotalSizeMax;
+        SearchObject[ColSearchMsItemCd][0]			= TB_SearchMsItemCd;
+        SearchObject[ColSearchClItemCd][0]			= TB_SearchClItemCd;
+        SearchObject[ColSearchMsItemName][0]			= TB_SearchMsItemName;
+        SearchObject[ColSearchMsLot][0]				= TB_SearchMsLot;
+        SearchObject[ColSearchMsExpDateStr][0]		= TB_SearchMsExpDateStr;
+        SearchObject[ColSearchMsExpDateEnd][0]		= TB_SearchMsExpDateEnd;
+        
+        SearchObject[ColSearchInvoiceWHCD][1]		= "JComboBox";
+        SearchObject[ColSearchClGpCD][1]				= "JComboBox";
+        SearchObject[ColSearchClCd][1]				= "JComboBox";
+        SearchObject[ColSearchOkuriNo][1]				= "JTextField";
+        SearchObject[ColSearchClDeliNo][1]			= "JTextField";
+        SearchObject[ColSearchPickupWhCd][1]			= "JComboBox";
+        SearchObject[ColSearchPurposeFG][1]			= "JComboBox";
+        
+        SearchObject[ColSearchPlanDateStr][1]		= "JFormattedTextField";
+        SearchObject[ColSearchPlanDateEnd][1]		= "JFormattedTextField";
+        SearchObject[ColSearchShipDateStr][1]		= "JFormattedTextField";
+        SearchObject[ColSearchShipDateEnd][1]		= "JFormattedTextField";
+        SearchObject[ColSearchSPPlanDateStr][1]		= "JFormattedTextField";
+        SearchObject[ColSearchSPPlanDateEnd][1]		= "JFormattedTextField";
+        SearchObject[ColSearchSPDateStr][1]			= "JFormattedTextField";
+        SearchObject[ColSearchSPDateEnd][1]			= "JFormattedTextField";
+        SearchObject[ColSearchWmsShipDateStr][1]		= "JFormattedTextField";
+        SearchObject[ColSearchWmsShipDateEnd][1]		= "JFormattedTextField";
+
+        SearchObject[ColSearchDeliCd][1]				= "JTextField";
+        SearchObject[ColSearchClDeliCd][1]			= "JTextField";
+        SearchObject[ColSearchDeliName][1]			= "JTextField";
+        SearchObject[ColSearchDeliPost][1]			= "JTextField";
+        SearchObject[ColSearchDeliAdd][1]				= "JTextField";
+        SearchObject[ColSearchDeliTel][1]				= "JTextField";
+        SearchObject[ColSearchNiokuriCd][1]			= "JTextField";
+        SearchObject[ColSearchNiokuriName][1]		= "JTextField";
+        SearchObject[ColSearchStatus][1]				= "JComboBox";
+        SearchObject[ColSearchWmsStatus][1]			= "JComboBox";
+        SearchObject[ColSearchCom][1]					= "JTextField";
+
+        SearchObject[ColSearchDeliveryTypeCd01][1]	= "JComboBox";
+        SearchObject[ColSearchCodFG][1]				= "JComboBox";
+        SearchObject[ColSearchCodPayTotalMin][1]		= "JFormattedTextField";
+        SearchObject[ColSearchCodPayTotalMax][1]		= "JFormattedTextField";
+        SearchObject[ColSearchTotalQtyMin][1]		= "JFormattedTextField";
+        SearchObject[ColSearchTotalQtyMax][1]		= "JFormattedTextField";
+        SearchObject[ColSearchTotalWeightMin][1]		= "JFormattedTextField";
+        SearchObject[ColSearchTotalWeightMax][1]		= "JFormattedTextField";
+        SearchObject[ColSearchTotalSizeMin][1]		= "JFormattedTextField";
+        SearchObject[ColSearchTotalSizeMax][1]		= "JFormattedTextField";
+        SearchObject[ColSearchMsItemCd][1]			= "JTextField";
+        SearchObject[ColSearchClItemCd][1]			= "JTextField";
+        SearchObject[ColSearchMsItemName][1]			= "JTextField";
+        SearchObject[ColSearchMsLot][1]				= "JTextField";
+        SearchObject[ColSearchMsExpDateStr][1]		= "JFormattedTextField";
+        SearchObject[ColSearchMsExpDateEnd][1]		= "JFormattedTextField";
+        
+        SearchObject[ColSearchInvoiceWHCD][2]		= B100_DefaultVariable.SearchWhList[1];
+        SearchObject[ColSearchClGpCD][2]				= B100_DefaultVariable.SearchClGpList[1];
+        SearchObject[ColSearchClCd][2]				= B100_DefaultVariable.SearchClList[1];
+        SearchObject[ColSearchOkuriNo][2]				= null;
+        SearchObject[ColSearchClDeliNo][2]			= null;
+        SearchObject[ColSearchPickupWhCd][2]			= B100_DefaultVariable.SearchWhList[1];
+        SearchObject[ColSearchPurposeFG][2]			= B100_DefaultVariable.SearchPurposeList[1];
+        
+        SearchObject[ColSearchPlanDateStr][2]		= null;
+        SearchObject[ColSearchPlanDateEnd][2]		= null;
+        SearchObject[ColSearchShipDateStr][2]		= null;
+        SearchObject[ColSearchShipDateEnd][2]		= null;
+        SearchObject[ColSearchSPPlanDateStr][2]		= null;
+        SearchObject[ColSearchSPPlanDateEnd][2]		= null;
+        SearchObject[ColSearchSPDateStr][2]			= null;
+        SearchObject[ColSearchSPDateEnd][2]			= null;
+        SearchObject[ColSearchWmsShipDateStr][2]		= null;
+        SearchObject[ColSearchWmsShipDateEnd][2]		= null;
+
+        SearchObject[ColSearchDeliCd][2]				= null;
+        SearchObject[ColSearchClDeliCd][2]			= null;
+        SearchObject[ColSearchDeliName][2]			= null;
+        SearchObject[ColSearchDeliPost][2]			= null;
+        SearchObject[ColSearchDeliAdd][2]				= null;
+        SearchObject[ColSearchDeliTel][2]				= null;
+        SearchObject[ColSearchNiokuriCd][2]			= null;
+        SearchObject[ColSearchNiokuriName][2]		= null;
+        SearchObject[ColSearchStatus][2]				= B100_DefaultVariable.SearchStatusList[1];
+        SearchObject[ColSearchWmsStatus][2]			= B100_DefaultVariable.SearchWmsStatusList[1];
+        SearchObject[ColSearchCom][2]					= null;
+
+        SearchObject[ColSearchDeliveryTypeCd01][2]	= B100_DefaultVariable.SearchDeliveryType01[1];
+        SearchObject[ColSearchCodFG][2]				= B100_DefaultVariable.SearchCODList[1];
+        SearchObject[ColSearchCodPayTotalMin][2]		= null;
+        SearchObject[ColSearchCodPayTotalMax][2]		= null;
+        SearchObject[ColSearchTotalQtyMin][2]		= null;
+        SearchObject[ColSearchTotalQtyMax][2]		= null;
+        SearchObject[ColSearchTotalWeightMin][2]		= null;
+        SearchObject[ColSearchTotalWeightMax][2]		= null;
+        SearchObject[ColSearchTotalSizeMin][2]		= null;
+        SearchObject[ColSearchTotalSizeMax][2]		= null;
+        SearchObject[ColSearchMsItemCd][2]			= null;
+        SearchObject[ColSearchClItemCd][2]			= null;
+        SearchObject[ColSearchMsItemName][2]			= null;
+        SearchObject[ColSearchMsLot][2]				= null;
+        SearchObject[ColSearchMsExpDateStr][2]		= null;
+        SearchObject[ColSearchMsExpDateEnd][2]		= null;
+        
+        
+        for(int i=0;i<SearchObject.length;i++) {
+        	switch((String)SearchObject[i][1]) {
+        		case "JComboBox":
+        			SearchObject[i][3] = ((JComboBox)SearchObject[i][0]).getSelectedIndex();
+        			break;
+        		case "JTextField":
+        			SearchObject[i][3] = ((JTextField)SearchObject[i][0]).getText();
+        			break;
+        		case "JFormattedTextField":
+        			SearchObject[i][3] = ((JFormattedTextField)SearchObject[i][0]).getText();
+        			break;
+        		default	:
+        			break;
+        	}
+        }
         
         RenewFg = true;
         /**********************************************************************
@@ -512,11 +721,26 @@ public class WT100_OkuriHd_00_Search{
                         	TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
                         }
                     }
-                    Tools100_OkuriCancel.OkuriCancel(TgtOkuriNo);
+                    
+                    if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
+                    	Tools100_OkuriCancel.OkuriCancel(TgtOkuriNo);
+                    	SearchKick(SearchObject,MainFmTableModel,tb01);	//再検索
+                    }
                     RenewFg = true;
                 }
             }
       	});
+      	//保留ボタン押下時の挙動
+      	OnHoldBtn.addActionListener(new AbstractAction(){
+            public void actionPerformed(ActionEvent e){
+                if(RenewFg) {
+                    RenewFg = false;
+                    SearchKick(SearchObject,MainFmTableModel,tb01);
+                    RenewFg = true;
+                }
+            }
+      	});
+      	
         /**********************************************************************
          * 検索ボタン押下時
          **********************************************************************/
@@ -524,87 +748,7 @@ public class WT100_OkuriHd_00_Search{
             public void actionPerformed(ActionEvent e){
                 if(RenewFg) {
                     RenewFg = false;
-
-                    int RowCount = MainFmTableModel.getRowCount();
-                    for(int i=0;i<RowCount;i++) {
-                        MainFmTableModel.removeRow(0);
-                    }
-
-                    String GetSearchInvoiceWHCD  = B100_DefaultVariable.SearchWhList[1][TB_SearchInvoiceWHCD.getSelectedIndex()];
-                    String GetSearchClGpCD       = B100_DefaultVariable.SearchClGpList[1][TB_SearchClGpCD.getSelectedIndex()];
-                    String GetSearchClCd         = B100_DefaultVariable.SearchClList[1][TB_SearchClCd.getSelectedIndex()];
-                    String GetSearchOkuriNo      = TB_SearchOkuriNo.getText();
-                    String GetSearchClDeliNo     = TB_SearchClDeliNo.getText();
-                    String GetSearchPickupWhCd   = B100_DefaultVariable.SearchWhList[1][TB_SearchPickupWhCd.getSelectedIndex()];
-                    String GetSearchPurposeFG    = B100_DefaultVariable.SearchPurposeList[1][TB_SearchPurposeFG.getSelectedIndex()];
-                    String GetSearchPlanDateStr  = TB_SearchPlanDateStr.getText();
-                    String GetSearchPlanDateEnd  = TB_SearchPlanDateEnd.getText();
-                    String GetSearchShipDateStr  = TB_SearchShipDateStr.getText();
-                    String GetSearchShipDateEnd  = TB_SearchShipDateEnd.getText();
-                    String GetSearchSPPlanDateStr= TB_SearchSPPlanDateStr.getText();
-                    String GetSearchSPPlanDateEnd= TB_SearchSPPlanDateEnd.getText();
-                    String GetSearchSPDateStr    = TB_SearchSPDateStr.getText();
-                    String GetSearchSPDateEnd    = TB_SearchSPDateEnd.getText();
-                    String GetSearchWmsShipDateStr	= TB_SearchWmsShipDateStr.getText();
-        			String GetSearchWmsShipDateEnd	= TB_SearchWmsShipDateEnd.getText();
-
-                    String GetSearchDeliCd       = TB_SearchDeliCd.getText();
-                    String GetSearchClDeliCd     = TB_SearchClDeliCd.getText();
-                    String GetSearchDeliName     = TB_SearchDeliName.getText();
-                    String GetSearchDeliPost     = TB_SearchDeliPost.getText();
-                    String GetSearchDeliAdd      = TB_SearchDeliAdd.getText();
-                    String GetSearchDeliTel      = TB_SearchDeliTel.getText();
-                    String GetSearchNiokuriCd    = TB_SearchNiokuriCd.getText();
-                    String GetSearchNiokuriName  = TB_SearchNiokuriName.getText();
-                    String GetSearchStatus       = B100_DefaultVariable.SearchStatusList[1][TB_SearchStatus.getSelectedIndex()];
-                    String GetSearchWmsStatus    = B100_DefaultVariable.SearchWmsStatusList[1][TB_SearchWmsStatus.getSelectedIndex()];
-                    String GetSearchCom          = TB_SearchCom.getText();
-
-                    String GetSearchDeliveryTypeCd01 = B100_DefaultVariable.SearchDeliveryType01[1][TB_SearchDeliveryTypeCd01.getSelectedIndex()];
-                    String GetSearchCodFG        = B100_DefaultVariable.SearchCODList[1][TB_SearchCodFG.getSelectedIndex()];
-                    String GetSearchCodPayTotalMin = TB_SearchCodPayTotalMin.getText();
-                    String GetSearchCodPayTotalMax = TB_SearchCodPayTotalMax.getText();
-                    String GetSearchTotalQtyMin    = TB_SearchTotalQtyMin.getText();
-                    String GetSearchTotalQtyMax    = TB_SearchTotalQtyMax.getText();
-                    String GetSearchTotalWeightMin = TB_SearchTotalWeightMin.getText();
-                    String GetSearchTotalWeightMax = TB_SearchTotalWeightMax.getText();
-                    String GetSearchTotalSizeMin   = TB_SearchTotalSizeMin.getText();
-                    String GetSearchTotalSizeMax   = TB_SearchTotalSizeMax.getText();
-                    String GetSearchMsItemCd       = TB_SearchMsItemCd.getText();
-                    String GetSearchClItemCd       = TB_SearchClItemCd.getText();
-                    String GetSearchMsItemName     = TB_SearchMsItemName.getText();
-                    String GetSearchMsLot          = TB_SearchMsLot.getText();
-                    String GetSearchMsExpDateStr   = TB_SearchMsExpDateStr.getText();
-                    String GetSearchMsExpDateEnd   = TB_SearchMsExpDateEnd.getText();
-
-                    Object[][] OkuriHdRt = OkuriHdRt(
-                    		GetSearchInvoiceWHCD, GetSearchClGpCD, GetSearchClCd,
-                            GetSearchOkuriNo, GetSearchClDeliNo, GetSearchPickupWhCd, GetSearchPurposeFG,
-                            GetSearchPlanDateStr, GetSearchShipDateStr, GetSearchSPPlanDateStr, GetSearchSPDateStr,
-                            GetSearchPlanDateEnd, GetSearchShipDateEnd, GetSearchSPPlanDateEnd, GetSearchSPDateEnd,
-                            GetSearchWmsShipDateStr,GetSearchWmsShipDateEnd,
-                            GetSearchTotalWeightMin, GetSearchTotalSizeMin, GetSearchTotalQtyMin,
-                            GetSearchTotalWeightMax, GetSearchTotalSizeMax, GetSearchTotalQtyMax,
-                            GetSearchDeliveryTypeCd01, GetSearchCodFG, GetSearchCodPayTotalMin, GetSearchCodPayTotalMax,
-                            GetSearchNiokuriCd, GetSearchNiokuriName,
-                            GetSearchDeliCd, GetSearchClDeliCd, GetSearchDeliName, GetSearchDeliPost, GetSearchDeliAdd, GetSearchDeliTel,
-                            GetSearchCom, GetSearchStatus, GetSearchWmsStatus,
-                            GetSearchMsItemCd, GetSearchMsItemName, GetSearchClItemCd, GetSearchMsLot,
-                            GetSearchMsExpDateStr, GetSearchMsExpDateEnd);
-
-                    if(0==OkuriHdRt.length) {
-                        B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
-                    }else {
-                        for(int i=0;i<OkuriHdRt.length;i++) {
-                            Object[] SetOb = new Object[OkuriHdRt[i].length+1];
-                            SetOb[0] = false;
-                            for(int i01=0;i01<OkuriHdRt[i].length;i01++) {
-                                SetOb[i01+1] = ""+OkuriHdRt[i][i01];
-                            }
-                            MainFmTableModel.addRow(SetOb);
-                        }
-                        B100_TableControl.AddSortON(tb01,MainFmTableModel);
-                    }
+                    SearchKick(SearchObject,MainFmTableModel,tb01);
                     RenewFg = true;
                 }
             }
@@ -617,30 +761,22 @@ public class WT100_OkuriHd_00_Search{
             public void actionPerformed(ActionEvent e){
                 if(RenewFg) {
                     RenewFg = false;
-                    TB_SearchInvoiceWHCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));
-                    TB_SearchClCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClList[1],A00000_Main.ClCd,true));
-                    TB_SearchClGpCD.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchClGpList[1],A00000_Main.ClGp,true));
-                    TB_SearchPickupWhCd.setSelectedIndex(B100_ArrayListControl.ArryListGetRow(B100_DefaultVariable.SearchWhList[1],A00000_Main.ClWh,true));
-                    TB_SearchPurposeFG.setSelectedIndex(0);
-                    TB_SearchOkuriNo.setText("");
-                    TB_SearchClDeliNo.setText("");
-                    TB_SearchPlanDateStr.setText(""); TB_SearchPlanDateEnd.setText("");
-                    TB_SearchShipDateStr.setText(""); TB_SearchShipDateEnd.setText("");
-                    TB_SearchSPPlanDateStr.setText(""); TB_SearchSPPlanDateEnd.setText("");
-                    TB_SearchSPDateStr.setText(""); TB_SearchSPDateEnd.setText("");
-                    TB_SearchWmsShipDateStr.setText(""); TB_SearchWmsShipDateEnd.setText("");
                     
-                    TB_SearchDeliCd.setText(""); TB_SearchClDeliCd.setText(""); TB_SearchDeliName.setText("");
-                    TB_SearchDeliPost.setText(""); TB_SearchDeliAdd.setText(""); TB_SearchDeliTel.setText("");
-                    TB_SearchNiokuriCd.setText(""); TB_SearchNiokuriName.setText("");
-                    TB_SearchStatus.setSelectedIndex(0); TB_SearchWmsStatus.setSelectedIndex(0); TB_SearchCom.setText("");
-                    TB_SearchDeliveryTypeCd01.setSelectedIndex(0); TB_SearchCodFG.setSelectedIndex(0);
-                    TB_SearchCodPayTotalMin.setText(""); TB_SearchCodPayTotalMax.setText("");
-                    TB_SearchTotalQtyMin.setText(""); TB_SearchTotalQtyMax.setText("");
-                    TB_SearchTotalWeightMin.setText(""); TB_SearchTotalWeightMax.setText("");
-                    TB_SearchTotalSizeMin.setText(""); TB_SearchTotalSizeMax.setText("");
-                    TB_SearchMsItemCd.setText(""); TB_SearchClItemCd.setText(""); TB_SearchMsItemName.setText(""); TB_SearchMsLot.setText("");
-                    TB_SearchMsExpDateStr.setText(""); TB_SearchMsExpDateEnd.setText("");
+                    for(int i=0;i<SearchObject.length;i++) {
+                    	switch((String)SearchObject[i][1]) {
+                    		case "JComboBox":
+                    			((JComboBox)SearchObject[i][0]).setSelectedIndex((int)SearchObject[i][3]);
+                    			break;
+                    		case "JTextField":
+                    			((JTextField)SearchObject[i][0]).setText((String)SearchObject[i][3]);
+                    			break;
+                    		case "JFormattedTextField":
+                    			((JTextField)SearchObject[i][0]).setText((String)SearchObject[i][3]);
+                    			break;
+                    		default	:
+                    			break;
+                    	}
+                    }
                     RenewFg = true;
                 }
             }
@@ -879,6 +1015,107 @@ public class WT100_OkuriHd_00_Search{
                 A00001_WorkMain.WorkMain(0,0);
             }
         });
+    }
+    
+    private static void SearchKick(Object[][] SearchObject,DefaultTableModel MainFmTableModel,JTable tb01) {
+    	int RowCount = MainFmTableModel.getRowCount();
+    	for(int i=0;i<RowCount;i++) {
+    		MainFmTableModel.removeRow(0);
+    	}
+    	String[] GetString = new String[SearchObject.length];
+    	for(int i=0;i<SearchObject.length;i++) {
+        	switch((String)SearchObject[i][1]) {
+        		case "JComboBox":
+        			GetString[i]	= ((String[])SearchObject[i][2])[((JComboBox)SearchObject[i][0]).getSelectedIndex()];
+        			break;
+        		case "JTextField":
+        			GetString[i]	= ((JTextField)SearchObject[i][0]).getText();
+        			break;
+        		case "JFormattedTextField":
+        			GetString[i]	= ((JFormattedTextField)SearchObject[i][0]).getText();
+        			break;
+        		default	:
+        			GetString[i]	= "";
+        			break;
+        	}
+        }
+    	
+    	
+    	String GetSearchInvoiceWHCD			= GetString[ColSearchInvoiceWHCD];
+        String GetSearchClGpCD				= GetString[ColSearchClGpCD];
+        String GetSearchClCd				= GetString[ColSearchClCd];
+        String GetSearchOkuriNo				= GetString[ColSearchOkuriNo];
+        String GetSearchClDeliNo			= GetString[ColSearchClDeliNo];
+        String GetSearchPickupWhCd			= GetString[ColSearchPickupWhCd];
+        String GetSearchPurposeFG			= GetString[ColSearchPurposeFG];
+        String GetSearchPlanDateStr			= GetString[ColSearchPlanDateStr];
+        String GetSearchPlanDateEnd			= GetString[ColSearchPlanDateEnd];
+        String GetSearchShipDateStr			= GetString[ColSearchShipDateStr];
+        String GetSearchShipDateEnd			= GetString[ColSearchShipDateEnd];
+        String GetSearchSPPlanDateStr		= GetString[ColSearchSPPlanDateStr];
+        String GetSearchSPPlanDateEnd		= GetString[ColSearchSPPlanDateEnd];
+        String GetSearchSPDateStr			= GetString[ColSearchSPDateStr];
+        String GetSearchSPDateEnd			= GetString[ColSearchSPDateEnd];
+        String GetSearchWmsShipDateStr		= GetString[ColSearchWmsShipDateStr];
+		String GetSearchWmsShipDateEnd		= GetString[ColSearchWmsShipDateEnd];
+
+        String GetSearchDeliCd				= GetString[ColSearchDeliCd];
+        String GetSearchClDeliCd			= GetString[ColSearchClDeliCd];
+        String GetSearchDeliName			= GetString[ColSearchDeliName];
+        String GetSearchDeliPost			= GetString[ColSearchDeliPost];
+        String GetSearchDeliAdd				= GetString[ColSearchDeliAdd];
+        String GetSearchDeliTel				= GetString[ColSearchDeliTel];
+        String GetSearchNiokuriCd			= GetString[ColSearchNiokuriCd];
+        String GetSearchNiokuriName			= GetString[ColSearchNiokuriName];
+        String GetSearchStatus				= GetString[ColSearchStatus];
+        String GetSearchWmsStatus			= GetString[ColSearchWmsStatus];
+        String GetSearchCom					= GetString[ColSearchCom];
+
+        String GetSearchDeliveryTypeCd01 	= GetString[ColSearchDeliveryTypeCd01];
+        String GetSearchCodFG        		= GetString[ColSearchCodFG];
+        String GetSearchCodPayTotalMin		= GetString[ColSearchCodPayTotalMin];
+        String GetSearchCodPayTotalMax		= GetString[ColSearchCodPayTotalMax];
+        String GetSearchTotalQtyMin			= GetString[ColSearchTotalQtyMin];
+        String GetSearchTotalQtyMax			= GetString[ColSearchTotalQtyMax];
+        String GetSearchTotalWeightMin		= GetString[ColSearchTotalWeightMin];
+        String GetSearchTotalWeightMax		= GetString[ColSearchTotalWeightMax];
+        String GetSearchTotalSizeMin		= GetString[ColSearchTotalSizeMin];
+        String GetSearchTotalSizeMax		= GetString[ColSearchTotalSizeMax];
+        String GetSearchMsItemCd			= GetString[ColSearchMsItemCd];
+        String GetSearchClItemCd			= GetString[ColSearchClItemCd];
+        String GetSearchMsItemName			= GetString[ColSearchMsItemName];
+        String GetSearchMsLot				= GetString[ColSearchMsLot];
+        String GetSearchMsExpDateStr		= GetString[ColSearchMsExpDateStr];
+        String GetSearchMsExpDateEnd		= GetString[ColSearchMsExpDateEnd];
+    	
+        Object[][] OkuriHdRt = OkuriHdRt(
+        		GetSearchInvoiceWHCD, GetSearchClGpCD, GetSearchClCd,
+                GetSearchOkuriNo, GetSearchClDeliNo, GetSearchPickupWhCd, GetSearchPurposeFG,
+                GetSearchPlanDateStr, GetSearchShipDateStr, GetSearchSPPlanDateStr, GetSearchSPDateStr,
+                GetSearchPlanDateEnd, GetSearchShipDateEnd, GetSearchSPPlanDateEnd, GetSearchSPDateEnd,
+                GetSearchWmsShipDateStr,GetSearchWmsShipDateEnd,
+                GetSearchTotalWeightMin, GetSearchTotalSizeMin, GetSearchTotalQtyMin,
+                GetSearchTotalWeightMax, GetSearchTotalSizeMax, GetSearchTotalQtyMax,
+                GetSearchDeliveryTypeCd01, GetSearchCodFG, GetSearchCodPayTotalMin, GetSearchCodPayTotalMax,
+                GetSearchNiokuriCd, GetSearchNiokuriName,
+                GetSearchDeliCd, GetSearchClDeliCd, GetSearchDeliName, GetSearchDeliPost, GetSearchDeliAdd, GetSearchDeliTel,
+                GetSearchCom, GetSearchStatus, GetSearchWmsStatus,
+                GetSearchMsItemCd, GetSearchMsItemName, GetSearchClItemCd, GetSearchMsLot,
+                GetSearchMsExpDateStr, GetSearchMsExpDateEnd);
+
+        if(0==OkuriHdRt.length) {
+            B100_TableControl.AddSortOFF(tb01,MainFmTableModel);
+        }else {
+            for(int i=0;i<OkuriHdRt.length;i++) {
+                Object[] SetOb = new Object[OkuriHdRt[i].length+1];
+                SetOb[0] = false;
+                for(int i01=0;i01<OkuriHdRt[i].length;i01++) {
+                    SetOb[i01+1] = ""+OkuriHdRt[i][i01];
+                }
+                MainFmTableModel.addRow(SetOb);
+            }
+            B100_TableControl.AddSortON(tb01,MainFmTableModel);
+        }
     }
 
 	private static Object[][] OkuriMsRt(String TgtClCd,ArrayList<String> TgtOkuriNo){
