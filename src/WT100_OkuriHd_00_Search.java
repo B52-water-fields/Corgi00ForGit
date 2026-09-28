@@ -29,7 +29,6 @@ public class WT100_OkuriHd_00_Search{
 
     static boolean MsViewMode;
     
-    
     static final int ColSearchInvoiceWHCD		= (int) 0;
     static final int ColSearchClGpCD				= (int) 1;
     static final int ColSearchClCd				= (int) 2;
@@ -515,10 +514,10 @@ public class WT100_OkuriHd_00_Search{
 		JButton SomeCreateBtn = B100_FrameParts.BtnSet(		370,685,100,20,"予定一括新規"	,9);
 		main_fm.add(SomeCreateBtn);
 		
-		JLabel LB_Cancel 		= B100_FrameParts.JLabelSet(		490,635,100,20,"チェック行を"	,10,2);
-		JButton CancelBtn 		= B100_FrameParts.BtnSet(			490,660,100,20,"キャンセル"		, 9);
-		JButton OnHoldBtn 		= B100_FrameParts.BtnSet(			490,685,100,20,"保留"			,11);
-		JButton ReleaseHoldBtn 	= B100_FrameParts.BtnSet(			490,710,100,20,"保留解除"		,11);
+		JLabel LB_Cancel 		= B100_FrameParts.JLabelSet(	490,635,100,20,"チェック行を"	,10,2);
+		JButton CancelBtn 		= B100_FrameParts.BtnSet(		490,660,100,20,"キャンセル"		, 9);
+		JButton OnHoldBtn 		= B100_FrameParts.BtnSet(		490,685,100,20,"保留"			,11);
+		JButton ReleaseHoldBtn 	= B100_FrameParts.BtnSet(		490,710,100,20,"保留解除"		,11);
 		main_fm.add(LB_Cancel);
 		main_fm.add(CancelBtn);
 		main_fm.add(OnHoldBtn);
@@ -702,13 +701,12 @@ public class WT100_OkuriHd_00_Search{
                 	 ((JFrame)OkuriMsSearchSubFm[0]).setVisible(false);
                 	 
                 	 ((JFrame)OkuriMsSearchSubFm[0]).setVisible(true);
+                	 MsViewMode = true;
                 	 RenewFg = true;
                 	 WT200_OkuriMsSearchSubFm.RenewFg = true;
                 }
             }
       	});
-
-      	
       	//キャンセルボタン押下事の挙動
       	CancelBtn.addActionListener(new AbstractAction(){
             public void actionPerformed(ActionEvent e){
@@ -744,7 +742,39 @@ public class WT100_OkuriHd_00_Search{
                     }
                     
                     if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
-                    	Tools100_OkuriOnHold.OkuriOnHold(TgtOkuriNo);
+                    	Tools100_OkuriOnHold.OkuriOnHold(TgtOkuriNo,false);
+                    	SearchKick(SearchObject,MainFmTableModel,tb01);	//再検索
+                    }
+                    RenewFg = true;
+                }
+            }
+      	});
+      	//詳細画面Exitボタン押下時の挙動
+      	((JButton)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtExitBtn]).addActionListener(new AbstractAction(){
+            public void actionPerformed(ActionEvent e){
+                if(RenewFg) {
+                    RenewFg = false;
+                    MsViewMode = false;
+                    RenewFg = true;
+                }
+            }
+      	});
+      	
+      	//保留解除ボタン押下時の挙動
+      	ReleaseHoldBtn.addActionListener(new AbstractAction(){
+            public void actionPerformed(ActionEvent e){
+                if(RenewFg) {
+                    RenewFg = false;
+                    int RowCount = MainFmTableModel.getRowCount();
+                    ArrayList<String> TgtOkuriNo = new ArrayList<String>();
+                    for(int i=0;i<RowCount;i++) {
+                        if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+                        	TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+                        }
+                    }
+                    
+                    if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
+                    	Tools100_OkuriOnHold.OkuriOnHold(TgtOkuriNo,true);
                     	SearchKick(SearchObject,MainFmTableModel,tb01);	//再検索
                     }
                     RenewFg = true;
@@ -799,6 +829,7 @@ public class WT100_OkuriHd_00_Search{
 				if(RenewFg) {
 					RenewFg = false;
 					WT200_OkuriMsSearchSubFm.RenewFg = false;
+					boolean OnFg = false;
 					int row_count = tb01.getRowCount();
 					Boolean setBL=Boolean.valueOf(false);
 					for(int i=0;i<row_count;i++){
@@ -814,23 +845,24 @@ public class WT100_OkuriHd_00_Search{
 						if((boolean)MainFmTableModel.getValueAt(i, 0)) {
 							TgtClCd = ""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColClCd);
 							TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+							OnFg = true;
 						}
 					}
 					Object[][] OkuriMsRt = OkuriMsRt(TgtClCd,TgtOkuriNo);
 					
-					int RowCount = ((DefaultTableModel)OkuriMsSearchSubFm[1]).getRowCount();
+					int RowCount = ((DefaultTableModel)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtDefaultTableModel]).getRowCount();
 					for(int i=0;i<RowCount;i++) {
-						((DefaultTableModel)OkuriMsSearchSubFm[1]).removeRow(0);
+						((DefaultTableModel)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtDefaultTableModel]).removeRow(0);
 					}
-					for(int i=0;i<((Object[][])OkuriMsSearchSubFm[4])[0].length;i++) {
-						if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JTextField) {
-							((JTextField)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setText((String)((Object[][])OkuriMsSearchSubFm[4])[3][i]);
+					for(int i=0;i<((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0].length;i++) {
+						if(((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i] instanceof JTextField) {
+							((JTextField)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i]).setText((String)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[3][i]);
 						}
-						if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JFormattedTextField) {
-							((JFormattedTextField)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setText((String)((Object[][])OkuriMsSearchSubFm[4])[3][i]);
+						if(((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i] instanceof JFormattedTextField) {
+							((JFormattedTextField)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i]).setText((String)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[3][i]);
 						}
-						if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JComboBox) {
-							((JComboBox)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setSelectedIndex((int)((Object[][])OkuriMsSearchSubFm[4])[3][i]);
+						if(((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i] instanceof JComboBox) {
+							((JComboBox)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i]).setSelectedIndex((int)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[3][i]);
 						}
 					}
 					NumberFormat ni = NumberFormat.getNumberInstance();
@@ -839,15 +871,15 @@ public class WT100_OkuriHd_00_Search{
 						if(0==i01) {
 							SetOb[0] = true;
 							
-							for(int i=0;i<((Object[][])OkuriMsSearchSubFm[4])[0].length;i++) {
+							for(int i=0;i<((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0].length;i++) {
 								String WST = B100_TextControl.Trim(""+OkuriMsRt[0][i]);
 								
-								if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JTextField) {
-									((JTextField)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setText(WST);
+								if(((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i] instanceof JTextField) {
+									((JTextField)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i]).setText(WST);
 								}
-								if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JFormattedTextField) {
-									if(null!=((Object[][])OkuriMsSearchSubFm[4])[2][i]) {
-										switch((String)((Object[][])OkuriMsSearchSubFm[4])[2][i]) {
+								if(((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i] instanceof JFormattedTextField) {
+									if(null!=((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[2][i]) {
+										switch((String)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[2][i]) {
 											case "YYYY/MM/DD":
 												WST = B100_TextControl.TextToDate(WST);
 												break;
@@ -861,11 +893,11 @@ public class WT100_OkuriHd_00_Search{
 												break;
 										}
 									}
-									((JFormattedTextField)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setText(WST);
+									((JFormattedTextField)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i]).setText(WST);
 									
 								}
 								if(((Object[][])OkuriMsSearchSubFm[4])[0][i] instanceof JComboBox) {
-									((JComboBox)((Object[][])OkuriMsSearchSubFm[4])[0][i]).setSelectedIndex(B100_ArrayListControl.ArryListGetRow((String[])((Object[][])OkuriMsSearchSubFm[4])[2][i],WST,true));
+									((JComboBox)((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[0][i]).setSelectedIndex(B100_ArrayListControl.ArryListGetRow((String[])((Object[][])OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtControlTgt])[2][i],WST,true));
 								}
 							}
 						}else {
@@ -876,7 +908,17 @@ public class WT100_OkuriHd_00_Search{
 							SetOb[1+i02] = "" + OkuriMsRt[i01][i02];
 						}
 						
-						((DefaultTableModel)OkuriMsSearchSubFm[1]).addRow(SetOb);
+						((DefaultTableModel)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtDefaultTableModel]).addRow(SetOb);
+					}
+					if(OnFg) {
+						if(MsViewMode) {
+							((JFrame)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtJFrame]).setVisible(false);
+							((JFrame)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtJFrame]).setVisible(true);
+						}else {
+							((JFrame)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtJFrame]).setVisible(false);
+						}
+					}else {
+						((JFrame)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtJFrame]).setVisible(false);
 					}
 					WT200_OkuriMsSearchSubFm.RenewFg = true;
 					RenewFg = true;
@@ -1016,8 +1058,8 @@ public class WT100_OkuriHd_00_Search{
         //EXITボタン押下時の挙動
         exit_btn.addActionListener(new AbstractAction(){
             public void actionPerformed(ActionEvent e){
-            	((JFrame)OkuriMsSearchSubFm[0]).setVisible(false);
-            	((JFrame)OkuriMsSearchSubFm[0]).dispose();
+            	((JFrame)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtJFrame]).setVisible(false);
+            	((JFrame)OkuriMsSearchSubFm[WT200_OkuriMsSearchSubFm.RtJFrame]).dispose();
             	
                 SetX=main_fm.getX();
                 SetY=main_fm.getY();

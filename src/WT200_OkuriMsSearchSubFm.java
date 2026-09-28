@@ -28,8 +28,9 @@ public class WT200_OkuriMsSearchSubFm{
 	static final int RtJFrame				= 0;
 	static final int RtDefaultTableModel	= 1;
 	static final int RtJTable				= 2;
-	static final int EntryBtn				= 3;
-	
+	static final int RtEntryBtn			= 3;
+	static final int RtControlTgt			= 4;
+	static final int RtExitBtn				= 5;
 	
 	public static Object[] OkuriMsSearchSubFm(int x,int y,String ClCd,String TgtOkuriNo,String BackGroundColor,boolean SearchMode) {
 		A00000_Main.LoginCheck();
@@ -1454,6 +1455,7 @@ public class WT200_OkuriMsSearchSubFm{
 				,tbOkuriMs
 				,OkuriMsEntry_btn
 				,ControlTgt
+				,OkuriMsExit_btn
 				};
 		return Rt;
 	}

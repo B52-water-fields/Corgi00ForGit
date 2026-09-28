@@ -4,14 +4,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Tools100_OkuriOnHold{
-	public static ArrayList<String> OkuriOnHold(ArrayList<String> TgtOkuriNo) {
+	public static ArrayList<String> OkuriOnHold(ArrayList<String> TgtOkuriNo,boolean ReleaseMode) {
 		ArrayList<String> ErrMsg = new ArrayList<String>();
+		String Msg = " は保留対象ではありません";
+		if(ReleaseMode) {
+			Msg = " は保留解除対象ではありません";
+		}
 		Object[][] OkuriHdRt = null;
 		if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
-			OkuriHdRt = OkuriHdRt(TgtOkuriNo);
+			OkuriHdRt = OkuriHdRt(TgtOkuriNo,ReleaseMode);
 			if(null==OkuriHdRt||0==OkuriHdRt.length) {
 				for(int i=0;i<TgtOkuriNo.size();i++) {
-					ErrMsg.add(TgtOkuriNo.get(i)+" は保留対象ではありません");
+					ErrMsg.add(TgtOkuriNo.get(i)+Msg);
 				}
 			}
 		}
@@ -27,7 +31,7 @@ public class Tools100_OkuriOnHold{
 				}
 				
 				if(UnHitFg) {
-					ErrMsg.add(TgtOkuriNo.get(i01)+" は保留対象ではありません");
+					ErrMsg.add(TgtOkuriNo.get(i01)+Msg);
 				}
 			}
 		}
@@ -46,8 +50,13 @@ public class Tools100_OkuriOnHold{
 				cl_cd[i01]			= A00000_Main.ClCd;		//荷主コード
 				InvoiceWHCD[i01]	= A00000_Main.ClWh;		//倉庫コード
 				OkuriNo[i01]		= SetOkuriNo.get(i01);	//送り状番号
-				Status[i01]			= "8";					//状況
-				WmsStatus[i01]		= "8";					//在庫管理ステータス
+				if(ReleaseMode) {
+					Status[i01]			= "0";					//状況
+					WmsStatus[i01]		= "0";					//在庫管理ステータス
+				}else {
+					Status[i01]			= "8";					//状況
+					WmsStatus[i01]		= "8";					//在庫管理ステータス
+				}
 				UpdateDate[i01]		= now_dtm;				//更新日
 				UpdateUser[i01]		= "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;	//更新者
 				UpdatePG[i01]		= "Tools100_OkuriOnHold";	//更新プログラム
@@ -74,7 +83,7 @@ public class Tools100_OkuriOnHold{
 		return ErrMsg;
 	}
 	
-	private static Object[][] OkuriHdRt(ArrayList<String> TgtOkuriNo){
+	private static Object[][] OkuriHdRt(ArrayList<String> TgtOkuriNo,boolean ReleaseMode){
 		ArrayList<String> SearchInvoiceWHCD			= new ArrayList<String>();			//倉庫CD
 		ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
 		ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主CD
@@ -188,9 +197,13 @@ public class Tools100_OkuriOnHold{
 		SearchInvoiceWHCD.add(A00000_Main.ClWh);
 		SearchClGpCD.add(A00000_Main.ClGp);
 		SearchClCd.add(A00000_Main.ClCd);
-		SearchStatus.add(0);
-		SearchWmsStatus.add(0);
-		
+		if(ReleaseMode) {
+			SearchStatus.add(8);
+			SearchWmsStatus.add(8);
+		}else {
+			SearchStatus.add(0);
+			SearchWmsStatus.add(0);
+		}
 		Object[][] OkuriHdRt	= T100_OkuriHdRt.OkuriHdRt(
 					SearchInvoiceWHCD,			//倉庫CD
 					SearchClGpCD,				//荷主グループCD
@@ -310,17 +323,17 @@ public class Tools100_OkuriOnHold{
 		//必要フォルダを生成する
 		String FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriCancel";
+		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriOnHold";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriCancel\\Err";
+		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriOnHold\\Err";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
-		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriCancel\\BK";
+		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriOnHold\\BK";
 		B100_FolderCheck.FLD_CHECK(FLD_PATH);
 		
 		//ファイルに出力
 		String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
 		
-		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriCancel\\Err";
+		FLD_PATH = A00000_Main.MainFLD+"\\OkuriDataControl\\OkuriOnHold\\Err";
 		
 		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
 		

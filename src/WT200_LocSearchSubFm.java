@@ -192,10 +192,6 @@ public class WT200_LocSearchSubFm{
 				Loc_fm.setVisible(false);
 			}
 		});
-		
-		
-		
-		
 		Object[] Rt = {
 				Loc_fm
 				,tableModel_msLoc
