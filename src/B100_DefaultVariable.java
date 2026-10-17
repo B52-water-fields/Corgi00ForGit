@@ -211,6 +211,8 @@ public class B100_DefaultVariable{
 		
 		ClParameterCheck();			//荷主別パラメータマスタの値チェック
 		
+		DefoultDelivery();			//基本の届け先を作る。超わがまま届先として出荷時前回納品より古い賞味期限不可・明細単位でロットがまとまってないとダメな届先に設定
+		
 		B100_LanguageControl.DefaultVariableControl();	//ログインユーザーの言語にあわせる
 	}
 	
@@ -398,9 +400,142 @@ public class B100_DefaultVariable{
 		int non_msg_fg = 1;
 		
 		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetString,tgt_table,TgtDB,non_msg_fg);
-		
-		
 	}
+	
+	private static void DefoultDelivery() {
+		//基本の届け先を作る。超わがまま届先として出荷時前回納品より古い賞味期限不可・明細単位でロットがまとまってないとダメな届先に設定
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		String tgt_table = "KM0040_DELIVERYMST";
+		String TgtDB = "NYANKO";
+		int non_msg_fg = 1;
+		Object[][] SetStringDelivery = {
+			  {"DECD"			,"1"	,"0"	,"Key"	,"SpecialSelfish0000"	}			//納品先コード
+			 ,{"DepartmentCd"	,"1"	,"0"	,"Key"	,"0000"	}							//部署CD
+			 ,{"DEName01"		,"1"	,"0"	,""		,"竹取かぐや（献上品受付係）"					}	//納品先表記名
+			 ,{"DEName02"		,"1"	,"0"	,""		,"特定非営利活動法人竹取かぐや（献上品受付係）"	}	//納品先正式名
+			 ,{"DEName03"		,"1"	,"0"	,""		,"竹取かぐや（献上品受付係）"					}	//納品先略名
+			 ,{"Post"			,"1"	,"0"	,""		,"0000000"	}						//納品先郵便
+			 ,{"Add01"			,"1"	,"0"	,""		,"The Dark Side of the Moon"	}	//納品先住所1
+			 ,{"Add02"			,"1"	,"0"	,""		,""	}								//納品先住所2
+			 ,{"Add03"			,"1"	,"0"	,""		,""	}								//納品先住所3
+			 ,{"Tel"			,"1"	,"0"	,""		,"0745999999"	}					//納品先電話
+			 ,{"Fax"			,"1"	,"0"	,""		,""	}								//納品先FAX
+			 ,{"Mail"			,"1"	,"0"	,""		,""	}								//納品先MAIL
+			 ,{"Com01"			,"1"	,"0"	,""		,"自動登録届先超わがままなので過去日付受け入れ不可・同一ロットまとめ指定"	}	//コメント1
+			 ,{"Com02"			,"1"	,"0"	,""		,"マスタいじっても何度でも我満届先として復活します"	}							//コメント2
+			 ,{"Com03"			,"1"	,"0"	,""		,""	}	//コメント3
+			 ,{"PrefecturesCd"	,"1"	,"0"	,""		,"00"	}	//JIS県CD2桁
+			 ,{"MunicipalityCd"	,"1"	,"0"	,""		,"00000"	}	//JIS市区町村CD5桁
+			 ,{"PTMSCD"			,"1"	,"0"	,""		,""	}	//基幹システム発着地コード
+			 ,{"EntryDate"		,"1"	,"0"	,""		,now_dtm	}	//データ登録日時
+			 ,{"UpdateDate"		,"1"	,"0"	,""		,now_dtm	}	//データ更新日時
+			 ,{"EntryUser"		,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//登録者コード
+			 ,{"UpdateUser"		,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//更新者コード
+			 ,{"FirstClient"	,"1"	,"0"	,""		,A00000_Main.ClCd	}	//登録した荷主CD
+			 ,{"LastClient"		,"1"	,"0"	,""		,A00000_Main.ClCd	}	//更新した荷主CD
+			 ,{"DelFg"			,"1"	,"0"	,""		,"0"	}	//"削除区分
+			};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringDelivery,tgt_table,TgtDB,non_msg_fg);
+		
+		tgt_table = "WM0000PARAMETER";
+		TgtDB = "WANKO";
+		non_msg_fg = 1;
+		
+		Object[][] SetStringSelfishBanExpDateOld	={
+				 {"ClWh"		,"1"	,"0"	,"Key"	,A00000_Main.ClWh	}					//倉庫コード
+				,{"ClCd"		,"1"	,"0"	,"Key"	,A00000_Main.ClCd	}					//荷主コード
+				,{"ParaCd"		,"1"	,"0"	,"Key"	,"SelfishBanExpDateOld"	}				//パラメータコード
+				,{"ParaCdSeq"	,"1"	,"0"	,"Key"	,"0"	}								//ナンバリング
+				,{"ParaName"	,"1"	,"0"	,""		,"古い賞味期限禁止"	}					//パラメータ名
+				,{"ParaTxt01"	,"1"	,"0"	,""		,"SpecialSelfish0000"	}				//パラメータテキスト項目01
+				,{"ParaTxt02"	,"1"	,"0"	,""		,"0000"	}	//パラメータテキスト項目02
+				,{"ParaTxt03"	,"1"	,"0"	,""		,"テキスト項目01：届け先CD　02：部署CDには　前回より古い商品を引当しない"	}	//パラメータテキスト項目03
+				,{"ParaTxt04"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目04
+				,{"ParaTxt05"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目05
+				,{"ParaTxt06"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目06
+				,{"ParaTxt07"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目07
+				,{"ParaTxt08"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目08
+				,{"ParaTxt09"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目09
+				,{"ParaTxt10"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目10
+				,{"ParaInt01"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目01
+				,{"ParaInt02"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目02
+				,{"ParaInt03"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目03
+				,{"ParaInt04"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目04
+				,{"ParaInt05"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目05
+				,{"ParaInt06"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目06
+				,{"ParaInt07"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目07
+				,{"ParaInt08"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目08
+				,{"ParaInt09"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目09
+				,{"ParaInt10"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目10
+				,{"EntryDate"	,"1"	,"0"	,""		,now_dtm	}	//登録日
+				,{"UpdateDate"	,"1"	,"0"	,""		,now_dtm	}	//更新日
+				,{"EntryUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//登録者
+				,{"UpdateUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//更新者
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringSelfishBanExpDateOld,tgt_table,TgtDB,non_msg_fg);
+		
+		tgt_table = "WM0000PARAMETER";
+		TgtDB = "WANKO";
+		non_msg_fg = 1;
+		
+		Object[][] SetStringSelfishLot={
+				 {"ClWh"		,"1"	,"0"	,"Key"	,A00000_Main.ClWh	}					//倉庫コード
+				,{"ClCd"		,"1"	,"0"	,"Key"	,A00000_Main.ClCd	}					//荷主コード
+				,{"ParaCd"		,"1"	,"0"	,"Key"	,"SelfishLot"	}						//パラメータコード
+				,{"ParaCdSeq"	,"1"	,"0"	,"Key"	,"0"	}								//ナンバリング
+				,{"ParaName"	,"1"	,"0"	,""		,"ロット割禁止"	}						//パラメータ名
+				,{"ParaTxt01"	,"1"	,"0"	,""		,"SpecialSelfish0000"	}				//パラメータテキスト項目01
+				,{"ParaTxt02"	,"1"	,"0"	,""		,"0000"	}		//パラメータテキスト項目02
+				,{"ParaTxt03"	,"1"	,"0"	,""		,"テキスト項目01：届け先CD　02：部署CDには　明細に対してロット割れ禁止"	}	//パラメータテキスト項目03
+				,{"ParaTxt04"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目04
+				,{"ParaTxt05"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目05
+				,{"ParaTxt06"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目06
+				,{"ParaTxt07"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目07
+				,{"ParaTxt08"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目08
+				,{"ParaTxt09"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目09
+				,{"ParaTxt10"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目10
+				,{"ParaInt01"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目01
+				,{"ParaInt02"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目02
+				,{"ParaInt03"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目03
+				,{"ParaInt04"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目04
+				,{"ParaInt05"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目05
+				,{"ParaInt06"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目06
+				,{"ParaInt07"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目07
+				,{"ParaInt08"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目08
+				,{"ParaInt09"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目09
+				,{"ParaInt10"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目10
+				,{"EntryDate"	,"1"	,"0"	,""		,now_dtm	}	//登録日
+				,{"UpdateDate"	,"1"	,"0"	,""		,now_dtm	}	//更新日
+				,{"EntryUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//登録者"}
+				,{"UpdateUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//更新者"}
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringSelfishLot,tgt_table,TgtDB,non_msg_fg);
+		
+		tgt_table = "KM0041_DELIVERY_COMVERSIONMST";
+		TgtDB = "NYANKO";
+		non_msg_fg = 1;
+		
+		Object[][] SetStringComversion	={
+				  {"ClGpCD"				,"1"	,"0"	,"Key"	,A00000_Main.ClGp	}					//荷主グループコード
+				 ,{"CL_DECD"			,"1"	,"0"	,"Key"	,"SpecialSelfish0000"	}				//荷主届け先コード
+				 ,{"DECD"				,"1"	,"0"	,""		,"SpecialSelfish0000"	}				//届け先コード
+				 ,{"DepartmentCd"		,"1"	,"0"	,""		,"0000"	}								//部署CD
+				 ,{"SetName"			,"1"	,"0"	,""		,""	}									//送り状登録名
+				 ,{"Com01"				,"1"	,"0"	,""		,""	}									//コメント01
+				 ,{"Com02"				,"1"	,"0"	,""		,""	}									//コメント02
+				 ,{"Com03"				,"1"	,"0"	,""		,""	}									//コメント03
+				 ,{"Com04"				,"1"	,"0"	,""		,""	}									//コメント04
+				 ,{"Com05"				,"1"	,"0"	,""		,""	}									//コメント05
+				 ,{"EntryDate"			,"1"	,"0"	,""		,now_dtm	}									//データ登録日時
+				 ,{"UpdateDate"			,"1"	,"0"	,""		,now_dtm	}									//データ更新日時
+				 ,{"EntryUser"			,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}		//登録者コード
+				 ,{"UpdateUser"			,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}		//更新者コード
+				 ,{"DelFg"				,"1"	,"0"	,""		,"0"	}								//削除区分
+				 ,{"MstPriorityFirstFg"	,"1"	,"0"	,""		,"0"	}									//届先マスタ優先フラグ
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringComversion,tgt_table,TgtDB,non_msg_fg);
+	}
+	
 	
 	private static void ClDefaultLoc() {
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];

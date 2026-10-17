@@ -1,3 +1,6 @@
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -5,6 +8,10 @@ import java.util.ArrayList;
 
 public class WT100_ShipPlovision{
 	//在庫引き当て
+	/*
+	返却エラータイプ
+	"WmsStatusErr":送り状ステータスエラー　引当指示された送り状のWMSステータスが未引当でない場合に返却、対象送り状が存在しない場合もこのエラー
+	*/
 	static final int StockItemLotExpDateSumRt_Col_ClCd				= (int) 0;		//荷主コード
 	static final int StockItemLotExpDateSumRt_Col_CLName			= (int) 1;		//荷主表記名
 	static final int StockItemLotExpDateSumRt_Col_WhCd				= (int) 2;		//倉庫コード
@@ -48,30 +55,59 @@ public class WT100_ShipPlovision{
 	
 	public static Object[][] RtShipPlovision(){
 		Object[][] Rt = {
-						 {"ErrType"		,ColErrType		,"String"	}
-						,{"OkuriNo"		,ColOkuriNo		,"String"}
-						,{"MsNo"		,ColMsNo			,"int"}
-						,{"ItemCd"		,ColItemCd			,"String"}
-						,{"Lot"			,ColLot			,"String"}
-						,{"ExpDate"		,ColExpDate		,"Date"}
-						,{"NeedQty"		,ColNeedQty		,"int"}
-						,{"PackingType"	,ColPackingType	,"int"}
-						,{"ErrMsg"		,ColErrMsg			,"String"}
+						 {"ErrType"		,ColErrType		,"String"	,"エラータイプ"		,"Key"	}
+						,{"OkuriNo"		,ColOkuriNo		,"String"	,"送り状番号"		,"Key"	}
+						,{"MsNo"		,ColMsNo			,"int"		,"明細番号"			,"Key"	}
+						,{"ItemCd"		,ColItemCd			,"String"	,"商品CD"			,""		}
+						,{"Lot"			,ColLot			,"String"	,"ロット指定"		,""		}
+						,{"ExpDate"		,ColExpDate		,"Date"		,"賞味期限指定"		,""		}
+						,{"NeedQty"		,ColNeedQty		,"int"		,"指示数"			,""		}
+						,{"PackingType"	,ColPackingType	,"int"		,"荷姿タイプ"		,""		}
+						,{"ErrMsg"		,ColErrMsg			,"String"	,"エラーメッセージ"	,""		}
 						};
+		Rt = B100_LanguageControl.RtControl(Rt);
 		return Rt;
 	}
 	
-	
 	public static Object[][] ShipPlovision(String TgtWhCd,String TgtClCd,ArrayList<String> TgtOkurino) {
 		Object[][] ErrRt = new Object[0][0];
+		Object[][] StatusErr = new Object[0][0];
+		Object[][] StockErr = new Object[0][0];
+		
 		if(null==TgtWhCd||"".equals(TgtWhCd)) {TgtWhCd=A00000_Main.ClWh;}
 		if(null==TgtClCd||"".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
 		if(null!=TgtOkurino && 0<TgtOkurino.size()) {
-			WmsStatusCheck(TgtWhCd,TgtClCd,TgtOkurino);
+			StatusErr 	= WmsStatusCheck(TgtWhCd,TgtClCd,TgtOkurino);
+			StockErr 	= StockCheck(TgtWhCd,TgtClCd,TgtOkurino);
 			
 			
 		}
 		
+		ArrayList<String>ErrMsg = new ArrayList<String>();
+		Object[][] RtShipPlovision=RtShipPlovision();
+		ErrRt = new Object[StatusErr.length+StockErr.length][RtShipPlovision.length];
+		
+		int counter = 0;
+		
+		for(int i=0;i<StatusErr.length;i++) {
+			ErrMsg.add((String)StatusErr[i][ColErrMsg]);
+			for(int i01=0;i01<RtShipPlovision.length;i01++) {
+				ErrRt[counter][(int)RtShipPlovision[i01][1]]=StatusErr[i][(int)RtShipPlovision[i01][1]];
+			}
+			counter = counter+1;
+		}
+		
+		for(int i=0;i<StockErr.length;i++) {
+			ErrMsg.add((String)StockErr[i][ColErrMsg]);
+			for(int i01=0;i01<RtShipPlovision.length;i01++) {
+				ErrRt[counter][(int)RtShipPlovision[i01][1]]=StockErr[i][(int)RtShipPlovision[i01][1]];
+			}
+			counter = counter+1;
+		}
+		
+		if(null!=ErrMsg && 0<ErrMsg.size()) {
+			ErrView(ErrMsg);
+		}
 		return ErrRt;
 	}
 	
@@ -101,13 +137,31 @@ public class WT100_ShipPlovision{
 				ErrCount=ErrCount+1;
 			}
 		}
-		
-		Object[][] RtShipPlovision = RtShipPlovision();
-		
 		Object[][] Rt	= DefaultSett(ErrCount);
 		
+		for(int i=0;i<Rt.length;i++) {
+			Rt[i][ColErrType]			= "WmsStatusErr";
+			Rt[i][ColOkuriNo]			= ErrOkuriNo.get(i);
+			Rt[i][ColMsNo]				= 0;
+			Rt[i][ColItemCd]			= "";
+			Rt[i][ColLot]				= "";
+			Rt[i][ColExpDate]			= "";
+			Rt[i][ColNeedQty]			= "";
+			Rt[i][ColPackingType]		= 0;
+			Rt[i][ColErrMsg	]		= ErrMsg.get(i);
+		}
+		
+		return Rt;
+	}
+	
+	private static Object[][] StockCheck(String TgtWhCd,String TgtClCd,ArrayList<String> TgtOkurino){
+		int ErrCount=0;
 		
 		
+		
+		
+		
+		Object[][] Rt	= DefaultSett(ErrCount);
 		
 		return Rt;
 	}
@@ -116,12 +170,27 @@ public class WT100_ShipPlovision{
 		Object[][] RtShipPlovision = RtShipPlovision();
 		Object[][] Rt = new Object[RowCount][RtShipPlovision.length];
 		
-		for(int i01=0;i01<RowCount;i01++) {
-			for(int i02=0;i02<RtShipPlovision.length;i02++) {
-				
+		for(int i=0;i<Rt.length;i++) {
+			for(int i01=0;i01<RtShipPlovision.length;i01++) {
+				switch((String)RtShipPlovision[i01][2]) {
+					case "int":
+						Rt[i][(int)RtShipPlovision[i01][1]] = (int)0;
+						break;
+					case "float":
+						Rt[i][(int)RtShipPlovision[i01][1]] = (float)0;
+						break;
+					case "Date":
+						Rt[i][(int)RtShipPlovision[i01][1]] = "";
+						break;
+					case "DateTime":
+						Rt[i][(int)RtShipPlovision[i01][1]] = "";
+						break;
+					default:
+						Rt[i][(int)RtShipPlovision[i01][1]] = "";
+						break;
+				}
 			}
 		}
-		
 		return Rt;
 	}
 	
@@ -209,7 +278,7 @@ public class WT100_ShipPlovision{
 	
 	
 	private static PreparedStatement StockItemLotExpDateSumRt(String TgtWhCd,String TgtClCd) {
-		//商品・賞味期限別在庫を検索するPreparedStatement返却
+		//ロケ・商品・賞味期限別（出荷可能）在庫を検索するPreparedStatement返却
 		Object[][] Rt = new Object[0][100];
 		String sql = "select \n"
 				+"(WW0015Stock.ClCd) as ClCd,\n"						//荷主コード
@@ -221,6 +290,8 @@ public class WT100_ShipPlovision{
 				+"(WW0015Stock.ItemCd) as ItemCd,\n"					//商品コード
 				+"(WW0015Stock.Lot) as Lot,\n"							//ロット
 				+"(WW0015Stock.Expdate) as Expdate,\n"					//消費期限
+				+"(WW0015Stock.Loc) as Loc,\n"							//ロケーション
+				+"max(WM0010LOCATIONMST.LocType) as LocType,\n"			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
 				+"sum(WW0015Stock.Qty) as Qty,\n"						//数量
 				+"sum(WW0015Stock.ShipPlanQty) as ShipPlanQty,\n"		//引当済数
 				+"sum(WW0015Stock.PossibleQty) as PossibleQty,\n"		//出荷可能数
@@ -249,6 +320,12 @@ public class WT100_ShipPlovision{
 				+ " on("
 				+ " WW0015Stock.WhCd = KM0010_WHMST.WHCD"
 				+ ")\n"
+				+ " left outer join "+A00000_Main.MySqlDefaultSchemaWANKO+".WM0010LOCATIONMST"
+				+ " on("
+				+ " WW0015Stock.ClCd = WM0010LOCATIONMST.ClCd"
+				+ " and WW0015Stock.WhCd = WM0010LOCATIONMST.WhCd"
+				+ " and WW0015Stock.Loc= WM0010LOCATIONMST.Loc"
+				+ ")\n"
 				+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0060_ITEMMST"
 				+ " on("
 				+ " KM0030_CLIENTMST.ClGpCD = KM0060_ITEMMST.ClGpCd"
@@ -261,9 +338,13 @@ public class WT100_ShipPlovision{
 				+ ")\n"
 				+ " where WW0015Stock.WhCd = "	+TgtWhCd+"\n"
 				+ " and WW0015Stock.ClCd = "	+TgtClCd+"\n"
+				+ " and WW0015Stock.PossibleQty >0"
 				+ " and WW0015Stock.ItemCd = ? \n";
 		
-		sql = sql + " group by WW0015Stock.WhCd,WW0015Stock.ClCd,WW0015Stock.ItemCd,WW0015Stock.Expdate,WW0015Stock.Lot";
+		sql = sql + " group by WW0015Stock.WhCd,WW0015Stock.ClCd,WW0015Stock.ItemCd,WW0015Stock.Loc,WW0015Stock.Expdate,WW0015Stock.Lot";
+		sql = sql + " order by WW0015Stock.WhCd,WW0015Stock.ClCd,WW0015Stock.ItemCd,WW0015Stock.Expdate,WM0010LOCATIONMST.LocType,WW0015Stock.Loc,WW0015Stock.Lot";
+		
+		System.out.println(sql);
 		
 		A100_DbConnect.DB_CONN("WANKO");
 		ResultSet rset01 = null;
@@ -507,7 +588,38 @@ public class WT100_ShipPlovision{
 		return OkuriHdRt;
 	}
 	
-	
+	private static void ErrView(ArrayList<String>ErrMsg) {
+		//必要フォルダを生成する
+		String FLD_PATH = A00000_Main.MainFLD+"\\ShipPlovisionControl";
+		B100_FolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000_Main.MainFLD+"\\ShipPlovisionControl\\Plovision";
+		B100_FolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000_Main.MainFLD+"\\ShipPlovisionControl\\Plovision\\Err";
+		B100_FolderCheck.FLD_CHECK(FLD_PATH);
+		FLD_PATH = A00000_Main.MainFLD+"\\ShipPlovisionControl\\Plovision\\BK";
+		B100_FolderCheck.FLD_CHECK(FLD_PATH);
+		
+		//ファイルに出力
+		String NowDTM=B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1].replace(" ", "").replace("/", "").replace(":", "");
+		
+		FLD_PATH = A00000_Main.MainFLD+"\\ShipPlovisionControl\\Plovision\\Err";
+		
+		String ErrFP = FLD_PATH+"\\ERR"+NowDTM+".txt";
+		
+		B100_TextExport.txt_exp2(ErrMsg, ErrFP,"UTF-8");
+		
+		//古いエラーデータ削除
+		B100_FolderCheck.ToolsOldFileDeleteWhereFileName(FLD_PATH ,"ERR",B100_DefaultVariable.ErrTxtDelete);
+		
+		//ファイル開く
+		File file = new File(ErrFP);
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			desktop.open(file);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
 	
 	
 }
