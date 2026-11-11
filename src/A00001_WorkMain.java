@@ -1,4 +1,5 @@
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -253,7 +254,161 @@ public class A00001_WorkMain{
 		//テスト用
 		TestBtn.addActionListener(new AbstractAction(){
 			public void actionPerformed(ActionEvent e) {
-				Object[] RT = WT200_OkuriMsSearchSubFm.OkuriMsSearchSubFm(0,0,A00000_Main.ClCd,"","SP",true);
+				ArrayList<String> Searchcl_cd				= new ArrayList<String>();			//荷主コード
+				ArrayList<String> SearchInvoiceWHCD			= new ArrayList<String>();			//倉庫コード
+				ArrayList<String> SearchOkuriNo				= new ArrayList<String>();			//送り状番号
+				ArrayList<Integer> SearchMsNoMin			= new ArrayList<Integer>();			//明細番号
+				ArrayList<Integer> SearchSeqMin				= new ArrayList<Integer>();			//引当枝番
+				ArrayList<Integer> SearchMsNoMax			= new ArrayList<Integer>();			//明細番号
+				ArrayList<Integer> SearchSeqMax				= new ArrayList<Integer>();			//引当枝番
+				ArrayList<String> SearchOrderItemCd			= new ArrayList<String>();			//商品コード
+				ArrayList<String> SearchOrderItemName		= new ArrayList<String>();			//商品表記名
+				ArrayList<String> SearchOrderLot			= new ArrayList<String>();			//受注ロット指定
+				ArrayList<String> SearchOrderExpDateStr		= new ArrayList<String>();			//受注賞味期限指定
+				ArrayList<String> SearchOrderExpDateEnd		= new ArrayList<String>();			//受注賞味期限指定
+				ArrayList<Integer> SearchOrderQtyMin		= new ArrayList<Integer>();			//受注個数
+				ArrayList<Integer> SearchOrderQtyMax		= new ArrayList<Integer>();			//受注個数
+				ArrayList<String> SearchShipWhCd			= new ArrayList<String>();			//出荷倉庫コード
+				ArrayList<String> SearchShipLoc				= new ArrayList<String>();			//ロケーション
+				ArrayList<String> SearchShipItemCd			= new ArrayList<String>();			//商品コード
+				ArrayList<String> SearchShipLot				= new ArrayList<String>();			//ロット
+				ArrayList<String> SearchShipExpdateStr		= new ArrayList<String>();			//消費期限
+				ArrayList<String> SearchShipActualDateStr	= new ArrayList<String>();			//入荷実績日
+				ArrayList<String> SearchShipExpdateEnd		= new ArrayList<String>();			//消費期限
+				ArrayList<String> SearchShipActualDateEnd	= new ArrayList<String>();			//入荷実績日
+				ArrayList<String> SearchShipQtyMin			= new ArrayList<String>();			//引当数量
+				ArrayList<String> SearchShipQtyMax			= new ArrayList<String>();			//引当数量
+				ArrayList<String> SearchFixFg				= new ArrayList<String>();			//引落済フラグ
+				ArrayList<Integer> SearchPackingType		= new ArrayList<Integer>();			//荷姿タイプ
+				ArrayList<Integer> SearchPackingQtyMin		= new ArrayList<Integer>();			//荷姿数量
+				ArrayList<Integer> SearchPackingQtyMax		= new ArrayList<Integer>();			//荷姿数量
+				ArrayList<Integer> SearchBRShipQtyMin		= new ArrayList<Integer>();			//バラ数量
+				ArrayList<Integer> SearchCTShipQtyMin		= new ArrayList<Integer>();			//カートン数量
+				ArrayList<Integer> SearchCSShipQtyMin		= new ArrayList<Integer>();			//ケース数量
+				ArrayList<Integer> SearchPLShipQtyMin		= new ArrayList<Integer>();			//パレット数量
+				ArrayList<Integer> SearchBRShipQtyMax		= new ArrayList<Integer>();			//バラ数量
+				ArrayList<Integer> SearchCTShipQtyMax		= new ArrayList<Integer>();			//カートン数量
+				ArrayList<Integer> SearchCSShipQtyMax		= new ArrayList<Integer>();			//ケース数量
+				ArrayList<Integer> SearchPLShipQtyMax		= new ArrayList<Integer>();			//パレット数量
+				ArrayList<String> SearchEntryDateStr		= new ArrayList<String>();			//登録日時
+				ArrayList<String> SearchUpdateDateStr		= new ArrayList<String>();			//更新日時
+				ArrayList<String> SearchEntryDateEnd		= new ArrayList<String>();			//登録日時
+				ArrayList<String> SearchUpdateDateEnd		= new ArrayList<String>();			//更新日時
+				ArrayList<String> SearchEntryUser			= new ArrayList<String>();			//登録者
+				ArrayList<String> SearchUpdateUser			= new ArrayList<String>();			//更新者
+					
+				ArrayList<String> SearchClDeliNo			= new ArrayList<String>();			//荷主管理番号
+				ArrayList<String> SearchPlanDateStr			= new ArrayList<String>();			//出荷予定日
+				ArrayList<String> SearchShipDateStr			= new ArrayList<String>();			//出荷実績日
+				ArrayList<String> SearchPlanDateEnd			= new ArrayList<String>();			//出荷予定日
+				ArrayList<String> SearchShipDateEnd			= new ArrayList<String>();			//出荷実績日
+					
+				ArrayList<String> SearchDeliCd				= new ArrayList<String>();			//荷届先コード
+				ArrayList<String> SearchClDeliCd			= new ArrayList<String>();			//荷主荷届先コード
+				ArrayList<String> SearchDeliDepartmentCd	= new ArrayList<String>();			//部署CD
+				ArrayList<String> SearchDeliName			= new ArrayList<String>();			//荷届先名
+				ArrayList<String> SearchDeliPost			= new ArrayList<String>();			//荷届先郵便番号
+				ArrayList<String> SearchDeliAdd				= new ArrayList<String>();			//荷届先住所
+				ArrayList<String> SearchDeliTel				= new ArrayList<String>();			//荷届先TEL
+				ArrayList<String> SearchDeliFax				= new ArrayList<String>();			//荷届先FAX
+				ArrayList<String> SearchDeliMail			= new ArrayList<String>();			//荷届先MAIL
+				ArrayList<String> SearchDeliMunicCd			= new ArrayList<String>();			//荷届先市区町村CD
+					 
+				ArrayList<String> SearchClGpCD				= new ArrayList<String>();			//荷主グループCD
+				ArrayList<String> SearchClCd				= new ArrayList<String>();			//荷主CD
+				ArrayList<String> SearchPickupWhCd			= new ArrayList<String>();			//集荷倉庫CD
+				ArrayList<String> SearchPurposeFG			= new ArrayList<String>();			//目的フラグ
+				ArrayList<String> SearchSPPlanDateStr		= new ArrayList<String>();			//着日指定
+				ArrayList<String> SearchSPDateStr			= new ArrayList<String>();			//着日実績
+				ArrayList<String> SearchSPPlanDateEnd		= new ArrayList<String>();			//着日指定
+				ArrayList<String> SearchSPDateEnd			= new ArrayList<String>();			//着日実績
+
+				ArrayList<String> SearchCategoryCd			= new ArrayList<String>();			//商品カテゴリCD
+				ArrayList<String> SearchCategoryName		= new ArrayList<String>();			//商品カテゴリ名
+				ArrayList<String> SearchItemColorCd			= new ArrayList<String>();			//商品カラーコード
+				ArrayList<String> SearchItemColorName		= new ArrayList<String>();			//商品カラー名
+				ArrayList<String> SearchItemSizeCd			= new ArrayList<String>();			//商品サイズコード
+				ArrayList<String> SearchItemSizeName		= new ArrayList<String>();			//商品サイズ名
+				boolean AllSearch = false;
+				
+				Object[][] ShipPlovisionRt	= T100_ShipPlovisionRt.ShipPlovisionRt(
+									 Searchcl_cd				//荷主コード
+									,SearchInvoiceWHCD			//倉庫コード
+									,SearchOkuriNo				//送り状番号
+									,SearchMsNoMin				//明細番号
+									,SearchSeqMin				//引当枝番
+									,SearchMsNoMax				//明細番号
+									,SearchSeqMax				//引当枝番
+									,SearchOrderItemCd			//商品コード
+									,SearchOrderItemName			//商品表記名
+									,SearchOrderLot				//受注ロット指定
+									,SearchOrderExpDateStr		//受注賞味期限指定
+									,SearchOrderExpDateEnd		//受注賞味期限指定
+									,SearchOrderQtyMin			//受注個数
+									,SearchOrderQtyMax			//受注個数
+									,SearchShipWhCd				//出荷倉庫コード
+									,SearchShipLoc				//ロケーション
+									,SearchShipItemCd			//商品コード
+									,SearchShipLot				//ロット
+									,SearchShipExpdateStr		//消費期限
+									,SearchShipActualDateStr	//入荷実績日
+									,SearchShipExpdateEnd		//消費期限
+									,SearchShipActualDateEnd	//入荷実績日
+									,SearchShipQtyMin			//引当数量
+									,SearchShipQtyMax			//引当数量
+									,SearchFixFg				//引落済フラグ
+									,SearchPackingType			//荷姿タイプ
+									,SearchPackingQtyMin		//荷姿数量
+									,SearchPackingQtyMax		//荷姿数量
+									,SearchBRShipQtyMin			//バラ数量
+									,SearchCTShipQtyMin			//カートン数量
+									,SearchCSShipQtyMin			//ケース数量
+									,SearchPLShipQtyMin			//パレット数量
+									,SearchBRShipQtyMax			//バラ数量
+									,SearchCTShipQtyMax			//カートン数量
+									,SearchCSShipQtyMax			//ケース数量
+									,SearchPLShipQtyMax			//パレット数量
+									,SearchEntryDateStr			//登録日時
+									,SearchUpdateDateStr		//更新日時
+									,SearchEntryDateEnd			//登録日時
+									,SearchUpdateDateEnd		//更新日時
+									,SearchEntryUser			//登録者
+									,SearchUpdateUser			//更新者
+										
+									,SearchClDeliNo				//荷主管理番号
+									,SearchPlanDateStr			//出荷予定日
+									,SearchShipDateStr			//出荷実績日
+									,SearchPlanDateEnd			//出荷予定日
+									,SearchShipDateEnd			//出荷実績日
+										
+									,SearchDeliCd				//荷届先コード
+									,SearchClDeliCd				//荷主荷届先コード
+									,SearchDeliDepartmentCd		//部署CD
+									,SearchDeliName				//荷届先名
+									,SearchDeliPost				//荷届先郵便番号
+									,SearchDeliAdd				//荷届先住所
+									,SearchDeliTel				//荷届先TEL
+									,SearchDeliFax				//荷届先FAX
+									,SearchDeliMail				//荷届先MAIL
+									,SearchDeliMunicCd			//荷届先市区町村CD
+										 
+									,SearchClGpCD				//荷主グループCD
+									,SearchClCd					//荷主CD
+									,SearchPickupWhCd			//集荷倉庫CD
+									,SearchPurposeFG			//目的フラグ
+									,SearchSPPlanDateStr		//着日指定
+									,SearchSPDateStr			//着日実績
+									,SearchSPPlanDateEnd		//着日指定
+									,SearchSPDateEnd			//着日実績
+
+									,SearchCategoryCd			//商品カテゴリCD
+									,SearchCategoryName			//商品カテゴリ名
+									,SearchItemColorCd			//商品カラーコード
+									,SearchItemColorName		//商品カラー名
+									,SearchItemSizeCd			//商品サイズコード
+									,SearchItemSizeName			//商品サイズ名
+									,AllSearch
+									);
 			
 			}
 		});

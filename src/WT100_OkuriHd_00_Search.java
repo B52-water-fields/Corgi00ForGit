@@ -528,6 +528,12 @@ public class WT100_OkuriHd_00_Search{
 		
 		main_fm.add(LB_ShipPlovision);
 		main_fm.add(ShipPlovisionBtn);
+		
+		JLabel LB_ShipPlovisionTotal 		= B100_FrameParts.JLabelSet(	730,635,100,20,"検索結果を"	,10,2);
+		JButton ShipPlovisionTotalBtn 		= B100_FrameParts.BtnSet(		730,660,100,20,"在庫引当"		, 9);
+		
+		main_fm.add(LB_ShipPlovisionTotal);
+		main_fm.add(ShipPlovisionTotalBtn);
 
         main_fm.setVisible(true);
         
@@ -757,6 +763,28 @@ public class WT100_OkuriHd_00_Search{
                 }
             }
       	});
+      	//在庫引当ボタン押下時の挙動
+      	ShipPlovisionTotalBtn.addActionListener(new AbstractAction(){
+            public void actionPerformed(ActionEvent e){
+                if(RenewFg) {
+                    RenewFg = false;
+                    int RowCount = MainFmTableModel.getRowCount();
+                    String TgtWhCd = A00000_Main.ClWh;
+                    String TgtClCd = A00000_Main.ClCd;
+                    ArrayList<String> TgtOkuriNo = new ArrayList<String>();
+                    for(int i=0;i<RowCount;i++) {
+                        TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+                    }
+                    
+                    if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
+                    	WT100_ShipPlovision.ShipPlovision(TgtWhCd,TgtClCd,TgtOkuriNo);
+                    	SearchKick(SearchObject,MainFmTableModel,tb01);	//再検索
+                    }
+                    RenewFg = true;
+                }
+            }
+      	});
+      	
       	//保留ボタン押下時の挙動
       	OnHoldBtn.addActionListener(new AbstractAction(){
             public void actionPerformed(ActionEvent e){
