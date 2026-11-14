@@ -226,6 +226,18 @@ public class WT100_ShipPlovision{
 			ArrayList<Integer> StockCsUnitQty 	= new ArrayList<Integer>();
 			ArrayList<Integer> StockCtUnitQty 	= new ArrayList<Integer>();
 			
+			ArrayList<Integer> WorkStockTotalQty 	= new ArrayList<Integer>();
+			ArrayList<Integer> WorkStockPlQty 		= new ArrayList<Integer>();
+			ArrayList<Integer> WorkStockCsQty 		= new ArrayList<Integer>();
+			ArrayList<Integer> WorkStockCtQty 		= new ArrayList<Integer>();
+			ArrayList<Integer> WorkStockBrQty 		= new ArrayList<Integer>();
+			
+			ArrayList<Integer> WorkBeforeStockTotalQty 	= new ArrayList<Integer>();
+			ArrayList<Integer> WorkBeforeStockPlQty 	= new ArrayList<Integer>();
+			ArrayList<Integer> WorkBeforeStockCsQty 	= new ArrayList<Integer>();
+			ArrayList<Integer> WorkBeforeStockCtQty 	= new ArrayList<Integer>();
+			ArrayList<Integer> WorkBeforeStockBrQty 	= new ArrayList<Integer>();
+			
 			for(int i=0;i<StockRt.length;i++) {
 				boolean UnHitFg = true;
 				String GetClCd			= (String)StockRt[i][T100_StockRt.ColClCd];			//荷主コード
@@ -406,7 +418,130 @@ public class WT100_ShipPlovision{
 			}
 			A100_DbConnect.close();
 			
+			
+			
+			//ロットもしくは賞味期限指定のある注文の在庫をまず食べてみる
+			WorkStockTotalQty 	= new ArrayList<Integer>();
+			WorkStockPlQty 		= new ArrayList<Integer>();
+			WorkStockCsQty 		= new ArrayList<Integer>();
+			WorkStockCtQty 		= new ArrayList<Integer>();
+			WorkStockBrQty 		= new ArrayList<Integer>();
+			
+			WorkBeforeStockTotalQty = new ArrayList<Integer>();
+			WorkBeforeStockPlQty 	= new ArrayList<Integer>();
+			WorkBeforeStockCsQty 	= new ArrayList<Integer>();
+			WorkBeforeStockCtQty 	= new ArrayList<Integer>();
+			WorkBeforeStockBrQty 	= new ArrayList<Integer>();
+			
+			for(int i=0;i<StockTotalQty.size();i++) {
+				WorkStockTotalQty.add(StockTotalQty.get(i));
+				WorkStockPlQty.add(StockPlQty.get(i));
+				WorkStockCsQty.add(StockCsQty.get(i));
+				WorkStockCtQty.add(StockCtQty.get(i));
+				WorkStockBrQty.add(StockBrQty.get(i));
+			}
 			ArrayList<String> ErrOkuriNo = new ArrayList<String>();
+			
+			//ロット指定があるパレット指定のオーダーをまず優先して食べる
+			ErrOkuriNo = new ArrayList<String>();
+			boolean BforeSet = true;
+			for(int i=0;i<CheckMs.length;i++) {
+				if(null==CheckMs[i][ColCheckExpDate]) {CheckMs[i][ColCheckExpDate]="";}
+				if(null==CheckMs[i][ColCheckLot]) {CheckMs[i][ColCheckLot]="";}
+				if(null==CheckMs[i][ColCheckErrType]) {CheckMs[i][ColCheckErrType]="";}
+				if(null==CheckMs[i][ColCheckExpDateMin]) {CheckMs[i][ColCheckExpDateMin]="";}
+				if(null==CheckMs[i][ColCheckExpDateMax]) {CheckMs[i][ColCheckExpDateMax]="";}
+				if(null==CheckMs[i][ColLotOneOnlyFg]) {CheckMs[i][ColLotOneOnlyFg]=0;}
+				
+				if("".equals((String)CheckMs[i][ColCheckErrType])&&!"".equals((String)CheckMs[i][ColCheckLot])&&3==(int)CheckMs[i][ColCheckUnitType]) {
+					int NeedQty = (int)CheckMs[i][ColCheckQty];			//必要数（バラ）
+					int NeedUnitQty = (int)CheckMs[i][ColCheckUnitQty];	//荷姿必要数量];
+					
+					if(BforeSet) {
+						
+					}
+					
+					
+					
+					for(int i01=0;i01<WorkStockTotalQty.size();i01++) {
+						if(StockItemCd.get(i01).equals((String)CheckMs[i][ColCheckItemCd])&&NeedQty>0) {
+							if(StockLot.get(i01).equals((String)CheckMs[i][ColCheckLot])) {
+								int CheckQty = WorkStockPlQty.get(i01);
+								if(1==(int)CheckMs[i][ColLotOneOnlyFg]) {
+									if(CheckQty>=NeedUnitQty) {
+										if("".equals((String)CheckMs[i][ColCheckExpDate])||StockExpDate.get(i01).equals((String)CheckMs[i][ColCheckExpDate])) {
+											WorkStockTotalQty.set(i01, WorkStockTotalQty.get(i01)-NeedQty);
+											WorkStockPlQty.set(i01, WorkStockPlQty.get(i01)-NeedUnitQty);
+											NeedQty = 0;
+											NeedUnitQty = 0;
+										}
+									}
+								}else {
+									if(CheckQty>=NeedUnitQty) {
+										WorkStockTotalQty.set(i01, WorkStockTotalQty.get(i01)-NeedQty);
+										WorkStockPlQty.set(i01, WorkStockPlQty.get(i01)-NeedUnitQty);
+										NeedQty = 0;
+										NeedUnitQty = 0;
+									}else {
+										WorkStockTotalQty.set(i01,0);
+										WorkStockPlQty.set(i01,0);
+										NeedQty =  NeedQty-WorkStockTotalQty.get(i01);
+										NeedUnitQty = NeedUnitQty-WorkStockPlQty.get(i01);
+									}
+								}
+							}
+						}
+					}
+					
+					
+				}
+			}
+			
+			
+			
+			
+			
+			
+			/*
+			//ロットもしくは賞味期限のない我儘届先(1ロットに取りまとめるよう指定)の出荷指示をロット指定に設定する
+			
+			
+			for(int i=0;i<CheckMs.length;i++) {
+				if(null==CheckMs[i][ColCheckExpDate]) {CheckMs[i][ColCheckExpDate]="";}
+				if(null==CheckMs[i][ColCheckLot]) {CheckMs[i][ColCheckLot]="";}
+				if(null==CheckMs[i][ColCheckErrType]) {CheckMs[i][ColCheckErrType]="";}
+				if(null==CheckMs[i][ColCheckExpDateMin]) {CheckMs[i][ColCheckExpDateMin]="";}
+				if(null==CheckMs[i][ColCheckExpDateMax]) {CheckMs[i][ColCheckExpDateMax]="";}
+				if(null==CheckMs[i][ColLotOneOnlyFg]) {CheckMs[i][ColLotOneOnlyFg]=0;}
+				boolean KickFg = true;
+				if("".equals((String)CheckMs[i][ColCheckExpDate]) && "".equals((String)CheckMs[i][ColCheckLot]) && "".equals((String)CheckMs[i][ColCheckErrType])) {
+					KickFg = true;
+				}else {
+					KickFg = false;
+				}
+				if(KickFg  
+						&&(!"".equals((String)CheckMs[i][ColCheckExpDateMin])||!"".equals((String)CheckMs[i][ColCheckExpDateMax])||1==(int)CheckMs[i][ColLotOneOnlyFg])
+						) {
+					int NeedQty 	= (int)CheckMs[i][ColCheckQty];		//必要数（バラ）
+					int NeedUnitQty = (int)CheckMs[i][ColCheckUnitQty];	//荷姿必要数量
+					for(int i01=0;i01<WorkStockTotalQty.size();i01++) {
+						if(StockItemCd.get(i01).equals((String)CheckMs[i][ColCheckItemCd])&&NeedQty>0) {
+							boolean Check = true;
+							
+						}
+					}
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			//ロット指定有の在庫チェック
 			//荷姿パレット指定
@@ -441,7 +576,7 @@ public class WT100_ShipPlovision{
 								}
 							}
 							
-							if(NeedUnitQty<WorkUnitQty) {
+							if(NeedUnitQty<=WorkUnitQty) {
 								for(int i01=0;i01<StockItemCd.size();i01++) {
 									if(((String)CheckMs[i][ColCheckItemCd]).equals(StockItemCd.get(i01))){
 										boolean CheckFg = true;
@@ -498,7 +633,7 @@ public class WT100_ShipPlovision{
 			StockPlUnitQty.add(GetPlUnitQty);
 			StockCsUnitQty.add(GetCsUnitQty);
 			StockCtUnitQty.add(GetCtUnitQty);
-			*/
+			
 			//荷姿ケース指定
 			for(int i=0;i<CheckMs.length;i++) {
 				if(null==CheckMs[i][ColCheckLot]) {CheckMs[i][ColCheckLot]="";}
@@ -531,7 +666,7 @@ public class WT100_ShipPlovision{
 								}
 							}
 							
-							if(NeedUnitQty<WorkUnitQty) {
+							if(NeedUnitQty<=WorkUnitQty) {
 								for(int i01=0;i01<StockItemCd.size();i01++) {
 									if(((String)CheckMs[i][ColCheckItemCd]).equals(StockItemCd.get(i01))){
 										boolean CheckFg = true;
@@ -572,7 +707,7 @@ public class WT100_ShipPlovision{
 					}
 				}
 			}
-			
+			*/
 			
 		}
 		
