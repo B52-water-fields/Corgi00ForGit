@@ -45,10 +45,13 @@ public class WT100_ShipPlovision{
 	static final int ColPackingType			= (int) 7;
 	static final int ColErrMsg					= (int) 8;
 	static final int ColCheckExpDateMin		= (int) 9;	//引当対象賞味期限Min
-	static final int ColCheckExpDateMax		= (int)10;	//引当対象賞味期限Msx
+	static final int ColCheckExpDateMax		= (int)10;	//引当対象賞味期限Max
 	static final int ColCheckLotOneOnlyFg	= (int)11;	//ロット1種指定
 	static final int ColChecPackingQty		= (int)12;	//荷姿数量
 	static final int ColPlanDate				= (int)13;	//出荷予定日
+	static final int ColDeCd					= (int)14;	//届先CD
+	static final int ColDptCd					= (int)15;	//届先部署CD
+	static final int ColDeName					= (int)16;	//届先名
 	
 	public static Object[][] RtShipPlovision(){
 		//戻り値定義
@@ -63,10 +66,13 @@ public class WT100_ShipPlovision{
 						,{"PackingType"				,ColPackingType			,"int"		,"荷姿タイプ"			,""		}
 						,{"ErrMsg"					,ColErrMsg					,"String"	,"エラーメッセージ"		,""		}
 						,{"CheckExpDateMin"			,ColCheckExpDateMin		,"String"	,"引当対象賞味期限Min"	,""		}
-						,{"CheckExpDateMax"			,ColCheckExpDateMax		,"String"	,"引当対象賞味期限Msx"	,""		}
+						,{"CheckExpDateMax"			,ColCheckExpDateMax		,"String"	,"引当対象賞味期限Max"	,""		}
 						,{"CheckLotOneOnlyFg"		,ColCheckLotOneOnlyFg	,"int"		,"ロット1種指定"		,""		}
 						,{"ChecPackingQty"			,ColChecPackingQty		,"int"		,"荷姿数量"				,""		}
 						,{"PlanDate"				,ColPlanDate				,"Date"		,"出荷予定日"			,""		}
+						,{"DeCd"					,ColDeCd					,"String"	,"届先CD"				,""		}
+						,{"DptCd"					,ColDptCd					,"String"	,"届先部署CD"			,""		}
+						,{"DeName"					,ColDeName					,"String"	,"届先名"				,""		}
 						};
 		Rt = B100_LanguageControl.RtControl(Rt);
 		return Rt;
@@ -74,22 +80,18 @@ public class WT100_ShipPlovision{
 	
 	public static Object[][] ShipPlovision(String TgtWhCd,String TgtClCd,ArrayList<String> TgtOkurino) {
 		Object[][] Rt = new Object[0][RtShipPlovision().length];
+		if(null==TgtWhCd||"".equals(TgtWhCd)) {TgtWhCd=A00000_Main.ClWh;}
+		if(null==TgtClCd||"".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
+		
 		if(null!=TgtOkurino && 0<TgtOkurino.size()) {
 			ShipPlovisionMain(TgtWhCd,TgtClCd,TgtOkurino);
 		}
+		
 		return Rt;
 	}
 		
 	public static Object[][] ShipPlovisionMain(String TgtWhCd,String TgtClCd,ArrayList<String> TgtOkurino) {
-		
 		Object[][] Rt = new Object[0][RtShipPlovision().length];
-		
-		Object[][] ErrRt = new Object[0][0];
-		Object[][] StatusErr = new Object[0][0];
-		Object[][] StockErr = new Object[0][0];
-		
-		if(null==TgtWhCd||"".equals(TgtWhCd)) {TgtWhCd=A00000_Main.ClWh;}
-		if(null==TgtClCd||"".equals(TgtClCd)) {TgtClCd=A00000_Main.ClCd;}
 		
 		if(null!=TgtOkurino && 0<TgtOkurino.size()) {
 			Rt= WmsStatusCheck(TgtWhCd,TgtClCd,TgtOkurino);
@@ -111,7 +113,8 @@ public class WT100_ShipPlovision{
 		return Rt;
 	}
 	
-	public static Object[][] WmsStatusCheck(String TgtWhCd,String TgtClCd,ArrayList<String> TgtOkurino) {
+	
+	private static Object[][] WmsStatusCheck(String TgtWhCd,String TgtClCd,ArrayList<String> TgtOkurino) {
 		Object[][] Rt = new Object[0][RtShipPlovision().length];
 		Object[] RtTgt = new Object[RtShipPlovision().length];
 		
@@ -149,10 +152,13 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColPackingType] 			= 0;	//荷姿タイプ
 			Rt[Counter][ColErrMsg] 				= "";	//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";	//引当対象賞味期限Min
-			Rt[Counter][ColCheckExpDateMax] 		= "";	//引当対象賞味期限Msx
+			Rt[Counter][ColCheckExpDateMax] 		= "";	//引当対象賞味期限Max
 			Rt[Counter][ColCheckLotOneOnlyFg] 	= 0;	//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= 0;	//荷姿数量
 			Rt[Counter][ColPlanDate]				= "";	//出荷予定日
+			Rt[Counter][ColDeCd]					= "";	//届先CD
+			Rt[Counter][ColDptCd]					= "";	//届先部署CD
+			Rt[Counter][ColDeName]					= "";	//届先名
 			
 			Rt[Counter][ColOkuriNo] 				= SttusErrOkurino.get(i);	//送り状番号
 			Rt[Counter][ColErrType] 				= "StatusErr";			//エラータイプ
@@ -170,17 +176,19 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColPackingType] 			= 0;	//荷姿タイプ
 			Rt[Counter][ColErrMsg] 				= "";	//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";	//引当対象賞味期限Min
-			Rt[Counter][ColCheckExpDateMax] 		= "";	//引当対象賞味期限Msx
+			Rt[Counter][ColCheckExpDateMax] 		= "";	//引当対象賞味期限Max
 			Rt[Counter][ColCheckLotOneOnlyFg] 	= 0;	//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= 0;	//荷姿数量
 			Rt[Counter][ColPlanDate]				= "";	//出荷予定日
+			Rt[Counter][ColDeCd]					= "";	//届先CD
+			Rt[Counter][ColDptCd]					= "";	//届先部署CD
+			Rt[Counter][ColDeName]					= "";	//届先名
 			
 			Rt[Counter][ColOkuriNo] 				= UnKnownOkurino.get(i);	//送り状番号
 			Rt[Counter][ColErrType] 				= "UnKnownOkuriNo";			//エラータイプ
 			Rt[Counter][ColErrMsg] 				= "("+UnKnownOkurino.get(i)+")は当該荷主の送り状Noに存在しません";	//エラーメッセージ
 			Counter = Counter+1;
 		}
-		
 		
 		for(int i=0;i<OkuriMsRt.length;i++) {
 			String GetOkuriNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColOkuriNo];					//送り状番号
@@ -192,6 +200,9 @@ public class WT100_ShipPlovision{
 			String GetMsLot					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsLot];					//明細ロット指定
 			String GetMsExpDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsExpDate];				//明細賞味期限指定
 			int GetMsPackingType			= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsPackingType];				//明細荷姿タイプ
+			String GetDeliCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliCd];					//荷届先コード
+			String GetDeliDepartmentCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliDepartmentCd];		//部署CD
+			String GetDeliName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName01];				//荷届先名01
 			
 			Rt[Counter][ColErrType] 				= "";					//エラータイプ
 			Rt[Counter][ColOkuriNo] 				= GetOkuriNo;			//送り状番号
@@ -203,15 +214,138 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColPackingType] 			= GetMsPackingType;		//荷姿タイプ
 			Rt[Counter][ColErrMsg] 				= "";					//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";					//引当対象賞味期限Min
-			Rt[Counter][ColCheckExpDateMax] 		= "";					//引当対象賞味期限Msx
+			Rt[Counter][ColCheckExpDateMax] 		= "";					//引当対象賞味期限Max
 			Rt[Counter][ColCheckLotOneOnlyFg] 	= 0;					//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= GetMsPackingQty;		//荷姿数量
+			Rt[Counter][ColPlanDate]				= GetPlanDate;			//出荷予定日
+			Rt[Counter][ColDeCd]					= GetDeliCd;			//届先CD
+			Rt[Counter][ColDptCd]					= GetDeliDepartmentCd;	//届先部署CD
+			Rt[Counter][ColDeName]					= GetDeliName01;		//届先名
 			
 			Counter = Counter+1;
 		}
 		
 		return Rt;
 	}
+	private static Object[][] SelfishBanExpDateOld(String TgtWhCd,String TgtClCd,ArrayList<String> SearchDeCd){
+		//古い賞味期限禁止届先設定をWMSパラメータマスタから取得
+		ArrayList<String> SearchClWh 			= new ArrayList<String>();
+		ArrayList<String> SearchClCd 			= new ArrayList<String>();
+		ArrayList<String> SearchParaCd 			= new ArrayList<String>();	
+		ArrayList<Integer> SearchParaCdSeqStr	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaCdSeqEnd	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaName 		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt01		= SearchDeCd;
+		ArrayList<String> SearchParaTxt02		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt03		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt04		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt05		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt06		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt07		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt08		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt09		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt10		= new ArrayList<String>();
+		ArrayList<Integer> SearchParaInt01Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt01End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10End	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaTxtAll = new ArrayList<String>();
+		Boolean AllSearch = false;
+		if(null!=SearchDeCd && 0<SearchDeCd.size()) {
+			SearchClWh.add(TgtWhCd);
+			SearchClCd.add(TgtClCd);
+			SearchParaCd.add("SelfishBanExpDateOld");
+		}
+		Object[][] ParameterMstWankoRt = M100_ParameterMstWankoRt.ParameterMstWankoRt(
+				SearchClWh,SearchClCd,
+				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
+				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
+				SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
+				SearchParaInt01Str,SearchParaInt02Str,SearchParaInt03Str,SearchParaInt04Str,SearchParaInt05Str,
+				SearchParaInt06Str,SearchParaInt07Str,SearchParaInt08Str,SearchParaInt09Str,SearchParaInt10Str,
+				SearchParaInt01End,SearchParaInt02End,SearchParaInt03End,SearchParaInt04End,SearchParaInt05End,
+				SearchParaInt06End,SearchParaInt07End,SearchParaInt08End,SearchParaInt09End,SearchParaInt10End,
+				SearchParaTxtAll,
+				AllSearch);
+		
+		return ParameterMstWankoRt;
+	}
+	private static Object[][] SelfishLot(String TgtWhCd,String TgtClCd,ArrayList<String> SearchDeCd){
+		//ロット割れ禁止届先設定をWMSパラメータマスタから取得
+		ArrayList<String> SearchClWh 			= new ArrayList<String>();
+		ArrayList<String> SearchClCd 			= new ArrayList<String>();
+		ArrayList<String> SearchParaCd 			= new ArrayList<String>();	
+		ArrayList<Integer> SearchParaCdSeqStr	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaCdSeqEnd	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaName 		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt01		= SearchDeCd;
+		ArrayList<String> SearchParaTxt02		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt03		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt04		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt05		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt06		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt07		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt08		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt09		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt10		= new ArrayList<String>();
+		ArrayList<Integer> SearchParaInt01Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt01End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10End	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaTxtAll = new ArrayList<String>();
+		Boolean AllSearch = false;
+		if(null!=SearchDeCd && 0<SearchDeCd.size()) {
+			SearchClWh.add(TgtWhCd);
+			SearchClCd.add(TgtClCd);
+			SearchParaCd.add("SelfishLot");
+		}
+		Object[][] ParameterMstWankoRt = M100_ParameterMstWankoRt.ParameterMstWankoRt(
+				SearchClWh,SearchClCd,
+				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
+				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
+				SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
+				SearchParaInt01Str,SearchParaInt02Str,SearchParaInt03Str,SearchParaInt04Str,SearchParaInt05Str,
+				SearchParaInt06Str,SearchParaInt07Str,SearchParaInt08Str,SearchParaInt09Str,SearchParaInt10Str,
+				SearchParaInt01End,SearchParaInt02End,SearchParaInt03End,SearchParaInt04End,SearchParaInt05End,
+				SearchParaInt06End,SearchParaInt07End,SearchParaInt08End,SearchParaInt09End,SearchParaInt10End,
+				SearchParaTxtAll,
+				AllSearch);
+		
+		return ParameterMstWankoRt;
+	}
+	
 	private static Object[][] OkuriMsRt(String TgtWhCd,String TgtClCd,ArrayList<String> TgtOkurino){
 		ArrayList<String> SearchInvoiceWHCD			= new ArrayList<String>();	//倉庫CD
 		ArrayList<String> SearchClGpCD				= new ArrayList<String>();	//荷主グループCD
