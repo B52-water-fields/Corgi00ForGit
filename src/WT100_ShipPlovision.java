@@ -1,7 +1,10 @@
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class WT100_ShipPlovision{
 	//在庫引き当て
@@ -56,19 +59,19 @@ public class WT100_ShipPlovision{
 	public static Object[][] RtShipPlovision(){
 		//戻り値定義
 		Object[][] Rt = {
-						 {"ErrType"					,ColErrType				,"String"	,"エラータイプ"			,"Key"	}
-						,{"OkuriNo"					,ColOkuriNo				,"String"	,"送り状番号"			,"Key"	}
+						 {"ErrType"					,ColErrType					,"String"	,"エラータイプ"			,"Key"	}
+						,{"OkuriNo"					,ColOkuriNo					,"String"	,"送り状番号"			,"Key"	}
 						,{"MsNo"					,ColMsNo					,"int"		,"明細番号"				,"Key"	}
 						,{"ItemCd"					,ColItemCd					,"String"	,"商品CD"				,""		}
-						,{"Lot"						,ColLot					,"String"	,"ロット指定"			,""		}
-						,{"ExpDate"					,ColExpDate				,"Date"		,"賞味期限指定"			,""		}
-						,{"NeedQty"					,ColNeedQty				,"int"		,"指示数"				,""		}
+						,{"Lot"						,ColLot						,"String"	,"ロット指定"			,""		}
+						,{"ExpDate"					,ColExpDate					,"Date"		,"賞味期限指定"			,""		}
+						,{"NeedQty"					,ColNeedQty					,"int"		,"指示数"				,""		}
 						,{"PackingType"				,ColPackingType			,"int"		,"荷姿タイプ"			,""		}
 						,{"ErrMsg"					,ColErrMsg					,"String"	,"エラーメッセージ"		,""		}
 						,{"CheckExpDateMin"			,ColCheckExpDateMin		,"String"	,"引当対象賞味期限Min"	,""		}
 						,{"CheckExpDateMax"			,ColCheckExpDateMax		,"String"	,"引当対象賞味期限Max"	,""		}
-						,{"CheckLotOneOnlyFg"		,ColCheckLotOneOnlyFg	,"int"		,"ロット1種指定"		,""		}
-						,{"ChecPackingQty"			,ColChecPackingQty		,"int"		,"荷姿数量"				,""		}
+						,{"CheckLotOneOnlyFg"		,ColCheckLotOneOnlyFg		,"int"		,"ロット1種指定"		,""		}
+						,{"ChecPackingQty"			,ColChecPackingQty			,"int"		,"荷姿数量"				,""		}
 						,{"PlanDate"				,ColPlanDate				,"Date"		,"出荷予定日"			,""		}
 						,{"DeCd"					,ColDeCd					,"String"	,"届先CD"				,""		}
 						,{"DptCd"					,ColDptCd					,"String"	,"届先部署CD"			,""		}
@@ -95,9 +98,27 @@ public class WT100_ShipPlovision{
 		
 		if(null!=TgtOkurino && 0<TgtOkurino.size()) {
 			Rt= WmsStatusCheck(TgtWhCd,TgtClCd,TgtOkurino);
+			ArrayList<String> TgtPlanDateList	= new ArrayList<String>();
+			ArrayList<Integer> TgtPlanDateCount	= new ArrayList<Integer>();
+			//出荷予定日リスト化する
 			for(int i=0;i<Rt.length;i++) {
-				System.out.println((String)Rt[i][ColOkuriNo]+":"+(String)Rt[i][ColErrMsg]);
+				if("".equals((String)Rt[i][ColErrType])) {
+					boolean UnHitFg = true;
+					for(int i01=0;i01<TgtPlanDateList.size();i01++) {
+						if(TgtPlanDateList.get(i01).equals((String)Rt[i][ColPlanDate])) {
+							UnHitFg = false;
+						}
+					}
+					if(UnHitFg) {
+						TgtPlanDateList.add((String)Rt[i][ColPlanDate]);
+						TgtPlanDateCount.add(0);
+					}
+				}
 			}
+			TgtPlanDateList.sort(Comparator.naturalOrder());
+			//各出荷予定日毎の明細行数把握
+			
+			
 		}
 		
 		ArrayList<String>ErrMsg = new ArrayList<String>();
@@ -112,7 +133,6 @@ public class WT100_ShipPlovision{
 		}
 		return Rt;
 	}
-	
 	
 	private static Object[][] WmsStatusCheck(String TgtWhCd,String TgtClCd,ArrayList<String> TgtOkurino) {
 		Object[][] Rt = new Object[0][RtShipPlovision().length];
@@ -145,15 +165,15 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColErrType] 				= "";	//エラータイプ
 			Rt[Counter][ColOkuriNo] 				= "";	//送り状番号
 			Rt[Counter][ColMsNo] 					= 0;	//明細番号
-			Rt[Counter][ColItemCd] 				= "";	//商品CD
+			Rt[Counter][ColItemCd] 					= "";	//商品CD
 			Rt[Counter][ColLot] 					= "";	//ロット指定
 			Rt[Counter][ColExpDate] 				= "";	//賞味期限指定
 			Rt[Counter][ColNeedQty] 				= 0;	//指示数
 			Rt[Counter][ColPackingType] 			= 0;	//荷姿タイプ
-			Rt[Counter][ColErrMsg] 				= "";	//エラーメッセージ
+			Rt[Counter][ColErrMsg] 					= "";	//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";	//引当対象賞味期限Min
 			Rt[Counter][ColCheckExpDateMax] 		= "";	//引当対象賞味期限Max
-			Rt[Counter][ColCheckLotOneOnlyFg] 	= 0;	//ロット1種指定
+			Rt[Counter][ColCheckLotOneOnlyFg] 		= 0;	//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= 0;	//荷姿数量
 			Rt[Counter][ColPlanDate]				= "";	//出荷予定日
 			Rt[Counter][ColDeCd]					= "";	//届先CD
@@ -162,22 +182,22 @@ public class WT100_ShipPlovision{
 			
 			Rt[Counter][ColOkuriNo] 				= SttusErrOkurino.get(i);	//送り状番号
 			Rt[Counter][ColErrType] 				= "StatusErr";			//エラータイプ
-			Rt[Counter][ColErrMsg] 				= "("+SttusErrOkurino.get(i)+")は未引当ステータスではないので引当対象外です";	//エラーメッセージ
+			Rt[Counter][ColErrMsg] 					= "("+SttusErrOkurino.get(i)+")は未引当ステータスではないので引当対象外です";	//エラーメッセージ
 			Counter = Counter+1;
 		}
 		for(int i=0;i<UnKnownOkurino.size();i++) {
 			Rt[Counter][ColErrType] 				= "";	//エラータイプ
 			Rt[Counter][ColOkuriNo] 				= "";	//送り状番号
 			Rt[Counter][ColMsNo] 					= 0;	//明細番号
-			Rt[Counter][ColItemCd] 				= "";	//商品CD
+			Rt[Counter][ColItemCd] 					= "";	//商品CD
 			Rt[Counter][ColLot] 					= "";	//ロット指定
 			Rt[Counter][ColExpDate] 				= "";	//賞味期限指定
 			Rt[Counter][ColNeedQty] 				= 0;	//指示数
 			Rt[Counter][ColPackingType] 			= 0;	//荷姿タイプ
-			Rt[Counter][ColErrMsg] 				= "";	//エラーメッセージ
+			Rt[Counter][ColErrMsg] 					= "";	//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";	//引当対象賞味期限Min
 			Rt[Counter][ColCheckExpDateMax] 		= "";	//引当対象賞味期限Max
-			Rt[Counter][ColCheckLotOneOnlyFg] 	= 0;	//ロット1種指定
+			Rt[Counter][ColCheckLotOneOnlyFg] 		= 0;	//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= 0;	//荷姿数量
 			Rt[Counter][ColPlanDate]				= "";	//出荷予定日
 			Rt[Counter][ColDeCd]					= "";	//届先CD
@@ -207,15 +227,15 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColErrType] 				= "";					//エラータイプ
 			Rt[Counter][ColOkuriNo] 				= GetOkuriNo;			//送り状番号
 			Rt[Counter][ColMsNo] 					= GetMsNo;				//明細番号
-			Rt[Counter][ColItemCd] 				= GetMsItemCd;			//商品CD
+			Rt[Counter][ColItemCd] 					= GetMsItemCd;			//商品CD
 			Rt[Counter][ColLot] 					= GetMsLot;				//ロット指定
 			Rt[Counter][ColExpDate] 				= GetMsExpDate;			//賞味期限指定
 			Rt[Counter][ColNeedQty] 				= GetMsQty;				//指示数
 			Rt[Counter][ColPackingType] 			= GetMsPackingType;		//荷姿タイプ
-			Rt[Counter][ColErrMsg] 				= "";					//エラーメッセージ
+			Rt[Counter][ColErrMsg] 					= "";					//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";					//引当対象賞味期限Min
 			Rt[Counter][ColCheckExpDateMax] 		= "";					//引当対象賞味期限Max
-			Rt[Counter][ColCheckLotOneOnlyFg] 	= 0;					//ロット1種指定
+			Rt[Counter][ColCheckLotOneOnlyFg] 		= 0;					//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= GetMsPackingQty;		//荷姿数量
 			Rt[Counter][ColPlanDate]				= GetPlanDate;			//出荷予定日
 			Rt[Counter][ColDeCd]					= GetDeliCd;			//届先CD
@@ -227,6 +247,97 @@ public class WT100_ShipPlovision{
 		
 		return Rt;
 	}
+	
+	
+	private static PreparedStatement MaxExpDateGet(String TgtWhCd,String TgtClCd) {
+		String sql = "select "
+				+"Max(KT0010_OKURI_HD.cl_cd) 				as ClCd,\n"				//荷主コード
+				+"Max(KT0010_OKURI_HD.InvoiceWHCD) 			as InvoiceWhCd,\n"		//倉庫コード
+				+"Max(KT0010_OKURI_HD.DeliCd) 				as DeliCd,\n"			//荷届先コード
+				+"Max(KT0010_OKURI_HD.DeliDepartmentCd) 	as DeliDepartmentCd,\n"	//部署CD
+				+"Max(KT0010_OKURI_HD.PlanDate) 			as PlanDate,\n"			//出荷予定日
+				+"(WW0020ShipPlovision.OrderItemCd) as OrderItemCd,\n"				//商品コード
+				+"Max(WW0020ShipPlovision.ShipExpdate) as ShipExpdate,\n"			//消費期限
+				+" from "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0020ShipPlovision \n"
+				+" left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KT0010_OKURI_HD \n"
+				+" on(WW0020ShipPlovision.cl_cd = KT0010_OKURI_HD.cl_cd"
+				+" and WW0020ShipPlovision.InvoiceWHCD = KT0010_OKURI_HD.InvoiceWHCD"
+				+" and WW0020ShipPlovision.OkuriNo = KT0010_OKURI_HD.OkuriNo"
+				+")\n"
+				+" left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KT0011_OKURI_MS \n"
+				+" on(KT0010_OKURI_HD.cl_cd = KT0011_OKURI_MS.cl_cd"
+				+" and KT0010_OKURI_HD.InvoiceWHCD = KT0011_OKURI_MS.InvoiceWHCD"
+				+" and KT0010_OKURI_HD.OkuriNo = KT0011_OKURI_MS.OkuriNo"
+				+")\n"
+				+" where 1=1 \n"
+				;
+		sql = sql + " and KT0010_OKURI_HD.InvoiceWHCD ='"+TgtWhCd+"' \n";
+		sql = sql + " and KT0010_OKURI_HD.cl_cd ='"+TgtClCd+"' \n";
+		sql = sql + " and KT0011_OKURI_MS.ExpDate is null \n";
+		sql = sql + " and (KT0011_OKURI_MS.Lot is null or KT0011_OKURI_MS.Lot = '') \n";
+		
+		sql = sql + " and KT0010_OKURI_HD.PlanDate<?\n";
+		sql = sql + " and WW0020ShipPlovision.OrderItemCd=?\n";
+		sql = sql + " and KT0010_OKURI_HD.DeliCd=?\n";
+		sql = sql + " and KT0010_OKURI_HD.DeliDepartmentCd=?\n";
+		
+		sql = sql + " group by WW0020ShipPlovision.OrderItemCd";
+		
+		A100_DbConnect.DB_CONN("NYANKO");
+		PreparedStatement stmt01 = null;
+		try {
+			stmt01 = A100_DbConnect.conn.prepareStatement(sql);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stmt01;
+	}
+	
+	
+	private static PreparedStatement MinExpDateGet(String TgtWhCd,String TgtClCd) {
+		String sql = "select "
+				+"Min(KT0010_OKURI_HD.cl_cd) 				as ClCd,\n"				//荷主コード
+				+"Min(KT0010_OKURI_HD.InvoiceWHCD) 			as InvoiceWhCd,\n"		//倉庫コード
+				+"Min(KT0010_OKURI_HD.DeliCd) 				as DeliCd,\n"			//荷届先コード
+				+"Min(KT0010_OKURI_HD.DeliDepartmentCd) 	as DeliDepartmentCd,\n"	//部署CD
+				+"Min(KT0010_OKURI_HD.PlanDate) 			as PlanDate,\n"			//出荷予定日
+				+"(WW0020ShipPlovision.OrderItemCd) as OrderItemCd,\n"				//商品コード
+				+"Min(WW0020ShipPlovision.ShipExpdate) as ShipExpdate,\n"			//消費期限
+				+" from "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0020ShipPlovision \n"
+				+" left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KT0010_OKURI_HD \n"
+				+" on(WW0020ShipPlovision.cl_cd = KT0010_OKURI_HD.cl_cd"
+				+" and WW0020ShipPlovision.InvoiceWHCD = KT0010_OKURI_HD.InvoiceWHCD"
+				+" and WW0020ShipPlovision.OkuriNo = KT0010_OKURI_HD.OkuriNo"
+				+")\n"
+				+" left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KT0011_OKURI_MS \n"
+				+" on(KT0010_OKURI_HD.cl_cd = KT0011_OKURI_MS.cl_cd"
+				+" and KT0010_OKURI_HD.InvoiceWHCD = KT0011_OKURI_MS.InvoiceWHCD"
+				+" and KT0010_OKURI_HD.OkuriNo = KT0011_OKURI_MS.OkuriNo"
+				+")\n"
+				+" where 1=1 \n"
+				;
+		sql = sql + " and KT0010_OKURI_HD.InvoiceWHCD ='"+TgtWhCd+"' \n";
+		sql = sql + " and KT0010_OKURI_HD.cl_cd ='"+TgtClCd+"' \n";
+		sql = sql + " and KT0011_OKURI_MS.ExpDate is null \n";
+		sql = sql + " and (KT0011_OKURI_MS.Lot is null or KT0011_OKURI_MS.Lot = '') \n";
+		
+		sql = sql + " and KT0010_OKURI_HD.PlanDate>?\n";
+		sql = sql + " and WW0020ShipPlovision.OrderItemCd=?\n";
+		sql = sql + " and KT0010_OKURI_HD.DeliCd=?\n";
+		sql = sql + " and KT0010_OKURI_HD.DeliDepartmentCd=?\n";
+		
+		sql = sql + " group by WW0020ShipPlovision.OrderItemCd";
+		
+		A100_DbConnect.DB_CONN("NYANKO");
+		PreparedStatement stmt01 = null;
+		try {
+			stmt01 = A100_DbConnect.conn.prepareStatement(sql);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stmt01;
+	}
+	
 	private static Object[][] SelfishBanExpDateOld(String TgtWhCd,String TgtClCd,ArrayList<String> SearchDeCd){
 		//古い賞味期限禁止届先設定をWMSパラメータマスタから取得
 		ArrayList<String> SearchClWh 			= new ArrayList<String>();
