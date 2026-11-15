@@ -59,19 +59,19 @@ public class WT100_ShipPlovision{
 	public static Object[][] RtShipPlovision(){
 		//戻り値定義
 		Object[][] Rt = {
-						 {"ErrType"					,ColErrType					,"String"	,"エラータイプ"			,"Key"	}
-						,{"OkuriNo"					,ColOkuriNo					,"String"	,"送り状番号"			,"Key"	}
+						 {"ErrType"					,ColErrType				,"String"	,"エラータイプ"			,"Key"	}
+						,{"OkuriNo"					,ColOkuriNo				,"String"	,"送り状番号"			,"Key"	}
 						,{"MsNo"					,ColMsNo					,"int"		,"明細番号"				,"Key"	}
 						,{"ItemCd"					,ColItemCd					,"String"	,"商品CD"				,""		}
-						,{"Lot"						,ColLot						,"String"	,"ロット指定"			,""		}
-						,{"ExpDate"					,ColExpDate					,"Date"		,"賞味期限指定"			,""		}
-						,{"NeedQty"					,ColNeedQty					,"int"		,"指示数"				,""		}
+						,{"Lot"						,ColLot					,"String"	,"ロット指定"			,""		}
+						,{"ExpDate"					,ColExpDate				,"Date"		,"賞味期限指定"			,""		}
+						,{"NeedQty"					,ColNeedQty				,"int"		,"指示数"				,""		}
 						,{"PackingType"				,ColPackingType			,"int"		,"荷姿タイプ"			,""		}
 						,{"ErrMsg"					,ColErrMsg					,"String"	,"エラーメッセージ"		,""		}
 						,{"CheckExpDateMin"			,ColCheckExpDateMin		,"String"	,"引当対象賞味期限Min"	,""		}
 						,{"CheckExpDateMax"			,ColCheckExpDateMax		,"String"	,"引当対象賞味期限Max"	,""		}
-						,{"CheckLotOneOnlyFg"		,ColCheckLotOneOnlyFg		,"int"		,"ロット1種指定"		,""		}
-						,{"ChecPackingQty"			,ColChecPackingQty			,"int"		,"荷姿数量"				,""		}
+						,{"CheckLotOneOnlyFg"		,ColCheckLotOneOnlyFg	,"int"		,"ロット1種指定"		,""		}
+						,{"ChecPackingQty"			,ColChecPackingQty		,"int"		,"荷姿数量"				,""		}
 						,{"PlanDate"				,ColPlanDate				,"Date"		,"出荷予定日"			,""		}
 						,{"DeCd"					,ColDeCd					,"String"	,"届先CD"				,""		}
 						,{"DptCd"					,ColDptCd					,"String"	,"届先部署CD"			,""		}
@@ -165,15 +165,15 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColErrType] 				= "";	//エラータイプ
 			Rt[Counter][ColOkuriNo] 				= "";	//送り状番号
 			Rt[Counter][ColMsNo] 					= 0;	//明細番号
-			Rt[Counter][ColItemCd] 					= "";	//商品CD
+			Rt[Counter][ColItemCd] 				= "";	//商品CD
 			Rt[Counter][ColLot] 					= "";	//ロット指定
 			Rt[Counter][ColExpDate] 				= "";	//賞味期限指定
 			Rt[Counter][ColNeedQty] 				= 0;	//指示数
 			Rt[Counter][ColPackingType] 			= 0;	//荷姿タイプ
-			Rt[Counter][ColErrMsg] 					= "";	//エラーメッセージ
+			Rt[Counter][ColErrMsg] 				= "";	//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";	//引当対象賞味期限Min
 			Rt[Counter][ColCheckExpDateMax] 		= "";	//引当対象賞味期限Max
-			Rt[Counter][ColCheckLotOneOnlyFg] 		= 0;	//ロット1種指定
+			Rt[Counter][ColCheckLotOneOnlyFg]	= 0;	//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= 0;	//荷姿数量
 			Rt[Counter][ColPlanDate]				= "";	//出荷予定日
 			Rt[Counter][ColDeCd]					= "";	//届先CD
@@ -182,22 +182,22 @@ public class WT100_ShipPlovision{
 			
 			Rt[Counter][ColOkuriNo] 				= SttusErrOkurino.get(i);	//送り状番号
 			Rt[Counter][ColErrType] 				= "StatusErr";			//エラータイプ
-			Rt[Counter][ColErrMsg] 					= "("+SttusErrOkurino.get(i)+")は未引当ステータスではないので引当対象外です";	//エラーメッセージ
+			Rt[Counter][ColErrMsg] 				= "("+SttusErrOkurino.get(i)+")は未引当ステータスではないので引当対象外です";	//エラーメッセージ
 			Counter = Counter+1;
 		}
 		for(int i=0;i<UnKnownOkurino.size();i++) {
 			Rt[Counter][ColErrType] 				= "";	//エラータイプ
 			Rt[Counter][ColOkuriNo] 				= "";	//送り状番号
 			Rt[Counter][ColMsNo] 					= 0;	//明細番号
-			Rt[Counter][ColItemCd] 					= "";	//商品CD
+			Rt[Counter][ColItemCd] 				= "";	//商品CD
 			Rt[Counter][ColLot] 					= "";	//ロット指定
 			Rt[Counter][ColExpDate] 				= "";	//賞味期限指定
 			Rt[Counter][ColNeedQty] 				= 0;	//指示数
 			Rt[Counter][ColPackingType] 			= 0;	//荷姿タイプ
-			Rt[Counter][ColErrMsg] 					= "";	//エラーメッセージ
+			Rt[Counter][ColErrMsg] 				= "";	//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";	//引当対象賞味期限Min
 			Rt[Counter][ColCheckExpDateMax] 		= "";	//引当対象賞味期限Max
-			Rt[Counter][ColCheckLotOneOnlyFg] 		= 0;	//ロット1種指定
+			Rt[Counter][ColCheckLotOneOnlyFg]	= 0;	//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= 0;	//荷姿数量
 			Rt[Counter][ColPlanDate]				= "";	//出荷予定日
 			Rt[Counter][ColDeCd]					= "";	//届先CD
@@ -227,15 +227,15 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColErrType] 				= "";					//エラータイプ
 			Rt[Counter][ColOkuriNo] 				= GetOkuriNo;			//送り状番号
 			Rt[Counter][ColMsNo] 					= GetMsNo;				//明細番号
-			Rt[Counter][ColItemCd] 					= GetMsItemCd;			//商品CD
+			Rt[Counter][ColItemCd] 				= GetMsItemCd;			//商品CD
 			Rt[Counter][ColLot] 					= GetMsLot;				//ロット指定
 			Rt[Counter][ColExpDate] 				= GetMsExpDate;			//賞味期限指定
 			Rt[Counter][ColNeedQty] 				= GetMsQty;				//指示数
 			Rt[Counter][ColPackingType] 			= GetMsPackingType;		//荷姿タイプ
-			Rt[Counter][ColErrMsg] 					= "";					//エラーメッセージ
+			Rt[Counter][ColErrMsg] 				= "";					//エラーメッセージ
 			Rt[Counter][ColCheckExpDateMin] 		= "";					//引当対象賞味期限Min
 			Rt[Counter][ColCheckExpDateMax] 		= "";					//引当対象賞味期限Max
-			Rt[Counter][ColCheckLotOneOnlyFg] 		= 0;					//ロット1種指定
+			Rt[Counter][ColCheckLotOneOnlyFg]	= 0;					//ロット1種指定
 			Rt[Counter][ColChecPackingQty] 		= GetMsPackingQty;		//荷姿数量
 			Rt[Counter][ColPlanDate]				= GetPlanDate;			//出荷予定日
 			Rt[Counter][ColDeCd]					= GetDeliCd;			//届先CD
