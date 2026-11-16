@@ -107,6 +107,7 @@ public class WT100_ShipPlovision{
 					for(int i01=0;i01<TgtPlanDateList.size();i01++) {
 						if(TgtPlanDateList.get(i01).equals((String)Rt[i][ColPlanDate])) {
 							UnHitFg = false;
+							i01=TgtPlanDateList.size()+1;
 						}
 					}
 					if(UnHitFg) {
@@ -117,8 +118,27 @@ public class WT100_ShipPlovision{
 			}
 			TgtPlanDateList.sort(Comparator.naturalOrder());
 			//各出荷予定日毎の明細行数把握
-			
-			
+			for(int i=0;i<TgtPlanDateList.size();i++) {
+				for(int i01=0;i01<Rt.length;i01++) {
+					if("".equals((String)Rt[i01][ColErrType])&&TgtPlanDateList.get(i).equals((String)Rt[i01][ColPlanDate])) {
+						TgtPlanDateCount.set(i, TgtPlanDateCount.get(i)+1);
+					}
+				}
+			}
+			//出荷予定日古い順に処理引当まで走る
+			for(int i=0;i<TgtPlanDateList.size();i++) {
+				Object[][] CheckTgtRt = new Object[TgtPlanDateCount.get(i)][RtShipPlovision().length];
+				int counter = 0;
+				for(int i01=0;i01<Rt.length;i01++) {
+					if("".equals((String)Rt[i01][ColErrType])&&TgtPlanDateList.get(i).equals((String)Rt[i01][ColPlanDate])) {
+						for(int i02=0;i02<Rt[i01].length;i02++) {
+							CheckTgtRt[counter][i02]	= Rt[i01][i02];
+							counter= counter+1;
+						}
+					}
+				}
+				CheckTgtRt = SelfishCheck(TgtWhCd,TgtClCd,CheckTgtRt);
+			}
 		}
 		
 		ArrayList<String>ErrMsg = new ArrayList<String>();
@@ -248,6 +268,13 @@ public class WT100_ShipPlovision{
 		return Rt;
 	}
 	
+	private static Object[][] SelfishCheck(String TgtWhCd,String TgtClCd,Object[][] CheckTgtRt){
+		
+		
+		
+		
+		return CheckTgtRt;
+	}
 	
 	private static PreparedStatement MaxExpDateGet(String TgtWhCd,String TgtClCd) {
 		String sql = "select "
