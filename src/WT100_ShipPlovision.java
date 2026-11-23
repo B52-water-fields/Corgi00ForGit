@@ -2,6 +2,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -138,6 +139,19 @@ public class WT100_ShipPlovision{
 					}
 				}
 				CheckTgtRt = SelfishCheck(TgtWhCd,TgtClCd,CheckTgtRt);
+				CheckTgtRt = StockCheck(TgtWhCd,TgtClCd,CheckTgtRt);
+				
+				for(int i01=0;i01<Rt.length;i01++) {
+					for(int i02=0;i02<CheckTgtRt.length;i02++) {
+						if(((String)Rt[i01][ColOkuriNo]).equals((String)CheckTgtRt[i02][ColOkuriNo])
+								&&(int)Rt[i01][ColMsNo]==(int)CheckTgtRt[i02][ColMsNo]) {
+							for(int i03=0;i03<Rt[i01].length;i03++) {
+								Rt[i01][i03]=CheckTgtRt[i02][i03];
+							}
+							i02=CheckTgtRt.length+1;
+						}
+					}
+				}
 			}
 		}
 		
@@ -269,12 +283,238 @@ public class WT100_ShipPlovision{
 	}
 	
 	private static Object[][] SelfishCheck(String TgtWhCd,String TgtClCd,Object[][] CheckTgtRt){
+		//我儘納品先の引き当て条件設定
+		ArrayList<String> SearchDeCd = new ArrayList<String>();
+		for(int i=0;i<CheckTgtRt.length;i++) {
+			SearchDeCd.add((String)CheckTgtRt[i][ColDeCd]);
+		}
+		Object[][] SelfishLot = SelfishBanExpDateOld(TgtWhCd,TgtClCd,SearchDeCd);
+		for(int i=0;i<CheckTgtRt.length;i++) {
+			for(int i01=0;i01<SelfishLot.length;i01++) {
+				String GetParaTxt01		=(String)SelfishLot[i01][M100_ParameterMstWankoRt.ColParaTxt01];		//パラメータテキスト項目01 届先CD
+				String GetParaTxt02		=(String)SelfishLot[i01][M100_ParameterMstWankoRt.ColParaTxt02];		//パラメータテキスト項目02 部署CD
+				if(GetParaTxt01.equals((String)CheckTgtRt[i][ColDeCd])
+						&& GetParaTxt02.equals((String)CheckTgtRt[i][ColDptCd])
+						&&("".equals((String)CheckTgtRt[i][ColLot]) && "".equals((String)CheckTgtRt[i][ColExpDate]) )
+						) {
+					
+					CheckTgtRt[i][ColCheckLotOneOnlyFg]	= 1;					//ロット1種指定
+					
+					i01=SelfishLot.length+1;
+				}
+			}
+		}
 		
+		PreparedStatement MaxExpDateGet=MaxExpDateGet(TgtWhCd,TgtClCd);
+		PreparedStatement MinExpDateGet=MaxExpDateGet(TgtWhCd,TgtClCd);
+		ResultSet rsetMax = null;
+		ResultSet rsetMin = null;
+		Object[][] SelfishBanExpDateOld = SelfishBanExpDateOld(TgtWhCd,TgtClCd,SearchDeCd);
 		
+		int SetPlanDate			= 1;
+		int SetOrderItemCd		= 2;
+		int SetDeliCd			= 3;
+		int SetDeliDepartmentCd	= 4;
 		
+		for(int i=0;i<CheckTgtRt.length;i++) {
+			for(int i01=0;i01<SelfishBanExpDateOld.length;i01++) {
+				String GetParaTxt01		=(String)SelfishBanExpDateOld[i01][M100_ParameterMstWankoRt.ColParaTxt01];		//パラメータテキスト項目01 届先CD
+				String GetParaTxt02		=(String)SelfishBanExpDateOld[i01][M100_ParameterMstWankoRt.ColParaTxt02];		//パラメータテキスト項目02 部署CD
+				if(GetParaTxt01.equals((String)CheckTgtRt[i][ColDeCd])
+						&& GetParaTxt02.equals((String)CheckTgtRt[i][ColDptCd])
+						&&("".equals((String)CheckTgtRt[i][ColLot]) && "".equals((String)CheckTgtRt[i][ColExpDate]) )
+						) {
+					try {
+						MaxExpDateGet.setString(SetPlanDate			,(String)CheckTgtRt[i][ColPlanDate]);
+						MaxExpDateGet.setString(SetOrderItemCd		,(String)CheckTgtRt[i][ColItemCd]);
+						MaxExpDateGet.setString(SetDeliCd			,(String)CheckTgtRt[i][ColDeCd]);
+						MaxExpDateGet.setString(SetDeliDepartmentCd	,(String)CheckTgtRt[i][ColDptCd]);
+						
+						MinExpDateGet.setString(SetPlanDate			,(String)CheckTgtRt[i][ColPlanDate]);
+						MinExpDateGet.setString(SetOrderItemCd		,(String)CheckTgtRt[i][ColItemCd]);
+						MinExpDateGet.setString(SetDeliCd			,(String)CheckTgtRt[i][ColDeCd]);
+						MinExpDateGet.setString(SetDeliDepartmentCd	,(String)CheckTgtRt[i][ColDptCd]);
+						
+						rsetMax = MaxExpDateGet.executeQuery();
+						rsetMin = MinExpDateGet.executeQuery();
+						
+						rsetMax.beforeFirst();
+						while (rsetMax.next()) {
+							if(null==rsetMax.getTimestamp("ShipExpdate")){
+								
+							}else {
+								CheckTgtRt[i][ColCheckExpDateMax] = B100_DateTimeControl.dtmString2(rsetMax.getTimestamp("ShipExpdate"))[0];
+							}
+						}
+						rsetMin.beforeFirst();
+						while (rsetMin.next()) {
+							if(null==rsetMin.getTimestamp("ShipExpdate")){
+								
+							}else {
+								CheckTgtRt[i][ColCheckExpDateMin] = B100_DateTimeControl.dtmString2(rsetMin.getTimestamp("ShipExpdate"))[0];
+							}
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					i01=SelfishBanExpDateOld.length+1;
+				}
+			}
+		}
+		
+		try {
+			if(null!=rsetMax) {rsetMax.close();}
+			if(null!=rsetMin) {rsetMin.close();}
+			if(null!=MaxExpDateGet) {MaxExpDateGet.close();}
+			if(null!=MinExpDateGet) {MinExpDateGet.close();}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		A100_DbConnect.close();
 		
 		return CheckTgtRt;
 	}
+	
+	private static Object[][] StockCheck(String TgtWhCd,String TgtClCd,Object[][] CheckTgtRt) {
+		
+		ArrayList<String> ItemList = new ArrayList<String>();
+		for(int i=0;i<CheckTgtRt.length;i++) {
+			ItemList.add((String)CheckTgtRt[i][ColItemCd]);
+		}
+		ItemList = B100_ArrayListControl.ArryListStringUniqueList(ItemList);	//商品CD重複除く
+		
+		PreparedStatement StockSummaryGet = StockSummaryGet(TgtWhCd,TgtClCd);
+		ResultSet rsetStockSummary = null;
+		int ItemCDSet = 1;
+		for(int i=0;i<ItemList.size();i++) {
+			try {
+				StockSummaryGet.setString(ItemCDSet,ItemList.get(i));
+				rsetStockSummary = StockSummaryGet.executeQuery();
+				rsetStockSummary.beforeFirst();
+				int counter = 0;
+				while (rsetStockSummary.next()) {
+					counter = counter+1;
+				}
+				
+				int ColClCd			=  0;	//荷主コード
+				int ColWhCd			=  1;	//倉庫コード
+				int ColItemCd		=  2;	//商品コード
+				int ColLot			=  3;	//ロット
+				int ColExpdate		=  4;	//消費期限
+				int ColQty			=  5;	//数量
+				int ColShipPlanQty	=  6;	//引当済数
+				int ColPossibleQty	=  7;	//出荷可能数
+				int ColItemName		=  8;	//商品名
+				int ColCtUnitQty	=  9;	//カートン入数
+				int ColCsUnitQty	= 10;	//ケース入数
+				int ColPlUnitQty	= 11;	//パレット入数
+				int ColEntryDate	= 12;	//登録日時
+				int ColUpdateDate	= 13;	//更新日時
+				int ColEntryUser	= 14;	//登録者
+				int ColUpdateUser	= 15;	//更新者
+				
+				
+				Object[][] StockData = new Object[counter][16];
+				rsetStockSummary.beforeFirst();
+				counter = 0;
+				
+				while (rsetStockSummary.next()) {
+					/*
+					if(null==rsetStockSummary.getString("ClCd) as ClCd,\n"						//荷主コード
+					if(null==rsetStockSummary.getString("WhCd) as WhCd,\n"						//倉庫コード
+					if(null==rsetStockSummary.getString("ItemCd) as ItemCd,\n"					//商品コード
+					if(null==rsetStockSummary.getString("Lot) as Lot,\n"							//ロット
+					if(null==rsetStockSummary.getString("Expdate) as Expdate,\n"					//消費期限
+					StockData[counter][]=rsetStockInt.getString("Qty) as Qty,\n"						//数量
+					+"sum(WW0015Stock.ShipPlanQty) as ShipPlanQty,\n"		//引当済数
+					+"sum(WW0015Stock.PossibleQty) as PossibleQty,\n"		//出荷可能数
+					+"max(WW0015Stock.ItemName) as ItemName,\n"				//商品名
+					+"max(KM0061_ITEMMSTSUB.CtQty) as CtUnitQty,\n"			//カートン入数
+					+"max(KM0061_ITEMMSTSUB.CsQty) as CsUnitQty,\n"			//ケース入数
+					+"max(KM0061_ITEMMSTSUB.PlQty) as PlUnitQty,\n"			//パレット入数
+					+"max(WW0015Stock.EntryDate) as EntryDate,\n"			//登録日時
+					+"max(WW0015Stock.UpdateDate) as UpdateDate,\n"			//更新日時
+					+"max(WW0015Stock.EntryUser) as EntryUser,\n"			//登録者
+					+"max(WW0015Stock.UpdateUser) as UpdateUser\n"			//更新者
+					*/
+					
+					
+					counter = counter+1;
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		try {
+			if(null!=rsetStockSummary) {rsetStockSummary.close();}
+			if(null!=StockSummaryGet) {StockSummaryGet.close();}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		A100_DbConnect.close();
+		
+		return CheckTgtRt;
+	}
+	
+	private static PreparedStatement StockSummaryGet(String TgtWhCd,String TgtClCd) {
+		
+		String sql = "select "
+				+"(WW0015Stock.ClCd) as ClCd,\n"						//荷主コード
+				+"(WW0015Stock.WhCd) as WhCd,\n"						//倉庫コード
+				+"(WW0015Stock.ItemCd) as ItemCd,\n"					//商品コード
+				+"(WW0015Stock.Lot) as Lot,\n"							//ロット
+				+"(WW0015Stock.Expdate) as Expdate,\n"					//消費期限
+				+"sum(WW0015Stock.Qty) as Qty,\n"						//数量
+				+"sum(WW0015Stock.ShipPlanQty) as ShipPlanQty,\n"		//引当済数
+				+"sum(WW0015Stock.PossibleQty) as PossibleQty,\n"		//出荷可能数
+				+"max(WW0015Stock.ItemName) as ItemName,\n"				//商品名
+				+"max(KM0061_ITEMMSTSUB.CtQty) as CtUnitQty,\n"			//カートン入数
+				+"max(KM0061_ITEMMSTSUB.CsQty) as CsUnitQty,\n"			//ケース入数
+				+"max(KM0061_ITEMMSTSUB.PlQty) as PlUnitQty,\n"			//パレット入数
+				+"max(WW0015Stock.EntryDate) as EntryDate,\n"			//登録日時
+				+"max(WW0015Stock.UpdateDate) as UpdateDate,\n"			//更新日時
+				+"max(WW0015Stock.EntryUser) as EntryUser,\n"			//登録者
+				+"max(WW0015Stock.UpdateUser) as UpdateUser\n"			//更新者
+				+ " from "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0015Stock"
+				+ " left outer join "+A00000_Main.MySqlDefaultSchemaWANKO+".WM0010LOCATIONMST"
+				+ " on("
+				+ " WW0015Stock.ClCd = WM0010LOCATIONMST.ClCd"
+				+ " and WW0015Stock.WhCd = WM0010LOCATIONMST.WhCd"
+				+ " and WW0015Stock.Loc= WM0010LOCATIONMST.Loc"
+				+ ")\n"
+				+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0060_ITEMMST"
+				+ " on("
+				+ " KM0030_CLIENTMST.ClGpCD = KM0060_ITEMMST.ClGpCd"
+				+ " and WW0015Stock.ItemCd = KM0060_ITEMMST.ItemCd"
+				+ ")\n"
+				+ " left outer join "+A00000_Main.MySqlDefaultSchemaNYANKO+".KM0061_ITEMMSTSUB \n"
+				+ " on("
+				+ " KM0060_ITEMMST.ClGpCd = KM0061_ITEMMSTSUB.ClGpCd"
+				+ " and KM0060_ITEMMST.ItemCd = KM0061_ITEMMSTSUB.ItemCd"
+				+ ")\n"
+				+ " where 1=1\n";
+		
+		sql = sql + " and WW0015Stock.ClCd='"+TgtClCd+"'\n";
+		sql = sql + " and WW0015Stock.WhCd='"+TgtWhCd+"'\n";
+		sql = sql + " and WW0015Stock.ItemCd=?\n";
+		
+		sql = sql + " group by WW0015Stock.ItemCd,WW0015Stock.Expdate,WW0015Stock.Lot\n";
+		sql = sql + " order by WW0015Stock.ItemCd,WW0015Stock.Expdate,WW0015Stock.Lot\n";
+		
+		A100_DbConnect.DB_CONN("WANKO");
+		PreparedStatement stmt01 = null;
+		try {
+			stmt01 = A100_DbConnect.conn.prepareStatement(sql);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stmt01;
+	}
+	
+	
 	
 	private static PreparedStatement MaxExpDateGet(String TgtWhCd,String TgtClCd) {
 		String sql = "select "
