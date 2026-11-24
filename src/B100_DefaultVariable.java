@@ -403,11 +403,82 @@ public class B100_DefaultVariable{
 	}
 	
 	private static void DefoultDelivery() {
-		//基本の届け先を作る。超わがまま届先として出荷時前回納品より古い賞味期限不可・明細単位でロットがまとまってないとダメな届先に設定
 		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
-		String tgt_table = "KM0040_DELIVERYMST";
-		String TgtDB = "NYANKO";
+		//全部の届け先で出荷時前回納品より古い賞味期限不可設定は基本OFF
+		String tgt_table = "WM0000PARAMETER";
+		String TgtDB = "WANKO";
 		int non_msg_fg = 1;
+		
+		Object[][] SetStringSelfishBanExpDateOldAll	={
+				 {"ClWh"		,"1"	,"0"	,"Key"	,A00000_Main.ClWh	}					//倉庫コード
+				,{"ClCd"		,"1"	,"0"	,"Key"	,A00000_Main.ClCd	}					//荷主コード
+				,{"ParaCd"		,"1"	,"0"	,"Key"	,"BanAllExpDateOld"	}			//パラメータコード
+				,{"ParaCdSeq"	,"1"	,"0"	,"Key"	,"0"	}								//ナンバリング
+				,{"ParaName"	,"1"	,"0"	,""		,"全届先古い賞味期限禁止"	}			//パラメータ名
+				,{"ParaTxt01"	,"1"	,"0"	,""		,"数値項目01=1なら　すべての届け先に前回より古い商品を引当しない"	}				//パラメータテキスト項目01
+				,{"ParaTxt02"	,"1"	,"0"	,""		,""	}	//パラメータテキスト項目02
+				,{"ParaTxt03"	,"1"	,"0"	,""		,""	}	//パラメータテキスト項目03
+				,{"ParaTxt04"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目04
+				,{"ParaTxt05"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目05
+				,{"ParaTxt06"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目06
+				,{"ParaTxt07"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目07
+				,{"ParaTxt08"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目08
+				,{"ParaTxt09"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目09
+				,{"ParaTxt10"	,"1"	,"0"	,""		,""	}		//パラメータテキスト項目10
+				,{"ParaInt01"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目01
+				,{"ParaInt02"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目02
+				,{"ParaInt03"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目03
+				,{"ParaInt04"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目04
+				,{"ParaInt05"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目05
+				,{"ParaInt06"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目06
+				,{"ParaInt07"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目07
+				,{"ParaInt08"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目08
+				,{"ParaInt09"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目09
+				,{"ParaInt10"	,"1"	,"0"	,""		,"0"	}	//パラメータ数値項目10
+				,{"EntryDate"	,"1"	,"0"	,""		,now_dtm	}	//登録日
+				,{"UpdateDate"	,"1"	,"0"	,""		,now_dtm	}	//更新日
+				,{"EntryUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//登録者
+				,{"UpdateUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//更新者
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringSelfishBanExpDateOldAll,tgt_table,TgtDB,non_msg_fg);
+		
+		//全部の届け先で出荷ロットをまとめる設定は基本OFF
+		Object[][] SetStringSelfishLotAll={
+				 {"ClWh"		,"1"	,"0"	,"Key"	,A00000_Main.ClWh	}					//倉庫コード
+				,{"ClCd"		,"1"	,"0"	,"Key"	,A00000_Main.ClCd	}					//荷主コード
+				,{"ParaCd"		,"1"	,"0"	,"Key"	,"AllSelfishLot"	}					//パラメータコード
+				,{"ParaCdSeq"	,"1"	,"0"	,"Key"	,"0"	}								//ナンバリング
+				,{"ParaName"	,"1"	,"0"	,""		,"全届先ロット割禁止"	}				//パラメータ名
+				,{"ParaTxt01"	,"1"	,"0"	,""		,"数値項目01=1なら　すべての届け先に明細に対してロット割れ禁止"	}				//パラメータテキスト項目01
+				,{"ParaTxt02"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目02
+				,{"ParaTxt03"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目03
+				,{"ParaTxt04"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目04
+				,{"ParaTxt05"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目05
+				,{"ParaTxt06"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目06
+				,{"ParaTxt07"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目07
+				,{"ParaTxt08"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目08
+				,{"ParaTxt09"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目09
+				,{"ParaTxt10"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目10
+				,{"ParaInt01"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目01
+				,{"ParaInt02"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目02
+				,{"ParaInt03"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目03
+				,{"ParaInt04"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目04
+				,{"ParaInt05"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目05
+				,{"ParaInt06"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目06
+				,{"ParaInt07"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目07
+				,{"ParaInt08"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目08
+				,{"ParaInt09"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目09
+				,{"ParaInt10"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目10
+				,{"EntryDate"	,"1"	,"0"	,""		,now_dtm	}	//登録日
+				,{"UpdateDate"	,"1"	,"0"	,""		,now_dtm	}	//更新日
+				,{"EntryUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//登録者"}
+				,{"UpdateUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//更新者"}
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringSelfishLotAll,tgt_table,TgtDB,non_msg_fg);
+		//基本の届け先を作る。超わがまま届先として出荷時前回納品より古い賞味期限不可・明細単位でロットがまとまってないとダメな届先に設定
+		tgt_table = "KM0040_DELIVERYMST";
+		TgtDB = "NYANKO";
+		non_msg_fg = 1;
 		Object[][] SetStringDelivery = {
 			  {"DECD"			,"1"	,"0"	,"Key"	,"SpecialSelfish0000"	}			//納品先コード
 			 ,{"DepartmentCd"	,"1"	,"0"	,"Key"	,"0000"	}							//部署CD

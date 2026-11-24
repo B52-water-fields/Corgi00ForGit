@@ -16,7 +16,7 @@ public class Tools010_RtClassControl{
 					BackData[(int)RtRt[i01][1]]	= B100_TextControl.TextToInt(		""+TgatData[(int)RtRt[i01][1]]);
 					break;
 				case "float":
-					BackData[(int)RtRt[i01][1]]	= B100_TextControl.TextToFloat(	""+TgatData[(int)RtRt[i01][1]]);
+					BackData[(int)RtRt[i01][1]]	= B100_TextControl.TextToFloat(		""+TgatData[(int)RtRt[i01][1]]);
 					break;
 				case "Date":
 					BackData[(int)RtRt[i01][1]]	= B100_TextControl.TextToDate(		""+TgatData[(int)RtRt[i01][1]]);
