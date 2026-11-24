@@ -159,7 +159,7 @@ public class WT100_ShipPlovision{
 		ArrayList<String>ErrMsg = new ArrayList<String>();
 		for(int i=0;i<Rt.length;i++) {
 			if(!"".equals((String)Rt[i][ColErrType])) {
-				ErrMsg.add((String)Rt[i][ColErrMsg]);
+				ErrMsg.add((String)Rt[i][ColOkuriNo]+(String)Rt[i][ColErrType]+":"+(String)Rt[i][ColErrMsg]+"(商品CD:"+(String)Rt[i][ColItemCd]+"×必要数:"+(int)Rt[i][ColNeedQty]+")("+(String)Rt[i][ColDeCd]+":"+(String)Rt[i][ColDeName]+")");
 			}
 		}
 		
