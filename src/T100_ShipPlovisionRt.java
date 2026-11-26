@@ -30,7 +30,7 @@ public class T100_ShipPlovisionRt{
 	ArrayList<String> SearchShipActualDateEnd	= new ArrayList<String>();			//入荷実績日
 	ArrayList<String> SearchShipQtyMin			= new ArrayList<String>();			//引当数量
 	ArrayList<String> SearchShipQtyMax			= new ArrayList<String>();			//引当数量
-	ArrayList<String> SearchFixFg				= new ArrayList<String>();			//引落済フラグ
+	ArrayList<Integer> SearchFixFg				= new ArrayList<Integer>();			//引落済フラグ
 	ArrayList<Integer> SearchPackingType		= new ArrayList<Integer>();			//荷姿タイプ
 	ArrayList<Integer> SearchPackingQtyMin		= new ArrayList<Integer>();			//荷姿数量
 	ArrayList<Integer> SearchPackingQtyMax		= new ArrayList<Integer>();			//荷姿数量
@@ -161,6 +161,88 @@ public class T100_ShipPlovisionRt{
 						,SearchItemSizeName			//商品サイズ名
 						,AllSearch
 						);
+						
+	String Getcl_cd				= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.Colcl_cd];			//荷主コード
+	String GetInvoiceWHCD		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColInvoiceWHCD];		//倉庫コード
+	int GetOkuriNo				= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOkuriNo];				//送り状番号
+	int GetMsNo					= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColMsNo];				//明細番号
+	int GetSeq					= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColSeq];					//引当枝番
+	String GetOrderItemCd		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOrderItemCd];		//商品コード
+	String GetOrderItemName01	= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOrderItemName01];	//商品表記名
+	String GetOrderLot			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOrderLot];			//受注ロット指定
+	String GetOrderExpDate		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOrderExpDate];		//受注賞味期限指定
+	int GetOrderQty				= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOrderQty];			//受注個数
+	String GetShipWhCd			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColShipWhCd];			//出荷倉庫コード
+	String GetShipLoc			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColShipLoc];			//ロケーション
+	String GetShipItemCd		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColShipItemCd];		//商品コード
+	String GetShipLot			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColShipLot];			//ロット
+	String GetShipExpdate		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColShipExpdate];		//消費期限
+	String GetShipActualDate	= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColShipActualDate];	//入荷実績日
+	int GetShipQty				= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColShipQty];				//引当数量
+	int GetFixFg				= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColFixFg];				//引落済フラグ
+	int GetPackingType			= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPackingType];			//荷姿タイプ
+	int GetPackingQty			= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPackingQty];			//荷姿数量
+	String GetUnitName			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColUnitName];			//荷姿単位
+	int GetPackingUnitQty		= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPackingUnitQty];		//荷姿単位のバラ入数
+	int GetBRShipQty			= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColBRShipQty];			//バラ数量
+	int GetCTShipQty			= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCTShipQty];			//カートン数量
+	int GetCSShipQty			= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCSShipQty];			//ケース数量
+	int GetPLShipQty			= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPLShipQty];			//パレット数量
+	String GetBRUnitName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColBRUnitName];		//バラ単位名
+	String GetCTUnitName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCTUnitName];		//カートン単位名
+	String GetCSUnitName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCSUnitName];		//ケース単位名
+	String GetPLUnitName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPLUnitName];		//パレット単位名
+	String GetEntryDate			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColEntryDate];		//登録日時
+	String GetUpdateDate		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColUpdateDate];		//更新日時
+	String GetEntryUser			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColEntryUser];		//登録者
+	String GetUpdateUser		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColUpdateUser];		//更新者
+						
+	String GetClDeliNo			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColClDeliNo];			//荷主管理番号
+	String GetPlanDate			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPlanDate];			//出荷予定日
+	String GetShipDate			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColShipDate];			//出荷実績日
+	String GetDeliCd			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliCd];			//荷届先コード
+	String GetClDeliCd			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColClDeliCd];			//荷主荷届先コード
+	String GetDeliDepartmentCd	= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliDepartmentCd];	//部署CD
+	String GetDeliName01		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliName01];		//荷届先名01
+	String GetDeliName02		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliName02];		//荷届先名02
+	String GetDeliName03		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliName03];		//荷届先名03
+	String GetDeliPost			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliPost];			//荷届先郵便番号
+	String GetDeliAdd01			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliAdd01];		//荷届先住所01
+	String GetDeliAdd02			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliAdd02];		//荷届先住所02
+	String GetDeliAdd03			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliAdd03];		//荷届先住所03
+	String GetDeliTel			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliTel];			//荷届先TEL
+	String GetDeliFax			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliFax];			//荷届先FAX
+	String GetDeliMail			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliMail];			//荷届先MAIL
+	String GetDeliMunicCd		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColDeliMunicCd];		//荷届先市区町村CD
+	
+	int GetCtQty				= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCtQty];				//カートン入数
+	int GetCsQty				= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCsQty];				//ケース入数
+	int GetPlQty				= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPlQty];				//パレット入数
+	String GetJanCd				= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColJanCd];			//JANCD
+	String GetCtJan				= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCtJan];			//カートンバーコード
+	String GetCsJan				= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCsJan];			//ケースバーコード
+	String GetPlJan				= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPlJan];			//パレットバーコード
+	String GetCtName			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCtName];			//カートン商品名称
+	String GetCsName			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCsName];			//ケース商品名称
+	String GetPlName			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPlName];			//パレット商品名称
+	String GetCtUnitName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCtUnitName];		//カートン商品単位
+	String GetCsUnitName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCsUnitName];		//ケース商品単位
+	String GetPlUnitName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPlUnitName];		//パレット商品単位
+	String GetItemWeight		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColItemWeight];		//商品重量
+	float GetCtWeight			= (float)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCtWeight];			//カートン重量
+	float GetCsWeight			= (float)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCsWeight];			//ケース重量
+	float GetPlWeight			= (float)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPlWeight];			//パレット重量
+	float GetItemSize			= (float)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColItemSize];			//商品サイズ
+	float GetCtSize				= (float)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCtSize];			//カートンサイズ
+	float GetCsSize				= (float)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCsSize];			//ケースサイズ
+	float GetPlSize				= (float)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColPlSize];			//パレットサイズ
+	String GetCategoryCd		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCategoryCd];		//商品カテゴリCD
+	String GetCategoryName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColCategoryName];		//商品カテゴリ名
+	String GetItemColorCd		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColItemColorCd];		//商品カラーコード
+	String GetItemColorName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColItemColorName];	//商品カラー名
+	String GetItemSizeCd		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColItemSizeCd];		//商品サイズコード
+	String GetItemSizeName		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColItemSizeName];		//商品サイズ名
+						
 	*/
 	
 	static final int Colcl_cd					=  0;
@@ -517,7 +599,7 @@ public class T100_ShipPlovisionRt{
 			,ArrayList<String> SearchShipActualDateEnd		//入荷実績日
 			,ArrayList<String> SearchShipQtyMin				//引当数量
 			,ArrayList<String> SearchShipQtyMax				//引当数量
-			,ArrayList<String> SearchFixFg					//引落済フラグ
+			,ArrayList<Integer> SearchFixFg					//引落済フラグ
 			,ArrayList<Integer> SearchPackingType			//荷姿タイプ
 			,ArrayList<Integer> SearchPackingQtyMin			//荷姿数量
 			,ArrayList<Integer> SearchPackingQtyMax			//荷姿数量
@@ -873,7 +955,7 @@ public class T100_ShipPlovisionRt{
 				SearchShipQtyMax		= (ArrayList<String>)Definition[i][1];;
 				break;
 			case ColSearchFixFg:	
-				SearchFixFg				= (ArrayList<String>)Definition[i][1];;
+				SearchFixFg				= (ArrayList<Integer>)Definition[i][1];;
 				break;
 			case ColSearchPackingType:	
 				SearchPackingType		= (ArrayList<Integer>)Definition[i][1];;
@@ -1127,7 +1209,7 @@ public class T100_ShipPlovisionRt{
 			,ArrayList<String> SearchShipActualDateEnd		//入荷実績日
 			,ArrayList<String> SearchShipQtyMin				//引当数量
 			,ArrayList<String> SearchShipQtyMax				//引当数量
-			,ArrayList<String> SearchFixFg					//引落済フラグ
+			,ArrayList<Integer> SearchFixFg					//引落済フラグ
 			,ArrayList<Integer> SearchPackingType			//荷姿タイプ
 			,ArrayList<Integer> SearchPackingQtyMin			//荷姿数量
 			,ArrayList<Integer> SearchPackingQtyMax			//荷姿数量

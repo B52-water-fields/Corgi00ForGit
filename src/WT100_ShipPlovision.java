@@ -8,37 +8,41 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import javax.swing.JOptionPane;
+
 public class WT100_ShipPlovision{
 	//在庫引き当て
+	/*
 	static final int StockItemLotExpDateSumRt_Col_ClCd				= (int) 0;		//荷主コード
 	static final int StockItemLotExpDateSumRt_Col_CLName			= (int) 1;		//荷主表記名
 	static final int StockItemLotExpDateSumRt_Col_WhCd				= (int) 2;		//倉庫コード
-	static final int StockItemLotExpDateSumRt_Col_ClWHName		= (int) 3;		//担当倉庫名
+	static final int StockItemLotExpDateSumRt_Col_ClWHName			= (int) 3;		//担当倉庫名
 	static final int StockItemLotExpDateSumRt_Col_ClGpCD			= (int) 4;		//荷主グループCD
-	static final int StockItemLotExpDateSumRt_Col_ClGpName		= (int) 5;		//グループ名1
+	static final int StockItemLotExpDateSumRt_Col_ClGpName			= (int) 5;		//グループ名1
 	static final int StockItemLotExpDateSumRt_Col_ItemCd			= (int) 6;		//商品コード
 	static final int StockItemLotExpDateSumRt_Col_Lot				= (int) 7;		//ロット
 	static final int StockItemLotExpDateSumRt_Col_Expdate			= (int) 8;		//消費期限
 	static final int StockItemLotExpDateSumRt_Col_Qty				= (int) 9;		//数量
 	static final int StockItemLotExpDateSumRt_Col_ShipPlanQty		= (int)10;		//引当済数
 	static final int StockItemLotExpDateSumRt_Col_PossibleQty		= (int)11;		//出荷可能数
-	static final int StockItemLotExpDateSumRt_Col_ItemName		= (int)12;		//商品名
+	static final int StockItemLotExpDateSumRt_Col_ItemName			= (int)12;		//商品名
 	static final int StockItemLotExpDateSumRt_Col_ItemName01		= (int)13;		//商品表記名
 	static final int StockItemLotExpDateSumRt_Col_ItemName02		= (int)14;		//商品正式名
 	static final int StockItemLotExpDateSumRt_Col_ItemName03		= (int)15;		//商品略名
-	static final int StockItemLotExpDateSumRt_Col_CtUnitQty		= (int)16;		//カートン入数
-	static final int StockItemLotExpDateSumRt_Col_CsUnitQty		= (int)17;		//ケース入数
-	static final int StockItemLotExpDateSumRt_Col_PlUnitQty		= (int)18;		//パレット入数
-	static final int StockItemLotExpDateSumRt_Col_UnitName		= (int)19;		//商品単位
+	static final int StockItemLotExpDateSumRt_Col_CtUnitQty			= (int)16;		//カートン入数
+	static final int StockItemLotExpDateSumRt_Col_CsUnitQty			= (int)17;		//ケース入数
+	static final int StockItemLotExpDateSumRt_Col_PlUnitQty			= (int)18;		//パレット入数
+	static final int StockItemLotExpDateSumRt_Col_UnitName			= (int)19;		//商品単位
 	static final int StockItemLotExpDateSumRt_Col_CtUnitName		= (int)20;		//カートン商品単位
 	static final int StockItemLotExpDateSumRt_Col_CsUnitName		= (int)21;		//ケース商品単位
 	static final int StockItemLotExpDateSumRt_Col_PlUnitName		= (int)22;		//パレット商品単位
 	
-	static final int RtOkuriItemLotExpDateSumRt_ColMsItemCd		= (int) 0;		//明細商品コード
+	static final int RtOkuriItemLotExpDateSumRt_ColMsItemCd			= (int) 0;		//明細商品コード
 	static final int RtOkuriItemLotExpDateSumRt_ColMsQty			= (int) 1;		//明細個数
 	static final int RtOkuriItemLotExpDateSumRt_ColMsLot			= (int) 2;		//明細ロット指定
 	static final int RtOkuriItemLotExpDateSumRt_ColMsExpDate		= (int) 3;		//明細賞味期限指定
 	static final int RtOkuriItemLotExpDateSumRt_ColMsPackingType	= (int) 4;		//明細荷姿タイプ
+	*/
 	
 	static final int ColErrType				= (int) 0;
 	static final int ColOkuriNo				= (int) 1;
@@ -59,6 +63,8 @@ public class WT100_ShipPlovision{
 	static final int ColDeName					= (int)16;	//届先名
 	static final int ColFixLot					= (int)17;	//引当ロット
 	static final int ColFixExpDate			= (int)18;	//引当賞味期限
+	static final int ColOrderItemName01		= (int)19;	//受注品名01
+	static final int ColPlovisionCheck		= (int)20;	//引当済マーキング
 	
 	public static Object[][] RtShipPlovision(){
 		//戻り値定義
@@ -82,6 +88,8 @@ public class WT100_ShipPlovision{
 						,{"DeName"					,ColDeName					,"String"	,"届先名"				,""		}
 						,{"FixLot"					,ColFixLot					,"String"	,"引当ロット"			,""		}
 						,{"FixExpDate"				,ColFixExpDate			,"String"	,"引当賞味期限"			,""		}
+						,{"OrderItemName01"			,ColOrderItemName01		,"String"	,"受注品名01"			,""		}
+						,{"PlovisionCheck"			,ColPlovisionCheck		,"int"		,"引当済マーキング"		,""		}
 						};
 		Rt = B100_LanguageControl.RtControl(Rt);
 		return Rt;
@@ -148,9 +156,6 @@ public class WT100_ShipPlovision{
 				CheckTgtRt = ItemCheck(TgtWhCd,TgtClCd,CheckTgtRt);				//日付ロットまとめの我儘を言わない場合同一商品の欠品があった場合引当対象から外す※我儘言う先には現時点で出荷可能な古い商品押し付けるので引き当てる
 				CheckTgtRt = SlipCheck(TgtWhCd,TgtClCd,CheckTgtRt);				//伝票内に1行でも欠品があった場合引当対象から外す
 				
-				
-				int PlovisionTgtCount = 0;
-				
 				for(int i01=0;i01<Rt.length;i01++) {
 					for(int i02=0;i02<CheckTgtRt.length;i02++) {
 						if(((String)Rt[i01][ColOkuriNo]).equals((String)CheckTgtRt[i02][ColOkuriNo])
@@ -158,19 +163,46 @@ public class WT100_ShipPlovision{
 							for(int i03=0;i03<Rt[i01].length;i03++) {
 								Rt[i01][i03]=CheckTgtRt[i02][i03];
 							}
-							
-							if("".equals((String)CheckTgtRt[i02][ColErrType])) {
-								PlovisionTgtCount = PlovisionTgtCount+1;
-							}
-							
 							i02=CheckTgtRt.length+1;
 						}
 					}
 				}
-				/*
+				int PlovisionTgtCount = 0;
+				for(int i01=0;i01<CheckTgtRt.length;i01++) {
+					if("".equals((String)CheckTgtRt[i01][ColErrType])) {
+						PlovisionTgtCount = PlovisionTgtCount+1;
+					}
+				}
+				
 				Object[][] PlovisionTgt = new Object[PlovisionTgtCount][RtShipPlovision().length];
 				
-				PlovisionTgt = ShipPlovisionCore(TgtWhCd,TgtClCd,PlovisionTgt);		//引当処理コア
+				PlovisionTgtCount = 0;
+				for(int i01=0;i01<CheckTgtRt.length;i01++) {
+					if("".equals((String)CheckTgtRt[i01][ColErrType])) {
+						for(int i02=0;i02<CheckTgtRt[i01].length;i02++) {
+							PlovisionTgt[PlovisionTgtCount][i02]	= CheckTgtRt[i01][i02];
+						}
+						PlovisionTgtCount = PlovisionTgtCount+1;
+					}
+				}
+				
+				
+				if(0<PlovisionTgt.length) {
+					PlovisionTgt = StockCheck(TgtWhCd,TgtClCd,PlovisionTgt);				//欠品がおこらないはずのデータで再度在庫チェック
+					PlovisionTgt = ShipPlovisionCore(TgtWhCd,TgtClCd,PlovisionTgt);		//引当処理コア
+					
+					//もしも途中で引当処理失敗していた場合、引当結果戻す
+					ArrayList<String> ErrOkurino = new ArrayList<String>();
+					for(int i01=0;i01<PlovisionTgt.length;i01++) {
+						if(!"".equals((String)PlovisionTgt[i01][ColErrType])){
+							ErrOkurino.add((String)PlovisionTgt[i01][ColOkuriNo]);
+						}
+					}
+					if(null!=ErrOkurino && 0<ErrOkurino.size()) {
+						WT100_ShipPlovisionCancel.ShipPlovisionCancel(TgtWhCd,TgtClCd,ErrOkurino);
+					}
+					
+				}
 				for(int i01=0;i01<Rt.length;i01++) {
 					for(int i02=0;i02<PlovisionTgt.length;i02++) {
 						if(((String)Rt[i01][ColOkuriNo]).equals((String)PlovisionTgt[i02][ColOkuriNo])
@@ -183,17 +215,11 @@ public class WT100_ShipPlovision{
 						}
 					}
 				}
-				*/
 			}
 		}
 		
 		ArrayList<String>ErrMsg = new ArrayList<String>();
 		for(int i=0;i<Rt.length;i++) {
-			String WST = "";
-			for(int i01=0;i01<Rt[i].length;i01++) {
-				WST = WST+ Rt[i][i01]+",";
-			}
-			System.out.println(WST);
 			if(!"".equals((String)Rt[i][ColErrType])) {
 				ErrMsg.add((String)Rt[i][ColOkuriNo]+(String)Rt[i][ColErrType]+":"+(String)Rt[i][ColErrMsg]+"(商品CD:"+(String)Rt[i][ColItemCd]+"×必要数:"+(int)Rt[i][ColNeedQty]+")("+(String)Rt[i][ColDeCd]+":"+(String)Rt[i][ColDeName]+")");
 			}
@@ -202,6 +228,7 @@ public class WT100_ShipPlovision{
 		if(null!=ErrMsg && 0<ErrMsg.size()) {
 			ErrView(ErrMsg);
 		}
+		JOptionPane.showMessageDialog(null, "引当処理終了");
 		return Rt;
 	}
 	
@@ -314,6 +341,8 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColDeName]					= "";	//届先名
 			Rt[Counter][ColFixLot]					= "";	//引当ロット
 			Rt[Counter][ColFixExpDate]			= "";	//引当賞味期限
+			Rt[Counter][ColOrderItemName01]		= "";	//受注品名01
+			Rt[Counter][ColPlovisionCheck]		= 0;	//引当済マーキング
 			
 			Rt[Counter][ColOkuriNo] 				= SttusErrOkurino.get(i);	//送り状番号
 			Rt[Counter][ColErrType] 				= "StatusErr";			//エラータイプ
@@ -340,6 +369,8 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColDeName]					= "";	//届先名
 			Rt[Counter][ColFixLot]					= "";	//引当ロット
 			Rt[Counter][ColFixExpDate]			= "";	//引当賞味期限
+			Rt[Counter][ColOrderItemName01]		= "";	//受注品名01
+			Rt[Counter][ColPlovisionCheck]		= 0;	//引当済マーキング
 			
 			Rt[Counter][ColOkuriNo] 				= UnKnownOkurino.get(i);	//送り状番号
 			Rt[Counter][ColErrType] 				= "UnKnownOkuriNo";			//エラータイプ
@@ -349,9 +380,9 @@ public class WT100_ShipPlovision{
 		
 		for(int i=0;i<OkuriMsRt.length;i++) {
 			String GetOkuriNo				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColOkuriNo];					//送り状番号
-			String GetPlanDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPlanDate];					//出荷予定日
+			String GetPlanDate				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColPlanDate];				//出荷予定日
 			int GetMsNo						= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsNo];						//明細番号
-			String GetMsItemCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemCd];					//明細商品コード
+			String GetMsItemCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemCd];				//明細商品コード
 			int GetMsQty					= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsQty];						//明細個数
 			int GetMsPackingQty				= (int)OkuriMsRt[i][T100_OkuriMsRt.ColMsPackingQty];				//明細荷姿数量
 			String GetMsLot					= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsLot];					//明細ロット指定
@@ -360,6 +391,7 @@ public class WT100_ShipPlovision{
 			String GetDeliCd				= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliCd];					//荷届先コード
 			String GetDeliDepartmentCd		= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliDepartmentCd];		//部署CD
 			String GetDeliName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColDeliName01];				//荷届先名01
+			String GetMsItemName01			= (String)OkuriMsRt[i][T100_OkuriMsRt.ColMsItemName01];			//明細商品表記名
 			
 			Rt[Counter][ColErrType] 				= "";					//エラータイプ
 			Rt[Counter][ColOkuriNo] 				= GetOkuriNo;			//送り状番号
@@ -380,6 +412,8 @@ public class WT100_ShipPlovision{
 			Rt[Counter][ColDeName]					= GetDeliName01;		//届先名
 			Rt[Counter][ColFixLot]					= "";					//引当ロット
 			Rt[Counter][ColFixExpDate]			= "";					//引当賞味期限
+			Rt[Counter][ColOrderItemName01]		= GetMsItemName01;		//受注品名01
+			Rt[Counter][ColPlovisionCheck]		= 0;					//引当済マーキング
 			
 			Counter = Counter+1;
 		}
@@ -553,9 +587,9 @@ public class WT100_ShipPlovision{
 					StockData[counter][ColStockShipPlanQty]	=rsetStockSummary.getInt("ShipPlanQty");				//引当済数
 					StockData[counter][ColStockPossibleQty]	=rsetStockSummary.getInt("PossibleQty");				//出荷可能数
 					if(null==rsetStockSummary.getString("ItemName"		)){StockData[counter][ColStockItemName]		="";}else{StockData[counter][ColStockItemName]=rsetStockSummary.getString("ItemName");}				//商品名
-					StockData[counter][ColStockCtUnitQty]	=rsetStockSummary.getInt("CtUnitQty");						//カートン入数
-					StockData[counter][ColStockCsUnitQty]	=rsetStockSummary.getInt("CsUnitQty");						//ケース入数
-					StockData[counter][ColStockPlUnitQty]	=rsetStockSummary.getInt("PlUnitQty");						//パレット入数
+					StockData[counter][ColStockCtUnitQty]	=rsetStockSummary.getInt("CtUnitQty");					//カートン入数
+					StockData[counter][ColStockCsUnitQty]	=rsetStockSummary.getInt("CsUnitQty");					//ケース入数
+					StockData[counter][ColStockPlUnitQty]	=rsetStockSummary.getInt("PlUnitQty");					//パレット入数
 					if(null==rsetStockSummary.getTimestamp("EntryDate"	)){StockData[counter][ColStockEntryDate]	="";}else{StockData[counter][ColStockEntryDate]		=B100_DateTimeControl.dtmString2(rsetStockSummary.getTimestamp("EntryDate"))[1];}				//登録日時
 					if(null==rsetStockSummary.getTimestamp("UpdateDate"	)){StockData[counter][ColStockUpdateDate]	="";}else{StockData[counter][ColStockUpdateDate]	=B100_DateTimeControl.dtmString2(rsetStockSummary.getTimestamp("UpdateDate"))[1];}				//更新日時
 					if(null==rsetStockSummary.getString("EntryUser"		)){StockData[counter][ColStockEntryUser]	="";}else{StockData[counter][ColStockEntryUser]		=rsetStockSummary.getString("EntryUser");}			//登録者
@@ -726,7 +760,44 @@ public class WT100_ShipPlovision{
 					}
 				}
 				
-				//ロット指定はないが日付範囲指定があるがロットをまとめる必要はない在庫チェック
+				//ロット指定なし・出荷日付範囲気にしない※但しロットまとめ必要な出荷指示の在庫チェック
+				for(int i01=0;i01<QtyList.size();i01++) {
+					for(int i02=0;i02<CheckTgtRt.length;i02++) {
+						if(ItemList.get(i).equals((String)CheckTgtRt[i02][ColItemCd])
+							&& QtyList.get(i01).equals((int)CheckTgtRt[i02][ColNeedQty])){
+							if(	"".equals((String)CheckTgtRt[i02][ColLot])						//ロット指定
+									&&"".equals((String)CheckTgtRt[i02][ColExpDate])			//賞味期限指定
+									&&1==(int)CheckTgtRt[i02][ColCheckLotOneOnlyFg]
+									) {
+								if("".equals((String)CheckTgtRt[i02][ColCheckExpDateMin])
+										&&"".equals((String)CheckTgtRt[i02][ColCheckExpDateMax])
+										) {
+									int WorkNeedQty = (int)CheckTgtRt[i02][ColNeedQty];
+									int WorkPackingQty 	= (int)CheckTgtRt[i02][ColChecPackingQty];		//荷姿数量
+									
+									for(int i03=0;i03<StockData.length;i03++) {
+										if(0<(int)StockData[i03][ColStockAfterPossibleQty]) {
+											if((int)StockData[i03][ColStockAfterPossibleQty]>=WorkNeedQty) {
+												StockData[i03][ColStockAfterPossibleQty]=(int)StockData[i03][ColStockAfterPossibleQty]-WorkNeedQty;
+												WorkNeedQty=0;
+												
+												CheckTgtRt[i02][ColFixLot] 		= (String)StockData[i03][ColStockLot];
+												CheckTgtRt[i02][ColFixExpDate] 	= (String)StockData[i03][ColStockExpdate];
+												
+												i03=StockData.length+1;
+											}
+										}
+									}
+									if(WorkNeedQty>0) {
+										CheckTgtRt[i02][ColErrType] = "KpnErr";
+										CheckTgtRt[i02][ColErrMsg] = "出荷可能な在庫が不足しています。同一ロットにまとめて出荷可能な在庫がありません";
+									}
+								}
+							}
+						}
+					}
+				}
+				//ロット指定はないが日付範囲指定がある。但しロットをまとめる必要はない在庫チェック
 				for(int i01=0;i01<QtyList.size();i01++) {
 					for(int i02=0;i02<CheckTgtRt.length;i02++) {
 						if(ItemList.get(i).equals((String)CheckTgtRt[i02][ColItemCd])
@@ -764,40 +835,38 @@ public class WT100_ShipPlovision{
 													) {
 												HitCount=HitCount+1;
 												if((int)StockData[i03][ColStockAfterPossibleQty]>=WorkNeedQty) {
-													if((int)StockData[i03][ColStockAfterPossibleQty]>=WorkNeedQty) {
-														StockData[i03][ColStockAfterPossibleQty]=(int)StockData[i03][ColStockAfterPossibleQty]-WorkNeedQty;
-														WorkNeedQty=0;
-														if(1==HitCount) {
-															CheckTgtRt[i02][ColFixLot] 		= (String)StockData[i03][ColStockLot];
-															CheckTgtRt[i02][ColFixExpDate] 	= (String)StockData[i03][ColStockExpdate];
-														}
-														i03=StockData.length+1;
-													}else {
-														int UnitQty = 1;
-														switch((int)CheckTgtRt[i02][ColPackingType]) {
-															case 0:
-																UnitQty = (int)1;
-																break;
-															case 1:
-																UnitQty = (int)StockData[i03][ColStockCtUnitQty];
-																break;
-															case 2:
-																UnitQty = (int)StockData[i03][ColStockCsUnitQty];
-																break;
-															case 3:
-																UnitQty = (int)StockData[i03][ColStockPlUnitQty];
-																break;
-															default:
-																break;
-														}
-														if(0>=UnitQty) {UnitQty=1;}
-														int ShipQty = 	(int)StockData[i03][ColStockAfterPossibleQty]/UnitQty;
-														WorkPackingQty = WorkPackingQty-ShipQty;
-														ShipQty = ShipQty*UnitQty;
-														
-														WorkNeedQty=WorkNeedQty-ShipQty;
-														StockData[i03][ColStockAfterPossibleQty]=(int)StockData[i03][ColStockAfterPossibleQty]-ShipQty;
+													StockData[i03][ColStockAfterPossibleQty]=(int)StockData[i03][ColStockAfterPossibleQty]-WorkNeedQty;
+													WorkNeedQty=0;
+													if(1==HitCount) {
+														CheckTgtRt[i02][ColFixLot] 		= (String)StockData[i03][ColStockLot];
+														CheckTgtRt[i02][ColFixExpDate] 	= (String)StockData[i03][ColStockExpdate];
 													}
+													i03=StockData.length+1;
+												}else {
+													int UnitQty = 1;
+													switch((int)CheckTgtRt[i02][ColPackingType]) {
+														case 0:
+															UnitQty = (int)1;
+															break;
+														case 1:
+															UnitQty = (int)StockData[i03][ColStockCtUnitQty];
+															break;
+														case 2:
+															UnitQty = (int)StockData[i03][ColStockCsUnitQty];
+															break;
+														case 3:
+															UnitQty = (int)StockData[i03][ColStockPlUnitQty];
+															break;
+														default:
+															break;
+													}
+													if(0>=UnitQty) {UnitQty=1;}
+													int ShipQty = 	(int)StockData[i03][ColStockAfterPossibleQty]/UnitQty;
+													WorkPackingQty = WorkPackingQty-ShipQty;
+													ShipQty = ShipQty*UnitQty;
+													
+													WorkNeedQty=WorkNeedQty-ShipQty;
+													StockData[i03][ColStockAfterPossibleQty]=(int)StockData[i03][ColStockAfterPossibleQty]-ShipQty;
 												}
 											}
 										}
@@ -805,43 +874,6 @@ public class WT100_ShipPlovision{
 									if(WorkNeedQty>0) {
 										CheckTgtRt[i02][ColErrType] = "KpnErrExpDate";
 										CheckTgtRt[i02][ColErrMsg] = "出荷可能なロット賞味期限("+CheckTgtRt[i02][ColCheckExpDateMin]+"～"+CheckTgtRt[i02][ColCheckExpDateMax]+")の在庫が不足しています";
-									}
-								}
-							}
-						}
-					}
-				}
-				//ロット指定なし・出荷日付範囲気にしな※但しロットまとめ必要な出荷指示の在庫チェック
-				for(int i01=0;i01<QtyList.size();i01++) {
-					for(int i02=0;i02<CheckTgtRt.length;i02++) {
-						if(ItemList.get(i).equals((String)CheckTgtRt[i02][ColItemCd])
-							&& QtyList.get(i01).equals((int)CheckTgtRt[i02][ColNeedQty])){
-							if(	"".equals((String)CheckTgtRt[i02][ColLot])						//ロット指定
-									&&"".equals((String)CheckTgtRt[i02][ColExpDate])			//賞味期限指定
-									&&1==(int)CheckTgtRt[i02][ColCheckLotOneOnlyFg]
-									) {
-								if("".equals((String)CheckTgtRt[i02][ColCheckExpDateMin])
-										&&"".equals((String)CheckTgtRt[i02][ColCheckExpDateMax])
-										) {
-									int WorkNeedQty = (int)CheckTgtRt[i02][ColNeedQty];
-									int WorkPackingQty 	= (int)CheckTgtRt[i02][ColChecPackingQty];		//荷姿数量
-									
-									for(int i03=0;i03<StockData.length;i03++) {
-										if(0<(int)StockData[i03][ColStockAfterPossibleQty]) {
-											if((int)StockData[i03][ColStockAfterPossibleQty]>=WorkNeedQty) {
-												StockData[i03][ColStockAfterPossibleQty]=(int)StockData[i03][ColStockAfterPossibleQty]-WorkNeedQty;
-												WorkNeedQty=0;
-												
-												CheckTgtRt[i02][ColFixLot] 		= (String)StockData[i03][ColStockLot];
-												CheckTgtRt[i02][ColFixExpDate] 	= (String)StockData[i03][ColStockExpdate];
-												
-												i03=StockData.length+1;
-											}
-										}
-									}
-									if(WorkNeedQty>0) {
-										CheckTgtRt[i02][ColErrType] = "KpnErr";
-										CheckTgtRt[i02][ColErrMsg] = "出荷可能な在庫が不足しています。同一ロットにまとめて出荷可能な在庫がありません";
 									}
 								}
 							}
@@ -925,6 +957,10 @@ public class WT100_ShipPlovision{
 	}
 	
 	private static Object[][] ShipPlovisionCore(String TgtWhCd,String TgtClCd,Object[][] PlovisionTgt){
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		String UpdateUser = "(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName;
+		
+		
 		ArrayList<String> ItemList = new ArrayList<String>();
 		
 		for(int i=0;i<PlovisionTgt.length;i++) {
@@ -932,20 +968,29 @@ public class WT100_ShipPlovision{
 		}
 		ItemList 	= B100_ArrayListControl.ArryListStringUniqueList(ItemList);	//商品CD重複除く
 		
-		PreparedStatement StockGet		= StockGet(TgtWhCd,TgtClCd);
-		PreparedStatement StockCheck	= StockCheck(TgtWhCd,TgtClCd);
+		ArrayList<String>ErrOkurino	= new ArrayList<String>();
+		
+		//引当順序在庫残少ない順もしくはロケ順の判断基準入手
+		Object[][] PlovisionSortMode	= PlovisionSortMode(TgtWhCd,TgtClCd);
+		String SortMode = "";
+		if(0<PlovisionSortMode.length) {if(1==(int)PlovisionSortMode[0][M100_ParameterMstWankoRt.ColParaInt01]) {SortMode="Loc";}}
+		
+		//確認用の在庫ピンポイント検索と引当対象在庫一覧検索用PreparedStatement
+		PreparedStatement StockSearchPinPoint	= StockSearchPinPoint(TgtWhCd,TgtClCd);
+		PreparedStatement StockGet				= StockGet(TgtWhCd,TgtClCd,SortMode);
+		
+		ResultSet rsetStockSearchPinPoint = null;
 		ResultSet rsetStockGet = null;
-		ResultSet rsetStockCheck = null;
+		
+		//在庫更新用
+		PreparedStatement StockControlCreate	= StockControlCreate(TgtWhCd,TgtClCd);
+		//引当結果登録用
+		PreparedStatement CreateShipPlovision	= CreateShipPlovision(TgtWhCd,TgtClCd);
+		//送り状ヘッダ更新用
+		PreparedStatement OkuriHdUpdate			= OkuriHdUpdate(TgtWhCd,TgtClCd);
+		
 		int ItemCDSet = 1;
 		for(int i=0;i<ItemList.size();i++) {
-			ArrayList<Integer> QtyList = new ArrayList<Integer>();
-			for(int i01=0;i01<PlovisionTgt.length;i01++) {
-				if(ItemList.get(i).equals((String)PlovisionTgt[i01][ColItemCd])){
-					QtyList.add((int)PlovisionTgt[i01][ColNeedQty]);
-				}
-			}
-			QtyList 	= B100_ArrayListControl.ArryListIntegerUniqueList(QtyList);	//数量の重複除く
-			QtyList.sort(Comparator.reverseOrder());
 			try {
 				StockGet.setString(ItemCDSet,ItemList.get(i));
 				rsetStockGet = StockGet.executeQuery();
@@ -954,13 +999,799 @@ public class WT100_ShipPlovision{
 				while (rsetStockGet.next()) {
 					counter = counter+1;
 				}
+				int ColStockClCd		=   0;			//荷主コード
+				int ColStockCLName01	=   1;			//荷主表記名
+				int ColStockWhCd		=   2;			//倉庫コード
+				int ColStockWHName		=   3;			//担当倉庫名
+				int ColStockClGpCD		=   4;			//荷主グループCD
+				int ColStockClGpName01	=   5;			//グループ名1
+				int ColStockLoc			=   6;			//ロケーション
+				int ColStockLocName		=   7;			//ロケーション名
+				int ColStockLocType		=   8;			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+				int ColStockItemCd		=   9;			//商品コード
+				int ColStockLot			=  10;			//ロット
+				int ColStockExpdate		=  11;			//消費期限
+				int ColStockActualDate	=  12;			//入荷実績日
+				int ColStockQty			=  13;			//数量
+				int ColStockShipPlanQty	=  14;			//引当済数
+				int ColStockPossibleQty	=  15;			//出荷可能数
+				int ColStockItemName	=  16;			//商品名
+				int ColStockItemName01	=  17;			//商品表記名
+				int ColStockItemName02	=  18;			//商品正式名
+				int ColStockItemName03	=  19;			//商品略名
+				int ColStockClItemCd	=  20;			//荷主商品コード
+				int ColStockJanCd		=  21;			//ソースマーク_BCD（バラ）
+				int ColStockItemMdNo	=  22;			//商品型番
+				int ColStockCtUnitQty	=  23;			//カートン入数
+				int ColStockCsUnitQty	=  24;			//ケース入数
+				int ColStockPlUnitQty	=  25;			//パレット入数
+				int ColStockUnitName	=  26;			//商品単位
+				int ColStockCtUnitName	=  27;			//カートン商品単位
+				int ColStockCsUnitName	=  28;			//ケース商品単位
+				int ColStockPlUnitName	=  29;			//パレット商品単位
+				int ColStockEntryDate	=  30;			//登録日時
+				int ColStockUpdateDate	=  31;			//更新日時
+				int ColStockEntryUser	=  32;			//登録者
+				int ColStockUpdateUser	=  33;			//更新者
+				int ColAfterStockPossibleQty	=  34;			//引当後出荷可能数
+				
+				int ColStockPinPointLoc        = 1;					//ロケーション
+				int ColStockPinPointItemCd     = 2;					//商品コード
+				int ColStockPinPointLot        = 3;					//ロット
+				int ColStockPinPointExpdate    = 4;					//消費期限
+				int ColStockPinPointActualDate = 5;					//入荷実績日
 				
 				
+				int ColOkuriHdUpdateDate 	= 1;
+				int ColOkuriHdUpdateUser 	= 2;
+				int ColOkuriHdOkuriNo 		= 3;
 				
+				Object[][] StockData = new Object[counter][35];
+				rsetStockGet.beforeFirst();
+				counter = 0;
+				while (rsetStockGet.next()) {
+					if(null==rsetStockGet.getString("ClCd"			)){StockData[counter][ColStockClCd]			= "";}else{StockData[counter][ColStockClCd]			=rsetStockGet.getString("ClCd");}				//荷主コード
+					if(null==rsetStockGet.getString("CLName"		)){StockData[counter][ColStockCLName01]		= "";}else{StockData[counter][ColStockCLName01]		=rsetStockGet.getString("CLName");}				//荷主表記名
+					if(null==rsetStockGet.getString("WhCd"			)){StockData[counter][ColStockWhCd]			= "";}else{StockData[counter][ColStockWhCd]			=rsetStockGet.getString("WhCd");}				//倉庫コード
+					if(null==rsetStockGet.getString("ClWHName"		)){StockData[counter][ColStockWHName]		= "";}else{StockData[counter][ColStockWHName]		=rsetStockGet.getString("ClWHName");}			//担当倉庫名
+					if(null==rsetStockGet.getString("ClGpCD"		)){StockData[counter][ColStockClGpCD]		= "";}else{StockData[counter][ColStockClGpCD]		=rsetStockGet.getString("ClGpCD");}				//荷主グループCD
+					if(null==rsetStockGet.getString("ClGpName"		)){StockData[counter][ColStockClGpName01]	= "";}else{StockData[counter][ColStockClGpName01]	=rsetStockGet.getString("ClGpName");}			//グループ名1
+					if(null==rsetStockGet.getString("Loc"			)){StockData[counter][ColStockLoc]			= "";}else{StockData[counter][ColStockLoc]			=rsetStockGet.getString("Loc");}				//ロケーション
+					if(null==rsetStockGet.getString("LocName"		)){StockData[counter][ColStockLocName]		= "";}else{StockData[counter][ColStockLocName]		=rsetStockGet.getString("LocName");}			//ロケーション名
+					StockData[counter][ColStockLocType]=rsetStockGet.getInt("LocType");				//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+					if(null==rsetStockGet.getString("ItemCd"		)){StockData[counter][ColStockItemCd]		= "";}else{StockData[counter][ColStockItemCd]		=rsetStockGet.getString("ItemCd");}				//商品コード
+					if(null==rsetStockGet.getString("Lot"			)){StockData[counter][ColStockLot]			= "";}else{StockData[counter][ColStockLot]			=rsetStockGet.getString("Lot");}				//ロット
+					if(null==rsetStockGet.getTimestamp("Expdate"	)){StockData[counter][ColStockExpdate]		= "";}else{StockData[counter][ColStockExpdate]		=B100_DateTimeControl.dtmString2(rsetStockGet.getTimestamp("Expdate"))[0];}		//消費期限
+					if(null==rsetStockGet.getTimestamp("ActualDate"	)){StockData[counter][ColStockActualDate]	= "";}else{StockData[counter][ColStockActualDate]	=B100_DateTimeControl.dtmString2(rsetStockGet.getTimestamp("ActualDate"))[0];}		//入荷実績日
+					StockData[counter][ColStockQty]=rsetStockGet.getInt("Qty");						//数量
+					StockData[counter][ColStockShipPlanQty]=rsetStockGet.getInt("ShipPlanQty");		//引当済数
+					StockData[counter][ColStockPossibleQty]=rsetStockGet.getInt("PossibleQty");		//出荷可能数
+					if(null==rsetStockGet.getString("ItemName"		)){StockData[counter][ColStockItemName]		= "";}else{StockData[counter][ColStockItemName]		=rsetStockGet.getString("ItemName");}			//商品名
+					if(null==rsetStockGet.getString("ItemName01"	)){StockData[counter][ColStockItemName01]	= "";}else{StockData[counter][ColStockItemName01]	=rsetStockGet.getString("ItemName01");}			//商品表記名
+					if(null==rsetStockGet.getString("ItemName02"	)){StockData[counter][ColStockItemName02]	= "";}else{StockData[counter][ColStockItemName02]	=rsetStockGet.getString("ItemName02");}			//商品正式名
+					if(null==rsetStockGet.getString("ItemName03"	)){StockData[counter][ColStockItemName03]	= "";}else{StockData[counter][ColStockItemName03]	=rsetStockGet.getString("ItemName03");}			//商品略名
+					if(null==rsetStockGet.getString("ClItemCd"		)){StockData[counter][ColStockClItemCd]		= "";}else{StockData[counter][ColStockClItemCd]		=rsetStockGet.getString("ClItemCd");}			//荷主商品コード
+					if(null==rsetStockGet.getString("JanCd"			)){StockData[counter][ColStockJanCd]		= "";}else{StockData[counter][ColStockJanCd]		=rsetStockGet.getString("JanCd");}				//ソースマーク_BCD（バラ）
+					if(null==rsetStockGet.getString("ItemMdNo"		)){StockData[counter][ColStockItemMdNo]		= "";}else{StockData[counter][ColStockItemMdNo]		=rsetStockGet.getString("ItemMdNo");}			//商品型番
+					StockData[counter][ColStockCtUnitQty]=rsetStockGet.getInt("CtUnitQty");			//カートン入数
+					StockData[counter][ColStockCsUnitQty]=rsetStockGet.getInt("CsUnitQty");			//ケース入数
+					StockData[counter][ColStockPlUnitQty]=rsetStockGet.getInt("PlUnitQty");			//パレット入数
+					if(null==rsetStockGet.getString("UnitName"		)){StockData[counter][ColStockUnitName]	= "";}else{StockData[counter][ColStockUnitName]			=rsetStockGet.getString("UnitName");}			//商品単位
+					if(null==rsetStockGet.getString("CtUnitName"	)){StockData[counter][ColStockCtUnitName]	= "";}else{StockData[counter][ColStockCtUnitName]	=rsetStockGet.getString("CtUnitName");}			//カートン商品単位
+					if(null==rsetStockGet.getString("CsUnitName"	)){StockData[counter][ColStockCsUnitName]	= "";}else{StockData[counter][ColStockCsUnitName]	=rsetStockGet.getString("CsUnitName");}			//ケース商品単位
+					if(null==rsetStockGet.getString("PlUnitName"	)){StockData[counter][ColStockPlUnitName]	= "";}else{StockData[counter][ColStockPlUnitName]	=rsetStockGet.getString("PlUnitName");}			//パレット商品単位
+					if(null==rsetStockGet.getTimestamp("EntryDate"	)){StockData[counter][ColStockEntryDate]	= "";}else{StockData[counter][ColStockEntryDate]	=B100_DateTimeControl.dtmString2(rsetStockGet.getTimestamp("EntryDate"))[1];}				//登録日時
+					if(null==rsetStockGet.getTimestamp("UpdateDate"	)){StockData[counter][ColStockUpdateDate]	= "";}else{StockData[counter][ColStockUpdateDate]	=B100_DateTimeControl.dtmString2(rsetStockGet.getTimestamp("UpdateDate"))[1];}		//更新日時
+					if(null==rsetStockGet.getString("EntryUser"		)){StockData[counter][ColStockEntryUser]	= "";}else{StockData[counter][ColStockEntryUser]	=rsetStockGet.getString("EntryUser");}			//登録者
+					if(null==rsetStockGet.getString("UpdateUser"	)){StockData[counter][ColStockUpdateUser]	= "";}else{StockData[counter][ColStockUpdateUser]	=rsetStockGet.getString("UpdateUser");}			//更新者
+					StockData[counter][ColAfterStockPossibleQty]=rsetStockGet.getInt("PossibleQty");	//引当後出荷可能数
+					counter = counter+1;
+				}
 				
+				//引当ロット・賞味期限が定まっている在庫を引き当て
+				//ロット・賞味期限指定のある出荷指示ありかつ単一ロットの在庫引当
+				//ロット・賞味期限指定はないが日付範囲指定あるかつロットまとめ必要な在庫引当
+				//ロット指定なし・出荷日付範囲気にしない※但しロットまとめ必要な出荷指示の在庫引当
+				//※極力荷姿指定で引き当て（荷姿崩れまくっていたら最後にくっつける前提　そんな汚い倉庫運営しないでいただきたいが、あちこちの在庫かき集めたら1パレになることもあるでしょう）
 				
+				for(int i01=0;i01<PlovisionTgt.length;i01++) {
+					if(ItemList.get(i).equals((String)PlovisionTgt[i01][ColItemCd])&&0==(int)PlovisionTgt[i01][ColPlovisionCheck]) {
+						if(!"".equals((String)PlovisionTgt[i01][ColFixLot])||!"".equals((String)PlovisionTgt[i01][ColFixExpDate])) {
+							PlovisionTgt[i01][ColPlovisionCheck] = 1;
+							int Seq = 0;
+							int NeedQty = (int)PlovisionTgt[i01][ColNeedQty];
+							
+							for(int i02=0;i02<StockData.length;i02++) {
+								if(((String)StockData[i02][ColStockLot]).equals((String)PlovisionTgt[i01][ColFixLot])
+										&& ((String)StockData[i02][ColStockExpdate]).equals((String)PlovisionTgt[i01][ColFixExpDate])) {
+
+									int UnitQty = 1;
+									switch((int)PlovisionTgt[i01][ColPackingType]) {
+										case 0:
+											UnitQty = (int)1;
+											break;
+										case 1:
+											UnitQty = (int)StockData[i02][ColStockCtUnitQty];
+											break;
+										case 2:
+											UnitQty = (int)StockData[i02][ColStockCsUnitQty];
+											break;
+										case 3:
+											UnitQty = (int)StockData[i02][ColStockPlUnitQty];
+											break;
+										default:
+											break;
+									}
+									if(0>=UnitQty) {UnitQty=1;}
+									if(0<(int)StockData[i02][ColAfterStockPossibleQty]) {
+										int WorkPossibleQty = (int)((int)StockData[i02][ColAfterStockPossibleQty]/UnitQty);
+										WorkPossibleQty = WorkPossibleQty*UnitQty;
+										int ShipQty = 0;
+										if(WorkPossibleQty>=NeedQty) {
+											ShipQty = NeedQty;
+											NeedQty = 0;
+										}else {
+											ShipQty = WorkPossibleQty;
+											NeedQty = NeedQty-WorkPossibleQty;
+										}
+										StockData[i02][ColAfterStockPossibleQty] = (int)StockData[i02][ColAfterStockPossibleQty]-ShipQty;
+										//在庫更新
+										boolean StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],ShipQty,now_dtm,UpdateUser);
+										//引当結果登録
+										if(StockFg) {
+											boolean PlovisionFg	= CreateShipPlovisionKick(CreateShipPlovision
+													,TgtWhCd,TgtClCd,ShipQty,Seq,now_dtm,UpdateUser
+													,PlovisionTgt[i01]
+													,StockData[i02]
+													);
+											if(PlovisionFg) {
+												OkuriHdUpdate.setString(ColOkuriHdUpdateDate	,now_dtm);
+												OkuriHdUpdate.setString(ColOkuriHdUpdateUser 	,UpdateUser);
+												OkuriHdUpdate.setString(ColOkuriHdOkuriNo 		,(String)PlovisionTgt[i01][ColOkuriNo]);
+												OkuriHdUpdate.executeUpdate();
+												
+												//更新後在庫確認　マイナス在庫発生していればエラー
+												StockSearchPinPoint.setString(ColStockPinPointLoc        ,(String)StockData[i02][ColStockLoc]);					//ロケーション
+												StockSearchPinPoint.setString(ColStockPinPointItemCd     ,(String)StockData[i02][ColStockItemCd]);				//商品コード
+												StockSearchPinPoint.setString(ColStockPinPointLot        ,(String)StockData[i02][ColStockLot]);					//ロット
+												StockSearchPinPoint.setString(ColStockPinPointExpdate    ,(String)StockData[i02][ColStockExpdate]);				//消費期限
+												StockSearchPinPoint.setString(ColStockPinPointActualDate ,(String)StockData[i02][ColStockActualDate]);			//入荷実績日
+												
+												rsetStockSearchPinPoint	= StockSearchPinPoint.executeQuery();
+												
+												boolean AfterStoCkErr = true;
+												rsetStockSearchPinPoint.beforeFirst();
+												while (rsetStockSearchPinPoint.next()) {
+													if(0<=rsetStockSearchPinPoint.getInt("PossibleQty")) {AfterStoCkErr = false;}
+												}
+												if(AfterStoCkErr) {
+													PlovisionTgt[i01][ColErrType]	= "StockMinusErr";
+													PlovisionTgt[i01][ColErrMsg]	= "謎ですがマイナス在庫生成しました。引当中に在庫が動いた？";
+												}
+											}else {
+												PlovisionTgt[i01][ColErrType]	= "PlovisionEntryErr";
+												PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当結果登録に失敗しました";
+												//引当てしまった在庫戻す
+												StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],-1*ShipQty,now_dtm,UpdateUser);
+											}
+										}else {
+											PlovisionTgt[i01][ColErrType]	= "StockControlErr";
+											PlovisionTgt[i01][ColErrMsg]	= "謎ですが在庫更新失敗しました。引当中に在庫が動いた？";
+										}
+										Seq = Seq+1;
+										if(0==NeedQty) {
+											i02=StockData.length+1;
+										}
+									}
+								}
+							}
+							if(0<NeedQty) {
+								//在庫が散りまくった結果引当処理がうまくできていないため諦めてバラ扱いで引当　後で頑張って荷姿整えたまえ
+								for(int i02=0;i02<StockData.length;i02++) {
+									if(((String)StockData[i02][ColStockLot]).equals((String)PlovisionTgt[i01][ColFixLot])
+											&& ((String)StockData[i02][ColStockExpdate]).equals((String)PlovisionTgt[i01][ColFixExpDate])) {
+										if(0<(int)StockData[i02][ColAfterStockPossibleQty]) {
+											int ShipQty = 0;
+											if((int)StockData[i02][ColAfterStockPossibleQty]>=NeedQty) {
+												ShipQty = NeedQty;
+												NeedQty = 0;
+											}else {
+												ShipQty = (int)StockData[i02][ColAfterStockPossibleQty];
+												NeedQty = NeedQty-(int)StockData[i02][ColAfterStockPossibleQty];
+											}
+											StockData[i02][ColAfterStockPossibleQty] = (int)StockData[i02][ColAfterStockPossibleQty]-ShipQty;
+											//在庫更新
+											boolean StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],ShipQty,now_dtm,UpdateUser);
+											//引当結果登録
+											if(StockFg) {
+												boolean PlovisionFg	= CreateShipPlovisionKick(CreateShipPlovision
+														,TgtWhCd,TgtClCd,ShipQty,Seq,now_dtm,UpdateUser
+														,PlovisionTgt[i01]
+														,StockData[i02]
+														);
+												if(PlovisionFg) {
+													OkuriHdUpdate.setString(ColOkuriHdUpdateDate	,now_dtm);
+													OkuriHdUpdate.setString(ColOkuriHdUpdateUser 	,UpdateUser);
+													OkuriHdUpdate.setString(ColOkuriHdOkuriNo 		,(String)PlovisionTgt[i01][ColOkuriNo]);
+													OkuriHdUpdate.executeUpdate();
+													
+													//更新後在庫確認　マイナス在庫発生していればエラー
+													StockSearchPinPoint.setString(ColStockPinPointLoc        ,(String)StockData[i02][ColStockLoc]);					//ロケーション
+													StockSearchPinPoint.setString(ColStockPinPointItemCd     ,(String)StockData[i02][ColStockItemCd]);				//商品コード
+													StockSearchPinPoint.setString(ColStockPinPointLot        ,(String)StockData[i02][ColStockLot]);					//ロット
+													StockSearchPinPoint.setString(ColStockPinPointExpdate    ,(String)StockData[i02][ColStockExpdate]);				//消費期限
+													StockSearchPinPoint.setString(ColStockPinPointActualDate ,(String)StockData[i02][ColStockActualDate]);			//入荷実績日
+													
+													rsetStockSearchPinPoint	= StockSearchPinPoint.executeQuery();
+													
+													boolean AfterStoCkErr = true;
+													rsetStockSearchPinPoint.beforeFirst();
+													while (rsetStockSearchPinPoint.next()) {
+														if(0<=rsetStockSearchPinPoint.getInt("PossibleQty")) {AfterStoCkErr = false;}
+													}
+													if(AfterStoCkErr) {
+														PlovisionTgt[i01][ColErrType]	= "StockMinusErr";
+														PlovisionTgt[i01][ColErrMsg]	= "謎ですがマイナス在庫生成しました。引当中に在庫が動いた？";
+													}
+												}else {
+													PlovisionTgt[i01][ColErrType]	= "PlovisionEntryErr";
+													PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当結果登録に失敗しました";
+													//引当てしまった在庫戻す
+													StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],-1*ShipQty,now_dtm,UpdateUser);
+												}
+											}else {
+												PlovisionTgt[i01][ColErrType]	= "StockControlErr";
+												PlovisionTgt[i01][ColErrMsg]	= "謎ですが在庫更新失敗しました。引当中に在庫が動いた？";
+											}
+											Seq = Seq+1;
+											if(0==NeedQty) {
+												i02=StockData.length+1;
+											}
+										}
+									}
+								}
+							}
+							if(0<NeedQty) {
+								//在庫引き当て全部できなかった時エラー
+								PlovisionTgt[i01][ColErrType]	= "PlovisionErr";
+								PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当残発生。引当中に在庫が動いた？";
+							}
+						}
+					}
+				}
 				
+				//ロット・賞味期限指定のある出荷指示ありかつ単一ロットまとめ不要の引当
+				for(int i01=0;i01<PlovisionTgt.length;i01++) {
+					if(ItemList.get(i).equals((String)PlovisionTgt[i01][ColItemCd])&&0==(int)PlovisionTgt[i01][ColPlovisionCheck]) {
+						if("".equals((String)PlovisionTgt[i01][ColFixLot])&&"".equals((String)PlovisionTgt[i01][ColFixExpDate])) {
+							if(!"".equals((String)PlovisionTgt[i01][ColLot])||!"".equals((String)PlovisionTgt[i01][ColExpDate])) {
+								PlovisionTgt[i01][ColPlovisionCheck] = 1;
+								int Seq = 0;
+								int NeedQty = (int)PlovisionTgt[i01][ColNeedQty];
+								for(int i02=0;i02<StockData.length;i02++) {
+									if(("".equals((String)PlovisionTgt[i01][ColLot])||((String)StockData[i02][ColStockLot]).equals((String)PlovisionTgt[i01][ColLot]))
+										&&("".equals((String)PlovisionTgt[i01][ColExpDate])||((String)StockData[i02][ColStockExpdate]).equals((String)PlovisionTgt[i01][ColExpDate]))	
+											&& 0<(int)StockData[i02][ColAfterStockPossibleQty]) {
+										int UnitQty = 1;
+										switch((int)PlovisionTgt[i01][ColPackingType]) {
+											case 0:
+												UnitQty = (int)1;
+												break;
+											case 1:
+												UnitQty = (int)StockData[i02][ColStockCtUnitQty];
+												break;
+											case 2:
+												UnitQty = (int)StockData[i02][ColStockCsUnitQty];
+												break;
+											case 3:
+												UnitQty = (int)StockData[i02][ColStockPlUnitQty];
+												break;
+											default:
+												break;
+										}
+										if(0>=UnitQty) {UnitQty=1;}
+										int WorkPossibleQty = (int)((int)StockData[i02][ColAfterStockPossibleQty]/UnitQty);
+										WorkPossibleQty = WorkPossibleQty*UnitQty;
+										int ShipQty = 0;
+										if(WorkPossibleQty>=NeedQty) {
+											ShipQty = NeedQty;
+											NeedQty = 0;
+										}else {
+											ShipQty = WorkPossibleQty;
+											NeedQty = NeedQty-WorkPossibleQty;
+										}
+										StockData[i02][ColAfterStockPossibleQty] = (int)StockData[i02][ColAfterStockPossibleQty]-ShipQty;
+										//在庫更新
+										boolean StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],ShipQty,now_dtm,UpdateUser);
+										//引当結果登録
+										if(StockFg) {
+											boolean PlovisionFg	= CreateShipPlovisionKick(CreateShipPlovision
+													,TgtWhCd,TgtClCd,ShipQty,Seq,now_dtm,UpdateUser
+													,PlovisionTgt[i01]
+													,StockData[i02]
+													);
+											if(PlovisionFg) {
+												OkuriHdUpdate.setString(ColOkuriHdUpdateDate	,now_dtm);
+												OkuriHdUpdate.setString(ColOkuriHdUpdateUser 	,UpdateUser);
+												OkuriHdUpdate.setString(ColOkuriHdOkuriNo 		,(String)PlovisionTgt[i01][ColOkuriNo]);
+												OkuriHdUpdate.executeUpdate();
+												
+												//更新後在庫確認　マイナス在庫発生していればエラー
+												StockSearchPinPoint.setString(ColStockPinPointLoc        ,(String)StockData[i02][ColStockLoc]);					//ロケーション
+												StockSearchPinPoint.setString(ColStockPinPointItemCd     ,(String)StockData[i02][ColStockItemCd]);				//商品コード
+												StockSearchPinPoint.setString(ColStockPinPointLot        ,(String)StockData[i02][ColStockLot]);					//ロット
+												StockSearchPinPoint.setString(ColStockPinPointExpdate    ,(String)StockData[i02][ColStockExpdate]);				//消費期限
+												StockSearchPinPoint.setString(ColStockPinPointActualDate ,(String)StockData[i02][ColStockActualDate]);			//入荷実績日
+												
+												rsetStockSearchPinPoint	= StockSearchPinPoint.executeQuery();
+												
+												boolean AfterStoCkErr = true;
+												rsetStockSearchPinPoint.beforeFirst();
+												while (rsetStockSearchPinPoint.next()) {
+													if(0<=rsetStockSearchPinPoint.getInt("PossibleQty")) {AfterStoCkErr = false;}
+												}
+												if(AfterStoCkErr) {
+													PlovisionTgt[i01][ColErrType]	= "StockMinusErr";
+													PlovisionTgt[i01][ColErrMsg]	= "謎ですがマイナス在庫生成しました。引当中に在庫が動いた？";
+												}
+											}else {
+												PlovisionTgt[i01][ColErrType]	= "PlovisionEntryErr";
+												PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当結果登録に失敗しました";
+												//引当てしまった在庫戻す
+												StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],-1*ShipQty,now_dtm,UpdateUser);
+											}
+										}else {
+											PlovisionTgt[i01][ColErrType]	= "StockControlErr";
+											PlovisionTgt[i01][ColErrMsg]	= "謎ですが在庫更新失敗しました。引当中に在庫が動いた？";
+										}
+										Seq = Seq+1;
+										if(0==NeedQty) {
+											i02=StockData.length+1;
+										}
+									}
+								}
+								if(0<NeedQty) {
+									//在庫が散りまくった結果引当処理がうまくできていないため諦めてバラ扱いで引当　後で頑張って荷姿整えたまえ
+									for(int i02=0;i02<StockData.length;i02++) {
+										if(("".equals((String)PlovisionTgt[i01][ColLot])||((String)StockData[i02][ColStockLot]).equals((String)PlovisionTgt[i01][ColLot]))
+											&&("".equals((String)PlovisionTgt[i01][ColExpDate])||((String)StockData[i02][ColStockExpdate]).equals((String)PlovisionTgt[i01][ColExpDate]))	
+												&& 0<(int)StockData[i02][ColAfterStockPossibleQty]) {
+											int UnitQty = 1;
+											int WorkPossibleQty = (int)((int)StockData[i02][ColAfterStockPossibleQty]/UnitQty);
+											WorkPossibleQty = WorkPossibleQty*UnitQty;
+											int ShipQty = 0;
+											if(WorkPossibleQty>=NeedQty) {
+												ShipQty = NeedQty;
+												NeedQty = 0;
+											}else {
+												ShipQty = WorkPossibleQty;
+												NeedQty = NeedQty-WorkPossibleQty;
+											}
+											StockData[i02][ColAfterStockPossibleQty] = (int)StockData[i02][ColAfterStockPossibleQty]-ShipQty;
+											//在庫更新
+											boolean StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],ShipQty,now_dtm,UpdateUser);
+											//引当結果登録
+											if(StockFg) {
+												boolean PlovisionFg	= CreateShipPlovisionKick(CreateShipPlovision
+														,TgtWhCd,TgtClCd,ShipQty,Seq,now_dtm,UpdateUser
+														,PlovisionTgt[i01]
+														,StockData[i02]
+														);
+												if(PlovisionFg) {
+													OkuriHdUpdate.setString(ColOkuriHdUpdateDate	,now_dtm);
+													OkuriHdUpdate.setString(ColOkuriHdUpdateUser 	,UpdateUser);
+													OkuriHdUpdate.setString(ColOkuriHdOkuriNo 		,(String)PlovisionTgt[i01][ColOkuriNo]);
+													OkuriHdUpdate.executeUpdate();
+													
+													//更新後在庫確認　マイナス在庫発生していればエラー
+													StockSearchPinPoint.setString(ColStockPinPointLoc        ,(String)StockData[i02][ColStockLoc]);					//ロケーション
+													StockSearchPinPoint.setString(ColStockPinPointItemCd     ,(String)StockData[i02][ColStockItemCd]);				//商品コード
+													StockSearchPinPoint.setString(ColStockPinPointLot        ,(String)StockData[i02][ColStockLot]);					//ロット
+													StockSearchPinPoint.setString(ColStockPinPointExpdate    ,(String)StockData[i02][ColStockExpdate]);				//消費期限
+													StockSearchPinPoint.setString(ColStockPinPointActualDate ,(String)StockData[i02][ColStockActualDate]);			//入荷実績日
+													
+													rsetStockSearchPinPoint	= StockSearchPinPoint.executeQuery();
+													
+													boolean AfterStoCkErr = true;
+													rsetStockSearchPinPoint.beforeFirst();
+													while (rsetStockSearchPinPoint.next()) {
+														if(0<=rsetStockSearchPinPoint.getInt("PossibleQty")) {AfterStoCkErr = false;}
+													}
+													if(AfterStoCkErr) {
+														PlovisionTgt[i01][ColErrType]	= "StockMinusErr";
+														PlovisionTgt[i01][ColErrMsg]	= "謎ですがマイナス在庫生成しました。引当中に在庫が動いた？";
+													}
+												}else {
+													PlovisionTgt[i01][ColErrType]	= "PlovisionEntryErr";
+													PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当結果登録に失敗しました";
+													//引当てしまった在庫戻す
+													StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],-1*ShipQty,now_dtm,UpdateUser);
+												}
+											}else {
+												PlovisionTgt[i01][ColErrType]	= "StockControlErr";
+												PlovisionTgt[i01][ColErrMsg]	= "謎ですが在庫更新失敗しました。引当中に在庫が動いた？";
+											}
+											Seq = Seq+1;
+											if(0==NeedQty) {
+												i02=StockData.length+1;
+											}
+										}
+									}
+								}
+								if(0<NeedQty) {
+									//在庫引き当て全部できなかった時エラー
+									PlovisionTgt[i01][ColErrType]	= "PlovisionErr";
+									PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当残発生。引当中に在庫が動いた？";
+								}
+							}
+						}
+					}
+				}
 				
+				//ロット指定はないが日付範囲指定がある。但しロットをまとめる必要はない在庫引当
+				for(int i01=0;i01<PlovisionTgt.length;i01++) {
+					if(ItemList.get(i).equals((String)PlovisionTgt[i01][ColItemCd])&&0==(int)PlovisionTgt[i01][ColPlovisionCheck]) {
+						if("".equals((String)PlovisionTgt[i01][ColFixLot])&&"".equals((String)PlovisionTgt[i01][ColFixExpDate])) {
+							if("".equals((String)PlovisionTgt[i01][ColLot])&&"".equals((String)PlovisionTgt[i01][ColExpDate])) {
+								if(!"".equals((String)PlovisionTgt[i01][ColCheckExpDateMin])||!"".equals((String)PlovisionTgt[i01][ColCheckExpDateMax])) {
+									PlovisionTgt[i01][ColPlovisionCheck] = 1;
+									int Seq = 0;
+									int NeedQty = (int)PlovisionTgt[i01][ColNeedQty];
+									for(int i02=0;i02<StockData.length;i02++) {
+										if(0<(int)StockData[i02][ColAfterStockPossibleQty]) {
+											Timestamp StockExpDate = null;
+											Timestamp ExpDateMin = null;
+											Timestamp ExpDateMax = null;
+											
+											if(!"".equals((String)StockData[i02][ColStockExpdate])) {
+												StockExpDate = B100_DateTimeControl.dtmTimestamp2((String)StockData[i02][ColStockExpdate])[0];
+											}
+											if(!"".equals((String)PlovisionTgt[i01][ColCheckExpDateMin])) {
+												ExpDateMin = B100_DateTimeControl.dtmTimestamp2((String)PlovisionTgt[i01][ColCheckExpDateMin])[0];
+											}
+											if(!"".equals((String)PlovisionTgt[i01][ColCheckExpDateMax])) {
+												ExpDateMax = B100_DateTimeControl.dtmTimestamp2((String)PlovisionTgt[i01][ColCheckExpDateMax])[0];
+											}
+											if((null==ExpDateMin||0<=B100_DateTimeControl.ddif(ExpDateMin,StockExpDate))
+													&& (null==ExpDateMax||0<=B100_DateTimeControl.ddif(StockExpDate,ExpDateMax))
+													) {
+												int UnitQty = 1;
+												switch((int)PlovisionTgt[i01][ColPackingType]) {
+													case 0:
+														UnitQty = (int)1;
+														break;
+													case 1:
+														UnitQty = (int)StockData[i02][ColStockCtUnitQty];
+														break;
+													case 2:
+														UnitQty = (int)StockData[i02][ColStockCsUnitQty];
+														break;
+													case 3:
+														UnitQty = (int)StockData[i02][ColStockPlUnitQty];
+														break;
+													default:
+														break;
+												}
+												if(0>=UnitQty) {UnitQty=1;}
+												int WorkPossibleQty = (int)((int)StockData[i02][ColAfterStockPossibleQty]/UnitQty);
+												WorkPossibleQty = WorkPossibleQty*UnitQty;
+												int ShipQty = 0;
+												if(WorkPossibleQty>=NeedQty) {
+													ShipQty = NeedQty;
+													NeedQty = 0;
+												}else {
+													ShipQty = WorkPossibleQty;
+													NeedQty = NeedQty-WorkPossibleQty;
+												}
+												StockData[i02][ColAfterStockPossibleQty] = (int)StockData[i02][ColAfterStockPossibleQty]-ShipQty;
+												//在庫更新
+												boolean StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],ShipQty,now_dtm,UpdateUser);
+												//引当結果登録
+												if(StockFg) {
+													boolean PlovisionFg	= CreateShipPlovisionKick(CreateShipPlovision
+															,TgtWhCd,TgtClCd,ShipQty,Seq,now_dtm,UpdateUser
+															,PlovisionTgt[i01]
+															,StockData[i02]
+															);
+													if(PlovisionFg) {
+														OkuriHdUpdate.setString(ColOkuriHdUpdateDate	,now_dtm);
+														OkuriHdUpdate.setString(ColOkuriHdUpdateUser 	,UpdateUser);
+														OkuriHdUpdate.setString(ColOkuriHdOkuriNo 		,(String)PlovisionTgt[i01][ColOkuriNo]);
+														OkuriHdUpdate.executeUpdate();
+														
+														//更新後在庫確認　マイナス在庫発生していればエラー
+														StockSearchPinPoint.setString(ColStockPinPointLoc        ,(String)StockData[i02][ColStockLoc]);					//ロケーション
+														StockSearchPinPoint.setString(ColStockPinPointItemCd     ,(String)StockData[i02][ColStockItemCd]);				//商品コード
+														StockSearchPinPoint.setString(ColStockPinPointLot        ,(String)StockData[i02][ColStockLot]);					//ロット
+														StockSearchPinPoint.setString(ColStockPinPointExpdate    ,(String)StockData[i02][ColStockExpdate]);				//消費期限
+														StockSearchPinPoint.setString(ColStockPinPointActualDate ,(String)StockData[i02][ColStockActualDate]);			//入荷実績日
+														
+														rsetStockSearchPinPoint	= StockSearchPinPoint.executeQuery();
+														
+														boolean AfterStoCkErr = true;
+														rsetStockSearchPinPoint.beforeFirst();
+														while (rsetStockSearchPinPoint.next()) {
+															if(0<=rsetStockSearchPinPoint.getInt("PossibleQty")) {AfterStoCkErr = false;}
+														}
+														if(AfterStoCkErr) {
+															PlovisionTgt[i01][ColErrType]	= "StockMinusErr";
+															PlovisionTgt[i01][ColErrMsg]	= "謎ですがマイナス在庫生成しました。引当中に在庫が動いた？";
+														}
+													}else {
+														PlovisionTgt[i01][ColErrType]	= "PlovisionEntryErr";
+														PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当結果登録に失敗しました";
+														//引当てしまった在庫戻す
+														StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],-1*ShipQty,now_dtm,UpdateUser);
+													}
+												}else {
+													PlovisionTgt[i01][ColErrType]	= "StockControlErr";
+													PlovisionTgt[i01][ColErrMsg]	= "謎ですが在庫更新失敗しました。引当中に在庫が動いた？";
+												}
+												Seq = Seq+1;
+												if(0==NeedQty) {
+													i02=StockData.length+1;
+												}
+											}
+										}
+									}
+									if(0<NeedQty) {
+										//在庫が散りまくった結果引当処理がうまくできていないため諦めてバラ扱いで引当　後で頑張って荷姿整えたまえ
+										for(int i02=0;i02<StockData.length;i02++) {
+											if(0<(int)StockData[i02][ColAfterStockPossibleQty]) {
+												Timestamp StockExpDate = null;
+												Timestamp ExpDateMin = null;
+												Timestamp ExpDateMax = null;
+												
+												if(!"".equals((String)StockData[i02][ColStockExpdate])) {
+													StockExpDate = B100_DateTimeControl.dtmTimestamp2((String)StockData[i02][ColStockExpdate])[0];
+												}
+												if(!"".equals((String)PlovisionTgt[i01][ColCheckExpDateMin])) {
+													ExpDateMin = B100_DateTimeControl.dtmTimestamp2((String)PlovisionTgt[i01][ColCheckExpDateMin])[0];
+												}
+												if(!"".equals((String)PlovisionTgt[i01][ColCheckExpDateMax])) {
+													ExpDateMax = B100_DateTimeControl.dtmTimestamp2((String)PlovisionTgt[i01][ColCheckExpDateMax])[0];
+												}
+												if((null==ExpDateMin||0<=B100_DateTimeControl.ddif(ExpDateMin,StockExpDate))
+														&& (null==ExpDateMax||0<=B100_DateTimeControl.ddif(StockExpDate,ExpDateMax))
+														) {
+													int UnitQty = 1;
+													int WorkPossibleQty = (int)((int)StockData[i02][ColAfterStockPossibleQty]/UnitQty);
+													WorkPossibleQty = WorkPossibleQty*UnitQty;
+													int ShipQty = 0;
+													if(WorkPossibleQty>=NeedQty) {
+														ShipQty = NeedQty;
+														NeedQty = 0;
+													}else {
+														ShipQty = WorkPossibleQty;
+														NeedQty = NeedQty-WorkPossibleQty;
+													}
+													StockData[i02][ColAfterStockPossibleQty] = (int)StockData[i02][ColAfterStockPossibleQty]-ShipQty;
+													//在庫更新
+													boolean StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],ShipQty,now_dtm,UpdateUser);
+													//引当結果登録
+													if(StockFg) {
+														boolean PlovisionFg	= CreateShipPlovisionKick(CreateShipPlovision
+																,TgtWhCd,TgtClCd,ShipQty,Seq,now_dtm,UpdateUser
+																,PlovisionTgt[i01]
+																,StockData[i02]
+																);
+														if(PlovisionFg) {
+															OkuriHdUpdate.setString(ColOkuriHdUpdateDate	,now_dtm);
+															OkuriHdUpdate.setString(ColOkuriHdUpdateUser 	,UpdateUser);
+															OkuriHdUpdate.setString(ColOkuriHdOkuriNo 		,(String)PlovisionTgt[i01][ColOkuriNo]);
+															OkuriHdUpdate.executeUpdate();
+															
+															//更新後在庫確認　マイナス在庫発生していればエラー
+															StockSearchPinPoint.setString(ColStockPinPointLoc        ,(String)StockData[i02][ColStockLoc]);					//ロケーション
+															StockSearchPinPoint.setString(ColStockPinPointItemCd     ,(String)StockData[i02][ColStockItemCd]);				//商品コード
+															StockSearchPinPoint.setString(ColStockPinPointLot        ,(String)StockData[i02][ColStockLot]);					//ロット
+															StockSearchPinPoint.setString(ColStockPinPointExpdate    ,(String)StockData[i02][ColStockExpdate]);				//消費期限
+															StockSearchPinPoint.setString(ColStockPinPointActualDate ,(String)StockData[i02][ColStockActualDate]);			//入荷実績日
+															
+															rsetStockSearchPinPoint	= StockSearchPinPoint.executeQuery();
+															
+															boolean AfterStoCkErr = true;
+															rsetStockSearchPinPoint.beforeFirst();
+															while (rsetStockSearchPinPoint.next()) {
+																if(0<=rsetStockSearchPinPoint.getInt("PossibleQty")) {AfterStoCkErr = false;}
+															}
+															if(AfterStoCkErr) {
+																PlovisionTgt[i01][ColErrType]	= "StockMinusErr";
+																PlovisionTgt[i01][ColErrMsg]	= "謎ですがマイナス在庫生成しました。引当中に在庫が動いた？";
+															}
+														}else {
+															PlovisionTgt[i01][ColErrType]	= "PlovisionEntryErr";
+															PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当結果登録に失敗しました";
+															//引当てしまった在庫戻す
+															StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],-1*ShipQty,now_dtm,UpdateUser);
+														}
+													}else {
+														PlovisionTgt[i01][ColErrType]	= "StockControlErr";
+														PlovisionTgt[i01][ColErrMsg]	= "謎ですが在庫更新失敗しました。引当中に在庫が動いた？";
+													}
+													Seq = Seq+1;
+													if(0==NeedQty) {
+														i02=StockData.length+1;
+													}
+												}
+											}
+										}
+									}
+									if(0<NeedQty) {
+										//在庫引き当て全部できなかった時エラー
+										PlovisionTgt[i01][ColErrType]	= "PlovisionErr";
+										PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当残発生。引当中に在庫が動いた？";
+									}
+								}
+							}
+						}
+					}
+				}
+				//ロット指定なし・出荷日付範囲気にしない全くわがままを言わない出荷指示の在庫引当
+				for(int i01=0;i01<PlovisionTgt.length;i01++) {
+					if(ItemList.get(i).equals((String)PlovisionTgt[i01][ColItemCd])&&0==(int)PlovisionTgt[i01][ColPlovisionCheck]) {
+						if("".equals((String)PlovisionTgt[i01][ColFixLot])&&"".equals((String)PlovisionTgt[i01][ColFixExpDate])) {
+							if("".equals((String)PlovisionTgt[i01][ColLot])&&"".equals((String)PlovisionTgt[i01][ColExpDate])) {
+								if("".equals((String)PlovisionTgt[i01][ColCheckExpDateMin])&&"".equals((String)PlovisionTgt[i01][ColCheckExpDateMax])) {
+									PlovisionTgt[i01][ColPlovisionCheck] = 1;
+									int Seq = 0;
+									int NeedQty = (int)PlovisionTgt[i01][ColNeedQty];
+									for(int i02=0;i02<StockData.length;i02++) {
+										if(0<(int)StockData[i02][ColAfterStockPossibleQty]) {
+											int UnitQty = 1;
+											switch((int)PlovisionTgt[i01][ColPackingType]) {
+												case 0:
+													UnitQty = (int)1;
+													break;
+												case 1:
+													UnitQty = (int)StockData[i02][ColStockCtUnitQty];
+													break;
+												case 2:
+													UnitQty = (int)StockData[i02][ColStockCsUnitQty];
+													break;
+												case 3:
+													UnitQty = (int)StockData[i02][ColStockPlUnitQty];
+													break;
+												default:
+													break;
+											}
+											if(0>=UnitQty) {UnitQty=1;}
+											int WorkPossibleQty = (int)((int)StockData[i02][ColAfterStockPossibleQty]/UnitQty);
+											WorkPossibleQty = WorkPossibleQty*UnitQty;
+											int ShipQty = 0;
+											if(WorkPossibleQty>=NeedQty) {
+												ShipQty = NeedQty;
+												NeedQty = 0;
+											}else {
+												ShipQty = WorkPossibleQty;
+												NeedQty = NeedQty-WorkPossibleQty;
+											}
+											StockData[i02][ColAfterStockPossibleQty] = (int)StockData[i02][ColAfterStockPossibleQty]-ShipQty;
+											//在庫更新
+											boolean StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],ShipQty,now_dtm,UpdateUser);
+											//引当結果登録
+											if(StockFg) {
+												boolean PlovisionFg	= CreateShipPlovisionKick(CreateShipPlovision
+														,TgtWhCd,TgtClCd,ShipQty,Seq,now_dtm,UpdateUser
+														,PlovisionTgt[i01]
+														,StockData[i02]
+														);
+												if(PlovisionFg) {
+													OkuriHdUpdate.setString(ColOkuriHdUpdateDate	,now_dtm);
+													OkuriHdUpdate.setString(ColOkuriHdUpdateUser 	,UpdateUser);
+													OkuriHdUpdate.setString(ColOkuriHdOkuriNo 		,(String)PlovisionTgt[i01][ColOkuriNo]);
+													OkuriHdUpdate.executeUpdate();
+													
+													//更新後在庫確認　マイナス在庫発生していればエラー
+													StockSearchPinPoint.setString(ColStockPinPointLoc        ,(String)StockData[i02][ColStockLoc]);					//ロケーション
+													StockSearchPinPoint.setString(ColStockPinPointItemCd     ,(String)StockData[i02][ColStockItemCd]);				//商品コード
+													StockSearchPinPoint.setString(ColStockPinPointLot        ,(String)StockData[i02][ColStockLot]);					//ロット
+													StockSearchPinPoint.setString(ColStockPinPointExpdate    ,(String)StockData[i02][ColStockExpdate]);				//消費期限
+													StockSearchPinPoint.setString(ColStockPinPointActualDate ,(String)StockData[i02][ColStockActualDate]);			//入荷実績日
+													
+													rsetStockSearchPinPoint	= StockSearchPinPoint.executeQuery();
+													
+													boolean AfterStoCkErr = true;
+													rsetStockSearchPinPoint.beforeFirst();
+													while (rsetStockSearchPinPoint.next()) {
+														if(0<=rsetStockSearchPinPoint.getInt("PossibleQty")) {AfterStoCkErr = false;}
+													}
+													if(AfterStoCkErr) {
+														PlovisionTgt[i01][ColErrType]	= "StockMinusErr";
+														PlovisionTgt[i01][ColErrMsg]	= "謎ですがマイナス在庫生成しました。引当中に在庫が動いた？";
+													}
+												}else {
+													PlovisionTgt[i01][ColErrType]	= "PlovisionEntryErr";
+													PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当結果登録に失敗しました";
+													//引当てしまった在庫戻す
+													StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],-1*ShipQty,now_dtm,UpdateUser);
+												}
+											}else {
+												PlovisionTgt[i01][ColErrType]	= "StockControlErr";
+												PlovisionTgt[i01][ColErrMsg]	= "謎ですが在庫更新失敗しました。引当中に在庫が動いた？";
+											}
+											Seq = Seq+1;
+											if(0==NeedQty) {
+												i02=StockData.length+1;
+											}
+										}
+									}
+									if(0<NeedQty) {
+										//在庫が散りまくった結果引当処理がうまくできていないため諦めてバラ扱いで引当　後で頑張って荷姿整えたまえ
+										for(int i02=0;i02<StockData.length;i02++) {
+											if(0<(int)StockData[i02][ColAfterStockPossibleQty]) {
+												int UnitQty = 1;
+												int WorkPossibleQty = (int)((int)StockData[i02][ColAfterStockPossibleQty]/UnitQty);
+												WorkPossibleQty = WorkPossibleQty*UnitQty;
+												int ShipQty = 0;
+												if(WorkPossibleQty>=NeedQty) {
+													ShipQty = NeedQty;
+													NeedQty = 0;
+												}else {
+													ShipQty = WorkPossibleQty;
+													NeedQty = NeedQty-WorkPossibleQty;
+												}
+												StockData[i02][ColAfterStockPossibleQty] = (int)StockData[i02][ColAfterStockPossibleQty]-ShipQty;
+												//在庫更新
+												boolean StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],ShipQty,now_dtm,UpdateUser);
+												//引当結果登録
+												if(StockFg) {
+													boolean PlovisionFg	= CreateShipPlovisionKick(CreateShipPlovision
+															,TgtWhCd,TgtClCd,ShipQty,Seq,now_dtm,UpdateUser
+															,PlovisionTgt[i01]
+															,StockData[i02]
+															);
+													if(PlovisionFg) {
+														OkuriHdUpdate.setString(ColOkuriHdUpdateDate	,now_dtm);
+														OkuriHdUpdate.setString(ColOkuriHdUpdateUser 	,UpdateUser);
+														OkuriHdUpdate.setString(ColOkuriHdOkuriNo 		,(String)PlovisionTgt[i01][ColOkuriNo]);
+														OkuriHdUpdate.executeUpdate();
+														
+														//更新後在庫確認　マイナス在庫発生していればエラー
+														StockSearchPinPoint.setString(ColStockPinPointLoc        ,(String)StockData[i02][ColStockLoc]);					//ロケーション
+														StockSearchPinPoint.setString(ColStockPinPointItemCd     ,(String)StockData[i02][ColStockItemCd]);				//商品コード
+														StockSearchPinPoint.setString(ColStockPinPointLot        ,(String)StockData[i02][ColStockLot]);					//ロット
+														StockSearchPinPoint.setString(ColStockPinPointExpdate    ,(String)StockData[i02][ColStockExpdate]);				//消費期限
+														StockSearchPinPoint.setString(ColStockPinPointActualDate ,(String)StockData[i02][ColStockActualDate]);			//入荷実績日
+														
+														rsetStockSearchPinPoint	= StockSearchPinPoint.executeQuery();
+														
+														boolean AfterStoCkErr = true;
+														rsetStockSearchPinPoint.beforeFirst();
+														while (rsetStockSearchPinPoint.next()) {
+															if(0<=rsetStockSearchPinPoint.getInt("PossibleQty")) {AfterStoCkErr = false;}
+														}
+														if(AfterStoCkErr) {
+															PlovisionTgt[i01][ColErrType]	= "StockMinusErr";
+															PlovisionTgt[i01][ColErrMsg]	= "謎ですがマイナス在庫生成しました。引当中に在庫が動いた？";
+														}
+													}else {
+														PlovisionTgt[i01][ColErrType]	= "PlovisionEntryErr";
+														PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当結果登録に失敗しました";
+														//引当てしまった在庫戻す
+														StockFg	= StockControl(StockControlCreate,(String)StockData[i02][ColStockLoc],(String)StockData[i02][ColStockItemCd],(String)StockData[i02][ColStockLot],(String)StockData[i02][ColStockExpdate],(String)StockData[i02][ColStockActualDate],-1*ShipQty,now_dtm,UpdateUser);
+													}
+												}else {
+													PlovisionTgt[i01][ColErrType]	= "StockControlErr";
+													PlovisionTgt[i01][ColErrMsg]	= "謎ですが在庫更新失敗しました。引当中に在庫が動いた？";
+												}
+												Seq = Seq+1;
+												if(0==NeedQty) {
+													i02=StockData.length+1;
+												}
+											}
+										}
+									}
+									if(0<NeedQty) {
+										//在庫引き当て全部できなかった時エラー
+										PlovisionTgt[i01][ColErrType]	= "PlovisionErr";
+										PlovisionTgt[i01][ColErrMsg]	= "謎ですが引当残発生。引当中に在庫が動いた？";
+									}
+								}
+							}
+						}
+					}
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -968,8 +1799,10 @@ public class WT100_ShipPlovision{
 		try {
 			if(null!=rsetStockGet) {rsetStockGet.close();}
 			if(null!=StockGet) {StockGet.close();}
-			if(null!=rsetStockCheck) {rsetStockCheck.close();}
-			if(null!=StockCheck) {StockCheck.close();}
+			if(null!=StockSearchPinPoint) {StockSearchPinPoint.close();}
+			if(null!=rsetStockSearchPinPoint) {rsetStockSearchPinPoint.close();}
+			if(null!=StockControlCreate) {StockControlCreate.close();}
+			if(null!=CreateShipPlovision) {CreateShipPlovision.close();}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -977,7 +1810,398 @@ public class WT100_ShipPlovision{
 		
 		return PlovisionTgt;
 	}
-	private static PreparedStatement StockGet(String TgtWhCd,String TgtClCd) {
+	
+	private static boolean StockControl(PreparedStatement StockControlCreate,String TgtLoc,String TgtItemCd,String TgtLot,String TgtExpdate,String TgtActualDate,int Qty,String now_dtm,String UpdateUser) {
+		//在庫更新実施
+		boolean Rt = true;
+		
+		int SetColShipPlanQty	= 1;
+		int SetColPossibleQty	= 2;
+		int SetColUpdateDate	= 3;
+		int SetColUpdateUser	= 4;
+		int SetColLoc			= 5;
+		int SetColItemCd		= 6;
+		int SetColLot			= 7;
+		int SetColExpdate		= 8;
+		int SetColActualDate	= 9;
+		
+		try {
+			StockControlCreate.setString(SetColShipPlanQty	,""+Qty);
+			StockControlCreate.setString(SetColPossibleQty	,""+Qty);
+			StockControlCreate.setString(SetColUpdateDate	,""+now_dtm);
+			StockControlCreate.setString(SetColUpdateUser	,""+UpdateUser);
+			StockControlCreate.setString(SetColLoc			,""+TgtLoc);
+			StockControlCreate.setString(SetColItemCd		,""+TgtItemCd);
+			StockControlCreate.setString(SetColLot			,""+TgtLot);
+			StockControlCreate.setString(SetColExpdate		,""+TgtExpdate);
+			StockControlCreate.setString(SetColActualDate	,""+TgtActualDate);
+			StockControlCreate.executeUpdate();
+		} catch (SQLException e) {
+			Rt = false;
+			e.printStackTrace();
+		}
+		
+		return Rt;
+	}
+	
+	private static PreparedStatement StockControlCreate(String TgtWhCd,String TgtClCd) {
+		//在庫更新するSQL
+		String sql = "Update "
+				+ ""+A00000_Main.MySqlDefaultSchemaWANKO+".WW0015Stock"
+				+ " set "
+				+ "WW0015Stock.ShipPlanQty =WW0015Stock.ShipPlanQty+?,\n"			//引当済数
+				+ "WW0015Stock.PossibleQty =WW0015Stock.PossibleQty-?,\n"			//出荷可能数
+				+ "WW0015Stock.UpdateDate  = ?,\n"		//更新日時
+				+ "WW0015Stock.UpdateUser  = ? \n"		//更新者
+				+ " where 1=1\n"
+				+ " and WW0015Stock.ClCd       = '" + TgtClCd +"' \n"	//荷主コード
+				+ " and WW0015Stock.WhCd       = '" + TgtWhCd +"' \n"	//倉庫コード
+				+ " and WW0015Stock.Loc        = ? \n"					//ロケーション
+				+ " and WW0015Stock.ItemCd     = ? \n"					//商品コード
+				+ " and WW0015Stock.Lot        = ? \n"					//ロット
+				+ " and WW0015Stock.Expdate    = ? \n"					//消費期限
+				+ " and WW0015Stock.ActualDate = ? \n"					//入荷実績日
+				;
+		
+		A100_DbConnect.DB_CONN("WANKO");
+		PreparedStatement stmt01 = null;
+		try {
+			A100_DbConnect.conn.setAutoCommit(true);
+			stmt01 = A100_DbConnect.conn.prepareStatement(sql);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stmt01;
+	}
+	
+	private static PreparedStatement StockSearchPinPoint(String TgtWhCd,String TgtClCd) {
+		//在庫ピンポイント検索するSQL
+		String sql = "select "
+				+"(WW0015Stock.ClCd) as ClCd,\n"						//荷主コード
+				+"(WW0015Stock.WhCd) as WhCd,\n"						//倉庫コード
+				+"(WW0015Stock.Loc) as Loc,\n"							//ロケーション
+				+"(WW0015Stock.ItemCd) as ItemCd,\n"					//商品コード
+				+"(WW0015Stock.Lot) as Lot,\n"							//ロット
+				+"(WW0015Stock.Expdate) as Expdate,\n"					//消費期限
+				+"(WW0015Stock.ActualDate) as ActualDate,\n"			//入荷実績日
+				+"(WW0015Stock.Qty) as Qty,\n"							//数量
+				+"(WW0015Stock.ShipPlanQty) as ShipPlanQty,\n"			//引当済数
+				+"(WW0015Stock.PossibleQty) as PossibleQty \n"			//出荷可能数
+				+" from "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0015Stock"
+				+" where 1=1 \n"
+				+ " and WW0015Stock.ClCd       = '" + TgtClCd +"' \n"	//荷主コード
+				+ " and WW0015Stock.WhCd       = '" + TgtWhCd +"' \n"	//倉庫コード
+				+ " and WW0015Stock.Loc        = ? \n"					//ロケーション
+				+ " and WW0015Stock.ItemCd     = ? \n"					//商品コード
+				+ " and WW0015Stock.Lot        = ? \n"					//ロット
+				+ " and WW0015Stock.Expdate    = ? \n"					//消費期限
+				+ " and WW0015Stock.ActualDate = ? \n"					//入荷実績日
+				;
+		A100_DbConnect.DB_CONN("WANKO");
+		PreparedStatement stmt01 = null;
+		try {
+			A100_DbConnect.conn.setAutoCommit(true);
+			stmt01 = A100_DbConnect.conn.prepareStatement(sql);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stmt01;
+	}
+	
+	private static boolean CreateShipPlovisionKick(PreparedStatement CreateShipPlovision
+			,String TgtWhCd,String TgtClCd,int ShipQty,int Seq,String now_dtm,String UpdateUser
+			,Object[] TgtData
+			,Object[] StockData
+			) {
+		int ColStockClCd		=   0;			//荷主コード
+		int ColStockCLName01	=   1;			//荷主表記名
+		int ColStockWhCd		=   2;			//倉庫コード
+		int ColStockWHName		=   3;			//担当倉庫名
+		int ColStockClGpCD		=   4;			//荷主グループCD
+		int ColStockClGpName01	=   5;			//グループ名1
+		int ColStockLoc			=   6;			//ロケーション
+		int ColStockLocName		=   7;			//ロケーション名
+		int ColStockLocType		=   8;			//ロケタイプ　0:通常　1:保管　8:入荷時　9:引当禁止
+		int ColStockItemCd		=   9;			//商品コード
+		int ColStockLot			=  10;			//ロット
+		int ColStockExpdate		=  11;			//消費期限
+		int ColStockActualDate	=  12;			//入荷実績日
+		int ColStockQty			=  13;			//数量
+		int ColStockShipPlanQty	=  14;			//引当済数
+		int ColStockPossibleQty	=  15;			//出荷可能数
+		int ColStockItemName	=  16;			//商品名
+		int ColStockItemName01	=  17;			//商品表記名
+		int ColStockItemName02	=  18;			//商品正式名
+		int ColStockItemName03	=  19;			//商品略名
+		int ColStockClItemCd	=  20;			//荷主商品コード
+		int ColStockJanCd		=  21;			//ソースマーク_BCD（バラ）
+		int ColStockItemMdNo	=  22;			//商品型番
+		int ColStockCtUnitQty	=  23;			//カートン入数
+		int ColStockCsUnitQty	=  24;			//ケース入数
+		int ColStockPlUnitQty	=  25;			//パレット入数
+		int ColStockUnitName	=  26;			//商品単位
+		int ColStockCtUnitName	=  27;			//カートン商品単位
+		int ColStockCsUnitName	=  28;			//ケース商品単位
+		int ColStockPlUnitName	=  29;			//パレット商品単位
+		int ColStockEntryDate	=  30;			//登録日時
+		int ColStockUpdateDate	=  31;			//更新日時
+		int ColStockEntryUser	=  32;			//登録者
+		int ColStockUpdateUser	=  33;			//更新者
+		int ColAfterStockPossibleQty	=  34;			//引当後出荷可能数
+		
+		
+		int CtUnitQty	= (int)StockData[ColStockCtUnitQty];			//カートン入数
+		int CsUnitQty	= (int)StockData[ColStockCsUnitQty];			//ケース入数
+		int PlUnitQty	= (int)StockData[ColStockPlUnitQty];			//パレット入数
+		
+		String SetOkuriNo			= (String)TgtData[ColOkuriNo];				//送り状番号(WMS採番)
+		int SetMsNo					= (int)TgtData[ColMsNo];					//明細番号
+		String SetOrderItemCd		= (String)TgtData[ColItemCd];				//商品コード
+		String SetOrderItemName01	= (String)TgtData[ColOrderItemName01];	//品名01
+		String SetOrderLot			= (String)TgtData[ColLot];					//受注ロット指定
+		String SetOrderExpDate		= (String)TgtData[ColExpDate];				//受注賞味期限指定
+		int SetOrderQty				= (int)TgtData[ColNeedQty];				//受注個数
+		String SetShipLoc			= (String)StockData[ColStockLoc];			//ロケーション
+		String SetShipItemCd		= (String)StockData[ColStockItemCd];		//商品コード
+		String SetShipLot			= (String)StockData[ColStockLot];			//ロット
+		String SetShipExpdate		= (String)StockData[ColStockExpdate];		//消費期限
+		String SetShipActualDate	= (String)StockData[ColStockActualDate];	//入荷実績日
+		int SetPackingType			= (int)TgtData[ColPackingType];			//荷姿タイプ
+		int SetPackingQty			= (int)ShipQty;			//荷姿数量
+		String SetUnitName			= (String)(String)StockData[ColStockUnitName];			//荷姿単位
+		int SetPackingUnitQty		= (int)1;				//荷姿単位のバラ入数
+		int SetBRShipQty			= (int)ShipQty;			//バラ数量
+		int SetCTShipQty			= (int)0;				//カートン数量
+		int SetCSShipQty			= (int)0;				//ケース数量
+		int SetPLShipQty			= (int)0;				//パレット数量
+		String SetBRUnitName		= (String)StockData[ColStockUnitName];		//バラ単位名
+		String SetCTUnitName		= (String)StockData[ColStockCtUnitName];	//カートン単位名
+		String SetCSUnitName		= (String)StockData[ColStockCsUnitName];	//ケース単位名
+		String SetPLUnitName		= (String)StockData[ColStockPlUnitName];	//パレット単位名
+
+		switch(SetPackingType) {
+			case 1:
+				if(0<CtUnitQty && 0==ShipQty%CtUnitQty) {
+					SetPackingUnitQty		= CtUnitQty;				//荷姿単位のバラ入数
+					SetPackingQty			= (int)ShipQty/CtUnitQty;	//荷姿数量
+				}else {
+					SetPackingType	= 0;
+				}
+				break;
+			case 2:
+				if(0<CsUnitQty && 0==ShipQty%CsUnitQty) {
+					SetPackingUnitQty		= CsUnitQty;				//荷姿単位のバラ入数
+					SetPackingQty			= (int)ShipQty/CsUnitQty;	//荷姿数量
+				}else {
+					SetPackingType	= 0;
+				}
+				break;
+			case 3:
+				if(0<PlUnitQty && 0==ShipQty%PlUnitQty) {
+					SetPackingUnitQty		= PlUnitQty;				//荷姿単位のバラ入数
+					SetPackingQty			= (int)ShipQty/PlUnitQty;	//荷姿数量
+				}else {
+					SetPackingType	= 0;
+				}
+				break;
+			default:
+				break;
+		}
+		
+		if(0<PlUnitQty) {
+			SetPLShipQty = (int)(SetBRShipQty/PlUnitQty);
+			SetBRShipQty = (int)(SetBRShipQty%PlUnitQty);
+		}
+		if(0<CsUnitQty) {
+			SetCSShipQty = (int)(SetBRShipQty/CsUnitQty);
+			SetBRShipQty = (int)(SetBRShipQty%CsUnitQty);
+		}
+		if(0<CtUnitQty) {
+			SetCTShipQty = (int)(SetBRShipQty/CtUnitQty);
+			SetBRShipQty = (int)(SetBRShipQty%CtUnitQty);
+		}
+		
+		boolean Rt = true;
+		int SetColOkuriNo			=  1;	//送り状番号(WMS採番)
+		int SetColMsNo				=  2;	//明細番号
+		int SetColSeq				=  3;	//引当枝番
+		int SetColOrderItemCd		=  4;	//商品コード
+		int SetColOrderItemName01	=  5;	//品名01
+		int SetColOrderLot			=  6;	//受注ロット指定
+		int SetColOrderExpDate		=  7;	//受注賞味期限指定
+		int SetColOrderQty			=  8;	//受注個数
+		int SetColShipWhCd			=  9;	//倉庫コード
+		int SetColShipLoc			= 10;	//ロケーション
+		int SetColShipItemCd		= 11;	//商品コード
+		int SetColShipLot			= 12;	//ロット
+		int SetColShipExpdate		= 13;	//消費期限
+		int SetColShipActualDate	= 14;	//入荷実績日
+		int SetColShipQty			= 15;	//引当数量
+		int SetColEntryDate			= 16;	//登録日時
+		int SetColUpdateDate		= 17;	//更新日時
+		int SetColEntryUser			= 18;	//登録者
+		int SetColUpdateUser		= 19;	//更新者
+		int SetColFixFg				= 20;	//引落済フラグ
+		int SetColPackingType		= 21;	//荷姿タイプ
+		int SetColPackingQty		= 22;	//荷姿数量
+		int SetColUnitName			= 23;	//荷姿単位
+		int SetColPackingUnitQty	= 24;	//荷姿単位のバラ入数
+		int SetColBRShipQty			= 25;	//バラ数量
+		int SetColCTShipQty			= 26;	//カートン数量
+		int SetColCSShipQty			= 27;	//ケース数量
+		int SetColPLShipQty			= 28;	//パレット数量
+		int SetColBRUnitName		= 29;	//バラ単位名
+		int SetColCTUnitName		= 30;	//カートン単位名
+		int SetColCSUnitName		= 31;	//ケース単位名
+		int SetColPLUnitName		= 32;	//パレット単位名
+		
+		try {
+			CreateShipPlovision.setString(SetColOkuriNo			,""+SetOkuriNo);			//送り状番号(WMS採番)
+			CreateShipPlovision.setString(SetColMsNo			,""+SetMsNo);				//明細番号
+			CreateShipPlovision.setString(SetColSeq				,""+Seq);					//引当枝番
+			CreateShipPlovision.setString(SetColOrderItemCd		,""+SetOrderItemCd);		//商品コード
+			CreateShipPlovision.setString(SetColOrderItemName01	,""+SetOrderItemName01);	//品名01
+			CreateShipPlovision.setString(SetColOrderLot		,""+SetOrderLot);			//受注ロット指定
+			if("".equals(SetOrderExpDate)) {
+				CreateShipPlovision.setString(SetColOrderExpDate	,null);		//受注賞味期限指定
+			}else {
+				CreateShipPlovision.setString(SetColOrderExpDate	,""+SetOrderExpDate);		//受注賞味期限指定
+			}
+			CreateShipPlovision.setString(SetColOrderQty		,""+SetOrderQty);			//受注個数
+			CreateShipPlovision.setString(SetColShipWhCd		,TgtWhCd);					//倉庫コード
+			CreateShipPlovision.setString(SetColShipLoc			,""+SetShipLoc);			//ロケーション
+			CreateShipPlovision.setString(SetColShipItemCd		,""+SetShipItemCd);			//商品コード
+			CreateShipPlovision.setString(SetColShipLot			,""+SetShipLot);			//ロット
+			if("".equals(SetShipExpdate)) {
+				CreateShipPlovision.setString(SetColShipExpdate		,null);					//消費期限
+			}else {
+				CreateShipPlovision.setString(SetColShipExpdate		,""+SetShipExpdate);	//消費期限
+			}
+			if("".equals(SetShipActualDate)) {
+				CreateShipPlovision.setString(SetColShipActualDate	,null);					//入荷実績日
+			}else {
+				CreateShipPlovision.setString(SetColShipActualDate	,""+SetShipActualDate);	//入荷実績日
+			}
+			
+			CreateShipPlovision.setString(SetColShipQty			,""+ShipQty);				//引当数量
+			CreateShipPlovision.setString(SetColEntryDate		,now_dtm);					//登録日時
+			CreateShipPlovision.setString(SetColUpdateDate		,now_dtm);					//更新日時
+			CreateShipPlovision.setString(SetColEntryUser		,UpdateUser);				//登録者
+			CreateShipPlovision.setString(SetColUpdateUser		,UpdateUser);				//更新者
+			CreateShipPlovision.setString(SetColFixFg			,"0");						//引落済フラグ
+			CreateShipPlovision.setString(SetColPackingType		,""+SetPackingType);		//荷姿タイプ
+			CreateShipPlovision.setString(SetColPackingQty		,""+SetPackingQty);			//荷姿数量
+			CreateShipPlovision.setString(SetColUnitName		,""+SetUnitName);			//荷姿単位
+			CreateShipPlovision.setString(SetColPackingUnitQty	,""+SetPackingUnitQty);		//荷姿単位のバラ入数
+			CreateShipPlovision.setString(SetColBRShipQty		,""+SetBRShipQty);			//バラ数量
+			CreateShipPlovision.setString(SetColCTShipQty		,""+SetCTShipQty);			//カートン数量
+			CreateShipPlovision.setString(SetColCSShipQty		,""+SetCSShipQty);			//ケース数量
+			CreateShipPlovision.setString(SetColPLShipQty		,""+SetPLShipQty);			//パレット数量
+			CreateShipPlovision.setString(SetColBRUnitName		,""+SetBRUnitName);			//バラ単位名
+			CreateShipPlovision.setString(SetColCTUnitName		,""+SetCTUnitName);			//カートン単位名
+			CreateShipPlovision.setString(SetColCSUnitName		,""+SetCSUnitName);			//ケース単位名
+			CreateShipPlovision.setString(SetColPLUnitName		,""+SetPLUnitName);			//パレット単位名
+			
+			CreateShipPlovision.executeUpdate();
+		} catch (SQLException e) {
+			Rt = false;
+			e.printStackTrace();
+		}
+		
+		return Rt;
+	}
+	
+	
+	private static PreparedStatement CreateShipPlovision(String TgtWhCd,String TgtClCd) {
+		//引当結果レコードを生成するSQL
+		String sql = "insert into "+A00000_Main.MySqlDefaultSchemaWANKO+".WW0020ShipPlovision\n"
+				+"(cl_cd,"				//荷主コード
+				+"InvoiceWHCD,"			//倉庫コード
+				+"OkuriNo,"				//送り状番号(WMS採番)
+				+"MsNo,"				//明細番号
+				+"Seq,"					//引当枝番
+				+"OrderItemCd,"			//商品コード
+				+"OrderItemName01,"		//品名01
+				+"OrderLot,"			//受注ロット指定
+				+"OrderExpDate,"		//受注賞味期限指定
+				+"OrderQty,"			//受注個数
+				+"ShipWhCd,"			//倉庫コード
+				+"ShipLoc,"				//ロケーション
+				+"ShipItemCd,"			//商品コード
+				+"ShipLot,"				//ロット
+				+"ShipExpdate,"			//消費期限
+				+"ShipActualDate,"		//入荷実績日
+				+"ShipQty,"				//引当数量
+				+"EntryDate,"			//登録日時
+				+"UpdateDate,"			//更新日時
+				+"EntryUser,"			//登録者
+				+"UpdateUser,"			//更新者
+				+"FixFg,"				//引落済フラグ
+				+"PackingType,"			//荷姿タイプ
+				+"PackingQty,"			//荷姿数量
+				+"UnitName,"			//荷姿単位
+				+"PackingUnitQty,"		//荷姿単位のバラ入数
+				+"BRShipQty,"			//バラ数量
+				+"CTShipQty,"			//カートン数量
+				+"CSShipQty,"			//ケース数量
+				+"PLShipQty,"			//パレット数量
+				+"BRUnitName,"			//バラ単位名
+				+"CTUnitName,"			//カートン単位名
+				+"CSUnitName,"			//ケース単位名
+				+"PLUnitName"			//パレット単位名
+				
+				+")values ("
+				
+				+"'"+TgtClCd+"',"	//荷主コード
+				+"'"+TgtWhCd+"',"	//倉庫コード
+				+"?,"				//送り状番号(WMS採番)
+				+"?,"				//明細番号
+				+"?,"				//引当枝番
+				+"?,"				//商品コード
+				+"?,"				//品名01
+				+"?,"				//受注ロット指定
+				+"?,"				//受注賞味期限指定
+				+"?,"				//受注個数
+				+"?,"				//倉庫コード
+				+"?,"				//ロケーション
+				+"?,"				//商品コード
+				+"?,"				//ロット
+				+"?,"				//消費期限
+				+"?,"				//入荷実績日
+				+"?,"				//引当数量
+				+"?,"				//登録日時
+				+"?,"				//更新日時
+				+"?,"				//登録者
+				+"?,"				//更新者
+				+"?,"				//引落済フラグ
+				+"?,"				//荷姿タイプ
+				+"?,"				//荷姿数量
+				+"?,"				//荷姿単位
+				+"?,"				//荷姿単位のバラ入数
+				+"?,"				//バラ数量
+				+"?,"				//カートン数量
+				+"?,"				//ケース数量
+				+"?,"				//パレット数量
+				+"?,"				//バラ単位名
+				+"?,"				//カートン単位名
+				+"?,"				//ケース単位名
+				+"?"				//パレット単位名
+				+")"
+				;
+		A100_DbConnect.DB_CONN("WANKO");
+		PreparedStatement stmt01 = null;
+		try {
+			A100_DbConnect.conn.setAutoCommit(true);
+			stmt01 = A100_DbConnect.conn.prepareStatement(sql);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stmt01;
+	}
+	
+	
+	
+	private static PreparedStatement StockGet(String TgtWhCd,String TgtClCd,String SortMode) {
 		String sql = "select "
 				+"(WW0015Stock.ClCd) as ClCd,\n"						//荷主コード
 				+"(KM0030_CLIENTMST.CLName01) as CLName,\n"				//荷主表記名
@@ -1049,8 +2273,11 @@ public class WT100_ShipPlovision{
 		sql = sql + " and WW0015Stock.WhCd = '"+TgtWhCd+"' \n";
 		sql = sql + " and WW0015Stock.PossibleQty >0 \n";
 		sql = sql + " and WW0015Stock.ItemCd = ? \n";
-		sql = sql + " order by WW0015Stock.ItemCd,WW0015Stock.Expdate,WM0010LOCATIONMST.LocType,WW0015Stock.Lot,WW0015Stock.ActualDate \n";
-		
+		if("Loc".equals(SortMode)) {
+			sql = sql + " order by WW0015Stock.ItemCd,WW0015Stock.Expdate,WM0010LOCATIONMST.LocType,WW0015Stock.Lot,WW0015Stock.ActualDate,WW0015Stock.Loc \n";
+		}else {
+			sql = sql + " order by WW0015Stock.ItemCd,WW0015Stock.Expdate,WM0010LOCATIONMST.LocType,WW0015Stock.Lot,WW0015Stock.ActualDate,WW0015Stock.PossibleQty \n";
+		}
 		A100_DbConnect.DB_CONN("WANKO");
 		PreparedStatement stmt01 = null;
 		try {
@@ -1145,9 +2372,7 @@ public class WT100_ShipPlovision{
 			e.printStackTrace();
 		}
 		return stmt01;
-		
 	}
-	
 	
 	private static PreparedStatement StockSummaryGet(String TgtWhCd,String TgtClCd) {
 		String sql = "select "
@@ -1209,7 +2434,28 @@ public class WT100_ShipPlovision{
 		return stmt01;
 	}
 	
-	
+	private static PreparedStatement OkuriHdUpdate(String TgtWhCd,String TgtClCd) {
+		String sql = "update "+A00000_Main.MySqlDefaultSchemaNYANKO+".KT0010_OKURI_HD \n"
+				+ "set "
+				+ "KT0010_OKURI_HD.WmsStatus = '1',\n"
+				+ "KT0010_OKURI_HD.UpdateDate = ?,\n"
+				+ "KT0010_OKURI_HD.UpdateUser = ?,\n"
+				+ "KT0010_OKURI_HD.UpdatePG = 'WT100_ShipPlovision' \n"
+				+ " where 1=1"
+				+ " and KT0010_OKURI_HD.cl_cd ='"+TgtClCd+"'"
+				+ " and KT0010_OKURI_HD.InvoiceWHCD ='"+TgtWhCd+"'"
+				+ " and KT0010_OKURI_HD.OkuriNo = ?"
+				;
+		A100_DbConnect.DB_CONN("NYANKO");
+		PreparedStatement stmt01 = null;
+		try {
+			A100_DbConnect.conn.setAutoCommit(true);
+			stmt01 = A100_DbConnect.conn.prepareStatement(sql);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stmt01;
+	}
 	
 	private static PreparedStatement MinExpDateGet(String TgtWhCd,String TgtClCd) {
 		String sql = "select "
@@ -1256,7 +2502,6 @@ public class WT100_ShipPlovision{
 		return stmt01;
 	}
 	
-	
 	private static PreparedStatement MaxExpDateGet(String TgtWhCd,String TgtClCd) {
 		String sql = "select "
 				+"Min(KT0010_OKURI_HD.cl_cd) 				as ClCd,\n"				//荷主コード
@@ -1300,6 +2545,65 @@ public class WT100_ShipPlovision{
 		}
 		return stmt01;
 	}
+	private static Object[][]  PlovisionSortMode(String TgtWhCd,String TgtClCd){
+		//引当順序在庫残少ない順もしくはロケ順の判断基準入手
+		ArrayList<String> SearchClWh 			= new ArrayList<String>();
+		ArrayList<String> SearchClCd 			= new ArrayList<String>();
+		ArrayList<String> SearchParaCd 			= new ArrayList<String>();	
+		ArrayList<Integer> SearchParaCdSeqStr	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaCdSeqEnd	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaName 		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt01		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt02		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt03		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt04		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt05		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt06		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt07		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt08		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt09		= new ArrayList<String>();
+		ArrayList<String> SearchParaTxt10		= new ArrayList<String>();
+		ArrayList<Integer> SearchParaInt01Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10Str	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt01End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt02End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt03End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt04End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt05End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt06End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt07End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt08End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt09End	= new ArrayList<Integer>();
+		ArrayList<Integer> SearchParaInt10End	= new ArrayList<Integer>();
+		ArrayList<String> SearchParaTxtAll = new ArrayList<String>();
+		Boolean AllSearch = false;
+		SearchClWh.add(TgtWhCd);
+		SearchClCd.add(TgtClCd);
+		SearchParaCd.add("PlovisionSortMode");
+		
+		Object[][] ParameterMstWankoRt = M100_ParameterMstWankoRt.ParameterMstWankoRt(
+				SearchClWh,SearchClCd,
+				SearchParaCd,SearchParaCdSeqStr,SearchParaCdSeqEnd,SearchParaName,
+				SearchParaTxt01,SearchParaTxt02,SearchParaTxt03,SearchParaTxt04,SearchParaTxt05,
+				SearchParaTxt06,SearchParaTxt07,SearchParaTxt08,SearchParaTxt09,SearchParaTxt10,
+				SearchParaInt01Str,SearchParaInt02Str,SearchParaInt03Str,SearchParaInt04Str,SearchParaInt05Str,
+				SearchParaInt06Str,SearchParaInt07Str,SearchParaInt08Str,SearchParaInt09Str,SearchParaInt10Str,
+				SearchParaInt01End,SearchParaInt02End,SearchParaInt03End,SearchParaInt04End,SearchParaInt05End,
+				SearchParaInt06End,SearchParaInt07End,SearchParaInt08End,SearchParaInt09End,SearchParaInt10End,
+				SearchParaTxtAll,
+				AllSearch);
+		
+		return ParameterMstWankoRt;
+	}
+	
 	private static int BanAllExpDateOld(String TgtWhCd,String TgtClCd){
 		//全届先で古い賞味期限禁止設定をWMSパラメータマスタから取得
 		//1を返却した場合全届け先で日付逆転禁止

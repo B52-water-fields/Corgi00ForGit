@@ -213,6 +213,8 @@ public class B100_DefaultVariable{
 		
 		DefoultDelivery();			//基本の届け先を作る。超わがまま届先として出荷時前回納品より古い賞味期限不可・明細単位でロットがまとまってないとダメな届先に設定
 		
+		PlovisionSort();				//引当優先順位(賞味期限-ロット-ロケタイプ-残数量少ないもの順が基本)
+		
 		B100_LanguageControl.DefaultVariableControl();	//ログインユーザーの言語にあわせる
 	}
 	
@@ -597,14 +599,56 @@ public class B100_DefaultVariable{
 				 ,{"Com03"				,"1"	,"0"	,""		,""	}									//コメント03
 				 ,{"Com04"				,"1"	,"0"	,""		,""	}									//コメント04
 				 ,{"Com05"				,"1"	,"0"	,""		,""	}									//コメント05
-				 ,{"EntryDate"			,"1"	,"0"	,""		,now_dtm	}									//データ登録日時
-				 ,{"UpdateDate"			,"1"	,"0"	,""		,now_dtm	}									//データ更新日時
+				 ,{"EntryDate"			,"1"	,"0"	,""		,now_dtm	}							//データ登録日時
+				 ,{"UpdateDate"			,"1"	,"0"	,""		,now_dtm	}							//データ更新日時
 				 ,{"EntryUser"			,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}		//登録者コード
 				 ,{"UpdateUser"			,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}		//更新者コード
 				 ,{"DelFg"				,"1"	,"0"	,""		,"0"	}								//削除区分
-				 ,{"MstPriorityFirstFg"	,"1"	,"0"	,""		,"0"	}									//届先マスタ優先フラグ
+				 ,{"MstPriorityFirstFg"	,"1"	,"0"	,""		,"0"	}								//届先マスタ優先フラグ
 				};
 		A100_InsertUpdateSQL.InsertUpdateOneRecord(SetStringComversion,tgt_table,TgtDB,non_msg_fg);
+	}
+	
+	private static void PlovisionSort() {
+		String now_dtm = B100_DateTimeControl.dtmString2(B100_DateTimeControl.dtm()[1])[1];
+		//引当優先順位
+		String tgt_table = "WM0000PARAMETER";
+		String TgtDB = "WANKO";
+		int non_msg_fg = 1;
+		
+		Object[][] PlovisionSortMode={
+				 {"ClWh"		,"1"	,"0"	,"Key"	,A00000_Main.ClWh	}					//倉庫コード
+				,{"ClCd"		,"1"	,"0"	,"Key"	,A00000_Main.ClCd	}					//荷主コード
+				,{"ParaCd"		,"1"	,"0"	,"Key"	,"PlovisionSortMode"	}				//パラメータコード
+				,{"ParaCdSeq"	,"1"	,"0"	,"Key"	,"0"	}								//ナンバリング
+				,{"ParaName"	,"1"	,"0"	,""		,"引当順序"	}							//パラメータ名
+				,{"ParaTxt01"	,"1"	,"0"	,""		,"数値項目01=0なら賞味期限古い順-出荷ロケ⇒保管ロケ-ロット-入荷実績日-ロケ残数が少ないもの優先"	}			//パラメータテキスト項目01
+				,{"ParaTxt02"	,"1"	,"0"	,""		,"数値項目01=1なら賞味期限古い順-出荷ロケ⇒保管ロケ-ロット-入荷実績日-ロケCD順"	}							//パラメータテキスト項目02
+				,{"ParaTxt03"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目03
+				,{"ParaTxt04"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目04
+				,{"ParaTxt05"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目05
+				,{"ParaTxt06"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目06
+				,{"ParaTxt07"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目07
+				,{"ParaTxt08"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目08
+				,{"ParaTxt09"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目09
+				,{"ParaTxt10"	,"1"	,"0"	,""		,""	}			//パラメータテキスト項目10
+				,{"ParaInt01"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目01
+				,{"ParaInt02"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目02
+				,{"ParaInt03"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目03
+				,{"ParaInt04"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目04
+				,{"ParaInt05"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目05
+				,{"ParaInt06"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目06
+				,{"ParaInt07"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目07
+				,{"ParaInt08"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目08
+				,{"ParaInt09"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目09
+				,{"ParaInt10"	,"1"	,"0"	,""		,"0"	}		//パラメータ数値項目10
+				,{"EntryDate"	,"1"	,"0"	,""		,now_dtm	}	//登録日
+				,{"UpdateDate"	,"1"	,"0"	,""		,now_dtm	}	//更新日
+				,{"EntryUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//登録者"}
+				,{"UpdateUser"	,"1"	,"0"	,""		,"(" + A00000_Main.LoginUserId + ")" + A00000_Main.LoginUserName	}	//更新者"}
+				};
+		A100_InsertUpdateSQL.InsertUpdateOneRecord(PlovisionSortMode,tgt_table,TgtDB,non_msg_fg);
+		
 	}
 	
 	
