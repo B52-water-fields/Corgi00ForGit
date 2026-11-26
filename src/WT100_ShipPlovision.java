@@ -12,38 +12,6 @@ import javax.swing.JOptionPane;
 
 public class WT100_ShipPlovision{
 	//在庫引き当て
-	/*
-	static final int StockItemLotExpDateSumRt_Col_ClCd				= (int) 0;		//荷主コード
-	static final int StockItemLotExpDateSumRt_Col_CLName			= (int) 1;		//荷主表記名
-	static final int StockItemLotExpDateSumRt_Col_WhCd				= (int) 2;		//倉庫コード
-	static final int StockItemLotExpDateSumRt_Col_ClWHName			= (int) 3;		//担当倉庫名
-	static final int StockItemLotExpDateSumRt_Col_ClGpCD			= (int) 4;		//荷主グループCD
-	static final int StockItemLotExpDateSumRt_Col_ClGpName			= (int) 5;		//グループ名1
-	static final int StockItemLotExpDateSumRt_Col_ItemCd			= (int) 6;		//商品コード
-	static final int StockItemLotExpDateSumRt_Col_Lot				= (int) 7;		//ロット
-	static final int StockItemLotExpDateSumRt_Col_Expdate			= (int) 8;		//消費期限
-	static final int StockItemLotExpDateSumRt_Col_Qty				= (int) 9;		//数量
-	static final int StockItemLotExpDateSumRt_Col_ShipPlanQty		= (int)10;		//引当済数
-	static final int StockItemLotExpDateSumRt_Col_PossibleQty		= (int)11;		//出荷可能数
-	static final int StockItemLotExpDateSumRt_Col_ItemName			= (int)12;		//商品名
-	static final int StockItemLotExpDateSumRt_Col_ItemName01		= (int)13;		//商品表記名
-	static final int StockItemLotExpDateSumRt_Col_ItemName02		= (int)14;		//商品正式名
-	static final int StockItemLotExpDateSumRt_Col_ItemName03		= (int)15;		//商品略名
-	static final int StockItemLotExpDateSumRt_Col_CtUnitQty			= (int)16;		//カートン入数
-	static final int StockItemLotExpDateSumRt_Col_CsUnitQty			= (int)17;		//ケース入数
-	static final int StockItemLotExpDateSumRt_Col_PlUnitQty			= (int)18;		//パレット入数
-	static final int StockItemLotExpDateSumRt_Col_UnitName			= (int)19;		//商品単位
-	static final int StockItemLotExpDateSumRt_Col_CtUnitName		= (int)20;		//カートン商品単位
-	static final int StockItemLotExpDateSumRt_Col_CsUnitName		= (int)21;		//ケース商品単位
-	static final int StockItemLotExpDateSumRt_Col_PlUnitName		= (int)22;		//パレット商品単位
-	
-	static final int RtOkuriItemLotExpDateSumRt_ColMsItemCd			= (int) 0;		//明細商品コード
-	static final int RtOkuriItemLotExpDateSumRt_ColMsQty			= (int) 1;		//明細個数
-	static final int RtOkuriItemLotExpDateSumRt_ColMsLot			= (int) 2;		//明細ロット指定
-	static final int RtOkuriItemLotExpDateSumRt_ColMsExpDate		= (int) 3;		//明細賞味期限指定
-	static final int RtOkuriItemLotExpDateSumRt_ColMsPackingType	= (int) 4;		//明細荷姿タイプ
-	*/
-	
 	static final int ColErrType				= (int) 0;
 	static final int ColOkuriNo				= (int) 1;
 	static final int ColMsNo					= (int) 2;
@@ -687,7 +655,7 @@ public class WT100_ShipPlovision{
 												ShipQty = ShipQty*UnitQty;
 												
 												WorkNeedQty = WorkNeedQty-ShipQty;
-												StockData[i03][ColStockAfterPossibleQty]=(int)StockData[i03][ColStockAfterPossibleQty];
+												StockData[i03][ColStockAfterPossibleQty]=(int)StockData[i03][ColStockAfterPossibleQty]-ShipQty;
 											}
 										}
 									}
