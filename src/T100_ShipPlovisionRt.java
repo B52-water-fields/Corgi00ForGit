@@ -406,40 +406,40 @@ public class T100_ShipPlovisionRt{
 	
 	public static Object[][] RtShipPlovisionRt(){
 		Object[][] Rt = {
-						 {"cl_cd"				,Colcl_cd					,"String"	,"荷主コード"			,"Key"}
-						,{"InvoiceWHCD"			,ColInvoiceWHCD			,"String"	,"倉庫コード"			,"Key"}
-						,{"OkuriNo"				,ColOkuriNo				,"String"	,"送り状番号"			,"Key"}
-						,{"MsNo"				,ColMsNo					,"int"		,"明細番号"				,"Key"}
- 						,{"Seq"					,ColSeq					,"int"		,"引当枝番"				,"Key"}
-						,{"OrderItemCd"			,ColOrderItemCd			,"String"	,"商品コード"			,""}
-						,{"OrderItemName01"		,ColOrderItemName01		,"String"	,"商品表記名"			,""}
-						,{"OrderLot"			,ColOrderLot				,"String"	,"受注ロット指定"		,""}
-						,{"OrderExpDate"		,ColOrderExpDate			,"Date"		,"受注賞味期限指定"		,""}
-						,{"OrderQty"			,ColOrderQty				,"int"		,"受注個数"				,""}
-						,{"ShipWhCd"			,ColShipWhCd				,"String"	,"出荷倉庫コード"		,""}
- 						,{"ShipLoc"				,ColShipLoc				,"String"	,"ロケーション"			,""}
-						,{"ShipItemCd"			,ColShipItemCd			,"String"	,"商品コード"			,""}
-						,{"ShipLot"				,ColShipLot				,"String"	,"ロット"				,""}
-						,{"ShipExpdate"			,ColShipExpdate			,"Date"		,"消費期限"				,""}
-						,{"ShipActualDate"		,ColShipActualDate		,"Date"		,"入荷実績日"			,""}
-						,{"ShipQty"				,ColShipQty				,"int"		,"引当数量"				,""}
-						,{"FixFg"				,ColFixFg					,"int"		,"引落済フラグ"			,""}
-						,{"PackingType"			,ColPackingType			,"int"		,"荷姿タイプ"			,""}
-						,{"PackingQty"			,ColPackingQty			,"int"		,"荷姿数量"				,""}
-						,{"UnitName"			,ColUnitName				,"String"	,"荷姿単位"				,""}
-						,{"PackingUnitQty"		,ColPackingUnitQty		,"int"		,"荷姿単位のバラ入数"	,""}
-						,{"BRShipQty"			,ColBRShipQty				,"int"		,"バラ数量"				,""}
-						,{"CTShipQty"			,ColCTShipQty				,"int"		,"カートン数量"			,""}
-						,{"CSShipQty"			,ColCSShipQty				,"int"		,"ケース数量"			,""}
-						,{"PLShipQty"			,ColPLShipQty				,"int"		,"パレット数量"			,""}
-						,{"BRUnitName"			,ColBRUnitName			,"String"	,"バラ単位名"			,""}
-						,{"CTUnitName"			,ColCTUnitName			,"String"	,"カートン単位名"		,""}
-						,{"CSUnitName"			,ColCSUnitName			,"String"	,"ケース単位名"			,""}
-						,{"PLUnitName"			,ColPLUnitName			,"String"	,"パレット単位名"		,""}
-						,{"EntryDate"			,ColEntryDate				,"DateTime"	,"登録日時"				,""}
-						,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"更新日時"				,""}
-						,{"EntryUser"			,ColEntryUser				,"String"	,"登録者"				,""}
-						,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者"				,""}
+						 {"cl_cd"				,Colcl_cd					,"String"	,"荷主コード"			,"Key"		,"Client Code"		,"货主代码"		,"Mã chủ hàng"}
+						,{"InvoiceWHCD"			,ColInvoiceWHCD			,"String"	,"倉庫コード"			,"Key"		,"Warehouse Code"		,"仓库代码"		,"Mã kho"}
+						,{"OkuriNo"				,ColOkuriNo				,"String"	,"送り状番号"			,"Key"		,"Waybill No."		,"运单号"		,"Số vận đơn"}
+						,{"MsNo"				,ColMsNo					,"int"		,"明細番号"				,"Key"		,"Detail No."		,"明细编号"		,"Số chi tiết"}
+ 						,{"Seq"					,ColSeq					,"int"		,"引当枝番"				,"Key"		,"Allocation Seq. No."		,"分配序号"		,"Số thứ tự phân bổ"}
+						,{"OrderItemCd"			,ColOrderItemCd			,"String"	,"商品コード"			,""		,"Item Code"		,"商品代码"		,"Mã hàng"}
+						,{"OrderItemName01"		,ColOrderItemName01		,"String"	,"商品表記名"			,""		,"Display Item Name"		,"商品显示名称"		,"Tên hiển thị"}
+						,{"OrderLot"			,ColOrderLot				,"String"	,"受注ロット指定"		,""		,"Order Specified Lot"		,"订单指定批次"		,"Lô chỉ định theo đơn"}
+						,{"OrderExpDate"		,ColOrderExpDate			,"Date"		,"受注賞味期限指定"		,""		,"Order Specified Expiration Date"		,"订单指定保质期"		,"Hạn sử dụng chỉ định theo đơn"}
+						,{"OrderQty"			,ColOrderQty				,"int"		,"受注個数"				,""		,"Order Qty"		,"订单数量"		,"SL đặt hàng"}
+						,{"ShipWhCd"			,ColShipWhCd				,"String"	,"出荷倉庫コード"		,""		,"Shipping Warehouse Code"		,"出库仓库代码"		,"Mã kho xuất hàng"}
+ 						,{"ShipLoc"				,ColShipLoc				,"String"	,"ロケーション"			,""		,"Location"		,"库位"		,"Vị trí"}
+						,{"ShipItemCd"			,ColShipItemCd			,"String"	,"商品コード"			,""		,"Item Code"		,"商品代码"		,"Mã hàng"}
+						,{"ShipLot"				,ColShipLot				,"String"	,"ロット"				,""		,"Lot"		,"批次"		,"Lô"}
+						,{"ShipExpdate"			,ColShipExpdate			,"Date"		,"消費期限"				,""		,"Expiration Date"		,"有效期"		,"Hạn sử dụng"}
+						,{"ShipActualDate"		,ColShipActualDate		,"Date"		,"入荷実績日"			,""		,"Receipt Date"		,"入库日期"		,"Ngày nhập kho"}
+						,{"ShipQty"				,ColShipQty				,"int"		,"引当数量"				,""		,"Allocated Qty"		,"已分配数量"		,"SL đã phân bổ"}
+						,{"FixFg"				,ColFixFg					,"int"		,"引落済フラグ"			,""		,"Stock Deducted Flag"		,"库存已扣减标志"		,"Cờ đã trừ tồn kho"}
+						,{"PackingType"			,ColPackingType			,"int"		,"荷姿タイプ"			,""		,"Packing Type"		,"包装类型"		,"Loại đóng gói"}
+						,{"PackingQty"			,ColPackingQty			,"int"		,"荷姿数量"				,""		,"Packing Qty"		,"包装数量"		,"SL theo loại đóng gói"}
+						,{"UnitName"			,ColUnitName				,"String"	,"荷姿単位"				,""		,"Packing Unit"		,"包装单位"		,"Đơn vị đóng gói"}
+						,{"PackingUnitQty"		,ColPackingUnitQty		,"int"		,"荷姿単位のバラ入数"	,""		,"Each Qty per Packing Unit"		,"每包装单位单品数"		,"SL hàng lẻ mỗi đơn vị đóng gói"}
+						,{"BRShipQty"			,ColBRShipQty				,"int"		,"バラ数量"				,""		,"Each Qty"		,"单品数量"		,"SL hàng lẻ"}
+						,{"CTShipQty"			,ColCTShipQty				,"int"		,"カートン数量"			,""		,"Carton Qty"		,"纸箱数量"		,"SL carton"}
+						,{"CSShipQty"			,ColCSShipQty				,"int"		,"ケース数量"			,""		,"Case Qty"		,"箱数量"		,"SL thùng"}
+						,{"PLShipQty"			,ColPLShipQty				,"int"		,"パレット数量"			,""		,"Pallet Qty"		,"托盘数量"		,"SL pallet"}
+						,{"BRUnitName"			,ColBRUnitName			,"String"	,"バラ単位名"			,""		,"Each Unit Name"		,"单品单位名称"		,"Tên đơn vị hàng lẻ"}
+						,{"CTUnitName"			,ColCTUnitName			,"String"	,"カートン単位名"		,""		,"Carton Unit Name"		,"纸箱单位名称"		,"Tên đơn vị carton"}
+						,{"CSUnitName"			,ColCSUnitName			,"String"	,"ケース単位名"			,""		,"Case Unit Name"		,"箱单位名称"		,"Tên đơn vị thùng"}
+						,{"PLUnitName"			,ColPLUnitName			,"String"	,"パレット単位名"		,""		,"Pallet Unit Name"		,"托盘单位名称"		,"Tên đơn vị pallet"}
+						,{"EntryDate"			,ColEntryDate				,"DateTime"	,"登録日時"				,""		,"Created At"		,"登记时间"		,"Ngày giờ tạo"}
+						,{"UpdateDate"			,ColUpdateDate			,"DateTime"	,"更新日時"				,""		,"Updated At"		,"更新时间"		,"Ngày giờ cập nhật"}
+						,{"EntryUser"			,ColEntryUser				,"String"	,"登録者"				,""		,"Created By"		,"登记人"		,"Người tạo"}
+						,{"UpdateUser"			,ColUpdateUser			,"String"	,"更新者"				,""		,"Updated By"		,"更新人"		,"Người cập nhật"}
 						
 						,{"ClDeliNo"			,ColClDeliNo				,"String"	,"荷主管理番号"			,""		,"Client Reference No."					,"货主管理编号"			,"Số tham chiếu chủ hàng"}
 						,{"PlanDate"			,ColPlanDate				,"Date"		,"出荷予定日"			,""		,"Planned Ship Date"					,"计划出库日期"			,"Ngày xuất dự kiến"}
@@ -493,81 +493,81 @@ public class T100_ShipPlovisionRt{
 	
 	public static Object[][] DefinitionRt(){
 		Object[][] Definition = {
-				 {"String"		,null,	"Exact"			,ColSearchcl_cd					,B100_DefaultVariable.SearchClList		,"荷主コード"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchInvoiceWHCD			,B100_DefaultVariable.SearchWhList		,"倉庫コード"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchOkuriNo					,""											,"送り状番号"			,""		}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchMsNoMin					,""											,"明細番号"				,"最小"	}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchSeqMin					,""											,"引当枝番"				,"最小"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchMsNoMax					,""											,"明細番号"				,"最大"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchSeqMax					,""											,"引当枝番"				,"最大"	}
-				,{"String"		,null,	"Exact"			,ColSearchOrderItemCd			,""											,"商品コード"			,""		}
-				,{"String"		,null,	"Partial"		,ColSearchOrderItemName				,""											,"商品表記名"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchOrderLot				,""											,"受注ロット指定"		,""		}
-				,{"Date"		,null,	"RangeStr"		,ColSearchOrderExpDateStr		,""											,"受注賞味期限指定"		,"開始"	}
-				,{"Date"		,null,	"RangeEnd"		,ColSearchOrderExpDateEnd		,""											,"受注賞味期限指定"		,"終了"	}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchOrderQtyMin			,""											,"受注個数"				,"最小"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchOrderQtyMax			,""											,"受注個数"				,"最大"	}
-				,{"String"		,null,	"Exact"			,ColSearchShipWhCd				,B100_DefaultVariable.SearchWhList		,"出荷倉庫コード"		,""		}
-				,{"String"		,null,	"Prefix"		,ColSearchShipLoc					,""											,"ロケーション"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchShipItemCd				,""											,"商品コード"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchShipLot					,""											,"ロット"				,""		}
-				,{"Date"		,null,	"RangeStr"		,ColSearchShipExpdateStr			,""											,"消費期限"				,"開始"	}
-				,{"Date"		,null,	"RangeStr"		,ColSearchShipActualDateStr		,""											,"入荷実績日"			,"開始"	}
-				,{"Date"		,null,	"RangeEnd"		,ColSearchShipExpdateEnd			,""											,"消費期限"				,"終了"	}
-				,{"Date"		,null,	"RangeEnd"		,ColSearchShipActualDateEnd		,""											,"入荷実績日"			,"終了"	}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchShipQtyMin				,""											,"引当数量"				,"最小"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchShipQtyMax				,""											,"引当数量"				,"最大"	}
-				,{"Integer"		,null,	"Exact"			,ColSearchFixFg					,""											,"引落済フラグ"			,""		}
-				,{"Integer"		,null,	"Exact"			,ColSearchPackingType			,""											,"荷姿タイプ"			,""		}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchPackingQtyMin			,""											,"荷姿数量"				,"最小"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchPackingQtyMax			,""											,"荷姿数量"				,"最大"	}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchBRShipQtyMin			,""											,"バラ数量"				,"最小"	}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchCTShipQtyMin			,""											,"カートン数量"			,"最小"	}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchCSShipQtyMin			,""											,"ケース数量"			,"最小"	}
-				,{"Integer"		,null,	"RangeStr"		,ColSearchPLShipQtyMin			,""											,"パレット数量"			,"最小"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchBRShipQtyMax			,""											,"バラ数量"				,"最大"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchCTShipQtyMax			,""											,"カートン数量"			,"最大"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchCSShipQtyMax			,""											,"ケース数量"			,"最大"	}
-				,{"Integer"		,null,	"RangeEnd"		,ColSearchPLShipQtyMax			,""											,"パレット数量"			,"最大"	}
-				,{"DateTime"	,null,	"RangeStr"		,ColSearchEntryDateStr			,""											,"登録日時"				,"開始"	}
-				,{"DateTime"	,null,	"RangeStr"		,ColSearchUpdateDateStr			,""											,"更新日時"				,"開始"	}
-				,{"DateTime"	,null,	"RangeEnd"		,ColSearchEntryDateEnd			,""											,"登録日時"				,"終了"	}
-				,{"DateTime"	,null,	"RangeEnd"		,ColSearchUpdateDateEnd			,""											,"更新日時"				,"終了"	}
-				,{"String"		,null,	"Partial"		,ColSearchEntryUser				,""											,"登録者"				,""		}
-				,{"String"		,null,	"Partial"		,ColSearchUpdateUser				,""											,"更新者"				,""		}
+				 {"String"		,null,	"Exact"			,ColSearchcl_cd					,B100_DefaultVariable.SearchClList		,"荷主コード"			,""		,"Client Code"		,""		,"货主代码"		,""		,"Mã chủ hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchInvoiceWHCD			,B100_DefaultVariable.SearchWhList		,"倉庫コード"			,""		,"Warehouse Code"		,""		,"仓库代码"		,""		,"Mã kho"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchOkuriNo					,""											,"送り状番号"			,""		,"Waybill No."		,""		,"运单号"		,""		,"Số vận đơn"		,""}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchMsNoMin					,""											,"明細番号"				,"最小"		,"Detail No."		,"Min"		,"明细编号"		,"最小"		,"Số chi tiết"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchSeqMin					,""											,"引当枝番"				,"最小"		,"Allocation Seq. No."		,"Min"		,"分配序号"		,"最小"		,"Số thứ tự phân bổ"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchMsNoMax					,""											,"明細番号"				,"最大"		,"Detail No."		,"Max"		,"明细编号"		,"最大"		,"Số chi tiết"		,"Tối đa"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchSeqMax					,""											,"引当枝番"				,"最大"		,"Allocation Seq. No."		,"Max"		,"分配序号"		,"最大"		,"Số thứ tự phân bổ"		,"Tối đa"}
+				,{"String"		,null,	"Exact"			,ColSearchOrderItemCd			,""											,"商品コード"			,""		,"Item Code"		,""		,"商品代码"		,""		,"Mã hàng"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchOrderItemName				,""											,"商品表記名"			,""		,"Display Item Name"		,""		,"商品显示名称"		,""		,"Tên hiển thị"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchOrderLot				,""											,"受注ロット指定"		,""		,"Order Specified Lot"		,""		,"订单指定批次"		,""		,"Lô chỉ định theo đơn"		,""}
+				,{"Date"		,null,	"RangeStr"		,ColSearchOrderExpDateStr		,""											,"受注賞味期限指定"		,"開始"		,"Order Specified Expiration Date"		,"From"		,"订单指定保质期"		,"开始"		,"Hạn sử dụng chỉ định theo đơn"		,"Từ"}
+				,{"Date"		,null,	"RangeEnd"		,ColSearchOrderExpDateEnd		,""											,"受注賞味期限指定"		,"終了"		,"Order Specified Expiration Date"		,"To"		,"订单指定保质期"		,"结束"		,"Hạn sử dụng chỉ định theo đơn"		,"Đến"}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchOrderQtyMin			,""											,"受注個数"				,"最小"		,"Order Qty"		,"Min"		,"订单数量"		,"最小"		,"SL đặt hàng"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchOrderQtyMax			,""											,"受注個数"				,"最大"		,"Order Qty"		,"Max"		,"订单数量"		,"最大"		,"SL đặt hàng"		,"Tối đa"}
+				,{"String"		,null,	"Exact"			,ColSearchShipWhCd				,B100_DefaultVariable.SearchWhList		,"出荷倉庫コード"		,""		,"Shipping Warehouse Code"		,""		,"出库仓库代码"		,""		,"Mã kho xuất hàng"		,""}
+				,{"String"		,null,	"Prefix"		,ColSearchShipLoc					,""											,"ロケーション"			,""		,"Location"		,""		,"库位"		,""		,"Vị trí"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchShipItemCd				,""											,"商品コード"			,""		,"Item Code"		,""		,"商品代码"		,""		,"Mã hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchShipLot					,""											,"ロット"				,""		,"Lot"		,""		,"批次"		,""		,"Lô"		,""}
+				,{"Date"		,null,	"RangeStr"		,ColSearchShipExpdateStr			,""											,"消費期限"				,"開始"		,"Expiration Date"		,"From"		,"有效期"		,"开始"		,"Hạn sử dụng"		,"Từ"}
+				,{"Date"		,null,	"RangeStr"		,ColSearchShipActualDateStr		,""											,"入荷実績日"			,"開始"		,"Receipt Date"		,"From"		,"入库日期"		,"开始"		,"Ngày nhập kho"		,"Từ"}
+				,{"Date"		,null,	"RangeEnd"		,ColSearchShipExpdateEnd			,""											,"消費期限"				,"終了"		,"Expiration Date"		,"To"		,"有效期"		,"结束"		,"Hạn sử dụng"		,"Đến"}
+				,{"Date"		,null,	"RangeEnd"		,ColSearchShipActualDateEnd		,""											,"入荷実績日"			,"終了"		,"Receipt Date"		,"To"		,"入库日期"		,"结束"		,"Ngày nhập kho"		,"Đến"}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchShipQtyMin				,""											,"引当数量"				,"最小"		,"Allocated Qty"		,"Min"		,"已分配数量"		,"最小"		,"SL đã phân bổ"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchShipQtyMax				,""											,"引当数量"				,"最大"		,"Allocated Qty"		,"Max"		,"已分配数量"		,"最大"		,"SL đã phân bổ"		,"Tối đa"}
+				,{"Integer"		,null,	"Exact"			,ColSearchFixFg					,""											,"引落済フラグ"			,""		,"Stock Deducted Flag"		,""		,"库存已扣减标志"		,""		,"Cờ đã trừ tồn kho"		,""}
+				,{"Integer"		,null,	"Exact"			,ColSearchPackingType			,""											,"荷姿タイプ"			,""		,"Packing Type"		,""		,"包装类型"		,""		,"Loại đóng gói"		,""}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchPackingQtyMin			,""											,"荷姿数量"				,"最小"		,"Packing Qty"		,"Min"		,"包装数量"		,"最小"		,"SL theo loại đóng gói"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchPackingQtyMax			,""											,"荷姿数量"				,"最大"		,"Packing Qty"		,"Max"		,"包装数量"		,"最大"		,"SL theo loại đóng gói"		,"Tối đa"}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchBRShipQtyMin			,""											,"バラ数量"				,"最小"		,"Each Qty"		,"Min"		,"单品数量"		,"最小"		,"SL hàng lẻ"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchCTShipQtyMin			,""											,"カートン数量"			,"最小"		,"Carton Qty"		,"Min"		,"纸箱数量"		,"最小"		,"SL carton"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchCSShipQtyMin			,""											,"ケース数量"			,"最小"		,"Case Qty"		,"Min"		,"箱数量"		,"最小"		,"SL thùng"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeStr"		,ColSearchPLShipQtyMin			,""											,"パレット数量"			,"最小"		,"Pallet Qty"		,"Min"		,"托盘数量"		,"最小"		,"SL pallet"		,"Tối thiểu"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchBRShipQtyMax			,""											,"バラ数量"				,"最大"		,"Each Qty"		,"Max"		,"单品数量"		,"最大"		,"SL hàng lẻ"		,"Tối đa"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchCTShipQtyMax			,""											,"カートン数量"			,"最大"		,"Carton Qty"		,"Max"		,"纸箱数量"		,"最大"		,"SL carton"		,"Tối đa"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchCSShipQtyMax			,""											,"ケース数量"			,"最大"		,"Case Qty"		,"Max"		,"箱数量"		,"最大"		,"SL thùng"		,"Tối đa"}
+				,{"Integer"		,null,	"RangeEnd"		,ColSearchPLShipQtyMax			,""											,"パレット数量"			,"最大"		,"Pallet Qty"		,"Max"		,"托盘数量"		,"最大"		,"SL pallet"		,"Tối đa"}
+				,{"DateTime"	,null,	"RangeStr"		,ColSearchEntryDateStr			,""											,"登録日時"				,"開始"		,"Created At"		,"From"		,"登记时间"		,"开始"		,"Ngày giờ tạo"		,"Từ"}
+				,{"DateTime"	,null,	"RangeStr"		,ColSearchUpdateDateStr			,""											,"更新日時"				,"開始"		,"Updated At"		,"From"		,"更新时间"		,"开始"		,"Ngày giờ cập nhật"		,"Từ"}
+				,{"DateTime"	,null,	"RangeEnd"		,ColSearchEntryDateEnd			,""											,"登録日時"				,"終了"		,"Created At"		,"To"		,"登记时间"		,"结束"		,"Ngày giờ tạo"		,"Đến"}
+				,{"DateTime"	,null,	"RangeEnd"		,ColSearchUpdateDateEnd			,""											,"更新日時"				,"終了"		,"Updated At"		,"To"		,"更新时间"		,"结束"		,"Ngày giờ cập nhật"		,"Đến"}
+				,{"String"		,null,	"Partial"		,ColSearchEntryUser				,""											,"登録者"				,""		,"Created By"		,""		,"登记人"		,""		,"Người tạo"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchUpdateUser				,""											,"更新者"				,""		,"Updated By"		,""		,"更新人"		,""		,"Người cập nhật"		,""}
 				
-				,{"String"		,null,	"Exact"			,ColSearchClDeliNo				,""											,"荷主管理番号"			,""		}
-				,{"Date"		,null,	"RangeStr"		,ColSearchPlanDateStr			,""											,"出荷予定日"			,"開始"	}
-				,{"Date"		,null,	"RangeStr"		,ColSearchShipDateStr			,""											,"出荷実績日"			,"開始"	}
-				,{"Date"		,null,	"RangeEnd"		,ColSearchPlanDateEnd			,""											,"出荷予定日"			,"終了"	}
-				,{"Date"		,null,	"RangeEnd"		,ColSearchShipDateEnd			,""											,"出荷実績日"			,"終了"	}
+				,{"String"		,null,	"Exact"			,ColSearchClDeliNo				,""											,"荷主管理番号"			,""		,"Client Reference No."		,""		,"货主管理编号"		,""		,"Số tham chiếu chủ hàng"		,""}
+				,{"Date"		,null,	"RangeStr"		,ColSearchPlanDateStr			,""											,"出荷予定日"			,"開始"		,"Planned Ship Date"		,"From"		,"计划出库日期"		,"开始"		,"Ngày xuất dự kiến"		,"Từ"}
+				,{"Date"		,null,	"RangeStr"		,ColSearchShipDateStr			,""											,"出荷実績日"			,"開始"		,"Actual Ship Date"		,"From"		,"实际出库日期"		,"开始"		,"Ngày xuất thực tế"		,"Từ"}
+				,{"Date"		,null,	"RangeEnd"		,ColSearchPlanDateEnd			,""											,"出荷予定日"			,"終了"		,"Planned Ship Date"		,"To"		,"计划出库日期"		,"结束"		,"Ngày xuất dự kiến"		,"Đến"}
+				,{"Date"		,null,	"RangeEnd"		,ColSearchShipDateEnd			,""											,"出荷実績日"			,"終了"		,"Actual Ship Date"		,"To"		,"实际出库日期"		,"结束"		,"Ngày xuất thực tế"		,"Đến"}
 				
-				,{"String"		,null,	"Exact"			,ColSearchDeliCd					,""											,"荷届先コード"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchClDeliCd				,""											,"荷主荷届先コード"		,""		}
-				,{"String"		,null,	"Exact"			,ColSearchDeliDepartmentCd		,""											,"部署CD"				,""		}
-				,{"String"		,null,	"Partial"		,ColSearchDeliName				,""											,"荷届先名"				,""		}
-				,{"String"		,null,	"Prefix"		,ColSearchDeliPost				,""											,"荷届先郵便番号"		,""		}
-				,{"String"		,null,	"Partial"		,ColSearchDeliAdd					,""											,"荷届先住所"			,""		}
-				,{"String"		,null,	"Partial"		,ColSearchDeliTel					,""											,"荷届先TEL"			,""		}
-				,{"String"		,null,	"Partial"		,ColSearchDeliFax					,""											,"荷届先FAX"			,""		}
-				,{"String"		,null,	"Partial"		,ColSearchDeliMail				,""											,"荷届先MAIL"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchDeliMunicCd			,""											,"荷届先市区町村CD"		,""		}
+				,{"String"		,null,	"Exact"			,ColSearchDeliCd					,""											,"荷届先コード"			,""		,"Delivery Destination Code"		,""		,"收货地代码"		,""		,"Mã điểm giao hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchClDeliCd				,""											,"荷主荷届先コード"		,""		,"Client Destination Code"		,""		,"货主收货地代码"		,""		,"Mã điểm giao của chủ hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchDeliDepartmentCd		,""											,"部署CD"				,""		,"Destination Department Code"		,""		,"收货地部门代码"		,""		,"Mã bộ phận điểm giao"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchDeliName				,""											,"荷届先名"				,""		,"Destination Name"		,""		,"收货地名称"		,""		,"Tên điểm giao"		,""}
+				,{"String"		,null,	"Prefix"		,ColSearchDeliPost				,""											,"荷届先郵便番号"		,""		,"Destination Postal Code"		,""		,"收货地邮政编码"		,""		,"Mã bưu chính điểm giao"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchDeliAdd					,""											,"荷届先住所"			,""		,"Destination Address"		,""		,"收货地地址"		,""		,"Địa chỉ điểm giao"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchDeliTel					,""											,"荷届先TEL"			,""		,"Destination TEL"		,""		,"收货地电话"		,""		,"Điện thoại điểm giao"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchDeliFax					,""											,"荷届先FAX"			,""		,"Destination FAX"		,""		,"收货地传真"		,""		,"FAX điểm giao"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchDeliMail				,""											,"荷届先MAIL"			,""		,"Destination Email"		,""		,"收货地邮箱"		,""		,"Email điểm giao"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchDeliMunicCd			,""											,"荷届先市区町村CD"		,""		,"Destination Municipality Code"		,""		,"收货地市区町村代码"		,""		,"Mã địa phương điểm giao"		,""}
 				 
-				,{"String"		,null,	"Exact"			,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"		,""		}
-				,{"String"		,null,	"Exact"			,ColSearchClCd					,B100_DefaultVariable.SearchClList		,"荷主CD"				,""		}
-				,{"String"		,null,	"Exact"			,ColSearchPickupWhCd				,B100_DefaultVariable.SearchWhList		,"集荷倉庫CD"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchPurposeFG				,B100_DefaultVariable.SearchPurposeList	,"目的フラグ"			,""		}
-				,{"Date"		,null,	"RangeStr"		,ColSearchSPPlanDateStr			,""											,"着日指定"				,"開始"	}
-				,{"Date"		,null,	"RangeStr"		,ColSearchSPDateStr				,""											,"着日実績"				,"開始"	}
-				,{"Date"		,null,	"RangeEnd"		,ColSearchSPPlanDateEnd			,""											,"着日指定"				,"終了"	}
-				,{"Date"		,null,	"RangeEnd"		,ColSearchSPDateEnd				,""											,"着日実績"				,"終了"	}
+				,{"String"		,null,	"Exact"			,ColSearchClGpCD					,B100_DefaultVariable.SearchClGpList		,"荷主グループCD"		,""		,"Client Group Code"		,""		,"货主组代码"		,""		,"Mã nhóm chủ hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchClCd					,B100_DefaultVariable.SearchClList		,"荷主CD"				,""		,"Client Code"		,""		,"货主代码"		,""		,"Mã chủ hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchPickupWhCd				,B100_DefaultVariable.SearchWhList		,"集荷倉庫CD"			,""		,"Pickup Warehouse Code"		,""		,"提货仓库代码"		,""		,"Mã kho lấy hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchPurposeFG				,B100_DefaultVariable.SearchPurposeList	,"目的フラグ"			,""		,"Purpose Flag"		,""		,"目的标志"		,""		,"Cờ mục đích"		,""}
+				,{"Date"		,null,	"RangeStr"		,ColSearchSPPlanDateStr			,""											,"着日指定"				,"開始"		,"Requested Delivery Date"		,"From"		,"指定到货日期"		,"开始"		,"Ngày giao yêu cầu"		,"Từ"}
+				,{"Date"		,null,	"RangeStr"		,ColSearchSPDateStr				,""											,"着日実績"				,"開始"		,"Actual Delivery Date"		,"From"		,"实际到货日期"		,"开始"		,"Ngày giao thực tế"		,"Từ"}
+				,{"Date"		,null,	"RangeEnd"		,ColSearchSPPlanDateEnd			,""											,"着日指定"				,"終了"		,"Requested Delivery Date"		,"To"		,"指定到货日期"		,"结束"		,"Ngày giao yêu cầu"		,"Đến"}
+				,{"Date"		,null,	"RangeEnd"		,ColSearchSPDateEnd				,""											,"着日実績"				,"終了"		,"Actual Delivery Date"		,"To"		,"实际到货日期"		,"结束"		,"Ngày giao thực tế"		,"Đến"}
 
-				,{"String"		,null,	"Exact"			,ColSearchCategoryCd				,""											,"商品カテゴリCD"		,""		}
-				,{"String"		,null,	"Partial"		,ColSearchCategoryName			,""											,"商品カテゴリ名"		,""		}
-				,{"String"		,null,	"Exact"			,ColSearchItemColorCd			,""											,"商品カラーコード"		,""		}
-				,{"String"		,null,	"Partial"		,ColSearchItemColorName			,""											,"商品カラー名"			,""		}
-				,{"String"		,null,	"Exact"			,ColSearchItemSizeCd				,""											,"商品サイズコード"		,""		}
-				,{"String"		,null,	"Partial"		,ColSearchItemSizeName			,""											,"商品サイズ名"			,""		}
+				,{"String"		,null,	"Exact"			,ColSearchCategoryCd				,""											,"商品カテゴリCD"		,""		,"Item Category Code"		,""		,"商品分类代码"		,""		,"Mã phân loại hàng"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchCategoryName			,""											,"商品カテゴリ名"		,""		,"Item Category Name"		,""		,"商品分类名称"		,""		,"Tên phân loại hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchItemColorCd			,""											,"商品カラーコード"		,""		,"Item Color Code"		,""		,"商品颜色代码"		,""		,"Mã màu hàng"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchItemColorName			,""											,"商品カラー名"			,""		,"Item Color Name"		,""		,"商品颜色名称"		,""		,"Tên màu hàng"		,""}
+				,{"String"		,null,	"Exact"			,ColSearchItemSizeCd				,""											,"商品サイズコード"		,""		,"Item Size Code"		,""		,"商品尺寸代码"		,""		,"Mã kích thước hàng"		,""}
+				,{"String"		,null,	"Partial"		,ColSearchItemSizeName			,""											,"商品サイズ名"			,""		,"Item Size Name"		,""		,"商品尺寸名称"		,""		,"Tên kích thước hàng"		,""}
 				};
 		Definition = B100_LanguageControl.DefinitionControl(Definition);
 		
