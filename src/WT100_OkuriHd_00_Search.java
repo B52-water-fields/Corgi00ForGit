@@ -525,9 +525,11 @@ public class WT100_OkuriHd_00_Search{
 		
 		JLabel LB_ShipPlovision 		= B100_FrameParts.JLabelSet(	610,635,100,20,"チェック行を"	,10,2);
 		JButton ShipPlovisionBtn 		= B100_FrameParts.BtnSet(		610,660,100,20,"在庫引当"		, 9);
+		JButton ShipPlovisionCanselBtn 	= B100_FrameParts.BtnSet(		610,685,100,20,"引当解除"		, 9);
 		
 		main_fm.add(LB_ShipPlovision);
 		main_fm.add(ShipPlovisionBtn);
+		main_fm.add(ShipPlovisionCanselBtn);
 		
 		JLabel LB_ShipPlovisionTotal 		= B100_FrameParts.JLabelSet(	730,635,100,20,"検索結果を"	,10,2);
 		JButton ShipPlovisionTotalBtn 		= B100_FrameParts.BtnSet(		730,660,100,20,"在庫引当"		, 9);
@@ -778,6 +780,29 @@ public class WT100_OkuriHd_00_Search{
                     
                     if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
                     	WT100_ShipPlovision.ShipPlovision(TgtWhCd,TgtClCd,TgtOkuriNo);
+                    	SearchKick(SearchObject,MainFmTableModel,tb01);	//再検索
+                    }
+                    RenewFg = true;
+                }
+            }
+      	});
+      	//引き当て解除ボタン押下時の挙動
+      	ShipPlovisionCanselBtn.addActionListener(new AbstractAction(){
+            public void actionPerformed(ActionEvent e){
+                if(RenewFg) {
+                    RenewFg = false;
+                    int RowCount = MainFmTableModel.getRowCount();
+                    String TgtWhCd = A00000_Main.ClWh;
+                    String TgtClCd = A00000_Main.ClCd;
+                    ArrayList<String> TgtOkuriNo = new ArrayList<String>();
+                    for(int i=0;i<RowCount;i++) {
+                        if((boolean)MainFmTableModel.getValueAt(i, 0)) {
+                        	TgtOkuriNo.add(""+MainFmTableModel.getValueAt(i, 1+T100_OkuriHdRt.ColOkuriNo));
+                        }
+                    }
+                    
+                    if(null!=TgtOkuriNo && 0<TgtOkuriNo.size()) {
+                    	WT100_ShipPlovisionCancel.ShipPlovisionCancel(TgtWhCd,TgtClCd,TgtOkuriNo);
                     	SearchKick(SearchObject,MainFmTableModel,tb01);	//再検索
                     }
                     RenewFg = true;

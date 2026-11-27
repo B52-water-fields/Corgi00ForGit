@@ -164,7 +164,7 @@ public class T100_ShipPlovisionRt{
 						
 	String Getcl_cd				= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.Colcl_cd];			//荷主コード
 	String GetInvoiceWHCD		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColInvoiceWHCD];		//倉庫コード
-	int GetOkuriNo				= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOkuriNo];				//送り状番号
+	String GetOkuriNo			= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOkuriNo];			//送り状番号
 	int GetMsNo					= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColMsNo];				//明細番号
 	int GetSeq					= (int)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColSeq];					//引当枝番
 	String GetOrderItemCd		= (String)ShipPlovisionRt[i][T100_ShipPlovisionRt.ColOrderItemCd];		//商品コード
@@ -408,7 +408,7 @@ public class T100_ShipPlovisionRt{
 		Object[][] Rt = {
 						 {"cl_cd"				,Colcl_cd					,"String"	,"荷主コード"			,"Key"}
 						,{"InvoiceWHCD"			,ColInvoiceWHCD			,"String"	,"倉庫コード"			,"Key"}
-						,{"OkuriNo"				,ColOkuriNo				,"int"		,"送り状番号"			,"Key"}
+						,{"OkuriNo"				,ColOkuriNo				,"String"	,"送り状番号"			,"Key"}
 						,{"MsNo"				,ColMsNo					,"int"		,"明細番号"				,"Key"}
  						,{"Seq"					,ColSeq					,"int"		,"引当枝番"				,"Key"}
 						,{"OrderItemCd"			,ColOrderItemCd			,"String"	,"商品コード"			,""}
